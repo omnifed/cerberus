@@ -4,11 +4,11 @@
   "description": "The internal shared configurations for the projects.",
   "private": true,
   "type": "module",
-  "module": "index.ts",
-  "main": "index.ts",
+  "module": "index.mjs",
+  "main": "index.mjs",
   "types": "index.d.ts",
   "files": [
-    "index.ts",
+    "index.mjs",
     "index.d.ts",
     "src/**/*"
   ],

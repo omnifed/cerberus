@@ -1,7 +1,6 @@
 import { esbuildPluginFilePathExtensions } from 'esbuild-plugin-file-path-extensions'
-import type { Options } from 'tsup'
 
-export function modernConfig(options: Options) {
+export function modernConfig(options) {
   return {
     ...options,
     format: ['cjs', 'esm'],
@@ -13,7 +12,7 @@ export function modernConfig(options: Options) {
   }
 }
 
-export function legacyConfig(options: Options) {
+export function legacyConfig(options) {
   return {
     ...options,
     format: ['cjs', 'esm'],
