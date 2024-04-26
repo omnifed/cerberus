@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { conditions } from '@omni-federal/panda-preset'
+import { conditions } from '@cerberus/panda-preset'
 
 describe('conditions', () => {
   test('should have a duTheme', () => {

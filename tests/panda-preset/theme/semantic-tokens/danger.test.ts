@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { dangerTokens } from '@omni-federal/panda-preset'
+import { dangerTokens } from '@cerberus/panda-preset'
 
 describe('dangerTokens', () => {
   test('should have a danger property', () => {

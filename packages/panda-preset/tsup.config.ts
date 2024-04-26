@@ -1,5 +1,5 @@
 import { defineConfig } from 'tsup'
-import { modernConfig, legacyConfig } from '@omni-federal/configs'
+import { modernConfig, legacyConfig } from '@cerberus/configs'
 
 export default defineConfig([
   modernConfig({ entry: ['src/**/*.ts', 'src/**/*.tsx'] }),

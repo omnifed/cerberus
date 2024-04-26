@@ -9,7 +9,7 @@ import {
   DANGER,
   BRAND,
   type Sentiment,
-} from '@omni-federal/panda-preset'
+} from '@cerberus/panda-preset'
 
 describe('recipe helpers', () => {
   const slots = ['usage', 'size', 'kind']

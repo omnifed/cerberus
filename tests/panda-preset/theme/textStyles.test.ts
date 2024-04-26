@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { textStyles } from '@omni-federal/panda-preset'
+import { textStyles } from '@cerberus/panda-preset'
 
 describe('textStyles', () => {
   test('should export a textStyles object', () => {

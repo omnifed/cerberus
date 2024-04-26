@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { neutralTokens } from '@omni-federal/panda-preset'
+import { neutralTokens } from '@cerberus/panda-preset'
 
 describe('neutral', () => {
   test('should have a neutral property', () => {

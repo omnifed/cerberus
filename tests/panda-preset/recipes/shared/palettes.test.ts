@@ -14,7 +14,7 @@ import {
   warning,
   danger,
   allPalettes,
-} from '@omni-federal/panda-preset'
+} from '@cerberus/panda-preset'
 
 describe('recipe palettes', () => {
   test('should export NEUTRAL', () => {

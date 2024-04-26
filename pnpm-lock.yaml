@@ -79,12 +79,12 @@ importers:
         specifier: '*'
         version: 8.4.35
     devDependencies:
+      '@cerberus/configs':
+        specifier: workspace:*
+        version: link:../../configs
       '@microsoft/api-extractor':
         specifier: ^7.43.1
         version: 7.43.1(@types/node@20.11.30)
-      '@omni-federal/configs':
-        specifier: workspace:*
-        version: link:../../configs
       '@pandacss/dev':
         specifier: ^0.37.2
         version: 0.37.2(typescript@5.4.5)
@@ -97,7 +97,7 @@ importers:
 
   tests:
     devDependencies:
-      '@omni-federal/panda-preset':
+      '@cerberus/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
 

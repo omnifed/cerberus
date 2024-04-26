@@ -24,7 +24,8 @@ export default tseslint.config(
       parserOptions: {
         project: [
           './tsconfig.json',
-          './packages/*/tsconfig.json',
+          './packages/panda-preset/tsconfig.lint.json',
+          './configs/tsconfig.json',
           './tests/tsconfig.json',
         ],
         tsconfigRootDir: import.meta.dirname,
@@ -42,11 +43,11 @@ export default tseslint.config(
     },
   },
   {
-    name: '@omni-federal/panda-preset',
+    name: '@cerberus/panda-preset',
     files: ['packages/panda-preset/**/*.ts'],
   },
   {
-    name: '@omni-federal/configs',
+    name: '@cerberus/configs',
     files: ['configs/**/*.mjs', 'configs/**/*.ts'],
     rules: {
       '@typescript-eslint/explicit-function-return-type': OFF,

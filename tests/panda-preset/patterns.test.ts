@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { patterns } from '@omni-federal/panda-preset'
+import { patterns } from '@cerberus/panda-preset'
 
 describe('patterns', () => {
   test('should export animateIn', () => {

@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { successTokens } from '@omni-federal/panda-preset'
+import { successTokens } from '@cerberus/panda-preset'
 
 describe('success', () => {
   test('should have a success property', () => {

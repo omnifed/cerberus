@@ -1,5 +1,5 @@
 {
-  "name": "@omni-federal/configs",
+  "name": "@cerberus/configs",
   "version": "0.0.0",
   "description": "The internal shared configurations for the projects.",
   "private": true,

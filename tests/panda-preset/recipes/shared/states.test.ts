@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { formStates, focusStates } from '@omni-federal/panda-preset'
+import { formStates, focusStates } from '@cerberus/panda-preset'
 
 describe('recipe states', () => {
   test('should export focusStates', () => {

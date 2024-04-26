@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { infoTokens } from '@omni-federal/panda-preset'
+import { infoTokens } from '@cerberus/panda-preset'
 
 describe('infoTokens', () => {
   test('should have a info property', () => {

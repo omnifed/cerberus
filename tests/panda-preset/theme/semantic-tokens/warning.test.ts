@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { warningTokens } from '@omni-federal/panda-preset'
+import { warningTokens } from '@cerberus/panda-preset'
 
 describe('warning', () => {
   test('should have a warning property', () => {
