@@ -1,0 +1,14 @@
+{
+  "name": "tests",
+  "version": "0.0.0",
+  "description": "The tests for the repository.",
+  "private": true,
+  "scripts": {
+    "test": "bun test",
+    "test:ci": "bun test --coverage",
+    "test:react": "echo \"TODO\" && exit 1"
+  },
+  "devDependencies": {
+    "@cerberus/panda-preset": "workspace:*"
+  }
+}

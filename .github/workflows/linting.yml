@@ -1,0 +1,49 @@
+name: 💅 Lint Checks
+
+on: [merge_group, pull_request]
+
+jobs:
+  lint-ox:
+    runs-on: ubuntu-latest
+    name: Oxlint valid
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+
+      - run: pnpm install
+      - run: pnpm run lint:ox
+
+  lint-es:
+    runs-on: ubuntu-latest
+    name: Eslint valid
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+
+      - run: pnpm install
+      - run: pnpm run lint:es
+
+  lint-ts:
+    runs-on: ubuntu-latest
+    name: TS valid
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+
+      - run: pnpm install
+      - run: pnpm run lint:ts

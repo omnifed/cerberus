@@ -1,0 +1,40 @@
+{
+  "name": "design-system",
+  "version": "0.0.0",
+  "description": "The official design system of Digital University.",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky",
+    "lint:es": "eslint . --max-warnings=0",
+    "lint:ox": "oxlint --deny-warnings",
+    "lint:ts": "tsc --noEmit"
+  },
+  "dependencies": {
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.0.2",
+    "@eslint/js": "^9.1.1",
+    "@types/bun": "^1.1.0",
+    "@types/eslint": "^8.56.10",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "eslint": "^9.1.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-sonarjs": "^0.25.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "oxlint": "^0.3.1",
+    "prettier": "3.2.5",
+    "typescript-eslint": "^7.7.1"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,astro}": [
+      "oxlint",
+      "eslint --fix"
+    ]
+  },
+  "author": "developers@omnifederal.com",
+  "license": "ISC"
+}

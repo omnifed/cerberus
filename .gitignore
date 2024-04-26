@@ -1,0 +1,10 @@
+.DS_Store
+
+node_modules
+packages/*/node_modules
+
+packages/*/build
+
+tsconfig.tsbuildinfo
+*/tsconfig.tsbuildinfo
+packages/*/tsconfig.tsbuildinfo

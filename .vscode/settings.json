@@ -1,0 +1,6 @@
+{
+  "cSpell.words": ["omni", "oxlint", "tseslint"],
+  "prettier.configPath": ".prettierrc",
+  "prettier.prettierPath": "./node_modules/prettier",
+  "prettier.singleQuote": true
+}
