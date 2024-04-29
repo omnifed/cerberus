@@ -1,6 +1,6 @@
 # Panda Preset
 
-This is the Cerberus Design System [Panda-CSS](https://panda-css.com/) preset for the Digital University design system.
+This is the official [Panda-CSS](https://panda-css.com/) preset for the Cerberus design system.
 
 ## Installation
 
