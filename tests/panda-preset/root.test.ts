@@ -7,7 +7,7 @@ describe('root', () => {
   })
 
   test('should export a preset', () => {
-    expect(DS.nurlPreset).toBeDefined()
+    expect(DS.cerberusPreset).toBeDefined()
   })
 
   test('should export conditions', () => {
