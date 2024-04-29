@@ -27,15 +27,15 @@ export default defineConfig({
 
 ## Features
 
-- [Conditions]('./src/conditions.ts')
-- [Utilities]('./src/utilities.ts')
-- [Patterns](./src/patterns.ts)
-- [Global CSS](./src/globalCss.ts)
-- [Key-frames](./src/theme/keyframes.ts)
-- [Text Styles](./src/theme/textStyles.ts)
-- [Tokens](./src/theme/tokens.ts)
-- [Semantic Tokens](./src/theme/semanticTokens/index.ts)
-- [Recipes](./src/recipes/index.ts)
+- [Conditions](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/conditions.ts)
+- [Utilities](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/utilities.ts)
+- [Patterns](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/patterns.ts)
+- [Global CSS](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/globalCss.ts)
+- [Key-frames](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/theme/keyframes.ts)
+- [Text Styles](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/theme/textStyles.ts)
+- [Tokens](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/theme/tokens.ts)
+- [Semantic Tokens](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/theme/semantic-tokens/index.ts)
+- [Recipes](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/recipes/index.ts)
 
 ## NextJS Font Features
 
