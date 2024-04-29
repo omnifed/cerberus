@@ -16,6 +16,12 @@ import {
 } from './theme/index'
 import { recipes, slotRecipes } from './recipes'
 
+export const cerberusNextFontSettings = {
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+}
+
 export const cerberusPreset = definePreset({
   globalCss,
   conditions,

@@ -10,6 +10,18 @@ describe('root', () => {
     expect(DS.cerberusPreset).toBeDefined()
   })
 
+  test('should export a fontSettings', () => {
+    expect(DS.cerberusNextFontSettings).toBeDefined()
+    expect(DS.cerberusNextFontSettings.display).toBe('swap')
+    expect(DS.cerberusNextFontSettings.subsets).toEqual(['latin'])
+    expect(DS.cerberusNextFontSettings.weight).toEqual([
+      '400',
+      '600',
+      '700',
+      '800',
+    ])
+  })
+
   test('should export conditions', () => {
     expect(DS.conditions).toBeDefined()
   })

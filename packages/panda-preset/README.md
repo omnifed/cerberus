@@ -37,6 +37,27 @@ export default defineConfig({
 - [Semantic Tokens](./src/theme/semanticTokens/index.ts)
 - [Recipes](./src/recipes/index.ts)
 
+## NextJS Font Features
+
+If you use NextJS, we also provide a recommended font configuration for you to use.
+
+```typescript
+export const cerberusNextFontSettings = {
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+}
+```
+
+### Usage in NextJS
+
+```typescript
+import { cerberusNextFontSettings } from '@cerberus-design/panda-preset'
+import { Poppins } from 'next/font/google'
+
+const poppins = Poppins(cerberusNextFontSettings)
+```
+
 ---
 
 _Copyright (c) 2024 Digital University, All Rights Reserved_

@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google'
 import type { PropsWithChildren, ReactNode } from 'react'
 import './globals.css'
 
+// TODO: Replace with Cerberus option
 const poppins = Poppins({
   display: 'swap',
   subsets: ['latin'],
