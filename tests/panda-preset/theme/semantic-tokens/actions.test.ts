@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { actionTokens } from '@cerberus/panda-preset'
+import { actionTokens } from '@cerberus-design/panda-preset'
 
 describe('actionTokens', () => {
   test('should have a action key', () => {

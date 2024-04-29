@@ -43,11 +43,11 @@ export default tseslint.config(
     },
   },
   {
-    name: '@cerberus/panda-preset',
+    name: '@cerberus-design/panda-preset',
     files: ['packages/panda-preset/**/*.ts'],
   },
   {
-    name: '@cerberus/configs',
+    name: '@cerberus-design/configs',
     files: ['configs/**/*.mjs', 'configs/**/*.ts'],
     rules: {
       '@typescript-eslint/explicit-function-return-type': OFF,

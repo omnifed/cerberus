@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { keyframes } from '@cerberus/panda-preset'
+import { keyframes } from '@cerberus-design/panda-preset'
 
 describe('keyframes', () => {
   test('should export fadeIn', () => {

@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import * as DS from '@cerberus/panda-preset'
+import * as DS from '@cerberus-design/panda-preset'
 
 describe('root', () => {
   test('should export a config', () => {
@@ -7,7 +7,7 @@ describe('root', () => {
   })
 
   test('should export a preset', () => {
-    expect(DS.nurlPreset).toBeDefined()
+    expect(DS.cerberusPreset).toBeDefined()
   })
 
   test('should export conditions', () => {

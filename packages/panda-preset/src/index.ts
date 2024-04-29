@@ -16,7 +16,7 @@ import {
 } from './theme/index'
 import { recipes, slotRecipes } from './recipes'
 
-export const nurlPreset = definePreset({
+export const cerberusPreset = definePreset({
   globalCss,
   conditions,
   utilities,
