@@ -1,0 +1,24 @@
+name: 📑 Docs Checks
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**/*'
+      - '.github/workflows/docs-checks.yml'
+
+jobs:
+  docs-build:
+    runs-on: ubuntu-latest
+    name: Docs Build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+
+      - run: pnpm install
+      - run: pnpm run build
+        working-directory: ./docs

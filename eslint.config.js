@@ -27,6 +27,7 @@ export default tseslint.config(
           './packages/panda-preset/tsconfig.lint.json',
           './configs/tsconfig.json',
           './tests/tsconfig.json',
+          './docs/tsconfig.json',
         ],
         tsconfigRootDir: import.meta.dirname,
       },
@@ -45,6 +46,10 @@ export default tseslint.config(
   {
     name: '@cerberus-design/panda-preset',
     files: ['packages/panda-preset/**/*.ts'],
+  },
+  {
+    name: 'docs',
+    files: ['docs/**/*.ts', 'docs/**/*.tsx'],
   },
   {
     name: '@cerberus-design/configs',

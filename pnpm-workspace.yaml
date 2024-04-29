@@ -2,4 +2,4 @@ packages:
   - 'packages/*'
   - 'tests'
   - 'configs'
-  - 'sandbox'
+  - 'docs'
