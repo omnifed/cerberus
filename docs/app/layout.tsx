@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
-import { cerberusNextFontSettings } from '@cerberus-design/panda-preset'
 import './globals.css'
 
-const poppins = Poppins(cerberusNextFontSettings)
+const poppins = Poppins({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',

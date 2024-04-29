@@ -15,13 +15,6 @@ import {
   warningTokens,
 } from './theme/index'
 import { recipes, slotRecipes } from './recipes'
-import type { NextDisplay, NextFontWeight, NextSubsets } from './types'
-
-export const cerberusNextFontSettings = {
-  display: 'swap' as NextDisplay,
-  subsets: ['latin'] as NextSubsets,
-  weight: ['400', '600', '700', '800'] as NextFontWeight,
-}
 
 export const cerberusPreset = definePreset({
   globalCss,

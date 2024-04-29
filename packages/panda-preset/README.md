@@ -39,23 +39,14 @@ export default defineConfig({
 
 ## NextJS Font Features
 
-If you use NextJS, we also provide a recommended font configuration for you to use.
+If you use NextJS, we recommend the font and settings mentioned below. Unfortunately, NextJS enforces a rule of `Font loader values must be explicitly written literals.` which means you cannot use a variable to define the font settings or else we would also provide that. :sob:
 
 ```typescript
-export const cerberusNextFontSettings = {
+const poppins = Poppins({
   display: 'swap',
   subsets: ['latin'],
   weight: ['400', '600', '700', '800'],
-}
-```
-
-### Usage in NextJS
-
-```typescript
-import { cerberusNextFontSettings } from '@cerberus-design/panda-preset'
-import { Poppins } from 'next/font/google'
-
-const poppins = Poppins(cerberusNextFontSettings)
+})
 ```
 
 ---
