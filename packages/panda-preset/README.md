@@ -37,6 +37,18 @@ export default defineConfig({
 - [Semantic Tokens](./src/theme/semanticTokens/index.ts)
 - [Recipes](./src/recipes/index.ts)
 
+## NextJS Font Features
+
+If you use NextJS, we recommend the font and settings mentioned below. Unfortunately, NextJS enforces a rule of `Font loader values must be explicitly written literals.` which means you cannot use a variable to define the font settings or else we would also provide that. :sob:
+
+```typescript
+const poppins = Poppins({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+})
+```
+
 ---
 
 _Copyright (c) 2024 Digital University, All Rights Reserved_
