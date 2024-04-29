@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { utilities } from '@cerberus/panda-preset'
+import { utilities } from '@cerberus-design/panda-preset'
 
 describe('utilities', () => {
   test('should export a mxi utility', () => {

@@ -79,7 +79,7 @@ importers:
         specifier: '*'
         version: 8.4.35
     devDependencies:
-      '@cerberus/configs':
+      '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../../configs
       '@microsoft/api-extractor':
@@ -97,7 +97,7 @@ importers:
 
   tests:
     devDependencies:
-      '@cerberus/panda-preset':
+      '@cerberus-design/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
 

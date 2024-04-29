@@ -1,5 +1,5 @@
 {
-  "name": "@cerberus/panda-preset",
+  "name": "@cerberus-design/panda-preset",
   "version": "1.0.0",
   "description": "The official Panda-CSS preset for the omni-federal design system",
   "browserslist": "> 0.25%, not dead",
@@ -52,7 +52,7 @@
     "@microsoft/api-extractor": "^7.43.1",
     "@pandacss/dev": "^0.37.2",
     "@pandacss/types": "^0.37.2",
-    "@cerberus/configs": "workspace:*",
+    "@cerberus-design/configs": "workspace:*",
     "tsup": "^8.0.2"
   },
   "keywords": [
