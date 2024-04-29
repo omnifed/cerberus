@@ -19,6 +19,12 @@ export default tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   // ...compat.extends('plugin:sonarjs/recommended'),
+
+  {
+    // Docs use local v8 lint checks
+    ignores: ['docs/**/*'],
+  },
+
   {
     languageOptions: {
       parserOptions: {
@@ -33,6 +39,7 @@ export default tseslint.config(
       },
     },
   },
+
   {
     name: 'global rules',
     files: ['**/*'],
@@ -43,14 +50,12 @@ export default tseslint.config(
       '@typescript-eslint/space-before-function-paren': OFF,
     },
   },
+
   {
     name: '@cerberus-design/panda-preset',
     files: ['packages/panda-preset/**/*.ts'],
   },
-  {
-    name: 'docs',
-    files: ['docs/**/*.ts', 'docs/**/*.tsx'],
-  },
+
   {
     name: '@cerberus-design/configs',
     files: ['configs/**/*.mjs', 'configs/**/*.ts'],
@@ -58,10 +63,12 @@ export default tseslint.config(
       '@typescript-eslint/explicit-function-return-type': OFF,
     },
   },
+
   {
     name: 'tests',
     files: ['tests/**/*.ts', 'tests/**/*.tsx'],
   },
+
   // this must be last
   eslintConfigPrettier,
 )
