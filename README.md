@@ -1,6 +1,8 @@
-# TBD
+# Cerberus Design System
 
-TBD is the official design system for the Digital University product. It is a collection of tools and reusable components for React that can be used to build a consistent and accessible user interface with maximum flexibility.
+<img width="1190" alt="Cerberus archictecture visual" src="https://github.com/omnifed/cerberus/assets/4819738/c706c0e7-3906-4ba7-8519-faa22e8504d4">
+
+**Guarding the brand integrity of the Digital University realm by creating a flexible and extensible design system.**
 
 ## Repository structure
 
@@ -15,7 +17,7 @@ This is a monorepo that uses [pnPm](https://pnpm.io/) to manage dependencies and
 
 ### Setup the project
 
-After you fork and clone the repository, install the dependencies by running:
+After you fork the repository, install the dependencies by running the following command **in the root of the project**:
 
 ```bash
 pnpm install
