@@ -83,6 +83,12 @@ importers:
       '@cerberus-design/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
+      '@csstools/postcss-cascade-layers':
+        specifier: ^4.0.4
+        version: 4.0.4(postcss@8.4.35)
+      '@pandacss/dev':
+        specifier: ^0.37.2
+        version: 0.37.2(typescript@5.4.5)
       '@types/node':
         specifier: ^20
         version: 20.11.30
@@ -92,6 +98,9 @@ importers:
       '@types/react-dom':
         specifier: ^18
         version: 18.3.0
+      autoprefixer:
+        specifier: ^10.4.19
+        version: 10.4.19(postcss@8.4.35)
       eslint:
         specifier: 8.57.0
         version: 8.57.0

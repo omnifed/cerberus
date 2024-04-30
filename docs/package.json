@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -14,10 +15,13 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@cerberus-design/panda-preset": "workspace:*",
+    "@csstools/postcss-cascade-layers": "^4.0.4",
+    "@pandacss/dev": "^0.37.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@cerberus-design/panda-preset": "workspace:*",
+    "autoprefixer": "^10.4.19",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.3"
   }
