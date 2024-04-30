@@ -47,7 +47,7 @@ export const cerberusPreset = definePreset({
 
 export const cerberusConfig = defineConfig({
   preflight: true,
-  prefix: 'crb',
+  prefix: 'cerberus',
 
   jsxFramework: 'react',
   jsxFactory: 'cerberus',

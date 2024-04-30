@@ -18,7 +18,7 @@ interface RootProps {}
 
 export default function RootLayout(props: PropsWithChildren<RootProps>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="cerberus" data-color-mode="dark">
       <body className={poppins.className}>{props.children}</body>
     </html>
   )

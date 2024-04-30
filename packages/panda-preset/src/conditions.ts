@@ -1,5 +1,6 @@
 export const conditions = {
   // themes
+  cerberusTheme: '[data-theme=cerberus] &',
   duTheme: '[data-theme=du] &',
 
   // modes

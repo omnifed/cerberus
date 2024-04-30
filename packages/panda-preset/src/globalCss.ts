@@ -2,9 +2,9 @@ import { defineGlobalStyles } from '@pandacss/dev'
 
 export const globalCss = defineGlobalStyles({
   html: {
-    backgroundColor: 'var(--nurl-colors-neutral-surface-100)',
-    color: 'var(--nurl-colors-neutral-text-300)',
-    fontFamily: 'var(--nurl-fonts-sans)',
+    backgroundColor: 'var(--cerberus-colors-neutral-surface-100)',
+    color: 'var(--cerberus-colors-neutral-text-300)',
+    fontFamily: 'var(--cerberus-fonts-sans)',
     fontFeatureSettings: "'tnum' on, 'lnum' on",
     fontSize: '1em',
     fontVariationSettings: "'wght' 500",
@@ -32,11 +32,11 @@ export const globalCss = defineGlobalStyles({
       width: '0.5em',
     },
     _scrollbarTrack: {
-      backgroundColor: 'var(--nurl-colors-neutral-surface-200)',
+      backgroundColor: 'var(--cerberus-colors-neutral-surface-200)',
       outline: 'none',
     },
     _scrollbarThumb: {
-      backgroundColor: 'var(--nurl-colors-neutral-border-initial)',
+      backgroundColor: 'var(--cerberus-colors-neutral-border-initial)',
       borderRadius: '5px',
       outline: 'none',
     },
