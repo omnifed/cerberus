@@ -14,13 +14,14 @@
   ],
   "devDependencies": {
     "esbuild-plugin-file-path-extensions": "^2.0.0",
-    "tsup": "^8.0.2"
+    "tsup": "^8.0.2",
+    "util": "^0.12.5"
   },
   "peerDependencies": {
     "tsup": "*",
     "typescript": "*"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "publish": "bun ./src/publish.mjs"
   }
 }
