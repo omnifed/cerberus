@@ -1,20 +1,12 @@
 import { defineConfig } from '@pandacss/dev'
+import pandaPreset from '@pandacss/preset-panda'
+import { cerberusPreset, cerberusConfig } from '@cerberus-design/panda-preset'
 
 export default defineConfig({
-  // Whether to use css reset
-  preflight: true,
+  ...cerberusConfig,
 
-  // Where to look for your css declarations
-  include: ['./app/**/*.{js,jsx,ts,tsx}'],
-
-  // Files to exclude
+  include: ['./app/**/*.{ts,tsx}'],
   exclude: [],
 
-  // Useful for theme customization
-  theme: {
-    extend: {},
-  },
-
-  // The output directory for your css system
-  outdir: 'styled-system',
+  presets: [pandaPreset, cerberusPreset],
 })

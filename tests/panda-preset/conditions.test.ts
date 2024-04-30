@@ -6,6 +6,10 @@ describe('conditions', () => {
     expect(conditions.duTheme).toEqual('[data-theme=du] &')
   })
 
+  test('should have a cerberusTheme', () => {
+    expect(conditions.cerberusTheme).toEqual('[data-theme=cerberus] &')
+  })
+
   test('should have a lightMode', () => {
     expect(conditions.lightMode).toEqual(
       '[data-color-mode=light] &, &.light, .light &',
