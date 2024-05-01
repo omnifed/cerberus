@@ -3,8 +3,7 @@ name: 📑 💅 Docs Lint Checks
 on:
   pull_request:
     paths:
-      - 'docs/**/*'
-      - '.github/workflows/docs-linting.yml'
+      - docs/**/*
 
 jobs:
   lint-next:
