@@ -3,8 +3,7 @@ name: 📑 Docs Checks
 on:
   pull_request:
     paths:
-      - 'docs/**/*'
-      - '.github/workflows/docs-checks.yml'
+      - docs/**/*
 
 jobs:
   docs-build:
