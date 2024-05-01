@@ -1,7 +1,6 @@
 import { argv, file, write, $ } from 'bun'
 import { resolve } from 'node:path'
 import { exit } from 'node:process'
-// import { exec } from 'node:child_process'
 import { parseArgs } from 'util'
 import { version, nextTag, packages } from './versions.mjs'
 
