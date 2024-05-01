@@ -12,16 +12,21 @@
     "index.d.ts",
     "src/**/*"
   ],
+  "scripts": {
+    "publish": "bun ./src/publish.mjs"
+  },
+  "peerDependencies": {
+    "bun": "*",
+    "tsup": "*",
+    "typescript": "*"
+  },
   "devDependencies": {
     "esbuild-plugin-file-path-extensions": "^2.0.0",
     "tsup": "^8.0.2",
     "util": "^0.12.5"
   },
-  "peerDependencies": {
-    "tsup": "*",
-    "typescript": "*"
-  },
-  "scripts": {
-    "publish": "bun ./src/publish.mjs"
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.1.4"
   }
 }
