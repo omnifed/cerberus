@@ -1,9 +1,9 @@
-name: 🚀 Publish Next Version
+name: 🚀 Publish Stable Version
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - published
 
 env:
   CI: true
@@ -12,7 +12,7 @@ env:
 jobs:
   publish-next:
     runs-on: ubuntu-latest
-    name: Build & Publish Next Version to NPM
+    name: Build & Publish Stable Version to NPM
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1
@@ -25,5 +25,5 @@ jobs:
 
       - run: echo "//registry.npmjs.org/:_authToken=$AUTH_TOKEN" >> .npmrc
       - run: pnpm install
-      - run: pnpm run publish --next --commit ${{ github.sha }}
+      - run: pnpm run publish --stable
         working-directory: ./configs
