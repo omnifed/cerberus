@@ -59,17 +59,10 @@ function publish() {
     // eslint-disable-next-line no-undef
     console.log('Building', pkg, `at ${workspacePath}`)
     await $`pnpm --filter @cerberus-design/${pkg} build`
-    // exec(`pnpm build`, {
-    //   cwd: workspacePath,
-    // })
 
     // eslint-disable-next-line no-undef
     console.log(`Publishing ${pkg} with tag ${release}`)
-    await $`cd ${workspacePath} && pnpm publish --tag ${release}`
-
-    // exec(`pnpm publish --tag ${release}`, {
-    //   cwd: `packages/${pkg}`,
-    // })
+    await $`cd ${workspacePath} && pnpm publish --tag ${release} --no-git-checks`
   })
 }
 
