@@ -1,0 +1,29 @@
+name: 🚀 Publish Next Version
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  CI: true
+  AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+  publish-next:
+    runs-on: ubuntu-latest
+    name: Build & Publish Next Version to NPM
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+
+      - run: echo "//registry.npmjs.org/:_authToken=$AUTH_TOKEN" >> .npmrc
+      - run: pnpm install
+      - run: pnpm run publish --next --commit ${{ github.sha }}
+        working-directory: ./configs
