@@ -25,7 +25,8 @@ function _parseFlags(args) {
 
 function _getReleaseVersion(values) {
   if (values.next && !values.commit) throw new Error('Missing commit hash')
-  if (values.next && values.commit) return `${version}-next-${values.commit}`
+  if (values.next && values.commit)
+    return `${version}-next-${values.commit.slice(0, 7)}`
   if (values.stable) return version
   exit(1)
 }
