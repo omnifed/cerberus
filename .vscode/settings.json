@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["csstools", "omni", "oxlint", "tseslint"],
+  "cSpell.words": [
+    "csstools",
+    "nextjs",
+    "omni",
+    "oxlint",
+    "Positionals",
+    "tseslint"
+  ],
   "prettier.configPath": ".prettierrc",
   "prettier.prettierPath": "./node_modules/prettier",
   "prettier.singleQuote": true

@@ -12,15 +12,21 @@
     "index.d.ts",
     "src/**/*"
   ],
-  "devDependencies": {
-    "esbuild-plugin-file-path-extensions": "^2.0.0",
-    "tsup": "^8.0.2"
+  "scripts": {
+    "publish": "bun ./src/publish.mjs"
   },
   "peerDependencies": {
+    "bun": "*",
     "tsup": "*",
     "typescript": "*"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "esbuild-plugin-file-path-extensions": "^2.0.0",
+    "tsup": "^8.0.2",
+    "util": "^0.12.5"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.1.4"
   }
 }
