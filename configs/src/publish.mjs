@@ -14,6 +14,9 @@ function _parseFlags(args) {
       stable: {
         type: 'boolean',
       },
+      commit: {
+        type: 'string',
+      },
     },
     strict: true,
     allowPositionals: true,
@@ -21,7 +24,8 @@ function _parseFlags(args) {
 }
 
 function _getReleaseVersion(values) {
-  if (values.next) return `${version}-next`
+  if (values.next && !values.commit) throw new Error('Missing commit hash')
+  if (values.next && values.commit) return `${version}-next-${values.commit}`
   if (values.stable) return version
   exit(1)
 }
