@@ -12,38 +12,38 @@ describe('dangerTokens', () => {
 
   test('should have a bg.initial property', () => {
     expect(dangerTokens.danger.bg.initial.value._cerberusTheme.base).toEqual(
-      '#FF0000',
+      '#FB362D',
     )
     expect(
       dangerTokens.danger.bg.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#FF0000')
+    ).toEqual('#FB362D')
     expect(
       dangerTokens.danger.bg.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#FF0000')
+    ).toEqual('#FB362D')
   })
 
   test('should have a bg.hover property', () => {
     expect(dangerTokens.danger.bg.hover.value._cerberusTheme.base).toEqual(
-      '#8B0038',
+      '#FC5E57',
     )
     expect(dangerTokens.danger.bg.hover.value._cerberusTheme._darkMode).toEqual(
-      '#8B0038',
+      '#FC5E57',
     )
     expect(
       dangerTokens.danger.bg.hover.value._cerberusTheme._lightMode,
-    ).toEqual('#8B0038')
+    ).toEqual('#DA1E28')
   })
 
   test('should have a bg.active property', () => {
     expect(dangerTokens.danger.bg.active.value._cerberusTheme.base).toEqual(
-      '#5C0026',
+      '#FD8681',
     )
     expect(
       dangerTokens.danger.bg.active.value._cerberusTheme._darkMode,
-    ).toEqual('#5C0026')
+    ).toEqual('#FD8681')
     expect(
       dangerTokens.danger.bg.active.value._cerberusTheme._lightMode,
-    ).toEqual('#5C0026')
+    ).toEqual('#97201B')
   })
 
   test('should have a border property', () => {
@@ -53,13 +53,13 @@ describe('dangerTokens', () => {
   test('should have a border.initial property', () => {
     expect(
       dangerTokens.danger.border.initial.value._cerberusTheme.base,
-    ).toEqual('#FF0000')
+    ).toEqual('#FDAFAB')
     expect(
       dangerTokens.danger.border.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#FF0000')
+    ).toEqual('#FDAFAB')
     expect(
       dangerTokens.danger.border.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#FF0000')
+    ).toEqual('#FC5E57')
   })
 
   test('should have a surface property', () => {
@@ -69,13 +69,13 @@ describe('dangerTokens', () => {
   test('should have a surface.initial property', () => {
     expect(
       dangerTokens.danger.surface.initial.value._cerberusTheme.base,
-    ).toEqual('#5C0026')
+    ).toEqual('#641612')
     expect(
       dangerTokens.danger.surface.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#5C0026')
+    ).toEqual('#641612')
     expect(
       dangerTokens.danger.surface.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#FFD0E3')
+    ).toEqual('#FFEBEA')
   })
 
   test('should have a text property', () => {
@@ -84,38 +84,38 @@ describe('dangerTokens', () => {
 
   test('should have a text.initial property', () => {
     expect(dangerTokens.danger.text.initial.value._cerberusTheme.base).toEqual(
-      '#FFF0F6',
+      '#FFEBEA',
     )
     expect(
       dangerTokens.danger.text.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#FFF0F6')
+    ).toEqual('#FFEBEA')
     expect(
       dangerTokens.danger.text.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#5C0026')
+    ).toEqual('#641612')
   })
 
   test('should have a text.100 property', () => {
     expect(dangerTokens.danger.text['100'].value._cerberusTheme.base).toEqual(
-      '#FFA2C8',
+      '#FDAFAB',
     )
     expect(
       dangerTokens.danger.text['100'].value._cerberusTheme._darkMode,
-    ).toEqual('#FFA2C8')
+    ).toEqual('#FDAFAB')
     expect(
       dangerTokens.danger.text['100'].value._cerberusTheme._lightMode,
-    ).toEqual('#B9004B')
+    ).toEqual('#DA1E28')
   })
 
   test('should have a text.200 property', () => {
     expect(dangerTokens.danger.text['200'].value._cerberusTheme.base).toEqual(
-      '#FF73AC',
+      '#FC5E57',
     )
     expect(
       dangerTokens.danger.text['200'].value._cerberusTheme._darkMode,
-    ).toEqual('#FF73AC')
+    ).toEqual('#FC5E57')
     expect(
       dangerTokens.danger.text['200'].value._cerberusTheme._lightMode,
-    ).toEqual('#E7005E')
+    ).toEqual('#FB362D')
   })
 
   test('should have a text.inverse property', () => {
@@ -124,13 +124,13 @@ describe('dangerTokens', () => {
 
   test('should have a text.inverse property', () => {
     expect(dangerTokens.danger.text.inverse.value._cerberusTheme.base).toEqual(
-      '#FFF0F6',
+      '#320B09',
     )
     expect(
       dangerTokens.danger.text.inverse.value._cerberusTheme._darkMode,
-    ).toEqual('#FFF0F6')
+    ).toEqual('#320B09')
     expect(
       dangerTokens.danger.text.inverse.value._cerberusTheme._lightMode,
-    ).toEqual('#F4F7FA')
+    ).toEqual('#FFEBEA')
   })
 })
