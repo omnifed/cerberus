@@ -21,13 +21,25 @@ describe('success', () => {
   test('should have a surface.initial property', () => {
     expect(
       successTokens.success.surface.initial.value._cerberusTheme.base,
-    ).toEqual('#014B2D')
+    ).toEqual('#0B6B2C')
     expect(
       successTokens.success.surface.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#014B2D')
+    ).toEqual('#0B6B2C')
     expect(
       successTokens.success.surface.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#A1FED9')
+    ).toEqual('#D0F0DB')
+  })
+
+  test('should have a surface.active property', () => {
+    expect(
+      successTokens.success.surface.active.value._cerberusTheme.base,
+    ).toEqual('#41C16E')
+    expect(
+      successTokens.success.surface.active.value._cerberusTheme._darkMode,
+    ).toEqual('#41C16E')
+    expect(
+      successTokens.success.surface.active.value._cerberusTheme._lightMode,
+    ).toEqual('#12B24A')
   })
 
   test('should have a text.initial property', () => {

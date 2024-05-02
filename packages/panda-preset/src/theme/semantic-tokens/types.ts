@@ -21,15 +21,13 @@ export type Sentiment =
  * @description **noun**, how something is used within an interface.
  * @readonly **required**
  */
-export type Usage = 'bg' | 'border' | 'navigation' | 'surface' | 'text' | Brand
-export type Brand =
-  | 'fourXBlue'
-  | 'oneUpPink'
-  | 'critHitGreen'
-  | 'manaBlue'
-  | 'n00bYellow'
-  | 'rageQuitRed'
-  | 'sandboxGold'
+export type Usage =
+  | 'bg'
+  | 'border'
+  | 'navigation'
+  | 'surface'
+  | 'text'
+  | 'alternate'
 
 /**
  * The use or level of emphasis of a color.
