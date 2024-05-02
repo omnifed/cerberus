@@ -6,27 +6,27 @@ export const actionTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#9797FF',
-            _lightMode: '#0000FF',
-            _darkMode: '#9797FF',
+            base: '#7F33C4',
+            _lightMode: '#5F00B5',
+            _darkMode: '#7F33C4',
           },
         },
       },
       hover: {
         value: {
           _cerberusTheme: {
-            base: '#3C28B1',
-            _lightMode: '#30208D',
-            _darkMode: '#3C28B1',
+            base: '#5F00B5',
+            _lightMode: '#7F33C4',
+            _darkMode: '#5F00B5',
           },
         },
       },
       active: {
         value: {
           _cerberusTheme: {
-            base: '#30208D',
-            _lightMode: '#24186A',
-            _darkMode: '#30208D',
+            base: '#4C0091',
+            _lightMode: '#9F66D3',
+            _darkMode: '#4C0091',
           },
         },
       },
@@ -34,18 +34,18 @@ export const actionTokens = defineSentiment({
         initial: {
           value: {
             _cerberusTheme: {
-              base: '#2A2753',
-              _lightMode: '#E5E8EB',
-              _darkMode: '#2A2753',
+              base: '#21143B',
+              _lightMode: '#FFFFFF',
+              _darkMode: '#21143B',
             },
           },
         },
         hover: {
           value: {
             _cerberusTheme: {
-              base: '#343063',
-              _lightMode: '#F4F5F6',
-              _darkMode: '#343063',
+              base: '#291D47',
+              _lightMode: '#F3F2F4',
+              _darkMode: '#291D47',
             },
           },
         },
@@ -65,18 +65,27 @@ export const actionTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#6855D9',
-            _lightMode: '#0969DA',
-            _darkMode: '#6855D9',
+            base: '#291D47',
+            _lightMode: '#E4E3E9',
+            _darkMode: '#291D47',
+          },
+        },
+      },
+      100: {
+        value: {
+          _cerberusTheme: {
+            base: '#4E476D',
+            _lightMode: '#696584',
+            _darkMode: '#4E476D',
           },
         },
       },
       focus: {
         value: {
           _cerberusTheme: {
-            base: '#3895FF',
-            _lightMode: '#3895FF',
-            _darkMode: '#3895FF',
+            base: '#BB93E1',
+            _lightMode: '#4C0091',
+            _darkMode: '#BB93E1',
           },
         },
       },
@@ -116,36 +125,45 @@ export const actionTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#101025',
-            _lightMode: '#F4F7FA',
-            _darkMode: '#101025',
+            base: '#130024',
+            _lightMode: '#FCFBFE',
+            _darkMode: '#130024',
           },
         },
       },
       100: {
         value: {
           _cerberusTheme: {
-            base: '#A499E8',
-            _lightMode: '#24186A',
-            _darkMode: '#A499E8',
+            base: '#7F33C4',
+            _lightMode: '#39006D',
+            _darkMode: '#7F33C4',
           },
         },
       },
       200: {
         value: {
           _cerberusTheme: {
-            base: '#8677E0',
-            _lightMode: '#3C28B1',
-            _darkMode: '#8677E0',
+            base: '#BB93E1',
+            _lightMode: '#5F00B5',
+            _darkMode: '#BB93E1',
           },
         },
       },
       inverse: {
         value: {
           _cerberusTheme: {
-            base: '#E1DDF7',
-            _lightMode: '#1A2737',
-            _darkMode: '#E1DDF7',
+            base: '#FCFBFE',
+            _lightMode: '#130024',
+            _darkMode: '#FCFBFE',
+          },
+        },
+      },
+      alternate: {
+        value: {
+          _cerberusTheme: {
+            base: '#41E3E0',
+            _lightMode: '#3B8180',
+            _darkMode: '#41E3E0',
           },
         },
       },
