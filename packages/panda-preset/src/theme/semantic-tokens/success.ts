@@ -18,9 +18,18 @@ export const successTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#014B2D',
-            _lightMode: '#A1FED9',
-            _darkMode: '#014B2D',
+            base: '#0B6B2C',
+            _lightMode: '#D0F0DB',
+            _darkMode: '#0B6B2C',
+          },
+        },
+      },
+      active: {
+        value: {
+          _cerberusTheme: {
+            base: '#41C16E',
+            _lightMode: '#12B24A',
+            _darkMode: '#41C16E',
           },
         },
       },
