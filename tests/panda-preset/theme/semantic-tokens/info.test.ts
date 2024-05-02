@@ -12,14 +12,14 @@ describe('infoTokens', () => {
 
   test('should have a border.initial property', () => {
     expect(infoTokens.info.border.initial.value._cerberusTheme.base).toEqual(
-      '#00A3FF',
+      '#35A0DD',
     )
     expect(
       infoTokens.info.border.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#00A3FF')
+    ).toEqual('#35A0DD')
     expect(
       infoTokens.info.border.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#00A3FF')
+    ).toEqual('#0288D5')
   })
 
   test('should have a surface property', () => {
@@ -28,14 +28,14 @@ describe('infoTokens', () => {
 
   test('should have a surface.initial property', () => {
     expect(infoTokens.info.surface.initial.value._cerberusTheme.base).toEqual(
-      '#003655',
+      '#026DAA',
     )
     expect(
       infoTokens.info.surface.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#003655')
+    ).toEqual('#026DAA')
     expect(
       infoTokens.info.surface.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#AAE0FF')
+    ).toEqual('#CCE7F7')
   })
 
   test('should have a text property', () => {
