@@ -6,9 +6,9 @@ export const neutralTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#393B6B',
-            _lightMode: '#D9E4F2',
-            _darkMode: '#393B6B',
+            base: '#130024',
+            _lightMode: '#FCFBFE',
+            _darkMode: '#130024',
           },
         },
       },
@@ -36,27 +36,27 @@ export const neutralTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#404376',
-            _lightMode: '#C2D1E2',
-            _darkMode: '#404376',
+            base: '#291D47',
+            _lightMode: '#E4E3E9',
+            _darkMode: '#291D47',
           },
         },
       },
       100: {
         value: {
           _cerberusTheme: {
-            base: '#2D2D55',
-            _lightMode: '#DAE3EE',
-            _darkMode: '#2D2D55',
+            base: '#302451',
+            _lightMode: '#BCBACA',
+            _darkMode: '#302451',
           },
         },
       },
       200: {
         value: {
           _cerberusTheme: {
-            base: '#585FA2',
-            _lightMode: '#89A4C7',
-            _darkMode: '#585FA2',
+            base: '#39006D',
+            _lightMode: '#DFCCF0',
+            _darkMode: '#39006D',
           },
         },
       },
@@ -66,45 +66,45 @@ export const neutralTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#101025',
-            _lightMode: '#F3F3FF',
-            _darkMode: '#101025',
+            base: '#130024',
+            _lightMode: '#FCFBFE',
+            _darkMode: '#130024',
           },
         },
       },
       100: {
         value: {
           _cerberusTheme: {
-            base: '#1B1834',
-            _lightMode: '#f4f7fa',
-            _darkMode: '#1B1834',
+            base: '#160126',
+            _lightMode: '#ffffff',
+            _darkMode: '#160126',
           },
         },
       },
       200: {
         value: {
           _cerberusTheme: {
-            base: '#2E2E52',
-            _lightMode: '#F3F3FF',
-            _darkMode: '#2E2E52',
+            base: '#291D47',
+            _lightMode: '#E4E3E9',
+            _darkMode: '#291D47',
           },
         },
       },
       300: {
         value: {
           _cerberusTheme: {
-            base: '#4E4E88',
-            _lightMode: '#EFEFFF',
-            _darkMode: '#4E4E88',
+            base: '#302451',
+            _lightMode: '#BCBACA',
+            _darkMode: '#302451',
           },
         },
       },
       inverse: {
         value: {
           _cerberusTheme: {
-            base: '#F3F3FF',
-            _lightMode: '#101025',
-            _darkMode: '#F3F3FF',
+            base: '#F3F2F4',
+            _lightMode: '#21143B',
+            _darkMode: '#F3F2F4',
           },
         },
       },
@@ -114,36 +114,36 @@ export const neutralTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#D1D2E6',
-            _lightMode: '#3E5674',
-            _darkMode: '#D1D2E6',
+            base: '#FCFBFE',
+            _lightMode: '#21143B',
+            _darkMode: '#FCFBFE',
           },
         },
       },
       100: {
         value: {
           _cerberusTheme: {
-            base: '#8B90C1',
-            _lightMode: '#546F92',
-            _darkMode: '#8B90C1',
+            base: '#BCBACA',
+            _lightMode: '#696584',
+            _darkMode: '#BCBACA',
           },
         },
       },
       200: {
         value: {
           _cerberusTheme: {
-            base: '#A5AACF',
-            _lightMode: '#4E6583',
-            _darkMode: '#A5AACF',
+            base: '#E4E3E9',
+            _lightMode: '#362A58',
+            _darkMode: '#E4E3E9',
           },
         },
       },
       300: {
         value: {
           _cerberusTheme: {
-            base: '#F3F3F8',
-            _lightMode: '#1A2737',
-            _darkMode: '#F3F3F8',
+            base: '#FFFFFF',
+            _lightMode: '#130024',
+            _darkMode: '#FFFFFF',
           },
         },
       },

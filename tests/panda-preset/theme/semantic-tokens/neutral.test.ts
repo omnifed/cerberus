@@ -8,14 +8,14 @@ describe('neutral', () => {
 
   test('should have a bg.initial property', () => {
     expect(neutralTokens.neutral.bg.initial.value._cerberusTheme.base).toEqual(
-      '#393B6B',
+      '#130024',
     )
     expect(
       neutralTokens.neutral.bg.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#393B6B')
+    ).toEqual('#130024')
     expect(
       neutralTokens.neutral.bg.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#D9E4F2')
+    ).toEqual('#FCFBFE')
   })
 
   test('should have a bg.active property', () => {
@@ -45,96 +45,156 @@ describe('neutral', () => {
   test('should have a border.initial property', () => {
     expect(
       neutralTokens.neutral.border.initial.value._cerberusTheme.base,
-    ).toEqual('#404376')
+    ).toEqual('#291D47')
     expect(
       neutralTokens.neutral.border.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#404376')
+    ).toEqual('#291D47')
     expect(
       neutralTokens.neutral.border.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#C2D1E2')
+    ).toEqual('#E4E3E9')
   })
 
   test('should have a border.100 property', () => {
     expect(neutralTokens.neutral.border[100].value._cerberusTheme.base).toEqual(
-      '#2D2D55',
+      '#302451',
     )
     expect(
       neutralTokens.neutral.border[100].value._cerberusTheme._darkMode,
-    ).toEqual('#2D2D55')
+    ).toEqual('#302451')
     expect(
       neutralTokens.neutral.border[100].value._cerberusTheme._lightMode,
-    ).toEqual('#DAE3EE')
+    ).toEqual('#BCBACA')
   })
 
   test('should have a border.200 property', () => {
     expect(neutralTokens.neutral.border[200].value._cerberusTheme.base).toEqual(
-      '#585FA2',
+      '#39006D',
     )
     expect(
       neutralTokens.neutral.border[200].value._cerberusTheme._darkMode,
-    ).toEqual('#585FA2')
+    ).toEqual('#39006D')
     expect(
       neutralTokens.neutral.border[200].value._cerberusTheme._lightMode,
-    ).toEqual('#89A4C7')
+    ).toEqual('#DFCCF0')
   })
 
   test('should have a surface.initial property', () => {
     expect(
       neutralTokens.neutral.surface.initial.value._cerberusTheme.base,
-    ).toEqual('#101025')
+    ).toEqual('#130024')
     expect(
       neutralTokens.neutral.surface.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#101025')
+    ).toEqual('#130024')
     expect(
       neutralTokens.neutral.surface.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#F3F3FF')
+    ).toEqual('#FCFBFE')
   })
 
   test('should have a surface.100 property', () => {
     expect(
       neutralTokens.neutral.surface[100].value._cerberusTheme.base,
-    ).toEqual('#1B1834')
+    ).toEqual('#160126')
     expect(
       neutralTokens.neutral.surface[100].value._cerberusTheme._darkMode,
-    ).toEqual('#1B1834')
+    ).toEqual('#160126')
     expect(
       neutralTokens.neutral.surface[100].value._cerberusTheme._lightMode,
-    ).toEqual('#f4f7fa')
+    ).toEqual('#ffffff')
   })
 
   test('should have a surface.200 property', () => {
     expect(
       neutralTokens.neutral.surface[200].value._cerberusTheme.base,
-    ).toEqual('#2E2E52')
+    ).toEqual('#291D47')
     expect(
       neutralTokens.neutral.surface[200].value._cerberusTheme._darkMode,
-    ).toEqual('#2E2E52')
+    ).toEqual('#291D47')
     expect(
       neutralTokens.neutral.surface[200].value._cerberusTheme._lightMode,
-    ).toEqual('#F3F3FF')
+    ).toEqual('#E4E3E9')
   })
 
   test('should have a surface.300 property', () => {
     expect(
       neutralTokens.neutral.surface[300].value._cerberusTheme.base,
-    ).toEqual('#4E4E88')
+    ).toEqual('#302451')
     expect(
       neutralTokens.neutral.surface[300].value._cerberusTheme._darkMode,
-    ).toEqual('#4E4E88')
+    ).toEqual('#302451')
     expect(
       neutralTokens.neutral.surface[300].value._cerberusTheme._lightMode,
-    ).toEqual('#EFEFFF')
+    ).toEqual('#BCBACA')
   })
 
   test('should have a surface.inverse property', () => {
     expect(
       neutralTokens.neutral.surface.inverse.value._cerberusTheme.base,
-    ).toEqual('#F3F3FF')
+    ).toEqual('#F3F2F4')
     expect(
       neutralTokens.neutral.surface.inverse.value._cerberusTheme._darkMode,
-    ).toEqual('#F3F3FF')
+    ).toEqual('#F3F2F4')
     expect(
       neutralTokens.neutral.surface.inverse.value._cerberusTheme._lightMode,
-    ).toEqual('#101025')
+    ).toEqual('#21143B')
+  })
+
+  test('should have a text.initial property', () => {
+    expect(
+      neutralTokens.neutral.text.initial.value._cerberusTheme.base,
+    ).toEqual('#FCFBFE')
+    expect(
+      neutralTokens.neutral.text.initial.value._cerberusTheme._darkMode,
+    ).toEqual('#FCFBFE')
+    expect(
+      neutralTokens.neutral.text.initial.value._cerberusTheme._lightMode,
+    ).toEqual('#21143B')
+  })
+
+  test('should have a text.100 property', () => {
+    expect(neutralTokens.neutral.text[100].value._cerberusTheme.base).toEqual(
+      '#BCBACA',
+    )
+    expect(
+      neutralTokens.neutral.text[100].value._cerberusTheme._darkMode,
+    ).toEqual('#BCBACA')
+    expect(
+      neutralTokens.neutral.text[100].value._cerberusTheme._lightMode,
+    ).toEqual('#696584')
+  })
+
+  test('should have a text.200 property', () => {
+    expect(neutralTokens.neutral.text[200].value._cerberusTheme.base).toEqual(
+      '#E4E3E9',
+    )
+    expect(
+      neutralTokens.neutral.text[200].value._cerberusTheme._darkMode,
+    ).toEqual('#E4E3E9')
+    expect(
+      neutralTokens.neutral.text[200].value._cerberusTheme._lightMode,
+    ).toEqual('#362A58')
+  })
+
+  test('should have a text.300 property', () => {
+    expect(neutralTokens.neutral.text[300].value._cerberusTheme.base).toEqual(
+      '#FFFFFF',
+    )
+    expect(
+      neutralTokens.neutral.text[300].value._cerberusTheme._darkMode,
+    ).toEqual('#FFFFFF')
+    expect(
+      neutralTokens.neutral.text[300].value._cerberusTheme._lightMode,
+    ).toEqual('#130024')
+  })
+
+  test('should have a text.inverse property', () => {
+    expect(
+      neutralTokens.neutral.text.inverse.value._cerberusTheme.base,
+    ).toEqual('#130F25')
+    expect(
+      neutralTokens.neutral.text.inverse.value._cerberusTheme._darkMode,
+    ).toEqual('#130F25')
+    expect(
+      neutralTokens.neutral.text.inverse.value._cerberusTheme._lightMode,
+    ).toEqual('#FFFFFF')
   })
 })
