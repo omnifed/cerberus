@@ -6,9 +6,9 @@ export const warningTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#FFED00',
-            _lightMode: '#FFED00',
-            _darkMode: '#FFED00',
+            base: '#FCF6D1',
+            _lightMode: '#F4DA49',
+            _darkMode: '#FCF6D1',
           },
         },
       },
@@ -18,9 +18,9 @@ export const warningTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#6B4C00',
-            _lightMode: '#FFEDC0',
-            _darkMode: '#6B4C00',
+            base: '#917D10',
+            _lightMode: '#FCF6D1',
+            _darkMode: '#917D10',
           },
         },
       },
@@ -30,27 +30,27 @@ export const warningTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#FFF6E0',
-            _lightMode: '#352600',
-            _darkMode: '#FFF6E0',
+            base: '#FEFBE9',
+            _lightMode: '#60540B',
+            _darkMode: '#FEFBE9',
           },
         },
       },
       100: {
         value: {
           _cerberusTheme: {
-            base: '#FFE4A1',
-            _lightMode: '#A17300',
-            _darkMode: '#FFE4A1',
+            base: '#F9EDA4',
+            _lightMode: '#C1A716',
+            _darkMode: '#F9EDA4',
           },
         },
       },
       200: {
         value: {
           _cerberusTheme: {
-            base: '#FFD262',
-            _lightMode: '#D69900',
-            _darkMode: '#FFD262',
+            base: '#F1D11B',
+            _lightMode: '#F1D11B',
+            _darkMode: '#F1D11B',
           },
         },
       },

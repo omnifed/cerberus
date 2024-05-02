@@ -9,60 +9,60 @@ describe('warning', () => {
   test('should have a border.initial property', () => {
     expect(
       warningTokens.warning.border.initial.value._cerberusTheme.base,
-    ).toEqual('#FFED00')
+    ).toEqual('#FCF6D1')
     expect(
       warningTokens.warning.border.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#FFED00')
+    ).toEqual('#FCF6D1')
     expect(
       warningTokens.warning.border.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#FFED00')
+    ).toEqual('#F4DA49')
   })
 
   test('should have a surface.initial property', () => {
     expect(
       warningTokens.warning.surface.initial.value._cerberusTheme.base,
-    ).toEqual('#6B4C00')
+    ).toEqual('#917D10')
     expect(
       warningTokens.warning.surface.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#6B4C00')
+    ).toEqual('#917D10')
     expect(
       warningTokens.warning.surface.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#FFEDC0')
+    ).toEqual('#FCF6D1')
   })
 
   test('should have a text.initial property', () => {
     expect(
       warningTokens.warning.text.initial.value._cerberusTheme.base,
-    ).toEqual('#FFF6E0')
+    ).toEqual('#FEFBE9')
     expect(
       warningTokens.warning.text.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#FFF6E0')
+    ).toEqual('#FEFBE9')
     expect(
       warningTokens.warning.text.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#352600')
+    ).toEqual('#60540B')
   })
 
   test('should have a text.100 property', () => {
     expect(warningTokens.warning.text[100].value._cerberusTheme.base).toEqual(
-      '#FFE4A1',
+      '#F9EDA4',
     )
     expect(
       warningTokens.warning.text[100].value._cerberusTheme._darkMode,
-    ).toEqual('#FFE4A1')
+    ).toEqual('#F9EDA4')
     expect(
       warningTokens.warning.text[100].value._cerberusTheme._lightMode,
-    ).toEqual('#A17300')
+    ).toEqual('#C1A716')
   })
 
   test('should have a text.200 property', () => {
     expect(warningTokens.warning.text[200].value._cerberusTheme.base).toEqual(
-      '#FFD262',
+      '#F1D11B',
     )
     expect(
       warningTokens.warning.text[200].value._cerberusTheme._darkMode,
-    ).toEqual('#FFD262')
+    ).toEqual('#F1D11B')
     expect(
       warningTokens.warning.text[200].value._cerberusTheme._lightMode,
-    ).toEqual('#D69900')
+    ).toEqual('#F1D11B')
   })
 })
