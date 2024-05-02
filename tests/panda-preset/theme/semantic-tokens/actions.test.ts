@@ -135,39 +135,86 @@ describe('actionTokens', () => {
     expect(actionTokens.action.navigation.initial).toBeDefined()
     expect(
       actionTokens.action.navigation.initial.value._cerberusTheme.base,
-    ).toBe('#3895FF')
+    ).toBe('#9F66D3')
     expect(
       actionTokens.action.navigation.initial.value._cerberusTheme._darkMode,
-    ).toBe('#3895FF')
+    ).toBe('#9F66D3')
     expect(
       actionTokens.action.navigation.initial.value._cerberusTheme._lightMode,
-    ).toBe('#0969DA')
+    ).toBe('#5F00B5')
   })
 
   test('should have a action.navigation.hover key', () => {
     expect(actionTokens.action.navigation.hover).toBeDefined()
     expect(actionTokens.action.navigation.hover.value._cerberusTheme.base).toBe(
-      '#3895FF',
+      '#BB93E1',
     )
     expect(
       actionTokens.action.navigation.hover.value._cerberusTheme._darkMode,
-    ).toBe('#3895FF')
+    ).toBe('#BB93E1')
     expect(
       actionTokens.action.navigation.hover.value._cerberusTheme._lightMode,
-    ).toBe('#0969DA')
+    ).toBe('#4C0091')
   })
 
   test('should have a action.navigation.visited key', () => {
     expect(actionTokens.action.navigation.visited).toBeDefined()
     expect(
       actionTokens.action.navigation.visited.value._cerberusTheme.base,
-    ).toBe('#B17DD4')
+    ).toBe('#DFCCF0')
     expect(
       actionTokens.action.navigation.visited.value._cerberusTheme._darkMode,
-    ).toBe('#B17DD4')
+    ).toBe('#DFCCF0')
     expect(
       actionTokens.action.navigation.visited.value._cerberusTheme._lightMode,
-    ).toBe('#8C40BF')
+    ).toBe('#5F00B5')
+  })
+
+  test('should have a action.navigation.alternate.initial key', () => {
+    expect(actionTokens.action.navigation.alternate.initial).toBeDefined()
+    expect(
+      actionTokens.action.navigation.alternate.initial.value._cerberusTheme
+        .base,
+    ).toBe('#41E3E0')
+    expect(
+      actionTokens.action.navigation.alternate.initial.value._cerberusTheme
+        ._darkMode,
+    ).toBe('#41E3E0')
+    expect(
+      actionTokens.action.navigation.alternate.initial.value._cerberusTheme
+        ._lightMode,
+    ).toBe('#3B8180')
+  })
+
+  test('should have a action.navigation.alternate.hover key', () => {
+    expect(actionTokens.action.navigation.alternate.hover).toBeDefined()
+    expect(
+      actionTokens.action.navigation.alternate.hover.value._cerberusTheme.base,
+    ).toBe('#72E9E7')
+    expect(
+      actionTokens.action.navigation.alternate.hover.value._cerberusTheme
+        ._darkMode,
+    ).toBe('#72E9E7')
+    expect(
+      actionTokens.action.navigation.alternate.hover.value._cerberusTheme
+        ._lightMode,
+    ).toBe('#1F5B5A')
+  })
+
+  test('should have a action.navigation.alternate.visited key', () => {
+    expect(actionTokens.action.navigation.alternate.visited).toBeDefined()
+    expect(
+      actionTokens.action.navigation.alternate.visited.value._cerberusTheme
+        .base,
+    ).toBe('#72E9E7')
+    expect(
+      actionTokens.action.navigation.alternate.visited.value._cerberusTheme
+        ._darkMode,
+    ).toBe('#72E9E7')
+    expect(
+      actionTokens.action.navigation.alternate.visited.value._cerberusTheme
+        ._lightMode,
+    ).toBe('#1F5B5A')
   })
 
   test('should have a action.text key', () => {

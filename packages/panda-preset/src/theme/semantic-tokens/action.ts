@@ -95,27 +95,56 @@ export const actionTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#3895FF',
-            _lightMode: '#0969DA',
-            _darkMode: '#3895FF',
+            base: '#9F66D3',
+            _lightMode: '#5F00B5',
+            _darkMode: '#9F66D3',
           },
         },
       },
       hover: {
         value: {
           _cerberusTheme: {
-            base: '#3895FF',
-            _lightMode: '#0969DA',
-            _darkMode: '#3895FF',
+            base: '#BB93E1',
+            _lightMode: '#4C0091',
+            _darkMode: '#BB93E1',
           },
         },
       },
       visited: {
         value: {
           _cerberusTheme: {
-            base: '#B17DD4',
-            _lightMode: '#8C40BF',
-            _darkMode: '#B17DD4',
+            base: '#DFCCF0',
+            _lightMode: '#5F00B5',
+            _darkMode: '#DFCCF0',
+          },
+        },
+      },
+      alternate: {
+        initial: {
+          value: {
+            _cerberusTheme: {
+              base: '#41E3E0',
+              _lightMode: '#3B8180',
+              _darkMode: '#41E3E0',
+            },
+          },
+        },
+        hover: {
+          value: {
+            _cerberusTheme: {
+              base: '#72E9E7',
+              _lightMode: '#1F5B5A',
+              _darkMode: '#72E9E7',
+            },
+          },
+        },
+        visited: {
+          value: {
+            _cerberusTheme: {
+              base: '#72E9E7',
+              _lightMode: '#1F5B5A',
+              _darkMode: '#72E9E7',
+            },
           },
         },
       },
