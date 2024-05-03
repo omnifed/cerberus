@@ -11,7 +11,7 @@ pnpm add @cerberus-design/icons
 ## Usage
 
 ```typescript
-import { Add24 } from '@cerberus-design/icons';
+import { Add } from '@cerberus-design/icons';
 import { IconButton, createIconButtonProps } from '@cerberus-design/react';
 
 // An optional helper to manage a11y for the IconButton
@@ -24,7 +24,7 @@ const iconBtnProps = createIconButtonProps({
 function App() {
   return (
     <IconButton {...iconBtnProps.btn}>
-      <Add16 {...iconBtnProps.icon} />
+      <Add {...iconBtnProps.icon} />
     </IconButton>
   );
 };
@@ -33,13 +33,13 @@ function App() {
 ## Usage without the React library
 
 ```typescript
-import { Add24 } from '@cerberus-design/icons';
+import { Add } from '@cerberus-design/icons';
 import { iconButton } from '@/styled-system/recipes';
 
 function App() {
   return (
     <button aria-label="Add to order" className={iconButton()}>
-      <Add16 aria-hidden />
+      <Add aria-hidden />
     </button>
   );
 };
