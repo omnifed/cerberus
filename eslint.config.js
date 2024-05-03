@@ -22,7 +22,7 @@ export default tseslint.config(
 
   {
     // Docs use local v8 lint checks
-    ignores: ['docs/**/*'],
+    ignores: ['docs/**/*', 'packages/*/build/**/*', 'packages/*/.tsup/**/*'],
   },
 
   {
@@ -31,6 +31,7 @@ export default tseslint.config(
         project: [
           './tsconfig.json',
           './packages/panda-preset/tsconfig.lint.json',
+          './packages/icons/tsconfig.lint.json',
           './configs/tsconfig.json',
           './tests/tsconfig.json',
           './docs/tsconfig.json',
@@ -54,6 +55,11 @@ export default tseslint.config(
   {
     name: '@cerberus-design/panda-preset',
     files: ['packages/panda-preset/**/*.ts'],
+  },
+
+  {
+    name: '@cerberus-design/icons',
+    files: ['packages/icons/**/*.ts'],
   },
 
   {
