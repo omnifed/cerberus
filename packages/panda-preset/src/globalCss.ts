@@ -7,7 +7,7 @@ export const globalCss = defineGlobalStyles({
     fontFamily: 'var(--cerberus-fonts-sans)',
     fontFeatureSettings: "'tnum' on, 'lnum' on",
     fontSize: '1em',
-    fontVariationSettings: "'wght' 500",
+    fontWeight: 400,
     lineHeight: '150%',
     textRendering: 'geometricprecision',
     textSizeAdjust: '100%',

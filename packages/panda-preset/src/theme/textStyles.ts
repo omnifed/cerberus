@@ -1,24 +1,26 @@
 import { defineTextStyles } from '@pandacss/dev'
+import type { CssProperties } from '@pandacss/types'
 
 // display titles
 const displayStyles = {
   fontFamily: 'display',
-  fontVariationSettings: '"wght" 800',
-  lineHeight: '110%',
+  fontWeight: 700,
+  lineHeight: '115%',
 }
 
 // h1-h6
 const headingWeight = {
-  fontVariationSettings: '"wght" 600',
+  fontWeight: 600,
+  lineHeight: '120%',
 }
 
 // mono
 const monoStyles = {
   fontFamily: 'mono',
-  fontVariationSettings: '"wght" 400',
+  fontWeight: 400,
 }
 
-function createTextStyle(description: string, options: Record<string, string>) {
+function createTextStyle(description: string, options: CssProperties) {
   return {
     description,
     value: {
@@ -31,19 +33,19 @@ function createTextStyle(description: string, options: Record<string, string>) {
 export const textStyles = defineTextStyles({
   'display-sm': {
     ...createTextStyle('The h1 text style - used for small display text', {
-      fontSize: '3.5rem',
+      fontSize: '2rem',
       ...displayStyles,
     }),
   },
   'display-md': {
     ...createTextStyle('The h1 text style - used for medium display text', {
-      fontSize: '4.5rem',
+      fontSize: '2.5rem',
       ...displayStyles,
     }),
   },
   'display-lg': {
     ...createTextStyle('The h1 text style - used for large display text', {
-      fontSize: '5.5rem',
+      fontSize: '3rem',
       ...displayStyles,
     }),
   },
@@ -53,28 +55,24 @@ export const textStyles = defineTextStyles({
   h1: {
     ...createTextStyle('The h1 text style - used in page headings', {
       fontSize: '2.5rem',
-      lineHeight: '110%',
       ...headingWeight,
     }),
   },
   h2: {
     ...createTextStyle('The h2 text style - used in page headings', {
-      fontSize: '2rem',
-      lineHeight: '125%',
+      fontSize: '2.25rem',
       ...headingWeight,
     }),
   },
   h3: {
     ...createTextStyle('The h3 text style - used in secondary headings', {
-      fontSize: '1.5rem',
-      lineHeight: '125%',
+      fontSize: '1.875rem',
       ...headingWeight,
     }),
   },
   h4: {
     ...createTextStyle('The h4 text style - used in secondary headings', {
-      fontSize: '1.125rem',
-      lineHeight: '125%',
+      fontSize: '1.5rem',
       ...headingWeight,
     }),
   },
@@ -82,7 +80,7 @@ export const textStyles = defineTextStyles({
     ...createTextStyle(
       'The h5 text style - used in headings that are the lower emphasis',
       {
-        fontSize: '1rem',
+        fontSize: '1.25rem',
         ...headingWeight,
       },
     ),
@@ -91,7 +89,7 @@ export const textStyles = defineTextStyles({
     ...createTextStyle(
       'The h6 text style - used in headings that are the lowest emphasis',
       {
-        fontSize: '0.875rem',
+        fontSize: '1rem',
         ...headingWeight,
       },
     ),
@@ -169,6 +167,31 @@ export const textStyles = defineTextStyles({
     ...createTextStyle('The mono text style - used in large code blocks', {
       fontSize: '1.125rem',
       ...monoStyles,
+    }),
+  },
+
+  // forms
+
+  'label-sm': {
+    ...createTextStyle('The label text style - used for small environments', {
+      fontSize: '0.75rem',
+      lineHeight: '120%',
+    }),
+  },
+
+  'label-md': {
+    ...createTextStyle('The label text style - used for form input labels', {
+      fontSize: '0.875rem',
+      fontWeight: '600',
+      lineHeight: '125%',
+    }),
+  },
+
+  button: {
+    ...createTextStyle('The button text style - used for buttons', {
+      fontSize: '1rem',
+      fontWeight: '600',
+      lineHeight: '100%',
     }),
   },
 
