@@ -45,7 +45,7 @@ If you use NextJS, we recommend the font and settings mentioned below. Unfortuna
 const poppins = Poppins({
   display: 'swap',
   subsets: ['latin'],
-  weight: ['400', '600', '700', '800'],
+  weight: ['400', '600', '700'],
 })
 ```
 
