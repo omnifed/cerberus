@@ -9,7 +9,7 @@
   "module": "src/index.ts",
   "publishConfig": {
     "access": "public",
-    "types": "build/legacy/index.d.ts",
+    "types": "build/legacy/src/index.d.ts",
     "main": "build/legacy/index.cjs",
     "module": "build/legacy/index.js",
     "exports": {
@@ -28,7 +28,7 @@
     "typesVersions": {
       "*": {
         ".": [
-          "build/legacy/index.d.ts"
+          "build/legacy/src/index.d.ts"
         ]
       }
     }
