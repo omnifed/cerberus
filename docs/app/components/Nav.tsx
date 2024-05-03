@@ -1,26 +1,19 @@
+'use client'
+
+import { useMemo } from 'react'
+import Link from 'next/link'
 import { css } from '@/styled-system/css'
 import { hstack } from '@/styled-system/patterns'
-import Link from 'next/link'
-
-const navData = [
-  {
-    id: 'learn',
-    label: 'Learn',
-    href: '/learn',
-  },
-  {
-    id: 'reference',
-    label: 'Reference',
-    href: '/reference',
-  },
-  {
-    id: 'blog',
-    label: 'Blog',
-    href: '/blog',
-  },
-]
+import navData from '@/app/data/navLinks.json'
+import { useTheme } from '../hooks/useTheme'
+import { LogoGithub } from '@cerberus-design/icons'
 
 export function Nav() {
+  const { mode, updateMode } = useTheme()
+  const ariaLabel = useMemo(() => {
+    return mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
+  }, [mode])
+
   return (
     <nav
       className={hstack({
@@ -108,10 +101,19 @@ export function Nav() {
         })}
       >
         <li>
-          <button>GH</button>
+          <a
+            aria-label="View Github repo"
+            href="https://github.com/omnifed/cerberus"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <LogoGithub aria-hidden />
+          </a>
         </li>
         <li>
-          <button>Theme</button>
+          <button aria-label={ariaLabel} onClick={updateMode}>
+            Theme
+          </button>
         </li>
       </ul>
     </nav>
