@@ -1,12 +1,64 @@
 {
   "name": "@cerberus-design/icons",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.0",
+  "description": "The official icon library for the Cerberus Design System.",
+  "browserslist": "> 0.25%, not dead",
+  "sideEffects": false,
+  "type": "module",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "publishConfig": {
+    "access": "public",
+    "types": "build/legacy/index.d.ts",
+    "main": "build/legacy/index.cjs",
+    "module": "build/legacy/index.js",
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./build/modern/index.d.ts",
+          "default": "./build/modern/index.js"
+        },
+        "require": {
+          "types": "./build/modern/index.d.cts",
+          "default": "./build/modern/index.cjs"
+        }
+      },
+      "./package.json": "./package.json"
+    },
+    "typesVersions": {
+      "*": {
+        ".": [
+          "build/legacy/index.d.ts"
+        ]
+      }
+    }
+  },
+  "files": [
+    "build/**/*",
+    "src/**/*",
+    "index.ts"
+  ],
   "scripts": {
+    "build": "tsup --experimental-dts",
+    "clean": "rm -rf ./build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "dependencies": {
+    "@carbon/icons-react": "^11.40.0"
+  },
+  "devDependencies": {
+    "@cerberus-design/configs": "workspace:*",
+    "@microsoft/api-extractor": "^7.43.1",
+    "tsup": "^8.0.2"
+  },
+  "keywords": [
+    "cerberus",
+    "design",
+    "system",
+    "icons",
+    "digital university",
+    "omni federal"
+  ],
   "author": "developers@omnifederal.com",
   "license": "ISC"
 }
