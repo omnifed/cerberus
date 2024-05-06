@@ -18,7 +18,7 @@
   "devDependencies": {
     "@cerberus-design/panda-preset": "workspace:*",
     "@csstools/postcss-cascade-layers": "^4.0.4",
-    "@pandacss/dev": "^0.37.2",
+    "@pandacss/dev": "^0.39.0",
     "@pandacss/preset-panda": "^0.38.0",
     "@types/node": "^20",
     "@types/react": "^18",
