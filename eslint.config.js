@@ -26,6 +26,7 @@ export default tseslint.config(
           './tsconfig.json',
           './packages/panda-preset/tsconfig.lint.json',
           './packages/icons/tsconfig.lint.json',
+          './packages/react/tsconfig.lint.json',
           './configs/tsconfig.json',
           './tests/tsconfig.json',
           './docs/tsconfig.json',
@@ -54,6 +55,11 @@ export default tseslint.config(
   {
     name: '@cerberus-design/icons',
     files: ['packages/icons/**/*.ts'],
+  },
+
+  {
+    name: '@cerberus-design/react',
+    files: ['packages/react/**/*.ts', 'packages/react/**/*.tsx'],
   },
 
   {

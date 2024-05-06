@@ -1,7 +1,7 @@
 {
-  "name": "@cerberus-design/panda-preset",
+  "name": "@cerberus-design/react",
   "version": "0.0.0",
-  "description": "The official Panda-CSS preset for the omni-federal design system",
+  "description": "The Cerberus Design React component library",
   "browserslist": "> 0.25%, not dead",
   "sideEffects": false,
   "type": "module",
@@ -13,15 +13,19 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
+    "@cerberus-design/panda-preset": "*",
     "@pandacss/dev": "*",
-    "autoprefixer": "*",
-    "postcss": "*"
+    "react": "*",
+    "react-dom": "*"
   },
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
     "@microsoft/api-extractor": "^7.43.1",
     "@pandacss/dev": "^0.39.0",
     "@pandacss/types": "^0.39.0",
+    "@types/react": "^18",
+    "react": "^18",
+    "react-dom": "^18",
     "tsup": "^8.0.2"
   },
   "publishConfig": {
@@ -60,10 +64,10 @@
     "omni-federal",
     "design-system",
     "css",
-    "recipe",
+    "react",
     "ui",
     "ui library",
-    "panda-css ui",
+    "panda-css react",
     "digital university",
     "du design system"
   ],
