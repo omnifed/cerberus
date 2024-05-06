@@ -5,15 +5,15 @@ import {
   useMemo,
   useState,
 } from 'react'
+import {
+  MODE_KEY,
+  THEME_KEY,
+  type ColorModes,
+  type CustomThemes,
+  type DefaultThemes,
+} from '../context/theme'
 
 // TODO: Add this to react package
-
-export type DefaultThemes = 'cerberus'
-export type CustomThemes<K extends DefaultThemes> = 'cerberus' | K
-export type ColorModes = 'light' | 'dark'
-
-export const THEME_KEY = 'cerberus-theme'
-export const MODE_KEY = 'cerberus-mode'
 
 export function useTheme<C extends DefaultThemes>(
   defaultTheme: CustomThemes<C> = 'cerberus',

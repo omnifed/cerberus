@@ -5,11 +5,11 @@ import Link from 'next/link'
 import { css } from '@/styled-system/css'
 import { hstack } from '@/styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
-import { useTheme } from '../hooks/useTheme'
 import { LogoGithub } from '@cerberus-design/icons'
+import { useThemeContext } from '../context/theme'
 
 export function Nav() {
-  const { mode, updateMode } = useTheme()
+  const { mode, updateMode } = useThemeContext()
   const ariaLabel = useMemo(() => {
     return mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
   }, [mode])
@@ -107,7 +107,7 @@ export function Nav() {
             rel="noreferrer"
             target="_blank"
           >
-            <LogoGithub aria-hidden />
+            <LogoGithub aria-hidden size="1.5rem" />
           </a>
         </li>
         <li>

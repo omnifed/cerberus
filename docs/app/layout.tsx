@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
 import { Nav } from './components/Nav'
 import './globals.css'
+import { ThemeProvider } from './context/theme'
 
 const poppins = Poppins({
   display: 'swap',
@@ -22,8 +23,10 @@ export default function RootLayout(props: PropsWithChildren<RootProps>) {
   return (
     <html lang="en" data-theme="cerberus" data-color-mode="light">
       <body className={poppins.className}>
-        <Nav />
-        {props.children}
+        <ThemeProvider>
+          <Nav />
+          {props.children}
+        </ThemeProvider>
       </body>
     </html>
   )
