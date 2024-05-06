@@ -69,7 +69,7 @@ importers:
         version: 2.0.0
       tsup:
         specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.11.30))(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.12.8))(postcss@8.4.38)(typescript@5.4.5)
       util:
         specifier: ^0.12.5
         version: 0.12.5
@@ -131,10 +131,10 @@ importers:
         version: link:../../configs
       '@microsoft/api-extractor':
         specifier: ^7.43.1
-        version: 7.43.1(@types/node@20.11.30)
+        version: 7.43.1(@types/node@20.12.8)
       tsup:
         specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.11.30))(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.12.8))(postcss@8.4.38)(typescript@5.4.5)
 
   packages/panda-preset:
     dependencies:
@@ -150,7 +150,7 @@ importers:
         version: link:../../configs
       '@microsoft/api-extractor':
         specifier: ^7.43.1
-        version: 7.43.1(@types/node@20.11.30)
+        version: 7.43.1(@types/node@20.12.8)
       '@pandacss/dev':
         specifier: ^0.37.2
         version: 0.37.2(typescript@5.4.5)
@@ -159,7 +159,7 @@ importers:
         version: 0.37.2
       tsup:
         specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.11.30))(postcss@8.4.35)(typescript@5.4.5)
+        version: 8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.12.8))(postcss@8.4.35)(typescript@5.4.5)
 
   tests:
     devDependencies:
@@ -927,6 +927,9 @@ packages:
 
   '@types/node@20.11.30':
     resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
+
+  '@types/node@20.12.8':
+    resolution: {integrity: sha512-NU0rJLJnshZWdE/097cdCBbyW1h4hEg0xpovcoAQYHl8dnEyp/NAOiE45pvc+Bd1Dt+2r94v2eGFpQJ4R7g+2w==}
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -3336,23 +3339,23 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@microsoft/api-extractor-model@7.28.14(@types/node@20.11.30)':
+  '@microsoft/api-extractor-model@7.28.14(@types/node@20.12.8)':
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 4.1.0(@types/node@20.11.30)
+      '@rushstack/node-core-library': 4.1.0(@types/node@20.12.8)
     transitivePeerDependencies:
       - '@types/node'
 
-  '@microsoft/api-extractor@7.43.1(@types/node@20.11.30)':
+  '@microsoft/api-extractor@7.43.1(@types/node@20.12.8)':
     dependencies:
-      '@microsoft/api-extractor-model': 7.28.14(@types/node@20.11.30)
+      '@microsoft/api-extractor-model': 7.28.14(@types/node@20.12.8)
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 4.1.0(@types/node@20.11.30)
+      '@rushstack/node-core-library': 4.1.0(@types/node@20.12.8)
       '@rushstack/rig-package': 0.5.2
-      '@rushstack/terminal': 0.10.1(@types/node@20.11.30)
-      '@rushstack/ts-command-line': 4.19.2(@types/node@20.11.30)
+      '@rushstack/terminal': 0.10.1(@types/node@20.12.8)
+      '@rushstack/ts-command-line': 4.19.2(@types/node@20.12.8)
       lodash: 4.17.21
       minimatch: 3.0.8
       resolve: 1.22.8
@@ -3683,7 +3686,7 @@ snapshots:
 
   '@rushstack/eslint-patch@1.10.2': {}
 
-  '@rushstack/node-core-library@4.1.0(@types/node@20.11.30)':
+  '@rushstack/node-core-library@4.1.0(@types/node@20.12.8)':
     dependencies:
       fs-extra: 7.0.1
       import-lazy: 4.0.0
@@ -3692,23 +3695,23 @@ snapshots:
       semver: 7.5.4
       z-schema: 5.0.5
     optionalDependencies:
-      '@types/node': 20.11.30
+      '@types/node': 20.12.8
 
   '@rushstack/rig-package@0.5.2':
     dependencies:
       resolve: 1.22.8
       strip-json-comments: 3.1.1
 
-  '@rushstack/terminal@0.10.1(@types/node@20.11.30)':
+  '@rushstack/terminal@0.10.1(@types/node@20.12.8)':
     dependencies:
-      '@rushstack/node-core-library': 4.1.0(@types/node@20.11.30)
+      '@rushstack/node-core-library': 4.1.0(@types/node@20.12.8)
       supports-color: 8.1.1
     optionalDependencies:
-      '@types/node': 20.11.30
+      '@types/node': 20.12.8
 
-  '@rushstack/ts-command-line@4.19.2(@types/node@20.11.30)':
+  '@rushstack/ts-command-line@4.19.2(@types/node@20.12.8)':
     dependencies:
-      '@rushstack/terminal': 0.10.1(@types/node@20.11.30)
+      '@rushstack/terminal': 0.10.1(@types/node@20.12.8)
       '@types/argparse': 1.0.38
       argparse: 1.0.10
       string-argv: 0.3.2
@@ -3752,6 +3755,10 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
+  '@types/node@20.12.8':
+    dependencies:
+      undici-types: 5.26.5
+
   '@types/prop-types@15.7.12': {}
 
   '@types/react-dom@18.3.0':
@@ -3767,7 +3774,7 @@ snapshots:
 
   '@types/ws@8.5.10':
     dependencies:
-      '@types/node': 20.11.30
+      '@types/node': 20.12.8
 
   '@typescript-eslint/eslint-plugin@7.7.1(@typescript-eslint/parser@7.7.1(eslint@9.1.1)(typescript@5.4.5))(eslint@9.1.1)(typescript@5.4.5)':
     dependencies:
@@ -6077,7 +6084,7 @@ snapshots:
 
   tslib@2.6.2: {}
 
-  tsup@8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.11.30))(postcss@8.4.35)(typescript@5.4.5):
+  tsup@8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.12.8))(postcss@8.4.35)(typescript@5.4.5):
     dependencies:
       bundle-require: 4.0.3(esbuild@0.19.12)
       cac: 6.7.14
@@ -6094,14 +6101,14 @@ snapshots:
       sucrase: 3.35.0
       tree-kill: 1.2.2
     optionalDependencies:
-      '@microsoft/api-extractor': 7.43.1(@types/node@20.11.30)
+      '@microsoft/api-extractor': 7.43.1(@types/node@20.12.8)
       postcss: 8.4.35
       typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
       - ts-node
 
-  tsup@8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.11.30))(postcss@8.4.38)(typescript@5.4.5):
+  tsup@8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.12.8))(postcss@8.4.38)(typescript@5.4.5):
     dependencies:
       bundle-require: 4.0.3(esbuild@0.19.12)
       cac: 6.7.14
@@ -6118,7 +6125,7 @@ snapshots:
       sucrase: 3.35.0
       tree-kill: 1.2.2
     optionalDependencies:
-      '@microsoft/api-extractor': 7.43.1(@types/node@20.11.30)
+      '@microsoft/api-extractor': 7.43.1(@types/node@20.12.8)
       postcss: 8.4.38
       typescript: 5.4.5
     transitivePeerDependencies:
