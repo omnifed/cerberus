@@ -37,8 +37,8 @@ importers:
         specifier: ^43.0.1
         version: 43.0.1(@typescript-eslint/eslint-plugin@7.7.1(@typescript-eslint/parser@7.7.1(eslint@9.1.1)(typescript@5.4.5))(eslint@9.1.1)(typescript@5.4.5))(eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.7.1(eslint@9.1.1)(typescript@5.4.5))(eslint@9.1.1))(eslint-plugin-n@16.6.2(eslint@9.1.1))(eslint-plugin-promise@6.1.1(eslint@9.1.1))(eslint@9.1.1)(typescript@5.4.5)
       eslint-plugin-sonarjs:
-        specifier: ^0.25.1
-        version: 0.25.1(eslint@9.1.1)
+        specifier: ^1.0.3
+        version: 1.0.3(eslint@9.1.1)
       husky:
         specifier: ^9.0.11
         version: 9.0.11
@@ -69,7 +69,7 @@ importers:
         version: 2.0.0
       tsup:
         specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.11.30))(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.0.2(@microsoft/api-extractor@7.43.1)(postcss@8.4.38)(typescript@5.4.5)
       util:
         specifier: ^0.12.5
         version: 0.12.5
@@ -134,7 +134,7 @@ importers:
         version: 7.43.1(@types/node@20.11.30)
       tsup:
         specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.11.30))(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.0.2(@microsoft/api-extractor@7.43.1)(postcss@8.4.38)(typescript@5.4.5)
 
   packages/panda-preset:
     dependencies:
@@ -1562,11 +1562,11 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
 
-  eslint-plugin-sonarjs@0.25.1:
-    resolution: {integrity: sha512-5IOKvj/GMBNqjxBdItfotfRHo7w48496GOu1hxdeXuD0mB1JBlDCViiLHETDTfA8pDAVSBimBEQoetRXYceQEw==}
+  eslint-plugin-sonarjs@1.0.3:
+    resolution: {integrity: sha512-6s41HLPYPyDrp+5+7Db5yFYbod6h9pC7yx+xfcNwHRcLe1EZwbbQT/tdOAkR7ekVUkNGEvN3GmYakIoQUX7dEg==}
     engines: {node: '>=16'}
     peerDependencies:
-      eslint: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
+      eslint: ^8.0.0 || ^9.0.0
 
   eslint-scope@7.2.2:
     resolution: {integrity: sha512-dOt21O7lTMhDM+X9mB4GX+DZrZtCUJPL/wlcTqxyrx5IvO0IYtILdtrQGQp+8n5S0gwSVmOf9NQrjMOgfQZlIg==}
@@ -1752,6 +1752,9 @@ packages:
 
   get-tsconfig@4.7.3:
     resolution: {integrity: sha512-ZvkrzoUA0PQZM6fy6+/Hce561s+faD1rsNwhnO5FelNjyy7EMGJ3Rz1AQ8GYDWjhRs/7dBLOEJvhK8MiEJOAFg==}
+
+  get-tsconfig@4.7.4:
+    resolution: {integrity: sha512-ofbkKj+0pjXjhejr007J/fLf+sW+8H7K5GCm+msC8q3IpvgjobpyPqSRFemNyIMxklC0zeJpi7VDFna19FacvQ==}
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -4645,7 +4648,7 @@ snapshots:
       builtins: 5.1.0
       eslint: 9.1.1
       eslint-plugin-es-x: 7.6.0(eslint@9.1.1)
-      get-tsconfig: 4.7.3
+      get-tsconfig: 4.7.4
       globals: 13.24.0
       ignore: 5.3.1
       is-builtin-module: 3.2.1
@@ -4684,7 +4687,7 @@ snapshots:
       semver: 6.3.1
       string.prototype.matchall: 4.0.11
 
-  eslint-plugin-sonarjs@0.25.1(eslint@9.1.1):
+  eslint-plugin-sonarjs@1.0.3(eslint@9.1.1):
     dependencies:
       eslint: 9.1.1
 
@@ -4960,6 +4963,10 @@ snapshots:
       get-intrinsic: 1.2.4
 
   get-tsconfig@4.7.3:
+    dependencies:
+      resolve-pkg-maps: 1.0.0
+
+  get-tsconfig@4.7.4:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
@@ -6101,7 +6108,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  tsup@8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.11.30))(postcss@8.4.38)(typescript@5.4.5):
+  tsup@8.0.2(@microsoft/api-extractor@7.43.1)(postcss@8.4.38)(typescript@5.4.5):
     dependencies:
       bundle-require: 4.0.3(esbuild@0.19.12)
       cac: 6.7.14
