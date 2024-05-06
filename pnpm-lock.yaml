@@ -69,7 +69,7 @@ importers:
         version: 2.0.0
       tsup:
         specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.12.10))(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.0.2(@microsoft/api-extractor@7.43.1)(postcss@8.4.38)(typescript@5.4.5)
       util:
         specifier: ^0.12.5
         version: 0.12.5
@@ -79,6 +79,9 @@ importers:
       '@cerberus-design/icons':
         specifier: workspace:*
         version: link:../packages/icons
+      '@cerberus-design/react':
+        specifier: workspace:*
+        version: link:../packages/react
       next:
         specifier: 14.2.3
         version: 14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -134,7 +137,7 @@ importers:
         version: 7.43.1(@types/node@20.12.10)
       tsup:
         specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.12.10))(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.0.2(@microsoft/api-extractor@7.43.1)(postcss@8.4.38)(typescript@5.4.5)
 
   packages/panda-preset:
     dependencies:
@@ -6160,7 +6163,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  tsup@8.0.2(@microsoft/api-extractor@7.43.1(@types/node@20.12.10))(postcss@8.4.38)(typescript@5.4.5):
+  tsup@8.0.2(@microsoft/api-extractor@7.43.1)(postcss@8.4.38)(typescript@5.4.5):
     dependencies:
       bundle-require: 4.0.3(esbuild@0.19.12)
       cac: 6.7.14

@@ -27,7 +27,7 @@ const initialThemeState = {
 const ThemeContext =
   createContext<ThemeContextValue<DefaultThemes>>(initialThemeState)
 
-export function ThemeProvider(props: PropsWithChildren<Record<string, never>>) {
+export function ThemeProvider(props: PropsWithChildren<unknown>) {
   const state = useTheme()
   return (
     <ThemeContext.Provider value={state}>
