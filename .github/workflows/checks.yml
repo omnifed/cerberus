@@ -38,3 +38,19 @@ jobs:
       - run: pnpm install
       - run: pnpm run build
         working-directory: ./packages/panda-preset
+
+  react-build:
+    runs-on: ubuntu-latest
+    name: React successfully builds
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+
+      - run: pnpm install
+      - run: pnpm run build
+        working-directory: ./packages/react

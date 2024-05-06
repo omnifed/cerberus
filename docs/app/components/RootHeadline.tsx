@@ -1,12 +1,11 @@
 'use client'
 
 import { css } from '@/styled-system/css'
-import { useTheme } from '../hooks/useTheme'
-import { useThemeContext } from '../context/theme'
+import { useThemeContext } from '@cerberus-design/react'
 
 const rootHeadlineText = {
-  light: 'The cutest protector of brand consistency of the realm.',
-  dark: 'The most vicious protector of brand consistency of the realm.',
+  light: 'The cutest protector of brand consistency in the realm.',
+  dark: 'The most vicious protector of brand consistency in the realm.',
 }
 
 export default function RootHeadline() {

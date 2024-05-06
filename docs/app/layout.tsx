@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
+import { ThemeProvider } from '@cerberus-design/react'
 import { Nav } from './components/Nav'
 import './globals.css'
-import { ThemeProvider } from './context/theme'
 
 const poppins = Poppins({
   display: 'swap',

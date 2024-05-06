@@ -1,3 +1,5 @@
+'use client'
+
 import {
   useCallback,
   useEffect,
@@ -12,8 +14,6 @@ import {
   type CustomThemes,
   type DefaultThemes,
 } from '../context/theme'
-
-// TODO: Add this to react package
 
 export function useTheme<C extends DefaultThemes>(
   defaultTheme: CustomThemes<C> = 'cerberus',

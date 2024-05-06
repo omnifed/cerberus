@@ -3,8 +3,6 @@
 import { createContext, useContext, type PropsWithChildren } from 'react'
 import { useTheme } from '../hooks/useTheme'
 
-// TODO: Add to React package
-
 export type DefaultThemes = 'cerberus'
 export type CustomThemes<K extends DefaultThemes> = 'cerberus' | K
 export type ColorModes = 'light' | 'dark'
@@ -22,16 +20,15 @@ export const MODE_KEY = 'cerberus-mode'
 const initialThemeState = {
   theme: 'cerberus' as const,
   mode: 'light' as const,
-  updateTheme: (_: 'cerberus') => {},
+  updateTheme: () => {},
   updateMode: () => {},
 }
 
 const ThemeContext =
   createContext<ThemeContextValue<DefaultThemes>>(initialThemeState)
 
-export function ThemeProvider(props: PropsWithChildren<{}>) {
+export function ThemeProvider(props: PropsWithChildren<unknown>) {
   const state = useTheme()
-
   return (
     <ThemeContext.Provider value={state}>
       {props.children}

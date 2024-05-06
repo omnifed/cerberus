@@ -6,7 +6,7 @@ import { css } from '@/styled-system/css'
 import { hstack } from '@/styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
 import { LogoGithub } from '@cerberus-design/icons'
-import { useThemeContext } from '../context/theme'
+import { useThemeContext } from '@cerberus-design/react'
 
 export function Nav() {
   const { mode, updateMode } = useThemeContext()
