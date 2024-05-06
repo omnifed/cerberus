@@ -1,0 +1,17 @@
+[
+  {
+    "id": "learn",
+    "label": "Learn",
+    "href": "/learn"
+  },
+  {
+    "id": "reference",
+    "label": "Reference",
+    "href": "/reference"
+  },
+  {
+    "id": "blog",
+    "label": "Blog",
+    "href": "/blog"
+  }
+]

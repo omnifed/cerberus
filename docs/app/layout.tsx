@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
+import { Nav } from './components/Nav'
 import './globals.css'
+import { ThemeProvider } from './context/theme'
 
 const poppins = Poppins({
   display: 'swap',
@@ -19,8 +21,13 @@ interface RootProps {}
 
 export default function RootLayout(props: PropsWithChildren<RootProps>) {
   return (
-    <html lang="en" data-theme="cerberus" data-color-mode="dark">
-      <body className={poppins.className}>{props.children}</body>
+    <html lang="en" data-theme="cerberus" data-color-mode="light">
+      <body className={poppins.className}>
+        <ThemeProvider>
+          <Nav />
+          {props.children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

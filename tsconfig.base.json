@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
+    "lib": ["dom", "dom.iterable", "ESNext"],
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "bundler",

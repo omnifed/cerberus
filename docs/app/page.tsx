@@ -1,28 +1,17 @@
-import { AiGovernanceLifecycle } from '@cerberus-design/icons'
-import { css } from '@/styled-system/css'
-import { container, vstack } from '@/styled-system/patterns'
+import { vstack } from '@/styled-system/patterns'
+import RootHeadline from './components/RootHeadline'
 
 export default function Home() {
   return (
-    <main
-      className={container({
-        h: 'full',
+    <div
+      className={vstack({
+        pxi: '4',
+        py: '20',
       })}
     >
-      <div className={vstack()}>
-        <section>
-          <h1
-            className={css({
-              textStyle: 'h1',
-            })}
-          >
-            Cerberus Design System
-          </h1>
-          <p>This is a test of the typography</p>
-        </section>
-
-        <AiGovernanceLifecycle />
-      </div>
-    </main>
+      <main>
+        <RootHeadline />
+      </main>
+    </div>
   )
 }

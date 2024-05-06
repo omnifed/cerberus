@@ -1,24 +1,18 @@
 'use strict'
 
-// import { FlatCompat } from '@eslint/eslintrc'
 import eslint from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
+import sonarjs from 'eslint-plugin-sonarjs'
 import tseslint from 'typescript-eslint'
 
 const OFF = 'off'
 // const WARN = 'warn'
 // const ERROR = 'error'
 
-// TODO: Waiting on v9 support: https://github.com/eslint-recommended/eslint-config-typescript/issues/355
-
-// const compat = new FlatCompat({
-//   baseDir: import.meta.dirname,
-// })
-
 export default tseslint.config(
   eslint.configs.recommended,
+  sonarjs.configs.recommended,
   ...tseslint.configs.recommended,
-  // ...compat.extends('plugin:sonarjs/recommended'),
 
   {
     // Docs use local v8 lint checks
