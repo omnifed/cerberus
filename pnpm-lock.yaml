@@ -99,8 +99,8 @@ importers:
         specifier: ^0.37.2
         version: 0.37.2(typescript@5.4.5)
       '@pandacss/preset-panda':
-        specifier: ^0.38.0
-        version: 0.38.0
+        specifier: ^0.39.0
+        version: 0.39.0
       '@types/node':
         specifier: ^20
         version: 20.11.30
@@ -771,8 +771,8 @@ packages:
   '@pandacss/preset-panda@0.37.2':
     resolution: {integrity: sha512-xDMjmdM14JExMxguao394ELplo8YIwKaprpoek2y/aqoH6Ip2ItapyaanAbjXQnLM1gZKI1L0qZmpfAxge7lRA==}
 
-  '@pandacss/preset-panda@0.38.0':
-    resolution: {integrity: sha512-g8ngcVQQJOjqIiVvaD5W88zn03zbocphS9vk0FXRaae1SBPwa24ppulhiMEeYKXsqhFOUrrI0ipLYVqzlw1m7Q==}
+  '@pandacss/preset-panda@0.39.0':
+    resolution: {integrity: sha512-s/k3CCVP2baE2zZsqDPBwe2at0JPhFT1r2fw9Xar2hNr+gw/SrKMq2uDs4r7nAQ8680ME0/+HDb5rh/wG8MYIw==}
 
   '@pandacss/shared@0.37.2':
     resolution: {integrity: sha512-TB9IcJ9AXE9MPK9Eflz7lrhoVm9qtkvO6iM8yIfK2Nes1r4USQLbi6IztWVXzQs/Xfz72T2tKmkgJAgJ4j1hwg==}
@@ -783,8 +783,8 @@ packages:
   '@pandacss/types@0.37.2':
     resolution: {integrity: sha512-1HYXrGSngm6wrRyiiEtF2nHl7sfVD9HDc0BVN+qD1Gpjo7uniz99jz9oYOPAVNAbPoll28ltx828Falh4XgvYg==}
 
-  '@pandacss/types@0.38.0':
-    resolution: {integrity: sha512-zDfQGDd1NLbe8WdvXRPHmJNa4aCJk59rlERy8oEtyz437jEaog/4dkBBzOXiBi7BxTao11vuwqTeolN9oSTzVw==}
+  '@pandacss/types@0.39.0':
+    resolution: {integrity: sha512-ArZ6sHZvEAsH28MAW7NwcJMwK3XzIG/VaSeuhayGsVnJ7AoZUZ4FMTvGrILWW6qR+/NSYXuIGnMDU1Ul2gfxag==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -3616,9 +3616,9 @@ snapshots:
     dependencies:
       '@pandacss/types': 0.37.2
 
-  '@pandacss/preset-panda@0.38.0':
+  '@pandacss/preset-panda@0.39.0':
     dependencies:
-      '@pandacss/types': 0.38.0
+      '@pandacss/types': 0.39.0
 
   '@pandacss/shared@0.37.2': {}
 
@@ -3631,7 +3631,7 @@ snapshots:
 
   '@pandacss/types@0.37.2': {}
 
-  '@pandacss/types@0.38.0': {}
+  '@pandacss/types@0.39.0': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
