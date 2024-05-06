@@ -37,8 +37,8 @@ importers:
         specifier: ^43.0.1
         version: 43.0.1(@typescript-eslint/eslint-plugin@7.7.1(@typescript-eslint/parser@7.7.1(eslint@9.1.1)(typescript@5.4.5))(eslint@9.1.1)(typescript@5.4.5))(eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.7.1(eslint@9.1.1)(typescript@5.4.5))(eslint@9.1.1))(eslint-plugin-n@16.6.2(eslint@9.1.1))(eslint-plugin-promise@6.1.1(eslint@9.1.1))(eslint@9.1.1)(typescript@5.4.5)
       eslint-plugin-sonarjs:
-        specifier: ^0.25.1
-        version: 0.25.1(eslint@9.1.1)
+        specifier: ^1.0.0
+        version: 1.0.0(eslint@9.1.1)
       husky:
         specifier: ^9.0.11
         version: 9.0.11
@@ -1562,11 +1562,11 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
 
-  eslint-plugin-sonarjs@0.25.1:
-    resolution: {integrity: sha512-5IOKvj/GMBNqjxBdItfotfRHo7w48496GOu1hxdeXuD0mB1JBlDCViiLHETDTfA8pDAVSBimBEQoetRXYceQEw==}
+  eslint-plugin-sonarjs@1.0.0:
+    resolution: {integrity: sha512-G3QW6ANRyCzbpzlj461aW8c5vnU34BN8MWwFdBLtWx/GoZPaqYRsBOhd/VBNxPN63U+LcIllnzekYT5yXu8ACw==}
     engines: {node: '>=16'}
     peerDependencies:
-      eslint: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
+      eslint: ^8.0.0 || ^9.0.0
 
   eslint-scope@7.2.2:
     resolution: {integrity: sha512-dOt21O7lTMhDM+X9mB4GX+DZrZtCUJPL/wlcTqxyrx5IvO0IYtILdtrQGQp+8n5S0gwSVmOf9NQrjMOgfQZlIg==}
@@ -4684,7 +4684,7 @@ snapshots:
       semver: 6.3.1
       string.prototype.matchall: 4.0.11
 
-  eslint-plugin-sonarjs@0.25.1(eslint@9.1.1):
+  eslint-plugin-sonarjs@1.0.0(eslint@9.1.1):
     dependencies:
       eslint: 9.1.1
 
