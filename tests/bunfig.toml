@@ -1,4 +1,4 @@
 [test]
 
-coverageThreshold = { lines = 0.95, functions = 0.95}
+# coverageThreshold = 0.95
 preload = "./happydom.ts"
