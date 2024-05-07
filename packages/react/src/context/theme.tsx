@@ -4,7 +4,7 @@ import { createContext, useContext, type PropsWithChildren } from 'react'
 import { useTheme } from '../hooks/useTheme'
 
 export type DefaultThemes = 'cerberus'
-export type CustomThemes<K extends DefaultThemes> = 'cerberus' | K
+export type CustomThemes<K extends string = DefaultThemes> = 'cerberus' | K
 export type ColorModes = 'light' | 'dark'
 
 export interface ThemeContextValue<T extends DefaultThemes> {
