@@ -7,7 +7,7 @@ import {
   mock,
   spyOn,
 } from 'bun:test'
-import { render, screen, cleanup } from '@testing-library/react'
+import { render, screen, cleanup, renderHook } from '@testing-library/react'
 import {
   useThemeContext,
   ThemeProvider,
@@ -97,18 +97,9 @@ describe('useThemeContext', () => {
       return { useContext: () => null }
     })
 
-    function ShouldThrow() {
-      try {
-        useThemeContext()
-        return null
-      } catch (error) {
-        throw (error as Error).message
-      }
-    }
-
-    expect(() => {
-      render(<ShouldThrow />)
-    }).toThrow('useThemeContext must be used within a ThemeProvider')
+    expect(() => renderHook(() => useThemeContext())).toThrow(
+      'useThemeContext must be used within a ThemeProvider',
+    )
     mock.restore()
   })
 })
