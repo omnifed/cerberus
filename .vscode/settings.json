@@ -5,6 +5,7 @@
     "omni",
     "oxlint",
     "Positionals",
+    "rehype",
     "tseslint"
   ],
   "prettier.configPath": ".prettierrc",

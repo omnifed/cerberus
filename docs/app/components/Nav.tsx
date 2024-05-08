@@ -7,6 +7,8 @@ import { hstack } from '@/styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
 import { LogoGithub } from '@cerberus-design/icons'
 import { useThemeContext } from '@cerberus-design/react'
+import { AnimatingSunIcon } from './icons/AnimatingSunIcon'
+import { AnimatingMoonIcon } from './icons/AnimatingMoonIcon'
 
 export function Nav() {
   const { mode, updateMode } = useThemeContext()
@@ -110,9 +112,13 @@ export function Nav() {
             <LogoGithub aria-hidden size="1.5rem" />
           </a>
         </li>
-        <li>
+        <li
+          className={css({
+            h: '1.5rem',
+          })}
+        >
           <button aria-label={ariaLabel} onClick={updateMode}>
-            Theme
+            {mode === 'light' ? <AnimatingSunIcon /> : <AnimatingMoonIcon />}
           </button>
         </li>
       </ul>

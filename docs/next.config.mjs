@@ -1,4 +1,5 @@
 import createMDX from '@next/mdx'
+import emoji from 'remark-emoji'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -6,7 +7,10 @@ const nextConfig = {
 }
 
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
+  options: {
+    remarkPlugins: [emoji],
+    rehypePlugins: [],
+  },
 })
 
 // Merge MDX config with Next.js config
