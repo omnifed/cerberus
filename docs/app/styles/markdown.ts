@@ -1,7 +1,7 @@
 import { css } from '@/styled-system/css'
 
 const headlineStyles = {
-  color: 'neutral.text.100',
+  color: 'neutral.text.initial',
   pb: '2',
 }
 
@@ -33,8 +33,10 @@ export const markdown = css({
     textStyle: 'h6',
   },
   '& p': {
+    color: 'neutral.text.100',
+    lineHeight: '165%',
     textStyle: 'body-md',
-    pb: '2',
+    pb: '6',
   },
   '& small': {
     textStyle: 'body-xs',
