@@ -3,6 +3,8 @@ import { Poppins } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
 import { ThemeProvider } from '@cerberus-design/react'
 import { Nav } from './components/Nav'
+
+import './night-owl.css'
 import './globals.css'
 
 const poppins = Poppins({

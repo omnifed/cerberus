@@ -1,5 +1,6 @@
 import createMDX from '@next/mdx'
 import emoji from 'remark-emoji'
+import rehypeHighlight from 'rehype-highlight'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -9,7 +10,7 @@ const nextConfig = {
 const withMDX = createMDX({
   options: {
     remarkPlugins: [emoji],
-    rehypePlugins: [],
+    rehypePlugins: [rehypeHighlight],
   },
 })
 
