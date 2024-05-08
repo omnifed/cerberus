@@ -1,4 +1,12 @@
-import { describe, test, expect, afterEach, beforeEach } from 'bun:test'
+import {
+  describe,
+  test,
+  expect,
+  afterEach,
+  beforeEach,
+  mock,
+  spyOn,
+} from 'bun:test'
 import { render, screen, cleanup } from '@testing-library/react'
 import {
   useThemeContext,
@@ -80,5 +88,27 @@ describe('useThemeContext', () => {
     localStorage.setItem(MODE_KEY, 'dark')
     render(<ThemeTest />, { wrapper: ThemeProvider })
     expect(screen.getByText('dark')).toBeTruthy()
+  })
+
+  test('should throw an error if used outside of ThemeProvider', () => {
+    // don't clog up the console with errors
+    spyOn(console, 'error').mockImplementation(() => null)
+    mock.module('react', () => {
+      return { useContext: () => null }
+    })
+
+    function ShouldThrow() {
+      try {
+        useThemeContext()
+        return null
+      } catch (error) {
+        throw (error as Error).message
+      }
+    }
+
+    expect(() => {
+      render(<ShouldThrow />)
+    }).toThrow('useThemeContext must be used within a ThemeProvider')
+    mock.restore()
   })
 })

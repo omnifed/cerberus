@@ -3,6 +3,9 @@
 import eslint from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import sonarjs from 'eslint-plugin-sonarjs'
+import react from 'eslint-plugin-react'
+import reactRecommended from 'eslint-plugin-react/configs/recommended.js'
+import reactHooks from 'eslint-plugin-react-hooks/cjs/eslint-plugin-react-hooks.development.js'
 import tseslint from 'typescript-eslint'
 
 const OFF = 'off'
@@ -60,6 +63,12 @@ export default tseslint.config(
   {
     name: '@cerberus-design/react',
     files: ['packages/react/**/*.ts', 'packages/react/**/*.tsx'],
+    plugins: {
+      react,
+    },
+    ...reactRecommended,
+    ...reactHooks.recommended,
+    rules: {},
   },
 
   {
