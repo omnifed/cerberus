@@ -9,8 +9,10 @@ import { LogoGithub } from '@cerberus-design/icons'
 import { useThemeContext } from '@cerberus-design/react'
 import { AnimatingSunIcon } from './icons/AnimatingSunIcon'
 import { AnimatingMoonIcon } from './icons/AnimatingMoonIcon'
+import { usePathname } from 'next/navigation'
 
 export function Nav() {
+  const pathname = usePathname()
   const { mode, updateMode } = useThemeContext()
   const ariaLabel = useMemo(() => {
     return mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
@@ -33,7 +35,11 @@ export function Nav() {
       <section
         className={gridItem({
           gridColumnStart: 1,
-          gridColumnEnd: 2,
+          gridColumnEnd: 3,
+          md: {
+            gridColumnStart: 1,
+            gridColumnEnd: 2,
+          },
         })}
       >
         <Link
@@ -41,6 +47,9 @@ export function Nav() {
           className={css({
             pxi: '2',
             textStyle: 'body-xl',
+            _active: {
+              color: 'blue',
+            },
           })}
         >
           <strong>Cerberus </strong>
@@ -85,16 +94,45 @@ export function Nav() {
           {navData.map((item) => (
             <li
               className={css({
+                overflow: 'hidden',
                 textAlign: 'center',
                 w: 'calc(100% / 3)',
               })}
               key={item.id}
             >
               <Link
+                aria-current={pathname === item.href ? 'page' : undefined}
                 className={css({
                   display: 'inline-block',
                   p: '4',
+                  position: 'relative',
                   w: 'full',
+                  _after: {
+                    bg: 'transparent',
+                    bottom: '0',
+                    content: '""',
+                    h: '4px',
+                    left: '0',
+                    position: 'absolute',
+                    transition: 'transform 250ms ease-in-out',
+                    transform: 'translate3d(0, 4px, 0)',
+                    w: 'full',
+                  },
+                  _currentPage: {
+                    color: 'action.navigation.visited',
+                    _after: {
+                      bgGradient: 'to-l',
+                      gradientFrom: 'action.navigation.initial',
+                      gradientTo: 'action.navigation.visited',
+                      bottom: '0',
+                      content: '""',
+                      h: '4px',
+                      left: '0',
+                      position: 'absolute',
+                      transform: 'translate3d(0, 0, 0)',
+                      w: 'full',
+                    },
+                  },
                 })}
                 href={item.href}
               >
