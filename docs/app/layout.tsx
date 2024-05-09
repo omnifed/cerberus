@@ -2,9 +2,10 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
 import { ThemeProvider } from '@cerberus-design/react'
+import { css, cx } from '@/styled-system/css'
 import { Nav } from './components/Nav'
 
-import './night-owl.css'
+import './two-slash.css'
 import './globals.css'
 
 const poppins = Poppins({
@@ -24,7 +25,14 @@ interface RootProps {}
 export default function RootLayout(props: PropsWithChildren<RootProps>) {
   return (
     <html lang="en" data-theme="cerberus" data-color-mode="light">
-      <body className={poppins.className}>
+      <body
+        className={cx(
+          poppins.className,
+          css({
+            minW: '18.75rem',
+          }),
+        )}
+      >
         <ThemeProvider>
           <Nav />
           {props.children}

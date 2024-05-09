@@ -1,6 +1,15 @@
 import createMDX from '@next/mdx'
 import emoji from 'remark-emoji'
-import rehypeHighlight from 'rehype-highlight'
+import remarkParse from 'remark-parse'
+import rehypeStringify from 'rehype-stringify'
+import rehypeShiki from '@shikijs/rehype'
+import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
+import {
+  transformerNotationDiff,
+  transformerMetaWordHighlight,
+  transformerNotationWordHighlight,
+  transformerNotationHighlight,
+} from '@shikijs/transformers'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -9,8 +18,26 @@ const nextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [emoji],
-    rehypePlugins: [rehypeHighlight],
+    remarkPlugins: [emoji, remarkParse],
+    rehypePlugins: [
+      [
+        rehypeShiki,
+        {
+          theme: 'night-owl',
+          transformers: [
+            transformerTwoslash({
+              explicitTrigger: true,
+              renderer: rendererRich(),
+            }),
+            transformerMetaWordHighlight(),
+            transformerNotationWordHighlight(),
+            transformerNotationHighlight(),
+            transformerNotationDiff(),
+          ],
+        },
+      ],
+      rehypeStringify,
+    ],
   },
 })
 
