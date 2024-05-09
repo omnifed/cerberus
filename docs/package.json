@@ -14,7 +14,8 @@
     "@cerberus-design/react": "workspace:*",
     "next": "14.2.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "remove": "^0.1.5"
   },
   "devDependencies": {
     "@cerberus-design/panda-preset": "workspace:*",
@@ -34,6 +35,7 @@
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.3",
     "rehype-stringify": "^10.0.0",
+    "remark-admonitions": "^1.2.1",
     "remark-emoji": "^4.0.1",
     "remark-parse": "^11.0.0"
   }

@@ -1,6 +1,7 @@
 import createMDX from '@next/mdx'
 import emoji from 'remark-emoji'
 import remarkParse from 'remark-parse'
+import admonitions from 'remark-admonitions'
 import rehypeStringify from 'rehype-stringify'
 import rehypeShiki from '@shikijs/rehype'
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
