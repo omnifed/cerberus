@@ -1,7 +1,14 @@
-export default function LearnPage() {
+import { css } from '@/styled-system/css'
+import Overview from './overview.mdx'
+
+export default function IconsPage() {
   return (
-    <main>
-      <h1>Learn</h1>
+    <main
+      className={css({
+        py: '6',
+      })}
+    >
+      <Overview />
     </main>
   )
 }
