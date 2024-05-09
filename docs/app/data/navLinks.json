@@ -1,17 +1,17 @@
 [
   {
-    "id": "learn",
-    "label": "Learn",
-    "href": "/learn"
+    "id": "preset",
+    "label": "Preset",
+    "href": "/preset"
   },
   {
-    "id": "reference",
-    "label": "Reference",
-    "href": "/reference"
+    "id": "react",
+    "label": "React",
+    "href": "/react"
   },
   {
-    "id": "blog",
-    "label": "Blog",
-    "href": "/blog"
+    "id": "icons",
+    "label": "Icons",
+    "href": "/icons"
   }
 ]

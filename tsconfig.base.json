@@ -1,4 +1,5 @@
 {
+  "exclude": ["node_modules", "./docs/app/**/*.mdx"],
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "ESNext"],
     "module": "esnext",

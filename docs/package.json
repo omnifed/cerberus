@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prepare": "panda codegen",
-    "dev": "next dev",
+    "dev": "rm -rf .next && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -19,6 +19,9 @@
   "devDependencies": {
     "@cerberus-design/panda-preset": "workspace:*",
     "@csstools/postcss-cascade-layers": "^4.0.4",
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^14.2.3",
     "@pandacss/dev": "^0.39.0",
     "@pandacss/preset-panda": "^0.39.0",
     "@types/node": "^20.12.10",
@@ -26,6 +29,8 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.19",
     "eslint": "8.57.0",
-    "eslint-config-next": "14.2.3"
+    "eslint-config-next": "14.2.3",
+    "rehype-highlight": "^7.0.0",
+    "remark-emoji": "^4.0.1"
   }
 }
