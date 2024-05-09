@@ -3,9 +3,9 @@ import { cx } from '@/styled-system/css'
 import { container } from '@/styled-system/patterns'
 import { markdown } from '../styles/markdown'
 
-interface ReactProps {}
+interface PresetProps {}
 
-export default function ReactLayout(props: PropsWithChildren<ReactProps>) {
+export default function PresetLayout(props: PropsWithChildren<PresetProps>) {
   return (
     <div
       className={cx(
@@ -15,7 +15,6 @@ export default function ReactLayout(props: PropsWithChildren<ReactProps>) {
         markdown,
       )}
     >
-      <header>Nav sidebar</header>
       {props.children}
     </div>
   )

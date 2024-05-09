@@ -6,7 +6,10 @@
     "oxlint",
     "Positionals",
     "rehype",
-    "tseslint"
+    "Shiki",
+    "shikijs",
+    "tseslint",
+    "Twoslash"
   ],
   "prettier.configPath": ".prettierrc",
   "prettier.prettierPath": "./node_modules/prettier",

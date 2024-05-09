@@ -47,4 +47,14 @@ export const markdown = css({
       textDecoration: 'underline',
     },
   },
+  '& pre.shiki': {
+    border: '2px solid',
+    borderColor: 'info.border.initial',
+    py: '5',
+    rounded: 'lg',
+  },
+  '& pre.shiki code': {
+    display: 'block',
+    pxi: '8',
+  },
 })
