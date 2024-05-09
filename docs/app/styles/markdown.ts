@@ -48,6 +48,8 @@ export const markdown = css({
     },
   },
   '& pre.shiki': {
+    border: '2px solid',
+    borderColor: 'info.border.initial',
     py: '5',
     rounded: 'lg',
   },
