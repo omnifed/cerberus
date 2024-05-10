@@ -1,0 +1,39 @@
+# Theme
+
+**The color palette is a key element in the design system. It is used to create a visual hierarchy, guide the user's attention, and reinforce the brand identity.**
+
+## Understanding the Color Palette
+
+Cerberus uses a semantic token design to define a theme that is scalable and easy to maintain. The theme is divided into six palette categories:
+
+1. **Neutral**: Used for backgrounds, text, and borders.
+2. **Action**: Used for primary actions and interactive elements.
+3. **Info**: Used for informative elements and secondary actions.
+4. **Success**: Used for success messages and positive feedback.
+5. **Warning**: Used for warning messages and alerts.
+6. **Danger**: Used for error messages and negative feedback.
+
+## Understanding the Tokens
+
+Each category has a set of tokens that define the color palette. The tokens are used to create a scalable syntax that can be used across the design system. The tokens use the following naming convention:
+
+```bash
+# Usage is the only required token
+
+[palette?]-[usage]-[prominence?]-[interaction?]
+```
+
+1. **Palette**: The palette category (neutral, action, info, success, warning, danger).
+2. **Usage**: The usage type (background, text, border, navigation).
+3. **Prominence**: The prominence level (initial, 100-300, inverse).
+4. **Interaction**: The interaction type (hover, active, focus).
+
+## Using the Tokens
+
+Using the design mentioned above, you simply use the token that coincides with the element you are styling. For example, if you want to style a button, you would use the action tokens.
+
+Example of a button styled with the action tokens:
+
+- **Background**: `action.bg.initial`
+- **Text**: `action.text.initial`
+- **Hover**: `action.bg.hover`

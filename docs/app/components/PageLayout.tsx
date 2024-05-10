@@ -79,7 +79,7 @@ export function PageSections(props: PropsWithChildren<PageLayoutProps>) {
         },
       })}
     >
-      Page sections
+      {props.children}
     </div>
   )
 }

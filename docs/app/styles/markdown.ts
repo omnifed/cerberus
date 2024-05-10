@@ -47,6 +47,13 @@ export const markdown = css({
       textDecoration: 'underline',
     },
   },
+  '& ol': {
+    listStyleType: 'decimal',
+    listStylePosition: 'inside',
+    '& li': {
+      pb: '2',
+    },
+  },
   '& code': {
     display: 'inline-block',
     bgColor: '#011627',

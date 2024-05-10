@@ -17,12 +17,18 @@
   },
   {
     "id": "2:a",
+    "label": "Theme",
+    "route": "/preset/theme",
+    "type": "route"
+  },
+  {
+    "id": "2:b",
     "label": "Colors",
     "route": "/preset/colors",
     "type": "route"
   },
   {
-    "id": "2:b",
+    "id": "2:c",
     "label": "Typography",
     "route": "/preset/typography",
     "type": "route"

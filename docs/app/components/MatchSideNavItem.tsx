@@ -3,6 +3,7 @@
 import { css } from '@/styled-system/css'
 import { usePathname } from 'next/navigation'
 import type { HeadingItem, LinkItem } from './SideNav'
+import Link from 'next/link'
 
 export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
   const pathname = usePathname()
@@ -22,11 +23,15 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
       )
     case 'route':
       return (
-        <a
+        <Link
           aria-current={pathname === props.route ? 'page' : undefined}
           className={css({
             display: 'block',
+            transition: 'color 250ms ease-in-out',
             w: 'full',
+            _hover: {
+              color: 'action.navigation.hover',
+            },
             _currentPage: {
               color: 'action.navigation.visited',
               borderRight: '2px solid',
@@ -34,9 +39,10 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
             },
           })}
           href={props.route}
+          prefetch
         >
           {props.label}
-        </a>
+        </Link>
       )
     default:
       return null

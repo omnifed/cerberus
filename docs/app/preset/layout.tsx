@@ -19,7 +19,7 @@ export default function PresetLayout(props: PropsWithChildren<PresetProps>) {
 
       <PageMainContent>{props.children}</PageMainContent>
 
-      <PageSections>Page sections</PageSections>
+      <PageSections>On this page</PageSections>
     </PageLayout>
   )
 }
