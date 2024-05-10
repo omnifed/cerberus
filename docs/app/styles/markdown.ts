@@ -47,14 +47,32 @@ export const markdown = css({
       textDecoration: 'underline',
     },
   },
+  '& code': {
+    display: 'inline-block',
+    bgColor: '#011627',
+    color: '#D6DEEB',
+    rounded: 'md',
+    textStyle: 'mono-sm',
+    pxi: '2',
+  },
   '& pre.shiki': {
     border: '2px solid',
     borderColor: 'info.border.initial',
+    mb: '6',
     py: '5',
     rounded: 'lg',
+    '&:not(.twoslash)': {
+      overflowX: 'auto',
+      md: {
+        overflowX: 'initial',
+      },
+    },
   },
   '& pre.shiki code': {
     display: 'block',
-    pxi: '8',
+    pxi: '4',
+    md: {
+      pxi: '8',
+    },
   },
 })

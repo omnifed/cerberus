@@ -1,8 +1,4 @@
-import {
-  Admonition,
-  AdmonitionHeading,
-  AdmonitionText,
-} from '@/app/components/Admonition'
+import { Admonition } from '@/app/components/Admonition'
 
 # Overview
 
@@ -13,5 +9,75 @@ The Cerberus Panda CSS Preset adds a set of core features to the Cerberus Design
 Install the Cerberus Panda Preset library, with the package manager of your choice:
 
 ```bash
-pnpm install '@cerberus-design/panda-preset'
+pnpm install @cerberus-design/panda-preset
+```
+
+## Setup
+
+<Admonition
+  heading="Note"
+  description="This guide assumes you are familiar with Panda CSS. If you are not, please take a moment to familiarize yourself with the framework."
+/>
+
+### Update the Panda Configuration
+
+Once you have installed and setup Panda CSS and added the Cerberus Panda Preset, you need to update your Panda configuration to include the Cerberus Panda Preset.
+
+Update your `panda.config.ts` file to include the Cerberus Panda Preset:
+
+```ts twoslash
+import { defineConfig } from '@pandacss/dev'
+import pandaPreset from '@pandacss/preset-panda'
+import { cerberusPreset, cerberusConfig } from '@cerberus-design/panda-preset'
+
+export default defineConfig({
+  ...cerberusConfig,
+
+  include: ['./app/**/*.{ts,tsx}'],
+  exclude: [],
+
+  presets: [pandaPreset, cerberusPreset],
+})
+```
+
+#### Update your local styles
+
+Now that you have extended Panda, you need to update your local styles by running the `prepare` script.
+
+```bash
+pnpm run prepare
+```
+
+### Step 4 - Setup Cerberus Fonts (optional)
+
+If you would like to use the Brand font associated with Cerberus, we recommend Poppins. Unfortunately, it is not a variable font, so another great solution which is, is the Inter font (comes pre-configured in NextJS apps).
+
+NextJS usage:
+
+```ts twoslash
+import { Poppins } from 'next/font/google'
+
+const poppins = Poppins({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+})
+```
+
+### Using the Cerberus React & Icons packages
+
+If you are interested in using the Cerberus React and Icons packages, install those now:
+
+```bash
+pnpm add @cerberus-design/{react,icons}
+```
+
+### Add a Cerberus script
+
+To help make maintaining a breeze, add this new script to your `package.json` to use when you are ready to upgrade Cerberus:
+
+```json
+"scripts": {
+  "up:cerberus": "pnpm up @cerberus-design/{panda-preset,react,icons}"
+}
 ```
