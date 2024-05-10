@@ -40,13 +40,46 @@ function normalizeTokens(
   return usage.reduce((acc, key) => {
     const token = tokens![key as keyof typeof tokens]
     const tokenKeys = Object.keys(token!)
-    const normalizedToken = tokenKeys.reduce((acc, tokenKey) => {
-      const value = token![tokenKey as keyof typeof token]
-      const tokenName = `${palette}-${key}-${tokenKey}`
-      return { ...acc, [tokenName]: value }
-    }, {})
+    const nestedTokenKeys = tokenKeys.filter(
+      (tokenKey) => typeof token![tokenKey as keyof typeof token] === 'object',
+    )
 
-    return { ...acc, ...normalizedToken }
+    const nestedTokens = normalizeNestedTokens({
+      nestedTokenKeys,
+      token,
+      key,
+      palette,
+    })
+
+    return { ...acc, ...nestedTokens }
+  }, {})
+}
+
+interface NormalizeNestedTokensProps {
+  nestedTokenKeys: string[]
+  token: SemanticToken
+  key: string
+  palette: Sentiment
+}
+
+function normalizeNestedTokens(data: NormalizeNestedTokensProps) {
+  const { token, key, palette } = data
+  return data.nestedTokenKeys.reduce((acc, tokenKey) => {
+    const nestedToken: Object = token![tokenKey as keyof typeof token]
+
+    if (nestedToken.hasOwnProperty('value'))
+      return { ...acc, [`${palette}-${key}-${tokenKey}`]: nestedToken }
+
+    const nestedTokenKeys = Object.keys(nestedToken)
+    const normalizedNestedToken = nestedTokenKeys.reduce(
+      (acc, nestedTokenKey) => {
+        const value = nestedToken[nestedTokenKey as keyof typeof nestedToken]
+        const tokenName = `${palette}-${key}-${tokenKey}-${nestedTokenKey}`
+        return { ...acc, [tokenName]: value }
+      },
+      {},
+    )
+    return { ...acc, ...normalizedNestedToken }
   }, {})
 }
 

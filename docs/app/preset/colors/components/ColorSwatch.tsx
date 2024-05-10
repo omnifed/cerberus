@@ -15,6 +15,8 @@ interface ColorSwatchProps {
 
 const noPB = css({
   pb: '0 !important',
+  textStyle: 'body-sm !important',
+
   '&[data-palette="neutral"]': {
     color: 'neutral.text.initial !important',
   },
@@ -36,8 +38,6 @@ const noPB = css({
 })
 
 export default function ColorSwatch(props: ColorSwatchProps) {
-  console.log({ props })
-
   const { _cerberusTheme } = props.token.value
   const { mode } = useThemeContext()
   const [copied, setCopied] = useState<boolean>(false)
@@ -88,7 +88,7 @@ export default function ColorSwatch(props: ColorSwatchProps) {
             gap: '1',
             pxi: '2',
             mb: '2',
-            rounded: 'lg',
+            rounded: 'md',
             textStyle: 'body-xs',
           })}
         >
