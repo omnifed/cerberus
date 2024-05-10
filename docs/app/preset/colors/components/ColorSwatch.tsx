@@ -7,6 +7,8 @@ import { css, cx } from '@/styled-system/css'
 import { hstack, vstack } from '@/styled-system/patterns'
 import { Checkmark } from '@cerberus-design/icons'
 
+// TODO: Figure out how to validate color contrast a11y for text on background
+
 interface ColorSwatchProps {
   token: SemanticToken
   tokenName: string
@@ -69,7 +71,7 @@ export default function ColorSwatch(props: ColorSwatchProps) {
       className={vstack({
         justifyContent: 'center',
         h: '10rem',
-        gap: '1',
+        gap: '4',
         rounded: 'xl',
         transition: 'scale 250ms ease-in-out',
         w: 'full',
@@ -96,20 +98,24 @@ export default function ColorSwatch(props: ColorSwatchProps) {
           Copied
         </span>
       )}
-      <p data-palette={props.palette} className={noPB}>
-        {props.tokenName}
-      </p>
-      <p
-        data-palette={props.palette}
-        className={cx(
-          css({
-            textTransform: 'uppercase',
-          }),
-          noPB,
-        )}
-      >
-        {color}
-      </p>
+      <div>
+        <p data-palette={props.palette} className={noPB}>
+          {props.tokenName}
+        </p>
+        <p
+          data-palette={props.palette}
+          className={cx(
+            css({
+              textTransform: 'uppercase',
+            }),
+            noPB,
+          )}
+        >
+          {color}
+        </p>
+      </div>
+
+      {/* <AccessibilityAlt aria-hidden /> */}
     </button>
   )
 }
