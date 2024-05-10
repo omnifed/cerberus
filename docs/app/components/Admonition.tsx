@@ -14,22 +14,24 @@ export function Admonition(props: PropsWithChildren<AdmonitionProps>) {
   return (
     <div
       className={css({
-        borderColor: 'info.border.initial',
         bgColor: 'info.surface.initial',
-        color: 'info.text.initial',
+        color: 'info.text.100',
         mb: '6',
+        mt: '4',
         p: '4',
         rounded: 'xl',
       })}
     >
       <div
         className={hstack({
+          color: 'info.text.initial !important',
           pb: '2',
         })}
       >
         <Information aria-hidden size="1.25rem" />
         <p
           className={css({
+            color: 'info.text.initial !important',
             pb: 'initial !important',
             textStyle: 'h5 !important',
           })}

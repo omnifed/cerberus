@@ -1,21 +1,25 @@
 import type { PropsWithChildren } from 'react'
-import { cx } from '@/styled-system/css'
-import { container } from '@/styled-system/patterns'
-import { markdown } from '../styles/markdown'
+import {
+  PageLayout,
+  PageMainContent,
+  PageSideNav,
+  PageSections,
+} from '../components/PageLayout'
+import SideNav, { type NavList } from '../components/SideNav'
+import sideNavData from './side-nav.json'
 
 interface PresetProps {}
 
 export default function PresetLayout(props: PropsWithChildren<PresetProps>) {
   return (
-    <div
-      className={cx(
-        container({
-          pt: '12',
-        }),
-        markdown,
-      )}
-    >
-      {props.children}
-    </div>
+    <PageLayout>
+      <PageSideNav>
+        <SideNav navList={sideNavData as NavList} />
+      </PageSideNav>
+
+      <PageMainContent>{props.children}</PageMainContent>
+
+      <PageSections>On this page</PageSections>
+    </PageLayout>
   )
 }

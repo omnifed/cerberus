@@ -1,0 +1,36 @@
+[
+  {
+    "id": "1",
+    "label": "Overview",
+    "type": "heading"
+  },
+  {
+    "id": "1:a",
+    "label": "Installation",
+    "route": "/preset",
+    "type": "route"
+  },
+  {
+    "id": "2",
+    "label": "Branding",
+    "type": "heading"
+  },
+  {
+    "id": "2:a",
+    "label": "Theme",
+    "route": "/preset/theme",
+    "type": "route"
+  },
+  {
+    "id": "2:b",
+    "label": "Colors",
+    "route": "/preset/colors",
+    "type": "route"
+  },
+  {
+    "id": "2:c",
+    "label": "Typography",
+    "route": "/preset/typography",
+    "type": "route"
+  }
+]

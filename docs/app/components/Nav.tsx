@@ -106,7 +106,11 @@ export function Nav() {
                   display: 'inline-block',
                   p: '4',
                   position: 'relative',
+                  transition: 'color 250ms ease-in-out',
                   w: 'full',
+                  _hover: {
+                    color: 'action.navigation.hover',
+                  },
                   _after: {
                     bg: 'transparent',
                     bottom: '0',
@@ -135,6 +139,7 @@ export function Nav() {
                   },
                 })}
                 href={item.href}
+                prefetch
               >
                 {item.label}
               </Link>
