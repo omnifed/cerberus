@@ -1,11 +1,84 @@
-# Welcome to my MDX page! :wave:
+import { Admonition } from '@/app/components/Admonition'
 
-This is some **bold** and _italics_ text.
+# useTheme
 
-This is a list in markdown:
+The `useTheme` hook allows you to access or modify the theme and mode properties of the Cerberus Design System.
 
-- One
-- Two
-- Three
+<Admonition
+  heading="When to use"
+  description="This hook is ideal for when you need a 'one shot' access or modify the theme or mode properties of the Cerberus Design System."
+/>
 
-Checkout my React component:
+## Usage
+
+```tsx title="nav.tsx" {6}
+import { useTheme } from '@cerberus-design/react'
+
+type CustomizedThemes = 'party-town'
+
+function Nav() {
+  const { theme, mode, updateTheme, updateMode } = useTheme<CustomizedThemes>()
+
+  function handleSetTheme(theme: string) {
+    updateTheme('party-town')
+  }
+
+  function handleToggleMode() {
+    updateMode((prev) => (prev === 'light' ? 'dark' : 'light'))
+  }
+
+  return (
+    <nav>
+      <button onClick={handleSetTheme} type="button">
+        update theme to party-town
+      </button>
+      <button onClick={handleToggleMode} type="button">
+        toggle mode
+      </button>
+    </nav>
+  )
+}
+```
+
+<Admonition
+  heading="When not to use"
+  description="When you need to access or modify the theme or mode proprties in multiple components, consider using the `ThemeProvider` family instead."
+/>
+
+## API
+
+```ts showLineNumbers=false
+type DefaultThemes = 'cerberus'
+type CustomThemes<K extends string = DefaultThemes> = 'cerberus' | K
+type ColorModes = 'light' | 'dark'
+
+define function useTheme<C extends string = DefaultThemes>(
+  defaultTheme: CustomThemes<C> = 'cerberus',
+  defaultColorMode: ColorModes = 'light',
+): {
+  theme: CustomThemes<C>
+  mode: ColorModes
+  updateTheme: (theme: CustomThemes<C>) => void
+  updateMode: (mode: ColorModes) => void
+}
+```
+
+### Arguments
+
+The `useTheme` accepts the following optional arguments:
+
+| Name         | Default    | Description                                      |
+| ------------ | ---------- | ------------------------------------------------ |
+| defaultTheme | 'cerberus' | The default theme of the Cerberus Design System. |
+| defaultMode  | 'light'    | The default mode of the Cerberus Design System.  |
+
+### Return
+
+The `useTheme` hook returns an object with the following properties:
+
+| Name        | Description                                                                   |
+| ----------- | ----------------------------------------------------------------------------- |
+| theme       | The current theme of the Cerberus Design System.                              |
+| mode        | The current mode of the Cerberus Design System.                               |
+| updateTheme | A function that allows you to update the theme of the Cerberus Design System. |
+| updateMode  | A function that allows you to update the mode of the Cerberus Design System.  |

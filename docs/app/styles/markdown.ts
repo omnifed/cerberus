@@ -44,8 +44,14 @@ export const markdown = css({
   '& a': {
     textStyle: 'link',
     '&:hover': {
+      color: 'action.navigation.hover',
       textDecoration: 'underline',
     },
+  },
+  '& a.heading': {
+    color: 'inherit',
+    textDecoration: 'none',
+    transition: 'color 0.2s ease-in-out',
   },
   '& ol': {
     listStyleType: 'decimal',
@@ -54,32 +60,25 @@ export const markdown = css({
       pb: '2',
     },
   },
-  '& code': {
-    display: 'inline-block',
-    bgColor: '#011627',
-    color: '#D6DEEB',
-    rounded: 'md',
-    textStyle: 'mono-sm',
-    pxi: '2',
-  },
-  '& pre.shiki': {
-    border: '2px solid',
-    borderColor: 'info.border.initial',
+  '& .expressive-code': {
     mb: '6',
-    py: '5',
-    rounded: 'lg',
-    '&:not(.twoslash)': {
-      overflowX: 'auto',
-      md: {
-        overflowX: 'initial',
-      },
-    },
   },
-  '& pre.shiki code': {
-    display: 'block',
-    pxi: '4',
-    md: {
-      pxi: '8',
+  '& table': {
+    borderCollapse: 'collapse',
+    borderSpacing: '0',
+    mb: '6',
+    width: '100%',
+    '& th': {
+      borderBottom: '1px solid',
+      borderColor: 'neutral.border.initial',
+      bgColor: 'neutral.bg.initial',
+      textAlign: 'left',
+      p: '2',
+    },
+    '& td': {
+      borderBottom: '1px solid',
+      borderColor: 'neutral.border.initial',
+      p: '2',
     },
   },
 })

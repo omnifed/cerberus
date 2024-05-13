@@ -154,9 +154,9 @@ export const actionTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#130024',
+            base: '#FCFBFE',
             _lightMode: '#FCFBFE',
-            _darkMode: '#130024',
+            _darkMode: '#FCFBFE',
           },
         },
       },
@@ -181,9 +181,9 @@ export const actionTokens = defineSentiment({
       inverse: {
         value: {
           _cerberusTheme: {
-            base: '#FCFBFE',
+            base: '#130024',
             _lightMode: '#130024',
-            _darkMode: '#FCFBFE',
+            _darkMode: '#130024',
           },
         },
       },

@@ -2,6 +2,8 @@ import type { PropsWithChildren } from 'react'
 import { grid, gridItem } from '@/styled-system/patterns'
 import { markdown } from '../styles/markdown'
 
+const PAGE_MINUS_HEADER = 'calc(100dvh - 9.5rem)'
+
 interface PageLayoutProps {}
 
 export function PageLayout(props: PropsWithChildren<PageLayoutProps>) {
@@ -9,9 +11,9 @@ export function PageLayout(props: PropsWithChildren<PageLayoutProps>) {
     <div
       className={grid({
         columns: 12,
+        h: PAGE_MINUS_HEADER,
         overflowX: 'hidden',
         position: 'relative',
-        pt: '12',
         md: {
           overflowX: 'initial',
         },
@@ -26,7 +28,7 @@ export function PageSideNav(props: PropsWithChildren<PageLayoutProps>) {
   return (
     <div
       className={gridItem({
-        h: '100dvh',
+        h: PAGE_MINUS_HEADER,
         position: 'fixed',
         top: 0,
         left: 0,
@@ -55,6 +57,9 @@ export function PageMainContent(props: PropsWithChildren<PageLayoutProps>) {
       className={gridItem({
         gridColumnStart: 1,
         gridColumnEnd: 13,
+        overflowY: 'auto',
+        pb: '12',
+        scrollBehavior: 'smooth',
         md: {
           gridColumnStart: 3,
           gridColumnEnd: 11,

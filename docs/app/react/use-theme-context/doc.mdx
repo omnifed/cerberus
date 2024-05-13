@@ -1,0 +1,96 @@
+import { Admonition } from '@/app/components/Admonition'
+
+# useThemeContext
+
+The `useThemeContext` hook allows you to access or modify the theme and mode properties of the Cerberus Design System in multiple components.
+
+```ts showLineNumbers=false
+type DefaultThemes = 'cerberus'
+type ColorModes = 'light' | 'dark'
+
+define function useThemeContext(
+  defaultTheme: DefaultThemes = 'cerberus',
+  defaultColorMode: ColorModes = 'light',
+): {
+  theme: DefaultThemes
+  mode: ColorModes
+  updateTheme: (theme: DefaultThemes) => void
+  updateMode: (mode: ColorModes) => void
+}
+```
+
+<Admonition
+  heading="When to use"
+  description="This hook is ideal for when you need to access or modify the theme or mode properties of the Cerberus Design System in multiple components."
+/>
+
+## Usage
+
+To use the `useThemeContext` hook, you need to wrap the component using the hook with the Cerberus `ThemeProvider` component.
+
+```tsx title="nav.tsx" {4}
+import { ThemeProvider, useThemeContext } from '@cerberus-design/react'
+
+function Nav() {
+  const { theme, mode, udpateTheme, updateMode } = useThemeContext()
+
+  function handleSetTheme(theme: string) {
+    updateTheme('party-town')
+  }
+
+  function handleToggleMode() {
+    updateMode((prev) => (prev === 'light' ? 'dark' : 'light'))
+  }
+
+  return (
+    <nav>
+      <button onClick={handleSetTheme} type="button">
+        update theme to party-town
+      </button>
+      <button onClick={handleToggleMode} type="button">
+        toggle mode
+      </button>
+    </nav>
+  )
+}
+```
+
+```tsx title="header.tsx" {4}
+import { ThemeProvider, useThemeContext } from '@cerberus-design/react'
+
+function Header() {
+  const { mode } = useThemeContext()
+
+  return (
+    <h1>
+      {mode === 'light' ? 'Hey, friend!' : 'I wear my sunglasses at night.'}
+    </h1>
+  )
+}
+```
+
+```tsx title="layout.tsx" {7}
+import { ThemeProvider } from '@cerberus-design/react'
+import Header from './header'
+import Nav from './nav'
+
+function Layout() {
+  return (
+    <ThemeProvider>
+      <Nav />
+      <Header />
+    </ThemeProvider>
+  )
+}
+```
+
+<Admonition
+  heading="When not to use"
+  description="When you need to access or modify the theme or mode proprties in a single component, consider using the `useTheme` hook instead."
+/>
+
+## API
+
+### Arguments
+
+The `useThemeContext` hook accepts the same arguments as the [useTheme hook](/react/use-theme).

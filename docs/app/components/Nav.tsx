@@ -21,10 +21,14 @@ export function Nav() {
   return (
     <nav
       className={grid({
+        backdropFilter: 'blur(20px)',
+        backdropBlur: 'md',
         alignItems: 'center',
         columns: 3,
         gridTemplateRows: '1fr 1fr',
         gap: '0',
+        mb: '12',
+        position: 'sticky',
         md: {
           gridTemplateRows: '1fr',
           pxi: '6',

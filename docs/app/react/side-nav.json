@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1",
+    "label": "Overview",
+    "type": "heading"
+  },
+  {
+    "id": "1:a",
+    "label": "Installation",
+    "route": "/react",
+    "type": "route"
+  },
+  {
+    "id": "2",
+    "label": "Components",
+    "type": "heading"
+  },
+  {
+    "id": "2:a",
+    "label": "Button",
+    "route": "/react/button",
+    "type": "route"
+  },
+  {
+    "id": "3",
+    "label": "Hooks",
+    "type": "heading"
+  },
+  {
+    "id": "3:a",
+    "label": "useTheme",
+    "route": "/react/use-theme",
+    "type": "route"
+  },
+  {
+    "id": "3:b",
+    "label": "useThemeContext",
+    "route": "/react/use-theme-context",
+    "type": "route"
+  }
+]
