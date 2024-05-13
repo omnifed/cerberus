@@ -108,8 +108,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/panda-preset
       '@csstools/postcss-cascade-layers':
-        specifier: ^4.0.4
-        version: 4.0.4(postcss@8.4.35)
+        specifier: ^4.0.5
+        version: 4.0.5(postcss@8.4.35)
       '@mdx-js/loader':
         specifier: ^3.0.1
         version: 3.0.1(webpack@5.91.0)
@@ -328,8 +328,14 @@ packages:
     peerDependencies:
       postcss: ^8.4
 
-  '@csstools/selector-specificity@3.0.3':
-    resolution: {integrity: sha512-KEPNw4+WW5AVEIyzC80rTbWEUatTW2lXpN8+8ILC8PiPeWPjwUzrPZDIOZ2wwqDmeqOYTdSGyL3+vE5GC3FB3Q==}
+  '@csstools/postcss-cascade-layers@4.0.5':
+    resolution: {integrity: sha512-nAI2ToT2G/E4XEwJitVjCr2V2SluE9Eaiski+xfRbKSGxFmDUtua7SCG1AtMbjteIVqGDRw7uBd7qXqCZq2b1Q==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+
+  '@csstools/selector-specificity@3.1.0':
+    resolution: {integrity: sha512-tGDFEHZ4XJeIt5NF7/nAfLGqPckmDZSnYne5gl67p4agQolE5s4rofdQ3e+VkeukfR91lVtSQ/Jt9DqM1ICiIQ==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss-selector-parser: ^6.0.13
@@ -4019,11 +4025,17 @@ snapshots:
 
   '@csstools/postcss-cascade-layers@4.0.4(postcss@8.4.35)':
     dependencies:
-      '@csstools/selector-specificity': 3.0.3(postcss-selector-parser@6.0.15)
+      '@csstools/selector-specificity': 3.1.0(postcss-selector-parser@6.0.15)
       postcss: 8.4.35
       postcss-selector-parser: 6.0.15
 
-  '@csstools/selector-specificity@3.0.3(postcss-selector-parser@6.0.15)':
+  '@csstools/postcss-cascade-layers@4.0.5(postcss@8.4.35)':
+    dependencies:
+      '@csstools/selector-specificity': 3.1.0(postcss-selector-parser@6.0.15)
+      postcss: 8.4.35
+      postcss-selector-parser: 6.0.15
+
+  '@csstools/selector-specificity@3.1.0(postcss-selector-parser@6.0.15)':
     dependencies:
       postcss-selector-parser: 6.0.15
 
