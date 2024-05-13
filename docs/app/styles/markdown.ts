@@ -63,4 +63,22 @@ export const markdown = css({
   '& .expressive-code': {
     mb: '6',
   },
+  '& table': {
+    borderCollapse: 'collapse',
+    borderSpacing: '0',
+    mb: '6',
+    width: '100%',
+    '& th': {
+      borderBottom: '1px solid',
+      borderColor: 'neutral.border.initial',
+      bgColor: 'neutral.bg.initial',
+      textAlign: 'left',
+      p: '2',
+    },
+    '& td': {
+      borderBottom: '1px solid',
+      borderColor: 'neutral.border.initial',
+      p: '2',
+    },
+  },
 })

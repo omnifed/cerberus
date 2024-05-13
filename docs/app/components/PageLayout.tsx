@@ -58,6 +58,8 @@ export function PageMainContent(props: PropsWithChildren<PageLayoutProps>) {
         gridColumnStart: 1,
         gridColumnEnd: 13,
         overflowY: 'auto',
+        pb: '12',
+        scrollBehavior: 'smooth',
         md: {
           gridColumnStart: 3,
           gridColumnEnd: 11,

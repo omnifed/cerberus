@@ -1,6 +1,7 @@
 import createMDX from '@next/mdx'
 import emoji from 'remark-emoji'
 import remarkParse from 'remark-parse'
+import remarkGfm from 'remark-gfm'
 import rehypeExpressiveCode from 'rehype-expressive-code'
 import rehypeStringify from 'rehype-stringify'
 import rehypeSlug from 'rehype-slug'
@@ -12,6 +13,7 @@ import {
   transformerNotationWordHighlight,
   transformerNotationHighlight,
 } from '@shikijs/transformers'
+import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -20,11 +22,12 @@ const nextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [emoji, remarkParse],
+    remarkPlugins: [emoji, remarkParse, remarkGfm],
     rehypePlugins: [
       [
         rehypeExpressiveCode,
         {
+          plugins: [pluginLineNumbers()],
           themes: ['min-light', 'night-owl'],
           themeCssSelector: (theme, context) => {
             console.log({ theme, context })
