@@ -123,8 +123,8 @@ importers:
         specifier: ^0.39.0
         version: 0.39.0(typescript@5.4.5)
       '@pandacss/preset-panda':
-        specifier: ^0.39.0
-        version: 0.39.0
+        specifier: ^0.39.1
+        version: 0.39.1
       '@shikijs/rehype':
         specifier: ^1.5.1
         version: 1.5.1
@@ -914,6 +914,9 @@ packages:
 
   '@pandacss/preset-panda@0.39.0':
     resolution: {integrity: sha512-s/k3CCVP2baE2zZsqDPBwe2at0JPhFT1r2fw9Xar2hNr+gw/SrKMq2uDs4r7nAQ8680ME0/+HDb5rh/wG8MYIw==}
+
+  '@pandacss/preset-panda@0.39.1':
+    resolution: {integrity: sha512-u0/eWZY+SCCseLYBvLVDTxkW9oPlRhr9UIbI2XRMosEoJljLffZTcKO0SbqNDi7RufkVSypiF14VeT6OE/gcAw==}
 
   '@pandacss/shared@0.39.0':
     resolution: {integrity: sha512-8haXlqls29HyMJL6Nq+4tQZ2EcG84j9Zu/HltVwmjXkX1ERakqfJh0mDKstIycKhgeQrLFrhbuGVN4Jfzfn2tQ==}
@@ -4590,6 +4593,10 @@ snapshots:
   '@pandacss/preset-panda@0.39.0':
     dependencies:
       '@pandacss/types': 0.39.0
+
+  '@pandacss/preset-panda@0.39.1':
+    dependencies:
+      '@pandacss/types': 0.39.1
 
   '@pandacss/shared@0.39.0': {}
 
