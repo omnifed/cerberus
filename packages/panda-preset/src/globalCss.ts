@@ -36,7 +36,7 @@ export const globalCss = defineGlobalStyles({
       outline: 'none',
     },
     _scrollbarThumb: {
-      backgroundColor: 'var(--cerberus-colors-neutral-border-initial)',
+      backgroundColor: 'var(--cerberus-colors-neutral-border-100)',
       borderRadius: '5px',
       outline: 'none',
     },

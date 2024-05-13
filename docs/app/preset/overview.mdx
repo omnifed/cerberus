@@ -23,9 +23,7 @@ pnpm install @cerberus-design/panda-preset
 
 Once you have installed and setup Panda CSS and added the Cerberus Panda Preset, you need to update your Panda configuration to include the Cerberus Panda Preset.
 
-Update your `panda.config.ts` file to include the Cerberus Panda Preset:
-
-```ts twoslash
+```ts title="panda.config.ts"
 import { defineConfig } from '@pandacss/dev'
 import pandaPreset from '@pandacss/preset-panda'
 import { cerberusPreset, cerberusConfig } from '@cerberus-design/panda-preset'
@@ -54,7 +52,7 @@ If you would like to use the Brand font associated with Cerberus, we recommend P
 
 NextJS usage:
 
-```ts twoslash
+```ts title="app/layout.tsx"
 import { Poppins } from 'next/font/google'
 
 const poppins = Poppins({
@@ -76,7 +74,7 @@ pnpm add @cerberus-design/{react,icons}
 
 To help make maintaining a breeze, add this new script to your `package.json` to use when you are ready to upgrade Cerberus:
 
-```json
+```json title="package.json"
 "scripts": {
   "up:cerberus": "pnpm up @cerberus-design/{panda-preset,react,icons}"
 }

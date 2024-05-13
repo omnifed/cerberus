@@ -5,7 +5,6 @@ import { ThemeProvider } from '@cerberus-design/react'
 import { css, cx } from '@/styled-system/css'
 import { Nav } from './components/Nav'
 
-import './two-slash.css'
 import './globals.css'
 
 const poppins = Poppins({
