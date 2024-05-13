@@ -31,5 +31,11 @@
     "label": "useTheme",
     "route": "/react/use-theme",
     "type": "route"
+  },
+  {
+    "id": "3:b",
+    "label": "useThemeContext",
+    "route": "/react/use-theme-context",
+    "type": "route"
   }
 ]
