@@ -33,6 +33,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.19",
+    "color-space": "^2.0.1",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.3",
     "rehype-autolink-headings": "^7.1.0",

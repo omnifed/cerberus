@@ -4,22 +4,6 @@ import { Admonition } from '@/app/components/Admonition'
 
 The `useTheme` hook allows you to access or modify the theme and mode properties of the Cerberus Design System.
 
-```ts showLineNumbers=false
-type DefaultThemes = 'cerberus'
-type CustomThemes<K extends string = DefaultThemes> = 'cerberus' | K
-type ColorModes = 'light' | 'dark'
-
-define function useTheme<C extends string = DefaultThemes>(
-  defaultTheme: CustomThemes<C> = 'cerberus',
-  defaultColorMode: ColorModes = 'light',
-): {
-  theme: CustomThemes<C>
-  mode: ColorModes
-  updateTheme: (theme: CustomThemes<C>) => void
-  updateMode: (mode: ColorModes) => void
-}
-```
-
 <Admonition
   heading="When to use"
   description="This hook is ideal for when you need a 'one shot' access or modify the theme or mode properties of the Cerberus Design System."
@@ -33,7 +17,7 @@ import { useTheme } from '@cerberus-design/react'
 type CustomizedThemes = 'party-town'
 
 function Nav() {
-  const { theme, mode, udpateTheme, updateMode } = useTheme<CustomizedThemes>()
+  const { theme, mode, updateTheme, updateMode } = useTheme<CustomizedThemes>()
 
   function handleSetTheme(theme: string) {
     updateTheme('party-town')
@@ -62,6 +46,22 @@ function Nav() {
 />
 
 ## API
+
+```ts showLineNumbers=false
+type DefaultThemes = 'cerberus'
+type CustomThemes<K extends string = DefaultThemes> = 'cerberus' | K
+type ColorModes = 'light' | 'dark'
+
+define function useTheme<C extends string = DefaultThemes>(
+  defaultTheme: CustomThemes<C> = 'cerberus',
+  defaultColorMode: ColorModes = 'light',
+): {
+  theme: CustomThemes<C>
+  mode: ColorModes
+  updateTheme: (theme: CustomThemes<C>) => void
+  updateMode: (mode: ColorModes) => void
+}
+```
 
 ### Arguments
 

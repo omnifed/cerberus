@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { css, cx } from '@/styled-system/css'
 import { hstack, vstack } from '@/styled-system/patterns'
 import { Checkmark } from '@cerberus-design/icons'
+import { hasWhiteBase } from '@/app/utils/colors'
 
 // TODO: Figure out how to validate color contrast a11y for text on background
 
@@ -39,6 +40,27 @@ const noPB = css({
   },
 })
 
+const inverseTextStyles = css({
+  '&[data-palette="neutral"]': {
+    color: 'neutral.text.inverse !important',
+  },
+  '&[data-palette="action"]': {
+    color: 'action.text.inverse !important',
+  },
+  '&[data-palette="info"]': {
+    color: 'info.text.inverse !important',
+  },
+  '&[data-palette="success"]': {
+    color: 'success.text.inverse !important',
+  },
+  '&[data-palette="warning"]': {
+    color: 'warning.text.inverse !important',
+  },
+  '&[data-palette="danger"]': {
+    color: 'danger.text.inverse !important',
+  },
+})
+
 export default function ColorSwatch(props: ColorSwatchProps) {
   const { _cerberusTheme } = props.token.value
   const { mode } = useThemeContext()
@@ -48,6 +70,12 @@ export default function ColorSwatch(props: ColorSwatchProps) {
     return mode === 'dark' ? '_darkMode' : '_lightMode'
   }, [mode])
   const color = _cerberusTheme[modeValue]
+  const swatchStyles = useMemo(() => {
+    if (hasWhiteBase(color, mode)) {
+      return cx(noPB, inverseTextStyles)
+    }
+    return noPB
+  }, [color, mode])
   const bgColor = {
     backgroundColor: color,
   }
@@ -99,7 +127,7 @@ export default function ColorSwatch(props: ColorSwatchProps) {
         </span>
       )}
       <div>
-        <p data-palette={props.palette} className={noPB}>
+        <p data-palette={props.palette} className={swatchStyles}>
           {props.tokenName}
         </p>
         <p
@@ -108,7 +136,7 @@ export default function ColorSwatch(props: ColorSwatchProps) {
             css({
               textTransform: 'uppercase',
             }),
-            noPB,
+            swatchStyles,
           )}
         >
           {color}

@@ -29,10 +29,7 @@ const withMDX = createMDX({
         {
           plugins: [pluginLineNumbers()],
           themes: ['min-light', 'night-owl'],
-          themeCssSelector: (theme, context) => {
-            console.log({ theme, context })
-            return `[data-code-theme='${theme.name}']`
-          },
+          themeCssSelector: (theme) => `[data-code-theme='${theme.name}']`,
           shiki: {
             transformers: [
               transformerTwoslash({

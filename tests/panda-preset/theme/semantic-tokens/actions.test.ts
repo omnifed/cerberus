@@ -224,11 +224,11 @@ describe('actionTokens', () => {
   test('should have a action.text.initial key', () => {
     expect(actionTokens.action.text.initial).toBeDefined()
     expect(actionTokens.action.text.initial.value._cerberusTheme.base).toBe(
-      '#130024',
+      '#FCFBFE',
     )
     expect(
       actionTokens.action.text.initial.value._cerberusTheme._darkMode,
-    ).toBe('#130024')
+    ).toBe('#FCFBFE')
     expect(
       actionTokens.action.text.initial.value._cerberusTheme._lightMode,
     ).toBe('#FCFBFE')
@@ -263,11 +263,11 @@ describe('actionTokens', () => {
   test('should have a action.text.inverse key', () => {
     expect(actionTokens.action.text.inverse).toBeDefined()
     expect(actionTokens.action.text.inverse.value._cerberusTheme.base).toBe(
-      '#FCFBFE',
+      '#130024',
     )
     expect(
       actionTokens.action.text.inverse.value._cerberusTheme._darkMode,
-    ).toBe('#FCFBFE')
+    ).toBe('#130024')
     expect(
       actionTokens.action.text.inverse.value._cerberusTheme._lightMode,
     ).toBe('#130024')
