@@ -28,8 +28,6 @@ const withMDX = createMDX({
         rehypeExpressiveCode,
         {
           plugins: [pluginLineNumbers()],
-          themes: ['min-light', 'night-owl'],
-          themeCssSelector: (theme) => `[data-code-theme='${theme.name}']`,
           shiki: {
             transformers: [
               transformerTwoslash({
@@ -42,6 +40,11 @@ const withMDX = createMDX({
               transformerNotationDiff(),
             ],
           },
+          styleOverrides: {
+            borderWidth: '3px',
+          },
+          themes: ['min-light', 'night-owl'],
+          themeCssSelector: (theme) => `[data-code-theme='${theme.name}']`,
         },
       ],
       rehypeSlug,

@@ -1,28 +1,13 @@
-import { Admonition } from '@/app/components/Admonition'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
 
 # useThemeContext
 
 The `useThemeContext` hook allows you to access or modify the theme and mode properties of the Cerberus Design System in multiple components.
 
-```ts showLineNumbers=false
-type DefaultThemes = 'cerberus'
-type ColorModes = 'light' | 'dark'
-
-define function useThemeContext(
-  defaultTheme: DefaultThemes = 'cerberus',
-  defaultColorMode: ColorModes = 'light',
-): {
-  theme: DefaultThemes
-  mode: ColorModes
-  updateTheme: (theme: DefaultThemes) => void
-  updateMode: (mode: ColorModes) => void
-}
-```
-
-<Admonition
-  heading="When to use"
-  description="This hook is ideal for when you need to access or modify the theme or mode properties of the Cerberus Design System in multiple components."
-/>
+<WhenToUseAdmonition description="This hook is ideal for when you need to access or modify the theme or mode properties of the Cerberus Design System in multiple components." />
 
 ## Usage
 
@@ -84,12 +69,24 @@ function Layout() {
 }
 ```
 
-<Admonition
-  heading="When not to use"
-  description="When you need to access or modify the theme or mode proprties in a single component, consider using the `useTheme` hook instead."
-/>
+<WhenNotToUseAdmonition description="When you need to access or modify the theme or mode proprties in a single component, consider using the `useTheme` hook instead." />
 
 ## API
+
+```ts showLineNumbers=false
+type DefaultThemes = 'cerberus'
+type ColorModes = 'light' | 'dark'
+
+define function useThemeContext(
+  defaultTheme: DefaultThemes = 'cerberus',
+  defaultColorMode: ColorModes = 'light',
+): {
+  theme: DefaultThemes
+  mode: ColorModes
+  updateTheme: (theme: DefaultThemes) => void
+  updateMode: (mode: ColorModes) => void
+}
+```
 
 ### Arguments
 
