@@ -1,13 +1,13 @@
-import { Admonition } from '@/app/components/Admonition'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
 
 # useTheme
 
 The `useTheme` hook allows you to access or modify the theme and mode properties of the Cerberus Design System.
 
-<Admonition
-  heading="When to use"
-  description="This hook is ideal for when you need a 'one shot' access or modify the theme or mode properties of the Cerberus Design System."
-/>
+<WhenToUseAdmonition description="This hook is ideal for when you need a 'one shot' access or modify the theme or mode properties of the Cerberus Design System." />
 
 ## Usage
 
@@ -40,10 +40,7 @@ function Nav() {
 }
 ```
 
-<Admonition
-  heading="When not to use"
-  description="When you need to access or modify the theme or mode proprties in multiple components, consider using the `ThemeProvider` family instead."
-/>
+<WhenNotToUseAdmonition description="When you need to access or modify the theme or mode proprties in multiple components, consider using the ThemeProvider family instead." />
 
 ## API
 

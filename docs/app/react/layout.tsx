@@ -7,6 +7,7 @@ import {
 } from '../components/PageLayout'
 import SideNav, { type NavList } from '../components/SideNav'
 import sideNavData from './side-nav.json'
+import OnThisPage from '../components/OnThisPage'
 
 interface ReactProps {}
 
@@ -19,7 +20,9 @@ export default function ReactLayout(props: PropsWithChildren<ReactProps>) {
 
       <PageMainContent>{props.children}</PageMainContent>
 
-      <PageSections>On this page</PageSections>
+      <PageSections>
+        <OnThisPage />
+      </PageSections>
     </PageLayout>
   )
 }

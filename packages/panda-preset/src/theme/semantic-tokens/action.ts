@@ -105,7 +105,7 @@ export const actionTokens = defineSentiment({
         value: {
           _cerberusTheme: {
             base: '#BB93E1',
-            _lightMode: '#4C0091',
+            _lightMode: '#7F33C4',
             _darkMode: '#BB93E1',
           },
         },
@@ -114,7 +114,7 @@ export const actionTokens = defineSentiment({
         value: {
           _cerberusTheme: {
             base: '#DFCCF0',
-            _lightMode: '#5F00B5',
+            _lightMode: '#362A58',
             _darkMode: '#DFCCF0',
           },
         },
@@ -132,18 +132,18 @@ export const actionTokens = defineSentiment({
         hover: {
           value: {
             _cerberusTheme: {
-              base: '#72E9E7',
+              base: '#B8F4F3',
               _lightMode: '#1F5B5A',
-              _darkMode: '#72E9E7',
+              _darkMode: '#B8F4F3',
             },
           },
         },
         visited: {
           value: {
             _cerberusTheme: {
-              base: '#72E9E7',
-              _lightMode: '#1F5B5A',
-              _darkMode: '#72E9E7',
+              base: '#EEFDFC',
+              _lightMode: '#362A58',
+              _darkMode: '#EEFDFC',
             },
           },
         },

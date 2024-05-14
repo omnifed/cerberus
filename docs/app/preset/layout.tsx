@@ -7,10 +7,13 @@ import {
 } from '../components/PageLayout'
 import SideNav, { type NavList } from '../components/SideNav'
 import sideNavData from './side-nav.json'
+import OnThisPage from '../components/OnThisPage'
 
-interface PresetProps {}
+interface TypographyProps {}
 
-export default function PresetLayout(props: PropsWithChildren<PresetProps>) {
+export default function PresetLayout(
+  props: PropsWithChildren<TypographyProps>,
+) {
   return (
     <PageLayout>
       <PageSideNav>
@@ -19,7 +22,9 @@ export default function PresetLayout(props: PropsWithChildren<PresetProps>) {
 
       <PageMainContent>{props.children}</PageMainContent>
 
-      <PageSections>On this page</PageSections>
+      <PageSections>
+        <OnThisPage />
+      </PageSections>
     </PageLayout>
   )
 }

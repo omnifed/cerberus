@@ -154,7 +154,7 @@ describe('actionTokens', () => {
     ).toBe('#BB93E1')
     expect(
       actionTokens.action.navigation.hover.value._cerberusTheme._lightMode,
-    ).toBe('#4C0091')
+    ).toBe('#7F33C4')
   })
 
   test('should have a action.navigation.visited key', () => {
@@ -167,7 +167,7 @@ describe('actionTokens', () => {
     ).toBe('#DFCCF0')
     expect(
       actionTokens.action.navigation.visited.value._cerberusTheme._lightMode,
-    ).toBe('#5F00B5')
+    ).toBe('#362A58')
   })
 
   test('should have a action.navigation.alternate.initial key', () => {
@@ -190,11 +190,11 @@ describe('actionTokens', () => {
     expect(actionTokens.action.navigation.alternate.hover).toBeDefined()
     expect(
       actionTokens.action.navigation.alternate.hover.value._cerberusTheme.base,
-    ).toBe('#72E9E7')
+    ).toBe('#B8F4F3')
     expect(
       actionTokens.action.navigation.alternate.hover.value._cerberusTheme
         ._darkMode,
-    ).toBe('#72E9E7')
+    ).toBe('#B8F4F3')
     expect(
       actionTokens.action.navigation.alternate.hover.value._cerberusTheme
         ._lightMode,
@@ -206,15 +206,15 @@ describe('actionTokens', () => {
     expect(
       actionTokens.action.navigation.alternate.visited.value._cerberusTheme
         .base,
-    ).toBe('#72E9E7')
+    ).toBe('#EEFDFC')
     expect(
       actionTokens.action.navigation.alternate.visited.value._cerberusTheme
         ._darkMode,
-    ).toBe('#72E9E7')
+    ).toBe('#EEFDFC')
     expect(
       actionTokens.action.navigation.alternate.visited.value._cerberusTheme
         ._lightMode,
-    ).toBe('#1F5B5A')
+    ).toBe('#362A58')
   })
 
   test('should have a action.text key', () => {

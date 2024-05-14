@@ -53,13 +53,13 @@ describe('dangerTokens', () => {
   test('should have a border.initial property', () => {
     expect(
       dangerTokens.danger.border.initial.value._cerberusTheme.base,
-    ).toEqual('#FDAFAB')
+    ).toEqual('#DA1E28')
     expect(
       dangerTokens.danger.border.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#FDAFAB')
+    ).toEqual('#DA1E28')
     expect(
       dangerTokens.danger.border.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#FC5E57')
+    ).toEqual('#DA1E28')
   })
 
   test('should have a surface property', () => {
@@ -84,14 +84,14 @@ describe('dangerTokens', () => {
 
   test('should have a text.initial property', () => {
     expect(dangerTokens.danger.text.initial.value._cerberusTheme.base).toEqual(
-      '#FFEBEA',
+      '#320B09',
     )
     expect(
       dangerTokens.danger.text.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#FFEBEA')
+    ).toEqual('#320B09')
     expect(
       dangerTokens.danger.text.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#641612')
+    ).toEqual('#320B09')
   })
 
   test('should have a text.100 property', () => {
@@ -124,13 +124,13 @@ describe('dangerTokens', () => {
 
   test('should have a text.inverse property', () => {
     expect(dangerTokens.danger.text.inverse.value._cerberusTheme.base).toEqual(
-      '#320B09',
+      '#FFEBEA',
     )
     expect(
       dangerTokens.danger.text.inverse.value._cerberusTheme._darkMode,
-    ).toEqual('#320B09')
+    ).toEqual('#FFEBEA')
     expect(
       dangerTokens.danger.text.inverse.value._cerberusTheme._lightMode,
-    ).toEqual('#FFEBEA')
+    ).toEqual('#641612')
   })
 })

@@ -44,25 +44,25 @@ describe('infoTokens', () => {
 
   test('should have a text.initial property', () => {
     expect(infoTokens.info.text.initial.value._cerberusTheme.base).toEqual(
-      '#D5F0FF',
+      '#E6F3FB',
     )
     expect(infoTokens.info.text.initial.value._cerberusTheme._darkMode).toEqual(
-      '#D5F0FF',
+      '#E6F3FB',
     )
     expect(
       infoTokens.info.text.initial.value._cerberusTheme._lightMode,
-    ).toEqual('#003655')
+    ).toEqual('#015280')
   })
 
   test('should have a text.100 property', () => {
     expect(infoTokens.info.text['100'].value._cerberusTheme.base).toEqual(
-      '#80D1FF',
+      '#9ACFEE',
     )
     expect(infoTokens.info.text['100'].value._cerberusTheme._darkMode).toEqual(
-      '#80D1FF',
+      '#9ACFEE',
     )
     expect(infoTokens.info.text['100'].value._cerberusTheme._lightMode).toEqual(
-      '#005180',
+      '#026DAA',
     )
   })
 

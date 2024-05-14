@@ -39,7 +39,7 @@ describe('success', () => {
     ).toEqual('#41C16E')
     expect(
       successTokens.success.surface.active.value._cerberusTheme._lightMode,
-    ).toEqual('#12B24A')
+    ).toEqual('#0E8E3B')
   })
 
   test('should have a text.initial property', () => {
@@ -76,5 +76,17 @@ describe('success', () => {
     expect(
       successTokens.success.text[200].value._cerberusTheme._lightMode,
     ).toEqual('#01955B')
+  })
+
+  test('should have a text.inverse property', () => {
+    expect(
+      successTokens.success.text.inverse.value._cerberusTheme.base,
+    ).toEqual('#07471E')
+    expect(
+      successTokens.success.text.inverse.value._cerberusTheme._darkMode,
+    ).toEqual('#07471E')
+    expect(
+      successTokens.success.text.inverse.value._cerberusTheme._lightMode,
+    ).toEqual('#0E8E3B')
   })
 })
