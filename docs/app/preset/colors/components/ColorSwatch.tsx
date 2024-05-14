@@ -16,49 +16,68 @@ interface ColorSwatchProps {
   palette: Sentiment
 }
 
-const noPB = css({
-  pb: '0 !important',
-  textStyle: 'body-sm !important',
-
+// We have to use !important to override the .MDX styles
+const paletteTextStyles = css({
   '&[data-palette="neutral"]': {
     color: 'neutral.text.initial !important',
+    '&[data-has-white="true"]': {
+      color: 'neutral.text.inverse !important',
+    },
   },
   '&[data-palette="action"]': {
     color: 'action.text.initial !important',
+    '&[data-has-white="true"]': {
+      color: 'action.text.inverse !important',
+    },
+    '&[data-mode="light"]': {
+      color: 'action.text.inverse !important',
+      '&[data-has-white="true"]': {
+        color: 'action.text.initial !important',
+      },
+    },
   },
   '&[data-palette="info"]': {
     color: 'info.text.initial !important',
+    '&[data-has-white="true"]': {
+      color: 'info.surface.initial !important',
+    },
   },
   '&[data-palette="success"]': {
     color: 'success.text.initial !important',
+    '&[data-has-white="true"]': {
+      color: 'success.text.inverse !important',
+    },
+    '&[data-mode="light"]': {
+      color: 'success.surface.initial !important',
+      '&[data-has-white="false"]': {
+        color: 'success.text.initial !important',
+      },
+    },
   },
   '&[data-palette="warning"]': {
     color: 'warning.text.initial !important',
-  },
-  '&[data-palette="danger"]': {
-    color: 'danger.text.initial !important',
-  },
-})
-
-const inverseTextStyles = css({
-  '&[data-palette="neutral"]': {
-    color: 'neutral.text.inverse !important',
-  },
-  '&[data-palette="action"]': {
-    color: 'action.text.inverse !important',
-  },
-  '&[data-palette="info"]': {
-    color: 'info.text.inverse !important',
-  },
-  '&[data-palette="success"]': {
-    color: 'success.text.inverse !important',
-  },
-  '&[data-palette="warning"]': {
-    color: 'warning.text.inverse !important',
+    '&[data-has-white="true"]': {
+      color: 'warning.surface.initial !important',
+    },
   },
   '&[data-palette="danger"]': {
     color: 'danger.text.inverse !important',
+    '&[data-has-white="true"]': {
+      color: 'danger.text.initial !important',
+    },
+    '&[data-mode="light"]': {
+      color: 'danger.surface.initial !important',
+      '&[data-has-white="false"]': {
+        color: 'danger.text.initial !important',
+      },
+    },
   },
+})
+
+const noPB = css({
+  color: 'inherit !important',
+  pb: '0 !important',
+  textStyle: 'body-sm !important',
 })
 
 export default function ColorSwatch(props: ColorSwatchProps) {
@@ -70,12 +89,7 @@ export default function ColorSwatch(props: ColorSwatchProps) {
     return mode === 'dark' ? '_darkMode' : '_lightMode'
   }, [mode])
   const color = _cerberusTheme[modeValue]
-  const swatchStyles = useMemo(() => {
-    if (hasWhiteBase(color, mode)) {
-      return cx(noPB, inverseTextStyles)
-    }
-    return noPB
-  }, [color, mode])
+  const isWhite = useMemo(() => hasWhiteBase(color, mode), [color, mode])
   const bgColor = {
     backgroundColor: color,
   }
@@ -113,8 +127,8 @@ export default function ColorSwatch(props: ColorSwatchProps) {
       {copied && (
         <span
           className={hstack({
-            bgColor: 'success.surface.initial',
-            color: 'success.text.initial',
+            bgColor: 'success.surface.active',
+            color: 'success.text.inverse',
             gap: '1',
             pxi: '2',
             mb: '2',
@@ -126,17 +140,19 @@ export default function ColorSwatch(props: ColorSwatchProps) {
           Copied
         </span>
       )}
-      <div>
-        <p data-palette={props.palette} className={swatchStyles}>
-          {props.tokenName}
-        </p>
+      <div
+        data-palette={props.palette}
+        data-mode={mode}
+        data-has-white={isWhite}
+        className={paletteTextStyles}
+      >
+        <p className={noPB}>{props.tokenName}</p>
         <p
-          data-palette={props.palette}
           className={cx(
             css({
               textTransform: 'uppercase',
             }),
-            swatchStyles,
+            noPB,
           )}
         >
           {color}

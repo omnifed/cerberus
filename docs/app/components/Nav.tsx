@@ -52,7 +52,7 @@ export function Nav() {
             pxi: '2',
             textStyle: 'body-xl',
             _active: {
-              color: 'blue',
+              color: 'neutral.text.initial',
             },
           })}
         >
@@ -81,10 +81,6 @@ export function Nav() {
             borderColor: 'neutral.border.initial',
             gap: '0',
             w: 'full',
-            md: {
-              border: 'none',
-              w: 'auto',
-            },
             '& li:nth-child(2)': {
               borderColor: 'neutral.border.initial',
               borderLeft: '1px solid',
@@ -92,6 +88,10 @@ export function Nav() {
               md: {
                 border: 'none',
               },
+            },
+            md: {
+              border: 'none',
+              w: 'auto',
             },
           })}
         >
