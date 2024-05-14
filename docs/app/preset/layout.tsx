@@ -8,9 +8,11 @@ import {
 import SideNav, { type NavList } from '../components/SideNav'
 import sideNavData from './side-nav.json'
 
-interface PresetProps {}
+interface TypographyProps {}
 
-export default function PresetLayout(props: PropsWithChildren<PresetProps>) {
+export default function PresetLayout(
+  props: PropsWithChildren<TypographyProps>,
+) {
   return (
     <PageLayout>
       <PageSideNav>
