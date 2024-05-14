@@ -36,9 +36,9 @@ export const dangerTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#FDAFAB',
-            _lightMode: '#FC5E57',
-            _darkMode: '#FDAFAB',
+            base: '#DA1E28',
+            _lightMode: '#DA1E28',
+            _darkMode: '#DA1E28',
           },
         },
       },
@@ -60,9 +60,9 @@ export const dangerTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#FFEBEA',
-            _lightMode: '#641612',
-            _darkMode: '#FFEBEA',
+            base: '#320B09',
+            _lightMode: '#320B09',
+            _darkMode: '#320B09',
           },
         },
       },
@@ -87,9 +87,9 @@ export const dangerTokens = defineSentiment({
       inverse: {
         value: {
           _cerberusTheme: {
-            base: '#320B09',
-            _lightMode: '#FFEBEA',
-            _darkMode: '#320B09',
+            base: '#FFEBEA',
+            _lightMode: '#641612',
+            _darkMode: '#FFEBEA',
           },
         },
       },

@@ -30,18 +30,18 @@ export const infoTokens = defineSentiment({
       initial: {
         value: {
           _cerberusTheme: {
-            base: '#D5F0FF',
-            _lightMode: '#003655',
-            _darkMode: '#D5F0FF',
+            base: '#E6F3FB',
+            _lightMode: '#015280',
+            _darkMode: '#E6F3FB',
           },
         },
       },
       100: {
         value: {
           _cerberusTheme: {
-            base: '#80D1FF',
-            _lightMode: '#005180',
-            _darkMode: '#80D1FF',
+            base: '#9ACFEE',
+            _lightMode: '#026DAA',
+            _darkMode: '#9ACFEE',
           },
         },
       },
