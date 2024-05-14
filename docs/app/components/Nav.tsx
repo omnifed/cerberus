@@ -105,7 +105,7 @@ export function Nav() {
               key={item.id}
             >
               <Link
-                aria-current={pathname === item.href ? 'page' : undefined}
+                aria-current={pathname.includes(item.href) ? 'page' : undefined}
                 className={css({
                   display: 'inline-block',
                   p: '4',
