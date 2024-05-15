@@ -6,7 +6,9 @@ import { Code, CodeHide } from '@cerberus-design/icons'
 import { css } from '@/styled-system/css'
 import { hstack, vstack } from '@/styled-system/patterns'
 
-// TODO: Replace with button recipe
+// TODO: Replace with Badge component
+// TODO: Replace with Button component
+
 const tempBtnStyles = css({
   alignItems: 'center',
   display: 'inline-flex',
@@ -92,9 +94,26 @@ export function PreviewLayout(props: PropsWithChildren<PreviewLayoutProps>) {
           mb: '4',
           minH: '18.75rem',
           overflow: 'hidden',
+          position: 'relative',
           py: '8',
         })}
       >
+        <span
+          className={css({
+            bgColor: 'neutral.surface.initial',
+            pxi: '2',
+            rounded: 'md',
+            position: 'absolute',
+            top: '4',
+            left: '4',
+            textStyle: 'body-xs',
+            textTransform: 'uppercase',
+            zIndex: 'banner',
+          })}
+        >
+          preview mode
+        </span>
+
         {props.children}
       </section>
     </div>

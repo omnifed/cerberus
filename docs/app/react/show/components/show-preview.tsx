@@ -3,7 +3,7 @@
 import { Show } from '@cerberus-design/react'
 import { useState } from 'react'
 
-// TODO: Replace with button recipe
+// TODO: Replace with button component
 
 export default function ShowPreview() {
   const [authenticated, setAuthenticated] = useState<boolean>(false)
