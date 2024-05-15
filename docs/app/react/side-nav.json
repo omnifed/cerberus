@@ -17,8 +17,8 @@
   },
   {
     "id": "2:a",
-    "label": "Button",
-    "route": "/react/button",
+    "label": "Show",
+    "route": "/react/show",
     "type": "route"
   },
   {
