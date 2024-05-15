@@ -1,13 +1,13 @@
 import OnThisPage from '../../components/OnThisPage'
 import { PageMainContent, PageSections } from '../../components/PageLayout'
-import UseThemeDoc from './doc.mdx'
+import Doc from './doc.mdx'
 
-export default function UseThemePage() {
+export default function ShowPage() {
   return (
     <>
       <PageMainContent>
         <main>
-          <UseThemeDoc />
+          <Doc />
         </main>
       </PageMainContent>
 

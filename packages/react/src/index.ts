@@ -1,3 +1,7 @@
+// components
+
+export * from './components/Show'
+
 // context
 
 export * from './context/theme'

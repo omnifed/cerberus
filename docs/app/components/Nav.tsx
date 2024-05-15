@@ -6,10 +6,49 @@ import { css } from '@/styled-system/css'
 import { grid, gridItem, hstack } from '@/styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
 import { LogoGithub } from '@cerberus-design/icons'
-import { useThemeContext } from '@cerberus-design/react'
+import { Show, useThemeContext } from '@cerberus-design/react'
 import { AnimatingSunIcon } from './icons/AnimatingSunIcon'
 import { AnimatingMoonIcon } from './icons/AnimatingMoonIcon'
 import { usePathname } from 'next/navigation'
+
+const navLogoContent = (
+  <section
+    className={gridItem({
+      gridColumnStart: 1,
+      gridColumnEnd: 3,
+      md: {
+        gridColumnStart: 1,
+        gridColumnEnd: 2,
+      },
+    })}
+  >
+    <Link
+      href="/"
+      className={css({
+        pxi: '2',
+        textStyle: 'body-xl',
+        _active: {
+          color: 'neutral.text.initial',
+        },
+      })}
+    >
+      <strong>Cerberus </strong>
+      Design System
+    </Link>
+  </section>
+)
+const navGHLogoContent = (
+  <li>
+    <a
+      aria-label="View Github repo"
+      href="https://github.com/omnifed/cerberus"
+      rel="noreferrer"
+      target="_blank"
+    >
+      <LogoGithub aria-hidden size="1.5rem" />
+    </a>
+  </li>
+)
 
 export function Nav() {
   const pathname = usePathname()
@@ -36,30 +75,7 @@ export function Nav() {
         },
       })}
     >
-      <section
-        className={gridItem({
-          gridColumnStart: 1,
-          gridColumnEnd: 3,
-          md: {
-            gridColumnStart: 1,
-            gridColumnEnd: 2,
-          },
-        })}
-      >
-        <Link
-          href="/"
-          className={css({
-            pxi: '2',
-            textStyle: 'body-xl',
-            _active: {
-              color: 'neutral.text.initial',
-            },
-          })}
-        >
-          <strong>Cerberus </strong>
-          Design System
-        </Link>
-      </section>
+      {navLogoContent}
 
       <section
         className={gridItem({
@@ -173,23 +189,16 @@ export function Nav() {
             gap: '4',
           })}
         >
-          <li>
-            <a
-              aria-label="View Github repo"
-              href="https://github.com/omnifed/cerberus"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <LogoGithub aria-hidden size="1.5rem" />
-            </a>
-          </li>
+          {navGHLogoContent}
           <li
             className={css({
               h: '1.5rem',
             })}
           >
             <button aria-label={ariaLabel} onClick={updateMode}>
-              {mode === 'light' ? <AnimatingSunIcon /> : <AnimatingMoonIcon />}
+              <Show when={mode === 'light'} fallback={<AnimatingMoonIcon />}>
+                <AnimatingSunIcon />
+              </Show>
             </button>
           </li>
         </ul>

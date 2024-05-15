@@ -1,0 +1,69 @@
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import ShowPreview from '@/app/react/show/components/show-preview'
+
+# Show
+
+An easy to read absraction of the [Ternary Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) that allows you to conditionally render components in a more performant way.
+
+```ts
+import { Show } from '@cerberus-design/react'
+```
+
+<WhenToUseAdmonition description="When you need display components based on a single condition." />
+
+## Usage
+
+<CodePreview preview={<ShowPreview />}>
+```tsx title="nav.tsx"
+import { Show } from '@cerberus-design/react'
+
+function Nav() {
+const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
+
+function handleSignIn() {
+setIsSignedIn(true)
+}
+
+function handleSignOut() {
+setIsSignedIn(false)
+}
+
+return (
+
+<Show
+  when={isSignedIn}
+  fallback={<button onClick={handleSignIn}>Sign in</button>}
+>
+  <button palette="neutral" onClick={handleSignOut}>
+    Sign out
+  </button>
+</Show>
+) }
+```
+</CodePreview>
+
+<WhenNotToUseAdmonition description="If you need to conditionally render components that have multiple outcomes, use the Switch/Match family. If you want to display a loading Skeleton, use the Suspense tag or loading route file (NextJS) instead." />
+
+## API
+
+```ts showLineNumbers=false
+export interface ShowProps {
+  when: boolean | null | undefined
+  fallback?: ReactNode
+}
+
+define function Show(props: ShowProps): ReactNode | null
+```
+
+### Props
+
+The `Show` component the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| when     | false   | The condition to evalue for showing the children or fallback. |
+| fallback | null    | The content to render when the condition is false.            |
