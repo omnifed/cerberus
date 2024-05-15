@@ -1,14 +1,19 @@
-import { css } from '@/styled-system/css'
+import OnThisPage from '../components/OnThisPage'
+import { PageMainContent, PageSections } from '../components/PageLayout'
 import Overview from './overview.mdx'
 
 export default function IconsPage() {
   return (
-    <main
-      className={css({
-        py: '6',
-      })}
-    >
-      <Overview />
-    </main>
+    <>
+      <PageMainContent>
+        <main>
+          <Overview />
+        </main>
+      </PageMainContent>
+
+      <PageSections>
+        <OnThisPage />
+      </PageSections>
+    </>
   )
 }

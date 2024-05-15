@@ -1,21 +1,18 @@
 import type { PropsWithChildren } from 'react'
-import { cx } from '@/styled-system/css'
-import { container } from '@/styled-system/patterns'
-import { markdown } from '../styles/markdown'
+import { PageLayout, PageSideNav } from '../components/PageLayout'
+import SideNav, { type NavList } from '../components/SideNav'
+import sideNavData from './side-nav.json'
 
 interface IconsProps {}
 
 export default function IconsLayout(props: PropsWithChildren<IconsProps>) {
   return (
-    <div
-      className={cx(
-        container({
-          pt: '12',
-        }),
-        markdown,
-      )}
-    >
+    <PageLayout>
+      <PageSideNav>
+        <SideNav navList={sideNavData as NavList} />
+      </PageSideNav>
+
       {props.children}
-    </div>
+    </PageLayout>
   )
 }

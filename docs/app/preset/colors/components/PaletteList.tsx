@@ -97,14 +97,6 @@ export default function PaletteList(props: PaletteListProps) {
         mb: '8',
       })}
     >
-      <p
-        className={css({
-          textStyle: 'h3 !important',
-          textTransform: 'capitalize',
-        })}
-      >
-        {palette}
-      </p>
       <ul
         className={grid({
           bgColor: 'neutral.surface.100',
