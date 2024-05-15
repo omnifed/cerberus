@@ -2,6 +2,7 @@ import {
   WhenToUseAdmonition,
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
 
 # Show
 
@@ -11,32 +12,35 @@ An easy to read absraction of the [Ternary Operator](https://developer.mozilla.o
 
 ## Usage
 
+<CodePreview preview={<div>test</div>}>
 ```tsx title="nav.tsx"
 import { Show } from '@cerberus-design/react'
 
 function Nav() {
-  const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
+const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
 
-  function handleSignIn() {
-    setIsSignedIn(true)
-  }
-
-  function handleSignOut() {
-    setIsSignedIn(false)
-  }
-
-  return (
-    <Show
-      when={isSignedIn}
-      fallback={<button onClick={handleSignIn}>Sign in</button>}
-    >
-      <button palette="neutral" onClick={handleSignOut}>
-        Sign out
-      </button>
-    </Show>
-  )
+function handleSignIn() {
+setIsSignedIn(true)
 }
-```
+
+function handleSignOut() {
+setIsSignedIn(false)
+}
+
+return (
+
+<Show
+  when={isSignedIn}
+  fallback={<button onClick={handleSignIn}>Sign in</button>}
+>
+  <button palette="neutral" onClick={handleSignOut}>
+    Sign out
+  </button>
+</Show>
+) }
+
+````
+</CodePreview>
 
 <WhenNotToUseAdmonition description="When you need to conditionally render components that have multiple outcomes, use the Switch/Match family." />
 
@@ -49,7 +53,7 @@ export interface ShowProps {
 }
 
 define function Show(props: ShowProps): ReactNode | null
-```
+````
 
 ### Props
 
