@@ -6,6 +6,7 @@ import { Code, CodeHide } from '@cerberus-design/icons'
 import { css } from '@/styled-system/css'
 import { hstack, vstack } from '@/styled-system/patterns'
 
+// TODO: Replace with button recipe
 const tempBtnStyles = css({
   alignItems: 'center',
   display: 'inline-flex',

@@ -3,16 +3,21 @@ import {
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
+import ShowPreview from '@/app/react/show/components/show-preview'
 
 # Show
 
 An easy to read absraction of the [Ternary Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) that allows you to conditionally render components in a more performant way.
 
+```ts
+import { Show } from '@cerberus-design/react'
+```
+
 <WhenToUseAdmonition description="When you need display components based on a single condition." />
 
 ## Usage
 
-<CodePreview preview={<div>test</div>}>
+<CodePreview preview={<ShowPreview />}>
 ```tsx title="nav.tsx"
 import { Show } from '@cerberus-design/react'
 
@@ -38,8 +43,7 @@ return (
   </button>
 </Show>
 ) }
-
-````
+```
 </CodePreview>
 
 <WhenNotToUseAdmonition description="When you need to conditionally render components that have multiple outcomes, use the Switch/Match family." />
@@ -53,7 +57,7 @@ export interface ShowProps {
 }
 
 define function Show(props: ShowProps): ReactNode | null
-````
+```
 
 ### Props
 

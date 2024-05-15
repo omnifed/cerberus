@@ -9,7 +9,8 @@
     "Shiki",
     "shikijs",
     "tseslint",
-    "Twoslash"
+    "Twoslash",
+    "Unauthenticate"
   ],
   "prettier.configPath": ".prettierrc",
   "prettier.prettierPath": "./node_modules/prettier",
