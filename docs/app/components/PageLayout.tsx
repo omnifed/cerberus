@@ -14,6 +14,7 @@ export function PageLayout(props: PropsWithChildren<PageLayoutProps>) {
         h: PAGE_MINUS_HEADER,
         overflowX: 'hidden',
         position: 'relative',
+        pt: '12',
         md: {
           overflowX: 'initial',
         },

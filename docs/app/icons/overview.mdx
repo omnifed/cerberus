@@ -1,8 +1,4 @@
-import {
-  Admonition,
-  AdmonitionHeading,
-  AdmonitionText,
-} from '@/app/components/Admonition'
+import { NoteAdmonition } from '@/app/components/Admonition'
 
 # Overview
 
@@ -14,4 +10,77 @@ Install the Cerberus Icons library, with the package manager of your choice:
 
 ```bash
 pnpm install '@cerberus-design/icons'
+```
+
+<NoteAdmonition description="The Cerberus Icons library currently only supports React." />
+
+## Usage
+
+To use the Cerberus Icons library, import any icon component from the library:
+
+```tsx
+import { LogoGithub } from '@cerberus-design/icons'
+
+function App() {
+  return (
+    <div>
+      <LogoGithub />
+    </div>
+  )
+}
+```
+
+### Size
+
+You can set the size of the icon by passing a `size` prop. The default size is `16`.
+
+```tsx
+import { LogoGithub } from '@cerberus-design/icons'
+
+// The sizes are 16, 20, 24, 32
+
+function App() {
+  return (
+    <div>
+      <LogoGithub size={24} />
+    </div>
+  )
+}
+```
+
+### Color
+
+The icons inherit the color of the parent element. If you need to change the icon color to be different from the parent element, you can do so with custom styles.
+
+```tsx
+import { LogoGithub } from '@cerberus-design/icons'
+import { css } from '@/styled-system/css'
+
+function App() {
+  return (
+    <div>
+      <LogoGithub
+        className={css({
+          color: 'red',
+        })}
+      />
+    </div>
+  )
+}
+```
+
+### Accessibility
+
+The icons are hidden by default. You can add an `aria-label` to the icon to provide a description for screen readers.
+
+```tsx
+import { LogoGithub } from '@cerberus-design/icons'
+
+function App() {
+  return (
+    <div>
+      <LogoGithub aria-label="GitHub logo" />
+    </div>
+  )
+}
 ```

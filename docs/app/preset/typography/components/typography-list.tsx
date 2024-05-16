@@ -24,24 +24,26 @@ export default function TypographyList(props: TypographyListProps) {
           mb: '8',
         })}
       >
-        <input
-          className={css({
-            border: '1px solid',
-            borderColor: 'neutral.border.initial',
-            borderRadius: 'full',
-            p: '4',
-            w: 'full',
-            _focus: {
-              outlineOffset: '4px',
-              outline: '2px solid',
-              outlineColor: 'info.border.initial',
-            },
-          })}
-          placeholder="Type here to preview text"
-          type="text"
-          value={temporaryText}
-          onChange={handleUpdateText}
-        />
+        <label aria-label="update text">
+          <input
+            className={css({
+              border: '1px solid',
+              borderColor: 'neutral.border.initial',
+              borderRadius: 'full',
+              p: '4',
+              w: 'full',
+              _focus: {
+                outlineOffset: '4px',
+                outline: '2px solid',
+                outlineColor: 'info.border.initial',
+              },
+            })}
+            placeholder="Type here to preview text"
+            type="text"
+            value={temporaryText}
+            onChange={handleUpdateText}
+          />
+        </label>
       </div>
 
       <TypographyBlock group="display" liveText={temporaryText} />
