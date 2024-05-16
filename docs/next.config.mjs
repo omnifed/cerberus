@@ -2,6 +2,8 @@ import createMDX from '@next/mdx'
 import emoji from 'remark-emoji'
 import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import rehypeExpressiveCode from 'rehype-expressive-code'
 import rehypeStringify from 'rehype-stringify'
 import rehypeSlug from 'rehype-slug'
@@ -22,7 +24,13 @@ const nextConfig = {
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [emoji, remarkParse, remarkGfm],
+    remarkPlugins: [
+      emoji,
+      remarkParse,
+      remarkGfm,
+      remarkFrontmatter,
+      remarkMdxFrontmatter,
+    ],
     rehypePlugins: [
       [
         rehypeExpressiveCode,
