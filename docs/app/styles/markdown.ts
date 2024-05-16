@@ -2,7 +2,7 @@ import { css } from '@/styled-system/css'
 
 const headlineStyles = {
   color: 'neutral.text.initial',
-  pb: '2',
+  py: '2',
 }
 
 export const markdown = css({

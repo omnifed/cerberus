@@ -1,11 +1,13 @@
+import ApiLinks from '@/app/components/ApiLinks'
 import OnThisPage from '../../components/OnThisPage'
 import { PageMainContent, PageSections } from '../../components/PageLayout'
-import Doc from './doc.mdx'
+import Doc, { frontmatter } from './doc.mdx'
 
 export default function ShowPage() {
   return (
     <>
       <PageMainContent>
+        <ApiLinks {...frontmatter} />
         <main>
           <Doc />
         </main>
