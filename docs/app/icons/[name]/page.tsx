@@ -1,14 +1,18 @@
 import OnThisPage from '../../components/OnThisPage'
 import { PageMainContent, PageSections } from '../../components/PageLayout'
-import SearchableIcons from './components/searchable-icons'
+import IconDetails from './components/IconDetails'
 
-export default function AllIconsPage() {
+interface IconDetailsPageProps {
+  params: {
+    name: string
+  }
+}
+
+export default function IconDetailsPage(props: IconDetailsPageProps) {
   return (
     <>
       <PageMainContent>
-        <main>
-          <SearchableIcons />
-        </main>
+        <IconDetails iconName={props.params.name} />
       </PageMainContent>
 
       <PageSections>
