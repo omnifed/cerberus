@@ -66,7 +66,6 @@ export function Nav() {
         columns: 3,
         gridTemplateRows: '1fr 1fr',
         gap: '0',
-        mb: '12',
         position: 'sticky',
         md: {
           gridTemplateRows: '1fr',
