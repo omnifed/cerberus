@@ -4,6 +4,7 @@ export const warningTokens = defineSentiment({
   warning: {
     border: {
       initial: {
+        description: 'The default border color of warning elements.',
         value: {
           _cerberusTheme: {
             base: '#FCF6D1',
@@ -16,6 +17,7 @@ export const warningTokens = defineSentiment({
 
     surface: {
       initial: {
+        description: 'The default surface color of warning elements.',
         value: {
           _cerberusTheme: {
             base: '#917D10',
@@ -28,6 +30,7 @@ export const warningTokens = defineSentiment({
 
     text: {
       initial: {
+        description: 'The default text color of warning elements.',
         value: {
           _cerberusTheme: {
             base: '#FEFBE9',
@@ -37,6 +40,7 @@ export const warningTokens = defineSentiment({
         },
       },
       100: {
+        description: 'The secondary text color of warning elements.',
         value: {
           _cerberusTheme: {
             base: '#F9EDA4',
@@ -46,6 +50,7 @@ export const warningTokens = defineSentiment({
         },
       },
       200: {
+        description: 'The tertiary text color of warning elements.',
         value: {
           _cerberusTheme: {
             base: '#F1D11B',

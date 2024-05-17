@@ -7,17 +7,12 @@ import { css, cx } from '@/styled-system/css'
 import { hstack, vstack } from '@/styled-system/patterns'
 import { Checkmark } from '@cerberus-design/icons'
 import { hasWhiteBase } from '@/app/utils/colors'
-
-// TODO: Figure out how to validate color contrast a11y for text on background
-
-interface ColorSwatchProps {
-  token: SemanticToken
-  tokenName: string
-  palette: Sentiment
-}
+import Link from 'next/link'
 
 // We have to use !important to override the .MDX styles
 const paletteTextStyles = css({
+  textAlign: 'center',
+
   '&[data-palette="neutral"]': {
     color: 'neutral.text.initial !important',
     '&[data-has-white="true"]': {
@@ -80,10 +75,20 @@ const noPB = css({
   textStyle: 'body-sm !important',
 })
 
+interface ColorSwatchProps {
+  token: SemanticToken
+  tokenName: string
+  palette: Sentiment
+}
+
 export default function ColorSwatch(props: ColorSwatchProps) {
   const { _cerberusTheme } = props.token.value
   const { mode } = useThemeContext()
   const [copied, setCopied] = useState<boolean>(false)
+  const objName = useMemo(
+    () => props.tokenName.replace(/-/g, '.'),
+    [props.tokenName],
+  )
 
   const modeValue = useMemo(() => {
     return mode === 'dark' ? '_darkMode' : '_lightMode'
@@ -92,11 +97,6 @@ export default function ColorSwatch(props: ColorSwatchProps) {
   const isWhite = useMemo(() => hasWhiteBase(color, mode), [color, mode])
   const bgColor = {
     backgroundColor: color,
-  }
-
-  function handleCopyToClipboard() {
-    navigator.clipboard.writeText(props.tokenName)
-    setCopied(true)
   }
 
   useEffect(() => {
@@ -109,19 +109,22 @@ export default function ColorSwatch(props: ColorSwatchProps) {
   }, [copied])
 
   return (
-    <button
+    <Link
       className={vstack({
+        alignItems: 'center',
         justifyContent: 'center',
         h: '10rem',
         gap: '4',
         rounded: 'xl',
+        textDecoration: 'none',
         transition: 'scale 250ms ease-in-out',
         w: 'full',
         _hover: {
           scale: '105%',
+          textDecoration: 'none !important',
         },
       })}
-      onClick={handleCopyToClipboard}
+      href={`/preset/colors/${props.tokenName}`}
       style={bgColor}
     >
       {copied && (
@@ -146,7 +149,7 @@ export default function ColorSwatch(props: ColorSwatchProps) {
         data-has-white={isWhite}
         className={paletteTextStyles}
       >
-        <p className={noPB}>{props.tokenName}</p>
+        <p className={noPB}>{objName}</p>
         <p
           className={cx(
             css({
@@ -158,8 +161,6 @@ export default function ColorSwatch(props: ColorSwatchProps) {
           {color}
         </p>
       </div>
-
-      {/* <AccessibilityAlt aria-hidden /> */}
-    </button>
+    </Link>
   )
 }

@@ -4,6 +4,7 @@ export const successTokens = defineSentiment({
   success: {
     border: {
       initial: {
+        description: 'The default border color of success elements.',
         value: {
           _cerberusTheme: {
             base: '#47B44B',
@@ -16,6 +17,7 @@ export const successTokens = defineSentiment({
 
     surface: {
       initial: {
+        description: 'The default surface color of success elements.',
         value: {
           _cerberusTheme: {
             base: '#0B6B2C',
@@ -25,6 +27,7 @@ export const successTokens = defineSentiment({
         },
       },
       active: {
+        description: 'The active surface color of success elements.',
         value: {
           _cerberusTheme: {
             base: '#41C16E',
@@ -37,6 +40,7 @@ export const successTokens = defineSentiment({
 
     text: {
       initial: {
+        description: 'The default text color of success elements.',
         value: {
           _cerberusTheme: {
             base: '#D0FFEC',
@@ -46,6 +50,7 @@ export const successTokens = defineSentiment({
         },
       },
       100: {
+        description: 'The secondary text color of success elements.',
         value: {
           _cerberusTheme: {
             base: '#43FDB4',
@@ -55,6 +60,7 @@ export const successTokens = defineSentiment({
         },
       },
       200: {
+        description: 'The tertiary text color of success elements.',
         value: {
           _cerberusTheme: {
             base: '#02BB71',
@@ -64,6 +70,8 @@ export const successTokens = defineSentiment({
         },
       },
       inverse: {
+        description:
+          'The text color of success elements when you need a light mode treatment within the dark mode.',
         value: {
           _cerberusTheme: {
             base: '#07471E',
