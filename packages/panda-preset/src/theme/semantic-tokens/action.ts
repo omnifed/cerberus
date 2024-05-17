@@ -4,6 +4,7 @@ export const actionTokens = defineSentiment({
   action: {
     bg: {
       initial: {
+        description: 'The default background color of the action.',
         value: {
           _cerberusTheme: {
             base: '#7F33C4',
@@ -13,6 +14,7 @@ export const actionTokens = defineSentiment({
         },
       },
       hover: {
+        description: 'The background color of the action when hovered.',
         value: {
           _cerberusTheme: {
             base: '#5F00B5',
@@ -22,6 +24,7 @@ export const actionTokens = defineSentiment({
         },
       },
       active: {
+        description: 'The background color of the action when active.',
         value: {
           _cerberusTheme: {
             base: '#4C0091',
@@ -32,6 +35,8 @@ export const actionTokens = defineSentiment({
       },
       100: {
         initial: {
+          description:
+            'The default alternative background color of the action.',
           value: {
             _cerberusTheme: {
               base: '#21143B',
@@ -41,6 +46,8 @@ export const actionTokens = defineSentiment({
           },
         },
         hover: {
+          description:
+            'The alternative background color of the action when hovered.',
           value: {
             _cerberusTheme: {
               base: '#291D47',
@@ -50,6 +57,8 @@ export const actionTokens = defineSentiment({
           },
         },
         active: {
+          description:
+            'The alternative background color of the action when active.',
           value: {
             _cerberusTheme: {
               base: '#24186A',
@@ -63,6 +72,7 @@ export const actionTokens = defineSentiment({
 
     border: {
       initial: {
+        description: 'The default border color of the action.',
         value: {
           _cerberusTheme: {
             base: '#291D47',
@@ -72,6 +82,7 @@ export const actionTokens = defineSentiment({
         },
       },
       100: {
+        description: 'The default alternative border color of the action.',
         value: {
           _cerberusTheme: {
             base: '#4E476D',
@@ -81,6 +92,7 @@ export const actionTokens = defineSentiment({
         },
       },
       focus: {
+        description: 'The border color of the action when focused.',
         value: {
           _cerberusTheme: {
             base: '#BB93E1',
@@ -93,6 +105,7 @@ export const actionTokens = defineSentiment({
 
     navigation: {
       initial: {
+        description: 'The default background color of the navigation action.',
         value: {
           _cerberusTheme: {
             base: '#9F66D3',
@@ -102,6 +115,8 @@ export const actionTokens = defineSentiment({
         },
       },
       hover: {
+        description:
+          'The background color of the navigation action when hovered.',
         value: {
           _cerberusTheme: {
             base: '#BB93E1',
@@ -111,6 +126,8 @@ export const actionTokens = defineSentiment({
         },
       },
       visited: {
+        description:
+          'The background color of the navigation action when visited.',
         value: {
           _cerberusTheme: {
             base: '#DFCCF0',
@@ -121,6 +138,8 @@ export const actionTokens = defineSentiment({
       },
       alternate: {
         initial: {
+          description:
+            'The default alternative background color of the navigation action.',
           value: {
             _cerberusTheme: {
               base: '#41E3E0',
@@ -130,6 +149,8 @@ export const actionTokens = defineSentiment({
           },
         },
         hover: {
+          description:
+            'The alternative background color of the navigation action when hovered.',
           value: {
             _cerberusTheme: {
               base: '#B8F4F3',
@@ -139,6 +160,8 @@ export const actionTokens = defineSentiment({
           },
         },
         visited: {
+          description:
+            'The alternative background color of the navigation action when visited.',
           value: {
             _cerberusTheme: {
               base: '#EEFDFC',
@@ -152,6 +175,7 @@ export const actionTokens = defineSentiment({
 
     text: {
       initial: {
+        description: 'The default text color of the action.',
         value: {
           _cerberusTheme: {
             base: '#FCFBFE',
@@ -161,6 +185,8 @@ export const actionTokens = defineSentiment({
         },
       },
       100: {
+        description:
+          'The text color of the action that uses a 100 background color.',
         value: {
           _cerberusTheme: {
             base: '#7F33C4',
@@ -170,6 +196,8 @@ export const actionTokens = defineSentiment({
         },
       },
       200: {
+        description:
+          'The text color of the action that uses a 200 background color.',
         value: {
           _cerberusTheme: {
             base: '#BB93E1',
@@ -179,6 +207,8 @@ export const actionTokens = defineSentiment({
         },
       },
       inverse: {
+        description:
+          'The text color of the action when there needs to be a light mode text within the dark theme.',
         value: {
           _cerberusTheme: {
             base: '#130024',
@@ -188,6 +218,8 @@ export const actionTokens = defineSentiment({
         },
       },
       alternate: {
+        description:
+          'The text color of the action that uses an alternate background color.',
         value: {
           _cerberusTheme: {
             base: '#41E3E0',

@@ -35,8 +35,9 @@ export const markdown = css({
   '& p': {
     color: 'neutral.text.100',
     lineHeight: '165%',
-    textStyle: 'body-md',
     pb: '6',
+    textStyle: 'body-md',
+    textWrap: 'pretty',
   },
   '& small': {
     textStyle: 'body-xs',
@@ -83,12 +84,12 @@ export const markdown = css({
   },
   '& :is(p,li) > code:not(.code)': {
     border: '2px solid',
-    borderColor: 'var(--ec-brdCol)',
-    bgColor: 'var(--ec-codeBg)',
+    borderColor: '#01213a',
+    bgColor: '#011627',
     color: '#ECC48D',
-    fontSize: 'var(--ec-uiFontSize)',
-    fontWeight: 'var(--ec-uiFontWg)',
-    lineHeight: 'var(--ec-uiLineHt)',
+    fontSize: '0.9rem',
+    fontWeight: '400',
+    lineHeight: '1.65',
     pxi: '1',
     rounded: 'md',
   },

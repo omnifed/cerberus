@@ -76,6 +76,7 @@ export type Token = Simplify<
  * The semantic token options of a color.
  */
 export type SemanticToken = {
+  description?: string
   value: ThemeSelectors
 }
 

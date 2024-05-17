@@ -4,6 +4,8 @@ export const neutralTokens = defineSentiment({
   neutral: {
     bg: {
       initial: {
+        description:
+          'The default background color used for non-action, action-like elements (i.e. inputs).',
         value: {
           _cerberusTheme: {
             base: '#130024',
@@ -13,6 +15,8 @@ export const neutralTokens = defineSentiment({
         },
       },
       active: {
+        description:
+          'The background color when a non-action, action-like element (i.e. inputs) is in an active state.',
         value: {
           _cerberusTheme: {
             base: '#2D2D55',
@@ -22,6 +26,8 @@ export const neutralTokens = defineSentiment({
         },
       },
       hover: {
+        description:
+          'The background color when a non-action, action-like element (i.e. inputs) is in a hover state.',
         value: {
           _cerberusTheme: {
             base: '#404376',
@@ -34,6 +40,7 @@ export const neutralTokens = defineSentiment({
 
     border: {
       initial: {
+        description: 'The default border color used for layouts.',
         value: {
           _cerberusTheme: {
             base: '#291D47',
@@ -43,6 +50,8 @@ export const neutralTokens = defineSentiment({
         },
       },
       100: {
+        description:
+          'The border color used for layouts with a 100 surface color.',
         value: {
           _cerberusTheme: {
             base: '#302451',
@@ -52,6 +61,8 @@ export const neutralTokens = defineSentiment({
         },
       },
       200: {
+        description:
+          'The border color used for layouts with a 200 surface color.',
         value: {
           _cerberusTheme: {
             base: '#39006D',
@@ -64,6 +75,7 @@ export const neutralTokens = defineSentiment({
 
     surface: {
       initial: {
+        description: 'The default surface color used for layouts.',
         value: {
           _cerberusTheme: {
             base: '#130024',
@@ -73,6 +85,8 @@ export const neutralTokens = defineSentiment({
         },
       },
       100: {
+        description:
+          'The surface color used for layouts of an element that is on the second layer from the initial surface layer.',
         value: {
           _cerberusTheme: {
             base: '#160126',
@@ -82,6 +96,8 @@ export const neutralTokens = defineSentiment({
         },
       },
       200: {
+        description:
+          'The surface color used for layouts of an element that is on the third layer from the initial surface layer.',
         value: {
           _cerberusTheme: {
             base: '#291D47',
@@ -91,6 +107,8 @@ export const neutralTokens = defineSentiment({
         },
       },
       300: {
+        description:
+          'The surface color used for layouts of an element that is on the fourth layer from the initial surface layer.',
         value: {
           _cerberusTheme: {
             base: '#302451',
@@ -100,6 +118,8 @@ export const neutralTokens = defineSentiment({
         },
       },
       inverse: {
+        description:
+          'The surface color used for layouts of an element that requires a light mode surface.',
         value: {
           _cerberusTheme: {
             base: '#F3F2F4',
@@ -112,6 +132,7 @@ export const neutralTokens = defineSentiment({
 
     text: {
       initial: {
+        description: 'The default text color used for layouts.',
         value: {
           _cerberusTheme: {
             base: '#FCFBFE',
@@ -121,6 +142,8 @@ export const neutralTokens = defineSentiment({
         },
       },
       100: {
+        description:
+          'The text color used for layouts with a 100 surface color.',
         value: {
           _cerberusTheme: {
             base: '#BCBACA',
@@ -130,6 +153,8 @@ export const neutralTokens = defineSentiment({
         },
       },
       200: {
+        description:
+          'The text color used for layouts with a 200 surface color.',
         value: {
           _cerberusTheme: {
             base: '#E4E3E9',
@@ -139,6 +164,8 @@ export const neutralTokens = defineSentiment({
         },
       },
       300: {
+        description:
+          'The text color used for layouts with a 300 surface color.',
         value: {
           _cerberusTheme: {
             base: '#FFFFFF',
@@ -148,6 +175,8 @@ export const neutralTokens = defineSentiment({
         },
       },
       inverse: {
+        description:
+          'The text color used for layouts with an inverse surface color.',
         value: {
           _cerberusTheme: {
             base: '#130F25',

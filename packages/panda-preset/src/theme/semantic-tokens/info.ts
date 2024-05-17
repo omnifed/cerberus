@@ -4,6 +4,7 @@ export const infoTokens = defineSentiment({
   info: {
     border: {
       initial: {
+        description: 'The default border color of informational elements.',
         value: {
           _cerberusTheme: {
             base: '#35A0DD',
@@ -16,6 +17,7 @@ export const infoTokens = defineSentiment({
 
     surface: {
       initial: {
+        description: 'The default surface color of informational elements.',
         value: {
           _cerberusTheme: {
             base: '#026DAA',
@@ -28,6 +30,7 @@ export const infoTokens = defineSentiment({
 
     text: {
       initial: {
+        description: 'The default text color of informational elements.',
         value: {
           _cerberusTheme: {
             base: '#E6F3FB',
@@ -37,6 +40,7 @@ export const infoTokens = defineSentiment({
         },
       },
       100: {
+        description: 'The secondary text color of informational elements.',
         value: {
           _cerberusTheme: {
             base: '#9ACFEE',
@@ -46,6 +50,7 @@ export const infoTokens = defineSentiment({
         },
       },
       200: {
+        description: 'The tertiary text color of informational elements.',
         value: {
           _cerberusTheme: {
             base: '#2BB2FF',

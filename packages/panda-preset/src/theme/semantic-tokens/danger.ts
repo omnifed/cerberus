@@ -4,6 +4,7 @@ export const dangerTokens = defineSentiment({
   danger: {
     bg: {
       initial: {
+        description: 'The default background color of the danger elements.',
         value: {
           _cerberusTheme: {
             base: '#FB362D',
@@ -13,6 +14,7 @@ export const dangerTokens = defineSentiment({
         },
       },
       hover: {
+        description: 'The background color of the danger element when hovered.',
         value: {
           _cerberusTheme: {
             base: '#FC5E57',
@@ -22,6 +24,7 @@ export const dangerTokens = defineSentiment({
         },
       },
       active: {
+        description: 'The background color of the danger element when active.',
         value: {
           _cerberusTheme: {
             base: '#FD8681',
@@ -34,6 +37,7 @@ export const dangerTokens = defineSentiment({
 
     border: {
       initial: {
+        description: 'The default border color of danger elements.',
         value: {
           _cerberusTheme: {
             base: '#DA1E28',
@@ -46,6 +50,7 @@ export const dangerTokens = defineSentiment({
 
     surface: {
       initial: {
+        description: 'The default surface color of danger elements.',
         value: {
           _cerberusTheme: {
             base: '#641612',
@@ -58,6 +63,7 @@ export const dangerTokens = defineSentiment({
 
     text: {
       initial: {
+        description: 'The default text color of danger elements.',
         value: {
           _cerberusTheme: {
             base: '#320B09',
@@ -67,6 +73,7 @@ export const dangerTokens = defineSentiment({
         },
       },
       100: {
+        description: 'The secondary text color of danger elements.',
         value: {
           _cerberusTheme: {
             base: '#FDAFAB',
@@ -76,6 +83,7 @@ export const dangerTokens = defineSentiment({
         },
       },
       200: {
+        description: 'The tertiary text color of danger elements.',
         value: {
           _cerberusTheme: {
             base: '#FC5E57',
@@ -85,6 +93,8 @@ export const dangerTokens = defineSentiment({
         },
       },
       inverse: {
+        description:
+          'The text color of danger elements when you need to display a light mode option within the dark mode.',
         value: {
           _cerberusTheme: {
             base: '#FFEBEA',
