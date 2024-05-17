@@ -8,6 +8,7 @@ import {
   type SemanticToken,
   type Sentiment,
   type SentimentConfig,
+  type ThemeSelectors,
 } from '@cerberus-design/panda-preset'
 
 export function getTokenList(palette: Sentiment): SentimentConfig[Sentiment] {
@@ -62,7 +63,7 @@ interface NormalizeNestedTokensProps {
 export function normalizeNestedTokens(data: NormalizeNestedTokensProps) {
   const { token, key, palette } = data
   return data.nestedTokenKeys.reduce((acc, tokenKey) => {
-    const nestedToken: Object = token![tokenKey as keyof typeof token]
+    const nestedToken = token![tokenKey as keyof typeof token] as ThemeSelectors
 
     if (nestedToken.hasOwnProperty('value'))
       return { ...acc, [`${palette}-${key}-${tokenKey}`]: nestedToken }
