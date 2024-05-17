@@ -81,4 +81,15 @@ export const markdown = css({
       p: '2',
     },
   },
+  '& :is(p,li) > code:not(.code)': {
+    border: '2px solid',
+    borderColor: 'var(--ec-brdCol)',
+    bgColor: 'var(--ec-codeBg)',
+    color: '#ECC48D',
+    fontSize: 'var(--ec-uiFontSize)',
+    fontWeight: 'var(--ec-uiFontWg)',
+    lineHeight: 'var(--ec-uiLineHt)',
+    pxi: '1',
+    rounded: 'md',
+  },
 })
