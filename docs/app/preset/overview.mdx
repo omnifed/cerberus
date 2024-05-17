@@ -43,7 +43,21 @@ Now that you have extended Panda, you need to update your local styles by runnin
 pnpm run prepare
 ```
 
-### Step 4 - Setup Cerberus Fonts (optional)
+### Step 4 - Connect the Cerberus Theme
+
+To connect the Cerberus theme, you need to add the required `data` attributes to your `html` tag.
+
+```tsx title="app/layout.tsx" {3}
+function Layout({ children }) {
+  return (
+    <html lang="en" data-theme="cerberus" data-color-mode="light">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+### Step 5 - Setup Cerberus Fonts (optional)
 
 If you would like to use the Brand font associated with Cerberus, we recommend Poppins. Unfortunately, it is not a variable font, so another great solution which is, is the Inter font (comes pre-configured in NextJS apps).
 
