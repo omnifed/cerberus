@@ -267,8 +267,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/react
       '@happy-dom/global-registrator':
-        specifier: ^14.10.1
-        version: 14.10.1
+        specifier: ^14.11.0
+        version: 14.11.0
       '@testing-library/react':
         specifier: ^15.0.7
         version: 15.0.7(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -682,8 +682,8 @@ packages:
   '@expressive-code/plugin-text-markers@0.35.3':
     resolution: {integrity: sha512-gDdnQrfDRXw5Y+PKHJDkpAUdf2pthYOthGcgy3JB8GOTQ3EL1h+755Ct/bGc4MR6jn+dgnQP47uHMWQaccvN6Q==}
 
-  '@happy-dom/global-registrator@14.10.1':
-    resolution: {integrity: sha512-ZLd1SVE00IH3s7EPBUagdSLl15qZLY7hJUe7S0u6rB2dN6pOzdPwPohnu3wlbIkxS2P54H9fQI4naZMFO0yPCA==}
+  '@happy-dom/global-registrator@14.11.0':
+    resolution: {integrity: sha512-QRqnYzaS90gwWT0zuTMHVry4ouacoUCYedeEQOMQjFA+AVynroLoj2XVC+WYugDSeAa6FSXprXjiEZiZ0g+VgA==}
     engines: {node: '>=16.0.0'}
 
   '@humanwhocodes/config-array@0.11.14':
@@ -2289,8 +2289,8 @@ packages:
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
 
-  happy-dom@14.10.1:
-    resolution: {integrity: sha512-GRbrZYIezi8+tTtffF4v2QcF8bk1h2loUTO5VYQz3GZdrL08Vk0fI+bwf/vFEBf4C/qVf/easLJ/MY1wwdhytA==}
+  happy-dom@14.11.0:
+    resolution: {integrity: sha512-vu25dY7YJqLuTG/3ADC0FZRRF0yNBp3q2K0YTN08opXdZi8V/YzIJDNJWFiCnDIuyc+RrCIE093+H5fa9Trlxg==}
     engines: {node: '>=16.0.0'}
 
   has-bigints@1.0.2:
@@ -4351,9 +4351,9 @@ snapshots:
     dependencies:
       '@expressive-code/core': 0.35.3
 
-  '@happy-dom/global-registrator@14.10.1':
+  '@happy-dom/global-registrator@14.11.0':
     dependencies:
-      happy-dom: 14.10.1
+      happy-dom: 14.11.0
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
@@ -6500,7 +6500,7 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  happy-dom@14.10.1:
+  happy-dom@14.11.0:
     dependencies:
       entities: 4.5.0
       webidl-conversions: 7.0.0
