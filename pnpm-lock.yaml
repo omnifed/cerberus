@@ -108,8 +108,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/panda-preset
       '@csstools/postcss-cascade-layers':
-        specifier: ^4.0.5
-        version: 4.0.5(postcss@8.4.35)
+        specifier: ^4.0.6
+        version: 4.0.6(postcss@8.4.35)
       '@expressive-code/plugin-line-numbers':
         specifier: ^0.35.3
         version: 0.35.3
@@ -349,14 +349,14 @@ packages:
     peerDependencies:
       postcss: ^8.4
 
-  '@csstools/postcss-cascade-layers@4.0.5':
-    resolution: {integrity: sha512-nAI2ToT2G/E4XEwJitVjCr2V2SluE9Eaiski+xfRbKSGxFmDUtua7SCG1AtMbjteIVqGDRw7uBd7qXqCZq2b1Q==}
+  '@csstools/postcss-cascade-layers@4.0.6':
+    resolution: {integrity: sha512-Xt00qGAQyqAODFiFEJNkTpSUz5VfYqnDLECdlA/Vv17nl/OIV5QfTRHGAXrBGG5YcJyHpJ+GF9gF/RZvOQz4oA==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
 
-  '@csstools/selector-specificity@3.1.0':
-    resolution: {integrity: sha512-tGDFEHZ4XJeIt5NF7/nAfLGqPckmDZSnYne5gl67p4agQolE5s4rofdQ3e+VkeukfR91lVtSQ/Jt9DqM1ICiIQ==}
+  '@csstools/selector-specificity@3.1.1':
+    resolution: {integrity: sha512-a7cxGcJ2wIlMFLlh8z2ONm+715QkPHiyJcxwQlKOz/03GPw1COpfhcmC9wm4xlZfp//jWHNNMwzjtqHXVWU9KA==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss-selector-parser: ^6.0.13
@@ -4172,17 +4172,17 @@ snapshots:
 
   '@csstools/postcss-cascade-layers@4.0.4(postcss@8.4.35)':
     dependencies:
-      '@csstools/selector-specificity': 3.1.0(postcss-selector-parser@6.0.15)
+      '@csstools/selector-specificity': 3.1.1(postcss-selector-parser@6.0.15)
       postcss: 8.4.35
       postcss-selector-parser: 6.0.15
 
-  '@csstools/postcss-cascade-layers@4.0.5(postcss@8.4.35)':
+  '@csstools/postcss-cascade-layers@4.0.6(postcss@8.4.35)':
     dependencies:
-      '@csstools/selector-specificity': 3.1.0(postcss-selector-parser@6.0.15)
+      '@csstools/selector-specificity': 3.1.1(postcss-selector-parser@6.0.15)
       postcss: 8.4.35
       postcss-selector-parser: 6.0.15
 
-  '@csstools/selector-specificity@3.1.0(postcss-selector-parser@6.0.15)':
+  '@csstools/selector-specificity@3.1.1(postcss-selector-parser@6.0.15)':
     dependencies:
       postcss-selector-parser: 6.0.15
 
