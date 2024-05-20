@@ -6,7 +6,6 @@ import {
   SUCCESS,
   WARNING,
   DANGER,
-  BRAND,
   action,
   neutral,
   info,
@@ -39,10 +38,6 @@ describe('recipe palettes', () => {
 
   test('should export DANGER', () => {
     expect(DANGER).toBeDefined()
-  })
-
-  test('should export BRAND', () => {
-    expect(BRAND).toBeDefined()
   })
 
   test('should export action', () => {

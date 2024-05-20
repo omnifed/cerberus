@@ -77,7 +77,6 @@ describe('root', () => {
     expect(DS.SUCCESS).toBeDefined()
     expect(DS.WARNING).toBeDefined()
     expect(DS.DANGER).toBeDefined()
-    expect(DS.BRAND).toBeDefined()
   })
 
   test('should export all palettes', () => {

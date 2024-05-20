@@ -17,8 +17,9 @@ export interface HeadingItem extends SideNavItem {
 }
 
 export interface LinkItem extends SideNavItem {
-  type: 'route'
   route: string
+  tag: '' | 'new' | 'next'
+  type: 'route'
 }
 
 interface SideNavProps {

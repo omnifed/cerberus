@@ -39,7 +39,6 @@ export const cerberusPreset = definePreset({
         ...successTokens,
         ...warningTokens,
         ...dangerTokens,
-        // ...brandTokens,
       },
     }),
   },

@@ -4,6 +4,7 @@ import { action, danger } from './palettes'
 export const buttonBase = {
   alignItems: 'center',
   display: 'inline-flex',
+  fontWeight: '600',
   gap: '2',
   justifyContent: 'center',
   lineHeight: '0',
@@ -18,7 +19,49 @@ export const buttonBase = {
   ...formStates,
 }
 
+const sharpRadii = {
+  borderTopRightRadius: 'lg',
+  borderBottomLeftRadius: 'lg',
+}
+
 export const nonTextStates = {
+  ...sharpRadii,
+  color: 'colorPalette.text.200',
+  _hover: {
+    bgColor: 'colorPalette.bg.100.hover',
+    _disabled: {
+      bgColor: 'colorPalette.bg.100.initial',
+    },
+  },
+  _active: {
+    bgColor: 'colorPalette.bg.100.active',
+  },
+}
+
+export const textUsage = {
+  ...sharpRadii,
+  border: '4px solid',
+  borderColor: 'transparent',
+  color: 'colorPalette.text.alternate',
+  transitionProperty: 'border-color, color',
+  transitionDuration: 'fast',
+  transitionTimingFunction: 'ease-in-out',
+  _hover: {
+    borderColor: 'colorPalette.border.initial',
+  },
+  _active: {
+    color: 'colorPalette.text.initial',
+  },
+  _disabled: {
+    _active: {
+      color: 'colorPalette.text.alternate',
+    },
+  },
+}
+
+export const filledUsage = {
+  ...sharpRadii,
+  bgColor: 'colorPalette.bg.initial',
   color: 'colorPalette.text.initial',
   _hover: {
     bgColor: 'colorPalette.bg.hover',
@@ -26,29 +69,6 @@ export const nonTextStates = {
       bgColor: 'colorPalette.bg.initial',
     },
   },
-  _active: {
-    bgColor: 'colorPalette.bg.active',
-  },
-}
-
-export const textUsage = {
-  color: 'colorPalette.text.100',
-  _hover: {
-    bgColor: 'colorPalette.bg.hover',
-  },
-  _active: {
-    color: 'colorPalette.text.initial',
-  },
-  _disabled: {
-    _active: {
-      color: 'colorPalette.text.100',
-    },
-  },
-}
-
-export const filledUsage = {
-  bgColor: 'colorPalette.bg.initial',
-  ...nonTextStates,
   _active: {
     bgColor: 'colorPalette.bg.active',
   },

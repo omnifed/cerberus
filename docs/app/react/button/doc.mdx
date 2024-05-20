@@ -1,0 +1,186 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/Button.tsx'
+recipe: 'button.ts'
+---
+
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import {
+  BasicButtonPreview,
+  DangerButtonPreview,
+  OutlineButtonPreview,
+  TextButtonPreview,
+  RoundedButtonPreview,
+  WithIconButtonPreview,
+  CustomButtonPreview,
+} from '@/app/react/button/components/button-preview'
+
+# Button
+
+An interactive element that triggers an action when clicked.
+
+```ts
+import { Button } from '@cerberus-design/react'
+```
+
+<WhenToUseAdmonition description="When you need to allow the user to trigger and action." />
+
+## Usage
+
+You can mix and match all of the examples to create the button style of your choosing.
+
+<WhenNotToUseAdmonition description="When you need to provide a way for the user to navigate somewhere - use a Link, TextLink, or NavMenu." />
+
+### Default
+
+<CodePreview preview={<BasicButtonPreview />}>
+```tsx title="nav.tsx"
+import { Button } from '@cerberus-design/react'
+
+function BasicButtonPreview() {
+  return(
+    <button className={button()}>Default styles</button>
+  )
+}
+```
+</CodePreview>
+
+<WhenToUseAdmonition description="When you need a primary action button." />
+
+### Danger
+
+<CodePreview preview={<DangerButtonPreview />}>
+```tsx title="nav.tsx"
+import { Button } from '@cerberus-design/react'
+
+function DangerButtonPreview() {
+  return (
+    <button className={button({ palette: 'danger' })}>Danger styles</button>
+  )
+}
+```
+</CodePreview>
+
+<WhenToUseAdmonition description="When you need to display a destructive action (i.e. delete or cancel)." />
+
+### Outline
+
+<CodePreview preview={<OutlineButtonPreview />}>
+```tsx title="nav.tsx"
+import { Button } from '@cerberus-design/react'
+
+function OutlineButtonPreview() {
+  return (
+    <button className={button({ usage: 'outline' })}>Outline styles</button>
+  )
+}
+```
+</CodePreview>
+
+<WhenToUseAdmonition description="When you need to show a non-primary action." />
+
+### Text
+
+<CodePreview preview={<TextButtonPreview />}>
+```tsx title="nav.tsx"
+import { Button } from '@cerberus-design/react'
+
+function OutlineButtonPreview() {
+  return (
+    <button className={button({ usage: 'outline' })}>Text styles</button>
+  )
+}
+```
+</CodePreview>
+
+<WhenToUseAdmonition description="When you need to show an action that is niether primary or secondary." />
+
+### Rounded
+
+<CodePreview preview={<RoundedButtonPreview />}>
+```tsx title="nav.tsx"
+import { Button } from '@cerberus-design/react'
+
+function RoundedButtonPreview() {
+  return (
+    <button className={button({ shape: 'rounded' })}>Rounded styles</button>
+  )
+}
+```
+</CodePreview>
+
+<WhenToUseAdmonition description="When you need an alternative button shape (i.e. admin portal, etc.)." />
+
+### With Icon
+
+<CodePreview preview={<WithIconButtonPreview />}>
+```tsx title="nav.tsx"
+import { Button } from '@cerberus-design/react'
+import { ArrowDownRight } from '@cerberus-design/icons'
+
+function WithIconButtonPreview() {
+  return (
+    <button className={button()}>
+      <ArrowDownRight />
+      With icon
+    </button>
+  )
+}
+```
+</CodePreview>
+
+## Customization
+
+You can customize the button by utilizing the `cx` function.
+
+<CodePreview preview={<CustomButtonPreview />}>
+```tsx title="nav.tsx"
+import { Button } from '@cerberus-design/react'
+import { css, cx } from '@/styled-system/css'
+
+function CustomButtonPreview() {
+  return (
+    <button
+      className={cx(
+        css({
+          bgColor: 'yellow.800',
+          color: 'black',
+          _hover: {
+            bgColor: 'yellow.500',
+          },
+        }),
+        button(),
+      )}
+    >
+      Wu-Tang Forever
+    </button>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+```ts showLineNumbers=false
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  palette: 'action' | 'danger'
+  usage: 'filled' | 'outline' | 'text'
+  shape: 'sharp' | 'rounded'
+}
+
+define function Button(props: ButtonProps): ReactNode | null
+````
+
+### Props
+
+The `Button` component the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| palette     | `action`   | The color palette of the button. |
+| usage | `filled`    | The style treatment of the button.    |
+| shape | `sharp`    | The shape of the button.               |

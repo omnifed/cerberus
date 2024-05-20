@@ -30,23 +30,25 @@ export const button = defineRecipe({
     usage: {
       text: textUsage,
       outline: {
-        border: '2px solid',
-        borderColor: 'colorPalette.border.initial',
-        borderRadius: '0.375rem',
         ...nonTextStates,
+        bgColor: 'colorPalette.bg.100.initial',
+        border: '4px solid',
+        borderColor: 'colorPalette.border.initial',
       },
       filled: filledUsage,
     },
     shape: {
-      sharp: {
-        borderTopRightRadius: '2',
-        borderBottomLeftRadius: '2',
-      },
+      sharp: {},
       rounded: {
+        pxi: '8',
         rounded: 'full',
       },
     },
   },
 
-  defaultVariants: {},
+  defaultVariants: {
+    palette: 'action',
+    usage: 'filled',
+    shape: 'sharp',
+  },
 })
