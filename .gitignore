@@ -10,7 +10,16 @@ tsconfig.tsbuildinfo
 */tsconfig.tsbuildinfo
 packages/*/tsconfig.tsbuildinfo
 
+packages/styled-system/css
+packages/styled-system/jsx
+packages/styled-system/patterns
+packages/styled-system/recipes
+packages/styled-system/tokens
+packages/styled-system/types
+packages/styled-system/helpers.mjs
+
 ## Panda
+
 docs/styled-system
 packages/*/styled-system
 packages/*/styled-system-studio
