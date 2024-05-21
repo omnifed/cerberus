@@ -9,6 +9,8 @@ packages/*/.tsup
 tsconfig.tsbuildinfo
 */tsconfig.tsbuildinfo
 packages/*/tsconfig.tsbuildinfo
+
 ## Panda
-styled-system
-styled-system-studio
+docs/styled-system
+packages/*/styled-system
+packages/*/styled-system-studio

@@ -5,8 +5,8 @@ import { cerberusPreset, cerberusConfig } from '@cerberus-design/panda-preset'
 export default defineConfig({
   ...cerberusConfig,
 
-  include: ['./src/**/*.{tsx}'],
   exclude: [],
+  outdir: '.',
 
   presets: [pandaPreset, cerberusPreset],
 })

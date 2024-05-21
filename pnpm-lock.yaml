@@ -78,7 +78,7 @@ importers:
         version: 2.0.0
       tsup:
         specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.43.4(@types/node@20.12.10))(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.0.2(@microsoft/api-extractor@7.43.4)(postcss@8.4.38)(typescript@5.4.5)
       util:
         specifier: ^0.12.5
         version: 0.12.5
@@ -200,7 +200,7 @@ importers:
         version: 7.43.4(@types/node@20.12.10)
       tsup:
         specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.43.4(@types/node@20.12.10))(postcss@8.4.38)(typescript@5.4.5)
+        version: 8.0.2(@microsoft/api-extractor@7.43.4)(postcss@8.4.38)(typescript@5.4.5)
 
   packages/panda-preset:
     dependencies:
@@ -228,25 +228,23 @@ importers:
         version: 8.0.2(@microsoft/api-extractor@7.43.4(@types/node@20.12.10))(postcss@8.4.35)(typescript@5.4.5)
 
   packages/react:
+    dependencies:
+      '@cerberus-design/panda-preset':
+        specifier: '*'
+        version: 0.0.1-next-e5f3f51383771418ed757910c81e155433631b3b(@pandacss/dev@0.39.0(typescript@5.4.5))(autoprefixer@10.4.19(postcss@8.4.35))(postcss@8.4.35)
+      '@pandacss/dev':
+        specifier: '*'
+        version: 0.39.0(typescript@5.4.5)
     devDependencies:
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../../configs
-      '@cerberus-design/panda-preset':
+      '@cerberus-design/styled-system':
         specifier: workspace:*
-        version: link:../panda-preset
+        version: link:../../styled-system
       '@microsoft/api-extractor':
         specifier: ^7.43.4
         version: 7.43.4(@types/node@20.12.10)
-      '@pandacss/dev':
-        specifier: ^0.39.0
-        version: 0.39.0(typescript@5.4.5)
-      '@pandacss/preset-panda':
-        specifier: ^0.39.1
-        version: 0.39.1
-      '@pandacss/types':
-        specifier: ^0.39.1
-        version: 0.39.1
       '@types/react':
         specifier: ^18
         version: 18.3.1
@@ -259,6 +257,21 @@ importers:
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(@microsoft/api-extractor@7.43.4(@types/node@20.12.10))(postcss@8.4.35)(typescript@5.4.5)
+
+  styled-system:
+    devDependencies:
+      '@cerberus-design/panda-preset':
+        specifier: workspace:*
+        version: link:../packages/panda-preset
+      '@pandacss/dev':
+        specifier: ^0.39.0
+        version: 0.39.0(typescript@5.4.5)
+      '@pandacss/preset-panda':
+        specifier: ^0.39.1
+        version: 0.39.1
+      '@pandacss/types':
+        specifier: ^0.39.1
+        version: 0.39.1
 
   tests:
     devDependencies:
@@ -329,6 +342,13 @@ packages:
     resolution: {integrity: sha512-mMWsgklghC9R29G8m8mFrH22yK+Rge/NHWf/IsHJ82KufMwljCZ8IYooJ5NP2SUldJZ1qL9eRvi4HFUGqdr3lw==}
     peerDependencies:
       react: '>=16'
+
+  '@cerberus-design/panda-preset@0.0.1-next-e5f3f51383771418ed757910c81e155433631b3b':
+    resolution: {integrity: sha512-Y489W6vzybLT4xn5bbeg9u2qEZA2V5DH4zDsYHyD2JW962XnT54cSM0kGxm3OrorNxEa868CO8a7tHKODnyE3w==}
+    peerDependencies:
+      '@pandacss/dev': '*'
+      autoprefixer: '*'
+      postcss: '*'
 
   '@clack/core@0.3.4':
     resolution: {integrity: sha512-H4hxZDXgHtWTwV3RAVenqcC4VbJZNegbBjlPvzOzCouXtS2y3sDvlO3IsbrPNWuLWPPlYVYPghQdSF64683Ldw==}
@@ -4143,6 +4163,12 @@ snapshots:
       '@ibm/telemetry-js': 1.5.0
       prop-types: 15.8.1
       react: 18.3.1
+
+  '@cerberus-design/panda-preset@0.0.1-next-e5f3f51383771418ed757910c81e155433631b3b(@pandacss/dev@0.39.0(typescript@5.4.5))(autoprefixer@10.4.19(postcss@8.4.35))(postcss@8.4.35)':
+    dependencies:
+      '@pandacss/dev': 0.39.0(typescript@5.4.5)
+      autoprefixer: 10.4.19(postcss@8.4.35)
+      postcss: 8.4.35
 
   '@clack/core@0.3.4':
     dependencies:
@@ -8578,7 +8604,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  tsup@8.0.2(@microsoft/api-extractor@7.43.4(@types/node@20.12.10))(postcss@8.4.38)(typescript@5.4.5):
+  tsup@8.0.2(@microsoft/api-extractor@7.43.4)(postcss@8.4.38)(typescript@5.4.5):
     dependencies:
       bundle-require: 4.0.3(esbuild@0.19.12)
       cac: 6.7.14

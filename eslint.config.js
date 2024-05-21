@@ -19,7 +19,12 @@ export default tseslint.config(
 
   {
     // Docs use local v8 lint checks
-    ignores: ['docs/**/*', 'packages/*/build/**/*', 'packages/*/.tsup/**/*'],
+    ignores: [
+      'docs/**/*',
+      'packages/*/build/**/*',
+      'packages/*/.tsup/**/*',
+      'styled-system/**/*',
+    ],
   },
 
   {
