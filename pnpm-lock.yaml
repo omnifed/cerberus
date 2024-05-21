@@ -93,7 +93,7 @@ importers:
         version: link:../packages/react
       '@cerberus-design/styled-system':
         specifier: workspace:*
-        version: link:../styled-system
+        version: link:../packages/styled-system
       next:
         specifier: 14.2.3
         version: 14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -244,7 +244,7 @@ importers:
         version: link:../../configs
       '@cerberus-design/styled-system':
         specifier: workspace:*
-        version: link:../../styled-system
+        version: link:../styled-system
       '@microsoft/api-extractor':
         specifier: ^7.43.4
         version: 7.43.4(@types/node@20.12.10)
@@ -261,11 +261,11 @@ importers:
         specifier: ^8.0.2
         version: 8.0.2(@microsoft/api-extractor@7.43.4(@types/node@20.12.10))(postcss@8.4.35)(typescript@5.4.5)
 
-  styled-system:
+  packages/styled-system:
     devDependencies:
       '@cerberus-design/panda-preset':
         specifier: workspace:*
-        version: link:../packages/panda-preset
+        version: link:../panda-preset
       '@pandacss/dev':
         specifier: ^0.39.0
         version: 0.39.0(typescript@5.4.5)
@@ -286,7 +286,7 @@ importers:
         version: link:../packages/react
       '@cerberus-design/styled-system':
         specifier: workspace:*
-        version: link:../styled-system
+        version: link:../packages/styled-system
       '@happy-dom/global-registrator':
         specifier: ^14.11.0
         version: 14.11.0
