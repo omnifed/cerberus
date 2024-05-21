@@ -1,5 +1,5 @@
-import { css } from '@/styled-system/css'
-import { vstack } from '@/styled-system/patterns'
+import { css } from '@cerberus-design/styled-system/css'
+import { vstack } from '@cerberus-design/styled-system/patterns'
 import { type PropsWithChildren, memo } from 'react'
 import MatchSideNavItem from './MatchSideNavItem'
 

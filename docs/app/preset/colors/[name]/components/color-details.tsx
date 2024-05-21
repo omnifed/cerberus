@@ -1,7 +1,12 @@
 import type { SemanticToken, Sentiment } from '@cerberus-design/panda-preset'
-import { container, grid, gridItem, vstack } from '@/styled-system/patterns'
+import {
+  container,
+  grid,
+  gridItem,
+  vstack,
+} from '@cerberus-design/styled-system/patterns'
 import { normalizeTokens, getTokenList } from '../../helpers/normalize'
-import { css } from '@/styled-system/css'
+import { css } from '@cerberus-design/styled-system/css'
 
 const PREVIEW_SIZE = '15rem'
 

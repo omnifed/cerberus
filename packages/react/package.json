@@ -14,15 +14,15 @@
   },
   "peerDependencies": {
     "@cerberus-design/panda-preset": "*",
+    "@cerberus-design/styled-system": "*",
     "@pandacss/dev": "*",
     "react": "*",
     "react-dom": "*"
   },
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
+    "@cerberus-design/styled-system": "workspace:*",
     "@microsoft/api-extractor": "^7.43.4",
-    "@pandacss/dev": "^0.39.0",
-    "@pandacss/types": "^0.39.1",
     "@types/react": "^18",
     "react": "^18",
     "react-dom": "^18",
@@ -42,6 +42,12 @@
         "require": {
           "types": "./build/modern/index.d.cts",
           "default": "./build/modern/index.cjs"
+        }
+      },
+      "./src": {
+        "import": {
+          "types": "./src/index.d.ts",
+          "default": "./src/index.ts"
         }
       },
       "./package.json": "./package.json"

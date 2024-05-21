@@ -1,9 +1,8 @@
-import { css, cx } from '@/styled-system/css'
-import { hstack } from '@/styled-system/patterns'
+import { css, cx } from '@cerberus-design/styled-system/css'
+import { hstack } from '@cerberus-design/styled-system/patterns'
 import {
   DataEnrichmentAdd,
   Information,
-  Light,
   WarningHex,
 } from '@cerberus-design/icons'
 import type { Sentiment } from '@cerberus-design/panda-preset'

@@ -1,4 +1,4 @@
-import { css } from '@/styled-system/css'
+import { css } from '@cerberus-design/styled-system/css'
 
 const headlineStyles = {
   color: 'neutral.text.initial',

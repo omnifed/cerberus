@@ -1,7 +1,7 @@
 'use client'
 
-import { css } from '@/styled-system/css'
-import { vstack } from '@/styled-system/patterns'
+import { css } from '@cerberus-design/styled-system/css'
+import { vstack } from '@cerberus-design/styled-system/patterns'
 import Link from 'next/link'
 import { useLayoutEffect, useRef, useState } from 'react'
 
