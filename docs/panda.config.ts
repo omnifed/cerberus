@@ -5,9 +5,8 @@ import { cerberusPreset, cerberusConfig } from '@cerberus-design/panda-preset'
 export default defineConfig({
   ...cerberusConfig,
 
-  include: ['./app/**/*.{ts,tsx}'],
+  include: ['@cerberus-design/react/src/**/*.{ts,tsx}', './app/**/*.{ts,tsx}'],
   exclude: [],
-  importMap: '@cerberus-design/styled-system',
 
   presets: [pandaPreset, cerberusPreset],
 })
