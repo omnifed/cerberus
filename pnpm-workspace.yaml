@@ -3,3 +3,4 @@ packages:
   - 'tests'
   - 'configs'
   - 'docs'
+  - 'styled-system'
