@@ -86,7 +86,7 @@ export function PreviewLayout(props: PropsWithChildren<PreviewLayoutProps>) {
       </header>
       <section
         className={vstack({
-          bgColor: 'info.surface.initial',
+          bgColor: 'neutral.surface.200',
           border: '3px solid',
           borderColor: 'info.border.initial',
           borderRadius: 'xl',

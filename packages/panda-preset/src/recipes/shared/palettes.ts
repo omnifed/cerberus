@@ -4,7 +4,6 @@ export const INFO = 'info'
 export const SUCCESS = 'success'
 export const WARNING = 'warning'
 export const DANGER = 'danger'
-export const BRAND = 'brand'
 
 export const action = {
   colorPalette: ACTION,

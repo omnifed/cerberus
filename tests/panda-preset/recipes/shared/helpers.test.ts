@@ -7,7 +7,6 @@ import {
   SUCCESS,
   WARNING,
   DANGER,
-  BRAND,
   type Sentiment,
 } from '@cerberus-design/panda-preset'
 
@@ -20,7 +19,6 @@ describe('recipe helpers', () => {
     SUCCESS,
     WARNING,
     DANGER,
-    BRAND,
   ]
 
   test('getSlotRecipePalettes returns all palettes', () => {
@@ -55,11 +53,6 @@ describe('recipe helpers', () => {
         usage: { colorPalette: DANGER },
         size: { colorPalette: DANGER },
         kind: { colorPalette: DANGER },
-      },
-      brand: {
-        usage: { colorPalette: BRAND },
-        size: { colorPalette: BRAND },
-        kind: { colorPalette: BRAND },
       },
     })
   })

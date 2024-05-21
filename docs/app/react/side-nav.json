@@ -8,6 +8,7 @@
     "id": "1:a",
     "label": "Installation",
     "route": "/react",
+    "tag": "",
     "type": "route"
   },
   {
@@ -17,8 +18,16 @@
   },
   {
     "id": "2:a",
+    "label": "Button",
+    "route": "/react/button",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "id": "2:b",
     "label": "Show",
     "route": "/react/show",
+    "tag": "",
     "type": "route"
   },
   {
@@ -30,12 +39,14 @@
     "id": "3:a",
     "label": "useTheme",
     "route": "/react/use-theme",
+    "tag": "",
     "type": "route"
   },
   {
     "id": "3:b",
     "label": "useThemeContext",
     "route": "/react/use-theme-context",
+    "tag": "",
     "type": "route"
   }
 ]

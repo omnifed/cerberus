@@ -75,9 +75,9 @@ export const actionTokens = defineSentiment({
         description: 'The default border color of the action.',
         value: {
           _cerberusTheme: {
-            base: '#291D47',
-            _lightMode: '#E4E3E9',
-            _darkMode: '#291D47',
+            base: '#BB93E1',
+            _lightMode: '#5F00B5',
+            _darkMode: '#BB93E1',
           },
         },
       },

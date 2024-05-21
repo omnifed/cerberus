@@ -95,14 +95,14 @@ describe('actionTokens', () => {
   test('should have a action.border.initial key', () => {
     expect(actionTokens.action.border.initial).toBeDefined()
     expect(actionTokens.action.border.initial.value._cerberusTheme.base).toBe(
-      '#291D47',
+      '#BB93E1',
     )
     expect(
       actionTokens.action.border.initial.value._cerberusTheme._darkMode,
-    ).toBe('#291D47')
+    ).toBe('#BB93E1')
     expect(
       actionTokens.action.border.initial.value._cerberusTheme._lightMode,
-    ).toBe('#E4E3E9')
+    ).toBe('#5F00B5')
   })
 
   test('should have a action.border.100 key', () => {
