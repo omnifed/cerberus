@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsup --experimental-dts",
     "clean": "rm -rf ./build",
-    "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
+    "lint:ts": "tsc --project tsconfig.lint.json --noEmit",
+    "prepare": "panda codegen"
   },
   "peerDependencies": {
     "@cerberus-design/panda-preset": "*",
@@ -20,8 +21,10 @@
   },
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
+    "@cerberus-design/panda-preset": "workspace:*",
     "@microsoft/api-extractor": "^7.43.4",
     "@pandacss/dev": "^0.39.0",
+    "@pandacss/preset-panda": "^0.39.1",
     "@pandacss/types": "^0.39.1",
     "@types/react": "^18",
     "react": "^18",

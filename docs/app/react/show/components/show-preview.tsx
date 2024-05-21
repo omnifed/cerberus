@@ -1,9 +1,8 @@
 'use client'
 
-import { Show } from '@cerberus-design/react'
+import { Logout } from '@cerberus-design/icons'
+import { Button, Show } from '@cerberus-design/react'
 import { useState } from 'react'
-
-// TODO: Replace with button component
 
 export default function ShowPreview() {
   const [authenticated, setAuthenticated] = useState<boolean>(false)
@@ -20,14 +19,15 @@ export default function ShowPreview() {
     <Show
       when={authenticated}
       fallback={
-        <button onClick={handleAuthenticate} type="button">
+        <Button onClick={handleAuthenticate} type="button">
           Sign in
-        </button>
+        </Button>
       }
     >
-      <button onClick={handleUnauthenticate} type="button">
+      <Button onClick={handleUnauthenticate} type="button">
         Sign out
-      </button>
+        <Logout />
+      </Button>
     </Show>
   )
 }

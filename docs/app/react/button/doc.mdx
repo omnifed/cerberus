@@ -38,13 +38,11 @@ You can mix and match all of the examples to create the button style of your cho
 ### Default
 
 <CodePreview preview={<BasicButtonPreview />}>
-```tsx title="nav.tsx"
+```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 
-function BasicButtonPreview() {
-  return(
-    <button className={button()}>Default styles</button>
-  )
+function BasicButton() {
+  return <Button>Default styles</Button>
 }
 ```
 </CodePreview>
@@ -54,13 +52,11 @@ function BasicButtonPreview() {
 ### Danger
 
 <CodePreview preview={<DangerButtonPreview />}>
-```tsx title="nav.tsx"
+```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 
-function DangerButtonPreview() {
-  return (
-    <button className={button({ palette: 'danger' })}>Danger styles</button>
-  )
+function DangerButton() {
+  <Button palette="danger">Danger styles</Button>
 }
 ```
 </CodePreview>
@@ -70,13 +66,11 @@ function DangerButtonPreview() {
 ### Outline
 
 <CodePreview preview={<OutlineButtonPreview />}>
-```tsx title="nav.tsx"
+```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 
-function OutlineButtonPreview() {
-  return (
-    <button className={button({ usage: 'outline' })}>Outline styles</button>
-  )
+function OutlineButton() {
+  return <Button usage="outline">Outline styles</Button>
 }
 ```
 </CodePreview>
@@ -86,13 +80,11 @@ function OutlineButtonPreview() {
 ### Text
 
 <CodePreview preview={<TextButtonPreview />}>
-```tsx title="nav.tsx"
+```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 
-function OutlineButtonPreview() {
-  return (
-    <button className={button({ usage: 'outline' })}>Text styles</button>
-  )
+function TextButton() {
+  return <Button usage="text">Text styles</Button>
 }
 ```
 </CodePreview>
@@ -102,13 +94,11 @@ function OutlineButtonPreview() {
 ### Rounded
 
 <CodePreview preview={<RoundedButtonPreview />}>
-```tsx title="nav.tsx"
+```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 
-function RoundedButtonPreview() {
-  return (
-    <button className={button({ shape: 'rounded' })}>Rounded styles</button>
-  )
+function RoundedButton() {
+  return <Button shape="rounded">Rounded styles</Button>
 }
 ```
 </CodePreview>
@@ -118,16 +108,16 @@ function RoundedButtonPreview() {
 ### With Icon
 
 <CodePreview preview={<WithIconButtonPreview />}>
-```tsx title="nav.tsx"
+```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 import { ArrowDownRight } from '@cerberus-design/icons'
 
-function WithIconButtonPreview() {
+function WithIconButton() {
   return (
-    <button className={button()}>
+    <Button>
       <ArrowDownRight />
       With icon
-    </button>
+    </Button>
   )
 }
 ```
@@ -138,26 +128,23 @@ function WithIconButtonPreview() {
 You can customize the button by utilizing the `cx` function.
 
 <CodePreview preview={<CustomButtonPreview />}>
-```tsx title="nav.tsx"
+```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
-import { css, cx } from '@/styled-system/css'
+import { css } from '@/styled-system/css'
 
-function CustomButtonPreview() {
+function CustomButton() {
   return (
-    <button
-      className={cx(
-        css({
-          bgColor: 'yellow.800',
-          color: 'black',
-          _hover: {
-            bgColor: 'yellow.500',
-          },
-        }),
-        button(),
-      )}
+    <Button
+      className={css({
+        bgColor: 'yellow.800',
+        color: 'black',
+        _hover: {
+          bgColor: 'yellow.500',
+        },
+      })}
     >
       Wu-Tang Forever
-    </button>
+    </Button>
   )
 }
 ```

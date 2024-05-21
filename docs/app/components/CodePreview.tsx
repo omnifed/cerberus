@@ -1,19 +1,12 @@
 'use client'
 
 import { useState, type PropsWithChildren, type ReactNode } from 'react'
-import { Show } from '@cerberus-design/react'
+import { Button, Show } from '@cerberus-design/react'
 import { Code, CodeHide } from '@cerberus-design/icons'
 import { css } from '@/styled-system/css'
 import { hstack, vstack } from '@/styled-system/patterns'
 
 // TODO: Replace with Badge component
-// TODO: Replace with Button component
-
-const tempBtnStyles = css({
-  alignItems: 'center',
-  display: 'inline-flex',
-  gap: '2',
-})
 
 interface CodePreviewProps {
   preview: ReactNode
@@ -45,17 +38,13 @@ export default function CodePreview(
         className={hstack({
           bgColor: 'neutral.surface.100',
           justifyContent: 'flex-end',
-          p: '4',
+          py: '4',
         })}
       >
-        <button
-          className={tempBtnStyles}
-          onClick={handleHideCode}
-          type="button"
-        >
+        <Button onClick={handleHideCode} usage="text" type="button">
           Hide code
           <CodeHide aria-hidden size="1.5rem" />
-        </button>
+        </Button>
       </header>
       {props.children}
     </Show>
@@ -72,17 +61,13 @@ export function PreviewLayout(props: PropsWithChildren<PreviewLayoutProps>) {
       <header
         className={hstack({
           justifyContent: 'flex-end',
-          p: '4',
+          py: '4',
         })}
       >
-        <button
-          className={tempBtnStyles}
-          onClick={props.onShowCode}
-          type="button"
-        >
+        <Button onClick={props.onShowCode} usage="text" type="button">
           Show code
           <Code aria-hidden size="1.5rem" />
-        </button>
+        </Button>
       </header>
       <section
         className={vstack({

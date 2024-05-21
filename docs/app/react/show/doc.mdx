@@ -25,30 +25,36 @@ import { Show } from '@cerberus-design/react'
 
 <CodePreview preview={<ShowPreview />}>
 ```tsx title="nav.tsx"
-import { Show } from '@cerberus-design/react'
+import { Show, Button } from '@cerberus-design/react'
+import { Logout } from '@cerberus-design/icons'
 
 function Nav() {
-const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
+  const [authenticated, setAuthenticated] = useState<boolean>(false)
 
-function handleSignIn() {
-setIsSignedIn(true)
+  function handleAuthenticate() {
+    setAuthenticated(true)
+  }
+
+  function handleUnauthenticate() {
+    setAuthenticated(false)
+  }
+
+  return (
+    <Show
+      when={authenticated}
+      fallback={
+        <Button onClick={handleAuthenticate} type="button">
+          Sign in
+        </Button>
+      }
+    >
+      <Button onClick={handleUnauthenticate} type="button">
+        Sign out
+        <Logout />
+      </Button>
+    </Show>
+  )
 }
-
-function handleSignOut() {
-setIsSignedIn(false)
-}
-
-return (
-
-<Show
-  when={isSignedIn}
-  fallback={<button onClick={handleSignIn}>Sign in</button>}
->
-  <button palette="neutral" onClick={handleSignOut}>
-    Sign out
-  </button>
-</Show>
-) }
 ```
 </CodePreview>
 

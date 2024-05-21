@@ -1,58 +1,49 @@
-import { css, cx } from '@/styled-system/css'
-import { button } from '@/styled-system/recipes'
+import { Button } from '@cerberus-design/react'
 import { ArrowDownRight } from '@cerberus-design/icons'
+import { css } from '@/styled-system/css'
 
 export function BasicButtonPreview() {
-  return <button className={button()}>Default styles</button>
+  return <Button>Default styles</Button>
 }
 
 export function DangerButtonPreview() {
-  return (
-    <button className={button({ palette: 'danger' })}>Danger styles</button>
-  )
+  return <Button palette="danger">Danger styles</Button>
 }
 
 export function OutlineButtonPreview() {
-  return (
-    <button className={button({ usage: 'outline' })}>Outline styles</button>
-  )
+  return <Button usage="outline">Outline styles</Button>
 }
 
 export function TextButtonPreview() {
-  return <button className={button({ usage: 'text' })}>Text styles</button>
+  return <Button usage="text">Text styles</Button>
 }
 
 export function RoundedButtonPreview() {
-  return (
-    <button className={button({ shape: 'rounded' })}>Rounded styles</button>
-  )
+  return <Button shape="rounded">Rounded styles</Button>
 }
 
 export function WithIconButtonPreview() {
   return (
-    <button className={button()}>
+    <Button>
       <ArrowDownRight />
       With icon
-    </button>
+    </Button>
   )
 }
 
 export function CustomButtonPreview() {
   return (
-    <button
-      className={cx(
-        css({
-          bgColor: 'yellow',
-          color: 'black',
-          _hover: {
-            bgColor: 'black',
-            color: 'yellow',
-          },
-        }),
-        button(),
-      )}
+    <Button
+      className={css({
+        bgColor: 'yellow',
+        color: 'black',
+        _hover: {
+          bgColor: 'black',
+          color: 'yellow',
+        },
+      })}
     >
       Wu-Tang Forever
-    </button>
+    </Button>
   )
 }
