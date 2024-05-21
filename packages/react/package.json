@@ -44,6 +44,12 @@
           "default": "./build/modern/index.cjs"
         }
       },
+      "./src": {
+        "import": {
+          "types": "./src/index.d.ts",
+          "default": "./src/index.ts"
+        }
+      },
       "./package.json": "./package.json"
     },
     "typesVersions": {

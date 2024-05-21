@@ -1,7 +1,7 @@
-import { grid, gridItem, vstack } from '@/styled-system/patterns'
+import { grid, gridItem, vstack } from '@cerberus-design/styled-system/patterns'
 import RootHeadline from './components/RootHeadline'
 import { Image as ImageIcon } from '@cerberus-design/icons'
-import { css } from '@/styled-system/css'
+import { css } from '@cerberus-design/styled-system/css'
 import Link from 'next/link'
 
 export default function Home() {

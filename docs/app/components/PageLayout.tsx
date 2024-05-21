@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react'
-import { grid, gridItem } from '@/styled-system/patterns'
+import { grid, gridItem } from '@cerberus-design/styled-system/patterns'
 import { markdown } from '../styles/markdown'
 
 const PAGE_MINUS_HEADER = 'calc(100dvh - 9.5rem)'

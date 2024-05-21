@@ -7,6 +7,7 @@ export default defineConfig({
 
   include: ['./app/**/*.{ts,tsx}'],
   exclude: [],
+  importMap: '@cerberus-design/styled-system',
 
   presets: [pandaPreset, cerberusPreset],
 })

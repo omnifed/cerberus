@@ -1,7 +1,7 @@
 import { type Sentiment } from '@cerberus-design/panda-preset'
 import ColorSwatch from './ColorSwatch'
-import { css } from '@/styled-system/css'
-import { grid, gridItem } from '@/styled-system/patterns'
+import { css } from '@cerberus-design/styled-system/css'
+import { grid, gridItem } from '@cerberus-design/styled-system/patterns'
 import { normalizeTokens, getTokenList } from '../helpers/normalize'
 
 interface PaletteListProps {

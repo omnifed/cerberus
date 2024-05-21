@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
 import { ThemeProvider } from '@cerberus-design/react'
-import { css, cx } from '@/styled-system/css'
+import { css, cx } from '@cerberus-design/styled-system/css'
 import { Nav } from './components/Nav'
 
 import './globals.css'

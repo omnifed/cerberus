@@ -1,5 +1,10 @@
 import * as Icons from '@cerberus-design/icons'
-import { container, grid, gridItem, vstack } from '@/styled-system/patterns'
+import {
+  container,
+  grid,
+  gridItem,
+  vstack,
+} from '@cerberus-design/styled-system/patterns'
 import CopyToClipboard from './CopyToClipboard'
 
 const sizes = [16, 20, 24, 32]

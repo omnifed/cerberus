@@ -1,7 +1,7 @@
 'use client'
 
 import { TypographyBlock } from './typography-block'
-import { css } from '@/styled-system/css'
+import { css } from '@cerberus-design/styled-system/css'
 import { useState, type ChangeEvent } from 'react'
 
 interface TypographyListProps {}

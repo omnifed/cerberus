@@ -1,8 +1,8 @@
 'use client'
 
 import { Suspense, lazy, useState, type ChangeEvent } from 'react'
-import { css } from '@/styled-system/css'
-import { container } from '@/styled-system/patterns'
+import { css } from '@cerberus-design/styled-system/css'
+import { container } from '@cerberus-design/styled-system/patterns'
 
 const IconsList = lazy(() => import('./icons-list'))
 

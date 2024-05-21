@@ -34,7 +34,7 @@ function App() {
 
 ```typescript
 import { Add } from '@cerberus-design/icons';
-import { iconButton } from '@/styled-system/recipes';
+import { iconButton } from '@cerberus-design/styled-system/recipes';
 
 function App() {
   return (
