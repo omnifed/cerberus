@@ -32,5 +32,16 @@
     "label": "Typography",
     "route": "/preset/typography",
     "type": "route"
+  },
+  {
+    "id": "3",
+    "label": "Utilities",
+    "type": "heading"
+  },
+  {
+    "id": "3:a",
+    "label": "Z-Index",
+    "route": "/preset/z-index",
+    "type": "route"
   }
 ]
