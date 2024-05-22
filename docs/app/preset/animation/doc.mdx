@@ -1,11 +1,136 @@
 import { NoteAdmonition } from '@/app/components/Admonition'
+import {
+  WhenToUseAdmonition
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { PingPreview, PulsePreview } from '@/app/preset/animation/components/animation-preview'
+import { AnimateInPreview } from '@/app/preset/animation/components/animate-in-preview'
 
 # Animation
 
-**The color palette is a key element in the design system. It is used to create a visual hierarchy, guide the user's attention, and reinforce the brand identity.**
+**Dynamic visual effects that enhance user interaction and experience and make interfaces intuitive and engaging.**
 
-## Theme vs. Mode
+Cerberus extends the [built-in animations](https://panda-css.com/docs/customization/theme#keyframes) provided by Panda-CSS.
 
-It is important to understand the difference between the theme and mode.
+```ts showLineNumbers=false
+animationName: 'ping' | 'pulse' | 'fadeIn';
+```
 
-### Theme
+## Usage
+
+### Ping
+
+<CodePreview preview={<PingPreview />}>
+```tsx title="notification-alert.tsx" {19}
+function PingPreview() {
+  return (
+    <span
+      className={vstack({
+        justify: 'center',
+        position: 'relative',
+      })}
+    >
+      <span
+        className={circle({
+          bgColor: 'success.border.initial',
+          position: 'absolute',
+          size: '2',
+          zIndex: 'decorator',
+        })}
+      />
+      <span
+        className={circle({
+          animation: 'ping 2s infinite',
+          bgColor: 'success.surface.initial',
+          position: 'absolute',
+          size: '2',
+          zIndex: 'base',
+        })}
+      />
+    </span>
+  )
+}
+```
+</CodePreview>
+
+<WhenToUseAdmonition description="When you need to draw attention to a specific element." />
+
+### Pulse
+
+<CodePreview preview={<PulsePreview />}>
+```tsx title="skeleton.tsx" {5}
+function PulsePreview() {
+  return (
+    <div
+      className={square({
+        animation: 'pulse 2s infinite',
+        bgColor: 'neutral.surface.300',
+        rounded: 'md',
+        size: '10rem',
+      })}
+    />
+  )
+}
+```
+</CodePreview>
+
+<WhenToUseAdmonition description="When you need to show an initial loading placeholder animation." />
+
+## Patterns
+
+### Animate In
+
+<CodePreview preview={<AnimateInPreview />}>
+```tsx title="nice-thing.tsx" {30,37}
+import { Button, Show } from '@cerberus-design/react'
+import {
+  animateIn,
+  hstack,
+  vstack,
+} from '@cerberus-design/styled-system/patterns'
+import { useCallback, useState } from 'react'
+
+function AnimateInPreview() {
+  const [animate, setAnimate] = useState<boolean>(false)
+
+  const handleAnimateIn = useCallback(() => {
+    setAnimate(true)
+    setTimeout(() => {
+      setAnimate(false)
+    }, 4000)
+  }, [])
+
+  return (
+    <div
+      className={hstack({
+        gap: '4',
+      })}
+    >
+      <Button onClick={handleAnimateIn}>Animate In</Button>
+
+      <div className={vstack()}>
+        <Show when={animate}>
+          <div
+            className={animateIn({
+              p: '4',
+            })}
+          >
+            <span>Default</span>
+          </div>
+          <div
+            className={animateIn({
+              delay: '600ms',
+              p: '4',
+            })}
+          >
+            <span>Delayed</span>
+          </div>
+        </Show>
+      </div>
+    </div>
+  )
+}
+```
+</CodePreview>
+
+<WhenToUseAdmonition description="When you need to show an initial loading placeholder animation." />
