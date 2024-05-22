@@ -1,10 +1,45 @@
 'use client'
 
 import { zIndex } from '@cerberus-design/panda-preset'
-import { Button } from '@cerberus-design/react'
-import { css } from '@cerberus-design/styled-system/css'
-import { hstack, vstack } from '@cerberus-design/styled-system/patterns'
+import { css, cx } from '@cerberus-design/styled-system/css'
+import { vstack } from '@cerberus-design/styled-system/patterns'
 import { useState, type ChangeEvent } from 'react'
+
+const zLayers = css({
+  '&[data-z-index="hide"]': {
+    zIndex: 'hide',
+  },
+  '&[data-z-index="base"]': {
+    zIndex: 'base',
+  },
+  '&[data-z-index="decorator"]': {
+    zIndex: 'decorator',
+  },
+  '&[data-z-index="dropdown"]': {
+    zIndex: 'dropdown',
+  },
+  '&[data-z-index="sticky"]': {
+    zIndex: 'sticky',
+  },
+  '&[data-z-index="banner"]': {
+    zIndex: 'banner',
+  },
+  '&[data-z-index="overlay"]': {
+    zIndex: 'overlay',
+  },
+  '&[data-z-index="modal"]': {
+    zIndex: 'modal',
+  },
+  '&[data-z-index="popover"]': {
+    zIndex: 'popover',
+  },
+  '&[data-z-index="toast"]': {
+    zIndex: 'toast',
+  },
+  '&[data-z-index="tooltip"]': {
+    zIndex: 'tooltip',
+  },
+})
 
 export default function ZPreview() {
   const [active, setActive] = useState<keyof typeof zIndex>('hide')
@@ -31,21 +66,24 @@ export default function ZPreview() {
         })}
       >
         <div
-          className={css({
-            border: '4px solid',
-            borderColor: 'success.border.initial',
-            bgColor: 'success.surface.initial',
-            left: '5',
-            position: 'absolute',
-            py: '6',
-            pxi: '12',
-            top: '5',
-            rounded: 'md',
-            zIndex: active,
-            md: {
-              w: '1/2',
-            },
-          })}
+          data-z-index={active}
+          className={cx(
+            zLayers,
+            css({
+              border: '4px solid',
+              borderColor: 'success.border.initial',
+              bgColor: 'success.surface.initial',
+              left: '5',
+              position: 'absolute',
+              py: '6',
+              pxi: '12',
+              top: '5',
+              rounded: 'md',
+              md: {
+                w: '1/2',
+              },
+            }),
+          )}
         >
           z-index: {active}
         </div>

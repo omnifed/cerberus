@@ -1,5 +1,3 @@
-'use client'
-
 import { css } from '@cerberus-design/styled-system/css'
 import { zIndex } from '@cerberus-design/panda-preset'
 import { hstack } from '@cerberus-design/styled-system/patterns'
