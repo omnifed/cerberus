@@ -1,8 +1,9 @@
 import { grid, gridItem, vstack } from '@cerberus-design/styled-system/patterns'
 import RootHeadline from './components/RootHeadline'
-import { Image as ImageIcon } from '@cerberus-design/icons'
 import { css } from '@cerberus-design/styled-system/css'
 import Link from 'next/link'
+import Image from 'next/image'
+import { button } from '@cerberus-design/styled-system/recipes'
 
 export default function Home() {
   return (
@@ -32,17 +33,28 @@ export default function Home() {
         >
           <div
             className={vstack({
-              bgColor: 'gray',
               gap: '0',
               justify: 'center',
+              p: '12',
               h: '15rem',
               w: 'full',
               md: {
                 h: 'full',
+                maxW: '40rem',
               },
             })}
           >
-            <ImageIcon size={32} />
+            <Image
+              alt="Cerberus Design System logo"
+              className={css({
+                md: {
+                  w: 'full',
+                },
+              })}
+              src={`/logo.svg`}
+              height="300"
+              width="300"
+            />
           </div>
         </div>
 
@@ -65,27 +77,7 @@ export default function Home() {
               mt: '4',
             })}
           >
-            <Link
-              className={css({
-                alignItems: 'center',
-                bgColor: 'action.navigation.initial',
-                color: 'neutral.text.inverse',
-                display: 'inline-flex',
-                h: '3.3rem',
-                justifyContent: 'center',
-                pxi: '4',
-                w: 'full',
-                rounded: 'md',
-                transition: 'background-color 0.2s ease-in-out',
-                _hover: {
-                  bgColor: 'action.navigation.hover',
-                },
-                md: {
-                  w: 'auto',
-                },
-              })}
-              href="/preset/"
-            >
+            <Link className={button()} href="/preset/">
               Get Started
             </Link>
           </div>

@@ -34,6 +34,12 @@
     "type": "route"
   },
   {
+    "id": "2:d",
+    "label": "Animation",
+    "route": "/preset/animation",
+    "type": "route"
+  },
+  {
     "id": "3",
     "label": "Utilities",
     "type": "heading"
