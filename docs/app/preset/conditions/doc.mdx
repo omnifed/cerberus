@@ -1,0 +1,40 @@
+import { NoteAdmonition } from '@/app/components/Admonition'
+
+# Conditions
+
+**[Conditions](https://panda-css.com/docs/concepts/conditional-styles) allow you to apply different styles and behaviors based on specific conditions or states..**
+
+<NoteAdmonition description="This page assumes you are familiar with Panda CSS conditions. If not, we recommend you first learn about them before moving forard." />
+
+## Extra Conditions
+
+Cerberus extends the [built-in conditions](https://panda-css.com/docs/concepts/conditional-styles#reference) provided by Panda-CSS.
+
+| Name                | Selector                  |
+| ------------------  | ------------------------- |
+| _cerberusTheme      | `[data-theme=cerberus] &` |
+| _lightMode          | `[data-color-mode=light] &, &.light, .light &` |
+| _darkMode           | `[data-color-mode=dark] &, &.dark, .dark &` |
+| _modalOpen          | `&:is([data-modal-open=true])` |
+| _screenReaderOnly   | `&:is([data-screen-reader-only=true])` |
+| _invalid            | `&:is(:invalid, [data-invalid], [aria-invalid])` |
+| _userInvalid        | `&:is(:user-invalid, [aria-invalid])` |
+| _groupInvalid       | `.group:is([data-invalid] &, [aria-invalid]) &` |
+| _groupChecked       | `.group:is([data-checked="true"] &, [aria-checked="true"]) &` |
+| _positionBottom     | `&:is([data-position=bottom])` |
+| _positionTop        | `&:is([data-position=top])` |
+| _positionLeft       | `&:is([data-position=left])` |
+| _positionRight      | `&:is([data-position=right])` |
+| _startIcon          | `&:is([data-start-icon=true])` |
+| _admin              | `&:is([data-role=admin])` |
+| _student            | `&:is([data-role=student])` |
+| _user               | `&:is([data-role=user])` |
+| _highlight          | `&:is(::selection)` |
+| _spellingError      | `&:is(::spelling-error)` |
+| _grammarError       | `&:is(::grammar-error)` |
+| _neutralPalette     | `&:is([data-palette=neutral])` |
+| _actionPalette      | `&:is([data-palette=action])` |
+| _infoPalette        | `&:is([data-palette=info])` |
+| _successPalette     | `&:is([data-palette=success])` |
+| _warningPalette     | `&:is([data-palette=warning])` |
+| _dangerPalette       | `&:is([data-palette=danger])` |

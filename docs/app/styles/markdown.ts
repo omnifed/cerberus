@@ -82,7 +82,7 @@ export const markdown = css({
       p: '2',
     },
   },
-  '& :is(p,li) > code:not(.code)': {
+  '& :is(p,li,td) > code:not(.code)': {
     border: '2px solid',
     borderColor: '#01213a',
     bgColor: '#011627',
