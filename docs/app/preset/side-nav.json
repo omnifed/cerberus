@@ -41,7 +41,7 @@
   },
   {
     "id": "3",
-    "label": "Utilities",
+    "label": "Helpers",
     "type": "heading"
   },
   {
@@ -60,6 +60,12 @@
     "id": "3:c",
     "label": "Utilities",
     "route": "/preset/utilities",
+    "type": "route"
+  },
+  {
+    "id": "3:c",
+    "label": "Patterns",
+    "route": "/preset/patterns",
     "type": "route"
   }
 ]
