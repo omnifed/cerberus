@@ -2,10 +2,6 @@ import { describe, test, expect } from 'bun:test'
 import { conditions } from '@cerberus-design/panda-preset'
 
 describe('conditions', () => {
-  test('should have a duTheme', () => {
-    expect(conditions.duTheme).toEqual('[data-theme=du] &')
-  })
-
   test('should have a cerberusTheme', () => {
     expect(conditions.cerberusTheme).toEqual('[data-theme=cerberus] &')
   })
@@ -86,5 +82,41 @@ describe('conditions', () => {
 
   test('should have a user', () => {
     expect(conditions.user).toEqual('&:is([data-role=user])')
+  })
+
+  test('should have a highlight', () => {
+    expect(conditions.highlight).toEqual('&:is(::selection)')
+  })
+
+  test('should have a spellingError', () => {
+    expect(conditions.spellingError).toEqual('&:is(::spelling-error)')
+  })
+
+  test('should have a grammarError', () => {
+    expect(conditions.grammarError).toEqual('&:is(::grammar-error)')
+  })
+
+  test('should have a neutralPalette', () => {
+    expect(conditions.neutralPalette).toEqual('&:is([data-palette=neutral])')
+  })
+
+  test('should have an actionPalette', () => {
+    expect(conditions.actionPalette).toEqual('&:is([data-palette=action])')
+  })
+
+  test('should have an infoPalette', () => {
+    expect(conditions.infoPalette).toEqual('&:is([data-palette=info])')
+  })
+
+  test('should have a successPalette', () => {
+    expect(conditions.successPalette).toEqual('&:is([data-palette=success])')
+  })
+
+  test('should have a warningPalette', () => {
+    expect(conditions.warningPalette).toEqual('&:is([data-palette=warning])')
+  })
+
+  test('should have a dangerPalette', () => {
+    expect(conditions.dangerPalette).toEqual('&:is([data-palette=danger])')
   })
 })

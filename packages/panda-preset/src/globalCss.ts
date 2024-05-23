@@ -42,6 +42,16 @@ export const globalCss = defineGlobalStyles({
     },
   },
 
+  _highlight: {
+    backgroundColor: 'var(--cerberus-colors-info-border-initial)',
+    color: 'var(--cerberus-colors-info-text-initial)',
+  },
+
+  _spellingError: {
+    backgroundColor: 'var(--cerberus-colors-danger-bg-initial)',
+    color: 'var(--cerberus-colors-danger-text-initial)',
+  },
+
   strong: {
     fontVariationSettings: "'wght' 700",
   },

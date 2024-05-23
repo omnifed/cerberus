@@ -1,7 +1,6 @@
 export const conditions = {
   // themes
   cerberusTheme: '[data-theme=cerberus] &',
-  duTheme: '[data-theme=du] &',
 
   // modes
   lightMode: '[data-color-mode=light] &, &.light, .light &',
@@ -28,4 +27,17 @@ export const conditions = {
   admin: '&:is([data-role=admin])',
   student: '&:is([data-role=student])',
   user: '&:is([data-role=user])',
+
+  // highlights
+  highlight: '&:is(::selection)',
+  spellingError: '&:is(::spelling-error)',
+  grammarError: '&:is(::grammar-error)',
+
+  // palettes
+  neutralPalette: '&:is([data-palette=neutral])',
+  actionPalette: '&:is([data-palette=action])',
+  infoPalette: '&:is([data-palette=info])',
+  successPalette: '&:is([data-palette=success])',
+  warningPalette: '&:is([data-palette=warning])',
+  dangerPalette: '&:is([data-palette=danger])',
 }
