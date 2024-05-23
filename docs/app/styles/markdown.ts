@@ -1,3 +1,4 @@
+import { focusStates } from '@cerberus-design/panda-preset'
 import { css } from '@cerberus-design/styled-system/css'
 
 const headlineStyles = {
@@ -43,16 +44,30 @@ export const markdown = css({
     textStyle: 'body-xs',
   },
   '& a': {
+    display: 'inline-block',
+    rounded: 'sm',
     textStyle: 'link',
-    '&:hover': {
+    _hover: {
       color: 'action.navigation.hover',
       textDecoration: 'underline',
+    },
+    _focusVisible: {
+      boxShadow: 'none',
+      outline: '3px solid',
+      outlineColor: 'action.border.focus',
+      outlineOffset: '2px',
     },
   },
   '& a.heading': {
     color: 'inherit',
     textDecoration: 'none',
     transition: 'color 0.2s ease-in-out',
+    _focusVisible: {
+      boxShadow: 'none',
+      outline: '3px solid',
+      outlineColor: 'action.border.focus',
+      outlineOffset: '2px',
+    },
   },
   '& ol': {
     listStyleType: 'decimal',
