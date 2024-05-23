@@ -55,5 +55,11 @@
     "label": "Conditions",
     "route": "/preset/conditions",
     "type": "route"
+  },
+  {
+    "id": "3:c",
+    "label": "Utilities",
+    "route": "/preset/utilities",
+    "type": "route"
   }
 ]
