@@ -13,13 +13,13 @@ import Link from 'next/link'
 const paletteTextStyles = css({
   textAlign: 'center',
 
-  '&[data-palette="neutral"]': {
+  _neutralPalette: {
     color: 'neutral.text.initial !important',
     '&[data-has-white="true"]': {
       color: 'neutral.text.inverse !important',
     },
   },
-  '&[data-palette="action"]': {
+  _actionPalette: {
     color: 'action.text.initial !important',
     '&[data-has-white="true"]': {
       color: 'action.text.inverse !important',
@@ -31,13 +31,13 @@ const paletteTextStyles = css({
       },
     },
   },
-  '&[data-palette="info"]': {
+  _infoPalette: {
     color: 'info.text.initial !important',
     '&[data-has-white="true"]': {
       color: 'info.surface.initial !important',
     },
   },
-  '&[data-palette="success"]': {
+  _successPalette: {
     color: 'success.text.initial !important',
     '&[data-has-white="true"]': {
       color: 'success.text.inverse !important',
@@ -49,13 +49,13 @@ const paletteTextStyles = css({
       },
     },
   },
-  '&[data-palette="warning"]': {
+  _warningPalette: {
     color: 'warning.text.initial !important',
     '&[data-has-white="true"]': {
       color: 'warning.surface.initial !important',
     },
   },
-  '&[data-palette="danger"]': {
+  _dangerPalette: {
     color: 'danger.text.inverse !important',
     '&[data-has-white="true"]': {
       color: 'danger.text.initial !important',
