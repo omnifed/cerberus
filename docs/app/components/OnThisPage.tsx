@@ -1,5 +1,6 @@
 'use client'
 
+import { focusStates } from '@cerberus-design/panda-preset'
 import { css } from '@cerberus-design/styled-system/css'
 import { vstack } from '@cerberus-design/styled-system/patterns'
 import Link from 'next/link'
@@ -79,9 +80,10 @@ export default function OnThisPage() {
               href={link.id}
               className={css({
                 display: 'block',
+                rounded: 'sm',
                 textStyle: 'body-xs',
                 textWrap: 'pretty',
-                '&:hover': {
+                _hover: {
                   textDecorationColor: 'action.navigation.hover',
                   textDecoration: 'underline',
                 },
@@ -90,6 +92,7 @@ export default function OnThisPage() {
                   textDecorationColor: 'action.navigation.hover',
                   textDecoration: 'underline',
                 },
+                _focusVisible: focusStates._focusVisible,
               })}
             >
               {link.label}

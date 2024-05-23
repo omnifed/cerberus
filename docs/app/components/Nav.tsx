@@ -10,6 +10,7 @@ import { Show, useThemeContext } from '@cerberus-design/react'
 import { AnimatingSunIcon } from './icons/AnimatingSunIcon'
 import { AnimatingMoonIcon } from './icons/AnimatingMoonIcon'
 import { usePathname } from 'next/navigation'
+import { focusStates } from '@cerberus-design/panda-preset'
 
 const navLogoContent = (
   <section
@@ -26,10 +27,12 @@ const navLogoContent = (
       href="/"
       className={css({
         pxi: '2',
+        rounded: 'sm',
         textStyle: 'body-xl',
         _active: {
           color: 'neutral.text.initial',
         },
+        _focusVisible: focusStates._focusVisible,
       })}
     >
       <strong>Cerberus </strong>
@@ -41,6 +44,11 @@ const navGHLogoContent = (
   <li>
     <a
       aria-label="View Github repo"
+      className={css({
+        display: 'inline-block',
+        rounded: 'sm',
+        _focusVisible: focusStates._focusVisible,
+      })}
       href="https://github.com/omnifed/cerberus"
       rel="noreferrer"
       target="_blank"
@@ -155,6 +163,7 @@ export function Nav() {
                       transform: 'translate3d(0, 0, 0)',
                       w: 'full',
                     },
+                    _focusVisible: focusStates._focusVisible,
                   },
                 })}
                 href={item.href}
@@ -194,7 +203,14 @@ export function Nav() {
               h: '1.5rem',
             })}
           >
-            <button aria-label={ariaLabel} onClick={updateMode}>
+            <button
+              className={css({
+                rounded: 'sm',
+                _focusVisible: focusStates._focusVisible,
+              })}
+              aria-label={ariaLabel}
+              onClick={updateMode}
+            >
               <Show when={mode === 'light'} fallback={<AnimatingMoonIcon />}>
                 <AnimatingSunIcon />
               </Show>

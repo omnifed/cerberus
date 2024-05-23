@@ -63,7 +63,7 @@
     "type": "route"
   },
   {
-    "id": "3:c",
+    "id": "3:d",
     "label": "Patterns",
     "route": "/preset/patterns",
     "type": "route"

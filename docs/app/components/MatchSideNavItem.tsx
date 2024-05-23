@@ -4,6 +4,8 @@ import { css } from '@cerberus-design/styled-system/css'
 import { usePathname } from 'next/navigation'
 import type { HeadingItem, LinkItem } from './SideNav'
 import Link from 'next/link'
+import { ACTION_NAV_HOVER } from '../utils/const'
+import { focusStates } from '@cerberus-design/panda-preset'
 
 export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
   const pathname = usePathname()
@@ -30,13 +32,14 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
             transition: 'color 250ms ease-in-out',
             w: 'full',
             _hover: {
-              color: 'action.navigation.hover',
+              color: ACTION_NAV_HOVER,
             },
             _currentPage: {
-              color: 'action.navigation.visited',
+              color: ACTION_NAV_HOVER,
               borderRight: '2px solid',
-              borderColor: 'action.navigation.visited',
+              borderColor: ACTION_NAV_HOVER,
             },
+            _focusVisible: focusStates._focusVisible,
           })}
           href={props.route}
           prefetch
