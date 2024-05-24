@@ -3,15 +3,16 @@ import { hstack } from '@cerberus-design/styled-system/patterns'
 import { LogoGithub, LogoNpm } from '@cerberus-design/icons'
 import { Show } from '@cerberus-design/react'
 
+// important used to override markdown styles
 const apiLinkStyles = css({
   alignItems: 'center',
   border: '1px solid',
   borderColor: 'action.border.100',
   bgColor: 'action.bg.100.initial',
-  display: 'inline-flex',
+  display: 'inline-flex !important',
   gap: '2',
   pxi: '2',
-  rounded: 'full',
+  rounded: 'full !important',
   textStyle: 'body-xs',
   textDecoration: 'none',
   transition: 'all 200ms ease-in-out',

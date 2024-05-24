@@ -93,7 +93,7 @@ export function PreviewLayout(props: PropsWithChildren<PreviewLayoutProps>) {
             left: '4',
             textStyle: 'body-xs',
             textTransform: 'uppercase',
-            zIndex: 'banner',
+            zIndex: 'decorator',
           })}
         >
           preview mode

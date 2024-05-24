@@ -74,7 +74,16 @@ export function Nav() {
         columns: 3,
         gridTemplateRows: '1fr 1fr',
         gap: '0',
-        position: 'sticky',
+        position: 'fixed',
+        top: '0',
+        w: 'full',
+        zIndex: 'sticky',
+        _lightMode: {
+          bgColor: 'rgba(255, 255, 255, 0.5)',
+        },
+        _darkMode: {
+          bgColor: 'rgba(19, 0, 36, 0.3);',
+        },
         md: {
           gridTemplateRows: '1fr',
           pxi: '6',
