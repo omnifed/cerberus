@@ -35,9 +35,9 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
               color: ACTION_NAV_HOVER,
             },
             _currentPage: {
-              color: ACTION_NAV_HOVER,
+              color: `action.navigation.hover`,
               borderRight: '2px solid',
-              borderColor: ACTION_NAV_HOVER,
+              borderColor: `action.navigation.hover`,
             },
             _focusVisible: focusStates._focusVisible,
           })}
