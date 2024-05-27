@@ -22,7 +22,7 @@
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/styled-system": "workspace:*",
-    "@microsoft/api-extractor": "^7.43.4",
+    "@microsoft/api-extractor": "^7.44.1",
     "@types/react": "^18",
     "react": "^18",
     "react-dom": "^18",
