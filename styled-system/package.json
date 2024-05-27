@@ -46,7 +46,7 @@
     "@cerberus-design/panda-preset": "workspace:*",
     "@pandacss/dev": "^0.39.0",
     "@pandacss/preset-panda": "^0.39.1",
-    "@pandacss/types": "^0.39.1"
+    "@pandacss/types": "^0.39.2"
   },
   "publishConfig": {
     "access": "public"

@@ -224,8 +224,8 @@ importers:
         specifier: ^0.39.0
         version: 0.39.0(typescript@5.4.5)
       '@pandacss/types':
-        specifier: ^0.39.1
-        version: 0.39.1
+        specifier: ^0.39.2
+        version: 0.39.2
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(@microsoft/api-extractor@7.43.4(@types/node@20.12.10))(postcss@8.4.35)(typescript@5.4.5)
@@ -273,8 +273,8 @@ importers:
         specifier: ^0.39.1
         version: 0.39.1
       '@pandacss/types':
-        specifier: ^0.39.1
-        version: 0.39.1
+        specifier: ^0.39.2
+        version: 0.39.2
 
   tests:
     devDependencies:
@@ -997,6 +997,9 @@ packages:
   '@pandacss/types@0.39.1':
     resolution: {integrity: sha512-O5cCNEgdlJIMhjSzz1WpDCoE1+fqIcYvxcMYKVIu6BgbWxE5+uNQ791N2kJbsP/ei1YfT/kOqn6YyILu/fZZcw==}
 
+  '@pandacss/types@0.39.2':
+    resolution: {integrity: sha512-A+urImQjBGVTu2sAajgDToHnk+QPtsvxgqHIdtQjwIs59u4RI35JB4OXoy1Vb2ctUOJhuYmJSo/tWW4yR4S5ww==}
+
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
@@ -1613,6 +1616,7 @@ packages:
 
   bun@1.1.6:
     resolution: {integrity: sha512-0oKx5dVZ8LpsAvXdW2DTR5Zt3KS81Ifjx9T2ma7RjDPKbvGIlDXOPt++tr1SndxhFNFsMFeE4i6VKvlL7IR0Zw==}
+    cpu: [arm64, x64]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -2328,6 +2332,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@13.24.0:
     resolution: {integrity: sha512-AhO5QUcj8llrbG09iWhPU2B204J1xnPeL8kQmVorSsy+Sjj1sk8gIyh6cUocGmH4L0UuhAJy+hJMRA4mgA4mFQ==}
@@ -2476,6 +2481,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -3545,6 +3551,7 @@ packages:
 
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rollup@4.16.4:
@@ -4817,6 +4824,8 @@ snapshots:
   '@pandacss/types@0.39.0': {}
 
   '@pandacss/types@0.39.1': {}
+
+  '@pandacss/types@0.39.2': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
