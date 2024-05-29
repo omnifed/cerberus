@@ -11,15 +11,15 @@ import {
 import CodePreview from '@/app/components/CodePreview'
 import ShowPreview from '@/app/react/show/components/show-preview'
 
-# Show
+# Nav Menu
 
-An easy to read absraction of the [Ternary Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) that allows you to conditionally render components in a more performant way.
+A menu that uses a [disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/) to show and hide navigation links.
 
 ```ts
-import { Show } from '@cerberus-design/react'
+import { NavMenu } from '@cerberus-design/react'
 ```
 
-<WhenToUseAdmonition description="When you need display components based on a single condition." />
+<WhenToUseAdmonition description="When you need display a list of navigation links that show/hide when a button is clicked." />
 
 ## Usage
 
@@ -58,7 +58,7 @@ function Nav() {
 ```
 </CodePreview>
 
-<WhenNotToUseAdmonition description="If you need to conditionally render components that have multiple outcomes, use the Switch/Match family. If you want to display a loading Skeleton, use the Suspense tag or loading route file (NextJS) instead." />
+<WhenNotToUseAdmonition description="If you need to display a list of actions, use the ActionMenu family." />
 
 ## API
 
@@ -73,7 +73,7 @@ define function Show(props: ShowProps): ReactNode | null
 
 ### Props
 
-The `Show` component accepts the following props:
+The `NavMenu` component accepts the following props:
 
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
