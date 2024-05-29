@@ -5,6 +5,7 @@ recipe: ''
 ---
 
 import {
+  NoteAdmonition,
   WhenToUseAdmonition,
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
@@ -22,6 +23,8 @@ import { NavMenu } from '@cerberus-design/react'
 <WhenToUseAdmonition description="When you need display a list of navigation links that show/hide when a button is clicked." />
 
 ## Usage
+
+<NoteAdmonition description="Always place the NavMenu as a child to a nav JSX element. This ensure's your NavMenu will be fully accessible." />
 
 <CodePreview preview={<ShowPreview />}>
 ```tsx title="nav.tsx"
