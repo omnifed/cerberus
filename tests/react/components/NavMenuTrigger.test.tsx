@@ -9,12 +9,26 @@ describe('NavMenuTrigger', () => {
   afterEach(cleanup)
 
   test('should render a default button element', () => {
-    render(<NavMenuTrigger>it works</NavMenuTrigger>)
+    const ariaProps = {
+      controls: 'menu',
+      expanded: false,
+    }
+    render(<NavMenuTrigger {...ariaProps}>it works</NavMenuTrigger>)
     expect(screen.getByText(/it works/i)).toBeTruthy()
+    expect(screen.getByText(/it works/i).getAttribute('aria-controls')).toBe(
+      'menu',
+    )
+    expect(screen.getByText(/it works/i).getAttribute('aria-expanded')).toBe(
+      'false',
+    )
   })
 
   test('should render a action button', () => {
-    render(<NavMenuTrigger>it works</NavMenuTrigger>)
+    const ariaProps = {
+      controls: 'menu-1',
+      expanded: true,
+    }
+    render(<NavMenuTrigger {...ariaProps}>it works</NavMenuTrigger>)
     expect(
       screen
         .getByText(/it works/i)
@@ -23,7 +37,15 @@ describe('NavMenuTrigger', () => {
   })
 
   test('should render a danger button', () => {
-    render(<NavMenuTrigger palette="danger">it works</NavMenuTrigger>)
+    const ariaProps = {
+      controls: 'menu',
+      expanded: false,
+    }
+    render(
+      <NavMenuTrigger palette="danger" {...ariaProps}>
+        it works
+      </NavMenuTrigger>,
+    )
     expect(
       screen
         .getByText(/it works/i)
@@ -32,7 +54,15 @@ describe('NavMenuTrigger', () => {
   })
 
   test('should render a text button', () => {
-    render(<NavMenuTrigger usage="text">it works</NavMenuTrigger>)
+    const ariaProps = {
+      controls: 'menu',
+      expanded: false,
+    }
+    render(
+      <NavMenuTrigger usage="text" {...ariaProps}>
+        it works
+      </NavMenuTrigger>,
+    )
     expect(
       screen
         .getByText(/it works/i)
@@ -41,7 +71,15 @@ describe('NavMenuTrigger', () => {
   })
 
   test('should render an outline button', () => {
-    render(<NavMenuTrigger usage="outline">it works</NavMenuTrigger>)
+    const ariaProps = {
+      controls: 'menu-3',
+      expanded: true,
+    }
+    render(
+      <NavMenuTrigger usage="outline" {...ariaProps}>
+        it works
+      </NavMenuTrigger>,
+    )
     expect(
       screen
         .getByText(/it works/i)
@@ -50,7 +88,15 @@ describe('NavMenuTrigger', () => {
   })
 
   test('should render a filled button', () => {
-    render(<NavMenuTrigger usage="filled">it works</NavMenuTrigger>)
+    const ariaProps = {
+      controls: 'menu',
+      expanded: false,
+    }
+    render(
+      <NavMenuTrigger usage="filled" {...ariaProps}>
+        it works
+      </NavMenuTrigger>,
+    )
     expect(
       screen
         .getByText(/it works/i)
@@ -59,7 +105,15 @@ describe('NavMenuTrigger', () => {
   })
 
   test('should render a sharp button', () => {
-    render(<NavMenuTrigger shape="sharp">it works</NavMenuTrigger>)
+    const ariaProps = {
+      controls: 'menu',
+      expanded: false,
+    }
+    render(
+      <NavMenuTrigger shape="sharp" {...ariaProps}>
+        it works
+      </NavMenuTrigger>,
+    )
     expect(
       screen
         .getByText(/it works/i)
@@ -68,7 +122,15 @@ describe('NavMenuTrigger', () => {
   })
 
   test('should render a rounded button', () => {
-    render(<NavMenuTrigger shape="rounded">it works</NavMenuTrigger>)
+    const ariaProps = {
+      controls: 'menu-4',
+      expanded: true,
+    }
+    render(
+      <NavMenuTrigger shape="rounded" {...ariaProps}>
+        it works
+      </NavMenuTrigger>,
+    )
     expect(
       screen
         .getByText(/it works/i)
@@ -77,10 +139,24 @@ describe('NavMenuTrigger', () => {
   })
 
   test('should render an alternate button', () => {
-    function Link(props: PropsWithChildren) {
-      return <a>{props.children}</a>
+    const ariaProps = {
+      controls: 'menu',
+      expanded: false,
     }
-    render(<NavMenuTrigger as={Link}>it works</NavMenuTrigger>)
+    function Link(props: PropsWithChildren) {
+      return <a {...props} />
+    }
+    render(
+      <NavMenuTrigger as={Link} {...ariaProps}>
+        it works
+      </NavMenuTrigger>,
+    )
     expect(screen.getByText(/it works/i).tagName).toBe('A')
+    expect(screen.getByText(/it works/i).getAttribute('aria-controls')).toBe(
+      'menu',
+    )
+    expect(screen.getByText(/it works/i).getAttribute('aria-expanded')).toBe(
+      'false',
+    )
   })
 })

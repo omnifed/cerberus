@@ -15,7 +15,9 @@ describe('useNavMenuContext', () => {
 
     return (
       <nav>
-        <NavMenuTrigger ref={state.triggerRef}>Trigger</NavMenuTrigger>
+        <NavMenuTrigger controls="todo" expanded={false} ref={state.triggerRef}>
+          Trigger
+        </NavMenuTrigger>
         <ul ref={state.menuRef}>
           <li>
             <a href="#">first link</a>

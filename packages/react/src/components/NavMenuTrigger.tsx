@@ -4,14 +4,19 @@ import {
   type ElementType,
   type ForwardedRef,
 } from 'react'
-import { Show } from './Show'
-import type { ButtonProps } from './Button'
 import { cx } from '@cerberus-design/styled-system/css'
 import { button } from '@cerberus-design/styled-system/recipes'
+import {
+  createNavTriggerProps,
+  type NavTriggerAriaValues,
+} from '../aria-helpers/nav-menu.aria'
+import { Show } from './Show'
+import type { ButtonProps } from './Button'
 
 export interface NavMenuTriggerProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
-    ButtonProps {
+    ButtonProps,
+    NavTriggerAriaValues {
   as?: ElementType
 }
 
@@ -19,7 +24,9 @@ function NavMenuTriggerEL(
   props: NavMenuTriggerProps,
   ref: ForwardedRef<HTMLButtonElement>,
 ) {
-  const { as, palette, usage, shape, ...nativeProps } = props
+  const { as, palette, usage, shape, controls, expanded, ...nativeProps } =
+    props
+  const ariaProps = createNavTriggerProps({ controls, expanded })
   const hasAs = Boolean(as)
   const AsSub: ElementType = as!
 
@@ -29,6 +36,7 @@ function NavMenuTriggerEL(
       fallback={
         <button
           {...nativeProps}
+          {...ariaProps}
           className={cx(
             nativeProps.className,
             button({
@@ -43,7 +51,7 @@ function NavMenuTriggerEL(
         </button>
       }
     >
-      {hasAs && <AsSub ref={ref} {...nativeProps} />}
+      {hasAs && <AsSub ref={ref} {...nativeProps} {...ariaProps} />}
     </Show>
   )
 }
