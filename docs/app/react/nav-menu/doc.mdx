@@ -10,21 +10,26 @@ import {
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import ShowPreview from '@/app/react/show/components/show-preview'
+import {BasicNavMenuPreview} from '@/app/react/nav-menu/components/nav-menu-preview'
 
 # Nav Menu
 
 A menu that uses a [disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/) to show and hide navigation links.
 
 ```ts
-import { NavMenu, NavMenuTrigger, NavMenuList } from '@cerberus-design/react'
+import {
+  NavMenu,
+  NavMenuTrigger,
+  NavMenuList,
+  NavMenuLink
+} from '@cerberus-design/react'
 ```
 
 <WhenToUseAdmonition description="When you need display a list of navigation links that show/hide when a button is clicked." />
 
 ## Usage
 
-<CodePreview preview={<ShowPreview />}>
+<CodePreview preview={<BasicNavMenuPreview />}>
 ```tsx title="nav.tsx"
 import {
   NavMenu,
@@ -33,11 +38,11 @@ import {
   NavMenuLink
 } from '@cerberus-design/react'
 
-function Nav() {
+function BasicNavMenuPreview() {
   return (
     <NavMenu>
-      <NavMenuTrigger>Features</NavMenuTrigger>
-      <NavMenuList>
+      <NavMenuTrigger controls="basic:nav">Features</NavMenuTrigger>
+      <NavMenuList id="basic:nav">
         <NavMenuLink>Something</NavMenuLink>
       </NavMenuList>
     </NavMenu>
@@ -46,7 +51,32 @@ function Nav() {
 ```
 </CodePreview>
 
-<WhenNotToUseAdmonition description="If you need to display a list of actions, use the ActionMenu family." />
+## NextJS Usage
+
+To use the `NavMenuLink` component with NextJS, you should use the `Link` component from `next/link` for the `as` prop.
+
+<CodePreview preview={<BasicNavMenuPreview />}>
+```tsx title="nav.tsx"
+import {
+  NavMenu,
+  NavMenuTrigger,
+  NavMenuList,
+  NavMenuLink
+} from '@cerberus-design/react'
+import Link from '@next/link'
+
+function BasicNavMenuPreview() {
+  return (
+    <NavMenu>
+      <NavMenuTrigger controls="basic:nav">Features</NavMenuTrigger>
+      <NavMenuList id="basic:nav">
+        <NavMenuLink as={Link}>Something</NavMenuLink>
+      </NavMenuList>
+    </NavMenu>
+  )
+}
+```
+</CodePreview>
 
 ## API
 
@@ -72,5 +102,44 @@ The `NavMenuTrigger` component accepts the following props in addition to the pr
 | as     | null   | A custom component to render as the Trigger. |
 | controls     | null   | REQUIRED. The `id` of the menu the trigger will control. |
 | expanded     | false   | A custom component to render as the Trigger. |
+
+<NoteAdmonition description="Custom components must be able to recieve a 'ref' object via 'forwardRef'." />
+
+### NavMenuList
+
+```ts showLineNumbers=false
+export interface NavMenuListProps extends HTMLAttributes<HTMLUListElement> {
+  id: string
+}
+
+define function NavMenuList(props: NavMenuListProps): ReactNode | null
+```
+
+#### Props
+
+The `NavMenuList` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| id     | null   | REQUIRED. A custom `id` to associate with the trigger. |
+
+### NavMenuLink
+
+```ts showLineNumbers=false
+export interface NavMenuLinkProps
+  extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  as?: ElementType
+}
+
+define function NavMenuLink(props: NavMenuLinkProps): ReactNode | null
+```
+
+#### Props
+
+The `NavMenuLink` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| as     | null   | A custom component to render as the Trigger. |
 
 <NoteAdmonition description="Custom components must be able to recieve a 'ref' object via 'forwardRef'." />

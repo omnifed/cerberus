@@ -22,8 +22,8 @@ describe('navMenu & useNavMenuContext', () => {
   function NavMenuTest() {
     return (
       <NavMenu>
-        <NavMenuTrigger controls="todo">Trigger</NavMenuTrigger>
-        <NavMenuList>
+        <NavMenuTrigger controls="nav">Trigger</NavMenuTrigger>
+        <NavMenuList id="nav">
           <NavMenuLink href="#">first link</NavMenuLink>
         </NavMenuList>
       </NavMenu>

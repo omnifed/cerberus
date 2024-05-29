@@ -20,8 +20,8 @@ describe('NavMenuList & NavMenuLink', () => {
   function NavMenuTest() {
     return (
       <NavMenu>
-        <NavMenuTrigger controls="todo">Trigger</NavMenuTrigger>
-        <NavMenuList>
+        <NavMenuTrigger controls="nav">Trigger</NavMenuTrigger>
+        <NavMenuList id="nav">
           <NavMenuLink as={Link} href="#">
             custom link
           </NavMenuLink>
