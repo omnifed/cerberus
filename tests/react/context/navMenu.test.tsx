@@ -1,7 +1,7 @@
 import { describe, test, expect, afterEach, mock, spyOn } from 'bun:test'
 import { render, screen, cleanup, renderHook } from '@testing-library/react'
 import {
-  NavMenuProvider,
+  NavMenu,
   NavMenuTrigger,
   useNavMenuContext,
 } from '@cerberus-design/react'
@@ -9,32 +9,29 @@ import { setupStrictMode } from '@/utils'
 
 describe('useNavMenuContext', () => {
   setupStrictMode()
+  afterEach(cleanup)
 
   function NavMenuTest() {
-    const state = useNavMenuContext()
-
     return (
-      <nav>
-        <NavMenuTrigger controls="todo" expanded={false} ref={state.triggerRef}>
-          Trigger
-        </NavMenuTrigger>
-        <ul ref={state.menuRef}>
+      <NavMenu>
+        <NavMenuTrigger controls="todo">Trigger</NavMenuTrigger>
+        <ul>
           <li>
             <a href="#">first link</a>
           </li>
         </ul>
-      </nav>
+      </NavMenu>
     )
   }
 
   afterEach(cleanup)
 
   test('should export a theme', () => {
-    render(<NavMenuTest />, { wrapper: NavMenuProvider })
+    render(<NavMenuTest />)
     expect(screen.getByText(/trigger/i)).toBeTruthy()
   })
 
-  test('should throw an error if used outside of NavMenuProvider', () => {
+  test('should throw an error if used outside of NavMenu', () => {
     // don't clog up the console with errors
     spyOn(console, 'error').mockImplementation(() => null)
     mock.module('react', () => {
@@ -42,7 +39,7 @@ describe('useNavMenuContext', () => {
     })
 
     expect(() => renderHook(() => useNavMenuContext())).toThrow(
-      'useNavMenuContext must be used within a NavMenuProvider',
+      'useNavMenuContext must be used within a NavMenu',
     )
     mock.restore()
   })

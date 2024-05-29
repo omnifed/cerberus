@@ -24,8 +24,6 @@ import { NavMenu, NavMenuTrigger } from '@cerberus-design/react'
 
 ## Usage
 
-<NoteAdmonition description="Always place the NavMenu as a child to a nav JSX element. This ensure's your NavMenu will be fully accessible." />
-
 <CodePreview preview={<ShowPreview />}>
 ```tsx title="nav.tsx"
 import { Show, Button } from '@cerberus-design/react'
@@ -65,20 +63,27 @@ function Nav() {
 
 ## API
 
+### NavMenuTrigger
+
 ```ts showLineNumbers=false
-export interface ShowProps {
-  when: boolean | null | undefined
-  fallback?: ReactNode
+export interface NavMenuTriggerProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    ButtonProps,
+    NavTriggerAriaValues {
+  as?: ElementType
 }
 
-define function Show(props: ShowProps): ReactNode | null
+define function NavMenuTrigger(props: NavMenuTriggerProps): ReactNode | null
 ```
 
-### Props
+#### Props
 
-The `NavMenu` component accepts the following props:
+The `NavMenuTrigger` component accepts the following props in addition to the props of the [Button](./button) component:
 
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
-| when     | false   | The condition to evalue for showing the children or fallback. |
-| fallback | null    | The content to render when the condition is false.            |
+| as     | null   | A custom component to render as the Trigger. |
+| controls     | null   | REQUIRED. The `id` of the menu the trigger will control. |
+| expanded     | false   | A custom component to render as the Trigger. |
+
+<NoteAdmonition description="Custom components must be able to recieve a 'ref' object via 'forwardRef'." />

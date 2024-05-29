@@ -1,8 +1,8 @@
-import { describe, test, expect, afterEach } from 'bun:test'
+import { describe, test, expect, afterEach, jest } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { NavMenuTrigger } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
-import type { PropsWithChildren } from 'react'
+import { NavMenu, NavMenuTrigger } from '@cerberus-design/react'
+import { setupStrictMode, user } from '@/utils'
+import { forwardRef, type ForwardedRef, type PropsWithChildren } from 'react'
 
 describe('NavMenuTrigger', () => {
   setupStrictMode()
@@ -13,7 +13,9 @@ describe('NavMenuTrigger', () => {
       controls: 'menu',
       expanded: false,
     }
-    render(<NavMenuTrigger {...ariaProps}>it works</NavMenuTrigger>)
+    render(<NavMenuTrigger {...ariaProps}>it works</NavMenuTrigger>, {
+      wrapper: NavMenu,
+    })
     expect(screen.getByText(/it works/i)).toBeTruthy()
     expect(screen.getByText(/it works/i).getAttribute('aria-controls')).toBe(
       'menu',
@@ -28,7 +30,9 @@ describe('NavMenuTrigger', () => {
       controls: 'menu-1',
       expanded: true,
     }
-    render(<NavMenuTrigger {...ariaProps}>it works</NavMenuTrigger>)
+    render(<NavMenuTrigger {...ariaProps}>it works</NavMenuTrigger>, {
+      wrapper: NavMenu,
+    })
     expect(
       screen
         .getByText(/it works/i)
@@ -45,6 +49,9 @@ describe('NavMenuTrigger', () => {
       <NavMenuTrigger palette="danger" {...ariaProps}>
         it works
       </NavMenuTrigger>,
+      {
+        wrapper: NavMenu,
+      },
     )
     expect(
       screen
@@ -62,6 +69,9 @@ describe('NavMenuTrigger', () => {
       <NavMenuTrigger usage="text" {...ariaProps}>
         it works
       </NavMenuTrigger>,
+      {
+        wrapper: NavMenu,
+      },
     )
     expect(
       screen
@@ -79,6 +89,9 @@ describe('NavMenuTrigger', () => {
       <NavMenuTrigger usage="outline" {...ariaProps}>
         it works
       </NavMenuTrigger>,
+      {
+        wrapper: NavMenu,
+      },
     )
     expect(
       screen
@@ -96,6 +109,9 @@ describe('NavMenuTrigger', () => {
       <NavMenuTrigger usage="filled" {...ariaProps}>
         it works
       </NavMenuTrigger>,
+      {
+        wrapper: NavMenu,
+      },
     )
     expect(
       screen
@@ -113,6 +129,9 @@ describe('NavMenuTrigger', () => {
       <NavMenuTrigger shape="sharp" {...ariaProps}>
         it works
       </NavMenuTrigger>,
+      {
+        wrapper: NavMenu,
+      },
     )
     expect(
       screen
@@ -130,6 +149,9 @@ describe('NavMenuTrigger', () => {
       <NavMenuTrigger shape="rounded" {...ariaProps}>
         it works
       </NavMenuTrigger>,
+      {
+        wrapper: NavMenu,
+      },
     )
     expect(
       screen
@@ -143,13 +165,20 @@ describe('NavMenuTrigger', () => {
       controls: 'menu',
       expanded: false,
     }
-    function Link(props: PropsWithChildren) {
-      return <a {...props} />
+    function LinkEL(
+      props: PropsWithChildren,
+      ref: ForwardedRef<HTMLAnchorElement>,
+    ) {
+      return <a {...props} ref={ref} />
     }
+    const Link = forwardRef(LinkEL)
     render(
       <NavMenuTrigger as={Link} {...ariaProps}>
         it works
       </NavMenuTrigger>,
+      {
+        wrapper: NavMenu,
+      },
     )
     expect(screen.getByText(/it works/i).tagName).toBe('A')
     expect(screen.getByText(/it works/i).getAttribute('aria-controls')).toBe(
@@ -158,5 +187,22 @@ describe('NavMenuTrigger', () => {
     expect(screen.getByText(/it works/i).getAttribute('aria-expanded')).toBe(
       'false',
     )
+  })
+
+  test('should accept a custom onClick event', async () => {
+    const handleClick = jest.fn()
+    const ariaProps = {
+      controls: 'menu',
+    }
+    render(
+      <NavMenuTrigger onClick={handleClick} {...ariaProps}>
+        it works
+      </NavMenuTrigger>,
+      {
+        wrapper: NavMenu,
+      },
+    )
+    await user.click(screen.getByText(/it works/i))
+    expect(handleClick).toHaveBeenCalledTimes(1)
   })
 })

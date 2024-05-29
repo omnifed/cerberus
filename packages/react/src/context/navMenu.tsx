@@ -2,9 +2,11 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
   useMemo,
   useRef,
+  useState,
   type PropsWithChildren,
   type RefObject,
 } from 'react'
@@ -15,28 +17,39 @@ export type NavMenuRef = RefObject<HTMLUListElement>
 export interface NavMenuContextValue {
   triggerRef: NavTriggerRef | null
   menuRef: NavMenuRef | null
+  expanded: boolean
+  onToggle: () => void
 }
 
 export const NavMenuContext = createContext<NavMenuContextValue>({
   triggerRef: null,
   menuRef: null,
+  expanded: false,
+  onToggle: () => {},
 })
 
-export function NavMenuProvider(props: PropsWithChildren) {
+export function NavMenu(props: PropsWithChildren) {
   const triggerRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLUListElement>(null)
+  const [expanded, setExpanded] = useState<boolean>(false)
+
+  const handleToggle = useCallback(() => {
+    setExpanded((prev) => !prev)
+  }, [])
 
   const value = useMemo(
     () => ({
       triggerRef,
       menuRef,
+      expanded,
+      onToggle: handleToggle,
     }),
-    [],
+    [expanded, handleToggle],
   )
 
   return (
     <NavMenuContext.Provider value={value}>
-      {props.children}
+      <nav>{props.children}</nav>
     </NavMenuContext.Provider>
   )
 }
