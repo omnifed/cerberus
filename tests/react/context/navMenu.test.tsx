@@ -1,13 +1,21 @@
 import { describe, test, expect, afterEach, mock, spyOn } from 'bun:test'
-import { render, screen, cleanup, renderHook } from '@testing-library/react'
+import {
+  render,
+  screen,
+  cleanup,
+  renderHook,
+  waitFor,
+} from '@testing-library/react'
 import {
   NavMenu,
   NavMenuTrigger,
+  NavMenuList,
   useNavMenuContext,
+  NavMenuLink,
 } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
+import { setupStrictMode, user } from '@/utils'
 
-describe('useNavMenuContext', () => {
+describe('navMenu & useNavMenuContext', () => {
   setupStrictMode()
   afterEach(cleanup)
 
@@ -15,20 +23,26 @@ describe('useNavMenuContext', () => {
     return (
       <NavMenu>
         <NavMenuTrigger controls="todo">Trigger</NavMenuTrigger>
-        <ul>
-          <li>
-            <a href="#">first link</a>
-          </li>
-        </ul>
+        <NavMenuList>
+          <NavMenuLink href="#">first link</NavMenuLink>
+        </NavMenuList>
       </NavMenu>
     )
   }
 
   afterEach(cleanup)
 
-  test('should export a theme', () => {
+  test('should export a NavMenu', () => {
     render(<NavMenuTest />)
     expect(screen.getByText(/trigger/i)).toBeTruthy()
+    expect(screen.queryByText(/first link/i)).toBeNull()
+  })
+
+  test('should render a NavMenuList if expanded', async () => {
+    render(<NavMenuTest />)
+    expect(screen.queryByText(/first link/i)).toBeNull()
+    await user.click(screen.getByText(/trigger/i))
+    await waitFor(() => expect(screen.getByText(/first link/i)).toBeTruthy())
   })
 
   test('should throw an error if used outside of NavMenu', () => {

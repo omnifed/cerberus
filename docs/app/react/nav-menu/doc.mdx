@@ -17,7 +17,7 @@ import ShowPreview from '@/app/react/show/components/show-preview'
 A menu that uses a [disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/) to show and hide navigation links.
 
 ```ts
-import { NavMenu, NavMenuTrigger } from '@cerberus-design/react'
+import { NavMenu, NavMenuTrigger, NavMenuList } from '@cerberus-design/react'
 ```
 
 <WhenToUseAdmonition description="When you need display a list of navigation links that show/hide when a button is clicked." />
@@ -26,34 +26,21 @@ import { NavMenu, NavMenuTrigger } from '@cerberus-design/react'
 
 <CodePreview preview={<ShowPreview />}>
 ```tsx title="nav.tsx"
-import { Show, Button } from '@cerberus-design/react'
-import { Logout } from '@cerberus-design/icons'
+import {
+  NavMenu,
+  NavMenuTrigger,
+  NavMenuList,
+  NavMenuLink
+} from '@cerberus-design/react'
 
 function Nav() {
-  const [authenticated, setAuthenticated] = useState<boolean>(false)
-
-  function handleAuthenticate() {
-    setAuthenticated(true)
-  }
-
-  function handleUnauthenticate() {
-    setAuthenticated(false)
-  }
-
   return (
-    <Show
-      when={authenticated}
-      fallback={
-        <Button onClick={handleAuthenticate} type="button">
-          Sign in
-        </Button>
-      }
-    >
-      <Button onClick={handleUnauthenticate} type="button">
-        Sign out
-        <Logout />
-      </Button>
-    </Show>
+    <NavMenu>
+      <NavMenuTrigger>Features</NavMenuTrigger>
+      <NavMenuList>
+        <NavMenuLink>Something</NavMenuLink>
+      </NavMenuList>
+    </NavMenu>
   )
 }
 ```

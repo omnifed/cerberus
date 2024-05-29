@@ -2,6 +2,7 @@
 
 export * from './components/Button'
 export * from './components/NavMenuTrigger'
+export * from './components/NavMenuList'
 export * from './components/Show'
 
 // context
