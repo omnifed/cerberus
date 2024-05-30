@@ -18,3 +18,7 @@ export * from './hooks/useTheme'
 // aria-helpers
 
 export * from './aria-helpers/nav-menu.aria'
+
+// shared types
+
+export * from './types'

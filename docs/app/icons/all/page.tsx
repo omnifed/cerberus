@@ -6,9 +6,7 @@ export default function AllIconsPage() {
   return (
     <>
       <PageMainContent>
-        <main>
-          <SearchableIcons />
-        </main>
+        <SearchableIcons />
       </PageMainContent>
 
       <PageSections>

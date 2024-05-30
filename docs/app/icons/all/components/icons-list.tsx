@@ -21,10 +21,10 @@ export default function IconsList(props: IconsListProps) {
         css({
           marginInlineStart: 'auto',
           marginInlineEnd: 'auto',
-          w: 'max-content',
           md: {
             gridTemplateColumns: 'repeat(13, 4rem)',
             gap: '3.5',
+            w: 'max-content',
           },
         }),
         grid({
@@ -46,9 +46,10 @@ export default function IconsList(props: IconsListProps) {
         >
           <Link
             className={vstack({
+              display: 'flex !important',
               bgColor: 'neutral.surface.200',
               h: 'full',
-              justify: 'center',
+              justify: 'center !important',
               w: 'full',
               rounded: 'md',
               transition: 'background-color, color 250ms ease-in-out',

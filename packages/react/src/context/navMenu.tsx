@@ -1,5 +1,6 @@
 'use client'
 
+import { css } from '@cerberus-design/styled-system/css'
 import {
   createContext,
   useCallback,
@@ -49,7 +50,13 @@ export function NavMenu(props: PropsWithChildren) {
 
   return (
     <NavMenuContext.Provider value={value}>
-      <nav>{props.children}</nav>
+      <nav
+        className={css({
+          position: 'relative',
+        })}
+      >
+        {props.children}
+      </nav>
     </NavMenuContext.Provider>
   )
 }

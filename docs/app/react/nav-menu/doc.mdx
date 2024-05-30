@@ -10,7 +10,7 @@ import {
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import {BasicNavMenuPreview} from '@/app/react/nav-menu/components/nav-menu-preview'
+import { BasicNavMenuPreview, CustomNavMenuPreview } from '@/app/react/nav-menu/components/nav-menu-preview'
 
 # Nav Menu
 
@@ -55,7 +55,7 @@ function BasicNavMenuPreview() {
 
 To use the `NavMenuLink` component with NextJS, you should use the `Link` component from `next/link` for the `as` prop.
 
-<CodePreview preview={<BasicNavMenuPreview />}>
+<CodePreview preview={<CustomNavMenuPreview />}>
 ```tsx title="nav.tsx"
 import {
   NavMenu,
@@ -63,12 +63,13 @@ import {
   NavMenuList,
   NavMenuLink
 } from '@cerberus-design/react'
+import MoreOptionsButton from './MoreOptionsButton'
 import Link from '@next/link'
 
 function BasicNavMenuPreview() {
   return (
     <NavMenu>
-      <NavMenuTrigger controls="basic:nav">Features</NavMenuTrigger>
+      <NavMenuTrigger as={MoreOptionsButton} controls="basic:nav">Features</NavMenuTrigger>
       <NavMenuList id="basic:nav">
         <NavMenuLink as={Link}>Something</NavMenuLink>
       </NavMenuList>
