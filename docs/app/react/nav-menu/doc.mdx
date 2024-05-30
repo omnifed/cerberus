@@ -10,7 +10,7 @@ import {
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import { BasicNavMenuPreview, CustomNavMenuPreview } from '@/app/react/nav-menu/components/nav-menu-preview'
+import { BasicNavMenuPreview, CustomNavMenuPreview, PositionNavMenuPreview } from '@/app/react/nav-menu/components/nav-menu-preview'
 
 # Nav Menu
 
@@ -79,6 +79,32 @@ function BasicNavMenuPreview() {
 ```
 </CodePreview>
 
+## Positions
+
+The `NavMenuList` component accepts a `position` prop to determine where the menu will be positioned relative to the trigger. [See available positions](#navmenulist).
+
+<CodePreview preview={<PositionNavMenuPreview />}>
+```tsx title="nav.tsx"
+import {
+  NavMenu,
+  NavMenuTrigger,
+  NavMenuList,
+  NavMenuLink
+} from '@cerberus-design/react'
+
+function PositionNavMenuPreview() {
+  return (
+    <NavMenu>
+      <NavMenuTrigger controls="basic:nav">Features</NavMenuTrigger>
+      <NavMenuList id="basic:nav" position="right">
+        <NavMenuLink>RightPosition</NavMenuLink>
+      </NavMenuList>
+    </NavMenu>
+  )
+}
+```
+</CodePreview>
+
 ## API
 
 ### NavMenuTrigger
@@ -123,6 +149,7 @@ The `NavMenuList` component accepts the following props:
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
 | id     | null   | REQUIRED. A custom `id` to associate with the trigger. |
+| position     | `left`   | The position of the menu relative to the trigger. Can be `left`, `right`, `top`, or `bottom`. |
 
 ### NavMenuLink
 

@@ -9,10 +9,13 @@ import {
 } from '@cerberus-design/react'
 import { css, cx } from '@cerberus-design/styled-system/css'
 import { button } from '@cerberus-design/styled-system/recipes'
-import type { PropsWithChildren } from 'react'
+import { forwardRef, type ForwardedRef, type PropsWithChildren } from 'react'
 
 // TODO: Replace with IconButton
-function IconButton(props: PropsWithChildren) {
+function IconButtonEl(
+  props: PropsWithChildren,
+  ref: ForwardedRef<HTMLButtonElement>,
+) {
   return (
     <button
       aria-label="More options"
@@ -26,11 +29,13 @@ function IconButton(props: PropsWithChildren) {
         }),
       )}
       {...props}
+      ref={ref}
     >
       <OverflowMenuVertical size={32} />
     </button>
   )
 }
+const IconButton = forwardRef(IconButtonEl)
 
 export function BasicNavMenuPreview() {
   return (
@@ -51,6 +56,17 @@ export function CustomNavMenuPreview() {
       </NavMenuTrigger>
       <NavMenuList id="basic:nav">
         <NavMenuLink>Something</NavMenuLink>
+      </NavMenuList>
+    </NavMenu>
+  )
+}
+
+export function PositionNavMenuPreview() {
+  return (
+    <NavMenu>
+      <NavMenuTrigger controls="basic:nav">Features</NavMenuTrigger>
+      <NavMenuList id="basic:nav" position="right">
+        <NavMenuLink>RightPosition</NavMenuLink>
       </NavMenuList>
     </NavMenu>
   )
