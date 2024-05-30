@@ -1,12 +1,4 @@
-import {
-  describe,
-  test,
-  expect,
-  afterEach,
-  beforeEach,
-  mock,
-  spyOn,
-} from 'bun:test'
+import { describe, test, expect, afterEach, beforeEach, spyOn } from 'bun:test'
 import { render, screen, cleanup, renderHook } from '@testing-library/react'
 import {
   useThemeContext,
@@ -93,13 +85,8 @@ describe('useThemeContext', () => {
   test('should throw an error if used outside of ThemeProvider', () => {
     // don't clog up the console with errors
     spyOn(console, 'error').mockImplementation(() => null)
-    mock.module('react', () => {
-      return { useContext: () => null }
-    })
-
     expect(() => renderHook(() => useThemeContext())).toThrow(
       'useThemeContext must be used within a ThemeProvider',
     )
-    mock.restore()
   })
 })

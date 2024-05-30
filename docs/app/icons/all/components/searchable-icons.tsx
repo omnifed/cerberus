@@ -17,7 +17,6 @@ export default function SearchableIcons() {
     <div
       className={container({
         position: 'relative',
-        mt: '4',
       })}
     >
       <div
@@ -25,7 +24,7 @@ export default function SearchableIcons() {
           bgColor: 'neutral.surface.100',
           position: 'sticky',
           py: '2',
-          top: '0',
+          top: '-1.75rem',
           zIndex: 'sticky',
           _after: {
             bottom: '-1.8rem',
@@ -37,6 +36,9 @@ export default function SearchableIcons() {
             left: '0',
             position: 'absolute',
             right: '0',
+          },
+          lg: {
+            top: '-2.5rem',
           },
         })}
       >

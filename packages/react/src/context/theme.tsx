@@ -17,15 +17,9 @@ export interface ThemeContextValue<T extends DefaultThemes> {
 export const THEME_KEY = 'cerberus-theme'
 export const MODE_KEY = 'cerberus-mode'
 
-const initialThemeState = {
-  theme: 'cerberus' as const,
-  mode: 'light' as const,
-  updateTheme: () => {},
-  updateMode: () => {},
-}
-
-const ThemeContext =
-  createContext<ThemeContextValue<DefaultThemes>>(initialThemeState)
+const ThemeContext = createContext<ThemeContextValue<DefaultThemes> | null>(
+  null,
+)
 
 export function ThemeProvider(props: PropsWithChildren<unknown>) {
   const state = useTheme()

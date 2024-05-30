@@ -1,0 +1,173 @@
+---
+npm: '@cerberus-design/react'
+source: 'context/navMenu.tsx'
+recipe: ''
+---
+
+import {
+  NoteAdmonition,
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { BasicNavMenuPreview, CustomNavMenuPreview, PositionNavMenuPreview } from '@/app/react/nav-menu/components/nav-menu-preview'
+
+# Nav Menu
+
+A menu that uses a [disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/) to show and hide navigation links.
+
+```ts
+import {
+  NavMenu,
+  NavMenuTrigger,
+  NavMenuList,
+  NavMenuLink
+} from '@cerberus-design/react'
+```
+
+<WhenToUseAdmonition description="When you need display a list of navigation links that show/hide when a button is clicked." />
+
+## Usage
+
+<CodePreview preview={<BasicNavMenuPreview />}>
+```tsx title="nav.tsx"
+import {
+  NavMenu,
+  NavMenuTrigger,
+  NavMenuList,
+  NavMenuLink
+} from '@cerberus-design/react'
+
+function BasicNavMenuPreview() {
+  return (
+    <NavMenu>
+      <NavMenuTrigger controls="basic:nav">Features</NavMenuTrigger>
+      <NavMenuList id="basic:nav">
+        <NavMenuLink>Something</NavMenuLink>
+      </NavMenuList>
+    </NavMenu>
+  )
+}
+```
+</CodePreview>
+
+## NextJS Usage
+
+To use the `NavMenuLink` component with NextJS, you should use the `Link` component from `next/link` for the `as` prop.
+
+<CodePreview preview={<CustomNavMenuPreview />}>
+```tsx title="nav.tsx" {8,15}
+import {
+  NavMenu,
+  NavMenuTrigger,
+  NavMenuList,
+  NavMenuLink
+} from '@cerberus-design/react'
+import MoreOptionsButton from './MoreOptionsButton'
+import Link from '@next/link'
+
+function BasicNavMenuPreview() {
+  return (
+    <NavMenu>
+      <NavMenuTrigger as={MoreOptionsButton} controls="basic:nav">Features</NavMenuTrigger>
+      <NavMenuList id="basic:nav">
+        <NavMenuLink as={Link}>Something</NavMenuLink>
+      </NavMenuList>
+    </NavMenu>
+  )
+}
+```
+</CodePreview>
+
+## Positions
+
+The `NavMenuList` component accepts a `position` prop to determine where the menu will be positioned relative to the trigger. [See available positions](#navmenulist).
+
+<CodePreview preview={<PositionNavMenuPreview />}>
+```tsx title="nav.tsx" {12}
+import {
+  NavMenu,
+  NavMenuTrigger,
+  NavMenuList,
+  NavMenuLink
+} from '@cerberus-design/react'
+
+function PositionNavMenuPreview() {
+  return (
+    <NavMenu>
+      <NavMenuTrigger controls="basic:nav">Features</NavMenuTrigger>
+      <NavMenuList id="basic:nav" position="right">
+        <NavMenuLink>RightPosition</NavMenuLink>
+      </NavMenuList>
+    </NavMenu>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+### NavMenuTrigger
+
+```ts showLineNumbers=false
+export interface NavMenuTriggerProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    ButtonProps,
+    NavTriggerAriaValues {
+  as?: ElementType
+}
+
+define function NavMenuTrigger(props: NavMenuTriggerProps): ReactNode | null
+```
+
+#### Props
+
+The `NavMenuTrigger` component accepts the following props in addition to the props of the [Button](./button) component:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| as     | null   | A custom component to render as the Trigger. |
+| controls     | null   | REQUIRED. The `id` of the menu the trigger will control. |
+| expanded     | false   | A custom component to render as the Trigger. |
+
+<NoteAdmonition description="Custom components must be able to recieve a 'ref' object via 'forwardRef'." />
+
+### NavMenuList
+
+```ts showLineNumbers=false
+export interface NavMenuListProps extends HTMLAttributes<HTMLUListElement> {
+  id: string
+}
+
+define function NavMenuList(props: NavMenuListProps): ReactNode | null
+```
+
+#### Props
+
+The `NavMenuList` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| id     | null   | REQUIRED. A custom `id` to associate with the trigger. |
+| position     | `left`   | The position of the menu relative to the trigger. Can be `left`, `right`, `top`, or `bottom`. |
+
+### NavMenuLink
+
+```ts showLineNumbers=false
+export interface NavMenuLinkProps
+  extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  as?: ElementType
+}
+
+define function NavMenuLink(props: NavMenuLinkProps): ReactNode | null
+```
+
+#### Props
+
+The `NavMenuLink` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| as     | null   | A custom component to render as the Trigger. |
+
+<NoteAdmonition description="Custom components must be able to recieve a 'ref' object via 'forwardRef'." />

@@ -4,12 +4,12 @@ import { useThemeContext } from '@cerberus-design/react'
 import type { SemanticToken, Sentiment } from '@cerberus-design/panda-preset'
 import { useEffect, useMemo, useState } from 'react'
 import { css, cx } from '@cerberus-design/styled-system/css'
-import { hstack, vstack } from '@cerberus-design/styled-system/patterns'
-import { Checkmark } from '@cerberus-design/icons'
+import { vstack } from '@cerberus-design/styled-system/patterns'
 import { hasWhiteBase } from '@/app/utils/colors'
 import Link from 'next/link'
 
 // We have to use !important to override the .MDX styles
+
 const paletteTextStyles = css({
   textAlign: 'center',
 
@@ -111,11 +111,12 @@ export default function ColorSwatch(props: ColorSwatchProps) {
   return (
     <Link
       className={vstack({
-        alignItems: 'center',
+        alignItems: 'center !important',
+        display: 'flex !important',
         justifyContent: 'center',
         h: '10rem',
         gap: '4',
-        rounded: 'xl',
+        rounded: 'xl !important',
         textDecoration: 'none',
         transition: 'scale 250ms ease-in-out',
         w: 'full',
@@ -127,22 +128,6 @@ export default function ColorSwatch(props: ColorSwatchProps) {
       href={`/preset/colors/${props.tokenName}`}
       style={bgColor}
     >
-      {copied && (
-        <span
-          className={hstack({
-            bgColor: 'success.surface.active',
-            color: 'success.text.inverse',
-            gap: '1',
-            pxi: '2',
-            mb: '2',
-            rounded: 'md',
-            textStyle: 'body-xs',
-          })}
-        >
-          <Checkmark />
-          Copied
-        </span>
-      )}
       <div
         data-palette={props.palette}
         data-mode={mode}

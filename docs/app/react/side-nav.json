@@ -25,6 +25,13 @@
   },
   {
     "id": "2:b",
+    "label": "Nav Menu",
+    "route": "/react/nav-menu",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "id": "2:c",
     "label": "Show",
     "route": "/react/show",
     "tag": "",

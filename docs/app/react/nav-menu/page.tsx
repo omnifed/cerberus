@@ -1,12 +1,16 @@
+import ApiLinks from '@/app/components/ApiLinks'
 import OnThisPage from '../../components/OnThisPage'
 import { PageMainContent, PageSections } from '../../components/PageLayout'
-import SearchableIcons from './components/searchable-icons'
+import Doc, { frontmatter } from './doc.mdx'
 
-export default function AllIconsPage() {
+export default function NavMenuPage() {
   return (
     <>
       <PageMainContent>
-        <SearchableIcons />
+        <ApiLinks {...frontmatter} />
+        <main>
+          <Doc />
+        </main>
       </PageMainContent>
 
       <PageSections>
