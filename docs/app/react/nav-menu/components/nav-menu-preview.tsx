@@ -65,8 +65,17 @@ export function PositionNavMenuPreview() {
   return (
     <NavMenu>
       <NavMenuTrigger controls="basic:nav">Features</NavMenuTrigger>
+      <NavMenuList id="basic:nav" position="top">
+        <NavMenuLink>Top</NavMenuLink>
+      </NavMenuList>
+      <NavMenuList id="basic:nav" position="bottom">
+        <NavMenuLink>Bottom</NavMenuLink>
+      </NavMenuList>
+      <NavMenuList id="basic:nav" position="left">
+        <NavMenuLink>Left</NavMenuLink>
+      </NavMenuList>
       <NavMenuList id="basic:nav" position="right">
-        <NavMenuLink>RightPosition</NavMenuLink>
+        <NavMenuLink>Right</NavMenuLink>
       </NavMenuList>
     </NavMenu>
   )
