@@ -22,7 +22,7 @@ export interface NavMenuContextValue {
   onToggle: () => void
 }
 
-export const NavMenuContext = createContext<NavMenuContextValue | null>(null)
+const NavMenuContext = createContext<NavMenuContextValue | null>(null)
 
 export function NavMenu(props: PropsWithChildren) {
   const triggerRef = useRef<HTMLButtonElement>(null)
@@ -60,7 +60,7 @@ export function useNavMenuContext() {
   const context = useContext(NavMenuContext)
 
   if (!context) {
-    throw new Error('useNavMenuContext must be used within a NavMenuProvider.')
+    throw new Error('useNavMenuContext must be used within a NavMenu.')
   }
 
   return context
