@@ -59,19 +59,19 @@ describe('NavMenuList & NavMenuLink', () => {
 
   test('should have a way to get the right position value', () => {
     expect(getPosition('right')).toEqual({
-      left: '110%',
+      left: '105%',
       right: 'auto',
-      top: 'auto',
-      bottom: '50%',
+      bottom: 'auto',
+      top: '0%',
     })
   })
 
   test('should have a way to get the left position value', () => {
     expect(getPosition('left')).toEqual({
       left: 'auto',
-      right: '110%',
-      top: 'auto',
-      bottom: '50%',
+      right: '105%',
+      bottom: 'auto',
+      top: '0%',
     })
   })
 

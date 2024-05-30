@@ -1,5 +1,6 @@
 import type { AnchorHTMLAttributes, ElementType } from 'react'
 import { Show } from './Show'
+import { css, cx } from '@cerberus-design/styled-system/css'
 
 export interface NavMenuLinkProps
   extends AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -12,8 +13,29 @@ export function NavMenuLink(props: NavMenuLinkProps) {
   const AsSub: ElementType = as!
 
   return (
-    <li>
-      <Show when={hasAs} fallback={<a {...nativeProps} />}>
+    <li
+      className={css({
+        w: 'full',
+      })}
+    >
+      <Show
+        when={hasAs}
+        fallback={
+          <a
+            {...nativeProps}
+            className={cx(
+              nativeProps.className,
+              css({
+                color: 'action.navigation.initial',
+                textStyle: 'link',
+                _hover: {
+                  color: 'action.navigation.hover',
+                },
+              }),
+            )}
+          />
+        }
+      >
         {hasAs && <AsSub {...nativeProps} />}
       </Show>
     </li>

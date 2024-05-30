@@ -10,11 +10,16 @@ import {
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import { BasicNavMenuPreview, CustomNavMenuPreview, PositionNavMenuPreview } from '@/app/react/nav-menu/components/nav-menu-preview'
+import {
+  BasicNavMenuPreview,
+  CustomNavMenuPreview,
+  PositionNavMenuPreview,
+  FullyCustomNavMenuPreview
+} from '@/app/react/nav-menu/components/nav-menu-preview'
 
 # Nav Menu
 
-A menu that uses a [disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/) to show and hide navigation links.
+A [motion safe](https://www.a11yproject.com/posts/understanding-vestibular-disorders/) menu that uses a [disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/) to show and hide navigation links.
 
 ```ts
 import {
@@ -100,6 +105,72 @@ function PositionNavMenuPreview() {
         <NavMenuLink>RightPosition</NavMenuLink>
       </NavMenuList>
     </NavMenu>
+  )
+}
+```
+</CodePreview>
+
+## Customizing
+
+<CodePreview preview={<FullyCustomNavMenuPreview />}>
+```tsx title="nav.tsx"
+import {
+  NavMenu,
+  NavMenuTrigger,
+  NavMenuList,
+  NavMenuLink
+} from '@cerberus-design/react'
+import { css } from '@/styled-system/css'
+import { circle } from '@/styled-system/patterns'
+import Link from '@next/link'
+
+function FullyCustomNavMenuPreview() {
+  return (
+    <div data-theme="cerberus" data-color-mode="light">
+      <NavMenu>
+        <NavMenuTrigger as={MPTrigger} controls="basic:nav">
+          <span
+            className={circle({
+              bgColor: 'neutral.bg.hover',
+              size: '8',
+            })}
+          />
+          Mission Partner
+        </NavMenuTrigger>
+        <NavMenuList
+          id="basic:nav"
+          className={css({
+            border: '2px solid',
+            borderColor: 'neutral.border.100',
+            w: '21rem',
+          })}
+        >
+          <li>
+            <p
+              className={css({
+                color: 'neutral.text.200',
+                pb: '0 !important',
+                textStyle: 'body-sm',
+              })}
+            >
+              Other Mission Partners
+            </p>
+          </li>
+          <NavMenuLink as={MPFeatLink} href="#customizing">
+            <span
+              className={circle({
+                bgColor: 'neutral.bg.hover',
+                size: '4',
+              })}
+            />
+            Mission Partner
+          </NavMenuLink>
+          <NavMenuLink href="#customizing" as={MPLink}>
+            View All
+          </NavMenuLink>
+        </NavMenuList>
+      </NavMenu>
+    </div>
   )
 }
 ```
