@@ -22,12 +22,7 @@ export interface NavMenuContextValue {
   onToggle: () => void
 }
 
-export const NavMenuContext = createContext<NavMenuContextValue>({
-  triggerRef: null,
-  menuRef: null,
-  expanded: false,
-  onToggle: () => {},
-})
+export const NavMenuContext = createContext<NavMenuContextValue | null>(null)
 
 export function NavMenu(props: PropsWithChildren) {
   const triggerRef = useRef<HTMLButtonElement>(null)

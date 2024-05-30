@@ -30,8 +30,6 @@ describe('navMenu & useNavMenuContext', () => {
     )
   }
 
-  afterEach(cleanup)
-
   test('should export a NavMenu', () => {
     render(<NavMenuTest />)
     expect(screen.getByText(/trigger/i)).toBeTruthy()
