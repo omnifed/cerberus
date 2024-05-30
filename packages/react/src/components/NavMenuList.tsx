@@ -6,7 +6,7 @@ import { Show } from './Show'
 import type { Positions } from '../types'
 import { css, cx } from '@cerberus-design/styled-system/css'
 
-function getPosition(position: Positions) {
+export function getPosition(position: Positions) {
   const defaultPositions = {
     left: 'auto',
     right: 'auto',
