@@ -78,7 +78,6 @@ export function PreviewLayout(props: PropsWithChildren<PreviewLayoutProps>) {
           justify: 'center',
           mb: '4',
           minH: '18.75rem',
-          overflow: 'hidden',
           position: 'relative',
           py: '8',
         })}
