@@ -38,10 +38,10 @@ export function NavMenuTrigger(props: NavMenuTriggerProps) {
     onClick,
     ...nativeProps
   } = props
-  const { triggerRef, onToggle } = useNavMenuContext()
+  const { triggerRef, onToggle, expanded } = useNavMenuContext()
   const ariaProps = createNavTriggerProps({
     controls,
-    expanded: propsExpanded ?? false,
+    expanded: propsExpanded ?? expanded,
   })
   const hasAs = Boolean(as)
   const AsSub: ElementType = as!
@@ -78,10 +78,10 @@ export function NavMenuTrigger(props: NavMenuTriggerProps) {
     >
       {hasAs && (
         <AsSub
-          ref={triggerRef}
           {...nativeProps}
           {...ariaProps}
           onClick={handleClick}
+          ref={triggerRef}
         />
       )}
     </Show>

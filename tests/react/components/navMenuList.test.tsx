@@ -38,8 +38,6 @@ describe('NavMenuList & NavMenuLink', () => {
     )
   }
 
-  afterEach(cleanup)
-
   // navMenu.test.tsx covers majority of use cases. This only tests fine tuning
 
   test('should allow a custom Link component', async () => {

@@ -58,10 +58,8 @@ export function NavMenu(props: PropsWithChildren) {
 
 export function useNavMenuContext() {
   const context = useContext(NavMenuContext)
-
   if (!context) {
     throw new Error('useNavMenuContext must be used within a NavMenu.')
   }
-
   return context
 }
