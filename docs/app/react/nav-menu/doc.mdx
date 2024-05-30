@@ -56,7 +56,7 @@ function BasicNavMenuPreview() {
 To use the `NavMenuLink` component with NextJS, you should use the `Link` component from `next/link` for the `as` prop.
 
 <CodePreview preview={<CustomNavMenuPreview />}>
-```tsx title="nav.tsx"
+```tsx title="nav.tsx" {8,15}
 import {
   NavMenu,
   NavMenuTrigger,
@@ -84,7 +84,7 @@ function BasicNavMenuPreview() {
 The `NavMenuList` component accepts a `position` prop to determine where the menu will be positioned relative to the trigger. [See available positions](#navmenulist).
 
 <CodePreview preview={<PositionNavMenuPreview />}>
-```tsx title="nav.tsx"
+```tsx title="nav.tsx" {12}
 import {
   NavMenu,
   NavMenuTrigger,
