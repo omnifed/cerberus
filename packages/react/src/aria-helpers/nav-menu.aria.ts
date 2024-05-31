@@ -3,7 +3,14 @@ export interface NavTriggerAriaValues {
   expanded?: boolean
 }
 
-export function createNavTriggerProps(values: NavTriggerAriaValues) {
+interface NavTriggerAriaReturn {
+  ['aria-controls']: string
+  ['aria-expanded']: boolean
+}
+
+export function createNavTriggerProps(
+  values: NavTriggerAriaValues,
+): NavTriggerAriaReturn {
   return {
     ['aria-controls']: values.controls,
     ['aria-expanded']: values.expanded ?? false,

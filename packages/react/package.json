@@ -1,7 +1,7 @@
 {
   "name": "@cerberus-design/react",
   "version": "0.0.0",
-  "description": "The Cerberus Design React component library",
+  "description": "The Cerberus Design React component library.",
   "browserslist": "> 0.25%, not dead",
   "sideEffects": false,
   "type": "module",

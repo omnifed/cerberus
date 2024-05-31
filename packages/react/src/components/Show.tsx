@@ -10,9 +10,14 @@ export interface ShowProps {
 /**
  * Conditionally render its children or an optional fallback component
  * based on the SolidJS component.
- * @description https://docs.solidjs.com/reference/components/show
+ * @definition [Show docs](https://cerberus.digitalu.design/react/show)
+ * @example
+ * ```tsx
+ * <Show when={condition}>
+ *  <div>Content</div>
+ * </Show>
  */
-export function Show(props: PropsWithChildren<ShowProps>) {
+export function Show(props: PropsWithChildren<ShowProps>): ReactNode {
   const { when, children, fallback } = props
   const condition = useMemo(() => when ?? false, [when])
 
