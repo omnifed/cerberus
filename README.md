@@ -3,8 +3,8 @@
 <img width="1454" alt="banner" src="https://github.com/omnifed/cerberus/assets/4819738/b128be81-3c24-4fc7-8811-6c9a18d26c37">
 
 ![NPM Version](https://img.shields.io/npm/v/@cerberus-design/react)
+[![JSR](https://jsr.io/badges/@cerberus/react)](https://jsr.io/@cerberus/react)
 ![NPM License](https://img.shields.io/npm/l/@cerberus-design/react)
-
 
 ## Architecture
 
@@ -15,6 +15,14 @@
 ## Repository structure
 
 This is a monorepo that uses [pnPm](https://pnpm.io/) to manage dependencies and [Bun](https://bun.sh/) as the runtime language. You will need to install these tools to work on this project.
+
+## JSR Requirements
+
+We follow the slow requirements process of the JSR publishing standard. This means you will be required to define the return types of all your exports which result in the following:
+
+1. Significantly improve your package users' type checking performance.
+2. Improve the automatic documentation generation.
+3. Enable automatic .d.ts generation for Node.js.
 
 ## Getting started
 

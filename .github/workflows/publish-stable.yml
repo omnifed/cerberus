@@ -10,7 +10,7 @@ env:
   AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-  publish-next:
+  publish-npm-stable:
     runs-on: ubuntu-latest
     name: Build & Publish Stable Version to NPM
     steps:
@@ -18,7 +18,7 @@ jobs:
       - uses: oven-sh/setup-bun@v1
       - uses: pnpm/action-setup@v4
         with:
-          version: 9.1.2
+          version: 9.1.4
       - uses: actions/setup-node@v4
         with:
           cache: 'pnpm'
@@ -26,4 +26,23 @@ jobs:
       - run: echo "//registry.npmjs.org/:_authToken=$AUTH_TOKEN" >> .npmrc
       - run: pnpm install
       - run: pnpm run publish --stable
+        working-directory: ./configs
+
+  publish-jsr-stable:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.1.4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+
+      - run: pnpm install
+      - run: pnpm run publish:jsr --stable
         working-directory: ./configs

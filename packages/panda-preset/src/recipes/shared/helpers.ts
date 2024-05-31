@@ -22,7 +22,7 @@ export function getSlotRecipePalettes<
   slots: S[],
   palettes: P[],
   initialValue?: Record<P, Record<S, Record<'colorPalette', Sentiment>>>,
-) {
+): Record<P, Record<S, Record<'colorPalette', Sentiment>>> {
   return palettes.reduce(
     (acc, palette) => {
       acc[palette] = slots.reduce(

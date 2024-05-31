@@ -12,7 +12,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  * A component that allows the user to perform actions
  * @description https://github.com/omnifed/cerberus/blob/main/packages/react/src/components/Button.tsx
  */
-export function Button(props: ButtonProps) {
+export function Button(props: ButtonProps): JSX.Element {
   const { palette, usage, shape, ...nativeProps } = props
   return (
     <button

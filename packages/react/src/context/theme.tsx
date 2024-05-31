@@ -7,7 +7,7 @@ export type DefaultThemes = 'cerberus'
 export type CustomThemes<K extends string = DefaultThemes> = 'cerberus' | K
 export type ColorModes = 'light' | 'dark'
 
-export interface ThemeContextValue<T extends DefaultThemes> {
+export interface ThemeContextValue<T extends string = DefaultThemes> {
   theme: CustomThemes<T>
   mode: ColorModes
   updateTheme: (theme: T) => void
@@ -21,7 +21,16 @@ const ThemeContext = createContext<ThemeContextValue<DefaultThemes> | null>(
   null,
 )
 
-export function ThemeProvider(props: PropsWithChildren<unknown>) {
+/**
+ * A context provider that allows the user to set the theme and mode of the application.
+ * @example
+ * ```tsx
+ * <ThemeProvider>
+ *  <App />
+ * </ThemeProvider>
+ * ```
+ */
+export function ThemeProvider(props: PropsWithChildren<unknown>): JSX.Element {
   const state = useTheme()
   return (
     <ThemeContext.Provider value={state}>

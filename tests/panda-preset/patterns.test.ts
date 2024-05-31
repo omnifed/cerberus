@@ -5,6 +5,7 @@ describe('patterns', () => {
   test('should export animateIn', () => {
     expect(patterns.extend.animateIn).toBeDefined()
     expect(
+      // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.animateIn.transform({ bgColor: 'black' }),
     ).toMatchObject({
       animationName: 'fadeIn',
@@ -22,6 +23,7 @@ describe('patterns', () => {
   test('should export scrollable', () => {
     expect(patterns.extend.scrollable).toBeDefined()
     expect(
+      // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.scrollable.transform({ bgColor: 'white' }),
     ).toMatchObject({
       overflow: 'auto',

@@ -13,12 +13,13 @@ import {
   type ColorModes,
   type CustomThemes,
   type DefaultThemes,
+  type ThemeContextValue,
 } from '../context/theme'
 
 export function useTheme<C extends string = DefaultThemes>(
   defaultTheme: CustomThemes<C> = 'cerberus',
   defaultColorMode: ColorModes = 'light',
-) {
+): ThemeContextValue<C> {
   const [theme, setTheme] = useState<CustomThemes<C>>(defaultTheme)
   const [colorMode, setColorMode] = useState<ColorModes>(defaultColorMode)
 

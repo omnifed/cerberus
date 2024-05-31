@@ -1,6 +1,6 @@
-import { defineGlobalStyles } from '@pandacss/dev'
+import { defineGlobalStyles, type GlobalStyleObject } from '@pandacss/dev'
 
-export const globalCss = defineGlobalStyles({
+export const globalCss: GlobalStyleObject = defineGlobalStyles({
   html: {
     backgroundColor: 'var(--cerberus-colors-neutral-surface-100)',
     color: 'var(--cerberus-colors-neutral-text-300)',

@@ -1,4 +1,8 @@
-import { defineRecipe } from '@pandacss/dev'
+import {
+  defineRecipe,
+  type RecipeConfig,
+  type RecipeVariantRecord,
+} from '@pandacss/dev'
 import {
   buttonBase,
   buttonPalettes,
@@ -9,9 +13,10 @@ import {
 
 /**
  * Styles for the Button component
- * @definition https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent
+ * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
+ * @definition [Button docs](https://cerberus.digitalu.design/react/button)
  */
-export const button = defineRecipe({
+export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'button',
   description: 'WCAG Level AAA compliant button styles.',
 

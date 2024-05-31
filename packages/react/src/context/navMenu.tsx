@@ -24,7 +24,7 @@ export interface NavMenuContextValue {
 
 const NavMenuContext = createContext<NavMenuContextValue | null>(null)
 
-export function NavMenu(props: PropsWithChildren) {
+export function NavMenu(props: PropsWithChildren): JSX.Element {
   const triggerRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLUListElement>(null)
   const [expanded, setExpanded] = useState<boolean>(false)
@@ -56,7 +56,7 @@ export function NavMenu(props: PropsWithChildren) {
   )
 }
 
-export function useNavMenuContext() {
+export function useNavMenuContext(): NavMenuContextValue {
   const context = useContext(NavMenuContext)
   if (!context) {
     throw new Error('useNavMenuContext must be used within a NavMenu.')

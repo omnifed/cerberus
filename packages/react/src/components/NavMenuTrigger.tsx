@@ -25,9 +25,17 @@ export interface NavMenuTriggerProps
 
 /**
  * A component that allows the user to trigger a navigation menu.
- * @description https://github.com/omnifed/cerberus/blob/main/packages/react/src/components/NavMenuTrigger.tsx
+ * @definition [NavMenu Docs](https://cerberus.digitalu.design/react/nav-menu)
+ * @example
+ * ```tsx
+ * <NavMenu>
+ *   <NavMenuTrigger controls="nav-menu-list">
+ *     Menu
+ *   </NavMenuTrigger>
+ * </NavMenu>
+ * ```
  */
-export function NavMenuTrigger(props: NavMenuTriggerProps) {
+export function NavMenuTrigger(props: NavMenuTriggerProps): JSX.Element {
   const {
     as,
     palette,

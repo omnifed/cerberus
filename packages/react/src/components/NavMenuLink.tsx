@@ -7,7 +7,7 @@ export interface NavMenuLinkProps
   as?: ElementType
 }
 
-export function NavMenuLink(props: NavMenuLinkProps) {
+export function NavMenuLink(props: NavMenuLinkProps): JSX.Element {
   const { as, ...nativeProps } = props
   const hasAs = Boolean(as)
   const AsSub: ElementType = as!

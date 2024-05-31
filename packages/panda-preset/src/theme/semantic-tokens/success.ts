@@ -1,6 +1,23 @@
-import { defineSentiment } from './index'
+import type { Prominence, SemanticToken } from './types'
 
-export const successTokens = defineSentiment({
+type Prominences = Exclude<Prominence, 300>
+
+export interface SuccessTokens {
+  readonly success: {
+    readonly border: {
+      readonly initial: SemanticToken
+    }
+    readonly surface: {
+      readonly initial: SemanticToken
+      readonly active: SemanticToken
+    }
+    readonly text: {
+      readonly [P in Prominences]: SemanticToken
+    }
+  }
+}
+
+export const successTokens: SuccessTokens = {
   success: {
     border: {
       initial: {
@@ -82,4 +99,4 @@ export const successTokens = defineSentiment({
       },
     },
   },
-})
+}

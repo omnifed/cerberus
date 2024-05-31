@@ -1,10 +1,23 @@
 import type { PatternConfig } from '@pandacss/types'
 
-export function definePattern<T extends PatternConfig>(config: T) {
+export function definePattern<T extends PatternConfig>(
+  config: T,
+): PatternConfig {
   return config
 }
 
-const scrollable = definePattern({
+/**
+ * A container that allows for scrolling
+ * @param direction - 'horizontal' or 'vertical'
+ * @param hideScrollbar - boolean to hide the scrollbar
+ * @example
+ * ```tsx
+ * <div css={scrollable({ direction: 'vertical', hideScrollbar: true })}>
+ *  <p>Scroll me</p>
+ * </div>
+ * ```
+ */
+const scrollable: PatternConfig = definePattern({
   description: 'A container that allows for scrolling',
   properties: {
     // The direction of the scroll
@@ -32,7 +45,17 @@ const scrollable = definePattern({
   },
 })
 
-const animateIn = definePattern({
+/**
+ * A container that fades in the content
+ * @param delay - The delay of the animation
+ * @example
+ * ```tsx
+ * <div css={animateIn({ delay: '200ms' })}>
+ *  <p>Fade in</p>
+ * </div>
+ * ```
+ */
+const animateIn: PatternConfig = definePattern({
   description: 'A container that fades in the content',
   properties: {
     // The delay of the animation
