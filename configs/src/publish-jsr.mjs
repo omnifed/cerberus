@@ -1,8 +1,8 @@
-import { argv, file, write, $ } from 'bun'
+import { argv, file, write } from 'bun'
 import { resolve } from 'node:path'
 import { exit } from 'node:process'
 import { parseArgs } from 'util'
-import { version, nextTag, packages } from './versions.mjs'
+import { version, packages } from './versions.mjs'
 
 function _parseFlags(args) {
   return parseArgs({
@@ -31,19 +31,20 @@ function _getReleaseVersion(values) {
   exit(1)
 }
 
-function _getTags(values) {
-  if (values.next) {
-    return nextTag
-  }
-  if (values.stable) {
-    return 'latest'
-  }
-  exit(1)
-}
+// TODO: Use when jsr supports tags
+// function _getTags(values) {
+//   if (values.next) {
+//     return nextTag
+//   }
+//   if (values.stable) {
+//     return 'latest'
+//   }
+//   exit(1)
+// }
 
 function publish() {
   const { values } = _parseFlags(argv)
-  const release = _getTags(values)
+  // const release = _getTags(values)
   const nonJSXPackages = packages.filter((pkg) => !pkg.includes('react'))
 
   nonJSXPackages.forEach(async (pkg) => {
@@ -61,9 +62,8 @@ function publish() {
     console.log('Updating version in', jsrJsonPath)
     write(jsrJsonPath, json)
 
-    // eslint-disable-next-line no-undef
-    console.log(`Publishing ${pkg} with tag ${release}`)
-    await $`cd ${workspacePath} && pnpm dlx jsr publish --allow-dirty`
+    // console.log(`Publishing ${pkg} with tag ${release}`)
+    // await $`cd ${workspacePath} && pnpm dlx jsr publish --allow-dirty`
   })
 }
 
