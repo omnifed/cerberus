@@ -63,7 +63,7 @@ function publish() {
 
     // eslint-disable-next-line no-undef
     console.log(`Publishing ${pkg} with tag ${release}`)
-    await $`cd ${workspacePath} && pnpm dlx jsr publish`
+    await $`cd ${workspacePath} && pnpm dlx jsr publish --allow-dirty`
   })
 }
 
