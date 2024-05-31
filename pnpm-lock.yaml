@@ -129,8 +129,8 @@ importers:
         specifier: ^0.39.0
         version: 0.39.0(typescript@5.4.5)
       '@pandacss/preset-panda':
-        specifier: ^0.39.1
-        version: 0.39.1
+        specifier: ^0.40.0
+        version: 0.40.0
       '@shikijs/rehype':
         specifier: ^1.5.1
         version: 1.5.1
@@ -270,8 +270,8 @@ importers:
         specifier: ^0.39.0
         version: 0.39.0(typescript@5.4.5)
       '@pandacss/preset-panda':
-        specifier: ^0.39.1
-        version: 0.39.1
+        specifier: ^0.40.0
+        version: 0.40.0
       '@pandacss/types':
         specifier: ^0.40.0
         version: 0.40.0
@@ -982,8 +982,8 @@ packages:
   '@pandacss/preset-panda@0.39.0':
     resolution: {integrity: sha512-s/k3CCVP2baE2zZsqDPBwe2at0JPhFT1r2fw9Xar2hNr+gw/SrKMq2uDs4r7nAQ8680ME0/+HDb5rh/wG8MYIw==}
 
-  '@pandacss/preset-panda@0.39.1':
-    resolution: {integrity: sha512-u0/eWZY+SCCseLYBvLVDTxkW9oPlRhr9UIbI2XRMosEoJljLffZTcKO0SbqNDi7RufkVSypiF14VeT6OE/gcAw==}
+  '@pandacss/preset-panda@0.40.0':
+    resolution: {integrity: sha512-/K/i2HQR+T1cbJxRRmTK7wQrOjtBD9MJata8CsqBWDp8CfhZQt7rl3zfyWxbOtMa+IAh4bKu5CIOxY76yFzXvg==}
 
   '@pandacss/shared@0.39.0':
     resolution: {integrity: sha512-8haXlqls29HyMJL6Nq+4tQZ2EcG84j9Zu/HltVwmjXkX1ERakqfJh0mDKstIycKhgeQrLFrhbuGVN4Jfzfn2tQ==}
@@ -993,9 +993,6 @@ packages:
 
   '@pandacss/types@0.39.0':
     resolution: {integrity: sha512-ArZ6sHZvEAsH28MAW7NwcJMwK3XzIG/VaSeuhayGsVnJ7AoZUZ4FMTvGrILWW6qR+/NSYXuIGnMDU1Ul2gfxag==}
-
-  '@pandacss/types@0.39.1':
-    resolution: {integrity: sha512-O5cCNEgdlJIMhjSzz1WpDCoE1+fqIcYvxcMYKVIu6BgbWxE5+uNQ791N2kJbsP/ei1YfT/kOqn6YyILu/fZZcw==}
 
   '@pandacss/types@0.40.0':
     resolution: {integrity: sha512-oAzs5YvN7kuO+/4cQqpYBspmtDRmTNdNqwKgQQb5l232bGhjbrJzo1U4uE8OgP1Agl8in+nzwC5kf3wPaPOMWw==}
@@ -4808,9 +4805,9 @@ snapshots:
     dependencies:
       '@pandacss/types': 0.39.0
 
-  '@pandacss/preset-panda@0.39.1':
+  '@pandacss/preset-panda@0.40.0':
     dependencies:
-      '@pandacss/types': 0.39.1
+      '@pandacss/types': 0.40.0
 
   '@pandacss/shared@0.39.0': {}
 
@@ -4822,8 +4819,6 @@ snapshots:
       ts-pattern: 5.0.8
 
   '@pandacss/types@0.39.0': {}
-
-  '@pandacss/types@0.39.1': {}
 
   '@pandacss/types@0.40.0': {}
 
