@@ -1,6 +1,6 @@
-import { defineSentiment } from './index'
+import { defineSentiment, type SentimentConfig } from './index'
 
-export const infoTokens = defineSentiment({
+export const infoTokens: SentimentConfig = defineSentiment({
   info: {
     border: {
       initial: {

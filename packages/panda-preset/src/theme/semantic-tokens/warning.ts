@@ -1,6 +1,6 @@
-import { defineSentiment } from './index'
+import { defineSentiment, type SentimentConfig } from './index'
 
-export const warningTokens = defineSentiment({
+export const warningTokens: SentimentConfig = defineSentiment({
   warning: {
     border: {
       initial: {

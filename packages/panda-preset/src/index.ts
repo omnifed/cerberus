@@ -1,4 +1,10 @@
-import { defineConfig, definePreset, defineSemanticTokens } from '@pandacss/dev'
+import {
+  defineConfig,
+  definePreset,
+  defineSemanticTokens,
+  type Config,
+  type Preset,
+} from '@pandacss/dev'
 import { globalCss } from './globalCss'
 import { conditions } from './conditions'
 import { utilities } from './utilities'
@@ -16,7 +22,7 @@ import {
 } from './theme/index'
 import { recipes, slotRecipes } from './recipes'
 
-export const cerberusPreset = definePreset({
+export const cerberusPreset: Preset = definePreset({
   globalCss,
   conditions,
   utilities,
@@ -44,7 +50,7 @@ export const cerberusPreset = definePreset({
   },
 })
 
-export const cerberusConfig = defineConfig({
+export const cerberusConfig: Config = defineConfig({
   preflight: true,
   prefix: 'cerberus',
 

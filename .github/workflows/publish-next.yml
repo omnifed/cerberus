@@ -10,7 +10,7 @@ env:
   AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-  publish-next:
+  publish-npm-next:
     runs-on: ubuntu-latest
     name: Build & Publish Next Version to NPM
     steps:
@@ -27,3 +27,14 @@ jobs:
       - run: pnpm install
       - run: pnpm run publish --next --commit ${{ github.sha }}
         working-directory: ./configs
+
+  publish-jsr-next:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish package to JSR
+        run: npx jsr publish

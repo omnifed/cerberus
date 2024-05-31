@@ -1,6 +1,8 @@
 import type { SentimentConfig } from './types'
 
-export function defineSentiment<T extends SentimentConfig>(config: T) {
+export function defineSentiment<T extends SentimentConfig>(
+  config: T,
+): SentimentConfig {
   return config
 }
 

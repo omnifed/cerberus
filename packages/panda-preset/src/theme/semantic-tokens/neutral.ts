@@ -1,6 +1,6 @@
-import { defineSentiment } from './index'
+import { defineSentiment, type SentimentConfig } from './index'
 
-export const neutralTokens = defineSentiment({
+export const neutralTokens: SentimentConfig = defineSentiment({
   neutral: {
     bg: {
       initial: {

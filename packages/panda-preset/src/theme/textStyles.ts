@@ -1,5 +1,12 @@
-import { defineTextStyles } from '@pandacss/dev'
-import type { CssProperties } from '@pandacss/types'
+import { defineTextStyles, type TextStyles } from '@pandacss/dev'
+import type {
+  CssProperties,
+  Recursive,
+  TextStyle,
+  Token,
+} from '@pandacss/types'
+
+type TextStyleResult = Token<TextStyle> | Recursive<Token<TextStyle>>
 
 // display titles
 const displayStyles = {
@@ -20,7 +27,10 @@ const monoStyles = {
   fontWeight: 400,
 }
 
-function createTextStyle(description: string, options: CssProperties) {
+function createTextStyle(
+  description: string,
+  options: CssProperties,
+): TextStyleResult {
   return {
     description,
     value: {
@@ -30,7 +40,7 @@ function createTextStyle(description: string, options: CssProperties) {
   }
 }
 
-export const textStyles = defineTextStyles({
+export const textStyles: TextStyles = defineTextStyles({
   'display-sm': {
     ...createTextStyle('The h1 text style - used for small display text', {
       fontSize: '2rem',

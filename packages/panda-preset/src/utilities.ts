@@ -1,10 +1,12 @@
 import type { UtilityConfig } from '@pandacss/types'
 
-export function defineUtility<T extends UtilityConfig>(config: T) {
+export function defineUtility<T extends UtilityConfig>(
+  config: T,
+): UtilityConfig {
   return config
 }
 
-const mxi = defineUtility({
+const mxi: UtilityConfig = defineUtility({
   mxi: {
     description:
       'x-axis margin shorthand - used to set inline margin at the start and end of an element',
@@ -19,7 +21,7 @@ const mxi = defineUtility({
   },
 })
 
-const pxi = defineUtility({
+const pxi: UtilityConfig = defineUtility({
   pxi: {
     description:
       'x-axis padding shorthand - used to set inline padding at the start and end of an element',
