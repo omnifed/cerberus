@@ -48,3 +48,9 @@ jobs:
       - run: pnpm install
       - run: pnpm run publish:jsr --next --commit ${{ github.sha }}
         working-directory: ./configs
+
+      - run: pnpm dlx jsr publish --allow-dirty
+        working-directory: ./packages/panda-preset
+
+      - run: pnpm dlx jsr publish --allow-dirty
+        working-directory: ./packages/icons
