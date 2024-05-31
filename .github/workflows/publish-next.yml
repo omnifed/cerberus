@@ -30,6 +30,7 @@ jobs:
 
   publish-jsr-next:
     runs-on: ubuntu-latest
+    name: Publish Next Version to JSR
     permissions:
       contents: read
       id-token: write

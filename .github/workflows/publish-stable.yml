@@ -30,6 +30,7 @@ jobs:
 
   publish-jsr-stable:
     runs-on: ubuntu-latest
+    name: Publish Stable Version to JSR
     permissions:
       contents: read
       id-token: write
