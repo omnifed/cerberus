@@ -66,7 +66,7 @@ function publish() {
 
     // eslint-disable-next-line no-undef
     console.log(`Publishing ${pkg} with tag ${release}`)
-    await $`cd ${workspacePath} && pnpm publish --tag ${release} --no-git-checks`
+    await $`cd ${workspacePath} && pnpm publish --tag ${release} --no-git-checks --dry-run`
   })
 }
 
