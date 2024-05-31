@@ -29,9 +29,9 @@ jobs:
       - run: pnpm run publish --next --commit ${{ github.sha }}
         working-directory: ./configs
 
-  publish-jsr-next:
+  create-jsr-next-versions:
     runs-on: ubuntu-latest
-    name: Publish Next Version to JSR
+    name: Update JSR Next Versions
     permissions:
       contents: read
       id-token: write
@@ -41,16 +41,41 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9.1.4
-      - uses: actions/setup-node@v4
-        with:
-          cache: 'pnpm'
 
       - run: pnpm install
       - run: pnpm run publish:jsr --next --commit ${{ github.sha }}
         working-directory: ./configs
 
+  # There is a bug in JSR publishing the errors with next versions
+  # So we are creating a new job for each public package
+  publish-preset-jsr-next:
+    runs-on: ubuntu-latest
+    name: Publish Preset Next Version to JSR
+    needs: create-jsr-next-versions
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.1.4
+
       - run: pnpm dlx jsr publish --allow-dirty
         working-directory: ./packages/panda-preset
+
+  publish-icons-jsr-next:
+    runs-on: ubuntu-latest
+    name: Publish Icons Next Version to JSR
+    needs: create-jsr-next-versions
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.1.4
 
       - run: pnpm dlx jsr publish --allow-dirty
         working-directory: ./packages/icons
