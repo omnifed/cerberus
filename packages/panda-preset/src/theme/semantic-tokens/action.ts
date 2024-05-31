@@ -1,6 +1,40 @@
-import { defineSentiment, type SentimentConfig } from './index'
+import type { SemanticToken } from './types'
 
-export const actionTokens: SentimentConfig = defineSentiment({
+export type ActionProminences = {
+  readonly initial: SemanticToken
+  readonly hover: SemanticToken
+  readonly active: SemanticToken
+}
+export type ActionNavProminences = {
+  readonly initial: SemanticToken
+  readonly hover: SemanticToken
+  readonly visited: SemanticToken
+}
+
+export interface ActionTokens {
+  readonly action: {
+    readonly bg: ActionProminences & {
+      readonly 100: ActionProminences
+    }
+    readonly border: {
+      readonly initial: SemanticToken
+      readonly 100: SemanticToken
+      readonly focus: SemanticToken
+    }
+    readonly navigation: ActionNavProminences & {
+      readonly alternate: ActionNavProminences
+    }
+    readonly text: {
+      readonly initial: SemanticToken
+      readonly 100: SemanticToken
+      readonly 200: SemanticToken
+      readonly inverse: SemanticToken
+      readonly alternate: SemanticToken
+    }
+  }
+}
+
+export const actionTokens: ActionTokens = {
   action: {
     bg: {
       initial: {
@@ -230,4 +264,4 @@ export const actionTokens: SentimentConfig = defineSentiment({
       },
     },
   },
-})
+}

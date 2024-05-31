@@ -1,6 +1,27 @@
-import { defineSentiment, type SentimentConfig } from './index'
+import type { Prominence, SemanticToken } from './types'
 
-export const neutralTokens: SentimentConfig = defineSentiment({
+export interface NeutralTokens {
+  readonly neutral: {
+    readonly bg: {
+      readonly initial: SemanticToken
+      readonly active: SemanticToken
+      readonly hover: SemanticToken
+    }
+    readonly border: {
+      readonly initial: SemanticToken
+      readonly 100: SemanticToken
+      readonly 200: SemanticToken
+    }
+    readonly surface: {
+      readonly [P in Prominence]: SemanticToken
+    }
+    readonly text: {
+      readonly [P in Prominence]: SemanticToken
+    }
+  }
+}
+
+export const neutralTokens: NeutralTokens = {
   neutral: {
     bg: {
       initial: {
@@ -187,4 +208,4 @@ export const neutralTokens: SentimentConfig = defineSentiment({
       },
     },
   },
-})
+}

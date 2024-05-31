@@ -1,6 +1,27 @@
-import { defineSentiment, type SentimentConfig } from './index'
+import type { Prominence, SemanticToken } from './types'
 
-export const dangerTokens: SentimentConfig = defineSentiment({
+type Prominences = Exclude<Prominence, 300>
+
+export interface DangerTokens {
+  readonly danger: {
+    readonly bg: {
+      readonly initial: SemanticToken
+      readonly hover: SemanticToken
+      readonly active: SemanticToken
+    }
+    readonly border: {
+      readonly initial: SemanticToken
+    }
+    readonly surface: {
+      readonly initial: SemanticToken
+    }
+    readonly text: {
+      readonly [P in Prominences]: SemanticToken
+    }
+  }
+}
+
+export const dangerTokens: DangerTokens = {
   danger: {
     bg: {
       initial: {
@@ -105,4 +126,4 @@ export const dangerTokens: SentimentConfig = defineSentiment({
       },
     },
   },
-})
+}

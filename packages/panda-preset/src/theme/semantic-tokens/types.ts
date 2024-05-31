@@ -40,13 +40,7 @@ export type Prominence = 'initial' | 'inverse' | 100 | 200 | 300
  * @description **noun**, action or influence.
  * @readonly **optional**
  */
-export type Interaction =
-  | 'initial'
-  | 'hover'
-  | 'active'
-  | 'visited'
-  | 'focus'
-  | 'disabled'
+export type Interaction = 'hover' | 'active' | 'visited' | 'focus' | 'disabled'
 
 /**
  * The Pando theme of a color.
