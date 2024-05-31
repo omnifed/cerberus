@@ -31,6 +31,7 @@ function _getReleaseVersion(values) {
   exit(1)
 }
 
+// TODO: Use when jsr supports tags
 // function _getTags(values) {
 //   if (values.next) {
 //     return nextTag
