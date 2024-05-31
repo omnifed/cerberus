@@ -7,7 +7,7 @@ export type DefaultThemes = 'cerberus'
 export type CustomThemes<K extends string = DefaultThemes> = 'cerberus' | K
 export type ColorModes = 'light' | 'dark'
 
-export interface ThemeContextValue<T extends DefaultThemes> {
+export interface ThemeContextValue<T extends string = DefaultThemes> {
   theme: CustomThemes<T>
   mode: ColorModes
   updateTheme: (theme: T) => void

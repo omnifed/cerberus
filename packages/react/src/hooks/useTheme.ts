@@ -16,7 +16,7 @@ import {
   type ThemeContextValue,
 } from '../context/theme'
 
-export function useTheme<C extends 'cerberus' = DefaultThemes>(
+export function useTheme<C extends string = DefaultThemes>(
   defaultTheme: CustomThemes<C> = 'cerberus',
   defaultColorMode: ColorModes = 'light',
 ): ThemeContextValue<C> {
