@@ -50,9 +50,9 @@ function publish() {
     const workspacePath = resolve(import.meta.dir, '..', '..', 'packages', pkg)
     const jsrJsonPath = resolve(workspacePath, 'jsr.json')
     const rawFile = file(jsrJsonPath)
-    const packageJson = await rawFile.json()
+    const jsrJson = await rawFile.json()
     const json = JSON.stringify(
-      { ...packageJson, version: _getReleaseVersion(values) },
+      { ...jsrJson, version: _getReleaseVersion(values) },
       null,
       2,
     )
@@ -63,7 +63,7 @@ function publish() {
 
     // eslint-disable-next-line no-undef
     console.log(`Publishing ${pkg} with tag ${release}`)
-    await $`cd ${workspacePath} && pnpm dlx jsr publish --tag ${release}`
+    await $`cd ${workspacePath} && pnpm dlx jsr publish`
   })
 }
 
