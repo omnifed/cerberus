@@ -28,9 +28,11 @@ jobs:
       - run: pnpm run publish --stable
         working-directory: ./configs
 
-  publish-jsr-stable:
+  # There is a bug in JSR publishing the errors with next versions
+  # So we are creating a new job for each public package
+  publish-preset-jsr-next:
     runs-on: ubuntu-latest
-    name: Publish Stable Version to JSR
+    name: Publish Preset Next Version to JSR
     permissions:
       contents: read
       id-token: write
@@ -40,7 +42,36 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9.1.4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
 
       - run: pnpm install
       - run: pnpm run publish:jsr --stable
         working-directory: ./configs
+
+      - run: pnpm dlx jsr publish --allow-dirty
+        working-directory: ./packages/panda-preset
+
+  publish-icons-jsr-next:
+    runs-on: ubuntu-latest
+    name: Publish Icons Next Version to JSR
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.1.4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+
+      - run: pnpm install
+      - run: pnpm run publish:jsr --stable
+        working-directory: ./configs
+
+      - run: pnpm dlx jsr publish --allow-dirty
+        working-directory: ./packages/icons
