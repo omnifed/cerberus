@@ -224,8 +224,8 @@ importers:
         specifier: ^0.40.1
         version: 0.40.1(typescript@5.4.5)
       '@pandacss/types':
-        specifier: ^0.40.0
-        version: 0.40.0
+        specifier: ^0.40.1
+        version: 0.40.1
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(@microsoft/api-extractor@7.46.2(@types/node@20.12.10))(postcss@8.4.35)(typescript@5.4.5)
@@ -273,8 +273,8 @@ importers:
         specifier: ^0.40.0
         version: 0.40.0
       '@pandacss/types':
-        specifier: ^0.40.0
-        version: 0.40.0
+        specifier: ^0.40.1
+        version: 0.40.1
 
   tests:
     devDependencies:
