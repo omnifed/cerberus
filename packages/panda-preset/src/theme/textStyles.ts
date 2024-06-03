@@ -42,19 +42,19 @@ function createTextStyle(
 
 export const textStyles: TextStyles = defineTextStyles({
   'display-sm': {
-    ...createTextStyle('The h1 text style - used for small display text', {
+    ...createTextStyle('TThe h1 - Used for marketing cards or data visuals', {
       fontSize: '2rem',
       ...displayStyles,
     }),
   },
   'display-md': {
-    ...createTextStyle('The h1 text style - used for medium display text', {
+    ...createTextStyle('The h1 - Used for medium marketing headlines', {
       fontSize: '2.5rem',
       ...displayStyles,
     }),
   },
   'display-lg': {
-    ...createTextStyle('The h1 text style - used for large display text', {
+    ...createTextStyle('The h1 - Used for large marketing headlines', {
       fontSize: '3rem',
       ...displayStyles,
     }),
@@ -63,7 +63,7 @@ export const textStyles: TextStyles = defineTextStyles({
   // headings
 
   h1: {
-    ...createTextStyle('The h1 text style - used in page headings', {
+    ...createTextStyle('The h1 text style - large body blocks', {
       fontSize: '2.5rem',
       ...headingWeight,
     }),
@@ -75,20 +75,23 @@ export const textStyles: TextStyles = defineTextStyles({
     }),
   },
   h3: {
-    ...createTextStyle('The h3 text style - used in secondary headings', {
-      fontSize: '1.875rem',
-      ...headingWeight,
-    }),
+    ...createTextStyle(
+      'The h3 text style - used in secondary/sub-section headings',
+      {
+        fontSize: '1.875rem',
+        ...headingWeight,
+      },
+    ),
   },
   h4: {
-    ...createTextStyle('The h4 text style - used in secondary headings', {
+    ...createTextStyle('The h4 text style - used in headings for cards', {
       fontSize: '1.5rem',
       ...headingWeight,
     }),
   },
   h5: {
     ...createTextStyle(
-      'The h5 text style - used in headings that are the lower emphasis',
+      'The h5 text style - used in headings for card body text',
       {
         fontSize: '1.25rem',
         ...headingWeight,
@@ -117,14 +120,14 @@ export const textStyles: TextStyles = defineTextStyles({
   },
   'body-sm': {
     ...createTextStyle(
-      'The small text style - used in support text or legal.',
+      'The small text style - used in compact or dense text blocks.',
       {
         fontSize: '0.875rem',
       },
     ),
   },
   'body-md': {
-    ...createTextStyle('The body text style - used in paragraphs', {
+    ...createTextStyle('The default body text style - used in paragraphs', {
       fontSize: '1rem',
     }),
   },
