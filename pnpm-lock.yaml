@@ -234,7 +234,7 @@ importers:
     dependencies:
       '@cerberus-design/panda-preset':
         specifier: '*'
-        version: 0.0.1-next-e5f3f51383771418ed757910c81e155433631b3b(@pandacss/dev@0.39.0(typescript@5.4.5))(autoprefixer@10.4.19(postcss@8.4.35))(postcss@8.4.35)
+        version: 0.0.1-next-e5f3f51383771418ed757910c81e155433631b3b(@pandacss/dev@0.39.0(typescript@5.4.5))(autoprefixer@10.4.19(postcss@8.4.38))(postcss@8.4.38)
       '@pandacss/dev':
         specifier: '*'
         version: 0.39.0(typescript@5.4.5)
@@ -259,7 +259,7 @@ importers:
         version: 18.3.1(react@18.3.1)
       tsup:
         specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.46.2(@types/node@20.12.10))(postcss@8.4.35)(typescript@5.4.5)
+        version: 8.0.2(@microsoft/api-extractor@7.46.2)(postcss@8.4.38)(typescript@5.4.5)
 
   styled-system:
     devDependencies:
@@ -4181,11 +4181,11 @@ snapshots:
       prop-types: 15.8.1
       react: 18.3.1
 
-  '@cerberus-design/panda-preset@0.0.1-next-e5f3f51383771418ed757910c81e155433631b3b(@pandacss/dev@0.39.0(typescript@5.4.5))(autoprefixer@10.4.19(postcss@8.4.35))(postcss@8.4.35)':
+  '@cerberus-design/panda-preset@0.0.1-next-e5f3f51383771418ed757910c81e155433631b3b(@pandacss/dev@0.39.0(typescript@5.4.5))(autoprefixer@10.4.19(postcss@8.4.38))(postcss@8.4.38)':
     dependencies:
       '@pandacss/dev': 0.39.0(typescript@5.4.5)
-      autoprefixer: 10.4.19(postcss@8.4.35)
-      postcss: 8.4.35
+      autoprefixer: 10.4.19(postcss@8.4.38)
+      postcss: 8.4.38
 
   '@clack/core@0.3.4':
     dependencies:
@@ -5548,6 +5548,16 @@ snapshots:
       normalize-range: 0.1.2
       picocolors: 1.0.0
       postcss: 8.4.35
+      postcss-value-parser: 4.2.0
+
+  autoprefixer@10.4.19(postcss@8.4.38):
+    dependencies:
+      browserslist: 4.23.0
+      caniuse-lite: 1.0.30001612
+      fraction.js: 4.3.7
+      normalize-range: 0.1.2
+      picocolors: 1.0.0
+      postcss: 8.4.38
       postcss-value-parser: 4.2.0
 
   available-typed-arrays@1.0.7:
