@@ -116,3 +116,48 @@ To help make maintaining a breeze, add this new script to your `package.json` to
   "up:cerberus": "pnpm up @cerberus-design/{react} && pnpm dlx jsr add @cerberus/{panda-preset,styled-system,icons}"
 }
 ```
+
+## Typescript
+
+If you are seeing TypeScript path errors, you might need to take the following steps:
+
+### Step 1 - Update your tsconfig.json
+
+```json title="tsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@cerberus/styled-system/*": [
+        "./node_modules/@cerberus-design/styled-system/*"
+      ]
+    }
+  }
+}
+```
+This will map the JSR styled-system to the NPM expected location.
+
+### Step 2 - Add a `global.d.ts` file
+
+```ts title="global.d.ts"
+declare module '@cerberus/styled-system/css' {
+  export * from '@cerberus-design/styled-system/css'
+}
+
+declare module '@cerberus/styled-system/recipes' {
+  export * from '@cerberus-design/styled-system/recipes'
+}
+
+declare module '@cerberus/styled-system/types' {
+  export * from '@cerberus-design/styled-system/types'
+}
+
+declare module '@cerberus/styled-system/utils' {
+  export * from '@cerberus-design/styled-system/utils'
+}
+
+declare module '@cerberus/styled-system/patterns' {
+  export * from '@cerberus-design/styled-system/patterns'
+}
+```
+This will map the JSR styled-system to the NPM expected location.
