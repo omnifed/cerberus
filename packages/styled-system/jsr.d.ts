@@ -1,4 +1,4 @@
-import './types/global.d.ts'
+// import './types/global.d.ts'
 export * from './types/conditions.d.ts'
 export * from './types/pattern.d.ts'
 export * from './types/recipe.d.ts'
