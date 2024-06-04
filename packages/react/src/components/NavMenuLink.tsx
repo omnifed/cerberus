@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ElementType } from 'react'
 import { Show } from './Show'
-import { css, cx } from '@cerberus-design/styled-system/css'
+import { css, cx } from '@cerberus/styled-system/css'
 
 export interface NavMenuLinkProps
   extends AnchorHTMLAttributes<HTMLAnchorElement> {
