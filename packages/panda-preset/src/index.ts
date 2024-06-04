@@ -58,7 +58,7 @@ export const cerberusConfig: Config = defineConfig({
   jsxFactory: 'cerberus',
 
   outdir: 'styled-system',
-  importMap: '@cerberus-design/styled-system',
+  importMap: '@cerberus/styled-system',
 })
 
 export * from './conditions'

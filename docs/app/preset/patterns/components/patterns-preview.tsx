@@ -1,5 +1,5 @@
-import { css } from '@cerberus-design/styled-system/css'
-import { scrollable } from '@cerberus-design/styled-system/patterns'
+import { css } from '@cerberus/styled-system/css'
+import { scrollable } from '@cerberus/styled-system/patterns'
 
 export function ScrollablePreview() {
   return (

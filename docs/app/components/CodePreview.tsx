@@ -3,8 +3,8 @@
 import { useState, type PropsWithChildren, type ReactNode } from 'react'
 import { Button, Show } from '@cerberus-design/react'
 import { Code, CodeHide } from '@cerberus-design/icons'
-import { css } from '@cerberus-design/styled-system/css'
-import { hstack, vstack } from '@cerberus-design/styled-system/patterns'
+import { css } from '@cerberus/styled-system/css'
+import { hstack, vstack } from '@cerberus/styled-system/patterns'
 
 // TODO: Replace with Badge component
 

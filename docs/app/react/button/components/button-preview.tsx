@@ -1,6 +1,6 @@
 import { Button } from '@cerberus-design/react'
 import { ArrowDownRight } from '@cerberus-design/icons'
-import { css } from '@cerberus-design/styled-system/css'
+import { css } from '@cerberus/styled-system/css'
 
 export function BasicButtonPreview() {
   return <Button>Default styles</Button>

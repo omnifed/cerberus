@@ -1,6 +1,6 @@
-import { css } from '@cerberus-design/styled-system/css'
+import { css } from '@cerberus/styled-system/css'
 import { zIndex } from '@cerberus-design/panda-preset'
-import { hstack } from '@cerberus-design/styled-system/patterns'
+import { hstack } from '@cerberus/styled-system/patterns'
 
 interface ZListProps {}
 

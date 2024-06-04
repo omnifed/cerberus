@@ -4,17 +4,27 @@ import { NoteAdmonition } from '@/app/components/Admonition'
 
 The Cerberus Panda CSS Preset adds a set of core features to the Cerberus Design System.
 
-## Installation
+<NoteAdmonition description="This guide assumes you are familiar with Panda CSS. If you are not, please take a moment to familiarize yourself with the framework." />
 
-Install the Cerberus Panda Preset library, with the package manager of your choice:
+## Step 1 - Install Panda CSS
+
+If you have not already installed Panda CSS, you can do so by following the [Panda CSS installation guide](https://panda-css.com/docs/installation/nextjs).
+
+If you have not added any custom presets to your Panda configuration, install the required Panda preset:
 
 ```bash
-pnpm dlx jsr add @cerberus/panda-preset
+pnpm add -D @pandacss/preset-panda
 ```
 
-## Setup
+### Install Cerberus core packages
 
-<NoteAdmonition description="This guide assumes you are familiar with Panda CSS. If you are not, please take a moment to familiarize yourself with the framework." />
+Install the Cerberus core packages, with the package manager of your choice:
+
+```bash
+pnpm dlx jsr add @cerberus/{panda-preset,styled-system}
+```
+
+## Step 2 - Setup Cerberus
 
 ### Update the Panda Configuration
 
@@ -30,7 +40,7 @@ export default defineConfig({
 
   include: [
     './node_modules/@cerberus-design/react/src/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}', // <- Make sure this path is to your project
   ],
   exclude: [],
 
@@ -46,6 +56,8 @@ Now that you have extended Panda, you need to update your local styles by runnin
 ```bash
 pnpm run prepare
 ```
+
+<NoteAdmonition description="Adding Cerberus will add add a new importMap pointing to '@cerberus/styled-system'. This is the new path you will need to use for all your Panda references." />
 
 ### Step 4 - Connect the Cerberus Theme
 
@@ -77,13 +89,23 @@ const poppins = Poppins({
 })
 ```
 
-### Using the Cerberus React & Icons packages
+### Using the Cerberus React package (Not JSR compatible yet)
 
-If you are interested in using the Cerberus React and Icons packages, install those now:
+If you are interested in using the Cerberus React, install it now:
 
 ```bash
-pnpm add @cerberus-design/{react,icons}
+pnpm add @cerberus-design/react
 ```
+
+### Using the Cerberus Icons package (optional)
+
+If you are interested in using the Cerberus Icons, install it now:
+
+```bash
+pnpm dlx jsr add @cerberus/icons
+```
+
+<NoteAdmonition description="The Cerberus React library is icon-agnostic which means you can combine any icon library with it." />
 
 ### Add a Cerberus script
 
@@ -91,6 +113,51 @@ To help make maintaining a breeze, add this new script to your `package.json` to
 
 ```json title="package.json"
 "scripts": {
-  "up:cerberus": "pnpm up @cerberus-design/{panda-preset,react,icons}"
+  "up:cerberus": "pnpm up @cerberus-design/{react} && pnpm dlx jsr add @cerberus/{panda-preset,styled-system,icons}"
 }
 ```
+
+## Typescript
+
+If you are seeing TypeScript path errors, you might need to take the following steps:
+
+### Step 1 - Update your tsconfig.json
+
+```json title="tsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@cerberus/styled-system/*": [
+        "./node_modules/@cerberus-design/styled-system/*"
+      ]
+    }
+  }
+}
+```
+This will map the JSR styled-system to the NPM expected location.
+
+### Step 2 - Add a `global.d.ts` file
+
+```ts title="global.d.ts"
+declare module '@cerberus/styled-system/css' {
+  export * from '@cerberus-design/styled-system/css'
+}
+
+declare module '@cerberus/styled-system/recipes' {
+  export * from '@cerberus-design/styled-system/recipes'
+}
+
+declare module '@cerberus/styled-system/types' {
+  export * from '@cerberus-design/styled-system/types'
+}
+
+declare module '@cerberus/styled-system/utils' {
+  export * from '@cerberus-design/styled-system/utils'
+}
+
+declare module '@cerberus/styled-system/patterns' {
+  export * from '@cerberus-design/styled-system/patterns'
+}
+```
+This will map the JSR styled-system to the NPM expected location.

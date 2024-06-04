@@ -23,7 +23,7 @@ export default tseslint.config(
       'docs/**/*',
       'packages/*/build/**/*',
       'packages/*/.tsup/**/*',
-      'styled-system/**/*',
+      'packages/styled-system/**/*',
     ],
   },
 
