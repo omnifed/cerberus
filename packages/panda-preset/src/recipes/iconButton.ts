@@ -12,7 +12,7 @@ import {
 } from './shared/button.base'
 
 /**
- * This module contains the button recipe.
+ * This module contains the iconButton recipe.
  * @module
  */
 
@@ -21,17 +21,18 @@ import {
  * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
  * @definition [Button docs](https://cerberus.digitalu.design/react/button)
  */
-export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
-  className: 'button',
+export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
+  className: 'icon-btn',
   description: 'WCAG Level AAA compliant button styles.',
 
   base: {
     ...buttonBase,
-    h: '3.5rem', // a11y minimum touch target size: 2.75rem
-    pxi: '4',
-
+    h: '2.75rem', // a11y minimum touch target size: 2.75rem
+    pxi: '0',
+    w: '2.75rem',
     md: {
-      h: '2.75rem',
+      h: '1.125rem',
+      w: '1.125rem',
     },
   },
 
@@ -48,9 +49,8 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       filled: filledUsage,
     },
     shape: {
-      sharp: {},
-      rounded: {
-        pxi: '8',
+      circle: {
+        pxi: '0',
         rounded: 'full',
       },
     },
@@ -58,7 +58,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
 
   defaultVariants: {
     palette: 'action',
-    usage: 'filled',
-    shape: 'sharp',
+    usage: 'text',
+    shape: 'circle',
   },
 })
