@@ -1,4 +1,8 @@
-// import './types/global.d.ts'
+/**
+ * @module
+ * This module contains the type definitions for the `styled-system` packages.
+ */
+
 export * from './types/conditions.d.ts'
 export * from './types/pattern.d.ts'
 export * from './types/recipe.d.ts'
