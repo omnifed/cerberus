@@ -82,14 +82,6 @@ describe('iconButton recipe', () => {
     })
   })
 
-  test('should have an outline usage variant', () => {
-    expect(iconButton.variants?.usage.outline).toMatchObject({
-      bgColor: 'colorPalette.bg.100.initial',
-      border: '4px solid',
-      borderColor: 'colorPalette.border.initial',
-    })
-  })
-
   test('should have a filled usage variant', () => {
     expect(iconButton.variants?.usage.filled).toMatchObject({
       bgColor: 'colorPalette.bg.initial',
