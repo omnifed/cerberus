@@ -3,8 +3,8 @@
 import { useThemeContext } from '@cerberus-design/react'
 import type { SemanticToken, Sentiment } from '@cerberus-design/panda-preset'
 import { useEffect, useMemo, useState } from 'react'
-import { css, cx } from '@cerberus-design/styled-system/css'
-import { vstack } from '@cerberus-design/styled-system/patterns'
+import { css, cx } from '@cerberus/styled-system/css'
+import { vstack } from '@cerberus/styled-system/patterns'
 import { hasWhiteBase } from '@/app/utils/colors'
 import Link from 'next/link'
 

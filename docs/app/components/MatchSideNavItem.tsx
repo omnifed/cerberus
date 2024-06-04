@@ -1,6 +1,6 @@
 'use client'
 
-import { css } from '@cerberus-design/styled-system/css'
+import { css } from '@cerberus/styled-system/css'
 import { usePathname } from 'next/navigation'
 import type { HeadingItem, LinkItem } from './SideNav'
 import Link from 'next/link'

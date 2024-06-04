@@ -4,9 +4,9 @@ import {
   grid,
   gridItem,
   vstack,
-} from '@cerberus-design/styled-system/patterns'
+} from '@cerberus/styled-system/patterns'
 import { normalizeTokens, getTokenList } from '../../helpers/normalize'
-import { css } from '@cerberus-design/styled-system/css'
+import { css } from '@cerberus/styled-system/css'
 
 const PREVIEW_SIZE = '15rem'
 

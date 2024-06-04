@@ -1,11 +1,7 @@
 'use client'
 
 import { Button, Show } from '@cerberus-design/react'
-import {
-  animateIn,
-  hstack,
-  vstack,
-} from '@cerberus-design/styled-system/patterns'
+import { animateIn, hstack, vstack } from '@cerberus/styled-system/patterns'
 import { useCallback, useState } from 'react'
 
 export function AnimateInPreview() {

@@ -1,5 +1,5 @@
 import { focusStates } from '@cerberus-design/panda-preset'
-import { css } from '@cerberus-design/styled-system/css'
+import { css } from '@cerberus/styled-system/css'
 
 const headlineStyles = {
   color: 'neutral.text.initial',

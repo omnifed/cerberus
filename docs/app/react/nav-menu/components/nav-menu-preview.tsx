@@ -7,9 +7,9 @@ import {
   NavMenuList,
   NavMenuTrigger,
 } from '@cerberus-design/react'
-import { css, cx } from '@cerberus-design/styled-system/css'
-import { circle, hstack } from '@cerberus-design/styled-system/patterns'
-import { button } from '@cerberus-design/styled-system/recipes'
+import { css, cx } from '@cerberus/styled-system/css'
+import { circle, hstack } from '@cerberus/styled-system/patterns'
+import { button } from '@cerberus/styled-system/recipes'
 import { forwardRef, type ForwardedRef, type PropsWithChildren } from 'react'
 import Link from 'next/link'
 import { ACTION_NAV_HOVER, ACTION_NAV_INITIAL } from '@/app/utils/const'

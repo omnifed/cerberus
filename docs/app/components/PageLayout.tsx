@@ -1,11 +1,7 @@
 import type { PropsWithChildren } from 'react'
-import {
-  grid,
-  gridItem,
-  scrollable,
-} from '@cerberus-design/styled-system/patterns'
+import { grid, gridItem, scrollable } from '@cerberus/styled-system/patterns'
 import { markdown } from '../styles/markdown'
-import { cx } from '@cerberus-design/styled-system/css'
+import { cx } from '@cerberus/styled-system/css'
 
 const PAGE_MINUS_HEADER = '100dvh'
 

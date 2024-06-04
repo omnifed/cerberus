@@ -2,8 +2,8 @@
 
 import { useMemo } from 'react'
 import Link from 'next/link'
-import { css } from '@cerberus-design/styled-system/css'
-import { grid, gridItem, hstack } from '@cerberus-design/styled-system/patterns'
+import { css } from '@cerberus/styled-system/css'
+import { grid, gridItem, hstack } from '@cerberus/styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
 import { LogoGithub } from '@cerberus-design/icons'
 import { Show, useThemeContext } from '@cerberus-design/react'
