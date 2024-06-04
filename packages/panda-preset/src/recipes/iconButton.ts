@@ -31,8 +31,8 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     pxi: '0',
     w: '2.75rem',
     md: {
-      h: '1.125rem',
-      w: '1.125rem',
+      h: '1.5rem', // a11y minimum touch target size: 1.5rem for desktop
+      w: '1.5rem',
     },
   },
 

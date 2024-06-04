@@ -40,8 +40,8 @@ describe('iconButton recipe', () => {
         cursor: 'default',
       },
       md: {
-        h: '1.125rem',
-        w: '1.125rem',
+        h: '1.5rem',
+        w: '1.5rem',
       },
     })
   })
