@@ -12,7 +12,11 @@ import {
 } from 'react'
 
 // TODO: Replace with IconButton
-type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps
+interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  palette?: ButtonProps['palette']
+  usage?: 'text' | 'filled'
+  shape?: 'circle'
+}
 function IconButtonEl(
   props: PropsWithChildren<IconButtonProps>,
   ref: ForwardedRef<HTMLButtonElement>,
