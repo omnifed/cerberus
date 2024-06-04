@@ -1,12 +1,3 @@
-declare module 'color-space'
-
-declare module '*.mdx' {
-  let MDXComponent: (props: any) => JSX.Element
-  export const frontmatter: Record<string, string>
-  export default MDXComponent
-}
-
-// Map JSR to pnPm workspace
 declare module '@cerberus/styled-system/css' {
   export * from '@cerberus-design/styled-system/css'
 }

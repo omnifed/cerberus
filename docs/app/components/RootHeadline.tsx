@@ -1,6 +1,6 @@
 'use client'
 
-import { css, cx } from '@cerberus-design/styled-system/css'
+import { css, cx } from '@cerberus/styled-system/css'
 import { Show, useThemeContext } from '@cerberus-design/react'
 import { Splash } from 'next/font/google'
 

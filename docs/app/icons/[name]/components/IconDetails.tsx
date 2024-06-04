@@ -4,7 +4,7 @@ import {
   grid,
   gridItem,
   vstack,
-} from '@cerberus-design/styled-system/patterns'
+} from '@cerberus/styled-system/patterns'
 import CopyToClipboard from './CopyToClipboard'
 
 const sizes = [16, 20, 24, 32]

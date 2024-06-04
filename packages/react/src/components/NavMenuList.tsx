@@ -4,8 +4,8 @@ import { useMemo, type HTMLAttributes } from 'react'
 import { useNavMenuContext } from '../context/navMenu'
 import { Show } from './Show'
 import type { Positions } from '../types'
-import { cx } from '@cerberus-design/styled-system/css'
-import { vstack } from '@cerberus-design/styled-system/patterns'
+import { cx } from '@cerberus/styled-system/css'
+import { vstack } from '@cerberus/styled-system/patterns'
 
 interface GetPositionResult {
   left: string

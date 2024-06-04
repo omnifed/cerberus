@@ -1,5 +1,5 @@
-import { css, cx } from '@cerberus-design/styled-system/css'
-import { hstack } from '@cerberus-design/styled-system/patterns'
+import { css, cx } from '@cerberus/styled-system/css'
+import { hstack } from '@cerberus/styled-system/patterns'
 import {
   DataEnrichmentAdd,
   Information,

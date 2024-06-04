@@ -1,0 +1,23 @@
+{
+  "name": "@cerberus/styled-system",
+  "version": "0.0.0",
+  "exports": {
+    "./css": "./css/index.mjs",
+    "./tokens": "./tokens/index.mjs",
+    "./types": "./jsr.d.ts",
+    "./patterns": "./patterns/index.mjs",
+    "./recipes": "./recipes/index.mjs",
+    "./jsx": "./jsx/index.mjs"
+  },
+  "publish": {
+    "exclude": [
+      "!./css",
+      "!./jsx",
+      "!./patterns",
+      "!./recipes",
+      "!./tokens",
+      "!./types",
+      "!./helpers.mjs"
+    ]
+  }
+}

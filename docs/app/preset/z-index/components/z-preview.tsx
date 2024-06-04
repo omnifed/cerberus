@@ -1,8 +1,8 @@
 'use client'
 
 import { zIndex } from '@cerberus-design/panda-preset'
-import { css, cx } from '@cerberus-design/styled-system/css'
-import { vstack } from '@cerberus-design/styled-system/patterns'
+import { css, cx } from '@cerberus/styled-system/css'
+import { vstack } from '@cerberus/styled-system/patterns'
 import { useState, type ChangeEvent } from 'react'
 
 const zLayers = css({

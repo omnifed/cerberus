@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react'
-import { cx } from '@cerberus-design/styled-system/css'
-import { button } from '@cerberus-design/styled-system/recipes'
+import { cx } from '@cerberus/styled-system/css'
+import { button } from '@cerberus/styled-system/recipes'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   palette?: 'action' | 'danger'
