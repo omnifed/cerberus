@@ -262,6 +262,13 @@ importers:
         version: 8.0.2(@microsoft/api-extractor@7.46.2(@types/node@20.12.10))(postcss@8.4.35)(typescript@5.4.5)
 
   packages/styled-system:
+    dependencies:
+      react:
+        specifier: '*'
+        version: 18.3.1
+      react-dom:
+        specifier: '*'
+        version: 18.3.1(react@18.3.1)
     devDependencies:
       '@cerberus-design/panda-preset':
         specifier: workspace:*
