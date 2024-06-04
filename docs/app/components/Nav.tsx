@@ -41,7 +41,11 @@ const navLogoContent = (
   </section>
 )
 const navGHLogoContent = (
-  <li>
+  <li
+    className={css({
+      h: '1.5rem',
+    })}
+  >
     <a
       aria-label="View Github repo"
       className={css({

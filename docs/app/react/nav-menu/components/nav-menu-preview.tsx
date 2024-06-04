@@ -1,44 +1,17 @@
 'use client'
 
-import { OverflowMenuVertical } from '@cerberus-design/icons'
 import {
   NavMenu,
   NavMenuLink,
   NavMenuList,
   NavMenuTrigger,
 } from '@cerberus-design/react'
-import { css, cx } from '@cerberus/styled-system/css'
+import { css } from '@cerberus/styled-system/css'
 import { circle, hstack } from '@cerberus/styled-system/patterns'
-import { button } from '@cerberus/styled-system/recipes'
 import { forwardRef, type ForwardedRef, type PropsWithChildren } from 'react'
 import Link from 'next/link'
 import { ACTION_NAV_HOVER, ACTION_NAV_INITIAL } from '@/app/utils/const'
-
-// TODO: Replace with IconButton
-function IconButtonEl(
-  props: PropsWithChildren,
-  ref: ForwardedRef<HTMLButtonElement>,
-) {
-  return (
-    <button
-      aria-label="More options"
-      className={cx(
-        css({
-          pxi: '0.5',
-        }),
-        button({
-          usage: 'text',
-          shape: 'rounded',
-        }),
-      )}
-      {...props}
-      ref={ref}
-    >
-      <OverflowMenuVertical size={32} />
-    </button>
-  )
-}
-const IconButton = forwardRef(IconButtonEl)
+import { IconButton } from '../../icon-button/components/temp-icon-button'
 
 export function BasicNavMenuPreview() {
   return (
@@ -54,9 +27,7 @@ export function BasicNavMenuPreview() {
 export function CustomNavMenuPreview() {
   return (
     <NavMenu>
-      <NavMenuTrigger as={IconButton} controls="basic:nav">
-        Features
-      </NavMenuTrigger>
+      <NavMenuTrigger as={IconButton} controls="basic:nav" />
       <NavMenuList id="basic:nav">
         <NavMenuLink>Something</NavMenuLink>
       </NavMenuList>

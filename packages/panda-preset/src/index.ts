@@ -22,6 +22,11 @@ import {
 } from './theme/index'
 import { recipes, slotRecipes } from './recipes'
 
+/**
+ * This module contains the Cerberus preset and configuration options.
+ * @module
+ **/
+
 export const cerberusPreset: Preset = definePreset({
   globalCss,
   conditions,

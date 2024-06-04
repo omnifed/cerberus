@@ -7,32 +7,35 @@ import {
   buttonBase,
   buttonPalettes,
   filledUsage,
-  nonTextStates,
-  sharpRadii,
   textUsage,
 } from './shared/button.base'
 
 /**
- * This module contains the button recipe.
+ * This module contains the iconButton recipe.
  * @module
  */
 
 /**
  * Styles for the Button component
  * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
+ *
+ * @definition [A11y Icon Usability](https://www.a11y-collective.com/blog/icon-usability-and-accessibility/)
+ *
  * @definition [Button docs](https://cerberus.digitalu.design/react/button)
  */
-export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
-  className: 'button',
+export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
+  className: 'icon-btn',
   description: 'WCAG Level AAA compliant button styles.',
 
   base: {
     ...buttonBase,
-    h: '3.5rem', // a11y minimum touch target size: 2.75rem
-    pxi: '4',
-
+    h: '2.75rem', // a11y minimum touch target size: 2.75rem
+    pxi: '0',
+    rounded: 'full',
+    w: '2.75rem',
     md: {
-      h: '2.75rem',
+      h: '1.5rem', // a11y minimum touch target size: 1.5rem for desktop
+      w: '1.5rem',
     },
   },
 
@@ -40,18 +43,11 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     palette: buttonPalettes,
     usage: {
       text: textUsage,
-      outline: {
-        ...nonTextStates,
-        bgColor: 'colorPalette.bg.100.initial',
-        border: '4px solid',
-        borderColor: 'colorPalette.border.initial',
-      },
       filled: filledUsage,
     },
     shape: {
-      sharp: sharpRadii,
-      rounded: {
-        pxi: '8',
+      circle: {
+        pxi: '0',
         rounded: 'full',
       },
     },
@@ -59,7 +55,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
 
   defaultVariants: {
     palette: 'action',
-    usage: 'filled',
-    shape: 'sharp',
+    usage: 'text',
+    shape: 'circle',
   },
 })

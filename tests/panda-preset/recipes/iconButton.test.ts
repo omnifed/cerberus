@@ -1,15 +1,15 @@
 import { describe, test, expect } from 'bun:test'
 import { recipes } from '@cerberus-design/panda-preset'
 
-describe('button recipe', () => {
-  const { button } = recipes
+describe('iconButton recipe', () => {
+  const { iconButton } = recipes
 
   test('should be exported', () => {
-    expect(button).toBeDefined()
+    expect(iconButton).toBeDefined()
   })
 
   test('should have a base style', () => {
-    expect(button.base).toMatchObject({
+    expect(iconButton.base).toMatchObject({
       alignItems: 'center',
       display: 'inline-flex',
       fontWeight: '600',
@@ -23,8 +23,9 @@ describe('button recipe', () => {
       transitionTimingFunction: 'ease-in-out',
       userSelect: 'none',
       whiteSpace: 'nowrap',
-      h: '3.5rem',
-      pxi: '4',
+      h: '2.75rem',
+      pxi: '0',
+      w: '2.75rem',
       _focusVisible: {
         boxShadow: 'none',
         outline: '3px solid',
@@ -39,25 +40,26 @@ describe('button recipe', () => {
         cursor: 'default',
       },
       md: {
-        h: '2.75rem',
+        h: '1.5rem',
+        w: '1.5rem',
       },
     })
   })
 
   test('should have an action palette variant', () => {
-    expect(button.variants?.palette.action).toMatchObject({
+    expect(iconButton.variants?.palette.action).toMatchObject({
       colorPalette: 'action',
     })
   })
 
   test('should have an danger palette variant', () => {
-    expect(button.variants?.palette.danger).toMatchObject({
+    expect(iconButton.variants?.palette.danger).toMatchObject({
       colorPalette: 'danger',
     })
   })
 
   test('should have a text usage variant', () => {
-    expect(button.variants?.usage.text).toMatchObject({
+    expect(iconButton.variants?.usage.text).toMatchObject({
       color: 'colorPalette.text.alternate',
       bgColor: 'transparent',
       border: 'none',
@@ -80,16 +82,8 @@ describe('button recipe', () => {
     })
   })
 
-  test('should have an outline usage variant', () => {
-    expect(button.variants?.usage.outline).toMatchObject({
-      bgColor: 'colorPalette.bg.100.initial',
-      border: '4px solid',
-      borderColor: 'colorPalette.border.initial',
-    })
-  })
-
   test('should have a filled usage variant', () => {
-    expect(button.variants?.usage.filled).toMatchObject({
+    expect(iconButton.variants?.usage.filled).toMatchObject({
       bgColor: 'colorPalette.bg.initial',
       color: 'colorPalette.text.initial',
       _hover: {
@@ -104,22 +98,18 @@ describe('button recipe', () => {
     })
   })
 
-  test('should have a sharp shape variant', () => {
-    expect(button.variants?.shape.sharp).toMatchObject({})
-  })
-
-  test('should have a rounded shape variant', () => {
-    expect(button.variants?.shape.rounded).toMatchObject({
-      pxi: '8',
+  test('should have a circle shape variant', () => {
+    expect(iconButton.variants?.shape.circle).toMatchObject({
+      pxi: '0',
       rounded: 'full',
     })
   })
 
   test('should have default variants', () => {
-    expect(button.defaultVariants).toMatchObject({
+    expect(iconButton.defaultVariants).toMatchObject({
       palette: 'action',
-      usage: 'filled',
-      shape: 'sharp',
+      usage: 'text',
+      shape: 'circle',
     })
   })
 })

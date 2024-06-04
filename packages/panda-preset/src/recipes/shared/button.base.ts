@@ -19,13 +19,12 @@ export const buttonBase = {
   ...formStates,
 }
 
-const sharpRadii = {
+export const sharpRadii = {
   borderTopRightRadius: 'lg',
   borderBottomLeftRadius: 'lg',
 }
 
 export const nonTextStates = {
-  ...sharpRadii,
   color: 'colorPalette.text.200',
   _hover: {
     bgColor: 'colorPalette.bg.100.hover',
@@ -39,20 +38,21 @@ export const nonTextStates = {
 }
 
 export const textUsage = {
-  ...sharpRadii,
-  border: '4px solid',
-  borderColor: 'transparent',
+  bgColor: 'transparent',
+  border: 'none',
   color: 'colorPalette.text.alternate',
-  transitionProperty: 'border-color, color',
+  transitionProperty: 'background-color, color',
   transitionDuration: 'fast',
   transitionTimingFunction: 'ease-in-out',
   _hover: {
-    borderColor: 'colorPalette.border.initial',
+    bgColor: 'colorPalette.bg.100.hover',
   },
   _active: {
+    bgColor: 'colorPalette.bg.100.active',
     color: 'colorPalette.text.initial',
   },
   _disabled: {
+    bgColor: 'transparent',
     _active: {
       color: 'colorPalette.text.alternate',
     },
@@ -60,7 +60,6 @@ export const textUsage = {
 }
 
 export const filledUsage = {
-  ...sharpRadii,
   bgColor: 'colorPalette.bg.initial',
   color: 'colorPalette.text.initial',
   _hover: {
