@@ -7,7 +7,6 @@ import {
   buttonBase,
   buttonPalettes,
   filledUsage,
-  nonTextStates,
   textUsage,
 } from './shared/button.base'
 
@@ -19,6 +18,9 @@ import {
 /**
  * Styles for the Button component
  * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
+ *
+ * @definition [A11y Icon Usability](https://www.a11y-collective.com/blog/icon-usability-and-accessibility/)
+ *
  * @definition [Button docs](https://cerberus.digitalu.design/react/button)
  */
 export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
@@ -29,6 +31,7 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     ...buttonBase,
     h: '2.75rem', // a11y minimum touch target size: 2.75rem
     pxi: '0',
+    rounded: 'full',
     w: '2.75rem',
     md: {
       h: '1.5rem', // a11y minimum touch target size: 1.5rem for desktop
@@ -40,12 +43,6 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     palette: buttonPalettes,
     usage: {
       text: textUsage,
-      outline: {
-        ...nonTextStates,
-        bgColor: 'colorPalette.bg.100.initial',
-        border: '4px solid',
-        borderColor: 'colorPalette.border.initial',
-      },
       filled: filledUsage,
     },
     shape: {

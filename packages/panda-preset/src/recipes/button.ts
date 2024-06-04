@@ -8,6 +8,7 @@ import {
   buttonPalettes,
   filledUsage,
   nonTextStates,
+  sharpRadii,
   textUsage,
 } from './shared/button.base'
 
@@ -48,7 +49,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       filled: filledUsage,
     },
     shape: {
-      sharp: {},
+      sharp: sharpRadii,
       rounded: {
         pxi: '8',
         rounded: 'full',

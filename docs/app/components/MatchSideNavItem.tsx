@@ -6,6 +6,8 @@ import type { HeadingItem, LinkItem } from './SideNav'
 import Link from 'next/link'
 import { ACTION_NAV_HOVER } from '../utils/const'
 import { focusStates } from '@cerberus-design/panda-preset'
+import { Show } from '@cerberus-design/react'
+import { hstack } from '@cerberus/styled-system/patterns'
 
 export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
   const pathname = usePathname()
@@ -27,8 +29,9 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
       return (
         <Link
           aria-current={pathname === props.route ? 'page' : undefined}
-          className={css({
-            display: 'block',
+          className={hstack({
+            justify: 'space-between',
+            paddingInlineEnd: '6',
             transition: 'color 250ms ease-in-out',
             w: 'full',
             _hover: {
@@ -45,6 +48,26 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
           prefetch
         >
           {props.label}
+          <Show when={Boolean(props.tag)}>
+            <span
+              className={css({
+                bgGradient: 'to-r',
+                gradientFrom: 'warning.border.initial',
+                gradientTo: 'info.border.initial',
+                color: 'neutral.surface.initial',
+                display: 'inline-block',
+                fontWeight: '600',
+                lineHeight: 'initial',
+                pxi: '1',
+                rounded: 'sm',
+                textStyle: 'body-xs',
+                textTransform: 'uppercase',
+                userSelect: 'none',
+              })}
+            >
+              {props.tag}
+            </span>
+          </Show>
         </Link>
       )
     default:

@@ -1,0 +1,149 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/IconButton.tsx'
+recipe: 'iconButton.ts'
+---
+
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import {
+  BasicIconButtonPreview,
+  DangerIconButtonPreview,
+  OutlineIconButtonPreview,
+  TextIconButtonPreview,
+  CustomIconButtonPreview,
+} from '@/app/react/icon-button/components/icon-button-preview'
+
+# Icon Button
+
+An interactive element that triggers an action when clicked.
+
+```ts
+import { IconButton } from '@cerberus-design/react'
+```
+
+<WhenToUseAdmonition description="When you need to allow the user to trigger and action using an icon." />
+
+## Usage
+
+The IconButton API is similar to the [Button](./button), but with the addition of an `aria-label` prop.
+
+<WhenNotToUseAdmonition description="When you need to provide a way for the user to navigate somewhere - use a Link, TextLink, or NavMenu." />
+
+### Default
+
+<CodePreview preview={<BasicIconButtonPreview />}>
+```tsx title="icon-button.tsx"
+import { IconButton } from '@cerberus-design/react'
+import { ThumbsUp } from '@cerberus/icons'
+
+function BasicIconButtonPreview() {
+  return (
+    <IconButton aria-label="Like something">
+      <ThumbsUp />
+    </IconButton>
+  )
+}
+```
+</CodePreview>
+
+<WhenToUseAdmonition description="When you need high priority actions or actions that are the only item on screen." />
+
+### Danger
+
+<CodePreview preview={<DangerIconButtonPreview />}>
+```tsx title="icon-button.tsx"
+import { IconButton } from '@cerberus-design/react'
+import { Delete } from '@cerberus/icons'
+
+function DangerIconButtonPreview() {
+  return (
+    <IconButton aria-label="Delete something" palette="danger" usage="filled">
+      <Delete />
+    </IconButton>
+  )
+}
+```
+</CodePreview>
+
+<WhenToUseAdmonition description="When you need to display a high impact destructive action such as deleting items or other places where a destructive action is the priority in the UI." />
+
+### Text
+
+<CodePreview preview={<TextIconButtonPreview />}>
+```tsx title="icon-button.tsx"
+import { IconButton } from '@cerberus-design/react'
+import { ThumbsUp } from '@cerberus/icons'
+
+function TextIconButtonPreview() {
+  return (
+    <IconButton aria-label="Like something" usage="text">
+      <ThumbsUp />
+    </IconButton>
+  )
+}
+```
+</CodePreview>
+
+<WhenToUseAdmonition description="When you need lower priority actions such as that might be used for triggering more options." />
+
+## Customization
+
+You can customize the button by utilizing the `cx` function.
+
+<CodePreview preview={<CustomIconButtonPreview />}>
+```tsx title="icon-button.tsx"
+import { IconButton } from '@cerberus-design/react'
+import { css } from '@cerberus/styled-system/css'
+import { TrophyFilled } from '@cerberus/icons'
+
+function CustomIconButtonPreview() {
+  return (
+    <IconButton
+      aria-label="Wu-Tang Forever"
+      className={css({
+        alignItems: 'center',
+        display: 'inline-flex',
+        bgColor: 'yellow',
+        color: 'black',
+        h: '3.7rem',
+        justifyContent: 'center',
+        rounded: 'md',
+        w: '3.7rem',
+        _hover: {
+          bgColor: 'black',
+          color: 'yellow',
+        },
+      })}
+    >
+      <TrophyFilled size={32} />
+    </IconButton>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+```ts showLineNumbers=false
+export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  palette: 'action' | 'danger'
+  usage: 'filled' | 'text'
+  shape: 'circle'
+}
+
+define function IconButton(props: IconButtonProps): ReactNode | null
+````
+
+### Props
+
+The `IconButton` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| palette     | `action`   | The color palette of the button. |
+| usage | `filled`    | The style treatment of the button.    |
+| shape | `circle`    | The shape of the button.               |

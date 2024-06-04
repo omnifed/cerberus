@@ -19,13 +19,12 @@ export const buttonBase = {
   ...formStates,
 }
 
-const sharpRadii = {
+export const sharpRadii = {
   borderTopRightRadius: 'lg',
   borderBottomLeftRadius: 'lg',
 }
 
 export const nonTextStates = {
-  ...sharpRadii,
   color: 'colorPalette.text.200',
   _hover: {
     bgColor: 'colorPalette.bg.100.hover',
@@ -39,7 +38,6 @@ export const nonTextStates = {
 }
 
 export const textUsage = {
-  ...sharpRadii,
   bgColor: 'transparent',
   border: 'none',
   color: 'colorPalette.text.alternate',
@@ -62,7 +60,6 @@ export const textUsage = {
 }
 
 export const filledUsage = {
-  ...sharpRadii,
   bgColor: 'colorPalette.bg.initial',
   color: 'colorPalette.text.initial',
   _hover: {

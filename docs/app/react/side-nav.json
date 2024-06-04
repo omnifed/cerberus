@@ -25,13 +25,20 @@
   },
   {
     "id": "2:b",
+    "label": "Icon Button",
+    "route": "/react/icon-button",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:c",
     "label": "Nav Menu",
     "route": "/react/nav-menu",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:c",
+    "id": "2:d",
     "label": "Show",
     "route": "/react/show",
     "tag": "",
