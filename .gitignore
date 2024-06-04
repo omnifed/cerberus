@@ -10,13 +10,13 @@ tsconfig.tsbuildinfo
 */tsconfig.tsbuildinfo
 packages/*/tsconfig.tsbuildinfo
 
-styled-system/css
-styled-system/jsx
-styled-system/patterns
-styled-system/recipes
-styled-system/tokens
-styled-system/types
-styled-system/helpers.mjs
+packages/styled-system/css
+packages/styled-system/jsx
+packages/styled-system/patterns
+packages/styled-system/recipes
+packages/styled-system/tokens
+packages/styled-system/types
+packages/styled-system/helpers.mjs
 
 ## Panda
 
