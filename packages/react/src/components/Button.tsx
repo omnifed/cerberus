@@ -2,6 +2,11 @@ import type { ButtonHTMLAttributes } from 'react'
 import { cx } from '@cerberus/styled-system/css'
 import { button } from '@cerberus/styled-system/recipes'
 
+/**
+ * This module contains the Button component.
+ * @module
+ */
+
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   palette?: 'action' | 'danger'
   usage?: 'filled' | 'outline' | 'text'

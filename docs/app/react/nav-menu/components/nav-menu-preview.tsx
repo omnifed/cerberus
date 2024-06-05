@@ -1,6 +1,7 @@
 'use client'
 
 import {
+  IconButton,
   NavMenu,
   NavMenuLink,
   NavMenuList,
@@ -11,7 +12,6 @@ import { circle, hstack } from '@cerberus/styled-system/patterns'
 import { forwardRef, type ForwardedRef, type PropsWithChildren } from 'react'
 import Link from 'next/link'
 import { ACTION_NAV_HOVER, ACTION_NAV_INITIAL } from '@/app/utils/const'
-import { IconButton } from '../../icon-button/components/temp-icon-button'
 
 export function BasicNavMenuPreview() {
   return (
