@@ -130,9 +130,10 @@ function CustomIconButtonPreview() {
 
 ```ts showLineNumbers=false
 export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  palette: 'action' | 'danger'
-  usage: 'filled' | 'text'
-  shape: 'circle'
+  ariaLabel: string
+  palette?: 'action' | 'danger'
+  usage?: 'filled' | 'text'
+  shape?: 'circle'
 }
 
 define function IconButton(props: IconButtonProps): ReactNode | null
@@ -144,6 +145,7 @@ The `IconButton` component accepts the following props:
 
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
+| aria-label |    "Icon Button"     | The accessible label for the button. |
 | palette     | `action`   | The color palette of the button. |
 | usage | `filled`    | The style treatment of the button.    |
 | shape | `circle`    | The shape of the button.               |

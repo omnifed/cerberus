@@ -1,10 +1,10 @@
 import { Delete, ThumbsUp, TrophyFilled } from '@cerberus-design/icons'
+import { IconButton } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
-import { IconButton } from './temp-icon-button'
 
 export function BasicIconButtonPreview() {
   return (
-    <IconButton aria-label="Like something">
+    <IconButton ariaLabel="Like something">
       <ThumbsUp />
     </IconButton>
   )
@@ -12,7 +12,7 @@ export function BasicIconButtonPreview() {
 
 export function DangerIconButtonPreview() {
   return (
-    <IconButton aria-label="Delete something" palette="danger" usage="filled">
+    <IconButton ariaLabel="Delete something" palette="danger" usage="filled">
       <Delete />
     </IconButton>
   )
@@ -20,7 +20,7 @@ export function DangerIconButtonPreview() {
 
 export function TextIconButtonPreview() {
   return (
-    <IconButton aria-label="Like something" usage="text">
+    <IconButton ariaLabel="Like something" usage="text">
       <ThumbsUp />
     </IconButton>
   )
@@ -29,7 +29,7 @@ export function TextIconButtonPreview() {
 export function CustomIconButtonPreview() {
   return (
     <IconButton
-      aria-label="Wu-Tang Forever"
+      ariaLabel="Wu-Tang Forever"
       className={css({
         alignItems: 'center',
         display: 'inline-flex',
