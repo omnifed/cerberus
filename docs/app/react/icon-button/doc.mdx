@@ -29,7 +29,7 @@ import { IconButton } from '@cerberus-design/react'
 
 ## Usage
 
-The IconButton API is similar to the [Button](./button), but with the addition of an `aria-label` prop.
+The IconButton API is similar to the [Button](./button), but with the addition of an `ariaLabel` prop.
 
 <WhenNotToUseAdmonition description="When you need to provide a way for the user to navigate somewhere - use a Link, TextLink, or NavMenu." />
 
@@ -42,7 +42,7 @@ import { ThumbsUp } from '@cerberus/icons'
 
 function BasicIconButtonPreview() {
   return (
-    <IconButton aria-label="Like something">
+    <IconButton ariaLabel="Like something">
       <ThumbsUp />
     </IconButton>
   )
@@ -61,7 +61,7 @@ import { Delete } from '@cerberus/icons'
 
 function DangerIconButtonPreview() {
   return (
-    <IconButton aria-label="Delete something" palette="danger" usage="filled">
+    <IconButton ariaLabel="Delete something" palette="danger" usage="filled">
       <Delete />
     </IconButton>
   )
@@ -80,7 +80,7 @@ import { ThumbsUp } from '@cerberus/icons'
 
 function TextIconButtonPreview() {
   return (
-    <IconButton aria-label="Like something" usage="text">
+    <IconButton ariaLabel="Like something" usage="text">
       <ThumbsUp />
     </IconButton>
   )
@@ -103,7 +103,7 @@ import { TrophyFilled } from '@cerberus/icons'
 function CustomIconButtonPreview() {
   return (
     <IconButton
-      aria-label="Wu-Tang Forever"
+      ariaLabel="Wu-Tang Forever"
       className={css({
         alignItems: 'center',
         display: 'inline-flex',
@@ -145,7 +145,7 @@ The `IconButton` component accepts the following props:
 
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
-| aria-label |    "Icon Button"     | The accessible label for the button. |
+| ariaLabel |    "Icon Button"     | The accessible label for the button. |
 | palette     | `action`   | The color palette of the button. |
 | usage | `filled`    | The style treatment of the button.    |
 | shape | `circle`    | The shape of the button.               |
