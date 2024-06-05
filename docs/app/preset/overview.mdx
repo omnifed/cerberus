@@ -89,7 +89,7 @@ const poppins = Poppins({
 })
 ```
 
-### Using the Cerberus React package (Not JSR compatible yet)
+### Using Cerberus React (Not JSR compatible yet)
 
 If you are interested in using the Cerberus React, install it now:
 
@@ -97,7 +97,7 @@ If you are interested in using the Cerberus React, install it now:
 pnpm add @cerberus-design/react
 ```
 
-### Using the Cerberus Icons package (optional)
+### Using the Cerberus Icons (optional)
 
 If you are interested in using the Cerberus Icons, install it now:
 
@@ -113,7 +113,7 @@ To help make maintaining a breeze, add this new script to your `package.json` to
 
 ```json title="package.json"
 "scripts": {
-  "up:cerberus": "pnpm up @cerberus-design/{react} && pnpm dlx jsr add @cerberus/{panda-preset,styled-system,icons}"
+  "up:cerberus": "pnpm up @cerberus-design/react@latest && pnpm dlx jsr add @cerberus/{panda-preset,styled-system,icons}@latest"
 }
 ```
 
@@ -140,11 +140,11 @@ This will map the JSR styled-system to the NPM expected location.
 ### Step 2 - Add a `global.d.ts` file
 
 ```ts title="global.d.ts"
-declare module '@cerberus/styled-system/css' {
+declare module '@cerberus/styled-system/css/index.mjs' {
   export * from '@cerberus-design/styled-system/css'
 }
 
-declare module '@cerberus/styled-system/recipes' {
+declare module '@cerberus/styled-system/recipes/index.mjs' {
   export * from '@cerberus-design/styled-system/recipes'
 }
 
@@ -152,12 +152,13 @@ declare module '@cerberus/styled-system/types' {
   export * from '@cerberus-design/styled-system/types'
 }
 
-declare module '@cerberus/styled-system/utils' {
+declare module '@cerberus/styled-system/utils/index.mjs' {
   export * from '@cerberus-design/styled-system/utils'
 }
 
-declare module '@cerberus/styled-system/patterns' {
+declare module '@cerberus/styled-system/patterns/index.mjs' {
   export * from '@cerberus-design/styled-system/patterns'
 }
+
 ```
 This will map the JSR styled-system to the NPM expected location.
