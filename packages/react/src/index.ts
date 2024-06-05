@@ -1,6 +1,12 @@
+/**
+ * This module is the entry point for the Cerberus React package.
+ * @module
+ */
+
 // components
 
 export * from './components/Button'
+export * from './components/IconButton'
 export * from './components/NavMenuTrigger'
 export * from './components/NavMenuList'
 export * from './components/NavMenuLink'
