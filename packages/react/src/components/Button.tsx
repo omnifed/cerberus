@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react'
-import { cx } from '@cerberus/styled-system/css'
-import { button } from '@cerberus/styled-system/recipes'
+import { cx } from '@cerberus/styled-system/css/index.mjs'
+import { button } from '@cerberus/styled-system/recipes/index.mjs'
 
 /**
  * This module contains the Button component.

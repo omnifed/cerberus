@@ -6,15 +6,15 @@ import {
   type ElementType,
   type MouseEvent,
 } from 'react'
-import { cx } from '@cerberus/styled-system/css'
-import { button } from '@cerberus/styled-system/recipes'
+import { cx } from '@cerberus/styled-system/css/index.mjs'
+import { button } from '@cerberus/styled-system/recipes/index.mjs'
 import {
   createNavTriggerProps,
   type NavTriggerAriaValues,
 } from '../aria-helpers/nav-menu.aria'
-import { Show } from './Show'
-import type { ButtonProps } from './Button'
 import { useNavMenuContext } from '../context/navMenu'
+import type { ButtonProps } from './Button'
+import { Show } from './Show'
 
 export interface NavMenuTriggerProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,

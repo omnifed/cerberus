@@ -1,11 +1,11 @@
 'use client'
 
 import { useMemo, type HTMLAttributes } from 'react'
+import { cx } from '@cerberus/styled-system/css/index.mjs'
+import { vstack } from '@cerberus/styled-system/patterns/index.mjs'
 import { useNavMenuContext } from '../context/navMenu'
-import { Show } from './Show'
 import type { Positions } from '../types'
-import { cx } from '@cerberus/styled-system/css'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { Show } from './Show'
 
 interface GetPositionResult {
   left: string
