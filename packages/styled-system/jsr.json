@@ -2,12 +2,11 @@
   "name": "@cerberus/styled-system",
   "version": "0.0.0",
   "exports": {
-    "./css": "./css/index.mjs",
-    "./tokens": "./tokens/index.mjs",
-    "./types": "./jsr.d.ts",
-    "./patterns": "./patterns/index.mjs",
-    "./recipes": "./recipes/index.mjs",
-    "./jsx": "./jsx/index.mjs"
+    "./css": "./css/index.d.ts",
+    "./patterns": "./patterns/index.d.ts",
+    "./recipes": "./recipes/index.d.ts",
+    "./jsx": "./jsx/index.d.ts",
+    "./tokens": "./tokens/index.d.ts"
   },
   "publish": {
     "exclude": [

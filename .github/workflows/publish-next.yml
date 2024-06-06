@@ -79,25 +79,25 @@ jobs:
   #     - run: pnpm dlx jsr publish --allow-dirty
   #       working-directory: ./packages/icons
 
-  # publish-styled-system-jsr-next:
-  #   runs-on: ubuntu-latest
-  #   name: Publish Styled-System Next Version to JSR
-  #   permissions:
-  #     contents: read
-  #     id-token: write
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: oven-sh/setup-bun@v1
-  #     - uses: pnpm/action-setup@v4
-  #       with:
-  #         version: 9.1.4
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         cache: 'pnpm'
+  publish-styled-system-jsr-next:
+    runs-on: ubuntu-latest
+    name: Publish Styled-System Next Version to JSR
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.1.4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
 
-  #     - run: pnpm install
-  #     - run: pnpm run publish:jsr --next --commit ${{ github.sha }}
-  #       working-directory: ./configs
+      - run: pnpm install
+      - run: pnpm run publish:jsr --next --commit ${{ github.sha }}
+        working-directory: ./configs
 
-  #     - run: pnpm dlx jsr publish --allow-dirty --allow-slow-types
-  #       working-directory: ./packages/styled-system
+      - run: pnpm dlx jsr publish --allow-dirty --allow-slow-types
+        working-directory: ./packages/styled-system
