@@ -8,5 +8,7 @@ export default defineConfig({
   exclude: [],
   outdir: '.',
 
+  clean: true,
+
   presets: [pandaPreset, cerberusPreset],
 })
