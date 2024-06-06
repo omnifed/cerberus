@@ -8,20 +8,19 @@
   "main": "src/index.ts",
   "module": "src/index.ts",
   "scripts": {
-    "build": "tsup --experimental-dts",
+    "build": "tsup-node --experimental-dts",
     "clean": "rm -rf ./build",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
-    "@cerberus-design/panda-preset": "*",
-    "@cerberus-design/styled-system": "*",
+    "@cerberus/panda-preset": "npm:@jsr/cerberus__panda-preset",
+    "@cerberus/styled-system": "npm:@cerberus-design/styled-system",
     "@pandacss/dev": "*",
     "react": "*",
     "react-dom": "*"
   },
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
-    "@cerberus-design/styled-system": "workspace:*",
     "@microsoft/api-extractor": "^7.46.2",
     "@types/react": "^18",
     "react": "^18",
@@ -42,12 +41,6 @@
         "require": {
           "types": "./build/modern/index.d.cts",
           "default": "./build/modern/index.cjs"
-        }
-      },
-      "./src": {
-        "import": {
-          "types": "./src/index.d.ts",
-          "default": "./src/index.ts"
         }
       },
       "./package.json": "./package.json"

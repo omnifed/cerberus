@@ -58,7 +58,8 @@
     "access": "public"
   },
   "files": [
-    "*/**"
+    "*/**",
+    "helpers.mjs"
   ],
   "keywords": [
     "panda-css",
