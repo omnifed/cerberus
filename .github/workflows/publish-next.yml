@@ -28,73 +28,76 @@ jobs:
       - run: pnpm run publish --next --commit ${{ github.sha }}
         working-directory: ./configs
 
+  # IGNORE UNTIL JSR SUPPORTS TAGGING - this will keep a cleaner version history
+
   # There is a bug in JSR publishing the errors with next versions
   # So we are creating a new job for each public package
-  publish-preset-jsr-next:
-    runs-on: ubuntu-latest
-    name: Publish Preset Next Version to JSR
-    permissions:
-      contents: read
-      id-token: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9.1.4
-      - uses: actions/setup-node@v4
-        with:
-          cache: 'pnpm'
 
-      - run: pnpm install
-      - run: pnpm run publish:jsr --next --commit ${{ github.sha }}
-        working-directory: ./configs
+  # publish-preset-jsr-next:
+  #   runs-on: ubuntu-latest
+  #   name: Publish Preset Next Version to JSR
+  #   permissions:
+  #     contents: read
+  #     id-token: write
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: oven-sh/setup-bun@v1
+  #     - uses: pnpm/action-setup@v4
+  #       with:
+  #         version: 9.1.4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         cache: 'pnpm'
 
-      - run: pnpm dlx jsr publish --allow-dirty
-        working-directory: ./packages/panda-preset
+  #     - run: pnpm install
+  #     - run: pnpm run publish:jsr --next --commit ${{ github.sha }}
+  #       working-directory: ./configs
 
-  publish-icons-jsr-next:
-    runs-on: ubuntu-latest
-    name: Publish Icons Next Version to JSR
-    permissions:
-      contents: read
-      id-token: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9.1.4
-      - uses: actions/setup-node@v4
-        with:
-          cache: 'pnpm'
+  #     - run: pnpm dlx jsr publish --allow-dirty
+  #       working-directory: ./packages/panda-preset
 
-      - run: pnpm install
-      - run: pnpm run publish:jsr --next --commit ${{ github.sha }}
-        working-directory: ./configs
+  # publish-icons-jsr-next:
+  #   runs-on: ubuntu-latest
+  #   name: Publish Icons Next Version to JSR
+  #   permissions:
+  #     contents: read
+  #     id-token: write
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: oven-sh/setup-bun@v1
+  #     - uses: pnpm/action-setup@v4
+  #       with:
+  #         version: 9.1.4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         cache: 'pnpm'
 
-      - run: pnpm dlx jsr publish --allow-dirty
-        working-directory: ./packages/icons
+  #     - run: pnpm install
+  #     - run: pnpm run publish:jsr --next --commit ${{ github.sha }}
+  #       working-directory: ./configs
 
-  publish-styled-system-jsr-next:
-    runs-on: ubuntu-latest
-    name: Publish Styled-System Next Version to JSR
-    permissions:
-      contents: read
-      id-token: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9.1.4
-      - uses: actions/setup-node@v4
-        with:
-          cache: 'pnpm'
+  #     - run: pnpm dlx jsr publish --allow-dirty
+  #       working-directory: ./packages/icons
 
-      - run: pnpm install
-      - run: pnpm run publish:jsr --next --commit ${{ github.sha }}
-        working-directory: ./configs
+  # publish-styled-system-jsr-next:
+  #   runs-on: ubuntu-latest
+  #   name: Publish Styled-System Next Version to JSR
+  #   permissions:
+  #     contents: read
+  #     id-token: write
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: oven-sh/setup-bun@v1
+  #     - uses: pnpm/action-setup@v4
+  #       with:
+  #         version: 9.1.4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         cache: 'pnpm'
 
-      - run: pnpm dlx jsr publish --allow-dirty --allow-slow-types
-        working-directory: ./packages/styled-system
+  #     - run: pnpm install
+  #     - run: pnpm run publish:jsr --next --commit ${{ github.sha }}
+  #       working-directory: ./configs
+
+  #     - run: pnpm dlx jsr publish --allow-dirty --allow-slow-types
+  #       working-directory: ./packages/styled-system
