@@ -13,7 +13,7 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
-    "@cerberus/panda-preset": "npm:@cerberus-design/panda-preset",
+    "@cerberus/panda-preset": "npm:@jsr/cerberus__panda-preset",
     "@cerberus/styled-system": "npm:@cerberus-design/styled-system",
     "@pandacss/dev": "*",
     "react": "*",
@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
-    "@cerberus-design/styled-system": "workspace:*",
     "@microsoft/api-extractor": "^7.46.2",
     "@types/react": "^18",
     "react": "^18",
