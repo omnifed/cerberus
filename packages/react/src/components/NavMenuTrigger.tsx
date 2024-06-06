@@ -6,8 +6,8 @@ import {
   type ElementType,
   type MouseEvent,
 } from 'react'
-import { cx } from '@cerberus/styled-system/css/index.mjs'
-import { button } from '@cerberus/styled-system/recipes/index.mjs'
+import { cx } from '@cerberus/styled-system/css'
+import { button } from '@cerberus/styled-system/recipes'
 import {
   createNavTriggerProps,
   type NavTriggerAriaValues,

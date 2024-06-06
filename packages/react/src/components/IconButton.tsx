@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react'
-import { cx } from '@cerberus/styled-system/css/index.mjs'
-import { iconButton } from '@cerberus/styled-system/recipes/index.mjs'
+import { cx } from '@cerberus/styled-system/css'
+import { iconButton } from '@cerberus/styled-system/recipes'
 import type { ButtonProps } from './Button'
 
 /**

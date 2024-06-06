@@ -22,7 +22,6 @@
     "typescript": "*"
   },
   "devDependencies": {
-    "esbuild-plugin-file-path-extensions": "^2.0.0",
     "tsup": "^8.0.2",
     "util": "^0.12.5"
   },
