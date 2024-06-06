@@ -33,7 +33,7 @@ Once you have installed and setup Panda CSS and added the Cerberus Panda Preset,
 ```ts title="panda.config.ts"
 import { defineConfig } from '@pandacss/dev'
 import pandaPreset from '@pandacss/preset-panda'
-import { cerberusPreset, cerberusConfig } from '@cerberus-design/panda-preset'
+import { cerberusPreset, cerberusConfig } from '@cerberus/panda-preset'
 
 export default defineConfig({
   ...cerberusConfig,
@@ -113,7 +113,7 @@ To help make maintaining a breeze, add this new script to your `package.json` to
 
 ```json title="package.json"
 "scripts": {
-  "up:cerberus": "pnpm up @cerberus-design/react@latest && pnpm dlx jsr add @cerberus/{panda-preset,styled-system,icons}@latest"
+  "up:cerberus": "pnpm up @cerberus-design/react@latest && pnpm dlx jsr add @cerberus/{panda-preset,styled-system,icons}"
 }
 ```
 
