@@ -1,9 +1,10 @@
 name: 🚀 Publish Next Version
 
-on:
-  push:
-    branches:
-      - main
+on: [merge_group, pull_request]
+# on:
+#   push:
+#     branches:
+#       - main
 
 env:
   CI: true
