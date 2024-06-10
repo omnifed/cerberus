@@ -91,11 +91,14 @@ function FieldMessageCustomPreview() {
 ## API
 
 ```ts showLineNumbers=false
-export type FieldMessageProps = HTMLAttributes<HTMLParagraphElement>
+export interface FieldMessageProps
+  extends HTMLAttributes<HTMLParagraphElement> {
+  id: string
+}
 
 define function FieldMessage(props: FieldMessageProps): ReactNode | null
 ```
 
 ### Props
 
-The `FieldMessage` component accepts the same props as the `small` element.
+The `FieldMessage` component accepts the same props as the `small` element except the `id` prop is required.
