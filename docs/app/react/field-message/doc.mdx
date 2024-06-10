@@ -91,19 +91,11 @@ function FieldMessageCustomPreview() {
 ## API
 
 ```ts showLineNumbers=false
-export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
-  htmlFor: string
-  hidden?: boolean
-}
+export type FieldMessageProps = HTMLAttributes<HTMLParagraphElement>
 
-define function Label(props: LabelProps): ReactNode | null
+define function FieldMessage(props: FieldMessageProps): ReactNode | null
 ```
 
 ### Props
 
-The `LabelProps` component accepts the following props:
-
-| Name     | Default | Description                                                   |
-| -------- | ------- | ------------------------------------------------------------- |
-| htmlFor     | null   | The `name` attribute of the Input the Label is associated with. |
-| hidden   | false   | Whether the Label content should be visually hidden.                 |
+The `FieldMessage` component accepts the same props as the `small` element.
