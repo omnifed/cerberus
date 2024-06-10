@@ -1,31 +1,49 @@
-'use client'
-
-import { label } from '@cerberus/styled-system/recipes'
-import { Field } from '@cerberus-design/react'
+import { Field, Label } from '@cerberus-design/react'
+import { css } from '@cerberus/styled-system/css'
 
 export function LabelBasicPreview() {
   return (
-    <Field>
-      <label className={label()} htmlFor="first_name">
-        First Name
-        <input name="first_name" type="text" />
-      </label>
+    <Field required>
+      <Label htmlFor="first_name">First Name</Label>
+      <input id="first_name" type="text" />
     </Field>
   )
 }
 
 export function LabelHiddenPreview() {
   return (
+    <Field required>
+      <Label htmlFor="global_search" hidden>
+        Search for anything
+      </Label>
+      <input id="global_search" type="text" />
+    </Field>
+  )
+}
+
+export function LabelOptionalPreview() {
+  return (
     <Field>
-      <label
-        className={label({
-          usage: 'hidden',
+      <Label htmlFor="preferred">Preferred Name</Label>
+      <input id="preferred" type="text" />
+    </Field>
+  )
+}
+
+export function LabelCustomPreview() {
+  return (
+    <Field required>
+      <Label
+        className={css({
+          fontSize: '2rem',
+          bgColor: 'black',
+          color: 'yellow',
         })}
         htmlFor="global_search"
       >
-        Search for anything
-        <input name="global_search" type="text" />
-      </label>
+        Killa Bees
+      </Label>
+      <input id="global_search" type="text" />
     </Field>
   )
 }

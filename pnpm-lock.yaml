@@ -234,7 +234,7 @@ importers:
         version: '@jsr/cerberus__panda-preset@0.1.1-next-f960a7b(typescript@5.4.5)'
       '@cerberus/styled-system':
         specifier: npm:@cerberus-design/styled-system@next
-        version: '@cerberus-design/styled-system@0.1.1-next-3a4c6c1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)'
+        version: '@cerberus-design/styled-system@0.1.3-next-c6eade1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)'
       '@pandacss/dev':
         specifier: '*'
         version: 0.39.0(typescript@5.4.5)
@@ -352,8 +352,8 @@ packages:
     peerDependencies:
       react: '>=16'
 
-  '@cerberus-design/styled-system@0.1.1-next-3a4c6c1':
-    resolution: {integrity: sha512-K9mI31LNys5zwGvVKaC3vZeGtgI/NG9l+CdykdYytWgqOJOmuPiqAZnaP+Ak6RQgXwf7jO/wg3RoKdqqakH3cw==}
+  '@cerberus-design/styled-system@0.1.3-next-c6eade1':
+    resolution: {integrity: sha512-4QUZy15llBJfgBhZJa7M7aYr9hJUR7tNkEqrLmkIQVNxO+Vv1RANNshX3xQPMVhKbnCxMWbAMtbrViN3yfYNeg==}
     peerDependencies:
       react: '*'
       react-dom: '*'
@@ -4274,7 +4274,7 @@ snapshots:
       prop-types: 15.8.1
       react: 18.3.1
 
-  '@cerberus-design/styled-system@0.1.1-next-3a4c6c1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@cerberus-design/styled-system@0.1.3-next-c6eade1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)

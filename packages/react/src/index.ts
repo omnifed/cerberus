@@ -7,6 +7,7 @@
 
 export * from './components/Button'
 export * from './components/IconButton'
+export * from './components/Label'
 export * from './components/NavMenuTrigger'
 export * from './components/NavMenuList'
 export * from './components/NavMenuLink'

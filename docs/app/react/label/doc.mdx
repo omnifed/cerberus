@@ -11,7 +11,9 @@ import {
 import CodePreview from '@/app/components/CodePreview'
 import {
   LabelBasicPreview,
-  LabelHiddenPreview
+  LabelHiddenPreview,
+  LabelOptionalPreview,
+  LabelCustomPreview
 } from '@/app/react/label/components/label-preview'
 
 # Label
@@ -28,16 +30,13 @@ import { Field, Label } from '@cerberus-design/react'
 
 <CodePreview preview={<LabelBasicPreview />}>
 ```tsx title="first-name-input.tsx"
-import { label } from '@cerberus/styled-system/recipes'
-import { Field } from '@cerberus-design/react'
+import { Field, Label } from '@cerberus-design/react'
 
 function LabelBasicPreview() {
   return (
-    <Field>
-      <label className={label()} htmlFor="first_name">
-        First Name
-        <input name="first_name" type="text" />
-      </label>
+    <Field required>
+      <Label htmlFor="first_name">First Name</Label>
+      <input id="first_name" type="text" />
     </Field>
   )
 }
@@ -50,16 +49,15 @@ function LabelBasicPreview() {
 
 <CodePreview preview={<LabelHiddenPreview />}>
 ```tsx title="search-input.tsx"
-import { label } from '@cerberus/styled-system/recipes'
-import { Field } from '@cerberus-design/react'
+import { Field, Label } from '@cerberus-design/react'
 
 function LabelHiddenPreview() {
   return (
-    <Field>
-      <label className={label()} htmlFor="global_search">
+    <Field required>
+      <Label htmlFor="global_search" hidden>
         Search for anything
-        <input name="global_search" type="text" />
-      </label>
+      </Label>
+      <input id="global_search" type="text" />
     </Field>
   )
 }
@@ -67,6 +65,50 @@ function LabelHiddenPreview() {
 </CodePreview>
 
 <WhenNotToUseAdmonition description="In order to ensure a form element is accessible, the Label should always be used." />
+
+## Optional
+
+<CodePreview preview={<LabelOptionalPreview />}>
+```tsx title="search-input.tsx" {5}
+import { Field, Label } from '@cerberus-design/react'
+
+function LabelOptionalPreview() {
+  return (
+    <Field>
+      <Label htmlFor="preferred">Preferred Name</Label>
+      <input id="preferred" type="text" />
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## Customizing
+
+<CodePreview preview={<LabelCustomPreview />}>
+```tsx title="search-input.tsx"
+import { Field, Label } from '@cerberus-design/react'
+
+function LabelCustomPreview() {
+  return (
+    <Field required>
+      <Label
+        className={css({
+          fontSize: '2rem',
+          bgColor: 'black',
+          color: 'yellow',
+        })}
+        htmlFor="global_search"
+      >
+        Killa Bees
+      </Label>
+      <input id="global_search" type="text" />
+    </Field>
+  )
+}
+
+```
+</CodePreview>
 
 ## API
 
