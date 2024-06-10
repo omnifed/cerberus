@@ -52,7 +52,7 @@ export function Label(props: PropsWithChildren<LabelProps>) {
             fontSize: 'inherit',
           })}
         >
-          optional
+          (optional)
         </span>
       </Show>
     </label>

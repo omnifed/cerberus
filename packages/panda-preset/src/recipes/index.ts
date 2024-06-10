@@ -1,4 +1,5 @@
 import { button } from './button'
+import { fieldMessage } from './fieldMessage'
 import { iconButton } from './iconButton'
 import { label } from './label'
 
@@ -9,6 +10,7 @@ import { label } from './label'
 
 export const recipes = {
   button,
+  fieldMessage,
   iconButton,
   label,
 }
