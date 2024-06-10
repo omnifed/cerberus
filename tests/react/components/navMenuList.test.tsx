@@ -50,7 +50,6 @@ describe('NavMenuList & NavMenuLink', () => {
     render(<NavMenuTest id="nav" position="top" />)
     await user.click(screen.getByText(/trigger/i))
     await waitFor(() => expect(screen.getByText(/custom link/i)).toBeTruthy())
-    screen.debug()
     const list = screen.getByRole('list').attributes as unknown as Attributes
     expect(list.style.value).toBe(
       'left: auto; right: auto; top: auto; bottom: 110%;',
