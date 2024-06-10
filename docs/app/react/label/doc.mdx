@@ -1,0 +1,89 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/Label.tsx'
+recipe: 'label.ts'
+---
+
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import {
+  LabelBasicPreview,
+  LabelHiddenPreview
+} from '@/app/react/label/components/label-preview'
+
+# Label
+
+An screen-ready friendly label component used to describe form elements.
+
+```ts
+import { Field, Label } from '@cerberus-design/react'
+```
+
+<WhenToUseAdmonition description="When you need to use an Input component in the UI, regardless if it has a visible label or not." />
+
+## Usage
+
+<CodePreview preview={<LabelBasicPreview />}>
+```tsx title="first-name-input.tsx"
+import { label } from '@cerberus/styled-system/recipes'
+import { Field } from '@cerberus-design/react'
+
+function LabelBasicPreview() {
+  return (
+    <Field>
+      <label className={label()} htmlFor="first_name">
+        First Name
+        <input name="first_name" type="text" />
+      </label>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+<WhenNotToUseAdmonition description="In order to ensure a form element is accessible, the Label should always be used." />
+
+## Hidden
+
+<CodePreview preview={<LabelHiddenPreview />}>
+```tsx title="search-input.tsx"
+import { label } from '@cerberus/styled-system/recipes'
+import { Field } from '@cerberus-design/react'
+
+function LabelHiddenPreview() {
+  return (
+    <Field>
+      <label className={label()} htmlFor="global_search">
+        Search for anything
+        <input name="global_search" type="text" />
+      </label>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+<WhenNotToUseAdmonition description="In order to ensure a form element is accessible, the Label should always be used." />
+
+## API
+
+```ts showLineNumbers=false
+export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+  htmlFor: string
+  hidden?: boolean
+}
+
+define function Label(props: LabelProps): ReactNode | null
+```
+
+### Props
+
+The `LabelProps` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| htmlFor     | null   | The `name` attribute of the Input the Label is associated with. |
+| hidden   | false   | Whether the Label content should be visually hidden.                 |
