@@ -5,8 +5,7 @@ recipe: 'fieldMesage.ts'
 ---
 
 import {
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
+  WhenToUseAdmonition
 } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
 import {
@@ -28,33 +27,42 @@ import { Field, FieldMessage } from '@cerberus-design/react'
 ## Usage
 
 <CodePreview preview={<FieldMessageBasicPreview />}>
-```tsx title="first-name-input.tsx"
-import { Field, Label } from '@cerberus-design/react'
+```tsx title="first-name-input.tsx" {8}
+import { Field, FieldMessage, Label } from '@cerberus-design/react'
 
 function FieldMessageBasicPreview() {
   return (
     <Field required>
       <Label htmlFor="first_name">First Name</Label>
-      <input id="first_name" type="text" />
+      <Input aria-describedby="help:first_name" id="first_name" type="text" />
+      <FieldMessage id="help:first_name">
+        This will only be used in your account information.
+      </FieldMessage>
     </Field>
   )
 }
 ```
 </CodePreview>
 
-<WhenNotToUseAdmonition description="In order to ensure a form element is accessible, the Label should always be used." />
-
 ## Invalid
 
 <CodePreview preview={<FieldMessageInvalidPreview />}>
 ```tsx title="search-input.tsx" {5}
-import { Field, Label } from '@cerberus-design/react'
+import { Field, FieldMessage, Label } from '@cerberus-design/react'
 
 function FieldMessageInvalidPreview() {
   return (
     <Field invalid>
-      <Label htmlFor="preferred">Preferred Name</Label>
-      <input id="preferred" type="text" />
+      <Label htmlFor="first_name">First Name</Label>
+      <Input
+        aria-describedby="help:first_name"
+        id="first_name"
+        type="text"
+        placeholder="Your first name"
+      />
+      <FieldMessage id="help:first_name">
+        A first name is required to create an account.
+      </FieldMessage>
     </Field>
   )
 }
@@ -65,22 +73,23 @@ function FieldMessageInvalidPreview() {
 
 <CodePreview preview={<FieldMessageCustomPreview />}>
 ```tsx title="search-input.tsx"
-import { Field, Label } from '@cerberus-design/react'
+import { Field, FieldMessage, Label } from '@cerberus-design/react'
 
 function FieldMessageCustomPreview() {
   return (
     <Field required>
-      <Label
+      <Label htmlFor="global_search">Killa Bees</Label>
+      <Input aria-describedby="help:search" id="global_search" type="text" />
+      <FieldMessage
         className={css({
-          fontSize: '2rem',
           bgColor: 'black',
           color: 'yellow',
+          p: '2',
         })}
-        htmlFor="global_search"
+        id="help:search"
       >
-        Killa Bees
-      </Label>
-      <input id="global_search" type="text" />
+        Wu-Tang Clan ain&apos;t nothing to mess with!
+      </FieldMessage>
     </Field>
   )
 }
