@@ -1,6 +1,11 @@
-import type { HTMLAttributes } from 'react'
+'use client'
+
+import type { HTMLAttributes, PropsWithChildren } from 'react'
 import { label } from '@cerberus/styled-system/recipes'
-import { cx } from '@cerberus/styled-system/css'
+import { css, cx } from '@cerberus/styled-system/css'
+import { useFieldContext } from '../context/field'
+import { Show } from './Show'
+import { hstack } from '@cerberus/styled-system/patterns'
 
 /**
  * This module contains the Label component.
@@ -18,17 +23,38 @@ export interface LabelProps extends HTMLAttributes<HTMLLabelElement> {
  * @definition [Label docs](https://cerberus.digitalu.design/react/label)
  * @example
  * ```tsx
- * <Label htmlFor="test">Test Label</Label>
+ * <Field required>
+ *   <Label htmlFor="test">Test Label</Label>
+ * </Field>
  * ```
  */
-export function Label(props: LabelProps) {
+export function Label(props: PropsWithChildren<LabelProps>) {
   const { hidden, ...nativeProps } = props
+  const { required } = useFieldContext()
   const usage = hidden ? 'hidden' : 'visible'
 
   return (
     <label
       {...nativeProps}
-      className={cx(nativeProps.className, label({ usage }))}
-    />
+      className={cx(
+        nativeProps.className,
+        label({ usage }),
+        hstack({
+          justify: 'space-between',
+        }),
+      )}
+    >
+      {props.children}
+      <Show when={!required}>
+        <span
+          className={css({
+            color: 'neutral.text.100',
+            fontSize: 'inherit',
+          })}
+        >
+          optional
+        </span>
+      </Show>
+    </label>
   )
 }
