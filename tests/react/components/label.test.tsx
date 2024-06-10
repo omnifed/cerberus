@@ -45,6 +45,6 @@ describe('Label', () => {
       </Field>,
     )
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
-    expect(screen.getByText(/optional/i)).toBeTruthy()
+    expect(screen.getByText(/(optional)/i)).toBeTruthy()
   })
 })

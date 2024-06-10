@@ -1,0 +1,109 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/FieldMessage.tsx'
+recipe: 'fieldMesage.ts'
+---
+
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import {
+  FieldMessageBasicPreview,
+  FieldMessageInvalidPreview,
+  FieldMessageCustomPreview
+} from '@/app/react/field-message/components/field-message-preview'
+
+# Field Message
+
+An accessible component used to describe form element context.
+
+```ts
+import { Field, FieldMessage } from '@cerberus-design/react'
+```
+
+<WhenToUseAdmonition description="When you need extra context for an Input component (valid or error state)." />
+
+## Usage
+
+<CodePreview preview={<FieldMessageBasicPreview />}>
+```tsx title="first-name-input.tsx"
+import { Field, Label } from '@cerberus-design/react'
+
+function FieldMessageBasicPreview() {
+  return (
+    <Field required>
+      <Label htmlFor="first_name">First Name</Label>
+      <input id="first_name" type="text" />
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+<WhenNotToUseAdmonition description="In order to ensure a form element is accessible, the Label should always be used." />
+
+## Invalid
+
+<CodePreview preview={<FieldMessageInvalidPreview />}>
+```tsx title="search-input.tsx" {5}
+import { Field, Label } from '@cerberus-design/react'
+
+function FieldMessageInvalidPreview() {
+  return (
+    <Field invalid>
+      <Label htmlFor="preferred">Preferred Name</Label>
+      <input id="preferred" type="text" />
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## Customizing
+
+<CodePreview preview={<FieldMessageCustomPreview />}>
+```tsx title="search-input.tsx"
+import { Field, Label } from '@cerberus-design/react'
+
+function FieldMessageCustomPreview() {
+  return (
+    <Field required>
+      <Label
+        className={css({
+          fontSize: '2rem',
+          bgColor: 'black',
+          color: 'yellow',
+        })}
+        htmlFor="global_search"
+      >
+        Killa Bees
+      </Label>
+      <input id="global_search" type="text" />
+    </Field>
+  )
+}
+
+```
+</CodePreview>
+
+## API
+
+```ts showLineNumbers=false
+export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+  htmlFor: string
+  hidden?: boolean
+}
+
+define function Label(props: LabelProps): ReactNode | null
+```
+
+### Props
+
+The `LabelProps` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| htmlFor     | null   | The `name` attribute of the Input the Label is associated with. |
+| hidden   | false   | Whether the Label content should be visually hidden.                 |
