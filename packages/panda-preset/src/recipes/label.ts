@@ -23,7 +23,16 @@ export const label: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     pb: '1',
   },
 
-  variants: {},
+  variants: {
+    usage: {
+      visible: {},
+      hidden: {
+        srOnly: true,
+      },
+    },
+  },
 
-  defaultVariants: {},
+  defaultVariants: {
+    usage: 'visible',
+  },
 })

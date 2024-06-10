@@ -49,24 +49,47 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
         >
           {props.label}
           <Show when={Boolean(props.tag)}>
-            <span
-              className={css({
-                bgGradient: 'to-r',
-                gradientFrom: 'warning.border.initial',
-                gradientTo: 'info.border.initial',
-                color: 'neutral.surface.initial',
-                display: 'inline-block',
-                fontWeight: '600',
-                lineHeight: 'initial',
-                pxi: '1',
-                rounded: 'sm',
-                textStyle: 'body-xs',
-                textTransform: 'uppercase',
-                userSelect: 'none',
-              })}
+            <Show
+              when={props.tag === 'new'}
+              fallback={
+                <span
+                  className={css({
+                    border: '1px solid',
+                    borderColor: 'info.border.initial',
+                    color: 'info.text.initial',
+                    display: 'inline-block',
+                    fontWeight: '600',
+                    lineHeight: 'initial',
+                    pxi: '1',
+                    rounded: 'sm',
+                    textStyle: 'body-xs',
+                    textTransform: 'uppercase',
+                    userSelect: 'none',
+                  })}
+                >
+                  {props.tag}
+                </span>
+              }
             >
-              {props.tag}
-            </span>
+              <span
+                className={css({
+                  bgGradient: 'to-r',
+                  gradientFrom: 'warning.border.initial',
+                  gradientTo: 'info.border.initial',
+                  color: 'neutral.surface.initial',
+                  display: 'inline-block',
+                  fontWeight: '600',
+                  lineHeight: 'initial',
+                  pxi: '1',
+                  rounded: 'sm',
+                  textStyle: 'body-xs',
+                  textTransform: 'uppercase',
+                  userSelect: 'none',
+                })}
+              >
+                {props.tag}
+              </span>
+            </Show>
           </Show>
         </Link>
       )

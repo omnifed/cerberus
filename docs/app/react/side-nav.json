@@ -27,18 +27,25 @@
     "id": "2:b",
     "label": "Icon Button",
     "route": "/react/icon-button",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
     "id": "2:c",
+    "label": "Label",
+    "route": "/react/label",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:d",
     "label": "Nav Menu",
     "route": "/react/nav-menu",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:d",
+    "id": "2:e",
     "label": "Show",
     "route": "/react/show",
     "tag": "",

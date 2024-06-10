@@ -14,4 +14,14 @@ describe('label recipe', () => {
       pb: '1',
     })
   })
+
+  test('should have a visible variant', () => {
+    expect(label.variants!.usage.visible).toMatchObject({})
+  })
+
+  test('should have a hidden variant', () => {
+    expect(label.variants!.usage.hidden).toMatchObject({
+      srOnly: true,
+    })
+  })
 })
