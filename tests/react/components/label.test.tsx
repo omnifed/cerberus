@@ -19,6 +19,9 @@ describe('Label', () => {
     )
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
     expect(screen.queryByText(/optional/i)).toBeNull()
+    expect(
+      screen.getByText(/test label/i).attributes.getNamedItem('for'),
+    ).toBeTruthy()
   })
 
   test('should render a hidden label', () => {

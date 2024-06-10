@@ -1,5 +1,5 @@
 import { fieldMessage } from '@cerberus-design/styled-system/recipes'
-import { Field, Label } from '@cerberus-design/react'
+import { Field, FieldMessage, Label } from '@cerberus-design/react'
 import { css, cx } from '@cerberus/styled-system/css'
 import type { HTMLAttributes, InputHTMLAttributes } from 'react'
 
@@ -24,18 +24,13 @@ function Input(props: InputHTMLAttributes<HTMLInputElement>) {
   )
 }
 
-// temp fieldMessage
-function FieldMessage(props: HTMLAttributes<HTMLParagraphElement>) {
-  return <small {...props} className={cx(props.className, fieldMessage())} />
-}
-
 export function FieldMessageBasicPreview() {
   return (
     <div className={overrideStyles}>
       <Field required>
         <Label htmlFor="first_name">First Name</Label>
-        <Input id="first_name" type="text" />
-        <FieldMessage>
+        <Input aria-describedby="help:first_name" id="first_name" type="text" />
+        <FieldMessage id="help:first_name">
           This will only be used in your account information.
         </FieldMessage>
       </Field>
@@ -48,8 +43,13 @@ export function FieldMessageInvalidPreview() {
     <div className={overrideStyles}>
       <Field invalid>
         <Label htmlFor="first_name">First Name</Label>
-        <Input id="first_name" type="text" placeholder="Your first name" />
-        <FieldMessage aria-invalid>
+        <Input
+          aria-describedby="help:first_name"
+          id="first_name"
+          type="text"
+          placeholder="Your first name"
+        />
+        <FieldMessage id="help:first_name">
           A first name is required to create an account.
         </FieldMessage>
       </Field>
@@ -62,13 +62,14 @@ export function FieldMessageCustomPreview() {
     <div className={overrideStyles}>
       <Field required>
         <Label htmlFor="global_search">Killa Bees</Label>
-        <Input id="global_search" type="text" />
+        <Input aria-describedby="help:search" id="global_search" type="text" />
         <FieldMessage
           className={css({
             bgColor: 'black',
             color: 'yellow',
             p: '2',
           })}
+          id="help:search"
         >
           Wu-Tang Clan ain&apos;t nothing to mess with!
         </FieldMessage>
