@@ -34,21 +34,21 @@
     "id": "2:c",
     "label": "Input",
     "route": "/react/input",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
     "id": "2:d",
     "label": "Label",
     "route": "/react/label",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
     "id": "2:e",
     "label": "Field Message",
     "route": "/react/field-message",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
