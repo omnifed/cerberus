@@ -1,3 +1,4 @@
+import { WarningFilled } from '@cerberus-design/icons'
 import { Field, FieldMessage, Label } from '@cerberus-design/react'
 import { input } from '@cerberus-design/styled-system/recipes'
 import { css, cx } from '@cerberus/styled-system/css'
@@ -11,7 +12,10 @@ const overrideStyles = css({
 export function Input(props: InputHTMLAttributes<HTMLInputElement>) {
   return (
     <div className={inputStyles.root}>
-      <input {...props} className={cx(props.className, inputStyles.input)} />
+      <input
+        {...props}
+        className={cx('peer', props.className, inputStyles.input)}
+      />
     </div>
   )
 }

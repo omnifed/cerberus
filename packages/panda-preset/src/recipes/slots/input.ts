@@ -1,8 +1,4 @@
-import {
-  defineSlotRecipe,
-  type RecipeConfig,
-  type RecipeVariantRecord,
-} from '@pandacss/dev'
+import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { focusStates, formStates } from '../shared/states'
 
 /**
@@ -16,7 +12,7 @@ import { focusStates, formStates } from '../shared/states'
  * @definition [ARIA Forms](https://www.a11yproject.com/checklist/#forms)
  * @definition [Input docs](https://cerberus.digitalu.design/react/input)
  */
-export const input: RecipeConfig<RecipeVariantRecord> = defineSlotRecipe({
+export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
   slots: ['root', 'input', 'icon'],
   className: 'input',
 
@@ -33,9 +29,12 @@ export const input: RecipeConfig<RecipeVariantRecord> = defineSlotRecipe({
       h: 'full',
       pxi: '4',
       rounded: 'md',
+      transitionProperty: 'border-color',
+      transitionDuration: '200ms',
+      transitionTimingFunction: 'ease-in-out',
       w: 'full',
-      ...formStates,
       ...focusStates,
+      ...formStates,
       _userInvalid: {
         borderColor: 'danger.border.initial',
       },
