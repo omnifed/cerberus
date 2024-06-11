@@ -68,7 +68,9 @@ export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
       md: {
         root: {
-          h: '2.5rem',
+          md: {
+            h: '2.5rem',
+          },
         },
         input: {
           fontSize: 'sm',
@@ -83,6 +85,6 @@ export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
   },
 
   defaultVariants: {
-    size: 'md',
+    size: 'lg',
   },
 })

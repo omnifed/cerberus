@@ -93,7 +93,7 @@ describe('input recipe', () => {
 
   test('should have a default variant', () => {
     expect(input.defaultVariants).toMatchObject({
-      size: 'md',
+      size: 'lg',
     })
   })
 })
