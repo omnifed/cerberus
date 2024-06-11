@@ -77,7 +77,9 @@ describe('input recipe', () => {
       },
       md: {
         root: {
-          h: '2.5rem',
+          md: {
+            h: '2.5rem',
+          },
         },
         input: {
           fontSize: 'sm',

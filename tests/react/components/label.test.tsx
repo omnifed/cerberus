@@ -18,7 +18,7 @@ describe('Label', () => {
       },
     )
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
-    expect(screen.queryByText(/optional/i)).toBeNull()
+    expect(screen.getByText(/(required)/i)).toBeTruthy()
     expect(
       screen.getByText(/test label/i).attributes.getNamedItem('for'),
     ).toBeTruthy()
@@ -48,6 +48,6 @@ describe('Label', () => {
       </Field>,
     )
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
-    expect(screen.getByText(/(optional)/i)).toBeTruthy()
+    expect(screen.queryByText(/(required)/i)).toBeNull()
   })
 })
