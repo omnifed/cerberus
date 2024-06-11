@@ -1,24 +1,10 @@
-import { WarningFilled } from '@cerberus-design/icons'
-import { Field, FieldMessage, Label } from '@cerberus-design/react'
-import { input } from '@cerberus-design/styled-system/recipes'
+import { Field, FieldMessage, Label, Input } from '@cerberus-design/react'
 import { css, cx } from '@cerberus/styled-system/css'
-import type { InputHTMLAttributes } from 'react'
+import { vstack } from '@cerberus/styled-system/patterns'
 
-const inputStyles = input()
 const overrideStyles = css({
   w: '1/2',
 })
-
-export function Input(props: InputHTMLAttributes<HTMLInputElement>) {
-  return (
-    <div className={inputStyles.root}>
-      <input
-        {...props}
-        className={cx('peer', props.className, inputStyles.input)}
-      />
-    </div>
-  )
-}
 
 export function InputBasicPreview() {
   return (
@@ -37,13 +23,13 @@ export function InputInvalidPreview() {
       <Field required invalid>
         <Label htmlFor="preferred">Preferred Name</Label>
         <Input
-          aria-describedby="help:preferred"
+          describedBy="help:preferred"
           id="preferred"
           type="text"
           placeholder="i.e. Bobby"
         />
         <FieldMessage id="help:preferred">
-          This will be the name we use to address you.
+          A preferred name is required to create an account.
         </FieldMessage>
       </Field>
     </div>
@@ -56,8 +42,7 @@ export function InputDisabledPreview() {
       <Field disabled>
         <Label htmlFor="preferred">Preferred Name</Label>
         <Input
-          aria-describedby="help:preferred"
-          disabled
+          describedBy="help:preferred"
           id="preferred"
           type="text"
           placeholder="i.e. Bobby"
@@ -66,6 +51,35 @@ export function InputDisabledPreview() {
           This will be the name we use to address you.
         </FieldMessage>
       </Field>
+    </div>
+  )
+}
+
+export function InputSizesPreview() {
+  return (
+    <div
+      className={vstack({
+        alignItems: 'flex-start',
+      })}
+    >
+      <div>
+        <Field>
+          <Label htmlFor="first_name">First Name</Label>
+          <Input id="first_name" type="text" size="sm" />
+        </Field>
+      </div>
+      <div>
+        <Field>
+          <Label htmlFor="last_name">Last Name</Label>
+          <Input id="last_name" type="text" size="md" />
+        </Field>
+      </div>
+      <div>
+        <Field>
+          <Label htmlFor="username">Username</Label>
+          <Input id="username" type="text" size="lg" />
+        </Field>
+      </div>
     </div>
   )
 }

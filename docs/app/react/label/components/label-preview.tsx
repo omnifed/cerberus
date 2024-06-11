@@ -1,6 +1,5 @@
-import { Field, Label } from '@cerberus-design/react'
+import { Field, Input, Label } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
-import { Input } from '../../input/components/input-preview'
 
 const overrideStyles = css({
   w: '1/2',
