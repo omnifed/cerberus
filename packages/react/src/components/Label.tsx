@@ -45,14 +45,14 @@ export function Label(props: PropsWithChildren<LabelProps>) {
       )}
     >
       {props.children}
-      <Show when={!required}>
+      <Show when={required}>
         <span
           className={css({
             color: 'neutral.text.100',
             fontSize: 'inherit',
           })}
         >
-          (optional)
+          (required)
         </span>
       </Show>
     </label>

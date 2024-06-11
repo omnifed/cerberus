@@ -3,6 +3,8 @@ import { fieldMessage } from './fieldMessage'
 import { iconButton } from './iconButton'
 import { label } from './label'
 
+import { input } from './slots/input'
+
 /**
  * Recipe module for the Panda preset
  * @module
@@ -15,4 +17,6 @@ export const recipes = {
   label,
 }
 
-export const slotRecipes = {}
+export const slotRecipes = {
+  input,
+}

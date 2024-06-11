@@ -82,6 +82,9 @@ importers:
 
   docs:
     dependencies:
+      '@cerberus-design/configs':
+        specifier: workspace:*
+        version: link:../configs
       '@cerberus-design/icons':
         specifier: workspace:*
         version: link:../packages/icons

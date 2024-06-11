@@ -7,6 +7,7 @@ import { grid, gridItem, hstack } from '@cerberus/styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
 import { LogoGithub } from '@cerberus-design/icons'
 import { Show, useThemeContext } from '@cerberus-design/react'
+import { version } from '@cerberus-design/configs'
 import { AnimatingSunIcon } from './icons/AnimatingSunIcon'
 import { AnimatingMoonIcon } from './icons/AnimatingMoonIcon'
 import { usePathname } from 'next/navigation'
@@ -207,9 +208,21 @@ export function Nav() {
       >
         <ul
           className={hstack({
-            gap: '4',
+            gap: '6',
           })}
         >
+          <li>
+            <p
+              className={css({
+                color: 'neutral.text.100',
+                h: '1.5rem',
+                pt: '1px',
+                textStyle: 'body-xs',
+              })}
+            >
+              {version}
+            </p>
+          </li>
           {navGHLogoContent}
           <li
             className={css({

@@ -1,28 +1,10 @@
-import { fieldMessage } from '@cerberus-design/styled-system/recipes'
 import { Field, FieldMessage, Label } from '@cerberus-design/react'
 import { css, cx } from '@cerberus/styled-system/css'
-import type { HTMLAttributes, InputHTMLAttributes } from 'react'
+import { Input } from '../../input/components/input-preview'
 
 const overrideStyles = css({
   w: '1/2',
 })
-
-// Temp Input
-function Input(props: InputHTMLAttributes<HTMLInputElement>) {
-  return (
-    <input
-      {...props}
-      className={css({
-        border: '1px solid',
-        borderColor: 'neutral.border.100',
-        mt: '1',
-        p: '2',
-        rounded: 'md',
-        w: 'full',
-      })}
-    />
-  )
-}
 
 export function FieldMessageBasicPreview() {
   return (
