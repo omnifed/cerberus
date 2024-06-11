@@ -32,27 +32,34 @@
   },
   {
     "id": "2:c",
+    "label": "Input",
+    "route": "/react/input",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:d",
     "label": "Label",
     "route": "/react/label",
     "tag": "next",
     "type": "route"
   },
   {
-    "id": "2:d",
+    "id": "2:e",
     "label": "Field Message",
     "route": "/react/field-message",
     "tag": "next",
     "type": "route"
   },
   {
-    "id": "2:e",
+    "id": "2:f",
     "label": "Nav Menu",
     "route": "/react/nav-menu",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:f",
+    "id": "2:g",
     "label": "Show",
     "route": "/react/show",
     "tag": "",

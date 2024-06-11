@@ -13,7 +13,8 @@ import { focusStates, formStates } from '../shared/states'
 /**
  * Styles for the Input component
  * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
- * @definition [Button docs](https://cerberus.digitalu.design/react/button)
+ * @definition [ARIA Forms](https://www.a11yproject.com/checklist/#forms)
+ * @definition [Input docs](https://cerberus.digitalu.design/react/input)
  */
 export const input: RecipeConfig<RecipeVariantRecord> = defineSlotRecipe({
   slots: ['root', 'input', 'icon'],
@@ -21,14 +22,16 @@ export const input: RecipeConfig<RecipeVariantRecord> = defineSlotRecipe({
 
   base: {
     root: {
+      h: '3.7rem',
       position: 'relative',
-      pxi: '4',
+      py: '1',
       w: 'full',
     },
     input: {
       border: '1px solid',
       borderColor: 'action.border.initial',
       h: 'full',
+      pxi: '4',
       rounded: 'md',
       w: 'full',
       ...formStates,
@@ -56,12 +59,20 @@ export const input: RecipeConfig<RecipeVariantRecord> = defineSlotRecipe({
     size: {
       sm: {
         root: {
-          h: '2rem',
+          md: {
+            h: '2rem',
+          },
+        },
+        input: {
+          fontSize: 'sm',
         },
       },
       md: {
         root: {
           h: '2.5rem',
+        },
+        input: {
+          fontSize: 'sm',
         },
       },
       lg: {
@@ -73,6 +84,6 @@ export const input: RecipeConfig<RecipeVariantRecord> = defineSlotRecipe({
   },
 
   defaultVariants: {
-    size: 'sm',
+    size: 'md',
   },
 })

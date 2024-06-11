@@ -1,0 +1,137 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/Input.tsx'
+recipe: 'slots/input.ts'
+---
+
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import {
+  InputBasicPreview,
+  InputInvalidPreview,
+  InputDisabledPreview,
+  InputCustomPreview
+} from '@/app/react/input/components/input-preview'
+
+# Input
+
+An accessible input field to allow the user to enter text into the UI.
+
+```ts
+import { Field, Input } from '@cerberus-design/react'
+```
+
+<WhenToUseAdmonition description="When you need a way for the user to enter text into the UI." />
+
+## Usage
+
+<CodePreview preview={<InputBasicPreview />}>
+```tsx title="first-name-input.tsx" {7}
+import { Field, Label } from '@cerberus-design/react'
+
+function InputBasicPreview() {
+  return (
+    <Field required>
+      <Label htmlFor="first_name">First Name</Label>
+      <input id="first_name" type="text" />
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+<WhenNotToUseAdmonition description="In order to ensure a form element is accessible, the Label should always be used." />
+
+## Invalid
+
+<CodePreview preview={<InputInvalidPreview />}>
+```tsx title="search-input.tsx" {5}
+import { Field, Label } from '@cerberus-design/react'
+
+function InputInvalidPreview() {
+  return (
+    <Field>
+      <Label htmlFor="preferred">Preferred Name</Label>
+      <input id="preferred" type="text" />
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## Disabled
+
+<CodePreview preview={<InputDisabledPreview />}>
+```tsx title="search-input.tsx" {6}
+import { Field, Label } from '@cerberus-design/react'
+
+function InputDisabledPreview() {
+  return (
+    <div className={overrideStyles}>
+      <Field disabled>
+        <Label htmlFor="preferred">Preferred Name</Label>
+        <Input
+          aria-describedby="help:preferred"
+          id="preferred"
+          type="text"
+          placeholder="i.e. Bobby"
+        />
+        <FieldMessage id="help:preferred">
+          This will be the name we use to address you.
+        </FieldMessage>
+      </Field>
+    </div>
+  )
+}
+```
+</CodePreview>
+
+## Customizing
+
+<CodePreview preview={<InputCustomPreview />}>
+```tsx title="search-input.tsx"
+import { Field, Label } from '@cerberus-design/react'
+
+function InputCustomPreview() {
+  return (
+    <Field required>
+      <Label
+        className={css({
+          fontSize: '2rem',
+          bgColor: 'black',
+          color: 'yellow',
+        })}
+        htmlFor="global_search"
+      >
+        Killa Bees
+      </Label>
+      <input id="global_search" type="text" />
+    </Field>
+  )
+}
+
+```
+</CodePreview>
+
+## API
+
+```ts showLineNumbers=false
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  describedBy?: string
+  id: string
+}
+
+define function Input(props: InputProps): ReactNode | null
+```
+
+### Props
+
+The `InputProps` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| describedBy     | ''   | The `id` attribute of the FieldMessage the Input is associated with. |
+| id   | ''   |  An identifier that is shared with the Label `htmlFor` attribute.        |
