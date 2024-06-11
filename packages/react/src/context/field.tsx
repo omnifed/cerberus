@@ -9,7 +9,7 @@ import {
 
 export interface FieldContextValue {
   disabled?: boolean
-  readonly?: boolean
+  readOnly?: boolean
   required?: boolean
   invalid?: boolean
 }
@@ -22,11 +22,11 @@ export function Field(
   const value = useMemo(
     () => ({
       disabled: props.disabled,
-      readonly: props.readonly,
+      readOnly: props.readOnly,
       required: props.required,
       invalid: props.invalid,
     }),
-    [props.disabled, props.readonly, props.required, props.invalid],
+    [props.disabled, props.readOnly, props.required, props.invalid],
   )
 
   return (
