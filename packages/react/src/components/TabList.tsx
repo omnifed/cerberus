@@ -31,7 +31,10 @@ export function TabList(props: PropsWithChildren<TabListProps>) {
       className={cx(
         nativeProps.className,
         hstack({
+          borderBottom: '1px solid',
+          borderBottomColor: 'action.border.100',
           gap: '0',
+          w: 'full',
         }),
       )}
     />

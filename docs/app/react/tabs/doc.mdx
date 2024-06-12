@@ -32,19 +32,19 @@ function BasicTabsPreview() {
   return (
     <Tabs active="overview">
       <TabList>
-        <Tab controls="overview" value="overview">
+        <Tab id="overview" controls="panel:overview" value="overview">
           Overview
         </Tab>
-        <Tab controls="features" value="features">
+        <Tab id="features" controls="panel:features" value="features">
           Features
         </Tab>
-        <Tab controls="pricing" value="pricing">
+        <Tab id="pricing" controls="panel:pricing" value="pricing">
           Pricing
         </Tab>
       </TabList>
-      <TabPanel tab="overview">Overview content</TabPanel>
-      <TabPanel tab="features">Features content</TabPanel>
-      <TabPanel tab="pricing">Pricing content</TabPanel>
+      <TabPanel tab="panel:overview">Overview content</TabPanel>
+      <TabPanel tab="panel:features">Features content</TabPanel>
+      <TabPanel tab="panel:pricing">Pricing content</TabPanel>
     </Tabs>
   )
 }

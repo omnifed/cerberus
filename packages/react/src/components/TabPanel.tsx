@@ -6,6 +6,7 @@ import { useTabsContext } from '../context/tabs'
 import { Show } from './Show'
 
 export interface TabPanelProps extends HTMLAttributes<HTMLDivElement> {
+  id: string
   tab: string
 }
 
