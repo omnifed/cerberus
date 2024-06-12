@@ -13,12 +13,16 @@ export * from './components/Label'
 export * from './components/NavMenuTrigger'
 export * from './components/NavMenuList'
 export * from './components/NavMenuLink'
+export * from './components/Tab'
+export * from './components/TabList'
+export * from './components/TabPanel'
 export * from './components/Show'
 
 // context
 
 export * from './context/field'
 export * from './context/navMenu'
+export * from './context/tabs'
 export * from './context/theme'
 
 // hooks
