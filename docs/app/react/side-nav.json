@@ -60,6 +60,13 @@
   },
   {
     "id": "2:g",
+    "label": "Tabs",
+    "route": "/react/tabs",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:h",
     "label": "Show",
     "route": "/react/show",
     "tag": "",

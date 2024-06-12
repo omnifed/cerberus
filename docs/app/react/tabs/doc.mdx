@@ -1,0 +1,77 @@
+---
+heading: 'Tabs'
+description: 'Tabs organize content across different screens and views'
+a11y: 'touch-target'
+npm: '@cerberus-design/react'
+source: 'context/tabs.tsx'
+recipe: 'slots/tabs.ts'
+---
+
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import {
+  BasicButtonPreview,
+  CustomButtonPreview,
+} from '@/app/react/tabs/components/tabs-preview'
+
+```ts
+import { Tabs, TabList, Tab, TabPanel } from '@cerberus-design/react'
+```
+
+<WhenToUseAdmonition description="When you need to display dynamic content heavy sections within a single page." />
+
+## Usage
+
+You can mix and match all of the examples to create the button style of your choosing.
+
+<WhenNotToUseAdmonition description="When you need to provide a way for the user to navigate somewhere - use a Link, TextLink, or NavMenu." />
+
+## Customization
+
+You can customize the button by utilizing the `cx` function.
+
+<CodePreview preview={<CustomButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus-design/react'
+import { css } from '@cerberus/styled-system/css'
+
+function CustomButton() {
+  return (
+    <Button
+      className={css({
+        bgColor: 'yellow.800',
+        color: 'black',
+        _hover: {
+          bgColor: 'yellow.500',
+        },
+      })}
+    >
+      Wu-Tang Forever
+    </Button>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+```ts showLineNumbers=false
+export interface TabsProps {
+  active?: string
+  cache?: boolean
+}
+
+define function Tabs(props: TabsProps): ReactNode | null
+````
+
+### Props
+
+The `Tabs` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| active     |    | The `value` of the tab you want to be active by default. |
+| cache | `false`    | Whether to cache the active state of the tabs.    |
