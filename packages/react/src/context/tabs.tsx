@@ -33,13 +33,13 @@ export interface TabsProps {
  * @example
  * ```tsx
  * <Tabs cache>
- *  <TabList>
- *    <Tab id="tab1">Tab 1</Tab>
- *    <Tab id="tab2">Tab 2</Tab>
+ *  <TabList description="Button details">
+ *    <Tab id="overview">Overview</Tab>
+ *    <Tab id="guidelines">Guidelines</Tab>
  *  </TabList>
  *  <TabPanels>
- *    <TabPanel id="tab1">Panel 1</TabPanel>
- *    <TabPanel id="tab2">Panel 2</TabPanel>
+ *    <TabPanel id="overview">Overview content</TabPanel>
+ *    <TabPanel id="guidelines">Guidelines content</TabPanel>
  *  </TabPanels>
  * </Tabs>
  * ```
