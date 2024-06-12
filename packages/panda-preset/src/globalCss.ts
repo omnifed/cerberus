@@ -2,8 +2,8 @@ import { defineGlobalStyles, type GlobalStyleObject } from '@pandacss/dev'
 
 export const globalCss: GlobalStyleObject = defineGlobalStyles({
   html: {
-    backgroundColor: 'var(--cerberus-colors-neutral-surface-100)',
-    color: 'var(--cerberus-colors-neutral-text-300)',
+    backgroundColor: 'var(--cerberus-colors-neutral-surface-initial)',
+    color: 'var(--cerberus-colors-neutral-text-initial)',
     fontFamily: 'var(--cerberus-fonts-sans)',
     fontFeatureSettings: "'tnum' on, 'lnum' on",
     fontSize: '1em',
