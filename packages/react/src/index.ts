@@ -19,6 +19,7 @@ export * from './components/Show'
 
 export * from './context/field'
 export * from './context/navMenu'
+export * from './context/tabs'
 export * from './context/theme'
 
 // hooks
