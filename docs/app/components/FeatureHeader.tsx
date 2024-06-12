@@ -1,15 +1,12 @@
-import { ImageCopy } from '@cerberus-design/icons'
-import { Show } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
-import { cq, grid, gridItem } from '@cerberus-design/styled-system/patterns'
 import { vstack } from '@cerberus/styled-system/patterns'
-import Image from 'next/image'
 import type { PropsWithChildren } from 'react'
+import { MatchFeatureImg, type MatchFeatureKind } from './MatchFeatureImg'
 
 export interface FeatureHeaderProps {
   heading: string
   description: string
-  src?: string
+  a11y: MatchFeatureKind
 }
 
 export default function FeatureHeader(
@@ -73,17 +70,17 @@ export default function FeatureHeader(
           </p>
         </section>
         <section
+          data-category={props.a11y}
           className={vstack({
+            bgGradient: 'to-t',
             display: {
               base: 'none',
               '@/lg': 'flex',
             },
-            bgGradient: 'to-t',
-            gradientFrom: 'info.surface.initial',
-            gradientTo: 'info.border.initial',
-            color: 'info.text.initial',
             h: 'full',
             justify: 'center',
+            overflow: 'hidden',
+            position: 'relative',
             pxi: '4',
             pb: '4',
             rounded: {
@@ -93,11 +90,29 @@ export default function FeatureHeader(
             w: {
               '@/lg': '33%',
             },
+            '&:is([data-category=touch-target])': {
+              gradientFrom: 'info.surface.initial',
+              gradientTo: 'info.border.initial',
+              color: 'neutral.surface.300',
+            },
+            '&:is([data-category=forms])': {
+              gradientFrom: 'warning.surface.initial',
+              gradientTo: 'warning.border.initial',
+              color: 'warning.text.initial',
+            },
+            '&:is([data-category=menus])': {
+              gradientFrom: 'success.surface.initial',
+              gradientTo: 'success.border.initial',
+              color: 'success.text.200',
+            },
+            '&:is([data-category=utilities])': {
+              gradientFrom: 'action.bg.initial',
+              gradientTo: 'action.border.initial',
+              color: 'neutral.surface.200',
+            },
           })}
         >
-          <Show when={Boolean(props.src)} fallback={<ImageCopy size={32} />}>
-            <Image alt={props.heading} src={props.src!} />
-          </Show>
+          <MatchFeatureImg kind={props.a11y} />
         </section>
       </div>
     </header>

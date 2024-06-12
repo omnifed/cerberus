@@ -32,15 +32,15 @@
   },
   {
     "id": "2:c",
-    "label": "Input",
-    "route": "/react/input",
+    "label": "Label",
+    "route": "/react/label",
     "tag": "new",
     "type": "route"
   },
   {
     "id": "2:d",
-    "label": "Label",
-    "route": "/react/label",
+    "label": "Input",
+    "route": "/react/input",
     "tag": "new",
     "type": "route"
   },
