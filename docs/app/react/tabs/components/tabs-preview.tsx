@@ -1,49 +1,45 @@
-import { Button } from '@cerberus-design/react'
-import { ArrowDownRight } from '@cerberus-design/icons'
-import { css } from '@cerberus/styled-system/css'
+import { Tabs, TabList, Tab, TabPanel } from '@cerberus-design/react'
+// import { css } from '@cerberus/styled-system/css'
 
-export function BasicButtonPreview() {
-  return <Button>Default styles</Button>
+export function BasicTabsPreview() {
+  // return (
+  //   <Tabs active="overview">
+  //     <TabList>
+  //       <Tab controls="overview" value="overview">
+  //         Overview
+  //       </Tab>
+  //       <Tab controls="features" value="features">
+  //         Features
+  //       </Tab>
+  //       <Tab controls="pricing" value="pricing">
+  //         Pricing
+  //       </Tab>
+  //     </TabList>
+  //     <TabPanel tab="overview">Overview content</TabPanel>
+  //     <TabPanel tab="features">Features content</TabPanel>
+  //     <TabPanel tab="pricing">Pricing content</TabPanel>
+  //   </Tabs>
+  // )
+  return <p>Coming soon</p>
 }
 
-export function DangerButtonPreview() {
-  return <Button palette="danger">Danger styles</Button>
-}
-
-export function OutlineButtonPreview() {
-  return <Button usage="outline">Outline styles</Button>
-}
-
-export function TextButtonPreview() {
-  return <Button usage="text">Text styles</Button>
-}
-
-export function RoundedButtonPreview() {
-  return <Button shape="rounded">Rounded styles</Button>
-}
-
-export function WithIconButtonPreview() {
-  return (
-    <Button>
-      <ArrowDownRight />
-      With icon
-    </Button>
-  )
-}
-
-export function CustomButtonPreview() {
-  return (
-    <Button
-      className={css({
-        bgColor: 'yellow',
-        color: 'black',
-        _hover: {
-          bgColor: 'black',
-          color: 'yellow',
-        },
-      })}
-    >
-      Wu-Tang Forever
-    </Button>
-  )
-}
+// export function CustomTabsPreview() {
+//   return (
+//     <Tabs active="overview">
+//       <TabList>
+//         <Tab controls="overview" value="overview">
+//           Overview
+//         </Tab>
+//         <Tab controls="features" value="features">
+//           Features
+//         </Tab>
+//         <Tab controls="pricing" value="pricing">
+//           Pricing
+//         </Tab>
+//       </TabList>
+//       <TabPanel tab="overview">Overview content</TabPanel>
+//       <TabPanel tab="features">Features content</TabPanel>
+//       <TabPanel tab="pricing">Pricing content</TabPanel>
+//     </Tabs>
+//   )
+// }

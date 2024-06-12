@@ -13,8 +13,7 @@ import {
 } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
 import {
-  BasicButtonPreview,
-  CustomButtonPreview,
+  BasicTabsPreview
 } from '@/app/react/tabs/components/tabs-preview'
 
 ```ts
@@ -25,7 +24,32 @@ import { Tabs, TabList, Tab, TabPanel } from '@cerberus-design/react'
 
 ## Usage
 
-You can mix and match all of the examples to create the button style of your choosing.
+<CodePreview preview={<BasicTabsPreview />}>
+```tsx title="button.tsx"
+import { Tabs, TabList, Tab, TabPanel } from '@cerberus-design/react'
+
+function BasicTabsPreview() {
+  return (
+    <Tabs active="overview">
+      <TabList>
+        <Tab controls="overview" value="overview">
+          Overview
+        </Tab>
+        <Tab controls="features" value="features">
+          Features
+        </Tab>
+        <Tab controls="pricing" value="pricing">
+          Pricing
+        </Tab>
+      </TabList>
+      <TabPanel tab="overview">Overview content</TabPanel>
+      <TabPanel tab="features">Features content</TabPanel>
+      <TabPanel tab="pricing">Pricing content</TabPanel>
+    </Tabs>
+  )
+}
+```
+</CodePreview>
 
 <WhenNotToUseAdmonition description="When you need to provide a way for the user to navigate somewhere - use a Link, TextLink, or NavMenu." />
 
@@ -33,7 +57,7 @@ You can mix and match all of the examples to create the button style of your cho
 
 You can customize the button by utilizing the `cx` function.
 
-<CodePreview preview={<CustomButtonPreview />}>
+<CodePreview preview={<BasicTabsPreview />}>
 ```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
