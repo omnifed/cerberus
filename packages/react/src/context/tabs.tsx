@@ -3,6 +3,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type PropsWithChildren,
@@ -15,7 +16,6 @@ import {
 
 export interface TabsContextValue {
   active: string
-  cache?: boolean
   onTabUpdate: (active: string) => void
 }
 
@@ -45,16 +45,29 @@ export interface TabsProps {
  * ```
  */
 export function Tabs(props: PropsWithChildren<TabsProps>): JSX.Element {
+  const { cache } = props
   const [active, setActive] = useState(() => props.active ?? '')
 
   const value = useMemo(
     () => ({
       active,
-      cache: props.cache,
       onTabUpdate: setActive,
     }),
-    [active, props.cache],
+    [active, setActive],
   )
+
+  useEffect(() => {
+    if (cache) {
+      const cachedTab = window.localStorage.getItem('cerberus-tabs')
+      setActive(cachedTab ?? active)
+    }
+  }, [cache])
+
+  useEffect(() => {
+    if (cache) {
+      window.localStorage.setItem('cerberus-tabs', active)
+    }
+  }, [active, cache])
 
   return (
     <TabsContext.Provider value={value}>{props.children}</TabsContext.Provider>
