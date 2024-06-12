@@ -1,6 +1,12 @@
 import { describe, test, expect, beforeEach, afterEach, spyOn } from 'bun:test'
 import { render, screen, cleanup, renderHook } from '@testing-library/react'
-import { Tabs, TabList, Tab, useTabsContext } from '@cerberus-design/react'
+import {
+  Tabs,
+  TabList,
+  Tab,
+  useTabsContext,
+  TabPanel,
+} from '@cerberus-design/react'
 import { setupStrictMode, user } from '@/utils'
 
 describe('Tabs Family & useTabsContext', () => {
@@ -9,6 +15,7 @@ describe('Tabs Family & useTabsContext', () => {
     { id: 'tab2', label: 'Tab2', content: 'Tab2 content' },
     { id: 'tab3', label: 'Tab3', content: 'Tab3 content' },
   ]
+  const SELECTED = 'aria-selected'
 
   setupStrictMode()
 
@@ -29,9 +36,9 @@ describe('Tabs Family & useTabsContext', () => {
           ))}
         </TabList>
         {tabData.map((tab) => (
-          <div key={tab.id} id={tab.id} role="tabpanel">
+          <TabPanel key={tab.id} tab={tab.id}>
             {tab.content}
-          </div>
+          </TabPanel>
         ))}
       </>
     )
@@ -39,16 +46,40 @@ describe('Tabs Family & useTabsContext', () => {
 
   test('should export a Tabs component', () => {
     render(
-      <Tabs>
+      <Tabs active="tab1">
         <TestTabs />
       </Tabs>,
     )
+    // The right panel is showing
     expect(screen.getByText(/tab1 content/i)).toBeTruthy()
-    // expect(screen.queryByText(/tab2 content/i)).toBeFalsy()
+    expect(screen.queryByText(/tab2 content/i)).toBeFalsy()
+
+    // The right tab is selected
     expect(
       screen.getByTestId('tablist').attributes.getNamedItem('aria-describedby')
         ?.textContent,
     ).toEqual('Button details')
+    expect(
+      screen
+        .getByRole('tab', {
+          name: /tab1/i,
+        })
+        .attributes.getNamedItem(SELECTED)?.textContent,
+    ).toEqual('true')
+    expect(
+      screen
+        .getByRole('tab', {
+          name: /tab2/i,
+        })
+        .attributes.getNamedItem(SELECTED)?.textContent,
+    ).toEqual('false')
+    expect(
+      screen
+        .getByRole('tab', {
+          name: /tab2/i,
+        })
+        .attributes.getNamedItem('tabindex')?.textContent,
+    ).toEqual('-1')
   })
 
   test('should update the active value when a Tab is clicked', async () => {
@@ -61,8 +92,10 @@ describe('Tabs Family & useTabsContext', () => {
     expect(
       screen
         .getByRole('tab', { name: /tab2/i })
-        .attributes.getNamedItem('aria-selected')?.textContent,
+        .attributes.getNamedItem(SELECTED)?.textContent,
     ).toEqual('true')
+    expect(screen.queryByText(/tab1 content/i)).toBeFalsy()
+    expect(screen.getByText(/tab2 content/i)).toBeTruthy()
   })
 
   test('should set an initial active tab', () => {
@@ -76,7 +109,7 @@ describe('Tabs Family & useTabsContext', () => {
         .getByRole('tab', {
           name: /tab1/i,
         })
-        .attributes.getNamedItem('aria-selected')?.textContent,
+        .attributes.getNamedItem(SELECTED)?.textContent,
     ).toEqual('true')
   })
 

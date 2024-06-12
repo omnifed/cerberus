@@ -1,6 +1,6 @@
 'use client'
 
-import type { ButtonHTMLAttributes, MouseEvent } from 'react'
+import { useMemo, type ButtonHTMLAttributes, type MouseEvent } from 'react'
 import { useTabsContext } from '../context/tabs'
 import { css, cx } from '@cerberus/styled-system/css'
 
@@ -17,6 +17,7 @@ export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export function Tab(props: TabProps) {
   const { controls, value, ...nativeProps } = props
   const { active, onTabUpdate } = useTabsContext()
+  const isActive = useMemo(() => active === value, [active, value])
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {
     props.onClick?.(e)
@@ -26,8 +27,9 @@ export function Tab(props: TabProps) {
   return (
     <button
       {...nativeProps}
+      {...(!isActive && { tabIndex: -1 })}
       aria-controls={controls}
-      aria-selected={active === value}
+      aria-selected={isActive}
       className={cx(nativeProps.className, css())}
       onClick={handleClick}
       role="tab"

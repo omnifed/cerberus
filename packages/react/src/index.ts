@@ -15,6 +15,7 @@ export * from './components/NavMenuList'
 export * from './components/NavMenuLink'
 export * from './components/Tab'
 export * from './components/TabList'
+export * from './components/TabPanel'
 export * from './components/Show'
 
 // context
