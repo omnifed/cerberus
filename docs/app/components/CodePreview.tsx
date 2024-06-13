@@ -6,8 +6,6 @@ import { Code, CodeHide } from '@cerberus-design/icons'
 import { css } from '@cerberus/styled-system/css'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
 
-// TODO: Replace with Badge component
-
 interface CodePreviewProps {
   preview: ReactNode
 }
@@ -29,7 +27,7 @@ export default function CodePreview(
     <Show
       when={viewCode}
       fallback={
-        <PreviewLayout onShowCode={handleShowCode}>
+        <PreviewLayout onShowCode={props.children ? handleShowCode : undefined}>
           {props.preview}
         </PreviewLayout>
       }
@@ -52,7 +50,7 @@ export default function CodePreview(
 }
 
 interface PreviewLayoutProps {
-  onShowCode: () => void
+  onShowCode?: () => void
 }
 
 export function PreviewLayout(props: PropsWithChildren<PreviewLayoutProps>) {
@@ -64,10 +62,12 @@ export function PreviewLayout(props: PropsWithChildren<PreviewLayoutProps>) {
           py: '4',
         })}
       >
-        <Button onClick={props.onShowCode} usage="text" type="button">
-          Show code
-          <Code aria-hidden size="1.5rem" />
-        </Button>
+        <Show when={Boolean(props.onShowCode)}>
+          <Button onClick={props.onShowCode} usage="text" type="button">
+            Show code
+            <Code aria-hidden size="1.5rem" />
+          </Button>
+        </Show>
       </header>
       <section
         className={vstack({

@@ -14,7 +14,8 @@
     "shikijs",
     "tseslint",
     "Twoslash",
-    "Unauthenticate"
+    "Unauthenticate",
+    "Watsonx"
   ],
   "prettier.configPath": ".prettierrc",
   "prettier.prettierPath": "./node_modules/prettier",

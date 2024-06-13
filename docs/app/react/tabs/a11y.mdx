@@ -1,0 +1,30 @@
+---
+---
+
+import {
+  WhenToUseAdmonition
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+
+## Use Cases
+
+<OverviewList intro="Users should be able to:" rules={[
+  'Use a keyboard to navigate between tabs',
+  'Tab between the active tab and the tab panel',
+  'Not see animations if they have motion sensitivity',
+]} />
+
+### Avoid applying density to tabs
+
+Don't apply density to tabs by default — this lowers their targets below our best practice of 48x48 CSS pixels. Instead, give people a way to choose a higher density, like selecting a denser layout or changing the theme.
+
+To ensure that this density setting can be easily reverted when it's active, keep all the targets to change it at minimum 48x48 CSS pixels each.
+
+## Keyboard Navigation
+
+| Keys     | Actions                                                         |
+| -------- | --------------------------------------------------------------- |
+| Tab      | Navigate between the active tab and the active tab panel.       |
+| Space / Enter      | Actives the currently focused Tab.                    |
+| Arrows   | Navigate between the tabs.                                      |

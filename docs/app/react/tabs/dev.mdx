@@ -162,6 +162,8 @@ function CustomTabsPreview() {
 
 ## API
 
+### Tabs
+
 ```ts showLineNumbers=false
 export interface TabsProps {
   active?: string
@@ -171,7 +173,7 @@ export interface TabsProps {
 define function Tabs(props: TabsProps): ReactNode | null
 ````
 
-### Props
+#### Props
 
 The `Tabs` component accepts the following props:
 
@@ -179,3 +181,57 @@ The `Tabs` component accepts the following props:
 | -------- | ------- | ------------------------------------------------------------- |
 | active     |    | The `value` of the tab you want to be active by default. |
 | cache | `false`    | Whether to cache the active state of the tabs.    |
+
+### TabList
+
+```ts showLineNumbers=false
+interface TabListProps extends HTMLAttributes<HTMLDivElement> {
+  description: string
+}
+
+define function TabList(props: TabListProps): ReactNode | null
+````
+
+#### Props
+
+The `TabList` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| description     |    | A description of what the Tabs use case is for. |
+
+### Tab
+
+```ts showLineNumbers=false
+export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  value: string
+}
+
+define function Tab(props: TabProps): ReactNode | null
+````
+
+#### Props
+
+The `Tab` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| value     |    | An identifier that is used for both the active state and accessbility attributes. |
+
+### TabPanel
+
+```ts showLineNumbers=false
+export interface TabPanelProps extends HTMLAttributes<HTMLDivElement> {
+  tab: string
+}
+
+define function TabPanel(props: TabPanelProps): ReactNode | null
+````
+
+#### Props
+
+The `TabPanel` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| tab     |    | The Tab `value` identifier the panel is associated with. |

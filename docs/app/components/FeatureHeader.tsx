@@ -38,7 +38,10 @@ export default function FeatureHeader(
             bgColor: 'neutral.surface.200',
             h: 'full',
             justify: 'center',
-            pxi: '4',
+            pxi: {
+              base: '4',
+              '@/lg': '8',
+            },
             pb: '4',
             rounded: {
               base: 'xl',

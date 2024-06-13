@@ -34,6 +34,7 @@ export function TabList(props: PropsWithChildren<TabListProps>) {
           borderBottom: '1px solid',
           borderBottomColor: 'action.border.100',
           gap: '0',
+          overflowX: 'auto',
           w: 'full',
         }),
       )}
