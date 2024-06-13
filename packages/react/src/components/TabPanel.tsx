@@ -11,14 +11,12 @@ import { Show } from './Show'
  */
 
 export interface TabPanelProps extends HTMLAttributes<HTMLDivElement> {
-  id: string
   tab: string
 }
 
 /**
  * The TabPanel component provides a panel element to be used in a Tabs provider.
- * @param id - the id of the tab panel which is used for the Tab's control prop
- * @param tab - the id of the tab that will be tracked as the active tab
+ * @param tab - the value of the tab that will be tracked as the active tab and used for aria attributes
  * @example
  * ```tsx
  * <TabPanel id="panel:overview" tab="overview">
@@ -38,6 +36,7 @@ export function TabPanel(props: TabPanelProps) {
         {...(isActive && { tabIndex: 0 })}
         aria-labelledby={tab}
         className={cx(nativeProps.className, css())}
+        id={`panel:${tab}`}
         role="tabpanel"
       />
     </Show>

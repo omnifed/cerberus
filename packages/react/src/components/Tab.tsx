@@ -10,8 +10,6 @@ import { css, cx } from '@cerberus/styled-system/css'
  */
 
 export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  id: string
-  controls: string
   value: string
 }
 
@@ -19,18 +17,16 @@ export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  * The Tab component provides a tab element to be used in a TabList.
  * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
  * @definition [Tab docs](https://cerberus.digitalu.design/react/tabs)
- * @param id - the id of the tab (used for aria-labelledby in the panel)
- * @param controls - the id of the tab panel that the tab controls
- * @param value - the id of the tab that will be tracked as the active tab
+ * @param value - the id of the tab that will be tracked as the active tab and used for aria attributes
  * @example
  * ```tsx
- * <Tab controls="panel:overview" value="overview">
+ * <Tab value="overview">
  *  Overview
  * </Tab>
  * ```
  */
 export function Tab(props: TabProps) {
-  const { controls, value, ...nativeProps } = props
+  const { value, ...nativeProps } = props
   const { active, onTabUpdate } = useTabsContext()
   const isActive = useMemo(() => active === value, [active, value])
 
@@ -43,8 +39,9 @@ export function Tab(props: TabProps) {
     <button
       {...nativeProps}
       {...(!isActive && { tabIndex: -1 })}
-      aria-controls={controls}
+      aria-controls={`panel:${value}`}
       aria-selected={isActive}
+      id={value}
       className={cx(nativeProps.className, btnStyles)}
       onClick={handleClick}
       role="tab"

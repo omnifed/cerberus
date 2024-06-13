@@ -9,26 +9,14 @@ export function BasicTabsPreview() {
   return (
     <div className={overrideStyles}>
       <Tabs active="overview">
-        <TabList>
-          <Tab id="overview" controls="panel:overview" value="overview">
-            Overview
-          </Tab>
-          <Tab id="features" controls="panel:features" value="features">
-            Features
-          </Tab>
-          <Tab id="pricing" controls="panel:pricing" value="pricing">
-            Pricing
-          </Tab>
+        <TabList description="Button detail pages">
+          <Tab value="overview">Overview</Tab>
+          <Tab value="features">Features</Tab>
+          <Tab value="pricing">Pricing</Tab>
         </TabList>
-        <TabPanel id="panel:overview" tab="overview">
-          Overview content
-        </TabPanel>
-        <TabPanel id="panel:features" tab="features">
-          Features content
-        </TabPanel>
-        <TabPanel id="panel:pricing" tab="pricing">
-          Pricing content
-        </TabPanel>
+        <TabPanel tab="overview">Overview content</TabPanel>
+        <TabPanel tab="features">Features content</TabPanel>
+        <TabPanel tab="pricing">Pricing content</TabPanel>
       </Tabs>
     </div>
   )
@@ -45,6 +33,7 @@ export function CustomTabsPreview() {
     <div className={overrideStyles}>
       <Tabs active="overview">
         <TabList
+          description="Custom tabs example"
           className={css({
             borderBottom: 'none',
             bgColor: 'neutral.surface.initial',
@@ -56,8 +45,6 @@ export function CustomTabsPreview() {
           {tabData.map((tab) => (
             <Tab
               key={tab.id}
-              id={tab.id}
-              controls={`panel:${tab.id}`}
               className={css({
                 h: '3.7rem',
                 rounded: 'full',
@@ -108,7 +95,7 @@ export function CustomTabsPreview() {
           ))}
         </TabList>
         {tabData.map((tab) => (
-          <TabPanel key={tab.id} id={`panel:${tab.id}`} tab={tab.value}>
+          <TabPanel key={tab.id} tab={tab.value}>
             {tab.label} content
           </TabPanel>
         ))}
