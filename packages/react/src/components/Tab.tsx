@@ -3,6 +3,7 @@
 import { useMemo, type ButtonHTMLAttributes, type MouseEvent } from 'react'
 import { useTabsContext } from '../context/tabs'
 import { css, cx } from '@cerberus/styled-system/css'
+import { useTabsKeyboardNavigation } from '../aria-helpers/tabs.aria'
 
 /**
  * This module provides a Tab component.
@@ -28,6 +29,7 @@ export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export function Tab(props: TabProps) {
   const { value, ...nativeProps } = props
   const { active, onTabUpdate } = useTabsContext()
+  const { ref } = useTabsKeyboardNavigation()
   const isActive = useMemo(() => active === value, [active, value])
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {
@@ -45,12 +47,15 @@ export function Tab(props: TabProps) {
       className={cx(nativeProps.className, btnStyles)}
       onClick={handleClick}
       role="tab"
+      ref={ref}
       value={value}
     />
   )
 }
 
 const btnStyles = css({
+  borderTopLeftRadius: 'md',
+  borderTopRightRadius: 'md',
   fontSize: 'sm',
   fontWeight: '600',
   h: '2.75rem',

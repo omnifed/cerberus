@@ -23,6 +23,8 @@ export function BasicTabsPreview() {
 }
 
 export function CachedTabsPreview() {
+  return null
+
   return (
     <div className={overrideStyles}>
       <Tabs active="overview" cache>
@@ -46,6 +48,8 @@ export function CustomTabsPreview() {
     { id: 'pricing', value: 'pricing', label: 'Pricing' },
   ]
 
+  return null
+
   return (
     <div className={overrideStyles}>
       <Tabs active="overview">
@@ -63,6 +67,8 @@ export function CustomTabsPreview() {
             <Tab
               key={tab.id}
               className={css({
+                borderTopLeftRadius: 'full',
+                borderTopRightRadius: 'full',
                 h: '3.7rem',
                 rounded: 'full',
                 w: '1/3',

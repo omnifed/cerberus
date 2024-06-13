@@ -5,7 +5,9 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
+  type MutableRefObject,
   type PropsWithChildren,
 } from 'react'
 
@@ -16,10 +18,11 @@ import {
 
 export interface TabsContextValue {
   active: string
+  tabs: MutableRefObject<HTMLButtonElement[]>
   onTabUpdate: (active: string) => void
 }
 
-const TabsContext = createContext<TabsContextValue | null>(null)
+export const TabsContext = createContext<TabsContextValue | null>(null)
 
 export interface TabsProps {
   active?: string
@@ -29,7 +32,7 @@ export interface TabsProps {
 /**
  * The Tabs component provides a context to manage tab state.
  * @param active - the default active tab id,
- * @param cache - whether to cache the active tab state
+ * @param cache - whether to cache the active tab state in local storage
  * @example
  * ```tsx
  * <Tabs cache>
@@ -47,10 +50,12 @@ export interface TabsProps {
 export function Tabs(props: PropsWithChildren<TabsProps>): JSX.Element {
   const { cache } = props
   const [active, setActive] = useState(() => (cache ? '' : props.active ?? ''))
+  const tabs = useRef<HTMLButtonElement[]>([])
 
   const value = useMemo(
     () => ({
       active,
+      tabs,
       onTabUpdate: setActive,
     }),
     [active, setActive],
