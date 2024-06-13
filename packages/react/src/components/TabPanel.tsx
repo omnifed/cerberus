@@ -19,7 +19,7 @@ export interface TabPanelProps extends HTMLAttributes<HTMLDivElement> {
  * @param tab - the value of the tab that will be tracked as the active tab and used for aria attributes
  * @example
  * ```tsx
- * <TabPanel id="panel:overview" tab="overview">
+ * <TabPanel tab="overview">
  *   Overview content
  * </TabPanel>
  * ```

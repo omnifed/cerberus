@@ -22,6 +22,23 @@ export function BasicTabsPreview() {
   )
 }
 
+export function CachedTabsPreview() {
+  return (
+    <div className={overrideStyles}>
+      <Tabs active="overview" cache>
+        <TabList description="Button detail pages">
+          <Tab value="overview">Overview</Tab>
+          <Tab value="features">Features</Tab>
+          <Tab value="pricing">Pricing</Tab>
+        </TabList>
+        <TabPanel tab="overview">Overview content</TabPanel>
+        <TabPanel tab="features">Features content</TabPanel>
+        <TabPanel tab="pricing">Pricing content</TabPanel>
+      </Tabs>
+    </div>
+  )
+}
+
 export function CustomTabsPreview() {
   const tabData = [
     { id: 'overview', value: 'overview', label: 'Overview' },

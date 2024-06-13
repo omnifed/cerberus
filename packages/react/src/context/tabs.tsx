@@ -46,7 +46,7 @@ export interface TabsProps {
  */
 export function Tabs(props: PropsWithChildren<TabsProps>): JSX.Element {
   const { cache } = props
-  const [active, setActive] = useState(() => props.active ?? '')
+  const [active, setActive] = useState(() => (cache ? '' : props.active ?? ''))
 
   const value = useMemo(
     () => ({
@@ -57,9 +57,9 @@ export function Tabs(props: PropsWithChildren<TabsProps>): JSX.Element {
   )
 
   useEffect(() => {
-    if (cache) {
-      const cachedTab = window.localStorage.getItem('cerberus-tabs')
-      setActive(cachedTab ?? active)
+    const cachedTab = window.localStorage.getItem('cerberus-tabs')
+    if (cache && cachedTab) {
+      setActive(cachedTab)
     }
   }, [cache])
 
