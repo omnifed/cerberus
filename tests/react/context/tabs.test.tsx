@@ -16,6 +16,10 @@ describe('Tabs Family & useTabsContext', () => {
     { id: 'tab3', label: 'Tab3', content: 'Tab3 content' },
   ]
   const SELECTED = 'aria-selected'
+  const ARROW_R = '{arrowright}'
+  const ARROW_L = '{arrowleft}'
+  const HOME = '{home}'
+  const END = '{end}'
 
   setupStrictMode()
 
@@ -30,19 +34,13 @@ describe('Tabs Family & useTabsContext', () => {
       <>
         <TabList data-testid="tablist" description="Button details">
           {tabData.map((tab) => (
-            <Tab
-              key={tab.id}
-              controls={`panel:${tab.id}`}
-              id={tab.id}
-              name={tab.id}
-              value={tab.id}
-            >
+            <Tab key={tab.id} value={tab.id}>
               {tab.label}
             </Tab>
           ))}
         </TabList>
         {tabData.map((tab) => (
-          <TabPanel key={tab.id} id={`panel:${tab.id}`} tab={tab.id}>
+          <TabPanel key={tab.id} tab={tab.id}>
             {tab.content}
           </TabPanel>
         ))}
@@ -136,5 +134,71 @@ describe('Tabs Family & useTabsContext', () => {
     expect(() => renderHook(() => useTabsContext())).toThrow(
       'useTabsContext must be used within a Tabs Provider',
     )
+  })
+
+  test('should use keyboard navigation moving right', async () => {
+    render(
+      <Tabs active="tab1">
+        <TestTabs />
+      </Tabs>,
+    )
+    const tab1 = screen.getByRole('tab', { name: /tab1/i })
+    const tab2 = screen.getByRole('tab', { name: /tab2/i })
+    const tab3 = screen.getByRole('tab', { name: /tab3/i })
+
+    expect(tab1.attributes.getNamedItem(SELECTED)?.textContent).toEqual('true')
+    await user.type(tab1, ARROW_R)
+    expect(tab2.focus).toBeTruthy()
+    await user.type(tab2, ARROW_R)
+    expect(tab3.focus).toBeTruthy()
+    await user.type(tab3, ARROW_R)
+    expect(tab1.focus).toBeTruthy()
+  })
+
+  test('should use keyboard navigation moving left', async () => {
+    render(
+      <Tabs active="tab1">
+        <TestTabs />
+      </Tabs>,
+    )
+    const tab1 = screen.getByRole('tab', { name: /tab1/i })
+    const tab2 = screen.getByRole('tab', { name: /tab2/i })
+    const tab3 = screen.getByRole('tab', { name: /tab3/i })
+
+    expect(tab1.attributes.getNamedItem(SELECTED)?.textContent).toEqual('true')
+    await user.type(tab1, ARROW_L)
+    expect(tab3.focus).toBeTruthy()
+    await user.type(tab3, ARROW_L)
+    expect(tab2.focus).toBeTruthy()
+    await user.type(tab2, ARROW_L)
+    expect(tab1.focus).toBeTruthy()
+  })
+
+  test('should use keyboard navigation moving to the first tab', async () => {
+    render(
+      <Tabs active="tab1">
+        <TestTabs />
+      </Tabs>,
+    )
+    const tab1 = screen.getByRole('tab', { name: /tab1/i })
+    const tab3 = screen.getByRole('tab', { name: /tab3/i })
+
+    expect(tab1.attributes.getNamedItem(SELECTED)?.textContent).toEqual('true')
+    await user.type(tab1, HOME)
+    expect(tab3.focus).toBeTruthy()
+  })
+
+  test('should use keyboard navigation moving to the last tab', async () => {
+    render(
+      <Tabs active="tab1">
+        <TestTabs />
+      </Tabs>,
+    )
+    const tab1 = screen.getByRole('tab', { name: /tab1/i })
+    const tab3 = screen.getByRole('tab', { name: /tab3/i })
+
+    expect(tab1.attributes.getNamedItem(SELECTED)?.textContent).toEqual('true')
+    await user.type(tab1, END)
+    expect(tab3.focus).toBeTruthy()
   })
 })

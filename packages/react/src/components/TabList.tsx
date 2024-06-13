@@ -8,7 +8,7 @@ import type { HTMLAttributes, PropsWithChildren } from 'react'
  */
 
 export interface TabListProps extends HTMLAttributes<HTMLDivElement> {
-  description?: string
+  description: string
 }
 
 /**

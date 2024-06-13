@@ -32,6 +32,7 @@ export * from './hooks/useTheme'
 // aria-helpers
 
 export * from './aria-helpers/nav-menu.aria'
+export * from './aria-helpers/tabs.aria'
 
 // shared types
 
