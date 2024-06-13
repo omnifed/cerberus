@@ -111,5 +111,10 @@ const btnStyles = css({
     _before: {
       h: '3px',
     },
+    _hover: {
+      _after: {
+        h: '0',
+      },
+    },
   },
 })
