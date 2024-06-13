@@ -59,8 +59,20 @@ const btnStyles = css({
   h: '2.75rem',
   position: 'relative',
   pxi: '4',
-  transition: 'all 200ms ease-in-out',
   zIndex: 'base',
+  _motionSafe: {
+    transition: 'all 200ms ease-in-out',
+    _before: {
+      transitionProperty: 'height',
+      transitionDuration: '200ms',
+      transitionTimingFunction: 'ease-in-out',
+    },
+    _after: {
+      transitionProperty: 'height',
+      transitionDuration: '200ms',
+      transitionTimingFunction: 'ease-in-out',
+    },
+  },
   _before: {
     bgColor: 'action.border.initial',
     bottom: '0',
@@ -69,9 +81,6 @@ const btnStyles = css({
     position: 'absolute',
     left: '0',
     right: '0',
-    transitionProperty: 'height',
-    transitionDuration: '200ms',
-    transitionTimingFunction: 'ease-in-out',
     w: 'full',
     willChange: 'height',
     zIndex: 'decorator',
@@ -86,9 +95,8 @@ const btnStyles = css({
     position: 'absolute',
     right: '0',
     h: '0',
-    transition: 'all 200ms ease-in-out',
-    willChange: 'height',
     w: 'full',
+    willChange: 'height',
     zIndex: '-1',
   },
   _hover: {
