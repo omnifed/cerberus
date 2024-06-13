@@ -10,42 +10,50 @@ interface OverviewListProps {
 
 export default function OverviewList(props: OverviewListProps) {
   return (
-    <ul
-      className={vstack({
-        alignItems: 'flex-start',
-        gap: '4',
+    <div
+      className={css({
         py: '12',
       })}
     >
-      <Show when={Boolean(props.intro)}>
-        <li
-          className={css({
-            color: 'neutral.text.100',
-            pb: '4',
-            textStyle: 'body-xl',
-          })}
-        >
-          {props.intro}
-        </li>
-      </Show>
+      <ul
+        className={vstack({
+          alignItems: 'flex-start',
+          gap: '4',
+        })}
+      >
+        <Show when={Boolean(props.intro)}>
+          <li
+            className={css({
+              color: 'neutral.text.100',
+              pb: '4',
+              textStyle: 'body-xl',
+            })}
+          >
+            {props.intro}
+          </li>
+        </Show>
 
-      {props.rules.map((rule, index) => (
-        <li
-          className={css({
-            alignItems: 'center',
-            display: 'inline-flex',
-            gap: '4',
-          })}
-          key={index}
-        >
-          <Asterisk
-            style={{
-              transform: `rotate(${index * 45}deg)`,
-            }}
-          />
-          {rule}
-        </li>
-      ))}
-    </ul>
+        {props.rules.map((rule, index) => (
+          <li
+            className={css({
+              alignItems: 'center',
+              display: 'inline-flex',
+              gap: '4',
+            })}
+            key={index}
+          >
+            <Asterisk
+              className={css({
+                flexShrink: '0',
+              })}
+              style={{
+                transform: `rotate(${index * 45}deg)`,
+              }}
+            />
+            {rule}
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
