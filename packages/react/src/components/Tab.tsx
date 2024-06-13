@@ -54,11 +54,15 @@ export function Tab(props: TabProps) {
 }
 
 const btnStyles = css({
+  alignItems: 'center',
+  display: 'inline-flex',
   borderTopLeftRadius: 'md',
   borderTopRightRadius: 'md',
   fontSize: 'sm',
   fontWeight: '600',
+  gap: '2',
   h: '2.75rem',
+  justifyContent: 'center',
   position: 'relative',
   pxi: '4',
   zIndex: 'base',
