@@ -54,7 +54,7 @@ import { Tabs, TabList, Tab, TabPanel } from '@cerberus-design/react'
 
 function BasicTabsPreview() {
   return (
-    <Tabs active="overview" cache>
+    <Tabs cache>
       <TabList description="Button detail pages">
         <Tab value="overview">Overview</Tab>
         <Tab value="features">Features</Tab>
@@ -84,7 +84,7 @@ function CustomTabsPreview() {
   ]
 
   return (
-    <Tabs active="overview">
+    <Tabs>
       <TabList
         description="Custom tab list"
         className={css({
