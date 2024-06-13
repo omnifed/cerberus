@@ -30,13 +30,19 @@ describe('Tabs Family & useTabsContext', () => {
       <>
         <TabList data-testid="tablist" description="Button details">
           {tabData.map((tab) => (
-            <Tab key={tab.id} controls={tab.id} name={tab.id} value={tab.id}>
+            <Tab
+              key={tab.id}
+              controls={`panel:${tab.id}`}
+              id={tab.id}
+              name={tab.id}
+              value={tab.id}
+            >
               {tab.label}
             </Tab>
           ))}
         </TabList>
         {tabData.map((tab) => (
-          <TabPanel key={tab.id} tab={tab.id}>
+          <TabPanel key={tab.id} id={`panel:${tab.id}`} tab={tab.id}>
             {tab.content}
           </TabPanel>
         ))}
