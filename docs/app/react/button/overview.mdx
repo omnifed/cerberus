@@ -1,0 +1,35 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  BasicButtonPreview,
+  DangerButtonPreview,
+  OutlineButtonPreview,
+  TextButtonPreview,
+  WithIconButtonPreview,
+  WithIconButtonPreview
+} from '@/app/react/button/components/button-preview'
+
+<OverviewList rules={[
+  'Can contain an optional leading icon',
+  'Two types: sharp and rounded',
+  'Keep labels concise and in sentence-case',
+  'Containers are wide enough to fit label text'
+]} />
+
+## Example
+
+<CodePreview preview={<BasicButtonPreview />} />
+<CodePreview preview={<DangerButtonPreview />} />
+<CodePreview preview={<OutlineButtonPreview />} />
+<CodePreview preview={<TextButtonPreview />} />
+<CodePreview preview={<RoundedButtonPreview />} />
+<CodePreview preview={<WithIconButtonPreview />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |
