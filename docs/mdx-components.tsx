@@ -11,6 +11,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         alt={props.alt as string}
       />
     ),
+    table: (props) => (
+      <div className="table-wrapper">
+        <table {...props} />
+      </div>
+    ),
     ...components,
   }
 }

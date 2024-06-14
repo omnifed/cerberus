@@ -1,0 +1,30 @@
+---
+---
+
+import {
+  WhenToUseAdmonition
+} from '@/app/components/Admonition'
+import OverviewList from '@/app/components/OverviewList'
+
+## Use Cases
+
+<OverviewList intro="Users should be able to:" rules={[
+  'Understand meaning of the icon',
+  'Navigate to and activate an icon button with assistive technology',
+  "When applicable, a tooltip is available to help describe the icon button's purpose"
+]} />
+
+### Interaction &amp; Style
+
+Similarly styled components shouldn't be used together if they don't each pass the 3:1 contrast ratio. Higher contrast helps differentiate between a group of similar components.
+
+## Keyboard Navigation
+
+| Keys     | Actions                                                         |
+| -------- | --------------------------------------------------------------- |
+| Tab      | Focus lands on (non-disabled) button       |
+| Space / Enter      | Activates the (non-disabled) button                    |
+
+## Labeling Buttons
+
+The accessibility labels for icon buttons describe the action that the button is executing, such as Favorite, Bookmark, or Send message.

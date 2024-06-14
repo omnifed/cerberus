@@ -1,5 +1,7 @@
-import { focusStates } from '@cerberus-design/panda-preset'
+import { NEUTRAL } from '@cerberus-design/panda-preset'
 import { css } from '@cerberus/styled-system/css'
+
+const NEUTRAL_BORDER_100 = 'neutral.border.100'
 
 const headlineStyles = {
   color: 'neutral.text.initial',
@@ -79,22 +81,50 @@ export const markdown = css({
   '& .expressive-code': {
     mb: '6',
   },
+  '& .table-wrapper': {
+    border: '1px solid',
+    borderColor: NEUTRAL_BORDER_100,
+    borderRadius: '1.5em',
+    overflow: 'hidden',
+    my: '6',
+  },
   '& table': {
     borderCollapse: 'collapse',
     borderSpacing: '0',
-    mb: '6',
     width: '100%',
+    '& thead': {
+      _first: {
+        borderTop: 'none',
+      },
+    },
+    '& tr': {
+      _first: {
+        '& th': {
+          borderTop: 'none',
+        },
+      },
+    },
     '& th': {
-      borderBottom: '1px solid',
-      borderColor: 'neutral.border.initial',
-      bgColor: 'neutral.bg.initial',
+      borderRight: '1px solid',
+      borderColor: NEUTRAL_BORDER_100,
+      bgColor: 'neutral.surface.100',
       textAlign: 'left',
-      p: '2',
+      pxi: '8',
+      py: '6',
+      verticalAlign: 'middle',
+      _last: {
+        borderRight: 'none',
+      },
     },
     '& td': {
-      borderBottom: '1px solid',
-      borderColor: 'neutral.border.initial',
-      p: '2',
+      borderTop: '1px solid',
+      borderRight: '1px solid',
+      borderColor: NEUTRAL_BORDER_100,
+      pxi: '8',
+      py: '6',
+      _last: {
+        borderRight: 'none',
+      },
     },
   },
   '& :is(p,li,td) > code:not(.code)': {

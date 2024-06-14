@@ -12,7 +12,7 @@ export default function OverviewList(props: OverviewListProps) {
   return (
     <div
       className={css({
-        py: '12',
+        py: '20',
       })}
     >
       <ul
