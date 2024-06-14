@@ -10,7 +10,7 @@ import Guidelines from './guidelines.mdx'
 import Dev, { frontmatter } from './dev.mdx'
 import A11y from './a11y.mdx'
 
-export default function TabsPage() {
+export default function ButtonPage() {
   return (
     <>
       <PageMainContent>
