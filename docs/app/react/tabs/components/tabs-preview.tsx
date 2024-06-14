@@ -25,7 +25,7 @@ export function BasicTabsPreview() {
 export function CachedTabsPreview() {
   return (
     <div className={overrideStyles}>
-      <Tabs cache>
+      <Tabs cache id="tabs-cache-preview">
         <TabList description="Button detail pages">
           <Tab value="overview">Overview</Tab>
           <Tab value="features">Features</Tab>
