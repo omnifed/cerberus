@@ -1,5 +1,7 @@
+import { NEUTRAL } from '@cerberus-design/panda-preset'
 import { css } from '@cerberus/styled-system/css'
-import { NEUTRAL_BORDER_100 } from '../utils/const'
+
+const NEUTRAL_BORDER_100 = 'neutral.border.100'
 
 const headlineStyles = {
   color: 'neutral.text.initial',
