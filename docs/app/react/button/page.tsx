@@ -1,11 +1,16 @@
 import ApiLinks from '@/app/components/ApiLinks'
 import OnThisPage from '../../components/OnThisPage'
 import { PageMainContent, PageSections } from '../../components/PageLayout'
-import Doc, { frontmatter } from './doc.mdx'
 import FeatureHeader from '@/app/components/FeatureHeader'
 import type { MatchFeatureKind } from '@/app/components/MatchFeatureImg'
+import PageTabs from '@/app/components/PageTabs'
 
-export default function ButtonPage() {
+import Overview from './overview.mdx'
+import Guidelines from './guidelines.mdx'
+import Dev, { frontmatter } from './dev.mdx'
+import A11y from './a11y.mdx'
+
+export default function TabsPage() {
   return (
     <>
       <PageMainContent>
@@ -14,10 +19,19 @@ export default function ButtonPage() {
           description={frontmatter.description}
           a11y={frontmatter.a11y as MatchFeatureKind}
         />
-        <ApiLinks {...frontmatter} />
-        <main>
-          <Doc />
-        </main>
+
+        <PageTabs
+          description="Tabs component details"
+          overview={<Overview />}
+          guidelines={<Guidelines />}
+          dev={
+            <main>
+              <ApiLinks {...frontmatter} />
+              <Dev />
+            </main>
+          }
+          a11y={<A11y />}
+        />
       </PageMainContent>
 
       <PageSections>
