@@ -41,9 +41,9 @@ export function CachedTabsPreview() {
 
 export function CustomTabsPreview() {
   const tabData = [
-    { id: 'overview', value: 'overview', label: 'Overview' },
-    { id: 'features', value: 'features', label: 'Features' },
-    { id: 'pricing', value: 'pricing', label: 'Pricing' },
+    { id: 'overview', value: 'overview', label: 'Wu' },
+    { id: 'features', value: 'features', label: 'Tang' },
+    { id: 'pricing', value: 'pricing', label: 'Forever' },
   ]
 
   return (
@@ -53,7 +53,7 @@ export function CustomTabsPreview() {
           description="Custom tabs example"
           className={css({
             borderBottom: 'none',
-            bgColor: 'neutral.surface.initial',
+            bgColor: 'black',
             justifyContent: 'space-evenly',
             mb: '4',
             rounded: 'full',
@@ -65,6 +65,7 @@ export function CustomTabsPreview() {
               className={css({
                 borderTopLeftRadius: 'full',
                 borderTopRightRadius: 'full',
+                color: 'yellow',
                 h: '3.7rem',
                 rounded: 'full',
                 w: '1/3',
@@ -99,12 +100,12 @@ export function CustomTabsPreview() {
                   zIndex: 'initial',
                 },
                 _hover: {
-                  bgColor: 'action.navigation.hover',
-                  color: 'neutral.surface.initial',
+                  bgColor: 'yellow',
+                  color: 'black',
                 },
                 _selected: {
-                  bgColor: 'action.bg.initial',
-                  color: 'action.text.initial',
+                  bgColor: 'yellow',
+                  color: 'black',
                 },
               })}
               value={tab.value}
