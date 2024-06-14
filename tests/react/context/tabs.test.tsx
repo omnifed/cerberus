@@ -123,7 +123,7 @@ describe('Tabs Family & useTabsContext', () => {
         <TestTabs />
       </Tabs>,
     )
-    expect(window.localStorage.getItem('cerberus-tabs')).toBe('')
+    expect(window.localStorage.getItem('cerberus-tabs')).toBeNull()
     await user.click(screen.getByRole('tab', { name: /tab2/i }))
     expect(window.localStorage.getItem('cerberus-tabs')).toBe('tab2')
   })
@@ -200,5 +200,16 @@ describe('Tabs Family & useTabsContext', () => {
     expect(tab1.attributes.getNamedItem(SELECTED)?.textContent).toEqual('true')
     await user.type(tab1, END)
     expect(tab3.focus).toBeTruthy()
+  })
+
+  test('should cache a uuid if provided and id prop', async () => {
+    render(
+      <Tabs id="unique-id" cache>
+        <TestTabs />
+      </Tabs>,
+    )
+    expect(window.localStorage.getItem('cerberus-tabs-unique-id')).toBeNull()
+    await user.click(screen.getByRole('tab', { name: /tab2/i }))
+    expect(window.localStorage.getItem('cerberus-tabs-unique-id')).toBe('tab2')
   })
 })
