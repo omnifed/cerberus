@@ -163,6 +163,7 @@ function CustomTabsPreview() {
 export interface TabsProps {
   active?: string
   cache?: boolean
+  id?: string
 }
 
 define function Tabs(props: TabsProps): ReactNode | null
@@ -176,6 +177,7 @@ The `Tabs` component accepts the following props:
 | -------- | ------- | ------------------------------------------------------------- |
 | active     |    | The `value` of the tab you want to be active by default. |
 | cache | `false`    | Whether to cache the active state of the tabs.    |
+| id |    | A unique `id` attribute used when there are multiple Tabs on a single page. |
 
 ### TabList
 

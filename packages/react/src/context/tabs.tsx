@@ -17,14 +17,16 @@ import {
  */
 
 export interface TabsContextValue {
-  active: string
   tabs: MutableRefObject<HTMLButtonElement[]>
+  id: string
+  active: string
   onTabUpdate: (active: string) => void
 }
 
 export const TabsContext = createContext<TabsContextValue | null>(null)
 
 export interface TabsProps {
+  id?: string
   active?: string
   cache?: boolean
 }
@@ -48,31 +50,39 @@ export interface TabsProps {
  * ```
  */
 export function Tabs(props: PropsWithChildren<TabsProps>): JSX.Element {
-  const { cache } = props
-  const [active, setActive] = useState(() => (cache ? '' : props.active ?? ''))
+  const { cache, active, id } = props
+  const [activeTab, setActiveTab] = useState(() => (cache ? '' : active ?? ''))
   const tabs = useRef<HTMLButtonElement[]>([])
+  const uuid = useMemo(() => {
+    return id ? `cerberus-tabs-${id}` : 'cerberus-tabs'
+  }, [id])
 
   const value = useMemo(
     () => ({
-      active,
       tabs,
-      onTabUpdate: setActive,
+      id: uuid,
+      active: activeTab,
+      onTabUpdate: setActiveTab,
     }),
-    [active, setActive],
+    [activeTab, setActiveTab, uuid, tabs],
   )
 
-  useEffect(() => {
-    const cachedTab = window.localStorage.getItem('cerberus-tabs')
-    if (cache && cachedTab) {
-      setActive(cachedTab)
-    }
-  }, [cache])
-
+  // Get the active tab from local storage
   useEffect(() => {
     if (cache) {
-      window.localStorage.setItem('cerberus-tabs', active)
+      const cachedTab = window.localStorage.getItem(uuid)
+      setActiveTab(
+        cache ? cachedTab || (props.active ?? '') : props.active ?? '',
+      )
     }
-  }, [active, cache])
+  }, [cache, active, uuid])
+
+  // Update the active tab in local storage
+  useEffect(() => {
+    if (cache && activeTab) {
+      window.localStorage.setItem(uuid, activeTab)
+    }
+  }, [activeTab, cache])
 
   return (
     <TabsContext.Provider value={value}>{props.children}</TabsContext.Provider>

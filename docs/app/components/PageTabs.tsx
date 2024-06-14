@@ -18,7 +18,7 @@ interface TabProps {
 
 export default function PageTabs(props: TabProps) {
   return (
-    <Tabs active="overview" cache>
+    <Tabs active="overview" cache id="page-tabs">
       <TabList
         description={props.description}
         className={css({
@@ -37,7 +37,7 @@ export default function PageTabs(props: TabProps) {
           <GroupObjectsSave size={20} />
           Guidelines
         </Tab>
-        <Tab className={tabOverrideStyles} value="dev">
+        <Tab className={tabOverrideStyles} value="developers">
           <IbmWatsonxCodeAssistantForZRefactor size={20} />
           Dev
         </Tab>
@@ -48,7 +48,7 @@ export default function PageTabs(props: TabProps) {
       </TabList>
       <TabPanel tab="overview">{props.overview}</TabPanel>
       <TabPanel tab="guidelines">{props.guidelines}</TabPanel>
-      <TabPanel tab="dev">{props.dev}</TabPanel>
+      <TabPanel tab="developers">{props.dev}</TabPanel>
       <TabPanel tab="a11y">{props.a11y}</TabPanel>
     </Tabs>
   )

@@ -1,6 +1,11 @@
 'use client'
 
-import { useMemo, type ButtonHTMLAttributes, type MouseEvent } from 'react'
+import {
+  useMemo,
+  useTransition,
+  type ButtonHTMLAttributes,
+  type MouseEvent,
+} from 'react'
 import { useTabsContext } from '../context/tabs'
 import { css, cx } from '@cerberus/styled-system/css'
 import { useTabsKeyboardNavigation } from '../aria-helpers/tabs.aria'
@@ -29,12 +34,13 @@ export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export function Tab(props: TabProps) {
   const { value, ...nativeProps } = props
   const { active, onTabUpdate } = useTabsContext()
+  const [isPending, startTransition] = useTransition()
   const { ref } = useTabsKeyboardNavigation()
   const isActive = useMemo(() => active === value, [active, value])
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {
     props.onClick?.(e)
-    onTabUpdate(e.currentTarget.value)
+    startTransition(() => onTabUpdate(e.currentTarget.value))
   }
 
   return (
@@ -42,6 +48,7 @@ export function Tab(props: TabProps) {
       {...nativeProps}
       {...(!isActive && { tabIndex: -1 })}
       aria-controls={`panel:${value}`}
+      aria-busy={isPending}
       aria-selected={isActive}
       id={value}
       className={cx(nativeProps.className, btnStyles)}

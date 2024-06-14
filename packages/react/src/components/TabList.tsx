@@ -1,6 +1,9 @@
+'use client'
+
 import { cx } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
 import type { HTMLAttributes, PropsWithChildren } from 'react'
+import { useTabsContext } from '../context/tabs'
 
 /**
  * This module provides a TabList component.
@@ -24,6 +27,8 @@ export interface TabListProps extends HTMLAttributes<HTMLDivElement> {
  */
 export function TabList(props: PropsWithChildren<TabListProps>) {
   const { description, ...nativeProps } = props
+  const { id } = useTabsContext()
+
   return (
     <div
       {...nativeProps}
@@ -37,6 +42,7 @@ export function TabList(props: PropsWithChildren<TabListProps>) {
           w: 'full',
         }),
       )}
+      id={id ?? nativeProps.id}
     />
   )
 }
