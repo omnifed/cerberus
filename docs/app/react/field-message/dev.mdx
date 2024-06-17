@@ -7,9 +7,7 @@ source: 'components/FieldMessage.tsx'
 recipe: 'fieldMesage.ts'
 ---
 
-import {
-  WhenToUseAdmonition
-} from '@/app/components/Admonition'
+import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
 import {
   FieldMessageBasicPreview,
@@ -20,8 +18,6 @@ import {
 ```ts
 import { Field, FieldMessage } from '@cerberus-design/react'
 ```
-
-<WhenToUseAdmonition description="When you need extra context for an Input component (valid or error state)." />
 
 ## Usage
 
@@ -97,6 +93,19 @@ function FieldMessageCustomPreview() {
 </CodePreview>
 
 ## API
+
+<NoteAdmonition description="The Label component must be used within a Field provider." />
+
+```ts showLineNumbers=false
+export interface FieldProps {
+  disabled?: boolean
+  invalid?: boolean
+  required?: boolean
+  readOnly?: boolean
+}
+
+define function Field(props: PropsWithChildren<FieldProps>): ReactNode | null
+```
 
 ```ts showLineNumbers=false
 export interface FieldMessageProps

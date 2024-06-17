@@ -1,0 +1,26 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  FieldMessageBasicPreview,
+  FieldMessageInvalidPreview
+} from '@/app/react/field-message/components/field-message-preview'
+
+<OverviewList rules={[
+  'Make sure the field message is close to the input field',
+  "The field message's state (standard or error) should be visible at a glance",
+  'Keep descriptors and error messages brief and easy to act on'
+]} />
+
+## Example
+
+<CodePreview preview={<FieldMessageBasicPreview />} />
+<CodePreview preview={<FieldMessageInvalidPreview />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |
