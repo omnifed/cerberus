@@ -1,0 +1,19 @@
+---
+---
+
+import {
+  WhenToUseAdmonition
+} from '@/app/components/Admonition'
+import OverviewList from '@/app/components/OverviewList'
+
+## Use Cases
+
+<OverviewList intro="Users should be able to:" rules={[
+  'Receive and understand supporting text and error messages',
+]} />
+
+## Labeling Elements
+
+If the UI text is correctly linked, assistive tech (such as a screenreader) will read the UI text followed by the component's role.
+
+It can be useful to provide a descriptive identifier for the field message - like `help:first_name` - to help users navigate to the field message with assistive technology.
