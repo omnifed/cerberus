@@ -51,6 +51,7 @@ export default function Home() {
                   w: 'full',
                 },
               })}
+              priority
               src={`/logo.svg`}
               height="300"
               width="300"
