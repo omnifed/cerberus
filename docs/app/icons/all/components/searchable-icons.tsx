@@ -21,7 +21,7 @@ export default function SearchableIcons() {
     >
       <div
         className={css({
-          bgColor: 'neutral.surface.100',
+          bgColor: 'neutral.surface.initial',
           position: 'sticky',
           py: '2',
           top: '-1.75rem',
@@ -30,7 +30,7 @@ export default function SearchableIcons() {
             bottom: '-1.8rem',
             bgGradient: 'to-b',
             content: '""',
-            gradientFrom: 'neutral.surface.100',
+            gradientFrom: 'neutral.surface.initial',
             gradientTo: 'transparent',
             h: '8',
             left: '0',

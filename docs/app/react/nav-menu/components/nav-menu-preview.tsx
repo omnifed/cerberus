@@ -12,6 +12,7 @@ import { circle, hstack } from '@cerberus/styled-system/patterns'
 import { forwardRef, type ForwardedRef, type PropsWithChildren } from 'react'
 import Link from 'next/link'
 import { ACTION_NAV_HOVER, ACTION_NAV_INITIAL } from '@/app/utils/const'
+import { OverflowMenuVertical } from '@cerberus-design/icons'
 
 export function BasicNavMenuPreview() {
   return (
@@ -27,7 +28,9 @@ export function BasicNavMenuPreview() {
 export function CustomNavMenuPreview() {
   return (
     <NavMenu>
-      <NavMenuTrigger as={IconButton} controls="basic:nav" />
+      <NavMenuTrigger as={IconButton} controls="basic:nav">
+        <OverflowMenuVertical size={32} />
+      </NavMenuTrigger>
       <NavMenuList id="basic:nav">
         <NavMenuLink>Something</NavMenuLink>
       </NavMenuList>
