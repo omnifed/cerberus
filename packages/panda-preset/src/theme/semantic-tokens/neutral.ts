@@ -99,9 +99,9 @@ export const neutralTokens: NeutralTokens = {
         description: 'The default surface color used for layouts.',
         value: {
           _cerberusTheme: {
-            base: '#130024',
+            base: '#160126',
             _lightMode: '#FCFBFE',
-            _darkMode: '#130024',
+            _darkMode: '#160126',
           },
         },
       },
@@ -110,9 +110,9 @@ export const neutralTokens: NeutralTokens = {
           'The surface color used for layouts of an element that is on the second layer from the initial surface layer.',
         value: {
           _cerberusTheme: {
-            base: '#160126',
+            base: '#21143B',
             _lightMode: '#ffffff',
-            _darkMode: '#160126',
+            _darkMode: '#21143B',
           },
         },
       },

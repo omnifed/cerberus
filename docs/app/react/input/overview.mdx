@@ -1,0 +1,31 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  InputBasicPreview,
+  InputInvalidPreview,
+  InputDisabledPreview,
+  InputSizesPreview,
+} from '@/app/react/input/components/input-preview'
+
+<OverviewList rules={[
+  'Make sure text fields look interactive',
+  'The text field’s state (blank, with input, error, etc) should be visible at a glance',
+  'Keep labels and error messages brief and easy to act on',
+  'Text fields commonly appear in forms and dialogs'
+]} />
+
+## Example
+
+<CodePreview preview={<InputBasicPreview />} />
+<CodePreview preview={<InputInvalidPreview />} />
+<CodePreview preview={<InputDisabledPreview />} />
+<CodePreview preview={<InputSizesPreview />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |

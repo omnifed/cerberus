@@ -7,10 +7,7 @@ source: 'components/Input.tsx'
 recipe: 'slots/input.ts'
 ---
 
-import {
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
-} from '@/app/components/Admonition'
+import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
 import {
   InputBasicPreview,
@@ -23,8 +20,6 @@ import {
 ```ts
 import { Field, Input } from '@cerberus-design/react'
 ```
-
-<WhenToUseAdmonition description="When you need a way for the user to enter text into the UI." />
 
 ## Usage
 
@@ -71,7 +66,7 @@ function InputInvalidPreview() {
 ## Disabled
 
 <CodePreview preview={<InputDisabledPreview />}>
-```tsx title="search-input.tsx" {6}
+```tsx title="search-input.tsx" {5}
 import { Field, Label } from '@cerberus-design/react'
 
 function InputDisabledPreview() {
@@ -160,6 +155,19 @@ function InputCustomPreview() {
 </CodePreview>
 
 ## API
+
+<NoteAdmonition description="The Label component must be used within a Field provider." />
+
+```ts showLineNumbers=false
+export interface FieldProps {
+  disabled?: boolean
+  invalid?: boolean
+  required?: boolean
+  readOnly?: boolean
+}
+
+define function Field(props: PropsWithChildren<FieldProps>): ReactNode | null
+```
 
 ```ts showLineNumbers=false
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
