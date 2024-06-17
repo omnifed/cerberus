@@ -81,10 +81,10 @@ describe('neutral', () => {
   test('should have a surface.initial property', () => {
     expect(
       neutralTokens.neutral.surface.initial.value._cerberusTheme.base,
-    ).toEqual('#130024')
+    ).toEqual('#160126')
     expect(
       neutralTokens.neutral.surface.initial.value._cerberusTheme._darkMode,
-    ).toEqual('#130024')
+    ).toEqual('#160126')
     expect(
       neutralTokens.neutral.surface.initial.value._cerberusTheme._lightMode,
     ).toEqual('#FCFBFE')
@@ -93,10 +93,10 @@ describe('neutral', () => {
   test('should have a surface.100 property', () => {
     expect(
       neutralTokens.neutral.surface[100].value._cerberusTheme.base,
-    ).toEqual('#160126')
+    ).toEqual('#21143B')
     expect(
       neutralTokens.neutral.surface[100].value._cerberusTheme._darkMode,
-    ).toEqual('#160126')
+    ).toEqual('#21143B')
     expect(
       neutralTokens.neutral.surface[100].value._cerberusTheme._lightMode,
     ).toEqual('#ffffff')
