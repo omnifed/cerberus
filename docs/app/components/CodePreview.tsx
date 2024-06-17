@@ -34,7 +34,6 @@ export default function CodePreview(
     >
       <header
         className={hstack({
-          bgColor: 'neutral.surface.100',
           justifyContent: 'flex-end',
           py: '4',
         })}

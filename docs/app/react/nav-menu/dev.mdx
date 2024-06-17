@@ -8,9 +8,7 @@ recipe: ''
 ---
 
 import {
-  NoteAdmonition,
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
+  NoteAdmonition
 } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
 import {
@@ -28,8 +26,6 @@ import {
   NavMenuLink
 } from '@cerberus-design/react'
 ```
-
-<WhenToUseAdmonition description="When you need display a list of navigation links that show/hide when a button is clicked." />
 
 ## Usage
 
@@ -176,6 +172,8 @@ function FullyCustomNavMenuPreview() {
 </CodePreview>
 
 ## API
+
+<NoteAdmonition description="The NavMenu component is the context provider to the family." />
 
 ### NavMenuTrigger
 

@@ -23,10 +23,11 @@ export default function PageTabs(props: TabProps) {
         description={props.description}
         className={css({
           borderBottom: 'none',
-          bgColor: 'neutral.surface.200',
+          bgColor: 'neutral.surface.100',
           justifyContent: 'space-evenly',
           mb: '8',
           rounded: 'full',
+          shadow: 'md',
         })}
       >
         <Tab className={tabOverrideStyles} value="overview">
