@@ -7,10 +7,6 @@ source: 'components/Label.tsx'
 recipe: 'label.ts'
 ---
 
-import {
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
-} from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
 import {
   LabelBasicPreview,
@@ -18,31 +14,28 @@ import {
   LabelOptionalPreview,
   LabelCustomPreview
 } from '@/app/react/label/components/label-preview'
+import { NoteAdmonition } from '@/app/components/Admonition'
 
 ```ts
 import { Field, Label } from '@cerberus-design/react'
 ```
 
-<WhenToUseAdmonition description="When you need to use an Input component in the UI, regardless if it has a visible label or not." />
-
 ## Usage
 
 <CodePreview preview={<LabelBasicPreview />}>
-```tsx title="first-name-input.tsx" {6}
+```tsx title="first-name-input.tsx" {5,6}
 import { Field, Label } from '@cerberus-design/react'
 
 function LabelBasicPreview() {
   return (
     <Field required>
       <Label htmlFor="first_name">First Name</Label>
-      <input id="first_name" type="text" />
+      <Input id="first_name" placeholder="Type your first name" type="text" />
     </Field>
   )
 }
 ```
 </CodePreview>
-
-<WhenNotToUseAdmonition description="In order to ensure a form element is accessible, the Label should always be used." />
 
 ## Hidden
 
@@ -54,16 +47,14 @@ function LabelHiddenPreview() {
   return (
     <Field required>
       <Label htmlFor="global_search" hidden>
-        Search for anything
+        Search anything
       </Label>
-      <input id="global_search" type="text" />
+      <Input id="global_search" placeholder="Search anything" type="text" />
     </Field>
   )
 }
 ```
 </CodePreview>
-
-<WhenNotToUseAdmonition description="In order to ensure a form element is accessible, the Label should always be used." />
 
 ## Optional
 
@@ -75,7 +66,7 @@ function LabelOptionalPreview() {
   return (
     <Field>
       <Label htmlFor="preferred">Preferred Name</Label>
-      <input id="preferred" type="text" />
+      <Input id="preferred" placeholder="i.e. Johnny" type="text" />
     </Field>
   )
 }
@@ -110,6 +101,19 @@ function LabelCustomPreview() {
 </CodePreview>
 
 ## API
+
+<NoteAdmonition description="The Label component must be used within a Field provider." />
+
+```ts showLineNumbers=false
+export interface FieldProps {
+  disabled?: boolean
+  invalid?: boolean
+  required?: boolean
+  readOnly?: boolean
+}
+
+define function Field(props: PropsWithChildren<FieldProps>): ReactNode | null
+```
 
 ```ts showLineNumbers=false
 export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {

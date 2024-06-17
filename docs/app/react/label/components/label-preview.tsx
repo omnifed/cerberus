@@ -10,7 +10,7 @@ export function LabelBasicPreview() {
     <div className={overrideStyles}>
       <Field required>
         <Label htmlFor="first_name">First Name</Label>
-        <Input id="first_name" type="text" />
+        <Input id="first_name" placeholder="Type your first name" type="text" />
       </Field>
     </div>
   )
@@ -21,9 +21,9 @@ export function LabelHiddenPreview() {
     <div className={overrideStyles}>
       <Field required>
         <Label htmlFor="global_search" hidden>
-          Search for anything
+          Search anything
         </Label>
-        <Input id="global_search" type="text" />
+        <Input id="global_search" placeholder="Search anything" type="text" />
       </Field>
     </div>
   )
@@ -34,7 +34,7 @@ export function LabelOptionalPreview() {
     <div className={overrideStyles}>
       <Field>
         <Label htmlFor="preferred">Preferred Name</Label>
-        <Input id="preferred" type="text" />
+        <Input id="preferred" placeholder="i.e. Johnny" type="text" />
       </Field>
     </div>
   )
