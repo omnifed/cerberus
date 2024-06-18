@@ -31,7 +31,7 @@ export function Textarea(props: TextareaProps): JSX.Element {
       {...(describedBy && { 'aria-describedby': describedBy })}
       {...(invalid && { 'aria-invalid': true })}
       className={cx(props.className, input().input)}
-      rows={3}
+      rows={4}
     />
   )
 }
