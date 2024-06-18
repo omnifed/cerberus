@@ -1,7 +1,13 @@
 import type { PropsWithChildren } from 'react'
-import { grid, gridItem, scrollable } from '@cerberus/styled-system/patterns'
+import {
+  grid,
+  gridItem,
+  hstack,
+  scrollable,
+} from '@cerberus/styled-system/patterns'
 import { markdown } from '../styles/markdown'
 import { cx } from '@cerberus/styled-system/css'
+import OnThisPage from './OnThisPage'
 
 const PAGE_MINUS_HEADER = '100dvh'
 
@@ -93,5 +99,95 @@ export function PageSections(props: PropsWithChildren<PageLayoutProps>) {
     >
       {props.children}
     </div>
+  )
+}
+
+// Tabbed Layouts
+
+export function TabPageContent(props: PropsWithChildren<PageLayoutProps>) {
+  return (
+    <div
+      className={cx(
+        scrollable({
+          direction: 'vertical',
+          hideScrollbar: true,
+        }),
+        gridItem({
+          gridColumnStart: 1,
+          gridColumnEnd: 13,
+          py: '9rem',
+          md: {
+            gridColumnStart: 3,
+            paddingInlineStart: '6',
+            paddingInlineEnd: '8',
+          },
+        }),
+      )}
+    >
+      {props.children}
+    </div>
+  )
+}
+
+export function TabPageContentSections(
+  props: PropsWithChildren<PageLayoutProps>,
+) {
+  return (
+    <div
+      className={grid({
+        columns: 12,
+      })}
+    >
+      {props.children}
+    </div>
+  )
+}
+
+export function TabPageDocContent(props: PropsWithChildren<PageLayoutProps>) {
+  return (
+    <div
+      className={gridItem({
+        gridColumnStart: 1,
+        gridColumnEnd: 13,
+        md: {
+          gridColumnEnd: 11,
+        },
+      })}
+    >
+      <div className={markdown}>{props.children}</div>
+    </div>
+  )
+}
+
+export function TabPageOnThisPageContent(
+  props: PropsWithChildren<PageLayoutProps>,
+) {
+  return (
+    <div
+      className={gridItem({
+        display: 'none',
+        gridColumnStart: 11,
+        gridColumnEnd: 13,
+        py: '20',
+        md: {
+          display: 'grid',
+        },
+      })}
+    >
+      {props.children}
+    </div>
+  )
+}
+
+export function TabPageContentLayout(
+  props: PropsWithChildren<PageLayoutProps>,
+) {
+  return (
+    <TabPageContentSections>
+      <TabPageDocContent>{props.children}</TabPageDocContent>
+      <TabPageOnThisPageContent>
+        <OnThisPage />
+      </TabPageOnThisPageContent>
+    </TabPageContentSections>
   )
 }

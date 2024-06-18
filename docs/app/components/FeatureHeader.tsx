@@ -17,6 +17,10 @@ export default function FeatureHeader(
       className={css({
         containerType: 'inline-size',
         mb: '8',
+        pxi: '4',
+        md: {
+          pxi: 'initial',
+        },
       })}
     >
       <div
@@ -35,7 +39,7 @@ export default function FeatureHeader(
         <section
           className={vstack({
             alignItems: 'flex-start',
-            bgColor: 'neutral.surface.200',
+            bgColor: 'neutral.surface.100',
             h: 'full',
             justify: 'center',
             pxi: {
@@ -43,6 +47,10 @@ export default function FeatureHeader(
               '@/lg': '8',
             },
             pb: '4',
+            pt: {
+              base: '4',
+              '@/lg': 'initial',
+            },
             rounded: {
               base: 'xl',
               '@/lg': '1.5em',
@@ -54,6 +62,7 @@ export default function FeatureHeader(
         >
           <h1
             className={css({
+              textStyle: 'h1',
               fontSize: {
                 '@/lg': '4rem !important',
               },
