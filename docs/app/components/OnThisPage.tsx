@@ -52,6 +52,7 @@ export default function OnThisPage() {
       className={css({
         borderLeft: '1px solid',
         borderColor: 'neutral.border.initial',
+        h: 'fit-content',
         paddingInlineStart: '6',
       })}
     >

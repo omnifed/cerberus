@@ -26,8 +26,12 @@ export default function PageTabs(props: TabProps) {
           bgColor: 'neutral.surface.100',
           justifyContent: 'space-evenly',
           mb: '8',
+          overflowX: 'auto',
           rounded: 'full',
           shadow: 'md',
+          md: {
+            overflowX: 'initial',
+          },
         })}
       >
         <Tab className={tabOverrideStyles} value="overview">
@@ -58,7 +62,7 @@ export default function PageTabs(props: TabProps) {
 const tabOverrideStyles = css({
   borderTopLeftRadius: 'full',
   borderTopRightRadius: 'full',
-  h: '3.7rem',
+  h: '4rem',
   rounded: 'full',
   w: '1/3',
   md: {

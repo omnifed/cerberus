@@ -1,19 +1,21 @@
 import ApiLinks from '@/app/components/ApiLinks'
-import OnThisPage from '../../components/OnThisPage'
-import { PageMainContent, PageSections } from '../../components/PageLayout'
+import {
+  TabPageContent,
+  TabPageContentLayout,
+} from '../../components/PageLayout'
 import FeatureHeader from '@/app/components/FeatureHeader'
 import type { MatchFeatureKind } from '@/app/components/MatchFeatureImg'
 import PageTabs from '@/app/components/PageTabs'
 
-import Overview from './overview.mdx'
+import Overview, { frontmatter } from './overview.mdx'
 import Guidelines from './guidelines.mdx'
-import Dev, { frontmatter } from './dev.mdx'
+import Dev, { frontmatter as devFrontmatter } from './dev.mdx'
 import A11y from './a11y.mdx'
 
 export default function LabelPage() {
   return (
     <>
-      <PageMainContent>
+      <TabPageContent>
         <FeatureHeader
           heading={frontmatter.heading}
           description={frontmatter.description}
@@ -22,21 +24,31 @@ export default function LabelPage() {
 
         <PageTabs
           description="Tabs component details"
-          overview={<Overview />}
-          guidelines={<Guidelines />}
-          dev={
-            <main>
-              <ApiLinks {...frontmatter} />
-              <Dev />
-            </main>
+          overview={
+            <TabPageContentLayout>
+              <Overview />
+            </TabPageContentLayout>
           }
-          a11y={<A11y />}
+          guidelines={
+            <TabPageContentLayout>
+              <Guidelines />
+            </TabPageContentLayout>
+          }
+          dev={
+            <TabPageContentLayout>
+              <main>
+                <ApiLinks {...devFrontmatter} />
+                <Dev />
+              </main>
+            </TabPageContentLayout>
+          }
+          a11y={
+            <TabPageContentLayout>
+              <A11y />
+            </TabPageContentLayout>
+          }
         />
-      </PageMainContent>
-
-      <PageSections>
-        <OnThisPage />
-      </PageSections>
+      </TabPageContent>
     </>
   )
 }
