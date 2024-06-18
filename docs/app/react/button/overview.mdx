@@ -7,29 +7,19 @@ a11y: 'touch-target'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import {
-  BasicButtonPreview,
-  DangerButtonPreview,
-  OutlineButtonPreview,
-  TextButtonPreview,
-  RoundedButtonPreview,
-  WithIconButtonPreview
+  OverviewButtonPreview
 } from '@/app/react/button/components/button-preview'
 
 <OverviewList rules={[
   'Can contain an optional leading icon',
-  'Two types: sharp and rounded',
+  'Four types: sharp, rounded, outline, and text',
   'Keep labels concise and in sentence-case',
-  'Containers are wide enough to fit label text'
+  'Containers are either sharp or rounded and wide enough to fit label text'
 ]} />
 
 ## Example
 
-<CodePreview preview={<BasicButtonPreview />} />
-<CodePreview preview={<DangerButtonPreview />} />
-<CodePreview preview={<OutlineButtonPreview />} />
-<CodePreview preview={<TextButtonPreview />} />
-<CodePreview preview={<RoundedButtonPreview />} />
-<CodePreview preview={<WithIconButtonPreview />} />
+<CodePreview preview={<OverviewButtonPreview />} />
 
 ## Resources
 
