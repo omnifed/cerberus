@@ -1,7 +1,7 @@
 'use client'
 
 import type { TextareaHTMLAttributes } from 'react'
-import { cx } from '@cerberus/styled-system/css'
+import { css, cx } from '@cerberus/styled-system/css'
 import { input } from '@cerberus/styled-system/recipes'
 import { useFieldContext } from '../context/field'
 
@@ -30,7 +30,15 @@ export function Textarea(props: TextareaProps): JSX.Element {
       {...fieldState}
       {...(describedBy && { 'aria-describedby': describedBy })}
       {...(invalid && { 'aria-invalid': true })}
-      className={cx(props.className, input().input)}
+      className={cx(
+        props.className,
+        input().input,
+        css({
+          pxi: '2',
+          py: '2',
+          resize: 'vertical',
+        }),
+      )}
       rows={4}
     />
   )
