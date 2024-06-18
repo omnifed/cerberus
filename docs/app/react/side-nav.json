@@ -67,6 +67,13 @@
   },
   {
     "id": "2:h",
+    "label": "Textarea",
+    "route": "/react/textarea",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:i",
     "label": "Show",
     "route": "/react/show",
     "tag": "",

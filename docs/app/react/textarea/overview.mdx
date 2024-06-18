@@ -1,0 +1,32 @@
+---
+heading: 'Textarea'
+description: 'Text fields let users enter text into a UI'
+a11y: 'forms'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  TextareaBasicPreview,
+  TextareaInvalidPreview,
+  TextareaDisabledPreview,
+} from '@/app/react/textarea/components/textarea-preview'
+
+<OverviewList rules={[
+  'Make sure text fields look interactive',
+  "The text field's state (blank, with input, error, etc) should be visible at a glance",
+  'Keep labels and error messages brief and easy to act on',
+  'Text fields commonly appear in forms and dialogs'
+]} />
+
+## Example
+
+<CodePreview preview={<TextareaBasicPreview />} />
+<CodePreview preview={<TextareaInvalidPreview />} />
+<CodePreview preview={<TextareaDisabledPreview />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |
