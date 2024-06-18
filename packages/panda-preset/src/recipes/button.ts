@@ -30,10 +30,6 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     ...buttonBase,
     h: '3.5rem', // a11y minimum touch target size: 2.75rem
     pxi: '4',
-
-    md: {
-      h: '2.75rem',
-    },
   },
 
   variants: {
@@ -55,11 +51,23 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         rounded: 'full',
       },
     },
+    size: {
+      sm: {
+        h: '2.75rem', // a11y minimum touch target size: 2.75rem
+        pxi: '3',
+      },
+      md: {
+        md: {
+          h: '2.75rem',
+        },
+      },
+    },
   },
 
   defaultVariants: {
     palette: 'action',
     usage: 'filled',
     shape: 'sharp',
+    size: 'md',
   },
 })

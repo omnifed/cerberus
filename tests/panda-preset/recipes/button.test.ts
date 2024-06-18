@@ -38,9 +38,6 @@ describe('button recipe', () => {
       _readOnly: {
         cursor: 'default',
       },
-      md: {
-        h: '2.75rem',
-      },
     })
   })
 
@@ -115,11 +112,27 @@ describe('button recipe', () => {
     })
   })
 
+  test('should have a small size variant', () => {
+    expect(button.variants?.size.sm).toMatchObject({
+      h: '2.75rem',
+      pxi: '3',
+    })
+  })
+
+  test('should have a medium size variant', () => {
+    expect(button.variants?.size.md).toMatchObject({
+      md: {
+        h: '2.75rem',
+      },
+    })
+  })
+
   test('should have default variants', () => {
     expect(button.defaultVariants).toMatchObject({
       palette: 'action',
       usage: 'filled',
       shape: 'sharp',
+      size: 'md',
     })
   })
 })
