@@ -11,6 +11,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   palette?: 'action' | 'danger'
   usage?: 'filled' | 'outline' | 'text'
   shape?: 'sharp' | 'rounded'
+  size?: 'sm' | 'md'
 }
 
 /**
@@ -18,7 +19,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  * @description https://github.com/omnifed/cerberus/blob/main/packages/react/src/components/Button.tsx
  */
 export function Button(props: ButtonProps): JSX.Element {
-  const { palette, usage, shape, ...nativeProps } = props
+  const { palette, usage, shape, size, ...nativeProps } = props
   return (
     <button
       {...nativeProps}
@@ -28,6 +29,7 @@ export function Button(props: ButtonProps): JSX.Element {
           palette,
           usage,
           shape,
+          size,
         }),
       )}
     />

@@ -74,4 +74,22 @@ describe('Button', () => {
         .classList.contains('cerberus-button--shape_rounded'),
     ).toBeTrue()
   })
+
+  test('should render a small button', () => {
+    render(<Button size="sm">it works</Button>)
+    expect(
+      screen
+        .getByText(/it works/i)
+        .classList.contains('cerberus-button--size_sm'),
+    ).toBeTrue()
+  })
+
+  test('should render a medium button', () => {
+    render(<Button size="md">it works</Button>)
+    expect(
+      screen
+        .getByText(/it works/i)
+        .classList.contains('cerberus-button--size_md'),
+    ).toBeTrue()
+  })
 })
