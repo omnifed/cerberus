@@ -72,6 +72,10 @@ describe('conditions', () => {
     expect(conditions.startIcon).toEqual('&:is([data-start-icon=true])')
   })
 
+  test('should have a tooltip', () => {
+    expect(conditions.tooltip).toEqual('&:is([data-tooltip=true])')
+  })
+
   test('should have an admin', () => {
     expect(conditions.admin).toEqual('&:is([data-role=admin])')
   })
