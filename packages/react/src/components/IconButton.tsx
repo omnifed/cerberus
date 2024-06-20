@@ -26,6 +26,7 @@ export function IconButton(props: IconButtonProps): JSX.Element {
   return (
     <button
       {...nativeProps}
+      data-tooltip
       aria-label={ariaLabel ?? 'Icon Button'}
       className={cx(
         nativeProps.className,

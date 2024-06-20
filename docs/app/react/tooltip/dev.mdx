@@ -1,0 +1,57 @@
+---
+npm: ''
+source: ''
+recipe: ''
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  BasicTooltipPreview,
+  CustomTooltipPreview,
+} from '@/app/react/tooltip/components/tooltip-preview'
+
+To use a Tooltip, simply add the `data-tooltip` and `aria-label` attributes to the element you want to add a tooltip to.
+
+```tsx
+<IconButton data-tooltip ariaLabel="Like something">
+```
+
+## Usage
+
+<CodePreview preview={<BasicTooltipPreview />}>
+```tsx title="icon-button.tsx" {6}
+import { IconButton } from '@cerberus-design/react'
+import { ThumbsUp } from '@cerberus/icons'
+
+function BasicTooltipPreview() {
+  return (
+    <IconButton data-tooltip ariaLabel="Like something">
+      <ThumbsUp />
+    </IconButton>
+  )
+}
+```
+</CodePreview>
+
+## Customization
+
+To customize the tooltip, you need to update the globalCss options within your Panda theme.
+
+```ts title="globalCss.ts"
+':is(div,button,span,svg)': {
+  _tooltip: {
+    _hover: {
+      _before: {}, // bubble
+      _after: {}, // arrow
+    },
+    _focus: {
+      _before: {},
+      _after: {},
+    },
+  },
+},
+```
+
+## API
+
+There is no API for the Tooltip. The Tooltip is a simple pseudo element that uses the `data-tooltip` and `aria-label` attributes to display a tooltip.`

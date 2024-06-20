@@ -22,6 +22,7 @@ export const conditions = {
 
   // elements
   startIcon: '&:is([data-start-icon=true])',
+  tooltip: '&:is([data-tooltip=true])',
 
   // roles
   admin: '&:is([data-role=admin])',
