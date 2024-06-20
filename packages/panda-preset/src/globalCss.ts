@@ -1,5 +1,39 @@
 import { defineGlobalStyles, type GlobalStyleObject } from '@pandacss/dev'
 
+const tooltipStyles = {
+  _before: {
+    backgroundColor: 'var(--cerberus-colors-neutral-surface-100)',
+    color: 'var(--cerberus-colors-neutral-text-initial)',
+    content: 'attr(aria-label)',
+    fontWeight: 400,
+    maxH: '6rem',
+    maxW: '17rem',
+    pxi: '2',
+    py: '3',
+    position: 'absolute',
+    rounded: 'sm',
+    shadow: 'lg',
+    textAlign: 'left',
+    textStyle: 'body-xs',
+    textWrap: 'pretty',
+    top: '100%',
+    transform: 'translateY(-200%)',
+    whiteSpace: 'nowrap',
+    zIndex: 'tooltip',
+    _positionBottom: {
+      transform: 'translateY(100%)',
+    },
+    _positionLeft: {
+      transform: 'translate3d(-100%, -50%, 0)',
+    },
+    _positionRight: {
+      transform: 'translate3d(100%, -50%, 0)',
+    },
+  },
+  // arrow
+  _after: {},
+}
+
 export const globalCss: GlobalStyleObject = defineGlobalStyles({
   html: {
     backgroundColor: 'var(--cerberus-colors-neutral-surface-initial)',
@@ -91,41 +125,8 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
   ':is(div,button,span,svg)': {
     _tooltip: {
       position: 'relative',
-
-      _hover: {
-        // bubble
-        _before: {
-          backgroundColor: 'var(--cerberus-colors-neutral-surface-100)',
-          color: 'var(--cerberus-colors-neutral-text-initial)',
-          content: 'attr(aria-label)',
-          fontWeight: 400,
-          maxH: '6rem',
-          maxW: '17rem',
-          pxi: '2',
-          py: '3',
-          position: 'absolute',
-          rounded: 'sm',
-          shadow: 'lg',
-          textAlign: 'left',
-          textStyle: 'body-xs',
-          textWrap: 'pretty',
-          top: '100%',
-          transform: 'translateY(-200%)',
-          whiteSpace: 'nowrap',
-          zIndex: 'tooltip',
-          _positionBottom: {
-            transform: 'translateY(100%)',
-          },
-          _positionLeft: {
-            transform: 'translate3d(-100%, -50%, 0)',
-          },
-          _positionRight: {
-            transform: 'translate3d(100%, -50%, 0)',
-          },
-        },
-        // arrow
-        _after: {},
-      },
+      _hover: tooltipStyles,
+      _focus: tooltipStyles,
     },
   },
 })

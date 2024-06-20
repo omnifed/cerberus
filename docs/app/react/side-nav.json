@@ -74,6 +74,13 @@
   },
   {
     "id": "2:i",
+    "label": "Tooltip",
+    "route": "/react/tooltip",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:j",
     "label": "Show",
     "route": "/react/show",
     "tag": "",
