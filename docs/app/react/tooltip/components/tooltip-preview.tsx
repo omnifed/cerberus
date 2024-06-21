@@ -1,35 +1,34 @@
-import { Information, TrophyFilled } from '@cerberus-design/icons'
+import { Information } from '@cerberus-design/icons'
 import { IconButton } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
+import { hstack } from '@cerberus/styled-system/patterns'
 
 export function BasicTooltipPreview() {
   return (
-    <IconButton ariaLabel="Like something">
+    <IconButton ariaLabel="Like something" data-position="top">
       <Information />
     </IconButton>
   )
 }
 
-export function CustomTooltipPreview() {
+export function PositioningTooltipPreview() {
   return (
-    <IconButton
-      ariaLabel="Wu-Tang Forever"
-      className={css({
-        alignItems: 'center',
-        display: 'inline-flex',
-        bgColor: 'yellow',
-        color: 'black',
-        h: '3.7rem',
-        justifyContent: 'center',
-        rounded: 'md',
-        w: '3.7rem',
-        _hover: {
-          bgColor: 'black',
-          color: 'yellow',
-        },
+    <div
+      className={hstack({
+        gap: '10',
       })}
     >
-      <TrophyFilled size={32} />
-    </IconButton>
+      <IconButton ariaLabel="Top position" data-position="top">
+        <Information />
+      </IconButton>
+      <IconButton ariaLabel="Right position" data-position="right">
+        <Information />
+      </IconButton>
+      <IconButton ariaLabel="Bottom position" data-position="bottom">
+        <Information />
+      </IconButton>
+      <IconButton ariaLabel="Left position" data-position="left">
+        <Information />
+      </IconButton>
+    </div>
   )
 }
