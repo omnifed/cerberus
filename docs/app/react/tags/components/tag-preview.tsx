@@ -1,41 +1,50 @@
-import { Button } from '@cerberus-design/react'
-import { ArrowDownRight } from '@cerberus-design/icons'
+'use client'
+
+import { Tag } from '@cerberus-design/react'
+import { Information } from '@cerberus-design/icons'
 import { css } from '@cerberus/styled-system/css'
 import { Fragment } from 'react'
 import { grid, gridItem } from '@cerberus/styled-system/patterns'
 
-export function BasicButtonPreview() {
-  return <Button>Default styles</Button>
+export function BasicTagPreview() {
+  return <Tag>Filled</Tag>
 }
 
-export function DangerButtonPreview() {
-  return <Button palette="danger">Danger styles</Button>
+export function OutlineTagPreview() {
+  return <Tag usage="outline">Outline</Tag>
 }
 
-export function OutlineButtonPreview() {
-  return <Button usage="outline">Outline styles</Button>
+export function RoundedTagPreview() {
+  return <Tag shape="rounded">Rounded</Tag>
 }
 
-export function TextButtonPreview() {
-  return <Button usage="text">Text styles</Button>
+export function PillTagPreview() {
+  return <Tag shape="pill">Pill</Tag>
 }
 
-export function RoundedButtonPreview() {
-  return <Button shape="rounded">Rounded styles</Button>
-}
-
-export function WithIconButtonPreview() {
+export function ClosableTagPreview() {
+  function handleClick() {
+    console.log('Tag clicked')
+  }
   return (
-    <Button>
-      <ArrowDownRight />
-      With icon
-    </Button>
+    <Tag shape="pill" onClick={handleClick}>
+      Closable
+    </Tag>
   )
 }
 
-export function CustomButtonPreview() {
+export function WithIconTagPreview() {
   return (
-    <Button
+    <Tag>
+      <Information />
+      With icon
+    </Tag>
+  )
+}
+
+export function CustomTagPreview() {
+  return (
+    <Tag
       className={css({
         bgColor: 'yellow',
         color: 'black',
@@ -46,41 +55,50 @@ export function CustomButtonPreview() {
       })}
     >
       Wu-Tang Forever
-    </Button>
+    </Tag>
   )
 }
 
 // Overview
 
-type ButtonTypes = 'sharp' | 'rounded' | 'outline' | 'text'
-interface MatchButtonProps {
-  kind: ButtonTypes
+type TagTypes = 'pill' | 'rounded' | 'outline' | 'filled' | 'closable'
+interface MatchTagProps {
+  kind: TagTypes
 }
 
-function MatchButtonPreview(props: MatchButtonProps) {
+function MatchTagPreview(props: MatchTagProps) {
   switch (props.kind) {
-    case 'sharp':
-      return <BasicButtonPreview />
+    case 'pill':
+      return <PillTagPreview />
     case 'rounded':
-      return <RoundedButtonPreview />
+      return <RoundedTagPreview />
     case 'outline':
-      return <OutlineButtonPreview />
-    case 'text':
-      return <TextButtonPreview />
+      return <OutlineTagPreview />
+    case 'filled':
+      return <BasicTagPreview />
+    case 'closable':
+      return <ClosableTagPreview />
     default:
       return null
   }
 }
 
-export function OverviewButtonPreview() {
-  const btnTypes: ButtonTypes[] = ['sharp', 'rounded', 'outline', 'text']
+export function OverviewTagPreview() {
+  const btnTypes: TagTypes[] = [
+    'pill',
+    'rounded',
+    'outline',
+    'filled',
+    'closable',
+  ]
   return (
     <>
       <div
         className={grid({
-          columns: 4,
+          columns: 5,
           gap: '4',
           gridTemplateRows: '1fr 1fr',
+          w: '80%',
         })}
       >
         {btnTypes.map((type, idx) => (
@@ -93,7 +111,7 @@ export function OverviewButtonPreview() {
                 justifySelf: 'center',
               })}
             >
-              <MatchButtonPreview kind={type} />
+              <MatchTagPreview kind={type} />
             </div>
             <div
               className={gridItem({

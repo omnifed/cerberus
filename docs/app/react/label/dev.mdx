@@ -109,7 +109,7 @@ export interface FieldProps {
   readOnly?: boolean
 }
 
-define function Field(props: PropsWithChildren<FieldProps>): ReactNode | null
+define function Field(props: PropsWithChildren<FieldProps>): ReactNode
 ```
 
 ```ts showLineNumbers=false
@@ -118,7 +118,7 @@ export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   hidden?: boolean
 }
 
-define function Label(props: LabelProps): ReactNode | null
+define function Label(props: LabelProps): ReactNode
 ```
 
 ### Props

@@ -1,5 +1,5 @@
 ---
-heading: 'Tags'
+heading: 'Tags (WIP)'
 description: 'Tags help people filter content or see metadata at a glance.'
 a11y: 'touch-target'
 ---
@@ -7,17 +7,17 @@ a11y: 'touch-target'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import {
-  OverviewButtonPreview
-} from '@/app/react/tag/components/tag-preview'
+  OverviewTagPreview
+} from '@/app/react/tags/components/tag-preview'
 
 <OverviewList rules={[
   'Use tags to show options for a specific context',
-  'Three types: closable, rounded, or pill',
+  'Five types: filled, outline, rounded, pill, or closable',
 ]} />
 
 ## Example
 
-<CodePreview preview={<OverviewButtonPreview />} />
+<CodePreview preview={<OverviewTagPreview />} />
 
 ## Resources
 

@@ -101,7 +101,7 @@ export interface FieldProps {
   readOnly?: boolean
 }
 
-define function Field(props: PropsWithChildren<FieldProps>): ReactNode | null
+define function Field(props: PropsWithChildren<FieldProps>): ReactNode
 ```
 
 ```ts showLineNumbers=false
@@ -110,7 +110,7 @@ export interface FieldMessageProps
   id: string
 }
 
-define function FieldMessage(props: FieldMessageProps): ReactNode | null
+define function FieldMessage(props: FieldMessageProps): ReactNode
 ```
 
 ### Props
