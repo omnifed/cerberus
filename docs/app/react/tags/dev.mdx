@@ -1,0 +1,151 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/Button.tsx'
+recipe: 'button.ts'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  BasicButtonPreview,
+  DangerButtonPreview,
+  OutlineButtonPreview,
+  TextButtonPreview,
+  RoundedButtonPreview,
+  WithIconButtonPreview,
+  CustomButtonPreview,
+} from '@/app/react/button/components/button-preview'
+
+```ts
+import { Button } from '@cerberus-design/react'
+```
+
+## Usage
+
+You can mix and match all of the examples to create the button style of your choosing.
+
+### Default
+
+<CodePreview preview={<BasicButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus-design/react'
+
+function BasicButton() {
+  return <Button>Default styles</Button>
+}
+```
+</CodePreview>
+
+### Danger
+
+<CodePreview preview={<DangerButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus-design/react'
+
+function DangerButton() {
+  <Button palette="danger">Danger styles</Button>
+}
+```
+</CodePreview>
+
+### Outline
+
+<CodePreview preview={<OutlineButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus-design/react'
+
+function OutlineButton() {
+  return <Button usage="outline">Outline styles</Button>
+}
+```
+</CodePreview>
+
+### Text
+
+<CodePreview preview={<TextButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus-design/react'
+
+function TextButton() {
+  return <Button usage="text">Text styles</Button>
+}
+```
+</CodePreview>
+
+### Rounded
+
+<CodePreview preview={<RoundedButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus-design/react'
+
+function RoundedButton() {
+  return <Button shape="rounded">Rounded styles</Button>
+}
+```
+</CodePreview>
+
+### With Icon
+
+<CodePreview preview={<WithIconButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus-design/react'
+import { ArrowDownRight } from '@cerberus-design/icons'
+
+function WithIconButton() {
+  return (
+    <Button>
+      <ArrowDownRight />
+      With icon
+    </Button>
+  )
+}
+```
+</CodePreview>
+
+## Customization
+
+You can customize the button by utilizing the `cx` function.
+
+<CodePreview preview={<CustomButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus-design/react'
+import { css } from '@cerberus/styled-system/css'
+
+function CustomButton() {
+  return (
+    <Button
+      className={css({
+        bgColor: 'yellow.800',
+        color: 'black',
+        _hover: {
+          bgColor: 'yellow.500',
+        },
+      })}
+    >
+      Wu-Tang Forever
+    </Button>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+```ts showLineNumbers=false
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  palette?: 'action' | 'danger'
+  usage?: 'filled' | 'outline' | 'text'
+  shape?: 'sharp' | 'rounded'
+}
+
+define function Button(props: ButtonProps): ReactNode | null
+````
+
+### Props
+
+The `Button` component accepts the following props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| palette     | `action`   | The color palette of the button. |
+| usage | `filled`    | The style treatment of the button.    |
+| shape | `sharp`     | The shape of the button.              |

@@ -67,20 +67,27 @@
   },
   {
     "id": "2:h",
+    "label": "Tags",
+    "route": "/react/tags",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:i",
     "label": "Textarea",
     "route": "/react/textarea",
     "tag": "next",
     "type": "route"
   },
   {
-    "id": "2:i",
+    "id": "2:j",
     "label": "Tooltip",
     "route": "/react/tooltip",
     "tag": "next",
     "type": "route"
   },
   {
-    "id": "2:j",
+    "id": "2:k",
     "label": "Show",
     "route": "/react/show",
     "tag": "",

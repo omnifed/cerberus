@@ -1,0 +1,65 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import {
+  BasicButtonPreview,
+  OutlineButtonPreview,
+  TextButtonPreview,
+  RoundedButtonPreview,
+} from '@/app/react/button/components/button-preview'
+
+## Usage
+
+<WhenNotToUseAdmonition description="When you need to provide a way for the user to navigate somewhere - use a Link, TextLink, or NavMenu." />
+
+### Tags aren't buttons
+
+Tags and buttons are similar; they both provide visual cues to prompt users to take actions and make selections.
+
+However, while buttons are expected to appear consistently and with familiar calls to action, tags should be dynamic to the situation, and appear as a group of interactive or static elements.
+
+Use tags to enhance the user's current journey and encourage action, and buttons to progress through the product and take significant actions.
+
+
+## Filled Buttons
+
+Filled buttons have the most visual impact after the FAB, and should be used for important, final actions that complete a flow, like Save, Join now, or Confirm.
+
+<CodePreview preview={<BasicButtonPreview />} />
+
+<WhenToUseAdmonition description="When you need to display content heavy sections within a single page." />
+
+<WhenToUseAdmonition description="When you need to display a high impact destructive action such as deleting items or other places where a destructive action is the priority in the UI." />
+
+## Outline Buttons
+
+Outline buttons are used for secondary actions on a page, like Cancel or Close. They should be used for actions that are less important than the primary action on the page.
+
+<CodePreview preview={<OutlineButtonPreview />} />
+
+<WhenToUseAdmonition description="When you need medium priority actions or a secondary action to a primary button." />
+
+## Text Buttons
+
+Text buttons are used for tertiary actions on a page, like Help or Learn more. They should be used for actions that are less important than the secondary action on the page.
+
+<CodePreview preview={<TextButtonPreview />} />
+
+<WhenToUseAdmonition description="When you need lower priority actions such as that might be used for triggering more options." />
+
+## Rounded Buttons
+
+Rounded buttons are used for actions that are used as an alternate themed Default.
+
+<CodePreview preview={<RoundedButtonPreview />} />
+
+<WhenToUseAdmonition description="When you need an alternative button shape (i.e. admin portal, etc.)." />
+
+## Responsive Layouts
+
+When scaling layouts for large screen devices, buttons can adapt their visual presentation, alignment, and arrangement to fit different contexts and user needs.
