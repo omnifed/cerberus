@@ -5,6 +5,11 @@ import { Show } from './Show'
 import { IconButton } from './IconButton'
 import { cx } from '@cerberus/styled-system/css'
 
+/**
+ * This module contains the tag component.
+ * @module
+ */
+
 export interface TagProps extends HTMLAttributes<HTMLSpanElement> {
   palette?: Sentiment
   shape?: 'rounded' | 'pill'
@@ -16,6 +21,13 @@ export interface ClickableTagProps extends HTMLAttributes<HTMLSpanElement> {
   usage?: 'filled'
 }
 
+/**
+ * The Tag component is used to display a meta descriptions.
+ * @example
+ * ```tsx
+ * <Tag>Tag</Tag>
+ * ```
+ */
 export function Tag(
   props: PropsWithChildren<TagProps | ClickableTagProps>,
 ): JSX.Element {

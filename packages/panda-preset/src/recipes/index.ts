@@ -2,6 +2,7 @@ import { button } from './button'
 import { fieldMessage } from './fieldMessage'
 import { iconButton } from './iconButton'
 import { label } from './label'
+import { tag } from './tag'
 
 import { input } from './slots/input'
 
@@ -15,6 +16,7 @@ export const recipes = {
   fieldMessage,
   iconButton,
   label,
+  tag,
 }
 
 export const slotRecipes = {
