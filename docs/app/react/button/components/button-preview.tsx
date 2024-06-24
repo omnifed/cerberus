@@ -1,7 +1,6 @@
 import { Button } from '@cerberus-design/react'
 import { ArrowDownRight } from '@cerberus-design/icons'
 import { css } from '@cerberus/styled-system/css'
-import { hstack } from '@cerberus-design/styled-system/patterns'
 import { Fragment } from 'react'
 import { grid, gridItem } from '@cerberus/styled-system/patterns'
 

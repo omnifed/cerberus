@@ -163,7 +163,7 @@ export interface FieldProps {
   readOnly?: boolean
 }
 
-define function Field(props: PropsWithChildren<FieldProps>): ReactNode | null
+define function Field(props: PropsWithChildren<FieldProps>): ReactNode
 ```
 
 ```ts showLineNumbers=false
@@ -173,7 +173,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   size?: 'sm' | 'md' | 'lg'
 }
 
-define function Input(props: InputProps): ReactNode | null
+define function Input(props: InputProps): ReactNode
 ```
 
 ### Props

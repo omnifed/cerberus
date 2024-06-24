@@ -1,19 +1,18 @@
 ---
 npm: '@cerberus-design/react'
-source: 'components/Button.tsx'
-recipe: 'button.ts'
+source: 'components/Tag.tsx'
+recipe: 'tag.ts'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
 import {
-  BasicButtonPreview,
-  DangerButtonPreview,
-  OutlineButtonPreview,
-  TextButtonPreview,
-  RoundedButtonPreview,
-  WithIconButtonPreview,
-  CustomButtonPreview,
-} from '@/app/react/button/components/button-preview'
+  BasicTagPreview,
+  OutlineTagPreview,
+  PillTagPreview,
+  RoundedTagPreview,
+  WithIconTagPreview,
+  CustomTagPreview,
+} from '@/app/react/tags/components/tag-preview'
 
 ```ts
 import { Button } from '@cerberus-design/react'
@@ -25,7 +24,7 @@ You can mix and match all of the examples to create the button style of your cho
 
 ### Default
 
-<CodePreview preview={<BasicButtonPreview />}>
+<CodePreview preview={<BasicTagPreview />}>
 ```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 
@@ -35,9 +34,9 @@ function BasicButton() {
 ```
 </CodePreview>
 
-### Danger
+### Filled
 
-<CodePreview preview={<DangerButtonPreview />}>
+<CodePreview preview={<BasicTagPreview />}>
 ```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 
@@ -49,7 +48,7 @@ function DangerButton() {
 
 ### Outline
 
-<CodePreview preview={<OutlineButtonPreview />}>
+<CodePreview preview={<OutlineTagPreview />}>
 ```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 
@@ -59,9 +58,9 @@ function OutlineButton() {
 ```
 </CodePreview>
 
-### Text
+### Pill
 
-<CodePreview preview={<TextButtonPreview />}>
+<CodePreview preview={<PillTagPreview />}>
 ```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 
@@ -73,7 +72,7 @@ function TextButton() {
 
 ### Rounded
 
-<CodePreview preview={<RoundedButtonPreview />}>
+<CodePreview preview={<RoundedTagPreview />}>
 ```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 
@@ -85,7 +84,7 @@ function RoundedButton() {
 
 ### With Icon
 
-<CodePreview preview={<WithIconButtonPreview />}>
+<CodePreview preview={<WithIconTagPreview />}>
 ```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 import { ArrowDownRight } from '@cerberus-design/icons'
@@ -103,9 +102,9 @@ function WithIconButton() {
 
 ## Customization
 
-You can customize the button by utilizing the `cx` function.
+You can customize the tag by utilizing the `cx` function.
 
-<CodePreview preview={<CustomButtonPreview />}>
+<CodePreview preview={<CustomTagPreview />}>
 ```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
@@ -131,21 +130,27 @@ function CustomButton() {
 ## API
 
 ```ts showLineNumbers=false
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  palette?: 'action' | 'danger'
-  usage?: 'filled' | 'outline' | 'text'
-  shape?: 'sharp' | 'rounded'
+export interface TagProps extends HTMLAttributes<HTMLSpanElement> {
+  palette?: Sentiment
+  shape?: 'rounded' | 'pill'
+  usage?: 'filled' | 'outline'
+}
+export interface ClickableTagProps extends HTMLAttributes<HTMLSpanElement> {
+  shape?: 'pill'
+  onClick: () => void
+  usage?: 'filled'
 }
 
-define function Button(props: ButtonProps): ReactNode
+define function Tag(props: TagProps | ClickableTagPRops): ReactNode
 ````
 
 ### Props
 
-The `Button` component accepts the following props:
+The `Tag` component accepts the following props:
 
 | Name     | Default | Description                            |
 | -------- | ------- | -------------------------------------- |
-| palette     | `action`   | The color palette of the button. |
-| usage | `filled`    | The style treatment of the button.    |
-| shape | `sharp`     | The shape of the button.              |
+| palette  | `action`   | The color palette of the tag. |
+| usage    | `filled`    | The style treatment of the tag.    |
+| shape    | `rounded`    | The shape of the tag.              |
+| onClick  | `undefined` | How to create a Closable tag.         |
