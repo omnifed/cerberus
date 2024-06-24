@@ -11,7 +11,7 @@ jobs:
     name: Tests pass
     steps:
       - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
+      - uses: oven-sh/setup-bun@v2
       - uses: pnpm/action-setup@v4
         with:
           version: 9.1.4
