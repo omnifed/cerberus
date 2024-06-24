@@ -20,7 +20,7 @@
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
     "@microsoft/api-extractor": "^7.46.2",
-    "@pandacss/dev": "^0.40.1",
+    "@pandacss/dev": "^0.41.0",
     "@pandacss/types": "^0.40.1",
     "tsup": "^8.0.2"
   },
