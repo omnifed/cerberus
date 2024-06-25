@@ -7,6 +7,9 @@ export interface InfoTokens {
     readonly border: {
       readonly initial: SemanticToken
     }
+    readonly bg: {
+      readonly initial: SemanticToken
+    }
     readonly surface: {
       readonly initial: SemanticToken
     }
@@ -31,9 +34,23 @@ export const infoTokens: InfoTokens = {
       },
     },
 
+    bg: {
+      initial: {
+        description: 'The default background color of informational elements.',
+        value: {
+          _cerberusTheme: {
+            base: '#026DAA',
+            _lightMode: '#CCE7F7',
+            _darkMode: '#026DAA',
+          },
+        },
+      },
+    },
+
     surface: {
       initial: {
-        description: 'The default surface color of informational elements.',
+        description:
+          'The default color for a layout-based surface element (like a page or card) in a informational state.',
         value: {
           _cerberusTheme: {
             base: '#026DAA',

@@ -22,6 +22,22 @@ describe('infoTokens', () => {
     ).toEqual('#0288D5')
   })
 
+  test('should have a bg property', () => {
+    expect(infoTokens.info.bg).toBeDefined()
+  })
+
+  test('should have a bg.initial property', () => {
+    expect(infoTokens.info.bg.initial.value._cerberusTheme.base).toEqual(
+      '#026DAA',
+    )
+    expect(infoTokens.info.bg.initial.value._cerberusTheme._darkMode).toEqual(
+      '#026DAA',
+    )
+    expect(infoTokens.info.bg.initial.value._cerberusTheme._lightMode).toEqual(
+      '#CCE7F7',
+    )
+  })
+
   test('should have a surface property', () => {
     expect(infoTokens.info.surface).toBeDefined()
   })

@@ -18,6 +18,18 @@ describe('success', () => {
     ).toEqual('#02BB71')
   })
 
+  test('should have a bg.initial property', () => {
+    expect(successTokens.success.bg.initial.value._cerberusTheme.base).toEqual(
+      '#0B6B2C',
+    )
+    expect(
+      successTokens.success.bg.initial.value._cerberusTheme._darkMode,
+    ).toEqual('#0B6B2C')
+    expect(
+      successTokens.success.bg.initial.value._cerberusTheme._lightMode,
+    ).toEqual('#D0F0DB')
+  })
+
   test('should have a surface.initial property', () => {
     expect(
       successTokens.success.surface.initial.value._cerberusTheme.base,

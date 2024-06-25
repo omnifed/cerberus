@@ -7,6 +7,9 @@ export interface SuccessTokens {
     readonly border: {
       readonly initial: SemanticToken
     }
+    readonly bg: {
+      readonly initial: SemanticToken
+    }
     readonly surface: {
       readonly initial: SemanticToken
       readonly active: SemanticToken
@@ -32,9 +35,24 @@ export const successTokens: SuccessTokens = {
       },
     },
 
+    bg: {
+      initial: {
+        description:
+          'The default background color of elements that display a successful state.',
+        value: {
+          _cerberusTheme: {
+            base: '#0B6B2C',
+            _lightMode: '#D0F0DB',
+            _darkMode: '#0B6B2C',
+          },
+        },
+      },
+    },
+
     surface: {
       initial: {
-        description: 'The default surface color of success elements.',
+        description:
+          'The default color for a layout-based surface element (like a page or card) in a successful state.',
         value: {
           _cerberusTheme: {
             base: '#0B6B2C',

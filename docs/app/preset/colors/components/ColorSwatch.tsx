@@ -69,6 +69,17 @@ const paletteTextStyles = css({
   },
 })
 
+const linkStyles = css({
+  _neutralPalette: {
+    border: '2px solid',
+    borderColor: 'neutral.border.initial',
+  },
+  _actionPalette: {
+    border: '2px solid',
+    borderColor: 'action.border.initial',
+  },
+})
+
 const noPB = css({
   color: 'inherit !important',
   pb: '0 !important',
@@ -110,21 +121,27 @@ export default function ColorSwatch(props: ColorSwatchProps) {
 
   return (
     <Link
-      className={vstack({
-        alignItems: 'center !important',
-        display: 'flex !important',
-        justifyContent: 'center',
-        h: '10rem',
-        gap: '4',
-        rounded: 'xl !important',
-        textDecoration: 'none',
-        transition: 'scale 250ms ease-in-out',
-        w: 'full',
-        _hover: {
-          scale: '105%',
-          textDecoration: 'none !important',
-        },
-      })}
+      data-palette={props.palette}
+      className={cx(
+        vstack({
+          alignItems: 'center !important',
+          display: 'flex !important',
+          justifyContent: 'center',
+          h: '10rem',
+          gap: '4',
+          rounded: 'xl !important',
+          textDecoration: 'none',
+          transition: 'scale 250ms ease-in-out',
+          w: 'full',
+          _motionSafe: {
+            _hover: {
+              scale: '105%',
+              textDecoration: 'none !important',
+            },
+          },
+        }),
+        linkStyles,
+      )}
       href={`/preset/colors/${props.tokenName}`}
       style={bgColor}
     >
