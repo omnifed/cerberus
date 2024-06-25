@@ -71,7 +71,8 @@ export const dangerTokens: DangerTokens = {
 
     surface: {
       initial: {
-        description: 'The default surface color of danger elements.',
+        description:
+          'The default color for a layout-based surface element (like a page, card, banner, etc.) in a danger state.',
         value: {
           _cerberusTheme: {
             base: '#641612',

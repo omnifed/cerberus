@@ -18,6 +18,18 @@ describe('warning', () => {
     ).toEqual('#F4DA49')
   })
 
+  test('should have a bg.initial property', () => {
+    expect(warningTokens.warning.bg.initial.value._cerberusTheme.base).toEqual(
+      '#917D10',
+    )
+    expect(
+      warningTokens.warning.bg.initial.value._cerberusTheme._darkMode,
+    ).toEqual('#917D10')
+    expect(
+      warningTokens.warning.bg.initial.value._cerberusTheme._lightMode,
+    ).toEqual('#FCF6D1')
+  })
+
   test('should have a surface.initial property', () => {
     expect(
       warningTokens.warning.surface.initial.value._cerberusTheme.base,

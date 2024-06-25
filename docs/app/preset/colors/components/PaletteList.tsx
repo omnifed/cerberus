@@ -20,7 +20,6 @@ export default function PaletteList(props: PaletteListProps) {
     >
       <ul
         className={grid({
-          bgColor: 'neutral.surface.100',
           columns: 12,
           gap: '4',
           rounded: 'lg',

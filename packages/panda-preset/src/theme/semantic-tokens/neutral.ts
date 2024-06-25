@@ -26,7 +26,7 @@ export const neutralTokens: NeutralTokens = {
     bg: {
       initial: {
         description:
-          'The default background color used for non-action, action-like elements (i.e. inputs).',
+          'The default background color used for non-action elements (i.e. inputs).',
         value: {
           _cerberusTheme: {
             base: '#130024',
@@ -37,7 +37,7 @@ export const neutralTokens: NeutralTokens = {
       },
       active: {
         description:
-          'The background color when a non-action, action-like element (i.e. inputs) is in an active state.',
+          'The background color when a non-action elements (i.e. inputs) is in an active state.',
         value: {
           _cerberusTheme: {
             base: '#2D2D55',
@@ -48,7 +48,7 @@ export const neutralTokens: NeutralTokens = {
       },
       hover: {
         description:
-          'The background color when a non-action, action-like element (i.e. inputs) is in a hover state.',
+          'The background color when a non-action elements (i.e. inputs) is in a hover state.',
         value: {
           _cerberusTheme: {
             base: '#404376',
@@ -96,7 +96,8 @@ export const neutralTokens: NeutralTokens = {
 
     surface: {
       initial: {
-        description: 'The default surface color used for layouts.',
+        description:
+          'The default color for a layout-based surface element (like a page or card) in a danger state.',
         value: {
           _cerberusTheme: {
             base: '#160126',
@@ -107,7 +108,7 @@ export const neutralTokens: NeutralTokens = {
       },
       100: {
         description:
-          'The surface color used for layouts of an element that is on the second layer from the initial surface layer.',
+          'The second color for a layout-based surface element, used for the layer on top of the initial.',
         value: {
           _cerberusTheme: {
             base: '#21143B',
@@ -118,7 +119,7 @@ export const neutralTokens: NeutralTokens = {
       },
       200: {
         description:
-          'The surface color used for layouts of an element that is on the third layer from the initial surface layer.',
+          'The third color for a layout-based surface element, used for the layer on top of the 100.',
         value: {
           _cerberusTheme: {
             base: '#291D47',
@@ -129,7 +130,7 @@ export const neutralTokens: NeutralTokens = {
       },
       300: {
         description:
-          'The surface color used for layouts of an element that is on the fourth layer from the initial surface layer.',
+          'The fourth color for a layout-based surface element, used for the layer on top of the 200.',
         value: {
           _cerberusTheme: {
             base: '#302451',
@@ -140,7 +141,7 @@ export const neutralTokens: NeutralTokens = {
       },
       inverse: {
         description:
-          'The surface color used for layouts of an element that requires a light mode surface.',
+          'The inverse color for a initial layout-based surface element (like a page or card) to display the opposite mode theme.',
         value: {
           _cerberusTheme: {
             base: '#F3F2F4',
