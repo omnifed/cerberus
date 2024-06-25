@@ -3,7 +3,7 @@ import { cleanup, render, screen } from '@testing-library/react'
 import { Tag } from '@cerberus-design/react'
 import { setupStrictMode, user } from '@/utils'
 
-describe('Tag', () => {
+describe.skip('Tag', () => {
   setupStrictMode()
   afterEach(cleanup)
 

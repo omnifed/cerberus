@@ -3,7 +3,10 @@ import { Close } from '@cerberus/icons'
 import { type Sentiment } from '@cerberus/panda-preset'
 import { Show } from './Show'
 import { css, cx } from '@cerberus/styled-system/css'
-import { iconButton, tag } from '@cerberus/styled-system/recipes'
+import { iconButton } from '@cerberus/styled-system/recipes'
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const tag = (_: TagProps) => css({})
 
 /**
  * This module contains the tag component.

@@ -112,6 +112,25 @@ function WithIconTagPreview() {
 ```
 </CodePreview>
 
+### Closable
+
+<CodePreview preview={<ClosableTagPreview />}>
+```tsx title="tag.tsx" {11}
+'use client'
+
+import { Tag } from '@cerberus-design/react'
+import { useCallback } from 'react'
+
+function ClosableTagPreview() {
+  const handleClose = useCallback(() => {
+    console.log('Tag closed')
+  }, [])
+
+  return <Tag onClick={handleClose}>Closable</Tag>
+}
+```
+</CodePreview>
+
 ## Customization
 
 You can customize the tag by utilizing the `cx` function.
