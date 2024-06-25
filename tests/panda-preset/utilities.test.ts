@@ -37,22 +37,19 @@ describe('utilities', () => {
     ])
     // @ts-expect-error bug in the Panda-CSS types
     expect(utilities.extend.cerberusGradient.transform('green')).toMatchObject({
-      bgGradient: 'to-tl',
-      gradientFrom: '#71D192',
-      gradientTo: '#E8F8ED',
+      color: '#21143B',
+      backgroundImage: 'linear-gradient(to bottom left, #E8F8ED, #71D192)',
     })
     // @ts-expect-error bug in the Panda-CSS types
     expect(utilities.extend.cerberusGradient.transform('blue')).toMatchObject({
-      bgGradient: 'to-tl',
-      gradientFrom: '#E6F3FB',
-      gradientTo: '#9ACFEE',
+      color: '#21143B',
+      backgroundImage: 'linear-gradient(to bottom left, #E6F3FB, #9ACFEE)',
     })
     // @ts-expect-error bug in the Panda-CSS types
     expect(utilities.extend.cerberusGradient.transform('purple')).toMatchObject(
       {
-        bgGradient: 'to-tl',
-        gradientFrom: '#EFE5F8',
-        gradientTo: '#BB93E1',
+        backgroundImage: 'linear-gradient(to bottom left, #EFE5F8, #BB93E1)',
+        color: '#21143B',
       },
     )
   })

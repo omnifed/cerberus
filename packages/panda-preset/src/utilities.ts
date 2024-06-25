@@ -36,26 +36,27 @@ const cerberusGradient: CustomUtilityConfig<'cerberusGradient'> = {
     values: ['green', 'blue', 'purple'],
     shorthand: 'cerbGradient',
     transform(value: 'green' | 'blue' | 'purple') {
+      const color = '#21143B'
       switch (value) {
         case 'purple':
           return {
-            bgGradient: 'to-tl',
-            gradientFrom: '#EFE5F8',
-            gradientTo: '#BB93E1',
+            color,
+            backgroundImage:
+              'linear-gradient(to bottom left, #EFE5F8, #BB93E1)',
           }
 
         case 'blue':
           return {
-            bgGradient: 'to-tl',
-            gradientFrom: '#E6F3FB',
-            gradientTo: '#9ACFEE',
+            color,
+            backgroundImage:
+              'linear-gradient(to bottom left, #E6F3FB, #9ACFEE)',
           }
 
         case 'green':
           return {
-            bgGradient: 'to-tl',
-            gradientFrom: '#71D192',
-            gradientTo: '#E8F8ED',
+            color,
+            backgroundImage:
+              'linear-gradient(to bottom left, #E8F8ED, #71D192)',
           }
 
         default:

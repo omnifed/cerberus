@@ -12,6 +12,7 @@ import {
   RoundedTagPreview,
   WithIconTagPreview,
   CustomTagPreview,
+  GradientTagPreview,
 } from '@/app/react/tags/components/tag-preview'
 import {
   ClosableTagPreview,
@@ -127,6 +128,44 @@ function ClosableTagPreview() {
   }, [])
 
   return <Tag onClick={handleClose}>Closable</Tag>
+}
+```
+</CodePreview>
+
+## Gradient
+
+You can utilize the `cerbGradient` utility to apply a gradient to the tag.
+
+<CodePreview preview={<GradientTagPreview />}>
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
+
+function GradientTagPreview() {
+  return (
+    <>
+      <Tag
+        className={css({
+          cerbGradient: 'blue',
+        })}
+      >
+        Blue
+      </Tag>
+      <Tag
+        className={css({
+          cerbGradient: 'green',
+        })}
+      >
+        Green
+      </Tag>
+      <Tag
+        className={css({
+          cerbGradient: 'purple',
+        })}
+      >
+        Purple
+      </Tag>
+    </>
+  )
 }
 ```
 </CodePreview>

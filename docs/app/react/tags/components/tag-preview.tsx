@@ -2,7 +2,7 @@ import { Tag, type TagProps } from '@cerberus-design/react'
 import { Checkmark, Information } from '@cerberus-design/icons'
 import { css } from '@cerberus/styled-system/css'
 import { Fragment } from 'react'
-import { grid, gridItem } from '@cerberus/styled-system/patterns'
+import { grid, gridItem, hstack } from '@cerberus/styled-system/patterns'
 import { ClosableTagPreview } from './closable-tag-preview'
 import type { Sentiment } from '@cerberus-design/panda-preset'
 
@@ -39,6 +39,37 @@ export function WithIconTagPreview() {
       <Information />
       With icon
     </Tag>
+  )
+}
+
+export function GradientTagPreview() {
+  return (
+    <div className={hstack()}>
+      <Tag
+        shape="rounded"
+        className={css({
+          cerbGradient: 'blue',
+        })}
+      >
+        Blue
+      </Tag>
+      <Tag
+        shape="rounded"
+        className={css({
+          cerbGradient: 'green',
+        })}
+      >
+        Green
+      </Tag>
+      <Tag
+        shape="rounded"
+        className={css({
+          cerbGradient: 'purple',
+        })}
+      >
+        Purple
+      </Tag>
+    </div>
   )
 }
 
