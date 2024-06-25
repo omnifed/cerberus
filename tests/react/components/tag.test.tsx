@@ -12,7 +12,7 @@ describe('Tag', () => {
     expect(screen.getByText(/it works/i)).toBeTruthy()
   })
 
-  test.skip('should render a action tag', () => {
+  test('should render a action tag', () => {
     render(<Tag>it works</Tag>)
     expect(
       screen
@@ -21,7 +21,7 @@ describe('Tag', () => {
     ).toBeTrue()
   })
 
-  test.skip('should render a danger tag', () => {
+  test('should render a danger tag', () => {
     render(<Tag palette="danger">it works</Tag>)
     expect(
       screen
@@ -30,7 +30,7 @@ describe('Tag', () => {
     ).toBeTrue()
   })
 
-  test.skip('should render an outline tag', () => {
+  test('should render an outline tag', () => {
     render(<Tag usage="outline">it works</Tag>)
     expect(
       screen
@@ -39,7 +39,7 @@ describe('Tag', () => {
     ).toBeTrue()
   })
 
-  test.skip('should render a filled tag', () => {
+  test('should render a filled tag', () => {
     render(<Tag usage="filled">it works</Tag>)
     expect(
       screen
@@ -48,7 +48,7 @@ describe('Tag', () => {
     ).toBeTrue()
   })
 
-  test.skip('should render a pill tag', () => {
+  test('should render a pill tag', () => {
     render(<Tag shape="pill">it works</Tag>)
     expect(
       screen
@@ -57,7 +57,7 @@ describe('Tag', () => {
     ).toBeTrue()
   })
 
-  test.skip('should render a pill when onClick is provided', () => {
+  test('should render a pill when onClick is provided', () => {
     render(
       <Tag shape="rounded" onClick={jest.fn()}>
         it works
@@ -70,7 +70,7 @@ describe('Tag', () => {
     ).toBeTrue()
   })
 
-  test.skip('should render a rounded tag', () => {
+  test('should render a rounded tag', () => {
     render(<Tag shape="rounded">it works</Tag>)
     expect(
       screen

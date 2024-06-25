@@ -12,12 +12,14 @@ import {
   OutlineTagPreview,
   RoundedTagPreview,
   PillTagPreview,
-  ClosableTagPreview,
 } from '@/app/react/tags/components/tag-preview'
+import {
+  ClosableTagPreview,
+} from '@/app/react/tags/components/closable-tag-preview'
 
 ## Usage
 
-<WhenNotToUseAdmonition description="When you need to provide a way for the user to navigate somewhere - use a Link, TextLink, or NavMenu." />
+<WhenNotToUseAdmonition description="When you need to provide a way for the user to perfom and action - use a Button or IconButton." />
 
 ### Tags aren't buttons
 
@@ -34,7 +36,7 @@ Filled tags have the most visual impact after the FAB, and should be used for im
 
 <CodePreview preview={<BasicTagPreview />} />
 
-<WhenToUseAdmonition description="When you need to display content heavy sections within a single page." />
+<WhenToUseAdmonition description="When you need to display a high priority meta-tag within a page section." />
 
 ## Outline Tags
 
@@ -42,7 +44,7 @@ Outline tags are used for secondary actions on a page, like Cancel or Close. The
 
 <CodePreview preview={<OutlineTagPreview />} />
 
-<WhenToUseAdmonition description="When you need medium priority actions or a secondary action to a primary button." />
+<WhenToUseAdmonition description="When you need medium priority meta-tag to the primary one." />
 
 ## Rounded Tags
 
@@ -50,7 +52,7 @@ Rounded tags are used for actions that are used as an alternate themed Default.
 
 <CodePreview preview={<RoundedTagPreview />} />
 
-<WhenToUseAdmonition description="When you need an alternative button shape (i.e. admin portal, etc.)." />
+<WhenToUseAdmonition description="When you need to display a high priority meta-tag within a page section." />
 
 ## Pill Tags
 
@@ -58,7 +60,7 @@ Pill tags are used for actions that are used as an alternate themed Default.
 
 <CodePreview preview={<PillTagPreview />} />
 
-<WhenToUseAdmonition description="When you need an alternative button shape (i.e. admin portal, etc.)." />
+<WhenToUseAdmonition description="When you need a meta tag for smaller spaces, like a Card." />
 
 ## Closable Tags
 
@@ -66,7 +68,7 @@ Closable tags are used for actions that are used as an alternate themed Default.
 
 <CodePreview preview={<ClosableTagPreview />} />
 
-<WhenToUseAdmonition description="When you need an alternative button shape (i.e. admin portal, etc.)." />
+<WhenToUseAdmonition description="When you need a tag that controls filtering data being shown in the UI." />
 
 ## Responsive Layouts
 

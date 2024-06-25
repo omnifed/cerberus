@@ -28,7 +28,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         bgColor: 'inherit',
         border: '1.5px solid',
         borderColor: 'colorPalette.border.initial',
-        color: 'colorPalette.text.initial',
+        color: 'neutral.text.initial',
       },
     },
     shape: {
@@ -50,7 +50,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   },
 
   defaultVariants: {
-    palette: 'neutral',
+    palette: 'action',
     usage: 'filled',
     shape: 'pill',
   },

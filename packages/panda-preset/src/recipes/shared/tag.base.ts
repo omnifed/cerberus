@@ -1,7 +1,8 @@
-import { neutral, action, info, success, warning, danger } from './palettes'
+import { allPalettes } from './palettes'
 
 export const tagBase = {
   alignItems: 'center',
+  color: 'colorPalette.text.initial',
   display: 'inline-flex',
   gap: '2',
   justifyContent: 'center',
@@ -12,14 +13,6 @@ export const tagBase = {
 
 export const filledUsage = {
   bgColor: 'colorPalette.bg.initial',
-  color: 'colorPalette.text.initial',
 }
 
-export const tagPalettes = {
-  neutral,
-  action,
-  info,
-  success,
-  warning,
-  danger,
-}
+export const tagPalettes = allPalettes

@@ -61,14 +61,13 @@ describe('tag recipe', () => {
       bgColor: 'inherit',
       border: '1.5px solid',
       borderColor: 'colorPalette.border.initial',
-      color: 'colorPalette.text.initial',
+      color: 'neutral.text.initial',
     })
   })
 
   test('should have a filled usage variant', () => {
     expect(tag.variants?.usage.filled).toMatchObject({
       bgColor: 'colorPalette.bg.initial',
-      color: 'colorPalette.text.initial',
     })
   })
 
@@ -94,7 +93,7 @@ describe('tag recipe', () => {
 
   test('should have default variants', () => {
     expect(tag.defaultVariants).toMatchObject({
-      palette: 'neutral',
+      palette: 'action',
       usage: 'filled',
       shape: 'pill',
     })

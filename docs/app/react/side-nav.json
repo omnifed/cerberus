@@ -67,7 +67,7 @@
   },
   {
     "id": "2:h",
-    "label": "Tags",
+    "label": "Tag",
     "route": "/react/tags",
     "tag": "next",
     "type": "route"
