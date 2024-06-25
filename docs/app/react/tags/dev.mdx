@@ -13,23 +13,26 @@ import {
   WithIconTagPreview,
   CustomTagPreview,
 } from '@/app/react/tags/components/tag-preview'
+import {
+  ClosableTagPreview,
+} from '@/app/react/tags/components/closable-tag-preview'
 
 ```ts
-import { Button } from '@cerberus-design/react'
+import { Tag } from '@cerberus-design/react'
 ```
 
 ## Usage
 
-You can mix and match all of the examples to create the button style of your choosing.
+You can mix and match all of the examples to create the tag style of your choosing.
 
 ### Default
 
 <CodePreview preview={<BasicTagPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
 
-function BasicButton() {
-  return <Button>Default styles</Button>
+function BasicTagPreview() {
+  return <Tag>Filled</Tag>
 }
 ```
 </CodePreview>
@@ -37,11 +40,11 @@ function BasicButton() {
 ### Filled
 
 <CodePreview preview={<BasicTagPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
 
-function DangerButton() {
-  <Button palette="danger">Danger styles</Button>
+function BasicTagPreview() {
+  return <Tag usage="filled">Filled</Tag>
 }
 ```
 </CodePreview>
@@ -49,11 +52,15 @@ function DangerButton() {
 ### Outline
 
 <CodePreview preview={<OutlineTagPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
 
-function OutlineButton() {
-  return <Button usage="outline">Outline styles</Button>
+function OutlineTagPreview() {
+  return (
+    <Tag shape="rounded" usage="outline">
+      Outline
+    </Tag>
+  )
 }
 ```
 </CodePreview>
@@ -61,11 +68,16 @@ function OutlineButton() {
 ### Pill
 
 <CodePreview preview={<PillTagPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
 
-function TextButton() {
-  return <Button usage="text">Text styles</Button>
+function PillTagPreview() {
+  return (
+    <Tag shape="pill">
+      <Checkmark />
+      Pill
+    </Tag>
+  )
 }
 ```
 </CodePreview>
@@ -73,11 +85,11 @@ function TextButton() {
 ### Rounded
 
 <CodePreview preview={<RoundedTagPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
 
-function RoundedButton() {
-  return <Button shape="rounded">Rounded styles</Button>
+function RoundedTagPreview() {
+  return <Tag shape="rounded">Rounded</Tag>
 }
 ```
 </CodePreview>
@@ -85,17 +97,36 @@ function RoundedButton() {
 ### With Icon
 
 <CodePreview preview={<WithIconTagPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
-import { ArrowDownRight } from '@cerberus-design/icons'
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
+import { Information } from '@cerberus-design/icons'
 
-function WithIconButton() {
+function WithIconTagPreview() {
   return (
-    <Button>
-      <ArrowDownRight />
+    <Tag>
+      <Information />
       With icon
-    </Button>
+    </Tag>
   )
+}
+```
+</CodePreview>
+
+### Closable
+
+<CodePreview preview={<ClosableTagPreview />}>
+```tsx title="tag.tsx" {11}
+'use client'
+
+import { Tag } from '@cerberus-design/react'
+import { useCallback } from 'react'
+
+function ClosableTagPreview() {
+  const handleClose = useCallback(() => {
+    console.log('Tag closed')
+  }, [])
+
+  return <Tag onClick={handleClose}>Closable</Tag>
 }
 ```
 </CodePreview>
@@ -105,23 +136,24 @@ function WithIconButton() {
 You can customize the tag by utilizing the `cx` function.
 
 <CodePreview preview={<CustomTagPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 
-function CustomButton() {
+function CustomTagPreview() {
   return (
-    <Button
+    <Tag
       className={css({
-        bgColor: 'yellow.800',
+        bgColor: 'yellow',
         color: 'black',
         _hover: {
-          bgColor: 'yellow.500',
+          bgColor: 'black',
+          color: 'yellow',
         },
       })}
     >
       Wu-Tang Forever
-    </Button>
+    </Tag>
   )
 }
 ```

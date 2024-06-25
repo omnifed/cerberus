@@ -1,17 +1,23 @@
-'use client'
-
-import { Tag } from '@cerberus-design/react'
-import { Information } from '@cerberus-design/icons'
+import { Tag, type TagProps } from '@cerberus-design/react'
+import { Checkmark, Information } from '@cerberus-design/icons'
 import { css } from '@cerberus/styled-system/css'
 import { Fragment } from 'react'
 import { grid, gridItem } from '@cerberus/styled-system/patterns'
+import { ClosableTagPreview } from './closable-tag-preview'
+import type { Sentiment } from '@cerberus-design/panda-preset'
+
+export type TagPreviewProps = TagProps
 
 export function BasicTagPreview() {
   return <Tag>Filled</Tag>
 }
 
 export function OutlineTagPreview() {
-  return <Tag usage="outline">Outline</Tag>
+  return (
+    <Tag shape="rounded" usage="outline">
+      Outline
+    </Tag>
+  )
 }
 
 export function RoundedTagPreview() {
@@ -19,16 +25,10 @@ export function RoundedTagPreview() {
 }
 
 export function PillTagPreview() {
-  return <Tag shape="pill">Pill</Tag>
-}
-
-export function ClosableTagPreview() {
-  function handleClick() {
-    console.log('Tag clicked')
-  }
   return (
-    <Tag shape="pill" onClick={handleClick}>
-      Closable
+    <Tag shape="pill">
+      <Checkmark />
+      Pill
     </Tag>
   )
 }
@@ -64,6 +64,7 @@ export function CustomTagPreview() {
 type TagTypes = 'pill' | 'rounded' | 'outline' | 'filled' | 'closable'
 interface MatchTagProps {
   kind: TagTypes
+  palette?: TagProps['palette']
 }
 
 function MatchTagPreview(props: MatchTagProps) {
@@ -119,6 +120,109 @@ export function OverviewTagPreview() {
                 gridRowStart: '2',
                 gridRowEnd: '3',
                 justifySelf: 'center',
+              })}
+            >
+              {idx + 1}
+            </div>
+          </Fragment>
+        ))}
+      </div>
+    </>
+  )
+}
+
+function MatchTagPalettePreview(props: MatchTagProps) {
+  switch (props.palette) {
+    case 'neutral':
+      return (
+        <Tag palette="neutral" shape="rounded">
+          Neutral
+        </Tag>
+      )
+    case 'action':
+      return (
+        <Tag palette="action" shape="rounded">
+          Action
+        </Tag>
+      )
+    case 'info':
+      return (
+        <Tag palette="info" shape="rounded" usage="outline">
+          Info
+        </Tag>
+      )
+    case 'success':
+      return (
+        <Tag palette="success" shape="rounded" usage="outline">
+          Success
+        </Tag>
+      )
+    case 'warning':
+      return (
+        <Tag palette="warning" shape="pill">
+          <Checkmark />
+          Warning
+        </Tag>
+      )
+    case 'danger':
+      return (
+        <Tag palette="danger" shape="pill">
+          <Checkmark />
+          Danger
+        </Tag>
+      )
+    default:
+      return null
+  }
+}
+
+export function OverviewPaletteTagPreview() {
+  const btnTypes: TagTypes[] = [
+    'rounded',
+    'rounded',
+    'outline',
+    'outline',
+    'pill',
+    'pill',
+  ]
+  const palettes = [
+    'neutral',
+    'action',
+    'info',
+    'success',
+    'warning',
+    'danger',
+  ] as Sentiment[]
+
+  return (
+    <>
+      <div
+        className={grid({
+          columns: 5,
+          gap: '4',
+          gridTemplateRows: '1fr 1fr',
+          w: '80%',
+        })}
+      >
+        {btnTypes.map((type, idx) => (
+          <Fragment key={`${type}:${idx}`}>
+            <div
+              className={gridItem({
+                gridColumn: 'span 1',
+                gridRowStart: '1',
+                gridRowEnd: '2',
+                justifySelf: 'center',
+              })}
+            >
+              <MatchTagPalettePreview kind={type} palette={palettes[idx]} />
+            </div>
+            <div
+              className={gridItem({
+                gridColumn: 'span 1',
+                gridRowStart: '2',
+                gridRowEnd: '3',
+                justifySelf: 'center',
+                textTransform: 'capitalize',
               })}
             >
               {idx + 1}

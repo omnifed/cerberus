@@ -2,8 +2,16 @@ import type { HTMLAttributes, PropsWithChildren } from 'react'
 import { Close } from '@cerberus/icons'
 import { type Sentiment } from '@cerberus/panda-preset'
 import { Show } from './Show'
-import { IconButton } from './IconButton'
-import { cx } from '@cerberus/styled-system/css'
+import { css, cx } from '@cerberus/styled-system/css'
+import { iconButton } from '@cerberus/styled-system/recipes'
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const tag = (_: TagProps) => css({})
+
+/**
+ * This module contains the tag component.
+ * @module
+ */
 
 export interface TagProps extends HTMLAttributes<HTMLSpanElement> {
   palette?: Sentiment
@@ -11,31 +19,63 @@ export interface TagProps extends HTMLAttributes<HTMLSpanElement> {
   usage?: 'filled' | 'outline'
 }
 export interface ClickableTagProps extends HTMLAttributes<HTMLSpanElement> {
+  palette?: Sentiment
   shape?: 'pill'
   onClick: () => void
   usage?: 'filled'
 }
 
+/**
+ * The Tag component is used to display a meta descriptions.
+ * @example
+ * ```tsx
+ * <Tag>Tag</Tag>
+ * ```
+ */
 export function Tag(
   props: PropsWithChildren<TagProps | ClickableTagProps>,
 ): JSX.Element {
-  const { shape, onClick, usage, ...nativeProps } = props
+  const {
+    palette: initPalette,
+    shape: initShape,
+    onClick,
+    usage,
+    ...nativeProps
+  } = props
   const isClosable = Boolean(onClick)
-  const finalShape = isClosable ? 'pill' : shape
+  const shape = isClosable ? 'pill' : initShape
+  const palette = isClosable ? 'action' : initPalette
+  const closableStyles = isClosable
+    ? css({
+        paddingInlineEnd: '0',
+      })
+    : ''
 
   return (
     <span
       {...nativeProps}
-      className={cx(nativeProps.className, 'tag')}
-      data-temp-shape={finalShape}
-      data-temp-usage={usage}
+      className={cx(
+        nativeProps.className,
+        tag({
+          palette,
+          shape,
+          usage,
+        }),
+        closableStyles,
+      )}
     >
       {props.children}
 
       <Show when={isClosable}>
-        <IconButton ariaLabel="Close" onClick={onClick}>
+        <button
+          aria-label="Close"
+          className={iconButton({
+            palette: 'action',
+          })}
+          onClick={onClick}
+        >
           <Close />
-        </IconButton>
+        </button>
       </Show>
     </span>
   )
