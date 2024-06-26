@@ -44,6 +44,7 @@ export function Tag(
   const palette = isClosable ? 'action' : initPalette
   const closableStyles = isClosable
     ? css({
+        bgColor: 'action.bg.active',
         paddingInlineEnd: '0',
       })
     : ''
@@ -68,6 +69,7 @@ export function Tag(
           aria-label="Close"
           className={iconButton({
             palette: 'action',
+            usage: 'filled',
           })}
           onClick={onClick}
         >

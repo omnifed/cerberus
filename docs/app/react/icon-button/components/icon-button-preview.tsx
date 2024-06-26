@@ -1,11 +1,17 @@
-import { Delete, ThumbsUp, TrophyFilled } from '@cerberus-design/icons'
+import {
+  Close,
+  ThumbsDown,
+  ThumbsUp,
+  TrophyFilled,
+} from '@cerberus-design/icons'
 import { IconButton } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
+import { hstack } from '@cerberus/styled-system/patterns'
 
 export function BasicIconButtonPreview() {
   return (
     <IconButton ariaLabel="Like something">
-      <ThumbsUp />
+      <ThumbsUp size={24} />
     </IconButton>
   )
 }
@@ -13,7 +19,7 @@ export function BasicIconButtonPreview() {
 export function DangerIconButtonPreview() {
   return (
     <IconButton ariaLabel="Delete something" palette="danger" usage="filled">
-      <Delete />
+      <Close size={24} />
     </IconButton>
   )
 }
@@ -21,8 +27,21 @@ export function DangerIconButtonPreview() {
 export function TextIconButtonPreview() {
   return (
     <IconButton ariaLabel="Like something" usage="text">
-      <ThumbsUp />
+      <ThumbsUp size={24} />
     </IconButton>
+  )
+}
+
+export function IconButtonSizesPreview() {
+  return (
+    <div className={hstack()}>
+      <IconButton ariaLabel="Like something" size="sm">
+        <ThumbsUp />
+      </IconButton>
+      <IconButton ariaLabel="Dislike something">
+        <ThumbsDown size={24} />
+      </IconButton>
+    </div>
   )
 }
 
