@@ -39,10 +39,6 @@ describe('iconButton recipe', () => {
       _readOnly: {
         cursor: 'default',
       },
-      md: {
-        h: '1.5rem',
-        w: '1.5rem',
-      },
     })
   })
 
@@ -110,6 +106,20 @@ describe('iconButton recipe', () => {
       palette: 'action',
       usage: 'text',
       shape: 'circle',
+      size: 'lg',
     })
+  })
+
+  test('should have a small size variant', () => {
+    expect(iconButton.variants?.size.sm).toMatchObject({
+      md: {
+        h: '1.5rem',
+        w: '1.5rem',
+      },
+    })
+  })
+
+  test('should have a large size variant', () => {
+    expect(iconButton.variants?.size.lg).toMatchObject({})
   })
 })

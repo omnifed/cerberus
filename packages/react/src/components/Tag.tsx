@@ -68,6 +68,7 @@ export function Tag(
           aria-label="Close"
           className={iconButton({
             palette: 'action',
+            usage: 'filled',
           })}
           onClick={onClick}
         >

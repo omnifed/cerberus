@@ -15,6 +15,7 @@ export interface IconButtonProps
   palette?: ButtonProps['palette']
   usage?: IconButtonUsage
   shape?: 'circle'
+  size?: 'sm' | 'lg'
 }
 
 /**

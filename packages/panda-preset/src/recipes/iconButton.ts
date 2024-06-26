@@ -33,10 +33,6 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     pxi: '0',
     rounded: 'full',
     w: '2.75rem',
-    md: {
-      h: '1.5rem', // a11y minimum touch target size: 1.5rem for desktop
-      w: '1.5rem',
-    },
   },
 
   variants: {
@@ -51,11 +47,21 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         rounded: 'full',
       },
     },
+    size: {
+      sm: {
+        md: {
+          h: '1.5rem', // a11y minimum touch target size: 1.5rem for desktop
+          w: '1.5rem',
+        },
+      },
+      lg: {},
+    },
   },
 
   defaultVariants: {
     palette: 'action',
     usage: 'text',
     shape: 'circle',
+    size: 'lg',
   },
 })
