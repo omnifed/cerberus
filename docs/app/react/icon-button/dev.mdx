@@ -9,7 +9,8 @@ import {
   BasicIconButtonPreview,
   DangerIconButtonPreview,
   TextIconButtonPreview,
-  CustomIconButtonPreview
+  IconButtonSizesPreview,
+  CustomIconButtonPreview,
 } from '@/app/react/icon-button/components/icon-button-preview'
 
 ```ts
@@ -30,7 +31,7 @@ import { ThumbsUp } from '@cerberus/icons'
 function BasicIconButtonPreview() {
   return (
     <IconButton ariaLabel="Like something">
-      <ThumbsUp />
+      <ThumbsUp size={24} />
     </IconButton>
   )
 }
@@ -42,12 +43,12 @@ function BasicIconButtonPreview() {
 <CodePreview preview={<DangerIconButtonPreview />}>
 ```tsx title="icon-button.tsx"
 import { IconButton } from '@cerberus-design/react'
-import { Delete } from '@cerberus/icons'
+import { Close } from '@cerberus/icons'
 
 function DangerIconButtonPreview() {
   return (
-    <IconButton ariaLabel="Delete something" palette="danger" usage="filled">
-      <Delete />
+    <IconButton ariaLabel="Close something" palette="danger" usage="filled">
+      <Close size={24} />
     </IconButton>
   )
 }
@@ -64,8 +65,30 @@ import { ThumbsUp } from '@cerberus/icons'
 function TextIconButtonPreview() {
   return (
     <IconButton ariaLabel="Like something" usage="text">
-      <ThumbsUp />
+      <ThumbsUp size={24} />
     </IconButton>
+  )
+}
+```
+</CodePreview>
+
+### Sizes
+
+<CodePreview preview={<IconButtonSizesPreview />}>
+```tsx title="icon-button.tsx"
+import { IconButton } from '@cerberus-design/react'
+import { ThumbsUp, ThumbsDown } from '@cerberus/icons'
+
+function IconButtonSizesPreview() {
+  return (
+    <div className={hstack()}>
+      <IconButton ariaLabel="Like something" size="sm">
+        <ThumbsUp />
+      </IconButton>
+      <IconButton ariaLabel="Dislike something">
+        <ThumbsDown size={24} />
+      </IconButton>
+    </div>
   )
 }
 ```
@@ -113,8 +136,10 @@ function CustomIconButtonPreview() {
 export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   ariaLabel: string
   palette?: 'action' | 'danger'
-  usage?: 'filled' | 'text'
   shape?: 'circle'
+  size?: 'sm' | 'lg'
+  tooltipPosition?: 'top' | 'right' | 'bottom' | 'left'
+  usage?: 'filled' | 'text'
 }
 
 define function IconButton(props: IconButtonProps): ReactNode
@@ -130,3 +155,5 @@ The `IconButton` component accepts the following props:
 | palette     | `action`   | The color palette of the button. |
 | usage | `text`    | The style treatment of the button.    |
 | shape | `circle`    | The shape of the button.               |
+| size | `lg`    | The size of the button.               |
+| tooltipPosition | `top`    | The position of the tooltip.               |

@@ -44,6 +44,7 @@ export function Tag(
   const palette = isClosable ? 'action' : initPalette
   const closableStyles = isClosable
     ? css({
+        bgColor: 'action.bg.active',
         paddingInlineEnd: '0',
       })
     : ''

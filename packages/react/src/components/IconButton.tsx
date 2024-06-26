@@ -16,6 +16,7 @@ export interface IconButtonProps
   usage?: IconButtonUsage
   shape?: 'circle'
   size?: 'sm' | 'lg'
+  tooltipPosition?: 'top' | 'bottom' | 'left' | 'right'
 }
 
 /**
@@ -28,6 +29,7 @@ export function IconButton(props: IconButtonProps): JSX.Element {
     <button
       {...nativeProps}
       data-tooltip
+      data-position={props.tooltipPosition ?? 'top'}
       aria-label={ariaLabel ?? 'Icon Button'}
       className={cx(
         nativeProps.className,
