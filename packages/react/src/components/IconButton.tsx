@@ -24,7 +24,7 @@ export interface IconButtonProps
  * @description https://github.com/omnifed/cerberus/blob/main/packages/react/src/components/IconButton.tsx
  */
 export function IconButton(props: IconButtonProps): JSX.Element {
-  const { ariaLabel, palette, usage, ...nativeProps } = props
+  const { ariaLabel, palette, usage, size, ...nativeProps } = props
   return (
     <button
       {...nativeProps}
@@ -36,6 +36,7 @@ export function IconButton(props: IconButtonProps): JSX.Element {
         iconButton({
           palette,
           usage,
+          size,
         }),
       )}
     />

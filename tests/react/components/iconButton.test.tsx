@@ -76,7 +76,7 @@ describe('IconButton', () => {
     ).toBeTrue()
   })
 
-  test.skip('should render a small icon button', () => {
+  test('should render a small icon button', () => {
     render(
       <IconButton ariaLabel="test button" size="sm">
         it works
@@ -89,7 +89,7 @@ describe('IconButton', () => {
     ).toBeTrue()
   })
 
-  test.skip('should render a large icon button', () => {
+  test('should render a large icon button', () => {
     render(
       <IconButton ariaLabel="test button" size="lg">
         it works

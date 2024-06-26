@@ -70,6 +70,7 @@ export function Tag(
           className={iconButton({
             palette: 'action',
             usage: 'filled',
+            size: 'sm',
           })}
           onClick={onClick}
         >
