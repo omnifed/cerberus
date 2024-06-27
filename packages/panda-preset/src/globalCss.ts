@@ -4,30 +4,58 @@ const tooltipStyles = {
   _positionTop: {
     _before: {
       top: '0',
-      transform: 'translateY(-110%)',
+      transform: 'translateY(-150%)',
+    },
+    _after: {
+      borderColor:
+        'var(--cerberus-colors-neutral-surface-100) transparent transparent transparent',
+      left: '50%',
+      top: '0',
+      transform: 'translateY(-120%)',
     },
   },
   _positionBottom: {
     _before: {
       bottom: '0',
-      transform: 'translateY(110%)',
+      transform: 'translateY(150%)',
+    },
+    _after: {
+      borderColor:
+        'transparent transparent var(--cerberus-colors-neutral-surface-100) transparent ',
+      bottom: '0',
+      left: '50%',
+      transform: 'translateY(120%)',
     },
   },
   _positionLeft: {
     _before: {
       left: '0',
       top: '0',
-      transform: 'translate3d(-110%, 0, 0)',
+      transform: 'translate3d(-110%, 45%, 0)',
+    },
+    _after: {
+      borderColor:
+        'transparent transparent transparent var(--cerberus-colors-neutral-surface-100)',
+      left: '0',
+      top: '0',
+      transform: 'translate3d(-45%, 176%, 0)',
     },
   },
   _positionRight: {
     _before: {
       right: '0',
       top: '0',
-      transform: 'translate3d(110%, 0, 0)',
+      transform: 'translate3d(110%, 45%, 0)',
+    },
+    _after: {
+      borderColor:
+        'transparent var(--cerberus-colors-neutral-surface-100) transparent transparent ',
+      right: '0',
+      top: '0',
+      transform: 'translate3d(95%, 176%, 0)',
     },
   },
-
+  // bubble
   _before: {
     backgroundColor: 'var(--cerberus-colors-neutral-surface-100)',
     color: 'var(--cerberus-colors-neutral-text-initial)',
@@ -55,7 +83,22 @@ const tooltipStyles = {
     },
   },
   // arrow
-  _after: {},
+  _after: {
+    content: '""',
+    position: 'absolute',
+    marginInlineStart: '-5px',
+    border: '5px solid',
+    opacity: 0,
+    shadow: 'lg',
+    zIndex: 'tooltip',
+    _motionSafe: {
+      animationName: 'fadeIn',
+      animationDuration: '150ms',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
+      animationDelay: '50ms',
+    },
+  },
 }
 
 export const globalCss: GlobalStyleObject = defineGlobalStyles({

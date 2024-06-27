@@ -13,10 +13,10 @@ import {
   PositioningTooltipPreview,
 } from '@/app/react/tooltip/components/tooltip-preview'
 
-To use a Tooltip, simply add the `data-tooltip` and `aria-label` attributes to the element you want to add a tooltip to.
+To use a Tooltip, simply add the `data-tooltip`, `aria-label` attributes to the element you want to add a tooltip to. Optionally, you can include `data-position` to specify the position of the tooltip.
 
 ```tsx
-<button data-tooltip ariaLabel="Like something">
+<button ariaLabel="Like something" data-tooltip data-position="top">
 ```
 
 ## Usage
@@ -28,20 +28,20 @@ import { ThumbsUp } from '@cerberus/icons'
 
 function BasicTooltipPreview() {
   return (
-    <IconButton ariaLabel="Like something">
-      <ThumbsUp />
+    <IconButton ariaLabel="Get information">
+      <Information />
     </IconButton>
   )
 }
 ```
 </CodePreview>
 
-<NoteAdmonition description="IconButtons provide the data-tooltip attribute for you by default." />
+<NoteAdmonition description="IconButtons provide the data-tooltip attribute for you and set the position to top by default." />
 
 ## Positions
 
 <CodePreview preview={<PositioningTooltipPreview />}>
-```tsx title="icon-button.tsx" {10,13,19,23}
+```tsx title="icon-button.tsx" {10,13,16,19,23}
 import { Information } from '@cerberus-design/icons'
 import { IconButton } from '@cerberus-design/react'
 import { hstack } from '@cerberus/styled-system/patterns'
@@ -51,20 +51,16 @@ function PositioningTooltipPreview() {
     <div className={hstack({
       gap: '10'
     })}>
-      <IconButton ariaLabel="Top position" data-tooltip data-position="top">
+      <IconButton ariaLabel="Top position" tooltipPosition="top">
         <Information />
       </IconButton>
-      <IconButton ariaLabel="Right position" data-tooltip data-position="right">
+      <IconButton ariaLabel="Right position" tooltipPosition="right">
         <Information />
       </IconButton>
-      <IconButton
-        ariaLabel="Bottom position"
-        data-tooltip
-        data-position="bottom"
-      >
+      <IconButton ariaLabel="Bottom position" tooltipPosition="bottom">
         <Information />
       </IconButton>
-      <IconButton ariaLabel="Left position" data-tooltip data-position="left">
+      <IconButton ariaLabel="Left position" tooltipPosition="left">
         <Information />
       </IconButton>
     </div>
