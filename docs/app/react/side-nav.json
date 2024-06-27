@@ -62,28 +62,28 @@
     "id": "2:g",
     "label": "Tabs",
     "route": "/react/tabs",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
     "id": "2:h",
     "label": "Tag",
     "route": "/react/tags",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
     "id": "2:i",
     "label": "Textarea",
     "route": "/react/textarea",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
     "id": "2:j",
     "label": "Tooltip",
     "route": "/react/tooltip",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
