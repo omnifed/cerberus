@@ -4,7 +4,7 @@ import { hstack } from '@cerberus/styled-system/patterns'
 
 export function BasicTooltipPreview() {
   return (
-    <IconButton ariaLabel="Like something" data-position="top">
+    <IconButton ariaLabel="Get information">
       <Information />
     </IconButton>
   )
@@ -17,16 +17,16 @@ export function PositioningTooltipPreview() {
         gap: '10',
       })}
     >
-      <IconButton ariaLabel="Top position" data-position="top">
+      <IconButton ariaLabel="Top position" tooltipPosition="top">
         <Information />
       </IconButton>
-      <IconButton ariaLabel="Right position" data-position="right">
+      <IconButton ariaLabel="Right position" tooltipPosition="right">
         <Information />
       </IconButton>
-      <IconButton ariaLabel="Bottom position" data-position="bottom">
+      <IconButton ariaLabel="Bottom position" tooltipPosition="bottom">
         <Information />
       </IconButton>
-      <IconButton ariaLabel="Left position" data-position="left">
+      <IconButton ariaLabel="Left position" tooltipPosition="left">
         <Information />
       </IconButton>
     </div>
