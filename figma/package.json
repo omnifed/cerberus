@@ -1,0 +1,16 @@
+{
+  "name": "figma",
+  "version": "1.0.0",
+  "description": "The Figma Code Connect config for Cerberus Design",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@cerberus-design/react": "workspace:*",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
