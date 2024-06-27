@@ -90,4 +90,10 @@ To customize the tooltip, you need to update the globalCss options within your P
 
 ## API
 
-There is no API for the Tooltip. The Tooltip is a simple pseudo element that uses the `data-tooltip` and `aria-label` attributes to display a tooltip.`
+All of the following props are required to display a tooltip.
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| aria-label |    `undefined`     | The content of the tooltip and accessible label. |
+| data-tooltip | `undefined`   | The attribute that triggers a tooltip. |
+| data-position | `undefined`    | The position of the tooltip.    |
