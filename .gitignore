@@ -24,3 +24,7 @@ packages/styled-system/helpers.mjs
 docs/styled-system
 packages/*/styled-system
 packages/*/styled-system-studio
+
+## Figma
+
+figma/.env
