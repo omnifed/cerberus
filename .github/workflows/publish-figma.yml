@@ -1,0 +1,29 @@
+name: 🚀 Publish to Figma
+
+on:
+  push:
+    paths:
+      - figma/src/**/*.figma.tsx
+    branches:
+      - main
+
+env:
+  CI: true
+  FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+jobs:
+  publish-npm-next:
+    runs-on: ubuntu-latest
+    name: Publish Figma Code Connect
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.1.4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+
+      - run: pnpm install
+      - run: pnpm run figma:publish
+        working-directory: ./figma
