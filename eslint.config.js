@@ -38,6 +38,7 @@ export default tseslint.config(
           './configs/tsconfig.json',
           './tests/tsconfig.json',
           './docs/tsconfig.json',
+          './figma/tsconfig.json',
         ],
         tsconfigRootDir: import.meta.dirname,
       },
@@ -87,6 +88,17 @@ export default tseslint.config(
   {
     name: 'tests',
     files: ['tests/**/*.ts', 'tests/**/*.tsx'],
+  },
+
+  {
+    name: 'figma',
+    files: ['figma/**/*.ts', 'figma/**/*.tsx'],
+    plugins: {
+      react,
+    },
+    ...reactRecommended,
+    ...reactHooks.recommended,
+    rules: {},
   },
 
   // this must be last

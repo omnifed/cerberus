@@ -1,0 +1,18 @@
+{
+  "codeConnect": {
+    "parser": "react",
+    "include": [
+      "src/**",
+      "node_modules/@cerberus/react/**",
+      "node_modules/@cerberus/icons/**"
+    ],
+    "importPaths": {
+      "@cerberus-design/react": "@cerberus/react",
+      "@cerberus-design/icons": "@cerberus/icons"
+    },
+    "paths": {
+      "@cerberus-design/react": "node_modules/@cerberus/react",
+      "@cerberus-design/icons": "node_modules/@cerberus/icons"
+    }
+  }
+}
