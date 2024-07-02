@@ -3,19 +3,23 @@
   "version": "1.0.0",
   "description": "The Figma Code Connect config for Cerberus Design",
   "scripts": {
-    "figma:publish": "npx figma connect publish",
     "create:icon-sets": "bun run ./scripts/create-icon-sets.ts",
+    "figma:publish": "npx figma connect publish",
+    "figma:sync": "bun run ./scripts/variables/sync-figma.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@cerberus-design/icons": "workspace:*",
     "@cerberus-design/react": "workspace:*",
+    "axios": "^1.7.2",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
     "@figma/code-connect": "^1.0.1",
-    "@types/react": "^18"
+    "@figma/rest-api-spec": "^0.15.0",
+    "@types/react": "^18",
+    "dotenv": "^16.4.5"
   },
   "keywords": [],
   "author": "",
