@@ -1,4 +1,5 @@
 import type { Prominence, SemanticToken } from './types'
+import { colors, deepGetByPaths, rawTokens } from '../../tokens'
 
 type Prominences = Exclude<Prominence, 300>
 
@@ -9,10 +10,10 @@ export interface SuccessTokens {
     }
     readonly bg: {
       readonly initial: SemanticToken
+      readonly active: SemanticToken
     }
     readonly surface: {
       readonly initial: SemanticToken
-      readonly active: SemanticToken
     }
     readonly text: {
       readonly [P in Prominences]: SemanticToken
@@ -27,9 +28,18 @@ export const successTokens: SuccessTokens = {
         description: 'The default border color of success elements.',
         value: {
           _cerberusTheme: {
-            base: '#47B44B',
-            _lightMode: '#02BB71',
-            _darkMode: '#47B44B',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.border.success.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.border.success.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.border.success.initial.$value,
+            ).$value,
           },
         },
       },
@@ -39,20 +49,6 @@ export const successTokens: SuccessTokens = {
       initial: {
         description:
           'The default background color of elements that display a successful state.',
-        value: {
-          _cerberusTheme: {
-            base: '#0B6B2C',
-            _lightMode: '#D0F0DB',
-            _darkMode: '#0B6B2C',
-          },
-        },
-      },
-    },
-
-    surface: {
-      initial: {
-        description:
-          'The default color for a layout-based surface element (like a page or card) in a successful state.',
         value: {
           _cerberusTheme: {
             base: '#0B6B2C',
@@ -73,14 +69,46 @@ export const successTokens: SuccessTokens = {
       },
     },
 
+    surface: {
+      initial: {
+        description:
+          'The default color for a layout-based surface element (like a page or card) in a successful state.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.success.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.success.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.success.initial.$value,
+            ).$value,
+          },
+        },
+      },
+    },
+
     text: {
       initial: {
         description: 'The default text color of success elements.',
         value: {
           _cerberusTheme: {
-            base: '#D0FFEC',
-            _lightMode: '#002517',
-            _darkMode: '#D0FFEC',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.success.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.success.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.success.initial.$value,
+            ).$value,
           },
         },
       },
@@ -88,9 +116,18 @@ export const successTokens: SuccessTokens = {
         description: 'The secondary text color of success elements.',
         value: {
           _cerberusTheme: {
-            base: '#43FDB4',
-            _lightMode: '#017044',
-            _darkMode: '#43FDB4',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.success['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.success['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.success['100'].$value,
+            ).$value,
           },
         },
       },
@@ -98,9 +135,18 @@ export const successTokens: SuccessTokens = {
         description: 'The tertiary text color of success elements.',
         value: {
           _cerberusTheme: {
-            base: '#02BB71',
-            _lightMode: '#01955B',
-            _darkMode: '#02BB71',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.success['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.success['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.success['200'].$value,
+            ).$value,
           },
         },
       },
@@ -109,9 +155,18 @@ export const successTokens: SuccessTokens = {
           'The text color of success elements when you need a light mode treatment within the dark mode.',
         value: {
           _cerberusTheme: {
-            base: '#07471E',
-            _lightMode: '#0E8E3B',
-            _darkMode: '#07471E',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.success.inverse.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.success.inverse.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.success.inverse.$value,
+            ).$value,
           },
         },
       },
