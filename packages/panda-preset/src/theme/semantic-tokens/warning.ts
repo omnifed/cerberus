@@ -1,4 +1,5 @@
 import type { Prominence, SemanticToken } from './types'
+import { colors, deepGetByPaths, rawTokens } from '../../tokens'
 
 type Prominences = Exclude<Prominence, 'inverse' | 300>
 
@@ -26,9 +27,18 @@ export const warningTokens: WarningTokens = {
         description: 'The default border color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: '#FCF6D1',
-            _lightMode: '#F4DA49',
-            _darkMode: '#FCF6D1',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.border.warning.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.border.warning.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.border.warning.initial.$value,
+            ).$value,
           },
         },
       },
@@ -51,12 +61,21 @@ export const warningTokens: WarningTokens = {
     surface: {
       initial: {
         description:
-          'The default color for a layout-based surface element (like a page or card) in a warning state.',
+          'The default color for static (surface) elements that display a warning state.',
         value: {
           _cerberusTheme: {
-            base: '#917D10',
-            _lightMode: '#FCF6D1',
-            _darkMode: '#917D10',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.warning.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.warning.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.warning.initial.$value,
+            ).$value,
           },
         },
       },
@@ -67,9 +86,18 @@ export const warningTokens: WarningTokens = {
         description: 'The default text color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: '#FEFBE9',
-            _lightMode: '#60540B',
-            _darkMode: '#FEFBE9',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.warning.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning.initial.$value,
+            ).$value,
           },
         },
       },
@@ -77,9 +105,18 @@ export const warningTokens: WarningTokens = {
         description: 'The secondary text color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: '#F9EDA4',
-            _lightMode: '#C1A716',
-            _darkMode: '#F9EDA4',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.warning['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning['100'].$value,
+            ).$value,
           },
         },
       },
@@ -87,9 +124,18 @@ export const warningTokens: WarningTokens = {
         description: 'The tertiary text color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: '#F1D11B',
-            _lightMode: '#F1D11B',
-            _darkMode: '#F1D11B',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.warning['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning['200'].$value,
+            ).$value,
           },
         },
       },
