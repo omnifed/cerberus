@@ -10,10 +10,13 @@ export interface SuccessTokens {
     }
     readonly bg: {
       readonly initial: SemanticToken
+      readonly hover: SemanticToken
       readonly active: SemanticToken
     }
     readonly surface: {
       readonly initial: SemanticToken
+      readonly 100: SemanticToken
+      readonly 200: SemanticToken
     }
     readonly text: {
       readonly [P in Prominences]: SemanticToken
@@ -48,7 +51,27 @@ export const successTokens: SuccessTokens = {
     bg: {
       initial: {
         description:
-          'The default background color of elements that display a successful state.',
+          'The default background color of interactive elements that display a successful state.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.success.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.success.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.success.initial.$value,
+            ).$value,
+          },
+        },
+      },
+      hover: {
+        description:
+          'The default background color of interactive elements that display a successful state.',
         value: {
           _cerberusTheme: {
             base: '#0B6B2C',
@@ -58,7 +81,8 @@ export const successTokens: SuccessTokens = {
         },
       },
       active: {
-        description: 'The active surface color of success elements.',
+        description:
+          'The active surface color of interactive elements in a successful state.',
         value: {
           _cerberusTheme: {
             base: '#41C16E',
@@ -72,7 +96,7 @@ export const successTokens: SuccessTokens = {
     surface: {
       initial: {
         description:
-          'The default color for a layout-based surface element (like a page or card) in a successful state.',
+          'The default color for a static element (like a card, section, or page) in a successful state.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -86,6 +110,46 @@ export const successTokens: SuccessTokens = {
             _darkMode: deepGetByPaths(
               colors,
               rawTokens.semanticColors.dark.surface.success.initial.$value,
+            ).$value,
+          },
+        },
+      },
+      100: {
+        description:
+          'The layer color above initial for a static element (like a card, section, or page) in a successful state.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.success['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.success['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.success['100'].$value,
+            ).$value,
+          },
+        },
+      },
+      200: {
+        description:
+          'The layer color above 100 for a static element (like a card, section, or page) in a successful state.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.success['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.success['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.success['200'].$value,
             ).$value,
           },
         },

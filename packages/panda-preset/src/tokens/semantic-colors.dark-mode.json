@@ -163,7 +163,7 @@
       },
       "inital": {
         "$type": "color",
-        "$value": "colors.danger.100",
+        "$value": "colors.danger.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -175,7 +175,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "colors.danger.10",
+        "$value": "colors.danger.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -439,9 +439,9 @@
       }
     },
     "success": {
-      "initial": {
+      "100": {
         "$type": "color",
-        "$value": "colors.success.80",
+        "$value": "colors.success.90",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -451,9 +451,21 @@
           }
         }
       },
-      "active": {
+      "200": {
         "$type": "color",
         "$value": "colors.success.50",
+        "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "initial": {
+        "$type": "color",
+        "$value": "colors.success.70",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -781,7 +793,7 @@
     "danger": {
       "initial": {
         "$type": "color",
-        "$value": "colors.danger.60",
+        "$value": "colors.danger.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -793,7 +805,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.danger.50",
+        "$value": "colors.danger.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -805,7 +817,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.danger.40",
+        "$value": "colors.danger.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -817,7 +829,19 @@
       }
     },
     "info": {
-      "100": {
+      "initial": {
+        "$type": "color",
+        "$value": "colors.info.70",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "hover": {
         "$type": "color",
         "$value": "colors.info.90",
         "$description": "",
@@ -829,7 +853,7 @@
           }
         }
       },
-      "200": {
+      "active": {
         "$type": "color",
         "$value": "colors.info.50",
         "$description": "",
@@ -840,15 +864,41 @@
             "codeSyntax": {}
           }
         }
-      },
+      }
+    },
+    "success": {
       "initial": {
         "$type": "color",
-        "$value": "colors.info.70",
+        "$value": "colors.success.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "colors.success.50",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "active": {
+        "$type": "color",
+        "$value": "colors.success.40",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }

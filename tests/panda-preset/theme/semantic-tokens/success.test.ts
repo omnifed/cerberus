@@ -31,17 +31,17 @@ describe('success', () => {
   test('should have a bg.initial property', () => {
     expect(
       formatToken(successTokens.success.bg.initial.value._cerberusTheme.base),
-    ).toEqual('#0B6B2C')
+    ).toEqual('#41C16E')
     expect(
       formatToken(
         successTokens.success.bg.initial.value._cerberusTheme._darkMode,
       ),
-    ).toEqual('#0B6B2C')
+    ).toEqual('#41C16E')
     expect(
       formatToken(
         successTokens.success.bg.initial.value._cerberusTheme._lightMode,
       ),
-    ).toEqual('#D0F0DB')
+    ).toEqual('#12B24A')
   })
 
   test('should have a surface.initial property', () => {
@@ -49,17 +49,53 @@ describe('success', () => {
       formatToken(
         successTokens.success.surface.initial.value._cerberusTheme.base,
       ),
-    ).toEqual('#0B6B2C')
+    ).toEqual('#0E8E3B')
     expect(
       formatToken(
         successTokens.success.surface.initial.value._cerberusTheme._darkMode,
       ),
-    ).toEqual('#0B6B2C')
+    ).toEqual('#0E8E3B')
     expect(
       formatToken(
         successTokens.success.surface.initial.value._cerberusTheme._lightMode,
       ),
-    ).toEqual('#D0F0DB')
+    ).toEqual('#41C16E')
+  })
+
+  test('should have a surface.100 property', () => {
+    expect(
+      formatToken(
+        successTokens.success.surface['100'].value._cerberusTheme.base,
+      ),
+    ).toEqual('#07471E')
+    expect(
+      formatToken(
+        successTokens.success.surface['100'].value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#07471E')
+    expect(
+      formatToken(
+        successTokens.success.surface['100'].value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#71D192')
+  })
+
+  test('should have a surface.200 property', () => {
+    expect(
+      formatToken(
+        successTokens.success.surface['200'].value._cerberusTheme.base,
+      ),
+    ).toEqual('#41C16E')
+    expect(
+      formatToken(
+        successTokens.success.surface['200'].value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#41C16E')
+    expect(
+      formatToken(
+        successTokens.success.surface['200'].value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#0E8E3B')
   })
 
   test('should have a bg.active property', () => {

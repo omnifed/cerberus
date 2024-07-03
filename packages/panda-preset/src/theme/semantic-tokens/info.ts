@@ -115,15 +115,15 @@ export const infoTokens: InfoTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.info['100'].$value,
+              rawTokens.semanticColors.dark.text.info['100'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.background.info['100'].$value,
+              rawTokens.semanticColors.light.text.info['100'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.info['100'].$value,
+              rawTokens.semanticColors.dark.text.info['100'].$value,
             ).$value,
           },
         },
@@ -134,15 +134,15 @@ export const infoTokens: InfoTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.info['200'].$value,
+              rawTokens.semanticColors.dark.text.info['200'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.background.info['200'].$value,
+              rawTokens.semanticColors.light.text.info['200'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.info['200'].$value,
+              rawTokens.semanticColors.dark.text.info['200'].$value,
             ).$value,
           },
         },

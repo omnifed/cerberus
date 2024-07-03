@@ -85,13 +85,13 @@ describe('infoTokens', () => {
   test('should have a text.100 property', () => {
     expect(
       formatToken(infoTokens.info.text['100'].value._cerberusTheme.base),
-    ).toEqual('#013655')
+    ).toEqual('#9ACFEE')
     expect(
       formatToken(infoTokens.info.text['100'].value._cerberusTheme._darkMode),
-    ).toEqual('#013655')
+    ).toEqual('#9ACFEE')
     expect(
       formatToken(infoTokens.info.text['100'].value._cerberusTheme._lightMode),
-    ).toEqual('#CCE7F7')
+    ).toEqual('#026DAA')
   })
 
   test('should have a text.200 property', () => {
