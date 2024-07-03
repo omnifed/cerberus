@@ -173,15 +173,15 @@ export const actionTokens: ActionTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.borders.action.initial.$value,
+              rawTokens.semanticColors.dark.border.action.initial.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.borders.action.initial.$value,
+              rawTokens.semanticColors.light.border.action.initial.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.borders.action.initial.$value,
+              rawTokens.semanticColors.dark.border.action.initial.$value,
             ).$value,
           },
         },
@@ -192,15 +192,15 @@ export const actionTokens: ActionTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.borders.action['100'].$value,
+              rawTokens.semanticColors.dark.border.action['100'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.borders.action['100'].$value,
+              rawTokens.semanticColors.light.border.action['100'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.borders.action['100'].$value,
+              rawTokens.semanticColors.dark.border.action['100'].$value,
             ).$value,
           },
         },

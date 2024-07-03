@@ -507,7 +507,7 @@
       }
     }
   },
-  "borders": {
+  "border": {
     "neutral": {
       "100": {
         "$type": "color",

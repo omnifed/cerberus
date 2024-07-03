@@ -94,15 +94,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.borders.neutral.initial.$value,
+              rawTokens.semanticColors.dark.border.neutral.initial.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.borders.neutral.initial.$value,
+              rawTokens.semanticColors.light.border.neutral.initial.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.borders.neutral.initial.$value,
+              rawTokens.semanticColors.dark.border.neutral.initial.$value,
             ).$value,
           },
         },
