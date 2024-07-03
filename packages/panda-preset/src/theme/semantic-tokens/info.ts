@@ -1,4 +1,5 @@
 import type { Prominence, SemanticToken } from './types'
+import { colors, deepGetByPaths, rawTokens } from '../../tokens'
 
 type Prominences = Exclude<Prominence, 'inverse' | 300>
 
@@ -26,9 +27,18 @@ export const infoTokens: InfoTokens = {
         description: 'The default border color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: '#35A0DD',
-            _lightMode: '#0288D5',
-            _darkMode: '#35A0DD',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.border.info.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.border.info.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.border.info.initial.$value,
+            ).$value,
           },
         },
       },
@@ -39,9 +49,18 @@ export const infoTokens: InfoTokens = {
         description: 'The default background color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: '#026DAA',
-            _lightMode: '#CCE7F7',
-            _darkMode: '#026DAA',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.info.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.info.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.info.initial.$value,
+            ).$value,
           },
         },
       },
@@ -53,9 +72,18 @@ export const infoTokens: InfoTokens = {
           'The default color for a layout-based surface element (like a page or card) in a informational state.',
         value: {
           _cerberusTheme: {
-            base: '#026DAA',
-            _lightMode: '#CCE7F7',
-            _darkMode: '#026DAA',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.info.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.info.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.info.initial.$value,
+            ).$value,
           },
         },
       },
@@ -66,9 +94,18 @@ export const infoTokens: InfoTokens = {
         description: 'The default text color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: '#E6F3FB',
-            _lightMode: '#015280',
-            _darkMode: '#E6F3FB',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.info.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.info.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.info.initial.$value,
+            ).$value,
           },
         },
       },
@@ -76,9 +113,18 @@ export const infoTokens: InfoTokens = {
         description: 'The secondary text color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: '#9ACFEE',
-            _lightMode: '#026DAA',
-            _darkMode: '#9ACFEE',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.info['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.info['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.info['100'].$value,
+            ).$value,
           },
         },
       },
@@ -86,9 +132,18 @@ export const infoTokens: InfoTokens = {
         description: 'The tertiary text color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: '#2BB2FF',
-            _lightMode: '#0088D5',
-            _darkMode: '#2BB2FF',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.info['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.info['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.info['200'].$value,
+            ).$value,
           },
         },
       },
