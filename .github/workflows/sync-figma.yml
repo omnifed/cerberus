@@ -1,0 +1,43 @@
+name: Sync Figma variables to tokens
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  CI: true
+  FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+
+jobs:
+  sync-figma-to-tokens:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.1.4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Sync variables in Figma file to tokens
+        run: pnpm run figma:sync
+        working-directory: ./figma
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: 'chore: update tokens from Figma'
+          title: '[chore]: update tokens from Figma'
+          body: 'This PR updates the latest tokens from Figma.'
+          branch: chore/update-tokens-${{ github.run_id }}
