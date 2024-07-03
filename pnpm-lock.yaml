@@ -197,9 +197,6 @@ importers:
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
-      axios:
-        specifier: ^1.7.2
-        version: 1.7.2
       react:
         specifier: ^18
         version: 18.3.1
