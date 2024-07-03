@@ -1,4 +1,5 @@
 import type { SemanticToken } from './types'
+import { colors, deepGetByPaths, rawTokens } from '../../tokens'
 
 export type ActionProminences = {
   readonly initial: SemanticToken
@@ -10,6 +11,10 @@ export type ActionNavProminences = {
   readonly hover: SemanticToken
   readonly visited: SemanticToken
 }
+
+const ALT_INITIAL = 'alt-initial'
+const ALT_HOVER = 'alt-hover'
+const ALT_VISITED = 'alt-visited'
 
 export interface ActionTokens {
   readonly action: {
@@ -41,9 +46,18 @@ export const actionTokens: ActionTokens = {
         description: 'The default background color of the action.',
         value: {
           _cerberusTheme: {
-            base: '#7F33C4',
-            _lightMode: '#5F00B5',
-            _darkMode: '#7F33C4',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.action.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.action.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.action.initial.$value,
+            ).$value,
           },
         },
       },
@@ -51,9 +65,18 @@ export const actionTokens: ActionTokens = {
         description: 'The background color of the action when hovered.',
         value: {
           _cerberusTheme: {
-            base: '#5F00B5',
-            _lightMode: '#7F33C4',
-            _darkMode: '#5F00B5',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.action.hover.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.action.hover.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.action.hover.$value,
+            ).$value,
           },
         },
       },
@@ -61,9 +84,18 @@ export const actionTokens: ActionTokens = {
         description: 'The background color of the action when active.',
         value: {
           _cerberusTheme: {
-            base: '#4C0091',
-            _lightMode: '#9F66D3',
-            _darkMode: '#4C0091',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.action.active.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.action.active.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.action.active.$value,
+            ).$value,
           },
         },
       },
@@ -73,9 +105,18 @@ export const actionTokens: ActionTokens = {
             'The default alternative background color of the action.',
           value: {
             _cerberusTheme: {
-              base: '#21143B',
-              _lightMode: '#FFFFFF',
-              _darkMode: '#21143B',
+              base: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.dark.background.action['100'].$value,
+              ).$value,
+              _lightMode: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.light.background.action['100'].$value,
+              ).$value,
+              _darkMode: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.dark.background.action['100'].$value,
+              ).$value,
             },
           },
         },
@@ -84,9 +125,21 @@ export const actionTokens: ActionTokens = {
             'The alternative background color of the action when hovered.',
           value: {
             _cerberusTheme: {
-              base: '#291D47',
-              _lightMode: '#F3F2F4',
-              _darkMode: '#291D47',
+              base: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.dark.background.action['100-hover']
+                  .$value,
+              ).$value,
+              _lightMode: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.light.background.action['100-hover']
+                  .$value,
+              ).$value,
+              _darkMode: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.dark.background.action['100-hover']
+                  .$value,
+              ).$value,
             },
           },
         },
@@ -95,9 +148,18 @@ export const actionTokens: ActionTokens = {
             'The alternative background color of the action when active.',
           value: {
             _cerberusTheme: {
-              base: '#24186A',
-              _lightMode: '#D1DFEF',
-              _darkMode: '#24186A',
+              base: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.dark.background.action.active.$value,
+              ).$value,
+              _lightMode: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.light.background.action.active.$value,
+              ).$value,
+              _darkMode: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.dark.background.action.active.$value,
+              ).$value,
             },
           },
         },
@@ -109,9 +171,18 @@ export const actionTokens: ActionTokens = {
         description: 'The default border color of the action.',
         value: {
           _cerberusTheme: {
-            base: '#BB93E1',
-            _lightMode: '#5F00B5',
-            _darkMode: '#BB93E1',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.borders.action.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.borders.action.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.borders.action.initial.$value,
+            ).$value,
           },
         },
       },
@@ -119,13 +190,23 @@ export const actionTokens: ActionTokens = {
         description: 'The default alternative border color of the action.',
         value: {
           _cerberusTheme: {
-            base: '#4E476D',
-            _lightMode: '#696584',
-            _darkMode: '#4E476D',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.borders.action['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.borders.action['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.borders.action['100'].$value,
+            ).$value,
           },
         },
       },
       focus: {
+        // This is an unofficial token
         description: 'The border color of the action when focused.',
         value: {
           _cerberusTheme: {
@@ -139,12 +220,21 @@ export const actionTokens: ActionTokens = {
 
     navigation: {
       initial: {
-        description: 'The default background color of the navigation action.',
+        description: 'The default color of the navigation links.',
         value: {
           _cerberusTheme: {
-            base: '#9F66D3',
-            _lightMode: '#5F00B5',
-            _darkMode: '#9F66D3',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.navigation.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.navigation.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.navigation.initial.$value,
+            ).$value,
           },
         },
       },
@@ -153,9 +243,18 @@ export const actionTokens: ActionTokens = {
           'The background color of the navigation action when hovered.',
         value: {
           _cerberusTheme: {
-            base: '#BB93E1',
-            _lightMode: '#7F33C4',
-            _darkMode: '#BB93E1',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.navigation.hover.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.navigation.hover.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.navigation.hover.$value,
+            ).$value,
           },
         },
       },
@@ -164,9 +263,18 @@ export const actionTokens: ActionTokens = {
           'The background color of the navigation action when visited.',
         value: {
           _cerberusTheme: {
-            base: '#DFCCF0',
-            _lightMode: '#362A58',
-            _darkMode: '#DFCCF0',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.navigation.visited.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.navigation.visited.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.navigation.visited.$value,
+            ).$value,
           },
         },
       },
@@ -176,9 +284,21 @@ export const actionTokens: ActionTokens = {
             'The default alternative background color of the navigation action.',
           value: {
             _cerberusTheme: {
-              base: '#41E3E0',
-              _lightMode: '#3B8180',
-              _darkMode: '#41E3E0',
+              base: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.dark.text.navigation[ALT_INITIAL]
+                  .$value,
+              ).$value,
+              _lightMode: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.light.text.navigation[ALT_INITIAL]
+                  .$value,
+              ).$value,
+              _darkMode: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.dark.text.navigation[ALT_INITIAL]
+                  .$value,
+              ).$value,
             },
           },
         },
@@ -187,9 +307,19 @@ export const actionTokens: ActionTokens = {
             'The alternative background color of the navigation action when hovered.',
           value: {
             _cerberusTheme: {
-              base: '#B8F4F3',
-              _lightMode: '#1F5B5A',
-              _darkMode: '#B8F4F3',
+              base: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.dark.text.navigation[ALT_HOVER].$value,
+              ).$value,
+              _lightMode: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.light.text.navigation[ALT_HOVER]
+                  .$value,
+              ).$value,
+              _darkMode: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.dark.text.navigation[ALT_HOVER].$value,
+              ).$value,
             },
           },
         },
@@ -198,9 +328,21 @@ export const actionTokens: ActionTokens = {
             'The alternative background color of the navigation action when visited.',
           value: {
             _cerberusTheme: {
-              base: '#EEFDFC',
-              _lightMode: '#362A58',
-              _darkMode: '#EEFDFC',
+              base: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.dark.text.navigation[ALT_VISITED]
+                  .$value,
+              ).$value,
+              _lightMode: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.light.text.navigation[ALT_VISITED]
+                  .$value,
+              ).$value,
+              _darkMode: deepGetByPaths(
+                colors,
+                rawTokens.semanticColors.dark.text.navigation[ALT_VISITED]
+                  .$value,
+              ).$value,
             },
           },
         },
@@ -212,9 +354,18 @@ export const actionTokens: ActionTokens = {
         description: 'The default text color of the action.',
         value: {
           _cerberusTheme: {
-            base: '#FCFBFE',
-            _lightMode: '#FCFBFE',
-            _darkMode: '#FCFBFE',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.action.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.action.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.action.initial.$value,
+            ).$value,
           },
         },
       },
@@ -223,9 +374,18 @@ export const actionTokens: ActionTokens = {
           'The text color of the action that uses a 100 background color.',
         value: {
           _cerberusTheme: {
-            base: '#7F33C4',
-            _lightMode: '#39006D',
-            _darkMode: '#7F33C4',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.action['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.action['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.action['100'].$value,
+            ).$value,
           },
         },
       },
@@ -234,9 +394,18 @@ export const actionTokens: ActionTokens = {
           'The text color of the action that uses a 200 background color.',
         value: {
           _cerberusTheme: {
-            base: '#BB93E1',
-            _lightMode: '#5F00B5',
-            _darkMode: '#BB93E1',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.action['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.action['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.action['200'].$value,
+            ).$value,
           },
         },
       },
@@ -245,9 +414,18 @@ export const actionTokens: ActionTokens = {
           'The text color of the action when there needs to be a light mode text within the dark theme.',
         value: {
           _cerberusTheme: {
-            base: '#130024',
-            _lightMode: '#130024',
-            _darkMode: '#130024',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.action.inverse.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.action.inverse.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.action.inverse.$value,
+            ).$value,
           },
         },
       },
@@ -256,9 +434,18 @@ export const actionTokens: ActionTokens = {
           'The text color of the action that uses an alternate background color.',
         value: {
           _cerberusTheme: {
-            base: '#41E3E0',
-            _lightMode: '#3B8180',
-            _darkMode: '#41E3E0',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.action.alternate.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.action.alternate.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.action.alternate.$value,
+            ).$value,
           },
         },
       },
