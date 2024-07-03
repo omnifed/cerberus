@@ -1,6 +1,11 @@
 import type { SemanticToken } from './types'
 import { colors, deepGetByPaths, rawTokens } from '../../tokens'
 
+/**
+ * This module is a collection of action tokens that are used to generate the theme.
+ * @module actionTokens
+ */
+
 export type ActionProminences = {
   readonly initial: SemanticToken
   readonly hover: SemanticToken

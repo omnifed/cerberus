@@ -1,6 +1,11 @@
 import type { Prominence, SemanticToken } from './types'
 import { colors, deepGetByPaths, rawTokens } from '../../tokens'
 
+/**
+ * This module is a collection of warning tokens that are used to generate the theme.
+ * @module warningTokens
+ */
+
 type Prominences = Exclude<Prominence, 'inverse' | 300>
 
 export interface WarningTokens {

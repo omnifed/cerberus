@@ -1,6 +1,11 @@
 import type { Prominence, SemanticToken } from './types'
 import { colors, deepGetByPaths, rawTokens } from '../../tokens'
 
+/**
+ * This module is a collection of danger tokens that are used to generate the theme.
+ * @module dangerTokens
+ */
+
 type Prominences = Exclude<Prominence, 300>
 
 export interface DangerTokens {

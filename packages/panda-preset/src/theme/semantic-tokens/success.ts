@@ -1,6 +1,11 @@
 import type { Prominence, SemanticToken } from './types'
 import { colors, deepGetByPaths, rawTokens } from '../../tokens'
 
+/**
+ * This module is a collection of success tokens that are used to generate the theme.
+ * @module successTokens
+ */
+
 type Prominences = Exclude<Prominence, 300>
 
 export interface SuccessTokens {

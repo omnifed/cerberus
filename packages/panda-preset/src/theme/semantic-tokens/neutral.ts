@@ -1,6 +1,11 @@
 import type { Prominence, SemanticToken } from './types'
 import { colors, deepGetByPaths, rawTokens } from '../../tokens'
 
+/**
+ * This module is a collection of neutral tokens that are used to generate the theme.
+ * @module neutralTokens
+ */
+
 export interface NeutralTokens {
   readonly neutral: {
     readonly bg: {
