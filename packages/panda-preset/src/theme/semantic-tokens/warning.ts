@@ -8,9 +8,6 @@ export interface WarningTokens {
     readonly border: {
       readonly initial: SemanticToken
     }
-    readonly bg: {
-      readonly initial: SemanticToken
-    }
     readonly surface: {
       readonly initial: SemanticToken
     }
@@ -39,20 +36,6 @@ export const warningTokens: WarningTokens = {
               colors,
               rawTokens.semanticColors.dark.border.warning.initial.$value,
             ).$value,
-          },
-        },
-      },
-    },
-
-    bg: {
-      initial: {
-        description:
-          'The default background color for elements that display a warning state.',
-        value: {
-          _cerberusTheme: {
-            base: '#917D10',
-            _lightMode: '#FCF6D1',
-            _darkMode: '#917D10',
           },
         },
       },

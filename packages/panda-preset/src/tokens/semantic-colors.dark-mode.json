@@ -161,7 +161,7 @@
           }
         }
       },
-      "inital": {
+      "initial": {
         "$type": "color",
         "$value": "colors.danger.10",
         "$description": "",

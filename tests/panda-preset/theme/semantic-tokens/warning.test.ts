@@ -28,22 +28,6 @@ describe('warning', () => {
     ).toEqual('#F4DA49')
   })
 
-  test('should have a bg.initial property', () => {
-    expect(
-      formatToken(warningTokens.warning.bg.initial.value._cerberusTheme.base),
-    ).toEqual('#917D10')
-    expect(
-      formatToken(
-        warningTokens.warning.bg.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#917D10')
-    expect(
-      formatToken(
-        warningTokens.warning.bg.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FCF6D1')
-  })
-
   test('should have a surface.initial property', () => {
     expect(
       formatToken(
