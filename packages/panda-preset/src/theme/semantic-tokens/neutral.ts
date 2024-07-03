@@ -259,15 +259,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutrals.initial.$value,
+              rawTokens.semanticColors.dark.text.neutral.initial.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.neutrals.initial.$value,
+              rawTokens.semanticColors.light.text.neutral.initial.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutrals.initial.$value,
+              rawTokens.semanticColors.dark.text.neutral.initial.$value,
             ).$value,
           },
         },
@@ -279,15 +279,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutrals['100'].$value,
+              rawTokens.semanticColors.dark.text.neutral['100'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.neutrals['100'].$value,
+              rawTokens.semanticColors.light.text.neutral['100'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutrals['100'].$value,
+              rawTokens.semanticColors.dark.text.neutral['100'].$value,
             ).$value,
           },
         },
@@ -299,15 +299,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutrals['200'].$value,
+              rawTokens.semanticColors.dark.text.neutral['200'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.neutrals['200'].$value,
+              rawTokens.semanticColors.light.text.neutral['200'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutrals['200'].$value,
+              rawTokens.semanticColors.dark.text.neutral['200'].$value,
             ).$value,
           },
         },
@@ -319,15 +319,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutrals['300'].$value,
+              rawTokens.semanticColors.dark.text.neutral['300'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.neutrals['300'].$value,
+              rawTokens.semanticColors.light.text.neutral['300'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutrals['300'].$value,
+              rawTokens.semanticColors.dark.text.neutral['300'].$value,
             ).$value,
           },
         },
@@ -339,15 +339,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutrals.inverse.$value,
+              rawTokens.semanticColors.dark.text.neutral.inverse.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.neutrals.inverse.$value,
+              rawTokens.semanticColors.light.text.neutral.inverse.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutrals.inverse.$value,
+              rawTokens.semanticColors.dark.text.neutral.inverse.$value,
             ).$value,
           },
         },

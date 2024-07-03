@@ -1,6 +1,6 @@
 {
   "colors": {
-    "neutrals": {
+    "neutral": {
       "5": {
         "$type": "color",
         "$value": "#f3f2f4",

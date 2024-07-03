@@ -27,7 +27,7 @@
       },
       "visited": {
         "$type": "color",
-        "$value": "colors.neutrals.60",
+        "$value": "colors.neutral.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -63,7 +63,7 @@
       },
       "alt-visited": {
         "$type": "color",
-        "$value": "colors.neutrals.60",
+        "$value": "colors.neutral.60",
         "$description": "for student portal only",
         "$extensions": {
           "com.figma": {
@@ -74,10 +74,10 @@
         }
       }
     },
-    "neutrals": {
+    "neutral": {
       "100": {
         "$type": "color",
-        "$value": "colors.neutrals.40",
+        "$value": "colors.neutral.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -89,7 +89,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.neutrals.60",
+        "$value": "colors.neutral.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -113,7 +113,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.neutrals.90",
+        "$value": "colors.neutral.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -125,7 +125,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "colors.neutrals.white",
+        "$value": "colors.neutral.white",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -379,7 +379,7 @@
     "neutral": {
       "100": {
         "$type": "color",
-        "$value": "colors.neutrals.white",
+        "$value": "colors.neutral.white",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -391,7 +391,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.neutrals.10",
+        "$value": "colors.neutral.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -403,7 +403,7 @@
       },
       "300": {
         "$type": "color",
-        "$value": "colors.neutrals.20",
+        "$value": "colors.neutral.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -427,7 +427,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "colors.neutrals.90",
+        "$value": "colors.neutral.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -523,7 +523,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.neutrals.20",
+        "$value": "colors.neutral.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -535,7 +535,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.neutrals.10",
+        "$value": "colors.neutral.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -601,7 +601,7 @@
     "action": {
       "100": {
         "$type": "color",
-        "$value": "colors.neutrals.40",
+        "$value": "colors.neutral.40",
         "$description": "for use on less prominent actionable borders, like input fields etc",
         "$extensions": {
           "com.figma": {
@@ -681,7 +681,7 @@
     "action": {
       "100": {
         "$type": "color",
-        "$value": "colors.neutrals.white",
+        "$value": "colors.neutral.white",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -729,7 +729,7 @@
       },
       "100-hover": {
         "$type": "color",
-        "$value": "colors.neutrals.5",
+        "$value": "colors.neutral.5",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -743,7 +743,7 @@
     "neutral": {
       "100": {
         "$type": "color",
-        "$value": "colors.neutrals.10",
+        "$value": "colors.neutral.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -755,7 +755,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.neutrals.20",
+        "$value": "colors.neutral.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
