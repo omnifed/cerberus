@@ -37,7 +37,8 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: 'chore: update tokens from Figma --allow-empty'
+          commit-message: 'chore: update tokens from Figma'
           title: '[chore]: update tokens from Figma'
           body: 'This PR updates the latest tokens from Figma.'
-          branch: chore/update-tokens-${{ github.run_id }}
+          branch: chore/update-tokens
+          branch-suffix: timestamp
