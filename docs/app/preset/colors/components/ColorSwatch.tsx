@@ -34,7 +34,7 @@ const paletteTextStyles = css({
   _infoPalette: {
     color: 'info.text.initial !important',
     '&[data-has-white="true"]': {
-      color: 'info.surface.initial !important',
+      color: 'info.surface.100 !important',
     },
   },
   _successPalette: {
@@ -42,41 +42,37 @@ const paletteTextStyles = css({
     '&[data-has-white="true"]': {
       color: 'success.text.inverse !important',
     },
-    '&[data-mode="light"]': {
-      color: 'success.surface.initial !important',
-      '&[data-has-white="false"]': {
-        color: 'success.text.initial !important',
-      },
-    },
   },
   _warningPalette: {
     color: 'warning.text.initial !important',
     '&[data-has-white="true"]': {
-      color: 'warning.surface.initial !important',
+      color: 'white !important',
+    },
+    _darkMode: {
+      color: 'white !important',
+      '&[data-has-white="true"]': {
+        color: 'warning.text.initial !important',
+      },
     },
   },
   _dangerPalette: {
-    color: 'danger.text.inverse !important',
+    color: 'danger.text.initial !important',
     '&[data-has-white="true"]': {
-      color: 'danger.text.initial !important',
-    },
-    '&[data-mode="light"]': {
-      color: 'danger.surface.initial !important',
-      '&[data-has-white="false"]': {
-        color: 'danger.text.initial !important',
-      },
+      color: 'danger.text.inverse !important',
     },
   },
 })
 
 const linkStyles = css({
   _neutralPalette: {
-    border: '2px solid',
-    borderColor: 'neutral.border.initial',
+    shadow: 'lg',
+    _darkMode: {
+      border: '2px solid',
+      borderColor: 'neutral.border.initial',
+    },
   },
   _actionPalette: {
-    border: '2px solid',
-    borderColor: 'action.border.initial',
+    shadow: 'lg',
   },
 })
 
