@@ -1,11 +1,17 @@
 import type { Prominence, SemanticToken } from './types'
+import { colors, deepGetByPaths, rawTokens } from '../../tokens'
+
+/**
+ * This module is a collection of neutral tokens that are used to generate the theme.
+ * @module neutralTokens
+ */
 
 export interface NeutralTokens {
   readonly neutral: {
     readonly bg: {
       readonly initial: SemanticToken
-      readonly active: SemanticToken
-      readonly hover: SemanticToken
+      readonly 100: SemanticToken
+      readonly 200: SemanticToken
     }
     readonly border: {
       readonly initial: SemanticToken
@@ -29,31 +35,58 @@ export const neutralTokens: NeutralTokens = {
           'The default background color used for non-action elements (i.e. inputs).',
         value: {
           _cerberusTheme: {
-            base: '#130024',
-            _lightMode: '#FCFBFE',
-            _darkMode: '#130024',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.neutral.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.neutral.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.neutral.initial.$value,
+            ).$value,
           },
         },
       },
-      active: {
+      100: {
         description:
-          'The background color when a non-action elements (i.e. inputs) is in an active state.',
+          'A secondary background color when a non-action elements (i.e. inputs).',
         value: {
           _cerberusTheme: {
-            base: '#2D2D55',
-            _lightMode: '#D1DFEF',
-            _darkMode: '#2D2D55',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.neutral['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.neutral['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.neutral['100'].$value,
+            ).$value,
           },
         },
       },
-      hover: {
+      200: {
         description:
-          'The background color when a non-action elements (i.e. inputs) is in a hover state.',
+          'A third-level color when a non-action elements (i.e. inputs).',
         value: {
           _cerberusTheme: {
-            base: '#404376',
-            _lightMode: '#DAE3EE',
-            _darkMode: '#404376',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.neutral['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.neutral['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.neutral['200'].$value,
+            ).$value,
           },
         },
       },
@@ -64,9 +97,18 @@ export const neutralTokens: NeutralTokens = {
         description: 'The default border color used for layouts.',
         value: {
           _cerberusTheme: {
-            base: '#291D47',
-            _lightMode: '#E4E3E9',
-            _darkMode: '#291D47',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.border.neutral.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.border.neutral.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.border.neutral.initial.$value,
+            ).$value,
           },
         },
       },
@@ -75,9 +117,18 @@ export const neutralTokens: NeutralTokens = {
           'The border color used for layouts with a 100 surface color.',
         value: {
           _cerberusTheme: {
-            base: '#302451',
-            _lightMode: '#BCBACA',
-            _darkMode: '#302451',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.neutral['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.neutral['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.neutral['100'].$value,
+            ).$value,
           },
         },
       },
@@ -86,9 +137,18 @@ export const neutralTokens: NeutralTokens = {
           'The border color used for layouts with a 200 surface color.',
         value: {
           _cerberusTheme: {
-            base: '#39006D',
-            _lightMode: '#DFCCF0',
-            _darkMode: '#39006D',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.neutral['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.neutral['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.neutral['200'].$value,
+            ).$value,
           },
         },
       },
@@ -100,9 +160,18 @@ export const neutralTokens: NeutralTokens = {
           'The default color for a layout-based surface element (like a page or card) in a danger state.',
         value: {
           _cerberusTheme: {
-            base: '#160126',
-            _lightMode: '#FCFBFE',
-            _darkMode: '#160126',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.neutral.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.neutral.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.neutral.initial.$value,
+            ).$value,
           },
         },
       },
@@ -111,9 +180,18 @@ export const neutralTokens: NeutralTokens = {
           'The second color for a layout-based surface element, used for the layer on top of the initial.',
         value: {
           _cerberusTheme: {
-            base: '#21143B',
-            _lightMode: '#ffffff',
-            _darkMode: '#21143B',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.neutral['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.neutral['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.neutral['100'].$value,
+            ).$value,
           },
         },
       },
@@ -122,9 +200,18 @@ export const neutralTokens: NeutralTokens = {
           'The third color for a layout-based surface element, used for the layer on top of the 100.',
         value: {
           _cerberusTheme: {
-            base: '#291D47',
-            _lightMode: '#E4E3E9',
-            _darkMode: '#291D47',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.neutral['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.neutral['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.neutral['200'].$value,
+            ).$value,
           },
         },
       },
@@ -133,9 +220,18 @@ export const neutralTokens: NeutralTokens = {
           'The fourth color for a layout-based surface element, used for the layer on top of the 200.',
         value: {
           _cerberusTheme: {
-            base: '#302451',
-            _lightMode: '#BCBACA',
-            _darkMode: '#302451',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.neutral['300'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.neutral['300'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.neutral['300'].$value,
+            ).$value,
           },
         },
       },
@@ -144,9 +240,18 @@ export const neutralTokens: NeutralTokens = {
           'The inverse color for a initial layout-based surface element (like a page or card) to display the opposite mode theme.',
         value: {
           _cerberusTheme: {
-            base: '#F3F2F4',
-            _lightMode: '#21143B',
-            _darkMode: '#F3F2F4',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.neutral.inverse.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.neutral.inverse.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.neutral.inverse.$value,
+            ).$value,
           },
         },
       },
@@ -157,9 +262,18 @@ export const neutralTokens: NeutralTokens = {
         description: 'The default text color used for layouts.',
         value: {
           _cerberusTheme: {
-            base: '#FCFBFE',
-            _lightMode: '#21143B',
-            _darkMode: '#FCFBFE',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.neutral.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.neutral.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.neutral.initial.$value,
+            ).$value,
           },
         },
       },
@@ -168,9 +282,18 @@ export const neutralTokens: NeutralTokens = {
           'The text color used for layouts with a 100 surface color.',
         value: {
           _cerberusTheme: {
-            base: '#BCBACA',
-            _lightMode: '#696584',
-            _darkMode: '#BCBACA',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.neutral['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.neutral['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.neutral['100'].$value,
+            ).$value,
           },
         },
       },
@@ -179,9 +302,18 @@ export const neutralTokens: NeutralTokens = {
           'The text color used for layouts with a 200 surface color.',
         value: {
           _cerberusTheme: {
-            base: '#E4E3E9',
-            _lightMode: '#362A58',
-            _darkMode: '#E4E3E9',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.neutral['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.neutral['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.neutral['200'].$value,
+            ).$value,
           },
         },
       },
@@ -190,9 +322,18 @@ export const neutralTokens: NeutralTokens = {
           'The text color used for layouts with a 300 surface color.',
         value: {
           _cerberusTheme: {
-            base: '#FFFFFF',
-            _lightMode: '#130024',
-            _darkMode: '#FFFFFF',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.neutral['300'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.neutral['300'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.neutral['300'].$value,
+            ).$value,
           },
         },
       },
@@ -201,9 +342,18 @@ export const neutralTokens: NeutralTokens = {
           'The text color used for layouts with an inverse surface color.',
         value: {
           _cerberusTheme: {
-            base: '#130F25',
-            _lightMode: '#FFFFFF',
-            _darkMode: '#130F25',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.neutral.inverse.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.neutral.inverse.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.neutral.inverse.$value,
+            ).$value,
           },
         },
       },

@@ -1,17 +1,22 @@
 import type { Prominence, SemanticToken } from './types'
+import { colors, deepGetByPaths, rawTokens } from '../../tokens'
 
-type Prominences = Exclude<Prominence, 'inverse' | 300>
+/**
+ * This module is a collection of warning tokens that are used to generate the theme.
+ * @module warningTokens
+ */
+
+type Prominences = Exclude<Prominence, 300>
 
 export interface WarningTokens {
   readonly warning: {
     readonly border: {
       readonly initial: SemanticToken
     }
-    readonly bg: {
-      readonly initial: SemanticToken
-    }
     readonly surface: {
       readonly initial: SemanticToken
+      readonly 100: SemanticToken
+      readonly 200: SemanticToken
     }
     readonly text: {
       readonly [P in Prominences]: SemanticToken
@@ -26,23 +31,18 @@ export const warningTokens: WarningTokens = {
         description: 'The default border color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: '#FCF6D1',
-            _lightMode: '#F4DA49',
-            _darkMode: '#FCF6D1',
-          },
-        },
-      },
-    },
-
-    bg: {
-      initial: {
-        description:
-          'The default background color for elements that display a warning state.',
-        value: {
-          _cerberusTheme: {
-            base: '#917D10',
-            _lightMode: '#FCF6D1',
-            _darkMode: '#917D10',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.border.warning.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.border.warning.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.border.warning.initial.$value,
+            ).$value,
           },
         },
       },
@@ -51,12 +51,61 @@ export const warningTokens: WarningTokens = {
     surface: {
       initial: {
         description:
-          'The default color for a layout-based surface element (like a page or card) in a warning state.',
+          'The default color for static (surface) elements that display a warning state.',
         value: {
           _cerberusTheme: {
-            base: '#917D10',
-            _lightMode: '#FCF6D1',
-            _darkMode: '#917D10',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.warning.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.warning.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.warning.initial.$value,
+            ).$value,
+          },
+        },
+      },
+      100: {
+        description:
+          'The second layer of color for static (surface) elements that display a warning state - used on top of initial.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.warning['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.warning['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.warning['100'].$value,
+            ).$value,
+          },
+        },
+      },
+      200: {
+        description:
+          'The third layer of color for static (surface) elements that display a warning state - used on top of 100.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.warning['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.warning['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.warning['200'].$value,
+            ).$value,
           },
         },
       },
@@ -67,9 +116,18 @@ export const warningTokens: WarningTokens = {
         description: 'The default text color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: '#FEFBE9',
-            _lightMode: '#60540B',
-            _darkMode: '#FEFBE9',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.warning.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning.initial.$value,
+            ).$value,
           },
         },
       },
@@ -77,9 +135,18 @@ export const warningTokens: WarningTokens = {
         description: 'The secondary text color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: '#F9EDA4',
-            _lightMode: '#C1A716',
-            _darkMode: '#F9EDA4',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.warning['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning['100'].$value,
+            ).$value,
           },
         },
       },
@@ -87,9 +154,38 @@ export const warningTokens: WarningTokens = {
         description: 'The tertiary text color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: '#F1D11B',
-            _lightMode: '#F1D11B',
-            _darkMode: '#F1D11B',
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.warning['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning['200'].$value,
+            ).$value,
+          },
+        },
+      },
+      inverse: {
+        description:
+          'The inverse version of the default text color of warning elements.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning.inverse.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.warning.inverse.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning.inverse.$value,
+            ).$value,
           },
         },
       },

@@ -1,4 +1,4 @@
-import { allPalettes } from './palettes'
+import { nonActionPalettes } from './palettes'
 
 export const tagBase = {
   alignItems: 'center',
@@ -12,7 +12,7 @@ export const tagBase = {
 }
 
 export const filledUsage = {
-  bgColor: 'colorPalette.bg.initial',
+  bgColor: 'colorPalette.surface.200',
 }
 
-export const tagPalettes = allPalettes
+export const tagPalettes = nonActionPalettes

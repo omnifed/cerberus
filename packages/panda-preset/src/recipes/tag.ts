@@ -50,7 +50,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   },
 
   defaultVariants: {
-    palette: 'action',
+    palette: 'neutral',
     usage: 'filled',
     shape: 'pill',
   },

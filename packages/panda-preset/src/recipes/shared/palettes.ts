@@ -37,3 +37,11 @@ export const allPalettes = {
   warning,
   danger,
 }
+
+export const nonActionPalettes = {
+  neutral,
+  info,
+  success,
+  warning,
+  danger,
+}
