@@ -26,12 +26,6 @@ describe('tag recipe', () => {
     })
   })
 
-  test('should have an action palette variant', () => {
-    expect(tag.variants?.palette.action).toMatchObject({
-      colorPalette: 'action',
-    })
-  })
-
   test('should have an info palette variant', () => {
     expect(tag.variants?.palette.info).toMatchObject({
       colorPalette: 'info',
@@ -93,7 +87,7 @@ describe('tag recipe', () => {
 
   test('should have default variants', () => {
     expect(tag.defaultVariants).toMatchObject({
-      palette: 'action',
+      palette: 'neutral',
       usage: 'filled',
       shape: 'pill',
     })

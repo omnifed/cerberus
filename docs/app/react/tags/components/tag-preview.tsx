@@ -95,7 +95,7 @@ export function CustomTagPreview() {
 type TagTypes = 'pill' | 'rounded' | 'outline' | 'filled' | 'closable'
 interface MatchTagProps {
   kind: TagTypes
-  palette?: TagProps['palette']
+  palette?: TagProps['palette'] | 'gradient'
 }
 
 function MatchTagPreview(props: MatchTagProps) {
@@ -170,10 +170,16 @@ function MatchTagPalettePreview(props: MatchTagProps) {
           Neutral
         </Tag>
       )
-    case 'action':
+    case 'gradient':
       return (
-        <Tag palette="action" shape="rounded">
-          Action
+        <Tag
+          palette="neutral"
+          shape="rounded"
+          className={css({
+            cerbGradient: 'blue',
+          })}
+        >
+          Gradient
         </Tag>
       )
     case 'info':
@@ -218,7 +224,7 @@ export function OverviewPaletteTagPreview() {
   ]
   const palettes = [
     'neutral',
-    'action',
+    'gradient',
     'info',
     'success',
     'warning',

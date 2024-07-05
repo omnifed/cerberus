@@ -251,7 +251,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.brand.100",
+        "$value": "colors.neutral.white",
         "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
         "$extensions": {
           "com.figma": {
@@ -263,7 +263,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "colors.brand.5",
+        "$value": "colors.brand.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -698,31 +698,31 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.brand.50",
+        "$value": "colors.brand.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.brand.60",
+        "$value": "colors.brand.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -734,7 +734,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -746,7 +746,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -760,7 +760,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -772,7 +772,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -784,7 +784,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -798,7 +798,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -810,7 +810,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -822,7 +822,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -836,7 +836,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -848,7 +848,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -860,7 +860,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -874,7 +874,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -886,7 +886,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -898,7 +898,7 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
             "codeSyntax": {}
           }
         }
