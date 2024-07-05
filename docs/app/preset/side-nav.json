@@ -8,6 +8,7 @@
     "id": "1:a",
     "label": "Installation",
     "route": "/preset",
+    "tag": "",
     "type": "route"
   },
   {
@@ -19,24 +20,28 @@
     "id": "2:a",
     "label": "Theme",
     "route": "/preset/theme",
+    "tag": "",
     "type": "route"
   },
   {
     "id": "2:b",
     "label": "Colors",
     "route": "/preset/colors",
+    "tag": "new",
     "type": "route"
   },
   {
     "id": "2:c",
     "label": "Typography",
     "route": "/preset/typography",
+    "tag": "",
     "type": "route"
   },
   {
     "id": "2:d",
     "label": "Animation",
     "route": "/preset/animation",
+    "tag": "",
     "type": "route"
   },
   {
@@ -48,24 +53,28 @@
     "id": "3:a",
     "label": "Z-Index",
     "route": "/preset/z-index",
+    "tag": "",
     "type": "route"
   },
   {
     "id": "3:b",
     "label": "Conditions",
     "route": "/preset/conditions",
+    "tag": "",
     "type": "route"
   },
   {
     "id": "3:c",
     "label": "Utilities",
     "route": "/preset/utilities",
+    "tag": "",
     "type": "route"
   },
   {
     "id": "3:d",
     "label": "Patterns",
     "route": "/preset/patterns",
+    "tag": "",
     "type": "route"
   }
 ]
