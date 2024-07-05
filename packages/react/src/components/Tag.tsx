@@ -16,7 +16,7 @@ export interface TagProps extends HTMLAttributes<HTMLSpanElement> {
   usage?: 'filled' | 'outline'
 }
 export interface ClickableTagProps extends HTMLAttributes<HTMLSpanElement> {
-  palette?: Sentiment
+  palette?: 'action'
   shape?: 'pill'
   onClick: () => void
   usage?: 'filled'
@@ -45,6 +45,7 @@ export function Tag(
   const closableStyles = isClosable
     ? css({
         bgColor: 'action.bg.active',
+        color: 'action.text.initial',
         paddingInlineEnd: '0',
       })
     : ''

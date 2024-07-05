@@ -61,7 +61,7 @@ describe('tag recipe', () => {
 
   test('should have a filled usage variant', () => {
     expect(tag.variants?.usage.filled).toMatchObject({
-      bgColor: 'colorPalette.bg.initial',
+      bgColor: 'colorPalette.surface.200',
     })
   })
 

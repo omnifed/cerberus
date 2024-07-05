@@ -6,7 +6,7 @@ import { colors, deepGetByPaths, rawTokens } from '../../tokens'
  * @module warningTokens
  */
 
-type Prominences = Exclude<Prominence, 'inverse' | 300>
+type Prominences = Exclude<Prominence, 300>
 
 export interface WarningTokens {
   readonly warning: {
@@ -15,6 +15,8 @@ export interface WarningTokens {
     }
     readonly surface: {
       readonly initial: SemanticToken
+      readonly 100: SemanticToken
+      readonly 200: SemanticToken
     }
     readonly text: {
       readonly [P in Prominences]: SemanticToken
@@ -63,6 +65,46 @@ export const warningTokens: WarningTokens = {
             _darkMode: deepGetByPaths(
               colors,
               rawTokens.semanticColors.dark.surface.warning.initial.$value,
+            ).$value,
+          },
+        },
+      },
+      100: {
+        description:
+          'The second layer of color for static (surface) elements that display a warning state - used on top of initial.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.warning['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.warning['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.warning['100'].$value,
+            ).$value,
+          },
+        },
+      },
+      200: {
+        description:
+          'The third layer of color for static (surface) elements that display a warning state - used on top of 100.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.warning['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.warning['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.warning['200'].$value,
             ).$value,
           },
         },
@@ -123,6 +165,26 @@ export const warningTokens: WarningTokens = {
             _darkMode: deepGetByPaths(
               colors,
               rawTokens.semanticColors.dark.text.warning['200'].$value,
+            ).$value,
+          },
+        },
+      },
+      inverse: {
+        description:
+          'The inverse version of the default text color of warning elements.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning.inverse.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.warning.inverse.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning.inverse.$value,
             ).$value,
           },
         },

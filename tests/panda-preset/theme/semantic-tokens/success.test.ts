@@ -85,17 +85,17 @@ describe('success', () => {
       formatToken(
         successTokens.success.surface['200'].value._cerberusTheme.base,
       ),
-    ).toEqual('#41C16E')
+    ).toEqual('#0E8E3B')
     expect(
       formatToken(
         successTokens.success.surface['200'].value._cerberusTheme._darkMode,
       ),
-    ).toEqual('#41C16E')
+    ).toEqual('#0E8E3B')
     expect(
       formatToken(
         successTokens.success.surface['200'].value._cerberusTheme._lightMode,
       ),
-    ).toEqual('#0E8E3B')
+    ).toEqual('#12B24A')
   })
 
   test('should have a bg.active property', () => {
@@ -165,12 +165,12 @@ describe('success', () => {
   test('should have a text.inverse property', () => {
     expect(
       formatToken(successTokens.success.text.inverse.value._cerberusTheme.base),
-    ).toEqual('#07471E')
+    ).toEqual('#04240F')
     expect(
       formatToken(
         successTokens.success.text.inverse.value._cerberusTheme._darkMode,
       ),
-    ).toEqual('#07471E')
+    ).toEqual('#04240F')
     expect(
       formatToken(
         successTokens.success.text.inverse.value._cerberusTheme._lightMode,

@@ -76,7 +76,7 @@ describe('dangerTokens', () => {
     ).toEqual('#FC5E57')
   })
 
-  test('should have a surface property', () => {
+  test('should have a surface.initial property', () => {
     expect(dangerTokens.danger.surface).toBeDefined()
   })
 
@@ -85,17 +85,49 @@ describe('dangerTokens', () => {
       formatToken(
         dangerTokens.danger.surface.initial.value._cerberusTheme.base,
       ),
-    ).toEqual('#641612')
+    ).toEqual('#97201B')
     expect(
       formatToken(
         dangerTokens.danger.surface.initial.value._cerberusTheme._darkMode,
       ),
-    ).toEqual('#641612')
+    ).toEqual('#97201B')
     expect(
       formatToken(
         dangerTokens.danger.surface.initial.value._cerberusTheme._lightMode,
       ),
+    ).toEqual('#FDAFAB')
+  })
+
+  test('should have a surface.100 property', () => {
+    expect(
+      formatToken(dangerTokens.danger.surface['100'].value._cerberusTheme.base),
+    ).toEqual('#641612')
+    expect(
+      formatToken(
+        dangerTokens.danger.surface['100'].value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#641612')
+    expect(
+      formatToken(
+        dangerTokens.danger.surface['100'].value._cerberusTheme._lightMode,
+      ),
     ).toEqual('#FFEBEA')
+  })
+
+  test('should have a surface.200 property', () => {
+    expect(
+      formatToken(dangerTokens.danger.surface['200'].value._cerberusTheme.base),
+    ).toEqual('#FC5E57')
+    expect(
+      formatToken(
+        dangerTokens.danger.surface['200'].value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#FC5E57')
+    expect(
+      formatToken(
+        dangerTokens.danger.surface['200'].value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#FC5E57')
   })
 
   test('should have a text property', () => {

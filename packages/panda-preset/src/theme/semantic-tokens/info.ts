@@ -18,6 +18,8 @@ export interface InfoTokens {
     }
     readonly surface: {
       readonly initial: SemanticToken
+      readonly 100: SemanticToken
+      readonly 200: SemanticToken
     }
     readonly text: {
       readonly [P in Prominences]: SemanticToken
@@ -88,6 +90,46 @@ export const infoTokens: InfoTokens = {
             _darkMode: deepGetByPaths(
               colors,
               rawTokens.semanticColors.dark.surface.info.initial.$value,
+            ).$value,
+          },
+        },
+      },
+      100: {
+        description:
+          'The second layer of color for static (surface) elements that display a info state - used on top of initial.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.info['100'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.info['100'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.info['100'].$value,
+            ).$value,
+          },
+        },
+      },
+      200: {
+        description:
+          'The third layer of color for static (surface) elements that display a info state - used on top of 100.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.info['200'].$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.surface.info['200'].$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.surface.info['200'].$value,
             ).$value,
           },
         },

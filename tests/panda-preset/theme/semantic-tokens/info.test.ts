@@ -46,7 +46,7 @@ describe('infoTokens', () => {
     ).toEqual('#9ACFEE')
   })
 
-  test('should have a surface property', () => {
+  test('should have a surface.initial property', () => {
     expect(infoTokens.info.surface).toBeDefined()
   })
 
@@ -63,7 +63,39 @@ describe('infoTokens', () => {
       formatToken(
         infoTokens.info.surface.initial.value._cerberusTheme._lightMode,
       ),
+    ).toEqual('#9ACFEE')
+  })
+
+  test('should have a surface.100 property', () => {
+    expect(
+      formatToken(infoTokens.info.surface['100'].value._cerberusTheme.base),
+    ).toEqual('#013655')
+    expect(
+      formatToken(
+        infoTokens.info.surface['100'].value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#013655')
+    expect(
+      formatToken(
+        infoTokens.info.surface['100'].value._cerberusTheme._lightMode,
+      ),
     ).toEqual('#CCE7F7')
+  })
+
+  test('should have a surface.200 property', () => {
+    expect(
+      formatToken(infoTokens.info.surface['200'].value._cerberusTheme.base),
+    ).toEqual('#35A0DD')
+    expect(
+      formatToken(
+        infoTokens.info.surface['200'].value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#35A0DD')
+    expect(
+      formatToken(
+        infoTokens.info.surface['200'].value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#35A0DD')
   })
 
   test('should have a text property', () => {
@@ -79,7 +111,7 @@ describe('infoTokens', () => {
     ).toEqual('#E6F3FB')
     expect(
       formatToken(infoTokens.info.text.initial.value._cerberusTheme._lightMode),
-    ).toEqual('#015280')
+    ).toEqual('#001B2B')
   })
 
   test('should have a text.100 property', () => {

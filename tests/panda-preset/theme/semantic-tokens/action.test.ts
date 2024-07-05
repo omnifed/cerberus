@@ -18,12 +18,12 @@ describe('actionTokens', () => {
     expect(actionTokens.action.bg.initial).toBeDefined()
     expect(
       formatToken(actionTokens.action.bg.initial.value._cerberusTheme.base),
-    ).toBe('#7F33C4')
+    ).toBe('#5F00B5')
     expect(
       formatToken(
         actionTokens.action.bg.initial.value._cerberusTheme._darkMode,
       ),
-    ).toBe('#7F33C4')
+    ).toBe('#5F00B5')
     expect(
       formatToken(
         actionTokens.action.bg.initial.value._cerberusTheme._lightMode,
@@ -35,10 +35,10 @@ describe('actionTokens', () => {
     expect(actionTokens.action.bg.hover).toBeDefined()
     expect(
       formatToken(actionTokens.action.bg.hover.value._cerberusTheme.base),
-    ).toBe('#5F00B5')
+    ).toBe('#7F33C4')
     expect(
       formatToken(actionTokens.action.bg.hover.value._cerberusTheme._darkMode),
-    ).toBe('#5F00B5')
+    ).toBe('#7F33C4')
     expect(
       formatToken(actionTokens.action.bg.hover.value._cerberusTheme._lightMode),
     ).toBe('#7F33C4')
@@ -298,12 +298,12 @@ describe('actionTokens', () => {
     expect(actionTokens.action.text.initial).toBeDefined()
     expect(
       formatToken(actionTokens.action.text.initial.value._cerberusTheme.base),
-    ).toBe('#130024')
+    ).toBe('#FFFFFF')
     expect(
       formatToken(
         actionTokens.action.text.initial.value._cerberusTheme._darkMode,
       ),
-    ).toBe('#130024')
+    ).toBe('#FFFFFF')
     expect(
       formatToken(
         actionTokens.action.text.initial.value._cerberusTheme._lightMode,
@@ -349,12 +349,12 @@ describe('actionTokens', () => {
     expect(actionTokens.action.text.inverse).toBeDefined()
     expect(
       formatToken(actionTokens.action.text.inverse.value._cerberusTheme.base),
-    ).toBe('#FCFBFE')
+    ).toBe('#130024')
     expect(
       formatToken(
         actionTokens.action.text.inverse.value._cerberusTheme._darkMode,
       ),
-    ).toBe('#FCFBFE')
+    ).toBe('#130024')
     expect(
       formatToken(
         actionTokens.action.text.inverse.value._cerberusTheme._lightMode,

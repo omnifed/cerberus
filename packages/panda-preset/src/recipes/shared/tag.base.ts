@@ -12,7 +12,7 @@ export const tagBase = {
 }
 
 export const filledUsage = {
-  bgColor: 'colorPalette.surface.initial',
+  bgColor: 'colorPalette.surface.200',
 }
 
 export const tagPalettes = nonActionPalettes
