@@ -229,7 +229,7 @@ export function OverviewPaletteTagPreview() {
     'success',
     'warning',
     'danger',
-  ] as Sentiment[]
+  ] as MatchTagProps['palette'][]
 
   return (
     <>
