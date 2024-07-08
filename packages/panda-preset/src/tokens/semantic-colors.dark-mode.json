@@ -515,7 +515,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.danger.50",
+        "$value": "colors.danger.70",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
