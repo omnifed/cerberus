@@ -117,12 +117,12 @@ describe('dangerTokens', () => {
   test('should have a surface.200 property', () => {
     expect(
       formatToken(dangerTokens.danger.surface['200'].value._cerberusTheme.base),
-    ).toEqual('#FC5E57')
+    ).toEqual('#DA1E28')
     expect(
       formatToken(
         dangerTokens.danger.surface['200'].value._cerberusTheme._darkMode,
       ),
-    ).toEqual('#FC5E57')
+    ).toEqual('#DA1E28')
     expect(
       formatToken(
         dangerTokens.danger.surface['200'].value._cerberusTheme._lightMode,
