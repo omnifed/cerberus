@@ -8,14 +8,14 @@
   "main": "src/index.ts",
   "module": "src/index.ts",
   "scripts": {
-    "build": "tsup-node --experimental-dts",
+    "build": "tsup --experimental-dts noExternals",
     "clean": "rm -rf ./build",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
+    "@cerberus/icons": "npm:@jsr/cerberus__icons",
     "@cerberus/panda-preset": "npm:@jsr/cerberus__panda-preset",
     "@cerberus/styled-system": "npm:@cerberus-design/styled-system@workspace:*",
-    "@cerberus/icons": "npm:@jsr/cerberus__icons",
     "@pandacss/dev": "*",
     "react": "*",
     "react-dom": "*"
@@ -27,7 +27,7 @@
     "@types/react": "^18",
     "react": "^18",
     "react-dom": "^18",
-    "tsup": "^8.0.2"
+    "tsup": "^8.1.0"
   },
   "publishConfig": {
     "access": "public",
