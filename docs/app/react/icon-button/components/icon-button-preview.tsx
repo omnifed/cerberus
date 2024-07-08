@@ -24,6 +24,14 @@ export function DangerIconButtonPreview() {
   )
 }
 
+export function OutlinedIconButtonPreview() {
+  return (
+    <IconButton ariaLabel="Like something" usage="outlined">
+      <ThumbsUp size={16} />
+    </IconButton>
+  )
+}
+
 export function TextIconButtonPreview() {
   return (
     <IconButton ariaLabel="Like something" usage="text">

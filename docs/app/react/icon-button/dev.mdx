@@ -7,6 +7,7 @@ recipe: 'iconButton.ts'
 import CodePreview from '@/app/components/CodePreview'
 import {
   BasicIconButtonPreview,
+  OutlinedIconButtonPreview,
   DangerIconButtonPreview,
   TextIconButtonPreview,
   IconButtonSizesPreview,
@@ -32,6 +33,23 @@ function BasicIconButtonPreview() {
   return (
     <IconButton ariaLabel="Like something">
       <ThumbsUp size={24} />
+    </IconButton>
+  )
+}
+```
+</CodePreview>
+
+### Outlined
+
+<CodePreview preview={<OutlinedIconButtonPreview />}>
+```tsx title="icon-button.tsx"
+import { IconButton } from '@cerberus-design/react'
+import { ThumbsUp } from '@cerberus/icons'
+
+function OutlinedIconButtonPreview() {
+  return (
+    <IconButton ariaLabel="Like something" usage="outlined">
+      <ThumbsUp size={16} />
     </IconButton>
   )
 }
@@ -139,7 +157,7 @@ export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
   shape?: 'circle'
   size?: 'sm' | 'lg'
   tooltipPosition?: 'top' | 'right' | 'bottom' | 'left'
-  usage?: 'filled' | 'text'
+  usage?: 'filled' | 'text' | 'outlined'
 }
 
 define function IconButton(props: IconButtonProps): ReactNode

@@ -86,7 +86,7 @@ describe('NavMenuTrigger', () => {
       expanded: true,
     }
     render(
-      <NavMenuTrigger usage="outline" {...ariaProps}>
+      <NavMenuTrigger usage="outlined" {...ariaProps}>
         it works
       </NavMenuTrigger>,
       {
@@ -96,7 +96,7 @@ describe('NavMenuTrigger', () => {
     expect(
       screen
         .getByText(/it works/i)
-        .classList.contains('cerberus-button--usage_outline'),
+        .classList.contains('cerberus-button--usage_outlined'),
     ).toBeTrue()
   })
 

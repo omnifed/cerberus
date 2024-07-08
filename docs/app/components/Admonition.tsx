@@ -61,9 +61,6 @@ function getPaletteTextStyles(palette: Sentiment) {
     case 'danger':
       return css({
         color: 'danger.text.initial !important',
-        _darkMode: {
-          color: 'danger.text.inverse !important',
-        },
       })
 
     case 'info':

@@ -94,6 +94,21 @@ describe('iconButton recipe', () => {
     })
   })
 
+  test('should have an outlined usage variant', () => {
+    expect(iconButton.variants?.usage.outlined).toMatchObject({
+      color: 'colorPalette.text.200',
+      _hover: {
+        bgColor: 'colorPalette.bg.100.hover',
+        _disabled: {
+          bgColor: 'colorPalette.bg.100.initial',
+        },
+      },
+      _active: {
+        bgColor: 'colorPalette.bg.100.active',
+      },
+    })
+  })
+
   test('should have a circle shape variant', () => {
     expect(iconButton.variants?.shape.circle).toMatchObject({
       pxi: '0',

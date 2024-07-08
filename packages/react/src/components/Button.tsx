@@ -9,7 +9,7 @@ import { button } from '@cerberus/styled-system/recipes'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   palette?: 'action' | 'danger'
-  usage?: 'filled' | 'outline' | 'text'
+  usage?: 'filled' | 'outlined' | 'text'
   shape?: 'sharp' | 'rounded'
 }
 

@@ -12,13 +12,13 @@ describe('Tag', () => {
     expect(screen.getByText(/it works/i)).toBeTruthy()
   })
 
-  test('should render a action tag', () => {
+  test('should not render a action tag', () => {
     render(<Tag>it works</Tag>)
     expect(
       screen
         .getByText(/it works/i)
         .classList.contains('cerberus-tag--palette_action'),
-    ).toBeTrue()
+    ).toBeFalse()
   })
 
   test('should render a danger tag', () => {

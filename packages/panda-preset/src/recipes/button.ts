@@ -7,7 +7,7 @@ import {
   buttonBase,
   buttonPalettes,
   filledUsage,
-  nonTextStates,
+  outlinedUsage,
   sharpRadii,
   textUsage,
 } from './shared/button.base'
@@ -36,12 +36,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     palette: buttonPalettes,
     usage: {
       text: textUsage,
-      outline: {
-        ...nonTextStates,
-        bgColor: 'colorPalette.bg.100.initial',
-        border: '4px solid',
-        borderColor: 'colorPalette.border.initial',
-      },
+      outlined: outlinedUsage,
       filled: filledUsage,
     },
     shape: {

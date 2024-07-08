@@ -47,14 +47,14 @@ function DangerButton() {
 ```
 </CodePreview>
 
-### Outline
+### Outlined
 
 <CodePreview preview={<OutlineButtonPreview />}>
 ```tsx title="button.tsx"
 import { Button } from '@cerberus-design/react'
 
-function OutlineButton() {
-  return <Button usage="outline">Outline styles</Button>
+function OutlinedButton() {
+  return <Button usage="outlined">Outlined styles</Button>
 }
 ```
 </CodePreview>
@@ -133,7 +133,7 @@ function CustomButton() {
 ```ts showLineNumbers=false
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   palette?: 'action' | 'danger'
-  usage?: 'filled' | 'outline' | 'text'
+  usage?: 'filled' | 'outlined' | 'text'
   shape?: 'sharp' | 'rounded'
 }
 

@@ -3,7 +3,7 @@ import { ArrowRight } from '@cerberus-design/icons'
 
 figma.connect(
   ArrowRight,
-  'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=8688-3388&m=dev',
+  'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=9018-8974&m=dev',
 
   {
     imports: ["import { ArrowRight } from '@cerberus/icons'"],

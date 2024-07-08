@@ -7,6 +7,7 @@ import {
   buttonBase,
   buttonPalettes,
   filledUsage,
+  outlinedUsage,
   textUsage,
 } from './shared/button.base'
 
@@ -40,6 +41,7 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     usage: {
       text: textUsage,
       filled: filledUsage,
+      outlined: outlinedUsage,
     },
     shape: {
       circle: {
