@@ -36,7 +36,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     palette: buttonPalettes,
     usage: {
       text: textUsage,
-      outline: {
+      outlined: {
         ...nonTextStates,
         bgColor: 'colorPalette.bg.100.initial',
         border: '4px solid',
