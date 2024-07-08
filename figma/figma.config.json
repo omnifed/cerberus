@@ -8,11 +8,13 @@
     ],
     "importPaths": {
       "@cerberus-design/react": "@cerberus/react",
-      "@cerberus-design/icons": "@cerberus/icons"
+      "@cerberus-design/icons": "@cerberus/icons",
+      "@cerberus-design/styled-system/*": "@cerberus/styled-system/*"
     },
     "paths": {
       "@cerberus-design/react": "node_modules/@cerberus/react",
-      "@cerberus-design/icons": "node_modules/@cerberus/icons"
+      "@cerberus-design/icons": "node_modules/@cerberus/icons",
+      "@cerberus-design/styled-system/*": "node_modules/@cerberus/styled-system/*"
     }
   }
 }

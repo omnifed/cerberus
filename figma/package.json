@@ -11,6 +11,7 @@
   "dependencies": {
     "@cerberus-design/icons": "workspace:*",
     "@cerberus-design/react": "workspace:*",
+    "@cerberus-design/styled-system": "workspace:*",
     "react": "^18",
     "react-dom": "^18"
   },
