@@ -96,7 +96,7 @@ describe('NavMenuTrigger', () => {
     expect(
       screen
         .getByText(/it works/i)
-        .classList.contains('cerberus-button--usage_outline'),
+        .classList.contains('cerberus-button--usage_outlined'),
     ).toBeTrue()
   })
 
