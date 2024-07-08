@@ -1,8 +1,8 @@
-import { defineConfig } from 'tsup'
+import { defineConfig, type Options } from 'tsup'
 import { modernConfig, legacyConfig } from '@cerberus-design/configs'
 import { devDependencies, peerDependencies } from './package.json'
 
-const externals = [
+const external = [
   ...Object.keys(devDependencies),
   ...Object.keys(peerDependencies),
   'react',
@@ -13,6 +13,6 @@ const externals = [
 ]
 
 export default defineConfig([
-  modernConfig({ entry: ['src/**/*.ts', 'src/**/*.tsx'], externals }),
-  legacyConfig({ entry: ['src/**/*.ts', 'src/**/*.tsx'], externals }),
-])
+  modernConfig({ entry: ['src/**/*.ts', 'src/**/*.tsx'], external }),
+  legacyConfig({ entry: ['src/**/*.ts', 'src/**/*.tsx'], external }),
+] as Options[])
