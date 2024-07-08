@@ -39,8 +39,8 @@ describe('Button', () => {
     ).toBeTrue()
   })
 
-  test('should render an outline button', () => {
-    render(<Button usage="outline">it works</Button>)
+  test('should render an outlined button', () => {
+    render(<Button usage="outlined">it works</Button>)
     expect(
       screen
         .getByText(/it works/i)
