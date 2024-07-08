@@ -86,7 +86,7 @@ describe('NavMenuTrigger', () => {
       expanded: true,
     }
     render(
-      <NavMenuTrigger usage="outline" {...ariaProps}>
+      <NavMenuTrigger usage="outlined" {...ariaProps}>
         it works
       </NavMenuTrigger>,
       {

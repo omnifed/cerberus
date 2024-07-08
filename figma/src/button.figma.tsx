@@ -17,7 +17,7 @@ const props = {
   }),
   usage: figma.enum('Usage', {
     filled: 'filled',
-    outline: 'outline',
+    outline: 'outlined',
     text: 'text',
   }),
   // Figma specific

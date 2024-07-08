@@ -8,12 +8,11 @@ import type { ButtonProps } from './Button'
  * @module
  */
 
-export type IconButtonUsage = Exclude<ButtonProps['usage'], 'outline'>
 export interface IconButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   ariaLabel: string
   palette?: ButtonProps['palette']
-  usage?: IconButtonUsage
+  usage?: ButtonProps['usage']
   shape?: 'circle'
   size?: 'sm' | 'lg'
   tooltipPosition?: 'top' | 'bottom' | 'left' | 'right'

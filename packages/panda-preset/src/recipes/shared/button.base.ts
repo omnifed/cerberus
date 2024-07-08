@@ -73,6 +73,13 @@ export const filledUsage = {
   },
 }
 
+export const outlinedUsage = {
+  ...nonTextStates,
+  bgColor: 'colorPalette.bg.100.initial',
+  border: '4px solid',
+  borderColor: 'colorPalette.border.initial',
+}
+
 export const buttonPalettes = {
   action,
   danger,
