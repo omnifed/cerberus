@@ -14,7 +14,7 @@
   },
   "peerDependencies": {
     "@cerberus/panda-preset": "npm:@jsr/cerberus__panda-preset",
-    "@cerberus/styled-system": "npm:@cerberus-design/styled-system@next",
+    "@cerberus/styled-system": "npm:@cerberus-design/styled-system@workspace:*",
     "@cerberus/icons": "npm:@jsr/cerberus__icons",
     "@pandacss/dev": "*",
     "react": "*",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
+    "@cerberus-design/styled-system": "workspace:*",
     "@microsoft/api-extractor": "^7.46.2",
     "@types/react": "^18",
     "react": "^18",

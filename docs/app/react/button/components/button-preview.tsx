@@ -13,7 +13,7 @@ export function DangerButtonPreview() {
 }
 
 export function OutlineButtonPreview() {
-  return <Button usage="outline">Outline styles</Button>
+  return <Button usage="outlined">Outlined styles</Button>
 }
 
 export function TextButtonPreview() {
@@ -52,7 +52,7 @@ export function CustomButtonPreview() {
 
 // Overview
 
-type ButtonTypes = 'sharp' | 'rounded' | 'outline' | 'text'
+type ButtonTypes = 'sharp' | 'rounded' | 'outlined' | 'text'
 interface MatchButtonProps {
   kind: ButtonTypes
 }
@@ -63,7 +63,7 @@ function MatchButtonPreview(props: MatchButtonProps) {
       return <BasicButtonPreview />
     case 'rounded':
       return <RoundedButtonPreview />
-    case 'outline':
+    case 'outlined':
       return <OutlineButtonPreview />
     case 'text':
       return <TextButtonPreview />
@@ -73,7 +73,7 @@ function MatchButtonPreview(props: MatchButtonProps) {
 }
 
 export function OverviewButtonPreview() {
-  const btnTypes: ButtonTypes[] = ['sharp', 'rounded', 'outline', 'text']
+  const btnTypes: ButtonTypes[] = ['sharp', 'rounded', 'outlined', 'text']
   return (
     <>
       <div

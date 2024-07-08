@@ -1,11 +1,13 @@
 {
   "extends": "../../tsconfig.base.json",
   "include": ["src"],
-  "exclude": ["build", "node_modules"],
+  "exclude": ["build"],
 
   "compilerOptions": {
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@cerberus/*": ["node_modules/@cerberus-design/*"]
     }
   }
 }
