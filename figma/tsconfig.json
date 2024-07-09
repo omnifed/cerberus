@@ -1,6 +1,6 @@
 {
   "extends": "../tsconfig.base.json",
-  "include": ["src/*.figma.tsx"],
+  "include": ["src/**/*.figma.tsx"],
   "exclude": ["build", "node_modules"],
 
   "compilerOptions": {
