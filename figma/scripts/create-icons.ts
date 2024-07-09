@@ -1,9 +1,14 @@
 import { client } from '@figma/code-connect'
 
+/**
+ * This module accepts a Figma Page URL and returns a list of components to
+ * create a Code Connect file for each component.
+ */
+
 async function getIcons() {
   try {
     const components = await client.getComponents(
-      'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=8828-2234&t=3tgTnJYuDX1IXmLI-1',
+      'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=2-14619&m=dev',
     )
 
     console.log({
