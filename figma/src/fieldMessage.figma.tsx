@@ -7,7 +7,6 @@ const SELECTION =
 const imports = ["import { FieldMessage } from '@cerberus/react'"]
 
 const props = {
-  // Figma specific
   invalid: figma.boolean('invalid'),
   text: figma.textContent('text'),
 }

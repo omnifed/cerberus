@@ -7,7 +7,6 @@ const SELECTION =
 const imports = ["import { Label } from '@cerberus/react'"]
 
 const props = {
-  // Figma specific
   state: figma.enum('State', {
     required: 'required',
     optional: 'optional',
