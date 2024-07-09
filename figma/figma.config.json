@@ -2,19 +2,9 @@
   "codeConnect": {
     "parser": "react",
     "include": [
-      "src/**",
-      "node_modules/@cerberus/react/**",
-      "node_modules/@cerberus/icons/**"
+      "src/**/*.figma.tsx",
+      "node_modules/@cerberus-design/*/src/**/*"
     ],
-    "importPaths": {
-      "@cerberus-design/react": "@cerberus/react",
-      "@cerberus-design/icons": "@cerberus/icons",
-      "@cerberus-design/styled-system/*": "@cerberus/styled-system/*"
-    },
-    "paths": {
-      "@cerberus-design/react": "node_modules/@cerberus/react",
-      "@cerberus-design/icons": "node_modules/@cerberus/icons",
-      "@cerberus-design/styled-system/*": "node_modules/@cerberus/styled-system/*"
-    }
+    "exclude": ["scripts"]
   }
 }
