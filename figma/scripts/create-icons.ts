@@ -18,6 +18,8 @@ async function getIcons() {
       ),
     })
 
+    // Figma example: https://github.com/figma/code-connect/blob/main/cli/scripts/import-icons.ts
+
     // STEP 1: Get all the icons (should just be components)
 
     // STEP 2: Create a new file for each icon [name].figma.tsx in the src/icons folder (using Bun)
