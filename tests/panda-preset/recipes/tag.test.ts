@@ -50,8 +50,8 @@ describe('tag recipe', () => {
     })
   })
 
-  test('should have an outline usage variant', () => {
-    expect(tag.variants?.usage.outline).toMatchObject({
+  test('should have an outlined usage variant', () => {
+    expect(tag.variants?.usage.outlined).toMatchObject({
       bgColor: 'inherit',
       border: '1.5px solid',
       borderColor: 'colorPalette.border.initial',
