@@ -14,8 +14,8 @@ export function BasicTagPreview() {
 
 export function OutlineTagPreview() {
   return (
-    <Tag shape="rounded" usage="outline">
-      Outline
+    <Tag shape="rounded" usage="outlined">
+      Outlined
     </Tag>
   )
 }
@@ -184,13 +184,13 @@ function MatchTagPalettePreview(props: MatchTagProps) {
       )
     case 'info':
       return (
-        <Tag palette="info" shape="rounded" usage="outline">
+        <Tag palette="info" shape="rounded" usage="outlined">
           Info
         </Tag>
       )
     case 'success':
       return (
-        <Tag palette="success" shape="rounded" usage="outline">
+        <Tag palette="success" shape="rounded" usage="outlined">
           Success
         </Tag>
       )
