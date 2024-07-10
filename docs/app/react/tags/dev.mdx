@@ -50,13 +50,13 @@ function BasicTagPreview() {
 ```
 </CodePreview>
 
-### Outline
+### Outlined
 
 <CodePreview preview={<OutlineTagPreview />}>
 ```tsx title="tag.tsx"
 import { Tag } from '@cerberus-design/react'
 
-function OutlineTagPreview() {
+function OutlinedTagPreview() {
   return (
     <Tag shape="rounded" usage="outline">
       Outline
@@ -204,7 +204,7 @@ function CustomTagPreview() {
 export interface TagProps extends HTMLAttributes<HTMLSpanElement> {
   palette?: Sentiment
   shape?: 'rounded' | 'pill'
-  usage?: 'filled' | 'outline'
+  usage?: 'filled' | 'outlined'
 }
 export interface ClickableTagProps extends HTMLAttributes<HTMLSpanElement> {
   shape?: 'pill'

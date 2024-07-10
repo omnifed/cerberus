@@ -20,7 +20,7 @@ const props = {
   }),
   usage: figma.enum('Usage', {
     filled: 'filled',
-    outlined: 'outline',
+    outlined: 'outlined',
   }),
   // Figma specific
   text: figma.textContent('label'),

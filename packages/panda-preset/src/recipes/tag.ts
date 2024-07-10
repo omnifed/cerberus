@@ -24,7 +24,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     palette: tagPalettes,
     usage: {
       filled: filledUsage,
-      outline: {
+      outlined: {
         bgColor: 'inherit',
         border: '1.5px solid',
         borderColor: 'colorPalette.border.initial',

@@ -10,7 +10,7 @@ export function ClosableTagPreview(props: TagPreviewProps) {
   }, [])
 
   return (
-    <Tag shape="pill" onClick={handleClick}>
+    <Tag shape="pill" onClick={handleClick} usage="filled">
       Closable
     </Tag>
   )

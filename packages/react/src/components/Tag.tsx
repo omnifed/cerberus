@@ -3,39 +3,42 @@ import { Close } from '@cerberus/icons'
 import { Show } from './Show'
 import { css, cx } from '@cerberus/styled-system/css'
 import { iconButton, tag } from '@cerberus/styled-system/recipes'
-import type { ConditionalValue } from '@cerberus/styled-system/types'
+import type {
+  ConditionalValue,
+  RecipeVariantProps,
+} from '@cerberus/styled-system/types'
 
 /**
  * This module contains the tag component.
  * @module
  */
 
-export type NonActionablePalette = ConditionalValue<
-  'neutral' | 'info' | 'success' | 'warning' | 'danger'
->
-export interface TagProps extends HTMLAttributes<HTMLSpanElement> {
-  palette?: NonActionablePalette
-  shape?: 'rounded' | 'pill'
-  usage?: 'filled' | 'outline'
-}
-export interface ClickableTagProps extends HTMLAttributes<HTMLSpanElement> {
-  palette?: NonActionablePalette
-  shape?: 'pill'
+export type TagRecipeProps = RecipeVariantProps<typeof tag>
+export type StaticTagProps = HTMLAttributes<HTMLSpanElement> &
+  TagRecipeProps & {
+    onClick?: never
+  }
+export type ClickableTagProps = HTMLAttributes<HTMLSpanElement> & {
+  palette?: ConditionalValue<
+    'neutral' | 'info' | 'success' | 'warning' | 'danger'
+  >
   onClick: () => void
-  usage?: 'filled'
+  shape: 'pill'
+  usage: 'filled'
 }
+export type TagProps = StaticTagProps | ClickableTagProps
 
 /**
  * The Tag component is used to display a meta descriptions.
+ * @definition [Tag docs](https://cerberus.digitalu.design/react/tags)
  * @example
  * ```tsx
  * <Tag>Tag</Tag>
  * ```
  */
-export function Tag(
-  props: PropsWithChildren<TagProps | ClickableTagProps>,
-): JSX.Element {
-  const { palette, shape: initShape, onClick, usage, ...nativeProps } = props
+export function Tag(props: PropsWithChildren<TagProps>): JSX.Element {
+  const { shape: initShape, onClick, usage, ...nativeProps } = props
+  const palette = props?.palette ?? 'neutral'
   const isClosable = Boolean(onClick)
   const shape = isClosable ? 'pill' : initShape
   const closableStyles = isClosable

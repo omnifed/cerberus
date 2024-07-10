@@ -30,12 +30,12 @@ describe('Tag', () => {
     ).toBeTrue()
   })
 
-  test('should render an outline tag', () => {
-    render(<Tag usage="outline">it works</Tag>)
+  test('should render an outlined tag', () => {
+    render(<Tag usage="outlined">it works</Tag>)
     expect(
       screen
         .getByText(/it works/i)
-        .classList.contains('cerberus-tag--usage_outline'),
+        .classList.contains('cerberus-tag--usage_outlined'),
     ).toBeTrue()
   })
 
@@ -59,7 +59,7 @@ describe('Tag', () => {
 
   test('should render a pill when onClick is provided', () => {
     render(
-      <Tag shape="rounded" onClick={jest.fn()}>
+      <Tag shape="pill" onClick={jest.fn()} usage="filled">
         it works
       </Tag>,
     )
@@ -82,7 +82,7 @@ describe('Tag', () => {
   test('should render a tag with a close button', async () => {
     const onClick = jest.fn()
     render(
-      <Tag shape="pill" onClick={onClick}>
+      <Tag shape="pill" onClick={onClick} usage="filled">
         it works
       </Tag>,
     )
