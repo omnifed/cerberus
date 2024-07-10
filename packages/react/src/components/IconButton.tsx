@@ -1,22 +1,19 @@
 import type { ButtonHTMLAttributes } from 'react'
-import { cx } from '@cerberus/styled-system/css'
+import { cx, type RecipeVariantProps } from '@cerberus/styled-system/css'
 import { iconButton } from '@cerberus/styled-system/recipes'
-import type { ButtonProps } from './Button'
 
 /**
  * This module contains the Icon Button component.
  * @module
  */
 
-export interface IconButtonProps
+export interface IconButtonRawProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   ariaLabel: string
-  palette?: ButtonProps['palette']
-  usage?: ButtonProps['usage']
-  shape?: 'circle'
-  size?: 'sm' | 'lg'
   tooltipPosition?: 'top' | 'bottom' | 'left' | 'right'
 }
+export type IconButtonRecipeProps = RecipeVariantProps<typeof iconButton>
+export type IconButtonProps = IconButtonRawProps & IconButtonRecipeProps
 
 /**
  * A component that allows the user to perform actions using an icon
