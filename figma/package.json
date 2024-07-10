@@ -4,7 +4,7 @@
   "description": "The Figma Code Connect config for Cerberus Design",
   "scripts": {
     "create:icons": "bun run ./scripts/create-icons.ts",
-    "figma:publish": "npx figma connect publish",
+    "figma:publish": "exec figma connect publish",
     "figma:sync": "bun run ./scripts/variables/sync-figma.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
