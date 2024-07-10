@@ -30,12 +30,12 @@ describe('Tag', () => {
     ).toBeTrue()
   })
 
-  test('should render an outline tag', () => {
-    render(<Tag usage="outline">it works</Tag>)
+  test('should render an outlined tag', () => {
+    render(<Tag usage="outlined">it works</Tag>)
     expect(
       screen
         .getByText(/it works/i)
-        .classList.contains('cerberus-tag--usage_outline'),
+        .classList.contains('cerberus-tag--usage_outlined'),
     ).toBeTrue()
   })
 
