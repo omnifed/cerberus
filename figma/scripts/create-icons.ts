@@ -39,6 +39,8 @@ function getIconTemplate(name: string, url: string): string {
 import figma from '@figma/code-connect'
 import { ${name} } from '@cerberus-design/icons'
 
+// This file was generated using the create:icons script
+
 figma.connect(
   ${name},
   '${url}',
@@ -84,12 +86,14 @@ async function getIcons() {
       'icons',
     )
 
-    uniqueNames.forEach(async ([componentName]) => {
-      await write(
-        resolve(iconsDirPath, `${componentName}.figma.tsx`),
-        getIconTemplate(componentName, 'TODO: ADD URL'),
-      )
-      console.log(`Wrote ${componentName}`)
+    uniqueNames.forEach((componentName) => {
+      componentName.forEach(async (name) => {
+        await write(
+          resolve(iconsDirPath, `${name}.figma.tsx`),
+          getIconTemplate(name, 'TODO: ADD URL'),
+        )
+        console.log(`Wrote ${name}`)
+      })
     })
 
     console.log(
