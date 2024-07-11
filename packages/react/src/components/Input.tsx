@@ -13,7 +13,6 @@ export interface InputBaseProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'size'> {
   describedBy?: string
   id: string
-  size?: 'sm' | 'md' | 'lg'
 }
 export type InputProps = InputBaseProps & InputRecipeProps
 
