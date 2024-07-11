@@ -2,7 +2,7 @@ import figma from '@figma/code-connect'
 import { Input, Field } from '@cerberus-design/react'
 
 const SELECTION =
-  'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=408-283&m=dev'
+  'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=9225-3775&m=dev'
 
 const imports = ["import { Field, Input } from '@cerberus/react'"]
 
@@ -18,10 +18,12 @@ const props = {
     invalid: 'invalid',
     warning: 'warning',
     disabled: 'disabled',
+    readonly: 'readonly',
   }),
-  label: figma.instance('Label'),
-  fieldMessage: figma.instance('FieldMessage'),
-  placeholder: figma.textContent('placeholder-text'),
+  required: figma.boolean('required'),
+  label: figma.children('Label'),
+  fieldMessage: figma.children('FieldMessage'),
+  placeholder: figma.string('placeholder-text'),
 }
 
 figma.connect(Input, SELECTION, {
@@ -29,9 +31,13 @@ figma.connect(Input, SELECTION, {
   props,
   example: (props) => {
     return (
-      <Field>
+      <Field required={props.required}>
         {props.label}
-        <Input id="ADD_UUID" placeholder={props.placeholder} />
+        <Input
+          id="ADD_UUID"
+          placeholder={props.placeholder}
+          size={props.size}
+        />
         {props.fieldMessage}
       </Field>
     )
@@ -46,9 +52,13 @@ figma.connect(Input, SELECTION, {
   props,
   example: (props) => {
     return (
-      <Field>
+      <Field required={props.required}>
         {props.label}
-        <Input id="ADD_UUID" placeholder={props.placeholder} />
+        <Input
+          id="ADD_UUID"
+          placeholder={props.placeholder}
+          size={props.size}
+        />
         {props.fieldMessage}
       </Field>
     )
@@ -63,9 +73,13 @@ figma.connect(Input, SELECTION, {
   props,
   example: (props) => {
     return (
-      <Field invalid>
+      <Field invalid required={props.required}>
         {props.label}
-        <Input id="ADD_UUID" placeholder={props.placeholder} />
+        <Input
+          id="ADD_UUID"
+          placeholder={props.placeholder}
+          size={props.size}
+        />
         {props.fieldMessage}
       </Field>
     )
@@ -80,9 +94,13 @@ figma.connect(Input, SELECTION, {
   props,
   example: (props) => {
     return (
-      <Field disabled>
+      <Field disabled required={props.required}>
         {props.label}
-        <Input id="ADD_UUID" placeholder={props.placeholder} />
+        <Input
+          id="ADD_UUID"
+          placeholder={props.placeholder}
+          size={props.size}
+        />
         {props.fieldMessage}
       </Field>
     )
@@ -92,14 +110,18 @@ figma.connect(Input, SELECTION, {
 figma.connect(Input, SELECTION, {
   imports,
   variant: {
-    required: 'True',
+    State: 'readonly',
   },
   props,
   example: (props) => {
     return (
-      <Field required>
+      <Field readOnly required={props.required}>
         {props.label}
-        <Input id="ADD_UUID" placeholder={props.placeholder} />
+        <Input
+          id="ADD_UUID"
+          placeholder={props.placeholder}
+          size={props.size}
+        />
         {props.fieldMessage}
       </Field>
     )
