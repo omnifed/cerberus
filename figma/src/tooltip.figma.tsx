@@ -1,7 +1,10 @@
 import figma from '@figma/code-connect'
+import { Tooltip } from './components/Tooltip'
 
 const SELECTION =
   'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=1831-88823&m=dev'
+
+const imports = ['']
 
 const props = {
   position: figma.enum('Position', {
@@ -10,12 +13,14 @@ const props = {
     bottom: 'bottom',
     left: 'left',
   }),
-  text: figma.textContent('text'),
+  text: figma.string('text'),
   icon: figma.children('*'),
 }
 
-figma.connect(SELECTION, {
+figma.connect(Tooltip, SELECTION, {
   props,
+  imports,
+
   example: (props) => {
     return (
       <span aria-label={props.text} data-tooltip data-position={props.position}>
