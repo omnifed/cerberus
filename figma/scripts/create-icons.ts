@@ -84,7 +84,7 @@ async function getIcons() {
       'icons',
     )
 
-    Object.entries(uniqueNames).forEach(async ([componentName]) => {
+    uniqueNames.forEach(async ([componentName]) => {
       await write(
         resolve(iconsDirPath, `${componentName}.figma.tsx`),
         getIconTemplate(componentName, 'TODO: ADD URL'),
