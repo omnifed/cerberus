@@ -1,7 +1,7 @@
 'use client'
 
 import type { HTMLAttributes } from 'react'
-import { cx } from '@cerberus/styled-system/css'
+import { cx, type RecipeVariantProps } from '@cerberus/styled-system/css'
 import { fieldMessage } from '@cerberus/styled-system/recipes'
 import { useFieldContext } from '../context/field'
 
@@ -10,10 +10,12 @@ import { useFieldContext } from '../context/field'
  * @module
  */
 
-export interface FieldMessageProps
+export type FieldMessageRecipe = RecipeVariantProps<typeof fieldMessage>
+export interface FieldMessageBaseProps
   extends HTMLAttributes<HTMLParagraphElement> {
   id: string
 }
+export type FieldMessageProps = FieldMessageBaseProps & FieldMessageRecipe
 
 /**
  * A component that provides feedback about the field.

@@ -3,16 +3,19 @@
 import type { InputHTMLAttributes } from 'react'
 import { WarningFilled } from '@cerberus/icons'
 import { input } from '@cerberus/styled-system/recipes'
-import { cx } from '@cerberus/styled-system/css'
+import { cx, type RecipeVariantProps } from '@cerberus/styled-system/css'
 import { useFieldContext } from '../context/field'
 import { Show } from './Show'
 
-export interface InputProps
+export type InputRecipeProps = RecipeVariantProps<typeof input>
+
+export interface InputBaseProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'size'> {
   describedBy?: string
   id: string
   size?: 'sm' | 'md' | 'lg'
 }
+export type InputProps = InputBaseProps & InputRecipeProps
 
 export function Input(props: InputProps) {
   const { describedBy, size, ...nativeProps } = props

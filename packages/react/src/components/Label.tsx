@@ -2,7 +2,7 @@
 
 import type { HTMLAttributes, PropsWithChildren } from 'react'
 import { label } from '@cerberus/styled-system/recipes'
-import { css, cx } from '@cerberus/styled-system/css'
+import { css, cx, type RecipeVariantProps } from '@cerberus/styled-system/css'
 import { useFieldContext } from '../context/field'
 import { Show } from './Show'
 import { hstack } from '@cerberus/styled-system/patterns'
@@ -12,10 +12,12 @@ import { hstack } from '@cerberus/styled-system/patterns'
  * @module
  */
 
-export interface LabelProps extends HTMLAttributes<HTMLLabelElement> {
+export type LabelRecipeProps = RecipeVariantProps<typeof label>
+export interface LabelBaseProps extends HTMLAttributes<HTMLLabelElement> {
   htmlFor: string
   hidden?: boolean
 }
+export type LabelProps = LabelBaseProps & LabelRecipeProps
 
 /**
  * A screen ready friendly label component.

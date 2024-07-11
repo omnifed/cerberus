@@ -1,6 +1,7 @@
 import type { ButtonHTMLAttributes } from 'react'
 import { cx, type RecipeVariantProps } from '@cerberus/styled-system/css'
 import { iconButton } from '@cerberus/styled-system/recipes'
+import type { Positions } from '../types'
 
 /**
  * This module contains the Icon Button component.
@@ -10,7 +11,7 @@ import { iconButton } from '@cerberus/styled-system/recipes'
 export interface IconButtonRawProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   ariaLabel: string
-  tooltipPosition?: 'top' | 'bottom' | 'left' | 'right'
+  tooltipPosition?: Positions
 }
 export type IconButtonRecipeProps = RecipeVariantProps<typeof iconButton>
 export type IconButtonProps = IconButtonRawProps & IconButtonRecipeProps
