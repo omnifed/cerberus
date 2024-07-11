@@ -88,9 +88,10 @@ async function getIcons() {
 
     uniqueNames.forEach((componentName) => {
       componentName.forEach(async (name) => {
+        const componentData = components.find((c) => c.name === name)
         await write(
           resolve(iconsDirPath, `${name}.figma.tsx`),
-          getIconTemplate(name, 'TODO: ADD URL'),
+          getIconTemplate(name, componentData?.figmaUrl || ''),
         )
         console.log(`Wrote ${name}`)
       })
