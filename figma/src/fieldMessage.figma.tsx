@@ -7,7 +7,7 @@ const SELECTION =
 const imports = ["import { FieldMessage } from '@cerberus/react'"]
 
 const props = {
-  text: figma.textContent('Text'),
+  text: figma.string('Text'),
 }
 
 figma.connect(FieldMessage, SELECTION, {

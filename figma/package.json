@@ -16,7 +16,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@figma/code-connect": "^1.0.1",
+    "@figma/code-connect": "^1.0.2",
     "@figma/rest-api-spec": "^0.15.0",
     "@types/react": "^18",
     "dotenv": "^16.4.5"
