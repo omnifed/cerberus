@@ -15,7 +15,7 @@ const props = {
     danger: 'danger',
   }),
   shape: figma.enum('Shape', {
-    square: 'squared',
+    squared: 'square',
     pill: 'pill',
   }),
   usage: figma.enum('Usage', {
