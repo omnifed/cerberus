@@ -5,6 +5,15 @@ import {
 } from '@pandacss/dev'
 import { filledUsage, tagBase, tagPalettes } from './shared/tag.base'
 
+const NEUTRAL_TEXT_INITIAL = 'neutral.text.initial'
+
+const outlineGradientCss = {
+  borderColor: 'transparent',
+  backgroundOrigin: 'border-box',
+  backgroundClip: 'padding-box, border-box',
+  color: NEUTRAL_TEXT_INITIAL,
+}
+
 /**
  * This module contains the tag recipe.
  * @module
@@ -22,13 +31,24 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
 
   variants: {
     palette: tagPalettes,
+    gradient: {
+      blue: {
+        cerbGradient: 'blue',
+      },
+      green: {
+        cerbGradient: 'green',
+      },
+      purple: {
+        cerbGradient: 'purple',
+      },
+    },
     usage: {
       filled: filledUsage,
       outlined: {
         bgColor: 'inherit',
         border: '1.5px solid',
         borderColor: 'colorPalette.border.initial',
-        color: 'neutral.text.initial',
+        color: NEUTRAL_TEXT_INITIAL,
       },
     },
     shape: {
@@ -39,7 +59,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         rounded: 'full',
         textStyle: 'label-sm',
       },
-      rounded: {
+      square: {
         fontWeight: 600,
         h: '1.625rem',
         pxi: '3',
@@ -54,4 +74,37 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     usage: 'filled',
     shape: 'pill',
   },
+
+  compoundVariants: [
+    {
+      usage: 'outlined',
+      gradient: 'blue',
+      shape: 'square',
+      css: {
+        ...outlineGradientCss,
+        backgroundImage:
+          'conic-gradient(var(--cerberus-colors-neutral-surface-initial) 0 0), linear-gradient(to top right, #9ACFEE, #E6F3FB)',
+      },
+    },
+    {
+      usage: 'outlined',
+      gradient: 'green',
+      shape: 'square',
+      css: {
+        ...outlineGradientCss,
+        backgroundImage:
+          'conic-gradient(var(--cerberus-colors-neutral-surface-initial) 0 0), linear-gradient(to top right, #71D192, #E8F8ED)',
+      },
+    },
+    {
+      usage: 'outlined',
+      gradient: 'purple',
+      shape: 'square',
+      css: {
+        ...outlineGradientCss,
+        backgroundImage:
+          'conic-gradient(var(--cerberus-colors-neutral-surface-initial) 0 0), linear-gradient(to top right, #BB93E1, #EFE5F8)',
+      },
+    },
+  ],
 })
