@@ -1,8 +1,4 @@
 import figma from '@figma/code-connect'
-import { Tooltip } from './components/Tooltip'
-
-const SELECTION =
-  'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=1831-88823&m=dev'
 
 const imports = ['']
 
@@ -17,15 +13,22 @@ const props = {
   icon: figma.children('*'),
 }
 
-figma.connect(Tooltip, SELECTION, {
-  props,
-  imports,
+figma.connect(
+  'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=1831-88823&m=dev',
+  {
+    props,
+    imports,
 
-  example: (props) => {
-    return (
-      <span aria-label={props.text} data-tooltip data-position={props.position}>
-        {props.icon}
-      </span>
-    )
+    example: (props) => {
+      return (
+        <span
+          aria-label={props.text}
+          data-tooltip
+          data-position={props.position}
+        >
+          {props.icon}
+        </span>
+      )
+    },
   },
-})
+)

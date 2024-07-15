@@ -4,7 +4,6 @@ import { css } from '@cerberus/styled-system/css'
 import { Fragment } from 'react'
 import { grid, gridItem, hstack } from '@cerberus/styled-system/patterns'
 import { ClosableTagPreview } from './closable-tag-preview'
-import type { Sentiment } from '@cerberus-design/panda-preset'
 
 export type TagPreviewProps = TagProps
 
@@ -14,14 +13,14 @@ export function BasicTagPreview() {
 
 export function OutlineTagPreview() {
   return (
-    <Tag shape="rounded" usage="outlined">
+    <Tag shape="square" usage="outlined">
       Outlined
     </Tag>
   )
 }
 
-export function RoundedTagPreview() {
-  return <Tag shape="rounded">Rounded</Tag>
+export function SquareTagPreview() {
+  return <Tag shape="square">Square</Tag>
 }
 
 export function PillTagPreview() {
@@ -45,31 +44,33 @@ export function WithIconTagPreview() {
 export function GradientTagPreview() {
   return (
     <div className={hstack()}>
-      <Tag
-        shape="rounded"
-        className={css({
-          cerbGradient: 'blue',
-        })}
-      >
+      <Tag gradient="blue" shape="square">
         Blue
       </Tag>
-      <Tag
-        shape="rounded"
-        className={css({
-          cerbGradient: 'green',
-        })}
-      >
+      <Tag gradient="blue" shape="square" usage="outlined">
+        Blue Outlined
+      </Tag>
+      <Tag gradient="green" shape="square">
         Green
       </Tag>
-      <Tag
-        shape="rounded"
-        className={css({
-          cerbGradient: 'purple',
-        })}
-      >
+      <Tag gradient="green" shape="square" usage="outlined">
+        Green Outlined
+      </Tag>
+      <Tag gradient="purple" shape="square">
         Purple
       </Tag>
+      <Tag gradient="purple" shape="square" usage="outlined">
+        Purple Outlined
+      </Tag>
     </div>
+  )
+}
+
+export function GradientOutlinedTagPreview() {
+  return (
+    <Tag gradient="purple" shape="square" usage="outlined">
+      Gradient
+    </Tag>
   )
 }
 
@@ -92,7 +93,13 @@ export function CustomTagPreview() {
 
 // Overview
 
-type TagTypes = 'pill' | 'rounded' | 'outline' | 'filled' | 'closable'
+type TagTypes =
+  | 'pill'
+  | 'square'
+  | 'outlined'
+  | 'gradient-outlined'
+  | 'filled'
+  | 'closable'
 interface MatchTagProps {
   kind: TagTypes
   palette?: TagProps['palette'] | 'gradient'
@@ -102,10 +109,12 @@ function MatchTagPreview(props: MatchTagProps) {
   switch (props.kind) {
     case 'pill':
       return <PillTagPreview />
-    case 'rounded':
-      return <RoundedTagPreview />
-    case 'outline':
+    case 'square':
+      return <SquareTagPreview />
+    case 'outlined':
       return <OutlineTagPreview />
+    case 'gradient-outlined':
+      return <GradientOutlinedTagPreview />
     case 'filled':
       return <BasicTagPreview />
     case 'closable':
@@ -118,8 +127,9 @@ function MatchTagPreview(props: MatchTagProps) {
 export function OverviewTagPreview() {
   const btnTypes: TagTypes[] = [
     'pill',
-    'rounded',
-    'outline',
+    'square',
+    'outlined',
+    'gradient-outlined',
     'filled',
     'closable',
   ]
@@ -166,31 +176,25 @@ function MatchTagPalettePreview(props: MatchTagProps) {
   switch (props.palette) {
     case 'neutral':
       return (
-        <Tag palette="neutral" shape="rounded">
+        <Tag palette="neutral" shape="square">
           Neutral
         </Tag>
       )
     case 'gradient':
       return (
-        <Tag
-          palette="neutral"
-          shape="rounded"
-          className={css({
-            cerbGradient: 'blue',
-          })}
-        >
+        <Tag gradient="purple" shape="square">
           Gradient
         </Tag>
       )
     case 'info':
       return (
-        <Tag palette="info" shape="rounded" usage="outlined">
+        <Tag palette="info" shape="square" usage="outlined">
           Info
         </Tag>
       )
     case 'success':
       return (
-        <Tag palette="success" shape="rounded" usage="outlined">
+        <Tag palette="success" shape="square" usage="outlined">
           Success
         </Tag>
       )
@@ -215,10 +219,10 @@ function MatchTagPalettePreview(props: MatchTagProps) {
 
 export function OverviewPaletteTagPreview() {
   const btnTypes: TagTypes[] = [
-    'rounded',
-    'rounded',
-    'outline',
-    'outline',
+    'square',
+    'square',
+    'outlined',
+    'outlined',
     'pill',
     'pill',
   ]

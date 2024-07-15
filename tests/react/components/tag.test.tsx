@@ -70,12 +70,12 @@ describe('Tag', () => {
     ).toBeTrue()
   })
 
-  test('should render a rounded tag', () => {
-    render(<Tag shape="rounded">it works</Tag>)
+  test('should render a square tag', () => {
+    render(<Tag shape="square">it works</Tag>)
     expect(
       screen
         .getByText(/it works/i)
-        .classList.contains('cerberus-tag--shape_rounded'),
+        .classList.contains('cerberus-tag--shape_square'),
     ).toBeTrue()
   })
 
