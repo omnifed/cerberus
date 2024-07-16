@@ -1,10 +1,10 @@
 'use client'
 
 import type { InputHTMLAttributes, ReactNode } from 'react'
-import { WarningFilled } from '@cerberus/icons'
 import { input } from '@cerberus/styled-system/recipes'
 import { cx, type RecipeVariantProps } from '@cerberus/styled-system/css'
 import { useFieldContext } from '../context/field'
+import { $cerberusIcons } from '../config/defineIcons'
 import { Show } from './Show'
 
 export type InputRecipeProps = RecipeVariantProps<typeof input>
@@ -22,6 +22,7 @@ export function Input(props: InputProps) {
   const inputStyles = input({ size })
   const { invalid, ...fieldStates } = useFieldContext()
   const hasEndIcon = Boolean(endIcon)
+  const { invalid: InvalidIcon } = $cerberusIcons
 
   return (
     <div className={inputStyles.root}>
@@ -39,7 +40,7 @@ export function Input(props: InputProps) {
       />
 
       <Show when={invalid}>
-        <WarningFilled className={inputStyles.icon} />
+        <InvalidIcon className={inputStyles.icon} />
       </Show>
       <Show when={hasEndIcon && !invalid}>
         <span className={inputStyles.icon}>{endIcon}</span>

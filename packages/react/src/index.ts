@@ -36,6 +36,10 @@ export * from './hooks/useTheme'
 export * from './aria-helpers/nav-menu.aria'
 export * from './aria-helpers/tabs.aria'
 
+// utils
+
+export * from './config/defineIcons'
+
 // shared types
 
 export * from './types'
