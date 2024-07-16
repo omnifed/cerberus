@@ -1,6 +1,7 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
 import { Field, Label, Input } from '@cerberus-design/react'
+import { Calendar } from '@cerberus-design/icons'
 import { setupStrictMode } from '@/utils'
 
 describe('Input', () => {
@@ -133,5 +134,18 @@ describe('Input', () => {
         .getByRole('textbox')
         .classList.contains('cerberus-input__input--size_lg'),
     ).toBeTruthy()
+  })
+
+  test('should render a input with a startIcon', () => {
+    render(
+      <Field>
+        <Label htmlFor="test">Test Label</Label>,
+        <Input id="test" startIcon={<Calendar aria-label="calendar icon" />} />
+      </Field>,
+      {
+        wrapper: Field,
+      },
+    )
+    expect(screen.getByLabelText(/calendar icon/i)).toBeTruthy()
   })
 })

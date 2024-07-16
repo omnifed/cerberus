@@ -48,6 +48,7 @@ describe('input recipe', () => {
         color: 'neutral.text.100',
       },
       _startIcon: {
+        display: 'inline-block',
         paddingInlineStart: '7',
       },
     })

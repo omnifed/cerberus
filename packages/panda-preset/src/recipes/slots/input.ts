@@ -42,6 +42,7 @@ export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
         color: 'neutral.text.100',
       },
       _startIcon: {
+        display: 'inline-block',
         paddingInlineStart: '7',
       },
     },
