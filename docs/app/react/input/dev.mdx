@@ -200,6 +200,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string
   size?: 'sm' | 'md' | 'lg'
   startIcon?: ReactNode
+  endIcon?: ReactNode
 }
 
 define function Input(props: InputProps): ReactNode
@@ -215,3 +216,4 @@ The `InputProps` component accepts the following props:
 | id   |    |  An identifier that is shared with the Label `htmlFor` attribute.        |
 | size   | `lg`   |  The size of the input field.        |
 | startIcon   |    |  An icon that appears at the start of the input field.        |
+| endIcon   |    |  An icon that appears at the end of the input field when the state is valid.        |

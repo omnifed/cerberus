@@ -13,19 +13,22 @@ export interface InputBaseProps
   describedBy?: string
   id: string
   startIcon?: ReactNode
+  endIcon?: ReactNode
 }
 export type InputProps = InputBaseProps & InputRecipeProps
 
 export function Input(props: InputProps) {
-  const { describedBy, size, startIcon, ...nativeProps } = props
+  const { describedBy, size, startIcon, endIcon, ...nativeProps } = props
   const inputStyles = input({ size })
   const { invalid, ...fieldStates } = useFieldContext()
+  const hasEndIcon = Boolean(endIcon)
 
   return (
     <div className={inputStyles.root}>
       <Show when={Boolean(startIcon)}>
         <span className={inputStyles.startIcon}>{startIcon}</span>
       </Show>
+
       <input
         {...nativeProps}
         {...fieldStates}
@@ -34,8 +37,12 @@ export function Input(props: InputProps) {
         data-start-icon={Boolean(startIcon)}
         className={cx('peer', nativeProps.className, inputStyles.input)}
       />
+
       <Show when={invalid}>
         <WarningFilled className={inputStyles.icon} />
+      </Show>
+      <Show when={hasEndIcon && !invalid}>
+        <span className={inputStyles.icon}>{endIcon}</span>
       </Show>
     </div>
   )

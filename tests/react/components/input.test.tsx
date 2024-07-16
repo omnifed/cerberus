@@ -148,4 +148,17 @@ describe('Input', () => {
     )
     expect(screen.getByLabelText(/calendar icon/i)).toBeTruthy()
   })
+
+  test('should render a input with a endIcon', () => {
+    render(
+      <Field>
+        <Label htmlFor="test">Test Label</Label>,
+        <Input id="test" endIcon={<Calendar aria-label="calendar icon" />} />
+      </Field>,
+      {
+        wrapper: Field,
+      },
+    )
+    expect(screen.getByLabelText(/calendar icon/i)).toBeTruthy()
+  })
 })
