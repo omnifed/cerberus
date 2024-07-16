@@ -151,12 +151,13 @@ figma.connect(Input, SELECTION, {
 figma.connect(Input, SELECTION, {
   imports,
   variant: {
+    State: 'valid',
     Style: 'password',
   },
   props,
   example: (props) => {
     return (
-      <Field readOnly required={props.required}>
+      <Field required={props.required}>
         {props.label}
         <Input
           endIcon={props.passwordButton}
