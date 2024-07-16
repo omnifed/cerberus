@@ -13,7 +13,7 @@ import { focusStates, formStates } from '../shared/states'
  * @definition [Input docs](https://cerberus.digitalu.design/react/input)
  */
 export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
-  slots: ['root', 'input', 'icon'],
+  slots: ['root', 'input', 'icon', 'startIcon'],
   className: 'input',
 
   base: {
@@ -41,6 +41,9 @@ export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
       _placeholderShown: {
         color: 'neutral.text.100',
       },
+      _startIcon: {
+        paddingInlineStart: '7',
+      },
     },
     icon: {
       position: 'absolute',
@@ -51,6 +54,13 @@ export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
       _peerInvalid: {
         color: 'danger.text.100',
       },
+    },
+    startIcon: {
+      position: 'absolute',
+      left: '0.5rem',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      zIndex: 'decorator',
     },
   },
 
