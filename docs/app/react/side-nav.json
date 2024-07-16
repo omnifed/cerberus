@@ -41,7 +41,7 @@
     "id": "2:d",
     "label": "Input",
     "route": "/react/input",
-    "tag": "",
+    "tag": "next",
     "type": "route"
   },
   {
@@ -69,7 +69,7 @@
     "id": "2:h",
     "label": "Tag",
     "route": "/react/tags",
-    "tag": "",
+    "tag": "next",
     "type": "route"
   },
   {
