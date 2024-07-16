@@ -1,0 +1,51 @@
+import { NoteAdmonition } from '@/app/components/Admonition'
+
+# Overview
+
+The Cerberus React library is a high performant and flexible collection of React components that are used to build the Cerberus UI fully compatible with React 19 Server Components.
+
+<NoteAdmonition
+  description="The Cerberus React library requires the use of Panda-CSS and the Cerberus Core.
+  Please be sure you have setup your project to use these libraries before using
+  Cerberus React."
+/>
+
+## Installation
+
+Install the Cerberus React library, with the package manager of your choice:
+
+```bash
+pnpm add @cerberus/react@npm:@cerberus-design/react
+```
+
+## Typescript
+
+The Cerberus React library is written in TypeScript and includes type definitions for all components.
+
+## Customizing Icons
+
+For the most part, the Cerberus React library is Icon agnostic. This means you can use any Icon library you prefer. However, there are times where a component needs a built-in icon. In these cases, the Cerberus React library provides a helper to make it easy to use any icon library you prefer.
+
+### API & Usage
+
+To use the `defineIcons` function, you must first import it from the Cerberus React library. Then, you can define the icons you want to use in your application. The `defineIcons` function will return an object with the same keys that are used within components, but with the values replaced with the new icon components.
+
+This is purely for convenience and is not required to use the Cerberus React library.
+
+```tsx title="API"
+export interface DefinedIcons {
+  invalid: CarbonIconType | ElementType
+}
+
+define function defineIcons(icons: DefinedIcons): DefinedIcons
+```
+
+```tsx title="Example of using Lucide Icons"
+import { defineIcons } from '@cerberus/react'
+import { TriangleAlert } from 'lucide-react';
+
+// You can also just call the function directly without assigning it to a variable
+const icons = defineIcons({
+  invalid: TriangleAlert,
+})
+```

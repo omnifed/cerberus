@@ -1,13 +1,13 @@
 import OnThisPage from '../components/OnThisPage'
 import { PageMainContent, PageSections } from '../components/PageLayout'
-import Overview from './overview.mdx'
+import Installation from './installation.mdx'
 
 export default function ReactPage() {
   return (
     <>
       <PageMainContent>
         <main>
-          <Overview />
+          <Installation />
         </main>
       </PageMainContent>
 
