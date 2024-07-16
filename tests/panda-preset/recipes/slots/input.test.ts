@@ -47,6 +47,10 @@ describe('input recipe', () => {
       _placeholderShown: {
         color: 'neutral.text.100',
       },
+      _startIcon: {
+        display: 'inline-block',
+        paddingInlineStart: '7',
+      },
     })
   })
 
@@ -60,6 +64,16 @@ describe('input recipe', () => {
       _peerInvalid: {
         color: 'danger.text.100',
       },
+    })
+  })
+
+  test('should have a startIcon style', () => {
+    expect(input.base?.startIcon).toMatchObject({
+      position: 'absolute',
+      left: '0.5rem',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      zIndex: 'decorator',
     })
   })
 

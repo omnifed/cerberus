@@ -20,10 +20,20 @@ const props = {
     disabled: 'disabled',
     readonly: 'readonly',
   }),
+  style: figma.enum('Style', {
+    text: 'text',
+    search: 'search',
+    date: 'date',
+    tel: 'tel',
+    number: 'number',
+    password: 'password',
+  }),
   required: figma.boolean('required'),
   label: figma.children('Label'),
   fieldMessage: figma.children('FieldMessage'),
   placeholder: figma.string('placeholder-text'),
+  icon: figma.children('Icon'),
+  passwordButton: figma.children('Icon Button'),
 }
 
 figma.connect(Input, SELECTION, {
@@ -37,6 +47,8 @@ figma.connect(Input, SELECTION, {
           id="ADD_UUID"
           placeholder={props.placeholder}
           size={props.size}
+          startIcon={props.icon}
+          type={props.style}
         />
         {props.fieldMessage}
       </Field>
@@ -58,6 +70,8 @@ figma.connect(Input, SELECTION, {
           id="ADD_UUID"
           placeholder={props.placeholder}
           size={props.size}
+          startIcon={props.icon}
+          type={props.style}
         />
         {props.fieldMessage}
       </Field>
@@ -79,6 +93,8 @@ figma.connect(Input, SELECTION, {
           id="ADD_UUID"
           placeholder={props.placeholder}
           size={props.size}
+          startIcon={props.icon}
+          type={props.style}
         />
         {props.fieldMessage}
       </Field>
@@ -100,6 +116,8 @@ figma.connect(Input, SELECTION, {
           id="ADD_UUID"
           placeholder={props.placeholder}
           size={props.size}
+          startIcon={props.icon}
+          type={props.style}
         />
         {props.fieldMessage}
       </Field>
@@ -121,6 +139,32 @@ figma.connect(Input, SELECTION, {
           id="ADD_UUID"
           placeholder={props.placeholder}
           size={props.size}
+          startIcon={props.icon}
+          type={props.style}
+        />
+        {props.fieldMessage}
+      </Field>
+    )
+  },
+})
+
+figma.connect(Input, SELECTION, {
+  imports,
+  variant: {
+    State: 'valid',
+    Style: 'password',
+  },
+  props,
+  example: (props) => {
+    return (
+      <Field required={props.required}>
+        {props.label}
+        <Input
+          endIcon={props.passwordButton}
+          id="ADD_UUID"
+          placeholder={props.placeholder}
+          size={props.size}
+          type={props.style}
         />
         {props.fieldMessage}
       </Field>
