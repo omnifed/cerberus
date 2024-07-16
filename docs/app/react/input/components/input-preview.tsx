@@ -1,5 +1,6 @@
+import { Search } from '@cerberus-design/icons'
 import { Field, FieldMessage, Label, Input } from '@cerberus-design/react'
-import { css, cx } from '@cerberus/styled-system/css'
+import { css } from '@cerberus/styled-system/css'
 import { vstack } from '@cerberus/styled-system/patterns'
 
 const overrideStyles = css({
@@ -49,6 +50,26 @@ export function InputDisabledPreview() {
         />
         <FieldMessage id="help:preferred">
           This will be the name we use to address you.
+        </FieldMessage>
+      </Field>
+    </div>
+  )
+}
+
+export function InputWithIconPreview() {
+  return (
+    <div className={overrideStyles}>
+      <Field>
+        <Label htmlFor="global_search">Global Search</Label>
+        <Input
+          describedBy="help:global_search"
+          id="global_search"
+          placeholder="Search the world"
+          startIcon={<Search />}
+          type="text"
+        />
+        <FieldMessage id="help:global_search">
+          Search the world for the best results.
         </FieldMessage>
       </Field>
     </div>

@@ -10,6 +10,7 @@ import {
   InputBasicPreview,
   InputInvalidPreview,
   InputDisabledPreview,
+  InputWithIconPreview,
   InputSizesPreview,
   InputCustomPreview
 } from '@/app/react/input/components/input-preview'
@@ -85,6 +86,33 @@ function InputDisabledPreview() {
 ```
 </CodePreview>
 
+## With Icon
+
+<CodePreview preview={<InputWithIconPreview />}>
+```tsx title="search-input.tsx" {13}
+import { Field, Label, Input } from '@cerberus-design/react'
+import { Search } from '@cerberus/icons'
+
+function InputWithIconPreview() {
+  return (
+    <Field>
+      <Label htmlFor="global_search">Global Search</Label>
+      <Input
+        describedBy="help:global_search"
+        id="global_search"
+        type="text"
+        placeholder="Search the world"
+        startIcon={<Search />}
+      />
+      <FieldMessage id="help:global_search">
+        Search the world for the best results.
+      </FieldMessage>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
 ## Sizes
 
 <CodePreview preview={<InputSizesPreview />}>
@@ -153,7 +181,7 @@ function InputCustomPreview() {
 
 ## API
 
-<NoteAdmonition description="The Label component must be used within a Field provider." />
+<NoteAdmonition description="The Input component must be used within a Field provider." />
 
 ```ts showLineNumbers=false
 export interface FieldProps {
@@ -171,6 +199,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   describedBy?: string
   id: string
   size?: 'sm' | 'md' | 'lg'
+  startIcon?: ReactNode
 }
 
 define function Input(props: InputProps): ReactNode
@@ -185,3 +214,4 @@ The `InputProps` component accepts the following props:
 | describedBy     |    | The `id` attribute of the FieldMessage the Input is associated with. |
 | id   |    |  An identifier that is shared with the Label `htmlFor` attribute.        |
 | size   | `lg`   |  The size of the input field.        |
+| startIcon   |    |  An icon that appears at the start of the input field.        |
