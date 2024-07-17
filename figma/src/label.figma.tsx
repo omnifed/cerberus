@@ -1,10 +1,10 @@
 import figma from '@figma/code-connect'
-import { Field, Label } from '@cerberus-design/react'
+import { Label } from '@cerberus-design/react'
 
 const SELECTION =
   'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=9333-1153&m=dev'
 
-const imports = ["import { Field, Label } from '@cerberus/react'"]
+const imports = ["import { Label } from '@cerberus/react'"]
 
 const props = {
   size: figma.enum('Size', {
@@ -37,21 +37,6 @@ figma.connect(Label, SELECTION, {
       <Label htmlFor="ADD_INPUT_ID" hidden>
         {props.text}
       </Label>
-    )
-  },
-})
-
-figma.connect(Label, SELECTION, {
-  imports,
-  variant: {
-    State: 'disabled',
-  },
-  props,
-  example: (props) => {
-    return (
-      <Field disabled>
-        <Label htmlFor="ADD_INPUT_ID">{props.text}</Label>
-      </Field>
     )
   },
 })
