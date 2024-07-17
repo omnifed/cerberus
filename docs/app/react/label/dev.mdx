@@ -116,6 +116,7 @@ define function Field(props: PropsWithChildren<FieldProps>): ReactNode
 export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   htmlFor: string
   hidden?: boolean
+  size?: 'sm' | 'md'
 }
 
 define function Label(props: LabelProps): ReactNode
@@ -129,3 +130,4 @@ The `LabelProps` component accepts the following props:
 | -------- | ------- | ------------------------------------------------------------- |
 | htmlFor     | null   | The `name` attribute of the Input the Label is associated with. |
 | hidden   | false   | Whether the Label content should be visually hidden.                 |
+| size     | 'md'    | The size of the Label.         |

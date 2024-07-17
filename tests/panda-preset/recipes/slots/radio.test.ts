@@ -51,12 +51,6 @@ describe('radio recipe', () => {
     })
   })
 
-  test('should have a label style', () => {
-    expect(radio.base?.label).toMatchObject({
-      pb: '0',
-    })
-  })
-
   test('should have a size variant', () => {
     expect(radio.variants!.size).toMatchObject({
       sm: {

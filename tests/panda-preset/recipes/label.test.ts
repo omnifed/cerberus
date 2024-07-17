@@ -10,8 +10,9 @@ describe('label recipe', () => {
 
   test('should have a base style', () => {
     expect(label.base).toMatchObject({
-      textStyle: 'label-sm',
-      pb: '1',
+      _disabled: {
+        color: 'neutral.text.100',
+      },
     })
   })
 
@@ -22,6 +23,17 @@ describe('label recipe', () => {
   test('should have a hidden variant', () => {
     expect(label.variants!.usage.hidden).toMatchObject({
       srOnly: true,
+    })
+  })
+
+  test('should have a size variant', () => {
+    expect(label.variants!.size).toMatchObject({
+      sm: {
+        textStyle: 'label-sm',
+      },
+      md: {
+        textStyle: 'label-md',
+      },
     })
   })
 })

@@ -194,9 +194,9 @@ export const textStyles: TextStyles = defineTextStyles({
 
   'label-md': {
     ...createTextStyle('The label text style - used for form input labels', {
-      fontSize: '0.875rem',
-      fontWeight: '600',
-      lineHeight: '125%',
+      fontSize: '1rem',
+      fontWeight: '400',
+      lineHeight: '150%',
     }),
   },
 

@@ -4,7 +4,7 @@ import { focusStates } from '../shared/states'
 export const radio = defineSlotRecipe({
   className: 'radio',
   description: 'The styles for the Radio component',
-  slots: ['root', 'input', 'label'],
+  slots: ['root', 'input'],
 
   base: {
     root: {
@@ -43,9 +43,6 @@ export const radio = defineSlotRecipe({
           bgColor: 'action.bg.initial',
         },
       },
-    },
-    label: {
-      pb: '0',
     },
   },
 

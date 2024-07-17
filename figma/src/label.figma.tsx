@@ -7,6 +7,10 @@ const SELECTION =
 const imports = ["import { Label } from '@cerberus/react'"]
 
 const props = {
+  size: figma.enum('Size', {
+    sm: 'sm',
+    md: 'md',
+  }),
   text: figma.string('text'),
 }
 
@@ -14,7 +18,11 @@ figma.connect(Label, SELECTION, {
   imports,
   props,
   example: (props) => {
-    return <Label htmlFor="ADD_INPUT_ID">{props.text}</Label>
+    return (
+      <Label htmlFor="ADD_INPUT_ID" size={props.size}>
+        {props.text}
+      </Label>
+    )
   },
 })
 

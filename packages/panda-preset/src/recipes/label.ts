@@ -19,8 +19,9 @@ export const label: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   description: 'WCAG Level AAA compliant label styles.',
 
   base: {
-    textStyle: 'label-sm',
-    pb: '1',
+    _disabled: {
+      color: 'neutral.text.100',
+    },
   },
 
   variants: {
@@ -30,9 +31,18 @@ export const label: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         srOnly: true,
       },
     },
+    size: {
+      sm: {
+        textStyle: 'label-sm',
+      },
+      md: {
+        textStyle: 'label-md',
+      },
+    },
   },
 
   defaultVariants: {
     usage: 'visible',
+    size: 'md',
   },
 })

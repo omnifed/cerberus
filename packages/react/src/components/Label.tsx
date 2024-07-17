@@ -3,9 +3,9 @@
 import type { HTMLAttributes, PropsWithChildren } from 'react'
 import { label } from '@cerberus/styled-system/recipes'
 import { css, cx, type RecipeVariantProps } from '@cerberus/styled-system/css'
+import { hstack } from '@cerberus/styled-system/patterns'
 import { useFieldContext } from '../context/field'
 import { Show } from './Show'
-import { hstack } from '@cerberus/styled-system/patterns'
 
 /**
  * This module contains the Label component.
@@ -31,16 +31,17 @@ export type LabelProps = LabelBaseProps & LabelRecipeProps
  * ```
  */
 export function Label(props: PropsWithChildren<LabelProps>) {
-  const { hidden, ...nativeProps } = props
-  const { required } = useFieldContext()
+  const { hidden, size, ...nativeProps } = props
+  const { required, disabled } = useFieldContext()
   const usage = hidden ? 'hidden' : 'visible'
 
   return (
     <label
       {...nativeProps}
+      data-disabled={disabled}
       className={cx(
         nativeProps.className,
-        label({ usage }),
+        label({ size, usage }),
         hstack({
           justify: 'space-between',
         }),

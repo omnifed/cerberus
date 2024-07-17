@@ -8,26 +8,26 @@ import {
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
 import {
-  InputBasicPreview,
-  InputSizesPreview,
-} from '@/app/react/input/components/input-preview'
+  OverviewRadioGroup,
+  OverviewRadioSizes
+} from '@/app/react/radio/components/radio-preview'
 
 ## Usage
 
-<WhenToUseAdmonition description="Use a text field when someone needs to enter text into a UI, such as filling in contact or payment information." />
+<WhenToUseAdmonition description="Use a radio group when someone needs to select a single value from 1-4 options." />
 
-## Standard Input
+<WhenNotToUseAdmonition description="When you need the user to select a single option from more than 4 items, use the Select." />
 
-<CodePreview preview={<InputBasicPreview />} />
+## Standard Radio Group
 
-<WhenToUseAdmonition description="When you use any type of standard inputs within a form." />
+<CodePreview preview={<OverviewRadioGroup />} />
 
 ## Sizes
 
-<CodePreview preview={<InputSizesPreview />} />
+<CodePreview preview={<OverviewRadioSizes />} />
 
-## Responsive Layout
+## Alternate selection controls
 
-As layouts adapt to larger screens and different window sizes, apply flexible container dimensions to text fields. Set minimum and maximum values for margins, padding, and container dimensions as layouts scale so that typography adjusts for better reading experiences.
+Radio buttons are one of several selection controls, which allow users to make choices such as selecting options or switching settings on or off.
 
-Text fields can span the full width of the display on compact window sizes, but should be bounded by flexible margins or other containers on medium and expanded window sizes.
+Switches and checkboxes are alternative selection controls that can be used to change settings or preferences.

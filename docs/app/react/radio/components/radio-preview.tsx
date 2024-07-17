@@ -1,34 +1,57 @@
-import { focusStates } from '@cerberus-design/panda-preset'
-import { Field, Label } from '@cerberus-design/react'
-import { css, cx } from '@cerberus/styled-system/css'
+import { Field, Label, Radio } from '@cerberus-design/react'
+import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
-import { radio } from '@cerberus/styled-system/recipes'
-import { type InputHTMLAttributes, type PropsWithChildren } from 'react'
 
-interface RadioProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  id: string
-  size?: 'sm' | 'md'
-}
-
-export function Radio(props: PropsWithChildren<RadioProps>) {
-  const { children, size, ...nativeProps } = props
-  const styles = radio({
-    size,
-  })
+export function DefaultRadioPreview() {
   return (
     <Field>
-      <div className={cx('group', hstack(), styles.root)} tabIndex={0}>
-        <input
-          {...nativeProps}
-          className={styles.input}
-          tabIndex={-1}
-          type="radio"
-        />
-        <Label className={styles.label} htmlFor={props.id}>
-          {children}
-        </Label>
-      </div>
+      <Radio id="valid" name="states" value="valid" defaultChecked>
+        <Label htmlFor="valid">Default (valid)</Label>
+      </Radio>
+    </Field>
+  )
+}
+
+export function InvalidRadioPreview() {
+  return (
+    <Field invalid>
+      <Radio id="invalid" name="states" value="invalid" defaultChecked>
+        <Label htmlFor="invalid">Invalid</Label>
+      </Radio>
+    </Field>
+  )
+}
+
+export function DisabledRadioPreview() {
+  return (
+    <Field disabled>
+      <Radio id="disabled" name="states" value="disabled" defaultChecked>
+        <Label htmlFor="disabled">Disabled</Label>
+      </Radio>
+    </Field>
+  )
+}
+
+export function CustomRadioPreview() {
+  return (
+    <Field>
+      <Radio
+        className={css({
+          borderColor: 'yellow',
+          _groupHover: {
+            bgColor: 'black',
+          },
+          _checked: {
+            bg: 'yellow',
+          },
+        })}
+        id="custom"
+        name="states"
+        value="custom"
+        defaultChecked
+      >
+        <Label htmlFor="custom">Wu-Tang</Label>
+      </Radio>
     </Field>
   )
 }
@@ -44,15 +67,23 @@ export function OverviewRadioGroup() {
       name="pet"
       role="radiogroup"
     >
-      <Radio id="pet" name="pet" value="dog" defaultChecked>
-        🐶 Dog
-      </Radio>
-      <Radio id="pet" name="pet" value="cat">
-        🐱 Cat
-      </Radio>
-      <Radio id="pet" name="pet" value="mouse">
-        🐭 Mouse
-      </Radio>
+      <Field>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <Label htmlFor="dog">🐶 Dog</Label>
+        </Radio>
+      </Field>
+
+      <Field>
+        <Radio id="cat" name="pet" value="cat">
+          <Label htmlFor="cat">😸 Cat</Label>
+        </Radio>
+      </Field>
+
+      <Field>
+        <Radio id="both" name="pet" value="both">
+          <Label htmlFor="both">🐶😸 Both</Label>
+        </Radio>
+      </Field>
     </fieldset>
   )
 }
@@ -68,12 +99,18 @@ export function OverviewRadioSizes() {
       name="sizes"
       role="radiogroup"
     >
-      <Radio id="sizes" name="sizes" value="sm" size="sm">
-        Small
-      </Radio>
-      <Radio id="sizes" name="sizes" value="md">
-        Medium (default)
-      </Radio>
+      <Field>
+        <Radio id="sm" name="sizes" value="sm" size="sm">
+          <Label htmlFor="sm" size="sm">
+            Small
+          </Label>
+        </Radio>
+      </Field>
+      <Field>
+        <Radio id="md" name="sizes" value="md">
+          <Label htmlFor="md">Medium (default)</Label>
+        </Radio>
+      </Field>
     </fieldset>
   )
 }
