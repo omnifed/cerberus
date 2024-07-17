@@ -1,18 +1,23 @@
-import { defineSlotRecipe } from '@pandacss/dev'
-import { focusStates } from '../shared/states'
+import { describe, test, expect } from 'bun:test'
+import { focusStates, slotRecipes } from '@cerberus-design/panda-preset'
 
-export const radio = defineSlotRecipe({
-  className: 'radio',
-  description: 'The styles for the Radio component',
-  slots: ['root', 'input', 'label'],
+describe('radio recipe', () => {
+  const { radio } = slotRecipes
 
-  base: {
-    root: {
+  test('should be exported', () => {
+    expect(radio).toBeDefined()
+  })
+
+  test('should have a base style', () => {
+    expect(radio.base?.root).toMatchObject({
       rounded: 'lg',
       p: '1',
       ...focusStates,
-    },
-    input: {
+    })
+  })
+
+  test('should have a input style', () => {
+    expect(radio.base?.input).toMatchObject({
       appearance: 'none',
       bgColor: 'inherit',
       border: '1px solid',
@@ -43,14 +48,17 @@ export const radio = defineSlotRecipe({
           bgColor: 'action.bg.initial',
         },
       },
-    },
-    label: {
-      pb: '0',
-    },
-  },
+    })
+  })
 
-  variants: {
-    size: {
+  test('should have a label style', () => {
+    expect(radio.base?.label).toMatchObject({
+      pb: '0',
+    })
+  })
+
+  test('should have a size variant', () => {
+    expect(radio.variants!.size).toMatchObject({
       sm: {
         input: {
           h: '1rem',
@@ -63,10 +71,11 @@ export const radio = defineSlotRecipe({
           w: '1.25rem',
         },
       },
-    },
-  },
+    })
+  })
 
-  defaultVariants: {
-    size: 'md',
-  },
+  test('should have a default size variant', () => {
+    const defaultVariants = radio.defaultVariants as { size: string }
+    expect(defaultVariants.size).toBe('md')
+  })
 })

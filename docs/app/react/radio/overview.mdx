@@ -7,12 +7,9 @@ a11y: 'forms'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import {
-  InputBasicPreview,
-  InputInvalidPreview,
-  InputDisabledPreview,
-  InputWithIconPreview,
-  InputSizesPreview,
-} from '@/app/react/input/components/input-preview'
+  OverviewRadioGroup,
+  OverviewRadioSizes
+} from '@/app/react/radio/components/radio-preview'
 
 <OverviewList rules={[
   'Use radio buttons (not toggles) when only one item can be selected from a list',
@@ -22,11 +19,8 @@ import {
 
 ## Example
 
-<CodePreview preview={<InputBasicPreview />} />
-<CodePreview preview={<InputInvalidPreview />} />
-<CodePreview preview={<InputDisabledPreview />} />
-<CodePreview preview={<InputWithIconPreview />} />
-<CodePreview preview={<InputSizesPreview />} />
+<CodePreview preview={<OverviewRadioGroup />} />
+<CodePreview preview={<OverviewRadioSizes />} />
 
 ## Resources
 
