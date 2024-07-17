@@ -5,6 +5,7 @@ import { label } from './label'
 import { tag } from './tag'
 
 import { input } from './slots/input'
+import { radio } from './slots/radio'
 
 /**
  * Recipe module for the Panda preset
@@ -21,4 +22,5 @@ export const recipes = {
 
 export const slotRecipes = {
   input,
+  radio,
 }

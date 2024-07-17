@@ -1,0 +1,33 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import {
+  InputBasicPreview,
+  InputSizesPreview,
+} from '@/app/react/input/components/input-preview'
+
+## Usage
+
+<WhenToUseAdmonition description="Use a text field when someone needs to enter text into a UI, such as filling in contact or payment information." />
+
+## Standard Input
+
+<CodePreview preview={<InputBasicPreview />} />
+
+<WhenToUseAdmonition description="When you use any type of standard inputs within a form." />
+
+## Sizes
+
+<CodePreview preview={<InputSizesPreview />} />
+
+## Responsive Layout
+
+As layouts adapt to larger screens and different window sizes, apply flexible container dimensions to text fields. Set minimum and maximum values for margins, padding, and container dimensions as layouts scale so that typography adjusts for better reading experiences.
+
+Text fields can span the full width of the display on compact window sizes, but should be bounded by flexible margins or other containers on medium and expanded window sizes.

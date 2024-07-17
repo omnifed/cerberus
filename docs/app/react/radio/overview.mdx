@@ -1,0 +1,35 @@
+---
+heading: 'Radio'
+description: 'Radio buttons let people select one option from a set of options'
+a11y: 'forms'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  InputBasicPreview,
+  InputInvalidPreview,
+  InputDisabledPreview,
+  InputWithIconPreview,
+  InputSizesPreview,
+} from '@/app/react/input/components/input-preview'
+
+<OverviewList rules={[
+  'Use radio buttons (not toggles) when only one item can be selected from a list',
+  "Label should be scannable",
+  'Selected items are more prominent than unselected items'
+]} />
+
+## Example
+
+<CodePreview preview={<InputBasicPreview />} />
+<CodePreview preview={<InputInvalidPreview />} />
+<CodePreview preview={<InputDisabledPreview />} />
+<CodePreview preview={<InputWithIconPreview />} />
+<CodePreview preview={<InputSizesPreview />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |

@@ -1,5 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { focusStates, formStates } from '../shared/states'
+import { input as inputStyles } from '../shared/input.base'
 
 /**
  * This module contains the input recipe.
@@ -24,20 +24,7 @@ export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
       w: 'full',
     },
     input: {
-      border: '1px solid',
-      borderColor: 'action.border.initial',
-      h: 'full',
-      pxi: '4',
-      rounded: 'md',
-      transitionProperty: 'border-color',
-      transitionDuration: '200ms',
-      transitionTimingFunction: 'ease-in-out',
-      w: 'full',
-      ...focusStates,
-      ...formStates,
-      _userInvalid: {
-        borderColor: 'danger.border.initial',
-      },
+      ...inputStyles,
       _placeholderShown: {
         color: 'neutral.text.100',
       },
