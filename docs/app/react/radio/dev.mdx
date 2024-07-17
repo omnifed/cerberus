@@ -112,28 +112,32 @@ function OverviewRadioSizes() {
 ## Customizing
 
 <CodePreview preview={<CustomRadioPreview />}>
-```tsx title="search-input.tsx"
-import { Field, Label } from '@cerberus-design/react'
+```tsx title="custom-radio.tsx"
+import { Field, Label, Radio } from '@cerberus-design/react'
 
-function InputCustomPreview() {
+function CustomRadioPreview() {
   return (
-    <Field required>
-      <Label htmlFor="global_search">Killa Bees</Label>
-      <Input
+    <Field>
+      <Radio
         className={css({
-          border: '2px solid',
           borderColor: 'yellow',
-          bgColor: 'black',
-          color: 'yellow',
+          _groupHover: {
+            bgColor: 'black',
+          },
+          _checked: {
+            bg: 'yellow',
+          },
         })}
-        id="global_search"
-        placeholder="Enter the Wu-Tang Clan here."
-        type="text"
-      />
+        id="custom"
+        name="states"
+        value="custom"
+        defaultChecked
+      >
+        <Label htmlFor="custom">Wu-Tang</Label>
+      </Radio>
     </Field>
   )
 }
-
 ```
 </CodePreview>
 
