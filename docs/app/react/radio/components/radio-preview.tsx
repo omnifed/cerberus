@@ -46,7 +46,9 @@ export function OverviewRadioSizes() {
     >
       <Field>
         <Radio id="sm" name="sizes" value="sm" size="sm">
-          <Label htmlFor="sm">Small</Label>
+          <Label htmlFor="sm" size="sm">
+            Small
+          </Label>
         </Radio>
       </Field>
       <Field>

@@ -34,7 +34,7 @@
     "id": "2:c",
     "label": "Label",
     "route": "/react/label",
-    "tag": "",
+    "tag": "next",
     "type": "route"
   },
   {
