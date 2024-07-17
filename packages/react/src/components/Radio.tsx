@@ -25,7 +25,7 @@ export function Radio(props: PropsWithChildren<RadioProps>) {
         {...nativeProps}
         {...state}
         {...(invalid && { 'aria-invalid': true })}
-        className={styles.input}
+        className={cx(nativeProps.className, styles.input)}
         tabIndex={-1}
         type="radio"
       />

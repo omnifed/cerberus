@@ -32,12 +32,13 @@ export type LabelProps = LabelBaseProps & LabelRecipeProps
  */
 export function Label(props: PropsWithChildren<LabelProps>) {
   const { hidden, size, ...nativeProps } = props
-  const { required } = useFieldContext()
+  const { required, disabled } = useFieldContext()
   const usage = hidden ? 'hidden' : 'visible'
 
   return (
     <label
       {...nativeProps}
+      data-disabled={disabled}
       className={cx(
         nativeProps.className,
         label({ size, usage }),

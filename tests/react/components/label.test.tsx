@@ -50,4 +50,17 @@ describe('Label', () => {
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
     expect(screen.queryByText(/(required)/i)).toBeNull()
   })
+
+  test('should render a disabled label', () => {
+    render(
+      <Field disabled>
+        <Label htmlFor="test">Test Label</Label>
+        <input id="test" />
+      </Field>,
+    )
+    expect(screen.getByLabelText(/test label/i)).toBeTruthy()
+    expect(
+      screen.getByText(/test label/i).attributes.getNamedItem('data-disabled'),
+    ).toBeTruthy()
+  })
 })
