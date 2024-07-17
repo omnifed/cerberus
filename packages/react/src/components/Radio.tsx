@@ -1,0 +1,35 @@
+'use client'
+
+import { cx } from '@cerberus-design/styled-system/css'
+import { hstack } from '@cerberus-design/styled-system/patterns'
+import { radio } from '@cerberus-design/styled-system/recipes'
+import type { RecipeVariantProps } from '@cerberus-design/styled-system/types'
+import type { InputHTMLAttributes, PropsWithChildren } from 'react'
+import { useFieldContext } from '../context/field'
+
+export type RadioRecipe = RecipeVariantProps<typeof radio>
+export interface RadioBaseProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  id: string
+}
+export type RadioProps = RadioBaseProps & RadioRecipe
+
+export function Radio(props: PropsWithChildren<RadioProps>) {
+  const { children, size, ...nativeProps } = props
+  const { invalid, ...state } = useFieldContext()
+  const styles = radio({ size })
+
+  return (
+    <div className={cx('group', hstack(), styles.root)} tabIndex={0}>
+      <input
+        {...nativeProps}
+        {...state}
+        {...(invalid && { 'aria-invalid': true })}
+        className={styles.input}
+        tabIndex={-1}
+        type="radio"
+      />
+      {children}
+    </div>
+  )
+}
