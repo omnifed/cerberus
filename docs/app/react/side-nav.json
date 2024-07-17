@@ -60,34 +60,41 @@
   },
   {
     "id": "2:g",
+    "label": "Radio",
+    "route": "/react/radio",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:h",
     "label": "Tabs",
     "route": "/react/tabs",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:h",
+    "id": "2:i",
     "label": "Tag",
     "route": "/react/tags",
     "tag": "next",
     "type": "route"
   },
   {
-    "id": "2:i",
+    "id": "2:j",
     "label": "Textarea",
     "route": "/react/textarea",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:j",
+    "id": "2:k",
     "label": "Tooltip",
     "route": "/react/tooltip",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:k",
+    "id": "2:l",
     "label": "Show",
     "route": "/react/show",
     "tag": "",
