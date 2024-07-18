@@ -1,6 +1,18 @@
 import { defineSlotRecipe } from '@pandacss/dev'
 import { focusStates } from '../shared/states'
 
+/**
+ * This module contains the radio recipe.
+ * @module
+ */
+
+/**
+ * Styles for the Radio component
+ * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
+ * @definition [ARIA Forms](https://www.a11yproject.com/checklist/#forms)
+ * @definition [Input docs](https://cerberus.digitalu.design/react/radio)
+ */
+
 export const radio = defineSlotRecipe({
   className: 'radio',
   description: 'The styles for the Radio component',
