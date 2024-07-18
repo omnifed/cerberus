@@ -88,13 +88,20 @@
   },
   {
     "id": "2:k",
+    "label": "Toggle",
+    "route": "/react/toggle",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:l",
     "label": "Tooltip",
     "route": "/react/tooltip",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:l",
+    "id": "2:m",
     "label": "Show",
     "route": "/react/show",
     "tag": "",

@@ -1,0 +1,175 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/Radio.tsx'
+recipe: 'slots/radio.ts'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import {
+  DefaultRadioPreview,
+  InvalidRadioPreview,
+  DisabledRadioPreview,
+  OverviewRadioSizes,
+  CustomRadioPreview,
+} from '@/app/react/radio/components/radio-preview'
+
+```ts
+import { Field, Radio } from '@cerberus-design/react'
+```
+
+## Usage
+
+<CodePreview preview={<DefaultRadioPreview />}>
+```tsx title="valid-radio.tsx" {7}
+import { Field, Label, Radio } from '@cerberus-design/react'
+
+function DefaultRadioPreview() {
+  return (
+    <Field>
+      <Radio id="valid" name="states" value="valid" defaultChecked>
+        <Label htmlFor="valid">Default (valid)</Label>
+      </Radio>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## Invalid
+
+<CodePreview preview={<InvalidRadioPreview />}>
+```tsx title="invalid-radio.tsx" {5}
+import { Field, Label, Radio } from '@cerberus-design/react'
+
+function InvalidRadioPreview() {
+  return (
+    <Field invalid>
+      <Radio id="invalid" name="states" value="invalid" defaultChecked>
+        <Label htmlFor="invalid">Default (invalid)</Label>
+      </Radio>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## Disabled
+
+<CodePreview preview={<DisabledRadioPreview />}>
+```tsx title="search-input.tsx" {5}
+import { Field, Label, Radio } from '@cerberus-design/react'
+
+function DisabledRadioPreview() {
+  return (
+    <Field disabled>
+      <Radio id="disabled" name="states" value="disabled" defaultChecked>
+        <Label htmlFor="disabled">Disabled</Label>
+      </Radio>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## Sizes
+
+<CodePreview preview={<OverviewRadioSizes />}>
+```tsx title="radio-sizes.tsx" {14,20,26}
+import { Field, Label, Radio } from '@cerberus-design/react'
+import { hstack } from '@cerberus/styled-system/patterns'
+
+function OverviewRadioSizes() {
+  return (
+    <fieldset
+      className={hstack({
+        gap: '4',
+        p: '4',
+        rounded: 'xl',
+      })}
+      name="sizes"
+      role="radiogroup"
+    >
+      <Field>
+        <Radio id="sm" name="sizes" value="sm" size="sm">
+          <Label htmlFor="sm" size="sm">
+            Small
+          </Label>
+        </Radio>
+      </Field>
+
+      <Field>
+        <Radio id="md" name="sizes" value="md">
+          <Label htmlFor="md">Medium (default)</Label>
+        </Radio>
+      </Field>
+    </fieldset>
+  )
+}
+```
+</CodePreview>
+
+## Customizing
+
+<CodePreview preview={<CustomRadioPreview />}>
+```tsx title="custom-radio.tsx"
+import { Field, Label, Radio } from '@cerberus-design/react'
+
+function CustomRadioPreview() {
+  return (
+    <Field>
+      <Radio
+        className={css({
+          borderColor: 'yellow',
+          _groupHover: {
+            bgColor: 'black',
+          },
+          _checked: {
+            bg: 'yellow',
+          },
+        })}
+        id="custom"
+        name="states"
+        value="custom"
+        defaultChecked
+      >
+        <Label htmlFor="custom">Wu-Tang</Label>
+      </Radio>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+<NoteAdmonition description="The Radio component must be used within a Field provider." />
+
+```ts showLineNumbers=false
+export interface FieldProps {
+  disabled?: boolean
+  invalid?: boolean
+  required?: boolean
+  readOnly?: boolean
+}
+
+define function Field(props: PropsWithChildren<FieldProps>): ReactNode
+```
+
+```ts showLineNumbers=false
+export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
+  id: string
+  size?: 'sm' | 'md' | 'lg'
+}
+
+define function Radio(props: RadioProps): ReactNode
+```
+
+### Props
+
+The Radio component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| id   |    |  An identifier that is shared with the Label `htmlFor` attribute.        |
+| size   | `md`   |  The size of the input field.        |

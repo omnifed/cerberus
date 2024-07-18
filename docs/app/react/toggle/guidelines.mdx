@@ -1,0 +1,33 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import {
+  OverviewRadioGroup,
+  OverviewRadioSizes
+} from '@/app/react/radio/components/radio-preview'
+
+## Usage
+
+<WhenToUseAdmonition description="Use a radio group when someone needs to select a single value from 1-4 options." />
+
+<WhenNotToUseAdmonition description="When you need the user to select a single option from more than 4 items, use the Select." />
+
+## Standard Radio Group
+
+<CodePreview preview={<OverviewRadioGroup />} />
+
+## Sizes
+
+<CodePreview preview={<OverviewRadioSizes />} />
+
+## Alternate selection controls
+
+Radio buttons are one of several selection controls, which allow users to make choices such as selecting options or switching settings on or off.
+
+Switches and checkboxes are alternative selection controls that can be used to change settings or preferences.

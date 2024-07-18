@@ -26,7 +26,7 @@ export const toggle = defineSlotRecipe({
         transitionProperty: 'background-color',
         transitionDuration: '150ms',
       },
-      _groupChecked: {
+      _checked: {
         bgColor: 'action.bg.initial',
       },
     },
@@ -39,9 +39,10 @@ export const toggle = defineSlotRecipe({
       zIndex: 'hide',
     },
     thumb: {
+      // ...Combine with vstack
       bgColor: 'white',
       color: 'white',
-      transform: 'translateX(0) scale(0.8)',
+      transform: 'translateX(12%) scale(0.8)',
       zIndex: 'decorator',
       _motionSafe: {
         transitionProperty: 'transform, color',
@@ -52,7 +53,10 @@ export const toggle = defineSlotRecipe({
 
       _peerChecked: {
         color: 'action.text.200',
-        transform: 'translateX(99%) scale(1)',
+        transform: 'translateX(164%) scale(1)',
+      },
+      _peerDisabled: {
+        opacity: '0.5',
       },
     },
   },
