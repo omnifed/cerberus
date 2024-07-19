@@ -1,0 +1,37 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import {
+  OverviewToggleGroup,
+  OverviewToggleSizes
+} from '@/app/react/toggle/components/toggle-preview'
+
+## Usage
+
+<WhenToUseAdmonition description="Use a Toggle when someone needs to opt-into an option." />
+
+<WhenNotToUseAdmonition description="When you need the user to select from multiple options within a group, use a Radio." />
+
+## Standard Toggle
+
+<CodePreview preview={<OverviewToggleGroup />} />
+
+## Sizes
+
+<CodePreview preview={<OverviewToggleSizes />} />
+
+## Alternate selection controls
+
+Checkboxes, radio buttons, and toggles are the three main types of selection controls. They help people make choices, like selecting options or turning settings on and off.
+
+Use checkboxes to select multiple related options in a list.
+
+Use radio buttons to select a single option in a list.
+
+Use toggles to select standalone or more verbose options in a list, like settings.
