@@ -47,7 +47,7 @@ function Toggle(props: ToggleProps) {
 
   return (
     <span
-      className={cx(styles.track, hstack())}
+      className={cx('group', styles.track, hstack())}
       data-checked={props.checked || props.defaultChecked}
     >
       <input

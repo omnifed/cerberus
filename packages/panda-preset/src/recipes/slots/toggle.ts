@@ -3,7 +3,7 @@ import { focusStates } from '../shared/states'
 
 const toggleTransitions = {
   _motionSafe: {
-    transitionProperty: 'transform, color',
+    transitionProperty: 'transform, color, box-shadow',
     transitionDuration: '150ms',
     transitionTimingFunction: 'ease-in',
   },
@@ -63,6 +63,9 @@ export const toggle = defineSlotRecipe({
       },
       _peerDisabled: {
         opacity: '0.5',
+      },
+      _groupHover: {
+        boxShadow: '0px 0px 8px 0px rgba(22, 1, 38, 0.4)',
       },
     },
   },
