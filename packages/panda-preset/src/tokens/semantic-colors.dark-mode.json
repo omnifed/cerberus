@@ -275,7 +275,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "colors.brand.100",
+        "$value": "colors.brand.5",
         "$description": "",
         "$extensions": {
           "com.figma": {
