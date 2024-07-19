@@ -6,6 +6,7 @@ import { css, cx } from '@cerberus/styled-system/css'
 import { Nav } from './components/Nav'
 
 import './globals.css'
+import { description, openGraph } from './shared-metadata'
 
 const poppins = Poppins({
   display: 'swap',
@@ -15,8 +16,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'Cerberus Design System',
-  description:
-    'Guarding the brand integrity of the Digital University realm by creating a flexible and extensible design system.',
+  description,
+  openGraph,
 }
 
 interface RootProps {}

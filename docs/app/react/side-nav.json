@@ -125,5 +125,12 @@
     "route": "/react/use-theme-context",
     "tag": "",
     "type": "route"
+  },
+  {
+    "id": "3:c",
+    "label": "useToggle",
+    "route": "/react/use-toggle",
+    "tag": "next",
+    "type": "route"
   }
 ]

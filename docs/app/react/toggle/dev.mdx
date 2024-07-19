@@ -1,18 +1,18 @@
 ---
 npm: '@cerberus-design/react'
-source: 'components/Radio.tsx'
-recipe: 'slots/radio.ts'
+source: 'components/Toggle.tsx'
+recipe: 'slots/toggle.ts'
 ---
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
 import {
-  DefaultRadioPreview,
-  InvalidRadioPreview,
-  DisabledRadioPreview,
-  OverviewRadioSizes,
-  CustomRadioPreview,
-} from '@/app/react/radio/components/radio-preview'
+  DefaultTogglePreview,
+  DisabledTogglePreview,
+  WithLabelTogglePreview,
+  WithMessageTogglePreview,
+  OverviewToggleSizes
+} from '@/app/react/toggle/components/toggle-preview'
 
 ```ts
 import { Field, Toggle, useToggle } from '@cerberus-design/react'
@@ -20,34 +20,20 @@ import { Field, Toggle, useToggle } from '@cerberus-design/react'
 
 ## Usage
 
-<CodePreview preview={<DefaultRadioPreview />}>
-```tsx title="valid-radio.tsx" {7}
-import { Field, Label, Radio } from '@cerberus-design/react'
+<CodePreview preview={<DefaultTogglePreview />}>
+```tsx title="valid-radio.tsx"
+import { Field, Toggle, useToggle } from '@cerberus-design/react'
 
-function DefaultRadioPreview() {
+function DefaultTogglePreview() {
+  const { checked, handleChange } = useToggle({ checked: 'default' })
   return (
     <Field>
-      <Radio id="valid" name="states" value="valid" defaultChecked>
-        <Label htmlFor="valid">Default (valid)</Label>
-      </Radio>
-    </Field>
-  )
-}
-```
-</CodePreview>
-
-## Invalid
-
-<CodePreview preview={<InvalidRadioPreview />}>
-```tsx title="invalid-radio.tsx" {5}
-import { Field, Label, Radio } from '@cerberus-design/react'
-
-function InvalidRadioPreview() {
-  return (
-    <Field invalid>
-      <Radio id="invalid" name="states" value="invalid" defaultChecked>
-        <Label htmlFor="invalid">Default (invalid)</Label>
-      </Radio>
+      <Toggle
+        checked={checked === 'default'}
+        id="default"
+        onChange={handleChange}
+        value="default"
+      />
     </Field>
   )
 }
@@ -56,16 +42,81 @@ function InvalidRadioPreview() {
 
 ## Disabled
 
-<CodePreview preview={<DisabledRadioPreview />}>
-```tsx title="search-input.tsx" {5}
-import { Field, Label, Radio } from '@cerberus-design/react'
+<CodePreview preview={<DisabledTogglePreview />}>
+```tsx title="search-input.tsx" {6}
+import { Field, Toggle, useToggle } from '@cerberus-design/react'
 
-function DisabledRadioPreview() {
+function function DisabledTogglePreview() {
+  const { checked, handleChange } = useToggle()
   return (
     <Field disabled>
-      <Radio id="disabled" name="states" value="disabled" defaultChecked>
-        <Label htmlFor="disabled">Disabled</Label>
-      </Radio>
+      <Toggle
+        checked={checked === 'default'}
+        id="default"
+        onChange={handleChange}
+        value="default"
+      />
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## With Label
+
+<CodePreview preview={<WithLabelTogglePreview />}>
+```tsx title="search-input.tsx" {15}
+import { Field, Label, Toggle, useToggle } from '@cerberus-design/react'
+
+function WithLabelTogglePreview() {
+  const { checked, handleChange } = useToggle()
+  return (
+    <Field>
+      <div className={hstack()}>
+        <Toggle
+          describedBy="help:default"
+          checked={checked === 'default'}
+          id="default"
+          onChange={handleChange}
+          value="default"
+        />
+        <Label htmlFor="default">Show notifications</Label>
+      </div>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## With Message
+
+When you need to display a message along with a `Label`, you can use the `FieldMessage` component.
+
+<CodePreview preview={<WithMessageTogglePreview />}>
+```tsx title="search-input.tsx" {22}
+import {
+  Field,
+  FieldMessage,
+  Label,
+  Toggle,
+  useToggle
+} from '@cerberus-design/react'
+
+function WithMessageTogglePreview() {
+  const { checked, handleChange } = useToggle()
+  return (
+    <Field>
+      <Label htmlFor="default">User Settings</Label>
+      <div className={hstack()}>
+        <Toggle
+          describedBy="help:default"
+          checked={checked === 'default'}
+          id="default"
+          onChange={handleChange}
+          value="default"
+        />
+        <FieldMessage id="help:default">Show notifications</FieldMessage>
+      </div>
     </Field>
   )
 }
@@ -74,36 +125,38 @@ function DisabledRadioPreview() {
 
 ## Sizes
 
-<CodePreview preview={<OverviewRadioSizes />}>
+<CodePreview preview={<OverviewToggleSizes />}>
 ```tsx title="radio-sizes.tsx" {14,20,26}
-import { Field, Label, Radio } from '@cerberus-design/react'
+import { Field, Toggle } from '@cerberus-design/react'
 import { hstack } from '@cerberus/styled-system/patterns'
 
-function OverviewRadioSizes() {
+function OverviewToggleSizes() {
+  const { checked, handleChange } = useToggle({ checked: 'lg-t' })
+
   return (
-    <fieldset
+    <div
       className={hstack({
-        gap: '4',
-        p: '4',
-        rounded: 'xl',
+        gap: 4,
       })}
-      name="sizes"
-      role="radiogroup"
     >
       <Field>
-        <Radio id="sm" name="sizes" value="sm" size="sm">
-          <Label htmlFor="sm" size="sm">
-            Small
-          </Label>
-        </Radio>
+        <Toggle
+          checked={checked === 'sm-t'}
+          id="sm-t"
+          onChange={handleChange}
+          value="sm-t"
+        />
       </Field>
-
       <Field>
-        <Radio id="md" name="sizes" value="md">
-          <Label htmlFor="md">Medium (default)</Label>
-        </Radio>
+        <Toggle
+          checked={checked === 'lg-t'}
+          id="lg-t"
+          onChange={handleChange}
+          size="lg"
+          value="lg-t"
+        />
       </Field>
-    </fieldset>
+    </div>
   )
 }
 ```
@@ -111,35 +164,7 @@ function OverviewRadioSizes() {
 
 ## Customizing
 
-<CodePreview preview={<CustomRadioPreview />}>
-```tsx title="custom-radio.tsx"
-import { Field, Label, Radio } from '@cerberus-design/react'
-
-function CustomRadioPreview() {
-  return (
-    <Field>
-      <Radio
-        className={css({
-          borderColor: 'yellow',
-          _groupHover: {
-            bgColor: 'black',
-          },
-          _checked: {
-            bg: 'yellow',
-          },
-        })}
-        id="custom"
-        name="states"
-        value="custom"
-        defaultChecked
-      >
-        <Label htmlFor="custom">Wu-Tang</Label>
-      </Radio>
-    </Field>
-  )
-}
-```
-</CodePreview>
+To customize the style of the Toggle, we recommend the [`toggle` slot recipe](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/recipes/slots/toggle.ts) provided by the `styled-system` package, combined with `css` functions.
 
 ## API
 

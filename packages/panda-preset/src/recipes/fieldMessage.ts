@@ -21,7 +21,6 @@ export const fieldMessage: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   base: {
     color: 'neutral.text.200',
     textStyle: 'label-sm',
-    pb: '1',
     _userInvalid: {
       color: 'danger.text.200',
     },
