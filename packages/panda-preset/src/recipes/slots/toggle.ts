@@ -1,6 +1,19 @@
 import { defineSlotRecipe } from '@pandacss/dev'
 import { focusStates } from '../shared/states'
 
+const toggleTransitions = {
+  _motionSafe: {
+    transitionProperty: 'transform, color',
+    transitionDuration: '150ms',
+    transitionTimingFunction: 'ease-in',
+  },
+  _checked: {
+    transform: 'translateX(164%) scale(1)',
+  },
+}
+const SM_RADII = 'full'
+const LG_RADII = '0.75rem'
+
 /**
  * This module contains the toggle recipe.
  * @module
@@ -15,7 +28,7 @@ import { focusStates } from '../shared/states'
 export const toggle = defineSlotRecipe({
   className: 'toggle',
   description: 'The styles for the Toggle component',
-  slots: ['track', 'input', 'thumb'],
+  slots: ['track', 'container', 'input', 'thumb'],
 
   base: {
     track: {
@@ -33,27 +46,20 @@ export const toggle = defineSlotRecipe({
     input: {
       appearance: 'none',
       h: 'full',
-      opacity: 0,
       position: 'absolute',
       w: 'full',
-      zIndex: 'hide',
+      zIndex: 'decorator',
+      ...focusStates,
     },
     thumb: {
       // ...Combine with vstack
       bgColor: 'white',
       color: 'white',
-      transform: 'translateX(12%) scale(0.8)',
-      zIndex: 'decorator',
-      _motionSafe: {
-        transitionProperty: 'transform, color',
-        transitionDuration: '150ms',
-        transitionTimingFunction: 'ease-in',
-      },
-      ...focusStates,
-
+      transform: 'translateX(12%) scale(0.85)',
+      _motionSafe: toggleTransitions._motionSafe,
       _peerChecked: {
+        ...toggleTransitions._checked,
         color: 'action.text.200',
-        transform: 'translateX(164%) scale(1)',
       },
       _peerDisabled: {
         opacity: '0.5',
@@ -66,24 +72,33 @@ export const toggle = defineSlotRecipe({
       sm: {
         track: {
           h: '1.5rem',
-          rounded: 'full',
+          rounded: SM_RADII,
           w: '3.25rem',
+        },
+        input: {
+          rounded: SM_RADII,
         },
         thumb: {
           h: '1rem',
-          rounded: 'full',
+          rounded: SM_RADII,
           w: '1rem',
+          _peerChecked: {
+            transform: 'translateX(200%) scale(1)',
+          },
         },
       },
       lg: {
         track: {
           h: '2.5rem',
-          rounded: '0.75rem',
+          rounded: LG_RADII,
           w: '5rem',
+        },
+        input: {
+          rounded: LG_RADII,
         },
         thumb: {
           h: '1.75rem',
-          rounded: '0.75rem',
+          rounded: LG_RADII,
           w: '1.75rem',
         },
       },

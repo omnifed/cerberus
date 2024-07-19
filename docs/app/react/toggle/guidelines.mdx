@@ -8,26 +8,30 @@ import {
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
 import {
-  OverviewRadioGroup,
-  OverviewRadioSizes
-} from '@/app/react/radio/components/radio-preview'
+  OverviewToggleGroup,
+  OverviewToggleSizes
+} from '@/app/react/toggle/components/toggle-preview'
 
 ## Usage
 
-<WhenToUseAdmonition description="Use a radio group when someone needs to select a single value from 1-4 options." />
+<WhenToUseAdmonition description="Use a Toggle when someone needs to opt-into an option." />
 
-<WhenNotToUseAdmonition description="When you need the user to select a single option from more than 4 items, use the Select." />
+<WhenNotToUseAdmonition description="When you need the user to select from multiple options within a group, use a Radio." />
 
-## Standard Radio Group
+## Standard Toggle
 
-<CodePreview preview={<OverviewRadioGroup />} />
+<CodePreview preview={<OverviewToggleGroup />} />
 
 ## Sizes
 
-<CodePreview preview={<OverviewRadioSizes />} />
+<CodePreview preview={<OverviewToggleSizes />} />
 
 ## Alternate selection controls
 
-Radio buttons are one of several selection controls, which allow users to make choices such as selecting options or switching settings on or off.
+Checkboxes, radio buttons, and toggles are the three main types of selection controls. They help people make choices, like selecting options or turning settings on and off.
 
-Switches and checkboxes are alternative selection controls that can be used to change settings or preferences.
+Use checkboxes to select multiple related options in a list.
+
+Use radio buttons to select a single option in a list.
+
+Use toggles to select standalone or more verbose options in a list, like settings.
