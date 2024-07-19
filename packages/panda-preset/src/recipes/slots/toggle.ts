@@ -1,5 +1,5 @@
 import { defineSlotRecipe } from '@pandacss/dev'
-import { focusStates } from '../shared/states'
+import { focusStates, formStates } from '../shared/states'
 
 const toggleTransitions = {
   _motionSafe: {
@@ -41,6 +41,9 @@ export const toggle = defineSlotRecipe({
       },
       _checked: {
         bgColor: 'action.bg.initial',
+        _groupHover: {
+          bgColor: 'action.bg.hover',
+        },
       },
     },
     input: {
@@ -50,6 +53,7 @@ export const toggle = defineSlotRecipe({
       w: 'full',
       zIndex: 'decorator',
       ...focusStates,
+      ...formStates,
     },
     thumb: {
       // ...Combine with vstack

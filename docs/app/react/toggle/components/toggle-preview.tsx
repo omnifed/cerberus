@@ -1,99 +1,111 @@
 'use client'
 
-import { Checkmark } from '@cerberus-design/icons'
-import { cx } from '@cerberus/styled-system/css'
+import {
+  Field,
+  FieldMessage,
+  Label,
+  Toggle,
+  useToggle,
+} from '@cerberus-design/react'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
-import {
-  toggle,
-  type ToggleVariantProps,
-} from '@cerberus/styled-system/recipes'
-import { on } from 'events'
-import {
-  useCallback,
-  useMemo,
-  useState,
-  type ChangeEvent,
-  type InputHTMLAttributes,
-  type MouseEvent,
-} from 'react'
 
-function useToggle(options: {
-  checked?: string
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
-}) {
-  const { onChange } = options
-  const [checked, setChecked] = useState<string>(options.checked ?? '')
-
-  const handleChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      const target = e.currentTarget as HTMLInputElement
-      setChecked((prev) => {
-        return prev === target.value ? '' : target.value
-      })
-      onChange?.(e)
-    },
-    [onChange],
+export function DefaultTogglePreview() {
+  const { checked, handleChange } = useToggle({ checked: 'default' })
+  return (
+    <Field>
+      <Toggle
+        checked={checked === 'default'}
+        id="default"
+        onChange={handleChange}
+        value="default"
+      />
+    </Field>
   )
-
-  return useMemo(() => ({ checked, handleChange }), [checked, handleChange])
 }
 
-type ToggleBase = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
-type ToggleProps = ToggleBase & ToggleVariantProps
-
-function Toggle(props: ToggleProps) {
-  const { size, ...nativeProps } = props
-  const styles = toggle({ size })
-
+export function DisabledTogglePreview() {
+  const { checked, handleChange } = useToggle()
   return (
-    <span
-      className={cx('group', styles.track, hstack())}
-      data-checked={props.checked || props.defaultChecked}
-    >
-      <input
-        {...nativeProps}
-        aria-label="Toggle"
-        className={cx('peer', styles.input)}
-        role="switch"
-        type="checkbox"
+    <Field disabled>
+      <Toggle
+        checked={checked === 'default'}
+        id="default"
+        onChange={handleChange}
+        value="default"
       />
-      <span
-        className={cx(
-          styles.thumb,
-          vstack({
-            justify: 'center',
-          }),
-        )}
+    </Field>
+  )
+}
+
+export function WithMessageTogglePreview() {
+  const { checked, handleChange } = useToggle()
+  return (
+    <Field>
+      <div
+        className={vstack({
+          alignItems: 'flex-start',
+        })}
       >
-        <Checkmark />
-      </span>
-    </span>
+        <Label htmlFor="default">User Settings</Label>
+        <div className={hstack()}>
+          <Toggle
+            describedBy="help:default"
+            checked={checked === 'default'}
+            id="default"
+            onChange={handleChange}
+            value="default"
+          />
+          <FieldMessage id="help:default">Show notifications</FieldMessage>
+        </div>
+      </div>
+    </Field>
+  )
+}
+
+export function WithLabelTogglePreview() {
+  const { checked, handleChange } = useToggle()
+  return (
+    <Field>
+      <div className={hstack()}>
+        <Toggle
+          describedBy="help:default"
+          checked={checked === 'default'}
+          id="default"
+          onChange={handleChange}
+          value="default"
+        />
+        <Label htmlFor="default">Show notifications</Label>
+      </div>
+    </Field>
   )
 }
 
 export function OverviewToggleGroup() {
   const { checked, handleChange } = useToggle({ checked: 'lg-one' })
-
   return (
     <div
       className={hstack({
         gap: 4,
       })}
     >
-      <Toggle
-        checked={checked === 'lg-one'}
-        id="lg-one"
-        size="lg"
-        onChange={handleChange}
-        value="lg-one"
-      />
-      <Toggle
-        checked={checked === 'lg-two'}
-        id="lg-two"
-        size="lg"
-        onChange={handleChange}
-        value="lg-two"
-      />
+      <Field>
+        <Toggle
+          checked={checked === 'lg-one'}
+          id="lg-one"
+          size="lg"
+          onChange={handleChange}
+          value="lg-one"
+        />
+      </Field>
+      <Field>
+        <Toggle
+          checked={checked === 'lg-two'}
+          id="lg-two"
+          size="lg"
+          onChange={handleChange}
+          value="lg-two"
+        />
+      </Field>
     </div>
   )
 }
@@ -107,19 +119,23 @@ export function OverviewToggleSizes() {
         gap: 4,
       })}
     >
-      <Toggle
-        checked={checked === 'sm-t'}
-        id="sm-t"
-        onChange={handleChange}
-        value="sm-t"
-      />
-      <Toggle
-        checked={checked === 'lg-t'}
-        id="lg-t"
-        onChange={handleChange}
-        size="lg"
-        value="lg-t"
-      />
+      <Field>
+        <Toggle
+          checked={checked === 'sm-t'}
+          id="sm-t"
+          onChange={handleChange}
+          value="sm-t"
+        />
+      </Field>
+      <Field>
+        <Toggle
+          checked={checked === 'lg-t'}
+          id="lg-t"
+          onChange={handleChange}
+          size="lg"
+          value="lg-t"
+        />
+      </Field>
     </div>
   )
 }

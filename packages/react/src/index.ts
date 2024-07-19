@@ -19,6 +19,7 @@ export * from './components/TabList'
 export * from './components/TabPanel'
 export * from './components/Tag'
 export * from './components/Textarea'
+export * from './components/Toggle'
 export * from './components/Show'
 
 // context
@@ -31,6 +32,7 @@ export * from './context/theme'
 // hooks
 
 export * from './hooks/useTheme'
+export * from './hooks/useToggle'
 
 // aria-helpers
 
