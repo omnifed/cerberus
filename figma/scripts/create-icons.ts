@@ -72,6 +72,7 @@ function makePascalCase(name: string): string {
     .split(/[.-]/g)
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('')
+    .replace('4k', '4K')
 }
 
 function update3dTo3D(name: string): string {
