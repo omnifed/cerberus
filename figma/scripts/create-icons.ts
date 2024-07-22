@@ -59,17 +59,32 @@ const iconGroups = [
   'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=9385-2&m=dev',
 ]
 
-function addUnderScoreBeforeNumber(name: string): string {
-  return name.replace(/([0-9]+)/g, '_$1')
+function addUnderscoreToEndNumber(name: string): string {
+  return name.replace(/([0-9]+)$/, '_$1')
 }
 
-function makeComponentName(name: string): string {
-  return addUnderScoreBeforeNumber(
-    name
-      .split(/[.-]/g)
-      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-      .join(''),
-  )
+function makePascalCase(name: string): string {
+  return name
+    .split(/[.-]/g)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('')
+}
+
+function update3dTo3D(name: string): string {
+  if (name.includes('2d')) return name.replace('2d', '2D')
+  return name.replace('3d', '3D')
+}
+
+function makeComponentName(name: string, rawUrl: string): string {
+  const url: URL = new URL(rawUrl)
+  const nodeID = url.searchParams.get('node-id') ?? ''
+  let formattedName = name
+
+  if (nodeID.includes('9553')) {
+    formattedName = `watson-health-${update3dTo3D(name)}`
+  }
+
+  return addUnderscoreToEndNumber(makePascalCase(formattedName))
 }
 
 function getIconTemplate(name: string, url: string): string {
@@ -103,7 +118,13 @@ figma.connect(
 async function getIcons() {
   try {
     const data = await Promise.all(
-      iconGroups.map(async (group) => await client.getComponents(group)),
+      iconGroups.map(async (group) => {
+        const data = await client.getComponents(group)
+        return data.map((component) => ({
+          ...component,
+          group,
+        }))
+      }),
     )
 
     // Figma example: https://github.com/figma/code-connect/blob/main/cli/scripts/import-icons.ts
@@ -113,7 +134,7 @@ async function getIcons() {
       .flatMap((group) => group)
       .map((component) => ({
         ...component,
-        name: makeComponentName(component.name),
+        name: makeComponentName(component.name, component.group),
       }))
 
     const uniqueNames = new Set([components.map((c) => c.name)])
