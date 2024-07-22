@@ -59,6 +59,10 @@ const iconGroups = [
   'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=9385-2&m=dev',
 ]
 
+function addUnderScoreToStartNumber(name: string): string {
+  return name.replace(/^[0-9]+/, (match) => `_${match}`)
+}
+
 function addUnderscoreToEndNumber(name: string): string {
   return name.replace(/([0-9]+)$/, '_$1')
 }
@@ -84,7 +88,9 @@ function makeComponentName(name: string, rawUrl: string): string {
     formattedName = `watson-health-${update3dTo3D(name)}`
   }
 
-  return addUnderscoreToEndNumber(makePascalCase(formattedName))
+  return addUnderScoreToStartNumber(
+    addUnderscoreToEndNumber(makePascalCase(formattedName)),
+  )
 }
 
 function getIconTemplate(name: string, url: string): string {
@@ -152,7 +158,6 @@ async function getIcons() {
           resolve(iconsDirPath, `${name}.figma.tsx`),
           getIconTemplate(name, componentData?.figmaUrl || ''),
         )
-        console.log(`Wrote ${name}`)
       })
     })
 
