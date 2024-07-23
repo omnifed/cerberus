@@ -105,9 +105,13 @@ function isNotWatsonHealth(name: string): boolean {
   )
 }
 
-function makeComponentName(name: string, rawUrl: string): string {
+function getParams(rawUrl: string): URLSearchParams {
   const url: URL = new URL(rawUrl)
-  const nodeID = url.searchParams.get('node-id') ?? ''
+  return url.searchParams
+}
+
+function makeComponentName(name: string, rawUrl: string): string {
+  const nodeID = getParams(rawUrl).get('node-id') ?? ''
   let formattedName = name
 
   if (nodeID.includes('9553') && isNotWatsonHealth(name)) {
@@ -170,18 +174,8 @@ async function getIcons() {
         }))
       }),
     )
+    const flatData = data.flatMap((set) => set)
 
-    // Figma example: https://github.com/figma/code-connect/blob/main/cli/scripts/import-icons.ts
-
-    // Converts icon names from e.g `icon-32-list` to `Icon32List`
-    const components = data
-      .flatMap((group) => group)
-      .map((component) => ({
-        ...component,
-        name: makeComponentName(component.name, component.group),
-      }))
-
-    const uniqueNames = new Set([components.map((c) => c.name)])
     const iconsDirPath = resolve(
       import.meta.dir,
       '..', // scripts
@@ -189,13 +183,29 @@ async function getIcons() {
       'generated',
     )
 
-    await write(resolve(iconsDirPath, `icons.figma.tsx`), getInitialTemplate())
+    // chunk out files so Figma doesn't get overwhelmed and 413
+    flatData.forEach(async (componentSet) => {
+      const group = getParams(componentSet.group).get('node-id') ?? ''
+      await write(
+        resolve(iconsDirPath, `${group}.figma.tsx`),
+        getInitialTemplate(),
+      )
+    })
+
+    // Converts icon names from e.g `icon-32-list` to `Icon32List`
+    const components = flatData.map((component) => ({
+      ...component,
+      name: makeComponentName(component.name, component.group),
+      group: getParams(component.group).get('node-id') ?? '',
+    }))
+
+    const uniqueNames = new Set([components.map((c) => c.name)])
 
     uniqueNames.forEach((componentName) => {
       componentName.forEach(async (name) => {
         const componentData = components.find((c) => c.name === name)
         await appendFile(
-          resolve(iconsDirPath, `icons.figma.tsx`),
+          resolve(iconsDirPath, `${componentData?.group}.figma.tsx`),
           getIconTemplate(name, componentData?.figmaUrl || ''),
         )
       })
