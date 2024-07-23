@@ -7,6 +7,7 @@
     "create:icons": "bun run ./scripts/create-icons.ts",
     "generate:icons": "pnpm kill:icons && pnpm create:icons",
     "figma:publish": "exec figma connect publish",
+    "figma:publish:icons": "exec figma connect publish --config icons.config.json",
     "figma:sync": "bun run ./scripts/variables/sync-figma.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
