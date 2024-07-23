@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "The Figma Code Connect config for Cerberus Design",
   "scripts": {
+    "kill:icons": "rm -rf ./src/generated/icons.figma.tsx",
     "create:icons": "bun run ./scripts/create-icons.ts",
+    "generate:icons": "pnpm kill:icons && pnpm create:icons",
     "figma:publish": "exec figma connect publish",
     "figma:sync": "bun run ./scripts/variables/sync-figma.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,8 +18,8 @@
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@figma/code-connect": "^1.0.2",
-    "@figma/rest-api-spec": "^0.15.0",
+    "@figma/code-connect": "^1.0.3",
+    "@figma/rest-api-spec": "^0.16.0",
     "@types/react": "^18",
     "dotenv": "^16.4.5"
   },
