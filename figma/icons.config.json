@@ -1,0 +1,17 @@
+{
+  "codeConnect": {
+    "parser": "react",
+    "include": [
+      "src/generated/*.figma.tsx",
+      "node_modules/@cerberus-design/icons/src/**/*"
+    ],
+    "exclude": ["scripts"],
+
+    "importPaths": {
+      "node_modules/@cerberus-design/icons/src/*": "@cerberus/icons"
+    },
+    "paths": {
+      "@cerberus-design/icons": ["node_modules/@cerberus-design/icons/src/*"]
+    }
+  }
+}

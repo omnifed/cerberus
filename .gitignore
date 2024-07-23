@@ -28,3 +28,4 @@ packages/*/styled-system-studio
 ## Figma
 
 figma/.env
+figma/src/generated

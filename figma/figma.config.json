@@ -3,13 +3,11 @@
     "parser": "react",
     "include": [
       "src/**/*.figma.tsx",
-      "src/components/**/*.tsx",
       "node_modules/@cerberus-design/*/src/**/*"
     ],
     "exclude": ["scripts"],
 
     "importPaths": {
-      "src/components/*": "@cerberus/react",
       "node_modules/@cerberus-design/icons/src/*": "@cerberus/icons",
       "node_modules/@cerberus-design/react/src/*": "@cerberus/react"
     },

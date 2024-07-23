@@ -349,12 +349,12 @@ describe('actionTokens', () => {
     expect(actionTokens.action.text.inverse).toBeDefined()
     expect(
       formatToken(actionTokens.action.text.inverse.value._cerberusTheme.base),
-    ).toBe('#130024')
+    ).toBe('#FCFBFE')
     expect(
       formatToken(
         actionTokens.action.text.inverse.value._cerberusTheme._darkMode,
       ),
-    ).toBe('#130024')
+    ).toBe('#FCFBFE')
     expect(
       formatToken(
         actionTokens.action.text.inverse.value._cerberusTheme._lightMode,
