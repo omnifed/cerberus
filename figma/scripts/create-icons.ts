@@ -92,12 +92,25 @@ function makePascalCase(name: string): string {
     .join('')
 }
 
+function isNotWatsonHealth(name: string): boolean {
+  const lowerCaseName = name.toLowerCase()
+  return (
+    !lowerCaseName.includes('pills') &&
+    !lowerCaseName.includes('medication') &&
+    !lowerCaseName.includes('chemistry') &&
+    !lowerCaseName.includes('image--medical') &&
+    !lowerCaseName.includes('health-cross') &&
+    !lowerCaseName.includes('coronavirus') &&
+    !lowerCaseName.includes('exam-mode')
+  )
+}
+
 function makeComponentName(name: string, rawUrl: string): string {
   const url: URL = new URL(rawUrl)
   const nodeID = url.searchParams.get('node-id') ?? ''
   let formattedName = name
 
-  if (nodeID.includes('9553')) {
+  if (nodeID.includes('9553') && isNotWatsonHealth(name)) {
     formattedName = `watson-health-${name}`
   }
 
@@ -107,10 +120,6 @@ function makeComponentName(name: string, rawUrl: string): string {
       .replace('2d', '2D')
       .replace('3d', '3D'),
   )
-
-  // return addUnderScoreToStartNumber(
-  //   addUnderscoreToEndNumber(makePascalCase(formattedName)),
-  // )
 }
 
 function getInitialTemplate(): string {
@@ -189,10 +198,6 @@ async function getIcons() {
           resolve(iconsDirPath, `icons.figma.tsx`),
           getIconTemplate(name, componentData?.figmaUrl || ''),
         )
-        // await write(
-        //   resolve(iconsDirPath, `icons.figma.tsx`),
-        //   getIconTemplate(name, componentData?.figmaUrl || ''),
-        // )
       })
     })
 
