@@ -6,6 +6,7 @@ import {
 } from '@cerberus-design/icons'
 import { Tab, TabList, TabPanel, Tabs } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
+import { cx } from '@cerberus/styled-system/css'
 import type { ReactNode } from 'react'
 
 interface TabProps {
@@ -55,6 +56,61 @@ export default function PageTabs(props: TabProps) {
       <TabPanel tab="guidelines">{props.guidelines}</TabPanel>
       <TabPanel tab="developers">{props.dev}</TabPanel>
       <TabPanel tab="a11y">{props.a11y}</TabPanel>
+    </Tabs>
+  )
+}
+
+interface OverviewPageTabsProps {
+  description: string
+  overview: ReactNode
+  dev: ReactNode
+}
+
+export function OverviewPageTabs(props: OverviewPageTabsProps) {
+  return (
+    <Tabs active="overview" id="page-tabs">
+      <TabList
+        description={props.description}
+        className={css({
+          borderBottom: 'none',
+          bgColor: 'neutral.surface.100',
+          justifyContent: 'space-evenly',
+          mb: '8',
+          overflowX: 'auto',
+          rounded: 'full',
+          shadow: 'md',
+          md: {
+            overflowX: 'initial',
+          },
+        })}
+      >
+        <Tab
+          className={cx(
+            css({
+              w: '1/2 !important',
+            }),
+            tabOverrideStyles,
+          )}
+          value="overview"
+        >
+          <InformationFilled size={20} />
+          Overview
+        </Tab>
+        <Tab
+          className={cx(
+            css({
+              w: '1/2 !important',
+            }),
+            tabOverrideStyles,
+          )}
+          value="developers"
+        >
+          <IbmWatsonxCodeAssistantForZRefactor size={20} />
+          Dev
+        </Tab>
+      </TabList>
+      <TabPanel tab="overview">{props.overview}</TabPanel>
+      <TabPanel tab="developers">{props.dev}</TabPanel>
     </Tabs>
   )
 }
