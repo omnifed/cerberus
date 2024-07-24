@@ -6,7 +6,7 @@
   },
   {
     "id": "1:a",
-    "label": "Installation",
+    "label": "Getting Started",
     "route": "/react",
     "tag": "",
     "type": "route"

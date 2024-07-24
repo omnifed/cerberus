@@ -1,0 +1,32 @@
+{
+  "actions": {
+    "name": "Actions",
+    "description": "Components that trigger an action.",
+    "items": ["Button", "Icon Button"]
+  },
+  "communication": {
+    "name": "Communication",
+    "description": "Communication components provide useful information.",
+    "items": ["Tag", "Tooltip"]
+  },
+  "containment": {
+    "name": "Containment",
+    "description": "Components that contain other components.",
+    "items": []
+  },
+  "navigation": {
+    "name": "Navigation",
+    "description": "Components that help users navigate through the app.",
+    "items": ["Nav Menu", "Tabs"]
+  },
+  "selection": {
+    "name": "Selection",
+    "description": "Components that allow users to select choices.",
+    "items": ["Toggle", "Radio"]
+  },
+  "inputs": {
+    "name": "Inputs",
+    "description": "Components that allow users to input data.",
+    "items": ["Input", "Textarea"]
+  }
+}
