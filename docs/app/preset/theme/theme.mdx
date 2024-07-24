@@ -1,4 +1,8 @@
 import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import {
+  OverviewButtonPreview
+} from '@/app/react/button/components/button-preview'
 
 # Theme
 
@@ -20,36 +24,43 @@ The mode is the color scheme that is used to style the design system. It is divi
 
 ## Understanding the Color Palette
 
-Cerberus uses a semantic token design to define a theme that is scalable and easy to maintain. The theme is divided into six palette categories:
+Cerberus uses a semantic token design to define a theme divided into six palette categories:
 
-1. **Neutral**: Used for backgrounds, text, and borders.
-2. **Action**: Used for primary actions and interactive elements.
-3. **Info**: Used for informative elements and secondary actions.
-4. **Success**: Used for success messages and positive feedback.
-5. **Warning**: Used for warning messages and alerts.
-6. **Danger**: Used for error messages and negative feedback.
+| Palette     | Description                                                    |
+| ----------- | -------------------------------------------------------------- |
+| Neutral     | Used for anything on a page that is not an action.             |
+| Action      | Used for primary actions on a page.                            |
+| Info        | Used for informative elements on a page.                       |
+| Success     | Used for success messages and positive feedback.               |
+| Warning     | Used for warning messages and alerts.                          |
+| Danger      | Used for error messages and negative feedback.                 |
+
 
 ## Understanding the Tokens
 
-Each category has a set of tokens that define the color palette. The tokens are used to create a scalable syntax that can be used across the design system. The tokens use the following naming convention:
+Each category has a set of tokens that define the color palette. The tokens create a scalable syntax that scales across the design system.
 
-```bash
-# Usage is the only required token
+The tokens use the following naming convention:
+**[palette?]-[usage]-[prominence?]-[interaction?]**
 
-[palette?]-[usage]-[prominence?]-[interaction?]
-```
-
-1. **Palette**: The palette category (neutral, action, info, success, warning, danger).
-2. **Usage**: The usage type (background, text, border, navigation).
-3. **Prominence**: The prominence level (initial, 100-300, inverse).
-4. **Interaction**: The interaction type (hover, active, focus).
+| Name        | Description                                                    |
+| ----------- | -------------------------------------------------------------- |
+| Palette     | The category/context of where the color is used.               |
+| Usage       | How the color is used within the context.                      |
+| Prominence  | The hierarchy of the color used within the page context.       |
+| Interaction | The element interaction type the color should be applied to.   |
 
 ## Using the Tokens
 
-Using the design mentioned above, you simply use the token that coincides with the element you are styling. For example, if you want to style a button, you would use the action tokens.
+With the design mentioned above, we can put this into practice by using the tokens to style the components. Let's take a button as an example.
 
-Example of a button styled with the action tokens:
+<CodePreview preview={<OverviewButtonPreview />} />
 
-- **Background**: `action.bg.initial`
-- **Text**: `action.text.initial`
-- **Hover**: `action.bg.hover`
+Because a button is an action (an element a user triggers an action with), we would use the **Action** palette.
+
+| Purpose     | Token                                                          |
+| ----------- | -------------------------------------------------------------- |
+| Background  | `action.bg.initial`                                            |
+| Text        | `action.text.initial`                                          |
+| Hover BG    | `action.bg.hover`                                              |
+| Border      | `action.border.initial`                                        |
