@@ -1,4 +1,4 @@
-import { defineSlotRecipe } from '@pandacss/dev'
+import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { focusStates, formStates } from '../shared/states'
 
 const toggleTransitions = {
@@ -25,7 +25,7 @@ const LG_RADII = '0.75rem'
  * @definition [ARIA Forms](https://www.a11yproject.com/checklist/#forms)
  * @definition [Input docs](https://cerberus.digitalu.design/react/toggle)
  */
-export const toggle = defineSlotRecipe({
+export const toggle: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'toggle',
   description: 'The styles for the Toggle component',
   slots: ['track', 'container', 'input', 'thumb'],

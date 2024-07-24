@@ -1,4 +1,4 @@
-import { defineSlotRecipe } from '@pandacss/dev'
+import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { focusStates } from '../shared/states'
 
 /**
@@ -13,7 +13,7 @@ import { focusStates } from '../shared/states'
  * @definition [Input docs](https://cerberus.digitalu.design/react/radio)
  */
 
-export const radio = defineSlotRecipe({
+export const radio: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'radio',
   description: 'The styles for the Radio component',
   slots: ['root', 'input'],
