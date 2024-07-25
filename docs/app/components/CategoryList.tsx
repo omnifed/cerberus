@@ -5,6 +5,7 @@ import { Show } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { cq, grid, gridItem, vstack } from '@cerberus/styled-system/patterns'
 import Link from 'next/link'
+import { NEUTRAL_TEXT_INVERSE, PURPLE } from '../utils/const'
 
 interface CategoryCardProps {
   category: string
@@ -41,8 +42,8 @@ function CategoryCard(props: CategoryCardProps) {
             justify: 'center',
             w: 'full',
             '&:is([data-category=actions])': {
-              cerberusGradient: 'purple',
-              color: 'neutral.text.inverse',
+              cerberusGradient: PURPLE,
+              color: NEUTRAL_TEXT_INVERSE,
             },
             '&:is([data-category=communication])': {
               cerberusGradient: 'blue',
@@ -50,19 +51,19 @@ function CategoryCard(props: CategoryCardProps) {
             },
             '&:is([data-category=containment])': {
               cerberusGradient: 'green',
-              color: 'neutral.text.inverse',
+              color: NEUTRAL_TEXT_INVERSE,
             },
             '&:is([data-category=navigation])': {
               cerberusGradient: 'green',
               color: 'success.text.100',
             },
             '&:is([data-category=selection])': {
-              cerberusGradient: 'purple',
-              color: 'neutral.text.inverse',
+              cerberusGradient: PURPLE,
+              color: NEUTRAL_TEXT_INVERSE,
             },
             '&:is([data-category=inputs])': {
-              cerberusGradient: 'purple',
-              color: 'neutral.text.inverse',
+              cerberusGradient: PURPLE,
+              color: NEUTRAL_TEXT_INVERSE,
             },
           })}
         >
