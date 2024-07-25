@@ -103,18 +103,15 @@ export default function FeatureHeader(
               '@/lg': '33%',
             },
             '&:is([data-category=touch-target])': {
-              gradientFrom: 'info.surface.initial',
-              gradientTo: 'info.border.initial',
+              cerberusGradient: 'purple',
               color: 'neutral.surface.300',
             },
             '&:is([data-category=forms])': {
-              gradientFrom: 'warning.surface.initial',
-              gradientTo: 'warning.border.initial',
+              cerberusGradient: 'blue',
               color: 'warning.text.initial',
             },
             '&:is([data-category=menus])': {
-              gradientFrom: 'success.surface.initial',
-              gradientTo: 'success.border.initial',
+              cerberusGradient: 'green',
               color: 'success.text.200',
             },
             '&:is([data-category=utilities])': {
