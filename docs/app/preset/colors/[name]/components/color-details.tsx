@@ -1,3 +1,5 @@
+'use client'
+
 import type { SemanticToken, Sentiment } from '@cerberus-design/panda-preset'
 import {
   container,
@@ -6,7 +8,17 @@ import {
   vstack,
 } from '@cerberus/styled-system/patterns'
 import { normalizeTokens, getTokenList } from '../../helpers/normalize'
+import {
+  Button,
+  Field,
+  Input,
+  Label,
+  Tag,
+  useThemeContext,
+} from '@cerberus-design/react'
+import { useMemo } from 'react'
 import { css } from '@cerberus/styled-system/css'
+import UsageExample from './usage-example'
 
 const PREVIEW_SIZE = '15rem'
 
@@ -15,13 +27,27 @@ interface ColorDetailsProps {
 }
 
 export default function ColorDetails(props: ColorDetailsProps) {
+  const { mode } = useThemeContext()
   const palette = props.token.split('-')[0] as Sentiment
   const tokens = normalizeTokens(getTokenList(palette), palette)
   const token = tokens[props.token as keyof typeof tokens] as SemanticToken
-  const semTokenValue = props.token.split('-').join('.')
-  const swatchColor = {
-    backgroundColor: token.value._cerberusTheme.base,
-  }
+
+  const formattedToken = useMemo(
+    () => ({
+      figma: props.token.split('-').join('/'),
+      js: props.token.split('-').join('.'),
+    }),
+    [token],
+  )
+
+  const userMode = mode === 'dark' ? '_darkMode' : '_lightMode'
+  const tokenValue = token.value._cerberusTheme[userMode]
+  const swatchColor = useMemo(
+    () => ({
+      backgroundColor: tokenValue,
+    }),
+    [tokenValue],
+  )
 
   return (
     <div className={container()}>
@@ -69,13 +95,37 @@ export default function ColorDetails(props: ColorDetailsProps) {
         >
           <h2>{props.token}</h2>
           <p>{token.description}</p>
-          <p>
-            Hex: <code>{token.value._cerberusTheme.base}</code>
-          </p>
-          <p>
-            Token: <code>{semTokenValue}</code>
-          </p>
+          {Object.keys(formattedToken).map((key) => (
+            <p
+              className={css({
+                textTransform: 'capitalize',
+              })}
+              key={key}
+            >
+              {key}:{' '}
+              <code
+                className={css({
+                  textTransform: 'none',
+                })}
+              >
+                {formattedToken[key as keyof typeof formattedToken]}
+              </code>
+            </p>
+          ))}
         </div>
+      </section>
+
+      <section>
+        <h3
+          className={css({
+            textStyle: 'h3',
+            mb: '6',
+          })}
+        >
+          Usage
+        </h3>
+
+        <UsageExample token={props.token} />
       </section>
     </div>
   )
