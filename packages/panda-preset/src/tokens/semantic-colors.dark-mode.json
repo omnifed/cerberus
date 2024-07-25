@@ -397,6 +397,44 @@
           }
         }
       }
+    },
+    "secondary-action": {
+      "100": {
+        "$type": "color",
+        "$value": "colors.teal.90",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["TEXT_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": "colors.teal.40",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["TEXT_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "initial": {
+        "$type": "color",
+        "$value": "colors.teal.60",
+        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["TEXT_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
     }
   },
   "surface": {
@@ -783,6 +821,44 @@
           }
         }
       }
+    },
+    "secondary-action": {
+      "100": {
+        "$type": "color",
+        "$value": "colors.teal.80",
+        "$description": "for use on less prominent actionable borders, like input fields etc",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["STROKE_COLOR"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "initial": {
+        "$type": "color",
+        "$value": "colors.teal.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["STROKE_COLOR"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "colors.teal.50",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["STROKE_COLOR"],
+            "codeSyntax": {}
+          }
+        }
+      }
     }
   },
   "background": {
@@ -990,6 +1066,44 @@
       "active": {
         "$type": "color",
         "$value": "colors.success.40",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "secondary-action": {
+      "initial": {
+        "$type": "color",
+        "$value": "colors.teal.100",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "colors.teal.90",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "FRAME_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "active": {
+        "$type": "color",
+        "$value": "colors.teal.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
