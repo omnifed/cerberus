@@ -7,6 +7,7 @@ import { cq, grid, gridItem, vstack } from '@cerberus/styled-system/patterns'
 import Link from 'next/link'
 
 interface CategoryCardProps {
+  category: string
   item: string
 }
 
@@ -34,11 +35,35 @@ function CategoryCard(props: CategoryCardProps) {
         })}
       >
         <div
+          data-category={props.category}
           className={vstack({
-            bgColor: 'neutral.surface.200',
             h: '2/3',
             justify: 'center',
             w: 'full',
+            '&:is([data-category=actions])': {
+              cerberusGradient: 'purple',
+              color: 'neutral.text.inverse',
+            },
+            '&:is([data-category=communication])': {
+              cerberusGradient: 'blue',
+              color: 'info.text.100',
+            },
+            '&:is([data-category=containment])': {
+              cerberusGradient: 'green',
+              color: 'neutral.text.inverse',
+            },
+            '&:is([data-category=navigation])': {
+              cerberusGradient: 'green',
+              color: 'success.text.100',
+            },
+            '&:is([data-category=selection])': {
+              cerberusGradient: 'purple',
+              color: 'neutral.text.inverse',
+            },
+            '&:is([data-category=inputs])': {
+              cerberusGradient: 'purple',
+              color: 'neutral.text.inverse',
+            },
           })}
         >
           <ImageIcon size={24} />
@@ -104,7 +129,7 @@ export default function CategoryList(props: CategoryListProps) {
         >
           {data.items.map((itemName: string) => (
             <li className={gridItem()} key={itemName}>
-              <CategoryCard item={itemName} />
+              <CategoryCard item={itemName} category={props.group} />
             </li>
           ))}
         </ul>
