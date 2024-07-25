@@ -5,7 +5,7 @@ import { Show } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { cq, grid, gridItem, vstack } from '@cerberus/styled-system/patterns'
 import Link from 'next/link'
-import { NEUTRAL_TEXT_INVERSE, PURPLE } from '../utils/const'
+import { NEUTRAL_TEXT_INVERSE } from '../utils/const'
 
 interface CategoryCardProps {
   category: string
@@ -42,7 +42,7 @@ function CategoryCard(props: CategoryCardProps) {
             justify: 'center',
             w: 'full',
             '&:is([data-category=actions])': {
-              cerberusGradient: PURPLE,
+              cerberusGradient: 'purple',
               color: NEUTRAL_TEXT_INVERSE,
             },
             '&:is([data-category=communication])': {
@@ -58,11 +58,11 @@ function CategoryCard(props: CategoryCardProps) {
               color: 'success.text.100',
             },
             '&:is([data-category=selection])': {
-              cerberusGradient: PURPLE,
+              cerberusGradient: 'purple',
               color: NEUTRAL_TEXT_INVERSE,
             },
             '&:is([data-category=inputs])': {
-              cerberusGradient: PURPLE,
+              cerberusGradient: 'purple',
               color: NEUTRAL_TEXT_INVERSE,
             },
           })}
