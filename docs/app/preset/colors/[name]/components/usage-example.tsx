@@ -15,9 +15,11 @@ interface UsageExampleProps {
 }
 
 export default function UsageExample(props: UsageExampleProps) {
+  const isNeutralSurface = props.token.includes('neutral-surface')
+
   return (
     <div
-      {...(props.token.includes('neutral-surface') && {
+      {...(isNeutralSurface && {
         'data-highlighted': true,
       })}
       className={css({
@@ -29,7 +31,7 @@ export default function UsageExample(props: UsageExampleProps) {
       })}
     >
       <p
-        {...(props.token.includes('neutral-surface') && {
+        {...(isNeutralSurface && {
           'data-highlighted': true,
         })}
         className={css({
@@ -54,7 +56,7 @@ export default function UsageExample(props: UsageExampleProps) {
       </div>
 
       <form
-        {...(props.token.includes('neutral-surface') && {
+        {...(isNeutralSurface && {
           'data-highlighted': true,
         })}
         className={vstack({

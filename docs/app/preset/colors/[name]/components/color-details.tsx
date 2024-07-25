@@ -37,7 +37,7 @@ export default function ColorDetails(props: ColorDetailsProps) {
       figma: props.token.split('-').join('/'),
       js: props.token.split('-').join('.'),
     }),
-    [token],
+    [props.token],
   )
 
   const userMode = mode === 'dark' ? '_darkMode' : '_lightMode'

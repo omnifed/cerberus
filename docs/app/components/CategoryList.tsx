@@ -1,6 +1,6 @@
 import categoryData from '@/app/data/categories.json'
 import navData from '@/app/react/side-nav.json'
-import { Image } from '@cerberus-design/icons'
+import { Image as ImageIcon } from '@cerberus-design/icons'
 import { Show } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { cq, grid, gridItem, vstack } from '@cerberus/styled-system/patterns'
@@ -41,7 +41,7 @@ function CategoryCard(props: CategoryCardProps) {
             w: 'full',
           })}
         >
-          <Image size={24} />
+          <ImageIcon size={24} />
         </div>
         <div
           className={css({
