@@ -33,10 +33,11 @@ export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  */
 export function Tab(props: TabProps) {
   const { value, ...nativeProps } = props
-  const { active, onTabUpdate } = useTabsContext()
+  const { active, onTabUpdate, palette } = useTabsContext()
   const [isPending, startTransition] = useTransition()
   const { ref } = useTabsKeyboardNavigation()
   const isActive = useMemo(() => active === value, [active, value])
+  const colorPalette = palette ?? 'action'
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {
     props.onClick?.(e)
@@ -51,7 +52,13 @@ export function Tab(props: TabProps) {
       aria-busy={isPending}
       aria-selected={isActive}
       id={value}
-      className={cx(nativeProps.className, btnStyles)}
+      className={cx(
+        nativeProps.className,
+        btnStyles,
+        css({
+          colorPalette,
+        }),
+      )}
       onClick={handleClick}
       role="tab"
       ref={ref}
@@ -87,7 +94,7 @@ const btnStyles = css({
     },
   },
   _before: {
-    bgColor: 'action.border.initial',
+    bgColor: 'colorPalette.border.initial',
     bottom: '0',
     content: '""',
     h: '0',
@@ -120,7 +127,7 @@ const btnStyles = css({
   _focusVisible: {
     boxShadow: 'none',
     outline: '3px solid',
-    outlineColor: 'action.border.focus',
+    outlineColor: 'colorPalette.border.focus',
     outlineOffset: '2px',
   },
   _disabled: {
@@ -128,7 +135,7 @@ const btnStyles = css({
     opacity: '0.5',
   },
   _selected: {
-    color: 'action.text.200',
+    color: 'colorPalette.text.200',
     _before: {
       h: '3px',
     },

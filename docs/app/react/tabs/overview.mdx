@@ -7,18 +7,21 @@ a11y: 'touch-target'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import {
-  BasicTabsPreview
+  BasicTabsPreview,
+  SecondaryTabsPreview,
 } from '@/app/react/tabs/components/tabs-preview'
 
 <OverviewList rules={[
   'Use tabs to group content into helpful categories',
   'Tabs can horizontally scroll, so a UI can have as many tabs as needed',
+  'Tabs have two color palettes: action and secondary-action',
   'Place tabs next to each other as peers'
 ]} />
 
 ## Example
 
 <CodePreview preview={<BasicTabsPreview />} />
+<CodePreview preview={<SecondaryTabsPreview />} />
 
 ## Resources
 

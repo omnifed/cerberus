@@ -20,6 +20,7 @@ export interface TabsContextValue {
   tabs: MutableRefObject<HTMLButtonElement[]>
   id: string
   active: string
+  palette?: 'action' | 'secondaryAction'
   onTabUpdate: (active: string) => void
 }
 
@@ -29,6 +30,7 @@ export interface TabsProps {
   id?: string
   active?: string
   cache?: boolean
+  palette?: 'action' | 'secondaryAction'
 }
 
 /**
@@ -50,7 +52,7 @@ export interface TabsProps {
  * ```
  */
 export function Tabs(props: PropsWithChildren<TabsProps>): JSX.Element {
-  const { cache, active, id } = props
+  const { cache, active, id, palette } = props
   const [activeTab, setActiveTab] = useState(() => (cache ? '' : active ?? ''))
   const tabs = useRef<HTMLButtonElement[]>([])
   const uuid = useMemo(() => {
@@ -62,9 +64,10 @@ export function Tabs(props: PropsWithChildren<TabsProps>): JSX.Element {
       tabs,
       id: uuid,
       active: activeTab,
+      palette,
       onTabUpdate: setActiveTab,
     }),
-    [activeTab, setActiveTab, uuid, tabs],
+    [activeTab, setActiveTab, palette, uuid, tabs],
   )
 
   // Get the active tab from local storage

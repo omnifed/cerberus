@@ -7,6 +7,7 @@ recipe: 'slots/tabs.ts'
 import CodePreview from '@/app/components/CodePreview'
 import {
   BasicTabsPreview,
+  SecondaryTabsPreview,
   CachedTabsPreview,
   CustomTabsPreview
 } from '@/app/react/tabs/components/tabs-preview'
@@ -33,6 +34,31 @@ function BasicTabsPreview() {
       <TabPanel tab="features">Features content</TabPanel>
       <TabPanel tab="pricing">Pricing content</TabPanel>
     </Tabs>
+  )
+}
+```
+</CodePreview>
+
+## Palette
+
+<CodePreview preview={<BasicTabsPreview />}>
+```tsx title="tabs.tsx" {6}
+import { Tabs, TabList, Tab, TabPanel } from '@cerberus-design/react'
+
+function SecondaryTabsPreview() {
+  return (
+    <div className={overrideStyles}>
+      <Tabs active="overview" palette="secondaryAction">
+        <TabList description="Button detail pages">
+          <Tab value="overview">Overview</Tab>
+          <Tab value="features">Features</Tab>
+          <Tab value="pricing">Pricing</Tab>
+        </TabList>
+        <TabPanel tab="overview">Overview content</TabPanel>
+        <TabPanel tab="features">Features content</TabPanel>
+        <TabPanel tab="pricing">Pricing content</TabPanel>
+      </Tabs>
+    </div>
   )
 }
 ```
@@ -160,6 +186,7 @@ function CustomTabsPreview() {
 export interface TabsProps {
   active?: string
   cache?: boolean
+  palette?: 'action' | 'secondaryAction'
   id?: string
 }
 
@@ -175,6 +202,7 @@ The `Tabs` component accepts the following props:
 | active     |    | The `value` of the tab you want to be active by default. |
 | cache | `false`    | Whether to cache the active state of the tabs.    |
 | id |    | A unique `id` attribute used when there are multiple Tabs on a single page. |
+| palette | `action`    | The color palette to use for the Tabs. |
 
 ### TabList
 
