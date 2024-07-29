@@ -10,6 +10,7 @@ import type { Simplify } from '../../types'
 export type Sentiment =
   | 'neutral'
   | 'action'
+  | 'secondaryAction'
   | 'info'
   | 'success'
   | 'warning'

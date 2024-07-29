@@ -1,7 +1,7 @@
-import PrimitiveColors from './primitive-colors.cerberus.json' with { type: 'json' }
-import PrimitiveTypography from './primitive-typography.value.json' with { type: 'json' }
-import SemanticColorsDark from './semantic-colors.dark-mode.json' with { type: 'json' }
-import SemanticColorsLight from './semantic-colors.light-mode.json' with { type: 'json' }
+import primitiveColors from './primitive-colors.cerberus.json' with { type: 'json' }
+import primitiveTypography from './primitive-typography.value.json' with { type: 'json' }
+import semanticColorsDark from './semantic-colors.dark-mode.json' with { type: 'json' }
+import semanticColorsLight from './semantic-colors.light-mode.json' with { type: 'json' }
 import TextStyles from './text-styles.desktop.json' with { type: 'json' }
 
 /**
@@ -11,30 +11,31 @@ import TextStyles from './text-styles.desktop.json' with { type: 'json' }
 
 export interface RawTokens {
   primitives: {
-    colors: typeof PrimitiveColors
-    typography: typeof PrimitiveTypography
+    colors: typeof primitiveColors
+    typography: typeof primitiveTypography
   }
   semanticColors: {
-    dark: typeof SemanticColorsDark
-    light: typeof SemanticColorsLight
+    dark: typeof semanticColorsDark
+    light: typeof semanticColorsLight
   }
   textStyles: typeof TextStyles
 }
 
 export const rawTokens: RawTokens = {
   primitives: {
-    colors: PrimitiveColors,
-    typography: PrimitiveTypography,
+    colors: primitiveColors,
+    typography: primitiveTypography,
   },
   semanticColors: {
-    dark: SemanticColorsDark,
-    light: SemanticColorsLight,
+    dark: semanticColorsDark,
+    light: semanticColorsLight,
   },
   textStyles: TextStyles,
 }
 
 export const colors = rawTokens.primitives.colors
 export const text = rawTokens.primitives.typography
+export const semanticColors = semanticColorsDark
 
 export type PrimitiveCollection =
   | RawTokens['primitives']['colors']
