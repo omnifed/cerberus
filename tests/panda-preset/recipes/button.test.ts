@@ -3,6 +3,7 @@ import { recipes } from '@cerberus-design/panda-preset'
 
 describe('button recipe', () => {
   const { button } = recipes
+  const initialText = 'colorPalette.text.initial'
 
   test('should be exported', () => {
     expect(button).toBeDefined()
@@ -55,7 +56,8 @@ describe('button recipe', () => {
 
   test('should have a text usage variant', () => {
     expect(button.variants?.usage.text).toMatchObject({
-      color: 'colorPalette.text.alternate',
+      colorPalette: 'secondaryAction',
+      color: initialText,
       bgColor: 'transparent',
       border: 'none',
       transitionProperty: 'background-color, color',
@@ -66,12 +68,12 @@ describe('button recipe', () => {
       },
       _active: {
         bgColor: 'colorPalette.bg.100.active',
-        color: 'colorPalette.text.initial',
+        color: 'colorPalette.text.active',
       },
       _disabled: {
         bgColor: 'transparent',
         _active: {
-          color: 'colorPalette.text.alternate',
+          color: initialText,
         },
       },
     })
@@ -88,7 +90,7 @@ describe('button recipe', () => {
   test('should have a filled usage variant', () => {
     expect(button.variants?.usage.filled).toMatchObject({
       bgColor: 'colorPalette.bg.initial',
-      color: 'colorPalette.text.initial',
+      color: initialText,
       _hover: {
         bgColor: 'colorPalette.bg.hover',
         _disabled: {

@@ -22,12 +22,24 @@ const paletteTextStyles = css({
   _actionPalette: {
     color: 'action.text.initial !important',
     '&[data-has-white="true"]': {
-      color: 'action.text.inverse !important',
+      color: 'action.bg.100.initial !important',
     },
     '&[data-mode="light"]': {
       color: 'action.text.inverse !important',
       '&[data-has-white="true"]': {
         color: 'action.text.initial !important',
+      },
+    },
+  },
+  _secondaryActionPalette: {
+    color: 'secondaryAction.text.initial !important',
+    '&[data-has-white="true"]': {
+      color: 'secondaryAction.bg.initial !important',
+    },
+    '&[data-mode="light"]': {
+      color: 'secondaryAction.text.inverse !important',
+      '&[data-has-white="true"]': {
+        color: 'secondaryAction.bg.initial !important',
       },
     },
   },
