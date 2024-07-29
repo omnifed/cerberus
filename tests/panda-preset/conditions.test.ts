@@ -108,6 +108,12 @@ describe('conditions', () => {
     expect(conditions.actionPalette).toEqual('&:is([data-palette=action])')
   })
 
+  test('should have a secondaryActionPalette', () => {
+    expect(conditions.secondaryActionPalette).toEqual(
+      '&:is([data-palette=secondaryAction])',
+    )
+  })
+
   test('should have an infoPalette', () => {
     expect(conditions.infoPalette).toEqual('&:is([data-palette=info])')
   })
