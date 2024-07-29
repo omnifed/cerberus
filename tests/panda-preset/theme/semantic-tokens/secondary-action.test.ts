@@ -2,7 +2,7 @@ import { describe, test, expect } from 'bun:test'
 import { secondaryActionTokens } from '@cerberus-design/panda-preset'
 
 describe('secondaryActionTokens', () => {
-  const token = secondaryActionTokens['SECONDARY_ACTION']
+  const token = secondaryActionTokens.secondaryAction
 
   function formatToken(token: string) {
     return token.toUpperCase()

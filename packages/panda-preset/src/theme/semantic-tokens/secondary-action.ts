@@ -23,7 +23,7 @@ export type SecondaryActionNavProminences = {
 }
 
 export interface SecondaryActionTokens {
-  readonly SECONDARY_ACTION: {
+  readonly secondaryAction: {
     readonly bg: SecondaryActionProminences
     readonly border: {
       readonly initial: SemanticToken
@@ -39,7 +39,7 @@ export interface SecondaryActionTokens {
 }
 
 export const secondaryActionTokens: SecondaryActionTokens = {
-  SECONDARY_ACTION: {
+  secondaryAction: {
     bg: {
       initial: {
         description:

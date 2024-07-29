@@ -20,7 +20,7 @@
     "id": "2:a",
     "label": "Theme",
     "route": "/preset/theme",
-    "tag": "",
+    "tag": "next",
     "type": "route"
   },
   {

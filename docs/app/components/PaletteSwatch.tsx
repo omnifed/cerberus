@@ -7,10 +7,11 @@ interface PaletteAvatar {
 }
 
 export function PaletteAvatar(props: PropsWithChildren<PaletteAvatar>) {
-  const bgColor =
-    props.palette == 'action'
-      ? `${props.palette}.bg.initial`
-      : `${props.palette}.surface.initial`
+  const isAction =
+    props.palette === 'action' || props.palette === 'secondaryAction'
+  const bgColor = isAction
+    ? `${props.palette}.bg.initial`
+    : `${props.palette}.surface.initial`
 
   return (
     <div className={hstack()}>
