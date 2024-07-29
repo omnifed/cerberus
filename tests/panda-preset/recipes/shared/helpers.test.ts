@@ -3,6 +3,7 @@ import {
   getSlotRecipePalettes,
   NEUTRAL,
   ACTION,
+  SECONDARY_ACTION,
   INFO,
   SUCCESS,
   WARNING,
@@ -15,6 +16,7 @@ describe('recipe helpers', () => {
   const palettes: Sentiment[] = [
     NEUTRAL,
     ACTION,
+    SECONDARY_ACTION,
     INFO,
     SUCCESS,
     WARNING,
@@ -33,6 +35,11 @@ describe('recipe helpers', () => {
         usage: { colorPalette: ACTION },
         size: { colorPalette: ACTION },
         kind: { colorPalette: ACTION },
+      },
+      secondaryAction: {
+        usage: { colorPalette: SECONDARY_ACTION },
+        size: { colorPalette: SECONDARY_ACTION },
+        kind: { colorPalette: SECONDARY_ACTION },
       },
       info: {
         usage: { colorPalette: INFO },

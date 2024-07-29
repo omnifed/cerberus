@@ -1,5 +1,6 @@
 export const NEUTRAL = 'neutral'
 export const ACTION = 'action'
+export const SECONDARY_ACTION = 'secondaryAction'
 export const INFO = 'info'
 export const SUCCESS = 'success'
 export const WARNING = 'warning'
@@ -7,6 +8,10 @@ export const DANGER = 'danger'
 
 export const action = {
   colorPalette: ACTION,
+}
+
+export const secondaryAction = {
+  colorPalette: SECONDARY_ACTION,
 }
 
 export const neutral = {
@@ -31,6 +36,7 @@ export const danger = {
 
 export const allPalettes = {
   action,
+  secondaryAction,
   neutral,
   info,
   success,
