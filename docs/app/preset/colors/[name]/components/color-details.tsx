@@ -1,6 +1,6 @@
 'use client'
 
-import type { SemanticToken, Sentiment } from '@cerberus-design/panda-preset'
+import { SemanticToken, Sentiment } from '@cerberus-design/panda-preset'
 import {
   container,
   grid,
@@ -8,14 +8,7 @@ import {
   vstack,
 } from '@cerberus/styled-system/patterns'
 import { normalizeTokens, getTokenList } from '../../helpers/normalize'
-import {
-  Button,
-  Field,
-  Input,
-  Label,
-  Tag,
-  useThemeContext,
-} from '@cerberus-design/react'
+import { useThemeContext } from '@cerberus-design/react'
 import { useMemo } from 'react'
 import { css } from '@cerberus/styled-system/css'
 import UsageExample from './usage-example'

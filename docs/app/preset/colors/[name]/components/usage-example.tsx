@@ -1,4 +1,15 @@
-import { Button, Field, Input, Label, Tag } from '@cerberus-design/react'
+import {
+  Button,
+  Field,
+  FieldMessage,
+  Input,
+  Label,
+  Tab,
+  TabList,
+  TabPanel,
+  Tabs,
+  Tag,
+} from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
 
@@ -36,13 +47,28 @@ export default function UsageExample(props: UsageExampleProps) {
         })}
         className={css({
           pb: '2 !important',
+          textStyle: 'h3 !important',
           ...highlightedStyles,
         })}
       >
         Surface
       </p>
 
-      <div>
+      <div
+        className={hstack({
+          mt: '1',
+        })}
+      >
+        <Tag
+          className={css({
+            ...highlightedStyles,
+          })}
+          {...(props.token.includes('neutral-bg') && {
+            'data-highlighted': true,
+          })}
+        >
+          Static Tag
+        </Tag>
         <Tag
           className={css({
             ...highlightedStyles,
@@ -81,6 +107,7 @@ export default function UsageExample(props: UsageExampleProps) {
             Label
           </Label>
           <Input
+            describedBy="help:example"
             className={css({
               ...highlightedStyles,
             })}
@@ -90,32 +117,89 @@ export default function UsageExample(props: UsageExampleProps) {
             id="example"
             placeholder="Placeholder"
           />
+          <FieldMessage id="help:example">
+            This is an example of a field message.
+          </FieldMessage>
         </Field>
 
-        <div className={hstack()}>
+        <div
+          className={hstack({
+            justify: 'space-between',
+            mt: '4',
+            w: 'full',
+          })}
+        >
+          <div className={hstack()}>
+            <Button
+              className={css({
+                ...highlightedStyles,
+              })}
+              {...(props.token.includes('danger-bg') && {
+                'data-highlighted': true,
+              })}
+              palette="danger"
+            >
+              Cancel
+            </Button>
+            <Button
+              className={css({
+                ...highlightedStyles,
+              })}
+              {...(props.token.includes('action') && {
+                'data-highlighted': true,
+              })}
+            >
+              Action
+            </Button>
+          </div>
+
           <Button
+            {...(props.token.includes('action') && {
+              'data-highlighted': true,
+            })}
             className={css({
               ...highlightedStyles,
             })}
-            {...(props.token.includes('danger-bg') && {
-              'data-highlighted': true,
-            })}
-            palette="danger"
+            type="button"
+            usage="text"
           >
-            Cancel
-          </Button>
-          <Button
-            className={css({
-              ...highlightedStyles,
-            })}
-            {...(props.token.includes('action-bg') && {
-              'data-highlighted': true,
-            })}
-          >
-            Action
+            Text Button
           </Button>
         </div>
       </form>
+
+      <div
+        className={css({
+          mt: '6',
+        })}
+      >
+        <Tabs active="tab-1" palette="secondaryAction">
+          <TabList description="Example of color usage">
+            <Tab
+              {...(props.token.includes('secondaryAction') && {
+                'data-highlighted': true,
+              })}
+              className={css({
+                ...highlightedStyles,
+              })}
+              value="tab-1"
+            >
+              Tab 1
+            </Tab>
+            <Tab value="tab-2">Tab 2</Tab>
+            <Tab value="tab-3">Tab 3</Tab>
+          </TabList>
+          <TabPanel tab="tab-1">
+            <p>Tab 1 content</p>
+          </TabPanel>
+          <TabPanel tab="tab-2">
+            <p>Tab 2 content</p>
+          </TabPanel>
+          <TabPanel tab="tab-3">
+            <p>Tab 3 content</p>
+          </TabPanel>
+        </Tabs>
+      </div>
     </div>
   )
 }
