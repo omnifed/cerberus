@@ -25,7 +25,11 @@ export function BasicTabsPreview() {
 export function SecondaryTabsPreview() {
   return (
     <div className={overrideStyles}>
-      <Tabs active="overview" palette="secondaryAction">
+      <Tabs
+        active="overview"
+        id="secondary:tabs:preview"
+        palette="secondaryAction"
+      >
         <TabList description="Button detail pages">
           <Tab value="overview">Overview</Tab>
           <Tab value="features">Features</Tab>

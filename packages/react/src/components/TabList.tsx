@@ -27,7 +27,7 @@ export interface TabListProps extends HTMLAttributes<HTMLDivElement> {
  */
 export function TabList(props: PropsWithChildren<TabListProps>) {
   const { description, ...nativeProps } = props
-  const { id } = useTabsContext()
+  const { id, styles } = useTabsContext()
 
   return (
     <div
@@ -36,11 +36,9 @@ export function TabList(props: PropsWithChildren<TabListProps>) {
       className={cx(
         nativeProps.className,
         hstack({
-          borderBottom: '1px solid',
-          borderBottomColor: 'action.border.100',
           gap: '0',
-          w: 'full',
         }),
+        styles.tabList,
       )}
       id={id ?? nativeProps.id}
     />

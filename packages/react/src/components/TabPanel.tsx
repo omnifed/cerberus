@@ -1,6 +1,6 @@
 'use client'
 
-import { css, cx } from '@cerberus/styled-system/css'
+import { cx } from '@cerberus/styled-system/css'
 import { useMemo, type HTMLAttributes } from 'react'
 import { useTabsContext } from '../context/tabs'
 import { Show } from './Show'
@@ -26,7 +26,7 @@ export interface TabPanelProps extends HTMLAttributes<HTMLDivElement> {
  */
 export function TabPanel(props: TabPanelProps) {
   const { tab, ...nativeProps } = props
-  const { active } = useTabsContext()
+  const { active, styles } = useTabsContext()
   const isActive = useMemo(() => active === tab, [active, tab])
 
   return (
@@ -35,18 +35,7 @@ export function TabPanel(props: TabPanelProps) {
         {...nativeProps}
         {...(isActive && { tabIndex: 0 })}
         aria-labelledby={tab}
-        className={cx(
-          nativeProps.className,
-          css({
-            rounded: 'md',
-            _focusVisible: {
-              boxShadow: 'none',
-              outline: '3px solid',
-              outlineColor: 'action.border.focus',
-              outlineOffset: '2px',
-            },
-          }),
-        )}
+        className={cx(nativeProps.className, styles.tabPanel)}
         id={`panel:${tab}`}
         role="tabpanel"
       />
