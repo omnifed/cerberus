@@ -6,7 +6,7 @@
     "$extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
-        "scopes": ["GAP", "WIDTH_HEIGHT"],
+        "scopes": ["WIDTH_HEIGHT", "GAP"],
         "codeSyntax": {}
       }
     }
@@ -19,12 +19,12 @@
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [
-          "EFFECT_FLOAT",
-          "STROKE_FLOAT",
-          "GAP",
+          "CORNER_RADIUS",
           "WIDTH_HEIGHT",
-          "OPACITY",
-          "CORNER_RADIUS"
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
         ],
         "codeSyntax": {}
       }
@@ -38,12 +38,12 @@
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [
-          "EFFECT_FLOAT",
-          "STROKE_FLOAT",
-          "GAP",
+          "CORNER_RADIUS",
           "WIDTH_HEIGHT",
-          "OPACITY",
-          "CORNER_RADIUS"
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
         ],
         "codeSyntax": {}
       }
@@ -57,11 +57,11 @@
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [
-          "EFFECT_FLOAT",
-          "STROKE_FLOAT",
+          "WIDTH_HEIGHT",
           "GAP",
-          "OPACITY",
-          "WIDTH_HEIGHT"
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
         ],
         "codeSyntax": {}
       }
@@ -75,11 +75,11 @@
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [
-          "EFFECT_FLOAT",
-          "STROKE_FLOAT",
+          "WIDTH_HEIGHT",
           "GAP",
-          "OPACITY",
-          "WIDTH_HEIGHT"
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
         ],
         "codeSyntax": {}
       }
@@ -93,11 +93,11 @@
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [
-          "EFFECT_FLOAT",
-          "STROKE_FLOAT",
+          "WIDTH_HEIGHT",
           "GAP",
-          "OPACITY",
-          "WIDTH_HEIGHT"
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
         ],
         "codeSyntax": {}
       }
@@ -111,11 +111,11 @@
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [
-          "EFFECT_FLOAT",
-          "STROKE_FLOAT",
+          "WIDTH_HEIGHT",
           "GAP",
-          "OPACITY",
-          "WIDTH_HEIGHT"
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
         ],
         "codeSyntax": {}
       }
