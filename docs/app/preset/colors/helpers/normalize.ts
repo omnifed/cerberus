@@ -3,6 +3,7 @@ import {
   dangerTokens,
   infoTokens,
   neutralTokens,
+  secondaryActionTokens,
   successTokens,
   warningTokens,
   type SemanticToken,
@@ -17,6 +18,8 @@ export function getTokenList(palette: Sentiment): SentimentConfig[Sentiment] {
       return neutralTokens.neutral
     case 'action':
       return actionTokens.action
+    case 'secondaryAction':
+      return secondaryActionTokens.secondaryAction
     case 'info':
       return infoTokens.info
     case 'success':

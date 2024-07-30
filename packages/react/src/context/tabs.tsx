@@ -1,6 +1,11 @@
 'use client'
 
 import {
+  tabs,
+  type TabsVariantProps,
+} from '@cerberus-design/styled-system/recipes'
+import type { Pretty } from '@cerberus-design/styled-system/types'
+import {
   createContext,
   useContext,
   useEffect,
@@ -20,6 +25,7 @@ export interface TabsContextValue {
   tabs: MutableRefObject<HTMLButtonElement[]>
   id: string
   active: string
+  styles: Pretty<Record<'tabList' | 'tab' | 'tabPanel', string>>
   onTabUpdate: (active: string) => void
 }
 
@@ -33,6 +39,7 @@ export interface TabsProps {
 
 /**
  * The Tabs component provides a context to manage tab state.
+ * @param id - the id of the tabs component,
  * @param active - the default active tab id,
  * @param cache - whether to cache the active tab state in local storage
  * @example
@@ -49,22 +56,25 @@ export interface TabsProps {
  * </Tabs>
  * ```
  */
-export function Tabs(props: PropsWithChildren<TabsProps>): JSX.Element {
-  const { cache, active, id } = props
+export function Tabs(
+  props: PropsWithChildren<TabsProps & TabsVariantProps>,
+): JSX.Element {
+  const { cache, active, id, palette } = props
   const [activeTab, setActiveTab] = useState(() => (cache ? '' : active ?? ''))
-  const tabs = useRef<HTMLButtonElement[]>([])
+  const tabsList = useRef<HTMLButtonElement[]>([])
   const uuid = useMemo(() => {
     return id ? `cerberus-tabs-${id}` : 'cerberus-tabs'
   }, [id])
 
   const value = useMemo(
     () => ({
-      tabs,
+      tabs: tabsList,
       id: uuid,
       active: activeTab,
+      styles: tabs({ palette }),
       onTabUpdate: setActiveTab,
     }),
-    [activeTab, setActiveTab, uuid, tabs],
+    [activeTab, setActiveTab, palette, uuid, tabsList],
   )
 
   // Get the active tab from local storage

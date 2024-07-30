@@ -7,14 +7,13 @@ import {
   type MouseEvent,
 } from 'react'
 import { useTabsContext } from '../context/tabs'
-import { css, cx } from '@cerberus/styled-system/css'
+import { cx } from '@cerberus/styled-system/css'
 import { useTabsKeyboardNavigation } from '../aria-helpers/tabs.aria'
 
 /**
  * This module provides a Tab component.
  * @module
  */
-
 export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   value: string
 }
@@ -33,7 +32,7 @@ export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  */
 export function Tab(props: TabProps) {
   const { value, ...nativeProps } = props
-  const { active, onTabUpdate } = useTabsContext()
+  const { active, onTabUpdate, styles } = useTabsContext()
   const [isPending, startTransition] = useTransition()
   const { ref } = useTabsKeyboardNavigation()
   const isActive = useMemo(() => active === value, [active, value])
@@ -51,7 +50,7 @@ export function Tab(props: TabProps) {
       aria-busy={isPending}
       aria-selected={isActive}
       id={value}
-      className={cx(nativeProps.className, btnStyles)}
+      className={cx(nativeProps.className, styles.tab)}
       onClick={handleClick}
       role="tab"
       ref={ref}
@@ -59,83 +58,3 @@ export function Tab(props: TabProps) {
     />
   )
 }
-
-const btnStyles = css({
-  alignItems: 'center',
-  display: 'inline-flex',
-  borderTopLeftRadius: 'md',
-  borderTopRightRadius: 'md',
-  fontSize: 'sm',
-  fontWeight: '600',
-  gap: '2',
-  h: '2.75rem',
-  justifyContent: 'center',
-  position: 'relative',
-  pxi: '4',
-  zIndex: 'base',
-  _motionSafe: {
-    transition: 'all 200ms ease-in-out',
-    _before: {
-      transitionProperty: 'height',
-      transitionDuration: '200ms',
-      transitionTimingFunction: 'ease-in-out',
-    },
-    _after: {
-      transitionProperty: 'height',
-      transitionDuration: '200ms',
-      transitionTimingFunction: 'ease-in-out',
-    },
-  },
-  _before: {
-    bgColor: 'action.border.initial',
-    bottom: '0',
-    content: '""',
-    h: '0',
-    position: 'absolute',
-    left: '0',
-    right: '0',
-    w: 'full',
-    willChange: 'height',
-    zIndex: 'decorator',
-  },
-  _after: {
-    borderTopLeftRadius: 'md',
-    borderTopRightRadius: 'md',
-    bottom: '0',
-    bgColor: 'neutral.surface.100',
-    content: '""',
-    left: '0',
-    position: 'absolute',
-    right: '0',
-    h: '0',
-    w: 'full',
-    willChange: 'height',
-    zIndex: '-1',
-  },
-  _hover: {
-    _after: {
-      h: 'full',
-    },
-  },
-  _focusVisible: {
-    boxShadow: 'none',
-    outline: '3px solid',
-    outlineColor: 'action.border.focus',
-    outlineOffset: '2px',
-  },
-  _disabled: {
-    cursor: 'not-allowed',
-    opacity: '0.5',
-  },
-  _selected: {
-    color: 'action.text.200',
-    _before: {
-      h: '3px',
-    },
-    _hover: {
-      _after: {
-        h: '0',
-      },
-    },
-  },
-})

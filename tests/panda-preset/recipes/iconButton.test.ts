@@ -3,6 +3,7 @@ import { recipes } from '@cerberus-design/panda-preset'
 
 describe('iconButton recipe', () => {
   const { iconButton } = recipes
+  const initialText = 'colorPalette.text.initial'
 
   test('should be exported', () => {
     expect(iconButton).toBeDefined()
@@ -56,7 +57,8 @@ describe('iconButton recipe', () => {
 
   test('should have a text usage variant', () => {
     expect(iconButton.variants?.usage.text).toMatchObject({
-      color: 'colorPalette.text.alternate',
+      colorPalette: 'secondaryAction',
+      color: initialText,
       bgColor: 'transparent',
       border: 'none',
       transitionProperty: 'background-color, color',
@@ -67,12 +69,12 @@ describe('iconButton recipe', () => {
       },
       _active: {
         bgColor: 'colorPalette.bg.100.active',
-        color: 'colorPalette.text.initial',
+        color: 'colorPalette.text.active',
       },
       _disabled: {
         bgColor: 'transparent',
         _active: {
-          color: 'colorPalette.text.alternate',
+          color: initialText,
         },
       },
     })
@@ -81,7 +83,7 @@ describe('iconButton recipe', () => {
   test('should have a filled usage variant', () => {
     expect(iconButton.variants?.usage.filled).toMatchObject({
       bgColor: 'colorPalette.bg.initial',
-      color: 'colorPalette.text.initial',
+      color: initialText,
       _hover: {
         bgColor: 'colorPalette.bg.hover',
         _disabled: {

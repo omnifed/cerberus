@@ -1,6 +1,8 @@
 import { focusStates, formStates } from './states'
 import { action, danger } from './palettes'
 
+const textInitial = 'colorPalette.text.initial'
+
 export const buttonBase = {
   alignItems: 'center',
   display: 'inline-flex',
@@ -38,9 +40,11 @@ export const nonTextStates = {
 }
 
 export const textUsage = {
+  colorPalette: 'secondaryAction',
+
   bgColor: 'transparent',
   border: 'none',
-  color: 'colorPalette.text.alternate',
+  color: textInitial,
   transitionProperty: 'background-color, color',
   transitionDuration: 'fast',
   transitionTimingFunction: 'ease-in-out',
@@ -49,19 +53,19 @@ export const textUsage = {
   },
   _active: {
     bgColor: 'colorPalette.bg.100.active',
-    color: 'colorPalette.text.initial',
+    color: 'colorPalette.text.active',
   },
   _disabled: {
     bgColor: 'transparent',
     _active: {
-      color: 'colorPalette.text.alternate',
+      color: textInitial,
     },
   },
 }
 
 export const filledUsage = {
   bgColor: 'colorPalette.bg.initial',
-  color: 'colorPalette.text.initial',
+  color: textInitial,
   _hover: {
     bgColor: 'colorPalette.bg.hover',
     _disabled: {

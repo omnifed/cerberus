@@ -37,6 +37,7 @@ export const conditions = {
   // palettes
   neutralPalette: '&:is([data-palette=neutral])',
   actionPalette: '&:is([data-palette=action])',
+  secondaryActionPalette: '&:is([data-palette=secondaryAction])',
   infoPalette: '&:is([data-palette=info])',
   successPalette: '&:is([data-palette=success])',
   warningPalette: '&:is([data-palette=warning])',

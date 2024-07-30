@@ -6,6 +6,7 @@ import { tag } from './tag'
 
 import { input } from './slots/input'
 import { radio } from './slots/radio'
+import { tabs } from './slots/tabs'
 import { toggle } from './slots/toggle'
 
 /**
@@ -24,5 +25,6 @@ export const recipes = {
 export const slotRecipes = {
   input,
   radio,
+  tabs,
   toggle,
 }
