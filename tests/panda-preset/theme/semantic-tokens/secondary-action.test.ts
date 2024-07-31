@@ -81,6 +81,49 @@ describe('secondaryActionTokens', () => {
     )
   })
 
+  test('should have a action.ghost key', () => {
+    expect(token.ghost).toBeDefined()
+  })
+
+  test('should have a action.ghost.initial key', () => {
+    expect(token.ghost.initial).toBeDefined()
+    expect(formatToken(token.ghost.initial.value._cerberusTheme.base)).toBe(
+      '#130024',
+    )
+    expect(
+      formatToken(token.ghost.initial.value._cerberusTheme._darkMode),
+    ).toBe('#130024')
+    expect(
+      formatToken(token.ghost.initial.value._cerberusTheme._lightMode),
+    ).toBe('#FFFFFF')
+  })
+
+  test('should have a action.ghost.hover key', () => {
+    expect(token.ghost.hover).toBeDefined()
+    expect(formatToken(token.ghost.hover.value._cerberusTheme.base)).toBe(
+      '#102D2D',
+    )
+    expect(formatToken(token.ghost.hover.value._cerberusTheme._darkMode)).toBe(
+      '#102D2D',
+    )
+    expect(formatToken(token.ghost.hover.value._cerberusTheme._lightMode)).toBe(
+      '#EEFDFC',
+    )
+  })
+
+  test('should have a action.ghost.active key', () => {
+    expect(token.ghost.active).toBeDefined()
+    expect(formatToken(token.ghost.active.value._cerberusTheme.base)).toBe(
+      '#3B8180',
+    )
+    expect(formatToken(token.ghost.active.value._cerberusTheme._darkMode)).toBe(
+      '#3B8180',
+    )
+    expect(
+      formatToken(token.ghost.active.value._cerberusTheme._lightMode),
+    ).toBe('#D8F9F7')
+  })
+
   test('should have a action.navigation.initial key', () => {
     expect(token.navigation.initial).toBeDefined()
     expect(
@@ -134,7 +177,7 @@ describe('secondaryActionTokens', () => {
     )
     expect(
       formatToken(token.text.initial.value._cerberusTheme._lightMode),
-    ).toBe('#1F5B5A')
+    ).toBe('#3B8180')
   })
 
   test('should have a action.text.100 key', () => {
@@ -159,7 +202,7 @@ describe('secondaryActionTokens', () => {
       '#95EEED',
     )
     expect(formatToken(token.text['200'].value._cerberusTheme._lightMode)).toBe(
-      '#3B8180',
+      '#1F5B5A',
     )
   })
 })

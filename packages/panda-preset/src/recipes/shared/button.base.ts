@@ -1,6 +1,7 @@
 import { focusStates, formStates } from './states'
 import { action, danger } from './palettes'
 
+const bgInitial = 'colorPalette.bg.initial'
 const textInitial = 'colorPalette.text.initial'
 
 export const buttonBase = {
@@ -29,13 +30,13 @@ export const sharpRadii = {
 export const nonTextStates = {
   color: 'colorPalette.text.200',
   _hover: {
-    bgColor: 'colorPalette.bg.100.hover',
+    bgColor: 'colorPalette.ghost.hover',
     _disabled: {
-      bgColor: 'colorPalette.bg.100.initial',
+      bgColor: bgInitial,
     },
   },
   _active: {
-    bgColor: 'colorPalette.bg.100.active',
+    bgColor: 'colorPalette.ghost.active',
   },
 }
 
@@ -49,10 +50,10 @@ export const textUsage = {
   transitionDuration: 'fast',
   transitionTimingFunction: 'ease-in-out',
   _hover: {
-    bgColor: 'colorPalette.bg.100.hover',
+    bgColor: 'colorPalette.ghost.hover',
   },
   _active: {
-    bgColor: 'colorPalette.bg.100.active',
+    bgColor: 'colorPalette.ghost.active',
     color: 'colorPalette.text.active',
   },
   _disabled: {
@@ -64,12 +65,12 @@ export const textUsage = {
 }
 
 export const filledUsage = {
-  bgColor: 'colorPalette.bg.initial',
+  bgColor: bgInitial,
   color: textInitial,
   _hover: {
     bgColor: 'colorPalette.bg.hover',
     _disabled: {
-      bgColor: 'colorPalette.bg.initial',
+      bgColor: bgInitial,
     },
   },
   _active: {
@@ -79,12 +80,17 @@ export const filledUsage = {
 
 export const outlinedUsage = {
   ...nonTextStates,
-  bgColor: 'colorPalette.bg.100.initial',
+  bgColor: 'colorPalette.ghost.initial',
   border: '4px solid',
   borderColor: 'colorPalette.border.initial',
 }
 
 export const buttonPalettes = {
   action,
-  danger,
+  danger: {
+    ...danger,
+    _hover: {
+      color: 'danger.text.inverse',
+    },
+  },
 }

@@ -64,10 +64,10 @@ describe('button recipe', () => {
       transitionDuration: 'fast',
       transitionTimingFunction: 'ease-in-out',
       _hover: {
-        bgColor: 'colorPalette.bg.100.hover',
+        bgColor: 'colorPalette.ghost.hover',
       },
       _active: {
-        bgColor: 'colorPalette.bg.100.active',
+        bgColor: 'colorPalette.ghost.active',
         color: 'colorPalette.text.active',
       },
       _disabled: {
@@ -81,7 +81,7 @@ describe('button recipe', () => {
 
   test('should have an outlined usage variant', () => {
     expect(button.variants?.usage.outlined).toMatchObject({
-      bgColor: 'colorPalette.bg.100.initial',
+      bgColor: 'colorPalette.ghost.initial',
       border: '4px solid',
       borderColor: 'colorPalette.border.initial',
     })

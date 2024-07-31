@@ -1,5 +1,6 @@
 import type { Prominence, SemanticToken } from './types'
-import { colors, deepGetByPaths, rawTokens } from '../../tokens'
+import { colors, deepGetByPaths, rawTokens, semanticColors } from '../../tokens'
+import { DANGER } from '../../recipes/shared/palettes'
 
 /**
  * This module is a collection of danger tokens that are used to generate the theme.
@@ -11,6 +12,11 @@ type Prominences = Exclude<Prominence, 300>
 export interface DangerTokens {
   readonly danger: {
     readonly bg: {
+      readonly initial: SemanticToken
+      readonly hover: SemanticToken
+      readonly active: SemanticToken
+    }
+    readonly ghost: {
       readonly initial: SemanticToken
       readonly hover: SemanticToken
       readonly active: SemanticToken
@@ -33,7 +39,9 @@ export const dangerTokens: DangerTokens = {
   danger: {
     bg: {
       initial: {
-        description: 'The default background color of the danger elements.',
+        description:
+          semanticColors.background[DANGER].initial.$description ||
+          'The default background color of the danger elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -52,7 +60,9 @@ export const dangerTokens: DangerTokens = {
         },
       },
       hover: {
-        description: 'The background color of the danger element when hovered.',
+        description:
+          semanticColors.background[DANGER].hover.$description ||
+          'The background color of the danger element when hovered.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -71,7 +81,9 @@ export const dangerTokens: DangerTokens = {
         },
       },
       active: {
-        description: 'The background color of the danger element when active.',
+        description:
+          semanticColors.background[DANGER].active.$description ||
+          'The background color of the danger element when active.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -93,7 +105,9 @@ export const dangerTokens: DangerTokens = {
 
     border: {
       initial: {
-        description: 'The default border color of danger elements.',
+        description:
+          semanticColors.border[DANGER].initial.$description ||
+          'The default border color of danger elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -113,9 +127,76 @@ export const dangerTokens: DangerTokens = {
       },
     },
 
+    ghost: {
+      initial: {
+        description:
+          semanticColors.ghost[DANGER].initial.$description ||
+          'The default ghost color of the danger elements.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.ghost.danger.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.ghost.danger.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.ghost.danger.initial.$value,
+            ).$value,
+          },
+        },
+      },
+      hover: {
+        description:
+          semanticColors.ghost[DANGER].hover.$description ||
+          'The ghost color of the danger element when hovered.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.ghost.danger.hover.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.ghost.danger.hover.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.ghost.danger.hover.$value,
+            ).$value,
+          },
+        },
+      },
+      active: {
+        description:
+          semanticColors.ghost[DANGER].active.$description ||
+          'The ghost color of the danger element when active.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.ghost.danger.active.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.ghost.danger.active.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.ghost.danger.active.$value,
+            ).$value,
+          },
+        },
+      },
+    },
+
     surface: {
       initial: {
         description:
+          semanticColors.surface[DANGER].initial.$description ||
           'The default color for a static (surface) element in a danger state',
         value: {
           _cerberusTheme: {
@@ -136,6 +217,7 @@ export const dangerTokens: DangerTokens = {
       },
       100: {
         description:
+          semanticColors.surface[DANGER]['100'].$description ||
           'The second layer of color for static (surface) elements that display a error state - used on top of initial.',
         value: {
           _cerberusTheme: {
@@ -156,6 +238,7 @@ export const dangerTokens: DangerTokens = {
       },
       200: {
         description:
+          semanticColors.surface[DANGER]['200'].$description ||
           'The third layer of color for static (surface) elements that display a error state - used on top of 100.',
         value: {
           _cerberusTheme: {
@@ -178,7 +261,9 @@ export const dangerTokens: DangerTokens = {
 
     text: {
       initial: {
-        description: 'The default text color of danger elements.',
+        description:
+          semanticColors.text[DANGER].initial.$description ||
+          'The default text color of danger elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -197,7 +282,9 @@ export const dangerTokens: DangerTokens = {
         },
       },
       100: {
-        description: 'The secondary text color of danger elements.',
+        description:
+          semanticColors.text[DANGER]['100'].$description ||
+          'The secondary text color of danger elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -216,7 +303,9 @@ export const dangerTokens: DangerTokens = {
         },
       },
       200: {
-        description: 'The tertiary text color of danger elements.',
+        description:
+          semanticColors.text[DANGER]['200'].$description ||
+          'The tertiary text color of danger elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -236,6 +325,7 @@ export const dangerTokens: DangerTokens = {
       },
       inverse: {
         description:
+          semanticColors.text[DANGER].inverse.$description ||
           'The text color of danger elements when you need to display a light mode option within the dark mode.',
         value: {
           _cerberusTheme: {

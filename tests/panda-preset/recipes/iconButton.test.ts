@@ -4,6 +4,7 @@ import { recipes } from '@cerberus-design/panda-preset'
 describe('iconButton recipe', () => {
   const { iconButton } = recipes
   const initialText = 'colorPalette.text.initial'
+  const bgInitial = 'colorPalette.bg.initial'
 
   test('should be exported', () => {
     expect(iconButton).toBeDefined()
@@ -65,10 +66,10 @@ describe('iconButton recipe', () => {
       transitionDuration: 'fast',
       transitionTimingFunction: 'ease-in-out',
       _hover: {
-        bgColor: 'colorPalette.bg.100.hover',
+        bgColor: 'colorPalette.ghost.hover',
       },
       _active: {
-        bgColor: 'colorPalette.bg.100.active',
+        bgColor: 'colorPalette.ghost.active',
         color: 'colorPalette.text.active',
       },
       _disabled: {
@@ -82,12 +83,12 @@ describe('iconButton recipe', () => {
 
   test('should have a filled usage variant', () => {
     expect(iconButton.variants?.usage.filled).toMatchObject({
-      bgColor: 'colorPalette.bg.initial',
+      bgColor: bgInitial,
       color: initialText,
       _hover: {
         bgColor: 'colorPalette.bg.hover',
         _disabled: {
-          bgColor: 'colorPalette.bg.initial',
+          bgColor: bgInitial,
         },
       },
       _active: {
@@ -99,14 +100,17 @@ describe('iconButton recipe', () => {
   test('should have an outlined usage variant', () => {
     expect(iconButton.variants?.usage.outlined).toMatchObject({
       color: 'colorPalette.text.200',
+      bgColor: 'colorPalette.ghost.initial',
+      border: '4px solid',
+      borderColor: 'colorPalette.border.initial',
       _hover: {
-        bgColor: 'colorPalette.bg.100.hover',
+        bgColor: 'colorPalette.ghost.hover',
         _disabled: {
-          bgColor: 'colorPalette.bg.100.initial',
+          bgColor: bgInitial,
         },
       },
       _active: {
-        bgColor: 'colorPalette.bg.100.active',
+        bgColor: 'colorPalette.ghost.active',
       },
     })
   })

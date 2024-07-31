@@ -27,7 +27,7 @@ export type Usage =
   | 'navigation'
   | 'surface'
   | 'text'
-  | 'alternate'
+  | 'ghost'
 
 /**
  * The use or level of emphasis of a color.
