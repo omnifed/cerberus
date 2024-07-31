@@ -59,63 +59,6 @@ describe('actionTokens', () => {
     ).toBe('#9F66D3')
   })
 
-  test('should have a action.bg.100 key', () => {
-    expect(actionTokens.action.bg[100]).toBeDefined()
-  })
-
-  test('should have a action.bg.100.initial key', () => {
-    expect(actionTokens.action.bg[100].initial).toBeDefined()
-    expect(
-      formatToken(
-        actionTokens.action.bg[100].initial.value._cerberusTheme.base,
-      ),
-    ).toBe('#21143B')
-    expect(
-      formatToken(
-        actionTokens.action.bg[100].initial.value._cerberusTheme._darkMode,
-      ),
-    ).toBe('#21143B')
-    expect(
-      formatToken(
-        actionTokens.action.bg[100].initial.value._cerberusTheme._lightMode,
-      ),
-    ).toBe('#FFFFFF')
-  })
-
-  test('should have a action.bg.100.hover key', () => {
-    expect(actionTokens.action.bg[100].hover).toBeDefined()
-    expect(
-      formatToken(actionTokens.action.bg[100].hover.value._cerberusTheme.base),
-    ).toBe('#291D47')
-    expect(
-      formatToken(
-        actionTokens.action.bg[100].hover.value._cerberusTheme._darkMode,
-      ),
-    ).toBe('#291D47')
-    expect(
-      formatToken(
-        actionTokens.action.bg[100].hover.value._cerberusTheme._lightMode,
-      ),
-    ).toBe('#F3F2F4')
-  })
-
-  test('should have a action.bg.100.active key', () => {
-    expect(actionTokens.action.bg[100].active).toBeDefined()
-    expect(
-      formatToken(actionTokens.action.bg[100].active.value._cerberusTheme.base),
-    ).toBe('#4C0091')
-    expect(
-      formatToken(
-        actionTokens.action.bg[100].active.value._cerberusTheme._darkMode,
-      ),
-    ).toBe('#4C0091')
-    expect(
-      formatToken(
-        actionTokens.action.bg[100].active.value._cerberusTheme._lightMode,
-      ),
-    ).toBe('#9F66D3')
-  })
-
   test('should have a action.border.initial key', () => {
     expect(actionTokens.action.border.initial).toBeDefined()
     expect(
@@ -165,6 +108,61 @@ describe('actionTokens', () => {
         actionTokens.action.border.focus.value._cerberusTheme._lightMode,
       ),
     ).toBe('#4C0091')
+  })
+
+  test('should have a action.ghost key', () => {
+    expect(actionTokens.action.ghost).toBeDefined()
+  })
+
+  test('should have a action.ghost.initial key', () => {
+    expect(actionTokens.action.ghost.initial).toBeDefined()
+    expect(
+      formatToken(actionTokens.action.ghost.initial.value._cerberusTheme.base),
+    ).toBe('#130024')
+    expect(
+      formatToken(
+        actionTokens.action.ghost.initial.value._cerberusTheme._darkMode,
+      ),
+    ).toBe('#130024')
+    expect(
+      formatToken(
+        actionTokens.action.ghost.initial.value._cerberusTheme._lightMode,
+      ),
+    ).toBe('#FFFFFF')
+  })
+
+  test('should have a action.ghost.hover key', () => {
+    expect(actionTokens.action.ghost.hover).toBeDefined()
+    expect(
+      formatToken(actionTokens.action.ghost.hover.value._cerberusTheme.base),
+    ).toBe('#260048')
+    expect(
+      formatToken(
+        actionTokens.action.ghost.hover.value._cerberusTheme._darkMode,
+      ),
+    ).toBe('#260048')
+    expect(
+      formatToken(
+        actionTokens.action.ghost.hover.value._cerberusTheme._lightMode,
+      ),
+    ).toBe('#F3F2F4')
+  })
+
+  test('should have a action.ghost.active key', () => {
+    expect(actionTokens.action.ghost.active).toBeDefined()
+    expect(
+      formatToken(actionTokens.action.ghost.active.value._cerberusTheme.base),
+    ).toBe('#39006D')
+    expect(
+      formatToken(
+        actionTokens.action.ghost.active.value._cerberusTheme._darkMode,
+      ),
+    ).toBe('#39006D')
+    expect(
+      formatToken(
+        actionTokens.action.ghost.active.value._cerberusTheme._lightMode,
+      ),
+    ).toBe('#EFE5F8')
   })
 
   test('should have a action.navigation.initial key', () => {
@@ -220,72 +218,6 @@ describe('actionTokens', () => {
     expect(
       formatToken(
         actionTokens.action.navigation.visited.value._cerberusTheme._lightMode,
-      ),
-    ).toBe('#362A58')
-  })
-
-  test('should have a action.navigation.alternate.initial key', () => {
-    expect(actionTokens.action.navigation.alternate.initial).toBeDefined()
-    expect(
-      formatToken(
-        actionTokens.action.navigation.alternate.initial.value._cerberusTheme
-          .base,
-      ),
-    ).toBe('#41E3E0')
-    expect(
-      formatToken(
-        actionTokens.action.navigation.alternate.initial.value._cerberusTheme
-          ._darkMode,
-      ),
-    ).toBe('#41E3E0')
-    expect(
-      formatToken(
-        actionTokens.action.navigation.alternate.initial.value._cerberusTheme
-          ._lightMode,
-      ),
-    ).toBe('#3B8180')
-  })
-
-  test('should have a action.navigation.alternate.hover key', () => {
-    expect(actionTokens.action.navigation.alternate.hover).toBeDefined()
-    expect(
-      formatToken(
-        actionTokens.action.navigation.alternate.hover.value._cerberusTheme
-          .base,
-      ),
-    ).toBe('#B8F4F3')
-    expect(
-      formatToken(
-        actionTokens.action.navigation.alternate.hover.value._cerberusTheme
-          ._darkMode,
-      ),
-    ).toBe('#B8F4F3')
-    expect(
-      formatToken(
-        actionTokens.action.navigation.alternate.hover.value._cerberusTheme
-          ._lightMode,
-      ),
-    ).toBe('#1F5B5A')
-  })
-
-  test('should have a action.navigation.alternate.visited key', () => {
-    expect(actionTokens.action.navigation.alternate.visited).toBeDefined()
-    expect(
-      formatToken(
-        actionTokens.action.navigation.alternate.visited.value._cerberusTheme
-          .base,
-      ),
-    ).toBe('#EEFDFC')
-    expect(
-      formatToken(
-        actionTokens.action.navigation.alternate.visited.value._cerberusTheme
-          ._darkMode,
-      ),
-    ).toBe('#EEFDFC')
-    expect(
-      formatToken(
-        actionTokens.action.navigation.alternate.visited.value._cerberusTheme
-          ._lightMode,
       ),
     ).toBe('#362A58')
   })
@@ -360,22 +292,5 @@ describe('actionTokens', () => {
         actionTokens.action.text.inverse.value._cerberusTheme._lightMode,
       ),
     ).toBe('#130024')
-  })
-
-  test('should have a action.text.alternate key', () => {
-    expect(actionTokens.action.text.alternate).toBeDefined()
-    expect(
-      formatToken(actionTokens.action.text.alternate.value._cerberusTheme.base),
-    ).toBe('#41E3E0')
-    expect(
-      formatToken(
-        actionTokens.action.text.alternate.value._cerberusTheme._darkMode,
-      ),
-    ).toBe('#41E3E0')
-    expect(
-      formatToken(
-        actionTokens.action.text.alternate.value._cerberusTheme._lightMode,
-      ),
-    ).toBe('#3B8180')
   })
 })

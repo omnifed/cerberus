@@ -76,6 +76,58 @@ describe('dangerTokens', () => {
     ).toEqual('#FC5E57')
   })
 
+  test('should have a ghost property', () => {
+    expect(dangerTokens.danger.ghost).toBeDefined()
+  })
+
+  test('should have a ghost.initial property', () => {
+    expect(
+      formatToken(dangerTokens.danger.ghost.initial.value._cerberusTheme.base),
+    ).toEqual('#130024')
+    expect(
+      formatToken(
+        dangerTokens.danger.ghost.initial.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#130024')
+    expect(
+      formatToken(
+        dangerTokens.danger.ghost.initial.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#FFFFFF')
+  })
+
+  test('should have a ghost.hover property', () => {
+    expect(
+      formatToken(dangerTokens.danger.ghost.hover.value._cerberusTheme.base),
+    ).toEqual('#641612')
+    expect(
+      formatToken(
+        dangerTokens.danger.ghost.hover.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#641612')
+    expect(
+      formatToken(
+        dangerTokens.danger.ghost.hover.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#FFEBEA')
+  })
+
+  test('should have a ghost.active property', () => {
+    expect(
+      formatToken(dangerTokens.danger.ghost.active.value._cerberusTheme.base),
+    ).toEqual('#97201B')
+    expect(
+      formatToken(
+        dangerTokens.danger.ghost.active.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#97201B')
+    expect(
+      formatToken(
+        dangerTokens.danger.ghost.active.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#FED7D5')
+  })
+
   test('should have a surface.initial property', () => {
     expect(dangerTokens.danger.surface).toBeDefined()
   })

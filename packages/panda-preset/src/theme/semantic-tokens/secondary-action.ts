@@ -29,6 +29,7 @@ export interface SecondaryActionTokens {
       readonly initial: SemanticToken
       readonly 100: SemanticToken
     }
+    readonly ghost: SecondaryActionProminences
     readonly navigation: SecondaryActionNavProminences
     readonly text: {
       readonly initial: SemanticToken
@@ -159,6 +160,81 @@ export const secondaryActionTokens: SecondaryActionTokens = {
             _darkMode: deepGetByPaths(
               colors,
               rawTokens.semanticColors.dark.border[SECONDARY_ACTION]['100']
+                .$value,
+            ).$value,
+          },
+        },
+      },
+    },
+
+    ghost: {
+      initial: {
+        description:
+          semanticColors.ghost[SECONDARY_ACTION].initial.$description ||
+          'The default ghost color of the action element.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.ghost[SECONDARY_ACTION].initial
+                .$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.ghost[SECONDARY_ACTION].initial
+                .$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.ghost[SECONDARY_ACTION].initial
+                .$value,
+            ).$value,
+          },
+        },
+      },
+      hover: {
+        description:
+          semanticColors.ghost[SECONDARY_ACTION].hover.$description ||
+          'The ghost color of the action element when hovered.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.ghost[SECONDARY_ACTION].hover
+                .$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.ghost[SECONDARY_ACTION].hover
+                .$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.ghost[SECONDARY_ACTION].hover
+                .$value,
+            ).$value,
+          },
+        },
+      },
+      active: {
+        description:
+          semanticColors.ghost[SECONDARY_ACTION].active.$description ||
+          'The ghost color of the action element when active.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.ghost[SECONDARY_ACTION].active
+                .$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.ghost[SECONDARY_ACTION].active
+                .$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.ghost[SECONDARY_ACTION].active
                 .$value,
             ).$value,
           },

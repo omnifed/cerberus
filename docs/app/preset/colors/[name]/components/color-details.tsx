@@ -30,6 +30,8 @@ function getFigmaProperty(selector: Usage): string {
       return 'border'
     case 'navigation':
       return 'navigation'
+    case 'ghost':
+      return 'ghost'
     default:
       return ''
   }
