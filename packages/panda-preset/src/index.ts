@@ -14,7 +14,7 @@ import {
   dangerTokens,
   infoTokens,
   keyframes,
-  neutralTokens,
+  pageTokens,
   secondaryActionTokens,
   successTokens,
   textStyles,
@@ -45,7 +45,7 @@ export const cerberusPreset: Preset = definePreset({
 
     semanticTokens: defineSemanticTokens({
       colors: {
-        ...neutralTokens,
+        ...pageTokens,
         ...actionTokens,
         ...secondaryActionTokens,
         ...infoTokens,

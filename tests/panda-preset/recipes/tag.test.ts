@@ -3,12 +3,12 @@ import { recipes } from '@cerberus-design/panda-preset'
 
 describe('tag recipe', () => {
   const { tag } = recipes
-  const NEUTRAL_TEXT_INITIAL = 'neutral.text.initial'
+  const PAGE_TEXT_INITIAL = 'page.text.initial'
   const outlineGradientCss = {
     borderColor: 'transparent',
     backgroundOrigin: 'border-box',
     backgroundClip: 'padding-box, border-box',
-    color: NEUTRAL_TEXT_INITIAL,
+    color: PAGE_TEXT_INITIAL,
   }
 
   test('should be exported', () => {
@@ -28,8 +28,8 @@ describe('tag recipe', () => {
   })
 
   test('should have an neutral palette variant', () => {
-    expect(tag.variants?.palette.neutral).toMatchObject({
-      colorPalette: 'neutral',
+    expect(tag.variants?.palette.page).toMatchObject({
+      colorPalette: 'page',
     })
   })
 
@@ -62,7 +62,7 @@ describe('tag recipe', () => {
       bgColor: 'inherit',
       border: '1.5px solid',
       borderColor: 'colorPalette.border.initial',
-      color: 'neutral.text.initial',
+      color: 'page.text.initial',
     })
   })
 
@@ -94,7 +94,7 @@ describe('tag recipe', () => {
 
   test('should have default variants', () => {
     expect(tag.defaultVariants).toMatchObject({
-      palette: 'neutral',
+      palette: 'page',
       usage: 'filled',
       shape: 'pill',
     })

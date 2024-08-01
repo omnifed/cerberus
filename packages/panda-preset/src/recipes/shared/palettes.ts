@@ -1,4 +1,4 @@
-export const NEUTRAL = 'neutral'
+export const PAGE = 'page'
 export const ACTION = 'action'
 export const SECONDARY_ACTION = 'secondaryAction'
 export const INFO = 'info'
@@ -14,8 +14,8 @@ export const secondaryAction = {
   colorPalette: SECONDARY_ACTION,
 }
 
-export const neutral = {
-  colorPalette: NEUTRAL,
+export const page = {
+  colorPalette: PAGE,
 }
 
 export const info = {
@@ -37,7 +37,7 @@ export const danger = {
 export const allPalettes = {
   action,
   secondaryAction,
-  neutral,
+  page,
   info,
   success,
   warning,
@@ -45,7 +45,7 @@ export const allPalettes = {
 }
 
 export const nonActionPalettes = {
-  neutral,
+  page,
   info,
   success,
   warning,

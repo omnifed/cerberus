@@ -1,13 +1,13 @@
 import { describe, test, expect } from 'bun:test'
 import {
-  NEUTRAL,
+  PAGE,
   ACTION,
   INFO,
   SUCCESS,
   WARNING,
   DANGER,
   action,
-  neutral,
+  page,
   info,
   success,
   warning,
@@ -16,8 +16,8 @@ import {
 } from '@cerberus-design/panda-preset'
 
 describe('recipe palettes', () => {
-  test('should export NEUTRAL', () => {
-    expect(NEUTRAL).toBeDefined()
+  test('should export PAGE', () => {
+    expect(PAGE).toBeDefined()
   })
 
   test('should export ACTION', () => {
@@ -47,10 +47,10 @@ describe('recipe palettes', () => {
     })
   })
 
-  test('should export neutral', () => {
-    expect(neutral).toBeDefined()
-    expect(neutral).toMatchObject({
-      colorPalette: NEUTRAL,
+  test('should export page', () => {
+    expect(page).toBeDefined()
+    expect(page).toMatchObject({
+      colorPalette: PAGE,
     })
   })
 
@@ -86,7 +86,7 @@ describe('recipe palettes', () => {
     expect(allPalettes).toBeDefined()
     expect(allPalettes).toMatchObject({
       action,
-      neutral,
+      page,
       info,
       success,
       warning,

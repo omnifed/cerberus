@@ -2,12 +2,12 @@ import type { Prominence, SemanticToken } from './types'
 import { colors, deepGetByPaths, rawTokens } from '../../tokens'
 
 /**
- * This module is a collection of neutral tokens that are used to generate the theme.
- * @module neutralTokens
+ * This module is a collection of page tokens that are used to generate the theme.
+ * @module pageTokens
  */
 
-export interface NeutralTokens {
-  readonly neutral: {
+export interface PageTokens {
+  readonly page: {
     readonly bg: {
       readonly initial: SemanticToken
       readonly 100: SemanticToken
@@ -27,8 +27,8 @@ export interface NeutralTokens {
   }
 }
 
-export const neutralTokens: NeutralTokens = {
-  neutral: {
+export const pageTokens: PageTokens = {
+  page: {
     bg: {
       initial: {
         description:
@@ -37,15 +37,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.neutral.initial.$value,
+              rawTokens.semanticColors.dark.background.page.initial.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.background.neutral.initial.$value,
+              rawTokens.semanticColors.light.background.page.initial.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.neutral.initial.$value,
+              rawTokens.semanticColors.dark.background.page.initial.$value,
             ).$value,
           },
         },
@@ -57,15 +57,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.neutral['100'].$value,
+              rawTokens.semanticColors.dark.background.page['100'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.background.neutral['100'].$value,
+              rawTokens.semanticColors.light.background.page['100'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.neutral['100'].$value,
+              rawTokens.semanticColors.dark.background.page['100'].$value,
             ).$value,
           },
         },
@@ -77,15 +77,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.neutral['200'].$value,
+              rawTokens.semanticColors.dark.background.page['200'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.background.neutral['200'].$value,
+              rawTokens.semanticColors.light.background.page['200'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.neutral['200'].$value,
+              rawTokens.semanticColors.dark.background.page['200'].$value,
             ).$value,
           },
         },
@@ -99,15 +99,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.border.neutral.initial.$value,
+              rawTokens.semanticColors.dark.border.page.initial.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.border.neutral.initial.$value,
+              rawTokens.semanticColors.light.border.page.initial.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.border.neutral.initial.$value,
+              rawTokens.semanticColors.dark.border.page.initial.$value,
             ).$value,
           },
         },
@@ -119,15 +119,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.neutral['100'].$value,
+              rawTokens.semanticColors.dark.background.page['100'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.background.neutral['100'].$value,
+              rawTokens.semanticColors.light.background.page['100'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.neutral['100'].$value,
+              rawTokens.semanticColors.dark.background.page['100'].$value,
             ).$value,
           },
         },
@@ -139,15 +139,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.neutral['200'].$value,
+              rawTokens.semanticColors.dark.background.page['200'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.background.neutral['200'].$value,
+              rawTokens.semanticColors.light.background.page['200'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.neutral['200'].$value,
+              rawTokens.semanticColors.dark.background.page['200'].$value,
             ).$value,
           },
         },
@@ -162,15 +162,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.surface.neutral.initial.$value,
+              rawTokens.semanticColors.dark.surface.page.initial.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.surface.neutral.initial.$value,
+              rawTokens.semanticColors.light.surface.page.initial.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.surface.neutral.initial.$value,
+              rawTokens.semanticColors.dark.surface.page.initial.$value,
             ).$value,
           },
         },
@@ -182,15 +182,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.surface.neutral['100'].$value,
+              rawTokens.semanticColors.dark.surface.page['100'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.surface.neutral['100'].$value,
+              rawTokens.semanticColors.light.surface.page['100'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.surface.neutral['100'].$value,
+              rawTokens.semanticColors.dark.surface.page['100'].$value,
             ).$value,
           },
         },
@@ -202,15 +202,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.neutral['200'].$value,
+              rawTokens.semanticColors.dark.background.page['200'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.background.neutral['200'].$value,
+              rawTokens.semanticColors.light.background.page['200'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.background.neutral['200'].$value,
+              rawTokens.semanticColors.dark.background.page['200'].$value,
             ).$value,
           },
         },
@@ -222,15 +222,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.surface.neutral['300'].$value,
+              rawTokens.semanticColors.dark.surface.page['300'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.surface.neutral['300'].$value,
+              rawTokens.semanticColors.light.surface.page['300'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.surface.neutral['300'].$value,
+              rawTokens.semanticColors.dark.surface.page['300'].$value,
             ).$value,
           },
         },
@@ -242,15 +242,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.surface.neutral.inverse.$value,
+              rawTokens.semanticColors.dark.surface.page.inverse.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.surface.neutral.inverse.$value,
+              rawTokens.semanticColors.light.surface.page.inverse.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.surface.neutral.inverse.$value,
+              rawTokens.semanticColors.dark.surface.page.inverse.$value,
             ).$value,
           },
         },
@@ -264,15 +264,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutral.initial.$value,
+              rawTokens.semanticColors.dark.text.page.initial.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.neutral.initial.$value,
+              rawTokens.semanticColors.light.text.page.initial.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutral.initial.$value,
+              rawTokens.semanticColors.dark.text.page.initial.$value,
             ).$value,
           },
         },
@@ -284,15 +284,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutral['100'].$value,
+              rawTokens.semanticColors.dark.text.page['100'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.neutral['100'].$value,
+              rawTokens.semanticColors.light.text.page['100'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutral['100'].$value,
+              rawTokens.semanticColors.dark.text.page['100'].$value,
             ).$value,
           },
         },
@@ -304,15 +304,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutral['200'].$value,
+              rawTokens.semanticColors.dark.text.page['200'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.neutral['200'].$value,
+              rawTokens.semanticColors.light.text.page['200'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutral['200'].$value,
+              rawTokens.semanticColors.dark.text.page['200'].$value,
             ).$value,
           },
         },
@@ -324,15 +324,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutral['300'].$value,
+              rawTokens.semanticColors.dark.text.page['300'].$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.neutral['300'].$value,
+              rawTokens.semanticColors.light.text.page['300'].$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutral['300'].$value,
+              rawTokens.semanticColors.dark.text.page['300'].$value,
             ).$value,
           },
         },
@@ -344,15 +344,15 @@ export const neutralTokens: NeutralTokens = {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutral.inverse.$value,
+              rawTokens.semanticColors.dark.text.page.inverse.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.neutral.inverse.$value,
+              rawTokens.semanticColors.light.text.page.inverse.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.neutral.inverse.$value,
+              rawTokens.semanticColors.dark.text.page.inverse.$value,
             ).$value,
           },
         },

@@ -2,7 +2,7 @@ import {
   actionTokens,
   dangerTokens,
   infoTokens,
-  neutralTokens,
+  pageTokens,
   secondaryActionTokens,
   successTokens,
   warningTokens,
@@ -14,8 +14,8 @@ import {
 
 export function getTokenList(palette: Sentiment): SentimentConfig[Sentiment] {
   switch (palette) {
-    case 'neutral':
-      return neutralTokens.neutral
+    case 'page':
+      return pageTokens.page
     case 'action':
       return actionTokens.action
     case 'secondaryAction':

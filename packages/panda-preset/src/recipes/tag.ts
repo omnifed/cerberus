@@ -5,13 +5,13 @@ import {
 } from '@pandacss/dev'
 import { filledUsage, tagBase, tagPalettes } from './shared/tag.base'
 
-const NEUTRAL_TEXT_INITIAL = 'neutral.text.initial'
+const PAGE_TEXT_INITIAL = 'page.text.initial'
 
 const outlineGradientCss = {
   borderColor: 'transparent',
   backgroundOrigin: 'border-box',
   backgroundClip: 'padding-box, border-box',
-  color: NEUTRAL_TEXT_INITIAL,
+  color: PAGE_TEXT_INITIAL,
 }
 
 /**
@@ -48,7 +48,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         bgColor: 'inherit',
         border: '1.5px solid',
         borderColor: 'colorPalette.border.initial',
-        color: NEUTRAL_TEXT_INITIAL,
+        color: PAGE_TEXT_INITIAL,
       },
     },
     shape: {
@@ -70,7 +70,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   },
 
   defaultVariants: {
-    palette: 'neutral',
+    palette: 'page',
     usage: 'filled',
     shape: 'pill',
   },

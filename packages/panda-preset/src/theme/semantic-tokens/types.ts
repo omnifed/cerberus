@@ -8,7 +8,7 @@ import type { Simplify } from '../../types'
  * @readonly **required**
  */
 export type Sentiment =
-  | 'neutral'
+  | 'page'
   | 'action'
   | 'secondaryAction'
   | 'info'
