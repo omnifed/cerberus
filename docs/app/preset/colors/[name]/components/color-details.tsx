@@ -74,6 +74,7 @@ function cleanSortedToken(sortedToken: string[]): string[] {
 }
 
 const PREVIEW_SIZE = '15rem'
+const NO_PADDING = '0 !important'
 
 interface FigmaScope {
   $extensions: {
@@ -94,6 +95,7 @@ export default function ColorDetails(props: ColorDetailsProps) {
   const palette = splitToken[0] as Sentiment
   const tokens = normalizeTokens(getTokenList(palette), palette)
   const token = tokens[propsToken as keyof typeof tokens] as SemanticToken
+
   const scope = useMemo(() => {
     const [palette, usage, sentiment, interaction] = splitToken
     const mainSelector = getFigmaProperty(usage as Usage)
@@ -112,7 +114,7 @@ export default function ColorDetails(props: ColorDetailsProps) {
     }, semanticColors) as unknown as FigmaScope
 
     return result.$extensions['com.figma'].scopes ?? []
-  }, [propsToken])
+  }, [splitToken])
 
   const formattedToken = useMemo(() => {
     const [palette, usage, sentiment, interaction] = splitToken
@@ -138,7 +140,7 @@ export default function ColorDetails(props: ColorDetailsProps) {
         },
       },
     }
-  }, [propsToken, scope, splitToken])
+  }, [scope, splitToken])
 
   const userMode = mode === 'dark' ? '_darkMode' : '_lightMode'
   const tokenValue = token.value._cerberusTheme[userMode]
@@ -214,7 +216,7 @@ export default function ColorDetails(props: ColorDetailsProps) {
                   <li>
                     <p
                       className={css({
-                        pb: '0 !important',
+                        pb: NO_PADDING,
                         textStyle: 'h6',
                         textTransform: 'uppercase',
                       })}
@@ -230,7 +232,7 @@ export default function ColorDetails(props: ColorDetailsProps) {
                           <li className={hstack()} key={key}>
                             <p
                               className={css({
-                                pb: '0 !important',
+                                pb: NO_PADDING,
                                 textTransform: 'capitalize',
                               })}
                             >
@@ -254,7 +256,7 @@ export default function ColorDetails(props: ColorDetailsProps) {
                                 className={css({
                                   display: 'inline-block',
                                   color: 'info.text.100 !important',
-                                  pb: '0 !important',
+                                  pb: NO_PADDING,
                                   textStyle: 'body-sm !important',
                                   textTransform: 'none',
                                 })}
