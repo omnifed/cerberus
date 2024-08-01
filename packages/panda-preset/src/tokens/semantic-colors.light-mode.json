@@ -1,9 +1,71 @@
 {
   "text": {
-    "navigation": {
-      "initial": {
+    "action": {
+      "100": {
+        "$type": "color",
+        "$value": "colors.brand.80",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "200": {
         "$type": "color",
         "$value": "colors.brand.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "navigation": {
+        "initial": {
+          "$type": "color",
+          "$value": "colors.brand.60",
+          "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "colors.brand.50",
+          "$description": "",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "visited": {
+          "$type": "color",
+          "$value": "colors.neutral.60",
+          "$description": "",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+              "codeSyntax": {}
+            }
+          }
+        }
+      },
+      "initial": {
+        "$type": "color",
+        "$value": "colors.brand.5",
         "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
         "$extensions": {
           "com.figma": {
@@ -13,58 +75,10 @@
           }
         }
       },
-      "hover": {
+      "inverse": {
         "$type": "color",
-        "$value": "colors.brand.50",
+        "$value": "colors.brand.100",
         "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "visited": {
-        "$type": "color",
-        "$value": "colors.neutral.60",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "alt-initial": {
-        "$type": "color",
-        "$value": "colors.teal.80",
-        "$description": "for student portal only",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "alt-hover": {
-        "$type": "color",
-        "$value": "colors.teal.90",
-        "$description": "for student portal only",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "alt-visited": {
-        "$type": "color",
-        "$value": "colors.neutral.60",
-        "$description": "for student portal only",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -74,7 +88,7 @@
         }
       }
     },
-    "neutral": {
+    "page": {
       "100": {
         "$type": "color",
         "$value": "colors.neutral.40",
@@ -236,68 +250,6 @@
         }
       }
     },
-    "action": {
-      "100": {
-        "$type": "color",
-        "$value": "colors.brand.80",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "200": {
-        "$type": "color",
-        "$value": "colors.brand.60",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "initial": {
-        "$type": "color",
-        "$value": "colors.brand.5",
-        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "inverse": {
-        "$type": "color",
-        "$value": "colors.brand.100",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "alternate": {
-        "$type": "color",
-        "$value": "colors.teal.80",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
     "success": {
       "100": {
         "$type": "color",
@@ -434,73 +386,49 @@
             "codeSyntax": {}
           }
         }
-      }
-    },
-    "page": {
-      "100": {
-        "$type": "color",
-        "$value": "colors.neutral.40",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
       },
-      "200": {
-        "$type": "color",
-        "$value": "colors.neutral.60",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
+      "navigation": {
+        "initial": {
+          "$type": "color",
+          "$value": "colors.teal.80",
+          "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+              "codeSyntax": {}
+            }
           }
-        }
-      },
-      "300": {
-        "$type": "color",
-        "$value": "colors.brand.100",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "colors.teal.90",
+          "$description": "",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+              "codeSyntax": {}
+            }
           }
-        }
-      },
-      "initial": {
-        "$type": "color",
-        "$value": "colors.neutral.90",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "inverse": {
-        "$type": "color",
-        "$value": "colors.neutral.white",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
+        },
+        "visited": {
+          "$type": "color",
+          "$value": "colors.teal.100",
+          "$description": "",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+              "codeSyntax": {}
+            }
           }
         }
       }
     }
   },
   "surface": {
-    "neutral": {
+    "page": {
       "100": {
         "$type": "color",
         "$value": "colors.neutral.white",
@@ -713,72 +641,10 @@
           }
         }
       }
-    },
-    "page": {
-      "100": {
-        "$type": "color",
-        "$value": "colors.neutral.white",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "200": {
-        "$type": "color",
-        "$value": "colors.neutral.10",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "300": {
-        "$type": "color",
-        "$value": "colors.neutral.20",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "initial": {
-        "$type": "color",
-        "$value": "colors.brand.5",
-        "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "inverse": {
-        "$type": "color",
-        "$value": "colors.neutral.90",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      }
     }
   },
   "border": {
-    "neutral": {
+    "page": {
       "100": {
         "$type": "color",
         "$value": "colors.brand.20",
@@ -983,44 +849,6 @@
           }
         }
       }
-    },
-    "page": {
-      "100": {
-        "$type": "color",
-        "$value": "colors.brand.20",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "200": {
-        "$type": "color",
-        "$value": "colors.neutral.20",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["STROKE_COLOR"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "initial": {
-        "$type": "color",
-        "$value": "colors.neutral.10",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      }
     }
   },
   "background": {
@@ -1086,7 +914,7 @@
         }
       }
     },
-    "neutral": {
+    "page": {
       "100": {
         "$type": "color",
         "$value": "colors.neutral.10",
@@ -1266,44 +1094,6 @@
       "active": {
         "$type": "color",
         "$value": "colors.teal.40",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
-    "page": {
-      "100": {
-        "$type": "color",
-        "$value": "colors.neutral.10",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "200": {
-        "$type": "color",
-        "$value": "colors.neutral.20",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "initial": {
-        "$type": "color",
-        "$value": "colors.brand.5",
         "$description": "",
         "$extensions": {
           "com.figma": {
