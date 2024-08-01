@@ -96,14 +96,14 @@ export function TypographyBlock(props: TypographyBlockProps) {
           key={key}
           className={css({
             borderTop: '1px solid',
-            borderColor: 'neutral.border.initial',
+            borderColor: 'page.border.initial',
             py: '4',
             w: 'full',
           })}
         >
           <p
             className={css({
-              color: 'neutral.text.100',
+              color: 'page.text.100',
               pb: '4 !important',
               textStyle: 'body-sm !important',
             })}

@@ -174,10 +174,10 @@ export function OverviewTagPreview() {
 
 function MatchTagPalettePreview(props: MatchTagProps) {
   switch (props.palette) {
-    case 'neutral':
+    case 'page':
       return (
-        <Tag palette="neutral" shape="square">
-          Neutral
+        <Tag palette="page" shape="square">
+          Page
         </Tag>
       )
     case 'gradient':
@@ -227,7 +227,7 @@ export function OverviewPaletteTagPreview() {
     'pill',
   ]
   const palettes = [
-    'neutral',
+    'page',
     'gradient',
     'info',
     'success',

@@ -24,7 +24,7 @@ export default function OverviewList(props: OverviewListProps) {
         <Show when={Boolean(props.intro)}>
           <li
             className={css({
-              color: 'neutral.text.100',
+              color: 'page.text.100',
               pb: '4',
               textStyle: 'body-xl',
             })}

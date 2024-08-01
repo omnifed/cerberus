@@ -52,7 +52,7 @@ export default function ZPreview() {
     <>
       <div
         className={vstack({
-          bgColor: 'neutral.surface.200',
+          bgColor: 'page.surface.200',
           border: '3px solid',
           borderColor: 'info.border.initial',
           borderRadius: 'xl',
@@ -111,8 +111,8 @@ export default function ZPreview() {
         <div
           className={css({
             border: '4px solid',
-            borderColor: 'neutral.border.100',
-            bgColor: 'neutral.surface.initial',
+            borderColor: 'page.border.100',
+            bgColor: 'page.surface.initial',
             pxi: '12',
             py: '20',
             rounded: 'md',
@@ -144,7 +144,7 @@ export default function ZPreview() {
         <select
           className={css({
             border: '1px solid',
-            borderColor: 'neutral.border.100',
+            borderColor: 'page.border.100',
             h: '2.75rem',
             pxi: '2',
             rounded: 'md',

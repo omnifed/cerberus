@@ -17,7 +17,7 @@ import { IconButton, createIconButtonProps } from '@cerberus-design/react';
 // An optional helper to manage a11y for the IconButton
 const iconBtnProps = createIconButtonProps({
   label: 'Add to order',
-  palette: 'neutral',
+  palette: 'page',
   size: 'lg',
 });
 

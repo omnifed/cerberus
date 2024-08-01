@@ -57,7 +57,7 @@ describe('tabs recipe', () => {
         borderTopLeftRadius: 'md',
         borderTopRightRadius: 'md',
         bottom: '0',
-        bgColor: 'neutral.surface.100',
+        bgColor: 'page.surface.100',
         content: '""',
         left: '0',
         position: 'absolute',

@@ -13,7 +13,7 @@ describe('toggle recipe', () => {
 
   test('should have a base style', () => {
     expect(toggle.base?.track).toMatchObject({
-      bgColor: 'neutral.surface.300',
+      bgColor: 'page.surface.300',
       position: 'relative',
       _motionSafe: {
         transitionProperty: BG_COLOR,

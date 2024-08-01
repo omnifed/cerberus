@@ -47,7 +47,7 @@ export default function IconsList(props: IconsListProps) {
           <Link
             className={vstack({
               display: 'flex !important',
-              bgColor: 'neutral.surface.200',
+              bgColor: 'page.surface.200',
               h: 'full',
               justify: 'center !important',
               w: 'full',
@@ -55,7 +55,7 @@ export default function IconsList(props: IconsListProps) {
               transition: 'background-color, color 250ms ease-in-out',
               _hover: {
                 bgColor: 'action.navigation.initial',
-                color: 'neutral.surface.100 !important',
+                color: 'page.surface.100 !important',
               },
             })}
             href={`/icons/${name}`}

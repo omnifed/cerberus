@@ -13,10 +13,10 @@ export function PaletteAvatar(props: PropsWithChildren<PaletteAvatar>) {
         data-palette={props.palette}
         className={circle({
           border: '1px solid',
-          borderColor: 'neutral.border.initial',
+          borderColor: 'page.border.initial',
           size: '4',
-          _neutralPalette: {
-            bgColor: 'neutral.surface.initial',
+          _pagePalette: {
+            bgColor: 'page.surface.initial',
           },
           _actionPalette: {
             bgColor: 'action.bg.initial',

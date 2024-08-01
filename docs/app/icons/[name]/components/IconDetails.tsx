@@ -24,7 +24,7 @@ export default function IconDetails(props: IconDetailsProps) {
           columns: 12,
           lg: {
             borderBottom: '1px solid',
-            borderColor: 'neutral.border.initial',
+            borderColor: 'page.border.initial',
             mb: '8',
             pb: '8',
           },
@@ -43,7 +43,7 @@ export default function IconDetails(props: IconDetailsProps) {
           <div
             className={vstack({
               justify: 'center',
-              bgColor: 'neutral.surface.200',
+              bgColor: 'page.surface.200',
               h: PREVIEW_SIZE,
               rounded: 'md',
             })}
@@ -72,7 +72,7 @@ export default function IconDetails(props: IconDetailsProps) {
             {sizes.map((size) => (
               <li
                 className={vstack({
-                  bgColor: 'neutral.surface.200',
+                  bgColor: 'page.surface.200',
                   h: `calc(${PREVIEW_SIZE} / 4)`,
                   justify: 'center',
                   rounded: 'md',

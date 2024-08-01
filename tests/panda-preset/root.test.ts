@@ -34,8 +34,8 @@ describe('root', () => {
     expect(DS.tokens).toBeDefined()
   })
 
-  test('should export neutralTokens', () => {
-    expect(DS.neutralTokens).toBeDefined()
+  test('should export pageTokens', () => {
+    expect(DS.pageTokens).toBeDefined()
   })
 
   test('should export actionTokens', () => {
@@ -71,7 +71,7 @@ describe('root', () => {
   })
 
   test('should export palettes', () => {
-    expect(DS.NEUTRAL).toBeDefined()
+    expect(DS.PAGE).toBeDefined()
     expect(DS.ACTION).toBeDefined()
     expect(DS.INFO).toBeDefined()
     expect(DS.SUCCESS).toBeDefined()
@@ -81,7 +81,7 @@ describe('root', () => {
 
   test('should export all palettes', () => {
     expect(DS.action).toBeDefined()
-    expect(DS.neutral).toBeDefined()
+    expect(DS.page).toBeDefined()
     expect(DS.info).toBeDefined()
     expect(DS.success).toBeDefined()
     expect(DS.warning).toBeDefined()

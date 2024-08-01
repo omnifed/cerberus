@@ -65,9 +65,9 @@ function MPTriggerEl(
   return (
     <button
       className={hstack({
-        bgColor: 'neutral.surface.100',
+        bgColor: 'page.surface.100',
         border: '2px solid',
-        borderColor: 'neutral.border.200',
+        borderColor: 'page.border.200',
         color: ACTION_NAV_INITIAL,
         p: '4',
         rounded: 'md',
@@ -112,7 +112,7 @@ function MPFeatLink(props: PropsWithChildren) {
       className={hstack({
         color: ACTION_NAV_INITIAL,
         border: '1px solid',
-        borderColor: 'neutral.border.100',
+        borderColor: 'page.border.100',
         display: 'flex !important',
         mb: '4',
         pxi: '4',
@@ -141,7 +141,7 @@ export function FullyCustomNavMenuPreview() {
         <NavMenuTrigger as={MPTrigger} controls="basic:nav">
           <span
             className={circle({
-              bgColor: 'neutral.bg.hover',
+              bgColor: 'page.bg.hover',
               size: '8',
             })}
           />
@@ -151,14 +151,14 @@ export function FullyCustomNavMenuPreview() {
           id="basic:nav"
           className={css({
             border: '2px solid',
-            borderColor: 'neutral.border.100',
+            borderColor: 'page.border.100',
             w: '21rem',
           })}
         >
           <li>
             <p
               className={css({
-                color: 'neutral.text.200',
+                color: 'page.text.200',
                 pb: '0 !important',
                 textStyle: 'body-sm',
               })}
@@ -169,7 +169,7 @@ export function FullyCustomNavMenuPreview() {
           <NavMenuLink as={MPFeatLink} href="#customizing">
             <span
               className={circle({
-                bgColor: 'neutral.bg.hover',
+                bgColor: 'page.bg.hover',
                 size: '4',
               })}
             />

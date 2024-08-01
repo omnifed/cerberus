@@ -17,7 +17,7 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
       return (
         <p
           className={css({
-            color: 'neutral.text.100',
+            color: 'page.text.100',
             textStyle: 'h6',
             textTransform: 'uppercase',
           })}
@@ -76,7 +76,7 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
                   bgGradient: 'to-r',
                   gradientFrom: 'warning.border.initial',
                   gradientTo: 'info.border.initial',
-                  color: 'neutral.surface.initial',
+                  color: 'page.surface.initial',
                   display: 'inline-block',
                   fontWeight: '600',
                   lineHeight: 'initial',

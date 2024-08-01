@@ -19,7 +19,7 @@ function CategoryCard(props: CategoryCardProps) {
       <Link
         href={item!.route!}
         className={vstack({
-          bgColor: 'neutral.surface.100',
+          bgColor: 'page.surface.100',
           display: 'block',
           h: '15rem',
           overflow: 'hidden',
@@ -76,7 +76,7 @@ function CategoryCard(props: CategoryCardProps) {
         >
           <p
             className={css({
-              color: 'neutral.text.initial !important',
+              color: 'page.text.initial !important',
               textStyle: 'body-xl !important',
             })}
           >
@@ -99,7 +99,7 @@ export default function CategoryList(props: CategoryListProps) {
       <header>
         <p
           className={css({
-            color: 'neutral.text.initial !important',
+            color: 'page.text.initial !important',
             pb: '2 !important',
             textStyle: 'h2 !important',
           })}

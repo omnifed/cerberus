@@ -39,7 +39,7 @@ export default function FeatureHeader(
         <section
           className={vstack({
             alignItems: 'flex-start',
-            bgColor: 'neutral.surface.100',
+            bgColor: 'page.surface.100',
             h: 'full',
             justify: 'center',
             pxi: {
@@ -104,7 +104,7 @@ export default function FeatureHeader(
             },
             '&:is([data-category=touch-target])': {
               cerberusGradient: 'purple',
-              color: 'neutral.surface.300',
+              color: 'page.surface.300',
             },
             '&:is([data-category=forms])': {
               cerberusGradient: 'blue',
@@ -117,7 +117,7 @@ export default function FeatureHeader(
             '&:is([data-category=utilities])': {
               gradientFrom: 'action.bg.initial',
               gradientTo: 'action.border.initial',
-              color: 'neutral.surface.200',
+              color: 'page.surface.200',
             },
           })}
         >

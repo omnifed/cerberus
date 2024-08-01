@@ -28,7 +28,7 @@ export default function TypographyList(props: TypographyListProps) {
           <input
             className={css({
               border: '1px solid',
-              borderColor: 'neutral.border.initial',
+              borderColor: 'page.border.initial',
               borderRadius: 'full',
               p: '4',
               w: 'full',

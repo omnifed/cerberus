@@ -1,4 +1,4 @@
-export * from './neutral'
+export * from './page'
 export * from './action'
 export * from './secondary-action'
 export * from './info'

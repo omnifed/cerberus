@@ -26,15 +26,15 @@ interface UsageExampleProps {
 }
 
 export default function UsageExample(props: UsageExampleProps) {
-  const isNeutralSurface = props.token.includes('neutral-surface')
+  const isPageSurface = props.token.includes('page-surface')
 
   return (
     <div
-      {...(isNeutralSurface && {
+      {...(isPageSurface && {
         'data-highlighted': true,
       })}
       className={css({
-        bgColor: 'neutral.surface.100',
+        bgColor: 'page.surface.100',
         shadow: 'lg',
         p: '4',
         rounded: 'xl',
@@ -42,16 +42,17 @@ export default function UsageExample(props: UsageExampleProps) {
       })}
     >
       <p
-        {...(isNeutralSurface && {
+        {...(props.token.includes('page-text') && {
           'data-highlighted': true,
         })}
         className={css({
           pb: '2 !important',
+          rounded: 'md',
           textStyle: 'h3 !important',
           ...highlightedStyles,
         })}
       >
-        Surface
+        Page Heading
       </p>
 
       <div
@@ -63,7 +64,7 @@ export default function UsageExample(props: UsageExampleProps) {
           className={css({
             ...highlightedStyles,
           })}
-          {...(props.token.includes('neutral-bg') && {
+          {...(props.token.includes('page-bg') && {
             'data-highlighted': true,
           })}
         >
@@ -73,7 +74,7 @@ export default function UsageExample(props: UsageExampleProps) {
           className={css({
             ...highlightedStyles,
           })}
-          {...(props.token.includes('neutral-bg') && {
+          {...(props.token.includes('page-bg') && {
             'data-highlighted': true,
           })}
         >
@@ -82,12 +83,12 @@ export default function UsageExample(props: UsageExampleProps) {
       </div>
 
       <form
-        {...(isNeutralSurface && {
+        {...(isPageSurface && {
           'data-highlighted': true,
         })}
         className={vstack({
           alignItems: 'flex-start',
-          bgColor: 'neutral.surface.200',
+          bgColor: 'page.surface.200',
           rounded: 'xl',
           p: '4',
           mt: '8',
@@ -98,8 +99,9 @@ export default function UsageExample(props: UsageExampleProps) {
           <Label
             className={css({
               ...highlightedStyles,
+              rounded: 'md',
             })}
-            {...(props.token.includes('neutral-text') && {
+            {...(props.token.includes('page-text') && {
               'data-highlighted': true,
             })}
             htmlFor="example"
@@ -111,7 +113,7 @@ export default function UsageExample(props: UsageExampleProps) {
             className={css({
               ...highlightedStyles,
             })}
-            {...(props.token.includes('neutral-border') && {
+            {...(props.token.includes('page-border') && {
               'data-highlighted': true,
             })}
             id="example"

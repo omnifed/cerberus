@@ -51,14 +51,14 @@ export default function OnThisPage() {
     <div
       className={css({
         borderLeft: '1px solid',
-        borderColor: 'neutral.border.initial',
+        borderColor: 'page.border.initial',
         h: 'fit-content',
         paddingInlineStart: '6',
       })}
     >
       <p
         className={css({
-          color: 'neutral.text.100',
+          color: 'page.text.100',
           textStyle: 'h6',
           mb: '4',
         })}

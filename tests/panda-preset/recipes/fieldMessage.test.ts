@@ -10,7 +10,7 @@ describe('fieldMessage recipe', () => {
 
   test('should have a base style', () => {
     expect(fieldMessage.base).toMatchObject({
-      color: 'neutral.text.200',
+      color: 'page.text.200',
       textStyle: 'label-sm',
       _userInvalid: {
         color: 'danger.text.200',

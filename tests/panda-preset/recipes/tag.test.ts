@@ -3,12 +3,12 @@ import { recipes } from '@cerberus-design/panda-preset'
 
 describe('tag recipe', () => {
   const { tag } = recipes
-  const NEUTRAL_TEXT_INITIAL = 'neutral.text.initial'
+  const PAGE_TEXT_INITIAL = 'page.text.initial'
   const outlineGradientCss = {
     borderColor: 'transparent',
     backgroundOrigin: 'border-box',
     backgroundClip: 'padding-box, border-box',
-    color: NEUTRAL_TEXT_INITIAL,
+    color: PAGE_TEXT_INITIAL,
   }
 
   test('should be exported', () => {
@@ -27,9 +27,9 @@ describe('tag recipe', () => {
     })
   })
 
-  test('should have an neutral palette variant', () => {
-    expect(tag.variants?.palette.neutral).toMatchObject({
-      colorPalette: 'neutral',
+  test('should have an page palette variant', () => {
+    expect(tag.variants?.palette.page).toMatchObject({
+      colorPalette: 'page',
     })
   })
 
@@ -62,7 +62,7 @@ describe('tag recipe', () => {
       bgColor: 'inherit',
       border: '1.5px solid',
       borderColor: 'colorPalette.border.initial',
-      color: 'neutral.text.initial',
+      color: 'page.text.initial',
     })
   })
 
@@ -94,7 +94,7 @@ describe('tag recipe', () => {
 
   test('should have default variants', () => {
     expect(tag.defaultVariants).toMatchObject({
-      palette: 'neutral',
+      palette: 'page',
       usage: 'filled',
       shape: 'pill',
     })
@@ -108,7 +108,7 @@ describe('tag recipe', () => {
       css: {
         ...outlineGradientCss,
         backgroundImage:
-          'conic-gradient(var(--cerberus-colors-neutral-surface-initial) 0 0), linear-gradient(to top right, #9ACFEE, #E6F3FB)',
+          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #9ACFEE, #E6F3FB)',
       },
     })
   })
@@ -121,7 +121,7 @@ describe('tag recipe', () => {
       css: {
         ...outlineGradientCss,
         backgroundImage:
-          'conic-gradient(var(--cerberus-colors-neutral-surface-initial) 0 0), linear-gradient(to top right, #71D192, #E8F8ED)',
+          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #71D192, #E8F8ED)',
       },
     })
   })
@@ -134,7 +134,7 @@ describe('tag recipe', () => {
       css: {
         ...outlineGradientCss,
         backgroundImage:
-          'conic-gradient(var(--cerberus-colors-neutral-surface-initial) 0 0), linear-gradient(to top right, #BB93E1, #EFE5F8)',
+          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #BB93E1, #EFE5F8)',
       },
     })
   })

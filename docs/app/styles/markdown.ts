@@ -1,10 +1,10 @@
-import { NEUTRAL } from '@cerberus-design/panda-preset'
+import { PAGE } from '@cerberus-design/panda-preset'
 import { css } from '@cerberus/styled-system/css'
 
-const NEUTRAL_BORDER_100 = 'neutral.border.100'
+const PAGE_BORDER_100 = 'page.border.100'
 
 const headlineStyles = {
-  color: 'neutral.text.initial',
+  color: 'page.text.initial',
   py: '2',
 }
 
@@ -36,7 +36,7 @@ export const markdown = css({
     textStyle: 'h6',
   },
   '& p': {
-    color: 'neutral.text.100',
+    color: 'page.text.100',
     lineHeight: '165%',
     pb: '6',
     textStyle: 'body-md',
@@ -83,7 +83,7 @@ export const markdown = css({
   },
   '& .table-wrapper': {
     border: '1px solid',
-    borderColor: NEUTRAL_BORDER_100,
+    borderColor: PAGE_BORDER_100,
     borderRadius: '1.5em',
     overflow: 'hidden',
     my: '6',
@@ -106,8 +106,8 @@ export const markdown = css({
     },
     '& th': {
       borderRight: '1px solid',
-      borderColor: NEUTRAL_BORDER_100,
-      bgColor: 'neutral.surface.100',
+      borderColor: PAGE_BORDER_100,
+      bgColor: 'page.surface.100',
       textAlign: 'left',
       pxi: '8',
       py: '6',
@@ -119,7 +119,7 @@ export const markdown = css({
     '& td': {
       borderTop: '1px solid',
       borderRight: '1px solid',
-      borderColor: NEUTRAL_BORDER_100,
+      borderColor: PAGE_BORDER_100,
       pxi: '8',
       py: '6',
       _last: {

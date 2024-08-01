@@ -13,10 +13,10 @@ import Link from 'next/link'
 const paletteTextStyles = css({
   textAlign: 'center',
 
-  _neutralPalette: {
-    color: 'neutral.text.initial !important',
+  _pagePalette: {
+    color: 'page.text.initial !important',
     '&[data-has-white="true"]': {
-      color: 'neutral.text.inverse !important',
+      color: 'page.text.inverse !important',
     },
   },
   _actionPalette: {
@@ -76,11 +76,11 @@ const paletteTextStyles = css({
 })
 
 const linkStyles = css({
-  _neutralPalette: {
+  _pagePalette: {
     shadow: 'lg',
     _darkMode: {
       border: '2px solid',
-      borderColor: 'neutral.border.initial',
+      borderColor: 'page.border.initial',
     },
   },
   _actionPalette: {

@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'bun:test'
 import {
   getSlotRecipePalettes,
-  NEUTRAL,
+  PAGE,
   ACTION,
   SECONDARY_ACTION,
   INFO,
@@ -14,7 +14,7 @@ import {
 describe('recipe helpers', () => {
   const slots = ['usage', 'size', 'kind']
   const palettes: Sentiment[] = [
-    NEUTRAL,
+    PAGE,
     ACTION,
     SECONDARY_ACTION,
     INFO,
@@ -26,10 +26,10 @@ describe('recipe helpers', () => {
   test('getSlotRecipePalettes returns all palettes', () => {
     const result = getSlotRecipePalettes(slots, palettes)
     expect(result).toEqual({
-      neutral: {
-        usage: { colorPalette: NEUTRAL },
-        size: { colorPalette: NEUTRAL },
-        kind: { colorPalette: NEUTRAL },
+      page: {
+        usage: { colorPalette: PAGE },
+        size: { colorPalette: PAGE },
+        kind: { colorPalette: PAGE },
       },
       action: {
         usage: { colorPalette: ACTION },

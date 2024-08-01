@@ -24,7 +24,7 @@ export default function PageTabs(props: TabProps) {
         description={props.description}
         className={css({
           borderBottom: 'none',
-          bgColor: 'neutral.surface.100',
+          bgColor: 'page.surface.100',
           justifyContent: 'space-evenly',
           mb: '8',
           overflowX: 'auto',
@@ -73,7 +73,7 @@ export function OverviewPageTabs(props: OverviewPageTabsProps) {
         description={props.description}
         className={css({
           borderBottom: 'none',
-          bgColor: 'neutral.surface.100',
+          bgColor: 'page.surface.100',
           justifyContent: 'space-evenly',
           mb: '8',
           overflowX: 'auto',
@@ -156,7 +156,7 @@ const tabOverrideStyles = css({
   },
   _hover: {
     bgColor: 'action.navigation.hover',
-    color: 'neutral.surface.initial',
+    color: 'page.surface.initial',
   },
   _selected: {
     bgGradient: 'to-bl',

@@ -31,7 +31,7 @@ export default memo(function SideNav(props: PropsWithChildren<SideNavProps>) {
     <div
       className={css({
         paddingInlineStart: '6',
-        borderColor: 'neutral.border.100',
+        borderColor: 'page.border.100',
         borderRight: '1px solid',
       })}
     >

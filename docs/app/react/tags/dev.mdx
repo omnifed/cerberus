@@ -204,7 +204,7 @@ function CustomTagPreview() {
 ```ts showLineNumbers=false
 export interface StaticTagProps extends HTMLAttributes<HTMLSpanElement> {
   gradient?: 'blue' | 'green' | 'purple'
-  palette?: 'neutral' | 'info' | 'success' | 'warning' | 'danger'
+  palette?: 'page' | 'info' | 'success' | 'warning' | 'danger'
   shape?: 'square' | 'pill'
   usage?: 'filled' | 'outlined'
   onClick?: never
@@ -230,7 +230,7 @@ The `Tag` component accepts the following props:
 | Name     | Default | Description                            |
 | -------- | ------- | -------------------------------------- |
 | gradient | `undefined` | The gradient of the tag (overrides palette).           |
-| palette  | `neutral`   | The color palette of the tag (overrides gradient). |
+| palette  | `page`   | The color palette of the tag (overrides gradient). |
 | usage    | `filled`    | The style treatment of the tag.    |
 | shape    | `square`    | The shape of the tag.              |
 | onClick  | `undefined` | How to create a Closable tag.         |

@@ -45,7 +45,7 @@ describe('input recipe', () => {
         borderColor: 'danger.border.initial',
       },
       _placeholderShown: {
-        color: 'neutral.text.100',
+        color: 'page.text.100',
       },
       _startIcon: {
         display: 'inline-block',
