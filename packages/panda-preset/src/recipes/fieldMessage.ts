@@ -19,7 +19,7 @@ export const fieldMessage: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   description: 'WCAG Level AAA compliant input description styles.',
 
   base: {
-    color: 'neutral.text.200',
+    color: 'page.text.200',
     textStyle: 'label-sm',
     _userInvalid: {
       color: 'danger.text.200',

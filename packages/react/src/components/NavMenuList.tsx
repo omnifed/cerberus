@@ -37,7 +37,7 @@ export function getPosition(position: Positions): GetPositionResult {
 
 const navListStyles = vstack({
   alignItems: 'flex-start',
-  bgColor: 'neutral.surface.100',
+  bgColor: 'page.surface.100',
   boxShadow: 'lg',
   gap: '2',
   opacity: '0',

@@ -1,14 +1,14 @@
 import { describe, test, expect } from 'bun:test'
 import { pageTokens } from '@cerberus-design/panda-preset'
 
-describe('neutral', () => {
+describe('page', () => {
   const token = pageTokens.page
 
   function formatToken(token: string) {
     return token.toUpperCase()
   }
 
-  test('should have a neutral property', () => {
+  test('should have a page property', () => {
     expect(token).toBeDefined()
   })
 

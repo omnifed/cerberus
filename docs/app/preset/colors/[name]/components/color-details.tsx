@@ -10,11 +10,12 @@ import {
   container,
   grid,
   gridItem,
+  hstack,
   vstack,
 } from '@cerberus/styled-system/patterns'
 import { normalizeTokens, getTokenList } from '../../helpers/normalize'
 import { Show, useThemeContext } from '@cerberus-design/react'
-import { useMemo } from 'react'
+import { Fragment, useMemo } from 'react'
 import { css } from '@cerberus/styled-system/css'
 import UsageExample from './usage-example'
 
@@ -100,7 +101,7 @@ export default function ColorDetails(props: ColorDetailsProps) {
       [mainSelector, palette, sentiment, interaction].filter(Boolean),
     )
 
-    // TODO: Remove this after action token alts have been removed
+    // TODO: Remove this after action token alts have been removed from Figma data
     if (tokenIsDeprecated(sortedToken)) {
       return []
     }
@@ -113,14 +114,31 @@ export default function ColorDetails(props: ColorDetailsProps) {
     return result.$extensions['com.figma'].scopes ?? []
   }, [propsToken])
 
-  const formattedToken = useMemo(
-    () => ({
-      figma: splitToken.join('/'),
-      js: splitToken.join('.'),
-      scope: scope.join(', '),
-    }),
-    [propsToken, scope],
-  )
+  const formattedToken = useMemo(() => {
+    const [palette, usage, sentiment, interaction] = splitToken
+    return {
+      groups: ['figma', 'dev'],
+      results: {
+        figma: {
+          group: 'figma',
+          meta: 'token',
+          value: [usage, palette, sentiment, interaction]
+            .filter(Boolean)
+            .join('/'),
+        },
+        js: {
+          group: 'dev',
+          meta: 'token',
+          value: splitToken.join('.'),
+        },
+        scope: {
+          group: 'figma',
+          meta: 'scope',
+          value: scope.join(', '),
+        },
+      },
+    }
+  }, [propsToken, scope])
 
   const userMode = mode === 'dark' ? '_darkMode' : '_lightMode'
   const tokenValue = token.value._cerberusTheme[userMode]
@@ -155,9 +173,9 @@ export default function ColorDetails(props: ColorDetailsProps) {
           <div
             className={vstack({
               border: '3px solid',
-              borderColor: 'neutral.border.initial',
+              borderColor: 'page.border.initial',
               justify: 'center',
-              bgColor: 'neutral.surface.200',
+              bgColor: 'page.surface.200',
               h: PREVIEW_SIZE,
               rounded: '2xl',
             })}
@@ -176,40 +194,83 @@ export default function ColorDetails(props: ColorDetailsProps) {
           })}
         >
           <h2>{props.token}</h2>
-          <p>{token.description}</p>
-          {Object.keys(formattedToken).map((key) => (
-            <p
-              className={css({
-                pb: '2 !important',
-                textTransform: 'capitalize',
-              })}
-              key={key}
-            >
-              {key}:{' '}
-              <Show
-                when={key !== 'scope'}
-                fallback={
-                  <span
-                    className={css({
-                      display: 'inline-block',
-                      color: 'info.text.100 !important',
-                      textTransform: 'none',
-                    })}
-                  >
-                    {formattedToken[key as keyof typeof formattedToken]}
-                  </span>
-                }
-              >
-                <code
-                  className={css({
-                    textTransform: 'none',
-                  })}
-                >
-                  {formattedToken[key as keyof typeof formattedToken]}
-                </code>
-              </Show>
-            </p>
-          ))}
+          <p
+            className={css({
+              pb: '2 !important',
+            })}
+          >
+            {token.description}
+          </p>
+
+          <div
+            className={vstack({
+              alignItems: 'flex-start',
+              gap: '4',
+            })}
+          >
+            {formattedToken.groups.map((groupName) => (
+              <Fragment key={groupName}>
+                <ul>
+                  <li>
+                    <p
+                      className={css({
+                        pb: '0 !important',
+                        textStyle: 'h6',
+                        textTransform: 'uppercase',
+                      })}
+                    >
+                      {groupName}
+                    </p>
+                  </li>
+
+                  {Object.entries(formattedToken.results).map(
+                    ([key, resultItem]) => {
+                      if (resultItem.group === groupName) {
+                        return (
+                          <li className={hstack()} key={key}>
+                            <p
+                              className={css({
+                                pb: '0 !important',
+                                textTransform: 'capitalize',
+                              })}
+                            >
+                              {resultItem.meta}:{' '}
+                            </p>
+
+                            <Show
+                              when={resultItem.group === 'figma'}
+                              fallback={
+                                <code
+                                  className={css({
+                                    fontSize: 'small',
+                                    textTransform: 'none',
+                                  })}
+                                >
+                                  {resultItem.value}
+                                </code>
+                              }
+                            >
+                              <p
+                                className={css({
+                                  display: 'inline-block',
+                                  color: 'info.text.100 !important',
+                                  pb: '0 !important',
+                                  textStyle: 'body-sm !important',
+                                  textTransform: 'none',
+                                })}
+                              >
+                                {resultItem.value}
+                              </p>
+                            </Show>
+                          </li>
+                        )
+                      }
+                    },
+                  )}
+                </ul>
+              </Fragment>
+            ))}
+          </div>
         </div>
       </section>
 

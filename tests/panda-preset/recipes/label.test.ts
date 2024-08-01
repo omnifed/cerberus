@@ -11,7 +11,7 @@ describe('label recipe', () => {
   test('should have a base style', () => {
     expect(label.base).toMatchObject({
       _disabled: {
-        color: 'neutral.text.100',
+        color: 'page.text.100',
       },
     })
   })

@@ -100,8 +100,8 @@ describe('conditions', () => {
     expect(conditions.grammarError).toEqual('&:is(::grammar-error)')
   })
 
-  test('should have a neutralPalette', () => {
-    expect(conditions.neutralPalette).toEqual('&:is([data-palette=neutral])')
+  test('should have a pagePalette', () => {
+    expect(conditions.pagePalette).toEqual('&:is([data-palette=page])')
   })
 
   test('should have an actionPalette', () => {

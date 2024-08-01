@@ -31,7 +31,7 @@ const navLogoContent = (
         rounded: 'sm',
         textStyle: 'body-xl',
         _active: {
-          color: 'neutral.text.initial',
+          color: 'page.text.initial',
         },
         _focusVisible: focusStates._focusVisible,
       })}
@@ -115,11 +115,11 @@ export function Nav() {
         <ul
           className={hstack({
             border: '1px solid',
-            borderColor: 'neutral.border.initial',
+            borderColor: 'page.border.initial',
             gap: '0',
             w: 'full',
             '& li:nth-child(2)': {
-              borderColor: 'neutral.border.initial',
+              borderColor: 'page.border.initial',
               borderLeft: '1px solid',
               borderRight: '1px solid',
               md: {
@@ -214,7 +214,7 @@ export function Nav() {
           <li>
             <p
               className={css({
-                color: 'neutral.text.100',
+                color: 'page.text.100',
                 h: '1.5rem',
                 pt: '1px',
                 textStyle: 'body-xs',

@@ -21,7 +21,7 @@ export default function ZList(props: ZListProps) {
           <li
             className={css({
               borderTop: '1px solid',
-              borderColor: 'neutral.border.initial',
+              borderColor: 'page.border.initial',
               py: '4',
               w: 'full',
             })}
@@ -34,7 +34,7 @@ export default function ZList(props: ZListProps) {
             >
               <p
                 className={css({
-                  color: 'neutral.text.100',
+                  color: 'page.text.100',
                   pb: '4 !important',
                   textStyle: 'body-sm !important',
                 })}
@@ -43,7 +43,7 @@ export default function ZList(props: ZListProps) {
               </p>
               <p
                 className={css({
-                  color: 'neutral.text.100',
+                  color: 'page.text.100',
                   textStyle: 'body-sm !important',
                 })}
               >

@@ -8,7 +8,7 @@ const tooltipStyles = {
     },
     _after: {
       borderColor:
-        'var(--cerberus-colors-neutral-surface-inverse) transparent transparent transparent',
+        'var(--cerberus-colors-page-surface-inverse) transparent transparent transparent',
       left: '50%',
       top: '0',
       transform: 'translateY(-120%)',
@@ -21,7 +21,7 @@ const tooltipStyles = {
     },
     _after: {
       borderColor:
-        'transparent transparent var(--cerberus-colors-neutral-surface-inverse) transparent ',
+        'transparent transparent var(--cerberus-colors-page-surface-inverse) transparent ',
       bottom: '0',
       left: '50%',
       transform: 'translateY(120%)',
@@ -35,7 +35,7 @@ const tooltipStyles = {
     },
     _after: {
       borderColor:
-        'transparent transparent transparent var(--cerberus-colors-neutral-surface-inverse)',
+        'transparent transparent transparent var(--cerberus-colors-page-surface-inverse)',
       left: '0',
       top: '0',
       transform: 'translate3d(-45%, 176%, 0)',
@@ -49,7 +49,7 @@ const tooltipStyles = {
     },
     _after: {
       borderColor:
-        'transparent var(--cerberus-colors-neutral-surface-inverse) transparent transparent ',
+        'transparent var(--cerberus-colors-page-surface-inverse) transparent transparent ',
       right: '0',
       top: '0',
       transform: 'translate3d(95%, 176%, 0)',
@@ -57,8 +57,8 @@ const tooltipStyles = {
   },
   // bubble
   _before: {
-    backgroundColor: 'var(--cerberus-colors-neutral-surface-inverse)',
-    color: 'var(--cerberus-colors-neutral-text-inverse)',
+    backgroundColor: 'var(--cerberus-colors-page-surface-inverse)',
+    color: 'var(--cerberus-colors-page-text-inverse)',
     content: 'attr(aria-label)',
     fontWeight: 400,
     maxH: '6rem',
@@ -103,8 +103,8 @@ const tooltipStyles = {
 
 export const globalCss: GlobalStyleObject = defineGlobalStyles({
   html: {
-    backgroundColor: 'var(--cerberus-colors-neutral-surface-initial)',
-    color: 'var(--cerberus-colors-neutral-text-initial)',
+    backgroundColor: 'var(--cerberus-colors-page-surface-initial)',
+    color: 'var(--cerberus-colors-page-text-initial)',
     fontFamily: 'var(--cerberus-fonts-sans)',
     fontFeatureSettings: "'tnum' on, 'lnum' on",
     fontSize: '1em',
@@ -133,11 +133,11 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
       width: '0.5em',
     },
     _scrollbarTrack: {
-      backgroundColor: 'var(--cerberus-colors-neutral-surface-200)',
+      backgroundColor: 'var(--cerberus-colors-page-surface-200)',
       outline: 'none',
     },
     _scrollbarThumb: {
-      backgroundColor: 'var(--cerberus-colors-neutral-border-100)',
+      backgroundColor: 'var(--cerberus-colors-page-border-100)',
       borderRadius: '5px',
       outline: 'none',
     },

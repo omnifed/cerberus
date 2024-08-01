@@ -29,7 +29,7 @@ describe('radio recipe', () => {
         transitionTimingFunction: 'ease-in-out',
       },
       _checked: {
-        bg: 'radial-gradient(circle, var(--cerberus-colors-action-border-initial) 35%, var(--cerberus-colors-neutral-surface-initial) 35%)',
+        bg: 'radial-gradient(circle, var(--cerberus-colors-action-border-initial) 35%, var(--cerberus-colors-page-surface-initial) 35%)',
       },
       _disabled: {
         cursor: 'not-allowed',

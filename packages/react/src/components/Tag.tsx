@@ -37,7 +37,7 @@ export type TagProps = StaticTagProps | ClickableTagProps
  */
 export function Tag(props: PropsWithChildren<TagProps>): JSX.Element {
   const { shape: initShape, gradient, onClick, usage, ...nativeProps } = props
-  const palette = props?.palette ?? 'neutral'
+  const palette = props?.palette ?? 'page'
   const isClosable = Boolean(onClick)
   const shape = isClosable ? 'pill' : initShape
   const closableStyles = isClosable ? closableCss : ''

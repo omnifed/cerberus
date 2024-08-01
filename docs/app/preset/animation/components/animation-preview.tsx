@@ -35,7 +35,7 @@ export function PulsePreview() {
     <div
       className={square({
         animation: 'pulse 2s infinite',
-        bgColor: 'neutral.surface.300',
+        bgColor: 'page.surface.300',
         rounded: 'md',
         size: '10rem',
       })}

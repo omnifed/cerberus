@@ -18,7 +18,7 @@ const apiLinkStyles = css({
   transition: 'all 200ms ease-in-out',
   _hover: {
     bgColor: 'action.navigation.hover',
-    color: 'neutral.text.inverse !important',
+    color: 'page.text.inverse !important',
     textStyle: 'link',
   },
 })

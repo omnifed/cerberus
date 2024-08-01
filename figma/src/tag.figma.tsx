@@ -8,7 +8,7 @@ const imports = ["import { Tag } from '@cerberus/react'"]
 
 const props = {
   palette: figma.enum('Palette', {
-    neutral: 'neutral',
+    page: 'page',
     info: 'info',
     success: 'success',
     warning: 'warning',

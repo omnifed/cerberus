@@ -21,7 +21,7 @@ export default function SearchableIcons() {
     >
       <div
         className={css({
-          bgColor: 'neutral.surface.initial',
+          bgColor: 'page.surface.initial',
           position: 'sticky',
           py: '2',
           top: '-1.75rem',
@@ -30,7 +30,7 @@ export default function SearchableIcons() {
             bottom: '-1.8rem',
             bgGradient: 'to-b',
             content: '""',
-            gradientFrom: 'neutral.surface.initial',
+            gradientFrom: 'page.surface.initial',
             gradientTo: 'transparent',
             h: '8',
             left: '0',
@@ -46,7 +46,7 @@ export default function SearchableIcons() {
           <input
             className={css({
               border: '1px solid',
-              borderColor: 'neutral.border.initial',
+              borderColor: 'page.border.initial',
               borderRadius: 'full',
               p: '4',
               w: 'full',

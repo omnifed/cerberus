@@ -83,7 +83,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       css: {
         ...outlineGradientCss,
         backgroundImage:
-          'conic-gradient(var(--cerberus-colors-neutral-surface-initial) 0 0), linear-gradient(to top right, #9ACFEE, #E6F3FB)',
+          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #9ACFEE, #E6F3FB)',
       },
     },
     {
@@ -93,7 +93,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       css: {
         ...outlineGradientCss,
         backgroundImage:
-          'conic-gradient(var(--cerberus-colors-neutral-surface-initial) 0 0), linear-gradient(to top right, #71D192, #E8F8ED)',
+          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #71D192, #E8F8ED)',
       },
     },
     {
@@ -103,7 +103,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       css: {
         ...outlineGradientCss,
         backgroundImage:
-          'conic-gradient(var(--cerberus-colors-neutral-surface-initial) 0 0), linear-gradient(to top right, #BB93E1, #EFE5F8)',
+          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #BB93E1, #EFE5F8)',
       },
     },
   ],

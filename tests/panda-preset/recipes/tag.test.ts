@@ -27,7 +27,7 @@ describe('tag recipe', () => {
     })
   })
 
-  test('should have an neutral palette variant', () => {
+  test('should have an page palette variant', () => {
     expect(tag.variants?.palette.page).toMatchObject({
       colorPalette: 'page',
     })
@@ -108,7 +108,7 @@ describe('tag recipe', () => {
       css: {
         ...outlineGradientCss,
         backgroundImage:
-          'conic-gradient(var(--cerberus-colors-neutral-surface-initial) 0 0), linear-gradient(to top right, #9ACFEE, #E6F3FB)',
+          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #9ACFEE, #E6F3FB)',
       },
     })
   })
@@ -121,7 +121,7 @@ describe('tag recipe', () => {
       css: {
         ...outlineGradientCss,
         backgroundImage:
-          'conic-gradient(var(--cerberus-colors-neutral-surface-initial) 0 0), linear-gradient(to top right, #71D192, #E8F8ED)',
+          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #71D192, #E8F8ED)',
       },
     })
   })
@@ -134,7 +134,7 @@ describe('tag recipe', () => {
       css: {
         ...outlineGradientCss,
         backgroundImage:
-          'conic-gradient(var(--cerberus-colors-neutral-surface-initial) 0 0), linear-gradient(to top right, #BB93E1, #EFE5F8)',
+          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #BB93E1, #EFE5F8)',
       },
     })
   })

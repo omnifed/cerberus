@@ -36,7 +36,7 @@ export const markdown = css({
     textStyle: 'h6',
   },
   '& p': {
-    color: 'neutral.text.100',
+    color: 'page.text.100',
     lineHeight: '165%',
     pb: '6',
     textStyle: 'body-md',
@@ -107,7 +107,7 @@ export const markdown = css({
     '& th': {
       borderRight: '1px solid',
       borderColor: PAGE_BORDER_100,
-      bgColor: 'neutral.surface.100',
+      bgColor: 'page.surface.100',
       textAlign: 'left',
       pxi: '8',
       py: '6',

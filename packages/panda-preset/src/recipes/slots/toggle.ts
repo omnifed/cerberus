@@ -33,7 +33,7 @@ export const toggle: Partial<SlotRecipeConfig> = defineSlotRecipe({
   base: {
     track: {
       // ...Combine with hstack
-      bgColor: 'neutral.surface.300',
+      bgColor: 'page.surface.300',
       position: 'relative',
       _motionSafe: {
         transitionProperty: 'background-color',
