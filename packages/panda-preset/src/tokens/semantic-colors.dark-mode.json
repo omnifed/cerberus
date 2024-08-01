@@ -36,42 +36,6 @@
             "codeSyntax": {}
           }
         }
-      },
-      "alt-initial": {
-        "$type": "color",
-        "$value": "colors.teal.60",
-        "$description": "for student portal only",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "alt-hover": {
-        "$type": "color",
-        "$value": "colors.teal.30",
-        "$description": "for student portal only",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "alt-visited": {
-        "$type": "color",
-        "$value": "colors.teal.10",
-        "$description": "for student portal only",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
       }
     },
     "neutral": {
@@ -276,18 +240,6 @@
       "inverse": {
         "$type": "color",
         "$value": "colors.brand.5",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "alternate": {
-        "$type": "color",
-        "$value": "colors.teal.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
