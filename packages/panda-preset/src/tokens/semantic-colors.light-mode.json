@@ -1,21 +1,9 @@
 {
   "text": {
-    "navigation": {
-      "initial": {
+    "action": {
+      "100": {
         "$type": "color",
-        "$value": "colors.brand.60",
-        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "hover": {
-        "$type": "color",
-        "$value": "colors.brand.50",
+        "$value": "colors.brand.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -25,9 +13,71 @@
           }
         }
       },
-      "visited": {
+      "200": {
         "$type": "color",
-        "$value": "colors.neutral.60",
+        "$value": "colors.brand.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "navigation": {
+        "initial": {
+          "$type": "color",
+          "$value": "colors.brand.60",
+          "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "colors.brand.50",
+          "$description": "",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "visited": {
+          "$type": "color",
+          "$value": "colors.neutral.60",
+          "$description": "",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+              "codeSyntax": {}
+            }
+          }
+        }
+      },
+      "initial": {
+        "$type": "color",
+        "$value": "colors.brand.5",
+        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "colors.brand.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -195,56 +245,6 @@
           "com.figma": {
             "hiddenFromPublishing": false,
             "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
-    "action": {
-      "100": {
-        "$type": "color",
-        "$value": "colors.brand.80",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "200": {
-        "$type": "color",
-        "$value": "colors.brand.60",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "initial": {
-        "$type": "color",
-        "$value": "colors.brand.5",
-        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "inverse": {
-        "$type": "color",
-        "$value": "colors.brand.100",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
             "codeSyntax": {}
           }
         }

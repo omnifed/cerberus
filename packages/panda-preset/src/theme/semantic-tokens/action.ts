@@ -230,63 +230,72 @@ export const actionTokens: ActionTokens = {
     navigation: {
       initial: {
         description:
-          semanticColors.text.navigation.initial.$description ||
+          semanticColors.text[ACTION].navigation.initial.$description ||
           'The default color of the navigation links.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.navigation.initial.$value,
+              rawTokens.semanticColors.dark.text[ACTION].navigation.initial
+                .$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.navigation.initial.$value,
+              rawTokens.semanticColors.light.text[ACTION].navigation.initial
+                .$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.navigation.initial.$value,
+              rawTokens.semanticColors.dark.text[ACTION].navigation.initial
+                .$value,
             ).$value,
           },
         },
       },
       hover: {
         description:
-          semanticColors.text.navigation.hover.$description ||
+          semanticColors.text[ACTION].navigation.hover.$description ||
           'The background color of the navigation action when hovered.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.navigation.hover.$value,
+              rawTokens.semanticColors.dark.text[ACTION].navigation.hover
+                .$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.navigation.hover.$value,
+              rawTokens.semanticColors.light.text[ACTION].navigation.hover
+                .$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.navigation.hover.$value,
+              rawTokens.semanticColors.dark.text[ACTION].navigation.hover
+                .$value,
             ).$value,
           },
         },
       },
       visited: {
         description:
-          semanticColors.text.navigation.visited.$description ||
+          semanticColors.text[ACTION].navigation.visited.$description ||
           'The background color of the navigation action when visited.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.navigation.visited.$value,
+              rawTokens.semanticColors.dark.text[ACTION].navigation.visited
+                .$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.navigation.visited.$value,
+              rawTokens.semanticColors.light.text[ACTION].navigation.visited
+                .$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.navigation.visited.$value,
+              rawTokens.semanticColors.dark.text[ACTION].navigation.visited
+                .$value,
             ).$value,
           },
         },
