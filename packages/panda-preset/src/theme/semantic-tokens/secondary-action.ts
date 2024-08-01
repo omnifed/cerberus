@@ -7,9 +7,6 @@ import { colors, deepGetByPaths, rawTokens, semanticColors } from '../../tokens'
  */
 
 const SECONDARY_ACTION = 'secondary-action'
-const ALT_INITIAL = 'alt-initial'
-const ALT_HOVER = 'alt-hover'
-const ALT_VISITED = 'alt-visited'
 
 export type SecondaryActionProminences = {
   readonly initial: SemanticToken
@@ -245,65 +242,73 @@ export const secondaryActionTokens: SecondaryActionTokens = {
     navigation: {
       initial: {
         description:
-          semanticColors.text.navigation[ALT_INITIAL].$description ||
-          'The default color of the navigation links.',
+          semanticColors.text[SECONDARY_ACTION].navigation.initial
+            .$description || 'The default color of the navigation links.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.navigation[ALT_INITIAL].$value,
+              rawTokens.semanticColors.dark.text[SECONDARY_ACTION].navigation
+                .initial.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.navigation[ALT_INITIAL]
-                .$value,
+              rawTokens.semanticColors.light.text[SECONDARY_ACTION].navigation
+                .initial.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.navigation[ALT_INITIAL].$value,
+              rawTokens.semanticColors.dark.text[SECONDARY_ACTION].navigation
+                .initial.$value,
             ).$value,
           },
         },
       },
       hover: {
         description:
-          semanticColors.text.navigation[ALT_HOVER].$description ||
+          semanticColors.text[SECONDARY_ACTION].navigation.hover.$description ||
           'The background color of the navigation action when hovered.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.navigation[ALT_HOVER].$value,
+              rawTokens.semanticColors.dark.text[SECONDARY_ACTION].navigation
+                .hover.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.navigation[ALT_HOVER].$value,
+              rawTokens.semanticColors.light.text[SECONDARY_ACTION].navigation
+                .hover.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.navigation[ALT_HOVER].$value,
+              rawTokens.semanticColors.dark.text[SECONDARY_ACTION].navigation
+                .hover.$value,
             ).$value,
           },
         },
       },
       visited: {
         description:
-          semanticColors.text.navigation[ALT_VISITED].$description ||
+          semanticColors.text[SECONDARY_ACTION].navigation.visited
+            .$description ||
           'The background color of the navigation action when visited.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.navigation[ALT_VISITED].$value,
+              rawTokens.semanticColors.dark.text[SECONDARY_ACTION].navigation
+                .visited.$value,
             ).$value,
             _lightMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.light.text.navigation[ALT_VISITED]
-                .$value,
+              rawTokens.semanticColors.light.text[SECONDARY_ACTION].navigation
+                .visited.$value,
             ).$value,
             _darkMode: deepGetByPaths(
               colors,
-              rawTokens.semanticColors.dark.text.navigation[ALT_VISITED].$value,
+              rawTokens.semanticColors.dark.text[SECONDARY_ACTION].navigation
+                .visited.$value,
             ).$value,
           },
         },

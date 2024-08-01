@@ -140,11 +140,11 @@ describe('secondaryActionTokens', () => {
   test('should have a action.navigation.hover key', () => {
     expect(token.navigation.hover).toBeDefined()
     expect(formatToken(token.navigation.hover.value._cerberusTheme.base)).toBe(
-      '#B8F4F3',
+      '#72E9E7',
     )
     expect(
       formatToken(token.navigation.hover.value._cerberusTheme._darkMode),
-    ).toBe('#B8F4F3')
+    ).toBe('#72E9E7')
     expect(
       formatToken(token.navigation.hover.value._cerberusTheme._lightMode),
     ).toBe('#1F5B5A')
@@ -154,13 +154,13 @@ describe('secondaryActionTokens', () => {
     expect(token.navigation.visited).toBeDefined()
     expect(
       formatToken(token.navigation.visited.value._cerberusTheme.base),
-    ).toBe('#EEFDFC')
+    ).toBe('#3FB6B4')
     expect(
       formatToken(token.navigation.visited.value._cerberusTheme._darkMode),
-    ).toBe('#EEFDFC')
+    ).toBe('#3FB6B4')
     expect(
       formatToken(token.navigation.visited.value._cerberusTheme._lightMode),
-    ).toBe('#362A58')
+    ).toBe('#102D2D')
   })
 
   test('should have a action.text key', () => {
