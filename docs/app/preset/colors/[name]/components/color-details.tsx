@@ -138,7 +138,7 @@ export default function ColorDetails(props: ColorDetailsProps) {
         },
       },
     }
-  }, [propsToken, scope])
+  }, [propsToken, scope, splitToken])
 
   const userMode = mode === 'dark' ? '_darkMode' : '_lightMode'
   const tokenValue = token.value._cerberusTheme[userMode]
