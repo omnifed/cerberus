@@ -7,6 +7,7 @@
 
 export * from './components/Button'
 export * from './components/FieldMessage'
+export * from './components/FeatureFlag'
 export * from './components/IconButton'
 export * from './components/Input'
 export * from './components/Label'
@@ -25,6 +26,7 @@ export * from './components/Show'
 
 // context
 
+export * from './context/feature-flags'
 export * from './context/field'
 export * from './context/navMenu'
 export * from './context/tabs'
