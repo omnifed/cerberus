@@ -115,6 +115,13 @@
     "type": "route"
   },
   {
+    "id": "2:o",
+    "label": "Feature Flags",
+    "route": "/react/feature-flags",
+    "tag": "next",
+    "type": "route"
+  },
+  {
     "id": "3",
     "label": "Hooks",
     "type": "heading"
