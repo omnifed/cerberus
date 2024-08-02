@@ -108,6 +108,13 @@
     "type": "route"
   },
   {
+    "id": "2:n",
+    "label": "Portal",
+    "route": "/react/portal",
+    "tag": "next",
+    "type": "route"
+  },
+  {
     "id": "3",
     "label": "Hooks",
     "type": "heading"
