@@ -288,6 +288,9 @@ importers:
       '@types/react':
         specifier: ^18
         version: 18.3.1
+      '@types/react-dom':
+        specifier: ^18
+        version: 18.3.0
       react:
         specifier: ^18
         version: 18.3.1
@@ -296,7 +299,7 @@ importers:
         version: 18.3.1(react@18.3.1)
       tsup:
         specifier: ^8.1.0
-        version: 8.1.0(@microsoft/api-extractor@7.46.2(@types/node@20.14.11))(postcss@8.4.35)(typescript@5.4.5)
+        version: 8.1.0(@microsoft/api-extractor@7.46.2(@types/node@20.14.11))(postcss@8.4.38)(typescript@5.4.5)
 
   packages/styled-system:
     devDependencies:
@@ -1609,9 +1612,6 @@ packages:
 
   '@types/eslint@8.56.10':
     resolution: {integrity: sha512-Shavhk87gCtY2fhXDctcfS3e6FdxWkCx1iUZ9eEUbh7rTqlZT0/IzOkCOVt0fCjcFuZ9FPYfuezTBImfHCDBGQ==}
-
-  '@types/eslint@9.6.0':
-    resolution: {integrity: sha512-gi6WQJ7cHRgZxtkQEoyHMppPjq9Kxo5Tjn2prSKDSmZrCz8TZ3jSRCeTJm+WoM+oB0WG37bRqLzaaU3q7JypGg==}
 
   '@types/estree-jsx@1.0.5':
     resolution: {integrity: sha512-52CcUVNFyfb1A2ALocQw/Dd1BQFNmSdkuC3BkZ6iqhdMfQz7JWOFRuJFloOzjk+6WijU56m9oKXFAXc7o3Towg==}
@@ -6387,15 +6387,10 @@ snapshots:
 
   '@types/eslint-scope@3.7.7':
     dependencies:
-      '@types/eslint': 9.6.0
+      '@types/eslint': 8.56.10
       '@types/estree': 1.0.5
 
   '@types/eslint@8.56.10':
-    dependencies:
-      '@types/estree': 1.0.5
-      '@types/json-schema': 7.0.15
-
-  '@types/eslint@9.6.0':
     dependencies:
       '@types/estree': 1.0.5
       '@types/json-schema': 7.0.15
@@ -10448,7 +10443,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  tsup@8.1.0(@microsoft/api-extractor@7.46.2(@types/node@20.14.11))(postcss@8.4.35)(typescript@5.4.5):
+  tsup@8.1.0(@microsoft/api-extractor@7.46.2(@types/node@20.14.11))(postcss@8.4.38)(typescript@5.4.5):
     dependencies:
       bundle-require: 4.2.1(esbuild@0.21.5)
       cac: 6.7.14
@@ -10458,7 +10453,7 @@ snapshots:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
-      postcss-load-config: 4.0.2(postcss@8.4.35)
+      postcss-load-config: 4.0.2(postcss@8.4.38)
       resolve-from: 5.0.0
       rollup: 4.18.1
       source-map: 0.8.0-beta.0
@@ -10466,7 +10461,7 @@ snapshots:
       tree-kill: 1.2.2
     optionalDependencies:
       '@microsoft/api-extractor': 7.46.2(@types/node@20.14.11)
-      postcss: 8.4.35
+      postcss: 8.4.38
       typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
