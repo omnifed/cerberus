@@ -1,0 +1,71 @@
+---
+heading: 'Feature Flags'
+description: 'Feature Flags display or hide content in the UI.'
+a11y: 'utilities'
+npm: '@cerberus-design/react'
+source: 'components/FeatureFlag.tsx'
+recipe: ''
+---
+
+import {
+  WhenToUseAdmonition
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import FeatureFlagPreview from '@/app/react/feature-flags/components/feature-flags-preview'
+
+```ts
+import { FeatureFlags, FeatureFlag } from '@cerberus-design/react'
+```
+
+<WhenToUseAdmonition description="When you need render a component based on if it should be enabled or not." />
+
+## Usage
+
+<CodePreview preview={<FeatureFlagPreview />}>
+```tsx title="nav.tsx" {16-19}
+'use client'
+
+import { FeatureFlags, FeatureFlag } from '@cerberus-design/react'
+import { useMemo } from 'react'
+
+function FeatureFlagsPreview() {
+  const flags = useMemo(
+    () => ({
+      featureOne: true,
+      featureTwo: false,
+    }),
+    [],
+  )
+
+  return (
+    <FeatureFlags flags={flags}>
+      <FeatureFlag flag="featureOne">This is a visible feature</FeatureFlag>
+      <FeatureFlag flag="featureTwo">This is a hidden feature</FeatureFlag>
+    </FeatureFlags>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+```ts showLineNumbers=false
+export interface FeatureFlagsProviderValue {
+  flags: Record<string, boolean>
+}
+
+export interface FeatureFlagProps {
+  // A unique key of the flags data passed into the provider.
+  flag: string
+}
+
+define function FeatureFlag(props: PropsWithChildren<FeatureFlagProps>): JSX.Element
+```
+
+### Props
+
+The `FeatureFlag` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| flag | null    | A unique key of the flags data passed into the provider.            |
