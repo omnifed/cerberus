@@ -1,0 +1,107 @@
+---
+heading: 'Portal'
+description: 'Portal displays content in outside of the DOM hierarchy.'
+a11y: 'utilities'
+npm: '@cerberus-design/react'
+source: 'components/Portal.tsx'
+recipe: ''
+---
+
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import PortalPreview from '@/app/react/portal/components/portal-preview'
+
+```ts
+import { Portal } from '@cerberus-design/react'
+```
+
+<WhenToUseAdmonition description="When you need display a component outside of the parent it is contained within." />
+
+## Usage
+
+<CodePreview preview={<PortalPreview />}>
+```tsx title="nav.tsx" {23}
+'use client'
+
+import { Close } from '@cerberus-design/icons'
+import { Button, IconButton, Portal, Show } from '@cerberus-design/react'
+import { hstack } from '@cerberus/styled-system/patterns'
+import { useState } from 'react'
+
+function PortalPreview() {
+  const [showPortal, setShowPortal] = useState<boolean>(false)
+
+  function handleShowPortal() {
+    setShowPortal(true)
+  }
+
+  function handleClosePortal() {
+    setShowPortal(false)
+  }
+
+  return (
+    <>
+      <Button onClick={handleShowPortal}>Show Portal</Button>
+      <Show when={showPortal}>
+        <Portal>
+          <div
+            className={hstack({
+              backgroundColor: 'info.surface.initial',
+              color: 'info.text.initial',
+              justify: 'space-between',
+              left: 0,
+              mxi: '4',
+              p: '4',
+              position: 'absolute',
+              right: 0,
+              rounded: 'md',
+              shadow: 'md',
+              top: '4',
+              zIndex: 'toast',
+            })}
+          >
+            <p>
+              This is a portal element that is outside of the DOM hierarchy of
+              the parent component.
+            </p>
+
+            <IconButton
+              ariaLabel="Close Portal"
+              onClick={handleClosePortal}
+              tooltipPosition="bottom"
+            >
+              <Close />
+            </IconButton>
+          </div>
+        </Portal>
+      </Show>
+    </>
+  )
+}
+```
+</CodePreview>
+
+<WhenNotToUseAdmonition description="Portals should only be used for alert/dialog level components. Anything else should try to achieve this without the use of a portal." />
+
+## API
+
+```ts showLineNumbers=false
+export interface PortalProps {
+  container?: Element | DocumentFragment
+  key?: null | string
+}
+
+define function Portal(props: PropsWithChildren<PortalProps>): ReactPortal | null
+```
+
+### Props
+
+The `Portal` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| container     | `document.body`   | The mounted element to place the children contents within. |
+| key | null    | A unique key to attached to the Portal instance.            |
