@@ -1,0 +1,236 @@
+---
+npm: '@cerberus-design/react'
+source: 'context/confirm-modal.tsx'
+recipe: ''
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  NoteAdmonition,
+} from '@/app/components/Admonition'
+import {
+  BasicTagPreview,
+  OutlineTagPreview,
+  PillTagPreview,
+  SquareTagPreview,
+  WithIconTagPreview,
+  CustomTagPreview,
+  GradientTagPreview,
+} from '@/app/react/tags/components/tag-preview'
+import {
+  ClosableTagPreview,
+} from '@/app/react/tags/components/closable-tag-preview'
+
+```ts
+import { Tag } from '@cerberus-design/react'
+```
+
+## Usage
+
+You can mix and match all of the examples to create the tag style of your choosing.
+
+### Default
+
+<CodePreview preview={<BasicTagPreview />}>
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
+
+function BasicTagPreview() {
+  return <Tag>Filled</Tag>
+}
+```
+</CodePreview>
+
+### Filled
+
+<CodePreview preview={<BasicTagPreview />}>
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
+
+function BasicTagPreview() {
+  return <Tag usage="filled">Filled</Tag>
+}
+```
+</CodePreview>
+
+### Outlined
+
+<CodePreview preview={<OutlineTagPreview />}>
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
+
+function OutlinedTagPreview() {
+  return (
+    <Tag shape="square" usage="outlined">
+      Outlined
+    </Tag>
+  )
+}
+```
+</CodePreview>
+
+### Pill
+
+<CodePreview preview={<PillTagPreview />}>
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
+
+function PillTagPreview() {
+  return (
+    <Tag shape="pill">
+      <Checkmark />
+      Pill
+    </Tag>
+  )
+}
+```
+</CodePreview>
+
+### Square
+
+<CodePreview preview={<SquareTagPreview />}>
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
+
+function SquareTagPreview() {
+  return <Tag shape="square">Square</Tag>
+}
+```
+</CodePreview>
+
+### With Icon
+
+<CodePreview preview={<WithIconTagPreview />}>
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
+import { Information } from '@cerberus-design/icons'
+
+function WithIconTagPreview() {
+  return (
+    <Tag>
+      <Information />
+      With icon
+    </Tag>
+  )
+}
+```
+</CodePreview>
+
+### Closable
+
+To use a closable tag, just pass an `onClick` prop to the `Tag` component.
+
+<CodePreview preview={<ClosableTagPreview />}>
+```tsx title="tag.tsx" {11}
+'use client'
+
+import { Tag } from '@cerberus-design/react'
+import { useCallback } from 'react'
+
+function ClosableTagPreview() {
+  const handleClose = useCallback(() => {
+    console.log('Tag closed')
+  }, [])
+
+  return <Tag onClick={handleClose}>Closable</Tag>
+}
+```
+</CodePreview>
+
+## Gradient
+
+<CodePreview preview={<GradientTagPreview />}>
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
+import { hstack } from '@cerberus/styled-system'
+
+function GradientTagPreview() {
+  return (
+    <div className={hstack()}>
+      <Tag gradient="blue" shape="sqaure">
+        Blue
+      </Tag>
+      <Tag gradient="blue" shape="sqaure" usage="outlined">
+        Blue Outlined
+      </Tag>
+      <Tag gradient="green" shape="sqaure">
+        Green
+      </Tag>
+      <Tag gradient="green" shape="sqaure" usage="outlined">
+        Green Outlined
+      </Tag>
+      <Tag gradient="purple" shape="sqaure">
+        Purple
+      </Tag>
+      <Tag gradient="purple" shape="sqaure" usage="outlined">
+        Purple Outlined
+      </Tag>
+    </div>
+  )
+}
+```
+</CodePreview>
+
+## Customization
+
+You can customize the tag by utilizing the `cx` function.
+
+<CodePreview preview={<CustomTagPreview />}>
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus-design/react'
+import { css } from '@cerberus/styled-system/css'
+
+function CustomTagPreview() {
+  return (
+    <Tag
+      className={css({
+        bgColor: 'yellow',
+        color: 'black',
+        _hover: {
+          bgColor: 'black',
+          color: 'yellow',
+        },
+      })}
+    >
+      Wu-Tang Forever
+    </Tag>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+```ts showLineNumbers=false
+export interface StaticTagProps extends HTMLAttributes<HTMLSpanElement> {
+  gradient?: 'blue' | 'green' | 'purple'
+  palette?: 'page' | 'info' | 'success' | 'warning' | 'danger'
+  shape?: 'square' | 'pill'
+  usage?: 'filled' | 'outlined'
+  onClick?: never
+}
+export interface ClickableTagProps extends HTMLAttributes<HTMLSpanElement> {
+  gradient?: never
+  palette?: never
+  onClick: () => void
+  shape: 'pill'
+  usage: 'filled'
+}
+export type TagProps = StaticTagProps | ClickableTagProps
+
+define function Tag(props: PropsWithChildren<TagProps>): ReactNode
+````
+
+<NoteAdmonition description="Combining palette and gradient will yield to either only a palette or gradient Tag (i.e. they override each other)." />
+
+### Props
+
+The `Tag` component accepts the following props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| gradient | `undefined` | The gradient of the tag (overrides palette).           |
+| palette  | `page`   | The color palette of the tag (overrides gradient). |
+| usage    | `filled`    | The style treatment of the tag.    |
+| shape    | `square`    | The shape of the tag.              |
+| onClick  | `undefined` | How to create a Closable tag.         |

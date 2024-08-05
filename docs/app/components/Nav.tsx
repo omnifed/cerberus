@@ -84,10 +84,10 @@ export function Nav() {
         w: 'full',
         zIndex: 'sticky',
         _lightMode: {
-          bgColor: 'rgba(255, 255, 255, 0.5)',
+          bgColor: 'rgba(255, 255, 255, 0.3)',
         },
         _darkMode: {
-          bgColor: 'rgba(19, 0, 36, 0.3);',
+          bgColor: 'rgba(19, 0, 36, 0.3)',
         },
         md: {
           gridTemplateRows: '1fr',

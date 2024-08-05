@@ -102,20 +102,27 @@
   },
   {
     "id": "2:m",
+    "label": "Confirm Modal",
+    "route": "/react/confirm-modal",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:n",
     "label": "Show",
     "route": "/react/show",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:n",
+    "id": "2:o",
     "label": "Portal",
     "route": "/react/portal",
     "tag": "next",
     "type": "route"
   },
   {
-    "id": "2:o",
+    "id": "2:p",
     "label": "Feature Flags",
     "route": "/react/feature-flags",
     "tag": "next",
