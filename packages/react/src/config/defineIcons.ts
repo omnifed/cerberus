@@ -8,12 +8,15 @@ function _validateIconsProperties(icons: DefinedIcons) {
   }
 }
 
-export function defineIcons(icons: DefinedIcons): DefinedIcons {
+export function defineIcons(icons: DefinedIcons): Required<DefinedIcons> {
   _validateIconsProperties(icons)
-  $cerberusIcons = icons
+  $cerberusIcons = {
+    ...defaultIcons,
+    ...icons,
+  } as Required<DefinedIcons>
   return $cerberusIcons
 }
 
 // Default icons
 
-export let $cerberusIcons: DefinedIcons = defaultIcons
+export let $cerberusIcons = defaultIcons as Required<DefinedIcons>

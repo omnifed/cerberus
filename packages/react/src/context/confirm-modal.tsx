@@ -14,7 +14,7 @@ import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
 import { css } from '@cerberus-design/styled-system/css'
 import { circle, hstack, vstack } from '@cerberus-design/styled-system/patterns'
-import { Information } from '@cerberus/icons'
+import { $cerberusIcons } from '../config/defineIcons'
 
 /**
  * This module provides a context and hook for the confirm modal.
@@ -70,6 +70,7 @@ export function ConfirmModal(
   const dialogRef = useRef<HTMLDialogElement>(null)
   const resolveRef = useRef<ShowResult>(null)
   const [content, setContent] = useState<ShowConfirmModalOptions | null>(null)
+  const InfoIcon = $cerberusIcons.confirmModal
 
   const palette = useMemo(() => {
     if (content?.kind === 'destructive') {
@@ -148,7 +149,7 @@ export function ConfirmModal(
                 },
               })}
             >
-              <Information />
+              <InfoIcon />
             </div>
 
             <h2

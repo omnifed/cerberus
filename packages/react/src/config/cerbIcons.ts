@@ -8,7 +8,7 @@ import type { ElementType } from 'react'
 
 export interface DefinedIcons {
   confirmModal?: CarbonIconType | ElementType
-  invalid?: CarbonIconType | ElementType
+  invalid: CarbonIconType | ElementType
   toggleChecked?: CarbonIconType | ElementType
 }
 
