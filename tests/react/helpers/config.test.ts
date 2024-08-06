@@ -5,10 +5,12 @@ import {
   WarningAlt,
   CheckmarkFilled,
   Checkmark,
+  Information,
 } from '@cerberus-design/icons'
 
 describe('defineIcons', () => {
   const defaultIcons = {
+    confirmModal: Information,
     invalid: WarningFilled,
     toggleChecked: Checkmark,
   }
@@ -23,6 +25,7 @@ describe('defineIcons', () => {
 
   test('should define a custom set of icons', () => {
     const customIcons = defineIcons({
+      confirmModal: Information,
       invalid: WarningAlt,
       toggleChecked: CheckmarkFilled,
     })

@@ -12,6 +12,18 @@ describe('page', () => {
     expect(token).toBeDefined()
   })
 
+  test('should have a backdrop.initial property', () => {
+    expect(
+      formatToken(token.backdrop.initial.value._cerberusTheme.base),
+    ).toEqual('RGBA(19, 0, 36, 0.75)')
+    expect(
+      formatToken(token.backdrop.initial.value._cerberusTheme._darkMode),
+    ).toEqual('RGBA(19, 0, 36, 0.75)')
+    expect(
+      formatToken(token.backdrop.initial.value._cerberusTheme._lightMode),
+    ).toEqual('RGBA(188, 186, 202, 0.50)')
+  })
+
   test('should have a bg.initial property', () => {
     expect(formatToken(token.bg.initial.value._cerberusTheme.base)).toEqual(
       '#130024',

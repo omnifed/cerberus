@@ -22,6 +22,7 @@ export type Sentiment =
  * @readonly **required**
  */
 export type Usage =
+  | 'backdrop'
   | 'bg'
   | 'border'
   | 'navigation'

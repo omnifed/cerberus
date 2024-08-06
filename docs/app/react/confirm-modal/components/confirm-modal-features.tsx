@@ -21,6 +21,7 @@ export function ConfirmOverviewFeature() {
 
   const handleDestructiveClick = useCallback(async () => {
     const userConsent = await confirm.show({
+      kind: 'destructive',
       heading: 'Remove payment method?',
       description: 'This is a permanent action and cannot be undone.',
       actionText: 'Yes, delete',
@@ -42,8 +43,8 @@ export function ConfirmOverviewFeature() {
         </Button>
       </div>
 
-      <Show when={consent}>
-        <p>User consent: {consent}</p>
+      <Show when={consent !== null}>
+        <p>User consent: {JSON.stringify(consent)}</p>
       </Show>
     </>
   )
