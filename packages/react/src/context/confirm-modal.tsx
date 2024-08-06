@@ -12,9 +12,10 @@ import {
 } from 'react'
 import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
-import { css } from '@cerberus-design/styled-system/css'
+import { cx } from '@cerberus-design/styled-system/css'
 import { circle, hstack, vstack } from '@cerberus-design/styled-system/patterns'
 import { $cerberusIcons } from '../config/defineIcons'
+import { confirmModal } from '@cerberus-design/styled-system/recipes'
 
 /**
  * This module provides a context and hook for the confirm modal.
@@ -78,6 +79,7 @@ export function ConfirmModal(
     }
     return 'action'
   }, [content])
+  const styles = confirmModal({ palette })
 
   const handleChoice = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     const target = e.currentTarget as HTMLButtonElement
@@ -108,25 +110,7 @@ export function ConfirmModal(
       {props.children}
 
       <Portal>
-        <dialog
-          className={css({
-            alignSelf: 'safe center',
-            bgColor: 'page.surface.100',
-            mxi: 'auto',
-            p: '8',
-            rounded: 'md',
-            shadow: 'lg',
-            _backdrop: {
-              bgColor: 'page.backdrop.initial',
-              backdropFilter: 'blur(2px)',
-              backdropBlur: 'sm',
-            },
-            md: {
-              w: '35.25rem',
-            },
-          })}
-          ref={dialogRef}
-        >
+        <dialog className={styles.dialog} ref={dialogRef}>
           <div
             className={vstack({
               alignItems: 'flex-start',
@@ -134,39 +118,12 @@ export function ConfirmModal(
               mb: '8',
             })}
           >
-            <div
-              data-palette={palette}
-              className={circle({
-                mxi: 'auto',
-                p: '2',
-                _actionPalette: {
-                  cerbGradient: 'purple',
-                  color: 'action.navigation.initial',
-                },
-                _dangerPalette: {
-                  bgColor: 'danger.surface.initial',
-                  color: 'danger.text.100',
-                },
-              })}
-            >
+            <div className={cx(circle(), styles.icon)}>
               <InfoIcon />
             </div>
 
-            <h2
-              className={css({
-                color: 'page.text.initial',
-                textStyle: 'h4',
-              })}
-            >
-              {content?.heading}
-            </h2>
-            <p
-              className={css({
-                color: 'page.text.initial',
-              })}
-            >
-              {content?.description}
-            </p>
+            <h2 className={styles.heading}>{content?.heading}</h2>
+            <p className={styles.description}>{content?.description}</p>
           </div>
 
           <div
