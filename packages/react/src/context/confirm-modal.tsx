@@ -15,7 +15,12 @@ import { Button } from '../components/Button'
 import { cx } from '@cerberus-design/styled-system/css'
 import { circle, hstack, vstack } from '@cerberus-design/styled-system/patterns'
 import { $cerberusIcons } from '../config/defineIcons'
-import { confirmModal } from '@cerberus-design/styled-system/recipes'
+import {
+  confirmModal,
+  type ConfirmModalVariantProps,
+} from '@cerberus-design/styled-system/recipes'
+import { trapFocus } from '../aria-helpers/trap-focus.aria'
+import { Show } from '../components/Show'
 
 /**
  * This module provides a context and hook for the confirm modal.
@@ -66,19 +71,17 @@ export interface ConfirmModalProviderProps {}
  * ```
  */
 export function ConfirmModal(
-  props: PropsWithChildren<Record<string, unknown>>,
+  props: PropsWithChildren<ConfirmModalProviderProps>,
 ) {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const resolveRef = useRef<ShowResult>(null)
   const [content, setContent] = useState<ShowConfirmModalOptions | null>(null)
-  const InfoIcon = $cerberusIcons.confirmModal
+  const focusTrap = trapFocus(dialogRef)
 
-  const palette = useMemo(() => {
-    if (content?.kind === 'destructive') {
-      return 'danger'
-    }
-    return 'action'
-  }, [content])
+  const palette = useMemo(
+    () => (content?.kind === 'destructive' ? 'danger' : 'action'),
+    [content],
+  )
   const styles = confirmModal({ palette })
 
   const handleChoice = useCallback((e: MouseEvent<HTMLButtonElement>) => {
@@ -110,7 +113,7 @@ export function ConfirmModal(
       {props.children}
 
       <Portal>
-        <dialog className={styles.dialog} ref={dialogRef}>
+        <dialog className={styles.dialog} onKeyDown={focusTrap} ref={dialogRef}>
           <div
             className={vstack({
               alignItems: 'flex-start',
@@ -118,10 +121,7 @@ export function ConfirmModal(
               mb: '8',
             })}
           >
-            <div className={cx(circle(), styles.icon)}>
-              <InfoIcon />
-            </div>
-
+            <ConfirmModalIcon palette={palette} />
             <h2 className={styles.heading}>{content?.heading}</h2>
             <p className={styles.description}>{content?.description}</p>
           </div>
@@ -147,6 +147,38 @@ export function ConfirmModal(
         </dialog>
       </Portal>
     </ConfirmModalContext.Provider>
+  )
+}
+
+// This is to help show the variant styles for the icon since Panda is
+// not syncing correctly for the danger variant.
+function ConfirmModalIcon(props: ConfirmModalVariantProps) {
+  const InfoIcon = $cerberusIcons.confirmModal
+  return (
+    <Show
+      when={props.palette === 'danger'}
+      fallback={
+        <div className={cx(confirmModal().icon, circle())}>
+          <InfoIcon />
+        </div>
+      }
+    >
+      <div
+        className={cx(
+          confirmModal({
+            palette: 'danger',
+          }).icon,
+          circle({
+            bgColor: 'danger.surface.initial',
+          }),
+        )}
+        style={{
+          color: 'var(--cerberus-colors-danger-text-100)',
+        }}
+      >
+        <InfoIcon />
+      </div>
+    </Show>
   )
 }
 

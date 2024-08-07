@@ -15,11 +15,13 @@ export const confirmModal: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'confirm-modal',
   description: 'The styles for the Confirm Modal component',
   slots: ['dialog', 'icon', 'heading', 'description', 'confirm', 'cancel'],
+  jsx: ['ConfirmModal', 'ConfirmModalIcon'],
 
   base: {
     dialog: {
       ...modalBase,
       p: '8',
+      userSelect: 'none',
       md: {
         w: '35.25rem',
       },

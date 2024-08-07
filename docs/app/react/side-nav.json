@@ -34,14 +34,14 @@
     "id": "2:c",
     "label": "Label",
     "route": "/react/label",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
     "id": "2:d",
     "label": "Input",
     "route": "/react/input",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
@@ -62,7 +62,7 @@
     "id": "2:g",
     "label": "Radio",
     "route": "/react/radio",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
@@ -76,7 +76,7 @@
     "id": "2:i",
     "label": "Tag",
     "route": "/react/tags",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
@@ -90,7 +90,7 @@
     "id": "2:k",
     "label": "Toggle",
     "route": "/react/toggle",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
@@ -151,7 +151,7 @@
     "id": "3:c",
     "label": "useToggle",
     "route": "/react/use-toggle",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   }
 ]
