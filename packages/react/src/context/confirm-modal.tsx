@@ -12,7 +12,7 @@ import {
 } from 'react'
 import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
-import { cx } from '@cerberus-design/styled-system/css'
+import { css, cx } from '@cerberus-design/styled-system/css'
 import { circle, hstack, vstack } from '@cerberus-design/styled-system/patterns'
 import { $cerberusIcons } from '../config/defineIcons'
 import {
@@ -134,6 +134,9 @@ export function ConfirmModal(
           >
             <Button
               autoFocus
+              className={css({
+                w: '1/2',
+              })}
               name="confirm"
               onClick={handleChoice}
               palette={palette}
@@ -142,6 +145,9 @@ export function ConfirmModal(
               {content?.actionText}
             </Button>
             <Button
+              className={css({
+                w: '1/2',
+              })}
               name="cancel"
               onClick={handleChoice}
               usage="outlined"

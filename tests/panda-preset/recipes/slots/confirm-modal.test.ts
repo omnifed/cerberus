@@ -20,6 +20,16 @@ describe('confirm-modal recipe', () => {
         backdropFilter: 'blur(2px)',
         backdropBlur: 'sm',
       },
+      _motionSafe: {
+        animationName: 'fadeInDown',
+        animationDuration: '250ms',
+        animationTimingFunction: 'ease-in',
+        animationFillMode: 'forwards',
+      },
+      _reduceMotion: {
+        opacity: '1',
+      },
+      opacity: '0',
       p: '8',
       md: {
         w: '35.25rem',

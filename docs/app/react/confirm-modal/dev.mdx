@@ -9,163 +9,81 @@ import {
   NoteAdmonition,
 } from '@/app/components/Admonition'
 import {
-  BasicTagPreview,
-  OutlineTagPreview,
-  PillTagPreview,
-  SquareTagPreview,
-  WithIconTagPreview,
-  CustomTagPreview,
-  GradientTagPreview,
-} from '@/app/react/tags/components/tag-preview'
-import {
-  ClosableTagPreview,
-} from '@/app/react/tags/components/closable-tag-preview'
+  NonDestructivePreview,
+  DestructivePreview,
+} from '@/app/react/confirm-modal/components/confirm-modal-preview'
 
 ```ts
-import { Tag } from '@cerberus-design/react'
+import { ConfirmModal, useConfirmModal } from '@cerberus-design/react'
 ```
 
 ## Usage
 
-You can mix and match all of the examples to create the tag style of your choosing.
+### Non-destructive
 
-### Default
+<CodePreview preview={<NonDestructivePreview />}>
+```tsx title="some-page.tsx"
+import { ConfirmModal, useConfirmModal } from '@cerberus-design/react'
 
-<CodePreview preview={<BasicTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
+function SomeFeature() {
+  const confirm = useConfirmModal()
 
-function BasicTagPreview() {
-  return <Tag>Filled</Tag>
-}
-```
-</CodePreview>
-
-### Filled
-
-<CodePreview preview={<BasicTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
-
-function BasicTagPreview() {
-  return <Tag usage="filled">Filled</Tag>
-}
-```
-</CodePreview>
-
-### Outlined
-
-<CodePreview preview={<OutlineTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
-
-function OutlinedTagPreview() {
-  return (
-    <Tag shape="square" usage="outlined">
-      Outlined
-    </Tag>
-  )
-}
-```
-</CodePreview>
-
-### Pill
-
-<CodePreview preview={<PillTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
-
-function PillTagPreview() {
-  return (
-    <Tag shape="pill">
-      <Checkmark />
-      Pill
-    </Tag>
-  )
-}
-```
-</CodePreview>
-
-### Square
-
-<CodePreview preview={<SquareTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
-
-function SquareTagPreview() {
-  return <Tag shape="square">Square</Tag>
-}
-```
-</CodePreview>
-
-### With Icon
-
-<CodePreview preview={<WithIconTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
-import { Information } from '@cerberus-design/icons'
-
-function WithIconTagPreview() {
-  return (
-    <Tag>
-      <Information />
-      With icon
-    </Tag>
-  )
-}
-```
-</CodePreview>
-
-### Closable
-
-To use a closable tag, just pass an `onClick` prop to the `Tag` component.
-
-<CodePreview preview={<ClosableTagPreview />}>
-```tsx title="tag.tsx" {11}
-'use client'
-
-import { Tag } from '@cerberus-design/react'
-import { useCallback } from 'react'
-
-function ClosableTagPreview() {
-  const handleClose = useCallback(() => {
-    console.log('Tag closed')
+  const handleConfirm = useCallback(async () => {
+    const consent = await confirm.show({
+      heading: 'Add new payment method?',
+      description:
+        'This will add a new payment method to your account to be billed for future purchases.',
+      actionText: 'Yes, add payment method',
+      cancelText: 'No, cancel',
+    })
+    // do something with consent
   }, [])
 
-  return <Tag onClick={handleClose}>Closable</Tag>
+  return (
+    <Button onClick={handleConfirm}>Confirm</Button>
+  )
+}
+
+function SomePage() {
+  return(
+    <ConfirmModal>
+      <SomeFeature />
+    </ConfirmModal>
+  )
 }
 ```
 </CodePreview>
 
-## Gradient
+### Destructive
 
-<CodePreview preview={<GradientTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
-import { hstack } from '@cerberus/styled-system'
+<CodePreview preview={<DestructivePreview />}>
+```tsx title="some-page.tsx" {8}
+import { ConfirmModal, useConfirmModal } from '@cerberus-design/react'
 
-function GradientTagPreview() {
+function SomeFeature() {
+  const confirm = useConfirmModal()
+
+  const handleConfirm = useCallback(async () => {
+    const consent = await confirm.show({
+      kind: 'destructive',
+      heading: 'Remove payment method?',
+      description: 'This is a permanent action and cannot be undone.',
+      actionText: 'Yes, delete',
+      cancelText: 'No, cancel',
+    })
+    // do something with consent
+  }, [])
+
   return (
-    <div className={hstack()}>
-      <Tag gradient="blue" shape="sqaure">
-        Blue
-      </Tag>
-      <Tag gradient="blue" shape="sqaure" usage="outlined">
-        Blue Outlined
-      </Tag>
-      <Tag gradient="green" shape="sqaure">
-        Green
-      </Tag>
-      <Tag gradient="green" shape="sqaure" usage="outlined">
-        Green Outlined
-      </Tag>
-      <Tag gradient="purple" shape="sqaure">
-        Purple
-      </Tag>
-      <Tag gradient="purple" shape="sqaure" usage="outlined">
-        Purple Outlined
-      </Tag>
-    </div>
+    <Button palette="danger" onClick={handleConfirm}>Delete card</Button>
+  )
+}
+
+function SomePage() {
+  return(
+    <ConfirmModal>
+      <SomeFeature />
+    </ConfirmModal>
   )
 }
 ```
@@ -173,64 +91,26 @@ function GradientTagPreview() {
 
 ## Customization
 
-You can customize the tag by utilizing the `cx` function.
-
-<CodePreview preview={<CustomTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
-
-function CustomTagPreview() {
-  return (
-    <Tag
-      className={css({
-        bgColor: 'yellow',
-        color: 'black',
-        _hover: {
-          bgColor: 'black',
-          color: 'yellow',
-        },
-      })}
-    >
-      Wu-Tang Forever
-    </Tag>
-  )
-}
-```
-</CodePreview>
+For customizing the Confirm Modal, we recommend extending the `confirmModal` slot recipe provided by the `@cerberus/panda-preset` package in your config.
 
 ## API
 
 ```ts showLineNumbers=false
-export interface StaticTagProps extends HTMLAttributes<HTMLSpanElement> {
-  gradient?: 'blue' | 'green' | 'purple'
-  palette?: 'page' | 'info' | 'success' | 'warning' | 'danger'
-  shape?: 'square' | 'pill'
-  usage?: 'filled' | 'outlined'
-  onClick?: never
+export interface ConfirmModalProviderValue {
+  show: (options: ConfirmModalOptions) => Promise<boolean>
 }
-export interface ClickableTagProps extends HTMLAttributes<HTMLSpanElement> {
-  gradient?: never
-  palette?: never
-  onClick: () => void
-  shape: 'pill'
-  usage: 'filled'
-}
-export type TagProps = StaticTagProps | ClickableTagProps
 
-define function Tag(props: PropsWithChildren<TagProps>): ReactNode
+define function ConfirmModal(props: PropsWithChildren<{}>): ReactNode
 ````
 
-<NoteAdmonition description="Combining palette and gradient will yield to either only a palette or gradient Tag (i.e. they override each other)." />
+### Show Method Options
 
-### Props
-
-The `Tag` component accepts the following props:
+The `show` method accepts the following options:
 
 | Name     | Default | Description                            |
 | -------- | ------- | -------------------------------------- |
-| gradient | `undefined` | The gradient of the tag (overrides palette).           |
-| palette  | `page`   | The color palette of the tag (overrides gradient). |
-| usage    | `filled`    | The style treatment of the tag.    |
-| shape    | `square`    | The shape of the tag.              |
-| onClick  | `undefined` | How to create a Closable tag.         |
+| kind | `non-destructive` | The variant used to theme the modal.           |
+| heading | `''` | The heading of the modal. |
+| description | `''` | The description of the modal. |
+| actionText | `''` | The text for the action button. |
+| cancelText | `''` | The text for the cancel button. |
