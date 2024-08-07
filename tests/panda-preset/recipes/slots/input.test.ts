@@ -21,6 +21,7 @@ describe('input recipe', () => {
     expect(input.base?.input).toMatchObject({
       border: '1px solid',
       borderColor: 'action.border.initial',
+      color: 'page.text.initial',
       h: 'full',
       pxi: '4',
       rounded: 'md',

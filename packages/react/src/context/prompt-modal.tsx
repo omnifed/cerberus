@@ -7,6 +7,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type ChangeEvent,
   type MouseEvent,
   type PropsWithChildren,
 } from 'react'
@@ -21,62 +22,74 @@ import {
 } from '@cerberus-design/styled-system/recipes'
 import { trapFocus } from '../aria-helpers/trap-focus.aria'
 import { Show } from '../components/Show'
+import { Input } from '../components/Input'
+import { Field } from './field'
+import { Label } from '../components/Label'
 
 /**
- * This module provides a context and hook for the confirm modal.
+ * This module provides a context and hook for the prompt modal.
  * @module
  */
 
-export interface ShowConfirmModalOptions {
+export interface ShowPromptModalOptions {
   kind?: 'destructive' | 'non-destructive'
   heading: string
   description?: string
+  key: string
   actionText: string
   cancelText: string
 }
-export type ShowResult =
-  | ((value: boolean | PromiseLike<boolean>) => void)
+export type PromptShowResult =
+  | ((value: string | PromiseLike<string>) => void)
   | null
 
-export interface ConfirmModalValue {
-  show: (options: ShowConfirmModalOptions) => Promise<boolean>
+export interface PromptModalValue {
+  show: (options: ShowPromptModalOptions) => Promise<string>
 }
 
-const ConfirmModalContext = createContext<ConfirmModalValue | null>(null)
+const PromptModalContext = createContext<PromptModalValue | null>(null)
 
-export interface ConfirmModalProviderProps {}
+export interface PromptModalProviderProps {}
 
 /**
- * Provides a confirm modal to the app.
+ * Provides a prompt modal to the app.
  * @example
  * ```tsx
  * // Wrap the Provider around the root of the feature.
- * <ConfirmModal>
+ * <PromptModal>
  *   <SomeFeatureSection />
- * </ConfirmModal>
+ * </PromptModal>
  *
- * // Use the hook to show the confirm modal.
- * const confirm = useConfirmModal()
+ * // Use the hook to show the prompt modal.
+ * const prompt = usePromptModal()
  *
  * const handleClick = useCallback(async () => {
- *  const userConsent = await confirm.show({
- *   heading: 'Add new payment method?',
+ *  const accepted = await prompt.show({
+ *   kind: 'destructive',
+ *   heading: 'Delete channel?',
  *  description:
- *   'This will add a new payment method to your account to be billed for future purchases.',
- * actionText: 'Yes, add payment method',
+ *   'This will permanently delete a channel on your account. There is no going back.',
+ * key: CHANNEL_NAME,
+ * actionText: 'Yes, delete channel',
  * cancelText: 'No, cancel',
  * })
- * setConsent(userConsent)
- * }, [confirm])
+ * // do something with accepted
+ * }, [prompt])
  * ```
  */
-export function ConfirmModal(
-  props: PropsWithChildren<ConfirmModalProviderProps>,
+export function PromptModal(
+  props: PropsWithChildren<PromptModalProviderProps>,
 ) {
   const dialogRef = useRef<HTMLDialogElement>(null)
-  const resolveRef = useRef<ShowResult>(null)
-  const [content, setContent] = useState<ShowConfirmModalOptions | null>(null)
+  const resolveRef = useRef<PromptShowResult>(null)
+  const [content, setContent] = useState<ShowPromptModalOptions | null>(null)
+  const [inputValue, setInputValue] = useState<string>('')
   const focusTrap = trapFocus(dialogRef)
+
+  const isValid = useMemo(
+    () => inputValue === content?.key,
+    [inputValue, content],
+  )
 
   const palette = useMemo(
     () => (content?.kind === 'destructive' ? 'danger' : 'action'),
@@ -84,17 +97,26 @@ export function ConfirmModal(
   )
   const styles = confirmModal({ palette })
 
-  const handleChoice = useCallback((e: MouseEvent<HTMLButtonElement>) => {
-    const target = e.currentTarget as HTMLButtonElement
-    if (target.value === 'true') {
-      resolveRef.current?.(true)
-    }
-    resolveRef.current?.(false)
-    dialogRef?.current?.close()
-  }, [])
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setInputValue(e.currentTarget.value)
+    },
+    [content],
+  )
 
-  const handleShow = useCallback((options: ShowConfirmModalOptions) => {
-    return new Promise<boolean>((resolve) => {
+  const handleChoice = useCallback(
+    (e: MouseEvent<HTMLButtonElement>) => {
+      const target = e.currentTarget as HTMLButtonElement
+      if (target.value === 'true') {
+        resolveRef.current?.(inputValue)
+      }
+      dialogRef?.current?.close()
+    },
+    [inputValue],
+  )
+
+  const handleShow = useCallback((options: ShowPromptModalOptions) => {
+    return new Promise<string>((resolve) => {
       setContent({ ...options, kind: options.kind || 'non-destructive' })
       dialogRef?.current?.showModal()
       resolveRef.current = resolve
@@ -109,7 +131,7 @@ export function ConfirmModal(
   )
 
   return (
-    <ConfirmModalContext.Provider value={value}>
+    <PromptModalContext.Provider value={value}>
       {props.children}
 
       <Portal>
@@ -118,12 +140,34 @@ export function ConfirmModal(
             className={vstack({
               alignItems: 'flex-start',
               gap: '4',
-              mb: '8',
             })}
           >
             <ConfirmModalIcon palette={palette} />
             <h2 className={styles.heading}>{content?.heading}</h2>
             <p className={styles.description}>{content?.description}</p>
+          </div>
+
+          <div
+            className={vstack({
+              alignItems: 'flex-start',
+              mt: '4',
+              mb: '8',
+            })}
+          >
+            <Field invalid={!isValid}>
+              <Label htmlFor="confirm" size="md">
+                Type
+                <strong
+                  className={css({
+                    textTransform: 'uppercase',
+                  })}
+                >
+                  {content?.key}
+                </strong>
+                to confirm
+              </Label>
+              <Input id="confirm" onChange={handleChange} type="text" />
+            </Field>
           </div>
 
           <div
@@ -137,6 +181,7 @@ export function ConfirmModal(
               className={css({
                 w: '1/2',
               })}
+              disabled={!isValid}
               name="confirm"
               onClick={handleChoice}
               palette={palette}
@@ -158,7 +203,7 @@ export function ConfirmModal(
           </div>
         </dialog>
       </Portal>
-    </ConfirmModalContext.Provider>
+    </PromptModalContext.Provider>
   )
 }
 
@@ -194,12 +239,10 @@ function ConfirmModalIcon(props: ConfirmModalVariantProps) {
   )
 }
 
-export function useConfirmModal(): ConfirmModalValue {
-  const context = useContext(ConfirmModalContext)
+export function usePromptModal(): PromptModalValue {
+  const context = useContext(PromptModalContext)
   if (context === null) {
-    throw new Error(
-      'useConfirmModal must be used within a ConfirmModal Provider',
-    )
+    throw new Error('usePromptModal must be used within a PromptModal Provider')
   }
   return context
 }
