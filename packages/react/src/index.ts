@@ -42,6 +42,7 @@ export * from './hooks/useToggle'
 
 export * from './aria-helpers/nav-menu.aria'
 export * from './aria-helpers/tabs.aria'
+export * from './aria-helpers/trap-focus.aria'
 
 // utils
 

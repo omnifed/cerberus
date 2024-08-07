@@ -134,13 +134,19 @@ export function ConfirmModal(
           >
             <Button
               autoFocus
+              name="confirm"
               onClick={handleChoice}
               palette={palette}
               value="true"
             >
               {content?.actionText}
             </Button>
-            <Button onClick={handleChoice} usage="outlined" value="false">
+            <Button
+              name="cancel"
+              onClick={handleChoice}
+              usage="outlined"
+              value="false"
+            >
               {content?.cancelText}
             </Button>
           </div>
