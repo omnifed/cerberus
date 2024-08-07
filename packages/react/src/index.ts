@@ -26,6 +26,7 @@ export * from './components/Show'
 
 // context
 
+export * from './context/confirm-modal'
 export * from './context/feature-flags'
 export * from './context/field'
 export * from './context/navMenu'
@@ -41,6 +42,7 @@ export * from './hooks/useToggle'
 
 export * from './aria-helpers/nav-menu.aria'
 export * from './aria-helpers/tabs.aria'
+export * from './aria-helpers/trap-focus.aria'
 
 // utils
 

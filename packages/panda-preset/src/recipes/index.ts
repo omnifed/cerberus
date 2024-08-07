@@ -4,6 +4,7 @@ import { iconButton } from './iconButton'
 import { label } from './label'
 import { tag } from './tag'
 
+import { confirmModal } from './slots/confirm-modal'
 import { input } from './slots/input'
 import { radio } from './slots/radio'
 import { tabs } from './slots/tabs'
@@ -23,6 +24,7 @@ export const recipes = {
 }
 
 export const slotRecipes = {
+  confirmModal,
   input,
   radio,
   tabs,

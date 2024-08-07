@@ -29,14 +29,14 @@ export interface FeatureFlagProviderProps {
  * }
  *
  * // Wrap the Provider around the root of your application.
- * <FeatureFlagProvider flags={flags}>
+ * <FeatureFlags flags={flags}>
  *    <FeatureFlag flag="featureOne">
  *      This is visible.
  *    </FeatureFlag>
  *   <FeatureFlag flag="featureTwo">
  *     This is hidden.
  *   </FeatureFlag>
- * </FeatureFlagProvider>
+ * </FeatureFlags>
  * ```
  */
 export function FeatureFlags(

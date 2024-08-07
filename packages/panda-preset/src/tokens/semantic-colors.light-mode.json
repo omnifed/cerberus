@@ -1309,6 +1309,22 @@
       }
     }
   },
+  "backdrop": {
+    "page": {
+      "initial": {
+        "$type": "color",
+        "$value": "#bcbaca80",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    }
+  },
   "drop-shadow": {
     "sm": {
       "$type": "color",

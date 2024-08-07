@@ -30,6 +30,7 @@ export default function RootLayout(props: PropsWithChildren<RootProps>) {
           poppins.className,
           css({
             minW: '18.75rem',
+            h: 'full',
           }),
         )}
       >

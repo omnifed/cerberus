@@ -10,10 +10,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/icons": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/styled-system": "workspace:*",
-    "@cerberus-design/configs": "workspace:*",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
@@ -26,8 +26,8 @@
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.3",
-    "@pandacss/dev": "^0.40.1",
-    "@pandacss/preset-panda": "^0.40.0",
+    "@pandacss/dev": "^0.45.0",
+    "@pandacss/preset-panda": "^0.45.0",
     "@shikijs/rehype": "^1.5.1",
     "@shikijs/transformers": "^1.5.1",
     "@shikijs/twoslash": "^1.5.1",

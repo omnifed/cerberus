@@ -8,6 +8,18 @@ describe('keyframes', () => {
     expect(keyframes.fadeIn['100%']).toEqual({ opacity: '1' })
   })
 
+  test('should export fadeInDown', () => {
+    expect(keyframes.fadeInDown).toBeDefined()
+    expect(keyframes.fadeInDown['0%']).toEqual({
+      opacity: '0',
+      transform: 'translateY(-20px)',
+    })
+    expect(keyframes.fadeInDown['100%']).toEqual({
+      opacity: '1',
+      transform: 'translateY(0)',
+    })
+  })
+
   test('should export zoomIn', () => {
     expect(keyframes.zoomIn).toBeDefined()
     expect(keyframes.zoomIn['0%']).toEqual({

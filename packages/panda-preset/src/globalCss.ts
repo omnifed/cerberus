@@ -128,7 +128,6 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
       paddingTop: '0',
       position: 'relative',
     },
-
     _scrollbar: {
       width: '0.5em',
     },

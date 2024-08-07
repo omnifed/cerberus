@@ -21,6 +21,8 @@ import UsageExample from './usage-example'
 
 function getFigmaProperty(selector: Usage): string {
   switch (selector) {
+    case 'backdrop':
+      return 'backdrop'
     case 'bg':
       return 'background'
     case 'text':

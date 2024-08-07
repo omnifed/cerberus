@@ -29,6 +29,8 @@ import { recipes, slotRecipes } from './recipes'
  **/
 
 export const cerberusPreset: Preset = definePreset({
+  name: 'cerberus',
+
   globalCss,
   conditions,
   utilities,
