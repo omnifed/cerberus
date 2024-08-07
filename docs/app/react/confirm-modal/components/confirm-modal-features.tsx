@@ -4,6 +4,8 @@ import { Button, Show, useConfirmModal } from '@cerberus-design/react'
 import { hstack } from '@cerberus/styled-system/patterns'
 import { useCallback, useState } from 'react'
 
+const NOPE = 'No, cancel'
+
 export function NonDestructiveFeature() {
   const confirm = useConfirmModal()
   const [consent, setConsent] = useState<boolean | null>(null)
@@ -14,7 +16,7 @@ export function NonDestructiveFeature() {
       description:
         'This will add a new payment method to your account to be billed for future purchases.',
       actionText: 'Yes, add payment method',
-      cancelText: 'No, cancel',
+      cancelText: NOPE,
     })
     setConsent(userConsent)
   }, [confirm])
@@ -46,7 +48,7 @@ export function DestructiveFeature() {
       heading: 'Remove payment method?',
       description: 'This is a permanent action and cannot be undone.',
       actionText: 'Yes, delete',
-      cancelText: 'No, cancel',
+      cancelText: NOPE,
     })
     setConsent(userConsent)
   }, [confirm])
@@ -80,7 +82,7 @@ export function ConfirmOverviewFeature() {
       description:
         'This will add a new payment method to your account to be billed for future purchases.',
       actionText: 'Yes, add payment method',
-      cancelText: 'No, cancel',
+      cancelText: NOPE,
     })
     setConsent(userConsent)
   }, [confirm])
@@ -91,7 +93,7 @@ export function ConfirmOverviewFeature() {
       heading: 'Remove payment method?',
       description: 'This is a permanent action and cannot be undone.',
       actionText: 'Yes, delete',
-      cancelText: 'No, cancel',
+      cancelText: NOPE,
     })
     setConsent(userConsent)
   }, [confirm])
