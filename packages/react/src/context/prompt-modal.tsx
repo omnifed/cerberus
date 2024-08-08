@@ -13,18 +13,14 @@ import {
 } from 'react'
 import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
-import { css, cx } from '@cerberus-design/styled-system/css'
-import { circle, hstack, vstack } from '@cerberus-design/styled-system/patterns'
-import { $cerberusIcons } from '../config/defineIcons'
-import {
-  confirmModal,
-  type ConfirmModalVariantProps,
-} from '@cerberus-design/styled-system/recipes'
+import { css } from '@cerberus-design/styled-system/css'
+import { hstack, vstack } from '@cerberus-design/styled-system/patterns'
+import { confirmModal } from '@cerberus-design/styled-system/recipes'
 import { trapFocus } from '../aria-helpers/trap-focus.aria'
-import { Show } from '../components/Show'
 import { Input } from '../components/Input'
 import { Field } from './field'
 import { Label } from '../components/Label'
+import { ConfirmModalIcon } from './confirm-modal'
 
 /**
  * This module provides a context and hook for the prompt modal.
@@ -209,38 +205,6 @@ export function PromptModal(
         </dialog>
       </Portal>
     </PromptModalContext.Provider>
-  )
-}
-
-// This is to help show the variant styles for the icon since Panda is
-// not syncing correctly for the danger variant.
-function ConfirmModalIcon(props: ConfirmModalVariantProps) {
-  const InfoIcon = $cerberusIcons.confirmModal
-  return (
-    <Show
-      when={props.palette === 'danger'}
-      fallback={
-        <div className={cx(confirmModal().icon, circle())}>
-          <InfoIcon size={24} />
-        </div>
-      }
-    >
-      <div
-        className={cx(
-          confirmModal({
-            palette: 'danger',
-          }).icon,
-          circle({
-            bgColor: 'danger.surface.initial',
-          }),
-        )}
-        style={{
-          color: 'var(--cerberus-colors-danger-text-100)',
-        }}
-      >
-        <InfoIcon size={24} />
-      </div>
-    </Show>
   )
 }
 
