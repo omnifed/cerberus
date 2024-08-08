@@ -21,6 +21,11 @@ export const modalBase = {
   },
 }
 
+export const modalIconBase = {
+  mxi: 'auto',
+  p: '2',
+}
+
 export const modalHeading = {
   color: 'page.text.initial',
   textStyle: 'h4',

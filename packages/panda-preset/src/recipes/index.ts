@@ -2,10 +2,11 @@ import { button } from './button'
 import { fieldMessage } from './fieldMessage'
 import { iconButton } from './iconButton'
 import { label } from './label'
+import { modalIcon } from './modalIcon'
 import { tag } from './tag'
 
-import { confirmModal } from './slots/confirm-modal'
 import { input } from './slots/input'
+import { modal } from './slots/modal'
 import { radio } from './slots/radio'
 import { tabs } from './slots/tabs'
 import { toggle } from './slots/toggle'
@@ -20,12 +21,13 @@ export const recipes = {
   fieldMessage,
   iconButton,
   label,
+  modalIcon,
   tag,
 }
 
 export const slotRecipes = {
-  confirmModal,
   input,
+  modal,
   radio,
   tabs,
   toggle,

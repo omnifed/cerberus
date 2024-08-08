@@ -12,14 +12,12 @@ import {
 } from 'react'
 import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
-import { css, cx } from '@cerberus-design/styled-system/css'
-import { circle, hstack, vstack } from '@cerberus-design/styled-system/patterns'
+import { css } from '@cerberus-design/styled-system/css'
+import { hstack, vstack } from '@cerberus-design/styled-system/patterns'
 import { $cerberusIcons } from '../config/defineIcons'
-import {
-  confirmModal,
-  type ConfirmModalVariantProps,
-} from '@cerberus-design/styled-system/recipes'
+import { modal } from '@cerberus-design/styled-system/recipes'
 import { trapFocus } from '../aria-helpers/trap-focus.aria'
+import { ModalIcon } from '../components/ModalIcon'
 import { Show } from '../components/Show'
 
 /**
@@ -77,12 +75,13 @@ export function ConfirmModal(
   const resolveRef = useRef<ShowResult>(null)
   const [content, setContent] = useState<ShowConfirmModalOptions | null>(null)
   const focusTrap = trapFocus(dialogRef)
+  const ConfirmIcon = $cerberusIcons.confirmModal
 
   const palette = useMemo(
     () => (content?.kind === 'destructive' ? 'danger' : 'action'),
     [content],
   )
-  const styles = confirmModal({ palette })
+  const styles = modal()
 
   const handleChoice = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     const target = e.currentTarget as HTMLButtonElement
@@ -114,21 +113,31 @@ export function ConfirmModal(
 
       <Portal>
         <dialog className={styles.dialog} onKeyDown={focusTrap} ref={dialogRef}>
-          <div
+          <section
             className={vstack({
               alignItems: 'flex-start',
               gap: '4',
               mb: '8',
             })}
           >
-            <ConfirmModalIcon palette={palette} />
+            <Show
+              when={palette === 'danger'}
+              fallback={
+                <ModalIcon palette="action">
+                  <ConfirmIcon size={24} />
+                </ModalIcon>
+              }
+            >
+              <ModalIcon palette="danger">
+                <ConfirmIcon size={24} />
+              </ModalIcon>
+            </Show>
             <h2 className={styles.heading}>{content?.heading}</h2>
             <p className={styles.description}>{content?.description}</p>
-          </div>
+          </section>
 
           <div
             className={hstack({
-              justifyContent: 'stretch',
               gap: '4',
             })}
           >
@@ -159,38 +168,6 @@ export function ConfirmModal(
         </dialog>
       </Portal>
     </ConfirmModalContext.Provider>
-  )
-}
-
-// This is to help show the variant styles for the icon since Panda is
-// not syncing correctly for the danger variant.
-export function ConfirmModalIcon(props: ConfirmModalVariantProps) {
-  const InfoIcon = $cerberusIcons.confirmModal
-  return (
-    <Show
-      when={props.palette === 'danger'}
-      fallback={
-        <div className={cx(confirmModal().icon, circle())}>
-          <InfoIcon size={24} />
-        </div>
-      }
-    >
-      <div
-        className={cx(
-          confirmModal({
-            palette: 'danger',
-          }).icon,
-          circle({
-            bgColor: 'danger.surface.initial',
-          }),
-        )}
-        style={{
-          color: 'var(--cerberus-colors-danger-text-100)',
-        }}
-      >
-        <InfoIcon size={24} />
-      </div>
-    </Show>
   )
 }
 
