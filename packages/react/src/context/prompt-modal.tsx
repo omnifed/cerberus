@@ -222,36 +222,6 @@ export function PromptModal(
   )
 }
 
-// This is to help show the variant styles for the icon since Panda is
-// not syncing correctly for the danger variant.
-// export function PromptModalIcon(props: ConfirmModalVariantProps) {
-//   const PromptIcon = $cerberusIcons.promptModal
-//   return (
-//     <Show
-//       when={props.palette === 'danger'}
-//       fallback={
-//         <div className={cx(modal().icon, circle())}>
-//           <PromptIcon size={24} />
-//         </div>
-//       }
-//     >
-//       <div
-//         className={cx(
-//           modal().icon,
-//           circle({
-//             bgColor: 'danger.surface.initial',
-//           }),
-//         )}
-//         style={{
-//           color: 'var(--cerberus-colors-danger-text-100)',
-//         }}
-//       >
-//         <PromptIcon size={24} />
-//       </div>
-//     </Show>
-//   )
-// }
-
 export function usePromptModal(): PromptModalValue {
   const context = useContext(PromptModalContext)
   if (context === null) {
