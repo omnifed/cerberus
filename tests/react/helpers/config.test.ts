@@ -11,6 +11,7 @@ import {
 describe('defineIcons', () => {
   const defaultIcons = {
     confirmModal: Information,
+    promptModal: Information,
     invalid: WarningFilled,
     toggleChecked: Checkmark,
   }
@@ -26,6 +27,7 @@ describe('defineIcons', () => {
   test('should define a custom set of icons', () => {
     const customIcons = defineIcons({
       confirmModal: Information,
+      promptModal: Information,
       invalid: WarningAlt,
       toggleChecked: CheckmarkFilled,
     })
