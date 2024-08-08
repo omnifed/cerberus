@@ -11,10 +11,10 @@ import {
 import {
   NonDestructivePreview,
   DestructivePreview,
-} from '@/app/react/confirm-modal/components/confirm-modal-preview'
+} from '@/app/react/prompt-modal/components/prompt-modal-preview'
 
 ```ts
-import { ConfirmModal, useConfirmModal } from '@cerberus-design/react'
+import { PromptModal, usePromptModal } from '@cerberus-design/react'
 ```
 
 ## Usage
@@ -22,33 +22,36 @@ import { ConfirmModal, useConfirmModal } from '@cerberus-design/react'
 ### Non-destructive
 
 <CodePreview preview={<NonDestructivePreview />}>
-```tsx title="some-page.tsx"
-import { ConfirmModal, useConfirmModal } from '@cerberus-design/react'
+```tsx title="some-page.tsx" {9}
+import { PromptModal, usePromptModal } from '@cerberus-design/react'
 
 function SomeFeature() {
-  const confirm = useConfirmModal()
+  const prompt = usePromptModal()
+  const [userValue, setUserValue] = useState<string | null>(null)
 
-  const handleConfirm = useCallback(async () => {
-    const consent = await confirm.show({
-      heading: 'Add new payment method?',
+  const handleClick = useCallback(async () => {
+    const key = 'SUPER_SECRET'
+    const userPrompt = await prompt.show({
+      heading: 'Enter passkey',
       description:
-        'This will add a new payment method to your account to be billed for future purchases.',
-      actionText: 'Yes, add payment method',
-      cancelText: 'No, cancel',
+        'In order to view the super secret stuff you need to enter your passkey.',
+      key,
+      actionText: 'Copy passkey',
+      cancelText: NOPE,
     })
-    // do something with consent
-  }, [])
+    if (userPrompt === key) setUserValue('Super secret stuff')
+  }, [prompt])
 
   return (
-    <Button onClick={handleConfirm}>Confirm</Button>
+    <Button onClick={handleClick}>View passkey</Button>
   )
 }
 
 function SomePage() {
   return(
-    <ConfirmModal>
+    <PromptModal>
       <SomeFeature />
-    </ConfirmModal>
+    </PromptModal>
   )
 }
 ```
@@ -57,33 +60,36 @@ function SomePage() {
 ### Destructive
 
 <CodePreview preview={<DestructivePreview />}>
-```tsx title="some-page.tsx" {8}
-import { ConfirmModal, useConfirmModal } from '@cerberus-design/react'
+```tsx title="some-page.tsx" {10}
+import { PromptModal, usePromptModal } from '@cerberus-design/react'
 
 function SomeFeature() {
-  const confirm = useConfirmModal()
+  const prompt = usePromptModal()
+  const [userValue, setUserValue] = useState<string | null>(null)
 
-  const handleConfirm = useCallback(async () => {
-    const consent = await confirm.show({
+  const handleClick = useCallback(async () => {
+    const key = 'DELETE'
+    const userConsent = await prompt.show({
       kind: 'destructive',
       heading: 'Remove payment method?',
       description: 'This is a permanent action and cannot be undone.',
+      key,
       actionText: 'Yes, delete',
-      cancelText: 'No, cancel',
+      cancelText: NOPE,
     })
-    // do something with consent
-  }, [])
+    if (userConsent === key) setUserValue('Payment method removed')
+  }, [prompt])
 
   return (
-    <Button palette="danger" onClick={handleConfirm}>Delete card</Button>
+    <Button palette="danger" onClick={handleClick}>Delete card</Button>
   )
 }
 
 function SomePage() {
   return(
-    <ConfirmModal>
+    <PromptModal>
       <SomeFeature />
-    </ConfirmModal>
+    </PromptModal>
   )
 }
 ```
@@ -91,16 +97,16 @@ function SomePage() {
 
 ## Customization
 
-For customizing the Confirm Modal, we recommend extending the `confirmModal` slot recipe provided by the `@cerberus/panda-preset` package in your config.
+For customizing the Prompt Modal, we recommend extending the `confirmModal` slot recipe provided by the `@cerberus/panda-preset` package in your config.
 
 ## API
 
 ```ts showLineNumbers=false
-export interface ConfirmModalProviderValue {
-  show: (options: ConfirmModalOptions) => Promise<boolean>
+export interface PromptModalProviderValue {
+  show: (options: PromptModalOptions) => Promise<string>
 }
 
-define function ConfirmModal(props: PropsWithChildren<{}>): ReactNode
+define function PromptModal(props: PropsWithChildren<{}>): ReactNode
 ````
 
 ### Show Method Options
@@ -112,5 +118,6 @@ The `show` method accepts the following options:
 | kind | `non-destructive` | The variant used to theme the modal.           |
 | heading | `''` | The heading of the modal. |
 | description | `''` | The description of the modal. |
+| key | `''` | A string key to test the user input against. |
 | actionText | `''` | The text for the action button. |
 | cancelText | `''` | The text for the cancel button. |

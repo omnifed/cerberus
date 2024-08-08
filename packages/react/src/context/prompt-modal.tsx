@@ -166,7 +166,12 @@ export function PromptModal(
                 </strong>
                 to confirm
               </Label>
-              <Input id="confirm" onChange={handleChange} type="text" />
+              <Input
+                id="confirm"
+                name="confirm"
+                onChange={handleChange}
+                type="text"
+              />
             </Field>
           </div>
 
