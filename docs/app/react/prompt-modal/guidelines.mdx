@@ -1,0 +1,30 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import {
+  NonDestructivePreview,
+  DestructivePreview,
+} from '@/app/react/prompt-modal/components/prompt-modal-preview'
+
+## Non-destructive Usage
+
+<WhenToUseAdmonition description="When you need the user to input data to validate an action from happening." />
+
+<CodePreview preview={<NonDestructivePreview />} />
+
+### Use sparingly
+
+Prompt modals should be used sparingly, and only for important decisions or actions that cannot be undone. They should _not_ be used for trivial actions or actions that can be easily undone.
+
+For most actions, a simple **Notification** message is sufficient to inform the user of the result of their action (or allow them to "undo" it).
+
+## Destructive Usage
+
+<WhenToUseAdmonition description="When you need the user to confirm a destructive decision that will have a significant impact to their account or data." />
+
+<CodePreview preview={<DestructivePreview />} />

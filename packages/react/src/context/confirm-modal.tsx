@@ -164,14 +164,14 @@ export function ConfirmModal(
 
 // This is to help show the variant styles for the icon since Panda is
 // not syncing correctly for the danger variant.
-function ConfirmModalIcon(props: ConfirmModalVariantProps) {
+export function ConfirmModalIcon(props: ConfirmModalVariantProps) {
   const InfoIcon = $cerberusIcons.confirmModal
   return (
     <Show
       when={props.palette === 'danger'}
       fallback={
         <div className={cx(confirmModal().icon, circle())}>
-          <InfoIcon />
+          <InfoIcon size={24} />
         </div>
       }
     >
@@ -188,7 +188,7 @@ function ConfirmModalIcon(props: ConfirmModalVariantProps) {
           color: 'var(--cerberus-colors-danger-text-100)',
         }}
       >
-        <InfoIcon />
+        <InfoIcon size={24} />
       </div>
     </Show>
   )

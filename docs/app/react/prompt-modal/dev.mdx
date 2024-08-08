@@ -1,0 +1,123 @@
+---
+npm: '@cerberus-design/react'
+source: 'context/confirm-modal.tsx'
+recipe: ''
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  NoteAdmonition,
+} from '@/app/components/Admonition'
+import {
+  NonDestructivePreview,
+  DestructivePreview,
+} from '@/app/react/prompt-modal/components/prompt-modal-preview'
+
+```ts
+import { PromptModal, usePromptModal } from '@cerberus-design/react'
+```
+
+## Usage
+
+### Non-destructive
+
+<CodePreview preview={<NonDestructivePreview />}>
+```tsx title="some-page.tsx" {9}
+import { PromptModal, usePromptModal } from '@cerberus-design/react'
+
+function SomeFeature() {
+  const prompt = usePromptModal()
+  const [userValue, setUserValue] = useState<string | null>(null)
+
+  const handleClick = useCallback(async () => {
+    const key = 'SUPER_SECRET'
+    const userPrompt = await prompt.show({
+      heading: 'Enter passkey',
+      description:
+        'In order to view the super secret stuff you need to enter your passkey.',
+      key,
+      actionText: 'Copy passkey',
+      cancelText: NOPE,
+    })
+    if (userPrompt === key) setUserValue('Super secret stuff')
+  }, [prompt])
+
+  return (
+    <Button onClick={handleClick}>View passkey</Button>
+  )
+}
+
+function SomePage() {
+  return(
+    <PromptModal>
+      <SomeFeature />
+    </PromptModal>
+  )
+}
+```
+</CodePreview>
+
+### Destructive
+
+<CodePreview preview={<DestructivePreview />}>
+```tsx title="some-page.tsx" {10}
+import { PromptModal, usePromptModal } from '@cerberus-design/react'
+
+function SomeFeature() {
+  const prompt = usePromptModal()
+  const [userValue, setUserValue] = useState<string | null>(null)
+
+  const handleClick = useCallback(async () => {
+    const key = 'DELETE'
+    const userConsent = await prompt.show({
+      kind: 'destructive',
+      heading: 'Remove payment method?',
+      description: 'This is a permanent action and cannot be undone.',
+      key,
+      actionText: 'Yes, delete',
+      cancelText: NOPE,
+    })
+    if (userConsent === key) setUserValue('Payment method removed')
+  }, [prompt])
+
+  return (
+    <Button palette="danger" onClick={handleClick}>Delete card</Button>
+  )
+}
+
+function SomePage() {
+  return(
+    <PromptModal>
+      <SomeFeature />
+    </PromptModal>
+  )
+}
+```
+</CodePreview>
+
+## Customization
+
+For customizing the Prompt Modal, we recommend extending the `confirmModal` slot recipe provided by the `@cerberus/panda-preset` package in your config.
+
+## API
+
+```ts showLineNumbers=false
+export interface PromptModalProviderValue {
+  show: (options: PromptModalOptions) => Promise<string>
+}
+
+define function PromptModal(props: PropsWithChildren<{}>): ReactNode
+````
+
+### Show Method Options
+
+The `show` method accepts the following options:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| kind | `non-destructive` | The variant used to theme the modal.           |
+| heading | `''` | The heading of the modal. |
+| description | `''` | The description of the modal. |
+| key | `''` | A string key to test the user input against. |
+| actionText | `''` | The text for the action button. |
+| cancelText | `''` | The text for the cancel button. |

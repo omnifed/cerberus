@@ -109,20 +109,27 @@
   },
   {
     "id": "2:n",
+    "label": "Prompt Modal",
+    "route": "/react/prompt-modal",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:o",
     "label": "Show",
     "route": "/react/show",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:o",
+    "id": "2:p",
     "label": "Portal",
     "route": "/react/portal",
     "tag": "next",
     "type": "route"
   },
   {
-    "id": "2:p",
+    "id": "2:q",
     "label": "Feature Flags",
     "route": "/react/feature-flags",
     "tag": "next",

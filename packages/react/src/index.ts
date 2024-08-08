@@ -30,6 +30,7 @@ export * from './context/confirm-modal'
 export * from './context/feature-flags'
 export * from './context/field'
 export * from './context/navMenu'
+export * from './context/prompt-modal'
 export * from './context/tabs'
 export * from './context/theme'
 

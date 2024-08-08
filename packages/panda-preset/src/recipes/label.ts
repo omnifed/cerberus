@@ -19,6 +19,7 @@ export const label: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   description: 'WCAG Level AAA compliant label styles.',
 
   base: {
+    color: 'page.text.initial',
     _disabled: {
       color: 'page.text.100',
     },
