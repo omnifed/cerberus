@@ -116,20 +116,27 @@
   },
   {
     "id": "2:o",
+    "label": "Modal",
+    "route": "/react/modal",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:p",
     "label": "Show",
     "route": "/react/show",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:p",
+    "id": "2:q",
     "label": "Portal",
     "route": "/react/portal",
     "tag": "next",
     "type": "route"
   },
   {
-    "id": "2:q",
+    "id": "2:r",
     "label": "Feature Flags",
     "route": "/react/feature-flags",
     "tag": "next",
@@ -142,23 +149,42 @@
   },
   {
     "id": "3:a",
+    "label": "useModal",
+    "route": "/react/use-modal",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "3:b",
     "label": "useTheme",
     "route": "/react/use-theme",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "3:b",
+    "id": "3:c",
     "label": "useThemeContext",
     "route": "/react/use-theme-context",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "3:c",
+    "id": "3:d",
     "label": "useToggle",
     "route": "/react/use-toggle",
     "tag": "",
+    "type": "route"
+  },
+  {
+    "id": "4",
+    "label": "Helpers",
+    "type": "heading"
+  },
+  {
+    "id": "4:a",
+    "label": "trapFocus",
+    "route": "/react/trap-focus",
+    "tag": "next",
     "type": "route"
   }
 ]

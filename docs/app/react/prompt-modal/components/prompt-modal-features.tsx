@@ -21,7 +21,7 @@ export function NonDestructiveFeature() {
       cancelText: NOPE,
     })
     if (userPrompt === key) setUserValue('Super secret stuff')
-  }, [confirm])
+  }, [prompt])
 
   return (
     <>
@@ -91,7 +91,7 @@ export function PromptOverviewFeature() {
       cancelText: NOPE,
     })
     if (userPrompt === key) setUserValue('Super secret stuff')
-  }, [confirm])
+  }, [prompt])
 
   const handleDestructiveClick = useCallback(async () => {
     const key = 'DELETE'
