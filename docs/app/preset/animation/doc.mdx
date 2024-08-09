@@ -2,6 +2,7 @@ import { NoteAdmonition, WhenToUseAdmonition } from '@/app/components/Admonition
 import CodePreview from '@/app/components/CodePreview'
 import { PingPreview, PulsePreview } from '@/app/preset/animation/components/animation-preview'
 import { AnimateInPreview } from '@/app/preset/animation/components/animate-in-preview'
+import { AnimateInDownPreview } from '@/app/preset/animation/components/animate-in-down-preview'
 
 # Animation
 
@@ -10,7 +11,7 @@ import { AnimateInPreview } from '@/app/preset/animation/components/animate-in-p
 Cerberus extends the [built-in animations](https://panda-css.com/docs/customization/theme#keyframes) provided by Panda-CSS.
 
 ```ts showLineNumbers=false
-animationName: 'ping' | 'pulse' | 'fadeIn';
+animationName: 'ping' | 'pulse' | 'fadeIn' | 'fadeInDown';
 ```
 
 ## Usage
@@ -130,4 +131,46 @@ function AnimateInPreview() {
 ```
 </CodePreview>
 
-<WhenToUseAdmonition description="When you need to show an initial loading placeholder animation." />
+### Fade In Down
+
+<CodePreview preview={<AnimateInDownPreview />}>
+```tsx title="nice-thing.tsx" {23, 27}
+function AnimateInDownPreview() {
+  const [animate, setAnimate] = useState<boolean>(false)
+
+  const handleAnimateIn = useCallback(() => {
+    setAnimate(true)
+    setTimeout(() => {
+      setAnimate(false)
+    }, 1800)
+  }, [])
+
+  return (
+    <div
+      className={hstack({
+        gap: '4',
+      })}
+    >
+      <Button onClick={handleAnimateIn}>Animate In</Button>
+
+      <div className={vstack()}>
+        <Show when={animate}>
+          <div
+            className={css({
+              animationName: 'fadeInDown',
+              animationDuration: '350ms',
+              animationTimingFunction: 'ease-in',
+              animationFillMode: 'forwards',
+              opacity: '0',
+              padding: '4',
+            })}
+          >
+            <span>Default</span>
+          </div>
+        </Show>
+      </div>
+    </div>
+  )
+}
+```
+</CodePreview>

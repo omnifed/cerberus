@@ -41,7 +41,7 @@
     "id": "2:d",
     "label": "Animation",
     "route": "/preset/animation",
-    "tag": "",
+    "tag": "next",
     "type": "route"
   },
   {
