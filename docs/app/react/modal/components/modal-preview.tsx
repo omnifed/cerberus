@@ -88,7 +88,7 @@ export function CustomPreview() {
               Inspectah Deck
             </ModalHeading>
             <ModalDescription>
-              Swingin' through your town like your neighborhood Spider-man!
+              Swingin&apos; through your town like your neighborhood Spider-man!
             </ModalDescription>
           </ModalHeader>
 
