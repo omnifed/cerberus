@@ -11,6 +11,10 @@ export * from './components/FeatureFlag'
 export * from './components/IconButton'
 export * from './components/Input'
 export * from './components/Label'
+export * from './components/Modal'
+export * from './components/ModalHeader'
+export * from './components/ModalHeading'
+export * from './components/ModalDescription'
 export * from './components/ModalIcon'
 export * from './components/NavMenuTrigger'
 export * from './components/NavMenuList'
@@ -37,6 +41,7 @@ export * from './context/theme'
 
 // hooks
 
+export * from './hooks/useModal'
 export * from './hooks/useTheme'
 export * from './hooks/useToggle'
 

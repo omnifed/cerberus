@@ -13,12 +13,16 @@ import {
 import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
 import { css } from '@cerberus-design/styled-system/css'
-import { hstack, vstack } from '@cerberus-design/styled-system/patterns'
+import { hstack } from '@cerberus-design/styled-system/patterns'
 import { $cerberusIcons } from '../config/defineIcons'
-import { modal } from '@cerberus-design/styled-system/recipes'
 import { trapFocus } from '../aria-helpers/trap-focus.aria'
 import { ModalIcon } from '../components/ModalIcon'
 import { Show } from '../components/Show'
+import { Modal } from '../components/Modal'
+import { useModal } from '../hooks/useModal'
+import { ModalHeader } from '../components/ModalHeader'
+import { ModalHeading } from '../components/ModalHeading'
+import { ModalDescription } from '../components/ModalDescription'
 
 /**
  * This module provides a context and hook for the confirm modal.
@@ -71,34 +75,39 @@ export interface ConfirmModalProviderProps {}
 export function ConfirmModal(
   props: PropsWithChildren<ConfirmModalProviderProps>,
 ) {
-  const dialogRef = useRef<HTMLDialogElement>(null)
+  const { modalRef, show, close } = useModal()
   const resolveRef = useRef<ShowResult>(null)
   const [content, setContent] = useState<ShowConfirmModalOptions | null>(null)
-  const focusTrap = trapFocus(dialogRef)
+  const focusTrap = trapFocus(modalRef)
   const ConfirmIcon = $cerberusIcons.confirmModal
 
   const palette = useMemo(
     () => (content?.kind === 'destructive' ? 'danger' : 'action'),
     [content],
   )
-  const styles = modal()
 
-  const handleChoice = useCallback((e: MouseEvent<HTMLButtonElement>) => {
-    const target = e.currentTarget as HTMLButtonElement
-    if (target.value === 'true') {
-      resolveRef.current?.(true)
-    }
-    resolveRef.current?.(false)
-    dialogRef?.current?.close()
-  }, [])
+  const handleChoice = useCallback(
+    (e: MouseEvent<HTMLButtonElement>) => {
+      const target = e.currentTarget as HTMLButtonElement
+      if (target.value === 'true') {
+        resolveRef.current?.(true)
+      }
+      resolveRef.current?.(false)
+      close()
+    },
+    [close],
+  )
 
-  const handleShow = useCallback((options: ShowConfirmModalOptions) => {
-    return new Promise<boolean>((resolve) => {
-      setContent({ ...options, kind: options.kind || 'non-destructive' })
-      dialogRef?.current?.showModal()
-      resolveRef.current = resolve
-    })
-  }, [])
+  const handleShow = useCallback(
+    (options: ShowConfirmModalOptions) => {
+      return new Promise<boolean>((resolve) => {
+        setContent({ ...options, kind: options.kind || 'non-destructive' })
+        show()
+        resolveRef.current = resolve
+      })
+    },
+    [show],
+  )
 
   const value = useMemo(
     () => ({
@@ -112,14 +121,8 @@ export function ConfirmModal(
       {props.children}
 
       <Portal>
-        <dialog className={styles.dialog} onKeyDown={focusTrap} ref={dialogRef}>
-          <section
-            className={vstack({
-              alignItems: 'flex-start',
-              gap: '4',
-              mb: '8',
-            })}
-          >
+        <Modal onKeyDown={focusTrap} ref={modalRef}>
+          <ModalHeader>
             <Show
               when={palette === 'danger'}
               fallback={
@@ -132,9 +135,9 @@ export function ConfirmModal(
                 <ConfirmIcon size={24} />
               </ModalIcon>
             </Show>
-            <h2 className={styles.heading}>{content?.heading}</h2>
-            <p className={styles.description}>{content?.description}</p>
-          </section>
+            <ModalHeading>{content?.heading}</ModalHeading>
+            <ModalDescription>{content?.description}</ModalDescription>
+          </ModalHeader>
 
           <div
             className={hstack({
@@ -165,7 +168,7 @@ export function ConfirmModal(
               {content?.cancelText}
             </Button>
           </div>
-        </dialog>
+        </Modal>
       </Portal>
     </ConfirmModalContext.Provider>
   )

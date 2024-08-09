@@ -15,7 +15,6 @@ import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
 import { css } from '@cerberus-design/styled-system/css'
 import { hstack, vstack } from '@cerberus-design/styled-system/patterns'
-import { modal } from '@cerberus-design/styled-system/recipes'
 import { trapFocus } from '../aria-helpers/trap-focus.aria'
 import { Input } from '../components/Input'
 import { Field } from './field'
@@ -23,6 +22,11 @@ import { Label } from '../components/Label'
 import { $cerberusIcons } from '../config/defineIcons'
 import { ModalIcon } from '../components/ModalIcon'
 import { Show } from '../components/Show'
+import { useModal } from '../hooks/useModal'
+import { Modal } from '../components/Modal'
+import { ModalHeader } from '../components/ModalHeader'
+import { ModalHeading } from '../components/ModalHeading'
+import { ModalDescription } from '../components/ModalDescription'
 
 /**
  * This module provides a context and hook for the prompt modal.
@@ -78,11 +82,11 @@ export interface PromptModalProviderProps {}
 export function PromptModal(
   props: PropsWithChildren<PromptModalProviderProps>,
 ) {
-  const dialogRef = useRef<HTMLDialogElement>(null)
+  const { modalRef, show, close } = useModal()
   const resolveRef = useRef<PromptShowResult>(null)
   const [content, setContent] = useState<ShowPromptModalOptions | null>(null)
   const [inputValue, setInputValue] = useState<string>('')
-  const focusTrap = trapFocus(dialogRef)
+  const focusTrap = trapFocus(modalRef)
   const PromptIcon = $cerberusIcons.promptModal
 
   const isValid = useMemo(
@@ -94,7 +98,6 @@ export function PromptModal(
     () => (content?.kind === 'destructive' ? 'danger' : 'action'),
     [content],
   )
-  const styles = modal()
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -109,18 +112,21 @@ export function PromptModal(
       if (target.value === 'true') {
         resolveRef.current?.(inputValue)
       }
-      dialogRef?.current?.close()
+      close()
     },
-    [inputValue],
+    [inputValue, close],
   )
 
-  const handleShow = useCallback((options: ShowPromptModalOptions) => {
-    return new Promise<string>((resolve) => {
-      setContent({ ...options, kind: options.kind || 'non-destructive' })
-      dialogRef?.current?.showModal()
-      resolveRef.current = resolve
-    })
-  }, [])
+  const handleShow = useCallback(
+    (options: ShowPromptModalOptions) => {
+      return new Promise<string>((resolve) => {
+        setContent({ ...options, kind: options.kind || 'non-destructive' })
+        show()
+        resolveRef.current = resolve
+      })
+    },
+    [show],
+  )
 
   const value = useMemo(
     () => ({
@@ -134,13 +140,8 @@ export function PromptModal(
       {props.children}
 
       <Portal>
-        <dialog className={styles.dialog} onKeyDown={focusTrap} ref={dialogRef}>
-          <div
-            className={vstack({
-              alignItems: 'flex-start',
-              gap: '4',
-            })}
-          >
+        <Modal onKeyDown={focusTrap} ref={modalRef}>
+          <ModalHeader>
             <Show
               when={palette === 'danger'}
               fallback={
@@ -153,9 +154,9 @@ export function PromptModal(
                 <PromptIcon size={24} />
               </ModalIcon>
             </Show>
-            <h2 className={styles.heading}>{content?.heading}</h2>
-            <p className={styles.description}>{content?.description}</p>
-          </div>
+            <ModalHeading>{content?.heading}</ModalHeading>
+            <ModalDescription>{content?.description}</ModalDescription>
+          </ModalHeader>
 
           <div
             className={vstack({
@@ -216,7 +217,7 @@ export function PromptModal(
               {content?.cancelText}
             </Button>
           </div>
-        </dialog>
+        </Modal>
       </Portal>
     </PromptModalContext.Provider>
   )
