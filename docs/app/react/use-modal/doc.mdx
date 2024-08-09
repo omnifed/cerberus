@@ -1,0 +1,60 @@
+---
+npm: '@cerberus-design/react'
+source: 'hooks/useModal.ts'
+recipe: ''
+---
+
+import {
+  WhenToUseAdmonition
+} from '@/app/components/Admonition'
+
+# useModal
+
+The `useModal` hook allows you to manage displaying a Modal.
+
+<WhenToUseAdmonition description="This hook is ideal for when you are using a custom Modal." />
+
+## Usage
+
+```tsx title="custom-modal.tsx" {9}
+import {
+  Modal,
+  Button,
+  trapFocus,
+  useModal
+} from '@cerberus-design/react'
+
+function SomePage() {
+ const { modalRef, show, close } = useModal()
+ const handleKeyDown = trapFocus(modalRef)
+
+  return (
+    <div>
+      <Button onClick={show}>Show Modal</Button>
+
+      <Modal onKeyDown={handleKeyDown} ref={modalRef}>
+        This is a custom modal!
+        <Button onClick={close}>
+          Close
+        </Button>
+      </Modal>
+    </div>
+  )
+}
+```
+
+## API
+
+```ts showLineNumbers=false
+interface UseModalReturnValue {
+  modalRef: RefObject<HTMLDialogElement>
+  show: () => void
+  close: () => void
+}
+
+define function useModal(): UseModalReturnValue
+```
+
+### Arguments
+
+The `useModal` hook does not take any arguments.
