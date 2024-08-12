@@ -43,7 +43,10 @@ export type PrimitiveCollection =
 
 // helpers
 
-export function deepGet(obj: PrimitiveCollection, keys: string[]) {
+export function deepGet(
+  obj: PrimitiveCollection,
+  keys: string[],
+): PrimitiveCollection {
   return keys.reduce(
     (xs, x) => xs?.[x as keyof PrimitiveCollection] ?? null,
     obj,
