@@ -7,6 +7,7 @@ export default defineConfig({
 
   include: [
     './node_modules/@cerberus-design/react/src/**/*.{ts,tsx}',
+    './mdx-components.tsx',
     './app/**/*.{ts,tsx}',
   ],
   exclude: [],
