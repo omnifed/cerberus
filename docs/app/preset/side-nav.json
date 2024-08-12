@@ -20,14 +20,14 @@
     "id": "2:a",
     "label": "Theme",
     "route": "/preset/theme",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
     "id": "2:b",
     "label": "Colors",
     "route": "/preset/colors",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -41,7 +41,7 @@
     "id": "2:d",
     "label": "Animation",
     "route": "/preset/animation",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {

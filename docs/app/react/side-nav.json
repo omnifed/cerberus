@@ -69,7 +69,7 @@
     "id": "2:h",
     "label": "Tabs",
     "route": "/react/tabs",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -104,21 +104,21 @@
     "id": "2:m",
     "label": "Confirm Modal",
     "route": "/react/confirm-modal",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
     "id": "2:n",
     "label": "Prompt Modal",
     "route": "/react/prompt-modal",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
     "id": "2:o",
     "label": "Modal",
     "route": "/react/modal",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -132,14 +132,14 @@
     "id": "2:q",
     "label": "Portal",
     "route": "/react/portal",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
     "id": "2:r",
     "label": "Feature Flags",
     "route": "/react/feature-flags",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -151,7 +151,7 @@
     "id": "3:a",
     "label": "useModal",
     "route": "/react/use-modal",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -184,7 +184,7 @@
     "id": "4:a",
     "label": "trapFocus",
     "route": "/react/trap-focus",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   }
 ]
