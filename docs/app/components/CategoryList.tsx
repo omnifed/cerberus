@@ -23,9 +23,9 @@ function CategoryCard(props: CategoryCardProps) {
           display: 'block',
           h: '15rem',
           overflow: 'hidden',
-          rounded: 'xl !important',
+          rounded: 'xl',
           shadow: 'md',
-          textDecoration: 'none !important',
+          textDecoration: 'none',
           w: 'full',
           _hover: {
             transform: 'scale(1.05)',
@@ -76,8 +76,8 @@ function CategoryCard(props: CategoryCardProps) {
         >
           <p
             className={css({
-              color: 'page.text.initial !important',
-              textStyle: 'body-xl !important',
+              color: 'page.text.initial',
+              textStyle: 'body-xl',
             })}
           >
             {item!.label}
@@ -99,17 +99,17 @@ export default function CategoryList(props: CategoryListProps) {
       <header>
         <p
           className={css({
-            color: 'page.text.initial !important',
-            pb: '2 !important',
-            textStyle: 'h2 !important',
+            color: 'page.text.initial',
+            pb: '2',
+            textStyle: 'h2',
           })}
         >
           {data.name}
         </p>
         <p
           className={css({
-            textStyle: 'body-lg !important',
-            pb: '3 !important',
+            textStyle: 'body-lg',
+            pb: '3',
           })}
         >
           {data.description}
