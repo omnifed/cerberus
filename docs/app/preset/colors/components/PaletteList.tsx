@@ -1,7 +1,7 @@
 import { type Sentiment } from '@cerberus-design/panda-preset'
 import ColorSwatch from './ColorSwatch'
 import { css } from '@cerberus/styled-system/css'
-import { grid, gridItem } from '@cerberus/styled-system/patterns'
+import { cq, grid, gridItem } from '@cerberus/styled-system/patterns'
 import { normalizeTokens, getTokenList } from '../helpers/normalize'
 
 interface PaletteListProps {
@@ -14,13 +14,16 @@ export default function PaletteList(props: PaletteListProps) {
 
   return (
     <section
-      className={css({
+      className={cq({
         mb: '8',
       })}
     >
       <ul
         className={grid({
-          columns: 12,
+          columns: {
+            '@/sm': 1,
+            '@/lg': 12,
+          },
           gap: '4',
           rounded: 'lg',
         })}
@@ -28,7 +31,10 @@ export default function PaletteList(props: PaletteListProps) {
         {Object.keys(tokens).map((token) => (
           <li
             className={gridItem({
-              colSpan: 3,
+              colSpan: {
+                '@/sm': 1,
+                '@/lg': 4,
+              },
             })}
             key={token}
           >
