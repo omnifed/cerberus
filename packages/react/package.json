@@ -15,7 +15,7 @@
   "peerDependencies": {
     "@cerberus/icons": "npm:@jsr/cerberus__icons",
     "@cerberus/panda-preset": "npm:@jsr/cerberus__panda-preset",
-    "@cerberus/styled-system": "npm:@cerberus-design/styled-system@workspace:*",
+    "@cerberus/styled-system": "npm:@cerberus-design/styled-system",
     "@pandacss/dev": "*",
     "react": "*",
     "react-dom": "*"
