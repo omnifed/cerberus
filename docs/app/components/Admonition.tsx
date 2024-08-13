@@ -1,4 +1,4 @@
-import { css, cx } from '@cerberus/styled-system/css'
+import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
 import {
   DataEnrichmentAdd,
@@ -17,107 +17,75 @@ interface AdmonitionProps {
   palette: Sentiment
 }
 
-function getPaletteStyles(palette: Sentiment) {
-  switch (palette) {
-    case 'success':
-      return css({
-        bgColor: 'success.surface.initial',
-        color: 'success.border.initial',
-      })
-
-    case 'warning':
-      return css({
-        bgColor: 'warning.surface.initial',
-        color: 'warning.border.initial',
-      })
-
-    case 'danger':
-      return css({
-        bgColor: 'danger.surface.initial',
-        color: 'danger.border.initial',
-      })
-
-    case 'info':
-    default:
-      return css({
-        bgColor: 'info.surface.initial',
-        color: 'info.border.initial',
-      })
-  }
-}
-
-function getPaletteTextStyles(palette: Sentiment) {
-  switch (palette) {
-    case 'success':
-      return css({
-        color: 'success.text.initial !important',
-      })
-
-    case 'warning':
-      return css({
-        color: 'warning.text.initial !important',
-      })
-
-    case 'danger':
-      return css({
-        color: 'danger.text.initial !important',
-      })
-
-    case 'info':
-    default:
-      return css({
-        color: 'info.text.initial !important',
-      })
-  }
-}
-
 export function Admonition(props: PropsWithChildren<AdmonitionProps>) {
-  const paletteStyles = getPaletteStyles(props.palette)
-  const textStyles = getPaletteTextStyles(props.palette)
-
   return (
     <div
-      className={cx(
-        paletteStyles,
-        css({
-          mb: '6',
-          mt: '4',
-          pb: '4',
-          pxi: '6',
-          pt: '6',
-          rounded: '2xl',
-        }),
-      )}
+      data-palette={props.palette}
+      className={css({
+        mb: '6',
+        mt: '4',
+        pxi: '6',
+        py: '6',
+        rounded: '2xl',
+        _infoPalette: {
+          bgColor: 'info.surface.initial',
+          color: 'info.text.initial',
+        },
+        _successPalette: {
+          bgColor: 'success.surface.initial',
+          color: 'success.text.initial',
+        },
+        _warningPalette: {
+          bgColor: 'warning.surface.initial',
+          color: 'warning.text.initial',
+        },
+        _dangerPalette: {
+          bgColor: 'danger.surface.initial',
+          color: 'danger.text.initial',
+        },
+      })}
     >
       <div
         className={hstack({
-          color: 'inherit !important',
+          color: 'inherit',
           pb: '2',
         })}
       >
-        {props.icon}
+        <span
+          data-palette={props.palette}
+          className={css({
+            _infoPalette: {
+              color: 'info.border.initial',
+            },
+            _successPalette: {
+              color: 'success.border.initial',
+            },
+            _warningPalette: {
+              color: 'warning.border.initial',
+            },
+            _dangerPalette: {
+              color: 'danger.border.initial',
+            },
+          })}
+        >
+          {props.icon}
+        </span>
         <p
-          className={cx(
-            textStyles,
-            css({
-              pb: 'initial !important',
-              paddingInlineStart: '2',
-              textStyle: 'h5 !important',
-            }),
-          )}
+          className={css({
+            pb: 'initial',
+            paddingInlineStart: '2',
+            textStyle: 'h5',
+          })}
         >
           {props.heading}
         </p>
       </div>
       <p
-        className={cx(
-          textStyles,
-          css({
-            paddingInlineStart: '10',
-            pt: '2',
-            textWrap: 'pretty',
-          }),
-        )}
+        className={css({
+          paddingInlineStart: '10',
+          pt: '2',
+          textWrap: 'pretty',
+        })}
       >
         {props.description}
       </p>

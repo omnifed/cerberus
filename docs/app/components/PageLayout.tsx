@@ -21,9 +21,6 @@ export function PageLayout(props: PropsWithChildren<PageLayoutProps>) {
         h: PAGE_MINUS_HEADER,
         overflowX: 'hidden',
         position: 'relative',
-        md: {
-          overflowX: 'initial',
-        },
       })}
     >
       {props.children}
@@ -47,6 +44,8 @@ export function PageSideNav(props: PropsWithChildren<PageLayoutProps>) {
           gridColumnEnd: 3,
           h: 'initial',
           left: 'initial',
+          overflowY: 'auto',
+          pb: '4',
           position: 'initial',
           top: 'initial',
           transform: 'none',

@@ -1,0 +1,55 @@
+{
+  "items": [
+    "page",
+    "action",
+    "secondaryAction",
+    "info",
+    "success",
+    "warning",
+    "danger"
+  ],
+  "results": {
+    "page": {
+      "id": "1",
+      "label": "Page",
+      "slug": "page",
+      "description": "Used for anything on a page that is not an action."
+    },
+    "action": {
+      "id": "2",
+      "label": "Action",
+      "slug": "action",
+      "description": "Used for primary actions on a page."
+    },
+    "secondaryAction": {
+      "id": "3",
+      "label": "Secondary Action",
+      "slug": "secondary-action",
+      "description": "Used for secondary actions on a page."
+    },
+    "info": {
+      "id": "4",
+      "label": "Info",
+      "slug": "info",
+      "description": "Used for informative elements on a page."
+    },
+    "success": {
+      "id": "5",
+      "label": "Success",
+      "slug": "success",
+      "description": "Used for success messages and positive feedback."
+    },
+    "warning": {
+      "id": "6",
+      "label": "Warning",
+      "slug": "warning",
+      "description": "Used for warning messages and alerts."
+    },
+    "danger": {
+      "id": "7",
+      "label": "Danger",
+      "slug": "danger",
+      "description": "Used for error messages and negative feedback."
+    }
+  }
+}

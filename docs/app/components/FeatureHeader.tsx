@@ -43,16 +43,16 @@ export default function FeatureHeader(
             h: 'full',
             justify: 'center',
             pxi: {
-              base: '4',
+              '@/sm': '4',
               '@/lg': '8',
             },
             pb: '4',
             pt: {
-              base: '4',
+              '@/sm': '4',
               '@/lg': 'initial',
             },
             rounded: {
-              base: 'xl',
+              '@/sm': 'xl',
               '@/lg': '1.5em',
             },
             w: {
@@ -62,9 +62,12 @@ export default function FeatureHeader(
         >
           <h1
             className={css({
-              textStyle: 'h1',
               fontSize: {
-                '@/lg': '4rem !important',
+                '@/4xl': '4rem',
+              },
+              textStyle: {
+                '@/sm': 'h1',
+                '@/lg': 'display-lg',
               },
             })}
           >
@@ -73,9 +76,9 @@ export default function FeatureHeader(
           <p
             className={css({
               textStyle: {
-                '@/lg': 'body-lg !important',
+                '@/lg': 'body-lg',
               },
-              pb: '0 !important',
+              pb: '0',
             })}
           >
             {props.description}
@@ -86,7 +89,7 @@ export default function FeatureHeader(
           className={vstack({
             bgGradient: 'to-t',
             display: {
-              base: 'none',
+              '@/sm': 'none',
               '@/lg': 'flex',
             },
             h: 'full',
@@ -96,7 +99,7 @@ export default function FeatureHeader(
             pxi: '4',
             pb: '4',
             rounded: {
-              base: 'xl',
+              '@/sm': 'xl',
               '@/lg': '1.5em',
             },
             w: {
