@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import OnThisPage from '../../components/OnThisPage'
 import { PageMainContent, PageSections } from '../../components/PageLayout'
 import ColorDetails from './[name]/components/color-details'
@@ -10,8 +11,10 @@ export default function ColorsPage() {
       <PageMainContent>
         <main>
           <Colors />
-          <FilterablePaletteSection />
-          <ColorDetails />
+          <Suspense>
+            <FilterablePaletteSection />
+            <ColorDetails />
+          </Suspense>
         </main>
       </PageMainContent>
 
