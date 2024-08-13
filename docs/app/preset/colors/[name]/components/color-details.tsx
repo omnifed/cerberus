@@ -15,9 +15,10 @@ import {
 } from '@cerberus/styled-system/patterns'
 import { normalizeTokens, getTokenList } from '../../helpers/normalize'
 import { Show, useThemeContext } from '@cerberus-design/react'
-import { Fragment, useMemo } from 'react'
+import { Fragment, useEffect, useMemo } from 'react'
 import { css } from '@cerberus/styled-system/css'
 import UsageExample from './usage-example'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 function getFigmaProperty(selector: Usage): string {
   switch (selector) {
@@ -86,17 +87,16 @@ interface FigmaScope {
   }
 }
 
-interface ColorDetailsProps {
-  token: string
-}
+interface ColorDetailsProps {}
 
 export default function ColorDetails(props: ColorDetailsProps) {
-  const { token: propsToken } = props
   const { mode } = useThemeContext()
-  const splitToken = useMemo(() => propsToken.split('-'), [propsToken])
+  const searchParams = useSearchParams()
+  const paramsToken = searchParams.get('token') ?? 'page-backdrop-initial'
+  const splitToken = useMemo(() => paramsToken.split('-'), [paramsToken])
   const palette = splitToken[0] as Sentiment
   const tokens = normalizeTokens(getTokenList(palette), palette)
-  const token = tokens[propsToken as keyof typeof tokens] as SemanticToken
+  const token = tokens[paramsToken as keyof typeof tokens] as SemanticToken
 
   const scope = useMemo(() => {
     const [palette, usage, sentiment, interaction] = splitToken
@@ -154,7 +154,11 @@ export default function ColorDetails(props: ColorDetailsProps) {
   )
 
   return (
-    <div className={container()}>
+    <div
+      className={container({
+        mt: '20',
+      })}
+    >
       <section
         className={grid({
           columns: 12,
@@ -197,10 +201,17 @@ export default function ColorDetails(props: ColorDetailsProps) {
             },
           })}
         >
-          <h2>{props.token}</h2>
+          <h2
+            className={css({
+              pb: '2',
+              textStyle: 'h4',
+            })}
+          >
+            {paramsToken}
+          </h2>
           <p
             className={css({
-              pb: '2 !important',
+              pb: '2',
             })}
           >
             {token.description}
@@ -210,6 +221,7 @@ export default function ColorDetails(props: ColorDetailsProps) {
             className={vstack({
               alignItems: 'flex-start',
               gap: '4',
+              mt: '4',
             })}
           >
             {formattedToken.groups.map((groupName) => (
@@ -288,7 +300,7 @@ export default function ColorDetails(props: ColorDetailsProps) {
           Usage
         </h3>
 
-        <UsageExample token={props.token} />
+        <UsageExample token={paramsToken} />
       </section>
     </div>
   )

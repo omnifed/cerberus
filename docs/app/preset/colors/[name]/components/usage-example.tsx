@@ -46,9 +46,9 @@ export default function UsageExample(props: UsageExampleProps) {
           'data-highlighted': true,
         })}
         className={css({
-          pb: '2 !important',
+          pb: '2',
           rounded: 'md',
-          textStyle: 'h3 !important',
+          textStyle: 'h3',
           ...highlightedStyles,
         })}
       >

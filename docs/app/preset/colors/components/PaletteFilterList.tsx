@@ -1,12 +1,11 @@
 'use client'
 
 import { hstack } from '@cerberus/styled-system/patterns'
-import { PALETTES } from './FilterablePaletteSection'
-import { Tag, type ClickableTagProps } from '@cerberus-design/react'
 import type { Sentiment } from '@cerberus-design/panda-preset'
 import { tag } from '@cerberus/styled-system/recipes'
 import type { ButtonHTMLAttributes } from 'react'
 import { css, cx } from '@cerberus/styled-system/css'
+import paletteData from '@/app/data/palettes.json'
 
 const nonActiveTagStyles = cx(
   tag({
@@ -40,7 +39,7 @@ export function PaletteFilterList(props: PaletteFilterListProps) {
         w: 'full',
       })}
     >
-      {PALETTES.map((palette) => (
+      {paletteData.items.map((palette) => (
         <li key={palette}>
           <button
             className={
@@ -51,7 +50,10 @@ export function PaletteFilterList(props: PaletteFilterListProps) {
             onClick={props.onClick}
             value={palette}
           >
-            {palette}
+            {
+              paletteData.results[palette as keyof typeof paletteData.results]
+                .slug
+            }
           </button>
         </li>
       ))}

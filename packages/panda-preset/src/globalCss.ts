@@ -4,7 +4,7 @@ const tooltipStyles = {
   _positionTop: {
     _before: {
       top: '0',
-      transform: 'translateY(-150%)',
+      transform: 'translateY(-135%)',
     },
     _after: {
       borderColor:
@@ -17,7 +17,7 @@ const tooltipStyles = {
   _positionBottom: {
     _before: {
       bottom: '0',
-      transform: 'translateY(150%)',
+      transform: 'translateY(135%)',
     },
     _after: {
       borderColor:
@@ -31,7 +31,7 @@ const tooltipStyles = {
     _before: {
       left: '0',
       top: '0',
-      transform: 'translate3d(-110%, 45%, 0)',
+      transform: 'translate3d(-109%, 20%, 0)',
     },
     _after: {
       borderColor:
@@ -45,7 +45,7 @@ const tooltipStyles = {
     _before: {
       right: '0',
       top: '0',
-      transform: 'translate3d(110%, 45%, 0)',
+      transform: 'translate3d(109%, 20%, 0)',
     },
     _after: {
       borderColor:
@@ -61,16 +61,17 @@ const tooltipStyles = {
     color: 'var(--cerberus-colors-page-text-inverse)',
     content: 'attr(aria-label)',
     fontWeight: 400,
+    lineHeight: 'initial',
     maxH: '6rem',
     maxW: '17rem',
-    pxi: '2',
-    py: '3',
+    pxi: '3',
+    py: '2',
     opacity: 0,
     position: 'absolute',
     rounded: 'sm',
     shadow: 'lg',
     textAlign: 'left',
-    textStyle: 'body-xs',
+    textStyle: 'label-sm',
     textWrap: 'pretty',
     whiteSpace: 'nowrap',
     zIndex: 'tooltip',
