@@ -32,13 +32,13 @@
   },
   "publishConfig": {
     "access": "public",
-    "types": "build/legacy/index.d.ts",
+    "types": "build/legacy/_tsup-dts-rollup.d.ts",
     "main": "build/legacy/index.cjs",
     "module": "build/legacy/index.js",
     "exports": {
       ".": {
         "import": {
-          "types": "./build/modern/index.d.ts",
+          "types": "./build/modern/_tsup-dts-rollup.d.ts",
           "default": "./build/modern/index.js"
         },
         "require": {
@@ -51,7 +51,7 @@
     "typesVersions": {
       "*": {
         ".": [
-          "build/legacy/index.d.ts"
+          "build/legacy/_tsup-dts-rollup.d.ts"
         ]
       }
     }
