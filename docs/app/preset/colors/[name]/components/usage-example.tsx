@@ -1,3 +1,4 @@
+import { zIndex } from '@cerberus-design/panda-preset'
 import {
   Button,
   Field,
@@ -10,14 +11,16 @@ import {
   Tabs,
   Tag,
 } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
+import { css, cx } from '@cerberus/styled-system/css'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
 
 const highlightedStyles = {
+  position: 'relative',
   _highlighted: {
     outline: '4px solid',
     outlineColor: 'success.border.initial',
     outlineOffset: '2',
+    zIndex: 'overlay',
   },
 }
 
@@ -27,10 +30,12 @@ interface UsageExampleProps {
 
 export default function UsageExample(props: UsageExampleProps) {
   const isPageSurface = props.token.includes('page-surface')
+  const isBackdrop = props.token.includes('page-backdrop')
+  const isText = props.token.includes('page-text')
 
   return (
     <div
-      {...(isPageSurface && {
+      {...((isPageSurface || isBackdrop) && {
         'data-highlighted': true,
       })}
       className={css({
@@ -41,19 +46,24 @@ export default function UsageExample(props: UsageExampleProps) {
         ...highlightedStyles,
       })}
     >
-      <p
-        {...(props.token.includes('page-text') && {
+      <div
+        {...(isText && {
           'data-highlighted': true,
         })}
         className={css({
-          pb: '2',
           rounded: 'md',
-          textStyle: 'h3',
           ...highlightedStyles,
         })}
       >
-        Page Heading
-      </p>
+        <p
+          className={css({
+            pb: '2',
+            textStyle: 'h3',
+          })}
+        >
+          Page Heading
+        </p>
+      </div>
 
       <div
         className={hstack({
@@ -98,8 +108,8 @@ export default function UsageExample(props: UsageExampleProps) {
         <Field>
           <Label
             className={css({
-              ...highlightedStyles,
               rounded: 'md',
+              ...highlightedStyles,
             })}
             {...(props.token.includes('page-text') && {
               'data-highlighted': true,
@@ -108,17 +118,23 @@ export default function UsageExample(props: UsageExampleProps) {
           >
             Label
           </Label>
-          <Input
-            describedBy="help:example"
-            className={css({
-              ...highlightedStyles,
-            })}
+          <div
             {...(props.token.includes('page-border') && {
               'data-highlighted': true,
             })}
-            id="example"
-            placeholder="Placeholder"
-          />
+            className={css({
+              rounded: 'md',
+              w: 'full',
+              ...highlightedStyles,
+            })}
+          >
+            <Input
+              describedBy="help:example"
+              className={css(highlightedStyles)}
+              id="example"
+              placeholder="Placeholder"
+            />
+          </div>
           <FieldMessage id="help:example">
             This is an example of a field message.
           </FieldMessage>
@@ -202,6 +218,22 @@ export default function UsageExample(props: UsageExampleProps) {
           </TabPanel>
         </Tabs>
       </div>
+
+      <div
+        className={css({
+          bgColor: 'page.backdrop.initial',
+          backdropFilter: 'blur(4px)',
+          backdropBlur: 'sm',
+          bottom: '0',
+          left: '0',
+          position: 'absolute',
+          rounded: 'xl',
+          top: '0',
+          transition: 'all 150ms ease-in-out',
+          right: '0',
+          zIndex: 'decorator',
+        })}
+      />
     </div>
   )
 }

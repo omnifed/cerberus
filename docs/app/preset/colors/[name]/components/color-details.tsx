@@ -112,10 +112,10 @@ export default function ColorDetails(props: ColorDetailsProps) {
 
     const result = sortedToken.reduce((acc, curr) => {
       // @ts-ignore - we know this is a valid key
-      return acc[curr]
+      return acc && acc[curr]
     }, semanticColors) as unknown as FigmaScope
 
-    return result.$extensions['com.figma'].scopes ?? []
+    return result?.$extensions['com.figma'].scopes ?? []
   }, [splitToken])
 
   const formattedToken = useMemo(() => {
