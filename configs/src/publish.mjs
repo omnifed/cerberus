@@ -44,8 +44,11 @@ function _getTags(values) {
 function publish() {
   const { values } = _parseFlags(argv)
   const release = _getTags(values)
+  const onlyNpmPackages = packages.filter(
+    (pkg) => pkg === 'react' || pkg === 'styled-system',
+  )
 
-  packages.forEach(async (pkg) => {
+  onlyNpmPackages.forEach(async (pkg) => {
     const workspacePath = resolve(import.meta.dir, '..', '..', 'packages', pkg)
     const packageJsonPath = resolve(workspacePath, 'package.json')
     const rawFile = file(packageJsonPath)
