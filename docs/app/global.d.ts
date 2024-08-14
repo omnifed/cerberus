@@ -6,7 +6,7 @@ declare module '*.mdx' {
   export default MDXComponent
 }
 
-// Map JSR to pnPm workspace
+// Map JSR to pnPm workspace for our global lint:ts script
 declare module '@cerberus/styled-system/css' {
   export * from '@cerberus-design/styled-system/css'
 }

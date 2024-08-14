@@ -1,4 +1,4 @@
-import { css } from '@cerberus-design/styled-system/css'
+import { css } from '@cerberus/styled-system/css'
 import { vstack } from '@cerberus/styled-system/patterns'
 import type { PropsWithChildren } from 'react'
 import { MatchFeatureImg, type MatchFeatureKind } from './MatchFeatureImg'

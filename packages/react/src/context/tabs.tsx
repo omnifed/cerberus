@@ -1,10 +1,7 @@
 'use client'
 
-import {
-  tabs,
-  type TabsVariantProps,
-} from '@cerberus-design/styled-system/recipes'
-import type { Pretty } from '@cerberus-design/styled-system/types'
+import { tabs, type TabsVariantProps } from '@cerberus/styled-system/recipes'
+import type { Pretty } from '@cerberus/styled-system/types'
 import {
   createContext,
   useContext,

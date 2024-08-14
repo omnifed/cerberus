@@ -1,5 +1,5 @@
-import { cx } from '@cerberus-design/styled-system/css'
-import { modal } from '@cerberus-design/styled-system/recipes'
+import { cx } from '@cerberus/styled-system/css'
+import { modal } from '@cerberus/styled-system/recipes'
 import { forwardRef, type ForwardedRef, type HTMLAttributes } from 'react'
 
 /**

@@ -5,7 +5,7 @@ import {
   InformationFilled,
 } from '@cerberus-design/icons'
 import { Tab, TabList, TabPanel, Tabs } from '@cerberus-design/react'
-import { css } from '@cerberus-design/styled-system/css'
+import { css } from '@cerberus/styled-system/css'
 import { cx } from '@cerberus/styled-system/css'
 import type { ReactNode } from 'react'
 

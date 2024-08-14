@@ -1,9 +1,9 @@
 'use client'
 
-import { cx } from '@cerberus-design/styled-system/css'
-import { hstack } from '@cerberus-design/styled-system/patterns'
-import { radio } from '@cerberus-design/styled-system/recipes'
-import type { RecipeVariantProps } from '@cerberus-design/styled-system/types'
+import { cx } from '@cerberus/styled-system/css'
+import { hstack } from '@cerberus/styled-system/patterns'
+import { radio } from '@cerberus/styled-system/recipes'
+import type { RecipeVariantProps } from '@cerberus/styled-system/types'
 import type { InputHTMLAttributes, PropsWithChildren } from 'react'
 import { useFieldContext } from '../context/field'
 
