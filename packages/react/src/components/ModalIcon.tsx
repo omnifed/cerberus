@@ -1,9 +1,9 @@
-import { cx } from '@cerberus-design/styled-system/css'
-import { circle } from '@cerberus-design/styled-system/patterns'
+import { cx } from '@cerberus/styled-system/css'
+import { circle } from '@cerberus/styled-system/patterns'
 import {
   modalIcon,
   type ModalIconVariantProps,
-} from '@cerberus-design/styled-system/recipes'
+} from '@cerberus/styled-system/recipes'
 import type { HTMLAttributes, PropsWithChildren } from 'react'
 
 export type ModalIconBaseProps = HTMLAttributes<HTMLDivElement>

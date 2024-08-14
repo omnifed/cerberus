@@ -1,11 +1,11 @@
 'use client'
 
-import { cx } from '@cerberus-design/styled-system/css'
-import { hstack, vstack } from '@cerberus-design/styled-system/patterns'
+import { cx } from '@cerberus/styled-system/css'
+import { hstack, vstack } from '@cerberus/styled-system/patterns'
 import {
   toggle,
   type ToggleVariantProps,
-} from '@cerberus-design/styled-system/recipes'
+} from '@cerberus/styled-system/recipes'
 import type { InputHTMLAttributes } from 'react'
 import { $cerberusIcons } from '../config/defineIcons'
 import { useFieldContext } from '../context/field'
