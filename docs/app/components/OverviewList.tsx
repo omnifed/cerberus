@@ -1,7 +1,7 @@
 import { Asterisk } from '@cerberus-design/icons'
 import { Show } from '@cerberus-design/react'
-import { css } from '@cerberus-design/styled-system/css'
-import { vstack } from '@cerberus-design/styled-system/patterns'
+import { css } from '@cerberus/styled-system/css'
+import { vstack } from '@cerberus/styled-system/patterns'
 
 interface OverviewListProps {
   intro?: string
