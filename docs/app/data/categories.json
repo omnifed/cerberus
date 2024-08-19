@@ -27,6 +27,6 @@
   "inputs": {
     "name": "Inputs",
     "description": "Components that allow users to input data.",
-    "items": ["Input", "Textarea"]
+    "items": ["Input", "Textarea", "File Uploader"]
   }
 }

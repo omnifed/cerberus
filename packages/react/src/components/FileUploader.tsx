@@ -1,5 +1,5 @@
 import { css, cx } from '@cerberus-design/styled-system/css'
-import { cq, vstack } from '@cerberus-design/styled-system/patterns'
+import { vstack } from '@cerberus-design/styled-system/patterns'
 import type { InputHTMLAttributes, PropsWithChildren } from 'react'
 import { Show } from './Show'
 
@@ -10,13 +10,18 @@ export interface FileUploaderProps
 }
 
 export function FileUploader(props: PropsWithChildren<FileUploaderProps>) {
+  const { children, ...nativeProps } = props
   return (
     <div
-      className={cq({
+      className={css({
         border: '1px dashed',
         borderColor: 'page.border.100',
         bgColor: 'page.surface.100',
+        minH: '14rem',
+        maxW: '36rem',
+        py: '6',
         rounded: 'md',
+        w: 'full',
       })}
     >
       <label
@@ -39,29 +44,31 @@ export function FileUploader(props: PropsWithChildren<FileUploaderProps>) {
             {props.heading}
           </p>
         </Show>
-        {props.children}
+        {children}
 
         <p
           className={css({
+            color: 'action.navigation.initial',
+            textDecoration: 'underline',
             textStyle: 'label-sm',
+            transitionProperty: 'color',
+            transitionDuration: '150ms',
+            _peerHover: {
+              color: 'action.navigation.hover',
+            },
           })}
         >
-          Or{' '}
-          <span
-            className={css({
-              textStyle: 'link',
-            })}
-          >
-            Click to upload
-          </span>
+          Or click to upload
         </p>
 
         <input
-          {...props}
+          {...nativeProps}
           className={cx(
-            props.className,
+            nativeProps.className,
+            'peer',
             css({
               bottom: '0',
+              cursor: 'pointer',
               left: '0',
               opacity: '0',
               position: 'absolute',
