@@ -1,8 +1,9 @@
 import { cx } from '@cerberus-design/styled-system/css'
-import { vstack } from '@cerberus-design/styled-system/patterns'
+import { circle, vstack } from '@cerberus-design/styled-system/patterns'
 import type { InputHTMLAttributes } from 'react'
 import { Show } from './Show'
-import { fileUploader } from '@cerberus-design/styled-system/recipes'
+import { fileUploader, modalIcon } from '@cerberus-design/styled-system/recipes'
+import { CloudUpload } from '@cerberus/icons'
 
 export interface FileUploaderProps
   extends InputHTMLAttributes<HTMLInputElement> {
@@ -21,6 +22,10 @@ export function FileUploader(props: FileUploaderProps) {
         styles.container,
       )}
     >
+      <span className={cx(styles.icon, modalIcon(), circle())}>
+        <CloudUpload />
+      </span>
+
       <label
         className={cx(
           vstack({
