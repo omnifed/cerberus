@@ -1,0 +1,71 @@
+import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { modalIconBase } from '../shared/modal.base'
+
+/**
+ * This module contains the fileUploader recipe.
+ * @module
+ */
+
+/**
+ * Styles for the FileUploader components
+ * @definition [ARIA Dialog Modal](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/)
+ * @definition [File Uploader docs](https://cerberus.digitalu.design/react/file-uploader)
+ */
+export const fileUploader: Partial<SlotRecipeConfig> = defineSlotRecipe({
+  className: 'file-uploader',
+  description: 'The styles for FileUploader components',
+  slots: ['container', 'label', 'icon', 'heading', 'description', 'input'],
+  jsx: ['ConfirmModal', 'PromptModal'],
+
+  base: {
+    container: {
+      // combine with vstack
+      borderColor: 'page.border.100',
+      borderStyle: 'dashed',
+      borderWidth: '2.5px',
+      bgColor: 'page.surface.100',
+      justify: 'center',
+      minH: '14rem',
+      maxW: '36rem',
+      py: '6',
+      rounded: 'md',
+      transitionProperty: 'background-color, border',
+      transitionDuration: '150ms',
+      transitionTimingFunction: 'ease-in-out',
+      w: 'full',
+      _hover: {
+        borderColor: 'action.border.focus',
+        bgColor: 'action.ghost.hover',
+      },
+    },
+    label: {
+      // combine with vstack
+      gap: '1',
+      justify: 'center',
+      position: 'relative',
+      textStyle: 'label-sm',
+      userSelect: 'none',
+    },
+    icon: modalIconBase,
+    heading: {
+      pt: '2',
+      textStyle: 'h6',
+    },
+    description: {
+      color: 'action.navigation.initial',
+      textDecoration: 'underline',
+      textStyle: 'label-sm',
+      transitionProperty: 'color',
+      transitionDuration: '150ms',
+    },
+    input: {
+      bottom: '0',
+      cursor: 'pointer',
+      left: '0',
+      opacity: '0',
+      position: 'absolute',
+      right: '0',
+      top: '0',
+    },
+  },
+})
