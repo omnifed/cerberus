@@ -3,6 +3,7 @@ import { slotRecipes } from '@cerberus-design/panda-preset'
 
 describe('fileUploader recipe', () => {
   const { fileUploader } = slotRecipes
+  const BORDER_COLOR = 'action.border.focus'
 
   test('should be exported', () => {
     expect(fileUploader).toBeDefined()
@@ -19,13 +20,22 @@ describe('fileUploader recipe', () => {
       maxW: '36rem',
       py: '6',
       rounded: 'md',
-      transitionProperty: 'background-color, border',
+      transitionProperty: 'background-color, border, opacity',
       transitionDuration: '150ms',
       transitionTimingFunction: 'ease-in-out',
       w: 'full',
       _hover: {
-        borderColor: 'action.border.focus',
+        borderColor: BORDER_COLOR,
+        borderStyle: 'solid',
         bgColor: 'action.ghost.hover',
+      },
+      _isOver: {
+        borderColor: BORDER_COLOR,
+        borderStyle: 'solid',
+        bgColor: 'action.ghost.hover',
+      },
+      _isDropped: {
+        opacity: '0.5',
       },
     })
   })
@@ -68,7 +78,7 @@ describe('fileUploader recipe', () => {
       _focusVisible: {
         boxShadow: 'none',
         outline: '3px solid',
-        outlineColor: 'action.border.focus',
+        outlineColor: BORDER_COLOR,
         outlineOffset: '2px',
       },
     })
