@@ -1,0 +1,27 @@
+---
+heading: 'File Uploader'
+description: 'File uploaders allow users to upload files to a server'
+a11y: 'forms'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  BasicFileUploader
+} from '@/app/react/file-uploader/components/file-uploader-preview'
+
+<OverviewList rules={[
+  'Labels should be used to describe the file types that can be uploaded',
+  'The file uploader should have a clear call to action',
+  'Headings can be used to describe the file uploader',
+]} />
+
+## Example
+
+<CodePreview preview={<BasicFileUploader />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |

@@ -6,8 +6,10 @@
 // components
 
 export * from './components/Button'
+export * from './components/Droppable'
 export * from './components/FieldMessage'
 export * from './components/FeatureFlag'
+export * from './components/FileUploader'
 export * from './components/IconButton'
 export * from './components/Input'
 export * from './components/Label'
@@ -58,3 +60,7 @@ export * from './config/defineIcons'
 // shared types
 
 export * from './types'
+
+// 3rd party
+
+export * from '@dnd-kit/core'

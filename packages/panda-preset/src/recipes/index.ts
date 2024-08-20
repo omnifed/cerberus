@@ -5,6 +5,7 @@ import { label } from './label'
 import { modalIcon } from './modalIcon'
 import { tag } from './tag'
 
+import { fileUploader } from './slots/fileUploader'
 import { input } from './slots/input'
 import { modal } from './slots/modal'
 import { radio } from './slots/radio'
@@ -26,6 +27,7 @@ export const recipes = {
 }
 
 export const slotRecipes = {
+  fileUploader,
   input,
   modal,
   radio,

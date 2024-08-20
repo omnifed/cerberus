@@ -1,0 +1,57 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/Label.tsx'
+recipe: 'label.ts'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  BasicFileUploader
+} from '@/app/react/file-uploader/components/file-uploader-preview'
+
+```ts
+import { FileUploader } from '@cerberus-design/react'
+```
+
+## Usage
+
+<CodePreview preview={<BasicFileUploader />}>
+```tsx title="file-uploader.tsx" {5,6}
+import { FileUploader } from '@cerberus-design/react'
+
+function BasicFileUploader() {
+  return (
+    <FileUploader
+      accept=".csv,.docx"
+      heading="Upload Files"
+      name="basic-example"
+    />
+  )
+}
+```
+</CodePreview>
+
+## Customizing
+
+To customize the FileUploader, we recommend extending the `fileUploader` slot recipe in your panda config.
+
+## API
+
+```ts showLineNumbers=false
+export interface FileUploaderProps
+  extends InputHTMLAttributes<HTMLInputElement> {
+  heading?: string
+  name: string
+}
+
+define function FileUploader(props: FileUploaderProps): ReactNode
+```
+
+### Props
+
+The `FileUploader` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| heading  |         | The heading for the file uploader                             |
+| name     |         | The unique name of the file uploader                                  |

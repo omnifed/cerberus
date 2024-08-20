@@ -143,6 +143,20 @@
     "type": "route"
   },
   {
+    "id": "2:s",
+    "label": "File Uploader",
+    "route": "/react/file-uploader",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:t",
+    "label": "Drag & Drop",
+    "route": "/react/drag-n-drop",
+    "tag": "next",
+    "type": "route"
+  },
+  {
     "id": "3",
     "label": "Hooks",
     "type": "heading"
