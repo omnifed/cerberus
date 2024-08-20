@@ -1,5 +1,6 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { modalIconBase } from '../shared/modal.base'
+import { focusStates } from '../shared/states'
 
 /**
  * This module contains the fileUploader recipe.
@@ -29,13 +30,22 @@ export const fileUploader: Partial<SlotRecipeConfig> = defineSlotRecipe({
       maxW: '36rem',
       py: '6',
       rounded: 'md',
-      transitionProperty: 'background-color, border',
+      transitionProperty: 'background-color, border, opacity',
       transitionDuration: '150ms',
       transitionTimingFunction: 'ease-in-out',
       w: 'full',
       _hover: {
         borderColor: 'action.border.focus',
+        borderStyle: 'solid',
         bgColor: 'action.ghost.hover',
+      },
+      _isOver: {
+        borderColor: 'action.border.focus',
+        borderStyle: 'solid',
+        bgColor: 'action.ghost.hover',
+      },
+      _isDropped: {
+        opacity: '0.5',
       },
     },
     label: {
@@ -43,6 +53,7 @@ export const fileUploader: Partial<SlotRecipeConfig> = defineSlotRecipe({
       gap: '1',
       justify: 'center',
       position: 'relative',
+      rounded: 'md',
       textStyle: 'label-sm',
       userSelect: 'none',
     },
@@ -59,13 +70,16 @@ export const fileUploader: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionDuration: '150ms',
     },
     input: {
+      appearance: 'none',
       bottom: '0',
       cursor: 'pointer',
       left: '0',
       opacity: '0',
       position: 'absolute',
       right: '0',
+      rounded: 'md',
       top: '0',
+      ...focusStates,
     },
   },
 })

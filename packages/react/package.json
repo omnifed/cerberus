@@ -20,6 +20,9 @@
     "react": "*",
     "react-dom": "*"
   },
+  "dependencies": {
+    "@dnd-kit/core": "^6.1.0"
+  },
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/styled-system": "workspace:*",

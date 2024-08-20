@@ -28,6 +28,14 @@ describe('conditions', () => {
     )
   })
 
+  test('should have an isOver', () => {
+    expect(conditions.isOver).toEqual('&:is([data-over=true])')
+  })
+
+  test('should have an isDropped', () => {
+    expect(conditions.isDropped).toEqual('&:is([data-dropped=true])')
+  })
+
   test('should have an invalid', () => {
     expect(conditions.invalid).toEqual(
       '&:is(:invalid, [data-invalid], [aria-invalid])',

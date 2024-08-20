@@ -6,65 +6,26 @@ recipe: 'label.ts'
 
 import CodePreview from '@/app/components/CodePreview'
 import {
-  LabelBasicPreview,
-  LabelHiddenPreview,
-  LabelOptionalPreview,
-  LabelCustomPreview
-} from '@/app/react/label/components/label-preview'
-import { NoteAdmonition } from '@/app/components/Admonition'
+  BasicFileUploader
+} from '@/app/react/file-uploader/components/file-uploader-preview'
 
 ```ts
-import { Field, Label } from '@cerberus-design/react'
+import { FileUploader } from '@cerberus-design/react'
 ```
 
 ## Usage
 
-<CodePreview preview={<LabelBasicPreview />}>
-```tsx title="first-name-input.tsx" {5,6}
-import { Field, Label } from '@cerberus-design/react'
+<CodePreview preview={<BasicFileUploader />}>
+```tsx title="file-uploader.tsx" {5,6}
+import { FileUploader } from '@cerberus-design/react'
 
-function LabelBasicPreview() {
+function BasicFileUploader() {
   return (
-    <Field required>
-      <Label htmlFor="first_name">First Name</Label>
-      <Input id="first_name" placeholder="Type your first name" type="text" />
-    </Field>
-  )
-}
-```
-</CodePreview>
-
-## Hidden
-
-<CodePreview preview={<LabelHiddenPreview />}>
-```tsx title="search-input.tsx" {6}
-import { Field, Label } from '@cerberus-design/react'
-
-function LabelHiddenPreview() {
-  return (
-    <Field required>
-      <Label htmlFor="global_search" hidden>
-        Search anything
-      </Label>
-      <Input id="global_search" placeholder="Search anything" type="text" />
-    </Field>
-  )
-}
-```
-</CodePreview>
-
-## Optional
-
-<CodePreview preview={<LabelOptionalPreview />}>
-```tsx title="search-input.tsx" {5}
-import { Field, Label } from '@cerberus-design/react'
-
-function LabelOptionalPreview() {
-  return (
-    <Field>
-      <Label htmlFor="preferred">Preferred Name</Label>
-      <Input id="preferred" placeholder="i.e. Johnny" type="text" />
-    </Field>
+    <FileUploader
+      accept=".csv,.docx"
+      heading="Upload Files"
+      name="basic-example"
+    />
   )
 }
 ```
@@ -72,62 +33,25 @@ function LabelOptionalPreview() {
 
 ## Customizing
 
-<CodePreview preview={<LabelCustomPreview />}>
-```tsx title="search-input.tsx"
-import { Field, Label } from '@cerberus-design/react'
-
-function LabelCustomPreview() {
-  return (
-    <Field required>
-      <Label
-        className={css({
-          fontSize: '2rem',
-          bgColor: 'black',
-          color: 'yellow',
-        })}
-        htmlFor="global_search"
-      >
-        Killa Bees
-      </Label>
-      <input id="global_search" type="text" />
-    </Field>
-  )
-}
-
-```
-</CodePreview>
+To customize the FileUploader, we recommend extending the `fileUploader` slot recipe in your panda config.
 
 ## API
 
-<NoteAdmonition description="The Label component must be used within a Field provider." />
-
 ```ts showLineNumbers=false
-export interface FieldProps {
-  disabled?: boolean
-  invalid?: boolean
-  required?: boolean
-  readOnly?: boolean
+export interface FileUploaderProps
+  extends InputHTMLAttributes<HTMLInputElement> {
+  heading?: string
+  name: string
 }
 
-define function Field(props: PropsWithChildren<FieldProps>): ReactNode
-```
-
-```ts showLineNumbers=false
-export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
-  htmlFor: string
-  hidden?: boolean
-  size?: 'sm' | 'md'
-}
-
-define function Label(props: LabelProps): ReactNode
+define function FileUploader(props: FileUploaderProps): ReactNode
 ```
 
 ### Props
 
-The `LabelProps` component accepts the following props:
+The `FileUploader` component accepts the following props:
 
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
-| htmlFor     | null   | The `name` attribute of the Input the Label is associated with. |
-| hidden   | false   | Whether the Label content should be visually hidden.                 |
-| size     | 'md'    | The size of the Label.         |
+| heading  |         | The heading for the file uploader                             |
+| name     |         | The unique name of the file uploader                                  |

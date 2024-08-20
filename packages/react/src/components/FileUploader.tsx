@@ -1,6 +1,8 @@
+'use client'
+
 import { cx } from '@cerberus-design/styled-system/css'
 import { circle, vstack } from '@cerberus-design/styled-system/patterns'
-import type { InputHTMLAttributes } from 'react'
+import { type InputHTMLAttributes } from 'react'
 import { Show } from './Show'
 import { fileUploader, modalIcon } from '@cerberus-design/styled-system/recipes'
 import { $cerberusIcons } from '../config/defineIcons'

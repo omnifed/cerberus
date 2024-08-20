@@ -9,6 +9,8 @@ export const conditions = {
   // states
   modalOpen: '&:is([data-modal-open=true])',
   screenReaderOnly: '&:is([data-screen-reader-only=true])',
+  isOver: '&:is([data-over=true])',
+  isDropped: '&:is([data-dropped=true])',
   invalid: '&:is(:invalid, [data-invalid], [aria-invalid])',
   userInvalid: '&:is(:user-invalid, [aria-invalid])',
   groupInvalid: '.group:is([data-invalid] &, [aria-invalid]) &',

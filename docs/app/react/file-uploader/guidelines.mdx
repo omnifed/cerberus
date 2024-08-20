@@ -4,46 +4,29 @@
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import {
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
+  WhenToUseAdmonition
 } from '@/app/components/Admonition'
 import {
-  LabelBasicPreview,
-  LabelHiddenPreview,
-  LabelOptionalPreview
-} from '@/app/react/label/components/label-preview'
+  BasicFileUploader
+} from '@/app/react/file-uploader/components/file-uploader-preview'
 
 ## Usage
 
-<WhenToUseAdmonition description="When you use an input in the UI, regardless if it has a visible label or not." />
+<WhenToUseAdmonition description="When you need to provide a way for users to upload files to the server." />
 
-<WhenNotToUseAdmonition description="Labels should always accompany any type of input." />
+## File Uploader
 
+File Uploaders can be used for any type of file (i.e. text, images, video, etc.).
 
-## Standard Labels
-
-Standard labels are used for most input use cases.
-
-<CodePreview preview={<LabelOptionalPreview />} />
-
-<WhenToUseAdmonition description="When you use any type of standard inputs within a form." />
-
-## Hidden Labels
-
-Hidden labels are used when the label is not visible to the user, but still needs to be present for screen readers.
-
-<CodePreview preview={<LabelHiddenPreview />} />
-
-<WhenToUseAdmonition description="When you need an input that doesn't use a visual label (i.e., global search input)" />
-
-## Required Labels
-
-Required labels are used when the input is required.
-
-<CodePreview preview={<LabelBasicPreview />} />
-
-<WhenToUseAdmonition description="When the input is required." />
+<CodePreview preview={<BasicFileUploader />} />
 
 ## Placement
 
-Labels should be placed above the input field. For checkboxes and radio buttons, the label should be placed to the right of the input.
+File Uploaders should be placed in a location that is easy to find and use.
+
+<OverviewList intro="They can be placed in:" rules={[
+  'Forms',
+  'Modals',
+  'Pages',
+  'Sidebars',
+]} />

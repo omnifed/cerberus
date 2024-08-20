@@ -56,6 +56,7 @@ describe('fileUploader recipe', () => {
 
   test('should have a input style', () => {
     expect(fileUploader.base?.input).toMatchObject({
+      appearance: 'none',
       bottom: '0',
       cursor: 'pointer',
       left: '0',
@@ -63,6 +64,13 @@ describe('fileUploader recipe', () => {
       position: 'absolute',
       right: '0',
       top: '0',
+      rounded: 'md',
+      _focusVisible: {
+        boxShadow: 'none',
+        outline: '3px solid',
+        outlineColor: 'action.border.focus',
+        outlineOffset: '2px',
+      },
     })
   })
 })
