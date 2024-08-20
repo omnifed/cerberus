@@ -859,8 +859,8 @@
         "$description": "",
         "$extensions": {
           "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "hiddenFromPublishing": true,
+            "scopes": [],
             "codeSyntax": {}
           }
         }
@@ -907,15 +907,27 @@
         "$description": "",
         "$extensions": {
           "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "hiddenFromPublishing": true,
+            "scopes": [],
             "codeSyntax": {}
           }
         }
       }
     },
     "page": {
-      "100": {
+      "initial": {
+        "$type": "color",
+        "$value": "colors.brand.100",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "hover": {
         "$type": "color",
         "$value": "colors.neutral.80",
         "$description": "",
@@ -927,21 +939,9 @@
           }
         }
       },
-      "200": {
+      "active": {
         "$type": "color",
         "$value": "colors.neutral.70",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "initial": {
-        "$type": "color",
-        "$value": "colors.brand.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
