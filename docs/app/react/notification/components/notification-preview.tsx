@@ -45,7 +45,7 @@ export function InfoNotification() {
         </p>
       </div>
 
-      <div cla>
+      <div>
         <IconButton ariaLabel="Close">
           <Close />
         </IconButton>
