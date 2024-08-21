@@ -51,3 +51,10 @@ export const nonActionPalettes = {
   warning,
   danger,
 }
+
+export const statePalettes = {
+  info,
+  success,
+  warning,
+  danger,
+}

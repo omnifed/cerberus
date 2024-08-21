@@ -1,0 +1,86 @@
+---
+npm: '@cerberus-design/react'
+source: 'context/confirm-modal.tsx'
+recipe: ''
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  NoteAdmonition,
+} from '@/app/components/Admonition'
+import {
+  InfoNotification,
+  SuccessNotification,
+  WarningNotification,
+  DangerNotification,
+} from '@/app/react/notification/components/notification-preview'
+
+```ts
+import { Notification, useNotification } from '@cerberus-design/react'
+```
+
+## Usage
+
+### Info
+
+<CodePreview preview={<InfoNotification />}>
+```tsx title="some-page.tsx"
+import { Notification, useNotification } from '@cerberus-design/react'
+```
+</CodePreview>
+
+### Success
+
+<CodePreview preview={<SuccessNotification />}>
+```tsx title="some-page.tsx"
+import { Notification, useNotification } from '@cerberus-design/react'
+```
+</CodePreview>
+
+### Warning
+
+<CodePreview preview={<WarningNotification />}>
+```tsx title="some-page.tsx"
+import { Notification, useNotification } from '@cerberus-design/react'
+```
+</CodePreview>
+
+### Danger
+
+<CodePreview preview={<DangerNotification />}>
+```tsx title="some-page.tsx"
+import { Notification, useNotification } from '@cerberus-design/react'
+```
+</CodePreview>
+
+## Customization
+
+For customizing the Notification, we recommend extending the `notification` slot recipe provided by the `@cerberus/panda-preset` package in your config.
+
+## API
+
+```ts showLineNumbers=false
+export interface NotificationOptions {
+  palette?: 'info' | 'success' | 'warning' | 'danger'
+  heading: string
+  description?: ReactNode
+  onClose?: () => void
+}
+
+export interface NotificationProviderValue {
+  notify: (options: NotificationOptions) => void
+}
+
+define function Notification(props: PropsWithChildren<{}>): ReactNode
+````
+
+### Show Method Options
+
+The `notify` method accepts the following options:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| palette | `info` | The palette variant used to theme the modal.           |
+| heading | `''` | The heading of the modal. |
+| description | `null` | The description of the modal. |
+| onClose |  | An optional callback that runs when the user closes the notification. |

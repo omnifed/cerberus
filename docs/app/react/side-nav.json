@@ -123,13 +123,20 @@
   },
   {
     "id": "2:p",
+    "label": "Notification",
+    "route": "/react/notification",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "id": "2:q",
     "label": "Show",
     "route": "/react/show",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:q",
+    "id": "2:qr",
     "label": "Portal",
     "route": "/react/portal",
     "tag": "new",

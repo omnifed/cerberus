@@ -8,6 +8,7 @@ import { tag } from './tag'
 import { fileUploader } from './slots/fileUploader'
 import { input } from './slots/input'
 import { modal } from './slots/modal'
+import { notification } from './slots/notification'
 import { radio } from './slots/radio'
 import { tabs } from './slots/tabs'
 import { toggle } from './slots/toggle'
@@ -29,6 +30,7 @@ export const recipes = {
 export const slotRecipes = {
   fileUploader,
   input,
+  notification,
   modal,
   radio,
   tabs,
