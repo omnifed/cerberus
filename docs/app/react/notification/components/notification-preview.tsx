@@ -13,6 +13,8 @@ import { hstack, vstack } from '@cerberus/styled-system/patterns'
 import { notification } from '@cerberus/styled-system/recipes'
 import type { PropsWithChildren } from 'react'
 
+const FLEX_START = 'flex-start'
+
 export function InfoNotification() {
   const infoStyles = notification()
   return (
@@ -32,7 +34,7 @@ export function InfoNotification() {
 
       <div
         className={vstack({
-          alignItems: 'flex-start',
+          alignItems: FLEX_START,
           gap: '0',
           py: '2',
         })}
@@ -74,7 +76,7 @@ export function SuccessNotification() {
 
       <div
         className={vstack({
-          alignItems: 'flex-start',
+          alignItems: FLEX_START,
           gap: '0',
           py: '2',
         })}
@@ -116,7 +118,7 @@ export function WarningNotification() {
 
       <div
         className={vstack({
-          alignItems: 'flex-start',
+          alignItems: FLEX_START,
           gap: '0',
           py: '2',
         })}
@@ -158,7 +160,7 @@ export function DangerNotification() {
 
       <div
         className={vstack({
-          alignItems: 'flex-start',
+          alignItems: FLEX_START,
           gap: '0',
           py: '2',
         })}
