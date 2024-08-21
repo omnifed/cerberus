@@ -1,0 +1,33 @@
+---
+heading: 'Notification'
+description: 'Notifications show short updates about app processes at the on the screen.'
+a11y: 'touch-target'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  OverviewPreview,
+  PalettePreview
+} from '@/app/react/notification/components/notification-preview'
+
+<OverviewList rules={[
+  'Notifications shouldn’t interrupt the user’s experience',
+  'Usually appear at the bottom of the UI on mobile',
+  'Usually appear at the top of the UI on desktop',
+  'Can disappear on their own or remain on screen until the user takes action',
+]} />
+
+## Palettes
+
+<CodePreview preview={<PalettePreview />} />
+
+## Example
+
+<CodePreview preview={<OverviewPreview />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |
