@@ -186,7 +186,6 @@ function NotificationWrapper(props: PropsWithChildren<{}>) {
       className={css({
         position: 'relative',
         minH: '3.125rem',
-        w: '30rem',
       })}
     >
       {props.children}
