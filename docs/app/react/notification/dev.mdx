@@ -13,6 +13,7 @@ import {
   SuccessNotification,
   WarningNotification,
   DangerNotification,
+  CustomNotification,
 } from '@/app/react/notification/components/notification-preview'
 
 ```ts
@@ -55,7 +56,40 @@ import { Notification, useNotification } from '@cerberus-design/react'
 
 ## Customization
 
-For customizing the Notification, we recommend extending the `notification` slot recipe provided by the `@cerberus/panda-preset` package in your config.
+You can use the Notification components to customize the styles.
+
+<CodePreview preview={<CustomNotification />}>
+```tsx title="some-page.tsx"
+import { Notification } from '@cerberus-design/react'
+
+function CustomNotification() {
+  return (
+    <Notification
+      className={css({
+        bgColor: 'black',
+      })}
+      id="forever"
+      open
+    >
+      <NotificationHeading
+        className={css({
+          color: 'yellow',
+        })}
+      >
+        Wu-Tang Clan
+      </NotificationHeading>
+      <NotificationDescription
+        className={css({
+          color: 'yellow',
+        })}
+      >
+        It's Method Man, for short Mr. Meth
+      </NotificationDescription>
+    </Notification>
+  )
+}
+```
+</CodePreview>
 
 ## API
 
