@@ -859,8 +859,8 @@
         "$description": "",
         "$extensions": {
           "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "hiddenFromPublishing": true,
+            "scopes": [],
             "codeSyntax": {}
           }
         }
@@ -907,8 +907,8 @@
         "$description": "",
         "$extensions": {
           "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "hiddenFromPublishing": true,
+            "scopes": [],
             "codeSyntax": {}
           }
         }
