@@ -45,7 +45,7 @@ export function InfoNotification() {
         </p>
       </div>
 
-      <div className={infoStyles.close}>
+      <div cla>
         <IconButton ariaLabel="Close">
           <Close />
         </IconButton>
@@ -87,7 +87,7 @@ export function SuccessNotification() {
         </p>
       </div>
 
-      <div className={styles.close}>
+      <div>
         <IconButton ariaLabel="Close">
           <Close />
         </IconButton>
@@ -129,7 +129,7 @@ export function WarningNotification() {
         </p>
       </div>
 
-      <div className={styles.close}>
+      <div>
         <IconButton ariaLabel="Close">
           <Close />
         </IconButton>
@@ -171,7 +171,7 @@ export function DangerNotification() {
         </p>
       </div>
 
-      <div className={styles.close}>
+      <div>
         <IconButton ariaLabel="Close">
           <Close />
         </IconButton>
