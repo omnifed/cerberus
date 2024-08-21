@@ -33,7 +33,7 @@ function getNotificationPalette(
 export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'notification',
   description: 'The styles for Notification components',
-  slots: ['dialog', 'icon', 'heading', 'description', 'close'],
+  slots: ['dialog', 'icon', 'heading', 'description'],
   jsx: [
     'Notification',
     'InfoNotification',
