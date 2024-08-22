@@ -33,7 +33,7 @@ function getNotificationPalette(
 export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'notification',
   description: 'The styles for Notification components',
-  slots: ['center', 'dialog', 'icon', 'heading', 'description'],
+  slots: ['center', 'dialog', 'icon', 'heading', 'description', 'closeAll'],
   jsx: [
     'NotificationCenter',
     'Notification',
@@ -45,9 +45,9 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   base: {
     center: {
-      // combine with vstack
       position: 'fixed',
       right: '4',
+      textAlign: 'right',
       top: '24',
       zIndex: 'toast',
     },
@@ -88,6 +88,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
         ...focusStates,
       },
     },
+    closeAll: {},
   },
 
   variants: {

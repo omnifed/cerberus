@@ -12,6 +12,7 @@ describe('notification recipe', () => {
     expect(notification.base?.center).toMatchObject({
       position: 'fixed',
       right: '4',
+      textAlign: 'right',
       top: '24',
       zIndex: 'toast',
     })

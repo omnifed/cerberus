@@ -15,7 +15,7 @@
     "palette": "warning",
     "id": "3",
     "heading": "Slow Network",
-    "description": "Your network is slow. Please check your connection."
+    "description": "Please check your connection."
   },
   {
     "palette": "danger",
