@@ -1,3 +1,5 @@
+'use client'
+
 import { cx } from '@cerberus-design/styled-system/css'
 import { hstack, vstack } from '@cerberus-design/styled-system/patterns'
 import {
@@ -5,15 +7,16 @@ import {
   type NotificationVariantProps,
 } from '@cerberus-design/styled-system/recipes'
 import {
-  forwardRef,
+  useRef,
   type DialogHTMLAttributes,
-  type ForwardedRef,
   type PropsWithChildren,
+  type MouseEvent,
 } from 'react'
 import { IconButton } from './IconButton'
 import { Close } from '@cerberus/icons'
 import { $cerberusIcons } from '../config/defineIcons'
 import type { IconType } from '../config/cerbIcons'
+import { trapFocus } from '../aria-helpers/trap-focus.aria'
 
 /**
  * This module exports the Notification component.
@@ -28,18 +31,32 @@ function MatchNotificationIcon(props: NotificationVariantProps) {
 }
 
 export interface NotificationBaseProps
-  extends DialogHTMLAttributes<HTMLDialogElement> {
+  extends Omit<DialogHTMLAttributes<HTMLDialogElement>, 'onClose'> {
   id: string
-  onClose?: () => void
+  onClose?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 export type NotificationProps = NotificationBaseProps & NotificationVariantProps
 
-function NotificationEl(
-  props: PropsWithChildren<NotificationProps>,
-  ref: ForwardedRef<HTMLDialogElement>,
-) {
+/**
+ * The info notification component.
+ * @param props - The component props.
+ * @returns The info notification component.
+ * @example
+ * ```tsx
+ * <Notification id="info:1" open>
+ *  <NotificationHeading>Info Notification</NotificationHeading>
+ * <NotificationDescription>
+ *  This is a description with a <a href="#">link</a> in the message.
+ * </NotificationDescription>
+ * </Notification>
+ * ```
+ */
+export function Notification(props: PropsWithChildren<NotificationProps>) {
   const { children, palette, onClose, ...nativeProps } = props
+  const ref = useRef<HTMLDialogElement>(null)
+  const onKeyDown = trapFocus(ref)
   const styles = notification({ palette })
+
   return (
     <dialog
       {...nativeProps}
@@ -48,10 +65,10 @@ function NotificationEl(
         hstack({
           position: 'relative',
           gap: '4',
-          top: 'initial',
         }),
         styles.dialog,
       )}
+      onKeyDown={onKeyDown}
       ref={ref}
       role="alert"
     >
@@ -69,18 +86,9 @@ function NotificationEl(
         {children}
       </div>
 
-      <div>
-        <IconButton ariaLabel="Close" onClick={onClose}>
-          <Close />
-        </IconButton>
-      </div>
+      <IconButton ariaLabel="Close" onClick={onClose} value={props.id}>
+        <Close />
+      </IconButton>
     </dialog>
   )
 }
-
-/**
- * The info notification component.
- * @param props - The component props.
- * @returns The info notification component.
- */
-export const Notification = forwardRef(NotificationEl)

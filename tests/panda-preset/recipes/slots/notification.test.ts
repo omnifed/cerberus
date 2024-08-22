@@ -11,12 +11,8 @@ describe('notification recipe', () => {
   test('should have a base style', () => {
     expect(notification.base?.dialog).toMatchObject({
       bgColor: 'colorPalette.surface.initial',
-      bottom: '4',
       minH: '3.125rem',
-      left: '4',
       opacity: '0',
-      position: 'absolute',
-      right: '4',
       rounded: 'sm',
       shadow: 'md',
       w: 'full',
@@ -31,8 +27,10 @@ describe('notification recipe', () => {
         opacity: '1',
       },
       md: {
-        bottom: 'initial',
-        left: 'initial',
+        mx: 'auto',
+        minW: '20.25rem',
+        maxW: '68rem',
+        w: 'initial',
       },
     })
   })

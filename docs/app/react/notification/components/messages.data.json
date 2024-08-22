@@ -1,0 +1,26 @@
+[
+  {
+    "palette": "info",
+    "id": "1",
+    "heading": "Update Available",
+    "description": "A new version of the app is available. Refresh."
+  },
+  {
+    "palette": "success",
+    "id": "2",
+    "heading": "Profile Updated",
+    "description": "Your profile has been updated successfully."
+  },
+  {
+    "palette": "warning",
+    "id": "3",
+    "heading": "Slow Network",
+    "description": "Your network is slow. Please check your connection."
+  },
+  {
+    "palette": "danger",
+    "id": "4",
+    "heading": "Unable to Update",
+    "description": "An error occurred. Please try again."
+  }
+]
