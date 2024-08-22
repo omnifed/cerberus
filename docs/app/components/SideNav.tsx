@@ -43,12 +43,12 @@ export default memo(function SideNav(props: PropsWithChildren<SideNavProps>) {
           w: 'full',
         })}
       >
-        {props.navList.map((item) => (
+        {props.navList.map((item, idx) => (
           <li
             className={css({
               w: 'full',
             })}
-            key={item.id}
+            key={`${idx}:${item.label.toLowerCase()}`}
           >
             <MatchSideNavItem {...item} />
           </li>
