@@ -1,5 +1,6 @@
 import type { Prominence, SemanticToken } from './types'
-import { colors, deepGetByPaths, rawTokens } from '../../tokens'
+import { colors, deepGetByPaths, rawTokens, semanticColors } from '../../tokens'
+import { WARNING } from '../../recipes/shared/palettes'
 
 /**
  * This module is a collection of warning tokens that are used to generate the theme.
@@ -28,7 +29,9 @@ export const warningTokens: WarningTokens = {
   warning: {
     border: {
       initial: {
-        description: 'The default border color of warning elements.',
+        description:
+          semanticColors.border[WARNING].initial.$description ||
+          'The default border color of warning elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -51,6 +54,7 @@ export const warningTokens: WarningTokens = {
     surface: {
       initial: {
         description:
+          semanticColors.surface[WARNING].initial.$description ||
           'The default color for static (surface) elements that display a warning state.',
         value: {
           _cerberusTheme: {
@@ -71,6 +75,7 @@ export const warningTokens: WarningTokens = {
       },
       100: {
         description:
+          semanticColors.surface[WARNING]['100'].$description ||
           'The second layer of color for static (surface) elements that display a warning state - used on top of initial.',
         value: {
           _cerberusTheme: {
@@ -91,6 +96,7 @@ export const warningTokens: WarningTokens = {
       },
       200: {
         description:
+          semanticColors.surface[WARNING]['200'].$description ||
           'The third layer of color for static (surface) elements that display a warning state - used on top of 100.',
         value: {
           _cerberusTheme: {
@@ -113,7 +119,9 @@ export const warningTokens: WarningTokens = {
 
     text: {
       initial: {
-        description: 'The default text color of warning elements.',
+        description:
+          semanticColors.text[WARNING].initial.$description ||
+          'The default text color of warning elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -132,7 +140,9 @@ export const warningTokens: WarningTokens = {
         },
       },
       100: {
-        description: 'The secondary text color of warning elements.',
+        description:
+          semanticColors.text[WARNING]['100'].$description ||
+          'The secondary text color of warning elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -151,7 +161,9 @@ export const warningTokens: WarningTokens = {
         },
       },
       200: {
-        description: 'The tertiary text color of warning elements.',
+        description:
+          semanticColors.text[WARNING]['200'].$description ||
+          'The tertiary text color of warning elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -171,6 +183,7 @@ export const warningTokens: WarningTokens = {
       },
       inverse: {
         description:
+          semanticColors.text[WARNING].inverse.$description ||
           'The inverse version of the default text color of warning elements.',
         value: {
           _cerberusTheme: {

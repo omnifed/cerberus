@@ -46,6 +46,30 @@ describe('infoTokens', () => {
     ).toEqual('#9ACFEE')
   })
 
+  test('should have a bg.hover property', () => {
+    expect(
+      formatToken(infoTokens.info.bg.hover.value._cerberusTheme.base),
+    ).toEqual('#013655')
+    expect(
+      formatToken(infoTokens.info.bg.hover.value._cerberusTheme._darkMode),
+    ).toEqual('#013655')
+    expect(
+      formatToken(infoTokens.info.bg.hover.value._cerberusTheme._lightMode),
+    ).toEqual('#CCE7F7')
+  })
+
+  test('should have a bg.active property', () => {
+    expect(
+      formatToken(infoTokens.info.bg.active.value._cerberusTheme.base),
+    ).toEqual('#35A0DD')
+    expect(
+      formatToken(infoTokens.info.bg.active.value._cerberusTheme._darkMode),
+    ).toEqual('#35A0DD')
+    expect(
+      formatToken(infoTokens.info.bg.active.value._cerberusTheme._lightMode),
+    ).toEqual('#35A0DD')
+  })
+
   test('should have a surface.initial property', () => {
     expect(infoTokens.info.surface).toBeDefined()
   })

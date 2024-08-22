@@ -1,5 +1,6 @@
 import type { Prominence, SemanticToken } from './types'
-import { colors, deepGetByPaths, rawTokens } from '../../tokens'
+import { colors, deepGetByPaths, rawTokens, semanticColors } from '../../tokens'
+import { INFO } from '../../recipes/shared/palettes'
 
 /**
  * This module is a collection of info tokens that are used to generate the theme.
@@ -15,6 +16,8 @@ export interface InfoTokens {
     }
     readonly bg: {
       readonly initial: SemanticToken
+      readonly hover: SemanticToken
+      readonly active: SemanticToken
     }
     readonly surface: {
       readonly initial: SemanticToken
@@ -31,7 +34,9 @@ export const infoTokens: InfoTokens = {
   info: {
     border: {
       initial: {
-        description: 'The default border color of informational elements.',
+        description:
+          semanticColors.border[INFO].initial.$description ||
+          'The default border color of informational elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -53,7 +58,9 @@ export const infoTokens: InfoTokens = {
 
     bg: {
       initial: {
-        description: 'The default background color of informational elements.',
+        description:
+          semanticColors.background[INFO].initial.$description ||
+          'The default background color of informational elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -71,11 +78,54 @@ export const infoTokens: InfoTokens = {
           },
         },
       },
+      hover: {
+        description:
+          semanticColors.background[INFO].hover.$description ||
+          'The hover background color of informational elements.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.info.hover.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.info.hover.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.info.hover.$value,
+            ).$value,
+          },
+        },
+      },
+      active: {
+        description:
+          semanticColors.background[INFO].active.$description ||
+          'The active background color of informational elements.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.info.active.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.info.active.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.info.active.$value,
+            ).$value,
+          },
+        },
+      },
     },
 
     surface: {
       initial: {
         description:
+          semanticColors.surface[INFO].initial.$description ||
           'The default color for a layout-based surface element (like a page or card) in a informational state.',
         value: {
           _cerberusTheme: {
@@ -96,6 +146,7 @@ export const infoTokens: InfoTokens = {
       },
       100: {
         description:
+          semanticColors.surface[INFO]['100'].$description ||
           'The second layer of color for static (surface) elements that display a info state - used on top of initial.',
         value: {
           _cerberusTheme: {
@@ -116,6 +167,7 @@ export const infoTokens: InfoTokens = {
       },
       200: {
         description:
+          semanticColors.surface[INFO]['200'].$description ||
           'The third layer of color for static (surface) elements that display a info state - used on top of 100.',
         value: {
           _cerberusTheme: {
@@ -138,7 +190,9 @@ export const infoTokens: InfoTokens = {
 
     text: {
       initial: {
-        description: 'The default text color of informational elements.',
+        description:
+          semanticColors.text[INFO].initial.$description ||
+          'The default text color of informational elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -157,7 +211,9 @@ export const infoTokens: InfoTokens = {
         },
       },
       100: {
-        description: 'The secondary text color of informational elements.',
+        description:
+          semanticColors.text[INFO]['100'].$description ||
+          'The secondary text color of informational elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
@@ -176,7 +232,9 @@ export const infoTokens: InfoTokens = {
         },
       },
       200: {
-        description: 'The tertiary text color of informational elements.',
+        description:
+          semanticColors.text[INFO]['200'].$description ||
+          'The tertiary text color of informational elements.',
         value: {
           _cerberusTheme: {
             base: deepGetByPaths(
