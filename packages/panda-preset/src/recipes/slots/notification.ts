@@ -48,7 +48,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
       // combine with vstack
       position: 'fixed',
       right: '4',
-      top: '4',
+      top: '24',
       zIndex: 'toast',
     },
     dialog: {
