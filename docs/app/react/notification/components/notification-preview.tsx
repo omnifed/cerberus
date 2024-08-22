@@ -90,7 +90,7 @@ export function CustomNotification() {
           textStyle: 'body-sm',
         })}
       >
-        It's Method Man, for short Mr. Meth
+        It&apos;s Method Man, for short Mr. Meth
       </NotificationDescription>
     </Notification>
   )
