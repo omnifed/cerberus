@@ -33,8 +33,9 @@ function getNotificationPalette(
 export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'notification',
   description: 'The styles for Notification components',
-  slots: ['dialog', 'icon', 'heading', 'description'],
+  slots: ['center', 'dialog', 'icon', 'heading', 'description'],
   jsx: [
+    'NotificationCenter',
     'Notification',
     'InfoNotification',
     'SuccessNotification',
@@ -43,18 +44,20 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
   ],
 
   base: {
+    center: {
+      // combine with vstack
+      position: 'fixed',
+      right: '4',
+      top: '4',
+      zIndex: 'toast',
+    },
     dialog: {
       bgColor: 'colorPalette.surface.initial',
-      bottom: '4',
+      maxW: '29rem',
       minH: '3.125rem',
-      left: '4',
       opacity: '0',
-      position: 'absolute',
-      right: '4',
       rounded: 'sm',
       shadow: 'md',
-      w: 'full',
-      zIndex: 'toast',
       _motionSafe: {
         animationName: 'fadeInDown',
         animationDuration: '250ms',
@@ -63,16 +66,6 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
       _motionReduce: {
         opacity: '1',
-      },
-      md: {
-        bottom: 'initial',
-        left: 'initial',
-        mx: 'auto',
-        right: 'initial',
-        top: '4',
-        minW: '20.25rem',
-        maxW: '68rem',
-        w: 'initial',
       },
     },
     icon: {

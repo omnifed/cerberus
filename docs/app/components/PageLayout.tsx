@@ -122,6 +122,7 @@ export function TabPageContent(props: PropsWithChildren<PageLayoutProps>) {
           },
         }),
       )}
+      id="react:page-content"
     >
       {props.children}
     </div>

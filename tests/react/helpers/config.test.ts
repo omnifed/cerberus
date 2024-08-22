@@ -7,12 +7,18 @@ import {
   Checkmark,
   Information,
   CloudUpload,
+  InformationFilled,
+  ErrorFilled,
 } from '@cerberus-design/icons'
 
 describe('defineIcons', () => {
   const defaultIcons = {
     confirmModal: Information,
     promptModal: Information,
+    infoNotification: InformationFilled,
+    successNotification: CheckmarkFilled,
+    warningNotification: WarningFilled,
+    dangerNotification: ErrorFilled,
     fileUploader: CloudUpload,
     invalid: WarningFilled,
     toggleChecked: Checkmark,
@@ -28,11 +34,7 @@ describe('defineIcons', () => {
 
   test('should define a custom set of icons', () => {
     const customIcons = defineIcons({
-      confirmModal: Information,
-      fileUploader: CloudUpload,
-      promptModal: Information,
       invalid: WarningAlt,
-      toggleChecked: CheckmarkFilled,
     })
     expect(customIcons.invalid).toEqual(WarningAlt)
   })
