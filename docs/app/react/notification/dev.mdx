@@ -17,7 +17,7 @@ import {
 } from '@/app/react/notification/components/notification-preview'
 
 ```ts
-import { Notification, useNotification } from '@cerberus-design/react'
+import { NotificationCenter, useNotificationCenter } from '@cerberus-design/react'
 ```
 
 ## Usage
@@ -25,32 +25,120 @@ import { Notification, useNotification } from '@cerberus-design/react'
 ### Info
 
 <CodePreview preview={<InfoNotification />}>
-```tsx title="some-page.tsx"
-import { Notification, useNotification } from '@cerberus-design/react'
+```tsx title="some-page.tsx" {7-11}
+import { NotificationCenter, useNotificationCenter } from '@cerberus-design/react'
+
+function Feature() {
+  const { notify } = useNotificationCenter()
+
+  const handleClick = useCallback(() => {
+    notify({
+      palette: 'info',
+      heading: 'Notification',
+      description: 'This is an info notification',
+    })
+  }, [notify])
+
+  return <Button onClick={handleClick}>Trigger notification</Button>
+}
+
+export function OverviewPreview() {
+  return (
+    <NotificationCenter>
+      <Feature />
+    </NotificationCenter>
+  )
+}
 ```
 </CodePreview>
 
 ### Success
 
 <CodePreview preview={<SuccessNotification />}>
-```tsx title="some-page.tsx"
-import { Notification, useNotification } from '@cerberus-design/react'
+```tsx title="some-page.tsx" {7-11}
+import { NotificationCenter, useNotificationCenter } from '@cerberus-design/react'
+
+function Feature() {
+  const { notify } = useNotificationCenter()
+
+  const handleClick = useCallback(() => {
+    notify({
+      palette: 'success',
+      heading: 'Notification',
+      description: 'This is an success notification',
+    })
+  }, [notify])
+
+  return <Button onClick={handleClick}>Trigger notification</Button>
+}
+
+export function OverviewPreview() {
+  return (
+    <NotificationCenter>
+      <Feature />
+    </NotificationCenter>
+  )
+}
 ```
 </CodePreview>
 
 ### Warning
 
 <CodePreview preview={<WarningNotification />}>
-```tsx title="some-page.tsx"
-import { Notification, useNotification } from '@cerberus-design/react'
+```tsx title="some-page.tsx" {7-11}
+import { NotificationCenter, useNotificationCenter } from '@cerberus-design/react'
+
+function Feature() {
+  const { notify } = useNotificationCenter()
+
+  const handleClick = useCallback(() => {
+    notify({
+      palette: 'warning',
+      heading: 'Notification',
+      description: 'This is an warning notification',
+    })
+  }, [notify])
+
+  return <Button onClick={handleClick}>Trigger notification</Button>
+}
+
+export function OverviewPreview() {
+  return (
+    <NotificationCenter>
+      <Feature />
+    </NotificationCenter>
+  )
+}
 ```
 </CodePreview>
 
 ### Danger
 
 <CodePreview preview={<DangerNotification />}>
-```tsx title="some-page.tsx"
-import { Notification, useNotification } from '@cerberus-design/react'
+```tsx title="some-page.tsx" {7-11}
+import { NotificationCenter, useNotificationCenter } from '@cerberus-design/react'
+
+function Feature() {
+  const { notify } = useNotificationCenter()
+
+  const handleClick = useCallback(() => {
+    notify({
+      palette: 'danger',
+      heading: 'Notification',
+      description: 'This is an danger notification',
+    })
+  }, [notify])
+
+  return <Button onClick={handleClick}>Trigger notification</Button>
+}
+
+export function OverviewPreview() {
+  return (
+    <NotificationCenter>
+      <Feature />
+    </NotificationCenter>
+  )
+}
 ```
 </CodePreview>
 
@@ -60,7 +148,11 @@ You can use the Notification components to customize the styles.
 
 <CodePreview preview={<CustomNotification />}>
 ```tsx title="some-page.tsx"
-import { Notification } from '@cerberus-design/react'
+import {
+  Notification,
+  NotificationHeading,
+  NotificationDescription
+} from '@cerberus-design/react'
 
 function CustomNotification() {
   return (
@@ -94,18 +186,19 @@ function CustomNotification() {
 ## API
 
 ```ts showLineNumbers=false
-export interface NotificationOptions {
+export interface NotifyOptions {
   palette?: 'info' | 'success' | 'warning' | 'danger'
   heading: string
+  id?: string
   description?: ReactNode
-  onClose?: () => void
+  onClose?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 export interface NotificationProviderValue {
-  notify: (options: NotificationOptions) => void
+  notify: (options: NotifyOptions) => void
 }
 
-define function Notification(props: PropsWithChildren<{}>): ReactNode
+define function NotificationCenter(props: PropsWithChildren<PortalProps>): ReactNode
 ````
 
 ### Show Method Options
@@ -114,7 +207,8 @@ The `notify` method accepts the following options:
 
 | Name     | Default | Description                            |
 | -------- | ------- | -------------------------------------- |
-| palette | `info` | The palette variant used to theme the modal.           |
-| heading | `''` | The heading of the modal. |
-| description | `null` | The description of the modal. |
-| onClose |  | An optional callback that runs when the user closes the notification. |
+| palette | `info` | The palette variant used to theme the dialog.           |
+| heading |  | The heading of the dialog. |
+| id |  | The id of the dialog. |
+| description | `null` | The description of the dialog. |
+| onClose |  | An optional callback that runs when the user closes the dialog. |
