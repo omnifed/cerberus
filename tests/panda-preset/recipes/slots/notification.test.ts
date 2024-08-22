@@ -8,15 +8,23 @@ describe('notification recipe', () => {
     expect(notification).toBeDefined()
   })
 
+  test('should have a center style', () => {
+    expect(notification.base?.center).toMatchObject({
+      position: 'fixed',
+      right: '4',
+      top: '4',
+      zIndex: 'toast',
+    })
+  })
+
   test('should have a base style', () => {
     expect(notification.base?.dialog).toMatchObject({
       bgColor: 'colorPalette.surface.initial',
+      maxW: '29rem',
       minH: '3.125rem',
       opacity: '0',
       rounded: 'sm',
       shadow: 'md',
-      w: 'full',
-      zIndex: 'toast',
       _motionSafe: {
         animationName: 'fadeInDown',
         animationDuration: '250ms',
@@ -25,12 +33,6 @@ describe('notification recipe', () => {
       },
       _motionReduce: {
         opacity: '1',
-      },
-      md: {
-        mx: 'auto',
-        minW: '20.25rem',
-        maxW: '68rem',
-        w: 'initial',
       },
     })
   })
