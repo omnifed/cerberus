@@ -1103,6 +1103,44 @@
           }
         }
       }
+    },
+    "warning": {
+      "initial": {
+        "$type": "color",
+        "$value": "colors.warning.70",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "colors.warning.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "active": {
+        "$type": "color",
+        "$value": "colors.warning.40",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
     }
   },
   "ghost": {
@@ -1259,6 +1297,22 @@
       }
     }
   },
+  "backdrop": {
+    "page": {
+      "initial": {
+        "$type": "color",
+        "$value": "#130024bf",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    }
+  },
   "WIP-data-viz": {
     "data-1": {
       "$type": "color",
@@ -1305,22 +1359,6 @@
           "hiddenFromPublishing": false,
           "scopes": ["ALL_SCOPES"],
           "codeSyntax": {}
-        }
-      }
-    }
-  },
-  "backdrop": {
-    "page": {
-      "initial": {
-        "$type": "color",
-        "$value": "#130024bf",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL"],
-            "codeSyntax": {}
-          }
         }
       }
     }

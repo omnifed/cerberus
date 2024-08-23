@@ -14,6 +14,11 @@ export interface WarningTokens {
     readonly border: {
       readonly initial: SemanticToken
     }
+    readonly bg: {
+      readonly initial: SemanticToken
+      readonly hover: SemanticToken
+      readonly active: SemanticToken
+    }
     readonly surface: {
       readonly initial: SemanticToken
       readonly 100: SemanticToken
@@ -45,6 +50,72 @@ export const warningTokens: WarningTokens = {
             _darkMode: deepGetByPaths(
               colors,
               rawTokens.semanticColors.dark.border.warning.initial.$value,
+            ).$value,
+          },
+        },
+      },
+    },
+
+    bg: {
+      initial: {
+        description:
+          semanticColors.background[WARNING].initial.$description ||
+          'The default background color of warning elements.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.warning.initial.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.warning.initial.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.warning.initial.$value,
+            ).$value,
+          },
+        },
+      },
+      hover: {
+        description:
+          semanticColors.background[WARNING].hover.$description ||
+          'The hover background color of warning elements.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.warning.hover.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.warning.hover.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.warning.hover.$value,
+            ).$value,
+          },
+        },
+      },
+      active: {
+        description:
+          semanticColors.background[WARNING].active.$description ||
+          'The active background color of warning elements.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.warning.active.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.background.warning.active.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.background.warning.active.$value,
             ).$value,
           },
         },
