@@ -113,6 +113,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
       ...button.base,
       bgColor: 'transparent',
       color: 'action.text.inverse',
+      height: '2.75rem',
       pxi: '0',
       _hover: {
         bgColor: 'transparent',
