@@ -17,7 +17,7 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
       return (
         <p
           className={css({
-            color: 'page.text.100',
+            color: 'page.text.initial',
             textStyle: 'h6',
             textTransform: 'uppercase',
           })}

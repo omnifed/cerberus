@@ -28,6 +28,54 @@ describe('warning', () => {
     ).toEqual('#F4DA49')
   })
 
+  test('should have a bg.initial property', () => {
+    expect(
+      formatToken(warningTokens.warning.bg.initial.value._cerberusTheme.base),
+    ).toEqual('#C1A716')
+    expect(
+      formatToken(
+        warningTokens.warning.bg.initial.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#C1A716')
+    expect(
+      formatToken(
+        warningTokens.warning.bg.initial.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#F4DA49')
+  })
+
+  test('should have a bg.hover property', () => {
+    expect(
+      formatToken(warningTokens.warning.bg.hover.value._cerberusTheme.base),
+    ).toEqual('#F1D11B')
+    expect(
+      formatToken(
+        warningTokens.warning.bg.hover.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#F1D11B')
+    expect(
+      formatToken(
+        warningTokens.warning.bg.hover.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#F1D11B')
+  })
+
+  test('should have a bg.active property', () => {
+    expect(
+      formatToken(warningTokens.warning.bg.active.value._cerberusTheme.base),
+    ).toEqual('#F7E376')
+    expect(
+      formatToken(
+        warningTokens.warning.bg.active.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#F7E376')
+    expect(
+      formatToken(
+        warningTokens.warning.bg.active.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#C1A716')
+  })
+
   test('should have a surface.initial property', () => {
     expect(
       formatToken(

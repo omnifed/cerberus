@@ -1,203 +1,197 @@
 [
   {
-    "id": "1",
     "label": "Overview",
     "type": "heading"
   },
   {
-    "id": "1:a",
     "label": "Getting Started",
     "route": "/react",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2",
-    "label": "Components",
+    "label": "Actions",
     "type": "heading"
   },
   {
-    "id": "2:a",
     "label": "Button",
     "route": "/react/button",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:b",
     "label": "Icon Button",
     "route": "/react/icon-button",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:c",
-    "label": "Label",
-    "route": "/react/label",
-    "tag": "",
-    "type": "route"
+    "label": "Communication",
+    "type": "heading"
   },
   {
-    "id": "2:d",
-    "label": "Input",
-    "route": "/react/input",
-    "tag": "",
-    "type": "route"
-  },
-  {
-    "id": "2:e",
-    "label": "Field Message",
-    "route": "/react/field-message",
-    "tag": "",
-    "type": "route"
-  },
-  {
-    "id": "2:f",
-    "label": "Nav Menu",
-    "route": "/react/nav-menu",
-    "tag": "",
-    "type": "route"
-  },
-  {
-    "id": "2:g",
-    "label": "Radio",
-    "route": "/react/radio",
-    "tag": "",
-    "type": "route"
-  },
-  {
-    "id": "2:h",
-    "label": "Tabs",
-    "route": "/react/tabs",
-    "tag": "new",
-    "type": "route"
-  },
-  {
-    "id": "2:i",
-    "label": "Tag",
-    "route": "/react/tags",
-    "tag": "",
-    "type": "route"
-  },
-  {
-    "id": "2:j",
-    "label": "Textarea",
-    "route": "/react/textarea",
-    "tag": "",
-    "type": "route"
-  },
-  {
-    "id": "2:k",
-    "label": "Toggle",
-    "route": "/react/toggle",
-    "tag": "",
-    "type": "route"
-  },
-  {
-    "id": "2:l",
-    "label": "Tooltip",
-    "route": "/react/tooltip",
-    "tag": "",
-    "type": "route"
-  },
-  {
-    "id": "2:m",
-    "label": "Confirm Modal",
-    "route": "/react/confirm-modal",
-    "tag": "new",
-    "type": "route"
-  },
-  {
-    "id": "2:n",
-    "label": "Prompt Modal",
-    "route": "/react/prompt-modal",
-    "tag": "new",
-    "type": "route"
-  },
-  {
-    "id": "2:o",
-    "label": "Modal",
-    "route": "/react/modal",
-    "tag": "new",
-    "type": "route"
-  },
-  {
-    "id": "2:p",
     "label": "Notification",
     "route": "/react/notification",
     "tag": "next",
     "type": "route"
   },
   {
-    "id": "2:q",
-    "label": "Show",
-    "route": "/react/show",
+    "label": "Tag",
+    "route": "/react/tags",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:qr",
-    "label": "Portal",
-    "route": "/react/portal",
-    "tag": "new",
+    "label": "Tooltip",
+    "route": "/react/tooltip",
+    "tag": "",
     "type": "route"
   },
   {
-    "id": "2:r",
-    "label": "Feature Flags",
-    "route": "/react/feature-flags",
-    "tag": "new",
+    "label": "Containment",
+    "type": "heading"
+  },
+  {
+    "label": "Confirm Modal",
+    "route": "/react/confirm-modal",
+    "tag": "",
     "type": "route"
   },
   {
-    "id": "2:s",
-    "label": "File Uploader",
-    "route": "/react/file-uploader",
-    "tag": "next",
+    "label": "Prompt Modal",
+    "route": "/react/prompt-modal",
+    "tag": "",
     "type": "route"
   },
   {
-    "id": "2:t",
+    "label": "Modal",
+    "route": "/react/modal",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "label": "Navigation",
+    "type": "heading"
+  },
+  {
+    "label": "Nav Menu",
+    "route": "/react/nav-menu",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "label": "Tabs",
+    "route": "/react/tabs",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "label": "Selection",
+    "type": "heading"
+  },
+  {
     "label": "Drag & Drop",
     "route": "/react/drag-n-drop",
     "tag": "next",
     "type": "route"
   },
   {
-    "id": "3",
+    "label": "Radio",
+    "route": "/react/radio",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "label": "Toggle",
+    "route": "/react/toggle",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "label": "Forms",
+    "type": "heading"
+  },
+  {
+    "label": "Field Message",
+    "route": "/react/field-message",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "label": "File Uploader",
+    "route": "/react/file-uploader",
+    "tag": "next",
+    "type": "route"
+  },
+  {
+    "label": "Input",
+    "route": "/react/input",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "label": "Label",
+    "route": "/react/label",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "label": "Textarea",
+    "route": "/react/textarea",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "label": "Rendering",
+    "type": "heading"
+  },
+  {
+    "label": "Show",
+    "route": "/react/show",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "label": "Portal",
+    "route": "/react/portal",
+    "tag": "",
+    "type": "route"
+  },
+  {
+    "label": "Feature Flags",
+    "route": "/react/feature-flags",
+    "tag": "",
+    "type": "route"
+  },
+  {
     "label": "Hooks",
     "type": "heading"
   },
   {
-    "id": "3:a",
     "label": "useModal",
     "route": "/react/use-modal",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
-    "id": "3:b",
     "label": "useTheme",
     "route": "/react/use-theme",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "3:c",
     "label": "useThemeContext",
     "route": "/react/use-theme-context",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "3:d",
     "label": "useToggle",
     "route": "/react/use-toggle",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "4",
     "label": "Helpers",
     "type": "heading"
   },
@@ -205,7 +199,7 @@
     "id": "4:a",
     "label": "trapFocus",
     "route": "/react/trap-focus",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   }
 ]

@@ -14,10 +14,11 @@ import { Show } from '../components/Show'
 import { NotificationHeading } from '../components/NotificationHeading'
 import { NotificationDescription } from '../components/NotificationDescription'
 import { Notification } from '../components/Notification'
-import { vstack } from '@cerberus-design/styled-system/patterns'
+import { animateIn, vstack } from '@cerberus-design/styled-system/patterns'
 import { Portal, type PortalProps } from '../components/Portal'
-import { cx } from '@cerberus-design/styled-system/css'
 import { notification } from '@cerberus-design/styled-system/recipes'
+import { Button } from '../components/Button'
+import { cx } from '@cerberus-design/styled-system/css'
 
 /**
  * This module provides a context and hook for notifications.
@@ -67,6 +68,7 @@ export function NotificationCenter(
   const [activeNotifications, setActiveNotifications] = useState<
     NotifyOptions[]
   >([])
+  const styles = notification()
 
   const handleNotify = useCallback((options: NotifyOptions) => {
     setActiveNotifications((prev) => {
@@ -81,6 +83,15 @@ export function NotificationCenter(
       const item = prev.find((option) => option.id === target.value)
       if (item?.onClose) item.onClose()
       return prev.filter((option) => option.id !== target.value)
+    })
+  }, [])
+
+  const handleCloseAll = useCallback(() => {
+    setActiveNotifications((prev) => {
+      prev.forEach((item) => {
+        if (item.onClose) item.onClose()
+      })
+      return []
     })
   }, [])
 
@@ -100,34 +111,45 @@ export function NotificationCenter(
 
       <Show when={activeNotifications.length > 0}>
         <Portal container={props.container}>
-          <div
-            className={cx(
-              notification().center,
-              vstack({
+          <div className={styles.center}>
+            <Show when={activeNotifications.length >= 4}>
+              <Button
+                className={cx(styles.closeAll, animateIn())}
+                onClick={handleCloseAll}
+                palette="action"
+                shape="rounded"
+                size="sm"
+                usage="text"
+              >
+                Close all
+              </Button>
+            </Show>
+            <div
+              className={vstack({
                 alignItems: 'flex-end',
                 gap: '4',
-              }),
-            )}
-            style={{
-              alignItems: 'flex-end',
-            }}
-          >
-            {activeNotifications.map((option) => (
-              <Notification
-                id={option.id!}
-                key={option.id}
-                onClose={handleClose}
-                open
-                palette={option.palette}
-              >
-                <NotificationHeading palette={option.palette}>
-                  {option.heading}
-                </NotificationHeading>
-                <NotificationDescription palette={option.palette}>
-                  {option.description}
-                </NotificationDescription>
-              </Notification>
-            ))}
+              })}
+              style={{
+                alignItems: 'flex-end',
+              }}
+            >
+              {activeNotifications.map((option) => (
+                <Notification
+                  id={option.id!}
+                  key={option.id}
+                  onClose={handleClose}
+                  open
+                  palette={option.palette}
+                >
+                  <NotificationHeading palette={option.palette}>
+                    {option.heading}
+                  </NotificationHeading>
+                  <NotificationDescription palette={option.palette}>
+                    {option.description}
+                  </NotificationDescription>
+                </Notification>
+              ))}
+            </div>
           </div>
         </Portal>
       </Show>
