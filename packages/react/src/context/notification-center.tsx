@@ -18,6 +18,7 @@ import { animateIn, vstack } from '@cerberus-design/styled-system/patterns'
 import { Portal, type PortalProps } from '../components/Portal'
 import { notification } from '@cerberus-design/styled-system/recipes'
 import { Button } from '../components/Button'
+import { cx } from '@cerberus-design/styled-system/css'
 
 /**
  * This module provides a context and hook for notifications.
@@ -67,6 +68,7 @@ export function NotificationCenter(
   const [activeNotifications, setActiveNotifications] = useState<
     NotifyOptions[]
   >([])
+  const styles = notification()
 
   const handleNotify = useCallback((options: NotifyOptions) => {
     setActiveNotifications((prev) => {
@@ -109,11 +111,12 @@ export function NotificationCenter(
 
       <Show when={activeNotifications.length > 0}>
         <Portal container={props.container}>
-          <div className={notification().center}>
+          <div className={styles.center}>
             <Show when={activeNotifications.length >= 4}>
               <Button
-                className={animateIn()}
+                className={cx(styles.closeAll, animateIn())}
                 onClick={handleCloseAll}
+                palette="action"
                 shape="rounded"
                 size="sm"
                 usage="text"

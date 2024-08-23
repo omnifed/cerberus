@@ -12,7 +12,6 @@ import {
   type PropsWithChildren,
   type MouseEvent,
 } from 'react'
-import { IconButton } from './IconButton'
 import { Close } from '@cerberus/icons'
 import { $cerberusIcons } from '../config/defineIcons'
 import type { IconType } from '../config/cerbIcons'
@@ -86,9 +85,14 @@ export function Notification(props: PropsWithChildren<NotificationProps>) {
         {children}
       </div>
 
-      <IconButton ariaLabel="Close" onClick={onClose} value={props.id}>
+      <button
+        aria-label="Close"
+        className={styles.close}
+        onClick={onClose}
+        value={props.id}
+      >
         <Close />
-      </IconButton>
+      </button>
     </dialog>
   )
 }

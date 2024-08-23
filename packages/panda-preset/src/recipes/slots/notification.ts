@@ -7,6 +7,8 @@ import {
   WARNING,
 } from '../shared/palettes'
 import { focusStates } from '../shared/states'
+import { iconButton } from '../iconButton'
+import { button } from '../button'
 
 /**
  * This module contains the notification recipe.
@@ -22,6 +24,7 @@ function getNotificationPalette(
     icon: statePalette,
     heading: statePalette,
     description: statePalette,
+    close: statePalette,
   }
 }
 
@@ -33,7 +36,15 @@ function getNotificationPalette(
 export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'notification',
   description: 'The styles for Notification components',
-  slots: ['center', 'dialog', 'icon', 'heading', 'description', 'closeAll'],
+  slots: [
+    'center',
+    'dialog',
+    'icon',
+    'heading',
+    'description',
+    'close',
+    'closeAll',
+  ],
   jsx: [
     'NotificationCenter',
     'Notification',
@@ -45,6 +56,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   base: {
     center: {
+      color: 'colorPalette.text.initial',
       position: 'fixed',
       right: '4',
       textAlign: 'right',
@@ -53,6 +65,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     dialog: {
       bgColor: 'colorPalette.surface.initial',
+      color: 'colorPalette.text.initial',
       maxW: '29rem',
       minH: '3.125rem',
       opacity: '0',
@@ -73,13 +86,13 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
       paddingInlineStart: '4',
     },
     heading: {
-      color: 'colorPalette.text.initial',
+      color: 'inherit',
       textStyle: 'label-md',
       fontWeight: '600',
       userSelect: 'none',
     },
     description: {
-      color: 'colorPalette.text.initial',
+      color: 'inherit',
       textStyle: 'body-sm',
       userSelect: 'none',
       ['& :is(a)']: {
@@ -88,7 +101,24 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
         ...focusStates,
       },
     },
-    closeAll: {},
+    close: {
+      ...iconButton.base,
+      bgColor: 'transparent',
+      color: 'inherit',
+      _hover: {
+        bgColor: 'colorPalette.bg.hover',
+      },
+    },
+    closeAll: {
+      ...button.base,
+      bgColor: 'transparent',
+      color: 'action.text.inverse',
+      pxi: '0',
+      _hover: {
+        bgColor: 'transparent',
+        color: 'action.bg.hover',
+      },
+    },
   },
 
   variants: {
@@ -96,7 +126,15 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
       [INFO]: getNotificationPalette(INFO),
       [SUCCESS]: getNotificationPalette(SUCCESS),
       [WARNING]: getNotificationPalette(WARNING),
-      [DANGER]: getNotificationPalette(DANGER),
+      [DANGER]: {
+        ...getNotificationPalette(DANGER),
+        close: {
+          ...getNotificationPalette(DANGER).close,
+          _hover: {
+            color: 'danger.text.inverse',
+          },
+        },
+      },
     },
   },
 
