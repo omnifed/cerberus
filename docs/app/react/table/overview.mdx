@@ -7,17 +7,30 @@ a11y: 'forms'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import {
-  BasicTablePreview
+  BasicTablePreview,
+  SizesPreview,
+  DecorationPreview
 } from '@/app/react/table/components/table-preview'
 
 <OverviewList rules={[
   'Use tables to display data-centric information',
   'Tables can contain actions, such as buttons or links',
+  'Two header sizes: "md" and "lg"',
+  'Three data cell sizes: "sm", "md", and "lg"',
+  'Two decoration styles: "zebra" and "default"',
 ]} />
 
 ## Example
 
 <CodePreview preview={<BasicTablePreview />} />
+
+## Sizes
+
+<CodePreview preview={<SizesPreview />} />
+
+## Decoration
+
+<CodePreview preview={<DecorationPreview />} />
 
 ## Resources
 

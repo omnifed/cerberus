@@ -1,6 +1,6 @@
 import { tbody, type TbodyVariantProps } from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus/styled-system/css'
-import type { PropsWithChildren, TableHTMLAttributes } from 'react'
+import type { TableHTMLAttributes } from 'react'
 
 export type TbodyBaseProps = TableHTMLAttributes<HTMLTableSectionElement>
 export type TbodyProps = TbodyBaseProps & TbodyVariantProps
@@ -15,7 +15,7 @@ export type TbodyProps = TbodyBaseProps & TbodyVariantProps
  * </TBody>
  * ```
  */
-export function Tbody(props: PropsWithChildren<TbodyProps>) {
+export function Tbody(props: TbodyProps) {
   const { decoration, ...nativeProps } = props
   return (
     <tbody

@@ -11,6 +11,94 @@ import {
   Field,
   useToggle,
 } from '@cerberus-design/react'
+import { css } from '@cerberus/styled-system/css'
+import { hstack } from '@cerberus/styled-system/patterns'
+
+export function SizesPreview() {
+  return (
+    <div className={hstack()}>
+      <Table caption="Table with different cell sizes">
+        <Thead>
+          <Tr>
+            <Th size="md">Medium</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <Tr>
+            <Td size="sm">Small</Td>
+          </Tr>
+        </Tbody>
+      </Table>
+      <Table caption="Table with different cell sizes">
+        <Thead>
+          <Tr>
+            <Th size="md">Medium</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <Tr>
+            <Td size="md">Medium</Td>
+          </Tr>
+        </Tbody>
+      </Table>
+      <Table caption="Table with different cell sizes">
+        <Thead>
+          <Tr>
+            <Th size="lg">Large</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <Tr>
+            <Td size="lg">Large</Td>
+          </Tr>
+        </Tbody>
+      </Table>
+    </div>
+  )
+}
+
+export function DecorationPreview() {
+  return (
+    <div className={hstack()}>
+      <Table caption="Table with default decorations">
+        <Thead>
+          <Tr>
+            <Th>Default</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <Tr>
+            <Td>one</Td>
+          </Tr>
+          <Tr>
+            <Td>two</Td>
+          </Tr>
+          <Tr>
+            <Td>three</Td>
+          </Tr>
+        </Tbody>
+      </Table>
+      <Table caption="Table with zebra decorations">
+        <Thead>
+          <Tr>
+            <Th>Zebra</Th>
+          </Tr>
+        </Thead>
+        <Tbody decoration="zebra">
+          <Tr>
+            <Td>one</Td>
+          </Tr>
+          <Tr>
+            <Td>two</Td>
+          </Tr>
+          <Tr>
+            <Td>three</Td>
+          </Tr>
+        </Tbody>
+      </Table>
+    </div>
+  )
+}
 
 export function BasicTablePreview() {
   const first = useToggle()
@@ -71,6 +159,85 @@ export function BasicTablePreview() {
               />
             </Field>
           </Td>
+        </Tr>
+      </Tbody>
+    </Table>
+  )
+}
+
+export function CustomizedPreview() {
+  return (
+    <Table caption="Customized table">
+      <Thead>
+        <Tr>
+          <Th
+            className={css({
+              bgColor: 'black',
+              color: 'yellow',
+              width: '20rem',
+            })}
+          >
+            Wu-Tang Members
+          </Th>
+          <Th
+            className={css({
+              bgColor: 'black',
+              color: 'yellow',
+            })}
+          >
+            Alias
+          </Th>
+        </Tr>
+      </Thead>
+      <Tbody
+        className={css({
+          '& :is(td)': {
+            _darkMode: {
+              borderTopColor: 'yellow',
+              color: 'yellow',
+            },
+            _lightMode: {
+              borderTopColor: 'black',
+              color: 'black',
+            },
+          },
+        })}
+      >
+        <Tr>
+          <Td>Method Man</Td>
+          <Td>Johnny Blaze</Td>
+        </Tr>
+        <Tr>
+          <Td>Raekwon</Td>
+          <Td>The Chef</Td>
+        </Tr>
+        <Tr>
+          <Td>GZA</Td>
+          <Td>The Genius</Td>
+        </Tr>
+        <Tr>
+          <Td>Ghostface Killah</Td>
+          <Td>Tony Starks</Td>
+        </Tr>
+        <Tr>
+          <Td>Inspectah Deck</Td>
+          <Td>Rebel INS</Td>
+        </Tr>
+        <Tr>
+          <Td>U-God</Td>
+          <Td>Golden Arms</Td>
+        </Tr>
+        <Tr>
+          <Td>Masta Killa</Td>
+          <Td>Noodles</Td>
+        </Tr>
+        <Tr>
+          <Td>Ol' Dirty Bastard</Td>
+          <Td>Ason Unique</Td>
+        </Tr>
+        <Tr>
+          <Td>RZA</Td>
+          <Td>Bobby Digital</Td>
         </Tr>
       </Tbody>
     </Table>

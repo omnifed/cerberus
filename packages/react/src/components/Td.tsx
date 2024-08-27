@@ -1,5 +1,5 @@
 import { cx } from '@cerberus/styled-system/css'
-import { td } from '@cerberus/styled-system/recipes'
+import { td, type TdVariantProps } from '@cerberus/styled-system/recipes'
 import type { TableHTMLAttributes } from 'react'
 
 /**
@@ -7,7 +7,8 @@ import type { TableHTMLAttributes } from 'react'
  * @module
  */
 
-export type TdProps = TableHTMLAttributes<HTMLTableCellElement>
+export type TdBaseProps = TableHTMLAttributes<HTMLTableCellElement>
+export type TdProps = TdBaseProps & TdVariantProps
 
 /**
  * Styles for the Th component
@@ -18,5 +19,16 @@ export type TdProps = TableHTMLAttributes<HTMLTableCellElement>
  * ```
  */
 export function Td(props: TdProps) {
-  return <td {...props} className={cx(props.className, td())} />
+  const { size, ...nativeProps } = props
+  return (
+    <td
+      {...nativeProps}
+      className={cx(
+        nativeProps.className,
+        td({
+          size,
+        }),
+      )}
+    />
+  )
 }
