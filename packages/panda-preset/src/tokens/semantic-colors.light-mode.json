@@ -215,7 +215,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.warning.70",
+        "$value": "colors.warning.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1220,6 +1220,44 @@
         }
       }
     },
+    "info": {
+      "initial": {
+        "$type": "color",
+        "$value": "colors.neutral.white",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "colors.info.20",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "active": {
+        "$type": "color",
+        "$value": "colors.info.30",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
     "success": {
       "initial": {
         "$type": "color",
@@ -1286,6 +1324,44 @@
       "active": {
         "$type": "color",
         "$value": "colors.teal.20",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "warning": {
+      "initial": {
+        "$type": "color",
+        "$value": "colors.neutral.white",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "colors.warning.20",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "active": {
+        "$type": "color",
+        "$value": "colors.warning.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
