@@ -3,11 +3,11 @@
  * @module
  */
 
-import { cx } from '@cerberus-design/styled-system/css'
+import { cx } from '@cerberus/styled-system/css'
 import {
   notification,
   type NotificationVariantProps,
-} from '@cerberus-design/styled-system/recipes'
+} from '@cerberus/styled-system/recipes'
 import type { HTMLAttributes } from 'react'
 
 export interface BaseNotificationHeadingProps

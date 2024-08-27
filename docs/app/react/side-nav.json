@@ -70,6 +70,12 @@
     "type": "route"
   },
   {
+    "label": "Table",
+    "route": "/react/table",
+    "tag": "next",
+    "type": "route"
+  },
+  {
     "label": "Navigation",
     "type": "heading"
   },

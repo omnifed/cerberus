@@ -4,12 +4,17 @@ import { iconButton } from './iconButton'
 import { label } from './label'
 import { modalIcon } from './modalIcon'
 import { tag } from './tag'
+import { thead } from './thead'
+import { th } from './th'
+import { tbody } from './tbody'
+import { td } from './td'
 
 import { fileUploader } from './slots/fileUploader'
 import { input } from './slots/input'
 import { modal } from './slots/modal'
 import { notification } from './slots/notification'
 import { radio } from './slots/radio'
+import { table } from './slots/table'
 import { tabs } from './slots/tabs'
 import { toggle } from './slots/toggle'
 
@@ -25,6 +30,10 @@ export const recipes = {
   label,
   modalIcon,
   tag,
+  thead,
+  th,
+  tbody,
+  td,
 }
 
 export const slotRecipes = {
@@ -33,6 +42,7 @@ export const slotRecipes = {
   notification,
   modal,
   radio,
+  table,
   tabs,
   toggle,
 }
