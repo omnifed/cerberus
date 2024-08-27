@@ -76,6 +76,64 @@ describe('warning', () => {
     ).toEqual('#C1A716')
   })
 
+  test('should have a ghost property', () => {
+    expect(warningTokens.warning.ghost).toBeDefined
+  })
+
+  test('should have a ghost.initial property', () => {
+    expect(
+      formatToken(
+        warningTokens.warning.ghost.initial.value._cerberusTheme.base,
+      ),
+    ).toEqual('#130024')
+    expect(
+      formatToken(
+        warningTokens.warning.ghost.initial.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#130024')
+    expect(
+      formatToken(
+        warningTokens.warning.ghost.initial.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#FFFFFF')
+  })
+
+  test('should have a ghost.hover property', () => {
+    expect(
+      formatToken(warningTokens.warning.ghost.hover.value._cerberusTheme.base),
+    ).toEqual('#60540B')
+    expect(
+      formatToken(
+        warningTokens.warning.ghost.hover.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#60540B')
+    expect(
+      formatToken(
+        warningTokens.warning.ghost.hover.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#FCF6D1')
+  })
+
+  test('should have a ghost.active property', () => {
+    expect(
+      formatToken(warningTokens.warning.ghost.active.value._cerberusTheme.base),
+    ).toEqual('#917D10')
+    expect(
+      formatToken(
+        warningTokens.warning.ghost.active.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#917D10')
+    expect(
+      formatToken(
+        warningTokens.warning.ghost.active.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#F9EDA4')
+  })
+
+  test('should have a surface property', () => {
+    expect(warningTokens.warning.surface).toBeDefined
+  })
+
   test('should have a surface.initial property', () => {
     expect(
       formatToken(
@@ -175,7 +233,7 @@ describe('warning', () => {
       formatToken(
         warningTokens.warning.text[200].value._cerberusTheme._lightMode,
       ),
-    ).toEqual('#C1A716')
+    ).toEqual('#917D10')
   })
 
   test('should have a text.inverse property', () => {
