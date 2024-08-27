@@ -12,7 +12,7 @@
   "containment": {
     "name": "Containment",
     "description": "Components that contain other components.",
-    "items": ["Confirm Modal", "Prompt Modal", "Modal"]
+    "items": ["Confirm Modal", "Prompt Modal", "Modal", "Table"]
   },
   "navigation": {
     "name": "Navigation",

@@ -154,18 +154,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props}
       />
     ),
-    tr: (props) => (
-      <tr
-        className={css({
-          _first: {
-            '& th': {
-              borderTop: 'none',
-            },
-          },
-        })}
-        {...props}
-      />
-    ),
     th: (props) => (
       <th
         className={css({

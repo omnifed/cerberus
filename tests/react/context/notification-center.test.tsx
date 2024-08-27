@@ -53,6 +53,16 @@ describe('NotificationCenter & useNotificationCenter', () => {
     expect(screen.queryByText(/new feature!/i)).toBeNull()
   })
 
+  test('should close all notifications', async () => {
+    render(<Test />)
+    await userEvent.click(screen.getByText(/notify/i))
+    await userEvent.click(screen.getByText(/notify/i))
+    await userEvent.click(screen.getByText(/notify/i))
+    await userEvent.click(screen.getByText(/notify/i))
+    await userEvent.click(screen.getByRole('button', { name: /close all/i }))
+    expect(screen.queryByText(/new feature!/i)).toBeNull()
+  })
+
   test('should throw an error if used outside of FeatureFlags', () => {
     // don't clog up the console with errors
     spyOn(console, 'error').mockImplementation(() => null)

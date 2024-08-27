@@ -1,0 +1,39 @@
+---
+heading: 'Table'
+description: 'Tables display data-centric information.'
+a11y: 'forms'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  BasicTablePreview,
+  SizesPreview,
+  DecorationPreview
+} from '@/app/react/table/components/table-preview'
+
+<OverviewList rules={[
+  'Use tables to display data-centric information',
+  'Tables can contain actions, such as buttons or links',
+  'Two header sizes: "md" and "lg"',
+  'Three data cell sizes: "sm", "md", and "lg"',
+  'Two decoration styles: "zebra" and "default"',
+]} />
+
+## Example
+
+<CodePreview preview={<BasicTablePreview />} />
+
+## Sizes
+
+<CodePreview preview={<SizesPreview />} />
+
+## Decoration
+
+<CodePreview preview={<DecorationPreview />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |

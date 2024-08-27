@@ -14,11 +14,11 @@ import { Show } from '../components/Show'
 import { NotificationHeading } from '../components/NotificationHeading'
 import { NotificationDescription } from '../components/NotificationDescription'
 import { Notification } from '../components/Notification'
-import { animateIn, vstack } from '@cerberus-design/styled-system/patterns'
+import { animateIn, vstack } from '@cerberus/styled-system/patterns'
 import { Portal, type PortalProps } from '../components/Portal'
-import { notification } from '@cerberus-design/styled-system/recipes'
+import { notification } from '@cerberus/styled-system/recipes'
 import { Button } from '../components/Button'
-import { cx } from '@cerberus-design/styled-system/css'
+import { cx } from '@cerberus/styled-system/css'
 
 /**
  * This module provides a context and hook for notifications.
