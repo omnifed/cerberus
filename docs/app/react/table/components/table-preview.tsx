@@ -232,7 +232,7 @@ export function CustomizedPreview() {
           <Td>Noodles</Td>
         </Tr>
         <Tr>
-          <Td>Ol' Dirty Bastard</Td>
+          <Td>Ol&apos; Dirty Bastard</Td>
           <Td>Ason Unique</Td>
         </Tr>
         <Tr>
