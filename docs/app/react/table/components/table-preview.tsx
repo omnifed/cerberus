@@ -199,13 +199,18 @@ export function ClickablePreview() {
     <Table caption="Clickable table">
       <Thead>
         <Tr>
-          <Th onClick={handleClick}>
-            Name
+          <Th>Name</Th>
+          <Th
+            className={css({
+              w: '6rem',
+            })}
+            onClick={handleClick}
+          >
+            Age
             <Show when={order === 'asc'} fallback={<SortDescending />}>
               <SortAscending />
             </Show>
           </Th>
-          <Th>Age</Th>
         </Tr>
       </Thead>
       <Tbody>
