@@ -50,6 +50,30 @@ describe('iconButton recipe', () => {
     })
   })
 
+  test('should have a secondaryAction palette variant', () => {
+    expect(iconButton.variants?.palette.secondaryAction).toMatchObject({
+      colorPalette: 'secondaryAction',
+    })
+  })
+
+  test('should have an info palette variant', () => {
+    expect(iconButton.variants?.palette.info).toMatchObject({
+      colorPalette: 'info',
+    })
+  })
+
+  test('should have a success palette variant', () => {
+    expect(iconButton.variants?.palette.success).toMatchObject({
+      colorPalette: 'success',
+    })
+  })
+
+  test('should have a warning palette variant', () => {
+    expect(iconButton.variants?.palette.warning).toMatchObject({
+      colorPalette: 'warning',
+    })
+  })
+
   test('should have an danger palette variant', () => {
     expect(iconButton.variants?.palette.danger).toMatchObject({
       colorPalette: 'danger',

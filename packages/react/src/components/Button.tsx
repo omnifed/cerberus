@@ -1,6 +1,9 @@
 import type { ButtonHTMLAttributes } from 'react'
-import { cx, type RecipeVariantProps } from '@cerberus/styled-system/css'
-import { button } from '@cerberus/styled-system/recipes'
+import { cx } from '@cerberus/styled-system/css'
+import {
+  button,
+  type ButtonVariantProps,
+} from '@cerberus/styled-system/recipes'
 
 /**
  * This module contains the Button component.
@@ -8,7 +11,7 @@ import { button } from '@cerberus/styled-system/recipes'
  */
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-  RecipeVariantProps<typeof button>
+  ButtonVariantProps
 
 /**
  * A component that allows the user to perform actions

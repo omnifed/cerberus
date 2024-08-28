@@ -44,6 +44,11 @@ export const allPalettes = {
   danger,
 }
 
+export const actionPalettes = {
+  action,
+  secondaryAction,
+}
+
 export const nonActionPalettes = {
   page,
   info,

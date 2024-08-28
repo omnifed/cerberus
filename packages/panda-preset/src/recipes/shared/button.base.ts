@@ -1,5 +1,5 @@
 import { focusStates, formStates } from './states'
-import { action, danger } from './palettes'
+import { actionPalettes, statePalettes } from './palettes'
 
 const bgInitial = 'colorPalette.bg.initial'
 const textInitial = 'colorPalette.text.initial'
@@ -42,7 +42,6 @@ export const nonTextStates = {
 
 export const textUsage = {
   colorPalette: 'secondaryAction',
-
   bgColor: 'transparent',
   border: 'none',
   color: textInitial,
@@ -86,9 +85,10 @@ export const outlinedUsage = {
 }
 
 export const buttonPalettes = {
-  action,
+  ...actionPalettes,
+  ...statePalettes,
   danger: {
-    ...danger,
+    ...statePalettes.danger,
     _hover: {
       color: 'danger.text.inverse',
     },
