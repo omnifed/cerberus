@@ -44,6 +44,56 @@ describe('success', () => {
     ).toEqual('#12B24A')
   })
 
+  test('should have a ghost.initial property', () => {
+    expect(
+      formatToken(
+        successTokens.success.ghost.initial.value._cerberusTheme.base,
+      ),
+    ).toEqual('#130024')
+    expect(
+      formatToken(
+        successTokens.success.ghost.initial.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#130024')
+    expect(
+      formatToken(
+        successTokens.success.ghost.initial.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#FFFFFF')
+  })
+
+  test('should have a ghost.hover property', () => {
+    expect(
+      formatToken(successTokens.success.ghost.hover.value._cerberusTheme.base),
+    ).toEqual('#07471E')
+    expect(
+      formatToken(
+        successTokens.success.ghost.hover.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#07471E')
+    expect(
+      formatToken(
+        successTokens.success.ghost.hover.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#E8F8ED')
+  })
+
+  test('should have a ghost.active property', () => {
+    expect(
+      formatToken(successTokens.success.ghost.active.value._cerberusTheme.base),
+    ).toEqual('#0B6B2C')
+    expect(
+      formatToken(
+        successTokens.success.ghost.active.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#0B6B2C')
+    expect(
+      formatToken(
+        successTokens.success.ghost.active.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#D0F0DB')
+  })
+
   test('should have a surface.initial property', () => {
     expect(
       formatToken(

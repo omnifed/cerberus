@@ -70,10 +70,40 @@ describe('notification recipe', () => {
 
   test('should have a close style', () => {
     expect(notification.base?.close).toMatchObject({
+      alignItems: 'center',
+      display: 'inline-flex',
+      fontWeight: '600',
+      gap: '2',
+      justifyContent: 'center',
+      lineHeight: '0',
+      outline: 'none',
+      textDecoration: 'none',
+      transitionProperty: 'background-color, color',
+      transitionDuration: 'fast',
+      transitionTimingFunction: 'ease-in-out',
+      userSelect: 'none',
+      whiteSpace: 'nowrap',
+      h: '2.75rem',
+      pxi: '0',
+      rounded: 'full',
+      w: '2.75rem',
       bgColor: 'transparent',
       color: 'inherit',
+      _focusVisible: {
+        boxShadow: 'none',
+        outline: '3px solid',
+        outlineColor: 'action.border.focus',
+        outlineOffset: '2px',
+      },
+      _disabled: {
+        cursor: 'not-allowed',
+        opacity: '0.5',
+      },
+      _readOnly: {
+        cursor: 'default',
+      },
       _hover: {
-        bgColor: 'colorPalette.bg.hover',
+        bgColor: 'colorPalette.ghost.hover',
       },
     })
   })

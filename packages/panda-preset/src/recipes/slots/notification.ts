@@ -106,7 +106,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
       bgColor: 'transparent',
       color: 'inherit',
       _hover: {
-        bgColor: 'colorPalette.bg.hover',
+        bgColor: 'colorPalette.ghost.hover',
       },
     },
     closeAll: {
@@ -127,15 +127,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
       [INFO]: getNotificationPalette(INFO),
       [SUCCESS]: getNotificationPalette(SUCCESS),
       [WARNING]: getNotificationPalette(WARNING),
-      [DANGER]: {
-        ...getNotificationPalette(DANGER),
-        close: {
-          ...getNotificationPalette(DANGER).close,
-          _hover: {
-            color: 'danger.text.inverse',
-          },
-        },
-      },
+      [DANGER]: getNotificationPalette(DANGER),
     },
   },
 
