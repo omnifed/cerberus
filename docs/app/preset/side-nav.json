@@ -27,7 +27,7 @@
     "id": "2:b",
     "label": "Colors",
     "route": "/preset/colors",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
