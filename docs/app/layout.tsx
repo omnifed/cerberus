@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 import type { PropsWithChildren } from 'react'
 import { ThemeProvider } from '@cerberus-design/react'
 import { css, cx } from '@cerberus/styled-system/css'
@@ -25,6 +26,7 @@ interface RootProps {}
 export default function RootLayout(props: PropsWithChildren<RootProps>) {
   return (
     <html lang="en" data-theme="cerberus" data-color-mode="light">
+      <Analytics />
       <body
         className={cx(
           poppins.className,
