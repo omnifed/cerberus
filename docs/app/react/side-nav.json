@@ -32,7 +32,7 @@
   {
     "label": "Notification",
     "route": "/react/notification",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -72,7 +72,7 @@
   {
     "label": "Table",
     "route": "/react/table",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -98,7 +98,7 @@
   {
     "label": "Drag & Drop",
     "route": "/react/drag-n-drop",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -126,7 +126,7 @@
   {
     "label": "File Uploader",
     "route": "/react/file-uploader",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
