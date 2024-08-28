@@ -12,6 +12,7 @@ import {
   BasicTablePreview,
   SizesPreview,
   DecorationPreview,
+  ClickablePreview,
   CustomizedPreview
 } from '@/app/react/table/components/table-preview'
 
@@ -170,6 +171,137 @@ function SizesPreview() {
 ```
 </CodePreview>
 
+## Decoration
+
+<CodePreview preview={<DecorationPreview />}>
+```tsx title="table.tsx" {20,38}
+import {
+  Table,
+  Tbody,
+  Th,
+  Thead,
+  Tr,
+  Td,
+} from '@cerberus-design/react'
+import { hstack } from '@cerberus/styled-system/patterns'
+
+function DecorationPreview() {
+  return (
+    <div className={hstack()}>
+      <Table caption="Table with default decorations">
+        <Thead>
+          <Tr>
+            <Th>Default</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <Tr>
+            <Td>one</Td>
+          </Tr>
+          <Tr>
+            <Td>two</Td>
+          </Tr>
+          <Tr>
+            <Td>three</Td>
+          </Tr>
+        </Tbody>
+      </Table>
+      <Table caption="Table with zebra decorations">
+        <Thead>
+          <Tr>
+            <Th>Zebra</Th>
+          </Tr>
+        </Thead>
+        <Tbody decoration="zebra">
+          <Tr>
+            <Td>one</Td>
+          </Tr>
+          <Tr>
+            <Td>two</Td>
+          </Tr>
+          <Tr>
+            <Td>three</Td>
+          </Tr>
+        </Tbody>
+      </Table>
+    </div>
+  )
+}
+```
+</CodePreview>
+
+## Clickable
+
+<CodePreview preview={<ClickablePreview />}>
+```tsx title="table.tsx" {46}
+'use client'
+
+import {
+  Show,
+  Table,
+  Tbody,
+  Th,
+  Thead,
+  Tr,
+  Td,
+} from '@cerberus-design/react'
+import { SortAscending, SortDescending } from '@cerberus-design/icons'
+imort { useCallback, useMemo, useState } from 'react'
+
+function ClickablePreview() {
+  const [order, setOrder] = useState<'asc' | 'desc'>('asc')
+  const data = useMemo(
+    () => [
+      {
+        id: '1',
+        name: 'John Doe',
+        age: 30,
+      },
+      {
+        id: '2',
+        name: 'Jane Doe',
+        age: 25,
+      },
+    ],
+    [],
+  )
+  const sortedData = useMemo(() => {
+    return order === 'asc'
+      ? data.sort((a, b) => a.age - b.age)
+      : data.sort((a, b) => b.age - a.age)
+  }, [data, order])
+
+  const handleClick = useCallback(() => {
+    setOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'))
+  }, [])
+
+  return (
+    <Table caption="Clickable table">
+      <Thead>
+        <Tr>
+          <Th onClick={handleClick}>
+            Name
+            <Show when={order === 'asc'} fallback={<SortDescending />}>
+              <SortAscending />
+            </Show>
+          </Th>
+          <Th>Age</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        {sortedData.map((person) => (
+          <Tr key={person.id}>
+            <Td>{person.name}</Td>
+            <Td>{person.age}</Td>
+          </Tr>
+        ))}
+      </Tbody>
+    </Table>
+  )
+}
+```
+</CodePreview>
+
 ## Customization
 
 You can customize the table by utilizing the `css` function. For full control, we recommend extending the recipes provided in your panda config.
@@ -288,7 +420,9 @@ define function Table(props: PropsWithChildren<TableProps>): ReactNode
 ### Th
 
 ```ts showLineNumbers=false
-export type ThBaseProps = TableHTMLAttributes<HTMLTableCellElement>
+export type ThBaseProps = TableHTMLAttributes<HTMLTableCellElement> & {
+  onClick?: MouseEventHandler<HTMLButtonElement>
+}
 export type ThProps = ThBaseProps & ThVariantProps
 
 define function Th(props: ThProps): ReactNode
@@ -297,6 +431,7 @@ define function Th(props: ThProps): ReactNode
 | Name     | Default | Description                                  |
 | -------- | ------- | -------------------------------------------- |
 | size |  `md`  | The cell size of the th. |
+| onClick |    | Converts the table cell to a button element. |
 
 ### Tbody
 

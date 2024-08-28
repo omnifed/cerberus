@@ -1,5 +1,6 @@
 'use client'
 
+import { SortAscending, SortDescending } from '@cerberus-design/icons'
 import {
   Table,
   Tbody,
@@ -10,9 +11,11 @@ import {
   Toggle,
   Field,
   useToggle,
+  Show,
 } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
+import { useCallback, useMemo, useState } from 'react'
 
 export function SizesPreview() {
   return (
@@ -160,6 +163,58 @@ export function BasicTablePreview() {
             </Field>
           </Td>
         </Tr>
+      </Tbody>
+    </Table>
+  )
+}
+
+export function ClickablePreview() {
+  const [order, setOrder] = useState<'asc' | 'desc'>('asc')
+  const data = useMemo(
+    () => [
+      {
+        id: '1',
+        name: 'John Doe',
+        age: 30,
+      },
+      {
+        id: '2',
+        name: 'Jane Doe',
+        age: 25,
+      },
+    ],
+    [],
+  )
+  const sortedData = useMemo(() => {
+    return order === 'asc'
+      ? data.sort((a, b) => a.age - b.age)
+      : data.sort((a, b) => b.age - a.age)
+  }, [data, order])
+
+  const handleClick = useCallback(() => {
+    setOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'))
+  }, [])
+
+  return (
+    <Table caption="Clickable table">
+      <Thead>
+        <Tr>
+          <Th onClick={handleClick}>
+            Name
+            <Show when={order === 'asc'} fallback={<SortDescending />}>
+              <SortAscending />
+            </Show>
+          </Th>
+          <Th>Age</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        {sortedData.map((person) => (
+          <Tr key={person.id}>
+            <Td>{person.name}</Td>
+            <Td>{person.age}</Td>
+          </Tr>
+        ))}
       </Tbody>
     </Table>
   )
