@@ -24,7 +24,7 @@ describe('input recipe', () => {
       color: 'page.text.initial',
       h: 'full',
       pxi: '4',
-      rounded: 'md',
+      rounded: 'sm',
       transitionProperty: 'border-color',
       transitionDuration: '200ms',
       transitionTimingFunction: 'ease-in-out',
