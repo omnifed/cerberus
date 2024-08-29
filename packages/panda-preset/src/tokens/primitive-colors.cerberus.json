@@ -893,7 +893,7 @@
     "drop-shadow": {
       "sm": {
         "$type": "color",
-        "$value": "#16012640",
+        "$value": "#16012626",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -905,7 +905,7 @@
       },
       "md": {
         "$type": "color",
-        "$value": "#16012666",
+        "$value": "#16012659",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -917,7 +917,7 @@
       },
       "lg": {
         "$type": "color",
-        "$value": "#16012699",
+        "$value": "#16012680",
         "$description": "",
         "$extensions": {
           "com.figma": {
