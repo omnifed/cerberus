@@ -1,36 +1,10 @@
 'use client'
 
+import { Fragment } from 'react'
 import { Button } from '@cerberus-design/react'
 import { ArrowDownRight } from '@cerberus-design/icons'
 import { css } from '@cerberus/styled-system/css'
-import { Fragment } from 'react'
 import { grid, gridItem } from '@cerberus/styled-system/patterns'
-import { useCodeBuilder } from '@/app/context/code-builder'
-
-export function ButtonPreview() {
-  const { selectedProps } = useCodeBuilder()
-  switch (selectedProps.palette) {
-    case 'secondaryAction':
-      return (
-        <Button palette="secondaryAction" {...selectedProps}>
-          {selectedProps.text || 'Add Text'}
-        </Button>
-      )
-    case 'danger':
-      return (
-        <Button palette="danger" {...selectedProps}>
-          {selectedProps.text || 'Add Text'}
-        </Button>
-      )
-
-    default:
-      return (
-        <Button {...selectedProps}>{selectedProps.text || 'Add Text'}</Button>
-      )
-  }
-}
-
-// DEPRECATED
 
 export function BasicButtonPreview() {
   return <Button>Default styles</Button>

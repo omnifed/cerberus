@@ -17,6 +17,7 @@
     "next": "14.2.7",
     "react": "^18",
     "react-dom": "^18",
+    "react-syntax-highlighter": "^15.5.0",
     "remove": "^0.1.5"
   },
   "devDependencies": {

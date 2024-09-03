@@ -1,27 +1,20 @@
-'use client'
-
-import { Menu } from '@cerberus-design/icons'
-import { IconButton } from '@cerberus-design/react'
+import { Show } from '@cerberus-design/react'
 import { css, cx } from '@cerberus/styled-system/css'
 import { cq, hstack, vstack } from '@cerberus/styled-system/patterns'
-import { useCallback, useState, type PropsWithChildren } from 'react'
+import { type PropsWithChildren } from 'react'
 import BuilderSidebar from './builder-sidebar'
 import type { BuilderResult } from './helpers'
 import BuilderForm from './builder-form'
+import BuilderSnippet from './builder-snippet'
 
 interface CodeBuilderProps {
   api: Record<string, BuilderResult>
+  code?: string
 }
 
 export default function BuilderLayout(
   props: PropsWithChildren<CodeBuilderProps>,
 ) {
-  const [showSidebar, setShowSidebar] = useState<boolean>(false)
-
-  const handleToggleSidebar = useCallback(() => {
-    setShowSidebar((prev) => !prev)
-  }, [])
-
   return (
     <section
       className={cx(
@@ -34,13 +27,18 @@ export default function BuilderLayout(
       <div
         className={hstack({
           cerbGradient: 'purple',
-          h: {
-            '@/sm': '20rem',
-            '@/md': '24rem',
+          flexDirection: {
+            '@/sm': 'column',
+            '@/md': 'row',
           },
+          h: '24rem',
           justify: 'space-between',
           overflow: 'hidden',
           position: 'relative',
+          pt: {
+            '@/sm': '4',
+            '@/md': 'initial',
+          },
           rounded: '2xl',
           w: 'full',
         })}
@@ -54,35 +52,15 @@ export default function BuilderLayout(
           {props.children}
         </div>
 
-        <div
-          className={css({
-            display: {
-              '@/sm': 'inline-block',
-              '@/md': 'none',
-            },
-            position: 'absolute',
-            right: 2,
-            top: 2,
-            zIndex: 'decorator',
-          })}
-        >
-          <IconButton ariaLabel="Show options" onClick={handleToggleSidebar}>
-            <span
-              className={css({
-                color: 'black',
-              })}
-            >
-              <Menu size={32} />
-            </span>
-          </IconButton>
-        </div>
-
-        <BuilderSidebar expanded={showSidebar} onClose={handleToggleSidebar}>
+        <BuilderSidebar>
           <h2
             className={css({
+              bgColor: 'page.surface.initial',
               color: 'page.text.100',
-              mb: '4',
+              py: '4',
+              position: 'sticky',
               textStyle: 'h6',
+              top: '0',
             })}
           >
             Preview Playground
@@ -92,18 +70,18 @@ export default function BuilderLayout(
         </BuilderSidebar>
       </div>
 
-      <footer
-        className={cx(
-          'expressive-code',
-          css({
-            w: 'full',
-          }),
-        )}
-      >
-        <pre data-language="tsx">
-          <code>some code</code>
-        </pre>
-      </footer>
+      <Show when={Boolean(props.code)}>
+        <footer
+          className={cx(
+            'expressive-code',
+            css({
+              w: 'full',
+            }),
+          )}
+        >
+          <BuilderSnippet code={props.code!} />
+        </footer>
+      </Show>
     </section>
   )
 }

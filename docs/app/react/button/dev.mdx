@@ -5,19 +5,14 @@ recipe: 'button.ts'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
-import CodeBuilder from '@/app/components/code-builder/code-builder'
-import { builder } from '@/app/components/code-builder/helpers'
 import {
-  ButtonPreview,
   // DEPRECATED
-  BasicButtonPreview,
-  DangerButtonPreview,
-  OutlineButtonPreview,
-  TextButtonPreview,
-  RoundedButtonPreview,
   WithIconButtonPreview,
   CustomButtonPreview,
 } from '@/app/react/button/components/button-preview'
+import {
+  LivePlaygroundWithCode,
+} from '@/app/react/button/components/live-playground'
 
 ```ts
 import { Button } from '@cerberus-design/react'
@@ -27,75 +22,7 @@ import { Button } from '@cerberus-design/react'
 
 You can mix and match all of the examples to create the button style of your choosing.
 
-<CodeBuilder api={{
-  palette: builder.Enum('palette', ['action', 'secondaryAction', 'danger']),
-  usage: builder.Enum('usage', ['filled', 'outlined', 'text']),
-  shape: builder.Enum('shape', ['sharp', 'rounded']),
-  text: builder.Text('name', 'Button'),
-  disabled: builder.Boolean('disabled', false),
-}}>
- <ButtonPreview />
-</CodeBuilder>
-
-### Default
-
-<CodePreview preview={<BasicButtonPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
-
-function BasicButton() {
-  return <Button>Default styles</Button>
-}
-```
-</CodePreview>
-
-### Danger
-
-<CodePreview preview={<DangerButtonPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
-
-function DangerButton() {
-  <Button palette="danger">Danger styles</Button>
-}
-```
-</CodePreview>
-
-### Outlined
-
-<CodePreview preview={<OutlineButtonPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
-
-function OutlinedButton() {
-  return <Button usage="outlined">Outlined styles</Button>
-}
-```
-</CodePreview>
-
-### Text
-
-<CodePreview preview={<TextButtonPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
-
-function TextButton() {
-  return <Button usage="text">Text styles</Button>
-}
-```
-</CodePreview>
-
-### Rounded
-
-<CodePreview preview={<RoundedButtonPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
-
-function RoundedButton() {
-  return <Button shape="rounded">Rounded styles</Button>
-}
-```
-</CodePreview>
+<LivePlaygroundWithCode />
 
 ### With Icon
 
@@ -146,7 +73,7 @@ function CustomButton() {
 
 ```ts showLineNumbers=false
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  palette?: 'action' | 'danger'
+  palette?: 'action' | 'secondaryAction' | 'danger'
   usage?: 'filled' | 'outlined' | 'text'
   shape?: 'sharp' | 'rounded'
 }

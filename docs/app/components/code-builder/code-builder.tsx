@@ -5,6 +5,7 @@ import BuilderLayout from './builder-layout'
 
 interface CodeBuilderProps {
   api: Record<string, BuilderResult>
+  code?: string
 }
 
 export default function CodeBuilder(
@@ -12,7 +13,9 @@ export default function CodeBuilder(
 ) {
   return (
     <CodeBuilderProvider api={props.api}>
-      <BuilderLayout api={props.api}>{props.children}</BuilderLayout>
+      <BuilderLayout api={props.api} code={props.code}>
+        {props.children}
+      </BuilderLayout>
     </CodeBuilderProvider>
   )
 }
