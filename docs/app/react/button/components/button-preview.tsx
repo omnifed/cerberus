@@ -1,8 +1,18 @@
+'use client'
+
 import { Button } from '@cerberus-design/react'
 import { ArrowDownRight } from '@cerberus-design/icons'
 import { css } from '@cerberus/styled-system/css'
 import { Fragment } from 'react'
 import { grid, gridItem } from '@cerberus/styled-system/patterns'
+import { useCodeBuilder } from '@/app/context/code-builder'
+
+export function ButtonPreview() {
+  const { selectedProps } = useCodeBuilder()
+  return <Button {...selectedProps}>{selectedProps.text || 'Add Text'}</Button>
+}
+
+// DEPRECATED
 
 export function BasicButtonPreview() {
   return <Button>Default styles</Button>

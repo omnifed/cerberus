@@ -5,7 +5,11 @@ recipe: 'button.ts'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
+import CodeBuilder from '@/app/components/code-builder/code-builder'
+import { builder } from '@/app/components/code-builder/helpers'
 import {
+  ButtonPreview,
+  // DEPRECATED
   BasicButtonPreview,
   DangerButtonPreview,
   OutlineButtonPreview,
@@ -22,6 +26,16 @@ import { Button } from '@cerberus-design/react'
 ## Usage
 
 You can mix and match all of the examples to create the button style of your choosing.
+
+<CodeBuilder api={{
+  palette: builder.Enum('palette', ['action', 'danger']),
+  usage: builder.Enum('usage', ['filled', 'outlined', 'text']),
+  shape: builder.Enum('shape', ['sharp', 'rounded']),
+  text: builder.Text('name', 'Button'),
+  disabled: builder.Boolean('disabled', false),
+}}>
+ <ButtonPreview />
+</CodeBuilder>
 
 ### Default
 

@@ -136,6 +136,7 @@ export function TabPageContentSections(
     <div
       className={grid({
         columns: 12,
+        position: 'relative',
       })}
     >
       {props.children}
