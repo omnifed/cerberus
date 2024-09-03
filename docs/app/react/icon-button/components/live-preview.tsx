@@ -6,6 +6,8 @@ import { useCodeBuilder } from '@/app/context/code-builder'
 import { ThumbsUp } from '@cerberus-design/icons'
 import { IconButton } from '@cerberus-design/react'
 
+const fallbackAria = 'Like something'
+
 const api = {
   palette: builder.Enum('palette', ['action', 'secondaryAction', 'danger']),
   usage: builder.Enum('usage', ['filled', 'outlined', 'text']),
@@ -16,7 +18,7 @@ const api = {
     'bottom',
     'left',
   ]),
-  ariaLabel: builder.Text('ariaLabel', 'Like something'),
+  ariaLabel: builder.Text('ariaLabel', fallbackAria),
   text: builder.Text('name', 'Button'),
   disabled: builder.Boolean('disabled', false),
 }
@@ -64,7 +66,7 @@ export function IconButtonPreview() {
     case 'secondaryAction':
       return (
         <IconButton
-          ariaLabel={aria ?? 'Like something'}
+          ariaLabel={aria ?? fallbackAria}
           palette="secondaryAction"
           {...selectedProps}
         >
@@ -74,7 +76,7 @@ export function IconButtonPreview() {
     case 'danger':
       return (
         <IconButton
-          ariaLabel={aria ?? 'Like something'}
+          ariaLabel={aria ?? fallbackAria}
           palette="danger"
           {...selectedProps}
         >
@@ -84,7 +86,7 @@ export function IconButtonPreview() {
 
     default:
       return (
-        <IconButton ariaLabel={aria ?? 'Like something'} {...selectedProps}>
+        <IconButton ariaLabel={aria ?? fallbackAria} {...selectedProps}>
           <ThumbsUp />
         </IconButton>
       )
