@@ -9,7 +9,25 @@ import { useCodeBuilder } from '@/app/context/code-builder'
 
 export function ButtonPreview() {
   const { selectedProps } = useCodeBuilder()
-  return <Button {...selectedProps}>{selectedProps.text || 'Add Text'}</Button>
+  switch (selectedProps.palette) {
+    case 'secondaryAction':
+      return (
+        <Button palette="secondaryAction" {...selectedProps}>
+          {selectedProps.text || 'Add Text'}
+        </Button>
+      )
+    case 'danger':
+      return (
+        <Button palette="danger" {...selectedProps}>
+          {selectedProps.text || 'Add Text'}
+        </Button>
+      )
+
+    default:
+      return (
+        <Button {...selectedProps}>{selectedProps.text || 'Add Text'}</Button>
+      )
+  }
 }
 
 // DEPRECATED
