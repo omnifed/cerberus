@@ -144,7 +144,7 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
   },
 
   _highlight: {
-    backgroundColor: 'var(--cerberus-colors-info-border-initial)',
+    backgroundColor: 'var(--cerberus-colors-info-surface-initial)',
     color: 'var(--cerberus-colors-info-text-initial)',
   },
 
