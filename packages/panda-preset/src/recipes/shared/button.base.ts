@@ -41,7 +41,6 @@ export const nonTextStates = {
 }
 
 export const textUsage = {
-  colorPalette: 'secondaryAction',
   bgColor: 'transparent',
   border: 'none',
   color: textInitial,
@@ -50,6 +49,7 @@ export const textUsage = {
   transitionTimingFunction: 'ease-in-out',
   _hover: {
     bgColor: 'colorPalette.ghost.hover',
+    color: 'colorPalette.text.200',
   },
   _active: {
     bgColor: 'colorPalette.ghost.active',
@@ -87,10 +87,4 @@ export const outlinedUsage = {
 export const buttonPalettes = {
   ...actionPalettes,
   ...statePalettes,
-  danger: {
-    ...statePalettes.danger,
-    _hover: {
-      color: 'danger.text.inverse',
-    },
-  },
 }

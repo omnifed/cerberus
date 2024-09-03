@@ -82,7 +82,6 @@ describe('iconButton recipe', () => {
 
   test('should have a text usage variant', () => {
     expect(iconButton.variants?.usage.text).toMatchObject({
-      colorPalette: 'secondaryAction',
       color: initialText,
       bgColor: 'transparent',
       border: 'none',
@@ -91,6 +90,7 @@ describe('iconButton recipe', () => {
       transitionTimingFunction: 'ease-in-out',
       _hover: {
         bgColor: 'colorPalette.ghost.hover',
+        color: 'colorPalette.text.200',
       },
       _active: {
         bgColor: 'colorPalette.ghost.active',

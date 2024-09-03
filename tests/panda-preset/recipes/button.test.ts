@@ -80,7 +80,6 @@ describe('button recipe', () => {
 
   test('should have a text usage variant', () => {
     expect(button.variants?.usage.text).toMatchObject({
-      colorPalette: 'secondaryAction',
       color: initialText,
       bgColor: 'transparent',
       border: 'none',
@@ -89,6 +88,7 @@ describe('button recipe', () => {
       transitionTimingFunction: 'ease-in-out',
       _hover: {
         bgColor: 'colorPalette.ghost.hover',
+        color: 'colorPalette.text.200',
       },
       _active: {
         bgColor: 'colorPalette.ghost.active',
@@ -151,6 +151,20 @@ describe('button recipe', () => {
         h: '2.75rem',
       },
     })
+  })
+
+  test('should have a compound variant', () => {
+    expect(button.compoundVariants).toMatchObject([
+      {
+        palette: 'danger',
+        usage: 'filled',
+        css: {
+          _hover: {
+            color: 'colorPalette.text.inverse',
+          },
+        },
+      },
+    ])
   })
 
   test('should have default variants', () => {

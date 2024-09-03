@@ -59,6 +59,18 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     },
   },
 
+  compoundVariants: [
+    {
+      palette: 'danger',
+      usage: 'filled',
+      css: {
+        _hover: {
+          color: 'colorPalette.text.inverse',
+        },
+      },
+    },
+  ],
+
   defaultVariants: {
     palette: 'action',
     usage: 'filled',

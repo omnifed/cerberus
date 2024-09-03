@@ -7,8 +7,11 @@ a11y: 'touch-target'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import {
-  OverviewButtonPreview
+  OverviewButtonPreview,
 } from '@/app/react/button/components/button-preview'
+import {
+  LivePlayground,
+} from '@/app/react/button/components/live-playground'
 
 <OverviewList rules={[
   'Can contain an optional leading icon',
@@ -20,6 +23,7 @@ import {
 ## Example
 
 <CodePreview preview={<OverviewButtonPreview />} />
+<LivePlayground />
 
 ## Resources
 
