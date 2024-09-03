@@ -6,13 +6,9 @@ recipe: 'iconButton.ts'
 
 import CodePreview from '@/app/components/CodePreview'
 import {
-  BasicIconButtonPreview,
-  OutlinedIconButtonPreview,
-  DangerIconButtonPreview,
-  TextIconButtonPreview,
-  IconButtonSizesPreview,
   CustomIconButtonPreview,
 } from '@/app/react/icon-button/components/icon-button-preview'
+import { LivePlaygroundWithCode } from '@/app/react/icon-button/components/live-preview'
 
 ```ts
 import { IconButton } from '@cerberus-design/react'
@@ -22,95 +18,7 @@ import { IconButton } from '@cerberus-design/react'
 
 The IconButton API is similar to the [Button](./button), but with the addition of an `ariaLabel` prop.
 
-### Default
-
-<CodePreview preview={<BasicIconButtonPreview />}>
-```tsx title="icon-button.tsx"
-import { IconButton } from '@cerberus-design/react'
-import { ThumbsUp } from '@cerberus/icons'
-
-function BasicIconButtonPreview() {
-  return (
-    <IconButton ariaLabel="Like something">
-      <ThumbsUp size={24} />
-    </IconButton>
-  )
-}
-```
-</CodePreview>
-
-### Outlined
-
-<CodePreview preview={<OutlinedIconButtonPreview />}>
-```tsx title="icon-button.tsx"
-import { IconButton } from '@cerberus-design/react'
-import { ThumbsUp } from '@cerberus/icons'
-
-function OutlinedIconButtonPreview() {
-  return (
-    <IconButton ariaLabel="Like something" usage="outlined">
-      <ThumbsUp size={16} />
-    </IconButton>
-  )
-}
-```
-</CodePreview>
-
-### Danger
-
-<CodePreview preview={<DangerIconButtonPreview />}>
-```tsx title="icon-button.tsx"
-import { IconButton } from '@cerberus-design/react'
-import { Close } from '@cerberus/icons'
-
-function DangerIconButtonPreview() {
-  return (
-    <IconButton ariaLabel="Close something" palette="danger" usage="filled">
-      <Close size={24} />
-    </IconButton>
-  )
-}
-```
-</CodePreview>
-
-### Text
-
-<CodePreview preview={<TextIconButtonPreview />}>
-```tsx title="icon-button.tsx"
-import { IconButton } from '@cerberus-design/react'
-import { ThumbsUp } from '@cerberus/icons'
-
-function TextIconButtonPreview() {
-  return (
-    <IconButton ariaLabel="Like something" usage="text">
-      <ThumbsUp size={24} />
-    </IconButton>
-  )
-}
-```
-</CodePreview>
-
-### Sizes
-
-<CodePreview preview={<IconButtonSizesPreview />}>
-```tsx title="icon-button.tsx"
-import { IconButton } from '@cerberus-design/react'
-import { ThumbsUp, ThumbsDown } from '@cerberus/icons'
-
-function IconButtonSizesPreview() {
-  return (
-    <div className={hstack()}>
-      <IconButton ariaLabel="Like something" size="sm">
-        <ThumbsUp />
-      </IconButton>
-      <IconButton ariaLabel="Dislike something">
-        <ThumbsDown size={24} />
-      </IconButton>
-    </div>
-  )
-}
-```
-</CodePreview>
+<LivePlaygroundWithCode />
 
 ## Customization
 
@@ -153,8 +61,7 @@ function CustomIconButtonPreview() {
 ```ts showLineNumbers=false
 export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   ariaLabel: string
-  palette?: 'action' | 'danger'
-  shape?: 'circle'
+  palette?: 'action' | 'secondaryAction' | 'danger'
   size?: 'sm' | 'lg'
   tooltipPosition?: 'top' | 'right' | 'bottom' | 'left'
   usage?: 'filled' | 'text' | 'outlined'
@@ -172,6 +79,5 @@ The `IconButton` component accepts the following props:
 | ariaLabel |    "Icon Button"     | The accessible label for the button. |
 | palette     | `action`   | The color palette of the button. |
 | usage | `text`    | The style treatment of the button.    |
-| shape | `circle`    | The shape of the button.               |
 | size | `lg`    | The size of the button.               |
 | tooltipPosition | `top`    | The position of the tooltip.               |
