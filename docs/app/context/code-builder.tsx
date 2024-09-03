@@ -52,7 +52,7 @@ export default function CodeBuilderProvider(
         [key]: value,
       }))
     },
-    [selectedProps, setSelectedProps],
+    [setSelectedProps],
   )
 
   const value = useMemo(
