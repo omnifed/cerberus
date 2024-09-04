@@ -47,6 +47,10 @@ export default function BuilderLayout(
           className={vstack({
             justify: 'center',
             mx: 'auto',
+            w: {
+              '@/sm': 'full',
+              '@/md': '1/2',
+            },
           })}
         >
           {props.children}
@@ -61,6 +65,7 @@ export default function BuilderLayout(
               position: 'sticky',
               textStyle: 'h6',
               top: '0',
+              zIndex: 'sticky',
             })}
           >
             Preview Playground

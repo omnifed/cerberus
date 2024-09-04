@@ -38,12 +38,13 @@ export function Label(props: PropsWithChildren<LabelProps>) {
   return (
     <label
       {...nativeProps}
-      data-disabled={disabled}
+      {...(disabled && { 'data-disabled': true })}
       className={cx(
         nativeProps.className,
         label({ size, usage }),
         hstack({
           justify: 'space-between',
+          w: 'full',
         }),
       )}
     >
@@ -51,7 +52,7 @@ export function Label(props: PropsWithChildren<LabelProps>) {
       <Show when={required}>
         <span
           className={css({
-            color: 'page.text.100',
+            color: 'inherit',
             fontSize: 'inherit',
           })}
         >

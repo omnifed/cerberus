@@ -6,6 +6,14 @@ import { useCodeBuilder } from '@/app/context/code-builder'
 import { useMemo, type PropsWithChildren } from 'react'
 import { css } from '@cerberus/styled-system/css'
 
+function isFormState(key: string) {
+  return ['disabled', 'required', 'readOnly', 'invalid'].includes(key)
+}
+
+function isChildContent(key: string) {
+  return ['text', 'helpText', 'label'].includes(key)
+}
+
 interface BuilderSnippetProps {
   code: string
 }
@@ -16,11 +24,11 @@ export default function BuilderSnippet(
   const { selectedProps } = useCodeBuilder()
   const code = useMemo(() => {
     return props.code.replace(/{{([^}]+)}}/g, (_, key): string => {
-      if (key === 'text') {
+      if (isChildContent(key)) {
         return (selectedProps[key as keyof typeof selectedProps] ||
           'Add Text') as string
       }
-      if (key === 'disabled') {
+      if (isFormState(key)) {
         return `{${selectedProps[key as keyof typeof selectedProps] || 'false'}}`
       }
       return `"${selectedProps[key as keyof typeof selectedProps] || 'false'}"`

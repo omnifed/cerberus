@@ -1,41 +1,15 @@
-import { ChevronDown, ErrorFilled } from '@cerberus-design/icons'
-import { Field, FieldMessage, Label } from '@cerberus-design/react'
-import { css, cx } from '@cerberus/styled-system/css'
-import { hstack } from '@cerberus/styled-system/patterns'
-import { select } from '@cerberus/styled-system/recipes'
-import type { OptionHTMLAttributes, SelectHTMLAttributes } from 'react'
+import {
+  Field,
+  FieldMessage,
+  Label,
+  Select,
+  Option,
+} from '@cerberus-design/react'
+import { css } from '@cerberus/styled-system/css'
 
 const overrideStyles = css({
   w: '1/2',
 })
-
-function Select(props: SelectHTMLAttributes<HTMLSelectElement>) {
-  const styles = select()
-  return (
-    <div className={styles.root}>
-      <select {...props} aria-invalid="true" className={styles.input} />
-      <span
-        className={cx(
-          styles.iconStack,
-          hstack({
-            gap: '2',
-          }),
-        )}
-      >
-        <span data-invalid className={styles.stateIcon}>
-          <ErrorFilled />
-        </span>
-        <span>
-          <ChevronDown />
-        </span>
-      </span>
-    </div>
-  )
-}
-
-function Option(props: OptionHTMLAttributes<HTMLOptionElement>) {
-  return <option {...props} />
-}
 
 export function SelectBasicPreview() {
   return (

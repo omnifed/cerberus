@@ -9,10 +9,9 @@ import OverviewList from '@/app/components/OverviewList'
 ## Use Cases
 
 <OverviewList intro="Users should be able to:" rules={[
-  'Navigate to and activate a text field with assistive technology',
-  'Input information into the text field',
-  'Receive and understand supporting text and error messages',
-  'Navigate to and select interactive icons',
+  'Navigate to and activate a select field with assistive technology',
+  'Choose an item from the list of options',
+  'Receive and understand supporting select and error messages'
 ]} />
 
 ## Keyboard Navigation
@@ -20,9 +19,11 @@ import OverviewList from '@/app/components/OverviewList'
 | Keys     | Actions                                                         |
 | -------- | --------------------------------------------------------------- |
 | Tab      | Focus lands on (non-disabled) input       |
+| Enter    | Opens the dropdown menu and selects the focused option         |
+| Esc      | Closes the dropdown menu                                       |
 
 ## Labeling Elements
 
 If the UI text is correctly linked, assistive tech (such as a screenreader) will read the UI text followed by the component's role.
 
-The accessibility label for a textfield is typically the same as the label for the textfield.
+The accessibility label for a select field is typically the same as the label for the text field.

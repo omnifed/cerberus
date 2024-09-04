@@ -19,6 +19,7 @@ describe('input recipe', () => {
 
   test('should have a input style', () => {
     expect(input.base?.input).toMatchObject({
+      bgColor: 'page.surface.initial',
       border: '1px solid',
       borderColor: 'action.border.initial',
       color: 'page.text.initial',
@@ -43,6 +44,7 @@ describe('input recipe', () => {
         cursor: 'default',
       },
       _userInvalid: {
+        bgColor: 'page.surface.100',
         borderColor: 'danger.border.initial',
       },
       _placeholderShown: {

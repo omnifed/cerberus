@@ -1,6 +1,7 @@
 import {
   Checkmark,
   CheckmarkFilled,
+  ChevronDown,
   CloudUpload,
   ErrorFilled,
   Information,
@@ -21,6 +22,7 @@ export interface DefinedIcons {
   warningNotification?: IconType
   dangerNotification?: IconType
   invalid: IconType
+  selectArrow?: IconType
   toggleChecked?: IconType
 }
 
@@ -33,5 +35,6 @@ export const defaultIcons: DefinedIcons = {
   warningNotification: WarningFilled,
   dangerNotification: ErrorFilled,
   invalid: WarningFilled,
+  selectArrow: ChevronDown,
   toggleChecked: Checkmark,
 }

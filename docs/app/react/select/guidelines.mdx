@@ -1,33 +1,25 @@
 ---
 ---
 
-import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import {
   WhenToUseAdmonition,
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
-import {
-  InputBasicPreview,
-  InputSizesPreview,
-} from '@/app/react/input/components/input-preview'
+import { LivePlayground } from '@/app/react/select/components/live-preview'
 
 ## Usage
 
-<WhenToUseAdmonition description="Use a text field when someone needs to enter text into a UI, such as filling in contact or payment information." />
+<WhenToUseAdmonition description="Use a select field when someone needs to make a single choice from a long-list of options." />
 
-## Standard Input
+## Standard Select
 
-<CodePreview preview={<InputBasicPreview />} />
+<LivePlayground />
 
-<WhenToUseAdmonition description="When you use any type of standard inputs within a form." />
-
-## Sizes
-
-<CodePreview preview={<InputSizesPreview />} />
+<WhenNotToUseAdmonition description="When you have a short list of four or less options, use a Radio group." />
 
 ## Responsive Layout
 
-As layouts adapt to larger screens and different window sizes, apply flexible container dimensions to text fields. Set minimum and maximum values for margins, padding, and container dimensions as layouts scale so that typography adjusts for better reading experiences.
+As layouts adapt to larger screens and different window sizes, apply flexible container dimensions to select fields. Set minimum and maximum values for margins, padding, and container dimensions as layouts scale so that typography adjusts for better reading experiences.
 
-Text fields can span the full width of the display on compact window sizes, but should be bounded by flexible margins or other containers on medium and expanded window sizes.
+Select fields can span the full width of the display on compact window sizes, but should be bounded by flexible margins or other containers on medium and expanded window sizes.
