@@ -43,6 +43,7 @@ describe('select recipe', () => {
         cursor: 'default',
       },
       _userInvalid: {
+        bgColor: 'page.surface.100',
         borderColor: 'danger.border.initial',
       },
       _placeholderShown: {
@@ -70,6 +71,12 @@ describe('select recipe', () => {
       _invalid: {
         color: 'danger.text.200',
       },
+    })
+  })
+
+  test('should have a arrowIcon style', () => {
+    expect(select.base?.arrowIcon).toMatchObject({
+      color: 'action.text.inverse',
     })
   })
 

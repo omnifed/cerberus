@@ -6,25 +6,20 @@ a11y: 'forms'
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
-import {
-  InputBasicPreview,
-  InputInvalidPreview,
-  InputDisabledPreview,
-  InputWithIconPreview,
-  InputSizesPreview,
-} from '@/app/react/input/components/input-preview'
 import { SelectBasicPreview } from '@/app/react/select/components/select-preview'
+import { LivePlayground } from '@/app/react/select/components/live-preview'
 
 <OverviewList rules={[
-  'Make sure text fields look interactive',
-  "The text field's state (blank, with input, error, etc) should be visible at a glance",
+  'Make sure select fields look interactive',
+  "The select field's state (blank, with input, error, etc) should be visible at a glance",
   'Keep labels and error messages brief and easy to act on',
-  'Text fields commonly appear in forms and dialogs'
+  'Select fields commonly appear in forms and dialogs'
 ]} />
 
 ## Example
 
 <CodePreview preview={<SelectBasicPreview />} />
+<LivePlayground />
 
 ## Resources
 

@@ -1,35 +1,20 @@
-import { type SelectHTMLAttributes } from 'react'
 import type { EnumResult } from './helpers'
-import { css } from '@cerberus/styled-system/css'
-import { focusStates } from '@cerberus-design/panda-preset'
+import { Select, type SelectProps, Option } from '@cerberus-design/react'
 
 type BuilderSelectProps = Omit<EnumResult, 'value'> &
-  SelectHTMLAttributes<HTMLSelectElement> & {
+  SelectProps & {
     options: string[]
   }
 
 export default function BuilderSelect(props: BuilderSelectProps) {
   const { options, ...nativeProps } = props
   return (
-    <select
-      {...nativeProps}
-      className={css({
-        border: '1px solid',
-        borderColor: 'action.border.initial',
-        color: 'page.text.initial',
-        h: '2.5rem',
-        pxi: '2',
-        rounded: 'sm',
-        ...focusStates,
-        w: 'full',
-      })}
-      id={nativeProps.name}
-    >
+    <Select {...nativeProps} id={nativeProps.name}>
       {options.map((choice) => (
-        <option key={choice} value={choice}>
+        <Option key={choice} value={choice}>
           {choice}
-        </option>
+        </Option>
       ))}
-    </select>
+    </Select>
   )
 }

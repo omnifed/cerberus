@@ -16,7 +16,10 @@ import { Show } from './Show'
  * @module
  */
 
-export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> &
+export type SelectProps = Omit<
+  SelectHTMLAttributes<HTMLSelectElement>,
+  'size'
+> &
   SelectVariantProps & {
     id: string
     describedBy?: string
@@ -68,7 +71,7 @@ export function Select(props: SelectProps) {
             <InvalidIcon />
           </span>
         </Show>
-        <span>
+        <span className={styles.arrowIcon}>
           <SelectArrow />
         </span>
       </span>

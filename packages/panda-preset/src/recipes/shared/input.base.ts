@@ -2,6 +2,7 @@ import { focusStates, formStates } from './states'
 
 export const input = {
   appearance: 'none',
+  bgColor: 'page.surface.initial',
   border: '1px solid',
   borderColor: 'action.border.initial',
   color: 'page.text.initial',
@@ -16,6 +17,7 @@ export const input = {
   ...focusStates,
   ...formStates,
   _userInvalid: {
+    bgColor: 'page.surface.100',
     borderColor: 'danger.border.initial',
   },
 }

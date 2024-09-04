@@ -14,7 +14,7 @@ import { inputSizes, input as inputStyles } from '../shared/input.base'
  */
 export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'select',
-  slots: ['root', 'input', 'iconStack', 'stateIcon'],
+  slots: ['root', 'input', 'iconStack', 'stateIcon', 'arrowIcon'],
 
   base: {
     root: {
@@ -44,6 +44,9 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       _invalid: {
         color: 'danger.text.200',
       },
+    },
+    arrowIcon: {
+      color: 'action.text.inverse',
     },
   },
 
