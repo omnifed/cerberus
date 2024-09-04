@@ -1,15 +1,15 @@
 import { describe, test, expect } from 'bun:test'
 import { slotRecipes } from '@cerberus-design/panda-preset'
 
-describe('input recipe', () => {
-  const { input } = slotRecipes
+describe('select recipe', () => {
+  const { select } = slotRecipes
 
   test('should be exported', () => {
-    expect(input).toBeDefined()
+    expect(select).toBeDefined()
   })
 
   test('should have a base style', () => {
-    expect(input.base?.root).toMatchObject({
+    expect(select.base?.root).toMatchObject({
       h: '3.7rem',
       position: 'relative',
       py: '1',
@@ -18,7 +18,7 @@ describe('input recipe', () => {
   })
 
   test('should have a input style', () => {
-    expect(input.base?.input).toMatchObject({
+    expect(select.base?.input).toMatchObject({
       border: '1px solid',
       borderColor: 'action.border.initial',
       color: 'page.text.initial',
@@ -55,31 +55,26 @@ describe('input recipe', () => {
     })
   })
 
-  test('should have a icon style', () => {
-    expect(input.base?.icon).toMatchObject({
+  test('should have a iconStack style', () => {
+    expect(select.base?.iconStack).toMatchObject({
       position: 'absolute',
-      right: '0.5rem',
+      right: '4',
       top: '50%',
       transform: 'translateY(-50%)',
       zIndex: 'decorator',
-      _peerInvalid: {
+    })
+  })
+
+  test('should have a stateIcon style', () => {
+    expect(select.base?.stateIcon).toMatchObject({
+      _invalid: {
         color: 'danger.text.200',
       },
     })
   })
 
-  test('should have a startIcon style', () => {
-    expect(input.base?.startIcon).toMatchObject({
-      position: 'absolute',
-      left: '0.5rem',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      zIndex: 'decorator',
-    })
-  })
-
   test('should have a size variant', () => {
-    expect(input.variants?.size).toMatchObject({
+    expect(select.variants?.size).toMatchObject({
       sm: {
         root: {
           md: {
@@ -109,7 +104,7 @@ describe('input recipe', () => {
   })
 
   test('should have a default variant', () => {
-    expect(input.defaultVariants).toMatchObject({
+    expect(select.defaultVariants).toMatchObject({
       size: 'lg',
     })
   })

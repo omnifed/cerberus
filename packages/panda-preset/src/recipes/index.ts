@@ -14,6 +14,7 @@ import { input } from './slots/input'
 import { modal } from './slots/modal'
 import { notification } from './slots/notification'
 import { radio } from './slots/radio'
+import { select } from './slots/select'
 import { table } from './slots/table'
 import { tabs } from './slots/tabs'
 import { toggle } from './slots/toggle'
@@ -42,6 +43,7 @@ export const slotRecipes = {
   notification,
   modal,
   radio,
+  select,
   table,
   tabs,
   toggle,

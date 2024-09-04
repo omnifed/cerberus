@@ -108,6 +108,12 @@
     "type": "route"
   },
   {
+    "label": "Select",
+    "route": "/react/select",
+    "tag": "next",
+    "type": "route"
+  },
+  {
     "label": "Toggle",
     "route": "/react/toggle",
     "tag": "",

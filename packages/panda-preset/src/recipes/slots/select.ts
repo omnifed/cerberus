@@ -2,19 +2,19 @@ import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { inputSizes, input as inputStyles } from '../shared/input.base'
 
 /**
- * This module contains the input recipe.
+ * This module contains the select recipe.
  * @module
  */
 
 /**
- * Styles for the Input component
+ * Styles for the Select components
  * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
  * @definition [ARIA Forms](https://www.a11yproject.com/checklist/#forms)
- * @definition [Input docs](https://cerberus.digitalu.design/react/input)
+ * @definition [Select docs](https://cerberus.digitalu.design/react/select)
  */
-export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
-  slots: ['root', 'input', 'icon', 'startIcon'],
-  className: 'input',
+export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
+  className: 'select',
+  slots: ['root', 'input', 'iconStack', 'stateIcon'],
 
   base: {
     root: {
@@ -33,22 +33,17 @@ export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
         paddingInlineStart: '7',
       },
     },
-    icon: {
+    iconStack: {
       position: 'absolute',
-      right: '0.5rem',
+      right: '4',
       top: '50%',
       transform: 'translateY(-50%)',
       zIndex: 'decorator',
-      _peerInvalid: {
+    },
+    stateIcon: {
+      _invalid: {
         color: 'danger.text.200',
       },
-    },
-    startIcon: {
-      position: 'absolute',
-      left: '0.5rem',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      zIndex: 'decorator',
     },
   },
 
