@@ -22,7 +22,7 @@
   "selection": {
     "name": "Selection",
     "description": "Components that allow users to select choices.",
-    "items": ["Toggle", "Radio"]
+    "items": ["Radio", "Select", "Toggle"]
   },
   "inputs": {
     "name": "Inputs",

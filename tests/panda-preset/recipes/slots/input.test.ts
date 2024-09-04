@@ -63,7 +63,7 @@ describe('input recipe', () => {
       transform: 'translateY(-50%)',
       zIndex: 'decorator',
       _peerInvalid: {
-        color: 'danger.text.100',
+        color: 'danger.text.200',
       },
     })
   })
