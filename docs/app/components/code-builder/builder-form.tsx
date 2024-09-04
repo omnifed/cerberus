@@ -73,6 +73,7 @@ export default function BuilderForm(props: BuilderFormProps) {
             <Show when={props.api[key].type === 'enum'}>
               <Select
                 {...(props.api[key] as EnumResult)}
+                id={props.api[key].name}
                 onChange={handleSelectChange}
                 options={props.api[key].value as string[]}
                 value={selectedProps[key] as string}
