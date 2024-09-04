@@ -1,25 +1,9 @@
 import { describe, test, expect, afterEach, spyOn } from 'bun:test'
 import { defineIcons, $cerberusIcons } from '@cerberus-design/react'
-import {
-  WarningFilled,
-  WarningAlt,
-  CheckmarkFilled,
-  Checkmark,
-  Information,
-  CloudUpload,
-  InformationFilled,
-  ErrorFilled,
-} from '@cerberus-design/icons'
+import { WarningFilled, WarningAlt, Checkmark } from '@cerberus-design/icons'
 
 describe('defineIcons', () => {
   const defaultIcons = {
-    confirmModal: Information,
-    promptModal: Information,
-    infoNotification: InformationFilled,
-    successNotification: CheckmarkFilled,
-    warningNotification: WarningFilled,
-    dangerNotification: ErrorFilled,
-    fileUploader: CloudUpload,
     invalid: WarningFilled,
     toggleChecked: Checkmark,
   }
