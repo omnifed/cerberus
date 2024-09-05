@@ -15,7 +15,7 @@ export function OverviewPreview() {
           w: 'full',
         })}
       >
-        <ProgressBar size="sm" value={75} />
+        <ProgressBar size="sm" now={75} />
         <Tag shape="pill">Rounded</Tag>
       </div>
       <div
@@ -24,7 +24,7 @@ export function OverviewPreview() {
           w: 'full',
         })}
       >
-        <ProgressBar size="sm" usage="block" value={75} />
+        <ProgressBar size="sm" usage="block" now={75} />
         <Tag shape="pill">Block</Tag>
       </div>
     </div>

@@ -7,7 +7,17 @@ import { useMemo, type PropsWithChildren } from 'react'
 import { css } from '@cerberus/styled-system/css'
 
 function isFormState(key: string) {
-  return ['disabled', 'required', 'readOnly', 'invalid'].includes(key)
+  return [
+    'disabled',
+    'required',
+    'readOnly',
+    'invalid',
+    'indeterminate',
+  ].includes(key)
+}
+
+function isProgressKey(key: string) {
+  return ['now'].includes(key)
 }
 
 function isChildContent(key: string) {
@@ -28,7 +38,7 @@ export default function BuilderSnippet(
         return (selectedProps[key as keyof typeof selectedProps] ||
           'Add Text') as string
       }
-      if (isFormState(key)) {
+      if (isFormState(key) || isProgressKey(key)) {
         return `{${selectedProps[key as keyof typeof selectedProps] || 'false'}}`
       }
       return `"${selectedProps[key as keyof typeof selectedProps] || 'false'}"`

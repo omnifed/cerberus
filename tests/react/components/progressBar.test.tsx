@@ -12,8 +12,8 @@ describe('ProgressBar', () => {
     expect(screen.getByRole('meter')).toBeTruthy()
   })
 
-  test('should render a progress bar element with a value', () => {
-    render(<ProgressBar value={50} />)
+  test('should render a progress bar element with a now', () => {
+    render(<ProgressBar now={50} />)
     expect(screen.getByRole('meter').getAttribute('aria-valuenow')).toEqual(
       '50',
     )

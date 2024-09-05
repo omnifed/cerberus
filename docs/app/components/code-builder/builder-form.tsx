@@ -5,6 +5,7 @@ import type {
   BooleanResult,
   BuilderResult,
   EnumResult,
+  NumberResult,
   TextResult,
 } from './helpers'
 import { Field, Label, Show } from '@cerberus-design/react'
@@ -82,6 +83,15 @@ export default function BuilderForm(props: BuilderFormProps) {
             <Show when={props.api[key].type === 'text'}>
               <Input
                 {...(props.api[key] as TextResult)}
+                id={key}
+                name={key}
+                onChange={handleInputChange}
+                selectedValue={selectedProps[key] as string}
+              />
+            </Show>
+            <Show when={props.api[key].type === 'number'}>
+              <Input
+                {...(props.api[key] as NumberResult)}
                 id={key}
                 name={key}
                 onChange={handleInputChange}

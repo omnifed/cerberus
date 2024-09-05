@@ -12,14 +12,14 @@ import type { HTMLAttributes } from 'react'
 
 export interface ProgressBarBaseProps extends HTMLAttributes<HTMLDivElement> {
   indeterminate?: boolean
-  value: number
+  now: number
 }
 export type ProgressBarProps = ProgressBarBaseProps & ProgressBarVariantProps
 
 /**
  * The ProgressBar component is used to display the progress of a task.
  * @param props - HTML div element attributes
- * @param props.value - The value of the progress bar
+ * @param props.now - The current value of the progress bar
  * @param props.indeterminate - Whether the progress bar is indeterminate
  * @example
  * ```tsx
@@ -27,11 +27,11 @@ export type ProgressBarProps = ProgressBarBaseProps & ProgressBarVariantProps
  * ```
  */
 export function ProgressBar(props: ProgressBarProps) {
-  const { indeterminate, size, usage, value, ...nativeProps } = props
+  const { indeterminate, size, usage, now, ...nativeProps } = props
   const styles = progressBar({ size, usage })
-  const valueClamped = Math.min(100, Math.max(0, value))
+  const nowClamped = Math.min(100, Math.max(0, now))
   const width = {
-    width: indeterminate ? '50%' : `${valueClamped}%`,
+    width: indeterminate ? '50%' : `${nowClamped}%`,
   }
 
   return (
@@ -39,13 +39,13 @@ export function ProgressBar(props: ProgressBarProps) {
       {...nativeProps}
       aria-valuemin={0}
       aria-valuemax={100}
-      aria-valuenow={indeterminate ? 0 : valueClamped}
+      aria-valuenow={indeterminate ? 0 : nowClamped}
       className={cx(nativeProps.className, styles.root)}
       role="meter"
     >
       <div
         {...(indeterminate && { 'data-indeterminate': true })}
-        data-complete={valueClamped === 100}
+        data-complete={nowClamped === 100}
         className={styles.bar}
         style={width}
       />

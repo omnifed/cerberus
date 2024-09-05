@@ -3,12 +3,12 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import { Field, Select, Option, ProgressBar } from '@cerberus-design/react'
+import { ProgressBar } from '@cerberus-design/react'
 
 const api = {
   size: builder.Enum('size', ['sm', 'md']),
   usage: builder.Enum('usage', ['rounded', 'block']),
-  value: builder.Text('value', '75'),
+  now: builder.Number('now', 75),
   indeterminate: builder.Boolean('indeterminate', false),
 }
 
@@ -24,94 +24,20 @@ export function LivePlaygroundWithCode() {
   return (
     <CodeBuilder
       api={api}
-      code={`import { Field, Select, Option, Label, FieldMessage } from '@cerberus-design/react'
+      code={`import { ProgressBar, type ProgressBarProps } from '@cerberus-design/react'
 
-type MySelectProps = FieldProps & SelectProps
-
-export function MySelect(props: MySelectProps) {
-  const {
-    disabled,
-    readOnly,
-    invalid,
-    required,
-    size,
-    describedBy,
-    ...nativeProps
-  } = props
-
+export function MyProgressBar(props: ProgressBarProps) {
   return (
-    <Field
-      disabled={{disabled}}
-      invalid={{invalid}}
-      readOnly={{readOnly}}
-      required={{required}}
-    >
-      <Label htmlFor={{id}}>{{label}}</Label>
-      <Select
-        {...nativeProps}
-        describedBy={{describedBy}}
-        id={{id}}
-        size={{size}}
-      >
-        <Option value="">Choose option</Option>
-        <Option value="one">Option 1</Option>
-      </Select>
-      <FieldMessage id={{describedBy}}>
-        {{helpText}}
-      </FieldMessage>
-    </Field>
+    <ProgressBar indeterminate={{indeterminate}} size={{size}} usage={{usage}} now={{now}} />
   )
 }`}
     >
-      <Field>
-        <ProgressBarPreview />
-      </Field>
+      <ProgressBarPreview />
     </CodeBuilder>
   )
 }
 
-interface ProgressBarElProps extends Record<string, boolean | string> {}
-
-export function SelectEl(props: ProgressBarElProps) {
-  switch (props.size) {
-    case 'sm':
-      return (
-        <Select
-          describedBy={props.describedBy as string}
-          id={props.id as string}
-          size="sm"
-        >
-          <Option value="">Choose option</Option>
-          <Option value="one">Option 1</Option>
-        </Select>
-      )
-    case 'lg':
-      return (
-        <Select
-          describedBy={props.describedBy as string}
-          id={props.id as string}
-          size="lg"
-        >
-          <Option value="">Choose option</Option>
-          <Option value="one">Option 1</Option>
-        </Select>
-      )
-
-    default:
-      return (
-        <Select
-          describedBy={props.describedBy as string}
-          id={props.id as string}
-          size="md"
-        >
-          <Option value="">Choose option</Option>
-          <Option value="one">Option 1</Option>
-        </Select>
-      )
-  }
-}
-
 export function ProgressBarPreview() {
   const { selectedProps } = useCodeBuilder()
-  return <ProgressBar {...selectedProps} value={Number(selectedProps.value)} />
+  return <ProgressBar {...selectedProps} now={selectedProps.now as number} />
 }
