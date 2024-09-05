@@ -27,10 +27,15 @@ describe('progressBar recipe', () => {
         bgColor: 'success.bg.initial',
       },
       _motionSafe: {
-        transitionProperty: 'width',
+        transitionProperty: 'background-color,background-image,width',
         transitionDuration: '150ms',
         transitionTimingFunction: 'ease',
-        _indeterminate: {},
+        _indeterminate: {
+          animationName: 'rubberBand',
+          animationIterationCount: 'infinite',
+          animationDuration: '1.25s',
+          animationTimingFunction: 'ease-in-out',
+        },
       },
     })
   })

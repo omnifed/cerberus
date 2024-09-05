@@ -21,6 +21,25 @@ export const keyframes: CssKeyframes = defineKeyframes({
       transform: 'translateY(0)',
     },
   },
+  rubberBand: {
+    '0%': {
+      animationTimingFunction:
+        'cubic-bezier(0.205028, 0.057051, 0.57661, 0.453971)',
+      transform: 'translateX(0)',
+    },
+    '19.15%': {
+      animationTimingFunction:
+        'cubic-bezier(0.152313, 0.196432, 0.648374, 1.00432)',
+      transform: 'scaleX(1.5)',
+    },
+    '45.15%': {
+      animationTimingFunction:
+        'cubic-bezier(0.257759, -0.003163, 0.211762, 1.38179)',
+    },
+    '100%': {
+      transform: 'translateX(200%)',
+    },
+  },
   zoomIn: {
     '0%': {
       opacity: '0',

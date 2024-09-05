@@ -31,7 +31,7 @@ export function ProgressBar(props: ProgressBarProps) {
   const styles = progressBar({ size, usage })
   const valueClamped = Math.min(100, Math.max(0, value))
   const width = {
-    width: `${valueClamped}%`,
+    width: indeterminate ? '50%' : `${valueClamped}%`,
   }
 
   return (

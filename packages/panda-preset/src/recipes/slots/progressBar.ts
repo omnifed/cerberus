@@ -16,6 +16,7 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
   base: {
     root: {
       bgColor: 'page.bg.100',
+      overflow: 'hidden',
       position: 'relative',
       w: 'full',
     },
@@ -35,7 +36,12 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
         transitionProperty: 'background-color,background-image,width',
         transitionDuration: '150ms',
         transitionTimingFunction: 'ease',
-        _indeterminate: {},
+        _indeterminate: {
+          animationName: 'rubberBand',
+          animationIterationCount: 'infinite',
+          animationDuration: '1.25s',
+          animationTimingFunction: 'ease-in-out',
+        },
       },
     },
   },
