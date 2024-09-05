@@ -20,6 +20,27 @@ describe('keyframes', () => {
     })
   })
 
+  test('should export rubberBand', () => {
+    expect(keyframes.rubberBand).toBeDefined()
+    expect(keyframes.rubberBand['0%']).toEqual({
+      animationTimingFunction:
+        'cubic-bezier(0.205028, 0.057051, 0.57661, 0.453971)',
+      transform: 'translateX(0)',
+    })
+    expect(keyframes.rubberBand['19.15%']).toEqual({
+      animationTimingFunction:
+        'cubic-bezier(0.152313, 0.196432, 0.648374, 1.00432)',
+      transform: 'scaleX(1.5)',
+    })
+    expect(keyframes.rubberBand['45.15%']).toEqual({
+      animationTimingFunction:
+        'cubic-bezier(0.257759, -0.003163, 0.211762, 1.38179)',
+    })
+    expect(keyframes.rubberBand['100%']).toEqual({
+      transform: 'translateX(200%)',
+    })
+  })
+
   test('should export zoomIn', () => {
     expect(keyframes.zoomIn).toBeDefined()
     expect(keyframes.zoomIn['0%']).toEqual({

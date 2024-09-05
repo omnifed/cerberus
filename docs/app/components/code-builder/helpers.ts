@@ -12,6 +12,20 @@ function Enum(name: string, value: string[]): EnumResult {
   }
 }
 
+export interface NumberResult {
+  name: string
+  type: 'number'
+  value: number
+}
+
+function Number(name: string, value: number): NumberResult {
+  return {
+    name,
+    type: 'number',
+    value,
+  }
+}
+
 export interface TextResult {
   name: string
   type: 'text'
@@ -40,10 +54,15 @@ function Boolean(name: string, value: boolean): BooleanResult {
   }
 }
 
-export type BuilderResult = EnumResult | TextResult | BooleanResult
+export type BuilderResult =
+  | EnumResult
+  | TextResult
+  | BooleanResult
+  | NumberResult
 
 export const builder = {
   Boolean,
   Enum,
   Text,
+  Number,
 }

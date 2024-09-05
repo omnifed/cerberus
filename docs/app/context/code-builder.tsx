@@ -15,15 +15,15 @@ function getInitialAPIValues(api: Record<string, BuilderResult>, key: string) {
   switch (result.type) {
     case 'enum':
       return result.value[0]
-    case 'text':
-      return result.value
     case 'boolean':
       return false
+    default:
+      return result.value
   }
 }
 
 interface CodeBuilderContextValue {
-  selectedProps: Record<string, boolean | string>
+  selectedProps: Record<string, boolean | string | number>
   setSelectedProps: (key: string, value: boolean | string) => void
 }
 
@@ -37,7 +37,7 @@ export default function CodeBuilderProvider(
   props: PropsWithChildren<CodeBuilderProviderProps>,
 ) {
   const [selectedProps, setSelectedProps] = useState<
-    Record<string, boolean | string>
+    Record<string, boolean | string | number>
   >(() => {
     return Object.keys(props.api).reduce(
       (acc, key) => ({ ...acc, [key]: getInitialAPIValues(props.api, key) }),
