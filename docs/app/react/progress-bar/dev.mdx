@@ -8,9 +8,6 @@ import CodePreview from '@/app/components/CodePreview'
 import {
   NoteAdmonition
 } from '@/app/components/Admonition'
-import {
- OverviewPreview
-} from '@/app/react/progress-bar/components/progress-bar-preview'
 import { LivePlaygroundWithCode } from '@/app/react/progress-bar/components/live-preview'
 
 ```tsx
@@ -23,9 +20,7 @@ import { ProgressBar } from '@cerberus-design/react'
 
 ## Customization
 
-You can customize the table by utilizing the `css` function. For full control, we recommend extending the recipes provided in your panda config.
-
-<CodePreview preview={<OverviewPreview />} />
+To customize the ProgressBar we recommend extending the slot recipe provided by the `@cerberus-design/panda-preset` package.
 
 ## API
 
@@ -33,6 +28,7 @@ You can customize the table by utilizing the `css` function. For full control, w
 export interface ProgressBarProps extends HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'md'
   usage?: 'block' | 'rounded'
+  now: number
 }
 
 define function ProgressBar(props: ProgressBarProps): ReactNode
@@ -42,3 +38,4 @@ define function ProgressBar(props: ProgressBarProps): ReactNode
 | -------- | ------- | -------------------------------------------- |
 | size |  `md`  | The size of the progress bar. |
 | usage |  `rounded`  | The style of the progress bar. |
+| now |    | The current progress value. |
