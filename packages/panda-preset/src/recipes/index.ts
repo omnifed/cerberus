@@ -13,6 +13,7 @@ import { fileUploader } from './slots/fileUploader'
 import { input } from './slots/input'
 import { modal } from './slots/modal'
 import { notification } from './slots/notification'
+import { progressBar } from './slots/progressBar'
 import { radio } from './slots/radio'
 import { select } from './slots/select'
 import { table } from './slots/table'
@@ -40,8 +41,9 @@ export const recipes = {
 export const slotRecipes = {
   fileUploader,
   input,
-  notification,
   modal,
+  notification,
+  progressBar,
   radio,
   select,
   table,

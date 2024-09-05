@@ -33,9 +33,9 @@ const pxi: CustomUtilityConfig<'pxi'> = {
 const cerberusGradient: CustomUtilityConfig<'cerberusGradient'> = {
   cerberusGradient: {
     className: 'cerberus-gradient',
-    values: ['green', 'blue', 'purple'],
+    values: ['green', 'blue', 'purple', 'purple-100'],
     shorthand: 'cerbGradient',
-    transform(value: 'green' | 'blue' | 'purple') {
+    transform(value: 'green' | 'blue' | 'purple' | 'purple-100') {
       const color = '#21143B'
       switch (value) {
         case 'purple':
@@ -43,6 +43,13 @@ const cerberusGradient: CustomUtilityConfig<'cerberusGradient'> = {
             color,
             backgroundImage:
               'linear-gradient(to bottom left, #EFE5F8, #BB93E1)',
+          }
+
+        case 'purple-100':
+          return {
+            color,
+            backgroundImage:
+              'linear-gradient(234deg, #5F00B5 -1.22%, #9F66D3 79.15%)',
           }
 
         case 'blue':
