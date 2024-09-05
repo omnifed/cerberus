@@ -3,30 +3,19 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import {
-  Field,
-  Select,
-  Option,
-  Label,
-  FieldMessage,
-  type LabelProps,
-} from '@cerberus-design/react'
-import { vstack } from '@cerberus/styled-system/patterns'
-import { useMemo } from 'react'
+import { Field, Select, Option, ProgressBar } from '@cerberus-design/react'
 
 const api = {
-  size: builder.Enum('size', ['sm', 'md', 'lg']),
-  id: builder.Text('id', 'add-uuid'),
-  label: builder.Text('label', 'Select Something'),
-  helpText: builder.Text('helpText', 'This is some optional help text.'),
-  describedBy: builder.Text('describedBy', 'help:add-select-id'),
-  disabled: builder.Boolean('disabled', false),
+  size: builder.Enum('size', ['sm', 'md']),
+  usage: builder.Enum('usage', ['rounded', 'block']),
+  value: builder.Text('value', '75'),
+  indeterminate: builder.Boolean('indeterminate', false),
 }
 
 export function LivePlayground() {
   return (
     <CodeBuilder api={api}>
-      <SelectPreview />
+      <ProgressBarPreview />
     </CodeBuilder>
   )
 }
@@ -75,15 +64,15 @@ export function MySelect(props: MySelectProps) {
 }`}
     >
       <Field>
-        <SelectPreview />
+        <ProgressBarPreview />
       </Field>
     </CodeBuilder>
   )
 }
 
-interface SelectElProps extends Record<string, boolean | string> {}
+interface ProgressBarElProps extends Record<string, boolean | string> {}
 
-export function SelectEl(props: SelectElProps) {
+export function SelectEl(props: ProgressBarElProps) {
   switch (props.size) {
     case 'sm':
       return (
@@ -122,43 +111,7 @@ export function SelectEl(props: SelectElProps) {
   }
 }
 
-export function SelectPreview() {
+export function ProgressBarPreview() {
   const { selectedProps } = useCodeBuilder()
-  const {
-    label,
-    helpText,
-    required,
-    disabled,
-    invalid,
-    readOnly,
-    ...cerbSelectProps
-  } = selectedProps
-  const labelSize = useMemo(() => {
-    return (
-      cerbSelectProps.size === 'lg' ? 'md' : cerbSelectProps.size
-    ) as LabelProps['size']
-  }, [cerbSelectProps.size])
-
-  return (
-    <div
-      className={vstack({
-        alignItems: 'flex-start',
-        gap: '0',
-        w: 'full',
-      })}
-    >
-      <Field
-        disabled={disabled as boolean}
-        invalid={invalid as boolean}
-        readOnly={readOnly as boolean}
-        required={required as boolean}
-      >
-        <Label htmlFor="add-uuid" size={labelSize}>
-          {label}
-        </Label>
-        <SelectEl {...cerbSelectProps} />
-        <FieldMessage id="help:add-select-id">{helpText}</FieldMessage>
-      </Field>
-    </div>
-  )
+  return <ProgressBar {...selectedProps} value={Number(selectedProps.value)} />
 }

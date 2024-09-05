@@ -1,28 +1,5 @@
-import { Tag } from '@cerberus-design/react'
+import { ProgressBar, Tag } from '@cerberus-design/react'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
-import {
-  progressBar,
-  type ProgressBarVariantProps,
-} from '@cerberus/styled-system/recipes'
-import type { HtmlHTMLAttributes } from 'react'
-
-type ProgressBarProps = HtmlHTMLAttributes<HTMLDivElement> &
-  ProgressBarVariantProps & {
-    value: number
-  }
-
-function ProgressBar(props: ProgressBarProps) {
-  const styles = progressBar({ size: props.size, usage: props.usage })
-  const width = {
-    width: `${props.value}%`,
-  }
-
-  return (
-    <div className={styles.root}>
-      <div className={styles.bar} style={width} />
-    </div>
-  )
-}
 
 export function OverviewPreview() {
   return (
