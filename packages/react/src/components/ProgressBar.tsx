@@ -35,7 +35,14 @@ export function ProgressBar(props: ProgressBarProps) {
   }
 
   return (
-    <div {...nativeProps} className={cx(nativeProps.className, styles.root)}>
+    <div
+      {...nativeProps}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuenow={indeterminate ? 0 : valueClamped}
+      className={cx(nativeProps.className, styles.root)}
+      role="meter"
+    >
       <div
         {...(indeterminate && { 'data-indeterminate': true })}
         data-complete={valueClamped === 100}
