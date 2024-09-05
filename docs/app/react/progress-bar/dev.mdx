@@ -25,11 +25,15 @@ To customize the ProgressBar we recommend extending the slot recipe provided by 
 ## API
 
 ```ts showLineNumbers=false
-export interface ProgressBarProps extends HTMLAttributes<HTMLDivElement> {
+export interface ProgressBarBaseProps extends HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'md'
   usage?: 'block' | 'rounded'
   now: number
 }
+type IndeterminateProgressBarProps = Omit<ProgressBarProps, 'now'> & {
+  indeterminate: true
+}
+type ProgressBarProps = ProgressBarBaseProps & IndeterminateProgressBarProps
 
 define function ProgressBar(props: ProgressBarProps): ReactNode
 ````
@@ -39,3 +43,4 @@ define function ProgressBar(props: ProgressBarProps): ReactNode
 | size |  `md`  | The size of the progress bar. |
 | usage |  `rounded`  | The style of the progress bar. |
 | now |    | The current progress value. |
+| indeterminate |  `false`  | If the progress bar is in an indeterminate state. |

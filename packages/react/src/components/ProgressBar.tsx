@@ -10,11 +10,18 @@ import type { HTMLAttributes } from 'react'
  * @module
  */
 
-export interface ProgressBarBaseProps extends HTMLAttributes<HTMLDivElement> {
-  indeterminate?: boolean
+export interface ProgressBarBaseProps extends HTMLAttributes<HTMLDivElement> {}
+export type NonIndeterminateProgressBarProps = {
+  indeterminate?: never
   now: number
 }
-export type ProgressBarProps = ProgressBarBaseProps & ProgressBarVariantProps
+export type IndeterminateProgressBarProps = {
+  indeterminate: true
+  now?: never
+}
+export type ProgressBarProps = ProgressBarBaseProps &
+  ProgressBarVariantProps &
+  (NonIndeterminateProgressBarProps | IndeterminateProgressBarProps)
 
 /**
  * The ProgressBar component is used to display the progress of a task.
@@ -29,7 +36,7 @@ export type ProgressBarProps = ProgressBarBaseProps & ProgressBarVariantProps
 export function ProgressBar(props: ProgressBarProps) {
   const { indeterminate, size, usage, now, ...nativeProps } = props
   const styles = progressBar({ size, usage })
-  const nowClamped = Math.min(100, Math.max(0, now))
+  const nowClamped = Math.min(100, Math.max(0, now || 0))
   const width = {
     width: indeterminate ? '50%' : `${nowClamped}%`,
   }

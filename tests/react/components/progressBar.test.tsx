@@ -8,7 +8,7 @@ describe('ProgressBar', () => {
   afterEach(cleanup)
 
   test('should render a progress bar element', () => {
-    render(<ProgressBar />)
+    render(<ProgressBar now={0} />)
     expect(screen.getByRole('meter')).toBeTruthy()
   })
 
