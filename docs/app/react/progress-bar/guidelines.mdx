@@ -1,0 +1,24 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import {
+ OverviewPreview
+} from '@/app/react/progress-bar/components/progress-bar-preview'
+
+## Usage
+
+Progress indicators inform users about the status of ongoing processes, such as loading an app, submitting a form, or saving updates. They communicate an app's state and indicate available actions, such as whether users can navigate away from the current screen.
+
+Display overall progress of a group rather than the progress of each item in the group.
+
+<CodePreview preview={<OverviewPreview />} />
+
+<WhenToUseAdmonition description="To communicate overall progress of a group." />
+
+<WhenNotToUseAdmonition description="To communicate individual progress within a group." />

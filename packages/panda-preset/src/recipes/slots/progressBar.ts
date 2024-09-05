@@ -25,9 +25,13 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
       left: 0,
       position: 'absolute',
       top: 0,
+      willChange: 'width',
       zIndex: 'decorator',
-      _indeterminate: {
-        _motionSafe: {},
+      _motionSafe: {
+        transitionProperty: 'width',
+        transitionDuration: '150ms',
+        transitionTimingFunction: 'ease',
+        _indeterminate: {},
       },
     },
   },
@@ -46,17 +50,27 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
     },
     usage: {
-      block: {},
-      rounded: {
+      block: {
         root: {
-          rounded: 'full',
+          rounded: 'initial',
         },
         bar: {
-          rounded: 'full',
+          rounded: 'initial',
+        },
+      },
+      rounded: {
+        root: {
+          rounded: '1.5rem',
+        },
+        bar: {
+          rounded: '1.5rem',
         },
       },
     },
   },
 
-  defaultVariants: {},
+  defaultVariants: {
+    size: 'md',
+    usage: 'rounded',
+  },
 })
