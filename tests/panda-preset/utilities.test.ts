@@ -34,6 +34,7 @@ describe('utilities', () => {
       'green',
       'blue',
       'purple',
+      'purple-100',
     ])
     // @ts-expect-error bug in the Panda-CSS types
     expect(utilities.extend.cerberusGradient.transform('green')).toMatchObject({
@@ -52,5 +53,13 @@ describe('utilities', () => {
         color: '#21143B',
       },
     )
+    expect(
+      // @ts-expect-error bug in the Panda-CSS types
+      utilities.extend.cerberusGradient.transform('purple-100'),
+    ).toMatchObject({
+      backgroundImage:
+        'linear-gradient(234deg, #5F00B5 -1.22%, #9F66D3 79.15%)',
+      color: '#21143B',
+    })
   })
 })

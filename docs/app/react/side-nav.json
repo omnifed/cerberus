@@ -36,6 +36,12 @@
     "type": "route"
   },
   {
+    "label": "Progress Bar",
+    "route": "/react/progress-bar",
+    "tag": "next",
+    "type": "route"
+  },
+  {
     "label": "Tag",
     "route": "/react/tags",
     "tag": "",

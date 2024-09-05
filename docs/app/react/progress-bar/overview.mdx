@@ -1,0 +1,28 @@
+---
+heading: 'Progress Bar'
+description: 'Progress bars show the status of a process in real time.'
+a11y: 'forms'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+ OverviewPreview
+} from '@/app/react/progress-bar/components/progress-bar-preview'
+
+<OverviewList rules={[
+  'Two styles: block and rounded',
+  'Use the same configuration for all instances of a process (like loading)',
+  'Never use them as decoration',
+  'They capture attention through motion',
+]} />
+
+## Example
+
+<CodePreview preview={<OverviewPreview />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |

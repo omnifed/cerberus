@@ -1,0 +1,43 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/ProgressBar.tsx'
+recipe: 'slots/progressBar.ts'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  NoteAdmonition
+} from '@/app/components/Admonition'
+import {
+ OverviewPreview
+} from '@/app/react/progress-bar/components/progress-bar-preview'
+
+```tsx
+import { ProgressBar } from '@cerberus-design/react'
+```
+
+## Usage
+
+<CodePreview preview={<OverviewPreview />} />
+
+## Customization
+
+You can customize the table by utilizing the `css` function. For full control, we recommend extending the recipes provided in your panda config.
+
+<CodePreview preview={<OverviewPreview />} />
+
+## API
+
+```ts showLineNumbers=false
+export interface ProgressBarProps extends HTMLAttributes<HTMLDivElement> {
+  size?: 'sm' | 'md'
+  usage?: 'block' | 'rounded'
+}
+
+define function ProgressBar(props: ProgressBarProps): ReactNode
+````
+
+| Name     | Default | Description                                  |
+| -------- | ------- | -------------------------------------------- |
+| size |  `md`  | The size of the progress bar. |
+| usage |  `rounded`  | The style of the progress bar. |
