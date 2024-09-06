@@ -9,6 +9,7 @@ import { th } from './th'
 import { tbody } from './tbody'
 import { td } from './td'
 
+import { checkbox } from './slots/checkbox'
 import { fileUploader } from './slots/fileUploader'
 import { input } from './slots/input'
 import { modal } from './slots/modal'
@@ -39,6 +40,7 @@ export const recipes = {
 }
 
 export const slotRecipes = {
+  checkbox,
   fileUploader,
   input,
   modal,

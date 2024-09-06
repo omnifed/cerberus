@@ -20,6 +20,7 @@ export const label: RecipeConfig<RecipeVariantRecord> = defineRecipe({
 
   base: {
     color: 'page.text.initial',
+    userSelect: 'none',
     _disabled: {
       color: 'page.text.100',
     },
