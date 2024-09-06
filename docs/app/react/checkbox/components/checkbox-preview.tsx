@@ -1,38 +1,8 @@
 'use client'
 
-import { Checkmark } from '@cerberus-design/icons'
-import { Field, Label, Show } from '@cerberus-design/react'
+import { Field, Label, Checkbox } from '@cerberus-design/react'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
-import {
-  checkbox,
-  type CheckboxVariantProps,
-} from '@cerberus/styled-system/recipes'
-import {
-  useCallback,
-  useState,
-  type ChangeEvent,
-  type InputHTMLAttributes,
-} from 'react'
-
-type CheckboxProps = CheckboxVariantProps &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'id'> & {
-    id: string
-  }
-
-function Checkbox(props: CheckboxProps) {
-  const { size, ...nativeProps } = props
-  const styles = checkbox({ size })
-  return (
-    <div className={styles.root}>
-      <input {...nativeProps} className={styles.input} type="checkbox" />
-      <Show when={props.checked}>
-        <span className={styles.icon}>
-          <Checkmark />
-        </span>
-      </Show>
-    </div>
-  )
-}
+import { useCallback, useState, type ChangeEvent } from 'react'
 
 interface OverviewState {
   legal: boolean

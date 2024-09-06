@@ -14,6 +14,7 @@ import type { ElementType } from 'react'
 export type IconType = CarbonIconType | ElementType
 
 export interface DefinedIcons {
+  checkbox?: IconType
   confirmModal?: IconType
   promptModal?: IconType
   fileUploader?: IconType
@@ -27,6 +28,7 @@ export interface DefinedIcons {
 }
 
 export const defaultIcons: DefinedIcons = {
+  checkbox: Checkmark,
   confirmModal: Information,
   promptModal: Information,
   fileUploader: CloudUpload,

@@ -24,23 +24,30 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     input: {
       ...input,
+      position: 'absolute',
+      top: '0',
+      left: '0',
       pxi: '0',
+      zIndex: 'base',
       _checked: {
         bgColor: 'action.bg.initial',
+        _userInvalid: {
+          bgColor: 'danger.bg.initial',
+          borderColor: input._userInvalid.borderColor,
+        },
       },
       _disabled: {
         ...input._disabled,
         bgColor: 'page.bg.200',
+      },
+      _userInvalid: {
+        ...input._userInvalid,
       },
     },
     icon: {
       bottom: '0',
       color: 'action.text.initial',
       display: 'inline-block',
-      position: 'absolute',
-      left: '0',
-      my: 'auto',
-      top: '1px',
       zIndex: 'decorator',
       _peerInvalid: {
         color: 'danger.text.inverse',

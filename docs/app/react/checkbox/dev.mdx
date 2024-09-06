@@ -9,6 +9,7 @@ import CodePreview from '@/app/components/CodePreview'
 import {
   OverviewPreview
 } from '@/app/react/checkbox/components/checkbox-preview'
+import { LivePlaygroundWithCode } from '@/app/react/checkbox/components/live-preview'
 
 ```ts
 import { Field, Label, Checkbox } from '@cerberus-design/react'
@@ -16,43 +17,15 @@ import { Field, Label, Checkbox } from '@cerberus-design/react'
 
 ## Usage
 
-<CodePreview preview={<OverviewPreview />} />
+<LivePlaygroundWithCode />
 
 ## Customizing
 
-<CodePreview preview={<OverviewPreview />}>
-```tsx title="custom-radio.tsx"
-import { Field, Label, Radio } from '@cerberus-design/react'
-
-function CustomRadioPreview() {
-  return (
-    <Field>
-      <Radio
-       className={css({
-          borderColor: 'yellow',
-          _groupHover: {
-            bgColor: 'black',
-          },
-          _checked: {
-            bg: 'yellow',
-          },
-        })}
-        id="custom"
-        name="states"
-        value="custom"
-        defaultChecked
-      >
-        <Label htmlFor="custom">Wu-Tang</Label>
-      </Radio>
-    </Field>
-  )
-}
-```
-</CodePreview>
+To customize the Checkbox we recommend extending the slot recipe provided by the `@cerberus-design/panda-preset` package.
 
 ## API
 
-<NoteAdmonition description="The Radio component must be used within a Field provider." />
+<NoteAdmonition description="The Checkbox component must be used within a Field provider." />
 
 ```ts showLineNumbers=false
 export interface FieldProps {
@@ -66,19 +39,21 @@ define function Field(props: PropsWithChildren<FieldProps>): ReactNode
 ```
 
 ```ts showLineNumbers=false
-export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
+  describedBy?: string
   id: string
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'md' | 'lg'
 }
 
-define function Radio(props: RadioProps): ReactNode
+define function Checkbox(props: CheckboxProps): ReactNode
 ```
 
 ### Props
 
-The Radio component accepts the following props:
+The Checkbox component accepts the following props:
 
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
+| describedBy |    |  The ID of the FieldMessage element that describes the input field.        |
 | id   |    |  An identifier that is shared with the Label `htmlFor` attribute.        |
 | size   | `md`   |  The size of the input field.        |
