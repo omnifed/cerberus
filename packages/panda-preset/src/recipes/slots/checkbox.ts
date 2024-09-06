@@ -20,12 +20,11 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
   base: {
     root: {
       flexShrink: '0',
-      h: '4',
       position: 'relative',
-      w: '4',
     },
     input: {
       ...input,
+      pxi: '0',
       _checked: {
         bgColor: 'action.bg.initial',
       },
@@ -35,10 +34,13 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
     },
     icon: {
+      bottom: '0',
       color: 'action.text.initial',
+      display: 'inline-block',
       position: 'absolute',
       left: '0',
-      top: '0',
+      my: 'auto',
+      top: '1px',
       zIndex: 'decorator',
       _peerInvalid: {
         color: 'danger.text.inverse',
