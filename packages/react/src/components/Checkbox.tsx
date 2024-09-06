@@ -4,6 +4,7 @@ import {
   checkbox,
   type CheckboxVariantProps,
 } from '@cerberus/styled-system/recipes'
+import { vstack } from '@cerberus/styled-system/patterns'
 import { cx } from '@cerberus/styled-system/css'
 import type { InputHTMLAttributes } from 'react'
 import { Show } from './Show'
@@ -34,22 +35,30 @@ export type CheckboxProps = CheckboxVariantProps &
  * ```
  */
 export function Checkbox(props: CheckboxProps) {
-  const { describedBy, size, ...nativeProps } = props
+  const { describedBy, size, checked, ...nativeProps } = props
   const { invalid, ...fieldStates } = useFieldContext()
   const styles = checkbox({ size })
   const { checkbox: CheckIcon } = $cerberusIcons
 
   return (
-    <div className={styles.root}>
+    <div
+      className={cx(
+        styles.root,
+        vstack({
+          gap: '0',
+          justify: 'center',
+        }),
+      )}
+    >
       <input
         {...nativeProps}
         {...fieldStates}
         {...(describedBy && { 'aria-describedby': describedBy })}
         {...(invalid && { 'aria-invalid': true })}
-        className={cx(nativeProps.className, styles.input)}
+        className={cx('peer', nativeProps.className, styles.input)}
         type="checkbox"
       />
-      <Show when={nativeProps.checked}>
+      <Show when={checked}>
         <span className={styles.icon}>
           <CheckIcon />
         </span>

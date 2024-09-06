@@ -28,7 +28,11 @@ describe('checkbox recipe', () => {
       transitionProperty: 'border-color',
       transitionDuration: '200ms',
       transitionTimingFunction: 'ease-in-out',
+      position: 'absolute',
+      top: '0',
+      left: '0',
       w: 'full',
+      zIndex: 'base',
       _focusVisible: {
         boxShadow: 'none',
         outline: '3px solid',
@@ -58,10 +62,6 @@ describe('checkbox recipe', () => {
       bottom: '0',
       color: 'action.text.initial',
       display: 'inline-block',
-      position: 'absolute',
-      left: '0',
-      my: 'auto',
-      top: '1px',
       zIndex: 'decorator',
       _peerInvalid: {
         color: 'danger.text.inverse',
