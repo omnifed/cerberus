@@ -29,6 +29,7 @@ export const radio: Partial<SlotRecipeConfig> = defineSlotRecipe({
       bgColor: 'inherit',
       border: '1px solid',
       borderColor: 'action.border.initial',
+      flexShrink: '0',
       rounded: 'full',
       _motionSafe: {
         transitionProperty: 'background-color, background',
