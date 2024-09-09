@@ -85,4 +85,32 @@ describe('Checkbox', () => {
         .classList.contains('cerberus-checkbox__input--size_lg'),
     ).toBeTruthy()
   })
+
+  test('should render a checkbox icon when checked', () => {
+    render(
+      <Field>
+        <Label htmlFor="test">Test Label</Label>,
+        <Checkbox id="test" checked />
+      </Field>,
+    )
+    expect(
+      screen.getByRole('img', {
+        hidden: true,
+      }),
+    ).toBeTruthy()
+  })
+
+  test('should render a mixed icon when mixed', () => {
+    render(
+      <Field>
+        <Label htmlFor="test">Test Label</Label>,
+        <Checkbox id="test" mixed />
+      </Field>,
+    )
+    expect(
+      screen.getByRole('img', {
+        hidden: true,
+      }),
+    ).toBeTruthy()
+  })
 })

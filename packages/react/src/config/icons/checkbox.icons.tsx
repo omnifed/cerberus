@@ -13,8 +13,10 @@ interface CheckboxIconProps extends SVGProps<SVGSVGElement> {}
 export function CheckmarkIcon(props: CheckboxIconProps) {
   return (
     <svg
+      aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
+      role="img"
       viewBox="0 0 24 24"
       {...props}
     >
@@ -34,9 +36,11 @@ interface IndeterminateIconProps extends SVGProps<SVGSVGElement> {}
 export function IndeterminateIcon(props: IndeterminateIconProps) {
   return (
     <svg
+      aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
+      role="img"
       fill="none"
+      viewBox="0 0 24 24"
       {...props}
     >
       <path fill="currentColor" d="M4 11h16v2.667H4z" />
