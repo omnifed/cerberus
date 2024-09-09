@@ -1,5 +1,6 @@
 'use client'
 
+import { FLEX_START } from '@/app/utils/const'
 import { Field, Label, Checkbox } from '@cerberus-design/react'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
 import { useCallback, useState, type ChangeEvent } from 'react'
@@ -33,7 +34,7 @@ export function OverviewPreview() {
       <Field required>
         <Label
           className={hstack({
-            justify: 'flex-start',
+            justify: FLEX_START,
           })}
           htmlFor="terms"
           size="sm"
@@ -51,7 +52,7 @@ export function OverviewPreview() {
       <Field>
         <Label
           className={hstack({
-            justify: 'flex-start',
+            justify: FLEX_START,
           })}
           htmlFor="legal"
           size="sm"
