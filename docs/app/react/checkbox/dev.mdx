@@ -42,6 +42,7 @@ define function Field(props: PropsWithChildren<FieldProps>): ReactNode
 export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   describedBy?: string
   id: string
+  mixed?: boolean
   size?: 'md' | 'lg'
 }
 
@@ -56,4 +57,5 @@ The Checkbox component accepts the following props:
 | -------- | ------- | ------------------------------------------------------------- |
 | describedBy |    |  The ID of the FieldMessage element that describes the input field.        |
 | id   |    |  An identifier that is shared with the Label `htmlFor` attribute.        |
+| mixed   |    |  An [indeterminate state](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-checked#mixed) of a checkbox.        |
 | size   | `md`   |  The size of the input field.        |

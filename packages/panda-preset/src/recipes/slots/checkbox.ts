@@ -49,8 +49,9 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       color: 'action.text.initial',
       display: 'inline-block',
       zIndex: 'decorator',
+      w: 'full',
       _peerInvalid: {
-        color: 'danger.text.inverse',
+        color: 'danger.text.initial',
       },
       _peerDisabled: {
         opacity: formStates._disabled.opacity,

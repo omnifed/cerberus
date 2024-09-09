@@ -20,6 +20,7 @@ export type CheckboxProps = CheckboxVariantProps &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'id'> & {
     describedBy?: string
     id: string
+    mixed?: boolean
   }
 
 /**
@@ -35,10 +36,11 @@ export type CheckboxProps = CheckboxVariantProps &
  * ```
  */
 export function Checkbox(props: CheckboxProps) {
-  const { describedBy, size, checked, ...nativeProps } = props
+  const { describedBy, size, checked, mixed, ...nativeProps } = props
   const { invalid, ...fieldStates } = useFieldContext()
   const styles = checkbox({ size })
-  const { checkbox: CheckIcon } = $cerberusIcons
+  const { checkbox: CheckIcon, indeterminate: IndeterminateIcon } =
+    $cerberusIcons
 
   return (
     <div
@@ -55,12 +57,18 @@ export function Checkbox(props: CheckboxProps) {
         {...fieldStates}
         {...(describedBy && { 'aria-describedby': describedBy })}
         {...(invalid && { 'aria-invalid': true })}
+        {...(mixed && { 'aria-checked': 'mixed' })}
         className={cx('peer', nativeProps.className, styles.input)}
         type="checkbox"
       />
-      <Show when={checked}>
+      <Show when={checked && !mixed}>
         <span className={styles.icon}>
           <CheckIcon />
+        </span>
+      </Show>
+      <Show when={mixed}>
+        <span className={styles.icon}>
+          <IndeterminateIcon />
         </span>
       </Show>
     </div>
