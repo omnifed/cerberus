@@ -17,11 +17,18 @@ import { IconButton } from './IconButton'
  * @module
  */
 
+export const fileStatus = {
+  TODO: 'todo',
+  PROCESSING: 'processing',
+  DONE: 'done',
+  ERROR: 'error',
+}
+
 export type FileStatusActions = 'cancel' | 'retry' | 'delete'
 export interface FileStatusProps extends HTMLAttributes<HTMLDivElement> {
   file: string
   now: number
-  status: 'todo' | 'processing' | 'done' | 'error'
+  status: keyof typeof fileStatus
   action: (status: FileStatusActions, e: MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -30,12 +37,12 @@ export interface FileStatusProps extends HTMLAttributes<HTMLDivElement> {
  * @param props - {
  *  file: string,
  *  now: number,
- *  status: 'todo' | 'processing' | 'done' | 'error',
+ *  status: keyof typeof fileStatus,
  *  action: (status: FileStatusActions, e: MouseEvent<HTMLButtonElement>) => void
  * }.
  * @example
  * ```tsx
- * <FileStatus file="file.txt" now={0} status="todo" action={(status, e) => console.log(status, e)} />
+ * <FileStatus file="file.txt" now={0} status={fileStatus.TODO} action={(status, e) => console.log(status, e)} />
  * ```
  */
 export function FileStatus(props: FileStatusProps) {
@@ -80,12 +87,12 @@ interface FileStatusElProps {
 
 function MatchFileStatusIcon(props: FileStatusElProps) {
   switch (props.status) {
-    case 'todo':
-    case 'processing':
+    case fileStatus.TODO:
+    case fileStatus.PROCESSING:
       return <Upload />
-    case 'done':
+    case fileStatus.DONE:
       return <CheckmarkFilled />
-    case 'error':
+    case fileStatus.ERROR:
       return <Warning />
     default:
       throw new Error('Invalid status')
@@ -94,13 +101,13 @@ function MatchFileStatusIcon(props: FileStatusElProps) {
 
 function MatchFileStatusText(props: FileStatusElProps) {
   switch (props.status) {
-    case 'todo':
+    case fileStatus.TODO:
       return 'Waiting to upload'
-    case 'processing':
+    case fileStatus.PROCESSING:
       return `${props.now}% Complete`
-    case 'done':
+    case fileStatus.DONE:
       return 'File uploaded successfully'
-    case 'error':
+    case fileStatus.ERROR:
       return 'There was an error uploading the file'
     default:
       throw new Error('Invalid status')
@@ -109,11 +116,11 @@ function MatchFileStatusText(props: FileStatusElProps) {
 
 function MatchStatusAction(props: FileStatusElProps) {
   switch (props.status) {
-    case 'processing':
+    case fileStatus.PROCESSING:
       return <CloseFilled />
-    case 'error':
+    case fileStatus.ERROR:
       return <Restart />
-    case 'done':
+    case fileStatus.DONE:
       return <TrashCan />
     default:
       break
@@ -122,11 +129,11 @@ function MatchStatusAction(props: FileStatusElProps) {
 
 function getStatusActionLabel(status: string) {
   switch (status) {
-    case 'processing':
+    case fileStatus.PROCESSING:
       return 'Cancel'
-    case 'error':
+    case fileStatus.ERROR:
       return 'Retry'
-    case 'done':
+    case fileStatus.DONE:
       return 'Delete'
     default:
       return ''
