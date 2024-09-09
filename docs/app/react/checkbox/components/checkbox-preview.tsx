@@ -67,6 +67,24 @@ export function OverviewPreview() {
           I would like to receive marketing emails
         </Label>
       </Field>
+      <Field>
+        <Label
+          className={hstack({
+            justify: 'flex-start',
+          })}
+          htmlFor="legal"
+          size="sm"
+        >
+          <Checkbox
+            defaultChecked={true}
+            id="mixed"
+            name="mixed"
+            mixed
+            size="md"
+          />
+          Mixed state
+        </Label>
+      </Field>
     </div>
   )
 }

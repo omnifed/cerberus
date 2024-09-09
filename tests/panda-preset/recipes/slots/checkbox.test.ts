@@ -62,9 +62,10 @@ describe('checkbox recipe', () => {
       bottom: '0',
       color: 'action.text.initial',
       display: 'inline-block',
+      w: 'full',
       zIndex: 'decorator',
       _peerInvalid: {
-        color: 'danger.text.inverse',
+        color: 'danger.text.initial',
       },
       _peerDisabled: {
         opacity: '0.5',

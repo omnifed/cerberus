@@ -7,13 +7,7 @@ import { useMemo, type PropsWithChildren } from 'react'
 import { css } from '@cerberus/styled-system/css'
 
 function isFormState(key: string) {
-  return [
-    'disabled',
-    'required',
-    'readOnly',
-    'invalid',
-    'indeterminate',
-  ].includes(key)
+  return ['disabled', 'required', 'readOnly', 'invalid', 'mixed'].includes(key)
 }
 
 function isProgressKey(key: string) {

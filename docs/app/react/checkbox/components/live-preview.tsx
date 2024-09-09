@@ -11,6 +11,7 @@ const api = {
   size: builder.Enum('size', ['md', 'lg']),
   text: builder.Text('text', 'Add your label text here'),
   id: builder.Text('id', 'add-uuid'),
+  mixed: builder.Boolean('mixed', false),
   disabled: builder.Boolean('disabled', false),
   invalid: builder.Boolean('invalid', false),
   readOnly: builder.Boolean('readOnly', false),
@@ -33,7 +34,7 @@ export function LivePlaygroundWithCode() {
 import { hstack } from '@cerberus/styled-system/patterns'
 
 export function MyCheckbox(props: CheckboxProps) {
-  const { describedBy, size, ...nativeProps } = props
+  const { describedBy, size, mixed, ...nativeProps } = props
   const labelSize = size === 'md' ? 'sm' : 'md'
 
   return (
@@ -55,6 +56,7 @@ export function MyCheckbox(props: CheckboxProps) {
           {...nativeProps}
           {...(describedBy && { describedBy: describedBy })}
           id={{id}}
+          mixed={{mixed}}
           size={{size}}
         />
         {{text}}
@@ -70,7 +72,7 @@ export function MyCheckbox(props: CheckboxProps) {
 
 export function CheckboxPreview() {
   const { selectedProps } = useCodeBuilder()
-  const { size, text, id, ...fieldState } = selectedProps
+  const { size, text, id, mixed, ...fieldState } = selectedProps
   const [checked, setChecked] = useState<boolean>(false)
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -92,6 +94,7 @@ export function CheckboxPreview() {
             <Checkbox
               checked={checked}
               id={id as string}
+              mixed={mixed as boolean}
               name={id as string}
               onChange={handleChange}
               size="lg"
@@ -101,6 +104,7 @@ export function CheckboxPreview() {
           <Checkbox
             checked={checked}
             id={id as string}
+            mixed={mixed as boolean}
             name={id as string}
             onChange={handleChange}
             size="md"
