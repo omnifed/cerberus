@@ -2,7 +2,7 @@ import figma from '@figma/code-connect'
 import { Button } from '@cerberus-design/react'
 
 const SELECTION =
-  'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=8637-3339&m=dev'
+  'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=2-8&node-type=FRAME&m=dev'
 
 const imports = ["import { Button } from '@cerberus/react'"]
 
