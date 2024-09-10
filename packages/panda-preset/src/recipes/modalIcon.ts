@@ -10,6 +10,9 @@ import { modalIconBase } from './shared/modal.base'
  * @module
  */
 
+// For some reason, we need to declare this in the variants object
+const color = 'colorPalette.text.200'
+
 /**
  * Styles for the ModalIcon component
  * @definition [Modal docs](https://cerberus.digitalu.design/react/confirm-modal)
@@ -23,12 +26,19 @@ export const modalIcon: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   variants: {
     palette: {
       action: {
+        colorPalette: 'action',
         cerbGradient: 'purple',
-        color: 'action.navigation.initial',
+        color,
+      },
+      success: {
+        colorPalette: 'success',
+        cerbGradient: 'green',
+        color,
       },
       danger: {
+        colorPalette: 'danger',
         bgColor: 'danger.surface.initial',
-        color: 'danger.text.100',
+        color,
       },
     },
   },

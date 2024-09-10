@@ -21,6 +21,7 @@ export const fileStatus: Partial<SlotRecipeConfig> = defineSlotRecipe({
       borderColor: 'page.border.initial',
       p: 4,
       rounded: 'sm',
+      w: 'full',
     },
     icon: {
       color: 'colorPalette.text.initial',
@@ -29,21 +30,28 @@ export const fileStatus: Partial<SlotRecipeConfig> = defineSlotRecipe({
   },
 
   variants: {
-    palette: {
-      action: {
+    status: {
+      todo: {
         icon: {
           colorPalette: 'action',
           cerGradient: 'purple',
           color: 'colorPalette.text.200',
         },
       },
-      success: {
+      processing: {
+        icon: {
+          colorPalette: 'action',
+          cerGradient: 'purple',
+          color: 'colorPalette.text.200',
+        },
+      },
+      done: {
         icon: {
           colorPalette: 'success',
           cerbGradient: 'green',
         },
       },
-      danger: {
+      error: {
         icon: {
           colorPalette: 'danger',
           bgColor: 'colorPalette.surface.initial',
@@ -53,6 +61,6 @@ export const fileStatus: Partial<SlotRecipeConfig> = defineSlotRecipe({
   },
 
   defaultVariants: {
-    palette: 'action',
+    status: 'todo',
   },
 })

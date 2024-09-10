@@ -5,7 +5,6 @@ import {
   CloseFilled,
   Restart,
   TrashCan,
-  Upload,
   Warning,
 } from '@cerberus/icons'
 import {
@@ -17,35 +16,46 @@ import {
 import { ProgressBar } from './ProgressBar'
 import { IconButton } from './IconButton'
 import {
-  fieldMessage,
   fileStatus as fileStatusStyles,
   type FileStatusVariantProps,
 } from '@cerberus/styled-system/recipes'
 import { css, cx } from '@cerberus/styled-system/css'
-import { circle, hstack, vstack } from '@cerberus/styled-system/patterns'
+import { hstack, vstack } from '@cerberus/styled-system/patterns'
+import { $cerberusIcons } from '../config/defineIcons'
+import { ModalIcon } from './ModalIcon'
+import { FieldMessage } from './FieldMessage'
+import { Field } from '../context/field'
 
 /**
  * This module contains the FileStatus component.
  * @module
  */
 
-export const fileStatus = {
-  TODO: 'todo',
-  PROCESSING: 'processing',
-  DONE: 'done',
-  ERROR: 'error',
-}
 export type FileStatusKey = (typeof fileStatus)[keyof typeof fileStatus]
-
 export type FileStatusActions = 'cancel' | 'retry' | 'delete'
 export interface FileBaseStatusProps
   extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
   file: string
   now: number
-  status: keyof typeof fileStatus
+  status: fileStatus
   onClick: (status: FileStatusActions, e: MouseEvent<HTMLButtonElement>) => void
 }
 export type FileStatusProps = FileBaseStatusProps & FileStatusVariantProps
+
+/**
+ * A helper object to represent the status of a file.
+ * @example
+ * ```tsx
+ * import { fileStatus } from '@cerberus/react'
+ * fileStatus.TODO // 'todo'
+ * ```
+ */
+export const enum fileStatus {
+  TODO = 'todo',
+  PROCESSING = 'processing',
+  DONE = 'done',
+  ERROR = 'error',
+}
 
 /**
  * This component displays the status of a file.
@@ -64,7 +74,8 @@ export function FileStatus(props: FileStatusProps) {
   const { file, now, status, onClick, ...nativeProps } = props
   const actionLabel = useMemo(() => getStatusActionLabel(status), [status])
   const palette = useMemo(() => getPalette(status), [status])
-  const styles = fileStatusStyles({ palette })
+  const modalIconPalette = useMemo(() => getModalIconPalette(status), [status])
+  const styles = fileStatusStyles({ status })
 
   const handleClick = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
@@ -81,21 +92,15 @@ export function FileStatus(props: FileStatusProps) {
       {...nativeProps}
       className={cx(nativeProps.className, styles.root, hstack())}
     >
-      <div
-        className={cx(
-          styles.icon,
-          circle({
-            size: 9,
-          }),
-        )}
-      >
+      <ModalIcon palette={modalIconPalette}>
         <MatchFileStatusIcon status={status} />
-      </div>
+      </ModalIcon>
 
       <div
         className={vstack({
           alignItems: 'flex-start',
-          gap: 0,
+          gap: '0.12rem',
+          w: 'full',
         })}
       >
         <small
@@ -105,10 +110,17 @@ export function FileStatus(props: FileStatusProps) {
         >
           {file}
         </small>
-        <ProgressBar now={now} />
-        <small className={fieldMessage()}>
-          <MatchFileStatusText status={status} now={now} />
-        </small>
+        <ProgressBar now={now} size="sm" />
+        <Field invalid={modalIconPalette === 'danger'}>
+          <FieldMessage
+            className={css({
+              color: 'page.text.100',
+            })}
+            id={`help:${file}`}
+          >
+            <MatchFileStatusText status={status} now={now} />
+          </FieldMessage>
+        </Field>
       </div>
 
       <IconButton
@@ -129,16 +141,18 @@ interface FileStatusElProps {
 }
 
 function MatchFileStatusIcon(props: FileStatusElProps) {
+  const { fileUploader: FileUploaderIcon } = $cerberusIcons
+
   switch (props.status) {
     case fileStatus.TODO:
     case fileStatus.PROCESSING:
-      return <Upload />
+      return <FileUploaderIcon />
     case fileStatus.DONE:
       return <CheckmarkFilled />
     case fileStatus.ERROR:
       return <Warning />
     default:
-      throw new Error('Invalid status')
+      throw new Error('Unknown status')
   }
 }
 
@@ -159,6 +173,7 @@ function MatchFileStatusText(props: FileStatusElProps) {
 
 function MatchStatusAction(props: FileStatusElProps) {
   switch (props.status) {
+    case fileStatus.TODO:
     case fileStatus.PROCESSING:
       return <CloseFilled />
     case fileStatus.ERROR:
@@ -166,12 +181,13 @@ function MatchStatusAction(props: FileStatusElProps) {
     case fileStatus.DONE:
       return <TrashCan />
     default:
-      break
+      throw new Error('Invalid status')
   }
 }
 
 function getStatusActionLabel(status: FileStatusKey) {
   switch (status) {
+    case fileStatus.TODO:
     case fileStatus.PROCESSING:
       return 'Cancel'
     case fileStatus.ERROR:
@@ -185,12 +201,26 @@ function getStatusActionLabel(status: FileStatusKey) {
 
 function getPalette(status: FileStatusKey) {
   switch (status) {
+    case fileStatus.TODO:
     case fileStatus.PROCESSING:
       return 'danger'
     case fileStatus.ERROR:
       return 'action'
     case fileStatus.DONE:
       return 'danger'
+    default:
+      return 'action'
+  }
+}
+
+function getModalIconPalette(status: FileStatusKey) {
+  switch (status) {
+    case fileStatus.PROCESSING:
+      return 'action'
+    case fileStatus.ERROR:
+      return 'danger'
+    case fileStatus.DONE:
+      return 'success'
     default:
       return 'action'
   }
