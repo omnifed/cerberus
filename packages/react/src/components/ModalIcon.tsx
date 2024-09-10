@@ -6,8 +6,8 @@ import {
 } from '@cerberus/styled-system/recipes'
 import type { HTMLAttributes, PropsWithChildren } from 'react'
 
-export type ModalIconBaseProps = HTMLAttributes<HTMLDivElement>
-export type ModalIconProps = ModalIconBaseProps & ModalIconVariantProps
+export type ModalIconProps = HTMLAttributes<HTMLDivElement> &
+  ModalIconVariantProps
 
 export function ModalIcon(props: PropsWithChildren<ModalIconProps>) {
   const { palette, ...nativeProps } = props

@@ -10,7 +10,7 @@ import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
  * @definition [FileStatus docs](https://cerberus.digitalu.design/react/file-status)
  */
 export const fileStatus: Partial<SlotRecipeConfig> = defineSlotRecipe({
-  className: 'fileStatus',
+  className: 'file-status',
   slots: ['root', 'icon'],
 
   base: {

@@ -3,6 +3,7 @@ import { recipes } from '@cerberus-design/panda-preset'
 
 describe('modalIcon recipe', () => {
   const { modalIcon } = recipes
+  const color = 'colorPalette.text.200'
 
   test('should be exported', () => {
     expect(modalIcon).toBeDefined()
@@ -19,11 +20,15 @@ describe('modalIcon recipe', () => {
     expect(modalIcon.variants!.palette).toMatchObject({
       action: {
         cerbGradient: 'purple',
-        color: 'action.navigation.initial',
+        color,
+      },
+      success: {
+        cerbGradient: 'green',
+        color,
       },
       danger: {
         bgColor: 'danger.surface.initial',
-        color: 'danger.text.100',
+        color,
       },
     })
   })

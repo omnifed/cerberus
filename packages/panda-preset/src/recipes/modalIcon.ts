@@ -4,14 +4,12 @@ import {
   type RecipeVariantRecord,
 } from '@pandacss/dev'
 import { modalIconBase } from './shared/modal.base'
+import { action, danger, success } from './shared/palettes'
 
 /**
  * This module contains the modalIcon recipe.
  * @module
  */
-
-// For some reason, we need to declare this in the variants object
-const color = 'colorPalette.text.200'
 
 /**
  * Styles for the ModalIcon component
@@ -26,19 +24,16 @@ export const modalIcon: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   variants: {
     palette: {
       action: {
-        colorPalette: 'action',
+        ...action,
         cerbGradient: 'purple',
-        color,
       },
       success: {
-        colorPalette: 'success',
+        ...success,
         cerbGradient: 'green',
-        color,
       },
       danger: {
-        colorPalette: 'danger',
+        ...danger,
         bgColor: 'danger.surface.initial',
-        color,
       },
     },
   },

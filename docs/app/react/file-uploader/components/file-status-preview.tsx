@@ -3,8 +3,8 @@
 import {
   FileUploader,
   FileStatus,
-  fileStatus,
   type FileStatusActions,
+  processStatus,
 } from '@cerberus-design/react'
 import { vstack } from '@cerberus/styled-system/patterns'
 import { useCallback, type MouseEvent } from 'react'
@@ -37,25 +37,25 @@ export function UploadingCardsPreview() {
           file="file.txt"
           now={0}
           onClick={handleClick}
-          status={fileStatus.TODO}
+          status={processStatus.TODO}
         />
         <FileStatus
           file="file.txt"
           now={50}
           onClick={handleClick}
-          status={fileStatus.PROCESSING}
+          status={processStatus.PROCESSING}
         />
         <FileStatus
           file="file.txt"
           now={100}
           onClick={handleClick}
-          status={fileStatus.DONE}
+          status={processStatus.DONE}
         />
         <FileStatus
           file="file.txt"
           now={0}
           onClick={handleClick}
-          status={fileStatus.ERROR}
+          status={processStatus.ERROR}
         />
       </div>
     </div>
