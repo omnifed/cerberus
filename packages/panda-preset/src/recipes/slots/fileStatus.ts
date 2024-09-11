@@ -1,4 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { action, danger, success } from '../shared/palettes'
 
 /**
  * This module contains the fileStatus recipe.
@@ -24,7 +25,7 @@ export const fileStatus: Partial<SlotRecipeConfig> = defineSlotRecipe({
       w: 'full',
     },
     icon: {
-      color: 'colorPalette.text.initial',
+      // combine with circle
       p: 2,
     },
   },
@@ -33,28 +34,30 @@ export const fileStatus: Partial<SlotRecipeConfig> = defineSlotRecipe({
     status: {
       todo: {
         icon: {
-          colorPalette: 'action',
-          cerGradient: 'purple',
-          color: 'colorPalette.text.200',
+          ...action,
+          cerbGradient: 'purple',
+          color: 'colorPalette.text.inverse',
         },
       },
       processing: {
         icon: {
-          colorPalette: 'action',
-          cerGradient: 'purple',
-          color: 'colorPalette.text.200',
+          ...action,
+          cerbGradient: 'purple',
+          color: 'colorPalette.text.inverse',
         },
       },
       done: {
         icon: {
-          colorPalette: 'success',
+          ...success,
           cerbGradient: 'green',
+          color: 'colorPalette.text.200',
         },
       },
       error: {
         icon: {
-          colorPalette: 'danger',
+          ...danger,
           bgColor: 'colorPalette.surface.initial',
+          color: 'colorPalette.text.200',
         },
       },
     },

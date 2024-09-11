@@ -43,13 +43,12 @@ export const nonTextStates = {
 export const textUsage = {
   bgColor: 'transparent',
   border: 'none',
-  color: textInitial,
+  color: 'colorPalette.text.200',
   transitionProperty: 'background-color, color',
   transitionDuration: 'fast',
   transitionTimingFunction: 'ease-in-out',
   _hover: {
     bgColor: 'colorPalette.ghost.hover',
-    color: 'colorPalette.text.200',
   },
   _active: {
     bgColor: 'colorPalette.ghost.active',

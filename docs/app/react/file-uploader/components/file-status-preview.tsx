@@ -1,7 +1,6 @@
 'use client'
 
 import {
-  FileUploader,
   FileStatus,
   type FileStatusActions,
   processStatus,
@@ -23,41 +22,30 @@ export function UploadingCardsPreview() {
         w: '3/4',
       })}
     >
-      <FileUploader
-        accept=".csv,.docx"
-        heading="Upload Files"
-        name="basic-example"
+      <FileStatus
+        file="file.txt"
+        now={0}
+        onClick={handleClick}
+        status={processStatus.TODO}
       />
-      <div
-        className={vstack({
-          w: 'full',
-        })}
-      >
-        <FileStatus
-          file="file.txt"
-          now={0}
-          onClick={handleClick}
-          status={processStatus.TODO}
-        />
-        <FileStatus
-          file="file.txt"
-          now={50}
-          onClick={handleClick}
-          status={processStatus.PROCESSING}
-        />
-        <FileStatus
-          file="file.txt"
-          now={100}
-          onClick={handleClick}
-          status={processStatus.DONE}
-        />
-        <FileStatus
-          file="file.txt"
-          now={0}
-          onClick={handleClick}
-          status={processStatus.ERROR}
-        />
-      </div>
+      <FileStatus
+        file="file.txt"
+        now={50}
+        onClick={handleClick}
+        status={processStatus.PROCESSING}
+      />
+      <FileStatus
+        file="file.txt"
+        now={100}
+        onClick={handleClick}
+        status={processStatus.DONE}
+      />
+      <FileStatus
+        file="file.txt"
+        now={0}
+        onClick={handleClick}
+        status={processStatus.ERROR}
+      />
     </div>
   )
 }

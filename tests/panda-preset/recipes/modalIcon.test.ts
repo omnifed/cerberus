@@ -19,14 +19,17 @@ describe('modalIcon recipe', () => {
   test('should have a palette variant', () => {
     expect(modalIcon.variants!.palette).toMatchObject({
       action: {
+        colorPalette: 'action',
         cerbGradient: 'purple',
         color,
       },
       success: {
+        colorPalette: 'success',
         cerbGradient: 'green',
         color,
       },
       danger: {
+        colorPalette: 'danger',
         bgColor: 'danger.surface.initial',
         color,
       },

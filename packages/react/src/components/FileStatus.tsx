@@ -13,9 +13,8 @@ import {
   type FileStatusVariantProps,
 } from '@cerberus/styled-system/recipes'
 import { css, cx } from '@cerberus/styled-system/css'
-import { hstack, vstack } from '@cerberus/styled-system/patterns'
+import { circle, hstack, vstack } from '@cerberus/styled-system/patterns'
 import { $cerberusIcons } from '../config/defineIcons'
-import { ModalIcon } from './ModalIcon'
 import { FieldMessage } from './FieldMessage'
 import { Field } from '../context/field'
 
@@ -68,7 +67,20 @@ export function FileStatus(props: FileStatusProps) {
   const actionLabel = useMemo(() => getStatusActionLabel(status), [status])
   const palette = useMemo(() => getPalette(status), [status])
   const modalIconPalette = useMemo(() => getModalIconPalette(status), [status])
-  const styles = fileStatus({ status })
+  const styles = useMemo(() => {
+    switch (status) {
+      case processStatus.TODO:
+        return fileStatus({ status: 'todo' })
+      case processStatus.PROCESSING:
+        return fileStatus({ status: 'processing' })
+      case processStatus.DONE:
+        return fileStatus({ status: 'done' })
+      case processStatus.ERROR:
+        return fileStatus({ status: 'error' })
+      default:
+        return fileStatus()
+    }
+  }, [status])
 
   const handleClick = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
@@ -85,9 +97,16 @@ export function FileStatus(props: FileStatusProps) {
       {...nativeProps}
       className={cx(nativeProps.className, styles.root, hstack())}
     >
-      <ModalIcon palette={modalIconPalette}>
+      <div
+        className={cx(
+          styles.icon,
+          circle({
+            size: '2rem',
+          }),
+        )}
+      >
         <MatchFileStatusIcon status={status} />
-      </ModalIcon>
+      </div>
 
       <div
         className={vstack({
