@@ -3,8 +3,6 @@ import { recipes } from '@cerberus-design/panda-preset'
 
 describe('modalIcon recipe', () => {
   const { modalIcon } = recipes
-  const color = 'colorPalette.text.200'
-
   test('should be exported', () => {
     expect(modalIcon).toBeDefined()
   })
@@ -21,17 +19,11 @@ describe('modalIcon recipe', () => {
       action: {
         colorPalette: 'action',
         cerbGradient: 'purple',
-        color,
-      },
-      success: {
-        colorPalette: 'success',
-        cerbGradient: 'green',
-        color,
+        color: 'colorPalette.text.inverse',
       },
       danger: {
         colorPalette: 'danger',
         bgColor: 'danger.surface.initial',
-        color,
       },
     })
   })
