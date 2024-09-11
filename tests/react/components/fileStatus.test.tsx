@@ -9,27 +9,53 @@ describe('FileStatus', () => {
   afterEach(cleanup)
 
   test('should render a file status', () => {
-    render(<FileStatus file="file.txt" now={0} status={processStatus.TODO} />)
+    render(
+      <FileStatus
+        file="file.txt"
+        now={0}
+        status={processStatus.TODO}
+        onClick={jest.fn()}
+      />,
+    )
     expect(screen.getByText(/file.txt/i)).toBeTruthy()
     expect(screen.getByText(/waiting to upload/i)).toBeTruthy()
   })
 
   test('should render a processing file status', () => {
     render(
-      <FileStatus file="file.txt" now={50} status={processStatus.PROCESSING} />,
+      <FileStatus
+        file="file.txt"
+        now={50}
+        status={processStatus.PROCESSING}
+        onClick={jest.fn()}
+      />,
     )
     expect(screen.getByText(/file.txt/i)).toBeTruthy()
     expect(screen.getByText(/50% complete/i)).toBeTruthy()
   })
 
   test('should render a done file status', () => {
-    render(<FileStatus file="file.txt" now={100} status={processStatus.DONE} />)
+    render(
+      <FileStatus
+        file="file.txt"
+        now={100}
+        status={processStatus.DONE}
+        onClick={jest.fn()}
+      />,
+    )
     expect(screen.getByText(/file.txt/i)).toBeTruthy()
     expect(screen.getByText(/file uploaded successfully/i)).toBeTruthy()
   })
 
   test('should render an error file status', () => {
-    render(<FileStatus file="file.txt" now={0} status={processStatus.ERROR} />)
+    render(
+      <FileStatus
+        file="file.txt"
+        now={0}
+        status={processStatus.ERROR}
+        onClick={jest.fn()}
+      />,
+    )
     expect(screen.getByText(/file.txt/i)).toBeTruthy()
     expect(
       screen.getByText(/There was an error uploading the file/i),

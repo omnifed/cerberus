@@ -29,6 +29,7 @@
     "@next/mdx": "^14.2.3",
     "@pandacss/dev": "^0.46.0",
     "@pandacss/preset-panda": "^0.46.0",
+    "@pandacss/types": "^0.46.0",
     "@shikijs/rehype": "^1.5.1",
     "@shikijs/transformers": "^1.5.1",
     "@shikijs/twoslash": "^1.5.1",

@@ -30,9 +30,11 @@ If you choose to process the file, you can use the `FileStatus` component to dis
 
 ## Customizing
 
-To customize the FileUploader, we recommend extending the `fileUploader` slot recipe in your panda config.
+To customize the FileUploader or FileStatus, we recommend extending the `fileUploader` or the `fileStatus` slot recipe in your panda config.
 
 ## API
+
+### FileUploader
 
 ```ts showLineNumbers=false
 export interface FileUploaderProps
@@ -44,6 +46,24 @@ export interface FileUploaderProps
 define function FileUploader(props: FileUploaderProps): ReactNode
 ```
 
+### FileStatus
+
+```ts showLineNumbers=false
+export type FileStatusKey = (typeof processStatus)[keyof typeof processStatus]
+export type FileStatusActions = 'cancel' | 'retry' | 'delete'
+
+export interface FileBaseStatusProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
+  file: string
+  now: number
+  status: processStatus
+  onClick: (status: FileStatusActions, e: MouseEvent<HTMLButtonElement>) => void
+}
+export type FileStatusProps = FileBaseStatusProps & FileStatusVariantProps
+
+define function FileStatus(props: FileStatusProps): ReactNode
+```
+
 ### Props
 
 The `FileUploader` component accepts the following props:
@@ -52,3 +72,11 @@ The `FileUploader` component accepts the following props:
 | -------- | ------- | ------------------------------------------------------------- |
 | heading  |         | The heading for the file uploader                             |
 | name     |         | The unique name of the file uploader                                  |
+
+The `FileStatus` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| file     |         | The name of the file being processed                          |
+| now      |         | The current progress of the file upload                       |
+| status   |    'todo'     | The status of the file upload                                 |

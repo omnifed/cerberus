@@ -1,8 +1,8 @@
-import { defineConfig } from '@pandacss/dev'
+import { defineConfig, type Config } from '@pandacss/dev'
 import pandaPreset from '@pandacss/preset-panda'
 import { cerberusPreset, cerberusConfig } from '@cerberus-design/panda-preset'
 
-export default defineConfig({
+const config: Config = {
   ...cerberusConfig,
 
   include: [
@@ -13,4 +13,6 @@ export default defineConfig({
   exclude: [],
 
   presets: [pandaPreset, cerberusPreset],
-})
+}
+
+export default defineConfig(config)
