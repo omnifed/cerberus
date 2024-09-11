@@ -30,6 +30,7 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
 
   base: {
     ...buttonBase,
+    flexShrink: 0,
     h: '2.75rem', // a11y minimum touch target size: 2.75rem
     pxi: '0',
     rounded: 'full',

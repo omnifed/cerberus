@@ -80,7 +80,7 @@ describe('button recipe', () => {
 
   test('should have a text usage variant', () => {
     expect(button.variants?.usage.text).toMatchObject({
-      color: initialText,
+      color: 'colorPalette.text.200',
       bgColor: 'transparent',
       border: 'none',
       transitionProperty: 'background-color, color',
@@ -88,7 +88,6 @@ describe('button recipe', () => {
       transitionTimingFunction: 'ease-in-out',
       _hover: {
         bgColor: 'colorPalette.ghost.hover',
-        color: 'colorPalette.text.200',
       },
       _active: {
         bgColor: 'colorPalette.ghost.active',

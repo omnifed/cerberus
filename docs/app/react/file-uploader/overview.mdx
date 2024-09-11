@@ -7,8 +7,11 @@ a11y: 'forms'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import {
-  BasicFileUploader
-} from '@/app/react/file-uploader/components/file-uploader-preview'
+  LivePlayground
+} from '@/app/react/file-uploader/components/live-preview'
+import {
+  UploadingCardsPreview
+} from '@/app/react/file-uploader/components/file-status-preview'
 
 <OverviewList rules={[
   'Labels should be used to describe the file types that can be uploaded',
@@ -18,7 +21,14 @@ import {
 
 ## Example
 
-<CodePreview preview={<BasicFileUploader />} />
+<LivePlayground />
+
+## Processing Uploads
+
+Cerberus provides some visual feedback when you would like to show the status of a file upload.
+
+<CodePreview preview={<UploadingCardsPreview />} />
+
 
 ## Resources
 

@@ -18,7 +18,7 @@ describe('FileUploader', () => {
 
     expect(screen.getByText(/upload files/i)).toBeTruthy()
     expect(screen.getByText(/import .csv, .docx files/i)).toBeTruthy()
-    expect(screen.getByText(/or click to upload/i)).toBeTruthy()
+    expect(screen.getByText(/click to select files/i)).toBeTruthy()
     expect(screen.getByLabelText(/upload files/i)).toBeTruthy()
   })
 
@@ -27,6 +27,6 @@ describe('FileUploader', () => {
 
     expect(screen.queryByText(/upload files/i)).toBeNull()
     expect(screen.getByText(/import .csv, .doc files/i)).toBeTruthy()
-    expect(screen.getByText(/or click to upload/i)).toBeTruthy()
+    expect(screen.getByText(/click to select files/i)).toBeTruthy()
   })
 })

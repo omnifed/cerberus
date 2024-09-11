@@ -43,7 +43,7 @@ export function FileUploader(props: FileUploaderProps) {
           <p className={styles.heading}>{props.heading}</p>
         </Show>
         Import {props.accept?.replace(',', ', ')} files
-        <p className={styles.description}>Or click to upload</p>
+        <p className={styles.description}>Click to select files</p>
         <input
           {...props}
           className={cx(props.className, styles.input)}

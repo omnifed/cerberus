@@ -22,6 +22,7 @@ export const modalBase = {
 }
 
 export const modalIconBase = {
+  color: 'colorPalette.text.200',
   mxi: 'auto',
   p: '2',
 }

@@ -4,6 +4,7 @@ import {
   type RecipeVariantRecord,
 } from '@pandacss/dev'
 import { modalIconBase } from './shared/modal.base'
+import { action, danger } from './shared/palettes'
 
 /**
  * This module contains the modalIcon recipe.
@@ -23,12 +24,13 @@ export const modalIcon: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   variants: {
     palette: {
       action: {
+        ...action,
         cerbGradient: 'purple',
-        color: 'action.navigation.initial',
+        color: 'colorPalette.text.inverse',
       },
       danger: {
+        ...danger,
         bgColor: 'danger.surface.initial',
-        color: 'danger.text.100',
       },
     },
   },
