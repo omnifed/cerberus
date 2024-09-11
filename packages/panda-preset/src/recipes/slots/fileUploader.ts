@@ -50,6 +50,7 @@ export const fileUploader: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     label: {
       // combine with vstack
+      color: 'page.text.200',
       gap: '1',
       justify: 'center',
       position: 'relative',
@@ -59,6 +60,7 @@ export const fileUploader: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     icon: modalIconBase,
     heading: {
+      color: 'page.text.initial',
       pt: '2',
       textStyle: 'h6',
     },

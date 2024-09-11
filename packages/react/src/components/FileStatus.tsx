@@ -117,6 +117,7 @@ export function FileStatus(props: FileStatusProps) {
       >
         <small
           className={css({
+            color: 'page.text.initial',
             textStyle: 'label-sm',
           })}
         >
