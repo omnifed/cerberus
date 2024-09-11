@@ -24,7 +24,6 @@ export function LivePlaygroundWithCode() {
     <CodeBuilder
       api={api}
       code={`import { FileUploader, type FileUploaderProps } from '@cerberus-design/react'
-import { useCallback, type MouseEvent } from 'react'
 
 export function MyFileUploader(props: FileUploaderProps) {
   return (
