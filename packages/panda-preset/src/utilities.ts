@@ -69,7 +69,6 @@ const cerberusGradient: CustomUtilityConfig<'cerberusGradient'> = {
           }
         case 'dark-purple':
           return {
-            color,
             backgroundImage:
               'linear-gradient(234deg, #5F00B5 -1.22%, #9F66D3 79.15%)',
           }
@@ -87,31 +86,26 @@ const cerberusGradient: CustomUtilityConfig<'cerberusGradient'> = {
           }
         case 'red':
           return {
-            color,
             backgroundImage:
               'linear-gradient(248deg, #FED7D5 -29.66%, #FC5E57 162.95%)',
           }
         case 'neutral':
           return {
-            color,
             backgroundImage:
               'linear-gradient(220deg, #918EA7 -10.94%, #E4E3E9 108.06%)',
           }
         case 'yellow':
           return {
-            color,
             backgroundImage:
               'linear-gradient(216deg, #FEFBE9 -4.93%, #F4DA49 116.78%)',
           }
         case 'teal':
           return {
-            color,
             backgroundImage:
               'linear-gradient(216deg, #102D2D -4.93%, #3B8180 116.78%)',
           }
         case 'light-teal':
           return {
-            color,
             backgroundImage:
               'linear-gradient(216deg, #D8F9F7 -4.93%, #72E9E7 116.78%)',
           }

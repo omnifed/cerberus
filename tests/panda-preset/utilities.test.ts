@@ -49,7 +49,6 @@ describe('utilities', () => {
     expect(cerbGradient.transform?.('dark-purple', args)).toMatchObject({
       backgroundImage:
         'linear-gradient(234deg, #5F00B5 -1.22%, #9F66D3 79.15%)',
-      color,
     })
     expect(cerbGradient.transform?.('green', args)).toMatchObject({
       color,
@@ -61,32 +60,26 @@ describe('utilities', () => {
       backgroundImage: 'linear-gradient(207deg, #E6F3FB 16.67%, #9ACFEE 100%)',
     })
     expect(cerbGradient.transform?.('red', args)).toMatchObject({
-      color,
       backgroundImage:
         'linear-gradient(248deg, #FED7D5 -29.66%, #FC5E57 162.95%)',
     })
     expect(cerbGradient.transform?.('neutral', args)).toMatchObject({
-      color,
       backgroundImage:
         'linear-gradient(220deg, #918EA7 -10.94%, #E4E3E9 108.06%)',
     })
     expect(cerbGradient.transform?.('neutral', args)).toMatchObject({
-      color,
       backgroundImage:
         'linear-gradient(220deg, #918EA7 -10.94%, #E4E3E9 108.06%)',
     })
     expect(cerbGradient.transform?.('yellow', args)).toMatchObject({
-      color,
       backgroundImage:
         'linear-gradient(216deg, #FEFBE9 -4.93%, #F4DA49 116.78%)',
     })
     expect(cerbGradient.transform?.('teal', args)).toMatchObject({
-      color,
       backgroundImage:
         'linear-gradient(216deg, #102D2D -4.93%, #3B8180 116.78%)',
     })
     expect(cerbGradient.transform?.('light-teal', args)).toMatchObject({
-      color,
       backgroundImage:
         'linear-gradient(216deg, #D8F9F7 -4.93%, #72E9E7 116.78%)',
     })
