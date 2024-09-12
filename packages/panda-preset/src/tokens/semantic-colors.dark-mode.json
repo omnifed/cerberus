@@ -1682,7 +1682,7 @@
         }
       }
     },
-    "qualitative colors": {
+    "qualitative-colors": {
       "100": {
         "$type": "color",
         "$value": "colors.brand.50",
