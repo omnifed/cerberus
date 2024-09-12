@@ -33,13 +33,13 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     palette: tagPalettes,
     gradient: {
       blue: {
-        cerbGradient: 'blue',
+        cerbGradient: 'light-blue',
       },
       green: {
         cerbGradient: 'green',
       },
       purple: {
-        cerbGradient: 'purple',
+        cerbGradient: 'light-purple',
       },
     },
     usage: {
