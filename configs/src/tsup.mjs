@@ -12,7 +12,7 @@ export function modernConfig(options) {
 export function legacyConfig(options) {
   return {
     ...options,
-    format: ['esm'],
+    format: ['cjs'],
     target: ['es2020', 'node16'],
     outDir: 'build/legacy',
     sourcemap: true,
