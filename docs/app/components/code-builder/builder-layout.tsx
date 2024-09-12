@@ -77,12 +77,9 @@ export default function BuilderLayout(
 
       <Show when={Boolean(props.code)}>
         <footer
-          className={cx(
-            'expressive-code',
-            css({
-              w: 'full',
-            }),
-          )}
+          className={css({
+            w: 'full',
+          })}
         >
           <BuilderSnippet code={props.code!} />
         </footer>

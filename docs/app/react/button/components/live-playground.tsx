@@ -27,9 +27,7 @@ export function LivePlaygroundWithCode() {
       api={api}
       code={`import { Button, type ButtonProps } from '@cerberus-design/react'
 
-type MyButtonProps = ButtonProps
-
-export function MyButton(props: MyButtonProps) {
+export function MyButton(props: ButtonProps) {
   return (
     <Button
       disabled={{disabled}}
