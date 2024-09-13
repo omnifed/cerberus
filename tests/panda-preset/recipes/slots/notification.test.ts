@@ -104,6 +104,7 @@ describe('notification recipe', () => {
       },
       _hover: {
         bgColor: 'colorPalette.ghost.hover',
+        color: 'colorPalette.text.100',
       },
     })
   })

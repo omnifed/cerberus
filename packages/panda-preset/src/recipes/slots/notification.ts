@@ -107,6 +107,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
       color: 'inherit',
       _hover: {
         bgColor: 'colorPalette.ghost.hover',
+        color: 'colorPalette.text.100',
       },
     },
     closeAll: {
