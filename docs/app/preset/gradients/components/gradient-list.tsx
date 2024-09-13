@@ -1,12 +1,11 @@
 import { cq, hstack, vstack } from '@cerberus/styled-system/patterns'
-import { gradientValues } from '@cerberus-design/panda-preset'
+import { PAGE, gradientValues } from '@cerberus-design/panda-preset'
 import { css } from '@cerberus/styled-system/css'
-import { Code as CodeIcon, LogoFigma } from '@cerberus-design/icons'
+import { LogoFigma } from '@cerberus-design/icons'
 import { Code } from '@/app/components/Code'
+import { PAGE_TEXT_INITIAL } from '@/app/utils/const'
 
-interface GradientListProps {}
-
-export default function GradientList(_: GradientListProps) {
+export default function GradientList() {
   return (
     <div
       className={cq({
@@ -84,7 +83,7 @@ export default function GradientList(_: GradientListProps) {
               >
                 <h2
                   className={css({
-                    color: 'page.text.initial',
+                    color: PAGE_TEXT_INITIAL,
                     textStyle: 'h3',
                     textTransform: 'capitalize',
                   })}
@@ -93,7 +92,7 @@ export default function GradientList(_: GradientListProps) {
                 </h2>
                 <p
                   className={hstack({
-                    color: 'page.text.initial',
+                    color: PAGE_TEXT_INITIAL,
                     gap: 1,
                   })}
                 >
@@ -108,7 +107,7 @@ export default function GradientList(_: GradientListProps) {
                 </p>
                 <span
                   className={css({
-                    color: 'page.text.initial',
+                    color: PAGE_TEXT_INITIAL,
                     mt: 3,
                   })}
                 >
