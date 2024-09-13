@@ -1,77 +1,71 @@
 [
   {
-    "id": "1",
     "label": "Overview",
     "type": "heading"
   },
   {
-    "id": "1:a",
     "label": "Installation",
     "route": "/preset",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2",
     "label": "Branding",
     "type": "heading"
   },
   {
-    "id": "2:a",
     "label": "Theme",
     "route": "/preset/theme",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:b",
     "label": "Colors",
     "route": "/preset/colors",
     "tag": "new",
     "type": "route"
   },
   {
-    "id": "2:c",
+    "label": "Gradients",
+    "route": "/preset/gradients",
+    "tag": "next",
+    "type": "route"
+  },
+  {
     "label": "Typography",
     "route": "/preset/typography",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "2:d",
     "label": "Animation",
     "route": "/preset/animation",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "3",
     "label": "Helpers",
     "type": "heading"
   },
   {
-    "id": "3:a",
     "label": "Z-Index",
     "route": "/preset/z-index",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "3:b",
     "label": "Conditions",
     "route": "/preset/conditions",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "3:c",
     "label": "Utilities",
     "route": "/preset/utilities",
     "tag": "",
     "type": "route"
   },
   {
-    "id": "3:d",
     "label": "Patterns",
     "route": "/preset/patterns",
     "tag": "",

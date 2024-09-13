@@ -1,4 +1,3 @@
-import { zIndex } from '@cerberus-design/panda-preset'
 import {
   Button,
   Field,
@@ -11,7 +10,7 @@ import {
   Tabs,
   Tag,
 } from '@cerberus-design/react'
-import { css, cx } from '@cerberus/styled-system/css'
+import { css } from '@cerberus/styled-system/css'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
 
 const highlightedStyles = {

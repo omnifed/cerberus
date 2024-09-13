@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import OnThisPage from '../../components/OnThisPage'
 import { PageMainContent, PageSections } from '../../components/PageLayout'
-import ColorDetails from './[name]/components/color-details'
+import ColorDetails from './components/color-details'
 import Colors from './colors.mdx'
 import { FilterablePaletteSection } from './components/FilterablePaletteSection'
 
