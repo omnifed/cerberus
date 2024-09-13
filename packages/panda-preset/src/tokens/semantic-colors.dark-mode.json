@@ -425,7 +425,7 @@
     "secondary-action": {
       "100": {
         "$type": "color",
-        "$value": "colors.teal.90",
+        "$value": "colors.teal.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
