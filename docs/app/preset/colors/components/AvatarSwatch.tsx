@@ -2,7 +2,7 @@
 
 import { useThemeContext } from '@cerberus-design/react'
 import type { SemanticToken, Sentiment } from '@cerberus-design/panda-preset'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { circle } from '@cerberus/styled-system/patterns'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'

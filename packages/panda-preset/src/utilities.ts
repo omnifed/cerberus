@@ -1,8 +1,31 @@
 import type { PropertyConfig } from '@pandacss/dev'
 
-type CustomUtilityConfig<K extends string> = {
+export type CustomUtilityConfig<K extends string> = {
   [key in K]: PropertyConfig
 }
+
+export type GradientValue =
+  | 'light-purple'
+  | 'dark-purple'
+  | 'green'
+  | 'light-blue'
+  | 'red'
+  | 'neutral'
+  | 'yellow'
+  | 'teal'
+  | 'light-teal'
+
+export const gradientValues: GradientValue[] = [
+  'light-purple',
+  'dark-purple',
+  'green',
+  'light-blue',
+  'red',
+  'neutral',
+  'yellow',
+  'teal',
+  'light-teal',
+]
 
 const mxi: CustomUtilityConfig<'mxi'> = {
   mxi: {
@@ -33,39 +56,59 @@ const pxi: CustomUtilityConfig<'pxi'> = {
 const cerberusGradient: CustomUtilityConfig<'cerberusGradient'> = {
   cerberusGradient: {
     className: 'cerberus-gradient',
-    values: ['green', 'blue', 'purple', 'purple-100'],
+    values: gradientValues,
     shorthand: 'cerbGradient',
-    transform(value: 'green' | 'blue' | 'purple' | 'purple-100') {
+    transform(value: GradientValue) {
       const color = '#21143B'
       switch (value) {
-        case 'purple':
+        case 'light-purple':
           return {
             color,
             backgroundImage:
-              'linear-gradient(to bottom left, #EFE5F8, #BB93E1)',
+              'linear-gradient(216deg, #EFE5F8 -4.93%, #BB93E1 116.78%)',
           }
-
-        case 'purple-100':
+        case 'dark-purple':
           return {
-            color,
             backgroundImage:
               'linear-gradient(234deg, #5F00B5 -1.22%, #9F66D3 79.15%)',
           }
-
-        case 'blue':
+        case 'light-blue':
           return {
             color,
             backgroundImage:
-              'linear-gradient(to bottom left, #E6F3FB, #9ACFEE)',
+              'linear-gradient(207deg, #E6F3FB 16.67%, #9ACFEE 100%)',
           }
-
         case 'green':
           return {
             color,
             backgroundImage:
-              'linear-gradient(to bottom left, #E8F8ED, #71D192)',
+              'linear-gradient(103deg, #71D192 -78.15%, #E8F8ED 129.96%)',
           }
-
+        case 'red':
+          return {
+            backgroundImage:
+              'linear-gradient(248deg, #FED7D5 -29.66%, #FC5E57 162.95%)',
+          }
+        case 'neutral':
+          return {
+            backgroundImage:
+              'linear-gradient(220deg, #918EA7 -10.94%, #E4E3E9 108.06%)',
+          }
+        case 'yellow':
+          return {
+            backgroundImage:
+              'linear-gradient(216deg, #FEFBE9 -4.93%, #F4DA49 116.78%)',
+          }
+        case 'teal':
+          return {
+            backgroundImage:
+              'linear-gradient(216deg, #102D2D -4.93%, #3B8180 116.78%)',
+          }
+        case 'light-teal':
+          return {
+            backgroundImage:
+              'linear-gradient(216deg, #D8F9F7 -4.93%, #72E9E7 116.78%)',
+          }
         default:
           break
       }

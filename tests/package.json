@@ -8,11 +8,12 @@
     "test:ci": "bun test --coverage"
   },
   "devDependencies": {
+    "@cerberus-design/icons": "workspace:*",
     "@cerberus-design/panda-preset": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/styled-system": "workspace:*",
-    "@cerberus-design/icons": "workspace:*",
     "@happy-dom/global-registrator": "^14.11.0",
+    "@pandacss/types": "^0.46.0",
     "@testing-library/react": "^15.0.7",
     "@testing-library/user-event": "^14.5.2",
     "@types/react": "^18",

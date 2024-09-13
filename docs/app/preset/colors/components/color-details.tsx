@@ -13,12 +13,12 @@ import {
   hstack,
   vstack,
 } from '@cerberus/styled-system/patterns'
-import { normalizeTokens, getTokenList } from '../../helpers/normalize'
+import { normalizeTokens, getTokenList } from '../helpers/normalize'
 import { Show, useThemeContext } from '@cerberus-design/react'
-import { Fragment, useEffect, useMemo } from 'react'
+import { Fragment, useMemo } from 'react'
 import { css } from '@cerberus/styled-system/css'
 import UsageExample from './usage-example'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
 function getFigmaProperty(selector: Usage): string {
   switch (selector) {
