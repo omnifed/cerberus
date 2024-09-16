@@ -7,7 +7,7 @@ import { Button } from '@cerberus-design/react'
 
 const api = {
   palette: builder.Enum('palette', ['action', 'secondaryAction', 'danger']),
-  usage: builder.Enum('usage', ['filled', 'outlined', 'text']),
+  usage: builder.Enum('usage', ['filled', 'outlined', 'ghost']),
   shape: builder.Enum('shape', ['sharp', 'rounded']),
   text: builder.Text('name', 'Button'),
   disabled: builder.Boolean('disabled', false),

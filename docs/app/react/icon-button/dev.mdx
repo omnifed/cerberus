@@ -64,7 +64,7 @@ export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
   palette?: 'action' | 'secondaryAction' | 'danger'
   size?: 'sm' | 'lg'
   tooltipPosition?: 'top' | 'right' | 'bottom' | 'left'
-  usage?: 'filled' | 'text' | 'outlined'
+  usage?: 'filled' | 'ghost' | 'outlined'
 }
 
 define function IconButton(props: IconButtonProps): ReactNode
@@ -78,6 +78,6 @@ The `IconButton` component accepts the following props:
 | -------- | ------- | ------------------------------------------------------------- |
 | ariaLabel |    "Icon Button"     | The accessible label for the button. |
 | palette     | `action`   | The color palette of the button. |
-| usage | `text`    | The style treatment of the button.    |
+| usage | `ghost`    | The style treatment of the button.    |
 | size | `lg`    | The size of the button.               |
 | tooltipPosition | `top`    | The position of the tooltip.               |

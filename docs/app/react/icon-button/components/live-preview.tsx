@@ -10,7 +10,7 @@ const fallbackAria = 'Like something'
 
 const api = {
   palette: builder.Enum('palette', ['action', 'secondaryAction', 'danger']),
-  usage: builder.Enum('usage', ['filled', 'outlined', 'text']),
+  usage: builder.Enum('usage', ['filled', 'outlined', 'ghost']),
   size: builder.Enum('size', ['sm', 'lg']),
   tooltipPosition: builder.Enum('tooltipPosition', [
     'top',
