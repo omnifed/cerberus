@@ -293,4 +293,21 @@ describe('actionTokens', () => {
       ),
     ).toBe('#130024')
   })
+
+  test('should have a action.text.static key', () => {
+    expect(actionTokens.action.text.static).toBeDefined()
+    expect(
+      formatToken(actionTokens.action.text.static.value._cerberusTheme.base),
+    ).toBe('#5F00B5')
+    expect(
+      formatToken(
+        actionTokens.action.text.static.value._cerberusTheme._darkMode,
+      ),
+    ).toBe('#5F00B5')
+    expect(
+      formatToken(
+        actionTokens.action.text.static.value._cerberusTheme._lightMode,
+      ),
+    ).toBe('#5F00B5')
+  })
 })

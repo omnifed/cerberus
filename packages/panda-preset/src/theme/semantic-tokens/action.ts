@@ -33,6 +33,7 @@ export interface ActionTokens {
       readonly 100: SemanticToken
       readonly 200: SemanticToken
       readonly inverse: SemanticToken
+      readonly static: SemanticToken
     }
   }
 }
@@ -383,6 +384,27 @@ export const actionTokens: ActionTokens = {
             _darkMode: deepGetByPaths(
               colors,
               rawTokens.semanticColors.dark.text.action.inverse.$value,
+            ).$value,
+          },
+        },
+      },
+      static: {
+        description:
+          semanticColors.text[ACTION].static.$description ||
+          'The text color of the action when there needs to be a light mode text within the dark theme.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.action.static.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.action.static.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.action.static.$value,
             ).$value,
           },
         },

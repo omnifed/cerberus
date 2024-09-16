@@ -203,4 +203,16 @@ describe('infoTokens', () => {
       formatToken(infoTokens.info.text['200'].value._cerberusTheme._lightMode),
     ).toEqual('#35A0DD')
   })
+
+  test('should have a text.static property', () => {
+    expect(
+      formatToken(infoTokens.info.text.static.value._cerberusTheme.base),
+    ).toEqual('#0288D5')
+    expect(
+      formatToken(infoTokens.info.text.static.value._cerberusTheme._darkMode),
+    ).toEqual('#0288D5')
+    expect(
+      formatToken(infoTokens.info.text.static.value._cerberusTheme._lightMode),
+    ).toEqual('#0288D5')
+  })
 })

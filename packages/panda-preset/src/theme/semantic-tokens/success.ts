@@ -326,6 +326,27 @@ export const successTokens: SuccessTokens = {
           },
         },
       },
+      static: {
+        description:
+          semanticColors.text[SUCCESS].static.$description ||
+          'The text color of success elements when you need a light mode treatment within the dark mode.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.success.static.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.success.static.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.success.static.$value,
+            ).$value,
+          },
+        },
+      },
     },
   },
 }

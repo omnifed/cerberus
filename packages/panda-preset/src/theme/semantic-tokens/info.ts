@@ -323,6 +323,27 @@ export const infoTokens: InfoTokens = {
           },
         },
       },
+      static: {
+        description:
+          semanticColors.text[INFO].static.$description ||
+          'The default text color of informational elements.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.info.static.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.info.static.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.info.static.$value,
+            ).$value,
+          },
+        },
+      },
     },
   },
 }
