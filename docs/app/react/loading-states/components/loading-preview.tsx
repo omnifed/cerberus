@@ -22,7 +22,14 @@ export function OverviewPreview() {
             w: 'full',
           })}
         >
-          <p aria-busy="true">This is a description of something.</p>
+          <p
+            aria-busy="true"
+            className={css({
+              rounded: 'sm',
+            })}
+          >
+            This is a description of something.
+          </p>
           <div className={hstack()}>
             <Circle aria-busy="true" size="6" />
             <Circle aria-busy="true" size="6" />
