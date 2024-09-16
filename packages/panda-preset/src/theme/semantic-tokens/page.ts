@@ -7,7 +7,7 @@ import { PAGE } from '../../recipes/shared/palettes'
  * @module pageTokens
  */
 
-type PageTextProminence = Exclude<Prominence, 'static'>
+type PageProminence = Exclude<Prominence, 'static'>
 
 export interface PageTokens {
   readonly page: {
@@ -25,10 +25,10 @@ export interface PageTokens {
       readonly 200: SemanticToken
     }
     readonly surface: {
-      readonly [P in Prominence]: SemanticToken
+      readonly [P in PageProminence]: SemanticToken
     }
     readonly text: {
-      readonly [P in PageTextProminence]: SemanticToken
+      readonly [P in PageProminence]: SemanticToken
     }
   }
 }
