@@ -42,11 +42,11 @@ function CategoryCard(props: CategoryCardProps) {
             justify: 'center',
             w: 'full',
             '&:is([data-category=actions])': {
-              cerberusGradient: 'purple',
+              cerberusGradient: 'dark-purple',
               color: NEUTRAL_TEXT_INVERSE,
             },
             '&:is([data-category=communication])': {
-              cerberusGradient: 'blue',
+              cerberusGradient: 'light-purple',
               color: 'info.text.100',
             },
             '&:is([data-category=containment])': {
@@ -54,15 +54,15 @@ function CategoryCard(props: CategoryCardProps) {
               color: NEUTRAL_TEXT_INVERSE,
             },
             '&:is([data-category=navigation])': {
-              cerberusGradient: 'green',
+              cerberusGradient: 'light-blue',
               color: 'success.text.100',
             },
             '&:is([data-category=selection])': {
-              cerberusGradient: 'purple',
+              cerberusGradient: 'neutral',
               color: NEUTRAL_TEXT_INVERSE,
             },
             '&:is([data-category=inputs])': {
-              cerberusGradient: 'purple',
+              cerberusGradient: 'yellow',
               color: NEUTRAL_TEXT_INVERSE,
             },
           })}

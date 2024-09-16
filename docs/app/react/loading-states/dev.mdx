@@ -1,0 +1,46 @@
+---
+npm: '@cerberus-design/react'
+source: ''
+recipe: ''
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  OverviewPreview,
+} from '@/app/react/loading-states/components/loading-preview'
+
+## Skeletor API
+
+To show a skeleton loading state, simply add the `aria-busy` attribute to the element you want to show the loading state for.
+
+```tsx
+<div aria-busy="true">
+  <p>This is now hidden</p>
+</div>
+```
+
+<CodePreview preview={<OverviewPreview />} />
+
+### Spinners
+
+Coming soon...
+
+## Customization
+
+To customize the Skeleton, you can override the `globalCss` object by extending the `@cerberus/panda-preset`.
+
+## API
+
+```ts showLineNumbers=false
+export type SpinnerProps = SVGHTMLAttributes<SVGSVGElement>
+
+define function Spinner(props: SpinnerProps): ReactNode
+```
+
+### Props
+
+The `Spinner` component accepts the following props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+|          |         |                                        |

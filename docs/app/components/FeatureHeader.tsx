@@ -124,6 +124,9 @@ export default function FeatureHeader(
               cerberusGradient: 'yellow',
               color: 'warning.text.initial',
             },
+            '&:is([data-category=misc])': {
+              cerberusGradient: 'neutral',
+            },
           })}
         >
           <MatchFeatureImg kind={props.a11y} />

@@ -1,0 +1,28 @@
+---
+heading: 'Loading States'
+description: 'Loading states help communicate that when the app is processing a request.'
+a11y: 'misc'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  OverviewPreview,
+} from '@/app/react/loading-states/components/loading-preview'
+
+<OverviewList rules={[
+  'Should be used to communicate that the app is processing a request',
+  'Two types: skeletons and spinners',
+  'Skeletons show when a page is initially loading',
+  'Spinners show when a request is being processed in result of a user action',
+]} />
+
+## Example
+
+<CodePreview preview={<OverviewPreview />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |

@@ -10,6 +10,12 @@
     "type": "route"
   },
   {
+    "label": "Loading States",
+    "route": "/react/loading-states",
+    "tag": "next",
+    "type": "route"
+  },
+  {
     "label": "Actions",
     "type": "heading"
   },
