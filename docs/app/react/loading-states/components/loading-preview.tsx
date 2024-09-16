@@ -1,3 +1,4 @@
+import { Circle } from '@/styled-system/jsx'
 import { Tag } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
@@ -10,7 +11,24 @@ export function OverviewPreview() {
         w: '3/4',
       })}
     >
-      <div className={vstack()}>
+      <div
+        className={vstack({
+          alignItems: 'flex-start',
+        })}
+      >
+        <div
+          className={hstack({
+            justify: 'space-between',
+            w: 'full',
+          })}
+        >
+          <p aria-busy="true">This is a description of something.</p>
+          <div className={hstack()}>
+            <Circle aria-busy="true" size="6" />
+            <Circle aria-busy="true" size="6" />
+            <Circle aria-busy="true" size="6" />
+          </div>
+        </div>
         <div
           aria-busy="true"
           className={css({
@@ -24,7 +42,14 @@ export function OverviewPreview() {
             here.
           </p>
         </div>
-        <Tag shape="pill">Skeleton</Tag>
+        <Tag
+          className={css({
+            alignSelf: 'center',
+          })}
+          shape="pill"
+        >
+          Skeleton
+        </Tag>
       </div>
     </div>
   )
