@@ -196,4 +196,18 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
       _focus: tooltipStyles,
     },
   },
+
+  ':is(div,main,section,header,footer,nav,a,span,button,li,p)': {
+    _loading: {
+      bgColor: 'page.border.200',
+      color: 'transparent',
+      userSelect: 'none',
+      _motionSafe: {
+        animation: 'pulse 1.5s infinite',
+      },
+      '& > *': {
+        visibility: 'hidden',
+      },
+    },
+  },
 })
