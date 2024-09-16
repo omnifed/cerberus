@@ -34,7 +34,7 @@ export function OutlinedIconButtonPreview() {
 
 export function TextIconButtonPreview() {
   return (
-    <IconButton ariaLabel="Like something" usage="text">
+    <IconButton ariaLabel="Like something" usage="ghost">
       <ThumbsUp size={24} />
     </IconButton>
   )

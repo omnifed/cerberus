@@ -40,6 +40,7 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   variants: {
     palette: buttonPalettes,
     usage: {
+      ghost: textUsage,
       text: textUsage,
       filled: filledUsage,
       outlined: outlinedUsage,
