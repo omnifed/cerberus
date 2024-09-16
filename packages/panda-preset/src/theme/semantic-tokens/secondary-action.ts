@@ -32,6 +32,7 @@ export interface SecondaryActionTokens {
       readonly initial: SemanticToken
       readonly 100: SemanticToken
       readonly 200: SemanticToken
+      readonly static: SemanticToken
     }
   }
 }
@@ -383,6 +384,30 @@ export const secondaryActionTokens: SecondaryActionTokens = {
             _darkMode: deepGetByPaths(
               colors,
               rawTokens.semanticColors.dark.text[SECONDARY_ACTION]['200']
+                .$value,
+            ).$value,
+          },
+        },
+      },
+      static: {
+        description:
+          semanticColors.text[SECONDARY_ACTION].static.$description ||
+          'A static text color for an action element.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text[SECONDARY_ACTION].static
+                .$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text[SECONDARY_ACTION].static
+                .$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text[SECONDARY_ACTION].static
                 .$value,
             ).$value,
           },

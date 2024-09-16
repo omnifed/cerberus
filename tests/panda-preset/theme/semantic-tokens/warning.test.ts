@@ -251,4 +251,20 @@ describe('warning', () => {
       ),
     ).toEqual('#302A05')
   })
+
+  test('should have a text.static property', () => {
+    expect(
+      formatToken(warningTokens.warning.text.static.value._cerberusTheme.base),
+    ).toEqual('#917D10')
+    expect(
+      formatToken(
+        warningTokens.warning.text.static.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#917D10')
+    expect(
+      formatToken(
+        warningTokens.warning.text.static.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#917D10')
+  })
 })

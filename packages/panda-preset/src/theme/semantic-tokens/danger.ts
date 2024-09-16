@@ -344,6 +344,27 @@ export const dangerTokens: DangerTokens = {
           },
         },
       },
+      static: {
+        description:
+          semanticColors.text[DANGER].static.$description ||
+          'The text color of danger elements when you need to display a light mode option within the dark mode.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.danger.static.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.danger.static.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.danger.static.$value,
+            ).$value,
+          },
+        },
+      },
     },
   },
 }

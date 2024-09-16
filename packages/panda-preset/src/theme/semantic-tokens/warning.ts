@@ -344,6 +344,27 @@ export const warningTokens: WarningTokens = {
           },
         },
       },
+      static: {
+        description:
+          semanticColors.text[WARNING].static.$description ||
+          'The static version of the default text color of warning elements.',
+        value: {
+          _cerberusTheme: {
+            base: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning.static.$value,
+            ).$value,
+            _lightMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.light.text.warning.static.$value,
+            ).$value,
+            _darkMode: deepGetByPaths(
+              colors,
+              rawTokens.semanticColors.dark.text.warning.static.$value,
+            ).$value,
+          },
+        },
+      },
     },
   },
 }

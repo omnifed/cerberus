@@ -227,4 +227,20 @@ describe('success', () => {
       ),
     ).toEqual('#E8F8ED')
   })
+
+  test('should have a text.static property', () => {
+    expect(
+      formatToken(successTokens.success.text.static.value._cerberusTheme.base),
+    ).toEqual('#0E8E3B')
+    expect(
+      formatToken(
+        successTokens.success.text.static.value._cerberusTheme._darkMode,
+      ),
+    ).toEqual('#0E8E3B')
+    expect(
+      formatToken(
+        successTokens.success.text.static.value._cerberusTheme._lightMode,
+      ),
+    ).toEqual('#0E8E3B')
+  })
 })

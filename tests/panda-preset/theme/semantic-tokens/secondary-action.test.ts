@@ -183,10 +183,10 @@ describe('secondaryActionTokens', () => {
   test('should have a action.text.100 key', () => {
     expect(token.text['100']).toBeDefined()
     expect(formatToken(token.text['100'].value._cerberusTheme.base)).toBe(
-      '#1F5B5A',
+      '#3FB6B4',
     )
     expect(formatToken(token.text['100'].value._cerberusTheme._darkMode)).toBe(
-      '#1F5B5A',
+      '#3FB6B4',
     )
     expect(formatToken(token.text['100'].value._cerberusTheme._lightMode)).toBe(
       '#102D2D',
@@ -203,6 +203,19 @@ describe('secondaryActionTokens', () => {
     )
     expect(formatToken(token.text['200'].value._cerberusTheme._lightMode)).toBe(
       '#1F5B5A',
+    )
+  })
+
+  test('should have a action.text.static key', () => {
+    expect(token.text.static).toBeDefined()
+    expect(formatToken(token.text.static.value._cerberusTheme.base)).toBe(
+      '#3FB6B4',
+    )
+    expect(formatToken(token.text.static.value._cerberusTheme._darkMode)).toBe(
+      '#3FB6B4',
+    )
+    expect(formatToken(token.text.static.value._cerberusTheme._lightMode)).toBe(
+      '#3FB6B4',
     )
   })
 })
