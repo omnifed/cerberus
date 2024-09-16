@@ -1,0 +1,39 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import {
+  OverviewPreview,
+} from '@/app/react/loading-states/components/loading-preview'
+
+## Usage
+
+<OverviewList intro="Execution depends on context:" rules={[
+  'Skeletons show when a page is initially loading',
+  'Spinners show when a request is being processed in result of a user action',
+  'Try to use SSR for initial page loading and data-fetching on the client for user actions.',
+]} />
+
+<CodePreview preview={<OverviewPreview />} />
+
+
+## Skeletons
+
+Skeleton's are used when an application is not utilizing the benefits of initial server-side rendering to load a page.
+
+<WhenToUseAdmonition description="When a user navigates to a new page and app is still pending requests from client." />
+
+<WhenNotToUseAdmonition description="Do not use Skeletons as responses to actions. Instead use a Spinner." />
+
+## Spinners
+
+Spinners are used when a user action triggers a request to the server by using an action.
+
+<WhenToUseAdmonition description="When a user action triggers a request to the server." />
+
+<WhenNotToUseAdmonition description="Do not use Spinners as responses to page loads. Instead use a Skeleton." />

@@ -1,5 +1,6 @@
 import Forms from './feature-art/forms'
 import Menus from './feature-art/menu'
+import Misc from './feature-art/misc'
 import TouchTarget from './feature-art/touch-target'
 import Utilities from './feature-art/utilities'
 
@@ -24,6 +25,6 @@ export function MatchFeatureImg(props: MatchFeatureImgProps) {
       return <Utilities />
 
     default:
-      return null
+      return <Misc />
   }
 }
