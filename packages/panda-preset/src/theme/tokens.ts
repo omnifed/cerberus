@@ -1,19 +1,15 @@
 export const fonts = {
   display: {
     description: 'Primary font reserved for display headings',
-    value: 'var(--font-nurl)',
+    value: 'var(--font-poppins)',
   },
   sans: {
     description: 'Primary font used for body and headings',
-    value: 'var(--font-nurl)',
+    value: 'var(--font-poppins)',
   },
   mono: {
     description: 'Code font used for any code related scenarios',
-    value: 'var(--font-nurl-mono)',
-  },
-  monoStrong: {
-    description: 'Code font used for any code related scenarios',
-    value: 'var(--font-nurl-mono-strong)',
+    value: 'var(--font-recursive)',
   },
 }
 
