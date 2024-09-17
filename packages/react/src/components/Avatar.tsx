@@ -15,22 +15,22 @@ import { Show } from './Show'
 
 export type AvatarImageProps = HtmlHTMLAttributes<HTMLImageElement> & {
   ariaLabel: string
-  as?: undefined
+  as?: never
   src: string
-  width: number
-  height: number
+  width?: number
+  height?: number
+}
+export type AvatarAsProps = {
+  as: ReactNode
+  ariaLabel?: never
+  src?: never
+  width?: never
+  height?: never
 }
 
 export type AvatarProps = (HtmlHTMLAttributes<HTMLDivElement> &
   AvatarVariantProps) &
-  (
-    | AvatarImageProps
-    | {
-        as?: ReactNode
-        ariaLabel: string
-        src?: string
-      }
-  )
+  (AvatarImageProps | AvatarAsProps)
 
 /**
  * The Avatar component is used to represent a user or entity. It will show an image if src provided, otherwise it will show the ariaLabel of the ariaLabel. If the ariaLabel is empty, it will show a `defineIcons().avatar` icon.
@@ -44,11 +44,13 @@ export type AvatarProps = (HtmlHTMLAttributes<HTMLDivElement> &
  * ```
  */
 export function Avatar(props: AvatarProps) {
-  const { ariaLabel, as, gradient, size, src, ...nativeProps } = props
-  const initials = ariaLabel
+  const { ariaLabel, as, gradient, size, src, width, height, ...nativeProps } =
+    props
+  const initials = (ariaLabel || '')
     .split(' ')
     .map((word) => word[0])
     .join('')
+    .slice(0, 2)
 
   return (
     <div
@@ -60,7 +62,7 @@ export function Avatar(props: AvatarProps) {
       )}
     >
       <Show
-        when={Boolean(src)}
+        when={Boolean(src) || Boolean(as)}
         fallback={
           <Show
             when={Boolean(initials)}
@@ -84,7 +86,11 @@ export function Avatar(props: AvatarProps) {
                 objectFit: 'cover',
                 w: 'full',
               })}
+              decoding="async"
+              loading="lazy"
               src={src}
+              height={height}
+              width={width}
             />
           }
         >
