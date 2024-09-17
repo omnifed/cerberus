@@ -24,7 +24,7 @@ export function LivePlaygroundWithCode() {
   return (
     <CodeBuilder
       api={api}
-      code={`import { ProgressBar, type ProgressBarProps } from '@cerberus-design/react'
+      code={`import { ProgressBar, type ProgressBarProps } from '@cerberus/react'
 
 export function MyProgressBar(props: ProgressBarProps) {
   return (

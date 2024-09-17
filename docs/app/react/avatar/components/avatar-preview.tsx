@@ -1,26 +1,5 @@
-import { cx } from '@cerberus/styled-system/css'
-import { circle, hstack } from '@cerberus/styled-system/patterns'
-import {
-  avatar,
-  type AvatarVariantProps,
-} from '@cerberus/styled-system/recipes'
-import type { HTMLAttributes } from 'react'
-
-type AvatarProps = HTMLAttributes<HTMLImageElement> &
-  AvatarVariantProps & {
-    ariaLabel: string
-  }
-
-function Avatar(props: AvatarProps) {
-  const { gradient, size } = props
-  const initials = props.ariaLabel
-    .split(' ')
-    .map((word) => word[0])
-    .join('')
-  return (
-    <div className={cx(avatar({ gradient, size }), circle())}>{initials}</div>
-  )
-}
+import { Avatar } from '@cerberus-design/react'
+import { hstack } from '@cerberus/styled-system/patterns'
 
 export function AvatarPreview() {
   return (

@@ -25,7 +25,7 @@ export function LivePlaygroundWithCode() {
   return (
     <CodeBuilder
       api={api}
-      code={`import { Button, type ButtonProps } from '@cerberus-design/react'
+      code={`import { Button, type ButtonProps } from '@cerberus/react'
 
 export function MyButton(props: ButtonProps) {
   return (

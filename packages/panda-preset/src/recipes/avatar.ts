@@ -22,6 +22,7 @@ export const avatar: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   // combine with the circle pattern
   base: {
     fontFamily: 'mono',
+    overflow: 'hidden',
     textTransform: 'uppercase',
   },
 
