@@ -22,7 +22,7 @@ import {
 } from '@/app/react/tags/components/closable-tag-preview'
 
 ```ts
-import { Tag } from '@cerberus-design/react'
+import { Tag } from '@cerberus/react'
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ You can mix and match all of the examples to create the tag style of your choosi
 
 <CodePreview preview={<BasicTagPreview />}>
 ```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
+import { Tag } from '@cerberus/react'
 
 function BasicTagPreview() {
   return <Tag>Filled</Tag>
@@ -45,7 +45,7 @@ function BasicTagPreview() {
 
 <CodePreview preview={<BasicTagPreview />}>
 ```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
+import { Tag } from '@cerberus/react'
 
 function BasicTagPreview() {
   return <Tag usage="filled">Filled</Tag>
@@ -57,7 +57,7 @@ function BasicTagPreview() {
 
 <CodePreview preview={<OutlineTagPreview />}>
 ```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
+import { Tag } from '@cerberus/react'
 
 function OutlinedTagPreview() {
   return (
@@ -73,7 +73,7 @@ function OutlinedTagPreview() {
 
 <CodePreview preview={<PillTagPreview />}>
 ```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
+import { Tag } from '@cerberus/react'
 
 function PillTagPreview() {
   return (
@@ -90,7 +90,7 @@ function PillTagPreview() {
 
 <CodePreview preview={<SquareTagPreview />}>
 ```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
+import { Tag } from '@cerberus/react'
 
 function SquareTagPreview() {
   return <Tag shape="square">Square</Tag>
@@ -102,8 +102,8 @@ function SquareTagPreview() {
 
 <CodePreview preview={<WithIconTagPreview />}>
 ```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
-import { Information } from '@cerberus-design/icons'
+import { Tag } from '@cerberus/react'
+import { Information } from '@cerberus/icons'
 
 function WithIconTagPreview() {
   return (
@@ -124,7 +124,7 @@ To use a closable tag, just pass an `onClick` prop to the `Tag` component.
 ```tsx title="tag.tsx" {11}
 'use client'
 
-import { Tag } from '@cerberus-design/react'
+import { Tag } from '@cerberus/react'
 import { useCallback } from 'react'
 
 function ClosableTagPreview() {
@@ -141,7 +141,7 @@ function ClosableTagPreview() {
 
 <CodePreview preview={<GradientTagPreview />}>
 ```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
+import { Tag } from '@cerberus/react'
 import { hstack } from '@cerberus/styled-system'
 
 function GradientTagPreview() {
@@ -177,7 +177,7 @@ You can customize the tag by utilizing the `cx` function.
 
 <CodePreview preview={<CustomTagPreview />}>
 ```tsx title="tag.tsx"
-import { Tag } from '@cerberus-design/react'
+import { Tag } from '@cerberus/react'
 import { css } from '@cerberus/styled-system/css'
 
 function CustomTagPreview() {

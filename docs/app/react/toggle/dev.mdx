@@ -15,14 +15,14 @@ import {
 } from '@/app/react/toggle/components/toggle-preview'
 
 ```ts
-import { Field, Toggle, useToggle } from '@cerberus-design/react'
+import { Field, Toggle, useToggle } from '@cerberus/react'
 ```
 
 ## Usage
 
 <CodePreview preview={<DefaultTogglePreview />}>
 ```tsx title="valid-radio.tsx"
-import { Field, Toggle, useToggle } from '@cerberus-design/react'
+import { Field, Toggle, useToggle } from '@cerberus/react'
 
 function DefaultTogglePreview() {
   const { checked, handleChange } = useToggle({ checked: 'default' })
@@ -44,7 +44,7 @@ function DefaultTogglePreview() {
 
 <CodePreview preview={<DisabledTogglePreview />}>
 ```tsx title="search-input.tsx" {6}
-import { Field, Toggle, useToggle } from '@cerberus-design/react'
+import { Field, Toggle, useToggle } from '@cerberus/react'
 
 function function DisabledTogglePreview() {
   const { checked, handleChange } = useToggle()
@@ -66,7 +66,7 @@ function function DisabledTogglePreview() {
 
 <CodePreview preview={<WithLabelTogglePreview />}>
 ```tsx title="search-input.tsx" {15}
-import { Field, Label, Toggle, useToggle } from '@cerberus-design/react'
+import { Field, Label, Toggle, useToggle } from '@cerberus/react'
 
 function WithLabelTogglePreview() {
   const { checked, handleChange } = useToggle()
@@ -100,7 +100,7 @@ import {
   Label,
   Toggle,
   useToggle
-} from '@cerberus-design/react'
+} from '@cerberus/react'
 
 function WithMessageTogglePreview() {
   const { checked, handleChange } = useToggle()
@@ -127,7 +127,7 @@ function WithMessageTogglePreview() {
 
 <CodePreview preview={<OverviewToggleSizes />}>
 ```tsx title="radio-sizes.tsx" {14,20,26}
-import { Field, Toggle } from '@cerberus-design/react'
+import { Field, Toggle } from '@cerberus/react'
 import { hstack } from '@cerberus/styled-system/patterns'
 
 function OverviewToggleSizes() {

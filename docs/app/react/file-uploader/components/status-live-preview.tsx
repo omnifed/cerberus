@@ -34,7 +34,7 @@ import {
   FileStatus,
   processStatus,
   type FileStatusProps,
-} from '@cerberus-design/react'
+} from '@cerberus/react'
 import { useCallback, type MouseEvent } from 'react'
 
 export function MyFileStatus(props: FileStatusProps) {

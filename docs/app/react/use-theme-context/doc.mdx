@@ -20,7 +20,7 @@ The `useThemeContext` hook allows you to access or modify the theme and mode pro
 To use the `useThemeContext` hook, you need to wrap the component using the hook with the Cerberus `ThemeProvider` component.
 
 ```tsx title="nav.tsx" {4}
-import { ThemeProvider, useThemeContext } from '@cerberus-design/react'
+import { ThemeProvider, useThemeContext } from '@cerberus/react'
 
 function Nav() {
   const { theme, mode, udpateTheme, updateMode } = useThemeContext()
@@ -47,7 +47,7 @@ function Nav() {
 ```
 
 ```tsx title="header.tsx" {4}
-import { ThemeProvider, useThemeContext } from '@cerberus-design/react'
+import { ThemeProvider, useThemeContext } from '@cerberus/react'
 
 function Header() {
   const { mode } = useThemeContext()
@@ -61,7 +61,7 @@ function Header() {
 ```
 
 ```tsx title="layout.tsx" {7}
-import { ThemeProvider } from '@cerberus-design/react'
+import { ThemeProvider } from '@cerberus/react'
 import Header from './header'
 import Nav from './nav'
 

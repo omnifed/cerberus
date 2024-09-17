@@ -23,7 +23,7 @@ export function LivePlaygroundWithCode() {
   return (
     <CodeBuilder
       api={api}
-      code={`import { FileUploader, type FileUploaderProps } from '@cerberus-design/react'
+      code={`import { FileUploader, type FileUploaderProps } from '@cerberus/react'
 
 export function MyFileUploader(props: FileUploaderProps) {
   return (

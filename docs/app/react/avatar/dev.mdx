@@ -1,31 +1,72 @@
 ---
 npm: '@cerberus-design/react'
-source: 'components/Button.tsx'
-recipe: 'button.ts'
+source: 'components/Avatar.tsx'
+recipe: 'avatar.ts'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
+import { NoteAdmonition } from '@/app/components/Admonition'
 import {
   AvatarPreview,
+  NextAvatar,
+  CustomAvatar,
 } from '@/app/react/avatar/components/avatar-preview'
+import {
+  LivePlaygroundWithCode
+} from '@/app/react/avatar/components/live-playground'
 
 ```ts
-import { Avatar } from '@cerberus-design/react'
+import { Avatar } from '@cerberus/react'
 ```
 
 ## Usage
 
 You can mix and match all of the examples to create the button style of your choosing.
 
-<CodePreview preview={<AvatarPreview />} />
+<LivePlaygroundWithCode />
+
+## As Prop
+
+You can use the `as` prop to render the `Avatar` component as a different element.
+
+<NoteAdmonition description="This is only recommended if you are replacing it with another image alternative (i.e., NextJS Image). If you want to make the avatar a link - simply wrap it in a link tag." />
+
+<CodePreview preview={<NextAvatar />}>
+```tsx title="next-avatar.tsx"
+import { Avatar } from '@cerberus/react'
+import Image from 'next/image'
+
+function NextAvatar() {
+  return (
+    <Avatar
+      as={
+        <Image
+          alt="Protector Cerberus"
+          className={css({
+            h: 'full',
+            objectFit: 'cover',
+            w: 'full',
+          })}
+          src="https://cerberus.digitalu.design/logo.svg"
+          height={100}
+          width={100}
+        />
+      }
+      ariaLabel="With Next Image"
+      size="lg"
+    />
+  )
+}
+```
+</CodePreview>
 
 ## Customization
 
 You can customize the avatar by utilizing the `cx` function.
 
-<CodePreview preview={<AvatarPreview />}>
+<CodePreview preview={<CustomAvatar />}>
 ```tsx title="avatar.tsx"
-import { Avatar } from '@cerberus-design/react'
+import { Avatar } from '@cerberus/react'
 import { css } from '@cerberus/styled-system/css'
 
 function CustomAvatar() {
@@ -49,9 +90,24 @@ function CustomAvatar() {
 ## API
 
 ```ts showLineNumbers=false
-export interface AvatarProps extends ImageHTMLAttributes<HTMLImageElement> {
+export type AvatarImageProps = HtmlHTMLAttributes<HTMLImageElement> & {
   ariaLabel: string
+  as?: never
+  src: string
+  width?: number
+  height?: number
 }
+export type AvatarAsProps = {
+  as: ReactNode
+  ariaLabel?: never
+  src?: never
+  width?: never
+  height?: never
+}
+
+export type AvatarProps = (HtmlHTMLAttributes<HTMLDivElement> &
+  AvatarVariantProps) &
+  (AvatarImageProps | AvatarAsProps)
 
 define function Avatar(props: AvatarProps): ReactNode
 ````
@@ -63,3 +119,7 @@ The `Avatar` component accepts the following props:
 | Name     | Default | Description                            |
 | -------- | ------- | -------------------------------------- |
 | ariaLabel     |    | The name of the avatar entity. |
+| src     |    | The source of the image. |
+| as    |    | A differnet element to render as the avatar. |
+| height    |    | The height of the avatar. |
+| width    |    | The width of the avatar. |

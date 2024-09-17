@@ -30,7 +30,7 @@ export function LivePlaygroundWithCode() {
   return (
     <CodeBuilder
       api={api}
-      code={`import { Field, Label, Checkbox, type CheckboxProps } from '@cerberus-design/react'
+      code={`import { Field, Label, Checkbox, type CheckboxProps } from '@cerberus/react'
 import { hstack } from '@cerberus/styled-system/patterns'
 
 export function MyCheckbox(props: CheckboxProps) {
