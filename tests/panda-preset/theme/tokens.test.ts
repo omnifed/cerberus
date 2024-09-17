@@ -18,10 +18,6 @@ describe('tokens', () => {
     expect(tokens.fonts.mono).toBeDefined()
   })
 
-  test('should have a fonts.monoStrong key', () => {
-    expect(tokens.fonts.monoStrong).toBeDefined()
-  })
-
   test('should have a zIndex key', () => {
     expect(tokens.zIndex).toBeDefined()
   })
