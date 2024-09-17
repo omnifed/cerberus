@@ -90,9 +90,24 @@ function CustomAvatar() {
 ## API
 
 ```ts showLineNumbers=false
-export interface AvatarProps extends ImageHTMLAttributes<HTMLImageElement> {
+export type AvatarImageProps = HtmlHTMLAttributes<HTMLImageElement> & {
   ariaLabel: string
+  as?: never
+  src: string
+  width?: number
+  height?: number
 }
+export type AvatarAsProps = {
+  as: ReactNode
+  ariaLabel?: never
+  src?: never
+  width?: never
+  height?: never
+}
+
+export type AvatarProps = (HtmlHTMLAttributes<HTMLDivElement> &
+  AvatarVariantProps) &
+  (AvatarImageProps | AvatarAsProps)
 
 define function Avatar(props: AvatarProps): ReactNode
 ````
