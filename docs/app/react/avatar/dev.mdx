@@ -6,13 +6,8 @@ recipe: 'button.ts'
 
 import CodePreview from '@/app/components/CodePreview'
 import {
-  // DEPRECATED
-  WithIconButtonPreview,
-  CustomButtonPreview,
-} from '@/app/react/button/components/button-preview'
-import {
-  LivePlaygroundWithCode,
-} from '@/app/react/button/components/live-playground'
+  AvatarPreview,
+} from '@/app/react/avatar/components/avatar-preview'
 
 ```ts
 import { Avatar } from '@cerberus-design/react'
@@ -22,31 +17,13 @@ import { Avatar } from '@cerberus-design/react'
 
 You can mix and match all of the examples to create the button style of your choosing.
 
-<LivePlaygroundWithCode />
-
-### With Icon
-
-<CodePreview preview={<WithIconButtonPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus-design/react'
-import { ArrowDownRight } from '@cerberus-design/icons'
-
-function WithIconButton() {
-  return (
-    <Button>
-      <ArrowDownRight />
-      With icon
-    </Button>
-  )
-}
-```
-</CodePreview>
+<CodePreview preview={<AvatarPreview />} />
 
 ## Customization
 
 You can customize the avatar by utilizing the `cx` function.
 
-<CodePreview preview={<CustomButtonPreview />}>
+<CodePreview preview={<AvatarPreview />}>
 ```tsx title="avatar.tsx"
 import { Avatar } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'

@@ -3,20 +3,29 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
+import { gradientValues } from '@cerberus-design/panda-preset'
 import { Button } from '@cerberus-design/react'
 
 const api = {
-  palette: builder.Enum('palette', ['action', 'secondaryAction', 'danger']),
-  usage: builder.Enum('usage', ['filled', 'outlined', 'ghost']),
-  shape: builder.Enum('shape', ['sharp', 'rounded']),
-  text: builder.Text('name', 'Button'),
-  disabled: builder.Boolean('disabled', false),
+  gradient: builder.Enum('gradient', gradientValues),
+  size: builder.Enum('size', [
+    'xs',
+    'sm',
+    'md',
+    'lg',
+    'xl',
+    '2xl',
+    '3xl',
+    '4xl',
+  ]),
+  text: builder.Text('name', 'Protector Cerberus'),
+  src: builder.Text('src', 'https://cerberus.digitalu.design/logo.svg'),
 }
 
 export function LivePlayground() {
   return (
     <CodeBuilder api={api}>
-      <ButtonPreview />
+      <AvatarPreview />
     </CodeBuilder>
   )
 }
@@ -40,14 +49,14 @@ export function MyButton(props: ButtonProps) {
   )
 }`}
     >
-      <ButtonPreview />
+      <AvatarPreview />
     </CodeBuilder>
   )
 }
 
-export function ButtonPreview() {
+export function AvatarPreview() {
   const { selectedProps } = useCodeBuilder()
-  switch (selectedProps.palette) {
+  switch (selectedProps.size) {
     case 'secondaryAction':
       return (
         <Button palette="secondaryAction" {...selectedProps}>

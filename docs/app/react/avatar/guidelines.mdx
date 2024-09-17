@@ -8,8 +8,8 @@ import {
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
 import {
-  BasicButtonPreview
-} from '@/app/react/button/components/button-preview'
+  AvatarPreview,
+} from '@/app/react/avatar/components/avatar-preview'
 
 ## Usage
 
@@ -20,20 +20,15 @@ import {
   'Cards'
 ]} />
 
-<WhenNotToUseAdmonition description="When you need visually communicate a user or entity." />
-
+<CodePreview preview={<AvatarPreview />} />
 
 ## Common Usage
 
 You can use Avatars in most places where you need to represent a user or entity. They can be used with images, names, or icons.
 
-<CodePreview preview={<BasicButtonPreview />} />
-
 ## Red Avatars
 
 Red avatars are used to represent an invalid state. They are used to communicate that something is wrong or that an action is destructive.
-
-<CodePreview preview={<BasicButtonPreview />} />
 
 <WhenToUseAdmonition description="When you need to communicate an invalid state related to an avatar." />
 

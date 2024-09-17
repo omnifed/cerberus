@@ -106,7 +106,7 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
   html: {
     backgroundColor: 'var(--cerberus-colors-page-surface-initial)',
     color: 'var(--cerberus-colors-page-text-initial)',
-    fontFamily: 'var(--cerberus-fonts-sans)',
+    fontFamily: 'sans',
     fontFeatureSettings: "'tnum' on, 'lnum' on",
     fontSize: '1em',
     fontWeight: 400,

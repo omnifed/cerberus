@@ -65,7 +65,7 @@ pnpm run prepare
 To connect the Cerberus theme, you need to add the required `data` attributes to your `html` tag.
 
 ```tsx title="app/layout.tsx" {3}
-function Layout({ children }) {
+function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="cerberus" data-color-mode="light">
       <body>{children}</body>
@@ -81,13 +81,37 @@ If you would like to use the Brand font associated with Cerberus, we recommend P
 NextJS usage:
 
 ```ts title="app/layout.tsx"
-import { Poppins } from 'next/font/google'
+import { Poppins, Recursive } from 'next/font/google'
 
 const poppins = Poppins({
   display: 'swap',
   subsets: ['latin'],
   weight: ['400', '600', '700'],
+  variable: '--font-poppins',
 })
+const recursive = Recursive({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-recursive',
+})
+
+interface RootProps {}
+
+export default function RootLayout(props: PropsWithChildren<RootProps>) {
+  return (
+    <html
+      className={cx(poppins.variable, recursive.variable)}
+      lang="en"
+      data-theme="cerberus"
+      data-color-mode="light"
+    >
+      <body>
+        {props.children}
+      </body>
+    </html>
+  )
+}
 ```
 
 ### Using Cerberus React (Not JSR compatible yet)

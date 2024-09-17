@@ -32,17 +32,18 @@ interface RootProps {}
 
 export default function RootLayout(props: PropsWithChildren<RootProps>) {
   return (
-    <html lang="en" data-theme="cerberus" data-color-mode="light">
+    <html
+      className={cx(poppins.variable, recursive.variable)}
+      lang="en"
+      data-theme="cerberus"
+      data-color-mode="light"
+    >
       <Analytics />
       <body
-        className={cx(
-          poppins.className,
-          recursive.className,
-          css({
-            minW: '18.75rem',
-            h: 'full',
-          }),
-        )}
+        className={css({
+          minW: '18.75rem',
+          h: 'full',
+        })}
       >
         <ThemeProvider>
           <Nav />
