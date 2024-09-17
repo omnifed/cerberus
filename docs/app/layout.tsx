@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
+import { Poppins, Recursive } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import type { PropsWithChildren } from 'react'
 import { ThemeProvider } from '@cerberus-design/react'
@@ -13,6 +13,13 @@ const poppins = Poppins({
   display: 'swap',
   subsets: ['latin'],
   weight: ['400', '600', '700'],
+  variable: '--font-poppins',
+})
+const recursive = Recursive({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-recursive',
 })
 
 export const metadata: Metadata = {
@@ -30,6 +37,7 @@ export default function RootLayout(props: PropsWithChildren<RootProps>) {
       <body
         className={cx(
           poppins.className,
+          recursive.className,
           css({
             minW: '18.75rem',
             h: 'full',

@@ -1,0 +1,88 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/Button.tsx'
+recipe: 'button.ts'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  // DEPRECATED
+  WithIconButtonPreview,
+  CustomButtonPreview,
+} from '@/app/react/button/components/button-preview'
+import {
+  LivePlaygroundWithCode,
+} from '@/app/react/button/components/live-playground'
+
+```ts
+import { Avatar } from '@cerberus-design/react'
+```
+
+## Usage
+
+You can mix and match all of the examples to create the button style of your choosing.
+
+<LivePlaygroundWithCode />
+
+### With Icon
+
+<CodePreview preview={<WithIconButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus-design/react'
+import { ArrowDownRight } from '@cerberus-design/icons'
+
+function WithIconButton() {
+  return (
+    <Button>
+      <ArrowDownRight />
+      With icon
+    </Button>
+  )
+}
+```
+</CodePreview>
+
+## Customization
+
+You can customize the avatar by utilizing the `cx` function.
+
+<CodePreview preview={<CustomButtonPreview />}>
+```tsx title="avatar.tsx"
+import { Avatar } from '@cerberus-design/react'
+import { css } from '@cerberus/styled-system/css'
+
+function CustomAvatar() {
+  return (
+    <Avatar
+      ariaLabel="Random image"
+      className={css({
+        bgColor: 'yellow.800',
+        color: 'black',
+        _hover: {
+          bgColor: 'yellow.500',
+        },
+      })}
+      src="https://source.unsplash.com/random/100x100"
+    />
+  )
+}
+```
+</CodePreview>
+
+## API
+
+```ts showLineNumbers=false
+export interface AvatarProps extends ImageHTMLAttributes<HTMLImageElement> {
+  ariaLabel: string
+}
+
+define function Avatar(props: AvatarProps): ReactNode
+````
+
+### Props
+
+The `Avatar` component accepts the following props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| ariaLabel     |    | The name of the avatar entity. |
