@@ -225,7 +225,7 @@
       },
       "static": {
         "$type": "color",
-        "$value": "colors.danger.70",
+        "$value": "colors.danger.80",
         "$description": "For use when a text color will not change between modes",
         "$extensions": {
           "com.figma": {
