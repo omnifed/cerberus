@@ -1,0 +1,29 @@
+---
+heading: 'Avatar'
+description: 'Avatars are used to represent users or entities in a system.'
+a11y: 'misc'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  AvatarPreview,
+} from '@/app/react/avatar/components/avatar-preview'
+
+<OverviewList rules={[
+  'Can use an image, name, or icon to represent a user or entity',
+  'Can use any cerberus gradient color',
+  'Images should be square and are the highest priority',
+  'Names should be used when images and are not available',
+  'Icons should be used when images or nanes are not available',
+]} />
+
+## Example
+
+<CodePreview preview={<AvatarPreview />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |

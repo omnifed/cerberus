@@ -36,6 +36,12 @@
     "type": "heading"
   },
   {
+    "label": "Avatar",
+    "route": "/react/avatar",
+    "tag": "next",
+    "type": "route"
+  },
+  {
     "label": "Notification",
     "route": "/react/notification",
     "tag": "new",

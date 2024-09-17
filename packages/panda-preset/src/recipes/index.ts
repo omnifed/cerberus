@@ -1,3 +1,4 @@
+import { avatar } from './avatar'
 import { button } from './button'
 import { fieldMessage } from './fieldMessage'
 import { iconButton } from './iconButton'
@@ -28,6 +29,7 @@ import { toggle } from './slots/toggle'
  */
 
 export const recipes = {
+  avatar,
   button,
   fieldMessage,
   iconButton,

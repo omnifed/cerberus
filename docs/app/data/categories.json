@@ -7,7 +7,7 @@
   "communication": {
     "name": "Communication",
     "description": "Communication components provide useful information.",
-    "items": ["Notification", "Progress Bar", "Tag", "Tooltip"]
+    "items": ["Avatar", "Notification", "Progress Bar", "Tag", "Tooltip"]
   },
   "containment": {
     "name": "Containment",
