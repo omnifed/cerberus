@@ -19,9 +19,22 @@ import { Field, Label, Checkbox } from '@cerberus/react'
 
 <LivePlaygroundWithCode />
 
-## Customizing
+## Style Customizing
 
 To customize the Checkbox we recommend extending the slot recipe provided by the `@cerberus/panda-preset` package.
+
+## Default Icon Customization
+
+You can customize the default icon that shows by adding the `avatar` property to the `defineIcons` function at the root level of your app.
+
+```tsx title="app/layout.tsx"
+import { defineIcons } from '@cerberus/react'
+import { Check } from 'lucide-react'
+
+defineIcons({
+  checkbox: Check,
+})
+```
 
 ## API
 

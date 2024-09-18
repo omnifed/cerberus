@@ -31,4 +31,18 @@ describe('Avatar', () => {
     render(<Avatar ariaLabel="Protector Cerberus" src="" />)
     expect(screen.getByText('PC')).toBeTruthy()
   })
+
+  test('should allow a custom element', () => {
+    render(
+      <Avatar as={<div data-testid="custom-element">Custom Element</div>} />,
+    )
+    expect(screen.getByTestId('custom-element')).toBeTruthy()
+  })
+
+  test('should accept a custom icon', () => {
+    render(
+      <Avatar ariaLabel="" icon={<svg data-testid="custom-icon" />} src="" />,
+    )
+    expect(screen.getByTestId('custom-icon')).toBeTruthy()
+  })
 })

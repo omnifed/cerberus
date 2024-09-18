@@ -9,6 +9,7 @@ import {
   InformationFilled,
   Restart,
   TrashCan,
+  UserFilled,
   Warning,
   WarningFilled,
   type CarbonIconType,
@@ -19,6 +20,7 @@ import { CheckmarkIcon, IndeterminateIcon } from './icons/checkbox.icons'
 export type IconType = CarbonIconType | ElementType
 
 export interface DefinedIcons {
+  avatar?: IconType
   checkbox?: IconType
   close?: IconType
   confirmModal?: IconType
@@ -38,6 +40,7 @@ export interface DefinedIcons {
 }
 
 export const defaultIcons: DefinedIcons = {
+  avatar: UserFilled,
   checkbox: CheckmarkIcon,
   close: CloseFilled,
   confirmModal: Information,
