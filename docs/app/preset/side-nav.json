@@ -28,7 +28,7 @@
   {
     "label": "Gradients",
     "route": "/preset/gradients",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {

@@ -21,7 +21,7 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
       w: 'full',
     },
     bar: {
-      cerbGradient: 'purple-100',
+      cerbGradient: 'dark-purple',
       h: 'full',
       left: 0,
       position: 'absolute',
@@ -34,7 +34,7 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
       _motionSafe: {
         transitionProperty: 'background-color,background-image,width',
-        transitionDuration: '150ms',
+        transitionDuration: '250ms',
         transitionTimingFunction: 'ease',
         _indeterminate: {
           animationName: 'rubberBand',
