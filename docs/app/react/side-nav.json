@@ -12,7 +12,7 @@
   {
     "label": "Loading States",
     "route": "/react/loading-states",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -38,19 +38,19 @@
   {
     "label": "Avatar",
     "route": "/react/avatar",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
     "label": "Notification",
     "route": "/react/notification",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
     "label": "Progress Bar",
     "route": "/react/progress-bar",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -90,7 +90,7 @@
   {
     "label": "Table",
     "route": "/react/table",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
@@ -116,13 +116,13 @@
   {
     "label": "Drag & Drop",
     "route": "/react/drag-n-drop",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
     "label": "Checkbox",
     "route": "/react/checkbox",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -134,7 +134,7 @@
   {
     "label": "Select",
     "route": "/react/select",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -156,7 +156,7 @@
   {
     "label": "File Uploader",
     "route": "/react/file-uploader",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
