@@ -4,7 +4,7 @@ import {
   avatar,
   type AvatarVariantProps,
 } from '@cerberus/styled-system/recipes'
-import { UserFilled } from '@cerberus/icons'
+import { $cerberusIcons } from '../config/defineIcons'
 import type { HtmlHTMLAttributes, ReactNode } from 'react'
 import { Show } from './Show'
 
@@ -13,19 +13,21 @@ import { Show } from './Show'
  * @module
  */
 
-export type AvatarImageProps = HtmlHTMLAttributes<HTMLImageElement> & {
-  ariaLabel: string
-  as?: never
-  src: string
-  width?: number
-  height?: number
+export type SharedAvatarProps = {
+  icon?: ReactNode
+  width?: never
+  height?: never
 }
-export type AvatarAsProps = {
+export type AvatarImageProps = HtmlHTMLAttributes<HTMLImageElement> &
+  SharedAvatarProps & {
+    ariaLabel: string
+    as?: never
+    src: string
+  }
+export type AvatarAsProps = SharedAvatarProps & {
   as: ReactNode
   ariaLabel?: never
   src?: never
-  width?: never
-  height?: never
 }
 
 export type AvatarProps = (HtmlHTMLAttributes<HTMLDivElement> &
@@ -44,8 +46,18 @@ export type AvatarProps = (HtmlHTMLAttributes<HTMLDivElement> &
  * ```
  */
 export function Avatar(props: AvatarProps) {
-  const { ariaLabel, as, gradient, size, src, width, height, ...nativeProps } =
-    props
+  const {
+    ariaLabel,
+    as,
+    gradient,
+    size,
+    src,
+    width,
+    height,
+    icon,
+    ...nativeProps
+  } = props
+  const { avatar: AvatarIcon } = $cerberusIcons
   const initials = (ariaLabel || '')
     .split(' ')
     .map((word) => word[0])
@@ -67,12 +79,19 @@ export function Avatar(props: AvatarProps) {
           <Show
             when={Boolean(initials)}
             fallback={
-              <UserFilled
-                size={iconSizeMap[size as keyof typeof iconSizeMap]}
-              />
+              <Show
+                when={Boolean(icon)}
+                fallback={
+                  <AvatarIcon
+                    size={iconSizeMap[size as keyof typeof iconSizeMap]}
+                  />
+                }
+              >
+                {icon}
+              </Show>
             }
           >
-            <>{initials}</>
+            {initials}
           </Show>
         }
       >
