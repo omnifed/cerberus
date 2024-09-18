@@ -34,10 +34,7 @@ describe('Avatar', () => {
 
   test('should allow a custom element', () => {
     render(
-      <Avatar
-        as={<div data-testid="custom-element">Custom Element</div>}
-        ariaLabel="Protector Cerberus"
-      />,
+      <Avatar as={<div data-testid="custom-element">Custom Element</div>} />,
     )
     expect(screen.getByTestId('custom-element')).toBeTruthy()
   })
