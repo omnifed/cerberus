@@ -7,7 +7,7 @@ import { gradientValues } from '@cerberus-design/panda-preset'
 import { Avatar } from '@cerberus-design/react'
 
 const api = {
-  gradient: builder.Enum('gradient', gradientValues),
+  gradient: builder.Enum('gradient', [...gradientValues, 'none']),
   size: builder.Enum('size', [
     'xs',
     'sm',
