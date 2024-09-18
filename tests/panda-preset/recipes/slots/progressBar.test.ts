@@ -15,7 +15,7 @@ describe('progressBar recipe', () => {
       w: 'full',
     })
     expect(progressBar.base?.bar).toMatchObject({
-      cerbGradient: 'purple-100',
+      cerbGradient: 'dark-purple',
       h: 'full',
       left: 0,
       position: 'absolute',
@@ -28,7 +28,7 @@ describe('progressBar recipe', () => {
       },
       _motionSafe: {
         transitionProperty: 'background-color,background-image,width',
-        transitionDuration: '150ms',
+        transitionDuration: '250ms',
         transitionTimingFunction: 'ease',
         _indeterminate: {
           animationName: 'rubberBand',
