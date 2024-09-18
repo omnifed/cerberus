@@ -53,6 +53,7 @@ describe('avatar recipe', () => {
         cerbGradient: 'red',
         color: 'danger.text.static',
       },
+      none: {},
     })
   })
 

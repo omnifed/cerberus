@@ -27,7 +27,10 @@ export const avatar: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   },
 
   variants: {
-    gradient: createGradientVariants(),
+    gradient: {
+      ...createGradientVariants(),
+      none: {},
+    },
     size: {
       xs: {
         fontSize: 'xs',
