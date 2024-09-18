@@ -15,8 +15,8 @@ import { Show } from './Show'
 
 export type SharedAvatarProps = {
   icon?: ReactNode
-  width?: never
-  height?: never
+  width?: number
+  height?: number
 }
 export type AvatarImageProps = HtmlHTMLAttributes<HTMLImageElement> &
   SharedAvatarProps & {

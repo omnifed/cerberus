@@ -1,6 +1,7 @@
 import { Avatar } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
+import { WuTangLogo } from '@/app/components/icons/wu-tang-icon'
 import Image from 'next/image'
 
 export function AvatarPreview() {
@@ -47,7 +48,7 @@ export function NextAvatar() {
 export function CustomAvatar() {
   return (
     <Avatar
-      ariaLabel="Wu-Tang Clan"
+      ariaLabel=""
       className={css({
         bgColor: 'black',
         bgImage: 'none',
@@ -58,6 +59,16 @@ export function CustomAvatar() {
       height={50}
       size="4xl"
       src=""
+      icon={
+        <span
+          className={css({
+            display: 'inline-block',
+            w: '1/3',
+          })}
+        >
+          <WuTangLogo />
+        </span>
+      }
       width={50}
     />
   )

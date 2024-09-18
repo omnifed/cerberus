@@ -21,7 +21,7 @@ import { Avatar } from '@cerberus/react'
 
 ## Usage
 
-You can mix and match all of the examples to create the button style of your choosing.
+<NoteAdmonition description="The avatar uses a smart hierarchy method. It first uses the src if provided. If no source is provided, it falls back to the ariaLabel. If neither are provided, it displays an icon." />
 
 <LivePlaygroundWithCode />
 
@@ -60,7 +60,7 @@ function NextAvatar() {
 ```
 </CodePreview>
 
-## Customization
+## Style Customization
 
 You can customize the avatar by utilizing the `cx` function.
 
@@ -68,24 +68,51 @@ You can customize the avatar by utilizing the `cx` function.
 ```tsx title="avatar.tsx"
 import { Avatar } from '@cerberus/react'
 import { css } from '@cerberus/styled-system/css'
+import { WuTangLogo } from '@/app/components/icons/wu-tang-logo'
 
 function CustomAvatar() {
   return (
     <Avatar
-      ariaLabel="Random image"
+      ariaLabel=""
       className={css({
-        bgColor: 'yellow.800',
-        color: 'black',
-        _hover: {
-          bgColor: 'yellow.500',
-        },
+        bgColor: 'black',
+        bgImage: 'none',
+        border: '6px solid',
+        borderColor: 'yellow',
+        color: 'yellow',
       })}
-      src="https://source.unsplash.com/random/100x100"
+      height={50}
+      size="4xl"
+      src=""
+      icon={
+        <span
+          className={css({
+            display: 'inline-block',
+            w: '1/3',
+          })}
+        >
+          <WuTangLogo />
+        </span>
+      }
+      width={50}
     />
   )
 }
 ```
 </CodePreview>
+
+## Default Icon Customization
+
+You can customize the default icon that shows by adding the `avatar` property to the `defineIcons` function at the root level of your app.
+
+```tsx title="app/layout.tsx"
+import { defineIcons } from '@cerberus/react'
+import { CircleUser } from 'lucide-react'
+
+defineIcons({
+  avatar: CircleUser,
+})
+```
 
 ## API
 
@@ -93,6 +120,7 @@ function CustomAvatar() {
 export type AvatarImageProps = HtmlHTMLAttributes<HTMLImageElement> & {
   ariaLabel: string
   as?: never
+  icon?: ReactNode
   src: string
   width?: number
   height?: number
@@ -100,6 +128,7 @@ export type AvatarImageProps = HtmlHTMLAttributes<HTMLImageElement> & {
 export type AvatarAsProps = {
   as: ReactNode
   ariaLabel?: never
+  icon?: ReactNode
   src?: never
   width?: never
   height?: never
@@ -122,4 +151,5 @@ The `Avatar` component accepts the following props:
 | src     |    | The source of the image. |
 | as    |    | A differnet element to render as the avatar. |
 | height    |    | The height of the avatar. |
+| icon    |    | A custom icon to render as fallback. |
 | width    |    | The width of the avatar. |
