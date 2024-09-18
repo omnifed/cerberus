@@ -257,16 +257,16 @@ describe('dangerTokens', () => {
   test('should have a text.static property', () => {
     expect(
       formatToken(dangerTokens.danger.text.static.value._cerberusTheme.base),
-    ).toEqual('#DA1E28')
+    ).toEqual('#97201B')
     expect(
       formatToken(
         dangerTokens.danger.text.static.value._cerberusTheme._darkMode,
       ),
-    ).toEqual('#DA1E28')
+    ).toEqual('#97201B')
     expect(
       formatToken(
         dangerTokens.danger.text.static.value._cerberusTheme._lightMode,
       ),
-    ).toEqual('#DA1E28')
+    ).toEqual('#97201B')
   })
 })
