@@ -1,4 +1,4 @@
-import categoriesData from '@/app/data/categories.json'
+import categoriesData from '@/app/data/categories.react.json'
 import { type NavList } from '../components/SideNav'
 
 interface Category {

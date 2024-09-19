@@ -1,5 +1,5 @@
-import categoryData from '@/app/data/categories.json'
-import navData from '@/app/react/side-nav.json'
+import categoryData from '@/app/data/categories.react.json'
+import { sideNavData } from '@/app/react/side-nav'
 import { Image as ImageIcon } from '@cerberus-design/icons'
 import { Show } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
@@ -13,7 +13,7 @@ interface CategoryCardProps {
 }
 
 function CategoryCard(props: CategoryCardProps) {
-  const item = navData.find((navItem) => navItem.label === props.item)
+  const item = sideNavData.find((navItem) => navItem.label === props.item)
   return (
     <Show when={item != null}>
       <Link
