@@ -27,22 +27,22 @@ describe('fileStatus recipe', () => {
 
   test('should have a todo status variant', () => {
     expect(fileStatus.variants?.status?.todo?.icon).toMatchObject({
-      cerbGradient: 'purple',
-      color: 'colorPalette.text.inverse',
+      cerbGradient: 'dark-purple',
+      color: 'action.text.initial',
     })
   })
 
   test('should have a processing status variant', () => {
     expect(fileStatus.variants?.status?.processing?.icon).toMatchObject({
-      cerbGradient: 'purple',
-      color: 'colorPalette.text.inverse',
+      cerbGradient: 'dark-purple',
+      color: 'action.text.initial',
     })
   })
 
   test('should have a done status variant', () => {
     expect(fileStatus.variants?.status?.done?.icon).toMatchObject({
       cerbGradient: 'green',
-      color: 'colorPalette.text.200',
+      color: 'colorPalette.text.static',
     })
   })
 
