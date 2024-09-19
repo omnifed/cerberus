@@ -4,19 +4,17 @@ import { type PropsWithChildren, memo } from 'react'
 import MatchSideNavItem from './MatchSideNavItem'
 
 export type NavList = (HeadingItem | LinkItem)[]
-type SideNavType = 'heading' | 'route'
+export type NavItemType = 'heading' | 'route'
 
-interface SideNavItem {
-  id: string
+export interface HeadingItem {
   label: string
-  type: SideNavType
-}
-
-export interface HeadingItem extends SideNavItem {
+  route?: never
+  tag?: never
   type: 'heading'
 }
 
-export interface LinkItem extends SideNavItem {
+export interface LinkItem {
+  label: string
   route: string
   tag: '' | 'new' | 'next'
   type: 'route'

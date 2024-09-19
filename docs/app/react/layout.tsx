@@ -1,8 +1,8 @@
 import type { PropsWithChildren } from 'react'
-import { PageLayout, PageSideNav } from '../components/PageLayout'
-import SideNav, { type NavList } from '../components/SideNav'
-import sideNavData from './side-nav.json'
 import type { Metadata } from 'next/types'
+import { PageLayout, PageSideNav } from '../components/PageLayout'
+import SideNav from '../components/SideNav'
+import { sideNavData } from './side-nav'
 
 interface ReactProps {}
 
@@ -14,7 +14,7 @@ export default function ReactLayout(props: PropsWithChildren<ReactProps>) {
   return (
     <PageLayout>
       <PageSideNav>
-        <SideNav navList={sideNavData as NavList} />
+        <SideNav navList={sideNavData} />
       </PageSideNav>
 
       {props.children}
