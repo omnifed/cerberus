@@ -1,4 +1,5 @@
 import { NoteAdmonition } from '@/app/components/Admonition'
+import BashTabs from '@/app/components/bash-tabs'
 
 # Overview
 
@@ -12,18 +13,15 @@ If you have not already installed Panda CSS, you can do so by following the [Pan
 
 If you have not added any custom presets to your Panda configuration, install the required Panda preset:
 
-```bash
-pnpm add -D @pandacss/preset-panda
-```
+<BashTabs code="npm install -D @pandacss/preset-panda" />
+
 
 ### Install Cerberus core packages
 
 Install the Cerberus core packages, with the package manager of your choice:
 
-```bash
-pnpm dlx jsr add @cerberus/panda-preset
-pnpm add @cerberus/styled-system@npm:@cerberus-design/styled-system
-```
+<BashTabs code={`npx jsr add @cerberus/panda-preset
+npm install @cerberus/styled-system@npm:@cerberus-design/styled-system`} />
 
 ## Step 2 - Setup Cerberus
 
@@ -40,8 +38,8 @@ export default defineConfig({
   ...cerberusConfig,
 
   include: [
-    './node_modules/@cerberus/react/src/**/*.{ts,tsx,js,jsx}',
-    './app/**/*.{ts,tsx}', // <- Make sure this path is to your project
+    './node_modules/@cerberus/react/src/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx,.js,.jsx}', // <- Make sure this path is to your project
   ],
   exclude: [],
 
@@ -54,9 +52,7 @@ export default defineConfig({
 
 Now that you have extended Panda, you need to update your local styles by running the `prepare` script.
 
-```bash
-pnpm run prepare
-```
+<BashTabs code="npm run prepare" />
 
 <NoteAdmonition description="Adding Cerberus will add add a new importMap pointing to '@cerberus/styled-system'. This is the new path you will need to use for all your Panda references." />
 
@@ -114,21 +110,17 @@ export default function RootLayout(props: PropsWithChildren<RootProps>) {
 }
 ```
 
-### Using Cerberus React (Not JSR compatible yet)
+### Using Cerberus React
 
 If you are interested in using the Cerberus React, install it now:
 
-```bash
-pnpm add @cerberus/react@npm:@cerberus-design/react
-```
+<BashTabs code="npm install @cerberus/react@npm:@cerberus-design/react" />
 
 ### Using the Cerberus Icons (optional)
 
 If you are interested in using the Cerberus Icons, install it now:
 
-```bash
-pnpm dlx jsr add @cerberus/icons
-```
+<BashTabs code="npx jsr add @cerberus/icons" />
 
 <NoteAdmonition description="The Cerberus React library is icon-agnostic which means you can combine any icon library with it." />
 
@@ -144,7 +136,7 @@ To help make maintaining a breeze, add this new script to your `package.json` to
 
 ## FAQ
 
-### What are the weird version paths for when I install the Cerberus packages?
+### Why does the version paths the react & styled-system look weird?
 
 The Cerberus packages are published under the `@cerberus-design` organization in NPM (due to the name `cerberus` being taken). However, in JSR, we use the `@cerberus` organization. We eventually plan on fully migrating to JSR when there is better support for the features we need.
 
