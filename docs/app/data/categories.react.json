@@ -2,31 +2,43 @@
   "actions": {
     "name": "Actions",
     "description": "Components that trigger an action.",
-    "items": ["Button", "Icon Button"]
+    "items": ["Button", "Icon Button"],
+    "next": [],
+    "new": []
   },
   "communication": {
     "name": "Communication",
     "description": "Communication components provide useful information.",
-    "items": ["Avatar", "Notification", "Progress Bar", "Tag", "Tooltip"]
+    "items": ["Avatar", "Notification", "Progress Bar", "Tag", "Tooltip"],
+    "next": [],
+    "new": ["Avatar", "Progress Bar"]
   },
   "containment": {
     "name": "Containment",
     "description": "Components that contain other components.",
-    "items": ["Confirm Modal", "Prompt Modal", "Modal", "Table"]
+    "items": ["Confirm Modal", "Prompt Modal", "Modal", "Table"],
+    "next": [],
+    "new": []
   },
   "navigation": {
     "name": "Navigation",
     "description": "Components that help users navigate through the app.",
-    "items": ["Nav Menu", "Tabs"]
+    "items": ["Nav Menu", "Tabs"],
+    "next": [],
+    "new": []
   },
   "selection": {
     "name": "Selection",
     "description": "Components that allow users to select choices.",
-    "items": ["Drag & Drop", "Checkbox", "Radio", "Select", "Toggle"]
+    "items": ["Drag & Drop", "Checkbox", "Radio", "Select", "Toggle"],
+    "next": [],
+    "new": ["Select", "Checkbox"]
   },
   "inputs": {
     "name": "Inputs",
     "description": "Components that allow users to input data.",
-    "items": ["Input", "Textarea", "File Uploader"]
+    "items": ["Input", "Textarea", "File Uploader"],
+    "next": [],
+    "new": ["File Uploader"]
   }
 }
