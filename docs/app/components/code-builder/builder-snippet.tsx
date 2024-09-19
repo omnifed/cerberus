@@ -46,7 +46,7 @@ export default function BuilderSnippet(
       if (isFormState(key) || isProgressKey(key)) {
         return `{${selectedProps[key as keyof typeof selectedProps] || 'false'}}`
       }
-      return `"${selectedProps[key as keyof typeof selectedProps] || 'false'}"`
+      return `"${selectedProps[key as keyof typeof selectedProps] || ''}"`
     })
   }, [props.code, selectedProps])
 

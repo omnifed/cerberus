@@ -59,7 +59,7 @@ export function AvatarPreview() {
     return (
       <Avatar
         {...selectedProps}
-        ariaLabel={(selectedProps.ariaLabel as string) || 'User Avatar'}
+        ariaLabel={selectedProps.ariaLabel as string}
         gradient="light-teal"
         src={selectedProps.src as string}
       />
@@ -68,7 +68,7 @@ export function AvatarPreview() {
   return (
     <Avatar
       {...selectedProps}
-      ariaLabel={(selectedProps.ariaLabel as string) || 'User Avatar'}
+      ariaLabel={selectedProps.ariaLabel as string}
       src={selectedProps.src as string}
     />
   )
