@@ -20,13 +20,13 @@ import { Input } from '../components/Input'
 import { Field } from './field'
 import { Label } from '../components/Label'
 import { $cerberusIcons } from '../config/defineIcons'
-import { ModalIcon } from '../components/ModalIcon'
 import { Show } from '../components/Show'
 import { useModal } from '../hooks/useModal'
 import { Modal } from '../components/Modal'
 import { ModalHeader } from '../components/ModalHeader'
 import { ModalHeading } from '../components/ModalHeading'
 import { ModalDescription } from '../components/ModalDescription'
+import { Avatar } from '../components/Avatar'
 
 /**
  * This module provides a context and hook for the prompt modal.
@@ -142,18 +142,31 @@ export function PromptModal(
       <Portal>
         <Modal onKeyDown={focusTrap} ref={modalRef}>
           <ModalHeader>
-            <Show
-              when={palette === 'danger'}
-              fallback={
-                <ModalIcon palette="action">
-                  <PromptIcon size={24} />
-                </ModalIcon>
-              }
+            <div
+              className={hstack({
+                justify: 'center',
+                w: 'full',
+              })}
             >
-              <ModalIcon palette="danger">
-                <PromptIcon size={24} />
-              </ModalIcon>
-            </Show>
+              <Show
+                when={palette === 'danger'}
+                fallback={
+                  <Avatar
+                    ariaLabel=""
+                    gradient="light-purple"
+                    icon={<PromptIcon size={24} />}
+                    src=""
+                  />
+                }
+              >
+                <Avatar
+                  ariaLabel=""
+                  gradient="red"
+                  icon={<PromptIcon size={24} />}
+                  src=""
+                />
+              </Show>
+            </div>
             <ModalHeading>{content?.heading}</ModalHeading>
             <ModalDescription>{content?.description}</ModalDescription>
           </ModalHeader>

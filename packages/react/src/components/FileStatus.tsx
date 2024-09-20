@@ -13,10 +13,11 @@ import {
   type FileStatusVariantProps,
 } from '@cerberus/styled-system/recipes'
 import { css, cx } from '@cerberus/styled-system/css'
-import { circle, hstack, vstack } from '@cerberus/styled-system/patterns'
+import { hstack, vstack } from '@cerberus/styled-system/patterns'
 import { $cerberusIcons } from '../config/defineIcons'
 import { FieldMessage } from './FieldMessage'
 import { Field } from '../context/field'
+import { Avatar } from './Avatar'
 
 /**
  * This module contains the FileStatus component.
@@ -97,16 +98,12 @@ export function FileStatus(props: FileStatusProps) {
       {...nativeProps}
       className={cx(nativeProps.className, styles.root, hstack())}
     >
-      <div
-        className={cx(
-          styles.icon,
-          circle({
-            size: '2rem',
-          }),
-        )}
-      >
-        <MatchFileStatusIcon status={status} />
-      </div>
+      <Avatar
+        ariaLabel=""
+        gradient={modalIconPalette}
+        icon={<MatchFileStatusIcon size={24} status={status} />}
+        src=""
+      />
 
       <div
         className={vstack({
@@ -124,7 +121,7 @@ export function FileStatus(props: FileStatusProps) {
           {file}
         </small>
         <ProgressBar now={now} size="sm" />
-        <Field invalid={modalIconPalette === 'danger'}>
+        <Field invalid={modalIconPalette === 'red'}>
           <FieldMessage
             className={css({
               color: 'page.text.100',
@@ -150,6 +147,7 @@ export function FileStatus(props: FileStatusProps) {
 
 interface FileStatusElProps {
   status: FileStatusProps['status']
+  size?: 16 | 20 | 24 | 32
   now?: number
 }
 
@@ -163,11 +161,11 @@ function MatchFileStatusIcon(props: FileStatusElProps) {
   switch (props.status) {
     case processStatus.TODO:
     case processStatus.PROCESSING:
-      return <FileUploaderIcon />
+      return <FileUploaderIcon size={props.size} />
     case processStatus.DONE:
-      return <DoneIcon />
+      return <DoneIcon size={props.size} />
     case processStatus.ERROR:
-      return <InvalidIcon />
+      return <InvalidIcon size={props.size} />
     default:
       throw new Error('Unknown status')
   }
@@ -235,12 +233,12 @@ function getModalIconPalette(status: FileStatusKey) {
   switch (status) {
     case processStatus.TODO:
     case processStatus.PROCESSING:
-      return 'action'
+      return 'light-purple'
     case processStatus.ERROR:
-      return 'danger'
+      return 'red'
     case processStatus.DONE:
-      return 'success'
+      return 'green'
     default:
-      return 'action'
+      return 'light-purple'
   }
 }

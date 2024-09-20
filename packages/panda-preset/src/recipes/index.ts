@@ -3,7 +3,6 @@ import { button } from './button'
 import { fieldMessage } from './fieldMessage'
 import { iconButton } from './iconButton'
 import { label } from './label'
-import { modalIcon } from './modalIcon'
 import { tag } from './tag'
 import { thead } from './thead'
 import { th } from './th'
@@ -34,7 +33,6 @@ export const recipes = {
   fieldMessage,
   iconButton,
   label,
-  modalIcon,
   tag,
   thead,
   th,

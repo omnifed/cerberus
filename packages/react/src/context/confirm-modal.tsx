@@ -16,13 +16,13 @@ import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
 import { $cerberusIcons } from '../config/defineIcons'
 import { trapFocus } from '../aria-helpers/trap-focus.aria'
-import { ModalIcon } from '../components/ModalIcon'
 import { Show } from '../components/Show'
 import { Modal } from '../components/Modal'
 import { useModal } from '../hooks/useModal'
 import { ModalHeader } from '../components/ModalHeader'
 import { ModalHeading } from '../components/ModalHeading'
 import { ModalDescription } from '../components/ModalDescription'
+import { Avatar } from '../components/Avatar'
 
 /**
  * This module provides a context and hook for the confirm modal.
@@ -123,18 +123,31 @@ export function ConfirmModal(
       <Portal>
         <Modal onKeyDown={focusTrap} ref={modalRef}>
           <ModalHeader>
-            <Show
-              when={palette === 'danger'}
-              fallback={
-                <ModalIcon palette="action">
-                  <ConfirmIcon size={24} />
-                </ModalIcon>
-              }
+            <div
+              className={hstack({
+                justify: 'center',
+                w: 'full',
+              })}
             >
-              <ModalIcon palette="danger">
-                <ConfirmIcon size={24} />
-              </ModalIcon>
-            </Show>
+              <Show
+                when={palette === 'danger'}
+                fallback={
+                  <Avatar
+                    ariaLabel=""
+                    gradient="light-purple"
+                    icon={<ConfirmIcon size={24} />}
+                    src=""
+                  />
+                }
+              >
+                <Avatar
+                  ariaLabel=""
+                  gradient="red"
+                  icon={<ConfirmIcon size={24} />}
+                  src=""
+                />
+              </Show>
+            </div>
             <ModalHeading>{content?.heading}</ModalHeading>
             <ModalDescription>{content?.description}</ModalDescription>
           </ModalHeader>

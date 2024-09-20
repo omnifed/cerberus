@@ -1,11 +1,12 @@
 'use client'
 
 import { cx } from '@cerberus/styled-system/css'
-import { circle, vstack } from '@cerberus/styled-system/patterns'
+import { vstack } from '@cerberus/styled-system/patterns'
 import { type InputHTMLAttributes } from 'react'
 import { Show } from './Show'
-import { fileUploader, modalIcon } from '@cerberus/styled-system/recipes'
+import { fileUploader } from '@cerberus/styled-system/recipes'
 import { $cerberusIcons } from '../config/defineIcons'
+import { Avatar } from './Avatar'
 
 export interface FileUploaderProps
   extends InputHTMLAttributes<HTMLInputElement> {
@@ -26,9 +27,15 @@ export function FileUploader(props: FileUploaderProps) {
         styles.container,
       )}
     >
-      <span className={cx(styles.icon, modalIcon(), circle())}>
-        <Icon />
-      </span>
+      <div className={styles.icon}>
+        <Avatar
+          gradient="light-purple"
+          ariaLabel=""
+          icon={<Icon />}
+          size="md"
+          src=""
+        />
+      </div>
 
       <label
         className={cx(
