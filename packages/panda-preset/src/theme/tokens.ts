@@ -1,3 +1,5 @@
+import { colors } from './colors'
+
 export const fonts = {
   display: {
     description: 'Primary font reserved for display headings',
@@ -66,6 +68,7 @@ export const zIndex = {
 }
 
 export const tokens = {
+  colors,
   fonts,
   zIndex,
 }

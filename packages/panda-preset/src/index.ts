@@ -1,7 +1,6 @@
 import {
   defineConfig,
   definePreset,
-  defineSemanticTokens,
   type Config,
   type Preset,
 } from '@pandacss/dev'
@@ -9,19 +8,9 @@ import { globalCss } from './globalCss'
 import { conditions } from './conditions'
 import { utilities } from './utilities'
 import { patterns } from './patterns'
-import {
-  actionTokens,
-  dangerTokens,
-  infoTokens,
-  keyframes,
-  pageTokens,
-  secondaryActionTokens,
-  successTokens,
-  textStyles,
-  tokens,
-  warningTokens,
-} from './theme/index'
+import { keyframes, textStyles, tokens } from './theme'
 import { recipes, slotRecipes } from './recipes'
+import { semanticTokens } from './theme/semantic-tokens/config'
 
 /**
  * This module contains the Cerberus preset and configuration options.
@@ -36,6 +25,7 @@ export const cerberusPreset: Preset = definePreset({
   utilities,
   patterns,
 
+  // main theme: cerberus
   theme: {
     extend: {
       keyframes,
@@ -44,19 +34,11 @@ export const cerberusPreset: Preset = definePreset({
       textStyles,
       tokens,
     },
-
-    semanticTokens: defineSemanticTokens({
-      colors: {
-        ...pageTokens,
-        ...actionTokens,
-        ...secondaryActionTokens,
-        ...infoTokens,
-        ...successTokens,
-        ...warningTokens,
-        ...dangerTokens,
-      },
-    }),
+    semanticTokens,
   },
+
+  // additional themes
+  themes: {},
 })
 
 export const cerberusConfig: Config = defineConfig({

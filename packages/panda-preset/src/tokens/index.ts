@@ -33,15 +33,48 @@ export const rawTokens: RawTokens = {
   textStyles: TextStyles,
 }
 
+// todo: delete these
+export const semanticColors = rawTokens.semanticColors.dark
 export const colors = rawTokens.primitives.colors
+
+export const primitiveColorTokens = rawTokens.primitives.colors
 export const text = rawTokens.primitives.typography
-export const semanticColors = semanticColorsDark
+export const darkTokens = semanticColorsDark
+export const lightTokens = semanticColorsLight
 
 export type PrimitiveCollection =
   | RawTokens['primitives']['colors']
   | RawTokens['primitives']['typography']
 
 // helpers
+
+export type PandaColor = {
+  [palette: string]: {
+    [prominence: string | number]: {
+      value: string
+    }
+  }
+}
+
+export function formatPrimitiveColors(): PandaColor {
+  return Object.entries(primitiveColors.colors).reduce(
+    (acc, [palette, prominence]) => {
+      acc[palette] = Object.entries(prominence).reduce(
+        (acc, [prominence, value]) => {
+          acc[prominence] = { value: value.$value }
+          return acc
+        },
+        {} as PandaColor[string],
+      )
+      return acc
+    },
+    {} as PandaColor,
+  )
+}
+
+export function getSemanticToken(path: string): string {
+  return `{${path}}`
+}
 
 export function deepGet(
   obj: PrimitiveCollection,
