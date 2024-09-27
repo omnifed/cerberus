@@ -1,5 +1,5 @@
 import type { SemanticToken } from './types'
-import { colors, deepGetByPaths, rawTokens, semanticColors } from '../../tokens'
+import { darkTokens, lightTokens, getSemanticToken } from '../../tokens'
 import { ACTION } from '../../recipes/shared/palettes'
 
 /**
@@ -43,64 +43,49 @@ export const actionTokens: ActionTokens = {
     bg: {
       initial: {
         description:
-          semanticColors.background[ACTION].initial.$description ||
+          darkTokens.background[ACTION].initial.$description ||
           'The default background color of the action.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.action.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.background.action.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.action.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.background.action.initial.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.background.action.initial.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.background.action.initial.$value,
+            ),
           },
         },
       },
       hover: {
         description:
-          semanticColors.background[ACTION].hover.$description ||
+          darkTokens.background[ACTION].hover.$description ||
           'The background color of the action when hovered.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.action.hover.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.background.action.hover.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.action.hover.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.background.action.hover.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.background.action.hover.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.background.action.hover.$value,
+            ),
           },
         },
       },
       active: {
         description:
-          semanticColors.background[ACTION].active.$description ||
+          darkTokens.background[ACTION].active.$description ||
           'The background color of the action when active.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.action.active.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.background.action.active.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.action.active.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.background.action.active.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.background.action.active.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.background.action.active.$value,
+            ),
           },
         },
       },
@@ -109,43 +94,31 @@ export const actionTokens: ActionTokens = {
     border: {
       initial: {
         description:
-          semanticColors.border[ACTION].initial.$description ||
+          darkTokens.border[ACTION].initial.$description ||
           'The default border color of the action.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.border.action.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.border.action.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.border.action.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.border.action.initial.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.border.action.initial.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.border.action.initial.$value,
+            ),
           },
         },
       },
       100: {
         description:
-          semanticColors.border[ACTION]['100'].$description ||
+          darkTokens.border[ACTION]['100'].$description ||
           'The default alternative border color of the action.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.border.action['100'].$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.border.action['100'].$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.border.action['100'].$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.border.action['100'].$value),
+            _lightMode: getSemanticToken(
+              lightTokens.border.action['100'].$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.border.action['100'].$value),
           },
         },
       },
@@ -165,64 +138,41 @@ export const actionTokens: ActionTokens = {
     ghost: {
       initial: {
         description:
-          semanticColors.ghost[ACTION].initial.$description ||
+          darkTokens.ghost[ACTION].initial.$description ||
           'The default ghost color of the action.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.action.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.ghost.action.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.action.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.ghost.action.initial.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.ghost.action.initial.$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.ghost.action.initial.$value),
           },
         },
       },
       hover: {
         description:
-          semanticColors.ghost[ACTION].hover.$description ||
+          darkTokens.ghost[ACTION].hover.$description ||
           'The ghost color of the action when hovered.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.action.hover.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.ghost.action.hover.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.action.hover.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.ghost.action.hover.$value),
+            _lightMode: getSemanticToken(lightTokens.ghost.action.hover.$value),
+            _darkMode: getSemanticToken(darkTokens.ghost.action.hover.$value),
           },
         },
       },
       active: {
         description:
-          semanticColors.ghost[ACTION].active.$description ||
+          darkTokens.ghost[ACTION].active.$description ||
           'The ghost color of the action when active.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.action.active.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.ghost.action.active.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.action.active.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.ghost.action.active.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.ghost.action.active.$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.ghost.action.active.$value),
           },
         },
       },
@@ -231,73 +181,55 @@ export const actionTokens: ActionTokens = {
     navigation: {
       initial: {
         description:
-          semanticColors.text[ACTION].navigation.initial.$description ||
+          darkTokens.text[ACTION].navigation.initial.$description ||
           'The default color of the navigation links.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text[ACTION].navigation.initial
-                .$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text[ACTION].navigation.initial
-                .$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text[ACTION].navigation.initial
-                .$value,
-            ).$value,
+            base: getSemanticToken(
+              darkTokens.text.action.navigation.initial.$value,
+            ),
+            _lightMode: getSemanticToken(
+              lightTokens.text.action.navigation.initial.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.text.action.navigation.initial.$value,
+            ),
           },
         },
       },
       hover: {
         description:
-          semanticColors.text[ACTION].navigation.hover.$description ||
+          darkTokens.text[ACTION].navigation.hover.$description ||
           'The background color of the navigation action when hovered.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text[ACTION].navigation.hover
-                .$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text[ACTION].navigation.hover
-                .$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text[ACTION].navigation.hover
-                .$value,
-            ).$value,
+            base: getSemanticToken(
+              darkTokens.text.action.navigation.hover.$value,
+            ),
+            _lightMode: getSemanticToken(
+              lightTokens.text.action.navigation.hover.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.text.action.navigation.hover.$value,
+            ),
           },
         },
       },
       visited: {
         description:
-          semanticColors.text[ACTION].navigation.visited.$description ||
+          darkTokens.text[ACTION].navigation.visited.$description ||
           'The background color of the navigation action when visited.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text[ACTION].navigation.visited
-                .$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text[ACTION].navigation.visited
-                .$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text[ACTION].navigation.visited
-                .$value,
-            ).$value,
+            base: getSemanticToken(
+              darkTokens.text.action.navigation.visited.$value,
+            ),
+            _lightMode: getSemanticToken(
+              lightTokens.text.action.navigation.visited.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.text.action.navigation.visited.$value,
+            ),
           },
         },
       },
@@ -306,106 +238,65 @@ export const actionTokens: ActionTokens = {
     text: {
       initial: {
         description:
-          semanticColors.text[ACTION].initial.$description ||
+          darkTokens.text[ACTION].initial.$description ||
           'The default text color of the action.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.action.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.action.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.action.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.action.initial.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.text.action.initial.$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.text.action.initial.$value),
           },
         },
       },
       100: {
         description:
-          semanticColors.text[ACTION]['100'].$description ||
+          darkTokens.text[ACTION]['100'].$description ||
           'The text color of the action that uses a 100 background color.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.action['100'].$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.action['100'].$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.action['100'].$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.action['100'].$value),
+            _lightMode: getSemanticToken(lightTokens.text.action['100'].$value),
+            _darkMode: getSemanticToken(darkTokens.text.action['100'].$value),
           },
         },
       },
       200: {
         description:
-          semanticColors.text[ACTION]['200'].$description ||
+          darkTokens.text[ACTION]['200'].$description ||
           'The text color of the action that uses a 200 background color.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.action['200'].$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.action['200'].$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.action['200'].$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.action['200'].$value),
+            _lightMode: getSemanticToken(lightTokens.text.action['200'].$value),
+            _darkMode: getSemanticToken(darkTokens.text.action['200'].$value),
           },
         },
       },
       inverse: {
         description:
-          semanticColors.text[ACTION].inverse.$description ||
+          darkTokens.text[ACTION].inverse.$description ||
           'The text color of the action when there needs to be a light mode text within the dark theme.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.action.inverse.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.action.inverse.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.action.inverse.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.action.inverse.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.text.action.inverse.$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.text.action.inverse.$value),
           },
         },
       },
       static: {
         description:
-          semanticColors.text[ACTION].static.$description ||
+          darkTokens.text[ACTION].static.$description ||
           'The text color of the action when there needs to be a light mode text within the dark theme.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.action.static.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.action.static.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.action.static.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.action.static.$value),
+            _lightMode: getSemanticToken(lightTokens.text.action.static.$value),
+            _darkMode: getSemanticToken(darkTokens.text.action.static.$value),
           },
         },
       },
