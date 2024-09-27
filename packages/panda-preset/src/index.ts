@@ -27,9 +27,6 @@ export const cerberusPreset: Preset = definePreset({
 
   // main theme: cerberus
   theme: {
-    tokens: {
-      colors: {},
-    },
     extend: {
       keyframes,
       recipes,
