@@ -1,5 +1,5 @@
 import type { Prominence, SemanticToken } from './types'
-import { colors, deepGetByPaths, rawTokens, semanticColors } from '../../tokens'
+import { getSemanticToken, darkTokens, lightTokens } from '../../tokens'
 import { WARNING } from '../../recipes/shared/palettes'
 
 /**
@@ -40,22 +40,17 @@ export const warningTokens: WarningTokens = {
     border: {
       initial: {
         description:
-          semanticColors.border[WARNING].initial.$description ||
+          darkTokens.border[WARNING].initial.$description ||
           'The default border color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.border.warning.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.border.warning.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.border.warning.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.border.warning.initial.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.border.warning.initial.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.border.warning.initial.$value,
+            ),
           },
         },
       },
@@ -64,64 +59,51 @@ export const warningTokens: WarningTokens = {
     bg: {
       initial: {
         description:
-          semanticColors.background[WARNING].initial.$description ||
+          darkTokens.background[WARNING].initial.$description ||
           'The default background color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.warning.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.background.warning.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.warning.initial.$value,
-            ).$value,
+            base: getSemanticToken(
+              darkTokens.background.warning.initial.$value,
+            ),
+            _lightMode: getSemanticToken(
+              lightTokens.background.warning.initial.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.background.warning.initial.$value,
+            ),
           },
         },
       },
       hover: {
         description:
-          semanticColors.background[WARNING].hover.$description ||
+          darkTokens.background[WARNING].hover.$description ||
           'The hover background color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.warning.hover.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.background.warning.hover.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.warning.hover.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.background.warning.hover.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.background.warning.hover.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.background.warning.hover.$value,
+            ),
           },
         },
       },
       active: {
         description:
-          semanticColors.background[WARNING].active.$description ||
+          darkTokens.background[WARNING].active.$description ||
           'The active background color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.warning.active.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.background.warning.active.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.warning.active.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.background.warning.active.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.background.warning.active.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.background.warning.active.$value,
+            ),
           },
         },
       },
@@ -130,64 +112,45 @@ export const warningTokens: WarningTokens = {
     ghost: {
       initial: {
         description:
-          semanticColors.ghost[WARNING].initial.$description ||
+          darkTokens.ghost[WARNING].initial.$description ||
           'The default ghost color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.warning.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.ghost.warning.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.warning.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.ghost.warning.initial.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.ghost.warning.initial.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.ghost.warning.initial.$value,
+            ),
           },
         },
       },
       hover: {
         description:
-          semanticColors.ghost[WARNING].hover.$description ||
+          darkTokens.ghost[WARNING].hover.$description ||
           'The hover ghost color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.warning.hover.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.ghost.warning.hover.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.warning.hover.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.ghost.warning.hover.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.ghost.warning.hover.$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.ghost.warning.hover.$value),
           },
         },
       },
       active: {
         description:
-          semanticColors.ghost[WARNING].active.$description ||
+          darkTokens.ghost[WARNING].active.$description ||
           'The active ghost color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.warning.active.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.ghost.warning.active.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.warning.active.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.ghost.warning.active.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.ghost.warning.active.$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.ghost.warning.active.$value),
           },
         },
       },
@@ -196,64 +159,49 @@ export const warningTokens: WarningTokens = {
     surface: {
       initial: {
         description:
-          semanticColors.surface[WARNING].initial.$description ||
+          darkTokens.surface[WARNING].initial.$description ||
           'The default color for static (surface) elements that display a warning state.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.surface.warning.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.surface.warning.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.surface.warning.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.surface.warning.initial.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.surface.warning.initial.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.surface.warning.initial.$value,
+            ),
           },
         },
       },
       100: {
         description:
-          semanticColors.surface[WARNING]['100'].$description ||
+          darkTokens.surface[WARNING]['100'].$description ||
           'The second layer of color for static (surface) elements that display a warning state - used on top of initial.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.surface.warning['100'].$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.surface.warning['100'].$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.surface.warning['100'].$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.surface.warning['100'].$value),
+            _lightMode: getSemanticToken(
+              lightTokens.surface.warning['100'].$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.surface.warning['100'].$value,
+            ),
           },
         },
       },
       200: {
         description:
-          semanticColors.surface[WARNING]['200'].$description ||
+          darkTokens.surface[WARNING]['200'].$description ||
           'The third layer of color for static (surface) elements that display a warning state - used on top of 100.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.surface.warning['200'].$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.surface.warning['200'].$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.surface.warning['200'].$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.surface.warning['200'].$value),
+            _lightMode: getSemanticToken(
+              lightTokens.surface.warning['200'].$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.surface.warning['200'].$value,
+            ),
           },
         },
       },
@@ -262,106 +210,71 @@ export const warningTokens: WarningTokens = {
     text: {
       initial: {
         description:
-          semanticColors.text[WARNING].initial.$description ||
+          darkTokens.text[WARNING].initial.$description ||
           'The default text color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.warning.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.warning.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.warning.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.warning.initial.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.text.warning.initial.$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.text.warning.initial.$value),
           },
         },
       },
       100: {
         description:
-          semanticColors.text[WARNING]['100'].$description ||
+          darkTokens.text[WARNING]['100'].$description ||
           'The secondary text color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.warning['100'].$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.warning['100'].$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.warning['100'].$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.warning['100'].$value),
+            _lightMode: getSemanticToken(
+              lightTokens.text.warning['100'].$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.text.warning['100'].$value),
           },
         },
       },
       200: {
         description:
-          semanticColors.text[WARNING]['200'].$description ||
+          darkTokens.text[WARNING]['200'].$description ||
           'The tertiary text color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.warning['200'].$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.warning['200'].$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.warning['200'].$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.warning['200'].$value),
+            _lightMode: getSemanticToken(
+              lightTokens.text.warning['200'].$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.text.warning['200'].$value),
           },
         },
       },
       inverse: {
         description:
-          semanticColors.text[WARNING].inverse.$description ||
+          darkTokens.text[WARNING].inverse.$description ||
           'The inverse version of the default text color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.warning.inverse.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.warning.inverse.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.warning.inverse.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.warning.inverse.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.text.warning.inverse.$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.text.warning.inverse.$value),
           },
         },
       },
       static: {
         description:
-          semanticColors.text[WARNING].static.$description ||
+          darkTokens.text[WARNING].static.$description ||
           'The static version of the default text color of warning elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.warning.static.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.warning.static.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.warning.static.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.warning.static.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.text.warning.static.$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.text.warning.static.$value),
           },
         },
       },

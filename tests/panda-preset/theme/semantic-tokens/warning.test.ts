@@ -2,8 +2,8 @@ import { describe, test, expect } from 'bun:test'
 import { warningTokens } from '@cerberus-design/panda-preset'
 
 describe('warning', () => {
-  function formatToken(token: string) {
-    return token.toUpperCase()
+  function formatSemanticToken(value: TemplateStringsArray) {
+    return `{colors.${value}}`
   }
 
   test('should have a warning property', () => {
@@ -12,259 +12,189 @@ describe('warning', () => {
 
   test('should have a border.initial property', () => {
     expect(
-      formatToken(
-        warningTokens.warning.border.initial.value._cerberusTheme.base,
-      ),
-    ).toEqual('#FCF6D1')
+      warningTokens.warning.border.initial.value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`warning.20`)
     expect(
-      formatToken(
-        warningTokens.warning.border.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#FCF6D1')
+      warningTokens.warning.border.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.20`)
     expect(
-      formatToken(
-        warningTokens.warning.border.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#F4DA49')
+      warningTokens.warning.border.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.50`)
   })
 
   test('should have a bg.initial property', () => {
+    expect(warningTokens.warning.bg.initial.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`warning.70`,
+    )
     expect(
-      formatToken(warningTokens.warning.bg.initial.value._cerberusTheme.base),
-    ).toEqual('#C1A716')
+      warningTokens.warning.bg.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.70`)
     expect(
-      formatToken(
-        warningTokens.warning.bg.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#C1A716')
-    expect(
-      formatToken(
-        warningTokens.warning.bg.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#F4DA49')
+      warningTokens.warning.bg.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.50`)
   })
 
   test('should have a bg.hover property', () => {
+    expect(warningTokens.warning.bg.hover.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`warning.60`,
+    )
     expect(
-      formatToken(warningTokens.warning.bg.hover.value._cerberusTheme.base),
-    ).toEqual('#F1D11B')
+      warningTokens.warning.bg.hover.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.60`)
     expect(
-      formatToken(
-        warningTokens.warning.bg.hover.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#F1D11B')
-    expect(
-      formatToken(
-        warningTokens.warning.bg.hover.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#F1D11B')
+      warningTokens.warning.bg.hover.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.60`)
   })
 
   test('should have a bg.active property', () => {
+    expect(warningTokens.warning.bg.active.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`warning.40`,
+    )
     expect(
-      formatToken(warningTokens.warning.bg.active.value._cerberusTheme.base),
-    ).toEqual('#F7E376')
+      warningTokens.warning.bg.active.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.40`)
     expect(
-      formatToken(
-        warningTokens.warning.bg.active.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#F7E376')
-    expect(
-      formatToken(
-        warningTokens.warning.bg.active.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#C1A716')
+      warningTokens.warning.bg.active.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.70`)
   })
 
   test('should have a ghost property', () => {
-    expect(warningTokens.warning.ghost).toBeDefined
+    expect(warningTokens.warning.ghost).toBeDefined()
   })
 
   test('should have a ghost.initial property', () => {
     expect(
-      formatToken(
-        warningTokens.warning.ghost.initial.value._cerberusTheme.base,
-      ),
-    ).toEqual('#130024')
+      warningTokens.warning.ghost.initial.value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`brand.100`)
     expect(
-      formatToken(
-        warningTokens.warning.ghost.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#130024')
+      warningTokens.warning.ghost.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`brand.100`)
     expect(
-      formatToken(
-        warningTokens.warning.ghost.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FFFFFF')
+      warningTokens.warning.ghost.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`neutral.white`)
   })
 
   test('should have a ghost.hover property', () => {
+    expect(warningTokens.warning.ghost.hover.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`warning.90`,
+    )
     expect(
-      formatToken(warningTokens.warning.ghost.hover.value._cerberusTheme.base),
-    ).toEqual('#60540B')
+      warningTokens.warning.ghost.hover.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.90`)
     expect(
-      formatToken(
-        warningTokens.warning.ghost.hover.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#60540B')
-    expect(
-      formatToken(
-        warningTokens.warning.ghost.hover.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FCF6D1')
+      warningTokens.warning.ghost.hover.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.20`)
   })
 
   test('should have a ghost.active property', () => {
     expect(
-      formatToken(warningTokens.warning.ghost.active.value._cerberusTheme.base),
-    ).toEqual('#917D10')
+      warningTokens.warning.ghost.active.value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`warning.80`)
     expect(
-      formatToken(
-        warningTokens.warning.ghost.active.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#917D10')
+      warningTokens.warning.ghost.active.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.80`)
     expect(
-      formatToken(
-        warningTokens.warning.ghost.active.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#F9EDA4')
+      warningTokens.warning.ghost.active.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.30`)
   })
 
   test('should have a surface property', () => {
-    expect(warningTokens.warning.surface).toBeDefined
+    expect(warningTokens.warning.surface).toBeDefined()
   })
 
   test('should have a surface.initial property', () => {
     expect(
-      formatToken(
-        warningTokens.warning.surface.initial.value._cerberusTheme.base,
-      ),
-    ).toEqual('#C1A716')
+      warningTokens.warning.surface.initial.value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`warning.70`)
     expect(
-      formatToken(
-        warningTokens.warning.surface.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#C1A716')
+      warningTokens.warning.surface.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.70`)
     expect(
-      formatToken(
-        warningTokens.warning.surface.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#F7E376')
+      warningTokens.warning.surface.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.40`)
   })
 
   test('should have a surface.100 property', () => {
     expect(
-      formatToken(
-        warningTokens.warning.surface['100'].value._cerberusTheme.base,
-      ),
-    ).toEqual('#60540B')
+      warningTokens.warning.surface['100'].value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`warning.90`)
     expect(
-      formatToken(
-        warningTokens.warning.surface['100'].value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#60540B')
+      warningTokens.warning.surface['100'].value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.90`)
     expect(
-      formatToken(
-        warningTokens.warning.surface['100'].value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FCF6D1')
+      warningTokens.warning.surface['100'].value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.20`)
   })
 
   test('should have a surface.200 property', () => {
     expect(
-      formatToken(
-        warningTokens.warning.surface['200'].value._cerberusTheme.base,
-      ),
-    ).toEqual('#F4DA49')
+      warningTokens.warning.surface['200'].value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`warning.50`)
     expect(
-      formatToken(
-        warningTokens.warning.surface['200'].value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#F4DA49')
+      warningTokens.warning.surface['200'].value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.50`)
     expect(
-      formatToken(
-        warningTokens.warning.surface['200'].value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#F1D11B')
+      warningTokens.warning.surface['200'].value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.60`)
   })
 
   test('should have a text.initial property', () => {
     expect(
-      formatToken(warningTokens.warning.text.initial.value._cerberusTheme.base),
-    ).toEqual('#302A05')
+      warningTokens.warning.text.initial.value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`warning.100`)
     expect(
-      formatToken(
-        warningTokens.warning.text.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#302A05')
+      warningTokens.warning.text.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.100`)
     expect(
-      formatToken(
-        warningTokens.warning.text.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#302A05')
+      warningTokens.warning.text.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.100`)
   })
 
   test('should have a text.100 property', () => {
+    expect(warningTokens.warning.text[100].value._cerberusTheme.base).toEqual(
+      formatSemanticToken`warning.30`,
+    )
     expect(
-      formatToken(warningTokens.warning.text[100].value._cerberusTheme.base),
-    ).toEqual('#F9EDA4')
+      warningTokens.warning.text[100].value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.30`)
     expect(
-      formatToken(
-        warningTokens.warning.text[100].value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#F9EDA4')
-    expect(
-      formatToken(
-        warningTokens.warning.text[100].value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#917D10')
+      warningTokens.warning.text[100].value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.80`)
   })
 
   test('should have a text.200 property', () => {
+    expect(warningTokens.warning.text[200].value._cerberusTheme.base).toEqual(
+      formatSemanticToken`warning.60`,
+    )
     expect(
-      formatToken(warningTokens.warning.text[200].value._cerberusTheme.base),
-    ).toEqual('#F1D11B')
+      warningTokens.warning.text[200].value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.60`)
     expect(
-      formatToken(
-        warningTokens.warning.text[200].value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#F1D11B')
-    expect(
-      formatToken(
-        warningTokens.warning.text[200].value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#917D10')
+      warningTokens.warning.text[200].value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.80`)
   })
 
   test('should have a text.inverse property', () => {
     expect(
-      formatToken(warningTokens.warning.text.inverse.value._cerberusTheme.base),
-    ).toEqual('#FCF6D1')
+      warningTokens.warning.text.inverse.value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`warning.20`)
     expect(
-      formatToken(
-        warningTokens.warning.text.inverse.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#FCF6D1')
+      warningTokens.warning.text.inverse.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.20`)
     expect(
-      formatToken(
-        warningTokens.warning.text.inverse.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#302A05')
+      warningTokens.warning.text.inverse.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.100`)
   })
 
   test('should have a text.static property', () => {
+    expect(warningTokens.warning.text.static.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`warning.80`,
+    )
     expect(
-      formatToken(warningTokens.warning.text.static.value._cerberusTheme.base),
-    ).toEqual('#917D10')
+      warningTokens.warning.text.static.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`warning.80`)
     expect(
-      formatToken(
-        warningTokens.warning.text.static.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#917D10')
-    expect(
-      formatToken(
-        warningTokens.warning.text.static.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#917D10')
+      warningTokens.warning.text.static.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`warning.80`)
   })
 })
