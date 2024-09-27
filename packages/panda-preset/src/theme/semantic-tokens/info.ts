@@ -1,5 +1,5 @@
 import type { Prominence, SemanticToken } from './types'
-import { colors, deepGetByPaths, rawTokens, semanticColors } from '../../tokens'
+import { darkTokens, getSemanticToken, lightTokens } from '../../tokens'
 import { INFO } from '../../recipes/shared/palettes'
 
 /**
@@ -40,22 +40,15 @@ export const infoTokens: InfoTokens = {
     border: {
       initial: {
         description:
-          semanticColors.border[INFO].initial.$description ||
+          darkTokens.border[INFO].initial.$description ||
           'The default border color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.border.info.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.border.info.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.border.info.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.border.info.initial.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.border.info.initial.$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.border.info.initial.$value),
           },
         },
       },
@@ -64,64 +57,49 @@ export const infoTokens: InfoTokens = {
     bg: {
       initial: {
         description:
-          semanticColors.background[INFO].initial.$description ||
+          darkTokens.background[INFO].initial.$description ||
           'The default background color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.info.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.background.info.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.info.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.background.info.initial.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.background.info.initial.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.background.info.initial.$value,
+            ),
           },
         },
       },
       hover: {
         description:
-          semanticColors.background[INFO].hover.$description ||
+          darkTokens.background[INFO].hover.$description ||
           'The hover background color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.info.hover.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.background.info.hover.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.info.hover.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.background.info.hover.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.background.info.hover.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.background.info.hover.$value,
+            ),
           },
         },
       },
       active: {
         description:
-          semanticColors.background[INFO].active.$description ||
+          darkTokens.background[INFO].active.$description ||
           'The active background color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.info.active.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.background.info.active.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.background.info.active.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.background.info.active.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.background.info.active.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.background.info.active.$value,
+            ),
           },
         },
       },
@@ -130,64 +108,37 @@ export const infoTokens: InfoTokens = {
     ghost: {
       initial: {
         description:
-          semanticColors.ghost[INFO].initial.$description ||
+          darkTokens.ghost[INFO].initial.$description ||
           'The default ghost color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.info.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.ghost.info.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.info.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.ghost.info.initial.$value),
+            _lightMode: getSemanticToken(lightTokens.ghost.info.initial.$value),
+            _darkMode: getSemanticToken(darkTokens.ghost.info.initial.$value),
           },
         },
       },
       hover: {
         description:
-          semanticColors.ghost[INFO].hover.$description ||
+          darkTokens.ghost[INFO].hover.$description ||
           'The hover ghost color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.info.hover.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.ghost.info.hover.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.info.hover.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.ghost.info.hover.$value),
+            _lightMode: getSemanticToken(lightTokens.ghost.info.hover.$value),
+            _darkMode: getSemanticToken(darkTokens.ghost.info.hover.$value),
           },
         },
       },
       active: {
         description:
-          semanticColors.ghost[INFO].active.$description ||
+          darkTokens.ghost[INFO].active.$description ||
           'The active ghost color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.info.active.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.ghost.info.active.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.ghost.info.active.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.ghost.info.active.$value),
+            _lightMode: getSemanticToken(lightTokens.ghost.info.active.$value),
+            _darkMode: getSemanticToken(darkTokens.ghost.info.active.$value),
           },
         },
       },
@@ -196,64 +147,43 @@ export const infoTokens: InfoTokens = {
     surface: {
       initial: {
         description:
-          semanticColors.surface[INFO].initial.$description ||
+          darkTokens.surface[INFO].initial.$description ||
           'The default color for a layout-based surface element (like a page or card) in a informational state.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.surface.info.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.surface.info.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.surface.info.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.surface.info.initial.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.surface.info.initial.$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.surface.info.initial.$value),
           },
         },
       },
       100: {
         description:
-          semanticColors.surface[INFO]['100'].$description ||
+          darkTokens.surface[INFO]['100'].$description ||
           'The second layer of color for static (surface) elements that display a info state - used on top of initial.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.surface.info['100'].$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.surface.info['100'].$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.surface.info['100'].$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.surface.info['100'].$value),
+            _lightMode: getSemanticToken(
+              lightTokens.surface.info['100'].$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.surface.info['100'].$value),
           },
         },
       },
       200: {
         description:
-          semanticColors.surface[INFO]['200'].$description ||
+          darkTokens.surface[INFO]['200'].$description ||
           'The third layer of color for static (surface) elements that display a info state - used on top of 100.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.surface.info['200'].$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.surface.info['200'].$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.surface.info['200'].$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.surface.info['200'].$value),
+            _lightMode: getSemanticToken(
+              lightTokens.surface.info['200'].$value,
+            ),
+            _darkMode: getSemanticToken(darkTokens.surface.info['200'].$value),
           },
         },
       },
@@ -262,85 +192,49 @@ export const infoTokens: InfoTokens = {
     text: {
       initial: {
         description:
-          semanticColors.text[INFO].initial.$description ||
+          darkTokens.text[INFO].initial.$description ||
           'The default text color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.info.initial.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.info.initial.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.info.initial.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.info.initial.$value),
+            _lightMode: getSemanticToken(lightTokens.text.info.initial.$value),
+            _darkMode: getSemanticToken(darkTokens.text.info.initial.$value),
           },
         },
       },
       100: {
         description:
-          semanticColors.text[INFO]['100'].$description ||
+          darkTokens.text[INFO]['100'].$description ||
           'The secondary text color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.info['100'].$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.info['100'].$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.info['100'].$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.info['100'].$value),
+            _lightMode: getSemanticToken(lightTokens.text.info['100'].$value),
+            _darkMode: getSemanticToken(darkTokens.text.info['100'].$value),
           },
         },
       },
       200: {
         description:
-          semanticColors.text[INFO]['200'].$description ||
+          darkTokens.text[INFO]['200'].$description ||
           'The tertiary text color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.info['200'].$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.info['200'].$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.info['200'].$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.info['200'].$value),
+            _lightMode: getSemanticToken(lightTokens.text.info['200'].$value),
+            _darkMode: getSemanticToken(darkTokens.text.info['200'].$value),
           },
         },
       },
       static: {
         description:
-          semanticColors.text[INFO].static.$description ||
+          darkTokens.text[INFO].static.$description ||
           'The default text color of informational elements.',
         value: {
           _cerberusTheme: {
-            base: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.info.static.$value,
-            ).$value,
-            _lightMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.light.text.info.static.$value,
-            ).$value,
-            _darkMode: deepGetByPaths(
-              colors,
-              rawTokens.semanticColors.dark.text.info.static.$value,
-            ).$value,
+            base: getSemanticToken(darkTokens.text.info.static.$value),
+            _lightMode: getSemanticToken(lightTokens.text.info.static.$value),
+            _darkMode: getSemanticToken(darkTokens.text.info.static.$value),
           },
         },
       },
