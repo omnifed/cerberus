@@ -87,9 +87,7 @@ interface FigmaScope {
   }
 }
 
-interface ColorDetailsProps {}
-
-export default function ColorDetails(props: ColorDetailsProps) {
+export default function ColorDetails() {
   const { mode } = useThemeContext()
   const searchParams = useSearchParams()
   const paramsToken = searchParams.get('token') ?? 'page-backdrop-initial'
@@ -145,12 +143,20 @@ export default function ColorDetails(props: ColorDetailsProps) {
   }, [scope, splitToken])
 
   const userMode = mode === 'dark' ? '_darkMode' : '_lightMode'
-  const tokenValue = token.value._cerberusTheme[userMode]
+  const rawColor = useMemo(() => {
+    return token.value._cerberusTheme[userMode]
+  }, [token.value._cerberusTheme, userMode])
+  const color = useMemo(() => {
+    if (paramsToken === 'action-border-focus') {
+      return rawColor
+    }
+    return `var(--cerberus-${rawColor.replace(/\./g, '-').replace(/[\{\}]/g, '')})`
+  }, [rawColor, paramsToken])
   const swatchColor = useMemo(
     () => ({
-      backgroundColor: tokenValue,
+      backgroundColor: color,
     }),
-    [tokenValue],
+    [color],
   )
 
   return (

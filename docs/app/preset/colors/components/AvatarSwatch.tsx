@@ -21,7 +21,12 @@ export default function ColorSwatch(props: ColorSwatchProps) {
   const modeValue = useMemo(() => {
     return mode === 'dark' ? '_darkMode' : '_lightMode'
   }, [mode])
-  const color = _cerberusTheme[modeValue]
+  const color = useMemo(() => {
+    if (props.tokenName === 'action-border-focus') {
+      return _cerberusTheme[modeValue]
+    }
+    return `var(--cerberus-${_cerberusTheme[modeValue].replace(/\./g, '-').replace(/[\{\}]/g, '')})`
+  }, [modeValue, _cerberusTheme, props.tokenName])
 
   const bgColor = {
     backgroundColor: color,
