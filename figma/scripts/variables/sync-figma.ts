@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { write } from 'bun'
+import { $, write } from 'bun'
 import { resolve } from 'node:path'
 import FigmaApi from './figma-api'
 import { green } from './utils'
@@ -22,8 +22,11 @@ async function main() {
     'panda-preset',
     'src',
     'tokens',
+    'data',
   )
   const tokensFiles = tokenFilesFromLocalVariables(localVariables)
+
+  await $`rm -rf ${tokenDirPath}/*.json`
 
   Object.entries(tokensFiles).forEach(async ([fileName, fileContent]) => {
     await write(

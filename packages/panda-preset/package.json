@@ -10,6 +10,7 @@
   "scripts": {
     "build": "tsup --experimental-dts",
     "clean": "rm -rf ./build",
+    "clean:tokens": "rm -rf ./src/tokens",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {

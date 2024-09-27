@@ -1,8 +1,9 @@
-import primitiveColors from './primitive-colors.cerberus.json' with { type: 'json' }
-import primitiveTypography from './primitive-typography.value.json' with { type: 'json' }
-import semanticColorsDark from './semantic-colors.dark-mode.json' with { type: 'json' }
-import semanticColorsLight from './semantic-colors.light-mode.json' with { type: 'json' }
-import TextStyles from './text-styles.desktop.json' with { type: 'json' }
+import primitiveColors from './data/primitive-colors.cerberus.json' with { type: 'json' }
+import primitiveTypography from './data/primitive-typography.value.json' with { type: 'json' }
+import semanticColorsDark from './data/semantic-colors.dark-mode.json' with { type: 'json' }
+import semanticColorsLight from './data/semantic-colors.light-mode.json' with { type: 'json' }
+import acheronDarkMode from './data/semantic-colors.acheron-dark-mode.json' with { type: 'json' }
+import acheronLightMode from './data/semantic-colors.acheron-light-mode.json' with { type: 'json' }
 
 /**
  * This module is a collection of raw tokens that are used to generate the theme.
@@ -18,7 +19,6 @@ export interface RawTokens {
     dark: typeof semanticColorsDark
     light: typeof semanticColorsLight
   }
-  textStyles: typeof TextStyles
 }
 
 export const rawTokens: RawTokens = {
@@ -30,7 +30,6 @@ export const rawTokens: RawTokens = {
     dark: semanticColorsDark,
     light: semanticColorsLight,
   },
-  textStyles: TextStyles,
 }
 
 // used in the docs
@@ -41,6 +40,10 @@ export const primitiveColorTokens = rawTokens.primitives.colors
 export const text = rawTokens.primitives.typography
 export const darkTokens = semanticColorsDark
 export const lightTokens = semanticColorsLight
+
+// additional themes
+export const acheronDarkTokens = acheronDarkMode
+export const acheronLightTokens = acheronLightMode
 
 export type PrimitiveCollection =
   | RawTokens['primitives']['colors']
