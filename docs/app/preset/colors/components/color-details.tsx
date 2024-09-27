@@ -150,7 +150,7 @@ export default function ColorDetails() {
     if (paramsToken === 'action-border-focus') {
       return rawColor
     }
-    return `var(--cerberus-${rawColor.replace(/\./g, '-').replace(/[\{\}]/g, '')})`
+    return `var(--cerberus-${rawColor.replace(/\./g, '-').replace(/[{}]/g, '')})`
   }, [rawColor, paramsToken])
   const swatchColor = useMemo(
     () => ({
