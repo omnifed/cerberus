@@ -2,8 +2,8 @@ import { describe, test, expect } from 'bun:test'
 import { dangerTokens } from '@cerberus-design/panda-preset'
 
 describe('dangerTokens', () => {
-  function formatToken(token: string) {
-    return token.toUpperCase()
+  function formatSemanticToken(value: TemplateStringsArray) {
+    return `{colors.${value}}`
   }
 
   test('should have a danger property', () => {
@@ -15,45 +15,39 @@ describe('dangerTokens', () => {
   })
 
   test('should have a bg.initial property', () => {
+    expect(dangerTokens.danger.bg.initial.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`danger.80`,
+    )
     expect(
-      formatToken(dangerTokens.danger.bg.initial.value._cerberusTheme.base),
-    ).toEqual('#97201B')
+      dangerTokens.danger.bg.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.80`)
     expect(
-      formatToken(
-        dangerTokens.danger.bg.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#97201B')
-    expect(
-      formatToken(
-        dangerTokens.danger.bg.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FB362D')
+      dangerTokens.danger.bg.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.60`)
   })
 
   test('should have a bg.hover property', () => {
+    expect(dangerTokens.danger.bg.hover.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`danger.40`,
+    )
+    expect(dangerTokens.danger.bg.hover.value._cerberusTheme._darkMode).toEqual(
+      formatSemanticToken`danger.40`,
+    )
     expect(
-      formatToken(dangerTokens.danger.bg.hover.value._cerberusTheme.base),
-    ).toEqual('#FD8681')
-    expect(
-      formatToken(dangerTokens.danger.bg.hover.value._cerberusTheme._darkMode),
-    ).toEqual('#FD8681')
-    expect(
-      formatToken(dangerTokens.danger.bg.hover.value._cerberusTheme._lightMode),
-    ).toEqual('#97201B')
+      dangerTokens.danger.bg.hover.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.80`)
   })
 
   test('should have a bg.active property', () => {
+    expect(dangerTokens.danger.bg.active.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`danger.30`,
+    )
     expect(
-      formatToken(dangerTokens.danger.bg.active.value._cerberusTheme.base),
-    ).toEqual('#FDAFAB')
+      dangerTokens.danger.bg.active.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.30`)
     expect(
-      formatToken(dangerTokens.danger.bg.active.value._cerberusTheme._darkMode),
-    ).toEqual('#FDAFAB')
-    expect(
-      formatToken(
-        dangerTokens.danger.bg.active.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#641612')
+      dangerTokens.danger.bg.active.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.90`)
   })
 
   test('should have a border property', () => {
@@ -62,18 +56,14 @@ describe('dangerTokens', () => {
 
   test('should have a border.initial property', () => {
     expect(
-      formatToken(dangerTokens.danger.border.initial.value._cerberusTheme.base),
-    ).toEqual('#FDAFAB')
+      dangerTokens.danger.border.initial.value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`danger.30`)
     expect(
-      formatToken(
-        dangerTokens.danger.border.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#FDAFAB')
+      dangerTokens.danger.border.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.30`)
     expect(
-      formatToken(
-        dangerTokens.danger.border.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FC5E57')
+      dangerTokens.danger.border.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.50`)
   })
 
   test('should have a ghost property', () => {
@@ -81,51 +71,39 @@ describe('dangerTokens', () => {
   })
 
   test('should have a ghost.initial property', () => {
+    expect(dangerTokens.danger.ghost.initial.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`brand.100`,
+    )
     expect(
-      formatToken(dangerTokens.danger.ghost.initial.value._cerberusTheme.base),
-    ).toEqual('#130024')
+      dangerTokens.danger.ghost.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`brand.100`)
     expect(
-      formatToken(
-        dangerTokens.danger.ghost.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#130024')
-    expect(
-      formatToken(
-        dangerTokens.danger.ghost.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FFFFFF')
+      dangerTokens.danger.ghost.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`neutral.white`)
   })
 
   test('should have a ghost.hover property', () => {
+    expect(dangerTokens.danger.ghost.hover.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`danger.90`,
+    )
     expect(
-      formatToken(dangerTokens.danger.ghost.hover.value._cerberusTheme.base),
-    ).toEqual('#641612')
+      dangerTokens.danger.ghost.hover.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.90`)
     expect(
-      formatToken(
-        dangerTokens.danger.ghost.hover.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#641612')
-    expect(
-      formatToken(
-        dangerTokens.danger.ghost.hover.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FFEBEA')
+      dangerTokens.danger.ghost.hover.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.10`)
   })
 
   test('should have a ghost.active property', () => {
+    expect(dangerTokens.danger.ghost.active.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`danger.80`,
+    )
     expect(
-      formatToken(dangerTokens.danger.ghost.active.value._cerberusTheme.base),
-    ).toEqual('#97201B')
+      dangerTokens.danger.ghost.active.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.80`)
     expect(
-      formatToken(
-        dangerTokens.danger.ghost.active.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#97201B')
-    expect(
-      formatToken(
-        dangerTokens.danger.ghost.active.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FED7D5')
+      dangerTokens.danger.ghost.active.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.20`)
   })
 
   test('should have a surface.initial property', () => {
@@ -134,52 +112,38 @@ describe('dangerTokens', () => {
 
   test('should have a surface.initial property', () => {
     expect(
-      formatToken(
-        dangerTokens.danger.surface.initial.value._cerberusTheme.base,
-      ),
-    ).toEqual('#97201B')
+      dangerTokens.danger.surface.initial.value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`danger.80`)
     expect(
-      formatToken(
-        dangerTokens.danger.surface.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#97201B')
+      dangerTokens.danger.surface.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.80`)
     expect(
-      formatToken(
-        dangerTokens.danger.surface.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FDAFAB')
+      dangerTokens.danger.surface.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.30`)
   })
 
   test('should have a surface.100 property', () => {
     expect(
-      formatToken(dangerTokens.danger.surface['100'].value._cerberusTheme.base),
-    ).toEqual('#641612')
+      dangerTokens.danger.surface['100'].value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`danger.90`)
     expect(
-      formatToken(
-        dangerTokens.danger.surface['100'].value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#641612')
+      dangerTokens.danger.surface['100'].value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.90`)
     expect(
-      formatToken(
-        dangerTokens.danger.surface['100'].value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FFEBEA')
+      dangerTokens.danger.surface['100'].value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.10`)
   })
 
   test('should have a surface.200 property', () => {
     expect(
-      formatToken(dangerTokens.danger.surface['200'].value._cerberusTheme.base),
-    ).toEqual('#DA1E28')
+      dangerTokens.danger.surface['200'].value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`danger.70`)
     expect(
-      formatToken(
-        dangerTokens.danger.surface['200'].value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#DA1E28')
+      dangerTokens.danger.surface['200'].value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.70`)
     expect(
-      formatToken(
-        dangerTokens.danger.surface['200'].value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FC5E57')
+      dangerTokens.danger.surface['200'].value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.50`)
   })
 
   test('should have a text property', () => {
@@ -187,51 +151,39 @@ describe('dangerTokens', () => {
   })
 
   test('should have a text.initial property', () => {
+    expect(dangerTokens.danger.text.initial.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`danger.10`,
+    )
     expect(
-      formatToken(dangerTokens.danger.text.initial.value._cerberusTheme.base),
-    ).toEqual('#FFEBEA')
+      dangerTokens.danger.text.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.10`)
     expect(
-      formatToken(
-        dangerTokens.danger.text.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#FFEBEA')
-    expect(
-      formatToken(
-        dangerTokens.danger.text.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#320B09')
+      dangerTokens.danger.text.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.100`)
   })
 
   test('should have a text.100 property', () => {
+    expect(dangerTokens.danger.text['100'].value._cerberusTheme.base).toEqual(
+      formatSemanticToken`danger.30`,
+    )
     expect(
-      formatToken(dangerTokens.danger.text['100'].value._cerberusTheme.base),
-    ).toEqual('#FDAFAB')
+      dangerTokens.danger.text['100'].value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.30`)
     expect(
-      formatToken(
-        dangerTokens.danger.text['100'].value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#FDAFAB')
-    expect(
-      formatToken(
-        dangerTokens.danger.text['100'].value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#97201B')
+      dangerTokens.danger.text['100'].value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.80`)
   })
 
   test('should have a text.200 property', () => {
+    expect(dangerTokens.danger.text['200'].value._cerberusTheme.base).toEqual(
+      formatSemanticToken`danger.50`,
+    )
     expect(
-      formatToken(dangerTokens.danger.text['200'].value._cerberusTheme.base),
-    ).toEqual('#FC5E57')
+      dangerTokens.danger.text['200'].value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.50`)
     expect(
-      formatToken(
-        dangerTokens.danger.text['200'].value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#FC5E57')
-    expect(
-      formatToken(
-        dangerTokens.danger.text['200'].value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#DA1E28')
+      dangerTokens.danger.text['200'].value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.70`)
   })
 
   test('should have a text.inverse property', () => {
@@ -239,34 +191,26 @@ describe('dangerTokens', () => {
   })
 
   test('should have a text.inverse property', () => {
+    expect(dangerTokens.danger.text.inverse.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`danger.90`,
+    )
     expect(
-      formatToken(dangerTokens.danger.text.inverse.value._cerberusTheme.base),
-    ).toEqual('#641612')
+      dangerTokens.danger.text.inverse.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.90`)
     expect(
-      formatToken(
-        dangerTokens.danger.text.inverse.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#641612')
-    expect(
-      formatToken(
-        dangerTokens.danger.text.inverse.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FFEBEA')
+      dangerTokens.danger.text.inverse.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.10`)
   })
 
   test('should have a text.static property', () => {
+    expect(dangerTokens.danger.text.static.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`danger.80`,
+    )
     expect(
-      formatToken(dangerTokens.danger.text.static.value._cerberusTheme.base),
-    ).toEqual('#97201B')
+      dangerTokens.danger.text.static.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`danger.80`)
     expect(
-      formatToken(
-        dangerTokens.danger.text.static.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#97201B')
-    expect(
-      formatToken(
-        dangerTokens.danger.text.static.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#97201B')
+      dangerTokens.danger.text.static.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`danger.80`)
   })
 })
