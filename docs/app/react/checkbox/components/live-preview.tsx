@@ -75,7 +75,7 @@ export function CheckboxPreview() {
   const { size, text, id, mixed, ...fieldState } = selectedProps
   const [checked, setChecked] = useState<boolean>(false)
 
-  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((_: ChangeEvent<HTMLInputElement>) => {
     setChecked((prev) => !prev)
   }, [])
 

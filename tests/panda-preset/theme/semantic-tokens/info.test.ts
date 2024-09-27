@@ -2,32 +2,20 @@ import { describe, test, expect } from 'bun:test'
 import { infoTokens } from '@cerberus-design/panda-preset'
 
 describe('infoTokens', () => {
-  function formatToken(token: string) {
-    return token.toUpperCase()
+  function formatSemanticToken(value: TemplateStringsArray) {
+    return `{colors.${value}}`
   }
 
-  test('should have a info property', () => {
-    expect(infoTokens.info).toBeDefined()
-  })
-
-  test('should have a border property', () => {
-    expect(infoTokens.info.border).toBeDefined()
-  })
-
   test('should have a border.initial property', () => {
+    expect(infoTokens.info.border.initial.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.50`,
+    )
     expect(
-      formatToken(infoTokens.info.border.initial.value._cerberusTheme.base),
-    ).toEqual('#35A0DD')
+      infoTokens.info.border.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`info.50`)
     expect(
-      formatToken(
-        infoTokens.info.border.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#35A0DD')
-    expect(
-      formatToken(
-        infoTokens.info.border.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#0288D5')
+      infoTokens.info.border.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`info.60`)
   })
 
   test('should have a bg property', () => {
@@ -35,39 +23,39 @@ describe('infoTokens', () => {
   })
 
   test('should have a bg.initial property', () => {
-    expect(
-      formatToken(infoTokens.info.bg.initial.value._cerberusTheme.base),
-    ).toEqual('#026DAA')
-    expect(
-      formatToken(infoTokens.info.bg.initial.value._cerberusTheme._darkMode),
-    ).toEqual('#026DAA')
-    expect(
-      formatToken(infoTokens.info.bg.initial.value._cerberusTheme._lightMode),
-    ).toEqual('#9ACFEE')
+    expect(infoTokens.info.bg.initial.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.70`,
+    )
+    expect(infoTokens.info.bg.initial.value._cerberusTheme._darkMode).toEqual(
+      formatSemanticToken`info.70`,
+    )
+    expect(infoTokens.info.bg.initial.value._cerberusTheme._lightMode).toEqual(
+      formatSemanticToken`info.30`,
+    )
   })
 
   test('should have a bg.hover property', () => {
-    expect(
-      formatToken(infoTokens.info.bg.hover.value._cerberusTheme.base),
-    ).toEqual('#013655')
-    expect(
-      formatToken(infoTokens.info.bg.hover.value._cerberusTheme._darkMode),
-    ).toEqual('#013655')
-    expect(
-      formatToken(infoTokens.info.bg.hover.value._cerberusTheme._lightMode),
-    ).toEqual('#CCE7F7')
+    expect(infoTokens.info.bg.hover.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.90`,
+    )
+    expect(infoTokens.info.bg.hover.value._cerberusTheme._darkMode).toEqual(
+      formatSemanticToken`info.90`,
+    )
+    expect(infoTokens.info.bg.hover.value._cerberusTheme._lightMode).toEqual(
+      formatSemanticToken`info.20`,
+    )
   })
 
   test('should have a bg.active property', () => {
-    expect(
-      formatToken(infoTokens.info.bg.active.value._cerberusTheme.base),
-    ).toEqual('#35A0DD')
-    expect(
-      formatToken(infoTokens.info.bg.active.value._cerberusTheme._darkMode),
-    ).toEqual('#35A0DD')
-    expect(
-      formatToken(infoTokens.info.bg.active.value._cerberusTheme._lightMode),
-    ).toEqual('#35A0DD')
+    expect(infoTokens.info.bg.active.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.50`,
+    )
+    expect(infoTokens.info.bg.active.value._cerberusTheme._darkMode).toEqual(
+      formatSemanticToken`info.50`,
+    )
+    expect(infoTokens.info.bg.active.value._cerberusTheme._lightMode).toEqual(
+      formatSemanticToken`info.50`,
+    )
   })
 
   test('should have a ghost property', () => {
@@ -75,41 +63,39 @@ describe('infoTokens', () => {
   })
 
   test('should have a ghost.initial property', () => {
+    expect(infoTokens.info.ghost.initial.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`brand.100`,
+    )
     expect(
-      formatToken(infoTokens.info.ghost.initial.value._cerberusTheme.base),
-    ).toEqual('#130024')
+      infoTokens.info.ghost.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`brand.100`)
     expect(
-      formatToken(infoTokens.info.ghost.initial.value._cerberusTheme._darkMode),
-    ).toEqual('#130024')
-    expect(
-      formatToken(
-        infoTokens.info.ghost.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#FFFFFF')
+      infoTokens.info.ghost.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`neutral.white`)
   })
 
   test('should have a ghost.hover property', () => {
-    expect(
-      formatToken(infoTokens.info.ghost.hover.value._cerberusTheme.base),
-    ).toEqual('#013655')
-    expect(
-      formatToken(infoTokens.info.ghost.hover.value._cerberusTheme._darkMode),
-    ).toEqual('#013655')
-    expect(
-      formatToken(infoTokens.info.ghost.hover.value._cerberusTheme._lightMode),
-    ).toEqual('#CCE7F7')
+    expect(infoTokens.info.ghost.hover.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.90`,
+    )
+    expect(infoTokens.info.ghost.hover.value._cerberusTheme._darkMode).toEqual(
+      formatSemanticToken`info.90`,
+    )
+    expect(infoTokens.info.ghost.hover.value._cerberusTheme._lightMode).toEqual(
+      formatSemanticToken`info.20`,
+    )
   })
 
   test('should have a ghost.active property', () => {
+    expect(infoTokens.info.ghost.active.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.80`,
+    )
+    expect(infoTokens.info.ghost.active.value._cerberusTheme._darkMode).toEqual(
+      formatSemanticToken`info.80`,
+    )
     expect(
-      formatToken(infoTokens.info.ghost.active.value._cerberusTheme.base),
-    ).toEqual('#015280')
-    expect(
-      formatToken(infoTokens.info.ghost.active.value._cerberusTheme._darkMode),
-    ).toEqual('#015280')
-    expect(
-      formatToken(infoTokens.info.ghost.active.value._cerberusTheme._lightMode),
-    ).toEqual('#9ACFEE')
+      infoTokens.info.ghost.active.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`info.30`)
   })
 
   test('should have a surface.initial property', () => {
@@ -117,51 +103,39 @@ describe('infoTokens', () => {
   })
 
   test('should have a surface.initial property', () => {
+    expect(infoTokens.info.surface.initial.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.70`,
+    )
     expect(
-      formatToken(infoTokens.info.surface.initial.value._cerberusTheme.base),
-    ).toEqual('#026DAA')
+      infoTokens.info.surface.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`info.70`)
     expect(
-      formatToken(
-        infoTokens.info.surface.initial.value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#026DAA')
-    expect(
-      formatToken(
-        infoTokens.info.surface.initial.value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#9ACFEE')
+      infoTokens.info.surface.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`info.30`)
   })
 
   test('should have a surface.100 property', () => {
+    expect(infoTokens.info.surface['100'].value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.90`,
+    )
     expect(
-      formatToken(infoTokens.info.surface['100'].value._cerberusTheme.base),
-    ).toEqual('#013655')
+      infoTokens.info.surface['100'].value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`info.90`)
     expect(
-      formatToken(
-        infoTokens.info.surface['100'].value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#013655')
-    expect(
-      formatToken(
-        infoTokens.info.surface['100'].value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#CCE7F7')
+      infoTokens.info.surface['100'].value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`info.20`)
   })
 
   test('should have a surface.200 property', () => {
+    expect(infoTokens.info.surface['200'].value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.50`,
+    )
     expect(
-      formatToken(infoTokens.info.surface['200'].value._cerberusTheme.base),
-    ).toEqual('#35A0DD')
+      infoTokens.info.surface['200'].value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`info.50`)
     expect(
-      formatToken(
-        infoTokens.info.surface['200'].value._cerberusTheme._darkMode,
-      ),
-    ).toEqual('#35A0DD')
-    expect(
-      formatToken(
-        infoTokens.info.surface['200'].value._cerberusTheme._lightMode,
-      ),
-    ).toEqual('#35A0DD')
+      infoTokens.info.surface['200'].value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`info.50`)
   })
 
   test('should have a text property', () => {
@@ -169,50 +143,50 @@ describe('infoTokens', () => {
   })
 
   test('should have a text.initial property', () => {
+    expect(infoTokens.info.text.initial.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.10`,
+    )
+    expect(infoTokens.info.text.initial.value._cerberusTheme._darkMode).toEqual(
+      formatSemanticToken`info.10`,
+    )
     expect(
-      formatToken(infoTokens.info.text.initial.value._cerberusTheme.base),
-    ).toEqual('#E6F3FB')
-    expect(
-      formatToken(infoTokens.info.text.initial.value._cerberusTheme._darkMode),
-    ).toEqual('#E6F3FB')
-    expect(
-      formatToken(infoTokens.info.text.initial.value._cerberusTheme._lightMode),
-    ).toEqual('#001B2B')
+      infoTokens.info.text.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`info.100`)
   })
 
   test('should have a text.100 property', () => {
-    expect(
-      formatToken(infoTokens.info.text['100'].value._cerberusTheme.base),
-    ).toEqual('#9ACFEE')
-    expect(
-      formatToken(infoTokens.info.text['100'].value._cerberusTheme._darkMode),
-    ).toEqual('#9ACFEE')
-    expect(
-      formatToken(infoTokens.info.text['100'].value._cerberusTheme._lightMode),
-    ).toEqual('#026DAA')
+    expect(infoTokens.info.text['100'].value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.30`,
+    )
+    expect(infoTokens.info.text['100'].value._cerberusTheme._darkMode).toEqual(
+      formatSemanticToken`info.30`,
+    )
+    expect(infoTokens.info.text['100'].value._cerberusTheme._lightMode).toEqual(
+      formatSemanticToken`info.70`,
+    )
   })
 
   test('should have a text.200 property', () => {
-    expect(
-      formatToken(infoTokens.info.text['200'].value._cerberusTheme.base),
-    ).toEqual('#35A0DD')
-    expect(
-      formatToken(infoTokens.info.text['200'].value._cerberusTheme._darkMode),
-    ).toEqual('#35A0DD')
-    expect(
-      formatToken(infoTokens.info.text['200'].value._cerberusTheme._lightMode),
-    ).toEqual('#35A0DD')
+    expect(infoTokens.info.text['200'].value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.50`,
+    )
+    expect(infoTokens.info.text['200'].value._cerberusTheme._darkMode).toEqual(
+      formatSemanticToken`info.50`,
+    )
+    expect(infoTokens.info.text['200'].value._cerberusTheme._lightMode).toEqual(
+      formatSemanticToken`info.50`,
+    )
   })
 
   test('should have a text.static property', () => {
-    expect(
-      formatToken(infoTokens.info.text.static.value._cerberusTheme.base),
-    ).toEqual('#0288D5')
-    expect(
-      formatToken(infoTokens.info.text.static.value._cerberusTheme._darkMode),
-    ).toEqual('#0288D5')
-    expect(
-      formatToken(infoTokens.info.text.static.value._cerberusTheme._lightMode),
-    ).toEqual('#0288D5')
+    expect(infoTokens.info.text.static.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`info.60`,
+    )
+    expect(infoTokens.info.text.static.value._cerberusTheme._darkMode).toEqual(
+      formatSemanticToken`info.60`,
+    )
+    expect(infoTokens.info.text.static.value._cerberusTheme._lightMode).toEqual(
+      formatSemanticToken`info.60`,
+    )
   })
 })

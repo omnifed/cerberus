@@ -19,6 +19,21 @@ const overviewGroup: CategoriesList = {
     new: ['Loading States'],
   },
 }
+const hooksGroup: CategoriesList = {
+  overview: {
+    name: 'Hooks & Helpers',
+    description: 'React hooks and helper functions for Cerberus',
+    items: [
+      'trap-focus',
+      'use-modal',
+      'use-theme',
+      'use-theme-context',
+      'use-toggle',
+    ],
+    next: [],
+    new: [''],
+  },
+}
 
 function createSideNavData(categories: CategoriesList): NavList {
   const navList: NavList = []
@@ -54,4 +69,5 @@ function getCategoryItemTags(
 export const sideNavData: NavList = [
   ...createSideNavData(overviewGroup),
   ...createSideNavData(categoriesData),
+  ...createSideNavData(hooksGroup),
 ]

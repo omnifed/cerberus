@@ -33,9 +33,14 @@ export const rawTokens: RawTokens = {
   textStyles: TextStyles,
 }
 
+// used in the docs
+export const semanticColors = rawTokens.semanticColors.dark
 export const colors = rawTokens.primitives.colors
+
+export const primitiveColorTokens = rawTokens.primitives.colors
 export const text = rawTokens.primitives.typography
-export const semanticColors = semanticColorsDark
+export const darkTokens = semanticColorsDark
+export const lightTokens = semanticColorsLight
 
 export type PrimitiveCollection =
   | RawTokens['primitives']['colors']
@@ -43,29 +48,30 @@ export type PrimitiveCollection =
 
 // helpers
 
-export function deepGet(
-  obj: PrimitiveCollection,
-  keys: string[],
-): PrimitiveCollection {
-  return keys.reduce(
-    (xs, x) => xs?.[x as keyof PrimitiveCollection] ?? null,
-    obj,
+export type PandaColor = {
+  [palette: string]: {
+    [prominence: string | number]: {
+      value: string
+    }
+  }
+}
+
+export function formatPrimitiveColors(): PandaColor {
+  return Object.entries(primitiveColors.colors).reduce(
+    (acc, [palette, prominence]) => {
+      acc[palette] = Object.entries(prominence).reduce(
+        (acc, [prominence, value]) => {
+          acc[prominence] = { value: value.$value }
+          return acc
+        },
+        {} as PandaColor[string],
+      )
+      return acc
+    },
+    {} as PandaColor,
   )
 }
 
-type DeepReturn = {
-  $value: string
-}
-
-export function deepGetByPaths(
-  obj: PrimitiveCollection,
-  path: string,
-): DeepReturn {
-  return deepGet(
-    obj,
-    path
-      .replace(/\[([^[\]]*)\]/g, '.$1.')
-      .split('.')
-      .filter((t) => t !== ''),
-  ) as unknown as DeepReturn
+export function getSemanticToken(path: string): string {
+  return `{${path}}`
 }
