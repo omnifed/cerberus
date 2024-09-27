@@ -1,7 +1,127 @@
 {
-  "display-lg": {
+  "brand-font": {
+    "$type": "string",
+    "$value": "Poppins",
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": true,
+        "scopes": ["FONT_FAMILY"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "monospace-font": {
+    "$type": "string",
+    "$value": "Recursive",
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["ALL_SCOPES"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "font-weight-800": {
     "$type": "number",
-    "$value": "font-size-1200",
+    "$value": 800,
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["FONT_STYLE"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "font-weight-700": {
+    "$type": "number",
+    "$value": 700,
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["FONT_STYLE"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "font-weight-600": {
+    "$type": "number",
+    "$value": 600,
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["FONT_STYLE"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "font-weight-500": {
+    "$type": "number",
+    "$value": 500,
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["FONT_STYLE"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "font-weight-400": {
+    "$type": "number",
+    "$value": 400,
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["FONT_STYLE"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "font-weight-300": {
+    "$type": "number",
+    "$value": 300,
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["FONT_STYLE"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "font-weight-200": {
+    "$type": "number",
+    "$value": 200,
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": true,
+        "scopes": ["FONT_STYLE"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "font-size-300": {
+    "$type": "number",
+    "$value": 12,
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": true,
+        "scopes": ["TEXT_CONTENT"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "font-size-325": {
+    "$type": "number",
+    "$value": 13,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -11,9 +131,9 @@
       }
     }
   },
-  "display-md": {
+  "font-size-350": {
     "$type": "number",
-    "$value": "font-size-1000",
+    "$value": 14,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -23,9 +143,9 @@
       }
     }
   },
-  "display-sm": {
+  "font-size-400": {
     "$type": "number",
-    "$value": "font-size-750",
+    "$value": 16,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -35,9 +155,9 @@
       }
     }
   },
-  "body-lg": {
+  "font-size-450": {
     "$type": "number",
-    "$value": "font-size-450",
+    "$value": 18,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -47,9 +167,9 @@
       }
     }
   },
-  "body-md": {
+  "font-size-500": {
     "$type": "number",
-    "$value": "font-size-400",
+    "$value": 20,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -59,9 +179,9 @@
       }
     }
   },
-  "body-sm": {
+  "font-size-600": {
     "$type": "number",
-    "$value": "font-size-325",
+    "$value": 24,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -71,9 +191,9 @@
       }
     }
   },
-  "headers-h1": {
+  "font-size-750": {
     "$type": "number",
-    "$value": "font-size-1050",
+    "$value": 30,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -83,9 +203,9 @@
       }
     }
   },
-  "headers-h2": {
+  "font-size-900": {
     "$type": "number",
-    "$value": "font-size-900",
+    "$value": 36,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -95,9 +215,9 @@
       }
     }
   },
-  "headers-h3": {
+  "font-size-1000": {
     "$type": "number",
-    "$value": "font-size-750",
+    "$value": 40,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -107,9 +227,9 @@
       }
     }
   },
-  "headers-h4": {
+  "font-size-1050": {
     "$type": "number",
-    "$value": "font-size-600",
+    "$value": 42,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -119,45 +239,9 @@
       }
     }
   },
-  "headers-h5": {
+  "font-size-1200": {
     "$type": "number",
-    "$value": "font-size-500",
-    "$description": "",
-    "$extensions": {
-      "com.figma": {
-        "hiddenFromPublishing": false,
-        "scopes": ["TEXT_CONTENT"],
-        "codeSyntax": {}
-      }
-    }
-  },
-  "headers-h6": {
-    "$type": "number",
-    "$value": "font-size-400",
-    "$description": "",
-    "$extensions": {
-      "com.figma": {
-        "hiddenFromPublishing": false,
-        "scopes": ["TEXT_CONTENT"],
-        "codeSyntax": {}
-      }
-    }
-  },
-  "label-sm": {
-    "$type": "number",
-    "$value": "font-size-300",
-    "$description": "",
-    "$extensions": {
-      "com.figma": {
-        "hiddenFromPublishing": false,
-        "scopes": ["TEXT_CONTENT"],
-        "codeSyntax": {}
-      }
-    }
-  },
-  "label-md": {
-    "$type": "number",
-    "$value": "font-size-350",
+    "$value": 48,
     "$description": "",
     "$extensions": {
       "com.figma": {

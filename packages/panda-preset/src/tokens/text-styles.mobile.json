@@ -1,7 +1,7 @@
 {
   "display-lg": {
     "$type": "number",
-    "$value": "font-size.font-size-1000",
+    "$value": "font-size-1000",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -13,7 +13,7 @@
   },
   "display-md": {
     "$type": "number",
-    "$value": "font-size.font-size-750",
+    "$value": "font-size-750",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -25,7 +25,7 @@
   },
   "display-sm": {
     "$type": "number",
-    "$value": "font-size.font-size-500",
+    "$value": "font-size-500",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -37,7 +37,7 @@
   },
   "body-lg": {
     "$type": "number",
-    "$value": "font-size.font-size-450",
+    "$value": "font-size-450",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -49,7 +49,7 @@
   },
   "body-md": {
     "$type": "number",
-    "$value": "font-size.font-size-400",
+    "$value": "font-size-400",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -61,7 +61,7 @@
   },
   "body-sm": {
     "$type": "number",
-    "$value": "font-size.font-size-325",
+    "$value": "font-size-325",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -73,7 +73,7 @@
   },
   "headers-h1": {
     "$type": "number",
-    "$value": "font-size.font-size-900",
+    "$value": "font-size-900",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -85,7 +85,7 @@
   },
   "headers-h2": {
     "$type": "number",
-    "$value": "font-size.font-size-750",
+    "$value": "font-size-750",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -97,7 +97,7 @@
   },
   "headers-h3": {
     "$type": "number",
-    "$value": "font-size.font-size-600",
+    "$value": "font-size-600",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -109,7 +109,7 @@
   },
   "headers-h4": {
     "$type": "number",
-    "$value": "font-size.font-size-500",
+    "$value": "font-size-500",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -121,7 +121,7 @@
   },
   "headers-h5": {
     "$type": "number",
-    "$value": "font-size.font-size-450",
+    "$value": "font-size-450",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -133,7 +133,7 @@
   },
   "headers-h6": {
     "$type": "number",
-    "$value": "font-size.font-size-400",
+    "$value": "font-size-400",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -145,7 +145,7 @@
   },
   "label-sm": {
     "$type": "number",
-    "$value": "font-size.font-size-300",
+    "$value": "font-size-300",
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -157,7 +157,7 @@
   },
   "label-md": {
     "$type": "number",
-    "$value": "font-size.font-size-325",
+    "$value": "font-size-325",
     "$description": "",
     "$extensions": {
       "com.figma": {
