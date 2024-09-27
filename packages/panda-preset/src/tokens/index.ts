@@ -33,7 +33,7 @@ export const rawTokens: RawTokens = {
   textStyles: TextStyles,
 }
 
-// todo: delete these
+// used in the docs
 export const semanticColors = rawTokens.semanticColors.dark
 export const colors = rawTokens.primitives.colors
 
@@ -74,31 +74,4 @@ export function formatPrimitiveColors(): PandaColor {
 
 export function getSemanticToken(path: string): string {
   return `{${path}}`
-}
-
-export function deepGet(
-  obj: PrimitiveCollection,
-  keys: string[],
-): PrimitiveCollection {
-  return keys.reduce(
-    (xs, x) => xs?.[x as keyof PrimitiveCollection] ?? null,
-    obj,
-  )
-}
-
-type DeepReturn = {
-  $value: string
-}
-
-export function deepGetByPaths(
-  obj: PrimitiveCollection,
-  path: string,
-): DeepReturn {
-  return deepGet(
-    obj,
-    path
-      .replace(/\[([^[\]]*)\]/g, '.$1.')
-      .split('.')
-      .filter((t) => t !== ''),
-  ) as unknown as DeepReturn
 }

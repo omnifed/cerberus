@@ -81,9 +81,13 @@ export const successTokens: SuccessTokens = {
           'The default background color of interactive elements that display a successful state.',
         value: {
           _cerberusTheme: {
-            base: '#0B6B2C',
-            _lightMode: '#D0F0DB',
-            _darkMode: '#0B6B2C',
+            base: getSemanticToken(darkTokens.background.success.hover.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.background.success.hover.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.background.success.hover.$value,
+            ),
           },
         },
       },
@@ -93,9 +97,13 @@ export const successTokens: SuccessTokens = {
           'The active surface color of interactive elements in a successful state.',
         value: {
           _cerberusTheme: {
-            base: '#41C16E',
-            _lightMode: '#0E8E3B',
-            _darkMode: '#41C16E',
+            base: getSemanticToken(darkTokens.background.success.active.$value),
+            _lightMode: getSemanticToken(
+              lightTokens.background.success.active.$value,
+            ),
+            _darkMode: getSemanticToken(
+              darkTokens.background.success.active.$value,
+            ),
           },
         },
       },

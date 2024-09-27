@@ -108,14 +108,14 @@ describe('success', () => {
 
   test('should have a bg.active property', () => {
     expect(successTokens.success.bg.active.value._cerberusTheme.base).toEqual(
-      '#41C16E',
+      formatSemanticToken`success.40`,
     )
     expect(
       successTokens.success.bg.active.value._cerberusTheme._darkMode,
-    ).toEqual('#41C16E')
+    ).toEqual(formatSemanticToken`success.40`)
     expect(
       successTokens.success.bg.active.value._cerberusTheme._lightMode,
-    ).toEqual('#0E8E3B')
+    ).toEqual(formatSemanticToken`success.80`)
   })
 
   test('should have a text.initial property', () => {
