@@ -1,6 +1,5 @@
 import type { Prominence, SemanticToken } from './types'
-import { darkTokens, lightTokens, getSemanticToken } from '../../tokens'
-import { DANGER } from '../../recipes/shared/palettes'
+import { formatSemanticTokenValue } from '../../tokens'
 
 /**
  * This module is a collection of danger tokens that are used to generate the theme.
@@ -38,234 +37,33 @@ export interface DangerTokens {
 export const dangerTokens: DangerTokens = {
   danger: {
     bg: {
-      initial: {
-        description:
-          darkTokens.background[DANGER].initial.$description ||
-          'The default background color of the danger elements.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.background.danger.initial.$value),
-            _lightMode: getSemanticToken(
-              lightTokens.background.danger.initial.$value,
-            ),
-            _darkMode: getSemanticToken(
-              darkTokens.background.danger.initial.$value,
-            ),
-          },
-        },
-      },
-      hover: {
-        description:
-          darkTokens.background[DANGER].hover.$description ||
-          'The background color of the danger element when hovered.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.background.danger.hover.$value),
-            _lightMode: getSemanticToken(
-              lightTokens.background.danger.hover.$value,
-            ),
-            _darkMode: getSemanticToken(
-              darkTokens.background.danger.hover.$value,
-            ),
-          },
-        },
-      },
-      active: {
-        description:
-          darkTokens.background[DANGER].active.$description ||
-          'The background color of the danger element when active.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.background.danger.active.$value),
-            _lightMode: getSemanticToken(
-              lightTokens.background.danger.active.$value,
-            ),
-            _darkMode: getSemanticToken(
-              darkTokens.background.danger.active.$value,
-            ),
-          },
-        },
-      },
+      initial: formatSemanticTokenValue('background.danger.initial'),
+      hover: formatSemanticTokenValue('background.danger.hover'),
+      active: formatSemanticTokenValue('background.danger.active'),
     },
 
     border: {
-      initial: {
-        description:
-          darkTokens.border[DANGER].initial.$description ||
-          'The default border color of danger elements.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.border.danger.initial.$value),
-            _lightMode: getSemanticToken(
-              lightTokens.border.danger.initial.$value,
-            ),
-            _darkMode: getSemanticToken(
-              darkTokens.border.danger.initial.$value,
-            ),
-          },
-        },
-      },
+      initial: formatSemanticTokenValue('border.danger.initial'),
     },
 
     ghost: {
-      initial: {
-        description:
-          darkTokens.ghost[DANGER].initial.$description ||
-          'The default ghost color of the danger elements.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.ghost.danger.initial.$value),
-            _lightMode: getSemanticToken(
-              lightTokens.ghost.danger.initial.$value,
-            ),
-            _darkMode: getSemanticToken(darkTokens.ghost.danger.initial.$value),
-          },
-        },
-      },
-      hover: {
-        description:
-          darkTokens.ghost[DANGER].hover.$description ||
-          'The ghost color of the danger element when hovered.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.ghost.danger.hover.$value),
-            _lightMode: getSemanticToken(lightTokens.ghost.danger.hover.$value),
-            _darkMode: getSemanticToken(darkTokens.ghost.danger.hover.$value),
-          },
-        },
-      },
-      active: {
-        description:
-          darkTokens.ghost[DANGER].active.$description ||
-          'The ghost color of the danger element when active.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.ghost.danger.active.$value),
-            _lightMode: getSemanticToken(
-              lightTokens.ghost.danger.active.$value,
-            ),
-            _darkMode: getSemanticToken(darkTokens.ghost.danger.active.$value),
-          },
-        },
-      },
+      initial: formatSemanticTokenValue('ghost.danger.initial'),
+      hover: formatSemanticTokenValue('ghost.danger.hover'),
+      active: formatSemanticTokenValue('ghost.danger.active'),
     },
 
     surface: {
-      initial: {
-        description:
-          darkTokens.surface[DANGER].initial.$description ||
-          'The default color for a static (surface) element in a danger state',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.surface.danger.initial.$value),
-            _lightMode: getSemanticToken(
-              lightTokens.surface.danger.initial.$value,
-            ),
-            _darkMode: getSemanticToken(
-              darkTokens.surface.danger.initial.$value,
-            ),
-          },
-        },
-      },
-      100: {
-        description:
-          darkTokens.surface[DANGER]['100'].$description ||
-          'The second layer of color for static (surface) elements that display a error state - used on top of initial.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.surface.danger['100'].$value),
-            _lightMode: getSemanticToken(
-              lightTokens.surface.danger['100'].$value,
-            ),
-            _darkMode: getSemanticToken(
-              darkTokens.surface.danger['100'].$value,
-            ),
-          },
-        },
-      },
-      200: {
-        description:
-          darkTokens.surface[DANGER]['200'].$description ||
-          'The third layer of color for static (surface) elements that display a error state - used on top of 100.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.surface.danger['200'].$value),
-            _lightMode: getSemanticToken(
-              lightTokens.surface.danger['200'].$value,
-            ),
-            _darkMode: getSemanticToken(
-              darkTokens.surface.danger['200'].$value,
-            ),
-          },
-        },
-      },
+      initial: formatSemanticTokenValue('surface.danger.initial'),
+      100: formatSemanticTokenValue('surface.danger.100'),
+      200: formatSemanticTokenValue('surface.danger.200'),
     },
 
     text: {
-      initial: {
-        description:
-          darkTokens.text[DANGER].initial.$description ||
-          'The default text color of danger elements.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.text.danger.initial.$value),
-            _lightMode: getSemanticToken(
-              lightTokens.text.danger.initial.$value,
-            ),
-            _darkMode: getSemanticToken(darkTokens.text.danger.initial.$value),
-          },
-        },
-      },
-      100: {
-        description:
-          darkTokens.text[DANGER]['100'].$description ||
-          'The secondary text color of danger elements.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.text.danger['100'].$value),
-            _lightMode: getSemanticToken(lightTokens.text.danger['100'].$value),
-            _darkMode: getSemanticToken(darkTokens.text.danger['100'].$value),
-          },
-        },
-      },
-      200: {
-        description:
-          darkTokens.text[DANGER]['200'].$description ||
-          'The tertiary text color of danger elements.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.text.danger['200'].$value),
-            _lightMode: getSemanticToken(lightTokens.text.danger['200'].$value),
-            _darkMode: getSemanticToken(darkTokens.text.danger['200'].$value),
-          },
-        },
-      },
-      inverse: {
-        description:
-          darkTokens.text[DANGER].inverse.$description ||
-          'The text color of danger elements when you need to display a light mode option within the dark mode.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.text.danger.inverse.$value),
-            _lightMode: getSemanticToken(
-              lightTokens.text.danger.inverse.$value,
-            ),
-            _darkMode: getSemanticToken(darkTokens.text.danger.inverse.$value),
-          },
-        },
-      },
-      static: {
-        description:
-          darkTokens.text[DANGER].static.$description ||
-          'The text color of danger elements when you need to display a light mode option within the dark mode.',
-        value: {
-          _cerberusTheme: {
-            base: getSemanticToken(darkTokens.text.danger.static.$value),
-            _lightMode: getSemanticToken(lightTokens.text.danger.static.$value),
-            _darkMode: getSemanticToken(darkTokens.text.danger.static.$value),
-          },
-        },
-      },
+      initial: formatSemanticTokenValue('text.danger.initial'),
+      100: formatSemanticTokenValue('text.danger.100'),
+      200: formatSemanticTokenValue('text.danger.200'),
+      inverse: formatSemanticTokenValue('text.danger.inverse'),
+      static: formatSemanticTokenValue('text.danger.static'),
     },
   },
 }

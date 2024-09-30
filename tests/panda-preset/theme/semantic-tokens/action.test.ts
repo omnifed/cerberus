@@ -10,159 +10,258 @@ describe('actionTokens', () => {
     expect(actionTokens.action).toBeDefined()
   })
 
-  test('should have a action.bg.initial key', () => {
+  // bg.initial
+
+  test('should have a cerberus action.bg.initial key', () => {
     expect(actionTokens.action.bg.initial).toBeDefined()
     expect(actionTokens.action.bg.initial.value._cerberusTheme.base).toBe(
-      getSemanticToken`brand.60`,
+      getSemanticToken`cerberus.brand.60`,
     )
     expect(actionTokens.action.bg.initial.value._cerberusTheme._darkMode).toBe(
-      getSemanticToken`brand.60`,
+      getSemanticToken`cerberus.brand.60`,
     )
     expect(actionTokens.action.bg.initial.value._cerberusTheme._lightMode).toBe(
-      getSemanticToken`brand.60`,
+      getSemanticToken`cerberus.brand.60`,
     )
   })
 
-  test('should have a action.bg.hover key', () => {
+  // bg.hover
+
+  test('should have a cerberus action.bg.hover key', () => {
     expect(actionTokens.action.bg.hover).toBeDefined()
     expect(actionTokens.action.bg.hover.value._cerberusTheme.base).toBe(
-      getSemanticToken`brand.50`,
+      getSemanticToken`cerberus.brand.50`,
     )
     expect(actionTokens.action.bg.hover.value._cerberusTheme._darkMode).toBe(
-      getSemanticToken`brand.50`,
+      getSemanticToken`cerberus.brand.50`,
     )
     expect(actionTokens.action.bg.hover.value._cerberusTheme._lightMode).toBe(
-      getSemanticToken`brand.50`,
+      getSemanticToken`cerberus.brand.50`,
     )
   })
 
-  test('should have a action.bg.active key', () => {
+  // bg.active
+
+  test('should have a cerberus action.bg.active key', () => {
     expect(actionTokens.action.bg.active).toBeDefined()
     expect(actionTokens.action.bg.active.value._cerberusTheme.base).toBe(
-      getSemanticToken`brand.70`,
+      getSemanticToken`cerberus.brand.70`,
     )
     expect(actionTokens.action.bg.active.value._cerberusTheme._darkMode).toBe(
-      getSemanticToken`brand.70`,
+      getSemanticToken`cerberus.brand.70`,
     )
     expect(actionTokens.action.bg.active.value._cerberusTheme._lightMode).toBe(
-      getSemanticToken`brand.40`,
+      getSemanticToken`cerberus.brand.40`,
     )
   })
 
-  test('should have a action.border.initial key', () => {
+  // border.initial
+
+  test('should have a cerberus action.border.initial key', () => {
     expect(actionTokens.action.border.initial).toBeDefined()
     expect(actionTokens.action.border.initial.value._cerberusTheme.base).toBe(
-      getSemanticToken`brand.30`,
+      getSemanticToken`cerberus.brand.30`,
     )
     expect(
       actionTokens.action.border.initial.value._cerberusTheme._darkMode,
-    ).toBe(getSemanticToken`brand.30`)
+    ).toBe(getSemanticToken`cerberus.brand.30`)
     expect(
       actionTokens.action.border.initial.value._cerberusTheme._lightMode,
-    ).toBe(getSemanticToken`brand.60`)
+    ).toBe(getSemanticToken`cerberus.brand.60`)
   })
 
-  test('should have a action.border.100 key', () => {
+  // border.100
+
+  test('should have a cerberus action.border.100 key', () => {
     expect(actionTokens.action.border[100]).toBeDefined()
     expect(actionTokens.action.border[100].value._cerberusTheme.base).toBe(
-      getSemanticToken`neutral.30`,
+      getSemanticToken`cerberus.neutral.30`,
     )
     expect(actionTokens.action.border[100].value._cerberusTheme._darkMode).toBe(
-      getSemanticToken`neutral.30`,
+      getSemanticToken`cerberus.neutral.30`,
     )
     expect(
       actionTokens.action.border[100].value._cerberusTheme._lightMode,
-    ).toBe(getSemanticToken`neutral.40`)
+    ).toBe(getSemanticToken`cerberus.neutral.40`)
   })
 
-  test('should have a action.border.focus key', () => {
+  // border.focus
+
+  test('should have a cerberus action.border.focus key', () => {
     expect(actionTokens.action.border.focus).toBeDefined()
     expect(actionTokens.action.border.focus.value._cerberusTheme.base).toBe(
-      '#BB93E1',
+      getSemanticToken`cerberus.brand.40`,
     )
     expect(
       actionTokens.action.border.focus.value._cerberusTheme._darkMode,
-    ).toBe('#BB93E1')
+    ).toBe(getSemanticToken`cerberus.brand.40`)
     expect(
       actionTokens.action.border.focus.value._cerberusTheme._lightMode,
-    ).toBe('#4C0091')
+    ).toBe(getSemanticToken`cerberus.brand.70`)
   })
 
-  test('should have a action.ghost.initial key', () => {
+  // ghost.initial
+
+  test('should have a cerberus action.ghost.initial key', () => {
     expect(actionTokens.action.ghost.initial).toBeDefined()
     expect(actionTokens.action.ghost.initial.value._cerberusTheme.base).toBe(
-      getSemanticToken`brand.100`,
+      getSemanticToken`cerberus.brand.100`,
     )
     expect(
       actionTokens.action.ghost.initial.value._cerberusTheme._darkMode,
-    ).toBe(getSemanticToken`brand.100`)
+    ).toBe(getSemanticToken`cerberus.brand.100`)
     expect(
       actionTokens.action.ghost.initial.value._cerberusTheme._lightMode,
-    ).toBe(getSemanticToken`neutral.white`)
+    ).toBe(getSemanticToken`cerberus.neutral.white`)
   })
 
-  test('should have a action.ghost.hover key', () => {
+  // ghost.hover
+
+  test('should have a cerberus action.ghost.hover key', () => {
     expect(actionTokens.action.ghost.hover).toBeDefined()
     expect(actionTokens.action.ghost.hover.value._cerberusTheme.base).toBe(
-      getSemanticToken`brand.90`,
+      getSemanticToken`cerberus.brand.90`,
     )
     expect(actionTokens.action.ghost.hover.value._cerberusTheme._darkMode).toBe(
-      getSemanticToken`brand.90`,
+      getSemanticToken`cerberus.brand.90`,
     )
     expect(
       actionTokens.action.ghost.hover.value._cerberusTheme._lightMode,
-    ).toBe(getSemanticToken`neutral.5`)
+    ).toBe(getSemanticToken`cerberus.neutral.5`)
   })
 
-  test('should have a action.ghost.active key', () => {
+  // ghost.active
+
+  test('should have a cerberus action.ghost.active key', () => {
     expect(actionTokens.action.ghost.active).toBeDefined()
     expect(actionTokens.action.ghost.active.value._cerberusTheme.base).toBe(
-      getSemanticToken`brand.80`,
+      getSemanticToken`cerberus.brand.80`,
     )
     expect(
       actionTokens.action.ghost.active.value._cerberusTheme._darkMode,
-    ).toBe(getSemanticToken`brand.80`)
+    ).toBe(getSemanticToken`cerberus.brand.80`)
     expect(
       actionTokens.action.ghost.active.value._cerberusTheme._lightMode,
-    ).toBe(getSemanticToken`brand.10`)
+    ).toBe(getSemanticToken`cerberus.brand.10`)
   })
 
-  test('should have a action.navigation.initial key', () => {
+  // navigation.initial
+
+  test('should have a cerberus action.navigation.initial key', () => {
     expect(actionTokens.action.navigation.initial).toBeDefined()
     expect(
       actionTokens.action.navigation.initial.value._cerberusTheme.base,
-    ).toBe(getSemanticToken`brand.40`)
+    ).toBe(getSemanticToken`cerberus.brand.40`)
     expect(
       actionTokens.action.navigation.initial.value._cerberusTheme._darkMode,
-    ).toBe(getSemanticToken`brand.40`)
+    ).toBe(getSemanticToken`cerberus.brand.40`)
     expect(
       actionTokens.action.navigation.initial.value._cerberusTheme._lightMode,
-    ).toBe(getSemanticToken`brand.60`)
+    ).toBe(getSemanticToken`cerberus.brand.60`)
   })
 
-  test('should have a action.navigation.hover key', () => {
+  // navigation.hover
+
+  test('should have a cerberus action.navigation.hover key', () => {
     expect(actionTokens.action.navigation.hover).toBeDefined()
     expect(actionTokens.action.navigation.hover.value._cerberusTheme.base).toBe(
-      getSemanticToken`brand.30`,
+      getSemanticToken`cerberus.brand.30`,
     )
     expect(
       actionTokens.action.navigation.hover.value._cerberusTheme._darkMode,
-    ).toBe(getSemanticToken`brand.30`)
+    ).toBe(getSemanticToken`cerberus.brand.30`)
     expect(
       actionTokens.action.navigation.hover.value._cerberusTheme._lightMode,
-    ).toBe(getSemanticToken`brand.50`)
+    ).toBe(getSemanticToken`cerberus.brand.50`)
   })
 
-  test('should have a action.navigation.visited key', () => {
+  // navigation.visited
+
+  test('should have a cerberus action.navigation.visited key', () => {
     expect(actionTokens.action.navigation.visited).toBeDefined()
     expect(
       actionTokens.action.navigation.visited.value._cerberusTheme.base,
-    ).toBe(getSemanticToken`brand.20`)
+    ).toBe(getSemanticToken`cerberus.brand.20`)
     expect(
       actionTokens.action.navigation.visited.value._cerberusTheme._darkMode,
-    ).toBe(getSemanticToken`brand.20`)
+    ).toBe(getSemanticToken`cerberus.brand.20`)
     expect(
       actionTokens.action.navigation.visited.value._cerberusTheme._lightMode,
-    ).toBe(getSemanticToken`neutral.60`)
+    ).toBe(getSemanticToken`cerberus.neutral.60`)
+  })
+
+  // text.initial
+
+  test('should have a action.text.initial key', () => {
+    expect(actionTokens.action.text.initial).toBeDefined()
+    expect(actionTokens.action.text.initial.value._cerberusTheme.base).toBe(
+      getSemanticToken`cerberus.neutral.white`,
+    )
+    expect(
+      actionTokens.action.text.initial.value._cerberusTheme._darkMode,
+    ).toBe(getSemanticToken`cerberus.neutral.white`)
+    expect(
+      actionTokens.action.text.initial.value._cerberusTheme._lightMode,
+    ).toBe(getSemanticToken`cerberus.brand.5`)
+  })
+
+  // text.100
+
+  test('should have a cerberus action.text.100 key', () => {
+    expect(actionTokens.action.text[100]).toBeDefined()
+    expect(actionTokens.action.text[100].value._cerberusTheme.base).toBe(
+      getSemanticToken`cerberus.brand.40`,
+    )
+    expect(actionTokens.action.text[100].value._cerberusTheme._darkMode).toBe(
+      getSemanticToken`cerberus.brand.40`,
+    )
+    expect(actionTokens.action.text[100].value._cerberusTheme._lightMode).toBe(
+      getSemanticToken`cerberus.brand.80`,
+    )
+  })
+
+  // text.200
+
+  test('should have a cerberus action.text.200 key', () => {
+    expect(actionTokens.action.text[200]).toBeDefined()
+    expect(actionTokens.action.text[200].value._cerberusTheme.base).toBe(
+      getSemanticToken`cerberus.brand.30`,
+    )
+    expect(actionTokens.action.text[200].value._cerberusTheme._darkMode).toBe(
+      getSemanticToken`cerberus.brand.30`,
+    )
+    expect(actionTokens.action.text[200].value._cerberusTheme._lightMode).toBe(
+      getSemanticToken`cerberus.brand.60`,
+    )
+  })
+
+  // text.inverse
+
+  test('should have a cerberus action.text.inverse key', () => {
+    expect(actionTokens.action.text.inverse).toBeDefined()
+    expect(actionTokens.action.text.inverse.value._cerberusTheme.base).toBe(
+      getSemanticToken`cerberus.brand.5`,
+    )
+    expect(
+      actionTokens.action.text.inverse.value._cerberusTheme._darkMode,
+    ).toBe(getSemanticToken`cerberus.brand.5`)
+    expect(
+      actionTokens.action.text.inverse.value._cerberusTheme._lightMode,
+    ).toBe(getSemanticToken`cerberus.brand.100`)
+  })
+
+  // text.static
+
+  test('should have a cerberus action.text.static key', () => {
+    expect(actionTokens.action.text.static).toBeDefined()
+    expect(actionTokens.action.text.static.value._cerberusTheme.base).toBe(
+      getSemanticToken`cerberus.brand.60`,
+    )
+    expect(actionTokens.action.text.static.value._cerberusTheme._darkMode).toBe(
+      getSemanticToken`cerberus.brand.60`,
+    )
+    expect(
+      actionTokens.action.text.static.value._cerberusTheme._lightMode,
+    ).toBe(getSemanticToken`cerberus.brand.60`)
   })
 })

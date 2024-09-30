@@ -1,0 +1,136 @@
+{
+  "none": {
+    "$type": "number",
+    "$value": "spacing.0",
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["WIDTH_HEIGHT", "GAP"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "xs": {
+    "$type": "number",
+    "$value": "spacing.025",
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": [
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
+        ],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "sm": {
+    "$type": "number",
+    "$value": "spacing.050",
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": [
+          "CORNER_RADIUS",
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
+        ],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "md": {
+    "$type": "number",
+    "$value": "spacing.100",
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": [
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
+        ],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "lg": {
+    "$type": "number",
+    "$value": "spacing.150",
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": [
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
+        ],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "xl": {
+    "$type": "number",
+    "$value": "spacing.200",
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": [
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
+        ],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "2xl": {
+    "$type": "number",
+    "$value": "spacing.250",
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": [
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
+        ],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "full": {
+    "$type": "number",
+    "$value": "spacing.rounded",
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["CORNER_RADIUS"],
+        "codeSyntax": {}
+      }
+    }
+  }
+}
