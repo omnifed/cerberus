@@ -6,175 +6,378 @@ describe('success', () => {
     return `{colors.${value}}`
   }
 
-  test('should have a success property', () => {
-    expect(successTokens.success).toBeDefined()
-  })
+  // border.initial
 
-  test('should have a border.initial property', () => {
+  test('should have a cerberus border.initial property', () => {
     expect(
       successTokens.success.border.initial.value._cerberusTheme.base,
-    ).toEqual(formatSemanticToken`success.50`)
+    ).toEqual(formatSemanticToken`cerberus.success.50`)
     expect(
       successTokens.success.border.initial.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.50`)
+    ).toEqual(formatSemanticToken`cerberus.success.50`)
     expect(
       successTokens.success.border.initial.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.70`)
+    ).toEqual(formatSemanticToken`cerberus.success.70`)
+  })
+  test('should have a acheron border.initial property', () => {
+    expect(
+      successTokens.success.border.initial.value._acheronTheme.base,
+    ).toEqual(formatSemanticToken`acheron.success.60`)
+    expect(
+      successTokens.success.border.initial.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.60`)
+    expect(
+      successTokens.success.border.initial.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.70`)
   })
 
-  test('should have a bg.initial property', () => {
+  // bg.initial
+
+  test('should have a cerberus bg.initial property', () => {
     expect(successTokens.success.bg.initial.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`success.50`,
+      formatSemanticToken`cerberus.success.50`,
     )
     expect(
       successTokens.success.bg.initial.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.50`)
+    ).toEqual(formatSemanticToken`cerberus.success.50`)
     expect(
       successTokens.success.bg.initial.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.60`)
+    ).toEqual(formatSemanticToken`cerberus.success.60`)
   })
-
-  test('should have a ghost.initial property', () => {
-    expect(
-      successTokens.success.ghost.initial.value._cerberusTheme.base,
-    ).toEqual(formatSemanticToken`brand.100`)
-    expect(
-      successTokens.success.ghost.initial.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`brand.100`)
-    expect(
-      successTokens.success.ghost.initial.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`neutral.white`)
-  })
-
-  test('should have a ghost.hover property', () => {
-    expect(successTokens.success.ghost.hover.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`success.90`,
+  test('should have a acheron bg.initial property', () => {
+    expect(successTokens.success.bg.initial.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.success.70`,
     )
     expect(
-      successTokens.success.ghost.hover.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.90`)
+      successTokens.success.bg.initial.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.70`)
     expect(
-      successTokens.success.ghost.hover.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.10`)
+      successTokens.success.bg.initial.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.60`)
   })
 
-  test('should have a ghost.active property', () => {
+  // bg.hover
+
+  test('should have a cerberus bg.hover property', () => {
+    expect(successTokens.success.bg.hover.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`cerberus.success.50`,
+    )
     expect(
-      successTokens.success.ghost.active.value._cerberusTheme.base,
-    ).toEqual(formatSemanticToken`success.80`)
+      successTokens.success.bg.hover.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`cerberus.success.50`)
     expect(
-      successTokens.success.ghost.active.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.80`)
+      successTokens.success.bg.hover.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`cerberus.success.70`)
+  })
+  test('should have a acheron bg.hover property', () => {
+    expect(successTokens.success.bg.hover.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.success.60`,
+    )
     expect(
-      successTokens.success.ghost.active.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.20`)
+      successTokens.success.bg.hover.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.60`)
+    expect(
+      successTokens.success.bg.hover.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.70`)
   })
 
-  test('should have a surface.initial property', () => {
-    expect(
-      successTokens.success.surface.initial.value._cerberusTheme.base,
-    ).toEqual(formatSemanticToken`success.70`)
-    expect(
-      successTokens.success.surface.initial.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.70`)
-    expect(
-      successTokens.success.surface.initial.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.50`)
-  })
+  // bg.active
 
-  test('should have a surface.100 property', () => {
-    expect(
-      successTokens.success.surface['100'].value._cerberusTheme.base,
-    ).toEqual(formatSemanticToken`success.90`)
-    expect(
-      successTokens.success.surface['100'].value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.90`)
-    expect(
-      successTokens.success.surface['100'].value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.40`)
-  })
-
-  test('should have a surface.200 property', () => {
-    expect(
-      successTokens.success.surface['200'].value._cerberusTheme.base,
-    ).toEqual(formatSemanticToken`success.70`)
-    expect(
-      successTokens.success.surface['200'].value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.70`)
-    expect(
-      successTokens.success.surface['200'].value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.60`)
-  })
-
-  test('should have a bg.active property', () => {
+  test('should have a cerberus bg.active property', () => {
     expect(successTokens.success.bg.active.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`success.40`,
+      formatSemanticToken`cerberus.success.40`,
     )
     expect(
       successTokens.success.bg.active.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.40`)
+    ).toEqual(formatSemanticToken`cerberus.success.40`)
     expect(
       successTokens.success.bg.active.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.80`)
+    ).toEqual(formatSemanticToken`cerberus.success.80`)
+  })
+  test('should have a acheron bg.active property', () => {
+    expect(successTokens.success.bg.active.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.success.50`,
+    )
+    expect(
+      successTokens.success.bg.active.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.50`)
+    expect(
+      successTokens.success.bg.active.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.80`)
   })
 
-  test('should have a text.initial property', () => {
+  // ghost.initial
+
+  test('should have a cerberus ghost.initial property', () => {
+    expect(
+      successTokens.success.ghost.initial.value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`cerberus.brand.100`)
+    expect(
+      successTokens.success.ghost.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`cerberus.brand.100`)
+    expect(
+      successTokens.success.ghost.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`cerberus.neutral.white`)
+  })
+  test('should have a acheron ghost.initial property', () => {
+    expect(
+      successTokens.success.ghost.initial.value._acheronTheme.base,
+    ).toEqual(formatSemanticToken`acheron.neutral.100`)
+    expect(
+      successTokens.success.ghost.initial.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.neutral.100`)
+    expect(
+      successTokens.success.ghost.initial.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.neutral.white`)
+  })
+
+  // ghost.hover
+
+  test('should have a cerberus ghost.hover property', () => {
+    expect(successTokens.success.ghost.hover.value._cerberusTheme.base).toEqual(
+      formatSemanticToken`cerberus.success.90`,
+    )
+    expect(
+      successTokens.success.ghost.hover.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`cerberus.success.90`)
+    expect(
+      successTokens.success.ghost.hover.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`cerberus.success.10`)
+  })
+  test('should have a acheron ghost.hover property', () => {
+    expect(successTokens.success.ghost.hover.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.success.90`,
+    )
+    expect(
+      successTokens.success.ghost.hover.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.90`)
+    expect(
+      successTokens.success.ghost.hover.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.10`)
+  })
+
+  // ghost.active
+
+  test('should have a cerberus ghost.active property', () => {
+    expect(
+      successTokens.success.ghost.active.value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`cerberus.success.80`)
+    expect(
+      successTokens.success.ghost.active.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`cerberus.success.80`)
+    expect(
+      successTokens.success.ghost.active.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`cerberus.success.20`)
+  })
+  test('should have a acheron ghost.active property', () => {
+    expect(successTokens.success.ghost.active.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.success.80`,
+    )
+    expect(
+      successTokens.success.ghost.active.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.80`)
+    expect(
+      successTokens.success.ghost.active.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.20`)
+  })
+
+  // surface.initial
+
+  test('should have a cerberus surface.initial property', () => {
+    expect(
+      successTokens.success.surface.initial.value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`cerberus.success.70`)
+    expect(
+      successTokens.success.surface.initial.value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`cerberus.success.70`)
+    expect(
+      successTokens.success.surface.initial.value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`cerberus.success.50`)
+  })
+  test('should have a acheron surface.initial property', () => {
+    expect(
+      successTokens.success.surface.initial.value._acheronTheme.base,
+    ).toEqual(formatSemanticToken`acheron.success.70`)
+    expect(
+      successTokens.success.surface.initial.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.70`)
+    expect(
+      successTokens.success.surface.initial.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.50`)
+  })
+
+  // surface.100
+
+  test('should have a cerberus surface.100 property', () => {
+    expect(
+      successTokens.success.surface['100'].value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`cerberus.success.90`)
+    expect(
+      successTokens.success.surface['100'].value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`cerberus.success.90`)
+    expect(
+      successTokens.success.surface['100'].value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`cerberus.success.40`)
+  })
+  test('should have a acheron surface.100 property', () => {
+    expect(
+      successTokens.success.surface['100'].value._acheronTheme.base,
+    ).toEqual(formatSemanticToken`acheron.success.90`)
+    expect(
+      successTokens.success.surface['100'].value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.90`)
+    expect(
+      successTokens.success.surface['100'].value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.40`)
+  })
+
+  // surface.200
+
+  test('should have a cerberus surface.200 property', () => {
+    expect(
+      successTokens.success.surface['200'].value._cerberusTheme.base,
+    ).toEqual(formatSemanticToken`cerberus.success.60`)
+    expect(
+      successTokens.success.surface['200'].value._cerberusTheme._darkMode,
+    ).toEqual(formatSemanticToken`cerberus.success.60`)
+    expect(
+      successTokens.success.surface['200'].value._cerberusTheme._lightMode,
+    ).toEqual(formatSemanticToken`cerberus.success.60`)
+  })
+  test('should have a acheron surface.200 property', () => {
+    expect(
+      successTokens.success.surface['200'].value._acheronTheme.base,
+    ).toEqual(formatSemanticToken`acheron.success.60`)
+    expect(
+      successTokens.success.surface['200'].value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.60`)
+    expect(
+      successTokens.success.surface['200'].value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.60`)
+  })
+
+  // text.initial
+
+  test('should have a cerberus text.initial property', () => {
     expect(
       successTokens.success.text.initial.value._cerberusTheme.base,
-    ).toEqual(formatSemanticToken`success.10`)
+    ).toEqual(formatSemanticToken`cerberus.success.10`)
     expect(
       successTokens.success.text.initial.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.10`)
+    ).toEqual(formatSemanticToken`cerberus.success.10`)
     expect(
       successTokens.success.text.initial.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.100`)
+    ).toEqual(formatSemanticToken`cerberus.success.100`)
+  })
+  test('should have a acheron text.initial property', () => {
+    expect(successTokens.success.text.initial.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.success.10`,
+    )
+    expect(
+      successTokens.success.text.initial.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.10`)
+    expect(
+      successTokens.success.text.initial.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.100`)
   })
 
-  test('should have a text.100 property', () => {
+  // text.100
+
+  test('should have a cerberus text.100 property', () => {
     expect(successTokens.success.text[100].value._cerberusTheme.base).toEqual(
-      formatSemanticToken`success.40`,
+      formatSemanticToken`cerberus.success.40`,
     )
     expect(
       successTokens.success.text[100].value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.40`)
+    ).toEqual(formatSemanticToken`cerberus.success.40`)
     expect(
       successTokens.success.text[100].value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.80`)
+    ).toEqual(formatSemanticToken`cerberus.success.80`)
+  })
+  test('should have a acheron text.100 property', () => {
+    expect(successTokens.success.text[100].value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.success.40`,
+    )
+    expect(
+      successTokens.success.text[100].value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.40`)
+    expect(
+      successTokens.success.text[100].value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.80`)
   })
 
-  test('should have a text.200 property', () => {
+  // text.200
+
+  test('should have a cerberus text.200 property', () => {
     expect(successTokens.success.text[200].value._cerberusTheme.base).toEqual(
-      formatSemanticToken`success.60`,
+      formatSemanticToken`cerberus.success.60`,
     )
     expect(
       successTokens.success.text[200].value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.60`)
+    ).toEqual(formatSemanticToken`cerberus.success.60`)
     expect(
       successTokens.success.text[200].value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.60`)
+    ).toEqual(formatSemanticToken`cerberus.success.60`)
+  })
+  test('should have a acheron text.200 property', () => {
+    expect(successTokens.success.text[200].value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.success.60`,
+    )
+    expect(
+      successTokens.success.text[200].value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.60`)
+    expect(
+      successTokens.success.text[200].value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.60`)
   })
 
-  test('should have a text.inverse property', () => {
+  // text.inverse
+
+  test('should have a cerberus text.inverse property', () => {
     expect(
       successTokens.success.text.inverse.value._cerberusTheme.base,
-    ).toEqual(formatSemanticToken`success.100`)
+    ).toEqual(formatSemanticToken`cerberus.success.100`)
     expect(
       successTokens.success.text.inverse.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.100`)
+    ).toEqual(formatSemanticToken`cerberus.success.100`)
     expect(
       successTokens.success.text.inverse.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.10`)
+    ).toEqual(formatSemanticToken`cerberus.success.10`)
+  })
+  test('should have a acheron text.inverse property', () => {
+    expect(successTokens.success.text.inverse.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.success.100`,
+    )
+    expect(
+      successTokens.success.text.inverse.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.100`)
+    expect(
+      successTokens.success.text.inverse.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.10`)
   })
 
-  test('should have a text.static property', () => {
+  // text.static
+
+  test('should have a cerberus text.static property', () => {
     expect(successTokens.success.text.static.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`success.70`,
+      formatSemanticToken`cerberus.success.70`,
     )
     expect(
       successTokens.success.text.static.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`success.70`)
+    ).toEqual(formatSemanticToken`cerberus.success.70`)
     expect(
       successTokens.success.text.static.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`success.70`)
+    ).toEqual(formatSemanticToken`cerberus.success.70`)
+  })
+  test('should have a acheron text.static property', () => {
+    expect(successTokens.success.text.static.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.success.70`,
+    )
+    expect(
+      successTokens.success.text.static.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.success.70`)
+    expect(
+      successTokens.success.text.static.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.success.70`)
   })
 })

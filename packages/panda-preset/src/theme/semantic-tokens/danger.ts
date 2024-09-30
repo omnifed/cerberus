@@ -15,13 +15,13 @@ export interface DangerTokens {
       readonly hover: SemanticToken
       readonly active: SemanticToken
     }
+    readonly border: {
+      readonly initial: SemanticToken
+    }
     readonly ghost: {
       readonly initial: SemanticToken
       readonly hover: SemanticToken
       readonly active: SemanticToken
-    }
-    readonly border: {
-      readonly initial: SemanticToken
     }
     readonly surface: {
       readonly initial: SemanticToken
