@@ -147,9 +147,6 @@ export default function ColorDetails() {
     return token.value._cerberusTheme[userMode]
   }, [token.value._cerberusTheme, userMode])
   const color = useMemo(() => {
-    if (paramsToken === 'action-border-focus') {
-      return rawColor
-    }
     return `var(--cerberus-${rawColor.replace(/\./g, '-').replace(/[{}]/g, '')})`
   }, [rawColor, paramsToken])
   const swatchColor = useMemo(
