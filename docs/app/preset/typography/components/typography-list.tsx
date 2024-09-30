@@ -4,9 +4,7 @@ import { TypographyBlock } from './typography-block'
 import { css } from '@cerberus/styled-system/css'
 import { useState, type ChangeEvent } from 'react'
 
-interface TypographyListProps {}
-
-export default function TypographyList(props: TypographyListProps) {
+export default function TypographyList() {
   const [temporaryText, setTemporaryText] = useState<string>('')
 
   function handleUpdateText(e: ChangeEvent<HTMLInputElement>) {

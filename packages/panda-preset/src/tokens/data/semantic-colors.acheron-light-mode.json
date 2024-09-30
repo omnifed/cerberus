@@ -3,7 +3,7 @@
     "action": {
       "100": {
         "$type": "color",
-        "$value": "colors.brand.80",
+        "$value": "acheron.brand.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -15,7 +15,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.brand.60",
+        "$value": "acheron.brand.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -28,7 +28,7 @@
       "navigation": {
         "initial": {
           "$type": "color",
-          "$value": "colors.brand.60",
+          "$value": "acheron.brand.70",
           "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
           "$extensions": {
             "com.figma": {
@@ -40,7 +40,7 @@
         },
         "hover": {
           "$type": "color",
-          "$value": "colors.brand.50",
+          "$value": "acheron.brand.60",
           "$description": "",
           "$extensions": {
             "com.figma": {
@@ -52,7 +52,7 @@
         },
         "visited": {
           "$type": "color",
-          "$value": "colors.neutral.60",
+          "$value": "acheron.brand.80",
           "$description": "",
           "$extensions": {
             "com.figma": {
@@ -65,7 +65,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.brand.5",
+        "$value": "acheron.brand.100",
         "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
         "$extensions": {
           "com.figma": {
@@ -77,7 +77,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "colors.brand.100",
+        "$value": "acheron.brand.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -89,7 +89,7 @@
       },
       "static": {
         "$type": "color",
-        "$value": "colors.brand.60",
+        "$value": "acheron.brand.60",
         "$description": "For use when a text color will not change between modes",
         "$extensions": {
           "com.figma": {
@@ -103,7 +103,7 @@
     "page": {
       "100": {
         "$type": "color",
-        "$value": "colors.neutral.40",
+        "$value": "acheron.neutral.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -115,7 +115,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.neutral.60",
+        "$value": "acheron.neutral.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -127,7 +127,7 @@
       },
       "300": {
         "$type": "color",
-        "$value": "colors.brand.100",
+        "$value": "acheron.neutral.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -139,7 +139,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.neutral.90",
+        "$value": "acheron.neutral.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -151,7 +151,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "colors.neutral.white",
+        "$value": "acheron.neutral.white",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -163,7 +163,7 @@
       },
       "static": {
         "$type": "color",
-        "$value": "colors.neutral.60",
+        "$value": "acheron.neutral.60",
         "$description": "For use when a text color will not change between modes",
         "$extensions": {
           "com.figma": {
@@ -177,7 +177,7 @@
     "danger": {
       "100": {
         "$type": "color",
-        "$value": "colors.danger.80",
+        "$value": "acheron.danger.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -189,7 +189,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.danger.70",
+        "$value": "acheron.danger.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -201,7 +201,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.danger.100",
+        "$value": "acheron.danger.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -213,7 +213,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "colors.danger.10",
+        "$value": "acheron.danger.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -225,7 +225,7 @@
       },
       "static": {
         "$type": "color",
-        "$value": "colors.danger.80",
+        "$value": "acheron.danger.80",
         "$description": "For use when a text color will not change between modes",
         "$extensions": {
           "com.figma": {
@@ -239,7 +239,7 @@
     "warning": {
       "100": {
         "$type": "color",
-        "$value": "colors.warning.80",
+        "$value": "acheron.warning.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -251,7 +251,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.warning.80",
+        "$value": "acheron.warning.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -263,7 +263,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.warning.100",
+        "$value": "acheron.warning.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -275,7 +275,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "colors.warning.100",
+        "$value": "acheron.warning.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -287,7 +287,7 @@
       },
       "static": {
         "$type": "color",
-        "$value": "colors.warning.80",
+        "$value": "acheron.warning.80",
         "$description": "For use when a text color will not change between modes",
         "$extensions": {
           "com.figma": {
@@ -301,7 +301,7 @@
     "success": {
       "100": {
         "$type": "color",
-        "$value": "colors.success.80",
+        "$value": "acheron.success.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -313,7 +313,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.success.60",
+        "$value": "acheron.success.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -325,7 +325,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.success.100",
+        "$value": "acheron.success.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -337,7 +337,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "colors.success.10",
+        "$value": "acheron.success.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -349,7 +349,7 @@
       },
       "static": {
         "$type": "color",
-        "$value": "colors.success.70",
+        "$value": "acheron.success.70",
         "$description": "For use when a text color will not change between modes",
         "$extensions": {
           "com.figma": {
@@ -363,7 +363,7 @@
     "info": {
       "100": {
         "$type": "color",
-        "$value": "colors.info.70",
+        "$value": "acheron.info.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -375,7 +375,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.info.50",
+        "$value": "acheron.info.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -387,7 +387,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.info.100",
+        "$value": "acheron.info.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -399,7 +399,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "colors.info.10",
+        "$value": "acheron.info.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -411,7 +411,7 @@
       },
       "static": {
         "$type": "color",
-        "$value": "colors.info.60",
+        "$value": "acheron.info.60",
         "$description": "For use when a text color will not change between modes",
         "$extensions": {
           "com.figma": {
@@ -425,7 +425,7 @@
     "secondary-action": {
       "100": {
         "$type": "color",
-        "$value": "colors.teal.100",
+        "$value": "acheron.accent.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -437,7 +437,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.teal.90",
+        "$value": "acheron.info.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -449,7 +449,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.teal.80",
+        "$value": "acheron.accent.80",
         "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
         "$extensions": {
           "com.figma": {
@@ -461,7 +461,7 @@
       },
       "static": {
         "$type": "color",
-        "$value": "colors.teal.70",
+        "$value": "acheron.accent.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -474,7 +474,7 @@
       "navigation": {
         "initial": {
           "$type": "color",
-          "$value": "colors.teal.80",
+          "$value": "acheron.accent.70",
           "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
           "$extensions": {
             "com.figma": {
@@ -486,7 +486,7 @@
         },
         "hover": {
           "$type": "color",
-          "$value": "colors.teal.90",
+          "$value": "acheron.info.80",
           "$description": "",
           "$extensions": {
             "com.figma": {
@@ -498,7 +498,7 @@
         },
         "visited": {
           "$type": "color",
-          "$value": "colors.teal.100",
+          "$value": "acheron.info.90",
           "$description": "",
           "$extensions": {
             "com.figma": {
@@ -515,7 +515,7 @@
     "page": {
       "100": {
         "$type": "color",
-        "$value": "colors.neutral.white",
+        "$value": "acheron.neutral.white",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -527,7 +527,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.neutral.10",
+        "$value": "acheron.neutral.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -539,7 +539,7 @@
       },
       "300": {
         "$type": "color",
-        "$value": "colors.neutral.20",
+        "$value": "acheron.neutral.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -551,7 +551,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.brand.5",
+        "$value": "acheron.neutral.5",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -563,7 +563,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "colors.neutral.90",
+        "$value": "acheron.neutral.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -577,7 +577,7 @@
     "success": {
       "100": {
         "$type": "color",
-        "$value": "colors.success.40",
+        "$value": "acheron.success.40",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -589,7 +589,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.success.60",
+        "$value": "acheron.success.60",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -601,7 +601,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.success.50",
+        "$value": "acheron.success.50",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -615,7 +615,7 @@
     "danger": {
       "100": {
         "$type": "color",
-        "$value": "colors.danger.10",
+        "$value": "acheron.danger.10",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -627,7 +627,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.danger.50",
+        "$value": "acheron.danger.50",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -639,7 +639,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.danger.30",
+        "$value": "acheron.danger.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -653,7 +653,7 @@
     "warning": {
       "100": {
         "$type": "color",
-        "$value": "colors.warning.20",
+        "$value": "acheron.warning.20",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -665,7 +665,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.warning.60",
+        "$value": "acheron.warning.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -677,7 +677,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.warning.40",
+        "$value": "acheron.warning.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -691,7 +691,7 @@
     "info": {
       "100": {
         "$type": "color",
-        "$value": "colors.info.20",
+        "$value": "acheron.info.20",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -703,7 +703,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.info.50",
+        "$value": "acheron.info.60",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -715,7 +715,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.info.30",
+        "$value": "acheron.info.30",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -731,7 +731,7 @@
     "page": {
       "100": {
         "$type": "color",
-        "$value": "colors.brand.20",
+        "$value": "acheron.neutral.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -743,24 +743,24 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.neutral.20",
+        "$value": "acheron.neutral.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+            "scopes": ["STROKE_COLOR"],
             "codeSyntax": {}
           }
         }
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.neutral.10",
+        "$value": "acheron.neutral.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+            "scopes": ["STROKE_COLOR"],
             "codeSyntax": {}
           }
         }
@@ -769,7 +769,7 @@
     "success": {
       "100": {
         "$type": "color",
-        "$value": "colors.success.50",
+        "$value": "acheron.success.50",
         "$description": "for use on less prominent actionable borders, like input fields etc",
         "$extensions": {
           "com.figma": {
@@ -781,7 +781,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.success.70",
+        "$value": "acheron.success.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -795,7 +795,7 @@
     "danger": {
       "100": {
         "$type": "color",
-        "$value": "colors.danger.70",
+        "$value": "acheron.danger.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -807,7 +807,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.danger.50",
+        "$value": "acheron.danger.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -821,7 +821,7 @@
     "action": {
       "100": {
         "$type": "color",
-        "$value": "colors.neutral.40",
+        "$value": "acheron.neutral.50",
         "$description": "for use on less prominent actionable borders, like input fields etc",
         "$extensions": {
           "com.figma": {
@@ -833,7 +833,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.brand.60",
+        "$value": "acheron.brand.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -845,7 +845,7 @@
       },
       "focus": {
         "$type": "color",
-        "$value": "colors.brand.70",
+        "$value": "acheron.brand.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -859,7 +859,7 @@
     "warning": {
       "initial": {
         "$type": "color",
-        "$value": "colors.warning.50",
+        "$value": "acheron.warning.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -873,7 +873,7 @@
     "info": {
       "100": {
         "$type": "color",
-        "$value": "colors.info.40",
+        "$value": "acheron.info.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -885,7 +885,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.info.60",
+        "$value": "acheron.info.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -899,7 +899,7 @@
     "secondary-action": {
       "100": {
         "$type": "color",
-        "$value": "colors.teal.90",
+        "$value": "acheron.info.90",
         "$description": "for use on less prominent actionable borders, like input fields etc",
         "$extensions": {
           "com.figma": {
@@ -911,7 +911,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.teal.80",
+        "$value": "acheron.accent.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -923,7 +923,7 @@
       },
       "focus": {
         "$type": "color",
-        "$value": "colors.teal.70",
+        "$value": "acheron.accent.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -939,7 +939,7 @@
     "action": {
       "100": {
         "$type": "color",
-        "$value": "colors.neutral.white",
+        "$value": "acheron.brand.5",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -951,7 +951,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.brand.60",
+        "$value": "acheron.brand.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -963,7 +963,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.brand.50",
+        "$value": "acheron.brand.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -975,7 +975,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.brand.40",
+        "$value": "acheron.brand.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -987,7 +987,7 @@
       },
       "100-hover": {
         "$type": "color",
-        "$value": "colors.neutral.5",
+        "$value": "acheron.brand.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1001,7 +1001,7 @@
     "page": {
       "100": {
         "$type": "color",
-        "$value": "colors.neutral.10",
+        "$value": "acheron.neutral.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1013,7 +1013,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.neutral.20",
+        "$value": "acheron.neutral.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1025,7 +1025,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "colors.brand.5",
+        "$value": "acheron.brand.5",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1039,7 +1039,7 @@
     "danger": {
       "initial": {
         "$type": "color",
-        "$value": "colors.danger.60",
+        "$value": "acheron.danger.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1051,7 +1051,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.danger.80",
+        "$value": "acheron.danger.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1063,7 +1063,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.danger.90",
+        "$value": "acheron.danger.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1077,7 +1077,7 @@
     "info": {
       "initial": {
         "$type": "color",
-        "$value": "colors.info.30",
+        "$value": "acheron.info.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1089,7 +1089,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.info.20",
+        "$value": "acheron.info.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1101,7 +1101,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.info.50",
+        "$value": "acheron.info.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1115,7 +1115,7 @@
     "success": {
       "initial": {
         "$type": "color",
-        "$value": "colors.success.60",
+        "$value": "acheron.success.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1127,7 +1127,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.success.70",
+        "$value": "acheron.success.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1139,7 +1139,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.success.80",
+        "$value": "acheron.success.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1153,7 +1153,7 @@
     "secondary-action": {
       "initial": {
         "$type": "color",
-        "$value": "colors.teal.20",
+        "$value": "acheron.accent.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1165,7 +1165,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.teal.30",
+        "$value": "acheron.accent.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1177,7 +1177,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.teal.40",
+        "$value": "acheron.accent.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1191,7 +1191,7 @@
     "warning": {
       "initial": {
         "$type": "color",
-        "$value": "colors.warning.50",
+        "$value": "acheron.warning.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1203,7 +1203,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.warning.60",
+        "$value": "acheron.warning.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1215,7 +1215,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.warning.70",
+        "$value": "acheron.warning.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1231,7 +1231,7 @@
     "action": {
       "initial": {
         "$type": "color",
-        "$value": "colors.neutral.white",
+        "$value": "acheron.neutral.white",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1243,7 +1243,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.neutral.5",
+        "$value": "acheron.brand.5",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1255,7 +1255,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.brand.10",
+        "$value": "acheron.brand.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1269,7 +1269,7 @@
     "danger": {
       "initial": {
         "$type": "color",
-        "$value": "colors.neutral.white",
+        "$value": "acheron.neutral.white",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1281,7 +1281,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.danger.10",
+        "$value": "acheron.danger.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1293,7 +1293,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.danger.20",
+        "$value": "acheron.danger.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1307,7 +1307,7 @@
     "info": {
       "initial": {
         "$type": "color",
-        "$value": "colors.neutral.white",
+        "$value": "acheron.neutral.white",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1319,7 +1319,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.info.20",
+        "$value": "acheron.info.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1331,7 +1331,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.info.30",
+        "$value": "acheron.info.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1345,7 +1345,7 @@
     "success": {
       "initial": {
         "$type": "color",
-        "$value": "colors.neutral.white",
+        "$value": "acheron.neutral.white",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1357,7 +1357,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.success.10",
+        "$value": "acheron.success.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1369,7 +1369,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.success.20",
+        "$value": "acheron.success.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1383,7 +1383,7 @@
     "secondary-action": {
       "initial": {
         "$type": "color",
-        "$value": "colors.neutral.white",
+        "$value": "acheron.neutral.white",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1395,7 +1395,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.teal.10",
+        "$value": "acheron.accent.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1407,7 +1407,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.teal.20",
+        "$value": "acheron.accent.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1421,7 +1421,7 @@
     "warning": {
       "initial": {
         "$type": "color",
-        "$value": "colors.neutral.white",
+        "$value": "acheron.neutral.white",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1433,7 +1433,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "colors.warning.20",
+        "$value": "acheron.warning.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1445,7 +1445,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "colors.warning.30",
+        "$value": "acheron.warning.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1461,7 +1461,7 @@
     "page": {
       "initial": {
         "$type": "color",
-        "$value": "#bcbaca80",
+        "$value": "#6a676480",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1477,7 +1477,7 @@
     "sequential": {
       "100": {
         "$type": "color",
-        "$value": "colors.brand.10",
+        "$value": "acheron.brand.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1489,7 +1489,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.brand.40",
+        "$value": "acheron.brand.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1501,7 +1501,7 @@
       },
       "300": {
         "$type": "color",
-        "$value": "colors.brand.50",
+        "$value": "acheron.brand.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1513,7 +1513,7 @@
       },
       "400": {
         "$type": "color",
-        "$value": "colors.brand.70",
+        "$value": "acheron.brand.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1525,7 +1525,7 @@
       },
       "500": {
         "$type": "color",
-        "$value": "colors.brand.80",
+        "$value": "acheron.brand.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1537,7 +1537,7 @@
       },
       "600": {
         "$type": "color",
-        "$value": "colors.brand.90",
+        "$value": "acheron.brand.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1551,7 +1551,7 @@
     "diverging": {
       "100": {
         "$type": "color",
-        "$value": "colors.warning.50",
+        "$value": "acheron.brand.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1563,7 +1563,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.warning.40",
+        "$value": "acheron.brand.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1575,7 +1575,7 @@
       },
       "300": {
         "$type": "color",
-        "$value": "colors.warning.30",
+        "$value": "acheron.brand.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1587,7 +1587,7 @@
       },
       "400": {
         "$type": "color",
-        "$value": "colors.warning.20",
+        "$value": "acheron.brand.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1599,7 +1599,7 @@
       },
       "500": {
         "$type": "color",
-        "$value": "colors.neutral.10",
+        "$value": "acheron.neutral.5",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1611,7 +1611,7 @@
       },
       "550": {
         "$type": "color",
-        "$value": "colors.brand.20",
+        "$value": "acheron.info.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1623,7 +1623,7 @@
       },
       "600": {
         "$type": "color",
-        "$value": "colors.brand.30",
+        "$value": "acheron.info.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1635,7 +1635,7 @@
       },
       "700": {
         "$type": "color",
-        "$value": "colors.brand.40",
+        "$value": "acheron.info.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1647,7 +1647,7 @@
       },
       "800": {
         "$type": "color",
-        "$value": "colors.brand.50",
+        "$value": "acheron.info.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1659,7 +1659,7 @@
       },
       "900": {
         "$type": "color",
-        "$value": "colors.brand.60",
+        "$value": "acheron.info.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1671,7 +1671,7 @@
       },
       "050": {
         "$type": "color",
-        "$value": "colors.warning.60",
+        "$value": "acheron.brand.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1685,7 +1685,7 @@
     "qualitative-colors": {
       "100": {
         "$type": "color",
-        "$value": "colors.brand.50",
+        "$value": "acheron.brand.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1697,7 +1697,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "colors.warning.60",
+        "$value": "acheron.accent.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1709,7 +1709,7 @@
       },
       "300": {
         "$type": "color",
-        "$value": "colors.success.60",
+        "$value": "acheron.warning.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1721,7 +1721,7 @@
       },
       "400": {
         "$type": "color",
-        "$value": "colors.info.50",
+        "$value": "acheron.success.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1733,7 +1733,7 @@
       },
       "500": {
         "$type": "color",
-        "$value": "colors.brand.30",
+        "$value": "acheron.info.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1745,7 +1745,7 @@
       },
       "600": {
         "$type": "color",
-        "$value": "colors.teal.70",
+        "$value": "acheron.danger.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1757,7 +1757,7 @@
       },
       "700": {
         "$type": "color",
-        "$value": "colors.neutral.40",
+        "$value": "acheron.neutral.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1772,7 +1772,7 @@
   "drop-shadow": {
     "sm": {
       "$type": "color",
-      "$value": "colors.drop-shadow.sm",
+      "$value": "cerberus.drop-shadow.sm",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -1784,7 +1784,7 @@
     },
     "md": {
       "$type": "color",
-      "$value": "colors.drop-shadow.md",
+      "$value": "cerberus.drop-shadow.md",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -1796,7 +1796,7 @@
     },
     "lg": {
       "$type": "color",
-      "$value": "colors.drop-shadow.lg",
+      "$value": "cerberus.drop-shadow.lg",
       "$description": "",
       "$extensions": {
         "com.figma": {

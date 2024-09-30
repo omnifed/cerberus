@@ -6,211 +6,345 @@ describe('dangerTokens', () => {
     return `{colors.${value}}`
   }
 
-  test('should have a danger property', () => {
-    expect(dangerTokens.danger).toBeDefined()
-  })
+  // bg.initial
 
-  test('should have a bg property', () => {
-    expect(dangerTokens.danger.bg).toBeDefined()
-  })
-
-  test('should have a bg.initial property', () => {
+  test('should have a cerberus bg.initial property', () => {
     expect(dangerTokens.danger.bg.initial.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`danger.80`,
+      formatSemanticToken`cerberus.danger.80`,
     )
     expect(
       dangerTokens.danger.bg.initial.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.80`)
+    ).toEqual(formatSemanticToken`cerberus.danger.80`)
     expect(
       dangerTokens.danger.bg.initial.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.60`)
+    ).toEqual(formatSemanticToken`cerberus.danger.60`)
+  })
+  test('should have a acheron bg.initial property', () => {
+    expect(dangerTokens.danger.bg.initial.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.80`,
+    )
+    expect(
+      dangerTokens.danger.bg.initial.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.danger.80`)
+    expect(
+      dangerTokens.danger.bg.initial.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.60`)
   })
 
-  test('should have a bg.hover property', () => {
+  // bg.hover
+
+  test('should have a cerberus bg.hover property', () => {
     expect(dangerTokens.danger.bg.hover.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`danger.40`,
+      formatSemanticToken`cerberus.danger.40`,
     )
     expect(dangerTokens.danger.bg.hover.value._cerberusTheme._darkMode).toEqual(
-      formatSemanticToken`danger.40`,
+      formatSemanticToken`cerberus.danger.40`,
     )
     expect(
       dangerTokens.danger.bg.hover.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.80`)
+    ).toEqual(formatSemanticToken`cerberus.danger.80`)
+  })
+  test('should have a acheron bg.hover property', () => {
+    expect(dangerTokens.danger.bg.hover.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.50`,
+    )
+    expect(dangerTokens.danger.bg.hover.value._acheronTheme._darkMode).toEqual(
+      formatSemanticToken`acheron.danger.50`,
+    )
+    expect(dangerTokens.danger.bg.hover.value._acheronTheme._lightMode).toEqual(
+      formatSemanticToken`acheron.danger.80`,
+    )
   })
 
-  test('should have a bg.active property', () => {
+  // bg.active
+
+  test('should have a cerberus bg.active property', () => {
     expect(dangerTokens.danger.bg.active.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`danger.30`,
+      formatSemanticToken`cerberus.danger.30`,
     )
     expect(
       dangerTokens.danger.bg.active.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.30`)
+    ).toEqual(formatSemanticToken`cerberus.danger.30`)
     expect(
       dangerTokens.danger.bg.active.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.90`)
+    ).toEqual(formatSemanticToken`cerberus.danger.90`)
+  })
+  test('should have a acheron bg.active property', () => {
+    expect(dangerTokens.danger.bg.active.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.40`,
+    )
+    expect(dangerTokens.danger.bg.active.value._acheronTheme._darkMode).toEqual(
+      formatSemanticToken`acheron.danger.40`,
+    )
+    expect(
+      dangerTokens.danger.bg.active.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.90`)
   })
 
-  test('should have a border property', () => {
-    expect(dangerTokens.danger.border).toBeDefined()
-  })
+  // border.initial
 
-  test('should have a border.initial property', () => {
+  test('should have a cerberus border.initial property', () => {
     expect(
       dangerTokens.danger.border.initial.value._cerberusTheme.base,
-    ).toEqual(formatSemanticToken`danger.30`)
+    ).toEqual(formatSemanticToken`cerberus.danger.30`)
     expect(
       dangerTokens.danger.border.initial.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.30`)
+    ).toEqual(formatSemanticToken`cerberus.danger.30`)
     expect(
       dangerTokens.danger.border.initial.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.50`)
+    ).toEqual(formatSemanticToken`cerberus.danger.50`)
+  })
+  test('should have a acheron border.initial property', () => {
+    expect(dangerTokens.danger.border.initial.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.40`,
+    )
+    expect(
+      dangerTokens.danger.border.initial.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.danger.40`)
+    expect(
+      dangerTokens.danger.border.initial.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.70`)
   })
 
-  test('should have a ghost property', () => {
-    expect(dangerTokens.danger.ghost).toBeDefined()
-  })
+  // ghost.initial
 
-  test('should have a ghost.initial property', () => {
+  test('should have a cerberus ghost.initial property', () => {
     expect(dangerTokens.danger.ghost.initial.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`brand.100`,
+      formatSemanticToken`cerberus.brand.100`,
     )
     expect(
       dangerTokens.danger.ghost.initial.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`brand.100`)
+    ).toEqual(formatSemanticToken`cerberus.brand.100`)
     expect(
       dangerTokens.danger.ghost.initial.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`neutral.white`)
+    ).toEqual(formatSemanticToken`cerberus.neutral.white`)
+  })
+  test('should have a acheron ghost.initial property', () => {
+    expect(dangerTokens.danger.ghost.initial.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.neutral.100`,
+    )
+    expect(
+      dangerTokens.danger.ghost.initial.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.neutral.100`)
+    expect(
+      dangerTokens.danger.ghost.initial.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.neutral.white`)
   })
 
-  test('should have a ghost.hover property', () => {
+  // ghost.hover
+
+  test('should have a cerberus ghost.hover property', () => {
     expect(dangerTokens.danger.ghost.hover.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`danger.90`,
+      formatSemanticToken`cerberus.danger.90`,
     )
     expect(
       dangerTokens.danger.ghost.hover.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.90`)
+    ).toEqual(formatSemanticToken`cerberus.danger.90`)
     expect(
       dangerTokens.danger.ghost.hover.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.10`)
+    ).toEqual(formatSemanticToken`cerberus.danger.10`)
+  })
+  test('should have a acheron ghost.hover property', () => {
+    expect(dangerTokens.danger.ghost.hover.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.80`,
+    )
+    expect(
+      dangerTokens.danger.ghost.hover.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.danger.80`)
+    expect(
+      dangerTokens.danger.ghost.hover.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.10`)
   })
 
-  test('should have a ghost.active property', () => {
+  // ghost.active
+
+  test('should have a cerberus ghost.active property', () => {
     expect(dangerTokens.danger.ghost.active.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`danger.80`,
+      formatSemanticToken`cerberus.danger.80`,
     )
     expect(
       dangerTokens.danger.ghost.active.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.80`)
+    ).toEqual(formatSemanticToken`cerberus.danger.80`)
     expect(
       dangerTokens.danger.ghost.active.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.20`)
+    ).toEqual(formatSemanticToken`cerberus.danger.20`)
+  })
+  test('should have a acheron ghost.active property', () => {
+    expect(dangerTokens.danger.ghost.active.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.70`,
+    )
+    expect(
+      dangerTokens.danger.ghost.active.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.danger.70`)
+    expect(
+      dangerTokens.danger.ghost.active.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.20`)
   })
 
-  test('should have a surface.initial property', () => {
-    expect(dangerTokens.danger.surface).toBeDefined()
+  // surface.initial
+
+  test('should have a acheron surface.initial property', () => {
+    expect(
+      dangerTokens.danger.surface.initial.value._acheronTheme.base,
+    ).toEqual(formatSemanticToken`acheron.danger.80`)
+    expect(
+      dangerTokens.danger.surface.initial.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.danger.80`)
+    expect(
+      dangerTokens.danger.surface.initial.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.30`)
   })
 
-  test('should have a surface.initial property', () => {
+  // surface.100
+
+  test('should have a acheron surface.100 property', () => {
+    expect(dangerTokens.danger.surface['100'].value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.90`,
+    )
     expect(
-      dangerTokens.danger.surface.initial.value._cerberusTheme.base,
-    ).toEqual(formatSemanticToken`danger.80`)
+      dangerTokens.danger.surface['100'].value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.danger.90`)
     expect(
-      dangerTokens.danger.surface.initial.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.80`)
-    expect(
-      dangerTokens.danger.surface.initial.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.30`)
+      dangerTokens.danger.surface['100'].value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.10`)
   })
 
-  test('should have a surface.100 property', () => {
+  // surface.200
+
+  test('should have a acheron surface.200 property', () => {
+    expect(dangerTokens.danger.surface['200'].value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.60`,
+    )
     expect(
-      dangerTokens.danger.surface['100'].value._cerberusTheme.base,
-    ).toEqual(formatSemanticToken`danger.90`)
+      dangerTokens.danger.surface['200'].value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.danger.60`)
     expect(
-      dangerTokens.danger.surface['100'].value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.90`)
-    expect(
-      dangerTokens.danger.surface['100'].value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.10`)
+      dangerTokens.danger.surface['200'].value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.50`)
   })
 
-  test('should have a surface.200 property', () => {
-    expect(
-      dangerTokens.danger.surface['200'].value._cerberusTheme.base,
-    ).toEqual(formatSemanticToken`danger.70`)
-    expect(
-      dangerTokens.danger.surface['200'].value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.70`)
-    expect(
-      dangerTokens.danger.surface['200'].value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.50`)
-  })
+  // text.initial
 
-  test('should have a text property', () => {
-    expect(dangerTokens.danger.text).toBeDefined()
-  })
-
-  test('should have a text.initial property', () => {
+  test('should have a cerberus text.initial property', () => {
     expect(dangerTokens.danger.text.initial.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`danger.10`,
+      formatSemanticToken`cerberus.danger.10`,
     )
     expect(
       dangerTokens.danger.text.initial.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.10`)
+    ).toEqual(formatSemanticToken`cerberus.danger.10`)
     expect(
       dangerTokens.danger.text.initial.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.100`)
+    ).toEqual(formatSemanticToken`cerberus.danger.100`)
+  })
+  test('should have a acheron text.initial property', () => {
+    expect(dangerTokens.danger.text.initial.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.10`,
+    )
+    expect(
+      dangerTokens.danger.text.initial.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.danger.10`)
+    expect(
+      dangerTokens.danger.text.initial.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.100`)
   })
 
-  test('should have a text.100 property', () => {
+  // text.100
+
+  test('should have a cerberus text.100 property', () => {
     expect(dangerTokens.danger.text['100'].value._cerberusTheme.base).toEqual(
-      formatSemanticToken`danger.30`,
+      formatSemanticToken`cerberus.danger.30`,
     )
     expect(
       dangerTokens.danger.text['100'].value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.30`)
+    ).toEqual(formatSemanticToken`cerberus.danger.30`)
     expect(
       dangerTokens.danger.text['100'].value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.80`)
+    ).toEqual(formatSemanticToken`cerberus.danger.80`)
+  })
+  test('should have a acheron text.100 property', () => {
+    expect(dangerTokens.danger.text['100'].value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.30`,
+    )
+    expect(
+      dangerTokens.danger.text['100'].value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.danger.30`)
+    expect(
+      dangerTokens.danger.text['100'].value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.80`)
   })
 
-  test('should have a text.200 property', () => {
+  // text.200
+
+  test('should have a cerberus text.200 property', () => {
     expect(dangerTokens.danger.text['200'].value._cerberusTheme.base).toEqual(
-      formatSemanticToken`danger.50`,
+      formatSemanticToken`cerberus.danger.50`,
     )
     expect(
       dangerTokens.danger.text['200'].value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.50`)
+    ).toEqual(formatSemanticToken`cerberus.danger.50`)
     expect(
       dangerTokens.danger.text['200'].value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.70`)
+    ).toEqual(formatSemanticToken`cerberus.danger.70`)
+  })
+  test('should have a acheron text.200 property', () => {
+    expect(dangerTokens.danger.text['200'].value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.50`,
+    )
+    expect(
+      dangerTokens.danger.text['200'].value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.danger.50`)
+    expect(
+      dangerTokens.danger.text['200'].value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.70`)
   })
 
-  test('should have a text.inverse property', () => {
-    expect(dangerTokens.danger.text.inverse).toBeDefined()
-  })
+  // text.inverse
 
-  test('should have a text.inverse property', () => {
+  test('should have a cerberus text.inverse property', () => {
     expect(dangerTokens.danger.text.inverse.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`danger.90`,
+      formatSemanticToken`cerberus.danger.90`,
     )
     expect(
       dangerTokens.danger.text.inverse.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.90`)
+    ).toEqual(formatSemanticToken`cerberus.danger.90`)
     expect(
       dangerTokens.danger.text.inverse.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.10`)
+    ).toEqual(formatSemanticToken`cerberus.danger.10`)
+  })
+  test('should have a acheron text.inverse property', () => {
+    expect(dangerTokens.danger.text.inverse.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.90`,
+    )
+    expect(
+      dangerTokens.danger.text.inverse.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.danger.90`)
+    expect(
+      dangerTokens.danger.text.inverse.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.10`)
   })
 
-  test('should have a text.static property', () => {
+  // text.static
+
+  test('should have a cerberus text.static property', () => {
     expect(dangerTokens.danger.text.static.value._cerberusTheme.base).toEqual(
-      formatSemanticToken`danger.80`,
+      formatSemanticToken`cerberus.danger.80`,
     )
     expect(
       dangerTokens.danger.text.static.value._cerberusTheme._darkMode,
-    ).toEqual(formatSemanticToken`danger.80`)
+    ).toEqual(formatSemanticToken`cerberus.danger.80`)
     expect(
       dangerTokens.danger.text.static.value._cerberusTheme._lightMode,
-    ).toEqual(formatSemanticToken`danger.80`)
+    ).toEqual(formatSemanticToken`cerberus.danger.80`)
+  })
+  test('should have a acheron text.static property', () => {
+    expect(dangerTokens.danger.text.static.value._acheronTheme.base).toEqual(
+      formatSemanticToken`acheron.danger.80`,
+    )
+    expect(
+      dangerTokens.danger.text.static.value._acheronTheme._darkMode,
+    ).toEqual(formatSemanticToken`acheron.danger.80`)
+    expect(
+      dangerTokens.danger.text.static.value._acheronTheme._lightMode,
+    ).toEqual(formatSemanticToken`acheron.danger.80`)
   })
 })

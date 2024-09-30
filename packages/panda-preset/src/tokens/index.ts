@@ -1,8 +1,9 @@
-import primitiveColors from './primitive-colors.cerberus.json' with { type: 'json' }
-import primitiveTypography from './primitive-typography.value.json' with { type: 'json' }
-import semanticColorsDark from './semantic-colors.dark-mode.json' with { type: 'json' }
-import semanticColorsLight from './semantic-colors.light-mode.json' with { type: 'json' }
-import TextStyles from './text-styles.desktop.json' with { type: 'json' }
+import primitiveColors from './data/primitive-colors.base.json' with { type: 'json' }
+import semanticColorsDark from './data/semantic-colors.cerberus-dark-mode.json' with { type: 'json' }
+import semanticColorsLight from './data/semantic-colors.cerberus-light-mode.json' with { type: 'json' }
+import acheronDarkMode from './data/semantic-colors.acheron-dark-mode.json' with { type: 'json' }
+import acheronLightMode from './data/semantic-colors.acheron-light-mode.json' with { type: 'json' }
+import type { RawThemes, SemanticToken } from '../theme'
 
 /**
  * This module is a collection of raw tokens that are used to generate the theme.
@@ -12,25 +13,21 @@ import TextStyles from './text-styles.desktop.json' with { type: 'json' }
 export interface RawTokens {
   primitives: {
     colors: typeof primitiveColors
-    typography: typeof primitiveTypography
   }
   semanticColors: {
     dark: typeof semanticColorsDark
     light: typeof semanticColorsLight
   }
-  textStyles: typeof TextStyles
 }
 
 export const rawTokens: RawTokens = {
   primitives: {
     colors: primitiveColors,
-    typography: primitiveTypography,
   },
   semanticColors: {
     dark: semanticColorsDark,
     light: semanticColorsLight,
   },
-  textStyles: TextStyles,
 }
 
 // used in the docs
@@ -38,30 +35,55 @@ export const semanticColors = rawTokens.semanticColors.dark
 export const colors = rawTokens.primitives.colors
 
 export const primitiveColorTokens = rawTokens.primitives.colors
-export const text = rawTokens.primitives.typography
 export const darkTokens = semanticColorsDark
 export const lightTokens = semanticColorsLight
 
-export type PrimitiveCollection =
-  | RawTokens['primitives']['colors']
-  | RawTokens['primitives']['typography']
+// additional themes
+export const acheronDarkTokens = acheronDarkMode
+export const acheronLightTokens = acheronLightMode
+
+export const themeTokens = {
+  cerberus: {
+    dark: darkTokens,
+    light: lightTokens,
+  },
+  acheron: {
+    dark: acheronDarkTokens,
+    light: acheronLightTokens,
+  },
+}
+
+export type PrimitiveCollection = RawTokens['primitives']['colors']
 
 // helpers
 
 export type PandaColor = {
-  [palette: string]: {
-    [prominence: string | number]: {
-      value: string
+  [theme: string]: {
+    [palette: string]: {
+      [prominence: string | number]: {
+        value: string
+      }
     }
   }
 }
 
 export function formatPrimitiveColors(): PandaColor {
-  return Object.entries(primitiveColors.colors).reduce(
-    (acc, [palette, prominence]) => {
-      acc[palette] = Object.entries(prominence).reduce(
-        (acc, [prominence, value]) => {
-          acc[prominence] = { value: value.$value }
+  // primitive colors includes "spacing"
+  const { acheron, cerberus } = primitiveColors
+  const onlyThemePrimitiveColors = { acheron, cerberus }
+
+  // format the primitive colors to match the Panda CSS format
+  return Object.entries(onlyThemePrimitiveColors).reduce(
+    (acc, [theme, palette]) => {
+      acc[theme] = Object.entries(palette).reduce(
+        (acc, [palette, prominence]) => {
+          acc[palette] = Object.entries(prominence).reduce(
+            (acc, [prominence, value]) => {
+              acc[prominence] = { value: value.$value }
+              return acc
+            },
+            {} as PandaColor[string][string],
+          )
           return acc
         },
         {} as PandaColor[string],
@@ -72,6 +94,105 @@ export function formatPrimitiveColors(): PandaColor {
   )
 }
 
+/**
+ * This function loops through each of our supported themes and returns the expected Panda CSS theme token format for each token.
+ * @param path `background.neutral.initial`
+ * @returns
+ * ```typescript
+ * {
+ *  description: string
+ *  value: {
+ *   _cerberusTheme: {
+ *    base: string
+ *    darkMode: string
+ *    lightMode: string
+ *   }
+ * }
+ * ```
+ */
+export function formatSemanticTokenValue(path: string): SemanticToken {
+  return {
+    description: getNestedProperty(
+      themeTokens.cerberus,
+      `dark.${path}.$description`,
+    ),
+    value: getThemeTokenByPath(path),
+  }
+}
+
+export function getThemeTokenByPath(path: string): SemanticToken['value'] {
+  const supportedThemes = Object.keys(themeTokens) as RawThemes[]
+  const darkPath = `dark.${path}.$value`
+  const lightPath = `light.${path}.$value`
+
+  return supportedThemes.reduce(
+    (acc, theme) => {
+      return {
+        ...acc,
+        ...getThemeSelector(theme, darkPath, lightPath),
+      }
+    },
+    {} as SemanticToken['value'],
+  )
+}
+
+/**
+ * This function returns the value of a token for a specific theme.
+ * @param theme
+ * @param darkPath
+ * @param lightPath
+ * @returns
+ * ```typescript
+ * {
+ * _cerberusTheme: {
+ *   base: string
+ *   darkMode: string
+ *   lightMode: string
+ * }
+ */
+function getThemeSelector(
+  theme: RawThemes,
+  darkPath: string,
+  lightPath: string,
+) {
+  return {
+    [`_${theme}Theme`]: {
+      base: getSemanticToken(getNestedProperty(themeTokens[theme], darkPath)),
+      _darkMode: getSemanticToken(
+        getNestedProperty(themeTokens[theme], darkPath),
+      ),
+      _lightMode: getSemanticToken(
+        getNestedProperty(themeTokens[theme], lightPath),
+      ),
+    },
+  }
+}
+
+export type TokenObj =
+  | (typeof themeTokens)['acheron']
+  | (typeof themeTokens)['cerberus']
+
+/**
+ * This function returns the value of a nested property from an Object.
+ * @param obj - The object to search
+ * @param path -
+ **/
+function getNestedProperty(obj: TokenObj, path: string): string {
+  const splitPath = path.split('.')
+  return splitPath.reduce((acc: unknown, key: string) => {
+    if (acc && typeof acc === 'object' && key in acc) {
+      return acc[key as keyof typeof acc]
+    }
+    return ''
+  }, obj) as string
+}
+
+/**
+ * This function updates the raw Figma $value to match the format which
+ * PandaCSS expects for mapping to primitive colors.
+ * @param path
+ * @returns ```{colors.cerberus.success.70}```
+ */
 export function getSemanticToken(path: string): string {
-  return `{${path}}`
+  return `{colors.${path}}`
 }

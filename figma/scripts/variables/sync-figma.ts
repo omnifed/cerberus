@@ -22,6 +22,7 @@ async function main() {
     'panda-preset',
     'src',
     'tokens',
+    'data',
   )
   const tokensFiles = tokenFilesFromLocalVariables(localVariables)
 

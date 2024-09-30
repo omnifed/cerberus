@@ -45,12 +45,13 @@ export type Prominence = 'initial' | 'inverse' | 'static' | 100 | 200 | 300
 export type Interaction = 'hover' | 'active' | 'visited' | 'focus' | 'disabled'
 
 /**
- * The Pando theme of a color.
+ * The Cerberus theme of a color.
  */
-export type Themes = 'cerberusTheme'
+export type Themes = 'cerberusTheme' | 'acheronTheme'
+export type RawThemes = 'cerberus' | 'acheron'
 
 /**
- * The mode option of a Pando theme.
+ * The mode option of a Cerberus theme.
  */
 export type Modes = 'lightMode' | 'darkMode'
 
