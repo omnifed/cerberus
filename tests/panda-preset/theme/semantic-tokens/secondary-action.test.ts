@@ -22,6 +22,18 @@ describe('secondaryActionTokens', () => {
       getSemanticToken`cerberus.teal.20`,
     )
   })
+  test('should have a acheron secondary-action.bg.initial key', () => {
+    expect(token.bg.initial).toBeDefined()
+    expect(token.bg.initial.value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.accent.100`,
+    )
+    expect(token.bg.initial.value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.accent.100`,
+    )
+    expect(token.bg.initial.value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.accent.30`,
+    )
+  })
 
   // bg.hover
 
@@ -35,6 +47,18 @@ describe('secondaryActionTokens', () => {
     )
     expect(token.bg.hover.value._cerberusTheme._lightMode).toBe(
       getSemanticToken`cerberus.teal.30`,
+    )
+  })
+  test('should have a acheron secondary-action.bg.hover key', () => {
+    expect(token.bg.hover).toBeDefined()
+    expect(token.bg.hover.value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.accent.90`,
+    )
+    expect(token.bg.hover.value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.accent.90`,
+    )
+    expect(token.bg.hover.value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.accent.40`,
     )
   })
 
@@ -52,6 +76,18 @@ describe('secondaryActionTokens', () => {
       getSemanticToken`cerberus.teal.40`,
     )
   })
+  test('should have a acheron secondary-action.bg.active key', () => {
+    expect(token.bg.active).toBeDefined()
+    expect(token.bg.active.value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.accent.60`,
+    )
+    expect(token.bg.active.value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.accent.60`,
+    )
+    expect(token.bg.active.value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.accent.50`,
+    )
+  })
 
   // border.initial
 
@@ -65,6 +101,18 @@ describe('secondaryActionTokens', () => {
     )
     expect(token.border.initial.value._cerberusTheme._lightMode).toBe(
       getSemanticToken`cerberus.teal.80`,
+    )
+  })
+  test('should have a acheron secondary-action.border.initial key', () => {
+    expect(token.border.initial).toBeDefined()
+    expect(token.border.initial.value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.accent.60`,
+    )
+    expect(token.border.initial.value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.accent.60`,
+    )
+    expect(token.border.initial.value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.accent.80`,
     )
   })
 
@@ -82,6 +130,18 @@ describe('secondaryActionTokens', () => {
       getSemanticToken`cerberus.teal.90`,
     )
   })
+  test('should have a acheron secondary-action.border.100 key', () => {
+    expect(token.border[100]).toBeDefined()
+    expect(token.border[100].value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.info.80`,
+    )
+    expect(token.border[100].value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.info.80`,
+    )
+    expect(token.border[100].value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.info.90`,
+    )
+  })
 
   // ghost.initial
 
@@ -95,6 +155,18 @@ describe('secondaryActionTokens', () => {
     )
     expect(token.ghost.initial.value._cerberusTheme._lightMode).toBe(
       getSemanticToken`cerberus.neutral.white`,
+    )
+  })
+  test('should have a acheron secondary-action.ghost.initial key', () => {
+    expect(token.ghost.initial).toBeDefined()
+    expect(token.ghost.initial.value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.neutral.100`,
+    )
+    expect(token.ghost.initial.value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.neutral.100`,
+    )
+    expect(token.ghost.initial.value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.neutral.white`,
     )
   })
 
@@ -127,6 +199,18 @@ describe('secondaryActionTokens', () => {
       getSemanticToken`cerberus.teal.20`,
     )
   })
+  test('should have a acheron secondary-action.ghost.active key', () => {
+    expect(token.ghost.active).toBeDefined()
+    expect(token.ghost.active.value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.accent.80`,
+    )
+    expect(token.ghost.active.value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.accent.80`,
+    )
+    expect(token.ghost.active.value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.accent.20`,
+    )
+  })
 
   // navigation.initial
 
@@ -157,6 +241,18 @@ describe('secondaryActionTokens', () => {
       getSemanticToken`cerberus.teal.90`,
     )
   })
+  test('should have a acheron secondary-action.navigation.hover key', () => {
+    expect(token.navigation.hover).toBeDefined()
+    expect(token.navigation.hover.value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.accent.50`,
+    )
+    expect(token.navigation.hover.value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.accent.50`,
+    )
+    expect(token.navigation.hover.value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.info.80`,
+    )
+  })
 
   // navigation.visited
 
@@ -170,6 +266,18 @@ describe('secondaryActionTokens', () => {
     )
     expect(token.navigation.visited.value._cerberusTheme._lightMode).toBe(
       getSemanticToken`cerberus.teal.100`,
+    )
+  })
+  test('should have a acheron secondary-action.navigation.visited key', () => {
+    expect(token.navigation.visited).toBeDefined()
+    expect(token.navigation.visited.value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.info.70`,
+    )
+    expect(token.navigation.visited.value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.info.70`,
+    )
+    expect(token.navigation.visited.value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.info.90`,
     )
   })
 
@@ -187,6 +295,18 @@ describe('secondaryActionTokens', () => {
       getSemanticToken`cerberus.teal.80`,
     )
   })
+  test('should have a acheron secondary-action.text.initial key', () => {
+    expect(token.text.initial).toBeDefined()
+    expect(token.text.initial.value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.accent.60`,
+    )
+    expect(token.text.initial.value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.accent.60`,
+    )
+    expect(token.text.initial.value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.accent.80`,
+    )
+  })
 
   // text.100
 
@@ -200,6 +320,18 @@ describe('secondaryActionTokens', () => {
     )
     expect(token.text['100'].value._cerberusTheme._lightMode).toBe(
       getSemanticToken`cerberus.teal.100`,
+    )
+  })
+  test('should have a acheron secondary-action.text.100 key', () => {
+    expect(token.text['100']).toBeDefined()
+    expect(token.text['100'].value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.accent.80`,
+    )
+    expect(token.text['100'].value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.accent.80`,
+    )
+    expect(token.text['100'].value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.accent.100`,
     )
   })
 
@@ -217,6 +349,18 @@ describe('secondaryActionTokens', () => {
       getSemanticToken`cerberus.teal.90`,
     )
   })
+  test('should have a acheron secondary-action.text.200 key', () => {
+    expect(token.text['200']).toBeDefined()
+    expect(token.text['200'].value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.info.40`,
+    )
+    expect(token.text['200'].value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.info.40`,
+    )
+    expect(token.text['200'].value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.info.70`,
+    )
+  })
 
   // text.static
 
@@ -230,6 +374,18 @@ describe('secondaryActionTokens', () => {
     )
     expect(token.text.static.value._cerberusTheme._lightMode).toBe(
       getSemanticToken`cerberus.teal.70`,
+    )
+  })
+  test('should have a acheron secondary-action.text.static key', () => {
+    expect(token.text.static).toBeDefined()
+    expect(token.text.static.value._acheronTheme.base).toBe(
+      getSemanticToken`acheron.info.70`,
+    )
+    expect(token.text.static.value._acheronTheme._darkMode).toBe(
+      getSemanticToken`acheron.info.70`,
+    )
+    expect(token.text.static.value._acheronTheme._lightMode).toBe(
+      getSemanticToken`acheron.accent.70`,
     )
   })
 })
