@@ -257,18 +257,12 @@ importers:
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../../configs
-      '@microsoft/api-extractor':
-        specifier: ^7.46.2
-        version: 7.46.2(@types/node@22.5.4)
       '@pandacss/dev':
         specifier: ^0.46.0
         version: 0.46.0(typescript@5.4.5)
       '@pandacss/types':
         specifier: ^0.46.0
         version: 0.46.0
-      tsup:
-        specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.46.2(@types/node@22.5.4))(postcss@8.4.45)(typescript@5.4.5)
 
   packages/react:
     dependencies:

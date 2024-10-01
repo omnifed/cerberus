@@ -23,22 +23,6 @@ jobs:
       - run: pnpm run test:ci
         working-directory: ./tests
 
-  preset-build:
-    runs-on: ubuntu-latest
-    name: Panda Preset successfully builds
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9.1.4
-      - uses: actions/setup-node@v4
-        with:
-          cache: 'pnpm'
-
-      - run: pnpm install
-      - run: pnpm run build
-        working-directory: ./packages/panda-preset
-
   react-build:
     runs-on: ubuntu-latest
     name: React successfully builds
