@@ -1,5 +1,5 @@
-import type { Prominence, SemanticToken } from './types'
-import { formatSemanticTokenValue } from '../../tokens'
+import type { Prominence, SemanticToken } from '../../../theme/semantic-tokens'
+import { formatSemanticTokenValue } from '../../../tokens'
 
 /**
  * This module is a collection of success tokens that are used to generate the theme.
@@ -97,33 +97,36 @@ export interface SuccessTokens {
 export const successTokens: SuccessTokens = {
   success: {
     border: {
-      initial: formatSemanticTokenValue('border.success.initial'),
+      initial: formatSemanticTokenValue('border.success.initial', 'acheron'),
     },
 
     bg: {
-      initial: formatSemanticTokenValue('background.success.initial'),
-      hover: formatSemanticTokenValue('background.success.hover'),
-      active: formatSemanticTokenValue('background.success.active'),
+      initial: formatSemanticTokenValue(
+        'background.success.initial',
+        'acheron',
+      ),
+      hover: formatSemanticTokenValue('background.success.hover', 'acheron'),
+      active: formatSemanticTokenValue('background.success.active', 'acheron'),
     },
 
     ghost: {
-      initial: formatSemanticTokenValue('ghost.success.initial'),
-      hover: formatSemanticTokenValue('ghost.success.hover'),
-      active: formatSemanticTokenValue('ghost.success.active'),
+      initial: formatSemanticTokenValue('ghost.success.initial', 'acheron'),
+      hover: formatSemanticTokenValue('ghost.success.hover', 'acheron'),
+      active: formatSemanticTokenValue('ghost.success.active', 'acheron'),
     },
 
     surface: {
-      initial: formatSemanticTokenValue('surface.success.initial'),
-      100: formatSemanticTokenValue('surface.success.100'),
-      200: formatSemanticTokenValue('surface.success.200'),
+      initial: formatSemanticTokenValue('surface.success.initial', 'acheron'),
+      100: formatSemanticTokenValue('surface.success.100', 'acheron'),
+      200: formatSemanticTokenValue('surface.success.200', 'acheron'),
     },
 
     text: {
-      initial: formatSemanticTokenValue('text.success.initial'),
-      100: formatSemanticTokenValue('text.success.100'),
-      200: formatSemanticTokenValue('text.success.200'),
-      inverse: formatSemanticTokenValue('text.success.inverse'),
-      static: formatSemanticTokenValue('text.success.static'),
+      initial: formatSemanticTokenValue('text.success.initial', 'acheron'),
+      100: formatSemanticTokenValue('text.success.100', 'acheron'),
+      200: formatSemanticTokenValue('text.success.200', 'acheron'),
+      inverse: formatSemanticTokenValue('text.success.inverse', 'acheron'),
+      static: formatSemanticTokenValue('text.success.static', 'acheron'),
     },
   },
 }

@@ -1,5 +1,5 @@
-import type { SemanticToken } from './types'
-import { formatSemanticTokenValue } from '../../tokens'
+import type { SemanticToken } from '../../../theme/semantic-tokens/types'
+import { formatSemanticTokenValue } from '../../../tokens'
 
 /**
  * This module is a collection of action tokens that are used to generate the theme.
@@ -102,37 +102,66 @@ export interface SecondaryActionTokens {
 export const secondaryActionTokens: SecondaryActionTokens = {
   secondaryAction: {
     bg: {
-      initial: formatSemanticTokenValue('background.secondary-action.initial'),
-      hover: formatSemanticTokenValue('background.secondary-action.hover'),
-      active: formatSemanticTokenValue('background.secondary-action.active'),
+      initial: formatSemanticTokenValue(
+        'background.secondary-action.initial',
+        'acheron',
+      ),
+      hover: formatSemanticTokenValue(
+        'background.secondary-action.hover',
+        'acheron',
+      ),
+      active: formatSemanticTokenValue(
+        'background.secondary-action.active',
+        'acheron',
+      ),
     },
 
     border: {
-      initial: formatSemanticTokenValue('border.secondary-action.initial'),
-      100: formatSemanticTokenValue('border.secondary-action.100'),
+      initial: formatSemanticTokenValue(
+        'border.secondary-action.initial',
+        'acheron',
+      ),
+      100: formatSemanticTokenValue('border.secondary-action.100', 'acheron'),
     },
 
     ghost: {
-      initial: formatSemanticTokenValue('ghost.secondary-action.initial'),
-      hover: formatSemanticTokenValue('ghost.secondary-action.hover'),
-      active: formatSemanticTokenValue('ghost.secondary-action.active'),
+      initial: formatSemanticTokenValue(
+        'ghost.secondary-action.initial',
+        'acheron',
+      ),
+      hover: formatSemanticTokenValue(
+        'ghost.secondary-action.hover',
+        'acheron',
+      ),
+      active: formatSemanticTokenValue(
+        'ghost.secondary-action.active',
+        'acheron',
+      ),
     },
 
     navigation: {
       initial: formatSemanticTokenValue(
         'text.secondary-action.navigation.initial',
+        'acheron',
       ),
       hover: formatSemanticTokenValue('text.secondary-action.navigation.hover'),
       visited: formatSemanticTokenValue(
         'text.secondary-action.navigation.visited',
+        'acheron',
       ),
     },
 
     text: {
-      initial: formatSemanticTokenValue('text.secondary-action.initial'),
-      100: formatSemanticTokenValue('text.secondary-action.100'),
-      200: formatSemanticTokenValue('text.secondary-action.200'),
-      static: formatSemanticTokenValue('text.secondary-action.static'),
+      initial: formatSemanticTokenValue(
+        'text.secondary-action.initial',
+        'acheron',
+      ),
+      100: formatSemanticTokenValue('text.secondary-action.100', 'acheron'),
+      200: formatSemanticTokenValue('text.secondary-action.200', 'acheron'),
+      static: formatSemanticTokenValue(
+        'text.secondary-action.static',
+        'acheron',
+      ),
     },
   },
 }
