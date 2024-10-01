@@ -39,7 +39,7 @@ export default defineConfig({
 
   include: [
     './node_modules/@cerberus/react/src/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx,.js,.jsx}', // <- Make sure this path is to your project
+    './app/**/*.{ts,tsx,js,jsx}', // <- Make sure this path is to your project
   ],
   exclude: [],
 
@@ -63,7 +63,7 @@ To connect the Cerberus theme, you need to add the required `data` attributes to
 ```tsx title="app/layout.tsx" {3}
 function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="cerberus" data-color-mode="light">
+    <html lang="en" data-panda-theme="cerberus" data-color-mode="light">
       <body>{children}</body>
     </html>
   )
@@ -99,7 +99,7 @@ export default function RootLayout(props: PropsWithChildren<RootProps>) {
     <html
       className={cx(poppins.variable, recursive.variable)}
       lang="en"
-      data-theme="cerberus"
+      data-panda-theme="cerberus"
       data-color-mode="light"
     >
       <body>
