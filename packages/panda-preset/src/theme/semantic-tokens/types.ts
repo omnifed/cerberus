@@ -60,7 +60,6 @@ export type PandaSelectors<T extends string, V> = {
 }
 
 export type ModeSelectors = PandaSelectors<Modes, string>
-export type ThemeSelectors = PandaSelectors<Themes, Token>
 
 export type Token = Simplify<
   {
@@ -73,7 +72,7 @@ export type Token = Simplify<
  */
 export type SemanticToken = {
   description?: string
-  value: ThemeSelectors
+  value: Token
 }
 
 export type SentimentConfig = {

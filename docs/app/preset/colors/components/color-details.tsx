@@ -144,8 +144,8 @@ export default function ColorDetails() {
 
   const userMode = mode === 'dark' ? '_darkMode' : '_lightMode'
   const rawColor = useMemo(() => {
-    return token.value._cerberusTheme[userMode]
-  }, [token.value._cerberusTheme, userMode])
+    return token.value[userMode]
+  }, [token.value, userMode])
   const color = useMemo(() => {
     return `var(--cerberus-${rawColor.replace(/\./g, '-').replace(/[{}]/g, '')})`
   }, [rawColor, paramsToken])

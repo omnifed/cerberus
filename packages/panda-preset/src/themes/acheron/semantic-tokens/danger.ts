@@ -1,5 +1,8 @@
-import type { Prominence, SemanticToken } from './types'
-import { formatSemanticTokenValue } from '../../tokens'
+import type {
+  Prominence,
+  SemanticToken,
+} from '../../../theme/semantic-tokens/types'
+import { formatSemanticTokenValue } from '../../../tokens'
 
 /**
  * This module is a collection of danger tokens that are used to generate the theme.
@@ -97,33 +100,33 @@ export interface DangerTokens {
 export const dangerTokens: DangerTokens = {
   danger: {
     bg: {
-      initial: formatSemanticTokenValue('background.danger.initial'),
-      hover: formatSemanticTokenValue('background.danger.hover'),
-      active: formatSemanticTokenValue('background.danger.active'),
+      initial: formatSemanticTokenValue('background.danger.initial', 'acheron'),
+      hover: formatSemanticTokenValue('background.danger.hover', 'acheron'),
+      active: formatSemanticTokenValue('background.danger.active', 'acheron'),
     },
 
     border: {
-      initial: formatSemanticTokenValue('border.danger.initial'),
+      initial: formatSemanticTokenValue('border.danger.initial', 'acheron'),
     },
 
     ghost: {
-      initial: formatSemanticTokenValue('ghost.danger.initial'),
-      hover: formatSemanticTokenValue('ghost.danger.hover'),
-      active: formatSemanticTokenValue('ghost.danger.active'),
+      initial: formatSemanticTokenValue('ghost.danger.initial', 'acheron'),
+      hover: formatSemanticTokenValue('ghost.danger.hover', 'acheron'),
+      active: formatSemanticTokenValue('ghost.danger.active', 'acheron'),
     },
 
     surface: {
-      initial: formatSemanticTokenValue('surface.danger.initial'),
-      100: formatSemanticTokenValue('surface.danger.100'),
-      200: formatSemanticTokenValue('surface.danger.200'),
+      initial: formatSemanticTokenValue('surface.danger.initial', 'acheron'),
+      100: formatSemanticTokenValue('surface.danger.100', 'acheron'),
+      200: formatSemanticTokenValue('surface.danger.200', 'acheron'),
     },
 
     text: {
-      initial: formatSemanticTokenValue('text.danger.initial'),
-      100: formatSemanticTokenValue('text.danger.100'),
-      200: formatSemanticTokenValue('text.danger.200'),
-      inverse: formatSemanticTokenValue('text.danger.inverse'),
-      static: formatSemanticTokenValue('text.danger.static'),
+      initial: formatSemanticTokenValue('text.danger.initial', 'acheron'),
+      100: formatSemanticTokenValue('text.danger.100', 'acheron'),
+      200: formatSemanticTokenValue('text.danger.200', 'acheron'),
+      inverse: formatSemanticTokenValue('text.danger.inverse', 'acheron'),
+      static: formatSemanticTokenValue('text.danger.static', 'acheron'),
     },
   },
 }

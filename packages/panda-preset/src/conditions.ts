@@ -1,7 +1,7 @@
 export const conditions = {
   // themes
-  cerberusTheme: '[data-theme=cerberus] &',
-  acheronTheme: '[data-theme=acheron] &',
+  cerberusTheme: '[data-panda-theme=cerberus] &',
+  acheronTheme: '[data-panda-theme=acheron] &',
 
   // modes
   lightMode: '[data-color-mode=light] &, &.light, .light &',

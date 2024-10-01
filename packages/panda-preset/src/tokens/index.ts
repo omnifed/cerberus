@@ -3,7 +3,7 @@ import semanticColorsDark from './data/semantic-colors.cerberus-dark-mode.json' 
 import semanticColorsLight from './data/semantic-colors.cerberus-light-mode.json' with { type: 'json' }
 import acheronDarkMode from './data/semantic-colors.acheron-dark-mode.json' with { type: 'json' }
 import acheronLightMode from './data/semantic-colors.acheron-light-mode.json' with { type: 'json' }
-import type { RawThemes, SemanticToken } from '../theme'
+import type { RawThemes, SemanticToken, Token } from '../theme'
 
 /**
  * This module is a collection of raw tokens that are used to generate the theme.
@@ -110,30 +110,26 @@ export function formatPrimitiveColors(): PandaColor {
  * }
  * ```
  */
-export function formatSemanticTokenValue(path: string): SemanticToken {
+export function formatSemanticTokenValue(
+  path: string,
+  theme?: RawThemes,
+): SemanticToken {
   return {
     description: getNestedProperty(
       themeTokens.cerberus,
       `dark.${path}.$description`,
     ),
-    value: getThemeTokenByPath(path),
+    value: getThemeTokenByPath(path, theme),
   }
 }
 
-export function getThemeTokenByPath(path: string): SemanticToken['value'] {
-  const supportedThemes = Object.keys(themeTokens) as RawThemes[]
+export function getThemeTokenByPath(
+  path: string,
+  theme?: RawThemes,
+): SemanticToken['value'] {
   const darkPath = `dark.${path}.$value`
   const lightPath = `light.${path}.$value`
-
-  return supportedThemes.reduce(
-    (acc, theme) => {
-      return {
-        ...acc,
-        ...getThemeSelector(theme, darkPath, lightPath),
-      }
-    },
-    {} as SemanticToken['value'],
-  )
+  return getThemeSelector(darkPath, lightPath, theme)
 }
 
 /**
@@ -151,21 +147,22 @@ export function getThemeTokenByPath(path: string): SemanticToken['value'] {
  * }
  */
 function getThemeSelector(
-  theme: RawThemes,
   darkPath: string,
   lightPath: string,
-) {
-  return {
-    [`_${theme}Theme`]: {
-      base: getSemanticToken(getNestedProperty(themeTokens[theme], darkPath)),
-      _darkMode: getSemanticToken(
-        getNestedProperty(themeTokens[theme], darkPath),
-      ),
-      _lightMode: getSemanticToken(
-        getNestedProperty(themeTokens[theme], lightPath),
-      ),
-    },
+  theme?: RawThemes,
+): Token {
+  const themeKey = theme ?? 'cerberus'
+  const tokenValue: Token = {
+    base: getSemanticToken(getNestedProperty(themeTokens[themeKey], darkPath)),
+    _darkMode: getSemanticToken(
+      getNestedProperty(themeTokens[themeKey], darkPath),
+    ),
+    _lightMode: getSemanticToken(
+      getNestedProperty(themeTokens[themeKey], lightPath),
+    ),
   }
+
+  return tokenValue
 }
 
 export type TokenObj =

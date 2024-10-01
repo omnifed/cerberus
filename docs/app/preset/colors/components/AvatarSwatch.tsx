@@ -14,7 +14,6 @@ interface ColorSwatchProps {
 }
 
 export default function ColorSwatch(props: ColorSwatchProps) {
-  const { _cerberusTheme } = props.token.value
   const { mode } = useThemeContext()
   const searchParams = useSearchParams()
 
@@ -22,8 +21,13 @@ export default function ColorSwatch(props: ColorSwatchProps) {
     return mode === 'dark' ? '_darkMode' : '_lightMode'
   }, [mode])
   const color = useMemo(() => {
-    return `var(--cerberus-${_cerberusTheme[modeValue].replace(/\./g, '-').replace(/[{}]/g, '')})`
-  }, [modeValue, _cerberusTheme, props.tokenName])
+    const snakeCaseToken = props.tokenName
+      .replace(/([A-Z])/g, ' $1')
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+    return `var(--cerberus-colors-${snakeCaseToken})`
+  }, [modeValue, props.tokenName])
 
   const bgColor = {
     backgroundColor: color,
