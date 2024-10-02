@@ -35,7 +35,7 @@ export default function RootLayout(props: PropsWithChildren<RootProps>) {
     <html
       className={cx(poppins.variable, recursive.variable)}
       lang="en"
-      data-theme="cerberus"
+      data-panda-theme="cerberus"
       data-color-mode="light"
     >
       <Analytics />

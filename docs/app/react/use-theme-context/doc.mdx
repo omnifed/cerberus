@@ -7,6 +7,7 @@ recipe: ''
 import {
   WhenToUseAdmonition,
   WhenNotToUseAdmonition,
+  NoteAdmonition,
 } from '@/app/components/Admonition'
 
 # useThemeContext
@@ -77,10 +78,22 @@ function Layout() {
 
 <WhenNotToUseAdmonition description="When you need to access or modify the theme or mode proprties in a single component, consider using the `useTheme` hook instead." />
 
+## Caching
+
+The `updateTheme` and `updateMode` functions cache the themes in local storage.
+
+### Caching on the Client
+
+This is done automatically by the hook callback functions via `localStorage`.
+
+### Caching on the Server
+
+If you are using NextJS, you might consider using cookies to cache the theme to prevent [FOUC](https://en.wikipedia.org/wiki/Flash_of_unstyled_content).
+
 ## API
 
 ```ts showLineNumbers=false
-type DefaultThemes = 'cerberus'
+type DefaultThemes = 'cerberus' | 'acheron'
 type ColorModes = 'light' | 'dark'
 
 define function useThemeContext(

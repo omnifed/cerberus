@@ -52,7 +52,7 @@ export function useTheme<C extends string = DefaultThemes>(
 
   useEffect(() => {
     const root = document.documentElement
-    root.dataset.theme = theme
+    root.dataset.pandaTheme = theme
   }, [theme])
 
   useEffect(() => {
