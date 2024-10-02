@@ -8,12 +8,13 @@ import {
   type DefaultThemes,
 } from '@cerberus-design/react'
 import { css, cx } from '@cerberus/styled-system/css'
-import { getTheme, type ThemeName } from '@/styled-system/themes'
+import { getTheme } from '@/styled-system/themes'
 import { base, openGraph } from './shared-metadata'
 import { Nav } from './components/Nav'
 
 import './globals.css'
-import { getCookie, setCookie } from './actions/cookies'
+import { setCookie } from './actions/cookies'
+import { getCachedTheme } from './actions/theme'
 
 const poppins = Poppins({
   display: 'swap',
@@ -37,9 +38,10 @@ export const metadata: Metadata = {
 interface RootProps {}
 
 export default async function RootLayout(props: PropsWithChildren<RootProps>) {
-  const themeName = (await getCookie('theme')) as ThemeName
-  const theme = themeName && (await getTheme(themeName))
-  const colorModeName = (await getCookie('colorMode')) as ColorModes | undefined
+  const { themeName, colorModeName } = await getCachedTheme()
+  const defaultThemeName = themeName || 'cerberus'
+  const defaultColorModeName = colorModeName || 'light'
+  const theme = defaultThemeName && (await getTheme(defaultThemeName))
 
   const handleUpdateTheme = async (theme: DefaultThemes) => {
     'use server'
@@ -55,11 +57,11 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
     <html
       className={cx(poppins.variable, recursive.variable)}
       lang="en"
-      data-panda-theme={themeName || 'cerberus'}
-      data-color-mode={colorModeName || 'light'}
+      data-panda-theme={defaultThemeName}
+      data-color-mode={defaultColorModeName}
     >
       <Analytics />
-      {themeName && (
+      {defaultThemeName && (
         <head>
           <style
             type="text/css"
@@ -76,8 +78,8 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
         })}
       >
         <ThemeProvider
-          defaultTheme={themeName || 'cerberus'}
-          defaultColorMode={colorModeName || 'light'}
+          defaultTheme={defaultThemeName}
+          defaultColorMode={defaultColorModeName}
           updateTheme={handleUpdateTheme}
           updateMode={handleUpdateMode}
         >
