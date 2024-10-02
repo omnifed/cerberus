@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { button } from '@cerberus/styled-system/recipes'
 
-export default function Home() {
+export default async function Home() {
   return (
     <div
       className={css({
