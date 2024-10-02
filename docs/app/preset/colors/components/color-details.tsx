@@ -142,9 +142,6 @@ export default function ColorDetails() {
     }
   }, [scope, splitToken])
 
-  const modeValue = useMemo(() => {
-    return mode === 'dark' ? '_darkMode' : '_lightMode'
-  }, [mode])
   const color = useMemo(() => {
     const snakeCaseToken = paramsToken
       .replace(/([A-Z])/g, ' $1')
@@ -152,7 +149,7 @@ export default function ColorDetails() {
       .toLowerCase()
       .replace(/\s+/g, '-')
     return `var(--cerberus-colors-${snakeCaseToken})`
-  }, [modeValue, paramsToken])
+  }, [paramsToken])
 
   const swatchColor = {
     backgroundColor: color,

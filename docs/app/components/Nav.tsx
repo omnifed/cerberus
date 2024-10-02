@@ -17,6 +17,7 @@ import { button } from '@cerberus/styled-system/recipes'
 import { DogIcon } from './icons/DogIcon'
 import { FireIcon } from './icons/FireIcon'
 import { getTheme, injectTheme, type ThemeName } from '@/styled-system/themes'
+import { PAGE_BORDER_INITIAL } from '../utils/const'
 
 const navLogoContent = (
   <section
@@ -89,7 +90,7 @@ export function Nav() {
       const currentTheme = e.currentTarget.value
       const newTheme = currentTheme === 'cerberus' ? 'acheron' : 'cerberus'
       updateTheme(newTheme)
-      const pandaTheme = await getTheme(theme as ThemeName)
+      const pandaTheme = await getTheme(newTheme as ThemeName)
       injectTheme(document.documentElement, pandaTheme)
     },
     [updateTheme],
@@ -112,7 +113,7 @@ export function Nav() {
           bgColor: 'rgba(255, 255, 255, 0.3)',
         },
         _darkMode: {
-          bgColor: 'rgba(19, 0, 36, 0.3)',
+          bgColor: 'page.backdrop.initial',
         },
         md: {
           gridTemplateRows: '1fr',
@@ -140,11 +141,11 @@ export function Nav() {
         <ul
           className={hstack({
             border: '1px solid',
-            borderColor: 'page.border.initial',
+            borderColor: PAGE_BORDER_INITIAL,
             gap: '0',
             w: 'full',
             '& li:nth-child(2)': {
-              borderColor: 'page.border.initial',
+              borderColor: PAGE_BORDER_INITIAL,
               borderLeft: '1px solid',
               borderRight: '1px solid',
               md: {
@@ -276,7 +277,7 @@ export function Nav() {
                 css({
                   bgColor: 'page.bg.100',
                   border: '1px solid',
-                  borderColor: 'page.border.initial',
+                  borderColor: PAGE_BORDER_INITIAL,
                   fontWeight: 500,
                   h: '2.275rem',
                   rounded: 'sm',
