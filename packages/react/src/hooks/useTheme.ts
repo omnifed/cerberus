@@ -8,33 +8,45 @@ import {
   useState,
 } from 'react'
 import {
-  MODE_KEY,
-  THEME_KEY,
   type ColorModes,
   type CustomThemes,
   type DefaultThemes,
   type ThemeContextValue,
 } from '../context/theme'
 
+export const THEME_KEY = 'cerberus-theme'
+export const MODE_KEY = 'cerberus-mode'
+
+export interface UseThemeOptions<T extends string = DefaultThemes> {
+  cache?: boolean
+  updateTheme?: (theme: T) => void
+  updateMode?: (mode: ColorModes) => void
+}
+
 export function useTheme<C extends string = DefaultThemes>(
   defaultTheme: CustomThemes<C> = 'cerberus',
-  defaultColorMode: ColorModes = 'light',
+  defaultColorMode: ColorModes = 'system',
+  options: UseThemeOptions<C> = {},
 ): ThemeContextValue<C> {
+  const { updateMode, updateTheme, cache } = options
   const [theme, setTheme] = useState<CustomThemes<C>>(defaultTheme)
   const [colorMode, setColorMode] = useState<ColorModes>(defaultColorMode)
 
-  const handleThemeChange = useCallback((newTheme: CustomThemes<C>) => {
-    setTheme(newTheme)
-    localStorage.setItem(THEME_KEY, newTheme)
-  }, [])
+  const handleThemeChange = useCallback(
+    (newTheme: C) => {
+      setTheme(newTheme)
+      updateTheme?.(newTheme)
+    },
+    [updateTheme],
+  )
 
-  const handleColorModeChange = useCallback(() => {
-    setColorMode((prev) => {
-      const newMode = prev === 'light' ? 'dark' : 'light'
-      localStorage.setItem(MODE_KEY, newMode)
-      return newMode
-    })
-  }, [])
+  const handleColorModeChange = useCallback(
+    (newMode: ColorModes) => {
+      setColorMode(newMode)
+      updateMode?.(newMode)
+    },
+    [updateMode],
+  )
 
   useLayoutEffect(() => {
     const theme = localStorage.getItem(THEME_KEY)
@@ -51,14 +63,20 @@ export function useTheme<C extends string = DefaultThemes>(
   }, [])
 
   useEffect(() => {
-    const root = document.documentElement
-    root.dataset.pandaTheme = theme
-  }, [theme])
+    if (cache) {
+      const root = document.documentElement
+      root.dataset.pandaTheme = theme
+      localStorage.setItem(THEME_KEY, theme)
+    }
+  }, [theme, cache])
 
   useEffect(() => {
-    const root = document.documentElement
-    root.dataset.colorMode = colorMode
-  }, [colorMode])
+    if (cache) {
+      const root = document.documentElement
+      root.dataset.colorMode = colorMode
+      localStorage.setItem(MODE_KEY, colorMode)
+    }
+  }, [colorMode, cache])
 
   return useMemo(
     () => ({

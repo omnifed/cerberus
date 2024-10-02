@@ -1,17 +1,19 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useCallback, useMemo, type MouseEvent } from 'react'
 import Link from 'next/link'
 import { css } from '@cerberus/styled-system/css'
 import { grid, gridItem, hstack } from '@cerberus/styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
 import { LogoGithub } from '@cerberus-design/icons'
-import { Show, useThemeContext } from '@cerberus-design/react'
+import { Show, useThemeContext, type ColorModes } from '@cerberus-design/react'
 import { version } from '@cerberus-design/configs'
 import { AnimatingSunIcon } from './icons/AnimatingSunIcon'
 import { AnimatingMoonIcon } from './icons/AnimatingMoonIcon'
+import { AnimatingSystemIcon } from './icons/AnimatingSystemIcon'
 import { usePathname } from 'next/navigation'
 import { focusStates } from '@cerberus-design/panda-preset'
+import { getColorMode } from '../utils/colors'
 
 const navLogoContent = (
   <section
@@ -69,6 +71,12 @@ export function Nav() {
   const ariaLabel = useMemo(() => {
     return mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
   }, [mode])
+
+  const handleUpdateMode = useCallback((e: MouseEvent<HTMLButtonElement>) => {
+    const currentMode = e.currentTarget.value as ColorModes
+    const newMode = getColorMode(currentMode)
+    updateMode(newMode)
+  }, [])
 
   return (
     <nav
@@ -235,9 +243,20 @@ export function Nav() {
                 _focusVisible: focusStates._focusVisible,
               })}
               aria-label={ariaLabel}
-              onClick={updateMode}
+              onClick={handleUpdateMode}
+              value={mode}
             >
-              <Show when={mode === 'light'} fallback={<AnimatingMoonIcon />}>
+              <Show
+                when={mode === 'light'}
+                fallback={
+                  <Show
+                    when={mode === 'system'}
+                    fallback={<AnimatingMoonIcon />}
+                  >
+                    <AnimatingSystemIcon />
+                  </Show>
+                }
+              >
                 <AnimatingSunIcon />
               </Show>
             </button>
