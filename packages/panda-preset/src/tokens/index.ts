@@ -152,14 +152,19 @@ function getThemeSelector(
   theme?: RawThemes,
 ): Token {
   const themeKey = theme ?? 'cerberus'
+  const darkToken = getSemanticToken(
+    getNestedProperty(themeTokens[themeKey], darkPath),
+  )
+  const lightToken = getSemanticToken(
+    getNestedProperty(themeTokens[themeKey], lightPath),
+  )
+
   const tokenValue: Token = {
-    base: getSemanticToken(getNestedProperty(themeTokens[themeKey], darkPath)),
-    _darkMode: getSemanticToken(
-      getNestedProperty(themeTokens[themeKey], darkPath),
-    ),
-    _lightMode: getSemanticToken(
-      getNestedProperty(themeTokens[themeKey], lightPath),
-    ),
+    base: darkToken,
+    _darkMode: darkToken,
+    _lightMode: lightToken,
+    _osDark: darkToken,
+    _osLight: lightToken,
   }
 
   return tokenValue
