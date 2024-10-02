@@ -1,6 +1,11 @@
 /* eslint-disable */
-export type ThemeName = 'acheron'
+export type ThemeName = 'cerberus' | 'acheron'
 export type ThemeByName = {
+  cerberus: {
+    id: string
+    name: 'cerberus'
+    css: string
+  }
   acheron: {
     id: string
     name: 'acheron'

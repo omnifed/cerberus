@@ -29,12 +29,13 @@ export const cerberusPreset: Preset = definePreset({
 
   // optional themes
   themes: {
+    cerberus: baseTheme,
     acheron: acheronTheme,
   },
 
   // opt-into additional theme variants
   staticCss: {
-    themes: ['acheron'],
+    themes: ['cerberus', 'acheron'],
   },
 })
 

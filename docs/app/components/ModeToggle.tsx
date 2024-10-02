@@ -13,10 +13,13 @@ export function ModeToggle() {
     return mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
   }, [mode])
 
-  const handleUpdateMode = useCallback((e: MouseEvent<HTMLButtonElement>) => {
-    const currentMode = e.currentTarget.value
-    updateMode(currentMode === 'light' ? 'dark' : 'light')
-  }, [])
+  const handleUpdateMode = useCallback(
+    (e: MouseEvent<HTMLButtonElement>) => {
+      const currentMode = e.currentTarget.value
+      updateMode(currentMode === 'light' ? 'dark' : 'light')
+    },
+    [updateMode],
+  )
 
   return (
     <button
