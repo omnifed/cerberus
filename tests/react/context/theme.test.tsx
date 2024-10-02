@@ -59,7 +59,7 @@ describe('useThemeContext', () => {
 
   test('should export a mode', () => {
     render(<ThemeTest />, { wrapper: ThemeProvider })
-    expect(screen.getByText('system')).toBeTruthy()
+    expect(screen.getByText('light')).toBeTruthy()
   })
 
   test('should toggle mode', async () => {

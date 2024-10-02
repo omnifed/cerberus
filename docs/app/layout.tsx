@@ -8,7 +8,7 @@ import {
   type DefaultThemes,
 } from '@cerberus-design/react'
 import { css, cx } from '@cerberus/styled-system/css'
-import { getTheme, injectTheme, type ThemeName } from '@/styled-system/themes'
+import { getTheme, type ThemeName } from '@/styled-system/themes'
 import { base, openGraph } from './shared-metadata'
 import { Nav } from './components/Nav'
 
@@ -43,9 +43,7 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
 
   const handleUpdateTheme = async (theme: DefaultThemes) => {
     'use server'
-    const newTheme = await getTheme(theme as ThemeName)
-    setCookie('theme', newTheme)
-    injectTheme(document.documentElement, newTheme)
+    setCookie('theme', theme)
   }
 
   const handleUpdateMode = async (mode: ColorModes) => {
@@ -58,7 +56,7 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
       className={cx(poppins.variable, recursive.variable)}
       lang="en"
       data-panda-theme={themeName || 'cerberus'}
-      data-color-mode={colorModeName || 'system'}
+      data-color-mode={colorModeName || 'light'}
     >
       <Analytics />
       {themeName && (
@@ -79,7 +77,7 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
       >
         <ThemeProvider
           defaultTheme={themeName || 'cerberus'}
-          defaultColorMode={colorModeName || 'system'}
+          defaultColorMode={colorModeName || 'light'}
           updateTheme={handleUpdateTheme}
           updateMode={handleUpdateMode}
         >

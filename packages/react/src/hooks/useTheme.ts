@@ -25,7 +25,7 @@ export interface UseThemeOptions<T extends string = DefaultThemes> {
 
 export function useTheme<C extends string = DefaultThemes>(
   defaultTheme: CustomThemes<C> = 'cerberus',
-  defaultColorMode: ColorModes = 'system',
+  defaultColorMode: ColorModes = 'light',
   options: UseThemeOptions<C> = {},
 ): ThemeContextValue<C> {
   const { updateMode, updateTheme, cache } = options
