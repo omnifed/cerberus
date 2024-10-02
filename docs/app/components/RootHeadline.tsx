@@ -22,7 +22,7 @@ export default function RootHeadline() {
       })}
     >
       <Show
-        when={mode === 'dark'}
+        when={mode === 'dark' || mode === 'system'}
         fallback={<>The cutest protector of brand consistency in the realm.</>}
       >
         The{' '}

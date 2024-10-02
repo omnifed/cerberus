@@ -51,13 +51,24 @@ function Nav() {
 ## API
 
 ```ts showLineNumbers=false
-type DefaultThemes = 'cerberus'
-type CustomThemes<K extends string = DefaultThemes> = 'cerberus' | K
-type ColorModes = 'light' | 'dark'
+export type DefaultThemes = 'cerberus' | 'acheron'
+export type CustomThemes<K extends string = DefaultThemes> = 'cerberus' | K
+export type ColorModes = 'light' | 'dark' | 'system'
+
+export interface UseThemOptions {
+  defaultTheme?: CustomThemes
+  defaultMode?: ColorModes
+  options?: {
+    cache?: boolean
+    updateMode?: (mode: ColorModes) => void
+    updateTheme?: (theme: CustomThemes) => void
+  }
+}
 
 define function useTheme<C extends string = DefaultThemes>(
   defaultTheme: CustomThemes<C> = 'cerberus',
   defaultColorMode: ColorModes = 'light',
+  options?: UseThemOptions = {}
 ): {
   theme: CustomThemes<C>
   mode: ColorModes
@@ -74,6 +85,17 @@ The `useTheme` accepts the following optional arguments:
 | ------------ | ---------- | ------------------------------------------------ |
 | defaultTheme | 'cerberus' | The default theme of the Cerberus Design System. |
 | defaultMode  | 'light'    | The default mode of the Cerberus Design System.  |
+
+#### Options
+
+The `useTheme` hook accepts an optional `options` object with the following properties:
+
+| Name         | Default | Description                                                                 |
+| ------------ | ------- | --------------------------------------------------------------------------- |
+| cache        | `true`  | Whether to cache the theme and mode in the local storage.                   |
+| updateTheme |  | A custom function to call when the theme is updated. |
+| updateMode  | | A custom function to call when the mode is updated.  |
+
 
 ### Return
 

@@ -1,17 +1,23 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useCallback, useMemo, type MouseEvent } from 'react'
 import Link from 'next/link'
-import { css } from '@cerberus/styled-system/css'
+import { css, cx } from '@cerberus/styled-system/css'
 import { grid, gridItem, hstack } from '@cerberus/styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
 import { LogoGithub } from '@cerberus-design/icons'
-import { Show, useThemeContext } from '@cerberus-design/react'
+import { Show, useThemeContext, type ColorModes } from '@cerberus-design/react'
 import { version } from '@cerberus-design/configs'
 import { AnimatingSunIcon } from './icons/AnimatingSunIcon'
 import { AnimatingMoonIcon } from './icons/AnimatingMoonIcon'
 import { usePathname } from 'next/navigation'
 import { focusStates } from '@cerberus-design/panda-preset'
+import { getColorMode } from '../utils/colors'
+import { button } from '@cerberus/styled-system/recipes'
+import { DogIcon } from './icons/DogIcon'
+import { FireIcon } from './icons/FireIcon'
+import { getTheme, injectTheme, type ThemeName } from '@/styled-system/themes'
+import { PAGE_BORDER_INITIAL } from '../utils/const'
 
 const navLogoContent = (
   <section
@@ -65,10 +71,30 @@ const navGHLogoContent = (
 
 export function Nav() {
   const pathname = usePathname()
-  const { mode, updateMode } = useThemeContext()
+  const { mode, theme, updateMode, updateTheme } = useThemeContext()
   const ariaLabel = useMemo(() => {
     return mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
   }, [mode])
+
+  const handleUpdateMode = useCallback(
+    (e: MouseEvent<HTMLButtonElement>) => {
+      const currentMode = e.currentTarget.value as ColorModes
+      const newMode = currentMode === 'light' ? 'dark' : 'light'
+      updateMode(newMode)
+    },
+    [updateMode],
+  )
+
+  const handleUpdateTheme = useCallback(
+    async (e: MouseEvent<HTMLButtonElement>) => {
+      const currentTheme = e.currentTarget.value
+      const newTheme = currentTheme === 'cerberus' ? 'acheron' : 'cerberus'
+      updateTheme(newTheme)
+      const pandaTheme = await getTheme(newTheme as ThemeName)
+      injectTheme(document.documentElement, pandaTheme)
+    },
+    [updateTheme],
+  )
 
   return (
     <nav
@@ -87,7 +113,7 @@ export function Nav() {
           bgColor: 'rgba(255, 255, 255, 0.3)',
         },
         _darkMode: {
-          bgColor: 'rgba(19, 0, 36, 0.3)',
+          bgColor: 'page.backdrop.initial',
         },
         md: {
           gridTemplateRows: '1fr',
@@ -115,11 +141,11 @@ export function Nav() {
         <ul
           className={hstack({
             border: '1px solid',
-            borderColor: 'page.border.initial',
+            borderColor: PAGE_BORDER_INITIAL,
             gap: '0',
             w: 'full',
             '& li:nth-child(2)': {
-              borderColor: 'page.border.initial',
+              borderColor: PAGE_BORDER_INITIAL,
               borderLeft: '1px solid',
               borderRight: '1px solid',
               md: {
@@ -224,6 +250,7 @@ export function Nav() {
             </p>
           </li>
           {navGHLogoContent}
+
           <li
             className={css({
               h: '1.5rem',
@@ -235,11 +262,45 @@ export function Nav() {
                 _focusVisible: focusStates._focusVisible,
               })}
               aria-label={ariaLabel}
-              onClick={updateMode}
+              onClick={handleUpdateMode}
+              value={mode}
             >
               <Show when={mode === 'light'} fallback={<AnimatingMoonIcon />}>
                 <AnimatingSunIcon />
               </Show>
+            </button>
+          </li>
+
+          <li>
+            <button
+              className={cx(
+                css({
+                  bgColor: 'page.bg.100',
+                  border: '1px solid',
+                  borderColor: PAGE_BORDER_INITIAL,
+                  fontWeight: 500,
+                  h: '2.275rem',
+                  rounded: 'sm',
+                  textStyle: 'label-sm',
+                  textTransform: 'capitalize',
+                  _hover: {
+                    bgColor: 'page.bg.200',
+                  },
+                }),
+                button({
+                  palette: 'secondaryAction',
+                  shape: 'rounded',
+                  size: 'sm',
+                  usage: 'outlined',
+                }),
+              )}
+              onClick={handleUpdateTheme}
+              value={theme}
+            >
+              <Show when={theme === 'cerberus'} fallback={<FireIcon />}>
+                <DogIcon />
+              </Show>
+              {theme}
             </button>
           </li>
         </ul>

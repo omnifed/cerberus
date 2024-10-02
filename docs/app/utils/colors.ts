@@ -26,3 +26,18 @@ export function hasWhiteBase(
   }
   return hwb[1] >= 25 && hwb[2] <= 11
 }
+
+// theme
+
+export function getColorMode(currentMode: ColorModes): ColorModes {
+  switch (currentMode) {
+    case 'light':
+      return 'dark'
+    case 'dark':
+      return 'system'
+    case 'system':
+      return 'light'
+    default:
+      return 'system'
+  }
+}

@@ -1,4 +1,5 @@
 export const NEUTRAL_BORDER_100 = 'page.border.100'
+export const PAGE_BORDER_INITIAL = 'page.border.initial'
 export const PAGE_BORDER_100 = 'page.border.100'
 export const PAGE_TEXT_INITIAL = 'page.text.initial'
 export const NEUTRAL_TEXT_INVERSE = 'page.text.inverse'
