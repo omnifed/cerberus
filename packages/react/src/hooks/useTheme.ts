@@ -63,17 +63,27 @@ export function useTheme<C extends string = DefaultThemes>(
   }, [])
 
   useEffect(() => {
+    const root = document.documentElement
+    root.dataset.pandaTheme = theme
+
     if (cache) {
-      const root = document.documentElement
-      root.dataset.pandaTheme = theme
       localStorage.setItem(THEME_KEY, theme)
     }
   }, [theme, cache])
 
   useEffect(() => {
-    if (cache) {
-      const root = document.documentElement
+    const root = document.documentElement
+
+    if (colorMode === 'system') {
+      root.dataset.colorMode = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
+        ? 'dark'
+        : 'light'
+    } else {
       root.dataset.colorMode = colorMode
+    }
+
+    if (cache) {
       localStorage.setItem(MODE_KEY, colorMode)
     }
   }, [colorMode, cache])

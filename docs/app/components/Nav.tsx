@@ -17,6 +17,8 @@ import { DogIcon } from './icons/DogIcon'
 import { FireIcon } from './icons/FireIcon'
 import { getTheme, injectTheme, type ThemeName } from '@/styled-system/themes'
 import { PAGE_BORDER_INITIAL } from '../utils/const'
+import { getColorMode } from '../utils/colors'
+import { AnimatingSystemIcon } from './icons/AnimatingSystemIcon'
 
 const navLogoContent = (
   <section
@@ -78,7 +80,7 @@ export function Nav() {
   const handleUpdateMode = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
       const currentMode = e.currentTarget.value as ColorModes
-      const newMode = currentMode === 'light' ? 'dark' : 'light'
+      const newMode = getColorMode(currentMode)
       updateMode(newMode)
     },
     [updateMode],
@@ -264,8 +266,18 @@ export function Nav() {
               onClick={handleUpdateMode}
               value={mode}
             >
-              <Show when={mode === 'light'} fallback={<AnimatingMoonIcon />}>
-                <AnimatingSunIcon />
+              <Show
+                when={mode === 'system'}
+                fallback={
+                  <Show
+                    when={mode === 'light'}
+                    fallback={<AnimatingMoonIcon />}
+                  >
+                    <AnimatingSunIcon />
+                  </Show>
+                }
+              >
+                <AnimatingSystemIcon />
               </Show>
             </button>
           </li>
