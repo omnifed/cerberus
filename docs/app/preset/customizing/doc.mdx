@@ -1,0 +1,259 @@
+import { NoteAdmonition } from '@/app/components/Admonition'
+import OverviewList from '@/app/components/OverviewList'
+import SquigglyDivider from '@/app/components/squiggly-divider'
+import Hero from './components/hero'
+
+<Hero
+  heading="Customization"
+  subHeading="Learn how to customize Cerberus to suit your needs."
+ />
+
+Cerberus is a highly customizable tool that allows you to define your own rules and configurations. This page will guide you through the process of customizing Cerberus to suit your needs.
+
+## Which Option Should I Choose?
+
+<OverviewList intro="Use global config when:" rules={[
+  'Create your own design system',
+  'Make global changes to Cerberus settings',
+  'Add custom additions to Cerberus',
+]} />
+
+<OverviewList intro="Use component level when:" rules={[
+  'Create one-off component style changes',
+  'Build your own custom components'
+]} />
+
+<SquigglyDivider />
+
+## Option 1: Global Configuration
+
+For large projects, you may want to define a global configuration file that applies to Cerberus as a whole by extending the preset.
+
+### Step 1: Create a Theme Configuration File
+
+We recommend creating a `theme` directory and adding a `config.ts` file to it. This file will contain your custom theme configuration.
+
+```tsx title="theme/config.ts"
+import { defineTheme } from '@cerberus/panda-preset'
+import { semanticTokens } from './semantic-tokens/config'
+import { keyframes } from './keyframes'
+import { recipes, slotRecipes } from './recipes'
+import { textStyles } from './textStyles'
+import { tokens } from './tokens'
+
+/**
+ * This module contains our custom theme to use with Cerberus.
+ * @module
+ */
+
+export const yourCustomTheme = defineTheme({
+  semanticTokens,
+  extend: {
+    keyframes,
+    recipes,
+    slotRecipes,
+    textStyles,
+    tokens,
+  },
+})
+```
+
+### Step 2: Add Your Custom Theme to a preset
+
+Create an entry file in the `theme` directory that exports your custom theme as a new preset.
+
+```tsx title="theme/index.ts"
+import { definePreset } from '@pandacss/dev'
+import { yourCustomTheme } from './config'
+
+/**
+ * This module contains our custom preset which registers our custom theme.
+ * @module
+ */
+
+export const yourCustomPreset = definePreset({
+  // register your custom theme
+  themes: {
+    yourCustomThemeName: yourCustomTheme,
+  },
+
+  // opt-into your theme to be used in static css generation
+  staticCss: {
+    themes: ['yourCustomThemeName'],
+  },
+})
+```
+
+### Step 3: Extend the Cerberus Preset
+
+To use your custom theme, you need to tell Panda it exists.
+
+```ts title="panda.config.ts" {14}
+import { defineConfig } from '@pandacss/dev'
+import pandaPreset from '@pandacss/preset-panda'
+import { cerberusPreset, cerberusConfig } from '@cerberus/panda-preset'
+
+export default defineConfig({
+  ...cerberusConfig,
+
+  include: [
+    './node_modules/@cerberus/react/src/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx,js,jsx}', // <- Make sure this path is to your project
+  ],
+  exclude: [],
+
+  presets: [pandaPreset, cerberusPreset, yourCustomPreset],
+})
+```
+
+#### Step 4: Use Your Custom Theme
+
+Finally, delcare your theme in your entry file.
+
+<NoteAdmonition description="Be sure you run the `prepare` command to generate your theme into the Panda CSS static files." />
+
+```tsx title="app/layout.tsx" {27}
+import { cx } from '@cerberus/styled-system/css'
+import { Poppins, Recursive } from 'next/font/google'
+import { type PropsWithChildren } from 'react'
+
+import './globals.css'
+
+const poppins = Poppins({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-poppins',
+})
+const recursive = Recursive({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-recursive',
+})
+
+interface RootProps {}
+
+export default async function RootLayout(props: PropsWithChildren<RootProps>) {
+  return (
+    <html
+      className={cx(poppins.variable, recursive.variable)}
+      lang="en"
+      data-panda-theme="yourCustomThemeName"
+      data-color-mode="light"
+    >
+      <body>
+        {props.children}
+      </body>
+    </html>
+  )
+}
+
+```
+
+<SquigglyDivider />
+
+## Option 2: Component-Specific Configuration
+
+This is the easiest way to customize Cerberus. You simply just add custom styles to a component in Cerberus.
+
+<NoteAdmonition description="Most components in Cerberus support custom styles. More complex components (i.e. components that use slot recipes) will require the Global Configuration option." />
+
+```tsx title="Customizing a Button"
+import { Button, type ButtonProps } from '@cerberus/react'
+import { css } from '@cerberus/styled-system'
+
+export function CustomButton(props: ButtonProps) {
+  return (
+    <Button
+      {...props}
+      className={css({
+        backgroundColor: 'red',
+        color: 'white',
+        borderRadius: '8px',
+      })}
+    />
+  )
+}
+```
+
+## Customizing Icons
+
+Some components in Cerberus use icons. You can customize these icons by providing your own icon components.
+
+In your entry file, call `defineIcons` with an object that maps icon names to icon components.
+
+The following code replaces all instances of the `invalid` icon with a custom Lucide icon.
+
+```tsx title="app/layout.tsx" {1, 21-23}
+import { defineIcons } from '@cerberus/react'
+import { cx } from '@cerberus/styled-system/css'
+import { Poppins, Recursive } from 'next/font/google'
+import { type PropsWithChildren } from 'react'
+import { CircleAlert } from 'lucide-react';
+
+import './globals.css'
+
+const poppins = Poppins({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-poppins',
+})
+const recursive = Recursive({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-recursive',
+})
+
+defineIcons({
+  invalid: CircleAlert,
+})
+
+interface RootProps {}
+
+export default async function RootLayout(props: PropsWithChildren<RootProps>) {
+  return (
+    <html
+      className={cx(poppins.variable, recursive.variable)}
+      lang="en"
+      data-panda-theme="cerberus"
+      data-color-mode="light"
+    >
+      <body>
+        {props.children}
+      </body>
+    </html>
+  )
+}
+
+```
+
+### API
+
+The `defineIcons` function takes an object that maps icon names to icon components.
+
+```tsx
+export type IconType = CarbonIconType | ElementType
+
+export interface DefinedIcons {
+  avatar?: IconType
+  checkbox?: IconType
+  close?: IconType
+  confirmModal?: IconType
+  delete?: IconType
+  promptModal?: IconType
+  fileUploader?: IconType
+  indeterminate?: IconType
+  infoNotification?: IconType
+  successNotification?: IconType
+  warningNotification?: IconType
+  dangerNotification?: IconType
+  invalid: IconType
+  invalidAlt?: IconType
+  redo?: IconType
+  selectArrow?: IconType
+  toggleChecked?: IconType
+}
+```

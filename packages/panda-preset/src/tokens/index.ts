@@ -163,8 +163,6 @@ function getThemeSelector(
     base: darkToken,
     _darkMode: darkToken,
     _lightMode: lightToken,
-    // _osDark: darkToken, <- Don't support OS themes yet
-    // _osLight: lightToken,
   }
 
   return tokenValue
