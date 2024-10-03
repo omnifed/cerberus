@@ -17,8 +17,8 @@ export default function NotFound() {
       <span
         className={css({
           color: 'page.surface.100',
-          mb: 6,
           maxW: '12rem',
+          mb: 6,
           w: '1/3',
           lg: {
             mb: 10,
@@ -47,7 +47,7 @@ export default function NotFound() {
       </p>
 
       <Link className={button()} href="/">
-        Return from when you came
+        Return from whence you came
       </Link>
     </div>
   )
