@@ -10,6 +10,12 @@
     "type": "route"
   },
   {
+    "label": "Customizing",
+    "route": "/preset/customizing",
+    "tag": "next",
+    "type": "route"
+  },
+  {
     "label": "Branding",
     "type": "heading"
   },
