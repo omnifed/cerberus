@@ -43,7 +43,7 @@ export default function NotFound() {
           textWrap: 'pretty',
         })}
       >
-        We couldn't find Cerberus...or the page you are trying to reach.
+        We couldn&apos;t find Cerberus...or the page you are trying to reach.
       </p>
 
       <Link className={button()} href="/">

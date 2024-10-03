@@ -16,7 +16,7 @@ import { button } from '@cerberus/styled-system/recipes'
 import { DogIcon } from './icons/DogIcon'
 import { FireIcon } from './icons/FireIcon'
 import { getTheme, injectTheme, type ThemeName } from '@/styled-system/themes'
-import { PAGE_BORDER_INITIAL } from '../utils/const'
+import { INLINE_BLOCK, PAGE_BORDER_INITIAL } from '../utils/const'
 import { getColorMode } from '../utils/colors'
 import { AnimatingSystemIcon } from './icons/AnimatingSystemIcon'
 
@@ -34,9 +34,13 @@ const navLogoContent = (
     <Link
       href="/"
       className={css({
+        display: 'none',
         pxi: '2',
         rounded: 'sm',
         textStyle: 'body-xl',
+        md: {
+          display: INLINE_BLOCK,
+        },
         _active: {
           color: 'page.text.initial',
         },
@@ -57,7 +61,7 @@ const navGHLogoContent = (
     <a
       aria-label="View Github repo"
       className={css({
-        display: 'inline-block',
+        display: INLINE_BLOCK,
         rounded: 'sm',
         _focusVisible: focusStates._focusVisible,
       })}
@@ -171,7 +175,7 @@ export function Nav() {
               <Link
                 aria-current={pathname.includes(item.href) ? 'page' : undefined}
                 className={css({
-                  display: 'inline-block',
+                  display: INLINE_BLOCK,
                   p: '4',
                   position: 'relative',
                   transition: 'color 250ms ease-in-out',

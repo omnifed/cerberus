@@ -10,3 +10,5 @@ export const ACTION_NAV_INITIAL = 'action.navigation.initial'
 export const PURPLE = 'purple'
 
 export const FLEX_START = 'flex-start'
+
+export const INLINE_BLOCK = 'inline-block'
