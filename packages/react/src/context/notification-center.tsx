@@ -134,20 +134,11 @@ export function NotificationCenter(
               }}
             >
               {activeNotifications.map((option) => (
-                <Notification
-                  id={option.id!}
+                <MatchNotification
                   key={option.id}
+                  {...option}
                   onClose={handleClose}
-                  open
-                  palette={option.palette}
-                >
-                  <NotificationHeading palette={option.palette}>
-                    {option.heading}
-                  </NotificationHeading>
-                  <NotificationDescription palette={option.palette}>
-                    {option.description}
-                  </NotificationDescription>
-                </Notification>
+                />
               ))}
             </div>
           </div>
@@ -155,6 +146,70 @@ export function NotificationCenter(
       </Show>
     </NotificationsContext.Provider>
   )
+}
+
+interface MatchNotificationProps extends Omit<NotifyOptions, 'onClose'> {
+  onClose: (e: MouseEvent<HTMLButtonElement>) => void
+  key: string | undefined
+}
+
+function MatchNotification(props: MatchNotificationProps) {
+  const { palette, id, onClose, heading, description } = props
+
+  switch (palette) {
+    case 'success':
+      return (
+        <Notification
+          id={id!}
+          key={id}
+          onClose={onClose}
+          open
+          palette="success"
+        >
+          <NotificationHeading palette="success">{heading}</NotificationHeading>
+          <NotificationDescription palette="success">
+            {description}
+          </NotificationDescription>
+        </Notification>
+      )
+
+    case 'warning':
+      return (
+        <Notification
+          id={id!}
+          key={id}
+          onClose={onClose}
+          open
+          palette="warning"
+        >
+          <NotificationHeading palette="warning">{heading}</NotificationHeading>
+          <NotificationDescription palette="warning">
+            {description}
+          </NotificationDescription>
+        </Notification>
+      )
+
+    case 'danger':
+      return (
+        <Notification id={id!} key={id} onClose={onClose} open palette="danger">
+          <NotificationHeading palette="danger">{heading}</NotificationHeading>
+          <NotificationDescription palette="danger">
+            {description}
+          </NotificationDescription>
+        </Notification>
+      )
+
+    case 'info':
+    default:
+      return (
+        <Notification id={id!} key={id} onClose={onClose} open palette="info">
+          <NotificationHeading palette="info">{heading}</NotificationHeading>
+          <NotificationDescription palette="info">
+            {description}
+          </NotificationDescription>
+        </Notification>
+      )
+  }
 }
 
 /**

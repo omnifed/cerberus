@@ -3,7 +3,7 @@ import semanticColorsDark from './data/semantic-colors.cerberus-dark-mode.json' 
 import semanticColorsLight from './data/semantic-colors.cerberus-light-mode.json' with { type: 'json' }
 import acheronDarkMode from './data/semantic-colors.acheron-dark-mode.json' with { type: 'json' }
 import acheronLightMode from './data/semantic-colors.acheron-light-mode.json' with { type: 'json' }
-import type { RawThemes, SemanticToken, Token } from '../theme'
+import type { GradientUsage, RawThemes, SemanticToken, Token } from '../theme'
 
 /**
  * This module is a collection of raw tokens that are used to generate the theme.
@@ -70,6 +70,52 @@ export type PandaColor = {
 export function formatPrimitiveColors(): PandaColor {
   // primitive colors includes "spacing"
   const { acheron, cerberus } = primitiveColors
+  const onlyThemePrimitiveColors = { acheron, cerberus }
+
+  // format the primitive colors to match the Panda CSS format
+  return Object.entries(onlyThemePrimitiveColors).reduce(
+    (acc, [theme, palette]) => {
+      acc[theme] = Object.entries(palette).reduce(
+        (acc, [palette, prominence]) => {
+          acc[palette] = Object.entries(prominence).reduce(
+            (acc, [prominence, value]) => {
+              acc[prominence] = { value: value.$value }
+              return acc
+            },
+            {} as PandaColor[string][string],
+          )
+          return acc
+        },
+        {} as PandaColor[string],
+      )
+      return acc
+    },
+    {} as PandaColor,
+  )
+}
+
+export type PandaGradient = {
+  [t in RawThemes]: {
+    [name: string]: {
+      [k in GradientUsage]: {
+        value: {
+          type: 'linear' | 'radial'
+          placement: string | number
+          stops:
+            | Array<{
+                color: string
+                position: number
+              }>
+            | Array<string>
+        }
+      }
+    }
+  }
+}
+
+export function formatPrimitiveGradients(): PandaGradient {
+  // primitive colors includes "spacing"
+  const { acheron, cerberus } = themeTokens
   const onlyThemePrimitiveColors = { acheron, cerberus }
 
   // format the primitive colors to match the Panda CSS format

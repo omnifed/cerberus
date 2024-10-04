@@ -45,6 +45,13 @@ export type Prominence = 'initial' | 'inverse' | 'static' | 100 | 200 | 300
 export type Interaction = 'hover' | 'active' | 'visited' | 'focus' | 'disabled'
 
 /**
+ * The use of a gradient.
+ * @description **noun**, how a gradient is used.
+ * @readonly **required**
+ */
+export type GradientUsage = 'start' | 'end' | 'text'
+
+/**
  * The Cerberus theme of a color.
  */
 export type Themes = 'cerberusTheme' | 'acheronTheme'
