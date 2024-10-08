@@ -8,13 +8,15 @@ import { globalCss } from './globalCss'
 import { conditions } from './conditions'
 import { utilities } from './utilities'
 import { patterns } from './patterns'
-import { baseTheme } from './theme'
+import { baseTheme, type RawThemes } from './theme'
 import { acheronTheme } from './themes/acheron'
 
 /**
  * This module contains the Cerberus preset and configuration options.
  * @module
  **/
+
+export const supportedThemes: RawThemes[] = ['cerberus', 'acheron']
 
 export const cerberusPreset: Preset = definePreset({
   name: 'cerberus',

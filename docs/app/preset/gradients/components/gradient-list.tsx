@@ -18,7 +18,7 @@ export default function GradientList() {
           flexWrap: 'wrap',
         })}
       >
-        {gradientValues.map((gradient, index) => (
+        {gradientValues.map((gradientName, index) => (
           <li
             className={css({
               flexShrink: 0,
@@ -40,42 +40,51 @@ export default function GradientList() {
               })}
             >
               <section
-                data-gradient={gradient}
+                data-gradient={gradientName}
                 className={css({
                   h: '15rem',
                   rounded: 'lg',
-                  '&:is([data-gradient=dark-purple])': {
-                    cerbGradient: 'dark-purple',
-                  },
-                  '&:is([data-gradient=light-purple])': {
-                    cerbGradient: 'light-purple',
-                  },
-                  '&:is([data-gradient=green])': {
-                    cerbGradient: 'green',
-                  },
-                  '&:is([data-gradient=light-blue])': {
-                    cerbGradient: 'light-blue',
-                  },
-                  '&:is([data-gradient=red])': {
-                    cerbGradient: 'red',
-                  },
-                  '&:is([data-gradient=neutral])': {
-                    cerbGradient: 'neutral',
-                  },
-                  '&:is([data-gradient=yellow])': {
-                    cerbGradient: 'yellow',
-                  },
-                  '&:is([data-gradient=light-teal])': {
-                    cerbGradient: 'light-teal',
-                  },
-                  '&:is([data-gradient=teal])': {
-                    cerbGradient: 'teal',
-                  },
                   '&:is([data-gradient=charon-light])': {
                     gradient: 'charon-light',
                   },
                   '&:is([data-gradient=charon-dark])': {
                     gradient: 'charon-dark',
+                  },
+                  '&:is([data-gradient=nyx-light])': {
+                    gradient: 'nyx-light',
+                  },
+                  '&:is([data-gradient=nyx-dark])': {
+                    gradient: 'nyx-dark',
+                  },
+                  '&:is([data-gradient=amphiaraus-light])': {
+                    gradient: 'amphiaraus-light',
+                  },
+                  '&:is([data-gradient=amphiaraus-dark])': {
+                    gradient: 'amphiaraus-dark',
+                  },
+                  '&:is([data-gradient=styx-light])': {
+                    gradient: 'styx-light',
+                  },
+                  '&:is([data-gradient=styx-dark])': {
+                    gradient: 'styx-dark',
+                  },
+                  '&:is([data-gradient=thanatos-light])': {
+                    gradient: 'thanatos-light',
+                  },
+                  '&:is([data-gradient=thanatos-dark])': {
+                    gradient: 'thanatos-dark',
+                  },
+                  '&:is([data-gradient=hades-light])': {
+                    gradient: 'hades-light',
+                  },
+                  '&:is([data-gradient=hades-dark])': {
+                    gradient: 'hades-dark',
+                  },
+                  '&:is([data-gradient=asphodel-light])': {
+                    gradient: 'asphodel-light',
+                  },
+                  '&:is([data-gradient=asphodel-dark])': {
+                    gradient: 'asphodel-dark',
                   },
                 })}
               />
@@ -94,7 +103,7 @@ export default function GradientList() {
                     textTransform: 'capitalize',
                   })}
                 >
-                  {gradient.replace(/-/g, ' ')}
+                  {gradientName.replace(/-/g, ' ')}
                 </h2>
                 <p
                   className={hstack({
@@ -109,7 +118,7 @@ export default function GradientList() {
                   >
                     <LogoFigma />
                   </span>
-                  Gradient Fills/{gradient}
+                  Gradient Fills/{gradientName}
                 </p>
                 <span
                   className={css({
@@ -117,7 +126,7 @@ export default function GradientList() {
                     mt: 3,
                   })}
                 >
-                  <Code>{gradient}</Code>
+                  <Code>{gradientName}</Code>
                 </span>
               </footer>
             </div>

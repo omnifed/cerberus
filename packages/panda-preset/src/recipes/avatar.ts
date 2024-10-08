@@ -76,7 +76,7 @@ export const avatar: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   },
 
   defaultVariants: {
-    gradient: 'light-purple',
+    gradient: 'charon-light',
     size: 'lg',
   },
 })
@@ -111,7 +111,7 @@ function createGradientVariants(): Record<GradientValue, SystemStyleObject> {
     return {
       ...acc,
       [value]: {
-        cerbGradient: value,
+        gradient: value,
         color: getGradientTextMap(value),
       },
     }

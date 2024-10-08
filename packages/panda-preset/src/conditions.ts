@@ -6,6 +6,7 @@ export const conditions = {
   // modes
   lightMode: '[data-color-mode=light] &, &.light, .light &',
   darkMode: '[data-color-mode=dark] &, &.dark, .dark &',
+  systemMode: '[data-color-mode=system] &, &.system, .system &',
 
   // states
   modalOpen: '&:is([data-modal-open=true])',

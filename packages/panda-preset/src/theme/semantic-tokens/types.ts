@@ -61,6 +61,7 @@ export type RawThemes = 'cerberus' | 'acheron'
  * The mode option of a Cerberus theme.
  */
 export type Modes = 'lightMode' | 'darkMode'
+export type RawModes = 'light' | 'dark' | 'system'
 
 export type PandaSelectors<T extends string, V> = {
   readonly [K in `_${T}`]: V

@@ -162,7 +162,7 @@ export function formatPrimitiveGradients(): PandaGradient {
               acc[gradient] = {
                 value: {
                   type: 'linear',
-                  placement: 'to right',
+                  placement: 'to left bottom',
                   stops: [
                     getSemanticToken(tokens.start.$value),
                     getSemanticToken(tokens.end.$value),
