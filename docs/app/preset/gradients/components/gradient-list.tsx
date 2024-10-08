@@ -1,5 +1,5 @@
 import { cq, hstack, vstack } from '@cerberus/styled-system/patterns'
-import { PAGE, gradientValues } from '@cerberus-design/panda-preset'
+import { gradientValues } from '@cerberus-design/panda-preset'
 import { css } from '@cerberus/styled-system/css'
 import { LogoFigma } from '@cerberus-design/icons'
 import { Code } from '@/app/components/Code'
@@ -70,6 +70,12 @@ export default function GradientList() {
                   },
                   '&:is([data-gradient=teal])': {
                     cerbGradient: 'teal',
+                  },
+                  '&:is([data-gradient=charon-light])': {
+                    gradient: 'charon-light',
+                  },
+                  '&:is([data-gradient=charon-dark])': {
+                    gradient: 'charon-dark',
                   },
                 })}
               />

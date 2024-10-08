@@ -3,7 +3,7 @@ import semanticColorsDark from './data/semantic-colors.cerberus-dark-mode.json' 
 import semanticColorsLight from './data/semantic-colors.cerberus-light-mode.json' with { type: 'json' }
 import acheronDarkMode from './data/semantic-colors.acheron-dark-mode.json' with { type: 'json' }
 import acheronLightMode from './data/semantic-colors.acheron-light-mode.json' with { type: 'json' }
-import type { GradientUsage, RawThemes, SemanticToken, Token } from '../theme'
+import type { RawThemes, SemanticToken, Token } from '../theme'
 
 /**
  * This module is a collection of raw tokens that are used to generate the theme.
@@ -53,9 +53,41 @@ export const themeTokens = {
   },
 }
 
+export const themeGradients = {
+  acheron: {
+    dark: {
+      ...acheronDarkTokens.gradient,
+    },
+    light: {
+      ...acheronLightTokens.gradient,
+    },
+  },
+  cerberus: {
+    dark: {
+      ...darkTokens.gradient,
+    },
+    light: {
+      ...lightTokens.gradient,
+    },
+  },
+}
+
 export type PrimitiveCollection = RawTokens['primitives']['colors']
 
 // helpers
+
+export type FigmaToken = {
+  $type: 'color'
+  $value: string
+  $description: string
+  $extensions: {
+    'com.figma': {
+      hiddenFromPublishing: boolean
+      scopes: ['FRAME_FILL', 'SHAPE_FILL', 'STROKE_COLOR']
+      codeSyntax: object
+    }
+  }
+}
 
 export type PandaColor = {
   [theme: string]: {
@@ -65,6 +97,27 @@ export type PandaColor = {
       }
     }
   }
+}
+
+export interface PandaGradient {
+  [theme: string]: {
+    [mode: string]: {
+      [gradient: string]: {
+        value: PandaGradientValue
+      }
+    }
+  }
+}
+
+export interface PandaGradientValue {
+  type: 'linear' | 'radial'
+  placement: string | number
+  stops:
+    | Array<{
+        color: string
+        position: number
+      }>
+    | Array<string>
 }
 
 export function formatPrimitiveColors(): PandaColor {
@@ -94,49 +147,39 @@ export function formatPrimitiveColors(): PandaColor {
   )
 }
 
-export type PandaGradient = {
-  [t in RawThemes]: {
-    [name: string]: {
-      [k in GradientUsage]: {
-        value: {
-          type: 'linear' | 'radial'
-          placement: string | number
-          stops:
-            | Array<{
-                color: string
-                position: number
-              }>
-            | Array<string>
-        }
-      }
-    }
-  }
-}
-
 export function formatPrimitiveGradients(): PandaGradient {
-  // primitive colors includes "spacing"
-  const { acheron, cerberus } = themeTokens
-  const onlyThemePrimitiveColors = { acheron, cerberus }
+  // gradient tokens are nested in the semantic-tokens
+  const { acheron, cerberus } = themeGradients
+  const onlyThemePrimitiveGradients = { acheron, cerberus }
 
   // format the primitive colors to match the Panda CSS format
-  return Object.entries(onlyThemePrimitiveColors).reduce(
+  return Object.entries(onlyThemePrimitiveGradients).reduce(
     (acc, [theme, palette]) => {
       acc[theme] = Object.entries(palette).reduce(
-        (acc, [palette, prominence]) => {
-          acc[palette] = Object.entries(prominence).reduce(
-            (acc, [prominence, value]) => {
-              acc[prominence] = { value: value.$value }
+        (acc, [mode, gradients]) => {
+          acc[mode] = Object.entries(gradients).reduce(
+            (acc, [gradient, tokens]) => {
+              acc[gradient] = {
+                value: {
+                  type: 'linear',
+                  placement: 'to right',
+                  stops: [
+                    getSemanticToken(tokens.start.$value),
+                    getSemanticToken(tokens.end.$value),
+                  ],
+                },
+              }
               return acc
             },
-            {} as PandaColor[string][string],
+            {} as PandaGradient[string][string],
           )
           return acc
         },
-        {} as PandaColor[string],
+        {} as PandaGradient[string],
       )
       return acc
     },
-    {} as PandaColor,
+    {} as PandaGradient,
   )
 }
 

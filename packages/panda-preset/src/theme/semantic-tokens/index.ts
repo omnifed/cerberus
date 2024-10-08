@@ -10,5 +10,6 @@ export * from './info'
 export * from './success'
 export * from './warning'
 export * from './danger'
+export * from './gradient'
 
 export * from './types'

@@ -4,7 +4,7 @@ export type CustomUtilityConfig<K extends string> = {
   [key in K]: PropertyConfig
 }
 
-export type GradientValue =
+export type DeprecatedGradientValue =
   | 'light-purple'
   | 'dark-purple'
   | 'green'
@@ -15,7 +15,7 @@ export type GradientValue =
   | 'teal'
   | 'light-teal'
 
-export const gradientValues: GradientValue[] = [
+export const gradientValues_deprecated: DeprecatedGradientValue[] = [
   'light-purple',
   'dark-purple',
   'green',
@@ -53,12 +53,16 @@ const pxi: CustomUtilityConfig<'pxi'> = {
   },
 }
 
+/**
+ * @deprecated
+ * Use `gradient` instead
+ */
 const cerberusGradient: CustomUtilityConfig<'cerberusGradient'> = {
   cerberusGradient: {
     className: 'cerberus-gradient',
-    values: gradientValues,
+    values: gradientValues_deprecated,
     shorthand: 'cerbGradient',
-    transform(value: GradientValue) {
+    transform(value: DeprecatedGradientValue) {
       const color = '#21143B'
       switch (value) {
         case 'light-purple':
@@ -116,10 +120,36 @@ const cerberusGradient: CustomUtilityConfig<'cerberusGradient'> = {
   },
 }
 
+export type GradientValue = 'charon-light' | 'charon-dark'
+
+export const gradientValues: GradientValue[] = ['charon-light', 'charon-dark']
+
+const gradient: CustomUtilityConfig<'gradient'> = {
+  gradient: {
+    className: 'gradient',
+    values: gradientValues,
+    transform(value: GradientValue, { token }) {
+      switch (value) {
+        case 'charon-light':
+          return {
+            backgroundImage: token('gradients.cerberus.dark.charon-light'),
+          }
+        case 'charon-dark':
+          return {
+            backgroundImage: token('gradients.cerberus.dark.charon-dark'),
+          }
+        default:
+          break
+      }
+    },
+  },
+}
+
 export const utilities = {
   extend: {
     ...mxi,
     ...pxi,
     ...cerberusGradient,
+    ...gradient,
   },
 }

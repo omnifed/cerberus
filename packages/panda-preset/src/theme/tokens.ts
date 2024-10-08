@@ -1,4 +1,9 @@
-import { formatPrimitiveColors, type PandaColor } from '../tokens'
+import {
+  formatPrimitiveColors,
+  formatPrimitiveGradients,
+  type PandaColor,
+  type PandaGradient,
+} from '../tokens'
 
 /**
  * This module contains the tokens used in the main theme.
@@ -6,6 +11,7 @@ import { formatPrimitiveColors, type PandaColor } from '../tokens'
  */
 
 const colors: PandaColor = formatPrimitiveColors()
+const gradients: PandaGradient = formatPrimitiveGradients()
 
 const fonts = {
   display: {
@@ -76,6 +82,7 @@ const zIndex = {
 
 export const tokens = {
   colors,
+  gradients,
   fonts,
   zIndex,
 }

@@ -1808,6 +1808,102 @@
     }
   },
   "gradient": {
+    "charon-light": {
+      "start": {
+        "$type": "color",
+        "$value": "cerberus.brand.20",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "cerberus.brand.40",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": "cerberus.brand.70",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "charon-dark": {
+      "start": {
+        "$type": "color",
+        "$value": "cerberus.brand.70",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "cerberus.brand.40",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": "cerberus.brand.10",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
     "nyx-light": {
       "start": {
         "$type": "color",
@@ -1816,7 +1912,12 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL", "STROKE_COLOR"],
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
             "codeSyntax": {}
           }
         }
@@ -1828,7 +1929,12 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL", "STROKE_COLOR"],
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
             "codeSyntax": {}
           }
         }
@@ -1836,6 +1942,54 @@
       "text": {
         "$type": "color",
         "$value": "cerberus.neutral.100",
+        "$description": "Reserved for usage only on top of gradients",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "nyx-dark": {
+      "start": {
+        "$type": "color",
+        "$value": "cerberus.neutral.100",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "cerberus.neutral.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": "cerberus.neutral.20",
         "$description": "Reserved for usage only on top of gradients",
         "$extensions": {
           "com.figma": {
@@ -1854,7 +2008,12 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
             "codeSyntax": {}
           }
         }
@@ -1866,7 +2025,24 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": "cerberus.success.20",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
             "codeSyntax": {}
           }
         }
@@ -1880,7 +2056,12 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
             "codeSyntax": {}
           }
         }
@@ -1892,7 +2073,12 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
             "codeSyntax": {}
           }
         }
@@ -1904,51 +2090,13 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["TEXT_FILL"],
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
             "codeSyntax": {}
           }
         }
       }
     },
-    "cerberus-light": {
-      "start": {
-        "$type": "color",
-        "$value": "cerberus.brand.10",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "end": {
-        "$type": "color",
-        "$value": "cerberus.brand.30",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "text": {
-        "$type": "color",
-        "$value": "cerberus.brand.70",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
-    "blue": {
+    "amphiaraus-light": {
       "start": {
         "$type": "color",
         "$value": "cerberus.info.10",
@@ -1956,7 +2104,12 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
             "codeSyntax": {}
           }
         }
@@ -1968,7 +2121,12 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
             "codeSyntax": {}
           }
         }
@@ -1980,7 +2138,343 @@
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "amphiaraus-dark": {
+      "start": {
+        "$type": "color",
+        "$value": "cerberus.info.90",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "cerberus.info.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": "cerberus.info.20",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "hades-light": {
+      "start": {
+        "$type": "color",
+        "$value": "cerberus.danger.20",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "cerberus.danger.40",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": "cerberus.danger.80",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "hades-dark": {
+      "start": {
+        "$type": "color",
+        "$value": "cerberus.danger.80",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "cerberus.danger.50",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": "cerberus.danger.10",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "styx-light": {
+      "start": {
+        "$type": "color",
+        "$value": "cerberus.teal.20",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "cerberus.teal.50",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": "cerberus.teal.90",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "styx-dark": {
+      "start": {
+        "$type": "color",
+        "$value": "cerberus.teal.90",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "cerberus.teal.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": "cerberus.teal.100",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "asphodel-light": {
+      "start": {
+        "$type": "color",
+        "$value": "cerberus.warning.20",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "cerberus.warning.50",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": "cerberus.warning.90",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "asphodel-dark": {
+      "start": {
+        "$type": "color",
+        "$value": "cerberus.warning.80",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "cerberus.warning.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL",
+              "STROKE_COLOR",
+              "EFFECT_COLOR"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "$value": "cerberus.warning.100",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
             "codeSyntax": {}
           }
         }
