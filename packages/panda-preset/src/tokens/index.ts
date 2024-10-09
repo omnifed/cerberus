@@ -53,9 +53,41 @@ export const themeTokens = {
   },
 }
 
+export const themeGradients = {
+  acheron: {
+    dark: {
+      ...acheronDarkTokens.gradient,
+    },
+    light: {
+      ...acheronLightTokens.gradient,
+    },
+  },
+  cerberus: {
+    dark: {
+      ...darkTokens.gradient,
+    },
+    light: {
+      ...lightTokens.gradient,
+    },
+  },
+}
+
 export type PrimitiveCollection = RawTokens['primitives']['colors']
 
 // helpers
+
+export type FigmaToken = {
+  $type: 'color'
+  $value: string
+  $description: string
+  $extensions: {
+    'com.figma': {
+      hiddenFromPublishing: boolean
+      scopes: ['FRAME_FILL', 'SHAPE_FILL', 'STROKE_COLOR']
+      codeSyntax: object
+    }
+  }
+}
 
 export type PandaColor = {
   [theme: string]: {
@@ -65,6 +97,37 @@ export type PandaColor = {
       }
     }
   }
+}
+
+export interface PandaGradientColor {
+  [theme: string]: {
+    [mode: string]: {
+      [gradient: string]: {
+        value: string
+      }
+    }
+  }
+}
+
+export interface PandaGradient {
+  [theme: string]: {
+    [mode: string]: {
+      [gradient: string]: {
+        value: PandaGradientValue
+      }
+    }
+  }
+}
+
+export interface PandaGradientValue {
+  type: 'linear' | 'radial'
+  placement: string | number
+  stops:
+    | Array<{
+        color: string
+        position: number
+      }>
+    | Array<string>
 }
 
 export function formatPrimitiveColors(): PandaColor {
@@ -91,6 +154,42 @@ export function formatPrimitiveColors(): PandaColor {
       return acc
     },
     {} as PandaColor,
+  )
+}
+
+export function formatPrimitiveGradients(): PandaGradient {
+  // gradient tokens are nested in the semantic-tokens
+  const { acheron, cerberus } = themeGradients
+  const onlyThemePrimitiveGradients = { acheron, cerberus }
+
+  // format the primitive colors to match the Panda CSS format
+  return Object.entries(onlyThemePrimitiveGradients).reduce(
+    (acc, [theme, palette]) => {
+      acc[theme] = Object.entries(palette).reduce(
+        (acc, [mode, gradients]) => {
+          acc[mode] = Object.entries(gradients).reduce(
+            (acc, [gradient, tokens]) => {
+              acc[gradient] = {
+                value: {
+                  type: 'linear',
+                  placement: 'to left bottom',
+                  stops: [
+                    getSemanticToken(tokens.start.$value),
+                    getSemanticToken(tokens.end.$value),
+                  ],
+                },
+              }
+              return acc
+            },
+            {} as PandaGradient[string][string],
+          )
+          return acc
+        },
+        {} as PandaGradient[string],
+      )
+      return acc
+    },
+    {} as PandaGradient,
   )
 }
 

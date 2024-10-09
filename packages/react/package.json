@@ -61,8 +61,7 @@
   },
   "files": [
     "build/**/*",
-    "src/**/*",
-    "index.ts"
+    "src/**/*"
   ],
   "keywords": [
     "panda-css",

@@ -1,10 +1,8 @@
 import { css } from '@cerberus/styled-system/css'
-import { zIndex } from '@cerberus-design/panda-preset'
+import { tokens } from '@cerberus-design/panda-preset'
 import { hstack } from '@cerberus/styled-system/patterns'
 
-interface ZListProps {}
-
-export default function ZList(props: ZListProps) {
+export default function ZList() {
   return (
     <div
       className={css({
@@ -17,7 +15,7 @@ export default function ZList(props: ZListProps) {
           w: 'full',
         })}
       >
-        {Object.entries(zIndex).map(([key, value]) => (
+        {Object.entries(tokens.zIndex).map(([key, value]) => (
           <li
             className={css({
               borderTop: '1px solid',

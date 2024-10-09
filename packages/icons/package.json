@@ -35,8 +35,7 @@
   },
   "files": [
     "build/**/*",
-    "src/**/*",
-    "index.ts"
+    "src/index.ts"
   ],
   "scripts": {
     "build": "tsup --experimental-dts",

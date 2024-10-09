@@ -105,7 +105,7 @@ describe('button recipe', () => {
   test('should have an outlined usage variant', () => {
     expect(button.variants?.usage.outlined).toMatchObject({
       bgColor: 'colorPalette.ghost.initial',
-      border: '4px solid',
+      border: '2px solid',
       borderColor: 'colorPalette.border.initial',
     })
   })

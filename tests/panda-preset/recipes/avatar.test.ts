@@ -17,41 +17,47 @@ describe('avatar recipe', () => {
 
   test('should have a gradient variant', () => {
     expect(avatar.variants?.gradient).toMatchObject({
-      'light-purple': {
-        cerbGradient: 'light-purple',
-        color: 'action.text.static',
+      'charon-light': {
+        gradient: 'charon-light',
       },
-      'dark-purple': {
-        cerbGradient: 'dark-purple',
-        color: 'action.text.initial',
+      'charon-dark': {
+        gradient: 'charon-dark',
       },
-      'light-teal': {
-        cerbGradient: 'light-teal',
-        color: 'secondaryAction.text.static',
+      'nyx-light': {
+        gradient: 'nyx-light',
       },
-      teal: {
-        cerbGradient: 'teal',
-        color: 'secondaryAction.text.static',
+      'nyx-dark': {
+        gradient: 'nyx-dark',
       },
-      'light-blue': {
-        cerbGradient: 'light-blue',
-        color: 'info.text.static',
+      'amphiaraus-light': {
+        gradient: 'amphiaraus-light',
       },
-      neutral: {
-        cerbGradient: 'neutral',
-        color: 'black',
+      'amphiaraus-dark': {
+        gradient: 'amphiaraus-dark',
       },
-      green: {
-        cerbGradient: 'green',
-        color: 'success.text.static',
+      'styx-light': {
+        gradient: 'styx-light',
       },
-      yellow: {
-        cerbGradient: 'yellow',
-        color: 'warning.text.static',
+      'styx-dark': {
+        gradient: 'styx-dark',
       },
-      red: {
-        cerbGradient: 'red',
-        color: 'danger.text.static',
+      'thanatos-light': {
+        gradient: 'thanatos-light',
+      },
+      'thanatos-dark': {
+        gradient: 'thanatos-dark',
+      },
+      'hades-light': {
+        gradient: 'hades-light',
+      },
+      'hades-dark': {
+        gradient: 'hades-dark',
+      },
+      'asphodel-light': {
+        gradient: 'asphodel-light',
+      },
+      'asphodel-dark': {
+        gradient: 'asphodel-dark',
       },
       none: {},
     })
@@ -102,7 +108,7 @@ describe('avatar recipe', () => {
 
   test('should have default variants', () => {
     expect(avatar.defaultVariants).toMatchObject({
-      gradient: 'light-purple',
+      gradient: 'charon-light',
       size: 'lg',
     })
   })

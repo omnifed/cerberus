@@ -1,0 +1,12 @@
+{
+  "cerberusTheme": "'[data-panda-theme=cerberus]'",
+  "acheronTheme": "'[data-panda-theme=acheron]'",
+
+  "darkToken": "gradients.cerberus.dark",
+  "lightToken": "gradients.cerberus.light",
+  "textToken": "",
+
+  "acheronDarkToken": "gradients.acheron.dark",
+  "acheronLightToken": "gradients.acheron.light",
+  "acheronTextToken": ""
+}

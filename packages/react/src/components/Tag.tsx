@@ -2,18 +2,19 @@ import type { HTMLAttributes, PropsWithChildren } from 'react'
 import { Close } from '@cerberus/icons'
 import { Show } from './Show'
 import { css, cx } from '@cerberus/styled-system/css'
-import { iconButton, tag } from '@cerberus/styled-system/recipes'
-import type { RecipeVariantProps } from '@cerberus/styled-system/types'
+import {
+  iconButton,
+  tag,
+  type TagVariantProps,
+} from '@cerberus/styled-system/recipes'
 
 /**
  * This module contains the tag component.
  * @module
  */
 
-export type TagRecipeProps = RecipeVariantProps<typeof tag>
-
 export type StaticTagProps = HTMLAttributes<HTMLSpanElement> &
-  TagRecipeProps & {
+  TagVariantProps & {
     onClick?: never
   }
 

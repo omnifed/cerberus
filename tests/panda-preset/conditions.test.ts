@@ -22,6 +22,12 @@ describe('conditions', () => {
     )
   })
 
+  test('should have a systemMode', () => {
+    expect(conditions.systemMode).toEqual(
+      '[data-color-mode=system] &, &.system, .system &',
+    )
+  })
+
   test('should have a modalOpen', () => {
     expect(conditions.modalOpen).toEqual('&:is([data-modal-open=true])')
   })

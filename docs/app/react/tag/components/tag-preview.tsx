@@ -44,23 +44,23 @@ export function WithIconTagPreview() {
 export function GradientTagPreview() {
   return (
     <div className={hstack()}>
-      <Tag gradient="blue" shape="square">
-        Blue
+      <Tag gradient="amphiaraus-light" shape="square">
+        Charon Light
       </Tag>
-      <Tag gradient="blue" shape="square" usage="outlined">
-        Blue Outlined
+      <Tag gradient="amphiaraus-light" shape="square" usage="outlined">
+        Charon Light Outlined
       </Tag>
-      <Tag gradient="green" shape="square">
-        Green
+      <Tag gradient="thanatos-light" shape="square">
+        Thanatos
       </Tag>
-      <Tag gradient="green" shape="square" usage="outlined">
-        Green Outlined
+      <Tag gradient="thanatos-light" shape="square" usage="outlined">
+        Thanatos Outlined
       </Tag>
-      <Tag gradient="purple" shape="square">
-        Purple
+      <Tag gradient="charon-dark" shape="square">
+        Charon Dark
       </Tag>
-      <Tag gradient="purple" shape="square" usage="outlined">
-        Purple Outlined
+      <Tag gradient="charon-dark" shape="square" usage="outlined">
+        Charon Dark Outlined
       </Tag>
     </div>
   )
@@ -68,7 +68,7 @@ export function GradientTagPreview() {
 
 export function GradientOutlinedTagPreview() {
   return (
-    <Tag gradient="purple" shape="square" usage="outlined">
+    <Tag gradient="charon-dark" shape="square" usage="outlined">
       Gradient
     </Tag>
   )
@@ -182,7 +182,7 @@ function MatchTagPalettePreview(props: MatchTagProps) {
       )
     case 'gradient':
       return (
-        <Tag gradient="purple" shape="square">
+        <Tag gradient="charon-dark" shape="square">
           Gradient
         </Tag>
       )

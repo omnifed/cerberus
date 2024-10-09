@@ -55,21 +55,69 @@ export function MyAvatar(props: AvatarProps) {
 
 export function AvatarPreview() {
   const { selectedProps } = useCodeBuilder()
-  if (selectedProps.gradient === 'light-teal') {
-    return (
-      <Avatar
-        {...selectedProps}
-        ariaLabel={selectedProps.ariaLabel as string}
-        gradient="light-teal"
-        src={selectedProps.src as string}
-      />
-    )
+  switch (selectedProps.gradient) {
+    case 'styx-light':
+      return (
+        <Avatar
+          {...selectedProps}
+          ariaLabel={selectedProps.ariaLabel as string}
+          gradient="styx-light"
+          src={selectedProps.src as string}
+        />
+      )
+    case 'styx-dark':
+      return (
+        <Avatar
+          {...selectedProps}
+          ariaLabel={selectedProps.ariaLabel as string}
+          gradient="styx-dark"
+          src={selectedProps.src as string}
+        />
+      )
+    case 'thanatos-light':
+      return (
+        <Avatar
+          {...selectedProps}
+          ariaLabel={selectedProps.ariaLabel as string}
+          gradient="thanatos-light"
+          src={selectedProps.src as string}
+        />
+      )
+    case 'thanatos-dark':
+      return (
+        <Avatar
+          {...selectedProps}
+          ariaLabel={selectedProps.ariaLabel as string}
+          gradient="thanatos-dark"
+          src={selectedProps.src as string}
+        />
+      )
+    case 'asphodel-light':
+      return (
+        <Avatar
+          {...selectedProps}
+          ariaLabel={selectedProps.ariaLabel as string}
+          gradient="asphodel-light"
+          src={selectedProps.src as string}
+        />
+      )
+    case 'asphodel-dark':
+      return (
+        <Avatar
+          {...selectedProps}
+          ariaLabel={selectedProps.ariaLabel as string}
+          gradient="asphodel-dark"
+          src={selectedProps.src as string}
+        />
+      )
+
+    default:
+      return (
+        <Avatar
+          {...selectedProps}
+          ariaLabel={selectedProps.ariaLabel as string}
+          src={selectedProps.src as string}
+        />
+      )
   }
-  return (
-    <Avatar
-      {...selectedProps}
-      ariaLabel={selectedProps.ariaLabel as string}
-      src={selectedProps.src as string}
-    />
-  )
 }

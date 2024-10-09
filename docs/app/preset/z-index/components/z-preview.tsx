@@ -1,6 +1,6 @@
 'use client'
 
-import { zIndex } from '@cerberus-design/panda-preset'
+import { tokens } from '@cerberus-design/panda-preset'
 import { css, cx } from '@cerberus/styled-system/css'
 import { vstack } from '@cerberus/styled-system/patterns'
 import { useState, type ChangeEvent } from 'react'
@@ -42,10 +42,10 @@ const zLayers = css({
 })
 
 export default function ZPreview() {
-  const [active, setActive] = useState<keyof typeof zIndex>('hide')
+  const [active, setActive] = useState<keyof typeof tokens.zIndex>('hide')
 
   function handleChange(event: ChangeEvent<HTMLSelectElement>) {
-    setActive(event.currentTarget.value as keyof typeof zIndex)
+    setActive(event.currentTarget.value as keyof typeof tokens.zIndex)
   }
 
   return (
@@ -153,7 +153,7 @@ export default function ZPreview() {
           name="z-index"
           onChange={handleChange}
         >
-          {Object.keys(zIndex).map((key) => (
+          {Object.keys(tokens.zIndex).map((key) => (
             <option key={key} value={key}>
               {key}
             </option>

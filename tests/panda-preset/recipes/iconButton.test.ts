@@ -124,7 +124,7 @@ describe('iconButton recipe', () => {
     expect(iconButton.variants?.usage.outlined).toMatchObject({
       color: 'colorPalette.text.200',
       bgColor: 'colorPalette.ghost.initial',
-      border: '4px solid',
+      border: '2px solid',
       borderColor: 'colorPalette.border.initial',
       _hover: {
         bgColor: 'colorPalette.ghost.hover',

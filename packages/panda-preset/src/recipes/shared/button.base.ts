@@ -79,7 +79,7 @@ export const filledUsage = {
 export const outlinedUsage = {
   ...nonTextStates,
   bgColor: 'colorPalette.ghost.initial',
-  border: '4px solid',
+  border: '2px solid',
   borderColor: 'colorPalette.border.initial',
 }
 

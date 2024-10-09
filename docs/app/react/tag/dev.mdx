@@ -202,20 +202,19 @@ function CustomTagPreview() {
 ## API
 
 ```ts showLineNumbers=false
-export interface StaticTagProps extends HTMLAttributes<HTMLSpanElement> {
-  gradient?: 'blue' | 'green' | 'purple'
-  palette?: 'page' | 'info' | 'success' | 'warning' | 'danger'
-  shape?: 'square' | 'pill'
-  usage?: 'filled' | 'outlined'
-  onClick?: never
-}
-export interface ClickableTagProps extends HTMLAttributes<HTMLSpanElement> {
+export type StaticTagProps = HTMLAttributes<HTMLSpanElement> &
+  TagVariantProps & {
+    onClick?: never
+  }
+
+export type ClickableTagProps = HTMLAttributes<HTMLSpanElement> & {
   gradient?: never
   palette?: never
   onClick: () => void
   shape: 'pill'
   usage: 'filled'
 }
+
 export type TagProps = StaticTagProps | ClickableTagProps
 
 define function Tag(props: PropsWithChildren<TagProps>): ReactNode

@@ -134,7 +134,7 @@ export function ConfirmModal(
                 fallback={
                   <Avatar
                     ariaLabel=""
-                    gradient="light-purple"
+                    gradient="charon-light"
                     icon={<ConfirmIcon size={24} />}
                     src=""
                   />
@@ -142,7 +142,7 @@ export function ConfirmModal(
               >
                 <Avatar
                   ariaLabel=""
-                  gradient="red"
+                  gradient="hades-dark"
                   icon={<ConfirmIcon size={24} />}
                   src=""
                 />

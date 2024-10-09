@@ -1,6 +1,19 @@
-import { colors } from './colors'
+import {
+  formatPrimitiveColors,
+  formatPrimitiveGradients,
+  type PandaColor,
+  type PandaGradient,
+} from '../tokens'
 
-export const fonts = {
+/**
+ * This module contains the tokens used in the main theme.
+ * @module
+ */
+
+const colors: PandaColor = formatPrimitiveColors()
+const gradients: PandaGradient = formatPrimitiveGradients()
+
+const fonts = {
   display: {
     description: 'Primary font reserved for display headings',
     value: 'var(--font-poppins)',
@@ -15,7 +28,7 @@ export const fonts = {
   },
 }
 
-export const zIndex = {
+const zIndex = {
   hide: {
     description: 'Used for when you need to hide elements in the layer stack',
     value: -1,
@@ -69,6 +82,7 @@ export const zIndex = {
 
 export const tokens = {
   colors,
+  gradients,
   fonts,
   zIndex,
 }

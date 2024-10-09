@@ -35,29 +35,25 @@ export const fileStatus: Partial<SlotRecipeConfig> = defineSlotRecipe({
       todo: {
         icon: {
           ...action,
-          cerbGradient: 'dark-purple',
-          color: 'action.text.initial',
+          gradient: 'charon-dark',
         },
       },
       processing: {
         icon: {
           ...action,
-          cerbGradient: 'dark-purple',
-          color: 'action.text.initial',
+          gradient: 'charon-dark',
         },
       },
       done: {
         icon: {
           ...success,
-          cerbGradient: 'green',
-          color: 'colorPalette.text.static',
+          gradient: 'thanatos-light',
         },
       },
       error: {
         icon: {
           ...danger,
-          bgColor: 'colorPalette.surface.initial',
-          color: 'colorPalette.text.200',
+          gradient: 'hades-dark',
         },
       },
     },
