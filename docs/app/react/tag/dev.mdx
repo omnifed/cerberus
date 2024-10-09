@@ -202,11 +202,11 @@ function CustomTagPreview() {
 ## API
 
 ```ts showLineNumbers=false
-export type TagRecipeProps = RecipeVariantProps<typeof tag>
 export type StaticTagProps = HTMLAttributes<HTMLSpanElement> &
-  TagRecipeProps & {
+  TagVariantProps & {
     onClick?: never
   }
+
 export type ClickableTagProps = HTMLAttributes<HTMLSpanElement> & {
   gradient?: never
   palette?: never
@@ -214,6 +214,7 @@ export type ClickableTagProps = HTMLAttributes<HTMLSpanElement> & {
   shape: 'pill'
   usage: 'filled'
 }
+
 export type TagProps = StaticTagProps | ClickableTagProps
 
 define function Tag(props: PropsWithChildren<TagProps>): ReactNode

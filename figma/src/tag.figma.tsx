@@ -1,5 +1,5 @@
-import figma from '@figma/code-connect'
 import { Tag } from '@cerberus-design/react'
+import figma from '@figma/code-connect'
 
 const SELECTION =
   'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=6948-20560&m=dev'
@@ -59,12 +59,12 @@ figma.connect(Tag, SELECTION, {
 figma.connect(Tag, SELECTION, {
   imports,
   variant: {
-    Gradient: 'charon-light',
+    Gradient: 'amphiaraus-light',
   },
   props,
   example: (props) => {
     return (
-      <Tag gradient="charon-light" shape={props.shape} usage={props.usage}>
+      <Tag gradient="amphiaraus-light" shape={props.shape} usage={props.usage}>
         {props.icon}
         {props.text}
       </Tag>
