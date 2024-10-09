@@ -33,55 +33,63 @@ describe('utilities', () => {
     })
   })
 
-  test('should export a cerberusGradient utility', () => {
-    const cerbGradient = utilities.extend.cerberusGradient
-    const color = '#21143B'
+  test('should export a gradient utility', () => {
+    const cerbGradient = utilities.extend.gradient
+    const args = {
+      token: jest.fn((value: string) => `{${value}}`),
+      raw: '',
+      utils: {
+        colorMix: jest.fn(),
+      },
+    } as unknown as TransformArgs
+    const color = '{colors.gradient.charon-light.text.initial}'
+    const cerbLight = '{gradients.cerberus.light.charon-light}'
+    const cerbDark = '{gradients.cerberus.dark.charon-light}'
 
     expect(cerbGradient).toBeDefined()
-    expect(cerbGradient.className).toEqual('cerberus-gradient')
-    expect(cerbGradient.shorthand).toEqual('cerbGradient')
+    expect(cerbGradient.className).toEqual('gradient')
     expect(cerbGradient.values).toEqual(gradientValues)
-    expect(cerbGradient.transform?.('light-purple', args)).toMatchObject({
-      backgroundImage:
-        'linear-gradient(216deg, #EFE5F8 -4.93%, #BB93E1 116.78%)',
-      color,
-    })
-    expect(cerbGradient.transform?.('dark-purple', args)).toMatchObject({
-      backgroundImage:
-        'linear-gradient(234deg, #5F00B5 -1.22%, #9F66D3 79.15%)',
-    })
-    expect(cerbGradient.transform?.('green', args)).toMatchObject({
-      color,
-      backgroundImage:
-        'linear-gradient(103deg, #71D192 -78.15%, #E8F8ED 129.96%)',
-    })
-    expect(cerbGradient.transform?.('light-blue', args)).toMatchObject({
-      color,
-      backgroundImage: 'linear-gradient(207deg, #E6F3FB 16.67%, #9ACFEE 100%)',
-    })
-    expect(cerbGradient.transform?.('red', args)).toMatchObject({
-      backgroundImage:
-        'linear-gradient(248deg, #FED7D5 -29.66%, #FC5E57 162.95%)',
-    })
-    expect(cerbGradient.transform?.('neutral', args)).toMatchObject({
-      backgroundImage:
-        'linear-gradient(220deg, #918EA7 -10.94%, #E4E3E9 108.06%)',
-    })
-    expect(cerbGradient.transform?.('neutral', args)).toMatchObject({
-      backgroundImage:
-        'linear-gradient(220deg, #918EA7 -10.94%, #E4E3E9 108.06%)',
-    })
-    expect(cerbGradient.transform?.('yellow', args)).toMatchObject({
-      backgroundImage:
-        'linear-gradient(216deg, #FEFBE9 -4.93%, #F4DA49 116.78%)',
-    })
-    expect(cerbGradient.transform?.('teal', args)).toMatchObject({
-      backgroundImage:
-        'linear-gradient(216deg, #102D2D -4.93%, #3B8180 116.78%)',
-    })
-    expect(cerbGradient.transform?.('light-teal', args)).toMatchObject({
-      backgroundImage:
-        'linear-gradient(216deg, #D8F9F7 -4.93%, #72E9E7 116.78%)',
+    expect(cerbGradient.transform?.('charon-light', args)).toMatchObject({
+      '[data-color-mode=dark] &, &.dark, .dark &': {
+        backgroundImage: cerbDark,
+        color,
+      },
+      '[data-color-mode=light] &, &.light, .light &': {
+        backgroundImage: cerbLight,
+        color,
+      },
+      '[data-color-mode=system] &, &.system, .system &': {
+        backgroundImage: cerbDark,
+        color,
+      },
+      '[data-panda-theme=acheron][data-color-mode=dark] &, &.dark, .dark &': {
+        backgroundImage: '{gradients.acheron.dark.charon-light}',
+        color,
+      },
+      '[data-panda-theme=acheron][data-color-mode=light] &, &.light, .light &':
+        {
+          backgroundImage: '{gradients.acheron.light.charon-light}',
+          color,
+        },
+      '[data-panda-theme=acheron][data-color-mode=system] &, &.system, .system &':
+        {
+          backgroundImage: '{gradients.acheron.dark.charon-light}',
+          color,
+        },
+      '[data-panda-theme=cerberus][data-color-mode=dark] &, &.dark, .dark &': {
+        backgroundImage: cerbDark,
+        color,
+      },
+      '[data-panda-theme=cerberus][data-color-mode=light] &, &.light, .light &':
+        {
+          backgroundImage: cerbLight,
+          color,
+        },
+      '[data-panda-theme=cerberus][data-color-mode=system] &, &.system, .system &':
+        {
+          backgroundImage: cerbDark,
+          color,
+        },
     })
   })
 })

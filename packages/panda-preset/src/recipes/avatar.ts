@@ -81,38 +81,12 @@ export const avatar: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   },
 })
 
-function getGradientTextMap(value: string): string {
-  switch (value) {
-    case 'light-purple':
-      return 'action.text.static'
-    case 'dark-purple':
-      return 'action.text.initial'
-    case 'neutral':
-      return 'black'
-    case 'light-blue':
-      return 'info.text.static'
-    case 'teal':
-      return 'secondaryAction.text.static'
-    case 'light-teal':
-      return 'secondaryAction.text.static'
-    case 'green':
-      return 'success.text.static'
-    case 'red':
-      return 'danger.text.static'
-    case 'yellow':
-      return 'warning.text.static'
-    default:
-      return ''
-  }
-}
-
 function createGradientVariants(): Record<GradientValue, SystemStyleObject> {
   return gradientValues.reduce((acc, value) => {
     return {
       ...acc,
       [value]: {
         gradient: value,
-        color: getGradientTextMap(value),
       },
     }
   }, {}) as Record<GradientValue, SystemStyleObject>
