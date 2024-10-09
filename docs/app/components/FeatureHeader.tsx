@@ -106,26 +106,26 @@ export default function FeatureHeader(
               '@/lg': '33%',
             },
             '&:is([data-category=touch-target])': {
-              cerberusGradient: 'dark-purple',
+              gradient: 'charon-dark',
               color: 'page.surface.300',
               _lightMode: {
-                cerbGradient: 'light-purple',
+                gradient: 'charon-light',
               },
             },
             '&:is([data-category=forms])': {
-              cerberusGradient: 'light-blue',
+              gradient: 'charon-light',
               color: 'warning.text.initial',
             },
             '&:is([data-category=menus])': {
-              cerberusGradient: 'green',
+              gradient: 'thanatos-dark',
               color: 'success.text.200',
             },
             '&:is([data-category=utilities])': {
-              cerberusGradient: 'yellow',
+              gradient: 'asphodel-light',
               color: 'warning.text.initial',
             },
             '&:is([data-category=misc])': {
-              cerberusGradient: 'neutral',
+              gradient: 'thanatos-light',
             },
           })}
         >

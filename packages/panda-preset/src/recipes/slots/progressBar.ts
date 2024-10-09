@@ -21,7 +21,7 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
       w: 'full',
     },
     bar: {
-      cerbGradient: 'dark-purple',
+      gradient: 'charon-dark',
       h: 'full',
       left: 0,
       position: 'absolute',

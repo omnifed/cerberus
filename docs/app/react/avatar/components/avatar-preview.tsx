@@ -13,13 +13,13 @@ export function AvatarPreview() {
       })}
     >
       <Avatar ariaLabel="x s" size="xs" src="" />
-      <Avatar ariaLabel="s m" gradient="dark-purple" size="sm" src="" />
-      <Avatar ariaLabel="m d" gradient="teal" size="md" src="" />
-      <Avatar ariaLabel="l g" gradient="light-blue" size="lg" src="" />
-      <Avatar ariaLabel="x l" gradient="neutral" size="xl" src="" />
-      <Avatar ariaLabel="2 x" gradient="green" size="2xl" src="" />
-      <Avatar ariaLabel="3 x" gradient="yellow" size="3xl" src="" />
-      <Avatar ariaLabel="4 x" gradient="red" size="4xl" src="" />
+      <Avatar ariaLabel="s m" gradient="charon-light" size="sm" src="" />
+      <Avatar ariaLabel="m d" gradient="charon-dark" size="md" src="" />
+      <Avatar ariaLabel="l g" gradient="nyx-light" size="lg" src="" />
+      <Avatar ariaLabel="x l" gradient="nyx-dark" size="xl" src="" />
+      <Avatar ariaLabel="2 x" gradient="amphiaraus-light" size="2xl" src="" />
+      <Avatar ariaLabel="3 x" gradient="amphiaraus-dark" size="3xl" src="" />
+      <Avatar ariaLabel="4 x" gradient="hades-dark" size="4xl" src="" />
     </div>
   )
 }

@@ -26,7 +26,7 @@ export default function BuilderLayout(
     >
       <div
         className={hstack({
-          cerbGradient: 'light-blue',
+          gradient: 'charon-light',
           flexDirection: {
             '@/sm': 'column',
             '@/md': 'row',
