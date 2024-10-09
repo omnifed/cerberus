@@ -1,4 +1,5 @@
 import type { PropertyConfig } from '@pandacss/dev'
+import { conditions } from '../conditions'
 import data from './gradient.data.json' with { type: 'json' }
 
 /**
@@ -165,46 +166,49 @@ const gradient: CustomUtilityConfig<'gradient'> = {
     className: 'gradient',
     values: gradientValues,
     transform(value: GradientValue, { token }) {
-      // For some reason, we can only use dynamic token values. Creating dynamic objects for the return throws an error in NextJS.
-
+      // For some reason, we can only use dynamic token() argument values.
+      // Creating dynamic objects for the return throws an error in NextJS.
+      const color = token(`colors.gradient.${value}.text.initial`)
       return {
         // base
-        '[data-color-mode=light] &, &.light, .light &': {
+        [conditions.lightMode]: {
           backgroundImage: token(`${data.lightToken}.${value}`),
+          color,
         },
-        '[data-color-mode=dark] &, &.dark, .dark &': {
+        [conditions.darkMode]: {
           backgroundImage: token(`${data.darkToken}.${value}`),
+          color,
         },
-        '[data-color-mode=system] &, &.system, .system &': {
+        [conditions.systemMode]: {
           backgroundImage: token(`${data.darkToken}.${value}`),
+          color,
         },
-
         // cerberus
-        '[data-panda-theme=cerberus][data-color-mode=light] &, &.light, .light &':
-          {
-            backgroundImage: token(`${data.lightToken}.${value}`),
-          },
-        '[data-panda-theme=cerberus][data-color-mode=dark] &, &.dark, .dark &':
-          {
-            backgroundImage: token(`${data.darkToken}.${value}`),
-          },
-        '[data-panda-theme=cerberus][data-color-mode=system] &, &.system, .system &':
-          {
-            backgroundImage: token(`${data.darkToken}.${value}`),
-          },
-
-        // acheron
-        '[data-panda-theme=acheron][data-color-mode=light] &, &.light, .light &':
-          {
-            backgroundImage: token(`${data.acheronLightToken}.${value}`),
-          },
-        '[data-panda-theme=acheron][data-color-mode=dark] &, &.dark, .dark &': {
-          backgroundImage: token(`${data.acheronDarkToken}.${value}`),
+        [`[data-panda-theme=cerberus]${conditions.lightMode}`]: {
+          backgroundImage: token(`${data.lightToken}.${value}`),
+          color,
         },
-        '[data-panda-theme=acheron][data-color-mode=system] &, &.system, .system &':
-          {
-            backgroundImage: token(`${data.acheronDarkToken}.${value}`),
-          },
+        [`[data-panda-theme=cerberus]${conditions.darkMode}`]: {
+          backgroundImage: token(`${data.darkToken}.${value}`),
+          color,
+        },
+        [`[data-panda-theme=cerberus]${conditions.systemMode}`]: {
+          backgroundImage: token(`${data.darkToken}.${value}`),
+          color,
+        },
+        // acheron
+        [`[data-panda-theme=acheron]${conditions.lightMode}`]: {
+          backgroundImage: token(`${data.acheronLightToken}.${value}`),
+          color,
+        },
+        [`[data-panda-theme=acheron]${conditions.darkMode}`]: {
+          backgroundImage: token(`${data.acheronDarkToken}.${value}`),
+          color,
+        },
+        [`[data-panda-theme=acheron]${conditions.systemMode}`]: {
+          backgroundImage: token(`${data.acheronDarkToken}.${value}`),
+          color,
+        },
       }
     },
   },

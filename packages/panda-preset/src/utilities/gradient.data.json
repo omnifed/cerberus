@@ -1,17 +1,12 @@
 {
-  "cerberusSelector": "'[data-gradient-mode=cerberus]'",
-  "charonSelector": "'[data-gradient-mode=charon]'",
-
-  "darkSelector": "'[data-color-mode=dark] &, &.dark, .dark &'",
-  "lightSelector": "'[data-color-mode=light] &, &.light, .light &'",
-  "systemSelector": "'[data-color-mode=system] &, &.system, .system &'",
-
-  "cerberusDark": "'[data-gradient-mode=cerberus][data-color-mode=dark] &, &.dark, .dark &'",
-  "cerberusLight": "'[data-gradient-mode=cerberus][data-color-mode=light] &, &.light, .light &'",
-  "cerberusSystem": "'[data-gradient-mode=cerberus][data-color-mode=system] &, &.system, .system &'",
+  "cerberusTheme": "'[data-panda-theme=cerberus]'",
+  "acheronTheme": "'[data-panda-theme=acheron]'",
 
   "darkToken": "gradients.cerberus.dark",
   "lightToken": "gradients.cerberus.light",
+  "textToken": "",
+
   "acheronDarkToken": "gradients.acheron.dark",
-  "acheronLightToken": "gradients.acheron.light"
+  "acheronLightToken": "gradients.acheron.light",
+  "acheronTextToken": ""
 }
