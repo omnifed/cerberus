@@ -100,42 +100,38 @@ describe('tag recipe', () => {
     })
   })
 
-  test('should have a compound variant for outlined usage with blue gradient and square shape', () => {
-    expect(tag.compoundVariants).toContainEqual({
-      usage: 'outlined',
-      gradient: 'blue',
-      shape: 'square',
-      css: {
-        ...outlineGradientCss,
-        backgroundImage:
-          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #9ACFEE, #E6F3FB)',
+  test('should have a compound variants for outlined usage with a gradient and square shape', () => {
+    expect(tag.compoundVariants).toMatchObject([
+      {
+        usage: 'outlined',
+        gradient: 'charon-light',
+        shape: 'square',
+        css: {
+          ...outlineGradientCss,
+          backgroundImage:
+            'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #9ACFEE, #E6F3FB)',
+        },
       },
-    })
-  })
-
-  test('should have a compound variant for outlined usage with green gradient and square shape', () => {
-    expect(tag.compoundVariants).toContainEqual({
-      usage: 'outlined',
-      gradient: 'green',
-      shape: 'square',
-      css: {
-        ...outlineGradientCss,
-        backgroundImage:
-          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #71D192, #E8F8ED)',
+      {
+        usage: 'outlined',
+        gradient: 'thanatos-light',
+        shape: 'square',
+        css: {
+          ...outlineGradientCss,
+          backgroundImage:
+            'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #71D192, #E8F8ED)',
+        },
       },
-    })
-  })
-
-  test('should have a compound variant for outlined usage with purple gradient and square shape', () => {
-    expect(tag.compoundVariants).toContainEqual({
-      usage: 'outlined',
-      gradient: 'purple',
-      shape: 'square',
-      css: {
-        ...outlineGradientCss,
-        backgroundImage:
-          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #BB93E1, #EFE5F8)',
+      {
+        usage: 'outlined',
+        gradient: 'charon-dark',
+        shape: 'square',
+        css: {
+          ...outlineGradientCss,
+          backgroundImage:
+            'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #BB93E1, #EFE5F8)',
+        },
       },
-    })
+    ])
   })
 })

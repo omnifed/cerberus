@@ -15,7 +15,7 @@ describe('progressBar recipe', () => {
       w: 'full',
     })
     expect(progressBar.base?.bar).toMatchObject({
-      cerbGradient: 'dark-purple',
+      gradient: 'charon-dark',
       h: 'full',
       left: 0,
       position: 'absolute',
@@ -23,7 +23,7 @@ describe('progressBar recipe', () => {
       willChange: 'width',
       zIndex: 'decorator',
       ['&:is([data-complete=true])']: {
-        bgImage: 'none',
+        bgImage: 'initial !important',
         bgColor: 'success.bg.initial',
       },
       _motionSafe: {
