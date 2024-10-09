@@ -6,9 +6,10 @@ import { infoTokens } from './info'
 import { successTokens } from './success'
 import { warningTokens } from './warning'
 import { dangerTokens } from './danger'
+import { gradientTokens } from './gradient'
 
 /**
- * This module contains the configuration for the semantic tokens.
+ * This module contains the configuration for the semantic tokens of the acheron theme.
  * @module
  */
 
@@ -21,5 +22,6 @@ export const semanticTokens = defineSemanticTokens({
     ...successTokens,
     ...warningTokens,
     ...dangerTokens,
+    ...gradientTokens,
   },
 })

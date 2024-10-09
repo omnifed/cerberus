@@ -193,33 +193,6 @@ export function formatPrimitiveGradients(): PandaGradient {
   )
 }
 
-export function formatPrimitiveGradientTextColors(): PandaGradientColor {
-  // gradient tokens are nested in the semantic-tokens
-  const { acheron, cerberus } = themeGradients
-  const onlyThemePrimitiveGradients = { acheron, cerberus }
-
-  // format the primitive colors to match the Panda CSS format
-  return Object.entries(onlyThemePrimitiveGradients).reduce(
-    (acc, [theme, palette]) => {
-      acc[theme] = Object.entries(palette).reduce(
-        (acc, [mode, gradients]) => {
-          acc[mode] = Object.entries(gradients).reduce(
-            (acc, [gradient, tokens]) => {
-              acc[gradient] = { value: tokens.text.$value }
-              return acc
-            },
-            {} as PandaGradientColor[string][string],
-          )
-          return acc
-        },
-        {} as PandaGradientColor[string],
-      )
-      return acc
-    },
-    {} as PandaGradientColor,
-  )
-}
-
 /**
  * This function loops through each of our supported themes and returns the expected Panda CSS theme token format for each token.
  * @param path `background.neutral.initial`

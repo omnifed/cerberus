@@ -137,10 +137,10 @@ interface RootProps {}
 export default async function RootLayout(props: PropsWithChildren<RootProps>) {
   return (
     <html
-      className={cx(poppins.variable, recursive.variable)}
       lang="en"
       data-panda-theme="yourCustomThemeName"
       data-color-mode="light"
+      className={cx(poppins.variable, recursive.variable)}
     >
       <body>
         {props.children}
