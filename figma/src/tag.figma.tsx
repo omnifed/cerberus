@@ -43,12 +43,12 @@ figma.connect(Tag, SELECTION, {
 figma.connect(Tag, SELECTION, {
   imports,
   variant: {
-    Gradient: 'purple',
+    Gradient: 'charon-dark',
   },
   props,
   example: (props) => {
     return (
-      <Tag gradient="purple" shape={props.shape} usage={props.usage}>
+      <Tag gradient="charon-dark" shape={props.shape} usage={props.usage}>
         {props.icon}
         {props.text}
       </Tag>
@@ -59,12 +59,12 @@ figma.connect(Tag, SELECTION, {
 figma.connect(Tag, SELECTION, {
   imports,
   variant: {
-    Gradient: 'blue',
+    Gradient: 'charon-light',
   },
   props,
   example: (props) => {
     return (
-      <Tag gradient="blue" shape={props.shape} usage={props.usage}>
+      <Tag gradient="charon-light" shape={props.shape} usage={props.usage}>
         {props.icon}
         {props.text}
       </Tag>
@@ -75,12 +75,12 @@ figma.connect(Tag, SELECTION, {
 figma.connect(Tag, SELECTION, {
   imports,
   variant: {
-    Gradient: 'green',
+    Gradient: 'thanatos-light',
   },
   props,
   example: (props) => {
     return (
-      <Tag gradient="green" shape={props.shape} usage={props.usage}>
+      <Tag gradient="thanatos-light" shape={props.shape} usage={props.usage}>
         {props.icon}
         {props.text}
       </Tag>

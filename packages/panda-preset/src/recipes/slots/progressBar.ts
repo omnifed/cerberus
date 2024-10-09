@@ -29,7 +29,7 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
       willChange: 'width',
       zIndex: 'decorator',
       ['&:is([data-complete=true])']: {
-        bgImage: 'none',
+        bgImage: 'initial !important',
         bgColor: 'success.bg.initial',
       },
       _motionSafe: {

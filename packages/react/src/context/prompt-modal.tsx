@@ -153,7 +153,7 @@ export function PromptModal(
                 fallback={
                   <Avatar
                     ariaLabel=""
-                    gradient="light-purple"
+                    gradient="charon-light"
                     icon={<PromptIcon size={24} />}
                     src=""
                   />
@@ -161,7 +161,7 @@ export function PromptModal(
               >
                 <Avatar
                   ariaLabel=""
-                  gradient="red"
+                  gradient="hades-dark"
                   icon={<PromptIcon size={24} />}
                   src=""
                 />

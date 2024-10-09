@@ -53,8 +53,7 @@ export const fileStatus: Partial<SlotRecipeConfig> = defineSlotRecipe({
       error: {
         icon: {
           ...danger,
-          bgColor: 'colorPalette.surface.initial',
-          color: 'colorPalette.text.200',
+          gradient: 'hades-dark',
         },
       },
     },

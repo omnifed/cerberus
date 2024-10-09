@@ -121,7 +121,7 @@ export function FileStatus(props: FileStatusProps) {
           {file}
         </small>
         <ProgressBar now={now} size="sm" />
-        <Field invalid={modalIconPalette === 'red'}>
+        <Field invalid={modalIconPalette === 'hades-dark'}>
           <FieldMessage
             className={css({
               color: 'page.text.100',
@@ -233,12 +233,12 @@ function getModalIconPalette(status: FileStatusKey) {
   switch (status) {
     case processStatus.TODO:
     case processStatus.PROCESSING:
-      return 'light-purple'
+      return 'charon-light'
     case processStatus.ERROR:
-      return 'red'
+      return 'hades-dark'
     case processStatus.DONE:
-      return 'green'
+      return 'thanatos-light'
     default:
-      return 'light-purple'
+      return 'charon-light'
   }
 }

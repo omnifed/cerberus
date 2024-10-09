@@ -35,8 +35,8 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       'charon-light': {
         gradient: 'charon-light',
       },
-      'nyx-light': {
-        gradient: 'nyx-light',
+      'thanatos-light': {
+        gradient: 'thanatos-light',
       },
       'charon-dark': {
         gradient: 'charon-dark',
@@ -88,7 +88,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     },
     {
       usage: 'outlined',
-      gradient: 'nyx-light',
+      gradient: 'thanatos-light',
       shape: 'square',
       css: {
         ...outlineGradientCss,

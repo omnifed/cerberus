@@ -29,7 +29,7 @@ export function FileUploader(props: FileUploaderProps) {
     >
       <div className={styles.icon}>
         <Avatar
-          gradient="light-purple"
+          gradient="charon-light"
           ariaLabel=""
           icon={<Icon />}
           size="md"
