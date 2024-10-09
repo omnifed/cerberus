@@ -104,7 +104,7 @@ describe('tag recipe', () => {
     expect(tag.compoundVariants).toMatchObject([
       {
         usage: 'outlined',
-        gradient: 'charon-light',
+        gradient: 'amphiaraus-light',
         shape: 'square',
         css: {
           ...outlineGradientCss,

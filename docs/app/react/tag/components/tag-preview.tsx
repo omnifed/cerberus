@@ -44,10 +44,10 @@ export function WithIconTagPreview() {
 export function GradientTagPreview() {
   return (
     <div className={hstack()}>
-      <Tag gradient="charon-light" shape="square">
+      <Tag gradient="amphiaraus-light" shape="square">
         Charon Light
       </Tag>
-      <Tag gradient="charon-light" shape="square" usage="outlined">
+      <Tag gradient="amphiaraus-light" shape="square" usage="outlined">
         Charon Light Outlined
       </Tag>
       <Tag gradient="thanatos-light" shape="square">
