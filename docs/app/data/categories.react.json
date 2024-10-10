@@ -9,9 +9,16 @@
   "communication": {
     "name": "Communication",
     "description": "Communication components provide useful information.",
-    "items": ["Avatar", "Notification", "Progress Bar", "Tag", "Tooltip"],
+    "items": [
+      "Avatar",
+      "Notification",
+      "Progress Bar",
+      "Tag",
+      "Tooltip",
+      "Table"
+    ],
     "next": [],
-    "new": ["Avatar", "Progress Bar"]
+    "new": []
   },
   "containment": {
     "name": "Containment",
@@ -32,13 +39,13 @@
     "description": "Components that allow users to select choices.",
     "items": ["Drag & Drop", "Checkbox", "Radio", "Select", "Toggle"],
     "next": [],
-    "new": ["Select", "Checkbox"]
+    "new": []
   },
   "inputs": {
     "name": "Inputs",
     "description": "Components that allow users to input data.",
-    "items": ["Input", "Textarea", "File Uploader"],
+    "items": ["Input", "Textarea", "Label", "Field Message", "File Uploader"],
     "next": [],
-    "new": ["File Uploader"]
+    "new": []
   }
 }
