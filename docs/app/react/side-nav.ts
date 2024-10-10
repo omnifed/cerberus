@@ -14,7 +14,13 @@ const overviewGroup: CategoriesList = {
   overview: {
     name: 'Overview',
     description: 'Getting started with Cerberus React',
-    items: ['Getting Started', 'Loading States'],
+    items: [
+      'Getting Started',
+      'Loading States',
+      'Feature Flags',
+      'Portal',
+      'Show',
+    ],
     next: [],
     new: ['Loading States'],
   },

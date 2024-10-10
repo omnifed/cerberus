@@ -6,9 +6,13 @@ a11y: 'misc'
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
+import SquigglyDivider from '@/app/components/squiggly-divider'
 import {
   OverviewPreview,
 } from '@/app/react/loading-states/components/loading-preview'
+import {
+  OverviewSpinnerPreview,
+} from '@/app/react/loading-states/components/spinner-preview'
 
 <OverviewList rules={[
   'Should be used to communicate that the app is processing a request',
@@ -17,9 +21,17 @@ import {
   'Spinners show when a request is being processed in result of a user action',
 ]} />
 
-## Example
+## Examples
 
 <CodePreview preview={<OverviewPreview />} />
+The skeleton shows the page is taking longer than expected to load the initial content.
+
+<SquigglyDivider />
+
+<CodePreview preview={<OverviewSpinnerPreview />} />
+The spinner loader shows the page is processing a request from a user action.
+
+<SquigglyDivider />
 
 ## Resources
 
