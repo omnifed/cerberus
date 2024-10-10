@@ -3,6 +3,7 @@
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
+import SquigglyDivider from '@/app/components/squiggly-divider'
 import {
   WhenToUseAdmonition,
   WhenNotToUseAdmonition,
@@ -10,6 +11,9 @@ import {
 import {
   OverviewPreview,
 } from '@/app/react/loading-states/components/loading-preview'
+import {
+  OverviewSpinnerPreview,
+} from '@/app/react/loading-states/components/spinner-preview'
 
 ## Usage
 
@@ -17,22 +21,28 @@ import {
   'Skeletons show when a page is initially loading',
   'Spinners show when a request is being processed in result of a user action',
   'Try to use SSR for initial page loading and data-fetching on the client for user actions.',
+  'Page content should not switch between Skeletons and Spinners.',
 ]} />
-
-<CodePreview preview={<OverviewPreview />} />
-
 
 ## Skeletons
 
-Skeleton's are used when an application is not utilizing the benefits of initial server-side rendering to load a page.
+Skeleton's are displayed when an application is taking longer than expected to load an initial page.
 
-<WhenToUseAdmonition description="When a user navigates to a new page and app is still pending requests from client." />
+<CodePreview preview={<OverviewPreview />} />
+This typically doesn't happen when utilizing server-side rendering (SSR) for page loads.
+
+<WhenToUseAdmonition description="When a user navigates to a new page and app is still pending requests from client after the browser has finished loading." />
 
 <WhenNotToUseAdmonition description="Do not use Skeletons as responses to actions. Instead use a Spinner." />
 
+<SquigglyDivider />
+
 ## Spinners
 
-Spinners are used when a user action triggers a request to the server by using an action.
+Spinners are used when a user triggers a request to the server by using an action.
+
+<CodePreview preview={<OverviewSpinnerPreview />} />
+The page content should remain static until the new data has arrived.
 
 <WhenToUseAdmonition description="When a user action triggers a request to the server." />
 

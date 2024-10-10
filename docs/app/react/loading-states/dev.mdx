@@ -1,6 +1,6 @@
 ---
 npm: '@cerberus-design/react'
-source: ''
+source: 'components/Spinner.tsx'
 recipe: ''
 ---
 
@@ -8,6 +8,12 @@ import CodePreview from '@/app/components/CodePreview'
 import {
   OverviewPreview,
 } from '@/app/react/loading-states/components/loading-preview'
+import {
+  OverviewSpinnerPreview,
+} from '@/app/react/loading-states/components/spinner-preview'
+import {
+  CustomSpinner,
+} from '@/app/react/loading-states/components/custom-spinner'
 
 ## Skeletor API
 
@@ -23,24 +29,55 @@ To show a skeleton loading state, simply add the `aria-busy` attribute to the el
 
 ### Spinners
 
-Coming soon...
+<CodePreview preview={<OverviewSpinnerPreview />}>
+```tsx
+import { Button, Spinner } from '@cerberus/react'
+
+function MyComponent() {
+  return (
+    <Button>
+      <Spinner size="1em" />
+      Saving
+    </Button>
+  )
+}
+```
+</CodePreview>
 
 ## Customization
 
-To customize the Skeleton, you can override the `globalCss` object by extending the `@cerberus/panda-preset`.
+The `Spinner` component is a simple SVG element that can be styled with CSS.
+
+<CodePreview preview={<CustomSpinner />}>
+```tsx
+export function CustomSpinner() {
+  return (
+    <div
+      className={css({
+        color: 'yellow',
+      })}
+    >
+      <Spinner />
+    </div>
+  )
+}
+```
+</CodePreview>
 
 ## API
 
 ```ts showLineNumbers=false
-export type SpinnerProps = SVGHTMLAttributes<SVGSVGElement>
+export type SpinnerProps = SVGProps<SVGSVGElement> & {
+  size?: number | string
+}
 
 define function Spinner(props: SpinnerProps): ReactNode
 ```
 
 ### Props
 
-The `Spinner` component accepts the following props:
+The `Spinner` component accepts the same props as an SVG element.
 
-| Name     | Default | Description                            |
-| -------- | ------- | -------------------------------------- |
-|          |         |                                        |
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| size     |    | A strict `height` and `width` of the Spinner. |

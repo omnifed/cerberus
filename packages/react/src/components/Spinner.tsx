@@ -1,13 +1,15 @@
 import type { SVGProps } from 'react'
 
-export type SpinnerProps = SVGProps<SVGSVGElement>
+export type SpinnerProps = SVGProps<SVGSVGElement> & {
+  size?: number | string
+}
 
 export function Spinner(props: SpinnerProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
+      height={props.size}
+      width={props.size}
       viewBox="0 0 24 24"
       {...props}
     >
