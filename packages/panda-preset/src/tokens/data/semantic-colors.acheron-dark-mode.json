@@ -4,7 +4,7 @@
       "100": {
         "$type": "color",
         "$value": "acheron.brand.60",
-        "$description": "",
+        "$description": "Text action items that are sitting on a lighter background color, like secondary buttons etc. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -16,7 +16,7 @@
       "200": {
         "$type": "color",
         "$value": "acheron.brand.40",
-        "$description": "",
+        "$description": "reserved for interactive text, or icons using brand colors. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -29,7 +29,7 @@
         "initial": {
           "$type": "color",
           "$value": "acheron.brand.70",
-          "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
+          "$description": "Text color of hyperlinks throughout the site. ",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -41,7 +41,7 @@
         "hover": {
           "$type": "color",
           "$value": "acheron.brand.60",
-          "$description": "",
+          "$description": "Text color of hyperlinks throughout the site while hovering",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -53,7 +53,7 @@
         "visited": {
           "$type": "color",
           "$value": "acheron.brand.80",
-          "$description": "",
+          "$description": "Text color of hyperlinks throughout the site that have been visited",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -66,7 +66,7 @@
       "initial": {
         "$type": "color",
         "$value": "acheron.brand.100",
-        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
+        "$description": "Text color inside of interactive items using the action palette\nUse for: Buttons (filled, outline). Button icons",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -104,7 +104,7 @@
       "100": {
         "$type": "color",
         "$value": "acheron.neutral.30",
-        "$description": "",
+        "$description": "Static text with the least amount of emphasis, like disabled text elements or captions. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -128,7 +128,7 @@
       "300": {
         "$type": "color",
         "$value": "acheron.neutral.white",
-        "$description": "",
+        "$description": "High emphasis static text on page, like page headers or section titles. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -140,7 +140,7 @@
       "initial": {
         "$type": "color",
         "$value": "acheron.neutral.5",
-        "$description": "",
+        "$description": "The default styling for static text and icons on a page.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -152,11 +152,11 @@
       "inverse": {
         "$type": "color",
         "$value": "acheron.neutral.100",
-        "$description": "",
+        "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
             "codeSyntax": {}
           }
         }
@@ -178,7 +178,7 @@
       "100": {
         "$type": "color",
         "$value": "acheron.danger.30",
-        "$description": "",
+        "$description": "Medium emphasis danger text ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -190,7 +190,7 @@
       "200": {
         "$type": "color",
         "$value": "acheron.danger.50",
-        "$description": "",
+        "$description": "High emphasis text or icon to indicate a danger state, like an error within an input field, etc. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -202,7 +202,7 @@
       "initial": {
         "$type": "color",
         "$value": "acheron.danger.10",
-        "$description": "",
+        "$description": "The default color of body danger text within a danger colored container. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -214,7 +214,7 @@
       "inverse": {
         "$type": "color",
         "$value": "acheron.danger.90",
-        "$description": "",
+        "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -264,7 +264,7 @@
       "initial": {
         "$type": "color",
         "$value": "acheron.warning.100",
-        "$description": "",
+        "$description": "The default color of body warning text and icons within a warning colored container. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -314,7 +314,7 @@
       "200": {
         "$type": "color",
         "$value": "acheron.success.60",
-        "$description": "",
+        "$description": "Highest emphasis success color, ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -326,7 +326,7 @@
       "initial": {
         "$type": "color",
         "$value": "acheron.success.10",
-        "$description": "",
+        "$description": "The default color of body success text within a success colored container. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -426,7 +426,7 @@
       "100": {
         "$type": "color",
         "$value": "acheron.accent.80",
-        "$description": "",
+        "$description": "Text color inside of interactive items and icons that have an inverse background of the initial token. That may need a different style of emphasis. Use case may vary per product.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -438,7 +438,7 @@
       "200": {
         "$type": "color",
         "$value": "acheron.info.40",
-        "$description": "",
+        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -450,7 +450,7 @@
       "initial": {
         "$type": "color",
         "$value": "acheron.accent.60",
-        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
+        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -462,7 +462,7 @@
       "static": {
         "$type": "color",
         "$value": "acheron.info.70",
-        "$description": "",
+        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -475,7 +475,7 @@
         "initial": {
           "$type": "color",
           "$value": "acheron.accent.60",
-          "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
+          "$description": "Text color of hyperlinks throughout the site. ",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -487,7 +487,7 @@
         "hover": {
           "$type": "color",
           "$value": "acheron.accent.50",
-          "$description": "",
+          "$description": "Text color of hyperlinks throughout the site while hovering. ",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -499,7 +499,7 @@
         "visited": {
           "$type": "color",
           "$value": "acheron.info.70",
-          "$description": "",
+          "$description": "Text color of hyperlinks throughout the site that have been vistited",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
