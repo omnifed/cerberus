@@ -7,6 +7,8 @@ export type SpinnerProps = SVGProps<SVGSVGElement> & {
 export function Spinner(props: SpinnerProps) {
   return (
     <svg
+      aria-busy="true"
+      role="status"
       xmlns="http://www.w3.org/2000/svg"
       height={props.size}
       width={props.size}

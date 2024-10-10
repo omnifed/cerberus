@@ -4,7 +4,7 @@ import { Button, Show, Spinner, Tag } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
 import { VStack } from '@cerberus-design/styled-system/jsx'
 import { hstack } from '@cerberus-design/styled-system/patterns'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 interface PageData {
   headline: string
