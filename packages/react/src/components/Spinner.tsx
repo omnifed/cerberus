@@ -1,9 +1,24 @@
 import type { SVGProps } from 'react'
 
+/**
+ * This module contains the Spinner component.
+ * @module
+ */
+
 export type SpinnerProps = SVGProps<SVGSVGElement> & {
   size?: number | string
 }
 
+/**
+ * The Spinner component is used to display a loading indicator.
+ * @param props - SVG element attributes
+ * @param props.size - The size of the spinner
+ * @description [Spinner Docs](https://cerberus.digitalu.design/react/loading-states/)
+ * @example
+ * ```tsx
+ * <Spinner size={24} />
+ * ```
+ */
 export function Spinner(props: SpinnerProps) {
   return (
     <svg
