@@ -338,7 +338,7 @@
       "inverse": {
         "$type": "color",
         "$value": "cerberus.success.10",
-        "$description": "",
+        "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -376,7 +376,7 @@
       "200": {
         "$type": "color",
         "$value": "cerberus.info.50",
-        "$description": "",
+        "$description": "High emphasis text or icon to indicate an info state or highlight information",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -388,7 +388,7 @@
       "initial": {
         "$type": "color",
         "$value": "cerberus.info.100",
-        "$description": "",
+        "$description": "The default styling for static info text and icons within an info palette container",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -400,7 +400,7 @@
       "inverse": {
         "$type": "color",
         "$value": "cerberus.info.10",
-        "$description": "",
+        "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
