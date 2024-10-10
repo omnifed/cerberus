@@ -276,7 +276,7 @@
       "inverse": {
         "$type": "color",
         "$value": "cerberus.warning.20",
-        "$description": "",
+        "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -302,7 +302,7 @@
       "100": {
         "$type": "color",
         "$value": "cerberus.success.40",
-        "$description": "",
+        "$description": "Medium emphasis success text ",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -314,7 +314,7 @@
       "200": {
         "$type": "color",
         "$value": "cerberus.success.60",
-        "$description": "Highest emphasis success color, ",
+        "$description": "Highest emphasis success color",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
