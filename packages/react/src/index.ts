@@ -8,6 +8,7 @@
 export * from './components/Avatar'
 export * from './components/Button'
 export * from './components/Checkbox'
+export * from './components/CircularProgress'
 export * from './components/Droppable'
 export * from './components/FieldMessage'
 export * from './components/FeatureFlag'

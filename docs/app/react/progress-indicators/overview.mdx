@@ -1,15 +1,19 @@
 ---
-heading: 'Progress Bar'
-description: 'Progress bars show the status of a process in real time.'
+heading: 'Progress Indicators'
+description: 'Progress indicators show the status of a process in real time.'
 a11y: 'forms'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
+import SquigglyDivider from '@/app/components/squiggly-divider'
 import {
  OverviewPreview
-} from '@/app/react/progress-bar/components/progress-bar-preview'
-import { LivePlayground } from '@/app/react/progress-bar/components/live-preview'
+} from '@/app/react/progress-indicators/components/progress-bar-preview'
+import {
+ CircularPreview
+} from '@/app/react/progress-indicators/components/circular-preview'
+import { LivePlayground } from '@/app/react/progress-indicators/components/live-preview'
 
 <OverviewList rules={[
   'Two styles: block and rounded',
@@ -18,10 +22,16 @@ import { LivePlayground } from '@/app/react/progress-bar/components/live-preview
   'They capture attention through motion',
 ]} />
 
-## Example
+## Examples
 
 <CodePreview preview={<OverviewPreview />} />
 <LivePlayground />
+
+<SquigglyDivider />
+
+<CodePreview preview={<CircularPreview />} />
+
+
 
 ## Resources
 
