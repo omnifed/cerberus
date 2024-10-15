@@ -24,7 +24,7 @@ export function CircularLivePlaygroundWithCode() {
   return (
     <CodeBuilder
       api={api}
-      code={`import { ProgressBar, type CircularProgressProps } from '@cerberus/react'
+      code={`import { CircularProgress, type CircularProgressProps } from '@cerberus/react'
 
 export function MyCircularProgress(props: CircularProgressProps) {
   return (
