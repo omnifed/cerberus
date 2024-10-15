@@ -9,18 +9,20 @@ describe('ProgressBar', () => {
 
   test('should render a progress bar element', () => {
     render(<ProgressBar now={0} />)
-    expect(screen.getByRole('meter')).toBeTruthy()
+    expect(screen.getByRole('progressbar')).toBeTruthy()
   })
 
   test('should render a progress bar element with a now', () => {
     render(<ProgressBar now={50} />)
-    expect(screen.getByRole('meter').getAttribute('aria-valuenow')).toEqual(
-      '50',
-    )
+    expect(
+      screen.getByRole('progressbar').getAttribute('aria-valuenow'),
+    ).toEqual('50')
   })
 
   test('should render a progress bar element with an indeterminate state', () => {
     render(<ProgressBar indeterminate />)
-    expect(screen.getByRole('meter').getAttribute('aria-valuenow')).toEqual('0')
+    expect(
+      screen.getByRole('progressbar').getAttribute('aria-valuenow'),
+    ).toEqual('0')
   })
 })
