@@ -17,7 +17,7 @@ export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
    */
   title: string
   /**
-   * The label of the CircularProgress for a11y
+   * What is shown below the now value (default: 'Done')
    */
   label?: string
 }
@@ -27,7 +27,7 @@ export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
  * @param props - SVG element attributes
  * @param props.now - The current value of the CircularProgress
  * @param props.title - The title of the CircularProgress for a11y
- * @param props.label - The label of the CircularProgress for a11y
+ * @param props.label - What is shown below the now value (default: 'Done')
  * @description [CircularProgress Docs](https://cerberus.digitalu.design/react/progress/)
  * @example
  * ```tsx
@@ -52,94 +52,78 @@ export function CircularProgress(props: CircularProgressProps) {
       })}
       role="progressbar"
     >
-      {/* <span
-        className={vstack({
-          gap: 'max(0em, 1 * 0.25cqi)',
-          h: 'full',
-          justify: 'center',
-          position: 'absolute',
-          w: 'full',
-        })}
-      >
-        <p
-          className={css({
-            fontFamily: 'mono',
-            fontSize: 'max(1.25em, 3 * 5cqi)',
-          })}
-        >
-          {props.now}%
-        </p>
-        <p
-          className={css({
-            color: 'page.text.100',
-            fontSize: 'max(0.75em, 2 * 4cqi)',
-            maxW: '1/2',
-            mx: 'auto',
-            textStyle: 'label-sm',
-            wordBreak: 'break-word',
-          })}
-        >
-          {status}
-        </p>
-      </span> */}
-
       <svg
-        viewBox="0 0 100 100"
+        className={css({
+          display: 'block',
+          gradient: 'charon-dark',
+          rounded: 'full',
+        })}
         fill="none"
         strokeLinecap="round"
         strokeWidth={strokeW}
+        viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
       >
         <title>{props.title}</title>
         <desc>{`${props.now}% ${status}`}</desc>
-
-        <text
-          className={css({
-            fill: 'page.text.initial',
-            fontFamily: 'mono',
-            textStyle: '1.25rem',
-          })}
-          x="35%"
-          y="50%"
-        >
-          {props.now}%
-        </text>
-        <text
-          className={css({
-            fill: 'page.text.100',
-            fontSize: '0.5rem',
-          })}
-          x="39%"
-          y="60%"
-        >
-          {status}
-        </text>
+        <mask id="progMask">
+          <rect fill="white" width="100%" height="100%" />
+          <circle
+            className={css({
+              stroke: 'page.bg.100',
+            })}
+            cx="50%"
+            cy="50%"
+            r={radius}
+            pathLength="100"
+          />
+          <circle
+            className={css({
+              transition: 'all 0.3s ease',
+            })}
+            cx="50%"
+            cy="50%"
+            r={radius}
+            pathLength="100"
+            stroke="black"
+            strokeDasharray="100"
+            strokeDashoffset={100 - props.now}
+            transform="rotate(-90 50 50)"
+          />
+        </mask>
 
         <circle
-          className={css({
-            stroke: 'page.bg.100',
-          })}
+          fill="var(--cerberus-colors-page-surface-initial)"
           cx="50%"
           cy="50%"
-          r={radius}
+          r={`calc(50% * (1.15 - ${strokeW}/100))`}
           pathLength="100"
+          mask="url(#progMask)"
         />
-        <circle
-          data-complete={props.now === 100}
-          className={css({
-            stroke: 'action.bg.initial',
-            '&:is([data-complete=true])': {
-              stroke: 'success.bg.initial',
-            },
-          })}
-          cx="50%"
-          cy="50%"
-          r={radius}
-          pathLength="100"
-          strokeDasharray="100"
-          strokeDashoffset={100 - props.now}
-          transform="rotate(-90 50 50)"
-        />
+
+        <g>
+          <text
+            className={css({
+              fill: 'page.text.initial',
+              fontFamily: 'mono',
+              textStyle: '1.25rem',
+            })}
+            x="35%"
+            y="50%"
+          >
+            {props.now}%
+          </text>
+          <text
+            className={css({
+              fill: 'page.text.100',
+              fontSize: '0.5rem',
+            })}
+            x="39%"
+            y="60%"
+          >
+            {status}
+          </text>
+        </g>
       </svg>
     </div>
   )
