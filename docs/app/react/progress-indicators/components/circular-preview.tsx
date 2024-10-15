@@ -1,14 +1,17 @@
 import { CircularProgress } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
+import { hstack } from '@cerberus-design/styled-system/patterns'
 
 export function CircularPreview() {
   return (
     <div
-      className={css({
-        w: '12rem',
+      className={hstack({
+        w: '1/2',
       })}
     >
+      <CircularProgress now={25} title="Course completion" />
+      <CircularProgress now={50} title="Course completion" />
       <CircularProgress now={75} title="Course completion" />
+      <CircularProgress now={100} title="Course completion" />
     </div>
   )
 }

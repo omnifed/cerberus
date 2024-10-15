@@ -41,6 +41,7 @@
     "color-space": "^2.0.1",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.3",
+    "eslint-import-resolver-typescript": "^3.6.3",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-expressive-code": "^0.35.3",
     "rehype-slug": "^6.0.0",

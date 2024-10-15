@@ -9,20 +9,27 @@ import {
   NoteAdmonition
 } from '@/app/components/Admonition'
 import { LivePlaygroundWithCode } from '@/app/react/progress-indicators/components/live-preview'
+import { CircularLivePlaygroundWithCode } from '@/app/react/progress-indicators/components/circular-live-preview'
 
 ```tsx
-import { ProgressBar } from '@cerberus/react'
+import { ProgressBar, CircularProgress } from '@cerberus/react'
 ```
 
 ## Usage
 
 <LivePlaygroundWithCode />
 
+## Circular Progress
+
+<CircularLivePlaygroundWithCode />
+
 ## Customization
 
 To customize the ProgressBar we recommend extending the slot recipe provided by the `@cerberus-design/panda-preset` package.
 
 ## API
+
+### ProgressBar
 
 ```ts showLineNumbers=false
 export interface ProgressBarBaseProps extends HTMLAttributes<HTMLDivElement> {
@@ -44,3 +51,30 @@ define function ProgressBar(props: ProgressBarProps): ReactNode
 | usage |  `rounded`  | The style of the progress bar. |
 | now |    | The current progress value. |
 | indeterminate |  `false`  | If the progress bar is in an indeterminate state. |
+
+### CircularProgress
+
+```ts showLineNumbers=false
+export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
+  /**
+   * The current value of the CircularProgress
+   */
+  now: number
+  /**
+   * The title of the CircularProgress for a11y
+   */
+  title: string
+  /**
+   * What is shown below the now value (default: 'Done')
+   */
+  label?: string
+}
+
+define function CircularProgress(props: CircularProgressProps): ReactNode
+```
+
+| Name     | Default | Description                                  |
+| -------- | ------- | -------------------------------------------- |
+| now |    | The current progress value. |
+| title |    | The title of the CircularProgress for a11y. |
+| label |  `Done`  | What is shown below the now value. |

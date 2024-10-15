@@ -1,3 +1,5 @@
+'use client'
+
 import { cq } from '@cerberus/styled-system/patterns'
 import { css } from '@cerberus/styled-system/css'
 import type { SVGProps } from 'react'
@@ -35,15 +37,16 @@ export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
  * ```
  */
 export function CircularProgress(props: CircularProgressProps) {
-  const strokeW = 14
+  const strokeW: number = 14
   const radius = `calc(50% * (1 - ${strokeW}/100))`
-  const status = props.label ?? 'Done'
+  const status: string = props.label ?? 'Done'
+  const now: number = props.now >= 100 ? 100 : props.now
 
   return (
     <div
       aria-valuemin={0}
       aria-valuemax={100}
-      aria-valuenow={props.now}
+      aria-valuenow={now}
       className={cq({
         alignSelf: 'stretch',
         flex: 1,
@@ -53,10 +56,11 @@ export function CircularProgress(props: CircularProgressProps) {
       role="progressbar"
     >
       <svg
+        data-complete={now === 100}
         className={css({
           display: 'block',
-          gradient: 'charon-dark',
           rounded: 'full',
+          transition: 'all 0.5s ease',
         })}
         fill="none"
         strokeLinecap="round"
@@ -65,7 +69,7 @@ export function CircularProgress(props: CircularProgressProps) {
         xmlns="http://www.w3.org/2000/svg"
       >
         <title>{props.title}</title>
-        <desc>{`${props.now}% ${status}`}</desc>
+        <desc>{`${now}% ${status}`}</desc>
         <mask id="progMask">
           <rect fill="white" width="100%" height="100%" />
           <circle
@@ -79,7 +83,7 @@ export function CircularProgress(props: CircularProgressProps) {
           />
           <circle
             className={css({
-              transition: 'all 0.3s ease',
+              transition: 'stroke-dashoffset 0.5s ease',
             })}
             cx="50%"
             cy="50%"
@@ -87,18 +91,54 @@ export function CircularProgress(props: CircularProgressProps) {
             pathLength="100"
             stroke="black"
             strokeDasharray="100"
-            strokeDashoffset={100 - props.now}
+            strokeDashoffset={100 - now}
             transform="rotate(-90 50 50)"
           />
         </mask>
 
-        <circle
+        {/* <circle
           fill="var(--cerberus-colors-page-surface-initial)"
           cx="50%"
           cy="50%"
           r={`calc(50% * (1.15 - ${strokeW}/100))`}
           pathLength="100"
           mask="url(#progMask)"
+        /> */}
+
+        <circle
+          className={css({
+            fill: 'page.surface.initial',
+          })}
+          cx="50%"
+          cy="50%"
+          r={`calc(50% * (1 - ${strokeW}/100))`}
+          pathLength="100"
+        />
+        <circle
+          className={css({
+            stroke: 'page.bg.100',
+          })}
+          cx="50%"
+          cy="50%"
+          r={radius}
+          pathLength="100"
+        />
+        <circle
+          data-complete={now === 100}
+          className={css({
+            stroke: 'action.bg.initial',
+            transition: 'stroke-dashoffset 0.5s ease',
+            '&:is([data-complete=true])': {
+              stroke: 'success.bg.initial',
+            },
+          })}
+          cx="50%"
+          cy="50%"
+          r={radius}
+          pathLength="100"
+          strokeDasharray="100"
+          strokeDashoffset={100 - now}
+          transform="rotate(-90 50 50)"
         />
 
         <g>
@@ -111,7 +151,7 @@ export function CircularProgress(props: CircularProgressProps) {
             x="35%"
             y="50%"
           >
-            {props.now}%
+            {now}%
           </text>
           <text
             className={css({
