@@ -12,12 +12,12 @@
     "items": [
       "Avatar",
       "Notification",
-      "Progress Bar",
+      "Progress Indicators",
       "Tag",
       "Tooltip",
       "Table"
     ],
-    "next": [],
+    "next": ["Progress Indicators"],
     "new": []
   },
   "containment": {

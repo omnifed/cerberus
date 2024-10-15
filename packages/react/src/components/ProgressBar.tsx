@@ -48,7 +48,7 @@ export function ProgressBar(props: ProgressBarProps) {
       aria-valuemax={100}
       aria-valuenow={indeterminate ? 0 : nowClamped}
       className={cx(nativeProps.className, styles.root)}
-      role="meter"
+      role="progressbar"
     >
       <div
         {...(indeterminate && { 'data-indeterminate': true })}

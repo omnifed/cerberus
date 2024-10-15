@@ -52,6 +52,11 @@ export function OverviewSpinnerPreview() {
 
   return (
     <VStack w="full">
+      <Show when={data.updated}>
+        <Button palette="secondaryAction" usage="ghost" onClick={handleReset}>
+          Reset Example
+        </Button>
+      </Show>
       <div
         className={hstack({
           border: '1px solid',
@@ -81,19 +86,12 @@ export function OverviewSpinnerPreview() {
           </small>
         </div>
 
-        <Show
-          when={data.updated}
-          fallback={
-            <Button disabled={pending} onClick={handleClick}>
-              <Show when={pending} fallback={<>Save</>}>
-                <Spinner size="1em" />
-                Saving
-              </Show>
-            </Button>
-          }
-        >
-          <Button palette="secondaryAction" usage="ghost" onClick={handleReset}>
-            Reset
+        <Show when={!data.updated}>
+          <Button disabled={pending} onClick={handleClick}>
+            <Show when={pending} fallback={<>Save</>}>
+              Saving
+              <Spinner size="1em" />
+            </Show>
           </Button>
         </Show>
       </div>

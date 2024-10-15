@@ -15,6 +15,7 @@
     "skipLibCheck": true,
 
     "jsx": "react-jsx",
+    "removeComments": false,
 
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
