@@ -10,7 +10,32 @@ import {
 } from './theme/semantic-tokens'
 import type { SemanticTokens } from '@pandacss/types'
 
-export const defineTheme = defineThemeContract({
+/**
+ * This module is used to define the theme contract.
+ * @module ThemeContract
+ */
+
+export interface ThemeVariant {
+  semanticTokens: SemanticTokens
+  extend: {
+    keyframes: Record<string, string>
+    recipes: Record<string, Record<string, string>>
+    slotRecipes: Record<string, Record<string, string>>
+    textStyles: Record<string, string>
+    tokens: {
+      fonts: Record<string, string>
+      zIndex: Record<string, string>
+    }
+  }
+}
+export type definedTheme = ReturnType<typeof defineThemeContract>
+
+/**
+ * Define a variant theme to extend Cerberus in the panda.config.ts
+ * @param {ThemeVariant} theme - The theme to define.
+ * @returns {ThemeVariant} The defined theme.
+ */
+export const defineTheme: definedTheme = defineThemeContract<ThemeVariant>({
   semanticTokens: {
     ...contractPageTokens,
     ...contractActionTokens,
