@@ -18,8 +18,18 @@ import { $cerberusIcons } from '../config/defineIcons'
 
 export type CheckboxProps = CheckboxVariantProps &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'id'> & {
+    /**
+     * The id of the FieldMessage element describing the Checkbox.
+     */
     describedBy?: string
+    /**
+     * The unique identifier for the checkbox. Required for accessibility.
+     */
     id: string
+    /**
+     * Used to display a mixed checked state.
+     * @description [ARIA Mixed State](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/examples/checkbox-mixed/)
+     */
     mixed?: boolean
   }
 
@@ -27,7 +37,7 @@ export type CheckboxProps = CheckboxVariantProps &
  * Checkbox component
  * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
  * @definition [ARIA Forms](https://www.a11yproject.com/checklist/#forms)
- * @definition [Checkbox docs](https://cerberus.digitalu.design/react/checkbox)
+ * @see https://cerberus.digitalu.design/react/checkbox
  * @example
  * ```tsx
  * <Field>

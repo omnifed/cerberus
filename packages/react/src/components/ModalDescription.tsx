@@ -11,6 +11,7 @@ export type ModalDescriptionProps = HTMLAttributes<HTMLParagraphElement>
 
 /**
  * The ModalDescription component is a heading element for a customizable modal.
+ * @see https://cerberus.digitalu.design/react/modal
  * @example
  * ```tsx
  * <Modal>

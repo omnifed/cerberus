@@ -30,7 +30,7 @@ export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
  * @param props.now - The current value of the CircularProgress
  * @param props.title - The title of the CircularProgress for a11y
  * @param props.label - What is shown below the now value (default: 'Done')
- * @description [CircularProgress Docs](https://cerberus.digitalu.design/react/progress/)
+ * @see https://cerberus.digitalu.design/react/progress-indicators
  * @example
  * ```tsx
  * <CircularProgress now={24} title="Course completion" label="done" />

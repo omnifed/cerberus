@@ -12,11 +12,23 @@ import type { HTMLAttributes } from 'react'
 
 export interface ProgressBarBaseProps extends HTMLAttributes<HTMLDivElement> {}
 export type NonIndeterminateProgressBarProps = {
+  /**
+   * The state of the progress bar.
+   */
   indeterminate?: never
+  /**
+   * The current value of the progress bar.
+   */
   now: number
 }
 export type IndeterminateProgressBarProps = {
-  indeterminate: true
+  /**
+   * The state of the progress bar.
+   */
+  indeterminate?: true
+  /**
+   * The current value of the progress bar.
+   */
   now?: never
 }
 export type ProgressBarProps = ProgressBarBaseProps &
@@ -25,9 +37,7 @@ export type ProgressBarProps = ProgressBarBaseProps &
 
 /**
  * The ProgressBar component is used to display the progress of a task.
- * @param props - HTML div element attributes
- * @param props.now - The current value of the progress bar
- * @param props.indeterminate - Whether the progress bar is indeterminate
+ * @see https://cerberus.digitalu.design/react/progress-indicators
  * @example
  * ```tsx
  * <ProgressBar value={75} />

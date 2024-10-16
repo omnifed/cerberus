@@ -11,7 +11,8 @@ export type TheadProps = TableHTMLAttributes<HTMLTableSectionElement>
 
 /**
  * The Thead component is used to render a table header.
- * @definition [Table docs](https://cerberus.digitalu.design/react/table)
+ * @see https://cerberus.digitalu.design/react/table
+ * @memberof module:Table
  * @example
  * ```tsx
  * <Thead>

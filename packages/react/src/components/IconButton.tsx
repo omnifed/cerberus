@@ -1,6 +1,9 @@
 import type { ButtonHTMLAttributes } from 'react'
-import { cx, type RecipeVariantProps } from '@cerberus/styled-system/css'
-import { iconButton } from '@cerberus/styled-system/recipes'
+import { cx } from '@cerberus/styled-system/css'
+import {
+  iconButton,
+  type IconButtonVariantProps,
+} from '@cerberus/styled-system/recipes'
 import type { Positions } from '../types'
 
 /**
@@ -10,15 +13,22 @@ import type { Positions } from '../types'
 
 export interface IconButtonRawProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * The aria-label attribute for the icon button.
+   */
   ariaLabel: string
+  /**
+   * The position of the tooltip relative to the icon button.
+   * @example 'top' | 'right' | 'bottom' | 'left'
+   * @default 'top'
+   */
   tooltipPosition?: Positions
 }
-export type IconButtonRecipeProps = RecipeVariantProps<typeof iconButton>
-export type IconButtonProps = IconButtonRawProps & IconButtonRecipeProps
+export type IconButtonProps = IconButtonRawProps & IconButtonVariantProps
 
 /**
  * A component that allows the user to perform actions using an icon
- * @description https://github.com/omnifed/cerberus/blob/main/packages/react/src/components/IconButton.tsx
+ * @see https://cerberus.digitalu.design/react/icon-button
  */
 export function IconButton(props: IconButtonProps): JSX.Element {
   const { ariaLabel, palette, usage, size, ...nativeProps } = props

@@ -11,6 +11,7 @@ export type ModalHeaderProps = HTMLAttributes<HTMLDivElement>
 
 /**
  * The ModalHeader component is a header element for a customizable modal.
+ * @see https://cerberus.digitalu.design/react/modal
  * @example
  * ```tsx
  * <Modal>

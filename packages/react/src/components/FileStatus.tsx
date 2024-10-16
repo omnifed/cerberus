@@ -6,8 +6,6 @@ import {
   type HTMLAttributes,
   type MouseEvent,
 } from 'react'
-import { ProgressBar } from './ProgressBar'
-import { IconButton } from './IconButton'
 import {
   fileStatus,
   type FileStatusVariantProps,
@@ -15,8 +13,10 @@ import {
 import { css, cx } from '@cerberus/styled-system/css'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
 import { $cerberusIcons } from '../config/defineIcons'
-import { FieldMessage } from './FieldMessage'
 import { Field } from '../context/field'
+import { FieldMessage } from './FieldMessage'
+import { ProgressBar, type ProgressBarProps } from './ProgressBar'
+import { IconButton } from './IconButton'
 import { Avatar } from './Avatar'
 
 /**
@@ -24,13 +24,45 @@ import { Avatar } from './Avatar'
  * @module
  */
 
+/**
+ * The available values of the fileStatus helper Object.
+ * @example
+ * ```tsx
+ * import { fileStatus } from '@cerberus/react'
+ * processStatus.TODO // 'todo'
+ * ```
+ */
 export type FileStatusKey = (typeof processStatus)[keyof typeof processStatus]
+
+/**
+ * The actions that can be performed on a file.
+ */
 export type FileStatusActions = 'cancel' | 'retry' | 'delete'
 export interface FileBaseStatusProps
   extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
+  /**
+   * The name of the file.
+   */
   file: string
-  now: number
+  /**
+   * The percentage of the file that has been processed.
+   */
+  now: ProgressBarProps['now']
+  /**
+   * The status of the file.
+   */
   status: processStatus
+  /**
+   * The action to perform on the file when a user clicks the
+   * button located at the end of the status card.
+   * @param status - The status of the file.
+   * @param e - The event object.
+   * @example
+   * ```tsx
+   * <FileStatus file="file.txt" now={0} status={processStatus.TODO} action={(status, e) => console.log(status, e)} />
+   * ```
+   * @default () => {}
+   */
   onClick: (status: FileStatusActions, e: MouseEvent<HTMLButtonElement>) => void
 }
 export type FileStatusProps = FileBaseStatusProps & FileStatusVariantProps
@@ -51,13 +83,8 @@ export const enum processStatus {
 }
 
 /**
- * This component displays the status of a file.
- * @param props - {
- *  file: string,
- *  now: number,
- *  status: keyof typeof fileStatus,
- *  action: (status: FileStatusActions, e: MouseEvent<HTMLButtonElement>) => void
- * }.
+ * A component that displays the status of a file during file processing.
+ * @see https://cerberus.digitalu.design/react/file-uploader
  * @example
  * ```tsx
  * <FileStatus file="file.txt" now={0} status={processStatus.TODO} action={(status, e) => console.log(status, e)} />

@@ -1,25 +1,32 @@
 'use client'
 
 import type { HTMLAttributes } from 'react'
-import { cx, type RecipeVariantProps } from '@cerberus/styled-system/css'
-import { fieldMessage } from '@cerberus/styled-system/recipes'
+import { cx } from '@cerberus/styled-system/css'
+import {
+  fieldMessage,
+  type FieldMessageVariantProps,
+} from '@cerberus/styled-system/recipes'
 import { useFieldContext } from '../context/field'
 
 /**
  * This module contains the FieldMessage component.
  * @module
  */
-
-export type FieldMessageRecipe = RecipeVariantProps<typeof fieldMessage>
 export interface FieldMessageBaseProps
   extends HTMLAttributes<HTMLParagraphElement> {
+  /**
+   * The id of the FieldMessage element describing the field. Required for accessibility. It is considered best practice to use the `help` or `error` prefix to help screen readers identify the type of message.
+   *
+   * @example For help messages: `help:field_id`
+   * @example For error messages: `error:field_id`
+   */
   id: string
 }
-export type FieldMessageProps = FieldMessageBaseProps & FieldMessageRecipe
+export type FieldMessageProps = FieldMessageBaseProps & FieldMessageVariantProps
 
 /**
  * A component that provides feedback about the field.
- * @description [FieldMessage Docs](https://cerberus.digitalu.design/react/field-message)
+ * @see https://cerberus.digitalu.design/react/field-message
  * @example
  * ```tsx
  * <Field>

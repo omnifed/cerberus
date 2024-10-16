@@ -7,13 +7,35 @@ import { useNavMenuContext } from '../context/navMenu'
 import type { Positions } from '../types'
 import { Show } from './Show'
 
+/**
+ * This module contains the NavMenuList component.
+ * @module
+ */
+
 interface GetPositionResult {
+  /**
+   * The left position of the element.
+   */
   left: string
+  /**
+   * The right position of the element.
+   */
   right: string
+  /**
+   * The top position of the element.
+   */
   top: string
+  /**
+   * The bottom position of the element.
+   */
   bottom: string
 }
 
+/**
+ * Returns the position of the NavMenuList based on the position prop.
+ * @param position - The position of the NavMenuList.
+ * @returns The position of the NavMenuList.
+ */
 export function getPosition(position: Positions): GetPositionResult {
   const defaultPositions = {
     left: 'auto',
@@ -67,21 +89,31 @@ const navListStyles = vstack({
 })
 
 export interface NavMenuListProps extends HTMLAttributes<HTMLUListElement> {
+  /**
+   * The unique identifier for the NavMenuList. Required for accessibility.
+   */
   id: string
+  /**
+   * The position of the NavMenuList.
+   * @type 'top' | 'right' | 'bottom' | 'left'
+   * @default 'bottom'
+   */
   position?: Positions
 }
 
 /**
  * A component that allows the user to display a menu of navigation links.
  * @definition [Disclosure Nav](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/)
- * @definition [NavMenu Docs](https://cerberus.digitalu.design/react/nav-menu)
+ * @see https://cerberus.digitalu.design/react/nav-menu
  *
  * @example
  * ```tsx
- * <NavMenuList id="nav-menu-list" position="bottom">
- *  <NavMenuLink href="/home">Home</NavMenuLink>
- * <NavMenuLink href="/about">About</NavMenuLink>
- * </NavMenuList>
+ * <NavMenu>
+ *  <NavMenuList id="nav-menu-list" position="bottom">
+ *   <NavMenuLink href="/home">Home</NavMenuLink>
+ *   <NavMenuLink href="/about">About</NavMenuLink>
+ *  </NavMenuList>
+ * </NavMenu>
  * ```
  **/
 export function NavMenuList(props: NavMenuListProps): JSX.Element {

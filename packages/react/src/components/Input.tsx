@@ -1,22 +1,39 @@
 'use client'
 
 import type { InputHTMLAttributes, ReactNode } from 'react'
-import { input } from '@cerberus/styled-system/recipes'
-import { cx, type RecipeVariantProps } from '@cerberus/styled-system/css'
+import { input, type InputVariantProps } from '@cerberus/styled-system/recipes'
+import { cx } from '@cerberus/styled-system/css'
 import { useFieldContext } from '../context/field'
 import { $cerberusIcons } from '../config/defineIcons'
 import { Show } from './Show'
 
-export type InputRecipeProps = RecipeVariantProps<typeof input>
 export interface InputBaseProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'size'> {
+  /**
+   * The id of the FieldMessage component used to describe the input. Required for accessibility.
+   */
   describedBy?: string
+  /**
+   * The unique identifier for the input element. Required for accessibility.
+   */
   id: string
+  /**
+   * An optional icon to display at the start of the input.
+   */
   startIcon?: ReactNode
+  /**
+   * An optional icon to display at the end of the input.
+   */
   endIcon?: ReactNode
 }
-export type InputProps = InputBaseProps & InputRecipeProps
+export type InputProps = InputBaseProps & InputVariantProps
 
+/**
+ * A component that allows the user to input text. Must be wrapped in a Field
+ * component to keep track of the state for entire group of elements related to
+ * the field.
+ * @see https://cerberus.digitalu.design/react/input
+ */
 export function Input(props: InputProps) {
   const { describedBy, size, startIcon, endIcon, ...nativeProps } = props
   const inputStyles = input({ size })

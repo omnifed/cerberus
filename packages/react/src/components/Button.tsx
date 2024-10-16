@@ -15,7 +15,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
 
 /**
  * A component that allows the user to perform actions
- * @description https://github.com/omnifed/cerberus/blob/main/packages/react/src/components/Button.tsx
+ * @see https://cerberus.digitalu.design/react/button
  */
 export function Button(props: ButtonProps): JSX.Element {
   const { palette, usage, shape, ...nativeProps } = props

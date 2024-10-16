@@ -8,13 +8,16 @@ import type { PropsWithChildren, TableHTMLAttributes } from 'react'
  */
 
 export interface TableProps extends TableHTMLAttributes<HTMLTableElement> {
+  /**
+   * An easy to understand description of the table. Required for accessibility.
+   */
   caption: string
 }
 
 /**
- * The Table component is used to render a table.
- * @definition [Table docs](https://cerberus.digitalu.design/react/table)
- * @prop caption - An easy to understand description of the table.
+ * An accessible table component.
+ * @definition [ARIA Table pattern](https://www.w3.org/WAI/ARIA/apg/patterns/table/)
+ * @see https://cerberus.digitalu.design/react/table.
  * @example
  * ```tsx
  * <Table caption="Basic Table">

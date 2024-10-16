@@ -11,12 +11,16 @@ import { useTabsContext } from '../context/tabs'
  */
 
 export interface TabListProps extends HTMLAttributes<HTMLDivElement> {
+  /**
+   * A description of what the tab list contains. Required for accessibility.
+   */
   description: string
 }
 
 /**
  * The TabList component provides a container for tab elements.
- * @param description - a description of what the tab list contains
+ * @see https://cerberus.digitalu.design/react/tabs
+ * @memberof module:Tabs
  * @example
  * ```tsx
  * <TabList description="Button details">

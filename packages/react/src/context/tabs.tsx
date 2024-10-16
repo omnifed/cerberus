@@ -15,30 +15,53 @@ import {
 
 /**
  * This module provides a Tabs component and a hook to access its context.
- * @module
+ * @module Tabs
  */
 
 export interface TabsContextValue {
+  /**
+   * The ref for the tabs.
+   */
   tabs: MutableRefObject<HTMLButtonElement[]>
+  /**
+   * The id of the tabs component.
+   */
   id: string
+  /**
+   * The active tab id.
+   */
   active: string
+  /**
+   * The styles for the tabs.
+   */
   styles: Pretty<Record<'tabList' | 'tab' | 'tabPanel', string>>
+  /**
+   * Called when the active tab is updated.
+   */
   onTabUpdate: (active: string) => void
 }
 
 export const TabsContext = createContext<TabsContextValue | null>(null)
 
 export interface TabsProps {
+  /**
+   * A unique identifier for the Tabs component. Typically used when there are
+   * multiple Tabs components on the same page.
+   */
   id?: string
+  /**
+   * The default active tab id.
+   */
   active?: string
+  /**
+   * Whether to cache the active tab state in local storage.
+   */
   cache?: boolean
 }
 
 /**
  * The Tabs component provides a context to manage tab state.
- * @param id - the id of the tabs component,
- * @param active - the default active tab id,
- * @param cache - whether to cache the active tab state in local storage
+ * @see https://cerberus.digitalu.design/react/tabs
  * @example
  * ```tsx
  * <Tabs cache>
@@ -96,6 +119,10 @@ export function Tabs(
   )
 }
 
+/**
+ * Used to access the tabs context.
+ * @returns The tabs context.
+ */
 export function useTabsContext(): TabsContextValue {
   const context = useContext(TabsContext)
   if (!context) {

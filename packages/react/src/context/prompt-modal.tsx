@@ -30,15 +30,34 @@ import { Avatar } from '../components/Avatar'
 
 /**
  * This module provides a context and hook for the prompt modal.
- * @module
+ * @module PromptModal
  */
 
 export interface ShowPromptModalOptions {
+  /**
+   * The kind of prompt modal to show.
+   * @default 'non-destructive'
+   */
   kind?: 'destructive' | 'non-destructive'
+  /**
+   * The heading of the prompt modal.
+   */
   heading: string
+  /**
+   * The description of the prompt modal.
+   */
   description?: string
+  /**
+   * The key to confirm the action.
+   */
   key: string
+  /**
+   * The text for the action button.
+   */
   actionText: string
+  /**
+   * The text for the cancel button.
+   */
   cancelText: string
 }
 export type PromptShowResult =
@@ -46,6 +65,21 @@ export type PromptShowResult =
   | null
 
 export interface PromptModalValue {
+  /**
+   * The method to trigger the prompt modal.
+   * @returns the value of the key if the action is confirmed.
+   * @example
+   * ```tsx
+   * const accepted = await prompt.show({
+   *  kind: 'destructive',
+   *  heading: 'Delete channel?',
+   *  description:
+   *   'This will permanently delete a channel on your account. There is no going back.',
+   *  key: CHANNEL_NAME,
+   *  actionText: 'Yes, delete channel',
+   *  cancelText: 'No, cancel',
+   * })
+   */
   show: (options: ShowPromptModalOptions) => Promise<string>
 }
 
@@ -55,6 +89,7 @@ export interface PromptModalProviderProps {}
 
 /**
  * Provides a prompt modal to the app.
+ * @see https://cerberus.digitalu.design/react/prompt-modal
  * @example
  * ```tsx
  * // Wrap the Provider around the root of the feature.
@@ -236,6 +271,9 @@ export function PromptModal(
   )
 }
 
+/**
+ * Used to retrieve the context of the PromptModal provider.
+ */
 export function usePromptModal(): PromptModalValue {
   const context = useContext(PromptModalContext)
   if (context === null) {

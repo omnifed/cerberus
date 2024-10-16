@@ -12,18 +12,39 @@ import {
   type RefObject,
 } from 'react'
 
+/**
+ * This module provides a context and hook for the nav menu.
+ * @module NavMenu
+ */
+
 export type NavTriggerRef = RefObject<HTMLButtonElement>
 export type NavMenuRef = RefObject<HTMLUListElement>
 
 export interface NavMenuContextValue {
+  /**
+   * The ref for the trigger button.
+   */
   triggerRef: NavTriggerRef | null
+  /**
+   * The ref for the menu.
+   */
   menuRef: NavMenuRef | null
+  /**
+   * Whether the menu is expanded.
+   */
   expanded: boolean
+  /**
+   * Called when the menu button is clicked.
+   */
   onToggle: () => void
 }
 
 const NavMenuContext = createContext<NavMenuContextValue | null>(null)
 
+/**
+ * Provides the nav menu state for all the NavMenu family components.
+ * @see https://cerberus.digitalu.design/react/nav-menu
+ */
 export function NavMenu(props: PropsWithChildren): JSX.Element {
   const triggerRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLUListElement>(null)
@@ -56,6 +77,10 @@ export function NavMenu(props: PropsWithChildren): JSX.Element {
   )
 }
 
+/**
+ * Used to access the nav menu context.
+ * @returns The nav menu context.
+ */
 export function useNavMenuContext(): NavMenuContextValue {
   const context = useContext(NavMenuContext)
   if (!context) {

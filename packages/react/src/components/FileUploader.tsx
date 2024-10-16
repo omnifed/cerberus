@@ -10,10 +10,20 @@ import { Avatar } from './Avatar'
 
 export interface FileUploaderProps
   extends InputHTMLAttributes<HTMLInputElement> {
+  /**
+   * The optional heading to display in the FileUploader component.
+   */
   heading?: string
+  /**
+   * The name of the file input element.
+   */
   name: string
 }
 
+/**
+ * A component that allows the user to upload files.
+ * @see https://cerberus.digitalu.design/react/file-uploader
+ */
 export function FileUploader(props: FileUploaderProps) {
   const styles = fileUploader()
   const Icon = $cerberusIcons.fileUploader
