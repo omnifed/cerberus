@@ -1001,7 +1001,7 @@
     "page": {
       "100": {
         "$type": "color",
-        "$value": "acheron.neutral.90",
+        "$value": "acheron.neutral.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1013,7 +1013,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "acheron.neutral.80",
+        "$value": "acheron.neutral.70",
         "$description": "",
         "$extensions": {
           "com.figma": {

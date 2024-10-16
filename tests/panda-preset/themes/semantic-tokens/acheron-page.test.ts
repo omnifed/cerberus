@@ -28,10 +28,10 @@ describe('page', () => {
 
   test('should have a acheron bg.100 property', () => {
     expect(token.bg['100'].value.base).toEqual(
-      getSemanticToken`acheron.neutral.90`,
+      getSemanticToken`acheron.neutral.80`,
     )
     expect(token.bg['100'].value._darkMode).toEqual(
-      getSemanticToken`acheron.neutral.90`,
+      getSemanticToken`acheron.neutral.80`,
     )
     expect(token.bg['100'].value._lightMode).toEqual(
       getSemanticToken`acheron.neutral.10`,
@@ -42,10 +42,10 @@ describe('page', () => {
 
   test('should have a acheron bg.100 property', () => {
     expect(token.bg['100'].value.base).toEqual(
-      getSemanticToken`acheron.neutral.90`,
+      getSemanticToken`acheron.neutral.80`,
     )
     expect(token.bg['100'].value._darkMode).toEqual(
-      getSemanticToken`acheron.neutral.90`,
+      getSemanticToken`acheron.neutral.80`,
     )
     expect(token.bg['100'].value._lightMode).toEqual(
       getSemanticToken`acheron.neutral.10`,
@@ -56,10 +56,10 @@ describe('page', () => {
 
   test('should have a acheron bg.200 property', () => {
     expect(token.bg['200'].value.base).toEqual(
-      getSemanticToken`acheron.neutral.80`,
+      getSemanticToken`acheron.neutral.70`,
     )
     expect(token.bg['200'].value._darkMode).toEqual(
-      getSemanticToken`acheron.neutral.80`,
+      getSemanticToken`acheron.neutral.70`,
     )
     expect(token.bg['200'].value._lightMode).toEqual(
       getSemanticToken`acheron.neutral.20`,
