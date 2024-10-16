@@ -11,12 +11,17 @@ import { Show } from './Show'
  */
 
 export interface TabPanelProps extends HTMLAttributes<HTMLDivElement> {
+  /**
+   * The unique value of the Tab that is associated with the TabPanel.
+   */
   tab: string
 }
 
 /**
- * The TabPanel component provides a panel element to be used in a Tabs provider.
- * @param tab - the value of the tab that will be tracked as the active tab and used for aria attributes
+ * The TabPanel component provides a panel element to be used in a Tabs
+ * provider.
+ * @see https://cerberus.digitalu.design/react/tabs
+ * @memberof module:Tabs
  * @example
  * ```tsx
  * <TabPanel tab="overview">

@@ -21,21 +21,30 @@ export type SelectProps = Omit<
   'size'
 > &
   SelectVariantProps & {
+    /**
+     * The unique id of the select element. Required for accessibility.
+     */
     id: string
+    /**
+     * The id of the FieldMessage that describes the select element.
+     */
     describedBy?: string
   }
 
 /**
- * Select component
- * props: SelectHTMLAttributes<HTMLSelectElement> & SelectVariantProps & { describedBy?: string }
+ * Used to allow users to select a single option from a list of options.
+ * @see https://cerberus.digitalu.design/react/select
+ * @memberof module:Field
  * @example
  * ```tsx
- * <Select describedby="help:fruit" id="fruit">
- *  <Option value="">Choose option</Option>
- *  <Option value="one">Option 1</Option>
- *  <Option value="two">Option 2</Option>
- *  <Option value="three">Option 3</Option>
- * </Select>
+ * <Field>
+ *   <Select describedby="help:fruit" id="fruit">
+ *    <Option value="">Choose option</Option>
+ *    <Option value="one">Option 1</Option>
+ *    <Option value="two">Option 2</Option>
+ *    <Option value="three">Option 3</Option>
+ *   </Select>
+ * </Field>
  * ```
  */
 export function Select(props: SelectProps) {

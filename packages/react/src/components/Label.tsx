@@ -1,8 +1,8 @@
 'use client'
 
 import type { HTMLAttributes, PropsWithChildren } from 'react'
-import { label } from '@cerberus/styled-system/recipes'
-import { css, cx, type RecipeVariantProps } from '@cerberus/styled-system/css'
+import { label, type LabelVariantProps } from '@cerberus/styled-system/recipes'
+import { css, cx } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
 import { useFieldContext } from '../context/field'
 import { Show } from './Show'
@@ -11,22 +11,27 @@ import { Show } from './Show'
  * This module contains the Label component.
  * @module
  */
-
-export type LabelRecipeProps = RecipeVariantProps<typeof label>
 export interface LabelBaseProps extends HTMLAttributes<HTMLLabelElement> {
+  /**
+   * The unique identifier for the input element. Required for accessibility.
+   */
   htmlFor: string
+  /**
+   * Used to hide the label from the UI while keeping it accessible to screen readers. Typically used for global search inputs that have no visible label.
+   */
   hidden?: boolean
 }
-export type LabelProps = LabelBaseProps & LabelRecipeProps
+export type LabelProps = LabelBaseProps & LabelVariantProps
 
 /**
- * A screen ready friendly label component.
+ * A a11y compliant label component.
  * @definition [ARIA Forms](https://www.a11yproject.com/checklist/#forms)
- * @definition [Label docs](https://cerberus.digitalu.design/react/label)
+ * @see https://cerberus.digitalu.design/react/label
  * @example
  * ```tsx
  * <Field required>
- *   <Label htmlFor="test">Test Label</Label>
+ *   <Label htmlFor="search" hidden>Search everything</Label>
+ *   <Input id="search" startIcon={Search} type="text" />
  * </Field>
  * ```
  */

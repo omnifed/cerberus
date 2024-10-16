@@ -12,7 +12,8 @@ export type TdProps = TdBaseProps & TdVariantProps
 
 /**
  * Styles for the Th component
- * @definition [Table docs](https://cerberus.digitalu.design/react/table)
+ * @see https://cerberus.digitalu.design/react/table
+ * @memberof module:Table
  * @example
  * ```tsx
  * <Td>Data cell</Td>

@@ -9,16 +9,28 @@ import { Show } from './Show'
  */
 
 export type ThBaseProps = TableHTMLAttributes<HTMLTableCellElement> & {
+  /**
+   * Converts the Th into a actionable button. Called when the user clicks on
+   * the Th.
+   */
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 export type ThProps = ThBaseProps & ThVariantProps
 
 /**
  * Styles for the Th component
- * @definition [Table docs](https://cerberus.digitalu.design/react/table)
+ * @see https://cerberus.digitalu.design/react/table
+ * @memberof module:Table
  * @example
  * ```tsx
  * <Th>Header 1</Th>
+ * ```
+ * @example
+ * ```tsx
+ * <Th onClick={handleClick}>
+ *   Names
+ *   <SortIcon />
+ * </Th>
  * ```
  */
 export function Th(props: ThProps) {

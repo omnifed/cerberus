@@ -7,13 +7,42 @@ import type { RecipeVariantProps } from '@cerberus/styled-system/types'
 import type { InputHTMLAttributes, PropsWithChildren } from 'react'
 import { useFieldContext } from '../context/field'
 
+/**
+ * This module contains the Radio component.
+ * @module
+ */
+
 export type RadioRecipe = RecipeVariantProps<typeof radio>
 export interface RadioBaseProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  /**
+   * A unique identifier for the radio button. Required for accessibility.
+   */
   id: string
 }
 export type RadioProps = RadioBaseProps & RadioRecipe
 
+/**
+ * The Radio component is used to allow users to select a single option from a list of options.
+ * @see https://cerberus.digitalu.design/react/radio
+ * @memberof module:Field
+ * @example
+ * ```tsx
+ * <Field>
+ *  <fieldset name="fruit">
+ *    <Radio id="radio-1" name="fruit" value="1">
+ *     Option 1
+ *    </Radio>
+ *    <Radio id="radio-2" name="fruit" value="2">
+ *     Option 2
+ *    </Radio>
+ *    <Radio id="radio-3" name="fruit" value="3">
+ *     Option 3
+ *    </Radio>
+ *   </fieldset>
+ * </Field>
+ * ```
+ */
 export function Radio(props: PropsWithChildren<RadioProps>) {
   const { children, size, ...nativeProps } = props
   const { invalid, ...state } = useFieldContext()

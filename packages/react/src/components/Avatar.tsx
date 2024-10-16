@@ -14,19 +14,46 @@ import { Show } from './Show'
  */
 
 export type SharedAvatarProps = {
+  /**
+   * An optional icon to show when no src or ariaLabel is provided.
+   */
   icon?: ReactNode
+  /**
+   * The size of the avatar.
+   */
   width?: number
+  /**
+   * The size of the avatar.
+   */
   height?: number
 }
 export type AvatarImageProps = HtmlHTMLAttributes<HTMLImageElement> &
   SharedAvatarProps & {
+    /**
+     * The aria-label for the avatar needed for accessibility.
+     */
     ariaLabel: string
+    /**
+     * An optional element to replace the image. Recommended for Next.js Image component.
+     */
     as?: never
+    /**
+     * The source of the image.
+     */
     src: string
   }
 export type AvatarAsProps = SharedAvatarProps & {
+  /**
+   * An optional element to replace the image. Recommended for Next.js Image component.
+   */
   as: ReactNode
+  /**
+   * The aria-label for the avatar needed for accessibility.
+   */
   ariaLabel?: never
+  /**
+   * The source of the image.
+   */
   src?: never
 }
 
@@ -36,7 +63,7 @@ export type AvatarProps = (HtmlHTMLAttributes<HTMLDivElement> &
 
 /**
  * The Avatar component is used to represent a user or entity. It will show an image if src provided, otherwise it will show the ariaLabel of the ariaLabel. If the ariaLabel is empty, it will show a `defineIcons().avatar` icon.
- * @definition [Avatar docs](https://cerberus.digitalu.design/react/avatar)
+ * @see https://cerberus.digitalu.design/react/avatar
  * @example
  * ```tsx
  * <Avatar

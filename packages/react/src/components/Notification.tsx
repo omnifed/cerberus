@@ -31,22 +31,29 @@ function MatchNotificationIcon(props: NotificationVariantProps) {
 
 export interface NotificationBaseProps
   extends Omit<DialogHTMLAttributes<HTMLDialogElement>, 'onClose'> {
+  /**
+   * The unique id of the notification. Required for the onClose callback.
+   */
   id: string
+  /**
+   * Called when the close button is clicked.
+   */
   onClose?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 export type NotificationProps = NotificationBaseProps & NotificationVariantProps
 
 /**
- * The info notification component.
- * @param props - The component props.
- * @returns The info notification component.
+ * A static Notification component that displays a message to the user. This
+ * is typically only used when not utilizing the NotificationCenter.
+ * @see https://cerberus.digitalu.design/react/notification
+ * @memberof module:NotificationCenter
  * @example
  * ```tsx
  * <Notification id="info:1" open>
  *  <NotificationHeading>Info Notification</NotificationHeading>
- * <NotificationDescription>
- *  This is a description with a <a href="#">link</a> in the message.
- * </NotificationDescription>
+ *  <NotificationDescription>
+ *   This is a description with a <a href="#">link</a> in the message.
+ *  </NotificationDescription>
  * </Notification>
  * ```
  */

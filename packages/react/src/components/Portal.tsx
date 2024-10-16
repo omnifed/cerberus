@@ -7,14 +7,21 @@ import { createPortal } from 'react-dom'
  */
 
 export interface PortalProps {
+  /**
+   * The root container to render the children into.
+   * @default document.body
+   */
   container?: Element | DocumentFragment
+  /**
+   * An optional key to use for the Portal component.
+   */
   key?: null | string
 }
 
 /**
  * The Portal component is used to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
- * @param container - The props for the Portal component.
- * @returns ReactPortal
+ * @see https://cerberus.digitalu.design/react/portal
+ * @definition [React Portal Docs](https://react.dev/reference/react-dom/createPortal)
  */
 export function Portal(props: PropsWithChildren<PortalProps>) {
   const container = props.container || document.body

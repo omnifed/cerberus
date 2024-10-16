@@ -14,15 +14,36 @@ import {
   type ThemeContextValue,
 } from '../context/theme'
 
+/**
+ * This module provides a hook for using the theme.
+ * @module
+ */
+
 export const THEME_KEY = 'cerberus-theme'
 export const MODE_KEY = 'cerberus-mode'
 
 export interface UseThemeOptions<T extends string = DefaultThemes> {
+  /**
+   * Whether to cache the theme in local storage.
+   */
   cache?: boolean
+  /**
+   * Called when the theme is updated.
+   */
   updateTheme?: (theme: T) => void
+  /**
+   * Called when the color mode is updated.
+   */
   updateMode?: (mode: ColorModes) => void
 }
 
+/**
+ * Provides a hook for using the theme for a single instance of the application.
+ * @see https://cerberus.digitalu.design/react/use-theme
+ * @param defaultTheme The default theme.
+ * @param defaultColorMode The default color mode.
+ * @param options Additional options.
+ */
 export function useTheme<C extends string = DefaultThemes>(
   defaultTheme: CustomThemes<C> = 'cerberus',
   defaultColorMode: ColorModes = 'light',

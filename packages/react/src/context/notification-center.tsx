@@ -26,10 +26,26 @@ import { cx } from '@cerberus/styled-system/css'
  */
 
 export interface NotifyOptions {
+  /**
+   * The palette of the notification.
+   * @default 'info'
+   */
   palette: 'info' | 'success' | 'warning' | 'danger'
+  /**
+   * The heading of the notification.
+   */
   heading: string
+  /**
+   * The unique id of the notification.
+   */
   id?: string
+  /**
+   * The description of the notification.
+   */
   description?: ReactNode
+  /**
+   * The action to take when the notification is closed
+   */
   onClose?: () => void
 }
 
@@ -43,6 +59,7 @@ export interface NotificationsProviderProps extends PortalProps {}
 
 /**
  * Provides a notification center to the app.
+ * @see https://cerberus.digitalu.design/react/notification
  * @example
  * ```tsx
  * // Wrap the Provider around the root of the feature.

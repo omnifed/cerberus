@@ -16,10 +16,23 @@ import { useNavMenuContext } from '../context/navMenu'
 import type { ButtonProps } from './Button'
 import { Show } from './Show'
 
+/**
+ * This module contains the NavMenuTrigger component.
+ * @module
+ */
+
 export interface NavMenuTriggerProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     ButtonProps,
     NavTriggerAriaValues {
+  /**
+   * The element type to render as. Recommended to use for an IconButton trigger vs a standard Button.
+   * @default 'button'
+   * @example
+   * ```tsx
+   * <NavMenuTrigger as={IconButton} href="/home" />
+   * ```
+   */
   as?: ElementType
 }
 

@@ -30,10 +30,26 @@ import { Avatar } from '../components/Avatar'
  */
 
 export interface ShowConfirmModalOptions {
+  /**
+   * The kind of confirm modal to show.
+   * @default 'non-destructive'
+   */
   kind?: 'destructive' | 'non-destructive'
+  /**
+   * The heading of the confirm modal.
+   */
   heading: string
+  /**
+   * The description of the confirm modal.
+   */
   description?: string
+  /**
+   * The text for the action button.
+   */
   actionText: string
+  /**
+   * The text for the cancel button.
+   */
   cancelText: string
 }
 export type ShowResult =
@@ -50,6 +66,7 @@ export interface ConfirmModalProviderProps {}
 
 /**
  * Provides a confirm modal to the app.
+ * @see https://cerberus.digitalu.design/react/confirm-modal
  * @example
  * ```tsx
  * // Wrap the Provider around the root of the feature.

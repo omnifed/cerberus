@@ -19,7 +19,7 @@ export interface FeatureFlagProviderProps {
 
 /**
  * Provides feature flags to the application.
- * @param flags - The flags data for the provider.
+ * @see https://cerberus.digitalu.design/react/feature-flags
  * @example
  * ```tsx
  * // This should be a JSON file or a server response.
@@ -49,6 +49,9 @@ export function FeatureFlags(
   )
 }
 
+/**
+ * Used to retrieve the context of the FeatureFlags provider.
+ */
 export function useFeatureFlags(key: string): boolean {
   const context = useContext(FeatureFlagContext)
   if (context === null) {

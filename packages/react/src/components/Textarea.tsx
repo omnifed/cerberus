@@ -2,9 +2,8 @@
 
 import type { TextareaHTMLAttributes } from 'react'
 import { css, cx } from '@cerberus/styled-system/css'
-import { input } from '@cerberus/styled-system/recipes'
+import { input, type InputVariantProps } from '@cerberus/styled-system/recipes'
 import { useFieldContext } from '../context/field'
-import type { InputRecipeProps } from './Input'
 
 /**
  * This module contains the Textarea component.
@@ -13,14 +12,20 @@ import type { InputRecipeProps } from './Input'
 
 export interface TextareaBaseProps
   extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'id'> {
+  /**
+   * The ID of the FieldMessage that describes the textarea.
+   */
   describedBy?: string
+  /**
+   * The unique id of the textarea.
+   */
   id: string
 }
-export type TextareaProps = InputRecipeProps & TextareaBaseProps
+export type TextareaProps = InputVariantProps & TextareaBaseProps
 
 /**
  * A component that allows the user to input large blocks of text.
- * @description https://github.com/omnifed/cerberus/blob/main/packages/react/src/components/Textarea.tsx
+ * @see https://cerberus.digitalu.design/react/textarea
  */
 export function Textarea(props: TextareaProps): JSX.Element {
   const { describedBy, ...nativeProps } = props
