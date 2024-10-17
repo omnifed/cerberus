@@ -223,8 +223,8 @@ importers:
         specifier: ^1.0.6
         version: 1.0.6
       '@figma/rest-api-spec':
-        specifier: ^0.17.0
-        version: 0.17.0
+        specifier: ^0.19.0
+        version: 0.19.0
       '@types/react':
         specifier: ^18
         version: 18.3.1
@@ -996,8 +996,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  '@figma/rest-api-spec@0.17.0':
-    resolution: {integrity: sha512-T+C7pl4n/HK4ZRBumGdww9bU77MB5MQiUmyjqfYVwyDbod5XhDXAHz6mJjuxp65C64B6JbOxtV17jugo63/60Q==}
+  '@figma/rest-api-spec@0.19.0':
+    resolution: {integrity: sha512-ixvPBugjBjgZIPP9QnhTzeWextGr4KQaHbB678OS6n3XUrmyLNzEdxuZfUfRVn0hX/VIOKWQcurYhyowjrb+yQ==}
 
   '@happy-dom/global-registrator@14.11.0':
     resolution: {integrity: sha512-QRqnYzaS90gwWT0zuTMHVry4ouacoUCYedeEQOMQjFA+AVynroLoj2XVC+WYugDSeAa6FSXprXjiEZiZ0g+VgA==}
@@ -2238,7 +2238,6 @@ packages:
 
   bun@1.1.6:
     resolution: {integrity: sha512-0oKx5dVZ8LpsAvXdW2DTR5Zt3KS81Ifjx9T2ma7RjDPKbvGIlDXOPt++tr1SndxhFNFsMFeE4i6VKvlL7IR0Zw==}
-    cpu: [arm64, x64]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -5834,7 +5833,7 @@ snapshots:
       - debug
       - supports-color
 
-  '@figma/rest-api-spec@0.17.0': {}
+  '@figma/rest-api-spec@0.19.0': {}
 
   '@happy-dom/global-registrator@14.11.0':
     dependencies:
