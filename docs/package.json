@@ -33,7 +33,7 @@
     "@shikijs/rehype": "^1.5.1",
     "@shikijs/transformers": "^1.5.1",
     "@shikijs/twoslash": "^1.5.1",
-    "@types/node": "^20.12.10",
+    "@types/node": "^22.7.6",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@vercel/analytics": "^1.3.1",
