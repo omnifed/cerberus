@@ -1474,6 +1474,18 @@
     }
   },
   "data-viz": {
+    "start": {
+      "$type": "color",
+      "$value": "acheron.brand.60",
+      "$description": "",
+      "$extensions": {
+        "com.figma": {
+          "hiddenFromPublishing": false,
+          "scopes": ["ALL_SCOPES"],
+          "codeSyntax": {}
+        }
+      }
+    },
     "sequential": {
       "100": {
         "$type": "color",
@@ -1545,6 +1557,18 @@
             "scopes": ["FRAME_FILL", "SHAPE_FILL"],
             "codeSyntax": {}
           }
+        }
+      }
+    },
+    "end": {
+      "$type": "color",
+      "$value": "acheron.brand.80",
+      "$description": "",
+      "$extensions": {
+        "com.figma": {
+          "hiddenFromPublishing": false,
+          "scopes": ["ALL_SCOPES"],
+          "codeSyntax": {}
         }
       }
     },
