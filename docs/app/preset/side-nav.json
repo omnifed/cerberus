@@ -12,7 +12,7 @@
   {
     "label": "Customizing",
     "route": "/preset/customizing",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -28,7 +28,7 @@
   {
     "label": "Colors",
     "route": "/preset/colors",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
