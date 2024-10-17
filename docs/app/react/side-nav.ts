@@ -37,7 +37,7 @@ const hooksGroup: CategoriesList = {
       'use-toggle',
     ],
     next: [],
-    new: [''],
+    new: [],
   },
 }
 

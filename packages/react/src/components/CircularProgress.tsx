@@ -70,40 +70,18 @@ export function CircularProgress(props: CircularProgressProps) {
       >
         <title>{props.title}</title>
         <desc>{`${now}% ${status}`}</desc>
-        <mask id="progMask">
-          <rect fill="white" width="100%" height="100%" />
-          <circle
-            className={css({
-              stroke: 'page.bg.100',
-            })}
-            cx="50%"
-            cy="50%"
-            r={radius}
-            pathLength="100"
-          />
-          <circle
-            className={css({
-              transition: 'stroke-dashoffset 0.5s ease',
-            })}
-            cx="50%"
-            cy="50%"
-            r={radius}
-            pathLength="100"
-            stroke="black"
-            strokeDasharray="100"
-            strokeDashoffset={100 - now}
-            transform="rotate(-90 50 50)"
-          />
-        </mask>
-
-        {/* <circle
-          fill="var(--cerberus-colors-page-surface-initial)"
-          cx="50%"
-          cy="50%"
-          r={`calc(50% * (1.15 - ${strokeW}/100))`}
-          pathLength="100"
-          mask="url(#progMask)"
-        /> */}
+        <defs>
+          <linearGradient id="gradient">
+            <stop
+              offset="0%"
+              stopColor="var(--cerberus-colors-action-bg-initial)"
+            />
+            <stop
+              offset="100%"
+              stopColor="var(--cerberus-colors-action-bg-active)"
+            />
+          </linearGradient>
+        </defs>
 
         <circle
           className={css({
@@ -126,14 +104,15 @@ export function CircularProgress(props: CircularProgressProps) {
         <circle
           data-complete={now === 100}
           className={css({
-            stroke: 'action.bg.initial',
-            transition: 'stroke-dashoffset 0.5s ease',
+            stroke: 'url(#gradient)',
+            transition: 'stroke-dashoffset, stroke 0.5s ease',
             '&:is([data-complete=true])': {
               stroke: 'success.bg.initial',
             },
           })}
           cx="50%"
           cy="50%"
+          fill="none"
           r={radius}
           pathLength="100"
           strokeDasharray="100"
@@ -148,8 +127,10 @@ export function CircularProgress(props: CircularProgressProps) {
               fontFamily: 'mono',
               textStyle: '1.25rem',
             })}
-            x="35%"
-            y="50%"
+            x="50%"
+            y="47%"
+            dominantBaseline="middle"
+            textAnchor="middle"
           >
             {now}%
           </text>
@@ -157,9 +138,12 @@ export function CircularProgress(props: CircularProgressProps) {
             className={css({
               fill: 'page.text.100',
               fontSize: '0.5rem',
+              fontWeight: 600,
             })}
-            x="39%"
-            y="60%"
+            x="50%"
+            y="59%"
+            dominantBaseline="middle"
+            textAnchor="middle"
           >
             {status}
           </text>

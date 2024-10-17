@@ -17,8 +17,8 @@
       "Tooltip",
       "Table"
     ],
-    "next": ["Progress Indicators"],
-    "new": []
+    "next": [],
+    "new": ["Progress Indicators"]
   },
   "containment": {
     "name": "Containment",
