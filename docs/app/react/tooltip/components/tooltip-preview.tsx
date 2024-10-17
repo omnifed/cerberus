@@ -1,10 +1,27 @@
 import { Information } from '@cerberus-design/icons'
-import { IconButton } from '@cerberus-design/react'
+import type { ButtonProps } from '@cerberus-design/react'
 import { hstack } from '@cerberus/styled-system/patterns'
+import { iconButton } from '@cerberus/styled-system/recipes'
+
+function IconButton(
+  props: ButtonProps & {
+    tooltipPosition?: 'top' | 'right' | 'bottom' | 'left'
+  },
+) {
+  const { tooltipPosition, ...nativeProps } = props
+  return (
+    <button
+      {...nativeProps}
+      data-tooltip
+      data-position={tooltipPosition || 'top'}
+      className={iconButton()}
+    />
+  )
+}
 
 export function BasicTooltipPreview() {
   return (
-    <IconButton ariaLabel="Get information">
+    <IconButton aria-label="Get information">
       <Information />
     </IconButton>
   )
@@ -17,16 +34,16 @@ export function PositioningTooltipPreview() {
         gap: '10',
       })}
     >
-      <IconButton ariaLabel="Top position" tooltipPosition="top">
+      <IconButton aria-label="Top position" tooltipPosition="top">
         <Information />
       </IconButton>
-      <IconButton ariaLabel="Right position" tooltipPosition="right">
+      <IconButton aria-label="Right position" tooltipPosition="right">
         <Information />
       </IconButton>
-      <IconButton ariaLabel="Bottom position" tooltipPosition="bottom">
+      <IconButton aria-label="Bottom position" tooltipPosition="bottom">
         <Information />
       </IconButton>
-      <IconButton ariaLabel="Left position" tooltipPosition="left">
+      <IconButton aria-label="Left position" tooltipPosition="left">
         <Information />
       </IconButton>
     </div>

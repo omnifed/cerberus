@@ -42,11 +42,7 @@ export default function PortalPreview() {
               the parent component.
             </p>
 
-            <IconButton
-              ariaLabel="Close Portal"
-              onClick={handleClosePortal}
-              tooltipPosition="bottom"
-            >
+            <IconButton ariaLabel="Close Portal" onClick={handleClosePortal}>
               <Close />
             </IconButton>
           </div>
