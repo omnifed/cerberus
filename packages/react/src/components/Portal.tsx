@@ -1,5 +1,3 @@
-'use client'
-
 import type { PropsWithChildren } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -26,6 +24,10 @@ export interface PortalProps {
  * @definition [React Portal Docs](https://react.dev/reference/react-dom/createPortal)
  */
 export function Portal(props: PropsWithChildren<PortalProps>) {
-  const container = props.container || document.body
-  return createPortal(props.children, container, props.key)
+  if (typeof window !== 'undefined') {
+    const container = props.container || document.body
+    return createPortal(props.children, container, props.key)
+  }
+
+  return null
 }
