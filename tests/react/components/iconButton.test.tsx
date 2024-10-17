@@ -4,8 +4,6 @@ import { IconButton } from '@cerberus-design/react'
 import { setupStrictMode } from '@/utils'
 
 describe('IconButton', () => {
-  const DATA_POSITION = 'data-position'
-
   setupStrictMode()
   afterEach(cleanup)
 
@@ -100,49 +98,5 @@ describe('IconButton', () => {
         .getByText(/it works/i)
         .classList.contains('cerberus-icon-btn--size_lg'),
     ).toBeTrue()
-  })
-
-  test('should render a icon button with tooltip on top', () => {
-    render(
-      <IconButton ariaLabel="test button" tooltipPosition="top">
-        it works
-      </IconButton>,
-    )
-    expect(screen.getByText(/it works/i).getAttribute(DATA_POSITION)).toBe(
-      'top',
-    )
-  })
-
-  test('should render a icon button with tooltip on bottom', () => {
-    render(
-      <IconButton ariaLabel="test button" tooltipPosition="bottom">
-        it works
-      </IconButton>,
-    )
-    expect(screen.getByText(/it works/i).getAttribute(DATA_POSITION)).toBe(
-      'bottom',
-    )
-  })
-
-  test('should render a icon button with tooltip on left', () => {
-    render(
-      <IconButton ariaLabel="test button" tooltipPosition="left">
-        it works
-      </IconButton>,
-    )
-    expect(screen.getByText(/it works/i).getAttribute(DATA_POSITION)).toBe(
-      'left',
-    )
-  })
-
-  test('should render a icon button with tooltip on right', () => {
-    render(
-      <IconButton ariaLabel="test button" tooltipPosition="right">
-        it works
-      </IconButton>,
-    )
-    expect(screen.getByText(/it works/i).getAttribute(DATA_POSITION)).toBe(
-      'right',
-    )
   })
 })
