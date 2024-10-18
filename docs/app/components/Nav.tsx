@@ -19,6 +19,7 @@ import { getTheme, injectTheme, type ThemeName } from '@/styled-system/themes'
 import { INLINE_BLOCK, PAGE_BORDER_INITIAL } from '../utils/const'
 import { getColorMode } from '../utils/colors'
 import { AnimatingSystemIcon } from './icons/AnimatingSystemIcon'
+import CerberusLogo from './cerberus-logo'
 
 const navLogoContent = (
   <section
@@ -34,21 +35,14 @@ const navLogoContent = (
     <Link
       href="/"
       className={css({
-        display: 'none',
+        display: 'inline-block',
         pxi: '2',
         rounded: 'sm',
-        textStyle: 'body-xl',
-        md: {
-          display: INLINE_BLOCK,
-        },
-        _active: {
-          color: 'page.text.initial',
-        },
+        w: '4rem',
         _focusVisible: focusStates._focusVisible,
       })}
     >
-      <strong>Cerberus </strong>
-      Design System
+      <CerberusLogo />
     </Link>
   </section>
 )

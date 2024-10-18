@@ -4,6 +4,8 @@ import { button } from '@cerberus/styled-system/recipes'
 import CerberusLogo from './cerberus-logo'
 import { vstack } from '@cerberus-design/styled-system/patterns'
 import { grid, gridItem } from '@cerberus/styled-system/patterns'
+import { Tag } from '@cerberus-design/react'
+import { HStack } from '@cerberus-design/styled-system/jsx'
 
 export default function HomeHero() {
   return (
@@ -65,19 +67,28 @@ export default function HomeHero() {
             </span>
           </h1>
 
-          <p
-            className={css({
-              maxW: '44ch',
-              textStyle: 'body-lg',
-              lg: {
-                lineHeight: 'relaxed',
-                textStyle: 'body-xl',
-              },
-            })}
-          >
-            Create React design systems effortlessly, or use our out-of-the-box
-            settings.
-          </p>
+          <div>
+            <p
+              className={css({
+                maxW: '44ch',
+                textStyle: 'body-lg',
+                lg: {
+                  lineHeight: 'relaxed',
+                  textStyle: 'body-xl',
+                },
+              })}
+            >
+              Create React 19+ design systems effortlessly.
+            </p>
+            <HStack mt="3">
+              <Tag palette="info" shape="pill">
+                ARIA AA Compliant
+              </Tag>
+              <Tag palette="info" shape="pill">
+                Panda CSS
+              </Tag>
+            </HStack>
+          </div>
 
           <div
             className={css({
