@@ -984,18 +984,6 @@
             "codeSyntax": {}
           }
         }
-      },
-      "100-hover": {
-        "$type": "color",
-        "$value": "acheron.brand.90",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": true,
-            "scopes": [],
-            "codeSyntax": {}
-          }
-        }
       }
     },
     "page": {
