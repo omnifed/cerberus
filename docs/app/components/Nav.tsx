@@ -33,6 +33,7 @@ const navLogoContent = (
     })}
   >
     <Link
+      aria-label="Go to homepage"
       href="/"
       className={css({
         display: 'inline-block',

@@ -1,6 +1,7 @@
 'use client'
 
 import { tokens } from '@cerberus-design/panda-preset'
+import { Field, FieldMessage, Label, Select } from '@cerberus-design/react'
 import { css, cx } from '@cerberus/styled-system/css'
 import { vstack } from '@cerberus/styled-system/patterns'
 import { useState, type ChangeEvent } from 'react'
@@ -131,34 +132,31 @@ export default function ZPreview() {
           mb: '10',
         })}
       >
-        <label
-          className={css({
-            display: 'block',
-            textStyle: 'label-md',
-            mb: '2',
-          })}
-          htmlFor="z-index"
-        >
-          Select z-index:
-        </label>
-        <select
-          className={css({
-            border: '1px solid',
-            borderColor: 'page.border.100',
-            h: '2.75rem',
-            pxi: '2',
-            rounded: 'md',
-            w: 'full',
-          })}
-          name="z-index"
-          onChange={handleChange}
-        >
-          {Object.keys(tokens.zIndex).map((key) => (
-            <option key={key} value={key}>
-              {key}
-            </option>
-          ))}
-        </select>
+        <Field>
+          <Label htmlFor="z-index">Select z-index:</Label>
+          <Select
+            className={css({
+              border: '1px solid',
+              borderColor: 'page.border.100',
+              h: '2.75rem',
+              pxi: '2',
+              rounded: 'md',
+              w: 'full',
+            })}
+            describedBy="help:z-index"
+            id="z-index"
+            onChange={handleChange}
+          >
+            {Object.keys(tokens.zIndex).map((key) => (
+              <option key={key} value={key}>
+                {key}
+              </option>
+            ))}
+          </Select>
+          <FieldMessage id="help:z-index">
+            Select a z-index value to see the layer effect.
+          </FieldMessage>
+        </Field>
       </div>
     </>
   )

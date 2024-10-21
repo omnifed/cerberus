@@ -31,13 +31,13 @@ export function SecondaryTabsPreview() {
         palette="secondaryAction"
       >
         <TabList description="Button detail pages">
-          <Tab value="overview">Overview</Tab>
-          <Tab value="features">Features</Tab>
-          <Tab value="pricing">Pricing</Tab>
+          <Tab value="overview-1">Overview</Tab>
+          <Tab value="features-1">Features</Tab>
+          <Tab value="pricing-1">Pricing</Tab>
         </TabList>
-        <TabPanel tab="overview">Overview content</TabPanel>
-        <TabPanel tab="features">Features content</TabPanel>
-        <TabPanel tab="pricing">Pricing content</TabPanel>
+        <TabPanel tab="overview-1">Overview content</TabPanel>
+        <TabPanel tab="features-1">Features content</TabPanel>
+        <TabPanel tab="pricing-1">Pricing content</TabPanel>
       </Tabs>
     </div>
   )
