@@ -110,10 +110,10 @@ describe('infoTokens', () => {
 
   test('should have a acheron surface.initial property', () => {
     expect(infoTokens.info.surface.initial.value.base).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`acheron.info.50`,
     )
     expect(infoTokens.info.surface.initial.value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`acheron.info.50`,
     )
     expect(infoTokens.info.surface.initial.value._lightMode).toEqual(
       formatSemanticToken`acheron.info.30`,
@@ -138,13 +138,13 @@ describe('infoTokens', () => {
 
   test('should have a acheron surface.200 property', () => {
     expect(infoTokens.info.surface['200'].value.base).toEqual(
-      formatSemanticToken`acheron.info.50`,
+      formatSemanticToken`acheron.info.70`,
     )
     expect(infoTokens.info.surface['200'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.50`,
+      formatSemanticToken`acheron.info.70`,
     )
     expect(infoTokens.info.surface['200'].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.60`,
+      formatSemanticToken`acheron.info.50`,
     )
   })
 

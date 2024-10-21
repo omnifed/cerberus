@@ -239,7 +239,7 @@
     "warning": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.warning.80",
+        "$value": "cerberus.warning.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -275,7 +275,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "cerberus.warning.100",
+        "$value": "cerberus.warning.20",
         "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "$extensions": {
           "com.figma": {

@@ -28,7 +28,7 @@
       "navigation": {
         "initial": {
           "$type": "color",
-          "$value": "acheron.brand.70",
+          "$value": "acheron.brand.80",
           "$description": "Text color of hyperlinks throughout the site. ",
           "$extensions": {
             "com.figma": {
@@ -40,7 +40,7 @@
         },
         "hover": {
           "$type": "color",
-          "$value": "acheron.brand.60",
+          "$value": "acheron.brand.70",
           "$description": "Text color of hyperlinks throughout the site while hovering",
           "$extensions": {
             "com.figma": {
@@ -52,7 +52,7 @@
         },
         "visited": {
           "$type": "color",
-          "$value": "acheron.brand.80",
+          "$value": "acheron.brand.90",
           "$description": "Text color of hyperlinks throughout the site that have been visited",
           "$extensions": {
             "com.figma": {
@@ -239,7 +239,7 @@
     "warning": {
       "100": {
         "$type": "color",
-        "$value": "acheron.warning.70",
+        "$value": "acheron.warning.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -703,7 +703,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "acheron.info.60",
+        "$value": "acheron.info.50",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {

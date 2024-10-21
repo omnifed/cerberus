@@ -110,10 +110,10 @@ describe('success', () => {
 
   test('should have a acheron surface.initial property', () => {
     expect(successTokens.surface.initial.value.base).toEqual(
-      formatSemanticToken`acheron.success.70`,
+      formatSemanticToken`acheron.success.60`,
     )
     expect(successTokens.surface.initial.value._darkMode).toEqual(
-      formatSemanticToken`acheron.success.70`,
+      formatSemanticToken`acheron.success.60`,
     )
     expect(successTokens.surface.initial.value._lightMode).toEqual(
       formatSemanticToken`acheron.success.50`,
@@ -138,10 +138,10 @@ describe('success', () => {
 
   test('should have a acheron surface.200 property', () => {
     expect(successTokens.surface['200'].value.base).toEqual(
-      formatSemanticToken`acheron.success.60`,
+      formatSemanticToken`acheron.success.80`,
     )
     expect(successTokens.surface['200'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.success.60`,
+      formatSemanticToken`acheron.success.80`,
     )
     expect(successTokens.surface['200'].value._lightMode).toEqual(
       formatSemanticToken`acheron.success.60`,

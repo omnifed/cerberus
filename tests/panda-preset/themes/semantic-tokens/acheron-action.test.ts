@@ -152,13 +152,13 @@ describe('Acheron actionTokens', () => {
   test('should have a acheron action.navigation.initial key', () => {
     expect(actionTokens.action.navigation.initial).toBeDefined()
     expect(actionTokens.action.navigation.initial.value.base).toBe(
-      getSemanticToken`acheron.brand.70`,
+      getSemanticToken`acheron.brand.60`,
     )
     expect(actionTokens.action.navigation.initial.value._darkMode).toBe(
-      getSemanticToken`acheron.brand.70`,
+      getSemanticToken`acheron.brand.60`,
     )
     expect(actionTokens.action.navigation.initial.value._lightMode).toBe(
-      getSemanticToken`acheron.brand.70`,
+      getSemanticToken`acheron.brand.80`,
     )
   })
 
@@ -167,13 +167,13 @@ describe('Acheron actionTokens', () => {
   test('should have a acheron action.navigation.hover key', () => {
     expect(actionTokens.action.navigation.hover).toBeDefined()
     expect(actionTokens.action.navigation.hover.value.base).toBe(
-      getSemanticToken`acheron.brand.60`,
+      getSemanticToken`acheron.brand.50`,
     )
     expect(actionTokens.action.navigation.hover.value._darkMode).toBe(
-      getSemanticToken`acheron.brand.60`,
+      getSemanticToken`acheron.brand.50`,
     )
     expect(actionTokens.action.navigation.hover.value._lightMode).toBe(
-      getSemanticToken`acheron.brand.60`,
+      getSemanticToken`acheron.brand.70`,
     )
   })
 
@@ -182,13 +182,13 @@ describe('Acheron actionTokens', () => {
   test('should have a acheron action.navigation.visited key', () => {
     expect(actionTokens.action.navigation.visited).toBeDefined()
     expect(actionTokens.action.navigation.visited.value.base).toBe(
-      getSemanticToken`acheron.brand.80`,
+      getSemanticToken`acheron.brand.70`,
     )
     expect(actionTokens.action.navigation.visited.value._darkMode).toBe(
-      getSemanticToken`acheron.brand.80`,
+      getSemanticToken`acheron.brand.70`,
     )
     expect(actionTokens.action.navigation.visited.value._lightMode).toBe(
-      getSemanticToken`acheron.brand.80`,
+      getSemanticToken`acheron.brand.90`,
     )
   })
 

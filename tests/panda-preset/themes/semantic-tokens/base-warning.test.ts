@@ -170,7 +170,7 @@ describe('warning', () => {
       formatSemanticToken`cerberus.warning.30`,
     )
     expect(warningTokens.warning.text[100].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.warning.80`,
+      formatSemanticToken`cerberus.warning.90`,
     )
   })
 
@@ -192,13 +192,13 @@ describe('warning', () => {
 
   test('should have a cerberus text.inverse property', () => {
     expect(warningTokens.warning.text.inverse.value.base).toEqual(
-      formatSemanticToken`cerberus.warning.20`,
+      formatSemanticToken`cerberus.warning.100`,
     )
     expect(warningTokens.warning.text.inverse.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.20`,
+      formatSemanticToken`cerberus.warning.100`,
     )
     expect(warningTokens.warning.text.inverse.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.warning.100`,
+      formatSemanticToken`cerberus.warning.20`,
     )
   })
 
