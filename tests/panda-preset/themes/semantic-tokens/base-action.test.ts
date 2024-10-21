@@ -150,10 +150,10 @@ describe('Base actionTokens', () => {
   test('should have a cerberus action.navigation.initial key', () => {
     expect(actionTokens.action.navigation.initial).toBeDefined()
     expect(actionTokens.action.navigation.initial.value.base).toBe(
-      getSemanticToken`cerberus.brand.40`,
+      getSemanticToken`cerberus.brand.30`,
     )
     expect(actionTokens.action.navigation.initial.value._darkMode).toBe(
-      getSemanticToken`cerberus.brand.40`,
+      getSemanticToken`cerberus.brand.30`,
     )
     expect(actionTokens.action.navigation.initial.value._lightMode).toBe(
       getSemanticToken`cerberus.brand.60`,
@@ -165,10 +165,10 @@ describe('Base actionTokens', () => {
   test('should have a cerberus action.navigation.hover key', () => {
     expect(actionTokens.action.navigation.hover).toBeDefined()
     expect(actionTokens.action.navigation.hover.value.base).toBe(
-      getSemanticToken`cerberus.brand.30`,
+      getSemanticToken`cerberus.brand.20`,
     )
     expect(actionTokens.action.navigation.hover.value._darkMode).toBe(
-      getSemanticToken`cerberus.brand.30`,
+      getSemanticToken`cerberus.brand.20`,
     )
     expect(actionTokens.action.navigation.hover.value._lightMode).toBe(
       getSemanticToken`cerberus.brand.50`,
