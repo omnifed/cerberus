@@ -28,19 +28,19 @@ export function Admonition(props: PropsWithChildren<AdmonitionProps>) {
         py: '6',
         rounded: '2xl',
         _infoPalette: {
-          bgColor: 'info.surface.initial',
+          bgColor: 'info.surface.200',
           color: 'info.text.initial',
         },
         _successPalette: {
-          bgColor: 'success.surface.initial',
+          bgColor: 'success.surface.200',
           color: 'success.text.initial',
         },
         _warningPalette: {
-          bgColor: 'warning.surface.initial',
+          bgColor: 'warning.surface.200',
           color: 'warning.text.initial',
         },
         _dangerPalette: {
-          bgColor: 'danger.surface.initial',
+          bgColor: 'danger.surface.200',
           color: 'danger.text.initial',
         },
       })}

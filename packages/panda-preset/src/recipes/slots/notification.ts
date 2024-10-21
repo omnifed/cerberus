@@ -64,7 +64,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
       zIndex: 'toast',
     },
     dialog: {
-      bgColor: 'colorPalette.surface.initial',
+      bgColor: 'colorPalette.surface.200',
       color: 'colorPalette.text.initial',
       maxW: '29rem',
       minH: '3.125rem',
