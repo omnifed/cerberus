@@ -62,6 +62,7 @@ export function MyFileStatus(props: FileStatusProps) {
 
   return (
     <FileStatus
+      id={props.id}
       file={props.file}
       now={props.now}
       onClick={handleClick}
@@ -81,6 +82,7 @@ export function FileStatusPreview() {
     case processStatus.TODO:
       return (
         <FileStatus
+          id="live-todo"
           file={file}
           now={0}
           onClick={() => {}}
@@ -90,6 +92,7 @@ export function FileStatusPreview() {
     case processStatus.PROCESSING:
       return (
         <FileStatus
+          id="live-processing"
           file={file}
           now={50}
           onClick={() => {}}
@@ -99,6 +102,7 @@ export function FileStatusPreview() {
     case processStatus.DONE:
       return (
         <FileStatus
+          id="live-done"
           file={file}
           now={100}
           onClick={() => {}}
@@ -108,6 +112,7 @@ export function FileStatusPreview() {
     case processStatus.ERROR:
       return (
         <FileStatus
+          id="live-error"
           file={file}
           now={0}
           onClick={() => {}}
@@ -117,6 +122,7 @@ export function FileStatusPreview() {
     default:
       return (
         <FileStatus
+          id="live-todo"
           file={file}
           now={100}
           onClick={() => {}}

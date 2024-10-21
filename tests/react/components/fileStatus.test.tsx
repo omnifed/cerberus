@@ -11,6 +11,7 @@ describe('FileStatus', () => {
   test('should render a file status', () => {
     render(
       <FileStatus
+        id="test"
         file="file.txt"
         now={0}
         status={processStatus.TODO}
@@ -24,6 +25,7 @@ describe('FileStatus', () => {
   test('should render a processing file status', () => {
     render(
       <FileStatus
+        id="test"
         file="file.txt"
         now={50}
         status={processStatus.PROCESSING}
@@ -37,6 +39,7 @@ describe('FileStatus', () => {
   test('should render a done file status', () => {
     render(
       <FileStatus
+        id="test"
         file="file.txt"
         now={100}
         status={processStatus.DONE}
@@ -50,6 +53,7 @@ describe('FileStatus', () => {
   test('should render an error file status', () => {
     render(
       <FileStatus
+        id="test"
         file="file.txt"
         now={0}
         status={processStatus.ERROR}
@@ -66,6 +70,7 @@ describe('FileStatus', () => {
     const handleClick = jest.fn()
     render(
       <FileStatus
+        id="test"
         file="file.txt"
         now={0}
         status={processStatus.TODO}

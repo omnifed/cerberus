@@ -54,6 +54,7 @@ export type FileStatusActions = 'cancel' | 'retry' | 'delete'
 
 export interface FileBaseStatusProps
   extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
+  id: string
   file: string
   now: number
   status: processStatus
@@ -77,6 +78,7 @@ The `FileStatus` component accepts the following props:
 
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
+| id       |         | A unique identifier for the ProgressBar.            |
 | file     |         | The name of the file being processed                          |
 | now      |         | The current progress of the file upload                       |
 | status   |    'todo'     | The status of the file upload                                 |
