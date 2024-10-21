@@ -108,10 +108,10 @@ describe('success', () => {
 
   test('should have a cerberus surface.initial property', () => {
     expect(successTokens.success.surface.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.success.70`,
+      formatSemanticToken`cerberus.success.60`,
     )
     expect(successTokens.success.surface.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.success.70`,
+      formatSemanticToken`cerberus.success.60`,
     )
     expect(successTokens.success.surface.initial.value._lightMode).toEqual(
       formatSemanticToken`cerberus.success.50`,
@@ -136,10 +136,10 @@ describe('success', () => {
 
   test('should have a cerberus surface.200 property', () => {
     expect(successTokens.success.surface['200'].value.base).toEqual(
-      formatSemanticToken`cerberus.success.60`,
+      formatSemanticToken`cerberus.success.80`,
     )
     expect(successTokens.success.surface['200'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.success.60`,
+      formatSemanticToken`cerberus.success.80`,
     )
     expect(successTokens.success.surface['200'].value._lightMode).toEqual(
       formatSemanticToken`cerberus.success.60`,

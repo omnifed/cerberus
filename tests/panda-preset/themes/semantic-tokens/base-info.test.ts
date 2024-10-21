@@ -108,10 +108,10 @@ describe('infoTokens', () => {
 
   test('should have a cerberus surface.initial property', () => {
     expect(infoTokens.info.surface.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.info.70`,
+      formatSemanticToken`cerberus.info.80`,
     )
     expect(infoTokens.info.surface.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.70`,
+      formatSemanticToken`cerberus.info.80`,
     )
     expect(infoTokens.info.surface.initial.value._lightMode).toEqual(
       formatSemanticToken`cerberus.info.30`,
@@ -136,10 +136,10 @@ describe('infoTokens', () => {
 
   test('should have a cerberus surface.200 property', () => {
     expect(infoTokens.info.surface['200'].value.base).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`cerberus.info.70`,
     )
     expect(infoTokens.info.surface['200'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`cerberus.info.70`,
     )
     expect(infoTokens.info.surface['200'].value._lightMode).toEqual(
       formatSemanticToken`cerberus.info.50`,
