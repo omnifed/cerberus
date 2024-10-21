@@ -12,6 +12,7 @@ import {
   Field,
   useToggle,
   Show,
+  Label,
 } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
@@ -123,6 +124,9 @@ export function BasicTablePreview() {
           <Td>False</Td>
           <Td>
             <Field>
+              <Label htmlFor="1" hidden>
+                Adopt
+              </Label>
               <Toggle
                 checked={Boolean(first.checked)}
                 id="1"
@@ -138,6 +142,9 @@ export function BasicTablePreview() {
           <Td>Maybe</Td>
           <Td>
             <Field>
+              <Label htmlFor="2" hidden>
+                Adopt
+              </Label>
               <Toggle
                 checked={Boolean(second.checked)}
                 id="2"
@@ -153,6 +160,9 @@ export function BasicTablePreview() {
           <Td>True</Td>
           <Td>
             <Field>
+              <Label htmlFor="3" hidden>
+                Adopt
+              </Label>
               <Toggle
                 checked={Boolean(third.checked)}
                 id="3"

@@ -11,7 +11,12 @@ import OverviewList from '@/app/components/OverviewList'
 <OverviewList intro="Users should be able to:" rules={[
   'Understand meaning of the table',
   'Navigate to and activate actions in cells with assistive technology',
+  'Inputs used within the table cells should include Labels (hidden or not)'
 ]} />
+
+## Input fields in table cells
+
+Input fields in table cells should include labels. The labels can be hidden, but they should be present in the DOM for screen readers to read. This is important for users who rely on screen readers to understand the context of the input field.
 
 ## Keyboard Navigation
 
