@@ -57,7 +57,7 @@ export function Tab(props: TabProps) {
       aria-controls={`panel:${value}`}
       aria-busy={isPending}
       aria-selected={isActive}
-      id={value}
+      id={`tab:${value}`}
       className={cx(nativeProps.className, styles.tab)}
       onClick={handleClick}
       role="tab"

@@ -32,7 +32,7 @@ describe('Tabs Family & useTabsContext', () => {
   function TestTabs() {
     return (
       <>
-        <TabList data-testid="tablist" description="Button details">
+        <TabList description="Button details">
           {tabData.map((tab) => (
             <Tab key={tab.id} value={tab.id}>
               {tab.label}
@@ -60,7 +60,7 @@ describe('Tabs Family & useTabsContext', () => {
 
     // The right tab is selected
     expect(
-      screen.getByTestId('tablist').attributes.getNamedItem('aria-describedby')
+      screen.getByRole('tablist').attributes.getNamedItem('aria-label')
         ?.textContent,
     ).toEqual('Button details')
     expect(

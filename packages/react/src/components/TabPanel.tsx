@@ -39,7 +39,7 @@ export function TabPanel(props: TabPanelProps) {
       <div
         {...nativeProps}
         {...(isActive && { tabIndex: 0 })}
-        aria-labelledby={tab}
+        aria-labelledby={`tab:${tab}`}
         className={cx(nativeProps.className, styles.tabPanel)}
         id={`panel:${tab}`}
         role="tabpanel"

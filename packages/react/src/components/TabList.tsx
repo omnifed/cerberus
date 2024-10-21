@@ -36,7 +36,7 @@ export function TabList(props: PropsWithChildren<TabListProps>) {
   return (
     <div
       {...nativeProps}
-      aria-describedby={description}
+      aria-label={description}
       className={cx(
         nativeProps.className,
         hstack({
@@ -45,6 +45,7 @@ export function TabList(props: PropsWithChildren<TabListProps>) {
         styles.tabList,
       )}
       id={id ?? nativeProps.id}
+      role="tablist"
     />
   )
 }

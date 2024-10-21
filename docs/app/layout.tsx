@@ -84,7 +84,7 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
           updateMode={handleUpdateMode}
         >
           <Nav />
-          {props.children}
+          <main>{props.children}</main>
         </ThemeProvider>
       </body>
     </html>
