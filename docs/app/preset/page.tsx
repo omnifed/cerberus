@@ -6,7 +6,7 @@ export default function PresetPage() {
   return (
     <>
       <PageMainContent>
-        <main>
+        <main role="main">
           <Overview />
         </main>
       </PageMainContent>

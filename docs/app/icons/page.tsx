@@ -6,7 +6,7 @@ export default function IconsPage() {
   return (
     <>
       <PageMainContent>
-        <main>
+        <main role="main">
           <Overview />
         </main>
       </PageMainContent>
