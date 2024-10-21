@@ -16,7 +16,14 @@ import { Button, Show } from '@cerberus-design/react'
 import { Checkmark, Copy } from '@cerberus-design/icons'
 
 function isFormState(key: string) {
-  return ['disabled', 'required', 'readOnly', 'invalid', 'mixed'].includes(key)
+  return [
+    'disabled',
+    'required',
+    'readOnly',
+    'invalid',
+    'mixed',
+    'indeterminate',
+  ].includes(key)
 }
 
 function isProgressKey(key: string) {

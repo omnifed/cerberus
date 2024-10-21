@@ -6,6 +6,11 @@ import { useCodeBuilder } from '@/app/context/code-builder'
 import { ProgressBar } from '@cerberus-design/react'
 
 const api = {
+  id: builder.Text('id', 'UUID'),
+  label: builder.Text(
+    'label',
+    'A description of what the progress bar represents',
+  ),
   size: builder.Enum('size', ['sm', 'md']),
   usage: builder.Enum('usage', ['rounded', 'block']),
   now: builder.Number('now', 75),
@@ -28,7 +33,14 @@ export function LivePlaygroundWithCode() {
 
 export function MyProgressBar(props: ProgressBarProps) {
   return (
-    <ProgressBar indeterminate={{indeterminate}} size={{size}} usage={{usage}} now={{now}} />
+    <ProgressBar
+      id={{id}}
+      indeterminate={{indeterminate}}
+      label={{label}}
+      now={{now}}
+      size={{size}}
+      usage={{usage}}
+    />
   )
 }`}
     >
@@ -39,5 +51,12 @@ export function MyProgressBar(props: ProgressBarProps) {
 
 export function ProgressBarPreview() {
   const { selectedProps } = useCodeBuilder()
-  return <ProgressBar {...selectedProps} now={selectedProps.now as number} />
+  return (
+    <ProgressBar
+      {...selectedProps}
+      id={selectedProps.id as string}
+      label={selectedProps.label as string}
+      now={selectedProps.now as number}
+    />
+  )
 }

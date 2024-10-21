@@ -13,6 +13,14 @@ import type { HTMLAttributes } from 'react'
 export interface ProgressBarBaseProps extends HTMLAttributes<HTMLDivElement> {}
 export type NonIndeterminateProgressBarProps = {
   /**
+   * A unique identifier for the progress bar. Required for accessibility.
+   */
+  id: string
+  /**
+   * A description label for the progress bar. Required for accessibility.
+   */
+  label: string
+  /**
    * The state of the progress bar.
    */
   indeterminate?: never
@@ -22,6 +30,14 @@ export type NonIndeterminateProgressBarProps = {
   now: number
 }
 export type IndeterminateProgressBarProps = {
+  /**
+   * A unique identifier for the progress bar. Required for accessibility.
+   */
+  id: string
+  /**
+   * A description label for the progress bar. Required for accessibility.
+   */
+  label: string
   /**
    * The state of the progress bar.
    */
