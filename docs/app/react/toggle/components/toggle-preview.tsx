@@ -89,22 +89,26 @@ export function OverviewToggleGroup() {
       })}
     >
       <Field>
-        <Toggle
-          checked={checked === 'lg-one'}
-          id="lg-one"
-          size="lg"
-          onChange={handleChange}
-          value="lg-one"
-        />
+        <Label htmlFor="lg-one" aria-label="Large toggle">
+          <Toggle
+            checked={checked === 'lg-one'}
+            id="lg-one"
+            size="lg"
+            onChange={handleChange}
+            value="lg-one"
+          />
+        </Label>
       </Field>
       <Field>
-        <Toggle
-          checked={checked === 'lg-two'}
-          id="lg-two"
-          size="lg"
-          onChange={handleChange}
-          value="lg-two"
-        />
+        <Label htmlFor="lg-two" aria-label="Checked large toggle">
+          <Toggle
+            checked={checked === 'lg-two'}
+            id="lg-two"
+            size="lg"
+            onChange={handleChange}
+            value="lg-two"
+          />
+        </Label>
       </Field>
     </div>
   )
