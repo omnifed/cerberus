@@ -110,10 +110,10 @@ describe('Acheron dangerTokens', () => {
 
   test('should have a acheron surface.initial property', () => {
     expect(dangerTokens.danger.surface.initial.value.base).toEqual(
-      formatSemanticToken`acheron.danger.80`,
+      formatSemanticToken`acheron.danger.60`,
     )
     expect(dangerTokens.danger.surface.initial.value._darkMode).toEqual(
-      formatSemanticToken`acheron.danger.80`,
+      formatSemanticToken`acheron.danger.60`,
     )
     expect(dangerTokens.danger.surface.initial.value._lightMode).toEqual(
       formatSemanticToken`acheron.danger.30`,
@@ -138,10 +138,10 @@ describe('Acheron dangerTokens', () => {
 
   test('should have a acheron surface.200 property', () => {
     expect(dangerTokens.danger.surface['200'].value.base).toEqual(
-      formatSemanticToken`acheron.danger.60`,
+      formatSemanticToken`acheron.danger.70`,
     )
     expect(dangerTokens.danger.surface['200'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.danger.60`,
+      formatSemanticToken`acheron.danger.70`,
     )
     expect(dangerTokens.danger.surface['200'].value._lightMode).toEqual(
       formatSemanticToken`acheron.danger.50`,

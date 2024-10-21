@@ -275,7 +275,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "cerberus.warning.20",
+        "$value": "cerberus.warning.100",
         "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "$extensions": {
           "com.figma": {
@@ -589,7 +589,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.success.60",
+        "$value": "cerberus.success.80",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -601,7 +601,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.success.70",
+        "$value": "cerberus.success.60",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -615,7 +615,7 @@
     "danger": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.danger.90",
+        "$value": "cerberus.danger.70",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -703,7 +703,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.info.50",
+        "$value": "cerberus.info.70",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -715,7 +715,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.info.70",
+        "$value": "cerberus.info.80",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {

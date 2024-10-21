@@ -11,6 +11,14 @@ import type { SVGProps } from 'react'
 
 export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
   /**
+   * A unique identifier for the progress bar. Required for accessibility.
+   */
+  id: string
+  /**
+   * A description label for the progress bar. Required for accessibility.
+   */
+  label: string
+  /**
    * The current value of the CircularProgress
    */
   now: number
@@ -21,7 +29,7 @@ export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
   /**
    * What is shown below the now value (default: 'Done')
    */
-  label?: string
+  syntax?: string
 }
 
 /**
@@ -39,11 +47,13 @@ export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
 export function CircularProgress(props: CircularProgressProps) {
   const strokeW: number = 14
   const radius = `calc(50% * (1 - ${strokeW}/100))`
-  const status: string = props.label ?? 'Done'
+  const status: string = props.syntax ?? 'Done'
   const now: number = props.now >= 100 ? 100 : props.now
 
   return (
     <div
+      id={props.id}
+      aria-label={props.label}
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={now}

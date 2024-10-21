@@ -7,8 +7,13 @@ import { Square } from '@/styled-system/jsx'
 import { CircularProgress } from '@cerberus-design/react'
 
 const api = {
+  id: builder.Text('id', 'UUID'),
+  label: builder.Text(
+    'label',
+    'Description of what the progress bar represents',
+  ),
   title: builder.Text('title', 'Course completion'),
-  label: builder.Text('label', 'Done'),
+  syntax: builder.Text('label', 'Done'),
   now: builder.Number('now', 30),
 }
 
@@ -30,6 +35,8 @@ export function MyCircularProgress(props: CircularProgressProps) {
   return (
     <CircularProgress
       label={{label}}
+      id={{id}}
+      syntax={{syntax}}
       now={{now}}
       title={{title}}
     />
@@ -47,6 +54,8 @@ export function CircularProgressPreview() {
     <Square size="15rem">
       <CircularProgress
         {...selectedProps}
+        id={selectedProps.id as string}
+        label={selectedProps.label as string}
         title={selectedProps.title as string}
         now={selectedProps.now as number}
       />

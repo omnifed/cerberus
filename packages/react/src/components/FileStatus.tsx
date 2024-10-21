@@ -41,6 +41,10 @@ export type FileStatusActions = 'cancel' | 'retry' | 'delete'
 export interface FileBaseStatusProps
   extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
   /**
+   * A unique identifier for the file status. Required for accessibility.
+   */
+  id: string
+  /**
    * The name of the file.
    */
   file: string
@@ -147,7 +151,12 @@ export function FileStatus(props: FileStatusProps) {
         >
           {file}
         </small>
-        <ProgressBar now={now} size="sm" />
+        <ProgressBar
+          id={props.id}
+          label="File upload status"
+          now={now}
+          size="sm"
+        />
         <Field invalid={modalIconPalette === 'hades-dark'}>
           <FieldMessage
             className={css({

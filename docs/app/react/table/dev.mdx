@@ -34,6 +34,8 @@ import {
 'use client'
 
 import {
+  Field,
+  Label,
   Table,
   Tbody,
   Th,
@@ -41,7 +43,6 @@ import {
   Tr,
   Td,
   Toggle,
-  Field,
   useToggle,
 } from '@cerberus/react'
 
@@ -65,6 +66,9 @@ function BasicTablePreview() {
           <Td>False</Td>
           <Td>
             <Field>
+              <Label htmlFor="1" hidden>
+                Adopt
+              </Label>
               <Toggle
                 checked={Boolean(first.checked)}
                 id="1"
@@ -80,6 +84,9 @@ function BasicTablePreview() {
           <Td>Maybe</Td>
           <Td>
             <Field>
+              <Label htmlFor="2" hidden>
+                Adopt
+              </Label>
               <Toggle
                 checked={Boolean(second.checked)}
                 id="2"
@@ -95,6 +102,9 @@ function BasicTablePreview() {
           <Td>True</Td>
           <Td>
             <Field>
+              <Label htmlFor="3" hidden>
+                Adopt
+              </Label>
               <Toggle
                 checked={Boolean(third.checked)}
                 id="3"

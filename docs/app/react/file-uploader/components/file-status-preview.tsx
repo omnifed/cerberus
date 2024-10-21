@@ -23,24 +23,28 @@ export function UploadingCardsPreview() {
       })}
     >
       <FileStatus
+        id="todo"
         file="file.txt"
         now={0}
         onClick={handleClick}
         status={processStatus.TODO}
       />
       <FileStatus
+        id="processing"
         file="file.txt"
         now={50}
         onClick={handleClick}
         status={processStatus.PROCESSING}
       />
       <FileStatus
+        id="done"
         file="file.txt"
         now={100}
         onClick={handleClick}
         status={processStatus.DONE}
       />
       <FileStatus
+        id="error"
         file="file.txt"
         now={0}
         onClick={handleClick}

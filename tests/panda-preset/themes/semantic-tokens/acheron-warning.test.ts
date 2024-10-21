@@ -172,7 +172,7 @@ describe('warning', () => {
       formatSemanticToken`acheron.warning.30`,
     )
     expect(warningTokens.text[100].value._lightMode).toEqual(
-      formatSemanticToken`acheron.warning.70`,
+      formatSemanticToken`acheron.warning.90`,
     )
   })
 

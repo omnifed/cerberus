@@ -12,6 +12,7 @@ import {
   Field,
   useToggle,
   Show,
+  Label,
 } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
@@ -123,13 +124,15 @@ export function BasicTablePreview() {
           <Td>False</Td>
           <Td>
             <Field>
-              <Toggle
-                checked={Boolean(first.checked)}
-                id="1"
-                onChange={first.handleChange}
-                size="sm"
-                value="1"
-              />
+              <Label htmlFor="1" aria-label="Adopt">
+                <Toggle
+                  checked={Boolean(first.checked)}
+                  id="1"
+                  onChange={first.handleChange}
+                  size="sm"
+                  value="1"
+                />
+              </Label>
             </Field>
           </Td>
         </Tr>
@@ -138,13 +141,15 @@ export function BasicTablePreview() {
           <Td>Maybe</Td>
           <Td>
             <Field>
-              <Toggle
-                checked={Boolean(second.checked)}
-                id="2"
-                onChange={second.handleChange}
-                size="sm"
-                value="2"
-              />
+              <Label htmlFor="2" aria-label="Adopt">
+                <Toggle
+                  checked={Boolean(second.checked)}
+                  id="2"
+                  onChange={second.handleChange}
+                  size="sm"
+                  value="2"
+                />
+              </Label>
             </Field>
           </Td>
         </Tr>
@@ -153,13 +158,15 @@ export function BasicTablePreview() {
           <Td>True</Td>
           <Td>
             <Field>
-              <Toggle
-                checked={Boolean(third.checked)}
-                id="3"
-                onChange={third.handleChange}
-                size="sm"
-                value="3"
-              />
+              <Label htmlFor="3" aria-label="adopt">
+                <Toggle
+                  checked={Boolean(third.checked)}
+                  id="3"
+                  onChange={third.handleChange}
+                  size="sm"
+                  value="3"
+                />
+              </Label>
             </Field>
           </Td>
         </Tr>

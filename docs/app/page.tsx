@@ -7,6 +7,7 @@ export default function Home() {
       className={css({
         mt: '9rem',
       })}
+      role="main"
     >
       <HomeHero />
     </main>

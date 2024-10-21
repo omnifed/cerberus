@@ -13,6 +13,14 @@ import type { HTMLAttributes } from 'react'
 export interface ProgressBarBaseProps extends HTMLAttributes<HTMLDivElement> {}
 export type NonIndeterminateProgressBarProps = {
   /**
+   * A unique identifier for the progress bar. Required for accessibility.
+   */
+  id: string
+  /**
+   * A description label for the progress bar. Required for accessibility.
+   */
+  label: string
+  /**
    * The state of the progress bar.
    */
   indeterminate?: never
@@ -22,6 +30,14 @@ export type NonIndeterminateProgressBarProps = {
   now: number
 }
 export type IndeterminateProgressBarProps = {
+  /**
+   * A unique identifier for the progress bar. Required for accessibility.
+   */
+  id: string
+  /**
+   * A description label for the progress bar. Required for accessibility.
+   */
+  label: string
   /**
    * The state of the progress bar.
    */
@@ -44,7 +60,7 @@ export type ProgressBarProps = ProgressBarBaseProps &
  * ```
  */
 export function ProgressBar(props: ProgressBarProps) {
-  const { indeterminate, size, usage, now, ...nativeProps } = props
+  const { indeterminate, size, usage, now, label, ...nativeProps } = props
   const styles = progressBar({ size, usage })
   const nowClamped = Math.min(100, Math.max(0, now || 0))
   const width = {
@@ -54,6 +70,7 @@ export function ProgressBar(props: ProgressBarProps) {
   return (
     <div
       {...nativeProps}
+      aria-label={label}
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={indeterminate ? 0 : nowClamped}
