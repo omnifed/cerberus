@@ -261,11 +261,11 @@ importers:
         specifier: workspace:*
         version: link:../../configs
       '@pandacss/dev':
-        specifier: ^0.46.0
-        version: 0.46.0(typescript@5.4.5)
+        specifier: ^0.47.0
+        version: 0.47.0(typescript@5.4.5)
       '@pandacss/types':
-        specifier: ^0.46.0
-        version: 0.46.0
+        specifier: ^0.47.0
+        version: 0.47.0
 
   packages/react:
     dependencies:
