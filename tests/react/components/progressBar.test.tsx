@@ -10,6 +10,9 @@ describe('ProgressBar', () => {
   test('should render a progress bar element', () => {
     render(<ProgressBar id="test" label="test label" now={0} />)
     expect(screen.getByRole('progressbar')).toBeTruthy()
+    expect(screen.getByRole('progressbar').getAttribute('aria-label')).toEqual(
+      'test label',
+    )
   })
 
   test('should render a progress bar element with a now', () => {
