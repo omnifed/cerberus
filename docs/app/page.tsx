@@ -3,12 +3,12 @@ import HomeHero from './components/home-hero'
 
 export default function Home() {
   return (
-    <div
+    <main
       className={css({
         mt: '9rem',
       })}
     >
       <HomeHero />
-    </div>
+    </main>
   )
 }
