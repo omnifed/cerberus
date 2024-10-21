@@ -9,7 +9,7 @@ import Dev, { frontmatter as devFrontmatter } from './dev.mdx'
 
 export default function ReactPage() {
   return (
-    <main>
+    <>
       <TabPageContent>
         <FeatureHeader
           heading={frontmatter.heading}
@@ -34,6 +34,6 @@ export default function ReactPage() {
           }
         />
       </TabPageContent>
-    </main>
+    </>
   )
 }
