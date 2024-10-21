@@ -28,7 +28,7 @@
       "navigation": {
         "initial": {
           "$type": "color",
-          "$value": "cerberus.brand.40",
+          "$value": "cerberus.brand.30",
           "$description": "Text color of hyperlinks throughout the site. ",
           "$extensions": {
             "com.figma": {
@@ -40,7 +40,7 @@
         },
         "hover": {
           "$type": "color",
-          "$value": "cerberus.brand.30",
+          "$value": "cerberus.brand.20",
           "$description": "Text color of hyperlinks throughout the site while hovering",
           "$extensions": {
             "com.figma": {
