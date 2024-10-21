@@ -124,16 +124,15 @@ export function BasicTablePreview() {
           <Td>False</Td>
           <Td>
             <Field>
-              <Label htmlFor="1" hidden>
-                Adopt
+              <Label htmlFor="1" aria-label="Adopt">
+                <Toggle
+                  checked={Boolean(first.checked)}
+                  id="1"
+                  onChange={first.handleChange}
+                  size="sm"
+                  value="1"
+                />
               </Label>
-              <Toggle
-                checked={Boolean(first.checked)}
-                id="1"
-                onChange={first.handleChange}
-                size="sm"
-                value="1"
-              />
             </Field>
           </Td>
         </Tr>
@@ -142,16 +141,15 @@ export function BasicTablePreview() {
           <Td>Maybe</Td>
           <Td>
             <Field>
-              <Label htmlFor="2" hidden>
-                Adopt
+              <Label htmlFor="2" aria-label="Adopt">
+                <Toggle
+                  checked={Boolean(second.checked)}
+                  id="2"
+                  onChange={second.handleChange}
+                  size="sm"
+                  value="2"
+                />
               </Label>
-              <Toggle
-                checked={Boolean(second.checked)}
-                id="2"
-                onChange={second.handleChange}
-                size="sm"
-                value="2"
-              />
             </Field>
           </Td>
         </Tr>
@@ -160,16 +158,15 @@ export function BasicTablePreview() {
           <Td>True</Td>
           <Td>
             <Field>
-              <Label htmlFor="3" hidden>
-                Adopt
+              <Label htmlFor="3" aria-label="adopt">
+                <Toggle
+                  checked={Boolean(third.checked)}
+                  id="3"
+                  onChange={third.handleChange}
+                  size="sm"
+                  value="3"
+                />
               </Label>
-              <Toggle
-                checked={Boolean(third.checked)}
-                id="3"
-                onChange={third.handleChange}
-                size="sm"
-                value="3"
-              />
             </Field>
           </Td>
         </Tr>
