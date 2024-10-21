@@ -76,7 +76,6 @@ export function Notification(props: PropsWithChildren<NotificationProps>) {
       )}
       onKeyDown={onKeyDown}
       ref={ref}
-      role="alert"
     >
       <span className={styles.icon}>
         <MatchNotificationIcon palette={palette} />
