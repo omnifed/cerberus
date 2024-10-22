@@ -665,7 +665,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.warning.50",
+        "$value": "cerberus.warning.60",
         "$description": "",
         "$extensions": {
           "com.figma": {

@@ -275,7 +275,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "acheron.warning.20",
+        "$value": "acheron.warning.100",
         "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "$extensions": {
           "com.figma": {
@@ -665,7 +665,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "acheron.warning.50",
+        "$value": "acheron.warning.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
