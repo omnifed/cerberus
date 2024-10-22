@@ -1,0 +1,229 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/Label.tsx'
+recipe: 'label.ts'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  OverviewRadioGroup,
+  DisabledRadioGroup,
+  RequiredRadioGroup,
+  CustomFieldset
+} from '@/app/react/fieldset/components/label-preview'
+import { NoteAdmonition } from '@/app/components/Admonition'
+
+```ts
+import { Fieldset, FieldsetLabel, Legend } from '@cerberus/react'
+```
+
+<NoteAdmonition description="Fieldset inputs must use a FieldsetLabel to avoid duplicated state management." />
+
+## Usage
+
+<CodePreview preview={<OverviewRadioGroup />}>
+```tsx title="radio-group.tsx" {7-15}
+import { Field, Fieldset, FieldsetLabel, Legend, Radio } from '@cerberus/react'
+import { hstack } from '@cerberus/styled-system/patterns'
+
+function OverviewRadioGroup() {
+  return (
+    <Field>
+      <Fieldset
+        className={hstack({
+          gap: '4',
+          rounded: 'xl',
+        })}
+        name="pet"
+        role="radiogroup"
+      >
+        <Legend>What pets do you have?</Legend>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+        </Radio>
+
+        <Radio id="cat" name="pet" value="cat">
+          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+        </Radio>
+
+        <Radio id="both" name="pet" value="both">
+          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+        </Radio>
+      </Fieldset>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## Disabled
+
+<CodePreview preview={<DisabledRadioGroup />}>
+```tsx title="disabled-radiogroup.tsx" {7-15}
+import { Field, Fieldset, FieldsetLabel, Legend, Radio } from '@cerberus/react'
+import { hstack } from '@cerberus/styled-system/patterns'
+
+function DisabledRadioGroup() {
+  return (
+    <Field disabled>
+      <Fieldset
+        className={hstack({
+          gap: '4',
+          rounded: 'xl',
+        })}
+        name="pet"
+        role="radiogroup"
+      >
+        <Legend>What pets do you have?</Legend>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+        </Radio>
+
+        <Radio id="cat" name="pet" value="cat">
+          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+        </Radio>
+
+        <Radio id="both" name="pet" value="both">
+          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+        </Radio>
+      </Fieldset>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## Required
+
+<CodePreview preview={<RequiredRadioGroup />}>
+```tsx title="required-radiogroup.tsx" {7-15}
+import { Field, Fieldset, FieldsetLabel, Legend, Radio } from '@cerberus/react'
+import { hstack } from '@cerberus/styled-system/patterns'
+
+function RequiredRadioGroup() {
+  return (
+    <Field required>
+      <Fieldset
+        className={hstack({
+          gap: '4',
+          rounded: 'xl',
+        })}
+        name="pet"
+        role="radiogroup"
+      >
+        <Legend>What pets do you have?</Legend>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+        </Radio>
+
+        <Radio id="cat" name="pet" value="cat">
+          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+        </Radio>
+
+        <Radio id="both" name="pet" value="both">
+          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+        </Radio>
+      </Fieldset>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## Customizing
+
+<CodePreview preview={<CustomFieldset />}>
+```tsx title="custom-radiogroup.tsx"
+import { Field, Fieldset, FieldsetLabel, Radio, Legend } from '@cerberus/react'
+import { vstack } from '@cerberus/styled-system/patterns'
+
+function CustomFieldset() {
+  return (
+    <Field>
+      <Fieldset
+        className={vstack({
+          alignItems: 'flex-start',
+          gap: '4',
+          rounded: 'xl',
+        })}
+        name="pet"
+        role="radiogroup"
+        style={{
+          border: '2px solid',
+          borderColor: 'yellow',
+          padding: '16px',
+        }}
+      >
+        <Legend
+          className={css({
+            color: 'yellow',
+            textStyle: 'h3',
+          })}
+        >
+          What is Wu-Tang?
+        </Legend>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <FieldsetLabel htmlFor="dog">Forever</FieldsetLabel>
+        </Radio>
+
+        <Radio id="cat" name="pet" value="cat">
+          <FieldsetLabel htmlFor="cat">Forever</FieldsetLabel>
+        </Radio>
+
+        <Radio id="both" name="pet" value="both">
+          <FieldsetLabel htmlFor="both">Forever</FieldsetLabel>
+        </Radio>
+      </Fieldset>
+    </Field>
+  )
+}
+
+```
+</CodePreview>
+
+## API
+
+<NoteAdmonition description="The Label component must be used within a Field provider." />
+
+### Field
+
+```ts showLineNumbers=false
+export interface FieldProps {
+  disabled?: boolean
+  invalid?: boolean
+  required?: boolean
+  readOnly?: boolean
+}
+
+define function Field(props: PropsWithChildren<FieldProps>): ReactNode
+```
+
+### Fieldset
+
+```ts showLineNumbers=false
+export type FieldsetProps = FieldsetHTMLAttributes<HTMLFieldSetElement>
+
+define function Fieldset(props: FieldsetProps): ReactNode
+```
+
+The `Fieldset` component accepts the same props as a native `fieldset` element.
+
+### FieldsetLabel
+
+```ts showLineNumbers=false
+export type FieldsetLabelProps = LabelProps & LabelVariantProps
+
+define function FieldsetLabel(props: FieldsetLabelProps): ReactNode
+```
+
+The `FieldsetLabel` component accepts the same props as the [Label](./label) component.
+
+### Legend
+
+```ts showLineNumbers=false
+export type LegendProps = HTMLAttributes<HTMLLegendElement> & LabelVariantProps
+
+define function Legend(props: LegendProps): ReactNode
+```
+
+The `Legend` component accepts the same props as a native `legend` element and [Label](./label).

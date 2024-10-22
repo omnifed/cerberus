@@ -57,7 +57,7 @@ export function Label(props: PropsWithChildren<LabelProps>) {
       <Show when={required}>
         <span
           className={css({
-            color: 'inherit',
+            color: 'page.text.100',
             fontSize: 'inherit',
           })}
         >
