@@ -1,6 +1,12 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Field, Label, Radio, Fieldset, Legend } from '@cerberus-design/react'
+import {
+  Field,
+  FieldsetLabel,
+  Radio,
+  Fieldset,
+  Legend,
+} from '@cerberus-design/react'
 import { setupStrictMode } from '@/utils'
 
 describe('Fieldset & Legend', () => {
@@ -13,9 +19,9 @@ describe('Fieldset & Legend', () => {
         <Fieldset name="cats">
           <Legend>Do you like cats?</Legend>
           <Radio id="yes" name="cats" value="yes" />
-          <Label htmlFor="yes">Yes</Label>
+          <FieldsetLabel htmlFor="yes">Yes</FieldsetLabel>
           <Radio id="no" name="cats" value="no" />
-          <Label htmlFor="no">No</Label>
+          <FieldsetLabel htmlFor="no">No</FieldsetLabel>
         </Fieldset>
       </Field>,
     )
@@ -30,9 +36,9 @@ describe('Fieldset & Legend', () => {
         <Fieldset name="cats">
           <Legend>Do you like cats?</Legend>
           <Radio id="yes" name="cats" value="yes" />
-          <Label htmlFor="yes">Yes</Label>
+          <FieldsetLabel htmlFor="yes">Yes</FieldsetLabel>
           <Radio id="no" name="cats" value="no" />
-          <Label htmlFor="no">No</Label>
+          <FieldsetLabel htmlFor="no">No</FieldsetLabel>
         </Fieldset>
       </Field>,
     )
@@ -42,5 +48,21 @@ describe('Fieldset & Legend', () => {
     expect(
       screen.getByText(/do you like cats/i).attributes.getNamedItem('disabled'),
     ).toBeTruthy()
+  })
+
+  test('should render a fieldset with a legend and a required radio', () => {
+    render(
+      <Field required>
+        <Fieldset name="cats">
+          <Legend>Do you like cats?</Legend>
+          <Radio id="yes" name="cats" value="yes" />
+          <FieldsetLabel htmlFor="yes">Yes</FieldsetLabel>
+          <Radio id="no" name="cats" value="no" />
+          <FieldsetLabel htmlFor="no">No</FieldsetLabel>
+        </Fieldset>
+      </Field>,
+    )
+    expect(screen.getByText(/do you like cats/i)).toBeTruthy()
+    expect(screen.getByText(/(required)/i)).toBeTruthy()
   })
 })

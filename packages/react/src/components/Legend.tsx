@@ -1,8 +1,9 @@
 'use client'
 
 import { css, cx } from '@cerberus/styled-system/css'
-import type { HTMLAttributes } from 'react'
+import { type HTMLAttributes } from 'react'
 import { useFieldContext } from '../context/field'
+import { Show } from './Show'
 
 /**
  * This module contains the Fieldset component.
@@ -43,6 +44,7 @@ export type LegendProps = HTMLAttributes<HTMLLegendElement>
  *    </form>
  *   )
  * }
+ * ```
  */
 export function Legend(props: LegendProps) {
   const { invalid, ...formState } = useFieldContext()
@@ -58,6 +60,18 @@ export function Legend(props: LegendProps) {
           textStyle: 'label-sm',
         }),
       )}
-    />
+    >
+      {props.children}
+      <Show when={formState.required}>
+        <span
+          className={css({
+            color: 'inherit',
+            fontSize: 'inherit',
+          })}
+        >
+          (required)
+        </span>
+      </Show>
+    </legend>
   )
 }

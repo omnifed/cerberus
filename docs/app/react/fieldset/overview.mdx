@@ -1,0 +1,27 @@
+---
+heading: 'Fieldset'
+description: 'Fieldset is used to group related form elements together.'
+a11y: 'forms'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  LabelBasicPreview
+} from '@/app/react/label/components/label-preview'
+
+<OverviewList rules={[
+  'Fieldsets should be used for grouping radio buttons and checkboxes',
+  'Legends can be used to describe the group',
+  'Legends should display a required indicator if the group is not optional',
+]} />
+
+## Example
+
+<CodePreview preview={<LabelBasicPreview />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |

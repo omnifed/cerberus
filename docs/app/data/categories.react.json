@@ -44,8 +44,15 @@
   "inputs": {
     "name": "Inputs",
     "description": "Components that allow users to input data.",
-    "items": ["Input", "Textarea", "Label", "Field Message", "File Uploader"],
-    "next": [],
+    "items": [
+      "Input",
+      "Textarea",
+      "Label",
+      "Fieldset",
+      "Field Message",
+      "File Uploader"
+    ],
+    "next": ["Fieldset"],
     "new": []
   }
 }
