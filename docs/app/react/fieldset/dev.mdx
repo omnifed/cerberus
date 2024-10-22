@@ -6,64 +6,124 @@ recipe: 'label.ts'
 
 import CodePreview from '@/app/components/CodePreview'
 import {
-  LabelBasicPreview,
-  LabelHiddenPreview,
-  LabelOptionalPreview,
-  LabelCustomPreview
-} from '@/app/react/label/components/label-preview'
+  OverviewRadioGroup,
+  DisabledRadioGroup,
+  RequiredRadioGroup,
+  CustomFieldset
+} from '@/app/react/fieldset/components/label-preview'
 import { NoteAdmonition } from '@/app/components/Admonition'
 
 ```ts
-import { Field, Label } from '@cerberus/react'
+import { Fieldset, FieldsetLabel, Legend } from '@cerberus/react'
 ```
+
+<NoteAdmonition description="Fieldset inputs must use a FieldsetLabel to avoid duplicated state management." />
 
 ## Usage
 
-<CodePreview preview={<LabelBasicPreview />}>
-```tsx title="first-name-input.tsx" {5,6}
-import { Field, Label } from '@cerberus/react'
+<CodePreview preview={<OverviewRadioGroup />}>
+```tsx title="radio-group.tsx" {7-15}
+import { Field, Fieldset, FieldsetLabel, Legend, Radio } from '@cerberus/react'
+import { hstack } from '@cerberus/styled-system/patterns'
 
-function LabelBasicPreview() {
-  return (
-    <Field required>
-      <Label htmlFor="first_name">First Name</Label>
-      <Input id="first_name" placeholder="Type your first name" type="text" />
-    </Field>
-  )
-}
-```
-</CodePreview>
-
-## Hidden
-
-<CodePreview preview={<LabelHiddenPreview />}>
-```tsx title="search-input.tsx" {6}
-import { Field, Label } from '@cerberus/react'
-
-function LabelHiddenPreview() {
-  return (
-    <Field required>
-      <Label htmlFor="global_search" hidden>
-        Search anything
-      </Label>
-      <Input id="global_search" placeholder="Search anything" type="text" />
-    </Field>
-  )
-}
-```
-</CodePreview>
-
-## Optional
-
-<CodePreview preview={<LabelOptionalPreview />}>
-```tsx title="search-input.tsx" {5}
-import { Field, Label } from '@cerberus/react'
-
-function LabelOptionalPreview() {
+function OverviewRadioGroup() {
   return (
     <Field>
-      <Label htmlFor="preferred">Preferred Name</Label>
-      <Input id="preferred" placeholder="i.e. Johnny" type="text" />
+      <Fieldset
+        className={hstack({
+          gap: '4',
+          rounded: 'xl',
+        })}
+        name="pet"
+        role="radiogroup"
+      >
+        <Legend>What pets do you have?</Legend>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+        </Radio>
+
+        <Radio id="cat" name="pet" value="cat">
+          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+        </Radio>
+
+        <Radio id="both" name="pet" value="both">
+          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+        </Radio>
+      </Fieldset>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## Disabled
+
+<CodePreview preview={<DisabledRadioGroup />}>
+```tsx title="disabled-radiogroup.tsx" {7-15}
+import { Field, Fieldset, FieldsetLabel, Legend, Radio } from '@cerberus/react'
+import { hstack } from '@cerberus/styled-system/patterns'
+
+function DisabledRadioGroup() {
+  return (
+    <Field disabled>
+      <Fieldset
+        className={hstack({
+          gap: '4',
+          rounded: 'xl',
+        })}
+        name="pet"
+        role="radiogroup"
+      >
+        <Legend>What pets do you have?</Legend>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+        </Radio>
+
+        <Radio id="cat" name="pet" value="cat">
+          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+        </Radio>
+
+        <Radio id="both" name="pet" value="both">
+          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+        </Radio>
+      </Fieldset>
+    </Field>
+  )
+}
+```
+</CodePreview>
+
+## Required
+
+<CodePreview preview={<RequiredRadioGroup />}>
+```tsx title="required-radiogroup.tsx" {7-15}
+import { Field, Fieldset, FieldsetLabel, Legend, Radio } from '@cerberus/react'
+import { hstack } from '@cerberus/styled-system/patterns'
+
+function RequiredRadioGroup() {
+  return (
+    <Field required>
+      <Fieldset
+        className={hstack({
+          gap: '4',
+          rounded: 'xl',
+        })}
+        name="pet"
+        role="radiogroup"
+      >
+        <Legend>What pets do you have?</Legend>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+        </Radio>
+
+        <Radio id="cat" name="pet" value="cat">
+          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+        </Radio>
+
+        <Radio id="both" name="pet" value="both">
+          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+        </Radio>
+      </Fieldset>
     </Field>
   )
 }
@@ -72,24 +132,48 @@ function LabelOptionalPreview() {
 
 ## Customizing
 
-<CodePreview preview={<LabelCustomPreview />}>
-```tsx title="search-input.tsx"
-import { Field, Label } from '@cerberus/react'
+<CodePreview preview={<CustomFieldset />}>
+```tsx title="custom-radiogroup.tsx"
+import { Field, Fieldset, FieldsetLabel, Radio, Legend } from '@cerberus/react'
+import { vstack } from '@cerberus/styled-system/patterns'
 
-function LabelCustomPreview() {
+function CustomFieldset() {
   return (
-    <Field required>
-      <Label
-        className={css({
-          fontSize: '2rem',
-          bgColor: 'black',
-          color: 'yellow',
+    <Field>
+      <Fieldset
+        className={vstack({
+          alignItems: 'flex-start',
+          gap: '4',
+          rounded: 'xl',
         })}
-        htmlFor="global_search"
+        name="pet"
+        role="radiogroup"
+        style={{
+          border: '2px solid',
+          borderColor: 'yellow',
+          padding: '16px',
+        }}
       >
-        Killa Bees
-      </Label>
-      <input id="global_search" type="text" />
+        <Legend
+          className={css({
+            color: 'yellow',
+            textStyle: 'h3',
+          })}
+        >
+          What is Wu-Tang?
+        </Legend>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <FieldsetLabel htmlFor="dog">Forever</FieldsetLabel>
+        </Radio>
+
+        <Radio id="cat" name="pet" value="cat">
+          <FieldsetLabel htmlFor="cat">Forever</FieldsetLabel>
+        </Radio>
+
+        <Radio id="both" name="pet" value="both">
+          <FieldsetLabel htmlFor="both">Forever</FieldsetLabel>
+        </Radio>
+      </Fieldset>
     </Field>
   )
 }
@@ -100,6 +184,8 @@ function LabelCustomPreview() {
 ## API
 
 <NoteAdmonition description="The Label component must be used within a Field provider." />
+
+### Field
 
 ```ts showLineNumbers=false
 export interface FieldProps {
@@ -112,22 +198,32 @@ export interface FieldProps {
 define function Field(props: PropsWithChildren<FieldProps>): ReactNode
 ```
 
-```ts showLineNumbers=false
-export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
-  htmlFor: string
-  hidden?: boolean
-  size?: 'sm' | 'md'
-}
+### Fieldset
 
-define function Label(props: LabelProps): ReactNode
+```ts showLineNumbers=false
+export type FieldsetProps = FieldsetHTMLAttributes<HTMLFieldSetElement>
+
+define function Fieldset(props: FieldsetProps): ReactNode
 ```
 
-### Props
+The `Fieldset` component accepts the same props as a native `fieldset` element.
 
-The `LabelProps` component accepts the following props:
+### FieldsetLabel
 
-| Name     | Default | Description                                                   |
-| -------- | ------- | ------------------------------------------------------------- |
-| htmlFor     | null   | The `name` attribute of the Input the Label is associated with. |
-| hidden   | false   | Whether the Label content should be visually hidden.                 |
-| size     | 'md'    | The size of the Label.         |
+```ts showLineNumbers=false
+export type FieldsetLabelProps = LabelProps & LabelVariantProps
+
+define function FieldsetLabel(props: FieldsetLabelProps): ReactNode
+```
+
+The `FieldsetLabel` component accepts the same props as the [Label](./label) component.
+
+### Legend
+
+```ts showLineNumbers=false
+export type LegendProps = HTMLAttributes<HTMLLegendElement> & LabelVariantProps
+
+define function Legend(props: LegendProps): ReactNode
+```
+
+The `Legend` component accepts the same props as a native `legend` element and [Label](./label).

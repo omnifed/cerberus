@@ -56,7 +56,7 @@ export function Fieldset(props: FieldsetProps) {
         props.className,
         css({
           border: 'none',
-          padding: 0,
+          pt: 2,
           margin: 0,
         }),
       )}

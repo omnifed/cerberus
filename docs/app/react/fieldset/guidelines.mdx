@@ -3,47 +3,47 @@
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
+import SquigglyDivider from '@/app/components/squiggly-divider'
 import {
   WhenToUseAdmonition,
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
 import {
-  LabelBasicPreview,
-  LabelHiddenPreview,
-  LabelOptionalPreview
-} from '@/app/react/label/components/label-preview'
+  OverviewRadioGroup,
+  DisabledRadioGroup,
+  RequiredRadioGroup
+} from '@/app/react/fieldset/components/label-preview'
 
 ## Usage
 
-<WhenToUseAdmonition description="When you use an input in the UI, regardless if it has a visible label or not." />
+<WhenToUseAdmonition description="When you are displaying a group of Radio inputs or Checkboxes in the UI." />
 
-<WhenNotToUseAdmonition description="Labels should always accompany any type of input." />
+<WhenNotToUseAdmonition description="You should not group inputs unless they are related to a single name context." />
 
+## Standard Field Groups
 
-## Standard Labels
+Standard groups are used to group related form elements together. These are mostly used for radio buttons and checkboxes.
 
-Standard labels are used for most input use cases.
+<CodePreview preview={<OverviewRadioGroup />} />
 
-<CodePreview preview={<LabelOptionalPreview />} />
+<SquigglyDivider />
 
-<WhenToUseAdmonition description="When you use any type of standard inputs within a form." />
+## Disabled Field Groups
 
-## Hidden Labels
+The Fieldset natively distributes the disabled state to all the inputs within it.
 
-Hidden labels are used when the label is not visible to the user, but still needs to be present for screen readers.
+<CodePreview preview={<DisabledRadioGroup />} />
 
-<CodePreview preview={<LabelHiddenPreview />} />
-
-<WhenToUseAdmonition description="When you need an input that doesn't use a visual label (i.e., global search input)" />
+<SquigglyDivider />
 
 ## Required Labels
 
-Required labels are used when the input is required.
+Required labels for fieldsets are displayed using the `required` prop on the Legend component.
 
-<CodePreview preview={<LabelBasicPreview />} />
+<CodePreview preview={<RequiredRadioGroup />} />
 
-<WhenToUseAdmonition description="When the input is required." />
+<SquigglyDivider />
 
 ## Placement
 
-Labels should be placed above the input field. For checkboxes and radio buttons, the label should be placed to the right of the input.
+Fieldset should wrap the group of inputs it is associated with. The legend can be placed above or below the group of inputs in the code - the browser will always render it at the top.

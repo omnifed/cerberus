@@ -6,9 +6,11 @@ a11y: 'forms'
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
+import SquigglyDivider from '@/app/components/squiggly-divider'
 import {
-  LabelBasicPreview
-} from '@/app/react/label/components/label-preview'
+  OverviewRadioGroup,
+  DisabledRadioGroup
+} from '@/app/react/fieldset/components/label-preview'
 
 <OverviewList rules={[
   'Fieldsets should be used for grouping radio buttons and checkboxes',
@@ -16,11 +18,17 @@ import {
   'Legends should display a required indicator if the group is not optional',
 ]} />
 
-## Example
+## Basic Example
 
-<CodePreview preview={<LabelBasicPreview />} />
+<CodePreview preview={<OverviewRadioGroup />} />
 
-## Resources
+<SquigglyDivider />
+
+## Disabled Fieldset
+
+<CodePreview preview={<DisabledRadioGroup />} />
+
+<SquigglyDivider />
 
 | Name     | Resource | Status                                               |
 | -------- | -------- | ---------------------------------------------------- |

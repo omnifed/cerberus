@@ -4,13 +4,18 @@ import { css, cx } from '@cerberus/styled-system/css'
 import { type HTMLAttributes } from 'react'
 import { useFieldContext } from '../context/field'
 import { Show } from './Show'
+import {
+  label,
+  type LabelVariantProps,
+} from '@cerberus-design/styled-system/recipes'
+import { hstack } from '@cerberus-design/styled-system/patterns'
 
 /**
  * This module contains the Fieldset component.
  * @module Fieldset
  */
 
-export type LegendProps = HTMLAttributes<HTMLLegendElement>
+export type LegendProps = HTMLAttributes<HTMLLegendElement> & LabelVariantProps
 
 /**
  * A component to provide a global label for a group of related elements in a form (for accessibility).
@@ -47,25 +52,30 @@ export type LegendProps = HTMLAttributes<HTMLLegendElement>
  * ```
  */
 export function Legend(props: LegendProps) {
+  const { size, ...nativeProps } = props
   const { invalid, ...formState } = useFieldContext()
 
   return (
     <legend
-      {...props}
+      {...nativeProps}
       {...formState}
       {...(invalid && { 'aria-invalid': true })}
       className={cx(
-        props.className,
-        css({
-          textStyle: 'label-sm',
+        nativeProps.className,
+        hstack({
+          justify: 'space-between',
+          w: 'full',
+        }),
+        label({
+          size,
         }),
       )}
     >
-      {props.children}
+      {nativeProps.children}
       <Show when={formState.required}>
         <span
           className={css({
-            color: 'inherit',
+            color: 'page.text.100',
             fontSize: 'inherit',
           })}
         >

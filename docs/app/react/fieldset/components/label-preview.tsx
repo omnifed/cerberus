@@ -1,61 +1,135 @@
-import { Field, Input, Label } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
+import {
+  Field,
+  Fieldset,
+  FieldsetLabel,
+  Legend,
+  Radio,
+} from '@cerberus-design/react'
+import { css } from '@cerberus-design/styled-system/css'
+import { hstack } from '@cerberus-design/styled-system/patterns'
+import { vstack } from '@cerberus/styled-system/patterns'
 
-const overrideStyles = css({
-  w: '1/2',
-})
-
-export function LabelBasicPreview() {
+export function OverviewRadioGroup() {
   return (
-    <div className={overrideStyles}>
-      <Field required>
-        <Label htmlFor="first_name">First Name</Label>
-        <Input id="first_name" placeholder="Type your first name" type="text" />
-      </Field>
-    </div>
+    <Field>
+      <Fieldset
+        className={hstack({
+          gap: '4',
+          rounded: 'xl',
+        })}
+        name="pet"
+        role="radiogroup"
+      >
+        <Legend>What pets do you have?</Legend>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+        </Radio>
+
+        <Radio id="cat" name="pet" value="cat">
+          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+        </Radio>
+
+        <Radio id="both" name="pet" value="both">
+          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+        </Radio>
+      </Fieldset>
+    </Field>
   )
 }
 
-export function LabelHiddenPreview() {
+export function DisabledRadioGroup() {
   return (
-    <div className={overrideStyles}>
-      <Field required>
-        <Label htmlFor="global_search" hidden>
-          Search anything
-        </Label>
-        <Input id="global_search" placeholder="Search anything" type="text" />
-      </Field>
-    </div>
+    <Field disabled>
+      <Fieldset
+        className={hstack({
+          gap: '4',
+          rounded: 'xl',
+        })}
+        name="pet"
+        role="radiogroup"
+      >
+        <Legend>What pets do you have?</Legend>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+        </Radio>
+
+        <Radio id="cat" name="pet" value="cat">
+          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+        </Radio>
+
+        <Radio id="both" name="pet" value="both">
+          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+        </Radio>
+      </Fieldset>
+    </Field>
   )
 }
 
-export function LabelOptionalPreview() {
+export function RequiredRadioGroup() {
   return (
-    <div className={overrideStyles}>
-      <Field>
-        <Label htmlFor="preferred">Preferred Name</Label>
-        <Input id="preferred" placeholder="i.e. Johnny" type="text" />
-      </Field>
-    </div>
+    <Field required>
+      <Fieldset
+        className={hstack({
+          gap: '4',
+          rounded: 'xl',
+        })}
+        name="pet"
+        role="radiogroup"
+      >
+        <Legend>What pets do you have?</Legend>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+        </Radio>
+
+        <Radio id="cat" name="pet" value="cat">
+          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+        </Radio>
+
+        <Radio id="both" name="pet" value="both">
+          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+        </Radio>
+      </Fieldset>
+    </Field>
   )
 }
 
-export function LabelCustomPreview() {
+export function CustomFieldset() {
   return (
-    <div className={overrideStyles}>
-      <Field required>
-        <Label
+    <Field>
+      <Fieldset
+        className={vstack({
+          alignItems: 'flex-start',
+          gap: '4',
+          rounded: 'xl',
+        })}
+        name="pet"
+        role="radiogroup"
+        style={{
+          border: '2px solid',
+          borderColor: 'yellow',
+          padding: '16px',
+        }}
+      >
+        <Legend
           className={css({
-            fontSize: '2rem',
-            bgColor: 'black',
             color: 'yellow',
+            textStyle: 'h3',
           })}
-          htmlFor="global_search"
         >
-          Killa Bees
-        </Label>
-        <Input id="global_search" type="text" />
-      </Field>
-    </div>
+          What is Wu-Tang?
+        </Legend>
+        <Radio id="dog" name="pet" value="dog" defaultChecked>
+          <FieldsetLabel htmlFor="dog">Forever</FieldsetLabel>
+        </Radio>
+
+        <Radio id="cat" name="pet" value="cat">
+          <FieldsetLabel htmlFor="cat">Forever</FieldsetLabel>
+        </Radio>
+
+        <Radio id="both" name="pet" value="both">
+          <FieldsetLabel htmlFor="both">Forever</FieldsetLabel>
+        </Radio>
+      </Fieldset>
+    </Field>
   )
 }
