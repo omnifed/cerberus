@@ -189,6 +189,7 @@ interface FileStatusElProps {
 
 function MatchFileStatusIcon(props: FileStatusElProps) {
   const {
+    waitingFileUploader: TodoIcon,
     fileUploader: FileUploaderIcon,
     invalidAlt: InvalidIcon,
     successNotification: DoneIcon,
@@ -196,6 +197,7 @@ function MatchFileStatusIcon(props: FileStatusElProps) {
 
   switch (props.status) {
     case processStatus.TODO:
+      return <TodoIcon size={props.size} />
     case processStatus.PROCESSING:
       return <FileUploaderIcon size={props.size} />
     case processStatus.DONE:
