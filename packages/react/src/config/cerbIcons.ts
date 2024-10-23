@@ -16,6 +16,7 @@ import {
 } from '@cerberus/icons'
 import type { ElementType } from 'react'
 import { CheckmarkIcon, IndeterminateIcon } from './icons/checkbox.icons'
+import { AnimatingUploadIcon } from '../components/AnimatingUploadIcon'
 
 export type IconType = CarbonIconType | ElementType
 
@@ -26,6 +27,7 @@ export interface DefinedIcons {
   confirmModal?: IconType
   delete?: IconType
   promptModal?: IconType
+  waitingFileUploader?: IconType
   fileUploader?: IconType
   indeterminate?: IconType
   infoNotification?: IconType
@@ -46,7 +48,8 @@ export const defaultIcons: DefinedIcons = {
   confirmModal: Information,
   delete: TrashCan,
   promptModal: Information,
-  fileUploader: CloudUpload,
+  waitingFileUploader: CloudUpload,
+  fileUploader: AnimatingUploadIcon,
   indeterminate: IndeterminateIcon,
   infoNotification: InformationFilled,
   successNotification: CheckmarkFilled,

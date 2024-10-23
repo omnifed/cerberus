@@ -26,7 +26,7 @@ export interface FileUploaderProps
  */
 export function FileUploader(props: FileUploaderProps) {
   const styles = fileUploader()
-  const Icon = $cerberusIcons.fileUploader
+  const { waitingFileUploader: Icon } = $cerberusIcons
 
   return (
     <div
