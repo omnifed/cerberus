@@ -138,13 +138,13 @@ describe('warning', () => {
 
   test('should have a acheron surface.200 property', () => {
     expect(warningTokens.surface['200'].value.base).toEqual(
-      formatSemanticToken`acheron.warning.50`,
+      formatSemanticToken`acheron.warning.60`,
     )
     expect(warningTokens.surface['200'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.warning.50`,
+      formatSemanticToken`acheron.warning.60`,
     )
     expect(warningTokens.surface['200'].value._lightMode).toEqual(
-      formatSemanticToken`acheron.warning.60`,
+      formatSemanticToken`acheron.warning.50`,
     )
   })
 
@@ -194,13 +194,13 @@ describe('warning', () => {
 
   test('should have a acheron text.inverse property', () => {
     expect(warningTokens.text.inverse.value.base).toEqual(
-      formatSemanticToken`acheron.warning.20`,
+      formatSemanticToken`acheron.warning.100`,
     )
     expect(warningTokens.text.inverse.value._darkMode).toEqual(
-      formatSemanticToken`acheron.warning.20`,
+      formatSemanticToken`acheron.warning.100`,
     )
     expect(warningTokens.text.inverse.value._lightMode).toEqual(
-      formatSemanticToken`acheron.warning.100`,
+      formatSemanticToken`acheron.warning.20`,
     )
   })
 

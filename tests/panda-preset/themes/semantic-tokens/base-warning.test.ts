@@ -136,10 +136,10 @@ describe('warning', () => {
 
   test('should have a cerberus surface.200 property', () => {
     expect(warningTokens.warning.surface['200'].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.50`,
+      formatSemanticToken`cerberus.warning.60`,
     )
     expect(warningTokens.warning.surface['200'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.50`,
+      formatSemanticToken`cerberus.warning.60`,
     )
     expect(warningTokens.warning.surface['200'].value._lightMode).toEqual(
       formatSemanticToken`cerberus.warning.60`,
