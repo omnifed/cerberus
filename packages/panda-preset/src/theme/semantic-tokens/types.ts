@@ -15,6 +15,7 @@ export type Sentiment =
   | 'success'
   | 'warning'
   | 'danger'
+  | 'dataViz'
 
 /**
  * How a color is presented (can be a CSS property or HTML element).

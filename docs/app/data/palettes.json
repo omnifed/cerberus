@@ -6,7 +6,8 @@
     "info",
     "success",
     "warning",
-    "danger"
+    "danger",
+    "dataViz"
   ],
   "results": {
     "page": {
@@ -50,6 +51,12 @@
       "label": "Danger",
       "slug": "danger",
       "description": "Used for error messages and negative feedback."
+    },
+    "dataViz": {
+      "id": "8",
+      "label": "Data Viz",
+      "slug": "data-viz",
+      "description": "Used for data visualization and charts."
     }
   }
 }
