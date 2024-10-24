@@ -2,6 +2,7 @@
 
 import { TypographyBlock } from './typography-block'
 import { css } from '@cerberus/styled-system/css'
+import { textStyles } from '@cerberus-design/panda-preset'
 import { useState, type ChangeEvent } from 'react'
 
 export default function TypographyList() {
@@ -43,12 +44,13 @@ export default function TypographyList() {
           />
         </label>
       </div>
-
-      <TypographyBlock group="display" liveText={temporaryText} />
-      <TypographyBlock group="h" liveText={temporaryText} />
-      <TypographyBlock group="body" liveText={temporaryText} />
-      <TypographyBlock group="mono" liveText={temporaryText} />
-      <TypographyBlock group="link" liveText={temporaryText} />
+      {Object.keys(textStyles).map((textStyle) => (
+        <TypographyBlock
+          key={textStyle}
+          group={textStyle}
+          liveText={temporaryText}
+        />
+      ))}
     </div>
   )
 }
