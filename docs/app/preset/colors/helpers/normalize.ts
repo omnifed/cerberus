@@ -6,6 +6,7 @@ import {
   secondaryActionTokens,
   successTokens,
   warningTokens,
+  dataVizTokens,
   type SemanticToken,
   type Sentiment,
   type SentimentConfig,
@@ -28,6 +29,8 @@ export function getTokenList(palette: Sentiment): SentimentConfig[Sentiment] {
       return warningTokens.warning
     case 'danger':
       return dangerTokens.danger
+    case 'dataViz':
+      return dataVizTokens.dataViz as SentimentConfig[Sentiment]
     default:
       throw new Error('Invalid color palette')
   }

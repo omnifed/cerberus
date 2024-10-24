@@ -13,7 +13,7 @@ import {
 
 describe('recipe helpers', () => {
   const slots = ['usage', 'size', 'kind']
-  const palettes: Sentiment[] = [
+  const palettes: Exclude<Sentiment, 'dataViz'>[] = [
     PAGE,
     ACTION,
     SECONDARY_ACTION,

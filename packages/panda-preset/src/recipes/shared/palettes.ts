@@ -5,6 +5,7 @@ export const INFO = 'info'
 export const SUCCESS = 'success'
 export const WARNING = 'warning'
 export const DANGER = 'danger'
+export const DATA_VIZ = 'dataViz'
 
 export const action = {
   colorPalette: ACTION,
@@ -32,6 +33,10 @@ export const warning = {
 
 export const danger = {
   colorPalette: DANGER,
+}
+
+export const dataViz = {
+  colorPalette: DATA_VIZ,
 }
 
 export const allPalettes = {

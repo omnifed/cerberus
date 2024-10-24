@@ -6,9 +6,7 @@ export default function TypographyPage() {
   return (
     <>
       <PageMainContent>
-        <main>
-          <Doc />
-        </main>
+        <Doc />
       </PageMainContent>
 
       <PageSections>

@@ -28,7 +28,7 @@
   {
     "label": "Colors",
     "route": "/preset/colors",
-    "tag": "",
+    "tag": "next",
     "type": "route"
   },
   {

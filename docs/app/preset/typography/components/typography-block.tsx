@@ -70,15 +70,23 @@ const textStyleCSS = css({
   '&[data-style="link"]': {
     textStyle: 'link',
   },
+  '&[data-style="label-sm"]': {
+    textStyle: 'label-sm',
+  },
+  '&[data-style="label-md"]': {
+    textStyle: 'label-md',
+  },
 })
 
 interface TypographyBlockProps {
-  group: 'display' | 'h' | 'body' | 'mono' | 'link'
+  group: keyof typeof textStyles
   liveText?: string
 }
 
 export function TypographyBlock(props: TypographyBlockProps) {
-  const textList = textStyleData.filter(({ key }) => key.includes(props.group))
+  const textList = textStyleData.filter(({ key }) =>
+    key.includes(props.group as string),
+  )
 
   return (
     <ul
