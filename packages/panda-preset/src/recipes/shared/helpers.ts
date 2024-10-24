@@ -17,7 +17,7 @@ export type RecipePalette<K extends Sentiment[]> = K[]
  */
 export function getSlotRecipePalettes<
   const S extends string,
-  const P extends Sentiment,
+  const P extends Exclude<Sentiment, 'dataViz'>,
 >(
   slots: S[],
   palettes: P[],

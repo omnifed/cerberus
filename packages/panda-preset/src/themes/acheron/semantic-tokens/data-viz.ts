@@ -1,10 +1,10 @@
+import type { SemanticToken } from '../../../theme/semantic-tokens'
+import { formatSemanticTokenValue } from '../../../tokens'
+
 /**
  * This module is a collection of data-viz tokens that are used to generate the theme.
  * @module dataVizTokens
  */
-
-import type { SemanticToken } from '../../../theme/semantic-tokens'
-import { formatSemanticTokenValue } from '../../../tokens'
 
 export type DataVisProminence =
   | '50'
