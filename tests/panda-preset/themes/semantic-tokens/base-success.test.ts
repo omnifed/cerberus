@@ -128,7 +128,7 @@ describe('success', () => {
       formatSemanticToken`cerberus.success.90`,
     )
     expect(successTokens.success.surface['100'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.success.40`,
+      formatSemanticToken`cerberus.success.30`,
     )
   })
 

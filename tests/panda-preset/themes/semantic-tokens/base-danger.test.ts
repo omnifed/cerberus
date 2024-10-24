@@ -122,10 +122,10 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus surface.100 property', () => {
     expect(dangerTokens.danger.surface['100'].value.base).toEqual(
-      formatSemanticToken`cerberus.danger.70`,
+      formatSemanticToken`cerberus.danger.90`,
     )
     expect(dangerTokens.danger.surface['100'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.70`,
+      formatSemanticToken`cerberus.danger.90`,
     )
     expect(dangerTokens.danger.surface['100'].value._lightMode).toEqual(
       formatSemanticToken`cerberus.danger.10`,

@@ -150,10 +150,10 @@ describe('warning', () => {
 
   test('should have a cerberus text.initial property', () => {
     expect(warningTokens.warning.text.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.warning.100`,
+      formatSemanticToken`cerberus.warning.10`,
     )
     expect(warningTokens.warning.text.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.100`,
+      formatSemanticToken`cerberus.warning.10`,
     )
     expect(warningTokens.warning.text.initial.value._lightMode).toEqual(
       formatSemanticToken`cerberus.warning.100`,
@@ -164,10 +164,10 @@ describe('warning', () => {
 
   test('should have a cerberus text.100 property', () => {
     expect(warningTokens.warning.text[100].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.30`,
+      formatSemanticToken`cerberus.warning.20`,
     )
     expect(warningTokens.warning.text[100].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.30`,
+      formatSemanticToken`cerberus.warning.20`,
     )
     expect(warningTokens.warning.text[100].value._lightMode).toEqual(
       formatSemanticToken`cerberus.warning.90`,
