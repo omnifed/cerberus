@@ -2,6 +2,7 @@ import { defineThemeContract } from '@pandacss/dev'
 import {
   contractActionTokens,
   contractDangerTokens,
+  contractDataVizTokens,
   contractInfoTokens,
   contractPageTokens,
   contractSecondaryActionTokens,
@@ -44,6 +45,7 @@ export const defineTheme: definedTheme = defineThemeContract<ThemeVariant>({
     ...contractSuccessTokens,
     ...contractWarningTokens,
     ...contractDangerTokens,
+    ...contractDataVizTokens,
   } as SemanticTokens,
 
   extend: {
