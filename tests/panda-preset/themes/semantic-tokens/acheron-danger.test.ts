@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'bun:test'
 import { acheronTheme } from '@cerberus-design/panda-preset'
 
-describe('Acheron dangerTokens', () => {
+describe('acheron dangerTokens', () => {
   const dangerTokens = acheronTheme.dangerTokens
 
   function formatSemanticToken(value: TemplateStringsArray) {
@@ -144,7 +144,7 @@ describe('Acheron dangerTokens', () => {
       formatSemanticToken`acheron.danger.70`,
     )
     expect(dangerTokens.danger.surface['200'].value._lightMode).toEqual(
-      formatSemanticToken`acheron.danger.50`,
+      formatSemanticToken`acheron.danger.60`,
     )
   })
 
@@ -152,13 +152,13 @@ describe('Acheron dangerTokens', () => {
 
   test('should have a acheron text.initial property', () => {
     expect(dangerTokens.danger.text.initial.value.base).toEqual(
-      formatSemanticToken`acheron.danger.10`,
+      formatSemanticToken`acheron.danger.60`,
     )
     expect(dangerTokens.danger.text.initial.value._darkMode).toEqual(
-      formatSemanticToken`acheron.danger.10`,
+      formatSemanticToken`acheron.danger.60`,
     )
     expect(dangerTokens.danger.text.initial.value._lightMode).toEqual(
-      formatSemanticToken`acheron.danger.100`,
+      formatSemanticToken`acheron.danger.70`,
     )
   })
 
@@ -180,13 +180,13 @@ describe('Acheron dangerTokens', () => {
 
   test('should have a acheron text.200 property', () => {
     expect(dangerTokens.danger.text['200'].value.base).toEqual(
-      formatSemanticToken`acheron.danger.50`,
+      formatSemanticToken`acheron.danger.20`,
     )
     expect(dangerTokens.danger.text['200'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.danger.50`,
+      formatSemanticToken`acheron.danger.20`,
     )
     expect(dangerTokens.danger.text['200'].value._lightMode).toEqual(
-      formatSemanticToken`acheron.danger.70`,
+      formatSemanticToken`acheron.danger.100`,
     )
   })
 

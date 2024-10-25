@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'bun:test'
 import { acheronTheme } from '@cerberus-design/panda-preset'
 
-describe('infoTokens', () => {
+describe('acheron infoTokens', () => {
   const infoTokens = acheronTheme.infoTokens
 
   function formatSemanticToken(value: TemplateStringsArray) {
@@ -152,13 +152,13 @@ describe('infoTokens', () => {
 
   test('should have a acheron text.initial property', () => {
     expect(infoTokens.info.text.initial.value.base).toEqual(
-      formatSemanticToken`acheron.info.10`,
+      formatSemanticToken`acheron.info.50`,
     )
     expect(infoTokens.info.text.initial.value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.10`,
+      formatSemanticToken`acheron.info.50`,
     )
     expect(infoTokens.info.text.initial.value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.100`,
+      formatSemanticToken`acheron.info.70`,
     )
   })
 
@@ -166,13 +166,13 @@ describe('infoTokens', () => {
 
   test('should have a acheron text.100 property', () => {
     expect(infoTokens.info.text['100'].value.base).toEqual(
-      formatSemanticToken`acheron.info.30`,
+      formatSemanticToken`acheron.info.40`,
     )
     expect(infoTokens.info.text['100'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.30`,
+      formatSemanticToken`acheron.info.40`,
     )
     expect(infoTokens.info.text['100'].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`acheron.info.80`,
     )
   })
 
@@ -180,13 +180,13 @@ describe('infoTokens', () => {
 
   test('should have a acheron text.200 property', () => {
     expect(infoTokens.info.text['200'].value.base).toEqual(
-      formatSemanticToken`acheron.info.60`,
+      formatSemanticToken`acheron.info.20`,
     )
     expect(infoTokens.info.text['200'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.60`,
+      formatSemanticToken`acheron.info.20`,
     )
     expect(infoTokens.info.text['200'].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.50`,
+      formatSemanticToken`acheron.info.100`,
     )
   })
 

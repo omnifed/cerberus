@@ -130,7 +130,7 @@ describe('success', () => {
       formatSemanticToken`acheron.success.90`,
     )
     expect(successTokens.surface['100'].value._lightMode).toEqual(
-      formatSemanticToken`acheron.success.40`,
+      formatSemanticToken`acheron.success.30`,
     )
   })
 
@@ -180,13 +180,13 @@ describe('success', () => {
 
   test('should have a acheron text.200 property', () => {
     expect(successTokens.text[200].value.base).toEqual(
-      formatSemanticToken`acheron.success.60`,
+      formatSemanticToken`acheron.success.10`,
     )
     expect(successTokens.text[200].value._darkMode).toEqual(
-      formatSemanticToken`acheron.success.60`,
+      formatSemanticToken`acheron.success.10`,
     )
     expect(successTokens.text[200].value._lightMode).toEqual(
-      formatSemanticToken`acheron.success.60`,
+      formatSemanticToken`acheron.success.100`,
     )
   })
 

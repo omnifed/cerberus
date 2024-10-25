@@ -10,10 +10,10 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus bg.initial property', () => {
     expect(dangerTokens.danger.bg.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.danger.80`,
+      formatSemanticToken`cerberus.danger.70`,
     )
     expect(dangerTokens.danger.bg.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.80`,
+      formatSemanticToken`cerberus.danger.70`,
     )
     expect(dangerTokens.danger.bg.initial.value._lightMode).toEqual(
       formatSemanticToken`cerberus.danger.60`,
@@ -142,7 +142,7 @@ describe('dangerTokens', () => {
       formatSemanticToken`cerberus.danger.70`,
     )
     expect(dangerTokens.danger.surface['200'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.50`,
+      formatSemanticToken`cerberus.danger.60`,
     )
   })
 
@@ -150,13 +150,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus text.initial property', () => {
     expect(dangerTokens.danger.text.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.danger.10`,
+      formatSemanticToken`cerberus.danger.60`,
     )
     expect(dangerTokens.danger.text.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.10`,
+      formatSemanticToken`cerberus.danger.60`,
     )
     expect(dangerTokens.danger.text.initial.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.100`,
+      formatSemanticToken`cerberus.danger.70`,
     )
   })
 
@@ -178,13 +178,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus text.200 property', () => {
     expect(dangerTokens.danger.text['200'].value.base).toEqual(
-      formatSemanticToken`cerberus.danger.50`,
+      formatSemanticToken`cerberus.danger.10`,
     )
     expect(dangerTokens.danger.text['200'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.50`,
+      formatSemanticToken`cerberus.danger.10`,
     )
     expect(dangerTokens.danger.text['200'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.70`,
+      formatSemanticToken`cerberus.danger.100`,
     )
   })
 
