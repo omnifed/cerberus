@@ -62,7 +62,7 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
                     lineHeight: 'initial',
                     pxi: '1',
                     rounded: 'sm',
-                    textStyle: 'body-xs',
+                    textStyle: 'label-sm',
                     textTransform: 'uppercase',
                     userSelect: 'none',
                   })}
@@ -82,7 +82,7 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
                   lineHeight: 'initial',
                   pxi: '1',
                   rounded: 'sm',
-                  textStyle: 'body-xs',
+                  textStyle: 'label-sm',
                   textTransform: 'uppercase',
                   userSelect: 'none',
                 })}
