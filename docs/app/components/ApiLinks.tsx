@@ -10,9 +10,10 @@ const apiLinkStyles = css({
   bgColor: 'action.bg.100.initial',
   display: 'inline-flex',
   gap: '2',
+  h: 8,
   pxi: '2',
   rounded: 'full',
-  textStyle: 'body-xs',
+  textStyle: 'label-sm',
   textDecoration: 'none',
   transition: 'all 200ms ease-in-out',
   _hover: {

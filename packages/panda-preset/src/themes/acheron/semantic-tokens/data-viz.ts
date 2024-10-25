@@ -116,34 +116,13 @@ export const dataVizTokens: DataVizTokens = {
     },
 
     qualitative: {
-      100: formatSemanticTokenValue(
-        'data-viz.qualitative-colors.100',
-        'acheron',
-      ),
-      200: formatSemanticTokenValue(
-        'data-viz.qualitative-colors.200',
-        'acheron',
-      ),
-      300: formatSemanticTokenValue(
-        'data-viz.qualitative-colors.300',
-        'acheron',
-      ),
-      400: formatSemanticTokenValue(
-        'data-viz.qualitative-colors.400',
-        'acheron',
-      ),
-      500: formatSemanticTokenValue(
-        'data-viz.qualitative-colors.500',
-        'acheron',
-      ),
-      600: formatSemanticTokenValue(
-        'data-viz.qualitative-colors.600',
-        'acheron',
-      ),
-      700: formatSemanticTokenValue(
-        'data-viz.qualitative-colors.700',
-        'acheron',
-      ),
+      100: formatSemanticTokenValue('data-viz.qualitative.100', 'acheron'),
+      200: formatSemanticTokenValue('data-viz.qualitative.200', 'acheron'),
+      300: formatSemanticTokenValue('data-viz.qualitative.300', 'acheron'),
+      400: formatSemanticTokenValue('data-viz.qualitative.400', 'acheron'),
+      500: formatSemanticTokenValue('data-viz.qualitative.500', 'acheron'),
+      600: formatSemanticTokenValue('data-viz.qualitative.600', 'acheron'),
+      700: formatSemanticTokenValue('data-viz.qualitative.700', 'acheron'),
     },
   },
 }

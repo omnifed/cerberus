@@ -239,7 +239,7 @@
     "warning": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.warning.30",
+        "$value": "cerberus.warning.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -263,7 +263,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.warning.100",
+        "$value": "cerberus.warning.10",
         "$description": "The default color of body warning text and icons within a warning colored container. ",
         "$extensions": {
           "com.figma": {
@@ -615,7 +615,7 @@
     "danger": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.danger.70",
+        "$value": "cerberus.danger.90",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -1694,7 +1694,7 @@
         }
       }
     },
-    "qualitative-colors": {
+    "qualitative": {
       "100": {
         "$type": "color",
         "$value": "cerberus.brand.50",

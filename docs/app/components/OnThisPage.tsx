@@ -69,7 +69,7 @@ export default function OnThisPage() {
         aria-label="Page sections"
         className={vstack({
           alignItems: 'flex-start',
-          gap: '1',
+          gap: 2,
         })}
       >
         {links.map((link) => (
@@ -82,7 +82,7 @@ export default function OnThisPage() {
               className={css({
                 display: 'block',
                 rounded: 'sm',
-                textStyle: 'body-xs',
+                textStyle: 'label-sm',
                 textWrap: 'pretty',
                 _hover: {
                   textDecorationColor: 'action.navigation.hover',

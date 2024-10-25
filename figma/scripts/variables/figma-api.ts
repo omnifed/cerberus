@@ -19,4 +19,17 @@ export default class FigmaApi {
     )
     return await resp.json()
   }
+
+  async getTextStyles(nodeIds: string) {
+    const resp = await fetch(
+      `${this.baseUrl}/v1/files/${this.file}/nodes?ids=${nodeIds}`,
+      {
+        headers: {
+          Accept: '*/*',
+          'X-Figma-Token': this.token,
+        },
+      },
+    )
+    return await resp.json()
+  }
 }

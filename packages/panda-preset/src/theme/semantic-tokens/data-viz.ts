@@ -116,13 +116,13 @@ export const dataVizTokens: DataVizTokens = {
     },
 
     qualitative: {
-      100: formatSemanticTokenValue('data-viz.qualitative-colors.100'),
-      200: formatSemanticTokenValue('data-viz.qualitative-colors.200'),
-      300: formatSemanticTokenValue('data-viz.qualitative-colors.300'),
-      400: formatSemanticTokenValue('data-viz.qualitative-colors.400'),
-      500: formatSemanticTokenValue('data-viz.qualitative-colors.500'),
-      600: formatSemanticTokenValue('data-viz.qualitative-colors.600'),
-      700: formatSemanticTokenValue('data-viz.qualitative-colors.700'),
+      100: formatSemanticTokenValue('data-viz.qualitative.100'),
+      200: formatSemanticTokenValue('data-viz.qualitative.200'),
+      300: formatSemanticTokenValue('data-viz.qualitative.300'),
+      400: formatSemanticTokenValue('data-viz.qualitative.400'),
+      500: formatSemanticTokenValue('data-viz.qualitative.500'),
+      600: formatSemanticTokenValue('data-viz.qualitative.600'),
+      700: formatSemanticTokenValue('data-viz.qualitative.700'),
     },
   },
 }
