@@ -1,7 +1,7 @@
 {
   "none": {
     "$type": "number",
-    "$value": "spacing.0",
+    "$value": 0,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -13,7 +13,7 @@
   },
   "xs": {
     "$type": "number",
-    "$value": "spacing.025",
+    "$value": 4,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -32,7 +32,7 @@
   },
   "sm": {
     "$type": "number",
-    "$value": "spacing.050",
+    "$value": 8,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -51,7 +51,7 @@
   },
   "md": {
     "$type": "number",
-    "$value": "spacing.100",
+    "$value": 16,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -69,7 +69,7 @@
   },
   "lg": {
     "$type": "number",
-    "$value": "spacing.150",
+    "$value": 24,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -87,7 +87,7 @@
   },
   "xl": {
     "$type": "number",
-    "$value": "spacing.200",
+    "$value": 32,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -105,7 +105,25 @@
   },
   "2xl": {
     "$type": "number",
-    "$value": "spacing.250",
+    "$value": 40,
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": [
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
+        ],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "3xl": {
+    "$type": "number",
+    "$value": 64,
     "$description": "",
     "$extensions": {
       "com.figma": {
@@ -123,7 +141,7 @@
   },
   "full": {
     "$type": "number",
-    "$value": "spacing.rounded",
+    "$value": 500,
     "$description": "",
     "$extensions": {
       "com.figma": {

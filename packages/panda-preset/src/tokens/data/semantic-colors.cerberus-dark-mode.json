@@ -1694,7 +1694,7 @@
         }
       }
     },
-    "qualitative-colors": {
+    "qualitative": {
       "100": {
         "$type": "color",
         "$value": "cerberus.brand.50",
