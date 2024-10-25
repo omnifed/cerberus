@@ -63,4 +63,12 @@ function createTextStyles(): TextStyles {
   }, {} as TextStyles)
 }
 
-export const textStyles: TextStyles = defineTextStyles(createTextStyles())
+export const textStyles: TextStyles = defineTextStyles({
+  ...createTextStyles(),
+  link: {
+    description: 'Used for inline text links.',
+    value: {
+      textDecoration: 'underline',
+    },
+  },
+})
