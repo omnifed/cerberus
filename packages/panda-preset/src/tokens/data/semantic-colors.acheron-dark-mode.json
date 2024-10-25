@@ -189,7 +189,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "acheron.danger.50",
+        "$value": "acheron.danger.20",
         "$description": "High emphasis text or icon to indicate a danger state, like an error within an input field, etc. ",
         "$extensions": {
           "com.figma": {
@@ -201,7 +201,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "acheron.danger.10",
+        "$value": "acheron.danger.60",
         "$description": "The default color of body danger text within a danger colored container. ",
         "$extensions": {
           "com.figma": {
@@ -251,7 +251,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "acheron.warning.60",
+        "$value": "acheron.warning.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -263,7 +263,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "acheron.warning.100",
+        "$value": "acheron.warning.40",
         "$description": "The default color of body warning text and icons within a warning colored container. ",
         "$extensions": {
           "com.figma": {
@@ -313,7 +313,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "acheron.success.60",
+        "$value": "acheron.success.10",
         "$description": "Highest emphasis success color",
         "$extensions": {
           "com.figma": {
@@ -363,7 +363,7 @@
     "info": {
       "100": {
         "$type": "color",
-        "$value": "acheron.info.30",
+        "$value": "acheron.info.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -375,7 +375,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "acheron.info.60",
+        "$value": "acheron.info.20",
         "$description": "High emphasis text or icon to indicate an info state or highlight information",
         "$extensions": {
           "com.figma": {
@@ -387,7 +387,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "acheron.info.10",
+        "$value": "acheron.info.50",
         "$description": "The default styling for static info text and icons within an info palette container",
         "$extensions": {
           "com.figma": {
@@ -1462,15 +1462,29 @@
     }
   },
   "data-viz": {
-    "start": {
-      "$type": "color",
-      "$value": "#ffffff",
-      "$description": "",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["ALL_SCOPES"],
-          "codeSyntax": {}
+    "progress": {
+      "start": {
+        "$type": "color",
+        "$value": "acheron.brand.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "acheron.brand.80",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
         }
       }
     },
@@ -1545,18 +1559,6 @@
             "scopes": ["FRAME_FILL", "SHAPE_FILL"],
             "codeSyntax": {}
           }
-        }
-      }
-    },
-    "end": {
-      "$type": "color",
-      "$value": "acheron.brand.80",
-      "$description": "",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["ALL_SCOPES"],
-          "codeSyntax": {}
         }
       }
     },
