@@ -3,6 +3,7 @@ import semanticColorsDark from './data/semantic-colors.cerberus-dark-mode.json' 
 import semanticColorsLight from './data/semantic-colors.cerberus-light-mode.json' with { type: 'json' }
 import acheronDarkMode from './data/semantic-colors.acheron-dark-mode.json' with { type: 'json' }
 import acheronLightMode from './data/semantic-colors.acheron-light-mode.json' with { type: 'json' }
+import textStyles from './data/text-styles.json' with { type: 'json' }
 import type { RawThemes, SemanticToken, Token } from '../theme'
 
 /**
@@ -13,6 +14,7 @@ import type { RawThemes, SemanticToken, Token } from '../theme'
 export interface RawTokens {
   primitives: {
     colors: typeof primitiveColors
+    textStyles: typeof textStyles
   }
   semanticColors: {
     dark: typeof semanticColorsDark
@@ -23,6 +25,7 @@ export interface RawTokens {
 export const rawTokens: RawTokens = {
   primitives: {
     colors: primitiveColors,
+    textStyles,
   },
   semanticColors: {
     dark: semanticColorsDark,
@@ -294,4 +297,97 @@ function getNestedProperty(obj: TokenObj, path: string): string {
  */
 export function getSemanticToken(path: string): string {
   return `{colors.${path}}`
+}
+
+// text styles
+
+export interface NormalizedTextStyle {
+  items: string[]
+  results: {
+    [key: string]: CerberusTextStyle
+  }
+}
+
+export interface CerberusTextStyle {
+  /**
+   * The node-id from Figma: `6750-8547`
+   */
+  node_id: string
+  /**
+   * The readable name for the text style: `display-lg`
+   */
+  name: string
+  /**
+   * The description for the text style: `The h1 - Used for large marketing headlines`
+   */
+  description: string
+  /**
+   * The styles for the text style: `{ fontSize: 48, lineHeight: 56 }`
+   */
+  styles: {
+    fontFamily: string
+    fontPostScriptName: string
+    fontWeight: number
+    textAutoResize: 'WIDTH_AND_HEIGHT'
+    fontSize: number
+    textAlignHorizontal: 'LEFT'
+    textAlignVertical: 'TOP'
+    letterSpacing: number
+    lineHeightPx: number
+    lineHeightPercent: number
+    lineHeightPercentFontSize: number
+    lineHeightUnit: 'FONT_SIZE_%'
+  }
+}
+
+/**
+ * Creates a map of the readable names for each text style from the raw node-id
+ * from Figma.
+ *
+ * - 6750-8547: display-lg
+ * - 6750-8548: display-md
+ * - 6750-8549: display-sm
+ * - 6750-5204: h1
+ * - 6750-5210: h2
+ * - 6750-5212: h3
+ * - 6750-5214: h4
+ * - 6750-5216: h5
+ * - 6750-5218: h6
+ * - 6750-5220: body-lg
+ * - 6750-5229: body-md
+ * - 6750-5231: body-sm
+ * - 6750-5233: label-sm
+ * - 6750-8545: label-md
+ * - 6750-5235: button
+ * - 11875-39189: mono-xl
+ * - 11875-39776: mono-lg
+ * - 11875-39778: mono-md
+ * - 11875-39780: mono-sm
+ * - 11875-39782: mono-xs
+ */
+export function formatTextStyles(): NormalizedTextStyle {
+  const rawTextStyles = textStyles as RawTokens['primitives']['textStyles']
+
+  return Object.entries(rawTextStyles).reduce(
+    (acc, [node_id, data]) => {
+      const key = node_id as keyof typeof textStyles
+      const styleNode = data.document.styles?.text as keyof typeof data.styles
+
+      if (!styleNode) return acc
+
+      acc.items.push(key)
+      acc.results[key] = {
+        node_id: key,
+        name: (data.styles[styleNode] as { name: string })?.name,
+        description: (data.styles[styleNode] as { description: string })
+          ?.description,
+        styles: data.document.style as CerberusTextStyle['styles'],
+      }
+      return acc
+    },
+    {
+      items: [],
+      results: {},
+    } as NormalizedTextStyle,
+  )
 }

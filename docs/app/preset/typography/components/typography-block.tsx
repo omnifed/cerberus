@@ -9,7 +9,7 @@ const textStyleData = Object.entries(textStyles).map(([key, value]) => ({
 }))
 
 const textStyleCSS = css({
-  pb: 'initial !important',
+  pb: 'initial',
   '&[data-style="display-sm"]': {
     textStyle: 'display-sm',
   },
@@ -19,22 +19,22 @@ const textStyleCSS = css({
   '&[data-style="display-lg"]': {
     textStyle: 'display-lg',
   },
-  '&[data-style="h1"]': {
+  '&[data-style="heading-2xl"]': {
     textStyle: 'h1',
   },
-  '&[data-style="h2"]': {
+  '&[data-style="heading-xl"]': {
     textStyle: 'h2',
   },
-  '&[data-style="h3"]': {
+  '&[data-style="heading-lg"]': {
     textStyle: 'h3',
   },
-  '&[data-style="h4"]': {
+  '&[data-style="heading-md"]': {
     textStyle: 'h4',
   },
-  '&[data-style="h5"]': {
+  '&[data-style="heading-sm"]': {
     textStyle: 'h5',
   },
-  '&[data-style="h6"]': {
+  '&[data-style="heading-xs"]': {
     textStyle: 'h6',
   },
   '&[data-style="body-xs"]': {
@@ -67,8 +67,8 @@ const textStyleCSS = css({
   '&[data-style="mono-lg"]': {
     textStyle: 'mono-lg',
   },
-  '&[data-style="link"]': {
-    textStyle: 'link',
+  '&[data-style="mono-xl"]': {
+    textStyle: 'mono-xl',
   },
   '&[data-style="label-sm"]': {
     textStyle: 'label-sm',
@@ -76,10 +76,16 @@ const textStyleCSS = css({
   '&[data-style="label-md"]': {
     textStyle: 'label-md',
   },
+  '&[data-style="link"]': {
+    textStyle: 'link',
+  },
+  '&[data-style="button"]': {
+    textStyle: 'button',
+  },
 })
 
 interface TypographyBlockProps {
-  group: keyof typeof textStyles
+  group: string
   liveText?: string
 }
 
@@ -94,9 +100,6 @@ export function TypographyBlock(props: TypographyBlockProps) {
       className={vstack({
         listStyle: 'none',
         w: 'full',
-        '&[data-group="display"]': {
-          flexDirection: 'column-reverse',
-        },
       })}
     >
       {textList.map(({ key, value }) => (
@@ -112,8 +115,8 @@ export function TypographyBlock(props: TypographyBlockProps) {
           <p
             className={css({
               color: 'page.text.100',
-              pb: '4 !important',
-              textStyle: 'body-sm !important',
+              pb: '4',
+              textStyle: 'body-sm',
             })}
           >
             {key}

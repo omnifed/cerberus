@@ -1,12 +1,23 @@
 'use client'
 
-import { TypographyBlock } from './typography-block'
 import { css } from '@cerberus/styled-system/css'
+import { useMemo, useState, type ChangeEvent } from 'react'
+import { TypographyBlock } from './typography-block'
 import { textStyles } from '@cerberus-design/panda-preset'
-import { useState, type ChangeEvent } from 'react'
 
 export default function TypographyList() {
   const [temporaryText, setTemporaryText] = useState<string>('')
+  const textStylesWithoutHTags = useMemo(() => {
+    return Object.keys(textStyles).reduce(
+      (acc: Record<string, unknown>, key) => {
+        if (!/^(h[1-6])$/.test(key)) {
+          acc[key] = textStyles[key]
+        }
+        return acc
+      },
+      {},
+    )
+  }, [])
 
   function handleUpdateText(e: ChangeEvent<HTMLInputElement>) {
     setTemporaryText(e.currentTarget.value)
@@ -44,10 +55,11 @@ export default function TypographyList() {
           />
         </label>
       </div>
-      {Object.keys(textStyles).map((textStyle) => (
+
+      {Object.keys(textStylesWithoutHTags).map((textStyleName) => (
         <TypographyBlock
-          key={textStyle}
-          group={textStyle}
+          key={textStyleName}
+          group={textStyleName}
           liveText={temporaryText}
         />
       ))}

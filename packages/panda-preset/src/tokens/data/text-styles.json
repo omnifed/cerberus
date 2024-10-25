@@ -101,7 +101,7 @@
     "styles": {
       "209:101": {
         "key": "29018ba94707b8634395cee2eb27fab8bc1eb8d3",
-        "name": "display headings/lg",
+        "name": "display/lg",
         "styleType": "TEXT",
         "remote": false,
         "description": "used for large headlines to bring the most emphasis on a page - less than one sentence"
@@ -210,7 +210,7 @@
     "styles": {
       "6750:9518": {
         "key": "ce94a076b4997cd93c0147853d281795a3d46adb",
-        "name": "display headings/md",
+        "name": "display/md",
         "styleType": "TEXT",
         "remote": false,
         "description": "emphasized headlines to draw attention to, less than one sentence"
@@ -319,7 +319,7 @@
     "styles": {
       "6750:9519": {
         "key": "10a99e540bb2f1f69ef19950f465ef577483e523",
-        "name": "display headings/sm",
+        "name": "display/sm",
         "styleType": "TEXT",
         "remote": false,
         "description": "bold text used in things like marketing cards, data viz etc"
@@ -428,7 +428,7 @@
     "styles": {
       "6910:9168": {
         "key": "8f5104f11737892db9c7adbd2a2105b16eb92113",
-        "name": "headings/xxl",
+        "name": "heading/2xl",
         "styleType": "TEXT",
         "remote": false,
         "description": "large on page header such as age tiles etc. one sentence or less "
@@ -537,7 +537,7 @@
     "styles": {
       "207:111": {
         "key": "bbace9ae82118fe29b04c76e33320f68b609c8a6",
-        "name": "headings/xl",
+        "name": "heading/xl",
         "styleType": "TEXT",
         "remote": false,
         "description": "use for things like section headers on a page etc"
@@ -646,7 +646,7 @@
     "styles": {
       "207:109": {
         "key": "711f643002a6daa9978a57d6b4058909fcc65384",
-        "name": "headings/lg",
+        "name": "heading/lg",
         "styleType": "TEXT",
         "remote": false,
         "description": "use for subsections of pages, up to one sentence"
@@ -755,7 +755,7 @@
     "styles": {
       "208:98": {
         "key": "39ce9d01ccdb992ec51fb138a1203532f03ce6e4",
-        "name": "headings/md",
+        "name": "heading/md",
         "styleType": "TEXT",
         "remote": false,
         "description": "emphasized subheads, cards etc"
@@ -864,7 +864,7 @@
     "styles": {
       "1849:90784": {
         "key": "3ac17df08b0440df798904dc4d977c6150f4ae28",
-        "name": "headings/sm",
+        "name": "heading/sm",
         "styleType": "TEXT",
         "remote": false,
         "description": "headings for body text or things like card titles etc"
@@ -973,7 +973,7 @@
     "styles": {
       "223:336": {
         "key": "9972afed939456cb18ad5cc4c97ad604e337bb18",
-        "name": "headings/xs",
+        "name": "heading/xs",
         "styleType": "TEXT",
         "remote": false,
         "description": "Use mostly as a subhead or body size text that is meant to be emphasized"
@@ -1082,7 +1082,7 @@
     "styles": {
       "6715:34524": {
         "key": "507291ff9c5a1669e6f1d209c377b32ab65fa7d2",
-        "name": "Body/lg",
+        "name": "body/lg",
         "styleType": "TEXT",
         "remote": false,
         "description": "large body blocks - 1 paragraph or less"
@@ -1191,7 +1191,7 @@
     "styles": {
       "207:114": {
         "key": "86f201fac7331f2414b41017ab6eb0af4a98dbe7",
-        "name": "Body/md",
+        "name": "body/md",
         "styleType": "TEXT",
         "remote": false,
         "description": "default body text size"
@@ -1300,7 +1300,7 @@
     "styles": {
       "207:116": {
         "key": "99ea7b18cff5e9187eb0e603e64be6d23e8e76fd",
-        "name": "Body/sm",
+        "name": "body/sm",
         "styleType": "TEXT",
         "remote": false,
         "description": "body text used in compact things like cards and other areas where information density is required"
@@ -1641,6 +1641,12 @@
             "id": "VariableID:4328:23833"
           }
         ],
+        "fontFamily": [
+          {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:11875:39155"
+          }
+        ],
         "fontSize": [
           {
             "type": "VARIABLE_ALIAS",
@@ -1677,9 +1683,9 @@
         "height": 42
       },
       "absoluteRenderBounds": {
-        "x": -2311.98388671875,
+        "x": -2312.194091796875,
         "y": -615.5,
-        "width": 158.913330078125,
+        "width": 159.207763671875,
         "height": 31.96197509765625
       },
       "constraints": {
@@ -1689,8 +1695,8 @@
       "characters": "mono-xl",
       "style": {
         "fontFamily": "Recursive",
-        "fontPostScriptName": "Recursive-MonoLinear",
-        "fontWeight": 400,
+        "fontPostScriptName": "Recursive-MonoLinearMedium",
+        "fontWeight": 500,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 42,
         "textAlignHorizontal": "LEFT",
@@ -1704,6 +1710,9 @@
       "layoutVersion": 4,
       "characterStyleOverrides": [],
       "styleOverrideTable": {},
+      "styles": {
+        "text": "11875:39783"
+      },
       "lineTypes": ["NONE"],
       "lineIndentations": [0],
       "effects": [],
@@ -1712,7 +1721,15 @@
     "components": {},
     "componentSets": {},
     "schemaVersion": 0,
-    "styles": {}
+    "styles": {
+      "11875:39783": {
+        "key": "39fe8adadd5a9e1580e69d1e7a13fdf678ac0ca8",
+        "name": "mono/xl",
+        "styleType": "TEXT",
+        "remote": false,
+        "description": "Reserved for numbers and data visualization"
+      }
+    }
   },
   "11875:39776": {
     "document": {
@@ -1725,6 +1742,12 @@
           {
             "type": "VARIABLE_ALIAS",
             "id": "VariableID:4328:23833"
+          }
+        ],
+        "fontSize": [
+          {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:13509:623"
           }
         ]
       },
@@ -1798,7 +1821,7 @@
     "styles": {
       "11875:39784": {
         "key": "3edc6bd198b6d595fb23c19e59bace1160f5f0f5",
-        "name": "Monospace/lg",
+        "name": "mono/lg",
         "styleType": "TEXT",
         "remote": false,
         "description": "Reserved for numbers and data visualization"
@@ -1816,6 +1839,12 @@
           {
             "type": "VARIABLE_ALIAS",
             "id": "VariableID:4328:23833"
+          }
+        ],
+        "fontSize": [
+          {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:6959:25446"
           }
         ]
       },
@@ -1889,7 +1918,7 @@
     "styles": {
       "11875:39785": {
         "key": "491c9171bbe502e1dbffeb398dfb529ffe18ebdb",
-        "name": "Monospace/md",
+        "name": "mono/md",
         "styleType": "TEXT",
         "remote": false,
         "description": "Reserved for numbers and data visualization"
@@ -1907,6 +1936,12 @@
           {
             "type": "VARIABLE_ALIAS",
             "id": "VariableID:4328:23833"
+          }
+        ],
+        "fontSize": [
+          {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:6959:25445"
           }
         ]
       },
@@ -1984,7 +2019,7 @@
     "styles": {
       "11875:39786": {
         "key": "25932f32b35b89f72881f4bc9b2eb57f47ef431d",
-        "name": "Monospace/sm",
+        "name": "mono/sm",
         "styleType": "TEXT",
         "remote": false,
         "description": "Reserved for numbers and data visualization"
@@ -2008,6 +2043,12 @@
           {
             "type": "VARIABLE_ALIAS",
             "id": "VariableID:11875:39155"
+          }
+        ],
+        "fontSize": [
+          {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:6959:25443"
           }
         ]
       },
@@ -2040,10 +2081,10 @@
         "height": 16
       },
       "absoluteRenderBounds": {
-        "x": -2312.912109375,
-        "y": -368.7359924316406,
-        "width": 60.202880859375,
-        "height": 8.9119873046875
+        "x": -2313.280029296875,
+        "y": -368.7040100097656,
+        "width": 60.362548828125,
+        "height": 8.8800048828125
       },
       "constraints": {
         "vertical": "TOP",
@@ -2060,7 +2101,7 @@
         "textAlignVertical": "TOP",
         "letterSpacing": -0.8,
         "lineHeightPx": 16,
-        "lineHeightPercent": 85.33333587646484,
+        "lineHeightPercent": 83.33332824707031,
         "lineHeightPercentFontSize": 100,
         "lineHeightUnit": "FONT_SIZE_%"
       },
@@ -2081,7 +2122,7 @@
     "styles": {
       "11875:39789": {
         "key": "bc758bb7e4924945666a010f51228dfe4a9de7eb",
-        "name": "Monospace/xs",
+        "name": "mono/xs",
         "styleType": "TEXT",
         "remote": false,
         "description": "Reserved for numbers and data visualization"
