@@ -1,8 +1,20 @@
 import { focusStates, formStates } from './states'
 import { actionPalettes, statePalettes } from './palettes'
+import type {
+  Pretty,
+  RecipeCompoundSelection,
+  RecipeCompoundVariant,
+  RecipeVariantRecord,
+} from '@pandacss/types'
+
+/**
+ * This module contains shared button styles.
+ * @module buttonBase
+ */
 
 const bgInitial = 'colorPalette.bg.initial'
 const textInitial = 'colorPalette.text.initial'
+const text200 = 'colorPalette.text.200'
 
 export const buttonBase = {
   alignItems: 'center',
@@ -28,7 +40,7 @@ export const sharpRadii = {
 }
 
 export const nonTextStates = {
-  color: 'colorPalette.text.200',
+  color: text200,
   _hover: {
     bgColor: 'colorPalette.ghost.hover',
     _disabled: {
@@ -43,7 +55,7 @@ export const nonTextStates = {
 export const textUsage = {
   bgColor: 'transparent',
   border: 'none',
-  color: 'colorPalette.text.200',
+  color: text200,
   transitionProperty: 'background-color, color',
   transitionDuration: 'fast',
   transitionTimingFunction: 'ease-in-out',
@@ -87,3 +99,18 @@ export const buttonPalettes = {
   ...actionPalettes,
   ...statePalettes,
 }
+
+export const buttonCompoundVariants: Pretty<
+  RecipeCompoundVariant<RecipeCompoundSelection<RecipeVariantRecord>>
+>[] = [
+  {
+    palette: 'danger',
+    usage: 'filled',
+    css: {
+      color: 'colorPalette.text.200',
+      _hover: {
+        color: 'colorPalette.text.inverse',
+      },
+    },
+  },
+]

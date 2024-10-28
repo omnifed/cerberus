@@ -5,6 +5,7 @@ import {
 } from '@pandacss/dev'
 import {
   buttonBase,
+  buttonCompoundVariants,
   buttonPalettes,
   filledUsage,
   outlinedUsage,
@@ -60,17 +61,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     },
   },
 
-  compoundVariants: [
-    {
-      palette: 'danger',
-      usage: 'filled',
-      css: {
-        _hover: {
-          color: 'colorPalette.text.inverse',
-        },
-      },
-    },
-  ],
+  compoundVariants: buttonCompoundVariants,
 
   defaultVariants: {
     palette: 'action',
