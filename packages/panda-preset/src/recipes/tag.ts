@@ -4,15 +4,15 @@ import {
   type RecipeVariantRecord,
 } from '@pandacss/dev'
 import { filledUsage, tagBase, tagPalettes } from './shared/tag.base'
+import { createGradientVariants } from './shared/helpers'
+import { gradientValues } from '../utilities'
+import type {
+  Pretty,
+  RecipeCompoundSelection,
+  RecipeCompoundVariant,
+} from '@pandacss/types'
 
 const PAGE_TEXT_INITIAL = 'page.text.initial'
-
-const outlineGradientCss = {
-  borderColor: 'transparent',
-  backgroundOrigin: 'border-box',
-  backgroundClip: 'padding-box, border-box',
-  color: PAGE_TEXT_INITIAL,
-}
 
 /**
  * This module contains the tag recipe.
@@ -31,24 +31,19 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
 
   variants: {
     palette: tagPalettes,
-    gradient: {
-      'amphiaraus-light': {
-        gradient: 'amphiaraus-light',
-      },
-      'thanatos-light': {
-        gradient: 'thanatos-light',
-      },
-      'charon-dark': {
-        gradient: 'charon-dark',
-      },
-    },
+    gradient: createGradientVariants(),
     usage: {
       filled: filledUsage,
       outlined: {
         bgColor: 'inherit',
         border: '1.5px solid',
         borderColor: 'colorPalette.border.initial',
-        color: PAGE_TEXT_INITIAL,
+        _warningPalette: {
+          color: PAGE_TEXT_INITIAL,
+        },
+        _pagePalette: {
+          color: PAGE_TEXT_INITIAL,
+        },
       },
     },
     shape: {
@@ -75,36 +70,22 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     shape: 'pill',
   },
 
-  compoundVariants: [
-    {
-      usage: 'outlined',
-      gradient: 'amphiaraus-light',
-      shape: 'square',
-      css: {
-        ...outlineGradientCss,
-        backgroundImage:
-          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #9ACFEE, #E6F3FB)',
-      },
-    },
-    {
-      usage: 'outlined',
-      gradient: 'thanatos-light',
-      shape: 'square',
-      css: {
-        ...outlineGradientCss,
-        backgroundImage:
-          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #71D192, #E8F8ED)',
-      },
-    },
-    {
-      usage: 'outlined',
-      gradient: 'charon-dark',
-      shape: 'square',
-      css: {
-        ...outlineGradientCss,
-        backgroundImage:
-          'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #BB93E1, #EFE5F8)',
-      },
-    },
-  ],
+  compoundVariants: createGradientOutlineVariants(),
 })
+
+function createGradientOutlineVariants(): Pretty<
+  RecipeCompoundVariant<RecipeCompoundSelection<RecipeVariantRecord>>
+>[] {
+  return gradientValues.map((name) => ({
+    gradient: name,
+    usage: 'outlined',
+    css: {
+      borderColor: 'transparent',
+      backgroundOrigin: 'border-box',
+      backgroundClip: 'padding-box, border-box',
+      bgColor: 'page.surface.initial',
+      borderGradient: name,
+      color: PAGE_TEXT_INITIAL,
+    },
+  }))
+}

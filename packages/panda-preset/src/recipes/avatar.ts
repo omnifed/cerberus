@@ -2,9 +2,8 @@ import {
   defineRecipe,
   type RecipeConfig,
   type RecipeVariantRecord,
-  type SystemStyleObject,
 } from '@pandacss/dev'
-import { gradientValues, type GradientValue } from '../utilities'
+import { createGradientVariants } from './shared/helpers'
 
 /**
  * This module contains the avatar recipe.
@@ -80,14 +79,3 @@ export const avatar: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     size: 'lg',
   },
 })
-
-function createGradientVariants(): Record<GradientValue, SystemStyleObject> {
-  return gradientValues.reduce((acc, value) => {
-    return {
-      ...acc,
-      [value]: {
-        gradient: value,
-      },
-    }
-  }, {}) as Record<GradientValue, SystemStyleObject>
-}

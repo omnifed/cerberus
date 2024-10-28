@@ -62,7 +62,12 @@ describe('tag recipe', () => {
       bgColor: 'inherit',
       border: '1.5px solid',
       borderColor: 'colorPalette.border.initial',
-      color: 'page.text.initial',
+      _pagePalette: {
+        color: PAGE_TEXT_INITIAL,
+      },
+      _warningPalette: {
+        color: PAGE_TEXT_INITIAL,
+      },
     })
   })
 

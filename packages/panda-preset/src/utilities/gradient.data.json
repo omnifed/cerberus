@@ -4,9 +4,7 @@
 
   "darkToken": "gradients.cerberus.dark",
   "lightToken": "gradients.cerberus.light",
-  "textToken": "",
 
   "acheronDarkToken": "gradients.acheron.dark",
-  "acheronLightToken": "gradients.acheron.light",
-  "acheronTextToken": ""
+  "acheronLightToken": "gradients.acheron.light"
 }

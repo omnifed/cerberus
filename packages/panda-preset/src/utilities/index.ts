@@ -124,10 +124,69 @@ const gradient: CustomUtilityConfig<'gradient'> = {
   },
 }
 
+const borderGradient: CustomUtilityConfig<'borderGradient'> = {
+  borderGradient: {
+    className: 'border-gradient',
+    values: gradientValues,
+    transform(value: GradientValue, { token }) {
+      // For some reason, we can only use dynamic token() argument values.
+      // Creating dynamic objects for the return throws an error in NextJS.
+      const color = 'var(--cerberus-colors-page-text-initial)'
+      const gradientBg =
+        'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0),'
+      return {
+        // base
+        [conditions.lightMode]: {
+          backgroundImage: gradientBg + token(`${data.lightToken}.${value}`),
+          color,
+        },
+        [conditions.darkMode]: {
+          backgroundImage: gradientBg + token(`${data.darkToken}.${value}`),
+          color,
+        },
+        [conditions.systemMode]: {
+          backgroundImage: gradientBg + token(`${data.darkToken}.${value}`),
+          color,
+        },
+        // cerberus
+        [`[data-panda-theme=cerberus]${conditions.lightMode}`]: {
+          backgroundImage: gradientBg + token(`${data.lightToken}.${value}`),
+          color,
+        },
+        [`[data-panda-theme=cerberus]${conditions.darkMode}`]: {
+          backgroundImage: gradientBg + token(`${data.darkToken}.${value}`),
+          color,
+        },
+        [`[data-panda-theme=cerberus]${conditions.systemMode}`]: {
+          backgroundImage: gradientBg + token(`${data.darkToken}.${value}`),
+          color,
+        },
+        // acheron
+        [`[data-panda-theme=acheron]${conditions.lightMode}`]: {
+          backgroundImage:
+            gradientBg + token(`${data.acheronLightToken}.${value}`),
+          color,
+        },
+        [`[data-panda-theme=acheron]${conditions.darkMode}`]: {
+          backgroundImage:
+            gradientBg + token(`${data.acheronDarkToken}.${value}`),
+          color,
+        },
+        [`[data-panda-theme=acheron]${conditions.systemMode}`]: {
+          backgroundImage:
+            gradientBg + token(`${data.acheronDarkToken}.${value}`),
+          color,
+        },
+      }
+    },
+  },
+}
+
 export const utilities = {
   extend: {
     ...mxi,
     ...pxi,
     ...gradient,
+    ...borderGradient,
   },
 }
