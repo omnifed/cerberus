@@ -22,7 +22,8 @@
       "@cerberus/styled-system/*": [
         "./node_modules/@cerberus-design/styled-system/*"
       ]
-    }
+    },
+    "target": "ES2017"
   },
   "mdx": {
     "plugins": ["remark-frontmatter", "remark-frontmatter-mdx"]
