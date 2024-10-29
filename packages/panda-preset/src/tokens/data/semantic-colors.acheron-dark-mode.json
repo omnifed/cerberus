@@ -425,7 +425,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "acheron.info.20",
+        "$value": "acheron.info.10",
         "$description": "High emphasis text or icon to indicate an info state or highlight information",
         "$extensions": {
           "com.figma": {

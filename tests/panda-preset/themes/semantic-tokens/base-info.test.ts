@@ -178,10 +178,10 @@ describe('infoTokens', () => {
 
   test('should have a cerberus text.200 property', () => {
     expect(infoTokens.info.text['200'].value.base).toEqual(
-      formatSemanticToken`cerberus.info.20`,
+      formatSemanticToken`cerberus.info.10`,
     )
     expect(infoTokens.info.text['200'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.20`,
+      formatSemanticToken`cerberus.info.10`,
     )
     expect(infoTokens.info.text['200'].value._lightMode).toEqual(
       formatSemanticToken`cerberus.info.100`,
