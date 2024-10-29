@@ -10,7 +10,7 @@ describe('notification recipe', () => {
 
   test('should have a center style', () => {
     expect(notification.base?.center).toMatchObject({
-      color: 'colorPalette.text.initial',
+      color: 'colorPalette.text.200',
       position: 'fixed',
       right: '4',
       textAlign: 'right',
@@ -22,7 +22,7 @@ describe('notification recipe', () => {
   test('should have a base style', () => {
     expect(notification.base?.dialog).toMatchObject({
       bgColor: 'colorPalette.surface.200',
-      color: 'colorPalette.text.initial',
+      color: 'colorPalette.text.200',
       maxW: '29rem',
       minH: '3.125rem',
       opacity: '0',

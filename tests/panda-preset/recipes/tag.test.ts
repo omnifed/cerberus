@@ -1,14 +1,23 @@
 import { describe, test, expect } from 'bun:test'
-import { recipes } from '@cerberus-design/panda-preset'
+import { gradientValues, recipes } from '@cerberus-design/panda-preset'
 
 describe('tag recipe', () => {
   const { tag } = recipes
   const PAGE_TEXT_INITIAL = 'page.text.initial'
-  const outlineGradientCss = {
-    borderColor: 'transparent',
-    backgroundOrigin: 'border-box',
-    backgroundClip: 'padding-box, border-box',
-    color: PAGE_TEXT_INITIAL,
+
+  function createGradientOutlineVariants() {
+    return gradientValues.map((name) => ({
+      gradient: name,
+      usage: 'outlined',
+      css: {
+        borderColor: 'transparent',
+        backgroundOrigin: 'border-box',
+        backgroundClip: 'padding-box, border-box',
+        bgColor: 'page.surface.initial',
+        borderGradient: name,
+        color: PAGE_TEXT_INITIAL,
+      },
+    }))
   }
 
   test('should be exported', () => {
@@ -62,7 +71,12 @@ describe('tag recipe', () => {
       bgColor: 'inherit',
       border: '1.5px solid',
       borderColor: 'colorPalette.border.initial',
-      color: 'page.text.initial',
+      _pagePalette: {
+        color: PAGE_TEXT_INITIAL,
+      },
+      _warningPalette: {
+        color: PAGE_TEXT_INITIAL,
+      },
     })
   })
 
@@ -101,37 +115,7 @@ describe('tag recipe', () => {
   })
 
   test('should have a compound variants for outlined usage with a gradient and square shape', () => {
-    expect(tag.compoundVariants).toMatchObject([
-      {
-        usage: 'outlined',
-        gradient: 'amphiaraus-light',
-        shape: 'square',
-        css: {
-          ...outlineGradientCss,
-          backgroundImage:
-            'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #9ACFEE, #E6F3FB)',
-        },
-      },
-      {
-        usage: 'outlined',
-        gradient: 'thanatos-light',
-        shape: 'square',
-        css: {
-          ...outlineGradientCss,
-          backgroundImage:
-            'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #71D192, #E8F8ED)',
-        },
-      },
-      {
-        usage: 'outlined',
-        gradient: 'charon-dark',
-        shape: 'square',
-        css: {
-          ...outlineGradientCss,
-          backgroundImage:
-            'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0), linear-gradient(to top right, #BB93E1, #EFE5F8)',
-        },
-      },
-    ])
+    const gradientOutlineResult = createGradientOutlineVariants()
+    expect(tag.compoundVariants).toMatchObject(gradientOutlineResult)
   })
 })

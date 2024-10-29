@@ -18,6 +18,10 @@ export interface FileUploaderProps
    * The name of the file input element.
    */
   name: string
+  /**
+   * Disable the FileUploader component. Good for single-use file uploads.
+   */
+  disabled?: boolean
 }
 
 /**
@@ -30,6 +34,7 @@ export function FileUploader(props: FileUploaderProps) {
 
   return (
     <div
+      {...(props.disabled ? { 'aria-disabled': true } : {})}
       className={cx(
         vstack({
           justify: 'center',

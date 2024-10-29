@@ -2,7 +2,12 @@ import { Tag, type TagProps } from '@cerberus-design/react'
 import { Checkmark, Information } from '@cerberus-design/icons'
 import { css } from '@cerberus/styled-system/css'
 import { Fragment } from 'react'
-import { grid, gridItem, hstack } from '@cerberus/styled-system/patterns'
+import {
+  grid,
+  gridItem,
+  hstack,
+  vstack,
+} from '@cerberus/styled-system/patterns'
 import { ClosableTagPreview } from './closable-tag-preview'
 
 export type TagPreviewProps = TagProps
@@ -43,25 +48,48 @@ export function WithIconTagPreview() {
 
 export function GradientTagPreview() {
   return (
-    <div className={hstack()}>
-      <Tag gradient="amphiaraus-light" shape="square">
-        Charon Light
-      </Tag>
-      <Tag gradient="amphiaraus-light" shape="square" usage="outlined">
-        Charon Light Outlined
-      </Tag>
-      <Tag gradient="thanatos-light" shape="square">
-        Thanatos
-      </Tag>
-      <Tag gradient="thanatos-light" shape="square" usage="outlined">
-        Thanatos Outlined
-      </Tag>
-      <Tag gradient="charon-dark" shape="square">
-        Charon Dark
-      </Tag>
-      <Tag gradient="charon-dark" shape="square" usage="outlined">
-        Charon Dark Outlined
-      </Tag>
+    <div className={vstack()}>
+      <div className={hstack()}>
+        <Tag gradient="nyx-light" shape="square">
+          nyx light
+        </Tag>
+        <Tag gradient="charon-dark" shape="square">
+          charon dark
+        </Tag>
+        <Tag gradient="amphiaraus-dark" shape="square">
+          amphiaraus dark
+        </Tag>
+        <Tag gradient="thanatos-light" shape="square">
+          thanatos light
+        </Tag>
+        <Tag gradient="hades-dark" shape="square">
+          hades dark
+        </Tag>
+        <Tag gradient="asphodel-light" shape="square">
+          asphodel light
+        </Tag>
+      </div>
+
+      <div className={hstack()}>
+        <Tag gradient="nyx-light" shape="square" usage="outlined">
+          nyx light
+        </Tag>
+        <Tag gradient="charon-dark" shape="square" usage="outlined">
+          charon dark
+        </Tag>
+        <Tag gradient="amphiaraus-dark" shape="square" usage="outlined">
+          amphiaraus dark
+        </Tag>
+        <Tag gradient="thanatos-light" shape="square" usage="outlined">
+          thanatos light
+        </Tag>
+        <Tag gradient="hades-dark" shape="square" usage="outlined">
+          hades dark
+        </Tag>
+        <Tag gradient="asphodel-light" shape="square" usage="outlined">
+          asphodel light
+        </Tag>
+      </div>
     </div>
   )
 }

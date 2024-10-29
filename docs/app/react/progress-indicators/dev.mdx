@@ -65,6 +65,7 @@ export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
   now: number
   title: string
   syntax?: string
+  bgStyle?: 'filled' | 'transparent'
 }
 
 define function CircularProgress(props: CircularProgressProps): ReactNode
@@ -77,3 +78,4 @@ define function CircularProgress(props: CircularProgressProps): ReactNode
 | now |    | The current progress value. |
 | title |    | The title of the CircularProgress for a11y. |
 | syntax |  `Done`  | What is shown below the now value. |
+| bgStyle |  `filled`  | The fill style of the center circle used for the bg. |

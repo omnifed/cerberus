@@ -139,6 +139,32 @@
       }
     }
   },
+  "corner-radii": {
+    "sm": {
+      "$type": "number",
+      "$value": "spacing.025",
+      "$description": "",
+      "$extensions": {
+        "com.figma": {
+          "hiddenFromPublishing": false,
+          "scopes": ["CORNER_RADIUS"],
+          "codeSyntax": {}
+        }
+      }
+    },
+    "md": {
+      "$type": "number",
+      "$value": "spacing.050",
+      "$description": "",
+      "$extensions": {
+        "com.figma": {
+          "hiddenFromPublishing": false,
+          "scopes": ["CORNER_RADIUS"],
+          "codeSyntax": {}
+        }
+      }
+    }
+  },
   "full": {
     "$type": "number",
     "$value": 500,

@@ -28,20 +28,20 @@ export function Admonition(props: PropsWithChildren<AdmonitionProps>) {
         py: '6',
         rounded: '2xl',
         _infoPalette: {
-          bgColor: 'info.surface.200',
-          color: 'info.text.initial',
+          bgColor: 'info.surface.100',
+          color: 'info.text.100',
         },
         _successPalette: {
-          bgColor: 'success.surface.200',
-          color: 'success.text.initial',
+          bgColor: 'success.surface.100',
+          color: 'success.text.100',
         },
         _warningPalette: {
-          bgColor: 'warning.surface.200',
-          color: 'warning.text.initial',
+          bgColor: 'warning.surface.100',
+          color: 'warning.text.100',
         },
         _dangerPalette: {
-          bgColor: 'danger.surface.200',
-          color: 'danger.text.initial',
+          bgColor: 'danger.surface.100',
+          color: 'danger.text.100',
         },
       })}
     >

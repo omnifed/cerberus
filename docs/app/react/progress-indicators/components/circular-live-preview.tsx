@@ -15,6 +15,7 @@ const api = {
   title: builder.Text('title', 'Course completion'),
   syntax: builder.Text('label', 'Done'),
   now: builder.Number('now', 30),
+  bgStyle: builder.Enum('bgStyle', ['filled', 'transparent']),
 }
 
 export function CircularLivePlayground() {
@@ -34,6 +35,7 @@ export function CircularLivePlaygroundWithCode() {
 export function MyCircularProgress(props: CircularProgressProps) {
   return (
     <CircularProgress
+      bgStyle={{bgStyle}}
       label={{label}}
       id={{id}}
       syntax={{syntax}}
@@ -58,6 +60,7 @@ export function CircularProgressPreview() {
         label={selectedProps.label as string}
         title={selectedProps.title as string}
         now={selectedProps.now as number}
+        bgStyle={selectedProps.bgStyle as 'filled' | 'transparent'}
       />
     </Square>
   )

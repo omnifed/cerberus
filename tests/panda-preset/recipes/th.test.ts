@@ -21,9 +21,6 @@ describe('th recipe', () => {
       _last: {
         borderRight: 'none',
       },
-      _hover: {
-        bgColor: 'page.bg.100',
-      },
       _active: {
         bgColor: 'action.ghost.active',
       },
