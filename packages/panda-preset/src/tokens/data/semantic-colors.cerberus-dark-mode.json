@@ -98,6 +98,32 @@
             "codeSyntax": {}
           }
         }
+      },
+      "alternate": {
+        "$type": "color",
+        "$value": "cerberus.teal.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "navigation": {
+      "alt-initial": {
+        "$type": "color",
+        "$value": "cerberus.teal.60",
+        "$description": "for student portal only",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
       }
     },
     "page": {
@@ -174,6 +200,30 @@
         }
       }
     },
+    "text-error": {
+      "$type": "color",
+      "$value": "cerberus.danger.60",
+      "$description": "",
+      "$extensions": {
+        "com.figma": {
+          "hiddenFromPublishing": false,
+          "scopes": ["TEXT_FILL"],
+          "codeSyntax": {}
+        }
+      }
+    },
+    "text-brand": {
+      "$type": "color",
+      "$value": "cerberus.brand.30",
+      "$description": "",
+      "$extensions": {
+        "com.figma": {
+          "hiddenFromPublishing": false,
+          "scopes": ["ALL_SCOPES"],
+          "codeSyntax": {}
+        }
+      }
+    },
     "danger": {
       "100": {
         "$type": "color",
@@ -189,7 +239,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.danger.50",
+        "$value": "cerberus.danger.10",
         "$description": "High emphasis text or icon to indicate a danger state, like an error within an input field, etc. ",
         "$extensions": {
           "com.figma": {
@@ -201,7 +251,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.danger.10",
+        "$value": "cerberus.danger.60",
         "$description": "The default color of body danger text within a danger colored container. ",
         "$extensions": {
           "com.figma": {
@@ -239,7 +289,7 @@
     "warning": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.warning.20",
+        "$value": "cerberus.warning.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -251,7 +301,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.warning.60",
+        "$value": "cerberus.warning.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -263,7 +313,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.warning.10",
+        "$value": "cerberus.warning.40",
         "$description": "The default color of body warning text and icons within a warning colored container. ",
         "$extensions": {
           "com.figma": {
@@ -313,7 +363,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.success.60",
+        "$value": "cerberus.success.10",
         "$description": "Highest emphasis success color",
         "$extensions": {
           "com.figma": {
@@ -325,7 +375,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.success.10",
+        "$value": "cerberus.success.60",
         "$description": "The default color of body success text within a success colored container. ",
         "$extensions": {
           "com.figma": {
@@ -363,7 +413,7 @@
     "info": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.info.30",
+        "$value": "cerberus.info.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -375,7 +425,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.info.50",
+        "$value": "cerberus.info.10",
         "$description": "High emphasis text or icon to indicate an info state or highlight information",
         "$extensions": {
           "com.figma": {
@@ -387,7 +437,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.info.10",
+        "$value": "cerberus.info.50",
         "$description": "The default styling for static info text and icons within an info palette container",
         "$extensions": {
           "com.figma": {
@@ -665,7 +715,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.warning.60",
+        "$value": "cerberus.warning.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -935,6 +985,20 @@
       }
     }
   },
+  "icons": {
+    "default": {
+      "$type": "color",
+      "$value": "cerberus.neutral.white",
+      "$description": "",
+      "$extensions": {
+        "com.figma": {
+          "hiddenFromPublishing": false,
+          "scopes": ["ALL_SCOPES"],
+          "codeSyntax": {}
+        }
+      }
+    }
+  },
   "background": {
     "action": {
       "100": {
@@ -984,6 +1048,18 @@
             "codeSyntax": {}
           }
         }
+      },
+      "100-hover": {
+        "$type": "color",
+        "$value": "cerberus.neutral.80",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": true,
+            "scopes": [],
+            "codeSyntax": {}
+          }
+        }
       }
     },
     "page": {
@@ -1027,7 +1103,7 @@
     "danger": {
       "initial": {
         "$type": "color",
-        "$value": "cerberus.danger.80",
+        "$value": "cerberus.danger.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1462,15 +1538,53 @@
     }
   },
   "data-viz": {
-    "start": {
-      "$type": "color",
-      "$value": "cerberus.brand.40",
-      "$description": "",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["ALL_SCOPES"],
-          "codeSyntax": {}
+    "progress": {
+      "start": {
+        "$type": "color",
+        "$value": "cerberus.brand.40",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "cerberus.brand.70",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "complete": {
+        "$type": "color",
+        "$value": "cerberus.success.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "complete-end": {
+        "$type": "color",
+        "$value": "cerberus.success.50",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
         }
       }
     },
@@ -1545,18 +1659,6 @@
             "scopes": ["FRAME_FILL", "SHAPE_FILL"],
             "codeSyntax": {}
           }
-        }
-      }
-    },
-    "end": {
-      "$type": "color",
-      "$value": "cerberus.brand.70",
-      "$description": "",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["ALL_SCOPES"],
-          "codeSyntax": {}
         }
       }
     },

@@ -21,21 +21,20 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
       w: 'full',
     },
     bar: {
-      gradient: 'charon-dark',
+      gradient: 'progress',
       h: 'full',
       left: 0,
       position: 'absolute',
       top: 0,
+      transitionProperty: 'background-image,width',
+      transitionDuration: '250ms',
+      transitionTimingFunction: 'ease',
       willChange: 'width',
       zIndex: 'decorator',
-      ['&:is([data-complete=true])']: {
-        bgImage: 'initial !important',
-        bgColor: 'success.bg.initial',
+      _isComplete: {
+        gradient: 'complete !important',
       },
       _motionSafe: {
-        transitionProperty: 'background-color,background-image,width',
-        transitionDuration: '250ms',
-        transitionTimingFunction: 'ease',
         _indeterminate: {
           animationName: 'rubberBand',
           animationIterationCount: 'infinite',

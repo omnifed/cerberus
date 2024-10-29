@@ -56,6 +56,9 @@ export function Th(props: ThProps) {
               justifyContent: 'space-between',
               userSelect: 'none',
               w: 'full',
+              _hover: {
+                bgColor: 'page.bg.100',
+              },
             }),
           )}
           onClick={onClick}

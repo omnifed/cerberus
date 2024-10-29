@@ -9,6 +9,7 @@ const api = {
   heading: builder.Text('heading', 'Upload your files'),
   name: builder.Text('name', 'add_uuid'),
   accept: builder.Text('accept', '.txt'),
+  disabled: builder.Boolean('disabled', false),
 }
 
 export function LivePlayground() {
@@ -28,6 +29,7 @@ export function LivePlaygroundWithCode() {
 export function MyFileUploader(props: FileUploaderProps) {
   return (
     <FileUploader
+      disabled={{disabled}}
       accept={{accept}}
       heading={{heading}}
       name={{name}}
@@ -44,6 +46,7 @@ export function FileUploadPreview() {
   const { selectedProps } = useCodeBuilder()
   return (
     <FileUploader
+      disabled={selectedProps.disabled as boolean}
       accept={selectedProps.accept as string}
       heading={selectedProps.heading as string}
       name={selectedProps.file as string}

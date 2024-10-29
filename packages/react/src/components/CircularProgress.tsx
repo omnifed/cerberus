@@ -3,6 +3,7 @@
 import { cq } from '@cerberus/styled-system/patterns'
 import { css } from '@cerberus/styled-system/css'
 import type { SVGProps } from 'react'
+import { Show } from './Show'
 
 /**
  * This module contains the CircularProgress component.
@@ -30,6 +31,10 @@ export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
    * What is shown below the now value (default: 'Done')
    */
   syntax?: string
+  /**
+   * The background style of the CircularProgress
+   */
+  bgStyle?: 'filled' | 'transparent'
 }
 
 /**
@@ -49,6 +54,7 @@ export function CircularProgress(props: CircularProgressProps) {
   const radius = `calc(50% * (1 - ${strokeW}/100))`
   const status: string = props.syntax ?? 'Done'
   const now: number = props.now >= 100 ? 100 : props.now
+  const bgStyle: string = props.bgStyle ?? 'filled'
 
   return (
     <div
@@ -84,24 +90,26 @@ export function CircularProgress(props: CircularProgressProps) {
           <linearGradient id="gradient">
             <stop
               offset="0%"
-              stopColor="var(--cerberus-colors-action-bg-initial)"
+              stopColor="var(--cerberus-colors-data-viz-progress-start)"
             />
             <stop
               offset="100%"
-              stopColor="var(--cerberus-colors-action-bg-active)"
+              stopColor="var(--cerberus-colors-data-viz-progress-end)"
             />
           </linearGradient>
         </defs>
 
-        <circle
-          className={css({
-            fill: 'page.surface.initial',
-          })}
-          cx="50%"
-          cy="50%"
-          r={`calc(50% * (1 - ${strokeW}/100))`}
-          pathLength="100"
-        />
+        <Show when={bgStyle === 'filled'}>
+          <circle
+            className={css({
+              fill: 'page.surface.initial',
+            })}
+            cx="50%"
+            cy="50%"
+            r={`calc(50% * (1 - ${strokeW}/100))`}
+            pathLength="100"
+          />
+        </Show>
         <circle
           className={css({
             stroke: 'page.bg.100',
@@ -116,7 +124,7 @@ export function CircularProgress(props: CircularProgressProps) {
           className={css({
             stroke: 'url(#gradient)',
             transition: 'stroke-dashoffset, stroke 0.5s ease',
-            '&:is([data-complete=true])': {
+            _isComplete: {
               stroke: 'success.bg.initial',
             },
           })}

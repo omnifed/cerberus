@@ -5,6 +5,7 @@ import {
 } from '@pandacss/dev'
 import {
   buttonBase,
+  buttonCompoundVariants,
   buttonPalettes,
   filledUsage,
   outlinedUsage,
@@ -61,6 +62,8 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       lg: {},
     },
   },
+
+  compoundVariants: buttonCompoundVariants,
 
   defaultVariants: {
     palette: 'action',

@@ -1,4 +1,6 @@
+import type { SystemStyleObject } from '@pandacss/types'
 import type { Sentiment } from '../../theme/semantic-tokens/types'
+import { gradientValues, type GradientValue } from '../../utilities'
 
 export type RecipePalette<K extends Sentiment[]> = K[]
 
@@ -39,4 +41,31 @@ export function getSlotRecipePalettes<
     initialValue ??
       ({} as Record<P, Record<S, Record<'colorPalette', Sentiment>>>),
   )
+}
+
+/**
+ * A helper to create gradient palette variants
+ * @returns An Object with the gradient name as key and the gradient value as
+ * the value.
+ * @example
+ * ```tsx
+ * {
+ *  'amphiaraus-light': {
+ *    gradient: 'amphiaraus-light',
+ *  },
+ * }
+ * ```
+ */
+export function createGradientVariants(): Record<
+  GradientValue,
+  SystemStyleObject
+> {
+  return gradientValues.reduce((acc, value) => {
+    return {
+      ...acc,
+      [value]: {
+        gradient: value,
+      },
+    }
+  }, {}) as Record<GradientValue, SystemStyleObject>
 }

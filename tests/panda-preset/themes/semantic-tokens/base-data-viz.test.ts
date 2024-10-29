@@ -327,4 +327,46 @@ describe('dataVizTokens', () => {
       formatSemanticToken`cerberus.neutral.40`,
     )
   })
+
+  // progress.start
+
+  test('should have a cerberus progress.start property', () => {
+    expect(dataVizTokens.dataViz.progress.start.value.base).toEqual(
+      formatSemanticToken`cerberus.brand.40`,
+    )
+    expect(dataVizTokens.dataViz.progress.start.value._darkMode).toEqual(
+      formatSemanticToken`cerberus.brand.40`,
+    )
+    expect(dataVizTokens.dataViz.progress.start.value._lightMode).toEqual(
+      formatSemanticToken`cerberus.brand.40`,
+    )
+  })
+
+  // progress.end
+
+  test('should have a cerberus progress.end property', () => {
+    expect(dataVizTokens.dataViz.progress.end.value.base).toEqual(
+      formatSemanticToken`cerberus.brand.70`,
+    )
+    expect(dataVizTokens.dataViz.progress.end.value._darkMode).toEqual(
+      formatSemanticToken`cerberus.brand.70`,
+    )
+    expect(dataVizTokens.dataViz.progress.end.value._lightMode).toEqual(
+      formatSemanticToken`cerberus.brand.70`,
+    )
+  })
+
+  // progress.complete
+
+  test('should have a cerberus progress.complete property', () => {
+    expect(dataVizTokens.dataViz.progress.complete.value.base).toEqual(
+      formatSemanticToken`cerberus.success.60`,
+    )
+    expect(dataVizTokens.dataViz.progress.complete.value._darkMode).toEqual(
+      formatSemanticToken`cerberus.success.60`,
+    )
+    expect(dataVizTokens.dataViz.progress.complete.value._lightMode).toEqual(
+      formatSemanticToken`cerberus.success.60`,
+    )
+  })
 })
