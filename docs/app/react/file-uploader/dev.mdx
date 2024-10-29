@@ -41,6 +41,7 @@ export interface FileUploaderProps
   extends InputHTMLAttributes<HTMLInputElement> {
   heading?: string
   name: string
+  disabled?: boolean
 }
 
 define function FileUploader(props: FileUploaderProps): ReactNode
@@ -73,6 +74,7 @@ The `FileUploader` component accepts the following props:
 | -------- | ------- | ------------------------------------------------------------- |
 | heading  |         | The heading for the file uploader                             |
 | name     |         | The unique name of the file uploader                                  |
+| disabled |    false     | Whether the file uploader is disabled                         |
 
 The `FileStatus` component accepts the following props:
 

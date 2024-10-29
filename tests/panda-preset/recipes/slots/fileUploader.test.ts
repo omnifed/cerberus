@@ -29,6 +29,15 @@ describe('fileUploader recipe', () => {
         borderStyle: 'solid',
         bgColor: 'action.ghost.hover',
       },
+      _disabled: {
+        cursor: 'not-allowed',
+        opacity: '0.5',
+        _hover: {
+          borderColor: 'page.border.100',
+          borderStyle: 'dashed',
+          bgColor: 'page.surface.100',
+        },
+      },
       _isOver: {
         borderColor: BORDER_COLOR,
         borderStyle: 'solid',
