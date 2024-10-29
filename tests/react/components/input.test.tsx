@@ -1,7 +1,6 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
 import { Field, Label, Input } from '@cerberus-design/react'
-import { Calendar } from '@cerberus-design/icons'
 import { setupStrictMode } from '@/utils'
 
 describe('Input', () => {
@@ -140,7 +139,7 @@ describe('Input', () => {
     render(
       <Field>
         <Label htmlFor="test">Test Label</Label>,
-        <Input id="test" startIcon={<Calendar aria-label="calendar icon" />} />
+        <Input id="test" startIcon={<div aria-label="calendar icon" />} />
       </Field>,
       {
         wrapper: Field,
@@ -153,7 +152,7 @@ describe('Input', () => {
     render(
       <Field>
         <Label htmlFor="test">Test Label</Label>,
-        <Input id="test" endIcon={<Calendar aria-label="calendar icon" />} />
+        <Input id="test" endIcon={<div aria-label="calendar icon" />} />
       </Field>,
       {
         wrapper: Field,
