@@ -56,7 +56,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   base: {
     center: {
-      color: 'colorPalette.text.initial',
+      color: 'colorPalette.text.200',
       position: 'fixed',
       right: '4',
       textAlign: 'right',
@@ -65,7 +65,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     dialog: {
       bgColor: 'colorPalette.surface.200',
-      color: 'colorPalette.text.initial',
+      color: 'colorPalette.text.200',
       maxW: '29rem',
       minH: '3.125rem',
       opacity: '0',
