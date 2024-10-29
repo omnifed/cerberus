@@ -239,7 +239,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "acheron.danger.20",
+        "$value": "acheron.danger.10",
         "$description": "High emphasis text or icon to indicate a danger state, like an error within an input field, etc. ",
         "$extensions": {
           "com.figma": {

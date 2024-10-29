@@ -180,10 +180,10 @@ describe('acheron dangerTokens', () => {
 
   test('should have a acheron text.200 property', () => {
     expect(dangerTokens.danger.text['200'].value.base).toEqual(
-      formatSemanticToken`acheron.danger.20`,
+      formatSemanticToken`acheron.danger.10`,
     )
     expect(dangerTokens.danger.text['200'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.danger.20`,
+      formatSemanticToken`acheron.danger.10`,
     )
     expect(dangerTokens.danger.text['200'].value._lightMode).toEqual(
       formatSemanticToken`acheron.danger.100`,
