@@ -75,10 +75,25 @@ const gradient: CustomUtilityConfig<'gradient'> = {
   gradient: {
     className: 'gradient',
     values: gradientValues,
-    transform(value: GradientValue, { token }) {
+    transform(value: GradientValue | 'progress' | 'complete', { token }) {
       // For some reason, we can only use dynamic token() argument values.
       // Creating dynamic objects for the return throws an error in NextJS.
       const color = token(`colors.gradient.${value}.text.initial`)
+
+      if (value === 'progress') {
+        return {
+          backgroundImage:
+            'linear-gradient(to right, var(--cerberus-colors-data-viz-progress-start), var(--cerberus-colors-data-viz-progress-end))',
+        }
+      }
+
+      if (value === 'complete') {
+        return {
+          backgroundImage:
+            'linear-gradient(to right, var(--cerberus-colors-data-viz-progress-complete), var(--cerberus-colors-data-viz-progress-complete))',
+        }
+      }
+
       return {
         // base
         [conditions.lightMode]: {
@@ -134,6 +149,7 @@ const borderGradient: CustomUtilityConfig<'borderGradient'> = {
       const color = 'var(--cerberus-colors-page-text-initial)'
       const gradientBg =
         'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0),'
+
       return {
         // base
         [conditions.lightMode]: {

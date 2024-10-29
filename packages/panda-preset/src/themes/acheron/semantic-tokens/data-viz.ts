@@ -32,6 +32,11 @@ export interface ContractDataVizTokens {
     readonly qualitative: {
       readonly [P in Exclude<DataVisProminence, '50' | '800' | '900'>]: object
     }
+    readonly progress: {
+      readonly start: object
+      readonly end: object
+      readonly complete: object
+    }
   }
 }
 
@@ -68,6 +73,12 @@ export const contractDataVizTokens: ContractDataVizTokens = {
       '600': {},
       '700': {},
     },
+
+    progress: {
+      start: {},
+      end: {},
+      complete: {},
+    },
   },
 }
 
@@ -87,6 +98,11 @@ export interface DataVizTokens {
         DataVisProminence,
         '50' | '800' | '900'
       >]: SemanticToken
+    }
+    readonly progress: {
+      readonly start: SemanticToken
+      readonly end: SemanticToken
+      readonly complete: SemanticToken
     }
   }
 }
@@ -123,6 +139,15 @@ export const dataVizTokens: DataVizTokens = {
       500: formatSemanticTokenValue('data-viz.qualitative.500', 'acheron'),
       600: formatSemanticTokenValue('data-viz.qualitative.600', 'acheron'),
       700: formatSemanticTokenValue('data-viz.qualitative.700', 'acheron'),
+    },
+
+    progress: {
+      start: formatSemanticTokenValue('data-viz.progress.start', 'acheron'),
+      end: formatSemanticTokenValue('data-viz.progress.end', 'acheron'),
+      complete: formatSemanticTokenValue(
+        'data-viz.progress.complete',
+        'acheron',
+      ),
     },
   },
 }

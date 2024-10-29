@@ -147,4 +147,8 @@ describe('conditions', () => {
   test('should have a dangerPalette', () => {
     expect(conditions.dangerPalette).toEqual('&:is([data-palette=danger])')
   })
+
+  test('should have a isComplete', () => {
+    expect(conditions.isComplete).toEqual('&:is([data-complete=true])')
+  })
 })

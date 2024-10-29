@@ -329,4 +329,46 @@ describe('dataVizTokens', () => {
       formatSemanticToken`acheron.neutral.30`,
     )
   })
+
+  // progress.start
+
+  test('should have a acheron progress.start property', () => {
+    expect(dataVizTokens.dataViz.progress.start.value.base).toEqual(
+      formatSemanticToken`acheron.brand.60`,
+    )
+    expect(dataVizTokens.dataViz.progress.start.value._darkMode).toEqual(
+      formatSemanticToken`acheron.brand.60`,
+    )
+    expect(dataVizTokens.dataViz.progress.start.value._lightMode).toEqual(
+      formatSemanticToken`acheron.brand.60`,
+    )
+  })
+
+  // progress.end
+
+  test('should have a acheron progress.end property', () => {
+    expect(dataVizTokens.dataViz.progress.end.value.base).toEqual(
+      formatSemanticToken`acheron.brand.80`,
+    )
+    expect(dataVizTokens.dataViz.progress.end.value._darkMode).toEqual(
+      formatSemanticToken`acheron.brand.80`,
+    )
+    expect(dataVizTokens.dataViz.progress.end.value._lightMode).toEqual(
+      formatSemanticToken`acheron.brand.80`,
+    )
+  })
+
+  // progress.complete
+
+  test('should have a acheron progress.complete property', () => {
+    expect(dataVizTokens.dataViz.progress.complete.value.base).toEqual(
+      formatSemanticToken`acheron.success.60`,
+    )
+    expect(dataVizTokens.dataViz.progress.complete.value._darkMode).toEqual(
+      formatSemanticToken`acheron.success.60`,
+    )
+    expect(dataVizTokens.dataViz.progress.complete.value._lightMode).toEqual(
+      formatSemanticToken`acheron.success.60`,
+    )
+  })
 })

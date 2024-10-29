@@ -90,11 +90,11 @@ export function CircularProgress(props: CircularProgressProps) {
           <linearGradient id="gradient">
             <stop
               offset="0%"
-              stopColor="var(--cerberus-colors-action-bg-initial)"
+              stopColor="var(--cerberus-colors-data-viz-progress-start)"
             />
             <stop
               offset="100%"
-              stopColor="var(--cerberus-colors-action-bg-active)"
+              stopColor="var(--cerberus-colors-data-viz-progress-end)"
             />
           </linearGradient>
         </defs>
@@ -124,7 +124,7 @@ export function CircularProgress(props: CircularProgressProps) {
           className={css({
             stroke: 'url(#gradient)',
             transition: 'stroke-dashoffset, stroke 0.5s ease',
-            '&:is([data-complete=true])': {
+            _isComplete: {
               stroke: 'success.bg.initial',
             },
           })}
