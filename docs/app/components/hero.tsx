@@ -1,6 +1,5 @@
 import { css, cx } from '@cerberus/styled-system/css'
-import { cq, hstack, vstack } from '@cerberus/styled-system/patterns'
-import Link from 'next/link'
+import { cq, vstack } from '@cerberus/styled-system/patterns'
 
 interface HeroProps {
   heading: string
