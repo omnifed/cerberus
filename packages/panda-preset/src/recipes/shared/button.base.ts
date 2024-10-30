@@ -31,8 +31,10 @@ export const buttonBase = {
   transitionTimingFunction: 'ease-in-out',
   userSelect: 'none',
   whiteSpace: 'nowrap',
+  _disabled: {
+    ...formStates._disabled,
+  },
   ...focusStates,
-  ...formStates,
 }
 
 export const sharpRadii = {

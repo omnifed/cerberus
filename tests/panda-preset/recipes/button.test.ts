@@ -37,9 +37,6 @@ describe('button recipe', () => {
         cursor: 'not-allowed',
         opacity: '0.5',
       },
-      _readOnly: {
-        cursor: 'default',
-      },
     })
   })
 

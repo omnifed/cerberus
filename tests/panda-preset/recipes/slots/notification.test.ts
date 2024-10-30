@@ -71,6 +71,7 @@ describe('notification recipe', () => {
   test('should have a close style', () => {
     expect(notification.base?.close).toMatchObject({
       alignItems: 'center',
+      cursor: 'pointer',
       display: 'inline-flex',
       fontWeight: '600',
       gap: '2',
@@ -98,9 +99,6 @@ describe('notification recipe', () => {
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.5',
-      },
-      _readOnly: {
-        cursor: 'default',
       },
       _hover: {
         bgColor: 'colorPalette.ghost.hover',
