@@ -29,8 +29,8 @@ export function ModalHeader(props: ModalHeaderProps) {
         props.className,
         vstack({
           alignItems: 'flex-start',
-          gap: '4',
-          mb: '8',
+          gap: 'md',
+          mb: 'md',
         }),
       )}
     />

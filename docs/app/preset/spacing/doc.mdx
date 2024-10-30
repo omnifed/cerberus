@@ -9,13 +9,13 @@ import SpacingVisual from './components/spacing-visual'
 
  Spacing tokens can be used to determine the margin or padding of a element or group of elements. The spacing tokens are based on a 4px grid system.
 
- Tokens are available via the `spacing` object in the theme.
+ Tokens can be used for any properties that are relative to spacing, such as margin, padding, gap, etc.
 
  <DripDivider />
 
  ## Values
 
-| Name     | Value | Visual                                                    |
+| Token    | Value | Visual                                                    |
 | -------- | ----- | --------------------------------------------------------- |
 |  none    |   0   |  <SpacingVisual value="none" />             |
 |  xs      |   0.25rem   |  <SpacingVisual value="xs" />                |
@@ -26,19 +26,3 @@ import SpacingVisual from './components/spacing-visual'
 |  2xl     |   3rem   |  <SpacingVisual value="2xl" />                    |
 |  3xl     |   4rem   |  <SpacingVisual value="3xl" />                   |
 |  full    |   31.25rem | <SpacingVisual value="full" />           |
-
-<DripDivider />
-
-## Example Dev Usage
-
-```jsx {4}
-function Example() {
-  return (
-    <div className={css({
-      px: 'spacing.xl',
-    })}>
-      <p>Some content</p>
-    </div>
-  )
-}
-```
