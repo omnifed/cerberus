@@ -137,14 +137,14 @@ export interface PandaGradientValue {
     | Array<string>
 }
 
-export interface PandaSpacingToken {
+export interface PandaToken {
   [key: string]: {
     description: string
     value: string
   }
 }
 
-export function formatSpacingTokens(): PandaSpacingToken {
+export function formatSpacingTokens(): PandaToken {
   return Object.entries(spacingTokens).reduce((acc, [key, value]) => {
     if (key === 'corner-radii') return acc
     acc[key] = {
@@ -152,7 +152,7 @@ export function formatSpacingTokens(): PandaSpacingToken {
       value: `${((value as FigmaToken).$value as number) / 16}rem`,
     }
     return acc
-  }, {} as PandaSpacingToken)
+  }, {} as PandaToken)
 }
 
 export function formatPrimitiveColors(): PandaColor {

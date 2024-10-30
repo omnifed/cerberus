@@ -4,7 +4,7 @@ import {
   formatSpacingTokens,
   type PandaColor,
   type PandaGradient,
-  type PandaSpacingToken,
+  type PandaToken,
 } from '../tokens'
 
 /**
@@ -14,7 +14,7 @@ import {
 
 const colors: PandaColor = formatPrimitiveColors()
 const gradients: PandaGradient = formatPrimitiveGradients()
-const spacing: PandaSpacingToken = formatSpacingTokens()
+const spacing: PandaToken = formatSpacingTokens()
 
 const fonts = {
   display: {
