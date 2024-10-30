@@ -4,6 +4,7 @@ import semanticColorsLight from './data/semantic-colors.cerberus-light-mode.json
 import acheronDarkMode from './data/semantic-colors.acheron-dark-mode.json' with { type: 'json' }
 import acheronLightMode from './data/semantic-colors.acheron-light-mode.json' with { type: 'json' }
 import textStyles from './data/text-styles.json' with { type: 'json' }
+import spacingTokens from './data/spacing.mode-1.json' with { type: 'json' }
 import type { RawThemes, SemanticToken, Token } from '../theme'
 
 /**
@@ -15,6 +16,7 @@ export interface RawTokens {
   primitives: {
     colors: typeof primitiveColors
     textStyles: typeof textStyles
+    spacing: typeof spacingTokens
   }
   semanticColors: {
     dark: typeof semanticColorsDark
@@ -26,6 +28,7 @@ export const rawTokens: RawTokens = {
   primitives: {
     colors: primitiveColors,
     textStyles,
+    spacing: spacingTokens,
   },
   semanticColors: {
     dark: semanticColorsDark,
@@ -36,6 +39,7 @@ export const rawTokens: RawTokens = {
 // used in the docs
 export const semanticColors = rawTokens.semanticColors.dark
 export const colors = rawTokens.primitives.colors
+export const spacing = rawTokens.primitives.spacing
 
 export const primitiveColorTokens = rawTokens.primitives.colors
 export const darkTokens = semanticColorsDark
@@ -81,7 +85,7 @@ export type PrimitiveCollection = RawTokens['primitives']['colors']
 
 export type FigmaToken = {
   $type: 'color'
-  $value: string
+  $value: string | number
   $description: string
   $extensions: {
     'com.figma': {
@@ -131,6 +135,24 @@ export interface PandaGradientValue {
         position: number
       }>
     | Array<string>
+}
+
+export interface PandaSpacingToken {
+  [key: string]: {
+    description: string
+    value: string
+  }
+}
+
+export function formatSpacingTokens(): PandaSpacingToken {
+  return Object.entries(spacingTokens).reduce((acc, [key, value]) => {
+    if (key === 'corner-radii') return acc
+    acc[key] = {
+      description: (value as FigmaToken).$description,
+      value: `${((value as FigmaToken).$value as number) / 16}rem`,
+    }
+    return acc
+  }, {} as PandaSpacingToken)
 }
 
 export function formatPrimitiveColors(): PandaColor {

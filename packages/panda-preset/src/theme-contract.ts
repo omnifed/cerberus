@@ -24,7 +24,10 @@ export interface ThemeVariant {
     slotRecipes: Record<string, Record<string, string>>
     textStyles: Record<string, string>
     tokens: {
+      colors: Record<string, string>
       fonts: Record<string, string>
+      gradients: Record<string, string>
+      spacing: Record<string, string>
       zIndex: Record<string, string>
     }
   }
@@ -54,7 +57,10 @@ export const defineTheme: definedTheme = defineThemeContract<ThemeVariant>({
     slotRecipes: {},
     textStyles: {},
     tokens: {
+      colors: {},
       fonts: {},
+      gradients: {},
+      spacing: {},
       zIndex: {},
     },
   },
