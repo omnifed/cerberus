@@ -18,6 +18,7 @@ const text200 = 'colorPalette.text.200'
 
 export const buttonBase = {
   alignItems: 'center',
+  cursor: 'pointer',
   display: 'inline-flex',
   fontWeight: '600',
   gap: '2',

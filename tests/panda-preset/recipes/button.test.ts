@@ -12,6 +12,7 @@ describe('button recipe', () => {
   test('should have a base style', () => {
     expect(button.base).toMatchObject({
       alignItems: 'center',
+      cursor: 'pointer',
       display: 'inline-flex',
       fontWeight: '600',
       gap: '2',
