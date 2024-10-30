@@ -49,7 +49,16 @@ export function Radio(props: PropsWithChildren<RadioProps>) {
   const styles = radio({ size })
 
   return (
-    <div className={cx('group', hstack(), styles.root)} tabIndex={0}>
+    <div
+      className={cx(
+        'group',
+        hstack({
+          gap: 'sm',
+        }),
+        styles.root,
+      )}
+      tabIndex={0}
+    >
       <input
         {...nativeProps}
         {...state}

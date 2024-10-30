@@ -45,12 +45,12 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
 
   const handleUpdateTheme = async (theme: DefaultThemes) => {
     'use server'
-    setCookie('theme', theme)
+    await setCookie('theme', theme)
   }
 
   const handleUpdateMode = async (mode: ColorModes) => {
     'use server'
-    setCookie('colorMode', mode)
+    await setCookie('colorMode', mode)
   }
 
   return (

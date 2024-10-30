@@ -38,6 +38,12 @@
     "type": "route"
   },
   {
+    "label": "Spacing",
+    "route": "/preset/spacing",
+    "tag": "next",
+    "type": "route"
+  },
+  {
     "label": "Typography",
     "route": "/preset/typography",
     "tag": "",

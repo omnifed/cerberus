@@ -214,7 +214,14 @@ export function PromptModal(
             })}
           >
             <Field invalid={!isValid}>
-              <Label htmlFor="confirm" size="md">
+              <Label
+                className={css({
+                  gap: 1,
+                  justifyContent: 'flex-start',
+                })}
+                htmlFor="confirm"
+                size="md"
+              >
                 Type
                 <strong
                   className={css({
