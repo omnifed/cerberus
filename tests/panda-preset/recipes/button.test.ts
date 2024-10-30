@@ -12,6 +12,7 @@ describe('button recipe', () => {
   test('should have a base style', () => {
     expect(button.base).toMatchObject({
       alignItems: 'center',
+      cursor: 'pointer',
       display: 'inline-flex',
       fontWeight: '600',
       gap: '2',
@@ -35,9 +36,6 @@ describe('button recipe', () => {
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.5',
-      },
-      _readOnly: {
-        cursor: 'default',
       },
     })
   })

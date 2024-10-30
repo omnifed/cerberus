@@ -18,6 +18,7 @@ const text200 = 'colorPalette.text.200'
 
 export const buttonBase = {
   alignItems: 'center',
+  cursor: 'pointer',
   display: 'inline-flex',
   fontWeight: '600',
   gap: '2',
@@ -30,8 +31,10 @@ export const buttonBase = {
   transitionTimingFunction: 'ease-in-out',
   userSelect: 'none',
   whiteSpace: 'nowrap',
+  _disabled: {
+    ...formStates._disabled,
+  },
   ...focusStates,
-  ...formStates,
 }
 
 export const sharpRadii = {

@@ -13,6 +13,7 @@ describe('iconButton recipe', () => {
   test('should have a base style', () => {
     expect(iconButton.base).toMatchObject({
       alignItems: 'center',
+      cursor: 'pointer',
       display: 'inline-flex',
       fontWeight: '600',
       gap: '2',
@@ -37,9 +38,6 @@ describe('iconButton recipe', () => {
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.5',
-      },
-      _readOnly: {
-        cursor: 'default',
       },
     })
   })
