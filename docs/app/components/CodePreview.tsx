@@ -1,9 +1,8 @@
 'use client'
 
 import { useState, type PropsWithChildren, type ReactNode } from 'react'
-import { Button, Show, Tag } from '@cerberus-design/react'
+import { Button, Show } from '@cerberus-design/react'
 import { Code, CodeHide } from '@cerberus-design/icons'
-import { css } from '@cerberus/styled-system/css'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
 
 interface CodePreviewProps {
@@ -81,24 +80,6 @@ export function PreviewLayout(props: PropsWithChildren<PreviewLayoutProps>) {
           py: '8',
         })}
       >
-        <span
-          className={css({
-            position: 'absolute',
-            top: '4',
-            left: '4',
-            zIndex: 'decorator',
-          })}
-        >
-          <Tag
-            className={css({
-              bgColor: 'page.surface.initial',
-            })}
-            shape="square"
-          >
-            preview mode
-          </Tag>
-        </span>
-
         {props.children}
       </section>
     </div>
