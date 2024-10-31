@@ -69,6 +69,19 @@ export function AdmonitionPreview() {
     usage: selectedProps.usage as AdmonitionProps['usage'],
   }
 
+  if (selectedProps.palette === 'info') {
+    return (
+      <Admonition {...styles} palette="info">
+        <AdmonitionHeading {...styles} palette="info">
+          {selectedProps.heading}
+        </AdmonitionHeading>
+        <AdmonitionDescription {...styles} palette="info">
+          {selectedProps.description}
+        </AdmonitionDescription>
+      </Admonition>
+    )
+  }
+
   if (selectedProps.palette === 'warning') {
     return (
       <Admonition {...styles} palette="warning">
