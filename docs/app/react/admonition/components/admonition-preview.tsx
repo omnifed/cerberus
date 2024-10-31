@@ -1,6 +1,5 @@
 import { Information } from '@cerberus-design/icons'
-import type { GradientValue } from '@cerberus-design/panda-preset'
-import { Avatar } from '@cerberus-design/react'
+import { Avatar, Tag } from '@cerberus-design/react'
 import { HStack, VStack } from '@cerberus-design/styled-system/jsx'
 import { cx } from '@cerberus/styled-system/css'
 import {
@@ -77,7 +76,8 @@ function MatchAvatar(props: MatchAvatarProps) {
   }
 }
 
-type AdmonitionProps = HTMLAttributes<HTMLDivElement> & AdmonitionVariantProps
+export type AdmonitionProps = HTMLAttributes<HTMLDivElement> &
+  AdmonitionVariantProps
 
 export function Admonition(props: AdmonitionProps) {
   const { children, palette = 'page', usage, ...nativeProps } = props
@@ -141,10 +141,10 @@ function PageAdmonition() {
   )
 }
 
-function InfoAdmonition() {
+function OutlinedPageAdmonition() {
   const styleProps = {
-    palette: 'info',
-    usage: 'filled',
+    palette: 'page',
+    usage: 'outlined',
   } as AdmonitionProps
   return (
     <Admonition {...styleProps}>
@@ -156,59 +156,17 @@ function InfoAdmonition() {
   )
 }
 
-function SuccessAdmonition() {
-  const styleProps = {
-    palette: 'success',
-    usage: 'filled',
-  } as AdmonitionProps
+export function OverviewVersions() {
   return (
-    <Admonition {...styleProps}>
-      <AdmonitionHeading {...styleProps}>When to use</AdmonitionHeading>
-      <AdmonitionDescription {...styleProps}>
-        Use this component when you want to display a page-level message.
-      </AdmonitionDescription>
-    </Admonition>
-  )
-}
-
-function WarningAdmonition() {
-  const styleProps = {
-    palette: 'warning',
-    usage: 'filled',
-  } as AdmonitionProps
-  return (
-    <Admonition {...styleProps}>
-      <AdmonitionHeading {...styleProps}>When to use</AdmonitionHeading>
-      <AdmonitionDescription {...styleProps}>
-        Use this component when you want to display a page-level message.
-      </AdmonitionDescription>
-    </Admonition>
-  )
-}
-
-function DangerAdmonition() {
-  const styleProps = {
-    palette: 'danger',
-    usage: 'filled',
-  } as AdmonitionProps
-  return (
-    <Admonition {...styleProps}>
-      <AdmonitionHeading {...styleProps}>When to use</AdmonitionHeading>
-      <AdmonitionDescription {...styleProps}>
-        Use this component when you want to display a page-level message.
-      </AdmonitionDescription>
-    </Admonition>
-  )
-}
-
-export function Overview() {
-  return (
-    <VStack>
-      <PageAdmonition />
-      <InfoAdmonition />
-      <SuccessAdmonition />
-      <WarningAdmonition />
-      <DangerAdmonition />
+    <VStack gap="lg">
+      <VStack>
+        <PageAdmonition />
+        <Tag>Filled</Tag>
+      </VStack>
+      <VStack>
+        <OutlinedPageAdmonition />
+        <Tag>Outlined</Tag>
+      </VStack>
     </VStack>
   )
 }

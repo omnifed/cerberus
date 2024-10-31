@@ -36,13 +36,17 @@ export const admonition: Partial<SlotRecipeConfig> = defineSlotRecipe({
   base: {
     root: {
       // combine with hstack
+      color: 'colorPalette.text.100',
       p: 'lg',
       rounded: 'sm',
     },
     heading: {
+      color: 'inherit',
+      mb: 'xs',
       textStyle: 'heading-xs',
     },
     description: {
+      color: 'inherit',
       textStyle: 'body-sm',
       textWrap: 'pretty',
     },
@@ -60,7 +64,6 @@ export const admonition: Partial<SlotRecipeConfig> = defineSlotRecipe({
       filled: {
         root: {
           bgColor: 'colorPalette.surface.100',
-          color: 'colorPalette.text.100',
         },
       },
       outlined: {

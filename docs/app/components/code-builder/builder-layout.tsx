@@ -26,7 +26,7 @@ export default function BuilderLayout(
     >
       <div
         className={hstack({
-          gradient: 'charon-light',
+          gradient: 'nyx-light',
           flexDirection: {
             '@/sm': 'column',
             '@/md': 'row',

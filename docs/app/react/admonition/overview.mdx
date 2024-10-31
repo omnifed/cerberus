@@ -6,7 +6,8 @@ a11y: 'touch-target'
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
-import { Overview } from './components/admonition-preview'
+import { Overview, OverviewVersions } from './components/admonition-preview'
+import {LivePlayground} from './components/live-playground'
 
 <OverviewList rules={[
   'Can contain an optional leading icon based Avatar',
@@ -17,8 +18,8 @@ import { Overview } from './components/admonition-preview'
 
 ## Example
 
-<CodePreview preview={<Overview />} />
-{/* <LivePlayground /> */}
+<CodePreview preview={<OverviewVersions />} />
+<LivePlayground />
 
 ## Resources
 
