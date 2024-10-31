@@ -1,7 +1,7 @@
 import { Information } from '@cerberus-design/icons'
 import { Avatar, Tag } from '@cerberus-design/react'
 import { HStack, VStack } from '@cerberus-design/styled-system/jsx'
-import { cx } from '@cerberus/styled-system/css'
+import { css, cx } from '@cerberus/styled-system/css'
 import {
   admonition,
   type AdmonitionVariantProps,
@@ -135,7 +135,8 @@ function PageAdmonition() {
     <Admonition {...styleProps}>
       <AdmonitionHeading {...styleProps}>When to use</AdmonitionHeading>
       <AdmonitionDescription {...styleProps}>
-        Use this component when you want to display a page-level message.
+        Use this component when you want to display a page-level message.{' '}
+        <a href="#">Learn more</a>
       </AdmonitionDescription>
     </Admonition>
   )
@@ -150,9 +151,46 @@ function OutlinedPageAdmonition() {
     <Admonition {...styleProps}>
       <AdmonitionHeading {...styleProps}>When to use</AdmonitionHeading>
       <AdmonitionDescription {...styleProps}>
-        Use this component when you want to display a page-level message.
+        Use this component when you want to display a page-level message.{' '}
+        <a href="#">Learn more</a>
       </AdmonitionDescription>
     </Admonition>
+  )
+}
+
+export function CustomAdmonition() {
+  const styleProps = {
+    palette: 'page',
+    usage: 'outlined',
+  } as AdmonitionProps
+
+  return (
+    <div
+      className={css({
+        w: '1/2',
+      })}
+    >
+      <Admonition
+        {...styleProps}
+        className={css({
+          bgColor: 'black',
+          borderColor: 'yellow',
+          color: 'yellow',
+        })}
+      >
+        <AdmonitionHeading {...styleProps}>Wu-Tang Forever</AdmonitionHeading>
+        <AdmonitionDescription {...styleProps}>
+          President's are temporary, but Wu-Tang is forever.{' '}
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.google.com/search?q=wu+tang+clna&oq=wu+tang+clna&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCDE5NTJqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8"
+          >
+            Learn more
+          </a>
+        </AdmonitionDescription>
+      </Admonition>
+    </div>
   )
 }
 

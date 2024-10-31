@@ -7,6 +7,7 @@ import {
   WARNING,
   nonActionPalettes,
 } from '../shared/palettes'
+import { focusStates } from '../shared/states'
 
 /**
  * This module contains the admonition recipe.
@@ -47,10 +48,13 @@ export const admonition: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     description: {
       color: 'inherit',
-      // brand requirement to prevent word vomit
-      lineClamp: 2,
       textStyle: 'body-sm',
       textWrap: 'pretty',
+      '& > :is(a)': {
+        rounded: 'sm',
+        textStyle: 'link',
+        ...focusStates,
+      },
     },
   },
 
