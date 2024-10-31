@@ -47,6 +47,8 @@ export const admonition: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     description: {
       color: 'inherit',
+      // brand requirement to prevent word vomit
+      lineClamp: 2,
       textStyle: 'body-sm',
       textWrap: 'pretty',
     },
