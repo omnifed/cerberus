@@ -129,7 +129,7 @@
     "page": {
       "100": {
         "$type": "color",
-        "$value": "acheron.neutral.40",
+        "$value": "acheron.neutral.50",
         "$description": "Static text with the least amount of emphasis, like disabled text elements or captions. ",
         "$extensions": {
           "com.figma": {
