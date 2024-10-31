@@ -1,3 +1,4 @@
+import { WuTangLogo } from '@/app/components/icons/wu-tang-icon'
 import {
   Admonition,
   AdmonitionDescription,
@@ -5,7 +6,7 @@ import {
   Tag,
   type AdmonitionProps,
 } from '@cerberus-design/react'
-import { VStack } from '@cerberus-design/styled-system/jsx'
+import { Circle, VStack } from '@cerberus-design/styled-system/jsx'
 import { css } from '@cerberus/styled-system/css'
 
 function PageAdmonition() {
@@ -59,6 +60,11 @@ export function CustomAdmonition() {
           borderColor: 'yellow',
           color: 'yellow',
         })}
+        icon={
+          <Circle size="6">
+            <WuTangLogo />
+          </Circle>
+        }
       >
         <AdmonitionHeading {...styleProps}>Wu-Tang Forever</AdmonitionHeading>
         <AdmonitionDescription {...styleProps}>

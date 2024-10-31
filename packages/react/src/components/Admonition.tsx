@@ -4,10 +4,10 @@ import {
 } from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus-design/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
-import type { HTMLAttributes } from 'react'
+import { $cerberusIcons } from '../config/defineIcons'
+import type { HTMLAttributes, ReactNode } from 'react'
 import { Avatar } from './Avatar'
-
-import { Information } from '@cerberus/icons'
+import { Show } from './Show'
 
 /**
  * This module provides a set of components for creating admonitions.
@@ -15,7 +15,12 @@ import { Information } from '@cerberus/icons'
  */
 
 export type AdmonitionProps = HTMLAttributes<HTMLDivElement> &
-  AdmonitionVariantProps
+  AdmonitionVariantProps & {
+    /**
+     * One off replacement for the icon.
+     */
+    icon?: ReactNode
+  }
 
 /**
  * The `Admonition` component is used to create an admonition.
@@ -31,7 +36,7 @@ export type AdmonitionProps = HTMLAttributes<HTMLDivElement> &
  * @see https://cerberus.digitalu.design/react/admonition
  */
 export function Admonition(props: AdmonitionProps) {
-  const { children, palette = 'page', usage, ...nativeProps } = props
+  const { children, palette = 'page', usage, icon, ...nativeProps } = props
   return (
     <aside
       {...nativeProps}
@@ -44,7 +49,9 @@ export function Admonition(props: AdmonitionProps) {
         admonition({ palette, usage }).root,
       )}
     >
-      <MatchAvatar palette={palette} />
+      <Show when={Boolean(icon)} fallback={<MatchAvatar palette={palette} />}>
+        {icon}
+      </Show>
       <div>{children}</div>
     </aside>
   )
@@ -115,13 +122,19 @@ export function AdmonitionDescription(props: AdmonitionDescriptionProps) {
 type MatchAvatarProps = AdmonitionVariantProps
 
 function MatchAvatar(props: MatchAvatarProps) {
+  const {
+    infoNotification: InfoIcon,
+    successNotification: SuccessIcon,
+    warningNotification: WarningIcon,
+    dangerNotification: DangerIcon,
+  } = $cerberusIcons
   switch (props.palette) {
     case 'page':
       return (
         <Avatar
           gradient="charon-light"
           ariaLabel=""
-          icon={<Information />}
+          icon={<InfoIcon />}
           size="sm"
           src=""
         />
@@ -131,7 +144,7 @@ function MatchAvatar(props: MatchAvatarProps) {
         <Avatar
           gradient="amphiaraus-dark"
           ariaLabel=""
-          icon={<Information />}
+          icon={<InfoIcon />}
           size="sm"
           src=""
         />
@@ -141,7 +154,7 @@ function MatchAvatar(props: MatchAvatarProps) {
         <Avatar
           gradient="thanatos-dark"
           ariaLabel=""
-          icon={<Information />}
+          icon={<SuccessIcon />}
           size="sm"
           src=""
         />
@@ -151,7 +164,7 @@ function MatchAvatar(props: MatchAvatarProps) {
         <Avatar
           gradient="asphodel-light"
           ariaLabel=""
-          icon={<Information />}
+          icon={<WarningIcon />}
           size="sm"
           src=""
         />
@@ -161,7 +174,7 @@ function MatchAvatar(props: MatchAvatarProps) {
         <Avatar
           gradient="hades-light"
           ariaLabel=""
-          icon={<Information />}
+          icon={<DangerIcon />}
           size="sm"
           src=""
         />
