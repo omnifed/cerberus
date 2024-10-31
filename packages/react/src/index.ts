@@ -5,6 +5,7 @@
 
 // components
 
+export * from './components/Admonition'
 export * from './components/Avatar'
 export * from './components/Button'
 export * from './components/Checkbox'

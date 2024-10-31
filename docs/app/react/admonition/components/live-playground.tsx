@@ -8,7 +8,7 @@ import {
   AdmonitionDescription,
   AdmonitionHeading,
   type AdmonitionProps,
-} from './admonition-preview'
+} from '@cerberus-design/react'
 
 const api = {
   palette: builder.Enum('palette', [
