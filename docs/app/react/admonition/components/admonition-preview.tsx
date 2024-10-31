@@ -64,15 +64,7 @@ function MatchAvatar(props: MatchAvatarProps) {
       )
 
     default:
-      return (
-        <Avatar
-          gradient="charon-light"
-          ariaLabel=""
-          icon={<Information />}
-          size="sm"
-          src=""
-        />
-      )
+      throw new Error('Unsupported admonition palette')
   }
 }
 
@@ -180,7 +172,7 @@ export function CustomAdmonition() {
       >
         <AdmonitionHeading {...styleProps}>Wu-Tang Forever</AdmonitionHeading>
         <AdmonitionDescription {...styleProps}>
-          President's are temporary, but Wu-Tang is forever.{' '}
+          President&apos;s are temporary, but Wu-Tang is forever.{' '}
           <a
             target="_blank"
             rel="noreferrer"
