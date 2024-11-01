@@ -375,6 +375,7 @@ export interface CerberusTextStyle {
  * - 6750-5214: h4
  * - 6750-5216: h5
  * - 6750-5218: h6
+ * - 13983-8564: heading-2xs
  * - 6750-5220: body-lg
  * - 6750-5229: body-md
  * - 6750-5231: body-sm

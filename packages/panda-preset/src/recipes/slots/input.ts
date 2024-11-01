@@ -40,7 +40,7 @@ export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transform: 'translateY(-50%)',
       zIndex: 'decorator',
       _peerInvalid: {
-        color: 'danger.text.200',
+        color: 'danger.text.100',
       },
     },
     startIcon: {

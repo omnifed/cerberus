@@ -34,7 +34,7 @@ describe('label recipe', () => {
         textStyle: 'label-sm',
       },
       md: {
-        textStyle: 'label-md',
+        textStyle: 'body-md',
       },
     })
   })
