@@ -2,7 +2,7 @@
   "6750:8547": {
     "document": {
       "id": "6750:8547",
-      "name": "display Large",
+      "name": "display lg",
       "type": "TEXT",
       "scrollBehavior": "SCROLLS",
       "boundVariables": {
@@ -56,20 +56,20 @@
       "absoluteBoundingBox": {
         "x": -4155,
         "y": -616,
-        "width": 332,
+        "width": 241,
         "height": 58
       },
       "absoluteRenderBounds": {
         "x": -4153.65576171875,
         "y": -608.447998046875,
-        "width": 328.7548828125,
+        "width": 235.740478515625,
         "height": 51.64801025390625
       },
       "constraints": {
         "vertical": "TOP",
         "horizontal": "LEFT"
       },
-      "characters": "display Large",
+      "characters": "display lg",
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Bold",
@@ -111,7 +111,7 @@
   "6750:8548": {
     "document": {
       "id": "6750:8548",
-      "name": "Display Medium",
+      "name": "Display md",
       "type": "TEXT",
       "scrollBehavior": "SCROLLS",
       "boundVariables": {
@@ -165,20 +165,20 @@
       "absoluteBoundingBox": {
         "x": -4155,
         "y": -513,
-        "width": 323,
+        "width": 226,
         "height": 46
       },
       "absoluteRenderBounds": {
         "x": -4152.52001953125,
         "y": -508.0400085449219,
-        "width": 317.433349609375,
+        "width": 220.3515625,
         "height": 42.67999267578125
       },
       "constraints": {
         "vertical": "TOP",
         "horizontal": "LEFT"
       },
-      "characters": "Display Medium",
+      "characters": "Display md",
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Bold",
@@ -220,7 +220,7 @@
   "6750:8549": {
     "document": {
       "id": "6750:8549",
-      "name": "Display Small",
+      "name": "Display sm",
       "type": "TEXT",
       "scrollBehavior": "SCROLLS",
       "boundVariables": {
@@ -274,20 +274,20 @@
       "absoluteBoundingBox": {
         "x": -4155,
         "y": -361,
-        "width": 207,
+        "width": 169,
         "height": 34
       },
       "absoluteRenderBounds": {
         "x": -4153.14013671875,
         "y": -357.0299987792969,
-        "width": 203.209716796875,
+        "width": 164.45458984375,
         "height": 32.010009765625
       },
       "constraints": {
         "vertical": "TOP",
         "horizontal": "LEFT"
       },
-      "characters": "Display Small",
+      "characters": "Display sm",
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Bold",
@@ -329,7 +329,7 @@
   "6750:5204": {
     "document": {
       "id": "6750:5204",
-      "name": "heading one",
+      "name": "heading 2xl",
       "type": "TEXT",
       "scrollBehavior": "SCROLLS",
       "boundVariables": {
@@ -383,20 +383,20 @@
       "absoluteBoundingBox": {
         "x": -4155,
         "y": 43,
-        "width": 270,
+        "width": 248,
         "height": 50
       },
       "absoluteRenderBounds": {
         "x": -4152.10205078125,
         "y": 50.071998596191406,
-        "width": 264.729736328125,
+        "width": 241.227783203125,
         "height": 44.394004821777344
       },
       "constraints": {
         "vertical": "TOP",
         "horizontal": "LEFT"
       },
-      "characters": "heading one",
+      "characters": "heading 2xl",
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -438,7 +438,7 @@
   "6750:5210": {
     "document": {
       "id": "6750:5210",
-      "name": "heading two",
+      "name": "heading xl",
       "type": "TEXT",
       "scrollBehavior": "SCROLLS",
       "boundVariables": {
@@ -492,20 +492,20 @@
       "absoluteBoundingBox": {
         "x": -4155,
         "y": 146,
-        "width": 229,
+        "width": 192,
         "height": 43
       },
       "absoluteRenderBounds": {
         "x": -4152.51611328125,
         "y": 151.7760009765625,
-        "width": 225.205322265625,
+        "width": 186.0947265625,
         "height": 38.052001953125
       },
       "constraints": {
         "vertical": "TOP",
         "horizontal": "LEFT"
       },
-      "characters": "heading two",
+      "characters": "heading xl",
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -547,7 +547,7 @@
   "6750:5212": {
     "document": {
       "id": "6750:5212",
-      "name": "heading three",
+      "name": "heading lg",
       "type": "TEXT",
       "scrollBehavior": "SCROLLS",
       "boundVariables": {
@@ -601,20 +601,20 @@
       "absoluteBoundingBox": {
         "x": -4155,
         "y": 242,
-        "width": 216,
+        "width": 164,
         "height": 36
       },
       "absoluteRenderBounds": {
         "x": -4152.93017578125,
         "y": 247.47999572753906,
-        "width": 212.2373046875,
+        "width": 159.257568359375,
         "height": 31.710006713867188
       },
       "constraints": {
         "vertical": "TOP",
         "horizontal": "LEFT"
       },
-      "characters": "heading three",
+      "characters": "heading lg",
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -656,7 +656,7 @@
   "6750:5214": {
     "document": {
       "id": "6750:5214",
-      "name": "heading four",
+      "name": "heading md",
       "type": "TEXT",
       "scrollBehavior": "SCROLLS",
       "boundVariables": {
@@ -710,20 +710,20 @@
       "absoluteBoundingBox": {
         "x": -4155,
         "y": 329,
-        "width": 160,
+        "width": 152,
         "height": 29
       },
       "absoluteRenderBounds": {
         "x": -4153.34423828125,
         "y": 333.1839904785156,
-        "width": 157.267822265625,
+        "width": 148.034912109375,
         "height": 25.368011474609375
       },
       "constraints": {
         "vertical": "TOP",
         "horizontal": "LEFT"
       },
-      "characters": "heading four",
+      "characters": "heading md",
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -765,7 +765,7 @@
   "6750:5216": {
     "document": {
       "id": "6750:5216",
-      "name": "heading five",
+      "name": "heading sm",
       "type": "TEXT",
       "scrollBehavior": "SCROLLS",
       "boundVariables": {
@@ -819,20 +819,20 @@
       "absoluteBoundingBox": {
         "x": -4155,
         "y": 411,
-        "width": 129,
+        "width": 124,
         "height": 24
       },
       "absoluteRenderBounds": {
         "x": -4153.6201171875,
         "y": 414.32000732421875,
-        "width": 126.718994140625,
+        "width": 120.78369140625,
         "height": 21.139984130859375
       },
       "constraints": {
         "vertical": "TOP",
         "horizontal": "LEFT"
       },
-      "characters": "heading five",
+      "characters": "heading sm",
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -874,7 +874,7 @@
   "6750:5218": {
     "document": {
       "id": "6750:5218",
-      "name": "heading six",
+      "name": "heading xs",
       "type": "TEXT",
       "scrollBehavior": "SCROLLS",
       "boundVariables": {
@@ -928,20 +928,20 @@
       "absoluteBoundingBox": {
         "x": -4155,
         "y": 488,
-        "width": 97,
+        "width": 93,
         "height": 20
       },
       "absoluteRenderBounds": {
         "x": -4153.89599609375,
         "y": 491.45599365234375,
-        "width": 95.6240234375,
+        "width": 90.228759765625,
         "height": 16.912017822265625
       },
       "constraints": {
         "vertical": "TOP",
         "horizontal": "LEFT"
       },
-      "characters": "heading six",
+      "characters": "heading xs",
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -977,6 +977,115 @@
         "styleType": "TEXT",
         "remote": false,
         "description": "Use mostly as a subhead or body size text that is meant to be emphasized"
+      }
+    }
+  },
+  "13983:8564": {
+    "document": {
+      "id": "13983:8564",
+      "name": "heading 2xs",
+      "type": "TEXT",
+      "scrollBehavior": "SCROLLS",
+      "boundVariables": {
+        "fills": [
+          {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:6554:4910"
+          }
+        ],
+        "fontWeight": [
+          {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:6957:25389"
+          }
+        ],
+        "fontFamily": [
+          {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:6957:22852"
+          }
+        ],
+        "fontSize": [
+          {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:6959:25442"
+          }
+        ]
+      },
+      "blendMode": "PASS_THROUGH",
+      "fills": [
+        {
+          "blendMode": "NORMAL",
+          "type": "SOLID",
+          "color": {
+            "r": 0.07450980693101883,
+            "g": 0,
+            "b": 0.1411764770746231,
+            "a": 1
+          },
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6554:4910"
+            }
+          }
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "strokeAlign": "OUTSIDE",
+      "absoluteBoundingBox": {
+        "x": -4155,
+        "y": 542,
+        "width": 85,
+        "height": 18
+      },
+      "absoluteRenderBounds": {
+        "x": -4154.0341796875,
+        "y": 545.0239868164062,
+        "width": 83.0693359375,
+        "height": 14.79803466796875
+      },
+      "constraints": {
+        "vertical": "TOP",
+        "horizontal": "LEFT"
+      },
+      "characters": "heading 2xs",
+      "style": {
+        "fontFamily": "Poppins",
+        "fontPostScriptName": "Poppins-SemiBold",
+        "fontWeight": 600,
+        "textAutoResize": "WIDTH_AND_HEIGHT",
+        "fontSize": 14,
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP",
+        "letterSpacing": -0.14,
+        "lineHeightPx": 17.5,
+        "lineHeightPercent": 83.33333587646484,
+        "lineHeightPercentFontSize": 125,
+        "lineHeightUnit": "FONT_SIZE_%"
+      },
+      "layoutVersion": 4,
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "styles": {
+        "text": "6750:7858"
+      },
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
+      "effects": [],
+      "interactions": []
+    },
+    "components": {},
+    "componentSets": {},
+    "schemaVersion": 0,
+    "styles": {
+      "6750:7858": {
+        "key": "c22442db817eae5e7a50cd88e97e5b29746e3794",
+        "name": "heading/2xs",
+        "styleType": "TEXT",
+        "remote": false,
+        "description": "used in chips or small pieces of information that need more emphasis than a small label"
       }
     }
   },
@@ -1432,7 +1541,7 @@
         "fontWeight": [
           {
             "type": "VARIABLE_ALIAS",
-            "id": "VariableID:6957:25389"
+            "id": "VariableID:6957:25391"
           }
         ],
         "fontFamily": [
@@ -1444,7 +1553,7 @@
         "fontSize": [
           {
             "type": "VARIABLE_ALIAS",
-            "id": "VariableID:6959:25442"
+            "id": "VariableID:6959:25443"
           }
         ]
       },
@@ -1473,14 +1582,14 @@
       "absoluteBoundingBox": {
         "x": -4155,
         "y": 981,
-        "width": 98,
-        "height": 18
+        "width": 116,
+        "height": 19
       },
       "absoluteRenderBounds": {
-        "x": -4154.0341796875,
-        "y": 984.0239868164062,
-        "width": 95.967529296875,
-        "height": 11.10198974609375
+        "x": -4153.76806640625,
+        "y": 983.823974609375,
+        "width": 112.694091796875,
+        "height": 12.32000732421875
       },
       "constraints": {
         "vertical": "TOP",
@@ -1489,23 +1598,23 @@
       "characters": "label medium",
       "style": {
         "fontFamily": "Poppins",
-        "fontPostScriptName": "Poppins-SemiBold",
-        "fontWeight": 600,
+        "fontPostScriptName": "Poppins-Regular",
+        "fontWeight": 400,
         "textAutoResize": "WIDTH_AND_HEIGHT",
-        "fontSize": 14,
+        "fontSize": 16,
         "textAlignHorizontal": "LEFT",
         "textAlignVertical": "TOP",
-        "letterSpacing": -0.14,
-        "lineHeightPx": 17.5,
-        "lineHeightPercent": 83.33333587646484,
-        "lineHeightPercentFontSize": 125,
+        "letterSpacing": 0.32,
+        "lineHeightPx": 19.200000762939453,
+        "lineHeightPercent": 80.00000762939453,
+        "lineHeightPercentFontSize": 120.00000762939453,
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
       "characterStyleOverrides": [],
       "styleOverrideTable": {},
       "styles": {
-        "text": "6750:7858"
+        "text": "13998:4"
       },
       "lineTypes": ["NONE"],
       "lineIndentations": [0],
@@ -1516,12 +1625,12 @@
     "componentSets": {},
     "schemaVersion": 0,
     "styles": {
-      "6750:7858": {
-        "key": "c22442db817eae5e7a50cd88e97e5b29746e3794",
+      "13998:4": {
+        "key": "172b5c997341ac58511e30c32fc06c356ff31a2d",
         "name": "label/md",
         "styleType": "TEXT",
         "remote": false,
-        "description": "used in chips or small pieces of information that need more emphasis than a small label"
+        "description": ""
       }
     }
   },

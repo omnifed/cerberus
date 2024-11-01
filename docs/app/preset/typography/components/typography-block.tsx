@@ -37,6 +37,9 @@ const textStyleCSS = css({
   '&[data-style="heading-xs"]': {
     textStyle: 'h6',
   },
+  '&[data-style="heading-2xs"]': {
+    textStyle: 'heading-2xs',
+  },
   '&[data-style="body-xs"]': {
     textStyle: 'body-xs',
   },
