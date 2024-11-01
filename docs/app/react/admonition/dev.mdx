@@ -26,6 +26,7 @@ import {
 ```tsx title="button.tsx"
 import { Admonition, AdmonitionHeading, AdmonitionDescription } from '@cerberus/react'
 import { css } from '@cerberus/styled-system/css'
+import { Circle } from '@cerberus/styled-system/jsx'
 
 export function CustomAdmonition() {
   const styleProps = {
@@ -38,7 +39,13 @@ export function CustomAdmonition() {
       bgColor: 'black',
       borderColor: 'yellow',
       color: 'yellow',
-    })}>
+    })}
+    icon={
+      <Circle size="6">
+        <WuTangLogo />
+      </Circle>
+    }
+    >
       <AdmonitionHeading {...styleProps}>When to use</AdmonitionHeading>
       <AdmonitionDescription {...styleProps}>
         Use this component when you want to display a page-level message.{' '}
@@ -56,7 +63,9 @@ export function CustomAdmonition() {
 
 ```ts showLineNumbers=false
 export type AdmonitionProps = HTMLAttributes<HTMLDivElement> &
-  AdmonitionVariantProps
+  AdmonitionVariantProps & {
+    icon?: ReactNode
+  }
 
 define function Admonition(props: AdmonitionProps): ReactNode
 ````
@@ -69,6 +78,7 @@ The `Admonition` component accepts the following props:
 | -------- | ------- | -------------------------------------- |
 | palette     | `action`   | The color palette of the button. |
 | usage | `filled`    | The style treatment of the button.    |
+| icon | `null`    | The icon to replace the default status ones.    |
 
 ### AdmonitionHeading
 

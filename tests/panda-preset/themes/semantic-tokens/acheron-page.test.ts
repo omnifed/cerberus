@@ -196,13 +196,13 @@ describe('page', () => {
 
   test('should have a acheron text.100 property', () => {
     expect(token.text[100].value.base).toEqual(
-      getSemanticToken`acheron.neutral.30`,
+      getSemanticToken`acheron.neutral.40`,
     )
     expect(token.text[100].value._darkMode).toEqual(
-      getSemanticToken`acheron.neutral.30`,
+      getSemanticToken`acheron.neutral.40`,
     )
     expect(token.text[100].value._lightMode).toEqual(
-      getSemanticToken`acheron.neutral.40`,
+      getSemanticToken`acheron.neutral.50`,
     )
   })
 

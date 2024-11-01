@@ -128,7 +128,7 @@ describe('success', () => {
       formatSemanticToken`cerberus.success.90`,
     )
     expect(successTokens.success.surface['100'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.success.30`,
+      formatSemanticToken`cerberus.success.20`,
     )
   })
 
@@ -164,10 +164,10 @@ describe('success', () => {
 
   test('should have a cerberus text.100 property', () => {
     expect(successTokens.success.text[100].value.base).toEqual(
-      formatSemanticToken`cerberus.success.40`,
+      formatSemanticToken`cerberus.success.30`,
     )
     expect(successTokens.success.text[100].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.success.40`,
+      formatSemanticToken`cerberus.success.30`,
     )
     expect(successTokens.success.text[100].value._lightMode).toEqual(
       formatSemanticToken`cerberus.success.80`,

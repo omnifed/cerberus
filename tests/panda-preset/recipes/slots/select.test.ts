@@ -20,7 +20,7 @@ describe('select recipe', () => {
   test('should have a input style', () => {
     expect(select.base?.input).toMatchObject({
       border: '1px solid',
-      borderColor: 'action.border.initial',
+      borderColor: 'action.border.100',
       color: 'page.text.initial',
       h: 'full',
       pxi: '4',

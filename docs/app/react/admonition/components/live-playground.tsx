@@ -8,7 +8,7 @@ import {
   AdmonitionDescription,
   AdmonitionHeading,
   type AdmonitionProps,
-} from './admonition-preview'
+} from '@cerberus-design/react'
 
 const api = {
   palette: builder.Enum('palette', [
@@ -67,6 +67,19 @@ export function AdmonitionPreview() {
   const styles = {
     palette: selectedProps.palette as AdmonitionProps['palette'],
     usage: selectedProps.usage as AdmonitionProps['usage'],
+  }
+
+  if (selectedProps.palette === 'info') {
+    return (
+      <Admonition {...styles} palette="info">
+        <AdmonitionHeading {...styles} palette="info">
+          {selectedProps.heading}
+        </AdmonitionHeading>
+        <AdmonitionDescription {...styles} palette="info">
+          {selectedProps.description}
+        </AdmonitionDescription>
+      </Admonition>
+    )
   }
 
   if (selectedProps.palette === 'warning') {

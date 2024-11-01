@@ -3,6 +3,7 @@ import { slotRecipes } from '@cerberus-design/panda-preset'
 
 describe('notification recipe', () => {
   const { notification } = slotRecipes
+  const TEXT_2OO = 'colorPalette.text.200'
 
   test('should be exported', () => {
     expect(notification).toBeDefined()
@@ -10,7 +11,7 @@ describe('notification recipe', () => {
 
   test('should have a center style', () => {
     expect(notification.base?.center).toMatchObject({
-      color: 'colorPalette.text.200',
+      color: TEXT_2OO,
       position: 'fixed',
       right: '4',
       textAlign: 'right',
@@ -22,7 +23,7 @@ describe('notification recipe', () => {
   test('should have a base style', () => {
     expect(notification.base?.dialog).toMatchObject({
       bgColor: 'colorPalette.surface.200',
-      color: 'colorPalette.text.200',
+      color: TEXT_2OO,
       maxW: '29rem',
       minH: '3.125rem',
       opacity: '0',
@@ -42,7 +43,7 @@ describe('notification recipe', () => {
 
   test('should have an icon style', () => {
     expect(notification.base?.icon).toMatchObject({
-      color: 'colorPalette.text.100',
+      color: TEXT_2OO,
       paddingInlineStart: '4',
     })
   })
