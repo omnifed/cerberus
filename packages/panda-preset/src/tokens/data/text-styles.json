@@ -1085,7 +1085,7 @@
         "name": "heading/2xs",
         "styleType": "TEXT",
         "remote": false,
-        "description": "used in chips or small pieces of information that need more emphasis than a small label"
+        "description": "used in chips or small pieces of information that introduce main content (a heading for a list of names etc)"
       }
     }
   },
@@ -1630,7 +1630,7 @@
         "name": "label/md",
         "styleType": "TEXT",
         "remote": false,
-        "description": ""
+        "description": "For large input fields that are designated to be more ephasized, used in rare cases."
       }
     }
   },
