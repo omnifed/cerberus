@@ -627,7 +627,7 @@
     "success": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.success.30",
+        "$value": "cerberus.success.20",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
