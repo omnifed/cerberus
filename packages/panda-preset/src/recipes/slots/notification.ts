@@ -15,6 +15,8 @@ import { button } from '../button'
  * @module
  */
 
+const TEXT_2OO = 'colorPalette.text.200'
+
 function getNotificationPalette(
   palette: 'info' | 'success' | 'warning' | 'danger',
 ) {
@@ -56,7 +58,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   base: {
     center: {
-      color: 'colorPalette.text.200',
+      color: TEXT_2OO,
       position: 'fixed',
       right: '4',
       textAlign: 'right',
@@ -65,7 +67,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     dialog: {
       bgColor: 'colorPalette.surface.200',
-      color: 'colorPalette.text.200',
+      color: TEXT_2OO,
       maxW: '29rem',
       minH: '3.125rem',
       opacity: '0',
@@ -82,7 +84,7 @@ export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
     },
     icon: {
-      color: 'colorPalette.text.100',
+      color: TEXT_2OO,
       paddingInlineStart: '4',
     },
     heading: {

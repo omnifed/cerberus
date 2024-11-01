@@ -20,7 +20,7 @@ describe('checkbox recipe', () => {
       appearance: 'none',
       bgColor: 'page.surface.initial',
       border: '1px solid',
-      borderColor: 'action.border.initial',
+      borderColor: 'action.border.100',
       color: 'page.text.initial',
       h: 'full',
       pxi: '0',
