@@ -38,7 +38,7 @@ export const label: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         textStyle: 'label-sm',
       },
       md: {
-        textStyle: 'label-md',
+        textStyle: 'body-md',
       },
     },
   },

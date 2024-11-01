@@ -13,7 +13,7 @@ describe('fieldMessage recipe', () => {
       color: 'page.text.200',
       textStyle: 'label-sm',
       _userInvalid: {
-        color: 'danger.text.200',
+        color: 'danger.text.100',
       },
     })
   })
