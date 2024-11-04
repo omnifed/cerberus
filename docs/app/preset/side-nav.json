@@ -12,7 +12,7 @@
   {
     "label": "Customizing",
     "route": "/preset/customizing",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
@@ -28,25 +28,25 @@
   {
     "label": "Colors",
     "route": "/preset/colors",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
     "label": "Gradients",
     "route": "/preset/gradients",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
     "label": "Spacing",
     "route": "/preset/spacing",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
     "label": "Typography",
     "route": "/preset/typography",
-    "tag": "",
+    "tag": "new",
     "type": "route"
   },
   {

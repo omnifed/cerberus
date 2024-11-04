@@ -7,7 +7,8 @@ import {
 import { css } from '@cerberus-design/styled-system/css'
 
 const cerbAdmonitionStyles = {
-  rounded: 'lg',
+  mb: 6,
+  rounded: '2xl',
 }
 
 interface AdmonitionTypeProps {
