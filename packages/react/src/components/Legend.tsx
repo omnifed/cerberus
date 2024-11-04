@@ -4,11 +4,8 @@ import { css, cx } from '@cerberus/styled-system/css'
 import { type HTMLAttributes } from 'react'
 import { useFieldContext } from '../context/field'
 import { Show } from './Show'
-import {
-  label,
-  type LabelVariantProps,
-} from '@cerberus-design/styled-system/recipes'
-import { hstack } from '@cerberus-design/styled-system/patterns'
+import { label, type LabelVariantProps } from '@cerberus/styled-system/recipes'
+import { hstack } from '@cerberus/styled-system/patterns'
 
 /**
  * This module contains the Fieldset component.

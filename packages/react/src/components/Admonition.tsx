@@ -2,7 +2,7 @@ import {
   admonition,
   type AdmonitionVariantProps,
 } from '@cerberus/styled-system/recipes'
-import { cx } from '@cerberus-design/styled-system/css'
+import { cx } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
 import { $cerberusIcons } from '../config/defineIcons'
 import type { HTMLAttributes, ReactNode } from 'react'
