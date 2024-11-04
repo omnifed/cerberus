@@ -74,7 +74,7 @@
   {
     "label": "Utilities",
     "route": "/preset/utilities",
-    "tag": "",
+    "tag": "new",
     "type": "route"
   },
   {
