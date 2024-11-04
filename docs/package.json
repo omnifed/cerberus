@@ -16,7 +16,7 @@
     "@cerberus-design/styled-system": "workspace:*",
     "next": "15.0.2",
     "react": "19.0.0-rc-0bc30748-20241028",
-    "react-dom": "19.0.0-rc-0bc30748-20241028",
+    "react-dom": "19.0.0-rc.0",
     "react-syntax-highlighter": "^15.5.0",
     "remove": "^0.1.5"
   },
