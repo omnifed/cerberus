@@ -18,8 +18,8 @@
       "Tooltip",
       "Table"
     ],
-    "next": ["Admonition"],
-    "new": ["Progress Indicators"]
+    "next": [],
+    "new": ["Admonition"]
   },
   "containment": {
     "name": "Containment",
@@ -53,7 +53,7 @@
       "Field Message",
       "File Uploader"
     ],
-    "next": ["Fieldset"],
-    "new": []
+    "next": [],
+    "new": ["Fieldset"]
   }
 }

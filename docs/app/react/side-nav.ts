@@ -22,7 +22,7 @@ const overviewGroup: CategoriesList = {
       'Show',
     ],
     next: [],
-    new: ['Loading States'],
+    new: [''],
   },
 }
 const hooksGroup: CategoriesList = {
