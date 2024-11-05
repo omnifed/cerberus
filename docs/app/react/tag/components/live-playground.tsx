@@ -55,11 +55,7 @@ export function MyTag(props: TagProps) {
         {props.children}
       </Tag>
     }>
-      <Tag
-        shape={{shape}}
-        usage={{usage}}
-        onClick={props.onClick}
-      >
+      <Tag onClick={props.onClick}>
         {props.children}
       </Tag>
     </Show>
@@ -83,7 +79,7 @@ export function TagPreview() {
     return (
       <Tag
         shape={selectedProps.shape as ClickableTagProps['shape']}
-        usage={selectedProps.usage as ClickableTagProps['usage']}
+        usage="filled"
         onClick={handleClick as ClickableTagProps['onClick']}
       >
         {selectedProps.text || 'Add Text'}

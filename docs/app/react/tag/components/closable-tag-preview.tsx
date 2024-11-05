@@ -1,10 +1,9 @@
 'use client'
 
 import { Tag } from '@cerberus-design/react'
-import type { TagPreviewProps } from './tag-preview'
 import { useCallback } from 'react'
 
-export function ClosableTagPreview(props: TagPreviewProps) {
+export function ClosableTagPreview() {
   const handleClick = useCallback(() => {
     console.log('Clicked!')
   }, [])
