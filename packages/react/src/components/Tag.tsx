@@ -1,4 +1,8 @@
-import type { HTMLAttributes, PropsWithChildren } from 'react'
+import type {
+  HTMLAttributes,
+  MouseEventHandler,
+  PropsWithChildren,
+} from 'react'
 import { Show } from './Show'
 import { css, cx } from '@cerberus/styled-system/css'
 import {
@@ -36,19 +40,19 @@ export type ClickableTagProps = HTMLAttributes<HTMLSpanElement> & {
   /**
    * The action to be performed when the tag is clicked.
    */
-  onClick: () => void
+  onClick: MouseEventHandler<HTMLSpanElement>
   /**
    * The shape of the tag. Not available when the onClick prop is provided.
    * @type 'pill' | 'rounded'
    * @default 'pill'
    */
-  shape: 'pill'
+  shape?: never
   /**
    * The usage of the tag. Not available when the onClick prop is provided.
    * @type 'filled' | 'outlined'
    * @default 'filled'
    */
-  usage: 'filled'
+  usage?: never
 }
 
 export type TagProps = StaticTagProps | ClickableTagProps
