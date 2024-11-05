@@ -40,7 +40,7 @@ describe('Tag', () => {
   })
 
   test('should render a filled tag', () => {
-    render(<Tag usage="filled">it works</Tag>)
+    render(<Tag>it works</Tag>)
     expect(
       screen
         .getByText(/it works/i)
@@ -58,11 +58,7 @@ describe('Tag', () => {
   })
 
   test('should render a pill when onClick is provided', () => {
-    render(
-      <Tag shape="pill" onClick={jest.fn()} usage="filled">
-        it works
-      </Tag>,
-    )
+    render(<Tag onClick={jest.fn()}>it works</Tag>)
     expect(
       screen
         .getByText(/it works/i)
@@ -81,11 +77,7 @@ describe('Tag', () => {
 
   test('should render a tag with a close button', async () => {
     const onClick = jest.fn()
-    render(
-      <Tag shape="pill" onClick={onClick} usage="filled">
-        it works
-      </Tag>,
-    )
+    render(<Tag onClick={onClick}>it works</Tag>)
     expect(screen.getByLabelText(/Close/i)).toBeTruthy()
     await user.click(screen.getByLabelText(/Close/i))
     expect(onClick).toHaveBeenCalledTimes(1)

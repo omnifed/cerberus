@@ -77,11 +77,7 @@ export function TagPreview() {
 
   if (closable) {
     return (
-      <Tag
-        shape={selectedProps.shape as ClickableTagProps['shape']}
-        usage="filled"
-        onClick={handleClick as ClickableTagProps['onClick']}
-      >
+      <Tag onClick={handleClick as ClickableTagProps['onClick']}>
         {selectedProps.text || 'Add Text'}
       </Tag>
     )

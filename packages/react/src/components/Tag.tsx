@@ -46,13 +46,13 @@ export type ClickableTagProps = HTMLAttributes<HTMLSpanElement> & {
    * @type 'pill' | 'rounded'
    * @default 'pill'
    */
-  shape: 'pill'
+  shape?: never
   /**
    * The usage of the tag. Not available when the onClick prop is provided.
    * @type 'filled' | 'outlined'
    * @default 'filled'
    */
-  usage: 'filled'
+  usage?: never
 }
 
 export type TagProps = StaticTagProps | ClickableTagProps

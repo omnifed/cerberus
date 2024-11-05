@@ -106,8 +106,8 @@ export type ClickableTagProps = HTMLAttributes<HTMLSpanElement> & {
   gradient?: never
   palette?: never
   onClick: MouseEventHandler<HTMLSpanElement>
-  shape: 'pill'
-  usage: 'filled'
+  shape?: never
+  usage?: never
 }
 
 export type TagProps = StaticTagProps | ClickableTagProps
