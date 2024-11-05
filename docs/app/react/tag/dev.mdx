@@ -9,17 +9,13 @@ import {
   NoteAdmonition,
 } from '@/app/components/Admonition'
 import {
-  BasicTagPreview,
-  OutlineTagPreview,
-  PillTagPreview,
-  SquareTagPreview,
   WithIconTagPreview,
-  CustomTagPreview,
-  GradientTagPreview,
+  CustomTagPreview
 } from '@/app/react/tag/components/tag-preview'
 import {
   ClosableTagPreview,
 } from '@/app/react/tag/components/closable-tag-preview'
+import { LivePlaygroundWithCode } from '@/app/react/tag/components/live-playground'
 
 ```ts
 import { Tag } from '@cerberus/react'
@@ -29,74 +25,7 @@ import { Tag } from '@cerberus/react'
 
 You can mix and match all of the examples to create the tag style of your choosing.
 
-### Default
-
-<CodePreview preview={<BasicTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus/react'
-
-function BasicTagPreview() {
-  return <Tag>Filled</Tag>
-}
-```
-</CodePreview>
-
-### Filled
-
-<CodePreview preview={<BasicTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus/react'
-
-function BasicTagPreview() {
-  return <Tag usage="filled">Filled</Tag>
-}
-```
-</CodePreview>
-
-### Outlined
-
-<CodePreview preview={<OutlineTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus/react'
-
-function OutlinedTagPreview() {
-  return (
-    <Tag shape="square" usage="outlined">
-      Outlined
-    </Tag>
-  )
-}
-```
-</CodePreview>
-
-### Pill
-
-<CodePreview preview={<PillTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus/react'
-
-function PillTagPreview() {
-  return (
-    <Tag shape="pill">
-      <Checkmark />
-      Pill
-    </Tag>
-  )
-}
-```
-</CodePreview>
-
-### Square
-
-<CodePreview preview={<SquareTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus/react'
-
-function SquareTagPreview() {
-  return <Tag shape="square">Square</Tag>
-}
-```
-</CodePreview>
+<LivePlaygroundWithCode />
 
 ### With Icon
 
@@ -133,42 +62,6 @@ function ClosableTagPreview() {
   }, [])
 
   return <Tag onClick={handleClose}>Closable</Tag>
-}
-```
-</CodePreview>
-
-## Gradient
-
-The `Tag` component supports any of the Cerberus gradients.
-
-<CodePreview preview={<GradientTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus/react'
-import { hstack } from '@cerberus/styled-system'
-
-function GradientTagPreview() {
-  return (
-    <div className={hstack()}>
-      <Tag gradient="blue" shape="sqaure">
-        Blue
-      </Tag>
-      <Tag gradient="blue" shape="sqaure" usage="outlined">
-        Blue Outlined
-      </Tag>
-      <Tag gradient="green" shape="sqaure">
-        Green
-      </Tag>
-      <Tag gradient="green" shape="sqaure" usage="outlined">
-        Green Outlined
-      </Tag>
-      <Tag gradient="purple" shape="sqaure">
-        Purple
-      </Tag>
-      <Tag gradient="purple" shape="sqaure" usage="outlined">
-        Purple Outlined
-      </Tag>
-    </div>
-  )
 }
 ```
 </CodePreview>
@@ -212,7 +105,7 @@ export type StaticTagProps = HTMLAttributes<HTMLSpanElement> &
 export type ClickableTagProps = HTMLAttributes<HTMLSpanElement> & {
   gradient?: never
   palette?: never
-  onClick: () => void
+  onClick: MouseEventHandler<HTMLSpanElement>
   shape: 'pill'
   usage: 'filled'
 }

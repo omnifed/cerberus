@@ -2,6 +2,7 @@
 ---
 
 import CodePreview from '@/app/components/CodePreview'
+import DripDivider from '@/app/components/drip-divider'
 import {
   WhenToUseAdmonition,
   WhenNotToUseAdmonition,
@@ -17,9 +18,7 @@ import {
   ClosableTagPreview,
 } from '@/app/react/tag/components/closable-tag-preview'
 
-## Usage
-
-<WhenNotToUseAdmonition description="When you need to provide a way for the user to perfom and action - use a Button or IconButton." />
+## Guildelines
 
 ### Tags aren't buttons
 
@@ -28,6 +27,10 @@ Tags and buttons are similar; they both provide visual cues to prompt users to t
 However, while buttons are expected to appear consistently and with familiar calls to action, tags should be dynamic to the situation, and appear as a group of interactive or static elements.
 
 Use tags to enhance the user's current journey and encourage action, and buttons to progress through the product and take significant actions.
+
+<WhenNotToUseAdmonition description="When you need to provide a way for the user to perfom and action - use a Button or IconButton." />
+
+<DripDivider />
 
 
 ## Filled Tags
@@ -69,6 +72,8 @@ Closable tags are used for actions that are used as an alternate themed Default.
 <CodePreview preview={<ClosableTagPreview />} />
 
 <WhenToUseAdmonition description="When you need a tag that controls filtering data being shown in the UI." />
+
+<DripDivider />
 
 ## Responsive Layouts
 

@@ -7,9 +7,9 @@ a11y: 'touch-target'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import {
-  OverviewTagPreview,
-  OverviewPaletteTagPreview
+  OverviewTagPreview
 } from '@/app/react/tag/components/tag-preview'
+import { LivePlayground } from '@/app/react/tag/components/live-playground'
 
 <OverviewList rules={[
   'Use tags to show options for a specific context',
@@ -17,10 +17,10 @@ import {
   'Use any non-actionable palette or gradient style',
 ]} />
 
-## Example
+## Examples
 
 <CodePreview preview={<OverviewTagPreview />} />
-<CodePreview preview={<OverviewPaletteTagPreview />} />
+<LivePlayground />
 
 ## Resources
 
