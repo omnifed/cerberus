@@ -8,9 +8,5 @@ export function ClosableTagPreview() {
     console.log('Clicked!')
   }, [])
 
-  return (
-    <Tag shape="pill" onClick={handleClick} usage="filled">
-      Closable
-    </Tag>
-  )
+  return <Tag onClick={handleClick}>Closable</Tag>
 }
