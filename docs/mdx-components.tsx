@@ -14,6 +14,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h1
         className={cx(
           css({
+            my: 6,
             textStyle: 'h1',
           }),
           headlineStyles,
@@ -25,6 +26,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h2
         className={cx(
           css({
+            my: 6,
             textStyle: 'h2',
           }),
           headlineStyles,
@@ -36,6 +38,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h3
         className={cx(
           css({
+            my: 6,
             textStyle: 'h3',
           }),
           headlineStyles,
@@ -47,6 +50,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h4
         className={cx(
           css({
+            my: 6,
             textStyle: 'h4',
           }),
           headlineStyles,
@@ -58,6 +62,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h5
         className={cx(
           css({
+            my: 6,
             textStyle: 'h5',
           }),
           headlineStyles,
@@ -69,6 +74,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h6
         className={cx(
           css({
+            my: 6,
             textStyle: 'h6',
           }),
           headlineStyles,
