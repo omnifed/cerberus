@@ -2,7 +2,7 @@ import { cq, hstack, vstack } from '@cerberus/styled-system/patterns'
 import { gradientValues } from '@cerberus-design/panda-preset'
 import { css } from '@cerberus/styled-system/css'
 import { LogoFigma } from '@cerberus-design/icons'
-import { Code } from '@/app/components/Code'
+import { Code } from '@/app/components/code'
 import { PAGE_TEXT_INITIAL } from '@/app/utils/const'
 import { Circle } from '@/styled-system/jsx'
 
