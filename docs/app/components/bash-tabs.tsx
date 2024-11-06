@@ -1,6 +1,6 @@
 import { Tabs, TabList, Tab, TabPanel } from '@cerberus-design/react'
-import { Code } from './code'
 import { css } from '@cerberus/styled-system/css'
+import { Code } from './Code'
 
 interface BashTabsProps {
   code: string
