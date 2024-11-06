@@ -1,32 +1,15 @@
-import { css } from '@cerberus-design/styled-system/css'
-import type { PropsWithChildren } from 'react'
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { Show } from '@cerberus-design/react'
+import { CodeBlock } from './code-block'
 
 interface CodeProps {
-  showLineNumbers?: boolean
+  children: string
   language?: string
 }
 
-export function Code(props: PropsWithChildren<CodeProps>) {
+export function Code(props: CodeProps) {
   return (
-    <SyntaxHighlighter
-      className={css({
-        border: '3px solid',
-        borderColor: '#272B3B',
-        rounded: 'xl',
-        '& :is(.linenumber)': {
-          color: '#4b6479',
-          borderInlineEnd: '1px solid',
-          borderInlineEndColor: '#272B3B',
-          marginInlineEnd: '4',
-        },
-      })}
-      language={props.language ?? 'typescript'}
-      showLineNumbers={props.showLineNumbers}
-      style={nightOwl}
-    >
-      {props.children}
-    </SyntaxHighlighter>
+    <Show when={Boolean(props.children.length)}>
+      <CodeBlock language={props.language} content={props.children} />
+    </Show>
   )
 }

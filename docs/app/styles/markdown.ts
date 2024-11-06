@@ -18,14 +18,9 @@ export const markdown = css({
     mb: '6',
   },
   '& :is(p,li,td) > code:not(.code)': {
-    border: '2px solid',
-    borderColor: '#01213a',
-    bgColor: '#011627',
-    color: '#ECC48D',
-    fontSize: '0.9rem',
-    fontWeight: '400',
-    lineHeight: '1.65',
-    pxi: '1',
+    pxi: 'lg',
+    py: 'md',
+    textStyle: 'mono-xs',
     rounded: 'md',
   },
 })

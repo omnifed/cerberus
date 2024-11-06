@@ -1,3 +1,4 @@
+import type { RawThemes } from '@cerberus-design/panda-preset'
 import type { ColorModes } from '@cerberus-design/react'
 import space from 'color-space'
 
@@ -40,4 +41,16 @@ export function getColorMode(currentMode: ColorModes): ColorModes {
     default:
       return 'system'
   }
+}
+
+export function getCodeTheme(
+  currentMode: ColorModes,
+  currentTheme: RawThemes,
+): string {
+  if (currentTheme === 'acheron') {
+    return getColorMode(currentMode) === 'dark'
+      ? 'everforest-light'
+      : 'everforest-dark'
+  }
+  return getColorMode(currentMode) === 'dark' ? 'min-light' : 'night-owl'
 }

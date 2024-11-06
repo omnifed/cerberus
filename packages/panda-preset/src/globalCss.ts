@@ -129,25 +129,24 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
       paddingTop: '0',
       position: 'relative',
     },
-    _scrollbar: {
-      width: '0.5em',
-    },
-    _scrollbarTrack: {
-      backgroundColor: 'var(--cerberus-colors-page-surface-200)',
-      outline: 'none',
-    },
-    _scrollbarThumb: {
-      backgroundColor: 'var(--cerberus-colors-page-border-100)',
-      borderRadius: '5px',
-      outline: 'none',
-    },
   },
 
+  _scrollbar: {
+    width: '0.5em',
+  },
+  _scrollbarTrack: {
+    backgroundColor: 'var(--cerberus-colors-page-surface-200)',
+    outline: 'none',
+  },
+  _scrollbarThumb: {
+    backgroundColor: 'var(--cerberus-colors-page-border-100)',
+    borderRadius: '5px',
+    outline: 'none',
+  },
   _highlight: {
-    backgroundColor: 'var(--cerberus-colors-info-surface-initial)',
+    backgroundColor: 'var(--cerberus-colors-info-bg-initial)',
     color: 'var(--cerberus-colors-info-text-initial)',
   },
-
   _spellingError: {
     backgroundColor: 'var(--cerberus-colors-danger-bg-initial)',
     color: 'var(--cerberus-colors-danger-text-initial)',
@@ -156,6 +155,8 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
   strong: {
     fontVariationSettings: "'wght' 700",
   },
+
+  // code
 
   kbd: {
     boxShadow: 'none',

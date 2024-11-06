@@ -17,7 +17,7 @@ import { DogIcon } from './icons/DogIcon'
 import { FireIcon } from './icons/FireIcon'
 import { getTheme, injectTheme, type ThemeName } from '@/styled-system/themes'
 import { INLINE_BLOCK, PAGE_BORDER_INITIAL } from '../utils/const'
-import { getColorMode } from '../utils/colors'
+import { getCodeTheme, getColorMode } from '../utils/colors'
 import { AnimatingSystemIcon } from './icons/AnimatingSystemIcon'
 import CerberusLogo from './cerberus-logo'
 
@@ -81,8 +81,9 @@ export function Nav() {
       const currentMode = e.currentTarget.value as ColorModes
       const newMode = getColorMode(currentMode)
       updateMode(newMode)
+      document.documentElement.dataset.codeTheme = getCodeTheme(newMode, theme)
     },
-    [updateMode],
+    [updateMode, theme],
   )
 
   const handleUpdateTheme = useCallback(
@@ -90,10 +91,11 @@ export function Nav() {
       const currentTheme = e.currentTarget.value
       const newTheme = currentTheme === 'cerberus' ? 'acheron' : 'cerberus'
       updateTheme(newTheme)
+      document.documentElement.dataset.codeTheme = getCodeTheme(mode, newTheme)
       const pandaTheme = await getTheme(newTheme as ThemeName)
       injectTheme(document.documentElement, pandaTheme)
     },
-    [updateTheme],
+    [updateTheme, mode],
   )
 
   return (
