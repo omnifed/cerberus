@@ -15,6 +15,7 @@ import { Nav } from './components/Nav'
 import './globals.css'
 import { setCookie } from './actions/cookies'
 import { getCachedTheme } from './actions/theme'
+import { getCodeTheme } from './utils/colors'
 
 const poppins = Poppins({
   display: 'swap',
@@ -59,6 +60,7 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
       lang="en"
       data-panda-theme={defaultThemeName}
       data-color-mode={defaultColorModeName}
+      data-code-theme={getCodeTheme(defaultColorModeName, defaultThemeName)}
     >
       <Analytics />
       {defaultThemeName && (

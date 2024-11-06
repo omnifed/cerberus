@@ -8,13 +8,6 @@ import rehypeExpressiveCode from 'rehype-expressive-code'
 import rehypeStringify from 'rehype-stringify'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings'
-import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
-import {
-  transformerNotationDiff,
-  transformerMetaWordHighlight,
-  transformerNotationWordHighlight,
-  transformerNotationHighlight,
-} from '@shikijs/transformers'
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 
 /** @type {import('next').NextConfig} */
@@ -23,6 +16,11 @@ const nextConfig = {
 }
 
 const withMDX = createMDX({
+  experimental: {
+    mdxRs: {
+      mdxType: 'gfm',
+    },
+  },
   options: {
     remarkPlugins: [
       emoji,
@@ -36,22 +34,15 @@ const withMDX = createMDX({
         rehypeExpressiveCode,
         {
           plugins: [pluginLineNumbers()],
-          shiki: {
-            transformers: [
-              transformerTwoslash({
-                explicitTrigger: true,
-                renderer: rendererRich(),
-              }),
-              transformerMetaWordHighlight(),
-              transformerNotationWordHighlight(),
-              transformerNotationHighlight(),
-              transformerNotationDiff(),
-            ],
-          },
           styleOverrides: {
             borderWidth: '3px',
           },
-          themes: ['min-light', 'night-owl'],
+          themes: [
+            'min-light',
+            'night-owl',
+            'everforest-dark',
+            'everforest-light',
+          ],
           themeCssSelector: (theme) => `[data-code-theme='${theme.name}']`,
         },
       ],

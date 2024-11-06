@@ -1,1 +1,50 @@
 @layer reset, base, tokens, recipes, utilities;
+
+/* Skiki CSS for React Code elements (i.e. not markdown) */
+
+.shiki {
+  border-radius: var(--cerberus-radii-md);
+  padding-bottom: var(--cerberus-spacing-md);
+  padding-inline: var(--cerberus-spacing-lg);
+  padding-top: var(--cerberus-spacing-md);
+}
+
+[data-code-theme='min-light'] .shiki,
+[data-code-theme='min-light'] .shiki span {
+  background-color: var(--shiki-min-light-bg) !important;
+  color: var(--shiki-min-light) !important;
+  font-size: 13.6px !important;
+  font-style: var(--shiki-min-light-font-style) !important;
+  font-weight: var(--shiki-min-light-font-weight) !important;
+  text-decoration: var(--shiki-min-light-text-decoration) !important;
+}
+
+[data-code-theme='night-owl'] .shiki,
+[data-code-theme='night-owl'] .shiki span {
+  background-color: var(--shiki-night-owl-bg) !important;
+  color: var(--shiki-night-owl) !important;
+  font-size: 13.6px !important;
+  font-style: var(--shiki-night-owl-font-style) !important;
+  font-weight: var(--shiki-night-owl-font-weight) !important;
+  text-decoration: var(--shiki-night-owl-text-decoration) !important;
+}
+
+[data-code-theme='everforest-light'] .shiki,
+[data-code-theme='everforest-light'] .shiki span {
+  background-color: var(--shiki-everforest-light-bg) !important;
+  color: var(--shiki-everforest-light) !important;
+  font-size: 13.6px !important;
+  font-style: var(--shiki-everforest-light-font-style) !important;
+  font-weight: var(--shiki-everforest-light-font-weight) !important;
+  text-decoration: var(--shiki-everforest-light-text-decoration) !important;
+}
+
+[data-code-theme='everforest-dark'] .shiki,
+[data-code-theme='everforest-dark'] .shiki span {
+  background-color: var(--shiki-everforest-dark-bg) !important;
+  color: var(--shiki-everforest-dark) !important;
+  font-size: 13.6px !important;
+  font-style: var(--shiki-everforest-dark-font-style) !important;
+  font-weight: var(--shiki-everforest-dark-font-weight) !important;
+  text-decoration: var(--shiki-everforest-dark-text-decoration) !important;
+}

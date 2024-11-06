@@ -1,7 +1,5 @@
 'use client'
 
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { useCodeBuilder } from '@/app/context/code-builder'
 import {
   useCallback,
@@ -14,6 +12,7 @@ import {
 import { css } from '@cerberus/styled-system/css'
 import { Button, Show } from '@cerberus-design/react'
 import { Checkmark, Copy } from '@cerberus-design/icons'
+import { BuilderCodeBlock } from './builder-code-block'
 
 function isFormState(key: string) {
   return [
@@ -79,24 +78,7 @@ export default function BuilderSnippet(
         position: 'relative',
       })}
     >
-      <SyntaxHighlighter
-        className={css({
-          border: '3px solid',
-          borderColor: '#272B3B',
-          rounded: 'xl',
-          '& :is(.linenumber)': {
-            color: '#4b6479',
-            borderInlineEnd: '1px solid',
-            borderInlineEndColor: '#272B3B',
-            marginInlineEnd: '4',
-          },
-        })}
-        language="typescript"
-        showLineNumbers
-        style={nightOwl}
-      >
-        {code}
-      </SyntaxHighlighter>
+      <BuilderCodeBlock code={code} />
 
       <div
         className={css({

@@ -1,5 +1,6 @@
 import { NoteAdmonition } from '@/app/components/Admonition'
 import BashTabs from '@/app/components/bash-tabs'
+import DripDivider from '@/app/components/drip-divider'
 
 # Overview
 
@@ -7,11 +8,15 @@ The Cerberus Panda CSS Preset adds a set of core features to the Cerberus Design
 
 <NoteAdmonition description="This guide assumes you are familiar with Panda CSS. If you are not, please take a moment to familiarize yourself with the framework." />
 
-## Step 1 - Install Panda CSS
+## Prerequisites - Setting up Panda CSS
 
-If you have not already installed Panda CSS, you can do so by following the [Panda CSS installation guide](https://panda-css.com/docs/installation/nextjs).
+Before you can use the Cerberus Panda Preset, you need to have Panda CSS installed and setup in your project.
 
-If you have not added any custom presets to your Panda configuration, install the required Panda preset:
+Head over to the [Panda CSS installation guide](https://panda-css.com/docs/installation/nextjs) to get started.
+
+## Step 1 - Install Panda CSS Preset
+
+In order to use the Cerberus Panda Preset, you need to install the PandaCSS preset package.
 
 <BashTabs code="npm install -D @pandacss/preset-panda" />
 
@@ -133,6 +138,8 @@ To help make maintaining a breeze, add this new script to your `package.json` to
   "up:cerberus": "pnpm up @cerberus/{styled-system,react}@latest && pnpm dlx jsr add @cerberus/{panda-preset,icons}"
 }
 ```
+
+<DripDivider />
 
 ## FAQ
 
