@@ -29,6 +29,7 @@ export default function HomeHero() {
           pxi: '6',
           py: 8,
           rounded: '2xl',
+          zIndex: 'banner',
           md: {
             pxi: '8',
             py: 14,
@@ -105,7 +106,11 @@ export default function HomeHero() {
         </div>
       </main>
 
-      <div className={gridItem()}>
+      <div
+        className={gridItem({
+          zIndex: 'banner',
+        })}
+      >
         <span
           className={css({
             display: 'block',
