@@ -27,6 +27,7 @@ export const conditions = {
   positionRight: '&:is([data-position=right])',
 
   // elements
+  notify: '&:is([data-notify=true])',
   startIcon: '&:is([data-start-icon=true])',
   tooltip: '&:is([data-tooltip=true])',
 

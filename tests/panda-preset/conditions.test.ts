@@ -94,6 +94,10 @@ describe('conditions', () => {
     expect(conditions.tooltip).toEqual('&:is([data-tooltip=true])')
   })
 
+  test('should have a notify', () => {
+    expect(conditions.notify).toEqual('&:is([data-notify=true])')
+  })
+
   test('should have an admin', () => {
     expect(conditions.admin).toEqual('&:is([data-role=admin])')
   })

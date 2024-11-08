@@ -98,6 +98,29 @@ export const outlinedUsage = {
   borderColor: 'colorPalette.border.initial',
 }
 
+export const notifyStyles = {
+  position: 'relative',
+  _after: {
+    alignItems: 'center',
+    backgroundColor: 'var(--cerberus-colors-danger-surface-200)',
+    borderRadius: 'full',
+    display: 'flex',
+    color: 'var(--cerberus-colors-danger-text-200)',
+    content: 'attr(data-notify-count)',
+    flexDirection: 'column',
+    fontFamily: 'mono',
+    fontSize: '0.625rem',
+    height: '1rem',
+    justifyContent: 'center',
+    left: '50%',
+    lineHeight: '0.5625rem',
+    position: 'absolute',
+    paddingInlineStart: 'calc(0.25rem + 2px)',
+    paddingInlineEnd: 'xs',
+    textAlign: 'center',
+  },
+}
+
 export const buttonPalettes = {
   ...actionPalettes,
   ...statePalettes,
