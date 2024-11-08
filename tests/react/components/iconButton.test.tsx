@@ -99,4 +99,6 @@ describe('IconButton', () => {
         .classList.contains('cerberus-icon-btn--size_lg'),
     ).toBeTrue()
   })
+
+  // We can't test the `data-notify` attribute because it's a pseudo element
 })

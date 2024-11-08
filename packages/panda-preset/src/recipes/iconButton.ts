@@ -8,6 +8,7 @@ import {
   buttonCompoundVariants,
   buttonPalettes,
   filledUsage,
+  notifyStyles,
   outlinedUsage,
   textUsage,
 } from './shared/button.base'
@@ -36,6 +37,7 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     pxi: '0',
     rounded: 'full',
     w: '2.75rem',
+    _notify: notifyStyles,
   },
 
   variants: {
@@ -57,9 +59,20 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         md: {
           h: '1.5rem', // a11y minimum touch target size: 1.5rem for desktop
           w: '1.5rem',
+          _notify: {
+            _after: {
+              top: '-0.25rem',
+            },
+          },
         },
       },
-      lg: {},
+      lg: {
+        _notify: {
+          _after: {
+            top: '0.4rem',
+          },
+        },
+      },
     },
   },
 

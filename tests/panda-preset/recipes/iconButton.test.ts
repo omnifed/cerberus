@@ -39,6 +39,28 @@ describe('iconButton recipe', () => {
         cursor: 'not-allowed',
         opacity: '0.5',
       },
+      _notify: {
+        position: 'relative',
+        _after: {
+          alignItems: 'center',
+          backgroundColor: 'var(--cerberus-colors-danger-surface-200)',
+          borderRadius: 'full',
+          display: 'flex',
+          color: 'var(--cerberus-colors-danger-text-200)',
+          content: 'attr(data-notify-count)',
+          flexDirection: 'column',
+          fontFamily: 'mono',
+          fontSize: '0.625rem',
+          height: '1rem',
+          justifyContent: 'center',
+          left: '50%',
+          lineHeight: '0.5625rem',
+          position: 'absolute',
+          paddingInlineStart: 'calc(0.25rem + 2px)',
+          paddingInlineEnd: 'xs',
+          textAlign: 'center',
+        },
+      },
     })
   })
 
@@ -157,11 +179,22 @@ describe('iconButton recipe', () => {
       md: {
         h: '1.5rem',
         w: '1.5rem',
+        _notify: {
+          _after: {
+            top: '-0.25rem',
+          },
+        },
       },
     })
   })
 
   test('should have a large size variant', () => {
-    expect(iconButton.variants?.size.lg).toMatchObject({})
+    expect(iconButton.variants?.size.lg).toMatchObject({
+      _notify: {
+        _after: {
+          top: '0.4rem',
+        },
+      },
+    })
   })
 })
