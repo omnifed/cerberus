@@ -75,6 +75,7 @@ export * from './aria-helpers/trap-focus.aria'
 // utils
 
 export * from './config/defineIcons'
+export * from './utils/index'
 
 // shared types
 

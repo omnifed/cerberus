@@ -1,11 +1,6 @@
 import { HStack, VStack } from '@/styled-system/jsx'
 import { Notification } from '@cerberus-design/icons'
-import { IconButton, Tag } from '@cerberus-design/react'
-
-function formatNotifyCount(count: number): string {
-  if (count > 99) return '99+'
-  return count.toString()
-}
+import { IconButton, Tag, formatNotifyCount } from '@cerberus-design/react'
 
 export function NotifyBadgePreview() {
   const count = formatNotifyCount(100)
