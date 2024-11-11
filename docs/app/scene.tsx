@@ -51,7 +51,7 @@ const fire = {
     },
   },
   background: {
-    image: 'radial-gradient(#4a0000, transparent)',
+    image: 'radial-gradient(transparent, transparent)',
   },
 } as ISourceOptions
 
@@ -68,23 +68,20 @@ export function Scene() {
     })
   }, [])
 
-  // useEffect(() => {
-  //   if (window) {
-  //     const rootStyle = window.getComputedStyle(document.body)
-  //     const textInitial = rootStyle.getPropertyValue(
-  //       '--cerberus-colors-warning-text-initial',
-  //     )
-  //     setOptions((prev) => ({
-  //       ...prev,
-  //       particles: {
-  //         ...prev.particles,
-  //         color: {
-  //           value: textInitial,
-  //         },
-  //       },
-  //     }))
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (window) {
+      const rootStyle = window.getComputedStyle(document.body)
+      const start = rootStyle.getPropertyValue(
+        '--cerberus-colors-action-bg-initial',
+      )
+      setOptions((prev) => ({
+        ...prev,
+        background: {
+          image: `radial-gradient(75% 82% at 52% 100%, ${start}40 0%, transparent 100%)`,
+        },
+      }))
+    }
+  }, [])
 
   if (init) {
     return <Particles id="tsparticles" options={options} />
