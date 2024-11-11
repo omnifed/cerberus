@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { type ISourceOptions } from '@tsparticles/engine'
 import { loadSlim } from '@tsparticles/slim'
+import { useThemeContext } from '@cerberus-design/react'
 
 const fire = {
   fpsLimit: 40,
@@ -58,6 +59,7 @@ const fire = {
 export function Scene() {
   const [init, setInit] = useState<boolean>(false)
   const [options, setOptions] = useState<ISourceOptions>(fire)
+  const { theme } = useThemeContext()
 
   // this should be run only once per application lifetime
   useEffect(() => {
@@ -69,19 +71,22 @@ export function Scene() {
   }, [])
 
   useEffect(() => {
-    if (window) {
-      const rootStyle = window.getComputedStyle(document.body)
-      const start = rootStyle.getPropertyValue(
-        '--cerberus-colors-action-bg-initial',
-      )
-      setOptions((prev) => ({
-        ...prev,
-        background: {
-          image: `radial-gradient(75% 82% at 52% 100%, ${start}40 0%, transparent 100%)`,
-        },
-      }))
+    if (window && theme) {
+      // We need to wait for the theme to be applied
+      setTimeout(() => {
+        const rootStyle = window.getComputedStyle(document.body)
+        const start = rootStyle.getPropertyValue(
+          '--cerberus-colors-action-bg-initial',
+        )
+        setOptions((prev) => ({
+          ...prev,
+          background: {
+            image: `radial-gradient(75% 82% at 52% 100%, ${start}40 0%, transparent 100%)`,
+          },
+        }))
+      }, 10)
     }
-  }, [])
+  }, [theme])
 
   if (init) {
     return <Particles id="tsparticles" options={options} />
