@@ -1,6 +1,6 @@
 ---
 npm: '@cerberus-design/react'
-source: 'context/confirm-modal.tsx'
+source: 'context/cta-modal.tsx'
 recipe: ''
 ---
 
@@ -9,75 +9,51 @@ import {
   NoteAdmonition,
 } from '@/app/components/Admonition'
 import {
-  NonDestructivePreview,
-  DestructivePreview,
-} from '@/app/react/confirm-modal/components/confirm-modal-preview'
+  OverviewPreview
+} from '@/app/react/cta-modal/components/cta-modal-preview'
 
 ```ts
-import { ConfirmModal, useConfirmModal } from '@cerberus/react'
+import { CTAModal, useCTAModal } from '@cerberus/react'
 ```
 
 ## Usage
 
-### Non-destructive
+<CodePreview preview={<OverviewPreview />}>
+```tsx title="some-feature.tsx"
+'use client'
 
-<CodePreview preview={<NonDestructivePreview />}>
-```tsx title="some-page.tsx"
-import { ConfirmModal, useConfirmModal } from '@cerberus/react'
+import { useConfirmModal } from '@cerberus/react'
 
-function SomeFeature() {
-  const confirm = useConfirmModal()
+export function SomeFeature() {
+  const { show } = useCTAModal()
 
-  const handleConfirm = useCallback(async () => {
-    const consent = await confirm.show({
-      heading: 'Add new payment method?',
-      description:
-        'This will add a new payment method to your account to be billed for future purchases.',
-      actionText: 'Yes, add payment method',
-      cancelText: 'No, cancel',
+  const handleClick = useCallback(() => {
+    show({
+      heading: 'Copy or create a Cohort',
+      description: 'Create a new cohort or copy an existing one.',
+      actions: [
+        {
+          text: 'Create new',
+          onClick: () => alert('Create new'),
+        },
+        {
+          text: 'Copy existing',
+          onClick: () => alert('Copy existing'),
+        },
+      ],
     })
-    // do something with consent
-  }, [])
+  }, [show])
 
   return (
-    <Button onClick={handleConfirm}>Confirm</Button>
-  )
-}
-
-function SomePage() {
-  return(
-    <ConfirmModal>
-      <SomeFeature />
-    </ConfirmModal>
+    <HStack gap="4">
+      <Button onClick={handleClick}>Update Cohorts</Button>
+    </HStack>
   )
 }
 ```
-</CodePreview>
-
-### Destructive
-
-<CodePreview preview={<DestructivePreview />}>
-```tsx title="some-page.tsx" {8}
-import { ConfirmModal, useConfirmModal } from '@cerberus/react'
-
-function SomeFeature() {
-  const confirm = useConfirmModal()
-
-  const handleConfirm = useCallback(async () => {
-    const consent = await confirm.show({
-      kind: 'destructive',
-      heading: 'Remove payment method?',
-      description: 'This is a permanent action and cannot be undone.',
-      actionText: 'Yes, delete',
-      cancelText: 'No, cancel',
-    })
-    // do something with consent
-  }, [])
-
-  return (
-    <Button palette="danger" onClick={handleConfirm}>Delete card</Button>
-  )
-}
+```tsx title="page.tsx"
+import { CTAModal } from '@cerberus/react'
+import { SomeFeature } from './some-feature'
 
 function SomePage() {
   return(
@@ -91,16 +67,26 @@ function SomePage() {
 
 ## Customization
 
-For customizing the Confirm Modal, we recommend extending the `confirmModal` slot recipe provided by the `@cerberus/panda-preset` package in your config.
+The CTAModal is an abstraction of the [Modal family](./modal). You can customize the modal by using the `Modal` component directly.
 
 ## API
 
 ```ts showLineNumbers=false
-export interface ConfirmModalProviderValue {
-  show: (options: ConfirmModalOptions) => Promise<boolean>
+export interface ShowCTAModalOptions {
+  heading: string
+  description?: string
+  icon?: ReactNode
+  actions: {
+    text: string
+    onClick: Required<ButtonHTMLAttributes<HTMLButtonElement>['onClick']>
+  }[]
 }
 
-define function ConfirmModal(props: PropsWithChildren<{}>): ReactNode
+export interface CTAModalProviderValue {
+  show: (options: ShowCTAModalOptions) => void
+}
+
+define function CTAModal(props: PropsWithChildren<{}>): ReactNode
 ````
 
 ### Show Method Options
@@ -109,8 +95,7 @@ The `show` method accepts the following options:
 
 | Name     | Default | Description                            |
 | -------- | ------- | -------------------------------------- |
-| kind | `non-destructive` | The variant used to theme the modal.           |
 | heading | `''` | The heading of the modal. |
 | description | `''` | The description of the modal. |
-| actionText | `''` | The text for the action button. |
-| cancelText | `''` | The text for the cancel button. |
+| icon | `undefined` | The icon to display in the modal. |
+| actions | `[]` | The actions to display in the modal. Max of 2 allowed. |
