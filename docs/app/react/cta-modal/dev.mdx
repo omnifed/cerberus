@@ -1,0 +1,101 @@
+---
+npm: '@cerberus-design/react'
+source: 'context/cta-modal.tsx'
+recipe: ''
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  NoteAdmonition,
+} from '@/app/components/Admonition'
+import {
+  OverviewPreview
+} from '@/app/react/cta-modal/components/cta-modal-preview'
+
+```ts
+import { CTAModal, useCTAModal } from '@cerberus/react'
+```
+
+## Usage
+
+<CodePreview preview={<OverviewPreview />}>
+```tsx title="some-feature.tsx"
+'use client'
+
+import { useConfirmModal } from '@cerberus/react'
+
+export function SomeFeature() {
+  const { show } = useCTAModal()
+
+  const handleClick = useCallback(() => {
+    show({
+      heading: 'Copy or create a Cohort',
+      description: 'Create a new cohort or copy an existing one.',
+      actions: [
+        {
+          text: 'Create new',
+          onClick: () => alert('Create new'),
+        },
+        {
+          text: 'Copy existing',
+          onClick: () => alert('Copy existing'),
+        },
+      ],
+    })
+  }, [show])
+
+  return (
+    <HStack gap="4">
+      <Button onClick={handleClick}>Update Cohorts</Button>
+    </HStack>
+  )
+}
+```
+```tsx title="page.tsx"
+import { CTAModal } from '@cerberus/react'
+import { SomeFeature } from './some-feature'
+
+function SomePage() {
+  return(
+    <ConfirmModal>
+      <SomeFeature />
+    </ConfirmModal>
+  )
+}
+```
+</CodePreview>
+
+## Customization
+
+The CTAModal is an abstraction of the [Modal family](./modal). You can customize the modal by using the `Modal` component directly.
+
+## API
+
+```ts showLineNumbers=false
+export interface ShowCTAModalOptions {
+  heading: string
+  description?: string
+  icon?: ReactNode
+  actions: {
+    text: string
+    onClick: Required<ButtonHTMLAttributes<HTMLButtonElement>['onClick']>
+  }[]
+}
+
+export interface CTAModalProviderValue {
+  show: (options: ShowCTAModalOptions) => void
+}
+
+define function CTAModal(props: PropsWithChildren<{}>): ReactNode
+````
+
+### Show Method Options
+
+The `show` method accepts the following options:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| heading | `''` | The heading of the modal. |
+| description | `''` | The description of the modal. |
+| icon | `undefined` | The icon to display in the modal. |
+| actions | `[]` | The actions to display in the modal. Max of 2 allowed. |

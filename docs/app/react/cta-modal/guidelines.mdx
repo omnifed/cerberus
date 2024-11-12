@@ -1,0 +1,24 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import DripDivider from '@/app/components/drip-divider'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import {
+  OverviewPreview
+} from '@/app/react/cta-modal/components/cta-modal-preview'
+
+<WhenToUseAdmonition description="When you need the user to see actions that needs to have attention drawn to it." />
+
+<CodePreview preview={<OverviewPreview />} />
+
+<DripDivider />
+
+### Use sparingly
+
+CTA Modals should be used sparingly, and only for important decisions or actions.
+
+For most actions, a simple **Notification** message is sufficient to inform the user of the result of their action (or allow them to "undo" it).

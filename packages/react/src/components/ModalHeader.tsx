@@ -31,6 +31,7 @@ export function ModalHeader(props: ModalHeaderProps) {
           alignItems: 'flex-start',
           gap: 'md',
           mb: 'md',
+          position: 'relative',
         }),
       )}
     />

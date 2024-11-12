@@ -12,7 +12,6 @@ import {
   type PropsWithChildren,
   type MouseEvent,
 } from 'react'
-import { Close } from '@cerberus/icons'
 import { $cerberusIcons } from '../config/defineIcons'
 import type { IconType } from '../config/cerbIcons'
 import { trapFocus } from '../aria-helpers/trap-focus.aria'
@@ -62,6 +61,7 @@ export function Notification(props: PropsWithChildren<NotificationProps>) {
   const ref = useRef<HTMLDialogElement>(null)
   const onKeyDown = trapFocus(ref)
   const styles = notification({ palette })
+  const { close: CloseIcon } = $cerberusIcons
 
   return (
     <dialog
@@ -97,7 +97,7 @@ export function Notification(props: PropsWithChildren<NotificationProps>) {
         onClick={onClose}
         value={props.id}
       >
-        <Close />
+        <CloseIcon />
       </button>
     </dialog>
   )

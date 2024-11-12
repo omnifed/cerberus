@@ -24,8 +24,8 @@
   "containment": {
     "name": "Containment",
     "description": "Components that contain other components.",
-    "items": ["Confirm Modal", "Prompt Modal", "Modal", "Table"],
-    "next": [],
+    "items": ["Confirm Modal", "Prompt Modal", "CTA Modal", "Modal", "Table"],
+    "next": ["CTA Modal"],
     "new": []
   },
   "navigation": {
