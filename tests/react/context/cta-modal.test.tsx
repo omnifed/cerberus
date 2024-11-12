@@ -107,6 +107,22 @@ describe('CTAModal & useCTAModal', () => {
     expect(screen.getByText(/copy existing/i).focus).toBeTruthy()
   })
 
+  test('should close the modal when the close icon is pressed', async () => {
+    render(<TestPage />)
+    await userEvent.click(screen.getByRole('button', { name: /make choice/i }))
+    await waitFor(() =>
+      expect(screen.getByText(/Copy or create a Cohort/i)).toBeTruthy(),
+    )
+    await userEvent.click(
+      screen.getByRole('button', {
+        name: /close modal/i,
+      }),
+    )
+    await waitFor(() =>
+      expect(screen.queryByText(/Copy or create a Cohort/i)).toBeNull(),
+    )
+  })
+
   test('should throw an error if used outside of FeatureFlags', () => {
     // don't clog up the console with errors
     spyOn(console, 'error').mockImplementation(() => null)

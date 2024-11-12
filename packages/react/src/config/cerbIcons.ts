@@ -2,7 +2,7 @@ import {
   Checkmark,
   CheckmarkOutline,
   ChevronDown,
-  CloseFilled,
+  Close,
   CloudUpload,
   Information,
   Restart,
@@ -43,7 +43,7 @@ export interface DefinedIcons {
 export const defaultIcons: DefinedIcons = {
   avatar: UserFilled,
   checkbox: CheckmarkIcon,
-  close: CloseFilled,
+  close: Close,
   confirmModal: Information,
   delete: TrashCan,
   promptModal: Information,

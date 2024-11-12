@@ -13,7 +13,6 @@ import {
 } from 'react'
 import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
-import { hstack } from '@cerberus/styled-system/patterns'
 import { $cerberusIcons } from '../config/defineIcons'
 import { trapFocus } from '../aria-helpers/trap-focus.aria'
 import { Show } from '../components/Show'
@@ -24,6 +23,9 @@ import { ModalHeading } from '../components/ModalHeading'
 import { ModalDescription } from '../components/ModalDescription'
 import { Avatar } from '../components/Avatar'
 import { HStack } from '@cerberus/styled-system/jsx'
+import { IconButton } from '../components/IconButton'
+import { css } from '@cerberus/styled-system/css'
+import { VStack } from '@cerberus/styled-system/jsx'
 
 /**
  * This module provides a context and hook for the cta modal.
@@ -98,6 +100,7 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
   const focusTrap = trapFocus(modalRef)
   const FallbackIcon = $cerberusIcons.confirmModal
   const confirmIcon = content?.icon as ReactNode
+  const { close: CloseIcon } = $cerberusIcons
 
   const handleShow = useCallback(
     (options: ShowCTAModalOptions) => {
@@ -138,13 +141,22 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
 
       <Portal>
         <Modal onKeyDown={focusTrap} ref={modalRef}>
+          <span
+            className={css({
+              padding: 'md',
+              position: 'absolute',
+              right: 0,
+              top: 0,
+              zIndex: 'decorator',
+            })}
+          >
+            <IconButton ariaLabel="Close modal" onClick={close}>
+              <CloseIcon />
+            </IconButton>
+          </span>
+
           <ModalHeader>
-            <div
-              className={hstack({
-                justify: 'center',
-                w: 'full',
-              })}
-            >
+            <HStack justify="center" w="full">
               <Avatar
                 ariaLabel=""
                 gradient="charon-light"
@@ -158,16 +170,21 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
                 }
                 src=""
               />
-            </div>
-            <ModalHeading>{content?.heading}</ModalHeading>
-            <ModalDescription>{content?.description}</ModalDescription>
+            </HStack>
+            <VStack gap="lg" w="full">
+              <ModalHeading>{content?.heading}</ModalHeading>
+              <ModalDescription>{content?.description}</ModalDescription>
+            </VStack>
           </ModalHeader>
 
-          <HStack gap="md">
+          <HStack gap="md" pt="sm" w="full">
             <Show when={Boolean(content?.actions?.length)}>
               {content?.actions?.map((action, index) => (
                 <Button
                   data-index={index}
+                  className={css({
+                    w: '1/2',
+                  })}
                   key={index}
                   onClick={handleActionClick}
                   shape="rounded"
