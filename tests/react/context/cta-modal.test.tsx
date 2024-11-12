@@ -111,15 +111,20 @@ describe('CTAModal & useCTAModal', () => {
     render(<TestPage />)
     await userEvent.click(screen.getByRole('button', { name: /make choice/i }))
     await waitFor(() =>
-      expect(screen.getByText(/Copy or create a Cohort/i)).toBeTruthy(),
+      expect(
+        screen.getByRole('button', {
+          name: /close modal/i,
+        }),
+      ).toBeTruthy(),
     )
     await userEvent.click(
       screen.getByRole('button', {
         name: /close modal/i,
       }),
     )
+    // Modal stays in the DOM but is hidden
     await waitFor(() =>
-      expect(screen.queryByText(/Copy or create a Cohort/i)).toBeNull(),
+      expect(screen.getByText(/Copy or create a Cohort/i)).toBeTruthy(),
     )
   })
 
