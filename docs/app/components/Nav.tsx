@@ -110,7 +110,7 @@ export function Nav() {
         position: 'fixed',
         top: '0',
         w: 'full',
-        zIndex: 'sticky',
+        zIndex: 'banner',
         _lightMode: {
           bgColor: 'rgba(255, 255, 255, 0.3)',
         },

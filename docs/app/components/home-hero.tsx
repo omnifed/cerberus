@@ -1,4 +1,4 @@
-import { css } from '@cerberus/styled-system/css'
+import { css, cx } from '@cerberus/styled-system/css'
 import Link from 'next/link'
 import { button } from '@cerberus/styled-system/recipes'
 import CerberusLogo from './cerberus-logo'
@@ -6,6 +6,8 @@ import { vstack } from '@cerberus-design/styled-system/patterns'
 import { grid, gridItem } from '@cerberus/styled-system/patterns'
 import { Tag } from '@cerberus-design/react'
 import { HStack } from '@cerberus-design/styled-system/jsx'
+import { CheckmarkFilled } from '@cerberus-design/icons'
+import { HomeHeroText } from './home-hero-text'
 
 export default function HomeHero() {
   return (
@@ -14,11 +16,12 @@ export default function HomeHero() {
         columns: 1,
         gap: 4,
         mt: '8rem',
+        w: 'full',
         lg: {
           columns: 2,
-          gridTemplateColumns: '1fr 1fr',
-          mt: '12rem',
-          pxi: '8',
+          gap: '3xl',
+          gridTemplateColumns: '1.7fr 1fr',
+          pxi: '16',
         },
       })}
     >
@@ -28,15 +31,11 @@ export default function HomeHero() {
           mxi: '2',
           pxi: '6',
           py: 8,
-          rounded: '2xl',
-          zIndex: 'banner',
+          rounded: 'lg',
+          zIndex: 'sticky',
           md: {
             pxi: '8',
-            py: 14,
-          },
-          lg: {
-            pxi: '10',
-            py: 16,
+            py: 8,
           },
         })}
       >
@@ -46,29 +45,36 @@ export default function HomeHero() {
             gap: 4,
           })}
         >
-          <h1
+          <HStack mt="3">
+            <Tag gradient="thanatos-light" shape="square">
+              <CheckmarkFilled />
+              ARIA AA Compliant
+            </Tag>
+            <Tag gradient="amphiaraus-light" shape="square">
+              Panda CSS
+            </Tag>
+          </HStack>
+
+          <div
             className={css({
-              maxW: '44ch',
-              textStyle: 'display-sm',
-              textWrap: 'pretty',
-              lg: {
-                pb: 4,
-                textStyle: 'display-lg',
-              },
+              mt: 4,
             })}
           >
-            Protect your brand with{' '}
-            <span
+            <h1
               className={css({
-                display: 'inline-block',
-                color: 'danger.text.200',
+                color: 'page.text.100',
+                maxW: '44ch',
+                textStyle: 'display-sm',
+                textWrap: 'pretty',
+                lg: {
+                  pb: 4,
+                  textStyle: 'display-lg',
+                },
               })}
             >
-              Cerberus
-            </span>
-          </h1>
+              Protect your brand <HomeHeroText />
+            </h1>
 
-          <div>
             <p
               className={css({
                 maxW: '44ch',
@@ -81,25 +87,27 @@ export default function HomeHero() {
             >
               Create React 19+ design systems effortlessly.
             </p>
-            <HStack mt="3">
-              <Tag palette="info" shape="pill">
-                ARIA AA Compliant
-              </Tag>
-              <Tag palette="info" shape="pill">
-                Panda CSS
-              </Tag>
-            </HStack>
           </div>
 
           <div
             className={css({
               pt: 10,
               lg: {
-                pt: 14,
+                pt: 8,
               },
             })}
           >
-            <Link className={button()} href="/preset/">
+            <Link
+              className={cx(
+                css({
+                  lg: {
+                    w: '13rem',
+                  },
+                }),
+                button(),
+              )}
+              href="/preset/"
+            >
               Get Started
             </Link>
           </div>
@@ -108,7 +116,7 @@ export default function HomeHero() {
 
       <div
         className={gridItem({
-          zIndex: 'banner',
+          zIndex: 'sticky',
         })}
       >
         <span
@@ -116,7 +124,7 @@ export default function HomeHero() {
             display: 'block',
             mt: 8,
             mx: 'auto',
-            w: '1/2',
+            maxWidth: '25rem',
           })}
         >
           <CerberusLogo />
