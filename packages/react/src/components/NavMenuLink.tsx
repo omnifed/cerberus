@@ -17,17 +17,7 @@ export interface NavMenuLinkProps
 }
 
 /**
- * The NavMenuLink component is a link element that is used within the NavMenu.
- * @see https://cerberus.digitalu.design/react/nav-menu
- * @example
- * ```tsx
- * <NavMenu>
- *  <NavMenuList id="nav-menu-list" position="bottom">
- *   <NavMenuLink href="/home">Home</NavMenuLink>
- *   <NavMenuLink href="/about">About</NavMenuLink>
- *  </NavMenuList>
- * </NavMenu>
- * ```
+ * @deprecated use the {@link Menu} family instead
  */
 export function NavMenuLink(props: NavMenuLinkProps): JSX.Element {
   const { as, ...nativeProps } = props

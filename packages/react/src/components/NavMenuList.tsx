@@ -32,9 +32,7 @@ interface GetPositionResult {
 }
 
 /**
- * Returns the position of the NavMenuList based on the position prop.
- * @param position - The position of the NavMenuList.
- * @returns The position of the NavMenuList.
+ * @deprecated use the {@link Menu} family instead
  */
 export function getPosition(position: Positions): GetPositionResult {
   const defaultPositions = {
