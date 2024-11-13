@@ -12,7 +12,7 @@ import Guidelines from './guidelines.mdx'
 import Dev, { frontmatter as devFrontmatter } from './dev.mdx'
 import A11y from './a11y.mdx'
 
-export default function NavMenuPage() {
+export default function MenuPage() {
   return (
     <>
       <TabPageContent>

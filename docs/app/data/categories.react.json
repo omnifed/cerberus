@@ -31,8 +31,8 @@
   "navigation": {
     "name": "Navigation",
     "description": "Components that help users navigate through the app.",
-    "items": ["Nav Menu", "Tabs"],
-    "next": [],
+    "items": ["Menu", "Tabs"],
+    "next": ["Menu"],
     "new": []
   },
   "selection": {
