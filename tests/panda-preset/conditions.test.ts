@@ -70,6 +70,18 @@ describe('conditions', () => {
     )
   })
 
+  test('should have an open', () => {
+    expect(conditions.open).toEqual(
+      '&:is([open], [data-open], [data-state=open])',
+    )
+  })
+
+  test('should have a closed', () => {
+    expect(conditions.closed).toEqual(
+      '&:is([closed], [data-closed], [data-state=closed])',
+    )
+  })
+
   test('should have a positionBottom', () => {
     expect(conditions.positionBottom).toEqual('&:is([data-position=bottom])')
   })

@@ -9,6 +9,8 @@ export const conditions = {
   systemMode: '[data-color-mode=system] &, &.system, .system &',
 
   // states
+  open: '&:is([open], [data-open], [data-state=open])',
+  closed: '&:is([closed], [data-closed], [data-state=closed])',
   modalOpen: '&:is([data-modal-open=true])',
   screenReaderOnly: '&:is([data-screen-reader-only=true])',
   isOver: '&:is([data-over=true])',

@@ -1,13 +1,12 @@
 import { tbody, type TbodyVariantProps } from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus/styled-system/css'
-import type { TableHTMLAttributes } from 'react'
 
 /**
  * This module provides a TBody component.
  * @module
  */
 
-export type TbodyBaseProps = TableHTMLAttributes<HTMLTableSectionElement>
+export type TbodyBaseProps = JSX.IntrinsicElements['tbody']
 export type TbodyProps = TbodyBaseProps & TbodyVariantProps
 
 /**
