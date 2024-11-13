@@ -177,7 +177,7 @@ export function CustomMenu() {
         })}
       >
         <MenuItem value="item_1">Cash Rules Everything Around Me</MenuItem>
-        <MenuItem value="item_2">Dolla dolla bills y'all</MenuItem>
+        <MenuItem value="item_2">Dolla dolla bills y&apos;all</MenuItem>
       </MenuContent>
     </Menu>
   )
