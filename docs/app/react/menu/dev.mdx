@@ -13,6 +13,7 @@ import {
   BasicMenu,
   NavMenu,
   PositioningMenu,
+  GroupedMenu,
   CustomMenu,
 } from '@/app/react/menu/components/menu-preview'
 
@@ -22,6 +23,8 @@ import {
   MenuTrigger,
   MenuContent,
   MenuItem,
+  MenuItemGroup,
+  MenuGroupLabel,
   MenuSeparator,
 } from '@cerberus/react'
 ```
@@ -112,6 +115,42 @@ function BasicMenu() {
 }
 ```
 </CodePreview>
+
+## Grouped Menu
+
+You can group menu items by using the `MenuItemGroup` component.
+
+<CodePreview preview={<GroupedMenu />}>
+```tsx title="nav.tsx"
+import {
+  Menu,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  MenuItemGroup,
+  MenuGroupLabel,
+  MenuSeparator,
+  Button,
+} from '@cerberus/react'
+
+export function GroupedMenu() {
+  return (
+    <Menu>
+      <MenuTrigger>
+        <Button>Grouped Menu</Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItemGroup>
+          <MenuGroupLabel>Group Label</MenuGroupLabel>
+          <MenuSeparator />
+          <MenuItem value="item_1">Item 1</MenuItem>
+          <MenuItem value="item_2">Item 2</MenuItem>
+        </MenuItemGroup>
+      </MenuContent>
+    </Menu>
+  )
+}
+```
 
 ## Positions
 
