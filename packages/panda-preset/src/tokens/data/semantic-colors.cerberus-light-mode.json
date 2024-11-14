@@ -1308,7 +1308,7 @@
       "hover": {
         "$type": "color",
         "$value": "cerberus.neutral.5",
-        "$description": "",
+        "$description": "Hover state of ghost action elements. Pair with text.action.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1346,7 +1346,7 @@
       "hover": {
         "$type": "color",
         "$value": "cerberus.danger.10",
-        "$description": "",
+        "$description": "Hover state of ghost action elements. Pair with text.danger.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1384,7 +1384,7 @@
       "hover": {
         "$type": "color",
         "$value": "cerberus.info.20",
-        "$description": "",
+        "$description": "Hover state of ghost action elements. Pair with text.info.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1422,7 +1422,7 @@
       "hover": {
         "$type": "color",
         "$value": "cerberus.success.10",
-        "$description": "",
+        "$description": "Hover state of ghost action elements. Pair with text.success.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1460,7 +1460,7 @@
       "hover": {
         "$type": "color",
         "$value": "cerberus.teal.10",
-        "$description": "",
+        "$description": "Hover state of ghost action elements. Pair with text.secondary-action.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1498,7 +1498,7 @@
       "hover": {
         "$type": "color",
         "$value": "cerberus.warning.20",
-        "$description": "",
+        "$description": "Hover state of ghost action elements. Pair with text.warning.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
