@@ -189,10 +189,10 @@ describe('secondaryActionTokens', () => {
   test('should have a cerberus secondary-action.text.100 key', () => {
     expect(token.text['100']).toBeDefined()
     expect(token.text['100'].value.base).toBe(
-      getSemanticToken`cerberus.teal.90`,
+      getSemanticToken`cerberus.teal.70`,
     )
     expect(token.text['100'].value._darkMode).toBe(
-      getSemanticToken`cerberus.teal.90`,
+      getSemanticToken`cerberus.teal.70`,
     )
     expect(token.text['100'].value._lightMode).toBe(
       getSemanticToken`cerberus.teal.100`,

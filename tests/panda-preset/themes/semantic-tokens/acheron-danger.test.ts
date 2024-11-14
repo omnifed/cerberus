@@ -88,7 +88,7 @@ describe('acheron dangerTokens', () => {
       formatSemanticToken`acheron.danger.80`,
     )
     expect(dangerTokens.danger.ghost.hover.value._lightMode).toEqual(
-      formatSemanticToken`acheron.danger.10`,
+      formatSemanticToken`acheron.danger.20`,
     )
   })
 
@@ -102,7 +102,7 @@ describe('acheron dangerTokens', () => {
       formatSemanticToken`acheron.danger.70`,
     )
     expect(dangerTokens.danger.ghost.active.value._lightMode).toEqual(
-      formatSemanticToken`acheron.danger.20`,
+      formatSemanticToken`acheron.danger.30`,
     )
   })
 

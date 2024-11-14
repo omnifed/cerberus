@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'bun:test'
 import { acheronTheme } from '@cerberus-design/panda-preset'
 
-describe('secondaryActionTokens', () => {
+describe('acheron secondaryActionTokens', () => {
   const token = acheronTheme.secondaryActionTokens.secondaryAction
 
   function getSemanticToken(value: TemplateStringsArray) {
@@ -97,10 +97,10 @@ describe('secondaryActionTokens', () => {
   test('should have a acheron secondary-action.ghost.hover key', () => {
     expect(token.ghost.hover).toBeDefined()
     expect(token.ghost.hover.value.base).toBe(
-      getSemanticToken`acheron.accent.90`,
+      getSemanticToken`acheron.accent.100`,
     )
     expect(token.ghost.hover.value._darkMode).toBe(
-      getSemanticToken`acheron.accent.90`,
+      getSemanticToken`acheron.accent.100`,
     )
     expect(token.ghost.hover.value._lightMode).toBe(
       getSemanticToken`acheron.accent.10`,
@@ -172,10 +172,10 @@ describe('secondaryActionTokens', () => {
   test('should have a acheron secondary-action.text.initial key', () => {
     expect(token.text.initial).toBeDefined()
     expect(token.text.initial.value.base).toBe(
-      getSemanticToken`acheron.accent.60`,
+      getSemanticToken`acheron.accent.50`,
     )
     expect(token.text.initial.value._darkMode).toBe(
-      getSemanticToken`acheron.accent.60`,
+      getSemanticToken`acheron.accent.50`,
     )
     expect(token.text.initial.value._lightMode).toBe(
       getSemanticToken`acheron.accent.80`,
@@ -187,13 +187,13 @@ describe('secondaryActionTokens', () => {
   test('should have a acheron secondary-action.text.100 key', () => {
     expect(token.text['100']).toBeDefined()
     expect(token.text['100'].value.base).toBe(
-      getSemanticToken`acheron.accent.80`,
+      getSemanticToken`acheron.accent.60`,
     )
     expect(token.text['100'].value._darkMode).toBe(
-      getSemanticToken`acheron.accent.80`,
+      getSemanticToken`acheron.accent.60`,
     )
     expect(token.text['100'].value._lightMode).toBe(
-      getSemanticToken`acheron.accent.100`,
+      getSemanticToken`acheron.accent.90`,
     )
   })
 

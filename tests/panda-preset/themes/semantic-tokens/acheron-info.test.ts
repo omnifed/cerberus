@@ -166,10 +166,10 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron text.100 property', () => {
     expect(infoTokens.info.text['100'].value.base).toEqual(
-      formatSemanticToken`acheron.info.40`,
+      formatSemanticToken`acheron.info.30`,
     )
     expect(infoTokens.info.text['100'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.40`,
+      formatSemanticToken`acheron.info.30`,
     )
     expect(infoTokens.info.text['100'].value._lightMode).toEqual(
       formatSemanticToken`acheron.info.80`,
