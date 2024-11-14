@@ -175,11 +175,24 @@ export function CustomMenu() {
         className={css({
           bgColor: 'black',
           color: 'yellow',
-          colorPalette: 'warning',
         })}
       >
-        <MenuItem value="item_1">Cash Rules Everything Around Me</MenuItem>
-        <MenuItem value="item_2">Dolla dolla bills y&apos;all</MenuItem>
+        <MenuItem
+          className={css({
+            colorPalette: 'warning',
+          })}
+          value="item_1"
+        >
+          Cash Rules Everything Around Me
+        </MenuItem>
+        <MenuItem
+          className={css({
+            colorPalette: 'warning',
+          })}
+          value="item_2"
+        >
+          Dolla dolla bills y&apos;all
+        </MenuItem>
       </MenuContent>
     </Menu>
   )
