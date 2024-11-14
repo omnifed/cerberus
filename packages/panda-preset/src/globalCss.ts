@@ -73,7 +73,7 @@ const tooltipStyles = {
     textAlign: 'left',
     textStyle: 'label-sm',
     textWrap: 'pretty',
-    whiteSpace: 'nowrap',
+    w: 'max-content',
     zIndex: 'tooltip',
     _motionSafe: {
       animationName: 'fadeIn',
