@@ -42,8 +42,7 @@ export interface NavMenuContextValue {
 const NavMenuContext = createContext<NavMenuContextValue | null>(null)
 
 /**
- * Provides the nav menu state for all the NavMenu family components.
- * @see https://cerberus.digitalu.design/react/nav-menu
+ * @deprecated use the {@link Menu} family instead
  */
 export function NavMenu(props: PropsWithChildren): JSX.Element {
   const triggerRef = useRef<HTMLButtonElement>(null)

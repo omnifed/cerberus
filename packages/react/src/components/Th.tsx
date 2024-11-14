@@ -1,6 +1,8 @@
+'use client'
+
 import { css, cx } from '@cerberus/styled-system/css'
 import { th, type ThVariantProps } from '@cerberus/styled-system/recipes'
-import type { MouseEvent, TableHTMLAttributes } from 'react'
+import type { MouseEvent } from 'react'
 import { Show } from './Show'
 
 /**
@@ -8,7 +10,7 @@ import { Show } from './Show'
  * @module
  */
 
-export type ThBaseProps = TableHTMLAttributes<HTMLTableCellElement> & {
+export type ThBaseProps = JSX.IntrinsicElements['th'] & {
   /**
    * Converts the Th into a actionable button. Called when the user clicks on
    * the Th.

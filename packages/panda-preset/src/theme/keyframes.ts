@@ -11,6 +11,11 @@ export const keyframes: CssKeyframes = defineKeyframes({
     '0%': { opacity: '0' },
     '100%': { opacity: '1' },
   },
+  fadeOut: {
+    from: { opacity: 1 },
+    to: { opacity: 0 },
+  },
+
   fadeInDown: {
     '0%': {
       opacity: '0',
@@ -21,6 +26,7 @@ export const keyframes: CssKeyframes = defineKeyframes({
       transform: 'translateY(0)',
     },
   },
+
   rubberBand: {
     '0%': {
       animationTimingFunction:
@@ -40,6 +46,7 @@ export const keyframes: CssKeyframes = defineKeyframes({
       transform: 'translateX(200%)',
     },
   },
+
   zoomIn: {
     '0%': {
       opacity: '0',

@@ -1,25 +1,26 @@
 ---
-heading: 'Nav Menu'
-description: 'Nav menus let people switch between UI pages'
+heading: 'Menu'
+description: 'Menus let users choose from a list of destinations or actions.'
 a11y: 'menus'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
-import {
-  BasicNavMenuPreview
-} from '@/app/react/nav-menu/components/nav-menu-preview'
+import DripDivider from '@/app/components/drip-divider'
+import { OverviewMenu, PositioningMenu } from '@/app/react/menu/components/menu-preview'
 
 <OverviewList rules={[
-  'Use standard navigation drawers in expanded, large, and extra large window sizes',
-  'Use modal navigation drawers in compact and medium window sizes',
-  'Can be open or closed by default',
-  'Put the most frequent destinations at the top and group related destinations together'
+  'Menus are used to provide a list of options to the user.',
+  'Menus can be used to navigate to different pages or perform actions.',
+  'Menus can be used in a variety of contexts within a page.',
 ]} />
 
 ## Example
 
-<CodePreview preview={<BasicNavMenuPreview />} />
+<CodePreview preview={<OverviewMenu />} />
+<CodePreview preview={<PositioningMenu />} />
+
+<DripDivider />
 
 ## Resources
 

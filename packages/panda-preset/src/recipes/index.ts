@@ -14,6 +14,7 @@ import { checkbox } from './slots/checkbox'
 import { fileStatus } from './slots/fileStatus'
 import { fileUploader } from './slots/fileUploader'
 import { input } from './slots/input'
+import { menu } from './slots/menu'
 import { modal } from './slots/modal'
 import { notification } from './slots/notification'
 import { progressBar } from './slots/progressBar'
@@ -47,6 +48,7 @@ export const slotRecipes = {
   fileStatus,
   fileUploader,
   input,
+  menu,
   modal,
   notification,
   progressBar,

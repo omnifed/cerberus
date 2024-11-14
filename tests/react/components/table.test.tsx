@@ -20,7 +20,7 @@ describe('Table', () => {
         </Thead>
         <Tbody>
           <Tr>
-            <Td>Row 1, Cell 1</Td>
+            <Td colSpan={1}>Row 1, Cell 1</Td>
             <Td>Row 1, Cell 2</Td>
             <Td>Row 1, Cell 3</Td>
           </Tr>

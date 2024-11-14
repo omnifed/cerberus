@@ -1,0 +1,275 @@
+---
+npm: '@cerberus-design/react'
+source: 'context/navMenu.tsx'
+recipe: 'slots/menu.ts'
+ark: 'menu'
+---
+
+import {
+  NoteAdmonition
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import {
+  BasicMenu,
+  NavMenu,
+  PositioningMenu,
+  GroupedMenu,
+  CustomMenu,
+} from '@/app/react/menu/components/menu-preview'
+
+```ts
+import {
+  Menu,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  MenuItemGroup,
+  MenuGroupLabel,
+  MenuSeparator,
+} from '@cerberus/react'
+```
+
+## Usage
+
+<CodePreview preview={<BasicMenu />}>
+```tsx title="nav.tsx"
+import {
+  Menu,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  Button,
+} from '@cerberus/react'
+import { Strawberry } from '@cerberus/icons'
+
+function BasicMenu() {
+  return (
+    <Menu>
+      <MenuTrigger>
+        <Button>Trigger</Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem value="item_1">
+          <Strawberry />
+          Item 1
+        </MenuItem>
+        <MenuItem value="item_2">
+          <Strawberry />
+          Item 2
+        </MenuItem>
+      </MenuContent>
+    </Menu>
+  )
+}
+```
+</CodePreview>
+
+## NextJS Usage
+
+To create a nav menu with NextJS, you should use the `Link` component from `next/link` combined with the `asChild` prop.
+
+<CodePreview preview={<NavMenu />}>
+```tsx title="nav.tsx" {8,15}
+import {
+  Menu,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  Button,
+  Logout,
+} from '@cerberus/react'
+import Link from '@next/link'
+
+function BasicMenu() {
+  return (
+    <Menu>
+      <MenuTrigger>
+        <Button>Nav Menu</Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem value="item_1" asChild>
+          <Link href="/">Item 1</Link>
+        </MenuItem>
+        <MenuItem value="item_2" asChild>
+          <Link href="/">Item 2</Link>
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem value="item_3" asChild>
+          <Link
+            className={css({
+              alignItems: 'center',
+              color: 'danger.text.initial',
+              display: 'inline-flex',
+              justifyContent: 'space-between',
+              w: 'full',
+            })}
+            href="/"
+          >
+            Sign out
+            <Logout />
+          </Link>
+        </MenuItem>
+      </MenuContent>
+    </Menu>
+  )
+}
+```
+</CodePreview>
+
+## Grouped Menu
+
+You can group menu items by using the `MenuItemGroup` component.
+
+<CodePreview preview={<GroupedMenu />}>
+```tsx title="nav.tsx"
+import {
+  Menu,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  MenuItemGroup,
+  MenuGroupLabel,
+  MenuSeparator,
+  Button,
+} from '@cerberus/react'
+
+export function GroupedMenu() {
+  return (
+    <Menu>
+      <MenuTrigger>
+        <Button>Grouped Menu</Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItemGroup>
+          <MenuGroupLabel>Group Label</MenuGroupLabel>
+          <MenuSeparator />
+          <MenuItem value="item_1">Item 1</MenuItem>
+          <MenuItem value="item_2">Item 2</MenuItem>
+        </MenuItemGroup>
+      </MenuContent>
+    </Menu>
+  )
+}
+```
+</CodePreview>
+
+## Positions
+
+The `Menu` component accepts a `positioning` prop to determine where the menu will be positioned relative to the trigger. [See available positions](#navmenulist).
+
+<CodePreview preview={<PositioningMenu />}>
+```tsx title="nav.tsx" {12-14}
+import {
+  Menu,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  Button,
+} from '@cerberus/react'
+
+function BottomNav() {
+  return (
+    <Menu
+      positioning={{
+        placement: 'bottom',
+      }}
+    >
+      <MenuTrigger>
+        <Button>Bottom</Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem value="item_1">Item 1</MenuItem>
+        <MenuItem value="item_2">Item 2</MenuItem>
+      </MenuContent>
+    </Menu>
+  )
+}
+```
+</CodePreview>
+
+## Customizing
+
+You can customize every Menu component by passing in your own styles.
+
+<CodePreview preview={<CustomMenu />}>
+```tsx title="nav.tsx"
+import {
+  Menu,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  Button,
+} from '@cerberus/react'
+
+function CustomMenu() {
+  return (
+    <Menu>
+      <MenuTrigger>
+        <Button
+          className={css({
+            color: 'black',
+          })}
+          palette="warning"
+        >
+          C.R.E.A.M.
+        </Button>
+      </MenuTrigger>
+      <MenuContent
+        className={css({
+          bgColor: 'black',
+          color: 'yellow',
+        })}
+      >
+        <MenuItem value="item_1">Cash Rules Everything Around Me</MenuItem>
+        <MenuItem value="item_2">Dolla dolla bills y'all</MenuItem>
+      </MenuContent>
+    </Menu>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+### Menu
+
+```ts showLineNumbers=false
+export interface MenuProps {
+  positioning?: {
+    placement: 'left' | 'right' | 'top' | 'bottom'
+  }
+}
+```
+
+| Name     | Default    |       Description                                   |
+| -------- | ------- | ------------------------------------------------------ |
+| positioning     | null   | Used to position the menu content.  |
+
+
+### MenuTrigger
+
+```ts showLineNumbers=false
+export interface MenuTriggerProps {
+  children: React.ReactNode
+}
+```
+
+| Name     | Default    |       Description                                   |
+| -------- | ------- | ------------------------------------------------------ |
+| children     | null   | The trigger element.  |
+
+### MenuItem
+
+```ts showLineNumbers=false
+export interface MenuItemProps {
+  children: React.ReactNode
+  value: string
+  asChild?: boolean
+}
+```
+
+| Name     | Default    |       Description                                   |
+| -------- | ------- | ------------------------------------------------------ |
+| children     | null   | The content of the menu item.  |
+| value     | null   | The value of the menu item used for selection.  |
+| asChild     | false   | Used to render the children as a child component.  |

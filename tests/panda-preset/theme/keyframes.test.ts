@@ -8,6 +8,12 @@ describe('keyframes', () => {
     expect(keyframes.fadeIn['100%']).toEqual({ opacity: '1' })
   })
 
+  test('should export fadeOut', () => {
+    expect(keyframes.fadeOut).toBeDefined()
+    expect(keyframes.fadeOut.from).toEqual({ opacity: 1 })
+    expect(keyframes.fadeOut.to).toEqual({ opacity: 0 })
+  })
+
   test('should export fadeInDown', () => {
     expect(keyframes.fadeInDown).toBeDefined()
     expect(keyframes.fadeInDown['0%']).toEqual({

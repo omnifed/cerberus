@@ -1,13 +1,12 @@
 import { cx } from '@cerberus/styled-system/css'
 import { td, type TdVariantProps } from '@cerberus/styled-system/recipes'
-import type { TableHTMLAttributes } from 'react'
 
 /**
  * Th component for the Td component
  * @module
  */
 
-export type TdBaseProps = TableHTMLAttributes<HTMLTableCellElement>
+export type TdBaseProps = JSX.IntrinsicElements['td']
 export type TdProps = TdBaseProps & TdVariantProps
 
 /**

@@ -19,21 +19,21 @@
       "Table"
     ],
     "next": [],
-    "new": ["Admonition"]
+    "new": ["Notifications"]
   },
   "containment": {
     "name": "Containment",
     "description": "Components that contain other components.",
     "items": ["Confirm Modal", "Prompt Modal", "CTA Modal", "Modal", "Table"],
-    "next": ["CTA Modal"],
-    "new": []
+    "next": [],
+    "new": ["CTA Modal"]
   },
   "navigation": {
     "name": "Navigation",
     "description": "Components that help users navigate through the app.",
-    "items": ["Nav Menu", "Tabs"],
+    "items": ["Menu", "Tabs"],
     "next": [],
-    "new": []
+    "new": ["Menu"]
   },
   "selection": {
     "name": "Selection",
@@ -54,6 +54,6 @@
       "File Uploader"
     ],
     "next": [],
-    "new": ["Fieldset"]
+    "new": []
   }
 }
