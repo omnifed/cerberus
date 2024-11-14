@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'bun:test'
 import { acheronTheme } from '@cerberus-design/panda-preset'
 
-describe('Acheron actionTokens', () => {
+describe('acheron actionTokens', () => {
   const actionTokens = acheronTheme.actionTokens
 
   function getSemanticToken(value: TemplateStringsArray) {
@@ -128,7 +128,7 @@ describe('Acheron actionTokens', () => {
       getSemanticToken`acheron.brand.90`,
     )
     expect(actionTokens.action.ghost.hover.value._lightMode).toBe(
-      getSemanticToken`acheron.brand.5`,
+      getSemanticToken`acheron.brand.20`,
     )
   })
 
@@ -143,7 +143,7 @@ describe('Acheron actionTokens', () => {
       getSemanticToken`acheron.brand.80`,
     )
     expect(actionTokens.action.ghost.active.value._lightMode).toBe(
-      getSemanticToken`acheron.brand.10`,
+      getSemanticToken`acheron.brand.30`,
     )
   })
 
@@ -212,13 +212,13 @@ describe('Acheron actionTokens', () => {
   test('should have a acheron action.text.100 key', () => {
     expect(actionTokens.action.text[100]).toBeDefined()
     expect(actionTokens.action.text[100].value.base).toBe(
-      getSemanticToken`acheron.brand.60`,
+      getSemanticToken`acheron.brand.50`,
     )
     expect(actionTokens.action.text[100].value._darkMode).toBe(
-      getSemanticToken`acheron.brand.60`,
+      getSemanticToken`acheron.brand.50`,
     )
     expect(actionTokens.action.text[100].value._lightMode).toBe(
-      getSemanticToken`acheron.brand.70`,
+      getSemanticToken`acheron.brand.80`,
     )
   })
 

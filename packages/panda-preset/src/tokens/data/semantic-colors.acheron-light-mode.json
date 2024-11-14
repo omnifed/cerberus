@@ -3,7 +3,7 @@
     "action": {
       "100": {
         "$type": "color",
-        "$value": "acheron.brand.70",
+        "$value": "acheron.brand.80",
         "$description": "Text action items that are sitting on a lighter background color, like secondary buttons etc. ",
         "$extensions": {
           "com.figma": {
@@ -475,7 +475,7 @@
     "secondary-action": {
       "100": {
         "$type": "color",
-        "$value": "acheron.accent.100",
+        "$value": "acheron.accent.90",
         "$description": "Text color inside of interactive items and icons that have an inverse background of the initial token. That may need a different style of emphasis. Use case may vary per product.",
         "$extensions": {
           "com.figma": {
@@ -1307,8 +1307,8 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "acheron.brand.5",
-        "$description": "",
+        "$value": "acheron.brand.20",
+        "$description": "Hover state of ghost action elements. Pair with text.action.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1319,7 +1319,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "acheron.brand.10",
+        "$value": "acheron.brand.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1345,8 +1345,8 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "acheron.danger.10",
-        "$description": "",
+        "$value": "acheron.danger.20",
+        "$description": "Hover state of ghost action elements. Pair with text.danger.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1357,7 +1357,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "acheron.danger.20",
+        "$value": "acheron.danger.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1384,7 +1384,7 @@
       "hover": {
         "$type": "color",
         "$value": "acheron.info.20",
-        "$description": "",
+        "$description": "Hover state of ghost action elements. Pair with text.info.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1422,7 +1422,7 @@
       "hover": {
         "$type": "color",
         "$value": "acheron.success.10",
-        "$description": "",
+        "$description": "Hover state of ghost action elements. Pair with text.success.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1460,7 +1460,7 @@
       "hover": {
         "$type": "color",
         "$value": "acheron.accent.10",
-        "$description": "",
+        "$description": "Hover state of ghost action elements. Pair with text.secondary-action.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -1498,7 +1498,7 @@
       "hover": {
         "$type": "color",
         "$value": "acheron.warning.20",
-        "$description": "",
+        "$description": "Hover state of ghost action elements. Pair with text.warning.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
