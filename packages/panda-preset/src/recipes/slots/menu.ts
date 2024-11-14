@@ -31,18 +31,18 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       zIndex: 'calc(var(--menu-z-index) + var(--layer-index, 0))',
       ...focusStates,
       _open: {
-        // animationStyle: 'slide-fade-in',
-        // animationDuration: 'fast',
-        animationName: 'zoomIn',
+        // motionStyles: 'slide-fade-in',
+        animationName: 'slideFromTop, fadeIn',
         animationDuration: 'fast',
       },
       _closed: {
-        // animationStyle: 'slide-fade-out',
-        animationName: 'fadeOut',
+        // motionStyles: 'slide-fade-out',
+        animationName: 'slideToTop, fadeOut',
         animationDuration: 'faster',
       },
     },
     item: {
+      colorPalette: 'action',
       alignItems: 'center',
       borderRadius: 'l1',
       cursor: 'menuitem',
@@ -59,7 +59,7 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       userSelect: 'none',
       width: 'full',
       _highlighted: {
-        bgColor: 'action.border.100',
+        bgColor: 'colorPalette.ghost.hover',
       },
       _disabled: {
         layerStyle: 'disabled',

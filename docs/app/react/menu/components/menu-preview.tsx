@@ -70,6 +70,7 @@ export function NavMenu() {
             className={css({
               alignItems: 'center',
               color: 'danger.text.initial',
+              colorPalette: 'danger',
               display: 'inline-flex',
               justifyContent: 'space-between',
               w: 'full',

@@ -22,11 +22,11 @@ describe('menu recipe', () => {
       shadow: 'lg',
       zIndex: 'calc(var(--menu-z-index) + var(--layer-index, 0))',
       _open: {
-        animationName: 'zoomIn',
+        animationName: 'slideFromTop, fadeIn',
         animationDuration: 'fast',
       },
       _closed: {
-        animationName: 'fadeOut',
+        animationName: 'slideToTop, fadeOut',
         animationDuration: 'faster',
       },
     })
@@ -34,6 +34,7 @@ describe('menu recipe', () => {
 
   test('should have a item style', () => {
     expect(menu.base?.item).toMatchObject({
+      colorPalette: 'action',
       alignItems: 'center',
       borderRadius: 'l1',
       cursor: 'menuitem',
@@ -50,7 +51,7 @@ describe('menu recipe', () => {
       userSelect: 'none',
       width: 'full',
       _highlighted: {
-        bgColor: 'action.border.100',
+        bgColor: 'colorPalette.ghost.hover',
       },
       _disabled: {
         layerStyle: 'disabled',
