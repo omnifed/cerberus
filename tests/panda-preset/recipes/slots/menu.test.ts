@@ -22,11 +22,11 @@ describe('menu recipe', () => {
       shadow: 'lg',
       zIndex: 'calc(var(--menu-z-index) + var(--layer-index, 0))',
       _open: {
-        animationName: 'zoomIn',
+        animationName: 'slideFromTop, fadeIn',
         animationDuration: 'fast',
       },
       _closed: {
-        animationName: 'fadeOut',
+        animationName: 'slideToTop, fadeOut',
         animationDuration: 'faster',
       },
     })

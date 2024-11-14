@@ -1,5 +1,6 @@
 import { recipes, slotRecipes } from '../recipes'
 import { defineTheme } from '../theme-contract'
+import { motionStyles } from './motionStyles'
 import { keyframes } from './keyframes'
 import { semanticTokens } from './semantic-tokens/config'
 import { textStyles } from './textStyles'
@@ -13,11 +14,12 @@ import { tokens } from './tokens'
 export const baseTheme = defineTheme({
   semanticTokens,
   extend: {
+    tokens,
     keyframes,
     recipes,
     slotRecipes,
     textStyles,
-    tokens,
+    motionStyles,
   },
 })
 

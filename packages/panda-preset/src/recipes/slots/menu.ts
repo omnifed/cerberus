@@ -31,14 +31,13 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       zIndex: 'calc(var(--menu-z-index) + var(--layer-index, 0))',
       ...focusStates,
       _open: {
-        // animationStyle: 'slide-fade-in',
-        // animationDuration: 'fast',
-        animationName: 'zoomIn',
+        // motionStyles: 'slide-fade-in',
+        animationName: 'slideFromTop, fadeIn',
         animationDuration: 'fast',
       },
       _closed: {
-        // animationStyle: 'slide-fade-out',
-        animationName: 'fadeOut',
+        // motionStyles: 'slide-fade-out',
+        animationName: 'slideToTop, fadeOut',
         animationDuration: 'faster',
       },
     },
