@@ -180,6 +180,9 @@ export function CustomMenu() {
         <MenuItem
           className={css({
             colorPalette: 'warning',
+            _hover: {
+              color: 'black',
+            },
           })}
           value="item_1"
         >
@@ -188,6 +191,9 @@ export function CustomMenu() {
         <MenuItem
           className={css({
             colorPalette: 'warning',
+            _hover: {
+              color: 'black',
+            },
           })}
           value="item_2"
         >
