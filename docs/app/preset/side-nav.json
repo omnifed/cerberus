@@ -40,13 +40,13 @@
   {
     "label": "Spacing",
     "route": "/preset/spacing",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
     "label": "Typography",
     "route": "/preset/typography",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
@@ -68,7 +68,7 @@
   {
     "label": "Conditions",
     "route": "/preset/conditions",
-    "tag": "",
+    "tag": "new",
     "type": "route"
   },
   {
