@@ -1,5 +1,5 @@
 export const getTheme = (themeName) =>
-  import('./' + themeName + '.json').then((m) => m.default)
+  import(`./theme-${themeName}.json`).then((m) => m.default)
 
 export function injectTheme(el, theme) {
   const doc = el.ownerDocument || document
