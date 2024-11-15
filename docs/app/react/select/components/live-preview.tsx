@@ -38,7 +38,15 @@ export function LivePlaygroundWithCode() {
   return (
     <CodeBuilder
       api={api}
-      code={`import { Field, Select, Option, Label, FieldMessage } from '@cerberus-design/react'
+      code={`import {
+  Field,
+  Select,
+  Option,
+  Label,
+  FieldMessage,
+  type FieldProps,
+  type SelectProps,
+} from '@cerberus-design/react'
 
 type MySelectProps = FieldProps & SelectProps
 

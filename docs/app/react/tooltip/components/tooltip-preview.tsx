@@ -21,7 +21,7 @@ function IconButton(
 
 export function BasicTooltipPreview() {
   return (
-    <IconButton aria-label="Get information">
+    <IconButton aria-label="Get information from something that has a very long description.">
       <Information />
     </IconButton>
   )
