@@ -7,7 +7,7 @@ import { useCallback, useMemo, useRef, useState, type RefObject } from 'react'
  * @module
  */
 
-interface UseModalReturnValue {
+export interface UseModalReturnValue {
   /**
    * The ref for the modal.
    */

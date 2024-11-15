@@ -4,9 +4,9 @@ source: 'hooks/useModal.ts'
 recipe: ''
 ---
 
-import {
-  WhenToUseAdmonition
-} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { WhenToUseAdmonition } from '@/app/components/Admonition'
+import LazyModalTrigger from '@/app/react/modal/components/lazy-modal-trigger'
 
 # useModal
 
@@ -47,40 +47,138 @@ function SomePage() {
 
 When you need to dynamically load a Modal, you can use the `useModal` hook to manage the Modal's state.
 
-```tsx title="dynamic-modal.tsx" {9}
-import {
-  Modal,
-  Button,
-  trapFocus,
-  useModal
-} from '@cerberus/react'
-import { lazy, Suspense } from 'react'
+<CodePreview preview={<LazyModalTrigger />}>
+```tsx title="api/lazy-modal.ts"
+import { type LazyModalData } from './lazy-modal'
 
-const SomeDynamicComponent = lazy(() => import('./SomeDynamicComponent'))
+export interface DataProps {
+  pending: boolean
+  result: LazyModalData['data'] | null
+  error: Error | null
+}
 
-function SomePage() {
+export async function fakeFetch() {
+  return new Promise<LazyModalData['data']>((resolve) => {
+    setTimeout(() => {
+      resolve({
+        heading: 'Lazy Modal',
+        content: 'This is a lazy-loaded modal.',
+      })
+    }, 1000)
+  })
+}
+```
+
+```tsx title="lazy-modal-trigger.tsx"
+'use client'
+
+import { Button, Show, Spinner, useModal } from '@cerberus-design/react'
+import { Box } from '@cerberus-design/styled-system/jsx'
+import dynamic from 'next/dynamic'
+import { useCallback, useState } from 'react'
+import type { LazyModalData } from './lazy-modal'
+import { fakeFetch } from './api/lazy-modal'
+
+const LazyModal = dynamic(() => import('./lazy-modal'))
+
+export default function LazyModalTrigger() {
   const modal = useModal()
-  const handleKeyDown = trapFocus(modalRef)
+  const [data, setData] = useState<DataProps>({
+    pending: false,
+    result: null,
+    error: null,
+  })
+
+  const handlePrefetchData = useCallback(async () => {
+    if (data.result === null && !data.pending) {
+      try {
+        const result = await fakeFetch()
+        setData({
+          pending: false,
+          result,
+          error: null,
+        })
+        return result
+      } catch (error) {
+        setData({
+          pending: false,
+          result: null,
+          error: error as Error,
+        })
+      }
+    }
+
+    setData((prev) => ({
+      ...prev,
+      pending: false,
+    }))
+  }, [data.result, data.pending])
+
+  const handleShow = useCallback(async () => {
+    setData((prev) => ({
+      ...prev,
+      pending: true,
+    }))
+    await handlePrefetchData()
+    modal.show()
+  }, [modal])
 
   return (
-    <div>
-      <Button onClick={modal.show}>Show Modal</Button>
+    <Box>
+      <Button
+        disabled={data.pending}
+        onClick={handleShow}
+        onMouseEnter={handlePrefetchData}
+      >
+        Open Modal
+        <Show when={data.pending}>
+          <Spinner size={24} />
+        </Show>
+      </Button>
 
-      <Modal onKeyDown={handleKeyDown} ref={modal.modalRef}>
-        <Suspense>
-          <Show when={modal.isOpen}>
-            <SomeDynamicComponent />
-          </Show>
-        </Suspense>
-
-        <Button onClick={modal.close}>
-          Close
-        </Button>
-      </Modal>
-    </div>
+      <Show when={data.result !== null}>
+        <LazyModal {...modal} data={data.result!} />
+      </Show>
+    </Box>
   )
 }
 ```
+
+```tsx title="lazy-modal.tsx"
+import {
+  Button,
+  Modal,
+  UseModalReturnValue,
+  trapFocus,
+} from '@cerberus-design/react'
+import { HStack } from '@cerberus-design/styled-system/jsx'
+
+export interface LazyModalData extends UseModalReturnValue {
+  data: {
+    heading: string
+    content: string
+  }
+}
+
+export default function LazyModal(props: LazyModalData) {
+  const handleKeyDown = trapFocus(props.modalRef)
+  return (
+    <Modal onKeyDown={handleKeyDown} ref={props.modalRef}>
+      <div>
+        <h2>{props.data!.heading}</h2>
+        <p>{props.data!.content}</p>
+      </div>
+
+      <HStack>
+        <Button onClick={props.close}>Close</Button>
+      </HStack>
+    </Modal>
+  )
+}
+```
+</CodePreview>
+
+This example demonstrates prefetching data before displaying the Modal. After the data is fetched (and cached), the Modal is displayed. Once the Modal is closed, the data is still available for future use.
 
 ## API
 
