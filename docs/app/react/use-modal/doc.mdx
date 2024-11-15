@@ -72,8 +72,8 @@ export async function fakeFetch() {
 ```tsx title="lazy-modal-trigger.tsx"
 'use client'
 
-import { Button, Show, Spinner, useModal } from '@cerberus-design/react'
-import { Box } from '@cerberus-design/styled-system/jsx'
+import { Button, Show, Spinner, useModal } from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
 import dynamic from 'next/dynamic'
 import { useCallback, useState } from 'react'
 import type { LazyModalData } from './lazy-modal'
@@ -150,8 +150,9 @@ import {
   Modal,
   UseModalReturnValue,
   trapFocus,
-} from '@cerberus-design/react'
-import { HStack } from '@cerberus-design/styled-system/jsx'
+} from '@cerberus/react'
+import { css } from '@cerberus/styled-system/css'
+import { HStack, VStack } from '@cerberus/styled-system/jsx'
 
 export interface LazyModalData extends UseModalReturnValue {
   data: {
@@ -164,17 +165,29 @@ export default function LazyModal(props: LazyModalData) {
   const handleKeyDown = trapFocus(props.modalRef)
   return (
     <Modal onKeyDown={handleKeyDown} ref={props.modalRef}>
-      <div>
-        <h2>{props.data!.heading}</h2>
+      <VStack
+        alignItems="flex-start"
+        color="page.text.initial"
+        gap="lg"
+        w="full"
+      >
+        <h2
+          className={css({
+            textStyle: 'heading-md',
+          })}
+        >
+          {props.data!.heading}
+        </h2>
         <p>{props.data!.content}</p>
-      </div>
 
-      <HStack>
-        <Button onClick={props.close}>Close</Button>
-      </HStack>
+        <HStack>
+          <Button onClick={props.close}>Close</Button>
+        </HStack>
+      </VStack>
     </Modal>
   )
 }
+
 ```
 </CodePreview>
 
