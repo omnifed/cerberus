@@ -17,12 +17,13 @@ const overviewGroup: CategoriesList = {
     items: [
       'Getting Started',
       'Loading States',
+      'Forms',
       'Feature Flags',
       'Portal',
       'Show',
     ],
-    next: [],
-    new: [''],
+    next: ['Forms'],
+    new: [],
   },
 }
 const hooksGroup: CategoriesList = {
