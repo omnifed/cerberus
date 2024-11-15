@@ -26,7 +26,7 @@
   "devDependencies": {
     "@cerberus-design/panda-preset": "workspace:*",
     "@csstools/postcss-cascade-layers": "^5.0.0",
-    "@expressive-code/plugin-line-numbers": "^0.37.1",
+    "@expressive-code/plugin-line-numbers": "^0.38.3",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^15.0.1",
