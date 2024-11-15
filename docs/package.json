@@ -41,7 +41,7 @@
     "autoprefixer": "^10.4.19",
     "color-space": "^2.0.1",
     "eslint": "9.14.0",
-    "eslint-config-next": "15.0.2",
+    "eslint-config-next": "15.0.3",
     "eslint-import-resolver-typescript": "^3.6.3",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-expressive-code": "^0.38.1",
