@@ -18,7 +18,7 @@
       "Tooltip",
       "Table"
     ],
-    "next": [],
+    "next": ["Tooltip"],
     "new": ["Notifications"]
   },
   "containment": {
