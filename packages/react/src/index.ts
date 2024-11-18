@@ -48,6 +48,7 @@ export * from './components/Tbody'
 export * from './components/Tag'
 export * from './components/Textarea'
 export * from './components/Toggle'
+export * from './components/Tooltip'
 export * from './components/Show'
 
 // context

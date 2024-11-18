@@ -1,51 +1,30 @@
-import { Information } from '@cerberus-design/icons'
-import type { ButtonProps } from '@cerberus-design/react'
-import { hstack } from '@cerberus/styled-system/patterns'
-import { iconButton } from '@cerberus/styled-system/recipes'
-
-function IconButton(
-  props: ButtonProps & {
-    tooltipPosition?: 'top' | 'right' | 'bottom' | 'left'
-  },
-) {
-  const { tooltipPosition, ...nativeProps } = props
-  return (
-    <button
-      {...nativeProps}
-      data-tooltip
-      data-position={tooltipPosition || 'top'}
-      className={iconButton()}
-    />
-  )
-}
+import { Information, InformationFilled } from '@cerberus-design/icons'
+import { Tooltip } from '@cerberus-design/react'
+import { HStack } from '@cerberus-design/styled-system/jsx'
 
 export function BasicTooltipPreview() {
   return (
-    <IconButton aria-label="Get information from something that has a very long description.">
+    <Tooltip content="Get information from something that has a very long description.">
       <Information />
-    </IconButton>
+    </Tooltip>
   )
 }
 
 export function PositioningTooltipPreview() {
   return (
-    <div
-      className={hstack({
-        gap: '10',
-      })}
-    >
-      <IconButton aria-label="Top position" tooltipPosition="top">
-        <Information />
-      </IconButton>
-      <IconButton aria-label="Right position" tooltipPosition="right">
-        <Information />
-      </IconButton>
-      <IconButton aria-label="Bottom position" tooltipPosition="bottom">
-        <Information />
-      </IconButton>
-      <IconButton aria-label="Left position" tooltipPosition="left">
-        <Information />
-      </IconButton>
-    </div>
+    <HStack gap="3xl">
+      <Tooltip content="Top position" position="top">
+        <InformationFilled />
+      </Tooltip>
+      <Tooltip content="Right position" position="right">
+        <InformationFilled />
+      </Tooltip>
+      <Tooltip content="Bottom position" position="bottom">
+        <InformationFilled />
+      </Tooltip>
+      <Tooltip content="Left position" position="left">
+        <InformationFilled />
+      </Tooltip>
+    </HStack>
   )
 }

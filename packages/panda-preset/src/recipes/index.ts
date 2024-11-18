@@ -23,6 +23,7 @@ import { select } from './slots/select'
 import { table } from './slots/table'
 import { tabs } from './slots/tabs'
 import { toggle } from './slots/toggle'
+import { tooltip } from './slots/tooltip'
 
 /**
  * Recipe module for the Panda preset
@@ -57,4 +58,5 @@ export const slotRecipes = {
   table,
   tabs,
   toggle,
+  tooltip,
 }

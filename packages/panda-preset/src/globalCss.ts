@@ -1,107 +1,5 @@
 import { defineGlobalStyles, type GlobalStyleObject } from '@pandacss/dev'
 
-const tooltipStyles = {
-  _positionTop: {
-    _before: {
-      top: '0',
-      transform: 'translateY(-135%)',
-    },
-    _after: {
-      borderColor:
-        'var(--cerberus-colors-page-surface-inverse) transparent transparent transparent',
-      left: '50%',
-      top: '0',
-      transform: 'translateY(-120%)',
-    },
-  },
-  _positionBottom: {
-    _before: {
-      bottom: '0',
-      transform: 'translateY(135%)',
-    },
-    _after: {
-      borderColor:
-        'transparent transparent var(--cerberus-colors-page-surface-inverse) transparent ',
-      bottom: '0',
-      left: '50%',
-      transform: 'translateY(120%)',
-    },
-  },
-  _positionLeft: {
-    _before: {
-      left: '0',
-      top: '0',
-      transform: 'translate3d(-109%, 20%, 0)',
-    },
-    _after: {
-      borderColor:
-        'transparent transparent transparent var(--cerberus-colors-page-surface-inverse)',
-      left: '0',
-      top: '0',
-      transform: 'translate3d(-45%, 176%, 0)',
-    },
-  },
-  _positionRight: {
-    _before: {
-      right: '0',
-      top: '0',
-      transform: 'translate3d(109%, 20%, 0)',
-    },
-    _after: {
-      borderColor:
-        'transparent var(--cerberus-colors-page-surface-inverse) transparent transparent ',
-      right: '0',
-      top: '0',
-      transform: 'translate3d(95%, 176%, 0)',
-    },
-  },
-  // bubble
-  _before: {
-    backgroundColor: 'var(--cerberus-colors-page-surface-inverse)',
-    color: 'var(--cerberus-colors-page-text-inverse)',
-    content: 'attr(aria-label)',
-    fontWeight: 400,
-    lineHeight: 'initial',
-    maxH: '6rem',
-    maxW: '17rem',
-    pxi: '3',
-    py: '2',
-    opacity: 0,
-    position: 'absolute',
-    rounded: 'sm',
-    shadow: 'lg',
-    textAlign: 'left',
-    textStyle: 'label-sm',
-    textWrap: 'pretty',
-    w: 'max-content',
-    zIndex: 'tooltip',
-    _motionSafe: {
-      animationName: 'fadeIn',
-      animationDuration: '150ms',
-      animationFillMode: 'forwards',
-      animationTimingFunction: 'ease-in-out',
-      animationDelay: '50ms',
-    },
-  },
-  // arrow
-  _after: {
-    content: '""',
-    position: 'absolute',
-    marginInlineStart: '-5px',
-    border: '5px solid',
-    opacity: 0,
-    shadow: 'lg',
-    zIndex: 'tooltip',
-    _motionSafe: {
-      animationName: 'fadeIn',
-      animationDuration: '150ms',
-      animationFillMode: 'forwards',
-      animationTimingFunction: 'ease-in-out',
-      animationDelay: '50ms',
-    },
-  },
-}
-
 export const globalCss: GlobalStyleObject = defineGlobalStyles({
   html: {
     backgroundColor: 'var(--cerberus-colors-page-surface-initial)',
@@ -190,13 +88,7 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
     maxWidth: 'none',
   },
 
-  ':is(div,button,span,svg)': {
-    _tooltip: {
-      position: 'relative',
-      _hover: tooltipStyles,
-      _focus: tooltipStyles,
-    },
-  },
+  // Skeletor API
 
   ':is(div,main,section,header,footer,nav,a,span,button,li,p)': {
     _loading: {
