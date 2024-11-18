@@ -18,7 +18,7 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   base: {
     content: {
-      '--menu-z-index': 'zIndex.dropdown',
+      '--menu-z-index': 'zIndex.popover',
       bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'page.border.200',
@@ -32,12 +32,34 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       ...focusStates,
       _open: {
         // motionStyles: 'slide-fade-in',
-        animationName: 'slideFromTop, fadeIn',
+        '&[data-placement^=top]': {
+          animationName: 'slideFromBottom, fadeIn',
+        },
+        '&[data-placement^=bottom]': {
+          animationName: 'slideFromTop, fadeIn',
+        },
+        '&[data-placement^=left]': {
+          animationName: 'slideFromRight, fadeIn',
+        },
+        '&[data-placement^=right]': {
+          animationName: 'slideFromLeft, fadeIn',
+        },
         animationDuration: 'fast',
       },
       _closed: {
         // motionStyles: 'slide-fade-out',
-        animationName: 'slideToTop, fadeOut',
+        '&[data-placement^=top]': {
+          animationName: 'slideToBottom, fadeOut',
+        },
+        '&[data-placement^=bottom]': {
+          animationName: 'slideToTop, fadeOut',
+        },
+        '&[data-placement^=left]': {
+          animationName: 'slideToRight, fadeOut',
+        },
+        '&[data-placement^=right]': {
+          animationName: 'slideToLeft, fadeOut',
+        },
         animationDuration: 'faster',
       },
     },

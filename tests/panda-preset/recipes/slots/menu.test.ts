@@ -10,7 +10,7 @@ describe('menu recipe', () => {
 
   test('should have a base style', () => {
     expect(menu.base?.content).toMatchObject({
-      '--menu-z-index': 'zIndex.dropdown',
+      '--menu-z-index': 'zIndex.popover',
       bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'page.border.200',
@@ -22,11 +22,33 @@ describe('menu recipe', () => {
       shadow: 'lg',
       zIndex: 'calc(var(--menu-z-index) + var(--layer-index, 0))',
       _open: {
-        animationName: 'slideFromTop, fadeIn',
+        '&[data-placement^=top]': {
+          animationName: 'slideFromBottom, fadeIn',
+        },
+        '&[data-placement^=bottom]': {
+          animationName: 'slideFromTop, fadeIn',
+        },
+        '&[data-placement^=left]': {
+          animationName: 'slideFromRight, fadeIn',
+        },
+        '&[data-placement^=right]': {
+          animationName: 'slideFromLeft, fadeIn',
+        },
         animationDuration: 'fast',
       },
       _closed: {
-        animationName: 'slideToTop, fadeOut',
+        '&[data-placement^=top]': {
+          animationName: 'slideToBottom, fadeOut',
+        },
+        '&[data-placement^=bottom]': {
+          animationName: 'slideToTop, fadeOut',
+        },
+        '&[data-placement^=left]': {
+          animationName: 'slideToRight, fadeOut',
+        },
+        '&[data-placement^=right]': {
+          animationName: 'slideToLeft, fadeOut',
+        },
         animationDuration: 'faster',
       },
     })

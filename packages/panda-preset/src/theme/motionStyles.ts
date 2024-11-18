@@ -3,7 +3,7 @@ import { defineAnimationStyles, type AnimationStyles } from '../types'
 const transformOrigin = 'var(--transform-origin)'
 
 export const motionStyles: AnimationStyles = defineAnimationStyles({
-  'slid-fade-in': {
+  'slide-fade-in': {
     value: {
       transformOrigin,
       '&[data-placement^=top]': {
