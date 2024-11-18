@@ -1,3 +1,5 @@
+'use client'
+
 import type { PropsWithChildren } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -22,12 +24,21 @@ export interface PortalProps {
  * The Portal component is used to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
  * @see https://cerberus.digitalu.design/react/portal
  * @definition [React Portal Docs](https://react.dev/reference/react-dom/createPortal)
+ * @example
+ * ```tsx
+ * 'use client'
+ *
+ * import { Portal } from '@cerberus/react'
+ *
+ * function SomeFeatureWithinSSRPage() {
+ *   return (
+ *     <Portal>
+ *       <div>Portal Content outside of the React VDom tree</div>
+ *     </Portal>
+ *   )
+ * }
  */
 export function Portal(props: PropsWithChildren<PortalProps>) {
-  if (typeof window !== 'undefined') {
-    const container = props.container || document.body
-    return createPortal(props.children, container, props.key)
-  }
-
-  return null
+  const container = props.container || document.body
+  return createPortal(props.children, container, props.key)
 }
