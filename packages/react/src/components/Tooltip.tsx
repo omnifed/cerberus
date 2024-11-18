@@ -4,17 +4,18 @@ import {
 } from '@ark-ui/react/tooltip'
 import { cx } from '@cerberus/styled-system/css'
 import { tooltip } from '@cerberus/styled-system/recipes'
+import type { ReactNode } from 'react'
 
 /**
  * This module contains the Tooltip component.
  * @module Tooltip
  */
 
-interface TooltipProps {
+export interface TooltipProps {
   /**
    * The text content to display in the tooltip.
    */
-  content: React.ReactNode
+  content: ReactNode
   /**
    * The position of the tooltip relative to the trigger element.
    */

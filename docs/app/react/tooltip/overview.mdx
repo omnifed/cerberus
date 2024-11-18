@@ -8,9 +8,11 @@ import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import DripDivider from '@/app/components/drip-divider'
 import {
-  BasicTooltipPreview,
-  PositioningTooltipPreview
+  BasicTooltipPreview
 } from '@/app/react/tooltip/components/tooltip-preview'
+import {
+  LivePlayground,
+} from '@/app/react/tooltip/components/live-playground'
 
 <OverviewList rules={[
   'Use tooltips to add additional context to a button or other UI element',
@@ -20,7 +22,7 @@ import {
 ## Examples
 
 <CodePreview preview={<BasicTooltipPreview />} />
-<CodePreview preview={<PositioningTooltipPreview />} />
+<LivePlayground />
 
 <DripDivider />
 

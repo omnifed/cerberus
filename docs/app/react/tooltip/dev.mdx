@@ -1,7 +1,7 @@
 ---
-npm: ''
-source: ''
-recipe: ''
+npm: '@cerberus-design/react'
+source: 'components/Tooltip.tsx'
+recipe: 'slots/tooltip.ts'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
@@ -12,88 +12,32 @@ import {
   BasicTooltipPreview,
   PositioningTooltipPreview,
 } from '@/app/react/tooltip/components/tooltip-preview'
+import {
+  LivePlaygroundWithCode,
+} from '@/app/react/tooltip/components/live-playground'
 
-To use a Tooltip, simply add the `data-tooltip`, `aria-label` attributes to the element you want to add a tooltip to. Optionally, you can include `data-position` to specify the position of the tooltip.
-
-```tsx
-<button ariaLabel="Like something" data-tooltip data-position="top">
+```ts
+import { Tooltip } from '@cerberus/react'
 ```
 
 ## Usage
 
-<CodePreview preview={<BasicTooltipPreview />}>
-```tsx title="icon-button.tsx" {6}
-import { IconButton } from '@cerberus/react'
-import { ThumbsUp } from '@cerberus/icons'
-
-function BasicTooltipPreview() {
-  return (
-    <IconButton ariaLabel="Get information">
-      <Information />
-    </IconButton>
-  )
-}
-```
-</CodePreview>
-
-<NoteAdmonition description="IconButtons provide the data-tooltip attribute for you and set the position to top by default." />
-
-## Positions
-
-<CodePreview preview={<PositioningTooltipPreview />}>
-```tsx title="icon-button.tsx" {10,13,16,19,23}
-import { Information } from '@cerberus/icons'
-import { IconButton } from '@cerberus/react'
-import { hstack } from '@cerberus/styled-system/patterns'
-
-function PositioningTooltipPreview() {
-  return (
-    <div className={hstack({
-      gap: '10'
-    })}>
-      <IconButton ariaLabel="Top position" tooltipPosition="top">
-        <Information />
-      </IconButton>
-      <IconButton ariaLabel="Right position" tooltipPosition="right">
-        <Information />
-      </IconButton>
-      <IconButton ariaLabel="Bottom position" tooltipPosition="bottom">
-        <Information />
-      </IconButton>
-      <IconButton ariaLabel="Left position" tooltipPosition="left">
-        <Information />
-      </IconButton>
-    </div>
-  )
-}
-```
-</CodePreview>
+<LivePlaygroundWithCode />
 
 ## Customization
 
-To customize the tooltip, you need to update the globalCss options within your Panda theme.
-
-```ts title="globalCss.ts"
-':is(div,button,span,svg)': {
-  _tooltip: {
-    _hover: {
-      _before: {}, // bubble
-      _after: {}, // arrow
-    },
-    _focus: {
-      _before: {},
-      _after: {},
-    },
-  },
-},
-```
+To customize the tooltip, we recommend extending the Tooltip slot recipe found in the preset.
 
 ## API
 
-All of the following props are required to display a tooltip.
+```tsx
+export interface TooltipProps {
+  content: ReactNode
+  position?: 'top' | 'right' | 'bottom' | 'left'
+}
+```
 
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
-| aria-label |    `undefined`     | The content of the tooltip and accessible label. |
-| data-tooltip | `undefined`   | The attribute that triggers a tooltip. |
-| data-position | `undefined`    | The position of the tooltip.    |
+| content  |   | The content to display in the tooltip      |
+| position | 'top' | The position of the tooltip relative to the target element |

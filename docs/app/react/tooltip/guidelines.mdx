@@ -3,6 +3,7 @@
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
+import DripDivider from '@/app/components/drip-divider'
 import {
   WhenToUseAdmonition,
   WhenNotToUseAdmonition,
@@ -21,12 +22,13 @@ Tooltips briefly describe a UI element. They're best used for labelling UI eleme
 
 <WhenNotToUseAdmonition description="When you need to provide a tooltip that contains actions - use the Popover." />
 
-
 ## Standard Tooltip
 
 <CodePreview preview={<BasicTooltipPreview />} />
 
 <WhenToUseAdmonition description="When you need to describe a UI element." />
+
+<DripDivider />
 
 ## Placement
 
