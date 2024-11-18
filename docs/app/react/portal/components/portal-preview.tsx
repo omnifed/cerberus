@@ -23,8 +23,8 @@ export default function PortalPreview() {
         <Portal>
           <div
             className={hstack({
-              backgroundColor: 'info.surface.initial',
-              color: 'info.text.initial',
+              backgroundColor: 'info.surface.100',
+              color: 'info.text.100',
               justify: 'space-between',
               left: 0,
               mxi: '4',
