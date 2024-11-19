@@ -37,7 +37,7 @@ export default function CodePreview(
           py: '4',
         })}
       >
-        <Button onClick={handleHideCode} usage="text" type="button">
+        <Button onClick={handleHideCode} usage="ghost" type="button">
           Hide code
           <CodeHide aria-hidden size="1.5rem" />
         </Button>
@@ -61,7 +61,7 @@ export function PreviewLayout(props: PropsWithChildren<PreviewLayoutProps>) {
         })}
       >
         <Show when={Boolean(props.onShowCode)}>
-          <Button onClick={props.onShowCode} usage="text" type="button">
+          <Button onClick={props.onShowCode} usage="ghost" type="button">
             Show code
             <Code aria-hidden size="1.5rem" />
           </Button>

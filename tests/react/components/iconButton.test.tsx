@@ -35,16 +35,16 @@ describe('IconButton', () => {
     ).toBeTrue()
   })
 
-  test('should render a text icon button', () => {
+  test('should render a ghost icon button', () => {
     render(
-      <IconButton ariaLabel="test button" usage="text">
+      <IconButton ariaLabel="test button" usage="ghost">
         it works
       </IconButton>,
     )
     expect(
       screen
         .getByText(/it works/i)
-        .classList.contains('cerberus-icon-btn--usage_text'),
+        .classList.contains('cerberus-icon-btn--usage_ghost'),
     ).toBeTrue()
   })
 

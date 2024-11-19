@@ -66,7 +66,7 @@ describe('NavMenuTrigger', () => {
       expanded: false,
     }
     render(
-      <NavMenuTrigger usage="text" {...ariaProps}>
+      <NavMenuTrigger usage="ghost" {...ariaProps}>
         it works
       </NavMenuTrigger>,
       {
@@ -76,7 +76,7 @@ describe('NavMenuTrigger', () => {
     expect(
       screen
         .getByText(/it works/i)
-        .classList.contains('cerberus-button--usage_text'),
+        .classList.contains('cerberus-button--usage_ghost'),
     ).toBeTrue()
   })
 

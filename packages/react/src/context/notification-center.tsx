@@ -136,7 +136,7 @@ export function NotificationCenter(
                 palette="action"
                 shape="rounded"
                 size="sm"
-                usage="text"
+                usage="ghost"
               >
                 Close all
               </Button>

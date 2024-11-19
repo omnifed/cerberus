@@ -178,7 +178,7 @@ export default function UsageExample(props: UsageExampleProps) {
               ...highlightedStyles,
             })}
             type="button"
-            usage="text"
+            usage="ghost"
           >
             Text Button
           </Button>

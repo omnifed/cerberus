@@ -18,7 +18,7 @@ const props = {
   usage: figma.enum('Usage', {
     filled: 'filled',
     outlined: 'outlined',
-    text: 'text',
+    ghost: 'ghost',
   }),
   size: figma.enum('Size', {
     sm: 'sm',

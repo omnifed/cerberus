@@ -65,6 +65,7 @@ export * from './context/theme'
 
 // hooks
 
+export * from './hooks/useDate'
 export * from './hooks/useModal'
 export * from './hooks/useTheme'
 export * from './hooks/useToggle'
