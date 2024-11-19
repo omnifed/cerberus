@@ -32,12 +32,13 @@ const hooksGroup: CategoriesList = {
     description: 'React hooks and helper functions for Cerberus',
     items: [
       'trap-focus',
+      'use-date',
       'use-modal',
       'use-theme',
       'use-theme-context',
       'use-toggle',
     ],
-    next: [],
+    next: ['use-date'],
     new: [],
   },
 }

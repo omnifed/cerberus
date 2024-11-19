@@ -1,0 +1,90 @@
+---
+heading: 'useDate'
+description: 'A custom hook for managing date inputs.'
+a11y: 'utilities'
+npm: '@cerberus-design/react'
+source: 'hooks/useDate.ts'
+recipe: ''
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  InputDatePreview
+} from '@/app/react/input/components/input-preview'
+
+<CodePreview preview={<InputDatePreview />} />
+
+## Usage
+
+```tsx title="form.tsx" {14}
+'use client'
+
+import { Calendar } from '@cerberus/icons'
+import {
+  Field,
+  FieldMessage,
+  Input,
+  Label,
+  useDate,
+  type InputProps,
+} from '@cerberus/react'
+
+export function DateInput(props: InputProps) {
+  const date = useDate()
+  return (
+    <Field>
+      <Label htmlFor={props.id}>Start Date</Label>
+      <Input
+        {...props}
+        describedBy="help:start_date"
+        onChange={date.onChange}
+        startIcon={<Calendar />}
+        placeholder="DD MMM YYYY"
+        type="text"
+        value={date.value}
+      />
+      <FieldMessage id="help:start_date">
+        We also have access to the ISO format: {date.ISO}
+      </FieldMessage>
+    </Field>
+  )
+}
+```
+
+## API
+
+```ts showLineNumbers=false
+export interface UseDateBase {
+  format: string
+  value: string
+  onChange?: InputHTMLAttributes<HTMLInputElement>['onChange']
+}
+
+export interface UseDateOptions extends UseDateBase {
+  initialValue?: string
+}
+
+export interface UseDateReturn extends UseDateBase {
+  ISO: string
+}
+
+define function useDate(options?: UseDateOptions): UseDateReturn
+```
+
+### Arguments
+
+The `useDate` hook accepts the following optional arguments:
+
+| Name         | Default    | Description                                      |
+| ------------ | ---------- | ------------------------------------------------ |
+| `format`     | `'DD MMM YYYY'` | The format of the date string. |
+| `initialValue` |        | An initial value of the date string. |
+| `onChange`   |  | The custom event handler for the date input. |
+
+### Return
+
+| Name         | Default    | Description                                      |
+| ------------ | ---------- | ------------------------------------------------ |
+| `format`     | `'DD MMM YYYY'` | The format of the date string is. |
+| `value`      |            | The current value of the date string. |
+| `ISO`        |            | The current value of the date string in ISO format. |
