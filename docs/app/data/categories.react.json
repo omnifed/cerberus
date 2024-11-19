@@ -18,8 +18,8 @@
       "Tooltip",
       "Table"
     ],
-    "next": ["Tooltip"],
-    "new": ["Notifications"]
+    "next": [],
+    "new": ["Notifications", "Tooltip"]
   },
   "containment": {
     "name": "Containment",
