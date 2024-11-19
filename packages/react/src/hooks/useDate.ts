@@ -12,11 +12,7 @@ export interface UseDateBase {
   /**
    * The format of the date input
    */
-  format: string
-  /**
-   * The value of the date input
-   */
-  value: string
+  format?: string
   /**
    * The callback to run when the date input changes
    */
@@ -31,7 +27,14 @@ export interface UseDateOptions extends UseDateBase {
 }
 
 export interface UseDateReturn extends UseDateBase {
+  /**
+   * The ISO formatted date string
+   */
   ISO: string
+  /**
+   * The value of the date input
+   */
+  value: string
 }
 
 /**
@@ -71,6 +74,11 @@ export function useDate(options?: UseDateOptions): UseDateReturn {
 
 // helpers
 
+/**
+ * Converts a string in US Military format to ISO format. Used within the `useDate` hook.
+ * @param input The string to format
+ * @returns The formatted string in ISO format (YYYY-MM-DD)
+ */
 export function formatMilitaryToISO(input: string) {
   const [day, month, year] = input.split(' ')
   const monthIndex = MONTHS.findIndex((m) => m.startsWith(month))
@@ -81,7 +89,12 @@ export function formatMilitaryToISO(input: string) {
   )}`
 }
 
-export function formatMilitaryDate(input: string) {
+/**
+ * Converts a string to US Military format. Used within the `useDate` hook.
+ * @param input The string to format
+ * @returns The formatted string in US Military format (DD MMM YYYY)
+ */
+export function formatMilitaryDate(input: string): string {
   let formatted = input.toUpperCase().replace(/[^0-9A-Z]/g, '')
   let day = ''
   let month = ''
@@ -116,6 +129,13 @@ export function formatMilitaryDate(input: string) {
   return [day, month, year].filter(Boolean).join(' ')
 }
 
+/**
+ * Date formatting options
+ * @example
+ * ```tsx
+ * const date = new Date()
+ * const formatted = date.format(DateFormats.USMilitary)
+ */
 export const DateFormats = {
   get ISO() {
     return 'YYYY-MM-DD'

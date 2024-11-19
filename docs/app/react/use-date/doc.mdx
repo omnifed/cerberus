@@ -51,6 +51,33 @@ export function DateInput(props: InputProps) {
 }
 ```
 
+## Helpers
+
+Cerberus exposes the following helper functions for date formatting. These are already used internally by the `useDate` hook.
+
+### Date Formats
+
+```tsx title="General Usage"
+export const DateFormats = {
+  get ISO() {
+    return 'YYYY-MM-DD'
+  },
+  get USMilitary() {
+    return 'DD MMM YYYY'
+  },
+  get Months() {
+    return MONTHS
+  },
+}
+```
+
+### Military Formatters
+
+```ts
+export function formatMilitaryToISO(input: string): string
+export function formatMilitaryDate(input: string): string
+```
+
 ## API
 
 ```ts showLineNumbers=false
