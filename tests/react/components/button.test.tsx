@@ -30,12 +30,12 @@ describe('Button', () => {
     ).toBeTrue()
   })
 
-  test('should render a text button', () => {
-    render(<Button usage="text">it works</Button>)
+  test('should render a ghost button', () => {
+    render(<Button usage="ghost">it works</Button>)
     expect(
       screen
         .getByText(/it works/i)
-        .classList.contains('cerberus-button--usage_text'),
+        .classList.contains('cerberus-button--usage_ghost'),
     ).toBeTrue()
   })
 

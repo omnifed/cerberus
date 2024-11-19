@@ -18,7 +18,7 @@ const props = {
   usage: figma.enum('Usage', {
     filled: 'filled',
     outline: 'outlined',
-    text: 'text',
+    ghost: 'ghost',
   }),
   // Figma specific
   text: figma.textContent('Action'),

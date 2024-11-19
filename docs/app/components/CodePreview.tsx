@@ -61,7 +61,7 @@ export function PreviewLayout(props: PropsWithChildren<PreviewLayoutProps>) {
         })}
       >
         <Show when={Boolean(props.onShowCode)}>
-          <Button onClick={props.onShowCode} usage="text" type="button">
+          <Button onClick={props.onShowCode} usage="ghost" type="button">
             Show code
             <Code aria-hidden size="1.5rem" />
           </Button>
