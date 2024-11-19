@@ -65,7 +65,7 @@ export default function LazyModalTrigger() {
     }))
     await handlePrefetchData()
     modal.show()
-  }, [modal])
+  }, [modal, handlePrefetchData])
 
   return (
     <Box>
