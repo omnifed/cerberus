@@ -37,7 +37,7 @@ export default function CodePreview(
           py: '4',
         })}
       >
-        <Button onClick={handleHideCode} usage="text" type="button">
+        <Button onClick={handleHideCode} usage="ghost" type="button">
           Hide code
           <CodeHide aria-hidden size="1.5rem" />
         </Button>
