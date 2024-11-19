@@ -44,7 +44,6 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     palette: buttonPalettes,
     usage: {
       ghost: textUsage,
-      text: textUsage,
       filled: filledUsage,
       outlined: outlinedUsage,
     },
@@ -80,7 +79,7 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
 
   defaultVariants: {
     palette: 'action',
-    usage: 'text',
+    usage: 'ghost',
     shape: 'circle',
     size: 'lg',
   },

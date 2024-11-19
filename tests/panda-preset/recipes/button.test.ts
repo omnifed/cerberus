@@ -76,8 +76,8 @@ describe('button recipe', () => {
     })
   })
 
-  test('should have a text usage variant', () => {
-    expect(button.variants?.usage.text).toMatchObject({
+  test('should have a ghost usage variant', () => {
+    expect(button.variants?.usage.ghost).toMatchObject({
       color: 'colorPalette.text.200',
       bgColor: 'transparent',
       border: 'none',

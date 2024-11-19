@@ -100,8 +100,8 @@ describe('iconButton recipe', () => {
     })
   })
 
-  test('should have a text usage variant', () => {
-    expect(iconButton.variants?.usage.text).toMatchObject({
+  test('should have a ghost usage variant', () => {
+    expect(iconButton.variants?.usage.ghost).toMatchObject({
       color: 'colorPalette.text.200',
       bgColor: 'transparent',
       border: 'none',
@@ -168,7 +168,7 @@ describe('iconButton recipe', () => {
   test('should have default variants', () => {
     expect(iconButton.defaultVariants).toMatchObject({
       palette: 'action',
-      usage: 'text',
+      usage: 'ghost',
       shape: 'circle',
       size: 'lg',
     })

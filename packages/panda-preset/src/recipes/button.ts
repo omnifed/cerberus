@@ -37,7 +37,6 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     palette: buttonPalettes,
     usage: {
       ghost: textUsage,
-      text: textUsage,
       outlined: outlinedUsage,
       filled: filledUsage,
     },
