@@ -22,8 +22,8 @@ const overviewGroup: CategoriesList = {
       'Portal',
       'Show',
     ],
-    next: ['Forms'],
-    new: [],
+    next: [],
+    new: ['Forms'],
   },
 }
 const hooksGroup: CategoriesList = {
@@ -38,8 +38,8 @@ const hooksGroup: CategoriesList = {
       'use-theme-context',
       'use-toggle',
     ],
-    next: ['use-date'],
-    new: [],
+    next: [],
+    new: ['use-date'],
   },
 }
 
