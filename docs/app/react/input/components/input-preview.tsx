@@ -2,10 +2,20 @@ import { Search } from '@cerberus-design/icons'
 import { Field, FieldMessage, Label, Input } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { vstack } from '@cerberus/styled-system/patterns'
+import { DateInput } from './date-input'
+import { Box } from '@cerberus-design/styled-system/jsx'
 
 const overrideStyles = css({
   w: '1/2',
 })
+
+export function InputDatePreview() {
+  return (
+    <Box w="1/3">
+      <DateInput id="start_date" />
+    </Box>
+  )
+}
 
 export function InputBasicPreview() {
   return (
