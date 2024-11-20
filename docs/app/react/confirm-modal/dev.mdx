@@ -22,28 +22,42 @@ import { ConfirmModal, useConfirmModal } from '@cerberus/react'
 ### Non-destructive
 
 <CodePreview preview={<NonDestructivePreview />}>
-```tsx title="some-page.tsx"
+```tsx title="some-feature.tsx"
 import { ConfirmModal, useConfirmModal } from '@cerberus/react'
 
 function SomeFeature() {
   const confirm = useConfirmModal()
 
-  const handleConfirm = useCallback(async () => {
-    const consent = await confirm.show({
+  const handleClick = useCallback(async () => {
+    const userConsent = await confirm.show({
       heading: 'Add new payment method?',
-      description:
-        'This will add a new payment method to your account to be billed for future purchases.',
+      description: (
+        <>
+          This will add a new payment method to your account to be billed for
+          future purchases.{' '}
+          <a
+            className={css({
+              textStyle: 'link',
+            })}
+            href="#"
+          >
+            Learn more
+          </a>
+          .
+        </>
+      ),
       actionText: 'Yes, add payment method',
-      cancelText: 'No, cancel',
+      cancelText: NOPE,
     })
-    // do something with consent
-  }, [])
+    setConsent(userConsent)
+  }, [confirm])
 
   return (
     <Button onClick={handleConfirm}>Confirm</Button>
   )
 }
-
+```
+```tsx title="some-page.tsx" {8}
 function SomePage() {
   return(
     <ConfirmModal>
@@ -96,8 +110,12 @@ For customizing the Confirm Modal, we recommend extending the `confirmModal` slo
 ## API
 
 ```ts showLineNumbers=false
+export type ShowConfirmModalOptions =
+  | NonDestructiveConfirmModalOptions
+  | DestructiveConfirmOptions
+
 export interface ConfirmModalProviderValue {
-  show: (options: ConfirmModalOptions) => Promise<boolean>
+  show: (options: ShowConfirmModalOptions) => Promise<boolean>
 }
 
 define function ConfirmModal(props: PropsWithChildren<{}>): ReactNode
@@ -110,7 +128,7 @@ The `show` method accepts the following options:
 | Name     | Default | Description                            |
 | -------- | ------- | -------------------------------------- |
 | kind | `non-destructive` | The variant used to theme the modal.           |
-| heading | `''` | The heading of the modal. |
-| description | `''` | The description of the modal. |
-| actionText | `''` | The text for the action button. |
-| cancelText | `''` | The text for the cancel button. |
+| heading |  | The heading of the modal. |
+| description |  | The description of the modal. For non-destructive modals only, can be a ReactNode. |
+| actionText |  | The text for the action button. |
+| cancelText |  | The text for the cancel button. |
