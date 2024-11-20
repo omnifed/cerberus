@@ -9,7 +9,7 @@
     "palette": "success",
     "id": "2",
     "heading": "Profile Updated",
-    "description": "Your profile has been updated successfully."
+    "description": "Your profile has been updated successfully. And this is a really long message that should never happen."
   },
   {
     "palette": "warning",
