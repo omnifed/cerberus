@@ -20,7 +20,7 @@ export const modal: Partial<SlotRecipeConfig> = defineSlotRecipe({
   base: {
     dialog: {
       ...modalBase,
-      p: '8',
+      p: 'xl',
       userSelect: 'none',
       md: {
         w: '35.25rem',

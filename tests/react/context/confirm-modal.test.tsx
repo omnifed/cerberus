@@ -6,7 +6,11 @@ import {
   renderHook,
   waitFor,
 } from '@testing-library/react'
-import { ConfirmModal, useConfirmModal } from '@cerberus-design/react'
+import {
+  ConfirmModal,
+  useConfirmModal,
+  type ShowConfirmModalOptions,
+} from '@cerberus-design/react'
 import { setupStrictMode } from '@/utils'
 import { useState } from 'react'
 import userEvent from '@testing-library/user-event'
@@ -15,7 +19,9 @@ describe('ConfirmModal & useConfirmModal', () => {
   setupStrictMode()
   afterEach(cleanup)
 
-  function TestFeature() {
+  function TestFeature(props: {
+    description?: ShowConfirmModalOptions['description']
+  }) {
     const confirm = useConfirmModal()
     const [consent, setConsent] = useState<boolean | null>(null)
 
@@ -23,6 +29,7 @@ describe('ConfirmModal & useConfirmModal', () => {
       const consent = await confirm.show({
         heading: 'Add new payment method?',
         description:
+          props.description ??
           'This will add a new payment method to your account to be billed for future purchases.',
         actionText: 'Yes, add payment method',
         cancelText: 'No, cancel',
@@ -38,10 +45,44 @@ describe('ConfirmModal & useConfirmModal', () => {
     )
   }
 
-  function TestPage() {
+  function DestructiveFeature() {
+    const confirm = useConfirmModal()
+    const [consent, setConsent] = useState<boolean | null>(null)
+
+    async function handleConfirm() {
+      const consent = await confirm.show({
+        kind: 'destructive',
+        heading: 'Delete account?',
+        description:
+          'This will permanently delete your account and all associated data.',
+        actionText: 'Yes, delete',
+        cancelText: 'No, keep',
+      })
+      setConsent(consent)
+    }
+
+    return (
+      <div>
+        <button onClick={handleConfirm}>confirm choice</button>
+        <div>User consent: {JSON.stringify(consent)}</div>
+      </div>
+    )
+  }
+
+  function TestPage(props: {
+    description?: ShowConfirmModalOptions['description']
+  }) {
     return (
       <ConfirmModal>
-        <TestFeature />
+        <TestFeature description={props.description} />
+      </ConfirmModal>
+    )
+  }
+
+  function DestructiveTest() {
+    return (
+      <ConfirmModal>
+        <DestructiveFeature />
       </ConfirmModal>
     )
   }
@@ -108,6 +149,52 @@ describe('ConfirmModal & useConfirmModal', () => {
     ).toBeTruthy()
     await userEvent.tab()
     expect(screen.getByText(/Add new payment method?/i).focus).toBeTruthy()
+  })
+
+  test('should allow a React node as the description', async () => {
+    render(
+      <TestPage
+        description={
+          <>
+            Custom description with a <a href="#">link</a>
+          </>
+        }
+      />,
+    )
+    await userEvent.click(
+      screen.getByRole('button', { name: /confirm choice/i }),
+    )
+    await waitFor(() =>
+      expect(screen.getByText(/Custom description with a/i)).toBeTruthy(),
+    )
+  })
+
+  test('should show destructive confirm modal', async () => {
+    render(<DestructiveTest />)
+    await userEvent.click(
+      screen.getByRole('button', { name: /confirm choice/i }),
+    )
+    await waitFor(() =>
+      expect(screen.getByText(/Delete account?/i)).toBeTruthy(),
+    )
+    await waitFor(() =>
+      expect(
+        screen.getByText(
+          /This will permanently delete your account and all associated data./i,
+        ),
+      ).toBeTruthy(),
+    )
+    await waitFor(() =>
+      expect(screen.getByRole('button', { name: /yes, delete/i })),
+    )
+    await waitFor(() =>
+      expect(screen.getByRole('button', { name: /no, keep/i })),
+    )
+    expect(
+      screen
+        .getByRole('button', { name: /yes, delete/i })
+        .classList.contains('cerberus-button--palette_danger'),
+    ).toBeTruthy()
   })
 
   test('should throw an error if used outside of FeatureFlags', () => {

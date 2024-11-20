@@ -1,6 +1,7 @@
 'use client'
 
 import { Button, Show, useConfirmModal } from '@cerberus-design/react'
+import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
 import { useCallback, useState } from 'react'
 
@@ -13,8 +14,21 @@ export function NonDestructiveFeature() {
   const handleClick = useCallback(async () => {
     const userConsent = await confirm.show({
       heading: 'Add new payment method?',
-      description:
-        'This will add a new payment method to your account to be billed for future purchases.',
+      description: (
+        <>
+          This will add a new payment method to your account to be billed for
+          future purchases.{' '}
+          <a
+            className={css({
+              textStyle: 'link',
+            })}
+            href="#"
+          >
+            Learn more
+          </a>
+          .
+        </>
+      ),
       actionText: 'Yes, add payment method',
       cancelText: NOPE,
     })
