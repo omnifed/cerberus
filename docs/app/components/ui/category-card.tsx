@@ -63,7 +63,7 @@ export default async function CategoryCard(props: CategoryCardProps) {
           <ImageIcon size={24} />
         </VStack>
         <Box p="4">
-          <Text color="page.text.initial" textStyle="body-xl">
+          <Text color="page.text.initial" textStyle="body-lg">
             {item!.label}
           </Text>
         </Box>

@@ -1,11 +1,17 @@
+import { css } from '@cerberus-design/styled-system/css'
 import type { BoxProps } from '@cerberus-design/styled-system/jsx'
 import { createElement, type PropsWithChildren } from 'react'
 
+type Headings = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+type TextElements = 'p' | 'strong' | 'em'
+
 interface TextProps extends BoxProps {
-  as?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  as?: TextElements | Headings
 }
 
 export default function Text(props: PropsWithChildren<TextProps>) {
   const { as = 'p', children, ...rest } = props
-  return createElement(as, rest, children)
+  const styles = css({ ...rest })
+  const elProps = { className: styles }
+  return createElement(as, elProps, children)
 }
