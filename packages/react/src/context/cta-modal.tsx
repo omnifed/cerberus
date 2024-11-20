@@ -155,46 +155,46 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
             </IconButton>
           </span>
 
-          <ModalHeader>
-            <HStack justify="center" w="full">
-              <Avatar
-                ariaLabel=""
-                gradient="charon-light"
-                icon={
-                  <Show
-                    when={Boolean(confirmIcon)}
-                    fallback={<FallbackIcon size={24} />}
-                  >
-                    {confirmIcon}
-                  </Show>
-                }
-                src=""
-              />
-            </HStack>
-            <VStack gap="lg" w="full">
-              <ModalHeading>{content?.heading}</ModalHeading>
-              <ModalDescription>{content?.description}</ModalDescription>
-            </VStack>
-          </ModalHeader>
+          <VStack gap="xl" w="full">
+            <ModalHeader>
+              <VStack gap="lg" w="full">
+                <Avatar
+                  ariaLabel=""
+                  gradient="charon-light"
+                  icon={
+                    <Show
+                      when={Boolean(confirmIcon)}
+                      fallback={<FallbackIcon size={24} />}
+                    >
+                      {confirmIcon}
+                    </Show>
+                  }
+                  src=""
+                />
+                <ModalHeading>{content?.heading}</ModalHeading>
+                <ModalDescription>{content?.description}</ModalDescription>
+              </VStack>
+            </ModalHeader>
 
-          <HStack gap="md" pt="sm" w="full">
-            <Show when={Boolean(content?.actions?.length)}>
-              {content?.actions?.map((action, index) => (
-                <Button
-                  data-index={index}
-                  className={css({
-                    w: '1/2',
-                  })}
-                  key={index}
-                  onClick={handleActionClick}
-                  shape="rounded"
-                  usage="outlined"
-                >
-                  {action.text}
-                </Button>
-              ))}
-            </Show>
-          </HStack>
+            <HStack gap="md" w="full">
+              <Show when={Boolean(content?.actions?.length)}>
+                {content?.actions?.map((action, index) => (
+                  <Button
+                    data-index={index}
+                    className={css({
+                      w: '1/2',
+                    })}
+                    key={index}
+                    onClick={handleActionClick}
+                    shape="rounded"
+                    usage="outlined"
+                  >
+                    {action.text}
+                  </Button>
+                ))}
+              </Show>
+            </HStack>
+          </VStack>
         </Modal>
       </Portal>
     </CTAModalContext.Provider>

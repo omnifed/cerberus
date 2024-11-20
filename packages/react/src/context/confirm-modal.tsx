@@ -9,6 +9,7 @@ import {
   useState,
   type MouseEvent,
   type PropsWithChildren,
+  type ReactNode,
 } from 'react'
 import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
@@ -23,26 +24,18 @@ import { ModalHeader } from '../components/ModalHeader'
 import { ModalHeading } from '../components/ModalHeading'
 import { ModalDescription } from '../components/ModalDescription'
 import { Avatar } from '../components/Avatar'
+import { HStack, VStack } from '@cerberus/styled-system/jsx'
 
 /**
  * This module provides a context and hook for the confirm modal.
  * @module
  */
 
-export interface ShowConfirmModalOptions {
-  /**
-   * The kind of confirm modal to show.
-   * @default 'non-destructive'
-   */
-  kind?: 'destructive' | 'non-destructive'
+export interface BaseConfirmOptions {
   /**
    * The heading of the confirm modal.
    */
   heading: string
-  /**
-   * The description of the confirm modal.
-   */
-  description?: string
   /**
    * The text for the action button.
    */
@@ -52,6 +45,37 @@ export interface ShowConfirmModalOptions {
    */
   cancelText: string
 }
+
+export interface DestructiveConfirmOptions extends BaseConfirmOptions {
+  /**
+   * The kind of confirm modal to show.
+   */
+  kind?: 'destructive'
+  /**
+   * The description of the confirm modal. Can only be a string for destructive confirm modals.
+   */
+  description?: string
+}
+
+export interface NonDestructiveConfirmModalOptions extends BaseConfirmOptions {
+  /**
+   * The kind of confirm modal to show.
+   * @default 'non-destructive'
+   */
+  kind?: 'non-destructive'
+  /**
+   * The description of the confirm modal. Can be a ReactNode for non-destructive kind if you need to display text links.
+   * @example
+   * ```tsx
+   * description: <>Use a Fragment because we put the content within a Paragraph tag.</>
+   */
+  description?: ReactNode
+}
+
+export type ShowConfirmModalOptions =
+  | NonDestructiveConfirmModalOptions
+  | DestructiveConfirmOptions
+
 export type ShowResult =
   | ((value: boolean | PromiseLike<boolean>) => void)
   | null
@@ -97,10 +121,11 @@ export function ConfirmModal(
   const [content, setContent] = useState<ShowConfirmModalOptions | null>(null)
   const focusTrap = trapFocus(modalRef)
   const ConfirmIcon = $cerberusIcons.confirmModal
+  const kind = content?.kind ?? 'non-destructive'
 
   const palette = useMemo(
-    () => (content?.kind === 'destructive' ? 'danger' : 'action'),
-    [content],
+    () => (kind === 'destructive' ? 'danger' : 'action'),
+    [kind],
   )
 
   const handleChoice = useCallback(
@@ -118,7 +143,7 @@ export function ConfirmModal(
   const handleShow = useCallback(
     (options: ShowConfirmModalOptions) => {
       return new Promise<boolean>((resolve) => {
-        setContent({ ...options, kind: options.kind || 'non-destructive' })
+        setContent({ ...options })
         show()
         resolveRef.current = resolve
       })
@@ -139,65 +164,63 @@ export function ConfirmModal(
 
       <Portal>
         <Modal onKeyDown={focusTrap} ref={modalRef}>
-          <ModalHeader>
-            <div
-              className={hstack({
-                justify: 'center',
-                w: 'full',
-              })}
-            >
-              <Show
-                when={palette === 'danger'}
-                fallback={
+          <VStack gap="xl" w="full">
+            <ModalHeader>
+              <div
+                className={hstack({
+                  justify: 'center',
+                  w: 'full',
+                })}
+              >
+                <Show
+                  when={palette === 'danger'}
+                  fallback={
+                    <Avatar
+                      ariaLabel=""
+                      gradient="charon-light"
+                      icon={<ConfirmIcon size={24} />}
+                      src=""
+                    />
+                  }
+                >
                   <Avatar
                     ariaLabel=""
-                    gradient="charon-light"
+                    gradient="hades-dark"
                     icon={<ConfirmIcon size={24} />}
                     src=""
                   />
-                }
-              >
-                <Avatar
-                  ariaLabel=""
-                  gradient="hades-dark"
-                  icon={<ConfirmIcon size={24} />}
-                  src=""
-                />
-              </Show>
-            </div>
-            <ModalHeading>{content?.heading}</ModalHeading>
-            <ModalDescription>{content?.description}</ModalDescription>
-          </ModalHeader>
+                </Show>
+              </div>
+              <ModalHeading>{content?.heading}</ModalHeading>
+              <ModalDescription>{content?.description}</ModalDescription>
+            </ModalHeader>
 
-          <div
-            className={hstack({
-              gap: '4',
-            })}
-          >
-            <Button
-              autoFocus
-              className={css({
-                w: '1/2',
-              })}
-              name="confirm"
-              onClick={handleChoice}
-              palette={palette}
-              value="true"
-            >
-              {content?.actionText}
-            </Button>
-            <Button
-              className={css({
-                w: '1/2',
-              })}
-              name="cancel"
-              onClick={handleChoice}
-              usage="outlined"
-              value="false"
-            >
-              {content?.cancelText}
-            </Button>
-          </div>
+            <HStack gap="4" w="full">
+              <Button
+                autoFocus
+                className={css({
+                  w: '1/2',
+                })}
+                name="confirm"
+                onClick={handleChoice}
+                palette={palette}
+                value="true"
+              >
+                {content?.actionText}
+              </Button>
+              <Button
+                className={css({
+                  w: '1/2',
+                })}
+                name="cancel"
+                onClick={handleChoice}
+                usage="outlined"
+                value="false"
+              >
+                {content?.cancelText}
+              </Button>
+            </HStack>
+          </VStack>
         </Modal>
       </Portal>
     </ConfirmModalContext.Provider>

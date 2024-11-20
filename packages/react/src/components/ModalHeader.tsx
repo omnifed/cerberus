@@ -30,7 +30,6 @@ export function ModalHeader(props: ModalHeaderProps) {
         vstack({
           alignItems: 'flex-start',
           gap: 'md',
-          mb: 'md',
           position: 'relative',
         }),
       )}
