@@ -18,54 +18,53 @@ export default async function CategoryCard(props: CategoryCardProps) {
       <Link
         href={item!.route!}
         className={vstack({
-          bgColor: 'page.surface.100',
           display: 'block',
-          h: '15rem',
-          overflow: 'hidden',
-          rounded: 'xl',
-          shadow: 'md',
+          h: 'full',
+          rounded: 'lg',
           textDecoration: 'none',
           w: 'full',
-          _hover: {
-            transform: 'scale(1.05)',
-          },
-          _motionSafe: {
-            transition: 'all 250ms ease-in-out',
-          },
         })}
       >
-        <VStack
-          data-category={props.category}
-          h="2/3"
-          justify="center"
-          w="full"
-          css={{
-            '&:is([data-category=actions])': {
-              gradient: 'charon-dark',
-            },
-            '&:is([data-category=communication])': {
-              gradient: 'charon-light',
-            },
-            '&:is([data-category=containment])': {
-              gradient: 'nyx-dark',
-            },
-            '&:is([data-category=navigation])': {
-              gradient: 'nyx-light',
-            },
-            '&:is([data-category=selection])': {
-              gradient: 'amphiaraus-light',
-            },
-            '&:is([data-category=inputs])': {
-              gradient: 'amphiaraus-dark',
-            },
+        <Box
+          className="group"
+          bgColor="page.surface.100"
+          border="2px solid"
+          borderColor="transparent"
+          h="full"
+          p="sm"
+          rounded="inherit"
+          transition="border-color 200ms"
+          _hover={{
+            borderColor: 'page.border.100',
           }}
         >
-          <ImageIcon size={24} />
-        </VStack>
-        <Box p="4">
-          <Text color="page.text.initial" textStyle="body-lg">
-            {item!.label}
-          </Text>
+          <Box
+            data-category={props.category}
+            h="12.75rem"
+            gradient="charon-light"
+            rounded="inherit"
+            transition="height 200ms"
+            w="full"
+            willChange="height"
+            _groupHover={{
+              h: '14.25rem',
+            }}
+          />
+          <VStack alignItems="flex-start" gap="xs" pxi="xs" py="lg" w="full">
+            <Text
+              color="page.text.200"
+              textStyle="heading-md"
+              transition="color fast"
+              _groupHover={{
+                color: 'action.navigation.hover',
+              }}
+            >
+              {item!.label}
+            </Text>
+            <Text color="page.text.initial" textStyle="body-md">
+              Quick one sentence description about the component.
+            </Text>
+          </VStack>
         </Box>
       </Link>
     </Show>

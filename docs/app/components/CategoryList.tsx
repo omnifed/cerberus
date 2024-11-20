@@ -36,15 +36,24 @@ export default function CategoryList(props: CategoryListProps) {
           className={grid({
             columns: {
               base: 1,
-              md: 2,
-              lg: 3,
+              lg: 2,
+              '2xl': 3,
             },
-            gap: '4',
-            mb: '10',
+            gap: {
+              base: 'md',
+              '2xl': 'xl',
+            },
+            mb: 10,
           })}
         >
           {data.items.map((itemName: string) => (
-            <li className={gridItem()} key={itemName}>
+            <li
+              className={gridItem({
+                h: '22.5rem',
+                w: 'full',
+              })}
+              key={itemName}
+            >
               <CategoryCard item={itemName} category={props.group} />
             </li>
           ))}
