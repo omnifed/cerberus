@@ -1,9 +1,9 @@
-import { Image as ImageIcon } from '@cerberus-design/icons'
 import { Show } from '@cerberus-design/react'
 import { Box, VStack } from '@cerberus-design/styled-system/jsx'
 import { vstack } from '@cerberus-design/styled-system/patterns'
 import Link from 'next/link'
 import { sideNavData } from '@/app/react/side-nav'
+import { categoryMeta } from '@/app/data/category-meta'
 import Text from './text'
 
 interface CategoryCardProps {
@@ -12,7 +12,11 @@ interface CategoryCardProps {
 }
 
 export default async function CategoryCard(props: CategoryCardProps) {
+  const metaKey = props.item.toLowerCase().replaceAll(' ', '-')
   const item = sideNavData.find((navItem) => navItem.label === props.item)
+  const meta = categoryMeta[metaKey as keyof typeof categoryMeta]
+  const ImgFeature = meta.image
+
   return (
     <Show when={item != null}>
       <Link
@@ -40,16 +44,34 @@ export default async function CategoryCard(props: CategoryCardProps) {
         >
           <Box
             data-category={props.category}
-            h="12.75rem"
-            gradient="charon-light"
+            h="14.25rem"
+            gradient="nyx-light"
+            overflow="hidden"
+            position="relative"
             rounded="inherit"
-            transition="height 200ms"
+            transitionProperty="height,background-image"
+            transitionDuration="fast"
             w="full"
             willChange="height"
-            _groupHover={{
-              h: '14.25rem',
+            zIndex="base"
+            _before={{
+              bgColor: 'action.bg.active',
+              bottom: 0,
+              content: '""',
+              left: 0,
+              mixBlendMode: 'hue',
+              position: 'absolute',
+              right: 0,
+              top: 0,
+              zIndex: 'decorator',
             }}
-          />
+            _groupHover={{
+              gradient: 'charon-light',
+              h: '12.75rem',
+            }}
+          >
+            <ImgFeature />
+          </Box>
           <VStack alignItems="flex-start" gap="xs" pxi="xs" py="lg" w="full">
             <Text
               color="page.text.200"
@@ -59,11 +81,13 @@ export default async function CategoryCard(props: CategoryCardProps) {
                 color: 'action.navigation.hover',
               }}
             >
-              {item!.label}
+              {meta.name ?? item!.label}
             </Text>
-            <Text color="page.text.initial" textStyle="body-md">
-              Quick one sentence description about the component.
-            </Text>
+            <Show when={meta.description != null}>
+              <Text color="page.text.initial" textStyle="body-md">
+                {meta.description}
+              </Text>
+            </Show>
           </VStack>
         </Box>
       </Link>
