@@ -24,7 +24,10 @@ export function useRootColors(colors: string[] = []): RootColorsResult {
 
     const rootStyles = getComputedStyle(document.body)
     const rootColors = colors.reduce((acc, color) => {
-      const formattedColor = color.replaceAll(/\./g, '-')
+      const formattedColor = color
+        .replace(/([a-z])([A-Z])/g, '$1-$2')
+        .toLowerCase()
+        .replaceAll('.', '-')
       acc[color as keyof typeof acc] = rootStyles
         .getPropertyValue(`--cerberus-colors-${formattedColor}`)
         .trim()

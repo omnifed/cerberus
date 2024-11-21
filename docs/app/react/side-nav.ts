@@ -34,11 +34,12 @@ const hooksGroup: CategoriesList = {
       'trap-focus',
       'use-date',
       'use-modal',
+      'use-root-colors',
       'use-theme',
       'use-theme-context',
       'use-toggle',
     ],
-    next: [],
+    next: ['use-root-colors'],
     new: ['use-date'],
   },
 }
