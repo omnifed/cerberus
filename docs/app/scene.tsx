@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { type ISourceOptions } from '@tsparticles/engine'
 import { loadSlim } from '@tsparticles/slim'
-import { useRootColors, useThemeContext } from '@cerberus-design/react'
+import { useThemeContext } from '@cerberus-design/react'
 
 const fire = {
   fpsLimit: 40,
@@ -56,13 +56,10 @@ const fire = {
   },
 } as ISourceOptions
 
-const colorList = ['action.bg.initial']
-
 export function Scene() {
   const [init, setInit] = useState<boolean>(false)
   const [options, setOptions] = useState<ISourceOptions>(fire)
   const { theme } = useThemeContext()
-  const colors = useRootColors(colorList)
 
   // this should be run only once per application lifetime
   useEffect(() => {
@@ -74,10 +71,13 @@ export function Scene() {
   }, [])
 
   useEffect(() => {
-    if (window && theme && Object.keys(colors).length === colorList.length) {
+    if (window && theme) {
       // We need to wait for the theme to be applied
       setTimeout(() => {
-        const start = colors[colorList[0]]
+        const rootStyle = window.getComputedStyle(document.body)
+        const start = rootStyle.getPropertyValue(
+          '--cerberus-colors-action-bg-initial',
+        )
         setOptions((prev) => ({
           ...prev,
           background: {
@@ -86,7 +86,7 @@ export function Scene() {
         }))
       }, 10)
     }
-  }, [theme, colors])
+  }, [theme])
 
   if (init) {
     return <Particles id="tsparticles" options={options} />
