@@ -45,7 +45,12 @@ function SomeChart() {
     if (Object.keys(colors).length && !hasSetColors.current) {
       setSettings({
         ...settings,
-        colors,
+        something: {
+          bgColor: colors[colorList[0]],
+        },
+        somethingElse: {
+          bgColor: colors[colorList[1]],
+        },
       })
       hasSetColors.current = true
     }
