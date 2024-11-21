@@ -3,6 +3,7 @@ import { cq, hstack } from '@cerberus/styled-system/patterns'
 import { normalizeTokens, getTokenList } from '../helpers/normalize'
 import AvatarSwatch from './AvatarSwatch'
 import { css, cx } from '@cerberus/styled-system/css'
+import { Tooltip } from '@cerberus-design/react'
 
 interface PaletteListProps {
   palette: Sentiment
@@ -61,13 +62,13 @@ export default function PaletteList(props: PaletteListProps) {
             )}
             key={token}
           >
-            <span aria-label={token} data-tooltip data-position="top">
+            <Tooltip content={token}>
               <AvatarSwatch
                 palette={palette}
                 token={tokens[token as keyof typeof tokens]}
                 tokenName={token}
               />
-            </span>
+            </Tooltip>
           </li>
         ))}
       </ul>
