@@ -1,0 +1,90 @@
+---
+heading: 'useRootColors'
+description: 'Get Cerberus colors from the document root.'
+npm: '@cerberus-design/react'
+source: 'hooks/useRootColors.ts'
+recipe: ''
+a11y: 'utilities'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  WhenToUseAdmonition
+} from '@/app/components/Admonition'
+import CanvasPreview from './components/canvas-preview'
+
+<WhenToUseAdmonition description="When you want to use Cerberus colors within a `canvas` element." />
+
+This hook allows you to access Cerberus colors from the document root which is useful when you want to use Cerberus colors within a `canvas` element.
+
+## Usage
+
+<CodePreview preview={<CanvasPreview />}>
+```tsx title="some-chart.tsx" {18}
+'use client'
+
+import { useRootColors } from '@cerberus/react'
+import { useEffect, useState, useRef } from 'react'
+
+// This is a list of Cerberus colors to use in the chart
+const colorList = [
+  'dataViz.diverging.50',
+  'dataViz.diverging.100',
+  'dataViz.diverging.200',
+]
+
+// This is settings for X chart library
+const chartSettings = {}
+
+function SomeChart() {
+  const [settings, setSettings] = useState(chartSettings)
+  const colors = useRootColors(colorList)
+  const hasSetColors = useRef<boolean>(false)
+
+  useEffect(() => {
+    if (Object.keys(colors).length && !hasSetColors.current) {
+      setSettings({
+        ...settings,
+        something: {
+          bgColor: colors[colorList[0]],
+        },
+        somethingElse: {
+          bgColor: colors[colorList[1]],
+        },
+      })
+      hasSetColors.current = true
+    }
+  }, [colors])
+
+  return (
+    <SomeChartLib settings={settings} />
+  )
+}
+```
+</CodePreview>
+
+## API
+
+```ts showLineNumbers=false
+define function useRootColors(colors: string[] = []): Record<string, string>
+```
+
+### Arguments
+
+The `useRootColors` hook accepts the following optional arguments:
+
+| Name         | Default    | Description                                      |
+| ------------ | ---------- | ------------------------------------------------ |
+| `colors`     | `[]`       | An array of Cerberus color keys to retrieve.     |
+
+### Return
+
+The `useRootColors` hook returns a memoized object with the same properties as the options object passed in.
+
+```ts
+{
+  'dataViz.diverging.50': '#F7F7F7',
+  'dataViz.diverging.100': '#E5E5E5',
+  'dataViz.diverging.200': '#C6C6C6',
+}
+```
