@@ -29,6 +29,7 @@ describe('notification recipe', () => {
       opacity: '0',
       rounded: 'sm',
       shadow: 'md',
+      textAlign: 'left',
       _motionSafe: {
         animationName: 'fadeInDown',
         animationDuration: '250ms',

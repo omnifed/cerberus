@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { button } from '@cerberus/styled-system/recipes'
 import CerberusLogo from './cerberus-logo'
 import { vstack } from '@cerberus-design/styled-system/patterns'
-import { grid, gridItem } from '@cerberus/styled-system/patterns'
+import { animateIn, grid, gridItem } from '@cerberus/styled-system/patterns'
 import { Tag } from '@cerberus-design/react'
 import { HStack } from '@cerberus-design/styled-system/jsx'
 import { CheckmarkFilled } from '@cerberus-design/icons'
@@ -62,7 +62,12 @@ export default function HomeHero() {
           >
             <h1
               className={css({
+                animationName: 'slideFromBottom, fadeIn',
+                animationDuration: 'slowest',
+                animationDelay: '400ms',
+                animationFillMode: 'forwards',
                 color: 'page.text.100',
+                opacity: 0,
                 maxW: '44ch',
                 textStyle: 'display-sm',
                 textWrap: 'pretty',
@@ -77,7 +82,12 @@ export default function HomeHero() {
 
             <p
               className={css({
+                animationName: 'slideFromBottom, fadeIn',
+                animationDuration: 'slowest',
+                animationDelay: '600ms',
+                animationFillMode: 'forwards',
                 maxW: '44ch',
+                opacity: 0,
                 textStyle: 'body-lg',
                 lg: {
                   lineHeight: 'relaxed',
@@ -90,7 +100,8 @@ export default function HomeHero() {
           </div>
 
           <div
-            className={css({
+            className={animateIn({
+              delay: '1.2s',
               pt: 10,
               lg: {
                 pt: 8,

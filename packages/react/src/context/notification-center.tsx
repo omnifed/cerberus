@@ -141,6 +141,7 @@ export function NotificationCenter(
                 Close all
               </Button>
             </Show>
+
             <div
               className={vstack({
                 alignItems: 'flex-end',

@@ -15,8 +15,7 @@
       "Notifications",
       "Progress Indicators",
       "Tag",
-      "Tooltip",
-      "Table"
+      "Tooltip"
     ],
     "next": [],
     "new": ["Notifications", "Tooltip"]
