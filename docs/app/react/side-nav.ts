@@ -39,8 +39,8 @@ const hooksGroup: CategoriesList = {
       'use-theme-context',
       'use-toggle',
     ],
-    next: ['use-root-colors'],
-    new: ['use-date'],
+    next: [],
+    new: ['use-date', 'use-root-colors'],
   },
 }
 
