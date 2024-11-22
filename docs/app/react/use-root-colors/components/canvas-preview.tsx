@@ -7,7 +7,7 @@ import { useEffect, useRef } from 'react'
 const colorList = ['dataViz.diverging.50', 'dataViz.diverging.200']
 
 export default function CanvasPreview() {
-  const colors = useRootColors(colorList)
+  const { colors } = useRootColors(colorList)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
