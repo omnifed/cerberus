@@ -1,24 +1,14 @@
-'use client'
-
-import type { PropsWithChildren } from 'react'
-import { createPortal } from 'react-dom'
+import {
+  Portal as ArkPortal,
+  type PortalProps as ArkPortalProps,
+} from '@ark-ui/react'
 
 /**
  * This module is the Portal component.
  * @module
  */
 
-export interface PortalProps {
-  /**
-   * The root container to render the children into.
-   * @default document.body
-   */
-  container?: Element | DocumentFragment
-  /**
-   * An optional key to use for the Portal component.
-   */
-  key?: null | string
-}
+export type PortalProps = ArkPortalProps
 
 /**
  * The Portal component is used to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
@@ -38,7 +28,4 @@ export interface PortalProps {
  *   )
  * }
  */
-export function Portal(props: PropsWithChildren<PortalProps>) {
-  const container = props.container || document.body
-  return createPortal(props.children, container, props.key)
-}
+export const Portal = ArkPortal
