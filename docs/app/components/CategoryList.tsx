@@ -46,7 +46,7 @@ export default function CategoryList(props: CategoryListProps) {
             mb: 10,
           })}
         >
-          {data.items.map((itemName: string) => (
+          {data.items.map((itemName: string, idx: number) => (
             <li
               className={gridItem({
                 h: '22.5rem',
@@ -54,7 +54,11 @@ export default function CategoryList(props: CategoryListProps) {
               })}
               key={itemName}
             >
-              <CategoryCard item={itemName} category={props.group} />
+              <CategoryCard
+                delay={200 * idx}
+                item={itemName}
+                category={props.group}
+              />
             </li>
           ))}
         </ul>

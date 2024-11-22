@@ -9,6 +9,7 @@ import Text from './text'
 interface CategoryCardProps {
   category: string
   item: string
+  delay?: number
 }
 
 export default async function CategoryCard(props: CategoryCardProps) {
@@ -16,6 +17,7 @@ export default async function CategoryCard(props: CategoryCardProps) {
   const item = sideNavData.find((navItem) => navItem.label === props.item)
   const meta = categoryMeta[metaKey as keyof typeof categoryMeta]
   const ImgFeature = meta.image
+  const delay = props.delay ?? 0
 
   return (
     <Show when={item != null}>
@@ -30,11 +32,16 @@ export default async function CategoryCard(props: CategoryCardProps) {
         })}
       >
         <Box
+          animationName="slideFromBottom, fadeIn"
+          animationDelay={`${delay}ms`}
+          animationDuration="slow"
+          animationFillMode="forwards"
           className="group"
           bgColor="page.surface.100"
           border="2px solid"
           borderColor="transparent"
           h="full"
+          opacity="0"
           p="sm"
           rounded="inherit"
           transition="border-color 200ms"
