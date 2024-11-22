@@ -1,13 +1,22 @@
 'use client'
 
-import { useEffect, useReducer } from 'react'
+import { useCallback, useEffect, useMemo, useReducer } from 'react'
 
 /**
  * This module provides a hook to get Cerberus colors from the document root.
  * @module useRootColors
  */
 
-export type RootColorsResult = Record<string, string>
+export interface RootColorsResult {
+  /**
+   * A record of Cerberus colors where the key is the token name provided and the value is the color hex.
+   */
+  colors: Record<string, string>
+  /**
+   * A function to refetch the Cerberus colors from the document root. Useful when you need the latest colors after a theme/mode change.
+   */
+  refetch: () => Promise<void>
+}
 
 /**
  * This hook returns a record of Cerberus colors from the document root.
@@ -19,26 +28,41 @@ export type RootColorsResult = Record<string, string>
 export function useRootColors(colors: string[] = []): RootColorsResult {
   const [state, dispatch] = useReducer(rootColorsReducer, {})
 
+  const handleRefetch = useCallback(() => {
+    return new Promise<void>((resolve) => {
+      dispatch(formatColors(colors))
+      resolve()
+    })
+  }, [])
+
   useEffect(() => {
     if (Object.keys(state).length === colors.length) return
+    dispatch(formatColors(colors))
+    console.log('updating colors in root hook')
+  }, [colors])
 
-    const rootStyles = getComputedStyle(document.body)
-    const rootColors = colors.reduce((acc, color) => {
+  // reducer is already memoized
+  return useMemo(
+    () => ({ colors: state, refetch: handleRefetch }),
+    [state, handleRefetch],
+  )
+}
+
+function formatColors(colors: string[]): Record<string, string> {
+  const rootStyles = getComputedStyle(document.body)
+  return colors.reduce(
+    (acc, color) => {
       const formattedColor = color
         .replace(/([a-z])([A-Z])/g, '$1-$2')
         .toLowerCase()
         .replaceAll('.', '-')
-      acc[color as keyof typeof acc] = rootStyles
+      acc[color] = rootStyles
         .getPropertyValue(`--cerberus-colors-${formattedColor}`)
         .trim()
       return acc
-    }, {} as RootColorsResult)
-
-    dispatch(rootColors)
-  }, [colors])
-
-  // reducer is already memoized
-  return state
+    },
+    {} as Record<string, string>,
+  )
 }
 
 function rootColorsReducer(

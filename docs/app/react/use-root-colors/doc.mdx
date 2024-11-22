@@ -8,12 +8,12 @@ a11y: 'utilities'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
-import {
-  WhenToUseAdmonition
-} from '@/app/components/Admonition'
 import CanvasPreview from './components/canvas-preview'
 
-<WhenToUseAdmonition description="When you want to use Cerberus colors within a `canvas` element." />
+
+```ts
+import { useRootColors } from '@cerberus/react'
+```
 
 This hook allows you to access Cerberus colors from the document root which is useful when you want to use Cerberus colors within a `canvas` element.
 
@@ -24,7 +24,7 @@ This hook allows you to access Cerberus colors from the document root which is u
 'use client'
 
 import { useRootColors } from '@cerberus/react'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 
 // This is a list of Cerberus colors to use in the chart
 const colorList = [
@@ -38,11 +38,10 @@ const chartSettings = {}
 
 function SomeChart() {
   const [settings, setSettings] = useState(chartSettings)
-  const colors = useRootColors(colorList)
-  const hasSetColors = useRef<boolean>(false)
+  const { colors } = useRootColors(colorList)
 
   useEffect(() => {
-    if (Object.keys(colors).length && !hasSetColors.current) {
+    if (Object.keys(colors).length === colorList.length) {
       setSettings({
         ...settings,
         something: {
@@ -63,10 +62,64 @@ function SomeChart() {
 ```
 </CodePreview>
 
+## Advanced Usage
+
+If you need to get the latest colors when a user changes the color mode or theme, you can use the `refetch` function to get the latest colors from the document root.
+
+```tsx title="some-chart.tsx" {18}
+'use client'
+
+import { useRootColors, useTheme } from '@cerberus/react'
+import { useEffect, useState } from 'react'
+
+const initialSettings = {...stuffFromXChartLibrary}
+
+const colorList = [
+  'dataViz.diverging.50',
+  'dataViz.diverging.100',
+  'dataViz.diverging.200',
+]
+
+function SomeChart() {
+  const [settings, setOptions] = useState(initialSettings)
+
+  const { theme } = useTheme()
+  const { colors, refetch } = useRootColors(colorList)
+
+  useEffect(() => {
+    if (window && theme) {
+      // We need to wait for the theme to be applied to the root element
+      setTimeout(async () => {
+        await refetch()
+      }, 10)
+    }
+  }, [theme, refetch])
+
+  useEffect(() => {
+    const start = colors[colorList[0]]
+    setOptions((prev) => ({
+      ...prev,
+      background: {
+        image: `radial-gradient(75% 82% at 52% 100%, ${start}40 0%, transparent 100%)`,
+      },
+    }))
+  }, [colors])
+
+  return (
+    <SomeChartLib settings={settings} />
+  )
+}
+```
+
 ## API
 
 ```ts showLineNumbers=false
-define function useRootColors(colors: string[] = []): Record<string, string>
+export interface RootColorsResult {
+  colors: Record<string, string>
+  refetch: () => void
+}
+
+define function useRootColors(colors: string[] = []): RootColorsResult
 ```
 
 ### Arguments
@@ -75,7 +128,8 @@ The `useRootColors` hook accepts the following optional arguments:
 
 | Name         | Default    | Description                                      |
 | ------------ | ---------- | ------------------------------------------------ |
-| `colors`     | `[]`       | An array of Cerberus color keys to retrieve.     |
+| colors       |            | An array of Cerberus color keys to retrieve.     |
+| refetch      |            | A function to refetch the colors from the root.  |
 
 ### Return
 
@@ -83,8 +137,11 @@ The `useRootColors` hook returns a memoized object with the same properties as t
 
 ```ts
 {
-  'dataViz.diverging.50': '#F7F7F7',
-  'dataViz.diverging.100': '#E5E5E5',
-  'dataViz.diverging.200': '#C6C6C6',
+  colors: {
+    'dataViz.diverging.50': '#F7F7F7',
+    'dataViz.diverging.100': '#E5E5E5',
+    'dataViz.diverging.200': '#C6C6C6',
+  },
+  refetch: () => void
 }
 ```
