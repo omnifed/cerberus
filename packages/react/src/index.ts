@@ -5,6 +5,8 @@
 
 // components
 
+export * from './components/Accordion'
+export * from './components/AccordionItemGroup'
 export * from './components/Admonition'
 export * from './components/Avatar'
 export * from './components/Button'
