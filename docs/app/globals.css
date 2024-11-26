@@ -1,5 +1,12 @@
 @layer reset, base, tokens, recipes, utilities;
 
+/* For some reason, this doesn't work in PandaCSS */
+
+::selection {
+  background: var(--cerberus-colors-info-surface-200);
+  color: var(--cerberus-colors-page-text-inverse);
+}
+
 /* Skiki CSS for React Code elements (i.e. not markdown) */
 
 .shiki {

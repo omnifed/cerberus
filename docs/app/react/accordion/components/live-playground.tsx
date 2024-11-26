@@ -4,32 +4,20 @@ import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
 import {
-  Admonition,
-  AdmonitionDescription,
-  AdmonitionHeading,
-  type AdmonitionProps,
+  Accordion,
+  AccordionItemGroup,
+  type AccordionItemGroupProps,
 } from '@cerberus-design/react'
 
 const api = {
-  palette: builder.Enum('palette', [
-    'page',
-    'info',
-    'success',
-    'warning',
-    'danger',
-  ]),
-  usage: builder.Enum('usage', ['filled', 'outlined']),
-  heading: builder.Text('name', 'When to use'),
-  description: builder.Text(
-    'description',
-    'Use this component when you want to display a page-level message.',
-  ),
+  size: builder.Enum('size', ['sm', 'lg']),
+  indicatorPosition: builder.Enum('indicatorPosition', ['end', 'start']),
 }
 
 export function LivePlayground() {
   return (
     <CodeBuilder api={api}>
-      <AdmonitionPreview />
+      <AccordionPreview />
     </CodeBuilder>
   )
 }
@@ -38,69 +26,44 @@ export function LivePlaygroundWithCode() {
   return (
     <CodeBuilder
       api={api}
-      code={`import { Admonition, type AdmonitionProps } from '@cerberus/react'
+      code={`import {
+Accordion,
+AccordionItemGroup,
+type AccordionItemGroupProps
+} from '@cerberus/react'
 
-export function MyAdmonition(props: AdmonitionProps) {
-  const { palette, usage } = props
-  const styles = {
-    palette: {{palette}} as AdmonitionProps['palette'],
-    usage: {{usage}} as AdmonitionProps['usage'],
-  }
-
+export function MyAccordion(props: AccordionItemGroupProps) {
   return (
-    <Admonition {...styles}>
-      <AdmonitionHeading {...styles}>{{heading}}</AdmonitionHeading>
-      <AdmonitionDescription {...styles}>
-        {{description}}
-      </AdmonitionDescription>
-    </Admonition>
+    <Accordion>
+      <AccordionItemGroup
+        {...props}
+        indicatorPosition={{indicatorPosition}}
+        size={{size}}
+      />
+    </Accordion>
   )
 }`}
     >
-      <AdmonitionPreview />
+      <AccordionPreview />
     </CodeBuilder>
   )
 }
 
-export function AdmonitionPreview() {
+export function AccordionPreview() {
   const { selectedProps } = useCodeBuilder()
-  const styles = {
-    palette: selectedProps.palette as AdmonitionProps['palette'],
-    usage: selectedProps.usage as AdmonitionProps['usage'],
-  }
-
-  if (selectedProps.palette === 'info') {
-    return (
-      <Admonition {...styles} palette="info">
-        <AdmonitionHeading {...styles} palette="info">
-          {selectedProps.heading}
-        </AdmonitionHeading>
-        <AdmonitionDescription {...styles} palette="info">
-          {selectedProps.description}
-        </AdmonitionDescription>
-      </Admonition>
-    )
-  }
-
-  if (selectedProps.palette === 'warning') {
-    return (
-      <Admonition {...styles} palette="warning">
-        <AdmonitionHeading {...styles} palette="warning">
-          {selectedProps.heading}
-        </AdmonitionHeading>
-        <AdmonitionDescription {...styles} palette="warning">
-          {selectedProps.description}
-        </AdmonitionDescription>
-      </Admonition>
-    )
-  }
 
   return (
-    <Admonition {...styles}>
-      <AdmonitionHeading {...styles}>{selectedProps.heading}</AdmonitionHeading>
-      <AdmonitionDescription {...styles}>
-        {selectedProps.description}
-      </AdmonitionDescription>
-    </Admonition>
+    <Accordion>
+      <AccordionItemGroup
+        heading="This is a heading"
+        indicatorPosition={
+          selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
+        }
+        size={selectedProps.size as AccordionItemGroupProps['size']}
+        value="one"
+      >
+        This is the content
+      </AccordionItemGroup>
+    </Accordion>
   )
 }

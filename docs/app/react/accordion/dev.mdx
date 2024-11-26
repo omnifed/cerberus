@@ -1,18 +1,17 @@
 ---
 npm: '@cerberus-design/react'
-source: 'components/Admonition.tsx'
-recipe: 'slots/admonition.ts'
+source: 'components/Accordion.tsx'
+recipe: 'slots/accordion.ts'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
-import { CustomAdmonition } from './components/admonition-preview'
+import { StaticPreview, CustomPreview } from './components/static-preview'
 import { LivePlaygroundWithCode } from './components/live-playground'
 
 ```ts
 import {
-  Admonition,
-  AdmonitionHeading,
-  AdmonitionDescription
+  Accordion,
+  AccordionItemGroup,
 } from '@cerberus/react'
 ```
 
@@ -22,36 +21,60 @@ import {
 
 ## Customization
 
-<CodePreview preview={<CustomAdmonition />}>
+You can utilize the primitive components to customize the accordion.
+
+| Component               | Description |
+| ----------------------- | ----------- |
+| Accordion               | The main container for the accordion items. |
+| AccordionItem           | Represents a single item within the accordion. |
+| AccordionItemTrigger    | The trigger element that toggles the visibility of the content. |
+| AccordionItemContent    | The content that is shown or hidden when the trigger is activated. |
+| AccordionItemIndicator  | An optional indicator to show the state of the accordion item. |
+
+<CodePreview preview={<CustomPreview />}>
 ```tsx title="button.tsx"
-import { Admonition, AdmonitionHeading, AdmonitionDescription } from '@cerberus/react'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemTrigger,
+  AccordionItemContent,
+  AccordionItemIndicator,
+} from '@cerberus-design/react'
+import { Box } from '@cerberus-design/styled-system/jsx'
 import { css } from '@cerberus/styled-system/css'
-import { Circle } from '@cerberus/styled-system/jsx'
 
-export function CustomAdmonition() {
-  const styleProps = {
-    palette: 'page',
-    usage: 'outlined',
-  } as AdmonitionProps
-
+export function CustomAccordion() {
   return (
-    <Admonition {...styleProps} className={css({
-      bgColor: 'black',
-      borderColor: 'yellow',
-      color: 'yellow',
-    })}
-    icon={
-      <Circle size="6">
-        <WuTangLogo />
-      </Circle>
-    }
-    >
-      <AdmonitionHeading {...styleProps}>When to use</AdmonitionHeading>
-      <AdmonitionDescription {...styleProps}>
-        Use this component when you want to display a page-level message.{' '}
-        <a href="#">Learn more</a>
-      </AdmonitionDescription>
-    </Admonition>
+    <Accordion>
+        <AccordionItem
+          className={css({
+            bgColor: 'black',
+            borderColor: 'yellow',
+          })}
+          value="one"
+        >
+          <AccordionItemTrigger
+            className={css({
+              color: 'yellow',
+            })}
+          >
+            Wu-Tang Clan
+            <AccordionItemIndicator />
+          </AccordionItemTrigger>
+          <AccordionItemContent
+            className={css({
+              color: 'white',
+              paddingInline: 'md',
+              textStyle: 'body-md',
+            })}
+          >
+            The rugged, raw, and unapologetic Wu-Tang Clan is a hip-hop group
+            that has been around since 1992. The group is known for its
+            distinctive sound and lyrics that often touch on themes of urban
+            life, crime, and the struggles of the inner city New York.
+          </AccordionItemContent>
+        </AccordionItem>
+      </Accordion>
   )
 }
 ```
@@ -59,59 +82,22 @@ export function CustomAdmonition() {
 
 ## API
 
-### Admonition
+### AccordionItemGroup
 
 ```ts showLineNumbers=false
-export type AdmonitionProps = HTMLAttributes<HTMLDivElement> &
-  AdmonitionVariantProps & {
-    icon?: ReactNode
-  }
+export interface AccordionItemGroupBaseProps {
+  heading: string
+  indicatorPosition?: 'start' | 'end'
+  size: 'sm' | 'lg'
+  value: string
+}
+export type AccordionItemGroupProps = AccordionItemGroupBaseProps &
+  AccordionVariantProps
+```
 
-define function Admonition(props: AdmonitionProps): ReactNode
-````
-
-#### Props
-
-The `Admonition` component accepts the following props:
-
-| Name     | Default | Description                            |
-| -------- | ------- | -------------------------------------- |
-| palette     | `action`   | The color palette of the button. |
-| usage | `filled`    | The style treatment of the button.    |
-| icon | `null`    | The icon to replace the default status ones.    |
-
-### AdmonitionHeading
-
-```ts showLineNumbers=false
-type AdmonitionHeadingProps = HTMLAttributes<HTMLParagraphElement> &
-  AdmonitionVariantProps
-
-define function AdmonitionHeading(props: AdmonitionHeadingProps): ReactNode
-````
-
-#### Props
-
-The `AdmonitionHeading` component accepts the following props:
-
-| Name     | Default | Description                            |
-| -------- | ------- | -------------------------------------- |
-| palette     | `action`   | The color palette of the button. |
-| usage | `filled`    | The style treatment of the button.    |
-
-### AdmonitionDescription
-
-```ts showLineNumbers=false
-type AdmonitionDescriptionProps = HTMLAttributes<HTMLParagraphElement> &
-  AdmonitionVariantProps
-
-define function AdmonitionDescription(props: AdmonitionProps): ReactNode
-````
-
-#### Props
-
-The `AdmonitionDescription` component accepts the following props:
-
-| Name     | Default | Description                            |
-| -------- | ------- | -------------------------------------- |
-| palette     | `action`   | The color palette of the button. |
-| usage | `filled`    | The style treatment of the button.    |
+| Name     | Default    |       Description                                   |
+| -------- | ------- | ------------------------------------------------------ |
+| heading  |         | The heading of the accordion item.                    |
+| value    |         | The value of the accordion item.                      |
+| size     | `lg`    | The size of the accordion item.                       |
+| indicatorPosition | `end` | The position of the indicator.           |

@@ -8,13 +8,14 @@ import {
   AccordionItemIndicator,
   AccordionItemTrigger,
 } from './Accordion'
+import { css } from '@cerberus/styled-system/css'
 
 /**
  * This module contains an abstraction of the AccordionItem components.
  * @module
  */
 
-export interface AccordionItemGroupProps extends ArkAccordion.ItemProps {
+export interface AccordionItemGroupBaseProps extends ArkAccordion.ItemProps {
   /**
    * The heading of the accordion item to open and close the content.
    */
@@ -24,6 +25,8 @@ export interface AccordionItemGroupProps extends ArkAccordion.ItemProps {
    */
   indicatorPosition?: 'start' | 'end'
 }
+export type AccordionItemGroupProps = AccordionItemGroupBaseProps &
+  AccordionVariantProps
 
 /**
  * A grouped item for the Accordion component.
@@ -39,7 +42,7 @@ export interface AccordionItemGroupProps extends ArkAccordion.ItemProps {
  * ```
  */
 export function AccordionItemGroup(
-  props: PropsWithChildren<AccordionItemGroupProps & AccordionVariantProps>,
+  props: PropsWithChildren<AccordionItemGroupProps>,
 ) {
   const {
     size,
@@ -48,9 +51,17 @@ export function AccordionItemGroup(
     indicatorPosition = 'end',
     ...itemProps
   } = props
+  const triggerStyles =
+    indicatorPosition === 'start'
+      ? {
+          gap: 'md',
+          justifyContent: 'flex-start',
+        }
+      : undefined
+
   return (
     <AccordionItem {...itemProps}>
-      <AccordionItemTrigger size={size}>
+      <AccordionItemTrigger className={css(triggerStyles)} size={size}>
         <Show when={indicatorPosition === 'start'}>
           <AccordionItemIndicator size={size} />
         </Show>
