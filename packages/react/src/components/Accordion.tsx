@@ -18,17 +18,18 @@ export type AccordionProps = ArkAccordion.RootProps & AccordionVariantProps
  * ```
  */
 export function Accordion(props: AccordionProps) {
-  const { size, ...rootProps } = props
+  const { size, className, ...rootProps } = props
   const styles = accordion({ size })
   return (
     <ArkAccordion.Root
+      collapsible
+      className={cx(className, styles.root)}
       {...rootProps}
-      className={cx(rootProps.className, styles.root)}
     />
   )
 }
 
-export type AccordionItem = ArkAccordion.ItemProps & AccordionVariantProps
+type AccordionItemProps = ArkAccordion.ItemProps & AccordionVariantProps
 
 /**
  * The item for the Accordion component.
@@ -43,7 +44,7 @@ export type AccordionItem = ArkAccordion.ItemProps & AccordionVariantProps
  * </Accordion>
  * ```
  */
-export function AccordionItem(props: AccordionItem) {
+export function AccordionItem(props: AccordionItemProps) {
   const { size, ...itemProps } = props
   const styles = accordion({ size })
   return (

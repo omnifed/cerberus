@@ -32,7 +32,7 @@ export interface TooltipProps {
  * </Tooltip>
  */
 export function Tooltip(props: TooltipProps & TooltipContentProps) {
-  const { content, children, ...nativeProps } = props
+  const { content, children, asChild, ...nativeProps } = props
   const styles = tooltip()
   const position = {
     placement: props.position || 'top',
@@ -40,7 +40,7 @@ export function Tooltip(props: TooltipProps & TooltipContentProps) {
 
   return (
     <ArkTooltip.Root openDelay={400} positioning={position}>
-      <ArkTooltip.Trigger className={styles.trigger}>
+      <ArkTooltip.Trigger className={styles.trigger} asChild={asChild}>
         {children}
       </ArkTooltip.Trigger>
 

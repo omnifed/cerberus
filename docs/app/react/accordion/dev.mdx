@@ -1,0 +1,117 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/Admonition.tsx'
+recipe: 'slots/admonition.ts'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { CustomAdmonition } from './components/admonition-preview'
+import { LivePlaygroundWithCode } from './components/live-playground'
+
+```ts
+import {
+  Admonition,
+  AdmonitionHeading,
+  AdmonitionDescription
+} from '@cerberus/react'
+```
+
+## Usage
+
+<LivePlaygroundWithCode />
+
+## Customization
+
+<CodePreview preview={<CustomAdmonition />}>
+```tsx title="button.tsx"
+import { Admonition, AdmonitionHeading, AdmonitionDescription } from '@cerberus/react'
+import { css } from '@cerberus/styled-system/css'
+import { Circle } from '@cerberus/styled-system/jsx'
+
+export function CustomAdmonition() {
+  const styleProps = {
+    palette: 'page',
+    usage: 'outlined',
+  } as AdmonitionProps
+
+  return (
+    <Admonition {...styleProps} className={css({
+      bgColor: 'black',
+      borderColor: 'yellow',
+      color: 'yellow',
+    })}
+    icon={
+      <Circle size="6">
+        <WuTangLogo />
+      </Circle>
+    }
+    >
+      <AdmonitionHeading {...styleProps}>When to use</AdmonitionHeading>
+      <AdmonitionDescription {...styleProps}>
+        Use this component when you want to display a page-level message.{' '}
+        <a href="#">Learn more</a>
+      </AdmonitionDescription>
+    </Admonition>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+### Admonition
+
+```ts showLineNumbers=false
+export type AdmonitionProps = HTMLAttributes<HTMLDivElement> &
+  AdmonitionVariantProps & {
+    icon?: ReactNode
+  }
+
+define function Admonition(props: AdmonitionProps): ReactNode
+````
+
+#### Props
+
+The `Admonition` component accepts the following props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| palette     | `action`   | The color palette of the button. |
+| usage | `filled`    | The style treatment of the button.    |
+| icon | `null`    | The icon to replace the default status ones.    |
+
+### AdmonitionHeading
+
+```ts showLineNumbers=false
+type AdmonitionHeadingProps = HTMLAttributes<HTMLParagraphElement> &
+  AdmonitionVariantProps
+
+define function AdmonitionHeading(props: AdmonitionHeadingProps): ReactNode
+````
+
+#### Props
+
+The `AdmonitionHeading` component accepts the following props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| palette     | `action`   | The color palette of the button. |
+| usage | `filled`    | The style treatment of the button.    |
+
+### AdmonitionDescription
+
+```ts showLineNumbers=false
+type AdmonitionDescriptionProps = HTMLAttributes<HTMLParagraphElement> &
+  AdmonitionVariantProps
+
+define function AdmonitionDescription(props: AdmonitionProps): ReactNode
+````
+
+#### Props
+
+The `AdmonitionDescription` component accepts the following props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| palette     | `action`   | The color palette of the button. |
+| usage | `filled`    | The style treatment of the button.    |

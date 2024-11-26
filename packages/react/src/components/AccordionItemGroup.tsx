@@ -49,7 +49,7 @@ export function AccordionItemGroup(
     ...itemProps
   } = props
   return (
-    <AccordionItem {...itemProps} size={size}>
+    <AccordionItem {...itemProps}>
       <AccordionItemTrigger size={size}>
         <Show when={indicatorPosition === 'start'}>
           <AccordionItemIndicator size={size} />

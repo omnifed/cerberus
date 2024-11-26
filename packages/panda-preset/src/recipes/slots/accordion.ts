@@ -1,5 +1,6 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { accordionAnatomy } from '@ark-ui/anatomy'
+import { focusStates } from '../shared/states'
 
 /**
  * This module contains the accordion recipe.
@@ -16,20 +17,39 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
   slots: accordionAnatomy.keys(),
 
   base: {
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      w: 'full',
+    },
     item: {
-      borderBottom: '2px solid',
+      borderBlockEnd: '2px solid',
       borderColor: 'page.border.initial',
-      _lastOfType: {
-        borderBottom: 'none',
+    },
+    itemTrigger: {
+      alignItems: 'center',
+      cursor: 'pointer',
+      display: 'flex',
+      justifyContent: 'space-between',
+      pxi: 'sm',
+      transitionProperty: 'background-color',
+      transitionDuration: 'fast',
+      w: 'full',
+      ...focusStates,
+      _hover: {
+        bgColor: 'action.ghost.hover',
       },
     },
-
     itemContent: {
-      paddingBlockStart: 'sm',
+      overflow: 'hidden',
       _motionSafe: {
-        animationDuration: 'slow',
+        animationDuration: 'fast',
+        animationFillMode: 'forwards',
+        transitionProperty: 'padding',
+        transitionDuration: 'fast',
         _open: {
           animationName: 'expandHeight, fadeIn',
+          paddingBlockStart: 'sm',
         },
         _closed: {
           animationName: 'collapseHeight, fadeOut',
@@ -37,26 +57,39 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
     },
 
-    itemIndicator: {},
+    itemIndicator: {
+      _motionSafe: {
+        transitionProperty: 'transform',
+        transitionDuration: 'fast',
+      },
+      _open: {
+        transform: 'rotate(180deg)',
+      },
+      _closed: {
+        transform: 'rotate(0deg)',
+      },
+    },
   },
 
   variants: {
     size: {
       sm: {
         item: {
-          paddingBlockEnd: 'sm',
+          paddingBlock: 'xs',
         },
         itemTrigger: {
-          paddingBlock: 'xs',
+          paddingBlock: 'sm',
+          rounded: 'lg',
           textStyle: 'heading-xs',
         },
       },
       lg: {
         item: {
-          paddingBlockEnd: 'md',
+          paddingBlock: 'sm',
         },
         itemTrigger: {
-          paddingBlock: 'sm',
+          paddingBlock: 'md',
+          rounded: 'xl',
           textStyle: 'heading-sm',
         },
       },
