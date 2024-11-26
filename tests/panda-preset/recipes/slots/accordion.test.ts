@@ -26,6 +26,7 @@ describe('accordion recipe', () => {
   test('should have an itemTrigger style', () => {
     expect(accordion.base?.itemTrigger).toMatchObject({
       alignItems: 'center',
+      color: 'page.text.initial',
       cursor: 'pointer',
       display: 'flex',
       justifyContent: 'space-between',
@@ -41,6 +42,7 @@ describe('accordion recipe', () => {
 
   test('should have an itemContent style', () => {
     expect(accordion.base?.itemContent).toMatchObject({
+      color: 'page.text.initial',
       overflow: 'hidden',
       _motionSafe: {
         animationDuration: 'fast',

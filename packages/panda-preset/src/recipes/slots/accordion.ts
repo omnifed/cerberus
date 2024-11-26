@@ -37,6 +37,7 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
     itemTrigger: {
       alignItems: 'center',
       cursor: 'pointer',
+      color: 'page.text.initial',
       display: 'flex',
       justifyContent: 'space-between',
       pxi: 'sm',
@@ -49,6 +50,7 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
     },
     itemContent: {
+      color: 'page.text.initial',
       overflow: 'hidden',
       _motionSafe: {
         animationDuration: 'fast',
