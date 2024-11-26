@@ -62,7 +62,7 @@ export function AccordionItemGroup(
         </Show>
       </AccordionItemTrigger>
 
-      <AccordionItemContent>{children}</AccordionItemContent>
+      <AccordionItemContent size={size}>{children}</AccordionItemContent>
     </AccordionItem>
   )
 }

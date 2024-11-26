@@ -15,6 +15,14 @@ import { focusStates } from '../shared/states'
 export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'accordion',
   slots: accordionAnatomy.keys(),
+  jsx: [
+    'Accordion',
+    'AccordionItemGroup',
+    'AccordionItem',
+    'AccordionItemTrigger',
+    'AccordionItemIndicator',
+    'AccordionItemContent',
+  ],
 
   base: {
     root: {
@@ -49,14 +57,12 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
         transitionDuration: 'fast',
         _open: {
           animationName: 'expandHeight, fadeIn',
-          paddingBlockStart: 'sm',
         },
         _closed: {
           animationName: 'collapseHeight, fadeOut',
         },
       },
     },
-
     itemIndicator: {
       _motionSafe: {
         transitionProperty: 'transform',
@@ -82,6 +88,12 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
           rounded: 'lg',
           textStyle: 'heading-xs',
         },
+        itemContent: {
+          textStyle: 'body-sm',
+          _open: {
+            paddingBlock: 'sm',
+          },
+        },
       },
       lg: {
         item: {
@@ -91,6 +103,12 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
           paddingBlock: 'md',
           rounded: 'xl',
           textStyle: 'heading-sm',
+        },
+        itemContent: {
+          textStyle: 'body-md',
+          _open: {
+            paddingBlock: 'md',
+          },
         },
       },
     },
