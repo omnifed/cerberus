@@ -36,25 +36,25 @@ export const keyframes: CssKeyframes = defineKeyframes({
     to: { width: 'var(--width)' },
   },
   collapseWidth: {
-    from: { height: 'var(--width)' },
-    to: { height: '0' },
+    from: { width: 'var(--width)' },
+    to: { width: '0' },
   },
 
   // fade
   fadeIn: {
-    '0%': { opacity: '0' },
-    '100%': { opacity: '1' },
+    from: { opacity: '0' },
+    to: { opacity: '1' },
   },
   fadeOut: {
     from: { opacity: 1 },
     to: { opacity: 0 },
   },
   fadeInDown: {
-    '0%': {
+    from: {
       opacity: '0',
       transform: 'translateY(-20px)',
     },
-    '100%': {
+    to: {
       opacity: '1',
       transform: 'translateY(0)',
     },
@@ -80,37 +80,37 @@ export const keyframes: CssKeyframes = defineKeyframes({
 
   // slide from
   slideFromTop: {
-    '0%': { translate: '0 -0.5rem' },
+    from: { translate: '0 -0.5rem' },
     to: { translate: '0' },
   },
   slideFromBottom: {
-    '0%': { translate: '0 0.5rem' },
+    from: { translate: '0 0.5rem' },
     to: { translate: '0' },
   },
   slideFromLeft: {
-    '0%': { translate: '-0.5rem 0' },
+    from: { translate: '-0.5rem 0' },
     to: { translate: '0' },
   },
   slideFromRight: {
-    '0%': { translate: '0.5rem 0' },
+    from: { translate: '0.5rem 0' },
     to: { translate: '0' },
   },
 
   // slide to
   slideToTop: {
-    '0%': { translate: '0' },
+    from: { translate: '0' },
     to: { translate: '0 -0.5rem' },
   },
   slideToBottom: {
-    '0%': { translate: '0' },
+    from: { translate: '0' },
     to: { translate: '0 0.5rem' },
   },
   slideToLeft: {
-    '0%': { translate: '0' },
+    from: { translate: '0' },
     to: { translate: '-0.5rem 0' },
   },
   slideToRight: {
-    '0%': { translate: '0' },
+    from: { translate: '0' },
     to: { translate: '0.5rem 0' },
   },
 

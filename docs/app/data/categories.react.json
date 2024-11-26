@@ -11,13 +11,14 @@
     "description": "Communication components provide useful information.",
     "items": [
       "Admonition",
+      "Accordion",
       "Avatar",
       "Notifications",
       "Progress Indicators",
       "Tag",
       "Tooltip"
     ],
-    "next": [],
+    "next": ["Accordion"],
     "new": ["Notifications", "Tooltip"]
   },
   "containment": {

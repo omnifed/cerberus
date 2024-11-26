@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "heading": "What is Cerberus?",
+    "content": "Cerberus is a three-headed dog from Greek mythology who guards the gates of the underworld, Hades, and prevents the living from entering.",
+    "value": "one"
+  },
+  {
+    "id": 2,
+    "heading": "Who is Cerberus?",
+    "content": null,
+    "value": "two"
+  },
+  {
+    "id": 3,
+    "heading": "Where is Cerberus?",
+    "content": "Cerberus is located in multiple places, including in Greek mythology, in the game Fortnite, and in the game Hades (1 and 2)",
+    "value": "three"
+  }
+]

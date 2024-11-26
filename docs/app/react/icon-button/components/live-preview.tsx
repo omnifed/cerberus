@@ -12,12 +12,6 @@ const api = {
   palette: builder.Enum('palette', ['action', 'secondaryAction', 'danger']),
   usage: builder.Enum('usage', ['filled', 'outlined', 'ghost']),
   size: builder.Enum('size', ['sm', 'lg']),
-  tooltipPosition: builder.Enum('tooltipPosition', [
-    'top',
-    'right',
-    'bottom',
-    'left',
-  ]),
   ariaLabel: builder.Text('ariaLabel', fallbackAria),
   text: builder.Text('name', 'Button'),
   disabled: builder.Boolean('disabled', false),
@@ -45,7 +39,6 @@ export function MyButton(props: MyIconButtonProps) {
       ariaLabel={{ariaLabel}}
       disabled={{disabled}}
       palette={{palette}}
-      tooltipPosition={{tooltipPosition}}
       size={{size}}
       usage={{usage}}
     >

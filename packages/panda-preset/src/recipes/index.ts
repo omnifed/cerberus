@@ -9,6 +9,7 @@ import { th } from './th'
 import { tbody } from './tbody'
 import { td } from './td'
 
+import { accordion } from './slots/accordion'
 import { admonition } from './slots/admonition'
 import { checkbox } from './slots/checkbox'
 import { fileStatus } from './slots/fileStatus'
@@ -44,6 +45,7 @@ export const recipes = {
 }
 
 export const slotRecipes = {
+  accordion,
   admonition,
   checkbox,
   fileStatus,

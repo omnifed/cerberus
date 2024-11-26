@@ -2,7 +2,6 @@ import { nonActionPalettes } from './palettes'
 
 export const tagBase = {
   alignItems: 'center',
-  color: 'colorPalette.text.200',
   display: 'inline-flex',
   gap: '2',
   justifyContent: 'center',
@@ -14,6 +13,7 @@ export const tagBase = {
 
 export const filledUsage = {
   bgColor: 'colorPalette.surface.200',
+  color: 'colorPalette.text.200',
 }
 
 export const tagPalettes = nonActionPalettes

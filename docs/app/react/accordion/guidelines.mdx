@@ -1,0 +1,30 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import DripDivider from '@/app/components/drip-divider'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import { StaticPreview } from './components/static-preview'
+
+<OverviewList intro="Default preferences:" rules={[
+  'Large size',
+  'End indicator position',
+]} />
+
+<CodePreview preview={<StaticPreview />} />
+
+This is a preview of the default Accordion component.
+
+<DripDivider />
+
+## Small Size
+
+The small version can be used in dense content areas like cards within a dashboard.
+
+## Responsive Layouts
+
+The Accordion component is responsive and can be used in any layouts using the the default large size.

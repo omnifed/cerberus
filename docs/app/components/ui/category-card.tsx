@@ -12,7 +12,7 @@ interface CategoryCardProps {
   delay?: number
 }
 
-export default async function CategoryCard(props: CategoryCardProps) {
+export default function CategoryCard(props: CategoryCardProps) {
   const metaKey = props.item.toLowerCase().replaceAll(' ', '-')
   const item = sideNavData.find((navItem) => navItem.label === props.item)
   const meta = categoryMeta[metaKey as keyof typeof categoryMeta]

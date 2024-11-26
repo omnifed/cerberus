@@ -3,6 +3,11 @@ import dynamic from 'next/dynamic'
 const ButtonFeature = dynamic(() => import('@/app/assets/button-feature'))
 
 export const categoryMeta = {
+  accordion: {
+    name: 'Accordion',
+    description: 'Accordions are used to display collapsible content.',
+    image: ButtonFeature,
+  },
   admonition: {
     name: 'Admonition',
     description:

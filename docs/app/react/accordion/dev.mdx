@@ -1,0 +1,103 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/Accordion.tsx'
+recipe: 'slots/accordion.ts'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { StaticPreview, CustomPreview } from './components/static-preview'
+import { LivePlaygroundWithCode } from './components/live-playground'
+
+```ts
+import {
+  Accordion,
+  AccordionItemGroup,
+} from '@cerberus/react'
+```
+
+## Usage
+
+<LivePlaygroundWithCode />
+
+## Customization
+
+You can utilize the primitive components to customize the accordion.
+
+| Component               | Description |
+| ----------------------- | ----------- |
+| Accordion               | The main container for the accordion items. |
+| AccordionItem           | Represents a single item within the accordion. |
+| AccordionItemTrigger    | The trigger element that toggles the visibility of the content. |
+| AccordionItemContent    | The content that is shown or hidden when the trigger is activated. |
+| AccordionItemIndicator  | An optional indicator to show the state of the accordion item. |
+
+<CodePreview preview={<CustomPreview />}>
+```tsx title="button.tsx"
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemTrigger,
+  AccordionItemContent,
+  AccordionItemIndicator,
+} from '@cerberus-design/react'
+import { Box } from '@cerberus-design/styled-system/jsx'
+import { css } from '@cerberus/styled-system/css'
+
+export function CustomAccordion() {
+  return (
+    <Accordion>
+        <AccordionItem
+          className={css({
+            bgColor: 'black',
+            borderColor: 'yellow',
+          })}
+          value="one"
+        >
+          <AccordionItemTrigger
+            className={css({
+              color: 'yellow',
+            })}
+          >
+            Wu-Tang Clan
+            <AccordionItemIndicator />
+          </AccordionItemTrigger>
+          <AccordionItemContent
+            className={css({
+              color: 'white',
+              paddingInline: 'md',
+              textStyle: 'body-md',
+            })}
+          >
+            The rugged, raw, and unapologetic Wu-Tang Clan is a hip-hop group
+            that has been around since 1992. The group is known for its
+            distinctive sound and lyrics that often touch on themes of urban
+            life, crime, and the struggles of the inner city New York.
+          </AccordionItemContent>
+        </AccordionItem>
+      </Accordion>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+### AccordionItemGroup
+
+```ts showLineNumbers=false
+export interface AccordionItemGroupBaseProps {
+  heading: string
+  indicatorPosition?: 'start' | 'end'
+  size: 'sm' | 'lg'
+  value: string
+}
+export type AccordionItemGroupProps = AccordionItemGroupBaseProps &
+  AccordionVariantProps
+```
+
+| Name     | Default    |       Description                                   |
+| -------- | ------- | ------------------------------------------------------ |
+| heading  |         | The heading of the accordion item.                    |
+| value    |         | The value of the accordion item.                      |
+| size     | `lg`    | The size of the accordion item.                       |
+| indicatorPosition | `end` | The position of the indicator.           |

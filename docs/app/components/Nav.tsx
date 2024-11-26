@@ -6,7 +6,13 @@ import { css, cx } from '@cerberus/styled-system/css'
 import { grid, gridItem, hstack } from '@cerberus/styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
 import { LogoGithub } from '@cerberus-design/icons'
-import { Show, useThemeContext, type ColorModes } from '@cerberus-design/react'
+import {
+  IconButton,
+  Show,
+  Tooltip,
+  useThemeContext,
+  type ColorModes,
+} from '@cerberus-design/react'
 import { version } from '@cerberus-design/configs'
 import { AnimatingSunIcon } from './icons/AnimatingSunIcon'
 import { AnimatingMoonIcon } from './icons/AnimatingMoonIcon'
@@ -73,7 +79,14 @@ export function Nav() {
   const pathname = usePathname()
   const { mode, theme, updateMode, updateTheme } = useThemeContext()
   const ariaLabel = useMemo(() => {
-    return mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
+    switch (mode) {
+      case 'light':
+        return 'Switch to dark mode'
+      case 'dark':
+        return 'Switch to system mode'
+      default:
+        return 'Switch to light mode'
+    }
   }, [mode])
 
   const handleUpdateMode = useCallback(
@@ -251,36 +264,31 @@ export function Nav() {
               {version}
             </p>
           </li>
+
           {navGHLogoContent}
 
-          <li
-            className={css({
-              h: '1.5rem',
-            })}
-          >
-            <button
-              className={css({
-                rounded: 'sm',
-                _focusVisible: focusStates._focusVisible,
-              })}
-              aria-label={ariaLabel}
-              onClick={handleUpdateMode}
-              value={mode}
-            >
-              <Show
-                when={mode === 'system'}
-                fallback={
-                  <Show
-                    when={mode === 'light'}
-                    fallback={<AnimatingMoonIcon />}
-                  >
-                    <AnimatingSunIcon />
-                  </Show>
-                }
+          <li>
+            <Tooltip content={ariaLabel} asChild>
+              <IconButton
+                ariaLabel={ariaLabel}
+                onClick={handleUpdateMode}
+                value={mode}
               >
-                <AnimatingSystemIcon />
-              </Show>
-            </button>
+                <Show
+                  when={mode === 'system'}
+                  fallback={
+                    <Show
+                      when={mode === 'light'}
+                      fallback={<AnimatingMoonIcon />}
+                    >
+                      <AnimatingSunIcon />
+                    </Show>
+                  }
+                >
+                  <AnimatingSystemIcon />
+                </Show>
+              </IconButton>
+            </Tooltip>
           </li>
 
           <li>

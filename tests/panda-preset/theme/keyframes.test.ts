@@ -44,14 +44,14 @@ describe('keyframes', () => {
 
   test('should export collapseWidth', () => {
     expect(keyframes.collapseWidth).toBeDefined()
-    expect(keyframes.collapseWidth.from).toEqual({ height: 'var(--width)' })
-    expect(keyframes.collapseWidth.to).toEqual({ height: '0' })
+    expect(keyframes.collapseWidth.from).toEqual({ width: 'var(--width)' })
+    expect(keyframes.collapseWidth.to).toEqual({ width: '0' })
   })
 
   test('should export fadeIn', () => {
     expect(keyframes.fadeIn).toBeDefined()
-    expect(keyframes.fadeIn['0%']).toEqual({ opacity: '0' })
-    expect(keyframes.fadeIn['100%']).toEqual({ opacity: '1' })
+    expect(keyframes.fadeIn.from).toEqual({ opacity: '0' })
+    expect(keyframes.fadeIn.to).toEqual({ opacity: '1' })
   })
 
   test('should export fadeOut', () => {
@@ -62,11 +62,11 @@ describe('keyframes', () => {
 
   test('should export fadeInDown', () => {
     expect(keyframes.fadeInDown).toBeDefined()
-    expect(keyframes.fadeInDown['0%']).toEqual({
+    expect(keyframes.fadeInDown.from).toEqual({
       opacity: '0',
       transform: 'translateY(-20px)',
     })
-    expect(keyframes.fadeInDown['100%']).toEqual({
+    expect(keyframes.fadeInDown.to).toEqual({
       opacity: '1',
       transform: 'translateY(0)',
     })
@@ -114,49 +114,49 @@ describe('keyframes', () => {
 
   test('should export slideFromTop', () => {
     expect(keyframes.slideFromTop).toBeDefined()
-    expect(keyframes.slideFromTop['0%']).toEqual({ translate: '0 -0.5rem' })
+    expect(keyframes.slideFromTop.from).toEqual({ translate: '0 -0.5rem' })
     expect(keyframes.slideFromTop.to).toEqual({ translate: '0' })
   })
 
   test('should export slideFromBottom', () => {
     expect(keyframes.slideFromBottom).toBeDefined()
-    expect(keyframes.slideFromBottom['0%']).toEqual({ translate: '0 0.5rem' })
+    expect(keyframes.slideFromBottom.from).toEqual({ translate: '0 0.5rem' })
     expect(keyframes.slideFromBottom.to).toEqual({ translate: '0' })
   })
 
   test('should export slideFromLeft', () => {
     expect(keyframes.slideFromLeft).toBeDefined()
-    expect(keyframes.slideFromLeft['0%']).toEqual({ translate: '-0.5rem 0' })
+    expect(keyframes.slideFromLeft.from).toEqual({ translate: '-0.5rem 0' })
     expect(keyframes.slideFromLeft.to).toEqual({ translate: '0' })
   })
 
   test('should export slideFromRight', () => {
     expect(keyframes.slideFromRight).toBeDefined()
-    expect(keyframes.slideFromRight['0%']).toEqual({ translate: '0.5rem 0' })
+    expect(keyframes.slideFromRight.from).toEqual({ translate: '0.5rem 0' })
     expect(keyframes.slideFromRight.to).toEqual({ translate: '0' })
   })
 
   test('should export slideToTop', () => {
     expect(keyframes.slideToTop).toBeDefined()
-    expect(keyframes.slideToTop['0%']).toEqual({ translate: '0' })
+    expect(keyframes.slideToTop.from).toEqual({ translate: '0' })
     expect(keyframes.slideToTop.to).toEqual({ translate: '0 -0.5rem' })
   })
 
   test('should export slideToBottom', () => {
     expect(keyframes.slideToBottom).toBeDefined()
-    expect(keyframes.slideToBottom['0%']).toEqual({ translate: '0' })
+    expect(keyframes.slideToBottom.from).toEqual({ translate: '0' })
     expect(keyframes.slideToBottom.to).toEqual({ translate: '0 0.5rem' })
   })
 
   test('should export slideToLeft', () => {
     expect(keyframes.slideToLeft).toBeDefined()
-    expect(keyframes.slideToLeft['0%']).toEqual({ translate: '0' })
+    expect(keyframes.slideToLeft.from).toEqual({ translate: '0' })
     expect(keyframes.slideToLeft.to).toEqual({ translate: '-0.5rem 0' })
   })
 
   test('should export slideToRight', () => {
     expect(keyframes.slideToRight).toBeDefined()
-    expect(keyframes.slideToRight['0%']).toEqual({ translate: '0' })
+    expect(keyframes.slideToRight.from).toEqual({ translate: '0' })
     expect(keyframes.slideToRight.to).toEqual({ translate: '0.5rem 0' })
   })
 

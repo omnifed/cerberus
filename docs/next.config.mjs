@@ -13,6 +13,14 @@ import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['md', 'mdx', 'ts', 'tsx'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com',
+      },
+    ],
+  },
 }
 
 const withMDX = createMDX({
@@ -21,6 +29,7 @@ const withMDX = createMDX({
       mdxType: 'gfm',
     },
   },
+
   options: {
     remarkPlugins: [
       emoji,
