@@ -38,6 +38,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         bgColor: 'inherit',
         border: '1.5px solid',
         borderColor: 'colorPalette.border.initial',
+        color: 'colorPalette.text.100',
         _warningPalette: {
           color: PAGE_TEXT_INITIAL,
         },
