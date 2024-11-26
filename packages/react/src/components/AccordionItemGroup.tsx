@@ -36,7 +36,7 @@ export type AccordionItemGroupProps = AccordionItemGroupBaseProps &
  * ```tsx
  * <Accordion>
  *   <AccordionItemGroup heading="Accordion Item 1" value="one">
- *     <Text>Accordion Item 1 content</Text>
+ *     Accordion Item 1 content
  *   </AccordionItemGroup>
  * </Accordion>
  * ```

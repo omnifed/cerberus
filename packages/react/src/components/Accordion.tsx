@@ -14,7 +14,11 @@ export type AccordionProps = ArkAccordion.RootProps & AccordionVariantProps
  * @definition [Accordion docs](https://cerberus.digitalu.design/react/accordion)
  * @example
  * ```tsx
- * <Accordion></Accordion>
+ * <Accordion>
+ *  <AccordionItemGroup heading="Item 1 heading" value="one">
+ *     This is the content
+ *  </AccordionItemGroup>
+ * </Accordion>
  * ```
  */
 export function Accordion(props: AccordionProps) {
@@ -38,9 +42,13 @@ type AccordionItemProps = ArkAccordion.ItemProps & AccordionVariantProps
  * @example
  * ```tsx
  * <Accordion>
- *   <Accordion.Item value="one">
- *     <Text>Accordion Item 1 content</Text>
- *   </Accordion.Item>
+ *   <AccordionItem value="one">
+ *     <AccordionTrigger>
+ *        Accordion Item 1
+ *     <AccordionIndicator />
+ *     </AccordionTrigger>
+ *     <AccordionContent>Accordion Item 1 content</AccordionContent>
+ *   </AccordionItem>
  * </Accordion>
  * ```
  */
@@ -65,10 +73,13 @@ export type AccordionItemTriggerProps = ArkAccordion.ItemTriggerProps &
  * @example
  * ```tsx
  * <Accordion>
- *   <Accordion.Item>
- *     <Accordion.ItemTrigger>Accordion Item 1</Accordion.ItemTrigger>
- *     <Text>Accordion Item 1 content</Text>
- *   </Accordion.Item>
+ *   <AccordionItem value="one">
+ *     <AccordionTrigger>
+ *        Accordion Item 1
+ *     <AccordionIndicator />
+ *     </AccordionTrigger>
+ *     <AccordionContent>Accordion Item 1 content</AccordionContent>
+ *   </AccordionItem>
  * </Accordion>
  * ```
  */
@@ -93,13 +104,13 @@ export type AccordionItemIndicatorProps = ArkAccordion.ItemIndicatorProps &
  * @example
  * ```tsx
  * <Accordion>
- *  <Accordion.Item>
- *   <Accordion.ItemTrigger>Accordion Item 1</Accordion.ItemTrigger>
- *  <Accordion.ItemIndicator>
- *   <ChevronDown />
- * </Accordion.ItemIndicator>
- * <Text>Accordion Item 1 content</Text>
- * </Accordion.Item>
+ *   <AccordionItem value="one">
+ *     <AccordionTrigger>
+ *        Accordion Item 1
+ *     <AccordionIndicator />
+ *     </AccordionTrigger>
+ *     <AccordionContent>Accordion Item 1 content</AccordionContent>
+ *   </AccordionItem>
  * </Accordion>
  * ```
  * */
@@ -128,15 +139,13 @@ export type AccordionItemContentProps = ArkAccordion.ItemContentProps &
  * @example
  * ```tsx
  * <Accordion>
- *  <Accordion.Item>
- *  <Accordion.ItemTrigger>Accordion Item 1</Accordion.ItemTrigger>
- * <Accordion.ItemIndicator>
- * <ChevronDown />
- * </Accordion.ItemIndicator>
- * <Accordion.ItemContent>
- * <Text>Accordion Item 1 content</Text>
- * </Accordion.ItemContent>
- * </Accordion.Item>
+ *   <AccordionItem value="one">
+ *     <AccordionTrigger>
+ *        Accordion Item 1
+ *     <AccordionIndicator />
+ *     </AccordionTrigger>
+ *     <AccordionContent>Accordion Item 1 content</AccordionContent>
+ *   </AccordionItem>
  * </Accordion>
  * ```
  * */
