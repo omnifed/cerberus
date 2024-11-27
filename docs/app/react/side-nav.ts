@@ -1,5 +1,6 @@
 import categoriesData from '@/app/data/categories.react.json'
 import { type NavList } from '../components/SideNav'
+import type { LinkProps } from 'next/link'
 
 interface Category {
   name: string
@@ -55,7 +56,8 @@ function createSideNavData(categories: CategoriesList): NavList {
       const formattedName = name === 'Getting Started' ? '' : name
       navList.push({
         label: name,
-        route: `/react/${formattedName.replace(/ /g, '-').toLowerCase()}`,
+        route:
+          `/react/${formattedName.replace(/ /g, '-').toLowerCase()}` as LinkProps<string>['href'],
         tag: getCategoryItemTags(name, category.new, category.next),
         type: 'route',
       })
