@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useMemo, type MouseEvent } from 'react'
-import Link from 'next/link'
+import Link, { type LinkProps } from 'next/link'
 import { css, cx } from '@cerberus/styled-system/css'
 import { grid, gridItem, hstack } from '@cerberus/styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
@@ -221,7 +221,7 @@ export function Nav() {
                     _focusVisible: focusStates._focusVisible,
                   },
                 })}
-                href={item.href}
+                href={item.href as LinkProps<string>['href']}
                 prefetch
               >
                 {item.label}
