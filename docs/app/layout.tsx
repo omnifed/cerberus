@@ -13,9 +13,9 @@ import { base, openGraph } from './shared-metadata'
 import { Nav } from './components/Nav'
 import { setCookie } from './actions/cookies'
 import { getCachedTheme } from './actions/theme'
-import { getCodeTheme } from './utils/colors'
 
 import './globals.css'
+import { getCodeTheme } from './utils/colors'
 
 const poppins = Poppins({
   display: 'swap',
@@ -30,25 +30,10 @@ const recursive = Recursive({
   variable: '--font-recursive',
 })
 
-// export const metadata: Metadata = {
-//   title: 'Cerberus Design System',
-//   ...base,
-//   openGraph,
-// }
-
-export async function generateMetadata(): Promise<Metadata> {
-  const theme = await getCachedTheme()
-  const themeName = theme.themeName || 'cerberus'
-  const images = [`${base.metadataBase}${themeName}-og-image.png`]
-
-  return {
-    title: 'Cerberus Design System',
-    ...base,
-    openGraph: {
-      ...openGraph,
-      images,
-    },
-  }
+export const metadata: Metadata = {
+  title: 'Cerberus Design System',
+  ...base,
+  openGraph,
 }
 
 interface RootProps {}
