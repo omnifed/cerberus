@@ -2,6 +2,7 @@ import { css } from '@cerberus/styled-system/css'
 import { vstack } from '@cerberus/styled-system/patterns'
 import { type PropsWithChildren, memo } from 'react'
 import MatchSideNavItem from './MatchSideNavItem'
+import type { LinkProps } from 'next/link'
 
 export type NavList = (HeadingItem | LinkItem)[]
 export type NavItemType = 'heading' | 'route'
@@ -15,7 +16,7 @@ export interface HeadingItem {
 
 export interface LinkItem {
   label: string
-  route: string
+  route: LinkProps<string>['href']
   tag: '' | 'new' | 'next'
   type: 'route'
 }

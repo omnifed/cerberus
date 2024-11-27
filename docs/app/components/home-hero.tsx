@@ -117,7 +117,7 @@ export default function HomeHero() {
                 }),
                 button(),
               )}
-              href="/preset/"
+              href="/preset"
             >
               Get Started
             </Link>

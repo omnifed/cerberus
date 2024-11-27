@@ -21,6 +21,10 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    serverComponentsHmrCache: true,
+    typedRoutes: true,
+  },
 }
 
 const withMDX = createMDX({
