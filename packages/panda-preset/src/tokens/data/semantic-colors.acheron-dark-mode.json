@@ -212,6 +212,18 @@
         }
       }
     },
+    "text-link": {
+      "$type": "color",
+      "$value": "cerberus.teal.60",
+      "$description": "",
+      "$extensions": {
+        "com.figma": {
+          "hiddenFromPublishing": false,
+          "scopes": ["TEXT_FILL"],
+          "codeSyntax": {}
+        }
+      }
+    },
     "text-brand": {
       "$type": "color",
       "$value": "cerberus.brand.30",
