@@ -5,8 +5,6 @@ import { cerberusPreset, cerberusConfig } from '@cerberus-design/panda-preset'
 const config: Config = {
   ...cerberusConfig,
 
-  lightningcss: true,
-
   include: [
     './node_modules/@cerberus-design/react/src/**/*.{ts,tsx}',
     './mdx-components.tsx',
