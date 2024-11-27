@@ -3,7 +3,7 @@
 import { focusStates } from '@cerberus-design/panda-preset'
 import { css } from '@cerberus/styled-system/css'
 import { vstack } from '@cerberus/styled-system/patterns'
-import Link from 'next/link'
+import Link, { type LinkProps } from 'next/link'
 import { useLayoutEffect, useRef, useState } from 'react'
 
 interface OverrideHeading {
@@ -78,7 +78,7 @@ export default function OnThisPage() {
               aria-current={
                 window.location.hash === link.id ? 'page' : undefined
               }
-              href={link.id}
+              href={link.id as LinkProps<string>['href']}
               className={css({
                 display: 'block',
                 rounded: 'sm',
