@@ -1,6 +1,18 @@
-import { css, cx } from '@cerberus/styled-system/css'
-import type { BoxProps } from '@cerberus/styled-system/jsx'
-import { createElement, type PropsWithChildren } from 'react'
+import {
+  Em,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  P,
+  Small,
+  Span,
+  Strong,
+  type BoxProps,
+} from '@cerberus/styled-system/jsx'
+import { type PropsWithChildren } from 'react'
 
 /**
  * This module exports a component for rendering text utilizing the styled-system JSX utility.
@@ -30,8 +42,29 @@ export interface TextProps extends BoxProps {
  * </Text>
  */
 export function Text(props: PropsWithChildren<TextProps>) {
-  const { as = 'p', children, id, className, ...rest } = props
-  const styles = cx(className, css({ ...rest }))
-  const elProps = { className: styles, id }
-  return createElement(as, elProps, children)
+  const { as = 'p', ...pandaJSXProps } = props
+  switch (as) {
+    case 'h1':
+      return <H1 {...pandaJSXProps} />
+    case 'h2':
+      return <H2 {...pandaJSXProps} />
+    case 'h3':
+      return <H3 {...pandaJSXProps} />
+    case 'h4':
+      return <H4 {...pandaJSXProps} />
+    case 'h5':
+      return <H5 {...pandaJSXProps} />
+    case 'h6':
+      return <H6 {...pandaJSXProps} />
+    case 'strong':
+      return <Strong {...pandaJSXProps} />
+    case 'em':
+      return <Em {...pandaJSXProps} />
+    case 'small':
+      return <Small {...pandaJSXProps} />
+    case 'span':
+      return <Span {...pandaJSXProps} />
+    default:
+      return <P {...pandaJSXProps} />
+  }
 }

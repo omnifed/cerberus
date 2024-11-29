@@ -22,7 +22,21 @@ import { Text } from '@cerberus/react'
 
 export default function Heading() {
   return (
-    <Text as="h1" textStyle="heading-xl">Heading xl</Text>
+    <>
+      <Text
+        as="h1"
+        color="page.text.100"
+        textStyle={{
+          base: 'heading-md',
+          md: 'heading-lg',
+        }}
+      >
+        Hello, world!
+      </Text>
+      <Text as="small" color="info.text.100" textStyle="body-sm">
+        This is small text
+      </Text>
+    </>
   )
 }
 ```
