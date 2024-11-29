@@ -66,7 +66,7 @@ const animateIn: PatternConfig = definePattern({
   // disallow the `overflow` property (in TypeScript)
   blocklist: ['overflow'],
 
-  transform(props) {
+  transform(props: { delay?: string }) {
     const { delay, ...rest } = props
     return {
       animationName: 'fadeIn',

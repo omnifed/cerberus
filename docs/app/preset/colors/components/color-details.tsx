@@ -14,7 +14,7 @@ import {
   vstack,
 } from '@cerberus/styled-system/patterns'
 import { normalizeTokens, getTokenList } from '../helpers/normalize'
-import { Show, useThemeContext } from '@cerberus-design/react'
+import { Show } from '@cerberus-design/react'
 import { Fragment, useMemo } from 'react'
 import { css } from '@cerberus/styled-system/css'
 import UsageExample from './usage-example'
@@ -88,7 +88,6 @@ interface FigmaScope {
 }
 
 export default function ColorDetails() {
-  const { mode } = useThemeContext()
   const searchParams = useSearchParams()
   const paramsToken = searchParams.get('token') ?? 'page-backdrop-initial'
   const splitToken = useMemo(() => paramsToken.split('-'), [paramsToken])

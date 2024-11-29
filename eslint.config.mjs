@@ -1,5 +1,3 @@
-'use strict'
-
 import eslint from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import sonarjs from 'eslint-plugin-sonarjs'
@@ -14,35 +12,31 @@ const OFF = 'off'
 
 export default tseslint.config(
   eslint.configs.recommended,
-  sonarjs.configs.recommended,
-  ...tseslint.configs.recommended,
-
-  {
-    // Docs use local v8 lint checks
-    ignores: [
-      'docs/**/*',
-      'packages/*/build/**/*',
-      'packages/*/.tsup/**/*',
-      'packages/styled-system/**/*',
-    ],
-  },
+  tseslint.configs.recommendedTypeChecked,
 
   {
     languageOptions: {
       parserOptions: {
-        project: [
-          './tsconfig.json',
-          './packages/panda-preset/tsconfig.lint.json',
-          './packages/icons/tsconfig.lint.json',
-          './packages/react/tsconfig.lint.json',
-          './configs/tsconfig.json',
-          './tests/tsconfig.json',
-          './docs/tsconfig.json',
-          './figma/tsconfig.json',
-        ],
+        projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },
+  },
+
+  {
+    ignores: [
+      'docs/**/*', // docs uses Next linting
+      'packages/*/build/**/*',
+      'packages/*/.tsup/**/*',
+      // non-TS files
+      'packages/styled-system/**/*',
+      '**/*.mjs',
+      // files that are rooted with JS not TS
+      'tests/**/*',
+      'figma/**/*',
+      'configs/**/*', // we will kill once we fully move to JSR
+      '.eslintignore',
+    ],
   },
 
   {
@@ -59,6 +53,7 @@ export default tseslint.config(
   {
     name: '@cerberus-design/panda-preset',
     files: ['packages/panda-preset/**/*.ts'],
+    ...sonarjs.recommended,
   },
 
   {
@@ -72,6 +67,7 @@ export default tseslint.config(
     plugins: {
       react,
     },
+    ...sonarjs.recommended,
     ...reactRecommended,
     ...reactHooks.recommended,
     rules: {},
@@ -96,8 +92,6 @@ export default tseslint.config(
     plugins: {
       react,
     },
-    ...reactRecommended,
-    ...reactHooks.recommended,
     rules: {},
   },
 

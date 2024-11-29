@@ -85,7 +85,7 @@ export interface PromptModalValue {
 
 const PromptModalContext = createContext<PromptModalValue | null>(null)
 
-export interface PromptModalProviderProps {}
+export type PromptModalProviderProps = PropsWithChildren<unknown>
 
 /**
  * Provides a prompt modal to the app.

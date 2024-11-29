@@ -9,7 +9,6 @@ import {
   Show,
   type AccordionItemGroupProps,
 } from '@cerberus-design/react'
-import { VStack } from '@cerberus-design/styled-system/jsx'
 
 const api = {
   size: builder.Enum('size', ['sm', 'lg']),

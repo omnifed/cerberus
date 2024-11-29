@@ -10,7 +10,7 @@ import type { HTMLAttributes } from 'react'
  * @module
  */
 
-export interface ProgressBarBaseProps extends HTMLAttributes<HTMLDivElement> {}
+export type ProgressBarBaseProps = HTMLAttributes<HTMLDivElement>
 export type NonIndeterminateProgressBarProps = {
   /**
    * A unique identifier for the progress bar. Required for accessibility.

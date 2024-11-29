@@ -86,7 +86,7 @@ export interface ConfirmModalValue {
 
 const ConfirmModalContext = createContext<ConfirmModalValue | null>(null)
 
-export interface ConfirmModalProviderProps {}
+export type ConfirmModalProviderProps = PropsWithChildren<unknown>
 
 /**
  * Provides a confirm modal to the app.

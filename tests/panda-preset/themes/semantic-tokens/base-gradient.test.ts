@@ -1,5 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-
 import { describe, test, expect } from 'bun:test'
 import { gradientTokens } from '@cerberus-design/panda-preset'
 

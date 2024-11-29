@@ -24,11 +24,9 @@ describe('Tooltip', () => {
     )
     await userEvent.hover(screen.getByText(/trigger/i))
     await waitFor(() => {
-      expect(
-        (screen.getByText(/it works/i) as HTMLElement).getAttribute(
-          'data-placement',
-        ),
-      ).toBe('bottom')
+      expect(screen.getByText(/it works/i).getAttribute('data-placement')).toBe(
+        'bottom',
+      )
     })
   })
 })

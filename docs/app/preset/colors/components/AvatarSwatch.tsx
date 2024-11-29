@@ -1,6 +1,5 @@
 'use client'
 
-import { useThemeContext } from '@cerberus-design/react'
 import type { SemanticToken, Sentiment } from '@cerberus-design/panda-preset'
 import { useMemo } from 'react'
 import { circle } from '@cerberus/styled-system/patterns'

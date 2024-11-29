@@ -11,7 +11,7 @@ import {
   Span,
   Strong,
   type BoxProps,
-} from '@cerberus/styled-system/jsx'
+} from '@cerberus-design/styled-system/jsx'
 import { type PropsWithChildren } from 'react'
 
 /**

@@ -13,7 +13,6 @@ import {
   type MouseEvent,
 } from 'react'
 import { $cerberusIcons } from '../config/defineIcons'
-import type { IconType } from '../config/cerbIcons'
 import { trapFocus } from '../aria-helpers/trap-focus.aria'
 
 /**
@@ -22,9 +21,13 @@ import { trapFocus } from '../aria-helpers/trap-focus.aria'
  */
 
 function MatchNotificationIcon(props: NotificationVariantProps) {
-  const palette = props.palette || 'info'
+  const palette = (props.palette || 'info') as
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'danger'
   const key = `${palette}Notification` as keyof typeof $cerberusIcons
-  const Icon = $cerberusIcons[key] as IconType
+  const Icon = $cerberusIcons[key]
   return <Icon />
 }
 
