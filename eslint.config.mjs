@@ -31,11 +31,12 @@ export default tseslint.config(
       // non-TS files
       'packages/styled-system/**/*',
       '**/*.mjs',
-      // files that are rooted with JS not TS
+      // files that are rooted with JS not TS or that we don't need to lint
+      // with hardcore TS rules
+      'packages/*/tsup.config.ts',
       'tests/**/*',
       'figma/**/*',
-      'configs/**/*', // we will kill once we fully move to JSR
-      '.eslintignore',
+      'configs/**/*', // we will kill once we fully move to JSR'
     ],
   },
 
