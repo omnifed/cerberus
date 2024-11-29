@@ -1,4 +1,5 @@
 import type { PatternConfig } from '@pandacss/types'
+import type { Headings, TextElements } from './types'
 
 export function definePattern<T extends PatternConfig>(
   config: T,
@@ -65,7 +66,7 @@ const animateIn: PatternConfig = definePattern({
   // disallow the `overflow` property (in TypeScript)
   blocklist: ['overflow'],
 
-  transform(props) {
+  transform(props: { delay?: string }) {
     const { delay, ...rest } = props
     return {
       animationName: 'fadeIn',
@@ -81,9 +82,46 @@ const animateIn: PatternConfig = definePattern({
   },
 })
 
+const textTags: (Headings | TextElements)[] = [
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'p',
+  'strong',
+  'em',
+  'small',
+  'span',
+]
+
+const [h1, h2, h3, h4, h5, h6, p, strong, em, small, span] = textTags.map(
+  (tag) => {
+    return definePattern({
+      description: `A ${tag} element`,
+      jsxElement: tag,
+      transform(props) {
+        return props
+      },
+    })
+  },
+)
+
 export const patterns = {
   extend: {
     animateIn,
     scrollable,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    strong,
+    em,
+    small,
+    span,
   },
 }

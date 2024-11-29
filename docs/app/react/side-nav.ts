@@ -22,8 +22,9 @@ const overviewGroup: CategoriesList = {
       'Feature Flags',
       'Portal',
       'Show',
+      'Text',
     ],
-    next: [],
+    next: ['Text'],
     new: ['Forms'],
   },
 }

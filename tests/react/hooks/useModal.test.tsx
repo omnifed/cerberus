@@ -33,7 +33,7 @@ describe('useModal', () => {
     expect(screen.queryByRole('dialog')).toBeFalsy()
     await userEvent.click(screen.getByText(/show/i))
     expect(screen.getByRole('dialog')).toBeTruthy()
-    expect(screen.getByText(/modal state: true/i)).toBeTruthy
+    expect(screen.getByText(/modal state: true/i)).toBeTruthy()
   })
 
   test('should close modal', async () => {
@@ -41,7 +41,7 @@ describe('useModal', () => {
     expect(screen.getByText(/modal state: false/i)).toBeTruthy()
     await userEvent.click(screen.getByText(/show/i))
     expect(screen.getByRole('dialog')).toBeTruthy()
-    expect(screen.getByText(/modal state: true/i)).toBeTruthy
+    expect(screen.getByText(/modal state: true/i)).toBeTruthy()
     await userEvent.click(screen.getByText(/close/i))
     expect(screen.queryByRole('dialog')).toBeFalsy()
     expect(screen.getByText(/modal state: false/i)).toBeTruthy()

@@ -1,5 +1,10 @@
 {
-  "exclude": ["node_modules", "./docs/app/**/*.mdx"],
+  "exclude": [
+    "node_modules",
+    "./docs/app/**/*.mdx",
+    "eslint.config.mjs",
+    "packages/*/tsup.config.ts"
+  ],
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "ESNext"],
     "module": "esnext",

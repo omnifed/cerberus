@@ -6,8 +6,8 @@ import {
   useContext,
   useMemo,
   useState,
-  type ButtonHTMLAttributes,
   type MouseEvent,
+  type MouseEventHandler,
   type PropsWithChildren,
   type ReactNode,
 } from 'react'
@@ -50,7 +50,7 @@ export interface ShowCTAModalOptions {
    */
   actions: {
     text: string
-    onClick: Required<ButtonHTMLAttributes<HTMLButtonElement>['onClick']>
+    onClick: MouseEventHandler<HTMLButtonElement>
   }[]
 }
 
@@ -60,7 +60,7 @@ export interface CTAModalValue {
 
 const CTAModalContext = createContext<CTAModalValue | null>(null)
 
-export interface CTAModalProviderProps {}
+export type CTAModalProviderProps = PropsWithChildren<unknown>
 
 /**
  * Provides a CTA modal to the app.
@@ -99,7 +99,7 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
   const [content, setContent] = useState<ShowCTAModalOptions | null>(null)
   const focusTrap = trapFocus(modalRef)
   const FallbackIcon = $cerberusIcons.confirmModal
-  const confirmIcon = content?.icon as ReactNode
+  const confirmIcon = content?.icon
   const { close: CloseIcon } = $cerberusIcons
 
   const handleShow = useCallback(
@@ -120,9 +120,8 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
     (event: MouseEvent<HTMLButtonElement>) => {
       const index = event.currentTarget.getAttribute('data-index')
       const action = content?.actions[Number(index)]
-      if (typeof action?.onClick === 'function') {
-        action.onClick(event)
-      }
+      const { onClick } = action || {}
+      onClick?.(event)
       close()
     },
     [content, close],

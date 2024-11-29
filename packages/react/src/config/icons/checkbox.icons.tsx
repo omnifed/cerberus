@@ -5,7 +5,7 @@ import type { SVGProps } from 'react'
  * @module
  */
 
-interface CheckboxIconProps extends SVGProps<SVGSVGElement> {}
+export type CheckboxIconProps = SVGProps<SVGSVGElement>
 
 /**
  * Checkmark icon for Checkbox component
@@ -28,7 +28,7 @@ export function CheckmarkIcon(props: CheckboxIconProps) {
   )
 }
 
-interface IndeterminateIconProps extends SVGProps<SVGSVGElement> {}
+export type IndeterminateIconProps = SVGProps<SVGSVGElement>
 
 /**
  * Indeterminate icon for Checkbox component

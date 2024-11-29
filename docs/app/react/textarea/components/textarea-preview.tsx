@@ -1,6 +1,5 @@
 import { Field, FieldMessage, Label, Textarea } from '@cerberus-design/react'
-import { css, cx } from '@cerberus/styled-system/css'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { css } from '@cerberus/styled-system/css'
 
 const overrideStyles = css({
   w: '1/2',

@@ -389,7 +389,7 @@ export interface CerberusTextStyle {
  * - 11875-39782: mono-xs
  */
 export function formatTextStyles(): NormalizedTextStyle {
-  const rawTextStyles = textStyles as RawTokens['primitives']['textStyles']
+  const rawTextStyles = textStyles
 
   return Object.entries(rawTextStyles).reduce(
     (acc, [node_id, data]) => {

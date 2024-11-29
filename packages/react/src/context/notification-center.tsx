@@ -55,7 +55,7 @@ export interface NotificationsValue {
 
 const NotificationsContext = createContext<NotificationsValue | null>(null)
 
-export interface NotificationsProviderProps extends PortalProps {}
+export type NotificationsProviderProps = PortalProps
 
 /**
  * Provides a notification center to the app.

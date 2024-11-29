@@ -10,8 +10,7 @@ import type { HTMLAttributes } from 'react'
  * @module
  */
 
-export interface BaseNotificationHeadingProps
-  extends HTMLAttributes<HTMLParagraphElement> {}
+export type BaseNotificationHeadingProps = HTMLAttributes<HTMLParagraphElement>
 export type NotificationHeadingProps = BaseNotificationHeadingProps &
   NotificationVariantProps
 

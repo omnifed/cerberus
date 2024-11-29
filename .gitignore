@@ -17,6 +17,7 @@ packages/styled-system/patterns
 packages/styled-system/recipes
 packages/styled-system/tokens
 packages/styled-system/types
+packages/styled-system/themes
 packages/styled-system/helpers.mjs
 
 ## Panda
