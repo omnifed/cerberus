@@ -1,7 +1,10 @@
 import {
+  Calendar,
   Checkmark,
   CheckmarkOutline,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Close,
   CloudUpload,
   Information,
@@ -21,6 +24,9 @@ export type IconType = CarbonIconType | ElementType
 
 export interface DefinedIcons {
   avatar?: IconType
+  calendar?: IconType
+  calendarPrev?: IconType
+  calendarNext?: IconType
   checkbox?: IconType
   close?: IconType
   confirmModal?: IconType
@@ -42,6 +48,9 @@ export interface DefinedIcons {
 
 export const defaultIcons: DefinedIcons = {
   avatar: UserFilled,
+  calendar: Calendar,
+  calendarPrev: ChevronLeft,
+  calendarNext: ChevronRight,
   checkbox: CheckmarkIcon,
   close: Close,
   confirmModal: Information,

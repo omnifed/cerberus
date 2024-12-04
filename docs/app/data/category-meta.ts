@@ -99,6 +99,11 @@ export const categoryMeta = {
     description: 'Checkboxes are used to select multiple options.',
     image: ButtonFeature,
   },
+  'date-picker': {
+    name: 'Date Picker',
+    description: 'Date pickers are used to select a date.',
+    image: ButtonFeature,
+  },
   radio: {
     name: 'Radio',
     description: 'Radio buttons are used to select a single option.',

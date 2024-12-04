@@ -22,6 +22,10 @@ export const conditions = {
   groupInvalid: '.group:is([data-invalid] &, [aria-invalid]) &',
   groupChecked: '.group:is([data-checked="true"] &, [aria-checked="true"]) &',
 
+  // dates
+  today: '&:is([data-today=true], [data-date=today])',
+  pastDay: '&:is([data-past-day=true], [data-date=past])',
+
   // positions
   positionBottom: '&:is([data-position=bottom])',
   positionTop: '&:is([data-position=top])',
