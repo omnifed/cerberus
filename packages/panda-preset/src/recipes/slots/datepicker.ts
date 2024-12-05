@@ -58,6 +58,8 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
       bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'action.border.100',
+      h: '19.75rem',
+      overflow: 'hidden',
       rounded: 'sm',
       shadow: 'md',
       w: '19.25rem',
@@ -105,9 +107,12 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
       w: 'full',
     },
     table: {
+      minH: '16.13rem',
       w: 'full',
     },
     tableHeader: {
+      borderTopLeftRadius: 'sm',
+      borderTopRightRadius: 'sm',
       h: '2.69rem',
       textStyle: 'heading-xs',
     },
@@ -128,15 +133,6 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
       _pastDay: {
         color: 'page.text.100',
       },
-      _hover: {
-        bgColor: 'action.bg.hover',
-        color: 'action.text.initial',
-        _today: {
-          _after: {
-            bgColor: 'action.text.initial',
-          },
-        },
-      },
       _today: {
         _after: {
           bgColor: 'page.text.initial',
@@ -149,6 +145,20 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
           transform: 'translate(-50%, -50%)',
           w: '0.25rem',
         },
+      },
+      _hover: {
+        bgColor: 'action.bg.hover',
+        color: 'action.text.initial',
+        _today: {
+          _after: {
+            bgColor: 'action.text.initial',
+          },
+        },
+      },
+      _selected: {
+        bgColor: 'action.bg.active',
+        color: 'action.text.initial',
+        fontWeight: '700',
       },
     },
   },
