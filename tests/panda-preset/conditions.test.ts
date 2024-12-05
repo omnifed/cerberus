@@ -173,4 +173,16 @@ describe('conditions', () => {
       '&:is(:disabled, [disabled], [data-disabled], [aria-disabled])',
     )
   })
+
+  test('should have a today', () => {
+    expect(conditions.today).toEqual(
+      '&:is([data-today=true], [data-date=today])',
+    )
+  })
+
+  test('should have a pastDay', () => {
+    expect(conditions.pastDay).toEqual(
+      '&:is([data-past-day=true], [data-date=past])',
+    )
+  })
 })

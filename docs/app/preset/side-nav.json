@@ -68,7 +68,7 @@
   {
     "label": "Conditions",
     "route": "/preset/conditions",
-    "tag": "new",
+    "tag": "next",
     "type": "route"
   },
   {

@@ -25,7 +25,6 @@ describe('button recipe', () => {
       transitionTimingFunction: 'ease-in-out',
       userSelect: 'none',
       whiteSpace: 'nowrap',
-      h: '3.5rem',
       pxi: '4',
       _focusVisible: {
         boxShadow: 'none',
@@ -144,9 +143,7 @@ describe('button recipe', () => {
 
   test('should have a medium size variant', () => {
     expect(button.variants?.size.md).toMatchObject({
-      md: {
-        h: '2.75rem',
-      },
+      h: '3.5rem',
     })
   })
 
