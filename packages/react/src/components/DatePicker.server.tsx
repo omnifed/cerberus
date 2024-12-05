@@ -18,11 +18,11 @@ import { Button } from './Button'
  * @module DatePicker
  */
 
+// We are not exposing this to the public API
 const datePickerStyles = datePicker()
 
 /**
  * The label component for the DatePicker.
- * @definition [ARK docs](https://ark-ui.com/react/docs/components/date-picker)
  * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
  * @example
  * ```tsx
@@ -46,6 +46,14 @@ export function DatePickerLabel(props: DatePickerLabelProps) {
   )
 }
 
+/**
+ * The trigger component for the DatePicker which opens the calendar.
+ * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <DatePickerTrigger />
+ * ```
+ */
 export function DatePickerTrigger(props: DatePickerTriggerProps) {
   const { calendar: CalendarIcon } = $cerberusIcons
   return (
@@ -65,6 +73,19 @@ export function DatePickerTrigger(props: DatePickerTriggerProps) {
   )
 }
 
+/**
+ * The control component for the DatePicker which wraps the triggers to switch
+ * between calendar views.
+ * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <DatePickerViewControl>
+ *   <PrevTrigger />
+ *   <ViewTrigger />
+ *   <NextTrigger />
+ * </DatePickerViewControl>
+ * ```
+ */
 export function DatePickerViewControl(props: DatePickerViewControlProps) {
   return (
     <ArkDP.Control
@@ -74,6 +95,15 @@ export function DatePickerViewControl(props: DatePickerViewControlProps) {
   )
 }
 
+/**
+ * An abstraction of the DatePicker control that contains the prev, view, and
+ * next triggers which control the calendar output.
+ * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <DatePickerViewControlGroup />
+ * ```
+ */
 export function DatePickerViewControlGroup(props: DatePickerViewControlProps) {
   const { calendarPrev: PrevIcon, calendarNext: NextIcon } = $cerberusIcons
   return (
@@ -107,6 +137,14 @@ export function DatePickerViewControlGroup(props: DatePickerViewControlProps) {
   )
 }
 
+/**
+ * The table component for the DatePicker.
+ * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <DatePickerTable />
+ * ```
+ */
 export function DatePickerTable(props: DatePickerTableProps) {
   return (
     <ArkDP.Table
@@ -116,6 +154,14 @@ export function DatePickerTable(props: DatePickerTableProps) {
   )
 }
 
+/**
+ * The header component for the DatePicker table.
+ * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <DatePickerTableHeader />
+ * ```
+ */
 export function DatePickerTableHeader(props: DatePickerTableHeaderProps) {
   return (
     <ArkDP.TableHeader
@@ -125,6 +171,14 @@ export function DatePickerTableHeader(props: DatePickerTableHeaderProps) {
   )
 }
 
+/**
+ * The cell component for the DatePicker table.
+ * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <DatePickerTableCell />
+ * ```
+ */
 export function DatePickerTableCellTrigger(
   props: DatePickerTableCellTriggerProps,
 ) {
@@ -136,5 +190,22 @@ export function DatePickerTableCellTrigger(
   )
 }
 
+/**
+ * The view container which wraps the control and content components.
+ * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <DatePickerView />
+ * ```
+ */
 export const DatePickerView = ArkDP.View
+
+/**
+ * The context component for the DatePicker which provides the DatePicker state.
+ * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <DatePickerContext />
+ * ```
+ */
 export const DatePickerContext = ArkDP.Context

@@ -24,20 +24,26 @@ import {
   DatePickerTableCellTrigger,
 } from './DatePicker.server'
 
-const datePickerStyles = datePicker()
-
 /**
  * This module contains the DatePicker client family components.
  * @module DatePicker:client
  */
 
+// We are not exposing this to the public API
+const datePickerStyles = datePicker()
+
 /**
  * The main context provider for the DatePicker family components.
- * @definition [ARK docs](https://ark-ui.com/react/docs/components/date-picker)
- * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @definition [Date Picker docs](https://cerberus.digitalu.design/react/date-picker)
  * @example
  * ```tsx
- * <DatePicker>...</DatePicker>
+ * <Field>
+ *   <DatePicker name="start_date">
+ *     <DatePickerLabel>Start date</DatePickerLabel>
+ *     <DatePickerInput />
+ *     <DatePickerCalendar />
+ *   </DatePicker>
+ * </Field>
  * ```
  */
 export function DatePicker(props: DatePickerRootProps) {
@@ -51,6 +57,20 @@ export function DatePicker(props: DatePickerRootProps) {
   return <ArkDP.Root {...props} {...states} format={handleFormat} />
 }
 
+/**
+ * The input component for the DatePicker.
+ * @definition [Date Picker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <Field>
+ *   <DatePicker name="start_date">
+ *     <DatePickerLabel>Start date</DatePickerLabel>
+ *     <DatePickerInput />
+ *     <DatePickerCalendar />
+ *   </DatePicker>
+ * </Field>
+ * ```
+ */
 export function DatePickerInput(props: DatePickerInputProps) {
   const { invalid, ...fieldStates } = useFieldContext()
   return (
@@ -67,6 +87,20 @@ export function DatePickerInput(props: DatePickerInputProps) {
   )
 }
 
+/**
+ * The content component for the DatePicker which contains the calendar.
+ * @definition [Date Picker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <Field>
+ *   <DatePicker name="start_date">
+ *     <DatePickerLabel>Start date</DatePickerLabel>
+ *     <DatePickerInput />
+ *     <DatePickerCalendar />
+ *   </DatePicker>
+ * </Field>
+ * ```
+ */
 export function DatePickerContent(props: DatePickerContentProps) {
   const { children, ...contentProps } = props
   return (
@@ -83,6 +117,20 @@ export function DatePickerContent(props: DatePickerContentProps) {
   )
 }
 
+/**
+ * The day view component for the DatePicker.
+ * @definition [Date Picker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <Field>
+ *   <DatePicker name="start_date">
+ *     <DatePickerLabel>Start date</DatePickerLabel>
+ *     <DatePickerInput />
+ *     <DatePickerCalendar />
+ *   </DatePicker>
+ * </Field>
+ * ```
+ */
 export function DatePickerDayView(props: Omit<DatePickerViewProps, 'view'>) {
   function isToday(date: ArkDP.DateValue): boolean {
     const today = new Date()
@@ -144,6 +192,20 @@ export function DatePickerDayView(props: Omit<DatePickerViewProps, 'view'>) {
   )
 }
 
+/**
+ * The month view component for the DatePicker.
+ * @definition [Date Picker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <Field>
+ *   <DatePicker name="start_date">
+ *     <DatePickerLabel>Start date</DatePickerLabel>
+ *     <DatePickerInput />
+ *     <DatePickerCalendar />
+ *   </DatePicker>
+ * </Field>
+ * ```
+ */
 export function DatePickerMonthView(props: Omit<DatePickerViewProps, 'view'>) {
   return (
     <ArkDP.View {...props} view="month">
@@ -176,6 +238,20 @@ export function DatePickerMonthView(props: Omit<DatePickerViewProps, 'view'>) {
   )
 }
 
+/**
+ * The year view component for the DatePicker.
+ * @definition [Date Picker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <Field>
+ *   <DatePicker name="start_date">
+ *     <DatePickerLabel>Start date</DatePickerLabel>
+ *     <DatePickerInput />
+ *     <DatePickerCalendar />
+ *   </DatePicker>
+ * </Field>
+ * ```
+ */
 export function DatePickerYearView(props: Omit<DatePickerViewProps, 'view'>) {
   return (
     <ArkDP.View {...props} view="year">
@@ -206,6 +282,21 @@ export function DatePickerYearView(props: Omit<DatePickerViewProps, 'view'>) {
   )
 }
 
+/**
+ * An abstraction of the DatePicker content components that contain the
+ * different calendar views and controls.
+ * @definition [Date Picker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <Field>
+ *   <DatePicker name="start_date">
+ *     <DatePickerLabel>Start date</DatePickerLabel>
+ *     <DatePickerInput />
+ *     <DatePickerCalendar />
+ *   </DatePicker>
+ * </Field>
+ * ```
+ */
 export function DatePickerCalendar() {
   return (
     <DatePickerContent>
