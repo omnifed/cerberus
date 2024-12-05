@@ -10,7 +10,6 @@ import {
 } from '@ark-ui/react'
 import { Portal } from './Portal'
 import { useCallback } from 'react'
-import { DateFormats } from '../hooks/useDate'
 import { datePicker } from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus/styled-system/css'
 import { useFieldContext } from '../context/field'
@@ -23,6 +22,7 @@ import {
   DatePickerTableHeader,
   DatePickerTableCellTrigger,
 } from './DatePicker.server'
+import { formatISOToMilitary } from '../hooks/useDate'
 
 /**
  * This module contains the DatePicker client family components.
@@ -50,8 +50,7 @@ export function DatePicker(props: DatePickerRootProps) {
   const states = useFieldContext()
 
   const handleFormat = useCallback((value: DateValue) => {
-    console.log({ value })
-    return DateFormats.USMilitary
+    return formatISOToMilitary(value.toString())
   }, [])
 
   return <ArkDP.Root {...props} {...states} format={handleFormat} />
@@ -142,6 +141,10 @@ export function DatePickerDayView(props: Omit<DatePickerViewProps, 'view'>) {
   function isPastDay(date: ArkDP.DateValue): boolean {
     const today = new Date()
     const arkDate = `${date.year}-${String(date.month).padStart(2, '0')}-${String(date.day).padStart(2, '0')}`
+    // console.log({
+    //   result: date.compare(today),
+    // })
+
     return new Date(arkDate) < today
   }
 
