@@ -21,6 +21,7 @@ import {
   DatePickerTable,
   DatePickerTableHeader,
   DatePickerTableCellTrigger,
+  DatePickerTableCell,
 } from './DatePicker.server'
 import { formatISOToMilitary } from '../hooks/useDate'
 
@@ -55,7 +56,16 @@ export function DatePicker(props: DatePickerRootProps) {
     return formatISOToMilitary(value.toString())
   }, [])
 
-  return <ArkDP.Root {...props} {...states} format={handleFormat} />
+  return (
+    <ArkDP.Root
+      {...props}
+      {...states}
+      format={handleFormat}
+      positioning={{
+        placement: 'bottom-start',
+      }}
+    />
+  )
 }
 
 /**
@@ -82,8 +92,35 @@ export function DatePickerInput(props: DatePickerInputProps) {
         {...fieldStates}
         {...(invalid && { 'aria-invalid': true })}
         className={cx(props.className, datePickerStyles.input)}
-        placeholder="DD MMM YYYY"
+        placeholder={props.placeholder ?? 'DD MMM YYYY'}
         maxLength={11}
+      />
+    </ArkDP.Control>
+  )
+}
+
+export function RangePickerInput(props: DatePickerInputProps) {
+  const { invalid, ...fieldStates } = useFieldContext()
+  return (
+    <ArkDP.Control className={datePickerStyles.control}>
+      <DatePickerTrigger />
+      <ArkDP.Input
+        {...props}
+        {...fieldStates}
+        {...(invalid && { 'aria-invalid': true })}
+        className={cx(props.className, datePickerStyles.input)}
+        placeholder={props.placeholder ?? 'DD MMM YYYY'}
+        maxLength={11}
+        index={0}
+      />
+      <ArkDP.Input
+        {...props}
+        {...fieldStates}
+        {...(invalid && { 'aria-invalid': true })}
+        className={cx(props.className, datePickerStyles.input)}
+        placeholder={props.placeholder ?? 'DD MMM YYYY'}
+        maxLength={11}
+        index={1}
       />
     </ArkDP.Control>
   )
@@ -179,13 +216,13 @@ export function DatePickerDayView(props: Omit<DatePickerViewProps, 'view'>) {
                 {datePicker.weeks.map((week, id) => (
                   <ArkDP.TableRow key={id}>
                     {week.map((day, id) => (
-                      <ArkDP.TableCell key={id} value={day}>
+                      <DatePickerTableCell key={id} value={day}>
                         <DatePickerTableCellTrigger
                           data-date={getDayValue(day)}
                         >
                           {day.day}
                         </DatePickerTableCellTrigger>
-                      </ArkDP.TableCell>
+                      </DatePickerTableCell>
                     ))}
                   </ArkDP.TableRow>
                 ))}
@@ -227,11 +264,11 @@ export function DatePickerMonthView(props: Omit<DatePickerViewProps, 'view'>) {
                   .map((months, id) => (
                     <ArkDP.TableRow key={id}>
                       {months.map((month, id) => (
-                        <ArkDP.TableCell key={id} value={month.value}>
+                        <DatePickerTableCell key={id} value={month.value}>
                           <DatePickerTableCellTrigger>
                             {month.label}
                           </DatePickerTableCellTrigger>
-                        </ArkDP.TableCell>
+                        </DatePickerTableCell>
                       ))}
                     </ArkDP.TableRow>
                   ))}
@@ -271,11 +308,11 @@ export function DatePickerYearView(props: Omit<DatePickerViewProps, 'view'>) {
                 {datePicker.getYearsGrid({ columns: 4 }).map((years, id) => (
                   <ArkDP.TableRow key={id}>
                     {years.map((year, id) => (
-                      <ArkDP.TableCell key={id} value={year.value}>
+                      <DatePickerTableCell key={id} value={year.value}>
                         <DatePickerTableCellTrigger>
                           {year.label}
                         </DatePickerTableCellTrigger>
-                      </ArkDP.TableCell>
+                      </DatePickerTableCell>
                     ))}
                   </ArkDP.TableRow>
                 ))}

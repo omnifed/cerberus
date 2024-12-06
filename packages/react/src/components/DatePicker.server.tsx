@@ -1,6 +1,7 @@
 import {
   DatePicker as ArkDP,
   type DatePickerLabelProps,
+  type DatePickerTableCellProps,
   type DatePickerTableCellTriggerProps,
   type DatePickerTableHeaderProps,
   type DatePickerTableProps,
@@ -167,6 +168,23 @@ export function DatePickerTableHeader(props: DatePickerTableHeaderProps) {
     <ArkDP.TableHeader
       {...props}
       className={cx(props.className, datePickerStyles.tableHeader)}
+    />
+  )
+}
+
+/**
+ * The cell component for the DatePicker table.
+ * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <DatePickerTableCell />
+ * ```
+ */
+export function DatePickerTableCell(props: DatePickerTableCellProps) {
+  return (
+    <ArkDP.TableCell
+      {...props}
+      className={cx(props.className, datePickerStyles.tableCell)}
     />
   )
 }

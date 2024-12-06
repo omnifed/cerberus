@@ -25,6 +25,9 @@ export const conditions = {
   // dates
   today: '&:is([data-today=true], [data-date=today])',
   pastDay: '&:is([data-past-day=true], [data-date=past])',
+  inRange: '&:is([data-in-range])',
+  startRange: '&:is([data-range-start])',
+  endRange: '&:is([data-range-end])',
 
   // positions
   positionBottom: '&:is([data-position=bottom])',

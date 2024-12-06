@@ -185,4 +185,16 @@ describe('conditions', () => {
       '&:is([data-past-day=true], [data-date=past])',
     )
   })
+
+  test('should have an inRange', () => {
+    expect(conditions.inRange).toEqual('&:is([data-in-range])')
+  })
+
+  test('should have a startRange', () => {
+    expect(conditions.startRange).toEqual('&:is([data-range-start])')
+  })
+
+  test('should have an endRange', () => {
+    expect(conditions.endRange).toEqual('&:is([data-range-end])')
+  })
 })

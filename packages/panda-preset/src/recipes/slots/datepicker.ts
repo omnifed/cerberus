@@ -118,6 +118,20 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
       h: '2.69rem',
       textStyle: 'heading-xs',
     },
+    tableCell: {
+      _selected: {
+        '&:has(> [data-range-start])': {
+          bgColor: 'page.bg.100',
+          borderTopLeftRadius: 'full',
+          borderBottomLeftRadius: 'full',
+        },
+        '&:has(> [data-range-end])': {
+          bgColor: 'page.bg.100',
+          borderTopRightRadius: 'full',
+          borderBottomRightRadius: 'full',
+        },
+      },
+    },
     tableCellTrigger: {
       alignItems: 'center',
       display: 'inline-flex',
@@ -131,6 +145,7 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionDuration: 'fast',
       rounded: 'full',
       w: 'full',
+      zIndex: 1,
       ...focusStates,
       _disabled: {
         cursor: 'not-allowed',
@@ -145,6 +160,13 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
         color: 'page.text.100',
         _selected: {
           color: SELECTED_TEXT,
+        },
+      },
+      _inRange: {
+        '&:not([data-selected])': {
+          bgColor: 'page.bg.100',
+          borderRadius: 0,
+          color: 'page.text.initial',
         },
       },
       _today: {
@@ -166,16 +188,14 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
         },
       },
       _hover: {
-        bgColor: 'action.bg.hover',
-        color: SELECTED_TEXT,
-        _today: {
-          _after: {
-            bgColor: SELECTED_TEXT,
+        '&:not([data-selected], [data-disabled])': {
+          bgColor: 'action.bg.hover',
+          color: SELECTED_TEXT,
+          _today: {
+            _after: {
+              bgColor: SELECTED_TEXT,
+            },
           },
-        },
-        _disabled: {
-          bgColor: 'transparent',
-          color: 'page.text.initial',
         },
       },
     },

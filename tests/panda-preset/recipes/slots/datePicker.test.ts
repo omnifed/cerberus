@@ -132,6 +132,23 @@ describe('datePicker recipe', () => {
     })
   })
 
+  test('should have a tableCell style', () => {
+    expect(datePicker.base?.tableCell).toMatchObject({
+      _selected: {
+        '&:has(> [data-range-start])': {
+          bgColor: 'page.bg.100',
+          borderTopLeftRadius: 'full',
+          borderBottomLeftRadius: 'full',
+        },
+        '&:has(> [data-range-end])': {
+          bgColor: 'page.bg.100',
+          borderTopRightRadius: 'full',
+          borderBottomRightRadius: 'full',
+        },
+      },
+    })
+  })
+
   test('should have a tableCellTrigger style', () => {
     expect(datePicker.base?.tableCellTrigger).toMatchObject({
       alignItems: 'center',
@@ -157,6 +174,7 @@ describe('datePicker recipe', () => {
       transitionDuration: 'fast',
       rounded: 'full',
       w: 'full',
+      zIndex: 1,
       _focusVisible: {
         boxShadow: 'none',
         outline: '3px solid',
@@ -167,6 +185,13 @@ describe('datePicker recipe', () => {
         color: 'page.text.100',
         _selected: {
           color: 'action.text.initial',
+        },
+      },
+      _inRange: {
+        '&:not([data-selected])': {
+          bgColor: 'page.bg.100',
+          borderRadius: 0,
+          color: 'page.text.initial',
         },
       },
       _today: {
@@ -183,18 +208,15 @@ describe('datePicker recipe', () => {
         },
       },
       _hover: {
-        bgColor: 'action.bg.hover',
-        color: 'action.text.initial',
-        _today: {
-          _after: {
-            bgColor: 'action.text.initial',
+        '&:not([data-selected], [data-disabled])': {
+          bgColor: 'action.bg.hover',
+          color: 'action.text.initial',
+          _today: {
+            _after: {
+              bgColor: 'action.text.initial',
+            },
           },
         },
-      },
-      _selected: {
-        bgColor: 'action.bg.active',
-        color: 'action.text.initial',
-        fontWeight: '700',
       },
     })
   })

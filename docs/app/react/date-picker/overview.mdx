@@ -7,7 +7,7 @@ a11y: 'forms'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import DripDivider from '@/app/components/drip-divider'
-import { StaticPreview } from './components/static-preview'
+import { StaticPreview, RangePreview } from './components/static-preview'
 import { LivePlayground } from './components/live-playground'
 
 <OverviewList rules={[
@@ -20,7 +20,8 @@ import { LivePlayground } from './components/live-playground'
 ## Examples
 
 <CodePreview preview={<StaticPreview />} />
-<LivePlayground />
+<CodePreview preview={<RangePreview />} />
+{/* <LivePlayground /> */}
 
 <DripDivider />
 
