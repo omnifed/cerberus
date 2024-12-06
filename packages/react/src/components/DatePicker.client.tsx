@@ -99,15 +99,30 @@ export function DatePickerInput(props: DatePickerInputProps) {
   )
 }
 
+/**
+ * The input component for the DatePicker that uses ranges.
+ * @definition [Date Picker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <Field>
+ *   <DatePicker name="start_date" selection="range">
+ *     <DatePickerLabel>Start date</DatePickerLabel>
+ *     <RangePickerInput />
+ *     <DatePickerCalendar />
+ *   </DatePicker>
+ * </Field>
+ * ```
+ */
 export function RangePickerInput(props: DatePickerInputProps) {
   const { invalid, ...fieldStates } = useFieldContext()
   return (
-    <ArkDP.Control className={datePickerStyles.control}>
+    <ArkDP.Control data-range className={datePickerStyles.control}>
       <DatePickerTrigger />
       <ArkDP.Input
         {...props}
         {...fieldStates}
         {...(invalid && { 'aria-invalid': true })}
+        data-range-input
         className={cx(props.className, datePickerStyles.input)}
         placeholder={props.placeholder ?? 'DD MMM YYYY'}
         maxLength={11}
@@ -117,6 +132,8 @@ export function RangePickerInput(props: DatePickerInputProps) {
         {...props}
         {...fieldStates}
         {...(invalid && { 'aria-invalid': true })}
+        data-range-input
+        data-range-end-input
         className={cx(props.className, datePickerStyles.input)}
         placeholder={props.placeholder ?? 'DD MMM YYYY'}
         maxLength={11}
