@@ -8,6 +8,8 @@ import { input } from '../shared/input.base'
  * @module
  */
 
+const SELECTED_TEXT = 'action.text.initial'
+
 /**
  * Styles for the datePicker family components
  * @definition [ARK docs](https://ark-ui.com/react/docs/components/datePicker)
@@ -130,8 +132,20 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
       rounded: 'full',
       w: 'full',
       ...focusStates,
+      _disabled: {
+        cursor: 'not-allowed',
+        opacity: '0.5',
+      },
+      _selected: {
+        bgColor: 'action.bg.active',
+        color: SELECTED_TEXT,
+        fontWeight: '700',
+      },
       _pastDay: {
         color: 'page.text.100',
+        _selected: {
+          color: SELECTED_TEXT,
+        },
       },
       _today: {
         _after: {
@@ -145,20 +159,24 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
           transform: 'translate(-50%, -50%)',
           w: '0.25rem',
         },
-      },
-      _hover: {
-        bgColor: 'action.bg.hover',
-        color: 'action.text.initial',
-        _today: {
+        _selected: {
           _after: {
-            bgColor: 'action.text.initial',
+            bgColor: SELECTED_TEXT,
           },
         },
       },
-      _selected: {
-        bgColor: 'action.bg.active',
-        color: 'action.text.initial',
-        fontWeight: '700',
+      _hover: {
+        bgColor: 'action.bg.hover',
+        color: SELECTED_TEXT,
+        _today: {
+          _after: {
+            bgColor: SELECTED_TEXT,
+          },
+        },
+        _disabled: {
+          bgColor: 'transparent',
+          color: 'page.text.initial',
+        },
       },
     },
   },

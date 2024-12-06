@@ -17,7 +17,7 @@ export function StaticPreview() {
   return (
     <Box w="2/3">
       <Field>
-        <DatePicker name="start_date">
+        <DatePicker id="start_date" name="start_date">
           <DatePickerLabel>Start date</DatePickerLabel>
           <DatePickerInput />
           <DatePickerCalendar />

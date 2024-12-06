@@ -49,6 +49,8 @@ const datePickerStyles = datePicker()
 export function DatePicker(props: DatePickerRootProps) {
   const states = useFieldContext()
 
+  // We can't implement this yet because of a bug in the Root component
+  // that causes random date selection onBlur after the first selection
   const handleFormat = useCallback((value: DateValue) => {
     return formatISOToMilitary(value.toString())
   }, [])
@@ -80,7 +82,8 @@ export function DatePickerInput(props: DatePickerInputProps) {
         {...fieldStates}
         {...(invalid && { 'aria-invalid': true })}
         className={cx(props.className, datePickerStyles.input)}
-        maxLength={10}
+        placeholder="DD MMM YYYY"
+        maxLength={11}
       />
     </ArkDP.Control>
   )

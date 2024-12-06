@@ -165,6 +165,9 @@ describe('datePicker recipe', () => {
       },
       _pastDay: {
         color: 'page.text.100',
+        _selected: {
+          color: 'action.text.initial',
+        },
       },
       _today: {
         _after: {
