@@ -10,7 +10,6 @@ export type AccordionProps = ArkAccordion.RootProps & AccordionVariantProps
 
 /**
  * The context provider for the Accordion family.
- * @definition [ARK docs](https://ark-ui.com/react/docs/components/accordion)
  * @definition [Accordion docs](https://cerberus.digitalu.design/react/accordion)
  * @example
  * ```tsx

@@ -1,0 +1,36 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import DripDivider from '@/app/components/drip-divider'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import { StaticPreview, RangePreview } from './components/static-preview'
+
+<OverviewList intro="Use cases:" rules={[
+  'Selecting a single date',
+  'Selecting a range of dates',
+  'Choosing a date that might be unknown by the user',
+]} />
+
+## Single Date Picker
+
+<CodePreview preview={<StaticPreview />} />
+
+Generally, use a single date picker when the user needs to select a single date.
+
+## Range Date Picker
+
+
+<CodePreview preview={<RangePreview />} />
+
+Use a range date picker when the user needs to select a range of dates.
+
+<DripDivider />
+
+## Responsive Layouts
+
+Datepickers are not mobile-friendly by default. If you need to use a datepicker on mobile, consider swapping between native select inputs (i.e. month, day, and year) and a datepicker based on the screen size.

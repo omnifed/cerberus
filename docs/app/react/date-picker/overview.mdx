@@ -1,0 +1,37 @@
+---
+heading: 'Date Picker'
+description: 'Date pickers allow users to select a date from a calendar.'
+a11y: 'forms'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import DripDivider from '@/app/components/drip-divider'
+import { StaticPreview, RangePreview } from './components/static-preview'
+
+<OverviewList rules={[
+  'Can contain leading or trailing indicator icons',
+  'Two sizes: small and large',
+  'Keep headings concise and short',
+  'Content should be concise and scannable',
+]} />
+
+## Single Date Picker
+
+For selecting a single date.
+
+<CodePreview preview={<StaticPreview />} />
+
+## Date Range Picker
+
+For selecting a range of dates. This is useful for selecting a start and end date.
+
+<CodePreview preview={<RangePreview />} />
+
+<DripDivider />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |

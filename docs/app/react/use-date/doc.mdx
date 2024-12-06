@@ -74,7 +74,16 @@ export const DateFormats = {
 ### Military Formatters
 
 ```ts
+// Takes an ISO date string and returns a military date string
+// 'YYYY-MM-DD' -> 'DD MMM YYYY'
+export function formatISOToMilitary(input: string): string
+
+// Takes a military date string and returns an ISO date string
+// 'DD MMM YYYY' -> 'YYYY-MM-DD'
 export function formatMilitaryToISO(input: string): string
+
+// Takes a military date string and returns a military date string
+// 'DD MMM YYYY' -> 'DD MMM YYYY'
 export function formatMilitaryDate(input: string): string
 ```
 

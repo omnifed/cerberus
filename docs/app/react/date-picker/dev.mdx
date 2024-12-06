@@ -1,0 +1,107 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/DatePicker.server.tsx'
+recipe: 'slots/datepicker.ts'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { StaticPreview, RangePreview } from './components/static-preview'
+
+```ts
+import {
+  DatePicker,
+  DatePickerLabel,
+  DatePickerInput,
+  DatePickerCalendar,
+} from '@cerberus/react'
+```
+
+## Usage
+
+### Single Date Picker
+
+<CodePreview preview={<StaticPreview />}>
+```tsx
+import {
+  DatePicker,
+  DatePickerLabel,
+  DatePickerInput,
+  DatePickerCalendar,
+  Field,
+} from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
+
+function StaticPreview() {
+  return (
+    <Box w="2/3">
+      <Field>
+        <DatePicker id="start_date" name="start_date">
+          <DatePickerLabel>Start date</DatePickerLabel>
+          <DatePickerInput />
+          <DatePickerCalendar />
+        </DatePicker>
+      </Field>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+### Date Range Picker
+
+<CodePreview preview={<RangePreview />}>
+```tsx
+import {
+  DatePicker,
+  DatePickerLabel,
+  RangePickerInput,
+  DatePickerCalendar,
+  Field,
+} from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
+
+function RangePreview() {
+  return (
+    <Box gap="4" w="2/3">
+      <Field>
+        <DatePicker id="range_dates" name="range_dates" selectionMode="range">
+          <DatePickerLabel>Search range</DatePickerLabel>
+          <RangePickerInput />
+          <DatePickerCalendar />
+        </DatePicker>
+      </Field>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Customization
+
+You can utilize the primitive components to customize the date picker.
+
+| Component               | Description |
+| ----------------------- | ----------- |
+| DatePicker               | The main container for the date-picker items. |
+| DatePickerLabel          | The label for the date-picker. |
+| DatePickerTrigger        | The trigger for the date-picker. |
+| DatePickerInput          | The input field and trigger for the date-picker. |
+| DatePickerView    | The container (view) of the calendar. |
+| DatePickerViewControl  | The triggers that update the calendar in the view. |
+| DatePickerTable          | The table that contains the calendar. |
+| DatePickerTableHead      | The header of the calendar table. |
+| DatePickerTableBody      | The body of the calendar table. |
+| DatePickerTableRow       | The row of the calendar table. |
+| DatePickerContent        | The content of the calendar cell. |
+| RangePickerInput         | The input field for the range date-picker. |
+| DatePickerCalendar       | An abstraction of the calendar components. |
+| DatePickerDayView        | An abstraction of the view of the days in the calendar. |
+| DatePickerMonthView      | An abstraction of the view of the months in the calendar. |
+| DatePickerYearView       | An abstraction of the view of the years in the calendar. |
+
+
+
+
+## API
+
+The DatePicker shares the same API as the [Ark DatePicker](https://ark-ui.com/react/docs/components/date-picker#api-reference).

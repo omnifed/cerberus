@@ -7,6 +7,7 @@ import {
   useDate,
   type UseDateOptions,
   formatMilitaryDate,
+  formatISOToMilitary,
   DateFormats,
 } from '@cerberus-design/react'
 import { setupStrictMode } from '@/utils'
@@ -52,6 +53,10 @@ describe('useDate', () => {
 
   test('should export a formatMilitaryDate function', () => {
     expect(formatMilitaryDate('01jan2024')).toBe('01 JAN 2024')
+  })
+
+  test('should export a formatISOToMilitary function', () => {
+    expect(formatISOToMilitary('2024-01-01')).toBe('01 JAN 2024')
   })
 
   test('should export a DateFormats object', () => {

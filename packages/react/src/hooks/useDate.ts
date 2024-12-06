@@ -130,6 +130,18 @@ export function formatMilitaryDate(input: string): string {
 }
 
 /**
+ * Formats a date string to US Military format.
+ * @param date The date string to format (i.e., '2024-01-01')
+ * @returns The formatted date string in US Military format (DD MMM YYYY)
+ */
+export function formatISOToMilitary(date: string): string {
+  const [year, month, day] = date.split('-')
+  const monthIndex = parseInt(month, 10) - 1
+  const monthStr = MONTHS[monthIndex]
+  return `${day} ${monthStr} ${year}`
+}
+
+/**
  * Date formatting options
  * @example
  * ```tsx

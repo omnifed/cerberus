@@ -173,4 +173,28 @@ describe('conditions', () => {
       '&:is(:disabled, [disabled], [data-disabled], [aria-disabled])',
     )
   })
+
+  test('should have a today', () => {
+    expect(conditions.today).toEqual(
+      '&:is([data-today=true], [data-date=today])',
+    )
+  })
+
+  test('should have a pastDay', () => {
+    expect(conditions.pastDay).toEqual(
+      '&:is([data-past-day=true], [data-date=past])',
+    )
+  })
+
+  test('should have an inRange', () => {
+    expect(conditions.inRange).toEqual('&:is([data-in-range])')
+  })
+
+  test('should have a startRange', () => {
+    expect(conditions.startRange).toEqual('&:is([data-range-start])')
+  })
+
+  test('should have an endRange', () => {
+    expect(conditions.endRange).toEqual('&:is([data-range-end])')
+  })
 })
