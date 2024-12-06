@@ -20,7 +20,21 @@ describe('datePicker recipe', () => {
       paddingInlineStart: 'xs',
       paddingInlineEnd: 'md',
       rounded: 'md',
-      w: '8.75rem',
+      w: '9.25rem',
+      '&:is([data-range])': {
+        _before: {
+          bgColor: 'page.border.initial',
+          content: '""',
+          h: '1.5rem',
+          position: 'absolute',
+          right: '48%',
+          top: '50%',
+          transform: 'translate(50%, -50%)',
+          w: '1px',
+          zIndex: 'decorator',
+        },
+        w: '16.5rem',
+      },
     })
   })
 
