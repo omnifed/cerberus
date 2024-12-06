@@ -8,23 +8,29 @@ import {
   WhenToUseAdmonition,
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
-import { StaticPreview } from './components/static-preview'
+import { StaticPreview, RangePreview } from './components/static-preview'
 
-<OverviewList intro="Default preferences:" rules={[
-  'Large size',
-  'End indicator position',
+<OverviewList intro="Use cases:" rules={[
+  'Selecting a single date',
+  'Selecting a range of dates',
+  'Choosing a date that might be unknown by the user',
 ]} />
+
+## Single Date Picker
 
 <CodePreview preview={<StaticPreview />} />
 
-This is a preview of the default Accordion component.
+Generally, use a single date picker when the user needs to select a single date.
+
+## Range Date Picker
+
+
+<CodePreview preview={<RangePreview />} />
+
+Use a range date picker when the user needs to select a range of dates.
 
 <DripDivider />
 
-## Small Size
-
-The small version can be used in dense content areas like cards within a dashboard.
-
 ## Responsive Layouts
 
-The Accordion component is responsive and can be used in any layouts using the the default large size.
+Datepickers are not mobile-friendly by default. If you need to use a datepicker on mobile, consider swapping between native select inputs (i.e. month, day, and year) and a datepicker based on the screen size.

@@ -8,7 +8,6 @@ import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import DripDivider from '@/app/components/drip-divider'
 import { StaticPreview, RangePreview } from './components/static-preview'
-import { LivePlayground } from './components/live-playground'
 
 <OverviewList rules={[
   'Can contain leading or trailing indicator icons',
@@ -17,11 +16,17 @@ import { LivePlayground } from './components/live-playground'
   'Content should be concise and scannable',
 ]} />
 
-## Examples
+## Single Date Picker
+
+For selecting a single date.
 
 <CodePreview preview={<StaticPreview />} />
+
+## Date Range Picker
+
+For selecting a range of dates. This is useful for selecting a start and end date.
+
 <CodePreview preview={<RangePreview />} />
-{/* <LivePlayground /> */}
 
 <DripDivider />
 

@@ -1,103 +1,107 @@
 ---
 npm: '@cerberus-design/react'
-source: 'components/Accordion.tsx'
-recipe: 'slots/accordion.ts'
+source: 'components/DatePicker.server.tsx'
+recipe: 'slots/datepicker.ts'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
-import { StaticPreview, CustomPreview } from './components/static-preview'
-import { LivePlaygroundWithCode } from './components/live-playground'
+import { StaticPreview, RangePreview } from './components/static-preview'
 
 ```ts
 import {
-  Accordion,
-  AccordionItemGroup,
+  DatePicker,
+  DatePickerLabel,
+  DatePickerInput,
+  DatePickerCalendar,
 } from '@cerberus/react'
 ```
 
 ## Usage
 
-<LivePlaygroundWithCode />
+### Single Date Picker
 
-## Customization
-
-You can utilize the primitive components to customize the accordion.
-
-| Component               | Description |
-| ----------------------- | ----------- |
-| Accordion               | The main container for the accordion items. |
-| AccordionItem           | Represents a single item within the accordion. |
-| AccordionItemTrigger    | The trigger element that toggles the visibility of the content. |
-| AccordionItemContent    | The content that is shown or hidden when the trigger is activated. |
-| AccordionItemIndicator  | An optional indicator to show the state of the accordion item. |
-
-<CodePreview preview={<CustomPreview />}>
-```tsx title="button.tsx"
+<CodePreview preview={<StaticPreview />}>
+```tsx
 import {
-  Accordion,
-  AccordionItem,
-  AccordionItemTrigger,
-  AccordionItemContent,
-  AccordionItemIndicator,
-} from '@cerberus-design/react'
-import { Box } from '@cerberus-design/styled-system/jsx'
-import { css } from '@cerberus/styled-system/css'
+  DatePicker,
+  DatePickerLabel,
+  DatePickerInput,
+  DatePickerCalendar,
+  Field,
+} from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
 
-export function CustomAccordion() {
+function StaticPreview() {
   return (
-    <Accordion>
-        <AccordionItem
-          className={css({
-            bgColor: 'black',
-            borderColor: 'yellow',
-          })}
-          value="one"
-        >
-          <AccordionItemTrigger
-            className={css({
-              color: 'yellow',
-            })}
-          >
-            Wu-Tang Clan
-            <AccordionItemIndicator />
-          </AccordionItemTrigger>
-          <AccordionItemContent
-            className={css({
-              color: 'white',
-              paddingInline: 'md',
-              textStyle: 'body-md',
-            })}
-          >
-            The rugged, raw, and unapologetic Wu-Tang Clan is a hip-hop group
-            that has been around since 1992. The group is known for its
-            distinctive sound and lyrics that often touch on themes of urban
-            life, crime, and the struggles of the inner city New York.
-          </AccordionItemContent>
-        </AccordionItem>
-      </Accordion>
+    <Box w="2/3">
+      <Field>
+        <DatePicker id="start_date" name="start_date">
+          <DatePickerLabel>Start date</DatePickerLabel>
+          <DatePickerInput />
+          <DatePickerCalendar />
+        </DatePicker>
+      </Field>
+    </Box>
   )
 }
 ```
 </CodePreview>
 
+### Date Range Picker
+
+<CodePreview preview={<RangePreview />}>
+```tsx
+import {
+  DatePicker,
+  DatePickerLabel,
+  RangePickerInput,
+  DatePickerCalendar,
+  Field,
+} from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
+
+function RangePreview() {
+  return (
+    <Box gap="4" w="2/3">
+      <Field>
+        <DatePicker id="range_dates" name="range_dates" selectionMode="range">
+          <DatePickerLabel>Search range</DatePickerLabel>
+          <RangePickerInput />
+          <DatePickerCalendar />
+        </DatePicker>
+      </Field>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Customization
+
+You can utilize the primitive components to customize the date picker.
+
+| Component               | Description |
+| ----------------------- | ----------- |
+| DatePicker               | The main container for the date-picker items. |
+| DatePickerLabel          | The label for the date-picker. |
+| DatePickerTrigger        | The trigger for the date-picker. |
+| DatePickerInput          | The input field and trigger for the date-picker. |
+| DatePickerView    | The container (view) of the calendar. |
+| DatePickerViewControl  | The triggers that update the calendar in the view. |
+| DatePickerTable          | The table that contains the calendar. |
+| DatePickerTableHead      | The header of the calendar table. |
+| DatePickerTableBody      | The body of the calendar table. |
+| DatePickerTableRow       | The row of the calendar table. |
+| DatePickerContent        | The content of the calendar cell. |
+| RangePickerInput         | The input field for the range date-picker. |
+| DatePickerCalendar       | An abstraction of the calendar components. |
+| DatePickerDayView        | An abstraction of the view of the days in the calendar. |
+| DatePickerMonthView      | An abstraction of the view of the months in the calendar. |
+| DatePickerYearView       | An abstraction of the view of the years in the calendar. |
+
+
+
+
 ## API
 
-### AccordionItemGroup
-
-```ts showLineNumbers=false
-export interface AccordionItemGroupBaseProps {
-  heading: string
-  indicatorPosition?: 'start' | 'end'
-  size: 'sm' | 'lg'
-  value: string
-}
-export type AccordionItemGroupProps = AccordionItemGroupBaseProps &
-  AccordionVariantProps
-```
-
-| Name     | Default    |       Description                                   |
-| -------- | ------- | ------------------------------------------------------ |
-| heading  |         | The heading of the accordion item.                    |
-| value    |         | The value of the accordion item.                      |
-| size     | `lg`    | The size of the accordion item.                       |
-| indicatorPosition | `end` | The position of the indicator.           |
+The DatePicker shares the same API as the [Ark DatePicker](https://ark-ui.com/react/docs/components/date-picker#api-reference).
