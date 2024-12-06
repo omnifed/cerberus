@@ -50,8 +50,8 @@ const datePickerStyles = datePicker()
 export function DatePicker(props: DatePickerRootProps) {
   const states = useFieldContext()
 
-  // We can't implement this yet because of a bug in the Root component
-  // that causes random date selection onBlur after the first selection
+  // TODO: Fix this format bug
+  // There is a bug with the Root component that causes random date selection onBlur after the first selection if the format prop is used.
   const handleFormat = useCallback((value: DateValue) => {
     return formatISOToMilitary(value.toString())
   }, [])
@@ -198,10 +198,6 @@ export function DatePickerDayView(props: Omit<DatePickerViewProps, 'view'>) {
   function isPastDay(date: ArkDP.DateValue): boolean {
     const today = new Date()
     const arkDate = `${date.year}-${String(date.month).padStart(2, '0')}-${String(date.day).padStart(2, '0')}`
-    // console.log({
-    //   result: date.compare(today),
-    // })
-
     return new Date(arkDate) < today
   }
 
