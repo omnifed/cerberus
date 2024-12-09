@@ -76,7 +76,7 @@ export interface TabsProps {
  * </Tabs>
  * ```
  */
-export function Tabs(
+export function TabsProvider(
   props: PropsWithChildren<TabsProps & TabsVariantProps>,
 ): JSX.Element {
   const { cache, active, id, palette } = props

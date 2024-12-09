@@ -1,4 +1,4 @@
-import { Tabs, TabList, Tab, TabPanel } from '@cerberus-design/react'
+import { Tabs, Tab, TabPanel, TabsList } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 
 const overrideStyles = css({
@@ -8,15 +8,15 @@ const overrideStyles = css({
 export function BasicTabsPreview() {
   return (
     <div className={overrideStyles}>
-      <Tabs active="overview">
-        <TabList description="Button detail pages">
+      <Tabs defaultValue="overview">
+        <TabsList>
           <Tab value="overview">Overview</Tab>
           <Tab value="features">Features</Tab>
           <Tab value="pricing">Pricing</Tab>
-        </TabList>
-        <TabPanel tab="overview">Overview content</TabPanel>
-        <TabPanel tab="features">Features content</TabPanel>
-        <TabPanel tab="pricing">Pricing content</TabPanel>
+        </TabsList>
+        <TabPanel value="overview">Overview content</TabPanel>
+        <TabPanel value="features">Features content</TabPanel>
+        <TabPanel value="pricing">Pricing content</TabPanel>
       </Tabs>
     </div>
   )
@@ -25,19 +25,15 @@ export function BasicTabsPreview() {
 export function SecondaryTabsPreview() {
   return (
     <div className={overrideStyles}>
-      <Tabs
-        active="overview"
-        id="secondary:tabs:preview"
-        palette="secondaryAction"
-      >
-        <TabList description="Button detail pages">
+      <Tabs defaultValue="overview-1" id="secondary:tabs:preview">
+        <TabsList>
           <Tab value="overview-1">Overview</Tab>
           <Tab value="features-1">Features</Tab>
           <Tab value="pricing-1">Pricing</Tab>
-        </TabList>
-        <TabPanel tab="overview-1">Overview content</TabPanel>
-        <TabPanel tab="features-1">Features content</TabPanel>
-        <TabPanel tab="pricing-1">Pricing content</TabPanel>
+        </TabsList>
+        <TabPanel value="overview-1">Overview content</TabPanel>
+        <TabPanel value="features-1">Features content</TabPanel>
+        <TabPanel value="pricing-1">Pricing content</TabPanel>
       </Tabs>
     </div>
   )
@@ -46,15 +42,15 @@ export function SecondaryTabsPreview() {
 export function CachedTabsPreview() {
   return (
     <div className={overrideStyles}>
-      <Tabs cache id="tabs-cache-preview">
-        <TabList description="Button detail pages">
+      <Tabs value="tabs-cache-preview">
+        <TabsList>
           <Tab value="overview">Overview</Tab>
           <Tab value="features">Features</Tab>
           <Tab value="pricing">Pricing</Tab>
-        </TabList>
-        <TabPanel tab="overview">Overview content</TabPanel>
-        <TabPanel tab="features">Features content</TabPanel>
-        <TabPanel tab="pricing">Pricing content</TabPanel>
+        </TabsList>
+        <TabPanel value="overview">Overview content</TabPanel>
+        <TabPanel value="features">Features content</TabPanel>
+        <TabPanel value="pricing">Pricing content</TabPanel>
       </Tabs>
     </div>
   )
@@ -70,8 +66,7 @@ export function CustomTabsPreview() {
   return (
     <div className={overrideStyles}>
       <Tabs>
-        <TabList
-          description="Custom tabs example"
+        <TabsList
           className={css({
             borderBottom: 'none',
             bgColor: 'black',
@@ -134,9 +129,9 @@ export function CustomTabsPreview() {
               {tab.label}
             </Tab>
           ))}
-        </TabList>
+        </TabsList>
         {tabData.map((tab) => (
-          <TabPanel key={tab.id} tab={tab.value}>
+          <TabPanel key={tab.id} value={tab.value}>
             {tab.label} content
           </TabPanel>
         ))}

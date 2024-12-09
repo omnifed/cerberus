@@ -5,9 +5,9 @@ import {
   Input,
   Label,
   Tab,
-  TabList,
   TabPanel,
   Tabs,
+  TabsList,
   Tag,
 } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
@@ -190,8 +190,8 @@ export default function UsageExample(props: UsageExampleProps) {
           mt: '6',
         })}
       >
-        <Tabs active="tab-1" palette="secondaryAction">
-          <TabList description="Example of color usage">
+        <Tabs defaultValue="tab-1">
+          <TabsList>
             <Tab
               {...(props.token.includes('secondaryAction') && {
                 'data-highlighted': true,
@@ -205,14 +205,14 @@ export default function UsageExample(props: UsageExampleProps) {
             </Tab>
             <Tab value="tab-2">Tab 2</Tab>
             <Tab value="tab-3">Tab 3</Tab>
-          </TabList>
-          <TabPanel tab="tab-1">
+          </TabsList>
+          <TabPanel value="tab-1">
             <p>Tab 1 content</p>
           </TabPanel>
-          <TabPanel tab="tab-2">
+          <TabPanel value="tab-2">
             <p>Tab 2 content</p>
           </TabPanel>
-          <TabPanel tab="tab-3">
+          <TabPanel value="tab-3">
             <p>Tab 3 content</p>
           </TabPanel>
         </Tabs>

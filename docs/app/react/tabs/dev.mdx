@@ -13,19 +13,19 @@ import {
 } from '@/app/react/tabs/components/tabs-preview'
 
 ```ts
-import { Tabs, TabList, Tab, TabPanel } from '@cerberus/react'
+import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
 ```
 
 ## Usage
 
 <CodePreview preview={<BasicTabsPreview />}>
 ```tsx title="tabs.tsx"
-import { Tabs, TabList, Tab, TabPanel } from '@cerberus/react'
+import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
 
 function BasicTabsPreview() {
   return (
     <Tabs active="overview">
-      <TabList description="Button detail pages">
+      <TabsList description="Button detail pages">
         <Tab value="overview">Overview</Tab>
         <Tab value="features">Features</Tab>
         <Tab value="pricing">Pricing</Tab>
@@ -43,13 +43,13 @@ function BasicTabsPreview() {
 
 <CodePreview preview={<SecondaryTabsPreview />}>
 ```tsx title="tabs.tsx" {6}
-import { Tabs, TabList, Tab, TabPanel } from '@cerberus/react'
+import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
 
 function SecondaryTabsPreview() {
   return (
     <div className={overrideStyles}>
       <Tabs active="overview" palette="secondaryAction">
-        <TabList description="Button detail pages">
+        <TabsList description="Button detail pages">
           <Tab value="overview">Overview</Tab>
           <Tab value="features">Features</Tab>
           <Tab value="pricing">Pricing</Tab>
@@ -68,12 +68,12 @@ function SecondaryTabsPreview() {
 
 <CodePreview preview={<CachedTabsPreview />}>
 ```tsx title="tabs.tsx"
-import { Tabs, TabList, Tab, TabPanel } from '@cerberus/react'
+import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
 
 function BasicTabsPreview() {
   return (
     <Tabs cache>
-      <TabList description="Button detail pages">
+      <TabsList description="Button detail pages">
         <Tab value="overview">Overview</Tab>
         <Tab value="features">Features</Tab>
         <Tab value="pricing">Pricing</Tab>
@@ -91,7 +91,7 @@ function BasicTabsPreview() {
 
 <CodePreview preview={<CustomTabsPreview />}>
 ```tsx title="tabs.tsx"
-import { Tabs, TabList, Tab, TabPanel } from '@cerberus/react'
+import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
 import { css } from '@cerberus/styled-system/css'
 
 function CustomTabsPreview() {
@@ -103,7 +103,7 @@ function CustomTabsPreview() {
 
   return (
     <Tabs>
-      <TabList
+      <TabsList
         description="Custom tab list"
         className={css({
           borderBottom: 'none',
@@ -207,16 +207,16 @@ The `Tabs` component accepts the following props:
 ### TabList
 
 ```ts showLineNumbers=false
-interface TabListProps extends HTMLAttributes<HTMLDivElement> {
+interface TabsListProps extends HTMLAttributes<HTMLDivElement> {
   description: string
 }
 
-define function TabList(props: TabListProps): ReactNode
+define function TabsList(props: TabListProps): ReactNode
 ````
 
 #### Props
 
-The `TabList` component accepts the following props:
+The `TabsList` component accepts the following props:
 
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |

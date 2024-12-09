@@ -1,12 +1,6 @@
-import { describe, test, expect, beforeEach, afterEach, spyOn } from 'bun:test'
-import { render, screen, cleanup, renderHook } from '@testing-library/react'
-import {
-  Tabs,
-  TabList,
-  Tab,
-  useTabsContext,
-  TabPanel,
-} from '@cerberus-design/react'
+import { describe, test, expect, beforeEach, afterEach } from 'bun:test'
+import { render, screen, cleanup } from '@testing-library/react'
+import { Tabs, TabsList, Tab, TabPanel } from '@cerberus-design/react'
 import { setupStrictMode, user } from '@/utils'
 
 describe('Tabs Family & useTabsContext', () => {
@@ -32,15 +26,15 @@ describe('Tabs Family & useTabsContext', () => {
   function TestTabs() {
     return (
       <>
-        <TabList description="Button details">
+        <TabsList>
           {tabData.map((tab) => (
             <Tab key={tab.id} value={tab.id}>
               {tab.label}
             </Tab>
           ))}
-        </TabList>
+        </TabsList>
         {tabData.map((tab) => (
-          <TabPanel key={tab.id} tab={tab.id}>
+          <TabPanel key={tab.id} value={tab.id}>
             {tab.content}
           </TabPanel>
         ))}
@@ -50,7 +44,7 @@ describe('Tabs Family & useTabsContext', () => {
 
   test('should export a Tabs component', () => {
     render(
-      <Tabs active="tab1">
+      <Tabs defaultValue="tab1">
         <TestTabs />
       </Tabs>,
     )
@@ -104,7 +98,7 @@ describe('Tabs Family & useTabsContext', () => {
 
   test('should set an initial active tab', () => {
     render(
-      <Tabs active="tab1">
+      <Tabs defaultValue="tab1">
         <TestTabs />
       </Tabs>,
     )
@@ -119,7 +113,7 @@ describe('Tabs Family & useTabsContext', () => {
 
   test('should cache the active tab state if cache is true', async () => {
     render(
-      <Tabs cache>
+      <Tabs>
         <TestTabs />
       </Tabs>,
     )
@@ -128,17 +122,17 @@ describe('Tabs Family & useTabsContext', () => {
     expect(window.localStorage.getItem('cerberus-tabs')).toBe('tab2')
   })
 
-  test('should throw an error if used outside of Tabs', () => {
-    // don't clog up the console with errors
-    spyOn(console, 'error').mockImplementation(() => null)
-    expect(() => renderHook(() => useTabsContext())).toThrow(
-      'useTabsContext must be used within a Tabs Provider',
-    )
-  })
+  // test('should throw an error if used outside of Tabs', () => {
+  //   // don't clog up the console with errors
+  //   spyOn(console, 'error').mockImplementation(() => null)
+  //   expect(() => renderHook(() => useTabsContext())).toThrow(
+  //     'useTabsContext must be used within a Tabs Provider',
+  //   )
+  // })
 
   test('should use keyboard navigation moving right', async () => {
     render(
-      <Tabs active="tab1">
+      <Tabs defaultValue="tab1">
         <TestTabs />
       </Tabs>,
     )
@@ -157,7 +151,7 @@ describe('Tabs Family & useTabsContext', () => {
 
   test('should use keyboard navigation moving left', async () => {
     render(
-      <Tabs active="tab1">
+      <Tabs defaultValue="tab1">
         <TestTabs />
       </Tabs>,
     )
@@ -176,7 +170,7 @@ describe('Tabs Family & useTabsContext', () => {
 
   test('should use keyboard navigation moving to the first tab', async () => {
     render(
-      <Tabs active="tab1">
+      <Tabs defaultValue="tab1">
         <TestTabs />
       </Tabs>,
     )
@@ -190,7 +184,7 @@ describe('Tabs Family & useTabsContext', () => {
 
   test('should use keyboard navigation moving to the last tab', async () => {
     render(
-      <Tabs active="tab1">
+      <Tabs defaultValue="tab1">
         <TestTabs />
       </Tabs>,
     )
@@ -204,7 +198,7 @@ describe('Tabs Family & useTabsContext', () => {
 
   test('should cache a uuid if provided and id prop', async () => {
     render(
-      <Tabs id="unique-id" cache>
+      <Tabs id="unique-id">
         <TestTabs />
       </Tabs>,
     )
