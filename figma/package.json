@@ -16,7 +16,7 @@
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/styled-system": "workspace:*",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^19"
   },
   "devDependencies": {
     "@figma/code-connect": "^1.0.6",
