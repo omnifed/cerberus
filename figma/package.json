@@ -6,7 +6,8 @@
     "kill:icons": "rm -rf ./src/generated/icons.figma.tsx",
     "create:icons": "bun run ./scripts/create-icons.ts",
     "generate:icons": "pnpm kill:icons && pnpm create:icons",
-    "figma:publish": "exec figma connect publish",
+    "figma:publish:old": "exec figma connect publish",
+    "figma:publish": "echo \"Not publishing to Figma anymore.\"",
     "figma:publish:icons": "exec figma connect publish --config icons.config.json",
     "figma:sync": "bun run ./scripts/variables/sync-figma.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,14 +16,14 @@
     "@cerberus-design/icons": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/styled-system": "workspace:*",
-    "react": "^18",
-    "react-dom": "^18"
+    "react": "^19",
+    "react-dom": "^19"
   },
   "devDependencies": {
-    "@figma/code-connect": "^1.0.6",
-    "@figma/rest-api-spec": "^0.21.0",
-    "@types/react": "^18",
-    "dotenv": "^16.4.5"
+    "@figma/code-connect": "^1.2.4",
+    "@figma/rest-api-spec": "^0.22.0",
+    "@types/react": "^19",
+    "dotenv": "^16.4.7"
   },
   "keywords": [],
   "author": "",
