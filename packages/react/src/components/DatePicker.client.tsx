@@ -6,10 +6,10 @@ import {
   type DatePickerInputProps,
   type DatePickerRootProps,
   type DatePickerViewProps,
-  type DateValue,
+  // type DateValue,
 } from '@ark-ui/react'
 import { Portal } from './Portal'
-import { useCallback } from 'react'
+// import { useCallback } from 'react'
 import { datePicker } from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus/styled-system/css'
 import { useFieldContext } from '../context/field'
@@ -23,7 +23,7 @@ import {
   DatePickerTableCellTrigger,
   DatePickerTableCell,
 } from './DatePicker.server'
-import { formatISOToMilitary } from '../hooks/useDate'
+// import { formatISOToMilitary } from '../hooks/useDate'
 
 /**
  * This module contains the DatePicker client family components.
@@ -50,17 +50,18 @@ const datePickerStyles = datePicker()
 export function DatePicker(props: DatePickerRootProps) {
   const states = useFieldContext()
 
-  // TODO: Fix this format bug
-  // There is a bug with the Root component that causes random date selection onBlur after the first selection if the format prop is used.
-  const handleFormat = useCallback((value: DateValue) => {
-    return formatISOToMilitary(value.toString())
-  }, [])
+  // TODO: Remove this once the bug is fixed: https://github.com/chakra-ui/ark/issues/3112
+
+  // There is a bug with the Root component that causes random date selection
+  // onBlur after the first selection if the format prop is used.
+  // const handleFormat = useCallback((value: DateValue) => {
+  //   return formatISOToMilitary(value.toString())
+  // }, [])
 
   return (
     <ArkDP.Root
       {...props}
       {...states}
-      format={handleFormat}
       positioning={{
         placement: 'bottom-start',
       }}
