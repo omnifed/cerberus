@@ -53,7 +53,7 @@
     "@pandacss/preset-panda": "^0.48.0",
     "@pandacss/types": "^0.48.0",
     "react": "^19",
-    "react-dom": "^18"
+    "react-dom": "^19"
   },
   "publishConfig": {
     "access": "public"
