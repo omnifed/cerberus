@@ -1,6 +1,6 @@
 import { recipes, slotRecipes } from '../recipes'
 import { defineTheme } from '../theme-contract'
-import { motionStyles } from './motionStyles'
+import { animationStyles } from './animationStyles'
 import { keyframes } from './keyframes'
 import { semanticTokens } from './semantic-tokens/config'
 import { textStyles } from './textStyles'
@@ -19,7 +19,7 @@ export const baseTheme = defineTheme({
     recipes,
     slotRecipes,
     textStyles,
-    motionStyles,
+    animationStyles,
   },
 })
 
