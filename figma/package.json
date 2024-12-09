@@ -15,13 +15,13 @@
     "@cerberus-design/icons": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/styled-system": "workspace:*",
-    "react": "^18",
+    "react": "^19",
     "react-dom": "^18"
   },
   "devDependencies": {
     "@figma/code-connect": "^1.0.6",
     "@figma/rest-api-spec": "^0.21.0",
-    "@types/react": "^18",
+    "@types/react": "^19",
     "dotenv": "^16.4.5"
   },
   "keywords": [],
