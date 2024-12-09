@@ -96,35 +96,11 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
       shadow: 'md',
       w: '19.25rem',
       _open: {
-        // motionStyles: 'slide-fade-in',
-        '&[data-placement^=top]': {
-          animationName: 'slideFromBottom, fadeIn',
-        },
-        '&[data-placement^=bottom]': {
-          animationName: 'slideFromTop, fadeIn',
-        },
-        '&[data-placement^=left]': {
-          animationName: 'slideFromRight, fadeIn',
-        },
-        '&[data-placement^=right]': {
-          animationName: 'slideFromLeft, fadeIn',
-        },
+        animationStyle: 'slide-fade-in',
         animationDuration: 'fast',
       },
       _closed: {
-        // motionStyles: 'slide-fade-out',
-        '&[data-placement^=top]': {
-          animationName: 'slideToBottom, fadeOut',
-        },
-        '&[data-placement^=bottom]': {
-          animationName: 'slideToTop, fadeOut',
-        },
-        '&[data-placement^=left]': {
-          animationName: 'slideToRight, fadeOut',
-        },
-        '&[data-placement^=right]': {
-          animationName: 'slideToLeft, fadeOut',
-        },
+        animationStyle: 'slide-fade-out',
         animationDuration: 'faster',
       },
     },

@@ -2,7 +2,7 @@ import { defineAnimationStyles, type AnimationStyles } from '../types'
 
 const transformOrigin = 'var(--transform-origin)'
 
-export const motionStyles: AnimationStyles = defineAnimationStyles({
+export const animationStyles: AnimationStyles = defineAnimationStyles({
   'slide-fade-in': {
     value: {
       transformOrigin,

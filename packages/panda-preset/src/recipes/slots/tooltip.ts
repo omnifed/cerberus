@@ -33,13 +33,11 @@ export const tooltip: Partial<SlotRecipeConfig> = defineSlotRecipe({
       w: 'max-content',
       zIndex: 'tooltip',
       _open: {
-        // motionStyle: 'scale-fade-in',
-        animationName: 'scaleIn, fadeIn',
+        animationStyle: 'scale-fade-in',
         animationDuration: 'fast',
       },
       _closed: {
-        // motionStyle: 'scale-fade-out',
-        animationName: 'scaleOut, fadeOut',
+        animationStyle: 'scale-fade-out',
         animationDuration: 'fast',
       },
     },
