@@ -24,11 +24,11 @@ describe('tooltip recipe', () => {
       w: 'max-content',
       zIndex: 'tooltip',
       _open: {
-        animationName: 'scaleIn, fadeIn',
+        animationStyle: 'scale-fade-in',
         animationDuration: 'fast',
       },
       _closed: {
-        animationName: 'scaleOut, fadeOut',
+        animationStyle: 'scale-fade-out',
         animationDuration: 'fast',
       },
     })

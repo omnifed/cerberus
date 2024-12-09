@@ -81,39 +81,19 @@ describe('datePicker recipe', () => {
     })
   })
 
-  test('should have a content style with motionStyles', () => {
+  test('should have a content style with animationStyles', () => {
     const content = datePicker.base?.content as { [key: string]: unknown }
     expect(content._open).toMatchObject({
-      '&[data-placement^=top]': {
-        animationName: 'slideFromBottom, fadeIn',
-      },
-      '&[data-placement^=bottom]': {
-        animationName: 'slideFromTop, fadeIn',
-      },
-      '&[data-placement^=left]': {
-        animationName: 'slideFromRight, fadeIn',
-      },
-      '&[data-placement^=right]': {
-        animationName: 'slideFromLeft, fadeIn',
-      },
+      animationStyle: 'slide-fade-in',
+      animationDuration: 'fast',
     })
   })
 
-  test('should have a content style with motionStyles', () => {
+  test('should have a content style with animationStyles', () => {
     const content = datePicker.base?.content as { [key: string]: unknown }
     expect(content._closed).toMatchObject({
-      '&[data-placement^=top]': {
-        animationName: 'slideToBottom, fadeOut',
-      },
-      '&[data-placement^=bottom]': {
-        animationName: 'slideToTop, fadeOut',
-      },
-      '&[data-placement^=left]': {
-        animationName: 'slideToRight, fadeOut',
-      },
-      '&[data-placement^=right]': {
-        animationName: 'slideToLeft, fadeOut',
-      },
+      animationStyle: 'slide-fade-out',
+      animationDuration: 'faster',
     })
   })
 
