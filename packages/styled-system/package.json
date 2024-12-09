@@ -43,15 +43,15 @@
     "build": "panda codegen"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^0.48.0",
+    "@pandacss/dev": "^0.49.0",
     "react": "*",
     "react-dom": "*"
   },
   "devDependencies": {
     "@cerberus-design/panda-preset": "workspace:*",
-    "@pandacss/dev": "^0.48.0",
-    "@pandacss/preset-panda": "^0.48.0",
-    "@pandacss/types": "^0.48.0",
+    "@pandacss/dev": "^0.49.0",
+    "@pandacss/preset-panda": "^0.49.0",
+    "@pandacss/types": "^0.49.0",
     "react": "^19",
     "react-dom": "^19"
   },
