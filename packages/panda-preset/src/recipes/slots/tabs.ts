@@ -18,6 +18,9 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
   slots: tabsAnatomy.keys(),
 
   base: {
+    root: {
+      rounded: 'md',
+    },
     list: {
       borderBottom: '1px solid',
       borderBottomColor: 'action.border.100',

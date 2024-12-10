@@ -1,6 +1,12 @@
-import { describe, test, expect, beforeEach, afterEach } from 'bun:test'
-import { render, screen, cleanup } from '@testing-library/react'
-import { Tabs, TabsList, Tab, TabPanel } from '@cerberus-design/react'
+import { describe, test, expect, beforeEach, afterEach, spyOn } from 'bun:test'
+import { render, screen, cleanup, renderHook } from '@testing-library/react'
+import {
+  Tabs,
+  TabsList,
+  Tab,
+  TabPanel,
+  useTabsContext,
+} from '@cerberus-design/react'
 import { setupStrictMode, user } from '@/utils'
 
 describe('Tabs Family & useTabsContext', () => {
@@ -122,13 +128,13 @@ describe('Tabs Family & useTabsContext', () => {
     expect(window.localStorage.getItem('cerberus-tabs')).toBe('tab2')
   })
 
-  // test('should throw an error if used outside of Tabs', () => {
-  //   // don't clog up the console with errors
-  //   spyOn(console, 'error').mockImplementation(() => null)
-  //   expect(() => renderHook(() => useTabsContext())).toThrow(
-  //     'useTabsContext must be used within a Tabs Provider',
-  //   )
-  // })
+  test('should throw an error if used outside of Tabs', () => {
+    // don't clog up the console with errors
+    spyOn(console, 'error').mockImplementation(() => null)
+    expect(() => renderHook(() => useTabsContext())).toThrow(
+      'useTabsContext must be used within a Tabs Provider',
+    )
+  })
 
   test('should use keyboard navigation moving right', async () => {
     render(

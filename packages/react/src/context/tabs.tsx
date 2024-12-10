@@ -1,17 +1,18 @@
 'use client'
 
+import { Tabs as ArkTabs } from '@ark-ui/react/tabs'
 import { tabs, type TabsVariantProps } from '@cerberus/styled-system/recipes'
 import type { Pretty } from '@cerberus/styled-system/types'
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
-  useRef,
   useState,
-  type MutableRefObject,
   type PropsWithChildren,
 } from 'react'
+import { getLocalStorage, setLocalStorage } from '../utils/localStorage'
 
 /**
  * This module provides a Tabs component and a hook to access its context.
@@ -20,102 +21,102 @@ import {
 
 export interface TabsContextValue {
   /**
-   * The ref for the tabs.
-   */
-  tabs: MutableRefObject<HTMLButtonElement[]>
-  /**
-   * The id of the tabs component.
-   */
-  id: string
-  /**
-   * The active tab id.
-   */
-  active: string
-  /**
    * The styles for the tabs.
    */
-  styles: Pretty<Record<'tabList' | 'tab' | 'tabPanel', string>>
-  /**
-   * Called when the active tab is updated.
-   */
-  onTabUpdate: (active: string) => void
+  styles: {
+    list: Pretty<string>
+    trigger: Pretty<string>
+    content: Pretty<string>
+    indicator: Pretty<string>
+  }
 }
 
 export const TabsContext = createContext<TabsContextValue | null>(null)
 
-export interface TabsProps {
+export interface TabsProviderBaseProps extends ArkTabs.RootProps {
   /**
    * A unique identifier for the Tabs component. Typically used when there are
-   * multiple Tabs components on the same page.
+   * multiple Tabs components on the same page and you want to uniquely cache
+   * the active tab state.
    */
-  id?: string
+  uuid?: string
   /**
-   * The default active tab id.
+   * The default tab to display when the component is first rendered.
    */
-  active?: string
+  defaultValue?: string
   /**
    * Whether to cache the active tab state in local storage.
    */
   cache?: boolean
 }
 
+export type TabsProviderProps = TabsProviderBaseProps & TabsVariantProps
+
 /**
  * The Tabs component provides a context to manage tab state.
- * @see https://cerberus.digitalu.design/react/tabs
+ * @definition [Tabs docs](https://cerberus.digitalu.design/react/tabs)
  * @example
  * ```tsx
  * <Tabs cache>
- *  <TabList description="Button details">
- *    <Tab id="overview">Overview</Tab>
- *    <Tab id="guidelines">Guidelines</Tab>
- *  </TabList>
- *  <TabPanels>
- *    <TabPanel id="overview">Overview content</TabPanel>
- *    <TabPanel id="guidelines">Guidelines content</TabPanel>
- *  </TabPanels>
+ *  <TabsList>
+ *    <Tab value="overview">Overview</Tab>
+ *    <Tab value="guidelines">Guidelines</Tab>
+ *  </TabsList>
+ *  <TabPanel value="overview">Overview content</TabPanel>
+ *  <TabPanel value="guidelines">Guidelines content</TabPanel>
  * </Tabs>
  * ```
  */
-export function TabsProvider(
-  props: PropsWithChildren<TabsProps & TabsVariantProps>,
-): JSX.Element {
-  const { cache, active, id, palette } = props
-  const [activeTab, setActiveTab] = useState(() => (cache ? '' : active ?? ''))
-  const tabsList = useRef<HTMLButtonElement[]>([])
-  const uuid = useMemo(() => {
-    return id ? `cerberus-tabs-${id}` : 'cerberus-tabs'
-  }, [id])
+export function Tabs(props: PropsWithChildren<TabsProviderProps>): JSX.Element {
+  const { cache, defaultValue, palette, uuid, ...arkProps } = props
+  const [activeTab, setActiveTab] = useState<string | undefined>(() =>
+    cache ? '' : defaultValue,
+  )
+  const styles = tabs({ palette })
+
+  const cacheKey = useMemo(
+    () => (uuid ? `cerberus-tabs-${uuid}` : 'cerberus-tabs'),
+    [uuid],
+  )
+
+  const handleValueChange = useCallback(
+    (details: { value: string }) => {
+      if (cache) {
+        setLocalStorage(cacheKey, details.value)
+      }
+      setActiveTab(details.value)
+    },
+    [cache],
+  )
+
+  useEffect(() => {
+    if (cache && !activeTab) {
+      const cachedTab = getLocalStorage(cacheKey, defaultValue ?? '')
+      setActiveTab(cachedTab)
+    }
+  }, [cache, defaultValue, activeTab])
 
   const value = useMemo(
     () => ({
-      tabs: tabsList,
-      id: uuid,
       active: activeTab,
-      styles: tabs({ palette }),
-      onTabUpdate: setActiveTab,
+      styles,
     }),
-    [activeTab, setActiveTab, palette, uuid, tabsList],
+    [activeTab, palette, styles],
   )
 
-  // Get the active tab from local storage
-  useEffect(() => {
-    if (cache) {
-      const cachedTab = window.localStorage.getItem(uuid)
-      setActiveTab(
-        cache ? cachedTab || (props.active ?? '') : props.active ?? '',
-      )
-    }
-  }, [cache, active, uuid])
-
-  // Update the active tab in local storage
-  useEffect(() => {
-    if (cache && activeTab) {
-      window.localStorage.setItem(uuid, activeTab)
-    }
-  }, [activeTab, cache])
-
   return (
-    <TabsContext.Provider value={value}>{props.children}</TabsContext.Provider>
+    <TabsContext.Provider value={value}>
+      <ArkTabs.Root
+        {...arkProps}
+        aria-busy={!activeTab}
+        className={styles.root}
+        defaultValue={defaultValue}
+        onValueChange={handleValueChange}
+        value={activeTab}
+      >
+        {props.children}
+      </ArkTabs.Root>
+    </TabsContext.Provider>
   )
 }
 

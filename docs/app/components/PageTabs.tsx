@@ -108,7 +108,9 @@ const tabListStyles = css.raw({
   rounded: 'full',
   shadow: 'md',
   '& > :is([data-part=indicator])': {
-    gradient: 'styx-light',
+    bgGradient: 'to-br',
+    gradientFrom: 'action.bg.initial',
+    gradientTo: 'action.bg.active',
     h: 'var(--height)',
     rounded: 'full',
     zIndex: 'base',
@@ -126,13 +128,12 @@ const tabOverrideStyles = css.raw({
     display: 'none',
   },
   _hover: {
-    color: 'action.navigation.hover',
+    '&:not([data-selected])': {
+      color: 'action.navigation.hover',
+    },
   },
   _selected: {
     color: 'action.text.initial',
-    _hover: {
-      color: 'action.text.initial',
-    },
   },
   md: {
     fontSize: 'md',

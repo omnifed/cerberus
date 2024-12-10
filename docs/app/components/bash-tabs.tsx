@@ -8,7 +8,7 @@ interface BashTabsProps {
 
 export default function BashTabs(props: BashTabsProps) {
   return (
-    <Tabs defaultValue="npm">
+    <Tabs cache defaultValue="npm">
       <TabsList
         className={css({
           borderColor: 'page.border.100',
