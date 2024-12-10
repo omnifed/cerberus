@@ -1,0 +1,55 @@
+---
+heading: 'Local Storage'
+description: 'Simple helpers for managing local storage in your React applications.'
+a11y: 'utilities'
+npm: '@cerberus-design/react'
+source: 'utils/localStorage.ts'
+recipe: ''
+---
+
+```ts
+import { getLocalStorage, setLocalStorage } from '@cerberus/react'
+```
+
+## Usage
+
+```tsx title="page.tsx"
+'use client';
+
+import { getLocalStorage } from '@cerberus/react'
+import { useState } from 'react'
+
+export default function Page() {
+  const [value, setValue] = useState<string>('')
+
+  // You have to wait until the component is mounted to
+  // have access to the local storage
+  useEffect(() => {
+    const value = getLocalStorage('key')
+    setValue(value)
+  }, [])
+
+  return (
+    <Text>
+      This is from local storage: {value}
+    </Text>
+  )
+}
+```
+
+## API
+
+### getLocalStorage
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| key     |    | The key that the value is saved under |
+| defaultValue |    | The default value to return if the key does not exist in localStorage |
+
+
+### setLocalStorage
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| key     |    | The key to save the value under |
+| value |    | The value to save in localStorage |

@@ -1,4 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { tabsAnatomy } from '@ark-ui/anatomy'
 import { action, secondaryAction } from '../shared/palettes'
 import { focusStates, formStates } from '../shared/states'
 
@@ -14,16 +15,20 @@ import { focusStates, formStates } from '../shared/states'
  */
 export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'tab',
-  slots: ['tabList', 'tab', 'tabPanel'],
+  slots: tabsAnatomy.keys(),
 
   base: {
-    tabList: {
+    root: {
+      rounded: 'md',
+    },
+    list: {
       borderBottom: '1px solid',
       borderBottomColor: 'action.border.100',
       gap: '0',
+      position: 'relative',
       w: 'full',
     },
-    tab: {
+    trigger: {
       alignItems: 'center',
       display: 'inline-flex',
       borderTopLeftRadius: 'md',
@@ -38,28 +43,11 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
       zIndex: 'base',
       _motionSafe: {
         transition: 'all 200ms ease-in-out',
-        _before: {
-          transitionProperty: 'height',
-          transitionDuration: '200ms',
-          transitionTimingFunction: 'ease-in-out',
-        },
         _after: {
           transitionProperty: 'height',
           transitionDuration: '200ms',
           transitionTimingFunction: 'ease-in-out',
         },
-      },
-      _before: {
-        bgColor: 'colorPalette.border.initial',
-        bottom: '0',
-        content: '""',
-        h: '0',
-        position: 'absolute',
-        left: '0',
-        right: '0',
-        w: 'full',
-        willChange: 'height',
-        zIndex: 'decorator',
       },
       _after: {
         borderTopLeftRadius: 'md',
@@ -95,26 +83,35 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
         },
       },
     },
-    tabPanel: {
+    content: {
       rounded: 'md',
       ...focusStates,
+    },
+    indicator: {
+      bgColor: 'colorPalette.border.initial',
+      bottom: 0,
+      h: '4px',
+      w: 'var(--width)',
+      zIndex: 'decorator',
     },
   },
 
   variants: {
     palette: {
       action: {
-        tab: {
+        trigger: {
           ...action,
-          _before: action,
-          _after: action,
+        },
+        indicator: {
+          ...action,
         },
       },
       secondaryAction: {
-        tab: {
+        trigger: {
           ...secondaryAction,
-          _before: secondaryAction,
-          _after: secondaryAction,
+        },
+        indicator: {
+          ...secondaryAction,
         },
       },
     },

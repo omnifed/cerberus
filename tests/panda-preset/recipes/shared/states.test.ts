@@ -21,7 +21,9 @@ describe('recipe states', () => {
 
     expect(formStates._readOnly).toBeDefined()
     expect(formStates._readOnly).toMatchObject({
-      cursor: 'default',
+      '&:not(button)': {
+        cursor: 'default',
+      },
     })
   })
 })

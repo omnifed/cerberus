@@ -40,7 +40,9 @@ describe('select recipe', () => {
         opacity: '0.5',
       },
       _readOnly: {
-        cursor: 'default',
+        '&:not(button)': {
+          cursor: 'default',
+        },
       },
       _userInvalid: {
         bgColor: 'page.surface.100',

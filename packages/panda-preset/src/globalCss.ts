@@ -60,7 +60,7 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
     boxShadow: 'none',
   },
 
-  ':is(mark::before, mark::after)': {
+  '& :is(mark::before, mark::after)': {
     clip: 'rect(1px, 1px, 1px, 1px)',
     clipPath: 'inset(100%)',
     height: '1px',
@@ -78,6 +78,11 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
     content: ' [highlight end] ',
   },
 
+  '& :is(button)': {
+    cursor: 'pointer',
+    userSelect: 'none',
+  },
+
   // images
 
   img: {
@@ -90,7 +95,7 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
 
   // Skeletor API
 
-  ':is(div,main,section,header,footer,nav,a,span,button,li,p)': {
+  '& :is(div,main,section,header,footer,nav,a,span,button,li,p)': {
     _loading: {
       bgColor: 'page.border.200',
       color: 'transparent',

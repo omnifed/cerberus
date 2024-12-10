@@ -41,9 +41,7 @@ export * from './components/ProgressBar'
 export * from './components/Radio'
 export * from './components/Select'
 export * from './components/Spinner'
-export * from './components/Tab'
-export * from './components/TabList'
-export * from './components/TabPanel'
+export * from './components/Tabs.client'
 export * from './components/Table'
 export * from './components/Thead'
 export * from './components/Th'
@@ -79,7 +77,6 @@ export * from './hooks/useRootColors'
 // aria-helpers
 
 export * from './aria-helpers/nav-menu.aria'
-export * from './aria-helpers/tabs.aria'
 export * from './aria-helpers/trap-focus.aria'
 
 // utils

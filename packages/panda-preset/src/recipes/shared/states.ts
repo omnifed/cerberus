@@ -13,6 +13,8 @@ export const formStates = {
     opacity: '0.5',
   },
   _readOnly: {
-    cursor: 'default',
+    '&:not(button)': {
+      cursor: 'default',
+    },
   },
 }

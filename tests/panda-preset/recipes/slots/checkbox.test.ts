@@ -40,7 +40,9 @@ describe('checkbox recipe', () => {
         outlineOffset: '2px',
       },
       _readOnly: {
-        cursor: 'default',
+        '&:not(button)': {
+          cursor: 'default',
+        },
       },
       _userInvalid: {
         bgColor: 'page.surface.100',

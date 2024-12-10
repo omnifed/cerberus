@@ -4,7 +4,7 @@ import {
   IbmWatsonxCodeAssistantForZRefactor,
   InformationFilled,
 } from '@cerberus-design/icons'
-import { Tab, TabList, TabPanel, Tabs } from '@cerberus-design/react'
+import { Tab, TabPanel, Tabs, TabsList } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { cx } from '@cerberus/styled-system/css'
 import type { ReactNode } from 'react'
@@ -19,43 +19,42 @@ interface TabProps {
 
 export default function PageTabs(props: TabProps) {
   return (
-    <Tabs active="overview" cache id="page-tabs">
-      <TabList
-        description={props.description}
-        className={css({
-          borderBottom: 'none',
-          bgColor: 'page.surface.100',
-          justifyContent: 'space-evenly',
-          mb: '8',
-          overflowX: 'auto',
-          rounded: 'full',
-          shadow: 'md',
-          md: {
-            overflowX: 'initial',
-          },
-        })}
-      >
-        <Tab className={tabOverrideStyles} value="overview">
+    <Tabs cache uuid="components" defaultValue="overview">
+      <TabsList className={css(tabListStyles)}>
+        <Tab
+          className={cx(css(tabOverrideStyles), css(smallTabStyles))}
+          value="overview"
+        >
           <InformationFilled size={20} />
           Overview
         </Tab>
-        <Tab className={tabOverrideStyles} value="guidelines">
+        <Tab
+          className={cx(css(tabOverrideStyles), css(smallTabStyles))}
+          value="guidelines"
+        >
           <GroupObjectsSave size={20} />
           Guidelines
         </Tab>
-        <Tab className={tabOverrideStyles} value="developers">
+        <Tab
+          className={cx(css(tabOverrideStyles), css(smallTabStyles))}
+          value="developers"
+        >
           <IbmWatsonxCodeAssistantForZRefactor size={20} />
           Dev
         </Tab>
-        <Tab className={tabOverrideStyles} value="a11y">
+        <Tab
+          className={cx(css(tabOverrideStyles), css(smallTabStyles))}
+          value="a11y"
+        >
           <AccessibilityAlt size={20} />
           Accessibility
         </Tab>
-      </TabList>
-      <TabPanel tab="overview">{props.overview}</TabPanel>
-      <TabPanel tab="guidelines">{props.guidelines}</TabPanel>
-      <TabPanel tab="developers">{props.dev}</TabPanel>
-      <TabPanel tab="a11y">{props.a11y}</TabPanel>
+      </TabsList>
+
+      <TabPanel value="overview">{props.overview}</TabPanel>
+      <TabPanel value="guidelines">{props.guidelines}</TabPanel>
+      <TabPanel value="developers">{props.dev}</TabPanel>
+      <TabPanel value="a11y">{props.a11y}</TabPanel>
     </Tabs>
   )
 }
@@ -68,28 +67,14 @@ interface OverviewPageTabsProps {
 
 export function OverviewPageTabs(props: OverviewPageTabsProps) {
   return (
-    <Tabs active="overview" id="page-tabs">
-      <TabList
-        description={props.description}
-        className={css({
-          borderBottom: 'none',
-          bgColor: 'page.surface.100',
-          justifyContent: 'space-evenly',
-          mb: '8',
-          overflowX: 'auto',
-          rounded: 'full',
-          shadow: 'md',
-          md: {
-            overflowX: 'initial',
-          },
-        })}
-      >
+    <Tabs defaultValue="overview" lazyMount>
+      <TabsList className={css(tabListStyles)}>
         <Tab
           className={cx(
             css({
               w: '1/2 !important',
             }),
-            tabOverrideStyles,
+            css(tabOverrideStyles),
           )}
           value="overview"
         >
@@ -101,70 +86,60 @@ export function OverviewPageTabs(props: OverviewPageTabsProps) {
             css({
               w: '1/2 !important',
             }),
-            tabOverrideStyles,
+            css(tabOverrideStyles),
           )}
           value="developers"
         >
           <IbmWatsonxCodeAssistantForZRefactor size={20} />
           Dev
         </Tab>
-      </TabList>
-      <TabPanel tab="overview">{props.overview}</TabPanel>
-      <TabPanel tab="developers">{props.dev}</TabPanel>
+      </TabsList>
+      <TabPanel value="overview">{props.overview}</TabPanel>
+      <TabPanel value="developers">{props.dev}</TabPanel>
     </Tabs>
   )
 }
 
-const tabOverrideStyles = css({
+const tabListStyles = css.raw({
+  borderBottom: 'none',
+  bgColor: 'page.surface.100',
+  justifyContent: 'space-evenly',
+  mb: '8',
+  rounded: 'full',
+  shadow: 'md',
+  '& > :is([data-part=indicator])': {
+    bgGradient: 'to-br',
+    gradientFrom: 'action.bg.initial',
+    gradientTo: 'action.bg.active',
+    h: 'var(--height)',
+    rounded: 'full',
+    zIndex: 'base',
+  },
+})
+
+const tabOverrideStyles = css.raw({
   borderTopLeftRadius: 'full',
   borderTopRightRadius: 'full',
   h: '4rem',
   rounded: 'full',
   w: '1/3',
+  zIndex: 'decorator',
+  _after: {
+    display: 'none',
+  },
+  _hover: {
+    '&:not([data-selected])': {
+      color: 'action.navigation.hover',
+    },
+  },
+  _selected: {
+    color: 'action.text.initial',
+  },
   md: {
     fontSize: 'md',
   },
-  _before: {
-    bgColor: 'initial',
-    bottom: 'initial',
-    content: '""',
-    h: 'initial',
-    position: 'initial',
-    left: 'initial',
-    right: 'initial',
-    transitionProperty: 'initial',
-    transitionDuration: 'initial',
-    transitionTimingFunction: 'initial',
-    w: 'initial',
-    willChange: 'initial',
-    zIndex: 'initial',
-  },
-  _after: {
-    borderTopLeftRadius: 'initial',
-    borderTopRightRadius: 'initial',
-    bottom: 'initial',
-    bgColor: 'initial',
-    content: '""',
-    left: 'initial',
-    position: 'initial',
-    right: 'initial',
-    h: 'initial',
-    transition: 'initial',
-    willChange: 'initial',
-    w: 'initial',
-    zIndex: 'initial',
-  },
-  _hover: {
-    bgColor: 'action.navigation.hover',
-    color: 'page.surface.initial',
-  },
-  _selected: {
-    bgGradient: 'to-bl',
-    gradientFrom: 'action.bg.initial',
-    gradientTo: 'action.bg.active',
-    color: 'action.text.initial',
-    _hover: {
-      color: 'action.text.initial',
-    },
-  },
+})
+
+const smallTabStyles = css.raw({
+  w: '1/4',
 })

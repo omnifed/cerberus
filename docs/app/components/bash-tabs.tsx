@@ -1,4 +1,4 @@
-import { Tabs, TabList, Tab, TabPanel } from '@cerberus-design/react'
+import { Tabs, Tab, TabPanel, TabsList } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { Code } from './code'
 
@@ -8,17 +8,16 @@ interface BashTabsProps {
 
 export default function BashTabs(props: BashTabsProps) {
   return (
-    <Tabs active="npm" cache id="bash-tabs">
-      <TabList
+    <Tabs cache defaultValue="npm">
+      <TabsList
         className={css({
           borderColor: 'page.border.100',
         })}
-        description="Bash commands"
       >
         <Tab value="npm">NPM</Tab>
         <Tab value="pnpm">PNPM</Tab>
         <Tab value="yarn">Yarn</Tab>
-      </TabList>
+      </TabsList>
 
       <div
         className={css({
@@ -26,10 +25,10 @@ export default function BashTabs(props: BashTabsProps) {
           mt: 4,
         })}
       >
-        <TabPanel tab="npm">
+        <TabPanel value="npm">
           <Code language="sh">{props.code}</Code>
         </TabPanel>
-        <TabPanel tab="pnpm">
+        <TabPanel value="pnpm">
           <Code language="sh">
             {props.code
               .replace('npm', 'pnpm')
@@ -37,7 +36,7 @@ export default function BashTabs(props: BashTabsProps) {
               .replace('npx', 'pnpm dlx')}
           </Code>
         </TabPanel>
-        <TabPanel tab="yarn">
+        <TabPanel value="yarn">
           <Code language="sh">
             {props.code.replace('npm', 'yarn').replace('install', 'add')}
           </Code>

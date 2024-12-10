@@ -1,4 +1,4 @@
-import { Tabs, TabList, Tab, TabPanel } from '@cerberus-design/react'
+import { Tabs, Tab, TabPanel, TabsList } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 
 const overrideStyles = css({
@@ -8,15 +8,15 @@ const overrideStyles = css({
 export function BasicTabsPreview() {
   return (
     <div className={overrideStyles}>
-      <Tabs active="overview">
-        <TabList description="Button detail pages">
+      <Tabs defaultValue="overview">
+        <TabsList>
           <Tab value="overview">Overview</Tab>
           <Tab value="features">Features</Tab>
           <Tab value="pricing">Pricing</Tab>
-        </TabList>
-        <TabPanel tab="overview">Overview content</TabPanel>
-        <TabPanel tab="features">Features content</TabPanel>
-        <TabPanel tab="pricing">Pricing content</TabPanel>
+        </TabsList>
+        <TabPanel value="overview">Overview content</TabPanel>
+        <TabPanel value="features">Features content</TabPanel>
+        <TabPanel value="pricing">Pricing content</TabPanel>
       </Tabs>
     </div>
   )
@@ -25,19 +25,15 @@ export function BasicTabsPreview() {
 export function SecondaryTabsPreview() {
   return (
     <div className={overrideStyles}>
-      <Tabs
-        active="overview"
-        id="secondary:tabs:preview"
-        palette="secondaryAction"
-      >
-        <TabList description="Button detail pages">
+      <Tabs defaultValue="overview-1" palette="secondaryAction">
+        <TabsList>
           <Tab value="overview-1">Overview</Tab>
           <Tab value="features-1">Features</Tab>
           <Tab value="pricing-1">Pricing</Tab>
-        </TabList>
-        <TabPanel tab="overview-1">Overview content</TabPanel>
-        <TabPanel tab="features-1">Features content</TabPanel>
-        <TabPanel tab="pricing-1">Pricing content</TabPanel>
+        </TabsList>
+        <TabPanel value="overview-1">Overview content</TabPanel>
+        <TabPanel value="features-1">Features content</TabPanel>
+        <TabPanel value="pricing-1">Pricing content</TabPanel>
       </Tabs>
     </div>
   )
@@ -46,15 +42,15 @@ export function SecondaryTabsPreview() {
 export function CachedTabsPreview() {
   return (
     <div className={overrideStyles}>
-      <Tabs cache id="tabs-cache-preview">
-        <TabList description="Button detail pages">
+      <Tabs cache defaultValue="features">
+        <TabsList>
           <Tab value="overview">Overview</Tab>
           <Tab value="features">Features</Tab>
           <Tab value="pricing">Pricing</Tab>
-        </TabList>
-        <TabPanel tab="overview">Overview content</TabPanel>
-        <TabPanel tab="features">Features content</TabPanel>
-        <TabPanel tab="pricing">Pricing content</TabPanel>
+        </TabsList>
+        <TabPanel value="overview">Overview content</TabPanel>
+        <TabPanel value="features">Features content</TabPanel>
+        <TabPanel value="pricing">Pricing content</TabPanel>
       </Tabs>
     </div>
   )
@@ -62,82 +58,69 @@ export function CachedTabsPreview() {
 
 export function CustomTabsPreview() {
   const tabData = [
-    { id: 'overview', value: 'overview', label: 'Wu' },
-    { id: 'features', value: 'features', label: 'Tang' },
-    { id: 'pricing', value: 'pricing', label: 'Forever' },
+    {
+      id: 'asphodel',
+      value: 'asphodel',
+      label: 'Asphodel',
+      content: 'A peaceful and quiet region of the underworld.',
+    },
+    {
+      id: 'elysium',
+      value: 'elysium',
+      label: 'Elysium',
+      content: 'A paradise for the souls of the heroic and the virtuous.',
+    },
+    {
+      id: 'tartarus',
+      value: 'tartarus',
+      label: 'Tartarus',
+      content: 'A deep abyss used as a dungeon of torment and suffering.',
+    },
   ]
 
   return (
     <div className={overrideStyles}>
-      <Tabs>
-        <TabList
-          description="Custom tabs example"
+      <Tabs defaultValue="asphodel">
+        <TabsList
           className={css({
+            bgColor: 'page.surface.200',
             borderBottom: 'none',
-            bgColor: 'black',
-            justifyContent: 'space-evenly',
-            mb: '4',
-            rounded: 'full',
+            rounded: 'md',
+            '& > :is([data-part=indicator])': {
+              bgColor: 'danger.surface.initial',
+              h: 'var(--height)',
+              rounded: 'md',
+              zIndex: 'base',
+            },
           })}
         >
           {tabData.map((tab) => (
             <Tab
-              key={tab.id}
               className={css({
-                borderTopLeftRadius: 'full',
-                borderTopRightRadius: 'full',
-                color: 'yellow',
-                h: '3.7rem',
-                rounded: 'full',
-                w: '1/3',
-                _before: {
-                  bgColor: 'initial',
-                  bottom: 'initial',
-                  content: '""',
-                  h: 'initial',
-                  position: 'initial',
-                  left: 'initial',
-                  right: 'initial',
-                  transitionProperty: 'initial',
-                  transitionDuration: 'initial',
-                  transitionTimingFunction: 'initial',
-                  w: 'initial',
-                  willChange: 'initial',
-                  zIndex: 'initial',
+                zIndex: 'decorator',
+                _selected: {
+                  color: 'danger.text.100',
                 },
                 _after: {
-                  borderTopLeftRadius: 'initial',
-                  borderTopRightRadius: 'initial',
-                  bottom: 'initial',
-                  bgColor: 'initial',
-                  content: '""',
-                  left: 'initial',
-                  position: 'initial',
-                  right: 'initial',
-                  h: 'initial',
-                  transition: 'initial',
-                  willChange: 'initial',
-                  w: 'initial',
-                  zIndex: 'initial',
-                },
-                _hover: {
-                  bgColor: 'yellow',
-                  color: 'black',
-                },
-                _selected: {
-                  bgColor: 'yellow',
-                  color: 'black',
+                  display: 'none',
                 },
               })}
+              key={tab.id}
               value={tab.value}
             >
               {tab.label}
             </Tab>
           ))}
-        </TabList>
+        </TabsList>
         {tabData.map((tab) => (
-          <TabPanel key={tab.id} tab={tab.value}>
-            {tab.label} content
+          <TabPanel
+            className={css({
+              paddingBlock: 'md',
+            })}
+            key={tab.id}
+            value={tab.value}
+          >
+            {tab.content}
           </TabPanel>
         ))}
       </Tabs>

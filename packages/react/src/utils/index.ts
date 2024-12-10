@@ -17,3 +17,5 @@ export function formatNotifyCount(count: number): string {
   if (count > 99) return '99+'
   return count.toString()
 }
+
+export * from './localStorage'
