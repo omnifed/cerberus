@@ -23,8 +23,9 @@ const overviewGroup: CategoriesList = {
       'Portal',
       'Show',
       'Text',
+      'Local Storage',
     ],
-    next: ['Text'],
+    next: ['Text', 'Local Storage'],
     new: ['Forms'],
   },
 }

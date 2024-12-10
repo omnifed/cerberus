@@ -32,7 +32,7 @@
     "name": "Navigation",
     "description": "Components that help users navigate through the app.",
     "items": ["Menu", "Tabs"],
-    "next": [],
+    "next": ["Tabs"],
     "new": ["Menu"]
   },
   "selection": {
