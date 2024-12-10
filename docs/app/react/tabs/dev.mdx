@@ -24,15 +24,15 @@ import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
 
 function BasicTabsPreview() {
   return (
-    <Tabs active="overview">
-      <TabsList description="Button detail pages">
+    <Tabs defaultValue="overview">
+      <TabsList>
         <Tab value="overview">Overview</Tab>
         <Tab value="features">Features</Tab>
         <Tab value="pricing">Pricing</Tab>
-      </TabList>
-      <TabPanel tab="overview">Overview content</TabPanel>
-      <TabPanel tab="features">Features content</TabPanel>
-      <TabPanel tab="pricing">Pricing content</TabPanel>
+      </TabsList>
+      <TabPanel value="overview">Overview content</TabPanel>
+      <TabPanel value="features">Features content</TabPanel>
+      <TabPanel value="pricing">Pricing content</TabPanel>
     </Tabs>
   )
 }
@@ -41,6 +41,8 @@ function BasicTabsPreview() {
 
 ## Palette
 
+The `palette` prop can be used to change the color of the Tabs.
+
 <CodePreview preview={<SecondaryTabsPreview />}>
 ```tsx title="tabs.tsx" {6}
 import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
@@ -48,15 +50,15 @@ import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
 function SecondaryTabsPreview() {
   return (
     <div className={overrideStyles}>
-      <Tabs active="overview" palette="secondaryAction">
-        <TabsList description="Button detail pages">
-          <Tab value="overview">Overview</Tab>
-          <Tab value="features">Features</Tab>
-          <Tab value="pricing">Pricing</Tab>
-        </TabList>
-        <TabPanel tab="overview">Overview content</TabPanel>
-        <TabPanel tab="features">Features content</TabPanel>
-        <TabPanel tab="pricing">Pricing content</TabPanel>
+      <Tabs defaultValue="overview-1" palette="secondaryAction">
+        <TabsList>
+          <Tab value="overview-1">Overview</Tab>
+          <Tab value="features-1">Features</Tab>
+          <Tab value="pricing-1">Pricing</Tab>
+        </TabsList>
+        <TabPanel value="overview-1">Overview content</TabPanel>
+        <TabPanel value="features-1">Features content</TabPanel>
+        <TabPanel value="pricing-1">Pricing content</TabPanel>
       </Tabs>
     </div>
   )
@@ -66,21 +68,23 @@ function SecondaryTabsPreview() {
 
 ## Cached Tabs
 
+The `cache` prop can be used to cache the active state of the Tabs in local storage.
+
 <CodePreview preview={<CachedTabsPreview />}>
 ```tsx title="tabs.tsx"
 import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
 
-function BasicTabsPreview() {
+function CachedTabsPreview() {
   return (
-    <Tabs cache>
-      <TabsList description="Button detail pages">
+    <Tabs cache defaultValue="features">
+      <TabsList>
         <Tab value="overview">Overview</Tab>
         <Tab value="features">Features</Tab>
         <Tab value="pricing">Pricing</Tab>
-      </TabList>
-      <TabPanel tab="overview">Overview content</TabPanel>
-      <TabPanel tab="features">Features content</TabPanel>
-      <TabPanel tab="pricing">Pricing content</TabPanel>
+      </TabsList>
+      <TabPanel value="overview">Overview content</TabPanel>
+      <TabPanel value="features">Features content</TabPanel>
+      <TabPanel value="pricing">Pricing content</TabPanel>
     </Tabs>
   )
 }
@@ -95,81 +99,67 @@ import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
 import { css } from '@cerberus/styled-system/css'
 
 function CustomTabsPreview() {
+  // Don't ever do this in production. At the very least, use JSON imports.
   const tabData = [
-    { id: 'overview', value: 'overview', label: 'Overview' },
-    { id: 'features', value: 'features', label: 'Features' },
-    { id: 'pricing', value: 'pricing', label: 'Pricing' },
+    {
+      id: 'asphodel',
+      label: 'Asphodel',
+      content: 'A peaceful and quiet region of the underworld.',
+    },
+    {
+      id: 'elysium',
+      label: 'Elysium',
+      content: 'A paradise for the souls of the heroic and the virtuous.',
+    },
+    {
+      id: 'tartarus',
+      label: 'Tartarus',
+      content: 'A deep abyss used as a dungeon of torment and suffering.',
+    },
   ]
 
   return (
-    <Tabs>
+    <Tabs defaultValue="asphodel">
       <TabsList
-        description="Custom tab list"
         className={css({
+          bgColor: 'page.surface.200',
           borderBottom: 'none',
-          bgColor: 'page.surface.initial',
-          justifyContent: 'space-evenly',
-          mb: '4',
-          rounded: 'full',
+          rounded: 'md',
+          '& > :is([data-part=indicator])': {
+            bgColor: 'danger.surface.initial',
+            h: 'var(--height)',
+            rounded: 'md',
+            zIndex: 'base',
+          },
         })}
       >
         {tabData.map((tab) => (
           <Tab
-            key={tab.id}
             className={css({
-              borderTopLeftRadius: 'full',
-              borderTopRightRadius: 'full',
-              h: '3.7rem',
-              rounded: 'full',
-              w: '1/3',
-              _before: {
-                bgColor: 'initial',
-                bottom: 'initial',
-                content: '""',
-                h: 'initial',
-                position: 'initial',
-                left: 'initial',
-                right: 'initial',
-                transitionProperty: 'initial',
-                transitionDuration: 'initial',
-                transitionTimingFunction: 'initial',
-                w: 'initial',
-                willChange: 'initial',
-                zIndex: 'initial',
+              zIndex: 'decorator',
+              _selected: {
+                color: 'danger.text.100',
               },
               _after: {
-                borderTopLeftRadius: 'initial',
-                borderTopRightRadius: 'initial',
-                bottom: 'initial',
-                bgColor: 'initial',
-                content: '""',
-                left: 'initial',
-                position: 'initial',
-                right: 'initial',
-                h: 'initial',
-                transition: 'initial',
-                willChange: 'initial',
-                w: 'initial',
-                zIndex: 'initial',
-              },
-              _hover: {
-                bgColor: 'action.navigation.hover',
-                color: 'page.surface.initial',
-              },
-              _selected: {
-                bgColor: 'action.bg.initial',
-                color: 'action.text.initial',
+                display: 'none',
               },
             })}
-            value={tab.value}
+            key={tab.id}
+            value={tab.id}
           >
             {tab.label}
           </Tab>
         ))}
-      </TabList>
+      </TabsList>
       {tabData.map((tab) => (
-        <TabPanel key={tab.id} tab={tab.value}>
-          {tab.label} content
+        <TabPanel
+          className={css({
+            paddingBlock: 'md',
+          })}
+          key={tab.id}
+          value={tab.id}
+        >
+          {tab.content}
         </TabPanel>
       ))}
     </Tabs>
@@ -182,78 +172,40 @@ function CustomTabsPreview() {
 
 ### Tabs
 
-```ts showLineNumbers=false
-export interface TabsProps {
-  active?: string
-  cache?: boolean
-  palette?: 'action' | 'secondaryAction'
-  id?: string
-}
-
-define function Tabs(props: TabsProps): ReactNode
-````
-
-#### Props
-
-The `Tabs` component accepts the following props:
-
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
-| active     |    | The `value` of the tab you want to be active by default. |
 | cache | `false`    | Whether to cache the active state of the tabs.    |
-| id |    | A unique `id` attribute used when there are multiple Tabs on a single page. |
+| defaultValue     |    | The initial value of the tabs when it is first rendered. Use when you do not need to control the state of the tabs.  |
+| deselectable | `false`    | Whether the active tab can be deselected. |
+| id |    | A unique identifier of the machine. |
+| ids|  | `TabsIDs` interface |
+| lazyMount | `false`    | Whether to enable lazy mounting. |
 | palette | `action`    | The color palette to use for the Tabs. |
+| unMountOnExit | `false`    | Whether to unmount on exit. |
+| uuid |    | A unique `id` to use when caching a single group of tabs. |
 
-### TabList
+#### TabsIDs
 
-```ts showLineNumbers=false
-interface TabsListProps extends HTMLAttributes<HTMLDivElement> {
-  description: string
+```ts
+interface TabsIDs {
+  root?: string
+  tabList?: string
+  trigger?: string
+  control?: string
+  indicator?: string
 }
-
-define function TabsList(props: TabListProps): ReactNode
-````
-
-#### Props
-
-The `TabsList` component accepts the following props:
-
-| Name     | Default | Description                                                   |
-| -------- | ------- | ------------------------------------------------------------- |
-| description     |    | A description of what the Tabs use case is for. |
+```
 
 ### Tab
 
-```ts showLineNumbers=false
-export interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  value: string
-}
-
-define function Tab(props: TabProps): ReactNode
-````
-
-#### Props
-
-The `Tab` component accepts the following props:
-
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
-| value     |    | An identifier that is used for both the active state and accessbility attributes. |
+| value     |    | The value of the tab |
+| disabled | `false`    | Whether the tab is disabled. |
+| asChild | | Use the provided child element as the default rendered element, combining their props and behavior. |
 
 ### TabPanel
 
-```ts showLineNumbers=false
-export interface TabPanelProps extends HTMLAttributes<HTMLDivElement> {
-  tab: string
-}
-
-define function TabPanel(props: TabPanelProps): ReactNode
-````
-
-#### Props
-
-The `TabPanel` component accepts the following props:
-
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
-| tab     |    | The Tab `value` identifier the panel is associated with. |
+| value     |    | The Tab `value` identifier the panel is associated with. |

@@ -104,7 +104,7 @@ describe('tabs recipe', () => {
 
   test('should have a base.indicator style', () => {
     expect(tabs.base?.indicator).toMatchObject({
-      bgColor: 'action.border.initial',
+      bgColor: 'colorPalette.border.initial',
       bottom: 0,
       h: '4px',
       w: 'var(--width)',

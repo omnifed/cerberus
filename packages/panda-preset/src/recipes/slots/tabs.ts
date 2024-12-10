@@ -88,7 +88,7 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
       ...focusStates,
     },
     indicator: {
-      bgColor: 'action.border.initial',
+      bgColor: 'colorPalette.border.initial',
       bottom: 0,
       h: '4px',
       w: 'var(--width)',
