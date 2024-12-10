@@ -8,14 +8,24 @@ describe('tabs recipe', () => {
     expect(tabs).toBeDefined()
   })
 
-  test('should have a base style', () => {
-    expect(tabs.base?.tabList).toMatchObject({
+  test('should have a base.root style', () => {
+    expect(tabs.base?.root).toMatchObject({
+      rounded: 'md',
+    })
+  })
+
+  test('should have a base.list style', () => {
+    expect(tabs.base?.list).toMatchObject({
       borderBottom: '1px solid',
       borderBottomColor: 'action.border.100',
       gap: '0',
+      position: 'relative',
       w: 'full',
     })
-    expect(tabs.base?.tab).toMatchObject({
+  })
+
+  test('should have a base.trigger style', () => {
+    expect(tabs.base?.trigger).toMatchObject({
       alignItems: 'center',
       display: 'inline-flex',
       borderTopLeftRadius: 'md',
@@ -28,30 +38,28 @@ describe('tabs recipe', () => {
       position: 'relative',
       pxi: '4',
       zIndex: 'base',
+      _disabled: {
+        cursor: 'not-allowed',
+        opacity: '0.5',
+      },
+      _readOnly: {
+        '&:not(button)': {
+          cursor: 'default',
+        },
+      },
+      _focusVisible: {
+        boxShadow: 'none',
+        outline: '3px solid',
+        outlineColor: 'action.border.focus',
+        outlineOffset: '2px',
+      },
       _motionSafe: {
         transition: 'all 200ms ease-in-out',
-        _before: {
-          transitionProperty: 'height',
-          transitionDuration: '200ms',
-          transitionTimingFunction: 'ease-in-out',
-        },
         _after: {
           transitionProperty: 'height',
           transitionDuration: '200ms',
           transitionTimingFunction: 'ease-in-out',
         },
-      },
-      _before: {
-        bgColor: 'colorPalette.border.initial',
-        bottom: '0',
-        content: '""',
-        h: '0',
-        position: 'absolute',
-        left: '0',
-        right: '0',
-        w: 'full',
-        willChange: 'height',
-        zIndex: 'decorator',
       },
       _after: {
         borderTopLeftRadius: 'md',
@@ -67,14 +75,23 @@ describe('tabs recipe', () => {
         willChange: 'height',
         zIndex: '-1',
       },
-      _focusVisible: {
-        boxShadow: 'none',
-        outline: '3px solid',
-        outlineColor: 'action.border.focus',
-        outlineOffset: '2px',
+      _hover: {
+        color: 'colorPalette.text.200',
+        _after: {
+          h: 'full',
+        },
+      },
+      _selected: {
+        color: 'colorPalette.text.200',
+        _before: {
+          h: '3px',
+        },
       },
     })
-    expect(tabs.base?.tabPanel).toMatchObject({
+  })
+
+  test('should have a base.content style', () => {
+    expect(tabs.base?.content).toMatchObject({
       rounded: 'md',
       _focusVisible: {
         boxShadow: 'none',
@@ -85,28 +102,32 @@ describe('tabs recipe', () => {
     })
   })
 
+  test('should have a base.indicator style', () => {
+    expect(tabs.base?.indicator).toMatchObject({
+      bgColor: 'action.border.initial',
+      bottom: 0,
+      h: '4px',
+      w: 'var(--width)',
+      zIndex: 'decorator',
+    })
+  })
+
   test('should have a variant for the tab', () => {
     expect(tabs.variants?.palette).toMatchObject({
       action: {
-        tab: {
+        trigger: {
           colorPalette: 'action',
-          _before: {
-            colorPalette: 'action',
-          },
-          _after: {
-            colorPalette: 'action',
-          },
+        },
+        indicator: {
+          colorPalette: 'action',
         },
       },
       secondaryAction: {
-        tab: {
+        trigger: {
           colorPalette: 'secondaryAction',
-          _before: {
-            colorPalette: 'secondaryAction',
-          },
-          _after: {
-            colorPalette: 'secondaryAction',
-          },
+        },
+        indicator: {
+          colorPalette: 'secondaryAction',
         },
       },
     })
