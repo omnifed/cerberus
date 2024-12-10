@@ -19,7 +19,7 @@ interface TabProps {
 
 export default function PageTabs(props: TabProps) {
   return (
-    <Tabs defaultValue="overview" lazyMount>
+    <Tabs cache uuid="components" defaultValue="overview">
       <TabsList className={css(tabListStyles)}>
         <Tab
           className={cx(css(tabOverrideStyles), css(smallTabStyles))}

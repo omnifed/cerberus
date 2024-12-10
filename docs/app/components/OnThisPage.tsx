@@ -72,8 +72,8 @@ export default function OnThisPage() {
           gap: 2,
         })}
       >
-        {links.map((link) => (
-          <li key={link.id}>
+        {links.map((link, idx) => (
+          <li key={`${link.id}-${idx}`}>
             <Link
               aria-current={
                 window.location.hash === link.id ? 'page' : undefined
