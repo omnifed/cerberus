@@ -5,13 +5,13 @@ This is the React component library for Cerberus.
 ## Installation
 
 ```bash
-pnpm add @cerberus-design/react
+pnpm add @cerberus/react
 ```
 
 ## Usage
 
 ```typescript
-import { Button } from '@cerberus-design/react'
+import { Button } from '@cerberus/react'
 
 function BasicExample() {
   return (
@@ -25,7 +25,7 @@ function BasicExample() {
 ### Basic Customization
 
 ```typescript
-import { Button } from '@cerberus-design/react'
+import { Button } from '@cerberus/react'
 
 function BasicExample() {
   return (
@@ -41,7 +41,7 @@ function BasicExample() {
 You can use [Panda-CSS](https://panda-css.com/) to customize the styles of the components.
 
 ```typescript
-import { Button } from '@cerberus-design/react'
+import { Button } from '@cerberus/react'
 import { css } from '../styled-system/css'
 
 function CustomButton() {

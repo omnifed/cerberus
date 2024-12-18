@@ -11,12 +11,12 @@ import {
   Span,
   Strong,
   type BoxProps,
-} from '@cerberus-design/styled-system/jsx'
+} from '@cerberus/styled-system/jsx'
 import { type PropsWithChildren } from 'react'
 
 /**
  * This module exports a component for rendering text utilizing the styled-system JSX utility.
- * @module @cerberus-design/react/Text
+ * @module @cerberus/react/Text
  */
 
 export type Headings = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
