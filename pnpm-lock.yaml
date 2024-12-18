@@ -287,27 +287,25 @@ importers:
       '@ark-ui/react':
         specifier: ^4.4.0
         version: 4.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@cerberus/icons':
-        specifier: npm:@jsr/cerberus__icons
-        version: '@jsr/cerberus__icons@0.5.2(react@18.3.1)'
       '@cerberus/panda-preset':
         specifier: npm:@jsr/cerberus__panda-preset
         version: '@jsr/cerberus__panda-preset@0.5.2(jsdom@24.1.3)(typescript@5.7.2)'
-      '@cerberus/styled-system':
-        specifier: npm:@cerberus-design/styled-system
-        version: '@cerberus-design/styled-system@0.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)'
       '@dnd-kit/core':
         specifier: ^6.1.0
         version: 6.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@pandacss/dev':
         specifier: '*'
         version: 0.39.0(jsdom@24.1.3)(typescript@5.7.2)
+    optionalDependencies:
+      '@cerberus/icons':
+        specifier: npm:@jsr/cerberus__icons
+        version: '@jsr/cerberus__icons@0.14.1(react@18.3.1)'
     devDependencies:
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../../configs
-      '@cerberus-design/styled-system':
-        specifier: workspace:*
+      '@cerberus/styled-system':
+        specifier: workspace:@cerberus-design/styled-system@*
         version: link:../styled-system
       '@microsoft/api-extractor':
         specifier: ^7.46.2
@@ -1067,12 +1065,6 @@ packages:
     peerDependencies:
       react: '>=16'
 
-  '@cerberus-design/styled-system@0.7.0':
-    resolution: {integrity: sha512-gdy8t6nFJBvxUqo6b6+FGjk7kXMW2I75UD1HWZVW1PkHY8J2ojeiZoddSiXXHojcS/LBWGMp8sJxfgiHklJjWQ==}
-    peerDependencies:
-      react: '*'
-      react-dom: '*'
-
   '@clack/core@0.3.4':
     resolution: {integrity: sha512-H4hxZDXgHtWTwV3RAVenqcC4VbJZNegbBjlPvzOzCouXtS2y3sDvlO3IsbrPNWuLWPPlYVYPghQdSF64683Ldw==}
 
@@ -1823,8 +1815,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@jsr/cerberus__icons@0.5.2':
-    resolution: {integrity: sha512-96Muwb7Y25400YSLTl2OLoxejWpRVDvNs27LesA6rjj/mbGQ7RpW4NMjY4GOKFdFWVdcSq6Bg7HHNBHF3vh3mw==, tarball: https://npm.jsr.io/~/11/@jsr/cerberus__icons/0.5.2.tgz}
+  '@jsr/cerberus__icons@0.14.1':
+    resolution: {integrity: sha512-4lvHEQmlf34YQbcUY8DzCLrFj5DCgW32RALtdvH+WVOqkn7YfHbxqBw/7jRj+ndR5ByeojN1jUu3Nin0hj749g==, tarball: https://npm.jsr.io/~/11/@jsr/cerberus__icons/0.14.1.tgz}
 
   '@jsr/cerberus__panda-preset@0.5.2':
     resolution: {integrity: sha512-MXVWVRVQ6x5dkbW5AjwxdSIdeL70d8CRUM3TYKRs8sPZg4s/gGRJigNUs5CMjEZEPZ6862zuOHAxTdmkcGVGyg==, tarball: https://npm.jsr.io/~/11/@jsr/cerberus__panda-preset/0.5.2.tgz}
@@ -7970,6 +7962,7 @@ snapshots:
       '@ibm/telemetry-js': 1.5.0
       prop-types: 15.8.1
       react: 18.3.1
+    optional: true
 
   '@carbon/icons-react@11.40.0(react@19.0.0)':
     dependencies:
@@ -7977,11 +7970,6 @@ snapshots:
       '@ibm/telemetry-js': 1.5.0
       prop-types: 15.8.1
       react: 19.0.0
-
-  '@cerberus-design/styled-system@0.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   '@clack/core@0.3.4':
     dependencies:
@@ -8567,11 +8555,12 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@jsr/cerberus__icons@0.5.2(react@18.3.1)':
+  '@jsr/cerberus__icons@0.14.1(react@18.3.1)':
     dependencies:
       '@carbon/icons-react': 11.40.0(react@18.3.1)
     transitivePeerDependencies:
       - react
+    optional: true
 
   '@jsr/cerberus__panda-preset@0.5.2(jsdom@24.1.3)(typescript@5.7.2)':
     dependencies:

@@ -6,8 +6,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"],
-      "@cerberus/*": ["node_modules/@cerberus-design/*"]
+      "@/*": ["./*"]
     }
   }
 }

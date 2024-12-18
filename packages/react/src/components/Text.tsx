@@ -10,19 +10,23 @@ import {
   Small,
   Span,
   Strong,
-  type BoxProps,
-} from '@cerberus-design/styled-system/jsx'
-import { type PropsWithChildren } from 'react'
+  type PProps,
+} from '@cerberus/styled-system/jsx'
+import { type HTMLAttributes, type PropsWithChildren } from 'react'
 
 /**
  * This module exports a component for rendering text utilizing the styled-system JSX utility.
- * @module @cerberus-design/react/Text
+ * @module @cerberus/react/Text
  */
 
 export type Headings = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 export type TextElements = 'p' | 'strong' | 'em' | 'small' | 'span'
 
-export interface TextProps extends BoxProps {
+// For some reason we have to use the HTMLParagraphElement type here
+// or else TS will fail for non-style props like 'id' or 'className'
+export interface TextProps
+  extends PProps,
+    HTMLAttributes<HTMLParagraphElement> {
   /**
    * The element to render as. Defaults to 'p'.
    */

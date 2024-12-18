@@ -23,6 +23,7 @@ import { AnimatingUploadIcon } from '../components/AnimatingUploadIcon'
 export type IconType = CarbonIconType | ElementType
 
 export interface DefinedIcons {
+  accordionIndicator?: IconType
   avatar?: IconType
   calendar?: IconType
   calendarPrev?: IconType
@@ -47,6 +48,7 @@ export interface DefinedIcons {
 }
 
 export const defaultIcons: DefinedIcons = {
+  accordionIndicator: ChevronDown,
   avatar: UserFilled,
   calendar: Calendar,
   calendarPrev: ChevronLeft,
