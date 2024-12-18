@@ -18,22 +18,22 @@
       "Tag",
       "Tooltip"
     ],
-    "next": ["Accordion"],
-    "new": ["Notifications", "Tooltip"]
+    "next": [],
+    "new": ["Accordion"]
   },
   "containment": {
     "name": "Containment",
     "description": "Components that contain other components.",
     "items": ["Confirm Modal", "Prompt Modal", "CTA Modal", "Modal", "Table"],
     "next": [],
-    "new": ["CTA Modal", "Confirm Modal"]
+    "new": []
   },
   "navigation": {
     "name": "Navigation",
     "description": "Components that help users navigate through the app.",
     "items": ["Menu", "Tabs"],
-    "next": ["Tabs"],
-    "new": ["Menu"]
+    "next": [],
+    "new": ["Tabs"]
   },
   "selection": {
     "name": "Selection",
@@ -46,8 +46,8 @@
       "Select",
       "Toggle"
     ],
-    "next": ["Date Picker"],
-    "new": []
+    "next": [],
+    "new": ["Date Picker"]
   },
   "inputs": {
     "name": "Inputs",
