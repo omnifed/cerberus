@@ -2,6 +2,7 @@
   "exclude": [
     "node_modules",
     "./docs/app/**/*.mdx",
+    "./figma",
     "eslint.config.mjs",
     "packages/*/tsup.config.ts"
   ],
