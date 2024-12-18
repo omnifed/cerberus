@@ -1,10 +1,10 @@
 import { Accordion as ArkAccordion } from '@ark-ui/react'
-import { ChevronDown } from '@cerberus/icons'
 import { cx } from '@cerberus/styled-system/css'
 import {
   accordion,
   type AccordionVariantProps,
 } from '@cerberus/styled-system/recipes'
+import { $cerberusIcons } from '../config/defineIcons'
 
 export type AccordionProps = ArkAccordion.RootProps & AccordionVariantProps
 
@@ -117,6 +117,7 @@ export function AccordionItemIndicator(props: AccordionItemIndicatorProps) {
   const { size, ...indicatorProps } = props
   const styles = accordion({ size })
   const iconSize = size === 'sm' ? 16 : '24'
+  const { accordionIndicator: ChevronDown } = $cerberusIcons
 
   return (
     <ArkAccordion.ItemIndicator
