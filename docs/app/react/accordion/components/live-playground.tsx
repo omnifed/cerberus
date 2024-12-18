@@ -33,6 +33,9 @@ AccordionItemGroup,
 type AccordionItemGroupProps
 } from '@cerberus/react'
 
+/**
+ * Custom Accordion where the children is the content of the AccordionItemGroup
+ **/
 export function MyAccordion(props: AccordionItemGroupProps) {
   return (
     <Accordion>
