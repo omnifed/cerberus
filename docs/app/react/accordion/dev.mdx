@@ -86,6 +86,7 @@ export function CustomAccordion() {
 
 ```ts showLineNumbers=false
 export interface AccordionItemGroupBaseProps {
+  children: ReactNode
   heading: string
   indicatorPosition?: 'start' | 'end'
   size: 'sm' | 'lg'
@@ -97,7 +98,8 @@ export type AccordionItemGroupProps = AccordionItemGroupBaseProps &
 
 | Name     | Default    |       Description                                   |
 | -------- | ------- | ------------------------------------------------------ |
+| children |         | The content of the accordion item.                  |
 | heading  |         | The heading of the accordion item.                    |
-| value    |         | The value of the accordion item.                      |
+| value    |         | The value of the accordion item. Must be unique.                      |
 | size     | `lg`    | The size of the accordion item.                       |
 | indicatorPosition | `end` | The position of the indicator.           |
