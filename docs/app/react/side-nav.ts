@@ -25,8 +25,8 @@ const overviewGroup: CategoriesList = {
       'Text',
       'Local Storage',
     ],
-    next: ['Text', 'Local Storage'],
-    new: ['Forms'],
+    next: [],
+    new: ['Text', 'Local Storage'],
   },
 }
 const hooksGroup: CategoriesList = {
@@ -43,7 +43,7 @@ const hooksGroup: CategoriesList = {
       'use-toggle',
     ],
     next: [],
-    new: ['use-date', 'use-root-colors'],
+    new: [],
   },
 }
 
