@@ -96,32 +96,30 @@ const textTags: (Headings | TextElements)[] = [
   'span',
 ]
 
-const [h1, h2, h3, h4, h5, h6, p, strong, em, small, span] = textTags.map(
-  (tag) => {
-    return definePattern({
-      description: `A ${tag} element`,
-      jsxElement: tag,
-      transform(props) {
-        return props
-      },
-    })
-  },
-)
+const textTagList: PatternConfig[] = textTags.map((tag) => {
+  return definePattern({
+    description: `A ${tag} element`,
+    jsxElement: tag,
+    transform(props) {
+      return props
+    },
+  })
+})
 
 export const patterns = {
   extend: {
     animateIn,
     scrollable,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    strong,
-    em,
-    small,
-    span,
+    h1: textTagList[0],
+    h2: textTagList[1],
+    h3: textTagList[2],
+    h4: textTagList[3],
+    h5: textTagList[4],
+    h6: textTagList[5],
+    p: textTagList[6],
+    strong: textTagList[7],
+    em: textTagList[8],
+    small: textTagList[9],
+    span: textTagList[10],
   },
 }
