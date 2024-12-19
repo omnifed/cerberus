@@ -14,7 +14,7 @@
     "@cerberus-design/icons": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/styled-system": "workspace:*",
-    "@tsparticles/engine": "^3.5.0",
+    "@tsparticles/engine": "^3.7.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.5.0",
     "hast-util-to-jsx-runtime": "^2.3.2",
