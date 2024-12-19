@@ -130,7 +130,7 @@ importers:
         version: link:../packages/panda-preset
       '@csstools/postcss-cascade-layers':
         specifier: ^5.0.0
-        version: 5.0.0(postcss@8.4.47)
+        version: 5.0.0(postcss@8.4.49)
       '@expressive-code/plugin-line-numbers':
         specifier: ^0.38.3
         version: 0.38.3
@@ -138,11 +138,11 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(webpack@5.91.0)
       '@mdx-js/react':
-        specifier: ^3.0.1
-        version: 3.0.1(@types/react@18.3.1)(react@19.0.0-rc.1)
+        specifier: ^3.1.0
+        version: 3.1.0(@types/react@18.3.1)(react@19.0.0-rc.1)
       '@next/mdx':
-        specifier: ^15.0.1
-        version: 15.0.2(@mdx-js/loader@3.0.1(webpack@5.91.0))(@mdx-js/react@3.0.1(@types/react@18.3.1)(react@19.0.0-rc.1))
+        specifier: ^15.1.1
+        version: 15.1.2(@mdx-js/loader@3.0.1(webpack@5.91.0))(@mdx-js/react@3.1.0(@types/react@18.3.1)(react@19.0.0-rc.1))
       '@pandacss/dev':
         specifier: ^0.49.0
         version: 0.49.0(jsdom@24.1.3)(typescript@5.7.2)
@@ -169,7 +169,7 @@ importers:
         version: 1.4.1(next@15.0.4(@babel/core@7.25.2)(react-dom@19.0.0-rc.1(react@19.0.0-rc.1))(react@19.0.0-rc.1))(react@19.0.0-rc.1)
       autoprefixer:
         specifier: ^10.4.19
-        version: 10.4.19(postcss@8.4.47)
+        version: 10.4.19(postcss@8.4.49)
       color-space:
         specifier: ^2.0.1
         version: 2.0.1
@@ -186,8 +186,8 @@ importers:
         specifier: ^7.1.0
         version: 7.1.0
       rehype-expressive-code:
-        specifier: ^0.38.1
-        version: 0.38.1
+        specifier: ^0.38.3
+        version: 0.38.3
       rehype-slug:
         specifier: ^6.0.0
         version: 6.0.0
@@ -1600,23 +1600,20 @@ packages:
     resolution: {integrity: sha512-2b/g5hRmpbb1o4GnTZax9N9m0FXzz9OV42ZzI4rDDMDuHUqigAiQCEWChBWCY4ztAGVRjoWT19v0yMmc5/L5kA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@expressive-code/core@0.38.1':
-    resolution: {integrity: sha512-0wlYtJKVcuhm6/QkvPGh89SOZxPQl81U0E1DFmBKhe/up/vB20X/JADgXqRLLcb6CvVYjysCxmJbR0ZnNOccyg==}
-
   '@expressive-code/core@0.38.3':
     resolution: {integrity: sha512-s0/OtdRpBONwcn23O8nVwDNQqpBGKscysejkeBkwlIeHRLZWgiTVrusT5Idrdz1d8cW5wRk9iGsAIQmwDPXgJg==}
 
-  '@expressive-code/plugin-frames@0.38.1':
-    resolution: {integrity: sha512-k0Gi7netbvCGZe6qKICX+KGc61O7jK0TJcxfNNCBy4Y5seDJxV8QXS1OEjy7pNg3KXd4dL98KIiJulO5yJSMVQ==}
+  '@expressive-code/plugin-frames@0.38.3':
+    resolution: {integrity: sha512-qL2oC6FplmHNQfZ8ZkTR64/wKo9x0c8uP2WDftR/ydwN/yhe1ed7ZWYb8r3dezxsls+tDokCnN4zYR594jbpvg==}
 
   '@expressive-code/plugin-line-numbers@0.38.3':
     resolution: {integrity: sha512-QbK9NL44ST9w5ANVEu0a7fkjlq+fXgxyPqiSyFC4Nw/sAXd0MUwT1C8V0qlve4pZYLz53CR9tn4JQQbR0Z1tOg==}
 
-  '@expressive-code/plugin-shiki@0.38.1':
-    resolution: {integrity: sha512-ZQWylPr53+neQqOM7lFqPOWAsN6i7VPhowEX05i2aTAa43hdJKLyuN78i5R+gkTArP0O33s0qXqQDYVc/JbvIA==}
+  '@expressive-code/plugin-shiki@0.38.3':
+    resolution: {integrity: sha512-kqHnglZeesqG3UKrb6e9Fq5W36AZ05Y9tCREmSN2lw8LVTqENIeCIkLDdWtQ5VoHlKqwUEQFTVlRehdwoY7Gmw==}
 
-  '@expressive-code/plugin-text-markers@0.38.1':
-    resolution: {integrity: sha512-VhzOMYanY0cGN6WrYEs4Cyx21vKsN0TuZ5/dd8SRbkImCSbZIlSakU2nrU0vHJAajPoA0OE+FVfUeLNpovtfdw==}
+  '@expressive-code/plugin-text-markers@0.38.3':
+    resolution: {integrity: sha512-dPK3+BVGTbTmGQGU3Fkj3jZ3OltWUAlxetMHI6limUGCWBCucZiwoZeFM/WmqQa71GyKRzhBT+iEov6kkz2xVA==}
 
   '@fastify/busboy@2.1.1':
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
@@ -1829,8 +1826,8 @@ packages:
   '@mdx-js/mdx@3.0.1':
     resolution: {integrity: sha512-eIQ4QTrOWyL3LWEe/bu6Taqzq2HQvHcyTMaOrI95P2/LmJE7AsfPfgJGuFLPVqBUE1BC1rik3VIhU+s9u72arA==}
 
-  '@mdx-js/react@3.0.1':
-    resolution: {integrity: sha512-9ZrPIU4MGf6et1m1ov3zKf+q9+deetI51zprKB1D/z3NOb+rUxxtEl3mCjW5wTGh6VhRdwPueh1oRzi6ezkA8A==}
+  '@mdx-js/react@3.1.0':
+    resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
@@ -1854,8 +1851,8 @@ packages:
   '@next/eslint-plugin-next@15.0.3':
     resolution: {integrity: sha512-3Ln/nHq2V+v8uIaxCR6YfYo7ceRgZNXfTd3yW1ukTaFbO+/I8jNakrjYWODvG9BuR2v5kgVtH/C8r0i11quOgw==}
 
-  '@next/mdx@15.0.2':
-    resolution: {integrity: sha512-CANCD3snLdLJxCcqn0DBAl5qMUBvAPdWA2cWljt+lnVtcvIfGXRVLwraqSOHBjddvZ3ClCYcf3AvjEBHA4NBxA==}
+  '@next/mdx@15.1.2':
+    resolution: {integrity: sha512-sCmC+yokioox9xnk0tiyHPLskzMXFzdkIRg3eUi1DgtJKOIR15hCQoDyi0FE3z3K6ZEX+e/rh8c8JHvgGSCyqA==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
@@ -4366,8 +4363,8 @@ packages:
     resolution: {integrity: sha512-VyhnebXciFV2DESc+p6B+y0LjSm0krU4OgJN44qFAhBY0TJ+1V61tYD2+wHusZ6F9n5K+vl8k0sTy7PEfV4qpg==}
     engines: {node: '>=16.17'}
 
-  expressive-code@0.38.1:
-    resolution: {integrity: sha512-IWW6pWZ3XZOZrW4C5lwwQFH8mYLw2m2uOBagYPryZaSU/IbYY0nOeeGf6sHuYjQbbyX779jp2kAWdDxUvPLdoQ==}
+  expressive-code@0.38.3:
+    resolution: {integrity: sha512-COM04AiUotHCKJgWdn7NtW2lqu8OW8owAidMpkXt1qxrZ9Q2iC7+tok/1qIn2ocGnczvr9paIySgGnEwFeEQ8Q==}
 
   extend@3.0.2:
     resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
@@ -6072,8 +6069,8 @@ packages:
   rehype-autolink-headings@7.1.0:
     resolution: {integrity: sha512-rItO/pSdvnvsP4QRB1pmPiNHUskikqtPojZKJPPPAVx9Hj8i8TwMBhofrrAYRhYOOBZH9tgmG5lPqDLuIWPWmw==}
 
-  rehype-expressive-code@0.38.1:
-    resolution: {integrity: sha512-RuSlIIDW2yLNYob4plodem4kzW5kO/mM7FYpZjiEs7T5pPglvcdr67Te0a984nv+OrizK86WCwIm/Zxm+z4yGQ==}
+  rehype-expressive-code@0.38.3:
+    resolution: {integrity: sha512-RYSSDkMBikoTbycZPkcWp6ELneANT4eTpND1DSRJ6nI2eVFUwTBDCvE2vO6jOOTaavwnPiydi4i/87NRyjpdOA==}
 
   rehype-slug@6.0.0:
     resolution: {integrity: sha512-lWyvf/jwu+oS5+hL5eClVd3hNdmwM1kAC0BUvEGD19pajQMIzcNUd/k9GsfQ+FfECvX+JE+e9/btsKH0EjJT6A==}
@@ -7979,10 +7976,10 @@ snapshots:
       postcss: 8.4.49
       postcss-selector-parser: 6.1.1
 
-  '@csstools/postcss-cascade-layers@5.0.0(postcss@8.4.47)':
+  '@csstools/postcss-cascade-layers@5.0.0(postcss@8.4.49)':
     dependencies:
       '@csstools/selector-specificity': 4.0.0(postcss-selector-parser@6.1.1)
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-selector-parser: 6.1.1
 
   '@csstools/selector-specificity@3.1.1(postcss-selector-parser@6.1.1)':
@@ -8295,18 +8292,6 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@expressive-code/core@0.38.1':
-    dependencies:
-      '@ctrl/tinycolor': 4.1.0
-      hast-util-select: 6.0.3
-      hast-util-to-html: 9.0.3
-      hast-util-to-text: 4.0.2
-      hastscript: 9.0.0
-      postcss: 8.4.47
-      postcss-nested: 6.2.0(postcss@8.4.47)
-      unist-util-visit: 5.0.0
-      unist-util-visit-parents: 6.0.1
-
   '@expressive-code/core@0.38.3':
     dependencies:
       '@ctrl/tinycolor': 4.1.0
@@ -8319,22 +8304,22 @@ snapshots:
       unist-util-visit: 5.0.0
       unist-util-visit-parents: 6.0.1
 
-  '@expressive-code/plugin-frames@0.38.1':
+  '@expressive-code/plugin-frames@0.38.3':
     dependencies:
-      '@expressive-code/core': 0.38.1
+      '@expressive-code/core': 0.38.3
 
   '@expressive-code/plugin-line-numbers@0.38.3':
     dependencies:
       '@expressive-code/core': 0.38.3
 
-  '@expressive-code/plugin-shiki@0.38.1':
+  '@expressive-code/plugin-shiki@0.38.3':
     dependencies:
-      '@expressive-code/core': 0.38.1
+      '@expressive-code/core': 0.38.3
       shiki: 1.24.1
 
-  '@expressive-code/plugin-text-markers@0.38.1':
+  '@expressive-code/plugin-text-markers@0.38.3':
     dependencies:
-      '@expressive-code/core': 0.38.1
+      '@expressive-code/core': 0.38.3
 
   '@fastify/busboy@2.1.1': {}
 
@@ -8585,7 +8570,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.0.1(@types/react@18.3.1)(react@19.0.0-rc.1)':
+  '@mdx-js/react@3.1.0(@types/react@18.3.1)(react@19.0.0-rc.1)':
     dependencies:
       '@types/mdx': 2.0.13
       '@types/react': 18.3.1
@@ -8632,12 +8617,12 @@ snapshots:
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/mdx@15.0.2(@mdx-js/loader@3.0.1(webpack@5.91.0))(@mdx-js/react@3.0.1(@types/react@18.3.1)(react@19.0.0-rc.1))':
+  '@next/mdx@15.1.2(@mdx-js/loader@3.0.1(webpack@5.91.0))(@mdx-js/react@3.1.0(@types/react@18.3.1)(react@19.0.0-rc.1))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
       '@mdx-js/loader': 3.0.1(webpack@5.91.0)
-      '@mdx-js/react': 3.0.1(@types/react@18.3.1)(react@19.0.0-rc.1)
+      '@mdx-js/react': 3.1.0(@types/react@18.3.1)(react@19.0.0-rc.1)
 
   '@next/swc-darwin-arm64@15.0.4':
     optional: true
@@ -11392,6 +11377,16 @@ snapshots:
       postcss: 8.4.47
       postcss-value-parser: 4.2.0
 
+  autoprefixer@10.4.19(postcss@8.4.49):
+    dependencies:
+      browserslist: 4.23.0
+      caniuse-lite: 1.0.30001612
+      fraction.js: 4.3.7
+      normalize-range: 0.1.2
+      picocolors: 1.0.0
+      postcss: 8.4.49
+      postcss-value-parser: 4.2.0
+
   available-typed-arrays@1.0.7:
     dependencies:
       possible-typed-array-names: 1.0.0
@@ -12612,12 +12607,12 @@ snapshots:
       signal-exit: 4.1.0
       strip-final-newline: 3.0.0
 
-  expressive-code@0.38.1:
+  expressive-code@0.38.3:
     dependencies:
-      '@expressive-code/core': 0.38.1
-      '@expressive-code/plugin-frames': 0.38.1
-      '@expressive-code/plugin-shiki': 0.38.1
-      '@expressive-code/plugin-text-markers': 0.38.1
+      '@expressive-code/core': 0.38.3
+      '@expressive-code/plugin-frames': 0.38.3
+      '@expressive-code/plugin-shiki': 0.38.3
+      '@expressive-code/plugin-text-markers': 0.38.3
 
   extend@3.0.2: {}
 
@@ -14498,11 +14493,6 @@ snapshots:
       postcss: 8.4.49
       postcss-selector-parser: 6.0.15
 
-  postcss-nested@6.2.0(postcss@8.4.47):
-    dependencies:
-      postcss: 8.4.47
-      postcss-selector-parser: 6.1.2
-
   postcss-nested@6.2.0(postcss@8.4.49):
     dependencies:
       postcss: 8.4.49
@@ -14751,9 +14741,9 @@ snapshots:
       unified: 11.0.4
       unist-util-visit: 5.0.0
 
-  rehype-expressive-code@0.38.1:
+  rehype-expressive-code@0.38.3:
     dependencies:
-      expressive-code: 0.38.1
+      expressive-code: 0.38.3
 
   rehype-slug@6.0.0:
     dependencies:
