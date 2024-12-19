@@ -1,25 +1,14 @@
-import { describe, test, expect, afterEach, spyOn } from 'bun:test'
+import { describe, test, expect, spyOn } from 'bun:test'
 import { defineIcons, $cerberusIcons } from '@cerberus-design/react'
 import { WarningFilled, WarningAlt, Checkmark } from '@cerberus-design/icons'
 
 describe('defineIcons', () => {
-  const defaultIcons = {
-    invalid: WarningFilled,
-    toggleChecked: Checkmark,
-  }
-
-  afterEach(() => {
-    defineIcons(defaultIcons)
-  })
-
   test('should be a function', () => {
     expect(typeof defineIcons).toBe('function')
   })
 
   test('should define a custom set of icons', () => {
-    const customIcons = defineIcons({
-      invalid: WarningAlt,
-    })
+    const customIcons = defineIcons($cerberusIcons)
     expect(customIcons.invalid).toEqual(WarningAlt)
   })
 

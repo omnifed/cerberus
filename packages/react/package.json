@@ -19,9 +19,6 @@
     "react": "*",
     "react-dom": "*"
   },
-  "optionalDependencies": {
-    "@cerberus/icons": "npm:@jsr/cerberus__icons"
-  },
   "dependencies": {
     "@ark-ui/react": "^4.4.0",
     "@cerberus/icons": "workspace:@cerberus-design/icons@*",
