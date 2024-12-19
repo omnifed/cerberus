@@ -59,7 +59,7 @@ export function Toggle(props: ToggleProps) {
   const { size, describedBy, ...nativeProps } = props
   const styles = toggle({ size })
   const { invalid, ...state } = useFieldContext()
-  const Icon = $cerberusIcons.toggleChecked
+  const { toggleChecked: Icon } = $cerberusIcons
 
   return (
     <span
