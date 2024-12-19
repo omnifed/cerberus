@@ -7,7 +7,7 @@ import {
   type ToggleVariantProps,
 } from '@cerberus/styled-system/recipes'
 import type { InputHTMLAttributes } from 'react'
-import { $cerberusIcons } from '../config/defineIcons'
+// import { $cerberusIcons } from '../config/defineIcons'
 import { useFieldContext } from '../context/field'
 
 /**
@@ -59,7 +59,7 @@ export function Toggle(props: ToggleProps) {
   const { size, describedBy, ...nativeProps } = props
   const styles = toggle({ size })
   const { invalid, ...state } = useFieldContext()
-  const { toggleChecked: CheckedIcon } = $cerberusIcons
+  // const { toggleChecked: CheckedIcon } = $cerberusIcons
 
   return (
     <span
@@ -83,7 +83,7 @@ export function Toggle(props: ToggleProps) {
           }),
         )}
       >
-        <CheckedIcon />
+        {/* <CheckedIcon /> */}
       </span>
     </span>
   )
