@@ -88,7 +88,6 @@ describe('Select', () => {
         </Select>
       </Field>,
     )
-    screen.debug()
     expect(
       screen
         .getByRole('combobox')
