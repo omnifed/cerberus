@@ -1,3 +1,5 @@
+'use client'
+
 import type {
   HTMLAttributes,
   MouseEventHandler,
@@ -10,7 +12,7 @@ import {
   tag,
   type TagVariantProps,
 } from '@cerberus/styled-system/recipes'
-import { $cerberusIcons } from '../config/defineIcons'
+import { useCerberusContext } from '../context/cerberus'
 
 /**
  * This module contains the tag component.
@@ -71,7 +73,8 @@ export function Tag(props: PropsWithChildren<TagProps>): JSX.Element {
   const isClosable = Boolean(onClick)
   const shape = isClosable ? 'pill' : initShape
   const closableStyles = isClosable ? closableCss : ''
-  const { close: Close } = $cerberusIcons
+  const { icons } = useCerberusContext()
+  const { close: Close } = icons
 
   return (
     <span
