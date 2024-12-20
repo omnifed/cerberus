@@ -56,6 +56,7 @@ export * from './components/Show'
 
 // context
 
+export * from './context/cerberus'
 export * from './context/confirm-modal'
 export * from './context/cta-modal'
 export * from './context/feature-flags'
