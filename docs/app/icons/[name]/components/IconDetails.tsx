@@ -1,4 +1,4 @@
-import * as Icons from '@cerberus-design/icons'
+import * as icons from '@cerberus-design/icons'
 import {
   container,
   grid,
@@ -15,6 +15,7 @@ interface IconDetailsProps {
 }
 
 export default function IconDetails(props: IconDetailsProps) {
+  const { cerberusIcons: _, ...Icons } = icons
   const Icon = Icons[props.iconName as keyof typeof Icons]
 
   return (

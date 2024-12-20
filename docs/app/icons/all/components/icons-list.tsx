@@ -1,8 +1,9 @@
 import { css, cx } from '@cerberus/styled-system/css'
 import { grid, gridItem, vstack } from '@cerberus/styled-system/patterns'
-import * as Icons from '@cerberus-design/icons'
+import * as icons from '@cerberus-design/icons'
 import Link from 'next/link'
 
+const { cerberusIcons: _, ...Icons } = icons
 const listOfIcons = Object.entries(Icons)
 
 interface IconsListProps {
