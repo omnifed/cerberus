@@ -1,6 +1,7 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen, waitFor } from '@testing-library/react'
 import {
+  CerberusProvider,
   DatePicker,
   DatePickerLabel,
   DatePickerInput,
@@ -8,22 +9,26 @@ import {
   Field,
   RangePickerInput,
 } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
+import { makeConfig, setupStrictMode } from '@/utils'
 import userEvent from '@testing-library/user-event'
 
 describe('DatePicker', () => {
   setupStrictMode()
   afterEach(cleanup)
 
+  const config = makeConfig()
+
   test('renders a date picker', () => {
     render(
-      <Field>
-        <DatePicker id="start_date" name="start_date">
-          <DatePickerLabel>Start date</DatePickerLabel>
-          <DatePickerInput />
-          <DatePickerCalendar />
-        </DatePicker>
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <DatePicker id="start_date" name="start_date">
+            <DatePickerLabel>Start date</DatePickerLabel>
+            <DatePickerInput />
+            <DatePickerCalendar />
+          </DatePicker>
+        </Field>
+      </CerberusProvider>,
     )
 
     expect(screen.getByText('Start date')).toBeTruthy()
@@ -33,13 +38,15 @@ describe('DatePicker', () => {
 
   test('renders a range picker', () => {
     render(
-      <Field>
-        <DatePicker id="range_dates" name="range_dates" selectionMode="range">
-          <DatePickerLabel>Search range</DatePickerLabel>
-          <RangePickerInput />
-          <DatePickerCalendar />
-        </DatePicker>
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <DatePicker id="range_dates" name="range_dates" selectionMode="range">
+            <DatePickerLabel>Search range</DatePickerLabel>
+            <RangePickerInput />
+            <DatePickerCalendar />
+          </DatePicker>
+        </Field>
+      </CerberusProvider>,
     )
 
     expect(screen.getByText('Search range')).toBeTruthy()
@@ -49,13 +56,15 @@ describe('DatePicker', () => {
 
   test('shows a calendar when the trigger button is clicked', async () => {
     render(
-      <Field>
-        <DatePicker id="start_date" name="start_date">
-          <DatePickerLabel>Start date</DatePickerLabel>
-          <DatePickerInput />
-          <DatePickerCalendar />
-        </DatePicker>
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <DatePicker id="start_date" name="start_date">
+            <DatePickerLabel>Start date</DatePickerLabel>
+            <DatePickerInput />
+            <DatePickerCalendar />
+          </DatePicker>
+        </Field>
+      </CerberusProvider>,
     )
 
     await userEvent.click(screen.getByRole('button'))

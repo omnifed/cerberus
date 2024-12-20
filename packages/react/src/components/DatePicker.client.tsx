@@ -5,25 +5,26 @@ import {
   type DatePickerContentProps,
   type DatePickerInputProps,
   type DatePickerRootProps,
+  type DatePickerTriggerProps,
+  type DatePickerViewControlProps,
   type DatePickerViewProps,
-  // type DateValue,
 } from '@ark-ui/react'
 import { Portal } from './Portal'
-// import { useCallback } from 'react'
-import { datePicker } from '@cerberus/styled-system/recipes'
-import { cx } from '@cerberus/styled-system/css'
+import { datePicker, iconButton } from '@cerberus/styled-system/recipes'
+import { css, cx } from '@cerberus/styled-system/css'
 import { useFieldContext } from '../context/field'
 import {
-  DatePickerTrigger,
   DatePickerView,
   DatePickerContext,
-  DatePickerViewControlGroup,
   DatePickerTable,
   DatePickerTableHeader,
   DatePickerTableCellTrigger,
   DatePickerTableCell,
+  DatePickerViewControl,
 } from './DatePicker.server'
-// import { formatISOToMilitary } from '../hooks/useDate'
+import { IconButton } from './IconButton'
+import { Button } from './Button'
+import { useCerberusContext } from '../context/cerberus'
 
 /**
  * This module contains the DatePicker client family components.
@@ -66,6 +67,77 @@ export function DatePicker(props: DatePickerRootProps) {
         placement: 'bottom-start',
       }}
     />
+  )
+}
+
+/**
+ * An abstraction of the DatePicker control that contains the prev, view, and
+ * next triggers which control the calendar output.
+ * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <DatePickerViewControlGroup />
+ * ```
+ */
+export function DatePickerViewControlGroup(props: DatePickerViewControlProps) {
+  const { icons } = useCerberusContext()
+  const { calendarPrev: PrevIcon, calendarNext: NextIcon } = icons
+  return (
+    <DatePickerViewControl {...props}>
+      <ArkDP.PrevTrigger asChild>
+        <IconButton ariaLabel="Previous" size="sm">
+          <PrevIcon />
+        </IconButton>
+      </ArkDP.PrevTrigger>
+
+      <ArkDP.ViewTrigger asChild>
+        <Button
+          className={css({
+            h: '2rem',
+            paddingInline: 'md',
+          })}
+          shape="rounded"
+          size="sm"
+          usage="ghost"
+        >
+          <ArkDP.RangeText />
+        </Button>
+      </ArkDP.ViewTrigger>
+
+      <ArkDP.NextTrigger asChild>
+        <IconButton ariaLabel="Next" size="sm">
+          <NextIcon />
+        </IconButton>
+      </ArkDP.NextTrigger>
+    </DatePickerViewControl>
+  )
+}
+
+/**
+ * The trigger component for the DatePicker which opens the calendar.
+ * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * @example
+ * ```tsx
+ * <DatePickerTrigger />
+ * ```
+ */
+export function DatePickerTrigger(props: DatePickerTriggerProps) {
+  const { icons } = useCerberusContext()
+  const { calendar: CalendarIcon } = icons
+  return (
+    <ArkDP.Trigger
+      {...props}
+      className={cx(
+        props.className,
+        iconButton({
+          size: 'sm',
+          usage: 'ghost',
+        }),
+        datePickerStyles.trigger,
+      )}
+    >
+      <CalendarIcon />
+    </ArkDP.Trigger>
   )
 }
 
