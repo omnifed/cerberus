@@ -247,18 +247,8 @@ importers:
   packages/icons:
     dependencies:
       '@carbon/icons-react':
-        specifier: ^11.53.0
+        specifier: ^11.40.0
         version: 11.53.0(react@19.0.0)
-    devDependencies:
-      '@cerberus-design/configs':
-        specifier: workspace:*
-        version: link:../../configs
-      '@microsoft/api-extractor':
-        specifier: ^7.46.2
-        version: 7.46.2(@types/node@22.10.2)
-      tsup:
-        specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.46.2(@types/node@22.10.2))(postcss@8.4.49)(typescript@5.7.2)
 
   packages/panda-preset:
     dependencies:
@@ -3656,6 +3646,7 @@ packages:
 
   bun@1.1.6:
     resolution: {integrity: sha512-0oKx5dVZ8LpsAvXdW2DTR5Zt3KS81Ifjx9T2ma7RjDPKbvGIlDXOPt++tr1SndxhFNFsMFeE4i6VKvlL7IR0Zw==}
+    cpu: [arm64, x64]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -15470,30 +15461,6 @@ snapshots:
       '@microsoft/api-extractor': 7.46.2(@types/node@22.10.2)
       postcss: 8.4.49
       typescript: 5.4.5
-    transitivePeerDependencies:
-      - supports-color
-      - ts-node
-
-  tsup@8.0.2(@microsoft/api-extractor@7.46.2(@types/node@22.10.2))(postcss@8.4.49)(typescript@5.7.2):
-    dependencies:
-      bundle-require: 4.0.3(esbuild@0.19.12)
-      cac: 6.7.14
-      chokidar: 3.6.0
-      debug: 4.3.4
-      esbuild: 0.19.12
-      execa: 5.1.1
-      globby: 11.1.0
-      joycon: 3.1.1
-      postcss-load-config: 4.0.2(postcss@8.4.49)
-      resolve-from: 5.0.0
-      rollup: 4.16.4
-      source-map: 0.8.0-beta.0
-      sucrase: 3.35.0
-      tree-kill: 1.2.2
-    optionalDependencies:
-      '@microsoft/api-extractor': 7.46.2(@types/node@22.10.2)
-      postcss: 8.4.49
-      typescript: 5.7.2
     transitivePeerDependencies:
       - supports-color
       - ts-node
