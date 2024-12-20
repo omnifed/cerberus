@@ -46,7 +46,7 @@ export function MyCheckbox(props: CheckboxProps) {
     >
       <Label
         className={hstack({
-          justify: 'flex-start',
+          justify: 'flex-start !important',
           gap: 0,
         })}
         htmlFor={{id}}
@@ -83,7 +83,7 @@ export function CheckboxPreview() {
     <Field {...fieldState}>
       <Label
         className={hstack({
-          justify: 'flex-start',
+          justify: 'flex-start !important',
         })}
         htmlFor={id as string}
         size={size === 'md' ? 'sm' : 'md'}

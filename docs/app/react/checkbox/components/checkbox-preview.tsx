@@ -27,14 +27,13 @@ export function OverviewPreview() {
   return (
     <div
       className={vstack({
-        alignItems: 'start',
         gap: '4',
       })}
     >
       <Field required>
         <Label
           className={hstack({
-            justify: FLEX_START,
+            justify: `${FLEX_START} !important`,
           })}
           htmlFor="terms"
           size="sm"
@@ -52,7 +51,7 @@ export function OverviewPreview() {
       <Field>
         <Label
           className={hstack({
-            justify: FLEX_START,
+            justify: `${FLEX_START} !important`,
           })}
           htmlFor="legal"
           size="sm"
@@ -70,7 +69,7 @@ export function OverviewPreview() {
       <Field>
         <Label
           className={hstack({
-            justify: 'flex-start',
+            justify: `${FLEX_START} !important`,
           })}
           htmlFor="legal"
           size="sm"
