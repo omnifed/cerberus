@@ -104,9 +104,14 @@ describe('tabs recipe', () => {
 
   test('should have a base.indicator style', () => {
     expect(tabs.base?.indicator).toMatchObject({
+      animationName: 'fadeIn',
+      animationDuration: 'fast',
+      animationDelay: '200ms',
+      animationFillMode: 'forwards',
       bgColor: 'colorPalette.border.initial',
       bottom: 0,
       h: '4px',
+      opacity: 0,
       w: 'var(--width)',
       zIndex: 'decorator',
     })
