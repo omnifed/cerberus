@@ -117,9 +117,11 @@ export default function RootLayout(props: PropsWithChildren<RootProps>) {
 
 ### Using Cerberus React
 
-If you are interested in using the Cerberus React, install it now:
+If you are interested in using the Cerberus React, install it now along with **your Icon library of choice**:
 
 <BashTabs code="npm install @cerberus/react@npm:@cerberus-design/react" />
+
+<NoteAdmonition description="The Cerberus React library is icon-agnostic which means you can combine any icon library with it. However, it does require an icon library to be used for some components." />
 
 ### Using the Cerberus Icons (optional)
 
@@ -127,7 +129,82 @@ If you are interested in using the Cerberus Icons, install it now:
 
 <BashTabs code="npx jsr add @cerberus/icons" />
 
-<NoteAdmonition description="The Cerberus React library is icon-agnostic which means you can combine any icon library with it." />
+### Setting up Cerberus React
+
+To use Cerberus React, you need to create a new file to wrap your application with the `CerberusProvider` where you will keep your global settings.
+
+```tsx title="context/cerberus-config.tsx"
+'use client'
+
+import {
+  CerberusProvider,
+  defineIcons,
+  makeSystemConfig,
+} from '@cerberus/react'
+import { cerberusIcons } from '@cerberus/icons'
+import type { PropsWithChildren } from 'react'
+
+/**
+ * This module provides a Cerberus configuration component which has to be used
+ * in a client abstraction because of R19 rules around data passing into props.
+ */
+
+const icons = defineIcons(cerberusIcons)
+
+const config = makeSystemConfig({
+  icons,
+})
+
+export default function CerberusConfig(props: PropsWithChildren<{}>) {
+  return <CerberusProvider config={config}>{props.children}</CerberusProvider>
+}
+```
+
+Then wrap your application with the `CerberusConfig` component:
+
+```tsx title="app/layout.tsx" {35-37}
+import { Poppins, Recursive } from 'next/font/google'
+import { type PropsWithChildren } from 'react'
+import { css, cx } from '@cerberus/styled-system/css'
+import CerberusConfig from '@/context/cerberus-config'
+
+import './globals.css'
+
+const poppins = Poppins({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-poppins',
+})
+const recursive = Recursive({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-recursive',
+})
+
+interface RootProps {}
+
+export default async function RootLayout(props: PropsWithChildren<RootProps>) {
+  return (
+    <html
+      className={cx(poppins.variable, recursive.variable)}
+      lang="en"
+    >
+      <body
+        className={css({
+          minW: '18.75rem',
+          h: 'full',
+        })}
+      >
+        <CerberusConfig>
+          {props.children}
+        </CerberusConfig>
+      </body>
+    </html>
+  )
+}
+```
 
 ### Add a Cerberus script
 

@@ -7,8 +7,8 @@ import {
   type ToggleVariantProps,
 } from '@cerberus/styled-system/recipes'
 import type { InputHTMLAttributes } from 'react'
-import { $cerberusIcons } from '../config/defineIcons'
 import { useFieldContext } from '../context/field'
+import { useCerberusContext } from '../context/cerberus'
 
 /**
  * This module provides a toggle component.
@@ -59,7 +59,8 @@ export function Toggle(props: ToggleProps) {
   const { size, describedBy, ...nativeProps } = props
   const styles = toggle({ size })
   const { invalid, ...state } = useFieldContext()
-  const { toggleChecked: CheckedIcon } = $cerberusIcons
+  const { icons } = useCerberusContext()
+  const CheckedIcon = icons.toggleChecked
 
   return (
     <span

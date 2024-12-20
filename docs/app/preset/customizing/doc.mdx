@@ -14,8 +14,12 @@ Cerberus is a highly customizable tool that allows you to define your own rules 
 
 <OverviewList intro="Use global config when:" rules={[
   'Create your own design system',
-  'Make global changes to Cerberus settings',
-  'Add custom additions to Cerberus',
+  'You need low-level control over your settings',
+]} />
+
+<OverviewList intro="Use Cerberus config when:" rules={[
+  'Create app-specific settings',
+  'You need high-level control over your settings',
 ]} />
 
 <OverviewList intro="Use component level when:" rules={[
@@ -27,7 +31,7 @@ Cerberus is a highly customizable tool that allows you to define your own rules 
 
 ## Option 1: Global Configuration
 
-For large projects, you may want to define a global configuration file that applies to Cerberus as a whole by extending the preset.
+Cerberus is built on top of Panda CSS, which allows you to create custom themes and presets. This is the lowest-level way to customize Cerberus.
 
 ### Step 1: Create a Theme Configuration File
 
@@ -153,7 +157,90 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
 
 <DripDivider />
 
-## Option 2: Component-Specific Configuration
+## Option 2: Cerberus Configuration
+
+This is an easier way to customize Cerberus. You just create a `client` abstracted file to define your Cerberus configuration to export as a component.
+
+### Step 1: Create a Configuration File
+
+Create a `client` file in your project and define your Cerberus configuration.
+
+```tsx title="context/cerberus-config.tsx"
+'use client'
+
+import {
+  CerberusProvider,
+  defineIcons,
+  makeSystemConfig,
+} from '@cerberus/react'
+import { cerberusIcons } from '@cerberus/icons'
+import type { PropsWithChildren } from 'react'
+
+/**
+ * This module provides a Cerberus configuration component which has to be used
+ * in a client abstraction because of R19 rules around data passing into props.
+ */
+
+const icons = defineIcons(cerberusIcons)
+
+const config = makeSystemConfig({
+  icons,
+})
+
+export default function CerberusConfig(props: PropsWithChildren<{}>) {
+  return <CerberusProvider config={config}>{props.children}</CerberusProvider>
+}
+```
+
+### Step 2: Use Your Configuration
+
+Finally, use your configuration in your entry file.
+
+```tsx title="app/layout.tsx" {35-37}
+import { Poppins, Recursive } from 'next/font/google'
+import { type PropsWithChildren } from 'react'
+import { css, cx } from '@cerberus/styled-system/css'
+import CerberusConfig from '@/context/cerberus-config'
+
+import './globals.css'
+
+const poppins = Poppins({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-poppins',
+})
+const recursive = Recursive({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-recursive',
+})
+
+interface RootProps {}
+
+export default async function RootLayout(props: PropsWithChildren<RootProps>) {
+  return (
+    <html
+      className={cx(poppins.variable, recursive.variable)}
+      lang="en"
+    >
+      <body
+        className={css({
+          minW: '18.75rem',
+          h: 'full',
+        })}
+      >
+        <CerberusConfig>
+          {props.children}
+        </CerberusConfig>
+      </body>
+    </html>
+  )
+}
+```
+
+## Option 3: Component-Specific Configuration
 
 This is the easiest way to customize Cerberus. You simply just add custom styles to a component in Cerberus.
 

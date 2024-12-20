@@ -43,7 +43,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@carbon/icons-react": "^11.40.0"
+    "@carbon/icons-react": "^11.53.0"
   },
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
