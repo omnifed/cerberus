@@ -4,10 +4,9 @@ import {
 } from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
-import { $cerberusIcons } from '../config/defineIcons'
 import type { HTMLAttributes, ReactNode } from 'react'
-import { Avatar } from './Avatar'
 import { Show } from './Show'
+import { MatchAvatar } from './Admonition.client'
 
 /**
  * This module provides a set of components for creating admonitions.
@@ -115,72 +114,4 @@ export function AdmonitionDescription(props: AdmonitionDescriptionProps) {
       )}
     />
   )
-}
-
-// Private components
-
-type MatchAvatarProps = AdmonitionVariantProps
-
-function MatchAvatar(props: MatchAvatarProps) {
-  const {
-    infoNotification: InfoIcon,
-    successNotification: SuccessIcon,
-    warningNotification: WarningIcon,
-    dangerNotification: DangerIcon,
-  } = $cerberusIcons
-  switch (props.palette) {
-    case 'page':
-      return (
-        <Avatar
-          gradient="charon-light"
-          ariaLabel=""
-          icon={<InfoIcon />}
-          size="sm"
-          src=""
-        />
-      )
-    case 'info':
-      return (
-        <Avatar
-          gradient="amphiaraus-dark"
-          ariaLabel=""
-          icon={<InfoIcon />}
-          size="sm"
-          src=""
-        />
-      )
-    case 'success':
-      return (
-        <Avatar
-          gradient="thanatos-dark"
-          ariaLabel=""
-          icon={<SuccessIcon />}
-          size="sm"
-          src=""
-        />
-      )
-    case 'warning':
-      return (
-        <Avatar
-          gradient="asphodel-light"
-          ariaLabel=""
-          icon={<WarningIcon />}
-          size="sm"
-          src=""
-        />
-      )
-    case 'danger':
-      return (
-        <Avatar
-          gradient="hades-light"
-          ariaLabel=""
-          icon={<DangerIcon />}
-          size="sm"
-          src=""
-        />
-      )
-
-    default:
-      throw new Error('Unsupported admonition palette')
-  }
 }
