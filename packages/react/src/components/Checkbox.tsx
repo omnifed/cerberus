@@ -9,7 +9,7 @@ import { cx } from '@cerberus/styled-system/css'
 import type { InputHTMLAttributes } from 'react'
 import { Show } from './Show'
 import { useFieldContext } from '../context/field'
-import { $cerberusIcons } from '../config/defineIcons'
+import { useCerberusContext } from '../context/cerberus'
 
 /**
  * This module contains the Checkbox component.
@@ -49,8 +49,15 @@ export function Checkbox(props: CheckboxProps) {
   const { describedBy, size, checked, mixed, ...nativeProps } = props
   const { invalid, ...fieldStates } = useFieldContext()
   const styles = checkbox({ size })
-  const { checkbox: CheckIcon, indeterminate: IndeterminateIcon } =
-    $cerberusIcons
+  const { icons } = useCerberusContext()
+  const { checkbox: CheckIcon, indeterminate: IndeterminateIcon } = icons
+
+  if (!CheckIcon) {
+    throw new Error('The CerberusProvider is missing the checkbox icon.')
+  }
+  if (!IndeterminateIcon) {
+    throw new Error('The CerberusProvider is missing the indeterminate icon.')
+  }
 
   return (
     <div
