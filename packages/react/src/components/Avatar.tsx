@@ -1,12 +1,14 @@
+'use client'
+
 import { css, cx } from '@cerberus/styled-system/css'
 import { circle } from '@cerberus/styled-system/patterns'
 import {
   avatar,
   type AvatarVariantProps,
 } from '@cerberus/styled-system/recipes'
-import { $cerberusIcons } from '../config/defineIcons'
 import type { HtmlHTMLAttributes, ReactNode } from 'react'
 import { Show } from './Show'
+import { useCerberusContext } from '../context/cerberus'
 
 /**
  * This module contains the Avatar component.
@@ -84,7 +86,8 @@ export function Avatar(props: AvatarProps) {
     icon,
     ...nativeProps
   } = props
-  const { avatar: AvatarIcon } = $cerberusIcons
+  const { icons } = useCerberusContext()
+  const { avatar: AvatarIcon } = icons
   const initials = (ariaLabel || '')
     .split(' ')
     .map((word) => word[0])
