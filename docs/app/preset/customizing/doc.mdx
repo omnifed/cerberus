@@ -232,7 +232,7 @@ export default function CerberusConfig(props: PropsWithChildren<{}>) {
 
 Finally, use your configuration in your entry file.
 
-```tsx title="app/layout.tsx" {35-37}
+```tsx title="app/layout.tsx" {30-32}
 import { Poppins, Recursive } from 'next/font/google'
 import { type PropsWithChildren } from 'react'
 import { css, cx } from '@cerberus/styled-system/css'
@@ -261,12 +261,7 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
       className={cx(poppins.variable, recursive.variable)}
       lang="en"
     >
-      <body
-        className={css({
-          minW: '18.75rem',
-          h: 'full',
-        })}
-      >
+      <body>
         <CerberusConfig>
           {props.children}
         </CerberusConfig>

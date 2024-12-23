@@ -1,4 +1,5 @@
 import { NoteAdmonition } from '@/app/components/Admonition'
+import BashTabs from '@/app/components/bash-tabs'
 
 # Overview
 
@@ -6,81 +7,10 @@ The Cerberus Icons library is a optional library to add visual elements to your 
 
 ## Installation
 
-Install the Cerberus Icons library, with the package manager of your choice:
+Install the Icons library of your choice. We recommend using the Carbon Icons library:
 
-```bash
-pnpm dlx jsr add @cerberus/icons
-```
-
-<NoteAdmonition description="The Cerberus Icons library currently only supports React." />
+<BashTabs code="npm install @carbon/icons-react" />
 
 ## Usage
 
-To use the Cerberus Icons library, import any icon component from the library:
-
-```tsx
-import { LogoGithub } from '@cerberus/icons'
-
-function App() {
-  return (
-    <div>
-      <LogoGithub />
-    </div>
-  )
-}
-```
-
-### Size
-
-You can set the size of the icon by passing a `size` prop. The default size is `16`.
-
-```tsx
-import { LogoGithub } from '@cerberus/icons'
-
-// The sizes are 16, 20, 24, 32
-
-function App() {
-  return (
-    <div>
-      <LogoGithub size={24} />
-    </div>
-  )
-}
-```
-
-### Color
-
-The icons inherit the color of the parent element. If you need to change the icon color to be different from the parent element, you can do so with custom styles.
-
-```tsx
-import { LogoGithub } from '@cerberus/icons'
-import { css } from '@cerberus/styled-system/css'
-
-function App() {
-  return (
-    <div>
-      <LogoGithub
-        className={css({
-          color: 'red',
-        })}
-      />
-    </div>
-  )
-}
-```
-
-### Accessibility
-
-The icons are hidden by default. You can add an `aria-label` to the icon to provide a description for screen readers.
-
-```tsx
-import { LogoGithub } from '@cerberus/icons'
-
-function App() {
-  return (
-    <div>
-      <LogoGithub aria-label="GitHub logo" />
-    </div>
-  )
-}
-```
+To use the Icons library, register it in your app by following the instructions in the [Customization section](../preset/customizing#option-2-cerberus-configuration).

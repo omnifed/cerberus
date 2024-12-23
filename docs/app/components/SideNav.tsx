@@ -17,7 +17,7 @@ export interface HeadingItem {
 export interface LinkItem {
   label: string
   route: LinkProps<string>['href']
-  tag: '' | 'new' | 'next'
+  tag: '' | 'new' | 'next' | 'deprecated'
   type: 'route'
 }
 
