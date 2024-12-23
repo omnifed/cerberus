@@ -5,7 +5,7 @@ import { vstack } from '@cerberus/styled-system/patterns'
 import { type InputHTMLAttributes } from 'react'
 import { Show } from './Show'
 import { fileUploader } from '@cerberus/styled-system/recipes'
-import { $cerberusIcons } from '../config/defineIcons'
+import { useCerberusContext } from '../context/cerberus'
 import { Avatar } from './Avatar'
 
 export interface FileUploaderProps
@@ -29,8 +29,9 @@ export interface FileUploaderProps
  * @see https://cerberus.digitalu.design/react/file-uploader
  */
 export function FileUploader(props: FileUploaderProps) {
+  const { icons } = useCerberusContext()
   const styles = fileUploader()
-  const { waitingFileUploader: Icon } = $cerberusIcons
+  const { waitingFileUploader: Icon } = icons
 
   return (
     <div
