@@ -1,4 +1,4 @@
-import { Asterisk } from '@cerberus-design/icons'
+import { Asterisk } from '@carbon/icons-react'
 import { Show } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { vstack } from '@cerberus/styled-system/patterns'

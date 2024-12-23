@@ -5,7 +5,23 @@ import {
   defineIcons,
   makeSystemConfig,
 } from '@cerberus-design/react'
-import { cerberusIcons } from '@cerberus-design/icons'
+import {
+  Calendar,
+  Checkmark,
+  CheckmarkOutline,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Close,
+  CloudUpload,
+  Information,
+  Restart,
+  TrashCan,
+  UserFilled,
+  Warning,
+  WarningAlt,
+  WarningFilled,
+} from '@carbon/icons-react'
 import type { PropsWithChildren } from 'react'
 
 /**
@@ -13,7 +29,27 @@ import type { PropsWithChildren } from 'react'
  * in a client abstraction because of R19 rules around data passing into props.
  */
 
-const icons = defineIcons(cerberusIcons)
+const icons = defineIcons({
+  accordionIndicator: ChevronDown,
+  avatar: UserFilled,
+  calendar: Calendar,
+  calendarPrev: ChevronLeft,
+  calendarNext: ChevronRight,
+  close: Close,
+  confirmModal: Information,
+  delete: TrashCan,
+  promptModal: Information,
+  waitingFileUploader: CloudUpload,
+  infoNotification: Information,
+  successNotification: CheckmarkOutline,
+  warningNotification: WarningAlt,
+  dangerNotification: WarningFilled,
+  invalid: WarningFilled,
+  invalidAlt: Warning,
+  redo: Restart,
+  selectArrow: ChevronDown,
+  toggleChecked: Checkmark,
+})
 
 const config = makeSystemConfig({
   icons,

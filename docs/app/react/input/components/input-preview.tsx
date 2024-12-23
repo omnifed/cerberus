@@ -1,4 +1,4 @@
-import { Search } from '@cerberus-design/icons'
+import { Search } from '@carbon/icons-react'
 import { Field, FieldMessage, Label, Input } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { vstack } from '@cerberus/styled-system/patterns'

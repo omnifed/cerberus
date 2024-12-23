@@ -1,7 +1,7 @@
 'use client'
 
 import { css } from '@cerberus/styled-system/css'
-import { Copy } from '@cerberus-design/icons'
+import { Copy } from '@carbon/icons-react'
 import { Show } from '@cerberus-design/react'
 import { useEffect, useState } from 'react'
 

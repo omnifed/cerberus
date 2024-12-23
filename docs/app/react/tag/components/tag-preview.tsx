@@ -1,5 +1,5 @@
 import { Tag, type TagProps } from '@cerberus-design/react'
-import { Checkmark, Information } from '@cerberus-design/icons'
+import { Checkmark, Information } from '@carbon/icons-react'
 import { css } from '@cerberus/styled-system/css'
 import { Fragment } from 'react'
 import {

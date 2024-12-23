@@ -1,4 +1,4 @@
-import { Information, InformationFilled } from '@cerberus-design/icons'
+import { Information, InformationFilled } from '@carbon/icons-react'
 import { Tooltip } from '@cerberus-design/react'
 import { HStack } from '@cerberus-design/styled-system/jsx'
 

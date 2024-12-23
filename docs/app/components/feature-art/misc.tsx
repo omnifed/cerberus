@@ -1,5 +1,5 @@
 import { css } from '@cerberus/styled-system/css'
-import { IbmWatsonxOrchestrate } from '@cerberus-design/icons'
+import { IbmWatsonxOrchestrate } from '@carbon/icons-react'
 
 export default function Misc() {
   return (

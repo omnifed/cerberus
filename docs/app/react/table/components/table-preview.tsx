@@ -1,6 +1,6 @@
 'use client'
 
-import { SortAscending, SortDescending } from '@cerberus-design/icons'
+import { SortAscending, SortDescending } from '@carbon/icons-react'
 import {
   Table,
   Tbody,

@@ -1,4 +1,4 @@
-import { RainDrop } from '@cerberus-design/icons'
+import { RainDrop } from '@carbon/icons-react'
 import { HStack } from '@cerberus-design/styled-system/jsx'
 
 export default function DripDivider() {

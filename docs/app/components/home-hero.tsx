@@ -6,7 +6,7 @@ import { vstack } from '@cerberus-design/styled-system/patterns'
 import { animateIn, grid, gridItem } from '@cerberus/styled-system/patterns'
 import { Tag } from '@cerberus-design/react'
 import { HStack } from '@cerberus-design/styled-system/jsx'
-import { CheckmarkFilled } from '@cerberus-design/icons'
+import { CheckmarkFilled } from '@carbon/icons-react'
 import { HomeHeroText } from './home-hero-text'
 
 export default function HomeHero() {

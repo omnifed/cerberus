@@ -88,12 +88,12 @@ importers:
 
   docs:
     dependencies:
+      '@carbon/icons-react':
+        specifier: ^11.40.0
+        version: 11.53.0(react@19.0.0-rc.1)
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../configs
-      '@cerberus-design/icons':
-        specifier: workspace:*
-        version: link:../packages/icons
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
@@ -7988,6 +7988,13 @@ snapshots:
       '@ibm/telemetry-js': 1.8.0
       prop-types: 15.8.1
       react: 19.0.0
+
+  '@carbon/icons-react@11.53.0(react@19.0.0-rc.1)':
+    dependencies:
+      '@carbon/icon-helpers': 10.54.0
+      '@ibm/telemetry-js': 1.8.0
+      prop-types: 15.8.1
+      react: 19.0.0-rc.1
 
   '@clack/core@0.3.4':
     dependencies:

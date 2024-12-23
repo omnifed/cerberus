@@ -3,7 +3,7 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import { ThumbsUp } from '@cerberus-design/icons'
+import { ThumbsUp } from '@carbon/icons-react'
 import { IconButton } from '@cerberus-design/react'
 
 const fallbackAria = 'Like something'

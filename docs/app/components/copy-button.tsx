@@ -1,6 +1,6 @@
 'use client'
 
-import { Checkmark, Copy } from '@cerberus-design/icons'
+import { Checkmark, Copy } from '@carbon/icons-react'
 import { IconButton, Show, type IconButtonProps } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
 import { useCallback, useState, type MouseEvent } from 'react'

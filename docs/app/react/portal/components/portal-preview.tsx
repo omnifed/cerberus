@@ -1,6 +1,6 @@
 'use client'
 
-import { Close } from '@cerberus-design/icons'
+import { Close } from '@carbon/icons-react'
 import { Button, IconButton, Portal, Show } from '@cerberus-design/react'
 import { hstack } from '@cerberus/styled-system/patterns'
 import { useState } from 'react'

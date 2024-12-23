@@ -1,6 +1,6 @@
 'use client'
 
-import { Logout } from '@cerberus-design/icons'
+import { Logout } from '@carbon/icons-react'
 import { Button, Show } from '@cerberus-design/react'
 import { useState } from 'react'
 
