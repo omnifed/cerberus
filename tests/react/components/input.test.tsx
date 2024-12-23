@@ -1,21 +1,22 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Field, Label, Input } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
+import { Field, Label, Input, CerberusProvider } from '@cerberus-design/react'
+import { makeConfig, setupStrictMode } from '@/utils'
 
 describe('Input', () => {
   setupStrictMode()
   afterEach(cleanup)
 
+  const config = makeConfig()
+
   test('should render a input', () => {
     render(
-      <Field required>
-        <Label htmlFor="test">Test Label</Label>,
-        <Input id="test" />
-      </Field>,
-      {
-        wrapper: Field,
-      },
+      <CerberusProvider config={config}>
+        <Field required>
+          <Label htmlFor="test">Test Label</Label>,
+          <Input id="test" />
+        </Field>
+      </CerberusProvider>,
     )
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
     expect(screen.getByText(/(required)/i)).toBeTruthy()
@@ -27,13 +28,12 @@ describe('Input', () => {
 
   test('should render a input with error', () => {
     render(
-      <Field required invalid>
-        <Label htmlFor="test">Test Label</Label>,
-        <Input id="test" />
-      </Field>,
-      {
-        wrapper: Field,
-      },
+      <CerberusProvider config={config}>
+        <Field required invalid>
+          <Label htmlFor="test">Test Label</Label>,
+          <Input id="test" />
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen.getByRole('textbox').attributes.getNamedItem('aria-invalid'),
@@ -42,13 +42,12 @@ describe('Input', () => {
 
   test('should render a input with disabled', () => {
     render(
-      <Field disabled>
-        <Label htmlFor="test">Test Label</Label>,
-        <Input id="test" />
-      </Field>,
-      {
-        wrapper: Field,
-      },
+      <CerberusProvider config={config}>
+        <Field disabled>
+          <Label htmlFor="test">Test Label</Label>,
+          <Input id="test" />
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen.getByRole('textbox').attributes.getNamedItem('disabled'),
@@ -57,27 +56,25 @@ describe('Input', () => {
 
   test('should render a input with placeholder', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Input id="test" placeholder="Test Placeholder" />
-      </Field>,
-      {
-        wrapper: Field,
-      },
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Input id="test" placeholder="Test Placeholder" />
+        </Field>
+      </CerberusProvider>,
     )
     expect(screen.getByRole('textbox')).toBeTruthy()
   })
 
   test('should render a input with describedBy', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Input id="test" describedBy="test-description" />
-        <span id="test-description">Test Description</span>
-      </Field>,
-      {
-        wrapper: Field,
-      },
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Input id="test" describedBy="test-description" />
+          <span id="test-description">Test Description</span>
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen.getByRole('textbox').attributes.getNamedItem('aria-describedby'),
@@ -86,13 +83,12 @@ describe('Input', () => {
 
   test('should render a input with a sm size', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Input id="test" size="sm" />
-      </Field>,
-      {
-        wrapper: Field,
-      },
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Input id="test" size="sm" />
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen
@@ -103,13 +99,12 @@ describe('Input', () => {
 
   test('should render a input with a md size', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Input id="test" size="md" />
-      </Field>,
-      {
-        wrapper: Field,
-      },
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Input id="test" size="md" />
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen
@@ -120,13 +115,12 @@ describe('Input', () => {
 
   test('should render a input with a lg size', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Input id="test" size="lg" />
-      </Field>,
-      {
-        wrapper: Field,
-      },
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Input id="test" size="lg" />
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen
@@ -137,26 +131,24 @@ describe('Input', () => {
 
   test('should render a input with a startIcon', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Input id="test" startIcon={<div aria-label="calendar icon" />} />
-      </Field>,
-      {
-        wrapper: Field,
-      },
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Input id="test" startIcon={<div aria-label="calendar icon" />} />
+        </Field>
+      </CerberusProvider>,
     )
     expect(screen.getByLabelText(/calendar icon/i)).toBeTruthy()
   })
 
   test('should render a input with a endIcon', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Input id="test" endIcon={<div aria-label="calendar icon" />} />
-      </Field>,
-      {
-        wrapper: Field,
-      },
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Input id="test" endIcon={<div aria-label="calendar icon" />} />
+        </Field>
+      </CerberusProvider>,
     )
     expect(screen.getByLabelText(/calendar icon/i)).toBeTruthy()
   })

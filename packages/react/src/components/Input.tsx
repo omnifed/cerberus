@@ -4,7 +4,7 @@ import type { InputHTMLAttributes, ReactNode } from 'react'
 import { input, type InputVariantProps } from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus/styled-system/css'
 import { useFieldContext } from '../context/field'
-import { $cerberusIcons } from '../config/defineIcons'
+import { useCerberusContext } from '../context/cerberus'
 import { Show } from './Show'
 
 export interface InputBaseProps
@@ -39,7 +39,9 @@ export function Input(props: InputProps) {
   const inputStyles = input({ size })
   const { invalid, ...fieldStates } = useFieldContext()
   const hasEndIcon = Boolean(endIcon)
-  const { invalid: InvalidIcon } = $cerberusIcons
+
+  const { icons } = useCerberusContext()
+  const { invalid: InvalidIcon } = icons
 
   return (
     <div className={inputStyles.root}>
