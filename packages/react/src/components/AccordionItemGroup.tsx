@@ -5,10 +5,10 @@ import { Show } from './Show'
 import {
   AccordionItem,
   AccordionItemContent,
-  AccordionItemIndicator,
   AccordionItemTrigger,
 } from './Accordion'
 import { css } from '@cerberus/styled-system/css'
+import { AccordionItemIndicator } from './Accordion.client'
 
 /**
  * This module contains an abstraction of the AccordionItem components.

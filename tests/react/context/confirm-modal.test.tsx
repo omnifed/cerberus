@@ -7,17 +7,20 @@ import {
   waitFor,
 } from '@testing-library/react'
 import {
+  CerberusProvider,
   ConfirmModal,
   useConfirmModal,
   type ShowConfirmModalOptions,
 } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
+import { makeConfig, setupStrictMode } from '@/utils'
 import { useState } from 'react'
 import userEvent from '@testing-library/user-event'
 
 describe('ConfirmModal & useConfirmModal', () => {
   setupStrictMode()
   afterEach(cleanup)
+
+  const config = makeConfig()
 
   function TestFeature(props: {
     description?: ShowConfirmModalOptions['description']
@@ -73,17 +76,21 @@ describe('ConfirmModal & useConfirmModal', () => {
     description?: ShowConfirmModalOptions['description']
   }) {
     return (
-      <ConfirmModal>
-        <TestFeature description={props.description} />
-      </ConfirmModal>
+      <CerberusProvider config={config}>
+        <ConfirmModal>
+          <TestFeature description={props.description} />
+        </ConfirmModal>
+      </CerberusProvider>
     )
   }
 
   function DestructiveTest() {
     return (
-      <ConfirmModal>
-        <DestructiveFeature />
-      </ConfirmModal>
+      <CerberusProvider config={config}>
+        <ConfirmModal>
+          <DestructiveFeature />
+        </ConfirmModal>
+      </CerberusProvider>
     )
   }
 

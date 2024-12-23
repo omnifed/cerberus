@@ -1,6 +1,6 @@
 'use client'
 
-import { Model } from '@cerberus-design/icons'
+import { Model } from '@carbon/icons-react'
 import {
   Modal,
   ModalHeader,

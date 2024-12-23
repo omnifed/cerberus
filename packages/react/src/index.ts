@@ -6,6 +6,7 @@
 // components
 
 export * from './components/Accordion'
+export * from './components/Accordion.client'
 export * from './components/AccordionItemGroup'
 export * from './components/Admonition'
 export * from './components/Avatar'
@@ -56,6 +57,7 @@ export * from './components/Show'
 
 // context
 
+export * from './context/cerberus'
 export * from './context/confirm-modal'
 export * from './context/cta-modal'
 export * from './context/feature-flags'
@@ -81,7 +83,7 @@ export * from './aria-helpers/trap-focus.aria'
 
 // utils
 
-export * from './config/defineIcons'
+export * from './config/index'
 export * from './utils/index'
 
 // shared types

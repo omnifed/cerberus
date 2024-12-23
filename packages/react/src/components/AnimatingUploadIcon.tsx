@@ -1,11 +1,11 @@
-import { type CarbonIconProps } from '@cerberus/icons'
-
 /**
  * This module contains an animating icon to use for the FileStatus component.
  * @module
  */
 
-export type AnimatingUploadIconProps = CarbonIconProps
+export interface AnimatingUploadIconProps {
+  size?: 16 | 20 | 24 | 32
+}
 
 export function AnimatingUploadIcon(props: AnimatingUploadIconProps) {
   return (

@@ -1,5 +1,5 @@
 import { HStack } from '@/styled-system/jsx'
-import { Terminal } from '@cerberus-design/icons'
+import { Terminal } from '@carbon/icons-react'
 import { Show } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
 import { codeToHtml } from 'shiki'

@@ -1,9 +1,4 @@
-import {
-  Close,
-  ThumbsDown,
-  ThumbsUp,
-  TrophyFilled,
-} from '@cerberus-design/icons'
+import { Close, ThumbsDown, ThumbsUp, TrophyFilled } from '@carbon/icons-react'
 import { IconButton } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'

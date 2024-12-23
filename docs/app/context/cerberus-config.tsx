@@ -1,3 +1,10 @@
+'use client'
+
+import {
+  CerberusProvider,
+  defineIcons,
+  makeSystemConfig,
+} from '@cerberus-design/react'
 import {
   Calendar,
   Checkmark,
@@ -15,12 +22,14 @@ import {
   WarningAlt,
   WarningFilled,
 } from '@carbon/icons-react'
+import type { PropsWithChildren } from 'react'
 
 /**
- * The official Cerberus icons to be used in the Cerberus React components via
- * the `defineIcons` function.
+ * This module provides a Cerberus configuration component which has to be used
+ * in a client abstraction because of R19 rules around data passing into props.
  */
-export const cerberusIcons = {
+
+const icons = defineIcons({
   accordionIndicator: ChevronDown,
   avatar: UserFilled,
   calendar: Calendar,
@@ -40,6 +49,12 @@ export const cerberusIcons = {
   redo: Restart,
   selectArrow: ChevronDown,
   toggleChecked: Checkmark,
-}
+})
 
-export * from '@carbon/icons-react'
+const config = makeSystemConfig({
+  icons,
+})
+
+export default function CerberusConfig(props: PropsWithChildren<{}>) {
+  return <CerberusProvider config={config}>{props.children}</CerberusProvider>
+}

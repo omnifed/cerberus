@@ -3,7 +3,7 @@ import {
   GroupObjectsSave,
   IbmWatsonxCodeAssistantForZRefactor,
   InformationFilled,
-} from '@cerberus-design/icons'
+} from '@carbon/icons-react'
 import { Tab, TabPanel, Tabs, TabsList } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { cx } from '@cerberus/styled-system/css'

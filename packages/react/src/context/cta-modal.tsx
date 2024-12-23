@@ -13,7 +13,6 @@ import {
 } from 'react'
 import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
-import { $cerberusIcons } from '../config/defineIcons'
 import { trapFocus } from '../aria-helpers/trap-focus.aria'
 import { Show } from '../components/Show'
 import { Modal } from '../components/Modal'
@@ -22,8 +21,9 @@ import { ModalHeader } from '../components/ModalHeader'
 import { ModalHeading } from '../components/ModalHeading'
 import { ModalDescription } from '../components/ModalDescription'
 import { Avatar } from '../components/Avatar'
-import { HStack } from '@cerberus/styled-system/jsx'
 import { IconButton } from '../components/IconButton'
+import { useCerberusContext } from './cerberus'
+import { HStack } from '@cerberus/styled-system/jsx'
 import { css } from '@cerberus/styled-system/css'
 import { VStack } from '@cerberus/styled-system/jsx'
 
@@ -98,9 +98,10 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
   const { modalRef, show, close } = useModal()
   const [content, setContent] = useState<ShowCTAModalOptions | null>(null)
   const focusTrap = trapFocus(modalRef)
-  const FallbackIcon = $cerberusIcons.confirmModal
   const confirmIcon = content?.icon
-  const { close: CloseIcon } = $cerberusIcons
+
+  const { icons } = useCerberusContext()
+  const { close: CloseIcon, confirmModal: FallbackIcon } = icons
 
   const handleShow = useCallback(
     (options: ShowCTAModalOptions) => {

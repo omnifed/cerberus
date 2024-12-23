@@ -4,7 +4,6 @@ import {
   accordion,
   type AccordionVariantProps,
 } from '@cerberus/styled-system/recipes'
-import { $cerberusIcons } from '../config/defineIcons'
 
 export type AccordionProps = ArkAccordion.RootProps & AccordionVariantProps
 
@@ -90,42 +89,6 @@ export function AccordionItemTrigger(props: AccordionItemTriggerProps) {
       {...triggerProps}
       className={cx(triggerProps.className, styles.itemTrigger)}
     />
-  )
-}
-
-export type AccordionItemIndicatorProps = ArkAccordion.ItemIndicatorProps &
-  AccordionVariantProps
-
-/**
- * The indicator for the Accordion component.
- * @definition [ARK docs](https://ark-ui.com/react/docs/components/accordion)
- * @definition [Accordion docs](https://cerberus.digitalu.design/react/accordion)
- * @example
- * ```tsx
- * <Accordion>
- *   <AccordionItem value="one">
- *     <AccordionTrigger>
- *        Accordion Item 1
- *     <AccordionIndicator />
- *     </AccordionTrigger>
- *     <AccordionContent>Accordion Item 1 content</AccordionContent>
- *   </AccordionItem>
- * </Accordion>
- * ```
- * */
-export function AccordionItemIndicator(props: AccordionItemIndicatorProps) {
-  const { size, ...indicatorProps } = props
-  const styles = accordion({ size })
-  const iconSize = size === 'sm' ? 16 : '24'
-  const { accordionIndicator: ChevronDown } = $cerberusIcons
-
-  return (
-    <ArkAccordion.ItemIndicator
-      {...indicatorProps}
-      className={cx(indicatorProps.className, styles.itemIndicator)}
-    >
-      <ChevronDown size={iconSize} />
-    </ArkAccordion.ItemIndicator>
   )
 }
 

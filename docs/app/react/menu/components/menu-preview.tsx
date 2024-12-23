@@ -1,4 +1,4 @@
-import { Logout, Strawberry } from '@cerberus-design/icons'
+import { Logout, Strawberry } from '@carbon/icons-react'
 import {
   Button,
   Menu,

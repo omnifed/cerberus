@@ -5,7 +5,7 @@ import Link, { type LinkProps } from 'next/link'
 import { css, cx } from '@cerberus/styled-system/css'
 import { grid, gridItem, hstack } from '@cerberus/styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
-import { LogoGithub } from '@cerberus-design/icons'
+import { LogoGithub } from '@carbon/icons-react'
 import {
   IconButton,
   Show,

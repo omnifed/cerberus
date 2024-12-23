@@ -1,19 +1,23 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { FileUploader } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
+import { FileUploader, CerberusProvider } from '@cerberus-design/react'
+import { makeConfig, setupStrictMode } from '@/utils'
 
 describe('FileUploader', () => {
   setupStrictMode()
   afterEach(cleanup)
 
+  const config = makeConfig()
+
   test('should render a file uploader', () => {
     render(
-      <FileUploader
-        accept=".csv,.docx"
-        heading="Upload Files"
-        name="basic-example"
-      />,
+      <CerberusProvider config={config}>
+        <FileUploader
+          accept=".csv,.docx"
+          heading="Upload Files"
+          name="basic-example"
+        />
+      </CerberusProvider>,
     )
 
     expect(screen.getByText(/upload files/i)).toBeTruthy()
@@ -23,7 +27,11 @@ describe('FileUploader', () => {
   })
 
   test('should render a file uploader with hidden heading', () => {
-    render(<FileUploader accept=".csv,.doc" name="no-heading" />)
+    render(
+      <CerberusProvider config={config}>
+        <FileUploader accept=".csv,.doc" name="no-heading" />
+      </CerberusProvider>,
+    )
 
     expect(screen.queryByText(/upload files/i)).toBeNull()
     expect(screen.getByText(/import .csv, .doc files/i)).toBeTruthy()

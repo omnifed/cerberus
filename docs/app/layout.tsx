@@ -16,6 +16,7 @@ import { getCachedTheme } from './actions/theme'
 
 import './globals.css'
 import { getCodeTheme } from './utils/colors'
+import CerberusConfig from './context/cerberus-config'
 
 const poppins = Poppins({
   display: 'swap',
@@ -85,8 +86,10 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
           updateTheme={handleUpdateTheme}
           updateMode={handleUpdateMode}
         >
-          <Nav />
-          {props.children}
+          <CerberusConfig>
+            <Nav />
+            {props.children}
+          </CerberusConfig>
         </ThemeProvider>
       </body>
     </html>

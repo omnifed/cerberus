@@ -1,6 +1,6 @@
 import { css, cx } from '@cerberus/styled-system/css'
 import { grid, gridItem, vstack } from '@cerberus/styled-system/patterns'
-import * as Icons from '@cerberus-design/icons'
+import * as Icons from '@carbon/icons-react'
 import Link from 'next/link'
 
 const listOfIcons = Object.entries(Icons)

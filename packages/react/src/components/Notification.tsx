@@ -12,8 +12,8 @@ import {
   type PropsWithChildren,
   type MouseEvent,
 } from 'react'
-import { $cerberusIcons } from '../config/defineIcons'
 import { trapFocus } from '../aria-helpers/trap-focus.aria'
+import { useCerberusContext } from '../context/cerberus'
 
 /**
  * This module exports the Notification component.
@@ -21,13 +21,14 @@ import { trapFocus } from '../aria-helpers/trap-focus.aria'
  */
 
 function MatchNotificationIcon(props: NotificationVariantProps) {
+  const { icons } = useCerberusContext()
   const palette = (props.palette || 'info') as
     | 'info'
     | 'success'
     | 'warning'
     | 'danger'
-  const key = `${palette}Notification` as keyof typeof $cerberusIcons
-  const Icon = $cerberusIcons[key]
+  const key = `${palette}Notification` as keyof typeof icons
+  const Icon = icons[key]
   return <Icon />
 }
 
@@ -64,7 +65,9 @@ export function Notification(props: PropsWithChildren<NotificationProps>) {
   const ref = useRef<HTMLDialogElement>(null)
   const onKeyDown = trapFocus(ref)
   const styles = notification({ palette })
-  const { close: CloseIcon } = $cerberusIcons
+
+  const { icons } = useCerberusContext()
+  const { close: CloseIcon } = icons
 
   return (
     <dialog

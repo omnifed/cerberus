@@ -9,30 +9,35 @@ import {
   formatMilitaryDate,
   formatISOToMilitary,
   DateFormats,
+  CerberusProvider,
 } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
+import { makeConfig, setupStrictMode } from '@/utils'
 import userEvent from '@testing-library/user-event'
 
 describe('useDate', () => {
   setupStrictMode()
   afterEach(cleanup)
 
+  const config = makeConfig()
+
   function DateTest(props: UseDateOptions) {
     const date = useDate(props)
     return (
-      <Field>
-        <Label htmlFor="date">Date</Label>
-        <Input
-          id="date"
-          onChange={date.onChange}
-          type="text"
-          value={date.value}
-        />
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="date">Date</Label>
+          <Input
+            id="date"
+            onChange={date.onChange}
+            type="text"
+            value={date.value}
+          />
 
-        <p>{date.format}</p>
-        <p>{date.ISO}</p>
-        <p>{date.value}</p>
-      </Field>
+          <p>{date.format}</p>
+          <p>{date.ISO}</p>
+          <p>{date.value}</p>
+        </Field>
+      </CerberusProvider>
     )
   }
 

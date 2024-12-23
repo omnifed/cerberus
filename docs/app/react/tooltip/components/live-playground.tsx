@@ -3,7 +3,7 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import { InformationFilled } from '@cerberus-design/icons'
+import { InformationFilled } from '@carbon/icons-react'
 import { Tooltip, type TooltipProps } from '@cerberus-design/react'
 import { VStack } from '@cerberus-design/styled-system/jsx'
 import { css } from '@cerberus/styled-system/css'

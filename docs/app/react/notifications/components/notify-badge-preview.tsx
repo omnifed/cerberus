@@ -1,5 +1,5 @@
 import { HStack, VStack } from '@/styled-system/jsx'
-import { Notification } from '@cerberus-design/icons'
+import { Notification } from '@carbon/icons-react'
 import { IconButton, Tag, formatNotifyCount } from '@cerberus-design/react'
 
 export function NotifyBadgePreview() {

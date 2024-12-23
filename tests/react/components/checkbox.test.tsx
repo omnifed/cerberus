@@ -1,18 +1,27 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Field, Label, Checkbox } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
+import {
+  CerberusProvider,
+  Field,
+  Label,
+  Checkbox,
+} from '@cerberus-design/react'
+import { makeConfig, setupStrictMode } from '@/utils'
 
 describe('Checkbox', () => {
   setupStrictMode()
   afterEach(cleanup)
 
+  const config = makeConfig()
+
   test('should render a checkbox', () => {
     render(
-      <Field required>
-        <Label htmlFor="test">Test Label</Label>,
-        <Checkbox id="test" />
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field required>
+          <Label htmlFor="test">Test Label</Label>,
+          <Checkbox id="test" />
+        </Field>
+      </CerberusProvider>,
     )
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
     expect(screen.getByText(/(required)/i)).toBeTruthy()
@@ -24,10 +33,13 @@ describe('Checkbox', () => {
 
   test('should render a checkbox with error', () => {
     render(
-      <Field required invalid>
-        <Label htmlFor="test">Test Label</Label>,
-        <Checkbox id="test" />
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field required invalid>
+          <Label htmlFor="test">Test Label</Label>,
+          <Checkbox id="test" />
+        </Field>
+        ,
+      </CerberusProvider>,
     )
     expect(
       screen.getByRole('checkbox').attributes.getNamedItem('aria-invalid'),
@@ -36,10 +48,12 @@ describe('Checkbox', () => {
 
   test('should render a checkbox with disabled', () => {
     render(
-      <Field disabled>
-        <Label htmlFor="test">Test Label</Label>,
-        <Checkbox id="test" />
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field disabled>
+          <Label htmlFor="test">Test Label</Label>,
+          <Checkbox id="test" />
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen.getByRole('checkbox').attributes.getNamedItem('disabled'),
@@ -48,10 +62,12 @@ describe('Checkbox', () => {
 
   test('should render a checkbox with describedBy', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Checkbox id="test" describedBy="test" />
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Checkbox id="test" describedBy="test" />
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen.getByRole('checkbox').attributes.getNamedItem('aria-describedby'),
@@ -60,10 +76,12 @@ describe('Checkbox', () => {
 
   test('should render a checkbox with a md size', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Checkbox id="test" size="md" />
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Checkbox id="test" size="md" />
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen
@@ -74,10 +92,12 @@ describe('Checkbox', () => {
 
   test('should render a checkbox with a lg size', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Checkbox id="test" size="lg" />
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Checkbox id="test" size="lg" />
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen
@@ -88,10 +108,12 @@ describe('Checkbox', () => {
 
   test('should render a checkbox icon when checked', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Checkbox id="test" checked />
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Checkbox id="test" checked />
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen.getByRole('img', {
@@ -102,10 +124,12 @@ describe('Checkbox', () => {
 
   test('should render a mixed icon when mixed', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Checkbox id="test" mixed />
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Checkbox id="test" mixed />
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen.getByRole('img', {

@@ -1,6 +1,6 @@
 'use client'
 
-import { Calendar } from '@cerberus-design/icons'
+import { Calendar } from '@carbon/icons-react'
 import {
   Field,
   FieldMessage,

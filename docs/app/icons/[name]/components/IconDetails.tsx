@@ -1,4 +1,4 @@
-import * as Icons from '@cerberus-design/icons'
+import * as Icons from '@carbon/icons-react'
 import {
   container,
   grid,

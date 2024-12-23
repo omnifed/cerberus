@@ -15,7 +15,6 @@ import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
 import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
-import { $cerberusIcons } from '../config/defineIcons'
 import { trapFocus } from '../aria-helpers/trap-focus.aria'
 import { Show } from '../components/Show'
 import { Modal } from '../components/Modal'
@@ -25,6 +24,7 @@ import { ModalHeading } from '../components/ModalHeading'
 import { ModalDescription } from '../components/ModalDescription'
 import { Avatar } from '../components/Avatar'
 import { HStack, VStack } from '@cerberus/styled-system/jsx'
+import { useCerberusContext } from './cerberus'
 
 /**
  * This module provides a context and hook for the confirm modal.
@@ -120,8 +120,10 @@ export function ConfirmModal(
   const resolveRef = useRef<ShowResult>(null)
   const [content, setContent] = useState<ShowConfirmModalOptions | null>(null)
   const focusTrap = trapFocus(modalRef)
-  const ConfirmIcon = $cerberusIcons.confirmModal
   const kind = content?.kind ?? 'non-destructive'
+
+  const { icons } = useCerberusContext()
+  const { confirmModal: ConfirmIcon } = icons
 
   const palette = useMemo(
     () => (kind === 'destructive' ? 'danger' : 'action'),

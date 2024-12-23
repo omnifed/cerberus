@@ -1,6 +1,6 @@
 import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
-import { LogoGithub, LogoNpm } from '@cerberus-design/icons'
+import { LogoGithub, LogoNpm } from '@carbon/icons-react'
 import { Show } from '@cerberus-design/react'
 
 const apiLinkStyles = css({
