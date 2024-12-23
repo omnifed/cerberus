@@ -6,13 +6,15 @@ import {
   renderHook,
   waitFor,
 } from '@testing-library/react'
-import { CTAModal, useCTAModal } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
+import { CTAModal, useCTAModal, CerberusProvider } from '@cerberus-design/react'
+import { makeConfig, setupStrictMode } from '@/utils'
 import userEvent from '@testing-library/user-event'
 
 describe('CTAModal & useCTAModal', () => {
   setupStrictMode()
   afterEach(cleanup)
+
+  const config = makeConfig()
   const action1 = jest.fn()
   const action2 = jest.fn()
 
@@ -46,9 +48,11 @@ describe('CTAModal & useCTAModal', () => {
 
   function TestPage() {
     return (
-      <CTAModal>
-        <TestFeature />
-      </CTAModal>
+      <CerberusProvider config={config}>
+        <CTAModal>
+          <TestFeature />
+        </CTAModal>
+      </CerberusProvider>
     )
   }
 
