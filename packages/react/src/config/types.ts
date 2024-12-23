@@ -9,7 +9,7 @@ export interface SystemConfig {
   /**
    * The icons that will be used in Cerberus React components.
    */
-  icons: DefinedIcons
+  icons: Required<DefinedIcons>
 }
 
 export interface DefinedIcons<T extends IconType = IconType> {

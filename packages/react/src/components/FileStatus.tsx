@@ -12,8 +12,8 @@ import {
 } from '@cerberus/styled-system/recipes'
 import { css, cx } from '@cerberus/styled-system/css'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
-import { $cerberusIcons } from '../config/defineIcons'
 import { Field } from '../context/field'
+import { useCerberusContext } from '../context/cerberus'
 import { FieldMessage } from './FieldMessage'
 import { ProgressBar, type ProgressBarProps } from './ProgressBar'
 import { IconButton } from './IconButton'
@@ -188,12 +188,13 @@ interface FileStatusElProps {
 }
 
 function MatchFileStatusIcon(props: FileStatusElProps) {
+  const { icons } = useCerberusContext()
   const {
     waitingFileUploader: TodoIcon,
     fileUploader: FileUploaderIcon,
     invalidAlt: InvalidIcon,
     successNotification: DoneIcon,
-  } = $cerberusIcons
+  } = icons
 
   switch (props.status) {
     case processStatus.TODO:
@@ -225,7 +226,8 @@ function MatchFileStatusText(props: FileStatusElProps) {
 }
 
 function MatchStatusAction(props: FileStatusElProps) {
-  const { close: CloseIcon, redo: RedoIcon, delete: TrashIcon } = $cerberusIcons
+  const { icons } = useCerberusContext()
+  const { close: CloseIcon, redo: RedoIcon, delete: TrashIcon } = icons
   switch (props.status) {
     case processStatus.TODO:
     case processStatus.PROCESSING:
