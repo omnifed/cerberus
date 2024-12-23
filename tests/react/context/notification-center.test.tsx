@@ -3,13 +3,16 @@ import { render, screen, cleanup, renderHook } from '@testing-library/react'
 import {
   NotificationCenter,
   useNotificationCenter,
+  CerberusProvider,
 } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
+import { makeConfig, setupStrictMode } from '@/utils'
 import userEvent from '@testing-library/user-event'
 
 describe('NotificationCenter & useNotificationCenter', () => {
   setupStrictMode()
   afterEach(cleanup)
+
+  const config = makeConfig()
 
   function Feature() {
     const { notify } = useNotificationCenter()
@@ -26,9 +29,10 @@ describe('NotificationCenter & useNotificationCenter', () => {
 
   function Test() {
     return (
-      <NotificationCenter>
+      <CerberusProvider config={config}>
+        <NotificationCenter />
         <Feature />
-      </NotificationCenter>
+      </CerberusProvider>
     )
   }
 
