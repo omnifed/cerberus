@@ -123,11 +123,13 @@ If you are interested in using the Cerberus React, install it now along with **y
 
 <NoteAdmonition description="The Cerberus React library is icon-agnostic which means you can combine any icon library with it. However, it does require an icon library to be used for some components." />
 
-### Using the Cerberus Icons (optional)
+### Using Icons
 
-If you are interested in using the Cerberus Icons, install it now:
+Cerberus is icon agnostic which means you need to register the library you prefer. Cerberus was built with Carbon Icons in mind.
 
-<BashTabs code="npx jsr add @cerberus/icons" />
+If you prefer to use Cerberus Icons, you can install them now:
+
+<BashTabs code="npm install @carbon/icons-react" />
 
 ### Setting up Cerberus React
 
@@ -140,8 +142,24 @@ import {
   CerberusProvider,
   defineIcons,
   makeSystemConfig,
-} from '@cerberus/react'
-import { cerberusIcons } from '@cerberus/icons'
+} from '@cerberus-design/react'
+import {
+  Calendar,
+  Checkmark,
+  CheckmarkOutline,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Close,
+  CloudUpload,
+  Information,
+  Restart,
+  TrashCan,
+  UserFilled,
+  Warning,
+  WarningAlt,
+  WarningFilled,
+} from '@carbon/icons-react'
 import type { PropsWithChildren } from 'react'
 
 /**
@@ -149,7 +167,27 @@ import type { PropsWithChildren } from 'react'
  * in a client abstraction because of R19 rules around data passing into props.
  */
 
-const icons = defineIcons(cerberusIcons)
+const icons = defineIcons({
+  accordionIndicator: ChevronDown,
+  avatar: UserFilled,
+  calendar: Calendar,
+  calendarPrev: ChevronLeft,
+  calendarNext: ChevronRight,
+  close: Close,
+  confirmModal: Information,
+  delete: TrashCan,
+  promptModal: Information,
+  waitingFileUploader: CloudUpload,
+  infoNotification: Information,
+  successNotification: CheckmarkOutline,
+  warningNotification: WarningAlt,
+  dangerNotification: WarningFilled,
+  invalid: WarningFilled,
+  invalidAlt: Warning,
+  redo: Restart,
+  selectArrow: ChevronDown,
+  toggleChecked: Checkmark,
+})
 
 const config = makeSystemConfig({
   icons,
@@ -212,7 +250,7 @@ To help make maintaining a breeze, add this new script to your `package.json` to
 
 ```json title="package.json"
 "scripts": {
-  "up:cerberus": "pnpm up @cerberus/{styled-system,react}@latest && pnpm dlx jsr add @cerberus/{panda-preset,icons}"
+  "up:cerberus": "pnpm up @cerberus/{styled-system,react}@latest && pnpm dlx jsr add @cerberus/panda-preset"
 }
 ```
 
