@@ -7,8 +7,8 @@ import {
   type SelectVariantProps,
 } from '@cerberus/styled-system/recipes'
 import type { OptionHTMLAttributes, SelectHTMLAttributes } from 'react'
-import { $cerberusIcons } from '../config/defineIcons'
 import { useFieldContext } from '../context/field'
+import { useCerberusContext } from '../context/cerberus'
 import { Show } from './Show'
 
 /**
@@ -50,7 +50,10 @@ export type SelectProps = Omit<
 export function Select(props: SelectProps) {
   const { describedBy, size, ...nativeProps } = props
   const { invalid, ...fieldStates } = useFieldContext()
-  const { invalid: InvalidIcon, selectArrow: SelectArrow } = $cerberusIcons
+
+  const { icons } = useCerberusContext()
+  const { invalid: InvalidIcon, selectArrow: SelectArrow } = icons
+
   const styles = select({
     size,
   })

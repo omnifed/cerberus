@@ -1,20 +1,30 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Field, Label, Select, Option } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
+import {
+  Field,
+  Label,
+  Select,
+  Option,
+  CerberusProvider,
+} from '@cerberus-design/react'
+import { makeConfig, setupStrictMode } from '@/utils'
 
 describe('Select', () => {
   setupStrictMode()
   afterEach(cleanup)
 
+  const config = makeConfig()
+
   test('should render a select', () => {
     render(
-      <Field required>
-        <Label htmlFor="test">Test Label</Label>,
-        <Select id="test">
-          <Option value="">Choose option</Option>
-        </Select>
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field required>
+          <Label htmlFor="test">Test Label</Label>,
+          <Select id="test">
+            <Option value="">Choose option</Option>
+          </Select>
+        </Field>
+      </CerberusProvider>,
     )
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
     expect(screen.getByText(/(required)/i)).toBeTruthy()
@@ -26,12 +36,14 @@ describe('Select', () => {
 
   test('should render a input with error', () => {
     render(
-      <Field required invalid>
-        <Label htmlFor="test">Test Label</Label>,
-        <Select id="test">
-          <Option value="">Choose option</Option>
-        </Select>
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field required invalid>
+          <Label htmlFor="test">Test Label</Label>,
+          <Select id="test">
+            <Option value="">Choose option</Option>
+          </Select>
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen.getByRole('combobox').attributes.getNamedItem('aria-invalid'),
@@ -40,12 +52,14 @@ describe('Select', () => {
 
   test('should render a input with disabled', () => {
     render(
-      <Field disabled>
-        <Label htmlFor="test">Test Label</Label>,
-        <Select id="test">
-          <Option value="">Choose option</Option>
-        </Select>
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field disabled>
+          <Label htmlFor="test">Test Label</Label>,
+          <Select id="test">
+            <Option value="">Choose option</Option>
+          </Select>
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen.getByRole('combobox').attributes.getNamedItem('disabled'),
@@ -54,25 +68,29 @@ describe('Select', () => {
 
   test('should render a input with placeholder', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Select id="test">
-          <Option value="">Choose option</Option>
-        </Select>
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Select id="test">
+            <Option value="">Choose option</Option>
+          </Select>
+        </Field>
+      </CerberusProvider>,
     )
     expect(screen.getByRole('combobox')).toBeTruthy()
   })
 
   test('should render a input with describedBy', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Select id="test" describedBy="test-description">
-          <Option value="">Choose option</Option>
-        </Select>
-        <span id="test-description">Test Description</span>
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Select id="test" describedBy="test-description">
+            <Option value="">Choose option</Option>
+          </Select>
+          <span id="test-description">Test Description</span>
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen.getByRole('combobox').attributes.getNamedItem('aria-describedby'),
@@ -81,12 +99,14 @@ describe('Select', () => {
 
   test('should render a input with a sm size', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Select id="test" size="sm">
-          <Option value="">Choose option</Option>
-        </Select>
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Select id="test" size="sm">
+            <Option value="">Choose option</Option>
+          </Select>
+        </Field>
+      </CerberusProvider>,
     )
     screen.debug()
     expect(
@@ -98,12 +118,14 @@ describe('Select', () => {
 
   test('should render a input with a md size', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Select id="test" size="md">
-          <Option value="">Choose option</Option>
-        </Select>
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Select id="test" size="md">
+            <Option value="">Choose option</Option>
+          </Select>
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen
@@ -114,12 +136,14 @@ describe('Select', () => {
 
   test('should render a input with a lg size', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Select id="test" size="lg">
-          <Option value="">Choose option</Option>
-        </Select>
-      </Field>,
+      <CerberusProvider config={config}>
+        <Field>
+          <Label htmlFor="test">Test Label</Label>,
+          <Select id="test" size="lg">
+            <Option value="">Choose option</Option>
+          </Select>
+        </Field>
+      </CerberusProvider>,
     )
     expect(
       screen
