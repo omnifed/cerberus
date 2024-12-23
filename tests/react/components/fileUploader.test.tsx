@@ -27,7 +27,11 @@ describe('FileUploader', () => {
   })
 
   test('should render a file uploader with hidden heading', () => {
-    render(<FileUploader accept=".csv,.doc" name="no-heading" />)
+    render(
+      <CerberusProvider config={config}>
+        <FileUploader accept=".csv,.doc" name="no-heading" />
+      </CerberusProvider>,
+    )
 
     expect(screen.queryByText(/upload files/i)).toBeNull()
     expect(screen.getByText(/import .csv, .doc files/i)).toBeTruthy()

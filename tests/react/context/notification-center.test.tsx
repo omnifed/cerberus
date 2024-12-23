@@ -30,8 +30,9 @@ describe('NotificationCenter & useNotificationCenter', () => {
   function Test() {
     return (
       <CerberusProvider config={config}>
-        <NotificationCenter />
-        <Feature />
+        <NotificationCenter>
+          <Feature />
+        </NotificationCenter>
       </CerberusProvider>
     )
   }

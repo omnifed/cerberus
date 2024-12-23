@@ -19,7 +19,6 @@ import { trapFocus } from '../aria-helpers/trap-focus.aria'
 import { Input } from '../components/Input'
 import { Field } from './field'
 import { Label } from '../components/Label'
-import { $cerberusIcons } from '../config/defineIcons'
 import { Show } from '../components/Show'
 import { useModal } from '../hooks/useModal'
 import { Modal } from '../components/Modal'
@@ -27,6 +26,7 @@ import { ModalHeader } from '../components/ModalHeader'
 import { ModalHeading } from '../components/ModalHeading'
 import { ModalDescription } from '../components/ModalDescription'
 import { Avatar } from '../components/Avatar'
+import { useCerberusContext } from './cerberus'
 
 /**
  * This module provides a context and hook for the prompt modal.
@@ -122,7 +122,9 @@ export function PromptModal(
   const [content, setContent] = useState<ShowPromptModalOptions | null>(null)
   const [inputValue, setInputValue] = useState<string>('')
   const focusTrap = trapFocus(modalRef)
-  const PromptIcon = $cerberusIcons.promptModal
+
+  const { icons } = useCerberusContext()
+  const { promptModal: PromptIcon } = icons
 
   const isValid = useMemo(
     () => inputValue === content?.key,

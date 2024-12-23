@@ -6,14 +6,20 @@ import {
   renderHook,
   waitFor,
 } from '@testing-library/react'
-import { PromptModal, usePromptModal } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
+import {
+  CerberusProvider,
+  PromptModal,
+  usePromptModal,
+} from '@cerberus-design/react'
+import { makeConfig, setupStrictMode } from '@/utils'
 import { useState } from 'react'
 import userEvent from '@testing-library/user-event'
 
 describe('PromptModal & usePromptModal', () => {
   setupStrictMode()
   afterEach(cleanup)
+
+  const config = makeConfig()
 
   function TestFeature() {
     const prompt = usePromptModal()
@@ -42,9 +48,11 @@ describe('PromptModal & usePromptModal', () => {
 
   function TestPage() {
     return (
-      <PromptModal>
-        <TestFeature />
-      </PromptModal>
+      <CerberusProvider config={config}>
+        <PromptModal>
+          <TestFeature />
+        </PromptModal>
+      </CerberusProvider>
     )
   }
 

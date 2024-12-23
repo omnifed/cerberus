@@ -1,6 +1,5 @@
 import { CheckmarkIcon, IndeterminateIcon } from './icons/checkbox.icons'
 import { AnimatingUploadIcon } from '../components/AnimatingUploadIcon'
-import { cerberusIcons } from '@cerberus/icons'
 import type { DefinedIcons, IconType } from './types'
 
 const defaultIcons: Pick<
@@ -33,11 +32,3 @@ export function defineIcons<T extends IconType>(
     ...icons,
   } as Required<DefinedIcons<T>>
 }
-
-/**
- * @deprecated use the CerberusProvider instead
- */
-export const $cerberusIcons = {
-  ...defaultIcons,
-  ...cerberusIcons,
-} as unknown as Required<DefinedIcons>
