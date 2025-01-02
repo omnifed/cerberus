@@ -22,6 +22,9 @@ describe('notification recipe', () => {
 
   test('should have a base style', () => {
     expect(notification.base?.dialog).toMatchObject({
+      animationDuration: 'fast',
+      animationTimingFunction: 'ease-in',
+      animationFillMode: 'forwards',
       bgColor: 'colorPalette.surface.200',
       color: TEXT_2OO,
       maxW: '29rem',
@@ -30,11 +33,15 @@ describe('notification recipe', () => {
       rounded: 'sm',
       shadow: 'md',
       textAlign: 'left',
-      _motionSafe: {
-        animationName: 'fadeInDown',
-        animationDuration: '250ms',
-        animationTimingFunction: 'ease-in',
-        animationFillMode: 'forwards',
+      transitionProperty: 'all',
+      transitionDuration: 'slow',
+      _open: {
+        animationStyle: 'slide-fade-in',
+        animationDuration: 'fast',
+      },
+      _closed: {
+        animationStyle: 'slide-fade-out',
+        animationDuration: 'faster',
       },
       _motionReduce: {
         opacity: '1',

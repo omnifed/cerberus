@@ -63,6 +63,7 @@ export type NotificationProps = NotificationBaseProps & NotificationVariantProps
 export function Notification(props: PropsWithChildren<NotificationProps>) {
   const { children, palette, onClose, ...nativeProps } = props
   const ref = useRef<HTMLDialogElement>(null)
+
   const onKeyDown = trapFocus(ref)
   const styles = notification({ palette })
 
@@ -72,6 +73,7 @@ export function Notification(props: PropsWithChildren<NotificationProps>) {
   return (
     <dialog
       {...nativeProps}
+      data-placement="left"
       className={cx(
         nativeProps.className,
         hstack({

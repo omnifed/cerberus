@@ -5,7 +5,7 @@ import {
   useCallback,
   useContext,
   useMemo,
-  useState,
+  useReducer,
   type MouseEvent,
   type PropsWithChildren,
   type ReactNode,
@@ -19,6 +19,13 @@ import { Portal, type PortalProps } from '../components/Portal'
 import { notification } from '@cerberus/styled-system/recipes'
 import { Button } from '../components/Button'
 import { cx } from '@cerberus/styled-system/css'
+import {
+  addNotification,
+  clearNotificationState,
+  notificationCenterReducer,
+  removeNotification,
+  updateNotificationState,
+} from './notification-center/store'
 
 /**
  * This module provides a context and hook for notifications.
@@ -55,7 +62,13 @@ export interface NotificationsValue {
 
 const NotificationsContext = createContext<NotificationsValue | null>(null)
 
-export type NotificationsProviderProps = PortalProps
+export type NotificationsProviderProps = PortalProps & {
+  /**
+   * The duration in milliseconds to show the notification.
+   * @default 6000
+   */
+  duration?: number
+}
 
 /**
  * Provides a notification center to the app.
@@ -82,35 +95,58 @@ export type NotificationsProviderProps = PortalProps
 export function NotificationCenter(
   props: PropsWithChildren<NotificationsProviderProps>,
 ) {
-  const [activeNotifications, setActiveNotifications] = useState<
-    NotifyOptions[]
-  >([])
+  const [state, dispatch] = useReducer(notificationCenterReducer, [])
   const styles = notification()
 
-  const handleNotify = useCallback((options: NotifyOptions) => {
-    setActiveNotifications((prev) => {
-      const id = `${options.palette}:${prev.length + 1}`
-      return [...prev, { ...options, id }]
-    })
-  }, [])
+  const timeout = useMemo<number>(
+    () => props.duration || 6000,
+    [props.duration],
+  )
 
-  const handleClose = useCallback((e: MouseEvent<HTMLButtonElement>) => {
-    const target = e.currentTarget as HTMLButtonElement
-    setActiveNotifications((prev) => {
-      const item = prev.find((option) => option.id === target.value)
-      if (item?.onClose) item.onClose()
-      return prev.filter((option) => option.id !== target.value)
-    })
-  }, [])
+  const closeNotification = useCallback(
+    (id: string) => {
+      updateNotificationState(dispatch, {
+        id,
+        state: 'closed',
+      })
+      setTimeout(() => {
+        removeNotification(dispatch, id)
+      }, 150)
+    },
+    [dispatch],
+  )
+
+  const handleNotify = useCallback(
+    (options: NotifyOptions) => {
+      const id = `${options.palette}:${state.length + 1}`
+      addNotification(dispatch, {
+        ...options,
+        id,
+        state: 'open',
+      })
+
+      setTimeout(() => {
+        closeNotification(id)
+      }, timeout)
+    },
+    [dispatch, state, timeout, closeNotification],
+  )
+
+  const handleClose = useCallback(
+    (e: MouseEvent<HTMLButtonElement>) => {
+      const target = e.currentTarget as HTMLButtonElement
+      closeNotification(target.value)
+    },
+    [closeNotification],
+  )
 
   const handleCloseAll = useCallback(() => {
-    setActiveNotifications((prev) => {
-      prev.forEach((item) => {
-        if (item.onClose) item.onClose()
-      })
-      return []
+    state.forEach((item) => {
+      if (item.onClose) item.onClose()
     })
-  }, [])
+    // we don't want to animate out for this one
+    clearNotificationState(dispatch)
+  }, [state, dispatch])
 
   const value = useMemo(
     () => ({
@@ -126,10 +162,10 @@ export function NotificationCenter(
     <NotificationsContext.Provider value={value}>
       {props.children}
 
-      <Show when={activeNotifications.length > 0}>
+      <Show when={state.length > 0}>
         <Portal container={props.container}>
           <div className={styles.center}>
-            <Show when={activeNotifications.length >= 4}>
+            <Show when={state.length >= 4}>
               <Button
                 className={cx(styles.closeAll, animateIn())}
                 onClick={handleCloseAll}
@@ -151,11 +187,12 @@ export function NotificationCenter(
                 alignItems: 'flex-end',
               }}
             >
-              {activeNotifications.map((option) => (
+              {state.map((option) => (
                 <MatchNotification
                   key={option.id}
                   {...option}
                   onClose={handleClose}
+                  open={option.state}
                 />
               ))}
             </div>
@@ -167,23 +204,27 @@ export function NotificationCenter(
 }
 
 interface MatchNotificationProps extends Omit<NotifyOptions, 'onClose'> {
+  open: 'open' | 'closed'
   onClose: (e: MouseEvent<HTMLButtonElement>) => void
   key: string | undefined
 }
 
 function MatchNotification(props: MatchNotificationProps) {
-  const { palette, id, onClose, heading, description } = props
+  const { palette, id, onClose, heading, description, open } = props
+  const sharedProps = useMemo(
+    () => ({
+      id: id!,
+      open: true,
+      onClose,
+      'data-state': open,
+    }),
+    [id, open, onClose],
+  )
 
   switch (palette) {
     case 'success':
       return (
-        <Notification
-          id={id!}
-          key={id}
-          onClose={onClose}
-          open
-          palette="success"
-        >
+        <Notification {...sharedProps} palette="success">
           <NotificationHeading palette="success">{heading}</NotificationHeading>
           <NotificationDescription palette="success">
             {description}
@@ -193,13 +234,7 @@ function MatchNotification(props: MatchNotificationProps) {
 
     case 'warning':
       return (
-        <Notification
-          id={id!}
-          key={id}
-          onClose={onClose}
-          open
-          palette="warning"
-        >
+        <Notification {...sharedProps} palette="warning">
           <NotificationHeading palette="warning">{heading}</NotificationHeading>
           <NotificationDescription palette="warning">
             {description}
@@ -209,7 +244,7 @@ function MatchNotification(props: MatchNotificationProps) {
 
     case 'danger':
       return (
-        <Notification id={id!} key={id} onClose={onClose} open palette="danger">
+        <Notification {...sharedProps} palette="danger">
           <NotificationHeading palette="danger">{heading}</NotificationHeading>
           <NotificationDescription palette="danger">
             {description}
@@ -220,7 +255,7 @@ function MatchNotification(props: MatchNotificationProps) {
     case 'info':
     default:
       return (
-        <Notification id={id!} key={id} onClose={onClose} open palette="info">
+        <Notification {...sharedProps} palette="info">
           <NotificationHeading palette="info">{heading}</NotificationHeading>
           <NotificationDescription palette="info">
             {description}
