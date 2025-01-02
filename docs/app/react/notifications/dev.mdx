@@ -124,6 +124,11 @@ function CustomNotification() {
 ## API
 
 ```ts showLineNumbers=false
+
+export type NotificationCenterProps = PortalProps & {
+  duration?: number
+}
+
 export interface NotifyOptions {
   palette?: 'info' | 'success' | 'warning' | 'danger'
   heading: string
@@ -136,7 +141,7 @@ export interface NotificationProviderValue {
   notify: (options: NotifyOptions) => void
 }
 
-define function NotificationCenter(props: PropsWithChildren<PortalProps>): ReactNode
+define function NotificationCenter(props: PropsWithChildren<NotificationCenterProps>): ReactNode
 ````
 
 ### Show Method Options
