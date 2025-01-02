@@ -997,6 +997,18 @@
           "codeSyntax": {}
         }
       }
+    },
+    "interactive-default": {
+      "$type": "color",
+      "$value": "cerberus.brand.70",
+      "$description": "",
+      "$extensions": {
+        "com.figma": {
+          "hiddenFromPublishing": false,
+          "scopes": ["SHAPE_FILL"],
+          "codeSyntax": {}
+        }
+      }
     }
   },
   "background": {
