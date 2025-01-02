@@ -33,7 +33,7 @@
     "@pandacss/dev": "^0.51.1",
     "@pandacss/preset-panda": "^0.51.1",
     "@pandacss/types": "^0.51.1",
-    "@shikijs/rehype": "^1.24.1",
+    "@shikijs/rehype": "^1.25.1",
     "@types/node": "^22.10.1",
     "@types/react": "^18",
     "@types/react-dom": "^18",
