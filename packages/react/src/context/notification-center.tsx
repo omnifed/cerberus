@@ -24,6 +24,7 @@ import {
   clearNotificationState,
   notificationCenterReducer,
   removeNotification,
+  updateNotificationState,
 } from './notification-center/store'
 
 /**
@@ -102,33 +103,48 @@ export function NotificationCenter(
     [props.duration],
   )
 
+  const closeNotification = useCallback(
+    (id: string) => {
+      updateNotificationState(dispatch, {
+        id,
+        state: 'closed',
+      })
+      setTimeout(() => {
+        removeNotification(dispatch, id)
+      }, 150)
+    },
+    [dispatch],
+  )
+
   const handleNotify = useCallback(
     (options: NotifyOptions) => {
       const id = `${options.palette}:${state.length + 1}`
       addNotification(dispatch, {
         ...options,
         id,
+        state: 'open',
       })
 
       setTimeout(() => {
-        removeNotification(dispatch, id)
+        closeNotification(id)
       }, timeout)
     },
-    [dispatch, state, timeout],
+    [dispatch, state, timeout, closeNotification],
   )
 
   const handleClose = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
       const target = e.currentTarget as HTMLButtonElement
-      removeNotification(dispatch, target.value)
+      closeNotification(target.value)
     },
-    [dispatch],
+    [closeNotification],
   )
 
   const handleCloseAll = useCallback(() => {
     state.forEach((item) => {
       if (item.onClose) item.onClose()
     })
+    // we don't want to animate out for this one
     clearNotificationState(dispatch)
   }, [state, dispatch])
 
@@ -176,6 +192,7 @@ export function NotificationCenter(
                   key={option.id}
                   {...option}
                   onClose={handleClose}
+                  open={option.state}
                 />
               ))}
             </div>
@@ -187,23 +204,27 @@ export function NotificationCenter(
 }
 
 interface MatchNotificationProps extends Omit<NotifyOptions, 'onClose'> {
+  open: 'open' | 'closed'
   onClose: (e: MouseEvent<HTMLButtonElement>) => void
   key: string | undefined
 }
 
 function MatchNotification(props: MatchNotificationProps) {
-  const { palette, id, onClose, heading, description } = props
+  const { palette, id, onClose, heading, description, open } = props
+  const sharedProps = useMemo(
+    () => ({
+      id: id!,
+      open: true,
+      onClose,
+      'data-state': open,
+    }),
+    [id, open, onClose],
+  )
 
   switch (palette) {
     case 'success':
       return (
-        <Notification
-          id={id!}
-          key={id}
-          onClose={onClose}
-          open
-          palette="success"
-        >
+        <Notification {...sharedProps} palette="success">
           <NotificationHeading palette="success">{heading}</NotificationHeading>
           <NotificationDescription palette="success">
             {description}
@@ -213,13 +234,7 @@ function MatchNotification(props: MatchNotificationProps) {
 
     case 'warning':
       return (
-        <Notification
-          id={id!}
-          key={id}
-          onClose={onClose}
-          open
-          palette="warning"
-        >
+        <Notification {...sharedProps} palette="warning">
           <NotificationHeading palette="warning">{heading}</NotificationHeading>
           <NotificationDescription palette="warning">
             {description}
@@ -229,7 +244,7 @@ function MatchNotification(props: MatchNotificationProps) {
 
     case 'danger':
       return (
-        <Notification id={id!} key={id} onClose={onClose} open palette="danger">
+        <Notification {...sharedProps} palette="danger">
           <NotificationHeading palette="danger">{heading}</NotificationHeading>
           <NotificationDescription palette="danger">
             {description}
@@ -240,7 +255,7 @@ function MatchNotification(props: MatchNotificationProps) {
     case 'info':
     default:
       return (
-        <Notification id={id!} key={id} onClose={onClose} open palette="info">
+        <Notification {...sharedProps} palette="info">
           <NotificationHeading palette="info">{heading}</NotificationHeading>
           <NotificationDescription palette="info">
             {description}

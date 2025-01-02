@@ -1,23 +1,17 @@
 import type { Dispatch } from 'react'
-import type { NotifyOptions } from '../notification-center'
+import type {
+  AddNotifyAction,
+  ClearNotifyAction,
+  NotificationsStore,
+  RemoveNotifyAction,
+  UpdateNotifyAction,
+} from './types'
 
 /**
  * This module contains the reducer store and actions for the notification
  * center.
  * @module notification-center/store
  */
-
-export type AddNotifyAction = {
-  type: 'ADD_NOTIFICATION'
-  payload: NotifyOptions
-}
-
-export type RemoveNotifyAction = {
-  type: 'REMOVE_NOTIFICATION'
-  payload: { id: Required<NotifyOptions['id']> }
-}
-
-export type ClearNotifyAction = { type: 'CLEAR_NOTIFICATIONS' }
 
 /**
  * The reducer for the notification center.
@@ -26,14 +20,22 @@ export type ClearNotifyAction = { type: 'CLEAR_NOTIFICATIONS' }
  * @returns The new state of the notifications.
  */
 export function notificationCenterReducer(
-  state: NotifyOptions[],
-  action: AddNotifyAction | RemoveNotifyAction | ClearNotifyAction,
-): NotifyOptions[] {
+  state: NotificationsStore,
+  action:
+    | AddNotifyAction
+    | RemoveNotifyAction
+    | UpdateNotifyAction
+    | ClearNotifyAction,
+): NotificationsStore {
   switch (action.type) {
     case 'ADD_NOTIFICATION':
       return [...state, action.payload]
     case 'REMOVE_NOTIFICATION':
       return state.filter((n) => n.id !== action.payload.id)
+    case 'UPDATE_NOTIFICATION':
+      return state.map((n) =>
+        n.id === action.payload.id ? { ...n, ...action.payload } : n,
+      )
     case 'CLEAR_NOTIFICATIONS':
       return []
     default:
@@ -48,9 +50,9 @@ export function notificationCenterReducer(
  */
 export function addNotification(
   dispatch: Dispatch<AddNotifyAction>,
-  options: NotifyOptions,
+  options: AddNotifyAction['payload'],
 ) {
-  dispatch({ type: 'ADD_NOTIFICATION', payload: options })
+  dispatch({ type: 'ADD_NOTIFICATION', payload: { ...options } })
 }
 
 /**
@@ -60,9 +62,21 @@ export function addNotification(
  */
 export function removeNotification(
   dispatch: Dispatch<RemoveNotifyAction>,
-  id: Required<NotifyOptions['id']>,
+  id: RemoveNotifyAction['payload']['id'],
 ) {
   dispatch({ type: 'REMOVE_NOTIFICATION', payload: { id } })
+}
+
+/**
+ * Updates a notification in the notification center.
+ * @param dispatch The dispatch function.
+ * @param options The notification options.
+ */
+export function updateNotificationState(
+  dispatch: Dispatch<UpdateNotifyAction>,
+  options: UpdateNotifyAction['payload'],
+) {
+  dispatch({ type: 'UPDATE_NOTIFICATION', payload: { ...options } })
 }
 
 /**

@@ -73,6 +73,7 @@ export function Notification(props: PropsWithChildren<NotificationProps>) {
   return (
     <dialog
       {...nativeProps}
+      data-placement="left"
       className={cx(
         nativeProps.className,
         hstack({

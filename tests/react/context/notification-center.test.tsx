@@ -1,5 +1,11 @@
 import { describe, test, expect, afterEach, spyOn } from 'bun:test'
-import { render, screen, cleanup, renderHook } from '@testing-library/react'
+import {
+  render,
+  screen,
+  cleanup,
+  renderHook,
+  waitFor,
+} from '@testing-library/react'
 import {
   NotificationCenter,
   useNotificationCenter,
@@ -55,7 +61,9 @@ describe('NotificationCenter & useNotificationCenter', () => {
     render(<Test />)
     await userEvent.click(screen.getByText(/notify/i))
     await userEvent.click(screen.getByRole('button', { name: /close/i }))
-    expect(screen.queryByText(/new feature!/i)).toBeNull()
+    await waitFor(() => {
+      expect(screen.queryByText(/new feature!/i)).toBeNull()
+    })
   })
 
   test('should close all notifications', async () => {
