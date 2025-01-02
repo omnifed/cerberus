@@ -5,7 +5,7 @@ import {
   useCallback,
   useContext,
   useMemo,
-  useState,
+  useReducer,
   type MouseEvent,
   type PropsWithChildren,
   type ReactNode,
@@ -19,6 +19,12 @@ import { Portal, type PortalProps } from '../components/Portal'
 import { notification } from '@cerberus/styled-system/recipes'
 import { Button } from '../components/Button'
 import { cx } from '@cerberus/styled-system/css'
+import {
+  addNotification,
+  clearNotificationState,
+  notificationCenterReducer,
+  removeNotification,
+} from './notification-center/store'
 
 /**
  * This module provides a context and hook for notifications.
@@ -55,7 +61,13 @@ export interface NotificationsValue {
 
 const NotificationsContext = createContext<NotificationsValue | null>(null)
 
-export type NotificationsProviderProps = PortalProps
+export type NotificationsProviderProps = PortalProps & {
+  /**
+   * The duration in milliseconds to show the notification.
+   * @default 6000
+   */
+  duration?: number
+}
 
 /**
  * Provides a notification center to the app.
@@ -82,35 +94,43 @@ export type NotificationsProviderProps = PortalProps
 export function NotificationCenter(
   props: PropsWithChildren<NotificationsProviderProps>,
 ) {
-  const [activeNotifications, setActiveNotifications] = useState<
-    NotifyOptions[]
-  >([])
+  const [state, dispatch] = useReducer(notificationCenterReducer, [])
   const styles = notification()
 
-  const handleNotify = useCallback((options: NotifyOptions) => {
-    setActiveNotifications((prev) => {
-      const id = `${options.palette}:${prev.length + 1}`
-      return [...prev, { ...options, id }]
-    })
-  }, [])
+  const timeout = useMemo<number>(
+    () => props.duration || 6000,
+    [props.duration],
+  )
 
-  const handleClose = useCallback((e: MouseEvent<HTMLButtonElement>) => {
-    const target = e.currentTarget as HTMLButtonElement
-    setActiveNotifications((prev) => {
-      const item = prev.find((option) => option.id === target.value)
-      if (item?.onClose) item.onClose()
-      return prev.filter((option) => option.id !== target.value)
-    })
-  }, [])
+  const handleNotify = useCallback(
+    (options: NotifyOptions) => {
+      const id = `${options.palette}:${state.length + 1}`
+      addNotification(dispatch, {
+        ...options,
+        id,
+      })
+
+      setTimeout(() => {
+        removeNotification(dispatch, id)
+      }, timeout)
+    },
+    [dispatch, state, timeout],
+  )
+
+  const handleClose = useCallback(
+    (e: MouseEvent<HTMLButtonElement>) => {
+      const target = e.currentTarget as HTMLButtonElement
+      removeNotification(dispatch, target.value)
+    },
+    [dispatch],
+  )
 
   const handleCloseAll = useCallback(() => {
-    setActiveNotifications((prev) => {
-      prev.forEach((item) => {
-        if (item.onClose) item.onClose()
-      })
-      return []
+    state.forEach((item) => {
+      if (item.onClose) item.onClose()
     })
-  }, [])
+    clearNotificationState(dispatch)
+  }, [state, dispatch])
 
   const value = useMemo(
     () => ({
@@ -126,10 +146,10 @@ export function NotificationCenter(
     <NotificationsContext.Provider value={value}>
       {props.children}
 
-      <Show when={activeNotifications.length > 0}>
+      <Show when={state.length > 0}>
         <Portal container={props.container}>
           <div className={styles.center}>
-            <Show when={activeNotifications.length >= 4}>
+            <Show when={state.length >= 4}>
               <Button
                 className={cx(styles.closeAll, animateIn())}
                 onClick={handleCloseAll}
@@ -151,7 +171,7 @@ export function NotificationCenter(
                 alignItems: 'flex-end',
               }}
             >
-              {activeNotifications.map((option) => (
+              {state.map((option) => (
                 <MatchNotification
                   key={option.id}
                   {...option}
