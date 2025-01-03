@@ -73,7 +73,9 @@ describe('NotificationCenter & useNotificationCenter', () => {
     await userEvent.click(screen.getByText(/notify/i))
     await userEvent.click(screen.getByText(/notify/i))
     await userEvent.click(screen.getByRole('button', { name: /close all/i }))
-    expect(screen.queryByText(/new feature!/i)).toBeNull()
+    await waitFor(() => {
+      expect(screen.queryByText(/new feature!/i)).toBeNull()
+    })
   })
 
   test('should throw an error if used outside of FeatureFlags', () => {
