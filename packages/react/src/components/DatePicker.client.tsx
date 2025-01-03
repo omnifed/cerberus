@@ -214,23 +214,23 @@ export function RangePickerInput(props: RangePickerInputProps) {
         {...fieldStates}
         {...(invalid && { 'aria-invalid': true })}
         data-range-input
+        defaultValue={startDate}
         className={cx(props.className, datePickerStyles.input)}
         placeholder={props.placeholder ?? 'DD MMM YYYY'}
         maxLength={11}
         index={0}
-        defaultValue={startDate}
       />
       <ArkDP.Input
         {...nativeProps}
         {...fieldStates}
         {...(invalid && { 'aria-invalid': true })}
         data-range-input
+        defaultValue={endDate}
         data-range-end-input
         className={cx(props.className, datePickerStyles.input)}
         placeholder={props.placeholder ?? 'DD MMM YYYY'}
         maxLength={11}
         index={1}
-        defaultValue={endDate}
       />
     </ArkDP.Control>
   )
