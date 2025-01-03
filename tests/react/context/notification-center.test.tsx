@@ -57,6 +57,7 @@ describe('NotificationCenter & useNotificationCenter', () => {
     ).toBeTruthy()
   })
 
+  // This fails in the CI, but works locally
   test.skip('should close the notification', async () => {
     render(<Test />)
     await userEvent.click(screen.getByText(/notify/i))
