@@ -35,3 +35,21 @@ export function RangePreview() {
     </Box>
   )
 }
+
+export function RangeDefaultValuePreview() {
+  return (
+    <Box gap="4" w="2/3">
+      <Field>
+        <DatePicker
+          id="range_dates_dv"
+          name="range_dates_dv"
+          selectionMode="range"
+        >
+          <DatePickerLabel>Search range</DatePickerLabel>
+          <RangePickerInput defaultValue={['01/01/2025', '01/15/2025']} />
+          <DatePickerCalendar />
+        </DatePicker>
+      </Field>
+    </Box>
+  )
+}
