@@ -8,11 +8,15 @@ import {
 } from '@cerberus-design/react'
 import { Box } from '@cerberus-design/styled-system/jsx'
 
-export function StaticPreview() {
+interface DPPreviewProps {
+  id: string
+}
+
+export function StaticPreview(props: DPPreviewProps) {
   return (
     <Box w="2/3">
       <Field>
-        <DatePicker id="start_date" name="start_date">
+        <DatePicker id={props.id} name={props.id}>
           <DatePickerLabel>Start date</DatePickerLabel>
           <DatePickerInput />
           <DatePickerCalendar />
@@ -22,13 +26,31 @@ export function StaticPreview() {
   )
 }
 
-export function RangePreview() {
+export function RangePreview(props: DPPreviewProps) {
   return (
     <Box gap="4" w="2/3">
       <Field>
-        <DatePicker id="range_dates" name="range_dates" selectionMode="range">
+        <DatePicker id={props.id} name={props.id} selectionMode="range">
           <DatePickerLabel>Search range</DatePickerLabel>
           <RangePickerInput />
+          <DatePickerCalendar />
+        </DatePicker>
+      </Field>
+    </Box>
+  )
+}
+
+export function RangeDefaultValuePreview() {
+  return (
+    <Box gap="4" w="2/3">
+      <Field>
+        <DatePicker
+          id="range_dates_dv"
+          name="range_dates_dv"
+          selectionMode="range"
+        >
+          <DatePickerLabel>Search range</DatePickerLabel>
+          <RangePickerInput defaultValue={['01/01/2025', '01/15/2025']} />
           <DatePickerCalendar />
         </DatePicker>
       </Field>

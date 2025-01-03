@@ -2,10 +2,11 @@
 npm: '@cerberus-design/react'
 source: 'components/DatePicker.server.tsx'
 recipe: 'slots/datepicker.ts'
+ark: 'date-picker'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
-import { StaticPreview, RangePreview } from './components/static-preview'
+import { StaticPreview, RangePreview, RangeDefaultValuePreview } from './components/static-preview'
 
 ```ts
 import {
@@ -20,7 +21,7 @@ import {
 
 ### Single Date Picker
 
-<CodePreview preview={<StaticPreview />}>
+<CodePreview preview={<StaticPreview id="dev-static" />}>
 ```tsx
 import {
   DatePicker,
@@ -49,7 +50,7 @@ function StaticPreview() {
 
 ### Date Range Picker
 
-<CodePreview preview={<RangePreview />}>
+<CodePreview preview={<RangePreview id="dev-range" />}>
 ```tsx
 import {
   DatePicker,
@@ -71,6 +72,35 @@ function RangePreview() {
         </DatePicker>
       </Field>
     </Box>
+  )
+}
+```
+</CodePreview>
+
+#### Using Default Values
+
+You can set the default values for the range date picker by passing the `defaultValue` prop to the `RangePickerInput` component in the form of an Array of two date strings.
+
+<CodePreview preview={<RangeDefaultValuePreview />}>
+```tsx {16}
+import {
+  DatePicker,
+  DatePickerLabel,
+  RangePickerInput,
+  DatePickerCalendar,
+  Field,
+} from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
+
+function RangePreview() {
+  return (
+    <Field>
+      <DatePicker id="range_dates_defaultValue" name="range_dates_defaultValue" selectionMode="range">
+        <DatePickerLabel>Search range</DatePickerLabel>
+        <RangePickerInput defaultValue={['01/01/2025', '01/15/2025']} />
+        <DatePickerCalendar />
+      </DatePicker>
+    </Field>
   )
 }
 ```

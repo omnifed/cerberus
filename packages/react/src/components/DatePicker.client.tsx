@@ -25,6 +25,7 @@ import {
 import { IconButton } from './IconButton'
 import { Button } from './Button'
 import { useCerberusContext } from '../context/cerberus'
+import { useMemo, type InputHTMLAttributes } from 'react'
 
 /**
  * This module contains the DatePicker client family components.
@@ -172,6 +173,18 @@ export function DatePickerInput(props: DatePickerInputProps) {
   )
 }
 
+export interface RangePickerInputProps
+  extends Omit<DatePickerInputProps, 'defaultValue'> {
+  /**
+   * The defaultValue to add for the inputs. The first item is the start date
+   * and the second item is the end date.
+   */
+  defaultValue?: [
+    InputHTMLAttributes<HTMLInputElement>['defaultValue'],
+    InputHTMLAttributes<HTMLInputElement>['defaultValue'],
+  ]
+}
+
 /**
  * The input component for the DatePicker that uses ranges.
  * @definition [Date Picker docs](https://cerberus.digitalu.design/react/date-picker)
@@ -186,26 +199,33 @@ export function DatePickerInput(props: DatePickerInputProps) {
  * </Field>
  * ```
  */
-export function RangePickerInput(props: DatePickerInputProps) {
+export function RangePickerInput(props: RangePickerInputProps) {
   const { invalid, ...fieldStates } = useFieldContext()
+  const { defaultValue, ...nativeProps } = props
+
+  const startDate = useMemo(() => defaultValue?.[0], [defaultValue])
+  const endDate = useMemo(() => defaultValue?.[1], [defaultValue])
+
   return (
     <ArkDP.Control data-range className={datePickerStyles.control}>
       <DatePickerTrigger />
       <ArkDP.Input
-        {...props}
+        {...nativeProps}
         {...fieldStates}
         {...(invalid && { 'aria-invalid': true })}
         data-range-input
+        defaultValue={startDate}
         className={cx(props.className, datePickerStyles.input)}
         placeholder={props.placeholder ?? 'DD MMM YYYY'}
         maxLength={11}
         index={0}
       />
       <ArkDP.Input
-        {...props}
+        {...nativeProps}
         {...fieldStates}
         {...(invalid && { 'aria-invalid': true })}
         data-range-input
+        defaultValue={endDate}
         data-range-end-input
         className={cx(props.className, datePickerStyles.input)}
         placeholder={props.placeholder ?? 'DD MMM YYYY'}

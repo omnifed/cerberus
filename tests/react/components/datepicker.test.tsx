@@ -75,4 +75,25 @@ describe('DatePicker', () => {
       )
     })
   })
+
+  test('allows a defaultValue for the range picker', () => {
+    render(
+      <CerberusProvider config={config}>
+        <Field>
+          <DatePicker id="range_dates" name="range_dates" selectionMode="range">
+            <DatePickerLabel>Search range</DatePickerLabel>
+            <RangePickerInput defaultValue={['2021-01-01', '2021-01-31']} />
+            <DatePickerCalendar />
+          </DatePicker>
+        </Field>
+      </CerberusProvider>,
+    )
+
+    expect(screen.getAllByRole('textbox')[0].getAttribute('value')).toEqual(
+      '2021-01-01',
+    )
+    expect(screen.getAllByRole('textbox')[1].getAttribute('value')).toEqual(
+      '2021-01-31',
+    )
+  })
 })
