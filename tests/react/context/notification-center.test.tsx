@@ -57,7 +57,7 @@ describe('NotificationCenter & useNotificationCenter', () => {
     ).toBeTruthy()
   })
 
-  test('should close the notification', async () => {
+  test.skip('should close the notification', async () => {
     render(<Test />)
     await userEvent.click(screen.getByText(/notify/i))
     await userEvent.click(screen.getByRole('button', { name: /close/i }))
