@@ -109,7 +109,7 @@ export function NotificationCenter(
         id,
         state: 'closed',
       })
-      setTimeout(() => {
+      window.setTimeout(() => {
         removeNotification(dispatch, id)
       }, 150)
     },
@@ -125,7 +125,7 @@ export function NotificationCenter(
         state: 'open',
       })
 
-      setTimeout(() => {
+      window.setTimeout(() => {
         closeNotification(id)
       }, timeout)
     },
