@@ -105,7 +105,13 @@ export function DialogHeading(props: DialogTitleProps) {
  * ```
  */
 export function DialogDescription(props: DialogTitleProps) {
-  return <ArkDialog.Description {...props} />
+  const styles = dialog()
+  return (
+    <ArkDialog.Description
+      {...props}
+      className={cx(props.className, styles.description)}
+    />
+  )
 }
 
 /**
