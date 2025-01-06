@@ -8,11 +8,10 @@ import {
   dialog,
   type DialogVariantProps,
 } from '@cerberus/styled-system/recipes'
-import type { PropsWithChildren } from 'react'
 import { Portal } from './Portal'
 import { cx } from '@cerberus/styled-system/css'
 
-export type DialogProps = DialogRootProps
+export type DialogProviderProps = DialogRootProps
 
 /**
  * The provider that controls the dialog components.
@@ -30,12 +29,12 @@ export type DialogProps = DialogRootProps
  * </DialogProvider>
  * ```
  */
-export function DialogProvider(props: PropsWithChildren<DialogProps>) {
+export function DialogProvider(props: DialogProviderProps) {
   return <ArkDialog.Root {...props} />
 }
 
-export interface DialogContentProps
-  extends ArkDialogContentProps,
+export interface DialogProps
+  extends Omit<ArkDialogContentProps, 'size'>,
     DialogVariantProps {}
 
 /**
@@ -53,13 +52,14 @@ export interface DialogContentProps
  * </DialogProvider>
  * ```
  */
-export function Dialog(props: DialogContentProps) {
-  const styles = dialog()
+export function Dialog(props: DialogProps) {
+  const { size, ...contentProps } = props
+  const styles = dialog({ size })
   return (
     <Portal>
       <DialogBackdrop className={styles.backdrop} />
       <DialogPositioner className={styles.positioner}>
-        <DialogContent className={styles.content} {...props} />
+        <DialogContent className={styles.content} {...contentProps} />
       </DialogPositioner>
     </Portal>
   )

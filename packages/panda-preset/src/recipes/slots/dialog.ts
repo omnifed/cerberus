@@ -6,6 +6,8 @@ import { dialogAnatomy } from '@ark-ui/anatomy'
  * @module
  */
 
+const modalMinH = '18rem'
+
 /**
  * Styles for the dialog components
  * @definition [Ark Dialog docs](https://ark-ui.com/react/docs/components/dialog)
@@ -61,9 +63,9 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
     content: {
       animationFillMode: 'forwards',
       bgColor: 'page.surface.100',
-      minW: '26rem',
       padding: 'xl',
       opacity: 0,
+      overflowY: 'auto',
       position: 'relative',
       rounded: 'md',
       shadow: 'lg',
@@ -90,7 +92,42 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
   },
 
-  variants: {},
+  variants: {
+    size: {
+      xs: {
+        content: {
+          minH: modalMinH,
+          w: '26rem',
+        },
+      },
+      sm: {
+        content: {
+          minH: modalMinH,
+          w: '35rem',
+        },
+      },
+      md: {
+        content: {
+          minH: modalMinH,
+          w: '40rem',
+        },
+      },
+      lg: {
+        content: {
+          minH: modalMinH,
+          w: '54rem',
+        },
+      },
+      full: {
+        content: {
+          minH: '40rem',
+          w: '90dvw',
+        },
+      },
+    },
+  },
 
-  defaultVariants: {},
+  defaultVariants: {
+    size: 'md',
+  },
 })
