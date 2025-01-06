@@ -1,0 +1,30 @@
+---
+heading: 'Dialog'
+description: 'Dialogs provide important prompts in a user flow.'
+a11y: 'touch-target'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import {
+  OverviewPreview,
+  ModalFormPreview
+} from '@/app/react/dialog/components/modal-preview'
+
+<OverviewList rules={[
+  'Use dialogs to make sure users act on information',
+  'Should be dedicated to completing a single task',
+  'Can also display information relevant to the task',
+  'Commonly used in high-risk actions like deleting progress',
+]} />
+
+## Example
+
+<CodePreview preview={<OverviewPreview />} />
+<CodePreview preview={<ModalFormPreview />} />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |
