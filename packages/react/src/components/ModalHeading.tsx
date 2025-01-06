@@ -10,14 +10,7 @@ import type { HTMLAttributes } from 'react'
 export type ModalHeadingProps = HTMLAttributes<HTMLParagraphElement>
 
 /**
- * The ModalHeading component is a heading element for a customizable modal.
- * @see https://cerberus.digitalu.design/react/modal
- * @example
- * ```tsx
- * <Modal>
- *   <ModalHeading>Modal Heading</ModalHeading>
- * </Modal>
- * ```
+ * @deprecated use `DialogHeading` instead
  */
 export function ModalHeading(props: ModalHeadingProps) {
   return <p {...props} className={cx(props.className, modal().heading)} />

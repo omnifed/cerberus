@@ -4,7 +4,8 @@
     "description": "Components that trigger an action.",
     "items": ["Button", "Icon Button"],
     "next": [],
-    "new": []
+    "new": [],
+    "deprecated": []
   },
   "communication": {
     "name": "Communication",
@@ -19,21 +20,24 @@
       "Tooltip"
     ],
     "next": [],
-    "new": ["Accordion"]
+    "new": ["Accordion"],
+    "deprecated": []
   },
   "containment": {
     "name": "Containment",
     "description": "Components that contain other components.",
     "items": ["Confirm Modal", "Prompt Modal", "CTA Modal", "Modal", "Table"],
     "next": [],
-    "new": []
+    "new": [],
+    "deprecated": []
   },
   "navigation": {
     "name": "Navigation",
     "description": "Components that help users navigate through the app.",
     "items": ["Menu", "Tabs"],
     "next": [],
-    "new": ["Tabs"]
+    "new": ["Tabs"],
+    "deprecated": []
   },
   "selection": {
     "name": "Selection",
@@ -47,7 +51,8 @@
       "Toggle"
     ],
     "next": [],
-    "new": ["Date Picker"]
+    "new": ["Date Picker"],
+    "deprecated": []
   },
   "inputs": {
     "name": "Inputs",
@@ -61,6 +66,7 @@
       "File Uploader"
     ],
     "next": [],
-    "new": []
+    "new": [],
+    "deprecated": []
   }
 }

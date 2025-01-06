@@ -10,16 +10,7 @@ import type { HTMLAttributes } from 'react'
 export type ModalHeaderProps = HTMLAttributes<HTMLDivElement>
 
 /**
- * The ModalHeader component is a header element for a customizable modal.
- * @see https://cerberus.digitalu.design/react/modal
- * @example
- * ```tsx
- * <Modal>
- *   <ModalHeader>
- *     <h2>Modal Heading</h2>
- *   </ModalHeader>
- * </Modal>
- * ```
+ * @deprecated there is no replacement for this component
  */
 export function ModalHeader(props: ModalHeaderProps) {
   return (
