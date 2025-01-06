@@ -13,6 +13,7 @@ import {
   DialogTrigger,
   DialogProvider,
   DialogCloseTrigger,
+  DialogCloseIconTrigger,
   DialogHeading,
   DialogDescription,
   DatePicker,
@@ -33,8 +34,9 @@ export function OverviewPreview() {
       </DialogTrigger>
 
       <Dialog>
-        <VStack alignItems="flex-start" gap="xs" paddingBlock="lg" w="full">
-          <DialogHeading>This is a custom modal</DialogHeading>
+        <DialogCloseIconTrigger />
+        <VStack alignItems="flex-start" gap="xs" w="full">
+          <DialogHeading>Dialog Title</DialogHeading>
           <DialogDescription>
             This is a custom modal description
           </DialogDescription>

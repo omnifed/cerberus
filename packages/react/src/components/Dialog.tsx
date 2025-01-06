@@ -1,15 +1,18 @@
 import {
   Dialog as ArkDialog,
-  type DialogContentProps,
+  type DialogContentProps as ArkDialogContentProps,
   type DialogRootProps,
   type DialogTitleProps,
 } from '@ark-ui/react'
-import { css } from '@cerberus/styled-system/css'
-import { type ModalVariantProps } from '@cerberus/styled-system/recipes'
+import {
+  dialog,
+  type DialogVariantProps,
+} from '@cerberus/styled-system/recipes'
 import type { PropsWithChildren } from 'react'
 import { Portal } from './Portal'
+import { cx } from '@cerberus/styled-system/css'
 
-export type DialogProps = DialogRootProps & ModalVariantProps
+export type DialogProps = DialogRootProps
 
 /**
  * The provider that controls the dialog components.
@@ -29,6 +32,80 @@ export type DialogProps = DialogRootProps & ModalVariantProps
  */
 export function DialogProvider(props: PropsWithChildren<DialogProps>) {
   return <ArkDialog.Root {...props} />
+}
+
+export interface DialogContentProps
+  extends ArkDialogContentProps,
+    DialogVariantProps {}
+
+/**
+ * The content of the dialog. Must be used within the `DialogProvider` component.
+ * @definition [Dialog docs](https://cerberus.digitalu.design/react/dialog)
+ * @example
+ * ```tsx
+ * <DialogProvider>
+ *   <DialogTrigger asChild>
+ *    <Button>Open Dialog</Button>
+ *  </DialogTrigger>
+ *  <Dialog>
+ *    <Text>Dialog Content</Text>
+ *  </Dialog>
+ * </DialogProvider>
+ * ```
+ */
+export function Dialog(props: DialogContentProps) {
+  const styles = dialog()
+  return (
+    <Portal>
+      <DialogBackdrop className={styles.backdrop} />
+      <DialogPositioner className={styles.positioner}>
+        <DialogContent className={styles.content} {...props} />
+      </DialogPositioner>
+    </Portal>
+  )
+}
+
+/**
+ * The heading of the dialog. Must be used within the `DialogContent` component.
+ * @definition [Dialog docs](https://cerberus.digitalu.design/react/dialog)
+ * @example
+ * ```tsx
+ * <DialogProvider>
+ *   <DialogTrigger asChild>
+ *    <Button>Open Dialog</Button>
+ *  </DialogTrigger>
+ *  <Dialog>
+ *    <DialogHeading>Dialog Title</DialogHeading>
+ *    <Text>Dialog Content</Text>
+ *  </Dialog>
+ * </DialogProvider>
+ * ```
+ */
+export function DialogHeading(props: DialogTitleProps) {
+  const styles = dialog()
+  return (
+    <ArkDialog.Title {...props} className={cx(props.className, styles.title)} />
+  )
+}
+
+/**
+ * The description of the dialog. Must be used within the `DialogContent` component.
+ * @definition [Dialog docs](https://cerberus.digitalu.design/react/dialog)
+ * @example
+ * ```tsx
+ * <DialogProvider>
+ *   <DialogTrigger asChild>
+ *    <Button>Open Dialog</Button>
+ *  </DialogTrigger>
+ *  <Dialog>
+ *    <DialogHeading>Dialog Title</DialogHeading>
+ *    <DialogDescription>Dialog Description</DialogDescription>
+ *  </Dialog>
+ * </DialogProvider>
+ * ```
+ */
+export function DialogDescription(props: DialogTitleProps) {
+  return <ArkDialog.Description {...props} />
 }
 
 /**
@@ -64,113 +141,19 @@ export const DialogTrigger = ArkDialog.Trigger
 export const DialogCloseTrigger = ArkDialog.CloseTrigger
 
 /**
- * The content of the dialog. Must be used within the `DialogProvider` component.
- * @definition [Dialog docs](https://cerberus.digitalu.design/react/dialog)
- * @example
- * ```tsx
- * <DialogProvider>
- *   <DialogTrigger asChild>
- *    <Button>Open Dialog</Button>
- *  </DialogTrigger>
- *  <Dialog>
- *    <Text>Dialog Content</Text>
- *  </Dialog>
- * </DialogProvider>
- * ```
+ * The backdrop of the dialog. Must be used within the `DialogProvider`
+ * component.
  */
-export function Dialog(props: DialogContentProps) {
-  return (
-    <Portal>
-      <ArkDialog.Backdrop
-        className={css({
-          backdropFilter: 'blur(4px)',
-          background: 'page.backdrop.initial',
-          height: '100vh',
-          left: '0',
-          position: 'fixed',
-          top: '0',
-          width: '100vw',
-          zIndex: 'overlay',
-          _open: {
-            animation: 'backdrop-in',
-          },
-          _closed: {
-            animation: 'backdrop-out',
-          },
-        })}
-      />
-      <ArkDialog.Positioner
-        className={css({
-          alignItems: 'center',
-          display: 'flex',
-          justifyContent: 'center',
-          left: '0',
-          overflow: 'auto',
-          position: 'fixed',
-          top: '0',
-          width: '100vw',
-          height: '100dvh',
-          zIndex: 'modal',
-        })}
-      >
-        <ArkDialog.Content
-          className={css({
-            bgColor: 'page.surface.100',
-            borderRadius: 'l3',
-            boxShadow: 'lg',
-            minW: 'sm',
-            position: 'relative',
-            _open: {
-              animation: 'dialog-in',
-            },
-            _closed: {
-              animation: 'dialog-out',
-            },
-          })}
-        >
-          {props.children}
-        </ArkDialog.Content>
-      </ArkDialog.Positioner>
-    </Portal>
-  )
-}
+export const DialogBackdrop = ArkDialog.Backdrop
 
 /**
- * The heading of the dialog. Must be used within the `DialogContent` component.
- * @definition [Dialog docs](https://cerberus.digitalu.design/react/dialog)
- * @example
- * ```tsx
- * <DialogProvider>
- *   <DialogTrigger asChild>
- *    <Button>Open Dialog</Button>
- *  </DialogTrigger>
- *  <Dialog>
- *    <DialogHeading>Dialog Title</DialogHeading>
- *    <Text>Dialog Content</Text>
- *  </Dialog>
- * </DialogProvider>
- * ```
+ * The positioner of the dialog. Must be used within the `DialogProvider`
+ * component.
  */
-export function DialogHeading(props: DialogTitleProps) {
-  return <ArkDialog.Title {...props} />
-}
+export const DialogPositioner = ArkDialog.Positioner
 
 /**
- * The description of the dialog. Must be used within the `DialogContent` component.
- * @definition [Dialog docs](https://cerberus.digitalu.design/react/dialog)
- * @example
- * ```tsx
- * <DialogProvider>
- *   <DialogTrigger asChild>
- *    <Button>Open Dialog</Button>
- *  </DialogTrigger>
- *  <Dialog>
- *    <DialogHeading>Dialog Title</DialogHeading>
- *    <DialogDescription>Dialog Description</DialogDescription>
- *  </Dialog>
- * </DialogProvider>
- * ```
+ * The content of the dialog. Must be used within the `DialogProvider`
+ * component.
  */
-export function DialogDescription(props: DialogTitleProps) {
-  return <ArkDialog.Description {...props} />
-}
+export const DialogContent = ArkDialog.Content

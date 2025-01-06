@@ -72,6 +72,30 @@ describe('keyframes', () => {
     })
   })
 
+  test('should export slideIn', () => {
+    expect(keyframes.slideIn).toBeDefined()
+    expect(keyframes.slideIn.from).toEqual({
+      opacity: '0',
+      transform: 'translateY(64px)',
+    })
+    expect(keyframes.slideIn.to).toEqual({
+      opacity: '1',
+      transform: 'translateY(0)',
+    })
+  })
+
+  test('should export slideOut', () => {
+    expect(keyframes.slideOut).toBeDefined()
+    expect(keyframes.slideOut.from).toEqual({
+      opacity: '1',
+      transform: 'translateY(0)',
+    })
+    expect(keyframes.slideOut.to).toEqual({
+      opacity: '0',
+      transform: 'translateY(64px)',
+    })
+  })
+
   test('should export slideFromLeftFull', () => {
     expect(keyframes.slideFromLeftFull).toBeDefined()
     expect(keyframes.slideFromLeftFull.from).toEqual({

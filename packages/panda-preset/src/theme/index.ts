@@ -1,6 +1,7 @@
 import { recipes, slotRecipes } from '../recipes'
 import { defineTheme } from '../theme-contract'
 import { animationStyles } from './animationStyles'
+import { easings } from './easings'
 import { keyframes } from './keyframes'
 import { semanticTokens } from './semantic-tokens/config'
 import { textStyles } from './textStyles'
@@ -14,6 +15,7 @@ import { tokens } from './tokens'
 export const baseTheme = defineTheme({
   semanticTokens,
   extend: {
+    easings,
     tokens,
     keyframes,
     recipes,
@@ -23,6 +25,8 @@ export const baseTheme = defineTheme({
   },
 })
 
+export * from './animationStyles'
+export * from './easings'
 export * from './keyframes'
 export * from './tokens'
 export * from './textStyles'

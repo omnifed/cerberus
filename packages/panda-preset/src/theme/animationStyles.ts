@@ -3,6 +3,38 @@ import { defineAnimationStyles, type AnimationStyles } from '../types'
 const transformOrigin = 'var(--transform-origin)'
 
 export const animationStyles: AnimationStyles = defineAnimationStyles({
+  'emphasized-fade-in': {
+    value: {
+      animationDuration: 'fast',
+      animationName: 'fadeIn',
+      animationTimingFunction: 'emphasized-in',
+    },
+  },
+
+  'emphasized-fade-out': {
+    value: {
+      animationDuration: 'fast',
+      animationName: 'fadeOut',
+      animationTimingFunction: 'emphasized-out',
+    },
+  },
+
+  'emphasized-slide-in': {
+    value: {
+      animationDuration: 'slow',
+      animationName: 'slideIn',
+      animationTimingFunction: 'emphasized-in',
+    },
+  },
+
+  'emphasized-slide-out': {
+    value: {
+      animationDuration: 'fast',
+      animationName: 'slideOut',
+      animationTimingFunction: 'emphasized-out',
+    },
+  },
+
   'slide-fade-in': {
     value: {
       transformOrigin,
