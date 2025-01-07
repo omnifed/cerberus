@@ -3,6 +3,16 @@
  * @module
  */
 
+// deprecated
+
+export * from './components/Modal'
+export * from './components/ModalHeader'
+export * from './components/ModalHeading'
+export * from './components/ModalDescription'
+export * from './components/NavMenuTrigger'
+export * from './components/NavMenuList'
+export * from './components/NavMenuLink'
+
 // components
 
 export * from './components/Accordion'
@@ -29,13 +39,6 @@ export * from './components/Input'
 export * from './components/Label'
 export * from './components/Legend'
 export * from './components/Menu'
-export * from './components/Modal'
-export * from './components/ModalHeader'
-export * from './components/ModalHeading'
-export * from './components/ModalDescription'
-export * from './components/NavMenuTrigger'
-export * from './components/NavMenuList'
-export * from './components/NavMenuLink'
 export * from './components/Notification'
 export * from './components/NotificationHeading'
 export * from './components/NotificationDescription'

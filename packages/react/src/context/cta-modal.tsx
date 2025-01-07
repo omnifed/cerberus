@@ -11,21 +11,20 @@ import {
   type PropsWithChildren,
   type ReactNode,
 } from 'react'
-import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
-import { trapFocus } from '../aria-helpers/trap-focus.aria'
 import { Show } from '../components/Show'
-import { Modal } from '../components/Modal'
-import { useModal } from '../hooks/useModal'
-import { ModalHeader } from '../components/ModalHeader'
-import { ModalHeading } from '../components/ModalHeading'
-import { ModalDescription } from '../components/ModalDescription'
 import { Avatar } from '../components/Avatar'
-import { IconButton } from '../components/IconButton'
 import { useCerberusContext } from './cerberus'
 import { HStack } from '@cerberus/styled-system/jsx'
 import { css } from '@cerberus/styled-system/css'
 import { VStack } from '@cerberus/styled-system/jsx'
+import {
+  Dialog,
+  DialogDescription,
+  DialogHeading,
+  DialogProvider,
+} from '../components/Dialog'
+import { DialogCloseIconTrigger } from '../components/Dialog.client'
 
 /**
  * This module provides a context and hook for the cta modal.
@@ -95,13 +94,12 @@ export type CTAModalProviderProps = PropsWithChildren<unknown>
  * ```
  */
 export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
-  const { modalRef, show, close } = useModal()
+  const [open, setOpen] = useState<boolean>(false)
   const [content, setContent] = useState<ShowCTAModalOptions | null>(null)
-  const focusTrap = trapFocus(modalRef)
   const confirmIcon = content?.icon
 
   const { icons } = useCerberusContext()
-  const { close: CloseIcon, confirmModal: FallbackIcon } = icons
+  const { confirmModal: FallbackIcon } = icons
 
   const handleShow = useCallback(
     (options: ShowCTAModalOptions) => {
@@ -112,9 +110,9 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
         )
       }
       setContent({ ...options })
-      show()
+      setOpen(true)
     },
-    [show],
+    [setOpen],
   )
 
   const handleActionClick = useCallback(
@@ -123,9 +121,9 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
       const action = content?.actions[Number(index)]
       const { onClick } = action || {}
       onClick?.(event)
-      close()
+      setOpen(false)
     },
-    [content, close],
+    [content, setOpen],
   )
 
   const value = useMemo(
@@ -139,24 +137,12 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
     <CTAModalContext.Provider value={value}>
       {props.children}
 
-      <Portal>
-        <Modal onKeyDown={focusTrap} ref={modalRef}>
-          <span
-            className={css({
-              padding: 'md',
-              position: 'absolute',
-              right: 0,
-              top: 0,
-              zIndex: 'decorator',
-            })}
-          >
-            <IconButton ariaLabel="Close modal" onClick={close}>
-              <CloseIcon />
-            </IconButton>
-          </span>
+      <DialogProvider open={open} onOpenChange={(e) => setOpen(e.open)}>
+        <Dialog size="sm">
+          <DialogCloseIconTrigger />
 
           <VStack gap="xl" w="full">
-            <ModalHeader>
+            <VStack alignItems="flex-start" gap="md" w="full">
               <VStack gap="lg" w="full">
                 <Avatar
                   ariaLabel=""
@@ -171,10 +157,10 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
                   }
                   src=""
                 />
-                <ModalHeading>{content?.heading}</ModalHeading>
-                <ModalDescription>{content?.description}</ModalDescription>
+                <DialogHeading>{content?.heading}</DialogHeading>
+                <DialogDescription>{content?.description}</DialogDescription>
               </VStack>
-            </ModalHeader>
+            </VStack>
 
             <HStack gap="md" w="full">
               <Show when={Boolean(content?.actions?.length)}>
@@ -195,8 +181,8 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
               </Show>
             </HStack>
           </VStack>
-        </Modal>
-      </Portal>
+        </Dialog>
+      </DialogProvider>
     </CTAModalContext.Provider>
   )
 }
