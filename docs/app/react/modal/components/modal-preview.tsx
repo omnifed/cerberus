@@ -17,9 +17,9 @@ import {
   Button,
   Portal,
 } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
-import { hstack } from '@cerberus/styled-system/patterns'
-import { Box } from '@cerberus/styled-system/jsx'
+import { css } from '@cerberus-design/styled-system/css'
+import { hstack } from '@cerberus-design/styled-system/patterns'
+import { Box } from '@cerberus-design/styled-system/jsx'
 
 export function OverviewPreview() {
   const { modalRef, show, close } = useModal()

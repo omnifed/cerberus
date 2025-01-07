@@ -20,7 +20,7 @@ import {
   Button,
   Portal,
 } from '@cerberus-design/react'
-import { Box, HStack, VStack } from '@cerberus/styled-system/jsx'
+import { Box, HStack, VStack } from '@cerberus-design/styled-system/jsx'
 import { css } from '@cerberus-design/styled-system/css'
 
 export function OverviewPreview() {

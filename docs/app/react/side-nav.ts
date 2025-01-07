@@ -8,6 +8,7 @@ interface Category {
   items: string[]
   next: string[]
   new: string[]
+  deprecated: string[]
 }
 type CategoriesList = Record<string, Category>
 
