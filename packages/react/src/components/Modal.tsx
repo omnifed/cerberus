@@ -22,21 +22,6 @@ function ModalEl(props: ModalProps, ref: ForwardedRef<HTMLDialogElement>) {
 }
 
 /**
- * The Modal component is the root element for a customizable modal.
- * @see https://cerberus.digitalu.design/react/modal
- * @example
- * ```tsx
- * const { modalRef } = useModal()
- *
- * <Modal ref={modalRef}>
- *  <Avatar icon={SomeIcon} />
- *  <ModalHeader>
- *    <ModalHeading>Modal Heading</ModalHeading>
- *    <ModalDescription>Modal description</ModalDescription>
- *  </ModalHeader>
- *
- *  {props.children}
- * </Modal>
- * ```
+ * @deprecated use `Dialog` instead
  */
 export const Modal = forwardRef(ModalEl)

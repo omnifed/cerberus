@@ -1,0 +1,23 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import {
+  OverviewPreview
+} from '@/app/react/dialog/components/modal-preview'
+
+## Custom Modal Usage
+
+<WhenToUseAdmonition description="When you need to disrupt the flow of the user experience with content." />
+
+<CodePreview preview={<OverviewPreview id="guidelines-dialog" />} />
+
+### Use sparingly
+
+Dialogs should be used sparingly, and only for important decisions or actions that cannot be undone. They should not be used for trivial actions or actions that can be easily undone.
+
+For most actions, a simple **Notification** message is sufficient to inform the user of the result of their action (or allow them to "undo" it).

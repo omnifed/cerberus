@@ -1,27 +1,30 @@
 ---
-heading: 'Modal'
-description: 'Modals provide important prompts in a user flow.'
+heading: 'Dialog'
+description: 'Dialogs provide important prompts in a user flow.'
 a11y: 'touch-target'
 ---
 
+import DripDivider from '@/app/components/drip-divider'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import {
   OverviewPreview,
   ModalFormPreview
-} from '@/app/react/modal/components/modal-preview'
+} from '@/app/react/dialog/components/modal-preview'
 
 <OverviewList rules={[
-  'Use modals to make sure users act on information',
+  'Use dialogs to make sure users act on information',
   'Should be dedicated to completing a single task',
   'Can also display information relevant to the task',
   'Commonly used in high-risk actions like deleting progress',
 ]} />
 
-## Example
+## Examples
 
-<CodePreview preview={<OverviewPreview />} />
-<CodePreview preview={<ModalFormPreview />} />
+<CodePreview preview={<OverviewPreview id="overview-basic-dialog" />} />
+<CodePreview preview={<ModalFormPreview id="overview-form-dialog" />} />
+
+<DripDivider />
 
 ## Resources
 

@@ -82,10 +82,7 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
     trigger: {
       zIndex: 'decorator',
     },
-    positioner: {
-      '--dp-positioner-z-index': 'zIndex.popover',
-      zIndex: 'var(--dp-positioner-z-index)',
-    },
+    positioner: {},
     content: {
       bgColor: 'page.surface.100',
       border: '1px solid',

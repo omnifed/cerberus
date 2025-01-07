@@ -60,6 +60,15 @@ export const keyframes: CssKeyframes = defineKeyframes({
     },
   },
 
+  slideIn: {
+    from: { opacity: '0', transform: 'translateY(64px)' },
+    to: { opacity: '1', transform: 'translateY(0)' },
+  },
+  slideOut: {
+    from: { opacity: '1', transform: 'translateY(0)' },
+    to: { opacity: '0', transform: 'translateY(64px)' },
+  },
+
   // slide from (full)
   slideFromLeftFull: {
     from: { translate: '-100% 0' },

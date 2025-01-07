@@ -250,10 +250,14 @@ export function RangePickerInput(props: RangePickerInputProps) {
  * </Field>
  * ```
  */
-export function DatePickerContent(props: DatePickerContentProps) {
-  const { children, ...contentProps } = props
+export function DatePickerContent(
+  props: DatePickerContentProps & {
+    withModal?: boolean
+  },
+) {
+  const { children, withModal, ...contentProps } = props
   return (
-    <Portal>
+    <Portal disabled={withModal ?? false}>
       <ArkDP.Positioner className={datePickerStyles.positioner}>
         <ArkDP.Content
           {...contentProps}
@@ -446,9 +450,9 @@ export function DatePickerYearView(props: Omit<DatePickerViewProps, 'view'>) {
  * </Field>
  * ```
  */
-export function DatePickerCalendar() {
+export function DatePickerCalendar(props: { withModal?: boolean }) {
   return (
-    <DatePickerContent>
+    <DatePickerContent withModal={props.withModal}>
       <DatePickerDayView />
       <DatePickerMonthView />
       <DatePickerYearView />

@@ -8,6 +8,7 @@ interface Category {
   items: string[]
   next: string[]
   new: string[]
+  deprecated: string[]
 }
 type CategoriesList = Record<string, Category>
 
@@ -25,8 +26,9 @@ const overviewGroup: CategoriesList = {
       'Text',
       'Local Storage',
     ],
-    next: [],
-    new: ['Text', 'Local Storage'],
+    deprecated: [],
+    next: ['Portal'],
+    new: [],
   },
 }
 const hooksGroup: CategoriesList = {
@@ -42,6 +44,7 @@ const hooksGroup: CategoriesList = {
       'use-theme-context',
       'use-toggle',
     ],
+    deprecated: [],
     next: [],
     new: [],
   },
@@ -60,7 +63,12 @@ function createSideNavData(categories: CategoriesList): NavList {
         label: name,
         route:
           `/react/${formattedName.replace(/ /g, '-').toLowerCase()}` as LinkProps<string>['href'],
-        tag: getCategoryItemTags(name, category.new, category.next),
+        tag: getCategoryItemTags(
+          name,
+          category.new,
+          category.next,
+          category.deprecated,
+        ),
         type: 'route',
       })
     })
@@ -72,9 +80,11 @@ function getCategoryItemTags(
   category: string,
   newItems: string[],
   next: string[],
-): '' | 'new' | 'next' {
+  deprecated: string[],
+): '' | 'new' | 'next' | 'deprecated' {
   if (newItems.includes(category)) return 'new'
   if (next.includes(category)) return 'next'
+  if (deprecated.includes(category)) return 'deprecated'
   return ''
 }
 

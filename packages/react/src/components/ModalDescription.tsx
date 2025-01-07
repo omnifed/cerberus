@@ -10,14 +10,7 @@ import type { HTMLAttributes } from 'react'
 export type ModalDescriptionProps = HTMLAttributes<HTMLParagraphElement>
 
 /**
- * The ModalDescription component is a heading element for a customizable modal.
- * @see https://cerberus.digitalu.design/react/modal
- * @example
- * ```tsx
- * <Modal>
- *   <ModalDescription>Modal Heading</ModalDescription>
- * </Modal>
- * ```
+ * @deprecated use `DialogDescription` instead
  */
 export function ModalDescription(props: ModalDescriptionProps) {
   return <p {...props} className={cx(props.className, modal().description)} />

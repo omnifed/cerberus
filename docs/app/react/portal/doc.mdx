@@ -90,8 +90,8 @@ function PortalPreview() {
 
 ```ts showLineNumbers=false
 export interface PortalProps {
-  container?: Element | DocumentFragment
-  key?: null | string
+  container?: RefObject<HTMLElement>;
+  disabled?: boolean;
 }
 
 define function Portal(props: PropsWithChildren<PortalProps>): ReactPortal | null
@@ -104,4 +104,4 @@ The `Portal` component accepts the following props:
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
 | container     | `document.body`   | The mounted element to place the children contents within. |
-| key | null    | A unique key to attached to the Portal instance.            |
+| disabled | `false` | Disables the portal from rendering. Perfect for when you need to disabled a child Portal that is rendered within another Portal. |

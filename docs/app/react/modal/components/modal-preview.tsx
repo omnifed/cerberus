@@ -8,11 +8,18 @@ import {
   ModalDescription,
   useModal,
   trapFocus,
+  Field,
+  Dialog,
+  DatePicker,
+  DatePickerLabel,
+  DatePickerInput,
+  DatePickerCalendar,
   Button,
   Portal,
 } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { css } from '@cerberus-design/styled-system/css'
+import { hstack } from '@cerberus-design/styled-system/patterns'
+import { Box } from '@cerberus-design/styled-system/jsx'
 
 export function OverviewPreview() {
   const { modalRef, show, close } = useModal()
@@ -48,6 +55,24 @@ export function OverviewPreview() {
         </Modal>
       </Portal>
     </div>
+  )
+}
+
+export function ModalFormPreview() {
+  return (
+    <Dialog>
+      <Box paddingBlock="10" w="full">
+        <form>
+          <Field>
+            <DatePicker id="start_date" name="start_date">
+              <DatePickerLabel>Start date</DatePickerLabel>
+              <DatePickerInput />
+              <DatePickerCalendar />
+            </DatePicker>
+          </Field>
+        </form>
+      </Box>
+    </Dialog>
   )
 }
 

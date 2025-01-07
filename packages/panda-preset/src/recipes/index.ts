@@ -13,6 +13,7 @@ import { accordion } from './slots/accordion'
 import { admonition } from './slots/admonition'
 import { checkbox } from './slots/checkbox'
 import { datePicker } from './slots/datepicker'
+import { dialog } from './slots/dialog'
 import { fileStatus } from './slots/fileStatus'
 import { fileUploader } from './slots/fileUploader'
 import { input } from './slots/input'
@@ -50,6 +51,7 @@ export const slotRecipes = {
   admonition,
   checkbox,
   datePicker,
+  dialog,
   fileStatus,
   fileUploader,
   input,
