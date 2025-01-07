@@ -72,6 +72,11 @@ export const categoryMeta = {
     description: 'CTA modals are used to promote a specific action.',
     image: ButtonFeature,
   },
+  dialog: {
+    name: 'Dialog',
+    description: 'Dialogs are used to display content on top of an overlay.',
+    image: ButtonFeature,
+  },
   modal: {
     name: 'Modal',
     description: 'Modals are used to display content on top of an overlay.',

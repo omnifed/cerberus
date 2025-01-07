@@ -450,9 +450,9 @@ export function DatePickerYearView(props: Omit<DatePickerViewProps, 'view'>) {
  * </Field>
  * ```
  */
-export function DatePickerCalendar() {
+export function DatePickerCalendar(props: { withModal?: boolean }) {
   return (
-    <DatePickerContent>
+    <DatePickerContent withModal={props.withModal}>
       <DatePickerDayView />
       <DatePickerMonthView />
       <DatePickerYearView />

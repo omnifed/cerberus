@@ -28,7 +28,7 @@ import { Box, HStack, VStack } from '@cerberus/styled-system/jsx'
 
 export function OverviewPreview() {
   return (
-    <DialogProvider>
+    <DialogProvider id="basics-dialog">
       <DialogTrigger asChild>
         <Button>open dialog</Button>
       </DialogTrigger>
@@ -58,7 +58,7 @@ export function OverviewPreview() {
 
 export function ModalFormPreview() {
   return (
-    <DialogProvider lazyMount>
+    <DialogProvider id="form-dialog">
       <DialogTrigger asChild>
         <Button>open lazy mounted form dialog</Button>
       </DialogTrigger>
@@ -66,14 +66,15 @@ export function ModalFormPreview() {
         <Box paddingBlock="10" w="full">
           <form>
             <Field>
-              <DatePicker id="start_date" name="start_date">
+              <DatePicker id="modal-form-picker" name="modal-form-picker">
                 <DatePickerLabel>Start date</DatePickerLabel>
                 <DatePickerInput />
-                <DatePickerCalendar />
+                <DatePickerCalendar withModal />
               </DatePicker>
             </Field>
           </form>
         </Box>
+        <DialogCloseIconTrigger />
       </Dialog>
     </DialogProvider>
   )

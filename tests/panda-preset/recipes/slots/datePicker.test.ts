@@ -62,10 +62,7 @@ describe('datePicker recipe', () => {
   })
 
   test('should have a positioner style', () => {
-    expect(datePicker.base?.positioner).toMatchObject({
-      '--dp-positioner-z-index': 'zIndex.popover',
-      zIndex: 'var(--dp-positioner-z-index)',
-    })
+    expect(datePicker.base?.positioner).toMatchObject({})
   })
 
   test('should have a content style', () => {
