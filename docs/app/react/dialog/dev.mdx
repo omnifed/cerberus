@@ -13,6 +13,7 @@ import {
   OverviewPreview,
   ModalFormPreview,
   CustomPreview,
+  SizePreview,
 } from '@/app/react/dialog/components/modal-preview'
 
 ```ts
@@ -213,6 +214,52 @@ function CustomPreview() {
           </DialogContent>
         </DialogPositioner>
       </Portal>
+    </DialogProvider>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+### Sizes
+
+The `Dialog` component takes a `size` prop that can be used to set the width of the dialog. The default size is `md`.
+
+```tsx
+interface DialogProps {
+  size?: 'sm' | 'md' | 'lg' | 'full'
+}
+```
+
+<CodePreview preview={<SizePreview />}>
+```tsx title="full-size-dialog.tsx" {8}
+function SizePreview() {
+  return (
+    <DialogProvider id="dev-size-dialog">
+      <DialogTrigger asChild>
+        <Button>open full size</Button>
+      </DialogTrigger>
+
+      <Dialog size="full">
+        <DialogCloseIconTrigger />
+        <VStack alignItems="flex-start" gap="xs" w="full">
+          <DialogHeading>Dialog Title</DialogHeading>
+          <DialogDescription>
+            This is a custom modal description
+          </DialogDescription>
+        </VStack>
+
+        <HStack paddingBlock="10" w="full">
+          <Model size="5rem" />
+          <Model size="5rem" />
+          <Model size="5rem" />
+        </HStack>
+
+        <DialogCloseTrigger asChild>
+          <Button>Close</Button>
+        </DialogCloseTrigger>
+      </Dialog>
     </DialogProvider>
   )
 }

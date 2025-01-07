@@ -153,3 +153,33 @@ export function CustomPreview() {
     </DialogProvider>
   )
 }
+
+export function SizePreview() {
+  return (
+    <DialogProvider id="dev-size-dialog">
+      <DialogTrigger asChild>
+        <Button>open full size</Button>
+      </DialogTrigger>
+
+      <Dialog size="full">
+        <DialogCloseIconTrigger />
+        <VStack alignItems="flex-start" gap="xs" w="full">
+          <DialogHeading>Dialog Title</DialogHeading>
+          <DialogDescription>
+            This is a custom modal description
+          </DialogDescription>
+        </VStack>
+
+        <HStack paddingBlock="10" w="full">
+          <Model size="5rem" />
+          <Model size="5rem" />
+          <Model size="5rem" />
+        </HStack>
+
+        <DialogCloseTrigger asChild>
+          <Button>Close</Button>
+        </DialogCloseTrigger>
+      </Dialog>
+    </DialogProvider>
+  )
+}
