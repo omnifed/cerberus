@@ -68,7 +68,7 @@ export function ModalFormPreview(props: { id: string }) {
         <Box paddingBlock="10" w="full">
           <form>
             <Field>
-              <DatePicker id="modal-form-picker" name="modal-form-picker">
+              <DatePicker id={`${props.id}:picker`} name={`${props.id}:picker`}>
                 <DatePickerLabel>Start date</DatePickerLabel>
                 <DatePickerInput />
                 <DatePickerCalendar withModal />
