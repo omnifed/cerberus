@@ -11,22 +11,24 @@ import {
   type MouseEvent,
   type PropsWithChildren,
 } from 'react'
-import { Portal } from '../components/Portal'
 import { Button } from '../components/Button'
 import { css } from '@cerberus/styled-system/css'
-import { hstack, vstack } from '@cerberus/styled-system/patterns'
-import { trapFocus } from '../aria-helpers/trap-focus.aria'
+import { hstack } from '@cerberus/styled-system/patterns'
 import { Input } from '../components/Input'
 import { Field } from './field'
 import { Label } from '../components/Label'
 import { Show } from '../components/Show'
-import { useModal } from '../hooks/useModal'
-import { Modal } from '../components/Modal'
-import { ModalHeader } from '../components/ModalHeader'
-import { ModalHeading } from '../components/ModalHeading'
-import { ModalDescription } from '../components/ModalDescription'
 import { Avatar } from '../components/Avatar'
+import { Text } from '../components/Text'
 import { useCerberusContext } from './cerberus'
+import {
+  Dialog,
+  DialogDescription,
+  DialogHeading,
+  DialogProvider,
+} from '../components/Dialog'
+import { HStack, VStack } from '@cerberus/styled-system/jsx'
+import { DialogCloseTrigger } from '@ark-ui/react'
 
 /**
  * This module provides a context and hook for the prompt modal.
@@ -117,11 +119,10 @@ export type PromptModalProviderProps = PropsWithChildren<unknown>
 export function PromptModal(
   props: PropsWithChildren<PromptModalProviderProps>,
 ) {
-  const { modalRef, show, close } = useModal()
   const resolveRef = useRef<PromptShowResult>(null)
+  const [open, setOpen] = useState<boolean>(false)
   const [content, setContent] = useState<ShowPromptModalOptions | null>(null)
   const [inputValue, setInputValue] = useState<string>('')
-  const focusTrap = trapFocus(modalRef)
 
   const { icons } = useCerberusContext()
   const { promptModal: PromptIcon } = icons
@@ -149,20 +150,20 @@ export function PromptModal(
       if (target.value === 'true') {
         resolveRef.current?.(inputValue)
       }
-      close()
+      setOpen(false)
     },
-    [inputValue, close],
+    [inputValue, setOpen],
   )
 
   const handleShow = useCallback(
     (options: ShowPromptModalOptions) => {
       return new Promise<string>((resolve) => {
         setContent({ ...options, kind: options.kind || 'non-destructive' })
-        show()
+        setOpen(true)
         resolveRef.current = resolve
       })
     },
-    [show],
+    [setOpen],
   )
 
   const value = useMemo(
@@ -176,106 +177,101 @@ export function PromptModal(
     <PromptModalContext.Provider value={value}>
       {props.children}
 
-      <Portal>
-        <Modal onKeyDown={focusTrap} ref={modalRef}>
-          <ModalHeader>
-            <div
-              className={hstack({
-                justify: 'center',
-                w: 'full',
-              })}
-            >
-              <Show
-                when={palette === 'danger'}
-                fallback={
+      <DialogProvider open={open} onOpenChange={(e) => setOpen(e.open)}>
+        <Dialog>
+          <VStack gap="xl" w="full">
+            <VStack alignItems="flex-start" gap="md" w="full">
+              <HStack
+                alignSelf="center"
+                justify="center"
+                paddingBlockEnd="md"
+                w="full"
+              >
+                <Show
+                  when={palette === 'danger'}
+                  fallback={
+                    <Avatar
+                      ariaLabel=""
+                      gradient="charon-light"
+                      icon={<PromptIcon size={24} />}
+                      src=""
+                    />
+                  }
+                >
                   <Avatar
                     ariaLabel=""
-                    gradient="charon-light"
+                    gradient="hades-dark"
                     icon={<PromptIcon size={24} />}
                     src=""
                   />
-                }
-              >
-                <Avatar
-                  ariaLabel=""
-                  gradient="hades-dark"
-                  icon={<PromptIcon size={24} />}
-                  src=""
-                />
-              </Show>
-            </div>
-            <ModalHeading>{content?.heading}</ModalHeading>
-            <ModalDescription>{content?.description}</ModalDescription>
-          </ModalHeader>
+                </Show>
+              </HStack>
+              <DialogHeading>{content?.heading}</DialogHeading>
+              <DialogDescription>{content?.description}</DialogDescription>
+            </VStack>
 
-          <div
-            className={vstack({
-              alignItems: 'flex-start',
-              mt: '4',
-              mb: '8',
-            })}
-          >
-            <Field invalid={!isValid}>
-              <Label
-                className={css({
-                  gap: 1,
-                  justifyContent: 'flex-start',
-                })}
-                htmlFor="confirm"
-                size="md"
-              >
-                Type
-                <strong
-                  className={css({
-                    textTransform: 'uppercase',
+            <VStack
+              alignItems="flex-start"
+              marginBlockStart="md"
+              marginBlockEnd="lg"
+              w="full"
+            >
+              <Field invalid={!isValid}>
+                <Label
+                  className={hstack({
+                    gap: 'xs',
+                    justify: 'flex-start !important',
                   })}
+                  htmlFor="confirm"
+                  size="md"
                 >
-                  {content?.key}
-                </strong>
-                to confirm
-              </Label>
-              <Input
-                id="confirm"
-                name="confirm"
-                onChange={handleChange}
-                type="text"
-              />
-            </Field>
-          </div>
+                  Type
+                  <Text as="strong" textTransform="uppercase">
+                    {content?.key}
+                  </Text>
+                  to confirm
+                </Label>
+                <Input
+                  id="confirm"
+                  name="confirm"
+                  onChange={handleChange}
+                  type="text"
+                />
+              </Field>
+            </VStack>
 
-          <div
-            className={hstack({
-              justifyContent: 'stretch',
-              gap: '4',
-            })}
-          >
-            <Button
-              autoFocus
-              className={css({
-                w: '1/2',
-              })}
-              disabled={!isValid}
-              name="confirm"
-              onClick={handleChoice}
-              palette={palette}
-              value="true"
-            >
-              {content?.actionText}
-            </Button>
-            <Button
-              className={css({
-                w: '1/2',
-              })}
-              name="cancel"
-              onClick={handleChoice}
-              usage="outlined"
-              value="false"
-            >
-              {content?.cancelText}
-            </Button>
-          </div>
-        </Modal>
-      </Portal>
+            <HStack gap="md" justify="stretch" w="full">
+              <Button
+                autoFocus
+                className={css({
+                  w: '1/2',
+                })}
+                disabled={!isValid}
+                name="confirm"
+                onClick={handleChoice}
+                palette={palette}
+                value="true"
+              >
+                {content?.actionText}
+              </Button>
+
+              <DialogCloseTrigger asChild>
+                <Button
+                  className={css({
+                    w: '1/2',
+                  })}
+                  name="cancel"
+                  onClick={handleChoice}
+                  usage="outlined"
+                  value="false"
+                >
+                  {content?.cancelText}
+                </Button>
+              </DialogCloseTrigger>
+            </HStack>
+          </VStack>
+        </Dialog>
+      </DialogProvider>
     </PromptModalContext.Provider>
   )
 }
