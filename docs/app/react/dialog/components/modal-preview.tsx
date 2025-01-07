@@ -23,9 +23,9 @@ import {
 import { Box, HStack, VStack } from '@cerberus-design/styled-system/jsx'
 import { css } from '@cerberus-design/styled-system/css'
 
-export function OverviewPreview() {
+export function OverviewPreview(props: { id: string }) {
   return (
-    <DialogProvider id="basics-dialog">
+    <DialogProvider id={props.id}>
       <DialogTrigger asChild>
         <Button>open dialog</Button>
       </DialogTrigger>
@@ -53,9 +53,9 @@ export function OverviewPreview() {
   )
 }
 
-export function ModalFormPreview() {
+export function ModalFormPreview(props: { id: string }) {
   return (
-    <DialogProvider id="form-dialog" lazyMount>
+    <DialogProvider id={props.id} lazyMount>
       <DialogTrigger asChild>
         <Button>open lazy mounted form dialog</Button>
       </DialogTrigger>
