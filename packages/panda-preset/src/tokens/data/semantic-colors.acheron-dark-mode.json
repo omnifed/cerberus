@@ -1475,7 +1475,7 @@
     "page": {
       "initial": {
         "$type": "color",
-        "$value": "#1b1a1980",
+        "$value": "#0e0d0c80",
         "$description": "",
         "$extensions": {
           "com.figma": {
