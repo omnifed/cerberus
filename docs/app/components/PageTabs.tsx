@@ -105,14 +105,16 @@ const tabListStyles = css.raw({
   bgColor: 'page.surface.100',
   justifyContent: 'space-evenly',
   mb: '8',
+  minH: '4rem',
   rounded: 'full',
   shadow: 'md',
   '& > :is([data-part=indicator])': {
     bgGradient: 'to-br',
     gradientFrom: 'action.bg.initial',
     gradientTo: 'action.bg.active',
-    h: 'var(--height)',
+    h: 'full',
     rounded: 'full',
+    w: '1/4',
     zIndex: 'base',
   },
 })
