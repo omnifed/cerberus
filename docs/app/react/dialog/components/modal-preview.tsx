@@ -2,14 +2,11 @@
 
 import { Model } from '@carbon/icons-react'
 import {
-  Modal,
-  ModalHeader,
-  ModalHeading,
-  ModalDescription,
-  useModal,
-  trapFocus,
   Field,
   Dialog,
+  DialogBackdrop,
+  DialogPositioner,
+  DialogContent,
   DialogTrigger,
   DialogProvider,
   DialogCloseTrigger,
@@ -23,8 +20,8 @@ import {
   Button,
   Portal,
 } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
 import { Box, HStack, VStack } from '@cerberus/styled-system/jsx'
+import { css } from '@cerberus-design/styled-system/css'
 
 export function OverviewPreview() {
   return (
@@ -58,11 +55,16 @@ export function OverviewPreview() {
 
 export function ModalFormPreview() {
   return (
-    <DialogProvider id="form-dialog">
+    <DialogProvider id="form-dialog" lazyMount>
       <DialogTrigger asChild>
         <Button>open lazy mounted form dialog</Button>
       </DialogTrigger>
       <Dialog>
+        <DialogHeading>Form Dialog</DialogHeading>
+        <DialogDescription>
+          This is a form dialog with a date picker
+        </DialogDescription>
+
         <Box paddingBlock="10" w="full">
           <form>
             <Field>
@@ -73,6 +75,12 @@ export function ModalFormPreview() {
               </DatePicker>
             </Field>
           </form>
+
+          <Box paddingBlockStart="10">
+            <DialogCloseTrigger asChild>
+              <Button>Submit</Button>
+            </DialogCloseTrigger>
+          </Box>
         </Box>
         <DialogCloseIconTrigger />
       </Dialog>
@@ -81,62 +89,67 @@ export function ModalFormPreview() {
 }
 
 export function CustomPreview() {
-  const { modalRef, show, close } = useModal()
-  const handleKeyDown = trapFocus(modalRef)
-
   return (
-    <div>
-      <Button
-        className={css({
-          bgColor: 'black',
-          color: 'yellow',
-          _hover: {
-            bgColor: 'yellow',
-            color: 'black',
-          },
-        })}
-        onClick={show}
-      >
-        Enter the Wu
-      </Button>
+    <DialogProvider>
+      <DialogTrigger asChild>
+        <Button palette="danger">Custom Dialog</Button>
+      </DialogTrigger>
 
       <Portal>
-        <Modal
+        <DialogBackdrop
           className={css({
-            bgColor: 'black',
+            animationFillMode: 'forwards',
+            bgColor: 'danger.surface.initial/70',
+            bottom: 0,
+            left: 0,
+            opacity: 0,
+            position: 'fixed',
+            right: 0,
+            top: 0,
+            zIndex: 'overlay',
+            _open: {
+              animationStyle: 'emphasized-fade-in',
+            },
+            _closed: {
+              animationStyle: 'emphasized-fade-out',
+            },
           })}
-          onKeyDown={handleKeyDown}
-          ref={modalRef}
+        />
+        <DialogPositioner
+          className={css({
+            alignItems: 'flex-start',
+            display: 'flex',
+            h: '100dvh',
+            justifyContent: 'center',
+            left: '0',
+            paddingBlockStart: 'xl',
+            position: 'fixed',
+            top: '0',
+            w: '100vw',
+            zIndex: 'modal',
+          })}
         >
-          <ModalHeader>
-            <ModalHeading
+          <DialogContent
+            className={css({
+              bgColor: 'page.surface.initial',
+              padding: 'xl',
+            })}
+          >
+            <DialogHeading
               className={css({
-                color: 'yellow !important',
+                paddingBlockEnd: 'lg',
               })}
             >
-              Inspectah Deck
-            </ModalHeading>
-            <ModalDescription>
-              Swingin&apos; through your town like your neighborhood Spider-man!
-            </ModalDescription>
-          </ModalHeader>
-
-          <Button
-            className={css({
-              borderColor: 'yellow',
-              color: 'yellow',
-              _hover: {
-                borderColor: 'yellow',
-                color: 'yellow',
-              },
-            })}
-            usage="outlined"
-            onClick={close}
-          >
-            Close
-          </Button>
-        </Modal>
+              C3rB3RuS R00lz!
+            </DialogHeading>
+            <DialogCloseTrigger asChild>
+              <Button palette="danger" shape="rounded">
+                Close
+              </Button>
+            </DialogCloseTrigger>
+          </DialogContent>
+        </DialogPositioner>
       </Portal>
-    </div>
+    </DialogProvider>
   )
 }

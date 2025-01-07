@@ -11,8 +11,9 @@ import {
 } from '@/app/components/Admonition'
 import {
   OverviewPreview,
-  CustomPreview
-} from '@/app/react/modal/components/modal-preview'
+  ModalFormPreview,
+  CustomPreview,
+} from '@/app/react/dialog/components/modal-preview'
 
 ```ts
 import {
@@ -21,6 +22,7 @@ import {
   DialogHeading,
   DialogDescription,
   DialogCloseTrigger,
+  DialogCloseIconTrigger,
 } from '@cerberus/react'
 ```
 
@@ -32,51 +34,100 @@ import {
 ```tsx title="some-page.tsx"
 import { Model } from '@cerberus/icons'
 import {
-  Modal,
-  ModalHeader,
-  ModalHeading,
-  ModalDescription,
-  Portal,
-  useModal,
-  trapFocus,
+  DialogProvider,
+  Dialog,
+  DialogTrigger,
+  DialogCloseTrigger,
+  DialogCloseIconTrigger,
+  DialogHeading,
+  DialogDescription,
   Button,
 } from '@cerberus/react'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { VStack, HStack } from '@cerberus/styled-system/jsx'
 
 function OverviewPreview() {
-  const { modalRef, show, close } = useModal()
-  const handleKeyDown = trapFocus(modalRef)
-
   return (
-    <div>
-      <Button onClick={show}>Open Modal</Button>
+    <DialogProvider id="basics-dialog">
+      <DialogTrigger asChild>
+        <Button>open dialog</Button>
+      </DialogTrigger>
 
-      <Portal>
-        <Modal onKeyDown={handleKeyDown} ref={modalRef}>
-          <ModalHeader>
-            <ModalHeading>This is a custom modal</ModalHeading>
-          </ModalHeader>
-          <ModalDescription>
-            This is a custom modal that is can be whatever you need.
-          </ModalDescription>
+      <Dialog>
+        <DialogCloseIconTrigger />
+        <VStack alignItems="flex-start" gap="xs" w="full">
+          <DialogHeading>Dialog Title</DialogHeading>
+          <DialogDescription>
+            This is a custom modal description
+          </DialogDescription>
+        </VStack>
 
-          <div
-            className={hstack({
-              color: 'info.text.100',
-              mb: '10',
-            })}
-          >
-            <Model size="5rem" />
-            <Model size="5rem" />
-            <Model size="5rem" />
-          </div>
+        <HStack paddingBlock="10" w="full">
+          <Model size="5rem" />
+          <Model size="5rem" />
+          <Model size="5rem" />
+        </HStack>
 
-          <Button usage="outlined" onClick={close}>
-            Close
-          </Button>
-        </Modal>
-      </Portal>
-    </div>
+        <DialogCloseTrigger asChild>
+          <Button>Close</Button>
+        </DialogCloseTrigger>
+      </Dialog>
+    </DialogProvider>
+  )
+}
+```
+</CodePreview>
+
+## With DatePicker
+
+In order to display the DatePicker calendar in the correct layer, you need to add the `withModal` prop to the `DatePickerCalendar` component.
+
+<CodePreview preview={<ModalFormPreview />}>
+```tsx title="some-page.tsx" {32}
+import { Model } from '@cerberus/icons'
+import {
+  DialogProvider,
+  Dialog,
+  DialogTrigger,
+  DialogCloseTrigger,
+  DialogCloseIconTrigger,
+  DialogHeading,
+  DialogDescription,
+  Button,
+} from '@cerberus/react'
+import { VStack, HStack } from '@cerberus/styled-system/jsx'
+
+function ModalFormPreview() {
+  return (
+    <DialogProvider id="form-dialog" lazyMount>
+      <DialogTrigger asChild>
+        <Button>open lazy mounted form dialog</Button>
+      </DialogTrigger>
+      <Dialog>
+        <DialogHeading>Form Dialog</DialogHeading>
+        <DialogDescription>
+          This is a form dialog with a date picker
+        </DialogDescription>
+
+        <Box paddingBlock="10" w="full">
+          <form>
+            <Field>
+              <DatePicker id="modal-form-picker" name="modal-form-picker">
+                <DatePickerLabel>Start date</DatePickerLabel>
+                <DatePickerInput />
+                <DatePickerCalendar withModal />
+              </DatePicker>
+            </Field>
+          </form>
+
+          <Box paddingBlockStart="10">
+            <DialogCloseTrigger asChild>
+              <Button>Submit</Button>
+            </DialogCloseTrigger>
+          </Box>
+        </Box>
+        <DialogCloseIconTrigger />
+      </Dialog>
+    </DialogProvider>
   )
 }
 ```
@@ -84,94 +135,86 @@ function OverviewPreview() {
 
 ## Customization
 
-You can customize each Modal component like you would any other component.
+You can utilize the primitive components to customize the accordion.
+
+| Component               | Description |
+| ----------------------- | ----------- |
+| DialogProvider          | The main state context for the dialog. |
+| DialogTrigger           | The trigger element that opens the dialog. |
+| DialogBackdrop          | The backdrop that covers the page when the dialog is open. |
+| DialogPositioner        | The container that positions the dialog content. |
+| DialogContent           | The content that is shown within the dialog. |
+| DialogHeading           | The heading title of the dialog. |
+| DialogDescription       | The description of the dialog. |
+| DialogCloseTrigger      | The trigger element that closes the dialog. |
+| DialogCloseIconTrigger  | The trigger element that closes the dialog with an "x" icon. |
 
 <CodePreview preview={<CustomPreview />}>
-```tsx title="some-page.tsx"
-import { Model } from '@cerberus/icons'
-import {
-  Modal,
-  ModalHeader,
-  ModalHeading,
-  ModalDescription,
-  Portal,
-  useModal,
-  trapFocus,
-  Button,
-} from '@cerberus/react'
-import { css } from '@cerberus/styled-system/css'
-
+```tsx title="custom-dialog.tsx"
 function CustomPreview() {
-  const { modalRef, show, close } = useModal()
-  const handleKeyDown = trapFocus(modalRef)
-
   return (
-    <div>
-      <Button
-        className={css({
-          bgColor: 'black',
-          color: 'yellow',
-          _hover: {
-            bgColor: 'yellow',
-            color: 'black',
-          },
-        })}
-        onClick={show}
-      >
-        Enter the Wu
-      </Button>
+    <DialogProvider>
+      <DialogTrigger asChild>
+        <Button palette="danger">Custom Dialog</Button>
+      </DialogTrigger>
 
       <Portal>
-        <Modal
+        <DialogBackdrop
           className={css({
-            bgColor: 'black',
+            animationFillMode: 'forwards',
+            bgColor: 'danger.surface.initial/70',
+            bottom: 0,
+            left: 0,
+            opacity: 0,
+            position: 'fixed',
+            right: 0,
+            top: 0,
+            zIndex: 'overlay',
+            _open: {
+              animationStyle: 'emphasized-fade-in',
+            },
+            _closed: {
+              animationStyle: 'emphasized-fade-out',
+            },
           })}
-          onKeyDown={handleKeyDown}
-          ref={modalRef}
+        />
+        <DialogPositioner
+          className={css({
+            alignItems: 'flex-start',
+            display: 'flex',
+            h: '100dvh',
+            justifyContent: 'center',
+            left: '0',
+            paddingBlockStart: 'xl',
+            position: 'fixed',
+            top: '0',
+            w: '100vw',
+            zIndex: 'modal',
+          })}
         >
-          <ModalHeader>
-            <ModalHeading
+          <DialogContent
+            className={css({
+              bgColor: 'page.surface.initial',
+              padding: 'xl',
+            })}
+          >
+            <DialogHeading
               className={css({
-                color: 'yellow !important',
+                paddingBlockEnd: 'lg',
               })}
             >
-              Inspectah Deck
-            </ModalHeading>
-            <ModalDescription>
-              Swingin' through your town like your neighborhood Spider-man!
-            </ModalDescription>
-          </ModalHeader>
-
-          <Button
-            className={css({
-              borderColor: 'yellow',
-              color: 'yellow',
-              _hover: {
-                borderColor: 'yellow',
-                color: 'yellow',
-              },
-            })}
-            usage="outlined"
-            onClick={close}
-          >
-            Close
-          </Button>
-        </Modal>
+              C3rB3RuS R00lz!
+            </DialogHeading>
+            <DialogCloseTrigger asChild>
+              <Button palette="danger" shape="rounded">
+                Close
+              </Button>
+            </DialogCloseTrigger>
+          </DialogContent>
+        </DialogPositioner>
       </Portal>
-    </div>
+    </DialogProvider>
   )
 }
 ```
 </CodePreview>
-
-## API
-
-```ts showLineNumbers=false
-define function Modal(props: HTMLAttributes<HTMLDialogElement>): ReactNode
-
-define function ModalHeader(props: HTMLAttributes<HTMLDivElement>): ReactNode
-
-define function ModalHeading(props: HTMLAttributes<HTMLParagraphElement>): ReactNode
-
-define function ModalDescription(props: HTMLAttributes<HTMLParagraphElement>): ReactNode
-````
