@@ -178,7 +178,7 @@ export function PromptModal(
       {props.children}
 
       <DialogProvider open={open} onOpenChange={(e) => setOpen(e.open)}>
-        <Dialog>
+        <Dialog size="sm">
           <VStack gap="xl" w="full">
             <VStack alignItems="flex-start" gap="md" w="full">
               <HStack
