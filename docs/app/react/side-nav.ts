@@ -27,7 +27,7 @@ const overviewGroup: CategoriesList = {
       'Local Storage',
     ],
     deprecated: [],
-    next: ['Portal'],
+    next: [],
     new: [],
   },
 }

@@ -34,8 +34,8 @@
       "Dialog",
       "Table"
     ],
-    "next": ["Dialog"],
-    "new": [],
+    "next": [],
+    "new": ["Dialog"],
     "deprecated": ["Modal"]
   },
   "navigation": {
@@ -43,7 +43,7 @@
     "description": "Components that help users navigate through the app.",
     "items": ["Menu", "Tabs"],
     "next": [],
-    "new": ["Tabs"],
+    "new": [],
     "deprecated": []
   },
   "selection": {
@@ -58,7 +58,7 @@
       "Toggle"
     ],
     "next": [],
-    "new": ["Date Picker"],
+    "new": [],
     "deprecated": []
   },
   "inputs": {
