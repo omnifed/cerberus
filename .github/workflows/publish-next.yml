@@ -18,7 +18,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - uses: pnpm/action-setup@v4
         with:
-          version: 9.12.3
+          version: 9.15.3
       - uses: actions/setup-node@v4
         with:
           cache: 'pnpm'
@@ -44,7 +44,7 @@ jobs:
   #     - uses: oven-sh/setup-bun@v2
   #     - uses: pnpm/action-setup@v4
   #       with:
-  #         version: 9.12.3
+  #         version: 9.15.3
   #     - uses: actions/setup-node@v4
   #       with:
   #         cache: 'pnpm'
@@ -67,7 +67,7 @@ jobs:
   #     - uses: oven-sh/setup-bun@v2
   #     - uses: pnpm/action-setup@v4
   #       with:
-  #         version: 9.12.3
+  #         version: 9.15.3
   #     - uses: actions/setup-node@v4
   #       with:
   #         cache: 'pnpm'
@@ -90,7 +90,7 @@ jobs:
   #     - uses: oven-sh/setup-bun@v2
   #     - uses: pnpm/action-setup@v4
   #       with:
-  #         version: 9.12.3
+  #         version: 9.15.3
   #     - uses: actions/setup-node@v4
   #       with:
   #         cache: 'pnpm'
