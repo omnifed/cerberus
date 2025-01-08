@@ -112,9 +112,9 @@ const tabListStyles = css.raw({
     bgGradient: 'to-br',
     gradientFrom: 'action.bg.initial',
     gradientTo: 'action.bg.active',
+    minW: '1/4',
     h: 'full',
     rounded: 'full',
-    w: '1/4',
     zIndex: 'base',
   },
 })
