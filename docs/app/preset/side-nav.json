@@ -12,7 +12,7 @@
   {
     "label": "Customizing",
     "route": "/preset/customizing",
-    "tag": "",
+    "tag": "new",
     "type": "route"
   },
   {
