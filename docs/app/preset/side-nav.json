@@ -12,7 +12,7 @@
   {
     "label": "Customizing",
     "route": "/preset/customizing",
-    "tag": "",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -68,7 +68,7 @@
   {
     "label": "Conditions",
     "route": "/preset/conditions",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
