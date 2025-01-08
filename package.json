@@ -42,9 +42,9 @@
   },
   "author": "developers@omnifederal.com",
   "license": "ISC",
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "pnpm@9.15.3",
   "engines": {
     "node": ">=22.0.0",
-    "bun": ">=1.1.7"
+    "bun": ">=1.1.41"
   }
 }
