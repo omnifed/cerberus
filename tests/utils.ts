@@ -46,6 +46,7 @@ export function makeConfig() {
     invalidAlt: Warning,
     redo: Restart,
     selectArrow: ChevronDown,
+    selectChecked: Checkmark,
     toggleChecked: Checkmark,
   })
 

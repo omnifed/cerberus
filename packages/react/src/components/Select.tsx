@@ -1,108 +1,84 @@
 'use client'
 
-import { cx } from '@cerberus/styled-system/css'
-import { hstack } from '@cerberus/styled-system/patterns'
 import {
-  select,
-  type SelectVariantProps,
-} from '@cerberus/styled-system/recipes'
-import { type OptionHTMLAttributes, type SelectHTMLAttributes } from 'react'
-import { useFieldContext } from '../context/field'
+  createListCollection,
+  Select as ArkSelect,
+  type SelectRootProps,
+  type SelectItemProps,
+} from '@ark-ui/react/select'
 import { useCerberusContext } from '../context/cerberus'
-import { Show } from './Show'
+import { Portal } from './Portal'
+import { label, menu } from '@cerberus/styled-system/recipes'
+import type { LabelProps } from './Label'
 
-/**
- * This module contains the select components.
- * @module
- */
+export interface SelectCollectionItem {
+  label: string
+  value: string
+  disabled?: boolean
+}
 
-export type SelectProps = Omit<
-  SelectHTMLAttributes<HTMLSelectElement>,
-  'size'
-> &
-  SelectVariantProps & {
-    /**
-     * The unique id of the select element. Required for accessibility.
-     */
-    id: string
-    /**
-     * The id of the FieldMessage that describes the select element.
-     */
-    describedBy?: string
-  }
+export interface SelectCollection {
+  items: SelectCollectionItem[]
+}
 
-/**
- * Used to allow users to select a single option from a list of options.
- * @see https://cerberus.digitalu.design/react/select
- * @memberof module:Field
- * @example
- * ```tsx
- * <Field>
- *   <Select describedby="help:fruit" id="fruit">
- *    <Option value="">Choose option</Option>
- *    <Option value="one">Option 1</Option>
- *    <Option value="two">Option 2</Option>
- *    <Option value="three">Option 3</Option>
- *   </Select>
- * </Field>
- * ```
- */
-export function Select(props: SelectProps) {
-  const { describedBy, size, ...nativeProps } = props
-  const { invalid, ...fieldStates } = useFieldContext()
+export interface BaseSelectProps {
+  label: string
+  size: LabelProps['size']
+}
 
+export function Select(
+  props: SelectRootProps<SelectCollection> & BaseSelectProps,
+) {
+  const { collection, size, ...rootProps } = props
   const { icons } = useCerberusContext()
-  const { invalid: InvalidIcon, selectArrow: SelectArrow } = icons
+  const { selectArrow: SelectArrow } = icons
 
-  const styles = select({
-    size,
-  })
+  const styles = menu()
 
   return (
-    <div className={styles.root}>
-      <select
-        {...nativeProps}
-        {...fieldStates}
-        {...(describedBy && { 'aria-describedby': describedBy })}
-        {...(invalid && { 'aria-invalid': true })}
-        className={styles.input}
-      />
-      <span
-        className={cx(
-          styles.iconStack,
-          hstack({
-            gap: '2',
-          }),
-        )}
+    <ArkSelect.Root collection={collection} {...rootProps}>
+      <ArkSelect.Label
+        className={label({
+          size,
+        })}
       >
-        <Show when={invalid}>
-          <span
-            {...(invalid && { 'data-invalid': true })}
-            className={styles.stateIcon}
-          >
-            <InvalidIcon />
-          </span>
-        </Show>
-        <span className={styles.arrowIcon}>
-          <SelectArrow />
-        </span>
-      </span>
-    </div>
+        Framework
+      </ArkSelect.Label>
+
+      <ArkSelect.Control>
+        <ArkSelect.Trigger>
+          <ArkSelect.ValueText placeholder="Select a Framework" />
+          <ArkSelect.Indicator>
+            <SelectArrow />
+          </ArkSelect.Indicator>
+        </ArkSelect.Trigger>
+      </ArkSelect.Control>
+
+      <Portal>
+        <ArkSelect.Positioner>
+          <ArkSelect.Content className={styles.content}>
+            {props.children}
+          </ArkSelect.Content>
+        </ArkSelect.Positioner>
+      </Portal>
+
+      <ArkSelect.HiddenSelect />
+    </ArkSelect.Root>
   )
 }
 
-// We only export this component for consistency with the other components
+export function Option(props: SelectItemProps) {
+  const { icons } = useCerberusContext()
+  const { selectChecked: CheckedIcon } = icons
 
-export type OptionProps = OptionHTMLAttributes<HTMLOptionElement>
-
-/**
- * Option component
- * props: OptionHTMLAttributes<HTMLOptionElement>
- * @example
- * ```tsx
- * <Option value="one">Option 1</Option>
- * ```
- */
-export function Option(props: OptionProps) {
-  return <option {...props} />
+  return (
+    <ArkSelect.Item {...props}>
+      <ArkSelect.ItemText>{props.item}</ArkSelect.ItemText>
+      <ArkSelect.ItemIndicator>
+        <CheckedIcon />
+      </ArkSelect.ItemIndicator>
+    </ArkSelect.Item>
+  )
 }
+
+export { createListCollection }
