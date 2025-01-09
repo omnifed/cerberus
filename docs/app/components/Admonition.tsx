@@ -30,6 +30,21 @@ export function NoteAdmonition(props: AdmonitionTypeProps) {
   )
 }
 
+export function DeprecationAdmonition(props: AdmonitionTypeProps) {
+  const styles = {
+    palette: 'danger',
+  } as AdmonitionProps
+  return (
+    <Admonition className={css(cerbAdmonitionStyles)} {...styles}>
+      <AdmonitionHeading {...styles}>DEPRECATED</AdmonitionHeading>
+      <AdmonitionDescription {...styles}>
+        This component is deprecated and should not be used. Instead, use{' '}
+        {props.description}.
+      </AdmonitionDescription>
+    </Admonition>
+  )
+}
+
 export function WhenToUseAdmonition(props: AdmonitionTypeProps) {
   const styles = {
     palette: 'success',
