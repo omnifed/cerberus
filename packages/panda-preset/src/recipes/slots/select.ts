@@ -1,5 +1,6 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { inputSizes, input as inputStyles } from '../shared/input.base'
+import { inputSizes } from '../shared/input.base'
+import { focusStates, formStates } from '../shared/states'
 
 /**
  * This module contains the select recipe.
@@ -18,13 +19,38 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   base: {
     root: {
+      bgColor: 'page.surface.initial',
+      border: '1px solid',
+      borderColor: 'action.border.100',
+      color: 'page.text.initial',
       h: '3.7rem',
+      overflow: 'hidden',
       position: 'relative',
       py: '1',
+      rounded: 'sm',
+      transitionProperty: 'border-color',
+      transitionDuration: '200ms',
+      transitionTimingFunction: 'ease-in-out',
       w: 'full',
     },
     input: {
-      ...inputStyles,
+      appearance: 'none',
+      bottom: 0,
+      color: 'page.text.initial',
+      h: 'full',
+      left: 0,
+      position: 'absolute',
+      pxi: '4',
+      right: 0,
+      top: 0,
+      w: 'full',
+      zIndex: 'decorator',
+      ...focusStates,
+      ...formStates,
+      _userInvalid: {
+        bgColor: 'page.surface.100',
+        borderColor: 'danger.border.initial',
+      },
       _placeholderShown: {
         color: 'page.text.100',
       },
@@ -38,7 +64,7 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       right: '4',
       top: '50%',
       transform: 'translateY(-50%)',
-      zIndex: 'decorator',
+      zIndex: 'base',
     },
     stateIcon: {
       _invalid: {

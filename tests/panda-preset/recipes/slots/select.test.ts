@@ -10,25 +10,46 @@ describe('select recipe', () => {
 
   test('should have a base style', () => {
     expect(select.base?.root).toMatchObject({
+      bgColor: 'page.surface.initial',
+      border: '1px solid',
+      borderColor: 'action.border.100',
+      color: 'page.text.initial',
       h: '3.7rem',
+      overflow: 'hidden',
       position: 'relative',
       py: '1',
+      rounded: 'sm',
+      transitionProperty: 'border-color',
+      transitionDuration: '200ms',
+      transitionTimingFunction: 'ease-in-out',
       w: 'full',
     })
   })
 
   test('should have a input style', () => {
     expect(select.base?.input).toMatchObject({
-      border: '1px solid',
-      borderColor: 'action.border.100',
+      appearance: 'none',
+      bottom: 0,
       color: 'page.text.initial',
       h: 'full',
+      left: 0,
+      position: 'absolute',
       pxi: '4',
-      rounded: 'sm',
-      transitionProperty: 'border-color',
-      transitionDuration: '200ms',
-      transitionTimingFunction: 'ease-in-out',
+      right: 0,
+      top: 0,
       w: 'full',
+      zIndex: 'decorator',
+      _userInvalid: {
+        bgColor: 'page.surface.100',
+        borderColor: 'danger.border.initial',
+      },
+      _placeholderShown: {
+        color: 'page.text.100',
+      },
+      _startIcon: {
+        display: 'inline-block',
+        paddingInlineStart: '7',
+      },
       _focusVisible: {
         boxShadow: 'none',
         outline: '3px solid',
@@ -44,17 +65,6 @@ describe('select recipe', () => {
           cursor: 'default',
         },
       },
-      _userInvalid: {
-        bgColor: 'page.surface.100',
-        borderColor: 'danger.border.initial',
-      },
-      _placeholderShown: {
-        color: 'page.text.100',
-      },
-      _startIcon: {
-        display: 'inline-block',
-        paddingInlineStart: '7',
-      },
     })
   })
 
@@ -64,7 +74,7 @@ describe('select recipe', () => {
       right: '4',
       top: '50%',
       transform: 'translateY(-50%)',
-      zIndex: 'decorator',
+      zIndex: 'base',
     })
   })
 

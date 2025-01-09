@@ -6,7 +6,7 @@ import {
   select,
   type SelectVariantProps,
 } from '@cerberus/styled-system/recipes'
-import type { OptionHTMLAttributes, SelectHTMLAttributes } from 'react'
+import { type OptionHTMLAttributes, type SelectHTMLAttributes } from 'react'
 import { useFieldContext } from '../context/field'
 import { useCerberusContext } from '../context/cerberus'
 import { Show } from './Show'
