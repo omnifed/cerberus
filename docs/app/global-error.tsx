@@ -1,11 +1,28 @@
 'use client'
 
+// Error boundaries must be Client Components
+
+import { Poppins, Recursive } from 'next/font/google'
 import { vstack } from '@cerberus-design/styled-system/patterns'
-import { css } from '@cerberus-design/styled-system/css'
+import { css, cx } from '@cerberus-design/styled-system/css'
 import { Button } from '@cerberus-design/react'
 import BrokenBoneIcon from './components/icons/broken-bone-icon'
+import { getCodeTheme } from './utils/colors'
 
-// Error boundaries must be Client Components
+import './globals.css'
+
+const poppins = Poppins({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-poppins',
+})
+const recursive = Recursive({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-recursive',
+})
 
 export default function GlobalError({
   reset,
@@ -13,9 +30,18 @@ export default function GlobalError({
   error: Error & { digest?: string }
   reset: () => void
 }) {
+  const defaultThemeName = 'cerberus'
+  const defaultColorModeName = 'dark'
+
   // global-error must include html and body tags
   return (
-    <html>
+    <html
+      className={cx(poppins.variable, recursive.variable)}
+      lang="en"
+      data-panda-theme={defaultThemeName}
+      data-color-mode={defaultColorModeName}
+      data-code-theme={getCodeTheme(defaultColorModeName, defaultThemeName)}
+    >
       <body>
         <div
           className={vstack({

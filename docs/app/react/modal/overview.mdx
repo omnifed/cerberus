@@ -6,22 +6,9 @@ a11y: 'touch-target'
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
-import {
-  OverviewPreview,
-  ModalFormPreview
-} from '@/app/react/modal/components/modal-preview'
+import { DeprecationAdmonition } from '@/app/components/Admonition'
 
-<OverviewList rules={[
-  'Use modals to make sure users act on information',
-  'Should be dedicated to completing a single task',
-  'Can also display information relevant to the task',
-  'Commonly used in high-risk actions like deleting progress',
-]} />
-
-## Example
-
-<CodePreview preview={<OverviewPreview />} />
-<CodePreview preview={<ModalFormPreview />} />
+<DeprecationAdmonition description="Dialog" />
 
 ## Resources
 
