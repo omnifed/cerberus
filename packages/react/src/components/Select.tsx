@@ -10,10 +10,13 @@ import {
   type ListCollection,
 } from '@ark-ui/react/select'
 import { select } from '@cerberus/styled-system/recipes'
+import { cx } from '@cerberus/styled-system/css'
+import { HStack } from '@cerberus/styled-system/jsx'
 import { useCerberusContext } from '../context/cerberus'
 import { Portal } from './Portal'
 import type { LabelProps } from './Label'
-import { cx } from '@cerberus/styled-system/css'
+import { Show } from './Show'
+import { Text } from './Text'
 
 /**
  * This module contains the Select components.
@@ -93,7 +96,7 @@ export function Select(
 ) {
   const { collection, label, placeholder, size, ...rootProps } = props
   const { icons } = useCerberusContext()
-  const { selectArrow: SelectArrow } = icons
+  const { selectArrow: SelectArrow, invalid: InvalidIcon } = icons
 
   const styles = select({ size })
 
@@ -103,14 +106,27 @@ export function Select(
       collection={collection}
       {...rootProps}
     >
-      <ArkSelect.Label className={styles.label}>{label}</ArkSelect.Label>
+      <ArkSelect.Label className={styles.label}>
+        {label}
+        <Show when={props.required}>
+          <Text as="span" color="page.text.100">
+            (required)
+          </Text>
+        </Show>
+      </ArkSelect.Label>
 
       <ArkSelect.Control className={styles.control}>
         <ArkSelect.Trigger className={styles.trigger}>
           <ArkSelect.ValueText placeholder={placeholder} />
-          <ArkSelect.Indicator className={styles.indicator}>
-            <SelectArrow />
-          </ArkSelect.Indicator>
+
+          <HStack>
+            <Show when={props.invalid}>
+              <InvalidIcon data-part="invalid-icon" />
+            </Show>
+            <ArkSelect.Indicator className={styles.indicator}>
+              <SelectArrow />
+            </ArkSelect.Indicator>
+          </HStack>
         </ArkSelect.Trigger>
       </ArkSelect.Control>
 

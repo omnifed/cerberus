@@ -23,12 +23,20 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       display: 'flex',
       flexDirection: 'column',
       gap: '1.5',
-      width: 'full',
+      w: 'full',
     },
-    label: { ...label.base },
+    label: {
+      ...label.base,
+      alignItems: 'center',
+      display: 'flex',
+      justifyContent: 'space-between',
+      textStyle: 'label-sm',
+      w: 'full',
+    },
     trigger: {
       appearance: 'none',
       alignItems: 'center',
+      bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'action.border.100',
       color: 'page.text.initial',
@@ -40,7 +48,7 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionDuration: 'normal',
       transitionProperty: 'background, box-shadow, border-color',
       transitionTimingFunction: 'default',
-      width: 'full',
+      w: 'full',
       ...focusStates,
       _placeholderShown: {
         color: 'page.text.100',
@@ -55,13 +63,16 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
           color: 'page.text.100',
         },
       },
+      _invalid: {
+        borderColor: 'danger.border.initial',
+      },
       '& :where(svg)': {
         color: 'page.text.100',
       },
     },
     indicator: {
-      transitionProperty: 'transform',
       transitionDuration: 'normal',
+      transitionProperty: 'transform',
       _open: {
         transform: 'rotate(180deg)',
       },

@@ -13,7 +13,7 @@ describe('select recipe', () => {
       display: 'flex',
       flexDirection: 'column',
       gap: '1.5',
-      width: 'full',
+      w: 'full',
     })
   })
 
@@ -24,6 +24,11 @@ describe('select recipe', () => {
       _disabled: {
         color: 'page.text.100',
       },
+      alignItems: 'center',
+      display: 'flex',
+      justifyContent: 'space-between',
+      textStyle: 'label-sm',
+      w: 'full',
     })
   })
 
@@ -31,6 +36,7 @@ describe('select recipe', () => {
     expect(select.base?.trigger).toMatchObject({
       appearance: 'none',
       alignItems: 'center',
+      bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'action.border.100',
       color: 'page.text.initial',
@@ -42,12 +48,9 @@ describe('select recipe', () => {
       transitionDuration: 'normal',
       transitionProperty: 'background, box-shadow, border-color',
       transitionTimingFunction: 'default',
-      width: 'full',
+      w: 'full',
       _placeholderShown: {
         color: 'page.text.100',
-      },
-      _open: {
-        borderColor: 'action.border.focus',
       },
       _disabled: {
         color: 'page.text.100',
@@ -56,8 +59,14 @@ describe('select recipe', () => {
           color: 'page.text.100',
         },
       },
+      _invalid: {
+        borderColor: 'danger.border.initial',
+      },
       '& :where(svg)': {
         color: 'page.text.100',
+      },
+      _open: {
+        borderColor: 'action.border.focus',
       },
     })
   })
