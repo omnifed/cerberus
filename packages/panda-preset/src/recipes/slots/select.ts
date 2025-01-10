@@ -115,11 +115,14 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       _disabled: formStates._disabled,
     },
     itemGroupLabel: {
-      fontWeight: 'semibold',
-      textStyle: 'sm',
+      color: 'page.text.initial',
+      pxi: 'md',
+      py: '0.5rem',
+      textStyle: 'label-sm',
+      userSelect: 'none',
     },
     itemIndicator: {
-      color: 'colorPalette.default',
+      color: 'success.bg.initial',
     },
   },
 
@@ -146,10 +149,6 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
             height: '4',
           },
         },
-        itemGroupLabel: {
-          px: '2',
-          py: '1.5',
-        },
       },
       md: {
         label: label.variants!.size.md,
@@ -171,10 +170,6 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
             width: '4',
             height: '4',
           },
-        },
-        itemGroupLabel: {
-          px: '2',
-          py: '1.5',
         },
       },
     },

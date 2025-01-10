@@ -67,11 +67,11 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       flex: '1',
     },
     itemGroupLabel: {
-      color: 'page.text.100',
-      fontSize: 'sm',
-      fontWeight: 'semibold',
+      color: 'page.text.initial',
       pxi: 'md',
       py: '0.5rem',
+      textStyle: 'label-sm',
+      userSelect: 'none',
     },
     indicator: {
       display: 'inline-flex',

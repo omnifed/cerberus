@@ -10,121 +10,148 @@ describe('select recipe', () => {
 
   test('should have a base style', () => {
     expect(select.base?.root).toMatchObject({
-      bgColor: 'page.surface.initial',
-      border: '1px solid',
-      borderColor: 'action.border.100',
-      color: 'page.text.initial',
-      h: '3.7rem',
-      overflow: 'hidden',
-      position: 'relative',
-      py: '1',
-      rounded: 'sm',
-      transitionProperty: 'border-color',
-      transitionDuration: '200ms',
-      transitionTimingFunction: 'ease-in-out',
-      w: 'full',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1.5',
+      width: 'full',
     })
   })
 
-  test('should have a input style', () => {
-    expect(select.base?.input).toMatchObject({
-      appearance: 'none',
-      bottom: 0,
+  test('should have a label style', () => {
+    expect(select.base?.label).toMatchObject({
       color: 'page.text.initial',
-      h: 'full',
-      left: 0,
-      position: 'absolute',
-      pxi: '4',
-      right: 0,
-      top: 0,
-      w: 'full',
-      zIndex: 'decorator',
-      _userInvalid: {
-        bgColor: 'page.surface.100',
-        borderColor: 'danger.border.initial',
+      userSelect: 'none',
+      _disabled: {
+        color: 'page.text.100',
       },
+    })
+  })
+
+  test('should have a trigger style', () => {
+    expect(select.base?.trigger).toMatchObject({
+      appearance: 'none',
+      alignItems: 'center',
+      border: '1px solid',
+      borderColor: 'action.border.100',
+      color: 'page.text.initial',
+      display: 'inline-flex',
+      justifyContent: 'space-between',
+      outline: 0,
+      position: 'relative',
+      rounded: 'md',
+      transitionDuration: 'normal',
+      transitionProperty: 'background, box-shadow, border-color',
+      transitionTimingFunction: 'default',
+      width: 'full',
       _placeholderShown: {
         color: 'page.text.100',
       },
-      _startIcon: {
-        display: 'inline-block',
-        paddingInlineStart: '7',
+      _open: {
+        borderColor: 'action.border.focus',
       },
+      _disabled: {
+        color: 'page.text.100',
+        cursor: 'not-allowed',
+        '& :where(svg)': {
+          color: 'page.text.100',
+        },
+      },
+      '& :where(svg)': {
+        color: 'page.text.100',
+      },
+    })
+  })
+
+  test('should have an indicator style', () => {
+    expect(select.base?.indicator).toMatchObject({
+      transitionProperty: 'transform',
+      transitionDuration: 'normal',
+      _open: {
+        transform: 'rotate(180deg)',
+      },
+    })
+  })
+
+  test('should have a positioner style', () => {
+    expect(select.base?.positioner).toMatchObject({
+      w: 'var(--reference-width)',
+    })
+  })
+
+  test('should have a content style', () => {
+    expect(select.base?.content).toMatchObject({
+      bgColor: 'page.surface.100',
+      border: '1px solid',
+      borderColor: 'page.border.200',
+      display: 'flex',
+      flexDirection: 'column',
+      maxH: '15.5rem',
+      minW: '10rem',
       _focusVisible: {
         boxShadow: 'none',
         outline: '3px solid',
         outlineColor: 'action.border.focus',
         outlineOffset: '2px',
       },
+      _open: {
+        animationStyle: 'slide-fade-in',
+        animationDuration: 'fast',
+      },
+      _closed: {
+        animationStyle: 'slide-fade-out',
+        animationDuration: 'faster',
+      },
+    })
+  })
+
+  test('should have a item style', () => {
+    expect(select.base?.item).toMatchObject({
+      alignItems: 'center',
+      cursor: 'pointer',
+      display: 'flex',
+      flexShrink: 0,
+      justifyContent: 'space-between',
+      rounded: 'sm',
+      transitionDuration: 'fast',
+      transitionProperty: 'background, color',
+      transitionTimingFunction: 'default',
+      _focusVisible: {
+        boxShadow: 'none',
+        outline: '3px solid',
+        outlineColor: 'action.border.focus',
+        outlineOffset: '2px',
+      },
+      _hover: {
+        background: 'page.bg.hover',
+        color: 'page.text.initial',
+      },
+      _highlighted: {
+        bgColor: 'action.ghost.hover',
+        color: 'page.text.initial',
+      },
+      _selected: {
+        color: 'page.text.initial',
+      },
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.5',
       },
-      _readOnly: {
-        '&:not(button)': {
-          cursor: 'default',
-        },
-      },
     })
   })
 
-  test('should have a iconStack style', () => {
-    expect(select.base?.iconStack).toMatchObject({
-      position: 'absolute',
-      right: '4',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      zIndex: 'base',
+  test('should have a itemGroupLabel style', () => {
+    expect(select.base?.itemGroupLabel).toMatchObject({
+      color: 'page.text.initial',
+      pxi: 'md',
+      py: '0.5rem',
+      textStyle: 'label-sm',
+      userSelect: 'none',
     })
   })
 
-  test('should have a stateIcon style', () => {
-    expect(select.base?.stateIcon).toMatchObject({
-      _invalid: {
-        color: 'danger.text.200',
-      },
-    })
-  })
-
-  test('should have a arrowIcon style', () => {
-    expect(select.base?.arrowIcon).toMatchObject({
-      color: 'action.text.inverse',
-    })
-  })
-
-  test('should have a size variant', () => {
-    expect(select.variants?.size).toMatchObject({
-      sm: {
-        root: {
-          md: {
-            h: '2rem',
-          },
-        },
-        input: {
-          fontSize: 'sm',
-        },
-      },
-      md: {
-        root: {
-          md: {
-            h: '2.5rem',
-          },
-        },
-        input: {
-          fontSize: 'sm',
-        },
-      },
-      lg: {
-        root: {
-          h: '3rem',
-        },
-      },
-    })
-  })
-
-  test('should have a default variant', () => {
-    expect(select.defaultVariants).toMatchObject({
-      size: 'lg',
+  test('should have a itemIndicator style', () => {
+    expect(select.base?.itemIndicator).toMatchObject({
+      color: 'success.bg.initial',
     })
   })
 })

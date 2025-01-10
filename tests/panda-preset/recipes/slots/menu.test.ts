@@ -1,6 +1,5 @@
 import { describe, test, expect } from 'bun:test'
 import { slotRecipes } from '@cerberus-design/panda-preset'
-import { pointer } from '@testing-library/user-event/dist/cjs/pointer/index.js'
 
 describe('menu recipe', () => {
   const { menu } = slotRecipes
@@ -69,11 +68,11 @@ describe('menu recipe', () => {
 
   test('should have a itemGroupLabel style', () => {
     expect(menu.base?.itemGroupLabel).toMatchObject({
-      color: 'page.text.100',
-      fontSize: 'sm',
-      fontWeight: 'semibold',
+      color: 'page.text.initial',
       pxi: 'md',
       py: '0.5rem',
+      textStyle: 'label-sm',
+      userSelect: 'none',
     })
   })
 
