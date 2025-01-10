@@ -1,5 +1,6 @@
 import { describe, test, expect } from 'bun:test'
 import { slotRecipes } from '@cerberus-design/panda-preset'
+import { pointer } from '@testing-library/user-event/dist/cjs/pointer/index.js'
 
 describe('menu recipe', () => {
   const { menu } = slotRecipes
@@ -54,7 +55,8 @@ describe('menu recipe', () => {
         bgColor: 'colorPalette.ghost.hover',
       },
       _disabled: {
-        layerStyle: 'disabled',
+        cursor: 'not-allowed',
+        opacity: '0.5',
       },
     })
   })
