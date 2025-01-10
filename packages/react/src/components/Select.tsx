@@ -6,9 +6,9 @@ import {
   type SelectRootProps,
   type SelectItemProps,
 } from '@ark-ui/react/select'
+import { select } from '@cerberus/styled-system/recipes'
 import { useCerberusContext } from '../context/cerberus'
 import { Portal } from './Portal'
-import { label, menu } from '@cerberus/styled-system/recipes'
 import type { LabelProps } from './Label'
 
 export interface SelectCollectionItem {
@@ -22,40 +22,39 @@ export interface SelectCollection {
 }
 
 export interface BaseSelectProps {
+  placeholder?: string
   label: string
-  size: LabelProps['size']
+  size?: LabelProps['size']
 }
 
 export function Select(
   props: SelectRootProps<SelectCollection> & BaseSelectProps,
 ) {
-  const { collection, size, ...rootProps } = props
+  const { collection, label, placeholder, size, ...rootProps } = props
   const { icons } = useCerberusContext()
   const { selectArrow: SelectArrow } = icons
 
-  const styles = menu()
+  const styles = select({ size })
 
   return (
-    <ArkSelect.Root collection={collection} {...rootProps}>
-      <ArkSelect.Label
-        className={label({
-          size,
-        })}
-      >
-        Framework
-      </ArkSelect.Label>
+    <ArkSelect.Root
+      className={styles.root}
+      collection={collection}
+      {...rootProps}
+    >
+      <ArkSelect.Label className={styles.label}>{label}</ArkSelect.Label>
 
-      <ArkSelect.Control>
-        <ArkSelect.Trigger>
-          <ArkSelect.ValueText placeholder="Select a Framework" />
-          <ArkSelect.Indicator>
+      <ArkSelect.Control className={styles.control}>
+        <ArkSelect.Trigger className={styles.trigger}>
+          <ArkSelect.ValueText placeholder={placeholder} />
+          <ArkSelect.Indicator className={styles.indicator}>
             <SelectArrow />
           </ArkSelect.Indicator>
         </ArkSelect.Trigger>
       </ArkSelect.Control>
 
       <Portal>
-        <ArkSelect.Positioner>
+        <ArkSelect.Positioner className={styles.positioner}>
           <ArkSelect.Content className={styles.content}>
             {props.children}
           </ArkSelect.Content>
@@ -67,14 +66,25 @@ export function Select(
   )
 }
 
-export function Option(props: SelectItemProps) {
+export interface OptionProps extends SelectItemProps {
+  item: SelectCollectionItem
+  size?: LabelProps['size']
+}
+
+export function Option(props: OptionProps) {
+  const { size, item, ...itemProps } = props
+
   const { icons } = useCerberusContext()
   const { selectChecked: CheckedIcon } = icons
 
+  const styles = select({ size })
+
   return (
-    <ArkSelect.Item {...props}>
-      <ArkSelect.ItemText>{props.item}</ArkSelect.ItemText>
-      <ArkSelect.ItemIndicator>
+    <ArkSelect.Item {...itemProps} item={item} className={styles.item}>
+      <ArkSelect.ItemText className={styles.itemText}>
+        {item?.label}
+      </ArkSelect.ItemText>
+      <ArkSelect.ItemIndicator className={styles.itemIndicator}>
         <CheckedIcon />
       </ArkSelect.ItemIndicator>
     </ArkSelect.Item>

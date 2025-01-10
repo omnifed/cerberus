@@ -1,6 +1,7 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { inputSizes } from '../shared/input.base'
+import { selectAnatomy } from '@ark-ui/anatomy'
 import { focusStates, formStates } from '../shared/states'
+import { label } from '../label'
 
 /**
  * This module contains the select recipe.
@@ -8,79 +9,178 @@ import { focusStates, formStates } from '../shared/states'
  */
 
 /**
- * Styles for the Select components
- * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
- * @definition [ARIA Forms](https://www.a11yproject.com/checklist/#forms)
+ * Styles for the select family components
+ * @definition [ARK docs](https://ark-ui.com/react/docs/components/select)
  * @definition [Select docs](https://cerberus.digitalu.design/react/select)
  */
 export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'select',
-  slots: ['root', 'input', 'iconStack', 'stateIcon', 'arrowIcon'],
+  slots: selectAnatomy.keys(),
+  jsx: ['Select', 'Option'],
 
   base: {
     root: {
-      bgColor: 'page.surface.initial',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1.5',
+      width: 'full',
+    },
+    label: { ...label.base },
+    trigger: {
+      appearance: 'none',
+      alignItems: 'center',
       border: '1px solid',
       borderColor: 'action.border.100',
       color: 'page.text.initial',
-      h: '3.7rem',
-      overflow: 'hidden',
+      display: 'inline-flex',
+      justifyContent: 'space-between',
+      outline: 0,
       position: 'relative',
-      py: '1',
-      rounded: 'sm',
-      transitionProperty: 'border-color',
-      transitionDuration: '200ms',
-      transitionTimingFunction: 'ease-in-out',
-      w: 'full',
-    },
-    input: {
-      appearance: 'none',
-      bottom: 0,
-      color: 'page.text.initial',
-      h: 'full',
-      left: 0,
-      position: 'absolute',
-      pxi: '4',
-      right: 0,
-      top: 0,
-      w: 'full',
-      zIndex: 'decorator',
+      rounded: 'md',
+      transitionDuration: 'normal',
+      transitionProperty: 'background, box-shadow, border-color',
+      transitionTimingFunction: 'default',
+      width: 'full',
       ...focusStates,
-      ...formStates,
-      _userInvalid: {
-        bgColor: 'page.surface.100',
-        borderColor: 'danger.border.initial',
-      },
       _placeholderShown: {
         color: 'page.text.100',
       },
-      _startIcon: {
-        display: 'inline-block',
-        paddingInlineStart: '7',
+      _open: {
+        borderColor: 'action.border.focus',
+      },
+      _disabled: {
+        color: 'page.text.100',
+        cursor: 'not-allowed',
+        '& :where(svg)': {
+          color: 'page.text.100',
+        },
+      },
+      '& :where(svg)': {
+        color: 'page.text.100',
       },
     },
-    iconStack: {
-      position: 'absolute',
-      right: '4',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      zIndex: 'base',
-    },
-    stateIcon: {
-      _invalid: {
-        color: 'danger.text.200',
+    indicator: {
+      transitionProperty: 'transform',
+      transitionDuration: 'normal',
+      _open: {
+        transform: 'rotate(180deg)',
       },
     },
-    arrowIcon: {
-      color: 'action.text.inverse',
+    positioner: {
+      w: 'var(--reference-width)',
+    },
+    content: {
+      bgColor: 'page.surface.100',
+      border: '1px solid',
+      borderColor: 'page.border.200',
+      display: 'flex',
+      flexDirection: 'column',
+      maxH: '15.5rem',
+      minW: '10rem',
+      overflowY: 'auto',
+      rounded: 'md',
+      shadow: 'lg',
+      ...focusStates,
+      _open: {
+        animationStyle: 'slide-fade-in',
+        animationDuration: 'fast',
+      },
+      _closed: {
+        animationStyle: 'slide-fade-out',
+        animationDuration: 'faster',
+      },
+    },
+    item: {
+      alignItems: 'center',
+      cursor: 'pointer',
+      display: 'flex',
+      flexShrink: 0,
+      justifyContent: 'space-between',
+      rounded: 'sm',
+      transitionDuration: 'fast',
+      transitionProperty: 'background, color',
+      transitionTimingFunction: 'default',
+      ...focusStates,
+      _hover: {
+        background: 'page.bg.hover',
+        color: 'page.text.initial',
+      },
+      _highlighted: {
+        bgColor: 'action.ghost.hover',
+        color: 'page.text.initial',
+      },
+      _selected: {
+        color: 'page.text.initial',
+      },
+      _disabled: formStates._disabled,
+    },
+    itemGroupLabel: {
+      fontWeight: 'semibold',
+      textStyle: 'sm',
+    },
+    itemIndicator: {
+      color: 'colorPalette.default',
     },
   },
 
   variants: {
-    size: inputSizes,
+    size: {
+      sm: {
+        label: label.variants!.size.sm,
+        trigger: {
+          px: '2.5',
+          h: '9',
+          minW: '9',
+          fontSize: 'sm',
+          gap: '2',
+          '& :where(svg)': {
+            width: '4',
+            height: '4',
+          },
+        },
+        content: { p: '0.5', gap: '1' },
+        item: { textStyle: 'sm', px: '2', height: '9' },
+        itemIndicator: {
+          '& :where(svg)': {
+            width: '4',
+            height: '4',
+          },
+        },
+        itemGroupLabel: {
+          px: '2',
+          py: '1.5',
+        },
+      },
+      md: {
+        label: label.variants!.size.md,
+        trigger: {
+          px: '3',
+          h: '10',
+          minW: '10',
+          fontSize: 'md',
+          gap: '2',
+          '& :where(svg)': {
+            width: '4',
+            height: '4',
+          },
+        },
+        content: { p: '1', gap: '1' },
+        item: { textStyle: 'md', px: '2', height: '10' },
+        itemIndicator: {
+          '& :where(svg)': {
+            width: '4',
+            height: '4',
+          },
+        },
+        itemGroupLabel: {
+          px: '2',
+          py: '1.5',
+        },
+      },
+    },
   },
 
   defaultVariants: {
-    size: 'lg',
+    size: 'md',
   },
 })

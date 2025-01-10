@@ -93,6 +93,7 @@ describe('tabs recipe', () => {
   test('should have a base.content style', () => {
     expect(tabs.base?.content).toMatchObject({
       rounded: 'md',
+      w: 'full',
       _focusVisible: {
         boxShadow: 'none',
         outline: '3px solid',

@@ -1,31 +1,30 @@
-import {
-  Field,
-  FieldMessage,
-  Label,
-  Select,
-  Option,
-} from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
+'use client'
 
-const overrideStyles = css({
-  w: '1/2',
-})
+import { Select, Option, createListCollection } from '@cerberus-design/react'
+import { Box } from '@cerberus-design/styled-system/jsx'
 
 export function SelectBasicPreview() {
+  const collection = createListCollection({
+    items: [
+      { label: 'Hades', value: 'hades' },
+      { label: 'Persephone', value: 'persephone' },
+      { label: 'Zeus', value: 'zeus', disabled: true },
+      { label: 'Poseidon', value: 'poseidon' },
+      { label: 'Hera', value: 'hera' },
+    ],
+  })
+
   return (
-    <div className={overrideStyles}>
-      <Field>
-        <Label htmlFor="fruit">Select Fruit</Label>
-        <Select aria-describedby="help:fruit" id="fruit">
-          <Option value="">Choose option</Option>
-          <Option value="one">Option 1</Option>
-          <Option value="two">Option 2</Option>
-          <Option value="three">Option 3</Option>
-        </Select>
-        <FieldMessage id="help:fruit">
-          This will be your included in your smoothie.
-        </FieldMessage>
-      </Field>
-    </div>
+    <Box w="1/2">
+      <Select
+        collection={collection}
+        label="Select Relative"
+        placeholder="Choose option"
+      >
+        {collection.items.map((item) => (
+          <Option key={item.value} item={item} />
+        ))}
+      </Select>
+    </Box>
   )
 }
