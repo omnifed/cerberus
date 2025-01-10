@@ -9,10 +9,8 @@ import {
   Option,
   FieldMessage,
   createSelectCollection,
-  type LabelProps,
 } from '@cerberus-design/react'
 import { vstack } from '@cerberus/styled-system/patterns'
-import { useMemo } from 'react'
 
 const api = {
   size: builder.Enum('size', ['sm', 'md', 'lg']),

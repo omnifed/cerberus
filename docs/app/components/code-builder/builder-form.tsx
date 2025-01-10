@@ -33,7 +33,7 @@ export default function BuilderForm(props: BuilderFormProps) {
 
   const handleSelectChange = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {
-      setSelectedProps(e.currentTarget.name, e.currentTarget.value)
+      setSelectedProps(e.currentTarget.name, e.value)
     },
     [setSelectedProps],
   )
@@ -75,8 +75,15 @@ export default function BuilderForm(props: BuilderFormProps) {
               <Select
                 {...(props.api[key] as EnumResult)}
                 id={props.api[key].name}
-                onChange={handleSelectChange}
-                options={props.api[key].value as string[]}
+                options={props.api[key].value}
+                onValueChange={(e) =>
+                  handleSelectChange({
+                    currentTarget: {
+                      name: key,
+                      value: e.value,
+                    },
+                  })
+                }
                 value={selectedProps[key] as string}
               />
             </Show>
