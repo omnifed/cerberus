@@ -20,7 +20,7 @@
     "hast-util-to-jsx-runtime": "^2.3.2",
     "next": "15.1.4",
     "react": "19.0.0-rc.1",
-    "react-dom": "19.0.0-rc.1",
+    "react-dom": "19.0.0",
     "remove": "^0.1.5"
   },
   "devDependencies": {
@@ -36,7 +36,7 @@
     "@shikijs/rehype": "^1.25.1",
     "@types/node": "^22.10.1",
     "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react-dom": "^19",
     "@vercel/analytics": "^1.4.1",
     "autoprefixer": "^10.4.19",
     "color-space": "^2.0.1",
