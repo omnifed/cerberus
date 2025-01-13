@@ -55,7 +55,6 @@ export function MyAccordion(props: AccordionItemGroupProps) {
 
 export function AccordionPreview() {
   const { selectedProps } = useCodeBuilder()
-
   return (
     <Show
       when={selectedProps.size === 'lg'}
@@ -67,7 +66,7 @@ export function AccordionPreview() {
               selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
             }
             size="sm"
-            value="one"
+            value="one:fallback"
           >
             This is the content
           </AccordionItemGroup>
