@@ -5,13 +5,13 @@
 
 // deprecated
 
-export * from './components/Modal'
-export * from './components/ModalHeader'
-export * from './components/ModalHeading'
-export * from './components/ModalDescription'
-export * from './components/NavMenuTrigger'
-export * from './components/NavMenuList'
-export * from './components/NavMenuLink'
+export * from './components/deprecated/Modal'
+export * from './components/deprecated/ModalHeader'
+export * from './components/deprecated/ModalHeading'
+export * from './components/deprecated/ModalDescription'
+export * from './components/deprecated/NavMenuTrigger'
+export * from './components/deprecated/NavMenuList'
+export * from './components/deprecated/NavMenuLink'
 
 // components
 
@@ -45,7 +45,6 @@ export * from './components/NotificationDescription'
 export * from './components/Portal'
 export * from './components/ProgressBar'
 export * from './components/Radio'
-export * from './components/Select'
 export * from './components/Spinner'
 export * from './components/Tabs.client'
 export * from './components/Table'
@@ -58,6 +57,7 @@ export * from './components/Text'
 export * from './components/Textarea'
 export * from './components/Toggle'
 export * from './components/Tooltip'
+export * from './components/Select'
 export * from './components/Show'
 
 // context

@@ -11,10 +11,10 @@ import { button } from '@cerberus/styled-system/recipes'
 import {
   createNavTriggerProps,
   type NavTriggerAriaValues,
-} from '../aria-helpers/nav-menu.aria'
-import { useNavMenuContext } from '../context/navMenu'
-import type { ButtonProps } from './Button'
-import { Show } from './Show'
+} from '../../aria-helpers/nav-menu.aria'
+import { useNavMenuContext } from '../../context/navMenu'
+import type { ButtonProps } from '../Button'
+import { Show } from '../Show'
 
 /**
  * This module contains the NavMenuTrigger component.

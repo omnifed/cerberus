@@ -1,6 +1,6 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { menuAnatomy } from '@ark-ui/anatomy'
-import { focusStates } from '../shared/states'
+import { focusStates, formStates } from '../shared/states'
 
 /**
  * This module contains the menu recipe.
@@ -24,7 +24,9 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       borderColor: 'page.border.200',
       boxShadow: 'lg',
       overflow: 'hidden',
+      overflowY: 'auto',
       p: 'xs',
+      maxH: '19.5rem',
       minW: '10rem',
       rounded: 'md',
       shadow: 'lg',
@@ -59,19 +61,17 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       _highlighted: {
         bgColor: 'colorPalette.ghost.hover',
       },
-      _disabled: {
-        layerStyle: 'disabled',
-      },
+      _disabled: formStates._disabled,
     },
     itemText: {
       flex: '1',
     },
     itemGroupLabel: {
-      color: 'page.text.100',
-      fontSize: 'sm',
-      fontWeight: 'semibold',
+      color: 'page.text.initial',
       pxi: 'md',
       py: '0.5rem',
+      textStyle: 'label-sm',
+      userSelect: 'none',
     },
     indicator: {
       display: 'inline-flex',

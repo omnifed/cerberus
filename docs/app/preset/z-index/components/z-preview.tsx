@@ -1,10 +1,15 @@
 'use client'
 
 import { tokens } from '@cerberus-design/panda-preset'
-import { Field, FieldMessage, Label, Select } from '@cerberus-design/react'
+import {
+  Select,
+  Option,
+  createSelectCollection,
+  type SelectValueChangeDetails,
+} from '@cerberus-design/react'
 import { css, cx } from '@cerberus/styled-system/css'
 import { vstack } from '@cerberus/styled-system/patterns'
-import { useState, type ChangeEvent } from 'react'
+import { useState } from 'react'
 
 const zLayers = css({
   '&[data-z-index="hide"]': {
@@ -45,8 +50,16 @@ const zLayers = css({
 export default function ZPreview() {
   const [active, setActive] = useState<keyof typeof tokens.zIndex>('hide')
 
-  function handleChange(event: ChangeEvent<HTMLSelectElement>) {
-    setActive(event.currentTarget.value as keyof typeof tokens.zIndex)
+  const formattedCollection = Object.entries(tokens.zIndex).map(
+    ([key, value]) => ({
+      label: key,
+      value: String(value.value),
+    }),
+  )
+  const collection = createSelectCollection(formattedCollection)
+
+  function handleChange(event: SelectValueChangeDetails) {
+    setActive(event.items[0].label as keyof typeof tokens.zIndex)
   }
 
   return (
@@ -76,7 +89,7 @@ export default function ZPreview() {
               bgColor: 'success.surface.initial',
               left: '5',
               position: 'absolute',
-              py: '6',
+              paddingBlock: '6',
               pxi: '12',
               top: '5',
               rounded: 'md',
@@ -88,6 +101,7 @@ export default function ZPreview() {
         >
           z-index: {active}
         </div>
+
         <div
           className={css({
             bgColor: 'warning.surface.initial',
@@ -109,6 +123,7 @@ export default function ZPreview() {
         >
           z-index: base
         </div>
+
         <div
           className={css({
             border: '4px solid',
@@ -132,31 +147,20 @@ export default function ZPreview() {
           mb: '10',
         })}
       >
-        <Field>
-          <Label htmlFor="z-index">Select z-index:</Label>
-          <Select
-            className={css({
-              border: '1px solid',
-              borderColor: 'page.border.100',
-              h: '2.75rem',
-              pxi: '2',
-              rounded: 'md',
-              w: 'full',
-            })}
-            describedBy="help:z-index"
-            id="z-index"
-            onChange={handleChange}
-          >
-            {Object.keys(tokens.zIndex).map((key) => (
-              <option key={key} value={key}>
-                {key}
-              </option>
-            ))}
-          </Select>
-          <FieldMessage id="help:z-index">
-            Select a z-index value to see the layer effect.
-          </FieldMessage>
-        </Field>
+        <Select
+          collection={collection}
+          ids={{
+            control: 'z-index',
+          }}
+          label="Select z-index"
+          placeholder="Choose a z-index"
+          onValueChange={handleChange}
+          size="lg"
+        >
+          {collection.items.map((item) => (
+            <Option key={item.value} item={item} />
+          ))}
+        </Select>
       </div>
     </>
   )

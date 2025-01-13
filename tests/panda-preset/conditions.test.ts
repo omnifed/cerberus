@@ -82,6 +82,12 @@ describe('conditions', () => {
     )
   })
 
+  test('should have a checked', () => {
+    expect(conditions.checked).toEqual(
+      '&:is(:checked, [data-checked], [aria-checked=true] [data-state=checked])',
+    )
+  })
+
   test('should have a positionBottom', () => {
     expect(conditions.positionBottom).toEqual('&:is([data-position=bottom])')
   })

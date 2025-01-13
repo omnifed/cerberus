@@ -48,6 +48,7 @@ const icons = defineIcons({
   invalidAlt: Warning,
   redo: Restart,
   selectArrow: ChevronDown,
+  selectChecked: Checkmark,
   toggleChecked: Checkmark,
 })
 

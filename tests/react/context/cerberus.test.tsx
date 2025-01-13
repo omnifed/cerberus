@@ -1,20 +1,13 @@
 import { describe, test, expect, afterEach, spyOn } from 'bun:test'
 import { render, screen, cleanup, renderHook } from '@testing-library/react'
-import {
-  CerberusProvider,
-  defineIcons,
-  makeSystemConfig,
-  useCerberusContext,
-} from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
-import { cerberusIcons } from '@cerberus-design/icons'
+import { CerberusProvider, useCerberusContext } from '@cerberus-design/react'
+import { makeConfig, setupStrictMode } from '@/utils'
 
 describe('CerberusProvider & useCerberusContext', () => {
   setupStrictMode()
   afterEach(cleanup)
 
-  const icons = defineIcons(cerberusIcons)
-  const config = makeSystemConfig({ icons })
+  const config = makeConfig()
 
   function TestEl() {
     const context = useCerberusContext()

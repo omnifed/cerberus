@@ -85,6 +85,7 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     content: {
       rounded: 'md',
+      w: 'full',
       ...focusStates,
     },
     indicator: {

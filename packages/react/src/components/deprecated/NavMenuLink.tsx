@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ElementType } from 'react'
 import { css, cx } from '@cerberus/styled-system/css'
-import { Show } from './Show'
+import { Show } from '../Show'
 
 /**
  * This module contains the NavMenuLink component.

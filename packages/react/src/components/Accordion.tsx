@@ -22,6 +22,7 @@ export type AccordionProps = ArkAccordion.RootProps & AccordionVariantProps
 export function Accordion(props: AccordionProps) {
   const { size, className, ...rootProps } = props
   const styles = accordion({ size })
+
   return (
     <ArkAccordion.Root
       collapsible

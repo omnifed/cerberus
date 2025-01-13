@@ -38,4 +38,11 @@ describe('label recipe', () => {
       },
     })
   })
+
+  test('should have a default variant', () => {
+    expect(label.defaultVariants).toMatchObject({
+      usage: 'visible',
+      size: 'sm',
+    })
+  })
 })

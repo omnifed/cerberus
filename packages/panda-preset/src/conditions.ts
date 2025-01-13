@@ -11,7 +11,10 @@ export const conditions = {
   // states
   open: '&:is([open], [data-open], [data-state=open])',
   closed: '&:is([closed], [data-closed], [data-state=closed])',
+  checked:
+    '&:is(:checked, [data-checked], [aria-checked=true] [data-state=checked])',
   modalOpen: '&:is([data-modal-open=true])',
+  placeholderShown: '&:is([data-placeholder-shown])',
   screenReaderOnly: '&:is([data-screen-reader-only=true])',
   isOver: '&:is([data-over=true])',
   isDropped: '&:is([data-dropped=true])',

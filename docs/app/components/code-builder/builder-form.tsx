@@ -4,14 +4,18 @@ import { vstack } from '@cerberus/styled-system/patterns'
 import type {
   BooleanResult,
   BuilderResult,
-  EnumResult,
   NumberResult,
   TextResult,
 } from './helpers'
-import { Field, Label, Show } from '@cerberus-design/react'
+import {
+  Field,
+  Label,
+  Show,
+  type SelectCollectionItem,
+  type SelectValueChangeDetails,
+} from '@cerberus-design/react'
 import { lazy, useCallback, type ChangeEvent } from 'react'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import { css } from '@cerberus/styled-system/css'
 
 const Select = lazy(() => import('./builder-select'))
 const Input = lazy(() => import('./builder-input'))
@@ -32,8 +36,8 @@ export default function BuilderForm(props: BuilderFormProps) {
   )
 
   const handleSelectChange = useCallback(
-    (e: ChangeEvent<HTMLSelectElement>) => {
-      setSelectedProps(e.currentTarget.name, e.currentTarget.value)
+    (key: string, item: SelectCollectionItem) => {
+      setSelectedProps(key, item.value)
     },
     [setSelectedProps],
   )
@@ -62,25 +66,21 @@ export default function BuilderForm(props: BuilderFormProps) {
           })}
         >
           <Field>
-            <Label
-              className={css({
-                textTransform: 'capitalize',
-              })}
-              htmlFor={key}
-              size="md"
-            >
-              {key}
-            </Label>
             <Show when={props.api[key].type === 'enum'}>
               <Select
-                {...(props.api[key] as EnumResult)}
-                id={props.api[key].name}
-                onChange={handleSelectChange}
+                label={key}
+                ids={{
+                  control: `builder:select:${props.api[key].name}`,
+                }}
                 options={props.api[key].value as string[]}
-                value={selectedProps[key] as string}
+                onValueChange={(e: SelectValueChangeDetails) =>
+                  handleSelectChange(key, e.items[0])
+                }
               />
             </Show>
+
             <Show when={props.api[key].type === 'text'}>
+              <Label htmlFor={key}>{key}</Label>
               <Input
                 {...(props.api[key] as TextResult)}
                 id={key}
@@ -89,7 +89,9 @@ export default function BuilderForm(props: BuilderFormProps) {
                 selectedValue={selectedProps[key] as string}
               />
             </Show>
+
             <Show when={props.api[key].type === 'number'}>
+              <Label htmlFor={key}>{key}</Label>
               <Input
                 {...(props.api[key] as NumberResult)}
                 id={key}
@@ -98,7 +100,9 @@ export default function BuilderForm(props: BuilderFormProps) {
                 selectedValue={selectedProps[key] as string}
               />
             </Show>
+
             <Show when={props.api[key].type === 'boolean'}>
+              <Label htmlFor={key}>{key}</Label>
               <Toggle
                 {...(props.api[key] as BooleanResult)}
                 id={key}

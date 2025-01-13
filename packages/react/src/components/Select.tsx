@@ -1,108 +1,225 @@
 'use client'
 
-import { cx } from '@cerberus/styled-system/css'
-import { hstack } from '@cerberus/styled-system/patterns'
+import {
+  Select as ArkSelect,
+  createListCollection,
+  type SelectRootProps,
+  type SelectItemProps,
+  type SelectItemGroupProps,
+  type SelectItemGroupLabelProps,
+  type ListCollection,
+  type SelectValueChangeDetails,
+} from '@ark-ui/react/select'
 import {
   select,
   type SelectVariantProps,
 } from '@cerberus/styled-system/recipes'
-import type { OptionHTMLAttributes, SelectHTMLAttributes } from 'react'
-import { useFieldContext } from '../context/field'
+import { cx } from '@cerberus/styled-system/css'
+import { HStack } from '@cerberus/styled-system/jsx'
 import { useCerberusContext } from '../context/cerberus'
+import { Portal } from './Portal'
 import { Show } from './Show'
+import { Text } from './Text'
 
 /**
- * This module contains the select components.
- * @module
+ * This module contains the Select components.
+ * @module 'react/select'
  */
 
-export type SelectProps = Omit<
-  SelectHTMLAttributes<HTMLSelectElement>,
-  'size'
-> &
-  SelectVariantProps & {
-    /**
-     * The unique id of the select element. Required for accessibility.
-     */
-    id: string
-    /**
-     * The id of the FieldMessage that describes the select element.
-     */
-    describedBy?: string
-  }
+export interface SelectCollectionItem {
+  /**
+   * What is displayed in the dropdown list.
+   */
+  label: string
+  /**
+   * The value of the selected item used in the form.
+   */
+  value: string
+  /**
+   * If the item is disabled.
+   */
+  disabled?: boolean
+}
+
+export interface SelectCollection {
+  /**
+   * The items to be displayed in the dropdown list.
+   */
+  items: SelectCollectionItem[]
+}
+
+export interface BaseSelectProps {
+  /**
+   * The placeholder text when no option is selected.
+   */
+  placeholder?: string
+  /**
+   * The label of the select.
+   */
+  label: string
+}
+
+export type SelectProps = SelectRootProps<SelectCollectionItem> &
+  BaseSelectProps &
+  SelectVariantProps
 
 /**
- * Used to allow users to select a single option from a list of options.
- * @see https://cerberus.digitalu.design/react/select
- * @memberof module:Field
+ * The Select component is a dropdown list that allows users to select an
+ * option from a list.
+ * @definition [Select docs](https://cerberus.digitalu.design/react/select)
+ * @definition [ARK docs](https://ark-ui.com/react/docs/components/select)
  * @example
  * ```tsx
- * <Field>
- *   <Select describedby="help:fruit" id="fruit">
- *    <Option value="">Choose option</Option>
- *    <Option value="one">Option 1</Option>
- *    <Option value="two">Option 2</Option>
- *    <Option value="three">Option 3</Option>
- *   </Select>
- * </Field>
- * ```
+ * import { Select, Option, createListCollection } from '@cerberus-design/react'
+ *
+ * export function SelectBasicPreview() {
+ *  const collection = createListCollection({
+ *   items: [
+ *    { label: 'Hades', value: 'hades' },
+ *    { label: 'Persephone', value: 'persephone' },
+ *    { label: 'Zeus', value: 'zeus', disabled: true },
+ *   ]
+ *  })
+ *
+ *  return (
+ *   <Select
+ *    collection={collection}
+ *    label="Select Relative"
+ *    placeholder="Choose option"
+ *   >
+ *   {collection.items.map((item) => (
+ *    <Option key={item.value} item={item} />
+ *   ))}
+ *  </Select>
+ *  )
+ * }
  */
 export function Select(props: SelectProps) {
-  const { describedBy, size, ...nativeProps } = props
-  const { invalid, ...fieldStates } = useFieldContext()
-
+  const { collection, label, placeholder, size, ...rootProps } = props
   const { icons } = useCerberusContext()
-  const { invalid: InvalidIcon, selectArrow: SelectArrow } = icons
+  const { selectArrow: SelectArrow, invalid: InvalidIcon } = icons
 
-  const styles = select({
-    size,
-  })
+  const styles = select({ size })
 
   return (
-    <div className={styles.root}>
-      <select
-        {...nativeProps}
-        {...fieldStates}
-        {...(describedBy && { 'aria-describedby': describedBy })}
-        {...(invalid && { 'aria-invalid': true })}
-        className={styles.input}
-      />
-      <span
-        className={cx(
-          styles.iconStack,
-          hstack({
-            gap: '2',
-          }),
-        )}
-      >
-        <Show when={invalid}>
-          <span
-            {...(invalid && { 'data-invalid': true })}
-            className={styles.stateIcon}
-          >
-            <InvalidIcon />
-          </span>
+    <ArkSelect.Root
+      className={styles.root}
+      collection={collection}
+      {...rootProps}
+    >
+      <ArkSelect.Label className={styles.label}>
+        {label}
+        <Show when={props.required}>
+          <Text as="span" color="page.text.100">
+            (required)
+          </Text>
         </Show>
-        <span className={styles.arrowIcon}>
-          <SelectArrow />
-        </span>
-      </span>
-    </div>
+      </ArkSelect.Label>
+
+      <ArkSelect.Control className={styles.control}>
+        <ArkSelect.Trigger className={styles.trigger}>
+          <ArkSelect.ValueText placeholder={placeholder} />
+
+          <HStack>
+            <Show when={props.invalid}>
+              <InvalidIcon data-part="invalid-icon" />
+            </Show>
+            <ArkSelect.Indicator className={styles.indicator}>
+              <SelectArrow />
+            </ArkSelect.Indicator>
+          </HStack>
+        </ArkSelect.Trigger>
+      </ArkSelect.Control>
+
+      <Portal>
+        <ArkSelect.Positioner className={styles.positioner}>
+          <ArkSelect.Content className={styles.content}>
+            {props.children}
+          </ArkSelect.Content>
+        </ArkSelect.Positioner>
+      </Portal>
+
+      <ArkSelect.HiddenSelect />
+    </ArkSelect.Root>
   )
 }
 
-// We only export this component for consistency with the other components
+export interface OptionProps extends SelectItemProps {
+  /**
+   * The CollectionListItem to be displayed in the dropdown list.
+   */
+  item: SelectCollectionItem
+}
 
-export type OptionProps = OptionHTMLAttributes<HTMLOptionElement>
+export function Option(props: OptionProps) {
+  const { item, ...itemProps } = props
+
+  const { icons } = useCerberusContext()
+  const { selectChecked: CheckedIcon } = icons
+
+  const styles = select()
+
+  return (
+    <ArkSelect.Item {...itemProps} item={item} className={styles.item}>
+      <ArkSelect.ItemText className={styles.itemText}>
+        {item?.label}
+      </ArkSelect.ItemText>
+      <ArkSelect.ItemIndicator className={styles.itemIndicator}>
+        <CheckedIcon />
+      </ArkSelect.ItemIndicator>
+    </ArkSelect.Item>
+  )
+}
 
 /**
- * Option component
- * props: OptionHTMLAttributes<HTMLOptionElement>
+ * The OptionGroup component is a group of options in the dropdown list.
+ * @definition [Select docs](https://cerberus.digitalu.design/react/select)
+ * @definition [ARK docs](https://ark-ui.com/react/docs/components/select)
  * @example
  * ```tsx
- * <Option value="one">Option 1</Option>
+ * <OptionGroup>
+ *  <OptionGroupLabel>Greek gods</OptionGroupLabel>
+ *  ...
+ * </OptionGroup>
  * ```
  */
-export function Option(props: OptionProps) {
-  return <option {...props} />
+export function OptionGroup(props: SelectItemGroupProps) {
+  return <ArkSelect.ItemGroup {...props} />
 }
+
+/**
+ * The OptionGroupLabel component is the label of the OptionGroup.
+ * @definition [Select docs](https://cerberus.digitalu.design/react/select)
+ * @definition [ARK docs](https://ark-ui.com/react/docs/components/select)
+ * @example
+ * ```tsx
+ * <OptionGroupLabel>Greek gods</OptionGroupLabel>
+ * ```
+ */
+export function OptionGroupLabel(props: SelectItemGroupLabelProps) {
+  const styles = select()
+  return (
+    <ArkSelect.ItemGroupLabel
+      {...props}
+      className={cx(props.className, styles.itemGroupLabel)}
+    />
+  )
+}
+
+/**
+ * A helper function to create a SelectCollection object.
+ * @param collection - An array of SelectCollectionItem objects that matches
+ * the following shape:
+ * ```ts
+ * [{ label: 'Hades', value: 'hades', disabled?: true }]
+ * ```
+ */
+export function createSelectCollection(
+  collection: SelectCollectionItem[],
+): ListCollection<SelectCollectionItem> {
+  return createListCollection({
+    items: collection,
+  })
+}
+
+export type { SelectValueChangeDetails, ListCollection }

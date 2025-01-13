@@ -45,6 +45,6 @@ export const label: RecipeConfig<RecipeVariantRecord> = defineRecipe({
 
   defaultVariants: {
     usage: 'visible',
-    size: 'md',
+    size: 'sm',
   },
 })

@@ -65,7 +65,7 @@ export default function BuilderLayout(
               position: 'sticky',
               textStyle: 'h6',
               top: '0',
-              zIndex: 'decorator',
+              zIndex: 'sticky',
             })}
           >
             Preview Playground

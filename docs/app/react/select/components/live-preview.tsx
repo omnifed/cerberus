@@ -7,19 +7,16 @@ import {
   Field,
   Select,
   Option,
-  Label,
   FieldMessage,
-  type LabelProps,
+  createSelectCollection,
+  type SelectProps,
 } from '@cerberus-design/react'
 import { vstack } from '@cerberus/styled-system/patterns'
-import { useMemo } from 'react'
 
 const api = {
   size: builder.Enum('size', ['sm', 'md', 'lg']),
-  id: builder.Text('id', 'add-uuid'),
   label: builder.Text('label', 'Select Something'),
-  helpText: builder.Text('helpText', 'This is some optional help text.'),
-  describedBy: builder.Text('describedBy', 'help:add-select-id'),
+  placeholder: builder.Text('placeholder', 'Choose option'),
   disabled: builder.Boolean('disabled', false),
   required: builder.Boolean('required', false),
   readOnly: builder.Boolean('readOnly', false),
@@ -39,49 +36,20 @@ export function LivePlaygroundWithCode() {
     <CodeBuilder
       api={api}
       code={`import {
-  Field,
   Select,
   Option,
-  Label,
-  FieldMessage,
-  type FieldProps,
   type SelectProps,
-} from '@cerberus-design/react'
+} from '@cerberus/react'
 
-type MySelectProps = FieldProps & SelectProps
+export function MySelect(props: SelectProps) {
 
-export function MySelect(props: MySelectProps) {
-  const {
-    disabled,
-    readOnly,
-    invalid,
-    required,
-    size,
-    describedBy,
-    ...nativeProps
-  } = props
 
   return (
-    <Field
-      disabled={{disabled}}
-      invalid={{invalid}}
-      readOnly={{readOnly}}
-      required={{required}}
-    >
-      <Label htmlFor={{id}}>{{label}}</Label>
-      <Select
-        {...nativeProps}
-        describedBy={{describedBy}}
-        id={{id}}
-        size={{size}}
-      >
-        <Option value="">Choose option</Option>
-        <Option value="one">Option 1</Option>
-      </Select>
-      <FieldMessage id={{describedBy}}>
-        {{helpText}}
-      </FieldMessage>
-    </Field>
+    <Select {...props}>
+      {props.collection.items.map((item) => (
+        <Option key={item.value} item={item} />
+      ))}
+    </Select>
   )
 }`}
     >
@@ -95,39 +63,64 @@ export function MySelect(props: MySelectProps) {
 interface SelectElProps extends Record<string, boolean | string> {}
 
 export function SelectEl(props: SelectElProps) {
+  const collection = createSelectCollection([
+    { label: 'Hades', value: 'hades' },
+    { label: 'Persephone', value: 'persephone' },
+    { label: 'Zeus', value: 'zeus', disabled: true },
+    { label: 'Poseidon', value: 'poseidon' },
+    { label: 'Hera', value: 'hera' },
+  ])
+
   switch (props.size) {
     case 'sm':
       return (
         <Select
-          describedBy={props.describedBy as string}
-          id={props.id as string}
+          collection={collection}
+          label={props.label as string}
+          placeholder={props.placeholder as string}
+          disabled={props.disabled as boolean}
+          invalid={props.invalid as boolean}
+          required={props.required as boolean}
+          readOnly={props.readOnly as boolean}
           size="sm"
         >
-          <Option value="">Choose option</Option>
-          <Option value="one">Option 1</Option>
+          {collection.items.map((item) => (
+            <Option key={item.value} item={item} />
+          ))}
         </Select>
       )
     case 'lg':
       return (
         <Select
-          describedBy={props.describedBy as string}
-          id={props.id as string}
+          collection={collection}
+          label={props.label as string}
+          placeholder={props.placeholder as string}
+          disabled={props.disabled as boolean}
+          invalid={props.invalid as boolean}
+          required={props.required as boolean}
+          readOnly={props.readOnly as boolean}
           size="lg"
         >
-          <Option value="">Choose option</Option>
-          <Option value="one">Option 1</Option>
+          {collection.items.map((item) => (
+            <Option key={item.value} item={item} />
+          ))}
         </Select>
       )
-
     default:
       return (
         <Select
-          describedBy={props.describedBy as string}
-          id={props.id as string}
-          size="md"
+          collection={collection}
+          label={props.label as string}
+          placeholder={props.placeholder as string}
+          disabled={props.disabled as boolean}
+          invalid={props.invalid as boolean}
+          required={props.required as boolean}
+          readOnly={props.readOnly as boolean}
+          size={props.size as SelectProps['size']}
         >
-          <Option value="">Choose option</Option>
-          <Option value="one">Option 1</Option>
+          {collection.items.map((item) => (
+            <Option key={item.value} item={item} />
+          ))}
         </Select>
       )
   }
@@ -135,20 +128,7 @@ export function SelectEl(props: SelectElProps) {
 
 export function SelectPreview() {
   const { selectedProps } = useCodeBuilder()
-  const {
-    label,
-    helpText,
-    required,
-    disabled,
-    invalid,
-    readOnly,
-    ...cerbSelectProps
-  } = selectedProps
-  const labelSize = useMemo(() => {
-    return (
-      cerbSelectProps.size === 'lg' ? 'md' : cerbSelectProps.size
-    ) as LabelProps['size']
-  }, [cerbSelectProps.size])
+  const { helpText, ...cerbSelectProps } = selectedProps
 
   return (
     <div
@@ -159,15 +139,12 @@ export function SelectPreview() {
       })}
     >
       <Field
-        disabled={disabled as boolean}
-        invalid={invalid as boolean}
-        readOnly={readOnly as boolean}
-        required={required as boolean}
+        disabled={cerbSelectProps.disabled as boolean}
+        invalid={cerbSelectProps.invalid as boolean}
+        readOnly={cerbSelectProps.readOnly as boolean}
+        required={cerbSelectProps.required as boolean}
       >
-        <Label htmlFor="add-uuid" size={labelSize}>
-          {label}
-        </Label>
-        <SelectEl {...cerbSelectProps} />
+        <SelectEl {...cerbSelectProps} {...selectedProps} />
         <FieldMessage id="help:add-select-id">{helpText}</FieldMessage>
       </Field>
     </div>

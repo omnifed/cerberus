@@ -54,7 +54,8 @@ describe('menu recipe', () => {
         bgColor: 'colorPalette.ghost.hover',
       },
       _disabled: {
-        layerStyle: 'disabled',
+        cursor: 'not-allowed',
+        opacity: '0.5',
       },
     })
   })
@@ -67,11 +68,11 @@ describe('menu recipe', () => {
 
   test('should have a itemGroupLabel style', () => {
     expect(menu.base?.itemGroupLabel).toMatchObject({
-      color: 'page.text.100',
-      fontSize: 'sm',
-      fontWeight: 'semibold',
+      color: 'page.text.initial',
       pxi: 'md',
       py: '0.5rem',
+      textStyle: 'label-sm',
+      userSelect: 'none',
     })
   })
 

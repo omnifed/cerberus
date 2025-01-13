@@ -34,6 +34,7 @@ export interface DefinedIcons<T extends IconType = IconType> {
   invalidAlt: T
   redo: T
   selectArrow: T
+  selectChecked: T
   toggleChecked: T
 }
 

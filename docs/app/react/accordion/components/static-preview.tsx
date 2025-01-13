@@ -16,7 +16,7 @@ import { css } from '@cerberus-design/styled-system/css'
 export function StaticPreview() {
   return (
     <Box w="2/3">
-      <Accordion>
+      <Accordion defaultValue={['one']}>
         {data.map((item) => (
           <AccordionItemGroup
             heading={item.heading}
@@ -67,6 +67,7 @@ export function CustomPreview() {
             Wu-Tang Clan
             <AccordionItemIndicator />
           </AccordionItemTrigger>
+
           <AccordionItemContent
             className={css({
               color: 'white',
