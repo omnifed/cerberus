@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Button,
   Field,
@@ -6,11 +8,18 @@ import {
   Label,
   Option,
   Select,
+  createSelectCollection,
 } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
 import { Box, HStack, VStack } from '@cerberus-design/styled-system/jsx'
 
 export default function StandardLayout() {
+  const collection = createSelectCollection([
+    { label: 'Younger than 13', value: '1' },
+    { label: '13-20', value: '2' },
+    { label: '21 and older', value: '3' },
+  ])
+
   return (
     <VStack
       alignItems="flex-start"
@@ -61,12 +70,18 @@ export default function StandardLayout() {
 
       <Box>
         <Field>
-          <Label htmlFor="age">Age</Label>
-          <Select aria-describedby="help:age" id="age">
-            <Option value="">Select an option</Option>
-            <Option value="1">Younger than 13</Option>
-            <Option value="2">13-20</Option>
-            <Option value="3">21 and older</Option>
+          <Select
+            collection={collection}
+            ids={{
+              control: 'age',
+            }}
+            label="Age"
+            placeholder="Select an option"
+            required
+          >
+            {collection.items.map((item) => (
+              <Option key={item.value} item={item} />
+            ))}
           </Select>
           <FieldMessage id="help:age">
             We are legally required to ask for your age.

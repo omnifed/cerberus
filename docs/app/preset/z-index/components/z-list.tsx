@@ -20,7 +20,7 @@ export default function ZList() {
             className={css({
               borderTop: '1px solid',
               borderColor: 'page.border.initial',
-              py: '4',
+              py: '8',
               w: 'full',
             })}
             key={key}
