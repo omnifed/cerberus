@@ -8,13 +8,16 @@ import {
   type SelectItemGroupProps,
   type SelectItemGroupLabelProps,
   type ListCollection,
+  type SelectValueChangeDetails,
 } from '@ark-ui/react/select'
-import { select } from '@cerberus/styled-system/recipes'
+import {
+  select,
+  type SelectVariantProps,
+} from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus/styled-system/css'
 import { HStack } from '@cerberus/styled-system/jsx'
 import { useCerberusContext } from '../context/cerberus'
 import { Portal } from './Portal'
-import type { LabelProps } from './Label'
 import { Show } from './Show'
 import { Text } from './Text'
 
@@ -54,14 +57,11 @@ export interface BaseSelectProps {
    * The label of the select.
    */
   label: string
-  /**
-   * The size of the select.
-   */
-  size?: LabelProps['size']
 }
 
 export type SelectProps = SelectRootProps<SelectCollectionItem> &
-  BaseSelectProps
+  BaseSelectProps &
+  SelectVariantProps
 
 /**
  * The Select component is a dropdown list that allows users to select an
@@ -221,3 +221,5 @@ export function createSelectCollection(
     items: collection,
   })
 }
+
+export type { SelectValueChangeDetails, ListCollection }

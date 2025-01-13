@@ -1,4 +1,3 @@
-import type { EnumResult } from './helpers'
 import {
   Select,
   type SelectProps,
@@ -6,7 +5,7 @@ import {
   createSelectCollection,
 } from '@cerberus-design/react'
 
-type BuilderSelectProps = SelectProps & {
+type BuilderSelectProps = Omit<SelectProps, 'collection'> & {
   options: string[]
 }
 

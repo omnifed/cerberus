@@ -4,7 +4,6 @@ import { vstack } from '@cerberus/styled-system/patterns'
 import type {
   BooleanResult,
   BuilderResult,
-  EnumResult,
   NumberResult,
   TextResult,
 } from './helpers'
@@ -13,10 +12,10 @@ import {
   Label,
   Show,
   type SelectCollectionItem,
+  type SelectValueChangeDetails,
 } from '@cerberus-design/react'
 import { lazy, useCallback, type ChangeEvent } from 'react'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import { css } from '@cerberus/styled-system/css'
 
 const Select = lazy(() => import('./builder-select'))
 const Input = lazy(() => import('./builder-input'))
@@ -73,8 +72,10 @@ export default function BuilderForm(props: BuilderFormProps) {
                 ids={{
                   control: `builder:select:${props.api[key].name}`,
                 }}
-                options={props.api[key].value}
-                onValueChange={(e) => handleSelectChange(key, e.items[0])}
+                options={props.api[key].value as string[]}
+                onValueChange={(e: SelectValueChangeDetails) =>
+                  handleSelectChange(key, e.items[0])
+                }
               />
             </Show>
 
