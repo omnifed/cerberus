@@ -41,10 +41,14 @@ describe('select recipe', () => {
       borderColor: 'action.border.100',
       color: 'page.text.initial',
       display: 'inline-flex',
+      gap: 'sm',
       justifyContent: 'space-between',
       outline: 0,
+      minW: 9,
       position: 'relative',
+      pxi: 'md',
       rounded: 'md',
+      textStyle: 'body-sm',
       transitionDuration: 'normal',
       transitionProperty: 'background, box-shadow, border-color',
       transitionTimingFunction: 'default',
@@ -96,6 +100,10 @@ describe('select recipe', () => {
       flexDirection: 'column',
       maxH: '15.5rem',
       minW: '10rem',
+      overflowY: 'auto',
+      p: 'xs',
+      rounded: 'md',
+      shadow: 'lg',
       _focusVisible: {
         boxShadow: 'none',
         outline: '3px solid',
@@ -117,10 +125,13 @@ describe('select recipe', () => {
     expect(select.base?.item).toMatchObject({
       alignItems: 'center',
       cursor: 'pointer',
+      color: 'page.text.initial',
       display: 'flex',
       flexShrink: 0,
       justifyContent: 'space-between',
+      pxi: 'md',
       rounded: 'sm',
+      textStyle: 'body-sm',
       transitionDuration: 'fast',
       transitionProperty: 'background, color',
       transitionTimingFunction: 'default',
@@ -130,15 +141,10 @@ describe('select recipe', () => {
         outlineColor: 'action.border.focus',
         outlineOffset: '2px',
       },
-      _hover: {
-        background: 'page.bg.hover',
-        color: 'page.text.initial',
-      },
       _highlighted: {
-        bgColor: 'action.ghost.hover',
-        color: 'page.text.initial',
+        bgColor: 'page.bg.200',
       },
-      _selected: {
+      _checked: {
         color: 'page.text.initial',
       },
       _disabled: {
@@ -160,7 +166,47 @@ describe('select recipe', () => {
 
   test('should have a itemIndicator style', () => {
     expect(select.base?.itemIndicator).toMatchObject({
-      color: 'success.bg.initial',
+      color: 'page.text.initial',
+    })
+  })
+
+  test('should have a size variant', () => {
+    expect(select.variants?.size).toMatchObject({
+      sm: {
+        trigger: {
+          h: '2rem',
+        },
+        item: {
+          height: '2.5rem',
+        },
+      },
+      md: {
+        trigger: {
+          h: '2.5rem',
+        },
+        item: {
+          height: '2.5rem',
+        },
+      },
+      lg: {
+        trigger: {
+          trigger: {
+            h: '3rem',
+          },
+          content: {
+            gap: 'xs',
+          },
+          item: {
+            height: '3rem',
+          },
+        },
+      },
+    })
+  })
+
+  test('should have a default variant', () => {
+    expect(select.defaultVariants).toMatchObject({
+      size: 'md',
     })
   })
 })

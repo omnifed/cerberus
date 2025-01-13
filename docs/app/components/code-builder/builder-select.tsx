@@ -6,10 +6,9 @@ import {
   createSelectCollection,
 } from '@cerberus-design/react'
 
-type BuilderSelectProps = Omit<EnumResult, 'value'> &
-  SelectProps & {
-    options: string[]
-  }
+type BuilderSelectProps = SelectProps & {
+  options: string[]
+}
 
 export default function BuilderSelect(props: BuilderSelectProps) {
   const { options, ...nativeProps } = props
@@ -22,7 +21,6 @@ export default function BuilderSelect(props: BuilderSelectProps) {
   return (
     <Select
       {...nativeProps}
-      id={nativeProps.name}
       collection={collection}
       label={nativeProps.label}
       placeholder="Choose option"

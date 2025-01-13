@@ -41,10 +41,14 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       borderColor: 'action.border.100',
       color: 'page.text.initial',
       display: 'inline-flex',
+      gap: 'sm',
       justifyContent: 'space-between',
       outline: 0,
+      minW: 9,
       position: 'relative',
+      pxi: 'md',
       rounded: 'md',
+      textStyle: 'body-sm',
       transitionDuration: 'normal',
       transitionProperty: 'background, box-shadow, border-color',
       transitionTimingFunction: 'default',
@@ -89,6 +93,7 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       maxH: '15.5rem',
       minW: '10rem',
       overflowY: 'auto',
+      p: 'xs',
       rounded: 'md',
       shadow: 'lg',
       ...focusStates,
@@ -104,23 +109,21 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
     item: {
       alignItems: 'center',
       cursor: 'pointer',
+      color: 'page.text.initial',
       display: 'flex',
       flexShrink: 0,
       justifyContent: 'space-between',
+      pxi: 'md',
       rounded: 'sm',
+      textStyle: 'body-sm',
       transitionDuration: 'fast',
       transitionProperty: 'background, color',
       transitionTimingFunction: 'default',
       ...focusStates,
-      _hover: {
-        background: 'page.bg.hover',
-        color: 'page.text.initial',
-      },
       _highlighted: {
-        bgColor: 'action.ghost.hover',
-        color: 'page.text.initial',
+        bgColor: 'page.bg.200',
       },
-      _selected: {
+      _checked: {
         color: 'page.text.initial',
       },
       _disabled: formStates._disabled,
@@ -133,53 +136,38 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       userSelect: 'none',
     },
     itemIndicator: {
-      color: 'success.bg.initial',
+      color: 'page.text.initial',
     },
   },
 
   variants: {
     size: {
       sm: {
-        label: label.variants!.size.sm,
         trigger: {
-          px: '2.5',
-          h: '9',
-          minW: '9',
-          fontSize: 'sm',
-          gap: '2',
-          '& :where(svg)': {
-            width: '4',
-            height: '4',
-          },
+          h: '2rem',
         },
-        content: { p: '0.5', gap: '1' },
-        item: { textStyle: 'sm', px: '2', height: '9' },
-        itemIndicator: {
-          '& :where(svg)': {
-            width: '4',
-            height: '4',
-          },
+        item: {
+          height: '2.5rem',
         },
       },
       md: {
-        label: label.variants!.size.md,
         trigger: {
-          px: '3',
-          h: '10',
-          minW: '10',
-          fontSize: 'md',
-          gap: '2',
-          '& :where(svg)': {
-            width: '4',
-            height: '4',
-          },
+          h: '2.5rem',
         },
-        content: { p: '1', gap: '1' },
-        item: { textStyle: 'md', px: '2', height: '10' },
-        itemIndicator: {
-          '& :where(svg)': {
-            width: '4',
-            height: '4',
+        item: {
+          height: '2.5rem',
+        },
+      },
+      lg: {
+        trigger: {
+          trigger: {
+            h: '3rem',
+          },
+          content: {
+            gap: 'xs',
+          },
+          item: {
+            height: '3rem',
           },
         },
       },

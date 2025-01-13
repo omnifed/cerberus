@@ -60,6 +60,9 @@ export interface BaseSelectProps {
   size?: LabelProps['size']
 }
 
+export type SelectProps = SelectRootProps<SelectCollectionItem> &
+  BaseSelectProps
+
 /**
  * The Select component is a dropdown list that allows users to select an
  * option from a list.
@@ -91,9 +94,7 @@ export interface BaseSelectProps {
  *  )
  * }
  */
-export function Select(
-  props: SelectRootProps<SelectCollectionItem> & BaseSelectProps,
-) {
+export function Select(props: SelectProps) {
   const { collection, label, placeholder, size, ...rootProps } = props
   const { icons } = useCerberusContext()
   const { selectArrow: SelectArrow, invalid: InvalidIcon } = icons

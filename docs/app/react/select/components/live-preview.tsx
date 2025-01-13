@@ -98,14 +98,13 @@ export function SelectEl(props: SelectElProps) {
           invalid={props.invalid as boolean}
           required={props.required as boolean}
           readOnly={props.readOnly as boolean}
-          size="sm"
+          size="lg"
         >
           {collection.items.map((item) => (
             <Option key={item.value} item={item} />
           ))}
         </Select>
       )
-
     default:
       return (
         <Select
@@ -144,7 +143,7 @@ export function SelectPreview() {
         readOnly={cerbSelectProps.readOnly as boolean}
         required={cerbSelectProps.required as boolean}
       >
-        <SelectEl {...cerbSelectProps} />
+        <SelectEl {...cerbSelectProps} {...selectedProps} />
         <FieldMessage id="help:add-select-id">{helpText}</FieldMessage>
       </Field>
     </div>
