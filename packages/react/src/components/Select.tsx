@@ -20,6 +20,21 @@ import { useCerberusContext } from '../context/cerberus'
 import { Portal } from './Portal'
 import { Show } from './Show'
 import { Text } from './Text'
+import {
+  SelectContent,
+  SelectControl,
+  SelectIndicator,
+  SelectItem,
+  SelectItemGroup,
+  SelectItemGroupLabel,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectLabel,
+  SelectPositioner,
+  SelectRoot,
+  SelectTrigger,
+  SelectValueText,
+} from './Select.server'
 
 /**
  * This module contains the Select components.
@@ -102,45 +117,41 @@ export function Select(props: SelectProps) {
   const styles = select({ size })
 
   return (
-    <ArkSelect.Root
-      className={styles.root}
-      collection={collection}
-      {...rootProps}
-    >
-      <ArkSelect.Label className={styles.label}>
+    <SelectRoot className={styles.root} collection={collection} {...rootProps}>
+      <SelectLabel className={styles.label}>
         {label}
         <Show when={props.required}>
           <Text as="span" color="page.text.100">
             (required)
           </Text>
         </Show>
-      </ArkSelect.Label>
+      </SelectLabel>
 
-      <ArkSelect.Control className={styles.control}>
-        <ArkSelect.Trigger className={styles.trigger}>
-          <ArkSelect.ValueText placeholder={placeholder} />
+      <SelectControl className={styles.control}>
+        <SelectTrigger className={styles.trigger}>
+          <SelectValueText placeholder={placeholder} />
 
           <HStack>
             <Show when={props.invalid}>
               <InvalidIcon data-part="invalid-icon" />
             </Show>
-            <ArkSelect.Indicator className={styles.indicator}>
+            <SelectIndicator className={styles.indicator}>
               <SelectArrow />
-            </ArkSelect.Indicator>
+            </SelectIndicator>
           </HStack>
-        </ArkSelect.Trigger>
-      </ArkSelect.Control>
+        </SelectTrigger>
+      </SelectControl>
 
       <Portal>
-        <ArkSelect.Positioner className={styles.positioner}>
-          <ArkSelect.Content className={styles.content}>
+        <SelectPositioner className={styles.positioner}>
+          <SelectContent className={styles.content}>
             {props.children}
-          </ArkSelect.Content>
-        </ArkSelect.Positioner>
+          </SelectContent>
+        </SelectPositioner>
       </Portal>
 
       <ArkSelect.HiddenSelect />
-    </ArkSelect.Root>
+    </SelectRoot>
   )
 }
 
@@ -160,14 +171,12 @@ export function Option(props: OptionProps) {
   const styles = select()
 
   return (
-    <ArkSelect.Item {...itemProps} item={item} className={styles.item}>
-      <ArkSelect.ItemText className={styles.itemText}>
-        {item?.label}
-      </ArkSelect.ItemText>
-      <ArkSelect.ItemIndicator className={styles.itemIndicator}>
+    <SelectItem {...itemProps} item={item} className={styles.item}>
+      <SelectItemText className={styles.itemText}>{item?.label}</SelectItemText>
+      <SelectItemIndicator className={styles.itemIndicator}>
         <CheckedIcon />
-      </ArkSelect.ItemIndicator>
-    </ArkSelect.Item>
+      </SelectItemIndicator>
+    </SelectItem>
   )
 }
 
@@ -184,7 +193,7 @@ export function Option(props: OptionProps) {
  * ```
  */
 export function OptionGroup(props: SelectItemGroupProps) {
-  return <ArkSelect.ItemGroup {...props} />
+  return <SelectItemGroup {...props} />
 }
 
 /**
@@ -199,7 +208,7 @@ export function OptionGroup(props: SelectItemGroupProps) {
 export function OptionGroupLabel(props: SelectItemGroupLabelProps) {
   const styles = select()
   return (
-    <ArkSelect.ItemGroupLabel
+    <SelectItemGroupLabel
       {...props}
       className={cx(props.className, styles.itemGroupLabel)}
     />
