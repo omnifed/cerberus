@@ -136,14 +136,18 @@ describe('button recipe', () => {
 
   test('should have a small size variant', () => {
     expect(button.variants?.size.sm).toMatchObject({
-      h: '2.75rem',
+      h: '2rem',
+      marginBlock: '0.375rem', // add a11y target size
       pxi: '3',
+      md: {
+        marginBlock: 'initial',
+      },
     })
   })
 
   test('should have a medium size variant', () => {
     expect(button.variants?.size.md).toMatchObject({
-      h: '3.5rem',
+      h: '2.75rem',
     })
   })
 
