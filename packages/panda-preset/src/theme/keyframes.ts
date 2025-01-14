@@ -24,16 +24,18 @@ export const keyframes: CssKeyframes = defineKeyframes({
 
   // collapse
   expandHeight: {
-    from: { height: '0' },
-    to: { height: 'var(--height)' },
+    '0%': { height: '0' },
+    '99%': { height: 'var(--height)' },
+    '100%': { height: 'auto' },
   },
   collapseHeight: {
     from: { height: 'var(--height)' },
     to: { height: '0' },
   },
   expandWidth: {
-    from: { width: '0' },
-    to: { width: 'var(--width)' },
+    '0%': { width: '0' },
+    '99%': { width: 'var(--width)' },
+    '100%': { width: 'auto' },
   },
   collapseWidth: {
     from: { width: 'var(--width)' },
