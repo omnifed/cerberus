@@ -48,11 +48,15 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     },
     size: {
       sm: {
-        h: '2.75rem', // a11y minimum touch target size: 2.75rem
+        h: '2rem',
+        marginBlock: '0.375rem', // add a11y target size
         pxi: '3',
+        md: {
+          marginBlock: 'initial',
+        },
       },
       md: {
-        h: '3.5rem',
+        h: '2.75rem',
       },
     },
   },

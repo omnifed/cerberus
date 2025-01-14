@@ -9,6 +9,7 @@ const api = {
   palette: builder.Enum('palette', ['action', 'secondaryAction', 'danger']),
   usage: builder.Enum('usage', ['filled', 'outlined', 'ghost']),
   shape: builder.Enum('shape', ['sharp', 'rounded']),
+  size: builder.Enum('size', ['sm', 'md']),
   text: builder.Text('name', 'Button'),
   disabled: builder.Boolean('disabled', false),
 }
@@ -34,6 +35,7 @@ export function MyButton(props: ButtonProps) {
       palette={{palette}}
       shape={{shape}}
       usage={{usage}}
+      size={{size}}
     >
       {{text}}
     </Button>
@@ -47,6 +49,7 @@ export function MyButton(props: ButtonProps) {
 
 export function ButtonPreview() {
   const { selectedProps } = useCodeBuilder()
+
   switch (selectedProps.palette) {
     case 'secondaryAction':
       return (
