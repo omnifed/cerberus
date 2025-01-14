@@ -41,9 +41,11 @@ export function LivePlaygroundWithCode() {
   type SelectProps,
 } from '@cerberus/react'
 
+/**
+ * A custom abstraction of the Cerberus Select component.
+ * @param props The same props as the Cerberus Select component
+*/
 export function MySelect(props: SelectProps) {
-
-
   return (
     <Select {...props}>
       {props.collection.items.map((item) => (
