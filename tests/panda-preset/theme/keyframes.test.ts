@@ -26,8 +26,9 @@ describe('keyframes', () => {
 
   test('should export expandHeight', () => {
     expect(keyframes.expandHeight).toBeDefined()
-    expect(keyframes.expandHeight.from).toEqual({ height: '0' })
-    expect(keyframes.expandHeight.to).toEqual({ height: 'var(--height)' })
+    expect(keyframes.expandHeight['0%']).toEqual({ height: '0' })
+    expect(keyframes.expandHeight['99%']).toEqual({ height: 'var(--height)' })
+    expect(keyframes.expandHeight['100%']).toEqual({ height: 'auto' })
   })
 
   test('should export collapseHeight', () => {
@@ -38,8 +39,9 @@ describe('keyframes', () => {
 
   test('should export expandWidth', () => {
     expect(keyframes.expandWidth).toBeDefined()
-    expect(keyframes.expandWidth.from).toEqual({ width: '0' })
-    expect(keyframes.expandWidth.to).toEqual({ width: 'var(--width)' })
+    expect(keyframes.expandWidth['0%']).toEqual({ width: '0' })
+    expect(keyframes.expandWidth['99%']).toEqual({ width: 'var(--width)' })
+    expect(keyframes.expandWidth['100%']).toEqual({ width: 'auto' })
   })
 
   test('should export collapseWidth', () => {
