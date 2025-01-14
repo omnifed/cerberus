@@ -7,6 +7,7 @@ a11y: 'touch-target'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import DripDivider from '@/app/components/drip-divider'
+import { DynamicAccordion } from './components/dynamic-accordion'
 import { StaticPreview } from './components/static-preview'
 import { LivePlayground } from './components/live-playground'
 
@@ -21,6 +22,10 @@ import { LivePlayground } from './components/live-playground'
 
 <CodePreview preview={<StaticPreview />} />
 <LivePlayground />
+
+## Dynamic Content Example
+
+<CodePreview preview={<DynamicAccordion />} />
 
 <DripDivider />
 
