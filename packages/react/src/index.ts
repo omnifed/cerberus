@@ -58,6 +58,7 @@ export * from './components/Textarea'
 export * from './components/Toggle'
 export * from './components/Tooltip'
 export * from './components/Select'
+export * from './components/Select.server'
 export * from './components/Show'
 
 // context
