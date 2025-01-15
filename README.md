@@ -1,16 +1,11 @@
 # Cerberus Design System
 
-<img width="1454" alt="banner" src="https://github.com/omnifed/cerberus/assets/4819738/b128be81-3c24-4fc7-8811-6c9a18d26c37">
+<img width="1454" alt="banner" src="https://github.com/omnifed/cerberus/blob/main/docs/public/acheron-og-image.png?raw=true">
 
-![NPM Version](https://img.shields.io/npm/v/@cerberus-design/react)
 [![JSR](https://jsr.io/badges/@cerberus/panda-preset)](https://jsr.io/@cerberus/panda-preset)
 ![NPM License](https://img.shields.io/npm/l/@cerberus-design/react)
 
 ## Architecture
-
-<img width="1190" alt="Cerberus archictecture visual" src="https://github.com/omnifed/cerberus/assets/4819738/c706c0e7-3906-4ba7-8519-faa22e8504d4">
-
-**Guarding the brand integrity of the Digital University realm by creating a flexible and extensible design system.**
 
 ## Repository structure
 
@@ -40,3 +35,17 @@ pnpm install
 ```
 
 This will install all the dependencies for the project including the workspaces.
+
+## Workspace Context
+
+- docs: The official docs website for Cerberus.
+- figma: Figma related files that run jobs on the CI using the Figma API.
+- packages: The core packages that make up Cerberus.
+- tests: The test suite for Cerberus.
+
+### Cerberus Package Context
+
+- **panda-preset**: The default preset for Cerberus. This is where all the styles live.
+- **react**: The React components for Cerberus. React only owns components, not styles.
+- **styled-system**: The source of truth preset build for Cerberus. This how people consume the styles from the preset. **This is the only package that should not be touched. It is purely generated files.**
+- **icons**: DEPRECATED. Will be deleted in the future.
