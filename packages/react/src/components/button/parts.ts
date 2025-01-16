@@ -1,4 +1,4 @@
-import { Button } from './button'
+import { Button, ButtonIcon } from './button'
 
 /**
  * This module contains the parts of the Button component.
@@ -16,4 +16,5 @@ import { Button } from './button'
  */
 export const ButtonParts = {
   Root: Button,
+  Icon: ButtonIcon,
 }
