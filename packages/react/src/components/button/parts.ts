@@ -1,4 +1,4 @@
-import { Button } from './Button'
+import { Button } from './button'
 
 /**
  * This module contains the parts of the Button component.

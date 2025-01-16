@@ -23,7 +23,7 @@ import {
   DatePickerViewControl,
 } from './DatePicker.server'
 import { IconButton } from './IconButton'
-import { Button } from './button/Button'
+import { Button } from './button/button'
 import { useCerberusContext } from '../context/cerberus'
 import { useMemo, type InputHTMLAttributes } from 'react'
 

@@ -17,7 +17,7 @@ import { Notification } from '../components/Notification'
 import { animateIn, vstack } from '@cerberus/styled-system/patterns'
 import { Portal, type PortalProps } from '../components/Portal'
 import { notification } from '@cerberus/styled-system/recipes'
-import { Button } from '../components/button/Button'
+import { Button } from '../components/button/button'
 import { cx } from '@cerberus/styled-system/css'
 import {
   addNotification,
