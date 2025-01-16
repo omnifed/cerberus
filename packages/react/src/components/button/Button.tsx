@@ -11,7 +11,9 @@ import {
  */
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-  ButtonVariantProps
+  ButtonVariantProps & {
+    pending?: boolean
+  }
 
 /**
  * A component that allows the user to perform actions

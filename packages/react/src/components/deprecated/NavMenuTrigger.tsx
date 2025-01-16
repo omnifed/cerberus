@@ -13,7 +13,7 @@ import {
   type NavTriggerAriaValues,
 } from '../../aria-helpers/nav-menu.aria'
 import { useNavMenuContext } from '../../context/navMenu'
-import type { ButtonProps } from '../Button'
+import type { ButtonProps } from '../button/Button'
 import { Show } from '../Show'
 
 /**

@@ -11,7 +11,7 @@ import {
   type PropsWithChildren,
   type ReactNode,
 } from 'react'
-import { Button } from '../components/Button'
+import { Button } from '../components/button/Button'
 import { css } from '@cerberus/styled-system/css'
 import { Show } from '../components/Show'
 import { Avatar } from '../components/Avatar'

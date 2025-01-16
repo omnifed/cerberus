@@ -11,7 +11,7 @@ import {
   type MouseEvent,
   type PropsWithChildren,
 } from 'react'
-import { Button } from '../components/Button'
+import { Button } from '../components/button/Button'
 import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
 import { Input } from '../components/Input'
