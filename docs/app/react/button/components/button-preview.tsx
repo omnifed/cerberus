@@ -1,7 +1,7 @@
 'use client'
 
 import { Fragment } from 'react'
-import { Button } from '@cerberus-design/react'
+import { Button, ButtonParts } from '@cerberus-design/react'
 import { ArrowDownRight } from '@carbon/icons-react'
 import { css } from '@cerberus/styled-system/css'
 import { grid, gridItem } from '@cerberus/styled-system/patterns'
@@ -28,10 +28,12 @@ export function RoundedButtonPreview() {
 
 export function WithIconButtonPreview() {
   return (
-    <Button>
-      <ArrowDownRight />
+    <ButtonParts.Root>
       With icon
-    </Button>
+      <ButtonParts.Icon>
+        <ArrowDownRight />
+      </ButtonParts.Icon>
+    </ButtonParts.Root>
   )
 }
 
