@@ -46,8 +46,6 @@ function WithIconButton() {
 ```
 </CodePreview>
 
-## Customization
-
 You can customize the button by utilizing the `cx` function.
 
 <CodePreview preview={<CustomButtonPreview />}>
@@ -96,3 +94,12 @@ The `Button` component accepts the following props:
 | usage | `filled`    | The style treatment of the button.    |
 | shape | `sharp`     | The shape of the button.              |
 | pending | `false`    | The loading state of the button. When a button has an `Icon` it will replace it with a spinner. When not, is shows a disabled state.     |
+
+### ButtonParts
+
+The `ButtonParts` API is the family of components.
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `Button` component which is the Provider for the family. |
+| Icon     | The `ButtonIcon` component which dynamically replaces an icon with a Spinner when the state is `pending`. |
