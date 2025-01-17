@@ -15,7 +15,7 @@ import {
 } from '@/app/react/button/components/live-playground'
 
 ```ts
-import { Button } from '@cerberus/react'
+import { Button, ButtonParts } from '@cerberus/react'
 ```
 
 ## Usage
@@ -26,23 +26,25 @@ You can mix and match all of the examples to create the button style of your cho
 
 ### With Icon
 
+You can utilize the `ButtonParts` API to use an icon within the button. This will allow you to dynamically show a Spinner when the button has a `pending` state.
+
 <CodePreview preview={<WithIconButtonPreview />}>
 ```tsx title="button.tsx"
-import { Button } from '@cerberus/react'
-import { ArrowDownRight } from '@cerberus/icons'
+import { ButtonParts } from '@cerberus/react'
+import { ArrowDownRight } from '@carbon/icons-react'
 
 function WithIconButton() {
   return (
-    <Button>
-      <ArrowDownRight />
+    <ButtonParts.Root>
       With icon
-    </Button>
+      <ButtonParts.Icon>
+        <ArrowDownRight />
+      </ButtonParts.Icon>
+    </ButtonParts.Root>
   )
 }
 ```
 </CodePreview>
-
-## Customization
 
 You can customize the button by utilizing the `cx` function.
 
@@ -76,6 +78,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   palette?: 'action' | 'secondaryAction' | 'danger'
   usage?: 'filled' | 'outlined' | 'ghost'
   shape?: 'sharp' | 'rounded'
+  pending?: boolean
 }
 
 define function Button(props: ButtonProps): ReactNode
@@ -90,3 +93,13 @@ The `Button` component accepts the following props:
 | palette     | `action`   | The color palette of the button. |
 | usage | `filled`    | The style treatment of the button.    |
 | shape | `sharp`     | The shape of the button.              |
+| pending | `false`    | The loading state of the button. When a button has an `Icon` it will replace it with a spinner. When not, is shows a disabled state.     |
+
+### ButtonParts
+
+The `ButtonParts` API is the family of components.
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `Button` component which is the Provider for the family. |
+| Icon     | The `ButtonIcon` component which dynamically replaces an icon with a Spinner when the state is `pending`. |

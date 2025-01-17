@@ -1,7 +1,8 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Button } from '@cerberus-design/react'
+import { Button, ButtonIcon } from '@cerberus-design/react'
 import { setupStrictMode } from '@/utils'
+import { Model } from '@carbon/icons-react'
 
 describe('Button', () => {
   setupStrictMode()
@@ -73,5 +74,21 @@ describe('Button', () => {
         .getByText(/it works/i)
         .classList.contains('cerberus-button--shape_rounded'),
     ).toBeTrue()
+  })
+
+  test('should render a button with an icon', () => {
+    render(
+      <Button>
+        it works
+        <ButtonIcon>
+          <Model role="img" />
+        </ButtonIcon>
+      </Button>,
+    )
+    expect(
+      screen.getByRole('img', {
+        hidden: true,
+      }),
+    ).toBeTruthy()
   })
 })

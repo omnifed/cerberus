@@ -3,7 +3,8 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import { Button } from '@cerberus-design/react'
+import { Button, ButtonParts } from '@cerberus-design/react'
+import { Model } from '@carbon/icons-react'
 
 const api = {
   palette: builder.Enum('palette', ['action', 'secondaryAction', 'danger']),
@@ -12,6 +13,7 @@ const api = {
   size: builder.Enum('size', ['sm', 'md']),
   text: builder.Text('name', 'Button'),
   disabled: builder.Boolean('disabled', false),
+  pending: builder.Boolean('pending', false),
 }
 
 export function LivePlayground() {
@@ -32,6 +34,7 @@ export function MyButton(props: ButtonProps) {
   return (
     <Button
       disabled={{disabled}}
+      pending={{pending}}
       palette={{palette}}
       shape={{shape}}
       usage={{usage}}
@@ -66,7 +69,12 @@ export function ButtonPreview() {
 
     default:
       return (
-        <Button {...selectedProps}>{selectedProps.text || 'Add Text'}</Button>
+        <ButtonParts.Root {...selectedProps}>
+          {selectedProps.text || 'Add Text'}
+          <ButtonParts.Icon>
+            <Model />
+          </ButtonParts.Icon>
+        </ButtonParts.Root>
       )
   }
 }

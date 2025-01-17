@@ -3,7 +3,7 @@
     "name": "Actions",
     "description": "Components that trigger an action.",
     "items": ["Button", "Icon Button"],
-    "next": [],
+    "next": ["Button"],
     "new": [],
     "deprecated": []
   },
