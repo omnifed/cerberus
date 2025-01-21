@@ -1,11 +1,13 @@
 'use client'
 
+import type { FieldRootProps } from '@ark-ui/react'
 import {
   createContext,
   useContext,
   useMemo,
   type PropsWithChildren,
 } from 'react'
+import { FieldRoot } from '../components/field/field'
 
 /**
  * This module provides a context and hook for the field.
@@ -38,9 +40,7 @@ const FieldContext = createContext<FieldContextValue | null>(null)
  * Provides the field state for a all related components used within a group.
  * @see https://cerberus.digitalu.design/react/input
  */
-export function Field(
-  props: PropsWithChildren<FieldContextValue>,
-): JSX.Element {
+export function Field(props: PropsWithChildren<FieldRootProps>): JSX.Element {
   const value = useMemo(
     () => ({
       disabled: props.disabled,
@@ -53,7 +53,7 @@ export function Field(
 
   return (
     <FieldContext.Provider value={value}>
-      {props.children}
+      <FieldRoot {...props} />
     </FieldContext.Provider>
   )
 }

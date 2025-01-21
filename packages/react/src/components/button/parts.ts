@@ -7,7 +7,13 @@ import { Button, ButtonIcon } from './button'
  */
 
 interface ButtonPartsValue {
+  /**
+   * The context provider of the button.
+   */
   Root: ElementType
+  /**
+   * The icon of the button.
+   */
   Icon: ElementType
 }
 
