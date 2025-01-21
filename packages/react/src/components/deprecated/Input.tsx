@@ -3,9 +3,9 @@
 import type { InputHTMLAttributes, ReactNode } from 'react'
 import { input, type InputVariantProps } from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus/styled-system/css'
-import { useFieldContext } from '../context/field'
-import { useCerberusContext } from '../context/cerberus'
-import { Show } from './Show'
+import { useFieldContext } from '../../context/field'
+import { useCerberusContext } from '../../context/cerberus'
+import { Show } from '../Show'
 
 export interface InputBaseProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'size'> {
@@ -29,10 +29,7 @@ export interface InputBaseProps
 export type InputProps = InputBaseProps & InputVariantProps
 
 /**
- * A component that allows the user to input text. Must be wrapped in a Field
- * component to keep track of the state for entire group of elements related to
- * the field.
- * @see https://cerberus.digitalu.design/react/input
+ * @deprecated Use the `TextField` or `FieldParts` instead.
  */
 export function Input(props: InputProps) {
   const { describedBy, size, startIcon, endIcon, ...nativeProps } = props

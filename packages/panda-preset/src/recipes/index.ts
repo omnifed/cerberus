@@ -14,6 +14,7 @@ import { admonition } from './slots/admonition'
 import { checkbox } from './slots/checkbox'
 import { datePicker } from './slots/datepicker'
 import { dialog } from './slots/dialog'
+import { field } from './slots/field'
 import { fileStatus } from './slots/fileStatus'
 import { fileUploader } from './slots/fileUploader'
 import { input } from './slots/input'
@@ -52,6 +53,7 @@ export const slotRecipes = {
   checkbox,
   datePicker,
   dialog,
+  field,
   fileStatus,
   fileUploader,
   input,

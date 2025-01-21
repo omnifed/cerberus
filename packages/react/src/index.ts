@@ -5,6 +5,7 @@
 
 // deprecated
 
+export * from './components/deprecated/Input'
 export * from './components/deprecated/Modal'
 export * from './components/deprecated/ModalHeader'
 export * from './components/deprecated/ModalHeading'
@@ -36,7 +37,6 @@ export * from './components/FieldsetLabel'
 export * from './components/FileStatus'
 export * from './components/FileUploader'
 export * from './components/IconButton'
-export * from './components/Input'
 export * from './components/Label'
 export * from './components/Legend'
 export * from './components/Menu'
