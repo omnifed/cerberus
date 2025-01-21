@@ -38,7 +38,6 @@ export function useRootColors(colors: string[] = []): RootColorsResult {
   useEffect(() => {
     if (Object.keys(state).length === colors.length) return
     dispatch(formatColors(colors))
-    console.log('updating colors in root hook')
   }, [colors])
 
   // reducer is already memoized
