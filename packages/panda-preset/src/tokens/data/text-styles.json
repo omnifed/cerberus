@@ -73,6 +73,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Bold",
+        "fontStyle": "Bold",
         "fontWeight": 700,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 48,
@@ -182,6 +183,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Bold",
+        "fontStyle": "Bold",
         "fontWeight": 700,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 40,
@@ -291,6 +293,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Bold",
+        "fontStyle": "Bold",
         "fontWeight": 700,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 30,
@@ -400,6 +403,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
+        "fontStyle": "SemiBold",
         "fontWeight": 600,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 42,
@@ -509,6 +513,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
+        "fontStyle": "SemiBold",
         "fontWeight": 600,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 36,
@@ -618,6 +623,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
+        "fontStyle": "SemiBold",
         "fontWeight": 600,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 30,
@@ -727,6 +733,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
+        "fontStyle": "SemiBold",
         "fontWeight": 600,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 24,
@@ -836,6 +843,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
+        "fontStyle": "SemiBold",
         "fontWeight": 600,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 20,
@@ -945,6 +953,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
+        "fontStyle": "SemiBold",
         "fontWeight": 600,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 16,
@@ -1054,6 +1063,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
+        "fontStyle": "SemiBold",
         "fontWeight": 600,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 14,
@@ -1163,6 +1173,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Regular",
+        "fontStyle": "Regular",
         "fontWeight": 400,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 18,
@@ -1272,6 +1283,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Regular",
+        "fontStyle": "Regular",
         "fontWeight": 400,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 16,
@@ -1381,6 +1393,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Regular",
+        "fontStyle": "Regular",
         "fontWeight": 400,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 13,
@@ -1490,6 +1503,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Regular",
+        "fontStyle": "Regular",
         "fontWeight": 400,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 12,
@@ -1599,6 +1613,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Regular",
+        "fontStyle": "Regular",
         "fontWeight": 400,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 16,
@@ -1702,6 +1717,7 @@
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
+        "fontStyle": "SemiBold",
         "fontWeight": 600,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 16,
@@ -1805,6 +1821,7 @@
       "style": {
         "fontFamily": "Recursive",
         "fontPostScriptName": "Recursive-MonoLinearMedium",
+        "fontStyle": "Mono Linear Medium",
         "fontWeight": 500,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 42,
@@ -1902,6 +1919,7 @@
       "style": {
         "fontFamily": "Recursive",
         "fontPostScriptName": "Recursive-MonoLinearMedium",
+        "fontStyle": "Mono Linear Medium",
         "fontWeight": 500,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 32,
@@ -1999,6 +2017,7 @@
       "style": {
         "fontFamily": "Recursive",
         "fontPostScriptName": "Recursive-MonoLinearMedium",
+        "fontStyle": "Mono Linear Medium",
         "fontWeight": 500,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 24,
@@ -2096,6 +2115,7 @@
       "style": {
         "fontFamily": "Recursive",
         "fontPostScriptName": "Recursive-MonoLinearMedium",
+        "fontStyle": "Mono Linear Medium",
         "fontWeight": 450,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 20,
@@ -2203,6 +2223,7 @@
       "style": {
         "fontFamily": "Recursive",
         "fontPostScriptName": "Recursive-MonoLinearMedium",
+        "fontStyle": "Mono Linear Medium",
         "fontWeight": 450,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 16,
