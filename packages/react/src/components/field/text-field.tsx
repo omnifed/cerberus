@@ -29,24 +29,25 @@ export interface TextFieldProps extends FieldRootProps, FieldVariantProps {
  * ```
  */
 export function TextField(props: TextFieldProps) {
-  const [rootProps, { size }, inputProps] = splitProps(
+  const [rootProps, { size }, textFieldProps] = splitProps(
     props,
     ['required', 'readOnly', 'disabled', 'invalid', 'ids'],
     ['size'],
+    ['helperText', 'errorText', 'label'],
   )
 
   return (
     <FieldParts.Root {...rootProps} size={size}>
       <FieldParts.Label>
-        {props.label}
-        <Show when={props.required}>
+        {textFieldProps.label}
+        <Show when={rootProps.required}>
           <span data-part="required-text">(required)</span>
         </Show>
       </FieldParts.Label>
 
-      <FieldParts.Input {...inputProps} size={size} />
-      <FieldParts.HelperText>{props.helperText}</FieldParts.HelperText>
-      <FieldParts.ErrorText>{props.errorText}</FieldParts.ErrorText>
+      <FieldParts.Input {...props.inputProps} size={size} />
+      <FieldParts.HelperText>{textFieldProps.helperText}</FieldParts.HelperText>
+      <FieldParts.ErrorText>{textFieldProps.errorText}</FieldParts.ErrorText>
     </FieldParts.Root>
   )
 }
