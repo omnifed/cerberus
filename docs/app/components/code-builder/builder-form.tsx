@@ -80,22 +80,18 @@ export default function BuilderForm(props: BuilderFormProps) {
             </Show>
 
             <Show when={props.api[key].type === 'text'}>
-              <Label htmlFor={key}>{key}</Label>
               <Input
                 {...(props.api[key] as TextResult)}
-                id={key}
-                name={key}
+                label={key}
                 onChange={handleInputChange}
                 selectedValue={selectedProps[key] as string}
               />
             </Show>
 
             <Show when={props.api[key].type === 'number'}>
-              <Label htmlFor={key}>{key}</Label>
               <Input
                 {...(props.api[key] as NumberResult)}
-                id={key}
-                name={key}
+                label={key}
                 onChange={handleInputChange}
                 selectedValue={selectedProps[key] as string}
               />

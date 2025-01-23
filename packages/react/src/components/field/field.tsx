@@ -1,6 +1,7 @@
 import {
   Field,
   type FieldHelperTextProps,
+  type FieldInputProps,
   type FieldLabelProps,
   type FieldRootProps,
 } from '@ark-ui/react/field'
@@ -61,7 +62,9 @@ export function FieldLabel(props: FieldLabelProps) {
  * </FieldRoot>
  * ```
  */
-export function FieldInput(props: FieldRootProps & FieldVariantProps) {
+export function FieldInput(
+  props: Omit<FieldInputProps, 'size'> & FieldVariantProps,
+) {
   const { size, ...fieldProps } = props
   const styles = field({ size })
   return (

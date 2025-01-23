@@ -1,9 +1,8 @@
 'use client'
 
-import { FieldInput, type InputProps } from '@cerberus-design/react'
+import { FieldInput, type TextFieldProps } from '@cerberus-design/react'
 
-interface BuilderInputProps
-  extends Omit<InputProps, 'name' | 'type' | 'value'> {
+interface BuilderInputProps extends TextFieldProps {
   name: string
   type: 'text' | 'number'
   value: string | number

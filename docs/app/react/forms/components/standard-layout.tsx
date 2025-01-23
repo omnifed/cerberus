@@ -44,9 +44,9 @@ export default function StandardLayout() {
           required
           label="First Name"
           ids={{
-            input: 'first_name',
+            control: 'first_name',
           }}
-          errorMessage="A first name is required to submit the form."
+          errorText="A first name is required to submit the form."
           helperText="This is what everyone will see when you post a comment."
         />
       </Box>
@@ -56,9 +56,9 @@ export default function StandardLayout() {
           required
           label="Last Name"
           ids={{
-            input: 'last_name',
+            control: 'last_name',
           }}
-          errorMessage="A last name is required to submit the form."
+          errorText="A last name is required to submit the form."
           helperText="This is what everyone will see when you post a comment."
         />
       </Box>

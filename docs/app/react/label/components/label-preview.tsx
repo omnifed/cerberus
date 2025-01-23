@@ -10,7 +10,7 @@ export function LabelBasicPreview() {
     <div className={overrideStyles}>
       <FieldRoot
         ids={{
-          input: 'first_name',
+          control: 'first_name',
         }}
         required
       >
@@ -26,7 +26,7 @@ export function LabelHiddenPreview() {
     <div className={overrideStyles}>
       <FieldRoot
         ids={{
-          input: 'global_search_1',
+          control: 'global_search_1',
         }}
         required
       >
@@ -42,7 +42,7 @@ export function LabelOptionalPreview() {
     <div className={overrideStyles}>
       <FieldRoot
         ids={{
-          input: 'preferred',
+          control: 'preferred',
         }}
       >
         <FieldLabel>Preferred Name</FieldLabel>
@@ -57,7 +57,7 @@ export function LabelCustomPreview() {
     <div className={overrideStyles}>
       <FieldRoot
         ids={{
-          input: 'global_search',
+          control: 'global_search',
         }}
         required
       >

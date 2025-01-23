@@ -106,7 +106,7 @@ export default function UsageExample(props: UsageExampleProps) {
       >
         <FieldRoot
           ids={{
-            input: 'usage-example',
+            control: 'usage-example',
           }}
         >
           <FieldLabel
