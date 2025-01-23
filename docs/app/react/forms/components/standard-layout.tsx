@@ -3,9 +3,8 @@
 import {
   Button,
   Field,
-  FieldMessage,
-  Input,
-  Label,
+  FieldHelperText,
+  TextField,
   Option,
   Select,
   createSelectCollection,
@@ -41,51 +40,48 @@ export default function StandardLayout() {
       </p>
 
       <Box w="full">
-        <Field required>
-          <Label htmlFor="first_name">First Name</Label>
-          <Input
-            aria-describedby="help:first_name"
-            id="first_name"
-            placeholder="John"
-          />
-          <FieldMessage id="help:first_name">
-            This is what everyone will see when you post a comment.
-          </FieldMessage>
-        </Field>
+        <TextField
+          required
+          label="First Name"
+          ids={{
+            input: 'first_name',
+          }}
+          errorMessage="A first name is required to submit the form."
+          helperText="This is what everyone will see when you post a comment."
+        />
       </Box>
 
       <Box w="full">
-        <Field required>
-          <Label htmlFor="last_name">Last Name</Label>
-          <Input
-            aria-describedby="help:last_name"
-            id="last_name"
-            placeholder="Doe"
-          />
-          <FieldMessage id="help:last_name">
-            Only you will see this in your profile.
-          </FieldMessage>
-        </Field>
+        <TextField
+          required
+          label="Last Name"
+          ids={{
+            input: 'last_name',
+          }}
+          errorMessage="A last name is required to submit the form."
+          helperText="This is what everyone will see when you post a comment."
+        />
       </Box>
 
       <Box>
-        <Field>
+        <Field
+          ids={{
+            control: 'age',
+          }}
+          required
+        >
           <Select
             collection={collection}
-            ids={{
-              control: 'age',
-            }}
             label="Age"
             placeholder="Select an option"
-            required
           >
             {collection.items.map((item) => (
               <Option key={item.value} item={item} />
             ))}
           </Select>
-          <FieldMessage id="help:age">
+          <FieldHelperText>
             We are legally required to ask for your age.
-          </FieldMessage>
+          </FieldHelperText>
         </Field>
       </Box>
 

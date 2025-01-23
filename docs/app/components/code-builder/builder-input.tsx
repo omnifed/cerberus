@@ -1,6 +1,6 @@
 'use client'
 
-import { Input, type InputProps } from '@cerberus-design/react'
+import { FieldInput, type InputProps } from '@cerberus-design/react'
 
 interface BuilderInputProps
   extends Omit<InputProps, 'name' | 'type' | 'value'> {
@@ -12,5 +12,5 @@ interface BuilderInputProps
 
 export default function BuilderInput(props: BuilderInputProps) {
   const { selectedValue, ...nativeProps } = props
-  return <Input {...nativeProps} value={selectedValue} />
+  return <FieldInput {...nativeProps} value={selectedValue} />
 }
