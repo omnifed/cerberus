@@ -27,7 +27,7 @@ export function FieldRoot(props: FieldRootProps & FieldVariantProps) {
   const { size, ...fieldProps } = props
   const styles = field({ size })
   return (
-    <FieldRoot
+    <Field.Root
       {...fieldProps}
       className={cx(styles.root, fieldProps.className)}
     />

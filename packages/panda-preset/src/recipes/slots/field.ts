@@ -21,7 +21,7 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   base: {
     root: {
-      alignItems: 'center',
+      alignItems: 'flex-start',
       display: 'flex',
       flexDirection: 'column',
       gap: 'xs',

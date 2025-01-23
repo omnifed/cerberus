@@ -1,4 +1,4 @@
-import { Field, Input, Label } from '@cerberus-design/react'
+import { FieldRoot, FieldInput, FieldLabel } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 
 const overrideStyles = css({
@@ -8,10 +8,15 @@ const overrideStyles = css({
 export function LabelBasicPreview() {
   return (
     <div className={overrideStyles}>
-      <Field required>
-        <Label htmlFor="first_name">First Name</Label>
-        <Input id="first_name" placeholder="Type your first name" type="text" />
-      </Field>
+      <FieldRoot
+        ids={{
+          input: 'first_name',
+        }}
+        required
+      >
+        <FieldLabel>First Name</FieldLabel>
+        <FieldInput placeholder="Type your first name" type="text" />
+      </FieldRoot>
     </div>
   )
 }
@@ -19,12 +24,15 @@ export function LabelBasicPreview() {
 export function LabelHiddenPreview() {
   return (
     <div className={overrideStyles}>
-      <Field required>
-        <Label htmlFor="global_search" hidden>
-          Search anything
-        </Label>
-        <Input id="global_search" placeholder="Search anything" type="text" />
-      </Field>
+      <FieldRoot
+        ids={{
+          input: 'global_search_1',
+        }}
+        required
+      >
+        <FieldLabel hidden>Search anything</FieldLabel>
+        <FieldInput placeholder="Search anything" type="text" />
+      </FieldRoot>
     </div>
   )
 }
@@ -32,10 +40,14 @@ export function LabelHiddenPreview() {
 export function LabelOptionalPreview() {
   return (
     <div className={overrideStyles}>
-      <Field>
-        <Label htmlFor="preferred">Preferred Name</Label>
-        <Input id="preferred" placeholder="i.e. Johnny" type="text" />
-      </Field>
+      <FieldRoot
+        ids={{
+          input: 'preferred',
+        }}
+      >
+        <FieldLabel>Preferred Name</FieldLabel>
+        <FieldInput placeholder="i.e. Johnny" type="text" />
+      </FieldRoot>
     </div>
   )
 }
@@ -43,19 +55,23 @@ export function LabelOptionalPreview() {
 export function LabelCustomPreview() {
   return (
     <div className={overrideStyles}>
-      <Field required>
-        <Label
+      <FieldRoot
+        ids={{
+          input: 'global_search',
+        }}
+        required
+      >
+        <FieldLabel
           className={css({
             fontSize: '2rem',
             bgColor: 'black',
             color: 'yellow',
           })}
-          htmlFor="global_search"
         >
           Killa Bees
-        </Label>
-        <Input id="global_search" type="text" />
-      </Field>
+        </FieldLabel>
+        <FieldInput type="text" />
+      </FieldRoot>
     </div>
   )
 }
