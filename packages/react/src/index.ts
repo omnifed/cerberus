@@ -6,7 +6,6 @@
 // deprecated
 
 export * from './components/deprecated/FieldMessage'
-export * from './components/deprecated/Input'
 export * from './components/deprecated/Label'
 export * from './components/deprecated/Modal'
 export * from './components/deprecated/ModalHeader'

@@ -1,6 +1,11 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Field, Label, Input, CerberusProvider } from '@cerberus-design/react'
+import {
+  FieldRoot,
+  Input,
+  CerberusProvider,
+  FieldLabel,
+} from '@cerberus-design/react'
 import { makeConfig, setupStrictMode } from '@/utils'
 
 describe('Input', () => {
@@ -12,10 +17,15 @@ describe('Input', () => {
   test('should render a input', () => {
     render(
       <CerberusProvider config={config}>
-        <Field required>
-          <Label htmlFor="test">Test Label</Label>,
+        <FieldRoot
+          ids={{
+            control: 'test',
+          }}
+          required
+        >
+          <FieldLabel>Test label</FieldLabel>
           <Input id="test" />
-        </Field>
+        </FieldRoot>
       </CerberusProvider>,
     )
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
@@ -29,10 +39,16 @@ describe('Input', () => {
   test('should render a input with error', () => {
     render(
       <CerberusProvider config={config}>
-        <Field required invalid>
-          <Label htmlFor="test">Test Label</Label>,
-          <Input id="test" />
-        </Field>
+        <FieldRoot
+          ids={{
+            control: 'test',
+          }}
+          required
+          invalid
+        >
+          <FieldLabel>Test Label</FieldLabel>,
+          <Input />
+        </FieldRoot>
       </CerberusProvider>,
     )
     expect(
@@ -43,10 +59,15 @@ describe('Input', () => {
   test('should render a input with disabled', () => {
     render(
       <CerberusProvider config={config}>
-        <Field disabled>
-          <Label htmlFor="test">Test Label</Label>,
-          <Input id="test" />
-        </Field>
+        <FieldRoot
+          ids={{
+            control: 'test',
+          }}
+          disabled
+        >
+          <FieldLabel>Test Label</FieldLabel>,
+          <Input />
+        </FieldRoot>
       </CerberusProvider>,
     )
     expect(
@@ -57,37 +78,31 @@ describe('Input', () => {
   test('should render a input with placeholder', () => {
     render(
       <CerberusProvider config={config}>
-        <Field>
-          <Label htmlFor="test">Test Label</Label>,
-          <Input id="test" placeholder="Test Placeholder" />
-        </Field>
+        <FieldRoot
+          ids={{
+            control: 'test',
+          }}
+          required
+        >
+          <FieldLabel>Test Label</FieldLabel>,
+          <Input placeholder="Test Placeholder" />
+        </FieldRoot>
       </CerberusProvider>,
     )
     expect(screen.getByRole('textbox')).toBeTruthy()
   })
 
-  test('should render a input with describedBy', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Field>
-          <Label htmlFor="test">Test Label</Label>,
-          <Input id="test" describedBy="test-description" />
-          <span id="test-description">Test Description</span>
-        </Field>
-      </CerberusProvider>,
-    )
-    expect(
-      screen.getByRole('textbox').attributes.getNamedItem('aria-describedby'),
-    ).toBeTruthy()
-  })
-
   test('should render a input with a sm size', () => {
     render(
       <CerberusProvider config={config}>
-        <Field>
-          <Label htmlFor="test">Test Label</Label>,
-          <Input id="test" size="sm" />
-        </Field>
+        <FieldRoot
+          ids={{
+            control: 'test',
+          }}
+        >
+          <FieldLabel>Test Label</FieldLabel>,
+          <Input size="sm" />
+        </FieldRoot>
       </CerberusProvider>,
     )
     expect(
@@ -100,10 +115,14 @@ describe('Input', () => {
   test('should render a input with a md size', () => {
     render(
       <CerberusProvider config={config}>
-        <Field>
-          <Label htmlFor="test">Test Label</Label>,
-          <Input id="test" size="md" />
-        </Field>
+        <FieldRoot
+          ids={{
+            control: 'test',
+          }}
+        >
+          <FieldLabel>Test Label</FieldLabel>,
+          <Input size="md" />
+        </FieldRoot>
       </CerberusProvider>,
     )
     expect(
@@ -116,10 +135,14 @@ describe('Input', () => {
   test('should render a input with a lg size', () => {
     render(
       <CerberusProvider config={config}>
-        <Field>
-          <Label htmlFor="test">Test Label</Label>,
-          <Input id="test" size="lg" />
-        </Field>
+        <FieldRoot
+          ids={{
+            control: 'test',
+          }}
+        >
+          <FieldLabel>Test Label</FieldLabel>,
+          <Input size="lg" />
+        </FieldRoot>
       </CerberusProvider>,
     )
     expect(
@@ -132,10 +155,14 @@ describe('Input', () => {
   test('should render a input with a startIcon', () => {
     render(
       <CerberusProvider config={config}>
-        <Field>
-          <Label htmlFor="test">Test Label</Label>,
-          <Input id="test" startIcon={<div aria-label="calendar icon" />} />
-        </Field>
+        <FieldRoot
+          ids={{
+            control: 'test',
+          }}
+        >
+          <FieldLabel>Test Label</FieldLabel>,
+          <Input startIcon={<div aria-label="calendar icon" />} />
+        </FieldRoot>
       </CerberusProvider>,
     )
     expect(screen.getByLabelText(/calendar icon/i)).toBeTruthy()
@@ -144,10 +171,14 @@ describe('Input', () => {
   test('should render a input with a endIcon', () => {
     render(
       <CerberusProvider config={config}>
-        <Field>
-          <Label htmlFor="test">Test Label</Label>,
-          <Input id="test" endIcon={<div aria-label="calendar icon" />} />
-        </Field>
+        <FieldRoot
+          ids={{
+            control: 'test',
+          }}
+        >
+          <FieldLabel>Test Label</FieldLabel>,
+          <Input endIcon={<div aria-label="calendar icon" />} />
+        </FieldRoot>
       </CerberusProvider>,
     )
     expect(screen.getByLabelText(/calendar icon/i)).toBeTruthy()

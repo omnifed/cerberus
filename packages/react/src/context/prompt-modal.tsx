@@ -11,12 +11,12 @@ import {
   type MouseEvent,
   type PropsWithChildren,
 } from 'react'
-import { Button } from '../components/button/button'
+import { DialogCloseTrigger } from '@ark-ui/react'
+import { HStack, VStack } from '@cerberus/styled-system/jsx'
 import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
-import { Input } from '../components/deprecated/Input'
-import { Field } from './field'
-import { Label } from '../components/deprecated/Label'
+import { FieldLabel, FieldRoot, Input } from '../components/field/index'
+import { Button } from '../components/button/button'
 import { Show } from '../components/Show'
 import { Avatar } from '../components/Avatar'
 import { Text } from '../components/Text'
@@ -27,8 +27,6 @@ import {
   DialogHeading,
   DialogProvider,
 } from '../components/Dialog'
-import { HStack, VStack } from '@cerberus/styled-system/jsx'
-import { DialogCloseTrigger } from '@ark-ui/react'
 
 /**
  * This module provides a context and hook for the prompt modal.
@@ -216,28 +214,26 @@ export function PromptModal(
               marginBlockEnd="lg"
               w="full"
             >
-              <Field invalid={!isValid}>
-                <Label
+              <FieldRoot
+                ids={{
+                  control: 'confirm',
+                }}
+                invalid={!isValid}
+              >
+                <FieldLabel
                   className={hstack({
                     gap: 'xs',
                     justify: 'flex-start !important',
                   })}
-                  htmlFor="confirm"
-                  size="md"
                 >
                   Type
                   <Text as="strong" textTransform="uppercase">
                     {content?.key}
                   </Text>
                   to confirm
-                </Label>
-                <Input
-                  id="confirm"
-                  name="confirm"
-                  onChange={handleChange}
-                  type="text"
-                />
-              </Field>
+                </FieldLabel>
+                <Input name="confirm" onChange={handleChange} type="text" />
+              </FieldRoot>
             </VStack>
 
             <HStack gap="md" justify="stretch" w="full">

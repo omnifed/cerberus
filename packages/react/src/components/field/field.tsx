@@ -9,6 +9,8 @@ import {
 import { cx } from '@cerberus/styled-system/css'
 import { field, type FieldVariantProps } from '@cerberus/styled-system/recipes'
 import { FieldStatusIndicator } from './status-indicator'
+import type { ReactNode } from 'react'
+import { FieldStartIndicator } from './start-indicator'
 
 /**
  * This module contains all the primitives of the Field component.
@@ -60,8 +62,18 @@ export function FieldLabel(props: FieldLabelProps) {
   )
 }
 
-export type FieldInputProps = Omit<ArkFieldInputProps, 'size'> &
-  FieldVariantProps
+export interface FieldInputProps
+  extends Omit<ArkFieldInputProps, 'size'>,
+    FieldVariantProps {
+  /**
+   * An optional icon to display at the start of the input.
+   */
+  startIcon?: ReactNode
+  /**
+   * An optional icon to display at the end of the input.
+   */
+  endIcon?: ReactNode
+}
 
 /**
  * The input for the Field component.
@@ -74,15 +86,19 @@ export type FieldInputProps = Omit<ArkFieldInputProps, 'size'> &
  * ```
  */
 export function FieldInput(props: FieldInputProps) {
-  const { size, ...fieldProps } = props
+  const { size, startIcon, endIcon, ...fieldProps } = props
   const styles = field({ size })
+  const hasStartIcon = Boolean(startIcon)
+
   return (
     <div className={styles.inputRoot}>
+      <FieldStartIndicator>{startIcon}</FieldStartIndicator>
       <Field.Input
         {...fieldProps}
+        {...(hasStartIcon && { 'data-has': 'start-indicator' })}
         className={cx(styles.input, fieldProps.className)}
       />
-      <FieldStatusIndicator />
+      <FieldStatusIndicator fallback={endIcon} />
     </div>
   )
 }
@@ -156,3 +172,25 @@ export function FieldTextarea(props: FieldTextareaProps) {
     />
   )
 }
+
+/**
+ * A named export for the FieldInput component.
+ * @description [Field Docs](https://cerberus.digitalu.design/react/field)
+ * @example
+ * ```tsx
+ * import { Input } from '@cerberus/react'
+ *
+ * <Field
+ *   ids={{
+ *    control: 'email',
+ *   }}
+ *   label="Enter your email"
+ *   helperText="We'll never share your email with anyone else."
+ *   errorText="Email is required."
+ *   required
+ * >
+ *   <Input type="email" />
+ * </Field>
+ * ```
+ */
+export const Input = FieldInput

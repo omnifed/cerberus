@@ -8,6 +8,7 @@ import {
   FieldTextarea,
 } from './field'
 import { FieldStatusIndicator } from './status-indicator'
+import { FieldStartIndicator } from './start-indicator'
 
 /**
  * This module contains the parts of the Field component.
@@ -40,6 +41,10 @@ interface FieldPartsValue {
    */
   ErrorText: ElementType
   /**
+   * The indicator that appears at the start of the field.
+   */
+  StartIndicator: ElementType
+  /**
    * The status indicator of the field.
    */
   StatusIndicator: ElementType
@@ -61,5 +66,6 @@ export const FieldParts: FieldPartsValue = {
   Textarea: FieldTextarea,
   HelperText: FieldHelperText,
   ErrorText: FieldErrorText,
+  StartIndicator: FieldStartIndicator,
   StatusIndicator: FieldStatusIndicator,
 }

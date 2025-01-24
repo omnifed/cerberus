@@ -1,4 +1,5 @@
 export * from './field'
+export * from './start-indicator'
 export * from './status-indicator'
 export * from './text-field'
 export * from './textarea-field'

@@ -33,6 +33,14 @@ const inputStyles = {
   ...focusStates,
 }
 
+const endIndicatorStyles = {
+  position: 'absolute',
+  right: 4,
+  top: '50%',
+  transform: 'translateY(-50%)',
+  zIndex: 'decorator',
+}
+
 /**
  * Styles for the Input component
  * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
@@ -41,7 +49,13 @@ const inputStyles = {
  */
 export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'field',
-  slots: [...fieldAnatomy.keys(), 'inputRoot', 'statusIndicator'],
+  slots: [
+    ...fieldAnatomy.keys(),
+    'inputRoot',
+    'startIndicator',
+    'endIndicator',
+    'statusIndicator',
+  ],
   jsx: [
     'FieldRoot',
     'FieldLabel',
@@ -82,6 +96,9 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
       ...inputStyles,
       h: '3.7rem',
       paddingInlineEnd: 10,
+      '& :is([data-has=start-indicator])': {
+        paddingInlineStart: 10,
+      },
     },
     textarea: {
       ...inputStyles,
@@ -96,13 +113,15 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
       color: 'danger.text.initial',
       textStyle: smallLabel,
     },
+    startIndicator: {
+      ...endIndicatorStyles,
+      left: 4,
+      right: 'initial',
+    },
+    endIndicator: endIndicatorStyles,
     statusIndicator: {
+      ...endIndicatorStyles,
       color: 'danger.text.100',
-      position: 'absolute',
-      right: 4,
-      top: '50%',
-      transform: 'translateY(-50%)',
-      zIndex: 'decorator',
     },
   },
 
