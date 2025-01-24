@@ -2,7 +2,7 @@
 
 import {
   Button,
-  Field,
+  FieldRoot,
   FieldHelperText,
   TextField,
   Option,
@@ -64,7 +64,7 @@ export default function StandardLayout() {
       </Box>
 
       <Box>
-        <Field
+        <FieldRoot
           ids={{
             control: 'age',
           }}
@@ -82,7 +82,7 @@ export default function StandardLayout() {
           <FieldHelperText>
             We are legally required to ask for your age.
           </FieldHelperText>
-        </Field>
+        </FieldRoot>
       </Box>
 
       <HStack>

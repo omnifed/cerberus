@@ -1,7 +1,7 @@
 ---
 npm: '@cerberus-design/react'
-source: 'components/Input.tsx'
-recipe: 'input'
+source: 'components/field'
+recipe: 'field'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
@@ -14,17 +14,23 @@ import StandardLayout from './components/standard-layout'
 ```tsx
 import {
   Button,
-  Field,
-  FieldMessage,
-  Input,
-  Label,
+  FieldRoot,
+  FieldHelperText,
+  TextField,
   Option,
   Select,
-} from '@cerberus/react'
-import { css } from '@cerberus/styled-system/css'
-import { Box, HStack, VStack } from '@cerberus/styled-system/jsx'
+  createSelectCollection,
+} from '@cerberus-design/react'
+import { css } from '@cerberus-design/styled-system/css'
+import { Box, HStack, VStack } from '@cerberus-design/styled-system/jsx'
 
 export default function StandardLayout() {
+  const collection = createSelectCollection([
+    { label: 'Younger than 13', value: '1' },
+    { label: '13-20', value: '2' },
+    { label: '21 and older', value: '3' },
+  ])
+
   return (
     <VStack
       alignItems="flex-start"
@@ -46,46 +52,49 @@ export default function StandardLayout() {
       </p>
 
       <Box w="full">
-        <Field required>
-          <Label htmlFor="first_name">First Name</Label>
-          <Input
-            aria-describedby="help:first_name"
-            id="first_name"
-            placeholder="John"
-          />
-          <FieldMessage id="help:first_name">
-            This is what everyone will see when you post a comment.
-          </FieldMessage>
-        </Field>
+        <TextField
+          required
+          label="First Name"
+          ids={{
+            control: 'first_name',
+          }}
+          errorText="A first name is required to submit the form."
+          helperText="This is what everyone will see when you post a comment."
+        />
       </Box>
 
       <Box w="full">
-        <Field required>
-          <Label htmlFor="last_name">Last Name</Label>
-          <Input
-            aria-describedby="help:last_name"
-            id="last_name"
-            placeholder="Doe"
-          />
-          <FieldMessage id="help:last_name">
-            Only you will see this in your profile.
-          </FieldMessage>
-        </Field>
+        <TextField
+          required
+          label="Last Name"
+          ids={{
+            control: 'last_name',
+          }}
+          errorText="A last name is required to submit the form."
+          helperText="This is what everyone will see when you post a comment."
+        />
       </Box>
 
       <Box>
-        <Field>
-          <Label htmlFor="age">Age</Label>
-          <Select aria-describedby="help:age" id="age">
-            <Option value="">Select an option</Option>
-            <Option value="1">Younger than 13</Option>
-            <Option value="2">13-20</Option>
-            <Option value="3">21 and older</Option>
+        <FieldRoot
+          ids={{
+            control: 'age',
+          }}
+          required
+        >
+          <Select
+            collection={collection}
+            label="Age"
+            placeholder="Select an option"
+          >
+            {collection.items.map((item) => (
+              <Option key={item.value} item={item} />
+            ))}
           </Select>
-          <FieldMessage id="help:age">
+          <FieldHelperText>
             We are legally required to ask for your age.
-          </FieldMessage>
-        </Field>
+          </FieldHelperText>
+        </FieldRoot>
       </Box>
 
       <HStack>
@@ -115,8 +124,8 @@ export default function StandardLayout() {
 
 | Name     |  Description                                                   |
 | -------- | -------------------------------------------------------------  |
-| Field    | Controls the state of the individual field group.              |
-| Input    | A text input field.                                            |
+| FieldRoot    | Controls the state of the individual field group.          |
+| TextField    | An all-in-one Input abstraction.                           |
 | Select   | A dropdown select field.                                       |
-| Label    | A label for a form field.                                      |
-| FieldMessage | A message to display below a form field.                   |
+| Option    | A all-in-one Option abstraction.                              |
+| HelperText | A message to display for a valid form field.                 |
