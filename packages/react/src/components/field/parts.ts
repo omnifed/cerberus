@@ -5,7 +5,9 @@ import {
   FieldInput,
   FieldLabel,
   FieldRoot,
+  FieldTextarea,
 } from './field'
+import { FieldStatusIndicator } from './status-indicator'
 
 /**
  * This module contains the parts of the Field component.
@@ -26,6 +28,10 @@ interface FieldPartsValue {
    */
   Input: ElementType
   /**
+   * The textarea of the field.
+   */
+  Textarea: ElementType
+  /**
    * The text that displays when the field is valid.
    */
   HelperText: ElementType
@@ -33,6 +39,10 @@ interface FieldPartsValue {
    * The text that displays when the field is invalid.
    */
   ErrorText: ElementType
+  /**
+   * The status indicator of the field.
+   */
+  StatusIndicator: ElementType
 }
 
 /**
@@ -48,6 +58,8 @@ export const FieldParts: FieldPartsValue = {
   Root: FieldRoot,
   Label: FieldLabel,
   Input: FieldInput,
+  Textarea: FieldTextarea,
   HelperText: FieldHelperText,
   ErrorText: FieldErrorText,
+  StatusIndicator: FieldStatusIndicator,
 }

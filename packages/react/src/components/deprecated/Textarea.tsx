@@ -3,7 +3,7 @@
 import type { TextareaHTMLAttributes } from 'react'
 import { css, cx } from '@cerberus/styled-system/css'
 import { input, type InputVariantProps } from '@cerberus/styled-system/recipes'
-import { useFieldContext } from '../context/field'
+import { useFieldContext } from '../../context/field'
 
 /**
  * This module contains the Textarea component.
@@ -24,8 +24,7 @@ export interface TextareaBaseProps
 export type TextareaProps = InputVariantProps & TextareaBaseProps
 
 /**
- * A component that allows the user to input large blocks of text.
- * @see https://cerberus.digitalu.design/react/textarea
+ * @deprecated use TextareaField, FieldTextarea, or FieldParts instead
  */
 export function Textarea(props: TextareaProps): JSX.Element {
   const { describedBy, ...nativeProps } = props

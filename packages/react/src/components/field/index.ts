@@ -1,3 +1,5 @@
 export * from './field'
+export * from './status-indicator'
 export * from './text-field'
+export * from './textarea-field'
 export * from './parts'

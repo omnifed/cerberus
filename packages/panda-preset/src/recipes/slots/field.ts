@@ -9,6 +9,26 @@ import { focusStates } from '../shared/states'
 
 const smallLabel = 'label-sm'
 
+const inputStyles = {
+  border: '1px solid',
+  borderColor: 'action.border.100',
+  color: 'page.text.initial',
+  paddingInline: 'md',
+  position: 'relative',
+  rounded: 'sm',
+  textStyle: 'body-sm',
+  transitionProperty: 'border',
+  transitionDuration: 'fast',
+  w: 'full',
+  _hover: {
+    borderColor: 'action.border.initial',
+  },
+  _invalid: {
+    borderColor: 'danger.border.initial',
+  },
+  ...focusStates,
+}
+
 /**
  * Styles for the Input component
  * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
@@ -17,7 +37,18 @@ const smallLabel = 'label-sm'
  */
 export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'field',
-  slots: fieldAnatomy.keys(),
+  slots: [...fieldAnatomy.keys(), 'inputRoot', 'statusIndicator'],
+  jsx: [
+    'FieldRoot',
+    'FieldLabel',
+    'FieldInput',
+    'FieldHelperText',
+    'FieldErrorText',
+    'FieldStatusIndicator',
+    'FieldTextarea',
+    'TextField',
+    'TextareaField',
+  ],
 
   base: {
     root: {
@@ -33,31 +64,21 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
       justifyContent: 'space-between',
       textStyle: smallLabel,
       w: 'full',
-      '& > [data-part=required-text]': {
+      '& > [data-part=required-indicator]': {
         display: 'inline-block',
         color: 'page.text.100',
         textStyle: smallLabel,
       },
     },
-    input: {
-      border: '1px solid',
-      borderColor: 'action.border.100',
-      color: 'page.text.initial',
-      h: '3.7rem',
-      paddingInline: 'md',
+    inputRoot: {
       position: 'relative',
-      rounded: 'sm',
-      textStyle: 'body-sm',
-      transitionProperty: 'border',
-      transitionDuration: 'fast',
       w: 'full',
-      _hover: {
-        borderColor: 'action.border.initial',
-      },
-      _invalid: {
-        borderColor: 'danger.border.initial',
-      },
-      ...focusStates,
+    },
+    input: { ...inputStyles, h: '3.7rem' },
+    textarea: {
+      ...inputStyles,
+      minW: '13.25rem',
+      paddingBlock: '0.75rem',
     },
     helperText: {
       color: 'page.text.200',
@@ -66,6 +87,13 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
     errorText: {
       color: 'danger.text.initial',
       textStyle: smallLabel,
+    },
+    statusIndicator: {
+      position: 'absolute',
+      right: '4',
+      top: '1/2',
+      transform: 'translateY(-50%)',
+      zIndex: 'decorator',
     },
   },
 

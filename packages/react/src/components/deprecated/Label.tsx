@@ -4,8 +4,8 @@ import type { HTMLAttributes, PropsWithChildren } from 'react'
 import { label, type LabelVariantProps } from '@cerberus/styled-system/recipes'
 import { css, cx } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
-import { useFieldContext } from '../context/field'
-import { Show } from './Show'
+import { useFieldContext } from '../../context/field'
+import { Show } from '../Show'
 
 /**
  * This module contains the Label component.
@@ -24,16 +24,7 @@ export interface LabelBaseProps extends HTMLAttributes<HTMLLabelElement> {
 export type LabelProps = LabelBaseProps & LabelVariantProps
 
 /**
- * A a11y compliant label component.
- * @definition [ARIA Forms](https://www.a11yproject.com/checklist/#forms)
- * @see https://cerberus.digitalu.design/react/label
- * @example
- * ```tsx
- * <Field required>
- *   <Label htmlFor="search" hidden>Search everything</Label>
- *   <Input id="search" startIcon={Search} type="text" />
- * </Field>
- * ```
+ * @deprecated Use FieldLabel or FieldParts.Label instead.
  */
 export function Label(props: PropsWithChildren<LabelProps>) {
   const { hidden, size, ...nativeProps } = props

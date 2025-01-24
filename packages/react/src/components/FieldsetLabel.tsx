@@ -1,6 +1,6 @@
 import { cx } from '@cerberus/styled-system/css'
 import { label, type LabelVariantProps } from '@cerberus/styled-system/recipes'
-import type { LabelProps } from './Label'
+import type { LabelProps } from './deprecated/Label'
 
 /**
  * This module contains the FieldsetLabel component.

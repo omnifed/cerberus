@@ -4,9 +4,11 @@ import {
   type FieldInputProps,
   type FieldLabelProps,
   type FieldRootProps,
+  type FieldTextareaProps,
 } from '@ark-ui/react/field'
 import { cx } from '@cerberus/styled-system/css'
 import { field, type FieldVariantProps } from '@cerberus/styled-system/recipes'
+import { FieldStatusIndicator } from './status-indicator'
 
 /**
  * This module contains all the primitives of the Field component.
@@ -46,9 +48,13 @@ export function FieldRoot(props: FieldRootProps & FieldVariantProps) {
  * ```
  */
 export function FieldLabel(props: FieldLabelProps) {
+  const { children, ...nativeProps } = props
   const styles = field()
   return (
-    <Field.Label {...props} className={cx(styles.label, props.className)} />
+    <Field.Label {...nativeProps} className={cx(styles.label, props.className)}>
+      {children}
+      <Field.RequiredIndicator>(required)</Field.RequiredIndicator>
+    </Field.Label>
   )
 }
 
@@ -68,10 +74,13 @@ export function FieldInput(
   const { size, ...fieldProps } = props
   const styles = field({ size })
   return (
-    <Field.Input
-      {...fieldProps}
-      className={cx(styles.input, fieldProps.className)}
-    />
+    <div className={styles.inputRoot}>
+      <Field.Input
+        {...fieldProps}
+        className={cx(styles.input, fieldProps.className)}
+      />
+      <FieldStatusIndicator />
+    </div>
   )
 }
 
@@ -115,6 +124,26 @@ export function FieldErrorText(props: FieldHelperTextProps) {
     <Field.ErrorText
       {...props}
       className={cx(styles.errorText, props.className)}
+    />
+  )
+}
+
+/**
+ * The textarea for the Field component.
+ * @description [Field Docs](https://cerberus.digitalu.design/react/field)
+ * @example
+ * ```tsx
+ * <FieldRoot>
+ *   <FieldTextarea />
+ * </FieldRoot>
+ * ```
+ */
+export function FieldTextarea(props: FieldTextareaProps) {
+  const styles = field()
+  return (
+    <Field.Textarea
+      {...props}
+      className={cx(styles.textarea, props.className)}
     />
   )
 }

@@ -37,8 +37,7 @@ export interface FieldContextValue {
 const FieldContext = createContext<FieldContextValue | null>(null)
 
 /**
- * Provides the field state for a all related components used within a group.
- * @see https://cerberus.digitalu.design/react/input
+ * @deprecated use FieldRoot or FieldParts instead
  */
 export function Field(props: PropsWithChildren<FieldRootProps>): JSX.Element {
   const value = useMemo(

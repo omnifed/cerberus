@@ -6,7 +6,7 @@ import {
   fieldMessage,
   type FieldMessageVariantProps,
 } from '@cerberus/styled-system/recipes'
-import { useFieldContext } from '../context/field'
+import { useFieldContext } from '../../context/field'
 
 /**
  * This module contains the FieldMessage component.
@@ -25,18 +25,7 @@ export interface FieldMessageBaseProps
 export type FieldMessageProps = FieldMessageBaseProps & FieldMessageVariantProps
 
 /**
- * A component that provides feedback about the field.
- * @see https://cerberus.digitalu.design/react/field-message
- * @example
- * ```tsx
- * <Field>
- *  <Label htmlFor="first_name">First Name</Label>
- *  <Input aria-describedBy="help:first_name" id="first_name" type="text" />
- *  <FieldMessage id="help:first_name">
- *   This will only be used in your account information.
- *  </FieldMessage>
- * </Field>
- * ```
+ * @deprecated use FieldHelperText, FieldErrorText, or FieldParts instead
  */
 export function FieldMessage(props: FieldMessageProps) {
   const { invalid } = useFieldContext()
