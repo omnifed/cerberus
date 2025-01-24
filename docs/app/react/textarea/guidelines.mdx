@@ -1,28 +1,6 @@
 ---
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import OverviewList from '@/app/components/OverviewList'
-import {
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
-} from '@/app/components/Admonition'
-import {
-  TextareaBasicPreview,
-} from '@/app/react/textarea/components/textarea-preview'
+import { DeprecationAdmonition } from '@/app/components/DeprecationAdmonition'
 
-## Usage
-
-<WhenToUseAdmonition description="Use a text field when someone needs to enter text into a UI, such as filling in contact or payment information." />
-
-## Standard Textarea
-
-<CodePreview preview={<TextareaBasicPreview />} />
-
-<WhenToUseAdmonition description="When you use any type of standard inputs within a form." />
-
-## Responsive Layout
-
-As layouts adapt to larger screens and different window sizes, apply flexible container dimensions to text fields. Set minimum and maximum values for margins, padding, and container dimensions as layouts scale so that typography adjusts for better reading experiences.
-
-Text fields can span the full width of the display on compact window sizes, but should be bounded by flexible margins or other containers on medium and expanded window sizes.
+<DeprecationAdmonition description="Field" />

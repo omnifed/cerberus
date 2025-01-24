@@ -65,6 +65,7 @@
     "name": "Inputs",
     "description": "Components that allow users to input data.",
     "items": [
+      "Field",
       "Input",
       "Textarea",
       "Label",
@@ -72,8 +73,8 @@
       "Field Message",
       "File Uploader"
     ],
-    "next": [],
+    "next": ["Field"],
     "new": [],
-    "deprecated": ["Input"]
+    "deprecated": ["Label", "Input", "Field Message", "Textarea"]
   }
 }

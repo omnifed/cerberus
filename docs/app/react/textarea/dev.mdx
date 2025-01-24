@@ -4,14 +4,9 @@ source: 'components/Textarea.tsx'
 recipe: 'slots/input.ts'
 ---
 
-import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import {
-  TextareaBasicPreview,
-  TextareaInvalidPreview,
-  TextareaDisabledPreview,
-  TextareaCustomPreview
-} from '@/app/react/textarea/components/textarea-preview'
+import { NoteAdmonition, DeprecationAdmonition } from '@/app/components/Admonition'
+
+<DeprecationAdmonition description="Field" />
 
 ```ts
 import { Field, Textarea } from '@cerberus/react'
@@ -19,7 +14,6 @@ import { Field, Textarea } from '@cerberus/react'
 
 ## Usage
 
-<CodePreview preview={<TextareaBasicPreview />}>
 ```tsx title="first-name-input.tsx" {7}
 import { Field, Label, Textarea, FieldMessage } from '@cerberus/react'
 
@@ -35,11 +29,10 @@ function TextareaBasicPreview() {
   )
 }
 ```
-</CodePreview>
 
 ## Invalid
 
-<CodePreview preview={<TextareaInvalidPreview />}>
+
 ```tsx title="search-input.tsx" {5}
 import { Field, FieldMessage, Label, Textarea } from '@cerberus/react'
 
@@ -59,11 +52,10 @@ export function TextareaInvalidPreview() {
   )
 }
 ```
-</CodePreview>
 
 ## Disabled
 
-<CodePreview preview={<TextareaDisabledPreview />}>
+
 ```tsx title="search-input.tsx" {5}
 import { Field, Label, Textarea, FieldMessage } from '@cerberus/react'
 
@@ -84,11 +76,10 @@ function TextareaDisabledPreview() {
   )
 }
 ```
-</CodePreview>
 
 ## Customizing
 
-<CodePreview preview={<TextareaCustomPreview />}>
+
 ```tsx title="search-input.tsx"
 import { Field, Label, Textarea } from '@cerberus/react'
 
@@ -110,7 +101,6 @@ function TextareaCustomPreview() {
   )
 }
 ```
-</CodePreview>
 
 ## API
 

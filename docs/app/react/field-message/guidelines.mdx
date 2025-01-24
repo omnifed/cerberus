@@ -1,35 +1,5 @@
 ---
 ---
+import { DeprecationAdmonition } from '@/app/components/Admonition'
 
-import CodePreview from '@/app/components/CodePreview'
-import OverviewList from '@/app/components/OverviewList'
-import {
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
-} from '@/app/components/Admonition'
-import {
-  FieldMessageBasicPreview,
-  FieldMessageInvalidPreview
-} from '@/app/react/field-message/components/field-message-preview'
-
-## Usage
-
-<WhenToUseAdmonition description="Use a field message to provide more context of an associated input." />
-
-## Standard Input
-
-<CodePreview preview={<FieldMessageBasicPreview />} />
-
-<WhenToUseAdmonition description="When you need to add more context for the user." />
-
-## Invalid Message
-
-<CodePreview preview={<FieldMessageInvalidPreview />} />
-
-<WhenToUseAdmonition description="When you need to tell the user why the input used is invalid." />
-
-## Responsive Layout
-
-As layouts adapt to larger screens and different window sizes, apply flexible container dimensions to text fields. Set minimum and maximum values for margins, padding, and container dimensions as layouts scale so that typography adjusts for better reading experiences.
-
-Text fields can span the full width of the display on compact window sizes, but should be bounded by flexible margins or other containers on medium and expanded window sizes.
+<DeprecationAdmonition description="Field" />
