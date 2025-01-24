@@ -98,6 +98,9 @@ export function FieldInput(
  */
 export function FieldHelperText(props: FieldHelperTextProps) {
   const styles = field()
+
+  if (!props.children) return null
+
   return (
     <Field.HelperText
       {...props}
@@ -120,6 +123,9 @@ export function FieldHelperText(props: FieldHelperTextProps) {
  */
 export function FieldErrorText(props: FieldHelperTextProps) {
   const styles = field()
+
+  if (!props.children) return null
+
   return (
     <Field.ErrorText
       {...props}

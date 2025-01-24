@@ -1,5 +1,3 @@
-'use client'
-
 import { FieldInput, type TextFieldProps } from '@cerberus-design/react'
 
 interface BuilderInputProps extends TextFieldProps {

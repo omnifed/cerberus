@@ -1,6 +1,7 @@
 'use client'
 
 import { vstack } from '@cerberus/styled-system/patterns'
+import { css } from '@cerberus-design/styled-system/css'
 import type {
   BooleanResult,
   BuilderResult,
@@ -9,6 +10,8 @@ import type {
 } from './helpers'
 import {
   Field,
+  FieldRoot,
+  FieldLabel,
   Label,
   Show,
   type SelectCollectionItem,
@@ -80,12 +83,24 @@ export default function BuilderForm(props: BuilderFormProps) {
             </Show>
 
             <Show when={props.api[key].type === 'text'}>
-              <Input
-                {...(props.api[key] as TextResult)}
-                label={key}
-                onChange={handleInputChange}
-                selectedValue={selectedProps[key] as string}
-              />
+              <FieldRoot
+                ids={{
+                  input: key,
+                }}
+              >
+                <FieldLabel
+                  className={css({
+                    color: 'page.text.initial',
+                  })}
+                >
+                  {key}
+                </FieldLabel>
+                <Input
+                  {...(props.api[key] as TextResult)}
+                  onChange={handleInputChange}
+                  selectedValue={selectedProps[key] as string}
+                />
+              </FieldRoot>
             </Show>
 
             <Show when={props.api[key].type === 'number'}>

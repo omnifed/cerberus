@@ -10,6 +10,7 @@ import { focusStates } from '../shared/states'
 const smallLabel = 'label-sm'
 
 const inputStyles = {
+  bgColor: 'page.surface.initial',
   border: '1px solid',
   borderColor: 'action.border.100',
   color: 'page.text.initial',
@@ -17,13 +18,16 @@ const inputStyles = {
   position: 'relative',
   rounded: 'sm',
   textStyle: 'body-sm',
-  transitionProperty: 'border',
+  transitionProperty: 'border, background-color',
   transitionDuration: 'fast',
   w: 'full',
   _hover: {
     borderColor: 'action.border.initial',
   },
-  _invalid: {
+  _focus: {
+    bgColor: 'page.surface.100',
+  },
+  _userInvalid: {
     borderColor: 'danger.border.initial',
   },
   ...focusStates,
@@ -74,7 +78,11 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
       position: 'relative',
       w: 'full',
     },
-    input: { ...inputStyles, h: '3.7rem' },
+    input: {
+      ...inputStyles,
+      h: '3.7rem',
+      paddingInlineEnd: 10,
+    },
     textarea: {
       ...inputStyles,
       minW: '13.25rem',
@@ -89,9 +97,10 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
       textStyle: smallLabel,
     },
     statusIndicator: {
+      color: 'danger.text.100',
       position: 'absolute',
-      right: '4',
-      top: '1/2',
+      right: 4,
+      top: '50%',
       transform: 'translateY(-50%)',
       zIndex: 'decorator',
     },

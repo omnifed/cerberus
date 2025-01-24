@@ -3,20 +3,14 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import {
-  Field,
-  Select,
-  Option,
-  FieldMessage,
-  createSelectCollection,
-  type SelectProps,
-} from '@cerberus-design/react'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { TextField } from '@cerberus-design/react'
 
 const api = {
   size: builder.Enum('size', ['sm', 'md', 'lg']),
-  label: builder.Text('label', 'Select Something'),
-  placeholder: builder.Text('placeholder', 'Choose option'),
+  label: builder.Text('label', 'This is a label'),
+  placeholder: builder.Text('placeholder', ''),
+  helperText: builder.Text('helperText', 'This is a helper text'),
+  errorText: builder.Text('errorText', 'This is an error text'),
   disabled: builder.Boolean('disabled', false),
   required: builder.Boolean('required', false),
   readOnly: builder.Boolean('readOnly', false),
@@ -26,7 +20,7 @@ const api = {
 export function LivePlayground() {
   return (
     <CodeBuilder api={api}>
-      <SelectPreview />
+      <TextFieldPreview />
     </CodeBuilder>
   )
 }
@@ -36,119 +30,67 @@ export function LivePlaygroundWithCode() {
     <CodeBuilder
       api={api}
       code={`import {
-  Select,
-  Option,
-  type SelectProps,
+  TextField,
+  type TextFieldProps,
 } from '@cerberus/react'
 
 /**
- * A custom abstraction of the Cerberus Select component.
- * @param props The same props as the Cerberus Select component
+ * A custom abstraction of the Cerberus TextField component.
+ * @param props The same props as the Cerberus TextField component
 */
-export function MySelect(props: SelectProps) {
-  return (
-    <Select {...props}>
-      {props.collection.items.map((item) => (
-        <Option key={item.value} item={item} />
-      ))}
-    </Select>
-  )
+export function MyTextField(props: TextFieldProps) {
+  return <TextField {...props } />
 }`}
     >
-      <Field>
-        <SelectPreview />
-      </Field>
+      <TextFieldPreview />
     </CodeBuilder>
   )
 }
 
-interface SelectElProps extends Record<string, boolean | string> {}
-
-export function SelectEl(props: SelectElProps) {
-  const collection = createSelectCollection([
-    { label: 'Hades', value: 'hades' },
-    { label: 'Persephone', value: 'persephone' },
-    { label: 'Zeus', value: 'zeus', disabled: true },
-    { label: 'Poseidon', value: 'poseidon' },
-    { label: 'Hera', value: 'hera' },
-  ])
-
-  switch (props.size) {
+export function TextFieldPreview() {
+  const { selectedProps } = useCodeBuilder()
+  switch (selectedProps.size) {
     case 'sm':
       return (
-        <Select
-          collection={collection}
-          label={props.label as string}
-          placeholder={props.placeholder as string}
-          disabled={props.disabled as boolean}
-          invalid={props.invalid as boolean}
-          required={props.required as boolean}
-          readOnly={props.readOnly as boolean}
+        <TextField
+          {...selectedProps}
+          inputProps={{
+            placeholder: selectedProps.placeholder,
+          }}
           size="sm"
-        >
-          {collection.items.map((item) => (
-            <Option key={item.value} item={item} />
-          ))}
-        </Select>
+        />
       )
+
+    case 'md':
+      return (
+        <TextField
+          {...selectedProps}
+          inputProps={{
+            placeholder: selectedProps.placeholder,
+          }}
+          size="md"
+        />
+      )
+
     case 'lg':
       return (
-        <Select
-          collection={collection}
-          label={props.label as string}
-          placeholder={props.placeholder as string}
-          disabled={props.disabled as boolean}
-          invalid={props.invalid as boolean}
-          required={props.required as boolean}
-          readOnly={props.readOnly as boolean}
+        <TextField
+          {...selectedProps}
+          inputProps={{
+            placeholder: selectedProps.placeholder,
+          }}
           size="lg"
-        >
-          {collection.items.map((item) => (
-            <Option key={item.value} item={item} />
-          ))}
-        </Select>
+        />
       )
+
     default:
       return (
-        <Select
-          collection={collection}
-          label={props.label as string}
-          placeholder={props.placeholder as string}
-          disabled={props.disabled as boolean}
-          invalid={props.invalid as boolean}
-          required={props.required as boolean}
-          readOnly={props.readOnly as boolean}
-          size={props.size as SelectProps['size']}
-        >
-          {collection.items.map((item) => (
-            <Option key={item.value} item={item} />
-          ))}
-        </Select>
+        <TextField
+          {...selectedProps}
+          inputProps={{
+            placeholder: selectedProps.placeholder,
+          }}
+        />
       )
   }
-}
-
-export function SelectPreview() {
-  const { selectedProps } = useCodeBuilder()
-  const { helpText, ...cerbSelectProps } = selectedProps
-
-  return (
-    <div
-      className={vstack({
-        alignItems: 'flex-start',
-        gap: '0',
-        w: 'full',
-      })}
-    >
-      <Field
-        disabled={cerbSelectProps.disabled as boolean}
-        invalid={cerbSelectProps.invalid as boolean}
-        readOnly={cerbSelectProps.readOnly as boolean}
-        required={cerbSelectProps.required as boolean}
-      >
-        <SelectEl {...cerbSelectProps} {...selectedProps} />
-        <FieldMessage id="help:add-select-id">{helpText}</FieldMessage>
-      </Field>
-    </div>
-  )
 }

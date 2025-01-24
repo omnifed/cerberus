@@ -2,10 +2,13 @@ import type { FieldInputProps, FieldRootProps } from '@ark-ui/react'
 import type { FieldVariantProps } from '@cerberus/styled-system/recipes'
 import { splitProps } from '../../utils'
 import { FieldParts } from './parts'
+import { HStack } from '@cerberus/styled-system/jsx'
+import { Show } from '../Show'
 
 export interface TextareaFieldProps extends FieldRootProps, FieldVariantProps {
   label: string
   helperText?: string
+  secondaryHelperText?: string
   errorText?: string
   textareaProps?: FieldInputProps
 }
@@ -32,7 +35,7 @@ export function TextareaField(props: TextareaFieldProps) {
     props,
     ['required', 'readOnly', 'disabled', 'invalid', 'ids'],
     ['size'],
-    ['helperText', 'errorText', 'label'],
+    ['helperText', 'errorText', 'label', 'secondaryHelperText'],
   )
 
   return (
@@ -41,9 +44,17 @@ export function TextareaField(props: TextareaFieldProps) {
 
       <FieldParts.Textarea rows={4} {...props.textareaProps} />
 
-      <FieldParts.HelperText>
-        {textareaFieldProps.helperText}
-      </FieldParts.HelperText>
+      <HStack justifyContent="space-between" w="full">
+        <FieldParts.HelperText>
+          {textareaFieldProps.helperText}
+        </FieldParts.HelperText>
+        <Show when={Boolean(textareaFieldProps.secondaryHelperText)}>
+          <FieldParts.HelperText>
+            {textareaFieldProps.secondaryHelperText}
+          </FieldParts.HelperText>
+        </Show>
+      </HStack>
+
       <FieldParts.ErrorText>
         {textareaFieldProps.errorText}
       </FieldParts.ErrorText>

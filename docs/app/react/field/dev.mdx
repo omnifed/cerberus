@@ -7,8 +7,7 @@ ark: 'field'
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import { SelectCustomPreview } from '@/app/react/select/components/select-preview'
-import { LivePlaygroundWithCode } from '@/app/react/select/components/live-preview'
+import { LivePlaygroundWithCode } from '@/app/react/field/components/live-preview'
 
 ```ts
 import {
@@ -43,7 +42,7 @@ You can utilize the primitive components to customize the select.
 | SelectItemText | The text label of the option |
 | SelectItemIndicator | The indicator shown when the option is selected |
 
-<CodePreview preview={<SelectCustomPreview />}>
+<CodePreview preview={<></>}>
 ```tsx
 function SelectCustomPreview() {
   const collection = createSelectCollection([

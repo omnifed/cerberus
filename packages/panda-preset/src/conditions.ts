@@ -21,7 +21,7 @@ export const conditions = {
   isComplete: '&:is([data-complete=true])',
   disabled: '&:is(:disabled, [disabled], [data-disabled], [aria-disabled])',
   invalid: '&:is(:invalid, [data-invalid], [aria-invalid])',
-  userInvalid: '&:is(:user-invalid, [aria-invalid])',
+  userInvalid: '&:is(:user-invalid, :invalid, [aria-invalid], [data-invalid])',
   groupInvalid: '.group:is([data-invalid] &, [aria-invalid]) &',
   groupChecked: '.group:is([data-checked="true"] &, [aria-checked="true"]) &',
 
