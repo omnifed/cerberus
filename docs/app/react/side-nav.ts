@@ -38,7 +38,6 @@ const hooksGroup: CategoriesList = {
     items: [
       'split-props',
       'trap-focus',
-      'use-date',
       'use-modal',
       'use-root-colors',
       'use-theme',

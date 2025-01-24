@@ -13,6 +13,7 @@ export * from './components/deprecated/ModalDescription'
 export * from './components/deprecated/NavMenuTrigger'
 export * from './components/deprecated/NavMenuList'
 export * from './components/deprecated/NavMenuLink'
+export * from './hooks/useDate'
 
 // components
 
@@ -77,7 +78,6 @@ export * from './context/theme'
 
 // hooks
 
-export * from './hooks/useDate'
 export * from './hooks/useModal'
 export * from './hooks/useTheme'
 export * from './hooks/useToggle'

@@ -38,13 +38,7 @@ export interface UseDateReturn extends UseDateBase {
 }
 
 /**
- * A hook for formatting and validating date inputs. The date format defaults to US Military format.
- * @example
- * ```tsx
- * const MyComponent = () => {
- *  const date = useDate({ initialValue: '01 JAN 2024' })
- *  return <input onChange={date.onChange} type="text" value={date.value} />
- * }
+ * @deprecated use the DatePicker family instead
  */
 export function useDate(options?: UseDateOptions): UseDateReturn {
   const initialValue = options?.initialValue ?? ''
