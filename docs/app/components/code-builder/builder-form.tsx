@@ -85,7 +85,7 @@ export default function BuilderForm(props: BuilderFormProps) {
             <Show when={props.api[key].type === 'text'}>
               <FieldRoot
                 ids={{
-                  input: key,
+                  control: key,
                 }}
               >
                 <FieldLabel
@@ -106,7 +106,6 @@ export default function BuilderForm(props: BuilderFormProps) {
             <Show when={props.api[key].type === 'number'}>
               <Input
                 {...(props.api[key] as NumberResult)}
-                label={key}
                 onChange={handleInputChange}
                 selectedValue={selectedProps[key] as string}
               />

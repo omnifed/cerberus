@@ -7,7 +7,7 @@ export function BasicFieldPreview() {
       <VStack alignItems="flex-start" gap="lg" w="full">
         <TextField
           ids={{
-            input: 'email',
+            control: 'email',
           }}
           label="Enter your email"
           helperText="We'll never share your email with anyone else."
@@ -15,7 +15,7 @@ export function BasicFieldPreview() {
         />
         <TextField
           ids={{
-            input: 'invalid-name',
+            control: 'invalid-name',
           }}
           label="Invalid example"
           errorText="A name is required to submit this form."
@@ -24,7 +24,7 @@ export function BasicFieldPreview() {
         />
         <TextareaField
           ids={{
-            input: 'message',
+            control: 'message',
           }}
           label="Anything else you want to tell us?"
           helperText="This will help us learn more about you."

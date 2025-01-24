@@ -1,6 +1,6 @@
-import { FieldInput, type TextFieldProps } from '@cerberus-design/react'
+import { FieldInput, type FieldInputProps } from '@cerberus-design/react'
 
-interface BuilderInputProps extends TextFieldProps {
+interface BuilderInputProps extends FieldInputProps {
   name: string
   type: 'text' | 'number'
   value: string | number

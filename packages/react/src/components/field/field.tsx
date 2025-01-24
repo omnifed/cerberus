@@ -1,9 +1,9 @@
 import {
   Field,
   type FieldHelperTextProps,
-  type FieldInputProps,
+  type FieldInputProps as ArkFieldInputProps,
   type FieldLabelProps,
-  type FieldRootProps,
+  type FieldRootProps as ArkFieldRootProps,
   type FieldTextareaProps,
 } from '@ark-ui/react/field'
 import { cx } from '@cerberus/styled-system/css'
@@ -14,6 +14,8 @@ import { FieldStatusIndicator } from './status-indicator'
  * This module contains all the primitives of the Field component.
  * @module 'field'
  */
+
+export type FieldRootProps = ArkFieldRootProps & FieldVariantProps
 
 /**
  * The context & container for the Field components.
@@ -26,7 +28,7 @@ import { FieldStatusIndicator } from './status-indicator'
  * </FieldRoot>
  * ```
  */
-export function FieldRoot(props: FieldRootProps & FieldVariantProps) {
+export function FieldRoot(props: FieldRootProps) {
   const { size, ...fieldProps } = props
   const styles = field({ size })
   return (
@@ -58,6 +60,9 @@ export function FieldLabel(props: FieldLabelProps) {
   )
 }
 
+export type FieldInputProps = Omit<ArkFieldInputProps, 'size'> &
+  FieldVariantProps
+
 /**
  * The input for the Field component.
  * @description [Field Docs](https://cerberus.digitalu.design/react/field)
@@ -68,9 +73,7 @@ export function FieldLabel(props: FieldLabelProps) {
  * </FieldRoot>
  * ```
  */
-export function FieldInput(
-  props: Omit<FieldInputProps, 'size'> & FieldVariantProps,
-) {
+export function FieldInput(props: FieldInputProps) {
   const { size, ...fieldProps } = props
   const styles = field({ size })
   return (

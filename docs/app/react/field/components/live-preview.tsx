@@ -49,13 +49,17 @@ export function MyTextField(props: TextFieldProps) {
 
 export function TextFieldPreview() {
   const { selectedProps } = useCodeBuilder()
+  const label = selectedProps.label as string
+  const placeholder = selectedProps.placeholder as string
+
   switch (selectedProps.size) {
     case 'sm':
       return (
         <TextField
           {...selectedProps}
+          label={label}
           inputProps={{
-            placeholder: selectedProps.placeholder,
+            placeholder,
           }}
           size="sm"
         />
@@ -65,8 +69,9 @@ export function TextFieldPreview() {
       return (
         <TextField
           {...selectedProps}
+          label={label}
           inputProps={{
-            placeholder: selectedProps.placeholder,
+            placeholder,
           }}
           size="md"
         />
@@ -76,8 +81,9 @@ export function TextFieldPreview() {
       return (
         <TextField
           {...selectedProps}
+          label={label}
           inputProps={{
-            placeholder: selectedProps.placeholder,
+            placeholder,
           }}
           size="lg"
         />
@@ -87,8 +93,9 @@ export function TextFieldPreview() {
       return (
         <TextField
           {...selectedProps}
+          label={label}
           inputProps={{
-            placeholder: selectedProps.placeholder,
+            placeholder,
           }}
         />
       )
