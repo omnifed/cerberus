@@ -224,6 +224,8 @@ export function PromptModal(
                   className={hstack({
                     gap: 'xs',
                     justify: 'flex-start !important',
+                    marginBlockEnd: 'xs',
+                    textStyle: 'label-md',
                   })}
                 >
                   Type
