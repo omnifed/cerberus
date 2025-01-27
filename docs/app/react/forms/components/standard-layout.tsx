@@ -2,8 +2,6 @@
 
 import {
   Button,
-  FieldRoot,
-  FieldHelperText,
   Field,
   Input,
   Option,
@@ -77,25 +75,20 @@ export default function StandardLayout() {
       </Box>
 
       <Box>
-        <FieldRoot
+        <Field
           ids={{
             control: 'age',
           }}
+          label="What's your age?"
+          helperText="We are legally required to ask for your age."
           required
         >
-          <Select
-            collection={collection}
-            label="Age"
-            placeholder="Select an option"
-          >
+          <Select collection={collection} placeholder="Select an option">
             {collection.items.map((item) => (
               <Option key={item.value} item={item} />
             ))}
           </Select>
-          <FieldHelperText>
-            We are legally required to ask for your age.
-          </FieldHelperText>
-        </FieldRoot>
+        </Field>
       </Box>
 
       <HStack>

@@ -46,7 +46,7 @@ export function BasicFieldPreview() {
 export function CustomField() {
   return (
     <Box w="1/2">
-      <FieldParts.Root>
+      <FieldParts.Root ids={{ control: 'customField' }}>
         <FieldParts.Label
           className={css({
             fontSize: 'xl',
