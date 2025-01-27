@@ -12,12 +12,11 @@ import {
 } from '@cerberus/styled-system/recipes'
 import { css, cx } from '@cerberus/styled-system/css'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
-import { Field } from '../context/field'
 import { useCerberusContext } from '../context/cerberus'
-import { FieldMessage } from './deprecated/FieldMessage'
 import { ProgressBar, type ProgressBarProps } from './ProgressBar'
 import { IconButton } from './IconButton'
 import { Avatar } from './Avatar'
+import { Field, FieldHelperText } from './field/index'
 
 /**
  * This module contains the FileStatus component.
@@ -157,15 +156,15 @@ export function FileStatus(props: FileStatusProps) {
           now={now}
           size="sm"
         />
-        <Field invalid={modalIconPalette === 'hades-dark'}>
-          <FieldMessage
+        <Field label="" invalid={modalIconPalette === 'hades-dark'}>
+          <FieldHelperText
             className={css({
               color: 'page.text.100',
             })}
             id={`help:${file}`}
           >
             <MatchFileStatusText status={status} now={now} />
-          </FieldMessage>
+          </FieldHelperText>
         </Field>
       </div>
 

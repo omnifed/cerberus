@@ -7,9 +7,9 @@ import {
 import { vstack } from '@cerberus/styled-system/patterns'
 import { cx } from '@cerberus/styled-system/css'
 import type { InputHTMLAttributes } from 'react'
-import { Show } from './Show'
-import { useFieldContext } from '../context/field'
 import { useCerberusContext } from '../context/cerberus'
+import { Show } from './Show'
+import { useFieldContext } from '@ark-ui/react/field'
 
 /**
  * This module contains the Checkbox component.
@@ -19,11 +19,11 @@ import { useCerberusContext } from '../context/cerberus'
 export type CheckboxProps = CheckboxVariantProps &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'id'> & {
     /**
-     * The id of the FieldMessage element describing the Checkbox.
+     * @deprecated
      */
     describedBy?: string
     /**
-     * The unique identifier for the checkbox. Required for accessibility.
+     * @deprecated use the Field.ids.control instead
      */
     id: string
     /**
@@ -46,8 +46,9 @@ export type CheckboxProps = CheckboxVariantProps &
  * ```
  */
 export function Checkbox(props: CheckboxProps) {
-  const { describedBy, size, checked, mixed, ...nativeProps } = props
-  const { invalid, ...fieldStates } = useFieldContext()
+  const { size, checked, mixed, ...nativeProps } = props
+  const { invalid, disabled, readOnly, required, ariaDescribedby } =
+    useFieldContext()
   const styles = checkbox({ size })
   const { icons } = useCerberusContext()
   const { checkbox: CheckIcon, indeterminate: IndeterminateIcon } = icons
@@ -71,8 +72,10 @@ export function Checkbox(props: CheckboxProps) {
     >
       <input
         {...nativeProps}
-        {...fieldStates}
-        {...(describedBy && { 'aria-describedby': describedBy })}
+        {...(disabled && { disabled: true })}
+        {...(readOnly && { readOnly: true })}
+        {...(required && { required: true })}
+        {...(ariaDescribedby && { 'aria-describedby': ariaDescribedby })}
         {...(invalid && { 'aria-invalid': true })}
         {...(mixed && { 'aria-checked': 'mixed' })}
         className={cx('peer', nativeProps.className, styles.input)}

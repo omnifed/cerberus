@@ -14,7 +14,6 @@ export * from './components/deprecated/ModalDescription'
 export * from './components/deprecated/NavMenuTrigger'
 export * from './components/deprecated/NavMenuList'
 export * from './components/deprecated/NavMenuLink'
-export * from './context/field'
 export * from './hooks/useDate'
 
 // components

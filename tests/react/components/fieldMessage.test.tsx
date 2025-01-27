@@ -9,7 +9,7 @@ describe('FieldMessage', () => {
 
   test('should render a field message', () => {
     render(
-      <Field>
+      <Field label="Test">
         <FieldMessage id="test">Test Field Message</FieldMessage>
       </Field>,
     )
@@ -18,7 +18,7 @@ describe('FieldMessage', () => {
 
   test('should render an invalid field message', () => {
     render(
-      <Field invalid>
+      <Field label="Invalid test" invalid>
         <FieldMessage id="test">Test Field Message</FieldMessage>
       </Field>,
     )

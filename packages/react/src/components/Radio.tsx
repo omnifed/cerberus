@@ -1,11 +1,9 @@
-'use client'
-
+import { Field } from '@ark-ui/react/field'
 import { cx } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
 import { radio } from '@cerberus/styled-system/recipes'
 import type { RecipeVariantProps } from '@cerberus/styled-system/types'
 import type { InputHTMLAttributes, PropsWithChildren } from 'react'
-import { useFieldContext } from '../context/field'
 
 /**
  * This module contains the Radio component.
@@ -45,7 +43,6 @@ export type RadioProps = RadioBaseProps & RadioRecipe
  */
 export function Radio(props: PropsWithChildren<RadioProps>) {
   const { children, size, ...nativeProps } = props
-  const { invalid, ...state } = useFieldContext()
   const styles = radio({ size })
 
   return (
@@ -59,10 +56,8 @@ export function Radio(props: PropsWithChildren<RadioProps>) {
       )}
       tabIndex={0}
     >
-      <input
+      <Field.Input
         {...nativeProps}
-        {...state}
-        {...(invalid && { 'aria-invalid': true })}
         className={cx(nativeProps.className, styles.input)}
         tabIndex={-1}
         type="radio"

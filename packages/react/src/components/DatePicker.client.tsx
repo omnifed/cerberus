@@ -12,7 +12,6 @@ import {
 import { Portal } from './Portal'
 import { datePicker, iconButton } from '@cerberus/styled-system/recipes'
 import { css, cx } from '@cerberus/styled-system/css'
-import { useFieldContext } from '../context/field'
 import {
   DatePickerView,
   DatePickerContext,
@@ -50,12 +49,10 @@ const datePickerStyles = datePicker()
  * ```
  */
 export function DatePicker(props: DatePickerRootProps) {
-  const states = useFieldContext()
-
-  // TODO: Remove this once the bug is fixed: https://github.com/chakra-ui/ark/issues/3112
-
   // There is a bug with the Root component that causes random date selection
   // onBlur after the first selection if the format prop is used.
+  // ref: https://github.com/chakra-ui/ark/issues/3112#event-16047829195
+
   // const handleFormat = useCallback((value: DateValue) => {
   //   return formatISOToMilitary(value.toString())
   // }, [])
@@ -63,7 +60,6 @@ export function DatePicker(props: DatePickerRootProps) {
   return (
     <ArkDP.Root
       {...props}
-      {...states}
       positioning={{
         placement: 'bottom-start',
       }}
@@ -157,14 +153,11 @@ export function DatePickerTrigger(props: DatePickerTriggerProps) {
  * ```
  */
 export function DatePickerInput(props: DatePickerInputProps) {
-  const { invalid, ...fieldStates } = useFieldContext()
   return (
     <ArkDP.Control className={datePickerStyles.control}>
       <DatePickerTrigger />
       <ArkDP.Input
         {...props}
-        {...fieldStates}
-        {...(invalid && { 'aria-invalid': true })}
         className={cx(props.className, datePickerStyles.input)}
         placeholder={props.placeholder ?? 'DD MMM YYYY'}
         maxLength={11}
@@ -200,7 +193,6 @@ export interface RangePickerInputProps
  * ```
  */
 export function RangePickerInput(props: RangePickerInputProps) {
-  const { invalid, ...fieldStates } = useFieldContext()
   const { defaultValue, ...nativeProps } = props
 
   const startDate = useMemo(() => defaultValue?.[0], [defaultValue])
@@ -211,8 +203,6 @@ export function RangePickerInput(props: RangePickerInputProps) {
       <DatePickerTrigger />
       <ArkDP.Input
         {...nativeProps}
-        {...fieldStates}
-        {...(invalid && { 'aria-invalid': true })}
         data-range-input
         defaultValue={startDate}
         className={cx(props.className, datePickerStyles.input)}
@@ -222,8 +212,6 @@ export function RangePickerInput(props: RangePickerInputProps) {
       />
       <ArkDP.Input
         {...nativeProps}
-        {...fieldStates}
-        {...(invalid && { 'aria-invalid': true })}
         data-range-input
         defaultValue={endDate}
         data-range-end-input
