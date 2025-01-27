@@ -1,5 +1,6 @@
-import { Field, Input, Textarea } from '@cerberus-design/react'
+import { Field, Input, Textarea, FieldParts } from '@cerberus-design/react'
 import { Box, VStack } from '@cerberus-design/styled-system/jsx'
+import { css } from '@cerberus/styled-system/css'
 
 export function BasicFieldPreview() {
   return (
@@ -38,6 +39,37 @@ export function BasicFieldPreview() {
           <Textarea name="message" />
         </Field>
       </VStack>
+    </Box>
+  )
+}
+
+export function CustomField() {
+  return (
+    <Box w="1/2">
+      <FieldParts.Root>
+        <FieldParts.Label
+          className={css({
+            fontSize: 'xl',
+            fontWeight: 'black',
+            textTransform: 'uppercase',
+          })}
+        >
+          Custom Label
+        </FieldParts.Label>
+        <FieldParts.Input
+          className={css({
+            transform: 'skewX(-10deg)',
+          })}
+          type="text"
+        />
+        <FieldParts.HelperText
+          className={css({
+            fontStyle: 'italic',
+          })}
+        >
+          Custom Helper Text
+        </FieldParts.HelperText>
+      </FieldParts.Root>
     </Box>
   )
 }

@@ -6,7 +6,7 @@ import {
   fieldMessage,
   type FieldMessageVariantProps,
 } from '@cerberus/styled-system/recipes'
-import { useFieldContext } from '../../context/field'
+import { useFieldContext } from '@ark-ui/react/field'
 
 /**
  * This module contains the FieldMessage component.

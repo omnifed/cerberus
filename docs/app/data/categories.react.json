@@ -75,6 +75,6 @@
     ],
     "next": ["Field"],
     "new": [],
-    "deprecated": ["Label", "Input", "Field Message", "Textarea"]
+    "deprecated": ["Label", "Field Message"]
   }
 }

@@ -30,7 +30,7 @@ function isProgressKey(key: string) {
 }
 
 function isChildContent(key: string) {
-  return ['text', 'helpText', 'label', 'heading', 'description'].includes(key)
+  return ['text', 'helpText', 'heading', 'description'].includes(key)
 }
 
 interface BuilderSnippetProps {

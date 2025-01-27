@@ -80,6 +80,7 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
     label: {
       alignItems: 'center',
       display: 'inline-flex',
+      color: 'page.text.initial',
       justifyContent: 'space-between',
       textStyle: smallLabel,
       w: 'full',
@@ -106,6 +107,7 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     textarea: {
       ...inputStyles,
+      minH: '6.5rem',
       minW: '13.25rem',
       paddingBlock: '0.75rem',
     },

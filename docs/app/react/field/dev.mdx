@@ -7,139 +7,118 @@ ark: 'field'
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import { LivePlaygroundWithCode } from '@/app/react/field/components/live-preview'
+import { BasicFieldPreview, CustomField } from '@/app/react/field/components/field-preview'
+
 
 ```ts
 import {
-  TextField,
-  TextareaField,
+  Field,
   FieldParts,
 } from '@cerberus/react'
 ```
 
 ## Usage
 
-<LivePlaygroundWithCode />
+The `Field` component helps manage the state of form fields and ensures consistent display of labels, helper texts, and error messages.
 
-## Customizing
+<CodePreview preview={<BasicFieldPreview />}>
+```tsx title="some-form.tsx"
+import { Field, Input, Textarea } from '@cerberus/react'
+import { Box, VStack } from '@cerberus/styled-system/jsx'
 
-You can utilize the primitive components to customize the select.
+export function BasicFieldPreview() {
+  return (
+    <form action={someAction} method="post">
+      <Box w="1/2">
+        <VStack alignItems="flex-start" gap="lg" w="full">
+          <Field
+            ids={{
+              control: 'email',
+            }}
+            label="Enter your email"
+            helperText="We'll never share your email with anyone else."
+            required
+          >
+            <Input name="email" type="email" />
+          </Field>
+          <Field
+            ids={{
+              control: 'invalid-name',
+            }}
+            label="Invalid example"
+            helperText="This is an example of an invalid field."
+            errorText="A name is required to submit this form. It replaces the helper text."
+            invalid
+            required
+          >
+            <Input name="invalid-name" type="text" />
+          </Field>
+          <Field
+            ids={{
+              control: 'message',
+            }}
+            label="Anything else you want to tell us?"
+            helperText="This will help us learn more about you."
+            secondaryHelperText="0/300"
+          >
+            <Textarea name="message" />
+          </Field>
+        </VStack>
+      </Box>
+    </form>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components to customize the field.
 
 | Component | Description |
 | --------- | ----------- |
-| SelectRoot    | The context provider for the Select family |
-| SelectLabel   | The label that appears above the select input |
-| SelectControl | The wrapper to the select trigger that opens the dropdown |
-| SelectTrigger | he trigger that opens the dropdown |
-| SelectValueText | The text that appears in the trigger |
-| SelectIndicator | The indicator that appears in the trigger |
-| SelectClearTrigger | The trigger that clears the selected value |
-| SelectPositioner | The wrapper that positions the dropdown |
-| SelectContent | The content of the dropdown (i.e. the container itself) |
-| SelectItemGroup | The group of options in the dropdown |
-| SelectItemGroupLabel | The label for the group of options |
-| SelectItem | The option in the dropdown |
-| SelectItemText | The text label of the option |
-| SelectItemIndicator | The indicator shown when the option is selected |
+| FieldRoot    | The context provider for the Field family |
+| FieldLabel   | The label of the field |
+| FieldInput   | The input of the field |
+| FieldHelperText | The helper text of the field |
+| FieldErrorText  | The error text of the field |
+| FieldTextarea   | The textarea of the field |
+| StartIndicator  | The start indicator of the field |
+| StatusIndicator | The status indicator or end icon of the field |
 
-<CodePreview preview={<></>}>
+<CodePreview preview={<CustomField />}>
 ```tsx
-function SelectCustomPreview() {
-  const collection = createSelectCollection([
-    { label: 'Hades', value: '1-hades' },
-    { label: 'Persephone', value: '1-persephone' },
-    { label: 'Zeus', value: '1-zeus', disabled: true },
-    { label: 'Poseidon', value: '1-poseidon' },
-    { label: 'Hera', value: '1-hera' },
-  ])
+import { FieldParts } from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
+import { css } from '@cerberus/styled-system/css'
 
+export function CustomField() {
   return (
     <Box w="1/2">
-      <SelectRoot collection={collection}>
-        <SelectLabel
+      <FieldParts.Root>
+        <FieldParts.Label
           className={css({
-            paddingBlock: 2,
-            textStyle: 'body-sm',
+            fontSize: 'xl',
+            fontWeight: 'black',
             textTransform: 'uppercase',
           })}
         >
-          Select a custom relative
-        </SelectLabel>
-
-        <SelectControl>
-          <SelectTrigger
-            className={cx(
-              css({
-                bgColor: 'black',
-                color: 'danger.surface.initial',
-                paddingInline: 4,
-                paddingBlock: 3,
-                _hover: {
-                  bgColor: 'danger.surface.initial',
-                  color: 'white',
-                },
-              }),
-              hstack({
-                justify: 'space-between',
-                w: 'full',
-              }),
-            )}
-          >
-            <SelectValueText placeholder="Choose a custom option" />
-            <SelectIndicator
-              className={css({
-                transitionProperty: 'transform',
-                transitionDuration: 'fast',
-                _open: {
-                  transform: 'rotate(180deg)',
-                },
-              })}
-            >
-              <ChevronDownOutline />
-            </SelectIndicator>
-          </SelectTrigger>
-          <SelectClearTrigger>Clear</SelectClearTrigger>
-        </SelectControl>
-
-        <Portal>
-          <SelectPositioner className={css({ w: 'var(--reference-width)' })}>
-            <SelectContent
-              className={css({
-                bgColor: 'danger.surface.initial',
-                p: 4,
-              })}
-            >
-              <SelectItemGroup>
-                <SelectItemGroupLabel
-                  className={css({
-                    fontWeight: 'bold',
-                    textStyle: 'label-sm',
-                    textTransform: 'uppercase',
-                  })}
-                >
-                  The fam
-                </SelectItemGroupLabel>
-                {collection.items.map((item, idx) => (
-                  <SelectItem key={item.value} item={item}>
-                    <SelectItemText
-                      className={css({
-                        color: 'white',
-                        display: 'inline-block',
-                      })}
-                      style={{
-                        paddingInlineStart: `calc(16px * ${idx})`,
-                      }}
-                    >
-                      {item.label}
-                    </SelectItemText>
-                    <SelectItemIndicator>✓</SelectItemIndicator>
-                  </SelectItem>
-                ))}
-              </SelectItemGroup>
-            </SelectContent>
-          </SelectPositioner>
-        </Portal>
-      </SelectRoot>
+          Custom Label
+        </FieldParts.Label>
+        <FieldParts.Input
+          className={css({
+            transform: 'skewX(-10deg)',
+          })}
+          type="text"
+        />
+        <FieldParts.HelperText
+          className={css({
+            fontStyle: 'italic',
+          })}
+        >
+          Custom Helper Text
+        </FieldParts.HelperText>
+      </FieldParts.Root>
     </Box>
   )
 }
@@ -149,47 +128,33 @@ function SelectCustomPreview() {
 
 ## API
 
-### Select
+### Props
 
-The `Select` component is an abstraction of our primitives and accepts the following props:
-
-| Name     | Default | Description                                            |
-| -------- | ------- | ------------------------------------------------------ |
-| label    |         | The label to show above the select trigger. |
-| placeholder |         | The placeholder to show in the select trigger. |
-| size        | 'md'    | The size of the select. |
-| collection  |         | The collection of options to show in the dropdown. |
-
-The `Select` component also accepts all the props of the [`SelectRoot` primitive props](https://ark-ui.com/react/docs/components/select#api-reference)
-
-### Option
-
-The `Option` component is an abstraction of our primitives and accepts the following props:
+The `Field` component is an abstraction of our primitives and accepts the following props:
 
 | Name     | Default | Description                                            |
 | -------- | ------- | ------------------------------------------------------ |
-| item     |       | The item to show in the dropdown. `SelectCollectionItem` |
+| label    |         | The label to show above the field input. |
+| helperText |         | The helper text to show below the field input. |
+| secondaryHelperText |         | The secondary helper text to show below the field input at the end of the row. |
+| errorText  |         | The error text to show below the field input. It replaces the helperText when visible. |
 
-The `Option` component also accepts all the props of the [`SelectItem` primitive props](https://ark-ui.com/react/docs/components/select#api-reference)
 
-### OptionGroup
+The `Field` component also accepts all the props of the [`FieldRoot` primitive props](https://ark-ui.com/react/docs/components/field#api-reference)
 
-The `OptionGroup` component is an abstraction of our primitives and accepts the same props as the `SelectItemGroup` primitive.
+### Parts
 
-### OptionGroupLabel
+The `FieldParts` API is an Object containing the full family of components.
 
-The `OptionGroupLabel` component is an abstraction of our primitives and accepts the same props as the `SelectItemGroupLabel` primitive.
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `FieldRoot` component which is the Provider for the family. |
+| Label     | The `FieldLabel` component which displays the label and "required" notice. |
+| Input     | The `FieldInput` component which is the input field. |
+| Textarea  | The `FieldTextarea` component which is the textarea field. |
+| HelperText | The `FieldHelperText` component which displays the helper text. |
+| ErrorText  | The `FieldErrorText` component which displays the error text. |
+| StartIndicator | The `StartIndicator` component which displays an indicator of your choice at the start of the field. |
+| StatusIndicator | The `StatusIndicator` component which displays an indicator of your choice at the end of the field. |
 
-### createSelectCollection
-
-The `createSelectCollection` function is a utility function that creates a collection of options for the `Select` component.
-
-```ts
-export function createSelectCollection(
-  collection: SelectCollectionItem[],
-): ListCollection<SelectCollectionItem> {
-  return createListCollection({
-    items: collection,
-  })
-}
-```
+<NoteAdmonition description="It is best to only use the FieldParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />

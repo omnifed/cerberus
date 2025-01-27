@@ -2,24 +2,26 @@
 ---
 
 import OverviewList from '@/app/components/OverviewList'
-import {
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
-} from '@/app/components/Admonition'
+import DripDivider from '@/app/components/drip-divider'
 import { LivePlayground } from '@/app/react/field/components/live-preview'
 
 ## Usage
 
-<WhenToUseAdmonition description="Use a select field when someone needs to make a single choice from a long-list of options." />
+<OverviewList intro="How to write supporting text" rules={[
+  'Helper text should be concise and easy to understand',
+  'Helper text should not be redundant with the label',
+  'Error text should be clear and actionable',
+  'Error text should provide the context of the helper text',
+]} />
 
-## Standard Select
+## Standard Field
 
 <LivePlayground />
 
-<WhenNotToUseAdmonition description="When you have a short list of four or less options, use a Radio group." />
+<DripDivider />
 
 ## Responsive Layout
 
-As layouts adapt to larger screens and different window sizes, apply flexible container dimensions to select fields. Set minimum and maximum values for margins, padding, and container dimensions as layouts scale so that typography adjusts for better reading experiences.
+As layouts adapt to larger screens and different window sizes, apply flexible container dimensions to fields. Set minimum and maximum values for margins, padding, and container dimensions as layouts scale so that typography adjusts for better reading experiences.
 
-Select fields can span the full width of the display on compact window sizes, but should be bounded by flexible margins or other containers on medium and expanded window sizes.
+Fields can span the full width of the display on compact window sizes, but should be bounded by flexible margins or other containers on medium and expanded window sizes.
