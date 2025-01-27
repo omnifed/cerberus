@@ -8,6 +8,7 @@ import { focusStates } from '../shared/states'
  */
 
 const smallLabel = 'label-sm'
+const disabledText = 'page.text.100'
 
 const inputStyles = {
   bgColor: 'page.surface.initial',
@@ -64,8 +65,8 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
     'FieldErrorText',
     'FieldStatusIndicator',
     'FieldTextarea',
-    'TextField',
-    'TextareaField',
+    'Input',
+    'Textarea',
   ],
 
   base: {
@@ -82,6 +83,9 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
       justifyContent: 'space-between',
       textStyle: smallLabel,
       w: 'full',
+      _disabled: {
+        color: disabledText,
+      },
       '& > [data-part=required-indicator]': {
         display: 'inline-block',
         color: 'page.text.100',

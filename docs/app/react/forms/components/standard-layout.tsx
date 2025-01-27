@@ -4,7 +4,8 @@ import {
   Button,
   FieldRoot,
   FieldHelperText,
-  TextField,
+  Field,
+  Input,
   Option,
   Select,
   createSelectCollection,
@@ -40,7 +41,7 @@ export default function StandardLayout() {
       </p>
 
       <Box w="full">
-        <TextField
+        <Field
           required
           label="First Name"
           ids={{
@@ -48,11 +49,17 @@ export default function StandardLayout() {
           }}
           errorText="A first name is required to submit the form."
           helperText="This is what everyone will see when you post a comment."
-        />
+        >
+          <Input
+            name="first_name"
+            placeholder="Enter your first name"
+            type="text"
+          />
+        </Field>
       </Box>
 
       <Box w="full">
-        <TextField
+        <Field
           required
           label="Last Name"
           ids={{
@@ -60,7 +67,13 @@ export default function StandardLayout() {
           }}
           errorText="A last name is required to submit the form."
           helperText="This is what everyone will see when you post a comment."
-        />
+        >
+          <Input
+            name="last_name"
+            placeholder="Enter your last name"
+            type="text"
+          />
+        </Field>
       </Box>
 
       <Box>

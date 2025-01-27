@@ -37,7 +37,7 @@ export function FieldStatusIndicator(props: FieldStatusIndicatorProps) {
       <span
         {...nativeProps}
         aria-hidden="true"
-        data-part="status-indicator"
+        data-invalid
         className={cx(nativeProps.className, styles.statusIndicator)}
       >
         <InvalidIcon />

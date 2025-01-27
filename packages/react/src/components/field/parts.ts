@@ -6,7 +6,7 @@ import {
   FieldLabel,
   FieldRoot,
   FieldTextarea,
-} from './field'
+} from './primitives'
 import { FieldStatusIndicator } from './status-indicator'
 import { FieldStartIndicator } from './start-indicator'
 

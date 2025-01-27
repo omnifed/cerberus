@@ -7,7 +7,7 @@ import {
   useMemo,
   type PropsWithChildren,
 } from 'react'
-import { FieldRoot } from '../components/field/field'
+import { FieldRoot } from '../components/field/primitives'
 
 /**
  * This module provides a context and hook for the field.
@@ -39,7 +39,9 @@ const FieldContext = createContext<FieldContextValue | null>(null)
 /**
  * @deprecated use FieldRoot or FieldParts instead
  */
-export function Field(props: PropsWithChildren<FieldRootProps>): JSX.Element {
+export function FieldProvider(
+  props: PropsWithChildren<FieldRootProps>,
+): JSX.Element {
   const value = useMemo(
     () => ({
       disabled: props.disabled,
