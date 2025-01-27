@@ -52,9 +52,9 @@ describe('Fieldset & Legend', () => {
       <Field required>
         <Fieldset name="cats">
           <Legend>Do you like cats?</Legend>
-          <Radio id="yes" name="cats" value="yes" />
-          <FieldsetLabel htmlFor="yes">Yes</FieldsetLabel>
-          <Radio id="no" name="cats" value="no" />
+          <Radio id="yes" name="cats" value="yes" required />
+          <FieldsetLabel>Yes</FieldsetLabel>
+          <Radio id="no" name="cats" value="no" required />
           <FieldsetLabel htmlFor="no">No</FieldsetLabel>
         </Fieldset>
       </Field>,

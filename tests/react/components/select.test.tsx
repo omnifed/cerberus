@@ -26,11 +26,13 @@ describe('Select', () => {
   test('should render a select', () => {
     render(
       <CerberusProvider config={config}>
-        <Select collection={collection} label="Select Relative">
-          {collection.items.map((item) => (
-            <Option key={item.value} item={item} />
-          ))}
-        </Select>
+        <Field label="Select Relative">
+          <Select collection={collection}>
+            {collection.items.map((item) => (
+              <Option key={item.value} item={item} />
+            ))}
+          </Select>
+        </Field>
       </CerberusProvider>,
     )
     expect(screen.getByRole('combobox')).toBeTruthy()
@@ -40,8 +42,8 @@ describe('Select', () => {
   test('should render an option group with a label', async () => {
     render(
       <CerberusProvider config={config}>
-        <Field>
-          <Select collection={collection} label="Select Relative">
+        <Field label="Select Relative">
+          <Select collection={collection}>
             <OptionGroup>
               <OptionGroupLabel>Group 1</OptionGroupLabel>
               {collection.items.map((item) => (

@@ -13,7 +13,7 @@ export interface FieldProps extends FieldRootProps {
   /**
    * The label of the field.
    */
-  label: string
+  label?: string
   /**
    * The helper text of the field.
    */
@@ -56,7 +56,10 @@ export function Field(props: FieldProps) {
 
   return (
     <FieldRoot {...statusProps} {...rootProps}>
-      <FieldLabel>{fieldProps.label}</FieldLabel>
+      <Show when={Boolean(fieldProps.label)}>
+        <FieldLabel>{fieldProps.label}</FieldLabel>
+      </Show>
+
       {fieldProps.children}
 
       <Show when={Boolean(fieldProps.helperText && !statusProps.invalid)}>

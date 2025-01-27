@@ -7,7 +7,10 @@ import type { LabelProps } from './deprecated/Label'
  * @module FieldsetLabel
  */
 
-export type FieldsetLabelProps = LabelProps & LabelVariantProps
+export type FieldsetLabelProps = LabelProps &
+  LabelVariantProps & {
+    htmlFor?: string
+  }
 
 /**
  * Used for labeling inputs that are children of a Fieldset group.

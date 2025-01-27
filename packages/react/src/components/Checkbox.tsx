@@ -25,7 +25,7 @@ export type CheckboxProps = CheckboxVariantProps &
     /**
      * @deprecated use the Field.ids.control instead
      */
-    id: string
+    id?: string
     /**
      * Used to display a mixed checked state.
      * @description [ARIA Mixed State](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/examples/checkbox-mixed/)
@@ -47,7 +47,7 @@ export type CheckboxProps = CheckboxVariantProps &
  */
 export function Checkbox(props: CheckboxProps) {
   const { size, checked, mixed, ...nativeProps } = props
-  const { invalid, disabled, readOnly, required, ariaDescribedby } =
+  const { invalid, disabled, readOnly, required, ariaDescribedby, ids } =
     useFieldContext()
   const styles = checkbox({ size })
   const { icons } = useCerberusContext()
@@ -78,6 +78,7 @@ export function Checkbox(props: CheckboxProps) {
         {...(ariaDescribedby && { 'aria-describedby': ariaDescribedby })}
         {...(invalid && { 'aria-invalid': true })}
         {...(mixed && { 'aria-checked': 'mixed' })}
+        id={ids.control}
         className={cx('peer', nativeProps.className, styles.input)}
         type="checkbox"
       />
