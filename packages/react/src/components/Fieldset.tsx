@@ -1,8 +1,8 @@
 'use client'
 
+import { useFieldContext } from '@ark-ui/react/field'
 import { css, cx } from '@cerberus/styled-system/css'
 import type { FieldsetHTMLAttributes } from 'react'
-import { useFieldContext } from '../context/field'
 
 /**
  * This module contains the Fieldset component.
@@ -45,12 +45,12 @@ export type FieldsetProps = FieldsetHTMLAttributes<HTMLFieldSetElement>
  * }
  */
 export function Fieldset(props: FieldsetProps) {
-  const { invalid, ...formState } = useFieldContext()
+  const { invalid, disabled } = useFieldContext()
 
   return (
     <fieldset
       {...props}
-      {...formState}
+      disabled={disabled}
       {...(invalid && { 'aria-invalid': true })}
       className={cx(
         props.className,

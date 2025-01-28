@@ -1,6 +1,6 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Field, Label, Radio } from '@cerberus-design/react'
+import { FieldRoot, FieldLabel, Radio } from '@cerberus-design/react'
 import { setupStrictMode } from '@/utils'
 
 describe('Radio', () => {
@@ -9,11 +9,11 @@ describe('Radio', () => {
 
   test('should render a radio', () => {
     render(
-      <Field required>
+      <FieldRoot required>
         <Radio id="test">
-          <Label htmlFor="test">Test Label</Label>,
+          <FieldLabel htmlFor="test">Test label</FieldLabel>
         </Radio>
-      </Field>,
+      </FieldRoot>,
     )
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
     expect(screen.getByText(/(required)/i)).toBeTruthy()
@@ -25,11 +25,11 @@ describe('Radio', () => {
 
   test('should render a radio with error', () => {
     render(
-      <Field required invalid>
+      <FieldRoot required invalid>
         <Radio id="test">
-          <Label htmlFor="test">Test Label</Label>,
+          <FieldLabel>Test Label</FieldLabel>,
         </Radio>
-      </Field>,
+      </FieldRoot>,
     )
     expect(
       screen.getByRole('radio').attributes.getNamedItem('aria-invalid'),
@@ -38,11 +38,11 @@ describe('Radio', () => {
 
   test('should render a radio with disabled', () => {
     render(
-      <Field disabled>
+      <FieldRoot disabled>
         <Radio id="test">
-          <Label htmlFor="test">Test Label</Label>,
+          <FieldLabel>Test Label</FieldLabel>,
         </Radio>
-      </Field>,
+      </FieldRoot>,
     )
     expect(
       screen.getByRole('radio').attributes.getNamedItem('disabled'),
@@ -52,10 +52,10 @@ describe('Radio', () => {
   test('should render a radio with a sm size', () => {
     render(
       <Radio id="test" size="sm">
-        <Label htmlFor="test">Test Label</Label>,
+        <FieldLabel htmlFor="test">Test Label</FieldLabel>,
       </Radio>,
       {
-        wrapper: Field,
+        wrapper: FieldRoot,
       },
     )
     expect(
@@ -68,10 +68,10 @@ describe('Radio', () => {
   test('should render a radio with a md size', () => {
     render(
       <Radio id="test" size="md">
-        <Label htmlFor="test">Test Label</Label>,
+        <FieldLabel htmlFor="test">Test Label</FieldLabel>,
       </Radio>,
       {
-        wrapper: Field,
+        wrapper: FieldRoot,
       },
     )
     expect(

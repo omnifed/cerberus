@@ -1,11 +1,11 @@
 import ApiLinks from '@/app/components/ApiLinks'
 import OnThisPage from '../../components/OnThisPage'
 import { PageMainContent, PageSections } from '../../components/PageLayout'
-import UseThemeDoc, { frontmatter } from './doc.mdx'
+import Doc, { frontmatter } from './doc.mdx'
 import FeatureHeader from '@/app/components/FeatureHeader'
 import type { MatchFeatureKind } from '@/app/components/MatchFeatureImg'
 
-export default function UseDatePage() {
+export default function SplitPropsPage() {
   return (
     <>
       <PageMainContent>
@@ -16,7 +16,7 @@ export default function UseDatePage() {
         />
         <ApiLinks {...frontmatter} />
         <main>
-          <UseThemeDoc />
+          <Doc />
         </main>
       </PageMainContent>
 

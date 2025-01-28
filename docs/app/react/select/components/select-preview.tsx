@@ -1,6 +1,7 @@
 'use client'
 
 import {
+  Field,
   Select,
   Option,
   createSelectCollection,
@@ -36,15 +37,13 @@ export function SelectBasicPreview() {
 
   return (
     <Box w="1/2">
-      <Select
-        collection={collection}
-        label="Select Relative"
-        placeholder="Choose option"
-      >
-        {collection.items.map((item) => (
-          <Option key={item.value} item={item} />
-        ))}
-      </Select>
+      <Field label="Select Relative">
+        <Select collection={collection} placeholder="Choose option">
+          {collection.items.map((item) => (
+            <Option key={item.value} item={item} />
+          ))}
+        </Select>
+      </Field>
     </Box>
   )
 }

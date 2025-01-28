@@ -1,6 +1,6 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Field, Label, Textarea } from '@cerberus-design/react'
+import { Field, Textarea } from '@cerberus-design/react'
 import { setupStrictMode } from '@/utils'
 
 describe('Textarea', () => {
@@ -9,9 +9,8 @@ describe('Textarea', () => {
 
   test('should render a textarea', () => {
     render(
-      <Field required>
-        <Label htmlFor="test">Test Label</Label>,
-        <Textarea id="test" />
+      <Field label="Test Label" required>
+        <Textarea />
       </Field>,
       {
         wrapper: Field,
@@ -27,9 +26,8 @@ describe('Textarea', () => {
 
   test('should render a textarea with error', () => {
     render(
-      <Field required invalid>
-        <Label htmlFor="test">Test Label</Label>,
-        <Textarea id="test" />
+      <Field label="Test Label" required invalid>
+        <Textarea />
       </Field>,
       {
         wrapper: Field,
@@ -42,9 +40,8 @@ describe('Textarea', () => {
 
   test('should render a textarea with disabled', () => {
     render(
-      <Field disabled>
-        <Label htmlFor="test">Test Label</Label>,
-        <Textarea id="test" />
+      <Field label="Test Label" disabled>
+        <Textarea />
       </Field>,
       {
         wrapper: Field,
@@ -57,30 +54,13 @@ describe('Textarea', () => {
 
   test('should render a textarea with placeholder', () => {
     render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Textarea id="test" placeholder="Test Placeholder" />
+      <Field label="Test Label">
+        <Textarea placeholder="Test Placeholder" />
       </Field>,
       {
         wrapper: Field,
       },
     )
     expect(screen.getByRole('textbox')).toBeTruthy()
-  })
-
-  test('should render a textarea with describedBy', () => {
-    render(
-      <Field>
-        <Label htmlFor="test">Test Label</Label>,
-        <Textarea id="test" describedBy="test-description" />
-        <span id="test-description">Test Description</span>
-      </Field>,
-      {
-        wrapper: Field,
-      },
-    )
-    expect(
-      screen.getByRole('textbox').attributes.getNamedItem('aria-describedby'),
-    ).toBeTruthy()
   })
 })

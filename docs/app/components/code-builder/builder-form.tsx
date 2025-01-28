@@ -9,7 +9,6 @@ import type {
 } from './helpers'
 import {
   Field,
-  Label,
   Show,
   type SelectCollectionItem,
   type SelectValueChangeDetails,
@@ -65,10 +64,14 @@ export default function BuilderForm(props: BuilderFormProps) {
             w: 'full',
           })}
         >
-          <Field>
+          <Field
+            ids={{
+              control: key,
+            }}
+            label={key}
+          >
             <Show when={props.api[key].type === 'enum'}>
               <Select
-                label={key}
                 ids={{
                   control: `builder:select:${props.api[key].name}`,
                 }}
@@ -80,29 +83,22 @@ export default function BuilderForm(props: BuilderFormProps) {
             </Show>
 
             <Show when={props.api[key].type === 'text'}>
-              <Label htmlFor={key}>{key}</Label>
               <Input
                 {...(props.api[key] as TextResult)}
-                id={key}
-                name={key}
                 onChange={handleInputChange}
                 selectedValue={selectedProps[key] as string}
               />
             </Show>
 
             <Show when={props.api[key].type === 'number'}>
-              <Label htmlFor={key}>{key}</Label>
               <Input
                 {...(props.api[key] as NumberResult)}
-                id={key}
-                name={key}
                 onChange={handleInputChange}
                 selectedValue={selectedProps[key] as string}
               />
             </Show>
 
             <Show when={props.api[key].type === 'boolean'}>
-              <Label htmlFor={key}>{key}</Label>
               <Toggle
                 {...(props.api[key] as BooleanResult)}
                 id={key}

@@ -18,19 +18,19 @@ describe('checkbox recipe', () => {
   test('should have a input style', () => {
     expect(checkbox.base?.input).toMatchObject({
       appearance: 'none',
-      bgColor: 'page.surface.initial',
+      bgColor: 'action.bg.100',
       border: '1px solid',
-      borderColor: 'action.border.100',
+      borderColor: 'action.border.initial',
       color: 'page.text.initial',
       h: 'full',
+      left: '0',
+      position: 'absolute',
       pxi: '0',
       rounded: 'sm',
       transitionProperty: 'border-color',
       transitionDuration: '200ms',
       transitionTimingFunction: 'ease-in-out',
-      position: 'absolute',
       top: '0',
-      left: '0',
       w: 'full',
       zIndex: 'base',
       _focusVisible: {

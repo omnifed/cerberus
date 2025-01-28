@@ -36,8 +36,8 @@ const hooksGroup: CategoriesList = {
     name: 'Hooks & Helpers',
     description: 'React hooks and helper functions for Cerberus',
     items: [
+      'split-props',
       'trap-focus',
-      'use-date',
       'use-modal',
       'use-root-colors',
       'use-theme',
@@ -45,7 +45,7 @@ const hooksGroup: CategoriesList = {
       'use-toggle',
     ],
     deprecated: [],
-    next: [],
+    next: ['split-props'],
     new: [],
   },
 }

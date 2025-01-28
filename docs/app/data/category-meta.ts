@@ -125,6 +125,11 @@ export const categoryMeta = {
     image: ButtonFeature,
   },
 
+  field: {
+    name: 'Field',
+    description: 'Fields are used to collect user input.',
+    image: ButtonFeature,
+  },
   input: {
     name: 'Input',
     description: 'Inputs are used to collect user input.',

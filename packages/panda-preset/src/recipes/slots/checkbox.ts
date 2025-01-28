@@ -1,6 +1,6 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { input } from '../shared/input.base'
-import { formStates } from '../shared/states'
+import { focusStates, formStates } from '../shared/states'
 
 /**
  * This module contains the checkbox recipe.
@@ -23,12 +23,24 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       position: 'relative',
     },
     input: {
-      ...input,
-      position: 'absolute',
-      top: '0',
+      appearance: 'none',
+      bgColor: 'action.bg.100',
+      border: '1px solid',
+      borderColor: 'action.border.initial',
+      color: 'page.text.initial',
+      h: 'full',
       left: '0',
+      position: 'absolute',
       pxi: '0',
+      rounded: 'sm',
+      transitionProperty: 'border-color',
+      transitionDuration: '200ms',
+      transitionTimingFunction: 'ease-in-out',
+      top: '0',
+      w: 'full',
       zIndex: 'base',
+      ...focusStates,
+      ...formStates,
       _checked: {
         bgColor: 'action.bg.initial',
         _userInvalid: {

@@ -1,9 +1,9 @@
 import {
   Button,
-  Field,
-  FieldMessage,
-  Input,
-  Label,
+  FieldRoot,
+  FieldLabel,
+  FieldInput,
+  FieldHelperText,
   Tab,
   TabPanel,
   Tabs,
@@ -104,8 +104,12 @@ export default function UsageExample(props: UsageExampleProps) {
           ...highlightedStyles,
         })}
       >
-        <Field>
-          <Label
+        <FieldRoot
+          ids={{
+            control: 'usage-example',
+          }}
+        >
+          <FieldLabel
             className={css({
               rounded: 'md',
               ...highlightedStyles,
@@ -113,10 +117,9 @@ export default function UsageExample(props: UsageExampleProps) {
             {...(props.token.includes('page-text') && {
               'data-highlighted': true,
             })}
-            htmlFor="example"
           >
             Label
-          </Label>
+          </FieldLabel>
           <div
             {...(props.token.includes('page-border') && {
               'data-highlighted': true,
@@ -127,17 +130,15 @@ export default function UsageExample(props: UsageExampleProps) {
               ...highlightedStyles,
             })}
           >
-            <Input
-              describedBy="help:example"
+            <FieldInput
               className={css(highlightedStyles)}
-              id="example"
               placeholder="Placeholder"
             />
           </div>
-          <FieldMessage id="help:example">
+          <FieldHelperText>
             This is an example of a field message.
-          </FieldMessage>
-        </Field>
+          </FieldHelperText>
+        </FieldRoot>
 
         <div
           className={hstack({

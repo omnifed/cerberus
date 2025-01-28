@@ -3,26 +3,26 @@
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
-import {
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
-} from '@/app/components/Admonition'
-import {
-  TextareaBasicPreview,
-} from '@/app/react/textarea/components/textarea-preview'
+import DripDivider from '@/app/components/drip-divider'
+import { BasicTextarea } from '@/app/react/textarea/components/static-preview'
 
 ## Usage
 
-<WhenToUseAdmonition description="Use a text field when someone needs to enter text into a UI, such as filling in contact or payment information." />
+<OverviewList intro="How to write supporting text" rules={[
+  'Helper text should be concise and easy to understand',
+  'Helper text should not be redundant with the label',
+  'Error text should be clear and actionable',
+  'Error text should provide the context of the helper text',
+]} />
 
 ## Standard Textarea
 
-<CodePreview preview={<TextareaBasicPreview />} />
+<CodePreview preview={<BasicTextarea />} />
 
-<WhenToUseAdmonition description="When you use any type of standard inputs within a form." />
+<DripDivider />
 
 ## Responsive Layout
 
-As layouts adapt to larger screens and different window sizes, apply flexible container dimensions to text fields. Set minimum and maximum values for margins, padding, and container dimensions as layouts scale so that typography adjusts for better reading experiences.
+As layouts adapt to larger screens and different window sizes, apply flexible container dimensions to fields. Set minimum and maximum values for margins, padding, and container dimensions as layouts scale so that typography adjusts for better reading experiences.
 
-Text fields can span the full width of the display on compact window sizes, but should be bounded by flexible margins or other containers on medium and expanded window sizes.
+Fields can span the full width of the display on compact window sizes, but should be bounded by flexible margins or other containers on medium and expanded window sizes.

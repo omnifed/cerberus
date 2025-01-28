@@ -19,7 +19,6 @@ import { HStack } from '@cerberus/styled-system/jsx'
 import { useCerberusContext } from '../context/cerberus'
 import { Portal } from './Portal'
 import { Show } from './Show'
-import { Text } from './Text'
 import {
   SelectContent,
   SelectControl,
@@ -29,7 +28,6 @@ import {
   SelectItemGroupLabel,
   SelectItemIndicator,
   SelectItemText,
-  SelectLabel,
   SelectPositioner,
   SelectRoot,
   SelectTrigger,
@@ -68,10 +66,6 @@ export interface BaseSelectProps {
    * The placeholder text when no option is selected.
    */
   placeholder?: string
-  /**
-   * The label of the select.
-   */
-  label: string
 }
 
 export type SelectProps = SelectRootProps<SelectCollectionItem> &
@@ -110,7 +104,7 @@ export type SelectProps = SelectRootProps<SelectCollectionItem> &
  * }
  */
 export function Select(props: SelectProps) {
-  const { collection, label, placeholder, size, ...rootProps } = props
+  const { collection, placeholder, size, ...rootProps } = props
   const { icons } = useCerberusContext()
   const { selectArrow: SelectArrow, invalid: InvalidIcon } = icons
 
@@ -118,15 +112,6 @@ export function Select(props: SelectProps) {
 
   return (
     <SelectRoot className={styles.root} collection={collection} {...rootProps}>
-      <SelectLabel className={styles.label}>
-        {label}
-        <Show when={props.required}>
-          <Text as="span" color="page.text.100">
-            (required)
-          </Text>
-        </Show>
-      </SelectLabel>
-
       <SelectControl className={styles.control}>
         <SelectTrigger className={styles.trigger}>
           <SelectValueText placeholder={placeholder} />

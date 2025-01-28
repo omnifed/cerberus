@@ -46,15 +46,9 @@ describe('conditions', () => {
     expect(conditions.isDropped).toEqual('&:is([data-dropped=true])')
   })
 
-  test('should have an invalid', () => {
-    expect(conditions.invalid).toEqual(
-      '&:is(:invalid, [data-invalid], [aria-invalid])',
-    )
-  })
-
   test('should have a userInvalid', () => {
     expect(conditions.userInvalid).toEqual(
-      '&:is(:user-invalid, [aria-invalid])',
+      '&:is(:user-invalid, [aria-invalid], [data-invalid])',
     )
   })
 

@@ -1,4 +1,5 @@
 import {
+  Field,
   Select,
   type SelectProps,
   Option,
@@ -7,10 +8,11 @@ import {
 
 type BuilderSelectProps = Omit<SelectProps, 'collection'> & {
   options: string[]
+  label?: string
 }
 
 export default function BuilderSelect(props: BuilderSelectProps) {
-  const { options, ...nativeProps } = props
+  const { options, id, label, ...nativeProps } = props
   const formattedOptions = options.map((option) => ({
     label: option,
     value: option,
@@ -18,15 +20,21 @@ export default function BuilderSelect(props: BuilderSelectProps) {
   const collection = createSelectCollection(formattedOptions)
 
   return (
-    <Select
-      {...nativeProps}
-      collection={collection}
-      label={nativeProps.label}
-      placeholder="Choose option"
+    <Field
+      ids={{
+        control: id,
+      }}
+      label={label}
     >
-      {collection.items.map((item) => (
-        <Option key={item.value} item={item} />
-      ))}
-    </Select>
+      <Select
+        {...nativeProps}
+        collection={collection}
+        placeholder="Choose option"
+      >
+        {collection.items.map((item) => (
+          <Option key={item.value} item={item} />
+        ))}
+      </Select>
+    </Field>
   )
 }

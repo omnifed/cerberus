@@ -3,7 +3,7 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import { Checkbox, Label, Field, Show } from '@cerberus-design/react'
+import { Checkbox, FieldLabel, FieldRoot, Show } from '@cerberus-design/react'
 import { hstack } from '@cerberus/styled-system/patterns'
 import { useCallback, useState, type ChangeEvent } from 'react'
 
@@ -80,13 +80,11 @@ export function CheckboxPreview() {
   }, [])
 
   return (
-    <Field {...fieldState}>
-      <Label
+    <FieldRoot ids={{ control: String(id) }} {...fieldState}>
+      <FieldLabel
         className={hstack({
           justify: 'flex-start !important',
         })}
-        htmlFor={id as string}
-        size={size === 'md' ? 'sm' : 'md'}
       >
         <Show
           when={size === 'md'}
@@ -111,7 +109,7 @@ export function CheckboxPreview() {
           />
         </Show>
         {text}
-      </Label>
-    </Field>
+      </FieldLabel>
+    </FieldRoot>
   )
 }

@@ -4,14 +4,9 @@ source: 'components/Label.tsx'
 recipe: 'label.ts'
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import {
-  LabelBasicPreview,
-  LabelHiddenPreview,
-  LabelOptionalPreview,
-  LabelCustomPreview
-} from '@/app/react/label/components/label-preview'
-import { NoteAdmonition } from '@/app/components/Admonition'
+import { NoteAdmonition, DeprecationAdmonition } from '@/app/components/Admonition'
+
+<DeprecationAdmonition description="Field" />
 
 ```ts
 import { Field, Label } from '@cerberus/react'
@@ -19,7 +14,6 @@ import { Field, Label } from '@cerberus/react'
 
 ## Usage
 
-<CodePreview preview={<LabelBasicPreview />}>
 ```tsx title="first-name-input.tsx" {5,6}
 import { Field, Label } from '@cerberus/react'
 
@@ -32,11 +26,9 @@ function LabelBasicPreview() {
   )
 }
 ```
-</CodePreview>
 
 ## Hidden
 
-<CodePreview preview={<LabelHiddenPreview />}>
 ```tsx title="search-input.tsx" {6}
 import { Field, Label } from '@cerberus/react'
 
@@ -51,11 +43,9 @@ function LabelHiddenPreview() {
   )
 }
 ```
-</CodePreview>
 
 ## Optional
 
-<CodePreview preview={<LabelOptionalPreview />}>
 ```tsx title="search-input.tsx" {5}
 import { Field, Label } from '@cerberus/react'
 
@@ -68,11 +58,9 @@ function LabelOptionalPreview() {
   )
 }
 ```
-</CodePreview>
 
 ## Customizing
 
-<CodePreview preview={<LabelCustomPreview />}>
 ```tsx title="search-input.tsx"
 import { Field, Label } from '@cerberus/react'
 
@@ -95,7 +83,6 @@ function LabelCustomPreview() {
 }
 
 ```
-</CodePreview>
 
 ## API
 

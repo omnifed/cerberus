@@ -1,8 +1,8 @@
 import {
-  Field,
+  FieldRoot,
   Fieldset,
   FieldsetLabel,
-  Label,
+  FieldLabel,
   Radio,
 } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
@@ -10,37 +10,37 @@ import { hstack } from '@cerberus/styled-system/patterns'
 
 export function DefaultRadioPreview() {
   return (
-    <Field>
+    <FieldRoot ids={{ control: 'valid' }}>
       <Radio id="valid" name="states" value="valid" defaultChecked>
-        <Label htmlFor="valid">Default (valid)</Label>
+        <FieldLabel>Default (valid)</FieldLabel>
       </Radio>
-    </Field>
+    </FieldRoot>
   )
 }
 
 export function InvalidRadioPreview() {
   return (
-    <Field invalid>
+    <FieldRoot ids={{ control: 'invalid' }} invalid>
       <Radio id="invalid" name="states" value="invalid" defaultChecked>
-        <Label htmlFor="invalid">Invalid</Label>
+        <FieldLabel>Invalid</FieldLabel>
       </Radio>
-    </Field>
+    </FieldRoot>
   )
 }
 
 export function DisabledRadioPreview() {
   return (
-    <Field disabled>
+    <FieldRoot ids={{ control: 'disabled' }} disabled>
       <Radio id="disabled" name="states" value="disabled" defaultChecked>
-        <Label htmlFor="disabled">Disabled</Label>
+        <FieldLabel>Disabled</FieldLabel>
       </Radio>
-    </Field>
+    </FieldRoot>
   )
 }
 
 export function CustomRadioPreview() {
   return (
-    <Field>
+    <FieldRoot ids={{ control: 'custom' }}>
       <Radio
         className={css({
           borderColor: 'yellow',
@@ -56,15 +56,15 @@ export function CustomRadioPreview() {
         value="custom"
         defaultChecked
       >
-        <Label htmlFor="custom">Wu-Tang</Label>
+        <FieldLabel>Wu-Tang</FieldLabel>
       </Radio>
-    </Field>
+    </FieldRoot>
   )
 }
 
 export function OverviewRadioGroup() {
   return (
-    <Field>
+    <FieldRoot>
       <Fieldset
         className={hstack({
           gap: '4',
@@ -75,24 +75,24 @@ export function OverviewRadioGroup() {
         role="radiogroup"
       >
         <Radio id="dog" name="pet" value="dog" defaultChecked>
-          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+          <FieldsetLabel>🐶 Dog</FieldsetLabel>
         </Radio>
 
         <Radio id="cat" name="pet" value="cat">
-          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+          <FieldsetLabel>😸 Cat</FieldsetLabel>
         </Radio>
 
         <Radio id="both" name="pet" value="both">
-          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+          <FieldsetLabel>🐶😸 Both</FieldsetLabel>
         </Radio>
       </Fieldset>
-    </Field>
+    </FieldRoot>
   )
 }
 
 export function OverviewRadioSizes() {
   return (
-    <Field>
+    <FieldRoot>
       <Fieldset
         className={hstack({
           gap: '4',
@@ -103,14 +103,12 @@ export function OverviewRadioSizes() {
         role="radiogroup"
       >
         <Radio id="sm" name="sizes" value="sm" size="sm">
-          <FieldsetLabel htmlFor="sm" size="sm">
-            Small
-          </FieldsetLabel>
+          <FieldsetLabel size="sm">Small</FieldsetLabel>
         </Radio>
         <Radio id="md" name="sizes" value="md">
-          <FieldsetLabel htmlFor="md">Medium (default)</FieldsetLabel>
+          <FieldsetLabel>Medium (default)</FieldsetLabel>
         </Radio>
       </Fieldset>
-    </Field>
+    </FieldRoot>
   )
 }

@@ -1,11 +1,6 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import {
-  CerberusProvider,
-  Field,
-  Label,
-  Checkbox,
-} from '@cerberus-design/react'
+import { CerberusProvider, Field, Checkbox } from '@cerberus-design/react'
 import { makeConfig, setupStrictMode } from '@/utils'
 
 describe('Checkbox', () => {
@@ -17,25 +12,33 @@ describe('Checkbox', () => {
   test('should render a checkbox', () => {
     render(
       <CerberusProvider config={config}>
-        <Field required>
-          <Label htmlFor="test">Test Label</Label>,
-          <Checkbox id="test" />
+        <Field
+          ids={{
+            control: 'test',
+          }}
+          label="Test label"
+          required
+        >
+          <Checkbox />
         </Field>
       </CerberusProvider>,
     )
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
     expect(screen.getByText(/(required)/i)).toBeTruthy()
-    expect(
-      screen.getByText(/test label/i).attributes.getNamedItem('for'),
-    ).toBeTruthy()
     expect(screen.getByRole('checkbox')).toBeTruthy()
   })
 
   test('should render a checkbox with error', () => {
     render(
       <CerberusProvider config={config}>
-        <Field required invalid>
-          <Label htmlFor="test">Test Label</Label>,
+        <Field
+          ids={{
+            control: 'test',
+          }}
+          label="Test Label"
+          required
+          invalid
+        >
           <Checkbox id="test" />
         </Field>
         ,
@@ -49,9 +52,14 @@ describe('Checkbox', () => {
   test('should render a checkbox with disabled', () => {
     render(
       <CerberusProvider config={config}>
-        <Field disabled>
-          <Label htmlFor="test">Test Label</Label>,
-          <Checkbox id="test" />
+        <Field
+          ids={{
+            control: 'test',
+          }}
+          label="Test Label"
+          disabled
+        >
+          <Checkbox />
         </Field>
       </CerberusProvider>,
     )
@@ -60,26 +68,11 @@ describe('Checkbox', () => {
     ).toBeTruthy()
   })
 
-  test('should render a checkbox with describedBy', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Field>
-          <Label htmlFor="test">Test Label</Label>,
-          <Checkbox id="test" describedBy="test" />
-        </Field>
-      </CerberusProvider>,
-    )
-    expect(
-      screen.getByRole('checkbox').attributes.getNamedItem('aria-describedby'),
-    ).toBeTruthy()
-  })
-
   test('should render a checkbox with a md size', () => {
     render(
       <CerberusProvider config={config}>
-        <Field>
-          <Label htmlFor="test">Test Label</Label>,
-          <Checkbox id="test" size="md" />
+        <Field label="Test Label">
+          <Checkbox size="md" />
         </Field>
       </CerberusProvider>,
     )
@@ -93,9 +86,8 @@ describe('Checkbox', () => {
   test('should render a checkbox with a lg size', () => {
     render(
       <CerberusProvider config={config}>
-        <Field>
-          <Label htmlFor="test">Test Label</Label>,
-          <Checkbox id="test" size="lg" />
+        <Field label="Test Label">
+          <Checkbox size="lg" />
         </Field>
       </CerberusProvider>,
     )
@@ -109,9 +101,8 @@ describe('Checkbox', () => {
   test('should render a checkbox icon when checked', () => {
     render(
       <CerberusProvider config={config}>
-        <Field>
-          <Label htmlFor="test">Test Label</Label>,
-          <Checkbox id="test" checked />
+        <Field label="Test Label">
+          <Checkbox checked />
         </Field>
       </CerberusProvider>,
     )
@@ -125,9 +116,8 @@ describe('Checkbox', () => {
   test('should render a mixed icon when mixed', () => {
     render(
       <CerberusProvider config={config}>
-        <Field>
-          <Label htmlFor="test">Test Label</Label>,
-          <Checkbox id="test" mixed />
+        <Field label="Test Label">
+          <Checkbox mixed />
         </Field>
       </CerberusProvider>,
     )

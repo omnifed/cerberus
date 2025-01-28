@@ -1,0 +1,66 @@
+---
+heading: 'splitProps'
+description: 'A utility for splitting props into groups'
+a11y: 'utilities'
+npm: '@cerberus-design/react'
+source: 'utils/split-props.ts'
+recipe: ''
+---
+
+The `splitProps` utility is used to split props into groups and based on the [SolidJS](https://docs.solidjs.com/reference/reactive-utilities/split-props)  reactive utility.
+
+## Usage
+
+```tsx title="text-field.tsx" {4-9}
+import { FieldParts, splitProps } from '@cerberus/react'
+
+function TextField(props: TextFieldProps) {
+  const [rootProps, { size }, textFieldProps] = splitProps(
+    props,
+    ['required', 'readOnly', 'disabled', 'invalid', 'ids'],
+    ['size'],
+    ['helperText', 'errorText', 'label'],
+  )
+
+  return (
+    <FieldParts.Root {...rootProps} size={size}>
+      <FieldParts.Label>
+        {textFieldProps.label}
+        <Show when={rootProps.required}>
+          <span data-part="required-text">(required)</span>
+        </Show>
+      </FieldParts.Label>
+
+      <FieldParts.Input {...props.inputProps} size={size} />
+      <FieldParts.HelperText>{textFieldProps.helperText}</FieldParts.HelperText>
+      <FieldParts.ErrorText>{textFieldProps.errorText}</FieldParts.ErrorText>
+    </FieldParts.Root>
+  )
+}
+```
+
+## API
+
+```typescript
+function splitProps<T, U extends string>(
+  props: T,
+  ...keys: [U[]] | [U[], U[]] | [U[], U[], U[]]
+): [
+  T,
+  Partial<Pick<T, Extract<keyof T, U>>>,
+  Partial<Pick<T, Exclude<keyof T, U>>>,
+]
+```
+
+### Arguments
+
+The `splitProps` utility accepts the following arguments:
+
+| Name         | Default    | Description                                      |
+| ------------ | ---------- | ------------------------------------------------ |
+| props        |            | The Object to compare against.                   |
+| keys         |            | A list of keys to split into a group.            |
+
+### Returns
+
+The `splitProps` utility returns an Array of the provided keys converted into an Object groups. What is left over is returned as the final Object in the array.

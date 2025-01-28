@@ -34,8 +34,8 @@ import {
 'use client'
 
 import {
-  Field,
-  Label,
+  FieldRoot,
+  FieldLabel,
   Table,
   Tbody,
   Th,
@@ -65,54 +65,51 @@ function BasicTablePreview() {
           <Td>Dog</Td>
           <Td>False</Td>
           <Td>
-            <Field>
-              <Label htmlFor="1" hidden>
-                Adopt
-              </Label>
-              <Toggle
-                checked={Boolean(first.checked)}
-                id="1"
-                onChange={first.handleChange}
-                size="sm"
-                value="1"
-              />
-            </Field>
+            <FieldRoot ids={{ control: '1' }}>
+              <FieldLabel>
+                <Toggle
+                  checked={Boolean(first.checked)}
+                  id="1"
+                  onChange={first.handleChange}
+                  size="sm"
+                  value="1"
+                />
+              </FieldLabel>
+            </FieldRoot>
           </Td>
         </Tr>
         <Tr>
           <Td>Cat</Td>
           <Td>Maybe</Td>
           <Td>
-            <Field>
-              <Label htmlFor="2" hidden>
-                Adopt
-              </Label>
-              <Toggle
-                checked={Boolean(second.checked)}
-                id="2"
-                onChange={second.handleChange}
-                size="sm"
-                value="2"
-              />
-            </Field>
+            <FieldRoot ids={{ control: '2' }}>
+              <FieldLabel>
+                <Toggle
+                  checked={Boolean(second.checked)}
+                  id="2"
+                  onChange={second.handleChange}
+                  size="sm"
+                  value="2"
+                />
+              </FieldLabel>
+            </FieldRoot>
           </Td>
         </Tr>
         <Tr>
           <Td>Fish</Td>
           <Td>True</Td>
           <Td>
-            <Field>
-              <Label htmlFor="3" hidden>
-                Adopt
-              </Label>
-              <Toggle
-                checked={Boolean(third.checked)}
-                id="3"
-                onChange={third.handleChange}
-                size="sm"
-                value="3"
-              />
-            </Field>
+            <FieldRoot ids={{ control: '3' }}>
+              <FieldLabel>
+                <Toggle
+                  checked={Boolean(third.checked)}
+                  id="3"
+                  onChange={third.handleChange}
+                  size="sm"
+                  value="3"
+                />
+              </FieldLabel>
+            </FieldRoot>
           </Td>
         </Tr>
       </Tbody>

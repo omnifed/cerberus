@@ -3,9 +3,7 @@
 import {
   Button,
   Field,
-  FieldMessage,
   Input,
-  Label,
   Option,
   Select,
   createSelectCollection,
@@ -41,51 +39,55 @@ export default function StandardLayout() {
       </p>
 
       <Box w="full">
-        <Field required>
-          <Label htmlFor="first_name">First Name</Label>
+        <Field
+          required
+          label="First Name"
+          ids={{
+            control: 'first_name',
+          }}
+          errorText="A first name is required to submit the form."
+          helperText="This is what everyone will see when you post a comment."
+        >
           <Input
-            aria-describedby="help:first_name"
-            id="first_name"
-            placeholder="John"
+            name="first_name"
+            placeholder="Enter your first name"
+            type="text"
           />
-          <FieldMessage id="help:first_name">
-            This is what everyone will see when you post a comment.
-          </FieldMessage>
         </Field>
       </Box>
 
       <Box w="full">
-        <Field required>
-          <Label htmlFor="last_name">Last Name</Label>
+        <Field
+          required
+          label="Last Name"
+          ids={{
+            control: 'last_name',
+          }}
+          errorText="A last name is required to submit the form."
+          helperText="This is what everyone will see when you post a comment."
+        >
           <Input
-            aria-describedby="help:last_name"
-            id="last_name"
-            placeholder="Doe"
+            name="last_name"
+            placeholder="Enter your last name"
+            type="text"
           />
-          <FieldMessage id="help:last_name">
-            Only you will see this in your profile.
-          </FieldMessage>
         </Field>
       </Box>
 
       <Box>
-        <Field>
-          <Select
-            collection={collection}
-            ids={{
-              control: 'age',
-            }}
-            label="Age"
-            placeholder="Select an option"
-            required
-          >
+        <Field
+          ids={{
+            control: 'age',
+          }}
+          label="What's your age?"
+          helperText="We are legally required to ask for your age."
+          required
+        >
+          <Select collection={collection} placeholder="Select an option">
             {collection.items.map((item) => (
               <Option key={item.value} item={item} />
             ))}
           </Select>
-          <FieldMessage id="help:age">
-            We are legally required to ask for your age.
-          </FieldMessage>
         </Field>
       </Box>
 

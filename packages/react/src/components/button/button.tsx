@@ -12,9 +12,9 @@ import {
   button,
   type ButtonVariantProps,
 } from '@cerberus/styled-system/recipes'
+import { Box } from '@cerberus/styled-system/jsx'
 import { Show } from '../Show'
 import { Spinner } from '../Spinner'
-import { Box } from '@cerberus/styled-system/jsx'
 
 /**
  * This module contains the Button component.

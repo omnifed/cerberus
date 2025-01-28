@@ -2,6 +2,7 @@
 
 import { tokens } from '@cerberus-design/panda-preset'
 import {
+  Field,
   Select,
   Option,
   createSelectCollection,
@@ -147,20 +148,23 @@ export default function ZPreview() {
           mb: '10',
         })}
       >
-        <Select
-          collection={collection}
+        <Field
           ids={{
             control: 'z-index',
           }}
           label="Select z-index"
-          placeholder="Choose a z-index"
-          onValueChange={handleChange}
-          size="lg"
         >
-          {collection.items.map((item) => (
-            <Option key={item.value} item={item} />
-          ))}
-        </Select>
+          <Select
+            collection={collection}
+            placeholder="Choose a z-index"
+            onValueChange={handleChange}
+            size="lg"
+          >
+            {collection.items.map((item) => (
+              <Option key={item.value} item={item} />
+            ))}
+          </Select>
+        </Field>
       </div>
     </>
   )

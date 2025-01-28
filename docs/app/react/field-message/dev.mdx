@@ -4,13 +4,9 @@ source: 'components/FieldMessage.tsx'
 recipe: 'fieldMesage.ts'
 ---
 
-import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import {
-  FieldMessageBasicPreview,
-  FieldMessageInvalidPreview,
-  FieldMessageCustomPreview
-} from '@/app/react/field-message/components/field-message-preview'
+import { NoteAdmonition, DeprecationAdmonition } from '@/app/components/Admonition'
+
+<DeprecationAdmonition description="Field" />
 
 ```ts
 import { Field, FieldMessage } from '@cerberus-design/react'
@@ -18,7 +14,6 @@ import { Field, FieldMessage } from '@cerberus-design/react'
 
 ## Usage
 
-<CodePreview preview={<FieldMessageBasicPreview />}>
 ```tsx title="first-name-input.tsx" {8}
 import { Field, FieldMessage, Label } from '@cerberus-design/react'
 
@@ -34,11 +29,9 @@ function FieldMessageBasicPreview() {
   )
 }
 ```
-</CodePreview>
 
 ## Invalid
 
-<CodePreview preview={<FieldMessageInvalidPreview />}>
 ```tsx title="search-input.tsx" {5}
 import { Field, FieldMessage, Label } from '@cerberus-design/react'
 
@@ -59,11 +52,9 @@ function FieldMessageInvalidPreview() {
   )
 }
 ```
-</CodePreview>
 
 ## Customizing
 
-<CodePreview preview={<FieldMessageCustomPreview />}>
 ```tsx title="search-input.tsx"
 import { Field, FieldMessage, Label } from '@cerberus-design/react'
 
@@ -87,7 +78,6 @@ function FieldMessageCustomPreview() {
 }
 
 ```
-</CodePreview>
 
 ## API
 

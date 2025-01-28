@@ -4,27 +4,9 @@ description: 'Labels describe the purpose of a form element in a UI'
 a11y: 'forms'
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import OverviewList from '@/app/components/OverviewList'
-import {
-  LabelBasicPreview,
-  LabelHiddenPreview,
-  LabelOptionalPreview
-} from '@/app/react/label/components/label-preview'
+import { DeprecationAdmonition } from '@/app/components/Admonition'
 
-<OverviewList rules={[
-  'Labels should be used to describe the input',
-  'Labels should display (required) if the input is not optional',
-  'Two types: standard, hidden',
-  'Two sizes: small, medium',
-  'Hidden labels should be used when the label is not visible to the user'
-]} />
-
-## Example
-
-<CodePreview preview={<LabelOptionalPreview />} />
-<CodePreview preview={<LabelHiddenPreview />} />
-<CodePreview preview={<LabelBasicPreview />} />
+<DeprecationAdmonition description="Field" />
 
 ## Resources
 

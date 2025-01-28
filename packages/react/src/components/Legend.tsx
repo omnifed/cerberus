@@ -1,11 +1,11 @@
 'use client'
 
 import { css, cx } from '@cerberus/styled-system/css'
-import { type HTMLAttributes } from 'react'
-import { useFieldContext } from '../context/field'
-import { Show } from './Show'
 import { label, type LabelVariantProps } from '@cerberus/styled-system/recipes'
 import { hstack } from '@cerberus/styled-system/patterns'
+import { type HTMLAttributes } from 'react'
+import { Show } from './Show'
+import { useFieldContext } from '@ark-ui/react/field'
 
 /**
  * This module contains the Fieldset component.
@@ -50,12 +50,11 @@ export type LegendProps = HTMLAttributes<HTMLLegendElement> & LabelVariantProps
  */
 export function Legend(props: LegendProps) {
   const { size, ...nativeProps } = props
-  const { invalid, ...formState } = useFieldContext()
+  const { invalid, required } = useFieldContext()
 
   return (
     <legend
       {...nativeProps}
-      {...formState}
       {...(invalid && { 'aria-invalid': true })}
       className={cx(
         nativeProps.className,
@@ -69,7 +68,7 @@ export function Legend(props: LegendProps) {
       )}
     >
       {nativeProps.children}
-      <Show when={formState.required}>
+      <Show when={required}>
         <span
           className={css({
             color: 'page.text.100',

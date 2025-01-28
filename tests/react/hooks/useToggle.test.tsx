@@ -3,7 +3,6 @@ import { render, screen, cleanup } from '@testing-library/react'
 import {
   CerberusProvider,
   Field,
-  Label,
   Toggle,
   useToggle,
   type UseToggleOptions,
@@ -22,14 +21,18 @@ describe('useToggle', () => {
     })
     return (
       <CerberusProvider config={config}>
-        <Field>
+        <Field
+          ids={{
+            control: 'default',
+          }}
+          label={checked || 'off'}
+        >
           <Toggle
             checked={checked === 'default'}
             id="default"
             onChange={handleChange}
             value="default"
           />
-          <Label htmlFor="default">{checked || 'off'}</Label>
         </Field>
       </CerberusProvider>
     )

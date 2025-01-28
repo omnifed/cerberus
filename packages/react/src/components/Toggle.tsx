@@ -1,13 +1,13 @@
 'use client'
 
+import { useFieldContext } from '@ark-ui/react/field'
+import type { InputHTMLAttributes } from 'react'
 import { cx } from '@cerberus/styled-system/css'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
 import {
   toggle,
   type ToggleVariantProps,
 } from '@cerberus/styled-system/recipes'
-import type { InputHTMLAttributes } from 'react'
-import { useFieldContext } from '../context/field'
 import { useCerberusContext } from '../context/cerberus'
 
 /**
@@ -20,7 +20,7 @@ export type ToggleBase = Omit<
   'size' | 'id' | 'value'
 > & {
   /**
-   * The FieldMessage providing context for the Toggle.
+   * @deprecated
    */
   describedBy?: string
   /**
@@ -56,9 +56,12 @@ export type ToggleProps = ToggleBase & ToggleVariantProps
  * ```
  */
 export function Toggle(props: ToggleProps) {
-  const { size, describedBy, ...nativeProps } = props
+  const { size, ...nativeProps } = props
   const styles = toggle({ size })
-  const { invalid, ...state } = useFieldContext()
+
+  const { invalid, disabled, readOnly, required, ariaDescribedby } =
+    useFieldContext()
+
   const { icons } = useCerberusContext()
   const CheckedIcon = icons.toggleChecked
 
@@ -69,8 +72,12 @@ export function Toggle(props: ToggleProps) {
     >
       <input
         {...nativeProps}
-        {...state}
-        {...(describedBy && { 'aria-describedby': describedBy })}
+        {...(disabled && { disabled: true })}
+        {...(readOnly && { readOnly: true })}
+        {...(required && { required: true })}
+        {...(ariaDescribedby && {
+          'aria-describedby': ariaDescribedby,
+        })}
         {...(invalid && { 'aria-invalid': true })}
         className={cx('peer', styles.input)}
         role="switch"

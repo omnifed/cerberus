@@ -1,0 +1,35 @@
+---
+heading: 'Field'
+description: 'Provides a flexible container for form inputs, labels, and helper text.'
+a11y: 'forms'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import DripDivider from '@/app/components/drip-divider'
+import { BasicFieldPreview } from '@/app/react/field/components/field-preview'
+import { LivePlayground } from '@/app/react/field/components/live-preview'
+
+<OverviewList rules={[
+  'Make sure input fields look interactive',
+  "The field's state (blank, with input, error, etc) should be visible at a glance",
+  'Keep labels and error messages brief and easy to act on'
+]} />
+
+## Example
+
+<CodePreview preview={<BasicFieldPreview />} />
+
+<DripDivider />
+
+## Live Playground
+
+<LivePlayground />
+
+<DripDivider />
+
+## Resources
+
+| Name     | Resource | Status                                               |
+| -------- | -------- | ---------------------------------------------------- |
+| Figma    | [Design Kit (Figma)](https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?m=auto&node-id=0-1)      |                         Private                      |

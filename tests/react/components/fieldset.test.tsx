@@ -34,7 +34,7 @@ describe('Fieldset & Legend', () => {
     render(
       <Field disabled>
         <Fieldset name="cats">
-          <Legend>Do you like cats?</Legend>
+          <Legend>Do you like disabled cats?</Legend>
           <Radio id="yes" name="cats" value="yes" />
           <FieldsetLabel htmlFor="yes">Yes</FieldsetLabel>
           <Radio id="no" name="cats" value="no" />
@@ -43,10 +43,7 @@ describe('Fieldset & Legend', () => {
       </Field>,
     )
     expect(
-      screen.getByRole('group').attributes.getNamedItem('disabled'),
-    ).toBeTruthy()
-    expect(
-      screen.getByText(/do you like cats/i).attributes.getNamedItem('disabled'),
+      screen.getAllByRole('group')[1].attributes.getNamedItem('disabled'),
     ).toBeTruthy()
   })
 
@@ -55,9 +52,9 @@ describe('Fieldset & Legend', () => {
       <Field required>
         <Fieldset name="cats">
           <Legend>Do you like cats?</Legend>
-          <Radio id="yes" name="cats" value="yes" />
-          <FieldsetLabel htmlFor="yes">Yes</FieldsetLabel>
-          <Radio id="no" name="cats" value="no" />
+          <Radio id="yes" name="cats" value="yes" required />
+          <FieldsetLabel>Yes</FieldsetLabel>
+          <Radio id="no" name="cats" value="no" required />
           <FieldsetLabel htmlFor="no">No</FieldsetLabel>
         </Fieldset>
       </Field>,

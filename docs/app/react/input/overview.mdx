@@ -7,28 +7,18 @@ a11y: 'forms'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import DripDivider from '@/app/components/drip-divider'
-import {
-  InputBasicPreview,
-  InputInvalidPreview,
-  InputDisabledPreview,
-  InputWithIconPreview,
-  InputSizesPreview,
-} from '@/app/react/input/components/input-preview'
+
+import { LivePlayground } from '@/app/react/input/components/live-playground'
 
 <OverviewList rules={[
-  'Make sure text fields look interactive',
-  "The text field's state (blank, with input, error, etc) should be visible at a glance",
-  'Keep labels and error messages brief and easy to act on',
-  'Text fields commonly appear in forms and dialogs'
+  'Make sure input fields look interactive',
+  "The field's state (blank, with input, error, etc) should be visible at a glance",
+  'Keep labels and error messages brief and easy to act on'
 ]} />
 
-## Examples
+## Example
 
-<CodePreview preview={<InputBasicPreview />} />
-<CodePreview preview={<InputInvalidPreview />} />
-<CodePreview preview={<InputDisabledPreview />} />
-<CodePreview preview={<InputWithIconPreview />} />
-<CodePreview preview={<InputSizesPreview />} />
+<LivePlayground />
 
 <DripDivider />
 

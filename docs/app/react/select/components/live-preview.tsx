@@ -7,7 +7,6 @@ import {
   Field,
   Select,
   Option,
-  FieldMessage,
   createSelectCollection,
   type SelectProps,
 } from '@cerberus-design/react'
@@ -47,11 +46,19 @@ export function LivePlaygroundWithCode() {
 */
 export function MySelect(props: SelectProps) {
   return (
-    <Select {...props}>
-      {props.collection.items.map((item) => (
-        <Option key={item.value} item={item} />
-      ))}
-    </Select>
+    <Field
+      label={{label}}
+      disabled={{disabled}}
+      required={{required}}
+      readOnly={{readOnly}}
+      invalid={{invalid}}
+    >
+      <Select {...props}>
+        {props.collection.items.map((item) => (
+          <Option key={item.value} item={item} />
+        ))}
+      </Select>
+    </Field>
   )
 }`}
     >
@@ -78,7 +85,6 @@ export function SelectEl(props: SelectElProps) {
       return (
         <Select
           collection={collection}
-          label={props.label as string}
           placeholder={props.placeholder as string}
           disabled={props.disabled as boolean}
           invalid={props.invalid as boolean}
@@ -95,7 +101,6 @@ export function SelectEl(props: SelectElProps) {
       return (
         <Select
           collection={collection}
-          label={props.label as string}
           placeholder={props.placeholder as string}
           disabled={props.disabled as boolean}
           invalid={props.invalid as boolean}
@@ -112,7 +117,6 @@ export function SelectEl(props: SelectElProps) {
       return (
         <Select
           collection={collection}
-          label={props.label as string}
           placeholder={props.placeholder as string}
           disabled={props.disabled as boolean}
           invalid={props.invalid as boolean}
@@ -130,8 +134,6 @@ export function SelectEl(props: SelectElProps) {
 
 export function SelectPreview() {
   const { selectedProps } = useCodeBuilder()
-  const { helpText, ...cerbSelectProps } = selectedProps
-
   return (
     <div
       className={vstack({
@@ -141,13 +143,13 @@ export function SelectPreview() {
       })}
     >
       <Field
-        disabled={cerbSelectProps.disabled as boolean}
-        invalid={cerbSelectProps.invalid as boolean}
-        readOnly={cerbSelectProps.readOnly as boolean}
-        required={cerbSelectProps.required as boolean}
+        disabled={selectedProps.disabled as boolean}
+        invalid={selectedProps.invalid as boolean}
+        readOnly={selectedProps.readOnly as boolean}
+        required={selectedProps.required as boolean}
+        label={selectedProps.label as string}
       >
-        <SelectEl {...cerbSelectProps} {...selectedProps} />
-        <FieldMessage id="help:add-select-id">{helpText}</FieldMessage>
+        <SelectEl {...selectedProps} />
       </Field>
     </div>
   )
