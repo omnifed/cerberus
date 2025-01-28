@@ -103,7 +103,7 @@ describe('accordion recipe', () => {
       ...inputStyles,
       h: '3.7rem',
       paddingInlineEnd: 10,
-      '& :is([data-has=start-indicator])': {
+      '&:is([data-has=start-indicator])': {
         paddingInlineStart: 10,
       },
     })

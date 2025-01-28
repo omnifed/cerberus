@@ -1,82 +1,81 @@
 'use client'
 
-import {
-  Field,
-  FieldMessage,
-  Label,
-  Toggle,
-  useToggle,
-} from '@cerberus-design/react'
-import { hstack, vstack } from '@cerberus/styled-system/patterns'
+import { Field, Toggle, useToggle } from '@cerberus-design/react'
+import { hstack } from '@cerberus/styled-system/patterns'
+import { Box } from '@cerberus-design/styled-system/jsx'
 
 export function DefaultTogglePreview() {
   const { checked, handleChange } = useToggle({ checked: 'default' })
   return (
-    <Field>
-      <Toggle
-        checked={checked === 'default'}
-        id="default"
-        onChange={handleChange}
-        value="default"
-      />
-    </Field>
+    <Box w="1/2">
+      <Field>
+        <Toggle
+          checked={checked === 'default'}
+          id="default"
+          onChange={handleChange}
+          value="default"
+        />
+      </Field>
+    </Box>
   )
 }
 
 export function DisabledTogglePreview() {
   const { checked, handleChange } = useToggle()
   return (
-    <Field disabled>
-      <Toggle
-        checked={checked === 'default'}
-        id="default"
-        onChange={handleChange}
-        value="default"
-      />
-    </Field>
+    <Box w="1/2">
+      <Field disabled>
+        <Toggle
+          checked={checked === 'default'}
+          id="default"
+          onChange={handleChange}
+          value="default"
+        />
+      </Field>
+    </Box>
   )
 }
 
 export function WithMessageTogglePreview() {
   const { checked, handleChange } = useToggle()
   return (
-    <Field>
-      <div
-        className={vstack({
-          alignItems: 'flex-start',
-        })}
+    <Box w="1/2">
+      <Field
+        ids={{
+          control: 'default',
+        }}
+        label="User Settings"
+        helperText="Show notifications"
       >
-        <Label htmlFor="default">User Settings</Label>
-        <div className={hstack()}>
-          <Toggle
-            describedBy="help:default"
-            checked={checked === 'default'}
-            id="default"
-            onChange={handleChange}
-            value="default"
-          />
-          <FieldMessage id="help:default">Show notifications</FieldMessage>
-        </div>
-      </div>
-    </Field>
+        <Toggle
+          checked={checked === 'default'}
+          id="default"
+          onChange={handleChange}
+          value="default"
+        />
+      </Field>
+    </Box>
   )
 }
 
 export function WithLabelTogglePreview() {
   const { checked, handleChange } = useToggle()
   return (
-    <Field>
-      <div className={hstack()}>
+    <Box w="1/2">
+      <Field
+        ids={{
+          control: 'default',
+        }}
+        label="User Settings"
+      >
         <Toggle
-          describedBy="help:default"
           checked={checked === 'default'}
           id="default"
           onChange={handleChange}
           value="default"
         />
-        <Label htmlFor="default">Show notifications</Label>
-      </div>
-    </Field>
+      </Field>
+    </Box>
   )
 }
 
@@ -88,27 +87,33 @@ export function OverviewToggleGroup() {
         gap: 4,
       })}
     >
-      <Field>
-        <Label htmlFor="lg-one" aria-label="Large toggle">
-          <Toggle
-            checked={checked === 'lg-one'}
-            id="lg-one"
-            size="lg"
-            onChange={handleChange}
-            value="lg-one"
-          />
-        </Label>
+      <Field
+        ids={{
+          control: 'lg-one',
+        }}
+        label="Large Toggle"
+      >
+        <Toggle
+          checked={checked === 'lg-one'}
+          id="lg-one"
+          size="lg"
+          onChange={handleChange}
+          value="lg-one"
+        />
       </Field>
-      <Field>
-        <Label htmlFor="lg-two" aria-label="Checked large toggle">
-          <Toggle
-            checked={checked === 'lg-two'}
-            id="lg-two"
-            size="lg"
-            onChange={handleChange}
-            value="lg-two"
-          />
-        </Label>
+      <Field
+        ids={{
+          control: 'lg-two',
+        }}
+        label="Checked Large Toggle"
+      >
+        <Toggle
+          checked={checked === 'lg-two'}
+          id="lg-two"
+          size="lg"
+          onChange={handleChange}
+          value="lg-two"
+        />
       </Field>
     </div>
   )
@@ -121,6 +126,7 @@ export function OverviewToggleSizes() {
     <div
       className={hstack({
         gap: 4,
+        w: '1/2',
       })}
     >
       <Field>

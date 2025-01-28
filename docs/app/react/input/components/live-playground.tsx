@@ -75,7 +75,13 @@ export function TextFieldPreview() {
 
   return (
     <VStack gap="6" w="full">
-      <Field>{returnValue.current[selectedProps.size]}</Field>
+      <Field>
+        {
+          returnValue.current[
+            selectedProps.size as keyof typeof returnValue.current
+          ]
+        }
+      </Field>
       <Text as="small" textStyle="body-xs">
         The Field component manages state and displays the label or helper/error
         messages.

@@ -7,7 +7,7 @@ a11y: 'forms'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import DripDivider from '@/app/components/drip-divider'
-import { LivePlayground } from '@/app/react/textarea/components/live-playground'
+import { BasicTextarea } from '@/app/react/textarea/components/static-preview'
 
 <OverviewList rules={[
   'Make sure input fields look interactive',
@@ -17,7 +17,7 @@ import { LivePlayground } from '@/app/react/textarea/components/live-playground'
 
 ## Example
 
-<LivePlayground />
+<CodePreview preview={<BasicTextarea />} />
 
 <DripDivider />
 

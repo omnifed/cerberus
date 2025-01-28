@@ -9,10 +9,10 @@ import {
   Tr,
   Td,
   Toggle,
-  Field,
+  FieldRoot,
+  FieldLabel,
   useToggle,
   Show,
-  Label,
 } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
@@ -123,8 +123,8 @@ export function BasicTablePreview() {
           <Td>Dog</Td>
           <Td>False</Td>
           <Td>
-            <Field>
-              <Label htmlFor="1" aria-label="Adopt">
+            <FieldRoot ids={{ control: '1' }}>
+              <FieldLabel>
                 <Toggle
                   checked={Boolean(first.checked)}
                   id="1"
@@ -132,16 +132,16 @@ export function BasicTablePreview() {
                   size="sm"
                   value="1"
                 />
-              </Label>
-            </Field>
+              </FieldLabel>
+            </FieldRoot>
           </Td>
         </Tr>
         <Tr>
           <Td>Cat</Td>
           <Td>Maybe</Td>
           <Td>
-            <Field>
-              <Label htmlFor="2" aria-label="Adopt">
+            <FieldRoot ids={{ control: '2' }}>
+              <FieldLabel>
                 <Toggle
                   checked={Boolean(second.checked)}
                   id="2"
@@ -149,16 +149,16 @@ export function BasicTablePreview() {
                   size="sm"
                   value="2"
                 />
-              </Label>
-            </Field>
+              </FieldLabel>
+            </FieldRoot>
           </Td>
         </Tr>
         <Tr>
           <Td>Fish</Td>
           <Td>True</Td>
           <Td>
-            <Field>
-              <Label htmlFor="3" aria-label="adopt">
+            <FieldRoot ids={{ control: '3' }}>
+              <FieldLabel>
                 <Toggle
                   checked={Boolean(third.checked)}
                   id="3"
@@ -166,8 +166,8 @@ export function BasicTablePreview() {
                   size="sm"
                   value="3"
                 />
-              </Label>
-            </Field>
+              </FieldLabel>
+            </FieldRoot>
           </Td>
         </Tr>
       </Tbody>

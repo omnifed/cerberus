@@ -85,7 +85,6 @@ export function SelectEl(props: SelectElProps) {
       return (
         <Select
           collection={collection}
-          label={props.label as string}
           placeholder={props.placeholder as string}
           disabled={props.disabled as boolean}
           invalid={props.invalid as boolean}
@@ -102,7 +101,6 @@ export function SelectEl(props: SelectElProps) {
       return (
         <Select
           collection={collection}
-          label={props.label as string}
           placeholder={props.placeholder as string}
           disabled={props.disabled as boolean}
           invalid={props.invalid as boolean}
@@ -119,7 +117,6 @@ export function SelectEl(props: SelectElProps) {
       return (
         <Select
           collection={collection}
-          label={props.label as string}
           placeholder={props.placeholder as string}
           disabled={props.disabled as boolean}
           invalid={props.invalid as boolean}

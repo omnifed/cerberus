@@ -2,6 +2,16 @@ import { FieldParts } from '@cerberus-design/react'
 import { Box } from '@cerberus-design/styled-system/jsx'
 import { css } from '@cerberus/styled-system/css'
 
+export function BasicTextarea() {
+  return (
+    <Box w="1/2">
+      <FieldParts.Root ids={{ control: 'basicTextarea' }}>
+        <FieldParts.Textarea />
+      </FieldParts.Root>
+    </Box>
+  )
+}
+
 export function CustomField() {
   return (
     <Box w="1/2">

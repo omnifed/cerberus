@@ -1,7 +1,6 @@
 'use client'
 
 import { vstack } from '@cerberus/styled-system/patterns'
-import { css } from '@cerberus-design/styled-system/css'
 import type {
   BooleanResult,
   BuilderResult,
@@ -10,9 +9,6 @@ import type {
 } from './helpers'
 import {
   Field,
-  FieldRoot,
-  FieldLabel,
-  Label,
   Show,
   type SelectCollectionItem,
   type SelectValueChangeDetails,
@@ -68,10 +64,14 @@ export default function BuilderForm(props: BuilderFormProps) {
             w: 'full',
           })}
         >
-          <Field>
+          <Field
+            ids={{
+              control: key,
+            }}
+            label={key}
+          >
             <Show when={props.api[key].type === 'enum'}>
               <Select
-                label={key}
                 ids={{
                   control: `builder:select:${props.api[key].name}`,
                 }}
@@ -83,24 +83,11 @@ export default function BuilderForm(props: BuilderFormProps) {
             </Show>
 
             <Show when={props.api[key].type === 'text'}>
-              <FieldRoot
-                ids={{
-                  control: key,
-                }}
-              >
-                <FieldLabel
-                  className={css({
-                    color: 'page.text.initial',
-                  })}
-                >
-                  {key}
-                </FieldLabel>
-                <Input
-                  {...(props.api[key] as TextResult)}
-                  onChange={handleInputChange}
-                  selectedValue={selectedProps[key] as string}
-                />
-              </FieldRoot>
+              <Input
+                {...(props.api[key] as TextResult)}
+                onChange={handleInputChange}
+                selectedValue={selectedProps[key] as string}
+              />
             </Show>
 
             <Show when={props.api[key].type === 'number'}>
@@ -112,7 +99,6 @@ export default function BuilderForm(props: BuilderFormProps) {
             </Show>
 
             <Show when={props.api[key].type === 'boolean'}>
-              <Label htmlFor={key}>{key}</Label>
               <Toggle
                 {...(props.api[key] as BooleanResult)}
                 id={key}

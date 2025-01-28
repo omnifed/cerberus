@@ -8,6 +8,7 @@ ark: 'field'
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
 import { BasicFieldPreview, CustomField } from '@/app/react/field/components/field-preview'
+import { SearchInputExample } from '@/app/react/input/components/static-playground'
 
 
 ```ts
@@ -65,6 +66,37 @@ export function BasicFieldPreview() {
           </Field>
         </VStack>
       </Box>
+    </form>
+  )
+}
+```
+</CodePreview>
+
+## With Icons
+
+You can utilize the `startIcon` or `endIcon` props to add icons to the input.
+
+<CodePreview preview={<SearchInputExample />}>
+```tsx title="search-input.tsx"
+import { Field, Input, type InputProps } from '@cerberus/react'
+import { Search } from '@carbon/icons-react'
+
+export function SearchInputExample(props: InputProps) {
+  return (
+    <form action={someAction} method="post">
+      <Field
+        ids={{
+          control: 'search',
+        }}
+      >
+        <Input
+          {...props}
+          startIcon={<Search />}
+          name="search"
+          placeholder="Search for anything"
+          type="text"
+        />
+      </Field>
     </form>
   )
 }

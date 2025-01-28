@@ -1,7 +1,7 @@
 'use client'
 
 import { FLEX_START } from '@/app/utils/const'
-import { Field, Label, Checkbox } from '@cerberus-design/react'
+import { FieldRoot, FieldLabel, Checkbox } from '@cerberus-design/react'
 import { hstack, vstack } from '@cerberus/styled-system/patterns'
 import { useCallback, useState, type ChangeEvent } from 'react'
 
@@ -30,13 +30,11 @@ export function OverviewPreview() {
         gap: '4',
       })}
     >
-      <Field required>
-        <Label
+      <FieldRoot ids={{ control: 'terms' }} required>
+        <FieldLabel
           className={hstack({
             justify: `${FLEX_START} !important`,
           })}
-          htmlFor="terms"
-          size="sm"
         >
           <Checkbox
             checked={checked.terms}
@@ -46,15 +44,13 @@ export function OverviewPreview() {
             size="md"
           />
           I agree to the terms and conditions
-        </Label>
-      </Field>
-      <Field>
-        <Label
+        </FieldLabel>
+      </FieldRoot>
+      <FieldRoot ids={{ control: 'legal' }} required>
+        <FieldLabel
           className={hstack({
             justify: `${FLEX_START} !important`,
           })}
-          htmlFor="legal"
-          size="sm"
         >
           <Checkbox
             checked={checked.legal}
@@ -64,15 +60,13 @@ export function OverviewPreview() {
             size="md"
           />
           I would like to receive marketing emails
-        </Label>
-      </Field>
-      <Field>
-        <Label
+        </FieldLabel>
+      </FieldRoot>
+      <FieldRoot ids={{ control: 'mixed' }} required>
+        <FieldLabel
           className={hstack({
             justify: `${FLEX_START} !important`,
           })}
-          htmlFor="legal"
-          size="sm"
         >
           <Checkbox
             defaultChecked={true}
@@ -82,8 +76,8 @@ export function OverviewPreview() {
             size="md"
           />
           Mixed state
-        </Label>
-      </Field>
+        </FieldLabel>
+      </FieldRoot>
     </div>
   )
 }

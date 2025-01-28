@@ -8,6 +8,7 @@ import {
 
 type BuilderSelectProps = Omit<SelectProps, 'collection'> & {
   options: string[]
+  label?: string
 }
 
 export default function BuilderSelect(props: BuilderSelectProps) {

@@ -1,9 +1,10 @@
 ---
 ---
 
+import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import DripDivider from '@/app/components/drip-divider'
-import { LivePlayground } from '@/app/react/field/components/live-preview'
+import { BasicTextarea } from '@/app/react/textarea/components/static-preview'
 
 ## Usage
 
@@ -14,9 +15,9 @@ import { LivePlayground } from '@/app/react/field/components/live-preview'
   'Error text should provide the context of the helper text',
 ]} />
 
-## Standard Field
+## Standard Textarea
 
-<LivePlayground />
+<CodePreview preview={<BasicTextarea />} />
 
 <DripDivider />
 
