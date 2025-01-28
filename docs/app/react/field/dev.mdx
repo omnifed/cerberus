@@ -80,9 +80,9 @@ You can utilize the primitive components to customize the field.
 | FieldRoot    | The context provider for the Field family |
 | FieldLabel   | The label of the field |
 | FieldInput   | The input of the field |
+| FieldTextarea   | The textarea of the field |
 | FieldHelperText | The helper text of the field |
 | FieldErrorText  | The error text of the field |
-| FieldTextarea   | The textarea of the field |
 | StartIndicator  | The start indicator of the field |
 | StatusIndicator | The status indicator or end icon of the field |
 
@@ -130,7 +130,7 @@ export function CustomField() {
 
 ### Props
 
-The `Field` component is an abstraction of our primitives and accepts the following props:
+The `Field` component is an abstraction of the primitives and accepts the following props:
 
 | Name     | Default | Description                                            |
 | -------- | ------- | ------------------------------------------------------ |
@@ -146,6 +146,8 @@ The `Field` component also accepts all the props of the [`FieldRoot` primitive p
 
 The `FieldParts` API is an Object containing the full family of components.
 
+<NoteAdmonition description="It is best to only use the FieldParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
 | Name     | Description                            |
 | -------- | -------------------------------------- |
 | Root     | The `FieldRoot` component which is the Provider for the family. |
@@ -156,5 +158,3 @@ The `FieldParts` API is an Object containing the full family of components.
 | ErrorText  | The `FieldErrorText` component which displays the error text. |
 | StartIndicator | The `StartIndicator` component which displays an indicator of your choice at the start of the field. |
 | StatusIndicator | The `StatusIndicator` component which displays an indicator of your choice at the end of the field. |
-
-<NoteAdmonition description="It is best to only use the FieldParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
