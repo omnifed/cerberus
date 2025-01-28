@@ -43,10 +43,7 @@ const endIndicatorStyles = {
 }
 
 /**
- * Styles for the Input component
- * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
- * @definition [ARIA Forms](https://www.a11yproject.com/checklist/#forms)
- * @definition [Input docs](https://cerberus.digitalu.design/react/input)
+ * Styles for the Field family of components component
  */
 export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'field',
@@ -61,10 +58,11 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
     'FieldRoot',
     'FieldLabel',
     'FieldInput',
+    'FieldTextarea',
     'FieldHelperText',
     'FieldErrorText',
+    'FieldStartIndicator',
     'FieldStatusIndicator',
-    'FieldTextarea',
     'Input',
     'Textarea',
   ],
