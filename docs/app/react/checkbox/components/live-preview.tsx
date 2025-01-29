@@ -8,7 +8,6 @@ import { Checkbox, splitProps } from '@cerberus-design/react'
 const api = {
   size: builder.Enum('size', ['md', 'lg']),
   text: builder.Text('text', 'Add your label text here'),
-  id: builder.Text('id', 'add-uuid'),
   mixed: builder.Boolean('mixed', false),
   disabled: builder.Boolean('disabled', false),
   invalid: builder.Boolean('invalid', false),
@@ -72,19 +71,31 @@ export function MyCheckbox(props: CheckboxProps) {
 
 export function CheckboxPreview() {
   const { selectedProps } = useCodeBuilder()
-  const [checkboxProps, formState, { id, mixed }] = splitProps(
+  const [checkboxProps, formState, { mixed }] = splitProps(
     selectedProps,
     ['text', 'size'],
     ['disabled', 'invalid', 'readOnly', 'required'],
   )
 
+  if (checkboxProps.size === 'lg') {
+    return (
+      <Checkbox
+        {...formState}
+        {...(mixed && { checked: 'indeterminate' })}
+        ids={{ control: 'checkbox:live-preview' }}
+        size="lg"
+      >
+        {checkboxProps.text}
+      </Checkbox>
+    )
+  }
+
   return (
     <Checkbox
       {...formState}
-      ids={{ control: id as string }}
-      name={id as string}
-      size={checkboxProps.size as 'md' | 'lg'}
       {...(mixed && { checked: 'indeterminate' })}
+      ids={{ control: 'checkbox:live-preview' }}
+      size="md"
     >
       {checkboxProps.text}
     </Checkbox>
