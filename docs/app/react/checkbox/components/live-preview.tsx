@@ -28,9 +28,11 @@ export function LivePlaygroundWithCode() {
   return (
     <CodeBuilder
       api={api}
-      code={`import { Field, Label, Checkbox, type CheckboxProps } from '@cerberus/react'
-import { hstack } from '@cerberus/styled-system/patterns'
+      code={`import { Checkbox, type CheckboxProps } from '@cerberus/react'
 
+/**
+ * This is an abstraction of the Cerberus checkbox component
+ */
 export function MyCheckbox(props: CheckboxProps) {
   const { describedBy, size, mixed, ...nativeProps } = props
   const labelSize = size === 'md' ? 'sm' : 'md'

@@ -57,7 +57,7 @@
       "Select",
       "Toggle"
     ],
-    "next": ["Select"],
+    "next": ["Checkbox", "Select"],
     "new": [],
     "deprecated": []
   },
