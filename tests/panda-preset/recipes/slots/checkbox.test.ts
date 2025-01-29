@@ -8,64 +8,83 @@ describe('checkbox recipe', () => {
     expect(checkbox).toBeDefined()
   })
 
-  test('should have a base style', () => {
+  test('should have a JSX structure', () => {
+    expect(checkbox.jsx).toMatchObject([
+      'CheckboxRoot',
+      'CheckboxLabel',
+      'CheckboxControl',
+      'CheckboxIndicator',
+      'Checkbox',
+    ])
+  })
+
+  test('should have a root style', () => {
     expect(checkbox.base?.root).toMatchObject({
-      flexShrink: '0',
+      alignItems: 'center',
+      cursor: 'pointer',
+      display: 'inline-flex',
+      gap: 'sm',
       position: 'relative',
+      userSelect: 'none',
+      verticalAlign: 'top',
     })
   })
 
-  test('should have a input style', () => {
-    expect(checkbox.base?.input).toMatchObject({
+  test('should have a label style', () => {
+    expect(checkbox.base?.label).toMatchObject({
+      gap: 'sm',
+      flexShrink: 0,
+      w: 'initial!',
+    })
+  })
+
+  test('should have a control style', () => {
+    expect(checkbox.base?.control).toMatchObject({
       appearance: 'none',
-      bgColor: 'action.bg.100',
+      bgColor: 'page.surface.initial',
       border: '1px solid',
       borderColor: 'action.border.initial',
       color: 'page.text.initial',
-      h: 'full',
-      left: '0',
-      position: 'absolute',
-      pxi: '0',
+      flexShrink: 0,
       rounded: 'sm',
-      transitionProperty: 'border-color',
-      transitionDuration: '200ms',
+      transitionProperty: 'border-color,background-color',
+      transitionDuration: 'fast',
       transitionTimingFunction: 'ease-in-out',
-      top: '0',
-      w: 'full',
-      zIndex: 'base',
       _focusVisible: {
         boxShadow: 'none',
         outline: '3px solid',
         outlineColor: 'action.border.focus',
         outlineOffset: '2px',
       },
-      _readOnly: {
-        '&:not(button)': {
-          cursor: 'default',
+      _checked: {
+        bgColor: 'action.bg.initial',
+        _userInvalid: {
+          bgColor: 'danger.bg.initial',
+          borderColor: 'danger.border.initial',
+          color: 'danger.text.initial',
         },
       },
-      _userInvalid: {
-        bgColor: 'page.surface.100',
-        borderColor: 'danger.border.initial',
-      },
-      _checked: {
+      _indeterminate: {
         bgColor: 'action.bg.initial',
       },
       _disabled: {
-        bgColor: 'page.bg.200',
-        opacity: '0.5',
         cursor: 'not-allowed',
+        opacity: '0.5',
+        bgColor: 'page.bg.200',
+      },
+      _userInvalid: {
+        bgColor: 'danger.bg.initial',
+        borderColor: 'danger.border.initial',
+        color: 'danger.text.initial',
       },
     })
   })
 
-  test('should have a icon style', () => {
-    expect(checkbox.base?.icon).toMatchObject({
-      bottom: '0',
+  test('should have a indicator style', () => {
+    expect(checkbox.base?.indicator).toMatchObject({
       color: 'action.text.initial',
-      display: 'inline-block',
+      h: 'full',
       w: 'full',
-      zIndex: 'decorator',
       _peerInvalid: {
         color: 'danger.text.initial',
       },
@@ -75,18 +94,58 @@ describe('checkbox recipe', () => {
     })
   })
 
+  test('should have a group style', () => {
+    expect(checkbox.base?.group).toMatchObject({
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'md',
+    })
+  })
+
   test('should have a size variant', () => {
     expect(checkbox.variants!.size).toMatchObject({
       md: {
-        root: {
+        control: {
           h: '1rem',
           w: '1rem',
         },
+        label: {
+          alignItems: 'center',
+          display: 'inline-flex',
+          color: 'page.text.initial',
+          justifyContent: 'space-between',
+          textStyle: 'label-sm',
+          w: 'full',
+          _disabled: {
+            color: 'page.text.100',
+          },
+          '& > [data-part=required-indicator]': {
+            display: 'inline-block',
+            color: 'page.text.100',
+            textStyle: 'label-sm',
+          },
+        },
       },
       lg: {
-        root: {
+        control: {
           h: '1.25rem',
           w: '1.25rem',
+        },
+        label: {
+          alignItems: 'center',
+          display: 'inline-flex',
+          color: 'page.text.initial',
+          justifyContent: 'space-between',
+          textStyle: 'label-md',
+          w: 'full',
+          _disabled: {
+            color: 'page.text.200',
+          },
+          '& > [data-part=required-indicator]': {
+            display: 'inline-block',
+            color: 'page.text.100',
+            textStyle: 'label-sm',
+          },
         },
       },
     })

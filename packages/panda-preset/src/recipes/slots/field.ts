@@ -1,6 +1,6 @@
 import { fieldAnatomy } from '@ark-ui/anatomy'
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { focusStates } from '../shared/states'
+import { focusStates, formStates } from '../shared/states'
 
 /**
  * This module contains the field recipe.
@@ -31,6 +31,7 @@ const inputStyles = {
   _userInvalid: {
     borderColor: 'danger.border.initial',
   },
+  ...formStates,
   ...focusStates,
 }
 

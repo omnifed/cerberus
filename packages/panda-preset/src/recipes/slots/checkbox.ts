@@ -1,6 +1,7 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { input } from '../shared/input.base'
+import { checkboxAnatomy } from '@ark-ui/anatomy'
 import { focusStates, formStates } from '../shared/states'
+import { field } from './field'
 
 /**
  * This module contains the checkbox recipe.
@@ -15,52 +16,66 @@ import { focusStates, formStates } from '../shared/states'
  */
 export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'checkbox',
-  slots: ['root', 'input', 'icon'],
+  slots: checkboxAnatomy.keys(),
+  jsx: [
+    'CheckboxRoot',
+    'CheckboxLabel',
+    'CheckboxControl',
+    'CheckboxIndicator',
+    'Checkbox',
+  ],
 
   base: {
     root: {
-      flexShrink: '0',
+      alignItems: 'center',
+      cursor: 'pointer',
+      display: 'inline-flex',
+      gap: 'sm',
       position: 'relative',
+      userSelect: 'none',
+      verticalAlign: 'top',
     },
-    input: {
+    label: {
+      gap: 'sm',
+      flexShrink: 0,
+      w: 'initial!',
+    },
+    control: {
       appearance: 'none',
-      bgColor: 'action.bg.100',
+      bgColor: 'page.surface.initial',
       border: '1px solid',
       borderColor: 'action.border.initial',
       color: 'page.text.initial',
-      h: 'full',
-      left: '0',
-      position: 'absolute',
-      pxi: '0',
+      flexShrink: 0,
       rounded: 'sm',
-      transitionProperty: 'border-color',
-      transitionDuration: '200ms',
+      transitionProperty: 'border-color,background-color',
+      transitionDuration: 'fast',
       transitionTimingFunction: 'ease-in-out',
-      top: '0',
-      w: 'full',
-      zIndex: 'base',
       ...focusStates,
-      ...formStates,
       _checked: {
         bgColor: 'action.bg.initial',
         _userInvalid: {
           bgColor: 'danger.bg.initial',
-          borderColor: input._userInvalid.borderColor,
+          borderColor: 'danger.border.initial',
+          color: 'danger.text.initial',
         },
       },
+      _indeterminate: {
+        bgColor: 'action.bg.initial',
+      },
       _disabled: {
-        ...input._disabled,
+        ...formStates._disabled,
         bgColor: 'page.bg.200',
       },
       _userInvalid: {
-        ...input._userInvalid,
+        bgColor: 'danger.bg.initial',
+        borderColor: 'danger.border.initial',
+        color: 'danger.text.initial',
       },
     },
-    icon: {
-      bottom: '0',
+    indicator: {
       color: 'action.text.initial',
-      display: 'inline-block',
-      zIndex: 'decorator',
+      h: 'full',
       w: 'full',
       _peerInvalid: {
         color: 'danger.text.initial',
@@ -69,20 +84,30 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
         opacity: formStates._disabled.opacity,
       },
     },
+    group: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'md',
+    },
   },
 
   variants: {
     size: {
       md: {
-        root: {
+        control: {
           h: '1rem',
           w: '1rem',
         },
+        label: field.base!.label,
       },
       lg: {
-        root: {
+        control: {
           h: '1.25rem',
           w: '1.25rem',
+        },
+        label: {
+          ...field.base!.label,
+          textStyle: 'label-md',
         },
       },
     },

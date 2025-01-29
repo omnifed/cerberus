@@ -1,6 +1,10 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { CerberusProvider, Field, Checkbox } from '@cerberus-design/react'
+import {
+  CerberusProvider,
+  Checkbox,
+  CheckboxGroup,
+} from '@cerberus-design/react'
 import { makeConfig, setupStrictMode } from '@/utils'
 
 describe('Checkbox', () => {
@@ -12,15 +16,14 @@ describe('Checkbox', () => {
   test('should render a checkbox', () => {
     render(
       <CerberusProvider config={config}>
-        <Field
+        <Checkbox
           ids={{
             control: 'test',
           }}
-          label="Test label"
           required
         >
-          <Checkbox />
-        </Field>
+          Test label
+        </Checkbox>
       </CerberusProvider>,
     )
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
@@ -31,16 +34,15 @@ describe('Checkbox', () => {
   test('should render a checkbox with error', () => {
     render(
       <CerberusProvider config={config}>
-        <Field
+        <Checkbox
           ids={{
             control: 'test',
           }}
-          label="Test Label"
           required
           invalid
         >
-          <Checkbox id="test" />
-        </Field>
+          Test Label
+        </Checkbox>
         ,
       </CerberusProvider>,
     )
@@ -52,15 +54,14 @@ describe('Checkbox', () => {
   test('should render a checkbox with disabled', () => {
     render(
       <CerberusProvider config={config}>
-        <Field
+        <Checkbox
           ids={{
             control: 'test',
           }}
-          label="Test Label"
           disabled
         >
-          <Checkbox />
-        </Field>
+          Test Label
+        </Checkbox>
       </CerberusProvider>,
     )
     expect(
@@ -68,63 +69,28 @@ describe('Checkbox', () => {
     ).toBeTruthy()
   })
 
-  test('should render a checkbox with a md size', () => {
+  test('should render a group of checkboxes', () => {
     render(
       <CerberusProvider config={config}>
-        <Field label="Test Label">
-          <Checkbox size="md" />
-        </Field>
+        <CheckboxGroup name="test">
+          <Checkbox
+            ids={{
+              control: 'test1',
+            }}
+          >
+            Test 1
+          </Checkbox>
+          <Checkbox
+            ids={{
+              control: 'test2',
+            }}
+          >
+            Test 2
+          </Checkbox>
+        </CheckboxGroup>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByRole('checkbox')
-        .classList.contains('cerberus-checkbox__input--size_md'),
-    ).toBeTruthy()
-  })
-
-  test('should render a checkbox with a lg size', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Field label="Test Label">
-          <Checkbox size="lg" />
-        </Field>
-      </CerberusProvider>,
-    )
-    expect(
-      screen
-        .getByRole('checkbox')
-        .classList.contains('cerberus-checkbox__input--size_lg'),
-    ).toBeTruthy()
-  })
-
-  test('should render a checkbox icon when checked', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Field label="Test Label">
-          <Checkbox checked />
-        </Field>
-      </CerberusProvider>,
-    )
-    expect(
-      screen.getByRole('img', {
-        hidden: true,
-      }),
-    ).toBeTruthy()
-  })
-
-  test('should render a mixed icon when mixed', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Field label="Test Label">
-          <Checkbox mixed />
-        </Field>
-      </CerberusProvider>,
-    )
-    expect(
-      screen.getByRole('img', {
-        hidden: true,
-      }),
-    ).toBeTruthy()
+    expect(screen.getByLabelText(/test 1/i)).toBeTruthy()
+    expect(screen.getByLabelText(/test 2/i)).toBeTruthy()
   })
 })

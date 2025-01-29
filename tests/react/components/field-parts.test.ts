@@ -3,7 +3,7 @@ import { cleanup } from '@testing-library/react'
 import { FieldParts } from '@cerberus-design/react'
 import { setupStrictMode } from '@/utils'
 
-describe('Accordion', () => {
+describe('FieldParts', () => {
   setupStrictMode()
   afterEach(cleanup)
 

@@ -23,11 +23,12 @@ const overviewGroup: CategoriesList = {
       'Feature Flags',
       'Portal',
       'Show',
+      'For',
       'Text',
       'Local Storage',
     ],
     deprecated: [],
-    next: [],
+    next: ['For'],
     new: [],
   },
 }

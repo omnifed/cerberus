@@ -1,83 +1,75 @@
-'use client'
-
-import { FLEX_START } from '@/app/utils/const'
-import { FieldRoot, FieldLabel, Checkbox } from '@cerberus-design/react'
-import { hstack, vstack } from '@cerberus/styled-system/patterns'
-import { useCallback, useState, type ChangeEvent } from 'react'
-
-interface OverviewState {
-  legal: boolean
-  terms: boolean
-}
+import {
+  Checkbox,
+  CheckboxGroup,
+  For,
+  CheckboxParts,
+} from '@cerberus-design/react'
+import { ArrowDownRight } from '@carbon/icons-react'
+import { Box } from '@cerberus-design/styled-system/jsx'
+import { css } from '@cerberus-design/styled-system/css'
 
 export function OverviewPreview() {
-  const [checked, setChecked] = useState<OverviewState>({
-    legal: false,
-    terms: false,
-  })
+  const items = [
+    {
+      id: 'terms',
+      label: 'I agree to the terms and conditions',
 
-  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    const key = event.currentTarget.name as keyof OverviewState
-    setChecked((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }))
-  }, [])
+      required: true,
+    },
+    {
+      id: 'legal',
+      label: 'I would like to receive marketing emails',
+    },
+  ]
 
   return (
-    <div
-      className={vstack({
-        gap: '4',
-      })}
-    >
-      <FieldRoot ids={{ control: 'terms' }} required>
-        <FieldLabel
-          className={hstack({
-            justify: `${FLEX_START} !important`,
+    <Box w="1/2">
+      <CheckboxGroup name="user_acceptance">
+        <For each={items}>
+          {(item) => (
+            <Checkbox
+              key={item.id}
+              ids={{ control: item.id }}
+              required={Boolean(item.required)}
+            >
+              {item.label}
+            </Checkbox>
+          )}
+        </For>
+
+        <Checkbox ids={{ control: 'mixed' }} checked="indeterminate">
+          The indeterminate state
+        </Checkbox>
+      </CheckboxGroup>
+    </Box>
+  )
+}
+
+export function CustomCheckbox() {
+  return (
+    <Box w="1/2">
+      <CheckboxParts.Root>
+        <CheckboxParts.Label>Custom Checkbox</CheckboxParts.Label>
+        <CheckboxParts.Control
+          className={css({
+            bgColor: 'black',
+            border: '4px solid',
+            borderColor: 'danger.border.initial',
+            h: 8,
+            rounded: 'none',
+            transform: 'skewX(-10deg)',
+            w: 8,
+            _checked: {
+              bgColor: 'info.bg.initial',
+            },
           })}
         >
-          <Checkbox
-            checked={checked.terms}
-            id="terms"
-            name="terms"
-            onChange={handleChange}
-            size="md"
-          />
-          I agree to the terms and conditions
-        </FieldLabel>
-      </FieldRoot>
-      <FieldRoot ids={{ control: 'legal' }} required>
-        <FieldLabel
-          className={hstack({
-            justify: `${FLEX_START} !important`,
-          })}
-        >
-          <Checkbox
-            checked={checked.legal}
-            id="legal"
-            name="legal"
-            onChange={handleChange}
-            size="md"
-          />
-          I would like to receive marketing emails
-        </FieldLabel>
-      </FieldRoot>
-      <FieldRoot ids={{ control: 'mixed' }} required>
-        <FieldLabel
-          className={hstack({
-            justify: `${FLEX_START} !important`,
-          })}
-        >
-          <Checkbox
-            defaultChecked={true}
-            id="mixed"
-            name="mixed"
-            mixed
-            size="md"
-          />
-          Mixed state
-        </FieldLabel>
-      </FieldRoot>
-    </div>
+          <CheckboxParts.Indicator>
+            <ArrowDownRight />
+          </CheckboxParts.Indicator>
+        </CheckboxParts.Control>
+        <CheckboxParts.HiddenInput />
+      </CheckboxParts.Root>
+    </Box>
   )
 }

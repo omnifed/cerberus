@@ -77,7 +77,7 @@ You can utilize the primitive components to customize the field.
 
 | Component | Description |
 | --------- | ----------- |
-| FieldRoot    | The context provider for the Field family |
+| FieldRoot    | The context provider for the Field parts |
 | FieldLabel   | The label of the field |
 | FieldInput   | The input of the field |
 | FieldTextarea   | The textarea of the field |
@@ -85,6 +85,7 @@ You can utilize the primitive components to customize the field.
 | FieldErrorText  | The error text of the field |
 | StartIndicator  | The start indicator of the field |
 | StatusIndicator | The status indicator or end icon of the field |
+| RequiredIndicator | The required indicator of the field |
 
 <CodePreview preview={<CustomField />}>
 ```tsx
@@ -158,3 +159,4 @@ The `FieldParts` API is an Object containing the full family of components.
 | ErrorText  | The `FieldErrorText` component which displays the error text. |
 | StartIndicator | The `StartIndicator` component which displays an indicator of your choice at the start of the field. |
 | StatusIndicator | The `StatusIndicator` component which displays an indicator of your choice at the end of the field. |
+| RequiredIndicator | The `RequiredIndicator` component which displays an indicator of your choice when the field is marked `required`. |

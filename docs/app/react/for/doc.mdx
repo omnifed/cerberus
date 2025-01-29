@@ -1,0 +1,61 @@
+---
+heading: 'For'
+description: 'Render a list of components or a fallback. Inspired by SolidJS.'
+a11y: 'utilities'
+npm: '@cerberus-design/react'
+source: 'components/for.tsx'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import ForPreview from '@/app/react/for/components/show-preview'
+
+```ts
+import { For } from '@cerberus/react'
+```
+
+## Usage
+
+The `For` component is used to render a list of components or a fallback. It is an abstraction of the `Array.map` method.
+
+<CodePreview preview={<ForPreview />}>
+```tsx title="for demo"
+import { For, Text } from '@cerberus/react'
+import { VStack } from '@cerberus/styled-system/jsx'
+
+function ForPreview() {
+  const data = ['Cerberus', 'Design', 'System', 'Roolz', 'D00dz']
+
+  return (
+    <VStack alignItems="flex-start" gap="md">
+      <For each={data}>
+        {(item, index) => (
+          <Text key={item} textStyle="body-lg">
+            {index}. {item}
+          </Text>
+        )}
+      </For>
+    </VStack>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+```ts showLineNumbers=false
+export interface ForProps {
+  each: any[]
+  fallback?: ReactNode
+}
+
+define function For(props: ForProps): ReactNode | null
+```
+
+### Props
+
+The `For` component accepts the following props:
+
+| Name     | Default | Description                                           |
+| -------- | ------- | ------------------------------------------------- |
+| each     |         | An Array of items to loop through. |
+| fallback | null    | The content to render when the each value is empty. |

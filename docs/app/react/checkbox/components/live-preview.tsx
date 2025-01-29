@@ -3,14 +3,11 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import { Checkbox, FieldLabel, FieldRoot, Show } from '@cerberus-design/react'
-import { hstack } from '@cerberus/styled-system/patterns'
-import { useCallback, useState, type ChangeEvent } from 'react'
+import { Checkbox, splitProps } from '@cerberus-design/react'
 
 const api = {
   size: builder.Enum('size', ['md', 'lg']),
   text: builder.Text('text', 'Add your label text here'),
-  id: builder.Text('id', 'add-uuid'),
   mixed: builder.Boolean('mixed', false),
   disabled: builder.Boolean('disabled', false),
   invalid: builder.Boolean('invalid', false),
@@ -30,9 +27,11 @@ export function LivePlaygroundWithCode() {
   return (
     <CodeBuilder
       api={api}
-      code={`import { Field, Label, Checkbox, type CheckboxProps } from '@cerberus/react'
-import { hstack } from '@cerberus/styled-system/patterns'
+      code={`import { Checkbox, type CheckboxProps } from '@cerberus/react'
 
+/**
+ * This is an abstraction of the Cerberus checkbox component
+ */
 export function MyCheckbox(props: CheckboxProps) {
   const { describedBy, size, mixed, ...nativeProps } = props
   const labelSize = size === 'md' ? 'sm' : 'md'
@@ -72,44 +71,33 @@ export function MyCheckbox(props: CheckboxProps) {
 
 export function CheckboxPreview() {
   const { selectedProps } = useCodeBuilder()
-  const { size, text, id, mixed, ...fieldState } = selectedProps
-  const [checked, setChecked] = useState<boolean>(false)
+  const [checkboxProps, formState, { mixed }] = splitProps(
+    selectedProps,
+    ['text', 'size'],
+    ['disabled', 'invalid', 'readOnly', 'required'],
+  )
 
-  const handleChange = useCallback((_: ChangeEvent<HTMLInputElement>) => {
-    setChecked((prev) => !prev)
-  }, [])
+  if (checkboxProps.size === 'lg') {
+    return (
+      <Checkbox
+        {...formState}
+        {...(mixed && { checked: 'indeterminate' })}
+        ids={{ control: 'checkbox:live-preview' }}
+        size="lg"
+      >
+        {checkboxProps.text}
+      </Checkbox>
+    )
+  }
 
   return (
-    <FieldRoot ids={{ control: String(id) }} {...fieldState}>
-      <FieldLabel
-        className={hstack({
-          justify: 'flex-start !important',
-        })}
-      >
-        <Show
-          when={size === 'md'}
-          fallback={
-            <Checkbox
-              checked={checked}
-              id={id as string}
-              mixed={mixed as boolean}
-              name={id as string}
-              onChange={handleChange}
-              size="lg"
-            />
-          }
-        >
-          <Checkbox
-            checked={checked}
-            id={id as string}
-            mixed={mixed as boolean}
-            name={id as string}
-            onChange={handleChange}
-            size="md"
-          />
-        </Show>
-        {text}
-      </FieldLabel>
-    </FieldRoot>
+    <Checkbox
+      {...formState}
+      {...(mixed && { checked: 'indeterminate' })}
+      ids={{ control: 'checkbox:live-preview' }}
+      size="md"
+    >
+      {checkboxProps.text}
+    </Checkbox>
   )
 }
