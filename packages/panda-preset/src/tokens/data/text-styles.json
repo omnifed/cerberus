@@ -2210,10 +2210,10 @@
         "height": 16
       },
       "absoluteRenderBounds": {
-        "x": -2313.280029296875,
-        "y": -368.7040100097656,
-        "width": 60.362548828125,
-        "height": 8.8800048828125
+        "x": -2313.23193359375,
+        "y": -368.68798828125,
+        "width": 60.282470703125,
+        "height": 8.863983154296875
       },
       "constraints": {
         "vertical": "TOP",
@@ -2222,9 +2222,9 @@
       "characters": "mono-xs",
       "style": {
         "fontFamily": "Recursive",
-        "fontPostScriptName": "Recursive-MonoLinearMedium",
-        "fontStyle": "Mono Linear Medium",
-        "fontWeight": 450,
+        "fontPostScriptName": "Recursive-MonoLinear",
+        "fontStyle": "Mono Linear",
+        "fontWeight": 400,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 16,
         "textAlignHorizontal": "LEFT",
