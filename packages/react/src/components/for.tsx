@@ -4,15 +4,15 @@ export interface ForProps<T> {
   /**
    * The array to iterate over
    */
-  each: T[] | readonly T[] | undefined
+  each: T[]
   /**
    * The fallback content to render when the array is empty
    */
-  fallback?: React.ReactNode
+  fallback?: ReactNode
   /**
    * The render function to render each item in the array
    */
-  children: (item: Exclude<T, undefined>, index: number) => React.ReactNode
+  children: (item: Exclude<T, undefined>, index: number) => ReactNode
 }
 
 /**
@@ -27,7 +27,9 @@ export interface ForProps<T> {
  * </For>
  * ```
  */
-export function For<T extends string | number | undefined>(props: ForProps<T>) {
+export function For<
+  T extends string | number | Record<string, unknown> | undefined,
+>(props: ForProps<T>) {
   const mappableChildren = props.children as unknown as (
     item: T,
     index: number,
