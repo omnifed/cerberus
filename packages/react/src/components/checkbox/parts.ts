@@ -5,6 +5,7 @@ import {
   CheckboxControl,
   CheckboxIndicator,
   CheckboxHiddenInput,
+  CheckboxGroup,
 } from './primitives'
 
 /**
@@ -33,6 +34,10 @@ interface CheckboxPartsValue {
    * The hidden input of the field.
    */
   HiddenInput: ElementType
+  /**
+   * The checkbox group component.
+   */
+  Group: ElementType
 }
 
 /**
@@ -50,4 +55,5 @@ export const CheckboxParts: CheckboxPartsValue = {
   Control: CheckboxControl,
   Indicator: CheckboxIndicator,
   HiddenInput: CheckboxHiddenInput,
+  Group: CheckboxGroup,
 }

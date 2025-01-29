@@ -78,8 +78,12 @@ describe('conditions', () => {
 
   test('should have a checked', () => {
     expect(conditions.checked).toEqual(
-      '&:is(:checked, [data-checked], [aria-checked=true] [data-state=checked])',
+      '&:is(:checked, [data-checked], [aria-checked=true], [data-state=checked])',
     )
+  })
+
+  test('should have an indeterminate', () => {
+    expect(conditions.indeterminate).toEqual('&:is([data-state=indeterminate])')
   })
 
   test('should have a positionBottom', () => {

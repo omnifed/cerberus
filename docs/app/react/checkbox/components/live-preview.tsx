@@ -3,9 +3,7 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import { Checkbox, FieldLabel, FieldRoot, Show } from '@cerberus-design/react'
-import { hstack } from '@cerberus/styled-system/patterns'
-import { useCallback, useState, type ChangeEvent } from 'react'
+import { Checkbox, splitProps } from '@cerberus-design/react'
 
 const api = {
   size: builder.Enum('size', ['md', 'lg']),
@@ -72,44 +70,21 @@ export function MyCheckbox(props: CheckboxProps) {
 
 export function CheckboxPreview() {
   const { selectedProps } = useCodeBuilder()
-  const { size, text, id, mixed, ...fieldState } = selectedProps
-  const [checked, setChecked] = useState<boolean>(false)
-
-  const handleChange = useCallback((_: ChangeEvent<HTMLInputElement>) => {
-    setChecked((prev) => !prev)
-  }, [])
+  const [checkboxProps, formState, { id, mixed }] = splitProps(
+    selectedProps,
+    ['text', 'size'],
+    ['disabled', 'invalid', 'readOnly', 'required'],
+  )
 
   return (
-    <FieldRoot ids={{ control: String(id) }} {...fieldState}>
-      <FieldLabel
-        className={hstack({
-          justify: 'flex-start !important',
-        })}
-      >
-        <Show
-          when={size === 'md'}
-          fallback={
-            <Checkbox
-              checked={checked}
-              id={id as string}
-              mixed={mixed as boolean}
-              name={id as string}
-              onChange={handleChange}
-              size="lg"
-            />
-          }
-        >
-          <Checkbox
-            checked={checked}
-            id={id as string}
-            mixed={mixed as boolean}
-            name={id as string}
-            onChange={handleChange}
-            size="md"
-          />
-        </Show>
-        {text}
-      </FieldLabel>
-    </FieldRoot>
+    <Checkbox
+      {...formState}
+      ids={{ control: id as string }}
+      name={id as string}
+      size={checkboxProps.size as 'md' | 'lg'}
+      {...(mixed && { checked: 'indeterminate' })}
+    >
+      {checkboxProps.text}
+    </Checkbox>
   )
 }

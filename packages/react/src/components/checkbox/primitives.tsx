@@ -1,10 +1,16 @@
 import {
   Checkbox,
   type CheckboxControlProps,
+  type CheckboxGroupProps,
   type CheckboxIndicatorProps,
   type CheckboxLabelProps,
   type CheckboxRootProps,
 } from '@ark-ui/react'
+import { cx } from '@cerberus/styled-system/css'
+import {
+  checkbox,
+  type CheckboxVariantProps,
+} from '@cerberus/styled-system/recipes'
 
 /**
  * This module contains the Checkbox primitives.
@@ -18,7 +24,10 @@ import {
  * @definition [Primitive Docs](https://ark-ui.com/react/docs/components/checkbox)
  */
 export function CheckboxRoot(props: CheckboxRootProps) {
-  return <Checkbox.Root {...props} />
+  const styles = checkbox()
+  return (
+    <Checkbox.Root {...props} className={cx(styles.root, props.className)} />
+  )
 }
 
 /**
@@ -26,8 +35,17 @@ export function CheckboxRoot(props: CheckboxRootProps) {
  * @definition [Cerberus Docs](https://cerberus.digitalu.design/react/checkbox)
  * @definition [Primitive Docs](https://ark-ui.com/react/docs/components/checkbox)
  */
-export function CheckboxLabel(props: CheckboxLabelProps) {
-  return <Checkbox.Label {...props} />
+export function CheckboxLabel(
+  props: CheckboxLabelProps & CheckboxVariantProps,
+) {
+  const { size, ...labelProps } = props
+  const styles = checkbox({ size })
+  return (
+    <Checkbox.Label
+      {...labelProps}
+      className={cx(styles.label, labelProps.className)}
+    />
+  )
 }
 
 /**
@@ -35,8 +53,17 @@ export function CheckboxLabel(props: CheckboxLabelProps) {
  * @definition [Cerberus Docs](https://cerberus.digitalu.design/react/checkbox)
  * @definition [Primitive Docs](https://ark-ui.com/react/docs/components/checkbox)
  */
-export function CheckboxControl(props: CheckboxControlProps) {
-  return <Checkbox.Control {...props} />
+export function CheckboxControl(
+  props: CheckboxControlProps & CheckboxVariantProps,
+) {
+  const { size, ...controlProps } = props
+  const styles = checkbox({ size })
+  return (
+    <Checkbox.Control
+      {...controlProps}
+      className={cx(styles.control, controlProps.className)}
+    />
+  )
 }
 
 /**
@@ -45,7 +72,13 @@ export function CheckboxControl(props: CheckboxControlProps) {
  * @definition [Primitive Docs](https://ark-ui.com/react/docs/components/checkbox)
  */
 export function CheckboxIndicator(props: CheckboxIndicatorProps) {
-  return <Checkbox.Indicator {...props} />
+  const styles = checkbox()
+  return (
+    <Checkbox.Indicator
+      {...props}
+      className={cx(styles.indicator, props.className)}
+    />
+  )
 }
 
 /**
@@ -55,4 +88,17 @@ export function CheckboxIndicator(props: CheckboxIndicatorProps) {
  */
 export function CheckboxHiddenInput(props: CheckboxControlProps) {
   return <Checkbox.HiddenInput {...props} />
+}
+
+/**
+ * Checkbox Group is used to group checkboxes together in a consistently styled
+ * way.
+ * @definition [Cerberus Docs](https://cerberus.digitalu.design/react/checkbox)
+ * @definition [Primitive Docs](https://ark-ui.com/react/docs/components/checkbox)
+ */
+export function CheckboxGroup(props: CheckboxGroupProps) {
+  const styles = checkbox()
+  return (
+    <Checkbox.Group {...props} className={cx(styles.group, props.className)} />
+  )
 }

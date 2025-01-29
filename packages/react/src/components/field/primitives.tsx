@@ -62,6 +62,13 @@ export function FieldLabel(props: FieldLabelProps) {
   )
 }
 
+/**
+ * The required indicator for the Field component.
+ */
+export function FieldRequiredIndicator() {
+  return <Field.RequiredIndicator>(required)</Field.RequiredIndicator>
+}
+
 export interface FieldInputProps
   extends Omit<ArkFieldInputProps, 'size'>,
     FieldVariantProps {

@@ -4,6 +4,7 @@ import {
   FieldHelperText,
   FieldInput,
   FieldLabel,
+  FieldRequiredIndicator,
   FieldRoot,
   FieldTextarea,
 } from './primitives'
@@ -48,6 +49,10 @@ interface FieldPartsValue {
    * The status indicator of the field.
    */
   StatusIndicator: ElementType
+  /**
+   * The indicator that appears at the end of the field.
+   */
+  RequiredIndicator: ElementType
 }
 
 /**
@@ -68,4 +73,5 @@ export const FieldParts: FieldPartsValue = {
   ErrorText: FieldErrorText,
   StartIndicator: FieldStartIndicator,
   StatusIndicator: FieldStatusIndicator,
+  RequiredIndicator: FieldRequiredIndicator,
 }
