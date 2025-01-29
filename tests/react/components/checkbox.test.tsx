@@ -1,6 +1,10 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { CerberusProvider, Checkbox } from '@cerberus-design/react'
+import {
+  CerberusProvider,
+  Checkbox,
+  CheckboxGroup,
+} from '@cerberus-design/react'
 import { makeConfig, setupStrictMode } from '@/utils'
 
 describe('Checkbox', () => {
@@ -63,5 +67,30 @@ describe('Checkbox', () => {
     expect(
       screen.getByRole('checkbox').attributes.getNamedItem('disabled'),
     ).toBeTruthy()
+  })
+
+  test('should render a group of checkboxes', () => {
+    render(
+      <CerberusProvider config={config}>
+        <CheckboxGroup name="test">
+          <Checkbox
+            ids={{
+              control: 'test1',
+            }}
+          >
+            Test 1
+          </Checkbox>
+          <Checkbox
+            ids={{
+              control: 'test2',
+            }}
+          >
+            Test 2
+          </Checkbox>
+        </CheckboxGroup>
+      </CerberusProvider>,
+    )
+    expect(screen.getByLabelText(/test 1/i)).toBeTruthy()
+    expect(screen.getByLabelText(/test 2/i)).toBeTruthy()
   })
 })
