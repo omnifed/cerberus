@@ -1,83 +1,94 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { FieldRoot, FieldLabel, Radio } from '@cerberus-design/react'
+import { RadioGroup, Radio, RadioParts } from '@cerberus-design/react'
 import { setupStrictMode } from '@/utils'
 
-describe('Radio', () => {
+describe('RadioGroup & Radio', () => {
   setupStrictMode()
   afterEach(cleanup)
 
   test('should render a radio', () => {
     render(
-      <FieldRoot required>
-        <Radio id="test">
-          <FieldLabel htmlFor="test">Test label</FieldLabel>
-        </Radio>
-      </FieldRoot>,
+      <RadioGroup>
+        <Radio value="test">Test label</Radio>
+      </RadioGroup>,
     )
     expect(screen.getByLabelText(/test label/i)).toBeTruthy()
-    expect(screen.getByText(/(required)/i)).toBeTruthy()
-    expect(
-      screen.getByText(/test label/i).attributes.getNamedItem('for'),
-    ).toBeTruthy()
     expect(screen.getByRole('radio')).toBeTruthy()
-  })
-
-  test('should render a radio with error', () => {
-    render(
-      <FieldRoot required invalid>
-        <Radio id="test">
-          <FieldLabel>Test Label</FieldLabel>,
-        </Radio>
-      </FieldRoot>,
-    )
-    expect(
-      screen.getByRole('radio').attributes.getNamedItem('aria-invalid'),
-    ).toBeTruthy()
-  })
-
-  test('should render a radio with disabled', () => {
-    render(
-      <FieldRoot disabled>
-        <Radio id="test">
-          <FieldLabel>Test Label</FieldLabel>,
-        </Radio>
-      </FieldRoot>,
-    )
-    expect(
-      screen.getByRole('radio').attributes.getNamedItem('disabled'),
-    ).toBeTruthy()
   })
 
   test('should render a radio with a sm size', () => {
     render(
-      <Radio id="test" size="sm">
-        <FieldLabel htmlFor="test">Test Label</FieldLabel>,
-      </Radio>,
-      {
-        wrapper: FieldRoot,
-      },
+      <RadioGroup>
+        <Radio size="sm" value="test">
+          Test Label
+        </Radio>
+      </RadioGroup>,
     )
     expect(
       screen
-        .getByRole('radio')
-        .classList.contains('cerberus-radio__input--size_sm'),
+        .getByRole('radiogroup')
+        .classList.contains('cerberus-radio-group__root--size_sm'),
     ).toBeTruthy()
   })
 
   test('should render a radio with a md size', () => {
     render(
-      <Radio id="test" size="md">
-        <FieldLabel htmlFor="test">Test Label</FieldLabel>,
-      </Radio>,
-      {
-        wrapper: FieldRoot,
-      },
+      <RadioGroup>
+        <Radio size="md" value="test">
+          Test Label
+        </Radio>
+      </RadioGroup>,
     )
     expect(
       screen
-        .getByRole('radio')
-        .classList.contains('cerberus-radio__input--size_md'),
+        .getByText(/test label/i)
+        .classList.contains('cerberus-radio-group__itemText--size_md'),
     ).toBeTruthy()
+  })
+
+  test('should render a horizontal orientation', () => {
+    render(
+      <RadioGroup orientation="horizontal">
+        <Radio value="test">Test Label</Radio>
+      </RadioGroup>,
+    )
+    expect(
+      screen
+        .getByRole('radiogroup')
+        .classList.contains(
+          'cerberus-radio-group__root--orientation_horizontal',
+        ),
+    ).toBeTruthy()
+  })
+
+  test('should render a vertical orientation', () => {
+    render(
+      <RadioGroup orientation="vertical">
+        <Radio value="test">Test Label</Radio>
+      </RadioGroup>,
+    )
+    expect(
+      screen
+        .getByRole('radiogroup')
+        .classList.contains('cerberus-radio-group__root--orientation_vertical'),
+    ).toBeTruthy()
+  })
+
+  test('should render primitives', () => {
+    render(
+      <RadioParts.Root>
+        <RadioParts.Label>Test Group</RadioParts.Label>
+        <RadioParts.Indicator />
+        <RadioParts.Item>
+          <RadioParts.ItemText>Test Label</RadioParts.ItemText>
+          <RadioParts.ItemControl />
+          <RadioParts.ItemHiddenInput />
+        </RadioParts.Item>
+      </RadioParts.Root>,
+    )
+    expect(screen.getByText(/test group/i)).toBeTruthy()
+    expect(screen.getByText(/test label/i)).toBeTruthy()
+    expect(screen.getByRole('radio')).toBeTruthy()
   })
 })

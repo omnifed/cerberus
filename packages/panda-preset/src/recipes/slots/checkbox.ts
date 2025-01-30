@@ -36,6 +36,7 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       verticalAlign: 'top',
     },
     label: {
+      color: 'page.text.initial',
       gap: 'sm',
       flexShrink: 0,
       w: 'initial!',
@@ -93,14 +94,14 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   variants: {
     size: {
-      md: {
+      sm: {
         control: {
           h: '1rem',
           w: '1rem',
         },
         label: field.base!.label,
       },
-      lg: {
+      md: {
         control: {
           h: '1.25rem',
           w: '1.25rem',
@@ -114,6 +115,6 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
   },
 
   defaultVariants: {
-    size: 'md',
+    size: 'sm',
   },
 })

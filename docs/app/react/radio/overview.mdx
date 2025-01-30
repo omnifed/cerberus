@@ -5,11 +5,10 @@ a11y: 'forms'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
+import DripDivider from '@/app/components/drip-divider'
 import OverviewList from '@/app/components/OverviewList'
-import {
-  OverviewRadioGroup,
-  OverviewRadioSizes
-} from '@/app/react/radio/components/radio-preview'
+import { BasicDemo } from '@/app/react/radio/components/static-preview'
+import { LivePlayground } from '@/app/react/radio/components/live-playground'
 
 <OverviewList rules={[
   'Use radio buttons (not toggles) when only one item can be selected from a list',
@@ -19,8 +18,11 @@ import {
 
 ## Example
 
-<CodePreview preview={<OverviewRadioGroup />} />
-<CodePreview preview={<OverviewRadioSizes />} />
+<CodePreview preview={<BasicDemo />} />
+
+<LivePlayground />
+
+<DripDivider />
 
 ## Resources
 

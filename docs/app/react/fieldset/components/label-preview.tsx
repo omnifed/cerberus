@@ -4,6 +4,7 @@ import {
   FieldsetLabel,
   Legend,
   Radio,
+  RadioGroup,
 } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
 import { hstack } from '@cerberus-design/styled-system/patterns'
@@ -21,17 +22,19 @@ export function OverviewRadioGroup() {
         role="radiogroup"
       >
         <Legend>What pets do you have?</Legend>
-        <Radio id="dog" name="pet" value="dog" defaultChecked>
-          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
-        </Radio>
+        <RadioGroup defaultValue="dog">
+          <Radio id="dog" value="dog">
+            <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+          </Radio>
 
-        <Radio id="cat" name="pet" value="cat">
-          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
-        </Radio>
+          <Radio id="cat" value="cat">
+            <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+          </Radio>
 
-        <Radio id="both" name="pet" value="both">
-          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
-        </Radio>
+          <Radio id="both" value="both">
+            <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+          </Radio>
+        </RadioGroup>
       </Fieldset>
     </Field>
   )
@@ -49,17 +52,19 @@ export function DisabledRadioGroup() {
         role="radiogroup"
       >
         <Legend>What pets do you have?</Legend>
-        <Radio id="dog" name="pet" value="dog" defaultChecked>
-          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
-        </Radio>
+        <RadioGroup defaultValue="dog">
+          <Radio id="dog" value="dog">
+            <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+          </Radio>
 
-        <Radio id="cat" name="pet" value="cat">
-          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
-        </Radio>
+          <Radio id="cat" value="cat">
+            <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+          </Radio>
 
-        <Radio id="both" name="pet" value="both">
-          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
-        </Radio>
+          <Radio id="both" value="both">
+            <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+          </Radio>
+        </RadioGroup>
       </Fieldset>
     </Field>
   )
@@ -77,17 +82,19 @@ export function RequiredRadioGroup() {
         role="radiogroup"
       >
         <Legend>What pets do you have?</Legend>
-        <Radio id="dog" name="pet" value="dog" defaultChecked>
-          <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
-        </Radio>
+        <RadioGroup defaultValue="dog">
+          <Radio id="dog" value="dog">
+            <FieldsetLabel htmlFor="dog">🐶 Dog</FieldsetLabel>
+          </Radio>
 
-        <Radio id="cat" name="pet" value="cat">
-          <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
-        </Radio>
+          <Radio id="cat" value="cat">
+            <FieldsetLabel htmlFor="cat">😸 Cat</FieldsetLabel>
+          </Radio>
 
-        <Radio id="both" name="pet" value="both">
-          <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
-        </Radio>
+          <Radio id="both" value="both">
+            <FieldsetLabel htmlFor="both">🐶😸 Both</FieldsetLabel>
+          </Radio>
+        </RadioGroup>
       </Fieldset>
     </Field>
   )
@@ -118,17 +125,19 @@ export function CustomFieldset() {
         >
           What is Wu-Tang?
         </Legend>
-        <Radio id="dog" name="pet" value="dog" defaultChecked>
-          <FieldsetLabel htmlFor="dog">Forever</FieldsetLabel>
-        </Radio>
+        <RadioGroup defaultValue="dog">
+          <Radio id="dog" value="dog">
+            <FieldsetLabel htmlFor="dog">Forever</FieldsetLabel>
+          </Radio>
 
-        <Radio id="cat" name="pet" value="cat">
-          <FieldsetLabel htmlFor="cat">Forever</FieldsetLabel>
-        </Radio>
+          <Radio id="cat" value="cat">
+            <FieldsetLabel htmlFor="cat">Forever</FieldsetLabel>
+          </Radio>
 
-        <Radio id="both" name="pet" value="both">
-          <FieldsetLabel htmlFor="both">Forever</FieldsetLabel>
-        </Radio>
+          <Radio id="both" value="both">
+            <FieldsetLabel htmlFor="both">Forever</FieldsetLabel>
+          </Radio>
+        </RadioGroup>
       </Fieldset>
     </Field>
   )

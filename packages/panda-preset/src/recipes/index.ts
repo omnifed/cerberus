@@ -1,6 +1,5 @@
 import { avatar } from './avatar'
 import { button } from './button'
-import { fieldMessage } from './fieldMessage'
 import { iconButton } from './iconButton'
 import { label } from './label'
 import { tag } from './tag'
@@ -17,17 +16,20 @@ import { dialog } from './slots/dialog'
 import { field } from './slots/field'
 import { fileStatus } from './slots/fileStatus'
 import { fileUploader } from './slots/fileUploader'
-import { input } from './slots/input'
 import { menu } from './slots/menu'
-import { modal } from './slots/modal'
 import { notification } from './slots/notification'
 import { progressBar } from './slots/progressBar'
-import { radio } from './slots/radio'
+import { radioGroup } from './slots/radio'
 import { select } from './slots/select'
 import { table } from './slots/table'
 import { tabs } from './slots/tabs'
 import { toggle } from './slots/toggle'
 import { tooltip } from './slots/tooltip'
+
+// DEPRECATED: remove in v1
+import { fieldMessage } from './fieldMessage'
+import { input } from './slots/input'
+import { modal } from './slots/modal'
 
 /**
  * Recipe module for the Panda preset
@@ -61,7 +63,7 @@ export const slotRecipes = {
   modal,
   notification,
   progressBar,
-  radio,
+  radioGroup,
   select,
   table,
   tabs,

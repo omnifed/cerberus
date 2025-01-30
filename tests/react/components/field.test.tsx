@@ -5,6 +5,7 @@ import {
   Input,
   Textarea,
   CerberusProvider,
+  FieldParts,
   type FieldProps,
 } from '@cerberus-design/react'
 import { makeConfig, setupStrictMode } from '@/utils'
@@ -109,5 +110,24 @@ describe('Field', () => {
     expect(
       screen.queryByText(/A first name is required to create an account/i),
     ).toBeFalsy()
+  })
+
+  test('should render primitives', () => {
+    render(
+      <CerberusProvider config={config}>
+        <FieldParts.Root>
+          <FieldParts.Label>Label</FieldParts.Label>
+          <FieldParts.Input />
+          <FieldParts.Textarea />
+          <FieldParts.HelperText>Helper Text</FieldParts.HelperText>
+          <FieldParts.ErrorText>Error Text</FieldParts.ErrorText>
+          <FieldParts.StartIndicator />
+          <FieldParts.StatusIndicator />
+          <FieldParts.RequiredIndicator />
+        </FieldParts.Root>
+      </CerberusProvider>,
+    )
+    expect(screen.getByText(/Label/i)).toBeTruthy()
+    expect(screen.getByText(/Helper Text/i)).toBeTruthy()
   })
 })

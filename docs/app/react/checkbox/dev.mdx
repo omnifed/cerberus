@@ -10,6 +10,7 @@ import CodePreview from '@/app/components/CodePreview'
 import {
   OverviewPreview,
   CustomCheckbox,
+  SizeDemo
 } from '@/app/react/checkbox/components/checkbox-preview'
 import {
   IndeterminatePreview
@@ -127,6 +128,29 @@ export function IndeterminatePreview() {
 ```
 </CodePreview>
 
+## Sizes
+
+The Checkbox component supports different sizes. You can set the size prop to `sm`, or `md`.
+
+<CodePreview preview={<SizeDemo />}>
+```tsx title="checkbox sizes"
+import { Checkbox, CheckboxGroup } from '@cerberus/react'
+
+function SizeDemo() {
+  return (
+    <CheckboxGroup name="size">
+      <Checkbox ids={{ control: 'small' }} size="sm">
+        Small
+      </Checkbox>
+      <Checkbox ids={{ control: 'medium' }} size="md">
+        Medium
+      </Checkbox>
+    </CheckboxGroup>
+  )
+}
+```
+</CodePreview>
+
 ## Primitives
 
 You can utilize the primitive components to customize the checkbox.
@@ -182,7 +206,7 @@ The `Checkbox` component is an abstraction of the primitives and accepts the fol
 
 | Name     | Default | Description                                            |
 | -------- | ------- | ------------------------------------------------------ |
-| size     |  `md`   | This size of the Checkbox.                             |
+| size     |  `sm`   | This size of the Checkbox.                             |
 
 
 The `Checkbox` component also accepts all the props of the [`CheckboxRoot` primitive props](https://ark-ui.com/react/docs/components/checkbox#api-reference)

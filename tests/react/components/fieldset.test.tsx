@@ -4,6 +4,7 @@ import {
   Field,
   FieldsetLabel,
   Radio,
+  RadioGroup,
   Fieldset,
   Legend,
 } from '@cerberus-design/react'
@@ -18,10 +19,14 @@ describe('Fieldset & Legend', () => {
       <Field>
         <Fieldset name="cats">
           <Legend>Do you like cats?</Legend>
-          <Radio id="yes" name="cats" value="yes" />
-          <FieldsetLabel htmlFor="yes">Yes</FieldsetLabel>
-          <Radio id="no" name="cats" value="no" />
-          <FieldsetLabel htmlFor="no">No</FieldsetLabel>
+          <RadioGroup>
+            <Radio id="yes" value="yes">
+              <FieldsetLabel htmlFor="yes">Yes</FieldsetLabel>
+            </Radio>
+            <Radio id="no" value="no">
+              <FieldsetLabel htmlFor="no">No</FieldsetLabel>
+            </Radio>
+          </RadioGroup>
         </Fieldset>
       </Field>,
     )
@@ -35,31 +40,19 @@ describe('Fieldset & Legend', () => {
       <Field disabled>
         <Fieldset name="cats">
           <Legend>Do you like disabled cats?</Legend>
-          <Radio id="yes" name="cats" value="yes" />
-          <FieldsetLabel htmlFor="yes">Yes</FieldsetLabel>
-          <Radio id="no" name="cats" value="no" />
-          <FieldsetLabel htmlFor="no">No</FieldsetLabel>
+          <RadioGroup>
+            <Radio id="yes" value="yes">
+              <FieldsetLabel htmlFor="yes">Yes</FieldsetLabel>
+            </Radio>
+            <Radio id="no" value="no">
+              <FieldsetLabel htmlFor="no">No</FieldsetLabel>
+            </Radio>
+          </RadioGroup>
         </Fieldset>
       </Field>,
     )
     expect(
       screen.getAllByRole('group')[1].attributes.getNamedItem('disabled'),
     ).toBeTruthy()
-  })
-
-  test('should render a fieldset with a legend and a required radio', () => {
-    render(
-      <Field required>
-        <Fieldset name="cats">
-          <Legend>Do you like cats?</Legend>
-          <Radio id="yes" name="cats" value="yes" required />
-          <FieldsetLabel>Yes</FieldsetLabel>
-          <Radio id="no" name="cats" value="no" required />
-          <FieldsetLabel htmlFor="no">No</FieldsetLabel>
-        </Fieldset>
-      </Field>,
-    )
-    expect(screen.getByText(/do you like cats/i)).toBeTruthy()
-    expect(screen.getByText(/(required)/i)).toBeTruthy()
   })
 })

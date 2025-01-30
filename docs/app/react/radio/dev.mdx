@@ -1,72 +1,53 @@
 ---
 npm: '@cerberus-design/react'
-source: 'components/Radio.tsx'
+source: 'components/radio'
 recipe: 'slots/radio.ts'
+ark: 'radio-group'
 ---
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import {
-  DefaultRadioPreview,
-  InvalidRadioPreview,
-  DisabledRadioPreview,
-  OverviewRadioSizes,
-  CustomRadioPreview,
-} from '@/app/react/radio/components/radio-preview'
+import { BasicDemo, OrientationDemo, SizeDemo, CustomDemo } from '@/app/react/radio/components/static-preview'
 
 ```ts
-import { Field, Radio } from '@cerberus/react'
+import { RadioGroup, Radio, RadioParts } from '@cerberus/react'
 ```
 
 ## Usage
 
-<CodePreview preview={<DefaultRadioPreview />}>
-```tsx title="valid-radio.tsx" {7}
-import { Field, Label, Radio } from '@cerberus/react'
+The Radio component is a controlled component that can be used to select one option from a set. Simply wrap the `Radio` components in a `RadioGroup` component to create a group of radio buttons.
 
-function DefaultRadioPreview() {
+<CodePreview preview={<BasicDemo />}>
+```tsx title="basic demo"
+import { Radio, RadioGroup } from '@cerberus/react'
+
+export function BasicDemo() {
   return (
-    <Field>
-      <Radio id="valid" name="states" value="valid" defaultChecked>
-        <Label htmlFor="valid">Default (valid)</Label>
-      </Radio>
-    </Field>
+    <RadioGroup defaultValue="cerberus">
+      <Radio value="cerberus">Cerberus</Radio>
+      <Radio value="hades">Hades</Radio>
+      <Radio value="zeus">Zeus</Radio>
+    </RadioGroup>
   )
 }
 ```
 </CodePreview>
 
-## Invalid
+## Orientation
 
-<CodePreview preview={<InvalidRadioPreview />}>
-```tsx title="invalid-radio.tsx" {5}
-import { Field, Label, Radio } from '@cerberus/react'
+The `RadioGroup` component supports two orientations: `horizontal`, and `vertical`. The default orientation is `horizontal`.
 
-function InvalidRadioPreview() {
+<CodePreview preview={<OrientationDemo />}>
+```tsx title="Orientation demo" {5}
+import { Radio, RadioGroup } from '@cerberus/react'
+
+export function OrientationDemo() {
   return (
-    <Field invalid>
-      <Radio id="invalid" name="states" value="invalid" defaultChecked>
-        <Label htmlFor="invalid">Default (invalid)</Label>
-      </Radio>
-    </Field>
-  )
-}
-```
-</CodePreview>
-
-## Disabled
-
-<CodePreview preview={<DisabledRadioPreview />}>
-```tsx title="search-input.tsx" {5}
-import { Field, Label, Radio } from '@cerberus/react'
-
-function DisabledRadioPreview() {
-  return (
-    <Field disabled>
-      <Radio id="disabled" name="states" value="disabled" defaultChecked>
-        <Label htmlFor="disabled">Disabled</Label>
-      </Radio>
-    </Field>
+    <RadioGroup defaultValue="cerberus" orientation="vertical">
+      <Radio value="cerberus">Cerberus</Radio>
+      <Radio value="hades">Hades</Radio>
+      <Radio value="zeus">Zeus</Radio>
+    </RadioGroup>
   )
 }
 ```
@@ -74,102 +55,111 @@ function DisabledRadioPreview() {
 
 ## Sizes
 
-<CodePreview preview={<OverviewRadioSizes />}>
-```tsx title="radio-sizes.tsx" {13,17,24}
-import { Field, Label, Radio } from '@cerberus/react'
-import { hstack } from '@cerberus/styled-system/patterns'
+The Radio component supports two sizes: `sm`, and `md`. The default size is `sm`.
 
-function OverviewRadioSizes() {
+<CodePreview preview={<SizeDemo />}>
+```tsx title="size demo" {6-8}
+import { Radio, RadioGroup } from '@cerberus/react'
+
+export function SizeDemo() {
   return (
-    <fieldset
-      className={hstack({
-        gap: '4',
-        p: '4',
-        rounded: 'xl',
-      })}
-      name="sizes"
-      role="radiogroup"
-    >
-      <Field>
-        <Radio id="sm" name="sizes" value="sm" size="sm">
-          <Label htmlFor="sm" size="sm">
-            Small
-          </Label>
-        </Radio>
-      </Field>
-
-      <Field>
-        <Radio id="md" name="sizes" value="md">
-          <Label htmlFor="md">Medium (default)</Label>
-        </Radio>
-      </Field>
-    </fieldset>
+    <RadioGroup defaultValue="cerberus">
+      <Radio size="md" value="cerberus">Cerberus</Radio>
+      <Radio size="md" value="hades">Hades</Radio>
+      <Radio size="md" value="zeus">Zeus</Radio>
+    </RadioGroup>
   )
 }
 ```
 </CodePreview>
 
-## Customizing
+## Primitives
 
-<CodePreview preview={<CustomRadioPreview />}>
+You can utilize the primitive components to customize the radio.
+
+| Component | Description |
+| --------- | ----------- |
+| RadioGroupRoot    | The context provider for the RadioGroup parts |
+| RadioGroupLabel   | The label of the radio |
+| RadioGroupIndicator   | The indicator of the radio state |
+| RadioGroupItem   | The container of the label and control of the radio |
+| RadioGroupItemText | The label for a single radio |
+| RadioGroupItemControl | The visual input of a single radio |
+| RadioGroupItemHiddenInput  | The native input for the radio |
+
+<CodePreview preview={<CustomDemo />}>
 ```tsx title="custom-radio.tsx"
-import { Field, Label, Radio } from '@cerberus/react'
+import { RadioParts } from '@cerberus/react'
+import { css } from '@cerberus/styled-system/css'
 
-function CustomRadioPreview() {
+function CustomDemo() {
   return (
-    <Field>
-      <Radio
-        className={css({
-          borderColor: 'yellow',
-          _groupHover: {
-            bgColor: 'black',
-          },
-          _checked: {
-            bg: 'yellow',
-          },
-        })}
-        id="custom"
-        name="states"
-        value="custom"
-        defaultChecked
-      >
-        <Label htmlFor="custom">Wu-Tang</Label>
-      </Radio>
-    </Field>
+    <RadioParts.Root>
+      <RadioParts.Item>
+        <RadioParts.ItemText
+          className={css({
+            textStyle: 'body-lg',
+          })}
+        >
+          Cerberus
+        </RadioParts.ItemText>
+        <RadioParts.ItemControl
+          className={css({
+            bgColor: 'info.bg.initial',
+            h: 8,
+            w: 8,
+            transform: 'skew(-10deg)',
+            _checked: {
+              bg: 'warning.bg.initial',
+            },
+          })}
+        />
+        <RadioParts.ItemHiddenInput />
+      </RadioParts.Item>
+    </RadioParts.Root>
   )
 }
 ```
 </CodePreview>
+
 
 ## API
 
-<NoteAdmonition description="The Radio component must be used within a Field provider." />
-
-```ts showLineNumbers=false
-export interface FieldProps {
-  disabled?: boolean
-  invalid?: boolean
-  required?: boolean
-  readOnly?: boolean
-}
-
-define function Field(props: PropsWithChildren<FieldProps>): ReactNode
-```
-
-```ts showLineNumbers=false
-export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
-  id: string
-  size?: 'sm' | 'md' | 'lg'
-}
-
-define function Radio(props: RadioProps): ReactNode
-```
-
 ### Props
 
-The Radio component accepts the following props:
+#### RadioGroup
 
-| Name     | Default | Description                                                   |
-| -------- | ------- | ------------------------------------------------------------- |
-| id   |    |  An identifier that is shared with the Label `htmlFor` attribute.        |
-| size   | `md`   |  The size of the input field.        |
+The `RadioGroup` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| orientation |  `horizontal`   | This orientation of the group.              |
+
+
+The `RadioGroup` component also accepts all the props of the [`RadioGroupRoot` primitive props](https://ark-ui.com/react/docs/components/radio-group#api-reference)
+
+#### Radio
+
+The `Radio` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| size |  `sm`   | The size of the radio.                                     |
+
+The `Radio` component also accepts all the props of the [`RadioGroupItem` primitive props](https://ark-ui.com/react/docs/components/radio-group#api-reference)
+
+### Parts
+
+The `RadioParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the RadioParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `RadioGroupRoot` component which is the Provider for the family. |
+| Label     | The `RadioGroupLabel` component which displays the label and "required" notice. |
+| Indicator  | The `RadioGroupIndicator` component which displays based on the `checked` state. |
+| Item  | The `RadioGroupItem` component which is the container to a single radio item. |
+| ItemText  | The `RadioGroupItemText` component which is the label of the radio. |
+| ItemControl     | The `RadioGroupItemControl` component which is the visual field. |
+| HiddenInput  | The `RadioGroupHiddenInput` component which displays the native input. |

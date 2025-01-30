@@ -6,7 +6,7 @@ import { useCodeBuilder } from '@/app/context/code-builder'
 import { Checkbox, splitProps } from '@cerberus-design/react'
 
 const api = {
-  size: builder.Enum('size', ['md', 'lg']),
+  size: builder.Enum('size', ['sm', 'md']),
   text: builder.Text('text', 'Add your label text here'),
   mixed: builder.Boolean('mixed', false),
   disabled: builder.Boolean('disabled', false),
@@ -77,13 +77,13 @@ export function CheckboxPreview() {
     ['disabled', 'invalid', 'readOnly', 'required'],
   )
 
-  if (checkboxProps.size === 'lg') {
+  if (checkboxProps.size === 'md') {
     return (
       <Checkbox
         {...formState}
         {...(mixed && { checked: 'indeterminate' })}
         ids={{ control: 'checkbox:live-preview' }}
-        size="lg"
+        size="md"
       >
         {checkboxProps.text}
       </Checkbox>
@@ -95,7 +95,7 @@ export function CheckboxPreview() {
       {...formState}
       {...(mixed && { checked: 'indeterminate' })}
       ids={{ control: 'checkbox:live-preview' }}
-      size="md"
+      size="sm"
     >
       {checkboxProps.text}
     </Checkbox>
