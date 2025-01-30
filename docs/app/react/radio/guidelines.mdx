@@ -3,28 +3,11 @@
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
-import {
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
-} from '@/app/components/Admonition'
-import {
-  OverviewRadioGroup,
-  OverviewRadioSizes
-} from '@/app/react/radio/components/radio-preview'
+import { LivePlayground } from '@/app/react/radio/components/live-playground'
 
 ## Usage
 
-<WhenToUseAdmonition description="Use a radio group when someone needs to select a single value from 1-4 options." />
-
-<WhenNotToUseAdmonition description="When you need the user to select a single option from more than 4 items, use the Select." />
-
-## Standard Radio Group
-
-<CodePreview preview={<OverviewRadioGroup />} />
-
-## Sizes
-
-<CodePreview preview={<OverviewRadioSizes />} />
+<LivePlayground />
 
 ## Alternate selection controls
 

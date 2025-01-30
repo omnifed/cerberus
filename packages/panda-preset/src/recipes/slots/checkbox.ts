@@ -36,6 +36,7 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       verticalAlign: 'top',
     },
     label: {
+      color: 'page.text.initial',
       gap: 'sm',
       flexShrink: 0,
       w: 'initial!',
