@@ -11,7 +11,6 @@ const api = {
   disabled: builder.Boolean('disabled', false),
   invalid: builder.Boolean('invalid', false),
   readOnly: builder.Boolean('readOnly', false),
-  required: builder.Boolean('required', false),
 }
 
 export function LivePlayground() {
