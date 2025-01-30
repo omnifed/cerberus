@@ -92,14 +92,14 @@ export const radioGroup: Partial<SlotRecipeConfig> = defineSlotRecipe({
           h: '1rem',
           w: '1rem',
         },
-        itemText: checkbox.variants!.size.md.label,
+        itemText: checkbox.variants!.size.sm.label,
       },
       md: {
         itemControl: {
           h: '1.25rem',
           w: '1.25rem',
         },
-        itemText: checkbox.variants!.size.lg.label,
+        itemText: checkbox.variants!.size.md.label,
       },
     },
   },

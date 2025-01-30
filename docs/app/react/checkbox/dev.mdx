@@ -10,6 +10,7 @@ import CodePreview from '@/app/components/CodePreview'
 import {
   OverviewPreview,
   CustomCheckbox,
+  SizeDemo
 } from '@/app/react/checkbox/components/checkbox-preview'
 import {
   IndeterminatePreview
@@ -122,6 +123,29 @@ export function IndeterminatePreview() {
         {items}
       </VStack>
     </Box>
+  )
+}
+```
+</CodePreview>
+
+## Sizes
+
+The Checkbox component supports different sizes. You can set the size prop to `sm`, or `md`.
+
+<CodePreview preview={<SizeDemo />}>
+```tsx title="checkbox sizes"
+import { Checkbox, CheckboxGroup } from '@cerberus/react'
+
+function SizeDemo() {
+  return (
+    <CheckboxGroup name="size">
+      <Checkbox ids={{ control: 'small' }} size="sm">
+        Small
+      </Checkbox>
+      <Checkbox ids={{ control: 'medium' }} size="md">
+        Medium
+      </Checkbox>
+    </CheckboxGroup>
   )
 }
 ```

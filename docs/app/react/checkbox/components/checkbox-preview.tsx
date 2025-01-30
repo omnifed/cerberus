@@ -45,6 +45,21 @@ export function OverviewPreview() {
   )
 }
 
+export function SizeDemo() {
+  return (
+    <Box w="1/2">
+      <CheckboxGroup name="size">
+        <Checkbox ids={{ control: 'small' }} size="sm">
+          Small
+        </Checkbox>
+        <Checkbox ids={{ control: 'medium' }} size="md">
+          Medium
+        </Checkbox>
+      </CheckboxGroup>
+    </Box>
+  )
+}
+
 export function CustomCheckbox() {
   return (
     <Box w="1/2">

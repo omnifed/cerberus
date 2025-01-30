@@ -104,7 +104,7 @@ describe('checkbox recipe', () => {
 
   test('should have a size variant', () => {
     expect(checkbox.variants!.size).toMatchObject({
-      md: {
+      sm: {
         control: {
           h: '1rem',
           w: '1rem',
@@ -126,7 +126,7 @@ describe('checkbox recipe', () => {
           },
         },
       },
-      lg: {
+      md: {
         control: {
           h: '1.25rem',
           w: '1.25rem',
@@ -153,7 +153,7 @@ describe('checkbox recipe', () => {
 
   test('should have a default variant', () => {
     expect(checkbox.defaultVariants).toMatchObject({
-      size: 'md',
+      size: 'sm',
     })
   })
 })
