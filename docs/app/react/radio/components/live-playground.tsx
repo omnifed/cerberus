@@ -40,15 +40,15 @@ export function RadioGroupPreview() {
       <RadioGroup
         defaultValue="cerberus"
         orientation="horizontal"
-        disabled={formState.disabled}
-        readOnly={formState.readOnly}
+        disabled={formState.disabled as boolean}
+        readOnly={formState.readOnly as boolean}
       >
         <For each={options}>
           {(option) => (
             <Radio
               key={option.value}
-              invalid={formState.invalid}
-              size={radioGroupProps.size}
+              invalid={formState.invalid as boolean}
+              size={radioGroupProps.size as 'sm' | 'md'}
               value={option.value}
             >
               {option.label}
@@ -63,15 +63,15 @@ export function RadioGroupPreview() {
     <RadioGroup
       defaultValue="cerberus"
       orientation="vertical"
-      disabled={formState.disabled}
-      readOnly={formState.readOnly}
+      disabled={formState.disabled as boolean}
+      readOnly={formState.readOnly as boolean}
     >
       <For each={options}>
         {(option) => (
           <Radio
             key={option.value}
-            invalid={formState.invalid}
-            size={radioGroupProps.size}
+            invalid={formState.invalid as boolean}
+            size={radioGroupProps.size as 'sm' | 'md'}
             value={option.value}
           >
             {option.label}
