@@ -5,7 +5,10 @@ import {
   type FieldsetRootProps,
 } from '@ark-ui/react/fieldset'
 import { cx } from '@cerberus/styled-system/css'
-import { fieldset } from '@cerberus/styled-system/recipes'
+import {
+  fieldset,
+  type FieldsetVariantProps,
+} from '@cerberus/styled-system/recipes'
 
 /**
  * This module contains all the primitives of the Fieldset component.
@@ -29,12 +32,15 @@ export function FieldsetRoot(props: FieldsetRootProps) {
  * @description [Fieldset Docs](https://cerberus.digitalu.design/react/fieldset)
  * @description [Primitive Docs](https://ark-ui.com/react/docs/components/fieldset)
  */
-export function FieldsetLegend(props: FieldsetLegendProps) {
-  const styles = fieldset()
+export function FieldsetLegend(
+  props: FieldsetLegendProps & FieldsetVariantProps,
+) {
+  const { usage, ...legendProps } = props
+  const styles = fieldset({ usage })
   return (
     <Fieldset.Legend
-      {...props}
-      className={cx(styles.legend, props.className)}
+      {...legendProps}
+      className={cx(styles.legend, legendProps.className)}
     />
   )
 }
@@ -44,12 +50,15 @@ export function FieldsetLegend(props: FieldsetLegendProps) {
  * @description [Fieldset Docs](https://cerberus.digitalu.design/react/fieldset)
  * @description [Primitive Docs](https://ark-ui.com/react/docs/components/fieldset)
  */
-export function FieldsetHelperText(props: FieldsetHelperTextProps) {
-  const styles = fieldset()
+export function FieldsetHelperText(
+  props: FieldsetHelperTextProps & FieldsetVariantProps,
+) {
+  const { usage, ...helperTextProps } = props
+  const styles = fieldset({ usage })
   return (
     <Fieldset.HelperText
-      {...props}
-      className={cx(styles.helperText, props.className)}
+      {...helperTextProps}
+      className={cx(styles.helperText, helperTextProps.className)}
     />
   )
 }

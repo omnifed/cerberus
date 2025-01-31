@@ -1,13 +1,14 @@
 import type { FieldsetRootProps } from '@ark-ui/react'
 import { splitProps } from '../../utils'
 import { FieldsetParts } from './parts'
+import type { FieldsetVariantProps } from '@cerberus/styled-system/recipes'
 
 /**
  * This module contains the Fieldset component.
  * @module Fieldset
  */
 
-export interface FieldsetProps extends FieldsetRootProps {
+export interface FieldsetProps extends FieldsetRootProps, FieldsetVariantProps {
   /**
    * The legend/title/label of the fieldset group.
    */
@@ -29,17 +30,18 @@ export interface FieldsetProps extends FieldsetRootProps {
  * @description [Primitive Docs](https://ark-ui.com/react/docs/components/fieldset)
  */
 export function Fieldset(props: FieldsetProps) {
-  const [fieldsetProps, rootProps] = splitProps(props, [
-    'legend',
-    'helperText',
-    'errorText',
-    'children',
-  ])
+  const [fieldsetProps, { usage }, rootProps] = splitProps(
+    props,
+    ['legend', 'helperText', 'errorText', 'children'],
+    ['usage'],
+  )
 
   return (
     <FieldsetParts.Root {...rootProps}>
-      <FieldsetParts.Legend>{fieldsetProps.legend}</FieldsetParts.Legend>
-      <FieldsetParts.HelperText>
+      <FieldsetParts.Legend usage={usage}>
+        {fieldsetProps.legend}
+      </FieldsetParts.Legend>
+      <FieldsetParts.HelperText usage={usage}>
         {fieldsetProps.helperText}
       </FieldsetParts.HelperText>
 

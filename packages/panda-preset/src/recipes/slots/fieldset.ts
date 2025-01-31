@@ -15,7 +15,7 @@ import { field } from './field'
  * @definition [ARK docs](https://ark-ui.com/react/docs/components/fieldset)
  */
 export const fieldset: Partial<SlotRecipeConfig> = defineSlotRecipe({
-  className: 'accordion',
+  className: 'fieldset',
   slots: fieldsetAnatomy.keys(),
   jsx: [
     'FieldsetRoot',
@@ -33,17 +33,38 @@ export const fieldset: Partial<SlotRecipeConfig> = defineSlotRecipe({
       width: 'full',
     },
     legend: {
-      color: 'page.text.initial',
-      fontWeight: 'medium',
       _disabled: {
         ...formStates._disabled,
         color: 'page.text.100',
       },
     },
-    helperText: {
-      color: 'page.text.initial',
-      textStyle: 'body-md',
-    },
     errorText: field.base!.errorText,
+  },
+
+  variants: {
+    usage: {
+      fieldGroup: {
+        legend: field.base!.label,
+        helperText: {
+          color: 'page.text.initial',
+          textStyle: 'body-xs',
+        },
+      },
+      formSection: {
+        legend: {
+          color: 'page.text.200',
+          textStyle: 'heading-sm',
+        },
+        helperText: {
+          color: 'page.text.200',
+          paddingBlockStart: 'xs',
+          textStyle: 'body-md',
+        },
+      },
+    },
+  },
+
+  defaultVariants: {
+    usage: 'fieldGroup',
   },
 })

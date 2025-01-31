@@ -2,14 +2,17 @@
 
 import {
   Button,
+  CheckboxGroup,
+  Checkbox,
+  Fieldset,
   Field,
   Input,
   Option,
   Select,
   createSelectCollection,
 } from '@cerberus-design/react'
-import { css } from '@cerberus-design/styled-system/css'
 import { Box, HStack, VStack } from '@cerberus-design/styled-system/jsx'
+import { box } from '@cerberus/styled-system/patterns'
 
 export default function StandardLayout() {
   const collection = createSelectCollection([
@@ -19,91 +22,105 @@ export default function StandardLayout() {
   ])
 
   return (
-    <VStack
-      alignItems="flex-start"
-      bgColor="page.surface.100"
-      border="1px solid"
-      borderColor="page.border.initial"
-      gap="lg"
-      p="xl"
-      rounded="lg"
-      w="3/4"
+    <form
+      className={box({
+        bgColor: 'page.surface.100',
+        border: '1px solid',
+        borderColor: 'page.border.initial',
+        p: 'xl',
+        rounded: 'lg',
+        w: '3/4',
+      })}
     >
-      <p
-        className={css({
-          color: 'page.text.200',
-          textStyle: 'heading-xs',
-        })}
+      <Fieldset
+        legend="Your Account Profile"
+        helperText="Tell us a little more about yourself so we can serve you better."
+        errorText="There was a massive error when submitting the form."
+        usage="formSection"
       >
-        Your Profile
-      </p>
-
-      <Box w="full">
-        <Field
-          required
-          label="First Name"
-          ids={{
-            control: 'first_name',
-          }}
-          errorText="A first name is required to submit the form."
-          helperText="This is what everyone will see when you post a comment."
+        <VStack
+          alignItems="flex-start"
+          gap="lg"
+          paddingBlockStart="md"
+          w="full"
         >
-          <Input
-            name="first_name"
-            placeholder="Enter your first name"
-            type="text"
-          />
-        </Field>
-      </Box>
+          <Box w="full">
+            <Field
+              required
+              label="First Name"
+              ids={{
+                control: 'first_name',
+              }}
+              errorText="A first name is required to submit the form."
+              helperText="This is what everyone will see when you post a comment."
+            >
+              <Input
+                name="first_name"
+                placeholder="Enter your first name"
+                type="text"
+              />
+            </Field>
+          </Box>
 
-      <Box w="full">
-        <Field
-          required
-          label="Last Name"
-          ids={{
-            control: 'last_name',
-          }}
-          errorText="A last name is required to submit the form."
-          helperText="This is what everyone will see when you post a comment."
-        >
-          <Input
-            name="last_name"
-            placeholder="Enter your last name"
-            type="text"
-          />
-        </Field>
-      </Box>
+          <Box w="full">
+            <Field
+              required
+              label="Last Name"
+              ids={{
+                control: 'last_name',
+              }}
+              errorText="A last name is required to submit the form."
+              helperText="This is what everyone will see when you post a comment."
+            >
+              <Input
+                name="last_name"
+                placeholder="Enter your last name"
+                type="text"
+              />
+            </Field>
+          </Box>
 
-      <Box>
-        <Field
-          ids={{
-            control: 'age',
-          }}
-          label="What's your age?"
-          helperText="We are legally required to ask for your age."
-          required
-        >
-          <Select collection={collection} placeholder="Select an option">
-            {collection.items.map((item) => (
-              <Option key={item.value} item={item} />
-            ))}
-          </Select>
-        </Field>
-      </Box>
+          <Box>
+            <Field
+              ids={{
+                control: 'age',
+              }}
+              label="What's your age?"
+              helperText="We are legally required to ask for your age."
+              required
+            >
+              <Select collection={collection} placeholder="Select an option">
+                {collection.items.map((item) => (
+                  <Option key={item.value} item={item} />
+                ))}
+              </Select>
+            </Field>
+          </Box>
 
-      <HStack>
-        <Button shape="rounded" type="submit">
-          Save
-        </Button>
-        <Button
-          palette="secondaryAction"
-          shape="rounded"
-          type="button"
-          usage="outlined"
-        >
-          Cancel
-        </Button>
-      </HStack>
-    </VStack>
+          <Fieldset legend="Terms and Conditions">
+            <CheckboxGroup name="terms">
+              <Checkbox value="1">I agree to the Terms and Conditions</Checkbox>
+              <Checkbox value="2">
+                I want to sign up for marketing emails
+              </Checkbox>
+            </CheckboxGroup>
+          </Fieldset>
+
+          <HStack>
+            <Button shape="rounded" type="submit">
+              Save
+            </Button>
+            <Button
+              palette="secondaryAction"
+              shape="rounded"
+              type="button"
+              usage="outlined"
+            >
+              Cancel
+            </Button>
+          </HStack>
+        </VStack>
+      </Fieldset>
+    </form>
   )
 }
