@@ -4,46 +4,20 @@
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import DripDivider from '@/app/components/drip-divider'
-import {
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
-} from '@/app/components/Admonition'
-import {
-  OverviewRadioGroup,
-  DisabledRadioGroup,
-  RequiredRadioGroup
-} from '@/app/react/fieldset/components/label-preview'
+import { BasicDemo, FieldsetGroupDemo } from '@/app/react/fieldset/components/static-preview'
 
 ## Usage
 
-<WhenToUseAdmonition description="When you are displaying a group of Radio inputs or Checkboxes in the UI." />
+## Form Groups
 
-<WhenNotToUseAdmonition description="You should not group inputs unless they are related to a single name context." />
+Form groups are used to group related form elements together within a form
 
-## Standard Field Groups
-
-Standard groups are used to group related form elements together. These are mostly used for radio buttons and checkboxes.
-
-<CodePreview preview={<OverviewRadioGroup />} />
+<CodePreview preview={<BasicDemo />} />
 
 <DripDivider />
 
-## Disabled Field Groups
+## Field Groups
 
-The Fieldset natively distributes the disabled state to all the inputs within it.
+Field groups are used to group related form elements together outside of a form - mostly used fro Radio and Checkbox groups.
 
-<CodePreview preview={<DisabledRadioGroup />} />
-
-<DripDivider />
-
-## Required Labels
-
-Required labels for fieldsets are displayed using the `required` prop on the Legend component.
-
-<CodePreview preview={<RequiredRadioGroup />} />
-
-<DripDivider />
-
-## Placement
-
-Fieldset should wrap the group of inputs it is associated with. The legend can be placed above or below the group of inputs in the code - the browser will always render it at the top.
+<CodePreview preview={<FieldsetGroupDemo />} />

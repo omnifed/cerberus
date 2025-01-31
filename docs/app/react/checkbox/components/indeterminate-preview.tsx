@@ -1,7 +1,7 @@
 'use client'
 
-import { Checkbox } from '@cerberus-design/react'
-import { VStack, Box } from '@cerberus-design/styled-system/jsx'
+import { Checkbox, CheckboxGroup } from '@cerberus-design/react'
+import { Box } from '@cerberus-design/styled-system/jsx'
 import { useState } from 'react'
 
 const initialValues = [
@@ -35,7 +35,7 @@ export function IndeterminatePreview() {
 
   return (
     <Box w="1/2">
-      <VStack alignItems="flex-start">
+      <CheckboxGroup name="days">
         <Checkbox
           checked={indeterminate ? 'indeterminate' : allChecked}
           onCheckedChange={(e) => {
@@ -48,7 +48,7 @@ export function IndeterminatePreview() {
         </Checkbox>
 
         {items}
-      </VStack>
+      </CheckboxGroup>
     </Box>
   )
 }

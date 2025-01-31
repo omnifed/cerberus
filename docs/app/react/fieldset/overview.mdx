@@ -7,10 +7,7 @@ a11y: 'forms'
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import DripDivider from '@/app/components/drip-divider'
-import {
-  OverviewRadioGroup,
-  DisabledRadioGroup
-} from '@/app/react/fieldset/components/label-preview'
+import { BasicDemo, FieldsetGroupDemo } from '@/app/react/fieldset/components/static-preview'
 
 <OverviewList rules={[
   'Fieldsets should be used for grouping radio buttons and checkboxes',
@@ -18,15 +15,13 @@ import {
   'Legends should display a required indicator if the group is not optional',
 ]} />
 
-## Basic Example
+## Form Section Example
 
-<CodePreview preview={<OverviewRadioGroup />} />
+<CodePreview preview={<BasicDemo />} />
 
-<DripDivider />
+## Field Group Example
 
-## Disabled Fieldset
-
-<CodePreview preview={<DisabledRadioGroup />} />
+<CodePreview preview={<FieldsetGroupDemo />} />
 
 <DripDivider />
 

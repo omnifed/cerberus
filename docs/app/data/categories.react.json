@@ -73,7 +73,7 @@
       "Field Message",
       "File Uploader"
     ],
-    "next": ["Field"],
+    "next": ["Field", "Fieldset"],
     "new": [],
     "deprecated": ["Label", "Field Message"]
   }
