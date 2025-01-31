@@ -6,6 +6,7 @@
 // deprecated
 
 export * from './components/deprecated/FieldMessage'
+export * from './components/deprecated/FieldsetLabel'
 export * from './components/deprecated/Label'
 export * from './components/deprecated/Modal'
 export * from './components/deprecated/ModalHeader'
@@ -34,7 +35,6 @@ export * from './components/Droppable'
 export * from './components/FeatureFlag'
 export * from './components/field/index'
 export * from './components/fieldset/index'
-export * from './components/FieldsetLabel'
 export * from './components/FileStatus'
 export * from './components/FileUploader'
 export * from './components/for'

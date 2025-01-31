@@ -14,6 +14,7 @@ import { checkbox } from './slots/checkbox'
 import { datePicker } from './slots/datepicker'
 import { dialog } from './slots/dialog'
 import { field } from './slots/field'
+import { fieldset } from './slots/fieldset'
 import { fileStatus } from './slots/fileStatus'
 import { fileUploader } from './slots/fileUploader'
 import { menu } from './slots/menu'
@@ -56,6 +57,7 @@ export const slotRecipes = {
   datePicker,
   dialog,
   field,
+  fieldset,
   fileStatus,
   fileUploader,
   input,

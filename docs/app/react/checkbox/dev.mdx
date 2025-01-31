@@ -73,8 +73,8 @@ The Checkbox component supports the indeterminate state, which is useful for ind
 ```tsx title="checkbox group"
 'use client'
 
-import { Checkbox } from '@cerberus/react'
-import { VStack, Box } from '@cerberus/styled-system/jsx'
+import { Checkbox, CheckboxGroup } from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
 import { useState } from 'react'
 
 const initialValues = [
@@ -108,7 +108,7 @@ export function IndeterminatePreview() {
 
   return (
     <Box w="1/2">
-      <VStack alignItems="flex-start">
+      <CheckboxGroup name="days">
         <Checkbox
           checked={indeterminate ? 'indeterminate' : allChecked}
           onCheckedChange={(e) => {
@@ -121,7 +121,7 @@ export function IndeterminatePreview() {
         </Checkbox>
 
         {items}
-      </VStack>
+      </CheckboxGroup>
     </Box>
   )
 }
