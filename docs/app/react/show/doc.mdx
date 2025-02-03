@@ -14,18 +14,25 @@ import {
 import CodePreview from '@/app/components/CodePreview'
 import ShowPreview from '@/app/react/show/components/show-preview'
 
+The Show component is a simple way to conditionally render content in your UI. It is inspired by SolidJS and provides a clean and declarative way to handle conditional rendering.
+
 ```ts
 import { Show } from '@cerberus/react'
 ```
 
-<WhenToUseAdmonition description="When you need display components based on a single condition." />
+<WhenNotToUseAdmonition description="If you need to toggle an action between states based on user interaction, use the Toggle." />
 
 ## Usage
 
+The Show component takes a `when` prop that determines whether the children or the `fallback` content should be rendered. If `when` is true, the children are rendered. If `when` is false, the `fallback` content is rendered.
+
 <CodePreview preview={<ShowPreview />}>
-```tsx title="nav.tsx"
+```tsx title="auth-button.tsx"
+'use client'
+
 import { Show, Button } from '@cerberus/react'
-import { Logout } from '@cerberus/icons'
+import { Logout } from '@carbon/icons-react'
+import { useState } from 'react'
 
 function Nav() {
   const [authenticated, setAuthenticated] = useState<boolean>(false)
@@ -57,7 +64,6 @@ function Nav() {
 ```
 </CodePreview>
 
-<WhenNotToUseAdmonition description="If you need to conditionally render components that have multiple outcomes, use the Switch/Match family. If you want to display a loading Skeleton, use the Suspense tag or loading route file (NextJS) instead." />
 
 ## API
 

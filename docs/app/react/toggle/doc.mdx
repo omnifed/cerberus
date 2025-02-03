@@ -8,73 +8,61 @@ recipe: ''
 ---
 
 import {
-  WhenToUseAdmonition,
   WhenNotToUseAdmonition,
+  NoteAdmonition,
 } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import ShowPreview from '@/app/react/show/components/show-preview'
+import BasicPreview from '@/app/react/toggle/components/static-preview'
+
+The `Toggle` component is a two-state button that allows users to toggle between states via an action.
 
 ```ts
 import { Toggle } from '@cerberus/react'
 ```
 
-<WhenToUseAdmonition description="When you need display components based on a single condition." />
+<WhenNotToUseAdmonition description="If you need to conditionally render content based on a binary condition, use the Show component." />
 
 ## Usage
 
-<CodePreview preview={<ShowPreview />}>
-```tsx title="nav.tsx"
-import { Show, Button } from '@cerberus/react'
-import { Logout } from '@cerberus/icons'
+The Toggle component is unstyled to fit any scenario you may need.
 
-function Nav() {
-  const [authenticated, setAuthenticated] = useState<boolean>(false)
+<CodePreview preview={<BasicPreview />}>
+```tsx title="notification-toggle.tsx"
+import { NotificationOff, Notification } from '@carbon/icons-react'
+import { ToggleParts, IconButton } from '@cerberus-design/react'
 
-  function handleAuthenticate() {
-    setAuthenticated(true)
-  }
-
-  function handleUnauthenticate() {
-    setAuthenticated(false)
-  }
-
+export default function BasicPreview() {
   return (
-    <Show
-      when={authenticated}
-      fallback={
-        <Button onClick={handleAuthenticate} type="button">
-          Sign in
-        </Button>
-      }
-    >
-      <Button onClick={handleUnauthenticate} type="button">
-        Sign out
-        <Logout />
-      </Button>
-    </Show>
+    <ToggleParts.Root defaultPressed={true} asChild>
+      <IconButton ariaLabel="Notification preferences">
+        <ToggleParts.Indicator fallback={<NotificationOff />}>
+          <Notification />
+        </ToggleParts.Indicator>
+      </IconButton>
+    </ToggleParts.Root>
   )
 }
 ```
 </CodePreview>
 
-<WhenNotToUseAdmonition description="If you need to conditionally render components that have multiple outcomes, use the Switch/Match family. If you want to display a loading Skeleton, use the Suspense tag or loading route file (NextJS) instead." />
+## Primitives
+
+You can utilize the primitive components to customize the toggle.
+
+| Component | Description |
+| --------- | ----------- |
+| ToggleRoot    | The context provider for the Toggle parts |
+| ToggleIndicator   | The indicator shown based on the toggle state |
 
 ## API
 
-```ts showLineNumbers=false
-export interface ShowProps {
-  when: boolean | null | undefined
-  fallback?: ReactNode
-}
+### Parts
 
-define function Show(props: ShowProps): ReactNode | null
-```
+The `ToggleParts` API is an Object containing the full family of components.
 
-### Props
+<NoteAdmonition description="It is best to only use the ToggleParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
-The `Show` component accepts the following props:
-
-| Name     | Default | Description                                                   |
-| -------- | ------- | ------------------------------------------------------------- |
-| when     | false   | The condition to evalue for showing the children or fallback. |
-| fallback | null    | The content to render when the condition is false.            |
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `ToggleRoot` component which is the Provider for the family. |
+| Indicator  | The `ToggleIndicator` component which displays based on the pressed state. |
