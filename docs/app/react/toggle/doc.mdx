@@ -1,0 +1,80 @@
+---
+heading: 'Toggle'
+description: 'Toggle allows users to toggle between states via an action.'
+a11y: 'utilities'
+npm: '@cerberus-design/react'
+source: 'components/toggle'
+recipe: ''
+---
+
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import ShowPreview from '@/app/react/show/components/show-preview'
+
+```ts
+import { Toggle } from '@cerberus/react'
+```
+
+<WhenToUseAdmonition description="When you need display components based on a single condition." />
+
+## Usage
+
+<CodePreview preview={<ShowPreview />}>
+```tsx title="nav.tsx"
+import { Show, Button } from '@cerberus/react'
+import { Logout } from '@cerberus/icons'
+
+function Nav() {
+  const [authenticated, setAuthenticated] = useState<boolean>(false)
+
+  function handleAuthenticate() {
+    setAuthenticated(true)
+  }
+
+  function handleUnauthenticate() {
+    setAuthenticated(false)
+  }
+
+  return (
+    <Show
+      when={authenticated}
+      fallback={
+        <Button onClick={handleAuthenticate} type="button">
+          Sign in
+        </Button>
+      }
+    >
+      <Button onClick={handleUnauthenticate} type="button">
+        Sign out
+        <Logout />
+      </Button>
+    </Show>
+  )
+}
+```
+</CodePreview>
+
+<WhenNotToUseAdmonition description="If you need to conditionally render components that have multiple outcomes, use the Switch/Match family. If you want to display a loading Skeleton, use the Suspense tag or loading route file (NextJS) instead." />
+
+## API
+
+```ts showLineNumbers=false
+export interface ShowProps {
+  when: boolean | null | undefined
+  fallback?: ReactNode
+}
+
+define function Show(props: ShowProps): ReactNode | null
+```
+
+### Props
+
+The `Show` component accepts the following props:
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| when     | false   | The condition to evalue for showing the children or fallback. |
+| fallback | null    | The content to render when the condition is false.            |

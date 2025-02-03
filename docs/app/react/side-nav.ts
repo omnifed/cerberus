@@ -25,10 +25,11 @@ const overviewGroup: CategoriesList = {
       'Show',
       'For',
       'Text',
+      'Toggle',
       'Local Storage',
     ],
     deprecated: [],
-    next: ['For'],
+    next: ['For', 'Toggle'],
     new: [],
   },
 }

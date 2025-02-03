@@ -1,54 +1,28 @@
 import ApiLinks from '@/app/components/ApiLinks'
-import {
-  TabPageContent,
-  TabPageContentLayout,
-} from '../../components/PageLayout'
+import OnThisPage from '../../components/OnThisPage'
+import { PageMainContent, PageSections } from '../../components/PageLayout'
+import Doc, { frontmatter } from './doc.mdx'
 import FeatureHeader from '@/app/components/FeatureHeader'
 import type { MatchFeatureKind } from '@/app/components/MatchFeatureImg'
-import PageTabs from '@/app/components/PageTabs'
-
-import Overview, { frontmatter } from './overview.mdx'
-import Guidelines from './guidelines.mdx'
-import Dev, { frontmatter as devFrontmatter } from './dev.mdx'
-import A11y from './a11y.mdx'
 
 export default function TogglePage() {
   return (
     <>
-      <TabPageContent>
+      <PageMainContent>
         <FeatureHeader
           heading={frontmatter.heading}
           description={frontmatter.description}
           a11y={frontmatter.a11y as MatchFeatureKind}
         />
+        <ApiLinks {...frontmatter} />
+        <main>
+          <Doc />
+        </main>
+      </PageMainContent>
 
-        <PageTabs
-          description="Tabs component details"
-          overview={
-            <TabPageContentLayout>
-              <Overview />
-            </TabPageContentLayout>
-          }
-          guidelines={
-            <TabPageContentLayout>
-              <Guidelines />
-            </TabPageContentLayout>
-          }
-          dev={
-            <TabPageContentLayout>
-              <main>
-                <ApiLinks {...devFrontmatter} />
-                <Dev />
-              </main>
-            </TabPageContentLayout>
-          }
-          a11y={
-            <TabPageContentLayout>
-              <A11y />
-            </TabPageContentLayout>
-          }
-        />
-      </TabPageContent>
+      <PageSections>
+        <OnThisPage />
+      </PageSections>
     </>
   )
 }

@@ -30,5 +30,3 @@ export const ToggleParts: TogglePartsValue = {
   Root: ToggleRoot,
   Indicator: ToggleIndicator,
 }
-
-// TODO: Make Toggle docs
