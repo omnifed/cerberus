@@ -27,38 +27,41 @@ import { Show } from '@cerberus/react'
 The Show component takes a `when` prop that determines whether the children or the `fallback` content should be rendered. If `when` is true, the children are rendered. If `when` is false, the `fallback` content is rendered.
 
 <CodePreview preview={<ShowPreview />}>
-```tsx title="auth-button.tsx"
+```tsx title="auth-feat.tsx"
 'use client'
 
-import { Show, Button } from '@cerberus/react'
-import { Logout } from '@carbon/icons-react'
+import { Button, Show, Text, ToggleParts } from '@cerberus/react'
+import { VStack } from '@cerberus/styled-system/jsx'
 import { useState } from 'react'
 
-function Nav() {
+export default function ShowPreview() {
   const [authenticated, setAuthenticated] = useState<boolean>(false)
 
-  function handleAuthenticate() {
-    setAuthenticated(true)
-  }
-
-  function handleUnauthenticate() {
-    setAuthenticated(false)
+  function handleChange(state: boolean) {
+    setAuthenticated(state)
   }
 
   return (
-    <Show
-      when={authenticated}
-      fallback={
-        <Button onClick={handleAuthenticate} type="button">
-          Sign in
+    <VStack w="1/2">
+      <ToggleParts.Root
+        onPressedChange={handleChange}
+        pressed={authenticated}
+        asChild
+      >
+        <Button type="button">
+          <ToggleParts.Indicator fallback={<>Sign in</>}>
+            Sign out
+          </ToggleParts.Indicator>
         </Button>
-      }
-    >
-      <Button onClick={handleUnauthenticate} type="button">
-        Sign out
-        <Logout />
-      </Button>
-    </Show>
+      </ToggleParts.Root>
+
+      <Show
+        when={authenticated}
+        fallback={<Text>You are not allowed to enter!</Text>}
+      >
+        <Text>You are authenticated and can enter the gates of Hades!</Text>
+      </Show>
+    </VStack>
   )
 }
 ```
