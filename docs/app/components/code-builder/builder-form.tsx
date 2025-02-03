@@ -18,7 +18,7 @@ import { useCodeBuilder } from '@/app/context/code-builder'
 
 const Select = lazy(() => import('./builder-select'))
 const Input = lazy(() => import('./builder-input'))
-const Toggle = lazy(() => import('./builder-toggle'))
+const Switch = lazy(() => import('./builder-toggle'))
 
 interface BuilderFormProps {
   api: Record<string, BuilderResult>
@@ -41,9 +41,9 @@ export default function BuilderForm(props: BuilderFormProps) {
     [setSelectedProps],
   )
 
-  const handleToggleChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setSelectedProps(e.currentTarget.name, e.currentTarget.checked)
+  const handleCheckedChange = useCallback(
+    (name: string, checked: boolean) => {
+      setSelectedProps(name, checked)
     },
     [setSelectedProps],
   )
@@ -99,11 +99,14 @@ export default function BuilderForm(props: BuilderFormProps) {
             </Show>
 
             <Show when={props.api[key].type === 'boolean'}>
-              <Toggle
+              <Switch
                 {...(props.api[key] as BooleanResult)}
-                id={key}
+                ids={{
+                  control: key,
+                }}
+                checked={selectedProps[key]}
                 name={key}
-                onChange={handleToggleChange}
+                onChange={handleCheckedChange}
               />
             </Show>
           </Field>

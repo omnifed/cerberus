@@ -1,7 +1,7 @@
 import { switchAnatomy } from '@ark-ui/anatomy'
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { checkbox } from './checkbox'
-import { formStates } from '../shared/states'
+import { focusStates, formStates } from '../shared/states'
+import { field } from './field'
 
 /**
  * This module contains the switch recipe.
@@ -27,7 +27,7 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
       '--switch-x':
         'calc(var(--switch-width) - calc(var(--switch-height) + 0.20rem))',
     },
-    label: checkbox.base!.label,
+    label: field.base!.label,
     control: {
       alignItems: 'center',
       bgColor: 'page.surface.300',
@@ -42,14 +42,19 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionProperty: 'background-color, outline',
       transitionDuration: 'fast',
       w: 'var(--switch-width)',
+      _focusVisible: focusStates._focusVisible,
       _disabled: formStates._disabled,
       _checked: {
         bgColor: 'action.text.200',
       },
-      _invalid: {
+      _userInvalid: {
         outline: '2px solid',
         outlineColor: 'border.error',
         outlineOffset: '2px',
+        bgColor: 'danger.surface.initial',
+      },
+      _readOnly: {
+        cursor: 'default',
       },
     },
     thumb: {
@@ -63,7 +68,7 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
       h: 'var(--thumb-size)',
       justifyContent: 'center',
       p: '0.125rem',
-      rounded: 'inherit',
+      rounded: 'var(--switch-radius)',
       transitionProperty: 'background-color, color, translate, transform',
       transitionDuration: 'fast',
       w: 'var(--thumb-size)',
@@ -71,7 +76,7 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
         colorPalette: 'action',
         color: 'action.text.200',
         translate: 'var(--switch-x) 0',
-        transform: 'scale(1.25)',
+        transform: 'scale(1.2)',
       },
     },
   },
@@ -91,7 +96,7 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
           '--switch-height': '2.5rem',
           '--switch-width': '5rem',
           '--switch-radius': '0.75rem',
-          '--thumb-size': '1.5rem',
+          '--thumb-size': '1.75rem',
         },
       },
     },

@@ -6,7 +6,10 @@ import {
   type SwitchThumbProps,
 } from '@ark-ui/react'
 import { cx } from '@cerberus/styled-system/css'
-import { switchRecipe } from '@cerberus/styled-system/recipes'
+import {
+  switchRecipe,
+  type SwitchRecipeVariantProps,
+} from '@cerberus/styled-system/recipes'
 
 /**
  * This module contains the Switch primitives
@@ -16,9 +19,15 @@ import { switchRecipe } from '@cerberus/styled-system/recipes'
 /**
  * The SwitchRoot component is the context provider for the Switch components.
  */
-export function SwitchRoot(props: SwitchRootProps) {
-  const styles = switchRecipe()
-  return <Switch.Root {...props} className={cx(styles.root, props.className)} />
+export function SwitchRoot(props: SwitchRootProps & SwitchRecipeVariantProps) {
+  const { size, ...rootProps } = props
+  const styles = switchRecipe({ size })
+  return (
+    <Switch.Root
+      {...rootProps}
+      className={cx(styles.root, rootProps.className)}
+    />
+  )
 }
 
 /**

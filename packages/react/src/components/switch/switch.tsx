@@ -1,8 +1,9 @@
 import type { SwitchRootProps } from '@ark-ui/react'
+import type { SwitchRecipeVariantProps } from '@cerberus/styled-system/recipes'
 import { SwitchParts } from './parts'
 import { SwitchIndicator } from './switch-indicator'
 
-export type SwitchProps = SwitchRootProps
+export type SwitchProps = SwitchRootProps & SwitchRecipeVariantProps
 
 /**
  * The Switch component is a and abstraction of the primitives that displays a

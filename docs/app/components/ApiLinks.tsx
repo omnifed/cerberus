@@ -43,6 +43,8 @@ export default function ApiLinks(props: ApiLinksProps) {
           <a
             className={apiLinkStyles}
             href={`https://www.npmjs.com/package/${props.npm}`}
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <LogoNpm />
             npm
@@ -55,6 +57,8 @@ export default function ApiLinks(props: ApiLinksProps) {
           <a
             className={apiLinkStyles}
             href={`https://github.com/omnifed/cerberus/blob/main/packages/react/src/${props.source}`}
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <LogoGithub />
             source
@@ -67,6 +71,8 @@ export default function ApiLinks(props: ApiLinksProps) {
           <a
             className={apiLinkStyles}
             href={`https://github.com/omnifed/cerberus/tree/main/packages/panda-preset/src/recipes/${props.recipe}`}
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <LogoGithub />
             recipe
@@ -79,6 +85,8 @@ export default function ApiLinks(props: ApiLinksProps) {
           <a
             className={apiLinkStyles}
             href={`https://ark-ui.com/react/docs/components/${props.ark}`}
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <svg
               focusable="false"
