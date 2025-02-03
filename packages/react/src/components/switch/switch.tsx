@@ -1,98 +1,31 @@
-'use client'
+import type { SwitchRootProps } from '@ark-ui/react'
+import { SwitchParts } from './parts'
 
-import { useFieldContext } from '@ark-ui/react/field'
-import type { InputHTMLAttributes } from 'react'
-import { cx } from '@cerberus/styled-system/css'
-import { hstack, vstack } from '@cerberus/styled-system/patterns'
-import {
-  toggle,
-  type ToggleVariantProps,
-} from '@cerberus/styled-system/recipes'
-import { useCerberusContext } from '../../context/cerberus'
-
-/**
- * This module provides a toggle component.
- * @module
- */
-
-export type ToggleBase = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'size' | 'id' | 'value'
-> & {
+export interface SwitchProps extends SwitchRootProps {
   /**
-   * @deprecated
+   * The label of the switch.
    */
-  describedBy?: string
-  /**
-   * A unique identifier for the Toggle. Required for accessibility.
-   */
-  id: string
-  /**
-   * The value of the Toggle.
-   */
-  value: string
+  label: string
 }
-export type SwitchProps = ToggleBase & ToggleVariantProps
 
 /**
- * The Toggle component is used to switch between two states. Optionally
- * combine with the `useToggle` hook.
- * @see https://cerberus.digitalu.design/react/toggle
- * @example
- * ```tsx
- * const { checked, handleChange } = useToggle({ checked: 'toggle' })
- *
- * <Hstack justify="space-between" w="full">
- *  <Field>
- *    <Label htmlFor="toggle">Show notifications</Label>
- *    <Toggle
- *     checked={checked === 'toggle'}
- *     id="toggle"
- *     onChange={handleChange}
- *     value="toggle"
- *    />
- *  </Field>
- * </Hstack>
- * ```
+ * The Switch component is a and abstraction of the primitives that displays a
+ * controlled Switch with a label.
+ * @description [Cerberus Docs] https://cerberus.digitalu.design/react/switch
+ * @description [Ark Docs] https://ark-ui.com/docs/components/switch
  */
 export function Switch(props: SwitchProps) {
-  const { size, ...nativeProps } = props
-  const styles = toggle({ size })
-
-  const { invalid, disabled, readOnly, required, ariaDescribedby } =
-    useFieldContext()
-
-  const { icons } = useCerberusContext()
-  const CheckedIcon = icons.toggleChecked
+  const { label, ...rootProps } = props
 
   return (
-    <span
-      className={cx('group', styles.track, hstack())}
-      data-checked={props.checked || props.defaultChecked}
-    >
-      <input
-        {...nativeProps}
-        {...(disabled && { disabled: true })}
-        {...(readOnly && { readOnly: true })}
-        {...(required && { required: true })}
-        {...(ariaDescribedby && {
-          'aria-describedby': ariaDescribedby,
-        })}
-        {...(invalid && { 'aria-invalid': true })}
-        className={cx('peer', styles.input)}
-        role="switch"
-        type="checkbox"
-      />
-      <span
-        className={cx(
-          styles.thumb,
-          vstack({
-            justify: 'center',
-          }),
-        )}
-      >
-        <CheckedIcon />
-      </span>
-    </span>
+    <SwitchParts.Root {...rootProps}>
+      <SwitchParts.Control>
+        <SwitchParts.Thumb />
+      </SwitchParts.Control>
+
+      <SwitchParts.Label>{label}</SwitchParts.Label>
+
+      <SwitchParts.HiddenInput />
+    </SwitchParts.Root>
   )
 }

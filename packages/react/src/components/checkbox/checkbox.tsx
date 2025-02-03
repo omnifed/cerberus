@@ -13,16 +13,10 @@ import { CheckboxIcon } from './checkbox-icon'
 export type CheckboxProps = CheckboxVariantProps & CheckboxRootProps
 
 /**
- * Checkbox component
- * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
- * @definition [ARIA Forms](https://www.a11yproject.com/checklist/#forms)
- * @see https://cerberus.digitalu.design/react/checkbox
- * @example
- * ```tsx
- * <Field>
- *   <Checkbox id="legal" checked={checked.legal} onChange={handleChange} />
- * </Field>
- * ```
+ * Checkbox component is an abstraction of the primitives that displays a
+ * controlled checkbox with a label.
+ * @description [Cerberus Docs] https://cerberus.digitalu.design/react/checkbox
+ * @description [Ark Docs] https://ark-ui.com/docs/components/checkbox
  */
 export function Checkbox(props: CheckboxProps) {
   const { size, children, ...rootProps } = props

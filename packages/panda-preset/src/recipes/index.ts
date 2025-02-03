@@ -22,15 +22,16 @@ import { notification } from './slots/notification'
 import { progressBar } from './slots/progressBar'
 import { radioGroup } from './slots/radio'
 import { select } from './slots/select'
+import { switchRecipe } from './slots/switch'
 import { table } from './slots/table'
 import { tabs } from './slots/tabs'
-import { toggle } from './slots/toggle'
 import { tooltip } from './slots/tooltip'
 
 // DEPRECATED: remove in v1
 import { fieldMessage } from './fieldMessage'
 import { input } from './slots/input'
 import { modal } from './slots/modal'
+import { toggle } from './slots/toggle'
 
 /**
  * Recipe module for the Panda preset
@@ -67,6 +68,7 @@ export const slotRecipes = {
   progressBar,
   radioGroup,
   select,
+  switchRecipe,
   table,
   tabs,
   toggle,
