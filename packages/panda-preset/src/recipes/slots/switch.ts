@@ -1,6 +1,7 @@
 import { switchAnatomy } from '@ark-ui/anatomy'
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { checkbox } from './checkbox'
+import { formStates } from '../shared/states'
 
 /**
  * This module contains the switch recipe.
@@ -20,45 +21,31 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
     root: {
       alignItems: 'center',
       display: 'inline-flex',
-      gap: '2.5',
+      gap: 'sm',
       position: 'relative',
       verticalAlign: 'middle',
-      '--switch-diff': 'calc(var(--switch-width) - var(--switch-height))',
-      '--switch-x': {
-        base: 'var(--switch-diff)',
-        _rtl: 'calc(var(--switch-diff) * -1)',
-      },
+      '--switch-x':
+        'calc(var(--switch-width) - calc(var(--switch-height) + 0.20rem))',
     },
     label: checkbox.base!.label,
-    indicator: {
-      position: 'absolute',
-      height: 'var(--switch-height)',
-      width: 'var(--switch-height)',
-      fontSize: 'var(--switch-indicator-font-size)',
-      fontWeight: 'medium',
-      flexShrink: 0,
-      userSelect: 'none',
-      display: 'grid',
-      placeContent: 'center',
-      transition: 'inset-inline-start 0.12s ease',
-      insetInlineStart: 'calc(var(--switch-x) - 2px)',
-      _checked: {
-        insetInlineStart: '2px',
-      },
-    },
+    indicator: {},
     control: {
+      alignItems: 'center',
+      bgColor: 'page.surface.300',
+      cursor: 'pointer',
       display: 'inline-flex',
-      gap: '0.5rem',
       flexShrink: 0,
+      h: 'var(--switch-height)',
       justifyContent: 'flex-start',
-      cursor: 'switch',
-      borderRadius: 'full',
+      paddingInline: '0.37rem',
       position: 'relative',
-      width: 'var(--switch-width)',
-      height: 'var(--switch-height)',
-      _disabled: {
-        opacity: '0.5',
-        cursor: 'not-allowed',
+      rounded: 'var(--switch-radius)',
+      transitionProperty: 'background-color, outline',
+      transitionDuration: 'fast',
+      w: 'var(--switch-width)',
+      _disabled: formStates._disabled,
+      _checked: {
+        bgColor: 'action.text.200',
       },
       _invalid: {
         outline: '2px solid',
@@ -67,23 +54,43 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
     },
     thumb: {
-      display: 'flex',
+      colorPalette: 'page',
       alignItems: 'center',
-      justifyContent: 'center',
+      bgColor: 'colorPalette.text.initial',
+      display: 'flex',
       flexShrink: 0,
-      transitionProperty: 'translate',
+      h: 'var(--thumb-size)',
+      justifyContent: 'center',
+      rounded: 'inherit',
+      transitionProperty: 'background-color, translate, transform',
       transitionDuration: 'fast',
-      borderRadius: 'inherit',
+      w: 'var(--thumb-size)',
       _checked: {
+        colorPalette: 'action',
         translate: 'var(--switch-x) 0',
+        transform: 'scale(1.25)',
       },
     },
   },
 
   variants: {
     size: {
-      sm: {},
-      lg: {},
+      sm: {
+        root: {
+          '--switch-height': '1.5rem',
+          '--switch-width': '3.25rem',
+          '--switch-radius': '31.25rem',
+          '--thumb-size': '1rem',
+        },
+      },
+      lg: {
+        root: {
+          '--switch-height': '2.5rem',
+          '--switch-width': '5rem',
+          '--switch-radius': '0.75rem',
+          '--thumb-size': '1.5rem',
+        },
+      },
     },
   },
 

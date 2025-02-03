@@ -6,10 +6,8 @@ a11y: 'forms'
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
-import {
-  OverviewToggleGroup,
-  OverviewToggleSizes
-} from '@/app/react/switch/components/toggle-preview'
+import DripDivider from '@/app/components/drip-divider'
+import { BasicDemo } from '@/app/react/switch/components/static-preview'
 
 <OverviewList rules={[
   'Use Switches (not radio buttons) if the items in a list can be independently controlled',
@@ -19,8 +17,9 @@ import {
 
 ## Example
 
-<CodePreview preview={<OverviewToggleGroup />} />
-<CodePreview preview={<OverviewToggleSizes />} />
+<CodePreview preview={<BasicDemo />} />
+
+<DripDivider />
 
 ## Resources
 

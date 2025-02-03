@@ -1,12 +1,7 @@
 import type { SwitchRootProps } from '@ark-ui/react'
 import { SwitchParts } from './parts'
 
-export interface SwitchProps extends SwitchRootProps {
-  /**
-   * The label of the switch.
-   */
-  label: string
-}
+export type SwitchProps = SwitchRootProps
 
 /**
  * The Switch component is a and abstraction of the primitives that displays a
@@ -15,7 +10,7 @@ export interface SwitchProps extends SwitchRootProps {
  * @description [Ark Docs] https://ark-ui.com/docs/components/switch
  */
 export function Switch(props: SwitchProps) {
-  const { label, ...rootProps } = props
+  const { children, ...rootProps } = props
 
   return (
     <SwitchParts.Root {...rootProps}>
@@ -23,7 +18,7 @@ export function Switch(props: SwitchProps) {
         <SwitchParts.Thumb />
       </SwitchParts.Control>
 
-      <SwitchParts.Label>{label}</SwitchParts.Label>
+      <SwitchParts.Label>{children}</SwitchParts.Label>
 
       <SwitchParts.HiddenInput />
     </SwitchParts.Root>
