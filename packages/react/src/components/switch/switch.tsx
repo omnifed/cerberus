@@ -1,5 +1,6 @@
 import type { SwitchRootProps } from '@ark-ui/react'
 import { SwitchParts } from './parts'
+import { SwitchIndicator } from './switch-indicator'
 
 export type SwitchProps = SwitchRootProps
 
@@ -15,7 +16,9 @@ export function Switch(props: SwitchProps) {
   return (
     <SwitchParts.Root {...rootProps}>
       <SwitchParts.Control>
-        <SwitchParts.Thumb />
+        <SwitchParts.Thumb>
+          <SwitchIndicator />
+        </SwitchParts.Thumb>
       </SwitchParts.Control>
 
       <SwitchParts.Label>{children}</SwitchParts.Label>

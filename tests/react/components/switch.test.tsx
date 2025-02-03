@@ -1,28 +1,36 @@
 import { describe, test, expect, afterEach } from 'bun:test'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Switch, SwitchParts } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
+import { CerberusProvider, Switch, SwitchParts } from '@cerberus-design/react'
+import { makeConfig, setupStrictMode } from '@/utils'
 
 describe('Switch', () => {
   setupStrictMode()
   afterEach(cleanup)
 
+  const config = makeConfig()
+
   test('should render a switch element', () => {
-    render(<Switch>it works</Switch>)
+    render(
+      <CerberusProvider config={config}>
+        <Switch>it works</Switch>
+      </CerberusProvider>,
+    )
     expect(screen.getByText(/it works/i)).toBeTruthy()
   })
 
   test('should render the parts', () => {
     render(
-      <SwitchParts.Root>
-        <SwitchParts.Control>
-          <SwitchParts.Thumb />
-        </SwitchParts.Control>
+      <CerberusProvider config={config}>
+        <SwitchParts.Root>
+          <SwitchParts.Control>
+            <SwitchParts.Thumb />
+          </SwitchParts.Control>
 
-        <SwitchParts.Label>it works</SwitchParts.Label>
+          <SwitchParts.Label>it works</SwitchParts.Label>
 
-        <SwitchParts.HiddenInput />
-      </SwitchParts.Root>,
+          <SwitchParts.HiddenInput />
+        </SwitchParts.Root>
+      </CerberusProvider>,
     )
     expect(screen.getByText(/it works/i)).toBeTruthy()
   })

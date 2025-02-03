@@ -14,7 +14,7 @@ import { formStates } from '../shared/states'
 export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'switch',
   description: 'The styles for the Switch component',
-  slots: [...switchAnatomy.keys(), 'indicator'],
+  slots: switchAnatomy.keys(),
   jsx: ['SwitchRoot', 'SwitchControl', 'SwitchThumb', 'SwitchLabel', 'Switch'],
 
   base: {
@@ -28,7 +28,6 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
         'calc(var(--switch-width) - calc(var(--switch-height) + 0.20rem))',
     },
     label: checkbox.base!.label,
-    indicator: {},
     control: {
       alignItems: 'center',
       bgColor: 'page.surface.300',
@@ -57,16 +56,20 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
       colorPalette: 'page',
       alignItems: 'center',
       bgColor: 'colorPalette.text.initial',
+      color: 'transparent',
       display: 'flex',
+      flexDirection: 'column',
       flexShrink: 0,
       h: 'var(--thumb-size)',
       justifyContent: 'center',
+      p: '0.125rem',
       rounded: 'inherit',
-      transitionProperty: 'background-color, translate, transform',
+      transitionProperty: 'background-color, color, translate, transform',
       transitionDuration: 'fast',
       w: 'var(--thumb-size)',
       _checked: {
         colorPalette: 'action',
+        color: 'action.text.200',
         translate: 'var(--switch-x) 0',
         transform: 'scale(1.25)',
       },
