@@ -7,21 +7,15 @@ import {
   WhenToUseAdmonition,
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
-import { BasicDemo } from '@/app/react/switch/components/static-preview'
+import { LivePlayground } from '@/app/react/switch/components/live-playground'
 
 ## Usage
 
-<WhenToUseAdmonition description="Use a Toggle when someone needs to opt-into an option." />
-
-<WhenNotToUseAdmonition description="When you need the user to select from multiple options within a group, use a Radio." />
+<WhenToUseAdmonition description="Use a Switch when someone needs to opt-into an option within a form." />
 
 ## Standard Switch
 
-<CodePreview preview={<BasicDemo />} />
-
-## Sizes
-
-<CodePreview preview={<BasicDemo />} />
+<LivePlayground />
 
 ## Alternate selection controls
 
@@ -31,4 +25,4 @@ Use checkboxes to select multiple related options in a list.
 
 Use radio buttons to select a single option in a list.
 
-Use toggles to select standalone or more verbose options in a list, like settings.
+Use switches to select standalone or more verbose options in a list, like settings.
