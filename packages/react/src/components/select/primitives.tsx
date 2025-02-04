@@ -120,12 +120,13 @@ export function SelectPositioner(props: SelectPositionerProps) {
 /**
  * The content of the dropdown (i.e. the container itself).
  */
-export function SelectContent(props: SelectContentProps) {
-  const styles = select()
+export function SelectContent(props: SelectContentProps & SelectVariantProps) {
+  const { size, ...contentProps } = props
+  const styles = select({ size })
   return (
     <Select.Content
-      {...props}
-      className={cx(styles.content, props.className)}
+      {...contentProps}
+      className={cx(styles.content, contentProps.className)}
     />
   )
 }

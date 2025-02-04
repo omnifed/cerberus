@@ -101,7 +101,9 @@ export function Select(props: SelectProps) {
 
       <Portal>
         <SelectParts.Positioner>
-          <SelectParts.Content>{props.children}</SelectParts.Content>
+          <SelectParts.Content size={rootProps.size}>
+            {props.children}
+          </SelectParts.Content>
         </SelectParts.Positioner>
       </Portal>
 
