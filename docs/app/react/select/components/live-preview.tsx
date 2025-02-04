@@ -8,7 +8,6 @@ import {
   Select,
   Option,
   createSelectCollection,
-  type SelectProps,
 } from '@cerberus-design/react'
 import { vstack } from '@cerberus/styled-system/patterns'
 
