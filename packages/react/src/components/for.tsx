@@ -28,7 +28,7 @@ export interface ForProps<T> {
  * ```
  */
 export function For<
-  T extends string | number | Record<string, unknown> | undefined,
+  T extends string | number | Record<string, unknown> | object | undefined,
 >(props: ForProps<T>) {
   const mappableChildren = props.children as unknown as (
     item: T,

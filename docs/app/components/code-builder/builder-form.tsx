@@ -1,15 +1,11 @@
 'use client'
 
 import { vstack } from '@cerberus/styled-system/patterns'
-import type {
-  BooleanResult,
-  BuilderResult,
-  NumberResult,
-  TextResult,
-} from './helpers'
+import type { BuilderResult, NumberResult, TextResult } from './helpers'
 import {
   Field,
   Show,
+  Switch,
   type SelectCollectionItem,
   type SelectValueChangeDetails,
 } from '@cerberus-design/react'
@@ -18,7 +14,6 @@ import { useCodeBuilder } from '@/app/context/code-builder'
 
 const Select = lazy(() => import('./builder-select'))
 const Input = lazy(() => import('./builder-input'))
-const Switch = lazy(() => import('./builder-toggle'))
 
 interface BuilderFormProps {
   api: Record<string, BuilderResult>
@@ -100,14 +95,17 @@ export default function BuilderForm(props: BuilderFormProps) {
 
             <Show when={props.api[key].type === 'boolean'}>
               <Switch
-                {...(props.api[key] as BooleanResult)}
                 ids={{
                   control: key,
                 }}
-                checked={selectedProps[key]}
+                checked={selectedProps[key] as boolean}
                 name={key}
-                onChange={handleCheckedChange}
-              />
+                onCheckedChange={(details: { checked: boolean }) => {
+                  handleCheckedChange(key, details.checked)
+                }}
+              >
+                show {key}
+              </Switch>
             </Show>
           </Field>
         </div>

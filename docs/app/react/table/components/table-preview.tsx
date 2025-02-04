@@ -8,10 +8,7 @@ import {
   Thead,
   Tr,
   Td,
-  Toggle,
-  FieldRoot,
-  FieldLabel,
-  useToggle,
+  Switch,
   Show,
 } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
@@ -105,10 +102,6 @@ export function DecorationPreview() {
 }
 
 export function BasicTablePreview() {
-  const first = useToggle()
-  const second = useToggle()
-  const third = useToggle()
-
   return (
     <Table caption="Basic table">
       <Thead>
@@ -123,51 +116,21 @@ export function BasicTablePreview() {
           <Td>Dog</Td>
           <Td>False</Td>
           <Td>
-            <FieldRoot ids={{ control: '1' }}>
-              <FieldLabel>
-                <Toggle
-                  checked={Boolean(first.checked)}
-                  id="1"
-                  onChange={first.handleChange}
-                  size="sm"
-                  value="1"
-                />
-              </FieldLabel>
-            </FieldRoot>
+            <Switch />
           </Td>
         </Tr>
         <Tr>
           <Td>Cat</Td>
           <Td>Maybe</Td>
           <Td>
-            <FieldRoot ids={{ control: '2' }}>
-              <FieldLabel>
-                <Toggle
-                  checked={Boolean(second.checked)}
-                  id="2"
-                  onChange={second.handleChange}
-                  size="sm"
-                  value="2"
-                />
-              </FieldLabel>
-            </FieldRoot>
+            <Switch />
           </Td>
         </Tr>
         <Tr>
           <Td>Fish</Td>
           <Td>True</Td>
           <Td>
-            <FieldRoot ids={{ control: '3' }}>
-              <FieldLabel>
-                <Toggle
-                  checked={Boolean(third.checked)}
-                  id="3"
-                  onChange={third.handleChange}
-                  size="sm"
-                  value="3"
-                />
-              </FieldLabel>
-            </FieldRoot>
+            <Switch />
           </Td>
         </Tr>
       </Tbody>
