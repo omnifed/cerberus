@@ -1,29 +1,19 @@
 'use client'
 
 import {
+  For,
   Field,
   Select,
+  SelectParts,
   Option,
+  OptionGroup,
+  OptionGroupLabel,
   createSelectCollection,
   Portal,
-  SelectContent,
-  SelectControl,
-  SelectIndicator,
-  SelectItem,
-  SelectItemGroup,
-  SelectItemGroupLabel,
-  SelectItemIndicator,
-  SelectItemText,
-  SelectLabel,
-  SelectPositioner,
-  SelectRoot,
-  SelectTrigger,
-  SelectValueText,
-  SelectClearTrigger,
 } from '@cerberus-design/react'
 import { css, cx } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
-import { Box } from '@cerberus-design/styled-system/jsx'
+import { Box } from '@cerberus/styled-system/jsx'
 import { ChevronDownOutline } from '@carbon/icons-react'
 
 export function SelectBasicPreview() {
@@ -39,9 +29,34 @@ export function SelectBasicPreview() {
     <Box w="1/2">
       <Field label="Select Relative">
         <Select collection={collection} placeholder="Choose option">
-          {collection.items.map((item) => (
-            <Option key={item.value} item={item} />
-          ))}
+          <For each={collection.items}>
+            {(item) => <Option key={item.value} item={item} />}
+          </For>
+        </Select>
+      </Field>
+    </Box>
+  )
+}
+
+export function GroupedOptionsDemo() {
+  const collection = createSelectCollection([
+    { label: 'Hades', value: '1-hades' },
+    { label: 'Persephone', value: '1-persephone' },
+    { label: 'Zeus', value: '1-zeus', disabled: true },
+    { label: 'Poseidon', value: '1-poseidon' },
+    { label: 'Hera', value: '1-hera' },
+  ])
+
+  return (
+    <Box w="1/2">
+      <Field label="Select Relative">
+        <Select collection={collection} placeholder="Choose option">
+          <OptionGroup>
+            <OptionGroupLabel>The fam</OptionGroupLabel>
+            <For each={collection.items}>
+              {(item) => <Option key={item.value} item={item} />}
+            </For>
+          </OptionGroup>
         </Select>
       </Field>
     </Box>
@@ -59,8 +74,8 @@ export function SelectCustomPreview() {
 
   return (
     <Box w="1/2">
-      <SelectRoot collection={collection}>
-        <SelectLabel
+      <SelectParts.Root collection={collection}>
+        <SelectParts.Label
           className={css({
             paddingBlock: 2,
             textStyle: 'body-sm',
@@ -68,10 +83,10 @@ export function SelectCustomPreview() {
           })}
         >
           Select a custom relative
-        </SelectLabel>
+        </SelectParts.Label>
 
-        <SelectControl>
-          <SelectTrigger
+        <SelectParts.Control>
+          <SelectParts.Trigger
             className={cx(
               css({
                 bgColor: 'black',
@@ -89,8 +104,8 @@ export function SelectCustomPreview() {
               }),
             )}
           >
-            <SelectValueText placeholder="Choose a custom option" />
-            <SelectIndicator
+            <SelectParts.ValueText placeholder="Choose a custom option" />
+            <SelectParts.Indicator
               className={css({
                 transitionProperty: 'transform',
                 transitionDuration: 'fast',
@@ -100,21 +115,23 @@ export function SelectCustomPreview() {
               })}
             >
               <ChevronDownOutline />
-            </SelectIndicator>
-          </SelectTrigger>
-          <SelectClearTrigger>Clear</SelectClearTrigger>
-        </SelectControl>
+            </SelectParts.Indicator>
+          </SelectParts.Trigger>
+          <SelectParts.ClearTrigger>Clear</SelectParts.ClearTrigger>
+        </SelectParts.Control>
 
         <Portal>
-          <SelectPositioner className={css({ w: 'var(--reference-width)' })}>
-            <SelectContent
+          <SelectParts.Positioner
+            className={css({ w: 'var(--reference-width)' })}
+          >
+            <SelectParts.Content
               className={css({
                 bgColor: 'danger.surface.initial',
                 p: 4,
               })}
             >
-              <SelectItemGroup>
-                <SelectItemGroupLabel
+              <SelectParts.ItemGroup>
+                <SelectParts.ItemGroupLabel
                   className={css({
                     fontWeight: 'bold',
                     textStyle: 'label-sm',
@@ -122,10 +139,10 @@ export function SelectCustomPreview() {
                   })}
                 >
                   The fam
-                </SelectItemGroupLabel>
+                </SelectParts.ItemGroupLabel>
                 {collection.items.map((item, idx) => (
-                  <SelectItem key={item.value} item={item}>
-                    <SelectItemText
+                  <SelectParts.Item key={item.value} item={item}>
+                    <SelectParts.ItemText
                       className={css({
                         color: 'white',
                         display: 'inline-block',
@@ -135,15 +152,15 @@ export function SelectCustomPreview() {
                       }}
                     >
                       {item.label}
-                    </SelectItemText>
-                    <SelectItemIndicator>✓</SelectItemIndicator>
-                  </SelectItem>
+                    </SelectParts.ItemText>
+                    <SelectParts.ItemIndicator>✓</SelectParts.ItemIndicator>
+                  </SelectParts.Item>
                 ))}
-              </SelectItemGroup>
-            </SelectContent>
-          </SelectPositioner>
+              </SelectParts.ItemGroup>
+            </SelectParts.Content>
+          </SelectParts.Positioner>
         </Portal>
-      </SelectRoot>
+      </SelectParts.Root>
     </Box>
   )
 }

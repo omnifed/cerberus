@@ -1,5 +1,6 @@
 import type { ElementType } from 'react'
 import {
+  SelectClearTrigger,
   SelectContent,
   SelectControl,
   SelectHiddenSelect,
@@ -38,6 +39,10 @@ interface SelectPartsValue {
    * The trigger that opens the dropdown.
    */
   Trigger: ElementType
+  /**
+   * The trigger to clear the select input.
+   */
+  ClearTrigger: ElementType
   /**
    * The text that appears in the trigger.
    */
@@ -94,6 +99,7 @@ export const SelectParts: SelectPartsValue = {
   Label: SelectLabel,
   Control: SelectControl,
   Trigger: SelectTrigger,
+  ClearTrigger: SelectClearTrigger,
   ValueText: SelectValueText,
   Indicator: SelectIndicator,
   Positioner: SelectPositioner,
