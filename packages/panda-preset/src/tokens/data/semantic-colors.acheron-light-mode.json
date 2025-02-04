@@ -551,7 +551,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "acheron.neutral.5",
+        "$value": "acheron.neutral.0",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -1836,7 +1836,7 @@
   "drop-shadow": {
     "sm": {
       "$type": "color",
-      "$value": "cerberus.drop-shadow.sm",
+      "$value": "acheron.drop-shadow.100",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -1848,7 +1848,7 @@
     },
     "md": {
       "$type": "color",
-      "$value": "cerberus.drop-shadow.md",
+      "$value": "acheron.drop-shadow.200",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -1860,7 +1860,7 @@
     },
     "lg": {
       "$type": "color",
-      "$value": "cerberus.drop-shadow.lg",
+      "$value": "acheron.drop-shadow.200",
       "$description": "",
       "$extensions": {
         "com.figma": {
