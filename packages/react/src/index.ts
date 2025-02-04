@@ -16,6 +16,8 @@ export * from './components/deprecated/NavMenuTrigger'
 export * from './components/deprecated/NavMenuList'
 export * from './components/deprecated/NavMenuLink'
 export * from './hooks/useDate'
+export * from './hooks/useModal'
+export * from './hooks/useToggle'
 
 // components
 
@@ -47,7 +49,10 @@ export * from './components/NotificationDescription'
 export * from './components/Portal'
 export * from './components/ProgressBar'
 export * from './components/radio/index'
+export * from './components/select/index'
+export * from './components/Show'
 export * from './components/Spinner'
+export * from './components/switch/index'
 export * from './components/Tabs.client'
 export * from './components/Table'
 export * from './components/Thead'
@@ -56,11 +61,8 @@ export * from './components/Td'
 export * from './components/Tbody'
 export * from './components/Tag'
 export * from './components/Text'
-export * from './components/Toggle'
+export * from './components/toggle/index'
 export * from './components/Tooltip'
-export * from './components/Select'
-export * from './components/Select.server'
-export * from './components/Show'
 
 // context
 
@@ -76,9 +78,7 @@ export * from './context/theme'
 
 // hooks
 
-export * from './hooks/useModal'
 export * from './hooks/useTheme'
-export * from './hooks/useToggle'
 export * from './hooks/useRootColors'
 
 // aria-helpers

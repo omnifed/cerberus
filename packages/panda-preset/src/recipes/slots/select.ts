@@ -16,7 +16,25 @@ import { label } from '../label'
 export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'select',
   slots: selectAnatomy.keys(),
-  jsx: ['Select', 'Option'],
+  jsx: [
+    'SelectRoot',
+    'SelectLabel',
+    'SelectControl',
+    'SelectTrigger',
+    'SelectValueText',
+    'SelectIndicator',
+    'SelectPositioner',
+    'SelectContent',
+    'SelectItemGroup',
+    'SelectItemGroupLabel',
+    'SelectItem',
+    'SelectItemText',
+    'SelectItemIndicator',
+    'Select',
+    'Option',
+    'OptionGroup',
+    'OptionGroupLabel',
+  ],
 
   base: {
     root: {
@@ -42,6 +60,7 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       color: 'page.text.initial',
       display: 'inline-flex',
       gap: 'sm',
+      h: 'var(--select-trigger-height)',
       justifyContent: 'space-between',
       outline: 0,
       minW: 9,
@@ -90,6 +109,7 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       borderColor: 'page.border.200',
       display: 'flex',
       flexDirection: 'column',
+      gap: 'var(--select-content-gap)',
       maxH: '15.5rem',
       minW: '10rem',
       overflowY: 'auto',
@@ -112,6 +132,7 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       color: 'page.text.initial',
       display: 'flex',
       flexShrink: 0,
+      h: 'var(--select-item-height)',
       justifyContent: 'space-between',
       pxi: 'md',
       rounded: 'sm',
@@ -143,32 +164,30 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
   variants: {
     size: {
       sm: {
-        trigger: {
-          h: '2rem',
+        root: {
+          '--select-trigger-height': '2rem',
         },
-        item: {
-          height: '2.5rem',
+        content: {
+          '--select-item-height': '2.5rem',
+          '--select-content-gap': '0',
         },
       },
       md: {
-        trigger: {
-          h: '2.5rem',
+        root: {
+          '--select-trigger-height': '2.5rem',
         },
-        item: {
-          height: '2.5rem',
+        content: {
+          '--select-item-height': '2.5rem',
+          '--select-content-gap': '0',
         },
       },
       lg: {
-        trigger: {
-          trigger: {
-            h: '3rem',
-          },
-          content: {
-            gap: 'xs',
-          },
-          item: {
-            height: '3rem',
-          },
+        root: {
+          '--select-trigger-height': '3rem',
+        },
+        content: {
+          '--select-item-height': '3rem',
+          '--select-content-gap': '0.25rem',
         },
       },
     },

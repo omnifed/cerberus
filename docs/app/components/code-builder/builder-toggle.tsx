@@ -1,25 +1,21 @@
 'use client'
 
-import { Toggle, useToggle, type ToggleProps } from '@cerberus-design/react'
-import type { BooleanResult } from './helpers'
+import { Switch, type SwitchProps } from '@cerberus-design/react'
 
-interface BuilderToggleProps
-  extends Omit<ToggleProps, 'name' | 'type' | 'value'>,
-    BooleanResult {}
+type BuilderToggleProps = SwitchProps & {
+  onChange: (name: string, value: boolean) => void
+}
 
 export default function BuilderToggle(props: BuilderToggleProps) {
-  const { onChange, ...nativeProps } = props
-  const { checked, handleChange } = useToggle({
-    checked: nativeProps.value ? nativeProps.name : '',
-    onChange,
-  })
+  const { onChange, ...rootProps } = props
+
+  function handleChange(details: { checked: boolean }) {
+    onChange(rootProps.name ?? '', details.checked)
+  }
 
   return (
-    <Toggle
-      {...nativeProps}
-      checked={checked === nativeProps.name}
-      onChange={handleChange}
-      value={String(nativeProps.name)}
-    />
+    <Switch {...rootProps} onCheckedChange={handleChange}>
+      show {rootProps.name}
+    </Switch>
   )
 }

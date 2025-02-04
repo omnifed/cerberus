@@ -29,9 +29,7 @@ export interface ToggleHookReturn {
 }
 
 /**
- * Provides a hook for using a toggle.
- * @see https://cerberus.digitalu.design/react/use-toggle
- * @memberof module:Toggle
+ * @deprecated Will be removed in v1. Use ToggleParts instead.
  */
 export function useToggle(options?: UseToggleOptions): ToggleHookReturn {
   const [checked, setChecked] = useState<string>(options?.checked ?? '')

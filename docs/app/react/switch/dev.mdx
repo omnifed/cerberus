@@ -1,0 +1,149 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/switch'
+recipe: 'slots/switch.ts'
+ark: 'switch'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { BasicDemo, WithFieldDemo, SizesDemo, CustomDemo } from '@/app/react/switch/components/static-preview'
+
+```ts
+import { Switch, SwitchParts } from '@cerberus/react'
+```
+
+## Usage
+
+<CodePreview preview={<BasicDemo />}>
+```tsx title="valid-radio.tsx"
+import { Switch } from '@cerberus-design/react'
+import { Box } from '@cerberus-design/styled-system/jsx'
+
+function BasicDemo() {
+  return (
+    <Box w="1/2">
+      <Switch>Receive in app notifications</Switch>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## With Field
+
+To use the Switch within a form, wrap it with the [`Field`](./field) component.
+
+<CodePreview preview={<WithFieldDemo />}>
+```tsx title="valid-radio.tsx"
+import { Switch, Field } from '@cerberus-design/react'
+import { Box } from '@cerberus-design/styled-system/jsx'
+
+function WithFieldDemo() {
+  return (
+    <Box w="1/2">
+      <Field label="This is the field label" required>
+        <Switch>Receive in app notifications</Switch>
+      </Field>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Sizes
+
+<CodePreview preview={<SizesDemo />}>
+```tsx title="valid-radio.tsx"
+import { Switch } from '@cerberus-design/react'
+import { Box, VStack } from '@cerberus-design/styled-system/jsx'
+
+function SizesDemo() {
+  return (
+    <Box w="1/2">
+      <VStack alignItems="flex-start" gap="lg">
+        <Switch size="sm">Small size (default)</Switch>
+        <Switch size="lg">Large size</Switch>
+      </VStack>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components to customize the checkbox.
+
+| Component | Description |
+| --------- | ----------- |
+| SwitchRoot    | The context provider for the switch parts |
+| SwitchLabel   | The label of the switch |
+| SwitchControl   | The visual input of the switch |
+| SwitchThumb   | The thumb of the switch state |
+| SwitchHiddenInput  | The native input for the switch |
+
+<CodePreview preview={<CustomDemo />}>
+```tsx title="custom checkbox"
+import { SwitchParts } from '@cerberus/react'
+import { css } from '@cerberus/styled-system/css'
+
+function CustomDemo() {
+  return (
+    <SwitchParts.Root>
+      <SwitchParts.Label
+        className={css({
+          textTransform: 'uppercase',
+        })}
+      >
+        Receive in app notifications
+      </SwitchParts.Label>
+      <SwitchParts.Control
+        className={css({
+          rounded: 'sm',
+          transform: 'skewX(-10deg)',
+          _checked: {
+            bgColor: 'danger.surface.initial',
+          },
+        })}
+      >
+        <SwitchParts.Thumb
+          className={css({
+            rounded: 'sm',
+          })}
+        />
+      </SwitchParts.Control>
+
+      <SwitchParts.HiddenInput />
+    </SwitchParts.Root>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+### Props
+
+The `Switch` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| size     |  `sm`   | This size of the Switch.                             |
+
+
+The `Switch` component also accepts all the props of the [`SwitchRoot` primitive props](https://ark-ui.com/react/docs/components/switch#api-reference)
+
+### Parts
+
+The `SwitchParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the SwitchParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `SwitchRoot` component which is the Provider for the family. |
+| Label     | The `SwitchLabel` component which displays the label. |
+| Control     | The `SwitchControl` component which is the visual field. |
+| Thumb  | The `SwitchThumb` component which displays the thumb of the switch. |
+| HiddenInput  | The `SwitchHiddenInput` component which displays the native input. |

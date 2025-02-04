@@ -119,9 +119,9 @@ export const categoryMeta = {
     description: 'Selects are used to choose from a list of options.',
     image: ButtonFeature,
   },
-  toggle: {
-    name: 'Toggle',
-    description: 'Toggles are used to switch between two states.',
+  switch: {
+    name: 'Switch',
+    description: 'Switches are used to toggle between two states.',
     image: ButtonFeature,
   },
 

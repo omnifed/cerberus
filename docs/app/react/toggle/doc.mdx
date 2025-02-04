@@ -1,0 +1,68 @@
+---
+heading: 'Toggle'
+description: 'Toggle allows users to toggle between states via an action.'
+a11y: 'utilities'
+npm: '@cerberus-design/react'
+source: 'components/toggle'
+recipe: ''
+---
+
+import {
+  WhenNotToUseAdmonition,
+  NoteAdmonition,
+} from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import BasicPreview from '@/app/react/toggle/components/static-preview'
+
+The `Toggle` component is a two-state button that allows users to toggle between states via an action.
+
+```ts
+import { Toggle } from '@cerberus/react'
+```
+
+<WhenNotToUseAdmonition description="If you need to conditionally render content based on a binary condition, use the Show component." />
+
+## Usage
+
+The Toggle component is unstyled to fit any scenario you may need.
+
+<CodePreview preview={<BasicPreview />}>
+```tsx title="notification-toggle.tsx"
+import { NotificationOff, Notification } from '@carbon/icons-react'
+import { ToggleParts, IconButton } from '@cerberus-design/react'
+
+export default function BasicPreview() {
+  return (
+    <ToggleParts.Root defaultPressed={true} asChild>
+      <IconButton ariaLabel="Notification preferences">
+        <ToggleParts.Indicator fallback={<NotificationOff />}>
+          <Notification />
+        </ToggleParts.Indicator>
+      </IconButton>
+    </ToggleParts.Root>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components to customize the toggle.
+
+| Component | Description |
+| --------- | ----------- |
+| ToggleRoot    | The context provider for the Toggle parts |
+| ToggleIndicator   | The indicator shown based on the toggle state |
+
+## API
+
+### Parts
+
+The `ToggleParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the ToggleParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `ToggleRoot` component which is the Provider for the family. |
+| Indicator  | The `ToggleIndicator` component which displays based on the pressed state. |

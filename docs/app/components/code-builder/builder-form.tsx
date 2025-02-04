@@ -1,15 +1,11 @@
 'use client'
 
 import { vstack } from '@cerberus/styled-system/patterns'
-import type {
-  BooleanResult,
-  BuilderResult,
-  NumberResult,
-  TextResult,
-} from './helpers'
+import type { BuilderResult, NumberResult, TextResult } from './helpers'
 import {
   Field,
   Show,
+  Switch,
   type SelectCollectionItem,
   type SelectValueChangeDetails,
 } from '@cerberus-design/react'
@@ -18,7 +14,6 @@ import { useCodeBuilder } from '@/app/context/code-builder'
 
 const Select = lazy(() => import('./builder-select'))
 const Input = lazy(() => import('./builder-input'))
-const Toggle = lazy(() => import('./builder-toggle'))
 
 interface BuilderFormProps {
   api: Record<string, BuilderResult>
@@ -41,9 +36,9 @@ export default function BuilderForm(props: BuilderFormProps) {
     [setSelectedProps],
   )
 
-  const handleToggleChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setSelectedProps(e.currentTarget.name, e.currentTarget.checked)
+  const handleCheckedChange = useCallback(
+    (name: string, checked: boolean) => {
+      setSelectedProps(name, checked)
     },
     [setSelectedProps],
   )
@@ -99,12 +94,18 @@ export default function BuilderForm(props: BuilderFormProps) {
             </Show>
 
             <Show when={props.api[key].type === 'boolean'}>
-              <Toggle
-                {...(props.api[key] as BooleanResult)}
-                id={key}
+              <Switch
+                ids={{
+                  control: key,
+                }}
+                checked={selectedProps[key] as boolean}
                 name={key}
-                onChange={handleToggleChange}
-              />
+                onCheckedChange={(details: { checked: boolean }) => {
+                  handleCheckedChange(key, details.checked)
+                }}
+              >
+                show {key}
+              </Switch>
             </Show>
           </Field>
         </div>

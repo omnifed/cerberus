@@ -8,7 +8,6 @@ import {
   Select,
   Option,
   createSelectCollection,
-  type SelectProps,
 } from '@cerberus-design/react'
 import { vstack } from '@cerberus/styled-system/patterns'
 
@@ -122,7 +121,7 @@ export function SelectEl(props: SelectElProps) {
           invalid={props.invalid as boolean}
           required={props.required as boolean}
           readOnly={props.readOnly as boolean}
-          size={props.size as SelectProps['size']}
+          size="md"
         >
           {collection.items.map((item) => (
             <Option key={item.value} item={item} />

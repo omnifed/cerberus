@@ -1,26 +1,27 @@
 ---
-heading: 'Toggle'
-description: 'Toggles switch the selection of an item on or off'
+heading: 'Switch'
+description: 'Switches toggle the selection of a form item on or off'
 a11y: 'forms'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
-import {
-  OverviewToggleGroup,
-  OverviewToggleSizes
-} from '@/app/react/toggle/components/toggle-preview'
+import DripDivider from '@/app/components/drip-divider'
+import { BasicDemo } from '@/app/react/switch/components/static-preview'
+import { LivePlayground } from '@/app/react/switch/components/live-playground'
 
 <OverviewList rules={[
-  'Use toggles (not radio buttons) if the items in a list can be independently controlled',
-  "Toggles are the best way to let users adjust settings",
+  'Use Switches (not radio buttons) if the items in a list can be independently controlled',
+  "Switches are the best way to let users adjust settings",
   "Make sure the toggle's selection (on or off) is visible at a glance"
 ]} />
 
 ## Example
 
-<CodePreview preview={<OverviewToggleGroup />} />
-<CodePreview preview={<OverviewToggleSizes />} />
+<CodePreview preview={<BasicDemo />} />
+<LivePlayground />
+
+<DripDivider />
 
 ## Resources
 

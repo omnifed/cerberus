@@ -55,9 +55,9 @@
       "Date Picker",
       "Radio",
       "Select",
-      "Toggle"
+      "Switch"
     ],
-    "next": ["Checkbox", "Radio", "Select"],
+    "next": ["Checkbox", "Radio", "Select", "Switch"],
     "new": [],
     "deprecated": []
   },
