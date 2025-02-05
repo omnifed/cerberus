@@ -29,8 +29,8 @@ const overviewGroup: CategoriesList = {
       'Local Storage',
     ],
     deprecated: [],
-    next: ['For', 'Toggle'],
-    new: [],
+    next: [],
+    new: ['For', 'Toggle'],
   },
 }
 const hooksGroup: CategoriesList = {
@@ -47,8 +47,8 @@ const hooksGroup: CategoriesList = {
       'use-toggle',
     ],
     deprecated: [],
-    next: ['split-props'],
-    new: [],
+    next: [],
+    new: ['split-props'],
   },
 }
 

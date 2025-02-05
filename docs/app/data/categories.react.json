@@ -3,8 +3,8 @@
     "name": "Actions",
     "description": "Components that trigger an action.",
     "items": ["Button", "Icon Button"],
-    "next": ["Button"],
-    "new": [],
+    "next": [],
+    "new": ["Button"],
     "deprecated": []
   },
   "communication": {
@@ -35,7 +35,7 @@
       "Table"
     ],
     "next": [],
-    "new": ["Dialog"],
+    "new": [],
     "deprecated": ["Modal"]
   },
   "navigation": {
@@ -57,8 +57,8 @@
       "Select",
       "Switch"
     ],
-    "next": ["Checkbox", "Radio", "Select", "Switch"],
-    "new": [],
+    "next": [],
+    "new": ["Checkbox", "Radio", "Select", "Switch"],
     "deprecated": []
   },
   "inputs": {
@@ -73,8 +73,8 @@
       "Field Message",
       "File Uploader"
     ],
-    "next": ["Field", "Fieldset"],
-    "new": [],
+    "next": [],
+    "new": ["Field", "Fieldset"],
     "deprecated": ["Label", "Field Message"]
   }
 }
