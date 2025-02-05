@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'bun:test'
 import { acheronTheme } from '@cerberus-design/panda-preset'
 
-describe('page', () => {
+describe('Acheron > page', () => {
   const token = acheronTheme.pageTokens.page
 
   function getSemanticToken(value: TemplateStringsArray) {
@@ -118,7 +118,7 @@ describe('page', () => {
       getSemanticToken`acheron.neutral.100`,
     )
     expect(token.surface.initial.value._lightMode).toEqual(
-      getSemanticToken`acheron.neutral.5`,
+      getSemanticToken`acheron.neutral.0`,
     )
   })
 

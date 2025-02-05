@@ -965,7 +965,7 @@
     "action": {
       "100": {
         "$type": "color",
-        "$value": "acheron.brand.100",
+        "$value": "acheron.neutral.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1836,7 +1836,7 @@
   "drop-shadow": {
     "sm": {
       "$type": "color",
-      "$value": "cerberus.drop-shadow.sm",
+      "$value": "acheron.drop-shadow.600",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -1848,7 +1848,7 @@
     },
     "md": {
       "$type": "color",
-      "$value": "cerberus.drop-shadow.md",
+      "$value": "acheron.drop-shadow.700",
       "$description": "",
       "$extensions": {
         "com.figma": {
@@ -1860,7 +1860,7 @@
     },
     "lg": {
       "$type": "color",
-      "$value": "cerberus.drop-shadow.lg",
+      "$value": "cerberus.drop-shadow.1000",
       "$description": "",
       "$extensions": {
         "com.figma": {

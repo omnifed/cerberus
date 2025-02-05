@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'bun:test'
 import { actionTokens } from '@cerberus-design/panda-preset'
 
-describe('Base actionTokens', () => {
+describe('Base > actionTokens', () => {
   function getSemanticToken(value: TemplateStringsArray) {
     return `{colors.${value}}`
   }
@@ -120,10 +120,10 @@ describe('Base actionTokens', () => {
   test('should have a cerberus action.ghost.hover key', () => {
     expect(actionTokens.action.ghost.hover).toBeDefined()
     expect(actionTokens.action.ghost.hover.value.base).toBe(
-      getSemanticToken`cerberus.brand.90`,
+      getSemanticToken`cerberus.brand.80`,
     )
     expect(actionTokens.action.ghost.hover.value._darkMode).toBe(
-      getSemanticToken`cerberus.brand.90`,
+      getSemanticToken`cerberus.brand.80`,
     )
     expect(actionTokens.action.ghost.hover.value._lightMode).toBe(
       getSemanticToken`cerberus.neutral.5`,
@@ -135,10 +135,10 @@ describe('Base actionTokens', () => {
   test('should have a cerberus action.ghost.active key', () => {
     expect(actionTokens.action.ghost.active).toBeDefined()
     expect(actionTokens.action.ghost.active.value.base).toBe(
-      getSemanticToken`cerberus.brand.80`,
+      getSemanticToken`cerberus.brand.70`,
     )
     expect(actionTokens.action.ghost.active.value._darkMode).toBe(
-      getSemanticToken`cerberus.brand.80`,
+      getSemanticToken`cerberus.brand.70`,
     )
     expect(actionTokens.action.ghost.active.value._lightMode).toBe(
       getSemanticToken`cerberus.brand.10`,

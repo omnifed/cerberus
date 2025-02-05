@@ -381,7 +381,8 @@ export interface CerberusTextStyle {
  * - 6750-5231: body-sm
  * - 6750-5233: label-sm
  * - 6750-8545: label-md
- * - 6750-5235: button
+ * - 6750-5235: button-md
+ * - 17675-4: button-sm
  * - 11875-39189: mono-xl
  * - 11875-39776: mono-lg
  * - 11875-39778: mono-md

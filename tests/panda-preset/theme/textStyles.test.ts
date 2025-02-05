@@ -102,7 +102,11 @@ describe('textStyles', () => {
     expect(textStyles.link).toBeDefined()
   })
 
-  test('should export a textStyles object with a button key', () => {
-    expect(textStyles.button).toBeDefined()
+  test('should export a textStyles object with a button-md key', () => {
+    expect(textStyles['button-md']).toBeDefined()
+  })
+
+  test('should export a textStyles object with a button-sm key', () => {
+    expect(textStyles['button-sm']).toBeDefined()
   })
 })
