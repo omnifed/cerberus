@@ -900,42 +900,6 @@
             "codeSyntax": {}
           }
         }
-      },
-      "sm": {
-        "$type": "color",
-        "$value": "#0e0d0c26",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": true,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "md": {
-        "$type": "color",
-        "$value": "#0e0d0c59",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": true,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "lg": {
-        "$type": "color",
-        "$value": "#0e0d0c80",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": true,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
       }
     },
     "info": {

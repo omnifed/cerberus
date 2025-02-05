@@ -83,7 +83,7 @@ const textStyleCSS = css({
     textStyle: 'link',
   },
   '&[data-style="button"]': {
-    textStyle: 'button',
+    textStyle: 'button-md',
   },
 })
 
