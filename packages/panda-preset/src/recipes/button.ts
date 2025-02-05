@@ -51,12 +51,14 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         h: '2rem',
         marginBlock: '0.375rem', // add a11y target size
         pxi: '3',
+        textStyle: 'button-sm',
         md: {
           marginBlock: 'initial',
         },
       },
       md: {
         h: '2.75rem',
+        textStyle: 'button-md',
       },
     },
   },

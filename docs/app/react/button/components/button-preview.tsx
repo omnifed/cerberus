@@ -4,6 +4,7 @@ import { Fragment } from 'react'
 import { Button, ButtonParts } from '@cerberus-design/react'
 import { ArrowDownRight } from '@carbon/icons-react'
 import { css } from '@cerberus/styled-system/css'
+import { HStack } from '@cerberus-design/styled-system/jsx'
 import { grid, gridItem } from '@cerberus/styled-system/patterns'
 
 export function BasicButtonPreview() {
@@ -26,6 +27,15 @@ export function RoundedButtonPreview() {
   return <Button shape="rounded">Rounded styles</Button>
 }
 
+export function PendingButtonDemo() {
+  return (
+    <ButtonParts.Root pending>
+      <ButtonParts.Icon />
+      Pending
+    </ButtonParts.Root>
+  )
+}
+
 export function WithIconButtonPreview() {
   return (
     <ButtonParts.Root>
@@ -37,19 +47,30 @@ export function WithIconButtonPreview() {
   )
 }
 
+export function SizesDemo() {
+  return (
+    <HStack>
+      <Button size="sm">Small</Button>
+      <Button size="md">Medium</Button>
+    </HStack>
+  )
+}
+
 export function CustomButtonPreview() {
   return (
     <Button
       className={css({
-        bgColor: 'yellow',
-        color: 'black',
+        bgColor: 'danger.bg.initial',
+        color: 'danger.text.initial',
+        rounded: 'md',
+        transform: 'skew(-10deg)',
         _hover: {
           bgColor: 'black',
           color: 'yellow',
         },
       })}
     >
-      Wu-Tang Forever
+      Cerberus Forever
     </Button>
   )
 }

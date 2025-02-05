@@ -7,12 +7,12 @@ recipe: 'button.ts'
 import CodePreview from '@/app/components/CodePreview'
 import { NoteAdmonition } from '@/app/components/Admonition'
 import {
+  BasicButtonPreview,
   WithIconButtonPreview,
+  PendingButtonDemo,
+  SizesDemo,
   CustomButtonPreview,
 } from '@/app/react/button/components/button-preview'
-import {
-  LivePlaygroundWithCode,
-} from '@/app/react/button/components/live-playground'
 
 ```ts
 import { Button, ButtonParts } from '@cerberus/react'
@@ -20,13 +20,20 @@ import { Button, ButtonParts } from '@cerberus/react'
 
 ## Usage
 
-You can mix and match all of the examples to create the button style of your choosing.
+<CodePreview preview={<BasicButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus/react'
 
-<LivePlaygroundWithCode />
+function BasicButtonPreview() {
+  return <Button>Default styles</Button>
+}
+```
+</CodePreview>
+
 
 ### With Icon
 
-You can utilize the `ButtonParts` API to use an icon within the button. This will allow you to dynamically show a Spinner when the button has a `pending` state.
+To display an icon, you can use the `ButtonParts.Icon` component.
 
 <CodePreview preview={<WithIconButtonPreview />}>
 ```tsx title="button.tsx"
@@ -46,25 +53,75 @@ function WithIconButton() {
 ```
 </CodePreview>
 
-You can customize the button by utilizing the `cx` function.
+## Pending
+
+To display a loading state, use the `ButtonParts.Icon` and set the `pending` prop to `true`. This will show a spinner in place of the icon.
+
+<CodePreview preview={<PendingButtonDemo />}>
+```tsx title="button.tsx"
+import { ButtonParts } from '@cerberus/react'
+
+function PendingButtonDemo() {
+  return (
+    <ButtonParts.Root pending>
+      <ButtonParts.Icon />
+      Pending
+    </ButtonParts.Root>
+  )
+}
+```
+</CodePreview>
+
+## Sizes
+
+The `Button` component comes in two sizes: `sm`, `md`. You can set the size by using the `size` prop.
+
+<CodePreview preview={<SizesDemo />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus/react'
+import { HStack } from '@cerberus/styled-system/jsx'
+
+function SizesDemo() {
+  return (
+    <HStack>
+      <Button size="sm">Small</Button>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components to customize the button.
+
+| Component | Description |
+| --------- | ----------- |
+| Button    | The context provider for the Button parts |
+| ButtonIcon  | The icon/spinner of the button |
 
 <CodePreview preview={<CustomButtonPreview />}>
 ```tsx title="button.tsx"
 import { Button } from '@cerberus/react'
 import { css } from '@cerberus/styled-system/css'
 
-function CustomButton() {
+function CustomButtonPreview() {
   return (
     <Button
       className={css({
-        bgColor: 'yellow.800',
-        color: 'black',
+        bgColor: 'danger.bg.initial',
+        color: 'danger.text.initial',
+        rounded: 'md',
+        transform: 'skew(-10deg)',
         _hover: {
-          bgColor: 'yellow.500',
+          bgColor: 'black',
+          color: 'yellow',
         },
       })}
     >
-      Wu-Tang Forever
+      Cerberus Forever
     </Button>
   )
 }
@@ -73,33 +130,22 @@ function CustomButton() {
 
 ## API
 
-```ts showLineNumbers=false
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  palette?: 'action' | 'secondaryAction' | 'danger'
-  usage?: 'filled' | 'outlined' | 'ghost'
-  shape?: 'sharp' | 'rounded'
-  pending?: boolean
-}
-
-define function Button(props: ButtonProps): ReactNode
-````
-
 ### Props
 
-The `Button` component accepts the following props:
+The `Button` component is an abstraction of the primitives and accepts the following props:
 
 | Name     | Default | Description                            |
 | -------- | ------- | -------------------------------------- |
-| palette     | `action`   | The color palette of the button. |
+| palette     | `action`   | The color palette (any of the Cerberus palettes) of the button. |
 | usage | `filled`    | The style treatment of the button.    |
 | shape | `sharp`     | The shape of the button.              |
 | pending | `false`    | The loading state of the button. When a button has an `Icon` it will replace it with a spinner. When not, is shows a disabled state.     |
 
-### ButtonParts
+### Parts
 
-The `ButtonParts` API is the family of components.
+The `ButtonParts` API is an Object containing the full family of components.
 
-<NoteAdmonition description="It is best to only use the ButtonParts if you are using Icons within the Button. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+<NoteAdmonition description="It is best to only use the ButtonParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
 | Name     | Description                            |
 | -------- | -------------------------------------- |

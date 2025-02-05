@@ -139,6 +139,7 @@ describe('button recipe', () => {
       h: '2rem',
       marginBlock: '0.375rem', // add a11y target size
       pxi: '3',
+      textStyle: 'button-sm',
       md: {
         marginBlock: 'initial',
       },
@@ -148,6 +149,7 @@ describe('button recipe', () => {
   test('should have a medium size variant', () => {
     expect(button.variants?.size.md).toMatchObject({
       h: '2.75rem',
+      textStyle: 'button-md',
     })
   })
 
