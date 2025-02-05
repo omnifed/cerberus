@@ -1749,7 +1749,105 @@
         "name": "button/md",
         "styleType": "TEXT",
         "remote": false,
-        "description": "buttons only\n"
+        "description": "Default size for buttons across the platform"
+      }
+    }
+  },
+  "17675:4": {
+    "document": {
+      "id": "17675:4",
+      "name": "button small",
+      "type": "TEXT",
+      "scrollBehavior": "SCROLLS",
+      "boundVariables": {
+        "fills": [
+          {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:6554:4910"
+          }
+        ],
+        "fontFamily": [
+          {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:6957:22852"
+          }
+        ]
+      },
+      "blendMode": "PASS_THROUGH",
+      "fills": [
+        {
+          "blendMode": "NORMAL",
+          "type": "SOLID",
+          "color": {
+            "r": 0.07450980693101883,
+            "g": 0,
+            "b": 0.1411764770746231,
+            "a": 1
+          },
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6554:4910"
+            }
+          }
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "strokeAlign": "OUTSIDE",
+      "absoluteBoundingBox": {
+        "x": -4155,
+        "y": 1096,
+        "width": 92,
+        "height": 14
+      },
+      "absoluteRenderBounds": {
+        "x": -4153.9501953125,
+        "y": 1097.6400146484375,
+        "width": 88.99560546875,
+        "height": 10.4859619140625
+      },
+      "constraints": {
+        "vertical": "TOP",
+        "horizontal": "LEFT"
+      },
+      "characters": "button small",
+      "style": {
+        "fontFamily": "Poppins",
+        "fontPostScriptName": "Poppins-Medium",
+        "fontStyle": "Medium",
+        "fontWeight": 500,
+        "textAutoResize": "WIDTH_AND_HEIGHT",
+        "fontSize": 14,
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP",
+        "letterSpacing": 0.14,
+        "lineHeightPx": 14,
+        "lineHeightPercent": 66.66666412353516,
+        "lineHeightPercentFontSize": 100,
+        "lineHeightUnit": "FONT_SIZE_%"
+      },
+      "layoutVersion": 4,
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "styles": {
+        "text": "17441:2180"
+      },
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
+      "effects": [],
+      "interactions": []
+    },
+    "components": {},
+    "componentSets": {},
+    "schemaVersion": 0,
+    "styles": {
+      "17441:2180": {
+        "key": "2c00df5ae6f8f6e6636a273e34d6dd3cccaec9c1",
+        "name": "button/sm",
+        "styleType": "TEXT",
+        "remote": false,
+        "description": "Used for small buttons, or other use cases where information density is important for actions. "
       }
     }
   },
@@ -2256,104 +2354,6 @@
         "styleType": "TEXT",
         "remote": false,
         "description": "Reserved for numbers and data visualization"
-      }
-    }
-  },
-  "17675:4": {
-    "document": {
-      "id": "17675:4",
-      "name": "button small",
-      "type": "TEXT",
-      "scrollBehavior": "SCROLLS",
-      "boundVariables": {
-        "fills": [
-          {
-            "type": "VARIABLE_ALIAS",
-            "id": "VariableID:6554:4910"
-          }
-        ],
-        "fontFamily": [
-          {
-            "type": "VARIABLE_ALIAS",
-            "id": "VariableID:6957:22852"
-          }
-        ]
-      },
-      "blendMode": "PASS_THROUGH",
-      "fills": [
-        {
-          "blendMode": "NORMAL",
-          "type": "SOLID",
-          "color": {
-            "r": 0.07450980693101883,
-            "g": 0,
-            "b": 0.1411764770746231,
-            "a": 1
-          },
-          "boundVariables": {
-            "color": {
-              "type": "VARIABLE_ALIAS",
-              "id": "VariableID:6554:4910"
-            }
-          }
-        }
-      ],
-      "strokes": [],
-      "strokeWeight": 1,
-      "strokeAlign": "OUTSIDE",
-      "absoluteBoundingBox": {
-        "x": -4155,
-        "y": 1096,
-        "width": 92,
-        "height": 14
-      },
-      "absoluteRenderBounds": {
-        "x": -4153.9501953125,
-        "y": 1097.6400146484375,
-        "width": 88.99560546875,
-        "height": 10.4859619140625
-      },
-      "constraints": {
-        "vertical": "TOP",
-        "horizontal": "LEFT"
-      },
-      "characters": "button small",
-      "style": {
-        "fontFamily": "Poppins",
-        "fontPostScriptName": "Poppins-Medium",
-        "fontStyle": "Medium",
-        "fontWeight": 500,
-        "textAutoResize": "WIDTH_AND_HEIGHT",
-        "fontSize": 14,
-        "textAlignHorizontal": "LEFT",
-        "textAlignVertical": "TOP",
-        "letterSpacing": 0.14,
-        "lineHeightPx": 14,
-        "lineHeightPercent": 66.66666412353516,
-        "lineHeightPercentFontSize": 100,
-        "lineHeightUnit": "FONT_SIZE_%"
-      },
-      "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
-      "styles": {
-        "text": "17441:2180"
-      },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
-      "effects": [],
-      "interactions": []
-    },
-    "components": {},
-    "componentSets": {},
-    "schemaVersion": 0,
-    "styles": {
-      "17441:2180": {
-        "key": "2c00df5ae6f8f6e6636a273e34d6dd3cccaec9c1",
-        "name": "button/sm",
-        "styleType": "TEXT",
-        "remote": false,
-        "description": ""
       }
     }
   }

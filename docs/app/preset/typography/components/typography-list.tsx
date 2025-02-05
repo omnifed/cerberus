@@ -1,9 +1,9 @@
 'use client'
 
 import { css } from '@cerberus/styled-system/css'
+import { textStyles } from '@cerberus-design/panda-preset'
 import { useMemo, useState, type ChangeEvent } from 'react'
 import { TypographyBlock } from './typography-block'
-import { textStyles } from '@cerberus-design/panda-preset'
 
 export default function TypographyList() {
   const [temporaryText, setTemporaryText] = useState<string>('')
