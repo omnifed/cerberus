@@ -7,24 +7,24 @@ import {
   useMemo,
   useState,
   type MouseEvent,
-  type MouseEventHandler,
   type PropsWithChildren,
   type ReactNode,
 } from 'react'
-import { Button } from '../components/button/button'
-import { Show } from '../components/Show'
-import { Avatar } from '../components/Avatar'
-import { useCerberusContext } from './cerberus'
-import { HStack } from '@cerberus/styled-system/jsx'
+import { HStack, VStack } from '@cerberus/styled-system/jsx'
 import { css } from '@cerberus/styled-system/css'
-import { VStack } from '@cerberus/styled-system/jsx'
+import { useCerberusContext } from '../../context/cerberus'
+import { Button } from '../button/button'
+import { Show } from '../Show'
+import { For } from '../for'
+import { Avatar } from '../Avatar'
 import {
   Dialog,
   DialogDescription,
   DialogHeading,
   DialogProvider,
-} from '../components/Dialog'
-import { DialogCloseIconTrigger } from '../components/Dialog.client'
+} from '../Dialog'
+import { DialogCloseIconTrigger } from '../Dialog.client'
+import type { CTAButtonAction, CTAModalActionReturn } from './utils'
 
 /**
  * This module provides a context and hook for the cta modal.
@@ -45,12 +45,9 @@ export interface ShowCTAModalOptions {
    */
   icon?: ReactNode
   /**
-   * The actions for the cta modal. Max of 2 actions.
+   * The actions for the cta modal. Requires 2 actions.
    */
-  actions: {
-    text: string
-    onClick: MouseEventHandler<HTMLButtonElement>
-  }[]
+  actions: CTAModalActionReturn
 }
 
 export interface CTAModalValue {
@@ -103,12 +100,6 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
 
   const handleShow = useCallback(
     (options: ShowCTAModalOptions) => {
-      const maxActions = 2
-      if (options.actions.length > maxActions) {
-        throw new Error(
-          `CTA Modal only supports a maximum of ${maxActions} actions.`,
-        )
-      }
       setContent({ ...options })
       setOpen(true)
     },
@@ -118,9 +109,11 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
   const handleActionClick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       const index = event.currentTarget.getAttribute('data-index')
-      const action = content?.actions[Number(index)]
-      const { onClick } = action || {}
-      onClick?.(event)
+      const actions = content?.actions ?? []
+      const action = actions[Number(index) as keyof typeof actions]
+
+      console.log('action', action)
+      // action?.handleClick?.(event)
       setOpen(false)
     },
     [content, setOpen],
@@ -163,22 +156,27 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
             </VStack>
 
             <HStack gap="md" w="full">
-              <Show when={Boolean(content?.actions?.length)}>
-                {content?.actions?.map((action, index) => (
-                  <Button
-                    data-index={index}
-                    className={css({
-                      w: '1/2',
-                    })}
+              <For each={content?.actions._actions}>
+                {(action, index) => (
+                  <Show
                     key={index}
-                    onClick={handleActionClick}
-                    shape="rounded"
-                    usage="outlined"
+                    when={content?.actions?.type === 'btnAction'}
+                    fallback={<>{action as ReactNode}</>}
                   >
-                    {action.text}
-                  </Button>
-                ))}
-              </Show>
+                    <Button
+                      data-index={index}
+                      className={css({
+                        w: '1/2',
+                      })}
+                      onClick={handleActionClick}
+                      shape="rounded"
+                      usage="outlined"
+                    >
+                      {(action as CTAButtonAction)?.text}
+                    </Button>
+                  </Show>
+                )}
+              </For>
             </HStack>
           </VStack>
         </Dialog>

@@ -6,7 +6,12 @@ import {
   renderHook,
   waitFor,
 } from '@testing-library/react'
-import { CTAModal, useCTAModal, CerberusProvider } from '@cerberus-design/react'
+import {
+  CTAModal,
+  useCTAModal,
+  CerberusProvider,
+  createCTAModalActions,
+} from '@cerberus-design/react'
 import { makeConfig, setupStrictMode } from '@/utils'
 import userEvent from '@testing-library/user-event'
 
@@ -18,6 +23,32 @@ describe('CTAModal & useCTAModal', () => {
   const action1 = jest.fn()
   const action2 = jest.fn()
 
+  function TestFeatUsingLinks() {
+    const cta = useCTAModal()
+
+    function handleMakeChoice() {
+      cta.show({
+        heading: 'Copy or create a Cohort',
+        description: 'Create a new cohort or copy an existing one.',
+        icon: <span role="img" aria-label="custom-icon" />,
+        actions: createCTAModalActions([
+          <a key="cta:link:new" href="#">
+            Create new
+          </a>,
+          <a key="cta:link:exist" href="#">
+            Copy existing
+          </a>,
+        ]),
+      })
+    }
+
+    return (
+      <div>
+        <button onClick={handleMakeChoice}>make choice</button>
+      </div>
+    )
+  }
+
   function TestFeature() {
     const cta = useCTAModal()
 
@@ -26,16 +57,16 @@ describe('CTAModal & useCTAModal', () => {
         heading: 'Copy or create a Cohort',
         description: 'Create a new cohort or copy an existing one.',
         icon: <span role="img" aria-label="custom-icon" />,
-        actions: [
+        actions: createCTAModalActions([
           {
             text: 'Create new',
-            onClick: action1,
+            handleClick: action1,
           },
           {
             text: 'Copy existing',
-            onClick: action2,
+            handleClick: action2,
           },
-        ],
+        ]),
       })
     }
 
@@ -116,6 +147,31 @@ describe('CTAModal & useCTAModal', () => {
     spyOn(console, 'error').mockImplementation(() => null)
     expect(() => renderHook(() => useCTAModal())).toThrow(
       'useCTAModal must be used within a CTAModal Provider',
+    )
+  })
+
+  test('should render links as actions', async () => {
+    render(
+      <CerberusProvider config={config}>
+        <CTAModal>
+          <TestFeatUsingLinks />
+        </CTAModal>
+      </CerberusProvider>,
+    )
+    await userEvent.click(screen.getByRole('button', { name: /make choice/i }))
+    await waitFor(() =>
+      expect(screen.getByText(/Copy or create a Cohort/i)).toBeTruthy(),
+    )
+    await waitFor(() =>
+      expect(
+        screen.getByText(/Create a new cohort or copy an existing one./i),
+      ).toBeTruthy(),
+    )
+    await waitFor(() =>
+      expect(screen.getByRole('link', { name: /create new/i })),
+    )
+    await waitFor(() =>
+      expect(screen.getByRole('link', { name: /copy existing/i })),
     )
   })
 })
