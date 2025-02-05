@@ -12,7 +12,7 @@
   {
     "label": "Customizing",
     "route": "/preset/customizing",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
@@ -46,7 +46,7 @@
   {
     "label": "Typography",
     "route": "/preset/typography",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
