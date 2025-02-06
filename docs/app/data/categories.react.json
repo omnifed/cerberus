@@ -34,7 +34,7 @@
       "Dialog",
       "Table"
     ],
-    "next": [],
+    "next": ["CTA Modal"],
     "new": [],
     "deprecated": ["Modal"]
   },

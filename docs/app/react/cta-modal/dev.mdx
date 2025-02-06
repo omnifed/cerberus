@@ -1,46 +1,48 @@
 ---
 npm: '@cerberus-design/react'
-source: 'context/cta-modal.tsx'
-recipe: ''
+source: 'components/cta-dialog'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
 import {
-  NoteAdmonition,
-} from '@/app/components/Admonition'
-import {
-  OverviewPreview
+  OverviewPreview,
+  WithLinksDemo,
 } from '@/app/react/cta-modal/components/cta-modal-preview'
 
 ```ts
-import { CTAModal, useCTAModal } from '@cerberus/react'
+import { CTAModal, useCTAModal, createCTAModalActions } from '@cerberus/react'
 ```
 
 ## Usage
 
+To use the CTAModal, wrap your component with the `CTAModal` provider and use the `useCTAModal` hook to access the `show` method.
+
+To create your actions, use the `createCTAModalActions` function.
+
 <CodePreview preview={<OverviewPreview />}>
-```tsx title="some-feature.tsx"
+```tsx title="action-dialog.tsx"
 'use client'
 
-import { useConfirmModal } from '@cerberus/react'
+import { Button, useCTAModal, createCTAModalActions } from '@cerberus/react'
+import { HStack } from '@cerberus/styled-system/jsx'
 
-export function SomeFeature() {
+function CTAFeature() {
   const { show } = useCTAModal()
 
   const handleClick = useCallback(() => {
     show({
       heading: 'Copy or create a Cohort',
       description: 'Create a new cohort or copy an existing one.',
-      actions: [
+      actions: createCTAModalActions([
         {
           text: 'Create new',
-          onClick: () => alert('Create new'),
+          handleClick: () => alert('Create new'),
         },
         {
           text: 'Copy existing',
-          onClick: () => alert('Copy existing'),
+          handleClick: () => alert('Copy existing'),
         },
-      ],
+      ]),
     })
   }, [show])
 
@@ -53,13 +55,63 @@ export function SomeFeature() {
 ```
 ```tsx title="page.tsx"
 import { CTAModal } from '@cerberus/react'
-import { SomeFeature } from './some-feature'
+import { CTAFeature } from './action-dialog'
 
 function SomePage() {
   return(
-    <ConfirmModal>
-      <SomeFeature />
-    </ConfirmModal>
+    <CTAModal>
+      <CTAFeature />
+    </CTAModal>
+  )
+}
+```
+</CodePreview>
+
+## With Links
+
+To use links instead of buttons, pass your link components to the `createCTAModalActions` function.
+
+<CodePreview preview={<WithLinksDemo />}>
+```tsx title="link-dialog.tsx"
+'use client'
+import { Button, useCTAModal, createCTAModalActions } from '@cerberus/react'
+import { HStack } from '@cerberus/styled-system/jsx'
+import Link from 'next/link'
+
+function CTALinkFeature() {
+  const { show } = useCTAModal()
+
+  const handleLinkClick = useCallback(() => {
+    show({
+      heading: 'Copy or create a Cohort',
+      description: 'Create a new cohort or copy an existing one.',
+      actions: createCTAModalActions([
+        <Link key="cta:link:btn" href="/react/button">
+          See Button Docs
+        </Link>,
+        <Link key="cta:link:docs" href="/react/dialog">
+          See Dialog Docs
+        </Link>,
+      ]),
+    })
+  }, [show])
+
+  return (
+    <HStack gap="4">
+      <Button onClick={handleLinkClick}>Update Cohorts</Button>
+    </HStack>
+  )
+}
+```
+```tsx title="page.tsx"
+import { CTAModal } from '@cerberus/react'
+import { CTALinkFeature } from './link-dialog'
+
+function SomePage() {
+  return(
+    <CTAModal>
+      <CTALinkFeature />
+    </CTAModal>
   )
 }
 ```
@@ -67,27 +119,11 @@ function SomePage() {
 
 ## Customization
 
-The CTAModal is an abstraction of the [Modal family](./modal). You can customize the modal by using the `Modal` component directly.
+The CTAModal is an abstraction of the [Dialog primitives](./dialog) and does not provide any additional customization. To build your own CTAModal, use the `Dialog` components.
 
 ## API
 
-```ts showLineNumbers=false
-export interface ShowCTAModalOptions {
-  heading: string
-  description?: string
-  icon?: ReactNode
-  actions: {
-    text: string
-    onClick: Required<ButtonHTMLAttributes<HTMLButtonElement>['onClick']>
-  }[]
-}
-
-export interface CTAModalProviderValue {
-  show: (options: ShowCTAModalOptions) => void
-}
-
-define function CTAModal(props: PropsWithChildren<{}>): ReactNode
-````
+The `CTAModal` component is an abstraction of the Dialog primitives and does not accept any props.
 
 ### Show Method Options
 
@@ -98,4 +134,19 @@ The `show` method accepts the following options:
 | heading | `''` | The heading of the modal. |
 | description | `''` | The description of the modal. |
 | icon | `undefined` | The icon to display in the modal. |
-| actions | `[]` | The actions to display in the modal. Max of 2 allowed. |
+| actions | `[]` | The actions to display in the modal. **Requires the use of `createCTAModalActions` utility.** |
+
+### Utilities
+
+The `createCTAModalActions` utility accepts an array of objects with the following properties or ReactNodes:
+
+## Action
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| text | `''` | The text of the action. |
+| handleClick | `undefined` | The click handler of the action. |
+
+## Link
+
+Pass your Array of link components to the `createCTAModalActions` function.

@@ -8,6 +8,7 @@ import {
 import { HStack } from '@cerberus-design/styled-system/jsx'
 import { useCallback } from 'react'
 import Link from 'next/link'
+import { ArrowRight } from '@carbon/icons-react'
 
 export function CTAFeature() {
   const { show } = useCTAModal()
@@ -46,9 +47,11 @@ export function CTALinkFeature() {
       actions: createCTAModalActions([
         <Link key="cta:link:btn" href="/react/button">
           See Button Docs
+          <ArrowRight />
         </Link>,
         <Link key="cta:link:docs" href="/react/dialog">
           See Dialog Docs
+          <ArrowRight />
         </Link>,
       ]),
     })
