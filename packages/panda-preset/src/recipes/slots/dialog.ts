@@ -67,6 +67,9 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
       position: 'relative',
       rounded: 'md',
       shadow: 'lg',
+      _focusVisible: {
+        outline: 'none',
+      },
       _open: {
         animationStyle: 'emphasized-slide-in',
       },

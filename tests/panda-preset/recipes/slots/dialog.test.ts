@@ -59,6 +59,9 @@ describe('dialog recipe', () => {
         position: 'relative',
         rounded: 'md',
         shadow: 'lg',
+        _focusVisible: {
+          outline: 'none',
+        },
         _open: {
           animationStyle: 'emphasized-slide-in',
         },

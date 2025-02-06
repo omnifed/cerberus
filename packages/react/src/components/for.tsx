@@ -1,18 +1,18 @@
-import type { ReactNode } from 'react'
+import type { ReactNode, JSX } from 'react'
 
-export interface ForProps<T> {
+export interface ForProps<T extends readonly unknown[], U extends JSX.Element> {
   /**
-   * The array to iterate over
+   * The array to iterate over.
    */
-  each: T[]
+  each: T | undefined | null | false
   /**
-   * The fallback content to render when the array is empty
+   * The fallback to render when the array is empty.
    */
-  fallback?: ReactNode
+  fallback?: JSX.Element
   /**
-   * The render function to render each item in the array
+   * The children to render for each item in the array.
    */
-  children: (item: Exclude<T, undefined>, index: number) => ReactNode
+  children: (item: T[number], index: number) => U
 }
 
 /**
@@ -27,17 +27,12 @@ export interface ForProps<T> {
  * </For>
  * ```
  */
-export function For<
-  T extends string | number | Record<string, unknown> | object | undefined,
->(props: ForProps<T>) {
-  const mappableChildren = props.children as unknown as (
-    item: T,
-    index: number,
-  ) => ReactNode
-
-  if (props.each?.length === 0) {
+export function For<T extends readonly unknown[], U extends JSX.Element>(
+  props: ForProps<T, U>,
+) {
+  if (!props.each || !props.each.length) {
     return props.fallback || null
   }
 
-  return props.each?.map(mappableChildren) as ReactNode
+  return props.each?.map(props.children) as ReactNode
 }

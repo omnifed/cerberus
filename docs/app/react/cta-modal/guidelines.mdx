@@ -3,17 +3,29 @@
 
 import CodePreview from '@/app/components/CodePreview'
 import DripDivider from '@/app/components/drip-divider'
+import OverviewList from '@/app/components/OverviewList'
 import {
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
+  NoteAdmonition,
 } from '@/app/components/Admonition'
 import {
-  OverviewPreview
+  OverviewPreview,
+  WithLinksDemo,
 } from '@/app/react/cta-modal/components/cta-modal-preview'
 
-<WhenToUseAdmonition description="When you need the user to see actions that needs to have attention drawn to it." />
+<OverviewList rules={[
+  'External links should display an "External Link" icon',
+  'Internal links should display an "Arrow Right" icon',
+]} />
+
+## Action Example
 
 <CodePreview preview={<OverviewPreview />} />
+
+## Links Example
+
+<NoteAdmonition description="If you are using Carbon Icons, we recommend the 'Launch' icon for external." />
+
+<CodePreview preview={<WithLinksDemo />} />
 
 <DripDivider />
 

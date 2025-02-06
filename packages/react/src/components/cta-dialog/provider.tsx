@@ -1,65 +1,38 @@
 'use client'
 
 import {
-  createContext,
   useCallback,
   useContext,
   useMemo,
   useState,
   type MouseEvent,
-  type MouseEventHandler,
   type PropsWithChildren,
   type ReactNode,
 } from 'react'
-import { Button } from '../components/button/button'
-import { Show } from '../components/Show'
-import { Avatar } from '../components/Avatar'
-import { useCerberusContext } from './cerberus'
-import { HStack } from '@cerberus/styled-system/jsx'
-import { css } from '@cerberus/styled-system/css'
-import { VStack } from '@cerberus/styled-system/jsx'
+import { HStack, VStack } from '@cerberus/styled-system/jsx'
+import { useCerberusContext } from '../../context/cerberus'
+import { Show } from '../Show'
+import { For } from '../for'
+import { Avatar } from '../Avatar'
 import {
   Dialog,
   DialogDescription,
   DialogHeading,
   DialogProvider,
-} from '../components/Dialog'
-import { DialogCloseIconTrigger } from '../components/Dialog.client'
+} from '../Dialog'
+import { DialogCloseIconTrigger } from '../Dialog.client'
+import type { CTAButtonAction, CTAModalActionReturn } from './utils'
+import {
+  CTAModalContext,
+  type CTAModalValue,
+  type ShowCTAModalOptions,
+} from './context'
+import { TriggerItem } from './trigger-item'
 
 /**
- * This module provides a context and hook for the cta modal.
- * @module
+ * This module provides the provider and hook for the cta modal.
+ * @module 'react/cta-modal/provider'
  */
-
-export interface ShowCTAModalOptions {
-  /**
-   * The heading of the cta modal.
-   */
-  heading: string
-  /**
-   * The description of the cta modal.
-   */
-  description?: string
-  /**
-   * The icon used for the modal Avatar.
-   */
-  icon?: ReactNode
-  /**
-   * The actions for the cta modal. Max of 2 actions.
-   */
-  actions: {
-    text: string
-    onClick: MouseEventHandler<HTMLButtonElement>
-  }[]
-}
-
-export interface CTAModalValue {
-  show: (options: ShowCTAModalOptions) => void
-}
-
-const CTAModalContext = createContext<CTAModalValue | null>(null)
-
-export type CTAModalProviderProps = PropsWithChildren<unknown>
 
 /**
  * Provides a CTA modal to the app.
@@ -93,7 +66,7 @@ export type CTAModalProviderProps = PropsWithChildren<unknown>
  * }, [cta])
  * ```
  */
-export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
+export function CTAModal(props: PropsWithChildren<object>) {
   const [open, setOpen] = useState<boolean>(false)
   const [content, setContent] = useState<ShowCTAModalOptions | null>(null)
   const confirmIcon = content?.icon
@@ -103,12 +76,6 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
 
   const handleShow = useCallback(
     (options: ShowCTAModalOptions) => {
-      const maxActions = 2
-      if (options.actions.length > maxActions) {
-        throw new Error(
-          `CTA Modal only supports a maximum of ${maxActions} actions.`,
-        )
-      }
       setContent({ ...options })
       setOpen(true)
     },
@@ -117,10 +84,10 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
 
   const handleActionClick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
-      const index = event.currentTarget.getAttribute('data-index')
-      const action = content?.actions[Number(index)]
-      const { onClick } = action || {}
-      onClick?.(event)
+      const index = Number(event.currentTarget.getAttribute('data-index'))
+      const contentActions = content?.actions as CTAModalActionReturn
+      const action = contentActions._actions[index] as CTAButtonAction
+      action?.handleClick?.(event)
       setOpen(false)
     },
     [content, setOpen],
@@ -163,22 +130,21 @@ export function CTAModal(props: PropsWithChildren<CTAModalProviderProps>) {
             </VStack>
 
             <HStack gap="md" w="full">
-              <Show when={Boolean(content?.actions?.length)}>
-                {content?.actions?.map((action, index) => (
-                  <Button
-                    data-index={index}
-                    className={css({
-                      w: '1/2',
-                    })}
+              <For each={content?.actions._actions}>
+                {(action, index) => (
+                  <Show
                     key={index}
-                    onClick={handleActionClick}
-                    shape="rounded"
-                    usage="outlined"
+                    when={content?.actions?.type === 'btnAction'}
+                    fallback={
+                      <TriggerItem asChild>{action as ReactNode}</TriggerItem>
+                    }
                   >
-                    {action.text}
-                  </Button>
-                ))}
-              </Show>
+                    <TriggerItem data-index={index} onClick={handleActionClick}>
+                      {(action as CTAButtonAction)?.text}
+                    </TriggerItem>
+                  </Show>
+                )}
+              </For>
             </HStack>
           </VStack>
         </Dialog>

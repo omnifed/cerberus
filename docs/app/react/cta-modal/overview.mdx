@@ -8,12 +8,13 @@ import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import DripDivider from '@/app/components/drip-divider'
 import {
-  OverviewPreview
+  OverviewPreview,
+  WithLinksDemo,
 } from '@/app/react/cta-modal/components/cta-modal-preview'
 
 <OverviewList rules={[
   'Use CTA modals to make sure users act on information',
-  'Maxium of 2 actions',
+  'Maximum of 2 actions',
   'Should be dedicated to completing a task',
   'Commonly used as an alternative to the Action Menu',
 ]} />
@@ -21,6 +22,10 @@ import {
 ## Example
 
 <CodePreview preview={<OverviewPreview />} />
+
+## With links for actions
+
+<CodePreview preview={<WithLinksDemo />} />
 
 <DripDivider />
 
