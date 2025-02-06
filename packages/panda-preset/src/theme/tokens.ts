@@ -31,6 +31,36 @@ const fonts = {
   },
 }
 
+const shadows = {
+  sm: {
+    value: {
+      offsetX: 0,
+      offsetY: 2,
+      blur: 16,
+      spread: 0,
+      color: 'rgba(22, 1, 38, 0.1)',
+    },
+  },
+  md: {
+    value: {
+      offsetX: 0,
+      offsetY: 0,
+      blur: 20,
+      spread: 4,
+      color: 'rgba(22, 1, 38, 0.1)',
+    },
+  },
+  lg: {
+    value: {
+      offsetX: 0,
+      offsetY: 0,
+      blur: 20,
+      spread: 8,
+      color: 'rgba(22, 1, 38, 0.1)',
+    },
+  },
+}
+
 const zIndex = {
   hide: {
     description: 'Used for when you need to hide elements in the layer stack',
@@ -88,5 +118,6 @@ export const tokens = {
   fonts,
   gradients,
   spacing,
+  shadows,
   zIndex,
 }
