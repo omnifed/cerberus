@@ -15,8 +15,8 @@ export type CheckboxProps = CheckboxVariantProps & CheckboxRootProps
 /**
  * Checkbox component is an abstraction of the primitives that displays a
  * controlled checkbox with a label.
- * @description [Cerberus Docs] https://cerberus.digitalu.design/react/checkbox
- * @description [Ark Docs] https://ark-ui.com/docs/components/checkbox
+ * @description [Cerberus Docs](https://cerberus.digitalu.design/react/checkbox)
+ * @description [Ark Docs](https://ark-ui.com/docs/components/checkbox)
  */
 export function Checkbox(props: CheckboxProps) {
   const { size, children, ...rootProps } = props
