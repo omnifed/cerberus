@@ -18,6 +18,22 @@ describe('tokens', () => {
     expect(tokens.fonts.mono).toBeDefined()
   })
 
+  test('should have a shadows key', () => {
+    expect(tokens.shadows).toBeDefined()
+  })
+
+  test('should have a shadows.sm key', () => {
+    expect(tokens.shadows.sm).toBeDefined()
+  })
+
+  test('should have a shadows.md key', () => {
+    expect(tokens.shadows.md).toBeDefined()
+  })
+
+  test('should have a shadows.lg key', () => {
+    expect(tokens.shadows.lg).toBeDefined()
+  })
+
   test('should have a zIndex key', () => {
     expect(tokens.zIndex).toBeDefined()
   })

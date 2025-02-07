@@ -4,22 +4,23 @@ import { resolve } from 'node:path'
 import FigmaApi from './figma-api'
 import { green } from './utils'
 import { tokenFilesFromLocalVariables } from './token-export'
-import { textStyleNodes } from './text-styles'
+import { textStyleNodes } from './nodes/text-styles'
 
 async function main() {
   if (!process.env.FIGMA_ACCESS_TOKEN) {
     throw new Error('FIGMA_ACCESS_TOKEN env variables are required')
   }
 
+  // Create Figma API client
   const api = new FigmaApi(process.env.FIGMA_ACCESS_TOKEN)
-  // const localVariables = await api.getLocalVariables()
-  // const textStyles = await api.getTextStyles(textStyleNodes)
 
+  // Fetch all the Figma data
   const [localVariables, textStyles] = await Promise.all([
     api.getLocalVariables(),
     api.getTextStyles(textStyleNodes),
   ])
 
+  // Get the path to the tokens directory
   const tokenDirPath = resolve(
     import.meta.dir,
     '..', // variables
@@ -42,6 +43,10 @@ async function main() {
     console.log(`Wrote ${fileName}`)
   })
 
+  console.log(
+    green(`✅ Tokens files have been written to the ${tokenDirPath} directory`),
+  )
+
   // Write text styles file
   await write(
     resolve(tokenDirPath, 'text-styles.json'),
@@ -49,7 +54,9 @@ async function main() {
   )
 
   console.log(
-    green(`✅ Tokens files have been written to the ${tokenDirPath} directory`),
+    green(
+      `✅ Text style files have been written to the ${tokenDirPath} directory`,
+    ),
   )
 }
 

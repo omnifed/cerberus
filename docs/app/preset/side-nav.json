@@ -44,6 +44,12 @@
     "type": "route"
   },
   {
+    "label": "Shadows",
+    "route": "/preset/shadows",
+    "tag": "next",
+    "type": "route"
+  },
+  {
     "label": "Typography",
     "route": "/preset/typography",
     "tag": "new",
