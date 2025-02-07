@@ -49,7 +49,7 @@ describe('ratingGroup recipe', () => {
         _highlighted: {
           color: 'colorPalette.bg.hover',
         },
-        _readOnly: {
+        _dataReadOnly: {
           cursor: 'default',
         },
       },
