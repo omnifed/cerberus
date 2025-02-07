@@ -2,7 +2,11 @@
 
 import { Box } from '@cerberus-design/styled-system/jsx'
 import { css } from '@cerberus-design/styled-system/css'
-import { Rating, RatingParts } from '@cerberus-design/react'
+import {
+  Rating,
+  RatingParts,
+  type UseRatingGroupContext,
+} from '@cerberus-design/react'
 import { Star, StarFilled, StarHalf } from '@carbon/icons-react'
 
 export function BasicDemo() {
@@ -88,6 +92,7 @@ export function CustomDemo() {
               ))
             }
           </RatingParts.Context>
+          <RatingParts.HiddenInput />
         </RatingParts.Control>
       </RatingParts.Root>
     </Box>

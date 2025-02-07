@@ -2,10 +2,11 @@ import type {
   RatingGroupRootProps,
   UseRatingGroupContext,
 } from '@ark-ui/react/rating-group'
+import type { RatingGroupVariantProps } from '@cerberus/styled-system/recipes'
+import type { ReactNode } from 'react'
 import { splitProps } from '../../utils/index'
 import { Show } from '../Show'
 import { RatingParts } from './parts'
-import type { RatingGroupVariantProps } from '@cerberus/styled-system/recipes'
 
 /**
  * This module contains the abstracted Rating component.
@@ -13,12 +14,16 @@ import type { RatingGroupVariantProps } from '@cerberus/styled-system/recipes'
  */
 
 export interface RatingProps
-  extends RatingGroupRootProps,
+  extends Omit<RatingGroupRootProps, 'children'>,
     RatingGroupVariantProps {
   /**
    * The label of the rating component.
    */
   label?: string
+  /**
+   * The children of the rating component.
+   */
+  children: (context: UseRatingGroupContext) => ReactNode
 }
 
 /**

@@ -124,7 +124,7 @@ You can utilize the primitive components to customize the radio.
 
 <CodePreview preview={<CustomDemo />}>
 ```tsx title="custom-radio.tsx"
-import { RatingParts } from '@cerberus/react'
+import { RatingParts, type UseRatingGroupContext } from '@cerberus/react'
 import { Box } from '@cerberus/styled-system/jsx'
 import { css } from '@cerberus/styled-system/css'
 
@@ -168,6 +168,7 @@ function CustomDemo() {
               ))
             }
           </RatingParts.Context>
+          <RatingParts.HiddenInput />
         </RatingParts.Control>
       </RatingParts.Root>
     </Box>
