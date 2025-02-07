@@ -6,6 +6,7 @@ import { useCodeBuilder } from '@/app/context/code-builder'
 import { HStack } from '@cerberus-design/styled-system/jsx'
 import { Rating, splitProps } from '@cerberus-design/react'
 import { StarFilled, StarHalf } from '@carbon/icons-react'
+import type { PropsWithChildren } from 'react'
 
 const api = {
   palette: builder.Enum('palette', ['action', 'warning']),
@@ -106,7 +107,7 @@ export function RatingPreview() {
   )
 }
 
-function LivePlaygroundBox(props: PropsWithChildren<object>) {
+function LivePlaygroundBox(props: PropsWithChildren<unknown>) {
   return (
     <HStack
       bgColor="page.bg.initial"

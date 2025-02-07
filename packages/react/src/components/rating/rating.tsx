@@ -1,6 +1,7 @@
 import type {
   RatingGroupRootProps,
   UseRatingGroupContext,
+  UseRatingGroupItemContext,
 } from '@ark-ui/react/rating-group'
 import type { RatingGroupVariantProps } from '@cerberus/styled-system/recipes'
 import type { ReactNode } from 'react'
@@ -23,7 +24,7 @@ export interface RatingProps
   /**
    * The children of the rating component.
    */
-  children: (context: UseRatingGroupContext) => ReactNode
+  children: (context: UseRatingGroupItemContext) => ReactNode
 }
 
 /**
