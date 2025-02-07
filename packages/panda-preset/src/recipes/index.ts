@@ -21,6 +21,7 @@ import { menu } from './slots/menu'
 import { notification } from './slots/notification'
 import { progressBar } from './slots/progressBar'
 import { radioGroup } from './slots/radio'
+import { ratingGroup } from './slots/ratingGroup'
 import { select } from './slots/select'
 import { switchRecipe } from './slots/switch'
 import { table } from './slots/table'
@@ -67,6 +68,7 @@ export const slotRecipes = {
   notification,
   progressBar,
   radioGroup,
+  ratingGroup,
   select,
   switchRecipe,
   table,

@@ -7,13 +7,8 @@ import { Star, StarFilled, StarHalf } from '@carbon/icons-react'
 
 export function BasicDemo() {
   return (
-    <Box w="1/2">
-      <Rating count={5} defaultValue={3}>
-        {({ highlighted }) => {
-          if (highlighted) return <StarFilled />
-          return <Star />
-        }}
-      </Rating>
+    <Box>
+      <Rating defaultValue={3}>{() => <StarFilled size={24} />}</Rating>
     </Box>
   )
 }
@@ -21,11 +16,11 @@ export function BasicDemo() {
 export function ReadOnlyHalfDemo() {
   return (
     <Box w="1/2">
-      <Rating count={5} defaultValue={4.5} allowHalf readOnly>
+      <Rating defaultValue={4.5} allowHalf readOnly>
         {({ half, highlighted }) => {
-          if (half) return <StarHalf />
-          if (highlighted) return <StarFilled />
-          return <Star />
+          if (half) return <StarHalf size={24} />
+          if (highlighted) return <StarFilled size={24} />
+          return <Star size={24} />
         }}
       </Rating>
     </Box>

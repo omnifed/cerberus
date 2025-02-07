@@ -3,80 +3,119 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import { For, RadioGroup, Radio, splitProps } from '@cerberus-design/react'
+import { HStack } from '@cerberus-design/styled-system/jsx'
+import { Rating, splitProps } from '@cerberus-design/react'
+import { StarFilled, StarHalf } from '@carbon/icons-react'
 
 const api = {
-  orientation: builder.Enum('orientation', ['horizontal', 'vertical']),
+  palette: builder.Enum('palette', ['action', 'warning']),
+  orientation: builder.Enum('orientation', ['vertical', 'horizontal']),
   size: builder.Enum('size', ['sm', 'md']),
-  disabled: builder.Boolean('disabled', false),
-  invalid: builder.Boolean('invalid', false),
+  label: builder.Text('label', 'This is a rating label'),
+  allowHalf: builder.Boolean('allowHalf', false),
   readOnly: builder.Boolean('readOnly', false),
 }
 
 export function LivePlayground() {
   return (
     <CodeBuilder api={api}>
-      <RadioGroupPreview />
+      <RatingPreview />
     </CodeBuilder>
   )
 }
 
-export function RadioGroupPreview() {
+export function RatingPreview() {
   const { selectedProps } = useCodeBuilder()
-  const [radioGroupProps, formState] = splitProps(
+  const [ratingProps, rootProps] = splitProps(
     selectedProps,
-    ['size', 'orientation'],
-    ['disabled', 'invalid', 'readOnly', 'required'],
+    ['size', 'orientation', 'palette', 'size', 'label'],
+    ['readOnly', 'allowHalf'],
   )
-  const options = [
-    { value: 'cerberus', label: 'Cerberus' },
-    { value: 'hades', label: 'Hades' },
-    { value: 'zeus', label: 'Zeus' },
-  ]
 
-  if (radioGroupProps.orientation === 'horizontal') {
+  if (ratingProps.size === 'md') {
     return (
-      <RadioGroup
-        defaultValue="cerberus"
-        orientation="horizontal"
-        disabled={formState.disabled as boolean}
-        readOnly={formState.readOnly as boolean}
-      >
-        <For each={options}>
-          {(option) => (
-            <Radio
-              key={option.value}
-              invalid={formState.invalid as boolean}
-              size={radioGroupProps.size as 'sm' | 'md'}
-              value={option.value}
-            >
-              {option.label}
-            </Radio>
-          )}
-        </For>
-      </RadioGroup>
+      <LivePlaygroundBox>
+        <Rating
+          {...ratingProps}
+          defaultValue={4.5}
+          allowHalf={rootProps.allowHalf as boolean}
+          readOnly={rootProps.readOnly as boolean}
+          size="md"
+        >
+          {({ half }) => {
+            if (half) return <StarHalf size={24} />
+            return <StarFilled size={24} />
+          }}
+        </Rating>
+      </LivePlaygroundBox>
+    )
+  }
+
+  if (ratingProps.palette === 'warning') {
+    return (
+      <LivePlaygroundBox>
+        <Rating
+          {...ratingProps}
+          defaultValue={4.5}
+          allowHalf={rootProps.allowHalf as boolean}
+          readOnly={rootProps.readOnly as boolean}
+          palette="warning"
+        >
+          {({ half }) => {
+            if (half) return <StarHalf size={24} />
+            return <StarFilled size={24} />
+          }}
+        </Rating>
+      </LivePlaygroundBox>
+    )
+  }
+
+  if (ratingProps.orientation === 'horizontal') {
+    return (
+      <LivePlaygroundBox>
+        <Rating
+          {...ratingProps}
+          defaultValue={4.5}
+          allowHalf={rootProps.allowHalf as boolean}
+          readOnly={rootProps.readOnly as boolean}
+          orientation="horizontal"
+        >
+          {({ half }) => {
+            if (half) return <StarHalf size={24} />
+            return <StarFilled size={24} />
+          }}
+        </Rating>
+      </LivePlaygroundBox>
     )
   }
 
   return (
-    <RadioGroup
-      defaultValue="cerberus"
-      orientation="vertical"
-      disabled={formState.disabled as boolean}
-      readOnly={formState.readOnly as boolean}
+    <LivePlaygroundBox>
+      <Rating
+        {...ratingProps}
+        defaultValue={4.5}
+        allowHalf={rootProps.allowHalf as boolean}
+        readOnly={rootProps.readOnly as boolean}
+      >
+        {({ half }) => {
+          if (half) return <StarHalf size={24} />
+          return <StarFilled size={24} />
+        }}
+      </Rating>
+    </LivePlaygroundBox>
+  )
+}
+
+function LivePlaygroundBox(props: PropsWithChildren<object>) {
+  return (
+    <HStack
+      bgColor="page.bg.initial"
+      justify="center"
+      padding="4"
+      rounded="md"
+      w="full"
     >
-      <For each={options}>
-        {(option) => (
-          <Radio
-            key={option.value}
-            invalid={formState.invalid as boolean}
-            size={radioGroupProps.size as 'sm' | 'md'}
-            value={option.value}
-          >
-            {option.label}
-          </Radio>
-        )}
-      </For>
-    </RadioGroup>
+      {props.children}
+    </HStack>
   )
 }

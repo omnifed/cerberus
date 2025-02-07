@@ -2,15 +2,19 @@ import type {
   RatingGroupRootProps,
   UseRatingGroupContext,
 } from '@ark-ui/react/rating-group'
+import { splitProps } from '../../utils/index'
 import { Show } from '../Show'
 import { RatingParts } from './parts'
+import type { RatingGroupVariantProps } from '@cerberus/styled-system/recipes'
 
 /**
  * This module contains the abstracted Rating component.
  * @module 'react/rating'
  */
 
-export interface RatingProps extends RatingGroupRootProps {
+export interface RatingProps
+  extends RatingGroupRootProps,
+    RatingGroupVariantProps {
   /**
    * The label of the rating component.
    */
@@ -34,19 +38,29 @@ export interface RatingProps extends RatingGroupRootProps {
  * ```
  */
 export function Rating(props: RatingProps) {
+  const [{ label }, styleProps, rootProps] = splitProps(
+    props,
+    ['label'],
+    ['orientation', 'palette', 'size'],
+  )
+
   return (
-    <RatingParts.Root {...props}>
-      <Show when={Boolean(props.label)}>
-        <RatingParts.Label>{props.label}</RatingParts.Label>
+    <RatingParts.Root {...styleProps} {...rootProps}>
+      <Show when={Boolean(label)}>
+        <RatingParts.Label>{label}</RatingParts.Label>
       </Show>
 
       <RatingParts.Control>
         <RatingParts.Context>
           {(context: UseRatingGroupContext) =>
             context.items.map((item) => (
-              <RatingParts.Item key={item} index={item}>
+              <RatingParts.Item
+                key={item}
+                index={item}
+                palette={styleProps.palette}
+              >
                 <RatingParts.ItemContext>
-                  {props.children}
+                  {rootProps.children}
                 </RatingParts.ItemContext>
               </RatingParts.Item>
             ))

@@ -28,6 +28,7 @@ export default function BuilderSelect(props: BuilderSelectProps) {
     >
       <Select
         {...nativeProps}
+        defaultValue={collection.items[0].value}
         collection={collection}
         placeholder="Choose option"
       >

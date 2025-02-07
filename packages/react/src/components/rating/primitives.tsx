@@ -8,6 +8,11 @@ import {
   type RatingGroupLabelProps,
   type RatingGroupRootProps,
 } from '@ark-ui/react/rating-group'
+import { cx } from '@cerberus/styled-system/css'
+import {
+  ratingGroup,
+  type RatingGroupVariantProps,
+} from '@cerberus/styled-system/recipes'
 
 /**
  * This module contains the primitives of the Rating component.
@@ -17,22 +22,43 @@ import {
 /**
  * The root primitive of the Rating component.
  */
-export function RatingRoot(props: RatingGroupRootProps) {
-  return <RatingGroup.Root {...props} />
+export function RatingRoot(
+  props: RatingGroupRootProps & RatingGroupVariantProps,
+) {
+  const { orientation, size, ...rootProps } = props
+  const styles = ratingGroup({ orientation, size })
+  return (
+    <RatingGroup.Root
+      {...rootProps}
+      className={cx(styles.root, rootProps.className)}
+    />
+  )
 }
 
 /**
  * The label primitive of the Rating component.
  */
 export function RatingLabel(props: RatingGroupLabelProps) {
-  return <RatingGroup.Label {...props} />
+  const styles = ratingGroup()
+  return (
+    <RatingGroup.Label
+      {...props}
+      className={cx(styles.label, props.className)}
+    />
+  )
 }
 
 /**
  * The control primitive of the Rating component.
  */
 export function RatingControl(props: RatingGroupControlProps) {
-  return <RatingGroup.Control {...props} />
+  const styles = ratingGroup()
+  return (
+    <RatingGroup.Control
+      {...props}
+      className={cx(styles.control, props.className)}
+    />
+  )
 }
 
 /**
@@ -45,8 +71,17 @@ export function RatingContext(props: RatingGroupContextProps) {
 /**
  * The item primitive of the Rating component.
  */
-export function RatingItem(props: RatingGroupItemProps) {
-  return <RatingGroup.Item {...props} />
+export function RatingItem(
+  props: RatingGroupItemProps & RatingGroupVariantProps,
+) {
+  const { palette, ...itemProps } = props
+  const styles = ratingGroup({ palette })
+  return (
+    <RatingGroup.Item
+      {...itemProps}
+      className={cx(styles.item, itemProps.className)}
+    />
+  )
 }
 
 /**
