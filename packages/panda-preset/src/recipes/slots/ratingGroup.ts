@@ -42,6 +42,9 @@ export const ratingGroup: Partial<SlotRecipeConfig> = defineSlotRecipe({
       _highlighted: {
         color: 'colorPalette.bg.hover',
       },
+      _readOnly: {
+        cursor: 'default',
+      },
     },
   },
 

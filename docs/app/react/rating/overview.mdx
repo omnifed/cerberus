@@ -7,19 +7,20 @@ a11y: 'touch-target'
 import CodePreview from '@/app/components/CodePreview'
 import DripDivider from '@/app/components/drip-divider'
 import OverviewList from '@/app/components/OverviewList'
-import { BasicDemo, ReadOnlyHalfDemo } from '@/app/react/rating/components/static-preview'
+import { BasicDemo } from '@/app/react/rating/components/static-preview'
 import { LivePlayground } from '@/app/react/rating/components/live-playground'
 
 <OverviewList rules={[
-  'Use radio buttons (not toggles) when only one item can be selected from a list',
-  "Label should be scannable",
-  'Selected items are more prominent than unselected items'
+  'Use ratings to provide feedback on a scale',
+  'Label should be scannable',
+  'Use a five star scale',
+  'For interactive ratings, use full stars',
+  'Use half stars for read-only ratings',
 ]} />
 
 ## Example
 
 <CodePreview preview={<BasicDemo />} />
-
 <LivePlayground />
 
 <DripDivider />

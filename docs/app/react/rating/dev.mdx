@@ -1,33 +1,55 @@
 ---
 npm: '@cerberus-design/react'
-source: 'components/radio'
-recipe: 'slots/radio.ts'
-ark: 'radio-group'
+source: 'components/rating'
+recipe: 'slots/ratingGroup.ts'
+ark: 'rating-group'
 ---
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import { BasicDemo, OrientationDemo, SizeDemo, CustomDemo } from '@/app/react/radio/components/static-preview'
+import { BasicDemo, ReadOnlyHalfDemo, OrientationDemo, SizeDemo, CustomDemo } from '@/app/react/rating/components/static-preview'
 
 ```ts
-import { RadioGroup, Radio, RadioParts } from '@cerberus/react'
+import { Rating, RatingParts } from '@cerberus/react'
 ```
 
 ## Usage
 
-The Radio component is a controlled component that can be used to select one option from a set. Simply wrap the `Radio` components in a `RadioGroup` component to create a group of radio buttons.
+The `Rating` component is an abstracted `client` component that provides a way to select a value from a range of values. It is used to provide feedback on a scale. The default `count` is 5, and the default `value` is 0.
 
 <CodePreview preview={<BasicDemo />}>
 ```tsx title="basic demo"
-import { Radio, RadioGroup } from '@cerberus/react'
+'use client'
+
+import { Rating } from '@cerberus/react'
+import { StarFilled } from '@carbon/icons-react'
 
 export function BasicDemo() {
+  return <Rating defaultValue={3}>{() => <StarFilled size={24} />}</Rating>
+}
+```
+</CodePreview>
+
+## Readonly State
+
+To render the `Rating` component in a read-only state, you can use the `readOnly` prop.
+
+<CodePreview preview={<ReadOnlyHalfDemo />}>
+```tsx title="readonly demo"
+'use client'
+
+import { Rating } from '@cerberus/react'
+import { StarHalf, StarFilled } from '@carbon/icons-react'
+
+function ReadOnlyHalfDemo() {
   return (
-    <RadioGroup defaultValue="cerberus">
-      <Radio value="cerberus">Cerberus</Radio>
-      <Radio value="hades">Hades</Radio>
-      <Radio value="zeus">Zeus</Radio>
-    </RadioGroup>
+    <Rating defaultValue={4.5} allowHalf readOnly>
+      {({ half, highlighted }) => {
+        if (half) return <StarHalf size={24} />
+        if (highlighted) return <StarFilled size={24} />
+        return <Star size={24} />
+      }}
+    </Rating>
   )
 }
 ```
@@ -35,19 +57,31 @@ export function BasicDemo() {
 
 ## Orientation
 
-The `RadioGroup` component supports two orientations: `horizontal`, and `vertical`. The default orientation is `horizontal`.
+The `Rating` component supports two layout orientations for label usage: `horizontal`, and `vertical`. The default orientation is `vertical`.
 
 <CodePreview preview={<OrientationDemo />}>
-```tsx title="Orientation demo" {5}
-import { Radio, RadioGroup } from '@cerberus/react'
+```tsx title="Orientation demo" {10-11}
+'use client'
 
-export function OrientationDemo() {
+import { Rating } from '@cerberus/react'
+import { StarHalf, StarFilled } from '@carbon/icons-react'
+
+function OrientationDemo() {
   return (
-    <RadioGroup defaultValue="cerberus" orientation="vertical">
-      <Radio value="cerberus">Cerberus</Radio>
-      <Radio value="hades">Hades</Radio>
-      <Radio value="zeus">Zeus</Radio>
-    </RadioGroup>
+    <Box w="1/2">
+      <Rating
+        allowHalf
+        defaultValue={4.5}
+        label="Average Rating"
+        orientation="horizontal"
+        readOnly
+      >
+        {({ half }) => {
+          if (half) return <StarHalf size={24} />
+          return <StarFilled size={24} />
+        }}
+      </Rating>
+    </Box>
   )
 }
 ```
@@ -55,19 +89,20 @@ export function OrientationDemo() {
 
 ## Sizes
 
-The Radio component supports two sizes: `sm`, and `md`. The default size is `sm`.
+The Rating component supports two sizes: `sm`, and `md`. The default size is `sm`.
 
 <CodePreview preview={<SizeDemo />}>
-```tsx title="size demo" {6-8}
-import { Radio, RadioGroup } from '@cerberus/react'
+```tsx title="size demo" {8}
+'use client'
 
-export function SizeDemo() {
+import { Rating } from '@cerberus/react'
+import { StarFilled } from '@carbon/icons-react'
+
+function SizeDemo() {
   return (
-    <RadioGroup defaultValue="cerberus">
-      <Radio size="md" value="cerberus">Cerberus</Radio>
-      <Radio size="md" value="hades">Hades</Radio>
-      <Radio size="md" value="zeus">Zeus</Radio>
-    </RadioGroup>
+    <Rating defaultValue={3} label="This is a medium label" size="md">
+      {() => <StarFilled size={24} />}
+    </Rating>
   )
 }
 ```
@@ -79,44 +114,63 @@ You can utilize the primitive components to customize the radio.
 
 | Component | Description |
 | --------- | ----------- |
-| RadioGroupRoot    | The context provider for the RadioGroup parts |
-| RadioGroupLabel   | The label of the radio |
-| RadioGroupIndicator   | The indicator of the radio state |
-| RadioGroupItem   | The container of the label and control of the radio |
-| RadioGroupItemText | The label for a single radio |
-| RadioGroupItemControl | The visual input of a single radio |
-| RadioGroupItemHiddenInput  | The native input for the radio |
+| RatingRoot    | The context provider for the Rating parts |
+| RatingLabel   | The label of the rating |
+| RatingControl | The visual control of the rating  |
+| RatingContext | The context provider for the rating |
+| RatingItem   | The container of the rating item |
+| RatingItemContext | The context provider for a rating item |
+| RatingHiddenInput  | The native input for the rating |
 
 <CodePreview preview={<CustomDemo />}>
 ```tsx title="custom-radio.tsx"
-import { RadioParts } from '@cerberus/react'
+import { RatingParts } from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
 import { css } from '@cerberus/styled-system/css'
 
 function CustomDemo() {
   return (
-    <RadioParts.Root>
-      <RadioParts.Item>
-        <RadioParts.ItemText
+    <Box w="1/2">
+      <RatingParts.Root
+        defaultValue={3}
+        orientation="horizontal"
+        className={css({
+          transform: 'skewX(-10deg)',
+        })}
+      >
+        <RatingParts.Label
           className={css({
-            textStyle: 'body-lg',
+            textStyle: 'heading-xs',
+            textTransform: 'uppercase',
           })}
         >
-          Cerberus
-        </RadioParts.ItemText>
-        <RadioParts.ItemControl
-          className={css({
-            bgColor: 'info.bg.initial',
-            h: 8,
-            w: 8,
-            transform: 'skew(-10deg)',
-            _checked: {
-              bg: 'warning.bg.initial',
-            },
-          })}
-        />
-        <RadioParts.ItemHiddenInput />
-      </RadioParts.Item>
-    </RadioParts.Root>
+          This is a custom rating
+        </RatingParts.Label>
+
+        <RatingParts.Control>
+          <RatingParts.Context>
+            {(context: UseRatingGroupContext) =>
+              context.items.map((item) => (
+                <RatingParts.Item
+                  key={item}
+                  index={item}
+                  className={css({
+                    _highlighted: {
+                      colorPalette: 'danger',
+                      scale: '1.2',
+                    },
+                  })}
+                >
+                  <RatingParts.ItemContext>
+                    {() => <StarFilled size={24} />}
+                  </RatingParts.ItemContext>
+                </RatingParts.Item>
+              ))
+            }
+          </RatingParts.Context>
+        </RatingParts.Control>
+      </RatingParts.Root>
+    </Box>
   )
 }
 ```
@@ -127,39 +181,30 @@ function CustomDemo() {
 
 ### Props
 
-#### RadioGroup
+#### Rating
 
-The `RadioGroup` component is an abstraction of the primitives and accepts the following props:
+The `Rating` component is an abstraction of the primitives and accepts the following props:
 
 | Name     | Default | Description                                            |
 | -------- | ------- | ------------------------------------------------------ |
 | orientation |  `horizontal`   | This orientation of the group.              |
+| palette |  `action`   | The color palette of the items .                    |
+| size |  `sm`   | The size of the label.                                     |
 
 
-The `RadioGroup` component also accepts all the props of the [`RadioGroupRoot` primitive props](https://ark-ui.com/react/docs/components/radio-group#api-reference)
-
-#### Radio
-
-The `Radio` component is an abstraction of the primitives and accepts the following props:
-
-| Name     | Default | Description                                            |
-| -------- | ------- | ------------------------------------------------------ |
-| size |  `sm`   | The size of the radio.                                     |
-
-The `Radio` component also accepts all the props of the [`RadioGroupItem` primitive props](https://ark-ui.com/react/docs/components/radio-group#api-reference)
+The `Rating` component also accepts all the props of the [`RatingRoot` primitive props](https://ark-ui.com/react/docs/components/rating-group#api-reference)
 
 ### Parts
 
-The `RadioParts` API is an Object containing the full family of components.
+The `RatingParts` API is an Object containing the full family of components.
 
-<NoteAdmonition description="It is best to only use the RadioParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+<NoteAdmonition description="It is best to only use the RatingParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
 | Name     | Description                            |
 | -------- | -------------------------------------- |
-| Root     | The `RadioGroupRoot` component which is the Provider for the family. |
-| Label     | The `RadioGroupLabel` component which displays the label and "required" notice. |
-| Indicator  | The `RadioGroupIndicator` component which displays based on the `checked` state. |
-| Item  | The `RadioGroupItem` component which is the container to a single radio item. |
-| ItemText  | The `RadioGroupItemText` component which is the label of the radio. |
-| ItemControl     | The `RadioGroupItemControl` component which is the visual field. |
-| HiddenInput  | The `RadioGroupHiddenInput` component which displays the native input. |
+| Root     | The `RatingRoot` component which is the Provider for the family. |
+| Label    | The `RatingLabel` component which displays the label. |
+| Control  | The `RatingControl` component which displays the visual rating. |
+| Item  | The `RatingItem` component which is the container to a single item. |
+| ItemContext     | The `RatingItemContext` component which is the context provider for a single item. |
+| HiddenInput  | The `RatingHiddenInput` component which displays the native radio. |
