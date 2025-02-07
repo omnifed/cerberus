@@ -34,7 +34,7 @@ export default function ShadowsList() {
               className={square({
                 alignItems: 'center',
                 display: 'flex',
-                bgColor: 'page.surface.initial',
+                bgColor: 'page.surface.100',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 size: '15rem',

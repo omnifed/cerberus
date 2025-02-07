@@ -38,7 +38,7 @@ const shadows = {
       offsetY: 2,
       blur: 16,
       spread: 0,
-      color: 'rgba(22, 1, 38, 0.1)',
+      color: 'hsla(274, 95%, 8%, 0.1)',
     },
   },
   md: {
@@ -47,7 +47,7 @@ const shadows = {
       offsetY: 0,
       blur: 20,
       spread: 4,
-      color: 'rgba(22, 1, 38, 0.1)',
+      color: 'hsla(274, 95%, 8%, 0.1)',
     },
   },
   lg: {
@@ -56,7 +56,7 @@ const shadows = {
       offsetY: 0,
       blur: 20,
       spread: 8,
-      color: 'rgba(22, 1, 38, 0.1)',
+      color: 'hsla(274, 95%, 8%, 0.25)',
     },
   },
 }
