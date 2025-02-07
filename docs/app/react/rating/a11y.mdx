@@ -1,0 +1,42 @@
+---
+---
+
+import {
+  WhenToUseAdmonition
+} from '@/app/components/Admonition'
+import OverviewList from '@/app/components/OverviewList'
+
+## Use Cases
+
+<OverviewList intro="Users should be able to:" rules={[
+  'Navigate to a radio button list item with assistive technology',
+  'Select radio button',
+  'Get appropriate feedback based on input type documented under Interaction & style',
+]} />
+
+## Interaction & Style
+
+The radio button has two states: selected and unselected. There's a brief but important interaction where the user changes the states of the buttons by selecting an option.
+
+Users should be able to select either the text label or the radio button to select an option. Once selected, there is always one radio button selected in the group, users can change their selection but they can't unselect.
+
+## Initial Focus
+
+When in groups: Tab moves focus into the group's selected radio or the first radio if none are selected. Shift + Tab moves focus tothe last radio if none are selected
+
+## Keyboard Navigation
+
+| Keys     | Actions                                                         |
+| -------- | --------------------------------------------------------------- |
+| Tab      | To move to the next element in a group       |
+| Shift + Tab      | To select the last radio button item in a group       |
+| Arrows      | To move up or down, between radio options and make a selection       |
+| Space      | To select a focused radio option not yet selected       |
+
+## Labeling Elements
+
+If the UI text is correctly linked to the radio button, assistive tech (such as a screenreader) will read the UI text followed by the component’s role.
+
+The accessibility label for a group of radio buttons is “radio group.”
+
+The accessibility label for an individual radio button is typically the same as its adjacent text label.

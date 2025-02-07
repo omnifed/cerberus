@@ -124,6 +124,11 @@ export const categoryMeta = {
     description: 'Switches are used to toggle between two states.',
     image: ButtonFeature,
   },
+  rating: {
+    name: 'Rating',
+    description: 'Ratings are used to provide feedback on a scale.',
+    image: ButtonFeature,
+  },
 
   field: {
     name: 'Field',

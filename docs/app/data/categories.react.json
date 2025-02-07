@@ -54,10 +54,11 @@
       "Checkbox",
       "Date Picker",
       "Radio",
+      "Rating",
       "Select",
       "Switch"
     ],
-    "next": [],
+    "next": ["Rating"],
     "new": ["Checkbox", "Radio", "Select", "Switch"],
     "deprecated": []
   },
