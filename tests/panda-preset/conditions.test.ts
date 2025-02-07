@@ -82,6 +82,10 @@ describe('conditions', () => {
     )
   })
 
+  test('should have a dataReadOnly', () => {
+    expect(conditions.dataReadOnly).toEqual('&:is([data-readonly])')
+  })
+
   test('should have an indeterminate', () => {
     expect(conditions.indeterminate).toEqual('&:is([data-state=indeterminate])')
   })
