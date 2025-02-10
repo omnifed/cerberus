@@ -13,7 +13,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@cerberus-design/icons": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/styled-system": "workspace:*",
     "react": "^19",

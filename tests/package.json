@@ -9,7 +9,6 @@
   },
   "devDependencies": {
     "@carbon/icons-react": "^11.40.0",
-    "@cerberus-design/icons": "workspace:*",
     "@cerberus-design/panda-preset": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/styled-system": "workspace:*",
