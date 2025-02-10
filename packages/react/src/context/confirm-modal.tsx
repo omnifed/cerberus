@@ -23,7 +23,7 @@ import {
   DialogDescription,
   DialogHeading,
   DialogProvider,
-} from '../components/dialog-new'
+} from '../components/dialog'
 
 /**
  * This module provides a context and hook for the confirm modal.

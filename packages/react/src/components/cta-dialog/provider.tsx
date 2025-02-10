@@ -19,7 +19,7 @@ import {
   DialogDescription,
   DialogHeading,
   DialogProvider,
-} from '../dialog-new'
+} from '../dialog'
 import { DialogCloseIconTrigger } from '../Dialog.client'
 import type { CTAButtonAction, CTAModalActionReturn } from './utils'
 import {
