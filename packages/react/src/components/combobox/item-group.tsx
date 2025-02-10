@@ -1,5 +1,5 @@
-import type { ComboboxItemGroupProps } from '@ark-ui/react'
-import { ComboboxItemGroup, ComboboxItemGroupLabel } from './primitives'
+import type { ComboboxItemGroupProps } from '@ark-ui/react/combobox'
+import { ComboboxParts } from './parts'
 
 export interface ComboItemGroupProps extends ComboboxItemGroupProps {
   /**
@@ -10,11 +10,10 @@ export interface ComboItemGroupProps extends ComboboxItemGroupProps {
 
 export function ComboItemGroup(props: ComboItemGroupProps) {
   const { label, children, ...groupProps } = props
-
   return (
-    <ComboboxItemGroup {...groupProps}>
-      <ComboboxItemGroupLabel>{label}</ComboboxItemGroupLabel>
+    <ComboboxParts.ItemGroup {...groupProps}>
+      <ComboboxParts.ItemGroupLabel>{label}</ComboboxParts.ItemGroupLabel>
       {children}
-    </ComboboxItemGroup>
+    </ComboboxParts.ItemGroup>
   )
 }
