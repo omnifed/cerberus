@@ -56,9 +56,10 @@
       "Radio",
       "Rating",
       "Select",
+      "Combobox",
       "Switch"
     ],
-    "next": ["Rating"],
+    "next": ["Rating", "Combobox"],
     "new": ["Checkbox", "Radio", "Select", "Switch"],
     "deprecated": []
   },
