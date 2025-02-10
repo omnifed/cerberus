@@ -79,6 +79,7 @@ export type SelectProps = SelectRootProps<SelectCollectionItem> &
  */
 export function Select(props: SelectProps) {
   const { collection, placeholder, ...rootProps } = props
+
   const { icons } = useCerberusContext()
   const { selectArrow: SelectArrow, invalid: InvalidIcon } = icons
 
