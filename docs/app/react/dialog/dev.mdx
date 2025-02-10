@@ -197,15 +197,17 @@ You can utilize the primitive components to customize the dialog.
 
 <CodePreview preview={<CustomPreview />}>
 ```tsx title="custom-dialog.tsx"
+import { DialogParts, Button, Portal } from '@cerberus/react'
+
 function CustomPreview() {
   return (
-    <DialogProvider>
-      <DialogTrigger asChild>
+    <DialogParts.Root>
+      <DialogParts.Trigger asChild>
         <Button palette="danger">Custom Dialog</Button>
-      </DialogTrigger>
+      </DialogParts.Trigger>
 
       <Portal>
-        <DialogBackdrop
+        <DialogParts.Backdrop
           className={css({
             animationFillMode: 'forwards',
             bgColor: 'danger.surface.initial/70',
@@ -224,7 +226,7 @@ function CustomPreview() {
             },
           })}
         />
-        <DialogPositioner
+        <DialogParts.Positioner
           className={css({
             alignItems: 'flex-start',
             display: 'flex',
@@ -238,28 +240,28 @@ function CustomPreview() {
             zIndex: 'modal',
           })}
         >
-          <DialogContent
+          <DialogParts.Content
             className={css({
               bgColor: 'page.surface.initial',
               padding: 'xl',
             })}
           >
-            <DialogHeading
+            <DialogParts.Heading
               className={css({
                 paddingBlockEnd: 'lg',
               })}
             >
               C3rB3RuS R00lz!
-            </DialogHeading>
-            <DialogCloseTrigger asChild>
+            </DialogParts.Heading>
+            <DialogParts.CloseTrigger asChild>
               <Button palette="danger" shape="rounded">
                 Close
               </Button>
-            </DialogCloseTrigger>
-          </DialogContent>
-        </DialogPositioner>
+            </DialogParts.CloseTrigger>
+          </DialogParts.Content>
+        </DialogParts.Positioner>
       </Portal>
-    </DialogProvider>
+    </DialogParts.Root>
   )
 }
 ```

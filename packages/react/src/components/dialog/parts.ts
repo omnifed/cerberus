@@ -59,7 +59,7 @@ interface DialogPartsValue {
  * When using object component syntax, you import the DialogParts object and
  * the entire family of components vs. only what you use.
  */
-export const dialogParts: DialogPartsValue = {
+export const DialogParts: DialogPartsValue = {
   Root: DialogRoot,
   Trigger: DialogTrigger,
   Backdrop: DialogBackdrop,

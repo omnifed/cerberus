@@ -10,15 +10,15 @@ import {
   type PropsWithChildren,
   type ReactNode,
 } from 'react'
+import { animateIn, vstack } from '@cerberus/styled-system/patterns'
+import { notification } from '@cerberus/styled-system/recipes'
+import { cx } from '@cerberus/styled-system/css'
 import { Show } from '../components/Show'
 import { NotificationHeading } from '../components/NotificationHeading'
 import { NotificationDescription } from '../components/NotificationDescription'
 import { Notification } from '../components/Notification'
-import { animateIn, vstack } from '@cerberus/styled-system/patterns'
 import { Portal, type PortalProps } from '../components/Portal'
-import { notification } from '@cerberus/styled-system/recipes'
 import { Button } from '../components/button/button'
-import { cx } from '@cerberus/styled-system/css'
 import {
   addNotification,
   clearNotificationState,
