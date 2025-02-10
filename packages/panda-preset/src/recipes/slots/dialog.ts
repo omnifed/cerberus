@@ -17,6 +17,16 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
   description: 'The styles for Dialog components',
   slots: dialogAnatomy.keys(),
   jsx: [
+    // primitives
+    'DialogRoot',
+    'DialogTrigger',
+    'DialogBackdrop',
+    'DialogPositioner',
+    'DialogContent',
+    'DialogHeading',
+    'DialogDescription',
+    'DialogCloseTrigger',
+    // abstractions
     'DialogProvider',
     'Dialog',
     'DialogTrigger',
@@ -63,10 +73,12 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
       animationFillMode: 'forwards',
       bgColor: 'page.surface.100',
       padding: 'xl',
+      minH: 'var(--dialog-content-min-h)',
       opacity: 0,
       position: 'relative',
       rounded: 'md',
       shadow: 'lg',
+      w: 'var(--dialog-content-w)',
       _focusVisible: {
         outline: 'none',
       },
@@ -97,32 +109,42 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
     size: {
       xs: {
         content: {
-          minH: modalMinH,
-          w: '26rem',
+          '--dialog-content-min-h': modalMinH,
+          '--dialog-content-w': '26rem',
+          // minH: modalMinH,
+          // w: '26rem',
         },
       },
       sm: {
         content: {
-          minH: modalMinH,
-          w: '35rem',
+          '--dialog-content-min-h': modalMinH,
+          '--dialog-content-w': '35rem',
+          // minH: modalMinH,
+          // w: '35rem',
         },
       },
       md: {
         content: {
-          minH: modalMinH,
-          w: '40rem',
+          '--dialog-content-min-h': modalMinH,
+          '--dialog-content-w': '40rem',
+          // minH: modalMinH,
+          // w: '40rem',
         },
       },
       lg: {
         content: {
-          minH: modalMinH,
-          w: '54rem',
+          '--dialog-content-min-h': modalMinH,
+          '--dialog-content-w': '54rem',
+          // minH: modalMinH,
+          // w: '54rem',
         },
       },
       full: {
         content: {
-          minH: '40rem',
-          w: '90dvw',
+          '--dialog-content-min-h': '40rem',
+          '--dialog-content-w': '90dvw',
+          // minH: '40rem',
+          // w: '90dvw',
         },
       },
     },
