@@ -3,22 +3,21 @@
 import { Model } from '@carbon/icons-react'
 import {
   Field,
-  Dialog,
-  DialogBackdrop,
-  DialogPositioner,
-  DialogContent,
-  DialogTrigger,
+  DialogParts,
   DialogProvider,
-  DialogCloseTrigger,
-  DialogCloseIconTrigger,
+  DialogTrigger,
+  Dialog,
   DialogHeading,
   DialogDescription,
+  DialogCloseTrigger,
+  DialogCloseIconTrigger,
   DatePicker,
   DatePickerLabel,
   DatePickerInput,
   DatePickerCalendar,
   Button,
   Portal,
+  type DialogProps,
 } from '@cerberus-design/react'
 import { Box, HStack, VStack } from '@cerberus-design/styled-system/jsx'
 import { css } from '@cerberus-design/styled-system/css'
@@ -90,13 +89,13 @@ export function ModalFormPreview(props: { id: string }) {
 
 export function CustomPreview() {
   return (
-    <DialogProvider>
-      <DialogTrigger asChild>
+    <DialogParts.Root>
+      <DialogParts.Trigger asChild>
         <Button palette="danger">Custom Dialog</Button>
-      </DialogTrigger>
+      </DialogParts.Trigger>
 
       <Portal>
-        <DialogBackdrop
+        <DialogParts.Backdrop
           className={css({
             animationFillMode: 'forwards',
             bgColor: 'danger.surface.initial/70',
@@ -115,7 +114,7 @@ export function CustomPreview() {
             },
           })}
         />
-        <DialogPositioner
+        <DialogParts.Positioner
           className={css({
             alignItems: 'flex-start',
             display: 'flex',
@@ -129,39 +128,51 @@ export function CustomPreview() {
             zIndex: 'modal',
           })}
         >
-          <DialogContent
+          <DialogParts.Content
             className={css({
               bgColor: 'page.surface.initial',
               padding: 'xl',
             })}
           >
-            <DialogHeading
+            <DialogParts.Heading
               className={css({
                 paddingBlockEnd: 'lg',
               })}
             >
               C3rB3RuS R00lz!
-            </DialogHeading>
-            <DialogCloseTrigger asChild>
+            </DialogParts.Heading>
+            <DialogParts.CloseTrigger asChild>
               <Button palette="danger" shape="rounded">
                 Close
               </Button>
-            </DialogCloseTrigger>
-          </DialogContent>
-        </DialogPositioner>
+            </DialogParts.CloseTrigger>
+          </DialogParts.Content>
+        </DialogParts.Positioner>
       </Portal>
-    </DialogProvider>
+    </DialogParts.Root>
   )
 }
 
 export function SizePreview() {
   return (
-    <DialogProvider id="dev-size-dialog">
+    <HStack gap="md">
+      <DialogContent size="xs" />
+      <DialogContent size="sm" />
+      <DialogContent size="md" />
+      <DialogContent size="lg" />
+      <DialogContent size="full" />
+    </HStack>
+  )
+}
+
+function DialogContent(props: { size: DialogProps['size'] }) {
+  return (
+    <DialogProvider>
       <DialogTrigger asChild>
-        <Button>open full size</Button>
+        <Button>{`open ${props.size} size`}</Button>
       </DialogTrigger>
 
-      <Dialog size="full">
+      <Dialog size={props.size}>
         <DialogCloseIconTrigger />
         <VStack alignItems="flex-start" gap="xs" w="full">
           <DialogHeading>Dialog Title</DialogHeading>
@@ -175,10 +186,6 @@ export function SizePreview() {
           <Model size="5rem" />
           <Model size="5rem" />
         </HStack>
-
-        <DialogCloseTrigger asChild>
-          <Button>Close</Button>
-        </DialogCloseTrigger>
       </Dialog>
     </DialogProvider>
   )

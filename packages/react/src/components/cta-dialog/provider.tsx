@@ -19,8 +19,8 @@ import {
   DialogDescription,
   DialogHeading,
   DialogProvider,
-} from '../Dialog'
-import { DialogCloseIconTrigger } from '../Dialog.client'
+} from '../dialog'
+import { DialogCloseIconTrigger } from '../dialog/close-icon-trigger'
 import type { CTAButtonAction, CTAModalActionReturn } from './utils'
 import {
   CTAModalContext,

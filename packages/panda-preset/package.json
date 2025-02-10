@@ -14,15 +14,15 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^0.51.1",
+    "@pandacss/dev": "^0.53.0",
     "autoprefixer": "*",
     "postcss": "*"
   },
   "devDependencies": {
     "@ark-ui/anatomy": "^3.5.0",
     "@cerberus-design/configs": "workspace:*",
-    "@pandacss/dev": "^0.51.1",
-    "@pandacss/types": "^0.51.1"
+    "@pandacss/dev": "^0.53.0",
+    "@pandacss/types": "^0.53.0"
   },
   "publishConfig": {
     "access": "public",

@@ -1,29 +1,27 @@
 'use client'
 
-import {
-  Dialog as ArkDialog,
-  type DialogCloseTriggerProps,
-} from '@ark-ui/react'
+import { type DialogCloseTriggerProps } from '@ark-ui/react/dialog'
+import { useCerberusContext } from '../../context/cerberus'
+import { IconButton } from '../IconButton'
+import { DialogCloseTrigger } from './primitives'
 import { dialog } from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus/styled-system/css'
-import { IconButton } from './IconButton'
-import { useCerberusContext } from '../context/cerberus'
 
 /**
- * This module contains client-side components for the Dialog family.
- * @module @cerberus-design/react/dialog
+ * This module contains the close trigger for the dialog.
+ * @module react/dialog
  */
 
 export function DialogCloseIconTrigger(props: DialogCloseTriggerProps) {
+  const styles = dialog()
+
   const { icons } = useCerberusContext()
   const { close: CloseIcon } = icons
 
-  const styles = dialog()
-
   return (
-    <ArkDialog.CloseTrigger
+    <DialogCloseTrigger
       {...props}
-      className={cx(props.className, styles.closeTrigger)}
+      className={cx(styles.closeTrigger, props.className)}
       asChild
     >
       <IconButton
@@ -34,6 +32,6 @@ export function DialogCloseIconTrigger(props: DialogCloseTriggerProps) {
       >
         <CloseIcon />
       </IconButton>
-    </ArkDialog.CloseTrigger>
+    </DialogCloseTrigger>
   )
 }

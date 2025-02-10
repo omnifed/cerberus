@@ -25,9 +25,10 @@ export default tseslint.config(
 
   {
     ignores: [
-      'docs/**/*', // docs uses Next linting
       'packages/*/build/**/*',
       'packages/*/.tsup/**/*',
+      // Docs use their own eslint config
+      'docs/**/*',
       // non-TS files
       'packages/styled-system/**/*',
       '**/*.mjs',
@@ -58,11 +59,6 @@ export default tseslint.config(
   },
 
   {
-    name: '@cerberus-design/icons',
-    files: ['packages/icons/**/*.ts'],
-  },
-
-  {
     name: '@cerberus-design/react',
     files: ['packages/react/**/*.ts', 'packages/react/**/*.tsx'],
     plugins: {
@@ -85,15 +81,6 @@ export default tseslint.config(
   {
     name: 'tests',
     files: ['tests/**/*.ts', 'tests/**/*.tsx'],
-  },
-
-  {
-    name: 'figma',
-    files: ['figma/**/*.ts', 'figma/**/*.tsx'],
-    plugins: {
-      react,
-    },
-    rules: {},
   },
 
   // this must be last
