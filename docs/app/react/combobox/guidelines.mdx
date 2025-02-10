@@ -1,0 +1,25 @@
+---
+---
+
+import OverviewList from '@/app/components/OverviewList'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import { LivePlayground } from '@/app/react/select/components/live-preview'
+
+## Usage
+
+<WhenToUseAdmonition description="Use a select field when someone needs to make a single choice from a long-list of options." />
+
+## Standard Select
+
+<LivePlayground />
+
+<WhenNotToUseAdmonition description="When you have a short list of four or less options, use a Radio group." />
+
+## Responsive Layout
+
+As layouts adapt to larger screens and different window sizes, apply flexible container dimensions to select fields. Set minimum and maximum values for margins, padding, and container dimensions as layouts scale so that typography adjusts for better reading experiences.
+
+Select fields can span the full width of the display on compact window sizes, but should be bounded by flexible margins or other containers on medium and expanded window sizes.

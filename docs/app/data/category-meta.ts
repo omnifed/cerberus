@@ -119,6 +119,11 @@ export const categoryMeta = {
     description: 'Selects are used to choose from a list of options.',
     image: ButtonFeature,
   },
+  combobox: {
+    name: 'Combobox',
+    description: 'Comboboxes are used to filter or select from a list.',
+    image: ButtonFeature,
+  },
   switch: {
     name: 'Switch',
     description: 'Switches are used to toggle between two states.',

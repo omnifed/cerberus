@@ -1,0 +1,300 @@
+---
+npm: '@cerberus-design/react'
+source: 'components/select'
+recipe: 'slots/select.ts'
+ark: 'select'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { SelectBasicPreview, GroupedOptionsDemo, SelectCustomPreview } from '@/app/react/select/components/select-preview'
+
+```ts
+import {
+  Select,
+  Option,
+  OptionGroup,
+  OptionGroupLabel,
+  createSelectCollection
+} from '@cerberus/react'
+```
+
+## Usage
+
+The `Select` component is a controlled component that can be used to select one option from a set. It can be used in a group with other selects to allow for multiple selections.
+
+<CodePreview preview={<SelectBasicPreview />}>
+```tsx
+import {
+  For,
+  Field,
+  Select,
+  Option,
+  createSelectCollection
+} from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
+
+function SelectBasicPreview() {
+  const collection = createSelectCollection([
+    { label: 'Hades', value: 'hades' },
+    { label: 'Persephone', value: 'persephone' },
+    { label: 'Zeus', value: 'zeus', disabled: true },
+    { label: 'Poseidon', value: 'poseidon' },
+    { label: 'Hera', value: 'hera' },
+  ])
+
+  return (
+    <Box w="1/2">
+      <Field label="Select Relative">
+        <Select collection={collection} placeholder="Choose option">
+          <For each={collection.items}>
+            {(item) => <Option key={item.value} item={item} />}
+          </For>
+        </Select>
+      </Field>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Grouped Options
+
+To group options, use the `OptionGroup` and `OptionGroupLabel` components.
+
+<CodePreview preview={<GroupedOptionsDemo />}>
+```tsx
+import {
+  For,
+  Field,
+  Select,
+  Option,
+  OptionGroup,
+  OptionGroupLabel,
+  createSelectCollection
+} from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
+
+function GroupedOptionsDemo() {
+  const collection = createSelectCollection([
+    { label: 'Hades', value: '1-hades' },
+    { label: 'Persephone', value: '1-persephone' },
+    { label: 'Zeus', value: '1-zeus', disabled: true },
+    { label: 'Poseidon', value: '1-poseidon' },
+    { label: 'Hera', value: '1-hera' },
+  ])
+
+  return (
+    <Box w="1/2">
+      <Field label="Select Relative">
+        <Select collection={collection} placeholder="Choose option">
+          <OptionGroup>
+            <OptionGroupLabel>The fam</OptionGroupLabel>
+            <For each={collection.items}>
+              {(item) => <Option key={item.value} item={item} />}
+            </For>
+          </OptionGroup>
+        </Select>
+      </Field>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components to customize the select.
+
+| Component | Description |
+| --------- | ----------- |
+| SelectRoot    | The context provider for the Select family |
+| SelectLabel   | The label that appears above the select input |
+| SelectControl | The wrapper to the select trigger that opens the dropdown |
+| SelectTrigger | he trigger that opens the dropdown |
+| SelectValueText | The text that appears in the trigger |
+| SelectIndicator | The indicator that appears in the trigger |
+| SelectClearTrigger | The trigger that clears the selected value |
+| SelectPositioner | The wrapper that positions the dropdown |
+| SelectContent | The content of the dropdown (i.e. the container itself) |
+| SelectItemGroup | The group of options in the dropdown |
+| SelectItemGroupLabel | The label for the group of options |
+| SelectItem | The option in the dropdown |
+| SelectItemText | The text label of the option |
+| SelectItemIndicator | The indicator shown when the option is selected |
+| SelectHiddenInput | The native select for the select group. |
+
+<CodePreview preview={<SelectCustomPreview />}>
+```tsx
+function SelectCustomPreview() {
+  const collection = createSelectCollection([
+    { label: 'Hades', value: '1-hades' },
+    { label: 'Persephone', value: '1-persephone' },
+    { label: 'Zeus', value: '1-zeus', disabled: true },
+    { label: 'Poseidon', value: '1-poseidon' },
+    { label: 'Hera', value: '1-hera' },
+  ])
+
+  return (
+    <Box w="1/2">
+      <SelectRoot collection={collection}>
+        <SelectLabel
+          className={css({
+            paddingBlock: 2,
+            textStyle: 'body-sm',
+            textTransform: 'uppercase',
+          })}
+        >
+          Select a custom relative
+        </SelectLabel>
+
+        <SelectControl>
+          <SelectTrigger
+            className={cx(
+              css({
+                bgColor: 'black',
+                color: 'danger.surface.initial',
+                paddingInline: 4,
+                paddingBlock: 3,
+                _hover: {
+                  bgColor: 'danger.surface.initial',
+                  color: 'white',
+                },
+              }),
+              hstack({
+                justify: 'space-between',
+                w: 'full',
+              }),
+            )}
+          >
+            <SelectValueText placeholder="Choose a custom option" />
+            <SelectIndicator
+              className={css({
+                transitionProperty: 'transform',
+                transitionDuration: 'fast',
+                _open: {
+                  transform: 'rotate(180deg)',
+                },
+              })}
+            >
+              <ChevronDownOutline />
+            </SelectIndicator>
+          </SelectTrigger>
+          <SelectClearTrigger>Clear</SelectClearTrigger>
+        </SelectControl>
+
+        <Portal>
+          <SelectPositioner className={css({ w: 'var(--reference-width)' })}>
+            <SelectContent
+              className={css({
+                bgColor: 'danger.surface.initial',
+                p: 4,
+              })}
+            >
+              <SelectItemGroup>
+                <SelectItemGroupLabel
+                  className={css({
+                    fontWeight: 'bold',
+                    textStyle: 'label-sm',
+                    textTransform: 'uppercase',
+                  })}
+                >
+                  The fam
+                </SelectItemGroupLabel>
+                {collection.items.map((item, idx) => (
+                  <SelectItem key={item.value} item={item}>
+                    <SelectItemText
+                      className={css({
+                        color: 'white',
+                        display: 'inline-block',
+                      })}
+                      style={{
+                        paddingInlineStart: `calc(16px * ${idx})`,
+                      }}
+                    >
+                      {item.label}
+                    </SelectItemText>
+                    <SelectItemIndicator>✓</SelectItemIndicator>
+                  </SelectItem>
+                ))}
+              </SelectItemGroup>
+            </SelectContent>
+          </SelectPositioner>
+        </Portal>
+      </SelectRoot>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+
+## API
+
+### Select
+
+The `Select` component is an abstraction of our primitives and accepts the following props:
+
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| placeholder |         | The placeholder to show in the select trigger. |
+| size        | 'md'    | The size of the select. |
+| collection  |         | The collection of options to show in the dropdown. |
+
+The `Select` component also accepts all the props of the [`SelectRoot` primitive props](https://ark-ui.com/react/docs/components/select#api-reference)
+
+### Option
+
+The `Option` component is an abstraction of our primitives and accepts the following props:
+
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| item     |       | The item to show in the dropdown. `SelectCollectionItem` |
+
+The `Option` component also accepts all the props of the [`SelectItem` primitive props](https://ark-ui.com/react/docs/components/select#api-reference)
+
+### OptionGroup
+
+The `OptionGroup` component is an abstraction of our primitives and accepts the same props as the `SelectItemGroup` primitive.
+
+### OptionGroupLabel
+
+The `OptionGroupLabel` component is an abstraction of our primitives and accepts the same props as the `SelectItemGroupLabel` primitive.
+
+### createSelectCollection
+
+The `createSelectCollection` function is a utility function that creates a collection of options for the `Select` component.
+
+```ts
+export function createSelectCollection(
+  collection: SelectCollectionItem[],
+): ListCollection<SelectCollectionItem> {
+  return createListCollection({
+    items: collection,
+  })
+}
+```
+
+### Parts
+
+The `SelectParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the SelectParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `SelectRoot` component which is the Provider for the family. |
+| Label     | The `SelectLabel` component which displays the label and "required" notice. |
+| Control     | The `SelectControl` component which is the visual field. |
+| Trigger     | The `SelectTrigger` component which is the trigger for the dropdown. |
+| ClearTrigger     | The `SelectClearTrigger` component which is the trigger to clear the selected value. |
+| ValueText  | The `SelectValueText` component which displays the selected value. |
+| Indicator  | The `SelectIndicator` component which displays the trigger indicator. |
+| Positioner | The `SelectPositioner` component which is controls the positioning for the dropdown. |
+| Content  | The `SelectContent` component which is the dropdown itself. |
+| ItemGroup | The `SelectItemGroup` component which is the group of options in the dropdown. |
+| ItemGroupLabel | The `SelectItemGroupLabel` component which is the label for the group of options. |
+| Item     | The `SelectItem` component which is the option in the dropdown. |
+| ItemText | The `SelectItemText` component which is the text label of the option. |
+| ItemIndicator | The `SelectItemIndicator` component which displays based on the `checked` state. |
+| HiddenInput  | The `SelectHiddenInput` component which displays the native input. |
