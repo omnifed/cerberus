@@ -106,13 +106,7 @@ export function DialogDescription(props: DialogDescriptionProps) {
  * The trigger that closes the dialog.
  */
 export function DialogCloseTrigger(props: DialogTriggerProps) {
-  const styles = dialog()
-  return (
-    <Dialog.CloseTrigger
-      {...props}
-      className={cx(styles.closeTrigger, props.className)}
-    />
-  )
+  return <Dialog.CloseTrigger {...props} />
 }
 
 /**
