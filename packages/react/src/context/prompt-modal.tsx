@@ -26,7 +26,7 @@ import {
   DialogDescription,
   DialogHeading,
   DialogProvider,
-} from '../components/Dialog'
+} from '../components/dialog-new'
 
 /**
  * This module provides a context and hook for the prompt modal.
