@@ -156,12 +156,24 @@ export function CustomPreview() {
 
 export function SizePreview() {
   return (
-    <DialogProvider id="dev-size-dialog">
+    <HStack gap="md">
+      <DialogContent size="xs" />
+      <DialogContent size="sm" />
+      <DialogContent size="md" />
+      <DialogContent size="lg" />
+      <DialogContent size="full" />
+    </HStack>
+  )
+}
+
+function DialogContent(props: { size: DialogProps['size'] }) {
+  return (
+    <DialogProvider>
       <DialogTrigger asChild>
-        <Button>open full size</Button>
+        <Button>open {props.size} size</Button>
       </DialogTrigger>
 
-      <Dialog size="full">
+      <Dialog size={props.size}>
         <DialogCloseIconTrigger />
         <VStack alignItems="flex-start" gap="xs" w="full">
           <DialogHeading>Dialog Title</DialogHeading>
@@ -175,10 +187,6 @@ export function SizePreview() {
           <Model size="5rem" />
           <Model size="5rem" />
         </HStack>
-
-        <DialogCloseTrigger asChild>
-          <Button>Close</Button>
-        </DialogCloseTrigger>
       </Dialog>
     </DialogProvider>
   )

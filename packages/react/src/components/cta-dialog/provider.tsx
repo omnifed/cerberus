@@ -20,7 +20,7 @@ import {
   DialogHeading,
   DialogProvider,
 } from '../dialog'
-import { DialogCloseIconTrigger } from '../Dialog.client'
+import { DialogCloseIconTrigger } from '../dialog/close-icon-trigger'
 import type { CTAButtonAction, CTAModalActionReturn } from './utils'
 import {
   CTAModalContext,

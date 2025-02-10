@@ -29,10 +29,7 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
     // abstractions
     'DialogProvider',
     'Dialog',
-    'DialogTrigger',
-    'DialogCloseTrigger',
-    'DialogHeading',
-    'DialogDescription',
+    'DialogCloseIconTrigger',
     'ConfirmModal',
     'PromptModal',
     'CTAModal',
@@ -111,40 +108,30 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
         content: {
           '--dialog-content-min-h': modalMinH,
           '--dialog-content-w': '26rem',
-          // minH: modalMinH,
-          // w: '26rem',
         },
       },
       sm: {
         content: {
           '--dialog-content-min-h': modalMinH,
           '--dialog-content-w': '35rem',
-          // minH: modalMinH,
-          // w: '35rem',
         },
       },
       md: {
         content: {
           '--dialog-content-min-h': modalMinH,
           '--dialog-content-w': '40rem',
-          // minH: modalMinH,
-          // w: '40rem',
         },
       },
       lg: {
         content: {
           '--dialog-content-min-h': modalMinH,
           '--dialog-content-w': '54rem',
-          // minH: modalMinH,
-          // w: '54rem',
         },
       },
       full: {
         content: {
           '--dialog-content-min-h': '40rem',
           '--dialog-content-w': '90dvw',
-          // minH: '40rem',
-          // w: '90dvw',
         },
       },
     },
