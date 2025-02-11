@@ -11,6 +11,7 @@ import { td } from './td'
 import { accordion } from './slots/accordion'
 import { admonition } from './slots/admonition'
 import { checkbox } from './slots/checkbox'
+import { combobox } from './slots/combobox'
 import { datePicker } from './slots/datepicker'
 import { dialog } from './slots/dialog'
 import { field } from './slots/field'
@@ -56,6 +57,7 @@ export const slotRecipes = {
   accordion,
   admonition,
   checkbox,
+  combobox,
   datePicker,
   dialog,
   field,

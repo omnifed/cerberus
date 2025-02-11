@@ -33,16 +33,12 @@ export function Combobox(props: ComboboxProps) {
 
       <ComboboxParts.Control>
         <ComboboxParts.Input asChild>
-          <Input
-            startIcon={props.startIcon}
-            endIcon={
-              <ComboboxParts.ClearTrigger>
-                <CloseIcon />
-              </ComboboxParts.ClearTrigger>
-            }
-          />
+          <Input startIcon={props.startIcon} />
         </ComboboxParts.Input>
 
+        <ComboboxParts.ClearTrigger>
+          <CloseIcon />
+        </ComboboxParts.ClearTrigger>
         <ComboboxParts.Trigger>
           <SelectArrow />
         </ComboboxParts.Trigger>

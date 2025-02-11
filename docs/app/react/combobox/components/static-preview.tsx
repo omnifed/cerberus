@@ -8,13 +8,76 @@ import {
   Option,
   OptionGroup,
   OptionGroupLabel,
+  Combobox,
+  ComboboxItemWithIndicator,
+  ComboboxItemText,
   createSelectCollection,
   Portal,
+  Text,
+  type ComboboxInputValueChangeDetails,
 } from '@cerberus-design/react'
 import { css, cx } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
-import { Box } from '@cerberus-design/styled-system/jsx'
+import { Box, VStack } from '@cerberus-design/styled-system/jsx'
 import { ChevronDownOutline } from '@carbon/icons-react'
+import { useMemo, useState } from 'react'
+
+const initialItems = [
+  { label: 'Hades', value: 'hades' },
+  { label: 'Persephone', value: 'persephone' },
+  { label: 'Zeus', value: 'zeus', disabled: true },
+  { label: 'Poseidon', value: 'poseidon' },
+  { label: 'Hera', value: 'hera' },
+]
+
+export function BasicPreview() {
+  const [items, setItems] = useState(initialItems)
+
+  const collection = useMemo(() => createSelectCollection(items), [items])
+
+  const handleInputChange = (details: ComboboxInputValueChangeDetails) => {
+    if (details.inputValue === '') {
+      return setItems(initialItems)
+    }
+    setItems((prev) =>
+      prev.filter((item) =>
+        item.value.includes(details.inputValue.toLowerCase()),
+      ),
+    )
+  }
+
+  return (
+    <Box w="1/2">
+      <Field>
+        <Combobox
+          collection={collection}
+          label="Select Relative"
+          onInputValueChange={handleInputChange}
+          placeholder="Choose option"
+        >
+          <For
+            each={collection.items}
+            fallback={
+              <VStack paddingBlock="6" w="full">
+                <Text textAlign="center" textStyle="label-sm">
+                  No results found
+                </Text>
+              </VStack>
+            }
+          >
+            {(item) => (
+              <ComboboxItemWithIndicator key={item.value} item={item}>
+                <ComboboxItemText>{item.label}</ComboboxItemText>
+              </ComboboxItemWithIndicator>
+            )}
+          </For>
+        </Combobox>
+      </Field>
+    </Box>
+  )
+}
+
+// DEPRECATED
 
 export function SelectBasicPreview() {
   const collection = createSelectCollection([
