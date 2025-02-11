@@ -7,50 +7,88 @@ ark: 'combobox'
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import { SelectBasicPreview, GroupedOptionsDemo, SelectCustomPreview } from '@/app/react/combobox/components/static-preview'
+import { BasicPreview, GroupedOptionsDemo, SelectCustomPreview } from '@/app/react/combobox/components/static-preview'
 
 ```ts
 import {
-  Select,
-  Option,
-  OptionGroup,
-  OptionGroupLabel,
-  createSelectCollection
+  Combobox,
+  ComboboxItemWithIndicator,
+  ComboboxItemText,
+  createSelectCollection,
+  type ComboboxInputValueChangeDetails,
 } from '@cerberus/react'
 ```
 
 ## Usage
 
-The `Select` component is a controlled component that can be used to select one option from a set. It can be used in a group with other selects to allow for multiple selections.
+The `Combobox` component is an abstraction component that provides a fully functional combobox. It is built on top of the `Select` component and allows additional functionality such as filtering.
 
-<CodePreview preview={<SelectBasicPreview />}>
+<CodePreview preview={<BasicPreview />}>
 ```tsx
+'use client'
+
 import {
   For,
   Field,
-  Select,
-  Option,
-  createSelectCollection
+  Combobox,
+  ComboboxItemWithIndicator,
+  ComboboxItemText,
+  createSelectCollection,
+  type ComboboxInputValueChangeDetails,
 } from '@cerberus/react'
-import { Box } from '@cerberus/styled-system/jsx'
+import { Box, VStack } from '@cerberus/styled-system/jsx'
+import { useMemo, useState } from 'react'
 
-function SelectBasicPreview() {
-  const collection = createSelectCollection([
-    { label: 'Hades', value: 'hades' },
-    { label: 'Persephone', value: 'persephone' },
-    { label: 'Zeus', value: 'zeus', disabled: true },
-    { label: 'Poseidon', value: 'poseidon' },
-    { label: 'Hera', value: 'hera' },
-  ])
+const initialItems = [
+  { label: 'Hades', value: 'hades' },
+  { label: 'Persephone', value: 'persephone' },
+  { label: 'Zeus', value: 'zeus', disabled: true },
+  { label: 'Poseidon', value: 'poseidon' },
+  { label: 'Hera', value: 'hera' },
+]
+
+export function BasicPreview() {
+  const [items, setItems] = useState(initialItems)
+
+  const collection = useMemo(() => createSelectCollection(items), [items])
+
+  const handleInputChange = (details: ComboboxInputValueChangeDetails) => {
+    if (details.inputValue === '') {
+      return setItems(initialItems)
+    }
+    setItems((prev) =>
+      prev.filter((item) =>
+        item.value.includes(details.inputValue.toLowerCase()),
+      ),
+    )
+  }
 
   return (
     <Box w="1/2">
-      <Field label="Select Relative">
-        <Select collection={collection} placeholder="Choose option">
-          <For each={collection.items}>
-            {(item) => <Option key={item.value} item={item} />}
+      <Field>
+        <Combobox
+          collection={collection}
+          label="Select Relative"
+          onInputValueChange={handleInputChange}
+          placeholder="Choose option"
+        >
+          <For
+            each={collection.items}
+            fallback={
+              <VStack paddingBlock="6" w="full">
+                <Text textAlign="center" textStyle="label-sm">
+                  No results found
+                </Text>
+              </VStack>
+            }
+          >
+            {(item) => (
+              <ComboboxItemWithIndicator key={item.value} item={item}>
+                <ComboboxItemText>{item.label}</ComboboxItemText>
+              </ComboboxItemWithIndicator>
+            )}
           </For>
-        </Select>
+        </Combobox>
       </Field>
     </Box>
   )

@@ -3,12 +3,15 @@
 import type { ComboboxRootProps } from '@ark-ui/react/combobox'
 import { useCerberusContext } from '../../context/cerberus'
 import type { SelectCollectionItem } from '../select/select'
-import { Input, type FieldInputProps } from '../field/index'
+import { type FieldInputProps } from '../field/index'
 import { Portal } from '../Portal'
 import { Show } from '../Show'
 import { ComboboxParts } from './parts'
+import type { ComboboxVariantProps } from '@cerberus/styled-system/recipes'
 
-export interface ComboboxProps extends ComboboxRootProps<SelectCollectionItem> {
+export interface ComboboxProps
+  extends ComboboxRootProps<SelectCollectionItem>,
+    ComboboxVariantProps {
   /**
    * The label that appears above the combobox input.
    */
@@ -32,9 +35,7 @@ export function Combobox(props: ComboboxProps) {
       </Show>
 
       <ComboboxParts.Control>
-        <ComboboxParts.Input asChild>
-          <Input startIcon={props.startIcon} />
-        </ComboboxParts.Input>
+        <ComboboxParts.Input />
 
         <ComboboxParts.ClearTrigger>
           <CloseIcon />
@@ -46,7 +47,9 @@ export function Combobox(props: ComboboxProps) {
 
       <Portal>
         <ComboboxParts.Positioner>
-          <ComboboxParts.Content>{children}</ComboboxParts.Content>
+          <ComboboxParts.Content size={rootProps.size}>
+            {children}
+          </ComboboxParts.Content>
         </ComboboxParts.Positioner>
       </Portal>
     </ComboboxParts.Root>

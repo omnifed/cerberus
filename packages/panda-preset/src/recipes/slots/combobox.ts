@@ -8,6 +8,19 @@ import { label } from '../label'
  * @module
  */
 
+const triggerStyles = {
+  alignItems: 'center',
+  bottom: '0',
+  color: 'action.text.inverse',
+  display: 'flex',
+  flexDirection: 'column',
+  h: 'var(--combobox-trigger-height)',
+  justifyContent: 'center',
+  position: 'absolute',
+  w: '2rem',
+  zIndex: 'decorator',
+}
+
 /**
  * Styles for the combobox family components
  * @definition [ARK docs](https://ark-ui.com/react/docs/components/combobox)
@@ -31,7 +44,6 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
     'ComboboxItem',
     'ComboboxItemText',
     'ComboboxItemIndicator',
-    'ComboboxIndicator',
     // abstractions
     'Combobox',
     'ComboItemGroup',
@@ -63,7 +75,7 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       color: 'page.text.initial',
       display: 'inline-flex',
       gap: 'sm',
-      h: 'var(--select-trigger-height)',
+      h: 'var(--combobox-trigger-height)',
       justifyContent: 'space-between',
       outline: 0,
       minW: 9,
@@ -75,13 +87,13 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionProperty: 'background, box-shadow, border-color',
       transitionTimingFunction: 'default',
       w: 'full',
-      ...focusStates,
       _placeholderShown: {
         color: 'page.text.100',
       },
       _open: {
         borderColor: 'action.border.focus',
       },
+      _focusVisible: focusStates._focusVisible,
       _disabled: {
         color: 'page.text.100',
         cursor: 'not-allowed',
@@ -97,34 +109,18 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
     },
     trigger: {
-      alignItems: 'center',
-      bottom: 'calc(var(--select-trigger-height) / 5)',
-      display: 'flex',
-      flexDirection: 'column',
-      h: '2rem',
-      justifyContent: 'center',
-      position: 'absolute',
+      ...triggerStyles,
       right: 2,
       transformOrigin: 'center',
       transitionDuration: 'normal',
       transitionProperty: 'transform',
-      w: '2rem',
-      zIndex: 'decorator',
       _open: {
         transform: 'rotate(180deg)',
       },
     },
     clearTrigger: {
-      alignItems: 'center',
-      bottom: 'calc(var(--select-trigger-height) / 5)',
-      display: 'flex',
-      flexDirection: 'column',
-      h: '2rem',
-      justifyContent: 'center',
-      position: 'absolute',
+      ...triggerStyles,
       right: 10,
-      w: '2rem',
-      zIndex: 'decorator',
     },
     positioner: {
       w: 'var(--reference-width)',
@@ -135,7 +131,7 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       borderColor: 'page.border.200',
       display: 'flex',
       flexDirection: 'column',
-      gap: 'var(--select-content-gap)',
+      gap: 'var(--combobox-content-gap)',
       maxH: '15.5rem',
       minW: '10rem',
       overflowY: 'auto',
@@ -159,7 +155,7 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       display: 'flex',
       flexShrink: 0,
       gap: 'md',
-      h: 'var(--select-item-height)',
+      h: 'var(--combobox-item-height)',
       pxi: 'md',
       rounded: 'sm',
       textStyle: 'body-sm',
@@ -191,29 +187,29 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
     size: {
       sm: {
         root: {
-          '--select-trigger-height': '2rem',
+          '--combobox-trigger-height': '2rem',
         },
         content: {
-          '--select-item-height': '2.5rem',
-          '--select-content-gap': '0',
+          '--combobox-item-height': '2.5rem',
+          '--combobox-content-gap': '0',
         },
       },
       md: {
         root: {
-          '--select-trigger-height': '2.5rem',
+          '--combobox-trigger-height': '2.5rem',
         },
         content: {
-          '--select-item-height': '2.5rem',
-          '--select-content-gap': '0',
+          '--combobox-item-height': '2.5rem',
+          '--combobox-content-gap': '0',
         },
       },
       lg: {
         root: {
-          '--select-trigger-height': '3rem',
+          '--combobox-trigger-height': '3rem',
         },
         content: {
-          '--select-item-height': '3rem',
-          '--select-content-gap': '0.25rem',
+          '--combobox-item-height': '3rem',
+          '--combobox-content-gap': '0.25rem',
         },
       },
     },
