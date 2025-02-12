@@ -4,152 +4,102 @@ import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
 import {
+  For,
   Field,
-  Select,
-  Option,
+  Combobox,
+  ComboItemWithIndicator,
+  ComboItemText,
   createSelectCollection,
 } from '@cerberus-design/react'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { VStack } from '@cerberus-design/styled-system/jsx'
+import { type PropsWithChildren } from 'react'
 
 const api = {
   size: builder.Enum('size', ['sm', 'md', 'lg']),
   label: builder.Text('label', 'Select Something'),
   placeholder: builder.Text('placeholder', 'Choose option'),
-  disabled: builder.Boolean('disabled', false),
-  required: builder.Boolean('required', false),
-  readOnly: builder.Boolean('readOnly', false),
-  invalid: builder.Boolean('invalid', false),
 }
+
+const collection = createSelectCollection([
+  { label: 'Hades', value: 'hades' },
+  { label: 'Persephone', value: 'persephone' },
+  { label: 'Zeus', value: 'zeus', disabled: true },
+  { label: 'Poseidon', value: 'poseidon' },
+  { label: 'Hera', value: 'hera' },
+])
 
 export function LivePlayground() {
   return (
     <CodeBuilder api={api}>
-      <SelectPreview />
+      <ComboboxPreview />
     </CodeBuilder>
   )
 }
 
-export function LivePlaygroundWithCode() {
-  return (
-    <CodeBuilder
-      api={api}
-      code={`import {
-  Select,
-  Option,
-  type SelectProps,
-} from '@cerberus/react'
-
-/**
- * A custom abstraction of the Cerberus Select component.
- * @param props The same props as the Cerberus Select component
-*/
-export function MySelect(props: SelectProps) {
-  return (
-    <Field
-      label={{label}}
-      disabled={{disabled}}
-      required={{required}}
-      readOnly={{readOnly}}
-      invalid={{invalid}}
-    >
-      <Select {...props}>
-        {props.collection.items.map((item) => (
-          <Option key={item.value} item={item} />
-        ))}
-      </Select>
-    </Field>
-  )
-}`}
-    >
-      <Field>
-        <SelectPreview />
-      </Field>
-    </CodeBuilder>
-  )
+interface ComboboxElProps {
+  size?: 'sm' | 'md' | 'lg'
+  label?: string
+  placeholder?: string
 }
 
-interface SelectElProps extends Record<string, boolean | string> {}
-
-export function SelectEl(props: SelectElProps) {
-  const collection = createSelectCollection([
-    { label: 'Hades', value: 'hades' },
-    { label: 'Persephone', value: 'persephone' },
-    { label: 'Zeus', value: 'zeus', disabled: true },
-    { label: 'Poseidon', value: 'poseidon' },
-    { label: 'Hera', value: 'hera' },
-  ])
-
+export function ComboboxEl(props: PropsWithChildren<ComboboxElProps>) {
   switch (props.size) {
     case 'sm':
       return (
-        <Select
+        <Combobox
           collection={collection}
-          placeholder={props.placeholder as string}
-          disabled={props.disabled as boolean}
-          invalid={props.invalid as boolean}
-          required={props.required as boolean}
-          readOnly={props.readOnly as boolean}
+          label={props.label}
+          placeholder={props.placeholder}
           size="sm"
         >
-          {collection.items.map((item) => (
-            <Option key={item.value} item={item} />
-          ))}
-        </Select>
+          {props.children}
+        </Combobox>
       )
     case 'lg':
       return (
-        <Select
+        <Combobox
           collection={collection}
-          placeholder={props.placeholder as string}
-          disabled={props.disabled as boolean}
-          invalid={props.invalid as boolean}
-          required={props.required as boolean}
-          readOnly={props.readOnly as boolean}
+          label={props.label}
+          placeholder={props.placeholder}
           size="lg"
         >
-          {collection.items.map((item) => (
-            <Option key={item.value} item={item} />
-          ))}
-        </Select>
+          {props.children}
+        </Combobox>
       )
     default:
       return (
-        <Select
+        <Combobox
           collection={collection}
-          placeholder={props.placeholder as string}
-          disabled={props.disabled as boolean}
-          invalid={props.invalid as boolean}
-          required={props.required as boolean}
-          readOnly={props.readOnly as boolean}
+          label={props.label}
+          placeholder={props.placeholder}
           size="md"
         >
-          {collection.items.map((item) => (
-            <Option key={item.value} item={item} />
-          ))}
-        </Select>
+          {props.children}
+        </Combobox>
       )
   }
 }
 
-export function SelectPreview() {
+export function ComboboxPreview() {
   const { selectedProps } = useCodeBuilder()
   return (
-    <div
-      className={vstack({
-        alignItems: 'flex-start',
-        gap: '0',
-        w: 'full',
-      })}
-    >
+    <VStack alignItems="flex-start" gap="0" w="full">
       <Field
         disabled={selectedProps.disabled as boolean}
         invalid={selectedProps.invalid as boolean}
         readOnly={selectedProps.readOnly as boolean}
         required={selectedProps.required as boolean}
-        label={selectedProps.label as string}
       >
-        <SelectEl {...selectedProps} />
+        <ComboboxEl {...selectedProps}>
+          <For each={collection.items}>
+            {(item) => (
+              <ComboItemWithIndicator key={item.value} item={item}>
+                <ComboItemText>{item.label}</ComboItemText>
+              </ComboItemWithIndicator>
+            )}
+          </For>
+        </ComboboxEl>
       </Field>
-    </div>
+    </VStack>
   )
 }

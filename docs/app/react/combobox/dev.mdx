@@ -1,100 +1,257 @@
 ---
 npm: '@cerberus-design/react'
-source: 'components/select'
-recipe: 'slots/select.ts'
-ark: 'select'
+source: 'components/combobox'
+recipe: 'slots/combobox.ts'
+ark: 'combobox'
 ---
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import { SelectBasicPreview, GroupedOptionsDemo, SelectCustomPreview } from '@/app/react/select/components/select-preview'
+import { BasicPreview, StartIconPreview, GroupedItemsPreview, FieldPreview, CustomDemo } from '@/app/react/combobox/components/static-preview'
 
 ```ts
 import {
-  Select,
-  Option,
-  OptionGroup,
-  OptionGroupLabel,
-  createSelectCollection
+  Combobox,
+  ComboItemGroup,
+  ComboItemWithIndicator,
+  ComboItemText
 } from '@cerberus/react'
 ```
 
+<NoteAdmonition description="Notice the naming convention of ComboItemGroup (the abstraction) and ComboboxItemGroup the primitive." />
+
 ## Usage
 
-The `Select` component is a controlled component that can be used to select one option from a set. It can be used in a group with other selects to allow for multiple selections.
+The `Combobox` component is an abstraction component that provides a fully functional combobox. It is built on top of the `Select` component and allows additional functionality such as filtering.
 
-<CodePreview preview={<SelectBasicPreview />}>
+<CodePreview preview={<BasicPreview />}>
 ```tsx
+'use client'
+
 import {
   For,
-  Field,
-  Select,
-  Option,
-  createSelectCollection
+  Combobox,
+  ComboItemWithIndicator,
+  ComboItemText,
+  useStatefulCollection,
 } from '@cerberus/react'
-import { Box } from '@cerberus/styled-system/jsx'
+import { Box, VStack } from '@cerberus/styled-system/jsx'
+import { useMemo, useState } from 'react'
 
-function SelectBasicPreview() {
-  const collection = createSelectCollection([
-    { label: 'Hades', value: 'hades' },
-    { label: 'Persephone', value: 'persephone' },
-    { label: 'Zeus', value: 'zeus', disabled: true },
-    { label: 'Poseidon', value: 'poseidon' },
-    { label: 'Hera', value: 'hera' },
-  ])
+const initialItems = [
+  { label: 'Hades', value: 'hades' },
+  { label: 'Persephone', value: 'persephone' },
+  { label: 'Zeus', value: 'zeus', disabled: true },
+  { label: 'Poseidon', value: 'poseidon' },
+  { label: 'Hera', value: 'hera' },
+]
+
+function BasicPreview() {
+  const { collection, handleInputChange } =
+    useStatefulCollection(initialItems)
 
   return (
     <Box w="1/2">
-      <Field label="Select Relative">
-        <Select collection={collection} placeholder="Choose option">
-          <For each={collection.items}>
-            {(item) => <Option key={item.value} item={item} />}
-          </For>
-        </Select>
-      </Field>
+      <Combobox
+        collection={collection}
+        label="Select Relative"
+        onInputValueChange={handleInputChange}
+        placeholder="Choose option"
+      >
+        <For
+          each={collection.items}
+          fallback={
+            <VStack paddingBlock="6" w="full">
+              <Text textAlign="center" textStyle="label-sm">
+                No results found
+              </Text>
+            </VStack>
+          }
+        >
+          {(item) => (
+            <ComboItemWithIndicator key={item.value} item={item}>
+              <ComboItemText>{item.label}</ComboItemText>
+            </ComboItemWithIndicator>
+          )}
+        </For>
+      </Combobox>
     </Box>
   )
 }
 ```
 </CodePreview>
 
-## Grouped Options
+## With Start Icon
 
-To group options, use the `OptionGroup` and `OptionGroupLabel` components.
+To add an icon to the start position of the input, use the `startIcon` prop to pass in your `ReactNode`.
 
-<CodePreview preview={<GroupedOptionsDemo />}>
-```tsx
+<CodePreview preview={<StartIconPreview />}>
+```tsx {34}
+'use client'
+
 import {
   For,
-  Field,
-  Select,
-  Option,
-  OptionGroup,
-  OptionGroupLabel,
-  createSelectCollection
+  Combobox,
+  ComboItemWithIndicator,
+  ComboItemText,
+  useStatefulCollection,
 } from '@cerberus/react'
-import { Box } from '@cerberus/styled-system/jsx'
+import { Box, VStack } from '@cerberus/styled-system/jsx'
+import { useMemo, useState } from 'react'
+import { Search } from '@carbon/icons-react'
 
-function GroupedOptionsDemo() {
-  const collection = createSelectCollection([
-    { label: 'Hades', value: '1-hades' },
-    { label: 'Persephone', value: '1-persephone' },
-    { label: 'Zeus', value: '1-zeus', disabled: true },
-    { label: 'Poseidon', value: '1-poseidon' },
-    { label: 'Hera', value: '1-hera' },
-  ])
+const initialItems = [
+  { label: 'Hades', value: 'hades' },
+  { label: 'Persephone', value: 'persephone' },
+  { label: 'Zeus', value: 'zeus', disabled: true },
+  { label: 'Poseidon', value: 'poseidon' },
+  { label: 'Hera', value: 'hera' },
+]
+
+function StartIconPreview() {
+  const { collection, handleInputChange } =
+    useStatefulCollection(initialItems)
 
   return (
     <Box w="1/2">
-      <Field label="Select Relative">
-        <Select collection={collection} placeholder="Choose option">
-          <OptionGroup>
-            <OptionGroupLabel>The fam</OptionGroupLabel>
-            <For each={collection.items}>
-              {(item) => <Option key={item.value} item={item} />}
-            </For>
-          </OptionGroup>
-        </Select>
+      <Combobox
+        collection={collection}
+        label="Select Relative"
+        onInputValueChange={handleInputChange}
+        openOnClick
+        placeholder="Choose option"
+        startIcon={<Search />}
+      >
+        <For
+          each={collection.items}
+          fallback={
+            <VStack paddingBlock="6" w="full">
+              <Text textAlign="center" textStyle="label-sm">
+                No results found
+              </Text>
+            </VStack>
+          }
+        >
+          {(item) => (
+            <ComboItemWithIndicator key={item.value} item={item}>
+              <ComboItemText>{item.label}</ComboItemText>
+            </ComboItemWithIndicator>
+          )}
+        </For>
+      </Combobox>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Grouped Items
+
+To group items, use the `ComboItemGroup` component (not ComboboxItemGroup).
+
+<CodePreview preview={<GroupedItemsPreview />}>
+```tsx {24}
+import {
+  For,
+  Combobox,
+  ComboItemGroup,
+  ComboItemWithIndicator,
+  ComboItemText,
+  useStatefulCollection,
+} from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
+
+function GroupedItemsPreview() {
+  const { collection, handleInputChange } =
+    useStatefulCollection(comboInitialItems)
+
+  return (
+    <Box w="1/2">
+      <Combobox
+        collection={collection}
+        label="Select Relative"
+        onInputValueChange={handleInputChange}
+        placeholder="Choose option"
+        startIcon={<Search />}
+      >
+        <ComboItemGroup label="The fam">
+          <For
+            each={collection.items}
+            fallback={
+              <VStack paddingBlock="6" w="full">
+                <Text textAlign="center" textStyle="label-sm">
+                  No results found
+                </Text>
+              </VStack>
+            }
+          >
+            {(item) => (
+              <ComboItemWithIndicator key={item.value} item={item}>
+                <ComboItemText>{item.label}</ComboItemText>
+              </ComboItemWithIndicator>
+            )}
+          </For>
+        </ComboItemGroup>
+      </Combobox>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## With Field
+
+Wrap the `Combobox` component with the `Field` component to add additional functionality such as error and helper text when using it in a form.
+
+<CodePreview preview={<FieldPreview />}>
+```tsx
+'use client'
+
+import {
+  For,
+  Field,
+  Combobox,
+  ComboItemWithIndicator,
+  ComboItemText,
+  useStatefulCollection,
+} from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
+
+function FieldPreview() {
+  const { collection, handleInputChange } =
+    useStatefulCollection(comboInitialItems)
+
+  return (
+    <Box w="1/2">
+      <Field
+        label="Select Relative"
+        helperText="This is saved to your profile"
+        errorText="You must select something."
+        required
+      >
+        <Combobox
+          collection={collection}
+          onInputValueChange={handleInputChange}
+          placeholder="Choose option"
+          form="myForm"
+        >
+          <For
+            each={collection.items}
+            fallback={
+              <VStack paddingBlock="6" w="full">
+                <Text textAlign="center" textStyle="label-sm">
+                  No results found
+                </Text>
+              </VStack>
+            }
+          >
+            {(item) => (
+              <ComboItemWithIndicator key={item.value} item={item}>
+                <ComboItemText>{item.label}</ComboItemText>
+              </ComboItemWithIndicator>
+            )}
+          </For>
+        </Combobox>
       </Field>
     </Box>
   )
@@ -108,120 +265,91 @@ You can utilize the primitive components to customize the select.
 
 | Component | Description |
 | --------- | ----------- |
-| SelectRoot    | The context provider for the Select family |
-| SelectLabel   | The label that appears above the select input |
-| SelectControl | The wrapper to the select trigger that opens the dropdown |
-| SelectTrigger | he trigger that opens the dropdown |
-| SelectValueText | The text that appears in the trigger |
-| SelectIndicator | The indicator that appears in the trigger |
-| SelectClearTrigger | The trigger that clears the selected value |
-| SelectPositioner | The wrapper that positions the dropdown |
-| SelectContent | The content of the dropdown (i.e. the container itself) |
-| SelectItemGroup | The group of options in the dropdown |
-| SelectItemGroupLabel | The label for the group of options |
-| SelectItem | The option in the dropdown |
-| SelectItemText | The text label of the option |
-| SelectItemIndicator | The indicator shown when the option is selected |
-| SelectHiddenInput | The native select for the select group. |
+| ComboboxRoot    | The context provider for the combobox family |
+| ComboboxLabel   | The label that appears above the combobox input |
+| ComboboxControl | The wrapper to the combobox trigger that opens the dropdown |
+| ComboboxInput | The input field of the combobox |
+| ComboboxTrigger | he trigger that opens the dropdown |
+| ComboboxClearTrigger | The trigger that clears the selected value |
+| ComboboxPositioner | The wrapper that positions the dropdown |
+| ComboboxContent | The content of the dropdown (i.e. the container itself) |
+| ComboboxItemGroup | The group of options in the dropdown |
+| ComboboxItemGroupLabel | The label for the group of options |
+| ComboboxItem | The option in the dropdown |
+| ComboboxItemText | The text label of the option |
+| ComboboxItemIndicator | The indicator shown when the option is selected |
 
-<CodePreview preview={<SelectCustomPreview />}>
+<CodePreview preview={<CustomDemo />}>
 ```tsx
-function SelectCustomPreview() {
-  const collection = createSelectCollection([
-    { label: 'Hades', value: '1-hades' },
-    { label: 'Persephone', value: '1-persephone' },
-    { label: 'Zeus', value: '1-zeus', disabled: true },
-    { label: 'Poseidon', value: '1-poseidon' },
-    { label: 'Hera', value: '1-hera' },
-  ])
+'use client'
+
+import {
+  For,
+  Portal,
+  ComboboxParts,
+  useStatefulCollection,
+} from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
+import { css } from '@cerberus/styled-system/css'
+
+
+function CustomDemo() {
+  const { collection, handleInputChange } =
+    useStatefulCollection(comboInitialItems)
 
   return (
     <Box w="1/2">
-      <SelectRoot collection={collection}>
-        <SelectLabel
+      <ComboboxParts.Root
+        collection={collection}
+        onInputValueChange={handleInputChange}
+        className={css({
+          transform: 'skewX(-10deg)',
+        })}
+      >
+        <ComboboxParts.Label
           className={css({
-            paddingBlock: 2,
-            textStyle: 'body-sm',
             textTransform: 'uppercase',
           })}
         >
-          Select a custom relative
-        </SelectLabel>
+          Custom label
+        </ComboboxParts.Label>
 
-        <SelectControl>
-          <SelectTrigger
-            className={cx(
-              css({
-                bgColor: 'black',
-                color: 'danger.surface.initial',
-                paddingInline: 4,
-                paddingBlock: 3,
-                _hover: {
-                  bgColor: 'danger.surface.initial',
-                  color: 'white',
-                },
-              }),
-              hstack({
-                justify: 'space-between',
-                w: 'full',
-              }),
-            )}
-          >
-            <SelectValueText placeholder="Choose a custom option" />
-            <SelectIndicator
-              className={css({
-                transitionProperty: 'transform',
-                transitionDuration: 'fast',
-                _open: {
-                  transform: 'rotate(180deg)',
-                },
-              })}
-            >
-              <ChevronDownOutline />
-            </SelectIndicator>
-          </SelectTrigger>
-          <SelectClearTrigger>Clear</SelectClearTrigger>
-        </SelectControl>
+        <ComboboxParts.Control>
+          <ComboboxParts.Input />
+
+          <ComboboxParts.Trigger>
+            <ChevronDownOutline />
+          </ComboboxParts.Trigger>
+        </ComboboxParts.Control>
 
         <Portal>
-          <SelectPositioner className={css({ w: 'var(--reference-width)' })}>
-            <SelectContent
-              className={css({
-                bgColor: 'danger.surface.initial',
-                p: 4,
-              })}
-            >
-              <SelectItemGroup>
-                <SelectItemGroupLabel
-                  className={css({
-                    fontWeight: 'bold',
-                    textStyle: 'label-sm',
-                    textTransform: 'uppercase',
-                  })}
-                >
-                  The fam
-                </SelectItemGroupLabel>
-                {collection.items.map((item, idx) => (
-                  <SelectItem key={item.value} item={item}>
-                    <SelectItemText
-                      className={css({
-                        color: 'white',
-                        display: 'inline-block',
-                      })}
-                      style={{
-                        paddingInlineStart: `calc(16px * ${idx})`,
-                      }}
-                    >
+          <ComboboxParts.Positioner>
+            <ComboboxParts.Content>
+              <For
+                each={collection.items}
+                fallback={
+                  <VStack paddingBlock="6" w="full">
+                    <Text textAlign="center" textStyle="label-sm">
+                      No results found
+                    </Text>
+                  </VStack>
+                }
+              >
+                {(item) => (
+                  <ComboboxParts.Item key={item.value} item={item}>
+                    <ComboboxParts.ItemText className={css({ fontSize: 'xl' })}>
                       {item.label}
-                    </SelectItemText>
-                    <SelectItemIndicator>✓</SelectItemIndicator>
-                  </SelectItem>
-                ))}
-              </SelectItemGroup>
-            </SelectContent>
-          </SelectPositioner>
+                    </ComboboxParts.ItemText>
+                    <ComboboxParts.ItemIndicator>
+                      🔥
+                    </ComboboxParts.ItemIndicator>
+                  </ComboboxParts.Item>
+                )}
+              </For>
+            </ComboboxParts.Content>
+          </ComboboxParts.Positioner>
         </Portal>
-      </SelectRoot>
+      </ComboboxParts.Root>
     </Box>
   )
 }
@@ -231,70 +359,67 @@ function SelectCustomPreview() {
 
 ## API
 
-### Select
+### Combobox
 
-The `Select` component is an abstraction of our primitives and accepts the following props:
-
-| Name     | Default | Description                                            |
-| -------- | ------- | ------------------------------------------------------ |
-| placeholder |         | The placeholder to show in the select trigger. |
-| size        | 'md'    | The size of the select. |
-| collection  |         | The collection of options to show in the dropdown. |
-
-The `Select` component also accepts all the props of the [`SelectRoot` primitive props](https://ark-ui.com/react/docs/components/select#api-reference)
-
-### Option
-
-The `Option` component is an abstraction of our primitives and accepts the following props:
+The `Combobox` component is an abstraction of our primitives and accepts the following props:
 
 | Name     | Default | Description                                            |
 | -------- | ------- | ------------------------------------------------------ |
-| item     |       | The item to show in the dropdown. `SelectCollectionItem` |
+| size        | 'md'    | The size of the combobox. |
+| startIcon  |         | The icon to display at the start of the input. |
 
-The `Option` component also accepts all the props of the [`SelectItem` primitive props](https://ark-ui.com/react/docs/components/select#api-reference)
+The `Combobox` component also accepts all the props of the [`ComboboxRoot` primitive props](https://ark-ui.com/react/docs/components/combobox#api-reference)
 
-### OptionGroup
+### ItemWithIndicator
 
-The `OptionGroup` component is an abstraction of our primitives and accepts the same props as the `SelectItemGroup` primitive.
+The `ItemWithIndicator` component is an abstraction of our primitives and  accepts all the props of the [`ComboboxItem` primitive props](https://ark-ui.com/react/docs/components/combobox#api-reference)
 
-### OptionGroupLabel
+### ComboItemGroup
 
-The `OptionGroupLabel` component is an abstraction of our primitives and accepts the same props as the `SelectItemGroupLabel` primitive.
+The `ComboItemGroup` component is an abstraction of our primitives and accepts the following props:
 
-### createSelectCollection
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| label    |         | The label of the group.                                |
 
-The `createSelectCollection` function is a utility function that creates a collection of options for the `Select` component.
+The `ComboItemGroup` component is an abstraction of our primitives and  accepts all the props of the [`ComboboxItemGroup` primitive props](https://ark-ui.com/react/docs/components/combobox#api-reference)
+
+### useStatefulCollection
+
+The `useStatefulCollection` function is a utility hook that creates a collection of options and filters the list based on the user input.
 
 ```ts
-export function createSelectCollection(
-  collection: SelectCollectionItem[],
-): ListCollection<SelectCollectionItem> {
-  return createListCollection({
-    items: collection,
-  })
-}
+function useStatefulCollection(
+  initialItems: SelectCollectionItem[] = [],
+): StatefulCollectionReturn
 ```
 
-### Parts
-
-The `SelectParts` API is an Object containing the full family of components.
-
-<NoteAdmonition description="It is best to only use the SelectParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+#### Returns
 
 | Name     | Description                            |
 | -------- | -------------------------------------- |
-| Root     | The `SelectRoot` component which is the Provider for the family. |
-| Label     | The `SelectLabel` component which displays the label and "required" notice. |
-| Control     | The `SelectControl` component which is the visual field. |
-| Trigger     | The `SelectTrigger` component which is the trigger for the dropdown. |
-| ClearTrigger     | The `SelectClearTrigger` component which is the trigger to clear the selected value. |
-| ValueText  | The `SelectValueText` component which displays the selected value. |
-| Indicator  | The `SelectIndicator` component which displays the trigger indicator. |
-| Positioner | The `SelectPositioner` component which is controls the positioning for the dropdown. |
-| Content  | The `SelectContent` component which is the dropdown itself. |
-| ItemGroup | The `SelectItemGroup` component which is the group of options in the dropdown. |
-| ItemGroupLabel | The `SelectItemGroupLabel` component which is the label for the group of options. |
-| Item     | The `SelectItem` component which is the option in the dropdown. |
-| ItemText | The `SelectItemText` component which is the text label of the option. |
-| ItemIndicator | The `SelectItemIndicator` component which displays based on the `checked` state. |
-| HiddenInput  | The `SelectHiddenInput` component which displays the native input. |
+| collection  | The collection of options. |
+| filterChars  | The filter value split into an Array of chars. |
+| handleInputChange | The function to pass to `onInputValueChange`. |
+
+### Parts
+
+The `ComboboxParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the ComboboxParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `ComboboxRoot` component which is the Provider for the family. |
+| Label     | The `ComboboxLabel` component which displays the label. |
+| Control     | The `ComboboxControl` component which is the container for the visual field. |
+| Input     | The `ComboboxInput` component which is the visual field. |
+| Trigger     | The `ComboboxTrigger` component which is the trigger for the dropdown. |
+| ClearTrigger     | The `ComboboxClearTrigger` component which is the trigger to clear the value. |
+| Positioner | The `ComboboxPositioner` component which is controls the positioning for the dropdown. |
+| Content  | The `ComboboxContent` component which is the dropdown itself. |
+| ItemGroup | The `ComboboxItemGroup` component which is the group of options in the dropdown. |
+| ItemGroupLabel | The `ComboboxItemGroupLabel` component which is the label for the group of options. |
+| Item     | The `ComboboxItem` component which is the option in the dropdown. |
+| ItemText | The `ComboboxItemText` component which is the text label of the option. |
+| ItemIndicator | The `ComboboxItemIndicator` component which displays based on the `checked` state. |

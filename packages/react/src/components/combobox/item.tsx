@@ -1,4 +1,7 @@
+'use client'
+
 import type { ComboboxItemProps } from '@ark-ui/react'
+import { useCerberusContext } from '../../context/cerberus'
 import { ComboboxParts } from './parts'
 
 /**
@@ -11,10 +14,16 @@ import { ComboboxParts } from './parts'
  * @description [Combobox Docs](https://cerberus.digitalu.design/react/combobox)
  * @description [Ark Docs](https://ark-ui.com/react/docs/components/combobox)
  */
-export function ComboboxItemWithIndicator(props: ComboboxItemProps) {
+export function ComboItemWithIndicator(props: ComboboxItemProps) {
+  const { icons } = useCerberusContext()
+  const { selectChecked: CheckedIcon } = icons
+
   return (
     <ComboboxParts.Item {...props}>
-      <ComboboxParts.ItemIndicator />
+      <ComboboxParts.ItemIndicator>
+        <CheckedIcon />
+      </ComboboxParts.ItemIndicator>
+
       {props.children}
     </ComboboxParts.Item>
   )
