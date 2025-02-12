@@ -7,8 +7,8 @@ import {
   For,
   Field,
   Combobox,
-  ComboboxItemWithIndicator,
-  ComboboxItemText,
+  ComboItemWithIndicator,
+  ComboItemText,
   createSelectCollection,
 } from '@cerberus-design/react'
 import { VStack } from '@cerberus-design/styled-system/jsx'
@@ -93,9 +93,9 @@ export function ComboboxPreview() {
         <ComboboxEl {...selectedProps}>
           <For each={collection.items}>
             {(item) => (
-              <ComboboxItemWithIndicator key={item.value} item={item}>
-                <ComboboxItemText>{item.label}</ComboboxItemText>
-              </ComboboxItemWithIndicator>
+              <ComboItemWithIndicator key={item.value} item={item}>
+                <ComboItemText>{item.label}</ComboItemText>
+              </ComboItemWithIndicator>
             )}
           </For>
         </ComboboxEl>

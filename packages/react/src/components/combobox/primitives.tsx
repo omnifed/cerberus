@@ -203,4 +203,7 @@ export function ComboboxStartIcon(props: PropsWithChildren) {
   return <ark.span {...props} className={styles.startIcon} />
 }
 
+// We are only doing this to make the API consistent
+export const ComboItemText = ComboboxItemText
+
 export type ComboboxInputValueChangeDetails = Combobox.InputValueChangeDetails
