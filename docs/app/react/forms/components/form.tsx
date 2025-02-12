@@ -1,84 +1,3 @@
----
-npm: '@cerberus-design/react'
-source: 'components/field'
-recipe: 'field'
----
-
-import CodePreview from '@/app/components/CodePreview'
-import DripDivider from '@/app/components/drip-divider'
-import StandardLayout from './components/standard-layout'
-
-## Standard Usage in NextJS
-
-We recommend utilizing native React & Next APIs to handle form state and submission combined with the `noValidate` attribute on the `<form>` element.
-
-This allows you to handle form submission and validation in a more flexible way, while still leveraging the power of the Cerberus Design System.
-
-<CodePreview preview={<StandardLayout />}>
-```tsx title="action.ts"
-'use server'
-
-export async function createProfile(prevState, formData: FormData) {
-  const rawFormData = {
-    firstName: formData.get('first_name'),
-    lastName: formData.get('last_name'),
-    age: formData.get('age'),
-    terms: formData.getAll('terms'),
-  }
-
-  if (!rawFormData.firstName) {
-    return {
-      success: false,
-      data: {
-        field: 'first_name',
-        message: 'A first name is required to submit the form.',
-      },
-    }
-  }
-
-  if (!rawFormData.lastName) {
-    return {
-      success: false,
-      data: {
-        field: 'last_name',
-        message: 'A last name is required to submit the form.',
-      },
-    }
-  }
-
-  if (!rawFormData.age) {
-    return {
-      success: false,
-      data: {
-        field: 'age',
-        message: 'An age is required to submit the form.',
-      },
-    }
-  }
-
-  if (!rawFormData.terms.includes('1')) {
-    return {
-      success: false,
-      data: {
-        field: 'terms',
-        message:
-          'You must agree to the terms and conditions to submit the form.',
-      },
-    }
-  }
-
-  // 1. Update user profile via fetch
-  // 2. Revalidate cache via `revalidatePath('/your-path')`
-
-  // Since this is a demo, we'll just return the form data
-  return {
-    success: true,
-    data: rawFormData,
-  }
-}
-
-```
-```tsx title="form.tsx"
 'use client'
 
 import { useActionState, useEffect } from 'react'
@@ -140,6 +59,7 @@ export function ProfileForm() {
         rounded: 'lg',
         w: '3/4',
       })}
+      noValidate
     >
       <Fieldset
         legend="Your Account Profile"
@@ -241,18 +161,3 @@ export function ProfileForm() {
     </form>
   )
 }
-```
-</CodePreview>
-
-<DripDivider />
-
-## Related Components
-
-
-| Name     |  Description                                                   |
-| -------- | -------------------------------------------------------------  |
-| FieldRoot    | Controls the state of the individual field group.          |
-| TextField    | An all-in-one Input abstraction.                           |
-| Select   | A dropdown select field.                                       |
-| Option    | A all-in-one Option abstraction.                              |
-| HelperText | A message to display for a valid form field.                 |
