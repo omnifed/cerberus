@@ -19,10 +19,8 @@ import { createProfile } from './actions'
 
 // Since this a client component, we can store the form data in a local state
 const initialState = {
-  first_name: '',
-  last_name: '',
-  age: '',
-  terms: [],
+  success: false,
+  data: null,
 }
 
 export function ProfileForm() {

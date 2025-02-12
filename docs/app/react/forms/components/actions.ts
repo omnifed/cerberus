@@ -1,6 +1,21 @@
 'use server'
 
-export async function createProfile(prevState, formData: FormData) {
+export interface ActionResponse {
+  success: boolean
+  data?: {
+    field?: string
+    message?: string
+    firstName?: FormDataEntryValue | null
+    lastName?: FormDataEntryValue | null
+    age?: FormDataEntryValue | null
+    terms?: FormDataEntryValue[]
+  } | null
+}
+
+export async function createProfile(
+  _: ActionResponse,
+  formData: FormData,
+): Promise<ActionResponse> {
   const rawFormData = {
     firstName: formData.get('first_name'),
     lastName: formData.get('last_name'),
