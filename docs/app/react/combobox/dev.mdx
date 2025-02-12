@@ -268,6 +268,7 @@ You can utilize the primitive components to customize the select.
 | ComboboxRoot    | The context provider for the combobox family |
 | ComboboxLabel   | The label that appears above the combobox input |
 | ComboboxControl | The wrapper to the combobox trigger that opens the dropdown |
+| ComboboxInput | The input field of the combobox |
 | ComboboxTrigger | he trigger that opens the dropdown |
 | ComboboxClearTrigger | The trigger that clears the selected value |
 | ComboboxPositioner | The wrapper that positions the dropdown |
@@ -403,24 +404,22 @@ function useStatefulCollection(
 
 ### Parts
 
-The `SelectParts` API is an Object containing the full family of components.
+The `ComboboxParts` API is an Object containing the full family of components.
 
-<NoteAdmonition description="It is best to only use the SelectParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+<NoteAdmonition description="It is best to only use the ComboboxParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
 | Name     | Description                            |
 | -------- | -------------------------------------- |
-| Root     | The `SelectRoot` component which is the Provider for the family. |
-| Label     | The `SelectLabel` component which displays the label and "required" notice. |
-| Control     | The `SelectControl` component which is the visual field. |
-| Trigger     | The `SelectTrigger` component which is the trigger for the dropdown. |
-| ClearTrigger     | The `SelectClearTrigger` component which is the trigger to clear the selected value. |
-| ValueText  | The `SelectValueText` component which displays the selected value. |
-| Indicator  | The `SelectIndicator` component which displays the trigger indicator. |
-| Positioner | The `SelectPositioner` component which is controls the positioning for the dropdown. |
-| Content  | The `SelectContent` component which is the dropdown itself. |
-| ItemGroup | The `SelectItemGroup` component which is the group of options in the dropdown. |
-| ItemGroupLabel | The `SelectItemGroupLabel` component which is the label for the group of options. |
-| Item     | The `SelectItem` component which is the option in the dropdown. |
-| ItemText | The `SelectItemText` component which is the text label of the option. |
-| ItemIndicator | The `SelectItemIndicator` component which displays based on the `checked` state. |
-| HiddenInput  | The `SelectHiddenInput` component which displays the native input. |
+| Root     | The `ComboboxRoot` component which is the Provider for the family. |
+| Label     | The `ComboboxLabel` component which displays the label. |
+| Control     | The `ComboboxControl` component which is the container for the visual field. |
+| Input     | The `ComboboxInput` component which is the visual field. |
+| Trigger     | The `ComboboxTrigger` component which is the trigger for the dropdown. |
+| ClearTrigger     | The `ComboboxClearTrigger` component which is the trigger to clear the value. |
+| Positioner | The `ComboboxPositioner` component which is controls the positioning for the dropdown. |
+| Content  | The `ComboboxContent` component which is the dropdown itself. |
+| ItemGroup | The `ComboboxItemGroup` component which is the group of options in the dropdown. |
+| ItemGroupLabel | The `ComboboxItemGroupLabel` component which is the label for the group of options. |
+| Item     | The `ComboboxItem` component which is the option in the dropdown. |
+| ItemText | The `ComboboxItemText` component which is the text label of the option. |
+| ItemIndicator | The `ComboboxItemIndicator` component which displays based on the `checked` state. |
