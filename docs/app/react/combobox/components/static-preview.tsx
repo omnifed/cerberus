@@ -14,15 +14,14 @@ import {
   createSelectCollection,
   Portal,
   Text,
-  type ComboboxInputValueChangeDetails,
+  useStatefulCollection,
 } from '@cerberus-design/react'
 import { css, cx } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
 import { Box, VStack } from '@cerberus-design/styled-system/jsx'
-import { ChevronDownOutline } from '@carbon/icons-react'
-import { useMemo, useState } from 'react'
+import { ChevronDownOutline, Search } from '@carbon/icons-react'
 
-const initialItems = [
+const comboInitialItems = [
   { label: 'Hades', value: 'hades' },
   { label: 'Persephone', value: 'persephone' },
   { label: 'Zeus', value: 'zeus', disabled: true },
@@ -31,48 +30,68 @@ const initialItems = [
 ]
 
 export function BasicPreview() {
-  const [items, setItems] = useState(initialItems)
-
-  const collection = useMemo(() => createSelectCollection(items), [items])
-
-  const handleInputChange = (details: ComboboxInputValueChangeDetails) => {
-    if (details.inputValue === '') {
-      return setItems(initialItems)
-    }
-    setItems((prev) =>
-      prev.filter((item) =>
-        item.value.includes(details.inputValue.toLowerCase()),
-      ),
-    )
-  }
+  const { collection, handleInputChange } =
+    useStatefulCollection(comboInitialItems)
 
   return (
     <Box w="1/2">
-      <Field>
-        <Combobox
-          collection={collection}
-          label="Select Relative"
-          onInputValueChange={handleInputChange}
-          placeholder="Choose option"
+      <Combobox
+        collection={collection}
+        label="Select Relative"
+        onInputValueChange={handleInputChange}
+        placeholder="Choose option"
+      >
+        <For
+          each={collection.items}
+          fallback={
+            <VStack paddingBlock="6" w="full">
+              <Text textAlign="center" textStyle="label-sm">
+                No results found
+              </Text>
+            </VStack>
+          }
         >
-          <For
-            each={collection.items}
-            fallback={
-              <VStack paddingBlock="6" w="full">
-                <Text textAlign="center" textStyle="label-sm">
-                  No results found
-                </Text>
-              </VStack>
-            }
-          >
-            {(item) => (
-              <ComboboxItemWithIndicator key={item.value} item={item}>
-                <ComboboxItemText>{item.label}</ComboboxItemText>
-              </ComboboxItemWithIndicator>
-            )}
-          </For>
-        </Combobox>
-      </Field>
+          {(item) => (
+            <ComboboxItemWithIndicator key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+            </ComboboxItemWithIndicator>
+          )}
+        </For>
+      </Combobox>
+    </Box>
+  )
+}
+
+export function StartIconPreview() {
+  const { collection, handleInputChange } =
+    useStatefulCollection(comboInitialItems)
+
+  return (
+    <Box w="1/2">
+      <Combobox
+        collection={collection}
+        label="Select Relative"
+        onInputValueChange={handleInputChange}
+        placeholder="Choose option"
+        startIcon={<Search />}
+      >
+        <For
+          each={collection.items}
+          fallback={
+            <VStack paddingBlock="6" w="full">
+              <Text textAlign="center" textStyle="label-sm">
+                No results found
+              </Text>
+            </VStack>
+          }
+        >
+          {(item) => (
+            <ComboboxItemWithIndicator key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+            </ComboboxItemWithIndicator>
+          )}
+        </For>
+      </Combobox>
     </Box>
   )
 }

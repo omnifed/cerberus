@@ -14,12 +14,14 @@ import {
   type ComboboxRootProps,
   type ComboboxTriggerProps,
 } from '@ark-ui/react/combobox'
+import { ark } from '@ark-ui/react/factory'
 import type { SelectCollectionItem } from '../select/select'
 import {
   combobox,
   type ComboboxVariantProps,
 } from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus/styled-system/css'
+import type { PropsWithChildren } from 'react'
 
 /**
  * This module contains the primitives of the Combobox.
@@ -191,6 +193,14 @@ export function ComboboxItemIndicator(props: ComboboxItemIndicatorProps) {
       className={cx(styles.itemIndicator, props.className)}
     />
   )
+}
+
+/**
+ * The icon that appears at the start of the combobox input.
+ */
+export function ComboboxStartIcon(props: PropsWithChildren) {
+  const styles = combobox()
+  return <ark.span {...props} className={styles.startIcon} />
 }
 
 export type ComboboxInputValueChangeDetails = Combobox.InputValueChangeDetails

@@ -17,6 +17,7 @@ const triggerStyles = {
   h: 'var(--combobox-trigger-height)',
   justifyContent: 'center',
   position: 'absolute',
+  userSelect: 'none',
   w: '2rem',
   zIndex: 'decorator',
 }
@@ -28,7 +29,7 @@ const triggerStyles = {
  */
 export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'combobox',
-  slots: comboboxAnatomy.keys(),
+  slots: [...comboboxAnatomy.keys(), 'startIcon'],
   jsx: [
     // primitives
     'ComboboxRoot',
@@ -44,6 +45,7 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
     'ComboboxItem',
     'ComboboxItemText',
     'ComboboxItemIndicator',
+    'ComboboxStartIcon',
     // abstractions
     'Combobox',
     'ComboItemGroup',
@@ -87,6 +89,9 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionProperty: 'background, box-shadow, border-color',
       transitionTimingFunction: 'default',
       w: 'full',
+      '&:is([data-has=start-indicator])': {
+        paddingInlineStart: 10,
+      },
       _placeholderShown: {
         color: 'page.text.100',
       },
@@ -107,6 +112,10 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       '& :where(svg)': {
         color: 'page.text.100',
       },
+    },
+    startIcon: {
+      ...triggerStyles,
+      left: 2,
     },
     trigger: {
       ...triggerStyles,

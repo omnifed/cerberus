@@ -7,15 +7,13 @@ ark: 'combobox'
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import { BasicPreview, GroupedOptionsDemo, SelectCustomPreview } from '@/app/react/combobox/components/static-preview'
+import { BasicPreview, StartIconPreview, GroupedOptionsDemo, SelectCustomPreview } from '@/app/react/combobox/components/static-preview'
 
 ```ts
 import {
   Combobox,
   ComboboxItemWithIndicator,
-  ComboboxItemText,
-  createSelectCollection,
-  type ComboboxInputValueChangeDetails,
+  ComboboxItemText
 } from '@cerberus/react'
 ```
 
@@ -29,12 +27,10 @@ The `Combobox` component is an abstraction component that provides a fully funct
 
 import {
   For,
-  Field,
   Combobox,
   ComboboxItemWithIndicator,
   ComboboxItemText,
-  createSelectCollection,
-  type ComboboxInputValueChangeDetails,
+  useStatefulCollection,
 } from '@cerberus/react'
 import { Box, VStack } from '@cerberus/styled-system/jsx'
 import { useMemo, useState } from 'react'
@@ -47,49 +43,98 @@ const initialItems = [
   { label: 'Hera', value: 'hera' },
 ]
 
-export function BasicPreview() {
-  const [items, setItems] = useState(initialItems)
-
-  const collection = useMemo(() => createSelectCollection(items), [items])
-
-  const handleInputChange = (details: ComboboxInputValueChangeDetails) => {
-    if (details.inputValue === '') {
-      return setItems(initialItems)
-    }
-    setItems((prev) =>
-      prev.filter((item) =>
-        item.value.includes(details.inputValue.toLowerCase()),
-      ),
-    )
-  }
+function BasicPreview() {
+  const { collection, handleInputChange } =
+    useStatefulCollection(initialItems)
 
   return (
     <Box w="1/2">
-      <Field>
-        <Combobox
-          collection={collection}
-          label="Select Relative"
-          onInputValueChange={handleInputChange}
-          placeholder="Choose option"
+      <Combobox
+        collection={collection}
+        label="Select Relative"
+        onInputValueChange={handleInputChange}
+        placeholder="Choose option"
+      >
+        <For
+          each={collection.items}
+          fallback={
+            <VStack paddingBlock="6" w="full">
+              <Text textAlign="center" textStyle="label-sm">
+                No results found
+              </Text>
+            </VStack>
+          }
         >
-          <For
-            each={collection.items}
-            fallback={
-              <VStack paddingBlock="6" w="full">
-                <Text textAlign="center" textStyle="label-sm">
-                  No results found
-                </Text>
-              </VStack>
-            }
-          >
-            {(item) => (
-              <ComboboxItemWithIndicator key={item.value} item={item}>
-                <ComboboxItemText>{item.label}</ComboboxItemText>
-              </ComboboxItemWithIndicator>
-            )}
-          </For>
-        </Combobox>
-      </Field>
+          {(item) => (
+            <ComboboxItemWithIndicator key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+            </ComboboxItemWithIndicator>
+          )}
+        </For>
+      </Combobox>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## With Start Icon
+
+To add an icon to the start position of the input, use the `startIcon` prop to pass in your `ReactNode`.
+
+<CodePreview preview={<StartIconPreview />}>
+```tsx
+'use client'
+
+import {
+  For,
+  Combobox,
+  ComboboxItemWithIndicator,
+  ComboboxItemText,
+  useStatefulCollection,
+} from '@cerberus/react'
+import { Box, VStack } from '@cerberus/styled-system/jsx'
+import { useMemo, useState } from 'react'
+import { Search } from '@carbon/icons-react'
+
+const initialItems = [
+  { label: 'Hades', value: 'hades' },
+  { label: 'Persephone', value: 'persephone' },
+  { label: 'Zeus', value: 'zeus', disabled: true },
+  { label: 'Poseidon', value: 'poseidon' },
+  { label: 'Hera', value: 'hera' },
+]
+
+function StartIconPreview() {
+  const { collection, handleInputChange } =
+    useStatefulCollection(initialItems)
+
+  return (
+    <Box w="1/2">
+      <Combobox
+        collection={collection}
+        label="Select Relative"
+        onInputValueChange={handleInputChange}
+        placeholder="Choose option"
+        startIcon={<Search />}
+      >
+        <For
+          each={collection.items}
+          fallback={
+            <VStack paddingBlock="6" w="full">
+              <Text textAlign="center" textStyle="label-sm">
+                No results found
+              </Text>
+            </VStack>
+          }
+        >
+          {(item) => (
+            <ComboboxItemWithIndicator key={item.value} item={item}>
+              <ComboboxItemText>{item.label}</ComboboxItemText>
+            </ComboboxItemWithIndicator>
+          )}
+        </For>
+      </Combobox>
     </Box>
   )
 }
@@ -299,19 +344,22 @@ The `OptionGroup` component is an abstraction of our primitives and accepts the 
 
 The `OptionGroupLabel` component is an abstraction of our primitives and accepts the same props as the `SelectItemGroupLabel` primitive.
 
-### createSelectCollection
+### useStatefulCollection
 
-The `createSelectCollection` function is a utility function that creates a collection of options for the `Select` component.
+The `useStatefulCollection` function is a utility hook that creates a collection of options and filters the list based on the user input.
 
 ```ts
-export function createSelectCollection(
-  collection: SelectCollectionItem[],
-): ListCollection<SelectCollectionItem> {
-  return createListCollection({
-    items: collection,
-  })
-}
+function useStatefulCollection(
+  initialItems: SelectCollectionItem[] = [],
+): StatefulCollectionReturn
 ```
+
+#### Returns
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| collection  | The collection of options. |
+| handleInputChange | The function to pass to `onInputValueChange`. |
 
 ### Parts
 
