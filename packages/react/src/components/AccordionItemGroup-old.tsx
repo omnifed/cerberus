@@ -6,9 +6,9 @@ import {
   AccordionItem,
   AccordionItemContent,
   AccordionItemTrigger,
-} from './Accordion'
+} from './Accordion-old'
 import { css } from '@cerberus/styled-system/css'
-import { AccordionItemIndicator } from './Accordion.client'
+import { AccordionItemIndicator } from './Accordion-old.client'
 
 /**
  * This module contains an abstraction of the AccordionItem components.
