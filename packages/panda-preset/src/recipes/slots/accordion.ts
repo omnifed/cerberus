@@ -16,12 +16,15 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'accordion',
   slots: accordionAnatomy.keys(),
   jsx: [
-    'Accordion',
-    'AccordionItemGroup',
+    // primitives
+    'AccordionRoot',
     'AccordionItem',
     'AccordionItemTrigger',
     'AccordionItemIndicator',
     'AccordionItemContent',
+    // abstractions
+    'Accordion',
+    'AccordionItemGroup',
   ],
 
   base: {

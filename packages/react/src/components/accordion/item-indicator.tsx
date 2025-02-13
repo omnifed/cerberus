@@ -1,15 +1,13 @@
 'use client'
 
-import { Accordion as ArkAccordion } from '@ark-ui/react'
+import { type AccordionItemIndicatorProps } from '@ark-ui/react/accordion'
 import { cx } from '@cerberus/styled-system/css'
 import {
   accordion,
   type AccordionVariantProps,
 } from '@cerberus/styled-system/recipes'
-import { useCerberusContext } from '../context/cerberus'
-
-export type AccordionItemIndicatorProps = ArkAccordion.ItemIndicatorProps &
-  AccordionVariantProps
+import { useCerberusContext } from '../../context/cerberus'
+import { AccordionItemIndicator } from './primitives'
 
 /**
  * The indicator for the Accordion component.
@@ -28,19 +26,22 @@ export type AccordionItemIndicatorProps = ArkAccordion.ItemIndicatorProps &
  * </Accordion>
  * ```
  * */
-export function AccordionItemIndicator(props: AccordionItemIndicatorProps) {
+export function AccordionChevronItemIndicator(
+  props: AccordionItemIndicatorProps & AccordionVariantProps,
+) {
   const { size, ...indicatorProps } = props
   const styles = accordion({ size })
   const iconSize = size === 'sm' ? 16 : '24'
+
   const { icons } = useCerberusContext()
   const ChevronDown = icons.accordionIndicator
 
   return (
-    <ArkAccordion.ItemIndicator
+    <AccordionItemIndicator
       {...indicatorProps}
       className={cx(indicatorProps.className, styles.itemIndicator)}
     >
       <ChevronDown size={iconSize} />
-    </ArkAccordion.ItemIndicator>
+    </AccordionItemIndicator>
   )
 }
