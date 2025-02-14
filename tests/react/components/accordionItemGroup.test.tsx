@@ -26,23 +26,4 @@ describe('AccordionItemGroup', () => {
     expect(screen.getByText(/Accordion Item 1/i)).toBeTruthy()
     expect(screen.getByText(/Accordion content/i)).toBeTruthy()
   })
-
-  test('should apply specific styles based on the indicator position', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Accordion>
-          <AccordionItemGroup
-            heading="Accordion Item 1"
-            value="one"
-            indicatorPosition="start"
-          >
-            Accordion content
-          </AccordionItemGroup>
-        </Accordion>
-      </CerberusProvider>,
-    )
-    expect(screen.getByRole('button').classList).toContain(
-      'cerberus-jc_flex-start',
-    )
-  })
 })

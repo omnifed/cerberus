@@ -23,66 +23,52 @@ export function LivePlayground() {
   )
 }
 
-export function LivePlaygroundWithCode() {
-  return (
-    <CodeBuilder
-      api={api}
-      code={`import {
-Accordion,
-AccordionItemGroup,
-type AccordionItemGroupProps
-} from '@cerberus/react'
-
-/**
- * Custom Accordion where the children is the content of the AccordionItemGroup
- **/
-export function MyAccordion(props: AccordionItemGroupProps) {
-  return (
-    <Accordion>
-      <AccordionItemGroup
-        {...props}
-        indicatorPosition={{indicatorPosition}}
-        size={{size}}
-      />
-    </Accordion>
-  )
-}`}
-    >
-      <AccordionPreview />
-    </CodeBuilder>
-  )
-}
-
 export function AccordionPreview() {
   const { selectedProps } = useCodeBuilder()
   return (
     <Show
       when={selectedProps.size === 'lg'}
       fallback={
-        <Accordion>
+        <Accordion size="sm">
           <AccordionItemGroup
             heading="This is a heading"
             indicatorPosition={
               selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
             }
-            size="sm"
             value="one:fallback"
           >
             This is the content
           </AccordionItemGroup>
+          <AccordionItemGroup
+            heading="This is another heading"
+            indicatorPosition={
+              selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
+            }
+            value="twp:fallback"
+          >
+            This is the content for the second item
+          </AccordionItemGroup>
         </Accordion>
       }
     >
-      <Accordion>
+      <Accordion size="lg">
         <AccordionItemGroup
           heading="This is a heading"
           indicatorPosition={
             selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
           }
-          size={selectedProps.size as AccordionItemGroupProps['size']}
           value="one"
         >
           This is the content
+        </AccordionItemGroup>
+        <AccordionItemGroup
+          heading="This is another heading"
+          indicatorPosition={
+            selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
+          }
+          value="twp:fallback"
+        >
+          This is the content for the second item
         </AccordionItemGroup>
       </Accordion>
     </Show>

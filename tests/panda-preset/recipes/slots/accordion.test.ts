@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { slotRecipes } from '@cerberus-design/panda-preset'
+import { focusStates, slotRecipes } from '@cerberus-design/panda-preset'
 
 describe('accordion recipe', () => {
   const { accordion } = slotRecipes
@@ -13,6 +13,30 @@ describe('accordion recipe', () => {
       display: 'flex',
       flexDirection: 'column',
       w: 'full',
+      _smSize: {
+        '& :is([data-part=item-trigger])': {
+          textStyle: 'heading-xs',
+        },
+        '& :is([data-part=item-content])': {
+          textStyle: 'body-sm',
+        },
+        '& :is([data-part=item-indicator] > svg)': {
+          h: '16px',
+          w: '16px',
+        },
+      },
+      _lgSize: {
+        '& :is([data-part=item-trigger])': {
+          textStyle: 'heading-sm',
+        },
+        '& :is([data-part=item-content])': {
+          textStyle: 'body-md',
+        },
+        '& :is([data-part=item-indicator] > svg)': {
+          h: '24px',
+          w: '24px',
+        },
+      },
     })
   })
 
@@ -20,22 +44,32 @@ describe('accordion recipe', () => {
     expect(accordion.base?.item).toMatchObject({
       borderBlockEnd: '2px solid',
       borderColor: 'page.border.initial',
+      paddingBlock: 'var(--accordion-item-padding)',
     })
   })
 
   test('should have an itemTrigger style', () => {
     expect(accordion.base?.itemTrigger).toMatchObject({
       alignItems: 'center',
-      color: 'page.text.initial',
       cursor: 'pointer',
+      color: 'page.text.initial',
       display: 'flex',
-      justifyContent: 'space-between',
+      paddingBlock: 'var(--accordion-item-trigger-padding)',
       pxi: 'sm',
+      rounded: 'var(--accordion-item-trigger-radii)',
       transitionProperty: 'background-color',
       transitionDuration: 'fast',
       w: 'full',
+      ...focusStates,
       _hover: {
         bgColor: 'action.ghost.hover',
+      },
+      _startIndicator: {
+        gap: 'md',
+        justifyContent: 'flex-start',
+      },
+      _endIndicator: {
+        justifyContent: 'space-between',
       },
     })
   })
@@ -51,6 +85,7 @@ describe('accordion recipe', () => {
         transitionDuration: 'fast',
         _open: {
           animationName: 'expandHeight, fadeIn',
+          paddingBlock: 'var(--accordion-item-content-padding)',
         },
         _closed: {
           animationName: 'collapseHeight, fadeOut',
@@ -74,44 +109,25 @@ describe('accordion recipe', () => {
     })
   })
 
-  test('should have a size variant for itemTrigger', () => {
-    expect(accordion.variants?.size?.sm.itemTrigger).toMatchObject({
-      paddingBlock: 'sm',
-      rounded: 'lg',
-      textStyle: 'heading-xs',
-    })
-  })
-
-  test('should have a size variant for itemContent', () => {
-    expect(accordion.variants?.size?.sm.itemContent).toMatchObject({
-      textStyle: 'body-sm',
-      _open: {
-        paddingBlock: 'sm',
-      },
-    })
-  })
-
-  test('should have a size variant for lg', () => {
-    expect(accordion.variants?.size?.lg).toMatchObject({
-      item: {
-        paddingBlock: 'sm',
-      },
-    })
-  })
-
   test('should have a size variant for itemTrigger with lg', () => {
-    expect(accordion.variants?.size?.lg.itemTrigger).toMatchObject({
-      paddingBlock: 'md',
-      rounded: 'xl',
-      textStyle: 'heading-sm',
-    })
-  })
-
-  test('should have a size variant for itemContent with lg', () => {
-    expect(accordion.variants?.size?.lg.itemContent).toMatchObject({
-      textStyle: 'body-md',
-      _open: {
-        paddingBlock: 'md',
+    expect(accordion.variants).toMatchObject({
+      size: {
+        sm: {
+          root: {
+            '--accordion-item-padding': '{spacing.xs}',
+            '--accordion-item-trigger-padding': '{spacing.sm}',
+            '--accordion-item-trigger-radii': '{radii.lg}',
+            '--accordion-item-content-padding': '{spacing.sm}',
+          },
+        },
+        lg: {
+          root: {
+            '--accordion-item-padding': '{spacing.sm}',
+            '--accordion-item-trigger-padding': '{spacing.md}',
+            '--accordion-item-trigger-radii': '{radii.md}',
+            '--accordion-item-content-padding': '{spacing.md}',
+          },
+        },
       },
     })
   })

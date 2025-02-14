@@ -110,6 +110,38 @@ describe('conditions', () => {
     expect(conditions.startIcon).toEqual('&:is([data-start-icon=true])')
   })
 
+  test('should have a startIndicator', () => {
+    expect(conditions.startIndicator).toEqual(
+      '&:is([data-indicator-position=start])',
+    )
+  })
+
+  test('should have an endIndicator', () => {
+    expect(conditions.endIndicator).toEqual(
+      '&:is([data-indicator-position=end])',
+    )
+  })
+
+  test('should have an xsSize', () => {
+    expect(conditions.xsSize).toEqual('&:is([data-size=xs])')
+  })
+
+  test('should have a smSize', () => {
+    expect(conditions.smSize).toEqual('&:is([data-size=sm])')
+  })
+
+  test('should have a mdSize', () => {
+    expect(conditions.mdSize).toEqual('&:is([data-size=md])')
+  })
+
+  test('should have a lgSize', () => {
+    expect(conditions.lgSize).toEqual('&:is([data-size=lg])')
+  })
+
+  test('should have a xlSize', () => {
+    expect(conditions.xlSize).toEqual('&:is([data-size=xl])')
+  })
+
   test('should have a tooltip', () => {
     expect(conditions.tooltip).toEqual('&:is([data-tooltip=true])')
   })

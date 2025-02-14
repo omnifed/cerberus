@@ -16,12 +16,15 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'accordion',
   slots: accordionAnatomy.keys(),
   jsx: [
-    'Accordion',
-    'AccordionItemGroup',
+    // primitives
+    'AccordionRoot',
     'AccordionItem',
     'AccordionItemTrigger',
     'AccordionItemIndicator',
     'AccordionItemContent',
+    // abstractions
+    'Accordion',
+    'AccordionItemGroup',
   ],
 
   base: {
@@ -29,24 +32,58 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
       display: 'flex',
       flexDirection: 'column',
       w: 'full',
+      // we are doing this to avoid setting the size on multiple primitives
+      _smSize: {
+        '& :is([data-part=item-trigger])': {
+          textStyle: 'heading-xs',
+        },
+        '& :is([data-part=item-content])': {
+          textStyle: 'body-sm',
+        },
+        '& :is([data-part=item-indicator] > svg)': {
+          h: '16px',
+          w: '16px',
+        },
+      },
+      _lgSize: {
+        '& :is([data-part=item-trigger])': {
+          textStyle: 'heading-sm',
+        },
+        '& :is([data-part=item-content])': {
+          textStyle: 'body-md',
+        },
+        '& :is([data-part=item-indicator] > svg)': {
+          h: '24px',
+          w: '24px',
+        },
+      },
     },
     item: {
       borderBlockEnd: '2px solid',
       borderColor: 'page.border.initial',
+      paddingBlock: 'var(--accordion-item-padding)',
     },
     itemTrigger: {
       alignItems: 'center',
       cursor: 'pointer',
       color: 'page.text.initial',
       display: 'flex',
-      justifyContent: 'space-between',
+      paddingBlock: 'var(--accordion-item-trigger-padding)',
       pxi: 'sm',
+      rounded: 'var(--accordion-item-trigger-radii)',
       transitionProperty: 'background-color',
       transitionDuration: 'fast',
       w: 'full',
       ...focusStates,
       _hover: {
         bgColor: 'action.ghost.hover',
+      },
+      _startIndicator: {
+        gap: 'md',
+        justifyContent: 'flex-start',
+      },
+      _endIndicator: {
+        justifyContent: 'space-between',
       },
     },
     itemContent: {
@@ -59,6 +96,7 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
         transitionDuration: 'fast',
         _open: {
           animationName: 'expandHeight, fadeIn',
+          paddingBlock: 'var(--accordion-item-content-padding)',
         },
         _closed: {
           animationName: 'collapseHeight, fadeOut',
@@ -82,35 +120,19 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
   variants: {
     size: {
       sm: {
-        item: {
-          paddingBlock: 'xs',
-        },
-        itemTrigger: {
-          paddingBlock: 'sm',
-          rounded: 'lg',
-          textStyle: 'heading-xs',
-        },
-        itemContent: {
-          textStyle: 'body-sm',
-          _open: {
-            paddingBlock: 'sm',
-          },
+        root: {
+          '--accordion-item-padding': '{spacing.xs}',
+          '--accordion-item-trigger-padding': '{spacing.sm}',
+          '--accordion-item-trigger-radii': '{radii.lg}',
+          '--accordion-item-content-padding': '{spacing.sm}',
         },
       },
       lg: {
-        item: {
-          paddingBlock: 'sm',
-        },
-        itemTrigger: {
-          paddingBlock: 'md',
-          rounded: 'xl',
-          textStyle: 'heading-sm',
-        },
-        itemContent: {
-          textStyle: 'body-md',
-          _open: {
-            paddingBlock: 'md',
-          },
+        root: {
+          '--accordion-item-padding': '{spacing.sm}',
+          '--accordion-item-trigger-padding': '{spacing.md}',
+          '--accordion-item-trigger-radii': '{radii.md}',
+          '--accordion-item-content-padding': '{spacing.md}',
         },
       },
     },

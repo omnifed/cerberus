@@ -21,9 +21,7 @@ export * from './hooks/useToggle'
 
 // components
 
-export * from './components/Accordion'
-export * from './components/Accordion.client'
-export * from './components/AccordionItemGroup'
+export * from './components/accordion/index'
 export * from './components/Admonition'
 export * from './components/Avatar'
 export * from './components/button/index'
