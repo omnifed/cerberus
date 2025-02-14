@@ -42,7 +42,6 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
       cursor: 'pointer',
       color: 'page.text.initial',
       display: 'flex',
-      justifyContent: 'space-between',
       pxi: 'sm',
       transitionProperty: 'background-color',
       transitionDuration: 'fast',
@@ -50,6 +49,13 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
       ...focusStates,
       _hover: {
         bgColor: 'action.ghost.hover',
+      },
+      _startIndicator: {
+        gap: 'md',
+        justifyContent: 'flex-start',
+      },
+      _endIndicator: {
+        justifyContent: 'space-between',
       },
     },
     itemContent: {

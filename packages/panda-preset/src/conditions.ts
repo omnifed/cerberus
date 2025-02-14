@@ -38,6 +38,8 @@ export const conditions = {
   positionTop: '&:is([data-position=top])',
   positionLeft: '&:is([data-position=left])',
   positionRight: '&:is([data-position=right])',
+  startIndicator: '&:is([data-indicator-position=start])',
+  endIndicator: '&:is([data-indicator-position=end])',
 
   // elements
   notify: '&:is([data-notify=true])',

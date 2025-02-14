@@ -6,6 +6,11 @@ import {
   type AccordionItemTriggerProps,
   type AccordionRootProps,
 } from '@ark-ui/react/accordion'
+import { cx } from '@cerberus/styled-system/css'
+import {
+  accordion,
+  type AccordionVariantProps,
+} from '@cerberus/styled-system/recipes'
 
 /**
  * This module contains the primitives of the Accordion component.
@@ -18,8 +23,17 @@ import {
  * This component returns the Ark `Accordion.Root` component which has a
  * base style using the Cerberus `accordion` recipe that can be overridden.
  */
-export function AccordionRoot(props: AccordionRootProps) {
-  return <Accordion.Root {...props} />
+export function AccordionRoot(
+  props: AccordionRootProps & AccordionVariantProps,
+) {
+  const { size, ...rootProps } = props
+  const styles = accordion({ size })
+  return (
+    <Accordion.Root
+      {...props}
+      className={cx(styles.root, rootProps.className)}
+    />
+  )
 }
 
 /**
@@ -29,7 +43,10 @@ export function AccordionRoot(props: AccordionRootProps) {
  * base style using the Cerberus `accordion` recipe that can be overridden.
  */
 export function AccordionItem(props: AccordionItemProps) {
-  return <Accordion.Item {...props} />
+  const styles = accordion()
+  return (
+    <Accordion.Item {...props} className={cx(styles.item, props.className)} />
+  )
 }
 
 /**
@@ -39,7 +56,13 @@ export function AccordionItem(props: AccordionItemProps) {
  * a base style using the Cerberus `accordion` recipe that can be overridden.
  */
 export function AccordionItemTrigger(props: AccordionItemTriggerProps) {
-  return <Accordion.ItemTrigger {...props} />
+  const styles = accordion()
+  return (
+    <Accordion.ItemTrigger
+      {...props}
+      className={cx(styles.itemTrigger, props.className)}
+    />
+  )
 }
 
 /**
@@ -49,7 +72,13 @@ export function AccordionItemTrigger(props: AccordionItemTriggerProps) {
  * a base style using the Cerberus `accordion` recipe that can be overridden.
  */
 export function AccordionItemIndicator(props: AccordionItemIndicatorProps) {
-  return <Accordion.ItemIndicator {...props} />
+  const styles = accordion()
+  return (
+    <Accordion.ItemIndicator
+      {...props}
+      className={cx(styles.itemIndicator, props.className)}
+    />
+  )
 }
 
 /**
@@ -59,5 +88,11 @@ export function AccordionItemIndicator(props: AccordionItemIndicatorProps) {
  * base style using the Cerberus `accordion` recipe that can be overridden.
  */
 export function AccordionItemContent(props: AccordionItemContentProps) {
-  return <Accordion.ItemContent {...props} />
+  const styles = accordion()
+  return (
+    <Accordion.ItemContent
+      {...props}
+      className={cx(styles.itemContent, props.className)}
+    />
+  )
 }

@@ -23,36 +23,6 @@ export function LivePlayground() {
   )
 }
 
-export function LivePlaygroundWithCode() {
-  return (
-    <CodeBuilder
-      api={api}
-      code={`import {
-Accordion,
-AccordionItemGroup,
-type AccordionItemGroupProps
-} from '@cerberus/react'
-
-/**
- * Custom Accordion where the children is the content of the AccordionItemGroup
- **/
-export function MyAccordion(props: AccordionItemGroupProps) {
-  return (
-    <Accordion>
-      <AccordionItemGroup
-        {...props}
-        indicatorPosition={{indicatorPosition}}
-        size={{size}}
-      />
-    </Accordion>
-  )
-}`}
-    >
-      <AccordionPreview />
-    </CodeBuilder>
-  )
-}
-
 export function AccordionPreview() {
   const { selectedProps } = useCodeBuilder()
   return (
@@ -70,6 +40,16 @@ export function AccordionPreview() {
           >
             This is the content
           </AccordionItemGroup>
+          <AccordionItemGroup
+            heading="This is another heading"
+            indicatorPosition={
+              selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
+            }
+            size="sm"
+            value="twp:fallback"
+          >
+            This is the content for the second item
+          </AccordionItemGroup>
         </Accordion>
       }
     >
@@ -79,10 +59,20 @@ export function AccordionPreview() {
           indicatorPosition={
             selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
           }
-          size={selectedProps.size as AccordionItemGroupProps['size']}
+          size="lg"
           value="one"
         >
           This is the content
+        </AccordionItemGroup>
+        <AccordionItemGroup
+          heading="This is another heading"
+          indicatorPosition={
+            selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
+          }
+          size="lg"
+          value="twp:fallback"
+        >
+          This is the content for the second item
         </AccordionItemGroup>
       </Accordion>
     </Show>

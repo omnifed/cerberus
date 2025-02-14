@@ -1,9 +1,9 @@
 import type { AccordionItemProps } from '@ark-ui/react/accordion'
 import { type AccordionVariantProps } from '@cerberus/styled-system/recipes'
-import { css } from '@cerberus/styled-system/css'
 import { splitProps } from '../../utils/index'
 import { Show } from '../Show'
 import { AccordionParts } from './parts'
+import { AccordionChevronItemIndicator } from './item-indicator'
 
 /**
  * This module contains an abstraction of the AccordionItem components.
@@ -42,26 +42,22 @@ export function AccordionItemGroup(props: AccordionItemGroupProps) {
     ['heading', 'children', 'indicatorPosition'],
     ['size'],
   )
-
-  const triggerStyles =
-    groupProps.indicatorPosition === 'start'
-      ? {
-          gap: 'md',
-          justifyContent: 'flex-start',
-        }
-      : undefined
+  const indicatorPosition = groupProps.indicatorPosition ?? 'end'
 
   return (
     <AccordionParts.Item {...itemProps} size={size}>
-      <AccordionParts.ItemTrigger className={css(triggerStyles)} size={size}>
-        <Show when={groupProps.indicatorPosition === 'start'}>
-          <AccordionParts.ItemIndicator size={size} />
+      <AccordionParts.ItemTrigger
+        data-indicator-position={indicatorPosition}
+        size={size}
+      >
+        <Show when={indicatorPosition === 'start'}>
+          <AccordionChevronItemIndicator size={size} />
         </Show>
 
         {groupProps.heading}
 
-        <Show when={groupProps.indicatorPosition === 'end'}>
-          <AccordionParts.ItemIndicator size={size} />
+        <Show when={indicatorPosition === 'end'}>
+          <AccordionChevronItemIndicator size={size} />
         </Show>
       </AccordionParts.ItemTrigger>
 

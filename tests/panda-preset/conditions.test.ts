@@ -110,6 +110,18 @@ describe('conditions', () => {
     expect(conditions.startIcon).toEqual('&:is([data-start-icon=true])')
   })
 
+  test('should have a startIndicator', () => {
+    expect(conditions.startIndicator).toEqual(
+      '&:is([data-indicator-position=start])',
+    )
+  })
+
+  test('should have an endIndicator', () => {
+    expect(conditions.endIndicator).toEqual(
+      '&:is([data-indicator-position=end])',
+    )
+  })
+
   test('should have a tooltip', () => {
     expect(conditions.tooltip).toEqual('&:is([data-tooltip=true])')
   })

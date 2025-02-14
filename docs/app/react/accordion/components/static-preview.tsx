@@ -2,10 +2,9 @@ import {
   AccordionItemGroup,
   Accordion,
   Show,
-  AccordionItem,
-  AccordionItemTrigger,
-  AccordionItemContent,
-  AccordionItemIndicator,
+  For,
+  AccordionParts,
+  type AccordionGroupProps,
 } from '@cerberus-design/react'
 import Image from 'next/image'
 import { Box } from '@cerberus-design/styled-system/jsx'
@@ -13,21 +12,25 @@ import data from './data.json'
 import { Suspense } from 'react'
 import { css } from '@cerberus-design/styled-system/css'
 
-export function StaticPreview() {
+export function StaticPreview(props: AccordionGroupProps) {
   return (
     <Box w="2/3">
       <Accordion defaultValue={['one']}>
-        {data.map((item) => (
-          <AccordionItemGroup
-            heading={item.heading}
-            key={item.id}
-            value={item.value}
-          >
-            <Show when={item.content !== null} fallback={<FallbackContent />}>
-              {item.content}
-            </Show>
-          </AccordionItemGroup>
-        ))}
+        <For each={data}>
+          {(item) => (
+            <AccordionItemGroup
+              heading={item.heading}
+              key={item.id}
+              value={item.value}
+              size={props.size}
+              indicatorPosition={props.indicatorPosition}
+            >
+              <Show when={item.content !== null} fallback={<FallbackContent />}>
+                {item.content}
+              </Show>
+            </AccordionItemGroup>
+          )}
+        </For>
       </Accordion>
     </Box>
   )
@@ -48,40 +51,52 @@ function FallbackContent() {
   )
 }
 
+export function SizesPreview() {
+  return <StaticPreview size="sm" />
+}
+
+export function IndicatorPositionPreview() {
+  return <StaticPreview indicatorPosition="start" />
+}
+
 export function CustomPreview() {
   return (
     <Box w="2/3">
-      <Accordion>
-        <AccordionItem
+      <AccordionParts.Root
+        className={css({
+          transform: 'skewX(-10deg)',
+        })}
+      >
+        <AccordionParts.Item
           className={css({
             bgColor: 'black',
-            borderColor: 'yellow',
+            borderColor: 'red',
           })}
           value="one"
         >
-          <AccordionItemTrigger
+          <AccordionParts.ItemTrigger
             className={css({
-              color: 'yellow',
+              color: 'red',
             })}
+            data-indicator-position="start"
           >
-            Wu-Tang Clan
-            <AccordionItemIndicator />
-          </AccordionItemTrigger>
+            <AccordionParts.ItemIndicator>🔥</AccordionParts.ItemIndicator>
+            Cerberus
+          </AccordionParts.ItemTrigger>
 
-          <AccordionItemContent
+          <AccordionParts.ItemContent
             className={css({
               color: 'white',
               paddingInline: 'md',
               textStyle: 'body-md',
             })}
           >
-            The rugged, raw, and unapologetic Wu-Tang Clan is a hip-hop group
-            that has been around since 1992. The group is known for its
-            distinctive sound and lyrics that often touch on themes of urban
-            life, crime, and the struggles of the inner city New York.
-          </AccordionItemContent>
-        </AccordionItem>
-      </Accordion>
+            Cerberus is the three-headed dog that guards the gates of the
+            Underworld and our sweet baby boi protecting the integrity of your
+            design system.
+          </AccordionParts.ItemContent>
+        </AccordionParts.Item>
+      </AccordionParts.Root>
     </Box>
   )
 }
