@@ -1902,14 +1902,14 @@
       "absoluteBoundingBox": {
         "x": -2314,
         "y": -620,
-        "width": 164,
+        "width": 156,
         "height": 42
       },
       "absoluteRenderBounds": {
-        "x": -2312.194091796875,
-        "y": -615.5,
-        "width": 159.207763671875,
-        "height": 31.96197509765625
+        "x": -2311.14404296875,
+        "y": -615.8359985351562,
+        "width": 151.25048828125,
+        "height": 32.2979736328125
       },
       "constraints": {
         "vertical": "TOP",
@@ -1920,14 +1920,14 @@
         "fontFamily": "Recursive",
         "fontPostScriptName": "Recursive-MonoLinearMedium",
         "fontStyle": "Mono Linear Medium",
-        "fontWeight": 500,
+        "fontWeight": 400,
         "textAutoResize": "WIDTH_AND_HEIGHT",
         "fontSize": 42,
         "textAlignHorizontal": "LEFT",
         "textAlignVertical": "TOP",
         "letterSpacing": -2.1,
         "lineHeightPx": 42,
-        "lineHeightPercent": 83.33332824707031,
+        "lineHeightPercent": 85.33333587646484,
         "lineHeightPercentFontSize": 100,
         "lineHeightUnit": "FONT_SIZE_%"
       },
