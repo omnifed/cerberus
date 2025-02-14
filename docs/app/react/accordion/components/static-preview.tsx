@@ -4,7 +4,6 @@ import {
   Show,
   For,
   AccordionParts,
-  type AccordionGroupProps,
 } from '@cerberus-design/react'
 import Image from 'next/image'
 import { Box } from '@cerberus-design/styled-system/jsx'
@@ -12,7 +11,10 @@ import data from './data.json'
 import { Suspense } from 'react'
 import { css } from '@cerberus-design/styled-system/css'
 
-export function StaticPreview(props: AccordionGroupProps) {
+export function StaticPreview(props: {
+  size?: 'lg' | 'sm'
+  indicatorPosition?: 'start' | 'end'
+}) {
   return (
     <Box w="2/3">
       <Accordion defaultValue={['one']} size={props.size}>
