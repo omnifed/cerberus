@@ -105,21 +105,20 @@ function BasicPreview() {
 
 ## Sizes
 
-The `AccordionItemGroup` component supports two sizes: `sm` and `lg`. This changes the size of the icon indicator displayed.
+The `Accordion` component supports two sizes: `sm` and `lg`. This changes the size of the icon indicator displayed.
 
 <CodePreview preview={<SizesPreview />}>
-```tsx title="sizes demo" {11}
+```tsx title="sizes demo"
 function BasicPreview() {
   return (
     <Box w="2/3">
-      <Accordion defaultValue={['one']}>
+      <Accordion defaultValue={['one']} size="sm">
         <For each={data}>
           {(item) => (
             <AccordionItemGroup
               heading={item.heading}
               key={item.id}
               value={item.value}
-              size="sm"
             >
               <Show when={item.content !== null} fallback={<FallbackContent />}>
                 {item.content}
@@ -200,6 +199,12 @@ export function CustomPreview() {
 
 ### Accordion
 
+The `Accordion` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default    |       Description                                   |
+| -------- | ------- | ------------------------------------------------------ |
+| size     | `lg`    | The size of the accordion item.                        |
+
 The Accordion is an abstraction of the [Root component](https://ark-ui.com/react/docs/components/accordion#api-reference).
 
 ### AccordionItemGroup
@@ -210,7 +215,6 @@ The `AccordionItemGroup` component is an abstraction of the primitives and accep
 | -------- | ------- | ------------------------------------------------------ |
 | heading  |         | The heading of the accordion item.                     |
 | value    |         | The value of the accordion item. Must be unique.       |
-| size     | `lg`    | The size of the accordion item.                        |
 | indicatorPosition | `end` | The position of the indicator.                  |
 
 The AccordionItemGroup is an abstraction of the [Item component](https://ark-ui.com/react/docs/components/accordion#api-reference).

@@ -15,14 +15,13 @@ import { css } from '@cerberus-design/styled-system/css'
 export function StaticPreview(props: AccordionGroupProps) {
   return (
     <Box w="2/3">
-      <Accordion defaultValue={['one']}>
+      <Accordion defaultValue={['one']} size={props.size}>
         <For each={data}>
           {(item) => (
             <AccordionItemGroup
               heading={item.heading}
               key={item.id}
               value={item.value}
-              size={props.size}
               indicatorPosition={props.indicatorPosition}
             >
               <Show when={item.content !== null} fallback={<FallbackContent />}>

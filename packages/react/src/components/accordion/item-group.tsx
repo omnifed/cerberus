@@ -37,31 +37,28 @@ export interface AccordionItemGroupProps
  * @description [Ark docs](https://ark-ui.com/react/docs/components/accordion)
  */
 export function AccordionItemGroup(props: AccordionItemGroupProps) {
-  const [groupProps, { size }, itemProps] = splitProps(
-    props,
-    ['heading', 'children', 'indicatorPosition'],
-    ['size'],
-  )
+  const [groupProps, itemProps] = splitProps(props, [
+    'heading',
+    'children',
+    'indicatorPosition',
+  ])
   const indicatorPosition = groupProps.indicatorPosition ?? 'end'
 
   return (
-    <AccordionParts.Item {...itemProps} size={size}>
-      <AccordionParts.ItemTrigger
-        data-indicator-position={indicatorPosition}
-        size={size}
-      >
+    <AccordionParts.Item {...itemProps}>
+      <AccordionParts.ItemTrigger data-indicator-position={indicatorPosition}>
         <Show when={indicatorPosition === 'start'}>
-          <AccordionChevronItemIndicator size={size} />
+          <AccordionChevronItemIndicator />
         </Show>
 
         {groupProps.heading}
 
         <Show when={indicatorPosition === 'end'}>
-          <AccordionChevronItemIndicator size={size} />
+          <AccordionChevronItemIndicator />
         </Show>
       </AccordionParts.ItemTrigger>
 
-      <AccordionParts.ItemContent size={size}>
+      <AccordionParts.ItemContent>
         {groupProps.children}
       </AccordionParts.ItemContent>
     </AccordionParts.Item>

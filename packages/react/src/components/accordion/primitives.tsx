@@ -32,6 +32,7 @@ export function AccordionRoot(
     <Accordion.Root
       {...props}
       className={cx(styles.root, rootProps.className)}
+      data-size={size}
     />
   )
 }
@@ -42,7 +43,9 @@ export function AccordionRoot(
  * This component returns the Ark `Accordion.Item` component which has a
  * base style using the Cerberus `accordion` recipe that can be overridden.
  */
-export function AccordionItem(props: AccordionItemProps) {
+export function AccordionItem(
+  props: AccordionItemProps & AccordionVariantProps,
+) {
   const styles = accordion()
   return (
     <Accordion.Item {...props} className={cx(styles.item, props.className)} />

@@ -122,6 +122,26 @@ describe('conditions', () => {
     )
   })
 
+  test('should have an xsSize', () => {
+    expect(conditions.xsSize).toEqual('&:is([data-size=xs])')
+  })
+
+  test('should have a smSize', () => {
+    expect(conditions.smSize).toEqual('&:is([data-size=sm])')
+  })
+
+  test('should have a mdSize', () => {
+    expect(conditions.mdSize).toEqual('&:is([data-size=md])')
+  })
+
+  test('should have a lgSize', () => {
+    expect(conditions.lgSize).toEqual('&:is([data-size=lg])')
+  })
+
+  test('should have a xlSize', () => {
+    expect(conditions.xlSize).toEqual('&:is([data-size=xl])')
+  })
+
   test('should have a tooltip', () => {
     expect(conditions.tooltip).toEqual('&:is([data-tooltip=true])')
   })

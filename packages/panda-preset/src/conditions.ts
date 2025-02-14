@@ -41,6 +41,13 @@ export const conditions = {
   startIndicator: '&:is([data-indicator-position=start])',
   endIndicator: '&:is([data-indicator-position=end])',
 
+  // sizes
+  xsSize: '&:is([data-size=xs])',
+  smSize: '&:is([data-size=sm])',
+  mdSize: '&:is([data-size=md])',
+  lgSize: '&:is([data-size=lg])',
+  xlSize: '&:is([data-size=xl])',
+
   // elements
   notify: '&:is([data-notify=true])',
   startIcon: '&:is([data-start-icon=true])',

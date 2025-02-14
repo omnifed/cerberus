@@ -29,13 +29,12 @@ export function AccordionPreview() {
     <Show
       when={selectedProps.size === 'lg'}
       fallback={
-        <Accordion>
+        <Accordion size="sm">
           <AccordionItemGroup
             heading="This is a heading"
             indicatorPosition={
               selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
             }
-            size="sm"
             value="one:fallback"
           >
             This is the content
@@ -45,7 +44,6 @@ export function AccordionPreview() {
             indicatorPosition={
               selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
             }
-            size="sm"
             value="twp:fallback"
           >
             This is the content for the second item
@@ -53,13 +51,12 @@ export function AccordionPreview() {
         </Accordion>
       }
     >
-      <Accordion>
+      <Accordion size="lg">
         <AccordionItemGroup
           heading="This is a heading"
           indicatorPosition={
             selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
           }
-          size="lg"
           value="one"
         >
           This is the content
@@ -69,7 +66,6 @@ export function AccordionPreview() {
           indicatorPosition={
             selectedProps.indicatorPosition as AccordionItemGroupProps['indicatorPosition']
           }
-          size="lg"
           value="twp:fallback"
         >
           This is the content for the second item
