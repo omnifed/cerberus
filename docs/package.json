@@ -16,7 +16,7 @@
     "@cerberus-design/styled-system": "workspace:*",
     "@tsparticles/engine": "^3.5.0",
     "@tsparticles/react": "^3.0.0",
-    "@tsparticles/slim": "^3.5.0",
+    "@tsparticles/slim": "^3.8.1",
     "hast-util-to-jsx-runtime": "^2.3.2",
     "next": "15.1.6",
     "react": "19.0.0",
