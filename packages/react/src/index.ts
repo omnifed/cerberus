@@ -21,8 +21,8 @@ export * from './hooks/useToggle'
 
 // components
 
+export * from './components/admonition/index'
 export * from './components/accordion/index'
-export * from './components/Admonition'
 export * from './components/Avatar'
 export * from './components/button/index'
 export * from './components/checkbox/index'

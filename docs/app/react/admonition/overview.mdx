@@ -6,7 +6,8 @@ a11y: 'touch-target'
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
-import { Overview, OverviewVersions } from './components/admonition-preview'
+import DripDivider from '@/app/components/drip-divider'
+import { OverviewDemo } from './components/static-preview'
 import { LivePlayground } from './components/live-playground'
 
 <OverviewList rules={[
@@ -18,8 +19,10 @@ import { LivePlayground } from './components/live-playground'
 
 ## Example
 
-<CodePreview preview={<OverviewVersions />} />
+<CodePreview preview={<OverviewDemo />} />
 <LivePlayground />
+
+<DripDivider />
 
 ## Resources
 

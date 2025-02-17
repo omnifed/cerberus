@@ -31,15 +31,27 @@ function getAdmonitionPalette(
  */
 export const admonition: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'admonition',
-  slots: ['root', 'heading', 'description'],
-  jsx: ['Admonition', 'AdmonitionHeading', 'AdmonitionDescription'],
+  slots: ['root', 'indicator', 'heading', 'description'],
+  jsx: [
+    // primitives
+    'AdmonitionRoot',
+    'AdmonitionIndicator',
+    'AdmonitionContent',
+    'AdmonitionHeading',
+    'AdmonitionDescription',
+    // abstractions
+    'Admonition',
+  ],
 
   base: {
     root: {
-      // combine with hstack
+      alignItems: 'center',
+      display: 'flex',
       color: 'colorPalette.text.100',
+      gap: 'md',
       p: 'lg',
       rounded: 'sm',
+      w: 'full',
     },
     heading: {
       color: 'inherit',

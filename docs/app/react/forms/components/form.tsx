@@ -44,7 +44,7 @@ export function ProfileForm() {
         palette: 'success',
       })
     }
-  }, [state.success])
+  }, [state.success, notify])
 
   return (
     <form
