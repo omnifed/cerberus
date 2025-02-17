@@ -89,8 +89,8 @@ importers:
   docs:
     dependencies:
       '@carbon/icons-react':
-        specifier: ^11.40.0
-        version: 11.53.0(react@19.0.0)
+        specifier: ^11.55.0
+        version: 11.55.0(react@19.0.0)
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../configs
@@ -1027,6 +1027,11 @@ packages:
 
   '@carbon/icons-react@11.53.0':
     resolution: {integrity: sha512-OAkUw7NZfBVWxnBL6wTGeOlyn65ieKGhIMJnwYSq5n2J2Ckj3dcKIjtZGib9v5dskjfthXnJngUqI1IlyeS3ew==}
+    peerDependencies:
+      react: '>=16'
+
+  '@carbon/icons-react@11.55.0':
+    resolution: {integrity: sha512-20KFPgKWutJLn1rE74os7KHwdnke0E1+hMtU7KT9F2b9i7UikN8FKeBuPiSJ+mZLbv43FQADTHYBb1jeBUfBhw==}
     peerDependencies:
       react: '>=16'
 
@@ -7851,7 +7856,7 @@ snapshots:
       prop-types: 15.8.1
       react: 18.3.1
 
-  '@carbon/icons-react@11.53.0(react@19.0.0)':
+  '@carbon/icons-react@11.55.0(react@19.0.0)':
     dependencies:
       '@carbon/icon-helpers': 10.54.0
       '@ibm/telemetry-js': 1.8.0
