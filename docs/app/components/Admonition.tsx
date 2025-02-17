@@ -1,9 +1,4 @@
-import {
-  Admonition,
-  AdmonitionDescription,
-  AdmonitionHeading,
-  type AdmonitionProps,
-} from '@cerberus-design/react'
+import { Admonition, type AdmonitionProps } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
 
 const cerbAdmonitionStyles = {
@@ -21,11 +16,12 @@ export function NoteAdmonition(props: AdmonitionTypeProps) {
     usage: 'outlined',
   } as AdmonitionProps
   return (
-    <Admonition className={css(cerbAdmonitionStyles)} {...styles}>
-      <AdmonitionHeading {...styles}>Note</AdmonitionHeading>
-      <AdmonitionDescription {...styles}>
-        {props.description}
-      </AdmonitionDescription>
+    <Admonition
+      className={css(cerbAdmonitionStyles)}
+      {...styles}
+      heading="Note"
+    >
+      {props.description}
     </Admonition>
   )
 }
@@ -35,12 +31,13 @@ export function DeprecationAdmonition(props: AdmonitionTypeProps) {
     palette: 'danger',
   } as AdmonitionProps
   return (
-    <Admonition className={css(cerbAdmonitionStyles)} {...styles}>
-      <AdmonitionHeading {...styles}>DEPRECATED</AdmonitionHeading>
-      <AdmonitionDescription {...styles}>
-        This component is deprecated and should not be used. Instead, use{' '}
-        {props.description}.
-      </AdmonitionDescription>
+    <Admonition
+      className={css(cerbAdmonitionStyles)}
+      {...styles}
+      heading="DEPRECATED"
+    >
+      This component is deprecated and should not be used. Instead, use{' '}
+      {props.description}.
     </Admonition>
   )
 }
@@ -50,11 +47,12 @@ export function WhenToUseAdmonition(props: AdmonitionTypeProps) {
     palette: 'success',
   } as AdmonitionProps
   return (
-    <Admonition className={css(cerbAdmonitionStyles)} {...styles}>
-      <AdmonitionHeading {...styles}>When to use</AdmonitionHeading>
-      <AdmonitionDescription {...styles}>
-        {props.description}
-      </AdmonitionDescription>
+    <Admonition
+      className={css(cerbAdmonitionStyles)}
+      {...styles}
+      heading="When to use"
+    >
+      {props.description}
     </Admonition>
   )
 }
@@ -64,11 +62,12 @@ export function WhenNotToUseAdmonition(props: AdmonitionTypeProps) {
     palette: 'danger',
   } as AdmonitionProps
   return (
-    <Admonition className={css(cerbAdmonitionStyles)} {...styles}>
-      <AdmonitionHeading {...styles}>When not to use</AdmonitionHeading>
-      <AdmonitionDescription {...styles}>
-        {props.description}
-      </AdmonitionDescription>
+    <Admonition
+      className={css(cerbAdmonitionStyles)}
+      {...styles}
+      heading="When not to use"
+    >
+      {props.description}
     </Admonition>
   )
 }

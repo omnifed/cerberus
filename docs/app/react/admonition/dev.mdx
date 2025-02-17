@@ -1,57 +1,123 @@
 ---
 npm: '@cerberus-design/react'
-source: 'components/Admonition.tsx'
+source: 'components/admonition'
 recipe: 'slots/admonition.ts'
 ---
 
+import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import { CustomAdmonition } from './components/admonition-preview'
-import { LivePlaygroundWithCode } from './components/live-playground'
+import { BasicDemo, PaletteDemo, UsageDemo, CustomDemo } from './components/static-preview'
 
 ```ts
-import {
-  Admonition,
-  AdmonitionHeading,
-  AdmonitionDescription
-} from '@cerberus/react'
+import { Admonition } from '@cerberus/react'
 ```
 
 ## Usage
 
-<LivePlaygroundWithCode />
+The `Admonition` component is an abstracted informational component that can be used to display important messages or warnings to users. It can be used in various contexts, such as error, success, or informational messages.
 
-## Customization
+<CodePreview preview={<BasicDemo />}>
+```tsx title="admonition.tsx"
+import { Admonition } from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
 
-<CodePreview preview={<CustomAdmonition />}>
-```tsx title="button.tsx"
-import { Admonition, AdmonitionHeading, AdmonitionDescription } from '@cerberus/react'
-import { css } from '@cerberus/styled-system/css'
-import { Circle } from '@cerberus/styled-system/jsx'
-
-export function CustomAdmonition() {
-  const styleProps = {
-    palette: 'page',
-    usage: 'outlined',
-  } as AdmonitionProps
-
+function UsageDemo() {
   return (
-    <Admonition {...styleProps} className={css({
-      bgColor: 'black',
-      borderColor: 'yellow',
-      color: 'yellow',
-    })}
-    icon={
-      <Circle size="6">
-        <WuTangLogo />
-      </Circle>
-    }
-    >
-      <AdmonitionHeading {...styleProps}>When to use</AdmonitionHeading>
-      <AdmonitionDescription {...styleProps}>
-        Use this component when you want to display a page-level message.{' '}
-        <a href="#">Learn more</a>
-      </AdmonitionDescription>
-    </Admonition>
+    <Box w="1/2">
+      <Admonition heading="Note">
+        This is a page admonition that is commonly use to display a page-level
+        informational messages.
+      </Admonition>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Palette
+
+The `Admonition` component can be customized with different color palettes to match the design of your application. You can use: `info`, `action`, or any of the state-related palettes.
+
+<CodePreview preview={<PaletteDemo />}>
+```tsx title="palette.tsx" {4}
+function PaletteDemo() {
+  return (
+    <Box w="1/2">
+      <Admonition heading="Account Error" palette="danger">
+        There is an error with your account. Please contact support within the
+        next 7 days to keep access.
+      </Admonition>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Usage
+
+The `Admonition` component can be used to display different styles of messages, such as `filled` (default) or `outlined`.
+
+<CodePreview preview={<UsageDemo />}>
+```tsx title="admonition.tsx" {4}
+function UsageDemo() {
+  return (
+    <Box w="1/2">
+      <Admonition heading="Note" usage="outlined">
+        This is a page admonition that is commonly use to display a page-level
+        informational messages.
+      </Admonition>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components to customize the admonition.
+
+| Component | Description |
+| --------- | ----------- |
+| AdmonitionRoot    | The container for the parts |
+| AdmonitionIndicator   | The icon of the admonition |
+| AdmonitionContent   | The content container of the admonition |
+| AdmonitionHeading   | The heading of the admonition |
+| AdmonitionDescription | The description body of the admonition |
+
+<CodePreview preview={<CustomDemo />}>
+```tsx title="Custom demo"
+import { AdmonitionParts } from '@cerberus/react'
+import { css } from '@cerberus/styled-system/css'
+
+export function CustomDemo() {
+  return (
+    <Box w="1/2">
+      <AdmonitionParts.Root
+        className={css({
+          transform: 'skewX(-10deg)',
+        })}
+      >
+        <AdmonitionParts.Indicator>
+          <Circle size="6">
+            <PawIcon />
+          </Circle>
+        </AdmonitionParts.Indicator>
+
+        <AdmonitionParts.Content>
+          <AdmonitionParts.Heading
+            className={css({
+              color: 'danger.text.initial',
+              textTransform: 'uppercase',
+            })}
+          >
+            Cerberus Forever
+          </AdmonitionParts.Heading>
+          <AdmonitionParts.Description>
+            President&apos;s are temporary, but Cerberus is forever.
+          </AdmonitionParts.Description>
+        </AdmonitionParts.Content>
+      </AdmonitionParts.Root>
+    </Box>
   )
 }
 ```
@@ -59,59 +125,34 @@ export function CustomAdmonition() {
 
 ## API
 
-### Admonition
+### Props
 
-```ts showLineNumbers=false
-export type AdmonitionProps = HTMLAttributes<HTMLDivElement> &
-  AdmonitionVariantProps & {
-    icon?: ReactNode
-  }
+The `Admonition` component is an abstraction of the primitives and accepts the following props:
 
-define function Admonition(props: AdmonitionProps): ReactNode
-````
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| heading  |     | The heading title of the Admonition.                       |
+| icon    |     | An alternative icon to display in the Admonition.           |
+| palette  | `page` | The color palette of the Admonition.                      |
+| usage    | `filled` | The usage of the Admonition. Can be `filled` or `outlined`. |
 
-#### Props
+### Parts
 
-The `Admonition` component accepts the following props:
+The `AdmonitionParts` API is an Object containing the full family of components.
 
-| Name     | Default | Description                            |
-| -------- | ------- | -------------------------------------- |
-| palette     | `action`   | The color palette of the button. |
-| usage | `filled`    | The style treatment of the button.    |
-| icon | `null`    | The icon to replace the default status ones.    |
+<NoteAdmonition description="It is best to only use the AdmonitionParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
-### AdmonitionHeading
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `AdmonitionRoot` component which is the container of the family. |
+| Indicator   | The `AdmonitionIndicator` component which is the icon of the admonition |
+| Content   | The `AdmonitionContent` component which is the container of the admonition |
+| Heading   | The `AdmonitionHeading` component which is the heading of the admonition |
+| Description | The `Admonition` component which is the description body of the admonition |
 
-```ts showLineNumbers=false
-type AdmonitionHeadingProps = HTMLAttributes<HTMLParagraphElement> &
-  AdmonitionVariantProps
+The Parts additionally use the following data attributes:
 
-define function AdmonitionHeading(props: AdmonitionHeadingProps): ReactNode
-````
-
-#### Props
-
-The `AdmonitionHeading` component accepts the following props:
-
-| Name     | Default | Description                            |
-| -------- | ------- | -------------------------------------- |
-| palette     | `action`   | The color palette of the button. |
-| usage | `filled`    | The style treatment of the button.    |
-
-### AdmonitionDescription
-
-```ts showLineNumbers=false
-type AdmonitionDescriptionProps = HTMLAttributes<HTMLParagraphElement> &
-  AdmonitionVariantProps
-
-define function AdmonitionDescription(props: AdmonitionProps): ReactNode
-````
-
-#### Props
-
-The `AdmonitionDescription` component accepts the following props:
-
-| Name     | Default | Description                            |
-| -------- | ------- | -------------------------------------- |
-| palette     | `action`   | The color palette of the button. |
-| usage | `filled`    | The style treatment of the button.    |
+| Name     | Value | Description                            |
+| -------- | ------| -------------------------------- |
+| `data-scope` | `admonition` | The scope of the components.       |
+| `data-part` | `root, indicator, content, heading, description` | The part of the component.         |
