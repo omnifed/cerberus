@@ -13,8 +13,6 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
-    "@cerberus/panda-preset": "npm:@jsr/cerberus__panda-preset",
-    "@cerberus/styled-system": "npm:@cerberus-design/styled-system@*",
     "@pandacss/dev": "*",
     "react": "*",
     "react-dom": "*"
