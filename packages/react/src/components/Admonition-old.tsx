@@ -6,7 +6,7 @@ import { cx } from '@cerberus/styled-system/css'
 import { hstack } from '@cerberus/styled-system/patterns'
 import type { HTMLAttributes, ReactNode } from 'react'
 import { Show } from './Show'
-import { MatchAvatar } from './Admonition.client'
+import { MatchAvatar } from './Admonition-old.client'
 
 /**
  * This module provides a set of components for creating admonitions.
