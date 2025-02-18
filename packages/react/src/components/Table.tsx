@@ -15,22 +15,14 @@ export interface TableProps extends TableHTMLAttributes<HTMLTableElement> {
 }
 
 /**
- * An accessible table component.
- * @definition [ARIA Table pattern](https://www.w3.org/WAI/ARIA/apg/patterns/table/)
- * @see https://cerberus.digitalu.design/react/table.
- * @example
- * ```tsx
- * <Table caption="Basic Table">
- *  {children}
- * </Table>
- * ```
+ * @deprecated use TableParts instead
  */
 export function Table(props: PropsWithChildren<TableProps>) {
   const { caption, children, ...nativeProps } = props
   const styles = table()
 
   return (
-    <div className={styles.container}>
+    <div className={styles.root}>
       <table
         {...nativeProps}
         className={cx(nativeProps.className, styles.table)}
