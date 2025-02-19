@@ -3,10 +3,6 @@ import { button } from './button'
 import { iconButton } from './iconButton'
 import { label } from './label'
 import { tag } from './tag'
-import { thead } from './thead'
-import { th } from './th'
-import { tbody } from './tbody'
-import { td } from './td'
 
 import { accordion } from './slots/accordion'
 import { admonition } from './slots/admonition'
@@ -34,6 +30,10 @@ import { fieldMessage } from './fieldMessage'
 import { input } from './slots/input'
 import { modal } from './slots/modal'
 import { toggle } from './slots/toggle'
+import { thead } from './thead'
+import { th } from './th'
+import { tbody } from './tbody'
+import { td } from './td'
 
 /**
  * Recipe module for the Panda preset

@@ -11,6 +11,7 @@ import {
   WithIconButtonPreview,
   PendingButtonDemo,
   SizesDemo,
+  AsChildDemo,
   CustomButtonPreview,
 } from '@/app/react/button/components/button-preview'
 
@@ -93,6 +94,22 @@ function SizesDemo() {
 ```
 </CodePreview>
 
+## As Child
+
+The `Button` component can be used as a child component. This is useful when you want to use the button styles on a different element.
+
+<CodePreview preview={<AsChildDemo />}>
+```tsx title="button-link.tsx"
+function ButtonLink() {
+  return (
+    <Button asChild>
+      <Link href="/react/icon-button">See Icon Button</Link>
+    </Button>
+  )
+}
+```
+</CodePreview>
+
 ## Primitives
 
 You can utilize the primitive components to customize the button.
@@ -140,6 +157,7 @@ The `Button` component is an abstraction of the primitives and accepts the follo
 | usage | `filled`    | The style treatment of the button.    |
 | shape | `sharp`     | The shape of the button.              |
 | pending | `false`    | The loading state of the button. When a button has an `Icon` it will replace it with a spinner. When not, is shows a disabled state.     |
+| asChild | | Render the Button as the child component. |
 
 ### Parts
 

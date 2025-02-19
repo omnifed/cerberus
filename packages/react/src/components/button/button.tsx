@@ -1,7 +1,6 @@
 'use client'
 
 import {
-  type ButtonHTMLAttributes,
   type PropsWithChildren,
   createContext,
   useContext,
@@ -15,6 +14,7 @@ import {
 import { Box } from '@cerberus/styled-system/jsx'
 import { Show } from '../Show'
 import { Spinner } from '../Spinner'
+import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
 
 /**
  * This module contains the Button component.
@@ -29,7 +29,7 @@ const ButtonContext = createContext<ButtonContextValue>({
   pending: false,
 })
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+export type ButtonProps = HTMLArkProps<'button'> &
   ButtonVariantProps & {
     pending?: boolean
   }
@@ -38,13 +38,13 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
  * A component that allows the user to perform actions
  * @see https://cerberus.digitalu.design/react/button
  */
-export function Button(props: ButtonProps): JSX.Element {
+export function Button(props: ButtonProps) {
   const { palette, usage, shape, size, pending = false, ...nativeProps } = props
   const value = useMemo(() => ({ pending }), [pending])
 
   return (
     <ButtonContext.Provider value={value}>
-      <button
+      <ark.button
         {...nativeProps}
         disabled={pending || nativeProps.disabled}
         className={cx(

@@ -6,6 +6,15 @@ import { ArrowDownRight } from '@carbon/icons-react'
 import { css } from '@cerberus/styled-system/css'
 import { HStack } from '@cerberus-design/styled-system/jsx'
 import { grid, gridItem } from '@cerberus/styled-system/patterns'
+import Link from 'next/link'
+
+export function AsChildDemo() {
+  return (
+    <Button asChild>
+      <Link href="/react/icon-button">See Icon Button</Link>
+    </Button>
+  )
+}
 
 export function BasicButtonPreview() {
   return <Button>Default styles</Button>

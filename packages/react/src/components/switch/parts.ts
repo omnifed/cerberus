@@ -8,8 +8,8 @@ import {
 } from './primitives'
 
 /**
- * This module contains the parts of the Radio parts.
- * @module 'radio/parts'
+ * This module contains the parts of the Switch parts.
+ * @module 'switch/parts'
  */
 
 interface SwitchPartsValue {
@@ -36,7 +36,7 @@ interface SwitchPartsValue {
 }
 
 /**
- * An Object containing the parts of the Radio component. For users that
+ * An Object containing the parts of the Switch component. For users that
  * prefer Object component syntax.
  *
  * @remarks

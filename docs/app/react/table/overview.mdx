@@ -6,10 +6,12 @@ a11y: 'forms'
 
 import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
+import DripDivider from '@/app/components/drip-divider'
 import {
   BasicTablePreview,
   SizesPreview,
-  DecorationPreview
+  DecorationPreview,
+  ItsGettingSticky,
 } from '@/app/react/table/components/table-preview'
 
 <OverviewList rules={[
@@ -31,6 +33,12 @@ import {
 ## Decoration
 
 <CodePreview preview={<DecorationPreview />} />
+
+## Sticky Header
+
+<CodePreview preview={<ItsGettingSticky />} />
+
+<DripDivider />
 
 ## Resources
 
