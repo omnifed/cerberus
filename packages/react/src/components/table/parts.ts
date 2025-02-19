@@ -9,6 +9,7 @@ import {
   Tfoot,
   TableEl,
   Caption,
+  TableTrigger,
 } from './primitives'
 
 /**
@@ -53,6 +54,10 @@ export interface TablePartsValue {
    * The table footer element.
    */
   Footer: ElementType
+  /**
+   * The table trigger element.
+   */
+  Trigger: ElementType
 }
 
 /**
@@ -74,4 +79,5 @@ export const TableParts: TablePartsValue = {
   Row: Tr,
   Cell: Td,
   Footer: Tfoot,
+  Trigger: TableTrigger,
 }

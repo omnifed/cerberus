@@ -19,7 +19,7 @@
       "Tag",
       "Tooltip"
     ],
-    "next": [],
+    "next": ["Accordion"],
     "new": [],
     "deprecated": []
   },
@@ -34,7 +34,7 @@
       "Dialog",
       "Table"
     ],
-    "next": ["CTA Modal"],
+    "next": ["CTA Modal", "Table"],
     "new": [],
     "deprecated": ["Modal"]
   },

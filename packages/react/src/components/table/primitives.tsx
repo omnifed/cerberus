@@ -18,7 +18,12 @@ export function TableRoot(props: HTMLArkProps<'div'> & TableVariantProps) {
   })
 
   return (
-    <ark.div {...rootProps} className={cx(styles.root, rootProps.className)} />
+    <ark.div
+      {...rootProps}
+      className={cx(styles.root, rootProps.className)}
+      data-scope="table"
+      data-part="root"
+    />
   )
 }
 
@@ -27,7 +32,14 @@ export function TableRoot(props: HTMLArkProps<'div'> & TableVariantProps) {
  */
 export function TableEl(props: HTMLArkProps<'table'>) {
   const styles = table()
-  return <ark.table {...props} className={cx(styles.table, props.className)} />
+  return (
+    <ark.table
+      {...props}
+      className={cx(styles.table, props.className)}
+      data-scope="table"
+      data-part="table"
+    />
+  )
 }
 
 /**
@@ -36,7 +48,12 @@ export function TableEl(props: HTMLArkProps<'table'>) {
 export function Caption(props: HTMLArkProps<'caption'>) {
   const styles = table()
   return (
-    <ark.caption {...props} className={cx(styles.caption, props.className)} />
+    <ark.caption
+      {...props}
+      className={cx(styles.caption, props.className)}
+      data-scope="table"
+      data-part="caption"
+    />
   )
 }
 
@@ -45,7 +62,14 @@ export function Caption(props: HTMLArkProps<'caption'>) {
  */
 export function Thead(props: HTMLArkProps<'thead'>) {
   const styles = table()
-  return <ark.thead {...props} className={cx(styles.thead, props.className)} />
+  return (
+    <ark.thead
+      {...props}
+      className={cx(styles.thead, props.className)}
+      data-scope="table"
+      data-part="header"
+    />
+  )
 }
 
 /**
@@ -53,7 +77,14 @@ export function Thead(props: HTMLArkProps<'thead'>) {
  */
 export function Th(props: HTMLArkProps<'th'>) {
   const styles = table()
-  return <ark.th {...props} className={cx(styles.th, props.className)} />
+  return (
+    <ark.th
+      {...props}
+      className={cx(styles.th, props.className)}
+      data-scope="table"
+      data-part="header-col"
+    />
+  )
 }
 
 /**
@@ -61,7 +92,14 @@ export function Th(props: HTMLArkProps<'th'>) {
  */
 export function Tbody(props: HTMLArkProps<'tbody'>) {
   const styles = table()
-  return <ark.tbody {...props} className={cx(styles.tbody, props.className)} />
+  return (
+    <ark.tbody
+      {...props}
+      className={cx(styles.tbody, props.className)}
+      data-scope="table"
+      data-part="body"
+    />
+  )
 }
 
 /**
@@ -69,7 +107,14 @@ export function Tbody(props: HTMLArkProps<'tbody'>) {
  */
 export function Tr(props: HTMLArkProps<'tr'>) {
   const styles = table()
-  return <ark.tr {...props} className={cx(styles.tr, props.className)} />
+  return (
+    <ark.tr
+      {...props}
+      className={cx(styles.tr, props.className)}
+      data-scope="table"
+      data-part="row"
+    />
+  )
 }
 
 /**
@@ -77,7 +122,14 @@ export function Tr(props: HTMLArkProps<'tr'>) {
  */
 export function Td(props: HTMLArkProps<'td'>) {
   const styles = table()
-  return <ark.td {...props} className={cx(styles.td, props.className)} />
+  return (
+    <ark.td
+      {...props}
+      className={cx(styles.td, props.className)}
+      data-scope="table"
+      data-part="cell"
+    />
+  )
 }
 
 /**
@@ -85,7 +137,14 @@ export function Td(props: HTMLArkProps<'td'>) {
  */
 export function Tfoot(props: HTMLArkProps<'tfoot'>) {
   const styles = table()
-  return <ark.tfoot {...props} className={cx(styles.tfoot, props.className)} />
+  return (
+    <ark.tfoot
+      {...props}
+      className={cx(styles.tfoot, props.className)}
+      data-scope="table"
+      data-part="footer"
+    />
+  )
 }
 
 /**
@@ -94,6 +153,11 @@ export function Tfoot(props: HTMLArkProps<'tfoot'>) {
 export function TableTrigger(props: HTMLArkProps<'button'>) {
   const styles = table()
   return (
-    <ark.button {...props} className={cx(styles.trigger, props.className)} />
+    <ark.button
+      {...props}
+      className={cx(styles.trigger, props.className)}
+      data-scope="table"
+      data-part="trigger"
+    />
   )
 }

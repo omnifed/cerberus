@@ -4,6 +4,7 @@ import {
   Caption,
   TableEl,
   TableRoot,
+  TableTrigger,
   Tbody,
   Td,
   Tfoot,
@@ -12,8 +13,18 @@ import {
   Tr,
 } from './primitives'
 import type { TableVariantProps } from '@cerberus/styled-system/recipes'
+import { Show } from '../Show'
 
 interface TableRootElProps extends HTMLArkProps<'div'>, TableVariantProps {
+  /**
+   * An easy to understand description of the table. Required for accessibility.
+   */
+  caption: string
+  /**
+   * If true, the table header will be sticky.
+   *
+   * @default false
+   */
   sticky?: boolean
 }
 
@@ -28,10 +39,16 @@ interface TableRootElProps extends HTMLArkProps<'div'>, TableVariantProps {
  * It is a wrapper around the TableRoot component and the TableEl primitive.
  */
 function TableRootEl(props: TableRootElProps) {
-  const { sticky, ...rootProps } = props
+  const { sticky, caption, ...rootProps } = props
   return (
-    <TableRoot {...rootProps} data-sticky={sticky}>
-      <TableEl>{rootProps.children}</TableEl>
+    <TableRoot {...rootProps} data-sticky={sticky ?? false}>
+      <TableEl>
+        <Show when={Boolean(caption)}>
+          <Caption>{caption}</Caption>
+        </Show>
+
+        {rootProps.children}
+      </TableEl>
     </TableRoot>
   )
 }
@@ -54,4 +71,5 @@ export const Table: Omit<TablePartsValue, 'Table'> = {
   Row: Tr,
   Cell: Td,
   Footer: Tfoot,
+  Trigger: TableTrigger,
 }
