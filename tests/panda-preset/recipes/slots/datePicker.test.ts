@@ -61,10 +61,6 @@ describe('datePicker recipe', () => {
     })
   })
 
-  test('should have a positioner style', () => {
-    expect(datePicker.base?.positioner).toMatchObject({})
-  })
-
   test('should have a content style', () => {
     expect(datePicker.base?.content).toMatchObject({
       bgColor: 'page.surface.100',

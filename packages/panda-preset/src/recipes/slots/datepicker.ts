@@ -18,8 +18,35 @@ const SELECTED_TEXT = 'action.text.initial'
 export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'date-picker',
   slots: datePickerAnatomy.keys(),
+  jsx: [
+    // primitives
+    'DatePickerLabel',
+    'DatePickerControl',
+    'DatePickerInputEl',
+    'DatePickerTrigger',
+    'DatePickerContent',
+    'DatePickerViewControl',
+    'DatePickerRangeText',
+    'DatePickerTable',
+    'DatePickerTableHeader',
+    'DatePickerTableCell',
+    'DatePickerTableCellTrigger',
+    // abstractions
+    'DatePicker',
+    'DatePickerInput',
+    'RangePickerInput',
+    'DatePickerCalendar',
+  ],
 
   base: {
+    label: {
+      color: 'page.text.initial',
+      textStyle: 'label-sm',
+      userSelect: 'none',
+      _disabled: {
+        color: 'page.text.100',
+      },
+    },
     control: {
       alignItems: 'center',
       display: 'flex',
@@ -82,7 +109,6 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
     trigger: {
       zIndex: 'decorator',
     },
-    positioner: {},
     content: {
       bgColor: 'page.surface.100',
       border: '1px solid',
