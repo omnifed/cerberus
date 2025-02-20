@@ -50,7 +50,7 @@ export function DatePickerControl(props: DatePickerControlProps) {
 /**
  * The input component for the DatePicker.
  */
-export function DatePickerInput(props: DatePickerInputProps) {
+export function DatePickerInputEl(props: DatePickerInputProps) {
   const styles = datePicker()
   return (
     <DatePicker.Input
