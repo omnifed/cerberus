@@ -20,6 +20,7 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
   slots: datePickerAnatomy.keys(),
 
   base: {
+    label: {},
     control: {
       alignItems: 'center',
       display: 'flex',
@@ -82,7 +83,6 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
     trigger: {
       zIndex: 'decorator',
     },
-    positioner: {},
     content: {
       bgColor: 'page.surface.100',
       border: '1px solid',
