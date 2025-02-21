@@ -64,7 +64,7 @@ function createSideNavData(categories: CategoriesList): NavList {
       navList.push({
         label: name,
         route:
-          `/react/${formattedName.replace(/ /g, '-').toLowerCase()}` as LinkProps<string>['href'],
+          `/react/${formattedName.replace(/ /g, '-').toLowerCase()}/overview` as LinkProps<string>['href'],
         tag: getCategoryItemTags(
           name,
           category.new,

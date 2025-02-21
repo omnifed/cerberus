@@ -84,6 +84,7 @@ export default function FeatureHeader(
             {props.description}
           </p>
         </section>
+
         <section
           data-category={props.a11y}
           className={vstack({
