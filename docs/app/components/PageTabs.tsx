@@ -4,7 +4,7 @@ import {
   IbmWatsonxCodeAssistantForZRefactor,
   InformationFilled,
 } from '@carbon/icons-react'
-import { Tab, TabPanel, Tabs, TabsList } from '@cerberus-design/react'
+import { Tabs } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { cx } from '@cerberus/styled-system/css'
 import type { ReactNode } from 'react'
@@ -19,43 +19,43 @@ interface TabProps {
 
 export default function PageTabs(props: TabProps) {
   return (
-    <Tabs cache uuid="components" defaultValue="overview">
-      <TabsList className={css(tabListStyles)}>
-        <Tab
+    <Tabs.Root defaultValue="overview">
+      <Tabs.List className={css(tabListStyles)}>
+        <Tabs.Tab
           className={cx(css(tabOverrideStyles), css(smallTabStyles))}
           value="overview"
         >
           <InformationFilled size={20} />
           Overview
-        </Tab>
-        <Tab
+        </Tabs.Tab>
+        <Tabs.Tab
           className={cx(css(tabOverrideStyles), css(smallTabStyles))}
           value="guidelines"
         >
           <GroupObjectsSave size={20} />
           Guidelines
-        </Tab>
-        <Tab
+        </Tabs.Tab>
+        <Tabs.Tab
           className={cx(css(tabOverrideStyles), css(smallTabStyles))}
           value="developers"
         >
           <IbmWatsonxCodeAssistantForZRefactor size={20} />
           Dev
-        </Tab>
-        <Tab
+        </Tabs.Tab>
+        <Tabs.Tab
           className={cx(css(tabOverrideStyles), css(smallTabStyles))}
           value="a11y"
         >
           <AccessibilityAlt size={20} />
           Accessibility
-        </Tab>
-      </TabsList>
+        </Tabs.Tab>
+      </Tabs.List>
 
-      <TabPanel value="overview">{props.overview}</TabPanel>
-      <TabPanel value="guidelines">{props.guidelines}</TabPanel>
-      <TabPanel value="developers">{props.dev}</TabPanel>
-      <TabPanel value="a11y">{props.a11y}</TabPanel>
-    </Tabs>
+      <Tabs.Panel value="overview">{props.overview}</Tabs.Panel>
+      <Tabs.Panel value="guidelines">{props.guidelines}</Tabs.Panel>
+      <Tabs.Panel value="developers">{props.dev}</Tabs.Panel>
+      <Tabs.Panel value="a11y">{props.a11y}</Tabs.Panel>
+    </Tabs.Root>
   )
 }
 
@@ -67,9 +67,9 @@ interface OverviewPageTabsProps {
 
 export function OverviewPageTabs(props: OverviewPageTabsProps) {
   return (
-    <Tabs defaultValue="overview" lazyMount>
-      <TabsList className={css(tabListStyles)}>
-        <Tab
+    <Tabs.Root defaultValue="overview" lazyMount>
+      <Tabs.List className={css(tabListStyles)}>
+        <Tabs.Tab
           className={cx(
             css({
               w: '1/2 !important',
@@ -80,8 +80,8 @@ export function OverviewPageTabs(props: OverviewPageTabsProps) {
         >
           <InformationFilled size={20} />
           Overview
-        </Tab>
-        <Tab
+        </Tabs.Tab>
+        <Tabs.Tab
           className={cx(
             css({
               w: '1/2 !important',
@@ -92,11 +92,11 @@ export function OverviewPageTabs(props: OverviewPageTabsProps) {
         >
           <IbmWatsonxCodeAssistantForZRefactor size={20} />
           Dev
-        </Tab>
-      </TabsList>
-      <TabPanel value="overview">{props.overview}</TabPanel>
-      <TabPanel value="developers">{props.dev}</TabPanel>
-    </Tabs>
+        </Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Panel value="overview">{props.overview}</Tabs.Panel>
+      <Tabs.Panel value="developers">{props.dev}</Tabs.Panel>
+    </Tabs.Root>
   )
 }
 
