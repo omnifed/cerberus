@@ -105,20 +105,22 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
   variants: {
     palette: {
       action: {
-        trigger: {
-          ...action,
-        },
-        indicator: {
-          ...action,
-        },
+        root: action,
+        // trigger: {
+        //   ...action,
+        // },
+        // indicator: {
+        //   ...action,
+        // },
       },
       secondaryAction: {
-        trigger: {
-          ...secondaryAction,
-        },
-        indicator: {
-          ...secondaryAction,
-        },
+        root: secondaryAction,
+        // trigger: {
+        //   ...secondaryAction,
+        // },
+        // indicator: {
+        //   ...secondaryAction,
+        // },
       },
     },
   },
