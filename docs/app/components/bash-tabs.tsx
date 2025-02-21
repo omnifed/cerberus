@@ -1,4 +1,4 @@
-import { Tabs, Tab, TabPanel, TabsList } from '@cerberus-design/react'
+import { Tabs } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
 import { Code } from './code'
 
@@ -8,16 +8,16 @@ interface BashTabsProps {
 
 export default function BashTabs(props: BashTabsProps) {
   return (
-    <Tabs cache defaultValue="npm">
-      <TabsList
+    <Tabs.Root defaultValue="npm">
+      <Tabs.List
         className={css({
           borderColor: 'page.border.100',
         })}
       >
-        <Tab value="npm">NPM</Tab>
-        <Tab value="pnpm">PNPM</Tab>
-        <Tab value="yarn">Yarn</Tab>
-      </TabsList>
+        <Tabs.Tab value="npm">NPM</Tabs.Tab>
+        <Tabs.Tab value="pnpm">PNPM</Tabs.Tab>
+        <Tabs.Tab value="yarn">Yarn</Tabs.Tab>
+      </Tabs.List>
 
       <div
         className={css({
@@ -25,23 +25,23 @@ export default function BashTabs(props: BashTabsProps) {
           mt: 4,
         })}
       >
-        <TabPanel value="npm">
+        <Tabs.Panel value="npm">
           <Code language="sh">{props.code}</Code>
-        </TabPanel>
-        <TabPanel value="pnpm">
+        </Tabs.Panel>
+        <Tabs.Panel value="pnpm">
           <Code language="sh">
             {props.code
               .replace('npm', 'pnpm')
               .replace('install', 'add')
               .replace('npx', 'pnpm dlx')}
           </Code>
-        </TabPanel>
-        <TabPanel value="yarn">
+        </Tabs.Panel>
+        <Tabs.Panel value="yarn">
           <Code language="sh">
             {props.code.replace('npm', 'yarn').replace('install', 'add')}
           </Code>
-        </TabPanel>
+        </Tabs.Panel>
       </div>
-    </Tabs>
+    </Tabs.Root>
   )
 }

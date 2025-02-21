@@ -1,58 +1,55 @@
-import { Tabs, Tab, TabPanel, TabsList } from '@cerberus-design/react'
+import { Tabs } from '@cerberus-design/react'
+import { Box } from '@cerberus/styled-system/jsx'
 import { css } from '@cerberus/styled-system/css'
-
-const overrideStyles = css({
-  w: '1/2',
-})
 
 export function BasicTabsPreview() {
   return (
-    <div className={overrideStyles}>
-      <Tabs defaultValue="overview">
-        <TabsList>
-          <Tab value="overview">Overview</Tab>
-          <Tab value="features">Features</Tab>
-          <Tab value="pricing">Pricing</Tab>
-        </TabsList>
-        <TabPanel value="overview">Overview content</TabPanel>
-        <TabPanel value="features">Features content</TabPanel>
-        <TabPanel value="pricing">Pricing content</TabPanel>
-      </Tabs>
-    </div>
+    <Box w="1/2">
+      <Tabs.Root defaultValue="overview">
+        <Tabs.List>
+          <Tabs.Tab value="overview">Overview</Tabs.Tab>
+          <Tabs.Tab value="features">Features</Tabs.Tab>
+          <Tabs.Tab value="pricing">Pricing</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value="overview">Overview content</Tabs.Panel>
+        <Tabs.Panel value="features">Features content</Tabs.Panel>
+        <Tabs.Panel value="pricing">Pricing content</Tabs.Panel>
+      </Tabs.Root>
+    </Box>
   )
 }
 
 export function SecondaryTabsPreview() {
   return (
-    <div className={overrideStyles}>
-      <Tabs defaultValue="overview-1" palette="secondaryAction">
-        <TabsList>
-          <Tab value="overview-1">Overview</Tab>
-          <Tab value="features-1">Features</Tab>
-          <Tab value="pricing-1">Pricing</Tab>
-        </TabsList>
-        <TabPanel value="overview-1">Overview content</TabPanel>
-        <TabPanel value="features-1">Features content</TabPanel>
-        <TabPanel value="pricing-1">Pricing content</TabPanel>
-      </Tabs>
-    </div>
+    <Box w="1/2">
+      <Tabs.Root defaultValue="overview-1" palette="secondaryAction">
+        <Tabs.List>
+          <Tabs.Tab value="overview-1">Overview</Tabs.Tab>
+          <Tabs.Tab value="features-1">Features</Tabs.Tab>
+          <Tabs.Tab value="pricing-1">Pricing</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value="overview-1">Overview content</Tabs.Panel>
+        <Tabs.Panel value="features-1">Features content</Tabs.Panel>
+        <Tabs.Panel value="pricing-1">Pricing content</Tabs.Panel>
+      </Tabs.Root>
+    </Box>
   )
 }
 
 export function CachedTabsPreview() {
   return (
-    <div className={overrideStyles}>
-      <Tabs cache defaultValue="features">
-        <TabsList>
-          <Tab value="overview">Overview</Tab>
-          <Tab value="features">Features</Tab>
-          <Tab value="pricing">Pricing</Tab>
-        </TabsList>
-        <TabPanel value="overview">Overview content</TabPanel>
-        <TabPanel value="features">Features content</TabPanel>
-        <TabPanel value="pricing">Pricing content</TabPanel>
-      </Tabs>
-    </div>
+    <Box w="1/2">
+      <Tabs.Root defaultValue="features">
+        <Tabs.List>
+          <Tabs.Tab value="overview">Overview</Tabs.Tab>
+          <Tabs.Tab value="features">Features</Tabs.Tab>
+          <Tabs.Tab value="pricing">Pricing</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value="overview">Overview content</Tabs.Panel>
+        <Tabs.Panel value="features">Features content</Tabs.Panel>
+        <Tabs.Panel value="pricing">Pricing content</Tabs.Panel>
+      </Tabs.Root>
+    </Box>
   )
 }
 
@@ -79,9 +76,9 @@ export function CustomTabsPreview() {
   ]
 
   return (
-    <div className={overrideStyles}>
-      <Tabs defaultValue="asphodel">
-        <TabsList
+    <Box w="1/2">
+      <Tabs.Root defaultValue="asphodel">
+        <Tabs.List
           className={css({
             bgColor: 'page.surface.200',
             borderBottom: 'none',
@@ -95,7 +92,7 @@ export function CustomTabsPreview() {
           })}
         >
           {tabData.map((tab) => (
-            <Tab
+            <Tabs.Tab
               className={css({
                 zIndex: 'decorator',
                 _selected: {
@@ -109,11 +106,11 @@ export function CustomTabsPreview() {
               value={tab.value}
             >
               {tab.label}
-            </Tab>
+            </Tabs.Tab>
           ))}
-        </TabsList>
+        </Tabs.List>
         {tabData.map((tab) => (
-          <TabPanel
+          <Tabs.Panel
             className={css({
               paddingBlock: 'md',
             })}
@@ -121,9 +118,9 @@ export function CustomTabsPreview() {
             value={tab.value}
           >
             {tab.content}
-          </TabPanel>
+          </Tabs.Panel>
         ))}
-      </Tabs>
-    </div>
+      </Tabs.Root>
+    </Box>
   )
 }

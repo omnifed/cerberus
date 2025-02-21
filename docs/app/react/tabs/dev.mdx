@@ -1,40 +1,45 @@
 ---
 npm: '@cerberus-design/react'
-source: 'context/tabs.tsx'
+source: 'components/tabs'
 recipe: 'slots/tabs.ts'
 ark: 'tabs'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
+import { NoteAdmonition } from '@/app/components/Admonition'
 import {
   BasicTabsPreview,
   SecondaryTabsPreview,
-  CachedTabsPreview,
   CustomTabsPreview
 } from '@/app/react/tabs/components/tabs-preview'
 
 ```ts
-import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
+import { Tabs } from '@cerberus/react'
 ```
 
 ## Usage
 
-<CodePreview preview={<BasicTabsPreview />}>
-```tsx title="tabs.tsx"
-import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
+The `Tabs` component is used to create a tabbed interface.
 
-function BasicTabsPreview() {
+<CodePreview preview={<BasicTabsPreview />}>
+```tsx title="Basic demo"
+import { Tabs } from '@cerberus/react'
+import { Box } from '@cerberus/styled-system/jsx'
+
+export function BasicTabsPreview() {
   return (
-    <Tabs defaultValue="overview">
-      <TabsList>
-        <Tab value="overview">Overview</Tab>
-        <Tab value="features">Features</Tab>
-        <Tab value="pricing">Pricing</Tab>
-      </TabsList>
-      <TabPanel value="overview">Overview content</TabPanel>
-      <TabPanel value="features">Features content</TabPanel>
-      <TabPanel value="pricing">Pricing content</TabPanel>
-    </Tabs>
+    <Box w="1/2">
+      <Tabs.Root defaultValue="overview">
+        <Tabs.List>
+          <Tabs.Tab value="overview">Overview</Tabs.Tab>
+          <Tabs.Tab value="features">Features</Tabs.Tab>
+          <Tabs.Tab value="pricing">Pricing</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value="overview">Overview content</Tabs.Panel>
+        <Tabs.Panel value="features">Features content</Tabs.Panel>
+        <Tabs.Panel value="pricing">Pricing content</Tabs.Panel>
+      </Tabs.Root>
+    </Box>
   )
 }
 ```
@@ -45,62 +50,45 @@ function BasicTabsPreview() {
 The `palette` prop can be used to change the color of the Tabs.
 
 <CodePreview preview={<SecondaryTabsPreview />}>
-```tsx title="tabs.tsx" {6}
-import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
-
+```tsx title="tabs.tsx" {4}
 function SecondaryTabsPreview() {
   return (
-    <div className={overrideStyles}>
-      <Tabs defaultValue="overview-1" palette="secondaryAction">
-        <TabsList>
-          <Tab value="overview-1">Overview</Tab>
-          <Tab value="features-1">Features</Tab>
-          <Tab value="pricing-1">Pricing</Tab>
-        </TabsList>
-        <TabPanel value="overview-1">Overview content</TabPanel>
-        <TabPanel value="features-1">Features content</TabPanel>
-        <TabPanel value="pricing-1">Pricing content</TabPanel>
-      </Tabs>
-    </div>
+    <Box w="1/2">
+      <Tabs.Root defaultValue="overview-1" palette="secondaryAction">
+        <Tabs.List>
+          <Tabs.Tab value="overview-1">Overview</Tabs.Tab>
+          <Tabs.Tab value="features-1">Features</Tabs.Tab>
+          <Tabs.Tab value="pricing-1">Pricing</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value="overview-1">Overview content</Tabs.Panel>
+        <Tabs.Panel value="features-1">Features content</Tabs.Panel>
+        <Tabs.Panel value="pricing-1">Pricing content</Tabs.Panel>
+      </Tabs.Root>
+    </Box>
   )
 }
 ```
 </CodePreview>
 
-## Cached Tabs
+## Primitives
 
-The `cache` prop can be used to cache the active state of the Tabs in local storage.
+You can utilize the primitive components to customize the tabs.
 
-<CodePreview preview={<CachedTabsPreview />}>
-```tsx title="tabs.tsx"
-import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
-
-function CachedTabsPreview() {
-  return (
-    <Tabs cache defaultValue="features">
-      <TabsList>
-        <Tab value="overview">Overview</Tab>
-        <Tab value="features">Features</Tab>
-        <Tab value="pricing">Pricing</Tab>
-      </TabsList>
-      <TabPanel value="overview">Overview content</TabPanel>
-      <TabPanel value="features">Features content</TabPanel>
-      <TabPanel value="pricing">Pricing content</TabPanel>
-    </Tabs>
-  )
-}
-```
-</CodePreview>
-
-## Customization
+| Component | Description |
+| --------- | ----------- |
+| TabsRoot    | The context provider for the tabs parts |
+| TabsList   | The list container of the tabs |
+| TabsTrigger   | The tab components of the tabs |
+| TabsIndicator   | The indicator of the active tabs state |
+| TabsContent | The panel container for the tabs. |
 
 <CodePreview preview={<CustomTabsPreview />}>
 ```tsx title="tabs.tsx"
-import { Tabs, TabsList, Tab, TabPanel } from '@cerberus/react'
+import { Tabs } from '@cerberus/react'
 import { css } from '@cerberus/styled-system/css'
+import { Box } from '@cerberus/styled-system/jsx'
 
 function CustomTabsPreview() {
-  // Don't ever do this in production. At the very least, use JSON imports.
   const tabData = [
     {
       id: 'asphodel',
@@ -119,51 +107,53 @@ function CustomTabsPreview() {
     },
   ]
 
-  return (
-    <Tabs defaultValue="asphodel">
-      <TabsList
-        className={css({
-          bgColor: 'page.surface.200',
-          borderBottom: 'none',
-          rounded: 'md',
-          '& > :is([data-part=indicator])': {
-            bgColor: 'danger.surface.initial',
-            h: 'var(--height)',
+    return (
+    <Box w="1/2">
+      <Tabs.Root defaultValue="asphodel">
+        <Tabs.List
+          className={css({
+            bgColor: 'page.surface.200',
+            borderBottom: 'none',
             rounded: 'md',
-            zIndex: 'base',
-          },
-        })}
-      >
+            '& > :is([data-part=indicator])': {
+              bgColor: 'danger.surface.initial',
+              h: 'var(--height)',
+              rounded: 'md',
+              zIndex: 'base',
+            },
+          })}
+        >
+          {tabData.map((tab) => (
+            <Tabs.Tab
+              className={css({
+                zIndex: 'decorator',
+                _selected: {
+                  color: 'danger.text.100',
+                },
+                _after: {
+                  display: 'none',
+                },
+              })}
+              key={tab.id}
+              value={tab.value}
+            >
+              {tab.label}
+            </Tabs.Tab>
+          ))}
+        </Tabs.List>
         {tabData.map((tab) => (
-          <Tab
+          <Tabs.Panel
             className={css({
-              zIndex: 'decorator',
-              _selected: {
-                color: 'danger.text.100',
-              },
-              _after: {
-                display: 'none',
-              },
+              paddingBlock: 'md',
             })}
             key={tab.id}
-            value={tab.id}
+            value={tab.value}
           >
-            {tab.label}
-          </Tab>
+            {tab.content}
+          </Tabs.Panel>
         ))}
-      </TabsList>
-      {tabData.map((tab) => (
-        <TabPanel
-          className={css({
-            paddingBlock: 'md',
-          })}
-          key={tab.id}
-          value={tab.id}
-        >
-          {tab.content}
-        </TabPanel>
-      ))}
-    </Tabs>
+      </Tabs.Root>
+    </Box>
   )
 }
 ```
@@ -171,42 +161,39 @@ function CustomTabsPreview() {
 
 ## API
 
-### Tabs
+### Props
 
-| Name     | Default | Description                                                   |
-| -------- | ------- | ------------------------------------------------------------- |
-| cache | `false`    | Whether to cache the active state of the tabs.    |
-| defaultValue     |    | The initial value of the tabs when it is first rendered. Use when you do not need to control the state of the tabs.  |
-| deselectable | `false`    | Whether the active tab can be deselected. |
-| id |    | A unique identifier of the machine. |
-| ids|  | `TabsIDs` interface |
-| lazyMount | `false`    | Whether to enable lazy mounting. |
-| palette | `action`    | The color palette to use for the Tabs. |
-| unmountOnExit | `false`    | Whether to unmount on exit. |
-| uuid |    | A unique `id` to use when caching a single group of tabs. |
+The `Tabs` component is an abstraction of the primitives and accepts the following props:
 
-#### TabsIDs
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| palette     |  `action`   | The color palette of the tabs                   |
 
-```ts
-interface TabsIDs {
-  root?: string
-  tabList?: string
-  trigger?: string
-  control?: string
-  indicator?: string
-}
-```
+The `Tabs.Root` component also accepts all the props of the [`TabsRoot` primitive props](https://ark-ui.com/react/docs/components/tabs#api-reference)
 
-### Tab
+#### Tabs component parts
 
-| Name     | Default | Description                                                   |
-| -------- | ------- | ------------------------------------------------------------- |
-| value     |    | The value of the tab |
-| disabled | `false`    | Whether the tab is disabled. |
-| asChild | | Use the provided child element as the default rendered element, combining their props and behavior. |
+The `Tabs` API is an Object containing the full family of abstracted components.
 
-### TabPanel
+<NoteAdmonition description="Although the Tabs API is similar to the TabsParts, it returns abstractions of the primitives. The TabsParts return the primitives only." />
 
-| Name     | Default | Description                                                   |
-| -------- | ------- | ------------------------------------------------------------- |
-| value     |    | The Tab `value` identifier the panel is associated with. |
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | An abstraction of the `TabsRoot`.      |
+| List     | An abstraction of the `TabsList` and `TabsIndicator`.      |
+| Tab      | An abstraction of the `TabsTrigger`. |
+| Panel    | An abstraction of the `TabsContent`. |
+
+### Parts
+
+The `TabsParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the TabsParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `TabsRoot` component which is the Provider for the family. |
+| List     | The `TabsList` component which is the container for the tabs. |
+| Trigger | The `TabsTrigger` component which is the tab component. |
+| Content  | The `TabsContent` component which is the panel container. |
+| Indicator  | The `TabsIndicator` component which displays based on the active state. |
