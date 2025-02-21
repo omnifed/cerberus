@@ -4,10 +4,7 @@ import {
   FieldLabel,
   FieldInput,
   FieldHelperText,
-  Tab,
-  TabPanel,
   Tabs,
-  TabsList,
   Tag,
 } from '@cerberus-design/react'
 import { css } from '@cerberus/styled-system/css'
@@ -191,9 +188,9 @@ export default function UsageExample(props: UsageExampleProps) {
           mt: '6',
         })}
       >
-        <Tabs defaultValue="tab-1">
-          <TabsList>
-            <Tab
+        <Tabs.Root defaultValue="tab-1">
+          <Tabs.List>
+            <Tabs.Tab
               {...(props.token.includes('secondaryAction') && {
                 'data-highlighted': true,
               })}
@@ -203,20 +200,20 @@ export default function UsageExample(props: UsageExampleProps) {
               value="tab-1"
             >
               Tab 1
-            </Tab>
-            <Tab value="tab-2">Tab 2</Tab>
-            <Tab value="tab-3">Tab 3</Tab>
-          </TabsList>
-          <TabPanel value="tab-1">
+            </Tabs.Tab>
+            <Tabs.Tab value="tab-2">Tab 2</Tabs.Tab>
+            <Tabs.Tab value="tab-3">Tab 3</Tabs.Tab>
+          </Tabs.List>
+          <Tabs.Panel value="tab-1">
             <p>Tab 1 content</p>
-          </TabPanel>
-          <TabPanel value="tab-2">
+          </Tabs.Panel>
+          <Tabs.Panel value="tab-2">
             <p>Tab 2 content</p>
-          </TabPanel>
-          <TabPanel value="tab-3">
+          </Tabs.Panel>
+          <Tabs.Panel value="tab-3">
             <p>Tab 3 content</p>
-          </TabPanel>
-        </Tabs>
+          </Tabs.Panel>
+        </Tabs.Root>
       </div>
 
       <div
