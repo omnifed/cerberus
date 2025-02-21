@@ -121,18 +121,12 @@ describe('tabs recipe', () => {
   test('should have a variant for the tab', () => {
     expect(tabs.variants?.palette).toMatchObject({
       action: {
-        trigger: {
-          colorPalette: 'action',
-        },
-        indicator: {
+        root: {
           colorPalette: 'action',
         },
       },
       secondaryAction: {
-        trigger: {
-          colorPalette: 'secondaryAction',
-        },
-        indicator: {
+        root: {
           colorPalette: 'secondaryAction',
         },
       },
