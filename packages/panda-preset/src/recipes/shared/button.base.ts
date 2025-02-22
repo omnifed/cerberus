@@ -74,6 +74,9 @@ export const textUsage = {
     _active: {
       color: textInitial,
     },
+    _hover: {
+      bgColor: 'transparent',
+    },
   },
 }
 
@@ -96,6 +99,11 @@ export const outlinedUsage = {
   bgColor: 'colorPalette.ghost.initial',
   border: '2px solid',
   borderColor: 'colorPalette.border.initial',
+  _disabled: {
+    _hover: {
+      bgColor: 'colorPalette.ghost.initial',
+    },
+  },
 }
 
 export const notifyStyles = {
