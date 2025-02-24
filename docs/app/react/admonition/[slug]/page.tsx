@@ -1,21 +1,15 @@
 import ApiLinks from '@/app/components/ApiLinks'
 import { Box } from '@cerberus-design/styled-system/jsx'
+import type { RouteProps } from '../layout'
 
-import Overview from '../overview.mdx'
-import Guidelines from '../guidelines.mdx'
-import Dev, { frontmatter } from '../dev.mdx'
-import A11y from '../a11y.mdx'
+import Overview from './overview.mdx'
+import Guidelines from './guidelines.mdx'
+import Dev, { frontmatter } from './dev.mdx'
+import A11y from './a11y.mdx'
 
-interface AdmonitionRoutePageProps {
-  params: {
-    slug: 'overview' | 'guidelines' | 'developers' | 'a11y'
-  }
-}
-
-export default async function AdmonitionRoutePage(
-  props: AdmonitionRoutePageProps,
-) {
+export default async function Page(props: RouteProps) {
   const { slug } = await props.params
+
   const routeContent = {
     overview: <Overview />,
     guidelines: <Guidelines />,
