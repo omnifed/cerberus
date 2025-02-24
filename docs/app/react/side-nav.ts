@@ -60,11 +60,10 @@ function createSideNavData(categories: CategoriesList): NavList {
       type: 'heading',
     })
     category.items.forEach((name) => {
-      const formattedName = name === 'Getting Started' ? '' : name
       navList.push({
         label: name,
         route:
-          `/react/${formattedName.replace(/ /g, '-').toLowerCase()}/overview` as LinkProps<string>['href'],
+          `/react/${name.replace(/ /g, '-').toLowerCase()}/overview` as LinkProps<string>['href'],
         tag: getCategoryItemTags(
           name,
           category.new,

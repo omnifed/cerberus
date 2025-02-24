@@ -16,6 +16,7 @@ export default async function AccordionRoutePage(
   props: AccordionRoutePageProps,
 ) {
   const { slug } = await props.params
+
   const routeContent = {
     overview: <Overview />,
     guidelines: <Guidelines />,

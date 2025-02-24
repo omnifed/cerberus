@@ -1,16 +1,9 @@
 import type { PropsWithChildren } from 'react'
-import type { Metadata } from 'next/types'
-import { PageLayout, PageSideNav } from '../components/PageLayout'
-import SideNav from '../components/SideNav'
+import { PageLayout, PageSideNav } from '@/app/components/PageLayout'
+import SideNav from '@/app/components/SideNav'
 import { sideNavData } from './side-nav'
 
-interface ReactProps {}
-
-export const metadata: Metadata = {
-  title: 'Cerberus Design System | React',
-}
-
-export default function ReactLayout(props: PropsWithChildren<ReactProps>) {
+export default function Layout(props: PropsWithChildren<object>) {
   return (
     <PageLayout>
       <PageSideNav>

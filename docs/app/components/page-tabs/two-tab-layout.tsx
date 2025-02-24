@@ -5,11 +5,12 @@ import { For, Tabs } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
 import Link from 'next/link'
 import type { PropsWithChildren } from 'react'
-import { createFourTabData } from './primitives'
+import { createTwoTabData } from './primitives'
 import { TabbedRouteTabsRoot } from './tabs-root'
 
-export interface FourTabLayoutProps {
+export interface TwoTabLayoutProps {
   path: string
+  defaultTab?: string
   meta: {
     heading: string
     description: string
@@ -18,14 +19,13 @@ export interface FourTabLayoutProps {
 }
 
 /**
- * A layout component that renders a page with four tabs used for the
- * Components section. The tabs are Overview, Guidelines, Dev, and A11y.
+ * A layout component that renders a page with two tabs used for the
+ * Components section. The tabs are Overview, Dev.
  */
-export default function FourTabLayout(
-  props: PropsWithChildren<FourTabLayoutProps>,
+export default function TwoTabLayout(
+  props: PropsWithChildren<TwoTabLayoutProps>,
 ) {
-  const { tabs, tabIcons } = createFourTabData()
-
+  const { tabs, tabIcons } = createTwoTabData()
   return (
     <>
       <TabPageContent>
@@ -48,7 +48,7 @@ export default function FourTabLayout(
                 bgGradient: 'to-br',
                 gradientFrom: 'action.bg.initial',
                 gradientTo: 'action.bg.active',
-                minW: '1/4',
+                minW: '1/2',
                 h: 'full',
                 rounded: 'full',
                 zIndex: 'base',
@@ -65,7 +65,7 @@ export default function FourTabLayout(
                     h: '4rem',
                     rounded: 'full',
                     textTransform: 'capitalize',
-                    w: '1/4',
+                    w: '1/2',
                     zIndex: 'decorator',
                     _after: {
                       display: 'none',
@@ -86,7 +86,7 @@ export default function FourTabLayout(
                   value={tab}
                   asChild
                 >
-                  <Link href={`/react/${props.path}/${tab}`}>
+                  <Link href={`/${props.path}/${tab as string}`}>
                     {tabIcons[tab]}
                     {tab}
                   </Link>
