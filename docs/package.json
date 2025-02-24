@@ -29,7 +29,7 @@
     "@expressive-code/plugin-line-numbers": "^0.38.3",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "^15.1.1",
+    "@next/mdx": "^15.1.7",
     "@pandacss/dev": "^0.53.0",
     "@pandacss/preset-panda": "^0.53.0",
     "@pandacss/types": "^0.53.0",
