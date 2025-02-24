@@ -1,7 +1,7 @@
 import TwoTabLayout, {
   type TwoTabLayoutProps,
 } from '@/app/components/page-tabs/two-tab-layout'
-import { type TwoTabs } from '@/components/page-tabs/primitives'
+import { type TwoTabs } from '@/app/components/page-tabs/primitives'
 import type { PropsWithChildren } from 'react'
 
 import { frontmatter } from './[slug]/overview.mdx'

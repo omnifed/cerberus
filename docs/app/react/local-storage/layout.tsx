@@ -15,7 +15,7 @@ export interface RouteProps {
 export default function Layout(props: PropsWithChildren<RouteProps>) {
   return (
     <TwoTabLayout
-      path="react/show"
+      path="react/local-storage"
       meta={frontmatter as TwoTabLayoutProps['meta']}
     >
       {props.children}

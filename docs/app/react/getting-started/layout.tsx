@@ -1,18 +1,18 @@
 import TwoTabLayout, {
   type TwoTabLayoutProps,
 } from '@/app/components/page-tabs/two-tab-layout'
-import { type TwoTabs } from '@/components/page-tabs/primitives'
+import { type TwoTabs } from '@/app/components/page-tabs/primitives'
 import type { PropsWithChildren } from 'react'
 
 import { frontmatter } from './[slug]/overview.mdx'
 
-interface LayoutProps {
+export interface RouteProps {
   params: {
     slug: TwoTabs
   }
 }
 
-export default function Layout(props: PropsWithChildren<LayoutProps>) {
+export default function Layout(props: PropsWithChildren<RouteProps>) {
   return (
     <TwoTabLayout
       path="react/getting-started"
