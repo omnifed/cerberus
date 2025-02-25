@@ -15,7 +15,7 @@ export interface RouteProps {
 export default function Layout(props: PropsWithChildren<RouteProps>) {
   return (
     <FourTabLayout
-      path="label"
+      path="loading-states"
       meta={frontmatter as FourTabLayoutProps['meta']}
     >
       {props.children}
