@@ -3,7 +3,7 @@ import FeatureHeader from '@/app/components/FeatureHeader'
 import type { MatchFeatureKind } from '@/app/components/MatchFeatureImg'
 import { For, Tabs } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
-import Link from 'next/link'
+import Link, { type LinkProps } from 'next/link'
 import type { PropsWithChildren } from 'react'
 import { createFourTabData } from './primitives'
 import { TabbedRouteTabsRoot } from './tabs-root'
@@ -86,7 +86,11 @@ export default function FourTabLayout(
                   value={tab}
                   asChild
                 >
-                  <Link href={`/react/${props.path}/${tab}`}>
+                  <Link
+                    href={
+                      `/react/${props.path}/${tab}` as LinkProps<string>['href']
+                    }
+                  >
                     {tabIcons[tab]}
                     {tab}
                   </Link>

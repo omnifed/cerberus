@@ -7,9 +7,9 @@ import type { PropsWithChildren } from 'react'
 import { frontmatter } from './[slug]/overview.mdx'
 
 export interface RouteProps {
-  params: {
+  params: Promise<{
     slug: TwoTabs
-  }
+  }>
 }
 
 export default function Layout(props: PropsWithChildren<RouteProps>) {
