@@ -133,7 +133,7 @@ export function Nav() {
         md: {
           gridTemplateRows: '1fr',
           pxi: '6',
-          py: '6',
+          py: '4',
         },
       })}
     >
