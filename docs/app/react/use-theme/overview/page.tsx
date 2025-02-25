@@ -1,11 +1,12 @@
 import ApiLinks from '@/app/components/ApiLinks'
-import OnThisPage from '../../components/OnThisPage'
-import { PageMainContent, PageSections } from '../../components/PageLayout'
-import UseThemeDoc, { frontmatter } from './doc.mdx'
+import OnThisPage from '@/app/components/OnThisPage'
+import { PageMainContent, PageSections } from '@/app/components/PageLayout'
 import FeatureHeader from '@/app/components/FeatureHeader'
 import type { MatchFeatureKind } from '@/app/components/MatchFeatureImg'
 
-export default function UseModalPage() {
+import UseThemeDoc, { frontmatter } from './doc.mdx'
+
+export default function Page() {
   return (
     <>
       <PageMainContent>

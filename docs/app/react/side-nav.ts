@@ -46,7 +46,7 @@ const hooksGroup: CategoriesList = {
       'use-theme-context',
       'use-toggle',
     ],
-    deprecated: [],
+    deprecated: ['trap-focus', 'use-modal', 'use-toggle'],
     next: [],
     new: ['split-props'],
   },
