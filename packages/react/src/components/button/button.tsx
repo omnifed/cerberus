@@ -1,5 +1,6 @@
 'use client'
 
+import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
 import {
   type PropsWithChildren,
   createContext,
@@ -14,7 +15,6 @@ import {
 import { Box } from '@cerberus/styled-system/jsx'
 import { Show } from '../Show'
 import { Spinner } from '../Spinner'
-import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
 
 /**
  * This module contains the Button component.

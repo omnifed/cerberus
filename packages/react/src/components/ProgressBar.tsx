@@ -1,16 +1,16 @@
+import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
 import { cx } from '@cerberus/styled-system/css'
 import {
   progressBar,
   type ProgressBarVariantProps,
 } from '@cerberus/styled-system/recipes'
-import type { HTMLAttributes } from 'react'
 
 /**
  * This module contains the ProgressBar component.
  * @module
  */
 
-export type ProgressBarBaseProps = HTMLAttributes<HTMLDivElement>
+export type ProgressBarBaseProps = HTMLArkProps<'div'>
 export type NonIndeterminateProgressBarProps = {
   /**
    * A unique identifier for the progress bar. Required for accessibility.
@@ -68,7 +68,7 @@ export function ProgressBar(props: ProgressBarProps) {
   }
 
   return (
-    <div
+    <ark.div
       {...nativeProps}
       aria-label={label}
       aria-valuemin={0}
@@ -77,12 +77,12 @@ export function ProgressBar(props: ProgressBarProps) {
       className={cx(nativeProps.className, styles.root)}
       role="progressbar"
     >
-      <div
+      <ark.div
         {...(indeterminate && { 'data-indeterminate': true })}
         data-complete={nowClamped === 100}
         className={styles.bar}
         style={width}
       />
-    </div>
+    </ark.div>
   )
 }
