@@ -64,6 +64,7 @@ export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
   palette?: 'action' | 'secondaryAction' | 'danger'
   size?: 'sm' | 'lg'
   usage?: 'filled' | 'ghost' | 'outlined'
+  asChild?: boolean
 }
 
 define function IconButton(props: IconButtonProps): ReactNode
@@ -79,3 +80,4 @@ The `IconButton` component accepts the following props:
 | palette     | `action`   | The color palette of the button. |
 | usage | `ghost`    | The style treatment of the button.    |
 | size | `lg`    | The size of the button.               |
+| asChild | | Render the Button as the child component. |

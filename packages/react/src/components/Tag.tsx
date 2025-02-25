@@ -1,25 +1,19 @@
 'use client'
 
-import type {
-  HTMLAttributes,
-  MouseEventHandler,
-  PropsWithChildren,
-} from 'react'
-import { Show } from './Show'
+import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
+import type { MouseEventHandler, PropsWithChildren } from 'react'
 import { css, cx } from '@cerberus/styled-system/css'
-import {
-  iconButton,
-  tag,
-  type TagVariantProps,
-} from '@cerberus/styled-system/recipes'
+import { tag, type TagVariantProps } from '@cerberus/styled-system/recipes'
 import { useCerberusContext } from '../context/cerberus'
+import { Show } from './Show'
+import { IconButton } from './IconButton'
 
 /**
  * This module contains the tag component.
  * @module
  */
 
-export type StaticTagProps = HTMLAttributes<HTMLSpanElement> &
+export type StaticTagProps = HTMLArkProps<'span'> &
   TagVariantProps & {
     /**
      * The action to be performed when the tag is clicked. Not available when
@@ -28,7 +22,7 @@ export type StaticTagProps = HTMLAttributes<HTMLSpanElement> &
     onClick?: never
   }
 
-export type ClickableTagProps = HTMLAttributes<HTMLSpanElement> & {
+export type ClickableTagProps = HTMLArkProps<'span'> & {
   /**
    * The gradient to apply to the tag. Not available when the onClick prop is
    * provided.
@@ -67,7 +61,7 @@ export type TagProps = StaticTagProps | ClickableTagProps
  * <Tag>Tag</Tag>
  * ```
  */
-export function Tag(props: PropsWithChildren<TagProps>): JSX.Element {
+export function Tag(props: PropsWithChildren<TagProps>) {
   const { shape: initShape, gradient, onClick, usage, ...nativeProps } = props
   const palette = props?.palette ?? 'page'
   const isClosable = Boolean(onClick)
@@ -77,7 +71,7 @@ export function Tag(props: PropsWithChildren<TagProps>): JSX.Element {
   const { close: Close } = icons
 
   return (
-    <span
+    <ark.span
       {...nativeProps}
       className={cx(
         nativeProps.className,
@@ -93,19 +87,17 @@ export function Tag(props: PropsWithChildren<TagProps>): JSX.Element {
       {props.children}
 
       <Show when={isClosable}>
-        <button
-          aria-label="Close"
-          className={iconButton({
-            palette: 'action',
-            usage: 'filled',
-            size: 'sm',
-          })}
+        <IconButton
+          ariaLabel="Close"
           onClick={onClick}
+          palette="action"
+          usage="filled"
+          size="sm"
         >
           <Close />
-        </button>
+        </IconButton>
       </Show>
-    </span>
+    </ark.span>
   )
 }
 

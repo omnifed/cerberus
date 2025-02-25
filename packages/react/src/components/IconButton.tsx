@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes } from 'react'
+import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
 import { cx } from '@cerberus/styled-system/css'
 import {
   iconButton,
@@ -10,8 +10,7 @@ import {
  * @module
  */
 
-export interface IconButtonRawProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IconButtonRawProps extends HTMLArkProps<'button'> {
   /**
    * The aria-label attribute for the icon button.
    */
@@ -26,7 +25,7 @@ export type IconButtonProps = IconButtonRawProps & IconButtonVariantProps
 export function IconButton(props: IconButtonProps): JSX.Element {
   const { ariaLabel, palette, usage, size, ...nativeProps } = props
   return (
-    <button
+    <ark.button
       {...nativeProps}
       aria-label={ariaLabel ?? 'Icon Button'}
       className={cx(
