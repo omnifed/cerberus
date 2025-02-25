@@ -18,85 +18,86 @@ export default function CategoryCard(props: CategoryCardProps) {
   const ImgFeature = meta.image
   const delay = props.delay ?? 0
 
+  if (!item) return null
+
   return (
-    <Show when={item != null}>
-      <Link
-        href={item!.route!}
-        className={vstack({
-          display: 'block',
-          h: 'full',
-          rounded: 'lg',
-          textDecoration: 'none',
-          w: 'full',
-        })}
+    <Link
+      href={item.route!}
+      className={vstack({
+        display: 'block',
+        h: 'full',
+        rounded: 'lg',
+        textDecoration: 'none',
+        w: 'full',
+      })}
+    >
+      <Box
+        data-placement="top"
+        animationStyle="slide-fade-in"
+        animationDelay={`${delay}ms`}
+        animationDuration="slow"
+        animationFillMode="forwards"
+        className="group"
+        bgColor="page.surface.100"
+        border="2px solid"
+        borderColor="transparent"
+        h="full"
+        opacity="0"
+        p="sm"
+        rounded="inherit"
+        transition="border-color 200ms"
+        _hover={{
+          borderColor: 'page.border.100',
+        }}
       >
         <Box
-          animationName="slideFromBottom, fadeIn"
-          animationDelay={`${delay}ms`}
-          animationDuration="slow"
-          animationFillMode="forwards"
-          className="group"
-          bgColor="page.surface.100"
-          border="2px solid"
-          borderColor="transparent"
-          h="full"
-          opacity="0"
-          p="sm"
+          data-category={props.category}
+          h="14.25rem"
+          gradient="nyx-light"
+          overflow="hidden"
+          position="relative"
           rounded="inherit"
-          transition="border-color 200ms"
-          _hover={{
-            borderColor: 'page.border.100',
+          transitionProperty="height,background-image"
+          transitionDuration="fast"
+          w="full"
+          willChange="height"
+          zIndex="base"
+          _before={{
+            bgColor: 'action.bg.active',
+            bottom: 0,
+            content: '""',
+            left: 0,
+            mixBlendMode: 'hue',
+            position: 'absolute',
+            right: 0,
+            top: 0,
+            zIndex: 'decorator',
+          }}
+          _groupHover={{
+            gradient: 'charon-light',
+            h: '12.75rem',
           }}
         >
-          <Box
-            data-category={props.category}
-            h="14.25rem"
-            gradient="nyx-light"
-            overflow="hidden"
-            position="relative"
-            rounded="inherit"
-            transitionProperty="height,background-image"
-            transitionDuration="fast"
-            w="full"
-            willChange="height"
-            zIndex="base"
-            _before={{
-              bgColor: 'action.bg.active',
-              bottom: 0,
-              content: '""',
-              left: 0,
-              mixBlendMode: 'hue',
-              position: 'absolute',
-              right: 0,
-              top: 0,
-              zIndex: 'decorator',
-            }}
+          <ImgFeature />
+        </Box>
+        <VStack alignItems="flex-start" gap="xs" pxi="xs" py="lg" w="full">
+          <Text
+            color="page.text.200"
+            textStyle="heading-md"
+            transition="color fast"
             _groupHover={{
-              gradient: 'charon-light',
-              h: '12.75rem',
+              color: 'action.navigation.hover',
             }}
           >
-            <ImgFeature />
-          </Box>
-          <VStack alignItems="flex-start" gap="xs" pxi="xs" py="lg" w="full">
-            <Text
-              color="page.text.200"
-              textStyle="heading-md"
-              transition="color fast"
-              _groupHover={{
-                color: 'action.navigation.hover',
-              }}
-            >
-              {meta.name ?? item!.label}
+            {meta.name ?? item!.label}
+          </Text>
+          <Show when={meta.description != null}>
+            <Text color="page.text.initial" textStyle="body-md">
+              {meta.description}
             </Text>
-            <Show when={meta.description != null}>
-              <Text color="page.text.initial" textStyle="body-md">
-                {meta.description}
-              </Text>
-            </Show>
-          </VStack>
-        </Box>
-      </Link>
-    </Show>
+          </Show>
+        </VStack>
+      </Box>
+    </Link>
   )
 }
