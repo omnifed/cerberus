@@ -70,6 +70,10 @@
         "horizontal": "LEFT"
       },
       "characters": "display lg",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Bold",
@@ -86,13 +90,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "209:101"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -180,6 +180,10 @@
         "horizontal": "LEFT"
       },
       "characters": "Display md",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Bold",
@@ -196,13 +200,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "6750:9518"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -290,6 +290,10 @@
         "horizontal": "LEFT"
       },
       "characters": "Display sm",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Bold",
@@ -306,13 +310,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "6750:9519"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -400,6 +400,10 @@
         "horizontal": "LEFT"
       },
       "characters": "heading 2xl",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -416,13 +420,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "6910:9168"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -510,6 +510,10 @@
         "horizontal": "LEFT"
       },
       "characters": "heading xl",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -526,13 +530,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "207:111"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -620,6 +620,10 @@
         "horizontal": "LEFT"
       },
       "characters": "heading lg",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -636,13 +640,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "207:109"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -730,6 +730,10 @@
         "horizontal": "LEFT"
       },
       "characters": "heading md",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -746,13 +750,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "208:98"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -840,6 +840,10 @@
         "horizontal": "LEFT"
       },
       "characters": "heading sm",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -856,13 +860,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "1849:90784"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -950,6 +950,10 @@
         "horizontal": "LEFT"
       },
       "characters": "heading xs",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -966,13 +970,9 @@
         "lineHeightUnit": "PIXELS"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "223:336"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -1060,6 +1060,10 @@
         "horizontal": "LEFT"
       },
       "characters": "heading 2xs",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -1076,13 +1080,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "6750:7858"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -1170,6 +1170,10 @@
         "horizontal": "LEFT"
       },
       "characters": "body large",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Regular",
@@ -1186,13 +1190,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "6715:34524"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -1280,6 +1280,10 @@
         "horizontal": "LEFT"
       },
       "characters": "body medium",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Regular",
@@ -1296,13 +1300,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "207:114"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -1390,6 +1390,10 @@
         "horizontal": "LEFT"
       },
       "characters": "body small",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Regular",
@@ -1406,13 +1410,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "207:116"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -1500,6 +1500,10 @@
         "horizontal": "LEFT"
       },
       "characters": "label small",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Regular",
@@ -1516,13 +1520,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "6816:3376"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -1610,6 +1610,10 @@
         "horizontal": "LEFT"
       },
       "characters": "label medium",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Regular",
@@ -1626,13 +1630,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "13998:4"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -1714,6 +1714,10 @@
         "horizontal": "LEFT"
       },
       "characters": "button medium",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-SemiBold",
@@ -1730,13 +1734,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "6715:34739"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -1812,6 +1812,10 @@
         "horizontal": "LEFT"
       },
       "characters": "button small",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Poppins",
         "fontPostScriptName": "Poppins-Medium",
@@ -1828,13 +1832,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "17441:2180"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -1916,6 +1916,10 @@
         "horizontal": "LEFT"
       },
       "characters": "mono-xl",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Recursive",
         "fontPostScriptName": "Recursive-MonoLinearMedium",
@@ -1932,13 +1936,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "11875:39783"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -2014,6 +2014,10 @@
         "horizontal": "LEFT"
       },
       "characters": "mono-lg",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Recursive",
         "fontPostScriptName": "Recursive-MonoLinearMedium",
@@ -2030,13 +2034,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "11875:39784"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -2112,6 +2112,10 @@
         "horizontal": "LEFT"
       },
       "characters": "mono-md",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Recursive",
         "fontPostScriptName": "Recursive-MonoLinearMedium",
@@ -2128,13 +2132,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "11875:39785"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -2210,6 +2210,10 @@
         "horizontal": "LEFT"
       },
       "characters": "mono-sm",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Recursive",
         "fontPostScriptName": "Recursive-MonoLinearMedium",
@@ -2230,13 +2234,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "11875:39786"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
@@ -2318,6 +2318,10 @@
         "horizontal": "LEFT"
       },
       "characters": "mono-xs",
+      "characterStyleOverrides": [],
+      "styleOverrideTable": {},
+      "lineTypes": ["NONE"],
+      "lineIndentations": [0],
       "style": {
         "fontFamily": "Recursive",
         "fontPostScriptName": "Recursive-MonoLinear",
@@ -2334,13 +2338,9 @@
         "lineHeightUnit": "FONT_SIZE_%"
       },
       "layoutVersion": 4,
-      "characterStyleOverrides": [],
-      "styleOverrideTable": {},
       "styles": {
         "text": "11875:39789"
       },
-      "lineTypes": ["NONE"],
-      "lineIndentations": [0],
       "effects": [],
       "interactions": []
     },
