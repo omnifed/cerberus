@@ -45,11 +45,11 @@ export function CTALinkFeature() {
       heading: 'Copy or create a Cohort',
       description: 'Create a new cohort or copy an existing one.',
       actions: createCTAModalActions([
-        <Link key="cta:link:btn" href="/react/button">
+        <Link key="cta:link:btn" href="/react/button/overview">
           See Button Docs
           <ArrowRight />
         </Link>,
-        <Link key="cta:link:docs" href="/react/dialog">
+        <Link key="cta:link:docs" href="/react/dialog/overview">
           See Dialog Docs
           <ArrowRight />
         </Link>,
