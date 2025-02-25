@@ -1,5 +1,6 @@
 import { Admonition, type AdmonitionProps } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
+import { Box } from '@cerberus-design/styled-system/jsx'
 
 const cerbAdmonitionStyles = {
   mb: 6,
@@ -16,13 +17,15 @@ export function NoteAdmonition(props: AdmonitionTypeProps) {
     usage: 'outlined',
   } as AdmonitionProps
   return (
-    <Admonition
-      className={css(cerbAdmonitionStyles)}
-      {...styles}
-      heading="Note"
-    >
-      {props.description}
-    </Admonition>
+    <Box paddingBlock="8">
+      <Admonition
+        className={css(cerbAdmonitionStyles)}
+        {...styles}
+        heading="Note"
+      >
+        {props.description}
+      </Admonition>
+    </Box>
   )
 }
 
@@ -31,14 +34,16 @@ export function DeprecationAdmonition(props: AdmonitionTypeProps) {
     palette: 'danger',
   } as AdmonitionProps
   return (
-    <Admonition
-      className={css(cerbAdmonitionStyles)}
-      {...styles}
-      heading="DEPRECATED"
-    >
-      This component is deprecated and should not be used. Instead, use{' '}
-      {props.description}.
-    </Admonition>
+    <Box paddingBlock="8">
+      <Admonition
+        className={css(cerbAdmonitionStyles)}
+        {...styles}
+        heading="DEPRECATED"
+      >
+        This component is deprecated and should not be used. Instead, use{' '}
+        {props.description}.
+      </Admonition>
+    </Box>
   )
 }
 
@@ -47,13 +52,15 @@ export function WhenToUseAdmonition(props: AdmonitionTypeProps) {
     palette: 'success',
   } as AdmonitionProps
   return (
-    <Admonition
-      className={css(cerbAdmonitionStyles)}
-      {...styles}
-      heading="When to use"
-    >
-      {props.description}
-    </Admonition>
+    <Box paddingBlock="8">
+      <Admonition
+        className={css(cerbAdmonitionStyles)}
+        {...styles}
+        heading="When to use"
+      >
+        {props.description}
+      </Admonition>
+    </Box>
   )
 }
 
@@ -62,12 +69,14 @@ export function WhenNotToUseAdmonition(props: AdmonitionTypeProps) {
     palette: 'danger',
   } as AdmonitionProps
   return (
-    <Admonition
-      className={css(cerbAdmonitionStyles)}
-      {...styles}
-      heading="When not to use"
-    >
-      {props.description}
-    </Admonition>
+    <Box paddingBlock="8">
+      <Admonition
+        className={css(cerbAdmonitionStyles)}
+        {...styles}
+        heading="When not to use"
+      >
+        {props.description}
+      </Admonition>
+    </Box>
   )
 }

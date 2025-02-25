@@ -1,0 +1,42 @@
+---
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import OverviewList from '@/app/components/OverviewList'
+import DripDivider from '@/app/components/drip-divider'
+import {
+  WhenToUseAdmonition,
+  WhenNotToUseAdmonition,
+} from '@/app/components/Admonition'
+import { OverviewDemo } from '@/app/react/admonition/components/static-preview'
+
+## Usage
+
+<OverviewList intro="Used in places like:" rules={[
+  'Layouts',
+  'Forms',
+]} />
+
+
+<CodePreview preview={<OverviewDemo />} />
+<WhenToUseAdmonition description="When you need to communicate messages that are minimally interruptive and don't require user action." />
+
+<DripDivider />
+
+
+## Filled Admonitions
+
+Used as a product level notification or highlighted information that is not specific to a users task. It can not be dismissed unless the system handles it or the user takes an action to handle it.
+
+
+## Outline Admonitions
+
+Filled Admonitions are used by default for most use cases, while outlined are to be used for lower emphasis pieces of information that don't need to be highlighted over other UI elements on the page.
+
+<WhenToUseAdmonition description="When you need medium priority actions or a secondary action to a primary button." />
+
+<DripDivider />
+
+## Responsive Layouts
+
+When scaling layouts for large screen devices, admonitions can adapt their visual presentation, alignment, and arrangement to fit different contexts and user needs.

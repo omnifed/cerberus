@@ -11,7 +11,7 @@ import Link from 'next/link'
 export function AsChildDemo() {
   return (
     <Button asChild>
-      <Link href="/react/icon-button">See Icon Button</Link>
+      <Link href="/react/icon-button/overview">See Icon Button</Link>
     </Button>
   )
 }
