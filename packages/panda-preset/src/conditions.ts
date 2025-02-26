@@ -71,4 +71,8 @@ export const conditions = {
   successPalette: '&:is([data-palette=success])',
   warningPalette: '&:is([data-palette=warning])',
   dangerPalette: '&:is([data-palette=danger])',
+  info: '&:is([data-type=info])',
+  success: '&:is([data-type=success])',
+  warning: '&:is([data-type=warning])',
+  danger: '&:is([data-type=danger])',
 }

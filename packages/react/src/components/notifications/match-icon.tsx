@@ -1,6 +1,9 @@
 'use client'
 
-import type { NotificationVariantProps } from '@cerberus/styled-system/recipes'
+import {
+  toast,
+  type NotificationVariantProps,
+} from '@cerberus/styled-system/recipes'
 import { Box } from '@cerberus/styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
 
@@ -17,12 +20,13 @@ export function MatchNotificationIcon(props: NotificationVariantProps) {
     | 'success'
     | 'warning'
     | 'danger'
-  const key = `${palette}Notification` as keyof typeof icons
+  const styles = toast()
 
+  const key = `${palette}Notification` as keyof typeof icons
   const Icon = icons[key]
 
   return (
-    <Box>
+    <Box className={styles.icon}>
       <Icon />
     </Box>
   )
