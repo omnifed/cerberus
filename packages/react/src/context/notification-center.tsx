@@ -14,9 +14,9 @@ import { animateIn, vstack } from '@cerberus/styled-system/patterns'
 import { notification } from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus/styled-system/css'
 import { Show } from '../components/Show'
-import { NotificationHeading } from '../components/NotificationHeading'
-import { NotificationDescription } from '../components/NotificationDescription'
-import { Notification } from '../components/Notification'
+import { NotificationHeading } from '../components/deprecated/NotificationHeading'
+import { NotificationDescription } from '../components/deprecated/NotificationDescription'
+import { Notification } from '../components/deprecated/Notification'
 import { Portal, type PortalProps } from '../components/Portal'
 import { Button } from '../components/button/button'
 import {
@@ -71,28 +71,9 @@ export type NotificationsProviderProps = PortalProps & {
 }
 
 /**
- * Provides a notification center to the app.
- * @see https://cerberus.digitalu.design/react/notification
- * @example
- * ```tsx
- * // Wrap the Provider around the root of the feature.
- * <Notifications>
- *   <SomeFeatureSection />
- * </Notifications>
- *
- * // Use the hook to show a notification.
- * const notify = useNotifications()
- *
- * const handleClick = useCallback(() => {
- *  notify({
- *   palette: 'info',
- *   heading: 'New feature!',
- *   description: 'We have added a new feature to the app.',
- * })
- * }, [notify])
- * ```
+ * @deprecated
  */
-export function NotificationCenter(
+export function NotificationCenter_deprecated(
   props: PropsWithChildren<NotificationsProviderProps>,
 ) {
   const [state, dispatch] = useReducer(notificationCenterReducer, [])
@@ -265,20 +246,7 @@ function MatchNotification(props: MatchNotificationProps) {
   }
 }
 
-/**
- * The hook to use the NotificationCenter.
- * @returns The notify method to trigger a notification.
- * @example
- * ```tsx
- * const {notify} = useNotificationCenter()
- * notify({
- *  palette: 'info',
- *  heading: 'New feature',
- *  description: 'We have added a new feature to the app.',
- * })
- * ```
- */
-export function useNotificationCenter(): NotificationsValue {
+export function useNotificationCenter_deprecated(): NotificationsValue {
   const context = useContext(NotificationsContext)
   if (!context) {
     throw new Error(

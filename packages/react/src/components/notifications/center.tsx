@@ -1,9 +1,11 @@
 import { createToaster, Toaster } from '@ark-ui/react/toast'
+import { VStack } from '@cerberus/styled-system/jsx'
+import type { PropsWithChildren } from 'react'
 import { Button, type ButtonProps } from '../button/button'
 import { Show } from '../Show'
 import { NotificationParts } from './parts'
 import type { NotifyOptions, UseNotificationCenterReturn } from './types'
-import type { PropsWithChildren } from 'react'
+import { MatchNotificationIcon } from './match-icon'
 
 /**
  * This module contains an abstraction of the Notification parts.
@@ -28,21 +30,28 @@ export function NotificationCenter(props: PropsWithChildren) {
       <Toaster toaster={toaster}>
         {(toast) => (
           <NotificationParts.Root key={toast.id}>
-            <NotificationParts.Heading>{toast.title}</NotificationParts.Heading>
-            <NotificationParts.Description>
-              {toast.description}
-            </NotificationParts.Description>
+            <MatchNotificationIcon
+              palette={toast.type as NotifyOptions['palette']}
+            />
 
-            <Show when={Boolean(toast.action)}>
-              <NotificationParts.ActionTrigger asChild>
-                <Button
-                  palette={toast.type as ButtonProps['palette']}
-                  size="sm"
-                >
-                  {toast.action?.label}
-                </Button>
-              </NotificationParts.ActionTrigger>
-            </Show>
+            <VStack alignItems="flex-start" gap="0" paddingBlock="sm">
+              <NotificationParts.Heading>
+                {toast.title}
+              </NotificationParts.Heading>
+              <NotificationParts.Description>
+                {toast.description}
+              </NotificationParts.Description>
+              <Show when={Boolean(toast.action)}>
+                <NotificationParts.ActionTrigger asChild>
+                  <Button
+                    palette={toast.type as ButtonProps['palette']}
+                    size="sm"
+                  >
+                    {toast.action?.label}
+                  </Button>
+                </NotificationParts.ActionTrigger>
+              </Show>
+            </VStack>
           </NotificationParts.Root>
         )}
       </Toaster>

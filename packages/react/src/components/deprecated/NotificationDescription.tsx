@@ -16,10 +16,7 @@ export type NotificationDescriptionProps = BaseNotificationDescriptionProps &
   NotificationVariantProps
 
 /**
- * Used to render the description of a notification.
- * @see https://cerberus.digitalu.design/react/notification
- * @memberof module:NotificationCenter
- * @param props - The anything a HTMLParagraphElement can accept.
+ * @deprecated use `NotificationParts` instead
  */
 export function NotificationDescription(props: NotificationDescriptionProps) {
   const { palette, ...nativeProps } = props
