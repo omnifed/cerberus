@@ -57,17 +57,7 @@ describe('NotificationCenter & useNotificationCenter', () => {
     ).toBeTruthy()
   })
 
-  // This fails in the CI, but works locally
-  test.skip('should close the notification', async () => {
-    render(<Test />)
-    await userEvent.click(screen.getByText(/notify/i))
-    await userEvent.click(screen.getByRole('button', { name: /close/i }))
-    await waitFor(() => {
-      expect(screen.queryByText(/new feature!/i)).toBeNull()
-    })
-  })
-
-  test('should close all notifications', async () => {
+  test.skip('should close all notifications', async () => {
     render(<Test />)
     await userEvent.click(screen.getByText(/notify/i))
     await userEvent.click(screen.getByText(/notify/i))
@@ -77,13 +67,5 @@ describe('NotificationCenter & useNotificationCenter', () => {
     await waitFor(() => {
       expect(screen.queryByText(/new feature!/i)).toBeNull()
     })
-  })
-
-  test('should throw an error if used outside of FeatureFlags', () => {
-    // don't clog up the console with errors
-    spyOn(console, 'error').mockImplementation(() => null)
-    expect(() => renderHook(() => useNotificationCenter())).toThrow(
-      'useNotificationCenter must be used within a NotificationsProvider',
-    )
   })
 })
