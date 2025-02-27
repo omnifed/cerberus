@@ -49,7 +49,7 @@
     "rehype-stringify": "^10.0.0",
     "remark-emoji": "^5.0.1",
     "remark-frontmatter": "^5.0.0",
-    "remark-gfm": "^4.0.0",
+    "remark-gfm": "^4.0.1",
     "remark-mdx-frontmatter": "^5.0.0",
     "remark-parse": "^11.0.0",
     "shiki": "^1.27.2"
