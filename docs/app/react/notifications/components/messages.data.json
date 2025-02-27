@@ -2,7 +2,7 @@
   "info": {
     "type": "info",
     "title": "Update Available",
-    "description": "A new version of the app is available",
+    "description": "A new version of the app is available.",
     "action": {
       "label": "Refresh"
     }
