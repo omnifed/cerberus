@@ -9,13 +9,13 @@ import {
   NoteAdmonition,
 } from '@/app/components/Admonition'
 import {
-  InfoNotification,
+  OverviewDemo,
   CustomNotification,
 } from '@/app/react/notifications/components/notification-preview'
 import { NotifyBadgePreview } from '@/app/react/notifications/components/notify-badge-preview'
 
 ```ts
-import { NotificationCenter, useNotificationCenter } from '@cerberus/react'
+import { NotificationCenter, toaster } from '@cerberus/react'
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ import { NotificationCenter, useNotificationCenter } from '@cerberus/react'
 
 Just update the `options.palette` to change the theme of the notification.
 
-<CodePreview preview={<InfoNotification />}>
+<CodePreview preview={<OverviewDemo />}>
 ```tsx title="some-page.tsx" {7-11}
 import { NotificationCenter, useNotificationCenter } from '@cerberus/react'
 

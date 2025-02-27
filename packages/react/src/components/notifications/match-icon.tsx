@@ -1,33 +1,37 @@
 'use client'
 
-import {
-  toast,
-  type NotificationVariantProps,
-} from '@cerberus/styled-system/recipes'
-import { Box } from '@cerberus/styled-system/jsx'
+import { toast } from '@cerberus/styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
+import { Spinner } from '../Spinner'
+import type { NotifyOptions } from './types'
+import { ark } from '@ark-ui/react/factory'
 
 /**
  * This private module contains a component that returns the correct icon for a
- * notification based on the palette.
+ * notification based on the palette. If there is no result, it is assumed to
+ * be a 'loading' type.
  * @module 'notification/match-icon'
  */
 
-export function MatchNotificationIcon(props: NotificationVariantProps) {
+interface MatchNotificationIconProps {
+  type?: NotifyOptions['palette']
+}
+
+export function MatchNotificationIcon(props: MatchNotificationIconProps) {
   const { icons } = useCerberusContext()
-  const palette = (props.palette || 'info') as
-    | 'info'
-    | 'success'
-    | 'warning'
-    | 'danger'
+  const type = props.type || 'info'
   const styles = toast()
 
-  const key = `${palette}Notification` as keyof typeof icons
-  const Icon = icons[key]
+  const key = `${type}Notification` as keyof typeof icons
+  const Icon = icons[key] || ToastLoadingIcon
 
   return (
-    <Box className={styles.icon}>
+    <ark.div className={styles.icon}>
       <Icon />
-    </Box>
+    </ark.div>
   )
+}
+
+function ToastLoadingIcon() {
+  return <Spinner size="1rem" />
 }

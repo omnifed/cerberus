@@ -30,12 +30,12 @@ export const toast: Partial<SlotRecipeConfig> = defineSlotRecipe({
       bgColor: 'colorPalette.surface.200',
       color: 'colorPalette.text.200',
       display: 'flex',
-      height: 'var(--height)',
       gap: 'md',
-      minWidth: 'xs',
+      h: 'var(--height)',
+      minW: '23rem',
       opacity: 'var(--opacity)',
       overflowWrap: 'anywhere',
-      p: 'md',
+      paddingInlineEnd: 'xs',
       position: 'relative',
       rounded: 'sm',
       scale: 'var(--scale)',
@@ -46,6 +46,7 @@ export const toast: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionDuration: 'slow',
       transitionProperty: 'translate, scale, opacity, height',
       transitionTimingFunction: 'default',
+      userSelect: 'none',
       _info: {
         colorPalette: 'info',
       },
@@ -61,18 +62,16 @@ export const toast: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     icon: {
       color: 'colorPalette.text.200',
-      paddingInlineStart: '4',
+      paddingInlineStart: 'md',
     },
     title: {
       color: 'inherit',
       fontWeight: '600',
       textStyle: 'label-md',
-      userSelect: 'none',
     },
     description: {
       color: 'inherit',
       textStyle: 'body-sm',
-      userSelect: 'none',
       ['& :is(a)']: {
         rounded: 'sm',
         textStyle: 'link',
@@ -80,7 +79,7 @@ export const toast: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
     },
     actionTrigger: {
-      marginBlockStart: '2',
+      marginBlockStart: 'xs',
     },
     closeTrigger: {
       ...iconButton.base,

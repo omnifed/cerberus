@@ -6,7 +6,7 @@ export interface NotifyOptions {
    * The palette of the notification.
    * @default 'info'
    */
-  palette?: 'info' | 'success' | 'warning' | 'danger'
+  palette?: 'info' | 'success' | 'warning' | 'error' | 'loading'
   /**
    * The heading of the notification.
    */

@@ -1,11 +1,11 @@
 import {
   Toast,
+  Toaster,
   type ToastActionTriggerProps,
   type ToastCloseTriggerProps,
   type ToastRootProps,
   type ToastTitleProps,
 } from '@ark-ui/react/toast'
-import type { NotifyOptions } from './types'
 import { cx } from '@cerberus/styled-system/css'
 import { toast } from '@cerberus/styled-system/recipes'
 
@@ -14,23 +14,14 @@ import { toast } from '@cerberus/styled-system/recipes'
  * @module 'notification/primitives'
  */
 
+export const NotificationProvider = Toaster
+
 /**
  * The context provider for the Notification component.
  */
-export function NotificationRoot(
-  props: ToastRootProps & {
-    palette?: NotifyOptions['palette']
-  },
-) {
-  const { palette = 'info', ...rootProps } = props
+export function NotificationRoot(props: ToastRootProps) {
   const styles = toast()
-  return (
-    <Toast.Root
-      data-type={palette}
-      {...rootProps}
-      className={cx(styles.root, rootProps.className)}
-    />
-  )
+  return <Toast.Root {...props} className={cx(styles.root, props.className)} />
 }
 
 /**

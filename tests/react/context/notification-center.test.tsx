@@ -1,14 +1,8 @@
-import { describe, test, expect, afterEach, spyOn } from 'bun:test'
-import {
-  render,
-  screen,
-  cleanup,
-  renderHook,
-  waitFor,
-} from '@testing-library/react'
+import { describe, test, expect, afterEach } from 'bun:test'
+import { render, screen, cleanup, waitFor } from '@testing-library/react'
 import {
   NotificationCenter,
-  useNotificationCenter,
+  toaster,
   CerberusProvider,
 } from '@cerberus-design/react'
 import { makeConfig, setupStrictMode } from '@/utils'
@@ -21,11 +15,10 @@ describe('NotificationCenter & useNotificationCenter', () => {
   const config = makeConfig()
 
   function Feature() {
-    const { notify } = useNotificationCenter()
     function handleClick() {
-      notify({
-        palette: 'info',
-        heading: 'New feature!',
+      toaster.create({
+        type: 'info',
+        title: 'New feature!',
         description: 'We have added a new feature to the app.',
       })
     }
@@ -36,9 +29,8 @@ describe('NotificationCenter & useNotificationCenter', () => {
   function Test() {
     return (
       <CerberusProvider config={config}>
-        <NotificationCenter>
-          <Feature />
-        </NotificationCenter>
+        <Feature />
+        <NotificationCenter />
       </CerberusProvider>
     )
   }

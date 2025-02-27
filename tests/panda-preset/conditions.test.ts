@@ -205,7 +205,9 @@ describe('conditions', () => {
   })
 
   test('should have a info', () => {
-    expect(conditions.info).toEqual('&:is([data-type=info])')
+    expect(conditions.info).toEqual(
+      '&:is([data-type=info], [data-type=loading])',
+    )
   })
 
   test('should have a success', () => {
@@ -217,7 +219,9 @@ describe('conditions', () => {
   })
 
   test('should have a danger', () => {
-    expect(conditions.danger).toEqual('&:is([data-type=danger])')
+    expect(conditions.danger).toEqual(
+      '&:is([data-type=danger], [data-type=error])',
+    )
   })
 
   test('should have a isComplete', () => {
