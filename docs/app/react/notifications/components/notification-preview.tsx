@@ -1,158 +1,59 @@
 'use client'
 
-import {
-  Button,
-  Notification,
-  NotificationCenter,
-  NotificationDescription,
-  NotificationHeading,
-  useNotificationCenter,
-  type NotifyOptions,
-} from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
-import { vstack } from '@cerberus/styled-system/patterns'
-import { useCallback, type PropsWithChildren } from 'react'
+import { Button, toaster } from '@cerberus-design/react'
+import { HStack } from '@cerberus-design/styled-system/jsx'
+import { useCallback } from 'react'
 import messagesData from './messages.data.json'
 
-export function InfoNotification() {
-  return (
-    <Notification id="info:1" open>
-      <NotificationHeading>Info Notification</NotificationHeading>
-      <NotificationDescription>
-        This is a description with a <a href="#">link</a> in the message.
-      </NotificationDescription>
-    </Notification>
-  )
-}
-
-export function SuccessNotification() {
-  const palette = 'success'
-  return (
-    <Notification id="success:1" open palette={palette}>
-      <NotificationHeading palette={palette}>
-        Info Notification
-      </NotificationHeading>
-      <NotificationDescription palette={palette}>
-        This is a description with a <a href="#">link</a> in the message.
-      </NotificationDescription>
-    </Notification>
-  )
-}
-
-export function WarningNotification() {
-  const palette = 'warning'
-  return (
-    <Notification id="warning:1" open palette={palette}>
-      <NotificationHeading palette={palette}>
-        Warning Notification
-      </NotificationHeading>
-      <NotificationDescription palette={palette}>
-        This is a description with a <a href="#">link</a> in the message.
-      </NotificationDescription>
-    </Notification>
-  )
-}
-
-export function DangerNotification() {
-  const palette = 'danger'
-  return (
-    <Notification id="danger:1" open palette={palette}>
-      <NotificationHeading palette={palette}>
-        Danger Notification
-      </NotificationHeading>
-      <NotificationDescription palette={palette}>
-        This is a description with a <a href="#">link</a> in the message.
-      </NotificationDescription>
-    </Notification>
-  )
-}
-
 export function CustomNotification() {
-  return (
-    <Notification
-      className={css({
-        bgColor: 'black',
-      })}
-      id="forever"
-      open
-    >
-      <NotificationHeading
-        className={css({
-          color: 'yellow',
-          fontWeight: '900',
-        })}
-      >
-        Wu-Tang Clan
-      </NotificationHeading>
-      <NotificationDescription
-        className={css({
-          color: 'yellow.100',
-          textStyle: 'body-sm',
-        })}
-      >
-        It&apos;s Method Man, for short Mr. Meth
-      </NotificationDescription>
-    </Notification>
-  )
-}
-
-// Overview
-
-function NotificationWrapper(props: PropsWithChildren<{}>) {
-  return (
-    <div
-      className={css({
-        position: 'relative',
-        minH: '3.125rem',
-      })}
-    >
-      {props.children}
-    </div>
-  )
-}
-
-export function PalettePreview() {
-  return (
-    <div
-      className={vstack({
-        w: 'full',
-      })}
-    >
-      <NotificationWrapper>
-        <InfoNotification />
-      </NotificationWrapper>
-
-      <NotificationWrapper>
-        <SuccessNotification />
-      </NotificationWrapper>
-
-      <NotificationWrapper>
-        <WarningNotification />
-      </NotificationWrapper>
-
-      <NotificationWrapper>
-        <DangerNotification />
-      </NotificationWrapper>
-    </div>
-  )
+  return null
 }
 
 function Feature() {
-  const { notify } = useNotificationCenter()
+  const handleInfo = useCallback(() => {
+    const message = messagesData.info
+    toaster.create({
+      ...message,
+      action: {
+        ...message.action,
+        onClick: () => {
+          window.location.reload()
+        },
+      },
+    })
+  }, [toaster.create])
 
-  const handleClick = useCallback(() => {
-    const messages = messagesData as NotifyOptions[]
-    const message = messages[Math.floor(Math.random() * messages.length)]
-    notify(message)
-  }, [notify])
+  const handleSuccess = useCallback(() => {
+    const message = messagesData.success
+    toaster.create(message)
+  }, [toaster.create])
 
-  return <Button onClick={handleClick}>Trigger notification</Button>
+  const handleWarning = useCallback(() => {
+    const message = messagesData.warning
+    toaster.create(message)
+  }, [toaster.create])
+
+  const handleError = useCallback(() => {
+    const message = messagesData.danger
+    toaster.create(message)
+  }, [toaster.create])
+
+  const handleLoading = useCallback(() => {
+    const message = messagesData.loading
+    toaster.create(message)
+  }, [toaster.create])
+
+  return (
+    <HStack>
+      <Button onClick={handleInfo}>info</Button>
+      <Button onClick={handleSuccess}>success</Button>
+      <Button onClick={handleWarning}>warning</Button>
+      <Button onClick={handleError}>error</Button>
+      <Button onClick={handleLoading}>loading</Button>
+    </HStack>
+  )
 }
 
-export function OverviewPreview() {
-  return (
-    <NotificationCenter>
-      <Feature />
-    </NotificationCenter>
-  )
+export function OverviewDemo() {
+  return <Feature />
 }

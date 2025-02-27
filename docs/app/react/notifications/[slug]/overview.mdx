@@ -8,8 +8,7 @@ import CodePreview from '@/app/components/CodePreview'
 import OverviewList from '@/app/components/OverviewList'
 import DripDivider from '@/app/components/drip-divider'
 import {
-  OverviewPreview,
-  PalettePreview
+  OverviewDemo
 } from '@/app/react/notifications/components/notification-preview'
 import { NotifyBadgePreview } from '@/app/react/notifications/components/notify-badge-preview'
 
@@ -19,17 +18,14 @@ import { NotifyBadgePreview } from '@/app/react/notifications/components/notify-
   'Usually appear at the top of the UI on desktop',
   'Can disappear on their own or remain on screen until the user takes action',
   'Can combine with badges to show the number of notifications',
+  'Should use short and clear single sentences',
 ]} />
 
-## Example
+## Toasts
 
-<CodePreview preview={<OverviewPreview />} />
+Toasts are notifications that appear temporarily at the top of the screen. They can be used to show short updates about app processes.
 
-## Palettes
-
-The notificaiton uses the state palettes to determine the color of the notification.
-
-<CodePreview preview={<PalettePreview />} />
+<CodePreview preview={<OverviewDemo />} />
 
 ## Badges
 

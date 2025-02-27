@@ -204,6 +204,26 @@ describe('conditions', () => {
     expect(conditions.dangerPalette).toEqual('&:is([data-palette=danger])')
   })
 
+  test('should have a info', () => {
+    expect(conditions.info).toEqual(
+      '&:is([data-type=info], [data-type=loading])',
+    )
+  })
+
+  test('should have a success', () => {
+    expect(conditions.success).toEqual('&:is([data-type=success])')
+  })
+
+  test('should have a warning', () => {
+    expect(conditions.warning).toEqual('&:is([data-type=warning])')
+  })
+
+  test('should have a danger', () => {
+    expect(conditions.danger).toEqual(
+      '&:is([data-type=danger], [data-type=error])',
+    )
+  })
+
   test('should have a isComplete', () => {
     expect(conditions.isComplete).toEqual('&:is([data-complete=true])')
   })

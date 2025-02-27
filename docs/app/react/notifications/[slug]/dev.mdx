@@ -1,7 +1,8 @@
 ---
 npm: '@cerberus-design/react'
-source: 'context/confirm-modal.tsx'
-recipe: ''
+source: 'components/notification'
+recipe: 'slots/toast.ts'
+ark: 'toast'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
@@ -9,45 +10,76 @@ import {
   NoteAdmonition,
 } from '@/app/components/Admonition'
 import {
-  InfoNotification,
-  CustomNotification,
+  OverviewDemo
 } from '@/app/react/notifications/components/notification-preview'
 import { NotifyBadgePreview } from '@/app/react/notifications/components/notify-badge-preview'
 
 ```ts
-import { NotificationCenter, useNotificationCenter } from '@cerberus/react'
+import { NotificationCenter, toaster } from '@cerberus/react'
 ```
 
 ## Usage
 
-### Palettes
+The `NotificationCenter` component is used to manage notifications in your application. It works together with the `toaster` object to display notifications.
 
-Just update the `options.palette` to change the theme of the notification.
+<CodePreview preview={<OverviewDemo />}>
+```tsx title="Basic demo" {7-17}
+'use client';
 
-<CodePreview preview={<InfoNotification />}>
-```tsx title="some-page.tsx" {7-11}
-import { NotificationCenter, useNotificationCenter } from '@cerberus/react'
+import { toaster } from '@cerberus/react'
 
 function Feature() {
-  const { notify } = useNotificationCenter()
-
   const handleClick = useCallback(() => {
-    notify({
-      palette: 'info',
-      heading: 'Notification',
-      description: 'This is an info notification',
+    toaster.create({
+      type: 'info',
+      title: 'Update Available',
+      description: 'A new version of the app is available',
+      action: {
+        label: 'Refresh',
+        onClick: () => {
+          window.location.reload()
+        }
+      }
     })
-  }, [notify])
+  }, [toaster.create])
 
   return <Button onClick={handleClick}>Trigger notification</Button>
 }
+```
+```tsx title="layout.tsx"
+import { NotificationCenter } from '@cerberus/react'
 
-export function OverviewPreview() {
+export function Layout(props: PropsWithChildren<{}>) {
   return (
-    <NotificationCenter>
-      <Feature />
-    </NotificationCenter>
+    <>
+      {props.children}
+      <NotificationCenter />
+    </>
   )
+}
+```
+</CodePreview>
+
+### Types
+
+Just update the `options.types` to change the theme of the notification. The options are `info`, `success`, `warning`, `error`, and `loading`.
+
+<CodePreview preview={<OverviewDemo />}>
+```tsx title="Types demo" {8}
+'use client';
+
+import { toaster } from '@cerberus/react'
+
+function Feature() {
+  const handleClick = useCallback(() => {
+    toaster.create({
+      type: 'loading',
+      title: 'Loading',
+      description: 'It's taking longer than normal.',
+    })
+  }, [toaster.create])
+
+  return <Button onClick={handleClick}>Trigger notification</Button>
 }
 ```
 </CodePreview>
@@ -78,80 +110,57 @@ export function NotifyBadgePreview() {
 </CodePreview>
 
 
-## Customization
+## Primitives
 
-### Notification
+You can utilize the primitive components to customize the toast notification.
 
-You can use the Notification components to customize the styles.
-
-<CodePreview preview={<CustomNotification />}>
-```tsx title="some-page.tsx"
-import {
-  Notification,
-  NotificationHeading,
-  NotificationDescription
-} from '@cerberus/react'
-
-function CustomNotification() {
-  return (
-    <Notification
-      className={css({
-        bgColor: 'black',
-      })}
-      id="forever"
-      open
-    >
-      <NotificationHeading
-        className={css({
-          color: 'yellow',
-        })}
-      >
-        Wu-Tang Clan
-      </NotificationHeading>
-      <NotificationDescription
-        className={css({
-          color: 'yellow',
-        })}
-      >
-        It's Method Man, for short Mr. Meth
-      </NotificationDescription>
-    </Notification>
-  )
-}
-```
-</CodePreview>
+| Component | Description |
+| --------- | ----------- |
+| NotificationProvider    | The context provider for the toast notifications. |
+| NotificationRoot | The context provider for the toast parts. |
+| NotificationHeading | The title heading of the toast. |
+| NotificationDescription | The description of the toast. |
+| NotificationCloseTrigger | The close button of the toast. |
+| NotificationActionTrigger | The action button of the toast. |
 
 ## API
 
-```ts showLineNumbers=false
+### Props
 
-export type NotificationCenterProps = PortalProps & {
-  duration?: number
-}
+The `NotificationCenter` component is an abstraction of the primitives and doesn't accept any props.
 
-export interface NotifyOptions {
-  palette?: 'info' | 'success' | 'warning' | 'danger'
-  heading: string
-  id?: string
-  description?: ReactNode
-  onClose?: (e: MouseEvent<HTMLButtonElement>) => void
-}
+### `toaster`
 
-export interface NotificationProviderValue {
-  notify: (options: NotifyOptions) => void
-}
+The `toaster` object is used to create notifications and accepts the following options:
 
-define function NotificationCenter(props: PropsWithChildren<NotificationCenterProps>): ReactNode
-````
+| Name     | Type     | Description                            |
+| -------- | -------- | -------------------------------------- |
+| type     | string   | The type of notification. Options are `info`, `success`, `warning`, `error`, and `loading`. |
+| title    | string   | The title of the notification. |
+| description | string | The description of the notification. |
+| action   | `ToasterAction`   | The action object of the notification. |
+| duration | number   | A custom duration of the notification. |
+| onClose  | function | The callback function when the notification is closed. |
 
-### Show Method Options
+### `ToasterAction`
 
-The `notify` method accepts the following options:
+The `ToasterAction` object is used to create an action button for the notification and accepts the following options:
 
-| Name     | Default | Description                            |
-| -------- | ------- | -------------------------------------- |
-| palette | `info` | The palette variant used to theme the dialog.           |
-| heading |  | The heading of the dialog. |
-| id |  | The id of the dialog. |
-| description | `null` | The description of the dialog. |
-| onClose |  | An optional callback that runs when the user closes the dialog. |
+| Name     | Type     | Description                            |
+| -------- | -------- | -------------------------------------- |
+| label    | string   | The label of the action button. |
+| onClick  | function | The callback function when the action button is clicked. |
+
+### Parts
+
+The `NotificationParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the NotificationParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `NotificationRoot` component which is the Provider for the toast. |
+| Heading     | The `NotificationHeading` component which displays the heading title for the toast. |
+| Description     | The `NotificationDescription` component which displays the description for the toast. |
+| CloseTrigger     | The `NotificationCloseTrigger` component which displays the close button for the toast. |
+| ActionTrigger     | The `NotificationActionTrigger` component which displays the action button for the toast. |

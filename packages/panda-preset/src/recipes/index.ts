@@ -15,7 +15,6 @@ import { fieldset } from './slots/fieldset'
 import { fileStatus } from './slots/fileStatus'
 import { fileUploader } from './slots/fileUploader'
 import { menu } from './slots/menu'
-import { notification } from './slots/notification'
 import { progressBar } from './slots/progressBar'
 import { radioGroup } from './slots/radio'
 import { ratingGroup } from './slots/ratingGroup'
@@ -23,12 +22,14 @@ import { select } from './slots/select'
 import { switchRecipe } from './slots/switch'
 import { table } from './slots/table'
 import { tabs } from './slots/tabs'
+import { toast } from './slots/toast'
 import { tooltip } from './slots/tooltip'
 
 // DEPRECATED: remove in v1
 import { fieldMessage } from './fieldMessage'
 import { input } from './slots/input'
 import { modal } from './slots/modal'
+import { notification } from './slots/notification'
 import { toggle } from './slots/toggle'
 import { thead } from './thead'
 import { th } from './th'
@@ -75,6 +76,7 @@ export const slotRecipes = {
   switchRecipe,
   table,
   tabs,
+  toast,
   toggle,
   tooltip,
 }

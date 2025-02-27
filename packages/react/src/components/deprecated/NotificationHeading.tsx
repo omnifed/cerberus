@@ -15,10 +15,7 @@ export type NotificationHeadingProps = BaseNotificationHeadingProps &
   NotificationVariantProps
 
 /**
- * Used to render the heading of a notification.
- * @see https://cerberus.digitalu.design/react/notification
- * @memberof module:NotificationCenter
- * @param props - The anything a HTMLParagraphElement can accept.
+ * @deprecated use `NotificationParts` instead
  */
 export function NotificationHeading(props: NotificationHeadingProps) {
   const { palette, ...nativeProps } = props

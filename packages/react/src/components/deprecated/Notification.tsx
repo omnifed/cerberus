@@ -12,8 +12,8 @@ import {
   type PropsWithChildren,
   type MouseEvent,
 } from 'react'
-import { trapFocus } from '../aria-helpers/trap-focus.aria'
-import { useCerberusContext } from '../context/cerberus'
+import { trapFocus } from '../../aria-helpers/trap-focus.aria'
+import { useCerberusContext } from '../../context/cerberus'
 
 /**
  * This module exports the Notification component.
@@ -46,19 +46,7 @@ export interface NotificationBaseProps
 export type NotificationProps = NotificationBaseProps & NotificationVariantProps
 
 /**
- * A static Notification component that displays a message to the user. This
- * is typically only used when not utilizing the NotificationCenter.
- * @see https://cerberus.digitalu.design/react/notification
- * @memberof module:NotificationCenter
- * @example
- * ```tsx
- * <Notification id="info:1" open>
- *  <NotificationHeading>Info Notification</NotificationHeading>
- *  <NotificationDescription>
- *   This is a description with a <a href="#">link</a> in the message.
- *  </NotificationDescription>
- * </Notification>
- * ```
+ * @deprecated use `NotificationParts` instead
  */
 export function Notification(props: PropsWithChildren<NotificationProps>) {
   const { children, palette, onClose, ...nativeProps } = props

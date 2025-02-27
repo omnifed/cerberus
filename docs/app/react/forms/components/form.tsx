@@ -11,7 +11,7 @@ import {
   Option,
   Select,
   createSelectCollection,
-  useNotificationCenter,
+  toaster,
 } from '@cerberus-design/react'
 import { Box, HStack, VStack } from '@cerberus-design/styled-system/jsx'
 import { box } from '@cerberus/styled-system/patterns'
@@ -24,7 +24,6 @@ const initialState = {
 }
 
 export function ProfileForm() {
-  const { notify } = useNotificationCenter()
   const collection = createSelectCollection([
     { label: 'Younger than 13', value: '1' },
     { label: '13-20', value: '2' },
@@ -38,13 +37,13 @@ export function ProfileForm() {
 
   useEffect(() => {
     if (state.success) {
-      notify({
-        heading: 'Profile updated',
+      toaster.create({
+        title: 'Profile updated',
         description: 'Your profile has been updated!',
-        palette: 'success',
+        type: 'success',
       })
     }
-  }, [state.success, notify])
+  }, [state.success, toaster.create])
 
   return (
     <form
