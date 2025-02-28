@@ -17,7 +17,7 @@
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.8.1",
-    "hast-util-to-jsx-runtime": "^2.3.2",
+    "hast-util-to-jsx-runtime": "^2.3.5",
     "next": "15.2.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -49,7 +49,7 @@
     "rehype-stringify": "^10.0.0",
     "remark-emoji": "^5.0.1",
     "remark-frontmatter": "^5.0.0",
-    "remark-gfm": "^4.0.0",
+    "remark-gfm": "^4.0.1",
     "remark-mdx-frontmatter": "^5.0.0",
     "remark-parse": "^11.0.0",
     "shiki": "^1.27.2"
