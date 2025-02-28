@@ -13,7 +13,7 @@ import { HStack, VStack } from '@cerberus/styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
 import { Show } from '../Show'
 import { For } from '../for'
-import { Avatar } from '../Avatar'
+import { Avatar } from '../Avatar-old'
 import {
   Dialog,
   DialogDescription,

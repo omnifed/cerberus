@@ -14,7 +14,7 @@ import {
 import { Button } from '../components/button/button'
 import { css } from '@cerberus/styled-system/css'
 import { Show } from '../components/Show'
-import { Avatar } from '../components/Avatar'
+import { Avatar } from '../components/Avatar-old'
 import { HStack, VStack } from '@cerberus/styled-system/jsx'
 import { useCerberusContext } from './cerberus'
 import {

@@ -26,7 +26,7 @@ export * from './hooks/useToggle'
 
 export * from './components/admonition/index'
 export * from './components/accordion/index'
-export * from './components/Avatar'
+
 export * from './components/button/index'
 export * from './components/checkbox/index'
 export * from './components/CircularProgress'

@@ -18,7 +18,7 @@ import { hstack } from '@cerberus/styled-system/patterns'
 import { FieldLabel, FieldRoot, Input } from '../components/field/index'
 import { Button } from '../components/button/button'
 import { Show } from '../components/Show'
-import { Avatar } from '../components/Avatar'
+import { Avatar } from '../components/Avatar-old'
 import { Text } from '../components/Text'
 import { useCerberusContext } from './cerberus'
 import {

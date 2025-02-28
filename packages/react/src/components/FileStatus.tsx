@@ -15,7 +15,7 @@ import { hstack, vstack } from '@cerberus/styled-system/patterns'
 import { useCerberusContext } from '../context/cerberus'
 import { ProgressBar, type ProgressBarProps } from './ProgressBar'
 import { IconButton } from './IconButton'
-import { Avatar } from './Avatar'
+import { Avatar } from './Avatar-old'
 import { Field, FieldHelperText } from './field/index'
 
 /**

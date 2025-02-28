@@ -6,7 +6,7 @@ import { type InputHTMLAttributes } from 'react'
 import { Show } from './Show'
 import { fileUploader } from '@cerberus/styled-system/recipes'
 import { useCerberusContext } from '../context/cerberus'
-import { Avatar } from './Avatar'
+import { Avatar } from './Avatar-old'
 
 export interface FileUploaderProps
   extends InputHTMLAttributes<HTMLInputElement> {

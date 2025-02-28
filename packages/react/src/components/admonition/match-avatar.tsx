@@ -2,7 +2,7 @@
 
 import type { AdmonitionVariantProps } from '@cerberus/styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
-import { Avatar } from '../Avatar'
+import { Avatar } from '../Avatar-old'
 import { useRef, type ReactNode } from 'react'
 
 /**
