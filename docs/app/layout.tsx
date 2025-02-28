@@ -88,7 +88,7 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
         >
           <CerberusConfig>
             <Nav />
-            {props.children}
+            <main role="main">{props.children}</main>
           </CerberusConfig>
         </ThemeProvider>
       </body>

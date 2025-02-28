@@ -14,9 +14,11 @@ export const markdown = css({
       outlineOffset: '2px',
     },
   },
+
   '& .expressive-code': {
     mb: '6',
   },
+
   '& :is(p,li,td) > code:not(.code)': {
     bgColor: 'page.surface.100',
     color: 'success.text.100',

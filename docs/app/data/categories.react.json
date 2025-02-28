@@ -4,7 +4,7 @@
     "description": "Components that trigger an action.",
     "items": ["Button", "Icon Button"],
     "next": [],
-    "new": ["Button"],
+    "new": [],
     "deprecated": []
   },
   "communication": {
@@ -60,7 +60,7 @@
       "Switch"
     ],
     "next": ["Rating", "Combobox"],
-    "new": ["Checkbox", "Radio", "Select", "Switch"],
+    "new": [],
     "deprecated": []
   },
   "inputs": {
@@ -76,7 +76,7 @@
       "File Uploader"
     ],
     "next": [],
-    "new": ["Field", "Fieldset"],
+    "new": [],
     "deprecated": ["Label", "Field Message"]
   }
 }
