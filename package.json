@@ -10,28 +10,28 @@
     "lint:ts": "tsc --noEmit"
   },
   "dependencies": {
-    "typescript": "^5.7.2"
+    "typescript": "^5.8.2"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.2.0",
-    "@eslint/js": "^9.14.0",
-    "@types/bun": "^1.1.2",
-    "@types/eslint": "^8.56.10",
+    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.21.0",
+    "@types/bun": "^1.2.4",
+    "@types/eslint": "^8.56.12",
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/eslint__js": "^8.42.3",
     "@types/mdx": "^2.0.13",
-    "@typescript-eslint/eslint-plugin": "^7.12.0",
-    "eslint": "^9.14.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "eslint": "^9.21.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard-with-typescript": "^43.0.1",
-    "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-sonarjs": "^2.0.4",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "oxlint": "^0.13.2",
     "prettier": "3.2.5",
-    "typescript-eslint": "^8.16.0"
+    "typescript-eslint": "^8.25.0"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
