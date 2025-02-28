@@ -30,7 +30,7 @@ const overviewGroup: CategoriesList = {
     ],
     deprecated: [],
     next: [],
-    new: ['Forms', 'For', 'Toggle'],
+    new: [],
   },
 }
 const hooksGroup: CategoriesList = {
@@ -48,7 +48,7 @@ const hooksGroup: CategoriesList = {
     ],
     deprecated: ['trap-focus', 'use-modal', 'use-toggle'],
     next: [],
-    new: ['split-props'],
+    new: [],
   },
 }
 

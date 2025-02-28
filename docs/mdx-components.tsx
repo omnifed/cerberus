@@ -90,6 +90,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           pb: '6',
           textStyle: 'body-md',
           textWrap: 'pretty',
+          '& > code:not(.code)': {
+            bgColor: 'page.surface.100',
+            color: 'success.text.100',
+            pxi: 'sm',
+            py: 'sm',
+            textStyle: 'mono-xs',
+            rounded: 'md',
+          },
         })}
         {...props}
       />
@@ -187,6 +195,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           py: '6',
           _last: {
             borderRight: 'none',
+          },
+          '& > code:not(.code)': {
+            bgColor: 'page.surface.100',
+            color: 'success.text.100',
+            pxi: 'sm',
+            py: 'sm',
+            textStyle: 'mono-xs',
+            rounded: 'md',
           },
         })}
         {...props}

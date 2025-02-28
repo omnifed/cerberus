@@ -100,7 +100,7 @@ export function PageSections(props: PropsWithChildren<PageLayoutProps>) {
 
 export function TabPageContent(props: PropsWithChildren<PageLayoutProps>) {
   return (
-    <main
+    <div
       className={cx(
         scrollable({
           direction: 'vertical',
@@ -117,11 +117,9 @@ export function TabPageContent(props: PropsWithChildren<PageLayoutProps>) {
           },
         }),
       )}
-      id="react:page-content"
-      role="main"
     >
       {props.children}
-    </main>
+    </div>
   )
 }
 
