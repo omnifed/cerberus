@@ -52,7 +52,7 @@
   {
     "label": "Typography",
     "route": "/preset/typography",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
