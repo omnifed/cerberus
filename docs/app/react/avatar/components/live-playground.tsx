@@ -37,6 +37,7 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
+          alt="User Avatar"
           fallback={selectedProps.fallback as string}
           gradient="styx-light"
           src={selectedProps.src as string}
@@ -46,6 +47,7 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
+          alt="User Avatar"
           fallback={selectedProps.fallback as string}
           gradient="styx-dark"
           src={selectedProps.src as string}
@@ -55,6 +57,7 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
+          alt="User Avatar"
           fallback={selectedProps.fallback as string}
           gradient="thanatos-light"
           src={selectedProps.src as string}
@@ -64,6 +67,7 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
+          alt="User Avatar"
           fallback={selectedProps.fallback as string}
           gradient="thanatos-dark"
           src={selectedProps.src as string}
@@ -73,6 +77,7 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
+          alt="User Avatar"
           fallback={selectedProps.fallback as string}
           gradient="asphodel-light"
           src={selectedProps.src as string}
@@ -82,6 +87,7 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
+          alt="User Avatar"
           fallback={selectedProps.fallback as string}
           gradient="asphodel-dark"
           src={selectedProps.src as string}
@@ -92,6 +98,7 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
+          alt="User Avatar"
           fallback={selectedProps.fallback as string}
           src={selectedProps.src as string}
           onStatusChange={(status) => console.log(status)}

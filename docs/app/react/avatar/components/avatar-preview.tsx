@@ -1,6 +1,6 @@
 import { Avatar, AvatarRoot } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
-import { HStack } from '@cerberus/styled-system/jsx'
+import { HStack } from '@cerberus-design/styled-system/jsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
