@@ -1,4 +1,5 @@
 import type { AvatarRootProps } from '@ark-ui/react/avatar'
+import type { AvatarVariantProps } from '@cerberus/styled-system/recipes'
 import type { ReactNode } from 'react'
 import { splitProps } from '../../utils'
 import { Show } from '../Show'
@@ -9,13 +10,15 @@ import { AvatarParts } from './parts'
  * @module 'avatar'
  */
 
-export interface AvatarWithoutImage extends AvatarRootProps {
+export interface AvatarWithoutImage
+  extends AvatarRootProps,
+    AvatarVariantProps {
   alt?: never
   src?: never
   fallback?: ReactNode
 }
 
-export interface AvatarWithImage extends AvatarRootProps {
+export interface AvatarWithImage extends AvatarRootProps, AvatarVariantProps {
   alt: string
   src: string
   fallback?: ReactNode
@@ -28,16 +31,16 @@ export interface AvatarWithImage extends AvatarRootProps {
  * @description [Ark Docs](https://ark-ui.com/react/docs/components/avatar#api-reference)
  */
 export function Avatar(props: AvatarWithoutImage | AvatarWithImage) {
-  const [imgProps, { fallback }, rootProps] = splitProps(
+  const [imgProps, { fallback, children }, rootProps] = splitProps(
     props,
-    ['alt', 'src', 'children'],
-    ['fallback'],
+    ['alt', 'src'],
+    ['fallback', 'children'],
   )
 
   return (
     <AvatarParts.Root {...rootProps}>
       <Show
-        when={Boolean(imgProps.children)}
+        when={Boolean(children)}
         fallback={
           <>
             <AvatarParts.Fallback>{fallback}</AvatarParts.Fallback>
@@ -45,7 +48,7 @@ export function Avatar(props: AvatarWithoutImage | AvatarWithImage) {
           </>
         }
       >
-        {props.children}
+        {children}
       </Show>
     </AvatarParts.Root>
   )

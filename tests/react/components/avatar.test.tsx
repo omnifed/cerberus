@@ -38,9 +38,9 @@ describe('Avatar', () => {
   test('should allow a custom element', () => {
     render(
       <CerberusProvider config={config}>
-        <Avatar asChild>
+        <AvatarRoot asChild>
           <div data-testid="custom-element">Custom Element</div>
-        </Avatar>
+        </AvatarRoot>
       </CerberusProvider>,
     )
     expect(screen.getByTestId('custom-element')).toBeTruthy()

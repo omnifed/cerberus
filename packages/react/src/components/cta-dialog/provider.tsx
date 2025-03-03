@@ -13,7 +13,7 @@ import { HStack, VStack } from '@cerberus/styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
 import { Show } from '../Show'
 import { For } from '../for'
-import { Avatar } from '../Avatar-old'
+import { Avatar } from '../avatar/avatar'
 import {
   Dialog,
   DialogDescription,
@@ -112,9 +112,8 @@ export function CTAModal(props: PropsWithChildren<object>) {
             <VStack alignItems="flex-start" gap="md" w="full">
               <VStack gap="lg" w="full">
                 <Avatar
-                  ariaLabel=""
                   gradient="charon-light"
-                  icon={
+                  fallback={
                     <Show
                       when={Boolean(confirmIcon)}
                       fallback={<FallbackIcon size={24} />}
@@ -122,7 +121,6 @@ export function CTAModal(props: PropsWithChildren<object>) {
                       {confirmIcon}
                     </Show>
                   }
-                  src=""
                 />
                 <DialogHeading>{content?.heading}</DialogHeading>
                 <DialogDescription>{content?.description}</DialogDescription>

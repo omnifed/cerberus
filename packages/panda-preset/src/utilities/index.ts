@@ -38,6 +38,19 @@ export const pxi: CustomUtilityConfig<'pxi'> = {
   },
 }
 
+export const size: CustomUtilityConfig<'size'> = {
+  size: {
+    className: 'size',
+    values: 'sizing',
+    transform(value: string) {
+      return {
+        height: value,
+        width: value,
+      }
+    },
+  },
+}
+
 export type GradientValue =
   | 'charon-light'
   | 'charon-dark'
@@ -202,6 +215,7 @@ export const utilities = {
   extend: {
     ...mxi,
     ...pxi,
+    ...size,
     ...gradient,
     ...borderGradient,
   },

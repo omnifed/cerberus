@@ -14,7 +14,7 @@ import {
 import { Button } from '../components/button/button'
 import { css } from '@cerberus/styled-system/css'
 import { Show } from '../components/Show'
-import { Avatar } from '../components/Avatar-old'
+import { Avatar } from '../components/avatar/avatar'
 import { HStack, VStack } from '@cerberus/styled-system/jsx'
 import { useCerberusContext } from './cerberus'
 import {
@@ -176,18 +176,14 @@ export function ConfirmModal(
                   when={palette === 'danger'}
                   fallback={
                     <Avatar
-                      ariaLabel=""
                       gradient="charon-light"
-                      icon={<ConfirmIcon size={24} />}
-                      src=""
+                      fallback={<ConfirmIcon size={24} />}
                     />
                   }
                 >
                   <Avatar
-                    ariaLabel=""
                     gradient="hades-dark"
-                    icon={<ConfirmIcon size={24} />}
-                    src=""
+                    fallback={<ConfirmIcon size={24} />}
                   />
                 </Show>
               </HStack>

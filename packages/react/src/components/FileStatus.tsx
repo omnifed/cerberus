@@ -15,7 +15,7 @@ import { hstack, vstack } from '@cerberus/styled-system/patterns'
 import { useCerberusContext } from '../context/cerberus'
 import { ProgressBar, type ProgressBarProps } from './ProgressBar'
 import { IconButton } from './IconButton'
-import { Avatar } from './Avatar-old'
+import { Avatar } from './avatar/avatar'
 import { Field, FieldHelperText } from './field/index'
 
 /**
@@ -129,10 +129,8 @@ export function FileStatus(props: FileStatusProps) {
       className={cx(nativeProps.className, styles.root, hstack())}
     >
       <Avatar
-        ariaLabel=""
         gradient={modalIconPalette}
-        icon={<MatchFileStatusIcon size={24} status={status} />}
-        src=""
+        fallback={<MatchFileStatusIcon size={24} status={status} />}
       />
 
       <div

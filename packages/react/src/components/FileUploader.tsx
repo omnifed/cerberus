@@ -6,7 +6,7 @@ import { type InputHTMLAttributes } from 'react'
 import { Show } from './Show'
 import { fileUploader } from '@cerberus/styled-system/recipes'
 import { useCerberusContext } from '../context/cerberus'
-import { Avatar } from './Avatar-old'
+import { Avatar } from './avatar/avatar'
 
 export interface FileUploaderProps
   extends InputHTMLAttributes<HTMLInputElement> {
@@ -44,13 +44,7 @@ export function FileUploader(props: FileUploaderProps) {
       )}
     >
       <div className={styles.icon}>
-        <Avatar
-          gradient="charon-light"
-          ariaLabel=""
-          icon={<Icon />}
-          size="md"
-          src=""
-        />
+        <Avatar gradient="charon-light" fallback={<Icon />} />
       </div>
 
       <label

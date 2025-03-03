@@ -55,8 +55,8 @@ export function AnimatingUploadIcon(props: AnimatingUploadIconProps) {
         <svg
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
-          width="0.8em"
-          height="0.8em"
+          width="1.1em"
+          height="1.1em"
           x="27%"
           y="27%"
           viewBox="0 0 24 24"

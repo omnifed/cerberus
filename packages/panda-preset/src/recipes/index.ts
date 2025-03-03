@@ -1,4 +1,3 @@
-import { avatar } from './avatar'
 import { button } from './button'
 import { iconButton } from './iconButton'
 import { label } from './label'
@@ -6,6 +5,7 @@ import { tag } from './tag'
 
 import { accordion } from './slots/accordion'
 import { admonition } from './slots/admonition'
+import { avatar } from './slots/avatar'
 import { checkbox } from './slots/checkbox'
 import { combobox } from './slots/combobox'
 import { datePicker } from './slots/datepicker'
@@ -42,7 +42,6 @@ import { td } from './td'
  */
 
 export const recipes = {
-  avatar,
   button,
   fieldMessage,
   iconButton,
@@ -55,6 +54,7 @@ export const recipes = {
 }
 
 export const slotRecipes = {
+  avatar,
   accordion,
   admonition,
   checkbox,

@@ -1,54 +1,45 @@
-import { Avatar } from '@cerberus-design/react'
+import { Avatar, AvatarRoot } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { HStack } from '@cerberus/styled-system/jsx'
 import { WuTangLogo } from '@/app/components/icons/wu-tang-icon'
 import Image from 'next/image'
 
 export function AvatarPreview() {
   return (
-    <div
-      className={hstack({
-        justify: 'center',
-        w: '3/4',
-      })}
-    >
-      <Avatar ariaLabel="x s" size="xs" src="" />
-      <Avatar ariaLabel="s m" gradient="charon-light" size="sm" src="" />
-      <Avatar ariaLabel="m d" gradient="charon-dark" size="md" src="" />
-      <Avatar ariaLabel="l g" gradient="nyx-light" size="lg" src="" />
-      <Avatar ariaLabel="x l" gradient="nyx-dark" size="xl" src="" />
-      <Avatar ariaLabel="2 x" gradient="amphiaraus-light" size="2xl" src="" />
-      <Avatar ariaLabel="3 x" gradient="amphiaraus-dark" size="3xl" src="" />
-      <Avatar ariaLabel="4 x" gradient="hades-dark" size="4xl" src="" />
-    </div>
+    <HStack justify="center" w="3/4">
+      <Avatar fallback="xs" size="xs" />
+      <Avatar fallback="sm" gradient="charon-light" size="sm" />
+      <Avatar fallback="md" gradient="charon-dark" size="md" />
+      <Avatar fallback="lg" gradient="nyx-light" size="lg" />
+      <Avatar fallback="xl" gradient="nyx-dark" size="xl" />
+      <Avatar fallback="2x" gradient="amphiaraus-light" size="2xl" />
+      <Avatar fallback="3x" gradient="amphiaraus-dark" size="3xl" />
+      <Avatar fallback="4x" gradient="hades-dark" size="4xl" />
+    </HStack>
   )
 }
 
 export function NextAvatar() {
   return (
-    <Avatar
-      as={
-        <Image
-          alt="Protector Cerberus"
-          className={css({
-            h: 'full',
-            objectFit: 'cover',
-            w: 'full',
-          })}
-          src="https://cerberus.digitalu.design/logo.svg"
-          height={100}
-          width={100}
-        />
-      }
-      size="lg"
-    />
+    <AvatarRoot size="lg" asChild>
+      <Image
+        alt="Protector Cerberus"
+        className={css({
+          h: 'full',
+          objectFit: 'cover',
+          w: 'full',
+        })}
+        src="https://cerberus.digitalu.design/logo.svg"
+        height={100}
+        width={100}
+      />
+    </AvatarRoot>
   )
 }
 
 export function CustomAvatar() {
   return (
     <Avatar
-      ariaLabel=""
       className={css({
         bgColor: 'black',
         bgImage: 'none',
@@ -58,8 +49,7 @@ export function CustomAvatar() {
       })}
       height={50}
       size="4xl"
-      src=""
-      icon={
+      fallback={
         <span
           className={css({
             display: 'inline-block',

@@ -1,9 +1,9 @@
 'use client'
 
 import type { AdmonitionVariantProps } from '@cerberus/styled-system/recipes'
-import { useCerberusContext } from '../../context/cerberus'
-import { Avatar } from '../Avatar-old'
 import { useRef, type ReactNode } from 'react'
+import { useCerberusContext } from '../../context/cerberus'
+import { Avatar } from '../avatar/avatar'
 
 /**
  * This module provides a component for creating the admonition indicator.
@@ -33,50 +33,18 @@ export function MatchAvatar(props: MatchAvatarProps) {
 
   // cache the el since the result is static and the component is client side
   const elRef = useRef<AvatarRefProps>({
-    page: (
-      <Avatar
-        gradient="charon-light"
-        ariaLabel=""
-        icon={<InfoIcon />}
-        size="sm"
-        src=""
-      />
-    ),
+    page: <Avatar gradient="charon-light" fallback={<InfoIcon />} size="sm" />,
     info: (
-      <Avatar
-        gradient="amphiaraus-dark"
-        ariaLabel=""
-        icon={<InfoIcon />}
-        size="sm"
-        src=""
-      />
+      <Avatar gradient="amphiaraus-dark" fallback={<InfoIcon />} size="sm" />
     ),
     success: (
-      <Avatar
-        gradient="thanatos-dark"
-        ariaLabel=""
-        icon={<SuccessIcon />}
-        size="sm"
-        src=""
-      />
+      <Avatar gradient="thanatos-dark" fallback={<SuccessIcon />} size="sm" />
     ),
     warning: (
-      <Avatar
-        gradient="asphodel-light"
-        ariaLabel=""
-        icon={<WarningIcon />}
-        size="sm"
-        src=""
-      />
+      <Avatar gradient="asphodel-light" fallback={<WarningIcon />} size="sm" />
     ),
     danger: (
-      <Avatar
-        gradient="hades-light"
-        ariaLabel=""
-        icon={<DangerIcon />}
-        size="sm"
-        src=""
-      />
+      <Avatar gradient="hades-light" fallback={<DangerIcon />} size="sm" />
     ),
   })
 
