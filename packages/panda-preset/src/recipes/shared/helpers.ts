@@ -69,3 +69,34 @@ export function createGradientVariants(): Record<
     }
   }, {}) as Record<GradientValue, SystemStyleObject>
 }
+
+/**
+ * A helper to create gradient palette variants
+ * @returns An Object with the gradient name as key and the gradient value as
+ * the value.
+ * @example
+ * ```tsx
+ * {
+ *  'amphiaraus-light': {
+ *    root: {
+ *     gradient: 'amphiaraus-light',
+ *   },
+ *  },
+ * }
+ * ```
+ */
+export function createSlotGradientVariants(): Record<
+  GradientValue,
+  Record<'root', SystemStyleObject>
+> {
+  return gradientValues.reduce((acc, value) => {
+    return {
+      ...acc,
+      [value]: {
+        root: {
+          gradient: value,
+        },
+      },
+    }
+  }, {}) as Record<GradientValue, Record<'root', SystemStyleObject>>
+}

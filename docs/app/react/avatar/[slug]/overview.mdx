@@ -5,6 +5,7 @@ a11y: 'misc'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
+import DripDivider from '@/app/components/drip-divider'
 import OverviewList from '@/app/components/OverviewList'
 import {
   AvatarPreview,
@@ -17,14 +18,16 @@ import {
   'Can use an image, name, or icon to represent a user or entity',
   'Can use any cerberus gradient color',
   'Images should be square and are the highest priority',
-  'Names should be used when images and are not available',
-  'Icons should be used when images or nanes are not available',
+  'Initials should be used when images and are not available',
+  'Icons should be used when images or names are not available',
 ]} />
 
 ## Example
 
 <CodePreview preview={<AvatarPreview />} />
 <LivePlayground />
+
+<DripDivider />
 
 ## Resources
 

@@ -1,75 +1,56 @@
-import { Avatar } from '@cerberus-design/react'
+import { Avatar, AvatarRoot } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
-import { hstack } from '@cerberus/styled-system/patterns'
-import { WuTangLogo } from '@/app/components/icons/wu-tang-icon'
+import { HStack } from '@cerberus-design/styled-system/jsx'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function AvatarPreview() {
   return (
-    <div
-      className={hstack({
-        justify: 'center',
-        w: '3/4',
-      })}
-    >
-      <Avatar ariaLabel="x s" size="xs" src="" />
-      <Avatar ariaLabel="s m" gradient="charon-light" size="sm" src="" />
-      <Avatar ariaLabel="m d" gradient="charon-dark" size="md" src="" />
-      <Avatar ariaLabel="l g" gradient="nyx-light" size="lg" src="" />
-      <Avatar ariaLabel="x l" gradient="nyx-dark" size="xl" src="" />
-      <Avatar ariaLabel="2 x" gradient="amphiaraus-light" size="2xl" src="" />
-      <Avatar ariaLabel="3 x" gradient="amphiaraus-dark" size="3xl" src="" />
-      <Avatar ariaLabel="4 x" gradient="hades-dark" size="4xl" src="" />
-    </div>
+    <HStack justify="center" w="3/4">
+      <Avatar fallback="xs" size="xs" />
+      <Avatar fallback="sm" gradient="charon-light" size="sm" />
+      <Avatar fallback="md" gradient="charon-dark" size="md" />
+      <Avatar fallback="lg" gradient="nyx-light" size="lg" />
+      <Avatar fallback="xl" gradient="nyx-dark" size="xl" />
+      <Avatar fallback="2x" gradient="amphiaraus-light" size="2xl" />
+      <Avatar fallback="3x" gradient="amphiaraus-dark" size="3xl" />
+      <Avatar fallback="4x" gradient="hades-dark" size="4xl" />
+    </HStack>
   )
 }
 
 export function NextAvatar() {
   return (
-    <Avatar
-      as={
+    <AvatarRoot size="lg" asChild>
+      <Link href="/">
         <Image
           alt="Protector Cerberus"
           className={css({
-            h: 'full',
             objectFit: 'cover',
-            w: 'full',
           })}
           src="https://cerberus.digitalu.design/logo.svg"
-          height={100}
-          width={100}
+          height={50}
+          width={50}
         />
-      }
-      size="lg"
-    />
+      </Link>
+    </AvatarRoot>
   )
 }
 
 export function CustomAvatar() {
   return (
     <Avatar
-      ariaLabel=""
       className={css({
         bgColor: 'black',
         bgImage: 'none',
         border: '6px solid',
-        borderColor: 'yellow',
-        color: 'yellow',
+        borderColor: 'danger.border.initial',
+        color: 'danger.text.initial',
+        fontFamily: 'sans',
+        transform: 'skewX(-10deg)',
       })}
-      height={50}
       size="4xl"
-      src=""
-      icon={
-        <span
-          className={css({
-            display: 'inline-block',
-            w: '1/3',
-          })}
-        >
-          <WuTangLogo />
-        </span>
-      }
-      width={50}
+      fallback="Cu"
     />
   )
 }

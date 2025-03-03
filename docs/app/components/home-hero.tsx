@@ -25,7 +25,7 @@ export default function HomeHero() {
         },
       })}
     >
-      <main
+      <div
         className={gridItem({
           bgColor: 'page.surface.100',
           mxi: '2',
@@ -123,7 +123,7 @@ export default function HomeHero() {
             </Link>
           </div>
         </div>
-      </main>
+      </div>
 
       <div
         className={gridItem({

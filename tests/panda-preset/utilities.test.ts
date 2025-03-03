@@ -34,6 +34,16 @@ describe('utilities', () => {
     })
   })
 
+  test('should export a size utility', () => {
+    expect(utilities.extend.size).toBeDefined()
+    expect(utilities.extend.size.className).toEqual('size')
+    expect(utilities.extend.size.values).toEqual('sizing')
+    expect(utilities.extend.size.transform?.('4rem', args)).toEqual({
+      height: '4rem',
+      width: '4rem',
+    })
+  })
+
   test('should export a gradient utility', () => {
     const cerbGradient = utilities.extend.gradient
     const args = {

@@ -18,36 +18,13 @@ const api = {
     '3xl',
     '4xl',
   ]),
-  ariaLabel: builder.Text('aria label', 'Protector Cerberus'),
+  fallback: builder.Text('fallback', 'C'),
   src: builder.Text('src', 'https://cerberus.digitalu.design/logo.svg'),
 }
 
 export function LivePlayground() {
   return (
     <CodeBuilder api={api}>
-      <AvatarPreview />
-    </CodeBuilder>
-  )
-}
-
-export function LivePlaygroundWithCode() {
-  return (
-    <CodeBuilder
-      api={api}
-      code={`import { Avatar, type AvatarProps } from '@cerberus/react'
-
-export function MyAvatar(props: AvatarProps) {
-  return (
-    <Avatar
-      {...props}
-      ariaLabel={{ariaLabel}}
-      gradient={{gradient}}
-      size={{size}}
-      src={{src}}
-    />
-  )
-}`}
-    >
       <AvatarPreview />
     </CodeBuilder>
   )
@@ -60,7 +37,8 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
-          ariaLabel={selectedProps.ariaLabel as string}
+          alt="User Avatar"
+          fallback={selectedProps.fallback as string}
           gradient="styx-light"
           src={selectedProps.src as string}
         />
@@ -69,7 +47,8 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
-          ariaLabel={selectedProps.ariaLabel as string}
+          alt="User Avatar"
+          fallback={selectedProps.fallback as string}
           gradient="styx-dark"
           src={selectedProps.src as string}
         />
@@ -78,7 +57,8 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
-          ariaLabel={selectedProps.ariaLabel as string}
+          alt="User Avatar"
+          fallback={selectedProps.fallback as string}
           gradient="thanatos-light"
           src={selectedProps.src as string}
         />
@@ -87,7 +67,8 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
-          ariaLabel={selectedProps.ariaLabel as string}
+          alt="User Avatar"
+          fallback={selectedProps.fallback as string}
           gradient="thanatos-dark"
           src={selectedProps.src as string}
         />
@@ -96,7 +77,8 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
-          ariaLabel={selectedProps.ariaLabel as string}
+          alt="User Avatar"
+          fallback={selectedProps.fallback as string}
           gradient="asphodel-light"
           src={selectedProps.src as string}
         />
@@ -105,7 +87,8 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
-          ariaLabel={selectedProps.ariaLabel as string}
+          alt="User Avatar"
+          fallback={selectedProps.fallback as string}
           gradient="asphodel-dark"
           src={selectedProps.src as string}
         />
@@ -115,8 +98,10 @@ export function AvatarPreview() {
       return (
         <Avatar
           {...selectedProps}
-          ariaLabel={selectedProps.ariaLabel as string}
+          alt="User Avatar"
+          fallback={selectedProps.fallback as string}
           src={selectedProps.src as string}
+          onStatusChange={(status) => console.log(status)}
         />
       )
   }
