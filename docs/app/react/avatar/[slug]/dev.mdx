@@ -1,7 +1,8 @@
 ---
 npm: '@cerberus-design/react'
-source: 'components/Avatar.tsx'
-recipe: 'avatar.ts'
+source: 'components/avatar'
+recipe: '/slots/avatar.ts'
+ark: 'avatar'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
@@ -11,145 +12,132 @@ import {
   NextAvatar,
   CustomAvatar,
 } from '@/app/react/avatar/components/avatar-preview'
-import {
-  LivePlaygroundWithCode
-} from '@/app/react/avatar/components/live-playground'
+
 
 ```ts
 import { Avatar } from '@cerberus/react'
 ```
 
+<NoteAdmonition description="The avatar uses a smart hierarchy method. If a source is provided and loads successfully - it will be shown. In all other cases, the fallback will be shown." />
+
 ## Usage
 
-<NoteAdmonition description="The avatar uses a smart hierarchy method. It first uses the src if provided. If no source is provided, it falls back to the ariaLabel. If neither are provided, it displays an icon." />
+The `Avatar` component is used to represent a user or entity. It can be used to display a user's profile picture, initials, or a generic icon.
 
-<LivePlaygroundWithCode />
-
-## As Prop
-
-You can use the `as` prop to render the `Avatar` component as a different element.
-
-<NoteAdmonition description="This is only recommended if you are replacing it with another image alternative (i.e., NextJS Image). If you want to make the avatar a link - simply wrap it in a link tag." />
-
-<CodePreview preview={<NextAvatar />}>
-```tsx title="next-avatar.tsx"
+<CodePreview preview={<AvatarPreview />}>
+```tsx title="Avatar Demo"
 import { Avatar } from '@cerberus/react'
-import Image from 'next/image'
+import { HStack } from '@cerberus/styled-system/jsx'
 
-function NextAvatar() {
+export function AvatarPreview() {
   return (
-    <Avatar
-      as={
-        <Image
-          alt="Protector Cerberus"
-          className={css({
-            h: 'full',
-            objectFit: 'cover',
-            w: 'full',
-          })}
-          src="https://cerberus.digitalu.design/logo.svg"
-          height={100}
-          width={100}
-        />
-      }
-      ariaLabel="With Next Image"
-      size="lg"
-    />
+    <HStack justify="center" w="3/4">
+      <Avatar fallback="xs" size="xs" />
+      <Avatar fallback="sm" gradient="charon-light" size="sm" />
+      <Avatar fallback="md" gradient="charon-dark" size="md" />
+      <Avatar fallback="lg" gradient="nyx-light" size="lg" />
+      <Avatar fallback="xl" gradient="nyx-dark" size="xl" />
+      <Avatar fallback="2x" gradient="amphiaraus-light" size="2xl" />
+      <Avatar fallback="3x" gradient="amphiaraus-dark" size="3xl" />
+      <Avatar fallback="4x" gradient="hades-dark" size="4xl" />
+    </HStack>
   )
 }
 ```
 </CodePreview>
 
-## Style Customization
+## `asChild` Prop
 
-You can customize the avatar by utilizing the `cx` function.
+You can use the `asChild` prop to render the `Avatar` component as a different element. Cerberus will pass all the props onto your child.
+
+<NoteAdmonition description="This is great for when you need to link the avatar to a profile page." />
+
+<CodePreview preview={<NextAvatar />}>
+```tsx title="next-avatar.tsx" {8}
+import { Avatar } from '@cerberus/react'
+import { css } from '@cerberus/styled-system/css'
+import Image from 'next/image'
+import Link from 'next/link'
+
+function NextAvatar() {
+  return (
+    <AvatarRoot size="lg" asChild>
+      <Link href="/">
+        <Image
+          alt="Protector Cerberus"
+          className={css({
+            objectFit: 'cover',
+          })}
+          src="https://cerberus.digitalu.design/logo.svg"
+          height={50}
+          width={50}
+        />
+      </Link>
+    </AvatarRoot>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components to customize the avatar.
+
+| Component | Description |
+| --------- | ----------- |
+| AvatarRoot    | The context provider for the Avatar parts |
+| AvatarImage   | The img of the avatar |
+| AvatarFallback   | The fallback content to display for the avatar |
 
 <CodePreview preview={<CustomAvatar />}>
 ```tsx title="avatar.tsx"
 import { Avatar } from '@cerberus/react'
 import { css } from '@cerberus/styled-system/css'
-import { WuTangLogo } from '@/app/components/icons/wu-tang-logo'
 
 function CustomAvatar() {
   return (
     <Avatar
-      ariaLabel=""
       className={css({
         bgColor: 'black',
         bgImage: 'none',
         border: '6px solid',
-        borderColor: 'yellow',
-        color: 'yellow',
+        borderColor: 'danger.border.initial',
+        color: 'danger.text.initial',
+        fontFamily: 'sans',
+        transform: 'skewX(-10deg)',
       })}
-      height={50}
       size="4xl"
-      src=""
-      icon={
-        <span
-          className={css({
-            display: 'inline-block',
-            w: '1/3',
-          })}
-        >
-          <WuTangLogo />
-        </span>
-      }
-      width={50}
+      fallback="Cu"
     />
   )
 }
 ```
 </CodePreview>
 
-## Default Icon Customization
-
-You can customize the default icon that shows by adding the `avatar` property to the `defineIcons` function at the root level of your app.
-
-```tsx title="app/layout.tsx"
-import { defineIcons } from '@cerberus/react'
-import { CircleUser } from 'lucide-react'
-
-defineIcons({
-  avatar: CircleUser,
-})
-```
-
 ## API
-
-```ts showLineNumbers=false
-export type AvatarImageProps = HtmlHTMLAttributes<HTMLImageElement> & {
-  ariaLabel: string
-  as?: never
-  icon?: ReactNode
-  src: string
-  width?: number
-  height?: number
-}
-export type AvatarAsProps = {
-  as: ReactNode
-  ariaLabel?: never
-  icon?: ReactNode
-  src?: never
-  width?: never
-  height?: never
-}
-
-export type AvatarProps = (HtmlHTMLAttributes<HTMLDivElement> &
-  AvatarVariantProps) &
-  (AvatarImageProps | AvatarAsProps)
-
-define function Avatar(props: AvatarProps): ReactNode
-````
 
 ### Props
 
-The `Avatar` component accepts the following props:
+The `Avatar` component is an abstraction of the primitives and accepts the following props:
 
-| Name     | Default | Description                            |
-| -------- | ------- | -------------------------------------- |
-| ariaLabel     |    | The name of the avatar entity. |
-| src     |    | The source of the image. |
-| as    |    | A differnet element to render as the avatar. |
-| height    |    | The height of the avatar. |
-| icon    |    | A custom icon to render as fallback. |
-| width    |    | The width of the avatar. |
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| gradient | `none`  | The gradient theme to display                          |
+| size     |  `md`   | This size of the avatar.                               |
+| alt      |         | The `alt` of the avatar.                               |
+| src      |         | The `src` of the avatar.                               |
+| fallback |         | The fallback content to display for the avatar.        |
+
+The `Avatar` component also accepts all the props of the [`AvatarRoot` primitive props](https://ark-ui.com/react/docs/components/avatar#api-reference)
+
+### Parts
+
+The `AvatarParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the AvatarParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `AvatarRoot` component which is the Provider for the family. |
+| Image     | The `AvatarImage` component which displays the image. |
+| Fallback     | The `AvatarFallback` component which is the content to show when there is no image (or it fails to load). |

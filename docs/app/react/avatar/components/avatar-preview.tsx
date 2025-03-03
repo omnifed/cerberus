@@ -1,8 +1,8 @@
 import { Avatar, AvatarRoot } from '@cerberus-design/react'
 import { css } from '@cerberus-design/styled-system/css'
 import { HStack } from '@cerberus/styled-system/jsx'
-import { WuTangLogo } from '@/app/components/icons/wu-tang-icon'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function AvatarPreview() {
   return (
@@ -22,17 +22,17 @@ export function AvatarPreview() {
 export function NextAvatar() {
   return (
     <AvatarRoot size="lg" asChild>
-      <Image
-        alt="Protector Cerberus"
-        className={css({
-          h: 'full',
-          objectFit: 'cover',
-          w: 'full',
-        })}
-        src="https://cerberus.digitalu.design/logo.svg"
-        height={100}
-        width={100}
-      />
+      <Link href="/">
+        <Image
+          alt="Protector Cerberus"
+          className={css({
+            objectFit: 'cover',
+          })}
+          src="https://cerberus.digitalu.design/logo.svg"
+          height={50}
+          width={50}
+        />
+      </Link>
     </AvatarRoot>
   )
 }
@@ -44,22 +44,13 @@ export function CustomAvatar() {
         bgColor: 'black',
         bgImage: 'none',
         border: '6px solid',
-        borderColor: 'yellow',
-        color: 'yellow',
+        borderColor: 'danger.border.initial',
+        color: 'danger.text.initial',
+        fontFamily: 'sans',
+        transform: 'skewX(-10deg)',
       })}
-      height={50}
       size="4xl"
-      fallback={
-        <span
-          className={css({
-            display: 'inline-block',
-            w: '1/3',
-          })}
-        >
-          <WuTangLogo />
-        </span>
-      }
-      width={50}
+      fallback="Cu"
     />
   )
 }

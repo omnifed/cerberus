@@ -30,29 +30,6 @@ export function LivePlayground() {
   )
 }
 
-export function LivePlaygroundWithCode() {
-  return (
-    <CodeBuilder
-      api={api}
-      code={`import { Avatar, type AvatarProps } from '@cerberus/react'
-
-export function MyAvatar(props: AvatarProps) {
-  return (
-    <Avatar
-      {...props}
-      ariaLabel={{ariaLabel}}
-      gradient={{gradient}}
-      size={{size}}
-      src={{src}}
-    />
-  )
-}`}
-    >
-      <AvatarPreview />
-    </CodeBuilder>
-  )
-}
-
 export function AvatarPreview() {
   const { selectedProps } = useCodeBuilder()
   switch (selectedProps.gradient) {

@@ -19,7 +19,7 @@
       "Tag",
       "Tooltip"
     ],
-    "next": ["Accordion", "Notifications"],
+    "next": ["Accordion", "Avatar", "Notifications"],
     "new": [],
     "deprecated": []
   },
