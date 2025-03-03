@@ -44,7 +44,7 @@ export function Avatar(props: AvatarWithoutImage | AvatarWithImage) {
         fallback={
           <>
             <AvatarParts.Fallback>{fallback}</AvatarParts.Fallback>
-            <AvatarParts.Image {...imgProps} decoding="async" loading="lazy" />
+            <AvatarParts.Image {...imgProps} />
           </>
         }
       >
