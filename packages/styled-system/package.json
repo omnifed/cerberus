@@ -1,6 +1,6 @@
 {
   "name": "@cerberus-design/styled-system",
-  "version": "0.0.0",
+  "version": "0.17.0",
   "description": "Cerberus Design System Panda-CSS styled-system.",
   "type": "module",
   "browserslist": "> 0.25%, not dead",

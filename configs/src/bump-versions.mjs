@@ -1,8 +1,8 @@
-import { argv, file, write, $ } from 'bun'
+import { argv, file, write } from 'bun'
 import { resolve } from 'node:path'
 import { exit } from 'node:process'
 import { parseArgs } from 'util'
-import { version, nextTag, packages } from './versions.mjs'
+import { version, packages } from './versions.mjs'
 
 function _parseFlags(args) {
   return parseArgs({
@@ -31,24 +31,10 @@ function _getReleaseVersion(values) {
   exit(1)
 }
 
-function _getTags(values) {
-  if (values.next) {
-    return nextTag
-  }
-  if (values.stable) {
-    return 'latest'
-  }
-  exit(1)
-}
-
-function publish() {
+function bumpVersions() {
   const { values } = _parseFlags(argv)
-  const release = _getTags(values)
-  const onlyNpmPackages = packages.filter(
-    (pkg) => pkg === 'react' || pkg === 'styled-system',
-  )
 
-  onlyNpmPackages.forEach(async (pkg) => {
+  packages.forEach(async (pkg) => {
     const workspacePath = resolve(import.meta.dir, '..', '..', 'packages', pkg)
     const packageJsonPath = resolve(workspacePath, 'package.json')
     const rawFile = file(packageJsonPath)
@@ -59,28 +45,9 @@ function publish() {
       2,
     )
 
-    // eslint-disable-next-line no-undef
     console.log('Updating version in', packageJsonPath)
     write(packageJsonPath, json)
-
-    // eslint-disable-next-line no-undef
-    try {
-      console.log('Building', pkg, `at ${workspacePath}`)
-      await $`pnpm --filter @cerberus-design/${pkg} build`
-    } catch (error) {
-      console.error(error)
-      exit(1)
-    }
-
-    // eslint-disable-next-line no-undef
-    try {
-      console.log(`Publishing ${pkg} with tag ${release}`)
-      await $`cd ${workspacePath} && pnpm publish --tag ${release} --no-git-checks`
-    } catch (error) {
-      console.error(error)
-      exit(1)
-    }
   })
 }
 
-publish()
+bumpVersions()
