@@ -1,18 +1,19 @@
 name: 🚀 Publish Stable Version
 
-on:
-  release:
-    types:
-      - published
+on: [merge_group, pull_request]
+# on:
+#   release:
+#     types:
+#       - published
 
 env:
   CI: true
   AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-  bump-versions:
+  npm-publish-react:
     runs-on: ubuntu-latest
-    name: Bump Versions
+    name: Build & Publish React to NPM
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -26,22 +27,9 @@ jobs:
       - run: pnpm bump-versions
         working-directory: ./configs
 
-  npm-publish-react:
-    runs-on: ubuntu-latest
-    name: Build & Publish React to NPM
-    needs: bump-versions
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          cache: 'pnpm'
-          node-version: '22'
-
-      - run: pnpm install
       - run: pnpm build
         working-directory: ./packages/react
+
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -50,7 +38,6 @@ jobs:
   npm-publish-styled-system:
     runs-on: ubuntu-latest
     name: Build & Publish Styled-System to NPM
-    needs: bump-versions
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -61,7 +48,9 @@ jobs:
           node-version: '22'
 
       - run: pnpm install
+      - run: pnpm bump-versions
         working-directory: ./configs
+
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -70,7 +59,6 @@ jobs:
   jsr-publish-preset:
     runs-on: ubuntu-latest
     name: Publish Preset Latest Version to JSR
-    needs: bump-versions
     permissions:
       contents: read
       id-token: write
@@ -84,5 +72,8 @@ jobs:
           cache: 'pnpm'
 
       - run: pnpm install
+      - run: pnpm bump-versions
+        working-directory: ./configs
+
       - run: pnpm dlx jsr publish --allow-dirty
         working-directory: ./packages/panda-preset
