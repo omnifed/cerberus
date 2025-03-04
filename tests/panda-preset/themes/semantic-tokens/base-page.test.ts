@@ -76,7 +76,7 @@ describe('page', () => {
       getSemanticToken`cerberus.neutral.70`,
     )
     expect(token.border.initial.value._lightMode).toEqual(
-      getSemanticToken`cerberus.neutral.10`,
+      getSemanticToken`cerberus.neutral.15`,
     )
   })
 
@@ -146,7 +146,7 @@ describe('page', () => {
       getSemanticToken`cerberus.neutral.80`,
     )
     expect(token.surface[200].value._lightMode).toEqual(
-      getSemanticToken`cerberus.neutral.10`,
+      getSemanticToken`cerberus.neutral.5`,
     )
   })
 
@@ -160,7 +160,7 @@ describe('page', () => {
       getSemanticToken`cerberus.neutral.70`,
     )
     expect(token.surface[300].value._lightMode).toEqual(
-      getSemanticToken`cerberus.neutral.20`,
+      getSemanticToken`cerberus.neutral.10`,
     )
   })
 

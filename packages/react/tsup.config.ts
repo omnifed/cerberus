@@ -10,6 +10,7 @@ const external = [
   '@cerberus/styled-system/css',
   '@cerberus/styled-system/patterns',
   '@cerberus/styled-system/recipes',
+  '@cerberus/styled-system/jsx',
 ]
 
 export default defineConfig([

@@ -145,7 +145,9 @@
           "com.figma": {
             "hiddenFromPublishing": false,
             "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
+            "codeSyntax": {
+              "WEB": "page.text.initial"
+            }
           }
         }
       },
@@ -540,6 +542,18 @@
       "300": {
         "$type": "color",
         "$value": "acheron.neutral.70",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": "acheron.neutral.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1037,6 +1051,18 @@
           }
         }
       },
+      "300": {
+        "$type": "color",
+        "$value": "acheron.neutral.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
       "initial": {
         "$type": "color",
         "$value": "acheron.neutral.100",
@@ -1488,6 +1514,56 @@
     }
   },
   "data-viz": {
+    "progress": {
+      "start": {
+        "$type": "color",
+        "$value": "acheron.brand.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "end": {
+        "$type": "color",
+        "$value": "acheron.brand.80",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "complete": {
+        "$type": "color",
+        "$value": "acheron.success.60",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "complete-end": {
+        "$type": "color",
+        "$value": "acheron.success.50",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
     "sequential": {
       "100": {
         "$type": "color",
@@ -1557,56 +1633,6 @@
           "com.figma": {
             "hiddenFromPublishing": false,
             "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
-    "progress": {
-      "start": {
-        "$type": "color",
-        "$value": "acheron.brand.60",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "end": {
-        "$type": "color",
-        "$value": "acheron.brand.80",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "complete": {
-        "$type": "color",
-        "$value": "acheron.success.60",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "complete-end": {
-        "$type": "color",
-        "$value": "acheron.success.50",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
