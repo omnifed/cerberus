@@ -11,7 +11,7 @@ env:
   AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-  publish-npm-next:
+  npm-publish-react-next:
     runs-on: ubuntu-latest
     name: Build & Publish Next Version to NPM
     steps:
@@ -23,7 +23,10 @@ jobs:
           cache: 'pnpm'
           node-version: '22'
 
-      - run: echo "//registry.npmjs.org/:_authToken=$AUTH_TOKEN" >> .npmrc
       - run: pnpm install
-      - run: pnpm run publish --next --commit ${{ github.sha }}
-        working-directory: ./configs
+      - run: pnpm build
+        working-directory: ./packages/react
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./packages/react

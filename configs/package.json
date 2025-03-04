@@ -13,6 +13,7 @@
     "src/**/*"
   ],
   "scripts": {
+    "bump-version": "bun ./src/bump-version.mjs",
     "publish": "bun ./src/publish.mjs",
     "publish:jsr": "bun ./src/publish-jsr.mjs"
   },
