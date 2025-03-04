@@ -1,10 +1,9 @@
 name: 🚀 Publish Stable Version
 
-on: [merge_group, pull_request]
-# on:
-#   release:
-#     types:
-#       - published
+on:
+  release:
+    types:
+      - published
 
 env:
   CI: true
@@ -24,7 +23,7 @@ jobs:
           node-version: '22'
 
       - run: pnpm install
-      - run: pnpm build && pnpm publish --access public --no-git-checks
+      - run: pnpm build && pnpm publish --access public
         working-directory: ./packages/react
 
   npm-publish-styled-system:
@@ -40,7 +39,7 @@ jobs:
           node-version: '22'
 
       - run: pnpm install
-      - run: pnpm publish --access public --no-git-checks
+      - run: pnpm publish --access public
         working-directory: ./packages/styled-system
 
   jsr-publish-preset:
