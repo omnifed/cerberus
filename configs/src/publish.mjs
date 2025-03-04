@@ -64,12 +64,22 @@ function publish() {
     write(packageJsonPath, json)
 
     // eslint-disable-next-line no-undef
-    console.log('Building', pkg, `at ${workspacePath}`)
-    await $`pnpm --filter @cerberus-design/${pkg} build`
+    try {
+      console.log('Building', pkg, `at ${workspacePath}`)
+      await $`pnpm --filter @cerberus-design/${pkg} build`
+    } catch (error) {
+      console.error(error)
+      exit(1)
+    }
 
     // eslint-disable-next-line no-undef
-    console.log(`Publishing ${pkg} with tag ${release}`)
-    await $`cd ${workspacePath} && pnpm publish --tag ${release} --no-git-checks`
+    try {
+      console.log(`Publishing ${pkg} with tag ${release}`)
+      await $`cd ${workspacePath} && pnpm publish --tag ${release} --no-git-checks`
+    } catch (error) {
+      console.error(error)
+      exit(1)
+    }
   })
 }
 
