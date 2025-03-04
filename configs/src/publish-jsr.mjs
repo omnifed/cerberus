@@ -62,8 +62,8 @@ function publish() {
     console.log('Updating version in', jsrJsonPath)
     write(jsrJsonPath, json)
 
-    // console.log(`Publishing ${pkg} with tag ${release}`)
-    // await $`cd ${workspacePath} && pnpm dlx jsr publish --allow-dirty`
+    console.log(`Publishing ${pkg} with tag ${release}`)
+    await $`cd ${workspacePath} && pnpm dlx jsr publish --allow-dirty`
   })
 }
 

@@ -50,8 +50,8 @@ jobs:
       - run: pnpm run publish:jsr --stable
         working-directory: ./configs
 
-      - run: pnpm dlx jsr publish --allow-dirty
-        working-directory: ./packages/panda-preset
+      # - run: pnpm dlx jsr publish --allow-dirty
+      #   working-directory: ./packages/panda-preset
 
   # publish-icons-jsr-latest:
   #   runs-on: ubuntu-latest
@@ -96,5 +96,5 @@ jobs:
       - run: pnpm run publish:jsr --stable
         working-directory: ./configs
 
-      - run: pnpm dlx jsr publish --allow-dirty --allow-slow-types
-        working-directory: ./packages/styled-system
+      # - run: pnpm dlx jsr publish --allow-dirty --allow-slow-types
+      #   working-directory: ./packages/styled-system
