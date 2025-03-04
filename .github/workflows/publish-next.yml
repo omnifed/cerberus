@@ -11,9 +11,9 @@ env:
   AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-  npm-publish-react-next:
+  publish-react:
     runs-on: ubuntu-latest
-    name: Build & Publish Next Version to NPM
+    name: Build & Publish React to NPM
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -25,9 +25,29 @@ jobs:
 
       - run: pnpm install
       - run: pnpm build
-      - run: pnpm bump-versions
         working-directory: ./packages/react
+
+      - run: pnpm bump-versions
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ./packages/react
+
+  publish-styled-system:
+    runs-on: ubuntu-latest
+    name: Build & Publish Styled-System to NPM
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+          node-version: '22'
+
+      - run: pnpm install
+      - run: pnpm bump-versions
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./packages/styled-system
