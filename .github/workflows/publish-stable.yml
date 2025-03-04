@@ -24,9 +24,6 @@ jobs:
           node-version: '22'
 
       - run: pnpm install
-      - run: pnpm bump-versions
-        working-directory: ./configs
-
       - run: pnpm build
         working-directory: ./packages/react
 
@@ -48,9 +45,6 @@ jobs:
           node-version: '22'
 
       - run: pnpm install
-      - run: pnpm bump-versions
-        working-directory: ./configs
-
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
@@ -72,8 +66,5 @@ jobs:
           cache: 'pnpm'
 
       - run: pnpm install
-      - run: pnpm bump-versions
-        working-directory: ./configs
-
       - run: pnpm dlx jsr publish --allow-dirty
         working-directory: ./packages/panda-preset
