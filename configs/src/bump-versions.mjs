@@ -2,7 +2,7 @@ import { argv, file, write } from 'bun'
 import { resolve } from 'node:path'
 import { exit } from 'node:process'
 import { parseArgs } from 'util'
-import { version, nextTag, packages } from './versions.mjs'
+import { version, packages } from './versions.mjs'
 
 function _parseFlags(args) {
   return parseArgs({
@@ -30,16 +30,6 @@ function _getReleaseVersion(values) {
   if (values.stable) return version
   exit(1)
 }
-
-// function _getTags(values) {
-//   if (values.next) {
-//     return nextTag
-//   }
-//   if (values.stable) {
-//     return 'latest'
-//   }
-//   exit(1)
-// }
 
 function bumpVersions() {
   const { values } = _parseFlags(argv)

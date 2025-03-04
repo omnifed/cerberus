@@ -28,6 +28,7 @@ jobs:
         working-directory: ./packages/react
 
       - run: pnpm bump-versions
+        working-directory: ./configs
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
