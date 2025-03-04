@@ -7,7 +7,7 @@ on:
 
 env:
   CI: true
-  AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
   npm-publish-react:
@@ -23,13 +23,8 @@ jobs:
           node-version: '22'
 
       - run: pnpm install
-      - run: pnpm build
+      - run: pnpm build && pnpm publish --access public
         working-directory: ./packages/react
-
-      - uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./packages/react
 
   npm-publish-styled-system:
     runs-on: ubuntu-latest
@@ -44,10 +39,8 @@ jobs:
           node-version: '22'
 
       - run: pnpm install
-      - uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./packages/styled-system
+      - run: pnpm publish --access public
+        working-directory: ./packages/styled-system
 
   jsr-publish-preset:
     runs-on: ubuntu-latest
