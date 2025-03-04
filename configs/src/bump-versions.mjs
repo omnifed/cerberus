@@ -31,23 +31,20 @@ function _getReleaseVersion(values) {
   exit(1)
 }
 
-function _getTags(values) {
-  if (values.next) {
-    return nextTag
-  }
-  if (values.stable) {
-    return 'latest'
-  }
-  exit(1)
-}
+// function _getTags(values) {
+//   if (values.next) {
+//     return nextTag
+//   }
+//   if (values.stable) {
+//     return 'latest'
+//   }
+//   exit(1)
+// }
 
-function bumpVersion() {
+function bumpVersions() {
   const { values } = _parseFlags(argv)
-  const onlyNpmPackages = packages.filter(
-    (pkg) => pkg === 'react' || pkg === 'styled-system',
-  )
 
-  onlyNpmPackages.forEach(async (pkg) => {
+  packages.forEach(async (pkg) => {
     const workspacePath = resolve(import.meta.dir, '..', '..', 'packages', pkg)
     const packageJsonPath = resolve(workspacePath, 'package.json')
     const rawFile = file(packageJsonPath)
@@ -58,10 +55,9 @@ function bumpVersion() {
       2,
     )
 
-    // eslint-disable-next-line no-undef
     console.log('Updating version in', packageJsonPath)
     write(packageJsonPath, json)
   })
 }
 
-bumpVersion()
+bumpVersions()

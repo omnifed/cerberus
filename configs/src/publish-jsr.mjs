@@ -31,20 +31,8 @@ function _getReleaseVersion(values) {
   exit(1)
 }
 
-// TODO: Use when jsr supports tags
-// function _getTags(values) {
-//   if (values.next) {
-//     return nextTag
-//   }
-//   if (values.stable) {
-//     return 'latest'
-//   }
-//   exit(1)
-// }
-
 function publish() {
   const { values } = _parseFlags(argv)
-  // const release = _getTags(values)
   const nonJSXPackages = packages.filter((pkg) => !pkg.includes('react'))
 
   nonJSXPackages.forEach(async (pkg) => {
@@ -58,7 +46,6 @@ function publish() {
       2,
     )
 
-    // eslint-disable-next-line no-undef
     console.log('Updating version in', jsrJsonPath)
     write(jsrJsonPath, json)
 
