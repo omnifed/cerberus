@@ -24,7 +24,7 @@ jobs:
           node-version: '22'
 
       - run: pnpm install
-      - run: pnpm build && pnpm publish --access public
+      - run: pnpm build && pnpm publish --access public --no-git-checks
         working-directory: ./packages/react
 
   npm-publish-styled-system:
@@ -40,7 +40,7 @@ jobs:
           node-version: '22'
 
       - run: pnpm install
-      - run: pnpm publish --access public
+      - run: pnpm publish --access public --no-git-checks
         working-directory: ./packages/styled-system
 
   jsr-publish-preset:
