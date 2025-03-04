@@ -37,6 +37,17 @@ function bumpVersions() {
   packages.forEach(async (pkg) => {
     const workspacePath = resolve(import.meta.dir, '..', '..', 'packages', pkg)
     const packageJsonPath = resolve(workspacePath, 'package.json')
+    const jsrPath = resolve(workspacePath, 'jsr.json')
+
+    // prep JSR update
+    const jsrJson = await file(jsrPath).json()
+    const jsr = JSON.stringify(
+      { ...jsrJson, version: _getReleaseVersion(values) },
+      null,
+      2,
+    )
+
+    // prep package.json update
     const rawFile = file(packageJsonPath)
     const packageJson = await rawFile.json()
     const json = JSON.stringify(
@@ -47,6 +58,9 @@ function bumpVersions() {
 
     console.log('Updating version in', packageJsonPath)
     write(packageJsonPath, json)
+
+    console.log('Updating version in', jsrPath)
+    write(jsrPath, jsr)
   })
 }
 
