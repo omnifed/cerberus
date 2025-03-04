@@ -25,6 +25,7 @@ jobs:
 
       - run: pnpm install
       - run: pnpm build
+      - run: pnpm bump-versions
         working-directory: ./packages/react
       - uses: JS-DevTools/npm-publish@v3
         with:

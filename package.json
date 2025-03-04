@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "prepare": "husky",
-    "bump-version": "pnpm workspace @cerberus-design/configs run bump-version",
+    "bump-versions": "pnpm workspace @cerberus-design/configs run bump-version",
     "lint:es": "eslint . --max-warnings=0",
     "lint:ox": "oxlint --deny-warnings",
     "lint:ts": "tsc --noEmit"
