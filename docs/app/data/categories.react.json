@@ -19,8 +19,8 @@
       "Tag",
       "Tooltip"
     ],
-    "next": ["Accordion", "Avatar", "Notifications"],
-    "new": [],
+    "next": [],
+    "new": ["Accordion", "Avatar", "Notifications"],
     "deprecated": []
   },
   "containment": {
@@ -34,16 +34,16 @@
       "Dialog",
       "Table"
     ],
-    "next": ["CTA Modal", "Table"],
-    "new": [],
+    "next": [],
+    "new": ["CTA Modal", "Table"],
     "deprecated": ["Modal"]
   },
   "navigation": {
     "name": "Navigation",
     "description": "Components that help users navigate through the app.",
     "items": ["Menu", "Tabs"],
-    "next": ["Tabs"],
-    "new": [],
+    "next": [],
+    "new": ["Tabs"],
     "deprecated": []
   },
   "selection": {
@@ -59,8 +59,8 @@
       "Combobox",
       "Switch"
     ],
-    "next": ["Rating", "Combobox"],
-    "new": [],
+    "next": [],
+    "new": ["Rating", "Combobox"],
     "deprecated": []
   },
   "inputs": {

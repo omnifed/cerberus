@@ -46,7 +46,7 @@
   {
     "label": "Shadows",
     "route": "/preset/shadows",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
