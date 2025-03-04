@@ -24,9 +24,5 @@
   "devDependencies": {
     "tsup": "^8.0.2",
     "util": "^0.12.5"
-  },
-  "engines": {
-    "node": ">=22.0.0",
-    "bun": ">=1.2.4"
   }
 }
