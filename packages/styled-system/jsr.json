@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/styled-system",
-  "version": "0.0.0",
+  "version": "0.17.1",
   "exports": {
     "./css": "./css/index.mjs",
     "./patterns": "./patterns/index.mjs",
