@@ -45,6 +45,6 @@
   "packageManager": "pnpm@10.4.1",
   "engines": {
     "node": ">=22.0.0",
-    "bun": ">=1.1.41"
+    "bun": ">=1.2.4"
   }
 }

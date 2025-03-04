@@ -75,7 +75,7 @@ function publish() {
     // eslint-disable-next-line no-undef
     try {
       console.log(`Publishing ${pkg} with tag ${release}`)
-      await $`cd ${workspacePath} && pnpm publish --tag ${release} --no-git-checks`
+      await $`cd ${workspacePath} && bun publish --tag ${release} --no-git-checks`
     } catch (error) {
       console.error(error)
       exit(1)
