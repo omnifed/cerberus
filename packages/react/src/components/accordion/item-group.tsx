@@ -1,4 +1,7 @@
-import type { AccordionItemProps } from '@ark-ui/react/accordion'
+import type {
+  AccordionItemProps,
+  AccordionRootProps,
+} from '@ark-ui/react/accordion'
 import { type AccordionVariantProps } from '@cerberus/styled-system/recipes'
 import { splitProps } from '../../utils/index'
 import { Show } from '../Show'
@@ -10,8 +13,9 @@ import { AccordionChevronItemIndicator } from './item-indicator'
  * @module
  */
 
-// We are only exposing this to keep the API consistent
-export const Accordion = AccordionParts.Root
+export function Accordion(props: AccordionRootProps & AccordionVariantProps) {
+  return <AccordionParts.Root {...props} />
+}
 
 export interface AccordionItemGroupProps
   extends AccordionItemProps,

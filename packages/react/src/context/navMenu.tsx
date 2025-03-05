@@ -17,18 +17,18 @@ import {
  * @module NavMenu
  */
 
-export type NavTriggerRef = RefObject<HTMLButtonElement>
-export type NavMenuRef = RefObject<HTMLUListElement>
+export type NavTriggerRef = RefObject<HTMLButtonElement | null>
+export type NavMenuRef = RefObject<HTMLUListElement | null>
 
 export interface NavMenuContextValue {
   /**
    * The ref for the trigger button.
    */
-  triggerRef: NavTriggerRef | null
+  triggerRef: NavTriggerRef
   /**
    * The ref for the menu.
    */
-  menuRef: NavMenuRef | null
+  menuRef: NavMenuRef
   /**
    * Whether the menu is expanded.
    */
@@ -44,9 +44,9 @@ const NavMenuContext = createContext<NavMenuContextValue | null>(null)
 /**
  * @deprecated use the {@link Menu} family instead
  */
-export function NavMenu(props: PropsWithChildren): JSX.Element {
-  const triggerRef = useRef<HTMLButtonElement>(null)
-  const menuRef = useRef<HTMLUListElement>(null)
+export function NavMenu(props: PropsWithChildren) {
+  const triggerRef = useRef<HTMLButtonElement | null>(null)
+  const menuRef = useRef<HTMLUListElement | null>(null)
   const [expanded, setExpanded] = useState<boolean>(false)
 
   const handleToggle = useCallback(() => {

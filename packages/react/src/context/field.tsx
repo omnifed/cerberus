@@ -39,9 +39,7 @@ const FieldContext = createContext<FieldContextValue | null>(null)
 /**
  * @deprecated use FieldRoot or FieldParts instead
  */
-export function FieldProvider(
-  props: PropsWithChildren<FieldRootProps>,
-): JSX.Element {
+export function FieldProvider(props: PropsWithChildren<FieldRootProps>) {
   const value = useMemo(
     () => ({
       disabled: props.disabled,

@@ -11,7 +11,7 @@ export interface UseModalReturnValue {
   /**
    * The ref for the modal.
    */
-  modalRef: RefObject<HTMLDialogElement>
+  modalRef: RefObject<HTMLDialogElement | null>
   /**
    * Shows the modal.
    */

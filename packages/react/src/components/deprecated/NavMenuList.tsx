@@ -114,7 +114,7 @@ export interface NavMenuListProps extends HTMLAttributes<HTMLUListElement> {
  * </NavMenu>
  * ```
  **/
-export function NavMenuList(props: NavMenuListProps): JSX.Element {
+export function NavMenuList(props: NavMenuListProps) {
   const { position, ...nativeProps } = props
   const { menuRef, expanded } = useNavMenuContext()
   const locationStyles = useMemo(
