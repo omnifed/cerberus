@@ -1,17 +1,15 @@
-'use client'
-
-import { useMemo, type PropsWithChildren, type ReactNode } from 'react'
+import { type PropsWithChildren, type ReactNode } from 'react'
 
 /**
  * This module contains the Show component.
  * @module
  */
 
-export interface ShowProps {
+export interface ShowProps<T> {
   /**
    * The condition to render memoized children or the fallback content.
    */
-  when: boolean | null | undefined
+  when: T | boolean | null | undefined
   /**
    * The children to render when the condition is false.
    */
@@ -28,12 +26,16 @@ export interface ShowProps {
  *   <Dashboard />
  * </Show>
  */
-export function Show(props: PropsWithChildren<ShowProps>): ReactNode {
+export function Show<T>(props: PropsWithChildren<ShowProps<T>>) {
   const { when, children, fallback } = props
-  const condition = useMemo(() => when ?? false, [when])
 
-  return useMemo(() => {
-    if (condition) return children
-    return fallback ?? null
-  }, [condition, children, fallback])
+  if (when) {
+    return <>{children}</>
+  }
+
+  if (fallback) {
+    return <>{fallback}</>
+  }
+
+  return null
 }

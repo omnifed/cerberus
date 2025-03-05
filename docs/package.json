@@ -39,7 +39,7 @@
     "@types/react-dom": "19.0.4",
     "@vercel/analytics": "^1.4.1",
     "autoprefixer": "^10.4.20",
-    "eslint": "9.16.0",
+    "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "eslint-import-resolver-typescript": "^3.7.0",
     "rehype-autolink-headings": "^7.1.0",

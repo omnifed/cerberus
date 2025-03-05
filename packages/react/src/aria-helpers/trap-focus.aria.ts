@@ -1,7 +1,7 @@
 import type { KeyboardEvent, KeyboardEventHandler, RefObject } from 'react'
 
 export function trapFocus(
-  modalRef: RefObject<HTMLDialogElement>,
+  modalRef: RefObject<HTMLDialogElement | null>,
 ): KeyboardEventHandler<HTMLDialogElement> {
   const focusableElements =
     'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
