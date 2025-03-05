@@ -33,17 +33,17 @@
   },
   "publishConfig": {
     "access": "public",
-    "types": "build/legacy/_tsup-dts-rollup.d.ts",
+    "types": "build/legacy/index.d.cts",
     "main": "build/legacy/index.cjs",
     "module": "build/modern/index.js",
     "exports": {
       ".": {
         "import": {
-          "types": "./build/modern/_tsup-dts-rollup.d.ts",
+          "types": "./build/modern/index.d.ts",
           "default": "./build/modern/index.js"
         },
         "require": {
-          "types": "./build/legacy/_tsup-dts-rollup.d.cts",
+          "types": "./build/legacy/index.d.cts",
           "default": "./build/legacy/index.cjs"
         }
       },
@@ -52,7 +52,7 @@
     "typesVersions": {
       "*": {
         ".": [
-          "build/legacy/_tsup-dts-rollup.d.cts"
+          "build/legacy/index.d.cts"
         ]
       }
     }
