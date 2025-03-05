@@ -40,7 +40,7 @@ export function Avatar(props: AvatarWithoutImage | AvatarWithImage) {
   return (
     <AvatarParts.Root {...rootProps}>
       <Show
-        when={Boolean(children)}
+        when={children}
         fallback={
           <>
             <AvatarParts.Fallback>{fallback}</AvatarParts.Fallback>

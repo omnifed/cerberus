@@ -33,7 +33,7 @@ export function Combobox(props: ComboboxProps) {
 
   return (
     <ComboboxParts.Root {...rootProps}>
-      <Show when={Boolean(label)}>
+      <Show when={label}>
         <ComboboxParts.Label>{label}</ComboboxParts.Label>
       </Show>
 

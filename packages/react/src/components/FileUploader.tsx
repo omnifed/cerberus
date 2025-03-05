@@ -56,7 +56,7 @@ export function FileUploader(props: FileUploaderProps) {
         )}
         htmlFor={props.name}
       >
-        <Show when={Boolean(props.heading)}>
+        <Show when={props.heading}>
           <p className={styles.heading}>{props.heading}</p>
         </Show>
         Import {props.accept?.replace(',', ', ')} files

@@ -43,7 +43,7 @@ function TableRootEl(props: TableRootElProps) {
   return (
     <TableRoot {...rootProps} data-sticky={sticky ?? false}>
       <TableEl>
-        <Show when={Boolean(caption)}>
+        <Show when={caption}>
           <Caption>{caption}</Caption>
         </Show>
 

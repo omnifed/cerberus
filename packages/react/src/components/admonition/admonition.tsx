@@ -45,14 +45,14 @@ export function Admonition(props: AdmonitionProps) {
   return (
     <AdmonitionParts.Root {...styleProps} {...rootProps}>
       <Show
-        when={Boolean(elProps.icon)}
+        when={elProps.icon}
         fallback={<MatchAvatar palette={styleProps.palette} />}
       >
         <AdmonitionParts.Indicator>{elProps.icon}</AdmonitionParts.Indicator>
       </Show>
 
       <AdmonitionParts.Content>
-        <Show when={Boolean(elProps.heading)}>
+        <Show when={elProps.heading}>
           <AdmonitionParts.Heading>{elProps.heading}</AdmonitionParts.Heading>
         </Show>
 

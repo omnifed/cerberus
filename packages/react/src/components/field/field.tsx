@@ -56,16 +56,16 @@ export function Field(props: FieldProps) {
 
   return (
     <FieldRoot {...statusProps} {...rootProps}>
-      <Show when={Boolean(fieldProps.label)}>
+      <Show when={fieldProps.label}>
         <FieldLabel>{fieldProps.label}</FieldLabel>
       </Show>
 
       {fieldProps.children}
 
-      <Show when={Boolean(fieldProps.helperText && !statusProps.invalid)}>
+      <Show when={fieldProps.helperText && !statusProps.invalid}>
         <HStack justifyContent="space-between" w="full">
           <FieldHelperText>{fieldProps.helperText}</FieldHelperText>
-          <Show when={Boolean(fieldProps.secondaryHelperText)}>
+          <Show when={fieldProps.secondaryHelperText}>
             <FieldHelperText>{fieldProps.secondaryHelperText}</FieldHelperText>
           </Show>
         </HStack>

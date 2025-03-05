@@ -38,7 +38,7 @@ export function NotificationCenter() {
             <NotificationParts.Description>
               {toast.description}
             </NotificationParts.Description>
-            <Show when={Boolean(toast.action)}>
+            <Show when={toast.action}>
               <NotificationParts.ActionTrigger asChild>
                 <Button
                   palette={toast.type as ButtonProps['palette']}

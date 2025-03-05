@@ -48,7 +48,7 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
           prefetch
         >
           {props.label}
-          <Show when={Boolean(props.tag)}>
+          <Show when={props.tag}>
             <Show
               when={props.tag === 'new'}
               fallback={

@@ -115,7 +115,7 @@ export function CTAModal(props: PropsWithChildren<object>) {
                   gradient="charon-light"
                   fallback={
                     <Show
-                      when={Boolean(confirmIcon)}
+                      when={confirmIcon}
                       fallback={<FallbackIcon size={24} />}
                     >
                       {confirmIcon}
