@@ -1,16 +1,27 @@
 import {
   DatePicker,
   type DatePickerContentProps,
+  type DatePickerContextProps,
   type DatePickerControlProps,
   type DatePickerInputProps,
   type DatePickerLabelProps,
+  type DatePickerMonthSelectProps,
+  type DatePickerNextTriggerProps,
+  type DatePickerPositionerProps,
+  type DatePickerPrevTriggerProps,
   type DatePickerRangeTextProps,
+  type DatePickerRootProps,
+  type DatePickerTableBodyProps,
   type DatePickerTableCellProps,
   type DatePickerTableCellTriggerProps,
   type DatePickerTableHeaderProps,
   type DatePickerTableProps,
+  type DatePickerTableRowProps,
   type DatePickerTriggerProps,
   type DatePickerViewControlProps,
+  type DatePickerViewProps,
+  type DatePickerViewTriggerProps,
+  type DatePickerYearSelectProps,
 } from '@ark-ui/react/date-picker'
 import { cx } from '@cerberus/styled-system/css'
 import { datePicker } from '@cerberus/styled-system/recipes'
@@ -170,63 +181,99 @@ export function DatePickerTableCellTrigger(
 /**
  * The root component of the DatePicker. This primitive has no Cerberus styles.
  */
-export const DatePickerRoot = DatePicker.Root
+export function DatePickerRoot(props: DatePickerRootProps) {
+  return <DatePicker.Root {...props} />
+}
+
 /**
  * The label component of the DatePicker. This primitive has no Cerberus styles.
  */
-export const DatePickerClearTrigger = DatePicker.ClearTrigger
+export function DatePickerClearTrigger(props: DatePickerTriggerProps) {
+  return <DatePicker.ClearTrigger {...props} />
+}
+
 /**
  * The control component of the DatePicker. This primitive has no Cerberus
  * styles.
  */
-export const DatePickerPositioner = DatePicker.Positioner
+export function DatePickerPositioner(props: DatePickerPositionerProps) {
+  return <DatePicker.Positioner {...props} />
+}
+
 /**
  * The year select input component of the DatePicker. This primitive has no
  * Cerberus styles.
  */
-export const DatePickerYearSelect = DatePicker.YearSelect
+export function DatePickerYearSelect(props: DatePickerYearSelectProps) {
+  return <DatePicker.YearSelect {...props} />
+}
+
 /**
  * The month select input component of the DatePicker. This primitive has no
  * Cerberus styles.
  */
-export const DatePickerMonthSelect = DatePicker.MonthSelect
+export function DatePickerMonthSelect(props: DatePickerMonthSelectProps) {
+  return <DatePicker.MonthSelect {...props} />
+}
+
 /**
  * The day view component of the DatePicker. This primitive has no Cerberus
  * styles.
  */
-export const DatePickerView = DatePicker.View
+export function DatePickerView(props: DatePickerViewProps) {
+  return <DatePicker.View {...props} />
+}
+
 /**
  * The day context component of the DatePicker. This primitive has no
  * Cerberus styles.
  */
-export const DatePickerContext = DatePicker.Context
+export function DatePickerContext(props: DatePickerContextProps) {
+  return <DatePicker.Context {...props} />
+}
+
 /**
  * The trigger component of the DatePicker. This primitive has no Cerberus
  * styles.
  */
-export const DatePickerPrevTrigger = DatePicker.PrevTrigger
+export function DatePickerPrevTrigger(props: DatePickerPrevTriggerProps) {
+  return <DatePicker.PrevTrigger {...props} />
+}
+
 /**
  * The trigger component of the DatePicker. This primitive has no Cerberus
  * styles.
  */
-export const DatePickerNextTrigger = DatePicker.NextTrigger
+export function DatePickerNextTrigger(props: DatePickerNextTriggerProps) {
+  return <DatePicker.NextTrigger {...props} />
+}
+
 /**
  * The trigger component of the DatePicker. This primitive has no Cerberus
  * styles.
  */
-export const DatePickerViewTrigger = DatePicker.ViewTrigger
+export function DatePickerViewTrigger(props: DatePickerViewTriggerProps) {
+  return <DatePicker.ViewTrigger {...props} />
+}
+
 /**
  * The table head component of the DatePicker. This primitive has no Cerberus
  * styles.
  */
-export const DatePickerTableHead = DatePicker.TableHead
+export function DatePickerTableHead(props: DatePickerTableHeaderProps) {
+  return <DatePicker.TableHeader {...props} />
+}
 /**
  * The table row component of the DatePicker. This primitive has no Cerberus
  * styles.
  */
-export const DatePickerTableRow = DatePicker.TableRow
+export function DatePickerTableRow(props: DatePickerTableRowProps) {
+  return <DatePicker.TableRow {...props} />
+}
 /**
  * The table body component of the DatePicker. This primitive has no Cerberus
  * styles.
  */
-export const DatePickerTableBody = DatePicker.TableBody
+export function DatePickerTableBody(props: DatePickerTableBodyProps) {
+  return <DatePicker.TableBody {...props} />
+}

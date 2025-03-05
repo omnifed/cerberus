@@ -1,14 +1,9 @@
-import {
-  Portal as ArkPortal,
-  type PortalProps as ArkPortalProps,
-} from '@ark-ui/react'
+import { Portal as ArkPortal, type PortalProps } from '@ark-ui/react'
 
 /**
  * This module is the Portal component.
  * @module
  */
-
-export type PortalProps = ArkPortalProps
 
 /**
  * The Portal component is used to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
@@ -28,4 +23,6 @@ export type PortalProps = ArkPortalProps
  *   )
  * }
  */
-export const Portal = ArkPortal
+export function Portal(props: PortalProps) {
+  return <ArkPortal {...props} />
+}
