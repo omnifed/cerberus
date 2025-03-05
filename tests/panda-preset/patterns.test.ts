@@ -138,13 +138,25 @@ describe('patterns', () => {
     ).toMatchObject({
       overflow: 'auto',
       height: 'auto',
-      width: 'auto',
-      scrollbarWidth: 'auto',
-      WebkitOverflowScrolling: 'touch',
+      width: '100%',
+      scrollBehavior: 'smooth',
+      scrollbarGutter: 'stable',
       '&::-webkit-scrollbar': {
         display: 'auto',
+        w: '0.5em',
       },
-      bgColor: 'white',
+      '&::-webkit-scrollbar-track': {
+        bg: 'transparent',
+        outline: 'none',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: 'page.border.100',
+        borderRadius: '5px',
+        outline: 'none',
+      },
+      '&:hover::-webkit-scrollbar-thumb': {
+        backgroundColor: 'page.border.100',
+      },
     })
   })
 })

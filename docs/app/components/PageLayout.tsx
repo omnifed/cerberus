@@ -26,27 +26,29 @@ export function PageLayout(props: PropsWithChildren<PageLayoutProps>) {
 export function PageSideNav(props: PropsWithChildren<PageLayoutProps>) {
   return (
     <div
-      className={gridItem({
-        h: PAGE_MINUS_HEADER,
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        pt: '9rem',
-        transform: 'translateX(-100%)',
-        width: '12.5rem',
-        md: {
-          gridColumnStart: 1,
-          gridColumnEnd: 3,
-          h: 'initial',
-          left: 'initial',
-          overflowY: 'auto',
-          pb: '4',
-          position: 'initial',
-          top: 'initial',
-          transform: 'none',
-          width: 'initial',
-        },
-      })}
+      className={cx(
+        scrollable(),
+        gridItem({
+          h: PAGE_MINUS_HEADER,
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          pt: '9rem',
+          transform: 'translateX(-100%)',
+          width: '12.5rem',
+          md: {
+            gridColumnStart: 1,
+            gridColumnEnd: 3,
+            h: 'initial',
+            left: 'initial',
+            pb: '4',
+            position: 'initial',
+            top: 'initial',
+            transform: 'none',
+            width: 'initial',
+          },
+        }),
+      )}
     >
       {props.children}
     </div>
@@ -58,7 +60,6 @@ export function PageMainContent(props: PropsWithChildren<PageLayoutProps>) {
     <div
       className={cx(
         scrollable({
-          direction: 'vertical',
           hideScrollbar: true,
         }),
         gridItem({
@@ -102,10 +103,7 @@ export function TabPageContent(props: PropsWithChildren<PageLayoutProps>) {
   return (
     <div
       className={cx(
-        scrollable({
-          direction: 'vertical',
-          hideScrollbar: true,
-        }),
+        scrollable(),
         gridItem({
           gridColumnStart: 1,
           gridColumnEnd: 13,

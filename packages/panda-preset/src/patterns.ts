@@ -31,15 +31,28 @@ const scrollable: PatternConfig = definePattern({
   blocklist: ['overflow'],
 
   transform(props) {
-    const { direction, hideScrollbar, ...rest } = props
+    const { direction = 'vertical', hideScrollbar = false, ...rest } = props
     return {
       overflow: 'auto',
       height: direction === 'horizontal' ? '100%' : 'auto',
       width: direction === 'vertical' ? '100%' : 'auto',
-      scrollbarWidth: hideScrollbar ? 'none' : 'auto',
-      WebkitOverflowScrolling: 'touch',
+      scrollBehavior: 'smooth',
+      scrollbarGutter: 'stable',
       '&::-webkit-scrollbar': {
         display: hideScrollbar ? 'none' : 'auto',
+        w: '0.5em',
+      },
+      '&::-webkit-scrollbar-track': {
+        bg: 'transparent',
+        outline: 'none',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: 'page.border.100',
+        borderRadius: '5px',
+        outline: 'none',
+      },
+      '&:hover::-webkit-scrollbar-thumb': {
+        backgroundColor: 'page.border.100',
       },
       ...rest,
     }

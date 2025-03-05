@@ -29,18 +29,6 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
     },
   },
 
-  _scrollbar: {
-    width: '0.5em',
-  },
-  _scrollbarTrack: {
-    backgroundColor: 'var(--cerberus-colors-page-surface-200)',
-    outline: 'none',
-  },
-  _scrollbarThumb: {
-    backgroundColor: 'var(--cerberus-colors-page-border-100)',
-    borderRadius: '5px',
-    outline: 'none',
-  },
   _highlight: {
     backgroundColor: 'var(--cerberus-colors-info-bg-initial)',
     color: 'var(--cerberus-colors-info-text-initial)',
