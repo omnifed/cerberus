@@ -1,9 +1,12 @@
 import { Portal as ArkPortal, type PortalProps } from '@ark-ui/react'
+import type { PropsWithChildren } from 'react'
 
 /**
  * This module is the Portal component.
  * @module
  */
+
+export type { PortalProps }
 
 /**
  * The Portal component is used to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
@@ -23,6 +26,6 @@ import { Portal as ArkPortal, type PortalProps } from '@ark-ui/react'
  *   )
  * }
  */
-export function Portal(props: PortalProps) {
+export function Portal(props: PropsWithChildren<PortalProps>) {
   return <ArkPortal {...props} />
 }
