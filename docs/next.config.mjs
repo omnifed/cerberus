@@ -23,7 +23,7 @@ const nextConfig = {
   },
   experimental: {
     // This is because we are being forced to use tsup for DU Admin Portal
-    optimizePackageImports: ['@cerberus-design/react'],
+    optimizePackageImports: ['@cerberus-design/react', '@cerberus/react'],
     serverComponentsHmrCache: true,
     typedRoutes: true,
   },
