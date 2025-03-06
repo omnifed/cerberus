@@ -1,6 +1,10 @@
 'use client'
 
-import { createToaster, Toaster } from '@ark-ui/react/toast'
+import {
+  createToaster,
+  Toaster,
+  type CreateToasterReturn,
+} from '@ark-ui/react/toast'
 import { Box } from '@cerberus/styled-system/jsx'
 import { Button, type ButtonProps } from '../button/button'
 import { Show } from '../Show'
@@ -14,7 +18,7 @@ import { ToastCloseTrigger } from './close-trigger'
  * @module 'notification/center'
  */
 
-export const toaster = createToaster({
+export const toaster: CreateToasterReturn = createToaster({
   gap: 16,
   overlap: true,
   placement: 'top-end',

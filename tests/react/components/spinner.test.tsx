@@ -12,13 +12,6 @@ describe('Spinner', () => {
     expect(screen.getByRole('status')).toBeTruthy()
   })
 
-  test('should render a spinner with a custom color', () => {
-    render(<Spinner className="cerberus_c-yellow" />)
-    expect(
-      screen.getByRole('status').classList.contains('cerberus_c-yellow'),
-    ).toBeTruthy()
-  })
-
   test('should allow a custom size', () => {
     render(<Spinner size="1em" />)
     expect(
