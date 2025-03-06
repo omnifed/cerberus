@@ -8,18 +8,11 @@
 export * from './components/deprecated/FieldMessage'
 export * from './components/deprecated/FieldsetLabel'
 export * from './components/deprecated/Label'
-export * from './components/deprecated/Modal'
-export * from './components/deprecated/ModalHeader'
-export * from './components/deprecated/ModalHeading'
-export * from './components/deprecated/ModalDescription'
 export * from './components/deprecated/NavMenuTrigger'
 export * from './components/deprecated/NavMenuList'
 export * from './components/deprecated/NavMenuLink'
 export * from './components/deprecated/Legend'
-export * from './context/confirm-modal'
-export * from './context/prompt-modal'
 export * from './hooks/useDate'
-export * from './hooks/useModal'
 export * from './hooks/useToggle'
 
 // components
@@ -62,8 +55,10 @@ export * from './components/Tooltip'
 // context
 
 export * from './context/cerberus'
+export * from './context/confirm-modal'
 export * from './context/feature-flags'
 export * from './context/navMenu'
+export * from './context/prompt-modal'
 export * from './context/theme'
 
 // hooks

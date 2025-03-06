@@ -22,6 +22,7 @@ jobs:
           cache: 'pnpm'
           node-version: '22'
 
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
       - run: pnpm install
       - run: pnpm build && pnpm publish --access public
         working-directory: ./packages/react
@@ -38,6 +39,7 @@ jobs:
           cache: 'pnpm'
           node-version: '22'
 
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
       - run: pnpm install
       - run: pnpm publish --access public
         working-directory: ./packages/styled-system
@@ -57,6 +59,7 @@ jobs:
           node-version: '22'
           cache: 'pnpm'
 
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
       - run: pnpm install
       - run: pnpm dlx jsr publish --allow-dirty
         working-directory: ./packages/panda-preset

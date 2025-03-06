@@ -1,13 +1,10 @@
-import { type SVGProps } from 'react'
-
-export function AnimatingMoonIcon(props: SVGProps<SVGSVGElement>) {
+export function AnimatingMoonIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1.5em"
       height="1.5em"
       viewBox="0 0 24 24"
-      {...props}
     >
       <g
         fill="none"
