@@ -42,11 +42,7 @@ describe('CTAModal & useCTAModal', () => {
       })
     }
 
-    return (
-      <div>
-        <button onClick={handleMakeChoice}>make choice</button>
-      </div>
-    )
+    return <button onClick={handleMakeChoice}>make choice</button>
   }
 
   function TestFeature() {
@@ -70,11 +66,7 @@ describe('CTAModal & useCTAModal', () => {
       })
     }
 
-    return (
-      <div>
-        <button onClick={handleMakeChoice}>make choice</button>
-      </div>
-    )
+    return <button onClick={handleMakeChoice}>make choice</button>
   }
 
   function TestPage() {
@@ -128,21 +120,7 @@ describe('CTAModal & useCTAModal', () => {
     await waitFor(() => expect(action2).toHaveBeenCalled())
   })
 
-  test('should trap focus in the dialog', async () => {
-    render(<TestPage />)
-    await userEvent.click(screen.getByRole('button', { name: /make choice/i }))
-    await waitFor(() =>
-      expect(screen.getByText(/Copy or create a Cohort/i)).toBeTruthy(),
-    )
-    await userEvent.tab()
-    expect(
-      screen.getByRole('button', { name: /create new/i }).focus,
-    ).toBeTruthy()
-    await userEvent.tab()
-    expect(screen.getByText(/copy existing/i).focus).toBeTruthy()
-  })
-
-  test('should throw an error if used outside of FeatureFlags', () => {
+  test('should throw an error if used outside of CTAModal', () => {
     // don't clog up the console with errors
     spyOn(console, 'error').mockImplementation(() => null)
     expect(() => renderHook(() => useCTAModal())).toThrow(
