@@ -42,7 +42,7 @@
   },
   "author": "developers@omnifederal.com",
   "license": "ISC",
-  "packageManager": "pnpm@10.4.1",
+  "packageManager": "pnpm@10.6.1",
   "engines": {
     "node": ">=22.0.0",
     "bun": ">=1.2.4"
