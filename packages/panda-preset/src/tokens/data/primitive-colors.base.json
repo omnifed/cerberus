@@ -1089,7 +1089,7 @@
       },
       "40": {
         "$type": "color",
-        "$value": "#867f9b",
+        "$value": "#776f90",
         "$description": "",
         "$extensions": {
           "com.figma": {

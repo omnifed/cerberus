@@ -24,9 +24,10 @@ const nextConfig = {
   experimental: {
     // This is because we are being forced to use tsup for DU Admin Portal
     optimizePackageImports: [
+      '@carbon/icons-react',
       '@cerberus/react',
-      '@cerberus-design/react',
-      '@cerberus-design/panda-preset',
+      '@cerberus/panda-preset',
+      '@cerberus/styled-system',
     ],
     serverComponentsHmrCache: true,
     typedRoutes: true,
