@@ -11,12 +11,11 @@ import {
   type PropsWithChildren,
   type ReactNode,
 } from 'react'
+import { css } from 'styled-system/css'
+import { HStack, VStack } from 'styled-system/jsx'
 import { Button } from '../components/button/button'
-import { css } from '@cerberus/styled-system/css'
 import { Show } from '../components/Show'
 import { Avatar } from '../components/avatar/avatar'
-import { HStack, VStack } from '@cerberus/styled-system/jsx'
-import { useCerberusContext } from './cerberus'
 import {
   Dialog,
   DialogCloseTrigger,
@@ -24,6 +23,7 @@ import {
   DialogHeading,
   DialogProvider,
 } from '../components/dialog'
+import { useCerberusContext } from './cerberus'
 
 /**
  * This module provides a context and hook for the confirm modal.

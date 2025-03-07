@@ -11,22 +11,22 @@ import {
   type MouseEvent,
   type PropsWithChildren,
 } from 'react'
-import { DialogCloseTrigger } from '@ark-ui/react'
-import { HStack, VStack } from '@cerberus/styled-system/jsx'
-import { css } from '@cerberus/styled-system/css'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { DialogCloseTrigger } from '@ark-ui/react/dialog'
+import { HStack, VStack } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
+import { hstack } from 'styled-system/patterns'
 import { FieldLabel, FieldRoot, Input } from '../components/field/index'
 import { Button } from '../components/button/button'
 import { Show } from '../components/Show'
 import { Avatar } from '../components/avatar/avatar'
 import { Text } from '../components/Text'
-import { useCerberusContext } from './cerberus'
 import {
   Dialog,
   DialogDescription,
   DialogHeading,
   DialogProvider,
 } from '../components/dialog'
+import { useCerberusContext } from './cerberus'
 
 /**
  * This module provides a context and hook for the prompt modal.
