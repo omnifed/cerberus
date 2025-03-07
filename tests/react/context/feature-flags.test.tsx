@@ -1,16 +1,12 @@
-import { describe, test, expect, afterEach, spyOn } from 'bun:test'
-import { render, screen, cleanup, renderHook } from '@testing-library/react'
+import { describe, test, expect, spyOn } from 'bun:test'
+import { render, screen, renderHook } from '@testing-library/react'
 import {
   FeatureFlag,
   FeatureFlags,
   useFeatureFlags,
 } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
 
 describe('Field & useFieldContext', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const flags = {
     featureOne: true,
     featureTwo: false,
@@ -27,8 +23,10 @@ describe('Field & useFieldContext', () => {
 
   test('should export a NavMenu', () => {
     render(<Test />)
-    expect(screen.getByText(/feature one is enabled/i)).toBeTruthy()
-    expect(screen.queryByText(/feature two is disabled/i)).toBeFalsy()
+    expect(screen.getByText(/feature one is enabled/i)).toBeInTheDocument()
+    expect(
+      screen.queryByText(/feature two is disabled/i),
+    ).not.toBeInTheDocument()
   })
 
   test('should throw an error if used outside of FeatureFlags', () => {

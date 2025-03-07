@@ -1,12 +1,9 @@
-import { describe, test, expect, afterEach, spyOn } from 'bun:test'
-import { render, screen, cleanup, renderHook } from '@testing-library/react'
+import { describe, test, expect, spyOn } from 'bun:test'
+import { render, screen, renderHook } from '@testing-library/react'
 import { CerberusProvider, useCerberusContext } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode } from '@/utils'
+import { makeConfig } from '@/utils'
 
 describe('CerberusProvider & useCerberusContext', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
 
   function TestEl() {
@@ -35,7 +32,7 @@ describe('CerberusProvider & useCerberusContext', () => {
 
   test('should provide the Cerberus configuration', () => {
     render(<Test />)
-    expect(screen.getByText(JSON.stringify(config))).toBeTruthy()
+    expect(screen.getByText(JSON.stringify(config))).toBeInTheDocument()
   })
 
   test('should have access to the icons', () => {
@@ -48,7 +45,7 @@ describe('CerberusProvider & useCerberusContext', () => {
       screen.getByRole('img', {
         hidden: true,
       }),
-    ).toBeTruthy()
+    ).toBeInTheDocument()
   })
 
   test('should throw an error if used outside of CerberusProvider', () => {

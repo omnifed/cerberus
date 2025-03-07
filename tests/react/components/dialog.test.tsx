@@ -1,5 +1,5 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import {
   Button,
   CerberusProvider,
@@ -10,12 +10,9 @@ import {
   DialogProvider,
   DialogTrigger,
 } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode, user } from '@/utils'
+import { makeConfig, user } from '@/utils'
 
 describe('Dialog', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
 
   test('should render', () => {
@@ -34,8 +31,8 @@ describe('Dialog', () => {
       </CerberusProvider>,
     )
 
-    expect(screen.getByText(/open dialog/i)).toBeTruthy()
-    expect(screen.queryByRole('dialog')).toBeNull()
+    expect(screen.getByText(/open dialog/i)).toBeInTheDocument()
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
 
   test('should open dialog', async () => {
@@ -54,8 +51,8 @@ describe('Dialog', () => {
       </CerberusProvider>,
     )
 
-    expect(screen.getByText(/open dialog/i)).toBeTruthy()
+    expect(screen.getByText(/open dialog/i)).toBeInTheDocument()
     await user.click(screen.getByText(/open dialog/i))
-    expect(screen.getByRole('dialog')).toBeTruthy()
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
   })
 })

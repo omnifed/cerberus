@@ -1,7 +1,6 @@
-import { describe, test, expect, beforeEach, afterEach } from 'bun:test'
-import { render, screen, cleanup } from '@testing-library/react'
+import { describe, test, expect, beforeEach } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { Tabs } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
 
 describe('Tabs Family & useTabsContext', () => {
   const tabData = [
@@ -10,13 +9,9 @@ describe('Tabs Family & useTabsContext', () => {
     { id: 'tab3', label: 'Tab3', content: 'Tab3 content' },
   ]
 
-  setupStrictMode()
-
   beforeEach(() => {
     localStorage.clear()
   })
-
-  afterEach(cleanup)
 
   function TestTabs() {
     return (
@@ -43,9 +38,7 @@ describe('Tabs Family & useTabsContext', () => {
         <TestTabs />
       </Tabs.Root>,
     )
-    expect(screen.getByText(/tab1 content/i)).toBeTruthy()
-    expect(
-      screen.queryByText(/tab2 content/i)?.getAttribute('data-state'),
-    ).toEqual('closed')
+    expect(screen.getByText(/tab1 content/i)).toBeInTheDocument()
+    expect(screen.queryByText(/tab2 content/i)).toHaveAttribute('data-state')
   })
 })

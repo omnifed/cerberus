@@ -1,5 +1,5 @@
-import { describe, test, expect, afterEach, beforeEach, spyOn } from 'bun:test'
-import { render, screen, cleanup, renderHook } from '@testing-library/react'
+import { describe, test, expect, beforeEach, spyOn } from 'bun:test'
+import { render, screen, renderHook } from '@testing-library/react'
 import {
   useThemeContext,
   ThemeProvider,
@@ -8,12 +8,10 @@ import {
   type ColorModes,
   type CustomThemes,
 } from '@cerberus-design/react'
-import { setupStrictMode, user } from '@/utils'
+import { user } from '@/utils'
 import { type MouseEvent } from 'react'
 
 describe('useThemeContext', () => {
-  setupStrictMode()
-
   function ThemeTest() {
     const state = useThemeContext()
 
@@ -42,8 +40,6 @@ describe('useThemeContext', () => {
     localStorage.clear()
   })
 
-  afterEach(cleanup)
-
   test('should export a THEME_KEY', () => {
     expect(THEME_KEY).toBe('cerberus-theme')
   })
@@ -54,12 +50,12 @@ describe('useThemeContext', () => {
 
   test('should export a theme', () => {
     render(<ThemeTest />, { wrapper: ThemeProvider })
-    expect(screen.getByText('cerberus')).toBeTruthy()
+    expect(screen.getByText('cerberus')).toBeInTheDocument()
   })
 
   test('should export a mode', () => {
     render(<ThemeTest />, { wrapper: ThemeProvider })
-    expect(screen.getByText('light')).toBeTruthy()
+    expect(screen.getByText('light')).toBeInTheDocument()
   })
 
   test('should toggle mode', async () => {
@@ -69,7 +65,7 @@ describe('useThemeContext', () => {
       </ThemeProvider>,
     )
     await user.click(screen.getByText(/toggle mode/i))
-    expect(screen.getByText('dark')).toBeTruthy()
+    expect(screen.getByText('dark')).toBeInTheDocument()
     expect(localStorage.getItem(MODE_KEY)).toBe('dark')
   })
 
@@ -80,7 +76,7 @@ describe('useThemeContext', () => {
       </ThemeProvider>,
     )
     await user.click(screen.getByText(/update theme/i))
-    expect(screen.getByText('du-ui')).toBeTruthy()
+    expect(screen.getByText('du-ui')).toBeInTheDocument()
     expect(localStorage.getItem(THEME_KEY)).toBe('du-ui')
   })
 
@@ -92,7 +88,7 @@ describe('useThemeContext', () => {
         <ThemeTest />
       </ThemeProvider>,
     )
-    expect(screen.getByText(theme)).toBeTruthy()
+    expect(screen.getByText(theme)).toBeInTheDocument()
   })
 
   test('should set the mode from local storage', () => {
@@ -102,7 +98,7 @@ describe('useThemeContext', () => {
         <ThemeTest />
       </ThemeProvider>,
     )
-    expect(screen.getByText('dark')).toBeTruthy()
+    expect(screen.getByText('dark')).toBeInTheDocument()
   })
 
   test('should throw an error if used outside of ThemeProvider', () => {

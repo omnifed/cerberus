@@ -1,14 +1,12 @@
-import { describe, test, expect, afterEach, beforeEach } from 'bun:test'
-import { render, screen, cleanup } from '@testing-library/react'
+import { describe, test, expect, beforeEach } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { useTheme, type ColorModes } from '@cerberus-design/react'
-import { setupStrictMode, user } from '@/utils'
+import { user } from '@/utils'
 import type { MouseEvent } from 'react'
 
 type TestThemes = 'du-ui'
 
 describe('useTheme', () => {
-  setupStrictMode()
-
   function ThemeTest() {
     const state = useTheme<TestThemes>('cerberus', 'light', {
       cache: true,
@@ -39,30 +37,28 @@ describe('useTheme', () => {
     localStorage.clear()
   })
 
-  afterEach(cleanup)
-
   test('should export a theme', () => {
     render(<ThemeTest />)
-    expect(screen.getByText('cerberus')).toBeTruthy()
+    expect(screen.getByText('cerberus')).toBeInTheDocument()
   })
 
   test('should export a mode', () => {
     render(<ThemeTest />)
-    expect(screen.getByText('light')).toBeTruthy()
+    expect(screen.getByText('light')).toBeInTheDocument()
   })
 
   test('should toggle mode', async () => {
     render(<ThemeTest />)
-    expect(screen.getByText('light')).toBeTruthy()
+    expect(screen.getByText('light')).toBeInTheDocument()
     await user.click(screen.getByText(/toggle mode/i))
-    expect(screen.getByText('dark')).toBeTruthy()
+    expect(screen.getByText('dark')).toBeInTheDocument()
     expect(localStorage.getItem('cerberus-mode')).toBe('dark')
   })
 
   test('should update the theme', async () => {
     render(<ThemeTest />)
     await user.click(screen.getByText(/update theme/i))
-    expect(screen.getByText('du-ui')).toBeTruthy()
+    expect(screen.getByText('du-ui')).toBeInTheDocument()
     expect(localStorage.getItem('cerberus-theme')).toBe('du-ui')
   })
 
@@ -70,12 +66,12 @@ describe('useTheme', () => {
     localStorage.setItem('cerberus-theme', 'cerberus')
     render(<ThemeTest />)
     await user.click(screen.getByText(/update theme/i))
-    expect(screen.getByText('du-ui')).toBeTruthy()
+    expect(screen.getByText('du-ui')).toBeInTheDocument()
   })
 
   test('should set the mode from local storage if cache is true', () => {
     localStorage.setItem('cerberus-mode', 'light')
     render(<ThemeTest />)
-    expect(screen.getByText('light')).toBeTruthy()
+    expect(screen.getByText('light')).toBeInTheDocument()
   })
 })

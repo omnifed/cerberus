@@ -1,20 +1,16 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { RadioGroup, Radio, RadioParts } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
 
 describe('RadioGroup & Radio', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   test('should render a radio', () => {
     render(
       <RadioGroup>
         <Radio value="test">Test label</Radio>
       </RadioGroup>,
     )
-    expect(screen.getByLabelText(/test label/i)).toBeTruthy()
-    expect(screen.getByRole('radio')).toBeTruthy()
+    expect(screen.getByLabelText(/test label/i)).toBeInTheDocument()
+    expect(screen.getByRole('radio')).toBeInTheDocument()
   })
 
   test('should render a radio with a sm size', () => {
@@ -25,11 +21,9 @@ describe('RadioGroup & Radio', () => {
         </Radio>
       </RadioGroup>,
     )
-    expect(
-      screen
-        .getByRole('radiogroup')
-        .classList.contains('cerberus-radio-group__root--size_sm'),
-    ).toBeTruthy()
+    expect(screen.getByRole('radiogroup')).toHaveClass(
+      'cerberus-radio-group__root--size_sm',
+    )
   })
 
   test('should render a radio with a md size', () => {
@@ -40,11 +34,9 @@ describe('RadioGroup & Radio', () => {
         </Radio>
       </RadioGroup>,
     )
-    expect(
-      screen
-        .getByText(/test label/i)
-        .classList.contains('cerberus-radio-group__itemText--size_md'),
-    ).toBeTruthy()
+    expect(screen.getByText(/test label/i)).toHaveClass(
+      'cerberus-radio-group__itemText--size_md',
+    )
   })
 
   test('should render a horizontal orientation', () => {
@@ -53,13 +45,9 @@ describe('RadioGroup & Radio', () => {
         <Radio value="test">Test Label</Radio>
       </RadioGroup>,
     )
-    expect(
-      screen
-        .getByRole('radiogroup')
-        .classList.contains(
-          'cerberus-radio-group__root--orientation_horizontal',
-        ),
-    ).toBeTruthy()
+    expect(screen.getByRole('radiogroup')).toHaveClass(
+      'cerberus-radio-group__root--orientation_horizontal',
+    )
   })
 
   test('should render a vertical orientation', () => {
@@ -68,11 +56,9 @@ describe('RadioGroup & Radio', () => {
         <Radio value="test">Test Label</Radio>
       </RadioGroup>,
     )
-    expect(
-      screen
-        .getByRole('radiogroup')
-        .classList.contains('cerberus-radio-group__root--orientation_vertical'),
-    ).toBeTruthy()
+    expect(screen.getByRole('radiogroup')).toHaveClass(
+      'cerberus-radio-group__root--orientation_vertical',
+    )
   })
 
   test('should render primitives', () => {
@@ -87,8 +73,8 @@ describe('RadioGroup & Radio', () => {
         </RadioParts.Item>
       </RadioParts.Root>,
     )
-    expect(screen.getByText(/test group/i)).toBeTruthy()
-    expect(screen.getByText(/test label/i)).toBeTruthy()
-    expect(screen.getByRole('radio')).toBeTruthy()
+    expect(screen.getByText(/test group/i)).toBeInTheDocument()
+    expect(screen.getByText(/test label/i)).toBeInTheDocument()
+    expect(screen.getByRole('radio')).toBeInTheDocument()
   })
 })

@@ -1,12 +1,9 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { Avatar, AvatarRoot, CerberusProvider } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode } from '@/utils'
+import { makeConfig } from '@/utils'
 
 describe('Avatar', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
 
   test('should render an image element', () => {
@@ -23,7 +20,7 @@ describe('Avatar', () => {
       screen.getByRole('img', {
         hidden: true,
       }),
-    ).toBeTruthy()
+    ).toBeInTheDocument()
   })
 
   test('should render a fallback icon if no src or label', () => {
@@ -32,7 +29,7 @@ describe('Avatar', () => {
         <Avatar fallback={<p>TB</p>} />
       </CerberusProvider>,
     )
-    expect(screen.getByText(/tb/i)).toBeTruthy()
+    expect(screen.getByText(/tb/i)).toBeInTheDocument()
   })
 
   test('should allow a custom element', () => {
@@ -43,6 +40,6 @@ describe('Avatar', () => {
         </AvatarRoot>
       </CerberusProvider>,
     )
-    expect(screen.getByTestId('custom-element')).toBeTruthy()
+    expect(screen.getByTestId('custom-element')).toBeInTheDocument()
   })
 })

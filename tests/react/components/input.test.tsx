@@ -1,12 +1,9 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { CerberusProvider, Input, Field } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode } from '@/utils'
+import { makeConfig } from '@/utils'
 
 describe('Input', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
 
   test('should render a input', () => {
@@ -23,9 +20,9 @@ describe('Input', () => {
         </Field>
       </CerberusProvider>,
     )
-    expect(screen.getByLabelText(/test label/i)).toBeTruthy()
-    expect(screen.getByText(/(required)/i)).toBeTruthy()
-    expect(screen.getByRole('textbox')).toBeTruthy()
+    expect(screen.getByLabelText(/test label/i)).toBeInTheDocument()
+    expect(screen.getByText(/(required)/i)).toBeInTheDocument()
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
   })
 
   test('should render a input with error', () => {
@@ -43,9 +40,7 @@ describe('Input', () => {
         </Field>
       </CerberusProvider>,
     )
-    expect(
-      screen.getByRole('textbox').attributes.getNamedItem('aria-invalid'),
-    ).toBeTruthy()
+    expect(screen.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true')
   })
 
   test('should render a input with disabled', () => {
@@ -62,9 +57,7 @@ describe('Input', () => {
         </Field>
       </CerberusProvider>,
     )
-    expect(
-      screen.getByRole('textbox').attributes.getNamedItem('disabled'),
-    ).toBeTruthy()
+    expect(screen.getByRole('textbox')).toBeDisabled()
   })
 
   test('should render a input with placeholder', () => {
@@ -81,7 +74,7 @@ describe('Input', () => {
         </Field>
       </CerberusProvider>,
     )
-    expect(screen.getByRole('textbox')).toBeTruthy()
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
   })
 
   test('should render a input with a sm size', () => {
@@ -97,11 +90,9 @@ describe('Input', () => {
         </Field>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByRole('textbox')
-        .classList.contains('cerberus-field__input--size_sm'),
-    ).toBeTruthy()
+    expect(screen.getByRole('textbox')).toHaveClass(
+      'cerberus-field__input--size_sm',
+    )
   })
 
   test('should render a input with a md size', () => {
@@ -117,11 +108,9 @@ describe('Input', () => {
         </Field>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByRole('textbox')
-        .classList.contains('cerberus-field__input--size_md'),
-    ).toBeTruthy()
+    expect(screen.getByRole('textbox')).toHaveClass(
+      'cerberus-field__input--size_md',
+    )
   })
 
   test('should render a input with a lg size', () => {
@@ -137,11 +126,9 @@ describe('Input', () => {
         </Field>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByRole('textbox')
-        .classList.contains('cerberus-field__input--size_lg'),
-    ).toBeTruthy()
+    expect(screen.getByRole('textbox')).toHaveClass(
+      'cerberus-field__input--size_lg',
+    )
   })
 
   test('should render a input with a startIcon', () => {
@@ -157,7 +144,7 @@ describe('Input', () => {
         </Field>
       </CerberusProvider>,
     )
-    expect(screen.getByLabelText(/calendar icon/i)).toBeTruthy()
+    expect(screen.getByLabelText(/calendar icon/i)).toBeInTheDocument()
   })
 
   test('should render a input with a endIcon', () => {
@@ -173,6 +160,6 @@ describe('Input', () => {
         </Field>
       </CerberusProvider>,
     )
-    expect(screen.getByLabelText(/calendar icon/i)).toBeTruthy()
+    expect(screen.getByLabelText(/calendar icon/i)).toBeInTheDocument()
   })
 })

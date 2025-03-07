@@ -1,12 +1,9 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { Admonition, CerberusProvider } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode } from '@/utils'
+import { makeConfig } from '@/utils'
 
 describe('Admonition', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
 
   test('should render a admonition element', () => {
@@ -18,12 +15,12 @@ describe('Admonition', () => {
         </Admonition>
       </CerberusProvider>,
     )
-    expect(screen.getByText(/when to use/i)).toBeTruthy()
+    expect(screen.getByText(/when to use/i)).toBeInTheDocument()
     expect(
       screen.getByText(
         /use this component when you want to display a page-level message/i,
       ),
-    ).toBeTruthy()
+    ).toBeInTheDocument()
   })
 
   test('should render a admonition element with a page palette', () => {
@@ -36,16 +33,14 @@ describe('Admonition', () => {
         ,
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByText(/when to use/i)
-        .classList.contains('cerberus-admonition__heading--palette_page'),
-    ).toBeTruthy()
+    expect(screen.getByText(/when to use/i)).toHaveClass(
+      'cerberus-admonition__heading--palette_page',
+    )
     expect(
       screen.queryByRole('img', {
         hidden: false,
       }),
-    ).toBeNull()
+    ).not.toBeInTheDocument()
   })
 
   test('should render a admonition element with a info palette', () => {
@@ -61,16 +56,14 @@ describe('Admonition', () => {
         </Admonition>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByTestId('admonition')
-        .classList.contains('cerberus-admonition__root--palette_info'),
-    ).toBeTruthy()
+    expect(screen.getByTestId('admonition')).toHaveClass(
+      'cerberus-admonition__root--palette_info',
+    )
     expect(
       screen.queryByRole('img', {
         hidden: false,
       }),
-    ).toBeNull()
+    ).not.toBeInTheDocument()
   })
 
   test('should render a admonition element with a success palette', () => {
@@ -86,16 +79,14 @@ describe('Admonition', () => {
         </Admonition>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByTestId('admonition')
-        .classList.contains('cerberus-admonition__root--palette_success'),
-    ).toBeTruthy()
+    expect(screen.getByTestId('admonition')).toHaveClass(
+      'cerberus-admonition__root--palette_success',
+    )
     expect(
       screen.queryByRole('img', {
         hidden: false,
       }),
-    ).toBeNull()
+    ).not.toBeInTheDocument()
   })
 
   test('should render a admonition element with a warning palette', () => {
@@ -111,16 +102,14 @@ describe('Admonition', () => {
         </Admonition>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByTestId('admonition')
-        .classList.contains('cerberus-admonition__root--palette_warning'),
-    ).toBeTruthy()
+    expect(screen.getByTestId('admonition')).toHaveClass(
+      'cerberus-admonition__root--palette_warning',
+    )
     expect(
       screen.queryByRole('img', {
         hidden: false,
       }),
-    ).toBeNull()
+    ).not.toBeInTheDocument()
   })
 
   test('should render a admonition element with a danger palette', () => {
@@ -136,16 +125,14 @@ describe('Admonition', () => {
         </Admonition>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByTestId('admonition')
-        .classList.contains('cerberus-admonition__root--palette_danger'),
-    ).toBeTruthy()
+    expect(screen.getByTestId('admonition')).toHaveClass(
+      'cerberus-admonition__root--palette_danger',
+    )
     expect(
       screen.queryByRole('img', {
         hidden: false,
       }),
-    ).toBeNull()
+    ).not.toBeInTheDocument()
   })
 
   test('should allow to render a custom icon', () => {
@@ -157,6 +144,6 @@ describe('Admonition', () => {
         </Admonition>
       </CerberusProvider>,
     )
-    expect(screen.getByText(/🚀/)).toBeTruthy()
+    expect(screen.getByText(/🚀/)).toBeInTheDocument()
   })
 })

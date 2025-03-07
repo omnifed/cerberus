@@ -1,16 +1,14 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import {
   CerberusProvider,
   Checkbox,
   CheckboxGroup,
+  CheckboxParts,
 } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode } from '@/utils'
+import { makeConfig } from '@/utils'
 
 describe('Checkbox', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
 
   test('should render a checkbox', () => {
@@ -26,9 +24,9 @@ describe('Checkbox', () => {
         </Checkbox>
       </CerberusProvider>,
     )
-    expect(screen.getByLabelText(/test label/i)).toBeTruthy()
-    expect(screen.getByText(/(required)/i)).toBeTruthy()
-    expect(screen.getByRole('checkbox')).toBeTruthy()
+    expect(screen.getByLabelText(/test label/i)).toBeInTheDocument()
+    expect(screen.getByText(/(required)/i)).toBeInTheDocument()
+    expect(screen.getByRole('checkbox')).toBeInTheDocument()
   })
 
   test('should render a checkbox with error', () => {
@@ -46,9 +44,7 @@ describe('Checkbox', () => {
         ,
       </CerberusProvider>,
     )
-    expect(
-      screen.getByRole('checkbox').attributes.getNamedItem('aria-invalid'),
-    ).toBeTruthy()
+    expect(screen.getByRole('checkbox')).toHaveAttribute('aria-invalid', 'true')
   })
 
   test('should render a checkbox with disabled', () => {
@@ -64,9 +60,7 @@ describe('Checkbox', () => {
         </Checkbox>
       </CerberusProvider>,
     )
-    expect(
-      screen.getByRole('checkbox').attributes.getNamedItem('disabled'),
-    ).toBeTruthy()
+    expect(screen.getByRole('checkbox')).toHaveAttribute('disabled')
   })
 
   test('should render a group of checkboxes', () => {
@@ -90,7 +84,17 @@ describe('Checkbox', () => {
         </CheckboxGroup>
       </CerberusProvider>,
     )
-    expect(screen.getByLabelText(/test 1/i)).toBeTruthy()
-    expect(screen.getByLabelText(/test 2/i)).toBeTruthy()
+    expect(screen.getByLabelText(/test 1/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/test 2/i)).toBeInTheDocument()
+  })
+
+  test('should contain all the parts', () => {
+    expect(CheckboxParts).toBeDefined()
+    expect(CheckboxParts.Root).not.toBeNull()
+    expect(CheckboxParts.Label).not.toBeNull()
+    expect(CheckboxParts.Control).not.toBeNull()
+    expect(CheckboxParts.Group).not.toBeNull()
+    expect(CheckboxParts.Indicator).not.toBeNull()
+    expect(CheckboxParts.HiddenInput).not.toBeNull()
   })
 })

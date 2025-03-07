@@ -1,12 +1,9 @@
-import { describe, test, expect, afterEach, jest } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect, jest } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { CerberusProvider, Tag } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode, user } from '@/utils'
+import { makeConfig, user } from '@/utils'
 
 describe('Tag', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
 
   test('should render a tag element', () => {
@@ -15,7 +12,7 @@ describe('Tag', () => {
         <Tag>it works</Tag>
       </CerberusProvider>,
     )
-    expect(screen.getByText(/it works/i)).toBeTruthy()
+    expect(screen.getByText(/it works/i)).toBeInTheDocument()
   })
 
   test('should not render a action tag', () => {
@@ -24,11 +21,9 @@ describe('Tag', () => {
         <Tag>it works</Tag>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByText(/it works/i)
-        .classList.contains('cerberus-tag--palette_action'),
-    ).toBeFalse()
+    expect(screen.getByText(/it works/i)).not.toHaveClass(
+      'cerberus-tag--palette_action',
+    )
   })
 
   test('should render a danger tag', () => {
@@ -37,11 +32,9 @@ describe('Tag', () => {
         <Tag palette="danger">it works</Tag>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByText(/it works/i)
-        .classList.contains('cerberus-tag--palette_danger'),
-    ).toBeTrue()
+    expect(screen.getByText(/it works/i)).toHaveClass(
+      'cerberus-tag--palette_danger',
+    )
   })
 
   test('should render an outlined tag', () => {
@@ -50,11 +43,9 @@ describe('Tag', () => {
         <Tag usage="outlined">it works</Tag>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByText(/it works/i)
-        .classList.contains('cerberus-tag--usage_outlined'),
-    ).toBeTrue()
+    expect(screen.getByText(/it works/i)).toHaveClass(
+      'cerberus-tag--usage_outlined',
+    )
   })
 
   test('should render a filled tag', () => {
@@ -63,11 +54,9 @@ describe('Tag', () => {
         <Tag usage="filled">it works</Tag>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByText(/it works/i)
-        .classList.contains('cerberus-tag--usage_filled'),
-    ).toBeTrue()
+    expect(screen.getByText(/it works/i)).toHaveClass(
+      'cerberus-tag--usage_filled',
+    )
   })
 
   test('should render a pill tag', () => {
@@ -76,11 +65,9 @@ describe('Tag', () => {
         <Tag shape="pill">it works</Tag>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByText(/it works/i)
-        .classList.contains('cerberus-tag--shape_pill'),
-    ).toBeTrue()
+    expect(screen.getByText(/it works/i)).toHaveClass(
+      'cerberus-tag--shape_pill',
+    )
   })
 
   test('should render a pill when onClick is provided', () => {
@@ -89,11 +76,9 @@ describe('Tag', () => {
         <Tag onClick={jest.fn()}>it works</Tag>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByText(/it works/i)
-        .classList.contains('cerberus-tag--shape_pill'),
-    ).toBeTrue()
+    expect(screen.getByText(/it works/i)).toHaveClass(
+      'cerberus-tag--shape_pill',
+    )
   })
 
   test('should render a square tag', () => {
@@ -102,11 +87,9 @@ describe('Tag', () => {
         <Tag shape="square">it works</Tag>
       </CerberusProvider>,
     )
-    expect(
-      screen
-        .getByText(/it works/i)
-        .classList.contains('cerberus-tag--shape_square'),
-    ).toBeTrue()
+    expect(screen.getByText(/it works/i)).toHaveClass(
+      'cerberus-tag--shape_square',
+    )
   })
 
   test('should render a tag with a close button', async () => {
@@ -116,7 +99,7 @@ describe('Tag', () => {
         <Tag onClick={onClick}>it works</Tag>
       </CerberusProvider>,
     )
-    expect(screen.getByLabelText(/Close/i)).toBeTruthy()
+    expect(screen.getByLabelText(/Close/i)).toBeInTheDocument()
     await user.click(screen.getByLabelText(/Close/i))
     expect(onClick).toHaveBeenCalledTimes(1)
   })

@@ -1,19 +1,15 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { Portal } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
 
 describe('Portal', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   test('should render children provided', () => {
     render(
       <Portal>
         <div>children</div>
       </Portal>,
     )
-    expect(screen.getByText('children')).toBeTruthy()
+    expect(screen.getByText('children')).toBeInTheDocument()
   })
 
   test('should return null if window is undefined', () => {
@@ -22,6 +18,6 @@ describe('Portal', () => {
         <div>children</div>
       </Portal>,
     )
-    expect(container.firstChild).toBeNull()
+    expect(container.firstChild).not.toBeInTheDocument()
   })
 })

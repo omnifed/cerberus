@@ -15,6 +15,7 @@ import {
   type DatePickerTableCellProps,
   type DatePickerTableCellTriggerProps,
   type DatePickerTableHeaderProps,
+  type DatePickerTableHeadProps,
   type DatePickerTableProps,
   type DatePickerTableRowProps,
   type DatePickerTriggerProps,
@@ -260,8 +261,8 @@ export function DatePickerViewTrigger(props: DatePickerViewTriggerProps) {
  * The table head component of the DatePicker. This primitive has no Cerberus
  * styles.
  */
-export function DatePickerTableHead(props: DatePickerTableHeaderProps) {
-  return <DatePicker.TableHeader {...props} />
+export function DatePickerTableHead(props: DatePickerTableHeadProps) {
+  return <DatePicker.TableHead {...props} />
 }
 /**
  * The table row component of the DatePicker. This primitive has no Cerberus

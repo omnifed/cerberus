@@ -1,5 +1,5 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import {
   Field,
   Input,
@@ -9,12 +9,9 @@ import {
   FieldsetParts,
   CerberusProvider,
 } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode } from '@/utils'
+import { makeConfig } from '@/utils'
 
 describe('Fieldset & FieldsetParts', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
 
   function TestFormGroup(props: { invalid?: boolean }) {
@@ -39,9 +36,9 @@ describe('Fieldset & FieldsetParts', () => {
         <TestFormGroup />
       </CerberusProvider>,
     )
-    expect(screen.getByText('test legend')).toBeTruthy()
-    expect(screen.getByText('Helper text')).toBeTruthy()
-    expect(screen.getByText('test label')).toBeTruthy()
+    expect(screen.getByText('test legend')).toBeInTheDocument()
+    expect(screen.getByText('Helper text')).toBeInTheDocument()
+    expect(screen.getByText('test label')).toBeInTheDocument()
   })
 
   test('should render a fieldset for a form section with error', () => {
@@ -50,7 +47,7 @@ describe('Fieldset & FieldsetParts', () => {
         <TestFormGroup invalid />
       </CerberusProvider>,
     )
-    expect(screen.getByText('Error text')).toBeTruthy()
+    expect(screen.getByText('Error text')).toBeInTheDocument()
   })
 
   test('should render a fieldset for a field group', () => {
@@ -64,9 +61,9 @@ describe('Fieldset & FieldsetParts', () => {
         </Fieldset>
       </CerberusProvider>,
     )
-    expect(screen.getByText('test legend')).toBeTruthy()
-    expect(screen.getByText('one')).toBeTruthy()
-    expect(screen.getByText('two')).toBeTruthy()
+    expect(screen.getByText('test legend')).toBeInTheDocument()
+    expect(screen.getByText('one')).toBeInTheDocument()
+    expect(screen.getByText('two')).toBeInTheDocument()
   })
 
   test('should render Fieldset parts', () => {
@@ -82,8 +79,8 @@ describe('Fieldset & FieldsetParts', () => {
         </FieldsetParts.Root>
       </CerberusProvider>,
     )
-    expect(screen.getByText('test legend')).toBeTruthy()
-    expect(screen.getByText('Helper text')).toBeTruthy()
-    expect(screen.getByText('test label')).toBeTruthy()
+    expect(screen.getByText('test legend')).toBeInTheDocument()
+    expect(screen.getByText('Helper text')).toBeInTheDocument()
+    expect(screen.getByText('test label')).toBeInTheDocument()
   })
 })

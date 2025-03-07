@@ -99,6 +99,8 @@ describe('CTAModal & useCTAModal', () => {
     await waitFor(() =>
       expect(screen.getByRole('img', { name: /custom-icon/i })),
     )
+    // close the modal
+    await userEvent.click(screen.getByRole('button', { name: /create new/i }))
   })
 
   test('should call actions when clicked', async () => {
@@ -118,14 +120,6 @@ describe('CTAModal & useCTAModal', () => {
       screen.getByRole('button', { name: /copy existing/i }),
     )
     await waitFor(() => expect(action2).toHaveBeenCalled())
-  })
-
-  test('should throw an error if used outside of CTAModal', () => {
-    // don't clog up the console with errors
-    spyOn(console, 'error').mockImplementation(() => null)
-    expect(() => renderHook(() => useCTAModal())).toThrow(
-      'useCTAModal must be used within a CTAModal Provider',
-    )
   })
 
   test('should render links as actions', async () => {
@@ -150,6 +144,14 @@ describe('CTAModal & useCTAModal', () => {
     )
     await waitFor(() =>
       expect(screen.getByRole('link', { name: /copy existing/i })),
+    )
+  })
+
+  test('should throw an error if used outside of CTAModal', () => {
+    // don't clog up the console with errors
+    spyOn(console, 'error').mockImplementation(() => null)
+    expect(() => renderHook(() => useCTAModal())).toThrow(
+      'useCTAModal must be used within a CTAModal Provider',
     )
   })
 })
