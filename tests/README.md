@@ -6,28 +6,6 @@ The workspace for writing an running tests for the Cerberus Design System.
 
 This workspace uses Bun and Testing Library to write and run tests for the Cerberus Design System.
 
-### Setup
-
-Because this workspace uses Bun and Testing Library you will need to add some additional helpers to your `describe` functions.
-
-Add this to each test:
-
-```diff
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
-import { Show } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
-
-describe('Show', () => {
-+ setupStrictMode()
-+ afterEach(cleanup)
-
-  test('should do something', () => {
-    // Your test here
-  })
-})
-```
-
 This is because Testing Library is tightly coupled to Jest (unfortunately) and Cerberus prefers a more lightweight and performant testing library via Bun and HappyDom.
 
 ### Expect Statements

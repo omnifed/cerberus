@@ -1,24 +1,15 @@
-import { describe, test, expect, afterEach, spyOn, jest } from 'bun:test'
-import {
-  render,
-  screen,
-  cleanup,
-  renderHook,
-  waitFor,
-} from '@testing-library/react'
+import { describe, test, expect, spyOn, jest } from 'bun:test'
+import { render, screen, renderHook, waitFor } from '@testing-library/react'
 import {
   CTAModal,
   useCTAModal,
   CerberusProvider,
   createCTAModalActions,
 } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode } from '@/utils'
+import { makeConfig } from '@/utils'
 import userEvent from '@testing-library/user-event'
 
 describe('CTAModal & useCTAModal', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
   const action1 = jest.fn()
   const action2 = jest.fn()
@@ -83,12 +74,12 @@ describe('CTAModal & useCTAModal', () => {
     render(<TestPage />)
     await userEvent.click(screen.getByRole('button', { name: /make choice/i }))
     await waitFor(() =>
-      expect(screen.getByText(/Copy or create a Cohort/i)).toBeTruthy(),
+      expect(screen.getByText(/Copy or create a Cohort/i)).toBeInTheDocument(),
     )
     await waitFor(() =>
       expect(
         screen.getByText(/Create a new cohort or copy an existing one./i),
-      ).toBeTruthy(),
+      ).toBeInTheDocument(),
     )
     await waitFor(() =>
       expect(screen.getByRole('button', { name: /create new/i })),
@@ -132,12 +123,12 @@ describe('CTAModal & useCTAModal', () => {
     )
     await userEvent.click(screen.getByRole('button', { name: /make choice/i }))
     await waitFor(() =>
-      expect(screen.getByText(/Copy or create a Cohort/i)).toBeTruthy(),
+      expect(screen.getByText(/Copy or create a Cohort/i)).toBeInTheDocument(),
     )
     await waitFor(() =>
       expect(
         screen.getByText(/Create a new cohort or copy an existing one./i),
-      ).toBeTruthy(),
+      ).toBeInTheDocument(),
     )
     await waitFor(() =>
       expect(screen.getByRole('link', { name: /create new/i })),
