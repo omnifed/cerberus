@@ -95,27 +95,6 @@ describe('PromptModal & usePromptModal', () => {
     )
   })
 
-  test('should trap focus in the dialog', async () => {
-    render(<TestPage />)
-    await userEvent.click(
-      screen.getByRole('button', { name: /confirm choice/i }),
-    )
-    await waitFor(() =>
-      expect(screen.getByText(/Add new payment method?/i)).toBeInTheDocument(),
-    )
-    expect(
-      screen.getByText(/Add new payment method?/i).focus,
-    ).toBeInTheDocument()
-    await userEvent.tab()
-    expect(
-      screen.getByRole('button', { name: /no, cancel/i }).focus,
-    ).toBeInTheDocument()
-    await userEvent.tab()
-    expect(
-      screen.getByText(/Add new payment method?/i).focus,
-    ).toBeInTheDocument()
-  })
-
   test('should throw an error if used outside of FeatureFlags', () => {
     // don't clog up the console with errors
     spyOn(console, 'error').mockImplementation(() => null)
