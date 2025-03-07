@@ -8,6 +8,7 @@
   "main": "src/index.ts",
   "module": "src/index.ts",
   "scripts": {
+    "prepare": "panda codegen",
     "build": "tsup --experimental-dts noExternals",
     "clean": "rm -rf ./build",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
@@ -23,7 +24,9 @@
   },
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
+    "@cerberus-design/panda-preset": "workspace:*",
     "@cerberus/styled-system": "workspace:@cerberus-design/styled-system@*",
+    "@pandacss/dev": "^0.53.0",
     "@microsoft/api-extractor": "^7.46.2",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",

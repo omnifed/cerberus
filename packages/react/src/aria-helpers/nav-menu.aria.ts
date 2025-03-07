@@ -8,6 +8,9 @@ interface NavTriggerAriaReturn {
   ['aria-expanded']: boolean
 }
 
+/**
+ * @deprecated will be removed in a future release
+ */
 export function createNavTriggerProps(
   values: NavTriggerAriaValues,
 ): NavTriggerAriaReturn {

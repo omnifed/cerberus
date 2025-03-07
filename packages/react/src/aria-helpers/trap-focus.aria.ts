@@ -1,5 +1,8 @@
 import type { KeyboardEvent, KeyboardEventHandler, RefObject } from 'react'
 
+/**
+ * @deprecated will be removed in a future release
+ */
 export function trapFocus(
   modalRef: RefObject<HTMLDialogElement | null>,
 ): KeyboardEventHandler<HTMLDialogElement> {

@@ -1,14 +1,13 @@
-import { defineConfig } from '@pandacss/dev'
-import pandaPreset from '@pandacss/preset-panda'
-import { cerberusPreset, cerberusConfig } from '@cerberus-design/panda-preset'
+import {
+  createCerberusConfig,
+  createCerberusPreset,
+} from '@cerberus-design/panda-preset'
 
-export default defineConfig({
-  ...cerberusConfig,
-
-  exclude: [],
-  outdir: '.',
-
+export default createCerberusConfig({
   clean: true,
+  presets: [createCerberusPreset()],
 
-  presets: [pandaPreset, cerberusPreset],
+  include: ['./mdx-components.tsx', './app/**/*.{ts,tsx}'],
+  exclude: [],
+  outdir: 'styled-system',
 })

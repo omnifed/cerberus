@@ -7,7 +7,6 @@ export default createCerberusConfig({
   clean: true,
   presets: [createCerberusPreset()],
 
-  include: ['./mdx-components.tsx', './app/**/*.{ts,tsx}'],
   exclude: [],
   outdir: 'styled-system',
 })

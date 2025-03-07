@@ -50,7 +50,6 @@
   "devDependencies": {
     "@cerberus-design/panda-preset": "workspace:*",
     "@pandacss/dev": "^0.53.0",
-    "@pandacss/preset-panda": "^0.53.0",
     "@pandacss/types": "^0.53.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

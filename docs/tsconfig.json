@@ -18,10 +18,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@cerberus/styled-system/*": [
-        "./node_modules/@cerberus-design/styled-system/*"
-      ]
+      "@/*": ["./*"]
     },
     "target": "ES2017"
   },
