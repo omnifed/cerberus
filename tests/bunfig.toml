@@ -1,4 +1,4 @@
 [test]
 
 coverageThreshold = { line = 1, function = 0.9 }
-preload = "./happydom.ts"
+preload = ["./happydom.ts", "./testing-library.ts"]

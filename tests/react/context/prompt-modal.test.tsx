@@ -1,24 +1,15 @@
-import { describe, test, expect, afterEach, spyOn } from 'bun:test'
-import {
-  render,
-  screen,
-  cleanup,
-  renderHook,
-  waitFor,
-} from '@testing-library/react'
+import { describe, test, expect, spyOn } from 'bun:test'
+import { render, screen, renderHook, waitFor } from '@testing-library/react'
 import {
   CerberusProvider,
   PromptModal,
   usePromptModal,
 } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode } from '@/utils'
+import { makeConfig } from '@/utils'
 import { useState } from 'react'
 import userEvent from '@testing-library/user-event'
 
 describe('PromptModal & usePromptModal', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
 
   function TestFeature() {
@@ -62,16 +53,16 @@ describe('PromptModal & usePromptModal', () => {
       screen.getByRole('button', { name: /confirm choice/i }),
     )
     await waitFor(() =>
-      expect(screen.getByText(/Add new payment method?/i)).toBeTruthy(),
+      expect(screen.getByText(/Add new payment method?/i)).toBeInTheDocument(),
     )
     await waitFor(() =>
       expect(
         screen.getByText(
           /This will add a new payment method to your account to be billed for future purchases./i,
         ),
-      ).toBeTruthy(),
+      ).toBeInTheDocument(),
     )
-    await waitFor(() => expect(screen.getByRole('textbox')).toBeTruthy())
+    await waitFor(() => expect(screen.getByRole('textbox')).toBeInTheDocument())
     await waitFor(() =>
       expect(screen.getByRole('button', { name: /yes, add payment method/i })),
     )
@@ -90,7 +81,7 @@ describe('PromptModal & usePromptModal', () => {
     await userEvent.click(
       screen.getByRole('button', { name: /yes, add payment method/i }),
     )
-    expect(screen.getByText(/key: secret_key/i)).toBeTruthy()
+    expect(screen.getByText(/key: secret_key/i)).toBeInTheDocument()
   })
 
   test('should not return anything after user cancels', async () => {
@@ -102,23 +93,6 @@ describe('PromptModal & usePromptModal', () => {
     await waitFor(() =>
       expect(screen.queryByText(/key: super_secret/i)).toBeFalsy(),
     )
-  })
-
-  test('should trap focus in the dialog', async () => {
-    render(<TestPage />)
-    await userEvent.click(
-      screen.getByRole('button', { name: /confirm choice/i }),
-    )
-    await waitFor(() =>
-      expect(screen.getByText(/Add new payment method?/i)).toBeTruthy(),
-    )
-    expect(screen.getByText(/Add new payment method?/i).focus).toBeTruthy()
-    await userEvent.tab()
-    expect(
-      screen.getByRole('button', { name: /no, cancel/i }).focus,
-    ).toBeTruthy()
-    await userEvent.tab()
-    expect(screen.getByText(/Add new payment method?/i).focus).toBeTruthy()
   })
 
   test('should throw an error if used outside of FeatureFlags', () => {

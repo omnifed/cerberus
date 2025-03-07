@@ -45,7 +45,7 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
       _focusVisible: focusStates._focusVisible,
       _disabled: formStates._disabled,
       _checked: {
-        bgColor: 'action.text.200',
+        bgColor: 'action.bg.initial',
       },
       _userInvalid: {
         outline: '2px solid',

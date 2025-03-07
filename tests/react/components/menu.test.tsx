@@ -1,5 +1,5 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen, waitFor } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen, waitFor } from '@testing-library/react'
 import {
   Menu,
   MenuTrigger,
@@ -9,13 +9,9 @@ import {
   MenuSeparator,
   MenuItemGroup,
 } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
 import userEvent from '@testing-library/user-event'
 
 describe('Menu', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   test('should render a basic menu', async () => {
     render(
       <Menu>
@@ -29,11 +25,11 @@ describe('Menu', () => {
       </Menu>,
     )
 
-    expect(screen.getByText('Trigger')).toBeTruthy()
+    expect(screen.getByText('Trigger')).toBeInTheDocument()
     await userEvent.click(screen.getByText('Trigger'))
     await waitFor(() => {
-      expect(screen.getByText('Item 1')).toBeTruthy()
-      expect(screen.getByText('Item 2')).toBeTruthy()
+      expect(screen.getByText('Item 1')).toBeInTheDocument()
+      expect(screen.getByText('Item 2')).toBeInTheDocument()
     })
   })
 
@@ -53,12 +49,12 @@ describe('Menu', () => {
       </Menu>,
     )
 
-    expect(screen.getByText('Trigger')).toBeTruthy()
+    expect(screen.getByText('Trigger')).toBeInTheDocument()
     await userEvent.click(screen.getByText('Trigger'))
     await waitFor(() => {
-      expect(screen.getByText('Group Label')).toBeTruthy()
-      expect(screen.getByText('Item 1')).toBeTruthy()
-      expect(screen.getByText('Item 2')).toBeTruthy()
+      expect(screen.getByText('Group Label')).toBeInTheDocument()
+      expect(screen.getByText('Item 1')).toBeInTheDocument()
+      expect(screen.getByText('Item 2')).toBeInTheDocument()
     })
   })
 
@@ -76,11 +72,11 @@ describe('Menu', () => {
       </Menu>,
     )
 
-    expect(screen.getByText('Trigger')).toBeTruthy()
+    expect(screen.getByText('Trigger')).toBeInTheDocument()
     await userEvent.click(screen.getByText('Trigger'))
     await waitFor(() => {
-      expect(screen.getByText('Item 1')).toBeTruthy()
-      expect(screen.getByText('Item 2')).toBeTruthy()
+      expect(screen.getByText('Item 1')).toBeInTheDocument()
+      expect(screen.getByText('Item 2')).toBeInTheDocument()
     })
   })
 })

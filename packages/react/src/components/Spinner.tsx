@@ -1,11 +1,9 @@
-import type { SVGProps } from 'react'
-
 /**
  * This module contains the Spinner component.
  * @module
  */
 
-export type SpinnerProps = SVGProps<SVGSVGElement> & {
+export interface SpinnerProps {
   /**
    * The size of the spinner
    */
@@ -30,12 +28,13 @@ export function Spinner(props: SpinnerProps) {
   return (
     <svg
       aria-busy="true"
+      data-scope="spinner"
+      data-part="root"
       role="status"
       xmlns="http://www.w3.org/2000/svg"
       height={props.size}
       width={props.size}
       viewBox="0 0 24 24"
-      {...props}
     >
       <g
         fill="none"

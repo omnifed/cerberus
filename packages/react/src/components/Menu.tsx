@@ -1,4 +1,8 @@
-import { Menu as ArkMenu } from '@ark-ui/react'
+import {
+  Menu as ArkMenu,
+  type MenuItemGroupProps,
+  type MenuRootProps,
+} from '@ark-ui/react'
 import { menu } from '@cerberus/styled-system/recipes'
 import { cx } from '@cerberus/styled-system/css'
 
@@ -18,7 +22,9 @@ const menuStyles = menu()
  *  <MenuTrigger>Trigger</MenuTrigger>
  * </Menu>
  */
-export const Menu = ArkMenu.Root
+export function Menu(props: MenuRootProps) {
+  return <ArkMenu.Root {...props} />
+}
 
 /**
  * The MenuTrigger component opens/closes the Menu.
@@ -99,7 +105,9 @@ export function MenuItem(props: ArkMenu.ItemProps) {
  *  </MenuContent>
  * </Menu>
  */
-export const MenuItemGroup = ArkMenu.ItemGroup
+export function MenuItemGroup(props: MenuItemGroupProps) {
+  return <ArkMenu.ItemGroup {...props} />
+}
 
 /**
  * The MenuItemGroupLabel component is the label for a group of menu items.
@@ -155,90 +163,3 @@ export function MenuSeparator(props: ArkMenu.SeparatorProps) {
     />
   )
 }
-
-/**
- * The MenuCheckboxItem component is a menu item with a checkbox.
- * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu)
- * @example
- * ```tsx
- * <Menu>
- *  <MenuTrigger>
- *   <Button>Trigger</Button>
- *  </MenuTrigger>
- *  <MenuContent>
- *   <MenuCheckboxItem
- *     checked={checked}
- *     onCheckedChange={setChecked}
- *     value="checked"
- *   >
- *    <MenuItemIndicator>✅</MenuItemIndicator>
- *    <MenuItemText>Check me</MenuItemText>
- *   </MenuCheckboxItem>
- * </MenuContent>
- */
-// export function MenuCheckboxItem(props: ArkMenu.CheckboxItemProps) {
-//   return (
-//     <ArkMenu.CheckboxItem
-//       {...props}
-//       className={cx(props.className, menuStyles.item)}
-//     />
-//   )
-// }
-
-/**
- * The MenuItemText component is the text for a grouped menu item.
- * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu)
- * @example
- * ```tsx
- * <Menu>
- *  <MenuTrigger>
- *   <Button>Trigger</Button>
- *  </MenuTrigger>
- *  <MenuContent>
- *   <MenuCheckboxItem
- *     checked={checked}
- *     onCheckedChange={setChecked}
- *     value="checked"
- *   >
- *    <MenuItemText>Item 1</MenuItemText>
- *   </MenuCheckboxItem>
- *  </MenuContent>
- * </Menu>
- */
-// export function MenuItemText(props: ArkMenu.ItemTextProps) {
-//   return (
-//     <ArkMenu.ItemText
-//       {...props}
-//       className={cx(props.className, menuStyles.itemText)}
-//     />
-//   )
-// }
-
-/**
- * The MenuItemIndicator component is the indicator for a grouped menu item.
- * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu)
- * @example
- * ```tsx
- * <Menu>
- *  <MenuTrigger>
- *   <Button>Trigger</Button>
- *  </MenuTrigger>
- *  <MenuContent>
- *   <MenuCheckboxItem
- *    checked={checked}
- *    onCheckedChange={setChecked}
- *    value="checked"
- *   >
- *    <MenuItemIndicator>✅</MenuItemIndicator>
- *    <MenuItemText>Check me</MenuItemText>
- *   </MenuCheckboxItem>
- *  </MenuContent>
- */
-// export function MenuItemIndicator(props: ArkMenu.ItemIndicatorProps) {
-//   return (
-//     <ArkMenu.ItemIndicator
-//       {...props}
-//       className={cx(props.className, menuStyles.itemIndicator)}
-//     />
-//   )
-// }

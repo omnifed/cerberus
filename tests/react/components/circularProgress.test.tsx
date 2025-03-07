@@ -1,19 +1,15 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { CircularProgress } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
 
 describe('CircularProgress', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   test('should render a progress element', () => {
     render(
       <CircularProgress id="test" label="test label" title="test-0" now={0} />,
     )
-    expect(screen.getByRole('progressbar')).toBeTruthy()
-    expect(screen.getByText('0%')).toBeTruthy()
-    expect(screen.getByText('Done')).toBeTruthy()
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+    expect(screen.getByText('0%')).toBeInTheDocument()
+    expect(screen.getByText('Done')).toBeInTheDocument()
   })
 
   test('should render a progress element with a now', () => {
@@ -28,8 +24,8 @@ describe('CircularProgress', () => {
     expect(
       screen.getByRole('progressbar').getAttribute('aria-valuenow'),
     ).toEqual('50')
-    expect(screen.getByText('50%')).toBeTruthy()
-    expect(screen.getByText('Done')).toBeTruthy()
+    expect(screen.getByText('50%')).toBeInTheDocument()
+    expect(screen.getByText('Done')).toBeInTheDocument()
   })
 
   test('should render a progress element with a syntax', () => {
@@ -42,6 +38,6 @@ describe('CircularProgress', () => {
         syntax="Complete"
       />,
     )
-    expect(screen.getByText('Complete')).toBeTruthy()
+    expect(screen.getByText('Complete')).toBeInTheDocument()
   })
 })

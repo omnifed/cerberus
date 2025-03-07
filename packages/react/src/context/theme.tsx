@@ -57,9 +57,7 @@ export interface ThemeProviderProps extends UseThemeOptions {
  * </ThemeProvider>
  * ```
  */
-export function ThemeProvider(
-  props: PropsWithChildren<ThemeProviderProps>,
-): JSX.Element {
+export function ThemeProvider(props: PropsWithChildren<ThemeProviderProps>) {
   const state = useTheme(props.defaultTheme, props.defaultColorMode, {
     cache: props.cache,
     updateMode: props.updateMode,

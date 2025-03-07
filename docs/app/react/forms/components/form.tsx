@@ -43,7 +43,7 @@ export function ProfileForm() {
         type: 'success',
       })
     }
-  }, [state.success, toaster.create])
+  }, [state.success])
 
   return (
     <form

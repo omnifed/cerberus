@@ -19,7 +19,7 @@ export interface NavMenuLinkProps
 /**
  * @deprecated use the {@link Menu} family instead
  */
-export function NavMenuLink(props: NavMenuLinkProps): JSX.Element {
+export function NavMenuLink(props: NavMenuLinkProps) {
   const { as, ...nativeProps } = props
   const hasAs = Boolean(as)
   const AsSub: ElementType = as!

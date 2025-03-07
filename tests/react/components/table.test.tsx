@@ -1,13 +1,9 @@
-import { describe, test, expect, afterEach, jest } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect, jest } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { Table, TableParts } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
 import userEvent from '@testing-library/user-event'
 
 describe('Table', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   test('should render a table element', () => {
     render(
       <Table.Root caption="Basic table">
@@ -38,20 +34,20 @@ describe('Table', () => {
       </Table.Root>,
     )
 
-    expect(screen.getByRole('table')).toBeTruthy()
-    expect(screen.getByRole('caption')).toBeTruthy()
-    expect(screen.getByText(/Header 1/i)).toBeTruthy()
-    expect(screen.getByText(/Header 2/i)).toBeTruthy()
-    expect(screen.getByText(/Header 3/i)).toBeTruthy()
-    expect(screen.getByText(/Row 1, Cell 1/i)).toBeTruthy()
-    expect(screen.getByText(/Row 1, Cell 2/i)).toBeTruthy()
-    expect(screen.getByText(/Row 1, Cell 3/i)).toBeTruthy()
-    expect(screen.getByText(/Row 2, Cell 1/i)).toBeTruthy()
-    expect(screen.getByText(/Row 2, Cell 2/i)).toBeTruthy()
-    expect(screen.getByText(/Row 2, Cell 3/i)).toBeTruthy()
-    expect(screen.getByText(/Row 3, Cell 1/i)).toBeTruthy()
-    expect(screen.getByText(/Row 3, Cell 2/i)).toBeTruthy()
-    expect(screen.getByText(/Row 3, Cell 3/i)).toBeTruthy()
+    expect(screen.getByRole('table')).toBeInTheDocument()
+    expect(screen.getByRole('caption')).toBeInTheDocument()
+    expect(screen.getByText(/Header 1/i)).toBeInTheDocument()
+    expect(screen.getByText(/Header 2/i)).toBeInTheDocument()
+    expect(screen.getByText(/Header 3/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 1, Cell 1/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 1, Cell 2/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 1, Cell 3/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 2, Cell 1/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 2, Cell 2/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 2, Cell 3/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 3, Cell 1/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 3, Cell 2/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 3, Cell 3/i)).toBeInTheDocument()
   })
 
   test('should allow clickable headers', async () => {
@@ -87,9 +83,9 @@ describe('Table', () => {
       </Table.Root>,
     )
 
-    expect(screen.getByText(/Header 1/i)).toBeTruthy()
-    expect(screen.getByText(/Header 2/i)).toBeTruthy()
-    expect(screen.getByText(/Header 3/i)).toBeTruthy()
+    expect(screen.getByText(/Header 1/i)).toBeInTheDocument()
+    expect(screen.getByText(/Header 2/i)).toBeInTheDocument()
+    expect(screen.getByText(/Header 3/i)).toBeInTheDocument()
 
     await userEvent.click(screen.getByText(/Header 1/i))
     expect(handleClick).toHaveBeenCalledTimes(1)
@@ -135,22 +131,22 @@ describe('Table', () => {
       </TableParts.Root>,
     )
 
-    expect(screen.getByRole('table')).toBeTruthy()
-    expect(screen.getByRole('caption')).toBeTruthy()
-    expect(screen.getByText(/Header 1/i)).toBeTruthy()
-    expect(screen.getByText(/Header 2/i)).toBeTruthy()
-    expect(screen.getByText(/Header 3/i)).toBeTruthy()
-    expect(screen.getByText(/Row 1, Cell 1/i)).toBeTruthy()
-    expect(screen.getByText(/Row 1, Cell 2/i)).toBeTruthy()
-    expect(screen.getByText(/Row 1, Cell 3/i)).toBeTruthy()
-    expect(screen.getByText(/Row 2, Cell 1/i)).toBeTruthy()
-    expect(screen.getByText(/Row 2, Cell 2/i)).toBeTruthy()
-    expect(screen.getByText(/Row 2, Cell 3/i)).toBeTruthy()
-    expect(screen.getByText(/Row 3, Cell 1/i)).toBeTruthy()
-    expect(screen.getByText(/Row 3, Cell 2/i)).toBeTruthy()
-    expect(screen.getByText(/Row 3, Cell 3/i)).toBeTruthy()
-    expect(screen.getByText(/Footer 1/i)).toBeTruthy()
-    expect(screen.getByText(/Footer 2/i)).toBeTruthy()
-    expect(screen.getByText(/Footer 3/i)).toBeTruthy()
+    expect(screen.getByRole('table')).toBeInTheDocument()
+    expect(screen.getByRole('caption')).toBeInTheDocument()
+    expect(screen.getByText(/Header 1/i)).toBeInTheDocument()
+    expect(screen.getByText(/Header 2/i)).toBeInTheDocument()
+    expect(screen.getByText(/Header 3/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 1, Cell 1/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 1, Cell 2/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 1, Cell 3/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 2, Cell 1/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 2, Cell 2/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 2, Cell 3/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 3, Cell 1/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 3, Cell 2/i)).toBeInTheDocument()
+    expect(screen.getByText(/Row 3, Cell 3/i)).toBeInTheDocument()
+    expect(screen.getByText(/Footer 1/i)).toBeInTheDocument()
+    expect(screen.getByText(/Footer 2/i)).toBeInTheDocument()
+    expect(screen.getByText(/Footer 3/i)).toBeInTheDocument()
   })
 })

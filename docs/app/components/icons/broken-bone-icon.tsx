@@ -1,13 +1,10 @@
-import type { SVGProps } from 'react'
-
-export default function BrokenBoneIcon(props: SVGProps<SVGSVGElement>) {
+export default function BrokenBoneIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
       viewBox="0 0 24 24"
-      {...props}
     >
       <path
         fill="none"

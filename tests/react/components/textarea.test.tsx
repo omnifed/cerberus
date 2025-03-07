@@ -1,12 +1,8 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { Field, Textarea } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
 
 describe('Textarea', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   test('should render a textarea', () => {
     render(
       <Field label="Test Label" required>
@@ -16,12 +12,9 @@ describe('Textarea', () => {
         wrapper: Field,
       },
     )
-    expect(screen.getByLabelText(/test label/i)).toBeTruthy()
-    expect(screen.getByText(/(required)/i)).toBeTruthy()
-    expect(
-      screen.getByText(/test label/i).attributes.getNamedItem('for'),
-    ).toBeTruthy()
-    expect(screen.getByRole('textbox')).toBeTruthy()
+    expect(screen.getByLabelText(/test label/i)).toBeInTheDocument()
+    expect(screen.getByText(/(required)/i)).toBeInTheDocument()
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
   })
 
   test('should render a textarea with error', () => {
@@ -33,9 +26,7 @@ describe('Textarea', () => {
         wrapper: Field,
       },
     )
-    expect(
-      screen.getByRole('textbox').attributes.getNamedItem('aria-invalid'),
-    ).toBeTruthy()
+    expect(screen.getByRole('textbox')).toBeInvalid()
   })
 
   test('should render a textarea with disabled', () => {
@@ -47,9 +38,7 @@ describe('Textarea', () => {
         wrapper: Field,
       },
     )
-    expect(
-      screen.getByRole('textbox').attributes.getNamedItem('disabled'),
-    ).toBeTruthy()
+    expect(screen.getByRole('textbox')).toBeDisabled()
   })
 
   test('should render a textarea with placeholder', () => {
@@ -61,6 +50,6 @@ describe('Textarea', () => {
         wrapper: Field,
       },
     )
-    expect(screen.getByRole('textbox')).toBeTruthy()
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
   })
 })

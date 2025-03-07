@@ -11,6 +11,13 @@ import data from './data.json'
 import { Suspense } from 'react'
 import { css } from '@cerberus-design/styled-system/css'
 
+interface AccordionDataItem {
+  id: number
+  heading: string
+  content: string | null
+  value: string
+}
+
 export function StaticPreview(props: {
   size?: 'lg' | 'sm'
   indicatorPosition?: 'start' | 'end'
@@ -19,7 +26,7 @@ export function StaticPreview(props: {
     <Box w="2/3">
       <Accordion defaultValue={['one']} size={props.size}>
         <For each={data}>
-          {(item) => (
+          {(item: AccordionDataItem) => (
             <AccordionItemGroup
               heading={item.heading}
               key={item.id}

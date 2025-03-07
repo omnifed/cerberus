@@ -1,5 +1,5 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import {
   Combobox,
   ComboItemGroup,
@@ -11,13 +11,10 @@ import {
   useStatefulCollection,
   createSelectCollection,
 } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode } from '@/utils'
+import { makeConfig } from '@/utils'
 import userEvent from '@testing-library/user-event'
 
 describe('Combobox', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
   const collection = createSelectCollection([
     { label: 'Hades', value: 'hades' },
@@ -40,8 +37,8 @@ describe('Combobox', () => {
         </Combobox>
       </CerberusProvider>,
     )
-    expect(screen.getByRole('combobox')).toBeTruthy()
-    expect(screen.getByText(/select relative/i)).toBeTruthy()
+    expect(screen.getByRole('combobox')).toBeInTheDocument()
+    expect(screen.getByText(/select relative/i)).toBeInTheDocument()
   })
 
   test('should render an option group with a label', async () => {
@@ -61,10 +58,10 @@ describe('Combobox', () => {
         </Combobox>
       </CerberusProvider>,
     )
-    expect(screen.getByText(/select relative/i)).toBeTruthy()
-    expect(screen.getByRole('combobox')).toBeTruthy
+    expect(screen.getByText(/select relative/i)).toBeInTheDocument()
+    expect(screen.getByRole('combobox')).toBeInTheDocument()
     await userEvent.click(screen.getByRole('combobox'))
-    expect(screen.getByText(/group 1/i)).toBeTruthy()
+    expect(screen.getByText(/group 1/i)).toBeInTheDocument()
   })
 
   test('should render a start icon', () => {
@@ -86,9 +83,9 @@ describe('Combobox', () => {
         </Combobox>
       </CerberusProvider>,
     )
-    expect(screen.getByRole('combobox')).toBeTruthy()
-    expect(screen.getByText(/select relative/i)).toBeTruthy()
-    expect(screen.getByText('🔥')).toBeTruthy()
+    expect(screen.getByRole('combobox')).toBeInTheDocument()
+    expect(screen.getByText(/select relative/i)).toBeInTheDocument()
+    expect(screen.getByText('🔥')).toBeInTheDocument()
   })
 
   test('should return a stateful object for the root component', () => {
@@ -121,7 +118,7 @@ describe('Combobox', () => {
         <Test />
       </CerberusProvider>,
     )
-    expect(screen.getByRole('combobox')).toBeTruthy()
-    expect(screen.getByText(/select relative/i)).toBeTruthy()
+    expect(screen.getByRole('combobox')).toBeInTheDocument()
+    expect(screen.getByText(/select relative/i)).toBeInTheDocument()
   })
 })

@@ -3,6 +3,7 @@ import {
   Toaster,
   type ToastActionTriggerProps,
   type ToastCloseTriggerProps,
+  type ToasterProps,
   type ToastRootProps,
   type ToastTitleProps,
 } from '@ark-ui/react/toast'
@@ -14,7 +15,9 @@ import { toast } from '@cerberus/styled-system/recipes'
  * @module 'notification/primitives'
  */
 
-export const NotificationProvider = Toaster
+export function NotificationProvider(props: ToasterProps) {
+  return <Toaster {...props} />
+}
 
 /**
  * The context provider for the Notification component.

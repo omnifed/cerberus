@@ -1,6 +1,6 @@
 'use client'
 
-import { useLayoutEffect, useState } from 'react'
+import { type ElementType, useLayoutEffect, useState } from 'react'
 import { highlight } from './shared'
 
 interface BuilderCodeBlockProps {
@@ -9,13 +9,13 @@ interface BuilderCodeBlockProps {
 
 export function BuilderCodeBlock(props: BuilderCodeBlockProps) {
   const { code } = props
-  const [nodes, setNodes] = useState<JSX.Element>(
-    code as unknown as JSX.Element,
+  const [nodes, setNodes] = useState<ElementType>(
+    code as unknown as ElementType,
   )
 
   useLayoutEffect(() => {
     void highlight(code).then(setNodes)
   }, [code])
 
-  return nodes ?? <p>Loading...</p>
+  return <>{nodes}</>
 }

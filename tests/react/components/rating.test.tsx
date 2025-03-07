@@ -1,20 +1,16 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import {
   Rating,
   RatingParts,
   type UseRatingGroupContext,
 } from '@cerberus-design/react'
 import { StarFilled } from '@carbon/icons-react'
-import { setupStrictMode } from '@/utils'
 
 describe('Rating & RatingParts', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   test('should render a rating element', () => {
     render(<Rating defaultValue={3}>{() => <StarFilled size={24} />}</Rating>)
-    expect(screen.getByRole('radiogroup')).toBeTruthy()
+    expect(screen.getByRole('radiogroup')).toBeInTheDocument()
   })
 
   test('should render RatingParts', () => {
@@ -44,6 +40,6 @@ describe('Rating & RatingParts', () => {
       </RatingParts.Root>,
     )
 
-    expect(screen.getByRole('radiogroup')).toBeTruthy()
+    expect(screen.getByRole('radiogroup')).toBeInTheDocument()
   })
 })

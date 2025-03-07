@@ -1,10 +1,11 @@
 import {
   Switch,
   type SwitchControlProps,
+  type SwitchHiddenInputProps,
   type SwitchLabelProps,
   type SwitchRootProps,
   type SwitchThumbProps,
-} from '@ark-ui/react'
+} from '@ark-ui/react/switch'
 import { cx } from '@cerberus/styled-system/css'
 import {
   switchRecipe,
@@ -66,4 +67,6 @@ export function SwitchThumb(props: SwitchThumbProps) {
 /**
  * The SwitchHiddenInput component is the native input for the Switch.
  */
-export const SwitchHiddenInput = Switch.HiddenInput
+export function SwitchHiddenInput(props: SwitchHiddenInputProps) {
+  return <Switch.HiddenInput {...props} />
+}

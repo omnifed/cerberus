@@ -1,24 +1,15 @@
-import { describe, test, expect, afterEach, spyOn, jest } from 'bun:test'
-import {
-  render,
-  screen,
-  cleanup,
-  renderHook,
-  waitFor,
-} from '@testing-library/react'
+import { describe, test, expect, spyOn, jest } from 'bun:test'
+import { render, screen, renderHook, waitFor } from '@testing-library/react'
 import {
   CTAModal,
   useCTAModal,
   CerberusProvider,
   createCTAModalActions,
 } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode } from '@/utils'
+import { makeConfig } from '@/utils'
 import userEvent from '@testing-library/user-event'
 
 describe('CTAModal & useCTAModal', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
   const action1 = jest.fn()
   const action2 = jest.fn()
@@ -42,11 +33,7 @@ describe('CTAModal & useCTAModal', () => {
       })
     }
 
-    return (
-      <div>
-        <button onClick={handleMakeChoice}>make choice</button>
-      </div>
-    )
+    return <button onClick={handleMakeChoice}>make choice</button>
   }
 
   function TestFeature() {
@@ -70,11 +57,7 @@ describe('CTAModal & useCTAModal', () => {
       })
     }
 
-    return (
-      <div>
-        <button onClick={handleMakeChoice}>make choice</button>
-      </div>
-    )
+    return <button onClick={handleMakeChoice}>make choice</button>
   }
 
   function TestPage() {
@@ -91,12 +74,12 @@ describe('CTAModal & useCTAModal', () => {
     render(<TestPage />)
     await userEvent.click(screen.getByRole('button', { name: /make choice/i }))
     await waitFor(() =>
-      expect(screen.getByText(/Copy or create a Cohort/i)).toBeTruthy(),
+      expect(screen.getByText(/Copy or create a Cohort/i)).toBeInTheDocument(),
     )
     await waitFor(() =>
       expect(
         screen.getByText(/Create a new cohort or copy an existing one./i),
-      ).toBeTruthy(),
+      ).toBeInTheDocument(),
     )
     await waitFor(() =>
       expect(screen.getByRole('button', { name: /create new/i })),
@@ -107,6 +90,8 @@ describe('CTAModal & useCTAModal', () => {
     await waitFor(() =>
       expect(screen.getByRole('img', { name: /custom-icon/i })),
     )
+    // close the modal
+    await userEvent.click(screen.getByRole('button', { name: /create new/i }))
   })
 
   test('should call actions when clicked', async () => {
@@ -128,28 +113,6 @@ describe('CTAModal & useCTAModal', () => {
     await waitFor(() => expect(action2).toHaveBeenCalled())
   })
 
-  test('should trap focus in the dialog', async () => {
-    render(<TestPage />)
-    await userEvent.click(screen.getByRole('button', { name: /make choice/i }))
-    await waitFor(() =>
-      expect(screen.getByText(/Copy or create a Cohort/i)).toBeTruthy(),
-    )
-    await userEvent.tab()
-    expect(
-      screen.getByRole('button', { name: /create new/i }).focus,
-    ).toBeTruthy()
-    await userEvent.tab()
-    expect(screen.getByText(/copy existing/i).focus).toBeTruthy()
-  })
-
-  test('should throw an error if used outside of FeatureFlags', () => {
-    // don't clog up the console with errors
-    spyOn(console, 'error').mockImplementation(() => null)
-    expect(() => renderHook(() => useCTAModal())).toThrow(
-      'useCTAModal must be used within a CTAModal Provider',
-    )
-  })
-
   test('should render links as actions', async () => {
     render(
       <CerberusProvider config={config}>
@@ -160,18 +123,26 @@ describe('CTAModal & useCTAModal', () => {
     )
     await userEvent.click(screen.getByRole('button', { name: /make choice/i }))
     await waitFor(() =>
-      expect(screen.getByText(/Copy or create a Cohort/i)).toBeTruthy(),
+      expect(screen.getByText(/Copy or create a Cohort/i)).toBeInTheDocument(),
     )
     await waitFor(() =>
       expect(
         screen.getByText(/Create a new cohort or copy an existing one./i),
-      ).toBeTruthy(),
+      ).toBeInTheDocument(),
     )
     await waitFor(() =>
       expect(screen.getByRole('link', { name: /create new/i })),
     )
     await waitFor(() =>
       expect(screen.getByRole('link', { name: /copy existing/i })),
+    )
+  })
+
+  test('should throw an error if used outside of CTAModal', () => {
+    // don't clog up the console with errors
+    spyOn(console, 'error').mockImplementation(() => null)
+    expect(() => renderHook(() => useCTAModal())).toThrow(
+      'useCTAModal must be used within a CTAModal Provider',
     )
   })
 })

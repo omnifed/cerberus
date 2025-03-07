@@ -39,7 +39,7 @@ export interface NavMenuTriggerProps
 /**
  * @deprecated use the {@link Menu} family instead
  */
-export function NavMenuTrigger(props: NavMenuTriggerProps): JSX.Element {
+export function NavMenuTrigger(props: NavMenuTriggerProps) {
   const {
     as,
     palette,

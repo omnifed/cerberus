@@ -21,27 +21,27 @@ function Feature() {
         },
       },
     })
-  }, [toaster.create])
+  }, [])
 
   const handleSuccess = useCallback(() => {
     const message = messagesData.success
     toaster.create(message)
-  }, [toaster.create])
+  }, [])
 
   const handleWarning = useCallback(() => {
     const message = messagesData.warning
     toaster.create(message)
-  }, [toaster.create])
+  }, [])
 
   const handleError = useCallback(() => {
     const message = messagesData.danger
     toaster.create(message)
-  }, [toaster.create])
+  }, [])
 
   const handleLoading = useCallback(() => {
     const message = messagesData.loading
     toaster.create(message)
-  }, [toaster.create])
+  }, [])
 
   return (
     <HStack>

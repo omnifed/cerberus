@@ -4,15 +4,10 @@ source: 'context/confirm-modal.tsx'
 recipe: ''
 ---
 
-import CodePreview from '@/app/components/CodePreview'
 import {
   NoteAdmonition,
   DeprecationAdmonition
 } from '@/app/components/Admonition'
-import {
-  OverviewPreview,
-  CustomPreview
-} from '@/app/react/modal/components/modal-preview'
 
 <DeprecationAdmonition description="Dialog" />
 
@@ -31,7 +26,6 @@ import {
 
 ### Basic Usage
 
-<CodePreview preview={<OverviewPreview />}>
 ```tsx title="some-page.tsx"
 import { Model } from '@cerberus/icons'
 import {
@@ -83,13 +77,11 @@ function OverviewPreview() {
   )
 }
 ```
-</CodePreview>
 
 ## Customization
 
 You can customize each Modal component like you would any other component.
 
-<CodePreview preview={<CustomPreview />}>
 ```tsx title="some-page.tsx"
 import { Model } from '@cerberus/icons'
 import {
@@ -165,7 +157,6 @@ function CustomPreview() {
   )
 }
 ```
-</CodePreview>
 
 ## API
 

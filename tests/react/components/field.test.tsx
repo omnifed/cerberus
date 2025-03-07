@@ -1,5 +1,5 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import {
   Field,
   Input,
@@ -8,12 +8,9 @@ import {
   FieldParts,
   type FieldProps,
 } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode } from '@/utils'
+import { makeConfig } from '@/utils'
 
 describe('Field', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
 
   function Test(props: FieldProps) {
@@ -37,14 +34,14 @@ describe('Field', () => {
         <Input name="firstName" type="text" />
       </Test>,
     )
-    expect(screen.getByText(/Label/i)).toBeTruthy()
-    expect(screen.getByRole('textbox')).toBeTruthy()
+    expect(screen.getByText(/Label/i)).toBeInTheDocument()
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
     expect(
       screen.getByText(/This is what people will see on your profile/i),
-    ).toBeTruthy()
+    ).toBeInTheDocument()
     expect(
       screen.queryByText(/A first name is required to create an account/i),
-    ).toBeFalsy()
+    ).not.toBeInTheDocument()
   })
 
   test('should render a field with error', () => {
@@ -61,14 +58,14 @@ describe('Field', () => {
         <Input name="firstName" type="text" />
       </Test>,
     )
-    expect(screen.getByText(/Label/i)).toBeTruthy()
-    expect(screen.getByRole('textbox')).toBeTruthy()
+    expect(screen.getByText(/Label/i)).toBeInTheDocument()
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
     expect(
       screen.getByText(/A first name is required to create an account/i),
-    ).toBeTruthy()
+    ).toBeInTheDocument()
     expect(
       screen.queryByText(/This is what people will see on your profile/i),
-    ).toBeFalsy()
+    ).not.toBeInTheDocument()
   })
 
   test('should display required on the label', () => {
@@ -85,8 +82,8 @@ describe('Field', () => {
         <Input name="firstName" type="text" />
       </Test>,
     )
-    expect(screen.getByText(/Label/i)).toBeTruthy()
-    expect(screen.getByText(/(required)/i)).toBeTruthy()
+    expect(screen.getByText(/Label/i)).toBeInTheDocument()
+    expect(screen.getByText(/(required)/i)).toBeInTheDocument()
   })
 
   test('should render a field with a textarea', () => {
@@ -102,14 +99,14 @@ describe('Field', () => {
         <Textarea name="firstName" />
       </Test>,
     )
-    expect(screen.getByText(/Label/i)).toBeTruthy()
-    expect(screen.getByRole('textbox')).toBeTruthy()
+    expect(screen.getByText(/Label/i)).toBeInTheDocument()
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
     expect(
       screen.getByText(/This is what people will see on your profile/i),
-    ).toBeTruthy()
+    ).toBeInTheDocument()
     expect(
       screen.queryByText(/A first name is required to create an account/i),
-    ).toBeFalsy()
+    ).not.toBeInTheDocument()
   })
 
   test('should render primitives', () => {
@@ -127,7 +124,7 @@ describe('Field', () => {
         </FieldParts.Root>
       </CerberusProvider>,
     )
-    expect(screen.getByText(/Label/i)).toBeTruthy()
-    expect(screen.getByText(/Helper Text/i)).toBeTruthy()
+    expect(screen.getByText(/Label/i)).toBeInTheDocument()
+    expect(screen.getByText(/Helper Text/i)).toBeInTheDocument()
   })
 })

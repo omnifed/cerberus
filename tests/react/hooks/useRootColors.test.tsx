@@ -1,12 +1,9 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { render, screen, cleanup } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { useRootColors } from '@cerberus-design/react'
-import { setupStrictMode, user } from '@/utils'
+import { user } from '@/utils'
 
 describe('useRootColors', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   function Test() {
     const { colors, refetch } = useRootColors([
       'dataViz.diverging.50',
@@ -30,8 +27,8 @@ describe('useRootColors', () => {
     render(<Test />)
     // There's no document to store styles in a test environment, so we can't
     // test this hook to the full extent.
-    expect(screen.getByText(/dataViz.diverging.50/i)).toBeTruthy()
-    expect(screen.getByText(/dataViz.diverging.200/i)).toBeTruthy()
+    expect(screen.getByText(/dataViz.diverging.50/i)).toBeInTheDocument()
+    expect(screen.getByText(/dataViz.diverging.200/i)).toBeInTheDocument()
   })
 
   test('should refetch colors', async () => {
@@ -39,7 +36,7 @@ describe('useRootColors', () => {
     // There's no document to store styles in a test environment, so we can't
     // test this hook to the full extent.
     await user.click(screen.getByText(/refetch/i))
-    expect(screen.getByText(/dataViz.diverging.50/i)).toBeTruthy()
-    expect(screen.getByText(/dataViz.diverging.200/i)).toBeTruthy()
+    expect(screen.getByText(/dataViz.diverging.50/i)).toBeInTheDocument()
+    expect(screen.getByText(/dataViz.diverging.200/i)).toBeInTheDocument()
   })
 })

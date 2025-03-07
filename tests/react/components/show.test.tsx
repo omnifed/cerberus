@@ -1,19 +1,15 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 import { Show } from '@cerberus-design/react'
-import { setupStrictMode } from '@/utils'
 
 describe('Show', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   test('should render children when condition is true', () => {
     render(
       <Show when={true}>
         <div>children</div>
       </Show>,
     )
-    expect(screen.getByText('children')).toBeTruthy()
+    expect(screen.getByText('children')).toBeInTheDocument()
   })
 
   test('should render fallback when condition is false', () => {
@@ -22,8 +18,8 @@ describe('Show', () => {
         <div>children</div>
       </Show>,
     )
-    expect(screen.getByText('fallback')).toBeTruthy()
-    expect(screen.queryByText('children')).toBeNull()
+    expect(screen.getByText('fallback')).toBeInTheDocument()
+    expect(screen.queryByText('children')).not.toBeInTheDocument()
   })
 
   test('should render fallback when condition is undefined', () => {
@@ -32,8 +28,8 @@ describe('Show', () => {
         <div>children</div>
       </Show>,
     )
-    expect(screen.getByText('fallback')).toBeTruthy()
-    expect(screen.queryByText('children')).toBeNull()
+    expect(screen.getByText('fallback')).toBeInTheDocument()
+    expect(screen.queryByText('children')).not.toBeInTheDocument()
   })
 
   test('should render fallback when condition is null', () => {
@@ -42,7 +38,7 @@ describe('Show', () => {
         <div>children</div>
       </Show>,
     )
-    expect(screen.getByText('fallback')).toBeTruthy()
-    expect(screen.queryByText('children')).toBeNull()
+    expect(screen.getByText('fallback')).toBeInTheDocument()
+    expect(screen.queryByText('children')).not.toBeInTheDocument()
   })
 })

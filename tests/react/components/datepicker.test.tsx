@@ -1,5 +1,5 @@
-import { describe, test, expect, afterEach } from 'bun:test'
-import { cleanup, render, screen, waitFor } from '@testing-library/react'
+import { describe, test, expect } from 'bun:test'
+import { render, screen, waitFor } from '@testing-library/react'
 import {
   CerberusProvider,
   DatePicker,
@@ -9,13 +9,10 @@ import {
   Field,
   RangePickerInput,
 } from '@cerberus-design/react'
-import { makeConfig, setupStrictMode } from '@/utils'
+import { makeConfig } from '@/utils'
 import userEvent from '@testing-library/user-event'
 
 describe('DatePicker', () => {
-  setupStrictMode()
-  afterEach(cleanup)
-
   const config = makeConfig()
 
   test('renders a date picker', () => {
@@ -31,9 +28,9 @@ describe('DatePicker', () => {
       </CerberusProvider>,
     )
 
-    expect(screen.getByText('Start date')).toBeTruthy()
-    expect(screen.getByRole('textbox')).toBeTruthy()
-    expect(screen.getByRole('button')).toBeTruthy()
+    expect(screen.getByText('Start date')).toBeInTheDocument()
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
+    expect(screen.getByRole('button')).toBeInTheDocument()
   })
 
   test('renders a range picker', () => {
@@ -49,9 +46,9 @@ describe('DatePicker', () => {
       </CerberusProvider>,
     )
 
-    expect(screen.getByText('Search range')).toBeTruthy()
+    expect(screen.getByText('Search range')).toBeInTheDocument()
     expect(screen.getAllByRole('textbox')).toHaveLength(2)
-    expect(screen.getByRole('button')).toBeTruthy()
+    expect(screen.getByRole('button')).toBeInTheDocument()
   })
 
   test('shows a calendar when the trigger button is clicked', async () => {
@@ -69,8 +66,9 @@ describe('DatePicker', () => {
 
     await userEvent.click(screen.getByRole('button'))
     await waitFor(() => {
-      expect(screen.getByRole('application')).toBeTruthy()
-      expect(screen.getByRole('application').getAttribute('data-state')).toBe(
+      expect(screen.getByRole('application')).toBeInTheDocument()
+      expect(screen.getByRole('application')).toHaveAttribute(
+        'data-state',
         'open',
       )
     })
@@ -89,10 +87,12 @@ describe('DatePicker', () => {
       </CerberusProvider>,
     )
 
-    expect(screen.getAllByRole('textbox')[0].getAttribute('value')).toEqual(
+    expect(screen.getAllByRole('textbox')[0]).toHaveAttribute(
+      'value',
       '2021-01-01',
     )
-    expect(screen.getAllByRole('textbox')[1].getAttribute('value')).toEqual(
+    expect(screen.getAllByRole('textbox')[1]).toHaveAttribute(
+      'value',
       '2021-01-31',
     )
   })

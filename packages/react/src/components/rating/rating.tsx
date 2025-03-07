@@ -52,7 +52,7 @@ export function Rating(props: RatingProps) {
 
   return (
     <RatingParts.Root {...styleProps} {...rootProps}>
-      <Show when={Boolean(label)}>
+      <Show when={label}>
         <RatingParts.Label>{label}</RatingParts.Label>
       </Show>
 

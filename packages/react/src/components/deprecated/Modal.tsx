@@ -1,6 +1,6 @@
 import { cx } from '@cerberus/styled-system/css'
 import { modal } from '@cerberus/styled-system/recipes'
-import { forwardRef, type ForwardedRef, type HTMLAttributes } from 'react'
+import { type HTMLAttributes, type Ref } from 'react'
 
 /**
  * This module contains the Modal root component for a customizable modal.
@@ -9,19 +9,13 @@ import { forwardRef, type ForwardedRef, type HTMLAttributes } from 'react'
 
 // Modal
 
-export type ModalProps = HTMLAttributes<HTMLDialogElement>
-
-function ModalEl(props: ModalProps, ref: ForwardedRef<HTMLDialogElement>) {
-  return (
-    <dialog
-      {...props}
-      className={cx(props.className, modal().dialog)}
-      ref={ref}
-    />
-  )
+export type ModalProps = HTMLAttributes<HTMLDialogElement> & {
+  ref?: Ref<HTMLDialogElement>
 }
 
 /**
  * @deprecated use `Dialog` instead
  */
-export const Modal = forwardRef(ModalEl)
+export function Modal(props: ModalProps) {
+  return <dialog {...props} className={cx(props.className, modal().dialog)} />
+}

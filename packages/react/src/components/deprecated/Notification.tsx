@@ -50,7 +50,7 @@ export type NotificationProps = NotificationBaseProps & NotificationVariantProps
  */
 export function Notification(props: PropsWithChildren<NotificationProps>) {
   const { children, palette, onClose, ...nativeProps } = props
-  const ref = useRef<HTMLDialogElement>(null)
+  const ref = useRef<HTMLDialogElement | null>(null)
 
   const onKeyDown = trapFocus(ref)
   const styles = notification({ palette })

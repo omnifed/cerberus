@@ -1,6 +1,6 @@
 # Cerberus React
 
-This is the React component library for Cerberus.
+This is the React component library for the Cerberus Design System.
 
 ## Installation
 

@@ -34,5 +34,5 @@ export function For<T extends readonly unknown[], U extends JSX.Element>(
     return props.fallback || null
   }
 
-  return props.each?.map(props.children) as ReactNode
+  return <>{props.each?.map(props.children) as ReactNode}</>
 }

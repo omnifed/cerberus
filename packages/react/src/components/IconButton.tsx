@@ -22,7 +22,7 @@ export type IconButtonProps = IconButtonRawProps & IconButtonVariantProps
  * A component that allows the user to perform actions using an icon
  * @see https://cerberus.digitalu.design/react/icon-button
  */
-export function IconButton(props: IconButtonProps): JSX.Element {
+export function IconButton(props: IconButtonProps) {
   const { ariaLabel, palette, usage, size, ...nativeProps } = props
   return (
     <ark.button

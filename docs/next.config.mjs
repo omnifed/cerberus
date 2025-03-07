@@ -12,7 +12,7 @@ import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ['md', 'mdx', 'ts', 'tsx'],
+  pageExtensions: ['md', 'mdx', 'ts', 'tsx', 'json'],
   images: {
     remotePatterns: [
       {
@@ -23,7 +23,11 @@ const nextConfig = {
   },
   experimental: {
     // This is because we are being forced to use tsup for DU Admin Portal
-    optimizePackageImports: ['@cerberus-design/react'],
+    optimizePackageImports: [
+      '@cerberus/react',
+      '@cerberus-design/react',
+      '@cerberus-design/panda-preset',
+    ],
     serverComponentsHmrCache: true,
     typedRoutes: true,
   },

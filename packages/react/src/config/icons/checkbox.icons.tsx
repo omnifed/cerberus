@@ -1,16 +1,12 @@
-import type { SVGProps } from 'react'
-
 /**
  * This module contains substitute icons for the Checkbox component.
  * @module
  */
 
-export type CheckboxIconProps = SVGProps<SVGSVGElement>
-
 /**
  * Checkmark icon for Checkbox component
  */
-export function CheckmarkIcon(props: CheckboxIconProps) {
+export function CheckmarkIcon() {
   return (
     <svg
       aria-hidden="true"
@@ -18,7 +14,6 @@ export function CheckmarkIcon(props: CheckboxIconProps) {
       fill="none"
       role="img"
       viewBox="0 0 24 24"
-      {...props}
     >
       <path
         fill="currentColor"
@@ -28,12 +23,10 @@ export function CheckmarkIcon(props: CheckboxIconProps) {
   )
 }
 
-export type IndeterminateIconProps = SVGProps<SVGSVGElement>
-
 /**
  * Indeterminate icon for Checkbox component
  */
-export function IndeterminateIcon(props: IndeterminateIconProps) {
+export function IndeterminateIcon() {
   return (
     <svg
       aria-hidden="true"
@@ -41,7 +34,6 @@ export function IndeterminateIcon(props: IndeterminateIconProps) {
       role="img"
       fill="none"
       viewBox="0 0 24 24"
-      {...props}
     >
       <path fill="currentColor" d="M4 11h16v2.667H4z" />
     </svg>
