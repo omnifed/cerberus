@@ -1,11 +1,11 @@
 'use client'
 
 import type { HTMLAttributes } from 'react'
-import { cx } from '@cerberus/styled-system/css'
+import { cx } from 'styled-system/css'
 import {
   fieldMessage,
   type FieldMessageVariantProps,
-} from '@cerberus/styled-system/recipes'
+} from 'styled-system/recipes'
 import { useFieldContext } from '@ark-ui/react/field'
 
 /**

@@ -1,5 +1,5 @@
 import type { AvatarRootProps } from '@ark-ui/react/avatar'
-import type { AvatarVariantProps } from '@cerberus/styled-system/recipes'
+import type { AvatarVariantProps } from 'styled-system/recipes'
 import type { ReactNode } from 'react'
 import { splitProps } from '../../utils'
 import { Show } from '../Show'

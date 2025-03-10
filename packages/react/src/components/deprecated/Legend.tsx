@@ -1,9 +1,9 @@
 'use client'
 
 import { useFieldContext } from '@ark-ui/react/field'
-import { css, cx } from '@cerberus/styled-system/css'
-import { label, type LabelVariantProps } from '@cerberus/styled-system/recipes'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { css, cx } from 'styled-system/css'
+import { label, type LabelVariantProps } from 'styled-system/recipes'
+import { hstack } from 'styled-system/patterns'
 import { type HTMLAttributes } from 'react'
 import { Show } from '../Show'
 

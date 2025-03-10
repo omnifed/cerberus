@@ -8,11 +8,8 @@ import {
   type DialogTitleProps,
   type DialogTriggerProps,
 } from '@ark-ui/react/dialog'
-import { cx } from '@cerberus/styled-system/css'
-import {
-  dialog,
-  type DialogVariantProps,
-} from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { dialog, type DialogVariantProps } from 'styled-system/recipes'
 
 /**
  * This module contains the primitives of the Dialog component.

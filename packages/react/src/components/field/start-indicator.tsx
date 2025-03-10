@@ -1,5 +1,5 @@
-import { cx } from '@cerberus/styled-system/css'
-import { field } from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { field } from 'styled-system/recipes'
 import type { HTMLAttributes } from 'react'
 
 export type FieldIndicatorProps = HTMLAttributes<HTMLSpanElement>

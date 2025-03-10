@@ -6,11 +6,8 @@ import {
   type CheckboxLabelProps,
   type CheckboxRootProps,
 } from '@ark-ui/react'
-import { cx } from '@cerberus/styled-system/css'
-import {
-  checkbox,
-  type CheckboxVariantProps,
-} from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { checkbox, type CheckboxVariantProps } from 'styled-system/recipes'
 
 /**
  * This module contains the Checkbox primitives.

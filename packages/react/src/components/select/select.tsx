@@ -1,8 +1,8 @@
 'use client'
 
 import type { SelectItemProps, SelectRootProps } from '@ark-ui/react/select'
-import { type SelectVariantProps } from '@cerberus/styled-system/recipes'
-import { HStack } from '@cerberus/styled-system/jsx'
+import { type SelectVariantProps } from 'styled-system/recipes'
+import { HStack } from 'styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
 import { Portal } from '../Portal'
 import { Show } from '../Show'

@@ -1,6 +1,6 @@
 'use client'
 
-import type { AdmonitionVariantProps } from '@cerberus/styled-system/recipes'
+import type { AdmonitionVariantProps } from 'styled-system/recipes'
 import { useRef, type ReactNode } from 'react'
 import { useCerberusContext } from '../../context/cerberus'
 import { Avatar } from '../avatar/avatar'

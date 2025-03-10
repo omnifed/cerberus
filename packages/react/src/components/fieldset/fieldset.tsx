@@ -1,7 +1,7 @@
 import type { FieldsetRootProps } from '@ark-ui/react'
 import { splitProps } from '../../utils'
 import { FieldsetParts } from './parts'
-import type { FieldsetVariantProps } from '@cerberus/styled-system/recipes'
+import type { FieldsetVariantProps } from 'styled-system/recipes'
 
 /**
  * This module contains the Fieldset component.

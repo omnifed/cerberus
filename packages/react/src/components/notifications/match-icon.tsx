@@ -1,6 +1,6 @@
 'use client'
 
-import { toast } from '@cerberus/styled-system/recipes'
+import { toast } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
 import { Spinner } from '../Spinner'
 import type { NotifyOptions } from './types'

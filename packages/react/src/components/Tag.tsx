@@ -2,8 +2,8 @@
 
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
 import type { MouseEventHandler, PropsWithChildren } from 'react'
-import { css, cx } from '@cerberus/styled-system/css'
-import { tag, type TagVariantProps } from '@cerberus/styled-system/recipes'
+import { css, cx } from 'styled-system/css'
+import { tag, type TagVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../context/cerberus'
 import { Show } from './Show'
 import { IconButton } from './IconButton'

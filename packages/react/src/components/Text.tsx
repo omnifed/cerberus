@@ -11,7 +11,7 @@ import {
   Span,
   Strong,
   type PProps,
-} from '@cerberus/styled-system/jsx'
+} from 'styled-system/jsx'
 import { type HTMLAttributes, type PropsWithChildren } from 'react'
 
 /**

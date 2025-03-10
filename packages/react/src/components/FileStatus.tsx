@@ -6,12 +6,9 @@ import {
   type HTMLAttributes,
   type MouseEvent,
 } from 'react'
-import {
-  fileStatus,
-  type FileStatusVariantProps,
-} from '@cerberus/styled-system/recipes'
-import { css, cx } from '@cerberus/styled-system/css'
-import { hstack, vstack } from '@cerberus/styled-system/patterns'
+import { fileStatus, type FileStatusVariantProps } from 'styled-system/recipes'
+import { css, cx } from 'styled-system/css'
+import { hstack, vstack } from 'styled-system/patterns'
 import { useCerberusContext } from '../context/cerberus'
 import { ProgressBar, type ProgressBarProps } from './ProgressBar'
 import { IconButton } from './IconButton'

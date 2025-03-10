@@ -3,7 +3,7 @@ import type {
   UseRatingGroupContext,
   UseRatingGroupItemContext,
 } from '@ark-ui/react/rating-group'
-import type { RatingGroupVariantProps } from '@cerberus/styled-system/recipes'
+import type { RatingGroupVariantProps } from 'styled-system/recipes'
 import type { ReactNode } from 'react'
 import { splitProps } from '../../utils/index'
 import { Show } from '../Show'

@@ -9,7 +9,7 @@ import {
   type PropsWithChildren,
   type ReactNode,
 } from 'react'
-import { HStack, VStack } from '@cerberus/styled-system/jsx'
+import { HStack, VStack } from 'styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
 import { Show } from '../Show'
 import { For } from '../for'

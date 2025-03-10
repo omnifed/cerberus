@@ -12,7 +12,7 @@ import {
   Thead,
   Tr,
 } from './primitives'
-import type { TableVariantProps } from '@cerberus/styled-system/recipes'
+import type { TableVariantProps } from 'styled-system/recipes'
 import { Show } from '../Show'
 
 interface TableRootElProps extends HTMLArkProps<'div'>, TableVariantProps {

@@ -6,11 +6,8 @@ import {
   type AccordionItemTriggerProps,
   type AccordionRootProps,
 } from '@ark-ui/react/accordion'
-import { cx } from '@cerberus/styled-system/css'
-import {
-  accordion,
-  type AccordionVariantProps,
-} from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { accordion, type AccordionVariantProps } from 'styled-system/recipes'
 
 /**
  * This module contains the primitives of the Accordion component.

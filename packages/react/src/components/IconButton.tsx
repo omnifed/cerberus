@@ -1,9 +1,6 @@
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
-import { cx } from '@cerberus/styled-system/css'
-import {
-  iconButton,
-  type IconButtonVariantProps,
-} from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { iconButton, type IconButtonVariantProps } from 'styled-system/recipes'
 
 /**
  * This module contains the Icon Button component.

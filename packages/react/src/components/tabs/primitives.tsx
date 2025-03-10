@@ -6,8 +6,8 @@ import {
   type TabsRootProps,
   type TabTriggerProps,
 } from '@ark-ui/react/tabs'
-import { cx } from '@cerberus/styled-system/css'
-import { tabs, type TabsVariantProps } from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { tabs, type TabsVariantProps } from 'styled-system/recipes'
 
 /**
  * This module provides the primitives for the Tabs component.

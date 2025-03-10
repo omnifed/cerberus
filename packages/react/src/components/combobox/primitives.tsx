@@ -16,11 +16,8 @@ import {
 } from '@ark-ui/react/combobox'
 import { ark } from '@ark-ui/react/factory'
 import type { SelectCollectionItem } from '../select/select'
-import {
-  combobox,
-  type ComboboxVariantProps,
-} from '@cerberus/styled-system/recipes'
-import { cx } from '@cerberus/styled-system/css'
+import { combobox, type ComboboxVariantProps } from 'styled-system/recipes'
+import { cx } from 'styled-system/css'
 import type { PropsWithChildren } from 'react'
 
 /**

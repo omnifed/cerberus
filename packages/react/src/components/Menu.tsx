@@ -3,8 +3,8 @@ import {
   type MenuItemGroupProps,
   type MenuRootProps,
 } from '@ark-ui/react'
-import { menu } from '@cerberus/styled-system/recipes'
-import { cx } from '@cerberus/styled-system/css'
+import { menu } from 'styled-system/recipes'
+import { cx } from 'styled-system/css'
 
 /**
  * This module contains the Menu component family.

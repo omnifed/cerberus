@@ -1,5 +1,5 @@
 import type { CheckboxRootProps } from '@ark-ui/react'
-import { type CheckboxVariantProps } from '@cerberus/styled-system/recipes'
+import { type CheckboxVariantProps } from 'styled-system/recipes'
 import { Show } from '../Show'
 import { Text } from '../Text'
 import { CheckboxParts } from './parts'

@@ -5,7 +5,7 @@ import { useCerberusContext } from '../../context/cerberus'
 import { IconButton } from '../IconButton'
 import { DatePickerParts } from './parts'
 import { Button } from '../button/button'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 
 /**
  * This private module contains an abstraction of the DatePickerViewControl

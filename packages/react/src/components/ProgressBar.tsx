@@ -1,9 +1,9 @@
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
-import { cx } from '@cerberus/styled-system/css'
+import { cx } from 'styled-system/css'
 import {
   progressBar,
   type ProgressBarVariantProps,
-} from '@cerberus/styled-system/recipes'
+} from 'styled-system/recipes'
 
 /**
  * This module contains the ProgressBar component.

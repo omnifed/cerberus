@@ -4,11 +4,8 @@ import {
   type AvatarImageProps,
   type AvatarRootProps,
 } from '@ark-ui/react/avatar'
-import {
-  avatar,
-  type AvatarVariantProps,
-} from '@cerberus/styled-system/recipes'
-import { cx } from '@cerberus/styled-system/css'
+import { avatar, type AvatarVariantProps } from 'styled-system/recipes'
+import { cx } from 'styled-system/css'
 
 /**
  * This module provides the primitive components for the Avatar component.
