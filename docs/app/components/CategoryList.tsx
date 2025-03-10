@@ -1,5 +1,5 @@
-import { css } from '@cerberus/styled-system/css'
-import { cq, grid, gridItem } from '@cerberus/styled-system/patterns'
+import { css } from 'styled-system/css'
+import { cq, grid, gridItem } from 'styled-system/patterns'
 import CategoryCard from './ui/category-card'
 import categoryData from '@/app/data/categories.react.json'
 

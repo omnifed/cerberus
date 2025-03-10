@@ -1,5 +1,5 @@
 import { Spinner } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 
 export function CustomSpinner() {
   return (

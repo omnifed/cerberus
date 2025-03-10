@@ -1,6 +1,6 @@
 import { Field, Input, Textarea, FieldParts } from '@cerberus-design/react'
 import { Box, VStack } from '@cerberus-design/styled-system/jsx'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 
 export function BasicFieldPreview() {
   return (

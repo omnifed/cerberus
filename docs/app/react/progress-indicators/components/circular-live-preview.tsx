@@ -3,7 +3,7 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import { Square } from '@/styled-system/jsx'
+import { Square } from 'styled-system/jsx'
 import { CircularProgress } from '@cerberus-design/react'
 
 const api = {

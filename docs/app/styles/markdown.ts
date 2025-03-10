@@ -1,4 +1,4 @@
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 
 export const markdown = css({
   pxi: '4',

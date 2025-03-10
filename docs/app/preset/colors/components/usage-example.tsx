@@ -7,8 +7,8 @@ import {
   Tabs,
   Tag,
 } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
-import { hstack, vstack } from '@cerberus/styled-system/patterns'
+import { css } from 'styled-system/css'
+import { hstack, vstack } from 'styled-system/patterns'
 
 const highlightedStyles = {
   position: 'relative',

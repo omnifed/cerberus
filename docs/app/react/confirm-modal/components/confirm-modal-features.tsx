@@ -1,8 +1,8 @@
 'use client'
 
 import { Button, Show, useConfirmModal } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { css } from 'styled-system/css'
+import { hstack } from 'styled-system/patterns'
 import { useCallback, useState } from 'react'
 
 const NOPE = 'No, cancel'

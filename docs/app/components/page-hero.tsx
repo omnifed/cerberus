@@ -1,5 +1,5 @@
-import { css, cx } from '@cerberus/styled-system/css'
-import { cq, vstack } from '@cerberus/styled-system/patterns'
+import { css, cx } from 'styled-system/css'
+import { cq, vstack } from 'styled-system/patterns'
 
 interface PageHeroProps {
   heading: string

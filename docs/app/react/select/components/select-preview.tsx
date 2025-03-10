@@ -11,8 +11,8 @@ import {
   createSelectCollection,
   Portal,
 } from '@cerberus-design/react'
-import { css, cx } from '@cerberus/styled-system/css'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { css, cx } from 'styled-system/css'
+import { hstack } from 'styled-system/patterns'
 import { Box } from '@cerberus-design/styled-system/jsx'
 import { ChevronDownOutline } from '@carbon/icons-react'
 

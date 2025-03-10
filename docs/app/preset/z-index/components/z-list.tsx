@@ -1,6 +1,6 @@
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import { tokens } from '@cerberus-design/panda-preset'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { hstack } from 'styled-system/patterns'
 
 export default function ZList() {
   return (

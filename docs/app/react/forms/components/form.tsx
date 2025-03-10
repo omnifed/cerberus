@@ -14,7 +14,7 @@ import {
   toaster,
 } from '@cerberus-design/react'
 import { Box, HStack, VStack } from '@cerberus-design/styled-system/jsx'
-import { box } from '@cerberus/styled-system/patterns'
+import { box } from 'styled-system/patterns'
 import { createProfile } from './actions'
 
 // Since this a client component, we can store the form data in a local state

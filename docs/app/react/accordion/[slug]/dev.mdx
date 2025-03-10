@@ -30,7 +30,7 @@ import {
 } from '@cerberus/react'
 import Image from 'next/image'
 import { Suspense } from 'react'
-import { Box } from '@cerberus/styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 import data from './data.json'
 
 function BasicPreview() {
@@ -148,8 +148,8 @@ You can utilize the primitive components to customize the accordion.
 <CodePreview preview={<CustomPreview />}>
 ```tsx title="custom accordion"
 import { AccordionParts } from '@cerberus/react'
-import { Box } from '@cerberus/styled-system/jsx'
-import { css } from '@cerberus/styled-system/css'
+import { Box } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
 
 export function CustomPreview() {
   return (

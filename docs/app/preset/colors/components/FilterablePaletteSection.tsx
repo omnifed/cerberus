@@ -4,7 +4,7 @@ import type { Sentiment } from '@cerberus-design/panda-preset'
 import { PaletteFilterList } from './PaletteFilterList'
 import { useCallback, useMemo, useState, type MouseEvent } from 'react'
 import PaletteList from './PaletteList'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import paletteData from '@/app/data/palettes.json'
 
 export function FilterablePaletteSection() {

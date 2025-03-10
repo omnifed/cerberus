@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Show, usePromptModal } from '@cerberus-design/react'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { hstack } from 'styled-system/patterns'
 import { useCallback, useState } from 'react'
 
 const NOPE = 'No, cancel'

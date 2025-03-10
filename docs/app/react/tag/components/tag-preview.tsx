@@ -1,13 +1,8 @@
 import { Tag, type TagProps } from '@cerberus-design/react'
 import { Checkmark, Information } from '@carbon/icons-react'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import { Fragment } from 'react'
-import {
-  grid,
-  gridItem,
-  hstack,
-  vstack,
-} from '@cerberus/styled-system/patterns'
+import { grid, gridItem, hstack, vstack } from 'styled-system/patterns'
 import { ClosableTagPreview } from './closable-tag-preview'
 
 export type TagPreviewProps = TagProps

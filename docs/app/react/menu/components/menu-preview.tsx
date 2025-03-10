@@ -10,7 +10,7 @@ import {
   MenuTrigger,
 } from '@cerberus-design/react'
 import { HStack } from '@cerberus-design/styled-system/jsx'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import Link from 'next/link'
 
 export function BasicMenu() {

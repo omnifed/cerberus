@@ -2,7 +2,7 @@
 
 import { SortAscending, SortDescending } from '@carbon/icons-react'
 import { Table, Show, For } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import { Box, HStack, Scrollable } from '@cerberus-design/styled-system/jsx'
 import { useCallback, useMemo, useState } from 'react'
 

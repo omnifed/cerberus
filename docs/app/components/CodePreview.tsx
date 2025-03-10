@@ -3,7 +3,7 @@
 import { useState, type PropsWithChildren, type ReactNode } from 'react'
 import { Button, Show } from '@cerberus-design/react'
 import { Code, CodeHide } from '@carbon/icons-react'
-import { hstack, vstack } from '@cerberus/styled-system/patterns'
+import { hstack, vstack } from 'styled-system/patterns'
 
 interface CodePreviewProps {
   preview: ReactNode

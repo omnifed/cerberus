@@ -1,4 +1,4 @@
-import { vstack } from '@cerberus/styled-system/patterns'
+import { vstack } from 'styled-system/patterns'
 
 export default function SquigglyDivider() {
   return (

@@ -1,10 +1,10 @@
 'use client'
 
-import { hstack } from '@cerberus/styled-system/patterns'
+import { hstack } from 'styled-system/patterns'
 import type { Sentiment } from '@cerberus-design/panda-preset'
-import { tag } from '@cerberus/styled-system/recipes'
+import { tag } from 'styled-system/recipes'
 import type { ButtonHTMLAttributes } from 'react'
-import { css, cx } from '@cerberus/styled-system/css'
+import { css, cx } from 'styled-system/css'
 import paletteData from '@/app/data/palettes.json'
 
 const nonActiveTagStyles = cx(

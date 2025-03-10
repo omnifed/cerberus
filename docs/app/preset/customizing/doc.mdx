@@ -117,7 +117,7 @@ Finally, delcare your theme in your entry file.
 <NoteAdmonition description="Be sure you run the `prepare` command to generate your theme into the Panda CSS static files." />
 
 ```tsx title="app/layout.tsx" {26}
-import { cx } from '@cerberus/styled-system/css'
+import { cx } from 'styled-system/css'
 import { Poppins, Recursive } from 'next/font/google'
 import { type PropsWithChildren } from 'react'
 
@@ -236,7 +236,7 @@ Finally, use your configuration in your entry file.
 ```tsx title="app/layout.tsx" {30-32}
 import { Poppins, Recursive } from 'next/font/google'
 import { type PropsWithChildren } from 'react'
-import { css, cx } from '@cerberus/styled-system/css'
+import { css, cx } from 'styled-system/css'
 import CerberusConfig from '@/context/cerberus-config'
 
 import './globals.css'
@@ -280,7 +280,7 @@ This is the easiest way to customize Cerberus. You simply just add custom styles
 
 ```tsx title="Customizing a Button"
 import { Button, type ButtonProps } from '@cerberus/react'
-import { css } from '@cerberus/styled-system'
+import { css } from 'styled-system'
 
 export function CustomButton(props: ButtonProps) {
   return (
@@ -306,7 +306,7 @@ The following code replaces all instances of the `invalid` icon with a custom Lu
 
 ```tsx title="app/layout.tsx" {1, 22-24}
 import { defineIcons } from '@cerberus/react'
-import { cx } from '@cerberus/styled-system/css'
+import { cx } from 'styled-system/css'
 import { Poppins, Recursive } from 'next/font/google'
 import { type PropsWithChildren } from 'react'
 import { CircleAlert } from 'lucide-react';

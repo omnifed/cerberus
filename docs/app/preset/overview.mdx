@@ -26,7 +26,7 @@ In order to use the Cerberus Panda Preset, you need to install the PandaCSS pres
 Install the Cerberus core packages, with the package manager of your choice:
 
 <BashTabs code={`npx jsr add @cerberus/panda-preset
-npm install @cerberus/styled-system@npm:@cerberus-design/styled-system`} />
+npm install styled-system@npm:@cerberus-design/styled-system`} />
 
 ## Step 2 - Setup Cerberus
 
@@ -59,7 +59,7 @@ Now that you have extended Panda, you need to update your local styles by runnin
 
 <BashTabs code="npm run prepare" />
 
-<NoteAdmonition description="Adding Cerberus will add add a new importMap pointing to '@cerberus/styled-system'. This is the new path you will need to use for all your Panda references." />
+<NoteAdmonition description="Adding Cerberus will add add a new importMap pointing to 'styled-system'. This is the new path you will need to use for all your Panda references." />
 
 ### Step 4 - Connect the Cerberus Theme
 
@@ -204,7 +204,7 @@ Then wrap your application with the `CerberusConfig` component:
 ```tsx title="app/layout.tsx" {35-37}
 import { Poppins, Recursive } from 'next/font/google'
 import { type PropsWithChildren } from 'react'
-import { css, cx } from '@cerberus/styled-system/css'
+import { css, cx } from 'styled-system/css'
 import CerberusConfig from '@/context/cerberus-config'
 
 import './globals.css'
@@ -267,6 +267,6 @@ The version paths are simply creating an alias to the `@cerberus-design` organiz
 
 Everything should use the `@cerberus` organization in your code.
 
-### Why do I need to add the `@cerberus/styled-system` package?
+### Why do I need to add the `styled-system` package?
 
-The `@cerberus/styled-system` package is a dependency of the Cerberus Panda Preset. It is a styled-system that is pre-configured to work with the Cerberus Design System and creates a single source of truth for our UI related packages.
+The `styled-system` package is a dependency of the Cerberus Panda Preset. It is a styled-system that is pre-configured to work with the Cerberus Design System and creates a single source of truth for our UI related packages.

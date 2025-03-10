@@ -1,7 +1,7 @@
-import { Circle } from '@/styled-system/jsx'
+import { Circle } from 'styled-system/jsx'
 import { Tag } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
-import { hstack, vstack } from '@cerberus/styled-system/patterns'
+import { css } from 'styled-system/css'
+import { hstack, vstack } from 'styled-system/patterns'
 
 export function OverviewPreview() {
   return (

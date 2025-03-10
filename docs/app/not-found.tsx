@@ -1,5 +1,5 @@
 import { vstack } from '@cerberus-design/styled-system/patterns'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import Link from 'next/link'
 import PawIcon from './components/icons/paw-icon'
 import { button } from '@cerberus-design/styled-system/recipes'

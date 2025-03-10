@@ -1,6 +1,6 @@
 'use client'
 
-import { vstack } from '@cerberus/styled-system/patterns'
+import { vstack } from 'styled-system/patterns'
 import type { BuilderResult, NumberResult, TextResult } from './helpers'
 import {
   Field,

@@ -27,7 +27,7 @@ The `Avatar` component is used to represent a user or entity. It can be used to 
 <CodePreview preview={<AvatarPreview />}>
 ```tsx title="Avatar Demo"
 import { Avatar } from '@cerberus/react'
-import { HStack } from '@cerberus/styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 
 export function AvatarPreview() {
   return (
@@ -55,7 +55,7 @@ You can use the `asChild` prop to render the `Avatar` component as a different e
 <CodePreview preview={<NextAvatar />}>
 ```tsx title="next-avatar.tsx" {8}
 import { Avatar } from '@cerberus/react'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -92,7 +92,7 @@ You can utilize the primitive components to customize the avatar.
 <CodePreview preview={<CustomAvatar />}>
 ```tsx title="avatar.tsx"
 import { Avatar } from '@cerberus/react'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 
 function CustomAvatar() {
   return (

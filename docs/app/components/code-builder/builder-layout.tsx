@@ -1,6 +1,6 @@
 import { Show } from '@cerberus-design/react'
-import { css, cx } from '@cerberus/styled-system/css'
-import { cq, hstack, vstack } from '@cerberus/styled-system/patterns'
+import { css, cx } from 'styled-system/css'
+import { cq, hstack, vstack } from 'styled-system/patterns'
 import { type PropsWithChildren } from 'react'
 import BuilderSidebar from './builder-sidebar'
 import type { BuilderResult } from './helpers'

@@ -1,7 +1,7 @@
 'use server'
 
 import type { ColorModes } from '@cerberus-design/react'
-import type { ThemeName } from '@/styled-system/themes'
+import type { ThemeName } from 'styled-system/themes'
 import { getCookie } from './cookies'
 
 export async function getCachedTheme() {

@@ -25,7 +25,7 @@ The `Input` component displays a text-based input field.
 <CodePreview preview={<BasicFieldPreview />}>
 ```tsx title="some-form.tsx"
 import { Field, Input, Textarea } from '@cerberus/react'
-import { Box, VStack } from '@cerberus/styled-system/jsx'
+import { Box, VStack } from 'styled-system/jsx'
 
 export function BasicFieldPreview() {
   return (
@@ -110,8 +110,8 @@ You can customize the input by passing styles directly into the component and is
 <CodePreview preview={<CustomField />}>
 ```tsx {18-23}
 import { FieldParts } from '@cerberus/react'
-import { Box } from '@cerberus/styled-system/jsx'
-import { css } from '@cerberus/styled-system/css'
+import { Box } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
 
 export function CustomField() {
   return (

@@ -1,5 +1,5 @@
-import { css } from '@cerberus/styled-system/css'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { css } from 'styled-system/css'
+import { vstack } from 'styled-system/patterns'
 import { textStyles } from '@cerberus-design/panda-preset'
 import { Show } from '@cerberus-design/react'
 
