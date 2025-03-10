@@ -332,9 +332,6 @@ importers:
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
-      '@cerberus-design/styled-system':
-        specifier: workspace:*
-        version: link:../packages/styled-system
       '@happy-dom/global-registrator':
         specifier: ^14.11.0
         version: 14.11.0
