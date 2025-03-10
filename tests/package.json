@@ -4,6 +4,7 @@
   "description": "The tests for the repository.",
   "private": true,
   "scripts": {
+    "lint:ts": "tsc --noEmit",
     "test": "bun test",
     "test:ci": "bun test --coverage"
   },

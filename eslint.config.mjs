@@ -30,6 +30,7 @@ export default tseslint.config(
       // Docs use their own eslint config
       'docs/**/*',
       // non-TS files
+      'packages/*/styled-system/**/*',
       'packages/styled-system/**/*',
       '**/*.mjs',
       // files that are rooted with JS not TS or that we don't need to lint

@@ -19,7 +19,7 @@ import { acheronTheme } from './themes/acheron'
 const cerberusPreset: Preset = definePreset({
   name: 'cerberus',
 
-  presets: ['@pandacss/preset-base'],
+  presets: ['@pandacss/dev/presets'],
 
   globalCss,
   conditions,
@@ -49,7 +49,6 @@ const cerberusConfig: Config = defineConfig({
   jsxFactory: 'cerberus',
 
   outdir: 'styled-system',
-  importMap: '@cerberus/styled-system',
 })
 
 /**

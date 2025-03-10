@@ -12,7 +12,6 @@ import {
   Strong,
   type PProps,
 } from 'styled-system/jsx'
-import { type PropsWithChildren } from 'react'
 
 /**
  * This module exports a component for rendering text utilizing the styled-system JSX utility.
@@ -43,7 +42,7 @@ export interface TextProps extends PProps {
  *  Hello, world!
  * </Text>
  */
-export function Text(props: PropsWithChildren<TextProps>) {
+export function Text(props: TextProps) {
   const { as = 'p', ...pandaJSXProps } = props
   switch (as) {
     case 'h1':

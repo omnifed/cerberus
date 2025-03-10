@@ -43,4 +43,4 @@ jobs:
           node-version: '22'
 
       - run: pnpm install
-      - run: pnpm run lint:ts
+      - run: pnpm run lint

@@ -9,5 +9,4 @@ export default createCerberusConfig({
 
   include: ['./mdx-components.tsx', './app/**/*.{ts,tsx}'],
   exclude: [],
-  outdir: 'styled-system',
 })
