@@ -13,7 +13,6 @@
     "@carbon/icons-react": "^11.56.0",
     "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/react": "workspace:*",
-    "@cerberus-design/styled-system": "workspace:*",
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.8.1",
