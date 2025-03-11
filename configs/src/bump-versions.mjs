@@ -34,6 +34,10 @@ function _getReleaseVersion(values) {
 function bumpVersions() {
   const { values } = _parseFlags(argv)
 
+  console.log('Updating packages:', packages)
+  console.log('Bumping versions to', _getReleaseVersion(values))
+  console.log('Updating package.json & jsr.json files...')
+
   packages.forEach(async (pkg) => {
     const workspacePath = resolve(import.meta.dir, '..', '..', 'packages', pkg)
     const packageJsonPath = resolve(workspacePath, 'package.json')
