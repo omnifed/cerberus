@@ -1,7 +1,7 @@
 'use client'
 
 import { Checkbox, CheckboxGroup } from '@cerberus-design/react'
-import { Box } from '@cerberus-design/styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 import { useState } from 'react'
 
 const initialValues = [

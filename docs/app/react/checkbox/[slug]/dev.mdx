@@ -74,7 +74,7 @@ The Checkbox component supports the indeterminate state, which is useful for ind
 'use client'
 
 import { Checkbox, CheckboxGroup } from '@cerberus/react'
-import { Box } from '@cerberus/styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 import { useState } from 'react'
 
 const initialValues = [
@@ -167,7 +167,7 @@ You can utilize the primitive components to customize the checkbox.
 <CodePreview preview={<CustomCheckbox />}>
 ```tsx title="custom checkbox"
 import { CheckboxParts } from '@cerberus/react'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 
 function CustomCheckbox() {
   return (

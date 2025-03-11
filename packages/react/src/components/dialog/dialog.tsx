@@ -1,5 +1,5 @@
 import type { DialogContentProps } from '@ark-ui/react/dialog'
-import type { DialogVariantProps } from '@cerberus/styled-system/recipes'
+import type { DialogVariantProps } from 'styled-system/recipes'
 import { Portal } from '../Portal'
 import { DialogBackdrop, DialogContent, DialogPositioner } from './primitives'
 

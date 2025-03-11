@@ -1,5 +1,5 @@
 import type { RadioGroupItemProps } from '@ark-ui/react'
-import { type RadioGroupVariantProps } from '@cerberus/styled-system/recipes'
+import { type RadioGroupVariantProps } from 'styled-system/recipes'
 import {
   RadioGroupItem,
   RadioGroupItemControl,

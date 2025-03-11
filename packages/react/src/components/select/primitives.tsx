@@ -19,11 +19,8 @@ import {
   type SelectValueChangeDetails,
   type SelectValueTextProps,
 } from '@ark-ui/react/select'
-import {
-  select,
-  type SelectVariantProps,
-} from '@cerberus/styled-system/recipes'
-import { cx } from '@cerberus/styled-system/css'
+import { select, type SelectVariantProps } from 'styled-system/recipes'
+import { cx } from 'styled-system/css'
 import type { SelectCollectionItem } from './select'
 
 /**

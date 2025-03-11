@@ -8,11 +8,8 @@ import {
   type RadioGroupLabelProps,
   type RadioGroupRootProps,
 } from '@ark-ui/react/radio-group'
-import { cx } from '@cerberus/styled-system/css'
-import {
-  radioGroup,
-  type RadioGroupVariantProps,
-} from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { radioGroup, type RadioGroupVariantProps } from 'styled-system/recipes'
 
 /**
  * This module contains the Radio primitives

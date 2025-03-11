@@ -1,4 +1,4 @@
-import { css } from '@cerberus-design/styled-system/css'
+import { css } from 'styled-system/css'
 
 export default function CerberusLogo() {
   const cerbAccent = '#9F66D3'

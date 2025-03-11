@@ -1,8 +1,8 @@
-import { cx } from '@cerberus/styled-system/css'
+import { cx } from 'styled-system/css'
 import {
   notification,
   type NotificationVariantProps,
-} from '@cerberus/styled-system/recipes'
+} from 'styled-system/recipes'
 import type { HTMLAttributes } from 'react'
 
 /**

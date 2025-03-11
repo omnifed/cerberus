@@ -1,8 +1,8 @@
 'use client'
 
 import { focusStates } from '@cerberus-design/panda-preset'
-import { css } from '@cerberus/styled-system/css'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { css } from 'styled-system/css'
+import { vstack } from 'styled-system/patterns'
 import Link, { type LinkProps } from 'next/link'
 import { useLayoutEffect, useRef, useState } from 'react'
 

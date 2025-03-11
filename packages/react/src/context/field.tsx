@@ -1,6 +1,6 @@
 'use client'
 
-import type { FieldRootProps } from '@ark-ui/react'
+import type { FieldRootProps } from '@ark-ui/react/field'
 import {
   createContext,
   useContext,

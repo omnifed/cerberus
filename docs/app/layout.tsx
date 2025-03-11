@@ -7,8 +7,8 @@ import {
   type ColorModes,
   type DefaultThemes,
 } from '@cerberus-design/react'
-import { css, cx } from '@cerberus/styled-system/css'
-import { getTheme } from '@/styled-system/themes'
+import { css, cx } from 'styled-system/css'
+import { getTheme } from 'styled-system/themes'
 import { base, openGraph } from './shared-metadata'
 import { Nav } from './components/Nav'
 import { setCookie } from './actions/cookies'

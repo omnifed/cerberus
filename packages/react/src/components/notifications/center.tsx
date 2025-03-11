@@ -5,7 +5,7 @@ import {
   Toaster,
   type CreateToasterReturn,
 } from '@ark-ui/react/toast'
-import { Box } from '@cerberus/styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 import { Button, type ButtonProps } from '../button/button'
 import { Show } from '../Show'
 import { NotificationParts } from './parts'

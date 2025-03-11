@@ -1,7 +1,7 @@
 'use client'
 
-import { cq } from '@cerberus/styled-system/patterns'
-import { css } from '@cerberus/styled-system/css'
+import { cq } from 'styled-system/patterns'
+import { css } from 'styled-system/css'
 import type { SVGProps } from 'react'
 import { Show } from './Show'
 

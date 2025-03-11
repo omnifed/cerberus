@@ -1,4 +1,4 @@
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import WrenchIcon from '../icons/wrench-icon'
 
 export default function Utilities() {

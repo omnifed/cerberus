@@ -1,13 +1,13 @@
 'use client'
 
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import { usePathname } from 'next/navigation'
 import type { HeadingItem, LinkItem } from './SideNav'
 import Link from 'next/link'
 import { ACTION_NAV_HOVER } from '../utils/const'
 import { focusStates } from '@cerberus-design/panda-preset'
 import { Show } from '@cerberus-design/react'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { hstack } from 'styled-system/patterns'
 
 export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
   const pathname = usePathname()
@@ -89,7 +89,7 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
                       userSelect: 'none',
                     })}
                   >
-                    {props.tag}
+                    preview
                   </span>
                 </Show>
               }

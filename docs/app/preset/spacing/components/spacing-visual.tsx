@@ -1,5 +1,5 @@
 import { tokens } from '@cerberus-design/panda-preset'
-import { Box } from '@cerberus-design/styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 
 interface SpacingRowProps {
   value: keyof typeof tokens.spacing

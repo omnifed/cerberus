@@ -28,7 +28,7 @@ The Table component is a controlled component that can be used to display tabula
 <CodePreview preview={<BasicTablePreview />}>
 ```tsx title="Basic demo"
 import { Table, For } from '@cerberus/react'
-import { Box } from '@cerberus/styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 
 function BasicTablePreview() {
   const items = [
@@ -74,7 +74,7 @@ The `Table.Root` component supports different sizes for its cells. You can set t
 <CodePreview preview={<SizesPreview />}>
 ```tsx title="Sizes demo"
 import { Table, For } from '@cerberus/react'
-import { HStack } from '@cerberus/styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 
 function SizesPreview() {
   return (
@@ -130,7 +130,7 @@ The `Table.Root` component supports different decorations for its rows. You can 
 <CodePreview preview={<DecorationPreview />}>
 ```tsx title="Decoration demo"
 import { Table } from '@cerberus/react'
-import { HStack } from '@cerberus/styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 
 function DecorationPreview() {
   return (
@@ -187,7 +187,7 @@ The `Table.Root` component supports a `sticky` prop, which makes the table heade
 <CodePreview preview={<ItsGettingSticky />}>
 ```tsx title="Sticky demo" {14}
 import { Table, For } from '@cerberus/react'
-import { Scrollable } from '@cerberus/styled-system/jsx'
+import { Scrollable } from 'styled-system/jsx'
 import { items } from './data'
 
 function ItsGettingSticky() {
@@ -310,7 +310,7 @@ You can utilize the primitive components to customize the table.
 <CodePreview preview={<CustomizedPreview />}>
 ```tsx title="Custom example"
 import { Table, For } from '@cerberus/react'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 
 function CustomizedPreview() {
   const cols = [

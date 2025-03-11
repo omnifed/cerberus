@@ -24,7 +24,7 @@ To create your actions, use the `createCTAModalActions` function.
 'use client'
 
 import { Button, useCTAModal, createCTAModalActions } from '@cerberus/react'
-import { HStack } from '@cerberus/styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 
 function CTAFeature() {
   const { show } = useCTAModal()
@@ -75,7 +75,7 @@ To use links instead of buttons, pass your link components to the `createCTAModa
 ```tsx title="link-dialog.tsx"
 'use client'
 import { Button, useCTAModal, createCTAModalActions } from '@cerberus/react'
-import { HStack } from '@cerberus/styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 import Link from 'next/link'
 
 function CTALinkFeature() {

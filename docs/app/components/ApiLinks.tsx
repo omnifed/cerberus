@@ -1,5 +1,5 @@
-import { css } from '@cerberus/styled-system/css'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { css } from 'styled-system/css'
+import { hstack } from 'styled-system/patterns'
 import { LogoGithub, LogoNpm, ArrowUpRight } from '@carbon/icons-react'
 import { Show } from '@cerberus-design/react'
 

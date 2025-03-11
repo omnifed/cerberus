@@ -1,7 +1,7 @@
 'use client'
 
 import type { ComboboxRootProps } from '@ark-ui/react/combobox'
-import type { ComboboxVariantProps } from '@cerberus/styled-system/recipes'
+import type { ComboboxVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
 import type { SelectCollectionItem } from '../select/select'
 import { type FieldInputProps } from '../field/index'

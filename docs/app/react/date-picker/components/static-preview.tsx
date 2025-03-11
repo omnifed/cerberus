@@ -6,7 +6,7 @@ import {
   Field,
   RangePickerInput,
 } from '@cerberus-design/react'
-import { Box } from '@cerberus-design/styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 
 interface DPPreviewProps {
   id: string

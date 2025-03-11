@@ -2,8 +2,8 @@ import {
   Tooltip as ArkTooltip,
   type TooltipContentProps,
 } from '@ark-ui/react/tooltip'
-import { cx } from '@cerberus/styled-system/css'
-import { tooltip } from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { tooltip } from 'styled-system/recipes'
 import type { ReactNode } from 'react'
 
 /**

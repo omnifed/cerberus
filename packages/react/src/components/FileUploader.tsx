@@ -1,10 +1,10 @@
 'use client'
 
-import { cx } from '@cerberus/styled-system/css'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { cx } from 'styled-system/css'
+import { vstack } from 'styled-system/patterns'
 import { type InputHTMLAttributes } from 'react'
 import { Show } from './Show'
-import { fileUploader } from '@cerberus/styled-system/recipes'
+import { fileUploader } from 'styled-system/recipes'
 import { useCerberusContext } from '../context/cerberus'
 import { Avatar } from './avatar/avatar'
 

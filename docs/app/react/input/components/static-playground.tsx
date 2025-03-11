@@ -1,6 +1,6 @@
 import { Field, Input } from '@cerberus-design/react'
 import { Search } from '@carbon/icons-react'
-import { Box } from '@cerberus-design/styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 
 export function SearchInputExample() {
   return (

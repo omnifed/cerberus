@@ -4,7 +4,7 @@ import {
   formStates,
   slotRecipes,
 } from '@cerberus-design/panda-preset'
-import { label } from '@cerberus-design/styled-system/recipes'
+import { label } from 'styled-system/recipes'
 
 describe('combobox recipe', () => {
   const { combobox } = slotRecipes

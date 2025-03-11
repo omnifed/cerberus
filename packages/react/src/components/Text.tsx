@@ -11,8 +11,7 @@ import {
   Span,
   Strong,
   type PProps,
-} from '@cerberus/styled-system/jsx'
-import { type HTMLAttributes, type PropsWithChildren } from 'react'
+} from 'styled-system/jsx'
 
 /**
  * This module exports a component for rendering text utilizing the styled-system JSX utility.
@@ -24,9 +23,7 @@ export type TextElements = 'p' | 'strong' | 'em' | 'small' | 'span'
 
 // For some reason we have to use the HTMLParagraphElement type here
 // or else TS will fail for non-style props like 'id' or 'className'
-export interface TextProps
-  extends PProps,
-    HTMLAttributes<HTMLParagraphElement> {
+export interface TextProps extends PProps {
   /**
    * The element to render as. Defaults to 'p'.
    */
@@ -45,7 +42,7 @@ export interface TextProps
  *  Hello, world!
  * </Text>
  */
-export function Text(props: PropsWithChildren<TextProps>) {
+export function Text(props: TextProps) {
   const { as = 'p', ...pandaJSXProps } = props
   switch (as) {
     case 'h1':

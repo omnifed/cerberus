@@ -1,4 +1,4 @@
-import { HStack, VStack } from '@/styled-system/jsx'
+import { HStack, VStack } from 'styled-system/jsx'
 import { Notification } from '@carbon/icons-react'
 import { IconButton, Tag, formatNotifyCount } from '@cerberus-design/react'
 

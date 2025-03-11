@@ -1,6 +1,6 @@
 'use client'
 
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import {
   createContext,
   useCallback,

@@ -1,5 +1,5 @@
 import { ProgressBar, Tag } from '@cerberus-design/react'
-import { hstack, vstack } from '@cerberus/styled-system/patterns'
+import { hstack, vstack } from 'styled-system/patterns'
 
 export function OverviewPreview() {
   return (

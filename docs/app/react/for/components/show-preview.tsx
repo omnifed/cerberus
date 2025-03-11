@@ -1,5 +1,5 @@
 import { For, Text } from '@cerberus-design/react'
-import { VStack } from '@cerberus-design/styled-system/jsx'
+import { VStack } from 'styled-system/jsx'
 
 export default function ForPreview() {
   const data = ['Cerberus', 'Design', 'System', 'Roolz', 'D00dz']

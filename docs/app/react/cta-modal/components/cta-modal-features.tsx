@@ -5,7 +5,7 @@ import {
   useCTAModal,
   createCTAModalActions,
 } from '@cerberus-design/react'
-import { HStack } from '@cerberus-design/styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 import { useCallback } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from '@carbon/icons-react'

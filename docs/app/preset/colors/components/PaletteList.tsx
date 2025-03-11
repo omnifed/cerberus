@@ -1,8 +1,8 @@
 import { type Sentiment } from '@cerberus-design/panda-preset'
-import { cq, hstack } from '@cerberus/styled-system/patterns'
+import { cq, hstack } from 'styled-system/patterns'
 import { normalizeTokens, getTokenList } from '../helpers/normalize'
 import AvatarSwatch from './AvatarSwatch'
-import { css, cx } from '@cerberus/styled-system/css'
+import { css, cx } from 'styled-system/css'
 import { Tooltip } from '@cerberus-design/react'
 
 interface PaletteListProps {

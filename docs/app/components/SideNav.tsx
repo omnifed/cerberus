@@ -1,6 +1,7 @@
-import { css } from '@cerberus/styled-system/css'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { css } from 'styled-system/css'
+import { vstack } from 'styled-system/patterns'
 import { type PropsWithChildren, memo } from 'react'
+import { type TagType } from '@/app/react/side-nav'
 import MatchSideNavItem from './MatchSideNavItem'
 import type { LinkProps } from 'next/link'
 
@@ -17,7 +18,7 @@ export interface HeadingItem {
 export interface LinkItem {
   label: string
   route: LinkProps<string>['href']
-  tag: '' | 'new' | 'next' | 'deprecated'
+  tag: TagType
   type: 'route'
 }
 

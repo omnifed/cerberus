@@ -6,10 +6,10 @@ import {
   AccordionParts,
 } from '@cerberus-design/react'
 import Image from 'next/image'
-import { Box } from '@cerberus-design/styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 import data from './data.json'
 import { Suspense } from 'react'
-import { css } from '@cerberus-design/styled-system/css'
+import { css } from 'styled-system/css'
 
 interface AccordionDataItem {
   id: number

@@ -1,4 +1,4 @@
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import MenuIcon from '../icons/menu-icon'
 
 export default function Menus() {

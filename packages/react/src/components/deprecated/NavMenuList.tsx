@@ -1,8 +1,8 @@
 'use client'
 
 import { useMemo, type HTMLAttributes } from 'react'
-import { cx } from '@cerberus/styled-system/css'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { cx } from 'styled-system/css'
+import { vstack } from 'styled-system/patterns'
 import { useNavMenuContext } from '../../context/navMenu'
 import type { Positions } from '../../types'
 import { Show } from '../Show'

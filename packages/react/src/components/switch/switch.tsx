@@ -1,5 +1,5 @@
 import type { SwitchRootProps } from '@ark-ui/react'
-import type { SwitchRecipeVariantProps } from '@cerberus/styled-system/recipes'
+import type { SwitchRecipeVariantProps } from 'styled-system/recipes'
 import { SwitchParts } from './parts'
 import { SwitchIndicator } from './switch-indicator'
 

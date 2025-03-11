@@ -25,7 +25,7 @@ The `Textarea` component displays a textarea field.
 <CodePreview preview={<BasicFieldPreview />}>
 ```tsx title="some-form.tsx" {39}
 import { Field, Input, Textarea } from '@cerberus/react'
-import { Box, VStack } from '@cerberus/styled-system/jsx'
+import { Box, VStack } from 'styled-system/jsx'
 
 export function BasicFieldPreview() {
   return (
@@ -79,8 +79,8 @@ You can customize the textarea by passing styles directly into the component and
 <CodePreview preview={<CustomField />}>
 ```tsx {18-22}
 import { FieldParts } from '@cerberus/react'
-import { Box } from '@cerberus/styled-system/jsx'
-import { css } from '@cerberus/styled-system/css'
+import { Box } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
 
 export function CustomField() {
   return (

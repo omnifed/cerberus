@@ -1,5 +1,5 @@
-import { cx } from '@cerberus/styled-system/css'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { cx } from 'styled-system/css'
+import { vstack } from 'styled-system/patterns'
 import type { HTMLAttributes } from 'react'
 
 /**

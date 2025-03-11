@@ -6,11 +6,11 @@ import {
   type SwitchRootProps,
   type SwitchThumbProps,
 } from '@ark-ui/react/switch'
-import { cx } from '@cerberus/styled-system/css'
+import { cx } from 'styled-system/css'
 import {
   switchRecipe,
   type SwitchRecipeVariantProps,
-} from '@cerberus/styled-system/recipes'
+} from 'styled-system/recipes'
 
 /**
  * This module contains the Switch primitives

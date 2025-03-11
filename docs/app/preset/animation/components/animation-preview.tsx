@@ -1,5 +1,5 @@
-import { vstack } from '@/styled-system/patterns'
-import { circle, square } from '@cerberus/styled-system/patterns'
+import { vstack } from 'styled-system/patterns'
+import { circle, square } from 'styled-system/patterns'
 
 export function PingPreview() {
   return (

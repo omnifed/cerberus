@@ -7,12 +7,9 @@ import {
   useContext,
   useMemo,
 } from 'react'
-import { cx } from '@cerberus/styled-system/css'
-import {
-  button,
-  type ButtonVariantProps,
-} from '@cerberus/styled-system/recipes'
-import { Box } from '@cerberus/styled-system/jsx'
+import { cx } from 'styled-system/css'
+import { button, type ButtonVariantProps } from 'styled-system/recipes'
+import { Box } from 'styled-system/jsx'
 import { Show } from '../Show'
 import { Spinner } from '../Spinner'
 

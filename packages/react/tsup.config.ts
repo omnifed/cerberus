@@ -7,10 +7,10 @@ const external = [
   ...Object.keys(peerDependencies),
   'react',
   'react-dom',
-  '@cerberus/styled-system/css',
-  '@cerberus/styled-system/patterns',
-  '@cerberus/styled-system/recipes',
-  '@cerberus/styled-system/jsx',
+  'styled-system/css',
+  'styled-system/jsx',
+  'styled-system/patterns',
+  'styled-system/recipes',
 ]
 
 export default defineConfig([

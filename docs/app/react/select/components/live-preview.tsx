@@ -9,7 +9,7 @@ import {
   Option,
   createSelectCollection,
 } from '@cerberus-design/react'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { vstack } from 'styled-system/patterns'
 
 const api = {
   size: builder.Enum('size', ['sm', 'md', 'lg']),

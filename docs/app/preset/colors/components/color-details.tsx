@@ -12,11 +12,11 @@ import {
   gridItem,
   hstack,
   vstack,
-} from '@cerberus/styled-system/patterns'
+} from 'styled-system/patterns'
 import { normalizeTokens, getTokenList } from '../helpers/normalize'
 import { Show } from '@cerberus-design/react'
 import { Fragment, useMemo } from 'react'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import UsageExample from './usage-example'
 import { useSearchParams } from 'next/navigation'
 

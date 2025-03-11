@@ -3,11 +3,11 @@ import * as DS from '@cerberus-design/panda-preset'
 
 describe('root', () => {
   test('should export a config', () => {
-    expect(DS.cerberusConfig).toBeDefined()
+    expect(DS.createCerberusConfig).toBeDefined()
   })
 
   test('should export a preset', () => {
-    expect(DS.cerberusPreset).toBeDefined()
+    expect(DS.createCerberusPreset).toBeDefined()
   })
 
   test('should export conditions', () => {

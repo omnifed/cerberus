@@ -9,7 +9,7 @@ import {
   type MouseEvent,
   type PropsWithChildren,
 } from 'react'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import { Button, Show } from '@cerberus-design/react'
 import { Checkmark, Copy } from '@carbon/icons-react'
 import { BuilderCodeBlock } from './builder-code-block'

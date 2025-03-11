@@ -7,8 +7,8 @@ import {
   type FieldTextareaProps,
 } from '@ark-ui/react/field'
 import type { ReactNode } from 'react'
-import { cx } from '@cerberus/styled-system/css'
-import { field, type FieldVariantProps } from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { field, type FieldVariantProps } from 'styled-system/recipes'
 import { FieldStatusIndicator } from './status-indicator'
 import { FieldStartIndicator } from './start-indicator'
 

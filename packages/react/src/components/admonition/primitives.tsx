@@ -1,9 +1,6 @@
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
-import { cx } from '@cerberus/styled-system/css'
-import {
-  admonition,
-  type AdmonitionVariantProps,
-} from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { admonition, type AdmonitionVariantProps } from 'styled-system/recipes'
 
 /**
  * This module contains the primitives of the Admonition components.

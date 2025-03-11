@@ -1,4 +1,4 @@
-import { scrollable } from '@cerberus/styled-system/patterns'
+import { scrollable } from 'styled-system/patterns'
 
 export function ScrollablePreview() {
   return (

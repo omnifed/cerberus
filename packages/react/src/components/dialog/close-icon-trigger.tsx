@@ -4,8 +4,8 @@ import { type DialogCloseTriggerProps } from '@ark-ui/react/dialog'
 import { useCerberusContext } from '../../context/cerberus'
 import { IconButton } from '../IconButton'
 import { DialogCloseTrigger } from './primitives'
-import { dialog } from '@cerberus/styled-system/recipes'
-import { cx } from '@cerberus/styled-system/css'
+import { dialog } from 'styled-system/recipes'
+import { cx } from 'styled-system/css'
 
 /**
  * This module contains the close trigger for the dialog.

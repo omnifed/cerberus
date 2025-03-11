@@ -4,11 +4,8 @@ import {
   type FieldsetLegendProps,
   type FieldsetRootProps,
 } from '@ark-ui/react/fieldset'
-import { cx } from '@cerberus/styled-system/css'
-import {
-  fieldset,
-  type FieldsetVariantProps,
-} from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { fieldset, type FieldsetVariantProps } from 'styled-system/recipes'
 
 /**
  * This module contains all the primitives of the Fieldset component.

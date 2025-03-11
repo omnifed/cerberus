@@ -1,8 +1,8 @@
-import { vstack } from '@cerberus-design/styled-system/patterns'
-import { css } from '@cerberus/styled-system/css'
+import { vstack } from 'styled-system/patterns'
+import { css } from 'styled-system/css'
 import Link from 'next/link'
 import PawIcon from './components/icons/paw-icon'
-import { button } from '@cerberus-design/styled-system/recipes'
+import { button } from 'styled-system/recipes'
 
 export default function NotFound() {
   return (

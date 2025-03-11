@@ -3,7 +3,7 @@
 import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
-import { HStack } from '@cerberus-design/styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 import { Rating, splitProps } from '@cerberus-design/react'
 import { StarFilled, StarHalf } from '@carbon/icons-react'
 import type { PropsWithChildren } from 'react'

@@ -27,7 +27,6 @@ const nextConfig = {
       '@carbon/icons-react',
       '@cerberus/react',
       '@cerberus/panda-preset',
-      '@cerberus/styled-system',
     ],
     serverComponentsHmrCache: true,
     typedRoutes: true,

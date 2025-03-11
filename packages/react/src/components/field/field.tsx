@@ -6,7 +6,7 @@ import {
   FieldLabel,
   FieldRoot,
 } from './primitives'
-import { HStack } from '@cerberus/styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 import { Show } from '../Show'
 
 export interface FieldProps extends FieldRootProps {

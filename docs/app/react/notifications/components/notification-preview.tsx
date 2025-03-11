@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, toaster } from '@cerberus-design/react'
-import { HStack } from '@cerberus-design/styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 import { useCallback } from 'react'
 import messagesData from './messages.data.json'
 

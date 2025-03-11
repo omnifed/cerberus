@@ -5,7 +5,7 @@ import {
   type FileStatusActions,
   processStatus,
 } from '@cerberus-design/react'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { vstack } from 'styled-system/patterns'
 import { useCallback, type MouseEvent } from 'react'
 
 export function UploadingCardsPreview() {

@@ -3,9 +3,9 @@
 import { Fragment } from 'react'
 import { Button, ButtonParts } from '@cerberus-design/react'
 import { ArrowDownRight } from '@carbon/icons-react'
-import { css } from '@cerberus/styled-system/css'
-import { HStack } from '@cerberus-design/styled-system/jsx'
-import { grid, gridItem } from '@cerberus/styled-system/patterns'
+import { css } from 'styled-system/css'
+import { HStack } from 'styled-system/jsx'
+import { grid, gridItem } from 'styled-system/patterns'
 import Link from 'next/link'
 
 export function AsChildDemo() {

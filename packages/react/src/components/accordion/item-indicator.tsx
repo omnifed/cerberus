@@ -1,7 +1,7 @@
 'use client'
 
 import { type AccordionItemIndicatorProps } from '@ark-ui/react/accordion'
-import { type AccordionVariantProps } from '@cerberus/styled-system/recipes'
+import { type AccordionVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
 import { AccordionParts } from './parts'
 

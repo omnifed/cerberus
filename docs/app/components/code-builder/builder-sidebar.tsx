@@ -1,5 +1,5 @@
-import { css, cx } from '@cerberus/styled-system/css'
-import { scrollable } from '@cerberus/styled-system/patterns'
+import { css, cx } from 'styled-system/css'
+import { scrollable } from 'styled-system/patterns'
 import type { PropsWithChildren } from 'react'
 
 interface BuilderSidebarProps {}

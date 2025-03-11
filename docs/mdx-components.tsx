@@ -1,4 +1,4 @@
-import { css, cx } from '@cerberus/styled-system/css'
+import { css, cx } from 'styled-system/css'
 import type { MDXComponents } from 'mdx/types'
 import Image, { ImageProps } from 'next/image'
 import { PAGE_BORDER_100 } from './app/utils/const'

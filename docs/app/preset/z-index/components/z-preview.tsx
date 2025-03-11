@@ -8,8 +8,8 @@ import {
   createSelectCollection,
   type SelectValueChangeDetails,
 } from '@cerberus-design/react'
-import { css, cx } from '@cerberus/styled-system/css'
-import { vstack } from '@cerberus/styled-system/patterns'
+import { css, cx } from 'styled-system/css'
+import { vstack } from 'styled-system/patterns'
 import { useState } from 'react'
 
 const zLayers = css({

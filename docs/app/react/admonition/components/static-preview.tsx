@@ -1,6 +1,6 @@
 import { Admonition, AdmonitionParts, Tag } from '@cerberus-design/react'
-import { Box, VStack, Circle } from '@cerberus-design/styled-system/jsx'
-import { css } from '@cerberus/styled-system/css'
+import { Box, VStack, Circle } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
 import PawIcon from '@/app/components/icons/paw-icon'
 
 export function BasicDemo() {

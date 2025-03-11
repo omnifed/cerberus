@@ -1,5 +1,5 @@
 import type { HTMLArkProps } from '@ark-ui/react/factory'
-import type { AdmonitionVariantProps } from '@cerberus/styled-system/recipes'
+import type { AdmonitionVariantProps } from 'styled-system/recipes'
 import type { ReactNode } from 'react'
 import { splitProps } from '../../utils/index'
 import { AdmonitionParts } from './parts'

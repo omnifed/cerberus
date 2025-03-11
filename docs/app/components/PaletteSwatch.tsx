@@ -1,5 +1,5 @@
 import { type Sentiment } from '@cerberus-design/panda-preset'
-import { circle, hstack } from '@cerberus/styled-system/patterns'
+import { circle, hstack } from 'styled-system/patterns'
 import type { PropsWithChildren } from 'react'
 
 interface PaletteAvatar {

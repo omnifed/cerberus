@@ -7,8 +7,8 @@ import {
   type ToastRootProps,
   type ToastTitleProps,
 } from '@ark-ui/react/toast'
-import { cx } from '@cerberus/styled-system/css'
-import { toast } from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { toast } from 'styled-system/recipes'
 
 /**
  * This module contains the primitives of the Notification component.

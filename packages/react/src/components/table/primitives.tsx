@@ -1,6 +1,6 @@
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
-import { cx } from '@cerberus/styled-system/css'
-import { table, type TableVariantProps } from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { table, type TableVariantProps } from 'styled-system/recipes'
 
 /**
  * This module contains the primitives of the Table component.

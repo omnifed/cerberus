@@ -2,7 +2,7 @@
 
 import { Close } from '@carbon/icons-react'
 import { Button, IconButton, Portal, Show } from '@cerberus-design/react'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { hstack } from 'styled-system/patterns'
 import { useState } from 'react'
 
 export default function PortalPreview() {

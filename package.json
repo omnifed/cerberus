@@ -7,7 +7,9 @@
     "prepare": "husky",
     "lint:es": "eslint . --max-warnings=0",
     "lint:ox": "oxlint --deny-warnings",
-    "lint:ts": "tsc --noEmit"
+    "lint:packages": "pnpm --filter @cerberus-design/* run -w lint:ts",
+    "lint:tests": "pnpm --filter tests run lint:ts",
+    "lint": "pnpm lint:packages && pnpm lint:tests"
   },
   "dependencies": {
     "typescript": "^5.8.2"

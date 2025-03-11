@@ -1,6 +1,6 @@
 import figma from '@figma/code-connect'
 import { Toggle, Field } from '@cerberus-design/react'
-import { hstack } from '@cerberus-design/styled-system/patterns'
+import { hstack } from 'styled-system/patterns'
 
 const SELECTION =
   'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=9349-1317&m=dev'

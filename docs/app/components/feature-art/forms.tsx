@@ -1,4 +1,4 @@
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import ListTreeIcon from '../icons/list-tree-icon'
 
 export default function Forms() {

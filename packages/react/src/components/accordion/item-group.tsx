@@ -2,7 +2,7 @@ import type {
   AccordionItemProps,
   AccordionRootProps,
 } from '@ark-ui/react/accordion'
-import { type AccordionVariantProps } from '@cerberus/styled-system/recipes'
+import { type AccordionVariantProps } from 'styled-system/recipes'
 import { splitProps } from '../../utils/index'
 import { Show } from '../Show'
 import { AccordionParts } from './parts'

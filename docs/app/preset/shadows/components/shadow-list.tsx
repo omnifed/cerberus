@@ -1,7 +1,7 @@
 import { Text } from '@cerberus-design/react'
-import { cq, hstack, vstack, square } from '@cerberus/styled-system/patterns'
+import { cq, hstack, vstack, square } from 'styled-system/patterns'
 import { tokens } from '@cerberus-design/panda-preset'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 
 export default function ShadowsList() {
   const shadows = tokens.shadows

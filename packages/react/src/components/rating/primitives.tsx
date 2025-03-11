@@ -8,11 +8,11 @@ import {
   type RatingGroupLabelProps,
   type RatingGroupRootProps,
 } from '@ark-ui/react/rating-group'
-import { cx } from '@cerberus/styled-system/css'
+import { cx } from 'styled-system/css'
 import {
   ratingGroup,
   type RatingGroupVariantProps,
-} from '@cerberus/styled-system/recipes'
+} from 'styled-system/recipes'
 
 /**
  * This module contains the primitives of the Rating component.

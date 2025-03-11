@@ -1,6 +1,6 @@
 import { Show, Text } from '@cerberus-design/react'
-import { Box, VStack } from '@cerberus-design/styled-system/jsx'
-import { vstack } from '@cerberus-design/styled-system/patterns'
+import { Box, VStack } from 'styled-system/jsx'
+import { vstack } from 'styled-system/patterns'
 import Link from 'next/link'
 import { sideNavData } from '@/app/react/side-nav'
 import { categoryMeta } from '@/app/data/category-meta'

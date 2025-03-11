@@ -1,5 +1,5 @@
-import { cx } from '@cerberus/styled-system/css'
-import { label, type LabelVariantProps } from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { label, type LabelVariantProps } from 'styled-system/recipes'
 import type { LabelProps } from './Label'
 
 /**

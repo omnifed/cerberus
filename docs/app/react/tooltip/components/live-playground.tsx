@@ -5,8 +5,8 @@ import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
 import { InformationFilled } from '@carbon/icons-react'
 import { Tooltip, type TooltipProps } from '@cerberus-design/react'
-import { VStack } from '@cerberus-design/styled-system/jsx'
-import { css } from '@cerberus/styled-system/css'
+import { VStack } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
 
 const api = {
   position: builder.Enum('position', ['top', 'right', 'bottom', 'left']),

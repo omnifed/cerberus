@@ -1,4 +1,4 @@
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import { IbmWatsonxOrchestrate } from '@carbon/icons-react'
 
 export default function Misc() {

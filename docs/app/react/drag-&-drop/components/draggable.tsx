@@ -1,5 +1,5 @@
 import { useDraggable } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import type { ButtonHTMLAttributes, PropsWithChildren } from 'react'
 
 export function Draggable(

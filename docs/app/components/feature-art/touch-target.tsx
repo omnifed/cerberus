@@ -1,4 +1,4 @@
-import { css } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
 import FingerPrintIcon from '../icons/finger-print-icon'
 
 export default function TouchTarget() {

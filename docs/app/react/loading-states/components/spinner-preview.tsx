@@ -1,9 +1,9 @@
 'use client'
 
 import { Button, Show, Spinner, Tag } from '@cerberus-design/react'
-import { css } from '@cerberus-design/styled-system/css'
-import { VStack } from '@cerberus-design/styled-system/jsx'
-import { hstack } from '@cerberus-design/styled-system/patterns'
+import { css } from 'styled-system/css'
+import { VStack } from 'styled-system/jsx'
+import { hstack } from 'styled-system/patterns'
 import { useCallback, useState } from 'react'
 
 interface PageData {

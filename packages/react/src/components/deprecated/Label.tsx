@@ -1,6 +1,6 @@
 import type { HTMLAttributes, PropsWithChildren } from 'react'
-import { label, type LabelVariantProps } from '@cerberus/styled-system/recipes'
-import { cx } from '@cerberus/styled-system/css'
+import { label, type LabelVariantProps } from 'styled-system/recipes'
+import { cx } from 'styled-system/css'
 import { FieldLabel } from '../field'
 
 /**

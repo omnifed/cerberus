@@ -5,8 +5,8 @@ import {
   InformationFilled,
 } from '@carbon/icons-react'
 import { Tabs } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
-import { cx } from '@cerberus/styled-system/css'
+import { css } from 'styled-system/css'
+import { cx } from 'styled-system/css'
 import type { ReactNode } from 'react'
 
 interface TabProps {

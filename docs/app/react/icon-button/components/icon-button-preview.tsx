@@ -1,7 +1,7 @@
 import { Close, ThumbsDown, ThumbsUp, TrophyFilled } from '@carbon/icons-react'
 import { IconButton } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
-import { hstack } from '@cerberus/styled-system/patterns'
+import { css } from 'styled-system/css'
+import { hstack } from 'styled-system/patterns'
 
 export function BasicIconButtonPreview() {
   return (

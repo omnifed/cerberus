@@ -1,11 +1,11 @@
 'use client'
 
-import { cx } from '@cerberus/styled-system/css'
-import { hstack, vstack } from '@cerberus/styled-system/patterns'
+import { cx } from 'styled-system/css'
+import { hstack, vstack } from 'styled-system/patterns'
 import {
   notification,
   type NotificationVariantProps,
-} from '@cerberus/styled-system/recipes'
+} from 'styled-system/recipes'
 import {
   useRef,
   type DialogHTMLAttributes,

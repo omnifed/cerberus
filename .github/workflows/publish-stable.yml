@@ -27,23 +27,6 @@ jobs:
       - run: pnpm build && pnpm publish --access public
         working-directory: ./packages/react
 
-  npm-publish-styled-system:
-    runs-on: ubuntu-latest
-    name: Build & Publish Styled-System to NPM
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          cache: 'pnpm'
-          node-version: '22'
-
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-      - run: pnpm install
-      - run: pnpm publish --access public
-        working-directory: ./packages/styled-system
-
   jsr-publish-preset:
     runs-on: ubuntu-latest
     name: Publish Preset Latest Version to JSR

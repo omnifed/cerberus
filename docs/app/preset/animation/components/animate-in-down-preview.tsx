@@ -1,8 +1,8 @@
 'use client'
 
 import { Button, Show } from '@cerberus-design/react'
-import { css } from '@cerberus/styled-system/css'
-import { hstack, vstack } from '@cerberus/styled-system/patterns'
+import { css } from 'styled-system/css'
+import { hstack, vstack } from 'styled-system/patterns'
 import { useCallback, useState } from 'react'
 
 export function AnimateInDownPreview() {

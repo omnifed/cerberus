@@ -11,7 +11,7 @@ import {
   ComboItemText,
   createSelectCollection,
 } from '@cerberus-design/react'
-import { VStack } from '@cerberus-design/styled-system/jsx'
+import { VStack } from 'styled-system/jsx'
 import { type PropsWithChildren } from 'react'
 
 const api = {

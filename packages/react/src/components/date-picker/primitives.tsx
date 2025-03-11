@@ -24,8 +24,8 @@ import {
   type DatePickerViewTriggerProps,
   type DatePickerYearSelectProps,
 } from '@ark-ui/react/date-picker'
-import { cx } from '@cerberus/styled-system/css'
-import { datePicker } from '@cerberus/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { datePicker } from 'styled-system/recipes'
 
 /**
  * This module contains the DatePicker primitives.
