@@ -6,7 +6,7 @@
   {
     "label": "Installation",
     "route": "/preset",
-    "tag": "",
+    "tag": "next",
     "type": "route"
   },
   {

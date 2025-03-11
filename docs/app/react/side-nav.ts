@@ -83,7 +83,7 @@ function getCategoryItemTags(
   deprecated: string[],
 ): '' | 'new' | 'next' | 'deprecated' {
   if (newItems.includes(category)) return 'new'
-  if (next.includes(category)) return 'next'
+  if (next.includes(category)) return 'preview'
   if (deprecated.includes(category)) return 'deprecated'
   return ''
 }
