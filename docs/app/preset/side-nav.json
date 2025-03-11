@@ -6,7 +6,7 @@
   {
     "label": "Installation",
     "route": "/preset",
-    "tag": "next",
+    "tag": "new",
     "type": "route"
   },
   {
@@ -46,7 +46,7 @@
   {
     "label": "Shadows",
     "route": "/preset/shadows",
-    "tag": "new",
+    "tag": "",
     "type": "route"
   },
   {
