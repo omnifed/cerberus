@@ -32,14 +32,14 @@ export interface ThemeVariant {
     }
   }
 }
-export type definedTheme = ReturnType<typeof defineThemeContract>
+export type DefinedTheme = ReturnType<typeof defineThemeContract>
 
 /**
  * Define a variant theme to extend Cerberus in the panda.config.ts
  * @param {ThemeVariant} theme - The theme to define.
  * @returns {ThemeVariant} The defined theme.
  */
-export const defineTheme: definedTheme = defineThemeContract<ThemeVariant>({
+export const defineTheme: DefinedTheme = defineThemeContract<ThemeVariant>({
   semanticTokens: {
     ...contractPageTokens,
     ...contractActionTokens,
