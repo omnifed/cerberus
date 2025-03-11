@@ -53,7 +53,7 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
               when={props.tag === 'new'}
               fallback={
                 <Show
-                  when={props.tag === 'preview'}
+                  when={props.tag === 'next'}
                   fallback={
                     <span
                       className={css({
@@ -89,7 +89,7 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
                       userSelect: 'none',
                     })}
                   >
-                    {props.tag}
+                    preview
                   </span>
                 </Show>
               }

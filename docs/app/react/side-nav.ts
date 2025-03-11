@@ -2,7 +2,7 @@ import categoriesData from '@/app/data/categories.react.json'
 import { type NavList } from '../components/SideNav'
 import type { LinkProps } from 'next/link'
 
-export type TagType = '' | 'new' | 'preview' | 'deprecated'
+export type TagType = '' | 'new' | 'next' | 'deprecated'
 
 interface Category {
   name: string
@@ -85,7 +85,7 @@ function getCategoryItemTags(
   deprecated: string[],
 ): TagType {
   if (newItems.includes(category)) return 'new'
-  if (next.includes(category)) return 'preview'
+  if (next.includes(category)) return 'next'
   if (deprecated.includes(category)) return 'deprecated'
   return ''
 }
