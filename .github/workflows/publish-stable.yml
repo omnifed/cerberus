@@ -24,7 +24,7 @@ jobs:
 
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
       - run: pnpm install
-      - run: pnpm build && pnpm publish --access public
+      - run: pnpm build && pnpm publish --access public --no-git-checks
         working-directory: ./packages/react
 
   jsr-publish-preset:

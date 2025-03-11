@@ -20,7 +20,7 @@
       "Tooltip"
     ],
     "next": [],
-    "new": ["Accordion", "Avatar", "Notifications"],
+    "new": [],
     "deprecated": []
   },
   "containment": {
@@ -35,7 +35,7 @@
       "Table"
     ],
     "next": [],
-    "new": ["CTA Modal", "Table"],
+    "new": [],
     "deprecated": ["Modal"]
   },
   "navigation": {
@@ -43,7 +43,7 @@
     "description": "Components that help users navigate through the app.",
     "items": ["Menu", "Tabs"],
     "next": [],
-    "new": ["Tabs"],
+    "new": [],
     "deprecated": []
   },
   "selection": {
@@ -60,7 +60,7 @@
       "Switch"
     ],
     "next": [],
-    "new": ["Rating", "Combobox"],
+    "new": [],
     "deprecated": []
   },
   "inputs": {
