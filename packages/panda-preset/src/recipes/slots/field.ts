@@ -1,4 +1,4 @@
-import { fieldAnatomy } from '@ark-ui/anatomy'
+import { fieldAnatomy } from '@ark-ui/react'
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { focusStates, formStates } from '../shared/states'
 

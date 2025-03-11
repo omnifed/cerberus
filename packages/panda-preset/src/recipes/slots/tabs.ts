@@ -1,5 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { tabsAnatomy } from '@ark-ui/anatomy'
+import { tabsAnatomy } from '@ark-ui/react'
 import { action, secondaryAction } from '../shared/palettes'
 import { focusStates, formStates } from '../shared/states'
 

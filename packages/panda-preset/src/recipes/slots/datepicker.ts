@@ -1,5 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { datePickerAnatomy } from '@ark-ui/anatomy'
+import { datePickerAnatomy } from '@ark-ui/react'
 import { focusStates } from '../shared/states'
 import { input } from '../shared/input.base'
 
