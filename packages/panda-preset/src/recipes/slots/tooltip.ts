@@ -1,5 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { tooltipAnatomy } from '@ark-ui/anatomy'
+import { tooltipAnatomy } from '@ark-ui/react'
 import { focusStates } from '../shared/states'
 
 const tooltipBg = 'page.surface.inverse'

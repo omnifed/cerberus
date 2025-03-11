@@ -1,5 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { accordionAnatomy } from '@ark-ui/anatomy'
+import { accordionAnatomy } from '@ark-ui/react'
 import { focusStates } from '../shared/states'
 
 /**

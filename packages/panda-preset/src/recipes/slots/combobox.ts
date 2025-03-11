@@ -1,5 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { comboboxAnatomy } from '@ark-ui/anatomy'
+import { comboboxAnatomy } from '@ark-ui/react'
 import { focusStates, formStates } from '../shared/states'
 import { label } from '../label'
 

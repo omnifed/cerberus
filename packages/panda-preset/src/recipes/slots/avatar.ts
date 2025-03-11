@@ -1,5 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { avatarAnatomy } from '@ark-ui/anatomy'
+import { avatarAnatomy } from '@ark-ui/react'
 import { focusStates } from '../shared/states'
 import { createSlotGradientVariants } from '../shared/helpers'
 

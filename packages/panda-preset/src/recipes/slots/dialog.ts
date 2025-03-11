@@ -1,5 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { dialogAnatomy } from '@ark-ui/anatomy'
+import { dialogAnatomy } from '@ark-ui/react'
 
 /**
  * This module contains the dialog recipe.

@@ -1,5 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { selectAnatomy } from '@ark-ui/anatomy'
+import { selectAnatomy } from '@ark-ui/react'
 import { focusStates, formStates } from '../shared/states'
 import { label } from '../label'
 

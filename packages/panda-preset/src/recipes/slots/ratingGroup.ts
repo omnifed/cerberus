@@ -1,5 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { ratingGroupAnatomy } from '@ark-ui/anatomy'
+import { ratingGroupAnatomy } from '@ark-ui/react'
 import { focusStates } from '../shared/states'
 
 /**
