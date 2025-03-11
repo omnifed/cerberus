@@ -3,8 +3,8 @@
 // Error boundaries must be Client Components
 
 import { Poppins, Recursive } from 'next/font/google'
-import { vstack } from '@cerberus-design/styled-system/patterns'
-import { css, cx } from '@cerberus-design/styled-system/css'
+import { vstack } from 'styled-system/patterns'
+import { css, cx } from 'styled-system/css'
 import { Button } from '@cerberus-design/react'
 import BrokenBoneIcon from './components/icons/broken-bone-icon'
 import { getCodeTheme } from './utils/colors'

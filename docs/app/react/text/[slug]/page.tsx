@@ -1,4 +1,4 @@
-import { Box } from '@cerberus-design/styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 import ApiLinks from '@/app/components/ApiLinks'
 import { getTwoTabsData } from '@/app/components/page-tabs/primitives'
 import type { RouteProps } from '../layout'

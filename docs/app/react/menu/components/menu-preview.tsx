@@ -9,7 +9,7 @@ import {
   MenuSeparator,
   MenuTrigger,
 } from '@cerberus-design/react'
-import { HStack } from '@cerberus-design/styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 import { css } from 'styled-system/css'
 import Link from 'next/link'
 

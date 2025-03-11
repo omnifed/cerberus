@@ -1,5 +1,5 @@
 import { CircularProgress } from '@cerberus-design/react'
-import { hstack } from '@cerberus-design/styled-system/patterns'
+import { hstack } from 'styled-system/patterns'
 
 export function CircularPreview() {
   return (

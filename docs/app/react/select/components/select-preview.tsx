@@ -13,7 +13,7 @@ import {
 } from '@cerberus-design/react'
 import { css, cx } from 'styled-system/css'
 import { hstack } from 'styled-system/patterns'
-import { Box } from '@cerberus-design/styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 import { ChevronDownOutline } from '@carbon/icons-react'
 
 export function SelectBasicPreview() {

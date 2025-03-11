@@ -1,5 +1,5 @@
 import { FieldParts } from '@cerberus-design/react'
-import { Box } from '@cerberus-design/styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 import { css } from 'styled-system/css'
 
 export function BasicTextarea() {

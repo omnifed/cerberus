@@ -1,7 +1,7 @@
 'use client'
 
 import { useRootColors } from '@cerberus-design/react'
-import { VStack } from '@cerberus-design/styled-system/jsx'
+import { VStack } from 'styled-system/jsx'
 import { useEffect, useRef } from 'react'
 
 const colorList = ['dataViz.diverging.50', 'dataViz.diverging.200']

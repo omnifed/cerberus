@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Show, ToggleParts, Text } from '@cerberus-design/react'
-import { VStack } from '@cerberus-design/styled-system/jsx'
+import { VStack } from 'styled-system/jsx'
 import { useState } from 'react'
 
 export default function ShowPreview() {

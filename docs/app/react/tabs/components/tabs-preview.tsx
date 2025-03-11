@@ -1,6 +1,6 @@
 import { Tabs } from '@cerberus-design/react'
-import { Box } from '@cerberus-design/styled-system/jsx'
-import { css } from '@cerberus-design/styled-system/css'
+import { Box } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
 
 export function BasicTabsPreview() {
   return (

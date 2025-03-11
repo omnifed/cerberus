@@ -5,7 +5,7 @@ import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
 import { InformationFilled } from '@carbon/icons-react'
 import { Tooltip, type TooltipProps } from '@cerberus-design/react'
-import { VStack } from '@cerberus-design/styled-system/jsx'
+import { VStack } from 'styled-system/jsx'
 import { css } from 'styled-system/css'
 
 const api = {

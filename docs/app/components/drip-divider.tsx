@@ -1,5 +1,5 @@
 import { RainDrop } from '@carbon/icons-react'
-import { HStack } from '@cerberus-design/styled-system/jsx'
+import { HStack } from 'styled-system/jsx'
 
 export default function DripDivider() {
   return (

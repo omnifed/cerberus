@@ -5,7 +5,7 @@ import CodeBuilder from '@/app/components/code-builder/code-builder'
 import { builder } from '@/app/components/code-builder/helpers'
 import { useCodeBuilder } from '@/app/context/code-builder'
 import { Field, Input, Text } from '@cerberus-design/react'
-import { VStack } from '@cerberus-design/styled-system/jsx'
+import { VStack } from 'styled-system/jsx'
 
 const api = {
   size: builder.Enum('size', ['sm', 'md', 'lg']),

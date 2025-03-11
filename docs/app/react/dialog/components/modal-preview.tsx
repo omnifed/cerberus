@@ -19,8 +19,8 @@ import {
   Portal,
   type DialogProps,
 } from '@cerberus-design/react'
-import { Box, HStack, VStack } from '@cerberus-design/styled-system/jsx'
-import { css } from '@cerberus-design/styled-system/css'
+import { Box, HStack, VStack } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
 
 export function OverviewPreview(props: { id: string }) {
   return (

@@ -1,6 +1,6 @@
 import figma from '@figma/code-connect'
 import { IconButton } from '@cerberus-design/react'
-import { css } from '@cerberus-design/styled-system/css'
+import { css } from 'styled-system/css'
 
 const SELECTION =
   'https://www.figma.com/design/ducwqOCxoxcWc3ReV3FYd8/Digital-University-Component-Library?node-id=7705-20494&m=dev'

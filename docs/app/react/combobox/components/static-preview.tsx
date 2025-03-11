@@ -12,8 +12,8 @@ import {
   Text,
   useStatefulCollection,
 } from '@cerberus-design/react'
-import { Box, VStack } from '@cerberus-design/styled-system/jsx'
-import { css } from '@cerberus-design/styled-system/css'
+import { Box, VStack } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
 import { ChevronDownOutline, Search } from '@carbon/icons-react'
 
 const comboInitialItems = [

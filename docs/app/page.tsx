@@ -1,6 +1,6 @@
 import HomeHero from './components/home-hero'
 import { Scene } from './scene'
-import { vstack } from '@cerberus-design/styled-system/patterns'
+import { vstack } from 'styled-system/patterns'
 
 export default function Home() {
   return (
