@@ -81,7 +81,7 @@ function getCategoryItemTags(
   newItems: string[],
   next: string[],
   deprecated: string[],
-): '' | 'new' | 'next' | 'deprecated' {
+): '' | 'new' | 'preview' | 'deprecated' {
   if (newItems.includes(category)) return 'new'
   if (next.includes(category)) return 'preview'
   if (deprecated.includes(category)) return 'deprecated'
