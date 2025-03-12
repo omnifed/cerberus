@@ -33,7 +33,7 @@ export function PageSideNav(props: PropsWithChildren<PageLayoutProps>) {
           position: 'fixed',
           top: 0,
           left: 0,
-          pt: '9rem',
+          pt: '6rem',
           transform: 'translateX(-100%)',
           width: '12.5rem',
           md: {
@@ -65,7 +65,8 @@ export function PageMainContent(props: PropsWithChildren<PageLayoutProps>) {
         gridItem({
           gridColumnStart: 1,
           gridColumnEnd: 13,
-          py: '9rem',
+          paddingBlockStart: '6rem',
+          paddingBlockEnd: '9rem',
           md: {
             gridColumnStart: 3,
             gridColumnEnd: 11,
@@ -84,7 +85,7 @@ export function PageSections(props: PropsWithChildren<PageLayoutProps>) {
     <div
       className={gridItem({
         display: 'none',
-        pt: '9rem',
+        pt: '6rem',
         md: {
           display: 'block',
           gridColumnStart: 11,

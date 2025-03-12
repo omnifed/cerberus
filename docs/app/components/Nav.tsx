@@ -45,7 +45,7 @@ const navLogoContent = (
         display: 'inline-block',
         pxi: '2',
         rounded: 'sm',
-        w: '4rem',
+        w: '3.25rem',
         _focusVisible: focusStates._focusVisible,
       })}
     >
@@ -132,8 +132,8 @@ export function Nav() {
         },
         md: {
           gridTemplateRows: '1fr',
+          h: '3.75rem',
           pxi: '6',
-          py: '4',
         },
       })}
     >
