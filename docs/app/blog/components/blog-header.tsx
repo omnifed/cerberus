@@ -1,5 +1,5 @@
 import { Avatar, Tag, Text } from '@cerberus-design/react'
-import { Box, HStack, VStack } from '@/styled-system/jsx'
+import { HStack, VStack } from '@/styled-system/jsx'
 import authorData from '../data/authors.json'
 
 type authors = 'caseyBaggz'
