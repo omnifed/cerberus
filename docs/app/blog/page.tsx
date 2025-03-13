@@ -9,7 +9,7 @@ import {
   Container,
 } from '@/styled-system/jsx'
 import CerberusLogo from '@/app/components/cerberus-logo'
-import Link from 'next/Link'
+import Link from 'next/link'
 
 // blog metadata
 import { frontmatter as v018release } from './cerberus-v018-release/page.mdx'
