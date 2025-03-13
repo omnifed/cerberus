@@ -9,7 +9,7 @@ import {
   Container,
 } from '@/styled-system/jsx'
 import CerberusLogo from '@/app/components/cerberus-logo'
-import Link from 'next/link'
+import Link, { type LinkProps } from 'next/link'
 
 // blog metadata
 import { frontmatter as v018release } from './cerberus-v018-release/page.mdx'
@@ -52,7 +52,9 @@ export default function Page() {
         <For each={Object.values(pageData ?? {})}>
           {(frontMatter, idx) => (
             <GridItem key={idx}>
-              <Link href={`/blog/${frontMatter.slug}`}>
+              <Link
+                href={`/blog/${frontMatter.slug}` as LinkProps<string>['href']}
+              >
                 <Box
                   data-placement="top"
                   animationStyle="slide-fade-in"
