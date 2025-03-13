@@ -1,6 +1,7 @@
 import { Admonition, type AdmonitionProps } from '@cerberus-design/react'
 import { css } from 'styled-system/css'
 import { Box } from 'styled-system/jsx'
+import { PropsWithChildren } from 'react'
 
 const cerbAdmonitionStyles = {
   mb: 6,
