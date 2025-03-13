@@ -213,8 +213,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className={css({
           listStyleType: 'decimal',
           listStylePosition: 'inside',
+          paddingBlockEnd: 'lg',
           '& li': {
-            pb: '2',
+            paddingBlockEnd: 'sm',
           },
         })}
         {...props}

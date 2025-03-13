@@ -42,7 +42,7 @@ export default function TwoTabLayout(
               rounded: 'full',
               position: 'sticky',
               shadow: 'md',
-              top: -10,
+              top: -16,
               zIndex: 'sticky',
               '& > :is([data-part=indicator])': {
                 bgGradient: 'to-br',
