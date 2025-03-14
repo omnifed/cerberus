@@ -8,7 +8,7 @@
   "module": "src/index.ts",
   "scripts": {
     "prepare": "panda codegen",
-    "build": "tsup noExternals",
+    "build": "tsup",
     "lint:ts": "tsc --noEmit"
   },
   "peerDependencies": {
@@ -27,16 +27,21 @@
   },
   "publishConfig": {
     "access": "public",
-    "types": "build/index.d.cts",
+    "types": "build/index.d.ts",
     "module": "build/index.js",
     "exports": {
       ".": {
         "import": {
           "types": "./build/index.d.ts",
+          "solid": "./build/index.jsx",
           "default": "./build/index.js"
         }
       },
-      "./*": "./src/components/*/index.tsx",
+      "./*": {
+        "types": "./build/components/*/index.d.ts",
+        "solid": "./build/components/*/index.jsx",
+        "default": "./build/components/*/index.js"
+      },
       "./package.json": "./package.json"
     }
   },
