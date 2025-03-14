@@ -93,6 +93,14 @@ export default tseslint.config(
     files: ['tests/**/*.ts', 'tests/**/*.tsx'],
   },
 
+  {
+    name: 'solid-tests',
+    files: ['solid-tests/**/*.ts', 'solid-tests/**/*.tsx'],
+    // sonarjs is biased to react for jsx so we don't include it here
+    ...solid,
+    rules: {},
+  },
+
   // this must be last
   eslintConfigPrettier,
 )

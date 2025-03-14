@@ -5,6 +5,7 @@
   "browserslist": "> 0.25%, not dead",
   "sideEffects": false,
   "type": "module",
+  "main": "src/index.ts",
   "module": "src/index.ts",
   "scripts": {
     "prepare": "panda codegen",
