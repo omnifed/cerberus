@@ -1,0 +1,61 @@
+{
+  "name": "@cerberus-design/solid",
+  "version": "0.18.0",
+  "description": "The Cerberus Design SolidJS component library.",
+  "browserslist": "> 0.25%, not dead",
+  "sideEffects": false,
+  "type": "module",
+  "module": "src/index.ts",
+  "scripts": {
+    "prepare": "panda codegen",
+    "build": "tsup noExternals",
+    "lint:ts": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@pandacss/dev": "^0.53.1",
+    "solid-js": "*"
+  },
+  "dependencies": {
+    "@ark-ui/solid": "^5.1.0"
+  },
+  "devDependencies": {
+    "@cerberus-design/panda-preset": "workspace:*",
+    "@pandacss/dev": "^0.53.1",
+    "esbuild-plugin-solid": "^0.6.0",
+    "solid-js": "^1.9.5",
+    "tsup": "^8.4.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "types": "build/index.d.cts",
+    "module": "build/index.js",
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./build/index.d.ts",
+          "default": "./build/index.js"
+        }
+      },
+      "./*": "./src/components/*/index.tsx",
+      "./package.json": "./package.json"
+    }
+  },
+  "files": [
+    "build/**/*",
+    "src/**/*"
+  ],
+  "keywords": [
+    "panda-css",
+    "omni-federal",
+    "design-system",
+    "css",
+    "solid-js",
+    "ui",
+    "ui library",
+    "panda-css solid",
+    "digital university",
+    "du design system"
+  ],
+  "author": "developers@omnifederal.com",
+  "license": "ISC"
+}
