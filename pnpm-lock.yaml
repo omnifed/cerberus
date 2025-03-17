@@ -315,9 +315,6 @@ importers:
 
   solid-tests:
     devDependencies:
-      '@carbon/icons':
-        specifier: ^11.57.0
-        version: 11.57.0
       '@cerberus-design/solid':
         specifier: workspace:*
         version: link:../packages/solid
@@ -1110,9 +1107,6 @@ packages:
     resolution: {integrity: sha512-N578SANLJfu5kKYF0jXSa9cFccd8nkg4GMZltoxN5/U6lmCjP2kPRq/zOuH3GXbzXwUlMztdx9A+m3KeaqLi2g==}
     peerDependencies:
       react: '>=16'
-
-  '@carbon/icons@11.57.0':
-    resolution: {integrity: sha512-tA3d/uwKlqIHeBxcHgS3hA6rEVP6qQnqgKsyvoV2j8Jcr1ZqdH71dAXoVzK3Du4mAvtOq4st9bi64DaHMoy+ng==}
 
   '@clack/core@0.4.1':
     resolution: {integrity: sha512-Pxhij4UXg8KSr7rPek6Zowm+5M22rbd2g1nfojHJkxp5YkFqiZ2+YLEM/XGVIzvGOcM0nqjIFxrpDwWRZYWYjA==}
@@ -7821,10 +7815,6 @@ snapshots:
       '@ibm/telemetry-js': 1.9.1
       prop-types: 15.8.1
       react: 19.0.0
-
-  '@carbon/icons@11.57.0':
-    dependencies:
-      '@ibm/telemetry-js': 1.9.1
 
   '@clack/core@0.4.1':
     dependencies:

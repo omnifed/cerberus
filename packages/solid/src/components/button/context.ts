@@ -1,9 +1,9 @@
+import { createContext } from 'solid-js'
+
 /**
  * This module contains the context for the Button component.
  * @module 'button/context'
  */
-
-import { createContext } from 'solid-js'
 
 interface ButtonContextValue {
   pending: boolean

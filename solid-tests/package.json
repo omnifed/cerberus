@@ -10,7 +10,6 @@
     "test:ci": "vitest run"
   },
   "devDependencies": {
-    "@carbon/icons": "^11.57.0",
     "@cerberus-design/solid": "workspace:*",
     "@solidjs/testing-library": "^0.8.10",
     "@testing-library/jest-dom": "^6.6.3",
