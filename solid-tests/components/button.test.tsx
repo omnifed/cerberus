@@ -1,7 +1,6 @@
 import { describe, test, expect } from 'vitest'
 import { render, screen } from '@solidjs/testing-library'
 import { Button, ButtonParts } from '@cerberus-design/solid'
-import Model from '@carbon/icons/es/model/16'
 
 describe('Button', () => {
   test('should render a button element', () => {
@@ -63,7 +62,7 @@ describe('Button', () => {
       <ButtonParts.Root>
         it works
         <ButtonParts.Icon>
-          <Model role="img" />
+          <div aria-hidden role="img" />
         </ButtonParts.Icon>
       </ButtonParts.Root>
     ))

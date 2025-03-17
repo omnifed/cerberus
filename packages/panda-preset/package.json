@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "@ark-ui/react": "^5.0.1",
-    "@ark-ui/solid": "^5.1.0",
     "@cerberus-design/configs": "workspace:*",
     "@pandacss/dev": "^0.53.1",
     "@pandacss/types": "^0.53.1"
