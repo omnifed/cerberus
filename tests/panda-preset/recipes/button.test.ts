@@ -86,9 +86,11 @@ describe('button recipe', () => {
       _hover: {
         bgColor: 'colorPalette.ghost.hover',
       },
-      _active: {
-        bgColor: 'colorPalette.ghost.active',
-        color: 'colorPalette.text.active',
+      _enabled: {
+        _active: {
+          bgColor: 'colorPalette.ghost.active',
+          color: 'colorPalette.text.active',
+        },
       },
       _disabled: {
         bgColor: 'transparent',
@@ -117,8 +119,10 @@ describe('button recipe', () => {
           bgColor: 'colorPalette.bg.initial',
         },
       },
-      _active: {
-        bgColor: 'colorPalette.bg.active',
+      _enabled: {
+        _active: {
+          bgColor: 'colorPalette.bg.active',
+        },
       },
     })
   })

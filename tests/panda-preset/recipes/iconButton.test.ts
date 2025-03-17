@@ -111,9 +111,11 @@ describe('iconButton recipe', () => {
       _hover: {
         bgColor: 'colorPalette.ghost.hover',
       },
-      _active: {
-        bgColor: 'colorPalette.ghost.active',
-        color: 'colorPalette.text.active',
+      _enabled: {
+        _active: {
+          bgColor: 'colorPalette.ghost.active',
+          color: 'colorPalette.text.active',
+        },
       },
       _disabled: {
         bgColor: 'transparent',
@@ -134,8 +136,10 @@ describe('iconButton recipe', () => {
           bgColor: bgInitial,
         },
       },
-      _active: {
-        bgColor: 'colorPalette.bg.active',
+      _enabled: {
+        _active: {
+          bgColor: 'colorPalette.bg.active',
+        },
       },
     })
   })
@@ -152,8 +156,10 @@ describe('iconButton recipe', () => {
           bgColor: bgInitial,
         },
       },
-      _active: {
-        bgColor: 'colorPalette.ghost.active',
+      _enabled: {
+        _active: {
+          bgColor: 'colorPalette.ghost.active',
+        },
       },
     })
   })
