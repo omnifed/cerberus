@@ -29,6 +29,7 @@
     "eslint-config-standard-with-typescript": "^43.0.1",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-solid": "^0.14.5",
     "eslint-plugin-sonarjs": "^2.0.4",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",

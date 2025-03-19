@@ -1,6 +1,7 @@
 packages:
   - 'packages/*'
   - 'tests'
+  - 'solid-tests'
   - 'configs'
   - 'docs'
   - 'figma'
