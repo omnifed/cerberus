@@ -12,7 +12,7 @@ export type TagProps = HTMLArkProps<'span'> & TagVariantProps
 
 /**
  * The Tag component is used to display a meta descriptions.
- * @see https://cerberus.digitalu.design/react/tag
+ * @see https://cerberus.digitalu.design/components/tag
  * @example
  * ```tsx
  * <Tag>Tag</Tag>

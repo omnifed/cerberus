@@ -18,7 +18,7 @@ export type IconButtonProps = IconButtonRawProps & IconButtonVariantProps
 
 /**
  * A component that allows the user to perform actions using an icon
- * @see https://cerberus.digitalu.design/react/icon-button
+ * @see https://cerberus.digitalu.design/components/icon-button
  */
 export function IconButton(props: IconButtonProps) {
   const [{ palette, usage, size }, nativeProps] = splitProps(props, [
