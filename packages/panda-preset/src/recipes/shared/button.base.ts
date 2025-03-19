@@ -50,8 +50,10 @@ export const nonTextStates = {
       bgColor: bgInitial,
     },
   },
-  _active: {
-    bgColor: 'colorPalette.ghost.active',
+  _enabled: {
+    _active: {
+      bgColor: 'colorPalette.ghost.active',
+    },
   },
 }
 
@@ -65,9 +67,11 @@ export const textUsage = {
   _hover: {
     bgColor: 'colorPalette.ghost.hover',
   },
-  _active: {
-    bgColor: 'colorPalette.ghost.active',
-    color: 'colorPalette.text.active',
+  _enabled: {
+    _active: {
+      bgColor: 'colorPalette.ghost.active',
+      color: 'colorPalette.text.active',
+    },
   },
   _disabled: {
     bgColor: 'transparent',
@@ -89,8 +93,10 @@ export const filledUsage = {
       bgColor: bgInitial,
     },
   },
-  _active: {
-    bgColor: 'colorPalette.bg.active',
+  _enabled: {
+    _active: {
+      bgColor: 'colorPalette.bg.active',
+    },
   },
 }
 
