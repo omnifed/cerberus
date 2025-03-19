@@ -20,7 +20,6 @@ export const conditions = {
   isOver: '&:is([data-over=true])',
   isDropped: '&:is([data-dropped=true])',
   isComplete: '&:is([data-complete=true])',
-  disabled: '&:is(:disabled, [disabled], [data-disabled], [aria-disabled])',
   dataReadOnly: '&:is([data-readonly])',
   userInvalid: '&:is(:user-invalid, [aria-invalid], [data-invalid])',
   groupInvalid: '.group:is([data-invalid] &, [aria-invalid]) &',
