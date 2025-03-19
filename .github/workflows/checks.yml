@@ -8,7 +8,7 @@ env:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    name: Tests pass
+    name: Solid tests pass
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -20,11 +20,11 @@ jobs:
 
       - run: pnpm install
       - run: pnpm run test:ci
-        working-directory: ./tests
+        working-directory: ./solid-tests
 
   solid-tests:
     runs-on: ubuntu-latest
-    name: Tests pass
+    name: React tests pass
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
