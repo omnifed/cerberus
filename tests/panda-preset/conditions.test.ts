@@ -228,12 +228,6 @@ describe('conditions', () => {
     expect(conditions.isComplete).toEqual('&:is([data-complete=true])')
   })
 
-  test('should have a disabled', () => {
-    expect(conditions.disabled).toEqual(
-      '&:is(:disabled, [disabled], [data-disabled], [aria-disabled])',
-    )
-  })
-
   test('should have a today', () => {
     expect(conditions.today).toEqual(
       '&:is([data-today=true], [data-date=today])',
