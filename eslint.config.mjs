@@ -31,9 +31,10 @@ export default tseslint.config(
       // Docs use their own eslint config
       'docs/**/*',
       // non-TS files
+      'eslint.config.mjs',
+      'website/postcss.config.cjs',
+      'website/styled-system/**/*',
       'packages/*/styled-system/**/*',
-      'packages/styled-system/**/*',
-      '**/*.mjs',
       // files that are rooted with JS not TS or that we don't need to lint
       // with hardcore TS rules
       'packages/*/tsup.config.ts',
@@ -75,6 +76,14 @@ export default tseslint.config(
   {
     name: '@cerberus-design/solid',
     files: ['packages/solid/**/*.ts', 'packages/solid/**/*.tsx'],
+    // sonarjs is biased to react for jsx so we don't include it here
+    ...solid,
+    rules: {},
+  },
+
+  {
+    name: 'website',
+    files: ['website/**/*.ts', 'website/**/*.tsx'],
     // sonarjs is biased to react for jsx so we don't include it here
     ...solid,
     rules: {},
