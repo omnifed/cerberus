@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "prepare": "husky",
-    "bump:versions": "pnpm --filter configs run -w bump:versions",
+    "bump:versions": "pnpm --filter @cerberus-design/configs run -w bump:versions",
     "lint:es": "eslint . --max-warnings=0",
     "lint:ox": "oxlint --deny-warnings",
     "lint:packages": "pnpm --filter @cerberus-design/* run -w lint:ts",
