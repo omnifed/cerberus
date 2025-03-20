@@ -2,6 +2,7 @@
 
 node_modules
 packages/*/node_modules
+.npmrc
 
 packages/*/build
 packages/*/.tsup
