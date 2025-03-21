@@ -1,4 +1,4 @@
-import { Tag } from '@cerberus-design/solid'
+import { Tag, Text } from '@cerberus-design/solid'
 import { A } from '@solidjs/router'
 import { Index } from 'solid-js'
 import { Box, HStack } from 'styled-system/jsx'
@@ -25,7 +25,7 @@ export function GlobalNav() {
               <Box w="3rem">
                 <CerberusLogo />
               </Box>
-              <p>Cerberus</p>
+              <Text textStyle="heading-2xs">Cerberus</Text>
             </HStack>
           </A>
 

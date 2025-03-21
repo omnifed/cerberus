@@ -13,8 +13,10 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['setup-test.ts'],
-    deps: {
-      inline: ['@ark-ui/solid'],
+    server: {
+      deps: {
+        inline: ['@ark-ui/solid'],
+      },
     },
   },
 })
