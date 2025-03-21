@@ -7,6 +7,7 @@ import { accordion } from './slots/accordion'
 import { admonition } from './slots/admonition'
 import { avatar } from './slots/avatar'
 import { checkbox } from './slots/checkbox'
+import { circularProgress } from './slots/circularProgress'
 import { combobox } from './slots/combobox'
 import { datePicker } from './slots/datepicker'
 import { dialog } from './slots/dialog'
@@ -58,6 +59,7 @@ export const slotRecipes = {
   accordion,
   admonition,
   checkbox,
+  circularProgress,
   combobox,
   datePicker,
   dialog,

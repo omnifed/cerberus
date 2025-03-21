@@ -13,15 +13,13 @@
     "lint:ts": "tsc --noEmit"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^0.53.1",
+    "@pandacss/dev": "^0.53.2",
+    "@ark-ui/solid": "^5.1.1",
     "solid-js": "*"
-  },
-  "dependencies": {
-    "@ark-ui/solid": "^5.1.0"
   },
   "devDependencies": {
     "@cerberus-design/panda-preset": "workspace:*",
-    "@pandacss/dev": "^0.53.1",
+    "@pandacss/dev": "^0.53.2",
     "esbuild-plugin-solid": "^0.6.0",
     "solid-js": "^1.9.5",
     "tsup": "^8.4.0"

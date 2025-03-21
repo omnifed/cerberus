@@ -7,10 +7,12 @@
     "dev": "vinxi dev",
     "build": "vinxi build",
     "start": "vinxi start",
-    "version": "vinxi version"
+    "version": "vinxi version",
+    "lint:ts": "tsc --noEmit"
   },
   "dependencies": {
-    "@cerberus/solid": "npm:@cerberus-design/solid@^0.18.0",
+    "@ark-ui/solid": "^5.1.1",
+    "@cerberus-design/solid": "workspace:*",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.1.0",
@@ -19,7 +21,7 @@
   },
   "devDependencies": {
     "@cerberus-design/panda-preset": "workspace:*",
-    "@pandacss/dev": "^0.53.1",
+    "@pandacss/dev": "^0.53.2",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "engines": {
