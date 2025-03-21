@@ -1,6 +1,5 @@
 import { Show, splitProps } from 'solid-js'
-import { cq } from 'styled-system/patterns'
-import { css } from 'styled-system/css'
+import { circularProgress } from 'styled-system/recipes'
 
 /**
  * This module contains the CircularProgress component.
@@ -55,12 +54,24 @@ export function CircularProgress(props: CircularProgressProps) {
     'title',
     'syntax',
     'bgStyle',
+    'size',
   ])
+
   const strokeW: number = 14
   const radius = `calc(50% * (1 - ${strokeW}/100))`
   const status: string = elProps.syntax ?? 'Done'
   const now: number = elProps.now >= 100 ? 100 : elProps.now
   const bgStyle: string = elProps.bgStyle ?? 'filled'
+  const fallbackSize = '1.1em'
+
+  const sizeProps = elProps.size
+    ? {
+        width: elProps.size ?? fallbackSize,
+        height: elProps.size ?? fallbackSize,
+      }
+    : {}
+
+  const styles = circularProgress()
 
   return (
     <div
@@ -69,26 +80,18 @@ export function CircularProgress(props: CircularProgressProps) {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={now}
-      class={cq({
-        alignSelf: 'stretch',
-        flex: 1,
-        m: '4px',
-        position: 'relative',
-      })}
+      class={styles.root}
       role="progressbar"
     >
       <svg
         data-complete={now === 100}
-        class={css({
-          display: 'block',
-          rounded: 'full',
-          transition: 'all 0.5s ease',
-        })}
+        class={styles.group}
         fill="none"
         stroke-linecap="round"
         stroke-width={strokeW}
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
+        {...sizeProps}
       >
         <title>{elProps.title}</title>
         <desc>{`${now}% ${status}`}</desc>
@@ -107,9 +110,7 @@ export function CircularProgress(props: CircularProgressProps) {
 
         <Show when={bgStyle === 'filled'}>
           <circle
-            class={css({
-              fill: 'page.surface.initial',
-            })}
+            class={styles.base}
             cx="50%"
             cy="50%"
             r={`calc(50% * (1 - ${strokeW}/100))`}
@@ -117,9 +118,7 @@ export function CircularProgress(props: CircularProgressProps) {
           />
         </Show>
         <circle
-          class={css({
-            stroke: 'page.bg.100',
-          })}
+          class={styles.track}
           cx="50%"
           cy="50%"
           r={radius}
@@ -127,13 +126,7 @@ export function CircularProgress(props: CircularProgressProps) {
         />
         <circle
           data-complete={now === 100}
-          class={css({
-            stroke: 'url(#gradient)',
-            transition: 'stroke-dashoffset, stroke 0.5s ease',
-            _isComplete: {
-              stroke: 'success.bg.initial',
-            },
-          })}
+          class={styles.path}
           cx="50%"
           cy="50%"
           fill="none"
@@ -146,11 +139,7 @@ export function CircularProgress(props: CircularProgressProps) {
 
         <g>
           <text
-            class={css({
-              fill: 'page.text.initial',
-              fontFamily: 'mono',
-              textStyle: '1.25rem',
-            })}
+            class={styles.title}
             x="50%"
             y="47%"
             dominant-baseline="middle"
@@ -159,11 +148,7 @@ export function CircularProgress(props: CircularProgressProps) {
             {now}%
           </text>
           <text
-            class={css({
-              fill: 'page.text.100',
-              fontSize: '0.5rem',
-              fontWeight: 600,
-            })}
+            class={styles.description}
             x="50%"
             y="59%"
             dominant-baseline="middle"
