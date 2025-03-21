@@ -121,24 +121,6 @@
       }
     }
   },
-  "3xl": {
-    "$type": "number",
-    "$value": 64,
-    "$description": "",
-    "$extensions": {
-      "com.figma": {
-        "hiddenFromPublishing": false,
-        "scopes": [
-          "WIDTH_HEIGHT",
-          "GAP",
-          "STROKE_FLOAT",
-          "EFFECT_FLOAT",
-          "OPACITY"
-        ],
-        "codeSyntax": {}
-      }
-    }
-  },
   "corner-radii": {
     "sm": {
       "$type": "number",
@@ -162,6 +144,24 @@
           "scopes": ["CORNER_RADIUS"],
           "codeSyntax": {}
         }
+      }
+    }
+  },
+  "3xl": {
+    "$type": "number",
+    "$value": 64,
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": [
+          "WIDTH_HEIGHT",
+          "GAP",
+          "STROKE_FLOAT",
+          "EFFECT_FLOAT",
+          "OPACITY"
+        ],
+        "codeSyntax": {}
       }
     }
   },
