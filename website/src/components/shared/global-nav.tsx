@@ -1,4 +1,4 @@
-import { Tag } from '@cerberus/solid'
+import { Tag } from '@cerberus-design/solid'
 import { A } from '@solidjs/router'
 import { Index } from 'solid-js'
 import { Box, HStack } from 'styled-system/jsx'

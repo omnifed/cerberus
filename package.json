@@ -8,9 +8,10 @@
     "bump:versions": "pnpm --filter @cerberus-design/configs run -w bump:versions",
     "lint:es": "eslint . --max-warnings=0",
     "lint:ox": "oxlint --deny-warnings",
+    "lint:website": "pnpm --filter website run lint:ts",
     "lint:packages": "pnpm --filter @cerberus-design/* run -w lint:ts",
     "lint:tests": "pnpm --filter tests run lint:ts",
-    "lint": "pnpm lint:packages && pnpm lint:tests"
+    "lint": "pnpm lint:packages && pnpm lint:tests && pnpm lint:website"
   },
   "dependencies": {
     "typescript": "^5.8.2"

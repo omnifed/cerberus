@@ -62,8 +62,8 @@ export function CircularProgress(props: CircularProgressProps) {
   const status: string = elProps.syntax ?? 'Done'
   const now: number = elProps.now >= 100 ? 100 : elProps.now
   const bgStyle: string = elProps.bgStyle ?? 'filled'
-  const fallbackSize = '1.1em'
 
+  const fallbackSize = '1.1em'
   const sizeProps = elProps.size
     ? {
         width: elProps.size ?? fallbackSize,

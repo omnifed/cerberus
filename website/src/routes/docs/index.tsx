@@ -5,7 +5,7 @@ import {
   Menu,
   Spinner,
   Tag,
-} from '@cerberus/solid'
+} from '@cerberus-design/solid'
 import { Title } from '@solidjs/meta'
 import { Index } from 'solid-js'
 import { Box, HStack, VStack } from 'styled-system/jsx'
@@ -41,17 +41,16 @@ export default function DocsPage() {
         </HStack>
 
         <h2>Circular Progress</h2>
-        <HStack gap="md" w="full">
+        <HStack w="full">
           <Index each={[0, 25, 50, 75, 100]}>
             {(value) => (
-              <Box w="4rem">
-                <CircularProgress
-                  id={`progress-${value()}`}
-                  label="label"
-                  now={value()}
-                  title="Course completion"
-                />
-              </Box>
+              <CircularProgress
+                id={`progress-${value()}`}
+                label="label"
+                now={value()}
+                title="Course completion"
+                size="5rem"
+              />
             )}
           </Index>
         </HStack>
