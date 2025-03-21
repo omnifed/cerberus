@@ -1,7 +1,11 @@
+import { Text } from '@cerberus-design/solid'
+
 export default function IndexRoute() {
   return (
     <>
-      <h1>Fancy home page that Jack designed</h1>
+      <Text as="h1" textStyle="heading-lg">
+        Fancy home page that Jack designed
+      </Text>
     </>
   )
 }

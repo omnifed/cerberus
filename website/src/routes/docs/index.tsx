@@ -5,6 +5,7 @@ import {
   Menu,
   Spinner,
   Tag,
+  Text,
 } from '@cerberus-design/solid'
 import { Title } from '@solidjs/meta'
 import { Index } from 'solid-js'
@@ -16,7 +17,9 @@ export default function DocsPage() {
       <Title>Docs</Title>
 
       <VStack alignItems="flex-start" gap="lg" px="lg" py="10" w="full">
-        <h2>Buttons</h2>
+        <Text as="h2" textStyle="heading-md">
+          Buttons
+        </Text>
         <HStack gap="md" w="full">
           <Button>test</Button>
           <Button pending>pending</Button>
@@ -26,7 +29,9 @@ export default function DocsPage() {
           <Button size="sm">small</Button>
         </HStack>
 
-        <h2>Icon Buttons</h2>
+        <Text as="h2" textStyle="heading-md">
+          Icon Buttons
+        </Text>
         <HStack gap="md" w="full">
           <IconButton ariaLabel="icon button">x</IconButton>
           <IconButton ariaLabel="icon button" usage="outlined">
@@ -40,7 +45,9 @@ export default function DocsPage() {
           </IconButton>
         </HStack>
 
-        <h2>Circular Progress</h2>
+        <Text as="h2" textStyle="heading-md">
+          Circular Progress
+        </Text>
         <HStack w="full">
           <Index each={[0, 25, 50, 75, 100]}>
             {(value) => (
@@ -55,14 +62,18 @@ export default function DocsPage() {
           </Index>
         </HStack>
 
-        <h2>Spinner</h2>
+        <Text as="h2" textStyle="heading-md">
+          Spinner
+        </Text>
         <HStack gap="md" w="full">
           <Box w="2rem">
             <Spinner />
           </Box>
         </HStack>
 
-        <h2>Tag</h2>
+        <Text as="h2" textStyle="heading-md">
+          Tag
+        </Text>
         <HStack gap="md" w="full">
           <Tag>default</Tag>
           <Tag usage="outlined">outlined</Tag>
@@ -74,7 +85,9 @@ export default function DocsPage() {
           </Tag>
         </HStack>
 
-        <h2>Menu</h2>
+        <Text as="h2" textStyle="heading-md">
+          Menu
+        </Text>
         <HStack gap="md" w="full">
           <Menu.Root>
             <Menu.Trigger
