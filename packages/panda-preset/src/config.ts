@@ -114,9 +114,9 @@ export function createCerberusPreset(options?: PresetOptions): Preset {
   return definePreset({
     ...cerberusPreset,
     globalVars: {
-      '--font-display': options?.displayFont ?? 'sans-serif',
-      '--font-sans': options?.sansFont ?? 'sans-serif',
-      '--font-mono': options?.monoFont ?? 'monospace',
+      '--font-display': options?.displayFont ?? 'Poppins, sans-serif',
+      '--font-sans': options?.sansFont ?? 'Poppins, sans-serif',
+      '--font-mono': options?.monoFont ?? 'Recursive, monospace',
     },
   })
 }
