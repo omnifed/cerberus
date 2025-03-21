@@ -32,6 +32,11 @@ export interface CircularProgressProps {
    * The background style of the CircularProgress
    */
   bgStyle?: 'filled' | 'transparent'
+  /**
+   * The size of the CircularProgress
+   * @default '1.1em'
+   */
+  size?: string
 }
 
 /**

@@ -1,7 +1,4 @@
-'use client'
-
-import { cq } from 'styled-system/patterns'
-import { css } from 'styled-system/css'
+import { circularProgress } from 'styled-system/recipes'
 import type { SVGProps } from 'react'
 import { Show } from './Show'
 
@@ -35,6 +32,11 @@ export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
    * The background style of the CircularProgress
    */
   bgStyle?: 'filled' | 'transparent'
+  /**
+   * The size of the CircularProgress
+   * @default '1.1em'
+   */
+  size?: string
 }
 
 /**
@@ -50,11 +52,21 @@ export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
  * ```
  */
 export function CircularProgress(props: CircularProgressProps) {
+  const { size = '1.1em' } = props
+  const sizeProps = props.size
+    ? {
+        height: size,
+        width: size,
+      }
+    : {}
+
   const strokeW: number = 14
   const radius = `calc(50% * (1 - ${strokeW}/100))`
   const status: string = props.syntax ?? 'Done'
   const now: number = props.now >= 100 ? 100 : props.now
   const bgStyle: string = props.bgStyle ?? 'filled'
+
+  const styles = circularProgress()
 
   return (
     <div
@@ -63,26 +75,18 @@ export function CircularProgress(props: CircularProgressProps) {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={now}
-      className={cq({
-        alignSelf: 'stretch',
-        flex: 1,
-        m: '4px',
-        position: 'relative',
-      })}
+      className={styles.root}
       role="progressbar"
     >
       <svg
         data-complete={now === 100}
-        className={css({
-          display: 'block',
-          rounded: 'full',
-          transition: 'all 0.5s ease',
-        })}
+        className={styles.group}
         fill="none"
         strokeLinecap="round"
         strokeWidth={strokeW}
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
+        {...sizeProps}
       >
         <title>{props.title}</title>
         <desc>{`${now}% ${status}`}</desc>
@@ -101,33 +105,25 @@ export function CircularProgress(props: CircularProgressProps) {
 
         <Show when={bgStyle === 'filled'}>
           <circle
-            className={css({
-              fill: 'page.surface.initial',
-            })}
+            className={styles.base}
             cx="50%"
             cy="50%"
             r={`calc(50% * (1 - ${strokeW}/100))`}
             pathLength="100"
           />
         </Show>
+
         <circle
-          className={css({
-            stroke: 'page.bg.100',
-          })}
+          className={styles.track}
           cx="50%"
           cy="50%"
           r={radius}
           pathLength="100"
         />
+
         <circle
           data-complete={now === 100}
-          className={css({
-            stroke: 'url(#gradient)',
-            transition: 'stroke-dashoffset, stroke 0.5s ease',
-            _isComplete: {
-              stroke: 'success.bg.initial',
-            },
-          })}
+          className={styles.path}
           cx="50%"
           cy="50%"
           fill="none"
@@ -140,11 +136,7 @@ export function CircularProgress(props: CircularProgressProps) {
 
         <g>
           <text
-            className={css({
-              fill: 'page.text.initial',
-              fontFamily: 'mono',
-              textStyle: '1.25rem',
-            })}
+            className={styles.title}
             x="50%"
             y="47%"
             dominantBaseline="middle"
@@ -153,11 +145,7 @@ export function CircularProgress(props: CircularProgressProps) {
             {now}%
           </text>
           <text
-            className={css({
-              fill: 'page.text.100',
-              fontSize: '0.5rem',
-              fontWeight: 600,
-            })}
+            className={styles.description}
             x="50%"
             y="59%"
             dominantBaseline="middle"
