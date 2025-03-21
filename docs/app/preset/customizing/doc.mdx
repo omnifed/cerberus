@@ -49,9 +49,9 @@ export default createCerberusConfig({
 
 #### Extending the Cerberus Preset
 
-You can extend the Cerberus preset by adding your own custom Panda features.
+You can add global customizations by extending the Cerberus preset.
 
-```tsx title="panda.config.ts" {10-19}
+```tsx title="panda.config.ts" {10-11}
 import {
   createCerberusConfig,
   createCerberusPreset,
@@ -61,16 +61,8 @@ import { customButtonRecipe } from './system/recipes/button'
 export default createCerberusConfig({
   clean: true,
   presets: [createCerberusPreset({
-    conditions: {
-      partyTime: '&:is(data-party=true)'
-    },
-    theme: {
-      extend: {
-        recipes: {
-          button: customButtonRecipe,
-        },
-      }
-    }
+    sansFont: 'Poppins',
+    monoFont: 'Recursive',
   })],
 
   include: ['./mdx-components.tsx', './app/**/*.{ts,tsx}'],
