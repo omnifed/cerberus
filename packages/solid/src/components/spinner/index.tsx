@@ -25,6 +25,7 @@ export interface SpinnerProps {
  * ```
  */
 export function Spinner(props: SpinnerProps) {
+  const fallbackSize = '1.1em'
   return (
     <svg
       aria-busy="true"
@@ -32,8 +33,8 @@ export function Spinner(props: SpinnerProps) {
       data-part="root"
       role="status"
       xmlns="http://www.w3.org/2000/svg"
-      height={props.size}
-      width={props.size}
+      height={props.size ?? fallbackSize}
+      width={props.size ?? fallbackSize}
       viewBox="0 0 24 24"
     >
       <g

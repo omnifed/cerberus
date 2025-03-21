@@ -25,11 +25,7 @@ export interface ButtonProps
  */
 export function Button(props: ButtonProps) {
   const [{ palette, usage, shape, size }, { pending = false }, nativeProps] =
-    splitProps(
-      props,
-      ['palette', 'usage', 'shape', 'size'],
-      ['pending', 'class'],
-    )
+    splitProps(props, ['palette', 'usage', 'shape', 'size'], ['pending'])
 
   return (
     <ButtonContext.Provider value={{ pending }}>

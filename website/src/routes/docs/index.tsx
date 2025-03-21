@@ -1,5 +1,6 @@
 import {
   Button,
+  ButtonParts,
   CircularProgress,
   IconButton,
   Menu,
@@ -22,7 +23,10 @@ export default function DocsPage() {
         </Text>
         <HStack gap="md" w="full">
           <Button>test</Button>
-          <Button pending>pending</Button>
+          <ButtonParts.Root pending>
+            <ButtonParts.Icon />
+            pending
+          </ButtonParts.Root>
           <Button usage="outlined">outlined</Button>
           <Button shape="rounded">rounded</Button>
           <Button usage="ghost">ghost</Button>
