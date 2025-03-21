@@ -19,15 +19,15 @@ const spacing: PandaToken = formatSpacingTokens()
 const fonts = {
   display: {
     description: 'Primary font reserved for display headings',
-    value: 'var(--font-poppins)',
+    value: 'var(--font-display, var(--font-poppins, sans-serif))',
   },
   sans: {
     description: 'Primary font used for body and headings',
-    value: 'var(--font-poppins)',
+    value: 'var(--font-sans, var(--font-poppins, sans-serif))',
   },
   mono: {
     description: 'Code font used for any code related scenarios',
-    value: 'var(--font-recursive)',
+    value: 'var(--font-mono, var(--font-recursive, monospace))',
   },
 }
 
