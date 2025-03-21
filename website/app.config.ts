@@ -11,7 +11,7 @@ export default defineConfig({
 
     resolve: {
       alias: {
-        // For some reason tsconfigPaths doesn't include dependency paths
+        // Vite doesn't include dependency paths
         'styled-system': resolve(__dirname, './styled-system'),
       },
     },
