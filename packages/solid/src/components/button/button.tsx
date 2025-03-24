@@ -1,7 +1,7 @@
 import { ark, type HTMLArkProps } from '@ark-ui/solid/factory'
 import { splitProps } from 'solid-js'
-import { cx } from '~/styled-system/css'
-import { button, type ButtonVariantProps } from '~/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { button, type ButtonVariantProps } from 'styled-system/recipes'
 import { ButtonContext } from './context'
 
 /**

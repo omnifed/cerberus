@@ -1,5 +1,5 @@
 import { Show, splitProps } from 'solid-js'
-import { circularProgress } from '~/styled-system/recipes'
+import { circularProgress } from 'styled-system/recipes'
 
 /**
  * This module contains the CircularProgress component.

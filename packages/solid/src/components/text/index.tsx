@@ -13,7 +13,7 @@ import {
   Span,
   Strong,
   type PProps,
-} from '~/styled-system/jsx'
+} from 'styled-system/jsx'
 
 /**
  * This module exports a component for rendering text utilizing the styled-system JSX utility.

@@ -24,10 +24,6 @@
     "noEmit": true,
 
     "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-
-    "paths": {
-      "~/*": ["./*"]
-    }
+    "jsxImportSource": "solid-js"
   }
 }

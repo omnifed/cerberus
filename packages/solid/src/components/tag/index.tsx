@@ -1,7 +1,7 @@
 import { ark, type HTMLArkProps } from '@ark-ui/solid/factory'
 import { splitProps, type ParentProps } from 'solid-js'
-import { cx } from '~/styled-system/css'
-import { tag, type TagVariantProps } from '~/styled-system/recipes'
+import { cx } from 'styled-system/css'
+import { tag, type TagVariantProps } from 'styled-system/recipes'
 
 /**
  * This module contains the tag component.
