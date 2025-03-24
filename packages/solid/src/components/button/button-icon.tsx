@@ -1,6 +1,6 @@
 import { Show, useContext, type ParentProps } from 'solid-js'
 import { ButtonContext } from './context'
-import { Box } from 'styled-system/jsx'
+import { Box } from '~/styled-system/jsx'
 import { Spinner } from '../spinner'
 
 /**

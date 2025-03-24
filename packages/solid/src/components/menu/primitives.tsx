@@ -5,8 +5,8 @@ import {
   type MenuItemProps,
   type MenuSeparatorProps,
 } from '@ark-ui/solid/menu'
-import { menu } from 'styled-system/recipes'
-import { cx } from 'styled-system/css'
+import { menu } from '~/styled-system/recipes'
+import { cx } from '~/styled-system/css'
 
 /**
  * This module contains the Menu primitives.

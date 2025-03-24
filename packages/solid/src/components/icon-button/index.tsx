@@ -1,7 +1,10 @@
 import { ark, type HTMLArkProps } from '@ark-ui/solid/factory'
 import { splitProps } from 'solid-js'
-import { cx } from 'styled-system/css'
-import { iconButton, type IconButtonVariantProps } from 'styled-system/recipes'
+import { cx } from '~/styled-system/css'
+import {
+  iconButton,
+  type IconButtonVariantProps,
+} from '~/styled-system/recipes'
 
 /**
  * This module contains the Icon Button component.
