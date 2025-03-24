@@ -1,0 +1,30 @@
+{
+  "name": "@cerberus/solid",
+  "version": "0.18.1",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./src/index.ts",
+    "./button": "./src/components/button/index.ts",
+    "./circular-progress": "./src/components/circular-progress/index.tsx",
+    "./icon-button": "./src/components/icon-button/index.tsx",
+    "./menu": "./src/components/menu/index.ts",
+    "./spinner": "./src/components/spinner/index.tsx",
+    "./tag": "./src/components/tag/index.tsx",
+    "./text": "./src/components/text/index.tsx"
+  },
+  "imports": {
+    "styled-system/": "./styled-system/"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "lib": ["ESNext", "DOM"],
+    "verbatimModuleSyntax": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "solid-js"
+  },
+  "unstable": ["sloppy-imports"]
+}

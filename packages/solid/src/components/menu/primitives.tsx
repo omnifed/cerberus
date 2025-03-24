@@ -5,6 +5,7 @@ import {
   type MenuItemProps,
   type MenuSeparatorProps,
 } from '@ark-ui/solid/menu'
+import type { JSX } from 'solid-js'
 import { menu } from 'styled-system/recipes'
 import { cx } from 'styled-system/css'
 
@@ -69,7 +70,7 @@ export const MenuPositioner = Menu.Positioner
  *  </MenuContent>
  * </Menu>
  */
-export function MenuContent(props: MenuContentProps) {
+export function MenuContent(props: MenuContentProps): JSX.Element {
   const menuStyles = menu()
   return (
     <MenuPositioner>
@@ -93,7 +94,7 @@ export function MenuContent(props: MenuContentProps) {
  *  </MenuContent>
  * </Menu>
  */
-export function MenuItem(props: MenuItemProps) {
+export function MenuItem(props: MenuItemProps): JSX.Element {
   const menuStyles = menu()
   return <Menu.Item {...props} class={cx(props.class, menuStyles.item)} />
 }
@@ -135,7 +136,7 @@ export const MenuItemGroup = Menu.ItemGroup
  *  </MenuContent>
  * </Menu>
  */
-export function MenuGroupLabel(props: MenuItemGroupLabelProps) {
+export function MenuGroupLabel(props: MenuItemGroupLabelProps): JSX.Element {
   const menuStyles = menu()
   return (
     <Menu.ItemGroupLabel
@@ -164,7 +165,7 @@ export function MenuGroupLabel(props: MenuItemGroupLabelProps) {
  *  </MenuContent>
  * </Menu>
  */
-export function MenuSeparator(props: MenuSeparatorProps) {
+export function MenuSeparator(props: MenuSeparatorProps): JSX.Element {
   const menuStyles = menu()
   return (
     <Menu.Separator {...props} class={cx(props.class, menuStyles.separator)} />

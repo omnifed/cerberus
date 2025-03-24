@@ -1,4 +1,4 @@
-import { Show, splitProps } from 'solid-js'
+import { Show, splitProps, type JSX } from 'solid-js'
 import { circularProgress } from 'styled-system/recipes'
 
 /**
@@ -46,7 +46,7 @@ export interface CircularProgressProps {
  * <CircularProgress now={24} title="Course completion" label="done" />
  * ```
  */
-export function CircularProgress(props: CircularProgressProps) {
+export function CircularProgress(props: CircularProgressProps): JSX.Element {
   const [elProps] = splitProps(props, [
     'id',
     'label',

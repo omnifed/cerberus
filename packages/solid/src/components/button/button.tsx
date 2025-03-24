@@ -1,8 +1,8 @@
 import { ark, type HTMLArkProps } from '@ark-ui/solid/factory'
-import { splitProps } from 'solid-js'
+import { splitProps, type JSX } from 'solid-js'
 import { cx } from 'styled-system/css'
 import { button, type ButtonVariantProps } from 'styled-system/recipes'
-import { ButtonContext } from './context'
+import { ButtonContext } from './context.ts'
 
 /**
  * This module contains the Button component.
@@ -23,7 +23,7 @@ export interface ButtonProps
  * A component that allows the user to perform actions
  * @see https://cerberus.digitalu.design/components/button
  */
-export function Button(props: ButtonProps) {
+export function Button(props: ButtonProps): JSX.Element {
   const [{ palette, usage, shape, size }, { pending = false }, nativeProps] =
     splitProps(props, ['palette', 'usage', 'shape', 'size'], ['pending'])
 

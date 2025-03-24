@@ -1,3 +1,5 @@
+import type { JSX } from 'solid-js'
+
 /**
  * This module contains the Spinner component.
  * @module
@@ -24,7 +26,7 @@ export interface SpinnerProps {
  * </Button>
  * ```
  */
-export function Spinner(props: SpinnerProps) {
+export function Spinner(props: SpinnerProps): JSX.Element {
   const fallbackSize = '1.1em'
   return (
     <svg

@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from '@ark-ui/solid/factory'
-import { splitProps } from 'solid-js'
+import { splitProps, type JSX } from 'solid-js'
 import { cx } from 'styled-system/css'
 import { iconButton, type IconButtonVariantProps } from 'styled-system/recipes'
 
@@ -20,7 +20,7 @@ export type IconButtonProps = IconButtonRawProps & IconButtonVariantProps
  * A component that allows the user to perform actions using an icon
  * @see https://cerberus.digitalu.design/components/icon-button
  */
-export function IconButton(props: IconButtonProps) {
+export function IconButton(props: IconButtonProps): JSX.Element {
   const [{ palette, usage, size }, nativeProps] = splitProps(props, [
     'palette',
     'usage',

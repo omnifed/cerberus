@@ -1,4 +1,4 @@
-import { splitProps } from 'solid-js'
+import { splitProps, type JSX } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 import {
   Em,
@@ -44,7 +44,7 @@ export interface TextProps extends PProps {
  *  Hello, world!
  * </Text>
  */
-export function Text(props: TextProps) {
+export function Text(props: TextProps): JSX.Element {
   const [{ as = 'p' }, pandaJSXProps] = splitProps(props, ['as'])
   return <Dynamic component={TextOptions[as]} {...pandaJSXProps} />
 }

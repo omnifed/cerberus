@@ -16,7 +16,7 @@ import {
   MenuRoot,
   MenuSeparator,
   MenuTrigger,
-} from './primitives'
+} from './primitives.tsx'
 
 /**
  * This module contains the parts of the Button component.

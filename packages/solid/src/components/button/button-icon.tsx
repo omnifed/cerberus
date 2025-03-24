@@ -1,4 +1,4 @@
-import { Show, useContext, type ParentProps } from 'solid-js'
+import { Show, useContext, type ParentProps, type JSX } from 'solid-js'
 import { ButtonContext } from './context'
 import { Box } from 'styled-system/jsx'
 import { Spinner } from '../spinner'
@@ -12,7 +12,7 @@ import { Spinner } from '../spinner'
  * An icon to display in a button that utilizes the pending state to display
  * a loading spinner.
  */
-export function ButtonIcon(props: ParentProps) {
+export function ButtonIcon(props: ParentProps): JSX.Element {
   const { pending } = useContext(ButtonContext)
   return (
     <Show when={pending} fallback={<>{props.children}</>}>

@@ -1,2 +1,2 @@
-export * from './parts'
-export * from './primitives'
+export * from './parts.ts'
+export * from './primitives.tsx'

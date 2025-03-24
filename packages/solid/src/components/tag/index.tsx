@@ -1,5 +1,5 @@
 import { ark, type HTMLArkProps } from '@ark-ui/solid/factory'
-import { splitProps, type ParentProps } from 'solid-js'
+import { splitProps, type JSX, type ParentProps } from 'solid-js'
 import { cx } from 'styled-system/css'
 import { tag, type TagVariantProps } from 'styled-system/recipes'
 
@@ -18,7 +18,7 @@ export type TagProps = HTMLArkProps<'span'> & TagVariantProps
  * <Tag>Tag</Tag>
  * ```
  */
-export function Tag(props: ParentProps<TagProps>) {
+export function Tag(props: ParentProps<TagProps>): JSX.Element {
   const [{ palette, shape, gradient, usage }, nativeProps] = splitProps(props, [
     'palette',
     'shape',
