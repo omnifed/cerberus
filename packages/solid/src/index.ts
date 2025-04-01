@@ -1,5 +1,6 @@
 // Components
 
+export * from './components/avatar/index'
 export * from './components/button/index'
 export * from './components/circular-progress/index'
 export * from './components/icon-button/index'
