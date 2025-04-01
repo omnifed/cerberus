@@ -1,8 +1,10 @@
 import {
+  Avatar,
   Button,
   ButtonParts,
   CircularProgress,
   IconButton,
+  makeAvatarInitials,
   Menu,
   Spinner,
   Tag,
@@ -18,6 +20,67 @@ export default function DocsPage() {
       <Title>Docs</Title>
 
       <VStack alignItems="flex-start" gap="lg" px="lg" py="10" w="full">
+        <Text as="h2" textStyle="heading-md">
+          Avatar
+        </Text>
+        <HStack gap="md" w="full">
+          <Avatar
+            alt="no img"
+            fallback={makeAvatarInitials('no img')}
+            src=""
+            size="xs"
+          />
+          <Avatar
+            alt="no img"
+            fallback={makeAvatarInitials('no img')}
+            src=""
+            gradient="charon-dark"
+            size="sm"
+          />
+          <Avatar
+            alt="no img"
+            fallback={makeAvatarInitials('no img')}
+            src=""
+            gradient="asphodel-light"
+            size="md"
+          />
+          <Avatar
+            alt="no img"
+            fallback={makeAvatarInitials('no img')}
+            src=""
+            gradient="asphodel-dark"
+            size="lg"
+          />
+          <Avatar
+            alt="no img"
+            fallback={makeAvatarInitials('no img')}
+            src=""
+            gradient="amphiaraus-light"
+            size="xl"
+          />
+          <Avatar
+            alt="no img"
+            fallback={makeAvatarInitials('no img')}
+            src="https://avatars.githubusercontent.com/u/1023103?v=4"
+            gradient="amphiaraus-dark"
+            size="2xl"
+          />
+          <Avatar
+            alt="no img"
+            fallback={makeAvatarInitials('no img')}
+            src="https://avatars.githubusercontent.com/u/1023102?v=4"
+            gradient="hades-light"
+            size="3xl"
+          />
+          <Avatar
+            alt="no img"
+            fallback={makeAvatarInitials('no img')}
+            src="https://avatars.githubusercontent.com/u/1023100?v=4"
+            gradient="hades-dark"
+            size="4xl"
+          />
+        </HStack>
+
         <Text as="h2" textStyle="heading-md">
           Buttons
         </Text>

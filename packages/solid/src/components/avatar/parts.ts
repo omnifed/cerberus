@@ -4,7 +4,8 @@ import type {
   AvatarRootProps,
 } from '@ark-ui/solid/avatar'
 import type { JSX } from 'solid-js'
-import { AvatarFallback, AvatarImage, AvatarRoot } from './primitives'
+import { AvatarFallback, AvatarImage } from './primitives'
+import { AvatarRoot } from './root'
 
 /**
  * This module contains the parts of the Avatar component.
