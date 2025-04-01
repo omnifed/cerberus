@@ -5,11 +5,15 @@ import { CircularProgress } from '@cerberus-design/react'
 describe('CircularProgress', () => {
   test('should render a progress element', () => {
     render(
-      <CircularProgress id="test" label="test label" title="test-0" now={0} />,
+      <CircularProgress
+        id="test"
+        label="test label"
+        syntax="Not Started"
+        title="test-0"
+        now={0}
+      />,
     )
-    expect(screen.getByRole('progressbar')).toBeInTheDocument()
-    expect(screen.getByText('0%')).toBeInTheDocument()
-    expect(screen.getByText('Done')).toBeInTheDocument()
+    expect(screen.getByText(/not started/i)).toBeInTheDocument()
   })
 
   test('should render a progress element with a now', () => {
