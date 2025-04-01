@@ -1,6 +1,7 @@
 import { circularProgress } from 'styled-system/recipes'
 import type { SVGProps } from 'react'
 import { Show } from './Show'
+import { For } from './for'
 
 /**
  * This module contains the CircularProgress component.
@@ -90,6 +91,7 @@ export function CircularProgress(props: CircularProgressProps) {
       >
         <title>{props.title}</title>
         <desc>{`${now}% ${status}`}</desc>
+
         <defs>
           <linearGradient id="gradient">
             <stop
@@ -121,39 +123,61 @@ export function CircularProgress(props: CircularProgressProps) {
           pathLength="100"
         />
 
-        <circle
-          data-complete={now === 100}
-          className={styles.path}
-          cx="50%"
-          cy="50%"
-          fill="none"
-          r={radius}
-          pathLength="100"
-          strokeDasharray="100"
-          strokeDashoffset={100 - now}
-          transform="rotate(-90 50 50)"
-        />
-
-        <g>
-          <text
-            className={styles.title}
-            x="50%"
-            y="47%"
-            dominantBaseline="middle"
-            textAnchor="middle"
-          >
-            {now}%
-          </text>
-          <text
-            className={styles.description}
-            x="50%"
-            y="59%"
-            dominantBaseline="middle"
-            textAnchor="middle"
-          >
-            {status}
-          </text>
-        </g>
+        <Show
+          when={now > 0}
+          fallback={
+            <text
+              data-fallback
+              className={styles.description}
+              x="50%"
+              y="27%"
+              dominantBaseline="middle"
+              textAnchor="middle"
+              textLength="65%"
+            >
+              <For each={status.split(' ')}>
+                {(word, idx) => (
+                  <tspan key={`${word}:${idx}`} x="50%" dy="1.2em">
+                    {word}
+                  </tspan>
+                )}
+              </For>
+            </text>
+          }
+        >
+          <circle
+            data-complete={now === 100}
+            className={styles.path}
+            cx="50%"
+            cy="50%"
+            fill="none"
+            r={radius}
+            pathLength="100"
+            strokeDasharray="100"
+            strokeDashoffset={100 - now}
+            transform="rotate(-90 50 50)"
+          />
+          <g>
+            <text
+              className={styles.title}
+              x="50%"
+              y="47%"
+              dominantBaseline="middle"
+              textAnchor="middle"
+            >
+              {now}%
+            </text>
+            <text
+              className={styles.description}
+              x="50%"
+              y="59%"
+              dominantBaseline="middle"
+              textAnchor="middle"
+            >
+              {status}
+            </text>
+          </g>
+        </Show>
       </svg>
     </div>
   )

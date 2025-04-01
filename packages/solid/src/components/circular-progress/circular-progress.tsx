@@ -1,4 +1,4 @@
-import { Show, splitProps } from 'solid-js'
+import { Index, Show, splitProps } from 'solid-js'
 import { circularProgress } from 'styled-system/recipes'
 
 /**
@@ -95,6 +95,7 @@ export function CircularProgress(props: CircularProgressProps) {
       >
         <title>{elProps.title}</title>
         <desc>{`${now}% ${status}`}</desc>
+
         <defs>
           <linearGradient id="gradient">
             <stop
@@ -117,6 +118,7 @@ export function CircularProgress(props: CircularProgressProps) {
             pathLength="100"
           />
         </Show>
+
         <circle
           class={styles.track}
           cx="50%"
@@ -124,39 +126,63 @@ export function CircularProgress(props: CircularProgressProps) {
           r={radius}
           pathLength="100"
         />
-        <circle
-          data-complete={now === 100}
-          class={styles.path}
-          cx="50%"
-          cy="50%"
-          fill="none"
-          r={radius}
-          pathLength="100"
-          stroke-dasharray="100"
-          stroke-dashoffset={100 - now}
-          transform="rotate(-90 50 50)"
-        />
 
-        <g>
-          <text
-            class={styles.title}
-            x="50%"
-            y="47%"
-            dominant-baseline="middle"
-            text-anchor="middle"
-          >
-            {now}%
-          </text>
-          <text
-            class={styles.description}
-            x="50%"
-            y="59%"
-            dominant-baseline="middle"
-            text-anchor="middle"
-          >
-            {status}
-          </text>
-        </g>
+        <Show
+          when={now > 0}
+          fallback={
+            <text
+              data-fallback
+              class={styles.description}
+              x="50%"
+              y="27%"
+              dominant-baseline="middle"
+              text-anchor="middle"
+              textLength="65%"
+            >
+              <Index each={status.split(' ')}>
+                {(word) => (
+                  <tspan x="50%" dy="1.2em">
+                    {word()}
+                  </tspan>
+                )}
+              </Index>
+            </text>
+          }
+        >
+          <circle
+            data-complete={now === 100}
+            class={styles.path}
+            cx="50%"
+            cy="50%"
+            fill="none"
+            r={radius}
+            pathLength="100"
+            stroke-dasharray="100"
+            stroke-dashoffset={100 - now}
+            transform="rotate(-90 50 50)"
+          />
+
+          <g>
+            <text
+              class={styles.title}
+              x="50%"
+              y="47%"
+              dominant-baseline="middle"
+              text-anchor="middle"
+            >
+              {now}%
+            </text>
+            <text
+              class={styles.description}
+              x="50%"
+              y="59%"
+              dominant-baseline="middle"
+              text-anchor="middle"
+            >
+              {status}
+            </text>
+          </g>
+        </Show>
       </svg>
     </div>
   )

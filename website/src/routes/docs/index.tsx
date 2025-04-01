@@ -60,6 +60,7 @@ export default function DocsPage() {
                 label="label"
                 now={value()}
                 title="Course completion"
+                syntax={value() === 0 ? 'Not Started' : 'Done'}
                 size="5rem"
               />
             )}

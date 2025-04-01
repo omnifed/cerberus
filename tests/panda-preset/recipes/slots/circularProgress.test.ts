@@ -52,7 +52,7 @@ describe('circularProgress recipe', () => {
     expect(circularProgress.base?.title).toMatchObject({
       fill: 'page.text.initial',
       fontFamily: 'mono',
-      textStyle: '1.25rem',
+      fontSize: '1.25rem',
     })
   })
 
@@ -61,6 +61,10 @@ describe('circularProgress recipe', () => {
       fill: 'page.text.100',
       fontSize: '0.5rem',
       fontWeight: 600,
+      '&:is([data-fallback])': {
+        textStyle: 'heading-xs',
+        fontSize: '0.75rem',
+      },
     })
   })
 })
