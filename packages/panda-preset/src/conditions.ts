@@ -24,6 +24,7 @@ export const conditions = {
   userInvalid: '&:is(:user-invalid, [aria-invalid], [data-invalid])',
   groupInvalid: '.group:is([data-invalid] &, [aria-invalid]) &',
   groupChecked: '.group:is([data-checked="true"] &, [aria-checked="true"]) &',
+  notDisabled: '&:is(:not([disabled]), [data-disabled=false])',
 
   // dates
   today: '&:is([data-today=true], [data-date=today])',

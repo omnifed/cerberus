@@ -109,7 +109,9 @@ describe('iconButton recipe', () => {
       transitionDuration: 'fast',
       transitionTimingFunction: 'ease-in-out',
       _hover: {
-        bgColor: 'colorPalette.ghost.hover',
+        _notDisabled: {
+          bgColor: 'colorPalette.ghost.hover',
+        },
       },
       _enabled: {
         _active: {
@@ -118,7 +120,9 @@ describe('iconButton recipe', () => {
         },
       },
       _disabled: {
-        bgColor: 'transparent',
+        _hover: {
+          bgColor: 'transparent',
+        },
         _active: {
           color: initialText,
         },
@@ -131,9 +135,8 @@ describe('iconButton recipe', () => {
       bgColor: bgInitial,
       color: initialText,
       _hover: {
-        bgColor: 'colorPalette.bg.hover',
-        _disabled: {
-          bgColor: bgInitial,
+        _notDisabled: {
+          bgColor: 'colorPalette.bg.hover',
         },
       },
       _enabled: {
@@ -151,9 +154,8 @@ describe('iconButton recipe', () => {
       border: '2px solid',
       borderColor: 'colorPalette.border.initial',
       _hover: {
-        bgColor: 'colorPalette.ghost.hover',
-        _disabled: {
-          bgColor: bgInitial,
+        _notDisabled: {
+          bgColor: 'colorPalette.ghost.hover',
         },
       },
       _enabled: {
