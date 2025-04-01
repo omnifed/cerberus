@@ -45,9 +45,8 @@ export const sharpRadii = {
 export const nonTextStates = {
   color: text200,
   _hover: {
-    bgColor: 'colorPalette.ghost.hover',
-    _disabled: {
-      bgColor: bgInitial,
+    _notDisabled: {
+      bgColor: 'colorPalette.ghost.hover',
     },
   },
   _enabled: {
@@ -65,7 +64,9 @@ export const textUsage = {
   transitionDuration: 'fast',
   transitionTimingFunction: 'ease-in-out',
   _hover: {
-    bgColor: 'colorPalette.ghost.hover',
+    _notDisabled: {
+      bgColor: 'colorPalette.ghost.hover',
+    },
   },
   _enabled: {
     _active: {
@@ -88,9 +89,8 @@ export const filledUsage = {
   bgColor: bgInitial,
   color: textInitial,
   _hover: {
-    bgColor: 'colorPalette.bg.hover',
-    _disabled: {
-      bgColor: bgInitial,
+    _notDisabled: {
+      bgColor: 'colorPalette.bg.hover',
     },
   },
   _enabled: {
@@ -105,11 +105,6 @@ export const outlinedUsage = {
   bgColor: 'colorPalette.ghost.initial',
   border: '2px solid',
   borderColor: 'colorPalette.border.initial',
-  _disabled: {
-    _hover: {
-      bgColor: 'colorPalette.ghost.initial',
-    },
-  },
 }
 
 export const notifyStyles = {
@@ -149,7 +144,21 @@ export const buttonCompoundVariants: Pretty<
     css: {
       color: 'colorPalette.text.200',
       _hover: {
-        color: 'colorPalette.text.inverse',
+        _notDisabled: {
+          color: 'colorPalette.text.inverse',
+        },
+      },
+    },
+  },
+  {
+    palette: 'danger',
+    usage: 'ghost',
+    css: {
+      color: 'colorPalette.text.initial',
+      _hover: {
+        _notDisabled: {
+          color: 'colorPalette.text.100',
+        },
       },
     },
   },

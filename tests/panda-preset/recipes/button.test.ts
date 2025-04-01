@@ -84,7 +84,9 @@ describe('button recipe', () => {
       transitionDuration: 'fast',
       transitionTimingFunction: 'ease-in-out',
       _hover: {
-        bgColor: 'colorPalette.ghost.hover',
+        _notDisabled: {
+          bgColor: 'colorPalette.ghost.hover',
+        },
       },
       _enabled: {
         _active: {
@@ -93,7 +95,9 @@ describe('button recipe', () => {
         },
       },
       _disabled: {
-        bgColor: 'transparent',
+        _hover: {
+          bgColor: 'transparent',
+        },
         _active: {
           color: initialText,
         },
@@ -114,9 +118,8 @@ describe('button recipe', () => {
       bgColor: 'colorPalette.bg.initial',
       color: initialText,
       _hover: {
-        bgColor: 'colorPalette.bg.hover',
-        _disabled: {
-          bgColor: 'colorPalette.bg.initial',
+        _notDisabled: {
+          bgColor: 'colorPalette.bg.hover',
         },
       },
       _enabled: {
@@ -164,7 +167,21 @@ describe('button recipe', () => {
         usage: 'filled',
         css: {
           _hover: {
-            color: 'colorPalette.text.inverse',
+            _notDisabled: {
+              color: 'colorPalette.text.inverse',
+            },
+          },
+        },
+      },
+      {
+        palette: 'danger',
+        usage: 'ghost',
+        css: {
+          color: 'colorPalette.text.initial',
+          _hover: {
+            _notDisabled: {
+              color: 'colorPalette.text.100',
+            },
           },
         },
       },

@@ -82,6 +82,12 @@ describe('conditions', () => {
     )
   })
 
+  test('should have a notDisabled', () => {
+    expect(conditions.notDisabled).toEqual(
+      '&:is(:not([disabled]), [data-disabled=false])',
+    )
+  })
+
   test('should have a dataReadOnly', () => {
     expect(conditions.dataReadOnly).toEqual('&:is([data-readonly])')
   })
