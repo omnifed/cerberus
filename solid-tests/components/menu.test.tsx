@@ -3,6 +3,13 @@ import { render, screen, waitFor } from '@solidjs/testing-library'
 import { Menu } from '@cerberus-design/solid'
 import userEvent from '@testing-library/user-event'
 
+const ResizeObserver = vi.fn(() => ({
+  observe: vi.fn(),
+  unobserve: vi.fn(),
+  disconnect: vi.fn(),
+}))
+vi.stubGlobal('ResizeObserver', ResizeObserver)
+
 describe('Menu', () => {
   test('should render a basic menu', async () => {
     render(() => (
