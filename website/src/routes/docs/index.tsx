@@ -6,12 +6,13 @@ import {
   IconButton,
   makeAvatarInitials,
   Menu,
+  Rating,
   Spinner,
   Tag,
   Text,
 } from '@cerberus-design/solid'
 import { Title } from '@solidjs/meta'
-import { Index } from 'solid-js'
+import { Index, Show } from 'solid-js'
 import { Box, HStack, VStack } from 'styled-system/jsx'
 
 export default function DocsPage() {
@@ -128,6 +129,21 @@ export default function DocsPage() {
               />
             )}
           </Index>
+        </HStack>
+
+        <Text as="h2" textStyle="heading-md">
+          Rating
+        </Text>
+        <HStack gap="md" w="full">
+          <Box w="2rem">
+            <Rating defaultValue={3}>
+              {(context) => (
+                <Show when={context().highlighted} fallback={<>N</>}>
+                  <>F</>
+                </Show>
+              )}
+            </Rating>
+          </Box>
         </HStack>
 
         <Text as="h2" textStyle="heading-md">

@@ -28,7 +28,7 @@ interface RatingPartsValue {
   /**
    * The container of the rating.
    */
-  Root: (props: RatingGroupRootProps) => JSX.Element
+  Root: (props: RatingGroupRootProps & RatingGroupVariantProps) => JSX.Element
   /**
    * The label of the rating.
    */
