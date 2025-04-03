@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@cerberus-design/panda-preset": "workspace:*",
-    "@pandacss/dev": "^0.53.2",
+    "@pandacss/dev": "^0.53.3",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "engines": {
