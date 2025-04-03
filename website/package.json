@@ -11,7 +11,7 @@
     "lint:ts": "tsc --noEmit"
   },
   "dependencies": {
-    "@ark-ui/solid": "^5.1.1",
+    "@ark-ui/solid": "^5.4.0",
     "@cerberus-design/solid": "workspace:*",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@cerberus-design/panda-preset": "workspace:*",
-    "@pandacss/dev": "^0.53.2",
+    "@pandacss/dev": "^0.53.3",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "engines": {
