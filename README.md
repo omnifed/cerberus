@@ -39,6 +39,7 @@ This will install all the dependencies for the project including the workspaces.
 ## Workspace Context
 
 - docs: The official docs website for Cerberus.
+- website: The official v1 docs website for Cerberus built with SolidJS.
 - figma: Figma related files that run jobs on the CI using the Figma API.
 - packages: The core packages that make up Cerberus.
 - tests: The test suite for Cerberus & React related packages.
