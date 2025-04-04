@@ -13,7 +13,7 @@ This is a monorepo that uses [pnPm](https://pnpm.io/) to manage dependencies and
 
 ## JSR Requirements
 
-We follow the slow requirements process of the JSR publishing standard. This means you will be required to define the return types of all your exports which result in the following:
+We follow the slow types requirements process of the JSR publishing standard. This means you will be required to define the return types of all your exports which result in the following:
 
 1. Significantly improve your package users' type checking performance.
 2. Improve the automatic documentation generation.
@@ -41,11 +41,11 @@ This will install all the dependencies for the project including the workspaces.
 - docs: The official docs website for Cerberus.
 - figma: Figma related files that run jobs on the CI using the Figma API.
 - packages: The core packages that make up Cerberus.
-- tests: The test suite for Cerberus.
+- tests: The test suite for Cerberus & React related packages.
+- solid-tests: The test suite for Solid Cerberus packages.
 
 ### Cerberus Package Context
 
 - **panda-preset**: The default preset for Cerberus. This is where all the styles live.
 - **react**: The React components for Cerberus. React only owns components, not styles.
-- **styled-system**: The source of truth preset build for Cerberus. This how people consume the styles from the preset. **This is the only package that should not be touched. It is purely generated files.**
-- **icons**: DEPRECATED. Will be deleted in the future.
+- **solid**: The SolidJS components for Cerberus. Solid only owns components, not sytles.
