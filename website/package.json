@@ -11,7 +11,7 @@
     "lint:ts": "tsc --noEmit"
   },
   "dependencies": {
-    "@ark-ui/solid": "^5.4.0",
+    "@ark-ui/solid": "^5.5.0",
     "@cerberus-design/solid": "workspace:*",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
