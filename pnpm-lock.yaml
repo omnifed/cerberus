@@ -251,8 +251,8 @@ importers:
         specifier: ^0.53.2
         version: 0.53.2(jsdom@26.0.0)(typescript@5.8.2)
       '@pandacss/types':
-        specifier: ^0.53.2
-        version: 0.53.2
+        specifier: ^0.53.3
+        version: 0.53.3
 
   packages/react:
     dependencies:
@@ -367,8 +367,8 @@ importers:
         specifier: ^14.11.0
         version: 14.11.0
       '@pandacss/types':
-        specifier: ^0.46.0
-        version: 0.46.0
+        specifier: ^0.53.3
+        version: 0.53.3
       '@testing-library/jest-dom':
         specifier: ^6.6.3
         version: 6.6.3
@@ -1889,9 +1889,6 @@ packages:
 
   '@pandacss/token-dictionary@0.53.3':
     resolution: {integrity: sha512-8P3Ka/B16yIGkYPTFJRwyZblocijy6nJvzD4WQlPzosZUq/06CfsqmVFXcb7VpbNXIyzQaxgyG1Beg4+/+HVcQ==}
-
-  '@pandacss/types@0.46.0':
-    resolution: {integrity: sha512-OFp5lGeJ50Kv5hg3zYwNsp0EcZLPItCp/CgYkbdKcfZAjvnEFNgWItRXAKwu1M+1Z0TL6yEz9pvkvWKEyMmJMg==}
 
   '@pandacss/types@0.53.2':
     resolution: {integrity: sha512-sLpgeTM0XBszQXUDaIpvhrffm9MYeR6CdM9BMfP9HCpy8aXF+6w98FA+oiwJN2bSrCYfCgd2TlFY+R7WBk0oRQ==}
@@ -10081,8 +10078,6 @@ snapshots:
       '@pandacss/shared': 0.53.3
       '@pandacss/types': 0.53.3
       ts-pattern: 5.0.8
-
-  '@pandacss/types@0.46.0': {}
 
   '@pandacss/types@0.53.2': {}
 

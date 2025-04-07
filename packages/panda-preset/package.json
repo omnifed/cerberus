@@ -22,7 +22,7 @@
     "@ark-ui/react": "^5.0.1",
     "@cerberus-design/configs": "workspace:*",
     "@pandacss/dev": "^0.53.2",
-    "@pandacss/types": "^0.53.2"
+    "@pandacss/types": "^0.53.3"
   },
   "publishConfig": {
     "access": "public",
