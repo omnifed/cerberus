@@ -28,7 +28,7 @@
     "@expressive-code/plugin-line-numbers": "^0.40.2",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "^15.2.3",
+    "@next/mdx": "^15.2.4",
     "@pandacss/dev": "^0.53.3",
     "@pandacss/types": "^0.53.3",
     "@shikijs/rehype": "^3.1.0",
