@@ -7,7 +7,7 @@ import {
 import { splitProps } from 'solid-js'
 import { avatar, type AvatarVariantProps } from 'styled-system/recipes'
 import { css, cx } from 'styled-system/css'
-import type { WithCss } from 'styled-system/types'
+import type { WithCss } from '../types'
 
 /**
  * This module provides the primitive components for the Avatar component.
