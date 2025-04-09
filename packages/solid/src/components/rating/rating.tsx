@@ -3,8 +3,9 @@ import type {
   UseRatingGroupItemContext,
 } from '@ark-ui/solid/rating-group'
 import type { RatingGroupVariantProps } from 'styled-system/recipes'
-import { RatingParts } from './parts'
 import { Index, Show, splitProps, type JSXElement } from 'solid-js'
+import type { WithCss } from 'styled-system/types'
+import { RatingParts } from './parts'
 
 /**
  * This module contains the abstracted Rating component.
@@ -13,7 +14,8 @@ import { Index, Show, splitProps, type JSXElement } from 'solid-js'
 
 export interface RatingProps
   extends Omit<RatingGroupRootProps, 'children'>,
-    RatingGroupVariantProps {
+    RatingGroupVariantProps,
+    WithCss {
   /**
    * The label of the rating component.
    */
@@ -44,7 +46,7 @@ export function Rating(props: RatingProps) {
   const [{ label }, styleProps, rootProps] = splitProps(
     props,
     ['label'],
-    ['orientation', 'palette', 'size'],
+    ['orientation', 'palette', 'size', 'css'],
   )
 
   return (

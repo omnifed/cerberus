@@ -9,11 +9,12 @@ import {
   type RatingGroupRootProps,
 } from '@ark-ui/solid/rating-group'
 import { splitProps } from 'solid-js'
-import { cx } from 'styled-system/css'
+import { css, cx } from 'styled-system/css'
 import {
   ratingGroup,
   type RatingGroupVariantProps,
 } from 'styled-system/recipes'
+import type { WithCss } from 'styled-system/types'
 
 /**
  * This module contains the primitives of the Rating component.
@@ -24,33 +25,44 @@ import {
  * The root primitive of the Rating component.
  */
 export function RatingRoot(
-  props: RatingGroupRootProps & RatingGroupVariantProps,
+  props: RatingGroupRootProps & RatingGroupVariantProps & WithCss,
 ) {
-  const [{ orientation, size }, rootProps] = splitProps(props, [
+  const [{ orientation, size, css: customCss }, rootProps] = splitProps(props, [
     'orientation',
     'size',
+    'css',
   ])
   const styles = ratingGroup({ orientation, size })
   return (
-    <RatingGroup.Root {...rootProps} class={cx(styles.root, rootProps.class)} />
+    <RatingGroup.Root {...rootProps} class={cx(styles.root, css(customCss))} />
   )
 }
 
 /**
  * The label primitive of the Rating component.
  */
-export function RatingLabel(props: RatingGroupLabelProps) {
+export function RatingLabel(props: RatingGroupLabelProps & WithCss) {
+  const [styleProps, labelProps] = splitProps(props, ['css'])
   const styles = ratingGroup()
-  return <RatingGroup.Label {...props} class={cx(styles.label, props.class)} />
+  return (
+    <RatingGroup.Label
+      {...labelProps}
+      class={cx(styles.label, css(styleProps.css))}
+    />
+  )
 }
 
 /**
  * The control primitive of the Rating component.
  */
-export function RatingControl(props: RatingGroupControlProps) {
+export function RatingControl(props: RatingGroupControlProps & WithCss) {
+  const [styleProps, controlProps] = splitProps(props, ['css'])
   const styles = ratingGroup()
   return (
-    <RatingGroup.Control {...props} class={cx(styles.control, props.class)} />
+    <RatingGroup.Control
+      {...controlProps}
+      class={cx(styles.control, css(styleProps.css))}
+    />
   )
 }
 
@@ -65,12 +77,15 @@ export function RatingContext(props: RatingGroupContextProps) {
  * The item primitive of the Rating component.
  */
 export function RatingItem(
-  props: RatingGroupItemProps & RatingGroupVariantProps,
+  props: RatingGroupItemProps & RatingGroupVariantProps & WithCss,
 ) {
-  const [{ palette }, itemProps] = splitProps(props, ['palette'])
+  const [{ palette, css: customCss }, itemProps] = splitProps(props, [
+    'palette',
+    'css',
+  ])
   const styles = ratingGroup({ palette })
   return (
-    <RatingGroup.Item {...itemProps} class={cx(styles.item, itemProps.class)} />
+    <RatingGroup.Item {...itemProps} class={cx(styles.item, css(customCss))} />
   )
 }
 
