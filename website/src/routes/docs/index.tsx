@@ -127,6 +127,14 @@ export default function DocsPage() {
           <IconButton ariaLabel="icon button" size="sm">
             x
           </IconButton>
+          <IconButton
+            ariaLabel="icon button"
+            css={{
+              colorPalette: 'warning',
+            }}
+          >
+            x
+          </IconButton>
         </HStack>
 
         <Text as="h2" textStyle="heading-md">

@@ -6,7 +6,9 @@ import {
   type MenuSeparatorProps,
 } from '@ark-ui/solid/menu'
 import { menu } from 'styled-system/recipes'
-import { cx } from 'styled-system/css'
+import { css, cx } from 'styled-system/css'
+import type { WithCss } from 'styled-system/types'
+import { splitProps } from 'solid-js'
 
 /**
  * This module contains the Menu primitives.
@@ -69,11 +71,15 @@ export const MenuPositioner = Menu.Positioner
  *  </MenuContent>
  * </Menu>
  */
-export function MenuContent(props: MenuContentProps) {
+export function MenuContent(props: MenuContentProps & WithCss) {
+  const [{ css: customCss }, contentProps] = splitProps(props, ['css'])
   const menuStyles = menu()
   return (
     <MenuPositioner>
-      <Menu.Content {...props} class={cx(props.class, menuStyles.content)} />
+      <Menu.Content
+        {...contentProps}
+        class={cx(menuStyles.content, css(customCss))}
+      />
     </MenuPositioner>
   )
 }
@@ -93,9 +99,12 @@ export function MenuContent(props: MenuContentProps) {
  *  </MenuContent>
  * </Menu>
  */
-export function MenuItem(props: MenuItemProps) {
+export function MenuItem(props: MenuItemProps & WithCss) {
+  const [{ css: customCss }, itemProps] = splitProps(props, ['css'])
   const menuStyles = menu()
-  return <Menu.Item {...props} class={cx(props.class, menuStyles.item)} />
+  return (
+    <Menu.Item {...itemProps} class={cx(menuStyles.item, css(customCss))} />
+  )
 }
 
 /**
@@ -135,12 +144,13 @@ export const MenuItemGroup = Menu.ItemGroup
  *  </MenuContent>
  * </Menu>
  */
-export function MenuGroupLabel(props: MenuItemGroupLabelProps) {
+export function MenuGroupLabel(props: MenuItemGroupLabelProps & WithCss) {
+  const [{ css: customCss }, groupLabelProps] = splitProps(props, ['css'])
   const menuStyles = menu()
   return (
     <Menu.ItemGroupLabel
-      {...props}
-      class={cx(props.class, menuStyles.itemGroupLabel)}
+      {...groupLabelProps}
+      class={cx(menuStyles.itemGroupLabel, css(customCss))}
     />
   )
 }
@@ -164,9 +174,13 @@ export function MenuGroupLabel(props: MenuItemGroupLabelProps) {
  *  </MenuContent>
  * </Menu>
  */
-export function MenuSeparator(props: MenuSeparatorProps) {
+export function MenuSeparator(props: MenuSeparatorProps & WithCss) {
+  const [{ css: customCss }, separatorProps] = splitProps(props, ['css'])
   const menuStyles = menu()
   return (
-    <Menu.Separator {...props} class={cx(props.class, menuStyles.separator)} />
+    <Menu.Separator
+      {...separatorProps}
+      class={cx(menuStyles.separator, css(customCss))}
+    />
   )
 }
