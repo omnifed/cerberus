@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 export function AsChildDemo() {
   return (
-    <IconButton asChild>
+    <IconButton ariaLabel="link example" asChild>
       <Link href="/react/icon-button/overview">
         <ArrowDownRight />
       </Link>
@@ -18,7 +18,7 @@ export function AsChildDemo() {
 
 export function BasicButtonPreview() {
   return (
-    <IconButton>
+    <IconButton ariaLabel="basic example">
       <Tuning />
     </IconButton>
   )
@@ -26,7 +26,7 @@ export function BasicButtonPreview() {
 
 export function DangerButtonPreview() {
   return (
-    <IconButton palette="danger">
+    <IconButton ariaLabel="danger example" palette="danger">
       <Tuning />
     </IconButton>
   )
@@ -34,7 +34,7 @@ export function DangerButtonPreview() {
 
 export function OutlineButtonPreview() {
   return (
-    <IconButton usage="outlined">
+    <IconButton ariaLabel="outlined example" usage="outlined">
       <Tuning />
     </IconButton>
   )
@@ -42,7 +42,7 @@ export function OutlineButtonPreview() {
 
 export function TextButtonPreview() {
   return (
-    <IconButton usage="ghost">
+    <IconButton ariaLabel="ghost example" usage="ghost">
       <Tuning />
     </IconButton>
   )
@@ -50,7 +50,7 @@ export function TextButtonPreview() {
 
 export function RoundedButtonPreview() {
   return (
-    <IconButton shape="rounded">
+    <IconButton ariaLabel="rounded example" shape="rounded">
       <Tuning />
     </IconButton>
   )
@@ -59,10 +59,10 @@ export function RoundedButtonPreview() {
 export function SizesDemo() {
   return (
     <HStack>
-      <IconButton size="sm" usage="filled">
+      <IconButton ariaLabel="sm example" size="sm" usage="filled">
         <Tuning />
       </IconButton>
-      <IconButton size="lg" usage="filled">
+      <IconButton ariaLabel="lg example" size="lg" usage="filled">
         <Tuning />
       </IconButton>
     </HStack>
