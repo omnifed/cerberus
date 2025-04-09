@@ -50,7 +50,7 @@ export function TextButtonPreview() {
 
 export function RoundedButtonPreview() {
   return (
-    <IconButton ariaLabel="rounded example" shape="rounded">
+    <IconButton ariaLabel="rounded example" shape="circle">
       <Tuning />
     </IconButton>
   )
