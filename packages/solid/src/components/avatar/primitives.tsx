@@ -4,9 +4,9 @@ import {
   type AvatarImageProps,
   type AvatarRootProps,
 } from '@ark-ui/solid/avatar'
+import { splitProps } from 'solid-js'
 import { avatar, type AvatarVariantProps } from 'styled-system/recipes'
 import { css, cx } from 'styled-system/css'
-import { splitProps } from 'solid-js'
 import type { WithCss } from 'styled-system/types'
 
 /**

@@ -103,6 +103,14 @@ export default function DocsPage() {
           <Button shape="rounded">rounded</Button>
           <Button usage="ghost">ghost</Button>
           <Button size="sm">small</Button>
+          <Button
+            css={{
+              bgColor: 'warning.bg.initial',
+              color: 'warning.text.initial',
+            }}
+          >
+            Custom
+          </Button>
         </HStack>
 
         <Text as="h2" textStyle="heading-md">

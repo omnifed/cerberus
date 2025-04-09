@@ -1,9 +1,9 @@
 import { AvatarRoot, type AvatarRootProps } from '@ark-ui/solid/avatar'
 import { Show, splitProps, type JSXElement } from 'solid-js'
 import { avatar, type AvatarVariantProps } from 'styled-system/recipes'
-import { AvatarParts } from './parts'
 import { css, cx } from 'styled-system/css'
 import type { WithCss } from 'styled-system/types'
+import { AvatarParts } from './parts'
 
 /**
  * This module provides an abstraction of the Avatar primitives.
