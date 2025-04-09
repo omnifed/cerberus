@@ -4,8 +4,8 @@ import type {
 } from '@ark-ui/solid/rating-group'
 import type { RatingGroupVariantProps } from 'styled-system/recipes'
 import { Index, Show, splitProps, type JSXElement } from 'solid-js'
-import type { WithCss } from 'styled-system/types'
 import { RatingParts } from './parts'
+import type { WithCss } from '../types'
 
 /**
  * This module contains the abstracted Rating component.
