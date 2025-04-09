@@ -5,10 +5,13 @@ recipe: 'iconButton.ts'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
+import { NoteAdmonition } from '@/app/components/Admonition'
 import {
-  CustomIconButtonPreview,
+  BasicButtonPreview,
+  SizesDemo,
+  AsChildDemo,
+  CustomButtonPreview,
 } from '@/app/react/icon-button/components/icon-button-preview'
-import { LivePlaygroundWithCode } from '@/app/react/icon-button/components/live-preview'
 
 ```ts
 import { IconButton } from '@cerberus/react'
@@ -16,40 +19,89 @@ import { IconButton } from '@cerberus/react'
 
 ## Usage
 
-The IconButton API is similar to the [Button](./button), but with the addition of an `ariaLabel` prop.
-
-<LivePlaygroundWithCode />
-
-## Customization
-
-You can customize the button by utilizing the `cx` function.
-
-<CodePreview preview={<CustomIconButtonPreview />}>
-```tsx title="icon-button.tsx"
+<CodePreview preview={<BasicButtonPreview />}>
+```tsx title="button.tsx"
 import { IconButton } from '@cerberus/react'
-import { css } from 'styled-system/css'
-import { TrophyFilled } from '@cerberus/icons'
+import { Tuning } from '@carbon/icons-react'
 
-function CustomIconButtonPreview() {
+function BasicButtonPreview() {
+  return <IconButton><Tuning /></IconButton>
+}
+```
+</CodePreview>
+
+## Sizes
+
+The `IconButton` component comes in two sizes: `sm`, `lg`. You can set the size by using the `size` prop.
+
+<CodePreview preview={<SizesDemo />}>
+```tsx title="button.tsx"
+import { IconButton } from '@cerberus/react'
+import { Tuning } from '@carbon/icons-react'
+import { HStack } from 'styled-system/jsx'
+
+function SizesDemo() {
+  return (
+    <HStack>
+      <IconButton size="sm" usage="filled">
+        <Tuning />
+      </IconButton>
+      <IconButton size="lg" usage="filled">
+        <Tuning />
+      </IconButton>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## As Child
+
+The `IconButton` component can be used as a child component. This is useful when you want to use the button styles on a different element.
+
+<CodePreview preview={<AsChildDemo />}>
+```tsx title="button-link.tsx"
+function ButtonLink() {
+  return (
+    <IconButton asChild>
+      <Link href="/react/icon-button">
+        <Tuning />
+      </Link>
+    </IconButton>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components to customize the button.
+
+| Component | Description |
+| --------- | ----------- |
+| IconButton    | The context provider for the Button parts |
+
+<CodePreview preview={<CustomButtonPreview />}>
+```tsx title="custom demo"
+import { IconButton } from '@cerberus/react'
+import { Tuning } from '@carbon/icons-react'
+import { css } from 'styled-system/css'
+
+function CustomButtonPreview() {
   return (
     <IconButton
-      ariaLabel="Wu-Tang Forever"
       className={css({
-        alignItems: 'center',
-        display: 'inline-flex',
-        bgColor: 'yellow',
-        color: 'black',
-        h: '3.7rem',
-        justifyContent: 'center',
+        bgColor: 'danger.bg.initial',
+        color: 'danger.text.initial',
         rounded: 'md',
-        w: '3.7rem',
+        transform: 'skew(-10deg)',
         _hover: {
           bgColor: 'black',
           color: 'yellow',
         },
       })}
     >
-      <TrophyFilled size={32} />
+      <Tuning />
     </IconButton>
   )
 }
@@ -58,26 +110,13 @@ function CustomIconButtonPreview() {
 
 ## API
 
-```ts showLineNumbers=false
-export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  ariaLabel: string
-  palette?: 'action' | 'secondaryAction' | 'danger'
-  size?: 'sm' | 'lg'
-  usage?: 'filled' | 'ghost' | 'outlined'
-  asChild?: boolean
-}
-
-define function IconButton(props: IconButtonProps): ReactNode
-````
-
 ### Props
 
-The `IconButton` component accepts the following props:
+The `IconButton` component is an abstraction of the primitives and accepts the following props:
 
-| Name     | Default | Description                                                   |
-| -------- | ------- | ------------------------------------------------------------- |
-| ariaLabel |    "Icon Button"     | The accessible label for the button. |
-| palette     | `action`   | The color palette of the button. |
-| usage | `ghost`    | The style treatment of the button.    |
-| size | `lg`    | The size of the button.               |
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| palette     | `action`   | The color palette (any of the Cerberus palettes) of the button. |
+| usage | `filled`    | The style treatment of the button.    |
+| shape | `sharp`     | The shape of the button.              |
 | asChild | | Render the Button as the child component. |

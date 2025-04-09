@@ -1,73 +1,152 @@
-import { Close, ThumbsDown, ThumbsUp, TrophyFilled } from '@carbon/icons-react'
+import { Fragment } from 'react'
 import { IconButton } from '@cerberus-design/react'
+import { ArrowDownRight, Tuning } from '@carbon/icons-react'
 import { css } from 'styled-system/css'
-import { hstack } from 'styled-system/patterns'
+import { HStack } from 'styled-system/jsx'
+import { grid, gridItem } from 'styled-system/patterns'
+import Link from 'next/link'
 
-export function BasicIconButtonPreview() {
+export function AsChildDemo() {
   return (
-    <IconButton ariaLabel="Like something">
-      <ThumbsUp size={24} />
+    <IconButton ariaLabel="link example" asChild>
+      <Link href="/react/icon-button/overview">
+        <ArrowDownRight />
+      </Link>
     </IconButton>
   )
 }
 
-export function DangerIconButtonPreview() {
+export function BasicButtonPreview() {
   return (
-    <IconButton ariaLabel="Delete something" palette="danger" usage="filled">
-      <Close size={24} />
+    <IconButton ariaLabel="basic example">
+      <Tuning />
     </IconButton>
   )
 }
 
-export function OutlinedIconButtonPreview() {
+export function DangerButtonPreview() {
   return (
-    <IconButton ariaLabel="Like something" usage="outlined">
-      <ThumbsUp size={16} />
+    <IconButton ariaLabel="danger example" palette="danger">
+      <Tuning />
     </IconButton>
   )
 }
 
-export function TextIconButtonPreview() {
+export function OutlineButtonPreview() {
   return (
-    <IconButton ariaLabel="Like something" usage="ghost">
-      <ThumbsUp size={24} />
+    <IconButton ariaLabel="outlined example" usage="outlined">
+      <Tuning />
     </IconButton>
   )
 }
 
-export function IconButtonSizesPreview() {
+export function TextButtonPreview() {
   return (
-    <div className={hstack()}>
-      <IconButton ariaLabel="Like something" size="sm">
-        <ThumbsUp />
+    <IconButton ariaLabel="ghost example" usage="ghost">
+      <Tuning />
+    </IconButton>
+  )
+}
+
+export function RoundedButtonPreview() {
+  return (
+    <IconButton ariaLabel="rounded example" shape="circle">
+      <Tuning />
+    </IconButton>
+  )
+}
+
+export function SizesDemo() {
+  return (
+    <HStack>
+      <IconButton ariaLabel="sm example" size="sm" usage="filled">
+        <Tuning />
       </IconButton>
-      <IconButton ariaLabel="Dislike something">
-        <ThumbsDown size={24} />
+      <IconButton ariaLabel="lg example" size="lg" usage="filled">
+        <Tuning />
       </IconButton>
-    </div>
+    </HStack>
   )
 }
 
-export function CustomIconButtonPreview() {
+export function CustomButtonPreview() {
   return (
     <IconButton
-      ariaLabel="Wu-Tang Forever"
+      ariaLabel="custom button"
       className={css({
-        alignItems: 'center',
-        display: 'inline-flex',
-        bgColor: 'yellow',
-        color: 'black',
-        h: '3.7rem',
-        justifyContent: 'center',
+        bgColor: 'danger.bg.initial',
+        color: 'danger.text.initial',
         rounded: 'md',
-        w: '3.7rem',
+        transform: 'skew(-10deg)',
         _hover: {
           bgColor: 'black',
           color: 'yellow',
         },
       })}
     >
-      <TrophyFilled size={32} />
+      <Tuning />
     </IconButton>
+  )
+}
+
+// Overview
+
+type ButtonTypes = 'sharp' | 'rounded' | 'outlined' | 'ghost'
+interface MatchButtonProps {
+  kind: ButtonTypes
+}
+
+function MatchButtonPreview(props: MatchButtonProps) {
+  switch (props.kind) {
+    case 'sharp':
+      return <BasicButtonPreview />
+    case 'rounded':
+      return <RoundedButtonPreview />
+    case 'outlined':
+      return <OutlineButtonPreview />
+    case 'ghost':
+      return <TextButtonPreview />
+    default:
+      return null
+  }
+}
+
+export function OverviewButtonPreview() {
+  const btnTypes: ButtonTypes[] = ['sharp', 'rounded', 'outlined', 'ghost']
+  return (
+    <>
+      <div
+        className={grid({
+          columns: 4,
+          gap: '4',
+          gridTemplateRows: '1fr 1fr',
+        })}
+      >
+        {btnTypes.map((type, idx) => (
+          <Fragment key={type}>
+            <div
+              className={gridItem({
+                gridColumn: 'span 1',
+                gridRowStart: '1',
+                gridRowEnd: '2',
+                justifySelf: 'center',
+              })}
+            >
+              <MatchButtonPreview kind={type} />
+            </div>
+            <div
+              className={gridItem({
+                gridColumn: 'span 1',
+                gridRowStart: '2',
+                gridRowEnd: '3',
+                justifySelf: 'center',
+              })}
+            >
+              {idx + 1}
+            </div>
+          </Fragment>
+        ))}
+      </div>
+    </>
   )
 }

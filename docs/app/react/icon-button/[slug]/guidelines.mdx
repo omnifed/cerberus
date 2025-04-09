@@ -8,10 +8,7 @@ import {
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
 import {
-  BasicIconButtonPreview,
-  OutlinedIconButtonPreview,
-  DangerIconButtonPreview,
-  TextIconButtonPreview
+  OverviewButtonPreview
 } from '@/app/react/icon-button/components/icon-button-preview'
 
 ## Usage
@@ -24,12 +21,11 @@ Icon buttons can be grouped together or they can stand alone.
 
 <WhenNotToUseAdmonition description="When you need to provide a way for the user to navigate somewhere - use a Link, TextLink, or NavMenu." />
 
+<CodePreview preview={<OverviewButtonPreview />} />
 
 ## Standard Buttons
 
 Standard icon buttons are used for primary actions on a page.
-
-<CodePreview preview={<BasicIconButtonPreview />} />
 
 <WhenToUseAdmonition description="When you need high priority actions or actions that are the only item on screen." />
 
@@ -37,7 +33,6 @@ Standard icon buttons are used for primary actions on a page.
 
 Outlined icon buttons are used for secondary actions on a page.
 
-<CodePreview preview={<OutlinedIconButtonPreview />} />
 
 <WhenToUseAdmonition description="When you need to display a secondary action that is less important than the primary action." />
 
@@ -45,15 +40,11 @@ Outlined icon buttons are used for secondary actions on a page.
 
 Danger buttons are used for actions that are destructive, like deleting an item or canceling a process. They should be used sparingly, and only when the action is irreversible.
 
-<CodePreview preview={<DangerIconButtonPreview />} />
-
 <WhenToUseAdmonition description="When you need to display a high impact destructive action such as deleting items or other places where a destructive action is the priority in the UI." />
 
 ## Ghost Buttons
 
 Ghost buttons are used for tertiary actions on a page, like Help or Learn more. They should be used for actions that are less important than the secondary action on the page.
-
-<CodePreview preview={<TextIconButtonPreview />} />
 
 <WhenToUseAdmonition description="When you need lower priority actions such as that might be used for triggering more options." />
 
