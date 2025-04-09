@@ -80,6 +80,14 @@ export default function DocsPage() {
             gradient="hades-dark"
             size="4xl"
           />
+          <Avatar
+            fallback={makeAvatarInitials('no img')}
+            size="4xl"
+            css={{
+              bgColor: 'warning.bg.initial',
+              color: 'warning.text.initial',
+            }}
+          />
         </HStack>
 
         <Text as="h2" textStyle="heading-md">
@@ -95,6 +103,14 @@ export default function DocsPage() {
           <Button shape="rounded">rounded</Button>
           <Button usage="ghost">ghost</Button>
           <Button size="sm">small</Button>
+          <Button
+            css={{
+              bgColor: 'warning.bg.initial',
+              color: 'warning.text.initial',
+            }}
+          >
+            Custom
+          </Button>
         </HStack>
 
         <Text as="h2" textStyle="heading-md">
@@ -109,6 +125,14 @@ export default function DocsPage() {
             x
           </IconButton>
           <IconButton ariaLabel="icon button" size="sm">
+            x
+          </IconButton>
+          <IconButton
+            ariaLabel="icon button"
+            css={{
+              colorPalette: 'warning',
+            }}
+          >
             x
           </IconButton>
         </HStack>

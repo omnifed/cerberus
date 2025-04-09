@@ -54,7 +54,13 @@ export function GlobalNav() {
           </Index>
         </HStack>
 
-        <Tag palette="page" shape="pill">
+        <Tag
+          palette="page"
+          shape="pill"
+          css={{
+            textTransform: 'initial',
+          }}
+        >
           v0.18
         </Tag>
       </HStack>

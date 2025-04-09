@@ -4,9 +4,10 @@ import {
   type AvatarImageProps,
   type AvatarRootProps,
 } from '@ark-ui/solid/avatar'
-import { avatar, type AvatarVariantProps } from 'styled-system/recipes'
-import { cx } from 'styled-system/css'
 import { splitProps } from 'solid-js'
+import { avatar, type AvatarVariantProps } from 'styled-system/recipes'
+import { css, cx } from 'styled-system/css'
+import type { WithCss } from '../types'
 
 /**
  * This module provides the primitive components for the Avatar component.
@@ -16,30 +17,48 @@ import { splitProps } from 'solid-js'
 /**
  * The root component of the Avatar.
  */
-export function AvatarRoot(props: AvatarRootProps & AvatarVariantProps) {
-  const [{ gradient, shape, size }, rootProps] = splitProps(props, [
-    'gradient',
-    'shape',
-    'size',
-  ])
+export function AvatarRoot(
+  props: AvatarRootProps & AvatarVariantProps & WithCss,
+) {
+  const [{ gradient, shape, size, css: customCss }, rootProps] = splitProps(
+    props,
+    ['gradient', 'shape', 'size', 'css'],
+  )
   const styles = avatar({ gradient, shape, size })
-  return <Avatar.Root {...rootProps} class={cx(styles.root, rootProps.class)} />
+  return (
+    <Avatar.Root
+      {...rootProps}
+      class={cx(styles.root, css(customCss), rootProps.class)}
+    />
+  )
 }
 
 /**
  * The image component of the Avatar.
  */
-export function AvatarImage(props: AvatarImageProps) {
+export function AvatarImage(props: AvatarImageProps & WithCss) {
+  const [{ css: customCss }, imgProps] = splitProps(props, ['css'])
   const styles = avatar()
-  return <Avatar.Image {...props} class={cx(styles.image, props.class)} />
+  return (
+    <Avatar.Image
+      {...imgProps}
+      class={cx(styles.image, css(customCss), imgProps.class)}
+    />
+  )
 }
 
 /**
  * The fallback component of the Avatar.
  */
-export function AvatarFallback(props: AvatarFallbackProps) {
+export function AvatarFallback(props: AvatarFallbackProps & WithCss) {
+  const [{ css: customCss }, fallbackProps] = splitProps(props, ['css'])
   const styles = avatar()
-  return <Avatar.Fallback {...props} class={cx(styles.fallback, props.class)} />
+  return (
+    <Avatar.Fallback
+      {...fallbackProps}
+      class={cx(styles.fallback, css(customCss), fallbackProps.class)}
+    />
+  )
 }
 
 /**

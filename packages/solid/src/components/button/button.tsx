@@ -1,7 +1,8 @@
 import { ark, type HTMLArkProps } from '@ark-ui/solid/factory'
 import { splitProps } from 'solid-js'
-import { cx } from 'styled-system/css'
+import { css, cx } from 'styled-system/css'
 import { button, type ButtonVariantProps } from 'styled-system/recipes'
+import type { WithCss } from '../types'
 import { ButtonContext } from './context'
 
 /**
@@ -11,7 +12,8 @@ import { ButtonContext } from './context'
 
 export interface ButtonProps
   extends HTMLArkProps<'button'>,
-    ButtonVariantProps {
+    ButtonVariantProps,
+    WithCss {
   /**
    * The pending state of the button.
    * @default false
@@ -24,8 +26,15 @@ export interface ButtonProps
  * @see https://cerberus.digitalu.design/components/button
  */
 export function Button(props: ButtonProps) {
-  const [{ palette, usage, shape, size }, { pending = false }, nativeProps] =
-    splitProps(props, ['palette', 'usage', 'shape', 'size'], ['pending'])
+  const [
+    { palette, usage, shape, size, css: customCss },
+    { pending = false },
+    nativeProps,
+  ] = splitProps(
+    props,
+    ['palette', 'usage', 'shape', 'size', 'css'],
+    ['pending'],
+  )
 
   return (
     <ButtonContext.Provider value={{ pending }}>
@@ -33,13 +42,14 @@ export function Button(props: ButtonProps) {
         {...nativeProps}
         disabled={pending ?? nativeProps.disabled}
         class={cx(
-          props.class,
           button({
             palette,
             usage,
             shape,
             size,
           }),
+          css(customCss),
+          nativeProps.class,
         )}
       />
     </ButtonContext.Provider>
