@@ -51,7 +51,10 @@ export function Avatar(props: AvatarWithoutImage | AvatarWithImage) {
   // For some reason we have to use the ark AvatarRoot
 
   return (
-    <AvatarRoot {...rootProps} class={cx(styles.root, css(customCss))}>
+    <AvatarRoot
+      {...rootProps}
+      class={cx(styles.root, css(customCss), rootProps.class)}
+    >
       <Show
         when={children}
         fallback={

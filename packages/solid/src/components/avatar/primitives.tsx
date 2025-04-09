@@ -25,7 +25,12 @@ export function AvatarRoot(
     ['gradient', 'shape', 'size', 'css'],
   )
   const styles = avatar({ gradient, shape, size })
-  return <Avatar.Root {...rootProps} class={cx(styles.root, css(customCss))} />
+  return (
+    <Avatar.Root
+      {...rootProps}
+      class={cx(styles.root, css(customCss), rootProps.class)}
+    />
+  )
 }
 
 /**
@@ -34,7 +39,12 @@ export function AvatarRoot(
 export function AvatarImage(props: AvatarImageProps & WithCss) {
   const [{ css: customCss }, imgProps] = splitProps(props, ['css'])
   const styles = avatar()
-  return <Avatar.Image {...imgProps} class={cx(styles.image, css(customCss))} />
+  return (
+    <Avatar.Image
+      {...imgProps}
+      class={cx(styles.image, css(customCss), imgProps.class)}
+    />
+  )
 }
 
 /**
@@ -46,7 +56,7 @@ export function AvatarFallback(props: AvatarFallbackProps & WithCss) {
   return (
     <Avatar.Fallback
       {...fallbackProps}
-      class={cx(styles.fallback, css(customCss))}
+      class={cx(styles.fallback, css(customCss), fallbackProps.class)}
     />
   )
 }

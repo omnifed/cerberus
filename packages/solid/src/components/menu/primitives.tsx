@@ -78,7 +78,7 @@ export function MenuContent(props: MenuContentProps & WithCss) {
     <MenuPositioner>
       <Menu.Content
         {...contentProps}
-        class={cx(menuStyles.content, css(customCss))}
+        class={cx(menuStyles.content, css(customCss), contentProps.class)}
       />
     </MenuPositioner>
   )
@@ -103,7 +103,10 @@ export function MenuItem(props: MenuItemProps & WithCss) {
   const [{ css: customCss }, itemProps] = splitProps(props, ['css'])
   const menuStyles = menu()
   return (
-    <Menu.Item {...itemProps} class={cx(menuStyles.item, css(customCss))} />
+    <Menu.Item
+      {...itemProps}
+      class={cx(menuStyles.item, css(customCss), itemProps.class)}
+    />
   )
 }
 
@@ -150,7 +153,11 @@ export function MenuGroupLabel(props: MenuItemGroupLabelProps & WithCss) {
   return (
     <Menu.ItemGroupLabel
       {...groupLabelProps}
-      class={cx(menuStyles.itemGroupLabel, css(customCss))}
+      class={cx(
+        menuStyles.itemGroupLabel,
+        css(customCss),
+        groupLabelProps.class,
+      )}
     />
   )
 }
@@ -180,7 +187,7 @@ export function MenuSeparator(props: MenuSeparatorProps & WithCss) {
   return (
     <Menu.Separator
       {...separatorProps}
-      class={cx(menuStyles.separator, css(customCss))}
+      class={cx(menuStyles.separator, css(customCss), separatorProps.class)}
     />
   )
 }

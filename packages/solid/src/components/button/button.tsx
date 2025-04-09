@@ -49,6 +49,7 @@ export function Button(props: ButtonProps) {
             size,
           }),
           css(customCss),
+          nativeProps.class,
         )}
       />
     </ButtonContext.Provider>

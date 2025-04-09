@@ -40,6 +40,7 @@ export function IconButton(props: IconButtonProps) {
           size,
         }),
         css(customCss),
+        nativeProps.class,
       )}
     />
   )

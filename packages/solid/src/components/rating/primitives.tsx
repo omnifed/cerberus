@@ -34,7 +34,10 @@ export function RatingRoot(
   ])
   const styles = ratingGroup({ orientation, size })
   return (
-    <RatingGroup.Root {...rootProps} class={cx(styles.root, css(customCss))} />
+    <RatingGroup.Root
+      {...rootProps}
+      class={cx(styles.root, css(customCss), rootProps.class)}
+    />
   )
 }
 
@@ -47,7 +50,7 @@ export function RatingLabel(props: RatingGroupLabelProps & WithCss) {
   return (
     <RatingGroup.Label
       {...labelProps}
-      class={cx(styles.label, css(styleProps.css))}
+      class={cx(styles.label, css(styleProps.css), labelProps.class)}
     />
   )
 }
@@ -61,7 +64,7 @@ export function RatingControl(props: RatingGroupControlProps & WithCss) {
   return (
     <RatingGroup.Control
       {...controlProps}
-      class={cx(styles.control, css(styleProps.css))}
+      class={cx(styles.control, css(styleProps.css), controlProps.class)}
     />
   )
 }
@@ -85,7 +88,10 @@ export function RatingItem(
   ])
   const styles = ratingGroup({ palette })
   return (
-    <RatingGroup.Item {...itemProps} class={cx(styles.item, css(customCss))} />
+    <RatingGroup.Item
+      {...itemProps}
+      class={cx(styles.item, css(customCss), itemProps.class)}
+    />
   )
 }
 

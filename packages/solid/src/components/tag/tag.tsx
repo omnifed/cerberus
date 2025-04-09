@@ -41,6 +41,7 @@ export function Tag(props: ParentProps<TagProps>) {
           usage,
         }),
         css(customCss),
+        nativeProps.class,
       )}
     >
       {props.children}
