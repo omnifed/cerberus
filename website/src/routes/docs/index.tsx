@@ -80,6 +80,14 @@ export default function DocsPage() {
             gradient="hades-dark"
             size="4xl"
           />
+          <Avatar
+            fallback={makeAvatarInitials('no img')}
+            size="4xl"
+            css={{
+              bgColor: 'warning.bg.initial',
+              color: 'warning.text.initial',
+            }}
+          />
         </HStack>
 
         <Text as="h2" textStyle="heading-md">

@@ -2,7 +2,8 @@ import { AvatarRoot, type AvatarRootProps } from '@ark-ui/solid/avatar'
 import { Show, splitProps, type JSXElement } from 'solid-js'
 import { avatar, type AvatarVariantProps } from 'styled-system/recipes'
 import { AvatarParts } from './parts'
-import { cx } from 'styled-system/css'
+import { css, cx } from 'styled-system/css'
+import type { WithCss } from 'styled-system/types'
 
 /**
  * This module provides an abstraction of the Avatar primitives.
@@ -11,13 +12,17 @@ import { cx } from 'styled-system/css'
 
 export interface AvatarWithoutImage
   extends AvatarRootProps,
-    AvatarVariantProps {
+    AvatarVariantProps,
+    WithCss {
   alt?: never
   src?: never
   fallback?: JSXElement
 }
 
-export interface AvatarWithImage extends AvatarRootProps, AvatarVariantProps {
+export interface AvatarWithImage
+  extends AvatarRootProps,
+    AvatarVariantProps,
+    WithCss {
   alt: string
   src: string
   fallback?: JSXElement
@@ -33,20 +38,20 @@ export function Avatar(props: AvatarWithoutImage | AvatarWithImage) {
   const [
     imgProps,
     { fallback, children },
-    { gradient, shape, size },
+    { gradient, shape, size, css: customCss },
     rootProps,
   ] = splitProps(
     props,
     ['alt', 'src'],
     ['fallback', 'children'],
-    ['gradient', 'shape', 'size'],
+    ['gradient', 'shape', 'size', 'css'],
   )
   const styles = avatar({ gradient, shape, size })
 
   // For some reason we have to use the ark AvatarRoot
 
   return (
-    <AvatarRoot {...rootProps} class={cx(styles.root, rootProps.class)}>
+    <AvatarRoot {...rootProps} class={cx(styles.root, css(customCss))}>
       <Show
         when={children}
         fallback={
