@@ -7,8 +7,8 @@ import {
 } from '@ark-ui/solid/menu'
 import { menu } from 'styled-system/recipes'
 import { css, cx } from 'styled-system/css'
-import type { WithCss } from 'styled-system/types'
 import { splitProps } from 'solid-js'
+import type { WithCss } from '../types'
 
 /**
  * This module contains the Menu primitives.

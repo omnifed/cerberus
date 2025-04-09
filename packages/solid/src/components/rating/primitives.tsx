@@ -14,7 +14,7 @@ import {
   ratingGroup,
   type RatingGroupVariantProps,
 } from 'styled-system/recipes'
-import type { WithCss } from 'styled-system/types'
+import type { WithCss } from '../types'
 
 /**
  * This module contains the primitives of the Rating component.
