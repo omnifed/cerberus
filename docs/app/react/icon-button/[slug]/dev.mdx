@@ -32,7 +32,7 @@ function BasicButtonPreview() {
 
 ## Sizes
 
-The `Button` component comes in two sizes: `sm`, `md`. You can set the size by using the `size` prop.
+The `IconButton` component comes in two sizes: `sm`, `lg`. You can set the size by using the `size` prop.
 
 <CodePreview preview={<SizesDemo />}>
 ```tsx title="button.tsx"
@@ -43,13 +43,10 @@ import { HStack } from 'styled-system/jsx'
 function SizesDemo() {
   return (
     <HStack>
-      <IconButton size="sm">
+      <IconButton size="sm" usage="filled">
         <Tuning />
       </IconButton>
-      <IconButton size="md">
-        <Tuning />
-      </IconButton>
-      <IconButton size="lg">
+      <IconButton size="lg" usage="filled">
         <Tuning />
       </IconButton>
     </HStack>
@@ -60,7 +57,7 @@ function SizesDemo() {
 
 ## As Child
 
-The `Button` component can be used as a child component. This is useful when you want to use the button styles on a different element.
+The `IconButton` component can be used as a child component. This is useful when you want to use the button styles on a different element.
 
 <CodePreview preview={<AsChildDemo />}>
 ```tsx title="button-link.tsx"
@@ -85,7 +82,7 @@ You can utilize the primitive components to customize the button.
 | IconButton    | The context provider for the Button parts |
 
 <CodePreview preview={<CustomButtonPreview />}>
-```tsx title="button.tsx"
+```tsx title="custom demo"
 import { IconButton } from '@cerberus/react'
 import { Tuning } from '@carbon/icons-react'
 import { css } from 'styled-system/css'

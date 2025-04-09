@@ -59,10 +59,10 @@ export function RoundedButtonPreview() {
 export function SizesDemo() {
   return (
     <HStack>
-      <IconButton size="sm">
+      <IconButton size="sm" usage="filled">
         <Tuning />
       </IconButton>
-      <IconButton size="lg">
+      <IconButton size="lg" usage="filled">
         <Tuning />
       </IconButton>
     </HStack>
@@ -72,6 +72,7 @@ export function SizesDemo() {
 export function CustomButtonPreview() {
   return (
     <IconButton
+      ariaLabel="custom button"
       className={css({
         bgColor: 'danger.bg.initial',
         color: 'danger.text.initial',
