@@ -8,6 +8,7 @@ import {
   Menu,
   Rating,
   Spinner,
+  Tabs,
   Tag,
   Text,
 } from '@cerberus-design/solid'
@@ -178,6 +179,84 @@ export default function DocsPage() {
             <Spinner />
           </Box>
         </HStack>
+
+        <Text as="h2" textStyle="heading-md">
+          Tabs
+        </Text>
+        <VStack alignItems="flex-start" gap="md" w="full">
+          <Tabs.Root defaultValue="tab-1">
+            <Tabs.List>
+              <Tabs.Tab value="tab-1">Tab 1</Tabs.Tab>
+              <Tabs.Tab value="tab-2">Tab 2</Tabs.Tab>
+              <Tabs.Tab value="tab-3">Tab 3</Tabs.Tab>
+            </Tabs.List>
+            <Tabs.Panel value="tab-1">
+              <Text>Content for Tab 1</Text>
+            </Tabs.Panel>
+            <Tabs.Panel value="tab-2">
+              <Text>Content for Tab 2</Text>
+            </Tabs.Panel>
+            <Tabs.Panel value="tab-3">
+              <Text>Content for Tab 3</Text>
+            </Tabs.Panel>
+          </Tabs.Root>
+
+          <Tabs.Root defaultValue="custom-tab-1">
+            <Tabs.List
+              css={{
+                bgColor: 'page.surface.100',
+                borderBottom: 'none',
+                display: 'flex',
+                justifyContent: 'center',
+                mx: 'auto',
+                rounded: 'full',
+                w: '27.375rem',
+                '& > [data-part="indicator"]': {
+                  gradient: 'charon-dark',
+                  h: 'full',
+                  rounded: 'full',
+                  w: '1/2',
+                  zIndex: 'base',
+                },
+              }}
+            >
+              <Tabs.Tab
+                css={{
+                  w: '1/2',
+                  zIndex: 'decorator',
+                  _hover: {
+                    _after: {
+                      h: 'initial',
+                    },
+                  },
+                }}
+                value="custom-tab-1"
+              >
+                Tab 1
+              </Tabs.Tab>
+              <Tabs.Tab
+                css={{
+                  w: '1/2',
+                  zIndex: 'decorator',
+                  _hover: {
+                    _after: {
+                      h: 'initial',
+                    },
+                  },
+                }}
+                value="custom-tab-2"
+              >
+                Tab 2
+              </Tabs.Tab>
+            </Tabs.List>
+            <Tabs.Panel value="custom-tab-1">
+              <Text>Content for Tab 1</Text>
+            </Tabs.Panel>
+            <Tabs.Panel value="custom-tab-2">
+              <Text>Content for Tab 2</Text>
+            </Tabs.Panel>
+          </Tabs.Root>
+        </VStack>
 
         <Text as="h2" textStyle="heading-md">
           Tag
