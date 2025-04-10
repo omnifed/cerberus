@@ -11,6 +11,7 @@ describe('tabs recipe', () => {
   test('should have a base.root style', () => {
     expect(tabs.base?.root).toMatchObject({
       rounded: 'md',
+      w: 'full',
     })
   })
 

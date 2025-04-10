@@ -20,6 +20,7 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
   base: {
     root: {
       rounded: 'md',
+      w: 'full',
     },
     list: {
       borderBottom: '1px solid',
