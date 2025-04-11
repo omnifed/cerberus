@@ -1,6 +1,6 @@
 {
   "name": "@cerberus-design/solid",
-  "version": "0.18.2",
+  "version": "0.18.3",
   "description": "The Cerberus Design SolidJS component library.",
   "browserslist": "> 0.25%, not dead",
   "sideEffects": false,
