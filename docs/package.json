@@ -34,7 +34,7 @@
     "@shikijs/rehype": "^3.2.1",
     "@types/node": "^22.13.13",
     "@types/react": "19.1.0",
-    "@types/react-dom": "19.1.1",
+    "@types/react-dom": "19.1.2",
     "@vercel/analytics": "^1.5.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^8",
