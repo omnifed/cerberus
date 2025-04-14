@@ -130,10 +130,10 @@ importers:
         version: link:../packages/panda-preset
       '@csstools/postcss-cascade-layers':
         specifier: ^5.0.1
-        version: 5.0.1(postcss@8.4.49)
+        version: 5.0.1(postcss@8.5.3)
       '@expressive-code/plugin-line-numbers':
-        specifier: ^0.40.2
-        version: 0.40.2
+        specifier: ^0.41.1
+        version: 0.41.1
       '@mdx-js/loader':
         specifier: ^3.1.0
         version: 3.1.0(webpack@5.91.0)
@@ -166,7 +166,7 @@ importers:
         version: 1.5.0(next@15.2.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       autoprefixer:
         specifier: ^10.4.21
-        version: 10.4.21(postcss@8.4.49)
+        version: 10.4.21(postcss@8.5.3)
       eslint:
         specifier: ^8
         version: 8.57.1
@@ -826,11 +826,14 @@ packages:
   '@expressive-code/core@0.40.2':
     resolution: {integrity: sha512-gXY3v7jbgz6nWKvRpoDxK4AHUPkZRuJsM79vHX/5uhV9/qX6Qnctp/U/dMHog/LCVXcuOps+5nRmf1uxQVPb3w==}
 
+  '@expressive-code/core@0.41.1':
+    resolution: {integrity: sha512-mG2IrN4t/NGPmEeeswmttsW7W7c96sz3ASjo1psQnOqU5QWAF61HpnBu3lPxHI8iQJyZI8wfAroo9FFpwlkvAQ==}
+
   '@expressive-code/plugin-frames@0.40.2':
     resolution: {integrity: sha512-aLw5IlDlZWb10Jo/TTDCVsmJhKfZ7FJI83Zo9VDrV0OBlmHAg7klZqw68VDz7FlftIBVAmMby53/MNXPnMjTSQ==}
 
-  '@expressive-code/plugin-line-numbers@0.40.2':
-    resolution: {integrity: sha512-YMLkn68n9a9DI/4fQW/f6QJ33uQUzHmGdV3pDl+f6fVTxv7rvhRja+UtPksm0ZJpft6vrrACV8wS2TaH77SBzw==}
+  '@expressive-code/plugin-line-numbers@0.41.1':
+    resolution: {integrity: sha512-uxSfpK8y3h47A/g2JPxND6zLiWHFElaMGqQ7JYGMEPI9O7ET826RBv82ZPnkM11vuohdO96/jgxzkOjoqIiQkA==}
 
   '@expressive-code/plugin-shiki@0.40.2':
     resolution: {integrity: sha512-t2HMR5BO6GdDW1c1ISBTk66xO503e/Z8ecZdNcr6E4NpUfvY+MRje+LtrcvbBqMwWBBO8RpVKcam/Uy+1GxwKQ==}
@@ -2711,8 +2714,8 @@ packages:
     resolution: {integrity: sha512-ju88BYCQ2uvjO2bR+SsgLSTwTSctU+6Vp2ePbKPgSCZyy4MWZxYsT738DlKVRE5utUjobjPRm1MkTYKJxCmpTA==}
     engines: {node: '>=14.9.0'}
 
-  css-selector-parser@3.0.5:
-    resolution: {integrity: sha512-3itoDFbKUNx1eKmVpYMFyqKX04Ww9osZ+dLgrk6GEv6KMVeXUhUnp4I5X+evw+u3ZxVU6RFXSSRxlTeMh8bA+g==}
+  css-selector-parser@3.1.2:
+    resolution: {integrity: sha512-WfUcL99xWDs7b3eZPoRszWVfbNo8ErCF15PTvVROjkShGlAfjIkG6hlfj/sl6/rfo5Q9x9ryJ3VqVnAZDA+gcw==}
 
   css.escape@1.5.1:
     resolution: {integrity: sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg==}
@@ -4281,11 +4284,6 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nanoid@3.3.9:
-    resolution: {integrity: sha512-SppoicMGpZvbF1l3z4x7No3OlIjP7QJvC9XR7AhZr1kL133KHnKPztkKDc+Ir4aJ/1VhTySrtKhrsycmrMQfvg==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
-    hasBin: true
-
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
@@ -5730,10 +5728,10 @@ snapshots:
       postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
-  '@csstools/postcss-cascade-layers@5.0.1(postcss@8.4.49)':
+  '@csstools/postcss-cascade-layers@5.0.1(postcss@8.5.3)':
     dependencies:
       '@csstools/selector-specificity': 5.0.0(postcss-selector-parser@7.0.0)
-      postcss: 8.4.49
+      postcss: 8.5.3
       postcss-selector-parser: 7.0.0
 
   '@csstools/selector-specificity@3.1.1(postcss-selector-parser@6.1.2)':
@@ -6021,13 +6019,25 @@ snapshots:
       unist-util-visit: 5.0.0
       unist-util-visit-parents: 6.0.1
 
+  '@expressive-code/core@0.41.1':
+    dependencies:
+      '@ctrl/tinycolor': 4.1.0
+      hast-util-select: 6.0.4
+      hast-util-to-html: 9.0.5
+      hast-util-to-text: 4.0.2
+      hastscript: 9.0.1
+      postcss: 8.5.3
+      postcss-nested: 6.2.0(postcss@8.5.3)
+      unist-util-visit: 5.0.0
+      unist-util-visit-parents: 6.0.1
+
   '@expressive-code/plugin-frames@0.40.2':
     dependencies:
       '@expressive-code/core': 0.40.2
 
-  '@expressive-code/plugin-line-numbers@0.40.2':
+  '@expressive-code/plugin-line-numbers@0.41.1':
     dependencies:
-      '@expressive-code/core': 0.40.2
+      '@expressive-code/core': 0.41.1
 
   '@expressive-code/plugin-shiki@0.40.2':
     dependencies:
@@ -7439,7 +7449,7 @@ snapshots:
       '@vue/shared': 3.4.19
       estree-walker: 2.0.2
       magic-string: 0.30.17
-      postcss: 8.4.49
+      postcss: 8.5.3
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.4.19':
@@ -8210,14 +8220,14 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  autoprefixer@10.4.21(postcss@8.4.49):
+  autoprefixer@10.4.21(postcss@8.5.3):
     dependencies:
       browserslist: 4.24.4
       caniuse-lite: 1.0.30001712
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.1.1
-      postcss: 8.4.49
+      postcss: 8.5.3
       postcss-value-parser: 4.2.0
 
   available-typed-arrays@1.0.7:
@@ -8480,7 +8490,7 @@ snapshots:
     dependencies:
       '@types/node': 17.0.45
 
-  css-selector-parser@3.0.5: {}
+  css-selector-parser@3.1.2: {}
 
   css.escape@1.5.1: {}
 
@@ -9544,7 +9554,7 @@ snapshots:
       '@types/unist': 3.0.3
       bcp-47-match: 2.0.3
       comma-separated-tokens: 2.0.3
-      css-selector-parser: 3.0.5
+      css-selector-parser: 3.1.2
       devlop: 1.1.0
       direction: 2.0.1
       hast-util-has-property: 3.0.0
@@ -10822,8 +10832,6 @@ snapshots:
 
   nanoid@3.3.7: {}
 
-  nanoid@3.3.9: {}
-
   natural-compare@1.4.0: {}
 
   neo-async@2.6.2:
@@ -11156,7 +11164,7 @@ snapshots:
 
   postcss@8.5.3:
     dependencies:
-      nanoid: 3.3.9
+      nanoid: 3.3.11
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
