@@ -12,7 +12,7 @@
     "@carbon/icons-react": "^11.58.0",
     "@cerberus-design/panda-preset": "workspace:*",
     "@cerberus-design/react": "workspace:*",
-    "@happy-dom/global-registrator": "^14.11.0",
+    "@happy-dom/global-registrator": "^17.4.4",
     "@pandacss/types": "^0.53.3",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
