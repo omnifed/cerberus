@@ -16,22 +16,12 @@ updates:
       interval: weekly
 
   - package-ecosystem: npm
-    directory: '/website'
-    schedule:
-      interval: weekly
-
-  - package-ecosystem: npm
     directory: '/figma'
     schedule:
       interval: weekly
 
   - package-ecosystem: npm
     directory: '/packages/panda-preset'
-    schedule:
-      interval: daily
-
-  - package-ecosystem: npm
-    directory: '/packages/solid'
     schedule:
       interval: daily
 
