@@ -71,8 +71,8 @@ importers:
         specifier: ^0.13.2
         version: 0.13.2
       prettier:
-        specifier: 3.2.5
-        version: 3.2.5
+        specifier: 3.5.3
+        version: 3.5.3
       typescript-eslint:
         specifier: ^8.29.0
         version: 8.29.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.2)
@@ -5985,6 +5985,11 @@ packages:
 
   prettier@3.2.5:
     resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
+    engines: {node: '>=14'}
+    hasBin: true
+
+  prettier@3.5.3:
+    resolution: {integrity: sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -14631,6 +14636,8 @@ snapshots:
   prettier@2.8.8: {}
 
   prettier@3.2.5: {}
+
+  prettier@3.5.3: {}
 
   pretty-bytes@6.1.1: {}
 
