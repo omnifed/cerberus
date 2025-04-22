@@ -25,7 +25,7 @@
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/panda-preset": "workspace:*",
-    "@microsoft/api-extractor": "^7.46.2",
+    "@microsoft/api-extractor": "^7.52.4",
     "@pandacss/dev": "^0.53.3",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.0.4",
