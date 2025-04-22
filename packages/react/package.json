@@ -27,7 +27,7 @@
     "@cerberus-design/panda-preset": "workspace:*",
     "@microsoft/api-extractor": "^7.52.4",
     "@pandacss/dev": "^0.53.3",
-    "@types/react": "^19.1.0",
+    "@types/react": "^19.1.2",
     "@types/react-dom": "^19.0.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
