@@ -64,8 +64,8 @@ importers:
         specifier: ^15.5.0
         version: 15.5.1
       oxlint:
-        specifier: ^0.13.2
-        version: 0.13.2
+        specifier: ^0.16.8
+        version: 0.16.8
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -84,7 +84,7 @@ importers:
     devDependencies:
       tsup:
         specifier: ^8.0.2
-        version: 8.4.0(@microsoft/api-extractor@7.52.5(@types/node@22.15.2))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
+        version: 8.4.0(@microsoft/api-extractor@7.52.5(@types/node@22.15.3))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
       util:
         specifier: ^0.12.5
         version: 0.12.5
@@ -154,7 +154,7 @@ importers:
         version: 3.3.0
       '@types/node':
         specifier: ^22.14.1
-        version: 22.15.2
+        version: 22.15.3
       '@types/react':
         specifier: 19.1.2
         version: 19.1.2
@@ -271,7 +271,7 @@ importers:
         version: link:../panda-preset
       '@microsoft/api-extractor':
         specifier: ^7.52.4
-        version: 7.52.5(@types/node@22.15.2)
+        version: 7.52.5(@types/node@22.15.3)
       '@pandacss/dev':
         specifier: ^0.53.3
         version: 0.53.6(jsdom@26.0.0)(typescript@5.8.3)
@@ -289,7 +289,7 @@ importers:
         version: 19.1.0(react@19.1.0)
       tsup:
         specifier: ^8.4.0
-        version: 8.4.0(@microsoft/api-extractor@7.52.5(@types/node@22.15.2))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
+        version: 8.4.0(@microsoft/api-extractor@7.52.5(@types/node@22.15.3))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
 
   tests:
     devDependencies:
@@ -1213,43 +1213,43 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@oxlint/darwin-arm64@0.13.2':
-    resolution: {integrity: sha512-Jbi2UX1xTFTpH/D6n15RzDSG/44oJ0FwrHWl96TsdD3PAOGxmm8LgcrsCU4d22TSN7ShDFB8y34MYplduRzhfA==}
+  '@oxlint/darwin-arm64@0.16.8':
+    resolution: {integrity: sha512-1w7Jbrp0WUkbXlGb/x3nh7MK8EzCS8USR2Q8Yo0ZMmCNXmxxfkL07B9wSmlKcJ7y9MSfFkpF4Md5r6jwJNeWLg==}
     cpu: [arm64]
     os: [darwin]
 
-  '@oxlint/darwin-x64@0.13.2':
-    resolution: {integrity: sha512-ulA2vpNIM14VWJua6BjgX6l8nrjY8Un0uLqBLgELyDHMfpnC0HfrB2mR9PC9tRhb7+BEbgDLWTRs2aTV64eprw==}
+  '@oxlint/darwin-x64@0.16.8':
+    resolution: {integrity: sha512-zWMKa8kNmtQfBHG5j4HGiOT1azjgs4rFsjAADWHBQ6qsqdW0evhQt9666JYJA2kKtuoWiIPv4UypV5s2QI9oCQ==}
     cpu: [x64]
     os: [darwin]
 
-  '@oxlint/linux-arm64-gnu@0.13.2':
-    resolution: {integrity: sha512-iwguvPnIx/yIMc2IrwLeRflEFwyn+gcsNR8le5aX5DvQfHiB3/3x5JxOVl7Nd93lLsOg8RyVr2E11CxV10rKWw==}
+  '@oxlint/linux-arm64-gnu@0.16.8':
+    resolution: {integrity: sha512-AK6x1UN/Wz0C+kpV70J3cKgKl+b6Jrh4EDAY6JY99F7DMlNAbKtRtBZAb3IMiuukv/mqbTvb7Z7+dUIp/DHOkA==}
     cpu: [arm64]
     os: [linux]
 
-  '@oxlint/linux-arm64-musl@0.13.2':
-    resolution: {integrity: sha512-YJVvVyuvUobgCmiE47kBwN6dymLcQBG5/NsEaCbVyYw5HQJN7Ywp/x4suaF4c6M9ItPCnLxEZ4Lwu5TkrkU3vQ==}
+  '@oxlint/linux-arm64-musl@0.16.8':
+    resolution: {integrity: sha512-+VJNo9NGYjP/8qFvcMk6IR4waRENbXolDk6SsfWXnub/b0UpXd8dH+cFSo9VPsHoLQ1+/A2WbqTxO+XkkaUXYw==}
     cpu: [arm64]
     os: [linux]
 
-  '@oxlint/linux-x64-gnu@0.13.2':
-    resolution: {integrity: sha512-w78gjd3ZJ+ahByS5gmN0jxFn/+G3W/oBJbyGFOuteXYcJwLj6JIyS0VhpMKxuAdFNCnsjJeDHSbdWaCV6VkA3A==}
+  '@oxlint/linux-x64-gnu@0.16.8':
+    resolution: {integrity: sha512-1AN2P3AUfW04jmaiEh/NnV3/oZKrXMScqbihZ8bclKdwKanEyNX+McCfpUZ6/L1h1imCj9tR1ChNq0LaPrJfAg==}
     cpu: [x64]
     os: [linux]
 
-  '@oxlint/linux-x64-musl@0.13.2':
-    resolution: {integrity: sha512-yedk6KQT3jtBzpzExo3Ib7NwfuugaaFKvk/EzXEojMQ5aYh6CNhmVmm+adzwBp4YyOeXQZxSPHQ1LcNwDCUJIA==}
+  '@oxlint/linux-x64-musl@0.16.8':
+    resolution: {integrity: sha512-FyG47d0ypwpIv+OEgTQe+qV9UDgeEoNJW0p50/zUkQhe3LVC20qNztvFp0X9uTm1V7ihY8GCZKC1ooeD3+eWWw==}
     cpu: [x64]
     os: [linux]
 
-  '@oxlint/win32-arm64@0.13.2':
-    resolution: {integrity: sha512-KZvJ3uMWSCwkZtvOcO+K4mLmYU/jIcHUb00s8aPasG1taflbjINsq9ZUUj5LNigcDwJRZGUwNcvY5KuQ+E9WtQ==}
+  '@oxlint/win32-arm64@0.16.8':
+    resolution: {integrity: sha512-fUnKMhcyChO7nLh5TS/yELOx7FG1827GShIalQr6L9SnDGeKjjzBrJwpc3jFtTB4Ti6wX+7yB7JYOo2EgoRdvQ==}
     cpu: [arm64]
     os: [win32]
 
-  '@oxlint/win32-x64@0.13.2':
-    resolution: {integrity: sha512-G8FM8RTJRMt2dPRJ/TXhqIEu9k00vRAoh3DSV2r3o+jD8FZDBZXOgoDn2D0F9HqgFLEOVTxpfalmWntyk2hmyw==}
+  '@oxlint/win32-x64@0.16.8':
+    resolution: {integrity: sha512-gpvVsWH8HJQP6UWGyDlZdslmk6CNTtjEl8MLD6Mhx+2L02ypaYkA0pyTKPaLQrn0O2D+CT0WAh53YtxCf903qA==}
     cpu: [x64]
     os: [win32]
 
@@ -1676,8 +1676,8 @@ packages:
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
 
-  '@types/node@22.15.2':
-    resolution: {integrity: sha512-uKXqKN9beGoMdBfcaTY1ecwz6ctxuJAcUlwE55938g0ZJ8lRxwAZqRz2AJ4pzpt5dHdTPMB863UZ0ESiFUcP7A==}
+  '@types/node@22.15.3':
+    resolution: {integrity: sha512-lX7HFZeHf4QG/J7tBZqrCAXwz9J5RD56Y6MpP0eJkka8p+K0RY/yBTW7CYFJ4VGCclxqOLKmiGP5juQc6MKgcw==}
 
   '@types/react-dom@19.1.2':
     resolution: {integrity: sha512-XGJkWF41Qq305SKWEILa1O8vzhb3aOo3ogBlSmiqNko/WmRb6QIaweuZCXjKygVDXpzXb5wyxKTSOsmkuqj+Qw==}
@@ -4456,9 +4456,9 @@ packages:
     resolution: {integrity: sha512-qFOyK5PjiWZd+QQIh+1jhdb9LpxTF0qs7Pm8o5QHYZ0M3vKqSqzsZaEB6oWlxZ+q2sJBMI/Ktgd2N5ZwQoRHfg==}
     engines: {node: '>= 0.4'}
 
-  oxlint@0.13.2:
-    resolution: {integrity: sha512-R7wXUspM75TeEXaAFLmuPH0W3h5B5r6BNtOvkcnVddD3BWbBiEOWe9bCqt4+te0l8wQ4a0/XLCGrJroxFFeajg==}
-    engines: {node: '>=14.*'}
+  oxlint@0.16.8:
+    resolution: {integrity: sha512-UmpfqkynkudIY8orqAvYelQXJ1YNMecwJ422ZtJ84vbtIQ2HH96WBhqLAEoUgDB7yu/LpxMQrjukFOJQkh+mQw==}
+    engines: {node: '>=8.*'}
     hasBin: true
 
   p-limit@3.1.0:
@@ -6321,23 +6321,23 @@ snapshots:
       '@types/react': 19.1.2
       react: 19.1.0
 
-  '@microsoft/api-extractor-model@7.30.5(@types/node@22.15.2)':
+  '@microsoft/api-extractor-model@7.30.5(@types/node@22.15.3)':
     dependencies:
       '@microsoft/tsdoc': 0.15.1
       '@microsoft/tsdoc-config': 0.17.1
-      '@rushstack/node-core-library': 5.13.0(@types/node@22.15.2)
+      '@rushstack/node-core-library': 5.13.0(@types/node@22.15.3)
     transitivePeerDependencies:
       - '@types/node'
 
-  '@microsoft/api-extractor@7.52.5(@types/node@22.15.2)':
+  '@microsoft/api-extractor@7.52.5(@types/node@22.15.3)':
     dependencies:
-      '@microsoft/api-extractor-model': 7.30.5(@types/node@22.15.2)
+      '@microsoft/api-extractor-model': 7.30.5(@types/node@22.15.3)
       '@microsoft/tsdoc': 0.15.1
       '@microsoft/tsdoc-config': 0.17.1
-      '@rushstack/node-core-library': 5.13.0(@types/node@22.15.2)
+      '@rushstack/node-core-library': 5.13.0(@types/node@22.15.3)
       '@rushstack/rig-package': 0.5.3
-      '@rushstack/terminal': 0.15.2(@types/node@22.15.2)
-      '@rushstack/ts-command-line': 5.0.0(@types/node@22.15.2)
+      '@rushstack/terminal': 0.15.2(@types/node@22.15.3)
+      '@rushstack/ts-command-line': 5.0.0(@types/node@22.15.3)
       lodash: 4.17.21
       minimatch: 3.0.8
       resolve: 1.22.10
@@ -6445,28 +6445,28 @@ snapshots:
   '@oven/bun-windows-x64@1.1.6':
     optional: true
 
-  '@oxlint/darwin-arm64@0.13.2':
+  '@oxlint/darwin-arm64@0.16.8':
     optional: true
 
-  '@oxlint/darwin-x64@0.13.2':
+  '@oxlint/darwin-x64@0.16.8':
     optional: true
 
-  '@oxlint/linux-arm64-gnu@0.13.2':
+  '@oxlint/linux-arm64-gnu@0.16.8':
     optional: true
 
-  '@oxlint/linux-arm64-musl@0.13.2':
+  '@oxlint/linux-arm64-musl@0.16.8':
     optional: true
 
-  '@oxlint/linux-x64-gnu@0.13.2':
+  '@oxlint/linux-x64-gnu@0.16.8':
     optional: true
 
-  '@oxlint/linux-x64-musl@0.13.2':
+  '@oxlint/linux-x64-musl@0.16.8':
     optional: true
 
-  '@oxlint/win32-arm64@0.13.2':
+  '@oxlint/win32-arm64@0.16.8':
     optional: true
 
-  '@oxlint/win32-x64@0.13.2':
+  '@oxlint/win32-x64@0.16.8':
     optional: true
 
   '@pandacss/config@0.53.6':
@@ -6702,7 +6702,7 @@ snapshots:
 
   '@rushstack/eslint-patch@1.11.0': {}
 
-  '@rushstack/node-core-library@5.13.0(@types/node@22.15.2)':
+  '@rushstack/node-core-library@5.13.0(@types/node@22.15.3)':
     dependencies:
       ajv: 8.13.0
       ajv-draft-04: 1.0.0(ajv@8.13.0)
@@ -6713,23 +6713,23 @@ snapshots:
       resolve: 1.22.10
       semver: 7.5.4
     optionalDependencies:
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
 
   '@rushstack/rig-package@0.5.3':
     dependencies:
       resolve: 1.22.10
       strip-json-comments: 3.1.1
 
-  '@rushstack/terminal@0.15.2(@types/node@22.15.2)':
+  '@rushstack/terminal@0.15.2(@types/node@22.15.3)':
     dependencies:
-      '@rushstack/node-core-library': 5.13.0(@types/node@22.15.2)
+      '@rushstack/node-core-library': 5.13.0(@types/node@22.15.3)
       supports-color: 8.1.1
     optionalDependencies:
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
 
-  '@rushstack/ts-command-line@5.0.0(@types/node@22.15.2)':
+  '@rushstack/ts-command-line@5.0.0(@types/node@22.15.3)':
     dependencies:
-      '@rushstack/terminal': 0.15.2(@types/node@22.15.2)
+      '@rushstack/terminal': 0.15.2(@types/node@22.15.3)
       '@types/argparse': 1.0.38
       argparse: 1.0.10
       string-argv: 0.3.2
@@ -7084,7 +7084,7 @@ snapshots:
 
   '@types/node@17.0.45': {}
 
-  '@types/node@22.15.2':
+  '@types/node@22.15.3':
     dependencies:
       undici-types: 6.21.0
 
@@ -8337,7 +8337,7 @@ snapshots:
 
   bun-types@1.2.10:
     dependencies:
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
 
   bun@1.1.6:
     optionalDependencies:
@@ -9934,7 +9934,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.15.2
+      '@types/node': 22.15.3
       merge-stream: 2.0.0
       supports-color: 8.1.1
     optional: true
@@ -11021,16 +11021,16 @@ snapshots:
       object-keys: 1.1.1
       safe-push-apply: 1.0.0
 
-  oxlint@0.13.2:
+  oxlint@0.16.8:
     optionalDependencies:
-      '@oxlint/darwin-arm64': 0.13.2
-      '@oxlint/darwin-x64': 0.13.2
-      '@oxlint/linux-arm64-gnu': 0.13.2
-      '@oxlint/linux-arm64-musl': 0.13.2
-      '@oxlint/linux-x64-gnu': 0.13.2
-      '@oxlint/linux-x64-musl': 0.13.2
-      '@oxlint/win32-arm64': 0.13.2
-      '@oxlint/win32-x64': 0.13.2
+      '@oxlint/darwin-arm64': 0.16.8
+      '@oxlint/darwin-x64': 0.16.8
+      '@oxlint/linux-arm64-gnu': 0.16.8
+      '@oxlint/linux-arm64-musl': 0.16.8
+      '@oxlint/linux-x64-gnu': 0.16.8
+      '@oxlint/linux-x64-musl': 0.16.8
+      '@oxlint/win32-arm64': 0.16.8
+      '@oxlint/win32-x64': 0.16.8
 
   p-limit@3.1.0:
     dependencies:
@@ -11994,7 +11994,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.4.0(@microsoft/api-extractor@7.52.5(@types/node@22.15.2))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1):
+  tsup@8.4.0(@microsoft/api-extractor@7.52.5(@types/node@22.15.3))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.25.0)
       cac: 6.7.14
@@ -12013,7 +12013,7 @@ snapshots:
       tinyglobby: 0.2.12
       tree-kill: 1.2.2
     optionalDependencies:
-      '@microsoft/api-extractor': 7.52.5(@types/node@22.15.2)
+      '@microsoft/api-extractor': 7.52.5(@types/node@22.15.3)
       postcss: 8.5.3
       typescript: 5.8.3
     transitivePeerDependencies:
