@@ -130,9 +130,9 @@ importers:
         version: link:../packages/panda-preset
       '@csstools/postcss-cascade-layers':
         specifier: ^5.0.1
-        version: 5.0.1(postcss@8.4.49)
+        version: 5.0.1(postcss@8.5.3)
       '@expressive-code/plugin-line-numbers':
-        specifier: ^0.41.1
+        specifier: ^0.41.2
         version: 0.41.2
       '@mdx-js/loader':
         specifier: ^3.1.0
@@ -144,10 +144,10 @@ importers:
         specifier: ^15.3.1
         version: 15.3.1(@mdx-js/loader@3.1.0(webpack@5.91.0))(@mdx-js/react@3.1.0(@types/react@19.1.2)(react@19.1.0))
       '@pandacss/dev':
-        specifier: ^0.53.3
+        specifier: ^0.53.6
         version: 0.53.6(jsdom@26.0.0)(typescript@5.8.3)
       '@pandacss/types':
-        specifier: ^0.53.3
+        specifier: ^0.53.6
         version: 0.53.6
       '@shikijs/rehype':
         specifier: ^3.2.2
@@ -166,7 +166,7 @@ importers:
         version: 1.5.0(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       autoprefixer:
         specifier: ^10.4.21
-        version: 10.4.21(postcss@8.4.49)
+        version: 10.4.21(postcss@8.5.3)
       eslint:
         specifier: ^8
         version: 8.57.1
@@ -180,7 +180,7 @@ importers:
         specifier: ^7.1.0
         version: 7.1.0
       rehype-expressive-code:
-        specifier: ^0.41.1
+        specifier: ^0.41.2
         version: 0.41.2
       rehype-slug:
         specifier: ^6.0.0
@@ -2556,7 +2556,6 @@ packages:
 
   bun@1.1.6:
     resolution: {integrity: sha512-0oKx5dVZ8LpsAvXdW2DTR5Zt3KS81Ifjx9T2ma7RjDPKbvGIlDXOPt++tr1SndxhFNFsMFeE4i6VKvlL7IR0Zw==}
-    cpu: [arm64, x64]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -5782,10 +5781,10 @@ snapshots:
       postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
-  '@csstools/postcss-cascade-layers@5.0.1(postcss@8.4.49)':
+  '@csstools/postcss-cascade-layers@5.0.1(postcss@8.5.3)':
     dependencies:
       '@csstools/selector-specificity': 5.0.0(postcss-selector-parser@7.0.0)
-      postcss: 8.4.49
+      postcss: 8.5.3
       postcss-selector-parser: 7.0.0
 
   '@csstools/selector-specificity@3.1.1(postcss-selector-parser@6.1.2)':
@@ -8238,16 +8237,6 @@ snapshots:
   async-function@1.0.0: {}
 
   asynckit@0.4.0: {}
-
-  autoprefixer@10.4.21(postcss@8.4.49):
-    dependencies:
-      browserslist: 4.24.4
-      caniuse-lite: 1.0.30001712
-      fraction.js: 4.3.7
-      normalize-range: 0.1.2
-      picocolors: 1.1.1
-      postcss: 8.4.49
-      postcss-value-parser: 4.2.0
 
   autoprefixer@10.4.21(postcss@8.5.3):
     dependencies:
