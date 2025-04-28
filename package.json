@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.24.0",
+    "@eslint/js": "^9.25.1",
     "@types/bun": "^1.2.9",
     "@types/eslint": "^8.56.12",
     "@types/eslint-config-prettier": "^6.11.3",
@@ -34,7 +34,7 @@
     "eslint-plugin-sonarjs": "^3.0.2",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
-    "oxlint": "^0.13.2",
+    "oxlint": "^0.16.8",
     "prettier": "3.5.3",
     "typescript-eslint": "^8.31.0"
   },
