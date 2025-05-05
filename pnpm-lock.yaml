@@ -248,7 +248,7 @@ importers:
         specifier: workspace:*
         version: link:../../configs
       '@pandacss/dev':
-        specifier: ^0.53.3
+        specifier: ^0.53.6
         version: 0.53.6(jsdom@26.0.0)(typescript@5.8.3)
       '@pandacss/types':
         specifier: ^0.53.6
@@ -273,7 +273,7 @@ importers:
         specifier: ^7.52.4
         version: 7.52.7(@types/node@22.15.3)
       '@pandacss/dev':
-        specifier: ^0.53.3
+        specifier: ^0.53.6
         version: 0.53.6(jsdom@26.0.0)(typescript@5.8.3)
       '@types/react':
         specifier: ^19.1.2
@@ -2586,7 +2586,6 @@ packages:
 
   bun@1.1.6:
     resolution: {integrity: sha512-0oKx5dVZ8LpsAvXdW2DTR5Zt3KS81Ifjx9T2ma7RjDPKbvGIlDXOPt++tr1SndxhFNFsMFeE4i6VKvlL7IR0Zw==}
-    cpu: [arm64, x64]
     os: [darwin, linux, win32]
     hasBin: true
 
