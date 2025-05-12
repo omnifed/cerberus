@@ -32,7 +32,7 @@
     "@pandacss/dev": "^0.53.6",
     "@pandacss/types": "^0.53.6",
     "@shikijs/rehype": "^3.2.2",
-    "@types/node": "^22.15.2",
+    "@types/node": "^22.15.17",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
     "@vercel/analytics": "^1.5.0",
