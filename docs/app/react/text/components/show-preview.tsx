@@ -13,6 +13,7 @@ export default function ShowPreview() {
       >
         Hello, world!
       </Text>
+      <Text>This is normal text</Text>
       <Text as="small" color="info.text.100" textStyle="body-sm">
         This is small text
       </Text>

@@ -8,6 +8,7 @@ describe('patterns', () => {
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.h1.transform({ bgColor: 'black' }),
     ).toMatchObject({
+      color: 'page.text.initial',
       bgColor: 'black',
     })
   })
@@ -18,6 +19,7 @@ describe('patterns', () => {
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.h2.transform({ bgColor: 'black' }),
     ).toMatchObject({
+      color: 'page.text.initial',
       bgColor: 'black',
     })
   })
@@ -28,6 +30,7 @@ describe('patterns', () => {
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.h3.transform({ bgColor: 'black' }),
     ).toMatchObject({
+      color: 'page.text.initial',
       bgColor: 'black',
     })
   })
@@ -38,6 +41,7 @@ describe('patterns', () => {
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.h4.transform({ bgColor: 'black' }),
     ).toMatchObject({
+      color: 'page.text.initial',
       bgColor: 'black',
     })
   })
@@ -48,6 +52,7 @@ describe('patterns', () => {
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.h5.transform({ bgColor: 'black' }),
     ).toMatchObject({
+      color: 'page.text.initial',
       bgColor: 'black',
     })
   })
@@ -58,6 +63,7 @@ describe('patterns', () => {
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.h6.transform({ bgColor: 'black' }),
     ).toMatchObject({
+      color: 'page.text.initial',
       bgColor: 'black',
     })
   })
@@ -68,6 +74,7 @@ describe('patterns', () => {
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.p.transform({ bgColor: 'black' }),
     ).toMatchObject({
+      color: 'page.text.initial',
       bgColor: 'black',
     })
   })
@@ -78,6 +85,7 @@ describe('patterns', () => {
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.strong.transform({ bgColor: 'black' }),
     ).toMatchObject({
+      color: 'page.text.initial',
       bgColor: 'black',
     })
   })
@@ -88,6 +96,7 @@ describe('patterns', () => {
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.em.transform({ bgColor: 'black' }),
     ).toMatchObject({
+      color: 'page.text.initial',
       bgColor: 'black',
     })
   })
@@ -98,6 +107,7 @@ describe('patterns', () => {
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.small.transform({ bgColor: 'black' }),
     ).toMatchObject({
+      color: 'page.text.initial',
       bgColor: 'black',
     })
   })
@@ -108,6 +118,7 @@ describe('patterns', () => {
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.span.transform({ bgColor: 'black' }),
     ).toMatchObject({
+      color: 'page.text.initial',
       bgColor: 'black',
     })
   })

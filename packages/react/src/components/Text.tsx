@@ -44,28 +44,25 @@ export interface TextProps extends PProps {
  */
 export function Text(props: TextProps) {
   const { as = 'p', ...pandaJSXProps } = props
-  switch (as) {
-    case 'h1':
-      return <H1 {...pandaJSXProps} />
-    case 'h2':
-      return <H2 {...pandaJSXProps} />
-    case 'h3':
-      return <H3 {...pandaJSXProps} />
-    case 'h4':
-      return <H4 {...pandaJSXProps} />
-    case 'h5':
-      return <H5 {...pandaJSXProps} />
-    case 'h6':
-      return <H6 {...pandaJSXProps} />
-    case 'strong':
-      return <Strong {...pandaJSXProps} />
-    case 'em':
-      return <Em {...pandaJSXProps} />
-    case 'small':
-      return <Small {...pandaJSXProps} />
-    case 'span':
-      return <Span {...pandaJSXProps} />
-    default:
-      return <P {...pandaJSXProps} />
+
+  const cache = {
+    h1: H1,
+    h2: H2,
+    h3: H3,
+    h4: H4,
+    h5: H5,
+    h6: H6,
+    strong: Strong,
+    em: Em,
+    small: Small,
+    span: Span,
+    p: P,
   }
+
+  if (as in cache) {
+    const Component = cache[as as keyof typeof cache]
+    return <Component {...pandaJSXProps} />
+  }
+
+  return <P {...pandaJSXProps} />
 }
