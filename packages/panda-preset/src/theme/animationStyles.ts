@@ -7,7 +7,6 @@ export const animationStyles: AnimationStyles = defineAnimationStyles({
     value: {
       animationDuration: 'fast',
       animationName: 'fadeIn',
-      animationTimingFunction: 'emphasized-in',
     },
   },
 
@@ -15,7 +14,6 @@ export const animationStyles: AnimationStyles = defineAnimationStyles({
     value: {
       animationDuration: 'fast',
       animationName: 'fadeOut',
-      animationTimingFunction: 'emphasized-out',
     },
   },
 
@@ -23,7 +21,6 @@ export const animationStyles: AnimationStyles = defineAnimationStyles({
     value: {
       animationDuration: 'slow',
       animationName: 'slideIn',
-      animationTimingFunction: 'emphasized-in',
     },
   },
 
@@ -31,7 +28,6 @@ export const animationStyles: AnimationStyles = defineAnimationStyles({
     value: {
       animationDuration: 'fast',
       animationName: 'slideOut',
-      animationTimingFunction: 'emphasized-out',
     },
   },
 
