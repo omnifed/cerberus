@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'bun:test'
 import { pageTokens } from '@cerberus-design/panda-preset'
 
-describe('page', () => {
+describe('Cerberus > page', () => {
   const token = pageTokens.page
 
   function getSemanticToken(value: TemplateStringsArray) {
@@ -63,6 +63,20 @@ describe('page', () => {
     )
     expect(token.bg['200'].value._lightMode).toEqual(
       getSemanticToken`cerberus.neutral.20`,
+    )
+  })
+
+  // bg.300
+
+  test('should have a cerberus bg.300 property', () => {
+    expect(token.bg['300'].value.base).toEqual(
+      getSemanticToken`cerberus.neutral.60`,
+    )
+    expect(token.bg['300'].value._darkMode).toEqual(
+      getSemanticToken`cerberus.neutral.60`,
+    )
+    expect(token.bg['300'].value._lightMode).toEqual(
+      getSemanticToken`cerberus.neutral.30`,
     )
   })
 
@@ -161,6 +175,20 @@ describe('page', () => {
     )
     expect(token.surface[300].value._lightMode).toEqual(
       getSemanticToken`cerberus.neutral.10`,
+    )
+  })
+
+  // surface.400
+
+  test('should have a cerberus surface.400 property', () => {
+    expect(token.surface[400].value.base).toEqual(
+      getSemanticToken`cerberus.neutral.60`,
+    )
+    expect(token.surface[400].value._darkMode).toEqual(
+      getSemanticToken`cerberus.neutral.60`,
+    )
+    expect(token.surface[400].value._lightMode).toEqual(
+      getSemanticToken`cerberus.neutral.15`,
     )
   })
 

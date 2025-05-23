@@ -66,6 +66,20 @@ describe('Acheron > page', () => {
     )
   })
 
+  // bg.300
+
+  test('should have a acheron bg.300 property', () => {
+    expect(token.bg['300'].value.base).toEqual(
+      getSemanticToken`acheron.neutral.60`,
+    )
+    expect(token.bg['300'].value._darkMode).toEqual(
+      getSemanticToken`acheron.neutral.60`,
+    )
+    expect(token.bg['300'].value._lightMode).toEqual(
+      getSemanticToken`acheron.neutral.30`,
+    )
+  })
+
   // border.initial
 
   test('should have a acheron border.initial property', () => {
@@ -161,6 +175,20 @@ describe('Acheron > page', () => {
     )
     expect(token.surface[300].value._lightMode).toEqual(
       getSemanticToken`acheron.neutral.20`,
+    )
+  })
+
+  // surface.400
+
+  test('should have a acheron surface.400 property', () => {
+    expect(token.surface[400].value.base).toEqual(
+      getSemanticToken`acheron.neutral.60`,
+    )
+    expect(token.surface[400].value._darkMode).toEqual(
+      getSemanticToken`acheron.neutral.60`,
+    )
+    expect(token.surface[400].value._lightMode).toEqual(
+      getSemanticToken`acheron.neutral.30`,
     )
   })
 

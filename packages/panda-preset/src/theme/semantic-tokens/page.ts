@@ -7,9 +7,10 @@ import { PAGE } from '../../recipes/shared/palettes'
  * @module pageTokens
  */
 
-type PageProminence = Exclude<Prominence, 'static'>
+export type PageProminence = Exclude<Prominence, 'static'>
+export type TextProminence = Exclude<PageProminence, 400>
 
-interface ContractPageTokens {
+export interface ContractPageTokens {
   readonly page: {
     readonly backdrop: {
       readonly initial: object
@@ -18,6 +19,7 @@ interface ContractPageTokens {
       readonly initial: object
       readonly 100: object
       readonly 200: object
+      readonly 300: object
     }
     readonly border: {
       readonly initial: object
@@ -28,7 +30,7 @@ interface ContractPageTokens {
       readonly [P in PageProminence]: object
     }
     readonly text: {
-      readonly [P in PageProminence]: object
+      readonly [P in TextProminence]: object
     }
   }
 }
@@ -42,6 +44,7 @@ export interface PageTokens {
       readonly initial: SemanticToken
       readonly 100: SemanticToken
       readonly 200: SemanticToken
+      readonly 300: SemanticToken
     }
     readonly border: {
       readonly initial: SemanticToken
@@ -52,7 +55,7 @@ export interface PageTokens {
       readonly [P in PageProminence]: SemanticToken
     }
     readonly text: {
-      readonly [P in PageProminence]: SemanticToken
+      readonly [P in Exclude<PageProminence, 400>]: SemanticToken
     }
   }
 }
@@ -66,6 +69,7 @@ export const contractPageTokens: ContractPageTokens = {
       initial: {},
       100: {},
       200: {},
+      300: {},
     },
     border: {
       initial: {},
@@ -78,6 +82,7 @@ export const contractPageTokens: ContractPageTokens = {
       100: {},
       200: {},
       300: {},
+      400: {},
     },
     text: {
       initial: {},
@@ -109,6 +114,7 @@ export const pageTokens: PageTokens = {
       initial: formatSemanticTokenValue('background.page.initial'),
       100: formatSemanticTokenValue('background.page.100'),
       200: formatSemanticTokenValue('background.page.200'),
+      300: formatSemanticTokenValue('background.page.300'),
     },
 
     border: {
@@ -122,6 +128,7 @@ export const pageTokens: PageTokens = {
       100: formatSemanticTokenValue('surface.page.100'),
       200: formatSemanticTokenValue('surface.page.200'),
       300: formatSemanticTokenValue('surface.page.300'),
+      400: formatSemanticTokenValue('surface.page.400'),
       inverse: formatSemanticTokenValue('surface.page.inverse'),
     },
 
