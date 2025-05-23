@@ -63,7 +63,6 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
       data-color-mode={defaultColorModeName}
       data-code-theme={getCodeTheme(defaultColorModeName, defaultThemeName)}
     >
-      <Analytics />
       {defaultThemeName && (
         <head>
           <style
@@ -91,6 +90,8 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
             <main role="main">{props.children}</main>
           </CerberusConfig>
         </ThemeProvider>
+
+        <Analytics />
       </body>
     </html>
   )

@@ -45,6 +45,7 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       colorPalette: 'action',
       alignItems: 'center',
       borderRadius: 'l1',
+      color: 'page.text.initial',
       cursor: 'menuitem',
       display: 'flex',
       flex: '0 0 auto',
