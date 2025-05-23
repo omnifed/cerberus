@@ -90,6 +90,7 @@ export default function FourTabLayout(
                     href={
                       `/react/${props.path}/${tab}` as LinkProps<string>['href']
                     }
+                    prefetch
                   >
                     {tabIcons[tab]}
                     {tab}

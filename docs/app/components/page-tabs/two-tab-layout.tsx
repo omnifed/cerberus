@@ -90,6 +90,7 @@ export default function TwoTabLayout(
                     href={
                       `/${props.path}/${tab as string}` as LinkProps<string>['href']
                     }
+                    prefetch
                   >
                     {tabIcons[tab]}
                     {tab}

@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Show } from '@cerberus-design/react'
-import { animateIn, hstack, vstack } from 'styled-system/patterns'
+import { Button, Show, Text } from '@cerberus-design/react'
+import { AnimateIn, HStack, VStack } from 'styled-system/jsx'
 import { useCallback, useState } from 'react'
 
 export function AnimateInPreview() {
@@ -15,32 +15,19 @@ export function AnimateInPreview() {
   }, [])
 
   return (
-    <div
-      className={hstack({
-        gap: '4',
-      })}
-    >
+    <HStack gap="md">
       <Button onClick={handleAnimateIn}>Animate In</Button>
 
-      <div className={vstack()}>
+      <VStack>
         <Show when={animate}>
-          <div
-            className={animateIn({
-              padding: '4',
-            })}
-          >
-            <span>Default</span>
-          </div>
-          <div
-            className={animateIn({
-              delay: '600ms',
-              padding: '4',
-            })}
-          >
-            <span>Delayed</span>
-          </div>
+          <AnimateIn p="md">
+            <Text>Default</Text>
+          </AnimateIn>
+          <AnimateIn delay="600ms" p="md">
+            <Text>Delayed</Text>
+          </AnimateIn>
         </Show>
-      </div>
-    </div>
+      </VStack>
+    </HStack>
   )
 }
