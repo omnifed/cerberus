@@ -36,7 +36,14 @@ export type Usage =
  * @description **noun**, how something stands out.
  * @readonly **optional**
  */
-export type Prominence = 'initial' | 'inverse' | 'static' | 100 | 200 | 300
+export type Prominence =
+  | 'initial'
+  | 'inverse'
+  | 'static'
+  | 100
+  | 200
+  | 300
+  | 400
 
 /**
  * The state of an color.
