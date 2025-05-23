@@ -6,7 +6,8 @@ import { formatSemanticTokenValue } from '../../tokens'
  * @module dangerTokens
  */
 
-type Prominences = Exclude<Prominence, 300>
+type DangerProminences = Exclude<Prominence, 300 | 400>
+type DangerTextProminence = Exclude<DangerProminences, 400>
 
 export interface ContractDangerTokens {
   readonly danger: {
@@ -29,7 +30,7 @@ export interface ContractDangerTokens {
       readonly 200: object
     }
     readonly text: {
-      readonly [P in Prominences]: object
+      readonly [P in DangerTextProminence]: object
     }
   }
 }
@@ -89,7 +90,7 @@ export interface DangerTokens {
       readonly 200: SemanticToken
     }
     readonly text: {
-      readonly [P in Prominences]: SemanticToken
+      readonly [P in DangerTextProminence]: SemanticToken
     }
   }
 }

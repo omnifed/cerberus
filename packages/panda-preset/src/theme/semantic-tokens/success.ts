@@ -6,7 +6,7 @@ import { formatSemanticTokenValue } from '../../tokens'
  * @module successTokens
  */
 
-type Prominences = Exclude<Prominence, 300>
+type SuccessTextProminences = Exclude<Prominence, 300 | 400>
 
 export interface ContractSuccessTokens {
   readonly success: {
@@ -29,7 +29,7 @@ export interface ContractSuccessTokens {
       readonly 200: object
     }
     readonly text: {
-      readonly [P in Prominences]: object
+      readonly [P in SuccessTextProminences]: object
     }
   }
 }
@@ -89,7 +89,7 @@ export interface SuccessTokens {
       readonly 200: SemanticToken
     }
     readonly text: {
-      readonly [P in Prominences]: SemanticToken
+      readonly [P in SuccessTextProminences]: SemanticToken
     }
   }
 }
