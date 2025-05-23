@@ -118,15 +118,14 @@ describe('patterns', () => {
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.animateIn.transform({ bgColor: 'black' }),
     ).toMatchObject({
-      animationName: 'fadeIn',
-      animationDuration: '2s',
-      animationFillMode: 'forwards',
-      animationDelay: '200ms',
-      opacity: '0',
-      bgColor: 'black',
-      _motionReduce: {
-        animationName: 'none',
+      _motionSafe: {
+        animationName: 'fadeIn',
+        animationDuration: '2s',
+        animationFillMode: 'forwards',
+        animationDelay: '200ms',
+        opacity: '0',
       },
+      bgColor: 'black',
     })
   })
 

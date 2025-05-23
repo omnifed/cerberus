@@ -82,15 +82,14 @@ const animateIn: PatternConfig = definePattern({
   transform(props: { delay?: string }) {
     const { delay, ...rest } = props
     return {
-      animationName: 'fadeIn',
-      animationDuration: '2s',
-      animationFillMode: 'forwards',
-      animationDelay: delay ?? '200ms',
-      opacity: '0',
-      ...rest,
-      _motionReduce: {
-        animationName: 'none',
+      _motionSafe: {
+        animationName: 'fadeIn',
+        animationDuration: '2s',
+        animationFillMode: 'forwards',
+        animationDelay: delay ?? '200ms',
+        opacity: '0',
       },
+      ...rest,
     }
   },
 })
