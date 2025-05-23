@@ -8,6 +8,7 @@ import {
 } from './primitives'
 import { HStack } from 'styled-system/jsx'
 import { Show } from '../Show'
+import { HelperText } from './helper-text'
 
 export interface FieldProps extends FieldRootProps {
   /**
@@ -62,16 +63,19 @@ export function Field(props: FieldProps) {
 
       {fieldProps.children}
 
-      <Show when={fieldProps.helperText && !statusProps.invalid}>
-        <HStack justifyContent="space-between" w="full">
-          <FieldHelperText>{fieldProps.helperText}</FieldHelperText>
-          <Show when={fieldProps.secondaryHelperText}>
-            <FieldHelperText>{fieldProps.secondaryHelperText}</FieldHelperText>
-          </Show>
-        </HStack>
-      </Show>
+      <HStack justifyContent="space-between" w="full">
+        <Show when={fieldProps.helperText}>
+          <HelperText invalid={statusProps.invalid}>
+            {fieldProps.helperText}
+          </HelperText>
+        </Show>
 
-      <FieldErrorText>{fieldProps.errorText}</FieldErrorText>
+        <FieldErrorText>{fieldProps.errorText}</FieldErrorText>
+
+        <Show when={fieldProps.secondaryHelperText}>
+          <FieldHelperText>{fieldProps.secondaryHelperText}</FieldHelperText>
+        </Show>
+      </HStack>
     </FieldRoot>
   )
 }
