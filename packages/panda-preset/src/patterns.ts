@@ -113,7 +113,10 @@ const textTagList: PatternConfig[] = textTags.map((tag) => {
     description: `A ${tag} element`,
     jsxElement: tag,
     transform(props) {
-      return props
+      return {
+        color: 'page.text.initial',
+        ...props,
+      }
     },
   })
 })
