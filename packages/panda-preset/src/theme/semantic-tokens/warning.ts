@@ -6,7 +6,7 @@ import { formatSemanticTokenValue } from '../../tokens'
  * @module warningTokens
  */
 
-type Prominences = Exclude<Prominence, 300>
+type WarningTextProminences = Exclude<Prominence, 300 | 400>
 
 export interface ContractWarningTokens {
   readonly warning: {
@@ -29,7 +29,7 @@ export interface ContractWarningTokens {
       readonly 200: object
     }
     readonly text: {
-      readonly [P in Prominences]: object
+      readonly [P in WarningTextProminences]: object
     }
   }
 }
@@ -89,7 +89,7 @@ export interface WarningTokens {
       readonly 200: SemanticToken
     }
     readonly text: {
-      readonly [P in Prominences]: SemanticToken
+      readonly [P in WarningTextProminences]: SemanticToken
     }
   }
 }

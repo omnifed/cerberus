@@ -6,7 +6,7 @@ import { formatSemanticTokenValue } from '../../tokens'
  * @module infoTokens
  */
 
-type Prominences = Exclude<Prominence, 'inverse' | 300>
+type InfoTextProminences = Exclude<Prominence, 'inverse' | 300 | 400>
 
 export interface ContractInfoTokens {
   readonly info: {
@@ -29,7 +29,7 @@ export interface ContractInfoTokens {
       readonly 200: object
     }
     readonly text: {
-      readonly [P in Prominences]: object
+      readonly [P in InfoTextProminences]: object
     }
   }
 }
@@ -88,7 +88,7 @@ export interface InfoTokens {
       readonly 200: SemanticToken
     }
     readonly text: {
-      readonly [P in Prominences]: SemanticToken
+      readonly [P in InfoTextProminences]: SemanticToken
     }
   }
 }
