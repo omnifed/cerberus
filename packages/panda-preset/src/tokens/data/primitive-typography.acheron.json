@@ -282,7 +282,7 @@
     },
     "1000": {
       "$type": "number",
-      "$value": 44,
+      "$value": 42,
       "$description": "",
       "$extensions": {
         "com.figma": {
