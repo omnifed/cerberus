@@ -79,6 +79,7 @@ describe('accordion recipe', () => {
       color: 'page.text.initial',
       justifyContent: 'space-between',
       textStyle: smallLabel,
+      userSelect: 'none',
       w: 'full',
       _disabled: {
         color: disabledText,

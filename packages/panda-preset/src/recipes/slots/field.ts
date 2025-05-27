@@ -82,6 +82,7 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
       color: 'page.text.initial',
       justifyContent: 'space-between',
       textStyle: smallLabel,
+      userSelect: 'none',
       w: 'full',
       _disabled: {
         color: disabledText,
