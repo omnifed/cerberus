@@ -21,6 +21,7 @@ describe('switchRecipe recipe', () => {
   test('should have a base.root property', () => {
     expect(switchRecipe.base?.root).toMatchObject({
       alignItems: 'center',
+      cursor: 'pointer',
       display: 'inline-flex',
       gap: 'sm',
       position: 'relative',
@@ -39,8 +40,8 @@ describe('switchRecipe recipe', () => {
   test('should have a base.control property', () => {
     expect(switchRecipe.base?.control).toMatchObject({
       alignItems: 'center',
-      bgColor: 'page.surface.300',
-      cursor: 'pointer',
+      bgColor: 'page.bg.300',
+      cursor: 'inherit',
       display: 'inline-flex',
       flexShrink: 0,
       h: 'var(--switch-height)',
@@ -69,9 +70,6 @@ describe('switchRecipe recipe', () => {
         outlineOffset: '2px',
         bgColor: 'danger.surface.initial',
       },
-      _readOnly: {
-        cursor: 'default',
-      },
     })
   })
 
@@ -79,7 +77,7 @@ describe('switchRecipe recipe', () => {
     expect(switchRecipe.base?.thumb).toMatchObject({
       colorPalette: 'page',
       alignItems: 'center',
-      bgColor: 'colorPalette.text.initial',
+      bgColor: 'white',
       color: 'transparent',
       display: 'flex',
       flexDirection: 'column',

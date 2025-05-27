@@ -20,6 +20,7 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
   base: {
     root: {
       alignItems: 'center',
+      cursor: 'pointer',
       display: 'inline-flex',
       gap: 'sm',
       position: 'relative',
@@ -30,8 +31,8 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
     label: field.base!.label,
     control: {
       alignItems: 'center',
-      bgColor: 'page.surface.300',
-      cursor: 'pointer',
+      bgColor: 'page.bg.300',
+      cursor: 'inherit',
       display: 'inline-flex',
       flexShrink: 0,
       h: 'var(--switch-height)',
@@ -53,14 +54,11 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
         outlineOffset: '2px',
         bgColor: 'danger.surface.initial',
       },
-      _readOnly: {
-        cursor: 'default',
-      },
     },
     thumb: {
       colorPalette: 'page',
       alignItems: 'center',
-      bgColor: 'colorPalette.text.initial',
+      bgColor: 'white',
       color: 'transparent',
       display: 'flex',
       flexDirection: 'column',
