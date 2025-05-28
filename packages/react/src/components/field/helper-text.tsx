@@ -12,5 +12,9 @@ interface HelperTextProps {
  */
 export function HelperText(props: PropsWithChildren<HelperTextProps>) {
   if (props.invalid) return null
-  return <FieldHelperText>{props.children}</FieldHelperText>
+  return (
+    <FieldHelperText data-has-content={Boolean(props.children)}>
+      {props.children}
+    </FieldHelperText>
+  )
 }

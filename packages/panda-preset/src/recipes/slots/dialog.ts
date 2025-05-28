@@ -92,7 +92,9 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     description: {
       color: 'page.text.initial',
+      lineClamp: 3,
       textStyle: 'body-md',
+      textOverflow: 'ellipsis',
     },
     closeTrigger: {
       position: 'absolute',
@@ -104,6 +106,12 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   variants: {
     size: {
+      auto: {
+        content: {
+          '--dialog-content-min-h': 'auto',
+          '--dialog-content-w': 'auto',
+        },
+      },
       xs: {
         content: {
           '--dialog-content-min-h': modalMinH,

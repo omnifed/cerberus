@@ -8,8 +8,9 @@ import {
   type DialogTitleProps,
   type DialogTriggerProps,
 } from '@ark-ui/react/dialog'
-import { cx } from 'styled-system/css'
+import { css, cx } from 'styled-system/css'
 import { dialog, type DialogVariantProps } from 'styled-system/recipes'
+import type { WithCss } from '../../types'
 
 /**
  * This module contains the primitives of the Dialog component.
@@ -65,13 +66,15 @@ export function DialogPositioner(props: DialogPositionerProps) {
 /**
  * The visible content of the dialog.
  */
-export function DialogContent(props: DialogContentProps & DialogVariantProps) {
-  const { size, ...contentProps } = props
+export function DialogContent(
+  props: DialogContentProps & DialogVariantProps & WithCss,
+) {
+  const { size, css: customStyles, ...contentProps } = props
   const styles = dialog({ size })
   return (
     <Dialog.Content
       {...contentProps}
-      className={cx(styles.content, contentProps.className)}
+      className={cx(styles.content, css(customStyles), contentProps.className)}
     />
   )
 }

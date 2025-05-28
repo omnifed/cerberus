@@ -64,11 +64,9 @@ export function Field(props: FieldProps) {
       {fieldProps.children}
 
       <HStack justifyContent="space-between" w="full">
-        <Show when={fieldProps.helperText}>
-          <HelperText invalid={statusProps.invalid}>
-            {fieldProps.helperText}
-          </HelperText>
-        </Show>
+        <HelperText invalid={statusProps.invalid}>
+          {fieldProps.helperText}
+        </HelperText>
 
         <FieldErrorText>{fieldProps.errorText}</FieldErrorText>
 

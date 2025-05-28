@@ -163,35 +163,47 @@ export function ConfirmModal(
       {props.children}
 
       <DialogProvider open={open} onOpenChange={(e) => setOpen(e.open)}>
-        <Dialog size="sm">
-          <VStack gap="xl" w="full">
-            <VStack alignItems="flex-start" gap="md" w="full">
-              <HStack
-                alignSelf="center"
-                justify="center"
-                paddingBlockEnd="md"
-                w="full"
-              >
-                <Show
-                  when={palette === 'danger'}
-                  fallback={
-                    <Avatar
-                      gradient="charon-light"
-                      fallback={<ConfirmIcon size={24} />}
-                    />
-                  }
-                >
+        <Dialog
+          size="sm"
+          style={{
+            '--dialog-content-min-h': 'auto',
+          }}
+        >
+          <VStack
+            alignItems="flex-start"
+            gap="md"
+            justify="space-between"
+            w="full"
+          >
+            <HStack
+              alignSelf="center"
+              justify="center"
+              paddingBlockEnd="md"
+              w="full"
+            >
+              <Show
+                when={palette === 'danger'}
+                fallback={
                   <Avatar
-                    gradient="hades-dark"
+                    gradient="charon-light"
                     fallback={<ConfirmIcon size={24} />}
                   />
-                </Show>
-              </HStack>
-              <DialogHeading>{content?.heading}</DialogHeading>
-              <DialogDescription>{content?.description}</DialogDescription>
-            </VStack>
+                }
+              >
+                <Avatar
+                  gradient="hades-dark"
+                  fallback={<ConfirmIcon size={24} />}
+                />
+              </Show>
+            </HStack>
 
-            <HStack gap="4" w="full">
+            <DialogHeading>{content?.heading}</DialogHeading>
+
+            <Show when={content?.description}>
+              <DialogDescription>{content?.description}</DialogDescription>
+            </Show>
+
+            <HStack gap="md" pt="md" w="full">
               <Button
                 autoFocus
                 className={css({

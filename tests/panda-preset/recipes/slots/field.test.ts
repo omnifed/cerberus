@@ -123,6 +123,10 @@ describe('accordion recipe', () => {
     expect(field.base?.helperText).toMatchObject({
       color: 'page.text.200',
       textStyle: smallLabel,
+      '&:is([data-has-content=false])': {
+        display: 'flex',
+        flex: 1,
+      },
     })
   })
 

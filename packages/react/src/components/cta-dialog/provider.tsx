@@ -105,7 +105,12 @@ export function CTAModal(props: PropsWithChildren<object>) {
       {props.children}
 
       <DialogProvider open={open} onOpenChange={(e) => setOpen(e.open)}>
-        <Dialog size="sm">
+        <Dialog
+          size="sm"
+          style={{
+            '--dialog-content-min-h': 'auto',
+          }}
+        >
           <DialogCloseIconTrigger />
 
           <VStack gap="xl" w="full">

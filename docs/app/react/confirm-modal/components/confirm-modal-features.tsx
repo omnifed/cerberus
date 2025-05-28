@@ -94,7 +94,7 @@ export function ConfirmOverviewFeature() {
     const userConsent = await confirm.show({
       heading: 'Add new payment method?',
       description:
-        'This will add a new payment method to your account to be billed for future purchases.',
+        'This will add a new payment method to your account to be billed for future purchases. This is even longer and should never happen because it is considered a very bad practice. And is longer than three lines of copy.',
       actionText: 'Yes, add payment method',
       cancelText: NOPE,
     })

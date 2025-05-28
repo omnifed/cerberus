@@ -124,9 +124,6 @@ export function FieldInput(props: FieldInputProps) {
  */
 export function FieldHelperText(props: FieldHelperTextProps) {
   const styles = field()
-
-  if (!props.children) return null
-
   return (
     <Field.HelperText
       {...props}

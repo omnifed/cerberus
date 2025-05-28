@@ -82,7 +82,9 @@ describe('dialog recipe', () => {
       },
       description: {
         color: 'page.text.initial',
+        lineClamp: 3,
         textStyle: 'body-md',
+        textOverflow: 'ellipsis',
       },
       closeTrigger: {
         position: 'absolute',
@@ -96,6 +98,12 @@ describe('dialog recipe', () => {
   test('should have variants', () => {
     expect(dialog).toHaveProperty('variants', {
       size: {
+        auto: {
+          content: {
+            '--dialog-content-min-h': 'auto',
+            '--dialog-content-w': 'auto',
+          },
+        },
         xs: {
           content: {
             '--dialog-content-min-h': modalMinH,
