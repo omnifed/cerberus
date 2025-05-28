@@ -22,6 +22,7 @@ import {
   DialogDescription,
   DialogHeading,
   DialogProvider,
+  type OpenChangeDetails,
 } from '../components/dialog'
 import { useCerberusContext } from './cerberus'
 
@@ -76,11 +77,11 @@ export type ShowConfirmModalOptions =
   | DestructiveConfirmOptions
 
 export type ShowResult =
-  | ((value: boolean | PromiseLike<boolean>) => void)
+  | ((value: boolean | PromiseLike<boolean | null> | null) => void)
   | null
 
 export interface ConfirmModalValue {
-  show: (options: ShowConfirmModalOptions) => Promise<boolean>
+  show: (options: ShowConfirmModalOptions) => Promise<boolean | null>
 }
 
 const ConfirmModalContext = createContext<ConfirmModalValue | null>(null)
@@ -142,13 +143,24 @@ export function ConfirmModal(
 
   const handleShow = useCallback(
     (options: ShowConfirmModalOptions) => {
-      return new Promise<boolean>((resolve) => {
+      return new Promise<boolean | null>((resolve) => {
         setContent({ ...options })
         setOpen(true)
         resolveRef.current = resolve
       })
     },
     [setOpen, setContent],
+  )
+
+  const handleOpenChange = useCallback(
+    (e: OpenChangeDetails) => {
+      setOpen(e.open)
+      if (!e.open) {
+        resolveRef.current?.(null)
+        resolveRef.current = null
+      }
+    },
+    [setOpen],
   )
 
   const value = useMemo(
@@ -162,7 +174,7 @@ export function ConfirmModal(
     <ConfirmModalContext.Provider value={value}>
       {props.children}
 
-      <DialogProvider open={open} onOpenChange={(e) => setOpen(e.open)}>
+      <DialogProvider open={open} onOpenChange={handleOpenChange}>
         <Dialog
           size="sm"
           style={{

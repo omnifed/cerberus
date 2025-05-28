@@ -15,18 +15,6 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
 
   body: {
     fontSize: '1rem',
-
-    _modalOpen: {
-      marginLeft: '0',
-      marginRight: '0',
-      marginTop: '0',
-      overflow: 'hidden',
-      overscrollBehavior: 'contain',
-      paddingInlineStart: '0',
-      paddingInlineEnd: '0.5em',
-      paddingTop: '0',
-      position: 'relative',
-    },
   },
 
   _highlight: {
