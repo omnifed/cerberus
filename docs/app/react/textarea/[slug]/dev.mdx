@@ -8,7 +8,7 @@ ark: 'field'
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
 import { BasicFieldPreview } from '@/app/react/field/components/field-preview'
-import { CustomField } from '@/app/react/textarea/components/static-preview'
+import { CustomField, SecondaryTextTextarea } from '@/app/react/textarea/components/static-preview'
 
 
 ```ts
@@ -69,6 +69,20 @@ export function BasicFieldPreview() {
     </form>
   )
 }
+```
+</CodePreview>
+
+## Secondary Helper Text
+
+The `Textarea` component supports secondary helper text, which can be used to display additional information or a character count.
+<CodePreview preview={<SecondaryTextTextarea />}>
+```tsx title="secondary helper text demo"
+<Field
+  label="Anything else you want to tell us?"
+  secondaryHelperText="0/300"
+>
+  <Textarea name="secondary_text" />
+</Field>
 ```
 </CodePreview>
 

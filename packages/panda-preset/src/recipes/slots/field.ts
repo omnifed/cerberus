@@ -114,6 +114,10 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
     helperText: {
       color: 'page.text.200',
       textStyle: smallLabel,
+      '&:is([data-has-content=false])': {
+        display: 'flex',
+        flex: 1,
+      },
     },
     errorText: {
       color: 'danger.text.initial',
