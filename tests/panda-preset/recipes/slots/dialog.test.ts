@@ -99,7 +99,7 @@ describe('dialog recipe', () => {
         auto: {
           content: {
             '--dialog-content-min-h': 'auto',
-            '--dialog-content-w': '26rem',
+            '--dialog-content-w': 'auto',
           },
         },
         xs: {
