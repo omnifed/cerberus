@@ -76,9 +76,7 @@ export type ShowConfirmModalOptions =
   | NonDestructiveConfirmModalOptions
   | DestructiveConfirmOptions
 
-export type ShowResult =
-  | ((value: boolean | PromiseLike<boolean | null> | null) => void)
-  | null
+export type ShowResult = ((value: boolean | null) => void) | null
 
 export interface ConfirmModalValue {
   show: (options: ShowConfirmModalOptions) => Promise<boolean | null>
@@ -153,9 +151,9 @@ export function ConfirmModal(
   )
 
   const handleOpenChange = useCallback(
-    (e: OpenChangeDetails) => {
-      setOpen(e.open)
-      if (!e.open) {
+    ({ open }: OpenChangeDetails) => {
+      setOpen(open)
+      if (!open) {
         resolveRef.current?.(null)
         resolveRef.current = null
       }
