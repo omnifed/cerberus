@@ -104,6 +104,12 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   variants: {
     size: {
+      auto: {
+        content: {
+          '--dialog-content-min-h': 'auto',
+          '--dialog-content-w': 'auto',
+        },
+      },
       xs: {
         content: {
           '--dialog-content-min-h': modalMinH,

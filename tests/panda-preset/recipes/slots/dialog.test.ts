@@ -96,6 +96,12 @@ describe('dialog recipe', () => {
   test('should have variants', () => {
     expect(dialog).toHaveProperty('variants', {
       size: {
+        auto: {
+          content: {
+            '--dialog-content-min-h': 'auto',
+            '--dialog-content-w': '26rem',
+          },
+        },
         xs: {
           content: {
             '--dialog-content-min-h': modalMinH,

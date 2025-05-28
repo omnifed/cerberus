@@ -176,33 +176,42 @@ export function PromptModal(
       {props.children}
 
       <DialogProvider open={open} onOpenChange={(e) => setOpen(e.open)}>
-        <Dialog size="sm">
-          <VStack gap="xl" w="full">
-            <VStack alignItems="flex-start" gap="md" w="full">
-              <HStack
-                alignSelf="center"
-                justify="center"
-                paddingBlockEnd="md"
-                w="full"
-              >
-                <Show
-                  when={palette === 'danger'}
-                  fallback={
-                    <Avatar
-                      gradient="charon-light"
-                      fallback={<PromptIcon size={24} />}
-                    />
-                  }
-                >
+        <Dialog
+          size="sm"
+          style={{
+            '--dialog-content-min-h': 'auto',
+          }}
+        >
+          <VStack
+            alignItems="flex-start"
+            h="full"
+            justify="space-between"
+            w="full"
+          >
+            <HStack
+              alignSelf="center"
+              justify="center"
+              paddingBlockEnd="md"
+              w="full"
+            >
+              <Show
+                when={palette === 'danger'}
+                fallback={
                   <Avatar
-                    gradient="hades-dark"
+                    gradient="charon-light"
                     fallback={<PromptIcon size={24} />}
                   />
-                </Show>
-              </HStack>
-              <DialogHeading>{content?.heading}</DialogHeading>
-              <DialogDescription>{content?.description}</DialogDescription>
-            </VStack>
+                }
+              >
+                <Avatar
+                  gradient="hades-dark"
+                  fallback={<PromptIcon size={24} />}
+                />
+              </Show>
+            </HStack>
+
+            <DialogHeading>{content?.heading}</DialogHeading>
+            <DialogDescription>{content?.description}</DialogDescription>
 
             <VStack
               alignItems="flex-start"
@@ -210,18 +219,14 @@ export function PromptModal(
               marginBlockEnd="lg"
               w="full"
             >
-              <FieldRoot
-                ids={{
-                  control: 'confirm',
-                }}
-                invalid={!isValid}
-              >
+              <FieldRoot invalid={!isValid}>
                 <FieldLabel
                   className={hstack({
                     gap: 'xs',
-                    justify: 'flex-start !important',
+                    justify: 'flex-start',
                     marginBlockEnd: 'xs',
                     textStyle: 'label-md',
+                    w: 'initial',
                   })}
                 >
                   Type
