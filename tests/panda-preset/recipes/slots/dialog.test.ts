@@ -82,7 +82,9 @@ describe('dialog recipe', () => {
       },
       description: {
         color: 'page.text.initial',
+        lineClamp: 3,
         textStyle: 'body-md',
+        textOverflow: 'ellipsis',
       },
       closeTrigger: {
         position: 'absolute',

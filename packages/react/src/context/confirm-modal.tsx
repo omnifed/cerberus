@@ -203,7 +203,7 @@ export function ConfirmModal(
               <DialogDescription>{content?.description}</DialogDescription>
             </Show>
 
-            <HStack gap="4" w="full">
+            <HStack gap="md" pt="md" w="full">
               <Button
                 autoFocus
                 className={css({
