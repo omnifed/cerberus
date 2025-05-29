@@ -153,10 +153,11 @@ export function Nav() {
           },
         })}
       >
-        <ul
+        <nav
           className={hstack({
             border: '1px solid',
             borderColor: PAGE_BORDER_INITIAL,
+            listStyle: 'none',
             gap: '0',
             w: 'full',
             '& li:nth-child(2)': {
@@ -187,37 +188,13 @@ export function Nav() {
                 className={css({
                   display: INLINE_BLOCK,
                   p: '4',
-                  position: 'relative',
                   transition: 'color 250ms ease-in-out',
                   w: 'full',
                   _hover: {
                     color: 'action.navigation.hover',
                   },
-                  _after: {
-                    bg: 'transparent',
-                    bottom: '0',
-                    content: '""',
-                    h: '4px',
-                    left: '0',
-                    position: 'absolute',
-                    transition: 'transform 250ms ease-in-out',
-                    transform: 'translate3d(0, 4px, 0)',
-                    w: 'full',
-                  },
                   _currentPage: {
                     color: 'action.navigation.visited',
-                    _after: {
-                      bgGradient: 'to-l',
-                      gradientFrom: 'action.navigation.initial',
-                      gradientTo: 'action.navigation.visited',
-                      bottom: '0',
-                      content: '""',
-                      h: '4px',
-                      left: '0',
-                      position: 'absolute',
-                      transform: 'translate3d(0, 0, 0)',
-                      w: 'full',
-                    },
                     _focusVisible: focusStates._focusVisible,
                   },
                 })}
@@ -228,7 +205,7 @@ export function Nav() {
               </Link>
             </li>
           ))}
-        </ul>
+        </nav>
       </section>
 
       <section
