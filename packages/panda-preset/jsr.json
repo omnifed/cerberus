@@ -1,5 +1,5 @@
 {
   "name": "@cerberus/panda-preset",
-  "version": "0.18.3",
+  "version": "0.18.4",
   "exports": "./src/index.ts"
 }
