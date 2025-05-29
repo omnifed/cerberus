@@ -7,14 +7,15 @@ ark: 'date-picker'
 
 import CodePreview from '@/app/components/CodePreview'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import { StaticPreview, RangePreview, RangeDefaultValuePreview } from '@/app/react/date-picker/components/static-preview'
+import { StaticPreview, RangePreview } from '@/app/react/date-picker/components/static-preview'
+import { RangeDefaultValuePreview } from '@/app/react/date-picker/components/range-default-value.client'
 
 ```ts
 import {
   DatePicker,
   DatePickerLabel,
   DatePickerInput,
-  DatePickerCalendar,
+  DatePickerCalendar
 } from '@cerberus/react'
 ```
 
@@ -84,32 +85,97 @@ function RangePreview() {
 
 #### Using Default Values
 
-You can set the default values for the range date picker by passing the `defaultValue` prop to the `RangePickerInput` component in the form of an Array of two date strings.
+You can set the default values for the range date picker by passing the `defaultValue` prop to the `DatePicker` component in the form of an Array of two date strings.
+
+<NoteAdmonition description="The `defaultValue` prop is only used when the component is first rendered. If you need to update the value dynamically, use the `value` prop instead." />
 
 <CodePreview preview={<RangeDefaultValuePreview />}>
-```tsx {16}
+```tsx {18}
 import {
   DatePicker,
   DatePickerLabel,
   RangePickerInput,
   DatePickerCalendar,
   Field,
+  parseDate,
 } from '@cerberus/react'
 import { Box } from 'styled-system/jsx'
 
-function RangePreview() {
+function RangeDefaultValuePreview() {
+  const defaultValue = parseDate(['2025-01-01', '2025-01-15'])
+
   return (
-    <Field>
-      <DatePicker id="range_dates_defaultValue" name="range_dates_defaultValue" selectionMode="range">
-        <DatePickerLabel>Search range</DatePickerLabel>
-        <RangePickerInput defaultValue={['01/01/2025', '01/15/2025']} />
-        <DatePickerCalendar />
-      </DatePicker>
-    </Field>
+    <Box gap="4" w="2/3">
+      <Field>
+        <DatePicker
+          defaultValue={defaultValue}
+          name="range_dates_dv"
+          selectionMode="range"
+        >
+          <DatePickerLabel>Search range</DatePickerLabel>
+          <RangePickerInput />
+          <DatePickerCalendar />
+        </DatePicker>
+      </Field>
+    </Box>
   )
 }
+
 ```
 </CodePreview>
+
+## Date Helpers
+
+The `DatePicker` component relies on different date utilities to handle date parsing and formatting. Here are the options available:
+
+### Creating Dates
+
+You can create a structured date Object using the `CalendarDate` class. This function accepts a date string or an object with year, month, and day properties.
+
+```tsx
+import { CalendarDate } from '@cerberus/react'
+const date = new CalendarDate(2022, 2, 3);
+```
+
+<NoteAdmonition description={<>View the <a href="https://react-spectrum.adobe.com/internationalized/date/CalendarDate.html" target="_blank" rel="no-referrer">CalendarDate documentation</a> for more details on how to use it.</>} />
+
+### Parsing Dates
+
+You can use the `parseDate` function to convert an array of date strings into a date object that the `DatePicker` can understand.
+
+```tsx
+import { parseDate } from '@cerberus/react'
+const date = parseDate(['2025-01-01', '2025-01-15'])
+```
+
+<NoteAdmonition description={<>View the <a href="https://react-spectrum.adobe.com/internationalized/date/CalendarDate.html#introduction" target="_blank" rel="no-referrer">parseDate documentation</a> for more details on how to use it.</>} />
+
+### Today's Date
+You can use the `today` function to get the current date in a format that the `DatePicker` can understand.
+
+```tsx
+import { today, getLocalTimeZone } from '@cerberus/react'
+
+const nyDate = today('America/New_York');
+const localDate = today(getLocalTimeZone());
+```
+
+<NoteAdmonition description={<>View the <a href="https://react-spectrum.adobe.com/internationalized/date/CalendarDate.html" target="_blank" rel="no-referrer">today documentation</a> for more details on how to use it.</>} />
+
+### Formatting Dates
+
+You can use the `DateFormatter` class to format a date object into a string. This is useful for displaying dates in a human-readable format.
+
+```tsx
+import { DateFormatter } from '@cerberus/react'
+
+const formatter = new DateFormatter('en-US', {
+  dateStyle: 'long',
+  timeZone: 'America/New_York'
+})
+const date = formatter.format(new Date()); // "January 1, 2025"
+```
+<NoteAdmonition description={<>View the <a href="https://react-spectrum.adobe.com/internationalized/date/DateFormatter.html" target="_blank" rel="no-referrer">DateFormatter documentation</a> for more details on how to use it.</>} />
 
 ## Primitives
 

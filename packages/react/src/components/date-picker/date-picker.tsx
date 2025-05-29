@@ -13,12 +13,15 @@ import { DatePickerParts } from './parts'
  * @description [Ark Docs](https://ark-ui.com/react/docs/components/date-picker)
  */
 export function DatePicker(props: DatePickerRootProps) {
-  // There is a bug with the Root component that causes random date selection
-  // onBlur after the first selection if the format prop is used.
-  // ref: https://github.com/chakra-ui/ark/issues/3112#event-16047829195
+  // const handleFormat = useCallback((date: DateValue) => {
+  //   const day = date.day.toString().padStart(2, '0')
+  //   const year = date.year.toString()
+  //   const formattedMonth = new DateFormatter('en-US', {
+  //     month: 'short',
+  //   }).format(date.toDate(getLocalTimeZone()))
 
-  // const handleFormat = useCallback((value: DateValue) => {
-  //   return formatISOToMilitary(value.toString())
+  //   // Format the date as "DD MMM YYYY"
+  //   return `${day} ${formattedMonth} ${year}`
   // }, [])
 
   return (
