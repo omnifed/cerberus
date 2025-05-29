@@ -164,14 +164,18 @@ const localDate = today(getLocalTimeZone());
 
 ### Formatting Dates
 
-You can use the `formatDate` function to format a date object into a string. This is useful for displaying dates in a human-readable format.
+You can use the `DateFormatter` class to format a date object into a string. This is useful for displaying dates in a human-readable format.
 
 ```tsx
-import { formatDate } from '@cerberus/react'
-const date = new CalendarDate(2022, 2, 3);
-const formattedDate = formatDate(date, 'yyyy-MM-dd'); // "2022-02-03"
+import { DateFormatter } from '@cerberus/react'
+
+const formatter = new DateFormatter('en-US', {
+  dateStyle: 'long',
+  timeZone: 'America/New_York'
+})
+const date = formatter.format(new Date()); // "January 1, 2025"
 ```
-<NoteAdmonition description={<>View the <a href="https://react-spectrum.adobe.com/internationalized/date/DateFormatter.html" target="_blank" rel="no-referrer">formatDate documentation</a> for more details on how to use it.</>} />
+<NoteAdmonition description={<>View the <a href="https://react-spectrum.adobe.com/internationalized/date/DateFormatter.html" target="_blank" rel="no-referrer">DateFormatter documentation</a> for more details on how to use it.</>} />
 
 ## Primitives
 

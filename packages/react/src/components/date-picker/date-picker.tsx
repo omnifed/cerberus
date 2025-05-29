@@ -13,13 +13,14 @@ import { DatePickerParts } from './parts'
  * @description [Ark Docs](https://ark-ui.com/react/docs/components/date-picker)
  */
 export function DatePicker(props: DatePickerRootProps) {
-  // Convert date to use MIL format - future work
   // const handleFormat = useCallback((date: DateValue) => {
   //   const day = date.day.toString().padStart(2, '0')
   //   const year = date.year.toString()
   //   const formattedMonth = new DateFormatter('en-US', {
   //     month: 'short',
-  //   }).format(new Date(`${date.year}-${date.month}-${date.day}`))
+  //   }).format(date.toDate(getLocalTimeZone()))
+
+  //   // Format the date as "DD MMM YYYY"
   //   return `${day} ${formattedMonth} ${year}`
   // }, [])
 
