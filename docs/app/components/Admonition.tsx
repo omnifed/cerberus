@@ -1,4 +1,5 @@
 import { Admonition, type AdmonitionProps } from '@cerberus-design/react'
+import type { ReactNode } from 'react'
 import { css } from 'styled-system/css'
 import { Box } from 'styled-system/jsx'
 
@@ -8,7 +9,7 @@ const cerbAdmonitionStyles = {
 }
 
 interface AdmonitionTypeProps {
-  description: string
+  description: string | ReactNode
 }
 
 export function NoteAdmonition(props: AdmonitionTypeProps) {
