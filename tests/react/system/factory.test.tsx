@@ -6,6 +6,37 @@ import type { CerberusPrimitiveProps } from '@cerberus-design/react/src/system/f
 import { button } from 'styled-system/recipes'
 
 describe('createCerberusPrimitive', () => {
+  test('withNoRecipe should render an Element with Cerberus props applied', () => {
+    interface RawButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+      customProp?: string
+    }
+
+    function RawButton(
+      props: PropsWithChildren<CerberusPrimitiveProps<RawButtonProps>>,
+    ) {
+      const { customProp, ...nativeProps } = props
+      return <button {...nativeProps} className={customProp} />
+    }
+
+    const { withNoRecipe } = createCerberusPrimitive(button)
+    const Button = withNoRecipe(RawButton)
+
+    render(
+      <Button
+        customProp="custom"
+        css={{ bgColor: 'yellow' }}
+        style={{ color: 'red' }}
+        value="test"
+      >
+        test
+      </Button>,
+    )
+
+    expect(screen.getByText(/test/i)).toBeInTheDocument()
+    expect(screen.getByRole('button')).toHaveClass('custom')
+    expect(screen.getByRole('button')).toHaveStyle({ color: 'red' })
+  })
+
   test('withRecipe should render an Element with Cerberus props applied', () => {
     interface RawButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
       customProp?: string
