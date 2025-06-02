@@ -33,12 +33,12 @@ export function useRootColors(colors: string[] = []): RootColorsResult {
       dispatch(formatColors(colors))
       resolve()
     })
-  }, [])
+  }, [colors])
 
   useEffect(() => {
     if (Object.keys(state).length === colors.length) return
     dispatch(formatColors(colors))
-  }, [colors])
+  }, [colors, state])
 
   // reducer is already memoized
   return useMemo(

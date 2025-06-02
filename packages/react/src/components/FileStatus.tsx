@@ -117,7 +117,7 @@ export function FileStatus(props: FileStatusProps) {
       ).toLocaleLowerCase() as FileStatusActions
       onClick(actionStatus, e)
     },
-    [onClick],
+    [onClick, status],
   )
 
   return (
