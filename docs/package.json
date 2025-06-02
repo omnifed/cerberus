@@ -39,7 +39,7 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^8",
     "eslint-config-next": "15.3.2",
-    "eslint-import-resolver-typescript": "^4.3.3",
+    "eslint-import-resolver-typescript": "^4.4.2",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-expressive-code": "^0.41.2",
     "rehype-slug": "^6.0.0",
