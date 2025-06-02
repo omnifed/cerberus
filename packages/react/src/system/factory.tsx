@@ -12,7 +12,11 @@ import type { WithCss } from '../types'
  * @module @cerberus/core/system/factory
  */
 
-export type CerberusRecipe = RecipeVariantFn<RecipeVariantRecord>
+export type CerberusRecipe = RecipeVariantFn<RecipeVariantRecord> & {
+  splitVariantProps: (
+    props: Record<string, unknown>,
+  ) => [Record<string, unknown>, Record<string, unknown>]
+}
 
 export type WithRecipeOptions = {
   defaultProps?: Record<string, unknown>
@@ -47,7 +51,7 @@ export class CerberusPrimitive<T extends CerberusRecipe> {
     const { defaultProps } = options || {}
     const recipe = this.recipe
 
-    if (typeof Component !== 'function') {
+    if (typeof Component !== 'function' && typeof Component !== 'object') {
       throw new Error(
         'withRecipe expects a React component as the first argument.',
       )
@@ -55,7 +59,9 @@ export class CerberusPrimitive<T extends CerberusRecipe> {
 
     const CerbComponent = (internalProps: PropsWithChildren<P> & WithCss) => {
       const { css: customCss, className, ...nativeProps } = internalProps
-      const styles = recipe(nativeProps)
+
+      const [variantOptions] = recipe.splitVariantProps(nativeProps)
+      const styles = recipe(variantOptions)
 
       return (
         <Component
