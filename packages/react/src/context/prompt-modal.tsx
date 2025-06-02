@@ -135,12 +135,9 @@ export function PromptModal(
     [content],
   )
 
-  const handleChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setInputValue(e.currentTarget.value)
-    },
-    [content],
-  )
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.currentTarget.value)
+  }, [])
 
   const handleChoice = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
