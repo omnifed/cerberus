@@ -18,8 +18,8 @@ import { CerberusPrimitive, type CerberusRecipe } from './factory'
  * export const Button = withRecipe(MyCustomButton)
  * ```
  */
-export function createCerberusPrimitive(
-  recipe: CerberusRecipe,
-): CerberusPrimitive {
+export function createCerberusPrimitive<T extends CerberusRecipe>(
+  recipe: T,
+): CerberusPrimitive<T> {
   return new CerberusPrimitive(recipe)
 }

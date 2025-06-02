@@ -1,5 +1,5 @@
-import type { RecipeConfig } from 'styled-system/types'
 import { css, cx } from 'styled-system/css'
+import type { RecipeVariantFn, RecipeVariantRecord } from 'styled-system/types'
 import {
   type ElementType,
   type HTMLAttributes,
@@ -12,7 +12,7 @@ import type { WithCss } from '../types'
  * @module @cerberus/core/system/factory
  */
 
-export type CerberusRecipe = (props?: unknown) => string | RecipeConfig
+export type CerberusRecipe = RecipeVariantFn<RecipeVariantRecord>
 
 export type WithRecipeOptions = {
   defaultProps?: Record<string, unknown>
@@ -23,14 +23,14 @@ export type WithSlotRecipeProps = {
   slot: string
 }
 
-export type CerberusPrimitiveEl<T> = ElementType<WithCss & PropsWithChildren<T>>
+export type CerberusPrimitiveProps<T> = WithCss & PropsWithChildren<T>
+export type CerberusPrimitiveEl<T> = ElementType<CerberusPrimitiveProps<T>>
 
 // Factory
+export class CerberusPrimitive<T extends CerberusRecipe> {
+  recipe: T
 
-export class CerberusPrimitive {
-  recipe: CerberusRecipe
-
-  constructor(recipe: CerberusRecipe) {
+  constructor(recipe: T) {
     this.recipe = recipe
   }
 
@@ -45,6 +45,7 @@ export class CerberusPrimitive {
     options?: WithRecipeOptions,
   ): CerberusPrimitiveEl<P> => {
     const { defaultProps } = options || {}
+    const recipe = this.recipe
 
     if (typeof Component !== 'function') {
       throw new Error(
@@ -54,14 +55,13 @@ export class CerberusPrimitive {
 
     const CerbComponent = (internalProps: PropsWithChildren<P> & WithCss) => {
       const { css: customCss, className, ...nativeProps } = internalProps
-
-      console.log(this.recipe)
+      const styles = recipe(nativeProps)
 
       return (
         <Component
           {...defaultProps}
           {...(nativeProps as P)}
-          className={cx(className, css(customCss))}
+          className={cx(className, css(customCss), styles)}
         />
       )
     }

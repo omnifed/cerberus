@@ -4,20 +4,20 @@ import { createCerberusPrimitive } from '@cerberus-design/react'
 import { recipes } from '@cerberus-design/panda-preset'
 import type { ButtonHTMLAttributes, PropsWithChildren } from 'react'
 import type {
-  CerberusPrimitiveEl,
+  CerberusPrimitiveProps,
   CerberusRecipe,
 } from '@cerberus-design/react/src/system/factory'
 
 describe('createCerberusPrimitive', () => {
   test('withRecipe should render an Element with Cerberus props applied', () => {
-    const recipe = recipes.button as unknown as CerberusRecipe
+    const recipe = (() => recipes.button) as unknown as CerberusRecipe
 
     interface RawButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
       customProp?: string
     }
 
     function RawButton(
-      props: PropsWithChildren<CerberusPrimitiveEl<RawButtonProps>>,
+      props: PropsWithChildren<CerberusPrimitiveProps<RawButtonProps>>,
     ) {
       const { customProp, ...nativeProps } = props
       return <button {...nativeProps} className={customProp} />
