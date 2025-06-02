@@ -8,13 +8,13 @@ import {
 } from 'react'
 import { cx } from 'styled-system/css'
 import { button } from 'styled-system/recipes'
-import {
-  createNavTriggerProps,
-  type NavTriggerAriaValues,
-} from '../../aria-helpers/nav-menu.aria'
 import { useNavMenuContext } from '../../context/navMenu'
 import type { ButtonProps } from '../button/button'
 import { Show } from '../Show'
+import {
+  createNavTriggerProps,
+  type NavTriggerAriaValues,
+} from './aria-helpers/nav-menu.aria'
 
 /**
  * This module contains the NavMenuTrigger component.

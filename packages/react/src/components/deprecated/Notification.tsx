@@ -12,8 +12,8 @@ import {
   type PropsWithChildren,
   type MouseEvent,
 } from 'react'
-import { trapFocus } from '../../aria-helpers/trap-focus.aria'
 import { useCerberusContext } from '../../context/cerberus'
+import { trapFocus } from './aria-helpers/trap-focus.aria'
 
 /**
  * This module exports the Notification component.
