@@ -12,6 +12,7 @@ import { Box } from 'styled-system/jsx'
 import { Show } from '../Show'
 import { Spinner } from '../Spinner'
 import { ButtonRoot } from './primitives'
+import type { CerberusPrimitiveProps } from '@/src/system'
 
 /**
  * This module contains the Button component.
@@ -26,10 +27,12 @@ const ButtonContext = createContext<ButtonContextValue>({
   pending: false,
 })
 
-export type ButtonProps = HTMLArkProps<'button'> &
-  ButtonVariantProps & {
-    pending?: boolean
-  }
+export type ButtonProps = CerberusPrimitiveProps<
+  HTMLArkProps<'button'> &
+    ButtonVariantProps & {
+      pending?: boolean
+    }
+>
 
 /**
  * A component that allows the user to perform actions

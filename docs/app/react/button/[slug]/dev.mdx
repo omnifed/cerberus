@@ -112,7 +112,7 @@ function ButtonLink() {
 
 ## Primitives
 
-You can utilize the primitive components to customize the button.
+You can utilize the primitive components or the `css` prop to customize the button.
 
 | Component | Description |
 | --------- | ----------- |
@@ -122,12 +122,11 @@ You can utilize the primitive components to customize the button.
 <CodePreview preview={<CustomButtonPreview />}>
 ```tsx title="button.tsx"
 import { Button } from '@cerberus/react'
-import { css } from 'styled-system/css'
 
 function CustomButtonPreview() {
   return (
     <Button
-      className={css({
+      css={{
         bgColor: 'danger.bg.initial',
         color: 'danger.text.initial',
         rounded: 'md',
@@ -136,7 +135,7 @@ function CustomButtonPreview() {
           bgColor: 'black',
           color: 'yellow',
         },
-      })}
+      }}
     >
       Cerberus Forever
     </Button>
