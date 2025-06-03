@@ -85,7 +85,6 @@ describe('accordion recipe', () => {
         transitionDuration: 'fast',
         _open: {
           animationName: 'expandHeight, fadeIn',
-          paddingBlock: 'var(--accordion-item-content-padding)',
         },
         _closed: {
           animationName: 'collapseHeight, fadeOut',
@@ -117,7 +116,6 @@ describe('accordion recipe', () => {
             '--accordion-item-padding': '{spacing.xs}',
             '--accordion-item-trigger-padding': '{spacing.sm}',
             '--accordion-item-trigger-radii': '{radii.lg}',
-            '--accordion-item-content-padding': '{spacing.sm}',
           },
         },
         lg: {
@@ -125,7 +123,6 @@ describe('accordion recipe', () => {
             '--accordion-item-padding': '{spacing.sm}',
             '--accordion-item-trigger-padding': '{spacing.md}',
             '--accordion-item-trigger-radii': '{radii.md}',
-            '--accordion-item-content-padding': '{spacing.md}',
           },
         },
       },

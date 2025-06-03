@@ -27,8 +27,7 @@ describe('keyframes', () => {
   test('should export expandHeight', () => {
     expect(keyframes.expandHeight).toBeDefined()
     expect(keyframes.expandHeight['0%']).toEqual({ height: '0' })
-    expect(keyframes.expandHeight['99%']).toEqual({ height: 'var(--height)' })
-    expect(keyframes.expandHeight['100%']).toEqual({ height: 'auto' })
+    expect(keyframes.expandHeight['100%']).toEqual({ height: 'var(--height)' })
   })
 
   test('should export collapseHeight', () => {

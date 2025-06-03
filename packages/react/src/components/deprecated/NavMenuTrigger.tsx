@@ -7,14 +7,13 @@ import {
   type MouseEvent,
 } from 'react'
 import { cx } from 'styled-system/css'
-import { button } from 'styled-system/recipes'
+import { button, type ButtonVariantProps } from 'styled-system/recipes'
+import { useNavMenuContext } from '../../context/navMenu'
+import { Show } from '../Show'
 import {
   createNavTriggerProps,
   type NavTriggerAriaValues,
-} from '../../aria-helpers/nav-menu.aria'
-import { useNavMenuContext } from '../../context/navMenu'
-import type { ButtonProps } from '../button/button'
-import { Show } from '../Show'
+} from './aria-helpers/nav-menu.aria'
 
 /**
  * This module contains the NavMenuTrigger component.
@@ -23,7 +22,7 @@ import { Show } from '../Show'
 
 export interface NavMenuTriggerProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
-    ButtonProps,
+    ButtonVariantProps,
     NavTriggerAriaValues {
   /**
    * The element type to render as. Recommended to use for an IconButton trigger vs a standard Button.

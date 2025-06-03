@@ -66,15 +66,11 @@ export * from './context/theme'
 export * from './hooks/useTheme'
 export * from './hooks/useRootColors'
 
-// aria-helpers
-
-export * from './aria-helpers/nav-menu.aria'
-export * from './aria-helpers/trap-focus.aria'
-
 // utils
 
 export * from './config/index'
 export * from './utils/index'
+export * from './system/index'
 
 // shared types
 

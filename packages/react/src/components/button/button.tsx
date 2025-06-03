@@ -1,17 +1,18 @@
 'use client'
 
-import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
+import { type HTMLArkProps } from '@ark-ui/react/factory'
 import {
   type PropsWithChildren,
   createContext,
   useContext,
   useMemo,
 } from 'react'
-import { cx } from 'styled-system/css'
-import { button, type ButtonVariantProps } from 'styled-system/recipes'
+import { type ButtonVariantProps } from 'styled-system/recipes'
 import { Box } from 'styled-system/jsx'
+import type { CerberusPrimitiveProps } from '../../system/types'
 import { Show } from '../Show'
 import { Spinner } from '../Spinner'
+import { ButtonRoot } from './primitives'
 
 /**
  * This module contains the Button component.
@@ -26,34 +27,23 @@ const ButtonContext = createContext<ButtonContextValue>({
   pending: false,
 })
 
-export type ButtonProps = HTMLArkProps<'button'> &
-  ButtonVariantProps & {
-    pending?: boolean
-  }
+export type ButtonProps = CerberusPrimitiveProps<
+  HTMLArkProps<'button'> &
+    ButtonVariantProps & {
+      pending?: boolean
+    }
+>
 
 /**
  * A component that allows the user to perform actions
  * @see https://cerberus.digitalu.design/react/button
  */
 export function Button(props: ButtonProps) {
-  const { palette, usage, shape, size, pending = false, ...nativeProps } = props
+  const { pending = false, ...nativeProps } = props
   const value = useMemo(() => ({ pending }), [pending])
-
   return (
     <ButtonContext.Provider value={value}>
-      <ark.button
-        {...nativeProps}
-        disabled={pending || nativeProps.disabled}
-        className={cx(
-          nativeProps.className,
-          button({
-            palette,
-            usage,
-            shape,
-            size,
-          }),
-        )}
-      />
+      <ButtonRoot {...nativeProps} disabled={pending || nativeProps.disabled} />
     </ButtonContext.Provider>
   )
 }
