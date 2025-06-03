@@ -25,8 +25,7 @@ export const keyframes: CssKeyframes = defineKeyframes({
   // collapse
   expandHeight: {
     '0%': { height: '0' },
-    '99%': { height: 'var(--height)' },
-    '100%': { height: 'auto' },
+    '100%': { height: 'var(--height)' },
   },
   collapseHeight: {
     from: { height: 'var(--height)' },
