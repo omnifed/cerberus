@@ -3,7 +3,6 @@
 import { Fragment } from 'react'
 import { Button, ButtonParts } from '@cerberus-design/react'
 import { ArrowDownRight } from '@carbon/icons-react'
-import { css } from 'styled-system/css'
 import { HStack } from 'styled-system/jsx'
 import { grid, gridItem } from 'styled-system/patterns'
 import Link from 'next/link'

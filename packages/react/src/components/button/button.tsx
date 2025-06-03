@@ -9,10 +9,10 @@ import {
 } from 'react'
 import { type ButtonVariantProps } from 'styled-system/recipes'
 import { Box } from 'styled-system/jsx'
+import type { CerberusPrimitiveProps } from '../../system/types'
 import { Show } from '../Show'
 import { Spinner } from '../Spinner'
 import { ButtonRoot } from './primitives'
-import type { CerberusPrimitiveProps } from '@/src/system'
 
 /**
  * This module contains the Button component.
