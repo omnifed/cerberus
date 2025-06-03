@@ -1,4 +1,5 @@
-import { CerberusPrimitive, type CerberusRecipe } from './factory'
+import { CerberusPrimitive } from './factory'
+import type { CerberusPrimitiveRecipe } from './types'
 
 /**
  * This module contains the user interface for creating Cerberus primitives.
@@ -9,7 +10,7 @@ import { CerberusPrimitive, type CerberusRecipe } from './factory'
  * A factory function that creates a Cerberus primitive instance with the given
  * recipe.
  * @param recipe
- * @returns An object with two methods: `withRecipe` and `withSlotRecipe` that
+ * @returns An object with three methods: `withNoRecipe`, `withRecipe`, and `withSlotRecipe` that
  * apply the recipes and special Cerberus helpers like `css`.
  *
  * @example
@@ -18,8 +19,10 @@ import { CerberusPrimitive, type CerberusRecipe } from './factory'
  * export const Button = withRecipe(MyCustomButton)
  * ```
  */
-export function createCerberusPrimitive<T extends CerberusRecipe>(
+export function createCerberusPrimitive<T extends CerberusPrimitiveRecipe>(
   recipe: T,
-): CerberusPrimitive<T> {
+): CerberusPrimitive {
   return new CerberusPrimitive(recipe)
 }
+
+export * from './types'

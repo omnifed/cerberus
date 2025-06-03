@@ -1,45 +1,32 @@
 import { css, cx } from 'styled-system/css'
-import type { RecipeVariantFn, RecipeVariantRecord } from 'styled-system/types'
+import type { RecipeVariantRecord } from 'styled-system/types'
 import {
   type ComponentType,
-  type ElementType,
   type HTMLAttributes,
   type PropsWithChildren,
 } from 'react'
 import type { WithCss } from '../types'
+import type {
+  CerberusPrimitiveEl,
+  CerberusPrimitiveRecipe,
+  CerberusRecipe,
+  CerberusSlotRecipe,
+  WithRecipeOptions,
+} from './types'
 
 /**
  * This module contains a factory for creating Cerberus primitives.
  * @module @cerberus/core/system/factory
  */
 
-export type CerberusRecipe = RecipeVariantFn<RecipeVariantRecord> & {
-  splitVariantProps: (
-    props: Record<string, unknown>,
-  ) => [Record<string, unknown>, Record<string, unknown>]
-}
+export class CerberusPrimitive {
+  recipe: CerberusPrimitiveRecipe
 
-export type WithRecipeOptions = {
-  defaultProps?: Record<string, unknown>
-}
-
-export type WithSlotRecipeProps = {
-  component: ElementType
-  slot: string
-}
-
-export type CerberusPrimitiveProps<T> = WithCss & PropsWithChildren<T>
-export type CerberusPrimitiveEl<T> = ElementType<CerberusPrimitiveProps<T>>
-
-// Factory
-export class CerberusPrimitive<T extends CerberusRecipe> {
-  recipe: T
-
-  constructor(recipe: T) {
+  constructor(recipe: CerberusPrimitiveRecipe) {
     this.recipe = recipe
   }
 
-  validateComponent<P extends HTMLAttributes<unknown>>(
+  private validateComponent<P extends HTMLAttributes<unknown>>(
     Component: ComponentType<P>,
   ) {
     if (typeof Component !== 'function' && typeof Component !== 'object') {
@@ -52,6 +39,11 @@ export class CerberusPrimitive<T extends CerberusRecipe> {
    * @param Component - The React component to enhance with Cerberus features.
    * @returns A new React component that applies Cerberus features to the
    * original component.
+   * @example
+   * ```typescript
+   * const { withNoRecipe } = createCerberusPrimitive(button)
+   * const Button = withNoRecipe(RawButton)
+   * ```
    */
   withNoRecipe = <P extends HTMLAttributes<unknown>>(
     Component: ComponentType<P>,
@@ -84,7 +76,7 @@ export class CerberusPrimitive<T extends CerberusRecipe> {
     options?: WithRecipeOptions,
   ): CerberusPrimitiveEl<P> => {
     const { defaultProps } = options || {}
-    const recipe = this.recipe
+    const recipe = this.recipe as CerberusRecipe
 
     this.validateComponent(Component)
 
@@ -92,13 +84,13 @@ export class CerberusPrimitive<T extends CerberusRecipe> {
       const { css: customCss, className, ...nativeProps } = internalProps
 
       const [variantOptions] = recipe.splitVariantProps(nativeProps)
-      const styles = recipe(variantOptions)
+      const recipeStyles = recipe(variantOptions)
 
       return (
         <Component
           {...defaultProps}
           {...(nativeProps as P)}
-          className={cx(className, css(customCss), styles)}
+          className={cx(className, recipeStyles, css(customCss))}
         />
       )
     }
@@ -107,7 +99,45 @@ export class CerberusPrimitive<T extends CerberusRecipe> {
     return CerbComponent
   }
 
-  withSlotRecipe = (options: WithSlotRecipeProps) => {
-    console.log('withSlotRecipe called with options:', options)
+  /**
+   * Creates a Cerberus component with a slot recipe applied.
+   * @param Component - The React component to enhance with Cerberus features.
+   * @param recipe - The slot recipe to apply to the component.
+   * @returns A new React component that applies Cerberus features and the
+   * specified slot recipe to the original component.
+   * @example
+   * ```typescript
+   * const { withSlotRecipe } = createCerberusPrimitive(field)
+   * const Field = withSlotRecipe(RawField, field)
+   * ```
+   */
+  withSlotRecipe = <P extends HTMLAttributes<unknown>>(
+    Component: ComponentType<P>,
+    slot: keyof RecipeVariantRecord,
+    options?: WithRecipeOptions,
+  ) => {
+    const { defaultProps } = options || {}
+    const recipe = this.recipe as CerberusSlotRecipe<typeof slot>
+
+    this.validateComponent(Component)
+
+    const CerbComponent = (internalProps: PropsWithChildren<P> & WithCss) => {
+      const { css: customCss, className, ...nativeProps } = internalProps
+
+      const [variantOptions] = recipe.splitVariantProps(nativeProps)
+      const styles = recipe(variantOptions)
+      const slotStyles = styles[slot as keyof typeof styles]
+
+      return (
+        <Component
+          {...defaultProps}
+          {...(nativeProps as P)}
+          className={cx(className, slotStyles, css(customCss))}
+        />
+      )
+    }
+
+    CerbComponent.displayName = Component.displayName || Component.name
+    return CerbComponent
   }
 }
