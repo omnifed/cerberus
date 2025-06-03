@@ -47,13 +47,17 @@ export class CerberusPrimitive {
    */
   withNoRecipe = <P extends HTMLAttributes<unknown>>(
     Component: ComponentType<P>,
+    options?: WithRecipeOptions,
   ): CerberusPrimitiveEl<P> => {
+    const { defaultProps } = options || {}
+
     this.validateComponent(Component)
 
     const CerbComponent = (props: PropsWithChildren<P> & WithCss) => {
       const { css: customCss, className, ...nativeProps } = props
       return (
         <Component
+          {...defaultProps}
           {...(nativeProps as P)}
           className={cx(className, css(customCss))}
         />
