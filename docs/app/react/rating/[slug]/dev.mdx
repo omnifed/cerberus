@@ -110,7 +110,7 @@ function SizeDemo() {
 
 ## Primitives
 
-You can utilize the primitive components to customize the radio.
+You can utilize the primitive components or the `css` prop to customize the radio.
 
 | Component | Description |
 | --------- | ----------- |
@@ -123,10 +123,9 @@ You can utilize the primitive components to customize the radio.
 | RatingHiddenInput  | The native input for the rating |
 
 <CodePreview preview={<CustomDemo />}>
-```tsx title="custom-radio.tsx"
+```tsx title="custom rating demo"
 import { RatingParts, type UseRatingGroupContext } from '@cerberus/react'
 import { Box } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 
 function CustomDemo() {
   return (
@@ -134,15 +133,15 @@ function CustomDemo() {
       <RatingParts.Root
         defaultValue={3}
         orientation="horizontal"
-        className={css({
+        css={{
           transform: 'skewX(-10deg)',
-        })}
+        }}
       >
         <RatingParts.Label
-          className={css({
+          css={{
             textStyle: 'heading-xs',
             textTransform: 'uppercase',
-          })}
+          }}
         >
           This is a custom rating
         </RatingParts.Label>
@@ -154,12 +153,12 @@ function CustomDemo() {
                 <RatingParts.Item
                   key={item}
                   index={item}
-                  className={css({
+                  css={{
                     _highlighted: {
                       colorPalette: 'danger',
                       scale: '1.2',
                     },
-                  })}
+                  }}
                 >
                   <RatingParts.ItemContext>
                     {() => <StarFilled size={24} />}

@@ -1,99 +1,76 @@
 import {
   RatingGroup,
-  type RatingGroupContextProps,
-  type RatingGroupControlProps,
-  type RatingGroupHiddenInputProps,
-  type RatingGroupItemContextProps,
-  type RatingGroupItemProps,
-  type RatingGroupLabelProps,
-  type RatingGroupRootProps,
+  type RatingGroupContextProps as ArkRatingGroupContextProps,
+  type RatingGroupControlProps as ArkRatingGroupControlProps,
+  type RatingGroupHiddenInputProps as ArkRatingGroupHiddenInputProps,
+  type RatingGroupItemContextProps as ArkRatingGroupItemContextProps,
+  type RatingGroupItemProps as ArkRatingGroupItemProps,
+  type RatingGroupLabelProps as ArkRatingGroupLabelProps,
+  type RatingGroupRootProps as ArkRatingGroupRootProps,
 } from '@ark-ui/react/rating-group'
-import { cx } from 'styled-system/css'
 import {
   ratingGroup,
   type RatingGroupVariantProps,
 } from 'styled-system/recipes'
+import {
+  createCerberusPrimitive,
+  type CerberusPrimitiveProps,
+} from '../../system/index'
 
 /**
  * This module contains the primitives of the Rating component.
  * @module 'rating/primitives'
  */
 
-/**
- * The root primitive of the Rating component.
- */
-export function RatingRoot(
-  props: RatingGroupRootProps & RatingGroupVariantProps,
-) {
-  const { orientation, size, ...rootProps } = props
-  const styles = ratingGroup({ orientation, size })
-  return (
-    <RatingGroup.Root
-      {...rootProps}
-      className={cx(styles.root, rootProps.className)}
-    />
-  )
-}
+const { withSlotRecipe } = createCerberusPrimitive(ratingGroup)
 
-/**
- * The label primitive of the Rating component.
- */
-export function RatingLabel(props: RatingGroupLabelProps) {
-  const styles = ratingGroup()
-  return (
-    <RatingGroup.Label
-      {...props}
-      className={cx(styles.label, props.className)}
-    />
-  )
-}
+// Root
 
-/**
- * The control primitive of the Rating component.
- */
-export function RatingControl(props: RatingGroupControlProps) {
-  const styles = ratingGroup()
-  return (
-    <RatingGroup.Control
-      {...props}
-      className={cx(styles.control, props.className)}
-    />
-  )
-}
+export type RatingRootProps = CerberusPrimitiveProps<
+  ArkRatingGroupRootProps & RatingGroupVariantProps
+>
+export const RatingRoot = withSlotRecipe<RatingRootProps>(
+  RatingGroup.Root,
+  'root',
+)
 
-/**
- * The context primitive of the Rating component.
- */
-export function RatingContext(props: RatingGroupContextProps) {
-  return <RatingGroup.Context {...props} />
-}
+// Label
 
-/**
- * The item primitive of the Rating component.
- */
-export function RatingItem(
-  props: RatingGroupItemProps & RatingGroupVariantProps,
-) {
-  const { palette, ...itemProps } = props
-  const styles = ratingGroup({ palette })
-  return (
-    <RatingGroup.Item
-      {...itemProps}
-      className={cx(styles.item, itemProps.className)}
-    />
-  )
-}
+export type RatingLabelProps = CerberusPrimitiveProps<ArkRatingGroupLabelProps>
+export const RatingLabel = withSlotRecipe<RatingLabelProps>(
+  RatingGroup.Label,
+  'label',
+)
 
-/**
- * The item context primitive of the Rating component.
- */
-export function RatingItemContext(props: RatingGroupItemContextProps) {
-  return <RatingGroup.ItemContext {...props} />
-}
+// Control
 
-/**
- * The hidden input primitive of the Rating component.
- */
-export function RatingHiddenInput(props: RatingGroupHiddenInputProps) {
-  return <RatingGroup.HiddenInput {...props} />
-}
+export type RatingGroupControlProps =
+  CerberusPrimitiveProps<ArkRatingGroupControlProps>
+export const RatingControl = withSlotRecipe<RatingGroupControlProps>(
+  RatingGroup.Control,
+  'control',
+)
+
+// Context
+
+export type RatingGroupContextProps = ArkRatingGroupContextProps
+export const RatingContext = RatingGroup.Context
+
+// Item
+
+export type RatingGroupItemProps = CerberusPrimitiveProps<
+  ArkRatingGroupItemProps & RatingGroupVariantProps
+>
+export const RatingItem = withSlotRecipe<RatingGroupItemProps>(
+  RatingGroup.Item,
+  'item',
+)
+
+// Item Context
+export type RatingGroupItemContextProps = ArkRatingGroupItemContextProps
+export const RatingItemContext = RatingGroup.ItemContext
+
+// Hidden Input
+
+export type RatingGroupHiddenInputProps = ArkRatingGroupHiddenInputProps
+export const RatingHiddenInput = RatingGroup.HiddenInput

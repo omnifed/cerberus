@@ -1,7 +1,6 @@
 'use client'
 
 import { Box } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 import {
   Rating,
   RatingParts,
@@ -58,15 +57,15 @@ export function CustomDemo() {
       <RatingParts.Root
         defaultValue={3}
         orientation="horizontal"
-        className={css({
+        css={{
           transform: 'skewX(-10deg)',
-        })}
+        }}
       >
         <RatingParts.Label
-          className={css({
+          css={{
             textStyle: 'heading-xs',
             textTransform: 'uppercase',
-          })}
+          }}
         >
           This is a custom rating
         </RatingParts.Label>
@@ -78,12 +77,12 @@ export function CustomDemo() {
                 <RatingParts.Item
                   key={item}
                   index={item}
-                  className={css({
+                  css={{
                     _highlighted: {
                       colorPalette: 'danger',
                       scale: '1.2',
                     },
-                  })}
+                  }}
                 >
                   <RatingParts.ItemContext>
                     {() => <StarFilled size={24} />}

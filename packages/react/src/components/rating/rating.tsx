@@ -1,22 +1,19 @@
 import type {
-  RatingGroupRootProps,
   UseRatingGroupContext,
   UseRatingGroupItemContext,
 } from '@ark-ui/react/rating-group'
-import type { RatingGroupVariantProps } from 'styled-system/recipes'
 import type { ReactNode } from 'react'
 import { splitProps } from '../../utils/index'
 import { Show } from '../Show'
 import { RatingParts } from './parts'
+import type { RatingRootProps } from './primitives'
 
 /**
  * This module contains the abstracted Rating component.
  * @module 'react/rating'
  */
 
-export interface RatingProps
-  extends Omit<RatingGroupRootProps, 'children'>,
-    RatingGroupVariantProps {
+export interface RatingProps extends Omit<RatingRootProps, 'children'> {
   /**
    * The label of the rating component.
    */
