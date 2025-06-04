@@ -1,76 +1,57 @@
 import {
   Fieldset,
-  type FieldsetHelperTextProps,
-  type FieldsetLegendProps,
-  type FieldsetRootProps,
+  type FieldsetHelperTextProps as ArkFieldsetHelperText,
+  type FieldsetLegendProps as ArkFieldsetLegendProps,
+  type FieldsetRootProps as ArkFieldsetRootProps,
 } from '@ark-ui/react/fieldset'
-import { cx } from 'styled-system/css'
 import { fieldset, type FieldsetVariantProps } from 'styled-system/recipes'
+import {
+  createCerberusPrimitive,
+  type CerberusPrimitiveProps,
+} from '../../system/index'
 
 /**
  * This module contains all the primitives of the Fieldset component.
  * @module 'react/fieldset'
  */
 
-/**
- * The context & container for the Fieldset components.
- * @description [Fieldset Docs](https://cerberus.digitalu.design/react/fieldset)
- * @description [Primitive Docs](https://ark-ui.com/react/docs/components/fieldset)
- */
-export function FieldsetRoot(props: FieldsetRootProps) {
-  const styles = fieldset()
-  return (
-    <Fieldset.Root {...props} className={cx(styles.root, props.className)} />
-  )
-}
+const { withSlotRecipe } = createCerberusPrimitive(fieldset)
 
-/**
- * The legend element for the Fieldset group.
- * @description [Fieldset Docs](https://cerberus.digitalu.design/react/fieldset)
- * @description [Primitive Docs](https://ark-ui.com/react/docs/components/fieldset)
- */
-export function FieldsetLegend(
-  props: FieldsetLegendProps & FieldsetVariantProps,
-) {
-  const { usage, ...legendProps } = props
-  const styles = fieldset({ usage })
-  return (
-    <Fieldset.Legend
-      {...legendProps}
-      className={cx(styles.legend, legendProps.className)}
-    />
-  )
-}
+// Root
 
-/**
- * The description element for the Fieldset group.
- * @description [Fieldset Docs](https://cerberus.digitalu.design/react/fieldset)
- * @description [Primitive Docs](https://ark-ui.com/react/docs/components/fieldset)
- */
-export function FieldsetHelperText(
-  props: FieldsetHelperTextProps & FieldsetVariantProps,
-) {
-  const { usage, ...helperTextProps } = props
-  const styles = fieldset({ usage })
-  return (
-    <Fieldset.HelperText
-      {...helperTextProps}
-      className={cx(styles.helperText, helperTextProps.className)}
-    />
-  )
-}
+export const FieldsetRoot = withSlotRecipe<FieldsetRootProps>(
+  Fieldset.Root,
+  'root',
+)
+export type FieldsetRootProps = CerberusPrimitiveProps<
+  ArkFieldsetRootProps & FieldsetVariantProps
+>
 
-/**
- * The error text element for the Fieldset group.
- * @description [Fieldset Docs](https://cerberus.digitalu.design/react/fieldset)
- * @description [Primitive Docs](https://ark-ui.com/react/docs/components/fieldset)
- */
-export function FieldsetErrorText(props: FieldsetHelperTextProps) {
-  const styles = fieldset()
-  return (
-    <Fieldset.ErrorText
-      {...props}
-      className={cx(styles.errorText, props.className)}
-    />
-  )
-}
+// Legend
+
+export type FieldsetLegendProps = CerberusPrimitiveProps<
+  ArkFieldsetLegendProps & FieldsetVariantProps
+>
+export const FieldsetLegend = withSlotRecipe<FieldsetLegendProps>(
+  Fieldset.Legend,
+  'legend',
+)
+
+// Helper Text
+
+export type FieldsetHelperTextProps = CerberusPrimitiveProps<
+  ArkFieldsetHelperText & FieldsetVariantProps
+>
+export const FieldsetHelperText = withSlotRecipe<FieldsetHelperTextProps>(
+  Fieldset.HelperText,
+  'helperText',
+)
+
+// Error Text
+
+export type FieldsetErrorTextProps =
+  CerberusPrimitiveProps<ArkFieldsetHelperText>
+export const FieldsetErrorText = withSlotRecipe<FieldsetErrorTextProps>(
+  Fieldset.ErrorText,
+  'errorText',
+)

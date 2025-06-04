@@ -7,7 +7,6 @@ import {
   Radio,
 } from '@cerberus-design/react'
 import { Box, VStack } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 
 export function BasicDemo() {
   return (
@@ -64,18 +63,18 @@ export function CustomDemo() {
     <Box w="1/2">
       <FieldsetParts.Root invalid>
         <FieldsetParts.Legend
-          className={css({
+          css={{
             textStyle: 'heading-lg',
-          })}
+          }}
         >
           Custom Legend
         </FieldsetParts.Legend>
         <FieldsetParts.HelperText
-          className={css({
+          css={{
             color: 'page.text.200',
             fontStyle: 'italic',
             textStyle: 'body-sm',
-          })}
+          }}
         >
           This is some custom Helper Text
         </FieldsetParts.HelperText>
@@ -87,12 +86,12 @@ export function CustomDemo() {
         </Box>
 
         <FieldsetParts.ErrorText
-          className={css({
+          css={{
             bgColor: 'danger.bg.initial',
             color: 'danger.text.100',
             p: 4,
             rounded: 'lg',
-          })}
+          }}
         >
           This is a custom Error Text
         </FieldsetParts.ErrorText>

@@ -1,14 +1,13 @@
-import type { FieldsetRootProps } from '@ark-ui/react'
 import { splitProps } from '../../utils'
 import { FieldsetParts } from './parts'
-import type { FieldsetVariantProps } from 'styled-system/recipes'
+import type { FieldsetRootProps } from './primitives'
 
 /**
  * This module contains the Fieldset component.
  * @module Fieldset
  */
 
-export interface FieldsetProps extends FieldsetRootProps, FieldsetVariantProps {
+export interface FieldsetProps extends FieldsetRootProps {
   /**
    * The legend/title/label of the fieldset group.
    */
