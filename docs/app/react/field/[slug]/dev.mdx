@@ -73,7 +73,7 @@ export function BasicFieldPreview() {
 
 ## Primitives
 
-You can utilize the primitive components to customize the field.
+You can utilize the primitive components or the `css` prop to customize the field.
 
 | Component | Description |
 | --------- | ----------- |
@@ -91,31 +91,30 @@ You can utilize the primitive components to customize the field.
 ```tsx
 import { FieldParts } from '@cerberus/react'
 import { Box } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 
 export function CustomField() {
   return (
     <Box w="1/2">
-      <FieldParts.Root>
+      <FieldParts.Root ids={{ control: 'customField' }}>
         <FieldParts.Label
-          className={css({
+          css={{
             fontSize: 'xl',
             fontWeight: 'black',
             textTransform: 'uppercase',
-          })}
+          }}
         >
           Custom Label
         </FieldParts.Label>
         <FieldParts.Input
-          className={css({
+          css={{
             transform: 'skewX(-10deg)',
-          })}
+          }}
           type="text"
         />
         <FieldParts.HelperText
-          className={css({
+          css={{
             fontStyle: 'italic',
-          })}
+          }}
         >
           Custom Helper Text
         </FieldParts.HelperText>

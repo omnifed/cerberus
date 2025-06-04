@@ -1,6 +1,5 @@
 import { Field, FieldParts, Textarea } from '@cerberus-design/react'
 import { Box } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 
 export function BasicTextarea() {
   return (
@@ -30,23 +29,23 @@ export function CustomField() {
     <Box w="1/2">
       <FieldParts.Root ids={{ control: 'customField' }}>
         <FieldParts.Label
-          className={css({
+          css={{
             fontSize: 'xl',
             fontWeight: 'black',
             textTransform: 'uppercase',
-          })}
+          }}
         >
           Custom Label
         </FieldParts.Label>
         <FieldParts.Textarea
-          className={css({
+          css={{
             transform: 'skewX(-10deg)',
-          })}
+          }}
         />
         <FieldParts.HelperText
-          className={css({
+          css={{
             fontStyle: 'italic',
-          })}
+          }}
         >
           Custom Helper Text
         </FieldParts.HelperText>

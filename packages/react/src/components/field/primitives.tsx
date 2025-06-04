@@ -1,181 +1,104 @@
 import {
   Field,
-  type FieldHelperTextProps,
+  type FieldHelperTextProps as ArkFieldHelperTextProps,
   type FieldInputProps as ArkFieldInputProps,
-  type FieldLabelProps,
+  type FieldLabelProps as ArkFieldLabelProps,
   type FieldRootProps as ArkFieldRootProps,
-  type FieldTextareaProps,
+  type FieldTextareaProps as ArkFieldTextareaProps,
+  type FieldRequiredIndicatorProps as ArkFieldRequiredIndicatorProps,
 } from '@ark-ui/react/field'
-import type { ReactNode } from 'react'
-import { cx } from 'styled-system/css'
+import { ark, type HTMLArkProps } from '@ark-ui/react'
 import { field, type FieldVariantProps } from 'styled-system/recipes'
-import { FieldStatusIndicator } from './status-indicator'
-import { FieldStartIndicator } from './start-indicator'
+import {
+  createCerberusPrimitive,
+  type CerberusPrimitiveProps,
+} from '../../system/index'
+import { CerberusFieldInput } from './input'
+import { CerberusFieldErrorText } from './error-text'
 
 /**
  * This module contains all the primitives of the Field component.
  * @module 'field'
  */
 
-export type FieldRootProps = ArkFieldRootProps & FieldVariantProps
+const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(field)
 
-/**
- * The context & container for the Field components.
- * @description [Field Docs](https://cerberus.digitalu.design/react/field)
- * @example
- * ```tsx
- * <FieldRoot required ids={{ input: 'exampleId' }}>
- *  <FieldLabel>Label</FieldLabel>
- *  <FieldInput />
- * </FieldRoot>
- * ```
- */
-export function FieldRoot(props: FieldRootProps) {
-  const { size, ...fieldProps } = props
-  const styles = field({ size })
-  return (
-    <Field.Root
-      {...fieldProps}
-      className={cx(styles.root, fieldProps.className)}
-    />
-  )
-}
+// Root
 
-/**
- * The label for the Field component.
- * @description [Field Docs](https://cerberus.digitalu.design/react/field)
- * @example
- * ```tsx
- * <FieldRoot>
- *   <FieldLabel>Label</FieldLabel>
- * </FieldRoot>
- * ```
- */
-export function FieldLabel(props: FieldLabelProps) {
+export type FieldRootProps = CerberusPrimitiveProps<
+  ArkFieldRootProps & FieldVariantProps
+>
+export const FieldRoot = withSlotRecipe<FieldRootProps>(Field.Root, 'root')
+
+// Label
+
+function FieldLabelEl(props: FieldLabelProps) {
   const { children, ...nativeProps } = props
-  const styles = field()
   return (
-    <Field.Label {...nativeProps} className={cx(styles.label, props.className)}>
+    <Field.Label {...nativeProps}>
       {children}
       <Field.RequiredIndicator>(required)</Field.RequiredIndicator>
     </Field.Label>
   )
 }
 
-/**
- * The required indicator for the Field component.
- */
-export function FieldRequiredIndicator() {
-  return <Field.RequiredIndicator>(required)</Field.RequiredIndicator>
-}
+export type FieldLabelProps = CerberusPrimitiveProps<ArkFieldLabelProps>
+export const FieldLabel = withSlotRecipe<FieldLabelProps>(FieldLabelEl, 'label')
 
-export interface FieldInputProps
-  extends Omit<ArkFieldInputProps, 'size'>,
-    FieldVariantProps {
-  /**
-   * An optional icon to display at the start of the input.
-   */
-  startIcon?: ReactNode
-  /**
-   * An optional icon to display at the end of the input.
-   */
-  endIcon?: ReactNode
-}
+// Required Indicator
 
-/**
- * The input for the Field component.
- * @description [Field Docs](https://cerberus.digitalu.design/react/field)
- * @example
- * ```tsx
- * <FieldRoot>
- *   <FieldInput />
- * </FieldRoot>
- * ```
- */
-export function FieldInput(props: FieldInputProps) {
-  const { size, startIcon, endIcon, ...fieldProps } = props
-  const styles = field({ size })
-  const hasStartIcon = Boolean(startIcon)
-
+function FieldRequiredIndicatorEl(props: FieldRequiredIndicatorProps) {
   return (
-    <div className={styles.inputRoot}>
-      <FieldStartIndicator>{startIcon}</FieldStartIndicator>
-      <Field.Input
-        {...fieldProps}
-        {...(hasStartIcon && { 'data-has': 'start-indicator' })}
-        className={cx(styles.input, fieldProps.className)}
-      />
-      <FieldStatusIndicator fallback={endIcon} />
-    </div>
+    <Field.RequiredIndicator {...props}>(required)</Field.RequiredIndicator>
   )
 }
 
-/**
- * The helper text for the Field component that is shown when the field is
- * valid.
- * @description [Field Docs](https://cerberus.digitalu.design/react/field)
- * @example
- * ```tsx
- * <FieldRoot>
- *   <FieldInput />
- *   <FieldHelperText>Helper text</FieldHelperText>
- * </FieldRoot>
- * ```
- */
-export function FieldHelperText(props: FieldHelperTextProps) {
-  const styles = field()
-  return (
-    <Field.HelperText
-      {...props}
-      className={cx(styles.helperText, props.className)}
-    />
-  )
-}
+export type FieldRequiredIndicatorProps =
+  CerberusPrimitiveProps<ArkFieldRequiredIndicatorProps>
+export const FieldRequiredIndicator = withNoRecipe<FieldRequiredIndicatorProps>(
+  FieldRequiredIndicatorEl,
+)
 
-/**
- * The error text for the Field component that is shown when the field is
- * invalid.
- * @description [Field Docs](https://cerberus.digitalu.design/react/field)
- * @example
- * ```tsx
- * <FieldRoot>
- *   <FieldInput />
- *   <FieldErrorText>Error text</FieldErrorText>
- * </FieldRoot>
- * ```
- */
-export function FieldErrorText(props: FieldHelperTextProps) {
-  const styles = field()
+// Input
 
-  if (!props.children) return null
+export type FieldInputRootProps = CerberusPrimitiveProps<
+  HTMLArkProps<'div'> & FieldVariantProps
+>
+export const FieldInputRoot = withSlotRecipe<FieldInputRootProps>(
+  ark.div,
+  'inputRoot',
+)
 
-  return (
-    <Field.ErrorText
-      {...props}
-      className={cx(styles.errorText, props.className)}
-    />
-  )
-}
+export type FieldInputProps = CerberusPrimitiveProps<
+  ArkFieldInputProps & FieldVariantProps
+>
+export const FieldInput = withSlotRecipe<FieldInputProps>(Field.Input, 'input')
 
-/**
- * The textarea for the Field component.
- * @description [Field Docs](https://cerberus.digitalu.design/react/field)
- * @example
- * ```tsx
- * <FieldRoot>
- *   <FieldTextarea />
- * </FieldRoot>
- * ```
- */
-export function FieldTextarea(props: FieldTextareaProps) {
-  const styles = field()
-  return (
-    <Field.Textarea
-      {...props}
-      className={cx(styles.textarea, props.className)}
-    />
-  )
-}
+// Helper Text
+
+export type FieldHelperTextProps =
+  CerberusPrimitiveProps<ArkFieldHelperTextProps>
+export const FieldHelperText = withSlotRecipe<FieldHelperTextProps>(
+  Field.HelperText,
+  'helperText',
+)
+
+// Error Text
+
+export type FieldErrorTextProps =
+  CerberusPrimitiveProps<ArkFieldHelperTextProps>
+export const FieldErrorText = withSlotRecipe<FieldErrorTextProps>(
+  CerberusFieldErrorText,
+  'errorText',
+)
+
+// Textarea
+
+export type FieldTextareaProps = CerberusPrimitiveProps<ArkFieldTextareaProps>
+export const FieldTextarea = withSlotRecipe<FieldTextareaProps>(
+  Field.Textarea,
+  'textarea',
+)
 
 /**
  * A named export for the FieldInput component.
@@ -185,9 +108,6 @@ export function FieldTextarea(props: FieldTextareaProps) {
  * import { Input } from '@cerberus/react'
  *
  * <Field
- *   ids={{
- *    control: 'email',
- *   }}
  *   label="Enter your email"
  *   helperText="We'll never share your email with anyone else."
  *   errorText="Email is required."
@@ -197,5 +117,21 @@ export function FieldTextarea(props: FieldTextareaProps) {
  * </Field>
  * ```
  */
-export const Input = FieldInput
+export const Input = CerberusFieldInput
+
+/**
+ * A named export for the FieldTextarea component.
+ * @description [Field Docs](https://cerberus.digitalu.design/react/field)
+ * @example
+ * ```tsx
+ * import { Textarea } from '@cerberus/react'
+ *
+ * <Field
+ *   label="Comments"
+ *   helperText="Your comments are valuable to us."
+ * >
+ *   <Textarea />
+ * </Field>
+ * ```
+ */
 export const Textarea = FieldTextarea

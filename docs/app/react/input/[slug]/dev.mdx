@@ -105,37 +105,36 @@ export function SearchInputExample(props: InputProps) {
 
 ## Customizing
 
-You can customize the input by passing styles directly into the component and is a re-export of the `FieldInput` primitive.
+You can customize the input by passing styles directly into the component. The Input is a re-export of the `FieldInput` primitive.
 
 <CodePreview preview={<CustomField />}>
 ```tsx {18-23}
 import { FieldParts } from '@cerberus/react'
 import { Box } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 
 export function CustomField() {
   return (
     <Box w="1/2">
       <FieldParts.Root>
         <FieldParts.Label
-          className={css({
+          css={{
             fontSize: 'xl',
             fontWeight: 'black',
             textTransform: 'uppercase',
-          })}
+          }}
         >
           Custom Label
         </FieldParts.Label>
         <FieldParts.Input
-          className={css({
+          css={{
             transform: 'skewX(-10deg)',
-          })}
+          }}
           type="text"
         />
         <FieldParts.HelperText
-          className={css({
+          css={{
             fontStyle: 'italic',
-          })}
+          }}
         >
           Custom Helper Text
         </FieldParts.HelperText>

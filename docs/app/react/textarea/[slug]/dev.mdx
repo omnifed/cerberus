@@ -88,38 +88,35 @@ The `Textarea` component supports secondary helper text, which can be used to di
 
 ## Customizing
 
-You can customize the textarea by passing styles directly into the component and is a re-export of the `FieldTextarea` primitive.
+You can customize the textarea by passing styles directly into the component. Textarea is a re-export of the `FieldTextarea` primitive.
 
 <CodePreview preview={<CustomField />}>
-```tsx {18-22}
+```tsx {18-20} title="custom textarea demo"
 import { FieldParts } from '@cerberus/react'
 import { Box } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 
 export function CustomField() {
   return (
     <Box w="1/2">
-      <FieldParts.Root ids={{
-        control: 'custom-textarea',
-      }}>
+      <FieldParts.Root ids={{ control: 'customField' }}>
         <FieldParts.Label
-          className={css({
+          css={{
             fontSize: 'xl',
             fontWeight: 'black',
             textTransform: 'uppercase',
-          })}
+          }}
         >
           Custom Label
         </FieldParts.Label>
         <FieldParts.Textarea
-          className={css({
+          css={{
             transform: 'skewX(-10deg)',
-          })}
+          }}
         />
         <FieldParts.HelperText
-          className={css({
+          css={{
             fontStyle: 'italic',
-          })}
+          }}
         >
           Custom Helper Text
         </FieldParts.HelperText>
