@@ -1,6 +1,6 @@
+import { ark } from '@ark-ui/react/factory'
 import { button } from 'styled-system/recipes'
 import { createCerberusPrimitive } from '../../system/index'
-import { ark } from '@ark-ui/react/factory'
 
 /**
  * This module contains the Button component primitives.

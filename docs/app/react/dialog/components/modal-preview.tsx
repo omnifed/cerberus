@@ -20,11 +20,10 @@ import {
   type DialogProps,
 } from '@cerberus-design/react'
 import { Box, HStack, VStack } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 
 export function OverviewPreview(props: { id: string }) {
   return (
-    <DialogProvider id={props.id}>
+    <DialogProvider id={props.id} lazyMount>
       <DialogTrigger asChild>
         <Button>open dialog</Button>
       </DialogTrigger>
@@ -96,7 +95,7 @@ export function CustomPreview() {
 
       <Portal>
         <DialogParts.Backdrop
-          className={css({
+          css={{
             animationFillMode: 'forwards',
             bgColor: 'danger.surface.initial/70',
             bottom: 0,
@@ -112,10 +111,10 @@ export function CustomPreview() {
             _closed: {
               animationStyle: 'emphasized-fade-out',
             },
-          })}
+          }}
         />
         <DialogParts.Positioner
-          className={css({
+          css={{
             alignItems: 'flex-start',
             display: 'flex',
             h: '100dvh',
@@ -126,18 +125,18 @@ export function CustomPreview() {
             top: '0',
             w: '100vw',
             zIndex: 'modal',
-          })}
+          }}
         >
           <DialogParts.Content
-            className={css({
+            css={{
               bgColor: 'page.surface.initial',
               padding: 'xl',
-            })}
+            }}
           >
             <DialogParts.Heading
-              className={css({
+              css={{
                 paddingBlockEnd: 'lg',
-              })}
+              }}
             >
               C3rB3RuS R00lz!
             </DialogParts.Heading>

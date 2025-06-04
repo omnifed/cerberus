@@ -181,7 +181,7 @@ function DialogContent(props: { size: DialogProps['size'] }) {
 
 ## Primitives
 
-You can utilize the primitive components to customize the dialog.
+You can utilize the primitive components or the `css` prop to customize the dialog.
 
 | Component               | Description |
 | ----------------------- | ----------- |
@@ -208,7 +208,7 @@ function CustomPreview() {
 
       <Portal>
         <DialogParts.Backdrop
-          className={css({
+          css={{
             animationFillMode: 'forwards',
             bgColor: 'danger.surface.initial/70',
             bottom: 0,
@@ -224,10 +224,10 @@ function CustomPreview() {
             _closed: {
               animationStyle: 'emphasized-fade-out',
             },
-          })}
+          }}
         />
         <DialogParts.Positioner
-          className={css({
+          css={{
             alignItems: 'flex-start',
             display: 'flex',
             h: '100dvh',
@@ -238,18 +238,18 @@ function CustomPreview() {
             top: '0',
             w: '100vw',
             zIndex: 'modal',
-          })}
+          }}
         >
           <DialogParts.Content
-            className={css({
+            css={{
               bgColor: 'page.surface.initial',
               padding: 'xl',
-            })}
+            }}
           >
             <DialogParts.Heading
-              className={css({
+              css={{
                 paddingBlockEnd: 'lg',
-              })}
+              }}
             >
               C3rB3RuS R00lz!
             </DialogParts.Heading>

@@ -20,7 +20,7 @@ import { combobox, type ComboboxVariantProps } from 'styled-system/recipes'
 import {
   createCerberusPrimitive,
   type CerberusPrimitiveProps,
-} from '../../system'
+} from '../../system/index'
 
 /**
  * This module contains the primitives of the Combobox.

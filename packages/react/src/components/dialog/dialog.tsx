@@ -1,8 +1,12 @@
-import type { DialogContentProps } from '@ark-ui/react/dialog'
 import type { DialogVariantProps } from 'styled-system/recipes'
 import type { WithCss } from '../../types'
 import { Portal } from '../Portal'
-import { DialogBackdrop, DialogContent, DialogPositioner } from './primitives'
+import {
+  DialogBackdrop,
+  DialogContent,
+  DialogPositioner,
+  type DialogContentProps,
+} from './primitives'
 
 /**
  * This module contains and abstraction of the Dialog primitives.
