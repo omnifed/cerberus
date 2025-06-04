@@ -9,7 +9,6 @@ import Image from 'next/image'
 import { Box } from 'styled-system/jsx'
 import data from './data.json'
 import { Suspense } from 'react'
-import { css } from 'styled-system/css'
 
 interface AccordionDataItem {
   id: number
@@ -71,21 +70,21 @@ export function CustomPreview() {
   return (
     <Box w="2/3">
       <AccordionParts.Root
-        className={css({
+        css={{
           transform: 'skewX(-10deg)',
-        })}
+        }}
       >
         <AccordionParts.Item
-          className={css({
+          css={{
             bgColor: 'black',
             borderColor: 'red',
-          })}
+          }}
           value="one"
         >
           <AccordionParts.ItemTrigger
-            className={css({
+            css={{
               color: 'red',
-            })}
+            }}
             data-indicator-position="start"
           >
             <AccordionParts.ItemIndicator>🔥</AccordionParts.ItemIndicator>
@@ -93,11 +92,11 @@ export function CustomPreview() {
           </AccordionParts.ItemTrigger>
 
           <AccordionParts.ItemContent
-            className={css({
+            css={{
               color: 'white',
               paddingInline: 'md',
               textStyle: 'body-md',
-            })}
+            }}
           >
             Cerberus is the three-headed dog that guards the gates of the
             Underworld and our sweet baby boi protecting the integrity of your
