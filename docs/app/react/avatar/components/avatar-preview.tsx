@@ -40,7 +40,7 @@ export function NextAvatar() {
 export function CustomAvatar() {
   return (
     <Avatar
-      className={css({
+      css={{
         bgColor: 'black',
         bgImage: 'none',
         border: '6px solid',
@@ -48,7 +48,7 @@ export function CustomAvatar() {
         color: 'danger.text.initial',
         fontFamily: 'sans',
         transform: 'skewX(-10deg)',
-      })}
+      }}
       size="4xl"
       fallback="Cu"
     />

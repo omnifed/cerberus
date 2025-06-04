@@ -81,7 +81,7 @@ function NextAvatar() {
 
 ## Primitives
 
-You can utilize the primitive components to customize the avatar.
+You can utilize the primitive components or the `css` prop to customize the avatar.
 
 | Component | Description |
 | --------- | ----------- |
@@ -97,7 +97,7 @@ import { css } from 'styled-system/css'
 function CustomAvatar() {
   return (
     <Avatar
-      className={css({
+      css={{
         bgColor: 'black',
         bgImage: 'none',
         border: '6px solid',
@@ -105,7 +105,7 @@ function CustomAvatar() {
         color: 'danger.text.initial',
         fontFamily: 'sans',
         transform: 'skewX(-10deg)',
-      })}
+      }}
       size="4xl"
       fallback="Cu"
     />

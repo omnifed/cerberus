@@ -1,18 +1,16 @@
-import type { AvatarRootProps } from '@ark-ui/react/avatar'
 import type { AvatarVariantProps } from 'styled-system/recipes'
 import type { ReactNode } from 'react'
 import { splitProps } from '../../utils'
 import { Show } from '../Show'
 import { AvatarParts } from './parts'
+import type { AvatarRootProps } from './primitives'
 
 /**
  * This module provides an abstraction of the Avatar primitives.
  * @module 'avatar'
  */
 
-export interface AvatarWithoutImage
-  extends AvatarRootProps,
-    AvatarVariantProps {
+export interface AvatarWithoutImage extends AvatarRootProps {
   alt?: never
   src?: never
   fallback?: ReactNode
