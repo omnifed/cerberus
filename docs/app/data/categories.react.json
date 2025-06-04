@@ -26,17 +26,10 @@
   "containment": {
     "name": "Containment",
     "description": "Components that contain other components.",
-    "items": [
-      "Confirm Modal",
-      "Prompt Modal",
-      "CTA Modal",
-      "Modal",
-      "Dialog",
-      "Table"
-    ],
+    "items": ["Confirm Modal", "Prompt Modal", "CTA Modal", "Dialog", "Table"],
     "next": [],
     "new": [],
-    "deprecated": ["Modal"]
+    "deprecated": []
   },
   "navigation": {
     "name": "Navigation",
