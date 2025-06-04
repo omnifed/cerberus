@@ -65,14 +65,14 @@ export function CustomDemo() {
     <RadioParts.Root>
       <RadioParts.Item>
         <RadioParts.ItemText
-          className={css({
+          css={{
             textStyle: 'body-lg',
-          })}
+          }}
         >
           Cerberus
         </RadioParts.ItemText>
         <RadioParts.ItemControl
-          className={css({
+          css={{
             bgColor: 'info.bg.initial',
             h: 8,
             w: 8,
@@ -80,7 +80,7 @@ export function CustomDemo() {
             _checked: {
               bg: 'warning.bg.initial',
             },
-          })}
+          }}
         />
         <RadioParts.ItemHiddenInput />
       </RadioParts.Item>

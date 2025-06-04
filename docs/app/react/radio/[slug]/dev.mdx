@@ -75,7 +75,7 @@ export function SizeDemo() {
 
 ## Primitives
 
-You can utilize the primitive components to customize the radio.
+You can utilize the primitive components or the `css` prop to customize the radio.
 
 | Component | Description |
 | --------- | ----------- |
@@ -88,23 +88,22 @@ You can utilize the primitive components to customize the radio.
 | RadioGroupItemHiddenInput  | The native input for the radio |
 
 <CodePreview preview={<CustomDemo />}>
-```tsx title="custom-radio.tsx"
+```tsx title="custom radio demo" {8-10}
 import { RadioParts } from '@cerberus/react'
-import { css } from 'styled-system/css'
 
 function CustomDemo() {
   return (
     <RadioParts.Root>
       <RadioParts.Item>
         <RadioParts.ItemText
-          className={css({
+          css={{
             textStyle: 'body-lg',
-          })}
+          }}
         >
           Cerberus
         </RadioParts.ItemText>
         <RadioParts.ItemControl
-          className={css({
+          css={{
             bgColor: 'info.bg.initial',
             h: 8,
             w: 8,
@@ -112,7 +111,7 @@ function CustomDemo() {
             _checked: {
               bg: 'warning.bg.initial',
             },
-          })}
+          }}
         />
         <RadioParts.ItemHiddenInput />
       </RadioParts.Item>
