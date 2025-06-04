@@ -3,75 +3,68 @@ import {
   Toaster,
   type ToastActionTriggerProps,
   type ToastCloseTriggerProps,
+  type ToastDescriptionProps,
   type ToasterProps,
   type ToastRootProps,
   type ToastTitleProps,
 } from '@ark-ui/react/toast'
-import { cx } from 'styled-system/css'
 import { toast } from 'styled-system/recipes'
+import {
+  createCerberusPrimitive,
+  type CerberusPrimitiveProps,
+} from '../../system/index'
 
 /**
  * This module contains the primitives of the Notification component.
  * @module 'notification/primitives'
  */
 
-export function NotificationProvider(props: ToasterProps) {
-  return <Toaster {...props} />
-}
+const { withSlotRecipe } = createCerberusPrimitive(toast)
 
-/**
- * The context provider for the Notification component.
- */
-export function NotificationRoot(props: ToastRootProps) {
-  const styles = toast()
-  return <Toast.Root {...props} className={cx(styles.root, props.className)} />
-}
+// Toaster
 
-/**
- * The title heading of the Notification component.
- */
-export function NotificationHeading(props: ToastTitleProps) {
-  const styles = toast()
-  return (
-    <Toast.Title {...props} className={cx(styles.title, props.className)} />
+export type NotificationProviderProps = ToasterProps
+export const NotificationProvider = Toaster
+
+// Root
+
+export type NotificationRootProps = CerberusPrimitiveProps<ToastRootProps>
+export const NotificationRoot = withSlotRecipe<NotificationRootProps>(
+  Toast.Root,
+  'root',
+)
+
+// Heading
+
+export type NotificationHeadingProps = CerberusPrimitiveProps<ToastTitleProps>
+export const NotificationHeading = withSlotRecipe<NotificationHeadingProps>(
+  Toast.Title,
+  'title',
+)
+
+// Description
+
+export type NotificationDescriptionProps =
+  CerberusPrimitiveProps<ToastDescriptionProps>
+export const NotificationDescription =
+  withSlotRecipe<NotificationDescriptionProps>(Toast.Description, 'description')
+
+// Close Trigger
+
+export type NotificationCloseTriggerProps =
+  CerberusPrimitiveProps<ToastCloseTriggerProps>
+export const NotificationCloseTrigger =
+  withSlotRecipe<NotificationCloseTriggerProps>(
+    Toast.CloseTrigger,
+    'closeTrigger',
   )
-}
 
-/**
- * The description of the Notification component.
- */
-export function NotificationDescription(props: ToastTitleProps) {
-  const styles = toast()
-  return (
-    <Toast.Description
-      {...props}
-      className={cx(styles.description, props.className)}
-    />
-  )
-}
+// Action Trigger
 
-/**
- * The close button of the Notification component.
- */
-export function NotificationCloseTrigger(props: ToastCloseTriggerProps) {
-  const styles = toast()
-  return (
-    <Toast.CloseTrigger
-      {...props}
-      className={cx(styles.closeTrigger, props.className)}
-    />
+export type NotificationActionTriggerProps =
+  CerberusPrimitiveProps<ToastActionTriggerProps>
+export const NotificationActionTrigger =
+  withSlotRecipe<NotificationActionTriggerProps>(
+    Toast.ActionTrigger,
+    'actionTrigger',
   )
-}
-
-/**
- * The action trigger of the Notification component.
- */
-export function NotificationActionTrigger(props: ToastActionTriggerProps) {
-  const styles = toast()
-  return (
-    <Toast.ActionTrigger
-      {...props}
-      className={cx(styles.actionTrigger, props.className)}
-    />
-  )
-}

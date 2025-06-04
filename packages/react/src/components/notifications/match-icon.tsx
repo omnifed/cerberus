@@ -1,10 +1,10 @@
 'use client'
 
+import { ark } from '@ark-ui/react/factory'
 import { toast } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
 import { Spinner } from '../Spinner'
 import type { NotifyOptions } from './types'
-import { ark } from '@ark-ui/react/factory'
 
 /**
  * This private module contains a component that returns the correct icon for a
