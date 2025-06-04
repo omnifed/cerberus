@@ -13,7 +13,6 @@ import {
   useStatefulCollection,
 } from '@cerberus-design/react'
 import { Box, VStack } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 import { ChevronDownOutline, Search } from '@carbon/icons-react'
 
 const comboInitialItems = [
@@ -176,14 +175,14 @@ export function CustomDemo() {
       <ComboboxParts.Root
         collection={collection}
         onInputValueChange={handleInputChange}
-        className={css({
+        css={{
           transform: 'skewX(-10deg)',
-        })}
+        }}
       >
         <ComboboxParts.Label
-          className={css({
+          css={{
             textTransform: 'uppercase',
-          })}
+          }}
         >
           Custom label
         </ComboboxParts.Label>
@@ -211,7 +210,7 @@ export function CustomDemo() {
               >
                 {(item) => (
                   <ComboboxParts.Item key={item.value} item={item}>
-                    <ComboboxParts.ItemText className={css({ fontSize: 'xl' })}>
+                    <ComboboxParts.ItemText css={{ fontSize: 'xl' }}>
                       {item.label}
                     </ComboboxParts.ItemText>
                     <ComboboxParts.ItemIndicator>

@@ -261,7 +261,7 @@ function FieldPreview() {
 
 ## Primitives
 
-You can utilize the primitive components to customize the select.
+You can utilize the primitive components or the `css` prop to customize the Combobox.
 
 | Component | Description |
 | --------- | ----------- |
@@ -290,7 +290,6 @@ import {
   useStatefulCollection,
 } from '@cerberus/react'
 import { Box } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 
 
 function CustomDemo() {
@@ -302,14 +301,14 @@ function CustomDemo() {
       <ComboboxParts.Root
         collection={collection}
         onInputValueChange={handleInputChange}
-        className={css({
+        css={{
           transform: 'skewX(-10deg)',
-        })}
+        }}
       >
         <ComboboxParts.Label
-          className={css({
+          css={{
             textTransform: 'uppercase',
-          })}
+          }}
         >
           Custom label
         </ComboboxParts.Label>
@@ -337,7 +336,7 @@ function CustomDemo() {
               >
                 {(item) => (
                   <ComboboxParts.Item key={item.value} item={item}>
-                    <ComboboxParts.ItemText className={css({ fontSize: 'xl' })}>
+                    <ComboboxParts.ItemText css={{ fontSize: 'xl' }}>
                       {item.label}
                     </ComboboxParts.ItemText>
                     <ComboboxParts.ItemIndicator>
