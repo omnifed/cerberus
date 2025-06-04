@@ -6,7 +6,6 @@ import {
 } from '@cerberus-design/react'
 import { ArrowDownRight } from '@carbon/icons-react'
 import { Box } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 
 export function OverviewPreview() {
   const items = [
@@ -66,7 +65,7 @@ export function CustomCheckbox() {
       <CheckboxParts.Root>
         <CheckboxParts.Label>Custom Checkbox</CheckboxParts.Label>
         <CheckboxParts.Control
-          className={css({
+          css={{
             bgColor: 'black',
             border: '4px solid',
             borderColor: 'danger.border.initial',
@@ -77,7 +76,7 @@ export function CustomCheckbox() {
             _checked: {
               bgColor: 'info.bg.initial',
             },
-          })}
+          }}
         >
           <CheckboxParts.Indicator>
             <ArrowDownRight />

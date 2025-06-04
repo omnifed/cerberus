@@ -153,7 +153,7 @@ function SizeDemo() {
 
 ## Primitives
 
-You can utilize the primitive components to customize the checkbox.
+You can utilize the primitive components or the `css` prop to customize the checkbox.
 
 | Component | Description |
 | --------- | ----------- |
@@ -167,32 +167,33 @@ You can utilize the primitive components to customize the checkbox.
 <CodePreview preview={<CustomCheckbox />}>
 ```tsx title="custom checkbox"
 import { CheckboxParts } from '@cerberus/react'
-import { css } from 'styled-system/css'
 
 function CustomCheckbox() {
   return (
-    <CheckboxParts.Root>
-      <CheckboxParts.Label>Custom Checkbox</CheckboxParts.Label>
-      <CheckboxParts.Control
-        className={css({
-          bgColor: 'black',
-          border: '4px solid',
-          borderColor: 'danger.border.initial',
-          h: 8,
-          rounded: 'none',
-          transform: 'skewX(-10deg)',
-          w: 8,
-          _checked: {
-            bgColor: 'info.bg.initial',
-          },
-        })}
-      >
-        <CheckboxParts.Indicator>
-          <ArrowDownRight />
-        </CheckboxParts.Indicator>
-      </CheckboxParts.Control>
-      <CheckboxParts.HiddenInput />
-    </CheckboxParts.Root>
+    <Box w="1/2">
+      <CheckboxParts.Root>
+        <CheckboxParts.Label>Custom Checkbox</CheckboxParts.Label>
+        <CheckboxParts.Control
+          css={{
+            bgColor: 'black',
+            border: '4px solid',
+            borderColor: 'danger.border.initial',
+            h: 8,
+            rounded: 'none',
+            transform: 'skewX(-10deg)',
+            w: 8,
+            _checked: {
+              bgColor: 'info.bg.initial',
+            },
+          }}
+        >
+          <CheckboxParts.Indicator>
+            <ArrowDownRight />
+          </CheckboxParts.Indicator>
+        </CheckboxParts.Control>
+        <CheckboxParts.HiddenInput />
+      </CheckboxParts.Root>
+    </Box>
   )
 }
 ```
