@@ -1,6 +1,7 @@
-import type { DatePickerContentProps } from '@ark-ui/react/date-picker'
 import { Portal } from '../Portal'
+import type { DatePickerCalendarProps } from './calendar'
 import { DatePickerParts } from './parts'
+import type { DatePickerContentProps } from './primitives'
 
 /**
  * This private module contains an abstraction of the DatePickerContent
@@ -14,13 +15,11 @@ import { DatePickerParts } from './parts'
  * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
  */
 export function DatePickerContent(
-  props: DatePickerContentProps & {
-    withModal?: boolean
-  },
+  props: DatePickerContentProps & DatePickerCalendarProps,
 ) {
-  const { withModal, ...contentProps } = props
+  const { withModal, container, ...contentProps } = props
   return (
-    <Portal disabled={withModal ?? false}>
+    <Portal disabled={withModal ?? false} container={container}>
       <DatePickerParts.Positioner>
         <DatePickerParts.Content {...contentProps} />
       </DatePickerParts.Positioner>

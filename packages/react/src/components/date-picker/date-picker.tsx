@@ -1,5 +1,5 @@
-import type { DatePickerRootProps } from '@ark-ui/react/date-picker'
 import { DatePickerParts } from './parts'
+import type { DatePickerRootProps } from './primitives'
 
 /**
  * This module contains an abstraction of the DatePicker.Root primitive.
