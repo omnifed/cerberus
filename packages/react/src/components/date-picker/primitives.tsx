@@ -26,11 +26,17 @@ import {
 } from '@ark-ui/react/date-picker'
 import { cx } from 'styled-system/css'
 import { datePicker } from 'styled-system/recipes'
+// import {
+//   createCerberusPrimitive,
+//   type CerberusPrimitiveProps,
+// } from '../../system'
 
 /**
  * This module contains the DatePicker primitives.
  * @module 'date-picker/primitives'
  */
+
+// const { withSlotRecipe } = createCerberusPrimitive(datePicker)
 
 /**
  * The label component for the DatePicker.

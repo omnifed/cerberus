@@ -1,19 +1,16 @@
-import type { HTMLArkProps } from '@ark-ui/react/factory'
-import type { AdmonitionVariantProps } from 'styled-system/recipes'
 import type { ReactNode } from 'react'
 import { splitProps } from '../../utils/index'
 import { AdmonitionParts } from './parts'
 import { Show } from '../Show'
 import { MatchAvatar } from './match-avatar'
+import type { AdmonitionRootProps } from './primitives'
 
 /**
  * This module provides an abstraction for the Admonition component.
  * @module 'admonition/admonition'
  */
 
-export interface AdmonitionProps
-  extends AdmonitionVariantProps,
-    HTMLArkProps<'aside'> {
+export interface AdmonitionProps extends AdmonitionRootProps {
   /**
    * The heading title for the Admonition.
    */

@@ -74,7 +74,7 @@ function UsageDemo() {
 
 ## Primitives
 
-You can utilize the primitive components to customize the admonition. Each part forwards `ref` and allows for a `asChild` prop.
+You can utilize the primitive components or the `css` prop to customize the admonition. Each part forwards `ref` and allows for a `asChild` prop.
 
 | Component | Description |
 | --------- | ----------- |
@@ -87,15 +87,14 @@ You can utilize the primitive components to customize the admonition. Each part 
 <CodePreview preview={<CustomDemo />}>
 ```tsx title="Custom demo"
 import { AdmonitionParts } from '@cerberus/react'
-import { css } from 'styled-system/css'
 
 export function CustomDemo() {
   return (
     <Box w="1/2">
       <AdmonitionParts.Root
-        className={css({
+        css={{
           transform: 'skewX(-10deg)',
-        })}
+        }}
       >
         <AdmonitionParts.Indicator>
           <Circle size="6">
@@ -105,10 +104,10 @@ export function CustomDemo() {
 
         <AdmonitionParts.Content>
           <AdmonitionParts.Heading
-            className={css({
+            css={{
               color: 'danger.text.initial',
               textTransform: 'uppercase',
-            })}
+            }}
           >
             Cerberus Forever
           </AdmonitionParts.Heading>

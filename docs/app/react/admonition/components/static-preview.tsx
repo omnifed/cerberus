@@ -1,6 +1,5 @@
 import { Admonition, AdmonitionParts, Tag } from '@cerberus-design/react'
 import { Box, VStack, Circle } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 import PawIcon from '@/app/components/icons/paw-icon'
 
 export function BasicDemo() {
@@ -61,9 +60,9 @@ export function CustomDemo() {
   return (
     <Box w="1/2">
       <AdmonitionParts.Root
-        className={css({
+        css={{
           transform: 'skewX(-10deg)',
-        })}
+        }}
       >
         <AdmonitionParts.Indicator>
           <Circle size="6">
@@ -73,10 +72,10 @@ export function CustomDemo() {
 
         <AdmonitionParts.Content>
           <AdmonitionParts.Heading
-            className={css({
+            css={{
               color: 'danger.text.initial',
               textTransform: 'uppercase',
-            })}
+            }}
           >
             Cerberus Forever
           </AdmonitionParts.Heading>
