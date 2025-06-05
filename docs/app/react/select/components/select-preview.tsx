@@ -10,13 +10,14 @@ import {
   OptionGroupLabel,
   createSelectCollection,
   Portal,
+  type SelectProps,
 } from '@cerberus-design/react'
 import { css, cx } from 'styled-system/css'
 import { hstack } from 'styled-system/patterns'
 import { Box } from 'styled-system/jsx'
 import { ChevronDownOutline } from '@carbon/icons-react'
 
-export function SelectBasicPreview() {
+export function SelectBasicPreview(props: Omit<SelectProps, 'collection'>) {
   const collection = createSelectCollection([
     { label: 'Hades', value: 'hades' },
     { label: 'Persephone', value: 'persephone' },
@@ -28,7 +29,11 @@ export function SelectBasicPreview() {
   return (
     <Box w="1/2">
       <Field label="Select Relative">
-        <Select collection={collection} placeholder="Choose option">
+        <Select
+          collection={collection}
+          container={props.container}
+          placeholder="Choose option"
+        >
           <For each={collection.items}>
             {(item) => <Option key={item.value} item={item} />}
           </For>
@@ -76,11 +81,11 @@ export function SelectCustomPreview() {
     <Box w="1/2">
       <SelectParts.Root collection={collection}>
         <SelectParts.Label
-          className={css({
+          css={{
             paddingBlock: 2,
             textStyle: 'body-sm',
             textTransform: 'uppercase',
-          })}
+          }}
         >
           Select a custom relative
         </SelectParts.Label>
@@ -106,13 +111,13 @@ export function SelectCustomPreview() {
           >
             <SelectParts.ValueText placeholder="Choose a custom option" />
             <SelectParts.Indicator
-              className={css({
+              css={{
                 transitionProperty: 'transform',
                 transitionDuration: 'fast',
                 _open: {
                   transform: 'rotate(180deg)',
                 },
-              })}
+              }}
             >
               <ChevronDownOutline />
             </SelectParts.Indicator>
@@ -121,18 +126,16 @@ export function SelectCustomPreview() {
         </SelectParts.Control>
 
         <Portal>
-          <SelectParts.Positioner
-            className={css({ w: 'var(--reference-width)' })}
-          >
+          <SelectParts.Positioner css={{ w: 'var(--reference-width)' }}>
             <SelectParts.Content
-              className={css({
+              css={{
                 bgColor: 'danger.surface.initial',
                 p: 4,
-              })}
+              }}
             >
               <SelectParts.ItemGroup>
                 <SelectParts.ItemGroupLabel
-                  className={css({
+                  css={css({
                     fontWeight: 'bold',
                     textStyle: 'label-sm',
                     textTransform: 'uppercase',
@@ -140,22 +143,25 @@ export function SelectCustomPreview() {
                 >
                   The fam
                 </SelectParts.ItemGroupLabel>
-                {collection.items.map((item, idx) => (
-                  <SelectParts.Item key={item.value} item={item}>
-                    <SelectParts.ItemText
-                      className={css({
-                        color: 'white',
-                        display: 'inline-block',
-                      })}
-                      style={{
-                        paddingInlineStart: `calc(16px * ${idx})`,
-                      }}
-                    >
-                      {item.label}
-                    </SelectParts.ItemText>
-                    <SelectParts.ItemIndicator>✓</SelectParts.ItemIndicator>
-                  </SelectParts.Item>
-                ))}
+
+                <For each={collection.items}>
+                  {(item, idx) => (
+                    <SelectParts.Item key={item.value} item={item}>
+                      <SelectParts.ItemText
+                        css={{
+                          color: 'white',
+                          display: 'inline-block',
+                        }}
+                        style={{
+                          paddingInlineStart: `calc(16px * ${idx})`,
+                        }}
+                      >
+                        {item.label}
+                      </SelectParts.ItemText>
+                      <SelectParts.ItemIndicator>✓</SelectParts.ItemIndicator>
+                    </SelectParts.Item>
+                  )}
+                </For>
               </SelectParts.ItemGroup>
             </SelectParts.Content>
           </SelectParts.Positioner>

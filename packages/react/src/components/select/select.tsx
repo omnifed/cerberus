@@ -1,12 +1,12 @@
 'use client'
 
-import type { SelectItemProps, SelectRootProps } from '@ark-ui/react/select'
-import { type SelectVariantProps } from 'styled-system/recipes'
 import { HStack } from 'styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
 import { Portal } from '../Portal'
 import { Show } from '../Show'
 import { SelectParts } from './parts'
+import type { RefObject } from 'react'
+import type { SelectRootProps } from './primitives'
 
 /**
  * This module contains the Select components.
@@ -35,16 +35,18 @@ export interface SelectCollection {
   items: SelectCollectionItem[]
 }
 
-export interface BaseSelectProps {
+export interface SelectProps extends SelectRootProps {
   /**
    * The placeholder text when no option is selected.
    */
   placeholder?: string
+  /**
+   * The container element to render the Select dropdown in. This is used
+   * to render the Select dropdown in a specific context, such as a modal.
+   * @default document.body
+   */
+  container?: RefObject<HTMLElement | null>
 }
-
-export type SelectProps = SelectRootProps<SelectCollectionItem> &
-  BaseSelectProps &
-  SelectVariantProps
 
 /**
  * The Select component is a dropdown list that allows users to select an
@@ -78,7 +80,7 @@ export type SelectProps = SelectRootProps<SelectCollectionItem> &
  * }
  */
 export function Select(props: SelectProps) {
-  const { collection, placeholder, ...rootProps } = props
+  const { collection, container, placeholder, ...rootProps } = props
 
   const { icons } = useCerberusContext()
   const { selectArrow: SelectArrow, invalid: InvalidIcon } = icons
@@ -100,7 +102,7 @@ export function Select(props: SelectProps) {
         </SelectParts.Trigger>
       </SelectParts.Control>
 
-      <Portal>
+      <Portal container={container}>
         <SelectParts.Positioner>
           <SelectParts.Content size={rootProps.size}>
             {props.children}
@@ -110,27 +112,5 @@ export function Select(props: SelectProps) {
 
       <SelectParts.HiddenSelect />
     </SelectParts.Root>
-  )
-}
-
-export interface OptionProps extends SelectItemProps {
-  /**
-   * The CollectionListItem to be displayed in the dropdown list.
-   */
-  item: SelectCollectionItem
-}
-
-export function Option(props: OptionProps) {
-  const { item, ...itemProps } = props
-  const { icons } = useCerberusContext()
-  const { selectChecked: CheckedIcon } = icons
-
-  return (
-    <SelectParts.Item {...itemProps} item={item}>
-      <SelectParts.ItemText>{item?.label}</SelectParts.ItemText>
-      <SelectParts.ItemIndicator>
-        <CheckedIcon />
-      </SelectParts.ItemIndicator>
-    </SelectParts.Item>
   )
 }

@@ -2,25 +2,28 @@ import {
   createListCollection,
   Select,
   type ListCollection,
-  type SelectClearTriggerProps,
-  type SelectContentProps,
-  type SelectControlProps,
-  type SelectHiddenSelectProps,
-  type SelectIndicatorProps,
-  type SelectItemGroupLabelProps,
-  type SelectItemGroupProps,
-  type SelectItemIndicatorProps,
-  type SelectItemProps,
-  type SelectItemTextProps,
-  type SelectLabelProps,
-  type SelectPositionerProps,
-  type SelectRootProps,
-  type SelectTriggerProps,
+  type SelectClearTriggerProps as ArkSelectClearTrigger,
+  type SelectContentProps as ArkSelectContentProps,
+  type SelectControlProps as ArkSelectControlProps,
+  type SelectHiddenSelectProps as ArkSelectHiddenSelectProps,
+  type SelectIndicatorProps as ArkSelectIndicatorProps,
+  type SelectItemGroupLabelProps as ArkSelectItemGroupLabelProps,
+  type SelectItemGroupProps as ArkSelectItemGroupProps,
+  type SelectItemIndicatorProps as ArkSelectItemIndicatorProps,
+  type SelectItemProps as ArkSelectItemProps,
+  type SelectItemTextProps as ArkSelectItemTextProps,
+  type SelectLabelProps as ArkSelectLabelProps,
+  type SelectPositionerProps as ArkSelectPositionerProps,
+  type SelectRootProps as ArkSelectRootProps,
+  type SelectTriggerProps as ArkSelectTriggerProps,
   type SelectValueChangeDetails,
-  type SelectValueTextProps,
+  type SelectValueTextProps as ArkSelectValueTextProps,
 } from '@ark-ui/react/select'
 import { select, type SelectVariantProps } from 'styled-system/recipes'
-import { cx } from 'styled-system/css'
+import {
+  createCerberusPrimitive,
+  type CerberusPrimitiveProps,
+} from '../../system/index'
 import type { SelectCollectionItem } from './select'
 
 /**
@@ -28,160 +31,126 @@ import type { SelectCollectionItem } from './select'
  * @module 'react/select'
  */
 
-/**
- * The SelectRoot component is the context provider for the Select component.
- */
-export function SelectRoot(
-  props: SelectRootProps<SelectCollectionItem> & SelectVariantProps,
-) {
-  const { size, ...rootProps } = props
-  const styles = select({ size })
-  return (
-    <Select.Root
-      {...rootProps}
-      className={cx(styles.root, rootProps.className)}
-    />
-  )
-}
+const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(select)
 
-/**
- * The label that appears above the select input.
- */
-export function SelectLabel(props: SelectLabelProps) {
-  const styles = select()
-  return (
-    <Select.Label {...props} className={cx(styles.label, props.className)} />
-  )
-}
+// Root
 
-/**
- * The control that wraps the select trigger.
- */
-export function SelectControl(props: SelectControlProps) {
-  return <Select.Control {...props} />
-}
+export type SelectRootProps = CerberusPrimitiveProps<
+  ArkSelectRootProps<SelectCollectionItem> & SelectVariantProps
+>
+// @ts-expect-error this is a workaround for the type mismatch WIP
+export const SelectRoot = withSlotRecipe<SelectRootProps>(Select.Root, 'root')
 
-/**
- * The trigger that opens the dropdown.
- */
-export function SelectTrigger(props: SelectTriggerProps) {
-  const styles = select()
-  return (
-    <Select.Trigger
-      {...props}
-      className={cx(styles.trigger, props.className)}
-    />
-  )
-}
+// Label
 
-/**
- * The text that appears in the trigger.
- */
-export function SelectValueText(props: SelectValueTextProps) {
-  return <Select.ValueText {...props} />
-}
+export type SelectLabelProps = CerberusPrimitiveProps<ArkSelectLabelProps>
+export const SelectLabel = withSlotRecipe<SelectLabelProps>(
+  Select.Label,
+  'label',
+)
 
-/**
- * The indicator that appears in the trigger.
- */
-export function SelectIndicator(props: SelectIndicatorProps) {
-  const styles = select()
-  return (
-    <Select.Indicator
-      {...props}
-      className={cx(styles.indicator, props.className)}
-    />
-  )
-}
+// Control
 
-/**
- * The trigger that clears the selected value.
- */
-export function SelectClearTrigger(props: SelectClearTriggerProps) {
-  return <Select.ClearTrigger {...props} />
-}
+export type SelectControlProps = CerberusPrimitiveProps<ArkSelectControlProps>
+export const SelectControl = withNoRecipe<SelectControlProps>(Select.Control)
 
-/**
- * The positioner that contains the dropdown.
- */
-export function SelectPositioner(props: SelectPositionerProps) {
-  const styles = select()
-  return (
-    <Select.Positioner
-      {...props}
-      className={cx(styles.positioner, props.className)}
-    />
-  )
-}
+// Trigger
 
-/**
- * The content of the dropdown (i.e. the container itself).
- */
-export function SelectContent(props: SelectContentProps & SelectVariantProps) {
-  const { size, ...contentProps } = props
-  const styles = select({ size })
-  return (
-    <Select.Content
-      {...contentProps}
-      className={cx(styles.content, contentProps.className)}
-    />
-  )
-}
+export type SelectTriggerProps = CerberusPrimitiveProps<ArkSelectTriggerProps>
+export const SelectTrigger = withSlotRecipe<SelectTriggerProps>(
+  Select.Trigger,
+  'trigger',
+)
 
-/**
- * The container for a group of item options.
- */
-export function SelectItemGroup(props: SelectItemGroupProps) {
-  return <Select.ItemGroup {...props} />
-}
+// Value Text
 
-/**
- * The label for a group of item options.
- */
-export function SelectItemGroupLabel(props: SelectItemGroupLabelProps) {
-  const styles = select()
-  return (
-    <Select.ItemGroupLabel
-      {...props}
-      className={cx(styles.itemGroupLabel, props.className)}
-    />
-  )
-}
+export type SelectValueTextProps =
+  CerberusPrimitiveProps<ArkSelectValueTextProps>
+export const SelectValueText = withNoRecipe<SelectValueTextProps>(
+  Select.ValueText,
+)
 
-/**
- * The container for an item in the select content.
- */
-export function SelectItem(props: SelectItemProps) {
-  const styles = select()
-  return <Select.Item {...props} className={cx(styles.item, props.className)} />
-}
+// Indicator
 
-/**
- * The text for an item option.
- */
-export function SelectItemText(props: SelectItemTextProps) {
-  return <Select.ItemText {...props} />
-}
+export type SelectIndicatorProps =
+  CerberusPrimitiveProps<ArkSelectIndicatorProps>
+export const SelectIndicator = withSlotRecipe<SelectIndicatorProps>(
+  Select.Indicator,
+  'indicator',
+)
 
-/**
- * The indicator for an item option shown when it is selected.
- */
-export function SelectItemIndicator(props: SelectItemIndicatorProps) {
-  const styles = select()
-  return (
-    <Select.ItemIndicator
-      {...props}
-      className={cx(styles.itemIndicator, props.className)}
-    />
-  )
-}
+// Clear Trigger
 
-/**
- * The native input for a select item.
- */
-export function SelectHiddenSelect(props: SelectHiddenSelectProps) {
-  return <Select.HiddenSelect {...props} />
-}
+export type SelectClearTriggerProps =
+  CerberusPrimitiveProps<ArkSelectClearTrigger>
+export const SelectClearTrigger = withNoRecipe<SelectClearTriggerProps>(
+  Select.ClearTrigger,
+)
+
+// Positioner
+
+export type SelectPositionerProps =
+  CerberusPrimitiveProps<ArkSelectPositionerProps>
+export const SelectPositioner = withSlotRecipe<SelectPositionerProps>(
+  Select.Positioner,
+  'positioner',
+)
+
+// Content
+
+export type SelectContentProps = CerberusPrimitiveProps<
+  ArkSelectContentProps & SelectVariantProps
+>
+export const SelectContent = withSlotRecipe<SelectContentProps>(
+  Select.Content,
+  'content',
+)
+
+// Item Group
+
+export type SelectItemGroupProps =
+  CerberusPrimitiveProps<ArkSelectItemGroupProps>
+export const SelectItemGroup = withNoRecipe<SelectItemGroupProps>(
+  Select.ItemGroup,
+)
+
+// Item Group Label
+
+export type SelectItemGroupLabelProps =
+  CerberusPrimitiveProps<ArkSelectItemGroupLabelProps>
+export const SelectItemGroupLabel = withSlotRecipe<SelectItemGroupLabelProps>(
+  Select.ItemGroupLabel,
+  'itemGroupLabel',
+)
+
+// Item
+
+export type SelectItemProps = CerberusPrimitiveProps<ArkSelectItemProps>
+export const SelectItem = withSlotRecipe<SelectItemProps>(Select.Item, 'item')
+
+// Item Text
+
+export type SelectItemTextProps = CerberusPrimitiveProps<ArkSelectItemTextProps>
+export const SelectItemText = withNoRecipe<SelectItemTextProps>(Select.ItemText)
+
+// Item Indicator
+
+export type SelectItemIndicatorProps =
+  CerberusPrimitiveProps<ArkSelectItemIndicatorProps>
+export const SelectItemIndicator = withSlotRecipe<SelectItemIndicatorProps>(
+  Select.ItemIndicator,
+  'itemIndicator',
+)
+
+// Hidden Select
+
+export type SelectHiddenSelectProps =
+  CerberusPrimitiveProps<ArkSelectHiddenSelectProps>
+export const SelectHiddenSelect = withNoRecipe<SelectHiddenSelectProps>(
+  Select.HiddenSelect,
+)
+
+// Collection
 
 /**
  * A helper function to create a SelectCollection object.

@@ -8,6 +8,7 @@ ark: 'select'
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
 import { SelectBasicPreview, GroupedOptionsDemo, SelectCustomPreview } from '@/app/react/select/components/select-preview'
+import { SelectWithDialogDemo } from '@/app/react/select/components/with-dialog-demo'
 
 ```ts
 import {
@@ -102,9 +103,56 @@ function GroupedOptionsDemo() {
 ```
 </CodePreview>
 
+## With Dialog
+
+To use the `Select` component with a dialog, you can use the `container` prop to render the dropdown in the dialog dom-tree.
+
+<CodePreview preview={<SelectWithDialogDemo />}>
+```tsx title="Select with Dialog Demo" {16, 30-32}
+'use client'
+
+import {
+  Dialog,
+  DialogCloseIconTrigger,
+  DialogDescription,
+  DialogHeading,
+  DialogProvider,
+  DialogTrigger,
+} from '@cerberus/react'
+import { Box, VStack } from 'styled-system/jsx'
+import { SelectBasicPreview } from './select-preview'
+import { useRef } from 'react'
+
+export function SelectWithDialogDemo() {
+  const container = useRef(null)
+
+  return (
+    <DialogProvider>
+      <DialogTrigger>Open Select Dialog</DialogTrigger>
+      <Dialog>
+        <VStack alignItems="flex-start" gap="lg" w="full">
+          <DialogCloseIconTrigger />
+          <DialogHeading>Some heading</DialogHeading>
+          <DialogDescription>
+            This is a description for the dialog. You can use this space to
+            provide more context or instructions for the user.
+          </DialogDescription>
+
+          <Box ref={container} w="full">
+            <SelectBasicPreview container={container} />
+          </Box>
+        </VStack>
+      </Dialog>
+    </DialogProvider>
+  )
+}
+
+```
+</CodePreview>
+
 ## Primitives
 
-You can utilize the primitive components to customize the select.
+You can utilize the primitive components or the `css` prop to customize the select.
 
 | Component | Description |
 | --------- | ----------- |
@@ -125,7 +173,7 @@ You can utilize the primitive components to customize the select.
 | SelectHiddenInput | The native select for the select group. |
 
 <CodePreview preview={<SelectCustomPreview />}>
-```tsx
+```tsx title="Custom Select Demo"
 function SelectCustomPreview() {
   const collection = createSelectCollection([
     { label: 'Hades', value: '1-hades' },
@@ -137,19 +185,19 @@ function SelectCustomPreview() {
 
   return (
     <Box w="1/2">
-      <SelectRoot collection={collection}>
-        <SelectLabel
-          className={css({
+      <SelectParts.Root collection={collection}>
+        <SelectParts.Label
+          css={{
             paddingBlock: 2,
             textStyle: 'body-sm',
             textTransform: 'uppercase',
-          })}
+          }}
         >
           Select a custom relative
-        </SelectLabel>
+        </SelectParts.Label>
 
-        <SelectControl>
-          <SelectTrigger
+        <SelectParts.Control>
+          <SelectParts.Trigger
             className={cx(
               css({
                 bgColor: 'black',
@@ -167,61 +215,64 @@ function SelectCustomPreview() {
               }),
             )}
           >
-            <SelectValueText placeholder="Choose a custom option" />
-            <SelectIndicator
-              className={css({
+            <SelectParts.ValueText placeholder="Choose a custom option" />
+            <SelectParts.Indicator
+              css={{
                 transitionProperty: 'transform',
                 transitionDuration: 'fast',
                 _open: {
                   transform: 'rotate(180deg)',
                 },
-              })}
+              }}
             >
               <ChevronDownOutline />
-            </SelectIndicator>
-          </SelectTrigger>
-          <SelectClearTrigger>Clear</SelectClearTrigger>
-        </SelectControl>
+            </SelectParts.Indicator>
+          </SelectParts.Trigger>
+          <SelectParts.ClearTrigger>Clear</SelectParts.ClearTrigger>
+        </SelectParts.Control>
 
         <Portal>
-          <SelectPositioner className={css({ w: 'var(--reference-width)' })}>
-            <SelectContent
-              className={css({
+          <SelectParts.Positioner css={{ w: 'var(--reference-width)' }}>
+            <SelectParts.Content
+              css={{
                 bgColor: 'danger.surface.initial',
                 p: 4,
-              })}
+              }}
             >
-              <SelectItemGroup>
-                <SelectItemGroupLabel
-                  className={css({
+              <SelectParts.ItemGroup>
+                <SelectParts.ItemGroupLabel
+                  css={css({
                     fontWeight: 'bold',
                     textStyle: 'label-sm',
                     textTransform: 'uppercase',
                   })}
                 >
                   The fam
-                </SelectItemGroupLabel>
-                {collection.items.map((item, idx) => (
-                  <SelectItem key={item.value} item={item}>
-                    <SelectItemText
-                      className={css({
-                        color: 'white',
-                        display: 'inline-block',
-                      })}
-                      style={{
-                        paddingInlineStart: `calc(16px * ${idx})`,
-                      }}
-                    >
-                      {item.label}
-                    </SelectItemText>
-                    <SelectItemIndicator>✓</SelectItemIndicator>
-                  </SelectItem>
-                ))}
-              </SelectItemGroup>
-            </SelectContent>
-          </SelectPositioner>
+                </SelectParts.ItemGroupLabel>
+
+                <For each={collection.items}>
+                  {(item, idx) => (
+                    <SelectParts.Item key={item.value} item={item}>
+                      <SelectParts.ItemText
+                        css={{
+                          color: 'white',
+                          display: 'inline-block',
+                        }}
+                        style={{
+                          paddingInlineStart: `calc(16px * ${idx})`,
+                        }}
+                      >
+                        {item.label}
+                      </SelectParts.ItemText>
+                      <SelectParts.ItemIndicator>✓</SelectParts.ItemIndicator>
+                    </SelectParts.Item>
+                  )}
+                </For>
+              </SelectParts.ItemGroup>
+            </SelectParts.Content>
+          </SelectParts.Positioner>
         </Portal>
-      </SelectRoot>
+      </SelectParts.Root>
     </Box>
   )
 }
@@ -240,6 +291,7 @@ The `Select` component is an abstraction of our primitives and accepts the follo
 | placeholder |         | The placeholder to show in the select trigger. |
 | size        | 'md'    | The size of the select. |
 | collection  |         | The collection of options to show in the dropdown. |
+| container   |        | The container to render the dropdown in. If not provided, it will use the `body` component. |
 
 The `Select` component also accepts all the props of the [`SelectRoot` primitive props](https://ark-ui.com/react/docs/components/select#api-reference)
 
