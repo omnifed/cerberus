@@ -1,41 +1,15 @@
+'use client'
+
+import { HStack } from '@/styled-system/jsx'
 import { CircularProgress } from '@cerberus-design/react'
-import { hstack } from 'styled-system/patterns'
 
 export function CircularPreview() {
   return (
-    <div
-      className={hstack({
-        w: '1/2',
-      })}
-    >
-      <CircularProgress
-        id="25"
-        label="25 example"
-        now={25}
-        title="Course completion"
-        size="5rem"
-      />
-      <CircularProgress
-        id="50"
-        label="50 example"
-        now={50}
-        title="Course completion"
-        size="5rem"
-      />
-      <CircularProgress
-        id="75"
-        label="75 example"
-        now={75}
-        title="Course completion"
-        size="5rem"
-      />
-      <CircularProgress
-        id="complete"
-        label="complete example"
-        now={100}
-        title="Course completion"
-        size="5rem"
-      />
-    </div>
+    <HStack w="1/2">
+      <CircularProgress id="25" defaultValue={25} />
+      <CircularProgress id="50" defaultValue={50} />
+      <CircularProgress id="75" defaultValue={75} />
+      <CircularProgress id="complete" label="complete" defaultValue={100} />
+    </HStack>
   )
 }

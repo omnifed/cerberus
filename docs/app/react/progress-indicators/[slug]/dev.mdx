@@ -2,12 +2,14 @@
 npm: '@cerberus-design/react'
 source: 'components/ProgressBar.tsx'
 recipe: 'slots/progressBar.ts'
+ark: 'progress-circular'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
 import {
   NoteAdmonition
 } from '@/app/components/Admonition'
+import { CircularPreview } from '@/app/react/progress-indicators/components/circular-preview'
 import { LivePlaygroundWithCode } from '@/app/react/progress-indicators/components/live-preview'
 import { CircularLivePlaygroundWithCode } from '@/app/react/progress-indicators/components/circular-live-preview'
 
@@ -21,11 +23,36 @@ import { ProgressBar, CircularProgress } from '@cerberus/react'
 
 ## Circular Progress
 
-<CircularLivePlaygroundWithCode />
+The `CircularProgress` component is used to display a circular progress indicator. It will scale to the size of its container.
 
-## Customization
+<CodePreview preview={<CircularPreview />}>
+```tsx
+'use client'
 
-To customize the ProgressBar we recommend extending the slot recipe provided by the `@cerberus-design/panda-preset` package.
+import { CircularProgress } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+export function CircularPreview() {
+  return (
+    <HStack w="1/2">
+      <CircularProgress id="25" defaultValue={25} />
+      <CircularProgress id="50" defaultValue={50} />
+      <CircularProgress id="75" defaultValue={75} />
+      <CircularProgress id="complete" label="complete" defaultValue={100} />
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the progress bar.
+
+| Component | Description |
+| --------- | ----------- |
+| ProgressBarRoot    | The container for the ProgressBar parts |
+| ProgressBarBar  | The percentage bar of the amount |
 
 ## API
 
@@ -59,23 +86,15 @@ define function ProgressBar(props: ProgressBarProps): ReactNode
 ### CircularProgress
 
 ```ts showLineNumbers=false
-export interface CircularProgressProps extends SVGProps<SVGSVGElement> {
-  id: string
-  label: string
-  now: number
-  title: string
-  syntax?: string
+export interface CircularProgressProps extends CircularProgressRootProps {
   bgStyle?: 'filled' | 'transparent'
+  label?: string
 }
-
-define function CircularProgress(props: CircularProgressProps): ReactNode
 ```
 
 | Name     | Default | Description                                  |
 | -------- | ------- | -------------------------------------------- |
-| id |    | The id of the CircularProgress. |
-| label |  ``  | A description of what the progress bar is for. |
-| now |    | The current progress value. |
-| title |    | The title of the CircularProgress for a11y. |
-| syntax |  `Done`  | What is shown below the now value. |
-| bgStyle |  `filled`  | The fill style of the center circle used for the bg. |
+| label    |    | A description of what the progress bar is for. |
+| bgStyle  |  `filled`  | The fill style of the center circle used for the bg. |
+
+The `CircularProgress` component also accepts all the props of the [`CircularProgressRoot` primitive props](https://ark-ui.com/react/docs/components/progress-circular#api-reference)

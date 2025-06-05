@@ -1,3 +1,4 @@
+import { progressAnatomy } from '@ark-ui/react'
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 
 /**
@@ -11,7 +12,18 @@ import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
  */
 export const circularProgress: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'circular-progress',
-  slots: ['root', 'group', 'base', 'track', 'path', 'title', 'description'],
+  slots: [...progressAnatomy.keys(), 'infoGroup'],
+  jsx: [
+    // primitives
+    'CircularProgressRoot',
+    'CircularProgressLabel',
+    'CircularProgressValueText',
+    'CircularProgressCircle',
+    'CircularProgressCircleTrack',
+    'CircularProgressCircleRange',
+    // components
+    'CircularProgress',
+  ],
 
   base: {
     root: {
@@ -20,38 +32,62 @@ export const circularProgress: Partial<SlotRecipeConfig> = defineSlotRecipe({
       flex: 1,
       m: '4px',
       position: 'relative',
+      '--size': '100%',
+      '--thickness': '1em',
     },
-    group: {
+    circle: {
+      bgColor: 'var(--fill-color)',
       display: 'block',
       rounded: 'full',
-      transition: 'all 0.5s ease',
     },
-    base: {
-      fill: 'page.surface.initial',
-    },
-    track: {
+    circleTrack: {
       stroke: 'page.bg.100',
     },
-    path: {
-      stroke: 'url(#gradient)',
-      transition: 'stroke-dashoffset, stroke 0.5s ease',
+    circleRange: {
+      stroke: 'dataViz.progress.start',
+      strokeLinecap: 'round',
+      transition: 'all 0.5s ease',
       _isComplete: {
-        stroke: 'success.bg.initial',
+        stroke: 'dataViz.progress.complete',
       },
     },
-    title: {
-      fill: 'page.text.initial',
+    infoGroup: {
+      alignItems: 'center',
+      display: 'flex',
+      flexDirection: 'column',
+      inset: 0,
+      justifyContent: 'center',
+      position: 'absolute',
+      userSelect: 'none',
+    },
+    valueText: {
+      color: 'page.text.300',
       fontFamily: 'mono',
-      fontSize: '1.25rem',
+      fontSize: '1.5em',
     },
-    description: {
-      fill: 'page.text.100',
-      fontSize: '0.5rem',
-      fontWeight: 600,
-      '&:is([data-fallback])': {
-        textStyle: 'heading-xs',
-        fontSize: '0.75rem',
+    label: {
+      color: 'page.text.100',
+      fontSize: '0.75em',
+      textStyle: 'heading-sm',
+    },
+  },
+
+  variants: {
+    usage: {
+      filled: {
+        root: {
+          '--fill-color': '{colors.page.bg.initial}',
+        },
+      },
+      transparent: {
+        root: {
+          '--fill-color': 'transparent',
+        },
       },
     },
+  },
+
+  defaultVariants: {
+    usage: 'filled',
   },
 })

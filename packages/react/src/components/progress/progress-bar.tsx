@@ -1,16 +1,14 @@
-import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
-import { cx } from 'styled-system/css'
 import {
-  progressBar,
-  type ProgressBarVariantProps,
-} from 'styled-system/recipes'
+  ProgressBarBar,
+  ProgressBarRoot,
+  type ProgressBarRootProps,
+} from './primitives'
 
 /**
  * This module contains the ProgressBar component.
  * @module
  */
 
-export type ProgressBarBaseProps = HTMLArkProps<'div'>
 export type NonIndeterminateProgressBarProps = {
   /**
    * A unique identifier for the progress bar. Required for accessibility.
@@ -47,8 +45,7 @@ export type IndeterminateProgressBarProps = {
    */
   now?: never
 }
-export type ProgressBarProps = ProgressBarBaseProps &
-  ProgressBarVariantProps &
+export type ProgressBarProps = ProgressBarRootProps &
   (NonIndeterminateProgressBarProps | IndeterminateProgressBarProps)
 
 /**
@@ -60,29 +57,24 @@ export type ProgressBarProps = ProgressBarBaseProps &
  * ```
  */
 export function ProgressBar(props: ProgressBarProps) {
-  const { indeterminate, size, usage, now, label, ...nativeProps } = props
-  const styles = progressBar({ size, usage })
+  const { indeterminate, now, label, ...nativeProps } = props
+
   const nowClamped = Math.min(100, Math.max(0, now || 0))
   const width = {
     width: indeterminate ? '50%' : `${nowClamped}%`,
   }
 
   return (
-    <ark.div
+    <ProgressBarRoot
       {...nativeProps}
       aria-label={label}
-      aria-valuemin={0}
-      aria-valuemax={100}
       aria-valuenow={indeterminate ? 0 : nowClamped}
-      className={cx(nativeProps.className, styles.root)}
-      role="progressbar"
     >
-      <ark.div
-        {...(indeterminate && { 'data-indeterminate': true })}
+      <ProgressBarBar
+        {...(indeterminate && { 'data-state': 'indeterminate' })}
         data-complete={nowClamped === 100}
-        className={styles.bar}
         style={width}
       />
-    </ark.div>
+    </ProgressBarRoot>
   )
 }
