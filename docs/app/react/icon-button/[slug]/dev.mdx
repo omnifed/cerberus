@@ -75,7 +75,7 @@ function ButtonLink() {
 
 ## Primitives
 
-You can utilize the primitive components to customize the button.
+You can utilize the primitive components or the `css` prop to customize the button.
 
 | Component | Description |
 | --------- | ----------- |
@@ -85,12 +85,12 @@ You can utilize the primitive components to customize the button.
 ```tsx title="custom demo"
 import { IconButton } from '@cerberus/react'
 import { Tuning } from '@carbon/icons-react'
-import { css } from 'styled-system/css'
 
 function CustomButtonPreview() {
   return (
     <IconButton
-      className={css({
+      ariaLabel="custom button"
+      css={{
         bgColor: 'danger.bg.initial',
         color: 'danger.text.initial',
         rounded: 'md',
@@ -99,7 +99,7 @@ function CustomButtonPreview() {
           bgColor: 'black',
           color: 'yellow',
         },
-      })}
+      }}
     >
       <Tuning />
     </IconButton>

@@ -1,7 +1,6 @@
 import { Fragment } from 'react'
 import { IconButton } from '@cerberus-design/react'
 import { ArrowDownRight, Tuning } from '@carbon/icons-react'
-import { css } from 'styled-system/css'
 import { HStack } from 'styled-system/jsx'
 import { grid, gridItem } from 'styled-system/patterns'
 import Link from 'next/link'
@@ -73,7 +72,7 @@ export function CustomButtonPreview() {
   return (
     <IconButton
       ariaLabel="custom button"
-      className={css({
+      css={{
         bgColor: 'danger.bg.initial',
         color: 'danger.text.initial',
         rounded: 'md',
@@ -82,7 +81,7 @@ export function CustomButtonPreview() {
           bgColor: 'black',
           color: 'yellow',
         },
-      })}
+      }}
     >
       <Tuning />
     </IconButton>
