@@ -20,10 +20,10 @@ import type {
  */
 
 export class CerberusPrimitive {
-  recipe: CerberusPrimitiveRecipe
+  recipe: CerberusPrimitiveRecipe | null
 
-  constructor(recipe: CerberusPrimitiveRecipe) {
-    this.recipe = recipe
+  constructor(recipe?: CerberusPrimitiveRecipe) {
+    this.recipe = recipe ?? null
   }
 
   private validateComponent<P extends HTMLAttributes<unknown>>(

@@ -20,7 +20,7 @@ import type { CerberusPrimitiveRecipe } from './types'
  * ```
  */
 export function createCerberusPrimitive<T extends CerberusPrimitiveRecipe>(
-  recipe: T,
+  recipe?: T,
 ) {
   return new CerberusPrimitive(recipe)
 }

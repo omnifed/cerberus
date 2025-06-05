@@ -14,7 +14,7 @@ import { splitProps } from '../../utils/index'
  * @module 'field/input'
  */
 
-export interface FieldInputProps
+export interface FieldInputElProps
   extends Omit<PrimitiveInputProps, 'size'>,
     FieldVariantProps {
   /**
@@ -27,7 +27,7 @@ export interface FieldInputProps
   endIcon?: ReactNode
 }
 
-export function CerberusFieldInput(props: FieldInputProps) {
+export function CerberusFieldInput(props: FieldInputElProps) {
   const [{ startIcon, endIcon }, fieldProps] = splitProps(props, [
     'startIcon',
     'endIcon',
@@ -38,7 +38,7 @@ export function CerberusFieldInput(props: FieldInputProps) {
     <FieldInputRoot>
       <FieldStartIndicator>{startIcon}</FieldStartIndicator>
       <PrimitiveInput
-        {...(fieldProps as Omit<FieldInputProps, 'size'>)}
+        {...(fieldProps as Omit<FieldInputElProps, 'size'>)}
         {...(hasStartIcon && { 'data-has': 'start-indicator' })}
       />
       <FieldStatusIndicator fallback={endIcon} />

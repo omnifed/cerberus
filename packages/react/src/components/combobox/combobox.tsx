@@ -4,7 +4,7 @@ import type { ComboboxRootProps } from '@ark-ui/react/combobox'
 import type { ComboboxVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
 import type { SelectCollectionItem } from '../select/select'
-import { type FieldInputProps } from '../field/index'
+import { type FieldInputElProps } from '../field/index'
 import { Portal } from '../Portal'
 import { Show } from '../Show'
 import { ComboboxParts } from './parts'
@@ -20,7 +20,7 @@ export interface ComboboxProps
   /**
    * The icon that appears at the start of the combobox input.
    */
-  startIcon?: FieldInputProps['startIcon']
+  startIcon?: FieldInputElProps['startIcon']
 }
 
 export function Combobox(props: ComboboxProps) {
