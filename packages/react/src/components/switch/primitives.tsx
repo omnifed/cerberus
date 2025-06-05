@@ -1,72 +1,62 @@
 import {
   Switch,
-  type SwitchControlProps,
-  type SwitchHiddenInputProps,
-  type SwitchLabelProps,
-  type SwitchRootProps,
-  type SwitchThumbProps,
+  type SwitchControlProps as ArkSwitchControlProps,
+  type SwitchHiddenInputProps as ArkSwitchHiddenInputProps,
+  type SwitchLabelProps as ArkSwitchLabelProps,
+  type SwitchRootProps as ArkSwitchRootProps,
+  type SwitchThumbProps as ArkSwitchThumbProps,
 } from '@ark-ui/react/switch'
-import { cx } from 'styled-system/css'
 import {
   switchRecipe,
   type SwitchRecipeVariantProps,
 } from 'styled-system/recipes'
+import {
+  createCerberusPrimitive,
+  type CerberusPrimitiveProps,
+} from '../../system/index'
 
 /**
  * This module contains the Switch primitives
  * @module 'react/switch'
  */
 
-/**
- * The SwitchRoot component is the context provider for the Switch components.
- */
-export function SwitchRoot(props: SwitchRootProps & SwitchRecipeVariantProps) {
-  const { size, ...rootProps } = props
-  const styles = switchRecipe({ size })
-  return (
-    <Switch.Root
-      {...rootProps}
-      className={cx(styles.root, rootProps.className)}
-    />
-  )
-}
+const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(switchRecipe)
 
-/**
- * The SwitchLabel component is the label for the Switch.
- */
-export function SwitchLabel(props: SwitchLabelProps) {
-  const styles = switchRecipe()
-  return (
-    <Switch.Label {...props} className={cx(styles.label, props.className)} />
-  )
-}
+// Root
 
-/**
- * The SwitchControl component is the visual input for the Switch.
- */
-export function SwitchControl(props: SwitchControlProps) {
-  const styles = switchRecipe()
-  return (
-    <Switch.Control
-      {...props}
-      className={cx(styles.control, props.className)}
-    />
-  )
-}
+export type SwitchRootProps = CerberusPrimitiveProps<
+  ArkSwitchRootProps & SwitchRecipeVariantProps
+>
+export const SwitchRoot = withSlotRecipe<SwitchRootProps>(Switch.Root, 'root')
 
-/**
- * The SwitchThumb component is the thumb for the Switch.
- */
-export function SwitchThumb(props: SwitchThumbProps) {
-  const styles = switchRecipe()
-  return (
-    <Switch.Thumb {...props} className={cx(styles.thumb, props.className)} />
-  )
-}
+// Label
 
-/**
- * The SwitchHiddenInput component is the native input for the Switch.
- */
-export function SwitchHiddenInput(props: SwitchHiddenInputProps) {
-  return <Switch.HiddenInput {...props} />
-}
+export type SwitchLabelProps = CerberusPrimitiveProps<ArkSwitchLabelProps>
+export const SwitchLabel = withSlotRecipe<SwitchLabelProps>(
+  Switch.Label,
+  'label',
+)
+
+// Control
+
+export type SwitchControlProps = CerberusPrimitiveProps<ArkSwitchControlProps>
+export const SwitchControl = withSlotRecipe<SwitchControlProps>(
+  Switch.Control,
+  'control',
+)
+
+// Thumb
+
+export type SwitchThumbProps = CerberusPrimitiveProps<ArkSwitchThumbProps>
+export const SwitchThumb = withSlotRecipe<SwitchThumbProps>(
+  Switch.Thumb,
+  'thumb',
+)
+
+// HiddenInput
+
+export type SwitchHiddenInputProps =
+  CerberusPrimitiveProps<ArkSwitchHiddenInputProps>
+export const SwitchHiddenInput = withNoRecipe<SwitchHiddenInputProps>(
+  Switch.HiddenInput,
+)

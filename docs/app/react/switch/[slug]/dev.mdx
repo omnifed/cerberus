@@ -73,7 +73,7 @@ function SizesDemo() {
 
 ## Primitives
 
-You can utilize the primitive components to customize the checkbox.
+You can utilize the primitive components or the `css` prop to customize the checkbox.
 
 | Component | Description |
 | --------- | ----------- |
@@ -86,36 +86,38 @@ You can utilize the primitive components to customize the checkbox.
 <CodePreview preview={<CustomDemo />}>
 ```tsx title="custom checkbox"
 import { SwitchParts } from '@cerberus/react'
-import { css } from 'styled-system/css'
+import { Box } from 'styled-system/jsx'
 
 function CustomDemo() {
   return (
-    <SwitchParts.Root>
-      <SwitchParts.Label
-        className={css({
-          textTransform: 'uppercase',
-        })}
-      >
-        Receive in app notifications
-      </SwitchParts.Label>
-      <SwitchParts.Control
-        className={css({
-          rounded: 'sm',
-          transform: 'skewX(-10deg)',
-          _checked: {
-            bgColor: 'danger.surface.initial',
-          },
-        })}
-      >
-        <SwitchParts.Thumb
-          className={css({
+    <Box w="1/2">
+      <SwitchParts.Root>
+        <SwitchParts.Label
+          css={{
+            textTransform: 'uppercase',
+          }}
+        >
+          Receive in app notifications
+        </SwitchParts.Label>
+        <SwitchParts.Control
+          css={{
             rounded: 'sm',
-          })}
-        />
-      </SwitchParts.Control>
+            transform: 'skewX(-10deg)',
+            _checked: {
+              bgColor: 'danger.surface.initial',
+            },
+          }}
+        >
+          <SwitchParts.Thumb
+            css={{
+              rounded: 'sm',
+            }}
+          />
+        </SwitchParts.Control>
 
-      <SwitchParts.HiddenInput />
-    </SwitchParts.Root>
+        <SwitchParts.HiddenInput />
+      </SwitchParts.Root>
+    </Box>
   )
 }
 ```

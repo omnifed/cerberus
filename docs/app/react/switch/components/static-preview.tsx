@@ -1,6 +1,5 @@
 import { Switch, Field, SwitchParts } from '@cerberus-design/react'
 import { Box, VStack } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 
 export function BasicDemo() {
   return (
@@ -36,25 +35,25 @@ export function CustomDemo() {
     <Box w="1/2">
       <SwitchParts.Root>
         <SwitchParts.Label
-          className={css({
+          css={{
             textTransform: 'uppercase',
-          })}
+          }}
         >
           Receive in app notifications
         </SwitchParts.Label>
         <SwitchParts.Control
-          className={css({
+          css={{
             rounded: 'sm',
             transform: 'skewX(-10deg)',
             _checked: {
               bgColor: 'danger.surface.initial',
             },
-          })}
+          }}
         >
           <SwitchParts.Thumb
-            className={css({
+            css={{
               rounded: 'sm',
-            })}
+            }}
           />
         </SwitchParts.Control>
 
