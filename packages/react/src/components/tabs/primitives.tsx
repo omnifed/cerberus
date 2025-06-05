@@ -1,70 +1,57 @@
 import {
   Tabs,
-  type TabContentProps,
-  type TabIndicatorProps,
-  type TabListProps,
-  type TabsRootProps,
-  type TabTriggerProps,
+  type TabContentProps as ArkTabContentProps,
+  type TabIndicatorProps as ArkTabIndicatorProps,
+  type TabListProps as ArkTabListProps,
+  type TabsRootProps as ArkTabsRootProps,
+  type TabTriggerProps as ArkTabTriggerProps,
 } from '@ark-ui/react/tabs'
-import { cx } from 'styled-system/css'
 import { tabs, type TabsVariantProps } from 'styled-system/recipes'
+import {
+  createCerberusPrimitive,
+  type CerberusPrimitiveProps,
+} from '../../system/index'
 
 /**
  * This module provides the primitives for the Tabs component.
  * @module 'tabs/primitives'
  */
 
-/**
- * The container and context provider of the tabs.
- */
-export function TabsRoot(props: TabsRootProps & TabsVariantProps) {
-  const { palette, ...rootProps } = props
-  const styles = tabs({ palette })
-  return (
-    <Tabs.Root
-      {...rootProps}
-      className={cx(styles.root, rootProps.className)}
-    />
-  )
-}
+const { withSlotRecipe } = createCerberusPrimitive(tabs)
 
-/**
- * The tab list container for the Tabs group.
- */
-export function TabsList(props: TabListProps) {
-  const styles = tabs()
-  return <Tabs.List {...props} className={cx(styles.list, props.className)} />
-}
+// Root
 
-/**
- * The tab element.
- */
-export function TabsTrigger(props: TabTriggerProps) {
-  const styles = tabs()
-  return (
-    <Tabs.Trigger {...props} className={cx(styles.trigger, props.className)} />
-  )
-}
+export type TabsRootProps = CerberusPrimitiveProps<
+  ArkTabsRootProps & TabsVariantProps
+>
+// @ts-expect-error this is a workaround for the type issue WIP
+export const TabsRoot = withSlotRecipe<TabsRootProps>(Tabs.Root, 'root')
 
-/**
- * The tab content element.
- */
-export function TabsContent(props: TabContentProps) {
-  const styles = tabs()
-  return (
-    <Tabs.Content {...props} className={cx(styles.content, props.className)} />
-  )
-}
+// TabsList
 
-/**
- * The tab indicator element.
- */
-export function TabsIndicator(props: TabIndicatorProps) {
-  const styles = tabs()
-  return (
-    <Tabs.Indicator
-      {...props}
-      className={cx(styles.indicator, props.className)}
-    />
-  )
-}
+export type TabsListProps = CerberusPrimitiveProps<ArkTabListProps>
+export const TabsList = withSlotRecipe<TabsListProps>(Tabs.List, 'list')
+
+// TabsTrigger
+
+export type TabsTriggerProps = CerberusPrimitiveProps<ArkTabTriggerProps>
+export const TabsTrigger = withSlotRecipe<TabsTriggerProps>(
+  Tabs.Trigger,
+  'trigger',
+)
+
+// TabsContent
+
+export type TabContentProps = CerberusPrimitiveProps<ArkTabContentProps>
+export const TabsContent = withSlotRecipe<TabContentProps>(
+  Tabs.Content,
+  'content',
+)
+
+// TabsIndicator
+
+export type TabIndicatorProps = CerberusPrimitiveProps<ArkTabIndicatorProps>
+export const TabsIndicator = withSlotRecipe<TabIndicatorProps>(
+  Tabs.Indicator,
+  'indicator',
+)

@@ -1,6 +1,5 @@
-import { Tabs } from '@cerberus-design/react'
+import { For, Tabs } from '@cerberus-design/react'
 import { Box } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
 
 export function BasicTabsPreview() {
   return (
@@ -79,7 +78,7 @@ export function CustomTabsPreview() {
     <Box w="1/2">
       <Tabs.Root defaultValue="asphodel">
         <Tabs.List
-          className={css({
+          css={{
             bgColor: 'page.surface.200',
             borderBottom: 'none',
             rounded: 'md',
@@ -89,11 +88,11 @@ export function CustomTabsPreview() {
               rounded: 'md',
               zIndex: 'base',
             },
-          })}
+          }}
         >
           {tabData.map((tab) => (
             <Tabs.Tab
-              className={css({
+              css={{
                 zIndex: 'decorator',
                 _selected: {
                   color: 'danger.text.100',
@@ -101,7 +100,7 @@ export function CustomTabsPreview() {
                 _after: {
                   display: 'none',
                 },
-              })}
+              }}
               key={tab.id}
               value={tab.value}
             >
@@ -109,17 +108,20 @@ export function CustomTabsPreview() {
             </Tabs.Tab>
           ))}
         </Tabs.List>
-        {tabData.map((tab) => (
-          <Tabs.Panel
-            className={css({
-              paddingBlock: 'md',
-            })}
-            key={tab.id}
-            value={tab.value}
-          >
-            {tab.content}
-          </Tabs.Panel>
-        ))}
+
+        <For each={tabData}>
+          {(tab) => (
+            <Tabs.Panel
+              key={tab.id}
+              value={tab.value}
+              css={{
+                paddingBlock: 'md',
+              }}
+            >
+              {tab.content}
+            </Tabs.Panel>
+          )}
+        </For>
       </Tabs.Root>
     </Box>
   )

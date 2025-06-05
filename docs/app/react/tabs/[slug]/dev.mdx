@@ -72,7 +72,7 @@ function SecondaryTabsPreview() {
 
 ## Primitives
 
-You can utilize the primitive components to customize the tabs.
+You can utilize the primitive components or the `css` prop to customize the tabs.
 
 | Component | Description |
 | --------- | ----------- |
@@ -83,9 +83,8 @@ You can utilize the primitive components to customize the tabs.
 | TabsContent | The panel container for the tabs. |
 
 <CodePreview preview={<CustomTabsPreview />}>
-```tsx title="tabs.tsx"
-import { Tabs } from '@cerberus/react'
-import { css } from 'styled-system/css'
+```tsx title="Custom tabs demo"
+import { Tabs, For } from '@cerberus/react'
 import { Box } from 'styled-system/jsx'
 
 function CustomTabsPreview() {
@@ -108,52 +107,55 @@ function CustomTabsPreview() {
   ]
 
     return (
-    <Box w="1/2">
-      <Tabs.Root defaultValue="asphodel">
-        <Tabs.List
-          className={css({
-            bgColor: 'page.surface.200',
-            borderBottom: 'none',
-            rounded: 'md',
-            '& > :is([data-part=indicator])': {
-              bgColor: 'danger.surface.initial',
-              h: 'var(--height)',
+      <Box w="1/2">
+        <Tabs.Root defaultValue="asphodel">
+          <Tabs.List
+            css={{
+              bgColor: 'page.surface.200',
+              borderBottom: 'none',
               rounded: 'md',
-              zIndex: 'base',
-            },
-          })}
-        >
-          {tabData.map((tab) => (
-            <Tabs.Tab
-              className={css({
-                zIndex: 'decorator',
-                _selected: {
-                  color: 'danger.text.100',
-                },
-                _after: {
-                  display: 'none',
-                },
-              })}
-              key={tab.id}
-              value={tab.value}
-            >
-              {tab.label}
-            </Tabs.Tab>
-          ))}
-        </Tabs.List>
-        {tabData.map((tab) => (
-          <Tabs.Panel
-            className={css({
-              paddingBlock: 'md',
-            })}
-            key={tab.id}
-            value={tab.value}
+              '& > :is([data-part=indicator])': {
+                bgColor: 'danger.surface.initial',
+                h: 'var(--height)',
+                rounded: 'md',
+                zIndex: 'base',
+              },
+            }}
           >
-            {tab.content}
-          </Tabs.Panel>
-        ))}
-      </Tabs.Root>
-    </Box>
+            {tabData.map((tab) => (
+              <Tabs.Tab
+                css={{
+                  zIndex: 'decorator',
+                  _selected: {
+                    color: 'danger.text.100',
+                  },
+                  _after: {
+                    display: 'none',
+                  },
+                }}
+                key={tab.id}
+                value={tab.value}
+              >
+                {tab.label}
+              </Tabs.Tab>
+            ))}
+          </Tabs.List>
+
+          <For each={tabData}>
+            {(tab) => (
+              <Tabs.Panel
+                key={tab.id}
+                value={tab.value}
+                css={{
+                  paddingBlock: 'md',
+                }}
+              >
+                {tab.content}
+              </Tabs.Panel>
+            )}
+          </For>
+        </Tabs.Root>
+      </Box>
   )
 }
 ```
