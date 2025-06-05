@@ -291,7 +291,7 @@ function ClickablePreview() {
 
 ## Primitives
 
-You can utilize the primitive components to customize the table.
+You can utilize the primitive components or the `css` prop to customize the table.
 
 | Component | Description |
 | --------- | ----------- |
@@ -310,7 +310,6 @@ You can utilize the primitive components to customize the table.
 <CodePreview preview={<CustomizedPreview />}>
 ```tsx title="Custom example"
 import { Table, For } from '@cerberus/react'
-import { css } from 'styled-system/css'
 
 function CustomizedPreview() {
   const cols = [
@@ -329,11 +328,11 @@ function CustomizedPreview() {
   return (
     <Table.Root
       caption="Customized table"
-      className={css({
+      css={{
         border: '3px solid',
         borderColor: 'danger.border.initial',
         transform: 'skewX(-10deg)',
-      })}
+      }}
     >
       <Table.Header>
         <Table.Row>
@@ -341,11 +340,11 @@ function CustomizedPreview() {
             {(col) => (
               <Table.HeaderCol
                 key={col.id}
-                className={css({
+                css={{
                   bgColor: 'black',
                   color: 'white',
                   width: '20rem',
-                })}
+                }}
               >
                 {col.name}
               </Table.HeaderCol>
@@ -358,19 +357,19 @@ function CustomizedPreview() {
           {(item) => (
             <Table.Row key={item.id}>
               <Table.Cell
-                className={css({
+                css={{
                   bgColor: 'gray.200',
                   color: 'black',
                   fontWeight: 'bold',
-                })}
+                }}
               >
                 {item.name}
               </Table.Cell>
               <Table.Cell
-                className={css({
+                css={{
                   bgColor: 'gray.100',
                   color: 'black',
-                })}
+                }}
               >
                 {item.alias}
               </Table.Cell>

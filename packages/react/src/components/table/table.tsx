@@ -1,4 +1,3 @@
-import type { HTMLArkProps } from '@ark-ui/react/factory'
 import type { TablePartsValue } from './parts'
 import {
   Caption,
@@ -11,11 +10,11 @@ import {
   Th,
   Thead,
   Tr,
+  type TableRootProps,
 } from './primitives'
-import type { TableVariantProps } from 'styled-system/recipes'
 import { Show } from '../Show'
 
-interface TableRootElProps extends HTMLArkProps<'div'>, TableVariantProps {
+export interface TableRootElProps extends TableRootProps {
   /**
    * An easy to understand description of the table. Required for accessibility.
    */
@@ -30,7 +29,6 @@ interface TableRootElProps extends HTMLArkProps<'div'>, TableVariantProps {
 
 /**
  * An abstraction over the TableRoot component that adds a sticky attribute.
- *
  * @description [Cerberus Docs](https://cerberus.digitalu.design/react/table)
  *
  * @remarks

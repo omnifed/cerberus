@@ -2,7 +2,6 @@
 
 import { SortAscending, SortDescending } from '@carbon/icons-react'
 import { Table, Show, For } from '@cerberus-design/react'
-import { css } from 'styled-system/css'
 import { Box, HStack, Scrollable } from 'styled-system/jsx'
 import { useCallback, useMemo, useState } from 'react'
 
@@ -236,11 +235,11 @@ export function CustomizedPreview() {
   return (
     <Table.Root
       caption="Customized table"
-      className={css({
+      css={{
         border: '3px solid',
         borderColor: 'danger.border.initial',
         transform: 'skewX(-10deg)',
-      })}
+      }}
     >
       <Table.Header>
         <Table.Row>
@@ -248,11 +247,11 @@ export function CustomizedPreview() {
             {(col) => (
               <Table.HeaderCol
                 key={col.id}
-                className={css({
+                css={{
                   bgColor: 'black',
                   color: 'white',
                   width: '20rem',
-                })}
+                }}
               >
                 {col.name}
               </Table.HeaderCol>
@@ -265,19 +264,19 @@ export function CustomizedPreview() {
           {(item) => (
             <Table.Row key={item.id}>
               <Table.Cell
-                className={css({
+                css={{
                   bgColor: 'gray.200',
                   color: 'black',
                   fontWeight: 'bold',
-                })}
+                }}
               >
                 {item.name}
               </Table.Cell>
               <Table.Cell
-                className={css({
+                css={{
                   bgColor: 'gray.100',
                   color: 'black',
-                })}
+                }}
               >
                 {item.alias}
               </Table.Cell>
