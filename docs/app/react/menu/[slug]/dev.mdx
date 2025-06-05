@@ -188,12 +188,26 @@ function BottomNav() {
 ```
 </CodePreview>
 
-## Customizing
+## Primitives
 
-You can customize every Menu component by passing in your own styles.
+You can utilize the primitive components or the `css` prop to customize the menu.
+
+| Component | Description |
+| --------- | ----------- |
+| MenuRoot    | The context provider for the menu parts |
+| MenuTrigger  | The trigger that opens the menu content |
+| MenuTriggerItem  | The item that triggers a nested menu content |
+| MenuIndicator  | The indicator for the selected menu item |
+| MenuPositioner  | The positioning container for the menu content |
+| MenuContent  | The content of the menu |
+| MenuItem  | A single item of the menu |
+| MenuItemGroup  | A container for a group of menu items |
+| MenuItemGroupLabel  | The label for a group of menu items |
+| MenuSeparator  | A separator between menu items |
+
 
 <CodePreview preview={<CustomMenu />}>
-```tsx title="nav.tsx"
+```tsx title=Menu custom demo"
 import {
   Menu,
   MenuTrigger,
@@ -207,41 +221,41 @@ function CustomMenu() {
     <Menu>
       <MenuTrigger>
         <Button
-          className={css({
+          css={{
             color: 'black',
-          })}
-          palette="warning"
+          }}
+          palette="danger"
         >
-          C.R.E.A.M.
+          Hades R00lz
         </Button>
       </MenuTrigger>
       <MenuContent
-        className={css({
+        css={{
           bgColor: 'black',
-          color: 'yellow',
-        })}
+          color: 'danger.text.initial',
+        }}
       >
         <MenuItem
-          className={css({
+          css={{
             colorPalette: 'warning',
             _hover: {
               color: 'black',
             },
-          })}
+          }}
           value="item_1"
         >
-          Cash Rules Everything Around Me
+          Hades am I
         </MenuItem>
         <MenuItem
-          className={css({
+          css={{
             colorPalette: 'warning',
             _hover: {
               color: 'black',
             },
-          })}
+          }}
           value="item_2"
         >
-          Dolla dolla bills y&apos;all
+          Hades is also where I live
         </MenuItem>
       </MenuContent>
     </Menu>

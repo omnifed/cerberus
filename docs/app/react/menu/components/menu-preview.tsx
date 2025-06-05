@@ -163,41 +163,41 @@ export function CustomMenu() {
     <Menu>
       <MenuTrigger>
         <Button
-          className={css({
+          css={{
             color: 'black',
-          })}
-          palette="warning"
+          }}
+          palette="danger"
         >
-          C.R.E.A.M.
+          Hades R00lz
         </Button>
       </MenuTrigger>
       <MenuContent
-        className={css({
+        css={{
           bgColor: 'black',
-          color: 'yellow',
-        })}
+          color: 'danger.text.initial',
+        }}
       >
         <MenuItem
-          className={css({
+          css={{
             colorPalette: 'warning',
             _hover: {
               color: 'black',
             },
-          })}
+          }}
           value="item_1"
         >
-          Cash Rules Everything Around Me
+          Hades am I
         </MenuItem>
         <MenuItem
-          className={css({
+          css={{
             colorPalette: 'warning',
             _hover: {
               color: 'black',
             },
-          })}
+          }}
           value="item_2"
         >
-          Dolla dolla bills y&apos;all
+          Hades is also where I live
         </MenuItem>
       </MenuContent>
     </Menu>

@@ -1,34 +1,36 @@
 import {
-  Menu as ArkMenu,
-  type MenuItemGroupProps,
-  type MenuRootProps,
-} from '@ark-ui/react'
-import { menu } from 'styled-system/recipes'
-import { cx } from 'styled-system/css'
+  MenuContentEl,
+  MenuItemEl,
+  MenuItemGroupEl,
+  MenuItemGroupLabelEl,
+  MenuPositioner,
+  MenuRoot,
+  MenuSeparatorEl,
+  MenuTriggerEl,
+  type MenuContentProps,
+  type MenuTriggerProps,
+} from './primitives'
 
 /**
- * This module contains the Menu component family.
- * @module Menu
+ * This module contains the Menu named abstractions component.
+ * @module @cerberus-design/react/components/menu
  */
-
-const menuStyles = menu()
 
 /**
  * The root Menu component which controls the menu.
- * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu)
+ * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu/dev)
+ *
  * @example
  * ```tsx
  * <Menu>
  *  <MenuTrigger>Trigger</MenuTrigger>
  * </Menu>
  */
-export function Menu(props: MenuRootProps) {
-  return <ArkMenu.Root {...props} />
-}
+export const Menu = MenuRoot
 
 /**
  * The MenuTrigger component opens/closes the Menu.
- * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu)
+ * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu/dev)
  * @example
  * ```tsx
  * <Menu>
@@ -37,13 +39,13 @@ export function Menu(props: MenuRootProps) {
  *  </MenuTrigger>
  * </Menu>
  */
-export function MenuTrigger(props: ArkMenu.TriggerProps) {
-  return <ArkMenu.Trigger {...props} asChild />
+export function MenuTrigger(props: MenuTriggerProps) {
+  return <MenuTriggerEl {...props} asChild />
 }
 
 /**
  * The MenuContent component is the container for the menu items.
- * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu)
+ * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu/dev)
  * @example
  * ```tsx
  * <Menu>
@@ -56,20 +58,17 @@ export function MenuTrigger(props: ArkMenu.TriggerProps) {
  *  </MenuContent>
  * </Menu>
  */
-export function MenuContent(props: ArkMenu.ContentProps) {
+export function MenuContent(props: MenuContentProps) {
   return (
-    <ArkMenu.Positioner>
-      <ArkMenu.Content
-        {...props}
-        className={cx(props.className, menuStyles.content)}
-      />
-    </ArkMenu.Positioner>
+    <MenuPositioner>
+      <MenuContentEl {...props} />
+    </MenuPositioner>
   )
 }
 
 /**
  * The MenuItem component is a single item in the menu.
- * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu)
+ * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu/dev)
  * @example
  * ```tsx
  * <Menu>
@@ -82,15 +81,11 @@ export function MenuContent(props: ArkMenu.ContentProps) {
  *  </MenuContent>
  * </Menu>
  */
-export function MenuItem(props: ArkMenu.ItemProps) {
-  return (
-    <ArkMenu.Item {...props} className={cx(props.className, menuStyles.item)} />
-  )
-}
+export const MenuItem = MenuItemEl
 
 /**
  * The MenuItemGroup component is a group of menu items.
- * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu)
+ * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu/dev)
  * @example
  * ```tsx
  * <Menu>
@@ -105,13 +100,11 @@ export function MenuItem(props: ArkMenu.ItemProps) {
  *  </MenuContent>
  * </Menu>
  */
-export function MenuItemGroup(props: MenuItemGroupProps) {
-  return <ArkMenu.ItemGroup {...props} />
-}
+export const MenuItemGroup = MenuItemGroupEl
 
 /**
  * The MenuItemGroupLabel component is the label for a group of menu items.
- * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu)
+ * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu/dev)
  * @example
  * ```tsx
  * <Menu>
@@ -127,18 +120,11 @@ export function MenuItemGroup(props: MenuItemGroupProps) {
  *  </MenuContent>
  * </Menu>
  */
-export function MenuGroupLabel(props: ArkMenu.ItemGroupLabelProps) {
-  return (
-    <ArkMenu.ItemGroupLabel
-      {...props}
-      className={cx(props.className, menuStyles.itemGroupLabel)}
-    />
-  )
-}
+export const MenuGroupLabel = MenuItemGroupLabelEl
 
 /**
  * The MenuSeparator component is a visual divider between menu items.
- * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu)
+ * @definition [Cerberus docs](https://cerberus.digitalu.design/react/menu/dev)
  * @example
  * ```tsx
  * <Menu>
@@ -155,11 +141,4 @@ export function MenuGroupLabel(props: ArkMenu.ItemGroupLabelProps) {
  *  </MenuContent>
  * </Menu>
  */
-export function MenuSeparator(props: ArkMenu.SeparatorProps) {
-  return (
-    <ArkMenu.Separator
-      {...props}
-      className={cx(props.className, menuStyles.separator)}
-    />
-  )
-}
+export const MenuSeparator = MenuSeparatorEl
