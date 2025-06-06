@@ -13,16 +13,36 @@ export function BasicTooltipPreview() {
 export function PositioningTooltipPreview() {
   return (
     <HStack gap="3xl">
-      <Tooltip content="Top position" position="top">
+      <Tooltip
+        content="Top position"
+        positioning={{
+          placement: 'top',
+        }}
+      >
         <InformationFilled />
       </Tooltip>
-      <Tooltip content="Right position" position="right">
+      <Tooltip
+        content="Right position"
+        positioning={{
+          placement: 'right',
+        }}
+      >
         <InformationFilled />
       </Tooltip>
-      <Tooltip content="Bottom position" position="bottom">
+      <Tooltip
+        content="Bottom position"
+        positioning={{
+          placement: 'bottom',
+        }}
+      >
         <InformationFilled />
       </Tooltip>
-      <Tooltip content="Left position" position="left">
+      <Tooltip
+        content="Left position"
+        positioning={{
+          placement: 'left',
+        }}
+      >
         <InformationFilled />
       </Tooltip>
     </HStack>
