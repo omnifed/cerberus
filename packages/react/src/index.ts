@@ -50,7 +50,6 @@ export * from './components/tabs/index'
 export * from './components/Tag'
 export * from './components/Text'
 export * from './components/toggle/index'
-export * from './components/Tooltip'
 
 // context
 
