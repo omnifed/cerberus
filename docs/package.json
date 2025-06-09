@@ -31,7 +31,7 @@
     "@next/mdx": "^15.3.3",
     "@pandacss/dev": "^0.53.7",
     "@pandacss/types": "^0.53.7",
-    "@shikijs/rehype": "^3.4.2",
+    "@shikijs/rehype": "^3.6.0",
     "@types/node": "^22.15.21",
     "@types/react": "19.1.6",
     "@types/react-dom": "19.1.5",
