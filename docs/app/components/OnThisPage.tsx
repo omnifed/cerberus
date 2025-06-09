@@ -5,6 +5,7 @@ import { css } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
 import Link, { type LinkProps } from 'next/link'
 import { useLayoutEffect, useRef, useState } from 'react'
+import { Box } from '@/styled-system/jsx'
 
 interface OverrideHeading {
   href: string
@@ -48,14 +49,7 @@ export default function OnThisPage() {
   }, [])
 
   return (
-    <div
-      className={css({
-        borderLeft: '1px solid',
-        borderColor: 'page.border.initial',
-        h: 'fit-content',
-        paddingInlineStart: '6',
-      })}
-    >
+    <Box h="fit-content" px="md" w="full">
       <p
         className={css({
           color: 'page.text.100',
@@ -101,6 +95,6 @@ export default function OnThisPage() {
           </li>
         ))}
       </ul>
-    </div>
+    </Box>
   )
 }

@@ -31,15 +31,15 @@
     "@next/mdx": "^15.3.3",
     "@pandacss/dev": "^0.53.7",
     "@pandacss/types": "^0.53.7",
-    "@shikijs/rehype": "^3.4.2",
-    "@types/node": "^22.15.21",
+    "@shikijs/rehype": "^3.6.0",
+    "@types/node": "^22.15.30",
     "@types/react": "19.1.6",
-    "@types/react-dom": "19.1.5",
+    "@types/react-dom": "19.1.6",
     "@vercel/analytics": "^1.5.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^8",
     "eslint-config-next": "15.3.3",
-    "eslint-import-resolver-typescript": "^4.4.2",
+    "eslint-import-resolver-typescript": "^4.4.3",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-expressive-code": "^0.41.2",
     "rehype-slug": "^6.0.0",
@@ -49,6 +49,6 @@
     "remark-gfm": "^4.0.1",
     "remark-mdx-frontmatter": "^5.1.0",
     "remark-parse": "^11.0.0",
-    "shiki": "^3.4.2"
+    "shiki": "^3.6.0"
   }
 }

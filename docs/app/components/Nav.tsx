@@ -131,6 +131,7 @@ export function Nav() {
           bgColor: 'page.backdrop.initial',
         },
         md: {
+          gridTemplateColumns: '3.25rem 1fr 1fr',
           gridTemplateRows: '1fr',
           h: '3.75rem',
           pxi: '6',
@@ -158,18 +159,12 @@ export function Nav() {
             border: '1px solid',
             borderColor: PAGE_BORDER_INITIAL,
             listStyle: 'none',
-            gap: '0',
+            gap: '1px',
             w: 'full',
-            '& li:nth-child(2)': {
-              borderColor: PAGE_BORDER_INITIAL,
-              borderLeft: '1px solid',
-              borderRight: '1px solid',
-              md: {
-                border: 'none',
-              },
-            },
             md: {
               border: 'none',
+              gap: 'initial',
+              px: 'lg',
               w: 'auto',
             },
           })}
@@ -179,7 +174,10 @@ export function Nav() {
               className={css({
                 overflow: 'hidden',
                 textAlign: 'center',
-                w: 'calc(100% / 3)',
+                w: {
+                  base: '1/2',
+                  md: 'auto',
+                },
               })}
               key={item.id}
             >
@@ -187,7 +185,9 @@ export function Nav() {
                 aria-current={pathname.includes(item.href) ? 'page' : undefined}
                 className={css({
                   display: INLINE_BLOCK,
-                  p: '4',
+                  fontSize: 'sm',
+                  px: 'lg',
+                  py: 'md',
                   transition: 'color 250ms ease-in-out',
                   w: 'full',
                   _hover: {
@@ -233,9 +233,9 @@ export function Nav() {
             <p
               className={css({
                 color: 'page.text.100',
+                fontSize: 'sm',
                 h: '1.5rem',
                 pt: '1px',
-                textStyle: 'body-xs',
               })}
             >
               {version}
@@ -245,7 +245,7 @@ export function Nav() {
           {navGHLogoContent}
 
           <li>
-            <Tooltip content={ariaLabel} asChild>
+            <Tooltip content={ariaLabel}>
               <IconButton
                 ariaLabel={ariaLabel}
                 onClick={handleUpdateMode}
