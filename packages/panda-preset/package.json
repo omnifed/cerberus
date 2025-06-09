@@ -19,7 +19,7 @@
     "postcss": "*"
   },
   "devDependencies": {
-    "@ark-ui/react": "^5.9.2",
+    "@ark-ui/react": "^5.13.0",
     "@cerberus-design/configs": "workspace:*",
     "@pandacss/dev": "^0.53.7",
     "@pandacss/types": "^0.53.7"
