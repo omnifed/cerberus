@@ -14,7 +14,7 @@ export function GetStartedLayout(props: PropsWithChildren<object>) {
       justify="space-between"
       py={{
         base: '8rem',
-        md: 'xl',
+        md: 'md',
       }}
       w="full"
     >

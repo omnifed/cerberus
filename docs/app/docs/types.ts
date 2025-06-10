@@ -20,6 +20,7 @@ export interface DocPage {
   label: string
   slug: string
   href: string
+  frontmatter?: DocFrontmatter | Record<string, unknown>
   meta: {
     title: string
     description: string
@@ -30,7 +31,9 @@ export interface DocPage {
 export interface DocFrontmatter {
   title: string
   description: string
-  date?: string
-  author?: string
-  tags?: string[]
+  ark?: string
+  npm?: string
+  recipe?: string
+  source?: string
+  panda?: string
 }

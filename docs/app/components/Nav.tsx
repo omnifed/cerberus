@@ -131,7 +131,11 @@ export function Nav() {
           gridTemplateColumns: '3.25rem 1fr 1fr',
           gridTemplateRows: '1fr',
           h: '3.75rem',
+          left: 'md',
           pxi: '6',
+          position: 'sticky',
+          w: 'calc(100% - 2rem)',
+          zIndex: 'sticky',
         },
       })}
     >

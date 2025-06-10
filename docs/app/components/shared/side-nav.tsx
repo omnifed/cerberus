@@ -13,9 +13,7 @@ export function SideNav() {
   return (
     <VStack
       alignItems="flex-start"
-      bgColor="page.surface.100"
       gap="md"
-      h="full"
       minW="12.875rem"
       px="sm"
       py="xl"

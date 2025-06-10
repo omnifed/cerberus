@@ -21,7 +21,6 @@ export function AppBar() {
 
   return (
     <VStack
-      bgColor="page.surface.100"
       borderRight="1px solid"
       borderColor="page.border.initial"
       gap="xl"

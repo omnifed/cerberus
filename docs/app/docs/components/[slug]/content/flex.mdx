@@ -1,0 +1,166 @@
+---
+title: Flex
+description: Used to manage flex layouts as an alternative to HStack and VStack.
+panda: https://panda-css.com/docs/concepts/patterns#flex
+---
+
+```tsx
+import { Flex, Box } from "styled-system/jsx";
+
+const Demo = () => {
+  return (
+    <Flex>
+      <Box bgColor="page.surface.100" h="3rem" />
+      <Box bgColor="page.surface.100" h="3rem" />
+      <Box bgColor="page.surface.100" h="3rem" />
+    </Flex>
+  );
+};
+```
+
+## Usage
+
+```tsx
+import { Flex } from "styled-system/jsx";
+```
+
+```tsx
+<Flex>
+  <div />
+  <div />
+</Flex>
+```
+
+## Examples
+
+### Direction
+
+Use the `direction` or `flexDirection` prop to change the direction of the flex
+
+```tsx
+import { Flex } from "styled-system/jsx";
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+const Demo = () => {
+  return (
+    <Flex gap="4" direction="column">
+      <DecorativeBox height="10" />
+      <DecorativeBox height="10" />
+      <DecorativeBox height="10" />
+    </Flex>
+  )
+}
+```
+
+### Align
+
+Use the `align` or `alignItems` prop to align the children along the cross axis.
+
+```tsx
+import { Flex } from "styled-system/jsx";
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+const Demo = () => {
+  return (
+    <Flex gap="4" align="center">
+      <DecorativeBox height="10" />
+      <DecorativeBox height="10" />
+      <DecorativeBox height="10" />
+    </Flex>
+  )
+}
+```
+
+
+### Justify
+
+Use the `justify` or `justifyContent` prop to align the children along the main
+axis.
+
+```tsx
+import { Flex } from "styled-system/jsx";
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+const Demo = () => {
+  return (
+    <Flex gap="4" justify="space-between">
+      <DecorativeBox height="10" />
+      <DecorativeBox height="10" />
+      <DecorativeBox height="10" />
+    </Flex>
+  )
+}
+```
+
+### Order
+
+Use the `order` prop to change the order of the children.
+
+```tsx
+import { Flex } from "styled-system/jsx";
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+const Demo = () => {
+  return (
+    <Flex gap="4">
+      <DecorativeBox height="10" order={2} />
+      <DecorativeBox height="10" order={1} />
+      <DecorativeBox height="10" order={3} />
+    </Flex>
+  )
+}
+```
+
+### Auto Margin
+
+Apply margin to a flex item to push it away from its siblings.
+
+```tsx
+import { Flex } from "styled-system/jsx";
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+const Demo = () => {
+  return (
+    <Flex gap="4" justify="space-between">
+      <DecorativeBox height="10" width="40" />
+      <DecorativeBox height="10" width="40" marginEnd="auto" />
+      <DecorativeBox height="10" width="40" />
+    </Flex>
+  )
+}
+```
+
+### Wrap
+
+Use the `wrap` or `flexWrap` prop to wrap the children when they overflow the
+parent.
+
+```tsx
+import { Flex } from "styled-system/jsx";
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+const Demo = () => {
+  return (
+    <Flex gap="4" wrap="wrap" maxW="500px">
+      <DecorativeBox height="10" width="200px" />
+      <DecorativeBox height="10" width="200px" />
+      <DecorativeBox height="10" width="200px" />
+    </Flex>
+  )
+}
+```
+
+## Props
+
+The `Flex` component accepts any CSS properties and the following props:
+
+| Prop        | Type         | Description                                    |
+|-------------|--------------|------------------------------------------------|
+| `align`     | `SystemStyleObject['alignItems']` | The alignment of the children along the cross axis. |
+| `direction` | `SystemStyleObject['flexDirection']` | The flex direction. |
+| `justify`   | `SystemStyleObject['justifyContent']` | The alignment of the children along the main axis. |
+| `wrap`      | `SystemStyleObject['flexWrap']` | The wrapping behavior of the children. |
+| `basis`     | `SystemStyleObject['flexBasis']` | The flex behavior of the children. |
+| `grow`      | `SystemStyleObject['flexGrow']` | The flex grow behavior of the children. |
+| `shrink`    | `SystemStyleObject['flexShrink']` | The flex shrink behavior of the children. |
+| `inline`    | `boolean`   | If true, the flex container will be displayed as `inline-flex`. |

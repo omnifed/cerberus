@@ -1,6 +1,10 @@
-import Installation from './installation.mdx'
-import Faq from './faq.mdx'
-import Contributing from './contributing.mdx'
+import Installation, {
+  frontmatter as installationFrontmatter,
+} from './installation.mdx'
+import Faq, { frontmatter as faqFrontmatter } from './faq.mdx'
+import Contributing, {
+  frontmatter as contributingFrontmatter,
+} from './contributing.mdx'
 
 export const items = [
   {
@@ -12,6 +16,7 @@ export const items = [
     id: '1.2',
     label: 'Installation',
     slug: 'installation',
+    frontmatter: installationFrontmatter,
     href: '/docs/get-started/installation',
     meta: {
       title: 'Installation Guide for Cerberus Design System',
@@ -25,6 +30,7 @@ export const items = [
     label: 'FAQ',
     slug: 'faq',
     href: '/docs/get-started/faq',
+    frontmatter: faqFrontmatter,
     meta: {
       title: 'Frequently Asked Questions about Cerberus Design System',
       description:
@@ -36,6 +42,7 @@ export const items = [
     id: '1.4',
     label: 'Contributing',
     slug: 'contributing',
+    frontmatter: contributingFrontmatter,
     href: '/docs/get-started/contributing',
     meta: {
       title: 'Contributing to Cerberus Design System',

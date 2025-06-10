@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack } from '@/styled-system/jsx'
+import { Grid, GridItem, HStack, Scrollable } from '@/styled-system/jsx'
 import type { PropsWithChildren } from 'react'
 import type { Metadata } from 'next'
 import { SideNav } from '../components/shared/side-nav'
@@ -17,24 +17,28 @@ export default function DocsLayout(props: PropsWithChildren<RouteProps>) {
       }}
       gridTemplateColumns={{
         base: '1fr',
-        md: '19.5rem 3fr',
+        md: '1fr 3fr',
       }}
       h="calc(100dvh - var(--nav-height))"
-      mt="var(--nav-height)"
       overflow="hidden"
+      pt="md"
     >
-      <GridItem h="full" p="md" pt="xl" w="fit-content">
+      <GridItem h="calc(100% - 1rem)" p="md" w="fit-content">
         <HStack
+          bgColor="page.surface.100"
           border="1px solid"
           borderColor="page.border.initial"
           gap="0"
-          h="calc(100% - 2rem)"
+          h="full"
+          maxH="full"
           overflow="hidden"
           rounded="lg"
           w="full"
         >
           <AppBar />
-          <SideNav />
+          <Scrollable h="full">
+            <SideNav />
+          </Scrollable>
         </HStack>
       </GridItem>
 

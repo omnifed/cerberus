@@ -1,0 +1,66 @@
+---
+title: Container
+description:
+  Used to constrain a content's width to the current breakpoint, while keeping
+  it fluid.
+panda: https://panda-css.com/docs/concepts/patterns#container
+---
+
+```tsx
+import { Container } from "styled-system/jsx";
+
+const Demo = () => {
+  return (
+    <Container>
+      <div>This is the Container</div>
+    </Container>
+  );
+};
+```
+
+
+## Usage
+
+The default `maxWidth` is `8xl` which maps to `90rem (1440px)`.
+
+```tsx
+import { Container } from "styled-system/jsx";
+```
+
+```tsx
+<Container>
+  <div />
+</Container>
+```
+
+## Examples
+
+### Sizes
+
+Use the `maxWidth` prop to change the size of the container.
+
+```tsx
+import { Container, VStack } from "styled-system/jsx"
+import { For } from '@cerberus/react'
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+const Demo = () => {
+  return (
+    <VStack>
+      <For each={["sm", "md", "xl", "2xl"]}>
+        {(size) => (
+          <Container key={size} maxW={size} px="2">
+            <DecorativeBox>
+              This is some text within a container of size {size}. It will be be contained based on the maxWidth prop.
+            </DecorativeBox>
+          </Container>
+        )}
+      </For>
+    </VStack>
+  )
+}
+```
+
+## Props
+
+The `Container` component accepts any CSS properties.

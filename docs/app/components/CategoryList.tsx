@@ -12,15 +12,15 @@ export default function CategoryList(props: CategoryListProps) {
   return (
     <div>
       <header>
-        <p
+        <h3
           className={css({
             color: 'page.text.initial',
             pb: '2',
-            textStyle: 'h2',
+            textStyle: 'heading-md',
           })}
         >
           {data.name}
-        </p>
+        </h3>
         <p
           className={css({
             textStyle: 'body-lg',
