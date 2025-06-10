@@ -23,8 +23,16 @@ export default function DocsLayout(props: PropsWithChildren<RouteProps>) {
       mt="var(--nav-height)"
       overflow="hidden"
     >
-      <GridItem>
-        <HStack gap="0" h="full" w="full">
+      <GridItem h="full" p="md" pt="xl" w="fit-content">
+        <HStack
+          border="1px solid"
+          borderColor="page.border.initial"
+          gap="0"
+          h="calc(100% - 2rem)"
+          overflow="hidden"
+          rounded="lg"
+          w="full"
+        >
           <AppBar />
           <SideNav />
         </HStack>

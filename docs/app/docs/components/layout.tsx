@@ -14,11 +14,11 @@ export function GetStartedLayout(props: PropsWithChildren<object>) {
       justify="space-between"
       py={{
         base: '8rem',
-        md: 'initial',
+        md: 'xl',
       }}
       w="full"
     >
-      <Scrollable h="calc(100dvh - var(--nav-height))">
+      <Scrollable h="calc(100dvh - var(--nav-height) - 2rem)">
         <Container maxW="88ch">{props.children}</Container>
       </Scrollable>
 

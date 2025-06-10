@@ -3,9 +3,9 @@
 import Link, { type LinkProps } from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { PropsWithChildren, ReactNode } from 'react'
-import { VStack } from '@/styled-system/jsx'
+import { HStack, VStack } from '@/styled-system/jsx'
 import { Text } from '@cerberus-design/react'
-import { css } from '@/styled-system/css'
+import { css, cx } from '@/styled-system/css'
 
 interface LinkItemProps {
   href: string
@@ -24,31 +24,48 @@ export function LinkItem(props: PropsWithChildren<LinkItemProps>) {
       aria-current={isCurrentPage() ? 'page' : undefined}
       href={props.href as LinkProps<string>['href']}
       prefetch
-      className={css({
-        color: 'action.navigation.initial',
-        h: '3.75rem',
-        py: 'sm',
-        rounded: 'md',
-        transitionProperty: 'background-color,color',
-        transitionDuration: 'fast',
-        w: 'full',
-        _hover: {
-          bgColor: 'page.bg.100/55',
-          color: 'action.navigation.hover',
-        },
-        _currentPage: {
-          bgColor: 'page.bg.100',
-          color: 'action.navigation.visited',
+      className={cx(
+        'group',
+        css({
+          color: 'page.text.200',
+          h: '3.75rem',
+          py: 'sm',
+          rounded: 'md',
+          transitionProperty: 'background-color,color',
+          transitionDuration: 'fast',
+          w: 'full',
           _hover: {
-            bgColor: 'page.bg.100',
-            color: 'action.navigation.visited',
+            color: 'action.text.inverse',
           },
-        },
-      })}
+          _currentPage: {
+            color: 'page.text.300',
+            _hover: {
+              color: 'page.text.200',
+            },
+          },
+        }),
+      )}
     >
       <VStack color="inherit" gap="1">
-        {props.icon}
-        <Text as="small" fontSize="0.75rem">
+        <HStack
+          justify="center"
+          p="sm"
+          transitionProperty="background-color,color"
+          transitionDuration="fast"
+          rounded="xl"
+          w="3rem"
+          _groupHover={{
+            bgColor: 'action.ghost.hover',
+          }}
+          css={{
+            '.group:is([aria-current=page]) &': {
+              bgColor: 'action.ghost.active',
+            },
+          }}
+        >
+          {props.icon}
+        </HStack>
+        <Text as="small" color="inherit" fontSize="0.75rem">
           {props.children}
         </Text>
       </VStack>

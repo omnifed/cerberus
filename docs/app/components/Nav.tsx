@@ -114,22 +114,19 @@ export function Nav() {
   return (
     <nav
       className={grid({
-        backdropFilter: 'blur(20px)',
-        backdropBlur: 'md',
+        bgColor: 'page.surface.100',
+        border: '1px solid',
+        borderColor: PAGE_BORDER_INITIAL,
         alignItems: 'center',
         columns: 3,
         gridTemplateRows: '1fr 1fr',
         gap: '0',
+        left: '1rem',
         position: 'fixed',
-        top: '0',
-        w: 'full',
+        rounded: 'lg',
+        right: '1rem',
+        top: '1rem',
         zIndex: 'banner',
-        _lightMode: {
-          bgColor: 'rgba(255, 255, 255, 0.3)',
-        },
-        _darkMode: {
-          bgColor: 'page.backdrop.initial',
-        },
         md: {
           gridTemplateColumns: '3.25rem 1fr 1fr',
           gridTemplateRows: '1fr',

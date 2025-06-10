@@ -1,6 +1,8 @@
 // 'use client'
 
 import Installation from './installation.mdx'
+import Faq from './faq.mdx'
+import Contributing from './contributing.mdx'
 
 export const items = [
   {
@@ -30,6 +32,18 @@ export const items = [
       description:
         'Find answers to common questions about the Cerberus Design System, including usage, components, and theming.',
     },
-    Content: () => null,
+    Content: Faq,
+  },
+  {
+    id: '1.4',
+    label: 'Contributing',
+    slug: 'contributing',
+    href: '/docs/get-started/contributing',
+    meta: {
+      title: 'Contributing to Cerberus Design System',
+      description:
+        'Learn how to contribute to the Cerberus Design System, including guidelines for code contributions, documentation, and more.',
+    },
+    Content: Contributing,
   },
 ]

@@ -22,7 +22,7 @@ export function SideNavLinkItem(props: PropsWithChildren<LinkItemProps>) {
       href={props.href as LinkProps<string>['href']}
       prefetch
       className={css({
-        color: 'page.text.initial',
+        color: 'page.text.200',
         p: 'sm',
         rounded: 'sm',
         textStyle: 'label-sm',
@@ -31,14 +31,15 @@ export function SideNavLinkItem(props: PropsWithChildren<LinkItemProps>) {
         w: 'full',
         _hover: {
           bgColor: 'action.ghost.hover',
-          color: 'action.navigation.hover',
+          color: 'action.text.inverse',
         },
         _currentPage: {
-          color: 'action.navigation.visited',
+          bgColor: 'action.ghost.active',
+          color: 'action.text.inverse',
           _hover: {
             '&:is([aria-current="page"])': {
-              bgColor: 'transparent',
-              color: 'action.navigation.visited',
+              bgColor: 'action.ghost.active',
+              color: 'action.text.inverse',
               cursor: 'default',
             },
           },

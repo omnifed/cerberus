@@ -18,7 +18,7 @@ export function SideNav() {
       h="full"
       minW="12.875rem"
       px="sm"
-      py="lg"
+      py="xl"
       w="full"
     >
       <For each={getDocPageNavItems(section)}>
@@ -27,7 +27,7 @@ export function SideNav() {
             key={item.id}
             when={item.href}
             fallback={
-              <Text px="sm" textStyle="heading-xs">
+              <Text color="page.text.100" px="sm" textStyle="heading-2xs">
                 {item.label}
               </Text>
             }

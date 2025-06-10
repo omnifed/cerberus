@@ -6,6 +6,7 @@ import { vstack } from 'styled-system/patterns'
 import Link, { type LinkProps } from 'next/link'
 import { useLayoutEffect, useRef, useState } from 'react'
 import { Box } from '@/styled-system/jsx'
+import { usePathname } from 'next/navigation'
 
 interface OverrideHeading {
   href: string
@@ -24,29 +25,45 @@ interface HeadingLink {
 }
 
 export default function OnThisPage() {
-  const hasRendered = useRef<boolean>(false)
+  const pathname = usePathname()
+  const prevPathname = useRef<string | null>(null)
   const [links, setLinks] = useState<HeadingLink[]>([])
 
   useLayoutEffect(() => {
-    if (hasRendered.current) return
-    const nodeList = document.querySelectorAll('a.heading')
+    if (pathname) {
+      // Check if the pathname has changed
+      if (prevPathname.current === pathname) {
+        return
+      }
 
-    for (let i = 0; i < nodeList.length; i++) {
-      const heading = nodeList[i]
-      const overrideHeading = heading as unknown as OverrideHeading
-      const attributes = heading.attributes as unknown as NodeOverride
-      setLinks((prevLinks) => [
-        ...prevLinks,
-        {
-          id: attributes.href.nodeValue ?? '#',
-          label: heading.textContent ?? '',
-          path: overrideHeading.href,
-        },
-      ])
+      // Update the previous pathname
+      prevPathname.current = pathname
+      // Clear the existing links
+      setLinks([])
+
+      // Find all headings with the class 'heading' in the document
+      // and extract their href attributes and text content
+      // This assumes that the headings are rendered in the document
+      // and have the class 'heading' applied to them.
+      // Note: This will only work if the headings are rendered in the document
+      // and not in a separate component that is not mounted yet.
+      const nodeList = document.querySelectorAll('a.heading')
+
+      for (let i = 0; i < nodeList.length; i++) {
+        const heading = nodeList[i]
+        const overrideHeading = heading as unknown as OverrideHeading
+        const attributes = heading.attributes as unknown as NodeOverride
+        setLinks((prevLinks) => [
+          ...prevLinks,
+          {
+            id: attributes.href.nodeValue ?? '#',
+            label: heading.textContent ?? '',
+            path: overrideHeading.href,
+          },
+        ])
+      }
     }
-
-    hasRendered.current = true
-  }, [])
+  }, [pathname])
 
   return (
     <Box h="fit-content" px="md" w="full">
