@@ -1,5 +1,6 @@
 import type { DocConfig, DocPage } from './types'
 import { items as getStartedItems } from './get-started/[slug]/content/items'
+import { items as componentsItems } from './components/[slug]/content/items'
 
 export const config: DocConfig = {
   meta: {
@@ -31,7 +32,7 @@ export const config: DocConfig = {
         description:
           'Explore the various components available in the Cerberus Design System and how to use them.',
       },
-      items: [],
+      items: componentsItems as DocPage[],
     },
     {
       id: '3',

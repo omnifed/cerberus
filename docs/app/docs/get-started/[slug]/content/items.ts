@@ -1,5 +1,3 @@
-// 'use client'
-
 import Installation from './installation.mdx'
 import Faq from './faq.mdx'
 import Contributing from './contributing.mdx'

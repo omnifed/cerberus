@@ -54,6 +54,7 @@ export function getDocPageData(
   }
 
   const slugItem = groupItems.items.find((item) => item.slug === slug)
+
   if (!slugItem) {
     throw new Error(`No items found for slug: ${slug}`)
   }
