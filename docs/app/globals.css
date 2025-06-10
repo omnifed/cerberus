@@ -7,6 +7,12 @@
   color: var(--cerberus-colors-page-text-inverse);
 }
 
+/* Code blocks */
+
+div.expressive-code {
+  padding-bottom: var(--cerberus-spacing-lg);
+}
+
 /* Skiki CSS for React Code elements (i.e. not markdown) */
 
 .shiki {
