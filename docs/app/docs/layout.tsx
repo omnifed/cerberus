@@ -3,7 +3,7 @@ import type { PropsWithChildren } from 'react'
 import type { Metadata } from 'next'
 import { SideNav } from '../components/shared/side-nav'
 import { getDocsMetadata } from './utils/helpers.server'
-import { AppBar, GetStartedLayout } from './components'
+import { AppBar, GetStartedLayout } from './shared'
 import type { RouteProps } from '../types'
 
 export const metadata: Metadata = getDocsMetadata()
