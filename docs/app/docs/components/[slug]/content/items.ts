@@ -45,12 +45,16 @@ import FileUploader, {
 import IconButton, {
   frontmatter as iconButtonFrontmatter,
 } from './icon-button.mdx'
+import Input, { frontmatter as inputFrontmatter } from './input.mdx'
 
 // Utilities
 import FeatureFlags, {
   frontmatter as featureFlagsFrontmatter,
 } from './feature-flags.mdx'
 import For, { frontmatter as forFrontmatter } from './for.mdx'
+import LocalStorageDocs, {
+  frontmatter as localStorageFrontmatter,
+} from './local-storage.mdx'
 
 export const items = [
   {
@@ -444,6 +448,19 @@ export const items = [
     Content: IconButton,
   },
   {
+    id: '1.3.15',
+    label: 'Input',
+    slug: 'input',
+    href: '/docs/components/input',
+    frontmatter: inputFrontmatter,
+    meta: {
+      title: 'Input Component in Cerberus Design System',
+      description:
+        'Learn how to use the Input component in the Cerberus Design System for text input fields.',
+    },
+    Content: Input,
+  },
+  {
     id: '1.4',
     label: 'Utilities',
     href: '',
@@ -473,5 +490,18 @@ export const items = [
         'Discover how to use the For component in the Cerberus Design System for rendering lists and collections.',
     },
     Content: For,
+  },
+  {
+    id: '1.4.3',
+    label: 'Local Storage',
+    slug: 'local-storage',
+    href: '/docs/components/local-storage',
+    frontmatter: localStorageFrontmatter,
+    meta: {
+      title: 'Local Storage in Cerberus Design System',
+      description:
+        'Learn how to use local storage in the Cerberus Design System for persisting data across sessions.',
+    },
+    Content: LocalStorageDocs,
   },
 ]
