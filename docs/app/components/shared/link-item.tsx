@@ -13,7 +13,8 @@ export function SideNavLinkItem(props: PropsWithChildren<LinkItemProps>) {
   const pathname = usePathname()
 
   function isCurrentPage(): boolean {
-    return props.href.includes(pathname) || pathname.includes(props.href)
+    const component = pathname.split('/')[3] || ''
+    return props.href === component
   }
 
   return (

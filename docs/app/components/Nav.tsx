@@ -113,6 +113,7 @@ export function Nav() {
 
   return (
     <nav
+      data-placement="bottom"
       className={grid({
         bgColor: 'page.surface.100',
         border: '1px solid',
@@ -122,6 +123,7 @@ export function Nav() {
         gridTemplateRows: '1fr 1fr',
         gap: '0',
         left: '1rem',
+        opacity: 0,
         position: 'fixed',
         rounded: 'lg',
         right: '1rem',
@@ -134,6 +136,16 @@ export function Nav() {
           left: 'md',
           pxi: '6',
           w: 'calc(100% - 2rem)',
+          _motionSafe: {
+            animationStyle: 'slide-fade-in',
+            animationDuration: 'slowest',
+            animationDelay: '800ms',
+            animationFillMode: 'forwards',
+          },
+          _motionReduce: {
+            animation: 'none',
+            opacity: 1,
+          },
         },
       })}
     >

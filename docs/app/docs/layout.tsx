@@ -37,14 +37,26 @@ export default function DocsLayout(props: PropsWithChildren<RouteProps>) {
         w="full"
       >
         <HStack
+          data-placement="right"
           bgColor="page.surface.100"
           border="1px solid"
           borderColor="page.border.initial"
           gap="0"
           h="full"
           overflow="hidden"
+          opacity="0"
           rounded="lg"
           w="full"
+          _motionSafe={{
+            animationStyle: 'slide-fade-in',
+            animationDuration: 'slowest',
+            animationDelay: '300ms',
+            animationFillMode: 'forwards',
+          }}
+          _motionReduce={{
+            animation: 'none',
+            opacity: 1,
+          }}
         >
           <AppBar />
           <Scrollable h="full">

@@ -21,7 +21,14 @@ import Stack, { frontmatter as stackFrontmatter } from './stack.mdx'
 import Wrap, { frontmatter as wrapFrontmatter } from './wrap.mdx'
 
 // Components
-// import Button from './button.mdx'
+import Accordion, { frontmatter as accordionFrontmatter } from './accordion.mdx'
+import Admonition, {
+  frontmatter as admonitionFrontmatter,
+} from './admonition.mdx'
+import Avatar, { frontmatter as avatarFrontmatter } from './avatar.mdx'
+import Button, { frontmatter as buttonFrontmatter } from './button.mdx'
+import Checkbox, { frontmatter as checkboxFrontmatter } from './checkbox.mdx'
+import Combobox, { frontmatter as comboboxFrontmatter } from './combobox.mdx'
 
 export const items = [
   {
@@ -234,14 +241,80 @@ export const items = [
   },
   {
     id: '1.3.1',
+    label: 'Accordion',
+    slug: 'accordion',
+    href: '/docs/components/accordion',
+    frontmatter: accordionFrontmatter,
+    meta: {
+      title: 'Accordion Component in Cerberus Design System',
+      description:
+        'Discover how to use the Accordion component in the Cerberus Design System for collapsible content sections.',
+    },
+    Content: Accordion,
+  },
+  {
+    id: '1.3.3',
+    label: 'Admonition',
+    slug: 'admonition',
+    href: '/docs/components/admonition',
+    frontmatter: admonitionFrontmatter,
+    meta: {
+      title: 'Admonition Component in Cerberus Design System',
+      description:
+        'Explore the Admonition component in the Cerberus Design System for displaying important messages and alerts.',
+    },
+    Content: Admonition,
+  },
+  {
+    id: '1.3.4',
+    label: 'Avatar',
+    slug: 'avatar',
+    href: '/docs/components/avatar',
+    frontmatter: avatarFrontmatter,
+    meta: {
+      title: 'Avatar Component in Cerberus Design System',
+      description:
+        'Discover how to use the Avatar component in the Cerberus Design System for displaying user profile images.',
+    },
+    Content: Avatar,
+  },
+  {
+    id: '1.3.2',
     label: 'Button',
     slug: 'button',
     href: '/docs/components/button',
+    frontmatter: buttonFrontmatter,
     meta: {
       title: 'Button Component in Cerberus Design System',
       description:
         'Learn how to use the Button component in the Cerberus Design System, including its properties and examples.',
     },
-    Content: () => null,
+    Content: Button,
+  },
+  {
+    id: '1.3.5',
+    label: 'Checkbox',
+    slug: 'checkbox',
+    href: '/docs/components/checkbox',
+    frontmatter: checkboxFrontmatter,
+    meta: {
+      title: 'Checkbox Component in Cerberus Design System',
+      description:
+        'Explore the Checkbox component in the Cerberus Design System for creating interactive checkboxes.',
+    },
+    Content: Checkbox,
+  },
+  {
+    id: '1.3.6',
+    label: 'Combobox',
+    slug: 'combobox',
+    href: '/docs/components/combobox',
+    frontmatter: comboboxFrontmatter,
+    meta: {
+      title: 'Combobox Component in Cerberus Design System',
+      description:
+        'Learn how to use the Combobox component in the Cerberus Design System for creating searchable dropdowns.',
+    },
+    Content: Combobox,
   },
 ]
