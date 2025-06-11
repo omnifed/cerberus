@@ -29,6 +29,10 @@ import Avatar, { frontmatter as avatarFrontmatter } from './avatar.mdx'
 import Button, { frontmatter as buttonFrontmatter } from './button.mdx'
 import Checkbox, { frontmatter as checkboxFrontmatter } from './checkbox.mdx'
 import Combobox, { frontmatter as comboboxFrontmatter } from './combobox.mdx'
+import ConfirmModal, {
+  frontmatter as confirmModalFrontmatter,
+} from './confirm-modal.mdx'
+import CTAModal, { frontmatter as ctaModalFrontmatter } from './cta-modal.mdx'
 
 export const items = [
   {
@@ -316,5 +320,36 @@ export const items = [
         'Learn how to use the Combobox component in the Cerberus Design System for creating searchable dropdowns.',
     },
     Content: Combobox,
+  },
+  {
+    id: '1.3.7',
+    label: 'Confirm Modal',
+    slug: 'confirm-modal',
+    href: '/docs/components/confirm-modal',
+    frontmatter: confirmModalFrontmatter,
+    meta: {
+      title: 'Confirm Modal Component in Cerberus Design System',
+      description:
+        'Discover how to use the Confirm Modal component in the Cerberus Design System for confirmation dialogs.',
+    },
+    Content: ConfirmModal,
+  },
+  {
+    id: '1.3.8',
+    label: 'CTAModal',
+    slug: 'cta-modal',
+    href: '/docs/components/cta-modal',
+    frontmatter: ctaModalFrontmatter,
+    meta: {
+      title: 'CTAModal Component in Cerberus Design System',
+      description:
+        'Learn how to use the CTAModal component in the Cerberus Design System for call-to-action modals.',
+    },
+    Content: CTAModal,
+  },
+  {
+    id: '1.4',
+    label: 'Utilities',
+    href: '',
   },
 ]

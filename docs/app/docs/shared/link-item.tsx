@@ -16,7 +16,8 @@ export function LinkItem(props: PropsWithChildren<LinkItemProps>) {
   const pathname = usePathname()
 
   function isCurrentPage(): boolean {
-    return props.href.includes(pathname) || pathname.includes(props.href)
+    const section = pathname.split('/')[2] || ''
+    return props.href.includes(section)
   }
 
   return (
