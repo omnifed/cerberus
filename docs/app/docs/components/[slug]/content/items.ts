@@ -39,11 +39,18 @@ import DatePicker, {
 import Dialog, { frontmatter as dialogFrontmatter } from './dialog.mdx'
 import Field, { frontmatter as fieldFrontmatter } from './field.mdx'
 import Fieldset, { frontmatter as fieldsetFrontmatter } from './fieldset.mdx'
+import FileUploader, {
+  frontmatter as fileUploaderFrontmatter,
+} from './file-uploader.mdx'
+import IconButton, {
+  frontmatter as iconButtonFrontmatter,
+} from './icon-button.mdx'
 
 // Utilities
 import FeatureFlags, {
   frontmatter as featureFlagsFrontmatter,
 } from './feature-flags.mdx'
+import For, { frontmatter as forFrontmatter } from './for.mdx'
 
 export const items = [
   {
@@ -411,6 +418,32 @@ export const items = [
     Content: Fieldset,
   },
   {
+    id: '1.3.13',
+    label: 'File Uploader',
+    slug: 'file-uploader',
+    href: '/docs/components/file-uploader',
+    frontmatter: fileUploaderFrontmatter,
+    meta: {
+      title: 'File Uploader Component in Cerberus Design System',
+      description:
+        'Learn how to use the File Uploader component in the Cerberus Design System for uploading files in forms.',
+    },
+    Content: FileUploader,
+  },
+  {
+    id: '1.3.14',
+    label: 'Icon Button',
+    slug: 'icon-button',
+    href: '/docs/components/icon-button',
+    frontmatter: iconButtonFrontmatter,
+    meta: {
+      title: 'Icon Button Component in Cerberus Design System',
+      description:
+        'Discover how to use the Icon Button component in the Cerberus Design System for clickable icons.',
+    },
+    Content: IconButton,
+  },
+  {
     id: '1.4',
     label: 'Utilities',
     href: '',
@@ -427,5 +460,18 @@ export const items = [
         'Learn how to use feature flags in the Cerberus Design System to control feature availability.',
     },
     Content: FeatureFlags,
+  },
+  {
+    id: '1.4.2',
+    label: 'For',
+    slug: 'for',
+    href: '/docs/components/for',
+    frontmatter: forFrontmatter,
+    meta: {
+      title: 'For Component in Cerberus Design System',
+      description:
+        'Discover how to use the For component in the Cerberus Design System for rendering lists and collections.',
+    },
+    Content: For,
   },
 ]

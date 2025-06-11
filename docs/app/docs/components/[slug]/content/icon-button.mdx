@@ -1,4 +1,6 @@
 ---
+title: 'IconButton'
+description: 'The IconButton component is a button that displays an icon.'
 npm: '@cerberus-design/react'
 source: 'components/IconButton.tsx'
 recipe: 'iconButton.ts'
@@ -11,7 +13,7 @@ import {
   SizesDemo,
   AsChildDemo,
   CustomButtonPreview,
-} from '@/app/react/icon-button/components/icon-button-preview'
+} from '../components/icon-button/static'
 
 ```ts
 import { IconButton } from '@cerberus/react'
@@ -50,24 +52,6 @@ function SizesDemo() {
         <Tuning />
       </IconButton>
     </HStack>
-  )
-}
-```
-</CodePreview>
-
-## As Child
-
-The `IconButton` component can be used as a child component. This is useful when you want to use the button styles on a different element.
-
-<CodePreview preview={<AsChildDemo />}>
-```tsx title="button-link.tsx"
-function ButtonLink() {
-  return (
-    <IconButton asChild>
-      <Link href="/react/icon-button">
-        <Tuning />
-      </Link>
-    </IconButton>
   )
 }
 ```

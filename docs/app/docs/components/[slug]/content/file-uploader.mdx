@@ -1,16 +1,14 @@
 ---
+title: File Uploader
+description: A component to allow users to upload files and display their status.
 npm: '@cerberus-design/react'
-source: 'components/Label.tsx'
-recipe: 'label.ts'
+source: 'components/FileUploader.tsx'
+recipe: 'slots/fileUploader.ts'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
-import {
-  LivePlaygroundWithCode
-} from '@/app/react/file-uploader/components/live-preview'
-import {
-  FileStatusLivePlaygroundWithCode
-} from '@/app/react/file-uploader/components/status-live-preview'
+import { BasicFileUploader } from '../components/file-uploader/static'
+import { UploadingCardsPreview } from '../components/file-uploader/file-status'
 
 ```ts
 import { FileUploader, FileStatus, processStatus } from '@cerberus/react'
@@ -20,13 +18,85 @@ import { FileUploader, FileStatus, processStatus } from '@cerberus/react'
 
 To allow users to upload files, use the `FileUploader` component.
 
-<LivePlaygroundWithCode />
+<CodePreview preview={<BasicFileUploader />}>
+```tsx title="file-uploader.tsx"
+import { FileUploader } from '@cerberus/react'
+
+export function BasicFileUploader() {
+  return (
+    <FileUploader
+      accept=".csv,.docx"
+      heading="Upload Files"
+      name="basic-example"
+    />
+  )
+}
+```
+</CodePreview>
 
 ## File Status
 
 If you choose to process the file, you can use the `FileStatus` component to display the status of the job.
 
-<FileStatusLivePlaygroundWithCode />
+<CodePreview preview={<UploadingCardsPreview />}>
+```tsx title="file-status.tsx"
+'use client'
+
+import {
+  FileStatus,
+  type FileStatusActions,
+  processStatus,
+} from '@cerberus/react'
+import { vstack } from 'styled-system/patterns'
+import { useCallback, type MouseEvent } from 'react'
+
+export function UploadingCardsPreview() {
+  const handleClick = useCallback(
+    (status: FileStatusActions, e: MouseEvent<HTMLButtonElement>) =>
+      console.log(status, e),
+    [],
+  )
+
+  return (
+    <div
+      className={vstack({
+        maxW: '36rem',
+        w: '3/4',
+      })}
+    >
+      <FileStatus
+        id="todo"
+        file="file.txt"
+        now={0}
+        onClick={handleClick}
+        status={processStatus.TODO}
+      />
+      <FileStatus
+        id="processing"
+        file="file.txt"
+        now={50}
+        onClick={handleClick}
+        status={processStatus.PROCESSING}
+      />
+      <FileStatus
+        id="done"
+        file="file.txt"
+        now={100}
+        onClick={handleClick}
+        status={processStatus.DONE}
+      />
+      <FileStatus
+        id="error"
+        file="file.txt"
+        now={0}
+        onClick={handleClick}
+        status={processStatus.ERROR}
+      />
+    </div>
+  )
+}
+```
+</CodePreview>
 
 ## Customizing
 
