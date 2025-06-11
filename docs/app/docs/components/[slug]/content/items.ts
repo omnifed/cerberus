@@ -33,6 +33,17 @@ import ConfirmModal, {
   frontmatter as confirmModalFrontmatter,
 } from './confirm-modal.mdx'
 import CTAModal, { frontmatter as ctaModalFrontmatter } from './cta-modal.mdx'
+import DatePicker, {
+  frontmatter as datePickerFrontmatter,
+} from './date-picker.mdx'
+import Dialog, { frontmatter as dialogFrontmatter } from './dialog.mdx'
+import Field, { frontmatter as fieldFrontmatter } from './field.mdx'
+import Fieldset, { frontmatter as fieldsetFrontmatter } from './fieldset.mdx'
+
+// Utilities
+import FeatureFlags, {
+  frontmatter as featureFlagsFrontmatter,
+} from './feature-flags.mdx'
 
 export const items = [
   {
@@ -348,8 +359,73 @@ export const items = [
     Content: CTAModal,
   },
   {
+    id: '1.3.9',
+    label: 'Date Picker',
+    slug: 'date-picker',
+    href: '/docs/components/date-picker',
+    frontmatter: datePickerFrontmatter,
+    meta: {
+      title: 'Date Picker Component in Cerberus Design System',
+      description:
+        'Explore the Date Picker component in the Cerberus Design System for selecting dates in forms.',
+    },
+    Content: DatePicker,
+  },
+  {
+    id: '1.3.10',
+    label: 'Dialog',
+    slug: 'dialog',
+    href: '/docs/components/dialog',
+    frontmatter: dialogFrontmatter,
+    meta: {
+      title: 'Dialog Component in Cerberus Design System',
+      description:
+        'Discover how to use the Dialog component in the Cerberus Design System for modal dialogs.',
+    },
+    Content: Dialog,
+  },
+  {
+    id: '1.3.11',
+    label: 'Field',
+    slug: 'field',
+    href: '/docs/components/field',
+    frontmatter: fieldFrontmatter,
+    meta: {
+      title: 'Field Component in Cerberus Design System',
+      description:
+        'Learn how to use the Field component in the Cerberus Design System for form fields and labels.',
+    },
+    Content: Field,
+  },
+  {
+    id: '1.3.12',
+    label: 'Fieldset',
+    slug: 'fieldset',
+    href: '/docs/components/fieldset',
+    frontmatter: fieldsetFrontmatter,
+    meta: {
+      title: 'Fieldset Component in Cerberus Design System',
+      description:
+        'Explore the Fieldset component in the Cerberus Design System for grouping form fields.',
+    },
+    Content: Fieldset,
+  },
+  {
     id: '1.4',
     label: 'Utilities',
     href: '',
+  },
+  {
+    id: '1.4.1',
+    label: 'Feature Flags',
+    slug: 'feature-flags',
+    href: '/docs/components/feature-flags',
+    frontmatter: featureFlagsFrontmatter,
+    meta: {
+      title: 'Feature Flags in Cerberus Design System',
+      description:
+        'Learn how to use feature flags in the Cerberus Design System to control feature availability.',
+    },
+    Content: FeatureFlags,
   },
 ]

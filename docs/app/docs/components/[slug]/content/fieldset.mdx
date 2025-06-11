@@ -1,4 +1,6 @@
 ---
+title: Fieldset
+description: The Fieldset component groups form fields together with a shared legend and helper/error text.
 npm: '@cerberus-design/react'
 source: 'components/fieldset'
 recipe: 'slots/fieldset.ts'
@@ -7,15 +9,16 @@ ark: 'fieldset'
 
 import CodePreview from '@/app/components/CodePreview'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import { BasicDemo, FieldsetGroupDemo, CustomDemo } from '@/app/react/fieldset/components/static-preview'
+import { BasicDemo, FieldsetGroupDemo, CustomDemo } from '../components/fieldset/static'
 
-The `Fieldset` component groups form fields together with a shared legend and helper/error text.
 
 ```ts
 import { Fieldset, FieldsetParts } from '@cerberus/react'
 ```
 
-## Form Section Example
+## Usage
+
+### Form Section Example
 
 The `Fieldset` component can be used to group related form elements together using the `usage` prop which can be either `formSection` or `fieldGroup` (default).
 
@@ -68,7 +71,7 @@ export function BasicDemo() {
 ```
 </CodePreview>
 
-## Field Group Example
+### Field Group Example
 
 When use need to label a group of Radio or Checkbox inputs, use the `usage` prop with the value `fieldGroup`.
 
