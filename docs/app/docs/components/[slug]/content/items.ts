@@ -46,6 +46,7 @@ import IconButton, {
   frontmatter as iconButtonFrontmatter,
 } from './icon-button.mdx'
 import Input, { frontmatter as inputFrontmatter } from './input.mdx'
+import Menu, { frontmatter as menuFrontmatter } from './menu.mdx'
 
 // Utilities
 import FeatureFlags, {
@@ -459,6 +460,19 @@ export const items = [
         'Learn how to use the Input component in the Cerberus Design System for text input fields.',
     },
     Content: Input,
+  },
+  {
+    id: '1.3.16',
+    label: 'Menu',
+    slug: 'menu',
+    href: '/docs/components/menu',
+    frontmatter: menuFrontmatter,
+    meta: {
+      title: 'Menu Component in Cerberus Design System',
+      description:
+        'Explore the Menu component in the Cerberus Design System for creating dropdown menus.',
+    },
+    Content: Menu,
   },
   {
     id: '1.4',
