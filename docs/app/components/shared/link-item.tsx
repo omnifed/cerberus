@@ -23,7 +23,9 @@ export function SideNavLinkItem(props: PropsWithChildren<LinkItemProps>) {
       prefetch
       className={css({
         color: 'page.text.200',
-        p: 'sm',
+        display: 'inline-flex',
+        px: 'sm',
+        py: '0.75rem',
         rounded: 'sm',
         textStyle: 'label-sm',
         transitionProperty: 'background-color,color',

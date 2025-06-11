@@ -3,7 +3,7 @@ import type { PropsWithChildren } from 'react'
 import type { Metadata } from 'next'
 import { SideNav } from '../components/shared/side-nav'
 import { getDocsMetadata } from './utils/helpers.server'
-import { AppBar, GetStartedLayout } from './shared'
+import { AppBar, DocsPageLayout } from './shared'
 import type { RouteProps } from '../types'
 
 export const metadata: Metadata = getDocsMetadata()
@@ -15,22 +15,33 @@ export default function DocsLayout(props: PropsWithChildren<RouteProps>) {
         base: 1,
         md: 2,
       }}
+      gridTemplateRows="var(--row-height) 1fr"
       gridTemplateColumns={{
         base: '1fr',
-        md: '1fr 3fr',
+        md: '22rem 3fr',
       }}
-      h="calc(100dvh - var(--nav-height))"
+      h="100dvh"
+      gap="0"
       overflow="hidden"
-      pt="md"
+      css={{
+        '--row-height': 'calc(var(--nav-height) + 1rem)',
+      }}
     >
-      <GridItem h="calc(100% - 1rem)" p="md" w="fit-content">
+      <GridItem
+        colSpan={1}
+        h="calc(100dvh - var(--row-height))"
+        pb="md"
+        pt="md"
+        pl="md"
+        rowStart={2}
+        w="full"
+      >
         <HStack
           bgColor="page.surface.100"
           border="1px solid"
           borderColor="page.border.initial"
           gap="0"
           h="full"
-          maxH="full"
           overflow="hidden"
           rounded="lg"
           w="full"
@@ -42,8 +53,13 @@ export default function DocsLayout(props: PropsWithChildren<RouteProps>) {
         </HStack>
       </GridItem>
 
-      <GridItem bgColor="page.surface.initial">
-        <GetStartedLayout>{props.children}</GetStartedLayout>
+      <GridItem
+        bgColor="page.surface.initial"
+        colStart={2}
+        h="full"
+        rowStart={2}
+      >
+        <DocsPageLayout>{props.children}</DocsPageLayout>
       </GridItem>
     </Grid>
   )

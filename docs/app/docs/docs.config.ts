@@ -14,7 +14,7 @@ export const config: DocConfig = {
       id: '1',
       slug: 'get-started',
       label: 'Get Started',
-      href: '/docs/get-started',
+      href: '/docs/get-started/installation',
       meta: {
         title: 'Get Started with Cerberus Design System',
         description:
@@ -26,7 +26,7 @@ export const config: DocConfig = {
       id: '2',
       slug: 'components',
       label: 'Components',
-      href: '/docs/components',
+      href: '/docs/components/overview',
       meta: {
         title: 'Components in Cerberus Design System',
         description:

@@ -87,7 +87,9 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
         >
           <CerberusConfig>
             <Nav />
-            <main role="main">{props.children}</main>
+            <main role="main" className={css({ h: 'full', w: 'full' })}>
+              {props.children}
+            </main>
           </CerberusConfig>
         </ThemeProvider>
 
