@@ -193,7 +193,11 @@ export function Nav() {
               key={item.id}
             >
               <Link
-                aria-current={pathname.includes(item.href) ? 'page' : undefined}
+                aria-current={
+                  pathname.includes(item.label.toLowerCase())
+                    ? 'page'
+                    : undefined
+                }
                 className={css({
                   display: INLINE_BLOCK,
                   fontSize: 'sm',

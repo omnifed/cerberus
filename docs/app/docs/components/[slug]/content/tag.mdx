@@ -1,4 +1,6 @@
 ---
+title: 'Tag'
+description: 'The Tag component is used to display labels or tags with various styles and functionalities.'
 npm: '@cerberus-design/react'
 source: 'components/Tag.tsx'
 recipe: 'tag.ts'
@@ -9,13 +11,14 @@ import {
   NoteAdmonition,
 } from '@/app/components/Admonition'
 import {
+  BasicTagPreview,
   WithIconTagPreview,
   CustomTagPreview
-} from '@/app/react/tag/components/tag-preview'
+} from '../components/tag/static'
 import {
   ClosableTagPreview,
-} from '@/app/react/tag/components/closable-tag-preview'
-import { LivePlaygroundWithCode } from '@/app/react/tag/components/live-playground'
+} from '../components/tag/closable-tag'
+
 
 ```ts
 import { Tag } from '@cerberus/react'
@@ -25,7 +28,16 @@ import { Tag } from '@cerberus/react'
 
 You can mix and match all of the examples to create the tag style of your choosing.
 
-<LivePlaygroundWithCode />
+<CodePreview preview={<BasicTagPreview />}>
+```tsx title="tag.tsx"
+import { Tag } from '@cerberus/react'
+
+export function BasicTagPreview() {
+  return <Tag>Filled</Tag>
+}
+```
+</CodePreview>
+
 
 ### With Icon
 
@@ -75,19 +87,14 @@ You can customize the tag by utilizing the `cx` function.
 import { Tag } from '@cerberus/react'
 import { css } from 'styled-system/css'
 
-function CustomTagPreview() {
+export function CustomTagPreview() {
   return (
     <Tag
       className={css({
-        bgColor: 'yellow',
-        color: 'black',
-        _hover: {
-          bgColor: 'black',
-          color: 'yellow',
-        },
+        colorPalette: 'danger',
       })}
     >
-      Wu-Tang Forever
+      Cerberus Forever
     </Tag>
   )
 }

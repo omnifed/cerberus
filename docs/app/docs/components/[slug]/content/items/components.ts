@@ -36,6 +36,10 @@ import PromptModal, {
 import Radio, { frontmatter as radioFrontmatter } from '../radio.mdx'
 import Rating, { frontmatter as ratingFrontmatter } from '../rating.mdx'
 import Select, { frontmatter as selectFrontmatter } from '../select.mdx'
+import Switch, { frontmatter as switchFrontmatter } from '../switch.mdx'
+import Table, { frontmatter as tableFrontmatter } from '../table.mdx'
+import Tabs, { frontmatter as tabsFrontmatter } from '../tabs.mdx'
+import Tag, { frontmatter as tagFrontmatter } from '../tag.mdx'
 
 export const components = [
   {
@@ -328,5 +332,57 @@ export const components = [
         'Explore the Select component in the Cerberus Design System for creating dropdown selections.',
     },
     Content: Select,
+  },
+  {
+    id: '1.3.23',
+    label: 'Switch',
+    slug: 'switch',
+    href: '/docs/components/switch',
+    frontmatter: switchFrontmatter,
+    meta: {
+      title: 'Switch Component in Cerberus Design System',
+      description:
+        'Discover how to use the Switch component in the Cerberus Design System for toggle switches.',
+    },
+    Content: Switch,
+  },
+  {
+    id: '1.3.24',
+    label: 'Table',
+    slug: 'table',
+    href: '/docs/components/table',
+    frontmatter: tableFrontmatter,
+    meta: {
+      title: 'Table Component in Cerberus Design System',
+      description:
+        'Learn how to use the Table component in the Cerberus Design System for displaying tabular data.',
+    },
+    Content: Table,
+  },
+  {
+    id: '1.3.25',
+    label: 'Tabs',
+    slug: 'tabs',
+    href: '/docs/components/tabs',
+    frontmatter: tabsFrontmatter,
+    meta: {
+      title: 'Tabs Component in Cerberus Design System',
+      description:
+        'Explore the Tabs component in the Cerberus Design System for organizing content into tabbed interfaces.',
+    },
+    Content: Tabs,
+  },
+  {
+    id: '1.3.26',
+    label: 'Tag',
+    slug: 'tag',
+    href: '/docs/components/tag',
+    frontmatter: tagFrontmatter,
+    meta: {
+      title: 'Tag Component in Cerberus Design System',
+      description:
+        'Discover how to use the Tag component in the Cerberus Design System for labeling and categorizing content.',
+    },
+    Content: Tag,
   },
 ]

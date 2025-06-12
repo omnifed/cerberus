@@ -3,7 +3,7 @@ import { Checkmark, Information } from '@carbon/icons-react'
 import { css } from 'styled-system/css'
 import { Fragment } from 'react'
 import { grid, gridItem, hstack, vstack } from 'styled-system/patterns'
-import { ClosableTagPreview } from './closable-tag-preview'
+import { ClosableTagPreview } from './closable-tag'
 
 export type TagPreviewProps = TagProps
 
@@ -101,15 +101,10 @@ export function CustomTagPreview() {
   return (
     <Tag
       className={css({
-        bgColor: 'yellow',
-        color: 'black',
-        _hover: {
-          bgColor: 'black',
-          color: 'yellow',
-        },
+        colorPalette: 'danger',
       })}
     >
-      Wu-Tang Forever
+      Cerberus Forever
     </Tag>
   )
 }
