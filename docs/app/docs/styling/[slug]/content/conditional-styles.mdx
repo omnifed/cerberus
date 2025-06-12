@@ -1,0 +1,185 @@
+---
+title: Conditional Styles
+description: Learn how to apply conditional styles in Cerberus Design System
+---
+
+import { NoteAdmonition, WarningAdmonition } from '@/app/components/Admonition'
+
+## Overview
+
+When writing styles, you might need to apply specific changes depending on a specific condition, whether it's based on breakpoint, css pseudo state, media query or custom data attributes.
+
+Cerberus allows you to write conditional styles, and provides common condition shortcuts to make your life easier. Let's say you want to change the background color of a button when it's hovered. You can do it like this:
+
+```tsx
+<Button
+  css={{
+    bg: 'red.500',
+    _hover: { bg: 'red.700' }
+  }}
+>
+  Hover me
+</Button>
+```
+
+<WarningAdmonition description="Although Cerberus uses CSS-in-JS syntax for styling, it is a only static (just like CSS). This means that you should not use dynamic values for a property." />
+
+## Property based condition
+
+This works great, but might be a bit verbose. You can apply the condition `_hover` directly to the `bg` property, leading to a more concise syntax:
+
+```diff
+<Button
+  css={{
+-   bg: 'red.500',
+-   _hover: { bg: 'red.700' }
++   bg: { base: 'red.500', _hover: 'red.700' }
+  }}
+>
+  Hover me
+</Button>
+```
+
+<NoteAdmonition description={<>The `base` key is used to define the default value of the property, without any condition.</>} />
+
+### Nested condition
+
+Conditions in Cerberus can be nested, which means you can apply multiple conditions to a single property or another condition.
+
+Let's say you want to change the background color of a button when it's focused and hovered. You can do it like this:
+
+```tsx
+<Button
+  css={{
+    bg: {
+      base: 'red.500',
+      _hover: {
+        _focus: 'red.700'
+      }
+    }
+  }}
+>
+  Hover me
+</Button>
+```
+
+## Arbitrary selectors
+
+What if you need a one-off selector that is not defined in your config's conditions? You can create your own arbitrary selector by using the `&` symbol to reference the current element.
+
+```tsx
+const App = () => {
+  return (
+    <Button
+      css={{
+        '&[data-state=closed]': { color: 'red.300' },
+        '& > *': { margin: '2' }
+      }}
+    />
+  )
+}
+```
+
+## Built-in conditions
+
+The Cerberus preset provides a set of built-in conditions that you can use out of the box.
+
+For a reference of all the built-in conditions, check out the [PandaCSS conditions reference](https://panda-css.com/docs/concepts/conditional-styles#reference).
+
+| Name                | Selector                  |
+| ------------------  | ------------------------- |
+| _cerberusTheme      | `[data-theme=cerberus] &` |
+| _acheronTheme       | `[data-theme=acheron] &` |
+| _lightMode          | `[data-color-mode=light] &, &.light, .light &` |
+| _darkMode           | `[data-color-mode=dark] &, &.dark, .dark &` |
+| _open               | `'&:is([open], [data-open], [data-state=open])'` |
+| _closed             | `'&:is([closed], [data-closed], [data-state=closed])'` |
+| _notDisabled        | `&:is(:not([disabled]), [data-disabled=false])` |
+| _modalOpen          | `&:is([data-modal-open=true])` |
+| _screenReaderOnly   | `&:is([data-screen-reader-only=true])` |
+| _isOver             | `&:is([data-over=true])` |
+| _isDropped          | `&:is([data-dropped=true])` |
+| _today              | `&:is([data-today=true], [data-date=today])` |
+| _pastDay            | `&:is([data-past-day=true], [data-date=past])` |
+| _inRange            | `&:is([data-in-range=true])` |
+| _startRange         | `&:is([data-start-range])` |
+| _endRange           | `&:is([data-end-range])` |
+| _invalid            | `&:is(:invalid, [data-invalid], [aria-invalid])` |
+| _userInvalid        | `&:is(:user-invalid, [aria-invalid])` |
+| _groupInvalid       | `.group:is([data-invalid] &, [aria-invalid]) &` |
+| _groupChecked       | `.group:is([data-checked="true"] &, [aria-checked="true"]) &` |
+| _positionBottom     | `&:is([data-position=bottom])` |
+| _positionTop        | `&:is([data-position=top])` |
+| _positionLeft       | `&:is([data-position=left])` |
+| _positionRight      | `&:is([data-position=right])` |
+| _startIcon          | `&:is([data-start-icon=true])` |
+| _tooltip            | `&:is([data-tooltip=true])` |
+| _notify             | `&:is([data-notify=true])` |
+| _admin              | `&:is([data-role=admin])` |
+| _student            | `&:is([data-role=student])` |
+| _user               | `&:is([data-role=user])` |
+| _highlight          | `&:is(::selection)` |
+| _spellingError      | `&:is(::spelling-error)` |
+| _grammarError       | `&:is(::grammar-error)` |
+| _pagePalette        | `&:is([data-palette=page])` |
+| _actionPalette      | `&:is([data-palette=action])` |
+| _infoPalette        | `&:is([data-palette=info])` |
+| _successPalette     | `&:is([data-palette=success])` |
+| _warningPalette     | `&:is([data-palette=warning])` |
+| _dangerPalette      | `&:is([data-palette=danger])` |
+
+## Why use conditions?
+
+Using conditions for styling ensures that when your classes are generated, they are consistent and predictable. This is the key to understanding how PandaCSS works under the hood.
+
+For example, when you write:
+
+```tsx
+<Button
+  css={{
+    bg: { base: 'red.500', _hover: 'red.700' }
+  }}
+>
+  Hover me
+</Button>
+```
+
+PandaCSS generates the following CSS:
+
+```css
+.css-1a2b3c {
+  --panda-bg: var(--cerberus-colors-red-500);
+  background-color: var(--panda-bg);
+}
+.css-1a2b3c:hover {
+  --panda-bg: var(--cerberus-colors-red-700);
+  background-color: var(--panda-bg);
+}
+```
+Whereas if you write:
+
+```tsx
+<Button
+  css={{
+    bg: isHovering ? 'red.500' : 'red.700',
+  }}
+>
+  Hover me
+</Button>
+```
+
+PandaCSS generates an incorrect result:
+
+```css
+.css-1a2b3c {
+  --panda-bg: var(--cerberus-colors-red-500);
+  background-color: var(--panda-bg);
+}
+.css-1a2b3c {
+  --panda-bg: var(--cerberus-colors-red-700);
+  background-color: var(--panda-bg);
+}
+```
+As you can see, the first example generates a single class with a hover state, while the second example generates two classes that override each other. This can lead to unexpected behavior and specificity issues.
+
+Using conditions ensures that your styles are applied correctly and consistently, leading to a more maintainable and predictable codebase.
