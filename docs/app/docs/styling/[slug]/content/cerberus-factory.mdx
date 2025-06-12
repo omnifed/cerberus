@@ -3,4 +3,113 @@ title: Cerberus Factory
 description: Learn about the Cerberus Factory, a powerful tool for managing styles and themes in the Cerberus Design System.
 ---
 
-Tell'em bout it
+## Overview
+
+Cerberus factory serves as a way to create supercharged JSX component from any
+HTML element to enable them receive `asChild` and `css` props.
+
+```js
+import { cerberus } from "@cerberus/react"
+```
+
+## Factory function
+
+Use the `cerberus` function to convert native element components..
+
+```tsx
+const Link = cerberus("a")
+
+function Example() {
+  return <Link css={{ color: 'blue' }} href="https://chakra-ui.com" />
+}
+```
+
+### Default Props
+
+Use the `defaultProps` option to pass default props to the component.
+
+```tsx {9}
+const Button = cerberus("button", {
+  type: "button"
+})
+```
+
+This example creates a button component that has the `type="button"` attribute applied to it.
+
+## Creating Primitives
+
+You can create a Cerberus primitive with the `createCerberusPrimitive` function. This is useful for creating components that have a specific recipe or style.
+
+All primitives created with this function will have the `css` and `asChild` props available.
+
+### withNoRecipe
+
+Creates a Cerberus component with bare features and no recipe. It is the what `cerberus` function does under the hood.
+
+```tsx
+import { createCerberusPrimitive } from "@cerberus/react"
+
+const { withNoRecipe } = createCerberusPrimitive()
+
+const Button = withNoRecipe("button")
+
+function Example() {
+  return <Button css={{ color: 'blue' }}>Click me</Button>
+}
+```
+
+### withRecipe
+
+Creates a Cerberus component with a specific recipe applied. This allows you to use the styles defined in the recipe.
+
+```tsx
+import { createCerberusPrimitive } from "@cerberus/react"
+import { button } from "@/system/recipes"
+
+const { withRecipe } = createCerberusPrimitive(button)
+const Button = withRecipe("button")
+
+function Example() {
+  return <Button css={{ color: 'blue' }}>Click me</Button>
+}
+```
+
+This example creates a button component that has the `button` recipe styles applied to it. The `css` prop can be used to override or extend the styles defined in the recipe when needed.
+
+### withSlotRecipe
+
+Creates a Cerberus component with a specific recipe applied at the slot level. This is useful for creating components that have multiple slots with different styles.
+
+```tsx
+import { createCerberusPrimitive } from "@cerberus/react"
+import { Field } from '@ark-ui/react'
+import { field } from "@system/recipes/slots"
+
+const { withSlotRecipe } = createCerberusPrimitive(field)
+
+const Field = withSlotRecipe(Field.Root, "root")
+const FieldLabel = withSlotRecipe(Field.Label, "label")
+const FieldInput = withSlotRecipe(Field.Input, "input")
+
+function Example() {
+  return (
+    <Field css={{ color: 'blue' }}>
+      <FieldLabel>Label</FieldLabel>
+      <FieldInput type="text" />
+    </Field>
+  )
+}
+```
+
+In this example, we create a field component with a root slot, label slot, and input slot. Each slot can have its own styles defined in the recipe, and the `css` prop can be used to override or extend the styles when needed.
+
+## Polymorphism
+
+Every component created with the cerberus factory can accept the
+`asChild` props to change the underlying DOM element.
+
+```tsx
+<Button asChild>
+  <a href="https://chakra-ui.com">Chakra UI</a>
+</Button>
+```
