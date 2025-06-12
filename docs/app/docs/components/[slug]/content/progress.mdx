@@ -1,0 +1,155 @@
+---
+title: 'Progress Indicators'
+description: 'Progress indicators are used to show the progress of a task.'
+npm: '@cerberus-design/react'
+source: 'components/progress'
+recipe: 'slots/progressBar.ts'
+ark: 'progress-circular'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  NoteAdmonition
+} from '@/app/components/Admonition'
+import { OverviewPreview } from '../components/progress/bar'
+import { CircularPreview, SizesPreview } from '../components/progress/circular'
+
+```tsx
+import { ProgressBar, CircularProgress } from '@cerberus/react'
+```
+
+## Usage
+
+### Progress Bar
+
+The `ProgressBar` component is used to display a linear progress indicator. It can be used in both determinate and indeterminate states.
+
+<CodePreview preview={<OverviewPreview />}>
+```tsx
+import { ProgressBar, Tag } from '@cerberus/react'
+import { HStack, VStack } from 'styled-system/jsx'
+
+export function OverviewPreview() {
+  return (
+    <HStack
+      gap="10"
+      w="3/4"
+    >
+      <VStack gap="md" w="full">
+        <ProgressBar
+          id="rounded-example"
+          label="rounded progress example"
+          size="sm"
+          now={75}
+        />
+        <Tag shape="pill">Rounded</Tag>
+      </VStack>
+      <VStack gap="md" w="full">
+        <ProgressBar
+          id="block-example"
+          label="block progress example"
+          size="sm"
+          usage="block"
+          now={75}
+        />
+        <Tag shape="pill">Block</Tag>
+      </VStack>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Circular Progress
+
+The `CircularProgress` component is used to display a circular progress indicator. It will scale to the size of its container.
+
+<CodePreview preview={<CircularPreview />}>
+```tsx
+'use client'
+
+import { CircularProgress } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+export function CircularPreview() {
+  return (
+    <HStack w="1/2">
+      <CircularProgress id="25" defaultValue={25} />
+      <CircularProgress id="50" defaultValue={50} />
+      <CircularProgress id="75" defaultValue={75} />
+      <CircularProgress id="complete" label="complete" defaultValue={100} />
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+### Sizes
+
+The `CircularProgress` component supports different sizes via the `size` prop.
+
+<CodePreview preview={<SizesPreview />}>
+```tsx
+function SizesPreview() {
+  return (
+    <HStack w="1/2">
+      <CircularProgress id="25" defaultValue={25} size="xs" />
+      <CircularProgress id="50" defaultValue={50} size="sm" />
+      <CircularProgress id="75" defaultValue={75} size="md" />
+      <CircularProgress
+        id="complete"
+        label="complete"
+        defaultValue={100}
+        size="lg"
+      />
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Progress Bar Primitives
+
+You can utilize the primitive components or the `css` prop to customize the progress bar.
+
+| Component | Description |
+| --------- | ----------- |
+| ProgressBarRoot    | The container for the ProgressBar parts |
+| ProgressBarBar  | The percentage bar of the amount |
+
+## Circular Progress Primitives
+
+You can utilize the primitive components or the `css` prop to customize the circular progress.
+
+| Component | Description |
+| --------- | ----------- |
+| CircularProgressRoot    | The context provider for the CircularProgress parts |
+| CircularProgressInfoGroup  | The container for the text parts |
+| CircularProgressLabel  | The descriptive text below the value |
+| CircularProgressValueText  | The value of the progress, displayed in the center circle |
+| CircularProgressCircle  | The container of the progress |
+| CircularProgressCircleTrack  | The track of the progress |
+| CircularProgressCircleRange  | The range of the progress |
+
+## API
+
+### ProgressBar
+
+| Name     | Default | Description                                  |
+| -------- | ------- | -------------------------------------------- |
+| id |    | The id of the CircularProgress. |
+| label |    | A description of what the progress bar is for. |
+| size |  `md`  | The size of the progress bar. |
+| usage |  `rounded`  | The style of the progress bar. |
+| now |    | The current progress value. |
+| indeterminate |  `false`  | If the progress bar is in an indeterminate state. |
+
+### CircularProgress
+
+| Name     | Default | Description                                  |
+| -------- | ------- | -------------------------------------------- |
+| label    |    | A description of what the progress bar is for. |
+| size     |  `md`  | The size of the circular progress. |
+| usage    |  `filled`  | The fill style of the center circle used for the bg. |
+
+The `CircularProgress` component also accepts all the props of the [`CircularProgressRoot` primitive props](https://ark-ui.com/react/docs/components/progress-circular#api-reference)

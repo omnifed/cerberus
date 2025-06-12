@@ -1,6 +1,8 @@
 ---
+title: Notifications
+description: The Notification component is used to display notifications in your application.
 npm: '@cerberus-design/react'
-source: 'components/notification'
+source: 'components/notifications'
 recipe: 'slots/toast.ts'
 ark: 'toast'
 ---
@@ -11,8 +13,8 @@ import {
 } from '@/app/components/Admonition'
 import {
   OverviewDemo
-} from '@/app/react/notifications/components/notification-preview'
-import { NotifyBadgePreview } from '@/app/react/notifications/components/notify-badge-preview'
+} from '../components/notifications/static'
+import { NotifyBadgePreview } from '../components/notifications/notify-badge'
 
 ```ts
 import { NotificationCenter, toaster } from '@cerberus/react'

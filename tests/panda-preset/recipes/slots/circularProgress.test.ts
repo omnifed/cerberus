@@ -10,13 +10,9 @@ describe('circularProgress recipe', () => {
 
   test('should have a base.root style', () => {
     expect(circularProgress.base?.root).toMatchObject({
-      alignSelf: 'stretch',
-      containerType: 'inline-size',
-      flex: 1,
-      m: '4px',
+      display: 'inline-flex',
       position: 'relative',
-      '--size': '100%',
-      '--thickness': '1em',
+      '--thickness': 'calc(var(--size) * 0.13)',
     })
   })
 
@@ -60,15 +56,16 @@ describe('circularProgress recipe', () => {
   test('should have a base.valueText style', () => {
     expect(circularProgress.base?.valueText).toMatchObject({
       color: 'page.text.300',
-      fontFamily: 'mono',
-      fontSize: '1.5em',
+      fontSize: 'var(--value-text-size)',
+      fontWeight: '450',
+      textStyle: 'mono-sm',
     })
   })
 
   test('should have a base.label style', () => {
     expect(circularProgress.base?.label).toMatchObject({
       color: 'page.text.100',
-      fontSize: '0.75em',
+      fontSize: 'var(--label-size)',
       textStyle: 'heading-sm',
     })
   })
@@ -87,12 +84,43 @@ describe('circularProgress recipe', () => {
           },
         },
       },
+      size: {
+        xs: {
+          root: {
+            '--size': '6rem',
+            '--value-text-size': '1.25rem',
+            '--label-size': '0.75rem',
+          },
+        },
+        sm: {
+          root: {
+            '--size': '10.25rem',
+            '--value-text-size': '1.5rem',
+            '--label-size': '0.75rem',
+          },
+        },
+        md: {
+          root: {
+            '--size': '12rem',
+            '--value-text-size': '2rem',
+            '--label-size': '1rem',
+          },
+        },
+        lg: {
+          root: {
+            '--size': '15.5rem',
+            '--value-text-size': '2.625rem',
+            '--label-size': '1.25rem',
+          },
+        },
+      },
     })
   })
 
   test('should have a defaultVariants object', () => {
     expect(circularProgress.defaultVariants).toMatchObject({
       usage: 'filled',
+      size: 'xs',
     })
   })
 })

@@ -1,24 +1,16 @@
 ---
-heading: 'Portal'
+title: 'Portal'
 description: 'Portal displays content in outside of the DOM hierarchy.'
-a11y: 'utilities'
 npm: '@cerberus-design/react'
 source: 'components/Portal.tsx'
-recipe: ''
 ---
 
-import {
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
-} from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import PortalPreview from '@/app/react/portal/components/portal-preview'
+import PortalPreview from '../components/portal/static'
 
 ```ts
 import { Portal } from '@cerberus/react'
 ```
-
-<WhenToUseAdmonition description="When you need display a component outside of the parent it is contained within." />
 
 ## Usage
 
@@ -83,8 +75,6 @@ function PortalPreview() {
 }
 ```
 </CodePreview>
-
-<WhenNotToUseAdmonition description="Portals should only be used for alert/dialog level components. Anything else should try to achieve this without the use of a portal." />
 
 ## API
 

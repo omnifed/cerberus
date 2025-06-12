@@ -47,6 +47,10 @@ import IconButton, {
 } from './icon-button.mdx'
 import Input, { frontmatter as inputFrontmatter } from './input.mdx'
 import Menu, { frontmatter as menuFrontmatter } from './menu.mdx'
+import Notifications, {
+  frontmatter as notificationsFrontmatter,
+} from './notifications.mdx'
+import Progress, { frontmatter as progressFrontmatter } from './progress.mdx'
 
 // Utilities
 import FeatureFlags, {
@@ -56,6 +60,7 @@ import For, { frontmatter as forFrontmatter } from './for.mdx'
 import LocalStorageDocs, {
   frontmatter as localStorageFrontmatter,
 } from './local-storage.mdx'
+import Portal, { frontmatter as portalFrontmatter } from './portal.mdx'
 
 export const items = [
   {
@@ -475,6 +480,32 @@ export const items = [
     Content: Menu,
   },
   {
+    id: '1.3.17',
+    label: 'Notifications',
+    slug: 'notifications',
+    href: '/docs/components/notifications',
+    frontmatter: notificationsFrontmatter,
+    meta: {
+      title: 'Notifications Component in Cerberus Design System',
+      description:
+        'Discover how to use the Notifications component in the Cerberus Design System for displaying alerts and messages.',
+    },
+    Content: Notifications,
+  },
+  {
+    id: '1.3.18',
+    label: 'Progress',
+    slug: 'progress',
+    href: '/docs/components/progress',
+    frontmatter: progressFrontmatter,
+    meta: {
+      title: 'Progress Component in Cerberus Design System',
+      description:
+        'Learn how to use the Progress component in the Cerberus Design System for displaying progress indicators.',
+    },
+    Content: Progress,
+  },
+  {
     id: '1.4',
     label: 'Utilities',
     href: '',
@@ -517,5 +548,18 @@ export const items = [
         'Learn how to use local storage in the Cerberus Design System for persisting data across sessions.',
     },
     Content: LocalStorageDocs,
+  },
+  {
+    id: '1.4.4',
+    label: 'Portal',
+    slug: 'portal',
+    href: '/docs/components/portal',
+    frontmatter: portalFrontmatter,
+    meta: {
+      title: 'Portal Component in Cerberus Design System',
+      description:
+        'Explore the Portal component in the Cerberus Design System for rendering content outside the main DOM hierarchy.',
+    },
+    Content: Portal,
   },
 ]

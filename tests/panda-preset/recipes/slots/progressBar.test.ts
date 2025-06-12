@@ -12,6 +12,7 @@ describe('progressBar recipe', () => {
     expect(progressBar.base?.root).toMatchObject({
       bgColor: 'page.bg.100',
       position: 'relative',
+      rounded: 'var(--progress-bar-radii)',
       w: 'full',
     })
     expect(progressBar.base?.bar).toMatchObject({
@@ -19,6 +20,7 @@ describe('progressBar recipe', () => {
       h: 'full',
       left: 0,
       position: 'absolute',
+      rounded: 'var(--progress-bar-radii)',
       top: 0,
       transitionDuration: '250ms',
       transitionProperty: 'background-image,width',
@@ -56,18 +58,12 @@ describe('progressBar recipe', () => {
       usage: {
         block: {
           root: {
-            rounded: 'initial',
-          },
-          bar: {
-            rounded: 'initial',
+            '--progress-bar-radii': '0',
           },
         },
         rounded: {
           root: {
-            rounded: '1.5rem',
-          },
-          bar: {
-            rounded: '1.5rem',
+            '--progress-bar-radii': '1.5rem',
           },
         },
       },

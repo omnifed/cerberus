@@ -13,3 +13,19 @@ export function CircularPreview() {
     </HStack>
   )
 }
+
+export function SizesPreview() {
+  return (
+    <HStack justify="center" w="full">
+      <CircularProgress id="25" defaultValue={25} size="xs" />
+      <CircularProgress id="50" defaultValue={50} size="sm" />
+      <CircularProgress id="75" defaultValue={75} size="md" />
+      <CircularProgress
+        id="complete"
+        label="complete"
+        defaultValue={100}
+        size="lg"
+      />
+    </HStack>
+  )
+}

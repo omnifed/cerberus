@@ -3,6 +3,7 @@ import { Poppins, Recursive } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { type PropsWithChildren } from 'react'
 import {
+  NotificationCenter,
   ThemeProvider,
   type ColorModes,
   type DefaultThemes,
@@ -90,6 +91,8 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
             <main role="main" className={css({ h: 'full', w: 'full' })}>
               {props.children}
             </main>
+
+            <NotificationCenter />
           </CerberusConfig>
         </ThemeProvider>
 
