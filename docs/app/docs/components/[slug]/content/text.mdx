@@ -1,14 +1,12 @@
 ---
-heading: 'Text'
+title: 'Text'
 description: 'A component for rendering text.'
-a11y: 'utilities'
 npm: '@cerberus-design/react'
-source: 'components/Show.tsx'
-recipe: ''
+source: 'components/Text.tsx'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
-import ShowPreview from '@/app/react/text/components/show-preview'
+import TextPreview from '../components/text/static'
 
 ```ts
 import { Text } from '@cerberus/react'
@@ -16,11 +14,11 @@ import { Text } from '@cerberus/react'
 
 ## Usage
 
-<CodePreview preview={<ShowPreview />}>
-```tsx title="heading.tsx"
+<CodePreview preview={<TextPreview />}>
+```tsx title="Basic usage"
 import { Text } from '@cerberus/react'
 
-export default function Heading() {
+export default function TextDemo() {
   return (
     <>
       <Text

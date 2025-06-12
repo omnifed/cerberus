@@ -40,6 +40,9 @@ import Switch, { frontmatter as switchFrontmatter } from '../switch.mdx'
 import Table, { frontmatter as tableFrontmatter } from '../table.mdx'
 import Tabs, { frontmatter as tabsFrontmatter } from '../tabs.mdx'
 import Tag, { frontmatter as tagFrontmatter } from '../tag.mdx'
+import Text, { frontmatter as textFrontmatter } from '../text.mdx'
+import Textarea, { frontmatter as textareaFrontmatter } from '../textarea.mdx'
+import Toggle, { frontmatter as toggleFrontmatter } from '../toggle.mdx'
 
 export const components = [
   {
@@ -384,5 +387,44 @@ export const components = [
         'Discover how to use the Tag component in the Cerberus Design System for labeling and categorizing content.',
     },
     Content: Tag,
+  },
+  {
+    id: '1.3.27',
+    label: 'Text',
+    slug: 'text',
+    href: '/docs/components/text',
+    frontmatter: textFrontmatter,
+    meta: {
+      title: 'Text Component in Cerberus Design System',
+      description:
+        'Learn how to use the Text component in the Cerberus Design System for displaying text content.',
+    },
+    Content: Text,
+  },
+  {
+    id: '1.3.28',
+    label: 'Textarea',
+    slug: 'textarea',
+    href: '/docs/components/textarea',
+    frontmatter: textareaFrontmatter,
+    meta: {
+      title: 'Textarea Component in Cerberus Design System',
+      description:
+        'Explore the Textarea component in the Cerberus Design System for multi-line text input fields.',
+    },
+    Content: Textarea,
+  },
+  {
+    id: '1.3.29',
+    label: 'Toggle',
+    slug: 'toggle',
+    href: '/docs/components/toggle',
+    frontmatter: toggleFrontmatter,
+    meta: {
+      title: 'Toggle Component in Cerberus Design System',
+      description:
+        'Discover how to use the Toggle component in the Cerberus Design System for binary state toggles.',
+    },
+    Content: Toggle,
   },
 ]

@@ -1,6 +1,6 @@
 import { Text } from '@cerberus-design/react'
 
-export default function ShowPreview() {
+export default function TextPreview() {
   return (
     <>
       <Text

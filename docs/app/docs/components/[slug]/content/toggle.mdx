@@ -1,10 +1,9 @@
 ---
-heading: 'Toggle'
+title: 'Toggle'
 description: 'Toggle allows users to toggle between states via an action.'
-a11y: 'utilities'
 npm: '@cerberus-design/react'
 source: 'components/toggle'
-recipe: ''
+ark: 'toggle'
 ---
 
 import {
@@ -12,15 +11,15 @@ import {
   NoteAdmonition,
 } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import BasicPreview from '@/app/react/toggle/components/static-preview'
+import BasicPreview from '../components/toggle/static'
 
 The `Toggle` component is a two-state button that allows users to toggle between states via an action.
+
+<WhenNotToUseAdmonition description="If you need to conditionally render content based on a binary condition, use the Show component." />
 
 ```ts
 import { ToggleParts } from '@cerberus/react'
 ```
-
-<WhenNotToUseAdmonition description="If you need to conditionally render content based on a binary condition, use the Show component." />
 
 ## Usage
 
