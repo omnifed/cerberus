@@ -1,7 +1,9 @@
 ---
+title: Prompt Modal
+description: The Prompt Modal is used to prompt the user for input, such as a passkey or confirmation for destructive actions.
 npm: '@cerberus-design/react'
-source: 'context/confirm-modal.tsx'
-recipe: ''
+source: 'context/prompt-modal.tsx'
+recipe: 'slots/dialog.ts'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
@@ -11,7 +13,7 @@ import {
 import {
   NonDestructivePreview,
   DestructivePreview,
-} from '@/app/react/prompt-modal/components/prompt-modal-preview'
+} from '../components/prompt-modal/static'
 
 ```ts
 import { PromptModal, usePromptModal } from '@cerberus/react'
@@ -116,8 +118,8 @@ The `show` method accepts the following options:
 | Name     | Default | Description                            |
 | -------- | ------- | -------------------------------------- |
 | kind | `non-destructive` | The variant used to theme the modal.           |
-| heading | `''` | The heading of the modal. |
-| description | `''` | The description of the modal. |
-| key | `''` | A string key to test the user input against. |
-| actionText | `''` | The text for the action button. |
-| cancelText | `''` | The text for the cancel button. |
+| heading |  | The heading of the modal. |
+| description |  | The description of the modal. |
+| key |  | A string key to test the user input against. |
+| actionText |  | The text for the action button. |
+| cancelText |  | The text for the cancel button. |
