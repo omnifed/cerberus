@@ -25,6 +25,9 @@ import IconButton, {
   frontmatter as iconButtonFrontmatter,
 } from '../icon-button.mdx'
 import Input, { frontmatter as inputFrontmatter } from '../input.mdx'
+import LoadingStates, {
+  frontmatter as loadingStatesFrontmatter,
+} from '../loading-states.mdx'
 import Menu, { frontmatter as menuFrontmatter } from '../menu.mdx'
 import Notifications, {
   frontmatter as notificationsFrontmatter,
@@ -43,6 +46,7 @@ import Tag, { frontmatter as tagFrontmatter } from '../tag.mdx'
 import Text, { frontmatter as textFrontmatter } from '../text.mdx'
 import Textarea, { frontmatter as textareaFrontmatter } from '../textarea.mdx'
 import Toggle, { frontmatter as toggleFrontmatter } from '../toggle.mdx'
+import Tooltip, { frontmatter as tooltipFrontmatter } from '../tooltip.mdx'
 
 export const components = [
   {
@@ -246,6 +250,19 @@ export const components = [
     Content: Input,
   },
   {
+    id: '1.3.31',
+    label: 'Loading States',
+    slug: 'loading-states',
+    href: '/docs/components/loading-states',
+    frontmatter: loadingStatesFrontmatter,
+    meta: {
+      title: 'Loading States in Cerberus Design System',
+      description:
+        'Explore how to implement loading states in the Cerberus Design System for better user experience.',
+    },
+    Content: LoadingStates,
+  },
+  {
     id: '1.3.16',
     label: 'Menu',
     slug: 'menu',
@@ -426,5 +443,18 @@ export const components = [
         'Discover how to use the Toggle component in the Cerberus Design System for binary state toggles.',
     },
     Content: Toggle,
+  },
+  {
+    id: '1.3.30',
+    label: 'Tooltip',
+    slug: 'tooltip',
+    href: '/docs/components/tooltip',
+    frontmatter: tooltipFrontmatter,
+    meta: {
+      title: 'Tooltip Component in Cerberus Design System',
+      description:
+        'Learn how to use the Tooltip component in the Cerberus Design System for providing additional information on hover.',
+    },
+    Content: Tooltip,
   },
 ]

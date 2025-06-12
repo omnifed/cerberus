@@ -1,19 +1,20 @@
 ---
+title: Loading States
+description: Loading states are used to indicate that content is being loaded.
 npm: '@cerberus-design/react'
 source: 'components/Spinner.tsx'
-recipe: ''
 ---
 
 import CodePreview from '@/app/components/CodePreview'
 import {
   OverviewPreview,
-} from '@/app/react/loading-states/components/loading-preview'
+} from '../components/loading-states/loading'
 import {
   OverviewSpinnerPreview,
-} from '@/app/react/loading-states/components/spinner-preview'
+} from '../components/loading-states/spinner'
 import {
   CustomSpinner,
-} from '@/app/react/loading-states/components/custom-spinner'
+} from '../components/loading-states/custom-spinner'
 
 ## Skeletor API
 
@@ -25,7 +26,48 @@ To show a skeleton loading state, simply add the `aria-busy` attribute to the el
 </div>
 ```
 
-<CodePreview preview={<OverviewPreview />} />
+<CodePreview preview={<OverviewPreview />}>
+```tsx
+import { Tag, Text } from '@cerberus/react'
+import { Box, Circle, HStack, VStack } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
+
+export function OverviewPreview() {
+  return (
+    <HStack justify="space-between" w="3/4">
+      <VStack alignItems="flex-start">
+        <HStack justify="space-between" w="full">
+          <Box aria-busy="true" rounded="sm">
+            <Text>This is a description of something.</Text>
+          </Box>
+          <HStack>
+            <Circle aria-busy="true" size="6" />
+            <Circle aria-busy="true" size="6" />
+            <Circle aria-busy="true" size="6" />
+          </HStack>
+        </HStack>
+        <Box aria-busy="true" rounded="sm">
+          <Text as="h2">Trash content</Text>
+          <Text>
+            Trash content is a place where you can find all the content that you
+            have deleted. You can restore or permanently delete the content from
+            here.
+          </Text>
+        </Box>
+        <Tag
+          className={css({
+            alignSelf: 'center',
+          })}
+          shape="pill"
+        >
+          Skeleton
+        </Tag>
+      </VStack>
+    </HStack>
+  )
+}
+```
+</CodePreview>
 
 ### Spinners
 
