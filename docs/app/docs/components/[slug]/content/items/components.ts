@@ -35,6 +35,7 @@ import PromptModal, {
 } from '../prompt-modal.mdx'
 import Radio, { frontmatter as radioFrontmatter } from '../radio.mdx'
 import Rating, { frontmatter as ratingFrontmatter } from '../rating.mdx'
+import Select, { frontmatter as selectFrontmatter } from '../select.mdx'
 
 export const components = [
   {
@@ -314,5 +315,18 @@ export const components = [
         'Learn how to use the Rating component in the Cerberus Design System for star ratings and reviews.',
     },
     Content: Rating,
+  },
+  {
+    id: '1.3.22',
+    label: 'Select',
+    slug: 'select',
+    href: '/docs/components/select',
+    frontmatter: selectFrontmatter,
+    meta: {
+      title: 'Select Component in Cerberus Design System',
+      description:
+        'Explore the Select component in the Cerberus Design System for creating dropdown selections.',
+    },
+    Content: Select,
   },
 ]

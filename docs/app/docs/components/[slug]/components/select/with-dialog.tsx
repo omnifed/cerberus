@@ -8,7 +8,7 @@ import {
   DialogProvider,
   DialogTrigger,
 } from '@cerberus-design/react'
-import { SelectBasicPreview } from './select-preview'
+import { SelectBasicPreview } from './static'
 import { useRef } from 'react'
 import { Box, VStack } from '@/styled-system/jsx'
 

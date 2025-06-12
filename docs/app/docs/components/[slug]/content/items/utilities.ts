@@ -6,6 +6,10 @@ import LocalStorageDocs, {
   frontmatter as localStorageFrontmatter,
 } from '../local-storage.mdx'
 import Portal, { frontmatter as portalFrontmatter } from '../portal.mdx'
+import Show, { frontmatter as ShowFrontmatter } from '../show.mdx'
+import SplitProps, {
+  frontmatter as splitPropsFrontmatter,
+} from '../split-props.mdx'
 
 export const utilities = [
   {
@@ -64,5 +68,31 @@ export const utilities = [
         'Explore the Portal component in the Cerberus Design System for rendering content outside the main DOM hierarchy.',
     },
     Content: Portal,
+  },
+  {
+    id: '1.4.5',
+    label: 'Show',
+    slug: 'show',
+    href: '/docs/components/show',
+    frontmatter: ShowFrontmatter,
+    meta: {
+      title: 'Show Component in Cerberus Design System',
+      description:
+        'Understand how to use the Show component in the Cerberus Design System for conditional rendering.',
+    },
+    Content: Show,
+  },
+  {
+    id: '1.4.6',
+    label: 'splitProps',
+    slug: 'split-props',
+    href: '/docs/components/split-props',
+    frontmatter: splitPropsFrontmatter,
+    meta: {
+      title: 'Split Props in Cerberus Design System',
+      description:
+        'Learn how to use the Split Props utility in the Cerberus Design System for managing component properties.',
+    },
+    Content: SplitProps,
   },
 ]
