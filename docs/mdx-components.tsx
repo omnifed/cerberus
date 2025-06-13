@@ -232,6 +232,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           },
           '& li': {
             pb: 'sm',
+            '& > p': {
+              pb: 'initial',
+            },
           },
         })}
         {...props}

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "value": "emphasized-fade-in"
+  },
+  {
+    "id": "2",
+    "value": "emphasized-fade-out"
+  },
+  {
+    "id": "3",
+    "value": "emphasized-slide-in"
+  },
+  {
+    "id": "4",
+    "value": "emphasized-slide-out"
+  },
+  {
+    "id": "5",
+    "value": "slide-fade-in"
+  },
+  {
+    "id": "6",
+    "value": "slide-fade-out"
+  },
+  {
+    "id": "7",
+    "value": "scale-fade-in"
+  },
+  {
+    "id": "8",
+    "value": "scale-fade-out"
+  }
+]
