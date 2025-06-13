@@ -9,7 +9,7 @@ export default function SpacingVisual(props: SpacingRowProps) {
   return (
     <Box
       aria-hidden="true"
-      bgColor="page.bg.100"
+      bgColor="page.bg.200"
       flexShrink="0"
       h="8"
       rounded="md"

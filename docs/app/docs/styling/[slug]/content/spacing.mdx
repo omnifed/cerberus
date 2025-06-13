@@ -1,0 +1,170 @@
+---
+title: Spacing
+description:
+  JSX style props for controlling the padding and margin of an element.
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import SpacingVisual from '../components/spacing/spacing-visual'
+
+## Padding
+
+<NoteAdmonition description={<>See the list of <a href="#reference">built-in spacing values</a> below.</>} />
+
+### All sides
+
+Use the `padding` prop to apply padding on all sides of an element
+
+```tsx
+// raw value
+<Box padding="40px" />
+<Box p="40px" /> // shorthand
+
+// token value
+<Box padding="4" />
+<Box p="4" /> // shorthand
+```
+
+| Prop          | CSS Property | Token Category |
+| ------------- | ------------ | -------------- |
+| `p`,`padding` | `padding`    | `spacing`      |
+
+### Specific side
+
+Use the `padding{Left,Right,Top,Bottom}` to apply padding on one side of an
+element
+
+```tsx
+<Box paddingLeft="3" />
+<Box pl="3" /> // shorthand
+
+<Box paddingTop="3" />
+<Box pt="3" /> // shorthand
+```
+
+Use the `padding{Start,End}` props to apply padding on the logical axis of an
+element based on the text direction.
+
+```tsx
+<Box paddingStart="8" />
+<Box ps="8" /> // shorthand
+
+<Box paddingEnd="8" />
+<Box pe="8" /> // shorthand
+```
+
+<NoteAdmonition description="PandaCSS will automagically translate pl/r/t/b to use the start/end/block properties for convenience." />
+
+| Prop                  | CSS Property           | Token Category |
+| --------------------- | ---------------------- | -------------- |
+| `pl`, `paddingLeft`   | `padding-left`         | `spacing`      |
+| `pr`, `paddingRight`  | `padding-right`        | `spacing`      |
+| `pt`, `paddingTop`    | `padding-top`          | `spacing`      |
+| `pb`, `paddingBottom` | `padding-bottom`       | `spacing`      |
+| `ps`, `paddingStart`  | `padding-inline-start` | `spacing`      |
+| `pe`, `paddingEnd`    | `padding-inline-end`   | `spacing`      |
+
+### Horizontal and Vertical padding
+
+Use the `padding{X,Y}` props to apply padding on the horizontal and vertical
+axis of an element
+
+```tsx
+<Box paddingX="8" />
+<Box px="8" /> // shorthand
+
+<Box paddingY="8" />
+<Box py="8" /> // shorthand
+```
+
+| Prop                  | CSS Property           | Token Category |
+| --------------------- | ---------------------- | -------------- |
+| `p`,`padding`         | `padding`              | `spacing`      |
+| `pl`, `paddingLeft`   | `padding-left`         | `spacing`      |
+| `pr`, `paddingRight`  | `padding-right`        | `spacing`      |
+| `pt`, `paddingTop`    | `padding-top`          | `spacing`      |
+| `pb`, `paddingBottom` | `padding-bottom`       | `spacing`      |
+| `px`, `paddingX`      | `padding-inline`       | `spacing`      |
+| `py`, `paddingY`      | `padding-block`        | `spacing`      |
+| `ps`, `paddingStart`  | `padding-inline-start` | `spacing`      |
+| `pe`, `paddingEnd`    | `padding-inline-end`   | `spacing`      |
+
+## Margin
+
+### All sides
+
+Use the `margin` prop to apply margin on all sides of an element
+
+```tsx
+<Box margin="5" />
+<Box m="5" /> // shorthand
+```
+
+| Prop         | CSS Property | Token Category |
+| ------------ | ------------ | -------------- |
+| `m`,`margin` | `margin`     | `spacing`      |
+
+### Specific side
+
+Use the `margin{Left,Right,Top,Bottom}` to apply margin on one side of an
+element
+
+```tsx
+<Box marginLeft="3" />
+<Box ml="3" /> // shorthand
+
+<Box marginTop="3" />
+<Box mt="3" /> // shorthand
+```
+
+Use the `margin{Start,End}` properties to apply margin on the logical axis of an
+element based on the text direction.
+
+```tsx
+<Box marginStart="8" />
+<Box ms="8" /> // shorthand
+
+<Box marginEnd="8" />
+<Box me="8" /> // shorthand
+```
+
+| Prop                 | CSS Property          | Token Category |
+| -------------------- | --------------------- | -------------- |
+| `ml`, `marginLeft`   | `margin-left`         | `spacing`      |
+| `mr`, `marginRight`  | `margin-right`        | `spacing`      |
+| `mt`, `marginTop`    | `margin-top`          | `spacing`      |
+| `mb`, `marginBottom` | `margin-bottom`       | `spacing`      |
+| `ms`, `marginStart`  | `margin-inline-start` | `spacing`      |
+| `me`, `marginEnd`    | `margin-inline-end`   | `spacing`      |
+
+### Horizontal and Vertical margin
+
+Use the `margin{X,Y}` properties to apply margin on the horizontal and vertical
+axis of an element
+
+```tsx
+<Box marginX="8" />
+<Box mx="8" /> // shorthand
+
+<Box marginY="8" />
+<Box my="8" /> // shorthand
+```
+
+| Prop            | CSS Property  | Token Category |
+| --------------- | ------------- | -------------- |
+| `mx`, `marginX` | `margin-left` | `spacing`      |
+| `my`, `marginY` | `margin-top`  | `spacing`      |
+
+## Reference
+
+| Token    | Value | Visual                                                    |
+| -------- | ----- | --------------------------------------------------------- |
+|  none    |   0   |  <SpacingVisual value="none" />             |
+|  xs      |   0.25rem   |  <SpacingVisual value="xs" />                |
+|  sm      |   0.5rem   |  <SpacingVisual value="sm" />                  |
+|  md      |   1rem   |  <SpacingVisual value="md" />                |
+|  lg      |   1.5rem   | <SpacingVisual value="lg" />                     |
+|  xl      |   2rem   |  <SpacingVisual value="xl" />                     |
+|  2xl     |   3rem   |  <SpacingVisual value="2xl" />                    |
+|  3xl     |   4rem   |  <SpacingVisual value="3xl" />                   |
+|  full    |   31.25rem | <SpacingVisual value="full" />           |
