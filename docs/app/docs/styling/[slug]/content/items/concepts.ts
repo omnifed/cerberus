@@ -11,6 +11,15 @@ import CSSVars, { frontmatter as cssVarsFrontmatter } from '../css-vars.mdx'
 import ThemeMode, {
   frontmatter as themeModeFrontmatter,
 } from '../theme-mode.mdx'
+import ColorOpacityMod, {
+  frontmatter as colorOpacityModFrontmatter,
+} from '../color-opacity-modifier.mdx'
+import VirtualColor, {
+  frontmatter as virtualColorFrontmatter,
+} from '../virtual-color.mdx'
+import CascadeLayers, {
+  frontmatter as cascadeLayersFrontmatter,
+} from '../cascade-layers.mdx'
 
 export const concepts = [
   {
@@ -45,19 +54,6 @@ export const concepts = [
     Content: ResponsiveDesign,
   },
   {
-    id: '1.4',
-    label: 'Conditional Styles',
-    slug: 'conditional-styles',
-    frontmatter: conditionalStylesFrontmatter,
-    href: '/docs/styling/conditional-styles',
-    meta: {
-      title: 'Conditional Styles in Cerberus Design System',
-      description:
-        'Learn how to apply conditional styles in Cerberus Design System',
-    },
-    Content: ConditionalStyles,
-  },
-  {
     id: '1.5',
     label: 'CSS Variables',
     slug: 'css-vars',
@@ -82,5 +78,57 @@ export const concepts = [
         'Learn how to implement and manage theme modes (light/dark) in Cerberus Design System.',
     },
     Content: ThemeMode,
+  },
+  {
+    id: '1.7',
+    label: 'Color Opacity Modifier',
+    slug: 'color-opacity-modifier',
+    frontmatter: colorOpacityModFrontmatter,
+    href: '/docs/styling/color-opacity-modifier',
+    meta: {
+      title: 'Color Opacity Modifier in Cerberus Design System',
+      description:
+        'Learn how to use the Color Opacity Modifier in Cerberus Design System for advanced color manipulation.',
+    },
+    Content: ColorOpacityMod,
+  },
+  {
+    id: '1.4',
+    label: 'Conditional Styles',
+    slug: 'conditional-styles',
+    frontmatter: conditionalStylesFrontmatter,
+    href: '/docs/styling/conditional-styles',
+    meta: {
+      title: 'Conditional Styles in Cerberus Design System',
+      description:
+        'Learn how to apply conditional styles in Cerberus Design System',
+    },
+    Content: ConditionalStyles,
+  },
+  {
+    id: '1.8',
+    label: 'Virtual Color',
+    slug: 'virtual-color',
+    frontmatter: virtualColorFrontmatter,
+    href: '/docs/styling/virtual-color',
+    meta: {
+      title: 'Virtual Color in Cerberus Design System',
+      description:
+        'Learn how to use Virtual Color in Cerberus Design System for advanced color management.',
+    },
+    Content: VirtualColor,
+  },
+  {
+    id: '1.9',
+    label: 'Cascade Layers',
+    slug: 'cascade-layers',
+    frontmatter: cascadeLayersFrontmatter,
+    href: '/docs/styling/cascade-layers',
+    meta: {
+      title: 'Cascade Layers in Cerberus Design System',
+      description:
+        'Learn how to use Cascade Layers in Cerberus Design System for better style management.',
+    },
+    Content: CascadeLayers,
   },
 ]

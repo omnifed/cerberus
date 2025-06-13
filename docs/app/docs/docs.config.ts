@@ -39,7 +39,7 @@ export const config: DocConfig = {
       id: '3',
       slug: 'styling',
       label: 'Styling',
-      href: '/docs/styling',
+      href: '/docs/styling/cerberus-factory',
       meta: {
         title: 'Custom Tokens in Cerberus Design System',
         description:

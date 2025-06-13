@@ -221,6 +221,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props}
       />
     ),
+    ul: (props) => (
+      <ul
+        className={css({
+          listStyleType: 'disc',
+          pl: 'lg',
+          pb: 'lg',
+          _marker: {
+            color: 'page.text.100/75',
+          },
+          '& li': {
+            pb: 'sm',
+          },
+        })}
+        {...props}
+      />
+    ),
     ...components,
   }
 }

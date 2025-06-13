@@ -1,0 +1,115 @@
+---
+title: Virtual Color
+description: Create color placeholders for better theming and customization.
+---
+
+import { WarningAdmonition } from "@/app/components/Admonition";
+
+## Overview
+
+Cerberus allows you to create a virtual color or color placeholder in your
+project. The `colorPalette` property is how you create virtual color.
+
+```tsx
+<Box
+  colorPalette="action"
+  bgColor={{
+    base: "colorPalette.bg.initial",
+    _hover: "colorPalette.bg.hover"
+  }}
+>
+  Hello World
+</Box>
+```
+
+This will translate to the `action.bg.initial` background color and `action.bg.hover` background color on hover.
+
+## Usage
+
+The fundamental requirement for virtual colors is that your colors must have a
+consistent naming convention. By default, Cerberus uses our Semantic Palettes for each color we provide which corresponds to how it should be used in your application.
+
+This makes it easier for you to create and use virtual colors based on theming. Let's say we need to create a themable outline button from scratch.
+
+```tsx
+<Button
+  css={{
+    colorPalette: 'action',
+    borderWidth: '1px',
+    borderColor: 'colorPalette.border.initial',
+    color: 'colorPalette.text.initial',
+    _hover: {
+      borderColor: 'colorPalette.border.100',
+    }
+    _focus: {
+      borderColor: 'colorPalette.border.focus',
+    }
+  }}
+>
+  Click me
+</Button>
+```
+
+### Recipes
+
+Virtual colors are most useful when used with recipes.
+
+```typescript
+const buttonRecipe = defineRecipe({
+  base: {
+    alignItems: "center",
+    bg: "colorPalette.bg.initial",
+    color: "colorPalette.text.initial",
+    display: "flex",
+    justifyContent: "center",
+    _hover: {
+      bg: "colorPalette.bg.hover",
+    },
+  },
+  variants: {
+    palette: {
+      action: {
+        colorPalette: "action",
+      },
+      secondary: {
+        colorPalette: "secondaryAction",
+      },
+    },
+  },
+})
+```
+
+### Components
+
+Most built-in components in Cerberus support virtual colors via the `palette` prop. To override the `palette` with a custom palette in your theme, use the `css` prop to define the virtual color.
+
+<WarningAdmonition description="For virtual colors to work with Cerberus components, ensure your custom palette matches the naming convention used in the original palette you want to mirror." />
+
+```tsx
+<Button
+  css={{
+    colorPalette: 'myCustomActionPalette',
+  }}
+>
+  Click me
+</Button>
+```
+
+### Dark mode
+
+Another amazing thing you can do with virtual colors is to use them with dark
+mode.
+
+```tsx
+<Box
+  colorPalette="page"
+  bg={{
+     base: "colorPalette.surface.initial",
+     _dark: "colorPalette.surface.inverse"
+ }}
+>
+  Hello World
+</Box>
+```
+
+> This element will have a `page.surface.initial` background color in light mode and a `page.surface.inverse` background color in dark mode.

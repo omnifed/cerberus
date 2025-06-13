@@ -1,0 +1,39 @@
+---
+title: Cascade Layers
+description:
+  CSS cascade layers refer to the order in which CSS rules are applied to an
+  HTML element.
+---
+
+Cerberus relies on CSS cascade layers to provide a predictable, performant way
+to override components. The layers are defined to match that of
+[Panda CSS](https://panda-css.com).
+
+## Layer Types
+
+Cerberus supports these cascade layer types:
+
+- `@layer reset`: Where the preflight or css resets styles are defined.
+
+- `@layer base`: Where global styles are placed when defined in `globalCss`
+  config property.
+
+- `@layer recipes`: Where styles for recipes are placed when defined in
+  `theme.recipes` or `theme.slotRecipes`
+
+- `@layer tokens`: Where styles for design tokens are placed when defined in
+  `theme.tokens` or `theme.semanticTokens`
+
+- `@layer utilities`: Where styles for utilities are placed when defined in
+  `theme.utilities`
+
+## Layer Order
+
+Cerberus recommends the following order for cascade layers:
+
+```css
+@layer reset, base, tokens, recipes, utilities;
+```
+
+This structure allows for smoother experience when combining Cerberus and Panda
+CSS in the same project.
