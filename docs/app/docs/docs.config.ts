@@ -2,6 +2,7 @@ import type { DocConfig, DocPage } from './types'
 import { items as getStartedItems } from './get-started/[slug]/content/items'
 import { items as componentsItems } from './components/[slug]/content/items'
 import { items as stylingItems } from './styling/[slug]/content/items'
+import { items as themingItems } from './theming/[slug]/content/items'
 
 export const config: DocConfig = {
   meta: {
@@ -51,13 +52,13 @@ export const config: DocConfig = {
       id: '4',
       slug: 'theming',
       label: 'Theming',
-      href: '/docs/theming',
+      href: '/docs/theming/overview',
       meta: {
         title: 'Theming in Cerberus Design System',
         description:
           'Discover how to create and apply themes in the Cerberus Design System for a consistent look and feel.',
       },
-      items: [],
+      items: themingItems as DocPage[],
     },
   ],
 }

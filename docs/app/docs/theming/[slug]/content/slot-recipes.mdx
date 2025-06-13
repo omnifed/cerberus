@@ -1,0 +1,191 @@
+---
+title: Slot Recipes
+description: Learn how to style multiple parts components with slot recipes.
+---
+
+## Overview
+
+Slot Recipes come in handy when you need to apply style variations to multiple
+parts of a component.
+
+A slot recipe consists of these properties:
+
+- `className`: The className prefix to attach to the component slot
+- `slots`: An array of component parts to style
+- `jsx`: An optional array of elements that will consume the recipe
+- `base`: The base styles per slot
+- `variants`: The different visual styles for each slot
+- `defaultVariants`: The default variant for the component
+- `compoundVariants`: The compound variant combination and style overrides for
+  each slot.
+
+Slot recipes use the same syntax as PandaCSS recipes, but they are specifically
+designed to style multiple parts of a component.
+
+## Defining the recipe
+
+Use the `defineSlotRecipe` identity function to create a slot recipe.
+
+```tsx title="checkbox.recipe.ts"
+import { defineSlotRecipe } from "@pandacss/dev"
+
+export const checkboxSlotRecipe = defineSlotRecipe({
+  className: "checkbox",
+  slots: ["root", "control", "label"],
+  base: {
+    root: { display: "flex", alignItems: "center", gap: "2" },
+    control: { borderWidth: "1px", borderRadius: "sm" },
+    label: { marginStart: "2" },
+  },
+  variants: {
+    size: {
+      sm: {
+        control: { width: "8", height: "8" },
+        label: { fontSize: "sm" },
+      },
+      md: {
+        control: { width: "10", height: "10" },
+        label: { fontSize: "md" },
+      },
+    },
+  },
+})
+```
+
+## Using the recipe
+
+After defining recipes, we recommend using the Panda CLI to generate
+theme typings for your recipe.
+
+```bash
+npm panda codegen
+```
+
+There are two ways to use the recipe in a component:
+
+- Directly in the component
+- Creating a component (recommended) with the `Cerberus` factory
+
+### With the Cerberus Factory
+
+Import the `checkbox` recipe from your local `styled-system/recipes` folder and use it within your component.
+
+```tsx title="checkbox.tsx"
+import { createCerberusPrimitive } from "@cerberus/react"
+import { checkboxRecipe, type CheckboxVariantProps } from "./checkbox.recipe"
+
+const { withSlotRecipe } = createCerberusPrimitive<CheckboxVariantProps>(checkboxRecipe)
+
+export const CheckboxRoot = withSlotRecipe((props) => {...}, "root")
+export const CheckboxControl = withSlotRecipe((props) => {...}, "control")
+export const CheckboxLabel = withSlotRecipe((props) => {...}, "label")
+```
+
+### Directly in the Component
+
+#### splitVariantProps
+
+You can also use the `[recipe].splitVariantProps` function to split the recipe
+props from the component props. This is useful if you are not using the factory to create components.
+
+```tsx title="checkbox.tsx" {10}
+'use client';
+
+import { checkboxRecipe, type CheckboxVariantProps } from "./button.recipe"
+
+interface CustomCheckboxControlProps extends CheckboxVariantProps {
+  onChange: () => void
+}
+
+export function MyCustomCheckboxControl(props: CustomCheckboxControlProps) {
+  const [recipeProps, restProps] = checkboxRecipe.splitVariantProps(props)
+  const styles = checkboxRecipe(recipeProps)
+  return(
+    <div className={styles.root}>
+      <label className={styles.label}>{restProps.label}</label>
+      <input
+        className={styles.control}
+        onChange={restProps.onChange}
+      />
+    </div>
+  )
+}
+```
+
+#### TypeScript
+
+To infer the recipe variant prop types, use the `*VariantProps` type.
+
+```tsx title="checkbox.tsx"
+import { checkboxRecipe, type CheckboxVariantProps } from "./checkbox.recipe"
+
+export interface CheckboxRootProps extends CheckboxVariantProps {}
+```
+
+## Compound Variants
+
+Use the `compoundVariants` property to define a set of variants that are applied
+based on a combination of other variants.
+
+```tsx title="checkbox.recipe.ts" /compoundVariants/
+import { defineSlotRecipe } from "@pandacss/dev"
+
+export const checkboxRecipe = defineSlotRecipe({
+  slots: ["root", "control", "label"],
+  base: {},
+  variants: {
+    size: {
+      sm: {},
+      md: {},
+    },
+    visual: {
+      contained: {},
+      outline: {},
+    },
+  },
+  compoundVariants: [
+    {
+      size: "sm",
+      visual: "outline",
+      css: {
+        control: { borderWidth: "1px" },
+        label: { color: "green.500" },
+      },
+    },
+  ],
+})
+```
+
+## Targeting a slot
+
+In some cases, targeting a slot by className might be needed.
+
+- Set the `className` property in the config
+- The naming convention is `${className}__${slot}`
+
+```tsx title="checkbox.recipe.ts" /& .checkbox__label/
+import { defineSlotRecipe } from "@pandacss/dev"
+
+export const checkboxRecipe = defineSlotRecipe({
+  className: "checkbox",
+  slots: ["root", "control", "label"],
+  base: {
+    root: {
+      bg: "blue.500",
+      _hover: {
+        "& .checkbox__label": { color: "white" },
+      },
+    },
+  },
+})
+```
+
+### TypeScript
+
+Use the PandaCSS CLI to generate the types for the recipe.
+
+```bash
+npm panda codegen
+```
+
+This will register the recipe and generate the types for the slots.
