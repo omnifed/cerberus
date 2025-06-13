@@ -15,6 +15,9 @@ import LinkOverlay, {
   frontmatter as linkOverlayFrontmatter,
 } from '../link-overlay.mdx'
 import Stack, { frontmatter as stackFrontmatter } from '../stack.mdx'
+import Scrollable, {
+  frontmatter as scrollableFrontmatter,
+} from '../scrollable.mdx'
 import Wrap, { frontmatter as wrapFrontmatter } from '../wrap.mdx'
 
 export const layout = [
@@ -152,6 +155,19 @@ export const layout = [
         'Learn how to use the Link Overlay component in the Cerberus Design System to create clickable overlays.',
     },
     Content: LinkOverlay,
+  },
+  {
+    id: '1.2.12',
+    label: 'Scrollable',
+    slug: 'scrollable',
+    href: '/docs/components/scrollable',
+    frontmatter: scrollableFrontmatter,
+    meta: {
+      title: 'Scrollable Component in Cerberus Design System',
+      description:
+        'Explore the Scrollable component in the Cerberus Design System for creating scrollable areas within layouts.',
+    },
+    Content: Scrollable,
   },
   {
     id: '1.2.10',
