@@ -1,6 +1,6 @@
 import type { SemanticToken, Sentiment } from '@cerberus-design/panda-preset'
 import { normalizeTokens, getTokenList } from '@/app/docs/utils/color-helpers'
-import { Box, Grid, VStack } from '@/styled-system/jsx'
+import { Box, Grid, GridItem, VStack } from '@/styled-system/jsx'
 import { For, Text } from '@cerberus-design/react'
 import { HexValue } from './hex-value'
 
@@ -31,31 +31,33 @@ export function PaletteGroup(props: PaletteGroupProps) {
     >
       <Grid
         columns={{
-          base: 2,
-          md: 4,
-          lg: 5,
+          base: 1,
+          md: 2,
+          lg: 2,
         }}
         flexWrap="wrap"
         gap="lg"
       >
         <For each={Object.entries(tokens)}>
           {([usage, token]) => (
-            <VStack key={usage} justify="center">
-              <Box
-                border="1px solid"
-                borderColor="page.border.initial"
-                h="5rem"
-                rounded="lg"
-                w="7rem"
-                style={{
-                  backgroundColor: `var(--cerberus-colors-${toKebabCase(usage)})`,
-                }}
-              />
-              <Text as="small" textStyle="label-sm">
-                {toDotNotation(usage)}
-              </Text>
-              <HexValue value={(token as SemanticToken).value} />
-            </VStack>
+            <GridItem key={usage}>
+              <VStack justify="center" w="full">
+                <Box
+                  border="1px solid"
+                  borderColor="page.border.initial"
+                  h="4rem"
+                  rounded="lg"
+                  w="full"
+                  style={{
+                    backgroundColor: `var(--cerberus-colors-${toKebabCase(usage)})`,
+                  }}
+                />
+                <Text as="small" textStyle="label-sm">
+                  {toDotNotation(usage)}
+                </Text>
+                <HexValue value={(token as SemanticToken).value} />
+              </VStack>
+            </GridItem>
           )}
         </For>
       </Grid>
