@@ -90,7 +90,8 @@ import { buttonRecipe, type ButtonVariantProps } from "./button.recipe"
 const { withRecipe } = createCerberusPrimitive<ButtonVariantProps>(buttonRecipe)
 
 function MyCustomButton(props: ButtonVariantProps) {
-  return <button data-custom-stuff="true" {...props}>Click Me</button>
+  const dynamicValue = props.something ? 'yes' : 'no'
+  return <button data-dynamic-thing={dynamicValue} {...props}>Click Me</button>
 }
 
 export const Button = withRecipe(MyCustomButton)
@@ -103,22 +104,27 @@ export const Button = withRecipe(MyCustomButton)
 You can also use the `[recipe].splitVariantProps` function to split the recipe
 props from the component props. This is useful if you are not using the factory to create components.
 
-```tsx title="button.tsx" {10}
+```tsx title="button.tsx" {11}
 'use client';
 
+import { cerberus, type CerberusPrimitiveProps } from "@cerberus/react"
 import { buttonRecipe, type ButtonVariantProps } from "./button.recipe"
 
 interface CustomButtonProps extends ButtonVariantProps {
   doSomething: () => void
 }
 
-export function MyCustomButton(props: CustomButtonProps) {
+export function MyCustomButton(props: CerberusPrimitiveProps<CustomButtonProps>) {
   const [recipeProps, restProps] = buttonRecipe.splitVariantProps(props)
   const styles = buttonRecipe(recipeProps)
   return(
-    <button {...restProps} className={styles} onClick={restProps.doSomething}>
+    <cerberus.button
+      {...restProps}
+      className={styles}
+      onClick={restProps.doSomething}
+    >
       Click Me
-    </button>
+    </cerberus.button>
   )
 }
 ```

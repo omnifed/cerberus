@@ -1,0 +1,73 @@
+---
+title: Colors
+description: A list of colors available in Cerberus.
+---
+
+import { PaletteGroup }  from './components/colors/palette-group'
+
+## Semantic Tokens
+
+Cerberus provides a set of semantic colors that drive our themes.
+
+### Page
+
+Used for pages, layouts, and any other container that is relative to a page.
+
+<PaletteGroup palette="page" />
+
+### Action
+
+The primary palette for actions, such as buttons, links, and other interactive elements.
+
+<PaletteGroup palette="action" />
+
+### Secondary Action
+
+The secondary palette for actions, such as buttons, links, and other interactive elements.
+
+<PaletteGroup palette="secondaryAction" />
+
+### Info
+
+Used for informational elements, such as badges, tags, and other non-interactive elements.
+
+<PaletteGroup palette="info" />
+
+### Success
+
+Used for success states, such as success messages, notifications, and other positive feedback.
+
+<PaletteGroup palette="success" />
+
+### Warning
+
+Used for warning states, such as warning messages, notifications, and other cautionary feedback.
+
+<PaletteGroup palette="warning" />
+
+### Danger
+
+Used for danger states, such as error messages, notifications, and other negative feedback.
+
+<PaletteGroup palette="danger" />
+
+### Data-Visualization
+
+Used for data visualization elements, such as charts, graphs, and other visual representations of data.
+
+<PaletteGroup palette="dataViz" />
+
+## Naming Convention
+
+Cerberus uses a consistent naming convention for colors to ensure clarity and maintainability. Each color is named based on its purpose and context, making it easier to understand its intended use.
+
+```bash
+[palette?].[usage].[prominence?].[interaction?]
+```
+
+| Name        | Description                                                    |
+| ----------- | -------------------------------------------------------------- |
+| Palette     | The category/context of where the color is used.               |
+| Usage       | How the color is used within the context.                      |
+| Prominence  | The hierarchy of the color used within the page context.       |
+| Interaction | The element interaction type the color should be applied to.   |

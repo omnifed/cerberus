@@ -71,14 +71,14 @@ There are two ways to use the recipe in a component:
 Import the `checkbox` recipe from your local `styled-system/recipes` folder and use it within your component.
 
 ```tsx title="checkbox.tsx"
-import { createCerberusPrimitive } from "@cerberus/react"
+import { cerberus, createCerberusPrimitive } from "@cerberus/react"
 import { checkboxRecipe, type CheckboxVariantProps } from "./checkbox.recipe"
 
 const { withSlotRecipe } = createCerberusPrimitive<CheckboxVariantProps>(checkboxRecipe)
 
-export const CheckboxRoot = withSlotRecipe((props) => {...}, "root")
-export const CheckboxControl = withSlotRecipe((props) => {...}, "control")
-export const CheckboxLabel = withSlotRecipe((props) => {...}, "label")
+export const CheckboxRoot = withSlotRecipe(cerberus.div, "root")
+export const CheckboxControl = withSlotRecipe(cerberus.input, "control")
+export const CheckboxLabel = withSlotRecipe(cerberus.label, "label")
 ```
 
 ### Directly in the Component

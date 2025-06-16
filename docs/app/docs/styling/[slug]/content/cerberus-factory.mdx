@@ -12,9 +12,21 @@ HTML element to enable them receive `asChild` and `css` props.
 import { cerberus } from "@cerberus/react"
 ```
 
+## JSX Element
+
+With the JSX factory, you can use `cerberus.<element>` syntax to create JSX elements that support `css` and `asChild` props.
+
+```tsx
+import { cerberus } from "@cerberus/react"
+
+function Example() {
+  return <cerberus.button css={{ color: 'blue' }}>Click me</cerberus.button>
+}
+```
+
 ## Factory function
 
-Use the `cerberus` function to convert native element components..
+Use the `cerberus` function to convert native element components.
 
 ```tsx
 const Link = cerberus("a")
@@ -40,7 +52,7 @@ This example creates a button component that has the `type="button"` attribute a
 
 You can create a Cerberus primitive with the `createCerberusPrimitive` function. This is useful for creating components that have a specific recipe or style.
 
-All primitives created with this function will have the `css` and `asChild` props available.
+All primitives created with any of the higher order functions it returns will also have the `css` and `asChild` props available.
 
 ### withNoRecipe
 
@@ -81,15 +93,14 @@ This example creates a button component that has the `button` recipe styles appl
 Creates a Cerberus component with a specific recipe applied at the slot level. This is useful for creating components that have multiple slots with different styles.
 
 ```tsx
-import { createCerberusPrimitive } from "@cerberus/react"
-import { Field } from '@ark-ui/react'
+import { cerberus, createCerberusPrimitive } from "@cerberus/react"
 import { field } from "@system/recipes/slots"
 
 const { withSlotRecipe } = createCerberusPrimitive(field)
 
-const Field = withSlotRecipe(Field.Root, "root")
-const FieldLabel = withSlotRecipe(Field.Label, "label")
-const FieldInput = withSlotRecipe(Field.Input, "input")
+const Field = withSlotRecipe(cerberus.div, "root")
+const FieldLabel = withSlotRecipe(cerberus.label, "label")
+const FieldInput = withSlotRecipe(cerberus.input, "input")
 
 function Example() {
   return (
@@ -110,6 +121,6 @@ Every component created with the cerberus factory can accept the
 
 ```tsx
 <Button asChild>
-  <a href="https://chakra-ui.com">Chakra UI</a>
+  <a href="https://cerberus.digitalu.design/">Cerberus</a>
 </Button>
 ```
