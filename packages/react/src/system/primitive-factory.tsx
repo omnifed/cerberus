@@ -78,7 +78,7 @@ export class CerberusPrimitive {
   withRecipe = <P extends HTMLAttributes<unknown>>(
     Component: ComponentType<P>,
     options?: WithRecipeOptions,
-  ): CerberusPrimitiveEl<P> => {
+  ): CerberusPrimitiveEl<P & WithRecipeOptions['defaultProps']> => {
     const { defaultProps } = options || {}
     const recipe = this.recipe as CerberusRecipe
 

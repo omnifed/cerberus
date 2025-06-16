@@ -108,15 +108,22 @@ describe('cerberus', () => {
   test('should return a Cerberus component by name', () => {
     const Button = cerberus('button')
     expect(Button).toBeDefined()
-    render(<Button css={{ color: 'blue' }}>Click me</Button>)
+    render(<Button>Click me</Button>)
+    expect(screen.getByRole('button')).toBeInTheDocument()
     expect(screen.getByText(/click me/i)).toBeInTheDocument()
   })
 
   test('should accept defaultProps', () => {
     const Button = cerberus('button', { type: 'button' })
     render(<Button css={{ color: 'blue' }}>Click me</Button>)
-    const buttonElement = screen.getByRole('button')
-    expect(buttonElement).toHaveAttribute('type', 'button')
+    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByRole('button')).toHaveAttribute('type', 'button')
+    expect(screen.getByText(/click me/i)).toBeInTheDocument()
+  })
+
+  test('should also work with object syntax', () => {
+    render(<cerberus.button css={{ color: 'blue' }}>Click me</cerberus.button>)
+    expect(screen.getByRole('button')).toBeInTheDocument()
     expect(screen.getByText(/click me/i)).toBeInTheDocument()
   })
 })

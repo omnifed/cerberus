@@ -1,6 +1,6 @@
-import { ark } from '@ark-ui/react/factory'
-import { CerberusPrimitive } from './factory'
-import type { CerberusPrimitiveRecipe } from './types'
+import { CerberusPrimitive } from './primitive-factory'
+import type { CerberusFactory, CerberusPrimitiveRecipe } from './types'
+import { cerberusFactoryProxy } from './factory'
 
 /**
  * This module contains the user interface for creating Cerberus primitives.
@@ -42,20 +42,6 @@ export function createCerberusPrimitive<T extends CerberusPrimitiveRecipe>(
  * </Button>
  * ```
  */
-export function cerberus<T extends keyof typeof ark>(
-  component: T,
-  defaultProps: Record<string, unknown> = {},
-) {
-  const { withNoRecipe } = createCerberusPrimitive()
-  const arkComponent = ark[component]
-
-  if (arkComponent.$$typeof) {
-    return withNoRecipe(ark[component], { defaultProps })
-  }
-
-  throw new Error(
-    `Component "${String(component)}" is not a valid Cerberus component. Please check the component name.`,
-  )
-}
+export const cerberus = cerberusFactoryProxy as CerberusFactory
 
 export * from './types'

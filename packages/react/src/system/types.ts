@@ -6,6 +6,7 @@ import type {
 } from 'styled-system/types'
 import type { WithCss } from '../types'
 import type { ElementType, PropsWithChildren } from 'react'
+import type { ark } from '@ark-ui/react/factory'
 
 // Method signatures for recipes
 
@@ -33,4 +34,25 @@ export type WithRecipeOptions = {
 // Primitive Response
 
 export type CerberusPrimitiveProps<T> = WithCss & PropsWithChildren<T>
-export type CerberusPrimitiveEl<T> = ElementType<CerberusPrimitiveProps<T>>
+export type CerberusPrimitiveEl<T = object> = ElementType<
+  CerberusPrimitiveProps<T>
+>
+
+// Factory
+
+export type ArkPropsWithRef<T extends keyof typeof ark> = {
+  [K in keyof (typeof ark)[T]]: K extends 'asChild' ? never : (typeof ark)[T][K]
+} & {
+  asChild?: boolean
+}
+
+export type CerberusFactoryFn = <T extends Record<string, unknown>>(
+  component: keyof typeof ark,
+  defaultProps?: T,
+) => CerberusPrimitiveEl
+
+export type CerberusFactoryObject = {
+  [K in keyof typeof ark]: CerberusPrimitiveEl
+}
+
+export type CerberusFactory = CerberusFactoryFn & CerberusFactoryObject
