@@ -8,7 +8,7 @@ import Link from 'next/link'
 export function AsChildDemo() {
   return (
     <IconButton ariaLabel="link example" asChild>
-      <Link href="/react/icon-button/overview">
+      <Link href="/docs/components/icon-button">
         <ArrowDownRight />
       </Link>
     </IconButton>
