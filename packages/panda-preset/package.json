@@ -14,12 +14,12 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^0.53.3",
+    "@pandacss/dev": "^0.53.7",
     "autoprefixer": "*",
     "postcss": "*"
   },
   "devDependencies": {
-    "@ark-ui/react": "^5.9.2",
+    "@ark-ui/react": "^5.14.0",
     "@cerberus-design/configs": "workspace:*",
     "@pandacss/dev": "^0.53.7",
     "@pandacss/types": "^0.53.7"
@@ -68,5 +68,8 @@
     "du design system"
   ],
   "author": "developers@omnifederal.com",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "up": "^1.0.2"
+  }
 }
