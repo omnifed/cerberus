@@ -1,0 +1,230 @@
+---
+title: Checkbox
+description: 'The Checkbox component allows users to select one or more options from a set. It supports indeterminate states and custom styling.'
+npm: '@cerberus-design/react'
+source: 'components/checkbox'
+recipe: 'slots/checkbox.ts'
+ark: 'checkbox'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import {
+  OverviewPreview,
+  CustomCheckbox,
+  SizeDemo
+} from '../components/checkbox/static'
+import {
+  IndeterminatePreview
+} from '../components/checkbox/indeterminate'
+
+```ts
+import { Checkbox, CheckboxGroup, CheckboxParts } from '@cerberus/react'
+```
+
+## Usage
+
+The Checkbox component is a controlled component that can be used to select one or more options from a set. It can be used in a group with other checkboxes to allow for multiple selections.
+
+<CodePreview preview={<OverviewPreview />}>
+```tsx title="checkbox group"
+import { Checkbox, CheckboxGroup, For } from '@cerberus/react'
+
+export function CheckboxPreview() {
+  const items = [
+    {
+      id: 'terms',
+      label: 'I agree to the terms and conditions',
+
+      required: true,
+    },
+    {
+      id: 'legal',
+      label: 'I would like to receive marketing emails',
+    },
+  ]
+
+  return (
+    <CheckboxGroup name="user_acceptance">
+      <For each={items}>
+        {(item) => (
+          <Checkbox
+            key={item.id}
+            ids={{ control: item.id }}
+            required={Boolean(item.required)}
+          >
+            {item.label}
+          </Checkbox>
+        )}
+      </For>
+
+      <Checkbox ids={{ control: 'mixed' }} checked="indeterminate">
+        The indeterminate state
+      </Checkbox>
+    </CheckboxGroup>
+  )
+}
+```
+</CodePreview>
+
+## Indeterminate State
+
+The Checkbox component supports the indeterminate state, which is useful for indicating that a group of checkboxes is in a mixed state. To enable this state, set the `checked` prop to `indeterminate`.
+
+<CodePreview preview={<IndeterminatePreview />}>
+```tsx title="checkbox group"
+'use client'
+
+import { Checkbox, CheckboxGroup } from '@cerberus/react'
+import { Box } from 'styled-system/jsx'
+import { useState } from 'react'
+
+const initialValues = [
+  { label: 'Monday', checked: false, value: 'monday' },
+  { label: 'Tuesday', checked: false, value: 'tuesday' },
+  { label: 'Wednesday', checked: false, value: 'wednesday' },
+  { label: 'Thursday', checked: false, value: 'thursday' },
+]
+
+export function IndeterminatePreview() {
+  const [values, setValues] = useState(initialValues)
+
+  const allChecked = values.every((value) => value.checked)
+  const indeterminate = values.some((value) => value.checked) && !allChecked
+
+  const items = values.map((item, index) => (
+    <Checkbox
+      key={item.value}
+      checked={item.checked}
+      onCheckedChange={(e) => {
+        setValues((current) => {
+          const newValues = [...current]
+          newValues[index] = { ...newValues[index], checked: !!e.checked }
+          return newValues
+        })
+      }}
+    >
+      {item.label}
+    </Checkbox>
+  ))
+
+  return (
+    <Box w="1/2">
+      <CheckboxGroup name="days">
+        <Checkbox
+          checked={indeterminate ? 'indeterminate' : allChecked}
+          onCheckedChange={(e) => {
+            setValues((current) =>
+              current.map((value) => ({ ...value, checked: !!e.checked })),
+            )
+          }}
+        >
+          Weekdays
+        </Checkbox>
+
+        {items}
+      </CheckboxGroup>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Sizes
+
+The Checkbox component supports different sizes. You can set the size prop to `sm`, or `md`.
+
+<CodePreview preview={<SizeDemo />}>
+```tsx title="checkbox sizes"
+import { Checkbox, CheckboxGroup } from '@cerberus/react'
+
+function SizeDemo() {
+  return (
+    <CheckboxGroup name="size">
+      <Checkbox ids={{ control: 'small' }} size="sm">
+        Small
+      </Checkbox>
+      <Checkbox ids={{ control: 'medium' }} size="md">
+        Medium
+      </Checkbox>
+    </CheckboxGroup>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the checkbox.
+
+| Component | Description |
+| --------- | ----------- |
+| CheckboxRoot    | The context provider for the Checkbox parts |
+| CheckboxLabel   | The label of the checkbox |
+| CheckboxControl   | The input of the checkbox |
+| CheckboxIndicator   | The indicator of the checkbox state |
+| CheckboxGroup | The group container for multiple checkboxes |
+| CheckboxHiddenInput  | The native input for the checkbox |
+
+<CodePreview preview={<CustomCheckbox />}>
+```tsx title="custom checkbox"
+import { CheckboxParts } from '@cerberus/react'
+
+function CustomCheckbox() {
+  return (
+    <Box w="1/2">
+      <CheckboxParts.Root>
+        <CheckboxParts.Label>Custom Checkbox</CheckboxParts.Label>
+        <CheckboxParts.Control
+          css={{
+            bgColor: 'black',
+            border: '4px solid',
+            borderColor: 'danger.border.initial',
+            h: 8,
+            rounded: 'none',
+            transform: 'skewX(-10deg)',
+            w: 8,
+            _checked: {
+              bgColor: 'info.bg.initial',
+            },
+          }}
+        >
+          <CheckboxParts.Indicator>
+            <ArrowDownRight />
+          </CheckboxParts.Indicator>
+        </CheckboxParts.Control>
+        <CheckboxParts.HiddenInput />
+      </CheckboxParts.Root>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+### Props
+
+The `Checkbox` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| size     |  `sm`   | This size of the Checkbox.                             |
+
+
+The `Checkbox` component also accepts all the props of the [`CheckboxRoot` primitive props](https://ark-ui.com/react/docs/components/checkbox#api-reference)
+
+### Parts
+
+The `CheckboxParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the CheckboxParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `CheckboxRoot` component which is the Provider for the family. |
+| Label     | The `CheckboxLabel` component which displays the label and "required" notice. |
+| Control     | The `CheckboxControl` component which is the visual field. |
+| Indicator  | The `CheckboxIndicator` component which displays based on the `checked` state. |
+| Group | The `CheckboxGroup` component which creates a controls the spacing of a group. |
+| HiddenInput  | The `CheckboxHiddenInput` component which displays the native input. |

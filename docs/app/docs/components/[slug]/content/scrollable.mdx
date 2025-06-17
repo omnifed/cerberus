@@ -1,0 +1,70 @@
+---
+title: Scrollable
+description: A layout pattern to create scrollable containers.
+---
+
+import { NoteAdmonition } from "@/app/components/Admonition";
+
+```tsx
+import { Scrollable } from "styled-system/jsx";
+
+const Demo = () => {
+  return (
+    <Scrollable h="200px">
+      <Box bgColor="page.surface.100" color="white" padding="4"  width="full" >
+        This is the Box
+      </Box>
+    </Scrollable>
+  )
+}
+```
+
+## Usage
+
+The `Scrollable` component provides an easy way to create scrollable containers without having to worry about overflow styles.
+
+```tsx
+import { Scrollable } from "styled-system/jsx";
+```
+
+```tsx
+<Scrollable />
+```
+
+## Examples
+
+### Direction
+
+Use `vertical` or `horizontal` to control the overflow scrolling direction.
+
+```tsx
+import { Scrollable } from "styled-system/jsx";
+
+const Demo = () => {
+  return (
+    <Scrollable direction="horizontal" w="200px">
+      This is horizontal scrolling content.
+    </Scrollable>
+  )
+}
+```
+
+### Scrollbar visibility
+
+You can control the visibility of the scrollbar using the `hideScrollbar` prop.
+
+```tsx
+import { Scrollable } from "styled-system/jsx";
+const Demo = () => {
+  return (
+    <Scrollable hideScrollbar>
+      This is content with a hidden scrollbar.
+    </Scrollable>
+  )
+}
+```
+
+## Props
+
+The `Box` component supports all CSS properties as props, making it easy to
+style elements.

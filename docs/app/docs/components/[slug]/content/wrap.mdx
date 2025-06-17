@@ -1,0 +1,118 @@
+---
+title: Wrap
+description:
+  Used to add space between elements and wraps automatically if there isn't
+  enough space.
+panda: https://panda-css.com/docs/concepts/patterns#wrap
+---
+
+```tsx
+import { Wrap, WrapItem } from "styled-system/jsx"
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+const Demo = () => {
+  return (
+    <Wrap>
+      <WrapItem>
+        <DecorativeBox h="20" />
+      </WrapItem>
+      <WrapItem>
+        <DecorativeBox h="20" />
+      </WrapItem>
+      <WrapItem>
+        <DecorativeBox h="20" />
+      </WrapItem>
+    </Wrap>
+  )
+}
+```
+
+## Usage
+
+By default, `Wrap` applies `display: flex`, `flex-wrap: wrap`, and `gap: 8px` to
+its children.
+
+```tsx
+import { Wrap, WrapItem } from "styled-system/jsx";
+```
+
+```tsx
+<Wrap>
+  <div />
+  <div />
+</Wrap>
+```
+
+## Examples
+
+### Gap or Spacing
+
+Pass the `gap` prop to apply a consistent spacing between each child, even if it
+wraps.
+
+```tsx
+import { Wrap } from "styled-system/jsx"
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+export const WrapWithGap = () => (
+  <Wrap gap="5">
+    {Array.from({ length: 10 }).map((_, index) => (
+      <DecorativeBox key={index} h="12" w="12" />
+    ))}
+  </Wrap>
+)
+```
+
+### Alignment
+
+Pass the `align` prop to change the alignment of the child along the cross axis.
+
+```tsx
+import { Wrap } from "styled-system/jsx"
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+export const WrapWithAlign = () => (
+  <Wrap align="center">
+    {Array.from({ length: 10 }).map((_, index) => (
+      <DecorativeBox key={index} h="12" w="12" />
+    ))}
+  </Wrap>
+)
+```
+
+
+### Justify
+
+Pass the `justify` prop to change the alignment of the child along the main
+axis.
+
+```tsx
+import { Wrap } from "styled-system/jsx"
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+export const WrapWithJustify = () => (
+  <Wrap justify="space-between">
+    {Array.from({ length: 10 }).map((_, index) => (
+      <DecorativeBox key={index} h="12" w="12" />
+    ))}
+  </Wrap>
+)
+```
+
+### Row and Column Gap
+
+Pass the `rowGap` and `columnGap` props to apply a consistent spacing between
+the rows and columns.
+
+```tsx
+import { Wrap } from "styled-system/jsx"
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+export const WrapWithRowAndColumnGap = () => (
+  <Wrap rowGap="4" columnGap="8">
+    {Array.from({ length: 10 }).map((_, index) => (
+      <DecorativeBox key={index} h="12" w="12" />
+    ))}
+  </Wrap>
+)
+```

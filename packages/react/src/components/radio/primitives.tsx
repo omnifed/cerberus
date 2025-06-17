@@ -1,120 +1,102 @@
 import {
   RadioGroup as ArkRadioGroup,
-  type RadioGroupIndicatorProps,
-  type RadioGroupItemControlProps,
-  type RadioGroupItemHiddenInputProps,
-  type RadioGroupItemProps,
-  type RadioGroupItemTextProps,
-  type RadioGroupLabelProps,
-  type RadioGroupRootProps,
+  type RadioGroupIndicatorProps as ArkRadioGroupIndicatorProps,
+  type RadioGroupItemControlProps as ArkRadioGroupItemControlProps,
+  type RadioGroupItemHiddenInputProps as ArkRadioGroupItemHiddenInputProps,
+  type RadioGroupItemProps as ArkRadioGroupItemProps,
+  type RadioGroupItemTextProps as ArkRadioGroupItemTextProps,
+  type RadioGroupLabelProps as ArkRadioGroupLabelProps,
+  type RadioGroupRootProps as ArkRadioGroupRootProps,
 } from '@ark-ui/react/radio-group'
-import { cx } from 'styled-system/css'
 import { radioGroup, type RadioGroupVariantProps } from 'styled-system/recipes'
+import {
+  createCerberusPrimitive,
+  type CerberusPrimitiveProps,
+} from '../../system/index'
 
 /**
  * This module contains the Radio primitives
  * @module 'react/radio'
  */
 
-/**
- * The RadioGroupRoot component is used to group radio buttons together.
- */
-export function RadioGroupRoot(
-  props: RadioGroupRootProps & RadioGroupVariantProps,
-) {
-  const { size, orientation, ...rootProps } = props
-  const styles = radioGroup({ size, orientation })
-  return (
-    <ArkRadioGroup.Root
-      {...rootProps}
-      className={cx(styles.root, rootProps.className)}
-    />
-  )
-}
+const { withSlotRecipe } = createCerberusPrimitive(radioGroup)
+
+// Root
+
+export type RadioGroupRootProps = CerberusPrimitiveProps<
+  ArkRadioGroupRootProps & RadioGroupVariantProps
+>
+// @ts-expect-error this is a workaround for the type WIP
+export const RadioGroupRoot = withSlotRecipe<RadioGroupRootProps>(
+  ArkRadioGroup.Root,
+  'root',
+)
+
+// Label
+
+export type RadioGroupLabelProps =
+  CerberusPrimitiveProps<ArkRadioGroupLabelProps>
+export const RadioGroupLabel = withSlotRecipe<RadioGroupLabelProps>(
+  ArkRadioGroup.Label,
+  'label',
+)
+
+// Indicator
+
+export type RadioGroupIndicatorProps =
+  CerberusPrimitiveProps<ArkRadioGroupIndicatorProps>
+export const RadioGroupIndicator = withSlotRecipe<RadioGroupIndicatorProps>(
+  ArkRadioGroup.Indicator,
+  'indicator',
+)
+
+// Item
+
+export type RadioGroupItemProps = CerberusPrimitiveProps<ArkRadioGroupItemProps>
+export const RadioGroupItem = withSlotRecipe<RadioGroupItemProps>(
+  ArkRadioGroup.Item,
+  'item',
+)
+
+// Item Text
+
+export type RadioGroupItemTextProps = CerberusPrimitiveProps<
+  ArkRadioGroupItemTextProps & RadioGroupVariantProps
+>
+export const RadioGroupItemText = withSlotRecipe<RadioGroupItemTextProps>(
+  ArkRadioGroup.ItemText,
+  'itemText',
+)
+
+// Item Control
+
+export type RadioGroupItemControlProps = CerberusPrimitiveProps<
+  ArkRadioGroupItemControlProps & RadioGroupVariantProps
+>
+export const RadioGroupItemControl = withSlotRecipe<RadioGroupItemControlProps>(
+  ArkRadioGroup.ItemControl,
+  'itemControl',
+)
+
+// Item Hidden Input
+
+export type RadioGroupItemHiddenInputProps = ArkRadioGroupItemHiddenInputProps
+export const RadioGroupItemHiddenInput = ArkRadioGroup.ItemHiddenInput
 
 /**
- * The RadioGroupLabel component is used to label a group of radio buttons.
+ * The context provider for a set of radio buttons.
+ * It provides the necessary context for managing the state of the radio group.
+ * @see {@link https://cerberus.digitalu.design/react/radio/overview}
+ *
+ * @example
+ * ```tsx
+ * import { RadioGroup } from '@cerberus/react/radio';
+ *
+ * <RadioGroup defaultValue="cerberus">
+ *   <Radio value="cerberus">Cerberus</Radio>
+ *   <Radio value="hades">Hades</Radio>
+ *   <Radio value="zeus">Zeus</Radio>
+ * </RadioGroup>
+ * ```
  */
-export function RadioGroupLabel(props: RadioGroupLabelProps) {
-  const styles = radioGroup()
-  return (
-    <ArkRadioGroup.Label
-      {...props}
-      className={cx(styles.label, props.className)}
-    />
-  )
-}
-
-/**
- * The RadioGroupIndicator component is used to indicate the selected radio
- * button in a group.
- */
-export function RadioGroupIndicator(props: RadioGroupIndicatorProps) {
-  const styles = radioGroup()
-  return (
-    <ArkRadioGroup.Indicator
-      {...props}
-      className={cx(styles.indicator, props.className)}
-    />
-  )
-}
-
-/**
- * The RadioGroupItem component is used to render a single radio button in a
- * group.
- */
-export function RadioGroupItem(props: RadioGroupItemProps) {
-  const styles = radioGroup()
-  return (
-    <ArkRadioGroup.Item
-      {...props}
-      className={cx(styles.item, props.className)}
-    />
-  )
-}
-
-/**
- * The RadioGroupItemText component is used to render the text label for a
- * single radio button in a group.
- */
-export function RadioGroupItemText(
-  props: RadioGroupItemTextProps & RadioGroupVariantProps,
-) {
-  const { size, orientation, ...itemTextProps } = props
-  const styles = radioGroup({ size, orientation })
-  return (
-    <ArkRadioGroup.ItemText
-      {...itemTextProps}
-      className={cx(styles.itemText, itemTextProps.className)}
-    />
-  )
-}
-
-/**
- * The RadioGroupItemControl component is used to render the control for a
- * single radio button in a group.
- */
-export function RadioGroupItemControl(
-  props: RadioGroupItemControlProps & RadioGroupVariantProps,
-) {
-  const { size, orientation, ...itemControlProps } = props
-  const styles = radioGroup({ size, orientation })
-  return (
-    <ArkRadioGroup.ItemControl
-      {...itemControlProps}
-      className={cx(styles.itemControl, itemControlProps.className)}
-    />
-  )
-}
-
-/**
- * The RadioGroupItemHiddenInput component is used to render the hidden input
- * for a single radio button in a group.
- */
-export function RadioGroupItemHiddenInput(
-  props: RadioGroupItemHiddenInputProps,
-) {
-  return <ArkRadioGroup.ItemHiddenInput {...props} />
-}
-
 export const RadioGroup = RadioGroupRoot

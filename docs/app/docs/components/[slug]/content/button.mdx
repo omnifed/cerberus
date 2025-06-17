@@ -1,0 +1,155 @@
+---
+title: Button
+description: Used to trigger actions or events.
+npm: '@cerberus-design/react'
+source: 'components/button'
+recipe: 'button.ts'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import {
+  BasicButtonPreview,
+  WithIconButtonPreview,
+  PendingButtonDemo,
+  SizesDemo,
+  CustomButtonPreview,
+} from '../components/button/static'
+
+```ts
+import { Button, ButtonParts } from '@cerberus/react'
+```
+
+## Usage
+
+<CodePreview preview={<BasicButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus/react'
+
+function BasicButtonPreview() {
+  return <Button>Default styles</Button>
+}
+```
+</CodePreview>
+
+
+### With Icon
+
+To display an icon, you can use the `ButtonParts.Icon` component.
+
+<CodePreview preview={<WithIconButtonPreview />}>
+```tsx title="button.tsx"
+import { ButtonParts } from '@cerberus/react'
+import { ArrowDownRight } from '@carbon/icons-react'
+
+function WithIconButton() {
+  return (
+    <ButtonParts.Root>
+      With icon
+      <ButtonParts.Icon>
+        <ArrowDownRight />
+      </ButtonParts.Icon>
+    </ButtonParts.Root>
+  )
+}
+```
+</CodePreview>
+
+## Pending
+
+To display a loading state, use the `ButtonParts.Icon` and set the `pending` prop to `true`. This will show a spinner in place of the icon.
+
+<CodePreview preview={<PendingButtonDemo />}>
+```tsx title="button.tsx"
+import { ButtonParts } from '@cerberus/react'
+
+function PendingButtonDemo() {
+  return (
+    <ButtonParts.Root pending>
+      <ButtonParts.Icon />
+      Pending
+    </ButtonParts.Root>
+  )
+}
+```
+</CodePreview>
+
+## Sizes
+
+The `Button` component comes in two sizes: `sm`, `md`. You can set the size by using the `size` prop.
+
+<CodePreview preview={<SizesDemo />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+function SizesDemo() {
+  return (
+    <HStack>
+      <Button size="sm">Small</Button>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the button.
+
+| Component | Description |
+| --------- | ----------- |
+| Button    | The context provider for the Button parts |
+| ButtonIcon  | The icon/spinner of the button |
+
+<CodePreview preview={<CustomButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus/react'
+
+function CustomButtonPreview() {
+  return (
+    <Button
+      css={{
+        bgColor: 'danger.bg.initial',
+        color: 'danger.text.initial',
+        rounded: 'md',
+        transform: 'skew(-10deg)',
+        _hover: {
+          bgColor: 'black',
+          color: 'yellow',
+        },
+      }}
+    >
+      Cerberus Forever
+    </Button>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+### Props
+
+The `Button` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| palette     | `action`   | The color palette (any of the Cerberus palettes) of the button. |
+| usage | `filled`    | The style treatment of the button.    |
+| shape | `sharp`     | The shape of the button.              |
+| pending | `false`    | The loading state of the button. When a button has an `Icon` it will replace it with a spinner. When not, is shows a disabled state.     |
+| asChild | | Render the Button as the child component. |
+
+### Parts
+
+The `ButtonParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the ButtonParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `Button` component which is the Provider for the family. |
+| Icon     | The `ButtonIcon` component which dynamically replaces an icon with a Spinner when the state is `pending`. |

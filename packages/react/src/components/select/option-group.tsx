@@ -1,8 +1,10 @@
-import type {
-  SelectItemGroupLabelProps,
-  SelectItemGroupProps,
-} from '@ark-ui/react/select'
 import { SelectItemGroup, SelectItemGroupLabel } from './primitives'
+
+/**
+ * This module contains the named abstractions OptionGroup and OptionGroupLabel
+ * components for API consistency with the Select component.
+ * @module 'react/select/option-group'
+ */
 
 /**
  * The OptionGroup component is a group of options in the dropdown list.
@@ -16,9 +18,7 @@ import { SelectItemGroup, SelectItemGroupLabel } from './primitives'
  * </OptionGroup>
  * ```
  */
-export function OptionGroup(props: SelectItemGroupProps) {
-  return <SelectItemGroup {...props} />
-}
+export const OptionGroup = SelectItemGroup
 
 /**
  * The OptionGroupLabel component is the label of the OptionGroup.
@@ -29,6 +29,4 @@ export function OptionGroup(props: SelectItemGroupProps) {
  * <OptionGroupLabel>Greek gods</OptionGroupLabel>
  * ```
  */
-export function OptionGroupLabel(props: SelectItemGroupLabelProps) {
-  return <SelectItemGroupLabel {...props} />
-}
+export const OptionGroupLabel = SelectItemGroupLabel

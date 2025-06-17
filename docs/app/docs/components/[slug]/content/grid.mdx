@@ -1,0 +1,105 @@
+---
+title: Grid
+description: Used to manage grid layouts.
+panda: https://panda-css.com/docs/concepts/patterns#grid
+---
+
+```tsx
+import { Grid } from "styled-system/jsx"
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+const Demo = () => {
+  return (
+    <Grid templateColumns="repeat(3, 1fr)" gap="6">
+      <DecorativeBox h="20" />
+      <DecorativeBox h="20" />
+      <DecorativeBox h="20" />
+    </Grid>
+  )
+}
+```
+
+## Usage
+
+```jsx
+import { Grid, GridItem } from "styled-system/jsx""
+```
+
+```jsx
+<Grid>
+  <GridItem />
+  <GridItem />
+</Grid>
+```
+
+## Examples
+
+### Col Span
+
+Pass `colSpan` prop to `GridItem` to span across columns.
+
+```tsx
+import { Grid, GridItem } from "styled-system/jsx"
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+const Demo = () => {
+  return (
+    <Grid templateColumns="repeat(4, 1fr)" gap="6">
+      <GridItem colSpan={2}>
+        <DecorativeBox h="20" />
+      </GridItem>
+      <GridItem colSpan={1}>
+        <DecorativeBox h="20" />
+      </GridItem>
+      <GridItem colSpan={1}>
+        <DecorativeBox h="20" />
+      </GridItem>
+    </Grid>
+  )
+}
+```
+
+### Spanning Columns
+
+In some layouts, you may need certain grid items to span specific amount of
+columns or rows instead of an even distribution
+
+```tsx
+import { Grid, GridItem } from "styled-system/jsx"
+import { DecorativeBox } from "compositions/lib/decorative-box"
+
+const Demo = () => {
+  return (
+    <Grid
+      h="200px"
+      templateRows="repeat(2, 1fr)"
+      templateColumns="repeat(5, 1fr)"
+      gap={4}
+    >
+      <GridItem rowSpan={2} colSpan={1}>
+        <DecorativeBox>rowSpan=2</DecorativeBox>
+      </GridItem>
+      <GridItem colSpan={2}>
+        <DecorativeBox>colSpan=2</DecorativeBox>
+      </GridItem>
+      <GridItem colSpan={2}>
+        <DecorativeBox>colSpan=2</DecorativeBox>
+      </GridItem>
+      <GridItem colSpan={4}>
+        <DecorativeBox>colSpan=4</DecorativeBox>
+      </GridItem>
+    </Grid>
+  )
+}
+```
+
+## Props
+
+| Prop        | Type         | Description                                    |
+|-------------|--------------|------------------------------------------------|
+| templateColumns | `SystemStyleObject['gridTemplateColumns']`       | Defines the columns of the grid.               |
+| templateRows    | `SystemStyleObject['gridTemplateRows']`       | Defines the rows of the grid.                  |
+| gap             | `SystemStyleObject['gap']`       | Defines the gap between grid items.            |
+| colSpan         | `number`       | Number of columns the grid item should span.   |
+| rowSpan         | `number`       | Number of rows the grid item should span.      |
+| columns         | `number`       | Number of columns in the grid.                 |

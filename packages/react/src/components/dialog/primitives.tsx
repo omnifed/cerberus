@@ -1,116 +1,83 @@
 import {
   Dialog,
-  type DialogBackdropProps,
-  type DialogContentProps,
-  type DialogDescriptionProps,
-  type DialogPositionerProps,
-  type DialogRootProps,
-  type DialogTitleProps,
-  type DialogTriggerProps,
+  type DialogBackdropProps as ArkDialogBackdropProps,
+  type DialogContentProps as ArkDialogContentProps,
+  type DialogDescriptionProps as ArkDialogDescriptionProps,
+  type DialogPositionerProps as ArkDialogPositionerProps,
+  type DialogRootProps as ArkDialogRootProps,
+  type DialogTitleProps as ArkDialogTitleProps,
+  type DialogTriggerProps as ArkDialogTriggerProps,
 } from '@ark-ui/react/dialog'
-import { css, cx } from 'styled-system/css'
 import { dialog, type DialogVariantProps } from 'styled-system/recipes'
-import type { WithCss } from '../../types'
+import {
+  createCerberusPrimitive,
+  type CerberusPrimitiveProps,
+} from '../../system/index'
 
 /**
  * This module contains the primitives of the Dialog component.
  * @module 'dialog/primitives'
  */
 
+const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(dialog)
+
 /**
  * The provider that controls the dialog components.
  */
-export function DialogRoot(props: DialogRootProps) {
-  return <Dialog.Root {...props} />
-}
+export type DialogRootProps = CerberusPrimitiveProps<ArkDialogRootProps>
+export const DialogRoot = withNoRecipe(Dialog.Root)
+
+/**
+ * An abstraction of the DialogRoot component for naming consistency.
+ */
+export const DialogProvider = DialogRoot
 
 /**
  * The trigger that opens the dialog.
  */
-export function DialogTrigger(props: DialogTriggerProps) {
-  const styles = dialog()
-  return (
-    <Dialog.Trigger
-      {...props}
-      className={cx(styles.trigger, props.className)}
-    />
-  )
-}
+export type DialogTriggerProps = CerberusPrimitiveProps<ArkDialogTriggerProps>
+export const DialogTrigger = withSlotRecipe(Dialog.Trigger, 'trigger')
 
 /**
  * The overlay of the dialog.
  */
-export function DialogBackdrop(props: DialogBackdropProps) {
-  const styles = dialog()
-  return (
-    <Dialog.Backdrop
-      {...props}
-      className={cx(styles.backdrop, props.className)}
-    />
-  )
-}
+export type DialogBackdropProps = CerberusPrimitiveProps<ArkDialogBackdropProps>
+export const DialogBackdrop = withSlotRecipe(Dialog.Backdrop, 'backdrop')
 
 /**
  * The container that positions the dialog.
  */
-export function DialogPositioner(props: DialogPositionerProps) {
-  const styles = dialog()
-  return (
-    <Dialog.Positioner
-      {...props}
-      className={cx(styles.positioner, props.className)}
-    />
-  )
-}
+export type DialogPositionerProps =
+  CerberusPrimitiveProps<ArkDialogPositionerProps>
+export const DialogPositioner = withSlotRecipe(Dialog.Positioner, 'positioner')
 
 /**
  * The visible content of the dialog.
  */
-export function DialogContent(
-  props: DialogContentProps & DialogVariantProps & WithCss,
-) {
-  const { size, css: customStyles, ...contentProps } = props
-  const styles = dialog({ size })
-  return (
-    <Dialog.Content
-      {...contentProps}
-      className={cx(styles.content, css(customStyles), contentProps.className)}
-    />
-  )
-}
+export type DialogContentProps = CerberusPrimitiveProps<
+  ArkDialogContentProps & DialogVariantProps
+>
+export const DialogContent = withSlotRecipe(Dialog.Content, 'content')
 
 /**
  * The heading of the dialog.
  */
-export function DialogHeading(props: DialogTitleProps) {
-  const styles = dialog()
-  return (
-    <Dialog.Title {...props} className={cx(styles.title, props.className)} />
-  )
-}
+export type DialogHeadingProps = CerberusPrimitiveProps<ArkDialogTitleProps>
+export const DialogHeading = withSlotRecipe(Dialog.Title, 'title')
 
 /**
  * The description of the dialog.
  */
-export function DialogDescription(props: DialogDescriptionProps) {
-  const styles = dialog()
-  return (
-    <Dialog.Description
-      {...props}
-      className={cx(styles.description, props.className)}
-    />
-  )
-}
+export type DialogDescriptionProps =
+  CerberusPrimitiveProps<ArkDialogDescriptionProps>
+export const DialogDescription = withSlotRecipe(
+  Dialog.Description,
+  'description',
+)
 
 /**
  * The trigger that closes the dialog.
  */
-export function DialogCloseTrigger(props: DialogTriggerProps) {
-  return <Dialog.CloseTrigger {...props} />
-}
-
-/**
- * The provider that controls the dialog components. This is a named export of
- * the DialogRoot primitive.
- */
-export const DialogProvider = DialogRoot
+export type DialogCloseTriggerProps =
+  CerberusPrimitiveProps<ArkDialogTriggerProps>
+export const DialogCloseTrigger = withNoRecipe(Dialog.CloseTrigger)

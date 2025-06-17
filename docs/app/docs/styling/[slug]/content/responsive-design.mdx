@@ -1,0 +1,124 @@
+---
+title: Responsive Design
+description:
+  Learn how to create responsive designs using Cerberus UI's built-in responsive
+  style props
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+
+## Overview
+
+Responsive design is a fundamental aspect of modern web development, allowing
+websites and applications to adapt seamlessly to different screen sizes and
+devices.
+
+Cerberus provides a comprehensive set of responsive utilities and features to facilitate the creation of responsive layouts. It lets you do this through conditional styles for different breakpoints.
+
+Let's say you want to change the font weight of a text on large screens, you can do it like this:
+
+```tsx
+<Text fontWeight="medium" lg={{ fontWeight: 'bold' }}>Text</Text>
+```
+
+<NoteAdmonition description={<>Cerberus uses a mobile-first breakpoint system and leverages min-width media queries `@media(min-width)` when you write responsive styles.</>} />
+
+Cerberus provides five breakpoints by default:
+
+```ts
+const breakpoints = {
+  sm: '640px',
+  md: '768px',
+  lg: '1024px',
+  xl: '1280px',
+  '2xl': '1536px'
+}
+```
+
+## Object syntax
+
+Cerberus allows you apply the responsive condition directly to a style property, resulting in a more concise syntax:
+
+```diff
+<Text
+-   fontWeight="medium"
+-   lg={{ fontWeight: 'bold' }}
++   fontWeight={{ base: 'medium', lg: 'bold' }}
+>
+  Text
+</Text>
+```
+
+### The Array syntax
+
+Cerberus also accepts arrays as values for responsive styles. Pass the corresponding value for each breakpoint in the array. Using our previous code as an example:
+
+```tsx
+<Text fontWeight={['medium', undefined, undefined, 'bold']}>
+  Text
+</Text>
+```
+
+> We're leaving the corresponding values of the unused breakpoints `md` and `lg` as undefined.
+
+### Targeting a breakpoint range
+
+By default, styles assigned to a specific breakpoint will be effective at that breakpoint and will persist as applied styles at larger breakpoints.
+
+If you wish to apply a utility exclusively when a particular range of breakpoints is active, Cerberus offers properties that restrict the style to that specific range. To construct the property, combine the minimum and maximum breakpoints using the "To" notation in camelCase format.
+
+Let's say we want to apply styles between the `md` and `xl` breakpoints, we use the `mdToXl` property:
+
+```tsx
+<Text fontWeight={{ mdToXl: 'bold' }}>
+  Text
+</Text>
+```
+
+> This text will only be bold in `md`, `lg` and `xl` breakpoints.
+
+### Targeting a single breakpoint
+
+To target a single breakpoint, you can easily achieve this by simply adding the suffix "Only" to the breakpoint name in camelCase format.
+
+Let's say we want to apply styles only in the `lg` breakpoint, we use the `lgOnly` property:
+
+```tsx
+<Text fontWeight={{ lgOnly: 'bold' }}>
+  Text
+</Text>
+```
+
+### Customizing Breakpoints
+
+When encountering certain scenarios, it may become necessary to establish custom breakpoints tailored to your application's needs. It is advisable to utilize commonly used aliases such as `sm`, `md`, `lg`, and `xl` for this purpose.
+
+In order to define custom breakpoints, you can easily accomplish this by passing them as an object within your PandaCSS config.
+
+> Note: Make sure that the CSS units of your breakpoints are consistent. Use either all pixels (`px`) or all `em`, but do not mix them.
+
+```js filename="panda.config.ts"
+import {
+  createCerberusConfig,
+  createCerberusPreset,
+} from '@cerberus/panda-preset'
+
+export default createCerberusConfig({
+  presets: [createCerberusPreset()],
+
+  include: ['./app/**/*.{ts,tsx}'],
+  exclude: [],
+
+  theme: {
+    extend: {
+      breakpoints: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px'
+      }
+    }
+  }
+})
+```

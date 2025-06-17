@@ -1,0 +1,63 @@
+---
+title: 'Text'
+description: 'A component for rendering text.'
+npm: '@cerberus-design/react'
+source: 'components/Text.tsx'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import TextPreview from '../components/text/static'
+
+```ts
+import { Text } from '@cerberus/react'
+```
+
+## Usage
+
+<CodePreview preview={<TextPreview />}>
+```tsx title="Basic usage"
+import { Text } from '@cerberus/react'
+
+export default function TextDemo() {
+  return (
+    <>
+      <Text
+        as="h1"
+        color="page.text.100"
+        textStyle={{
+          base: 'heading-md',
+          md: 'heading-lg',
+        }}
+      >
+        Hello, world!
+      </Text>
+      <Text>This is normal text</Text>
+      <Text as="small" color="info.text.100" textStyle="body-sm">
+        This is small text
+      </Text>
+    </>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+```ts showLineNumbers=false
+export type Headings = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+export type TextElements = 'p' | 'strong' | 'em' | 'small' | 'span'
+
+export interface TextProps extends BoxProps {
+  as?: TextElements | Headings
+}
+
+define function Text(props: TextProps): ReactNode
+```
+
+### Props
+
+The `Text` component accepts the following props along with the props from the `Box` component.
+
+| Name     | Default | Description                                                   |
+| -------- | ------- | ------------------------------------------------------------- |
+| as     |    | The text-based element to render the component as. |

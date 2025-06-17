@@ -2,10 +2,10 @@
 
 import type {
   DatePicker,
-  DatePickerViewProps,
   UseDatePickerContext,
 } from '@ark-ui/react/date-picker'
 import { DatePickerParts } from './parts'
+import type { DatePickerViewProps } from './primitives'
 import { DatePickerViewControlGroup } from './view-control-group'
 
 /**

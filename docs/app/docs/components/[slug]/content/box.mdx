@@ -1,0 +1,142 @@
+---
+title: Box
+description:
+  The most abstract styling component in Cerberus on top of which all other
+  Cerberus components are built.
+panda: https://panda-css.com/docs/concepts/patterns#box
+---
+
+import { NoteAdmonition } from "@/app/components/Admonition";
+
+```tsx
+import { Box } from "styled-system/jsx";
+
+const Demo = () => {
+  return (
+    <Box bgColor="page.surface.100" color="white" padding="4"  width="full" >
+      This is the Box
+    </Box>
+  )
+}
+```
+
+## Usage
+
+The `Box` component provides an easy way to write styles with ease. It provides
+access to design tokens and an unmatched DX when writing responsive styles.
+
+```tsx
+import { Box } from "styled-system/jsx";
+```
+
+```tsx
+<Box />
+```
+
+## Examples
+
+### Shorthand
+
+Use shorthand like `bgColor` instead of `backgroundColor`, `m` instead of `margin`, etc.
+
+```tsx
+import { Box } from "styled-system/jsx";
+
+const Demo = () => {
+  return (
+    <Box
+      bgColor="page.surface.100"
+      color="page.text.100"
+      m="md"
+      p="md"
+      w="full"
+    >
+      This is the Box
+    </Box>
+  )
+}
+```
+
+### Pseudo Props
+
+Use pseudo props like `_hover` to apply styles on hover, `_focus` to apply
+styles on focus, etc.
+
+```tsx
+import { Box } from "styled-system/jsx";
+
+const Demo = () => {
+  return (
+    <Box bg="tomato" w="100%" p="4" color="white" _hover={{ bg: "green" }}>
+      This is the Box
+    </Box>
+  )
+}
+```
+
+### Border
+
+Use the `border` and `borderColor` prop to apply border styles.
+
+```tsx
+import { Box } from "styled-system/jsx";
+
+const Demo = () => {
+  return (
+    <Box
+      border="1px solid"
+      borderColor="page.border.initial"
+      color="page.text.100"
+      p="4"
+    >
+      Box with a border
+    </Box>
+  )
+}
+
+```
+
+### As Prop
+
+Use the `asChild` prop to render a different component.
+
+<NoteAdmonition description="Inspect the DOM to see the rendered component." />
+
+```tsx
+import { Box } from "styled-system/jsx";
+
+const Demo = () => {
+  return (
+    <Box asChild bgColor="page.surface.100" p="4">
+      <section>This is a section rendered as a Box</section>
+    </Box>
+  )
+}
+```
+
+### Shadow
+
+Use the `boxShadow` or `shadow` prop to apply shadow styles.
+
+```tsx
+import { Box } from "styled-system/jsx";
+
+const Demo = () => {
+  return (
+    <Box
+      bgColor="page.surface.100"
+      color="page.text.100"
+      p="4"
+      rounded="md"
+      shadow="md"
+    >
+      This is the Box with shadow
+    </Box>
+  )
+}
+```
+
+## Props
+
+The `Box` component supports all CSS properties as props, making it easy to
+style elements.

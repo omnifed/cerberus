@@ -1,9 +1,9 @@
 'use client'
 
-import type { DatePickerTriggerProps } from '@ark-ui/react/date-picker'
 import { useCerberusContext } from '../../context/cerberus'
-import { IconButton } from '../IconButton'
+import { IconButton } from '../icon-button/index'
 import { DatePickerParts } from './parts'
+import type { DatePickerTriggerProps } from './primitives'
 
 /**
  * This private module contains the DatePicker trigger component.

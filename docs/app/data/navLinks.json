@@ -1,13 +1,8 @@
 [
   {
-    "id": "preset",
-    "label": "Core",
-    "href": "/preset"
-  },
-  {
-    "id": "react",
-    "label": "Components",
-    "href": "/react/getting-started/overview"
+    "id": "docs",
+    "label": "Docs",
+    "href": "/docs/get-started/installation"
   },
   {
     "id": "blog",

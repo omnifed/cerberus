@@ -18,6 +18,7 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
       bgColor: 'page.bg.100',
       overflow: 'hidden',
       position: 'relative',
+      rounded: 'var(--progress-bar-radii)',
       w: 'full',
     },
     bar: {
@@ -30,6 +31,7 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionDuration: '250ms',
       transitionTimingFunction: 'ease',
       willChange: 'width',
+      rounded: 'var(--progress-bar-radii)',
       zIndex: 'decorator',
       _isComplete: {
         gradient: 'complete !important',
@@ -61,18 +63,12 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
     usage: {
       block: {
         root: {
-          rounded: 'initial',
-        },
-        bar: {
-          rounded: 'initial',
+          '--progress-bar-radii': '0',
         },
       },
       rounded: {
         root: {
-          rounded: '1.5rem',
-        },
-        bar: {
-          rounded: '1.5rem',
+          '--progress-bar-radii': '1.5rem',
         },
       },
     },

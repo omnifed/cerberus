@@ -30,6 +30,24 @@ export function NoteAdmonition(props: AdmonitionTypeProps) {
   )
 }
 
+export function WarningAdmonition(props: AdmonitionTypeProps) {
+  const styles = {
+    palette: 'warning',
+    usage: 'outlined',
+  } as AdmonitionProps
+  return (
+    <Box paddingBlock="8">
+      <Admonition
+        className={css(cerbAdmonitionStyles)}
+        {...styles}
+        heading="Warning"
+      >
+        {props.description}
+      </Admonition>
+    </Box>
+  )
+}
+
 export function DeprecationAdmonition(props: AdmonitionTypeProps) {
   const styles = {
     palette: 'danger',

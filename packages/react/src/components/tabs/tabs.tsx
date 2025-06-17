@@ -1,6 +1,6 @@
-import type { TabListProps } from '@ark-ui/react/tabs'
-import { TabsParts, type TabsPartsValue } from './parts'
 import type { ElementType } from 'react'
+import { TabsParts, type TabsPartsValue } from './parts'
+import type { TabsListProps } from './primitives'
 
 /**
  * This module contains an abstraction of the Tabs family.
@@ -22,7 +22,7 @@ interface TabsValueProps
 /**
  * An abstraction of the TabsList component that includes the TabIndicator.
  */
-function TabsList(props: TabListProps) {
+function TabsList(props: TabsListProps) {
   const { children, ...listProps } = props
   return (
     <TabsParts.List {...listProps}>

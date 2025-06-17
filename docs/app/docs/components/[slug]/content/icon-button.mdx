@@ -1,0 +1,106 @@
+---
+title: 'IconButton'
+description: 'The IconButton component is a button that displays an icon.'
+npm: '@cerberus-design/react'
+source: 'components/icon-button'
+recipe: 'iconButton.ts'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import {
+  BasicButtonPreview,
+  SizesDemo,
+  AsChildDemo,
+  CustomButtonPreview,
+} from '../components/icon-button/static'
+
+```ts
+import { IconButton } from '@cerberus/react'
+```
+
+## Usage
+
+<CodePreview preview={<BasicButtonPreview />}>
+```tsx title="button.tsx"
+import { IconButton } from '@cerberus/react'
+import { Tuning } from '@carbon/icons-react'
+
+function BasicButtonPreview() {
+  return <IconButton><Tuning /></IconButton>
+}
+```
+</CodePreview>
+
+## Sizes
+
+The `IconButton` component comes in two sizes: `sm`, `lg`. You can set the size by using the `size` prop.
+
+<CodePreview preview={<SizesDemo />}>
+```tsx title="button.tsx"
+import { IconButton } from '@cerberus/react'
+import { Tuning } from '@carbon/icons-react'
+import { HStack } from 'styled-system/jsx'
+
+function SizesDemo() {
+  return (
+    <HStack>
+      <IconButton size="sm" usage="filled">
+        <Tuning />
+      </IconButton>
+      <IconButton size="lg" usage="filled">
+        <Tuning />
+      </IconButton>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the button.
+
+| Component | Description |
+| --------- | ----------- |
+| IconButton    | The context provider for the Button parts |
+
+<CodePreview preview={<CustomButtonPreview />}>
+```tsx title="custom demo"
+import { IconButton } from '@cerberus/react'
+import { Tuning } from '@carbon/icons-react'
+
+function CustomButtonPreview() {
+  return (
+    <IconButton
+      ariaLabel="custom button"
+      css={{
+        bgColor: 'danger.bg.initial',
+        color: 'danger.text.initial',
+        rounded: 'md',
+        transform: 'skew(-10deg)',
+        _hover: {
+          bgColor: 'black',
+          color: 'yellow',
+        },
+      }}
+    >
+      <Tuning />
+    </IconButton>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+### Props
+
+The `IconButton` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| palette     | `action`   | The color palette (any of the Cerberus palettes) of the button. |
+| usage | `filled`    | The style treatment of the button.    |
+| shape | `sharp`     | The shape of the button.              |
+| asChild | | Render the Button as the child component. |

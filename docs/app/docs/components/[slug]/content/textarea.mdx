@@ -1,0 +1,143 @@
+---
+title: Textarea
+description: The Textarea component displays a textarea field.
+npm: '@cerberus-design/react'
+source: 'components/field'
+recipe: 'slots/field.ts'
+ark: 'field'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { BasicFieldPreview } from '../components/field/static'
+import { CustomField, SecondaryTextTextarea } from '../components/textarea/static'
+
+
+```ts
+import {
+  Field,
+  Textarea,
+} from '@cerberus/react'
+```
+
+## Usage
+
+The `Textarea` component displays a textarea field.
+
+<CodePreview preview={<BasicFieldPreview />}>
+```tsx title="some-form.tsx" {39}
+import { Field, Input, Textarea } from '@cerberus/react'
+import { Box, VStack } from 'styled-system/jsx'
+
+export function BasicFieldPreview() {
+  return (
+    <form action={someAction} method="post">
+      <Box w="1/2">
+        <VStack alignItems="flex-start" gap="lg" w="full">
+          <Field
+            ids={{
+              control: 'email',
+            }}
+            label="Enter your email"
+            helperText="We'll never share your email with anyone else."
+            required
+          >
+            <Input name="email" type="email" />
+          </Field>
+          <Field
+            ids={{
+              control: 'invalid-name',
+            }}
+            label="Invalid example"
+            helperText="This is an example of an invalid field."
+            errorText="A name is required to submit this form. It replaces the helper text."
+            invalid
+            required
+          >
+            <Input name="invalid-name" type="text" />
+          </Field>
+          <Field
+            ids={{
+              control: 'message',
+            }}
+            label="Anything else you want to tell us?"
+            helperText="This will help us learn more about you."
+            secondaryHelperText="0/300"
+          >
+            <Textarea name="message" />
+          </Field>
+        </VStack>
+      </Box>
+    </form>
+  )
+}
+```
+</CodePreview>
+
+## Secondary Helper Text
+
+The `Textarea` component supports secondary helper text, which can be used to display additional information or a character count.
+<CodePreview preview={<SecondaryTextTextarea />}>
+```tsx title="secondary helper text demo"
+<Field
+  label="Anything else you want to tell us?"
+  secondaryHelperText="0/300"
+>
+  <Textarea name="secondary_text" />
+</Field>
+```
+</CodePreview>
+
+## Customizing
+
+You can customize the textarea by passing styles directly into the component. Textarea is a re-export of the `FieldTextarea` primitive.
+
+<CodePreview preview={<CustomField />}>
+```tsx {18-20} title="custom textarea demo"
+import { FieldParts } from '@cerberus/react'
+import { Box } from 'styled-system/jsx'
+
+export function CustomField() {
+  return (
+    <Box w="1/2">
+      <FieldParts.Root ids={{ control: 'customField' }}>
+        <FieldParts.Label
+          css={{
+            fontSize: 'xl',
+            fontWeight: 'black',
+            textTransform: 'uppercase',
+          }}
+        >
+          Custom Label
+        </FieldParts.Label>
+        <FieldParts.Textarea
+          css={{
+            transform: 'skewX(-10deg)',
+          }}
+        />
+        <FieldParts.HelperText
+          css={{
+            fontStyle: 'italic',
+          }}
+        >
+          Custom Helper Text
+        </FieldParts.HelperText>
+      </FieldParts.Root>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+
+## API
+
+### Props
+
+The `Textarea` accepts the following props in addition to any native `textarea` props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| size     |  | This size variant of the textarea |
+
+The `Textarea` component also accepts any of the props from the [`FieldParts.Textarea` primitive](https://ark-ui.com/react/docs/components/field#api-reference).

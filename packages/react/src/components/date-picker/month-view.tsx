@@ -1,11 +1,9 @@
 'use client'
 
-import type {
-  DatePickerViewProps,
-  UseDatePickerContext,
-} from '@ark-ui/react/date-picker'
+import type { UseDatePickerContext } from '@ark-ui/react/date-picker'
 import { DatePickerParts } from './parts'
 import { DatePickerViewControlGroup } from './view-control-group'
+import type { DatePickerViewProps } from './primitives'
 
 /**
  * This private module contains an abstraction of the DatePickerMonthView
@@ -18,7 +16,7 @@ import { DatePickerViewControlGroup } from './view-control-group'
  * DatePicker.
  * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
  */
-export function DatePickerMonthView(props: Omit<DatePickerViewProps, 'view'>) {
+export function DatePickerMonthView(props: DatePickerViewProps) {
   return (
     <DatePickerParts.View {...props} view="month">
       <DatePickerParts.Context>

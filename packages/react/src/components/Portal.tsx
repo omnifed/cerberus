@@ -1,5 +1,4 @@
 import { Portal as ArkPortal, type PortalProps } from '@ark-ui/react'
-import type { PropsWithChildren } from 'react'
 
 /**
  * This module is the Portal component.
@@ -26,6 +25,4 @@ export type { PortalProps }
  *   )
  * }
  */
-export function Portal(props: PropsWithChildren<PortalProps>) {
-  return <ArkPortal {...props} />
-}
+export const Portal = ArkPortal

@@ -1,0 +1,163 @@
+---
+title: Field
+description: The Field component is used to manage form fields, providing a consistent way to display labels, helper texts, and error messages.
+npm: '@cerberus-design/react'
+source: 'components/field'
+recipe: 'slots/field.ts'
+ark: 'field'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { BasicFieldPreview, CustomField } from '../components/field/static'
+
+
+```ts
+import {
+  Field,
+  FieldParts,
+} from '@cerberus/react'
+```
+
+## Usage
+
+The `Field` component helps manage the state of form fields and ensures consistent display of labels, helper texts, and error messages.
+
+<CodePreview preview={<BasicFieldPreview />}>
+```tsx title="some-form.tsx"
+import { Field, Input, Textarea } from '@cerberus/react'
+import { Box, VStack } from 'styled-system/jsx'
+
+export function BasicFieldPreview() {
+  return (
+    <form action={someAction} method="post">
+      <Box w="1/2">
+        <VStack alignItems="flex-start" gap="lg" w="full">
+          <Field
+            ids={{
+              control: 'email',
+            }}
+            label="Enter your email"
+            helperText="We'll never share your email with anyone else."
+            required
+          >
+            <Input name="email" type="email" />
+          </Field>
+          <Field
+            ids={{
+              control: 'invalid-name',
+            }}
+            label="Invalid example"
+            helperText="This is an example of an invalid field."
+            errorText="A name is required to submit this form. It replaces the helper text."
+            invalid
+            required
+          >
+            <Input name="invalid-name" type="text" />
+          </Field>
+          <Field
+            ids={{
+              control: 'message',
+            }}
+            label="Anything else you want to tell us?"
+            helperText="This will help us learn more about you."
+            secondaryHelperText="0/300"
+          >
+            <Textarea name="message" />
+          </Field>
+        </VStack>
+      </Box>
+    </form>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the field.
+
+| Component | Description |
+| --------- | ----------- |
+| FieldRoot    | The context provider for the Field parts |
+| FieldLabel   | The label of the field |
+| FieldInput   | The input of the field |
+| FieldTextarea   | The textarea of the field |
+| FieldHelperText | The helper text of the field |
+| FieldErrorText  | The error text of the field |
+| StartIndicator  | The start indicator of the field |
+| StatusIndicator | The status indicator or end icon of the field |
+| RequiredIndicator | The required indicator of the field |
+
+<CodePreview preview={<CustomField />}>
+```tsx
+import { FieldParts } from '@cerberus/react'
+import { Box } from 'styled-system/jsx'
+
+export function CustomField() {
+  return (
+    <Box w="1/2">
+      <FieldParts.Root ids={{ control: 'customField' }}>
+        <FieldParts.Label
+          css={{
+            fontSize: 'xl',
+            fontWeight: 'black',
+            textTransform: 'uppercase',
+          }}
+        >
+          Custom Label
+        </FieldParts.Label>
+        <FieldParts.Input
+          css={{
+            transform: 'skewX(-10deg)',
+          }}
+          type="text"
+        />
+        <FieldParts.HelperText
+          css={{
+            fontStyle: 'italic',
+          }}
+        >
+          Custom Helper Text
+        </FieldParts.HelperText>
+      </FieldParts.Root>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+
+## API
+
+### Props
+
+The `Field` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| label    |         | The label to show above the field input. |
+| helperText |         | The helper text to show below the field input. |
+| secondaryHelperText |         | The secondary helper text to show below the field input at the end of the row. |
+| errorText  |         | The error text to show below the field input. It replaces the helperText when visible. |
+
+
+The `Field` component also accepts all the props of the [`FieldRoot` primitive props](https://ark-ui.com/react/docs/components/field#api-reference)
+
+### Parts
+
+The `FieldParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the FieldParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `FieldRoot` component which is the Provider for the family. |
+| Label     | The `FieldLabel` component which displays the label and "required" notice. |
+| Input     | The `FieldInput` component which is the input field. |
+| Textarea  | The `FieldTextarea` component which is the textarea field. |
+| HelperText | The `FieldHelperText` component which displays the helper text. |
+| ErrorText  | The `FieldErrorText` component which displays the error text. |
+| StartIndicator | The `StartIndicator` component which displays an indicator of your choice at the start of the field. |
+| StatusIndicator | The `StatusIndicator` component which displays an indicator of your choice at the end of the field. |
+| RequiredIndicator | The `RequiredIndicator` component which displays an indicator of your choice when the field is marked `required`. |

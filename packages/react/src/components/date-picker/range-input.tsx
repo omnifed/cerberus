@@ -1,5 +1,5 @@
-import { type DatePickerInputProps } from '@ark-ui/react/date-picker'
 import { DatePickerParts } from './parts'
+import type { DatePickerInputElProps } from './primitives'
 import { DatePickerTrigger } from './trigger'
 
 /**
@@ -7,7 +7,7 @@ import { DatePickerTrigger } from './trigger'
  * @module RangePickerInput
  */
 
-export type RangePickerInputProps = DatePickerInputProps
+export type RangePickerInputProps = DatePickerInputElProps
 
 /**
  * An abstraction of the DatePicker input that wraps the input and the

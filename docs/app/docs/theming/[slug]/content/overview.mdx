@@ -1,0 +1,266 @@
+---
+title: Overview
+description: A guide for configuring the Cerberus theming system.
+---
+
+## Architecture
+
+The Cerberus theming system is built around the API of
+[Panda CSS](https://panda-css.com/).
+
+Here's a quick overview of how the system is structured to provide a performant
+and extensible styling system:
+
+- Define the styling system configuration using the `createCerberusConfig` function
+- Create the styling engine using the `makeSystemConfig` function
+- Pass the styling engine to the `CerberusProvider` component
+
+```tsx title="cerberus-config.client.tsx"
+'use client'
+
+import {
+  CerberusProvider,
+  defineIcons,
+  makeSystemConfig,
+} from '@cerberus-design/react'
+import {
+  Calendar,
+  Checkmark,
+  CheckmarkOutline,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Close,
+  CloudUpload,
+  Information,
+  Restart,
+  TrashCan,
+  UserFilled,
+  Warning,
+  WarningAlt,
+  WarningFilled,
+} from '@carbon/icons-react'
+import type { PropsWithChildren } from 'react'
+
+const icons = defineIcons({
+  accordionIndicator: ChevronDown,
+  avatar: UserFilled,
+  calendar: Calendar,
+  calendarPrev: ChevronLeft,
+  calendarNext: ChevronRight,
+  close: Close,
+  confirmModal: Information,
+  delete: TrashCan,
+  promptModal: Information,
+  waitingFileUploader: CloudUpload,
+  infoNotification: Information,
+  successNotification: CheckmarkOutline,
+  warningNotification: WarningAlt,
+  dangerNotification: WarningFilled,
+  invalid: WarningFilled,
+  invalidAlt: Warning,
+  redo: Restart,
+  selectArrow: ChevronDown,
+  selectChecked: Checkmark,
+  toggleChecked: Checkmark,
+})
+
+const config = makeSystemConfig({
+  icons,
+})
+
+export default function CerberusConfig(props: PropsWithChildren<{}>) {
+  return <CerberusProvider config={config}>{props.children}</CerberusProvider>
+}
+```
+
+## Config
+
+The Cerberus system is configured using the `createCerberusConfig` function. This function accepts a configuration object that allows you to customize the styling system's behavior.
+
+After a config is defined, the `makeSystemConfig` function creates internal options for Cerberus components to utilize when needed.
+
+### cssVarRoot
+
+`cssVarRoot` is the root element where the token CSS variables will be applied.
+
+```tsx title="panda.config.ts"
+export default createCerberusConfig({
+  cssVarRoot: ":where(:root, :host)",
+})
+```
+
+### globalCss
+
+`globalCss` is used to apply global styles to the system. This will not be atomized, and will be applied to the root element.
+
+```tsx title="panda.config.ts"
+export default createCerberusConfig({
+  globalCss: {
+    "html, body": {
+      margin: 0,
+      padding: 0,
+    },
+  },
+})
+```
+
+### preflight
+
+`preflight` is used to apply css reset styles to the system.
+
+```tsx title="panda.config.ts"
+export default createCerberusConfig({
+  preflight: false,
+})
+```
+
+Alternatively, you can use the `preflight` config property to apply css reset
+styles to the system. This is useful if you want to apply css reset styles to a
+specific element.
+
+```tsx title="panda.config.ts"
+export default createCerberusConfig({
+  preflight: {
+    scope: ".custom-reset",
+  },
+})
+```
+
+### theme
+
+Use the `theme` config property to define the system theme. This property
+accepts the following properties:
+
+- `breakpoints`: for defining breakpoints
+- `keyframes`: for defining css keyframes animations
+- `tokens`: for defining primitive tokens
+- `semanticTokens`: for defining semantic tokens (which consume primitive tokens)
+- `textStyles`: for defining typography styles
+- `layerStyles`: for defining layer styles
+- `animationStyles`: for defining animation styles
+- `recipes`: for defining component recipes
+- `slotRecipes`: for defining component slot recipes
+
+```tsx title="panda.config.ts"
+export default createCerberusConfig({
+  theme: {
+    breakpoints: {
+      sm: "320px",
+      md: "768px",
+      lg: "960px",
+      xl: "1200px",
+    },
+    tokens: {
+      colors: {
+        red: "#EE0F0F",
+      },
+    },
+    semanticTokens: {
+      colors: {
+        customRed: { value: "{colors.red}" },
+      },
+    },
+    keyframes: {
+      spin: {
+        from: { transform: "rotate(0deg)" },
+        to: { transform: "rotate(360deg)" },
+      },
+    },
+  },
+})
+```
+
+### conditions
+
+Use the `conditions` config property to define custom selectors and media query
+conditions for applying conditional styles in the system.
+
+```tsx title="panda.config.ts"
+export default createCerberusConfig({
+  conditions: {
+    cqSm: "@container(min-width: 320px)",
+    child: "& > *",
+  },
+})
+```
+
+Sample usage:
+
+```tsx
+<Box mt="40px" _cqSm={{ mt: "0px" }}>
+  <Text>Hello World</Text>
+</Box>
+```
+
+### strictTokens
+
+Use the `strictTokens` config property to enforce the usage of only design
+tokens. This will throw a TS error if you try to use a token that is not defined
+in the theme.
+
+```tsx title="panda.config.ts"
+export default createCerberusConfig({
+  strictTokens: true,
+})
+
+```
+
+```tsx
+// ❌ This will throw a TS error
+<Box color="#4f343e">Hello World</Box>
+
+// ✅ This will work
+<Box color="red.400">Hello World</Box>
+```
+
+## TypeScript
+
+When you configure the system properties (like `colors`, `space`, `fonts`,
+etc.), the Panda CLI can be used to generate type definitions for them.
+
+```bash
+npm panda codegen
+```
+
+This will update the internal types in the `styled-system` directory, and make
+sure they are in sync with the theme. Providing a type-safe API and delightful
+experience for developers.
+
+## System
+
+After a config is defined, it is passed to the `makeSystemConfig` function to create low level options that become internally available to components.
+
+```ts
+const icons = defineIcons({...})
+const config = makeSystemConfig({
+  icons,
+})
+```
+
+The system includes the following properties:
+
+### icons
+
+The token function is used to create a mapping of icon names to their respective
+icon components. This allows you to easily reference and use custom icons throughout your application for the Cerberus components that depend on rendering icons for their functionality.
+
+```tsx title="panda.config.ts"
+import { defineIcons } from '@cerberus-design/react'
+import { Calendar, Checkmark } from '@carbon/icons-react'
+
+const icons = defineIcons({
+  calendar: Calendar,
+  checkmark: Checkmark,
+})
+```
+
+## Tokens
+
+To learn more about tokens, please refer to the [tokens](/docs/theming/tokens)
+section.
+
+## Recipes
+
+To learn more about recipes, please refer to the
+[recipes](/docs/theming/recipes) section.

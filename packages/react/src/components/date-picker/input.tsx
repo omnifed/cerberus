@@ -1,6 +1,6 @@
-import type { DatePickerInputProps } from '@ark-ui/react/date-picker'
 import { DatePickerTrigger } from './trigger'
 import { DatePickerParts } from './parts'
+import type { DatePickerInputElProps } from './primitives'
 
 /**
  * This module contains an abstraction of the DatePickerInputEl primitive.
@@ -12,7 +12,7 @@ import { DatePickerParts } from './parts'
  * triggers to open the DatePicker and clear the value.
  * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
  */
-export function DatePickerInput(props: DatePickerInputProps) {
+export function DatePickerInput(props: DatePickerInputElProps) {
   return (
     <DatePickerParts.Control>
       <DatePickerTrigger />

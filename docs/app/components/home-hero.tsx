@@ -15,7 +15,6 @@ export default function HomeHero() {
       className={grid({
         columns: 1,
         gap: 4,
-        mt: '8rem',
         w: 'full',
         lg: {
           columns: 2,
@@ -117,7 +116,7 @@ export default function HomeHero() {
                 }),
                 button(),
               )}
-              href="/preset"
+              href="/docs/get-started/installation"
             >
               Get Started
             </Link>

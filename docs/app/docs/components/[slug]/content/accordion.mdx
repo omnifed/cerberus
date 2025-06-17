@@ -1,0 +1,236 @@
+---
+title: Accordion
+description: A way to show and hide information by sections.
+npm: '@cerberus-design/react'
+source: 'components/accordion'
+recipe: 'slots/accordion.ts'
+ark: 'accordion'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { StaticPreview, IndicatorPositionPreview, SizesPreview, CustomPreview } from '../components/accordion/static'
+
+```ts
+import {
+  Accordion,
+  AccordionItemGroup,
+} from '@cerberus/react'
+```
+
+## Usage
+
+The Accordion component is a controlled abstraction of the primitive components that can be used to show or hide content. It can be used in a group with other accordion items to allow for multiple selections.
+
+<CodePreview preview={<StaticPreview />}>
+```tsx title="accordion.tsx"
+import {
+  AccordionItemGroup,
+  Accordion,
+  Show,
+  For,
+} from '@cerberus/react'
+import Image from 'next/image'
+import { Suspense } from 'react'
+import { Box } from 'styled-system/jsx'
+import data from './data.json'
+
+function BasicPreview() {
+  return (
+    <Box w="2/3">
+      <Accordion defaultValue={['one']}>
+        <For each={data}>
+          {(item) => (
+            <AccordionItemGroup
+              heading={item.heading}
+              key={item.id}
+              value={item.value}
+            >
+              <Show when={item.content !== null} fallback={<FallbackContent />}>
+                {item.content}
+              </Show>
+            </AccordionItemGroup>
+          )}
+        </For>
+      </Accordion>
+    </Box>
+  )
+}
+
+function FallbackContent() {
+  return (
+    <Box position="relative" w="full">
+      <Suspense>
+        <Image
+          alt="A fiery cerberus"
+          src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4d7b49a9-2590-4dda-88ad-8046da56428b/dg97zza-65055527-eaf3-48e6-86aa-cf70a0880eea.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRkN2I0OWE5LTI1OTAtNGRkYS04OGFkLTgwNDZkYTU2NDI4YlwvZGc5N3p6YS02NTA1NTUyNy1lYWYzLTQ4ZTYtODZhYS1jZjcwYTA4ODBlZWEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BT7UC12eP5ibJs6uEYPIOQNQ6Xdnvw1ttIrCEgPvcSk"
+          height={447}
+          width={794}
+        />
+      </Suspense>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Indicator Position
+
+The `AccordionItemGroup` component supports two indicator positions: `start` and `end`. This changes the position of the icon indicator displayed.
+
+<CodePreview preview={<IndicatorPositionPreview />}>
+```tsx title="indicator position demo" {11}
+function BasicPreview() {
+  return (
+    <Box w="2/3">
+      <Accordion defaultValue={['one']}>
+        <For each={data}>
+          {(item) => (
+            <AccordionItemGroup
+              heading={item.heading}
+              key={item.id}
+              value={item.value}
+              indicatorPosition="start"
+            >
+              <Show when={item.content !== null} fallback={<FallbackContent />}>
+                {item.content}
+              </Show>
+            </AccordionItemGroup>
+          )}
+        </For>
+      </Accordion>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Sizes
+
+The `Accordion` component supports two sizes: `sm` and `lg`. This changes the size of the icon indicator displayed.
+
+<CodePreview preview={<SizesPreview />}>
+```tsx title="sizes demo"
+function BasicPreview() {
+  return (
+    <Box w="2/3">
+      <Accordion defaultValue={['one']} size="sm">
+        <For each={data}>
+          {(item) => (
+            <AccordionItemGroup
+              heading={item.heading}
+              key={item.id}
+              value={item.value}
+            >
+              <Show when={item.content !== null} fallback={<FallbackContent />}>
+                {item.content}
+              </Show>
+            </AccordionItemGroup>
+          )}
+        </For>
+      </Accordion>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the accordion.
+
+| Component               | Description |
+| ----------------------- | ----------- |
+| AccordionRoot               | The main container for the accordion items. |
+| AccordionItem           | Represents a single item within the accordion. |
+| AccordionItemTrigger    | The trigger element that toggles the visibility of the content. |
+| AccordionItemContent    | The content that is shown or hidden when the trigger is activated. |
+| AccordionItemIndicator  | An optional indicator to show the state of the accordion item. |
+
+<CodePreview preview={<CustomPreview />}>
+```tsx title="custom accordion"
+import { AccordionParts } from '@cerberus/react'
+import { Box } from 'styled-system/jsx'
+import { css } from 'styled-system/css'
+
+export function CustomPreview() {
+  return (
+    <Box w="2/3">
+      <AccordionParts.Root
+        css={{
+          transform: 'skewX(-10deg)',
+        }}
+      >
+        <AccordionParts.Item
+          css={{
+            bgColor: 'black',
+            borderColor: 'red',
+          }}
+          value="one"
+        >
+          <AccordionParts.ItemTrigger
+            css={{
+              color: 'red',
+            }}
+            data-indicator-position="start"
+          >
+            <AccordionParts.ItemIndicator>🔥</AccordionParts.ItemIndicator>
+            Cerberus
+          </AccordionParts.ItemTrigger>
+
+          <AccordionParts.ItemContent
+            css={{
+              color: 'white',
+              paddingInline: 'md',
+              textStyle: 'body-md',
+            }}
+          >
+            Cerberus is the three-headed dog that guards the gates of the
+            Underworld and our sweet baby boi protecting the integrity of your
+            design system.
+          </AccordionParts.ItemContent>
+        </AccordionParts.Item>
+      </AccordionParts.Root>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+### Accordion
+
+The `Accordion` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default    |       Description                                   |
+| -------- | ------- | ------------------------------------------------------ |
+| size     | `lg`    | The size of the accordion item.                        |
+
+The Accordion is an abstraction of the [Root component](https://ark-ui.com/react/docs/components/accordion#api-reference).
+
+### AccordionItemGroup
+
+The `AccordionItemGroup` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default    |       Description                                   |
+| -------- | ------- | ------------------------------------------------------ |
+| heading  |         | The heading of the accordion item.                     |
+| value    |         | The value of the accordion item. Must be unique.       |
+| indicatorPosition | `end` | The position of the indicator.                  |
+
+The AccordionItemGroup is an abstraction of the [Item component](https://ark-ui.com/react/docs/components/accordion#api-reference).
+
+### Parts
+
+The `AccordionParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the AccordionParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `AccordionRoot` component which is the Provider for the family. |
+| Item     | The `AccordionItem` component which displays the item. |
+| ItemTrigger     | The `AccordionItemTrigger` component which is the visual title that triggers the content to open. |
+| ItemContent  | The `AccordionItemContent` component which displays the content that is revealed from the ItemTrigger. |
+| ItemIndicator | The `AccordionItemIndicator` component which displays the indicator (chevron) icon. |../components/static-preview

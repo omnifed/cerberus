@@ -1,0 +1,56 @@
+---
+title: Themes & Color Modes
+description: Learn how to implement themes and color modes in Cerberus Design System
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+
+## Overview
+
+Cerberus provides support for themes and color modes, allowing you to create visually appealing and accessible applications that adapt to user preferences.
+
+## Themes
+
+To use a theme, just add the `data-panda-theme` attribute to your root `html` tag.
+
+```tsx
+<html lang="en" data-panda-theme="cerberus">
+  <body>{children}</body>
+</html>
+```
+
+Cerberus comes with two built-in themes: `cerberus` and `acheron`. You can switch between these themes by changing the value of the `data-panda-theme` attribute.
+
+## Color Modes
+
+Cerberus supports two color modes: `light` and `dark`. You can set the default color mode by adding the `data-color-mode` attribute to your root `html` tag.
+
+```tsx
+<html lang="en" data-panda-theme="cerberus" data-color-mode="light">
+  <body>{children}</body>
+</html>
+```
+
+Color mode works the same way as themes. You can switch between light and dark modes by changing the value of the `data-color-mode` attribute.
+
+## Nesting themes and color modes
+
+You can also nest themes and color modes within your application. This is useful when you want to apply a different theme or color mode to a specific section of your app.
+
+```tsx
+<html lang="en" data-panda-theme="cerberus" data-color-mode="light">
+  <body>
+    <Text>This text is in the Cerberus theme and light mode</Text>
+
+    <Box data-panda-theme="acheron" data-color-mode="dark">
+      <Text>This text is in the Acheron theme and dark mode</Text>
+    </Box>
+  </body>
+</html>
+```
+
+## Custom Themes and Color Modes
+
+You can create your own themes and modes by extending your `panda.config.ts` file. For more information, check out the [Multi-Theme Support](https://panda-css.com/docs/guides/multiple-themes) sections in the PandaCSS documentation.
+
+<NoteAdmonition description="Cerberus will provide a way to streamline this via the `createCerberusPreset` in a future release." />

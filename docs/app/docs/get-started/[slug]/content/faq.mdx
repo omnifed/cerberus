@@ -1,0 +1,16 @@
+---
+title: FAQ
+description: Frequently Asked Questions about Cerberus Design System
+---
+
+### Why does the package path for react look weird?
+
+The Cerberus packages are published under the `@cerberus-design` organization in NPM (due to the name `cerberus` being taken). However, in JSR, we use the `@cerberus` organization. We eventually plan on fully migrating to JSR when there is better support for the features we need.
+
+The version paths are simply creating an alias to the `@cerberus-design` organization so that you can have consistent package naming across your project.
+
+Everything should use the `@cerberus` organization in your code.
+
+### Why do I need to have a specific `baseUrl` in our tsconfig.json?
+
+In order for our React components to know where to find the styled-system APIs, it needs to know where to look. By setting the `baseUrl` to the root of your project, we can use the `styled-system` import path without needing to know the exact location of the file.

@@ -1,0 +1,129 @@
+---
+title: Tooltip
+description: A tooltip is a small pop-up box that appears when a user hovers over an element, providing additional information or context.
+npm: '@cerberus-design/react'
+source: 'components/Tooltip.tsx'
+recipe: 'slots/tooltip.ts'
+ark: 'tooltip'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  NoteAdmonition
+} from '@/app/components/Admonition'
+import {
+  BasicTooltipPreview,
+  PositioningTooltipPreview,
+} from '../components/tooltip/static'
+
+## Usage
+
+<CodePreview preview={<BasicTooltipPreview />}>
+```tsx
+import { Information } from '@carbon/icons-react'
+import { Tooltip } from '@cerberus/react'
+
+function BasicTooltipPreview() {
+  return (
+    <Tooltip
+      content="Get information from something that has a very long description."
+    >
+      <Information />
+    </Tooltip>
+  )
+}
+```
+</CodePreview>
+
+## Positioning
+
+You can position the tooltip relative to the target element using the `position` prop.
+
+<CodePreview preview={<PositioningTooltipPreview />}>
+```tsx
+import { InformationFilled } from '@carbon/icons-react'
+import { Tooltip } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+function PositioningTooltipPreview() {
+  return (
+    <HStack gap="3xl">
+      <Tooltip
+        content="Top position"
+        positioning={{
+          placement: 'top',
+        }}
+      >
+        <InformationFilled />
+      </Tooltip>
+      <Tooltip
+        content="Right position"
+        positioning={{
+          placement: 'right',
+        }}
+      >
+        <InformationFilled />
+      </Tooltip>
+      <Tooltip
+        content="Bottom position"
+        positioning={{
+          placement: 'bottom',
+        }}
+      >
+        <InformationFilled />
+      </Tooltip>
+      <Tooltip
+        content="Left position"
+        positioning={{
+          placement: 'left',
+        }}
+      >
+        <InformationFilled />
+      </Tooltip>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the checkbox.
+
+| Component | Description |
+| --------- | ----------- |
+| TooltipRoot    | The context provider for the Tooltip parts |
+| TooltipTrigger   | The focusable element that triggers the tooltip on hover |
+| TooltipPositioner   | The positioning container for the tooltip |
+| TooltipContent   | The content of the tooltip |
+| TooltipArrow | The arrow container of the tooltip bubble |
+| TooltipArrowTip  | The tip of the arrow |
+
+
+## API
+
+### Props
+
+The `Tooltip` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| content  |     | What to display in the Tooltip.                            |
+
+
+The `Tooltip` component also accepts all the props of the [`TooltipRoot` primitive props](https://ark-ui.com/react/docs/components/tooltip#api-reference)
+
+### Parts
+
+The `TooltipParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the TooltipParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `TooltipRoot` component.           |
+| Trigger     | The `TooltipTrigger` component.     |
+| Positioner     | The `TooltipPositioner` component. |
+| Content  | The `TooltipContent` component.        |
+| Arrow | The `TooltipArrow` component.             |
+| ArrowTip  | The `TooltipArrowTip` component.      |

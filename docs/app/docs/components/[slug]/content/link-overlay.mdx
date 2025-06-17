@@ -1,0 +1,54 @@
+---
+title: Link Overlay
+description: Used to create an overlay that can be used as a link.
+panda: https://panda-css.com/docs/concepts/patterns#linkoverlay
+---
+
+```tsx
+import { Box, LinkOverlay } from 'styled-system/jsx'
+
+function App() {
+  return (
+    <Box pos="relative">
+      <img src="https://via.placeholder.com/150" alt="placeholder" />
+      <LinkOverlay href="#">
+        View more
+      </LinkOverlay>
+    </Box>
+  )
+}
+```
+
+## Usage
+
+```tsx
+import { LinkOverlay } from "styled-system/jsx";
+```
+
+```tsx
+<LinkOverlay href="https://example.com">
+  Click here
+</LinkOverlay>
+```
+
+## Examples
+
+### Basic Link Overlay
+
+```tsx
+import { Box, LinkOverlay } from 'styled-system/jsx'
+function App() {
+  return (
+    <Box pos="relative">
+      <img src="https://via.placeholder.com/150" alt="placeholder" />
+      <LinkOverlay href="https://example.com">
+        View more
+      </LinkOverlay>
+    </Box>
+  )
+}
+```
+
+## Props
+
+LinkOverlay accepts all CSS properties.

@@ -1,0 +1,163 @@
+---
+title: Input
+description: The Input component displays a text-based input field.
+npm: '@cerberus-design/react'
+source: 'components/field'
+recipe: 'slots/field.ts'
+ark: 'field'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { BasicFieldPreview, CustomField } from '../components/field/static'
+import { SearchInputExample } from '../components/input/static'
+
+
+```ts
+import {
+  Field,
+  Input,
+} from '@cerberus/react'
+```
+
+## Usage
+
+The `Input` component displays a text-based input field.
+
+<CodePreview preview={<BasicFieldPreview />}>
+```tsx title="some-form.tsx"
+import { Field, Input, Textarea } from '@cerberus/react'
+import { Box, VStack } from 'styled-system/jsx'
+
+export function BasicFieldPreview() {
+  return (
+    <form action={someAction} method="post">
+      <Box w="1/2">
+        <VStack alignItems="flex-start" gap="lg" w="full">
+          <Field
+            ids={{
+              control: 'email',
+            }}
+            label="Enter your email"
+            helperText="We'll never share your email with anyone else."
+            required
+          >
+            <Input name="email" type="email" />
+          </Field>
+          <Field
+            ids={{
+              control: 'invalid-name',
+            }}
+            label="Invalid example"
+            helperText="This is an example of an invalid field."
+            errorText="A name is required to submit this form. It replaces the helper text."
+            invalid
+            required
+          >
+            <Input name="invalid-name" type="text" />
+          </Field>
+          <Field
+            ids={{
+              control: 'message',
+            }}
+            label="Anything else you want to tell us?"
+            helperText="This will help us learn more about you."
+            secondaryHelperText="0/300"
+          >
+            <Textarea name="message" />
+          </Field>
+        </VStack>
+      </Box>
+    </form>
+  )
+}
+```
+</CodePreview>
+
+## With Icons
+
+You can utilize the `startIcon` or `endIcon` props to add icons to the input.
+
+<CodePreview preview={<SearchInputExample />}>
+```tsx title="search-input.tsx"
+import { Field, Input, type InputProps } from '@cerberus/react'
+import { Search } from '@carbon/icons-react'
+
+export function SearchInputExample(props: InputProps) {
+  return (
+    <form action={someAction} method="post">
+      <Field
+        ids={{
+          control: 'search',
+        }}
+      >
+        <Input
+          {...props}
+          startIcon={<Search />}
+          name="search"
+          placeholder="Search for anything"
+          type="text"
+        />
+      </Field>
+    </form>
+  )
+}
+```
+</CodePreview>
+
+## Customizing
+
+You can customize the input by passing styles directly into the component. The Input is a re-export of the `FieldInput` primitive.
+
+<CodePreview preview={<CustomField />}>
+```tsx {18-23}
+import { FieldParts } from '@cerberus/react'
+import { Box } from 'styled-system/jsx'
+
+export function CustomField() {
+  return (
+    <Box w="1/2">
+      <FieldParts.Root>
+        <FieldParts.Label
+          css={{
+            fontSize: 'xl',
+            fontWeight: 'black',
+            textTransform: 'uppercase',
+          }}
+        >
+          Custom Label
+        </FieldParts.Label>
+        <FieldParts.Input
+          css={{
+            transform: 'skewX(-10deg)',
+          }}
+          type="text"
+        />
+        <FieldParts.HelperText
+          css={{
+            fontStyle: 'italic',
+          }}
+        >
+          Custom Helper Text
+        </FieldParts.HelperText>
+      </FieldParts.Root>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+
+## API
+
+### Props
+
+The `Input` accepts the following props in addition to any native `input` props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| startIcon     |    | An `ElementType` to display at the start of the input |
+| endIcon     |    | An `ElementType` to display at the end of the input |
+| size     |  | This size variant of the input |
+
+The `Input` component also accepts any of the props from the [`FieldParts.Input` primitive](https://ark-ui.com/react/docs/components/field#api-reference).

@@ -1,0 +1,159 @@
+---
+title: 'Admonition'
+description: 'An abstracted informational component that can be used to display important messages or warnings to users.'
+npm: '@cerberus-design/react'
+source: 'components/admonition'
+recipe: 'slots/admonition.ts'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { BasicDemo, PaletteDemo, UsageDemo, CustomDemo } from '../components/admonition/static'
+
+```ts
+import { Admonition } from '@cerberus/react'
+```
+
+## Usage
+
+The `Admonition` component is an abstracted informational component that can be used to display important messages or warnings to users. It can be used in various contexts, such as error, success, or informational messages.
+
+<CodePreview preview={<BasicDemo />}>
+```tsx title="admonition.tsx"
+import { Admonition } from '@cerberus/react'
+import { Box } from 'styled-system/jsx'
+
+function UsageDemo() {
+  return (
+    <Box w="1/2">
+      <Admonition heading="Note">
+        This is a page admonition that is commonly use to display a page-level
+        informational messages.
+      </Admonition>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Palette
+
+The `Admonition` component can be customized with different color palettes to match the design of your application. You can use: `info`, `action`, or any of the state-related palettes.
+
+<CodePreview preview={<PaletteDemo />}>
+```tsx title="palette.tsx" {4}
+function PaletteDemo() {
+  return (
+    <Box w="1/2">
+      <Admonition heading="Account Error" palette="danger">
+        There is an error with your account. Please contact support within the
+        next 7 days to keep access.
+      </Admonition>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Usage
+
+The `Admonition` component can be used to display different styles of messages, such as `filled` (default) or `outlined`.
+
+<CodePreview preview={<UsageDemo />}>
+```tsx title="admonition.tsx" {4}
+function UsageDemo() {
+  return (
+    <Box w="1/2">
+      <Admonition heading="Note" usage="outlined">
+        This is a page admonition that is commonly use to display a page-level
+        informational messages.
+      </Admonition>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the admonition. Each part forwards `ref` and allows for a `asChild` prop.
+
+| Component | Description |
+| --------- | ----------- |
+| AdmonitionRoot    | The container for the parts |
+| AdmonitionIndicator   | The icon of the admonition |
+| AdmonitionContent   | The content container of the admonition |
+| AdmonitionHeading   | The heading of the admonition |
+| AdmonitionDescription | The description body of the admonition |
+
+<CodePreview preview={<CustomDemo />}>
+```tsx title="Custom demo"
+import { AdmonitionParts } from '@cerberus/react'
+
+export function CustomDemo() {
+  return (
+    <Box w="1/2">
+      <AdmonitionParts.Root
+        css={{
+          transform: 'skewX(-10deg)',
+        }}
+      >
+        <AdmonitionParts.Indicator>
+          <Circle size="6">
+            <PawIcon />
+          </Circle>
+        </AdmonitionParts.Indicator>
+
+        <AdmonitionParts.Content>
+          <AdmonitionParts.Heading
+            css={{
+              color: 'danger.text.initial',
+              textTransform: 'uppercase',
+            }}
+          >
+            Cerberus Forever
+          </AdmonitionParts.Heading>
+          <AdmonitionParts.Description>
+            President&apos;s are temporary, but Cerberus is forever.
+          </AdmonitionParts.Description>
+        </AdmonitionParts.Content>
+      </AdmonitionParts.Root>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+### Props
+
+The `Admonition` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| heading  |     | The heading title of the Admonition.                       |
+| icon    |     | An alternative icon to display in the Admonition.           |
+| palette  | `page` | The color palette of the Admonition.                      |
+| usage    | `filled` | The usage of the Admonition. Can be `filled` or `outlined`. |
+
+### Parts
+
+The `AdmonitionParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the AdmonitionParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `AdmonitionRoot` component which is the container of the family. |
+| Indicator   | The `AdmonitionIndicator` component which is the icon of the admonition |
+| Content   | The `AdmonitionContent` component which is the container of the admonition |
+| Heading   | The `AdmonitionHeading` component which is the heading of the admonition |
+| Description | The `Admonition` component which is the description body of the admonition |
+
+The Parts additionally use the following data attributes:
+
+| Name     | Value | Description                            |
+| -------- | ------| -------------------------------- |
+| `data-scope` | `admonition` | The scope of the components.       |
+| `data-part` | `root, indicator, content, heading, description` | The part of the component.         |

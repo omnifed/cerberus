@@ -10,61 +10,117 @@ describe('circularProgress recipe', () => {
 
   test('should have a base.root style', () => {
     expect(circularProgress.base?.root).toMatchObject({
-      alignSelf: 'stretch',
-      containerType: 'inline-size',
-      flex: 1,
-      m: '4px',
+      display: 'inline-flex',
       position: 'relative',
+      '--thickness': 'calc(var(--size) * 0.13)',
     })
   })
 
-  test('should have a base.group style', () => {
-    expect(circularProgress.base?.group).toMatchObject({
+  test('should have a base.circle style', () => {
+    expect(circularProgress.base?.circle).toMatchObject({
+      bgColor: 'var(--fill-color)',
       display: 'block',
       rounded: 'full',
-      transition: 'all 0.5s ease',
     })
   })
 
-  test('should have a base.base style', () => {
-    expect(circularProgress.base?.base).toMatchObject({
-      fill: 'page.surface.initial',
-    })
-  })
-
-  test('should have a base.track style', () => {
-    expect(circularProgress.base?.track).toMatchObject({
+  test('should have a base.circleTrack style', () => {
+    expect(circularProgress.base?.circleTrack).toMatchObject({
       stroke: 'page.bg.100',
     })
   })
 
-  test('should have a base.path style', () => {
-    expect(circularProgress.base?.path).toMatchObject({
-      stroke: 'url(#gradient)',
-      transition: 'stroke-dashoffset, stroke 0.5s ease',
+  test('should have a base.circleRange style', () => {
+    expect(circularProgress.base?.circleRange).toMatchObject({
+      stroke: 'dataViz.progress.start',
+      strokeLinecap: 'round',
+      transition: 'all 0.5s ease',
       _isComplete: {
-        stroke: 'success.bg.initial',
+        stroke: 'dataViz.progress.complete',
       },
     })
   })
 
-  test('should have a base.title style', () => {
-    expect(circularProgress.base?.title).toMatchObject({
-      fill: 'page.text.initial',
-      fontFamily: 'mono',
-      fontSize: '1.25rem',
+  test('should have a base.infoGroup style', () => {
+    expect(circularProgress.base?.infoGroup).toMatchObject({
+      alignItems: 'center',
+      display: 'flex',
+      flexDirection: 'column',
+      inset: 0,
+      justifyContent: 'center',
+      position: 'absolute',
+      userSelect: 'none',
     })
   })
 
-  test('should have a base.description style', () => {
-    expect(circularProgress.base?.description).toMatchObject({
-      fill: 'page.text.100',
-      fontSize: '0.5rem',
-      fontWeight: 600,
-      '&:is([data-fallback])': {
-        textStyle: 'heading-xs',
-        fontSize: '0.75rem',
+  test('should have a base.valueText style', () => {
+    expect(circularProgress.base?.valueText).toMatchObject({
+      color: 'page.text.300',
+      fontSize: 'var(--value-text-size)',
+      fontWeight: '450',
+      textStyle: 'mono-sm',
+    })
+  })
+
+  test('should have a base.label style', () => {
+    expect(circularProgress.base?.label).toMatchObject({
+      color: 'page.text.100',
+      fontSize: 'var(--label-size)',
+      textStyle: 'heading-sm',
+    })
+  })
+
+  test('should have a variants object', () => {
+    expect(circularProgress.variants).toMatchObject({
+      usage: {
+        filled: {
+          root: {
+            '--fill-color': '{colors.page.bg.initial}',
+          },
+        },
+        transparent: {
+          root: {
+            '--fill-color': 'transparent',
+          },
+        },
       },
+      size: {
+        xs: {
+          root: {
+            '--size': '6rem',
+            '--value-text-size': '1.25rem',
+            '--label-size': '0.75rem',
+          },
+        },
+        sm: {
+          root: {
+            '--size': '10.25rem',
+            '--value-text-size': '1.5rem',
+            '--label-size': '0.75rem',
+          },
+        },
+        md: {
+          root: {
+            '--size': '12rem',
+            '--value-text-size': '2rem',
+            '--label-size': '1rem',
+          },
+        },
+        lg: {
+          root: {
+            '--size': '15.5rem',
+            '--value-text-size': '2.625rem',
+            '--label-size': '1.25rem',
+          },
+        },
+      },
+    })
+  })
+
+  test('should have a defaultVariants object', () => {
+    expect(circularProgress.defaultVariants).toMatchObject({
+      usage: 'filled',
+      size: 'xs',
     })
   })
 })

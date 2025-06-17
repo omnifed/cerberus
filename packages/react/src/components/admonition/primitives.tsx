@@ -1,70 +1,91 @@
 import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
-import { cx } from 'styled-system/css'
 import { admonition, type AdmonitionVariantProps } from 'styled-system/recipes'
+import {
+  createCerberusPrimitive,
+  type CerberusPrimitiveProps,
+} from '../../system/index'
 
 /**
  * This module contains the primitives of the Admonition components.
  * @module 'admonition/primitives'
  */
 
+const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(admonition)
+
 /**
  * The `AdmonitionRoot` component is the container for the Admonition.
  */
-export function AdmonitionRoot(
-  props: HTMLArkProps<'aside'> & AdmonitionVariantProps,
-) {
-  const { palette, usage, ...nativeProps } = props
-  const styles = admonition({ palette, usage })
-  return (
-    <ark.aside
-      {...nativeProps}
-      className={cx(styles.root, nativeProps.className)}
-      data-scope="admonition"
-      data-part="root"
-    />
-  )
-}
+export const AdmonitionRoot = withSlotRecipe<AdmonitionRootProps>(
+  ark.aside,
+  'root',
+  {
+    defaultProps: {
+      'data-scope': 'admonition',
+      'data-part': 'root',
+    },
+  },
+)
+export type AdmonitionRootProps = CerberusPrimitiveProps<
+  HTMLArkProps<'aside'> & AdmonitionVariantProps
+>
 
 /**
  * The `AdmonitionIndicator` component is the indicator for the Admonition.
  */
-export function AdmonitionIndicator(props: HTMLArkProps<'span'>) {
-  return <ark.span {...props} data-scope="admonition" data-part="indicator" />
-}
+export const AdmonitionIndicator = withNoRecipe<AdmonitionIndicatorProps>(
+  ark.span,
+  {
+    defaultProps: {
+      'data-scope': 'admonition',
+      'data-part': 'indicator',
+    },
+  },
+)
+export type AdmonitionIndicatorProps = CerberusPrimitiveProps<
+  HTMLArkProps<'span'>
+>
 
 /**
  * The `AdmonitionContent` component is the content for the Admonition.
  */
-export function AdmonitionContent(props: HTMLArkProps<'div'>) {
-  return <ark.div {...props} data-scope="admonition" data-part="content" />
-}
+export const AdmonitionContent = withNoRecipe<AdmonitionContentProps>(ark.div, {
+  defaultProps: {
+    'data-scope': 'admonition',
+    'data-part': 'content',
+  },
+})
+export type AdmonitionContentProps = CerberusPrimitiveProps<HTMLArkProps<'div'>>
 
 /**
  * The `AdmonitionHeading` component is the heading title for the Admonition.
  */
-export function AdmonitionHeading(props: HTMLArkProps<'p'>) {
-  const styles = admonition()
-  return (
-    <ark.p
-      {...props}
-      className={cx(styles.heading, props.className)}
-      data-scope="admonition"
-      data-part="heading"
-    />
-  )
-}
+export const AdmonitionHeading = withSlotRecipe<AdmonitionHeadingProps>(
+  ark.p,
+  'heading',
+  {
+    defaultProps: {
+      'data-scope': 'admonition',
+      'data-part': 'heading',
+    },
+  },
+)
+export type AdmonitionHeadingProps = CerberusPrimitiveProps<
+  HTMLArkProps<'p'> & AdmonitionVariantProps
+>
 
 /**
  * The `AdmonitionDescription` component is the description for the Admonition.
  */
-export function AdmonitionDescription(props: HTMLArkProps<'p'>) {
-  const styles = admonition()
-  return (
-    <ark.p
-      {...props}
-      className={cx(styles.description, props.className)}
-      data-scope="admonition"
-      data-part="description"
-    />
-  )
-}
+export const AdmonitionDescription = withSlotRecipe<AdmonitionDescriptionProps>(
+  ark.p,
+  'description',
+  {
+    defaultProps: {
+      'data-scope': 'admonition',
+      'data-part': 'description',
+    },
+  },
+)
+export type AdmonitionDescriptionProps = CerberusPrimitiveProps<
+  HTMLArkProps<'p'> & AdmonitionVariantProps
+>

@@ -1,11 +1,11 @@
 'use client'
 
-import type { DatePickerViewControlProps } from '@ark-ui/react/date-picker'
-import { useCerberusContext } from '../../context/cerberus'
-import { IconButton } from '../IconButton'
-import { DatePickerParts } from './parts'
-import { Button } from '../button/button'
 import { css } from 'styled-system/css'
+import { useCerberusContext } from '../../context/cerberus'
+import { Button } from '../button/button'
+import { IconButton } from '../icon-button/index'
+import { DatePickerParts } from './parts'
+import type { DatePickerViewControlProps } from './primitives'
 
 /**
  * This private module contains an abstraction of the DatePickerViewControl

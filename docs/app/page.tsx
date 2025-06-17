@@ -1,19 +1,13 @@
+import { VStack } from '@/styled-system/jsx'
 import HomeHero from './components/home-hero'
 import { Scene } from './scene'
-import { vstack } from 'styled-system/patterns'
 
 export default function Home() {
   return (
     <>
-      <div
-        className={vstack({
-          gap: 0,
-          h: '100dvh',
-          justify: 'center',
-        })}
-      >
+      <VStack gap="0" minH="100dvh" h="full" justify="center">
         <HomeHero />
-      </div>
+      </VStack>
 
       <Scene />
     </>

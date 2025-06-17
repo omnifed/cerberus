@@ -5,6 +5,10 @@ import { css } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
 import Link, { type LinkProps } from 'next/link'
 import { useLayoutEffect, useRef, useState } from 'react'
+import { Box, Divider } from '@/styled-system/jsx'
+import { usePathname } from 'next/navigation'
+import { cerberus, For } from '@cerberus-design/react'
+import { ArrowUpRight, LogoGithub } from '@carbon/icons-react'
 
 interface OverrideHeading {
   href: string
@@ -23,39 +27,48 @@ interface HeadingLink {
 }
 
 export default function OnThisPage() {
-  const hasRendered = useRef<boolean>(false)
+  const pathname = usePathname()
+  const prevPathname = useRef<string | null>(null)
   const [links, setLinks] = useState<HeadingLink[]>([])
 
   useLayoutEffect(() => {
-    if (hasRendered.current) return
-    const nodeList = document.querySelectorAll('a.heading')
+    if (pathname) {
+      // Check if the pathname has changed
+      if (prevPathname.current === pathname) {
+        return
+      }
 
-    for (let i = 0; i < nodeList.length; i++) {
-      const heading = nodeList[i]
-      const overrideHeading = heading as unknown as OverrideHeading
-      const attributes = heading.attributes as unknown as NodeOverride
-      setLinks((prevLinks) => [
-        ...prevLinks,
-        {
-          id: attributes.href.nodeValue ?? '#',
-          label: heading.textContent ?? '',
-          path: overrideHeading.href,
-        },
-      ])
+      // Update the previous pathname
+      prevPathname.current = pathname
+      // Clear the existing links
+      setLinks([])
+
+      // Find all headings with the class 'heading' in the document
+      // and extract their href attributes and text content
+      // This assumes that the headings are rendered in the document
+      // and have the class 'heading' applied to them.
+      // Note: This will only work if the headings are rendered in the document
+      // and not in a separate component that is not mounted yet.
+      const nodeList = document.querySelectorAll('a.heading')
+
+      for (let i = 0; i < nodeList.length; i++) {
+        const heading = nodeList[i]
+        const overrideHeading = heading as unknown as OverrideHeading
+        const attributes = heading.attributes as unknown as NodeOverride
+        setLinks((prevLinks) => [
+          ...prevLinks,
+          {
+            id: attributes.href.nodeValue ?? '#',
+            label: heading.textContent ?? '',
+            path: overrideHeading.href,
+          },
+        ])
+      }
     }
-
-    hasRendered.current = true
-  }, [])
+  }, [pathname])
 
   return (
-    <div
-      className={css({
-        borderLeft: '1px solid',
-        borderColor: 'page.border.initial',
-        h: 'fit-content',
-        paddingInlineStart: '6',
-      })}
-    >
+    <Box h="fit-content" px="md" w="full">
       <p
         className={css({
           color: 'page.text.100',
@@ -65,6 +78,7 @@ export default function OnThisPage() {
       >
         On this page
       </p>
+
       <ul
         aria-label="Page sections"
         className={vstack({
@@ -72,35 +86,71 @@ export default function OnThisPage() {
           gap: 2,
         })}
       >
-        {links.map((link, idx) => (
-          <li key={`${link.id}-${idx}`}>
-            <Link
-              aria-current={
-                window.location.hash === link.id ? 'page' : undefined
-              }
-              href={link.id as LinkProps<string>['href']}
-              className={css({
-                display: 'block',
-                rounded: 'sm',
-                textStyle: 'label-sm',
-                textWrap: 'pretty',
-                _hover: {
-                  textDecorationColor: 'action.navigation.hover',
-                  textDecoration: 'underline',
-                },
-                _currentPage: {
-                  color: 'action.navigation.visited',
-                  textDecorationColor: 'action.navigation.hover',
-                  textDecoration: 'underline',
-                },
-                _focusVisible: focusStates._focusVisible,
-              })}
-            >
-              {link.label}
-            </Link>
-          </li>
-        ))}
+        <For each={links}>
+          {(link, idx) => (
+            <cerberus.li key={`${link.id}-${idx}`}>
+              <Link
+                aria-current={
+                  window.location.hash === link.id ? 'page' : undefined
+                }
+                href={link.id as LinkProps<string>['href']}
+                className={css({
+                  display: 'block',
+                  rounded: 'sm',
+                  textStyle: 'label-sm',
+                  textWrap: 'pretty',
+                  _hover: {
+                    textDecorationColor: 'action.navigation.hover',
+                    textDecoration: 'underline',
+                  },
+                  _currentPage: {
+                    color: 'action.navigation.visited',
+                    textDecorationColor: 'action.navigation.hover',
+                    textDecoration: 'underline',
+                  },
+                  _focusVisible: focusStates._focusVisible,
+                })}
+              >
+                {link.label}
+              </Link>
+            </cerberus.li>
+          )}
+        </For>
+
+        <cerberus.li>
+          <Divider
+            color="page.border.initial"
+            my="md"
+            orientation="horizontal"
+            thickness="1px"
+          />
+
+          <cerberus.a
+            href={`https://github.com/omnifed/cerberus/blob/main/docs/app${pathname}.mdx`}
+            target="_blank"
+            rel="noopener noreferrer"
+            css={{
+              color: 'page.text.100',
+              display: 'inline-flex',
+              gap: 2,
+              rounded: 'sm',
+              textStyle: 'label-sm',
+              textWrap: 'pretty',
+              transitionProperty: 'color',
+              transitionDuration: 'fast',
+              _hover: {
+                color: 'action.navigation.hover',
+                textDecorationColor: 'action.navigation.hover',
+                textDecoration: 'underline',
+              },
+            }}
+          >
+            <LogoGithub size="0.875rem" />
+            Edit this page on Github
+            <ArrowUpRight size="0.875rem" />
+          </cerberus.a>
+        </cerberus.li>
       </ul>
-    </div>
+    </Box>
   )
 }

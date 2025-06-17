@@ -1,0 +1,367 @@
+---
+title: Conditional Styles
+description: Learn how to apply conditional styles in Cerberus Design System
+---
+
+import { NoteAdmonition, WarningAdmonition } from '@/app/components/Admonition'
+
+## Overview
+
+Cerberus allows you to write styles for pseudo states, media queries, and custom
+data attributes with the conditional style props.
+
+<NoteAdmonition description={<>See the list of <a href="#reference">built-in conditions</a> below.</>} />
+
+## Usage
+
+For example, here's how to change the background color of a button when it's
+hovered:
+
+```tsx
+<Box bg="danger.bg.initial" _hover={{ bg: "danger.bg.hover" }}>
+  Hover me
+</Box>
+```
+
+### Nested condition
+
+Conditional values can be nested to create complex selector rules.
+
+Here's how to change the background color of an element when in focus on hover:
+
+```tsx
+<Box bg={{ base: "danger.bg.initial", _hover: { _focus: "danger.bg.hover" } }}>
+  Hover & Focus me
+</Box>
+```
+
+### At Rules
+
+This also works with the supported at-rules (`@media`, `@layer`, `@container`,
+`@supports`, and `@page`):
+
+```tsx
+<Box
+  css={{
+    "@container (min-width: 10px)": {
+      color: "success.surface.initial",
+    },
+  }}
+>
+  Hello
+</Box>
+```
+
+## Pseudo Classes
+
+### Hover, Active, Focus, and Disabled
+
+Here's an example of how to style the hover, active, focus, and disabled states
+of an element
+
+```tsx
+<Box
+  _hover={{ bg: "danger.bg.hover" }}
+  _active={{ bg: "danger.bg.active" }}
+  _focus={{ bg: "danger.bg.initial" }}
+  _disabled={{ opacity: "0.5" }}
+>
+  Hover me > Hover me
+</Box>
+```
+
+### First, Last, Odd, Even
+
+Here's an example of how to style the first, last, odd, and even elements in a
+list
+
+```tsx
+<ul>
+  <For each={items}>
+    {(item) => (
+      <li key={item}>
+        <Box
+          _first={{ color: "danger.bg.initial" }}
+          _last={{ color: "red.800" }}
+        >
+          {item}
+        </Box>
+      </li>
+    )}
+  </For>
+</ul>
+```
+
+You can also style even and odd elements using the `_even` and `_odd` modifier
+
+```tsx
+<Table.Root>
+  <Table.Body>
+    <For each={items}>
+    {(item) => (
+      <Table.Row key={item} css={{
+        _even={{ bg: "gray.100" }}
+        _odd={{ bg: "white" }}
+      }}>
+        <Table.Cell>{item}</Table.Cell>
+      </Table.Row>
+    )}
+  </Table.Body>
+</Table.Root>
+```
+
+## Pseudo Elements
+
+### Before and After
+
+To style the `::before` and `::after` pseudo elements of an element, use the
+`_before` and `_after` modifiers
+
+```tsx /_before/
+<Box _before={{ content: '"👋"' }} _after={{ content: '"🥂"' }}>
+  Hello
+</Box>
+```
+
+### Placeholder
+
+To style the placeholder text of any input or textarea, use the `_placeholder`
+modifier:
+
+```tsx {3}
+<Input
+  placeholder="Enter your name"
+  css={{
+    _placeholder={{ color: "gray.500" }}
+  }}
+/>
+```
+
+### File Inputs
+
+To style the file input button, use the `_file` modifier:
+
+```tsx {3}
+<Input
+  type="file"
+  css={{
+    _file={{ bg: "gray.500", px: "4", py: "2", marginEnd: "3" }}
+  }}
+/>
+```
+
+## Media Queries
+
+### Reduced Motion
+
+Use the `_motionReduce` and `_motionSafe` modifiers to style an element based on
+the user's motion preference:
+
+```tsx
+<Box _motionSafe={{ transition: "all 0.3s" }}>Hello</Box>
+```
+
+### Color Scheme
+
+The `prefers-color-scheme` media feature is used to detect if the user has
+requested the system to use a light or dark color theme.
+
+Use the `_osLight` and `_osDark` modifiers to style an element based on the
+user's color scheme preference:
+
+```tsx
+<Box bg={{ base: "white", _osDark: "black" }}>Hello</Box>
+```
+
+### Color Contrast
+
+The `prefers-contrast` media feature is used to detect if the user has requested
+the system use a high or low contrast theme.
+
+Use the `_highContrast` and `_lessContrast` modifiers to style an element based
+on the user's color contrast preference:
+
+```tsx
+<Box bg={{ base: "white", _highContrast: "black" }}>Hello</Box>
+```
+
+### Orientation
+
+The `orientation` media feature is used to detect if the user has a device in
+portrait or landscape mode.
+
+Use the `_portrait` and `_landscape` modifiers to style an element based on the
+user's device orientation:
+
+```tsx
+<Box pb="4" _portrait={{ pb: "8" }}>
+  Hello
+</Box>
+```
+
+## Selectors
+
+### Arbitrary selectors
+
+For arbitrary, use the `css` prop to write styles for one-off selectors:
+
+```tsx
+<Box css={{ "&[data-state=closed]": { color: "red.300" } }} />
+```
+
+Here's another example that targets the child elements of a parent element:
+
+```tsx
+<Box
+  css={{
+    "& > *": { margin: "2" },
+  }}
+/>
+```
+
+### Group Selectors
+
+To style an element based on its parent element's state or attribute, add the
+`group` class to the parent element, and use any of the `_group*` modifiers on
+the child element.
+
+```tsx
+<div className="group">
+  <Text _groupHover={{ bg: "danger.bg.initial" }}>Hover me</Text>
+</div>
+```
+
+This modifier works for every pseudo class modifiers like `_groupHover`,
+`_groupActive`, `_groupFocus`, and `_groupDisabled`, etc.
+
+### Sibling Selectors
+
+To style an element based on its sibling element's state or attribute, add the
+`peer` class to the sibling element, and use any of the `_peer*` modifiers on
+the target element.
+
+```tsx /_peerHover={{ bg: "danger.bg.initial" }}/
+<div>
+  <p className="peer">Hover me</p>
+  <Box _peerHover={{ bg: "danger.bg.initial" }}>I'll change by bg</Box>
+</div>
+```
+
+> **Note:** This only works for when the element marked with `peer` is a
+> previous siblings, that is, it comes before the element you want to start.
+
+## Data Attribute
+
+### LTR and RTL
+
+To style an element based on the direction of the text, use the `_ltr` and
+`_rtl` modifiers
+
+```tsx {2}
+<div dir="ltr">
+  <Box _ltr={{ ml: "3" }} _rtl={{ mr: "3" }}>
+    Hello
+  </Box>
+</div>
+```
+
+<NoteAdmonition description="PandaCSS automagically handles this when you use the [padding|margin]top/bottom/left/right properties by converting it to use the `inline` and `block`." />
+
+### State
+
+To style an element based on its `data-{state}` attribute, use the corresponding
+`_{state}` modifier
+
+```tsx
+<Box data-state="indeterminate" _indeterminate={{ bg: "gray.500" }}>
+  Hello
+</Box>
+```
+
+This works for common states like `data-active`, `data-disabled`, `data-focus`,
+`data-hover`, `data-invalid`, `data-required`, and `data-valid`.
+
+```tsx /_active/
+<Box data-active _active={{ bg: "gray.500" }}>
+  Hello
+</Box>
+```
+
+### Orientation
+
+To style an element based on its `data-orientation` attribute, use the
+`_horizontal` and `_vertical` modifiers
+
+```tsx
+<Box
+  data-orientation="horizontal"
+  _horizontal={{ bg: "danger.bg.initial" }}
+  _vertical={{ bg: "action.bg.initial" }}
+>
+  Hello
+</Box>
+```
+
+## ARIA Attribute
+
+To style an element based on its `aria-{state}=true` attribute, use the
+corresponding `_{state}` prop
+
+```tsx
+<Box aria-expanded="true" _expanded={{ bg: "gray.500" }}>
+  Hello
+</Box>
+```
+
+## Reference
+
+Here's a list of all the condition props you can use in Cerberus:
+
+Cerberus extends the [built-in conditions](https://panda-css.com/docs/concepts/conditional-styles#reference) provided by Panda-CSS.
+
+| Name                | Selector                  |
+| ------------------  | ------------------------- |
+| _cerberusTheme      | `[data-theme=cerberus] &` |
+| _acheronTheme       | `[data-theme=acheron] &` |
+| _lightMode          | `[data-color-mode=light] &, &.light, .light &` |
+| _darkMode           | `[data-color-mode=dark] &, &.dark, .dark &` |
+| _open               | `'&:is([open], [data-open], [data-state=open])'` |
+| _closed             | `'&:is([closed], [data-closed], [data-state=closed])'` |
+| _notDisabled        | `&:is(:not([disabled]), [data-disabled=false])` |
+| _modalOpen          | `&:is([data-modal-open=true])` |
+| _screenReaderOnly   | `&:is([data-screen-reader-only=true])` |
+| _isOver             | `&:is([data-over=true])` |
+| _isDropped          | `&:is([data-dropped=true])` |
+| _today              | `&:is([data-today=true], [data-date=today])` |
+| _pastDay            | `&:is([data-past-day=true], [data-date=past])` |
+| _inRange            | `&:is([data-in-range=true])` |
+| _startRange         | `&:is([data-start-range])` |
+| _endRange           | `&:is([data-end-range])` |
+| _invalid            | `&:is(:invalid, [data-invalid], [aria-invalid])` |
+| _userInvalid        | `&:is(:user-invalid, [aria-invalid])` |
+| _groupInvalid       | `.group:is([data-invalid] &, [aria-invalid]) &` |
+| _groupChecked       | `.group:is([data-checked="true"] &, [aria-checked="true"]) &` |
+| _positionBottom     | `&:is([data-position=bottom])` |
+| _positionTop        | `&:is([data-position=top])` |
+| _positionLeft       | `&:is([data-position=left])` |
+| _positionRight      | `&:is([data-position=right])` |
+| _startIcon          | `&:is([data-start-icon=true])` |
+| _tooltip            | `&:is([data-tooltip=true])` |
+| _notify             | `&:is([data-notify=true])` |
+| _admin              | `&:is([data-role=admin])` |
+| _student            | `&:is([data-role=student])` |
+| _user               | `&:is([data-role=user])` |
+| _highlight          | `&:is(::selection)` |
+| _spellingError      | `&:is(::spelling-error)` |
+| _grammarError       | `&:is(::grammar-error)` |
+| _pagePalette        | `&:is([data-palette=page])` |
+| _actionPalette      | `&:is([data-palette=action])` |
+| _infoPalette        | `&:is([data-palette=info])` |
+| _successPalette     | `&:is([data-palette=success])` |
+| _warningPalette     | `&:is([data-palette=warning])` |
+| _dangerPalette      | `&:is([data-palette=danger])` |
+
+## Customization
+
+Cerberus lets you create your own conditions, so you're not limited to the ones in the default preset. Learn more about customizing conditions
+[here](/docs/theming/customization#conditions).

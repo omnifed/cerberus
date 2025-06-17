@@ -15,7 +15,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className={cx(
           css({
             my: 6,
-            textStyle: 'h1',
+            textStyle: 'heading-lg',
           }),
           headlineStyles,
         )}
@@ -27,7 +27,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className={cx(
           css({
             my: 6,
-            textStyle: 'h2',
+            textStyle: 'heading-md',
           }),
           headlineStyles,
         )}
@@ -39,7 +39,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className={cx(
           css({
             my: 6,
-            textStyle: 'h3',
+            textStyle: 'heading-md',
           }),
           headlineStyles,
         )}
@@ -51,7 +51,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className={cx(
           css({
             my: 6,
-            textStyle: 'h4',
+            textStyle: 'heading-md',
           }),
           headlineStyles,
         )}
@@ -63,7 +63,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className={cx(
           css({
             my: 6,
-            textStyle: 'h5',
+            textStyle: 'heading-sm',
           }),
           headlineStyles,
         )}
@@ -75,7 +75,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className={cx(
           css({
             my: 6,
-            textStyle: 'h6',
+            textStyle: 'heading-xs',
           }),
           headlineStyles,
         )}
@@ -216,6 +216,25 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           paddingBlockEnd: 'lg',
           '& li': {
             paddingBlockEnd: 'sm',
+          },
+        })}
+        {...props}
+      />
+    ),
+    ul: (props) => (
+      <ul
+        className={css({
+          listStyleType: 'disc',
+          pl: 'lg',
+          pb: 'lg',
+          _marker: {
+            color: 'page.text.100/75',
+          },
+          '& li': {
+            pb: 'sm',
+            '& > p': {
+              pb: 'initial',
+            },
           },
         })}
         {...props}

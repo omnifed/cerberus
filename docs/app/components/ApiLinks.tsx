@@ -7,13 +7,14 @@ const apiLinkStyles = css({
   alignItems: 'center',
   border: '1px solid',
   borderColor: 'action.border.100',
-  bgColor: 'action.bg.100.initial',
+  bgColor: 'action.ghost.initial',
+  color: 'action.text.100',
   display: 'inline-flex',
   gap: '2',
-  h: 8,
-  pxi: '2',
+  h: '1.5rem',
+  p: 'sm',
   rounded: 'full',
-  textStyle: 'label-sm',
+  textStyle: 'button-sm',
   textDecoration: 'none',
   transition: 'all 200ms ease-in-out',
   _hover: {
@@ -28,6 +29,7 @@ interface ApiLinksProps {
   source?: string
   recipe?: string
   ark?: string
+  panda?: string
 }
 
 export default function ApiLinks(props: ApiLinksProps) {
@@ -35,7 +37,6 @@ export default function ApiLinks(props: ApiLinksProps) {
     <ul
       className={hstack({
         gap: '4',
-        mb: '8',
       })}
     >
       <Show when={Boolean(props.npm)}>
@@ -84,6 +85,23 @@ export default function ApiLinks(props: ApiLinksProps) {
           >
             <LogoGithub />
             recipe
+            <ArrowUpRight
+              size={12}
+              className={css({ color: 'page.text.100' })}
+            />
+          </a>
+        </li>
+      </Show>
+
+      <Show when={Boolean(props.panda)}>
+        <li>
+          <a
+            className={apiLinkStyles}
+            href={props.panda}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Panda
             <ArrowUpRight
               size={12}
               className={css({ color: 'page.text.100' })}

@@ -1,0 +1,187 @@
+---
+title: Fieldset
+description: The Fieldset component groups form fields together with a shared legend and helper/error text.
+npm: '@cerberus-design/react'
+source: 'components/fieldset'
+recipe: 'slots/fieldset.ts'
+ark: 'fieldset'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { BasicDemo, FieldsetGroupDemo, CustomDemo } from '../components/fieldset/static'
+
+
+```ts
+import { Fieldset, FieldsetParts } from '@cerberus/react'
+```
+
+## Usage
+
+### Form Section Example
+
+The `Fieldset` component can be used to group related form elements together using the `usage` prop which can be either `formSection` or `fieldGroup` (default).
+
+<CodePreview preview={<BasicDemo />}>
+```tsx title="radio-group.tsx" {18}
+import {
+  Fieldset,
+  Field,
+  Input,
+  RadioGroup,
+  Radio,
+} from '@cerberus/react'
+import { Box, VStack } from 'styled-system/jsx'
+
+export function BasicDemo() {
+  return (
+    <Box w="1/2">
+      <Fieldset
+        invalid
+        legend="Update your profile"
+        helperText="You can update your profile information here."
+        errorText="This is an error message for the fieldset group."
+        usage="formSection"
+      >
+        <VStack alignItems="flex-start" gap="lg" paddingBlock="lg" w="full">
+          <Field
+            ids={{
+              control: 'first_name',
+            }}
+            label="What is your first name?"
+            required
+          >
+            <Input name="first_name" />
+          </Field>
+
+          <Field
+            ids={{
+              control: 'display_name',
+            }}
+            label="What is your display name?"
+            required
+          >
+            <Input name="last_name" />
+          </Field>
+        </VStack>
+      </Fieldset>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+### Field Group Example
+
+When use need to label a group of Radio or Checkbox inputs, use the `usage` prop with the value `fieldGroup`.
+
+<CodePreview preview={<FieldsetGroupDemo />}>
+```tsx title="radio-group.tsx" {18}
+import {
+  Fieldset,
+  RadioGroup,
+  Radio,
+} from '@cerberus/react'
+import { Box } from 'styled-system/jsx'
+
+function FieldsetGroupDemo() {
+  return (
+    <Box w="1/2">
+      <Fieldset legend="Who is your favorite?">
+        <RadioGroup name="favorite" defaultValue="cerberus">
+          <Radio value="cerberus">Cerberus</Radio>
+          <Radio value="hades">Hades</Radio>
+          <Radio value="zeus">Zeus</Radio>
+        </RadioGroup>
+      </Fieldset>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the Fieldset.
+
+| Component | Description |
+| --------- | ----------- |
+| FieldsetRoot    | The context provider for the Fieldset parts |
+| FieldsetLegend  | The label of the fieldset |
+| FieldsetHelperText   | The label description for the Fieldset |
+| FieldsetErrorText   | The error message for the Fieldset |
+
+<CodePreview preview={<CustomDemo />}>
+```tsx title="custom fieldset"
+import { Field, FieldsetParts, Input } from '@cerberus/react'
+import { Box } from 'styled-system/jsx'
+
+function CustomDemo() {
+  return (
+    <Box w="1/2">
+      <FieldsetParts.Root invalid>
+        <FieldsetParts.Legend
+          css={{
+            textStyle: 'heading-lg',
+          }}
+        >
+          Custom Legend
+        </FieldsetParts.Legend>
+        <FieldsetParts.HelperText
+          css={{
+            color: 'page.text.200',
+            fontStyle: 'italic',
+            textStyle: 'body-sm',
+          }}
+        >
+          This is some custom Helper Text
+        </FieldsetParts.HelperText>
+
+        <Box paddingBlock="lg" w="full">
+          <Field label="This is a custom example">
+            <Input />
+          </Field>
+        </Box>
+
+        <FieldsetParts.ErrorText
+          css={{
+            bgColor: 'danger.bg.initial',
+            color: 'danger.text.100',
+            p: 4,
+            rounded: 'lg',
+          }}
+        >
+          This is a custom Error Text
+        </FieldsetParts.ErrorText>
+      </FieldsetParts.Root>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## API
+
+### Props
+
+The `Fieldset` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| usage     |  `fieldGroup`   | The type of fieldset to display.              |
+
+
+The `Fieldset` component also accepts all the props of the [`FieldsetRoot` primitive props](https://ark-ui.com/react/docs/components/fieldset#api-reference)
+
+### Parts
+
+The `FieldsetParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the FieldsetParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `FieldsetRoot` component which is the Provider for the family. |
+| Legend     | The `FieldsetLegend` component which displays the label. |
+| HelperText     | The `FieldsetHelperText` component which displays the description text. |
+| ErrorText     | The `FieldsetErrorText` component which displays the error text when the group is marked `invalid`. |

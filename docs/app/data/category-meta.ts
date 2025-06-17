@@ -77,11 +77,6 @@ export const categoryMeta = {
     description: 'Dialogs are used to display content on top of an overlay.',
     image: ButtonFeature,
   },
-  modal: {
-    name: 'Modal',
-    description: 'Modals are used to display content on top of an overlay.',
-    image: ButtonFeature,
-  },
 
   menu: {
     name: 'Menu',

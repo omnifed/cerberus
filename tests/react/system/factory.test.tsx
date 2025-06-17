@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'bun:test'
 import { render, screen } from '@testing-library/react'
-import { createCerberusPrimitive } from '@cerberus-design/react'
+import { createCerberusPrimitive, cerberus } from '@cerberus-design/react'
 import type {
   ButtonHTMLAttributes,
   HTMLAttributes,
@@ -101,5 +101,29 @@ describe('createCerberusPrimitive', () => {
     expect(screen.getByText(/test/i)).toBeInTheDocument()
     expect(screen.getByTestId('field-root')).toHaveClass('custom')
     expect(screen.getByTestId('field-root')).toHaveStyle({ color: 'red' })
+  })
+})
+
+describe('cerberus', () => {
+  test('should return a Cerberus component by name', () => {
+    const Button = cerberus('button')
+    expect(Button).toBeDefined()
+    render(<Button>Click me</Button>)
+    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByText(/click me/i)).toBeInTheDocument()
+  })
+
+  test('should accept defaultProps', () => {
+    const Button = cerberus('button', { type: 'button' })
+    render(<Button css={{ color: 'blue' }}>Click me</Button>)
+    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByRole('button')).toHaveAttribute('type', 'button')
+    expect(screen.getByText(/click me/i)).toBeInTheDocument()
+  })
+
+  test('should also work with object syntax', () => {
+    render(<cerberus.button css={{ color: 'blue' }}>Click me</cerberus.button>)
+    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByText(/click me/i)).toBeInTheDocument()
   })
 })

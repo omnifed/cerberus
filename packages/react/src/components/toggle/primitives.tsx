@@ -1,25 +1,29 @@
 import {
   Toggle,
-  type ToggleIndicatorProps,
-  type ToggleRootProps,
+  type ToggleIndicatorProps as ArkToggleIndicatorProps,
+  type ToggleRootProps as ArkToggleRootProps,
 } from '@ark-ui/react/toggle'
+import {
+  createCerberusPrimitive,
+  type CerberusPrimitiveProps,
+} from '../../system/index'
 
 /**
  * This module provides the Toggle primitives.
  * @module 'react/toggle'
  */
 
-/**
- * The ToggleRoot is used to manage the state of the Toggle component.
- */
-export function ToggleRoot(props: ToggleRootProps) {
-  return <Toggle.Root {...props} />
-}
+const { withNoRecipe } = createCerberusPrimitive()
 
-/**
- * The ToggleIndicator is used to render the indicator of the Toggle component
- * based on the pressed state.
- */
-export function ToggleIndicator(props: ToggleIndicatorProps) {
-  return <Toggle.Indicator {...props} />
-}
+// Root
+
+export type ToggleRootProps = CerberusPrimitiveProps<ArkToggleRootProps>
+export const ToggleRoot = withNoRecipe<ToggleRootProps>(Toggle.Root)
+
+// Indicator
+
+export type ToggleIndicatorProps =
+  CerberusPrimitiveProps<ArkToggleIndicatorProps>
+export const ToggleIndicator = withNoRecipe<ToggleIndicatorProps>(
+  Toggle.Indicator,
+)
