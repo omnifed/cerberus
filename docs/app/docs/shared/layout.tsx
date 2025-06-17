@@ -34,6 +34,7 @@ export function DocsPageLayout(props: PropsWithChildren<object>) {
           md: 'md',
         }}
         maxW="88ch"
+        w="full"
       >
         {props.children}
       </Container>

@@ -11,12 +11,14 @@ export function GradientList() {
     <div
       className={cq({
         mt: 6,
+        w: 'full',
       })}
     >
       <ul
         className={hstack({
           gap: 4,
           flexWrap: 'wrap',
+          w: 'full',
         })}
       >
         {gradientValues.map((gradientName, index) => (

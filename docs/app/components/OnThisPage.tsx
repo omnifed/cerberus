@@ -5,10 +5,10 @@ import { css } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
 import Link, { type LinkProps } from 'next/link'
 import { useLayoutEffect, useRef, useState } from 'react'
-import { Box } from '@/styled-system/jsx'
+import { Box, Divider } from '@/styled-system/jsx'
 import { usePathname } from 'next/navigation'
-
-// TODO: add Edit this page link to OnThisPage component
+import { cerberus, For } from '@cerberus-design/react'
+import { ArrowUpRight, LogoGithub } from '@carbon/icons-react'
 
 interface OverrideHeading {
   href: string
@@ -78,6 +78,7 @@ export default function OnThisPage() {
       >
         On this page
       </p>
+
       <ul
         aria-label="Page sections"
         className={vstack({
@@ -85,34 +86,70 @@ export default function OnThisPage() {
           gap: 2,
         })}
       >
-        {links.map((link, idx) => (
-          <li key={`${link.id}-${idx}`}>
-            <Link
-              aria-current={
-                window.location.hash === link.id ? 'page' : undefined
-              }
-              href={link.id as LinkProps<string>['href']}
-              className={css({
-                display: 'block',
-                rounded: 'sm',
-                textStyle: 'label-sm',
-                textWrap: 'pretty',
-                _hover: {
-                  textDecorationColor: 'action.navigation.hover',
-                  textDecoration: 'underline',
-                },
-                _currentPage: {
-                  color: 'action.navigation.visited',
-                  textDecorationColor: 'action.navigation.hover',
-                  textDecoration: 'underline',
-                },
-                _focusVisible: focusStates._focusVisible,
-              })}
-            >
-              {link.label}
-            </Link>
-          </li>
-        ))}
+        <For each={links}>
+          {(link, idx) => (
+            <cerberus.li key={`${link.id}-${idx}`}>
+              <Link
+                aria-current={
+                  window.location.hash === link.id ? 'page' : undefined
+                }
+                href={link.id as LinkProps<string>['href']}
+                className={css({
+                  display: 'block',
+                  rounded: 'sm',
+                  textStyle: 'label-sm',
+                  textWrap: 'pretty',
+                  _hover: {
+                    textDecorationColor: 'action.navigation.hover',
+                    textDecoration: 'underline',
+                  },
+                  _currentPage: {
+                    color: 'action.navigation.visited',
+                    textDecorationColor: 'action.navigation.hover',
+                    textDecoration: 'underline',
+                  },
+                  _focusVisible: focusStates._focusVisible,
+                })}
+              >
+                {link.label}
+              </Link>
+            </cerberus.li>
+          )}
+        </For>
+
+        <cerberus.li>
+          <Divider
+            color="page.border.initial"
+            my="md"
+            orientation="horizontal"
+            thickness="1px"
+          />
+
+          <cerberus.a
+            href={`https://github.com/omnifed/cerberus/blob/main/docs/app/${pathname}.mdx`}
+            target="_blank"
+            rel="noopener noreferrer"
+            css={{
+              color: 'page.text.100',
+              display: 'inline-flex',
+              gap: 2,
+              rounded: 'sm',
+              textStyle: 'label-sm',
+              textWrap: 'pretty',
+              transitionProperty: 'color',
+              transitionDuration: 'fast',
+              _hover: {
+                color: 'action.navigation.hover',
+                textDecorationColor: 'action.navigation.hover',
+                textDecoration: 'underline',
+              },
+            }}
+          >
+            <LogoGithub size="0.875rem" />
+            Edit this page on Github
+            <ArrowUpRight size="0.875rem" />
+          </cerberus.a>
+        </cerberus.li>
       </ul>
     </Box>
   )
