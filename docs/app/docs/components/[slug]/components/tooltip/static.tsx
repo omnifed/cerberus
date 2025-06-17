@@ -1,3 +1,5 @@
+'use client'
+
 import { Information, InformationFilled } from '@carbon/icons-react'
 import { Tooltip } from '@cerberus-design/react'
 import { HStack } from 'styled-system/jsx'

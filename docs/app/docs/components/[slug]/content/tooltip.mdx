@@ -9,11 +9,17 @@ ark: 'tooltip'
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
+import {
+  BasicTooltipPreview,
+  PositioningTooltipPreview,
+} from '../components/tooltip/static'
 
 ## Usage
 
-<CodePreview>
+<CodePreview preview={<BasicTooltipPreview />}>
 ```tsx
+'use client'
+
 import { Information } from '@carbon/icons-react'
 import { Tooltip } from '@cerberus/react'
 
@@ -33,8 +39,10 @@ function BasicTooltipPreview() {
 
 You can position the tooltip relative to the target element using the `position` prop.
 
-<CodePreview>
+<CodePreview preview={<PositioningTooltipPreview />}>
 ```tsx
+'use client'
+
 import { InformationFilled } from '@carbon/icons-react'
 import { Tooltip } from '@cerberus/react'
 import { HStack } from 'styled-system/jsx'
