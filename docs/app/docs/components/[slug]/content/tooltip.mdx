@@ -7,10 +7,8 @@ recipe: 'slots/tooltip.ts'
 ark: 'tooltip'
 ---
 
+import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import {
-  NoteAdmonition
-} from '@/app/components/Admonition'
 import {
   BasicTooltipPreview,
   PositioningTooltipPreview,
@@ -20,6 +18,8 @@ import {
 
 <CodePreview preview={<BasicTooltipPreview />}>
 ```tsx
+'use client'
+
 import { Information } from '@carbon/icons-react'
 import { Tooltip } from '@cerberus/react'
 
@@ -40,7 +40,9 @@ function BasicTooltipPreview() {
 You can position the tooltip relative to the target element using the `position` prop.
 
 <CodePreview preview={<PositioningTooltipPreview />}>
-```tsx
+```tsx title="Positioning Demo"
+'use client'
+
 import { InformationFilled } from '@carbon/icons-react'
 import { Tooltip } from '@cerberus/react'
 import { HStack } from 'styled-system/jsx'
