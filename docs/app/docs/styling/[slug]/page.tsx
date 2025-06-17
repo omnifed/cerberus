@@ -3,6 +3,15 @@ import { Show, Text } from '@cerberus-design/react'
 import { VStack } from '@/styled-system/jsx/vstack'
 import { getDocPageData } from '../../utils/helpers.server'
 import type { DocFrontmatter } from '../../types'
+import { items } from './content/items'
+
+export async function generateStaticParams() {
+  return items
+    .map((slug) => {
+      if (slug.href) return { slug: slug.slug }
+    })
+    .filter(Boolean)
+}
 
 export default async function StylingSlugPage(props: RouteProps) {
   const { slug } = await props.params

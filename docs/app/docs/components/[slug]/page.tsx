@@ -4,6 +4,15 @@ import { Show, Text } from '@cerberus-design/react'
 import { HStack, VStack } from '@/styled-system/jsx'
 import type { DocFrontmatter } from '../../types'
 import ApiLinks from '@/app/components/ApiLinks'
+import { items } from './content/items'
+
+export async function generateStaticParams() {
+  return items
+    .map((slug) => {
+      if (slug.href) return { slug: slug.slug }
+    })
+    .filter(Boolean)
+}
 
 export default async function GetStartedSlugPage(props: RouteProps) {
   const { slug } = await props.params
