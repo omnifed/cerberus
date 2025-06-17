@@ -2,6 +2,9 @@ import type { PropsWithChildren } from 'react'
 import { Box, Container, HStack, Scrollable } from '@/styled-system/jsx'
 import OnThisPage from '@/app/components/OnThisPage'
 
+// TODO: mimic google meet layout
+// TODO: add Edit this page link to OnThisPage component
+
 /**
  * This component is the layout for all the pages in the "Docs" section
  * of the app. It includes a main content area for the documentation

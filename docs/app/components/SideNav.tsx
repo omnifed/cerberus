@@ -1,7 +1,7 @@
 import { css } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
 import { type PropsWithChildren, memo } from 'react'
-import { type TagType } from '@/app/react/side-nav'
+import { type TagType } from '@/app/react_deprecated/side-nav'
 import MatchSideNavItem from './MatchSideNavItem'
 import type { LinkProps } from 'next/link'
 
