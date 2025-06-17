@@ -11,8 +11,8 @@ import {
 } from 'react'
 import { HStack, VStack } from 'styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
-import { Show } from '../Show'
-import { For } from '../for'
+import { Show } from '../show/index'
+import { For } from '../for/index'
 import { Avatar } from '../avatar/avatar'
 import {
   Dialog,

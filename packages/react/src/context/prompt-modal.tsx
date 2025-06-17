@@ -17,9 +17,9 @@ import { css } from 'styled-system/css'
 import { hstack } from 'styled-system/patterns'
 import { FieldLabel, FieldRoot, Input } from '../components/field/index'
 import { Button } from '../components/button/button'
-import { Show } from '../components/Show'
+import { Show } from '../components/show/index'
 import { Avatar } from '../components/avatar/avatar'
-import { Text } from '../components/Text'
+import { Text } from '../components/text/index'
 import {
   Dialog,
   DialogDescription,

@@ -1,6 +1,6 @@
 import type { DialogVariantProps } from 'styled-system/recipes'
 import type { WithCss } from '../../types'
-import { Portal } from '../Portal'
+import { Portal } from '../portal/index'
 import {
   DialogBackdrop,
   DialogContent,

@@ -10,8 +10,8 @@ import {
 import { type ButtonVariantProps } from 'styled-system/recipes'
 import { Box } from 'styled-system/jsx'
 import type { CerberusPrimitiveProps } from '../../system/types'
-import { Show } from '../Show'
-import { Spinner } from '../Spinner'
+import { Show } from '../show/index'
+import { Spinner } from '../spinner/index'
 import { ButtonRoot } from './primitives'
 
 /**

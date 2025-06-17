@@ -9,7 +9,7 @@ import {
 import { cx } from 'styled-system/css'
 import { button, type ButtonVariantProps } from 'styled-system/recipes'
 import { useNavMenuContext } from '../../context/navMenu'
-import { Show } from '../Show'
+import { Show } from '../show/index'
 import {
   createNavTriggerProps,
   type NavTriggerAriaValues,

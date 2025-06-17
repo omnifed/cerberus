@@ -5,7 +5,7 @@ import { cx } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
 import { useNavMenuContext } from '../../context/navMenu'
 import type { Positions } from '../../types'
-import { Show } from '../Show'
+import { Show } from '../show/index'
 
 /**
  * This module contains the NavMenuList component.

@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react'
 import { splitProps } from '../../utils/index'
+import { Show } from '../show/index'
 import { AdmonitionParts } from './parts'
-import { Show } from '../Show'
-import { MatchAvatar } from './match-avatar'
 import type { AdmonitionRootProps } from './primitives'
+import { MatchAvatar } from './match-avatar'
 
 /**
  * This module provides an abstraction for the Admonition component.

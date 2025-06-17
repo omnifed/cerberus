@@ -12,7 +12,7 @@ import {
   Tr,
   type TableRootProps,
 } from './primitives'
-import { Show } from '../Show'
+import { Show } from '../show/index'
 
 export interface TableRootElProps extends TableRootProps {
   /**

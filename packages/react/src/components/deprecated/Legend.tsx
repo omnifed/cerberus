@@ -5,7 +5,7 @@ import { css, cx } from 'styled-system/css'
 import { label, type LabelVariantProps } from 'styled-system/recipes'
 import { hstack } from 'styled-system/patterns'
 import { type HTMLAttributes } from 'react'
-import { Show } from '../Show'
+import { Show } from '../show/index'
 
 /**
  * This module contains the Fieldset component.

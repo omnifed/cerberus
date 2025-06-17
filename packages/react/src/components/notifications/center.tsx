@@ -7,7 +7,7 @@ import {
 } from '@ark-ui/react/toast'
 import { Box } from 'styled-system/jsx'
 import { Button, type ButtonProps } from '../button/button'
-import { Show } from '../Show'
+import { Show } from '../show/index'
 import { NotificationParts } from './parts'
 import type { NotifyOptions, UseNotificationCenterReturn } from './types'
 import { MatchNotificationIcon } from './match-icon'

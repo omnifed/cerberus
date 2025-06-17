@@ -4,9 +4,9 @@ import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
 import type { MouseEventHandler, PropsWithChildren } from 'react'
 import { css, cx } from 'styled-system/css'
 import { tag, type TagVariantProps } from 'styled-system/recipes'
-import { useCerberusContext } from '../context/cerberus'
-import { IconButton } from './icon-button/index'
-import { Show } from './Show'
+import { useCerberusContext } from '../../context/cerberus'
+import { IconButton } from '../icon-button/index'
+import { Show } from '../show/index'
 
 /**
  * This module contains the tag component.

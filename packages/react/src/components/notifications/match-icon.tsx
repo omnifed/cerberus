@@ -3,7 +3,7 @@
 import { ark } from '@ark-ui/react/factory'
 import { toast } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
-import { Spinner } from '../Spinner'
+import { Spinner } from '../spinner/index'
 import type { NotifyOptions } from './types'
 
 /**

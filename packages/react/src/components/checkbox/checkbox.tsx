@@ -1,7 +1,7 @@
 import type { CheckboxRootProps } from '@ark-ui/react'
 import { type CheckboxVariantProps } from 'styled-system/recipes'
-import { Show } from '../Show'
-import { Text } from '../Text'
+import { Show } from '../show/index'
+import { Text } from '../text/index'
 import { CheckboxParts } from './parts'
 import { CheckboxIcon } from './checkbox-icon'
 

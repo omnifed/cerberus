@@ -4,7 +4,7 @@ import type {
 } from '@ark-ui/react/rating-group'
 import type { ReactNode } from 'react'
 import { splitProps } from '../../utils/index'
-import { Show } from '../Show'
+import { Show } from '../show/index'
 import { RatingParts } from './parts'
 import type { RatingRootProps } from './primitives'
 
