@@ -1,23 +1,22 @@
 'use client'
 
 import { getDocPageNavItems } from '@/app/docs/utils/helpers.server'
-import { For, Show, Text } from '@cerberus-design/react'
+import { cerberus, For, Show, Text } from '@cerberus-design/react'
 import { SideNavLinkItem } from './link-item'
 import { usePathname } from 'next/navigation'
-import { css } from '@/styled-system/css'
 
 export function SideNav() {
   const pathname = usePathname()
   const section = pathname.split('/')[2] || ''
 
   return (
-    <nav
-      className={css({
+    <cerberus.nav
+      css={{
         minW: '12.875rem',
         px: 'sm',
         py: 'lg',
         w: 'full',
-      })}
+      }}
     >
       <For each={getDocPageNavItems(section)}>
         {(item) => (
@@ -41,6 +40,6 @@ export function SideNav() {
           </Show>
         )}
       </For>
-    </nav>
+    </cerberus.nav>
   )
 }

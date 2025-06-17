@@ -3,21 +3,22 @@ import { Poppins, Recursive } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { type PropsWithChildren } from 'react'
 import {
+  cerberus,
   NotificationCenter,
   ThemeProvider,
   type ColorModes,
   type DefaultThemes,
 } from '@cerberus-design/react'
-import { css, cx } from 'styled-system/css'
+import { cx } from 'styled-system/css'
 import { getTheme } from 'styled-system/themes'
 import { base, openGraph } from './shared-metadata'
 import { Nav } from './components/Nav'
 import { setCookie } from './actions/cookies'
 import { getCachedTheme } from './actions/theme'
-
-import './globals.css'
 import { getCodeTheme } from './utils/colors'
 import CerberusConfig from './context/cerberus-config'
+
+import './globals.css'
 
 const poppins = Poppins({
   display: 'swap',
@@ -74,11 +75,11 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
         </head>
       )}
 
-      <body
-        className={css({
+      <cerberus.body
+        css={{
           minW: '18.75rem',
           h: 'full',
-        })}
+        }}
       >
         <ThemeProvider
           defaultTheme={defaultThemeName}
@@ -88,16 +89,17 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
         >
           <CerberusConfig>
             <Nav />
-            <main role="main" className={css({ h: 'full', w: 'full' })}>
+
+            <cerberus.main role="main" css={{ h: 'full', w: 'full' }}>
               {props.children}
-            </main>
+            </cerberus.main>
 
             <NotificationCenter />
           </CerberusConfig>
         </ThemeProvider>
 
         <Analytics />
-      </body>
+      </cerberus.body>
     </html>
   )
 }

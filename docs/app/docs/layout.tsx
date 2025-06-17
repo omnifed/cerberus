@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack, Scrollable } from '@/styled-system/jsx'
+import { Box, HStack, Scrollable } from '@/styled-system/jsx'
 import type { PropsWithChildren } from 'react'
 import type { Metadata } from 'next'
 import { SideNav } from '../components/shared/side-nav'
@@ -10,32 +10,14 @@ export const metadata: Metadata = getDocsMetadata()
 
 export default function DocsLayout(props: PropsWithChildren<RouteProps>) {
   return (
-    <Grid
-      columns={{
-        base: 1,
-        md: 2,
-      }}
-      gridTemplateRows="var(--row-height) 1fr"
-      gridTemplateColumns={{
-        base: '1fr',
-        md: '22rem 3fr',
-      }}
-      h="100dvh"
+    <HStack
+      alignItems="flex-start"
       gap="0"
+      h="calc(100dvh - var(--nav-height))"
       overflow="hidden"
-      css={{
-        '--row-height': 'calc(var(--nav-height) + 1rem)',
-      }}
+      pt="md"
     >
-      <GridItem
-        colSpan={1}
-        h="calc(100dvh - var(--row-height))"
-        pb="md"
-        pt="md"
-        pl="md"
-        rowStart={2}
-        w="full"
-      >
+      <Box h="full" pb="md" pt="md" pl="md" pos="relative" w="21rem">
         <HStack
           data-placement="right"
           bgColor="page.surface.100"
@@ -59,20 +41,15 @@ export default function DocsLayout(props: PropsWithChildren<RouteProps>) {
           }}
         >
           <AppBar />
-          <Scrollable h="full">
+          <Scrollable direction="vertical" h="full" overflowX="hidden">
             <SideNav />
           </Scrollable>
         </HStack>
-      </GridItem>
+      </Box>
 
-      <GridItem
-        bgColor="page.surface.initial"
-        colStart={2}
-        h="full"
-        rowStart={2}
-      >
+      <Box bgColor="page.surface.initial" flex="2" h="full">
         <DocsPageLayout>{props.children}</DocsPageLayout>
-      </GridItem>
-    </Grid>
+      </Box>
+    </HStack>
   )
 }

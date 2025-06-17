@@ -1,7 +1,8 @@
 import { css } from 'styled-system/css'
-import { cq, grid, gridItem } from 'styled-system/patterns'
+import { grid, gridItem } from 'styled-system/patterns'
 import CategoryCard from './ui/category-card'
 import categoryData from '@/app/data/categories.react.json'
+import { Cq } from '@/styled-system/jsx'
 
 interface CategoryListProps {
   group: keyof typeof categoryData
@@ -10,7 +11,7 @@ interface CategoryListProps {
 export default function CategoryList(props: CategoryListProps) {
   const data = categoryData[props.group]
   return (
-    <div>
+    <>
       <header>
         <h3
           className={css({
@@ -31,19 +32,18 @@ export default function CategoryList(props: CategoryListProps) {
         </p>
       </header>
 
-      <div className={cq()}>
+      <Cq w="full">
         <ul
           className={grid({
             columns: {
               base: 1,
               lg: 2,
-              '2xl': 3,
             },
             gap: {
               base: 'md',
-              '2xl': 'xl',
             },
             mb: 10,
+            w: 'full',
           })}
         >
           {data.items.map((itemName: string, idx: number) => (
@@ -62,7 +62,7 @@ export default function CategoryList(props: CategoryListProps) {
             </li>
           ))}
         </ul>
-      </div>
-    </div>
+      </Cq>
+    </>
   )
 }
