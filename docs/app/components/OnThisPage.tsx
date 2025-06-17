@@ -4,7 +4,7 @@ import { focusStates } from '@cerberus-design/panda-preset'
 import { css } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
 import Link, { type LinkProps } from 'next/link'
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { Box, Divider } from '@/styled-system/jsx'
 import { usePathname } from 'next/navigation'
 import { cerberus, For } from '@cerberus-design/react'
@@ -30,6 +30,15 @@ export default function OnThisPage() {
   const pathname = usePathname()
   const prevPathname = useRef<string | null>(null)
   const [links, setLinks] = useState<HeadingLink[]>([])
+
+  const editPageLink = useMemo(() => {
+    const base = 'https://github.com/omnifed/cerberus/blob/main/docs/app'
+    const directory =
+      pathname?.split('/').slice(0, -1).join('/') ?? 'docs/components'
+    const file = pathname?.split('/').pop() || 'index'
+    const githubPathname = `${directory}/%5Bslug%5D/content/${file}`
+    return `${base}${githubPathname}.mdx`
+  }, [pathname])
 
   useLayoutEffect(() => {
     if (pathname) {
@@ -126,7 +135,7 @@ export default function OnThisPage() {
           />
 
           <cerberus.a
-            href={`https://github.com/omnifed/cerberus/blob/main/docs/app${pathname}.mdx`}
+            href={editPageLink}
             target="_blank"
             rel="noopener noreferrer"
             css={{
