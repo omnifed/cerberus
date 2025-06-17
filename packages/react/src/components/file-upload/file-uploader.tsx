@@ -3,10 +3,10 @@
 import { cx } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
 import { type InputHTMLAttributes } from 'react'
-import { Show } from './Show'
+import { Show } from '../show/show'
 import { fileUploader } from 'styled-system/recipes'
-import { useCerberusContext } from '../context/cerberus'
-import { Avatar } from './avatar/avatar'
+import { useCerberusContext } from '../../context/cerberus'
+import { Avatar } from '../avatar/avatar'
 
 export interface FileUploaderProps
   extends InputHTMLAttributes<HTMLInputElement> {

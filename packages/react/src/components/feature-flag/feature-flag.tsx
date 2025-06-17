@@ -1,8 +1,8 @@
 'use client'
 
 import type { PropsWithChildren } from 'react'
-import { useFeatureFlags } from '../context/feature-flags'
-import { Show } from './Show'
+import { useFeatureFlags } from '../../context/feature-flags'
+import { Show } from '../Show'
 
 export interface FeatureFlagProps {
   /**

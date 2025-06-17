@@ -50,6 +50,16 @@
           "default": "./build/legacy/index.cjs"
         }
       },
+      "/*": {
+        "import": {
+          "types": "./build/modern/index.d.ts",
+          "default": "./build/modern/components/*/index.js"
+        },
+        "require": {
+          "types": "./build/legacy/index.d.cts",
+          "default": "./build/legacy/components/*/index.cjs"
+        }
+      },
       "./package.json": "./package.json"
     },
     "typesVersions": {
