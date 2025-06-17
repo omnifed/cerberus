@@ -126,7 +126,7 @@ export default function OnThisPage() {
           />
 
           <cerberus.a
-            href={`https://github.com/omnifed/cerberus/blob/main/docs/app/${pathname}.mdx`}
+            href={`https://github.com/omnifed/cerberus/blob/main/docs/app${pathname}.mdx`}
             target="_blank"
             rel="noopener noreferrer"
             css={{
