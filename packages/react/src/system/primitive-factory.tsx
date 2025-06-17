@@ -26,6 +26,15 @@ export class CerberusPrimitive {
     this.recipe = recipe ?? null
   }
 
+  private hasStyles(styles: string | undefined): Record<string, unknown> {
+    if (styles) {
+      return {
+        className: styles,
+      }
+    }
+    return {}
+  }
+
   private validateComponent<P extends HTMLAttributes<unknown>>(
     Component: ComponentType<P>,
   ) {
@@ -55,13 +64,8 @@ export class CerberusPrimitive {
 
     const CerbComponent = (props: PropsWithChildren<P> & WithCss) => {
       const { css: customCss, className, ...nativeProps } = props
-      return (
-        <Component
-          {...defaultProps}
-          {...(nativeProps as P)}
-          className={cx(className, css(customCss))}
-        />
-      )
+      const styles = this.hasStyles(cx(className, css(customCss)))
+      return <Component {...defaultProps} {...styles} {...(nativeProps as P)} />
     }
 
     CerbComponent.displayName = Component.displayName || Component.name
