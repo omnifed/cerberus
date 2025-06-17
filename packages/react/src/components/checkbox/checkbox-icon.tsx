@@ -1,8 +1,8 @@
 'use client'
 
 import { useCerberusContext } from '../../context/cerberus'
+import { Show } from '../show/index'
 import { CheckboxParts } from './parts'
-import { Show } from '../Show'
 
 /**
  * This module contains the Checkbox Icon component.

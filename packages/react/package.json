@@ -52,11 +52,11 @@
       },
       "/*": {
         "import": {
-          "types": "./build/modern/index.d.ts",
+          "types": "./build/modern/components/*/index.d.ts",
           "default": "./build/modern/components/*/index.js"
         },
         "require": {
-          "types": "./build/legacy/index.d.cts",
+          "types": "./build/legacy/components/*/index.d.cts",
           "default": "./build/legacy/components/*/index.cjs"
         }
       },

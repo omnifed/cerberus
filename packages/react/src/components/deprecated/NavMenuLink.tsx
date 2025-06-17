@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ElementType } from 'react'
 import { css, cx } from 'styled-system/css'
-import { Show } from '../Show'
+import { Show } from '../show/index'
 
 /**
  * This module contains the NavMenuLink component.

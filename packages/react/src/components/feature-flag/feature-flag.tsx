@@ -2,7 +2,7 @@
 
 import type { PropsWithChildren } from 'react'
 import { useFeatureFlags } from '../../context/feature-flags'
-import { Show } from '../Show'
+import { Show } from '../show/index'
 
 export interface FeatureFlagProps {
   /**

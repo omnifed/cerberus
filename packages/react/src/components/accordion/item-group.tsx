@@ -4,7 +4,7 @@ import type {
 } from '@ark-ui/react/accordion'
 import { type AccordionVariantProps } from 'styled-system/recipes'
 import { splitProps } from '../../utils/index'
-import { Show } from '../Show'
+import { Show } from '../show/index'
 import { AccordionParts } from './parts'
 import { AccordionChevronItemIndicator } from './item-indicator'
 

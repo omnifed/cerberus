@@ -2,9 +2,9 @@
 
 import { cx } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
-import { type InputHTMLAttributes } from 'react'
-import { Show } from '../show/show'
 import { fileUploader } from 'styled-system/recipes'
+import { type InputHTMLAttributes } from 'react'
+import { Show } from '../show/index'
 import { useCerberusContext } from '../../context/cerberus'
 import { Avatar } from '../avatar/avatar'
 

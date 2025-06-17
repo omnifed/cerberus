@@ -2,8 +2,8 @@
 
 import { HStack } from 'styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
-import { Portal } from '../Portal'
-import { Show } from '../Show'
+import { Portal } from '../portal/index'
+import { Show } from '../show/index'
 import { SelectParts } from './parts'
 import type { RefObject } from 'react'
 import type { SelectRootProps } from './primitives'

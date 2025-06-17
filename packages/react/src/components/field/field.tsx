@@ -1,13 +1,13 @@
 import { type FieldRootProps } from '@ark-ui/react/field'
+import { HStack } from 'styled-system/jsx'
 import { splitProps } from '../../utils/index'
+import { Show } from '../show/index'
 import {
   FieldErrorText,
   FieldHelperText,
   FieldLabel,
   FieldRoot,
 } from './primitives'
-import { HStack } from 'styled-system/jsx'
-import { Show } from '../Show'
 import { HelperText } from './helper-text'
 
 export interface FieldProps extends FieldRootProps {

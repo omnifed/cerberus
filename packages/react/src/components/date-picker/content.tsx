@@ -1,4 +1,4 @@
-import { Portal } from '../Portal'
+import { Portal } from '../portal/index'
 import type { DatePickerCalendarProps } from './calendar'
 import { DatePickerParts } from './parts'
 import type { DatePickerContentProps } from './primitives'
