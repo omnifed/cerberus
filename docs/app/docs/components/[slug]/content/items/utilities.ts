@@ -10,6 +10,7 @@ import Show, { frontmatter as ShowFrontmatter } from '../show.mdx'
 import SplitProps, {
   frontmatter as splitPropsFrontmatter,
 } from '../split-props.mdx'
+import Theme, { frontmatter as themeFrontmatter } from '../theme.mdx'
 
 export const utilities = [
   {
@@ -94,5 +95,18 @@ export const utilities = [
         'Learn how to use the Split Props utility in the Cerberus Design System for managing component properties.',
     },
     Content: SplitProps,
+  },
+  {
+    id: '1.4.7',
+    label: 'Theme',
+    slug: 'theme',
+    href: '/docs/components/theme',
+    frontmatter: themeFrontmatter,
+    meta: {
+      title: 'Theme in Cerberus Design System',
+      description:
+        'Discover how to use the Theme utility in the Cerberus Design System for consistent styling.',
+    },
+    Content: Theme,
   },
 ]
