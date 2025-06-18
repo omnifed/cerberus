@@ -1,6 +1,9 @@
 packages:
-  - 'packages/*'
-  - 'tests'
-  - 'configs'
-  - 'docs'
-  - 'figma'
+  - packages/*
+  - tests
+  - configs
+  - docs
+  - figma
+
+ignoredBuiltDependencies:
+  - unrs-resolver
