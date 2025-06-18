@@ -1,5 +1,5 @@
 import { Box, VStack } from '@/styled-system/jsx'
-import { Button } from '@cerberus-design/react'
+import { Button, Theme } from '@cerberus-design/react'
 
 export function BasicExample() {
   return (
@@ -8,21 +8,44 @@ export function BasicExample() {
         <Button>Default</Button>
       </Box>
 
-      <Box bgColor="page.bg.100" w="full">
-        <Button>Light</Button>
-      </Box>
+      <Theme mode="light" css={{ w: 'full' }}>
+        <Box bgColor="page.bg.200" p="md" w="full">
+          <Button>Light</Button>
+        </Box>
+      </Theme>
 
-      <Box bgColor="page.bg.100" w="full">
-        <Button>Dark</Button>
-      </Box>
+      <Theme mode="dark" css={{ w: 'full' }}>
+        <Box bgColor="page.bg.200" p="md" w="full">
+          <Button>Dark</Button>
+        </Box>
+      </Theme>
 
-      <Box bgColor="page.bg.100" w="full">
-        <Button>System</Button>
-      </Box>
+      <Theme mode="system" css={{ w: 'full' }}>
+        <Box bgColor="page.bg.200" p="md" w="full">
+          <Button>System</Button>
+        </Box>
+      </Theme>
 
-      <Box bgColor="page.bg.100" w="full">
-        <Button>Dark Acheron</Button>
-      </Box>
+      <Theme mode="dark" theme="acheron" css={{ w: 'full' }}>
+        <Box bgColor="page.bg.200" p="md" w="full">
+          <Button>Dark Acheron</Button>
+        </Box>
+      </Theme>
     </VStack>
+  )
+}
+
+export function NestedExample() {
+  return (
+    <Theme mode="dark" css={{ w: 'full' }}>
+      <Box bgColor="page.bg.200" p="md" w="full">
+        <Button css={{ mb: 'md' }}>Dark</Button>
+        <Theme mode="light" css={{ w: 'full' }}>
+          <Box bgColor="page.bg.200" p="md" w="full">
+            <Button>Light</Button>
+          </Box>
+        </Theme>
+      </Box>
+    </Theme>
   )
 }

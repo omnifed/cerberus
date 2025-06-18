@@ -1,11 +1,12 @@
 ---
 title: Theme
 description: Used to force a part of the tree to a different mode or theme.
+npm: '@cerberus-design/react'
+source: 'components/theme'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
-
-{/* <ExampleTabs name="theme-basic" /> */}
+import { BasicExample, NestedExample } from '../components/theme/static'
 
 ## Usage
 
@@ -21,6 +22,49 @@ import { Theme } from "@cerberus/react"
 
 ## Examples
 
+### Basic
+
+<CodePreview preview={<BasicExample />}>
+```tsx title="Basic example"
+import { Button, Theme } from '@cerberus/react'
+import { Box, VStack } from 'styled-system/jsx'
+
+function BasicExample() {
+  return (
+    <VStack alignItems="flex-start" w="3/4">
+      <Box w="full">
+        <Button>Default</Button>
+      </Box>
+
+      <Theme mode="light" css={{ w: 'full' }}>
+        <Box bgColor="page.bg.200" p="md" w="full">
+          <Button>Light</Button>
+        </Box>
+      </Theme>
+
+      <Theme mode="dark" css={{ w: 'full' }}>
+        <Box bgColor="page.bg.200" p="md" w="full">
+          <Button>Dark</Button>
+        </Box>
+      </Theme>
+
+      <Theme mode="system" css={{ w: 'full' }}>
+        <Box bgColor="page.bg.200" p="md" w="full">
+          <Button>System</Button>
+        </Box>
+      </Theme>
+
+      <Theme mode="dark" theme="acheron" css={{ w: 'full' }}>
+        <Box bgColor="page.bg.200" p="md" w="full">
+          <Button>Dark Acheron</Button>
+        </Box>
+      </Theme>
+    </VStack>
+  )
+}
+```
+</CodePreview>
+
 ### Nested
 
 The theme can be nested to apply different appearances to different parts of the
@@ -29,14 +73,54 @@ parts of it.
 
 > Good to know: We use native panda-css attributes to achieve this.
 
-{/* <ExampleTabs name="theme-nested" /> */}
+<CodePreview preview={<NestedExample />}>
+```tsx title="Nested example"
+import { Button, Theme } from '@cerberus/react'
+import { Box, VStack } from 'styled-system/jsx'
+
+function NestedExample() {
+  return (
+    <Theme mode="dark" css={{ w: 'full' }}>
+      <Box bgColor="page.bg.200" p="md" w="full">
+        <Button css={{ mb: 'md' }}>Dark</Button>
+        <Theme mode="light" css={{ w: 'full' }}>
+          <Box bgColor="page.bg.200" p="md" w="full">
+            <Button>Light</Button>
+          </Box>
+        </Theme>
+      </Box>
+    </Theme>
+  )
+}
+```
+</CodePreview>
 
 ### Portalled
 
 Use the `asChild` prop to force the appearance of portalled elements like the
 popover and modal content.
 
-{/* <ExampleTabs name="theme-with-portalled" /> */}
+```tsx title="Portalled example" {10}
+import { TooltipParts, Theme } from '@cerberus/react'
+
+function PortalledExample() {
+  return (
+      <TooltipParts.Root>
+      <TooltipParts.Trigger asChild>
+        <Button>Dark</Button>
+      </TooltipParts.Trigger>
+
+      <TooltipParts.Positioner>
+        <TooltipParts.Content asChild>
+          <Theme mode="dark">
+            <Button>Dark</Button>
+          </Theme>
+        </TooltipParts.Content>
+      </TooltipParts.Positioner>
+    </TooltipParts.Root>
+  )
+}
+```
 
 ### Page Specific Color Mode
 
@@ -48,7 +132,7 @@ import { Theme } from "@cerberus/react"
 
 export default Page = ({ children }) => {
   return (
-    <Theme appearance="dark">{/* Rest of the page */}</Theme>
+    <Theme mode="dark">{/* Rest of the page */}</Theme>
   )
 }
 ```
