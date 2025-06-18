@@ -1,12 +1,12 @@
 import { ark } from '@ark-ui/react/factory'
-import { createCerberusPrimitive } from './index'
 import type { ComponentType } from 'react'
+import { CerberusPrimitive } from './primitive-factory'
 
 function cerberusFactory<T extends Record<string, unknown>>(
   component: keyof typeof ark,
   defaultProps?: T,
 ) {
-  const { withNoRecipe } = createCerberusPrimitive()
+  const { withNoRecipe } = new CerberusPrimitive()
   const arkComponent = ark[component] as ComponentType
 
   if (arkComponent) {
