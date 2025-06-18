@@ -11,7 +11,7 @@ import {
 import CerberusLogo from '@/app/components/cerberus-logo'
 import Link, { type LinkProps } from 'next/link'
 
-// blog metadata
+// blog metadata - streamline this when it gets larger than 3
 import { frontmatter as v018release } from './cerberus-v018-release/page.mdx'
 
 export default function Page() {

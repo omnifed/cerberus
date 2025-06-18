@@ -48,6 +48,7 @@ export * from './components/table/index'
 export * from './components/tabs/index'
 export * from './components/tag/index'
 export * from './components/text/index'
+export * from './components/theme/index'
 export * from './components/toggle/index'
 export * from './components/tooltip/index'
 
