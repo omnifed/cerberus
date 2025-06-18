@@ -1,6 +1,6 @@
 'use client'
 
-import { Model } from '@carbon/icons-react'
+import { Information, Model } from '@carbon/icons-react'
 import {
   Field,
   DialogParts,
@@ -18,6 +18,7 @@ import {
   Button,
   Portal,
   type DialogProps,
+  Tooltip,
 } from '@cerberus-design/react'
 import { Box, HStack, VStack } from 'styled-system/jsx'
 
@@ -32,9 +33,14 @@ export function OverviewPreview(props: { id: string }) {
         <DialogCloseIconTrigger />
         <VStack alignItems="flex-start" gap="xs" w="full">
           <DialogHeading>Dialog Title</DialogHeading>
-          <DialogDescription>
-            This is a custom modal description
-          </DialogDescription>
+          <HStack w="full">
+            <DialogDescription>
+              This is a custom modal description
+            </DialogDescription>
+            <Tooltip content="This is a tooltip within a dialog.">
+              <Information />
+            </Tooltip>
+          </HStack>
         </VStack>
 
         <HStack paddingBlock="10" w="full">

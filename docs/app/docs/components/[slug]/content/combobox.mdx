@@ -1,6 +1,6 @@
 ---
 title: Combobox
-description: The Combobox component is an abstraction that provides a fully functional combobox built on top of the Select component.
+description: A filterable select component that allows users to search and select options.
 npm: '@cerberus-design/react'
 source: 'components/combobox'
 recipe: 'slots/combobox.ts'
@@ -366,8 +366,9 @@ The `Combobox` component is an abstraction of our primitives and accepts the fol
 
 | Name     | Default | Description                                            |
 | -------- | ------- | ------------------------------------------------------ |
-| size        | 'md'    | The size of the combobox. |
+| size        | `md`    | The size of the combobox. |
 | startIcon  |         | The icon to display at the start of the input. |
+| container | `document.body` | The container to render the dropdown in. |
 
 The `Combobox` component also accepts all the props of the [`ComboboxRoot` primitive props](https://ark-ui.com/react/docs/components/combobox#api-reference)
 

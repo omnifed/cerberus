@@ -2,7 +2,9 @@
 
 import type { ComboboxRootProps } from '@ark-ui/react/combobox'
 import type { ComboboxVariantProps } from 'styled-system/recipes'
+import type { RefObject } from 'react'
 import { useCerberusContext } from '../../context/cerberus'
+import { splitProps } from '../../utils/index'
 import type { SelectCollectionItem } from '../select/select'
 import { type FieldInputElProps } from '../field/index'
 import { Portal } from '../portal/index'
@@ -21,10 +23,21 @@ export interface ComboboxProps
    * The icon that appears at the start of the combobox input.
    */
   startIcon?: FieldInputElProps['startIcon']
+  /**
+   * The container element to render the Select dropdown in. This is used
+   * to render the Select dropdown in a specific context, such as a modal.
+   * @default document.body
+   */
+  container?: RefObject<HTMLElement | null>
 }
 
 export function Combobox(props: ComboboxProps) {
-  const { label, children, startIcon, ...rootProps } = props
+  const [{ startIcon, label, ...elProps }, rootProps] = splitProps(props, [
+    'label',
+    'children',
+    'startIcon',
+    'container',
+  ])
 
   const { icons } = useCerberusContext()
   const { selectArrow: SelectArrow, close: CloseIcon } = icons
@@ -54,10 +67,10 @@ export function Combobox(props: ComboboxProps) {
         </ComboboxParts.Trigger>
       </ComboboxParts.Control>
 
-      <Portal>
+      <Portal container={elProps.container}>
         <ComboboxParts.Positioner>
           <ComboboxParts.Content size={rootProps.size}>
-            {children}
+            {elProps.children}
           </ComboboxParts.Content>
         </ComboboxParts.Positioner>
       </Portal>
