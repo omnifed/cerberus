@@ -59,11 +59,11 @@ All primitives created with any of the higher order functions it returns will al
 Creates a Cerberus component with bare features and no recipe. It is the what `cerberus` function does under the hood.
 
 ```tsx
-import { createCerberusPrimitive } from "@cerberus/react"
+import { cerberus, createCerberusPrimitive } from "@cerberus/react"
 
 const { withNoRecipe } = createCerberusPrimitive()
 
-const Button = withNoRecipe("button")
+const Button = withNoRecipe(cerberus.button)
 
 function Example() {
   return <Button css={{ color: 'blue' }}>Click me</Button>
@@ -75,11 +75,11 @@ function Example() {
 Creates a Cerberus component with a specific recipe applied. This allows you to use the styles defined in the recipe.
 
 ```tsx
-import { createCerberusPrimitive } from "@cerberus/react"
+import { cerberus, createCerberusPrimitive } from "@cerberus/react"
 import { button } from "@/system/recipes"
 
 const { withRecipe } = createCerberusPrimitive(button)
-const Button = withRecipe("button")
+const Button = withRecipe(cerberus.button)
 
 function Example() {
   return <Button css={{ color: 'blue' }}>Click me</Button>

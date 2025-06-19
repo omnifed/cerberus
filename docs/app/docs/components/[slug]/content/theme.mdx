@@ -100,8 +100,9 @@ function NestedExample() {
 Use the `asChild` prop to force the appearance of portalled elements like the
 popover and modal content.
 
-```tsx title="Portalled example" {10}
-import { TooltipParts, Theme } from '@cerberus/react'
+```tsx title="Portalled example" {12-18}
+import { TooltipParts, Theme, Button } from '@cerberus/react'
+import { Box } from 'styled-system/jsx'
 
 function PortalledExample() {
   return (
@@ -113,7 +114,9 @@ function PortalledExample() {
       <TooltipParts.Positioner>
         <TooltipParts.Content asChild>
           <Theme mode="dark">
-            <Button>Dark</Button>
+            <Box bgColor="page.bg.200" p="md" w="full">
+              This is a dark mode tooltip bubble
+            </Box>
           </Theme>
         </TooltipParts.Content>
       </TooltipParts.Positioner>
