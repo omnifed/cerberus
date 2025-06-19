@@ -1,14 +1,16 @@
-import { Avatar, Tag, Text } from '@cerberus-design/react'
+import { Avatar, DateFormatter, Tag, Text } from '@cerberus-design/react'
 import { HStack, VStack } from '@/styled-system/jsx'
 import authorData from '../data/authors.json'
 
 type authors = 'caseyBaggz'
 
-interface BlogHeaderProps {
+export interface BlogHeaderProps {
   author: authors
-  heading: string
+  title: string
   tag: string
   date: string
+  description?: string
+  timeToRead?: string
 }
 
 export default function BlogHeader(props: BlogHeaderProps) {
@@ -17,6 +19,11 @@ export default function BlogHeader(props: BlogHeaderProps) {
     console.error(`Author ${props.author} not found in authorData`)
     return null
   }
+
+  const formatter = new DateFormatter('en-US', {
+    dateStyle: 'long',
+    timeZone: 'America/New_York',
+  })
 
   return (
     <header>
@@ -27,7 +34,7 @@ export default function BlogHeader(props: BlogHeaderProps) {
           </Tag>
           {' - '}
           <Text as="small" color="page.text.100" textStyle="label-md">
-            {props.date}
+            {formatter.format(new Date(props.date))}
           </Text>
         </HStack>
 
@@ -39,7 +46,7 @@ export default function BlogHeader(props: BlogHeaderProps) {
           textStyle="heading-lg"
           w="full"
         >
-          {props.heading}
+          {props.title}
         </Text>
 
         <HStack>

@@ -1,0 +1,271 @@
+---
+slug: cerberus-v019-release
+date: 2025-06-18
+author: caseyBaggz
+title: Cerberus v0.19 Release
+description: Introducing the Cerberus Factory.
+category: release
+version: 0.19.1
+timeToRead: 4
+tag: Release
+---
+
+import BashTabs from '@/app/components/bash-tabs'
+import CodePreview from '@/app/components/CodePreview'
+import { BasicExample } from '@/app/docs/components/[slug]/components/theme/static'
+
+We are excited to announce the release of Cerberus v0.19! This release introduces a new era of Cerberus which focuses on improving the developer experience and making it easier to use and extend Cerberus in your projects.
+
+> Our goal this year is to make it easier to use, and extend Cerberus. Today, we are taking a big step towards that goal.
+
+## Tree Shaking
+
+A feature that is often overlooked but is crucial for performance is tree shaking. Tree shaking is the process of removing unused code from your application, which can significantly reduce the size of your final bundle.
+
+In this release, we allow all of our components to be tree-shaken.
+
+You can now import components like this:
+
+```ts
+import { Button } from '@cerberus/react/button';
+import { Input } from '@cerberus/react/input';
+```
+
+This will ensure that only the `Button` and `Input` components are included in your final bundle, reducing the size of your application.
+
+## Streamlined styling
+
+When you need to customize a Cerberus component, you can now use the `css` prop to apply styles directly to the component. This will automagically apply the `css` function so you no longer need to import it from `styled-system/css`.
+
+Now you can customize faster with cleaner code:
+
+```tsx
+import { Button } from '@cerberus/react/button';
+
+function CustomButton() {
+  return (
+    <Button css={{
+        bgColor: 'red.500',
+        color: 'white',
+        padding: 'md'
+    }}>
+      This will be a red button
+    </Button>
+  );
+}
+```
+
+All of our primitives now support the `css` prop.
+
+## Date Helpers
+
+We have also introduced a new set of date helpers that make it easier to work with dates in your application. These helpers are designed to work seamlessly with the Cerberus components and provide a consistent API for working with dates.
+
+You can now import the following date helpers:
+
+- `CalendarDate`: A class for creating a new date object that is compatible with the Cerberus date components.
+- `parseDate`: A function that parses a date string into a `CalendarDate` object.
+- `today`: A function that returns the current date as a `CalendarDate` object.
+- `DateFormatter`: A class for formatting dates into a string representation.
+
+You can use these helpers to easily create and manipulate dates in your application. For example, you can create a new date object like this:
+
+```ts
+import { CalendarDate } from '@cerberus/react/date-picker';
+const date = new CalendarDate(2025, 6, 18); // June 18, 2025
+```
+You can also parse a date string into a `CalendarDate` object:
+
+```ts
+import { parseDate } from '@cerberus/react/date-picker';
+const date = parseDate('2025-06-18'); // June 18, 2025
+```
+You can format a date into a string representation:
+
+```ts
+import { DateFormatter } from '@cerberus/react/date-picker';
+
+const formatter = new DateFormatter('en-US', {
+  dateStyle: 'long',
+  timeZone: 'America/New_York'
+})
+const date = formatter.format(new Date()); // "January 1, 2025"
+```
+
+Now, there is no need to worry about which date library to use or how to format dates in your application. The Cerberus date helpers provide a consistent and easy-to-use API for working with dates.
+
+[View the date helpers docs](/docs/components/date-picker#date-helpers).
+
+## Theme Utility
+
+Ever come across a situation where you need to use a different color mode or theme within an existing one? We got you!
+
+In this release, we have introduced a new utility that allows you to designate a different color mode or theme within an existing mode and theme. Even more, you can nest themes to apply different appearances to different parts of the tree.
+
+<CodePreview preview={<BasicExample />}>
+```tsx title="Basic example"
+import { Button, Theme } from '@cerberus/react'
+import { Box, VStack } from 'styled-system/jsx'
+
+function BasicExample() {
+  return (
+    <VStack alignItems="flex-start" w="3/4">
+      <Box w="full">
+        <Button>Default</Button>
+      </Box>
+
+      <Theme mode="light" css={{ w: 'full' }}>
+        <Box bgColor="page.bg.200" p="md" w="full">
+          <Button>Light</Button>
+        </Box>
+      </Theme>
+
+      <Theme mode="dark" css={{ w: 'full' }}>
+        <Box bgColor="page.bg.200" p="md" w="full">
+          <Button>Dark</Button>
+        </Box>
+      </Theme>
+
+      <Theme mode="system" css={{ w: 'full' }}>
+        <Box bgColor="page.bg.200" p="md" w="full">
+          <Button>System</Button>
+        </Box>
+      </Theme>
+
+      <Theme mode="dark" theme="acheron" css={{ w: 'full' }}>
+        <Box bgColor="page.bg.200" p="md" w="full">
+          <Button>Dark Acheron</Button>
+        </Box>
+      </Theme>
+    </VStack>
+  )
+}
+```
+</CodePreview>
+
+Check out the [Theme docs](/docs/components/theme) for more information on how to use the new theme utility.
+
+## Cerberus Factory
+
+Now, let's talk about the biggest change in this release: **the Cerberus Factory**.
+
+The Cerberus Factory is a new way to create and manage components that come built in with "Cerberus features" like the `css` and the `asChild` prop.
+
+There are two APIs available for creating components with the Cerberus Factory:
+
+- **Component Factory**: This API allows you to use either JSX or a function to create a component.
+- **Primitive Factory**: This API allows you to create components that apply a given recipe, which is a set of styles and behaviors that can be reused across different components.
+
+### Component Factory
+
+This API allows you to use either JSX or a function to create a component. Utilizing the factory will give you access to the `css` and `asChild` props.
+
+#### JSX Example
+
+```tsx
+import { cerberus } from '@cerberus/react';
+import Link from 'next/link';
+
+function ButtonLink() {
+  return (
+    <cerberus.button asChild css={{
+        bgColor: 'blue.500',
+        color: 'white',
+        padding: 'md'
+    }}>
+      <Link href="/about">Go to About</Link>
+    </cerberus.button>
+  )
+}
+```
+
+#### Function Example
+
+Use the function to add default props to your component.
+
+```tsx
+import { cerberus } from '@cerberus/react';
+
+export const SubmitButton = cerberus('button', {
+  type: 'submit',
+  css: {
+    bgColor: 'blue.500',
+    color: 'white',
+    padding: 'md'
+  }
+});
+```
+
+### Primitive Factory
+
+The primitive factory is a more advanced API that allows you to create components that apply a given recipe.
+
+#### Recipe Example
+
+Use the `withRecipe` function to create a component that applies a given recipe along with the rest of the Cerberus features.
+
+```tsx
+import { cerberus, createCerberusPrimitive } from "@cerberus/react"
+import { button } from "@/system/recipes"
+
+const { withRecipe } = createCerberusPrimitive(button)
+const Button = withRecipe(cerberus.button)
+
+function Example() {
+  return <Button>Click me</Button>
+}
+```
+
+#### Slot Recipe Example
+
+You can also create components with slots using the `withSlotRecipe` function.
+
+```tsx
+import { cerberus, createCerberusPrimitive } from "@cerberus/react"
+import { field } from "@system/recipes/slots"
+
+const { withSlotRecipe } = createCerberusPrimitive(field)
+
+const Field = withSlotRecipe(cerberus.div, "root")
+const FieldLabel = withSlotRecipe(cerberus.label, "label")
+const FieldInput = withSlotRecipe(cerberus.input, "input")
+
+function Example() {
+  return (
+    <Field css={{ color: 'blue' }}>
+      <FieldLabel>Label</FieldLabel>
+      <FieldInput type="text" />
+    </Field>
+  )
+}
+```
+
+This new factory system allows you to create components that are fully compatible with the Cerberus ecosystem, making it easier to build and maintain your components.
+
+Read the [Cerberus Factory docs](/docs/styling/cerberus-factory) for more information on how to use the new factory system.
+
+## Other Updates
+
+Among the new factory, we have also made some other updates to the Cerberus project:
+
+- **Fixed**: All components that render a `Portal` now accept a `container` prop to specify the container element for the portal.
+- **Feature**: `CircularProgress` is now fully accessible has a primitive API which uses the `data-*` attributes for each part of the progress circle.
+- **Feature**: `CircularProgress` now comes with built in `sizes` to make it easier to use.
+
+## Upgrading
+
+To upgrade to the latest version of Cerberus (v0.19.1), [run the following command](/docs/get-started/installation#tip-add-a-cerberus-script):
+
+<BashTabs code="npm run up:cerberus" />
+
+## What's Next?
+
+Our goal this year is continuing to improve the developer experience and make it easier to use and extend Cerberus.
+
+Our next steps are to:
+
+- Add `animationStyle` JSX components
+- Add a `rounded` variant to the `Tabs` component
+- Update our `cerberusPreset` to accept more customization options
+- Create a `@cerberus/dnd-kit` package(s)
+- Ship a TON of new components

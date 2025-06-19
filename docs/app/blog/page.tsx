@@ -10,17 +10,12 @@ import {
 } from '@/styled-system/jsx'
 import CerberusLogo from '@/app/components/cerberus-logo'
 import Link, { type LinkProps } from 'next/link'
-
-// blog metadata - streamline this when it gets larger than 3
-import { frontmatter as v018release } from './cerberus-v018-release/page.mdx'
+import { items } from './[slug]/content/items'
 
 export default function Page() {
   const featTitle = {
     blog: 'Blog',
     release: 'Cerberus',
-  }
-  const pageData = {
-    'cerberus-v018-release': v018release,
   }
 
   return (
@@ -49,16 +44,13 @@ export default function Page() {
         paddingBlockStart="4rem"
         w="full"
       >
-        <For each={Object.values(pageData ?? {})}>
-          {(frontMatter, idx) => (
-            <GridItem key={idx}>
-              <Link
-                href={`/blog/${frontMatter.slug}` as LinkProps<string>['href']}
-              >
+        <For each={items}>
+          {(meta, idx) => (
+            <GridItem key={meta.id}>
+              <Link href={`/blog/${meta.slug}` as LinkProps<string>['href']}>
                 <Box
                   data-placement="top"
                   animationStyle="slide-fade-in"
-                  animationDelay={`${200 * idx}ms`}
                   animationDuration="slow"
                   animationFillMode="forwards"
                   className="group"
@@ -74,6 +66,9 @@ export default function Page() {
                   _hover={{
                     shadow: 'sm',
                   }}
+                  style={{
+                    animationDelay: `${200 * idx}ms`,
+                  }}
                 >
                   <VStack
                     gradient="charon-dark"
@@ -86,16 +81,12 @@ export default function Page() {
                         <CerberusLogo />
                       </Box>
                       <Text textStyle="heading-md">
-                        {
-                          featTitle[
-                            frontMatter.category as keyof typeof featTitle
-                          ]
-                        }
+                        {featTitle[meta.category as keyof typeof featTitle]}
                       </Text>
 
-                      <Show when={frontMatter.category === 'release'}>
+                      <Show when={meta.category === 'release'}>
                         <Box marginBlockStart="0.5">
-                          <Tag palette="page">{frontMatter.version}</Tag>
+                          <Tag palette="page">{meta.version}</Tag>
                         </Box>
                       </Show>
                     </HStack>
@@ -109,18 +100,18 @@ export default function Page() {
                   >
                     <HStack justify="space-between">
                       <Text color="page.text.100" textStyle="label-sm">
-                        {frontMatter.date}
+                        {meta.frontmatter.date}
                       </Text>
                       <Text textStyle="label-sm">
-                        {frontMatter.timeToRead} min read
+                        {meta.frontmatter.timeToRead} min read
                       </Text>
                     </HStack>
 
                     <Text color="page.text.300" textStyle="heading-sm">
-                      {frontMatter.title}
+                      {meta.frontmatter.title}
                     </Text>
                     <Text color="page.text.200" textStyle="body-md">
-                      {frontMatter.description}
+                      {meta.frontmatter.description}
                     </Text>
 
                     <HStack color="action.navigation.initial">
