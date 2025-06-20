@@ -24,7 +24,7 @@ import { getTheme, injectTheme, type ThemeName } from 'styled-system/themes'
 import { INLINE_BLOCK, PAGE_BORDER_INITIAL } from '../utils/const'
 import { getCodeTheme, getColorMode } from '../utils/colors'
 import { AnimatingSystemIcon } from './icons/AnimatingSystemIcon'
-import { navGHLogoContent, navLogoContent } from './shared/nav/icon-items'
+import { NavGHLogoContent, NavLogoContent } from './shared/nav/icon-items'
 
 export function Nav() {
   const pathname = usePathname()
@@ -100,7 +100,7 @@ export function Nav() {
         },
       })}
     >
-      {navLogoContent}
+      <NavLogoContent />
 
       <section
         className={gridItem({
@@ -208,7 +208,7 @@ export function Nav() {
             </p>
           </li>
 
-          {navGHLogoContent}
+          <NavGHLogoContent />
 
           <li>
             <Tooltip content={ariaLabel}>

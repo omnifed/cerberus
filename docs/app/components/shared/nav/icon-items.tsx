@@ -7,7 +7,7 @@ import { INLINE_BLOCK } from '@/app/utils/const'
 import { LogoGithub } from '@carbon/icons-react'
 import { cerberus } from '@cerberus-design/react'
 
-export const navLogoContent = (
+const navLogoContent = (
   <section
     className={gridItem({
       gridColumnStart: 1,
@@ -18,24 +18,22 @@ export const navLogoContent = (
       },
     })}
   >
-    <cerberus.a
-      asChild
-      css={{
+    <Link
+      aria-label="Go to homepage"
+      className={css({
         display: 'inline-block',
         pxi: '2',
         rounded: 'sm',
         w: '3.25rem',
         _focusVisible: focusStates._focusVisible,
-      }}
+      })}
+      href="/"
     >
-      <Link aria-label="Go to homepage" href="/">
-        <CerberusLogo />
-      </Link>
-    </cerberus.a>
+      <CerberusLogo />
+    </Link>
   </section>
 )
-
-export const navGHLogoContent = (
+const navGHLogoContent = (
   <cerberus.li
     css={{
       h: '1.5rem',
@@ -56,3 +54,10 @@ export const navGHLogoContent = (
     </a>
   </cerberus.li>
 )
+
+export function NavLogoContent() {
+  return navLogoContent
+}
+export function NavGHLogoContent() {
+  return navGHLogoContent
+}
