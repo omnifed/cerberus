@@ -2,7 +2,7 @@
 title: Loading States
 description: Loading states are used to indicate that content is being loaded.
 npm: '@cerberus-design/react'
-source: 'components/Spinner.tsx'
+source: 'components/spinner'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
@@ -92,15 +92,18 @@ The `Spinner` component is a simple SVG element that can be styled with CSS.
 
 <CodePreview preview={<CustomSpinner />}>
 ```tsx
-export function CustomSpinner() {
+import { cerberus, Spinner } from '@cerberus-design/react'
+
+function CustomSpinner() {
   return (
-    <div
-      className={css({
+    <cerberus.div
+      css={{
         color: 'yellow',
-      })}
+        w: 20,
+      }}
     >
       <Spinner />
-    </div>
+    </cerberus.div>
   )
 }
 ```

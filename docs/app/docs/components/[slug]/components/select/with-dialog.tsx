@@ -1,6 +1,7 @@
 'use client'
 
 import {
+  Button,
   Dialog,
   DialogCloseIconTrigger,
   DialogDescription,
@@ -17,7 +18,9 @@ export function SelectWithDialogDemo() {
 
   return (
     <DialogProvider>
-      <DialogTrigger>Open Select Dialog</DialogTrigger>
+      <DialogTrigger asChild>
+        <Button>Open Select Dialog</Button>
+      </DialogTrigger>
       <Dialog>
         <VStack alignItems="flex-start" gap="lg" w="full">
           <DialogCloseIconTrigger />

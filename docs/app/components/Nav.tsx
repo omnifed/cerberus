@@ -5,7 +5,6 @@ import Link, { type LinkProps } from 'next/link'
 import { css, cx } from 'styled-system/css'
 import { grid, gridItem, hstack } from 'styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
-import { LogoGithub } from '@carbon/icons-react'
 import {
   IconButton,
   Show,
@@ -25,55 +24,7 @@ import { getTheme, injectTheme, type ThemeName } from 'styled-system/themes'
 import { INLINE_BLOCK, PAGE_BORDER_INITIAL } from '../utils/const'
 import { getCodeTheme, getColorMode } from '../utils/colors'
 import { AnimatingSystemIcon } from './icons/AnimatingSystemIcon'
-import CerberusLogo from './cerberus-logo'
-
-const navLogoContent = (
-  <section
-    className={gridItem({
-      gridColumnStart: 1,
-      gridColumnEnd: 3,
-      md: {
-        gridColumnStart: 1,
-        gridColumnEnd: 2,
-      },
-    })}
-  >
-    <Link
-      aria-label="Go to homepage"
-      href="/"
-      className={css({
-        display: 'inline-block',
-        pxi: '2',
-        rounded: 'sm',
-        w: '3.25rem',
-        _focusVisible: focusStates._focusVisible,
-      })}
-    >
-      <CerberusLogo />
-    </Link>
-  </section>
-)
-const navGHLogoContent = (
-  <li
-    className={css({
-      h: '1.5rem',
-    })}
-  >
-    <a
-      aria-label="View Github repo"
-      className={css({
-        display: INLINE_BLOCK,
-        rounded: 'sm',
-        _focusVisible: focusStates._focusVisible,
-      })}
-      href="https://github.com/omnifed/cerberus"
-      rel="noreferrer"
-      target="_blank"
-    >
-      <LogoGithub aria-hidden size="1.5rem" />
-    </a>
-  </li>
-)
+import { NavGHLogoContent, NavLogoContent } from './shared/nav/icon-items'
 
 export function Nav() {
   const pathname = usePathname()
@@ -149,7 +100,7 @@ export function Nav() {
         },
       })}
     >
-      {navLogoContent}
+      <NavLogoContent />
 
       <section
         className={gridItem({
@@ -257,7 +208,7 @@ export function Nav() {
             </p>
           </li>
 
-          {navGHLogoContent}
+          <NavGHLogoContent />
 
           <li>
             <Tooltip content={ariaLabel}>

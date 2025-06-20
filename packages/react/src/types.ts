@@ -15,6 +15,16 @@ export interface WithCss {
    * In most cases, you should use the `css` prop instead.
    */
   style?: CSSProperties | Record<string, number | string>
+  /**
+   * If true, the component will render as a child as the provided element
+   * passing all the given props to the child.
+   */
+  asChild?: boolean
+  /**
+   * The class name to apply to the component.
+   * Can be a single class name or an array of class names.
+   */
+  className?: string
 }
 
 // types

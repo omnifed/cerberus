@@ -12,7 +12,14 @@ import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    optimizePackageImports: ['@ark-ui/react', '@cerberus-design/react'],
+    serverComponentsHmrCache: true,
+    typedRoutes: true,
+  },
+
   pageExtensions: ['md', 'mdx', 'ts', 'tsx', 'json'],
+
   images: {
     remotePatterns: [
       {
@@ -20,16 +27,6 @@ const nextConfig = {
         hostname: 'images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com',
       },
     ],
-  },
-  experimental: {
-    // This is because we are being forced to use tsup for DU Admin Portal
-    optimizePackageImports: [
-      '@carbon/icons-react',
-      '@cerberus/react',
-      '@cerberus/panda-preset',
-    ],
-    serverComponentsHmrCache: true,
-    typedRoutes: true,
   },
 }
 

@@ -34,7 +34,8 @@
     "Unauthenticate",
     "vinxi",
     "vitesse",
-    "Watsonx"
+    "Watsonx",
+    "wixmp"
   ],
   "prettier.configPath": ".prettierrc",
   "prettier.prettierPath": "./node_modules/prettier",

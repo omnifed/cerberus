@@ -26,11 +26,14 @@ export interface FieldStatusIndicatorProps
  */
 export function FieldStatusIndicator(props: FieldStatusIndicatorProps) {
   const { fallback, ...nativeProps } = props
-  const styles = field()
+
   const fieldContext = useFieldContext()
+  const styles = field()
 
   const { icons } = useCerberusContext()
   const { invalid: InvalidIcon } = icons
+
+  if (!fieldContext) return null
 
   if (fieldContext.invalid) {
     return (
