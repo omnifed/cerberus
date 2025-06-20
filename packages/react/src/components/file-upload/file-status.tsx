@@ -271,7 +271,7 @@ function getModalIconPalette(status: FileStatusKey) {
     case processStatus.ERROR:
       return 'hades-dark'
     case processStatus.DONE:
-      return 'thanatos-light'
+      return 'thanatos-dark'
     default:
       return 'charon-light'
   }

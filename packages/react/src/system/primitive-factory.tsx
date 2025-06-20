@@ -89,9 +89,14 @@ export class CerberusPrimitive {
     this.validateComponent(Component)
 
     const CerbComponent = (internalProps: PropsWithChildren<P> & WithCss) => {
-      const { css: customCss, className, ...nativeProps } = internalProps
+      const {
+        css: customCss,
+        className,
+        ...restOfInternalProps
+      } = internalProps
 
-      const [variantOptions] = recipe.splitVariantProps(nativeProps)
+      const [variantOptions, nativeProps] =
+        recipe.splitVariantProps(restOfInternalProps)
       const recipeStyles = recipe(variantOptions)
 
       return (
@@ -130,9 +135,14 @@ export class CerberusPrimitive {
     this.validateComponent(Component)
 
     const CerbComponent = (internalProps: PropsWithChildren<P> & WithCss) => {
-      const { css: customCss, className, ...nativeProps } = internalProps
+      const {
+        css: customCss,
+        className,
+        ...restOfInternalProps
+      } = internalProps
 
-      const [variantOptions] = recipe.splitVariantProps(nativeProps)
+      const [variantOptions, nativeProps] =
+        recipe.splitVariantProps(restOfInternalProps)
       const styles = recipe(variantOptions)
       const slotStyles = styles[slot as keyof typeof styles]
 
