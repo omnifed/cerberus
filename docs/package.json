@@ -49,6 +49,6 @@
     "remark-gfm": "^4.0.1",
     "remark-mdx-frontmatter": "^5.2.0",
     "remark-parse": "^11.0.0",
-    "shiki": "^3.6.0"
+    "shiki": "^3.7.0"
   }
 }
