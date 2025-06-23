@@ -95,8 +95,8 @@ importers:
   docs:
     dependencies:
       '@carbon/icons-react':
-        specifier: ^11.58.0
-        version: 11.60.0(react@19.1.0)
+        specifier: ^11.62.0
+        version: 11.62.0(react@19.1.0)
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../configs
@@ -303,8 +303,8 @@ importers:
   tests:
     devDependencies:
       '@carbon/icons-react':
-        specifier: ^11.58.0
-        version: 11.60.0(react@19.1.0)
+        specifier: ^11.62.0
+        version: 11.62.0(react@19.1.0)
       '@cerberus-design/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
@@ -388,11 +388,11 @@ packages:
     resolution: {integrity: sha512-ETyHEk2VHHvl9b9jZP5IHPavHYk57EhanlRRuae9XCpb/j5bDCbPPMOBfCWhnl/7EDJz0jEMCi/RhccCE8r1+Q==}
     engines: {node: '>=6.9.0'}
 
-  '@carbon/icon-helpers@10.59.0':
-    resolution: {integrity: sha512-nmyk5DlQbOAtGWHBRlHEnNDi3/4F3GL5I6PvDaWBNjtG4dKsKkYGZ+IiRwrkAYc6x0J2JCxYzxqyRt4hGHw2YA==}
+  '@carbon/icon-helpers@10.61.0':
+    resolution: {integrity: sha512-6ZITFgu5+BdbyX/hrLcV4zev+6L8iXFQb3NaBkyga6JEhjzPLuUp1ZTtGtZdzz6ybhFKYnkWyP4+ii7Ght10qQ==}
 
-  '@carbon/icons-react@11.60.0':
-    resolution: {integrity: sha512-8JSeb1cY6vXV3MbWqYLtrDmhEQt8eEskYwkrrQ0AsvVi/uIM0MhrCiI9Tbz0c5uniLlCPyYtvFvnVvLVHM3LbA==}
+  '@carbon/icons-react@11.62.0':
+    resolution: {integrity: sha512-Vpb6R44SHDBRO6sy8l1x+VWDQ452vQFEvwnFrrkpwcQOE2Au5xZmSmkz2pjj5r2JwroTwU2wf+/ZuW+tut9RTA==}
     peerDependencies:
       react: '>=16'
 
@@ -5993,13 +5993,13 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@carbon/icon-helpers@10.59.0':
+  '@carbon/icon-helpers@10.61.0':
     dependencies:
       '@ibm/telemetry-js': 1.9.1
 
-  '@carbon/icons-react@11.60.0(react@19.1.0)':
+  '@carbon/icons-react@11.62.0(react@19.1.0)':
     dependencies:
-      '@carbon/icon-helpers': 10.59.0
+      '@carbon/icon-helpers': 10.61.0
       '@ibm/telemetry-js': 1.9.1
       prop-types: 15.8.1
       react: 19.1.0
