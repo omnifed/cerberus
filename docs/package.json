@@ -37,7 +37,7 @@
     "@vercel/analytics": "^1.5.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^8",
-    "eslint-config-next": "15.3.3",
+    "eslint-config-next": "15.3.4",
     "eslint-import-resolver-typescript": "^4.4.3",
     "hast-util-to-jsx-runtime": "2.3.6",
     "rehype-autolink-headings": "^7.1.0",
