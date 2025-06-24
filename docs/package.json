@@ -16,7 +16,7 @@
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.8.1",
-    "next": "15.3.3",
+    "next": "15.3.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "remove": "^0.1.5"
@@ -27,17 +27,17 @@
     "@expressive-code/plugin-line-numbers": "^0.41.2",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "^15.3.3",
+    "@next/mdx": "^15.3.4",
     "@pandacss/dev": "^0.54.0",
     "@pandacss/types": "^0.54.0",
     "@shikijs/rehype": "^3.6.0",
     "@types/node": "^24.0.3",
-    "@types/react": "19.1.6",
+    "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "@vercel/analytics": "^1.5.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^8",
-    "eslint-config-next": "15.3.3",
+    "eslint-config-next": "15.3.4",
     "eslint-import-resolver-typescript": "^4.4.3",
     "hast-util-to-jsx-runtime": "2.3.6",
     "rehype-autolink-headings": "^7.1.0",
@@ -49,6 +49,6 @@
     "remark-gfm": "^4.0.1",
     "remark-mdx-frontmatter": "^5.2.0",
     "remark-parse": "^11.0.0",
-    "shiki": "^3.6.0"
+    "shiki": "^3.7.0"
   }
 }
