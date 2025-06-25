@@ -5,6 +5,7 @@ import Colors, { frontmatter as colorsFrontmatter } from '../colors.mdx'
 import Gradients, {
   frontmatter as gradientsFrontmatter,
 } from '../gradients.mdx'
+import Shadows, { frontmatter as shadowsFrontmatter } from '../shadows.mdx'
 import Spacing, { frontmatter as spacingFrontmatter } from '../spacing.mdx'
 import ZIndex, { frontmatter as zIndexFrontmatter } from '../z-index.mdx'
 
@@ -41,7 +42,7 @@ export const designTokens = [
     Content: Colors,
   },
   {
-    id: '2.1.4',
+    id: '2.1.5',
     label: 'Gradients',
     slug: 'gradients',
     frontmatter: gradientsFrontmatter,
@@ -67,7 +68,20 @@ export const designTokens = [
     Content: Spacing,
   },
   {
-    id: '2.1.5',
+    id: '2.1.4',
+    label: 'Shadows',
+    slug: 'shadows',
+    frontmatter: shadowsFrontmatter,
+    href: '/docs/theming/shadows',
+    meta: {
+      title: 'Shadows in Cerberus Design System',
+      description:
+        'Explore the shadow design tokens available in the Cerberus Design System for creating depth and hierarchy.',
+    },
+    Content: Shadows,
+  },
+  {
+    id: '2.1.6',
     label: 'Z-Index',
     slug: 'z-index',
     frontmatter: zIndexFrontmatter,
