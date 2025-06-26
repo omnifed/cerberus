@@ -28,6 +28,7 @@ export interface ThemeVariant {
       fonts: Record<string, string>
       gradients: Record<string, string>
       spacing: Record<string, string>
+      shadows: Record<string, string>
       zIndex: Record<string, string>
     }
   }
@@ -61,6 +62,7 @@ export const defineTheme: DefinedTheme = defineThemeContract<ThemeVariant>({
       fonts: {},
       gradients: {},
       spacing: {},
+      shadows: {},
       zIndex: {},
     },
   },

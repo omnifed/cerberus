@@ -1,0 +1,108 @@
+---
+title: Shadows
+description: Shadow design tokens available in the Cerberus Design System.
+---
+
+import { ShadowTokens } from '../components/shadows/shadow-tokens'
+
+## Overview
+
+Shadow tokens represent the shadow of an element. They provide depth and hierarchy to your interface by creating visual layers. Cerberus provides a set of predefined shadow tokens that you can use throughout your application.
+
+## Tokens
+
+Cerberus provides the following shadow tokens:
+
+`theme.tokens.shadows`
+
+<ShadowTokens />
+
+## Usage
+
+You can use shadow tokens with the `shadow` or `boxShadow` props:
+
+```tsx
+import { Box } from "styled-system/jsx"
+
+// Using predefined shadow tokens
+<Box shadow="sm">Small shadow</Box>
+<Box shadow="md">Medium shadow</Box>
+<Box shadow="lg">Large shadow</Box>
+
+// Using boxShadow prop
+<Box boxShadow="md">Medium shadow</Box>
+```
+
+## Custom Shadows
+
+You can also define custom shadow tokens in your theme configuration:
+
+```tsx title="panda.config.ts"
+import {
+  createCerberusConfig,
+  createCerberusPreset,
+} from '@cerberus/panda-preset'
+
+export default createCerberusConfig({
+  presets: [createCerberusPreset()],
+
+  include: ['./app/**/*.{ts,tsx}'],
+  exclude: [],
+
+  theme: {
+    extend: {
+      tokens: {
+        shadows: {
+          custom: {
+            value: "0 4px 8px rgba(0, 0, 0, 0.1)"
+          },
+          glow: {
+            value: "0 0 20px rgba(59, 130, 246, 0.5)"
+          }
+        }
+      }
+    }
+  }
+})
+```
+
+## Shadow Values
+
+The shadow tokens support both string values and composite objects:
+
+### String Values
+
+```tsx
+shadows: {
+  simple: { value: "0 1px 3px rgba(0, 0, 0, 0.1)" }
+}
+```
+
+### Composite Values
+
+```tsx
+shadows: {
+  complex: {
+    value: {
+      offsetX: 0,
+      offsetY: 4,
+      blur: 8,
+      spread: 0,
+      color: "rgba(0, 0, 0, 0.1)"
+    }
+  }
+}
+```
+
+### Multiple Shadows
+
+```tsx
+shadows: {
+  layered: {
+    value: [
+      "0 1px 2px rgba(0, 0, 0, 0.05)",
+      "0 4px 8px rgba(0, 0, 0, 0.1)"
+    ]
+  }
+}
+``` 
