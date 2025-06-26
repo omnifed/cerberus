@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Grid } from '@cerberus-design/react'
+import { Box, Grid } from 'styled-system/jsx'
 import { tokens } from '@cerberus-design/panda-preset'
 
 export function ShadowTokens() {
