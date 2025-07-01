@@ -20,6 +20,20 @@ describe('infoTokens', () => {
     )
   })
 
+  // border.100
+
+  test('should have a cerberus border.100 property', () => {
+    expect(infoTokens.info.border['100'].value.base).toEqual(
+      formatSemanticToken`cerberus.info.70`,
+    )
+    expect(infoTokens.info.border['100'].value._darkMode).toEqual(
+      formatSemanticToken`cerberus.info.70`,
+    )
+    expect(infoTokens.info.border['100'].value._lightMode).toEqual(
+      formatSemanticToken`cerberus.info.40`,
+    )
+  })
+
   // bg.initial
 
   test('should have a cerberus bg.initial property', () => {

@@ -22,6 +22,20 @@ describe('acheron infoTokens', () => {
     )
   })
 
+  // border.100
+
+  test('should have a acheron border.100 property', () => {
+    expect(infoTokens.info.border['100'].value.base).toEqual(
+      formatSemanticToken`acheron.info.70`,
+    )
+    expect(infoTokens.info.border['100'].value._darkMode).toEqual(
+      formatSemanticToken`acheron.info.70`,
+    )
+    expect(infoTokens.info.border['100'].value._lightMode).toEqual(
+      formatSemanticToken`acheron.info.40`,
+    )
+  })
+
   // bg.initial
 
   test('should have a acheron bg.initial property', () => {
