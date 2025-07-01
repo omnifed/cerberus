@@ -12,6 +12,7 @@ export interface ContractInfoTokens {
   readonly info: {
     readonly border: {
       readonly initial: object
+      readonly 100: object
     }
     readonly bg: {
       readonly initial: object
@@ -38,6 +39,7 @@ export const contractInfoTokens: ContractInfoTokens = {
   info: {
     border: {
       initial: {},
+      100: {},
     },
 
     bg: {
@@ -71,6 +73,7 @@ export interface InfoTokens {
   readonly info: {
     readonly border: {
       readonly initial: SemanticToken
+      readonly 100: SemanticToken
     }
     readonly bg: {
       readonly initial: SemanticToken
@@ -97,6 +100,7 @@ export const infoTokens: InfoTokens = {
   info: {
     border: {
       initial: formatSemanticTokenValue('border.info.initial'),
+      100: formatSemanticTokenValue('border.info.100'),
     },
 
     bg: {

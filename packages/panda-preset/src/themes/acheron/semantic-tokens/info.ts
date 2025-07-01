@@ -10,6 +10,7 @@ export const infoTokens: InfoTokens = {
   info: {
     border: {
       initial: formatSemanticTokenValue('border.info.initial', 'acheron'),
+      100: formatSemanticTokenValue('border.info.100', 'acheron'),
     },
 
     bg: {
