@@ -9,7 +9,33 @@ import type {
 import { button, field } from 'styled-system/recipes'
 import type { CerberusPrimitiveProps } from '@cerberus-design/react/src/system/types'
 
+describe('cerberus', () => {
+  test('should return a Cerberus component by name', () => {
+    const Button = cerberus('button')
+    expect(Button).toBeDefined()
+    render(<Button>Click me</Button>)
+    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByText(/click me/i)).toBeInTheDocument()
+  })
+
+  test('should accept defaultProps', () => {
+    const Button = cerberus('button', { type: 'button' })
+    render(<Button css={{ color: 'blue' }}>Click me</Button>)
+    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByRole('button')).toHaveAttribute('type', 'button')
+    expect(screen.getByText(/click me/i)).toBeInTheDocument()
+  })
+
+  test('should also work with object syntax', () => {
+    render(<cerberus.button css={{ color: 'blue' }}>Click me</cerberus.button>)
+    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByText(/click me/i)).toBeInTheDocument()
+  })
+})
+
 describe('createCerberusPrimitive', () => {
+  // Custom Elements
+
   test('withNoRecipe should render an Element with Cerberus props applied', () => {
     interface RawButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
       customProp?: string
@@ -102,28 +128,130 @@ describe('createCerberusPrimitive', () => {
     expect(screen.getByTestId('field-root')).toHaveClass('custom')
     expect(screen.getByTestId('field-root')).toHaveStyle({ color: 'red' })
   })
-})
 
-describe('cerberus', () => {
-  test('should return a Cerberus component by name', () => {
-    const Button = cerberus('button')
-    expect(Button).toBeDefined()
-    render(<Button>Click me</Button>)
-    expect(screen.getByRole('button')).toBeInTheDocument()
-    expect(screen.getByText(/click me/i)).toBeInTheDocument()
+  // Factory Components
+
+  test('should render an Element using a string component', () => {
+    const { withNoRecipe } = createCerberusPrimitive(button)
+    const Button = withNoRecipe('button')
+
+    render(
+      <Button
+        data-custom="custom"
+        className="custom"
+        css={{ bgColor: 'yellow' }}
+        style={{ color: 'red' }}
+        value="test"
+      >
+        test
+      </Button>,
+    )
+
+    expect(screen.getByText(/test/i)).toBeInTheDocument()
+    expect(screen.getByRole('button')).toHaveClass('custom')
+    expect(screen.getByRole('button')).toHaveStyle({ color: 'red' })
   })
 
-  test('should accept defaultProps', () => {
-    const Button = cerberus('button', { type: 'button' })
-    render(<Button css={{ color: 'blue' }}>Click me</Button>)
-    expect(screen.getByRole('button')).toBeInTheDocument()
-    expect(screen.getByRole('button')).toHaveAttribute('type', 'button')
-    expect(screen.getByText(/click me/i)).toBeInTheDocument()
+  test('should render an Element using the factory component', () => {
+    const { withNoRecipe } = createCerberusPrimitive(button)
+    const Button = withNoRecipe(cerberus.button)
+
+    render(
+      <Button
+        data-custom="custom"
+        className="custom"
+        css={{ bgColor: 'yellow' }}
+        style={{ color: 'red' }}
+        value="test"
+      >
+        test
+      </Button>,
+    )
+
+    expect(screen.getByText(/test/i)).toBeInTheDocument()
+    expect(screen.getByRole('button')).toHaveClass('custom')
+    expect(screen.getByRole('button')).toHaveStyle({ color: 'red' })
   })
 
-  test('should also work with object syntax', () => {
-    render(<cerberus.button css={{ color: 'blue' }}>Click me</cerberus.button>)
-    expect(screen.getByRole('button')).toBeInTheDocument()
-    expect(screen.getByText(/click me/i)).toBeInTheDocument()
+  test('withRecipe should render an Element given a string', () => {
+    const { withRecipe } = createCerberusPrimitive(button)
+    const Button = withRecipe('button')
+
+    render(
+      <Button
+        data-custom="custom"
+        className="custom"
+        css={{ bgColor: 'yellow' }}
+        style={{ color: 'red' }}
+        value="test"
+      >
+        test
+      </Button>,
+    )
+
+    expect(screen.getByText(/test/i)).toBeInTheDocument()
+    expect(screen.getByRole('button')).toHaveClass('custom')
+    expect(screen.getByRole('button')).toHaveStyle({ color: 'red' })
+  })
+
+  test('withRecipe should render an Element given a factory component', () => {
+    const { withRecipe } = createCerberusPrimitive(button)
+    const Button = withRecipe(cerberus.button)
+
+    render(
+      <Button
+        data-custom="custom"
+        className="custom"
+        css={{ bgColor: 'yellow' }}
+        style={{ color: 'red' }}
+        value="test"
+      >
+        test
+      </Button>,
+    )
+
+    expect(screen.getByText(/test/i)).toBeInTheDocument()
+    expect(screen.getByRole('button')).toHaveClass('custom')
+    expect(screen.getByRole('button')).toHaveStyle({ color: 'red' })
+  })
+
+  test('withSlotRecipe should render an Element given a string', () => {
+    const { withSlotRecipe } = createCerberusPrimitive(field)
+    const Field = withSlotRecipe('div', 'root')
+
+    render(
+      <Field
+        data-testid="field-root"
+        className="custom"
+        css={{ bgColor: 'yellow' }}
+        style={{ color: 'red' }}
+      >
+        test
+      </Field>,
+    )
+
+    expect(screen.getByText(/test/i)).toBeInTheDocument()
+    expect(screen.getByTestId('field-root')).toHaveClass('custom')
+    expect(screen.getByTestId('field-root')).toHaveStyle({ color: 'red' })
+  })
+
+  test('withSlotRecipe should render an Element given a factory component', () => {
+    const { withSlotRecipe } = createCerberusPrimitive(field)
+    const Field = withSlotRecipe(cerberus.div, 'root')
+
+    render(
+      <Field
+        data-testid="field-root"
+        className="custom"
+        css={{ bgColor: 'yellow' }}
+        style={{ color: 'red' }}
+      >
+        test
+      </Field>,
+    )
+
+    expect(screen.getByText(/test/i)).toBeInTheDocument()
+    expect(screen.getByTestId('field-root')).toHaveClass('custom')
+    expect(screen.getByTestId('field-root')).toHaveStyle({ color: 'red' })
   })
 })

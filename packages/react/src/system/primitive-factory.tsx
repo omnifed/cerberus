@@ -2,6 +2,7 @@ import { css, cx } from 'styled-system/css'
 import type { RecipeVariantRecord } from 'styled-system/types'
 import {
   type ComponentType,
+  type ElementType,
   type HTMLAttributes,
   type PropsWithChildren,
 } from 'react'
@@ -36,39 +37,45 @@ export class CerberusPrimitive {
   }
 
   private validateComponent<P extends HTMLAttributes<unknown>>(
-    Component: ComponentType<P>,
+    Component: ComponentType<P> | string,
   ) {
     if (typeof Component !== 'function' && typeof Component !== 'object') {
-      throw new Error('Expected a React component as the first argument.')
+      return false
     }
+    return true
   }
 
   /**
    * Creates a Cerberus component with bare features and no recipe.
    * @param Component - The React component to enhance with Cerberus features.
+   * Can be a string or a component reference.
    * @returns A new React component that applies Cerberus features to the
    * original component.
+   *
    * @example
-   * ```typescript
-   * const { withNoRecipe } = createCerberusPrimitive(button)
-   * const Button = withNoRecipe(RawButton)
+   * ```ts
+   * const { withNoRecipe } = createCerberusPrimitive(buttonRecipe)
+   * const Button = withNoRecipe('button')
    * ```
    */
   withNoRecipe = <P extends HTMLAttributes<unknown>>(
-    Component: ComponentType<P>,
+    Component: ComponentType<P> | string,
     options?: WithRecipeOptions,
   ): CerberusPrimitiveEl<P> => {
     const { defaultProps } = options || {}
-
-    this.validateComponent(Component)
+    const El = Component as ComponentType<P> | ElementType
 
     const CerbComponent = (props: PropsWithChildren<P> & WithCss) => {
       const { css: customCss, className, ...nativeProps } = props
       const styles = this.hasStyles(cx(className, css(customCss)))
-      return <Component {...defaultProps} {...styles} {...(nativeProps as P)} />
+      return <El {...defaultProps} {...styles} {...(nativeProps as P)} />
     }
 
-    CerbComponent.displayName = Component.displayName || Component.name
+    if (this.validateComponent(El)) {
+      const ElName = typeof El === 'string' ? El : El.displayName || El.name
+      CerbComponent.displayName = ElName
+    }
+
     return CerbComponent
   }
 
@@ -80,13 +87,13 @@ export class CerberusPrimitive {
    * component.
    */
   withRecipe = <P extends HTMLAttributes<unknown>>(
-    Component: ComponentType<P>,
+    Component: ComponentType<P> | string,
     options?: WithRecipeOptions,
   ): CerberusPrimitiveEl<P & WithRecipeOptions['defaultProps']> => {
     const { defaultProps } = options || {}
-    const recipe = this.recipe as CerberusRecipe
+    const El = Component as ComponentType<P> | ElementType
 
-    this.validateComponent(Component)
+    const recipe = this.recipe as CerberusRecipe
 
     const CerbComponent = (internalProps: PropsWithChildren<P> & WithCss) => {
       const {
@@ -108,7 +115,11 @@ export class CerberusPrimitive {
       )
     }
 
-    CerbComponent.displayName = Component.displayName || Component.name
+    if (this.validateComponent(El)) {
+      const ElName = typeof El === 'string' ? El : El.displayName || El.name
+      CerbComponent.displayName = ElName
+    }
+
     return CerbComponent
   }
 
@@ -125,14 +136,14 @@ export class CerberusPrimitive {
    * ```
    */
   withSlotRecipe = <P extends HTMLAttributes<unknown>>(
-    Component: ComponentType<P>,
+    Component: ComponentType<P> | string,
     slot: keyof RecipeVariantRecord,
     options?: WithRecipeOptions,
   ) => {
     const { defaultProps } = options || {}
-    const recipe = this.recipe as CerberusSlotRecipe<typeof slot>
+    const El = Component as ComponentType<P> | ElementType
 
-    this.validateComponent(Component)
+    const recipe = this.recipe as CerberusSlotRecipe<typeof slot>
 
     const CerbComponent = (internalProps: PropsWithChildren<P> & WithCss) => {
       const {
@@ -155,7 +166,11 @@ export class CerberusPrimitive {
       )
     }
 
-    CerbComponent.displayName = Component.displayName || Component.name
+    if (this.validateComponent(El)) {
+      const ElName = typeof El === 'string' ? El : El.displayName || El.name
+      CerbComponent.displayName = ElName
+    }
+
     return CerbComponent
   }
 }
