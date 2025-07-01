@@ -54,6 +54,8 @@ You can create a Cerberus primitive with the `createCerberusPrimitive` function.
 
 All primitives created with any of the higher order functions it returns will also have the `css` and `asChild` props available.
 
+Additionally, you may pass in any reference to an Element or a string name of a HTML element for your component.
+
 ### withNoRecipe
 
 Creates a Cerberus component with bare features and no recipe. It is the what `cerberus` function does under the hood.
@@ -79,7 +81,7 @@ import { cerberus, createCerberusPrimitive } from "@cerberus/react"
 import { button } from "@/system/recipes"
 
 const { withRecipe } = createCerberusPrimitive(button)
-const Button = withRecipe(cerberus.button)
+const Button = withRecipe('button')
 
 function Example() {
   return <Button css={{ color: 'blue' }}>Click me</Button>
@@ -98,9 +100,9 @@ import { field } from "@system/recipes/slots"
 
 const { withSlotRecipe } = createCerberusPrimitive(field)
 
-const Field = withSlotRecipe(cerberus.div, "root")
-const FieldLabel = withSlotRecipe(cerberus.label, "label")
-const FieldInput = withSlotRecipe(cerberus.input, "input")
+const Field = withSlotRecipe("div", "root")
+const FieldLabel = withSlotRecipe("label", "label")
+const FieldInput = withSlotRecipe("input", "input")
 
 function Example() {
   return (
