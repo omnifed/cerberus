@@ -44,7 +44,7 @@ export const carousel: Partial<SlotRecipeConfig> = defineSlotRecipe({
       position: 'absolute',
       top: '50%',
       transform: 'translateY(-50%)',
-      zIndex: 1,
+      zIndex: 'base',
     },
     prevTrigger: {
       left: 0,
@@ -65,12 +65,16 @@ export const carousel: Partial<SlotRecipeConfig> = defineSlotRecipe({
       marginX: 1,
     },
     itemGroup: {
-      display: 'flex',
-      overflowX: 'auto',
+      alignSelf: 'stretch',
+      scrollbarWidth: 'none',
+      '&::-webkit-scrollbar': {
+        display: 'none',
+      },
     },
     item: {
-      flexShrink: 0,
-      width: '100%',
+      alignItems: 'center',
+      display: 'flex',
+      justifyContent: 'center',
     },
   },
 })
