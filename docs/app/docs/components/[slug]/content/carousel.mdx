@@ -1,0 +1,57 @@
+---
+title: Carousel
+description: A component for displaying a series of items in a sliding format.
+npm: '@cerberus-design/react'
+source: 'components/carousel'
+recipe: 'slots/carousel.ts'
+ark: 'carousel'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import {
+  BasicDemo,
+} from '../components/carousel/static'
+
+```ts
+import { Carousel } from '@cerberus/react'
+```
+
+## Usage
+
+<CodePreview preview={<BasicDemo />}>
+```tsx title="carousel.tsx"
+import { Carousel } from '@cerberus/react'
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the button.
+
+| Component | Description |
+| --------- | ----------- |
+| Carousel  | The context provider for the Carousel parts |
+| CarouselItem | The individual item within the Carousel |
+
+## API
+
+### Props
+
+The `Carousel` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+
+The Carousel also accepts all the props of the [Root component](https://ark-ui.com/docs/components/carousel#api-reference).
+
+
+### Parts
+
+The `CarouselParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the CarouselParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `Carousel` component which is the Provider for the family. |
+| Item     | The `CarouselItem` component which represents an individual item within the carousel. |
