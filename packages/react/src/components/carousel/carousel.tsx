@@ -1,4 +1,5 @@
-import { Button } from '../button/button'
+import type { PropsWithChildren } from 'react'
+import { IconButton } from '../icon-button'
 import { Show } from '../show/show'
 import { CarouselParts } from './parts'
 import type { CarouselRootProps } from './primitives'
@@ -26,17 +27,17 @@ export interface CarouselProps extends CarouselRootProps {
  * parts. For customization, we recommend using the `CarouselParts` object
  * directly in combination with the `css` prop.
  */
-function CarouselEl(props: CarouselProps) {
+function CarouselEl(props: PropsWithChildren<CarouselProps>) {
   const { showIndicators = false, children, ...rootProps } = props
 
   return (
     <CarouselParts.Root {...rootProps}>
       <CarouselParts.Control>
         <CarouselParts.PrevTrigger asChild>
-          <Button>prev</Button>
+          <IconButton ariaLabel="Previous page">&lt;</IconButton>
         </CarouselParts.PrevTrigger>
         <CarouselParts.NextTrigger asChild>
-          <Button>next</Button>
+          <IconButton ariaLabel="Next page">&gt;</IconButton>
         </CarouselParts.NextTrigger>
       </CarouselParts.Control>
 

@@ -9,8 +9,8 @@ import {
   type CarouselItemGroupProps as ArkItemGroupProps,
   type CarouselItemProps as ArkItemProps,
 } from '@ark-ui/react/carousel'
+import { carousel, type CarouselVariantProps } from 'styled-system/recipes'
 import { createCerberusPrimitive } from '../../system/index'
-import { carousel, type CarouselVariantProps } from '@/styled-system/recipes'
 
 /**
  * This module contains the carousel primitives.

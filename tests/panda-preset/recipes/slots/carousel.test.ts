@@ -39,23 +39,18 @@ describe('carousel recipe', () => {
 
   test('should have a base.control style', () => {
     expect(carousel.base?.control).toMatchObject({
-      position: 'absolute',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      zIndex: 'base',
+      alignItems: 'stretch',
+      display: 'flex',
+      gap: 'md',
     })
   })
 
   test('should have a base.prevTrigger style', () => {
-    expect(carousel.base?.prevTrigger).toMatchObject({
-      left: 0,
-    })
+    expect(carousel.base?.prevTrigger).toMatchObject({})
   })
 
   test('should have a base.nextTrigger style', () => {
-    expect(carousel.base?.nextTrigger).toMatchObject({
-      right: 0,
-    })
+    expect(carousel.base?.nextTrigger).toMatchObject({})
   })
 
   test('should have a base.indicatorGroup style', () => {

@@ -1,5 +1,3 @@
-'use client'
-
 import { Carousel, For } from '@cerberus-design/react'
 import { Center } from '@/styled-system/jsx'
 import items from './items.json'
@@ -8,12 +6,10 @@ export function BasicDemo() {
   return (
     <Carousel.Root
       defaultPage={0}
-      onPageChange={(page) => console.log('Page changed to:', page)}
       padding="1rem"
       slideCount={items.length}
       slidesPerPage={2.5}
       spacing="1rem"
-      loop
     >
       <For each={items}>
         {(item, idx) => (
