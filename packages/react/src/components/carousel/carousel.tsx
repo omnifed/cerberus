@@ -52,6 +52,9 @@ function CarouselEl(props: PropsWithChildren<CarouselProps>) {
   )
 }
 
+// TODO: Figure out how this is going to be used in the designs to dictate the
+// best abstracted API.
+
 export const Carousel = {
   Root: CarouselEl,
   Item: CarouselParts.Item,
