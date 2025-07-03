@@ -6,6 +6,7 @@ import { tag } from './tag'
 import { accordion } from './slots/accordion'
 import { admonition } from './slots/admonition'
 import { avatar } from './slots/avatar'
+import { carousel } from './slots/carousel'
 import { checkbox } from './slots/checkbox'
 import { circularProgress } from './slots/circularProgress'
 import { combobox } from './slots/combobox'
@@ -58,6 +59,7 @@ export const slotRecipes = {
   avatar,
   accordion,
   admonition,
+  carousel,
   checkbox,
   circularProgress,
   combobox,
