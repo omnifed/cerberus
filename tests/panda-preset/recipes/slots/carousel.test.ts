@@ -79,6 +79,7 @@ describe('carousel recipe', () => {
   test('should have a base.itemGroup style', () => {
     expect(carousel.base?.itemGroup).toMatchObject({
       alignSelf: 'stretch',
+      paddingBlock: '3rem',
       scrollbarWidth: 'none',
       '&::-webkit-scrollbar': {
         display: 'none',
@@ -91,6 +92,7 @@ describe('carousel recipe', () => {
       alignItems: 'center',
       display: 'flex',
       justifyContent: 'center',
+      pos: 'relative',
     })
   })
 })
