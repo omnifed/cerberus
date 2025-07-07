@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react'
-import { IconButton } from '../icon-button'
 import { Show } from '../show/show'
+import { For } from '../for/for'
 import { CarouselParts } from './parts'
 import type { CarouselRootProps } from './primitives'
 
@@ -32,30 +32,24 @@ function CarouselEl(props: PropsWithChildren<CarouselProps>) {
 
   return (
     <CarouselParts.Root {...rootProps}>
-      <CarouselParts.Control>
-        <CarouselParts.PrevTrigger asChild>
-          <IconButton ariaLabel="Previous page">&lt;</IconButton>
-        </CarouselParts.PrevTrigger>
-        <CarouselParts.NextTrigger asChild>
-          <IconButton ariaLabel="Next page">&gt;</IconButton>
-        </CarouselParts.NextTrigger>
-      </CarouselParts.Control>
-
-      <CarouselParts.ItemGroup>{children}</CarouselParts.ItemGroup>
+      {children}
 
       <Show when={showIndicators}>
         <CarouselParts.IndicatorGroup>
-          <CarouselParts.Indicator />
+          <For each={Array.from({ length: props.slideCount ?? 0 })}>
+            {(_, idx) => <CarouselParts.Indicator key={idx} index={idx} />}
+          </For>
         </CarouselParts.IndicatorGroup>
       </Show>
     </CarouselParts.Root>
   )
 }
 
-// TODO: Figure out how this is going to be used in the designs to dictate the
-// best abstracted API.
-
 export const Carousel = {
   Root: CarouselEl,
+  ItemGroup: CarouselParts.ItemGroup,
   Item: CarouselParts.Item,
+  Control: CarouselParts.Control,
+  PrevTrigger: CarouselParts.PrevTrigger,
+  NextTrigger: CarouselParts.NextTrigger,
 }

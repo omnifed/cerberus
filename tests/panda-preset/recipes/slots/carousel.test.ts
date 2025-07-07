@@ -37,37 +37,26 @@ describe('carousel recipe', () => {
     })
   })
 
-  test('should have a base.control style', () => {
-    expect(carousel.base?.control).toMatchObject({
-      alignItems: 'stretch',
-      display: 'flex',
-      gap: 'md',
-    })
-  })
-
-  test('should have a base.prevTrigger style', () => {
-    expect(carousel.base?.prevTrigger).toMatchObject({})
-  })
-
-  test('should have a base.nextTrigger style', () => {
-    expect(carousel.base?.nextTrigger).toMatchObject({})
-  })
-
   test('should have a base.indicatorGroup style', () => {
     expect(carousel.base?.indicatorGroup).toMatchObject({
+      alignItems: 'center',
       display: 'flex',
       justifyContent: 'center',
-      marginTop: 2,
+      gap: 'sm',
+      mx: 'auto',
     })
   })
 
   test('should have a base.indicator style', () => {
     expect(carousel.base?.indicator).toMatchObject({
-      width: 2,
-      height: 2,
-      borderRadius: 'full',
-      backgroundColor: 'currentColor',
-      marginX: 1,
+      bgColor: 'currentColor',
+      rounded: '0.25rem',
+      height: '0.25rem',
+      mx: 1,
+      width: '4rem',
+      '&:is([data-current])': {
+        bgColor: 'action.bg.initial',
+      },
     })
   })
 

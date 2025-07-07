@@ -11,6 +11,7 @@ import CodePreview from '@/app/components/CodePreview'
 import { NoteAdmonition } from '@/app/components/Admonition'
 import {
   BasicDemo,
+  WithIndicatorsDemo,
 } from '../components/carousel/static'
 
 ```ts
@@ -20,10 +21,114 @@ import { Carousel } from '@cerberus/react'
 ## Usage
 
 <CodePreview preview={<BasicDemo />}>
-```tsx title="carousel.tsx"
-import { Carousel } from '@cerberus/react'
+```tsx title="Basic Demo"
+import { Button, Carousel, For } from '@cerberus/react'
+import { Center } from 'styled-system/jsx'
+import items from './items.json'
+
+function BasicDemo() {
+  return (
+    <Carousel.Root
+      defaultPage={0}
+      padding="1rem"
+      slideCount={items.length}
+      slidesPerPage={2.5}
+      spacing="1rem"
+    >
+      <Carousel.ItemGroup>
+        <For each={items}>
+          {(item, idx) => (
+            <Carousel.Item key={item.id} index={idx} asChild>
+              <Center
+                bgColor="page.bg.100"
+                border="1px solid"
+                borderColor="page.border.200"
+                color="page.text.100"
+                h="21rem"
+                rounded="md"
+                transitionProperty="all"
+                transitionDuration="normal"
+                transitionTimingFunction="cubic-bezier(0.075, 0.82, 0.165, 1)"
+                willChange="z-index, transform, box-shadow"
+                _hover={{
+                  shadow: 'lg',
+                  transform: 'scale(1.2)',
+                  zIndex: 'decorator',
+                }}
+              >
+                {item.content}
+              </Center>
+            </Carousel.Item>
+          )}
+        </For>
+      </Carousel.ItemGroup>
+
+      <Carousel.Control>
+        <Carousel.PrevTrigger asChild>
+          <Button shape="rounded" size="sm" usage="outlined">
+            Prev
+          </Button>
+        </Carousel.PrevTrigger>
+        <Carousel.NextTrigger asChild>
+          <Button shape="rounded" size="sm" usage="outlined">
+            Next
+          </Button>
+        </Carousel.NextTrigger>
+      </Carousel.Control>
+    </Carousel.Root>
+  )
+}
 ```
 </CodePreview>
+
+## With Indicators
+
+Use the `showIndicators` prop to display indicators for each slide.
+
+<CodePreview preview={<WithIndicatorsDemo />}>
+```tsx title="With Indicators"
+import { Button, Carousel, For } from '@cerberus/react'
+import { Center } from 'styled-system/jsx'
+import items from './items.json'
+
+function WithIndicatorsDemo() {
+  return (
+    <Carousel.Root
+      defaultPage={0}
+      padding="1rem"
+      slideCount={items.length}
+      slidesPerPage={1}
+      spacing="1rem"
+      showIndicators
+    >
+      <Carousel.ItemGroup>
+        <For each={items}>
+          {(item, idx) => (
+            <Carousel.Item key={item.id} index={idx} asChild>
+              <Center
+                bgColor="page.bg.100"
+                border="1px solid"
+                borderColor="page.border.200"
+                color="page.text.100"
+                h="16rem"
+                rounded="md"
+                transitionProperty="all"
+                transitionDuration="normal"
+                transitionTimingFunction="cubic-bezier(0.075, 0.82, 0.165, 1)"
+                willChange="z-index, transform, box-shadow"
+              >
+                {item.content}
+              </Center>
+            </Carousel.Item>
+          )}
+        </For>
+      </Carousel.ItemGroup>
+    </Carousel.Root>
+  )
+}
+```
+</CodePreview>
+
 
 ## Primitives
 
@@ -31,8 +136,14 @@ You can utilize the primitive components or the `css` prop to customize the butt
 
 | Component | Description |
 | --------- | ----------- |
-| Carousel  | The context provider for the Carousel parts |
+| CarouselRoot  | The context provider for the Carousel parts |
+| CarouselControl | The container of the Next and Prev triggers |
+| CarouselPrevTrigger | The button to navigate to the previous slide |
+| CarouselNextTrigger | The button to navigate to the next slide |
+| CarouselItemGroup | The container for the Carousel items |
 | CarouselItem | The individual item within the Carousel |
+| CarouselIndicatorGroup | The container for the indicators |
+| CarouselIndicator | The individual indicator representing each slide |
 
 ## API
 
@@ -42,6 +153,7 @@ The `Carousel` component is an abstraction of the primitives and accepts the fol
 
 | Name     | Default | Description                            |
 | -------- | ------- | -------------------------------------- |
+| showIndicators | `false` | Whether to show indicators for each slide. |
 
 The Carousel also accepts all the props of the [Root component](https://ark-ui.com/docs/components/carousel#api-reference).
 
@@ -55,4 +167,10 @@ The `CarouselParts` API is an Object containing the full family of components.
 | Name     | Description                            |
 | -------- | -------------------------------------- |
 | Root     | The `Carousel` component which is the Provider for the family. |
+| Control  | The container of the Next and Prev triggers. |
+| PrevTrigger | The button to navigate to the previous slide. |
+| NextTrigger | The button to navigate to the next slide. |
+| ItemGroup | The container for the Carousel items. |
 | Item     | The `CarouselItem` component which represents an individual item within the carousel. |
+| IndicatorGroup | The container for the indicators. |
+| Indicator | The individual indicator representing each slide. |
