@@ -1,5 +1,6 @@
 import type { PatternConfig } from '@pandacss/types'
 import type { Headings, TextElements } from './types'
+import { animationStyles } from './theme'
 
 export function definePattern<T extends PatternConfig>(
   config: T,
@@ -121,10 +122,28 @@ const textTagList: PatternConfig[] = textTags.map((tag) => {
   })
 })
 
+const animationStyleList = Object.keys(animationStyles)
+
+const motionStyleTagList: PatternConfig[] = animationStyleList.map((tag) => {
+  return definePattern({
+    description: `An element with the ${tag} animation style`,
+    transform(props: { duration?: string; delay?: string }) {
+      return {
+        animationStyle: tag,
+        animationDuration: props.duration ?? 'normal',
+        animationDelay: props.delay ?? '0s',
+        ...props,
+      }
+    },
+  })
+})
+
 export const patterns = {
   extend: {
     animateIn,
     scrollable,
+
+    // text
     h1: textTagList[0],
     h2: textTagList[1],
     h3: textTagList[2],
@@ -136,5 +155,15 @@ export const patterns = {
     em: textTagList[8],
     small: textTagList[9],
     span: textTagList[10],
+
+    // animation styles
+    emphasizedFadeIn: motionStyleTagList[0],
+    emphasizedFadeOut: motionStyleTagList[1],
+    emphasizedSlideIn: motionStyleTagList[2],
+    emphasizedSlideOut: motionStyleTagList[3],
+    slideFadeIn: motionStyleTagList[4],
+    slideFadeOut: motionStyleTagList[5],
+    scaleFadeIn: motionStyleTagList[6],
+    scaleFadeOut: motionStyleTagList[7],
   },
 }
