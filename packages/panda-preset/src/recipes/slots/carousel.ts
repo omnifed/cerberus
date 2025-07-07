@@ -1,5 +1,6 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { carouselAnatomy } from '@ark-ui/react'
+import { focusStates } from '../shared/states'
 
 /**
  * This module contains the carousel recipe.
@@ -60,6 +61,7 @@ export const carousel: Partial<SlotRecipeConfig> = defineSlotRecipe({
       height: '0.25rem',
       mx: 1,
       width: '4rem',
+      ...focusStates,
       '&:is([data-current])': {
         bgColor: 'action.bg.initial',
       },

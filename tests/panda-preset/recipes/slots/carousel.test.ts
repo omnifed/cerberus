@@ -54,6 +54,12 @@ describe('carousel recipe', () => {
       height: '0.25rem',
       mx: 1,
       width: '4rem',
+      _focusVisible: {
+        boxShadow: 'none',
+        outline: '3px solid',
+        outlineColor: 'action.border.focus',
+        outlineOffset: '2px',
+      },
       '&:is([data-current])': {
         bgColor: 'action.bg.initial',
       },
