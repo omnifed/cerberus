@@ -6,6 +6,7 @@ import Admonition, {
 } from '../admonition.mdx'
 import Avatar, { frontmatter as avatarFrontmatter } from '../avatar.mdx'
 import Button, { frontmatter as buttonFrontmatter } from '../button.mdx'
+import Carousel, { frontmatter as carouselFrontmatter } from '../carousel.mdx'
 import Checkbox, { frontmatter as checkboxFrontmatter } from '../checkbox.mdx'
 import Combobox, { frontmatter as comboboxFrontmatter } from '../combobox.mdx'
 import ConfirmModal, {
@@ -105,6 +106,19 @@ export const components = [
         'Learn how to use the Button component in the Cerberus Design System, including its properties and examples.',
     },
     Content: Button,
+  },
+  {
+    id: '1.3.2a',
+    label: 'Carousel',
+    slug: 'carousel',
+    href: '/docs/components/carousel',
+    frontmatter: carouselFrontmatter,
+    meta: {
+      title: 'Carousel Component in Cerberus Design System',
+      description:
+        'Discover how to use the Carousel component in the Cerberus Design System for displaying a series of items in a sliding format.',
+    },
+    Content: Carousel,
   },
   {
     id: '1.3.5',

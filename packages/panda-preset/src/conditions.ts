@@ -41,6 +41,10 @@ export const conditions = {
   startIndicator: '&:is([data-indicator-position=start])',
   endIndicator: '&:is([data-indicator-position=end])',
 
+  // orientations
+  horizontal: '&:is([data-orientation=horizontal])',
+  vertical: '&:is([data-orientation=vertical])',
+
   // sizes
   xsSize: '&:is([data-size=xs])',
   smSize: '&:is([data-size=sm])',

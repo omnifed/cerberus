@@ -51,7 +51,7 @@
     "node": ">=22.0.0",
     "bun": ">=1.2.16"
   },
-  "packageManager": "pnpm@10.12.1",
+  "packageManager": "pnpm@10.12.4",
   "pnpm": {
     "overrides": {
       "brace-expansion": "2.0.2"

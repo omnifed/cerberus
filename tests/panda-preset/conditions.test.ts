@@ -257,4 +257,12 @@ describe('conditions', () => {
   test('should have an endRange', () => {
     expect(conditions.endRange).toEqual('&:is([data-range-end])')
   })
+
+  test('should have a horizontal orientation', () => {
+    expect(conditions.horizontal).toEqual('&:is([data-orientation=horizontal])')
+  })
+
+  test('should have a vertical orientation', () => {
+    expect(conditions.vertical).toEqual('&:is([data-orientation=vertical])')
+  })
 })
