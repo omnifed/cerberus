@@ -22,8 +22,8 @@ importers:
         specifier: ^9.31.0
         version: 9.31.0
       '@types/bun':
-        specifier: ^1.2.17
-        version: 1.2.17
+        specifier: ^1.2.18
+        version: 1.2.18(@types/react@19.1.8)
       '@types/eslint':
         specifier: ^8.56.12
         version: 8.56.12
@@ -1697,8 +1697,8 @@ packages:
   '@types/aria-query@5.0.4':
     resolution: {integrity: sha512-rfT93uj5s0PRL7EzccGMs3brplhcrghnDoV26NqKhCAS1hVo+WdNsPvE/yb6ilfr5hi2MEk6d5EWJTKdxg8jVw==}
 
-  '@types/bun@1.2.17':
-    resolution: {integrity: sha512-l/BYs/JYt+cXA/0+wUhulYJB6a6p//GTPiJ7nV+QHa8iiId4HZmnu/3J/SowP5g0rTiERY2kfGKXEK5Ehltx4Q==}
+  '@types/bun@1.2.18':
+    resolution: {integrity: sha512-Xf6RaWVheyemaThV0kUfaAUvCNokFr+bH8Jxp+tTZfx7dAPA8z9ePnP9S9+Vspzuxxx9JRAXhnyccRj3GyCMdQ==}
 
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
@@ -2908,8 +2908,10 @@ packages:
   builtins@5.1.0:
     resolution: {integrity: sha512-SW9lzGTLvWTP1AY8xeAMZimqDrIaSdLQUcVr9DMef51niJ022Ri87SwRRKYm4A6iHfkPaiVUu/Duw2Wc4J7kKg==}
 
-  bun-types@1.2.17:
-    resolution: {integrity: sha512-ElC7ItwT3SCQwYZDYoAH+q6KT4Fxjl8DtZ6qDulUFBmXA8YB4xo+l54J9ZJN+k2pphfn9vk7kfubeSd5QfTVJQ==}
+  bun-types@1.2.18:
+    resolution: {integrity: sha512-04+Eha5NP7Z0A9YgDAzMk5PHR16ZuLVa83b26kH5+cp1qZW4F6FmAURngE7INf4tKOvCE69vYvDEwoNl1tGiWw==}
+    peerDependencies:
+      '@types/react': ^19
 
   bun@1.2.15:
     resolution: {integrity: sha512-9Nryct8QYQRE/W3/FjW2i4eLdVKme7JPY8R9DNLSGjKdSX8uMgZ2mogs+H5d88Ng0bYeSLpUkBhRelbNi8MwYA==}
@@ -7542,9 +7544,11 @@ snapshots:
 
   '@types/aria-query@5.0.4': {}
 
-  '@types/bun@1.2.17':
+  '@types/bun@1.2.18(@types/react@19.1.8)':
     dependencies:
-      bun-types: 1.2.17
+      bun-types: 1.2.18(@types/react@19.1.8)
+    transitivePeerDependencies:
+      - '@types/react'
 
   '@types/debug@4.1.12':
     dependencies:
@@ -7606,7 +7610,6 @@ snapshots:
   '@types/node@24.0.13':
     dependencies:
       undici-types: 7.8.0
-    optional: true
 
   '@types/react-dom@19.1.6(@types/react@19.1.8)':
     dependencies:
@@ -9420,9 +9423,10 @@ snapshots:
     dependencies:
       semver: 7.7.2
 
-  bun-types@1.2.17:
+  bun-types@1.2.18(@types/react@19.1.8):
     dependencies:
-      '@types/node': 24.0.10
+      '@types/node': 24.0.13
+      '@types/react': 19.1.8
 
   bun@1.2.15:
     optionalDependencies:
