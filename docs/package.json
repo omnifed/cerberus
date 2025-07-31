@@ -30,14 +30,14 @@
     "@next/mdx": "^15.3.5",
     "@pandacss/dev": "^0.54.0",
     "@pandacss/types": "^0.54.0",
-    "@shikijs/rehype": "^3.7.0",
-    "@types/node": "^24.0.10",
-    "@types/react": "19.1.8",
-    "@types/react-dom": "19.1.6",
+    "@shikijs/rehype": "^3.9.0",
+    "@types/node": "^24.1.0",
+    "@types/react": "19.1.9",
+    "@types/react-dom": "19.1.7",
     "@vercel/analytics": "^1.5.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^8",
-    "eslint-config-next": "15.3.5",
+    "eslint-config-next": "15.4.5",
     "eslint-import-resolver-typescript": "^4.4.4",
     "hast-util-to-jsx-runtime": "2.3.6",
     "rehype-autolink-headings": "^7.1.0",
@@ -49,6 +49,6 @@
     "remark-gfm": "^4.0.1",
     "remark-mdx-frontmatter": "^5.2.0",
     "remark-parse": "^11.0.0",
-    "shiki": "^3.7.0"
+    "shiki": "^3.9.0"
   }
 }
