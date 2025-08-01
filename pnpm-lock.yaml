@@ -22,8 +22,8 @@ importers:
         specifier: ^9.31.0
         version: 9.31.0
       '@types/bun':
-        specifier: ^1.2.17
-        version: 1.2.17
+        specifier: ^1.2.19
+        version: 1.2.19(@types/react@19.1.9)
       '@types/eslint':
         specifier: ^8.56.12
         version: 8.56.12
@@ -130,7 +130,7 @@ importers:
         version: link:../packages/panda-preset
       '@csstools/postcss-cascade-layers':
         specifier: ^5.0.2
-        version: 5.0.2(postcss@8.5.6)
+        version: 5.0.2(postcss@8.4.49)
       '@expressive-code/plugin-line-numbers':
         specifier: ^0.41.3
         version: 0.41.3
@@ -166,7 +166,7 @@ importers:
         version: 1.5.0(next@15.4.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       autoprefixer:
         specifier: ^10.4.21
-        version: 10.4.21(postcss@8.5.6)
+        version: 10.4.21(postcss@8.4.49)
       eslint:
         specifier: ^8
         version: 8.57.1
@@ -1526,8 +1526,8 @@ packages:
   '@types/aria-query@5.0.4':
     resolution: {integrity: sha512-rfT93uj5s0PRL7EzccGMs3brplhcrghnDoV26NqKhCAS1hVo+WdNsPvE/yb6ilfr5hi2MEk6d5EWJTKdxg8jVw==}
 
-  '@types/bun@1.2.17':
-    resolution: {integrity: sha512-l/BYs/JYt+cXA/0+wUhulYJB6a6p//GTPiJ7nV+QHa8iiId4HZmnu/3J/SowP5g0rTiERY2kfGKXEK5Ehltx4Q==}
+  '@types/bun@1.2.19':
+    resolution: {integrity: sha512-d9ZCmrH3CJ2uYKXQIUuZ/pUnTqIvLDS0SK7pFmbx8ma+ziH/FRMoAq5bYpRG7y+w1gl+HgyNZbtqgMq4W4e2Lg==}
 
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
@@ -1540,9 +1540,6 @@ packages:
 
   '@types/eslint@8.56.12':
     resolution: {integrity: sha512-03ruubjWyOHlmljCVoxSuNDdmfZDzsrrz0P2LeJsOXr+ZwFQ+0yQIwNCwt/GYhV7Z31fgtXJTAEs+FYlEL851g==}
-
-  '@types/eslint@9.6.1':
-    resolution: {integrity: sha512-FXx2pKgId/WyYo2jXw63kk7/+TY7u7AziEJxJAnSFzHlqTAS3Ync6SvgYAN/k4/PQpnnVuzoMuVnByKK2qp0ag==}
 
   '@types/eslint__js@8.42.3':
     resolution: {integrity: sha512-alfG737uhmPdnvkrLdZLcEKJ/B8s9Y4hrZ+YAdzUeoArBlSUERA2E87ROfOaS4jd/C45fzOoZzidLc1IPwLqOw==}
@@ -1582,9 +1579,6 @@ packages:
 
   '@types/node@20.19.4':
     resolution: {integrity: sha512-OP+We5WV8Xnbuvw0zC2m4qfB/BJvjyCwtNjhHdJxV1639SGSKrLmJkc3fMnp2Qy8nJyHp8RO6umxELN/dS1/EA==}
-
-  '@types/node@24.0.10':
-    resolution: {integrity: sha512-ENHwaH+JIRTDIEEbDK6QSQntAYGtbvdDXnMXnZaZ6k13Du1dPMmprkEHIL7ok2Wl2aZevetwTAb5S+7yIF+enA==}
 
   '@types/node@24.1.0':
     resolution: {integrity: sha512-ut5FthK5moxFKH2T1CUOC6ctR67rQRvvHdFLCD2Ql6KXmMuCrjsSsRI9UsLCm9M18BMwClv4pn327UvB7eeO1w==}
@@ -2533,8 +2527,10 @@ packages:
   builtins@5.1.0:
     resolution: {integrity: sha512-SW9lzGTLvWTP1AY8xeAMZimqDrIaSdLQUcVr9DMef51niJ022Ri87SwRRKYm4A6iHfkPaiVUu/Duw2Wc4J7kKg==}
 
-  bun-types@1.2.17:
-    resolution: {integrity: sha512-ElC7ItwT3SCQwYZDYoAH+q6KT4Fxjl8DtZ6qDulUFBmXA8YB4xo+l54J9ZJN+k2pphfn9vk7kfubeSd5QfTVJQ==}
+  bun-types@1.2.19:
+    resolution: {integrity: sha512-uAOTaZSPuYsWIXRpj7o56Let0g/wjihKCkeRqUBhlLVM/Bt+Fj9xTo+LhC1OV1XDaGkz4hNC80et5xgy+9KTHQ==}
+    peerDependencies:
+      '@types/react': ^19
 
   bun@1.2.15:
     resolution: {integrity: sha512-9Nryct8QYQRE/W3/FjW2i4eLdVKme7JPY8R9DNLSGjKdSX8uMgZ2mogs+H5d88Ng0bYeSLpUkBhRelbNi8MwYA==}
@@ -5742,10 +5738,10 @@ snapshots:
       postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
-  '@csstools/postcss-cascade-layers@5.0.2(postcss@8.5.6)':
+  '@csstools/postcss-cascade-layers@5.0.2(postcss@8.4.49)':
     dependencies:
       '@csstools/selector-specificity': 5.0.0(postcss-selector-parser@7.1.0)
-      postcss: 8.5.6
+      postcss: 8.4.49
       postcss-selector-parser: 7.1.0
 
   '@csstools/selector-specificity@3.1.1(postcss-selector-parser@6.1.2)':
@@ -6967,9 +6963,11 @@ snapshots:
 
   '@types/aria-query@5.0.4': {}
 
-  '@types/bun@1.2.17':
+  '@types/bun@1.2.19(@types/react@19.1.9)':
     dependencies:
-      bun-types: 1.2.17
+      bun-types: 1.2.19(@types/react@19.1.9)
+    transitivePeerDependencies:
+      - '@types/react'
 
   '@types/debug@4.1.12':
     dependencies:
@@ -6979,7 +6977,7 @@ snapshots:
 
   '@types/eslint-scope@3.7.7':
     dependencies:
-      '@types/eslint': 9.6.1
+      '@types/eslint': 8.56.12
       '@types/estree': 1.0.8
     optional: true
 
@@ -6987,12 +6985,6 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.8
       '@types/json-schema': 7.0.15
-
-  '@types/eslint@9.6.1':
-    dependencies:
-      '@types/estree': 1.0.8
-      '@types/json-schema': 7.0.15
-    optional: true
 
   '@types/eslint__js@8.42.3':
     dependencies:
@@ -7029,10 +7021,6 @@ snapshots:
   '@types/node@20.19.4':
     dependencies:
       undici-types: 6.21.0
-
-  '@types/node@24.0.10':
-    dependencies:
-      undici-types: 7.8.0
 
   '@types/node@24.1.0':
     dependencies:
@@ -8275,16 +8263,6 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  autoprefixer@10.4.21(postcss@8.5.6):
-    dependencies:
-      browserslist: 4.24.4
-      caniuse-lite: 1.0.30001712
-      fraction.js: 4.3.7
-      normalize-range: 0.1.2
-      picocolors: 1.1.1
-      postcss: 8.5.6
-      postcss-value-parser: 4.2.0
-
   available-typed-arrays@1.0.7:
     dependencies:
       possible-typed-array-names: 1.1.0
@@ -8364,9 +8342,10 @@ snapshots:
     dependencies:
       semver: 7.7.2
 
-  bun-types@1.2.17:
+  bun-types@1.2.19(@types/react@19.1.9):
     dependencies:
-      '@types/node': 24.0.10
+      '@types/node': 24.1.0
+      '@types/react': 19.1.9
 
   bun@1.2.15:
     optionalDependencies:
