@@ -11,7 +11,8 @@
     "lint:website": "pnpm --filter website run lint:ts",
     "lint:packages": "pnpm --filter @cerberus-design/* run -w lint:ts",
     "lint:tests": "pnpm --filter tests run lint:ts",
-    "lint": "pnpm lint:packages && pnpm lint:tests && pnpm lint:website"
+    "lint": "pnpm lint:packages && pnpm lint:tests && pnpm lint:website",
+    "test": "pnpm --filter tests run test:ci"
   },
   "dependencies": {
     "typescript": "^5.8.2"
@@ -51,10 +52,16 @@
     "node": ">=22.0.0",
     "bun": ">=1.2.16"
   },
-  "packageManager": "pnpm@10.12.4",
+  "packageManager": "pnpm@10.14.0",
   "pnpm": {
     "overrides": {
+      "@eslint/plugin-kit": ">=0.3.4",
       "brace-expansion": "2.0.2"
-    }
+    },
+    "ignoredBuiltDependencies": [
+      "@carbon/icon-helpers",
+      "@carbon/icons-react",
+      "unrs-resolver"
+    ]
   }
 }
