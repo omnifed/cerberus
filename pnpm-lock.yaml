@@ -97,7 +97,7 @@ importers:
     dependencies:
       '@carbon/icons-react':
         specifier: ^11.62.0
-        version: 11.62.0(react@19.1.0)
+        version: 11.62.0(react@19.1.1)
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../configs
@@ -109,19 +109,19 @@ importers:
         version: 3.8.1
       '@tsparticles/react':
         specifier: ^3.0.0
-        version: 3.0.0(@tsparticles/engine@3.8.1)(react-dom@19.1.1(react@19.1.0))(react@19.1.0)
+        version: 3.0.0(@tsparticles/engine@3.8.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@tsparticles/slim':
         specifier: ^3.8.1
         version: 3.8.1
       next:
         specifier: 15.4.4
-        version: 15.4.4(react-dom@19.1.1(react@19.1.0))(react@19.1.0)
+        version: 15.4.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react:
-        specifier: 19.1.0
-        version: 19.1.0
+        specifier: 19.1.1
+        version: 19.1.1
       react-dom:
         specifier: 19.1.1
-        version: 19.1.1(react@19.1.0)
+        version: 19.1.1(react@19.1.1)
       remove:
         specifier: ^0.1.5
         version: 0.1.5
@@ -140,10 +140,10 @@ importers:
         version: 3.1.0(webpack@5.91.0)
       '@mdx-js/react':
         specifier: ^3.1.0
-        version: 3.1.0(@types/react@19.1.9)(react@19.1.0)
+        version: 3.1.0(@types/react@19.1.9)(react@19.1.1)
       '@next/mdx':
         specifier: ^15.3.5
-        version: 15.3.5(@mdx-js/loader@3.1.0(webpack@5.91.0))(@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.0))
+        version: 15.3.5(@mdx-js/loader@3.1.0(webpack@5.91.0))(@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.1))
       '@pandacss/dev':
         specifier: ^0.54.0
         version: 0.54.0(jsdom@26.0.0)(typescript@5.8.3)
@@ -164,7 +164,7 @@ importers:
         version: 19.1.7(@types/react@19.1.9)
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.5.0(next@15.4.4(react-dom@19.1.1(react@19.1.0))(react@19.1.0))(react@19.1.0)
+        version: 1.5.0(next@15.4.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react@19.1.1)
       autoprefixer:
         specifier: ^10.4.21
         version: 10.4.21(postcss@8.4.49)
@@ -250,7 +250,7 @@ importers:
     devDependencies:
       '@ark-ui/react':
         specifier: ^5.18.3
-        version: 5.18.3(react-dom@19.1.1(react@19.1.0))(react@19.1.0)
+        version: 5.18.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../../configs
@@ -265,10 +265,10 @@ importers:
     dependencies:
       '@ark-ui/react':
         specifier: ^5.18.3
-        version: 5.18.3(react-dom@19.1.1(react@19.1.0))(react@19.1.0)
+        version: 5.18.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@dnd-kit/core':
         specifier: ^6.3.1
-        version: 6.3.1(react-dom@19.1.1(react@19.1.0))(react@19.1.0)
+        version: 6.3.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
     devDependencies:
       '@cerberus-design/configs':
         specifier: workspace:*
@@ -292,11 +292,11 @@ importers:
         specifier: ^19.1.7
         version: 19.1.7(@types/react@19.1.9)
       react:
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.1
+        version: 19.1.1
       react-dom:
         specifier: ^19.1.1
-        version: 19.1.1(react@19.1.0)
+        version: 19.1.1(react@19.1.1)
       tsup:
         specifier: ^8.4.0
         version: 8.5.0(@microsoft/api-extractor@7.52.8(@types/node@24.2.0))(jiti@2.4.2)(postcss@8.5.6)(typescript@5.8.3)(yaml@2.8.0)
@@ -305,7 +305,7 @@ importers:
     devDependencies:
       '@carbon/icons-react':
         specifier: ^11.64.0
-        version: 11.64.0(react@19.1.0)
+        version: 11.64.0(react@19.1.1)
       '@cerberus-design/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
@@ -323,7 +323,7 @@ importers:
         version: 6.6.3
       '@testing-library/react':
         specifier: ^16.3.0
-        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react-dom@19.1.1(react@19.1.0))(react@19.1.0)
+        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@testing-library/user-event':
         specifier: ^14.6.1
         version: 14.6.1(@testing-library/dom@10.4.0)
@@ -331,11 +331,11 @@ importers:
         specifier: ^19.1.9
         version: 19.1.9
       react:
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.1
+        version: 19.1.1
       react-dom:
         specifier: ^19.1.1
-        version: 19.1.1(react@19.1.0)
+        version: 19.1.1(react@19.1.1)
 
 packages:
 
@@ -1545,6 +1545,9 @@ packages:
 
   '@types/eslint@8.56.12':
     resolution: {integrity: sha512-03ruubjWyOHlmljCVoxSuNDdmfZDzsrrz0P2LeJsOXr+ZwFQ+0yQIwNCwt/GYhV7Z31fgtXJTAEs+FYlEL851g==}
+
+  '@types/eslint@9.6.1':
+    resolution: {integrity: sha512-FXx2pKgId/WyYo2jXw63kk7/+TY7u7AziEJxJAnSFzHlqTAS3Ync6SvgYAN/k4/PQpnnVuzoMuVnByKK2qp0ag==}
 
   '@types/eslint__js@8.42.3':
     resolution: {integrity: sha512-alfG737uhmPdnvkrLdZLcEKJ/B8s9Y4hrZ+YAdzUeoArBlSUERA2E87ROfOaS4jd/C45fzOoZzidLc1IPwLqOw==}
@@ -4713,6 +4716,10 @@ packages:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
     engines: {node: '>=0.10.0'}
 
+  react@19.1.1:
+    resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
+    engines: {node: '>=0.10.0'}
+
   readable-stream@3.6.2:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
     engines: {node: '>= 6'}
@@ -5598,7 +5605,7 @@ snapshots:
 
   '@adobe/css-tools@4.4.2': {}
 
-  '@ark-ui/react@5.18.3(react-dom@19.1.1(react@19.1.0))(react@19.1.0)':
+  '@ark-ui/react@5.18.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@internationalized/date': 3.8.2
       '@zag-js/accordion': 1.21.1
@@ -5640,7 +5647,7 @@ snapshots:
       '@zag-js/qr-code': 1.21.1
       '@zag-js/radio-group': 1.21.1
       '@zag-js/rating-group': 1.21.1
-      '@zag-js/react': 1.21.1(react-dom@19.1.1(react@19.1.0))(react@19.1.0)
+      '@zag-js/react': 1.21.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@zag-js/select': 1.21.1
       '@zag-js/signature-pad': 1.21.1
       '@zag-js/slider': 1.21.1
@@ -5659,8 +5666,8 @@ snapshots:
       '@zag-js/tree-view': 1.21.1
       '@zag-js/types': 1.21.1
       '@zag-js/utils': 1.21.1
-      react: 19.1.0
-      react-dom: 19.1.1(react@19.1.0)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
 
   '@asamuzakjp/css-color@3.2.0':
     dependencies:
@@ -5701,19 +5708,19 @@ snapshots:
     dependencies:
       '@ibm/telemetry-js': 1.9.1
 
-  '@carbon/icons-react@11.62.0(react@19.1.0)':
+  '@carbon/icons-react@11.62.0(react@19.1.1)':
     dependencies:
       '@carbon/icon-helpers': 10.61.0
       '@ibm/telemetry-js': 1.9.1
       prop-types: 15.8.1
-      react: 19.1.0
+      react: 19.1.1
 
-  '@carbon/icons-react@11.64.0(react@19.1.0)':
+  '@carbon/icons-react@11.64.0(react@19.1.1)':
     dependencies:
       '@carbon/icon-helpers': 10.63.0
       '@ibm/telemetry-js': 1.9.1
       prop-types: 15.8.1
-      react: 19.1.0
+      react: 19.1.1
 
   '@clack/core@0.4.1':
     dependencies:
@@ -5768,22 +5775,22 @@ snapshots:
 
   '@ctrl/tinycolor@4.1.0': {}
 
-  '@dnd-kit/accessibility@3.1.1(react@19.1.0)':
+  '@dnd-kit/accessibility@3.1.1(react@19.1.1)':
     dependencies:
-      react: 19.1.0
+      react: 19.1.1
       tslib: 2.8.1
 
-  '@dnd-kit/core@6.3.1(react-dom@19.1.1(react@19.1.0))(react@19.1.0)':
+  '@dnd-kit/core@6.3.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
-      '@dnd-kit/accessibility': 3.1.1(react@19.1.0)
-      '@dnd-kit/utilities': 3.2.2(react@19.1.0)
-      react: 19.1.0
-      react-dom: 19.1.1(react@19.1.0)
+      '@dnd-kit/accessibility': 3.1.1(react@19.1.1)
+      '@dnd-kit/utilities': 3.2.2(react@19.1.1)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
       tslib: 2.8.1
 
-  '@dnd-kit/utilities@3.2.2(react@19.1.0)':
+  '@dnd-kit/utilities@3.2.2(react@19.1.1)':
     dependencies:
-      react: 19.1.0
+      react: 19.1.1
       tslib: 2.8.1
 
   '@emnapi/core@1.4.3':
@@ -6232,11 +6239,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.0)':
+  '@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.1)':
     dependencies:
       '@types/mdx': 2.0.13
       '@types/react': 19.1.9
-      react: 19.1.0
+      react: 19.1.1
 
   '@microsoft/api-extractor-model@7.30.6(@types/node@24.2.0)':
     dependencies:
@@ -6286,12 +6293,12 @@ snapshots:
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/mdx@15.3.5(@mdx-js/loader@3.1.0(webpack@5.91.0))(@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.0))':
+  '@next/mdx@15.3.5(@mdx-js/loader@3.1.0(webpack@5.91.0))(@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.1))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
       '@mdx-js/loader': 3.1.0(webpack@5.91.0)
-      '@mdx-js/react': 3.1.0(@types/react@19.1.9)(react@19.1.0)
+      '@mdx-js/react': 3.1.0(@types/react@19.1.9)(react@19.1.1)
 
   '@next/swc-darwin-arm64@15.4.4':
     optional: true
@@ -6759,12 +6766,12 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
 
-  '@testing-library/react@16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react-dom@19.1.1(react@19.1.0))(react@19.1.0)':
+  '@testing-library/react@16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@babel/runtime': 7.27.6
       '@testing-library/dom': 10.4.0
-      react: 19.1.0
-      react-dom: 19.1.1(react@19.1.0)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
     optionalDependencies:
       '@types/react': 19.1.9
       '@types/react-dom': 19.1.7(@types/react@19.1.9)
@@ -6877,11 +6884,11 @@ snapshots:
     dependencies:
       '@tsparticles/engine': 3.8.1
 
-  '@tsparticles/react@3.0.0(@tsparticles/engine@3.8.1)(react-dom@19.1.1(react@19.1.0))(react@19.1.0)':
+  '@tsparticles/react@3.0.0(@tsparticles/engine@3.8.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@tsparticles/engine': 3.8.1
-      react: 19.1.0
-      react-dom: 19.1.1(react@19.1.0)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
 
   '@tsparticles/shape-circle@3.8.1':
     dependencies:
@@ -6995,7 +7002,7 @@ snapshots:
 
   '@types/eslint-scope@3.7.7':
     dependencies:
-      '@types/eslint': 8.56.12
+      '@types/eslint': 9.6.1
       '@types/estree': 1.0.8
     optional: true
 
@@ -7003,6 +7010,12 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.8
       '@types/json-schema': 7.0.15
+
+  '@types/eslint@9.6.1':
+    dependencies:
+      '@types/estree': 1.0.8
+      '@types/json-schema': 7.0.15
+    optional: true
 
   '@types/eslint__js@8.42.3':
     dependencies:
@@ -7449,10 +7462,10 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.9.2':
     optional: true
 
-  '@vercel/analytics@1.5.0(next@15.4.4(react-dom@19.1.1(react@19.1.0))(react@19.1.0))(react@19.1.0)':
+  '@vercel/analytics@1.5.0(next@15.4.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react@19.1.1)':
     optionalDependencies:
-      next: 15.4.4(react-dom@19.1.1(react@19.1.0))(react@19.1.0)
-      react: 19.1.0
+      next: 15.4.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      react: 19.1.1
 
   '@vue/compiler-core@3.4.19':
     dependencies:
@@ -7907,14 +7920,14 @@ snapshots:
       '@zag-js/types': 1.21.1
       '@zag-js/utils': 1.21.1
 
-  '@zag-js/react@1.21.1(react-dom@19.1.1(react@19.1.0))(react@19.1.0)':
+  '@zag-js/react@1.21.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@zag-js/core': 1.21.1
       '@zag-js/store': 1.21.1
       '@zag-js/types': 1.21.1
       '@zag-js/utils': 1.21.1
-      react: 19.1.0
-      react-dom: 19.1.1(react@19.1.0)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
 
   '@zag-js/rect-utils@1.21.1': {}
 
@@ -9001,14 +9014,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.38.0(eslint@8.57.1)(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@4.4.4)(eslint@8.57.1):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.38.0(eslint@8.57.1)(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 8.38.0(eslint@8.57.1)(typescript@5.8.3)
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 4.4.4(eslint-plugin-import@2.32.0)(eslint@8.57.1)
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -9059,7 +9072,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.38.0(eslint@8.57.1)(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@4.4.4)(eslint@8.57.1)
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.38.0(eslint@8.57.1)(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3
@@ -10940,15 +10953,15 @@ snapshots:
   neo-async@2.6.2:
     optional: true
 
-  next@15.4.4(react-dom@19.1.1(react@19.1.0))(react@19.1.0):
+  next@15.4.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       '@next/env': 15.4.4
       '@swc/helpers': 0.5.15
       caniuse-lite: 1.0.30001727
       postcss: 8.4.31
-      react: 19.1.0
-      react-dom: 19.1.1(react@19.1.0)
-      styled-jsx: 5.1.6(react@19.1.0)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
+      styled-jsx: 5.1.6(react@19.1.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.4.4
       '@next/swc-darwin-x64': 15.4.4
@@ -11309,11 +11322,18 @@ snapshots:
       react: 19.1.0
       scheduler: 0.26.0
 
+  react-dom@19.1.1(react@19.1.1):
+    dependencies:
+      react: 19.1.1
+      scheduler: 0.26.0
+
   react-is@16.13.1: {}
 
   react-is@17.0.2: {}
 
   react@19.1.0: {}
+
+  react@19.1.1: {}
 
   readable-stream@3.6.2:
     dependencies:
@@ -11883,10 +11903,10 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.4
 
-  styled-jsx@5.1.6(react@19.1.0):
+  styled-jsx@5.1.6(react@19.1.1):
     dependencies:
       client-only: 0.0.1
-      react: 19.1.0
+      react: 19.1.1
 
   sucrase@3.35.0:
     dependencies:
