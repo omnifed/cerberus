@@ -13,9 +13,9 @@
     "@carbon/icons-react": "^11.62.0",
     "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/react": "workspace:*",
-    "@tsparticles/engine": "^3.8.1",
+    "@tsparticles/engine": "^3.9.1",
     "@tsparticles/react": "^3.0.0",
-    "@tsparticles/slim": "^3.8.1",
+    "@tsparticles/slim": "^3.9.1",
     "next": "15.4.5",
     "react": "19.1.1",
     "react-dom": "19.1.1",
@@ -49,6 +49,6 @@
     "remark-gfm": "^4.0.1",
     "remark-mdx-frontmatter": "^5.2.0",
     "remark-parse": "^11.0.0",
-    "shiki": "^3.9.0"
+    "shiki": "^3.9.2"
   }
 }
