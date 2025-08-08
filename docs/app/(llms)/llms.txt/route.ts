@@ -116,7 +116,9 @@ export const GET = async () => {
     generateContent(documentSets),
   )
 
-  return new Response(content)
+  return new Response(content, {
+    headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+  })
 }
 
 const TEMPLATE = `
