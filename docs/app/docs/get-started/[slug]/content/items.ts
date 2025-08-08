@@ -5,6 +5,7 @@ import Faq, { frontmatter as faqFrontmatter } from './faq.mdx'
 import Contributing, {
   frontmatter as contributingFrontmatter,
 } from './contributing.mdx'
+import LLMS, { frontmatter as llmsFrontmatter } from './llms.mdx'
 
 export const items = [
   {
@@ -50,5 +51,23 @@ export const items = [
         'Learn how to contribute to the Cerberus Design System, including guidelines for code contributions, documentation, and more.',
     },
     Content: Contributing,
+  },
+  {
+    id: '2.1',
+    label: 'AI',
+    href: '',
+  },
+  {
+    id: '2.2',
+    label: 'LLMS.txt',
+    slug: 'llms',
+    frontmatter: llmsFrontmatter,
+    href: '/docs/get-started/llms',
+    meta: {
+      title: 'LLMS.txt - Getting AI Tools to Understand Cerberus',
+      description:
+        'Learn how to get tools like Cursor, Windsurf, GitHub Copilot, ChatGPT, and Claude to understand Cerberus.',
+    },
+    Content: LLMS,
   },
 ]
