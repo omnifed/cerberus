@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "husky",
     "bump:versions": "pnpm --filter @cerberus-design/configs run -w bump:versions",
+    "start:docs": "pnpm --filter docs run dev",
     "lint:es": "eslint . --max-warnings=0",
     "lint:ox": "oxlint --deny-warnings",
     "lint:website": "pnpm --filter website run lint:ts",
