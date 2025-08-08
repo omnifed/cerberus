@@ -12,9 +12,9 @@ export const items = [
     label: 'Cerberus v19 Release',
     category: 'release',
     version: 'v19',
-    slug: 'v19-release-notes',
+    slug: 'v19-release',
     frontmatter: v19Frontmatter as unknown as BlogHeaderProps,
-    href: '/blog/v19-release-notes',
+    href: '/blog/v19-release',
     meta: {
       title: 'Cerberus v19 Release Notes',
       description: 'Introducing new features and improvements in Cerberus.',
@@ -28,9 +28,9 @@ export const items = [
     label: 'Cerberus v18 Release',
     category: 'release',
     version: 'v18',
-    slug: 'v18-release-notes',
+    slug: 'v18-release',
     frontmatter: v18Frontmatter as unknown as BlogHeaderProps,
-    href: '/blog/v18-release-notes',
+    href: '/blog/v18-release',
     meta: {
       title: 'Cerberus v18 Release Notes',
       description: 'Introducing Cerberus PandaCSS config helpers.',

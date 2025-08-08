@@ -1,4 +1,4 @@
-import { BASE_URL } from '@/lib/constants'
+import { RAW_GITHUB_DOCS_URL } from '@/lib/constants'
 import { version } from '@cerberus-design/configs'
 import { items as blogItems } from '@/app/blog/[slug]/content/items'
 import { items as getStartedItems } from '@/app/docs/get-started/[slug]/content/items'
@@ -68,6 +68,17 @@ export const GET = async () => {
       .filter(Boolean) as DocumentSet[]
   }
 
+  function createGithubUrl(href: string): string {
+    const splitUrl = href.split('/')
+    const isBlog = splitUrl.length === 3
+
+    const path = isBlog
+      ? `${splitUrl[1]}/%5Bslug%5D/content/${splitUrl[2]}`
+      : `${splitUrl[1]}/${splitUrl[2]}/%5Bslug%5D/content/${splitUrl[3]}`
+
+    return `${RAW_GITHUB_DOCS_URL}/${path}.mdx`
+  }
+
   function generateContent(sets: DocumentSet[]): string {
     return sets
       .map((set) => {
@@ -91,7 +102,7 @@ export const GET = async () => {
           ? generateContent(set.children)
           : ''
         const currentContent = set.href
-          ? `- [${set.title}](${BASE_URL}/${set.href})`
+          ? `- [${set.title}](${createGithubUrl(set.href)})`
           : ''
 
         return `${currentContent}\n${childrenContent}`.trim()

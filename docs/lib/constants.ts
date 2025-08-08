@@ -7,3 +7,6 @@ const VERCEL_URL = VERCEL_HOST ? `https://${VERCEL_HOST}` : undefined
 
 export const BASE_URL =
   process.env.NEXT_PUBLIC_URL || VERCEL_URL || 'http://localhost:3000'
+
+export const RAW_GITHUB_DOCS_URL =
+  'https://raw.githubusercontent.com/omnifed/cerberus/refs/heads/main/docs/app'
