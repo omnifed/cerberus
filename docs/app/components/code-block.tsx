@@ -1,10 +1,10 @@
 import { HStack } from 'styled-system/jsx'
 import { Terminal } from '@carbon/icons-react'
 import { Show } from '@cerberus-design/react'
+import { getShikiOptions } from '@/lib/shiki'
 import { css } from 'styled-system/css'
 import { codeToHtml } from 'shiki'
 import { CopyButton } from './copy-button'
-import { getShikiOptions } from '../lib/shiki'
 
 interface CodeBlockProps {
   content: string
