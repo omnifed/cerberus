@@ -44,10 +44,11 @@ export const numberInput: Partial<SlotRecipeConfig> = defineSlotRecipe({
     'NumberInput',
     // primitives
     'NumberInputRoot',
+    'NumberInputLabel',
     'NumberInputInput',
     'NumberInputControl',
-    'NumberInputDecrementTrigger',
     'NumberInputIncrementTrigger',
+    'NumberInputDecrementTrigger',
     'NumberInputScrubber',
   ],
 
