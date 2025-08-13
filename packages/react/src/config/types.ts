@@ -21,6 +21,7 @@ export interface DefinedIcons<T extends IconType = IconType> {
   checkbox?: T
   close: T
   confirmModal: T
+  decrement: T
   delete: T
   promptModal: T
   waitingFileUploader: T
@@ -30,6 +31,7 @@ export interface DefinedIcons<T extends IconType = IconType> {
   successNotification: T
   warningNotification: T
   dangerNotification: T
+  increment: T
   invalid: T
   invalidAlt: T
   redo: T

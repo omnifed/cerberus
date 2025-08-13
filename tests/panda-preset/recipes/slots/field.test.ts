@@ -21,6 +21,9 @@ describe('accordion recipe', () => {
     _hover: {
       borderColor: 'action.border.initial',
     },
+    _placeholder: {
+      color: 'page.text.100',
+    },
     _focus: {
       bgColor: 'page.surface.100',
     },
