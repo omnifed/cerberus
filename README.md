@@ -65,9 +65,14 @@ Cerberus provides a specialized endpoint for AI and Large Language Model (LLM) i
 You can help train your LLMs to follow our project guidelines by utilizing the `.llms` directory. This directory contains structured documentation that is specifically designed for AI processing, ensuring that your LLMs can effectively understand and utilize the Cerberus design system.
 
 - **ark-ui.txt**: Documentation for the Ark UI components which is a dependency of our React package.
-- **next.txt**: Documentation for the Next.js framework which powers the docs site.
+- **create-react-component.md**: Documentation for creating new React component APIs.
 - **docs.md**: Documentation for contributing to the official website.
+- **next.txt**: Documentation for the Next.js framework which powers the docs site.
 - **style-guide.md**: Documentation for the style guide used throughout the project. Arguably the most important file for LLMs to understand the coding standards and practices of the project.
+
+### Prompts
+
+In our Wikis tab, you can find recommended prompts to use for executing these files.
 
 ### LLM Documentation Endpoint
 

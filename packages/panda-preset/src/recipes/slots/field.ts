@@ -10,7 +10,7 @@ import { focusStates, formStates } from '../shared/states'
 const smallLabel = 'label-sm'
 const disabledText = 'page.text.100'
 
-const inputStyles = {
+export const inputStyles = {
   bgColor: 'page.surface.initial',
   border: '1px solid',
   borderColor: 'action.border.100',
@@ -30,6 +30,9 @@ const inputStyles = {
   },
   _userInvalid: {
     borderColor: 'danger.border.initial',
+  },
+  _placeholder: {
+    color: 'page.text.100',
   },
   ...formStates,
   ...focusStates,

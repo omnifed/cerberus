@@ -1,0 +1,183 @@
+---
+title: Number Input
+description: The Number Input component is used to manage numeric input fields.
+npm: '@cerberus-design/react'
+source: 'components/number-input'
+recipe: 'slots/numberInput.ts'
+ark: 'number-input'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { NumberInputDemo, ScrubberDemo, SizesDemo, CustomDemo } from '../components/number-input/static'
+
+
+```ts
+import { NumberInput } from '@cerberus/react'
+```
+
+## Usage
+
+The `NumberInput` component provides a way to create input fields specifically for numeric values. It includes features such as increment and decrement buttons, and can be easily integrated with form libraries.
+
+<CodePreview preview={<NumberInputDemo />}>
+```tsx
+import { Field, NumberInput } from '@cerberus/react'
+import { Box } from 'styled-system/jsx'
+
+export function NumberInputDemo() {
+  return (
+    <Box w="1/2">
+      <Field label="How many?" helperText="Choose your quantity.">
+        <NumberInput />
+      </Field>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Scrubber
+
+The NumberInput supports the scrubber interaction pattern. To use this pattern, use the `scrubber` prop. It uses the Pointer lock API and tracks the pointer movement. It also renders a virtual cursor which mimics the real cursor's pointer
+
+<CodePreview preview={<ScrubberDemo />}>
+```tsx /scrubber/
+import { Box } from 'styled-system/jsx'
+import { Field, NumberInput } from '@cerberus/react'
+
+export function ScrubberDemo() {
+  return (
+    <Box w="1/2">
+      <Field
+        label="How many?"
+        helperText="Use your mouse wheel to change the value."
+      >
+        <NumberInput scrubber />
+      </Field>
+    </Box>
+  )
+}
+```
+</CodePreview>
+
+## Sizes
+
+The `NumberInput` component supports different sizes to accommodate various design requirements. You can specify the size using the `size` prop.
+
+<CodePreview preview={<SizesDemo />}>
+```tsx
+import { Field, NumberInput } from '@cerberus/react'
+import { Box, HStack } from 'styled-system/jsx'
+
+export function SizesDemo() {
+  return (
+    <HStack w="3/4">
+      <Field label="Small size">
+        <NumberInput size="sm" />
+      </Field>
+      <Field label="Medium size">
+        <NumberInput size="md" />
+      </Field>
+      <Field label="Large size">
+        <NumberInput size="lg" />
+      </Field>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the number input.
+
+| Component | Description |
+| --------- | ----------- |
+| NumberInputRoot    | The context provider for the NumberInput parts |
+| NumberInputLabel   | The label of the NumberInput |
+| NumberInputControl | The wrapper of the NumberInput contents |
+| NumberInputInput   | The input of the NumberInput |
+| NumberInputIncrementTrigger | The increment button of the NumberInput |
+| NumberInputDecrementTrigger | The decrement button of the NumberInput |
+| NumberInputScrubber | The scrubber of the NumberInput |
+
+<CodePreview preview={<CustomDemo />}>
+```tsx
+import { NumberInputParts } from '@cerberus/react'
+import { Add, Subtract } from '@carbon/icons-react'
+import { HStack } from 'styled-system/jsx'
+
+export function CustomDemo() {
+  return (
+    <HStack w="1/2">
+      <NumberInputParts.Root
+        css={{
+          display: 'flex',
+          w: 'full',
+        }}
+      >
+        <NumberInputParts.Label
+          css={{
+            textStyle: 'heading-xs',
+          }}
+        >
+          This is custom
+        </NumberInputParts.Label>
+
+        <NumberInputParts.Control>
+          <NumberInputParts.Input />
+          <NumberInputParts.IncrementTrigger
+            css={{
+              bgColor: 'success.surface.initial',
+              color: 'success.text.initial',
+            }}
+          >
+            <Add />
+          </NumberInputParts.IncrementTrigger>
+          <NumberInputParts.DecrementTrigger
+            css={{
+              bgColor: 'danger.surface.initial',
+              color: 'danger.text.inverse',
+            }}
+          >
+            <Subtract />
+          </NumberInputParts.DecrementTrigger>
+          <NumberInputParts.Scrubber />
+        </NumberInputParts.Control>
+      </NumberInputParts.Root>
+    </HStack>
+  )
+
+```
+</CodePreview>
+
+
+## API
+
+### Props
+
+The `NumberInput` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default | Description                                            |
+| -------- | ------- | ------------------------------------------------------ |
+| scrubber | false   | Use scrubber controls for the number input.            |
+
+
+The `NumberInput` component also accepts all the props of the [`NumberInputRoot` primitive props](https://ark-ui.com/react/docs/components/number-input#api-reference)
+
+### Parts
+
+The `NumberInputParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the NumberInputParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `NumberInputRoot` component which is the Provider for the family. |
+| Label    | The `NumberInputLabel` component which displays the label and "required" notice. |
+| Input     | The `NumberInputInput` component which is the input field. |
+| Control   | The `NumberInputControl` component which is the wrapper for the input and buttons. |
+| IncrementTrigger | The `NumberInputIncrementTrigger` component which is the increment button. |
+| DecrementTrigger | The `NumberInputDecrementTrigger` component which is the decrement button. |
+| Scrubber  | The `NumberInputScrubber` component which is the scrubber control. |
