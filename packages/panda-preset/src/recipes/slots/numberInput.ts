@@ -4,27 +4,27 @@ import { inputStyles } from './field'
 
 const trigger = {
   alignItems: 'center',
-  borderColor: 'page.border.initial',
-  color: 'page.text.initial',
+  borderColor: 'action.border.100',
+  color: 'action.text.inverse',
   cursor: 'pointer',
   display: 'inline-flex',
   justifyContent: 'center',
   transitionDuration: 'normal',
-  transitionProperty: 'background, border-color, color, box-shadow',
+  transitionProperty: 'background, border-color, color',
   transitionTimingFunction: 'default',
-  '& :where(svg)': {
-    width: '4',
-    height: '4',
-  },
   _hover: {
-    background: 'page.bg.100',
-    color: 'page.text.initial',
+    bgColor: 'page.bg.100',
+    color: 'action.text.100',
+  },
+  _active: {
+    bgColor: 'action.ghost.hover',
+    color: 'action.text.200',
   },
   _disabled: {
     cursor: 'not-allowed',
     opacity: 0.5,
     _hover: {
-      background: 'transparent',
+      bgColor: 'transparent',
     },
   },
 }
@@ -63,8 +63,10 @@ export const numberInput: Partial<SlotRecipeConfig> = defineSlotRecipe({
       border: 'none',
       color: 'page.text.initial',
       gridRow: 'span 2 / span 2',
+      h: 'var(--number-input-h)',
       outline: 'none',
-      width: 'full',
+      ps: 'md',
+      w: 'full',
       _placeholder: {
         color: 'page.text.100',
       },
@@ -83,9 +85,34 @@ export const numberInput: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionDuration: 'normal',
       transitionProperty: 'border-color, box-shadow',
       transitionTimingFunction: 'default',
+      w: '10.75rem',
     },
     decrementTrigger: { ...trigger, borderTopWidth: '1px' },
     incrementTrigger: trigger,
     scrubber: {},
+  },
+
+  variants: {
+    size: {
+      sm: {
+        root: {
+          '--number-input-h': '2rem',
+        },
+      },
+      md: {
+        root: {
+          '--number-input-h': '2.5rem',
+        },
+      },
+      lg: {
+        root: {
+          '--number-input-h': '3rem',
+        },
+      },
+    },
+  },
+
+  defaultVariants: {
+    size: 'md',
   },
 })

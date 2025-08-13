@@ -33,6 +33,9 @@ import Menu, { frontmatter as menuFrontmatter } from '../menu.mdx'
 import Notifications, {
   frontmatter as notificationsFrontmatter,
 } from '../notifications.mdx'
+import NumberInput, {
+  frontmatter as numberInputFrontmatter,
+} from '../number-input.mdx'
 import Progress, { frontmatter as progressFrontmatter } from '../progress.mdx'
 import PromptModal, {
   frontmatter as promptModalFrontmatter,
@@ -301,6 +304,19 @@ export const components = [
         'Discover how to use the Notifications component in the Cerberus Design System for displaying alerts and messages.',
     },
     Content: Notifications,
+  },
+  {
+    id: '1.3.17a',
+    label: 'Number Input',
+    slug: 'number-input',
+    href: '/docs/components/number-input',
+    frontmatter: numberInputFrontmatter,
+    meta: {
+      title: 'Number Input Component in Cerberus Design System',
+      description:
+        'Discover how to use the Number Input component in the Cerberus Design System for managing numeric input fields.',
+    },
+    Content: NumberInput,
   },
   {
     id: '1.3.18',

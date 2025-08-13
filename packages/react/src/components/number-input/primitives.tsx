@@ -8,7 +8,10 @@ import {
   type NumberInputRootProps as ArkNumberInputRootProps,
   type NumberInputScrubberProps as ArkNumberInputScrubberProps,
 } from '@ark-ui/react/number-input'
-import { numberInput } from 'styled-system/recipes'
+import {
+  numberInput,
+  type NumberInputVariantProps,
+} from 'styled-system/recipes'
 import {
   createCerberusPrimitive,
   type CerberusPrimitiveProps,
@@ -23,8 +26,9 @@ const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(numberInput)
 
 // Root
 
-export type NumberInputRootProps =
-  CerberusPrimitiveProps<ArkNumberInputRootProps>
+export type NumberInputRootProps = CerberusPrimitiveProps<
+  ArkNumberInputRootProps & NumberInputVariantProps
+>
 export const NumberInputRoot = withSlotRecipe<NumberInputRootProps>(
   NumberInput.Root,
   'root',

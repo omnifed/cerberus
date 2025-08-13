@@ -1,6 +1,6 @@
 'use client'
 
-import { useCerberusContext } from '@/src/context/cerberus'
+import { useCerberusContext } from '../../context/cerberus'
 import { NumberInputParts } from './parts'
 import type { NumberInputIncrementTriggerProps } from './primitives'
 

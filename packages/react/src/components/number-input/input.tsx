@@ -16,17 +16,17 @@ interface NumberInputElProps extends NumberInputRootProps {
  * @definition [Cerberus Docs](https://cerberus.digitalu.design/docs/components/number-input)
  */
 export function NumberInput(props: NumberInputElProps) {
+  const { scrubber, ...rootProps } = props
   return (
-    <NumberInputParts.Root>
-      <Show when={props.scrubber}>
+    <NumberInputParts.Root {...rootProps}>
+      <Show when={scrubber}>
         <NumberInputParts.Scrubber />
       </Show>
 
-      <NumberInputParts.Input />
-
       <NumberInputParts.Control>
-        <DecrementTrigger />
+        <NumberInputParts.Input />
         <IncrementTrigger />
+        <DecrementTrigger />
       </NumberInputParts.Control>
     </NumberInputParts.Root>
   )
