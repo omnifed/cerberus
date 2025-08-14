@@ -1,0 +1,95 @@
+---
+title: PinInput Component
+description: Enter and manage secure multi-character codes with the PinInput component.
+npm: '@cerberus-design/react'
+source: 'components/pin-input'
+recipe: 'slots/pin-input.ts'
+ark: 'pin-input-ark-component-slug'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { StaticPreview, CustomPreview } from '../components/pin-input/static'
+
+```ts
+import { PinInput } from '@cerberus/react'
+```
+
+## Usage
+
+The PinInput component lets users enter fixed-length codes (such as verification codes or PINs) one character at a time. It manages focus movement between inputs and aggregates the value for you.
+
+<CodePreview preview={<StaticPreview />}>
+
+```tsx
+// Basic 3-digit example (see StaticPreview implementation)
+<PinInput />
+```
+
+</CodePreview>
+
+## Blur on complete
+
+TODO
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the PinInput component.
+
+| Component              | Description                                      |
+| ---------------------- | ------------------------------------------------ |
+| PinInputRoot           | Root context provider for the family.            |
+| PinInputLabel          | Accessible label element.                        |
+| PinInputControl        | Wraps the individual input boxes.                |
+| PinInputInput          | A single character input field.                  |
+| PinInputHiddenInput    | Aggregated hidden input used in forms.           |
+
+<CodePreview preview={<CustomPreview />}>
+
+```tsx
+// Custom length + masked example (see CustomPreview implementation)
+<PinInput /* additional props coming soon */ />
+```
+
+</CodePreview>
+
+## API
+
+### PinInput
+
+The `PinInput` component is an abstraction over the primitive parts and accepts all props from `PinInputRootProps`.
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| dir | `ltr` | Text direction; affects focus movement. |
+| disabled | `false` | Disables all inputs. |
+| form | - | Associates the hidden input with a form outside the hierarchy. |
+| id | - | Root id (used to derive part ids). |
+| invalid | `false` | Marks the group as invalid for styling/state. |
+| mask | `false` | Whether input characters should be visually obscured. (If supported) |
+| name | - | Name attribute forwarded to the hidden input for form submission. |
+| onValueChange | - | Callback fired when the aggregated value changes. |
+| otp | `false` | Enables auto-fill optimizations for one-time codes. (If supported) |
+| pattern | - | Pattern attribute for each input. |
+| placeholder | - | Placeholder for each input box. |
+| required | `false` | Marks inputs as required. |
+| type | `text` | Input type for the character boxes. |
+| value | - | Controlled value (string). |
+
+(Prop list may evolve; consult source for the most current details.)
+
+The PinInput is an abstraction of the underlying Ark UI primitive [Root component](https://ark-ui.com/react/docs/components/pin-input).
+
+### Parts
+
+The `PinInputParts` API is an object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the PinInputParts if you are building a custom solution. Importing object-based components can increase bundle size because every part is included." />
+
+| Name | Description |
+| ---- | ----------- |
+| Root | The `PinInputRoot` component which is the provider for the family. |
+| Label | The `PinInputLabel` component. |
+| Control | The `PinInputControl` layout wrapper. |
+| Input | The character input element. |
+| HiddenInput | The hidden aggregated value input. |

@@ -7,13 +7,13 @@ This document outlines the steps to create a new component page on the docs webs
 
 ## Steps
 
-1. Navigate to the `docs/components/[slug]/content` directory
+1. Navigate to the `docs/app/docs/components/[slug]/content` directory
 2. Create a new file named `untitled.mdx`
-3. Navigate to the `docs/components/[slug]/content/items/components.ts` file
+3. Navigate to the `docs/app/docs/components/[slug]/content/items/components.ts` file
 4. Import the new mdx component and frontmatter
 5. Create a new meta object and include it in the `items` export in alphabetical order.
 
-## `docs/components/[slug]/content/untitled.mdx`
+## `docs/app/docs/components/[slug]/content/untitled.mdx`
 
 This file contains the documentation for the Untitled component. It contains the frontmatter, examples, and API details.
 
@@ -120,6 +120,8 @@ export const items = [
 ]
 ````
 
-## `docs/components/[slug]/components/untitled/static.tsx`
+## `docs/app/docs/components/[slug]/components/untitled/static.tsx`
 
 This file contains all the examples used in the `untitled.mdx` file. Each example should should be created with the intent to showcase the component's usage.
+
+The examples should follow the project [style-guide](./style-guide.md) and be written in TypeScript.
