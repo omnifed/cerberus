@@ -18,6 +18,7 @@ import { fileStatus } from './slots/fileStatus'
 import { fileUploader } from './slots/fileUploader'
 import { menu } from './slots/menu'
 import { numberInput } from './slots/numberInput'
+import { pinInput } from './slots/pinInput'
 import { progressBar } from './slots/progressBar'
 import { radioGroup } from './slots/radio'
 import { ratingGroup } from './slots/ratingGroup'
@@ -75,6 +76,7 @@ export const slotRecipes = {
   modal,
   notification,
   numberInput,
+  pinInput,
   progressBar,
   radioGroup,
   ratingGroup,

@@ -1,0 +1,214 @@
+---
+title: PinInput Component
+description: Enter and manage secure multi-character codes with the PinInput component.
+npm: '@cerberus-design/react'
+source: 'components/pin-input'
+recipe: 'slots/pin-input.ts'
+ark: 'pin-input'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { StaticPreview, SizesPreview, CountPreview, BlurCompletePreview, CustomPreview } from '../components/pin-input/static'
+
+```ts
+import { PinInput } from '@cerberus/react'
+```
+
+## Usage
+
+The PinInput component lets users enter fixed-length codes (such as verification codes or PINs) one character at a time. It manages focus movement between inputs and aggregates the value for you.
+
+<CodePreview preview={<StaticPreview />}>
+```tsx
+import { PinInput, Field } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+export function StaticPreview() {
+  return (
+    <HStack w="1/2">
+      <Field label="Enter PIN">
+        <PinInput />
+      </Field>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Blur on complete
+
+By default, the last input maintains focus when filled, and we invoke the `onValueComplete` callback. To blur the last input when the user completes the input, set the prop `blurOnComplete` to true.
+
+<CodePreview preview={<BlurCompletePreview />}>
+```tsx
+import { PinInput } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+export function StaticPreview() {
+  return (
+    <HStack w="1/2">
+      <PinInput blurOnComplete />
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Count
+
+The `count` prop determines the number of individual input boxes rendered. This is useful for specifying the length of the PIN or code the user needs to enter.
+
+<CodePreview preview={<CountPreview />}>
+```tsx /count/
+import { PinInput, Field } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+export function CountPreview() {
+  return (
+    <HStack w="1/2">
+      <Field label="5 Digits">
+        <PinInput placeholder={undefined} count={5} />
+      </Field>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Sizes
+
+The PinInput component supports different sizes to accommodate various design requirements.
+
+<CodePreview preview={<SizesPreview />}>
+```tsx
+import { PinInput, Field } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+export function SizesPreview() {
+  return (
+    <HStack w="1/2">
+      <Field label="Medium">
+        <PinInput size="md" />
+      </Field>
+      <Field label="Large">
+        <PinInput size="lg" />
+      </Field>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the PinInput component.
+
+| Component              | Description                                      |
+| ---------------------- | ------------------------------------------------ |
+| PinInputRoot           | Root context provider for the family.            |
+| PinInputLabel          | Accessible label element.                        |
+| PinInputControl        | Wraps the individual input boxes.                |
+| PinInputInput          | A single character input field.                  |
+| PinInputHiddenInput    | Aggregated hidden input used in forms.           |
+
+<CodePreview preview={<CustomPreview />}>
+
+```tsx
+import { PinInputParts } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+function CustomPreview() {
+  return (
+    <HStack w="1/2">
+      <PinInputParts.Root
+        css={{
+          w: 'full',
+        }}
+      >
+        <PinInputParts.Control
+          css={{
+            transform: 'translateX(-4px)',
+          }}
+        >
+          {Array.from({ length: 4 }, (_, index) => (
+            <PinInputParts.Input
+              key={index}
+              index={index}
+              css={{
+                border: '2px solid',
+                borderColor: 'black',
+                borderRadius: 'md',
+                h: '24',
+                w: '24',
+                textAlign: 'center',
+                fontSize: 'lg',
+                lineHeight: '12',
+                '&:focus': {
+                  borderColor: 'danger.bg.initial',
+                  boxShadow: '0 0 0 3px rgba(255, 69, 58, 0.6)',
+                },
+              }}
+            />
+          ))}
+        </PinInputParts.Control>
+        <PinInputParts.HiddenInput />
+      </PinInputParts.Root>
+    </HStack>
+  )
+}
+```
+
+</CodePreview>
+
+## API
+
+### PinInput
+
+The `PinInput` component is an abstraction over the primitive parts and exposes all Ark UI **Root** props. Below is a reference table for convenience (see the [Ark UI Pin Input API](https://ark-ui.com/docs/components/pin-input#api-reference) for authoritative details).
+
+| Name | Default | Description |
+| ---- | ------- | ----------- |
+| asChild |  | Use the provided child element as the rendered element. |
+| autoFocus |  | Auto‑focus the first input on mount. |
+| blurOnComplete |  | Blur the last input when the value becomes complete. |
+| count |  | Number of inputs to render (improves SSR a11y; will become required in next major). |
+| defaultValue |  | Uncontrolled initial value array (e.g. `['1','2','3']`). |
+| disabled |  | Disable the entire pin input. |
+| dir | `ltr` | Text direction; affects arrow key navigation. |
+| form |  | Id of an external form to associate the hidden input with. |
+| id |  | Base id used to derive ids for parts. |
+| ids |  | Object of element id overrides for composition. |
+| invalid |  | Mark the pin input as invalid. Adds `data-invalid`. |
+| mask |  | Mask each input character similar to a password field. |
+| name |  | Name attribute for the hidden input (form submission). |
+| onValueChange |  | Fired whenever any input value changes. Provides `{ value, valueAsString }`. |
+| onValueComplete |  | Fired when all inputs have valid values (typing or paste). |
+| onValueInvalid |  | Fired when an invalid value is entered (fails `type` or `pattern`). |
+| otp |  | Enables one‑time‑code autocomplete optimizations (`autocomplete="one-time-code"`). |
+| pattern |  | Regular expression the characters must satisfy. |
+| placeholder | `"○"` | Placeholder character shown in empty inputs. |
+| readOnly |  | Make inputs read‑only. |
+| required |  | Mark the inputs as required. |
+| selectOnFocus |  | Select the existing character when an input gains focus. |
+| translations |  | Localized strings for accessibility / messages. |
+| type | `"numeric"` | Allowed character set: `numeric`, `alphabetic`, or `alphanumeric`. |
+| value |  | Controlled value array (set length to number of inputs). |
+
+The `PinInput` component also accepts standard DOM props for the root element and mirrors the Ark UI Root behavior.
+
+The PinInput is an abstraction of the underlying Ark UI primitive [Root component](https://ark-ui.com/react/docs/components/pin-input).
+
+### Parts
+
+The `PinInputParts` API is an object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the PinInputParts if you are building a custom solution. Importing object-based components can increase bundle size because every part is included." />
+
+| Name | Description |
+| ---- | ----------- |
+| Root | The `PinInputRoot` component which is the provider for the family. |
+| Label | The `PinInputLabel` component. |
+| Control | The `PinInputControl` layout wrapper. |
+| Input | The `PinInputInput` component. |
+| HiddenInput | The `PinInputHiddenInput` component. |

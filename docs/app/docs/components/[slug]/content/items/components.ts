@@ -36,6 +36,7 @@ import Notifications, {
 import NumberInput, {
   frontmatter as numberInputFrontmatter,
 } from '../number-input.mdx'
+import PinInput, { frontmatter as pinInputFrontmatter } from '../pin-input.mdx'
 import Progress, { frontmatter as progressFrontmatter } from '../progress.mdx'
 import PromptModal, {
   frontmatter as promptModalFrontmatter,
@@ -317,6 +318,19 @@ export const components = [
         'Discover how to use the Number Input component in the Cerberus Design System for managing numeric input fields.',
     },
     Content: NumberInput,
+  },
+  {
+    id: '1.3.17b',
+    label: 'Pin Input',
+    slug: 'pin-input',
+    href: '/docs/components/pin-input',
+    frontmatter: pinInputFrontmatter,
+    meta: {
+      title: 'PinInput Component in Cerberus Design System',
+      description:
+        'Discover how to use the PinInput component in the Cerberus Design System for secure multi-character code entry.',
+    },
+    Content: PinInput,
   },
   {
     id: '1.3.18',
