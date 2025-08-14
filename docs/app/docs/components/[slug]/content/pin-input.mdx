@@ -9,7 +9,7 @@ ark: 'pin-input'
 
 import CodePreview from '@/app/components/CodePreview'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import { StaticPreview, SizesPreview, BlurCompletePreview, CustomPreview } from '../components/pin-input/static'
+import { StaticPreview, SizesPreview, CountPreview, BlurCompletePreview, CustomPreview } from '../components/pin-input/static'
 
 ```ts
 import { PinInput } from '@cerberus/react'
@@ -49,6 +49,27 @@ export function StaticPreview() {
   return (
     <HStack w="1/2">
       <PinInput blurOnComplete />
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Count
+
+The `count` prop determines the number of individual input boxes rendered. This is useful for specifying the length of the PIN or code the user needs to enter.
+
+<CodePreview preview={<CountPreview />}>
+```tsx /count/
+import { PinInput, Field } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+export function CountPreview() {
+  return (
+    <HStack w="1/2">
+      <Field label="5 Digits">
+        <PinInput placeholder={undefined} count={5} />
+      </Field>
     </HStack>
   )
 }

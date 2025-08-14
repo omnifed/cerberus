@@ -7,12 +7,13 @@ import type { PinInputRootProps } from './primitives'
  */
 export function PinInput(props: PinInputRootProps) {
   const { size, ...rootProps } = props
+  const count = rootProps.count ?? 3
 
   return (
     <PinInputParts.Root placeholder="" size={size} {...rootProps}>
       <PinInputParts.Control>
-        {[0, 1, 2].map((id, index) => (
-          <PinInputParts.Input key={id} index={index} size={size} />
+        {Array.from({ length: count }, (_, index) => (
+          <PinInputParts.Input key={index} index={index} size={size} />
         ))}
       </PinInputParts.Control>
       <PinInputParts.HiddenInput />

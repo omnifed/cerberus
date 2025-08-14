@@ -13,6 +13,16 @@ export function StaticPreview() {
   )
 }
 
+export function CountPreview() {
+  return (
+    <HStack w="1/2">
+      <Field label="5 Digits">
+        <PinInput placeholder={undefined} count={5} />
+      </Field>
+    </HStack>
+  )
+}
+
 export function SizesPreview() {
   return (
     <HStack justify="space-between" w="1/2">
