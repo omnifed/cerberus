@@ -19,7 +19,6 @@ export const pinInput: Partial<SlotRecipeConfig> = defineSlotRecipe({
     'PinInputLabel',
     'PinInputControl',
     'PinInputInput',
-    'PinInputHiddenInput',
     // abstractions
     'PinInput',
   ],
