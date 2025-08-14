@@ -32,11 +32,11 @@ export * from './primitives'
 
 This file contains the Object implementation of the primitives. It serves as a way to import the primitives and use them in a more structured way. This file is mandatory.
 
-Use this template to provide the contents of the file:
+Use this template to provide the contents of the file. Fill in the missing layer parts as needed:
 
 ```typescript
 import type { ElementType } from 'react'
-import {} from './primitives'
+import { UntitledPrimitiveLayer } from './primitives'
 
 /**
  * This module contains the parts of the Untitled component.
@@ -59,7 +59,9 @@ interface UntitledPartsValue {
  * When using object component syntax, you import the UntitledParts object and
  * the entire family of components vs. only what you use.
  */
-export const UntitledParts: UntitledPartsValue = {}
+export const UntitledParts: UntitledPartsValue = {
+  Root: UntitledPrimitiveLayer,
+}
 ```
 
 ## `packages/react/components/untitled-component/primitives.tsx`
@@ -69,8 +71,14 @@ This file contains the primitive components of the new component API. This file 
 Because this file is intricate, do not create primitives. Instead, use the following template:
 
 ```typescript
-import {} from '@ark-ui/react/field'
-import {} from 'styled-system/recipes'
+import {
+  UntitledArkComponent,
+  type UntitledArkComponentRootProps as ArkUntitledComponentRootProps,
+} from '@ark-ui/react/untitled-component'
+import {
+  untitledComponentRecipe,
+  type UntitledRecipeVariantProps,
+} from 'styled-system/recipes'
 import {
   createCerberusPrimitive,
   type CerberusPrimitiveProps,
@@ -81,7 +89,17 @@ import {
  * @module 'untitled'
  */
 
-const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(ADD_RECIPE)
+const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(
+  untitledComponentRecipe,
+)
 
 // Root
+export type UntitledComponentRootProps =
+  CerberusPrimitiveProps<ArkUntitledComponentRootProps>
+export const UntitledComponentRoot = withSlotRecipe<UntitledComponentRootProps>(
+  ArkUntitledComponent.Root,
+  'root',
+)
+
+// TODO: Add the other missing layers of the Ark-UI API here. If they do not have a recipe layer associated with them, use `withNoRecipe` instead of `withSlotRecipe`.
 ```
