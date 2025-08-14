@@ -1,4 +1,4 @@
-import { pinInput } from 'styled-system/recipes'
+import { pinInput, type PinInputVariantProps } from 'styled-system/recipes'
 import {
   PinInput as ArkPinInput,
   type PinInputRootProps as ArkPinInputRootProps,
@@ -7,7 +7,6 @@ import {
   type PinInputControlProps as ArkPinInputControlProps,
   type PinInputHiddenInputProps as ArkPinInputHiddenInputProps,
 } from '@ark-ui/react/pin-input'
-import {} from '@ark-ui/react/field'
 import {
   createCerberusPrimitive,
   type CerberusPrimitiveProps,
@@ -21,7 +20,9 @@ import {
 const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(pinInput)
 
 // Root
-export type PinInputRootProps = CerberusPrimitiveProps<ArkPinInputRootProps>
+export type PinInputRootProps = CerberusPrimitiveProps<
+  ArkPinInputRootProps & PinInputVariantProps
+>
 export const PinInputRoot = withSlotRecipe<PinInputRootProps>(
   ArkPinInput.Root,
   'root',
@@ -43,7 +44,9 @@ export const PinInputControl = withSlotRecipe<PinInputControlProps>(
 )
 
 // Input
-export type PinInputInputProps = CerberusPrimitiveProps<ArkPinInputInputProps>
+export type PinInputInputProps = CerberusPrimitiveProps<
+  ArkPinInputInputProps & PinInputVariantProps
+>
 export const PinInputInput = withSlotRecipe<PinInputInputProps>(
   ArkPinInput.Input,
   'input',

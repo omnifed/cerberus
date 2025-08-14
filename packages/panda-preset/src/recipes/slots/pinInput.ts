@@ -1,5 +1,7 @@
 import { pinInputAnatomy } from '@ark-ui/react'
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { focusStates, formStates } from '../shared/states'
+import { inputStyles } from './field'
 
 /**
  * This module contains the pinInput recipe.
@@ -42,68 +44,44 @@ export const pinInput: Partial<SlotRecipeConfig> = defineSlotRecipe({
     input: {
       alignItems: 'center',
       appearance: 'none',
-      bgColor: 'page.surface.initial',
-      border: '1px solid',
-      borderColor: 'action.border.100',
-      color: 'page.text.initial',
+      bgColor: inputStyles.bgColor,
+      border: inputStyles.border,
+      borderColor: inputStyles.borderColor,
+      color: inputStyles.color,
       display: 'flex',
-      h: '12',
+      h: 'var(--pin-input-h)',
       justifyContent: 'center',
       outline: 'none',
-      rounded: 'sm',
+      rounded: inputStyles.rounded,
       textAlign: 'center',
-      textStyle: 'heading-sm',
-      transitionDuration: 'fast',
-      transitionProperty: 'border-color, box-shadow',
-      transitionTimingFunction: 'default',
-      w: '12',
-      _hover: {
-        borderColor: 'action.border.initial',
-      },
-      _focus: {
-        borderColor: 'action.border.focus',
-        boxShadow: '0 0 0 3px token(colors.action.border.focus/20)',
-      },
-      _invalid: {
-        borderColor: 'danger.border.initial',
-        _focus: {
-          borderColor: 'danger.border.initial',
-          boxShadow: '0 0 0 3px token(colors.danger.border.initial/20)',
-        },
-      },
-      _disabled: {
-        bgColor: 'page.surface.100',
-        borderColor: 'action.border.100',
-        color: 'page.text.100',
-        cursor: 'not-allowed',
-        _hover: {
-          borderColor: 'action.border.100',
-        },
-      },
+      transitionDuration: inputStyles.transitionDuration,
+      transitionProperty: inputStyles.transitionProperty,
+      w: 'var(--pin-input-w)',
+      _hover: inputStyles._hover,
+      _invalid: inputStyles._userInvalid,
+      ...focusStates,
+      ...formStates,
     },
   },
 
   variants: {
     size: {
-      sm: {
-        input: {
-          h: '8',
-          w: '8',
-          textStyle: 'body-sm',
-        },
-      },
       md: {
+        root: {
+          '--pin-input-h': '3.125rem',
+          '--pin-input-w': '2.5rem',
+        },
         input: {
-          h: '10',
-          w: '10',
-          textStyle: 'body-md',
+          textStyle: 'heading-md',
         },
       },
       lg: {
+        root: {
+          '--pin-input-h': '5rem',
+          '--pin-input-w': '4rem',
+        },
         input: {
-          h: '12',
-          w: '12',
-          textStyle: 'heading-sm',
+          textStyle: 'heading-xl',
         },
       },
     },

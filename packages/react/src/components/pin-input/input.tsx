@@ -6,12 +6,13 @@ import type { PinInputRootProps } from './primitives'
  * @definition [Cerberus Docs](https://cerberus.digitalu.design/docs/components/pin-input)
  */
 export function PinInput(props: PinInputRootProps) {
+  const { size, ...rootProps } = props
+
   return (
-    <PinInputParts.Root {...props}>
-      <PinInputParts.Label>Label</PinInputParts.Label>
+    <PinInputParts.Root placeholder="" size={size} {...rootProps}>
       <PinInputParts.Control>
         {[0, 1, 2].map((id, index) => (
-          <PinInputParts.Input key={id} index={index} />
+          <PinInputParts.Input key={id} index={index} size={size} />
         ))}
       </PinInputParts.Control>
       <PinInputParts.HiddenInput />
