@@ -10,6 +10,7 @@ describe('toast recipe', () => {
 
   test('should have a jsx slot for each anatomy', () => {
     expect(toast.jsx).toMatchObject([
+      'Toast',
       'NotificationRoot',
       'NotificationHeading',
       'NotificationDescription',
@@ -23,8 +24,6 @@ describe('toast recipe', () => {
   test('should have a base.root style', () => {
     expect(toast.base?.root).toMatchObject({
       alignItems: 'center',
-      bgColor: 'colorPalette.surface.200',
-      color: 'colorPalette.text.200',
       display: 'flex',
       gap: 'md',
       h: 'var(--height)',
@@ -43,6 +42,22 @@ describe('toast recipe', () => {
       transitionProperty: 'translate, scale, opacity, height',
       transitionTimingFunction: 'default',
       userSelect: 'none',
+      _lowEmphasis: {
+        bgColor: 'page.surface.200',
+        borderLeft: '3px solid',
+        borderLeftColor: 'colorPalette.border.initial',
+        color: 'page.text.initial',
+        _page: {
+          colorPalette: 'action',
+        },
+      },
+      _highEmphasis: {
+        bgColor: 'colorPalette.surface.200',
+        color: 'colorPalette.text.200',
+        _page: {
+          colorPalette: 'page',
+        },
+      },
       _info: {
         colorPalette: 'info',
       },
@@ -60,16 +75,20 @@ describe('toast recipe', () => {
 
   test('should have a base.icon style', () => {
     expect(toast.base?.icon).toMatchObject({
-      color: 'colorPalette.text.200',
       paddingInlineStart: 'md',
+      _lowEmphasis: {
+        color: 'colorPalette.text.100',
+      },
+      _highEmphasis: {
+        color: 'colorPalette.text.200',
+      },
     })
   })
 
   test('should have a base.title style', () => {
     expect(toast.base?.title).toMatchObject({
       color: 'inherit',
-      fontWeight: '600',
-      textStyle: 'label-md',
+      textStyle: 'heading-2xs',
     })
   })
 

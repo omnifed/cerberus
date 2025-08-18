@@ -14,6 +14,7 @@ export const toast: Partial<SlotRecipeConfig> = defineSlotRecipe({
   slots: [...toastAnatomy.keys(), 'icon'],
   jsx: [
     // primitives
+    'Toast',
     'NotificationRoot',
     'NotificationHeading',
     'NotificationDescription',
@@ -27,8 +28,6 @@ export const toast: Partial<SlotRecipeConfig> = defineSlotRecipe({
   base: {
     root: {
       alignItems: 'center',
-      bgColor: 'colorPalette.surface.200',
-      color: 'colorPalette.text.200',
       display: 'flex',
       gap: 'md',
       h: 'var(--height)',
@@ -47,6 +46,22 @@ export const toast: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionProperty: 'translate, scale, opacity, height',
       transitionTimingFunction: 'default',
       userSelect: 'none',
+      _lowEmphasis: {
+        bgColor: 'page.surface.200',
+        borderLeft: '3px solid',
+        borderLeftColor: 'colorPalette.border.initial',
+        color: 'page.text.initial',
+        _page: {
+          colorPalette: 'action',
+        },
+      },
+      _highEmphasis: {
+        bgColor: 'colorPalette.surface.200',
+        color: 'colorPalette.text.200',
+        _page: {
+          colorPalette: 'page',
+        },
+      },
       _info: {
         colorPalette: 'info',
       },
@@ -61,13 +76,17 @@ export const toast: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
     },
     icon: {
-      color: 'colorPalette.text.200',
       paddingInlineStart: 'md',
+      _lowEmphasis: {
+        color: 'colorPalette.text.100',
+      },
+      _highEmphasis: {
+        color: 'colorPalette.text.200',
+      },
     },
     title: {
       color: 'inherit',
-      fontWeight: '600',
-      textStyle: 'label-md',
+      textStyle: 'heading-2xs',
     },
     description: {
       color: 'inherit',
