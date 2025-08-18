@@ -4,6 +4,7 @@ import { Button, toaster } from '@cerberus-design/react'
 import { HStack } from 'styled-system/jsx'
 import { useCallback } from 'react'
 import messagesData from './messages.data.json'
+import subtleData from './subtle.data.json'
 
 export function CustomNotification() {
   return null
@@ -56,4 +57,49 @@ function Feature() {
 
 export function OverviewDemo() {
   return <Feature />
+}
+
+export function SubtleDemo() {
+  const handleInfo = useCallback(() => {
+    const message = subtleData.infoSubtle
+    toaster.create({
+      ...message,
+      action: {
+        ...message.action,
+        onClick: () => {
+          window.location.reload()
+        },
+      },
+    })
+  }, [])
+
+  const handleSuccess = useCallback(() => {
+    const message = subtleData.successSubtle
+    toaster.create(message)
+  }, [])
+
+  const handleWarning = useCallback(() => {
+    const message = subtleData.warningSubtle
+    toaster.create(message)
+  }, [])
+
+  const handleError = useCallback(() => {
+    const message = subtleData.dangerSubtle
+    toaster.create(message)
+  }, [])
+
+  const handleLoading = useCallback(() => {
+    const message = subtleData.loadingSubtle
+    toaster.create(message)
+  }, [])
+
+  return (
+    <HStack>
+      <Button onClick={handleInfo}>info-subtle</Button>
+      <Button onClick={handleSuccess}>success-subtle</Button>
+      <Button onClick={handleWarning}>warning-subtle</Button>
+      <Button onClick={handleError}>error-subtle</Button>
+      <Button onClick={handleLoading}>loading-subtle</Button>
+    </HStack>
+  )
 }

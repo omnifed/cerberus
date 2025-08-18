@@ -1,12 +1,24 @@
 import type { CreateToasterReturn } from '@ark-ui/react/toast'
 import type { ReactNode } from 'react'
 
+export type NotifyOptionsType =
+  | 'info'
+  | 'info-subtle'
+  | 'success'
+  | 'success-subtle'
+  | 'warning'
+  | 'warning-subtle'
+  | 'error'
+  | 'error-subtle'
+  | 'loading'
+  | 'loading-subtle'
+
 export interface NotifyOptions {
   /**
    * The palette of the notification.
    * @default 'info'
    */
-  palette?: 'info' | 'success' | 'warning' | 'error' | 'loading'
+  palette?: NotifyOptionsType
   /**
    * The heading of the notification.
    */

@@ -8,7 +8,7 @@ import {
   type ToastRootProps,
   type ToastTitleProps,
 } from '@ark-ui/react/toast'
-import { toast } from 'styled-system/recipes'
+import { toast, type ToastVariantProps } from 'styled-system/recipes'
 import {
   createCerberusPrimitive,
   type CerberusPrimitiveProps,
@@ -28,7 +28,9 @@ export const NotificationProvider = Toaster
 
 // Root
 
-export type NotificationRootProps = CerberusPrimitiveProps<ToastRootProps>
+export type NotificationRootProps = CerberusPrimitiveProps<
+  ToastRootProps & ToastVariantProps
+>
 export const NotificationRoot = withSlotRecipe<NotificationRootProps>(
   Toast.Root,
   'root',

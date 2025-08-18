@@ -12,7 +12,8 @@ import {
   NoteAdmonition,
 } from '@/app/components/Admonition'
 import {
-  OverviewDemo
+  OverviewDemo,
+  SubtleDemo
 } from '../components/notifications/static'
 import { NotifyBadgePreview } from '../components/notifications/notify-badge'
 
@@ -82,6 +83,38 @@ function Feature() {
   }, [toaster.create])
 
   return <Button onClick={handleClick}>Trigger notification</Button>
+}
+```
+</CodePreview>
+
+## Subtle Notifications
+
+Subtle notifications are a less intrusive way to inform users about events or updates. They typically have a softer appearance and may not require immediate user action.
+
+Use the `-subtle` suffix with the notification type to create a subtle notification.
+
+<CodePreview preview={<SubtleDemo />}>
+```tsx title="Subtle Notifications Demo"
+'use client';
+
+import { toaster } from '@cerberus/react'
+
+function Feature() {
+  const handleClick = useCallback(() => {
+    toaster.create({
+      type: 'info-subtle',
+      title: 'Update Available',
+      description: 'A new version of the app is available',
+      action: {
+        label: 'Refresh',
+        onClick: () => {
+          window.location.reload()
+        }
+      }
+    })
+  }, [])
+
+  return <Button onClick={handleClick}>Trigger subtle notification</Button>
 }
 ```
 </CodePreview>

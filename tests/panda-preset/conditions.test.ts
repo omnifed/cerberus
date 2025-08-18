@@ -96,6 +96,14 @@ describe('conditions', () => {
     expect(conditions.indeterminate).toEqual('&:is([data-state=indeterminate])')
   })
 
+  test('should have a highEmphasis', () => {
+    expect(conditions.highEmphasis).toEqual('&:is([data-emphasis=high])')
+  })
+
+  test('should have a lowEmphasis', () => {
+    expect(conditions.lowEmphasis).toEqual('&:is([data-emphasis=low])')
+  })
+
   test('should have a positionBottom', () => {
     expect(conditions.positionBottom).toEqual('&:is([data-position=bottom])')
   })
@@ -210,23 +218,45 @@ describe('conditions', () => {
     expect(conditions.dangerPalette).toEqual('&:is([data-palette=danger])')
   })
 
+  test('should have a page', () => {
+    expect(conditions.page).toEqual(
+      '&:is([data-type=page], [data-type=page-subtle], [data-type=loading])',
+    )
+  })
+
+  test('should have a action', () => {
+    expect(conditions.action).toEqual(
+      '&:is([data-type=action], [data-type=action-subtle])',
+    )
+  })
+
+  test('should have a secondaryAction', () => {
+    expect(conditions.secondaryAction).toEqual(
+      '&:is([data-type=secondaryAction], [data-type=secondaryAction-subtle])',
+    )
+  })
+
   test('should have a info', () => {
     expect(conditions.info).toEqual(
-      '&:is([data-type=info], [data-type=loading])',
+      '&:is([data-type=info], [data-type=info-subtle])',
     )
   })
 
   test('should have a success', () => {
-    expect(conditions.success).toEqual('&:is([data-type=success])')
+    expect(conditions.success).toEqual(
+      '&:is([data-type=success], [data-type=success-subtle])',
+    )
   })
 
   test('should have a warning', () => {
-    expect(conditions.warning).toEqual('&:is([data-type=warning])')
+    expect(conditions.warning).toEqual(
+      '&:is([data-type=warning], [data-type=warning-subtle])',
+    )
   })
 
   test('should have a danger', () => {
     expect(conditions.danger).toEqual(
-      '&:is([data-type=danger], [data-type=error])',
+      '&:is([data-type=danger], [data-type=danger-subtle], [data-type=error])',
     )
   })
 

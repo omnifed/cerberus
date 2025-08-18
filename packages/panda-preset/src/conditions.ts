@@ -26,6 +26,10 @@ export const conditions = {
   groupChecked: '.group:is([data-checked="true"] &, [aria-checked="true"]) &',
   notDisabled: '&:is(:not([disabled]), [data-disabled=false])',
 
+  // emphasis
+  highEmphasis: '&:is([data-emphasis=high])',
+  lowEmphasis: '&:is([data-emphasis=low])',
+
   // dates
   today: '&:is([data-today=true], [data-date=today])',
   pastDay: '&:is([data-past-day=true], [data-date=past])',
@@ -75,8 +79,15 @@ export const conditions = {
   successPalette: '&:is([data-palette=success])',
   warningPalette: '&:is([data-palette=warning])',
   dangerPalette: '&:is([data-palette=danger])',
-  info: '&:is([data-type=info], [data-type=loading])',
-  success: '&:is([data-type=success])',
-  warning: '&:is([data-type=warning])',
-  danger: '&:is([data-type=danger], [data-type=error])',
+
+  // palette types
+  page: '&:is([data-type=page], [data-type=page-subtle], [data-type=loading])',
+  action: '&:is([data-type=action], [data-type=action-subtle])',
+  secondaryAction:
+    '&:is([data-type=secondaryAction], [data-type=secondaryAction-subtle])',
+  info: '&:is([data-type=info], [data-type=info-subtle])',
+  success: '&:is([data-type=success], [data-type=success-subtle])',
+  warning: '&:is([data-type=warning], [data-type=warning-subtle])',
+  danger:
+    '&:is([data-type=danger], [data-type=danger-subtle], [data-type=error])',
 }
