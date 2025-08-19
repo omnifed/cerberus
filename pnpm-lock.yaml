@@ -148,8 +148,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1(jsdom@26.0.0)(typescript@5.8.3)
       '@pandacss/types':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.1.0
+        version: 1.1.0
       '@shikijs/rehype':
         specifier: ^3.9.2
         version: 3.9.2
@@ -258,8 +258,8 @@ importers:
         specifier: ^0.54.0
         version: 0.54.0(jsdom@26.0.0)(typescript@5.8.3)
       '@pandacss/types':
-        specifier: ^0.54.0
-        version: 0.54.0
+        specifier: ^1.1.0
+        version: 1.1.0
 
   packages/react:
     dependencies:
@@ -316,8 +316,8 @@ importers:
         specifier: ^18.0.1
         version: 18.0.1
       '@pandacss/types':
-        specifier: ^0.54.0
-        version: 0.54.0
+        specifier: ^1.1.0
+        version: 1.1.0
       '@testing-library/jest-dom':
         specifier: ^6.6.3
         version: 6.6.3
@@ -1268,6 +1268,9 @@ packages:
 
   '@pandacss/types@1.0.1':
     resolution: {integrity: sha512-a7r5PMF33yWPzMjx9D5aN1b0cKd/h+phr2L+4FWg8Np1zgPfLUPHcBf3Heia1aay3KjL1y5jEpKzJlAM2/IpwQ==}
+
+  '@pandacss/types@1.1.0':
+    resolution: {integrity: sha512-LjtDnrat/iDWxNNlWf/CSB5qXiHxBr3TbUQxvkEuRs7PCUFH/7HwS69RbNQzaPWNjJJ+wfOOaD6ZuNUG6/zf+Q==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -7143,6 +7146,8 @@ snapshots:
   '@pandacss/types@0.54.0': {}
 
   '@pandacss/types@1.0.1': {}
+
+  '@pandacss/types@1.1.0': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
