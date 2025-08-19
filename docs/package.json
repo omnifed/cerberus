@@ -32,7 +32,7 @@
     "@pandacss/types": "^1.0.1",
     "@shikijs/rehype": "^3.9.2",
     "@types/node": "^24.2.1",
-    "@types/react": "19.1.9",
+    "@types/react": "19.1.10",
     "@types/react-dom": "19.1.7",
     "@vercel/analytics": "^1.5.0",
     "autoprefixer": "^10.4.21",
