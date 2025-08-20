@@ -14,7 +14,7 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^0.54.0",
+    "@pandacss/dev": "^1.1.0",
     "react": "*",
     "react-dom": "*"
   },
@@ -27,7 +27,7 @@
     "@cerberus-design/panda-preset": "workspace:*",
     "@internationalized/date": "^3.8.2",
     "@microsoft/api-extractor": "^7.52.4",
-    "@pandacss/dev": "^0.54.0",
+    "@pandacss/dev": "^1.1.0",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
     "react": "^19.1.1",

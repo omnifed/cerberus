@@ -14,14 +14,14 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^0.54.0",
+    "@pandacss/dev": "^1.1.0",
     "autoprefixer": "*",
     "postcss": "*"
   },
   "devDependencies": {
     "@ark-ui/react": "^5.18.3",
     "@cerberus-design/configs": "workspace:*",
-    "@pandacss/dev": "^0.54.0",
+    "@pandacss/dev": "^1.1.0",
     "@pandacss/types": "^0.54.0"
   },
   "publishConfig": {
