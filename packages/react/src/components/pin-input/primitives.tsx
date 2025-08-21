@@ -23,38 +23,24 @@ const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(pinInput)
 export type PinInputRootProps = CerberusPrimitiveProps<
   ArkPinInputRootProps & PinInputVariantProps
 >
-export const PinInputRoot = withSlotRecipe<PinInputRootProps>(
-  ArkPinInput.Root,
-  'root',
-)
+export const PinInputRoot = withSlotRecipe(ArkPinInput.Root, 'root')
 
 // Label
 export type PinInputLabelProps = CerberusPrimitiveProps<ArkPinInputLabelProps>
-export const PinInputLabel = withSlotRecipe<PinInputLabelProps>(
-  ArkPinInput.Label,
-  'label',
-)
+export const PinInputLabel = withSlotRecipe(ArkPinInput.Label, 'label')
 
 // Control
 export type PinInputControlProps =
   CerberusPrimitiveProps<ArkPinInputControlProps>
-export const PinInputControl = withSlotRecipe<PinInputControlProps>(
-  ArkPinInput.Control,
-  'control',
-)
+export const PinInputControl = withSlotRecipe(ArkPinInput.Control, 'control')
 
 // Input
 export type PinInputInputProps = CerberusPrimitiveProps<
   ArkPinInputInputProps & PinInputVariantProps
 >
-export const PinInputInput = withSlotRecipe<PinInputInputProps>(
-  ArkPinInput.Input,
-  'input',
-)
+export const PinInputInput = withSlotRecipe(ArkPinInput.Input, 'input')
 
 // HiddenInput
 export type PinInputHiddenInputProps =
   CerberusPrimitiveProps<ArkPinInputHiddenInputProps>
-export const PinInputHiddenInput = withNoRecipe<PinInputHiddenInputProps>(
-  ArkPinInput.HiddenInput,
-)
+export const PinInputHiddenInput = withNoRecipe(ArkPinInput.HiddenInput)

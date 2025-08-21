@@ -135,7 +135,6 @@ export const DatePickerTableCellTrigger = withSlotRecipe(
  * The root component of the DatePicker. This primitive has no Cerberus styles.
  */
 export type DatePickerRootProps = CerberusPrimitiveProps<ArkDatePickerRootProps>
-// @ts-expect-error this is a workaround for the type error WIP
 export const DatePickerRoot = withNoRecipe(DatePicker.Root)
 
 /**

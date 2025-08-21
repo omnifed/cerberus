@@ -1,9 +1,10 @@
-import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
+import { type HTMLArkProps } from '@ark-ui/react/factory'
 import {
   progressBar,
   type ProgressBarVariantProps,
 } from 'styled-system/recipes'
 import {
+  cerberus,
   createCerberusPrimitive,
   type CerberusPrimitiveProps,
 } from '../../system/index'
@@ -20,24 +21,17 @@ const { withSlotRecipe } = createCerberusPrimitive(progressBar)
 export type ProgressBarRootProps = CerberusPrimitiveProps<
   HTMLArkProps<'div'> & ProgressBarVariantProps
 >
-export const ProgressBarRoot = withSlotRecipe<ProgressBarRootProps>(
-  ark.div,
-  'root',
-  {
-    defaultProps: {
-      'aria-valuemin': '0',
-      'aria-valuemax': '100',
-      role: 'progressbar',
-    },
+export const ProgressBarRoot = withSlotRecipe(cerberus.div, 'root', {
+  defaultProps: {
+    'aria-valuemin': '0',
+    'aria-valuemax': '100',
+    role: 'progressbar',
   },
-)
+})
 
 // Bar
 
 export type ProgressBarBarProps = CerberusPrimitiveProps<
   HTMLArkProps<'div'> & ProgressBarVariantProps
 >
-export const ProgressBarBar = withSlotRecipe<ProgressBarBarProps>(
-  ark.div,
-  'bar',
-)
+export const ProgressBarBar = withSlotRecipe(cerberus.div, 'bar')

@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./build/modern",
+    "rootDir": "./src",
+    "composite": false,
+    "skipLibCheck": true,
+    "noEmit": false,
+    "declarationMap": false
+  },
+  "include": ["src/**/*"],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "build", "node_modules"]
+}

@@ -41,5 +41,6 @@
   "prettier.configPath": ".prettierrc",
   "prettier.prettierPath": "./node_modules/prettier",
   "prettier.singleQuote": true,
+  "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsdk": "node_modules/typescript/lib"
 }

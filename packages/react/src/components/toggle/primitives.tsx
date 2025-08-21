@@ -18,12 +18,10 @@ const { withNoRecipe } = createCerberusPrimitive()
 // Root
 
 export type ToggleRootProps = CerberusPrimitiveProps<ArkToggleRootProps>
-export const ToggleRoot = withNoRecipe<ToggleRootProps>(Toggle.Root)
+export const ToggleRoot = withNoRecipe(Toggle.Root)
 
 // Indicator
 
 export type ToggleIndicatorProps =
   CerberusPrimitiveProps<ArkToggleIndicatorProps>
-export const ToggleIndicator = withNoRecipe<ToggleIndicatorProps>(
-  Toggle.Indicator,
-)
+export const ToggleIndicator = withNoRecipe(Toggle.Indicator)

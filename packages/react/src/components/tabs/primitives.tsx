@@ -24,34 +24,24 @@ const { withSlotRecipe } = createCerberusPrimitive(tabs)
 export type TabsRootProps = CerberusPrimitiveProps<
   ArkTabsRootProps & TabsVariantProps
 >
-// @ts-expect-error this is a workaround for the type issue WIP
-export const TabsRoot = withSlotRecipe<TabsRootProps>(Tabs.Root, 'root')
+export const TabsRoot = withSlotRecipe(Tabs.Root, 'root')
 
 // TabsList
 
 export type TabsListProps = CerberusPrimitiveProps<ArkTabListProps>
-export const TabsList = withSlotRecipe<TabsListProps>(Tabs.List, 'list')
+export const TabsList = withSlotRecipe(Tabs.List, 'list')
 
 // TabsTrigger
 
 export type TabsTriggerProps = CerberusPrimitiveProps<ArkTabTriggerProps>
-export const TabsTrigger = withSlotRecipe<TabsTriggerProps>(
-  Tabs.Trigger,
-  'trigger',
-)
+export const TabsTrigger = withSlotRecipe(Tabs.Trigger, 'trigger')
 
 // TabsContent
 
 export type TabContentProps = CerberusPrimitiveProps<ArkTabContentProps>
-export const TabsContent = withSlotRecipe<TabContentProps>(
-  Tabs.Content,
-  'content',
-)
+export const TabsContent = withSlotRecipe(Tabs.Content, 'content')
 
 // TabsIndicator
 
 export type TabIndicatorProps = CerberusPrimitiveProps<ArkTabIndicatorProps>
-export const TabsIndicator = withSlotRecipe<TabIndicatorProps>(
-  Tabs.Indicator,
-  'indicator',
-)
+export const TabsIndicator = withSlotRecipe(Tabs.Indicator, 'indicator')

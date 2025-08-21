@@ -41,10 +41,7 @@ export type AccordionRootProps = CerberusPrimitiveProps<
  * This component returns the Ark `Accordion.Item` component which has a
  * base style using the Cerberus `accordion` recipe that can be overridden.
  */
-export const AccordionItem = withSlotRecipe<AccordionItemProps>(
-  Accordion.Item,
-  'item',
-)
+export const AccordionItem = withSlotRecipe(Accordion.Item, 'item')
 export type AccordionItemProps = CerberusPrimitiveProps<
   ArkAccordionItemProps & AccordionVariantProps
 >
@@ -55,7 +52,7 @@ export type AccordionItemProps = CerberusPrimitiveProps<
  * This component returns the Ark `Accordion.ItemTrigger` component which has
  * a base style using the Cerberus `accordion` recipe that can be overridden.
  */
-export const AccordionItemTrigger = withSlotRecipe<AccordionItemTriggerProps>(
+export const AccordionItemTrigger = withSlotRecipe(
   Accordion.ItemTrigger,
   'itemTrigger',
 )
@@ -68,11 +65,10 @@ export type AccordionItemTriggerProps =
  * This component returns the Ark `Accordion.ItemIndicator` component which has
  * a base style using the Cerberus `accordion` recipe that can be overridden.
  */
-export const AccordionItemIndicator =
-  withSlotRecipe<AccordionItemIndicatorProps>(
-    Accordion.ItemIndicator,
-    'itemIndicator',
-  )
+export const AccordionItemIndicator = withSlotRecipe(
+  Accordion.ItemIndicator,
+  'itemIndicator',
+)
 export type AccordionItemIndicatorProps =
   CerberusPrimitiveProps<ArkAccordionItemIndicatorProps>
 
@@ -82,7 +78,7 @@ export type AccordionItemIndicatorProps =
  * This component returns the Ark `Accordion.Content` component which has a
  * base style using the Cerberus `accordion` recipe that can be overridden.
  */
-export const AccordionItemContent = withSlotRecipe<AccordionItemContentProps>(
+export const AccordionItemContent = withSlotRecipe(
   Accordion.ItemContent,
   'itemContent',
 )

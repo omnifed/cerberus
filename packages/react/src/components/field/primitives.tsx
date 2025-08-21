@@ -28,7 +28,7 @@ const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(field)
 export type FieldRootProps = CerberusPrimitiveProps<
   ArkFieldRootProps & FieldVariantProps
 >
-export const FieldRoot = withSlotRecipe<FieldRootProps>(Field.Root, 'root')
+export const FieldRoot = withSlotRecipe(Field.Root, 'root')
 
 // Label
 
@@ -43,7 +43,7 @@ function FieldLabelEl(props: FieldLabelProps) {
 }
 
 export type FieldLabelProps = CerberusPrimitiveProps<ArkFieldLabelProps>
-export const FieldLabel = withSlotRecipe<FieldLabelProps>(FieldLabelEl, 'label')
+export const FieldLabel = withSlotRecipe(FieldLabelEl, 'label')
 
 // Required Indicator
 
@@ -55,39 +55,31 @@ function FieldRequiredIndicatorEl(props: FieldRequiredIndicatorProps) {
 
 export type FieldRequiredIndicatorProps =
   CerberusPrimitiveProps<ArkFieldRequiredIndicatorProps>
-export const FieldRequiredIndicator = withNoRecipe<FieldRequiredIndicatorProps>(
-  FieldRequiredIndicatorEl,
-)
+export const FieldRequiredIndicator = withNoRecipe(FieldRequiredIndicatorEl)
 
 // Input
 
 export type FieldInputRootProps = CerberusPrimitiveProps<
   HTMLArkProps<'div'> & FieldVariantProps
 >
-export const FieldInputRoot = withSlotRecipe<FieldInputRootProps>(
-  ark.div,
-  'inputRoot',
-)
+export const FieldInputRoot = withSlotRecipe(ark.div, 'inputRoot')
 
 export type FieldInputProps = CerberusPrimitiveProps<
   ArkFieldInputProps & FieldVariantProps
 >
-export const FieldInput = withSlotRecipe<FieldInputProps>(Field.Input, 'input')
+export const FieldInput = withSlotRecipe(Field.Input, 'input')
 
 // Helper Text
 
 export type FieldHelperTextProps =
   CerberusPrimitiveProps<ArkFieldHelperTextProps>
-export const FieldHelperText = withSlotRecipe<FieldHelperTextProps>(
-  Field.HelperText,
-  'helperText',
-)
+export const FieldHelperText = withSlotRecipe(Field.HelperText, 'helperText')
 
 // Error Text
 
 export type FieldErrorTextProps =
   CerberusPrimitiveProps<ArkFieldHelperTextProps>
-export const FieldErrorText = withSlotRecipe<FieldErrorTextProps>(
+export const FieldErrorText = withSlotRecipe(
   CerberusFieldErrorText,
   'errorText',
 )
@@ -95,10 +87,7 @@ export const FieldErrorText = withSlotRecipe<FieldErrorTextProps>(
 // Textarea
 
 export type FieldTextareaProps = CerberusPrimitiveProps<ArkFieldTextareaProps>
-export const FieldTextarea = withSlotRecipe<FieldTextareaProps>(
-  Field.Textarea,
-  'textarea',
-)
+export const FieldTextarea = withSlotRecipe(Field.Textarea, 'textarea')
 
 /**
  * A named export for the FieldInput component.

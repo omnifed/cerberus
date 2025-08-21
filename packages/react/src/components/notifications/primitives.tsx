@@ -31,42 +31,36 @@ export const NotificationProvider = Toaster
 export type NotificationRootProps = CerberusPrimitiveProps<
   ToastRootProps & ToastVariantProps
 >
-export const NotificationRoot = withSlotRecipe<NotificationRootProps>(
-  Toast.Root,
-  'root',
-)
+export const NotificationRoot = withSlotRecipe(Toast.Root, 'root')
 
 // Heading
 
 export type NotificationHeadingProps = CerberusPrimitiveProps<ToastTitleProps>
-export const NotificationHeading = withSlotRecipe<NotificationHeadingProps>(
-  Toast.Title,
-  'title',
-)
+export const NotificationHeading = withSlotRecipe(Toast.Title, 'title')
 
 // Description
 
 export type NotificationDescriptionProps =
   CerberusPrimitiveProps<ToastDescriptionProps>
-export const NotificationDescription =
-  withSlotRecipe<NotificationDescriptionProps>(Toast.Description, 'description')
+export const NotificationDescription = withSlotRecipe(
+  Toast.Description,
+  'description',
+)
 
 // Close Trigger
 
 export type NotificationCloseTriggerProps =
   CerberusPrimitiveProps<ToastCloseTriggerProps>
-export const NotificationCloseTrigger =
-  withSlotRecipe<NotificationCloseTriggerProps>(
-    Toast.CloseTrigger,
-    'closeTrigger',
-  )
+export const NotificationCloseTrigger = withSlotRecipe(
+  Toast.CloseTrigger,
+  'closeTrigger',
+)
 
 // Action Trigger
 
 export type NotificationActionTriggerProps =
   CerberusPrimitiveProps<ToastActionTriggerProps>
-export const NotificationActionTrigger =
-  withSlotRecipe<NotificationActionTriggerProps>(
-    Toast.ActionTrigger,
-    'actionTrigger',
-  )
+export const NotificationActionTrigger = withSlotRecipe(
+  Toast.ActionTrigger,
+  'actionTrigger',
+)

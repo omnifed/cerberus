@@ -1,19 +1,17 @@
-import { css, cx } from 'styled-system/css'
+import { ark } from '@ark-ui/react/factory'
+import { cerberus } from 'styled-system/jsx/factory'
+import { css, cx, type Styles } from 'styled-system/css'
 import type { RecipeVariantRecord } from 'styled-system/types'
-import {
-  type ComponentType,
-  type ElementType,
-  type HTMLAttributes,
-  type PropsWithChildren,
-} from 'react'
-import type { WithCss } from '../types'
+import { forwardRef, type ElementType } from 'react'
 import type {
   CerberusPrimitiveEl,
+  CerberusPrimitiveProps,
   CerberusPrimitiveRecipe,
   CerberusRecipe,
   CerberusSlotRecipe,
   WithRecipeOptions,
 } from './types'
+import type { ExtractProps } from '../types'
 
 /**
  * This module contains a factory for creating Cerberus primitives.
@@ -36,13 +34,20 @@ export class CerberusPrimitive {
     return {}
   }
 
-  private validateComponent<P extends HTMLAttributes<unknown>>(
-    Component: ComponentType<P> | string,
+  private setupStyledComponent<T extends ElementType>(
+    component: T | CerberusPrimitiveEl<T>,
   ) {
-    if (typeof Component !== 'function' && typeof Component !== 'object') {
-      return false
+    const arkComponent = ark[component as keyof typeof ark]
+
+    if (typeof component !== 'string') {
+      return cerberus(component)
     }
-    return true
+
+    if (arkComponent) {
+      return cerberus(arkComponent)
+    }
+
+    throw new Error(`Unknown component: ${component}`)
   }
 
   /**
@@ -58,23 +63,20 @@ export class CerberusPrimitive {
    * const Button = withNoRecipe('button')
    * ```
    */
-  withNoRecipe = <P extends HTMLAttributes<unknown>>(
-    Component: ComponentType<P> | string,
+  withNoRecipe = <T extends ElementType>(
+    Component: T | CerberusPrimitiveEl<T>,
     options?: WithRecipeOptions,
-  ): CerberusPrimitiveEl<P> => {
+  ) => {
+    type Props = ExtractProps<T>
     const { defaultProps } = options || {}
-    const El = Component as ComponentType<P> | ElementType
+    const El = this.setupStyledComponent<T>(Component)
 
-    const CerbComponent = (props: PropsWithChildren<P> & WithCss) => {
-      const { css: customCss, className, ...nativeProps } = props
-      const styles = this.hasStyles(cx(className, css(customCss)))
-      return <El {...defaultProps} {...styles} {...(nativeProps as P)} />
+    const CerbComponent = (props: CerberusPrimitiveProps<Props>) => {
+      return <El {...defaultProps} {...props} />
     }
 
-    if (this.validateComponent(El)) {
-      const ElName = typeof El === 'string' ? El : El.displayName || El.name
-      CerbComponent.displayName = ElName
-    }
+    const ElName = typeof El === 'string' ? El : El.displayName || El.name
+    CerbComponent.displayName = `Cerberus.${ElName}`
 
     return CerbComponent
   }
@@ -86,39 +88,43 @@ export class CerberusPrimitive {
    * @returns A new React component that applies the recipe to the original
    * component.
    */
-  withRecipe = <P extends HTMLAttributes<unknown>>(
-    Component: ComponentType<P> | string,
+  withRecipe = <T extends ElementType>(
+    Component: T,
     options?: WithRecipeOptions,
-  ): CerberusPrimitiveEl<P & WithRecipeOptions['defaultProps']> => {
+  ) => {
+    type Props = ExtractProps<T>
     const { defaultProps } = options || {}
-    const El = Component as ComponentType<P> | ElementType
+    const El = this.setupStyledComponent<T>(Component)
 
     const recipe = this.recipe as CerberusRecipe
 
-    const CerbComponent = (internalProps: PropsWithChildren<P> & WithCss) => {
-      const {
-        css: customCss,
-        className,
-        ...restOfInternalProps
-      } = internalProps
+    const CerbComponent = forwardRef<unknown, CerberusPrimitiveProps<Props>>(
+      (internalProps, ref) => {
+        const { css: customCss, ...restOfInternalProps } = internalProps
 
-      const [variantOptions, nativeProps] =
-        recipe.splitVariantProps(restOfInternalProps)
-      const recipeStyles = recipe(variantOptions)
+        const [variantOptions, nativeProps] =
+          recipe.splitVariantProps(restOfInternalProps)
+        const recipeStyles = recipe(variantOptions)
 
-      return (
-        <Component
-          {...defaultProps}
-          {...(nativeProps as P)}
-          className={cx(className, recipeStyles, css(customCss))}
-        />
-      )
-    }
+        // Safely access className
+        const className =
+          typeof nativeProps.className === 'string'
+            ? nativeProps.className
+            : undefined
 
-    if (this.validateComponent(El)) {
-      const ElName = typeof El === 'string' ? El : El.displayName || El.name
-      CerbComponent.displayName = ElName
-    }
+        return (
+          <El
+            {...defaultProps}
+            {...(nativeProps as Props)}
+            ref={ref}
+            className={cx(className, recipeStyles, css(customCss as Styles))}
+          />
+        )
+      },
+    )
+
+    const ElName = typeof El === 'string' ? El : El.displayName || El.name
+    CerbComponent.displayName = ElName
 
     return CerbComponent
   }
@@ -135,41 +141,45 @@ export class CerberusPrimitive {
    * const Field = withSlotRecipe(RawField, field)
    * ```
    */
-  withSlotRecipe = <P extends HTMLAttributes<unknown>>(
-    Component: ComponentType<P> | string,
+  withSlotRecipe = <T extends ElementType>(
+    Component: T,
     slot: keyof RecipeVariantRecord,
     options?: WithRecipeOptions,
   ) => {
+    type Props = ExtractProps<T>
     const { defaultProps } = options || {}
-    const El = Component as ComponentType<P> | ElementType
+    const El = this.setupStyledComponent<T>(Component)
 
     const recipe = this.recipe as CerberusSlotRecipe<typeof slot>
 
-    const CerbComponent = (internalProps: PropsWithChildren<P> & WithCss) => {
-      const {
-        css: customCss,
-        className,
-        ...restOfInternalProps
-      } = internalProps
+    const CerbComponent = forwardRef<unknown, CerberusPrimitiveProps<Props>>(
+      (internalProps, ref) => {
+        const { css: customCss, ...restOfInternalProps } = internalProps
 
-      const [variantOptions, nativeProps] =
-        recipe.splitVariantProps(restOfInternalProps)
-      const styles = recipe(variantOptions)
-      const slotStyles = styles[slot as keyof typeof styles]
+        const [variantOptions, nativeProps] =
+          recipe.splitVariantProps(restOfInternalProps)
+        const styles = recipe(variantOptions)
+        const slotStyles = styles[slot as keyof typeof styles]
 
-      return (
-        <Component
-          {...defaultProps}
-          {...(nativeProps as P)}
-          className={cx(className, slotStyles, css(customCss))}
-        />
-      )
-    }
+        // Safely access className
+        const className =
+          typeof nativeProps.className === 'string'
+            ? nativeProps.className
+            : undefined
 
-    if (this.validateComponent(El)) {
-      const ElName = typeof El === 'string' ? El : El.displayName || El.name
-      CerbComponent.displayName = ElName
-    }
+        return (
+          <El
+            {...defaultProps}
+            {...(nativeProps as Props)}
+            ref={ref}
+            className={cx(className, slotStyles, css(customCss as Styles))}
+          />
+        )
+      },
+    )
+
+    const ElName = typeof El === 'string' ? El : El.displayName || El.name
+    CerbComponent.displayName = ElName
 
     return CerbComponent
   }

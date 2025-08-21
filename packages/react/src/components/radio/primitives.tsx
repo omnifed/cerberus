@@ -26,26 +26,19 @@ const { withSlotRecipe } = createCerberusPrimitive(radioGroup)
 export type RadioGroupRootProps = CerberusPrimitiveProps<
   ArkRadioGroupRootProps & RadioGroupVariantProps
 >
-// @ts-expect-error this is a workaround for the type WIP
-export const RadioGroupRoot = withSlotRecipe<RadioGroupRootProps>(
-  ArkRadioGroup.Root,
-  'root',
-)
+export const RadioGroupRoot = withSlotRecipe(ArkRadioGroup.Root, 'root')
 
 // Label
 
 export type RadioGroupLabelProps =
   CerberusPrimitiveProps<ArkRadioGroupLabelProps>
-export const RadioGroupLabel = withSlotRecipe<RadioGroupLabelProps>(
-  ArkRadioGroup.Label,
-  'label',
-)
+export const RadioGroupLabel = withSlotRecipe(ArkRadioGroup.Label, 'label')
 
 // Indicator
 
 export type RadioGroupIndicatorProps =
   CerberusPrimitiveProps<ArkRadioGroupIndicatorProps>
-export const RadioGroupIndicator = withSlotRecipe<RadioGroupIndicatorProps>(
+export const RadioGroupIndicator = withSlotRecipe(
   ArkRadioGroup.Indicator,
   'indicator',
 )
@@ -53,17 +46,14 @@ export const RadioGroupIndicator = withSlotRecipe<RadioGroupIndicatorProps>(
 // Item
 
 export type RadioGroupItemProps = CerberusPrimitiveProps<ArkRadioGroupItemProps>
-export const RadioGroupItem = withSlotRecipe<RadioGroupItemProps>(
-  ArkRadioGroup.Item,
-  'item',
-)
+export const RadioGroupItem = withSlotRecipe(ArkRadioGroup.Item, 'item')
 
 // Item Text
 
 export type RadioGroupItemTextProps = CerberusPrimitiveProps<
   ArkRadioGroupItemTextProps & RadioGroupVariantProps
 >
-export const RadioGroupItemText = withSlotRecipe<RadioGroupItemTextProps>(
+export const RadioGroupItemText = withSlotRecipe(
   ArkRadioGroup.ItemText,
   'itemText',
 )
@@ -73,7 +63,7 @@ export const RadioGroupItemText = withSlotRecipe<RadioGroupItemTextProps>(
 export type RadioGroupItemControlProps = CerberusPrimitiveProps<
   ArkRadioGroupItemControlProps & RadioGroupVariantProps
 >
-export const RadioGroupItemControl = withSlotRecipe<RadioGroupItemControlProps>(
+export const RadioGroupItemControl = withSlotRecipe(
   ArkRadioGroup.ItemControl,
   'itemControl',
 )

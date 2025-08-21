@@ -7,7 +7,7 @@ import type { TooltipRootProps } from './primitives'
  * @module Tooltip
  */
 
-export interface TooltipProps extends TooltipRootProps {
+export interface TooltipProps extends Omit<TooltipRootProps, 'content'> {
   /**
    * The text content to display in the tooltip.
    */

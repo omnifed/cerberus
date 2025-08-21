@@ -19,10 +19,7 @@ const { withSlotRecipe } = createCerberusPrimitive(fieldset)
 
 // Root
 
-export const FieldsetRoot = withSlotRecipe<FieldsetRootProps>(
-  Fieldset.Root,
-  'root',
-)
+export const FieldsetRoot = withSlotRecipe(Fieldset.Root, 'root')
 export type FieldsetRootProps = CerberusPrimitiveProps<
   ArkFieldsetRootProps & FieldsetVariantProps
 >
@@ -32,17 +29,14 @@ export type FieldsetRootProps = CerberusPrimitiveProps<
 export type FieldsetLegendProps = CerberusPrimitiveProps<
   ArkFieldsetLegendProps & FieldsetVariantProps
 >
-export const FieldsetLegend = withSlotRecipe<FieldsetLegendProps>(
-  Fieldset.Legend,
-  'legend',
-)
+export const FieldsetLegend = withSlotRecipe(Fieldset.Legend, 'legend')
 
 // Helper Text
 
 export type FieldsetHelperTextProps = CerberusPrimitiveProps<
   ArkFieldsetHelperText & FieldsetVariantProps
 >
-export const FieldsetHelperText = withSlotRecipe<FieldsetHelperTextProps>(
+export const FieldsetHelperText = withSlotRecipe(
   Fieldset.HelperText,
   'helperText',
 )
@@ -51,7 +45,4 @@ export const FieldsetHelperText = withSlotRecipe<FieldsetHelperTextProps>(
 
 export type FieldsetErrorTextProps =
   CerberusPrimitiveProps<ArkFieldsetHelperText>
-export const FieldsetErrorText = withSlotRecipe<FieldsetErrorTextProps>(
-  Fieldset.ErrorText,
-  'errorText',
-)
+export const FieldsetErrorText = withSlotRecipe(Fieldset.ErrorText, 'errorText')

@@ -1,6 +1,7 @@
-import { ark, type HTMLArkProps } from '@ark-ui/react/factory'
+import { type HTMLArkProps } from '@ark-ui/react/factory'
 import { table, type TableVariantProps } from 'styled-system/recipes'
 import {
+  cerberus,
   createCerberusPrimitive,
   type CerberusPrimitiveProps,
 } from '../../system/index'
@@ -17,7 +18,7 @@ const { withSlotRecipe } = createCerberusPrimitive(table)
 export type TableRootProps = CerberusPrimitiveProps<
   HTMLArkProps<'div'> & TableVariantProps
 >
-export const TableRoot = withSlotRecipe<TableRootProps>(ark.div, 'root', {
+export const TableRoot = withSlotRecipe(cerberus.div, 'root', {
   defaultProps: {
     'data-scope': 'table',
     'data-part': 'root',
@@ -27,7 +28,7 @@ export const TableRoot = withSlotRecipe<TableRootProps>(ark.div, 'root', {
 // TableEl
 
 export type TableElProps = CerberusPrimitiveProps<HTMLArkProps<'table'>>
-export const TableEl = withSlotRecipe<TableElProps>(ark.table, 'table', {
+export const TableEl = withSlotRecipe(cerberus.table, 'table', {
   defaultProps: {
     'data-scope': 'table',
     'data-part': 'table',
@@ -37,7 +38,7 @@ export const TableEl = withSlotRecipe<TableElProps>(ark.table, 'table', {
 // Caption
 
 export type CaptionProps = CerberusPrimitiveProps<HTMLArkProps<'caption'>>
-export const Caption = withSlotRecipe<CaptionProps>(ark.caption, 'caption', {
+export const Caption = withSlotRecipe(cerberus.caption, 'caption', {
   defaultProps: {
     'data-scope': 'table',
     'data-part': 'caption',
@@ -47,7 +48,7 @@ export const Caption = withSlotRecipe<CaptionProps>(ark.caption, 'caption', {
 // Thead
 
 export type TheadProps = CerberusPrimitiveProps<HTMLArkProps<'thead'>>
-export const Thead = withSlotRecipe<TheadProps>(ark.thead, 'thead', {
+export const Thead = withSlotRecipe(cerberus.thead, 'thead', {
   defaultProps: {
     'data-scope': 'table',
     'data-part': 'header',
@@ -57,7 +58,7 @@ export const Thead = withSlotRecipe<TheadProps>(ark.thead, 'thead', {
 // Th
 
 export type ThProps = CerberusPrimitiveProps<HTMLArkProps<'th'>>
-export const Th = withSlotRecipe<ThProps>(ark.th, 'th', {
+export const Th = withSlotRecipe(cerberus.th, 'th', {
   defaultProps: {
     'data-scope': 'table',
     'data-part': 'header-col',
@@ -67,7 +68,7 @@ export const Th = withSlotRecipe<ThProps>(ark.th, 'th', {
 // Tbody
 
 export type TbodyProps = CerberusPrimitiveProps<HTMLArkProps<'tbody'>>
-export const Tbody = withSlotRecipe<TbodyProps>(ark.tbody, 'tbody', {
+export const Tbody = withSlotRecipe(cerberus.tbody, 'tbody', {
   defaultProps: {
     'data-scope': 'table',
     'data-part': 'body',
@@ -76,7 +77,7 @@ export const Tbody = withSlotRecipe<TbodyProps>(ark.tbody, 'tbody', {
 
 // Tr
 export type TrProps = CerberusPrimitiveProps<HTMLArkProps<'tr'>>
-export const Tr = withSlotRecipe<TrProps>(ark.tr, 'tr', {
+export const Tr = withSlotRecipe(cerberus.tr, 'tr', {
   defaultProps: {
     'data-scope': 'table',
     'data-part': 'row',
@@ -86,7 +87,7 @@ export const Tr = withSlotRecipe<TrProps>(ark.tr, 'tr', {
 // Td
 
 export type TdProps = CerberusPrimitiveProps<HTMLArkProps<'td'>>
-export const Td = withSlotRecipe<TdProps>(ark.td, 'td', {
+export const Td = withSlotRecipe(cerberus.td, 'td', {
   defaultProps: {
     'data-scope': 'table',
     'data-part': 'cell',
@@ -96,7 +97,7 @@ export const Td = withSlotRecipe<TdProps>(ark.td, 'td', {
 // Tfoot
 
 export type TfootProps = CerberusPrimitiveProps<HTMLArkProps<'tfoot'>>
-export const Tfoot = withSlotRecipe<TfootProps>(ark.tfoot, 'tfoot', {
+export const Tfoot = withSlotRecipe(cerberus.tfoot, 'tfoot', {
   defaultProps: {
     'data-scope': 'table',
     'data-part': 'footer',
@@ -106,13 +107,9 @@ export const Tfoot = withSlotRecipe<TfootProps>(ark.tfoot, 'tfoot', {
 // TableTrigger
 
 export type TableTriggerProps = CerberusPrimitiveProps<HTMLArkProps<'button'>>
-export const TableTrigger = withSlotRecipe<TableTriggerProps>(
-  ark.button,
-  'trigger',
-  {
-    defaultProps: {
-      'data-scope': 'table',
-      'data-part': 'trigger',
-    },
+export const TableTrigger = withSlotRecipe(cerberus.button, 'trigger', {
+  defaultProps: {
+    'data-scope': 'table',
+    'data-part': 'trigger',
   },
-)
+})

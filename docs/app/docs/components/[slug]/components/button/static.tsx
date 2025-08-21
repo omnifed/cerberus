@@ -67,15 +67,13 @@ export function SizesDemo() {
 export function CustomButtonPreview() {
   return (
     <Button
-      css={{
-        bgColor: 'danger.bg.initial',
-        color: 'danger.text.initial',
-        rounded: 'md',
-        transform: 'skew(-10deg)',
-        _hover: {
-          bgColor: 'black',
-          color: 'yellow',
-        },
+      bgColor="danger.bg.initial"
+      color="danger.text.initial"
+      rounded="md"
+      transform="skew(-10deg)"
+      _hover={{
+        bgColor: 'black',
+        color: 'yellow',
       }}
     >
       Cerberus Forever
