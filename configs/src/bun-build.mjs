@@ -7,8 +7,8 @@ import {
   existsSync,
   rmSync,
   renameSync,
-} from 'fs'
-import { join, dirname, resolve } from 'path'
+} from 'node:fs'
+import { join, dirname, resolve } from 'node:path'
 import { globSync } from 'glob'
 
 /**
