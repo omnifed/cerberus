@@ -20,7 +20,7 @@ const { withSlotRecipe } = createCerberusPrimitive(avatar)
 /**
  * The root component of the Avatar.
  */
-export const AvatarRoot = withSlotRecipe<AvatarRootProps>(Avatar.Root, 'root')
+export const AvatarRoot = withSlotRecipe(Avatar.Root, 'root')
 export type AvatarRootProps = CerberusPrimitiveProps<
   ArkAvatarRootProps & AvatarVariantProps
 >
@@ -28,17 +28,11 @@ export type AvatarRootProps = CerberusPrimitiveProps<
 /**
  * The image component of the Avatar.
  */
-export const AvatarImage = withSlotRecipe<ArkAvatarImageProps>(
-  Avatar.Image,
-  'image',
-)
+export const AvatarImage = withSlotRecipe(Avatar.Image, 'image')
 export type AvatarImageProps = CerberusPrimitiveProps<ArkAvatarImageProps>
 
 /**
  * The fallback component of the Avatar.
  */
-export const AvatarFallback = withSlotRecipe<ArkAvatarFallbackProps>(
-  Avatar.Fallback,
-  'fallback',
-)
+export const AvatarFallback = withSlotRecipe(Avatar.Fallback, 'fallback')
 export type AvatarFallbackProps = CerberusPrimitiveProps<ArkAvatarFallbackProps>

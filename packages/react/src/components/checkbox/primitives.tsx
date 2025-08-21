@@ -26,12 +26,7 @@ const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(checkbox)
  * @definition [Cerberus Docs](https://cerberus.digitalu.design/react/checkbox)
  * @definition [Primitive Docs](https://ark-ui.com/react/docs/components/checkbox)
  */
-
-// @ts-expect-error there is a type mismatch here, but it works in practice
-export const CheckboxRoot = withSlotRecipe<CheckboxRootProps>(
-  Checkbox.Root,
-  'root',
-)
+export const CheckboxRoot = withSlotRecipe(Checkbox.Root, 'root')
 export type CheckboxRootProps = CerberusPrimitiveProps<ArkCheckboxRootProps>
 
 /**
@@ -39,10 +34,7 @@ export type CheckboxRootProps = CerberusPrimitiveProps<ArkCheckboxRootProps>
  * @definition [Cerberus Docs](https://cerberus.digitalu.design/react/checkbox)
  * @definition [Primitive Docs](https://ark-ui.com/react/docs/components/checkbox)
  */
-export const CheckboxLabel = withSlotRecipe<CheckboxLabelProps>(
-  Checkbox.Label,
-  'label',
-)
+export const CheckboxLabel = withSlotRecipe(Checkbox.Label, 'label')
 export type CheckboxLabelProps = CerberusPrimitiveProps<
   ArkCheckboxLabelProps & CheckboxVariantProps
 >
@@ -52,10 +44,7 @@ export type CheckboxLabelProps = CerberusPrimitiveProps<
  * @definition [Cerberus Docs](https://cerberus.digitalu.design/react/checkbox)
  * @definition [Primitive Docs](https://ark-ui.com/react/docs/components/checkbox)
  */
-export const CheckboxControl = withSlotRecipe<CheckboxControlProps>(
-  Checkbox.Control,
-  'control',
-)
+export const CheckboxControl = withSlotRecipe(Checkbox.Control, 'control')
 export type CheckboxControlProps = CerberusPrimitiveProps<
   ArkCheckboxControlProps & CheckboxVariantProps
 >
@@ -65,31 +54,16 @@ export type CheckboxControlProps = CerberusPrimitiveProps<
  * @definition [Cerberus Docs](https://cerberus.digitalu.design/react/checkbox)
  * @definition [Primitive Docs](https://ark-ui.com/react/docs/components/checkbox)
  */
-export const CheckboxIndicator = withSlotRecipe<CheckboxIndicatorProps>(
-  Checkbox.Indicator,
-  'indicator',
-)
+export const CheckboxIndicator = withSlotRecipe(Checkbox.Indicator, 'indicator')
 export type CheckboxIndicatorProps =
   CerberusPrimitiveProps<ArkCheckboxIndicatorProps>
-
-// export function CheckboxIndicator(props: CheckboxIndicatorProps) {
-//   const styles = checkbox()
-//   return (
-//     <Checkbox.Indicator
-//       {...props}
-//       className={cx(styles.indicator, props.className)}
-//     />
-//   )
-// }
 
 /**
  * Checkbox HiddenInput component used to provide the native checkbox input.
  * @definition [Cerberus Docs](https://cerberus.digitalu.design/react/checkbox)
  * @definition [Primitive Docs](https://ark-ui.com/react/docs/components/checkbox)
  */
-export const CheckboxHiddenInput = withNoRecipe<CheckboxHiddenInputProps>(
-  Checkbox.HiddenInput,
-)
+export const CheckboxHiddenInput = withNoRecipe(Checkbox.HiddenInput)
 export type CheckboxHiddenInputProps =
   CerberusPrimitiveProps<ArkCheckboxHiddenInputProps>
 
@@ -99,8 +73,5 @@ export type CheckboxHiddenInputProps =
  * @definition [Cerberus Docs](https://cerberus.digitalu.design/react/checkbox)
  * @definition [Primitive Docs](https://ark-ui.com/react/docs/components/checkbox)
  */
-export const CheckboxGroup = withSlotRecipe<CheckboxGroupProps>(
-  Checkbox.Group,
-  'group',
-)
+export const CheckboxGroup = withSlotRecipe(Checkbox.Group, 'group')
 export type CheckboxGroupProps = CerberusPrimitiveProps<ArkCheckboxGroupProps>

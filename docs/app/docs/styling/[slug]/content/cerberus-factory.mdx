@@ -6,7 +6,7 @@ description: Learn about the Cerberus Factory, a powerful tool for managing styl
 ## Overview
 
 Cerberus factory serves as a way to create supercharged JSX component from any
-HTML element to enable them receive `asChild` and `css` props.
+HTML element to enable them receive `asChild`, `css`, and style props.
 
 ```js
 import { cerberus } from "@cerberus/react"
@@ -14,13 +14,27 @@ import { cerberus } from "@cerberus/react"
 
 ## JSX Element
 
-With the JSX factory, you can use `cerberus.<element>` syntax to create JSX elements that support `css` and `asChild` props.
+With the JSX factory, you can use `cerberus.<element>` syntax to create JSX elements that support `css`, `asChild`, and style props.
 
 ```tsx
 import { cerberus } from "@cerberus/react"
 
 function Example() {
-  return <cerberus.button css={{ color: 'blue' }}>Click me</cerberus.button>
+  return (
+    <cerberus.button
+      bgColor="black"
+      _hover={{
+        bgColor: 'blue'
+      }}
+      css={{
+        '&:is([data-custom])': {
+          color: 'red'
+        }
+      }}
+    >
+      Click me
+    </cerberus.button>
+  )
 }
 ```
 
@@ -36,29 +50,17 @@ function Example() {
 }
 ```
 
-### Default Props
-
-Use the `defaultProps` option to pass default props to the component.
-
-```tsx {9}
-const Button = cerberus("button", {
-  type: "button"
-})
-```
-
-This example creates a button component that has the `type="button"` attribute applied to it.
-
 ## Creating Primitives
 
 You can create a Cerberus primitive with the `createCerberusPrimitive` function. This is useful for creating components that have a specific recipe or style.
 
-All primitives created with any of the higher order functions it returns will also have the `css` and `asChild` props available.
+All primitives created with any of the higher order functions it returns will also have the factory props available.
 
 Additionally, you may pass in any reference to an Element or a string name of a HTML element for your component.
 
 ### withNoRecipe
 
-Creates a Cerberus component with bare features and no recipe. It is the what `cerberus` function does under the hood.
+Creates a Cerberus component with bare features and no recipe. This is identical to using the `cerberus` function directly.
 
 ```tsx
 import { cerberus, createCerberusPrimitive } from "@cerberus/react"
@@ -68,7 +70,7 @@ const { withNoRecipe } = createCerberusPrimitive()
 const Button = withNoRecipe(cerberus.button)
 
 function Example() {
-  return <Button css={{ color: 'blue' }}>Click me</Button>
+  return <Button color="blue">Click me</Button>
 }
 ```
 
@@ -78,7 +80,7 @@ Creates a Cerberus component with a specific recipe applied. This allows you to 
 
 ```tsx
 import { cerberus, createCerberusPrimitive } from "@cerberus/react"
-import { button } from "@/system/recipes"
+import { button } from "styled-system/recipes"
 
 const { withRecipe } = createCerberusPrimitive(button)
 const Button = withRecipe('button')
@@ -88,7 +90,7 @@ function Example() {
 }
 ```
 
-This example creates a button component that has the `button` recipe styles applied to it. The `css` prop can be used to override or extend the styles defined in the recipe when needed.
+This example creates a Cerberus button component that has the `button` recipe styles applied to it (along with Cerberus component features).
 
 ### withSlotRecipe
 
@@ -96,7 +98,7 @@ Creates a Cerberus component with a specific recipe applied at the slot level. T
 
 ```tsx
 import { cerberus, createCerberusPrimitive } from "@cerberus/react"
-import { field } from "@system/recipes/slots"
+import { field } from "styled-system/recipes/slots"
 
 const { withSlotRecipe } = createCerberusPrimitive(field)
 
@@ -114,11 +116,11 @@ function Example() {
 }
 ```
 
-In this example, we create a field component with a root slot, label slot, and input slot. Each slot can have its own styles defined in the recipe, and the `css` prop can be used to override or extend the styles when needed.
+In this example, we create a Cerberus field component with a root slot, label slot, and input slot. Each slot can have its own styles defined in the recipe, and utilize the Cerberus factory features when needed.
 
 ## Polymorphism
 
-Every component created with the cerberus factory can accept the
+Every component created with the Cerberus factory can accept the
 `asChild` props to change the underlying DOM element.
 
 ```tsx

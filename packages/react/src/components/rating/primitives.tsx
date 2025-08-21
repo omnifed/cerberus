@@ -29,27 +29,18 @@ const { withSlotRecipe } = createCerberusPrimitive(ratingGroup)
 export type RatingRootProps = CerberusPrimitiveProps<
   ArkRatingGroupRootProps & RatingGroupVariantProps
 >
-export const RatingRoot = withSlotRecipe<RatingRootProps>(
-  RatingGroup.Root,
-  'root',
-)
+export const RatingRoot = withSlotRecipe(RatingGroup.Root, 'root')
 
 // Label
 
 export type RatingLabelProps = CerberusPrimitiveProps<ArkRatingGroupLabelProps>
-export const RatingLabel = withSlotRecipe<RatingLabelProps>(
-  RatingGroup.Label,
-  'label',
-)
+export const RatingLabel = withSlotRecipe(RatingGroup.Label, 'label')
 
 // Control
 
 export type RatingGroupControlProps =
   CerberusPrimitiveProps<ArkRatingGroupControlProps>
-export const RatingControl = withSlotRecipe<RatingGroupControlProps>(
-  RatingGroup.Control,
-  'control',
-)
+export const RatingControl = withSlotRecipe(RatingGroup.Control, 'control')
 
 // Context
 
@@ -61,10 +52,7 @@ export const RatingContext = RatingGroup.Context
 export type RatingGroupItemProps = CerberusPrimitiveProps<
   ArkRatingGroupItemProps & RatingGroupVariantProps
 >
-export const RatingItem = withSlotRecipe<RatingGroupItemProps>(
-  RatingGroup.Item,
-  'item',
-)
+export const RatingItem = withSlotRecipe(RatingGroup.Item, 'item')
 
 // Item Context
 export type RatingGroupItemContextProps = ArkRatingGroupItemContextProps

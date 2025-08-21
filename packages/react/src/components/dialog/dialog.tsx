@@ -1,5 +1,3 @@
-import type { DialogVariantProps } from 'styled-system/recipes'
-import type { WithCss } from '../../types'
 import { Portal } from '../portal/index'
 import {
   DialogBackdrop,
@@ -13,10 +11,7 @@ import {
  * @module 'dialog'
  */
 
-export interface DialogProps
-  extends Omit<DialogContentProps, 'size' | 'style'>,
-    DialogVariantProps,
-    WithCss {}
+export type DialogProps = DialogContentProps
 
 /**
  * An abstraction of the Dialog primitives that controls the content of the

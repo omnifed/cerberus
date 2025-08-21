@@ -23,24 +23,18 @@ const { withSlotRecipe } = createCerberusPrimitive(tooltip)
 // Root
 
 export type TooltipRootProps = CerberusPrimitiveProps<ArkTooltipRootProps>
-export const TooltipRoot = withSlotRecipe<TooltipRootProps>(
-  Tooltip.Root,
-  'root',
-)
+export const TooltipRoot = withSlotRecipe(Tooltip.Root, 'root')
 
 // Trigger
 
 export type TooltipTriggerProps = CerberusPrimitiveProps<ArkTooltipTriggerProps>
-export const TooltipTrigger = withSlotRecipe<TooltipTriggerProps>(
-  Tooltip.Trigger,
-  'trigger',
-)
+export const TooltipTrigger = withSlotRecipe(Tooltip.Trigger, 'trigger')
 
 // Positioner
 
 export type TooltipPositionerProps =
   CerberusPrimitiveProps<ArkTooltipPositionerProps>
-export const TooltipPositioner = withSlotRecipe<TooltipPositionerProps>(
+export const TooltipPositioner = withSlotRecipe(
   Tooltip.Positioner,
   'positioner',
 )
@@ -48,24 +42,15 @@ export const TooltipPositioner = withSlotRecipe<TooltipPositionerProps>(
 // Content
 
 export type TooltipContentProps = CerberusPrimitiveProps<ArkTooltipContentProps>
-export const TooltipContent = withSlotRecipe<TooltipContentProps>(
-  Tooltip.Content,
-  'content',
-)
+export const TooltipContent = withSlotRecipe(Tooltip.Content, 'content')
 
 // Arrow
 
 export type TooltipArrowProps = CerberusPrimitiveProps<ArkTooltipArrowProps>
-export const TooltipArrow = withSlotRecipe<TooltipArrowProps>(
-  Tooltip.Arrow,
-  'arrow',
-)
+export const TooltipArrow = withSlotRecipe(Tooltip.Arrow, 'arrow')
 
 // ArrowTip
 
 export type TooltipArrowTipProps =
   CerberusPrimitiveProps<ArkTooltipArrowTipProps>
-export const TooltipArrowTip = withSlotRecipe<TooltipArrowTipProps>(
-  Tooltip.ArrowTip,
-  'arrowTip',
-)
+export const TooltipArrowTip = withSlotRecipe(Tooltip.ArrowTip, 'arrowTip')

@@ -1,6 +1,4 @@
-import type { AvatarVariantProps } from 'styled-system/recipes'
 import type { ReactNode } from 'react'
-import { splitProps } from '../../utils'
 import { Show } from '../show/index'
 import { AvatarParts } from './parts'
 import type { AvatarRootProps } from './primitives'
@@ -10,17 +8,20 @@ import type { AvatarRootProps } from './primitives'
  * @module 'avatar'
  */
 
-export interface AvatarWithoutImage extends AvatarRootProps {
+export type AvatarWithoutImage = {
   alt?: never
   src?: never
-  fallback?: ReactNode
+  fallback: ReactNode
 }
 
-export interface AvatarWithImage extends AvatarRootProps, AvatarVariantProps {
+export type AvatarWithImage = {
   alt: string
   src: string
   fallback?: ReactNode
 }
+
+export type AvatarProps = AvatarRootProps &
+  (AvatarWithoutImage | AvatarWithImage)
 
 /**
  * Avatar component is an abstraction of the primitives that displays a
@@ -28,12 +29,9 @@ export interface AvatarWithImage extends AvatarRootProps, AvatarVariantProps {
  * @description [Cerberus Docs](https://cerberus.digitalu.design/react/avatar/overview)
  * @description [Ark Docs](https://ark-ui.com/react/docs/components/avatar#api-reference)
  */
-export function Avatar(props: AvatarWithoutImage | AvatarWithImage) {
-  const [imgProps, { fallback, children }, rootProps] = splitProps(
-    props,
-    ['alt', 'src'],
-    ['fallback', 'children'],
-  )
+export function Avatar(props: AvatarProps) {
+  const { alt, src, fallback, children, ...rootProps } = props
+  const imgProps = { alt, src }
 
   return (
     <AvatarParts.Root {...rootProps}>

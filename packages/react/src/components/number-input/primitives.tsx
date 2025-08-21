@@ -29,61 +29,46 @@ const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(numberInput)
 export type NumberInputRootProps = CerberusPrimitiveProps<
   ArkNumberInputRootProps & NumberInputVariantProps
 >
-export const NumberInputRoot = withSlotRecipe<NumberInputRootProps>(
-  NumberInput.Root,
-  'root',
-)
+export const NumberInputRoot = withSlotRecipe(NumberInput.Root, 'root')
 
 // Label
 
 export type NumberInputLabelProps =
   CerberusPrimitiveProps<ArkNumberInputLabelProps>
-export const NumberInputLabel = withNoRecipe<NumberInputLabelProps>(
-  NumberInput.Label,
-)
+export const NumberInputLabel = withNoRecipe(NumberInput.Label)
 
 // Input
 
 export type NumberInputInputProps =
   CerberusPrimitiveProps<ArkNumberInputInputProps>
-export const NumberInputInput = withSlotRecipe<NumberInputInputProps>(
-  NumberInput.Input,
-  'input',
-)
+export const NumberInputInput = withSlotRecipe(NumberInput.Input, 'input')
 
 // Control
 
 export type NumberInputControlProps =
   CerberusPrimitiveProps<ArkNumberInputControlProps>
-export const NumberInputControl = withSlotRecipe<NumberInputControlProps>(
-  NumberInput.Control,
-  'control',
-)
+export const NumberInputControl = withSlotRecipe(NumberInput.Control, 'control')
 
 // DecrementTrigger
 
 export type NumberInputDecrementTriggerProps =
   CerberusPrimitiveProps<ArkNumberInputDecrementTriggerProps>
-export const NumberInputDecrementTrigger =
-  withSlotRecipe<NumberInputDecrementTriggerProps>(
-    NumberInput.DecrementTrigger,
-    'decrementTrigger',
-  )
+export const NumberInputDecrementTrigger = withSlotRecipe(
+  NumberInput.DecrementTrigger,
+  'decrementTrigger',
+)
 
 // IncrementTrigger
 
 export type NumberInputIncrementTriggerProps =
   CerberusPrimitiveProps<ArkNumberInputIncrementTriggerProps>
-export const NumberInputIncrementTrigger =
-  withSlotRecipe<NumberInputIncrementTriggerProps>(
-    NumberInput.IncrementTrigger,
-    'incrementTrigger',
-  )
+export const NumberInputIncrementTrigger = withSlotRecipe(
+  NumberInput.IncrementTrigger,
+  'incrementTrigger',
+)
 
 // Scrubber
 
 export type NumberInputScrubberProps =
   CerberusPrimitiveProps<ArkNumberInputScrubberProps>
-export const NumberInputScrubber = withNoRecipe<NumberInputScrubberProps>(
-  NumberInput.Scrubber,
-)
+export const NumberInputScrubber = withNoRecipe(NumberInput.Scrubber)

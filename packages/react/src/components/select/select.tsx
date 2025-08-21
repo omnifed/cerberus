@@ -35,7 +35,7 @@ export interface SelectCollection {
   items: SelectCollectionItem[]
 }
 
-export interface SelectProps extends SelectRootProps {
+export interface SelectProps extends Omit<SelectRootProps, 'container'> {
   /**
    * The placeholder text when no option is selected.
    */

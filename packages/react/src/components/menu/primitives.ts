@@ -27,59 +27,49 @@ const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(menu)
 // Root
 
 export type MenuRootProps = CerberusPrimitiveProps<ArkMenuRootProps>
-// @ts-expect-error this is a workaround for the type mismatch
-export const MenuRoot = withSlotRecipe<MenuRootProps>(ArkMenu.Root, 'root')
+export const MenuRoot = withSlotRecipe(ArkMenu.Root, 'root')
 
 // Trigger
 
 export type MenuTriggerProps = CerberusPrimitiveProps<ArkMenuTriggerProps>
-export const MenuTriggerEl = withNoRecipe<MenuTriggerProps>(ArkMenu.Trigger)
+export const MenuTriggerEl = withNoRecipe(ArkMenu.Trigger)
 
 // TriggerItem
 
 export type MenuTriggerItemProps =
   CerberusPrimitiveProps<ArkMenuTriggerItemProps>
-export const MenuTriggerItem = withNoRecipe<MenuTriggerItemProps>(
-  ArkMenu.TriggerItem,
-)
+export const MenuTriggerItem = withNoRecipe(ArkMenu.TriggerItem)
 
 // Indicator
 
 export type MenuIndicatorProps = CerberusPrimitiveProps<ArkMenuIndicatorProps>
-export const MenuIndicator = withNoRecipe<MenuIndicatorProps>(ArkMenu.Indicator)
+export const MenuIndicator = withNoRecipe(ArkMenu.Indicator)
 
 // Positioner
 
 export type MenuPositionerProps = CerberusPrimitiveProps<ArkMenuPositionerProps>
-export const MenuPositioner = withNoRecipe<MenuPositionerProps>(
-  ArkMenu.Positioner,
-)
+export const MenuPositioner = withNoRecipe(ArkMenu.Positioner)
 
 // Content
 
 export type MenuContentProps = CerberusPrimitiveProps<ArkMenuContentProps>
-export const MenuContentEl = withSlotRecipe<MenuContentProps>(
-  ArkMenu.Content,
-  'content',
-)
+export const MenuContentEl = withSlotRecipe(ArkMenu.Content, 'content')
 
 // Item
 
 export type MenuItemProps = CerberusPrimitiveProps<ArkMenuItemProps>
-export const MenuItemEl = withSlotRecipe<MenuItemProps>(ArkMenu.Item, 'item')
+export const MenuItemEl = withSlotRecipe(ArkMenu.Item, 'item')
 
 // ItemGroup
 
 export type MenuItemGroupProps = CerberusPrimitiveProps<ArkMenuItemGroupProps>
-export const MenuItemGroupEl = withNoRecipe<MenuItemGroupProps>(
-  ArkMenu.ItemGroup,
-)
+export const MenuItemGroupEl = withNoRecipe(ArkMenu.ItemGroup)
 
 // ItemGroupLabel
 
 export type MenuItemGroupLabelProps =
   CerberusPrimitiveProps<ArkMenuItemGroupLabelProps>
-export const MenuItemGroupLabelEl = withSlotRecipe<MenuItemGroupLabelProps>(
+export const MenuItemGroupLabelEl = withSlotRecipe(
   ArkMenu.ItemGroupLabel,
   'itemGroupLabel',
 )
@@ -87,7 +77,4 @@ export const MenuItemGroupLabelEl = withSlotRecipe<MenuItemGroupLabelProps>(
 // Separator
 
 export type MenuSeparatorProps = CerberusPrimitiveProps<ArkMenuSeparatorProps>
-export const MenuSeparatorEl = withSlotRecipe<MenuSeparatorProps>(
-  ArkMenu.Separator,
-  'separator',
-)
+export const MenuSeparatorEl = withSlotRecipe(ArkMenu.Separator, 'separator')

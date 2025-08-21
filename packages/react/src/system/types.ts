@@ -1,11 +1,13 @@
 import type {
+  CerberusComponent,
+  HTMLCerberusProps,
+  JsxStyleProps,
   RecipeVariantFn,
   RecipeVariantRecord,
   SlotRecipeVariantFn,
   SlotRecipeVariantRecord,
 } from 'styled-system/types'
-import type { WithCss } from '../types'
-import type { ElementType, PropsWithChildren } from 'react'
+import type { ElementType, PropsWithChildren, CSSProperties } from 'react'
 import type { ark } from '@ark-ui/react/factory'
 
 // Method signatures for recipes
@@ -31,20 +33,35 @@ export type WithRecipeOptions = {
   defaultProps?: Record<string, unknown>
 }
 
+export type BaseCerberusProps = ArkFactoryProps &
+  JsxStyleProps & {
+    /**
+     * The CSS styles applied to the component. Supports CSS Properties
+     * declarations and style objects.
+     */
+    style?: CSSProperties | Record<string, string>
+  }
+
 // Primitive Response
 
-export type CerberusPrimitiveProps<T> = WithCss & PropsWithChildren<T>
-export type CerberusPrimitiveEl<T = object> = ElementType<
-  CerberusPrimitiveProps<T>
->
+export type CerberusPrimitiveProps<T> = PropsWithChildren<BaseCerberusProps & T>
+
+export type CerberusPrimitiveEl<T extends ElementType = ElementType> =
+  CerberusComponent<CerberusPrimitiveProps<T> & HTMLCerberusProps<T>>
 
 // Factory
 
-export type ArkPropsWithRef<T extends keyof typeof ark> = {
-  [K in keyof (typeof ark)[T]]: K extends 'asChild' ? never : (typeof ark)[T][K]
-} & {
+export interface ArkFactoryProps {
+  /**
+   * If true, the component will render as a child as the provided element
+   * passing all the given props to the child.
+   */
   asChild?: boolean
 }
+
+export type ArkPropsWithRef<T extends keyof typeof ark> = {
+  [K in keyof (typeof ark)[T]]: K extends 'asChild' ? never : (typeof ark)[T][K]
+} & ArkFactoryProps
 
 export type CerberusFactoryFn = <T extends Record<string, unknown>>(
   component: keyof typeof ark,
