@@ -9,7 +9,8 @@
   "module": "src/index.ts",
   "scripts": {
     "prepare": "panda codegen",
-    "build": "tsup --experimental-dts noExternals",
+    "build": "bun ../../configs/src/bun-build.mjs $(pwd)",
+    "deprecated:build": "tsup --experimental-dts noExternals",
     "clean": "rm -rf ./build",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
@@ -26,13 +27,13 @@
     "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/panda-preset": "workspace:*",
     "@internationalized/date": "^3.8.2",
-    "@microsoft/api-extractor": "^7.52.4",
+    "@microsoft/api-extractor": "^7.52.11",
     "@pandacss/dev": "^1.1.0",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "tsup": "^8.4.0"
+    "tsup": "^8.5.0"
   },
   "publishConfig": {
     "access": "public",
