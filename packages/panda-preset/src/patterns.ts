@@ -1,5 +1,4 @@
 import type { PatternConfig } from '@pandacss/types'
-import { animationStyles } from './theme'
 
 export function definePattern<T extends PatternConfig>(
   config: T,
@@ -94,35 +93,169 @@ const animateIn: PatternConfig = definePattern({
   },
 })
 
-const animationStyleList = Object.keys(animationStyles)
+const emphasizedFadeIn: PatternConfig = definePattern({
+  description: `An element for applying animations.`,
+  transform(props: {
+    duration?: string
+    delay?: string
+    fillMode?: string
+    timing?: string
+  }) {
+    return {
+      animationStyle: 'emphasized-fade-in',
+      animationDuration: props.duration ?? 'normal',
+      animationDelay: props.delay ?? '0s',
+      animationFillMode: props.fillMode ?? 'forwards',
+      animationTimingFunction: props.timing ?? 'ease-in-out',
+      ...props,
+    }
+  },
+})
 
-const motionStyleTagList: PatternConfig[] = animationStyleList.map((tag) => {
-  return definePattern({
-    description: `An element with the ${tag} animation style`,
-    transform(props: { duration?: string; delay?: string }) {
-      return {
-        animationStyle: tag,
-        animationDuration: props.duration ?? 'normal',
-        animationDelay: props.delay ?? '0s',
-        ...props,
-      }
-    },
-  })
+const emphasizedFadeOut: PatternConfig = definePattern({
+  description: `An element for applying animations.`,
+  transform(props: {
+    duration?: string
+    delay?: string
+    fillMode?: string
+    timing?: string
+  }) {
+    return {
+      animationStyle: 'emphasized-fade-out',
+      animationDuration: props.duration ?? 'normal',
+      animationDelay: props.delay ?? '0s',
+      animationFillMode: props.fillMode ?? 'forwards',
+      animationTimingFunction: props.timing ?? 'ease-in-out',
+      ...props,
+    }
+  },
+})
+
+const emphasizedSlideIn: PatternConfig = definePattern({
+  description: `An element for applying animations.`,
+  transform(props: {
+    duration?: string
+    delay?: string
+    fillMode?: string
+    timing?: string
+  }) {
+    return {
+      animationStyle: 'emphasized-slide-in',
+      animationDuration: props.duration ?? 'normal',
+      animationDelay: props.delay ?? '0s',
+      animationFillMode: props.fillMode ?? 'forwards',
+      animationTimingFunction: props.timing ?? 'ease-in-out',
+      ...props,
+    }
+  },
+})
+
+const emphasizedSlideOut: PatternConfig = definePattern({
+  description: `An element for applying animations.`,
+  transform(props: {
+    duration?: string
+    delay?: string
+    fillMode?: string
+    timing?: string
+  }) {
+    return {
+      animationStyle: 'emphasized-slide-out',
+      animationDuration: props.duration ?? 'normal',
+      animationDelay: props.delay ?? '0s',
+      animationFillMode: props.fillMode ?? 'forwards',
+      animationTimingFunction: props.timing ?? 'ease-in-out',
+      ...props,
+    }
+  },
+})
+
+const slideFadeIn: PatternConfig = definePattern({
+  description: `An element for applying animations.`,
+  transform(props: {
+    duration?: string
+    delay?: string
+    fillMode?: string
+    timing?: string
+  }) {
+    return {
+      animationStyle: 'slide-fade-in',
+      animationDuration: props.duration ?? 'normal',
+      animationDelay: props.delay ?? '0s',
+      animationFillMode: props.fillMode ?? 'forwards',
+      animationTimingFunction: props.timing ?? 'ease-in-out',
+      ...props,
+    }
+  },
+})
+
+const slideFadeOut: PatternConfig = definePattern({
+  description: `An element for applying animations.`,
+  transform(props: {
+    duration?: string
+    delay?: string
+    fillMode?: string
+    timing?: string
+  }) {
+    return {
+      animationStyle: 'slide-fade-out',
+      animationDuration: props.duration ?? 'normal',
+      animationDelay: props.delay ?? '0s',
+      animationFillMode: props.fillMode ?? 'forwards',
+      animationTimingFunction: props.timing ?? 'ease-in-out',
+      ...props,
+    }
+  },
+})
+
+const scaleFadeOut: PatternConfig = definePattern({
+  description: `An element for applying animations.`,
+  transform(props: {
+    duration?: string
+    delay?: string
+    fillMode?: string
+    timing?: string
+  }) {
+    return {
+      animationStyle: 'scale-fade-out',
+      animationDuration: props.duration ?? 'normal',
+      animationDelay: props.delay ?? '0s',
+      animationFillMode: props.fillMode ?? 'forwards',
+      animationTimingFunction: props.timing ?? 'ease-in-out',
+      ...props,
+    }
+  },
+})
+
+const scaleFadeIn: PatternConfig = definePattern({
+  description: `An element for applying animations.`,
+  transform(props: {
+    duration?: string
+    delay?: string
+    fillMode?: string
+    timing?: string
+  }) {
+    return {
+      animationStyle: 'scale-fade-in',
+      animationDuration: props.duration ?? 'normal',
+      animationDelay: props.delay ?? '0s',
+      animationFillMode: props.fillMode ?? 'forwards',
+      animationTimingFunction: props.timing ?? 'ease-in-out',
+      ...props,
+    }
+  },
 })
 
 export const patterns = {
   extend: {
     animateIn,
+    emphasizedFadeIn,
+    emphasizedFadeOut,
+    emphasizedSlideIn,
+    emphasizedSlideOut,
+    slideFadeIn,
+    slideFadeOut,
+    scaleFadeIn,
+    scaleFadeOut,
     scrollable,
-
-    // animation styles
-    emphasizedFadeIn: motionStyleTagList[0],
-    emphasizedFadeOut: motionStyleTagList[1],
-    emphasizedSlideIn: motionStyleTagList[2],
-    emphasizedSlideOut: motionStyleTagList[3],
-    slideFadeIn: motionStyleTagList[4],
-    slideFadeOut: motionStyleTagList[5],
-    scaleFadeIn: motionStyleTagList[6],
-    scaleFadeOut: motionStyleTagList[7],
   },
 }

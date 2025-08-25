@@ -84,6 +84,8 @@ describe('patterns', () => {
       animationStyle: 'emphasized-slide-in',
       animationDuration: 'normal',
       animationDelay: '0s',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
       bgColor: 'black',
     })
   })
@@ -97,6 +99,8 @@ describe('patterns', () => {
       animationStyle: 'emphasized-slide-out',
       animationDuration: 'normal',
       animationDelay: '0s',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
       bgColor: 'black',
     })
   })
@@ -110,6 +114,8 @@ describe('patterns', () => {
       animationStyle: 'slide-fade-in',
       animationDuration: 'normal',
       animationDelay: '0s',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
       bgColor: 'black',
     })
   })
@@ -123,6 +129,8 @@ describe('patterns', () => {
       animationStyle: 'slide-fade-out',
       animationDuration: 'normal',
       animationDelay: '0s',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
       bgColor: 'black',
     })
   })
@@ -136,6 +144,8 @@ describe('patterns', () => {
       animationStyle: 'scale-fade-in',
       animationDuration: 'normal',
       animationDelay: '0s',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
       bgColor: 'black',
     })
   })
@@ -149,6 +159,8 @@ describe('patterns', () => {
       animationStyle: 'scale-fade-out',
       animationDuration: 'normal',
       animationDelay: '0s',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
       bgColor: 'black',
     })
   })
