@@ -1,4 +1,3 @@
-import type { RouteProps } from '@/app/types'
 import { Show } from '@cerberus-design/react'
 import { items } from './content/items'
 import { Container } from '@/styled-system/jsx'
@@ -12,7 +11,11 @@ export async function generateStaticParams() {
     .filter(Boolean)
 }
 
-export default async function BlogSlugPage(props: RouteProps) {
+export default async function BlogSlugPage(props: {
+  params: Promise<{
+    slug: string
+  }>
+}) {
   const { slug } = await props.params
   const page = items.find((item) => item.slug === slug)
   const frontmatter = page?.frontmatter as BlogHeaderProps

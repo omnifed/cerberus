@@ -1,3 +1,3 @@
 export * from './app-bar'
-export * from './layout'
+export * from './page-layout'
 export * from './link-item'

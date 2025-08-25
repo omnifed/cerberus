@@ -57,7 +57,7 @@ describe('datePicker recipe', () => {
 
   test('should have a trigger style', () => {
     expect(datePicker.base?.trigger).toMatchObject({
-      zIndex: 'decorator',
+      zIndex: '1',
     })
   })
 

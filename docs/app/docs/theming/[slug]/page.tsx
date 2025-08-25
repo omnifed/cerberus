@@ -1,4 +1,3 @@
-import type { RouteProps } from '@/app/types'
 import { Show, Text } from '@cerberus-design/react'
 import { VStack } from '@/styled-system/jsx/vstack'
 import { getDocPageData } from '../../utils/helpers.server'
@@ -13,7 +12,11 @@ export async function generateStaticParams() {
     .filter(Boolean)
 }
 
-export default async function ThemingSlugPage(props: RouteProps) {
+export default async function ThemingSlugPage(props: {
+  params: Promise<{
+    slug: string
+  }>
+}) {
   const { slug } = await props.params
   const page = getDocPageData('theming', slug)
   const frontmatter = page?.frontmatter as DocFrontmatter

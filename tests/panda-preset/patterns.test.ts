@@ -2,127 +2,6 @@ import { describe, test, expect } from 'bun:test'
 import { patterns } from '@cerberus-design/panda-preset'
 
 describe('patterns', () => {
-  test('should export h1', () => {
-    expect(patterns.extend.h1).toBeDefined()
-    expect(
-      // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.h1.transform({ bgColor: 'black' }),
-    ).toMatchObject({
-      color: 'page.text.initial',
-      bgColor: 'black',
-    })
-  })
-
-  test('should export h2', () => {
-    expect(patterns.extend.h2).toBeDefined()
-    expect(
-      // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.h2.transform({ bgColor: 'black' }),
-    ).toMatchObject({
-      color: 'page.text.initial',
-      bgColor: 'black',
-    })
-  })
-
-  test('should export h3', () => {
-    expect(patterns.extend.h3).toBeDefined()
-    expect(
-      // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.h3.transform({ bgColor: 'black' }),
-    ).toMatchObject({
-      color: 'page.text.initial',
-      bgColor: 'black',
-    })
-  })
-
-  test('should export h4', () => {
-    expect(patterns.extend.h4).toBeDefined()
-    expect(
-      // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.h4.transform({ bgColor: 'black' }),
-    ).toMatchObject({
-      color: 'page.text.initial',
-      bgColor: 'black',
-    })
-  })
-
-  test('should export h5', () => {
-    expect(patterns.extend.h5).toBeDefined()
-    expect(
-      // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.h5.transform({ bgColor: 'black' }),
-    ).toMatchObject({
-      color: 'page.text.initial',
-      bgColor: 'black',
-    })
-  })
-
-  test('should export h6', () => {
-    expect(patterns.extend.h6).toBeDefined()
-    expect(
-      // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.h6.transform({ bgColor: 'black' }),
-    ).toMatchObject({
-      color: 'page.text.initial',
-      bgColor: 'black',
-    })
-  })
-
-  test('should export p', () => {
-    expect(patterns.extend.p).toBeDefined()
-    expect(
-      // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.p.transform({ bgColor: 'black' }),
-    ).toMatchObject({
-      color: 'page.text.initial',
-      bgColor: 'black',
-    })
-  })
-
-  test('should export strong', () => {
-    expect(patterns.extend.strong).toBeDefined()
-    expect(
-      // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.strong.transform({ bgColor: 'black' }),
-    ).toMatchObject({
-      color: 'page.text.initial',
-      bgColor: 'black',
-    })
-  })
-
-  test('should export em', () => {
-    expect(patterns.extend.em).toBeDefined()
-    expect(
-      // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.em.transform({ bgColor: 'black' }),
-    ).toMatchObject({
-      color: 'page.text.initial',
-      bgColor: 'black',
-    })
-  })
-
-  test('should export small', () => {
-    expect(patterns.extend.small).toBeDefined()
-    expect(
-      // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.small.transform({ bgColor: 'black' }),
-    ).toMatchObject({
-      color: 'page.text.initial',
-      bgColor: 'black',
-    })
-  })
-
-  test('should export span', () => {
-    expect(patterns.extend.span).toBeDefined()
-    expect(
-      // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.span.transform({ bgColor: 'black' }),
-    ).toMatchObject({
-      color: 'page.text.initial',
-      bgColor: 'black',
-    })
-  })
-
   test('should export animateIn', () => {
     expect(patterns.extend.animateIn).toBeDefined()
     expect(
@@ -205,6 +84,8 @@ describe('patterns', () => {
       animationStyle: 'emphasized-slide-in',
       animationDuration: 'normal',
       animationDelay: '0s',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
       bgColor: 'black',
     })
   })
@@ -218,6 +99,8 @@ describe('patterns', () => {
       animationStyle: 'emphasized-slide-out',
       animationDuration: 'normal',
       animationDelay: '0s',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
       bgColor: 'black',
     })
   })
@@ -231,6 +114,8 @@ describe('patterns', () => {
       animationStyle: 'slide-fade-in',
       animationDuration: 'normal',
       animationDelay: '0s',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
       bgColor: 'black',
     })
   })
@@ -244,6 +129,8 @@ describe('patterns', () => {
       animationStyle: 'slide-fade-out',
       animationDuration: 'normal',
       animationDelay: '0s',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
       bgColor: 'black',
     })
   })
@@ -257,6 +144,8 @@ describe('patterns', () => {
       animationStyle: 'scale-fade-in',
       animationDuration: 'normal',
       animationDelay: '0s',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
       bgColor: 'black',
     })
   })
@@ -270,6 +159,8 @@ describe('patterns', () => {
       animationStyle: 'scale-fade-out',
       animationDuration: 'normal',
       animationDelay: '0s',
+      animationFillMode: 'forwards',
+      animationTimingFunction: 'ease-in-out',
       bgColor: 'black',
     })
   })

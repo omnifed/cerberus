@@ -4,8 +4,9 @@ description:
   Learn how to use animation styles to define reusable motion properties.
 ---
 
+import CodePreview from '@/app/components/CodePreview'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import { AnimationStylesDemo } from "../components/animation-styles/static"
+import { AnimationStylesDemo, EmphasizedDemo } from "../components/animation-styles/static"
 
 ## Overview
 
@@ -94,10 +95,12 @@ Now you can use `animationStyle` property in your components.
 
 To make using animations even easier, Cerberus provides JSX patterns for all built-in animation styles. You can use these patterns to quickly apply animations to your components.
 
+<CodePreview preview={<EmphasizedDemo />}>
 ```tsx
-import { Box, EmphasizedFadeIn } from "styled-system/jsx"
+import { Box, EmphasizedSlideIn } from "styled-system/jsx"
 
-<EmphasizedFadeIn duration="slow" asChild>
-  <Box>This content will fade in with emphasis</Box>
-</EmphasizedFadeIn>
+<EmphasizedSlideIn>
+  <Box>This content will slide in with emphasis</Box>
+</EmphasizedSlideIn>
 ```
+</CodePreview>

@@ -1,9 +1,16 @@
 'use client'
 
 import { useState } from 'react'
-import { Center, HStack, Square, VStack } from '@/styled-system/jsx'
+import {
+  Box,
+  Center,
+  EmphasizedSlideIn,
+  HStack,
+  Square,
+  VStack,
+} from '@/styled-system/jsx'
+import { Button, For, Show } from '@cerberus-design/react'
 import options from './options.json' assert { type: 'json' }
-import { Button, For } from '@cerberus-design/react'
 
 export function AnimationStylesDemo() {
   const [activeOption, setActiveOption] = useState<string>(options[0].value)
@@ -70,5 +77,25 @@ export function AnimationStylesDemo() {
         <Center>{activeOption}</Center>
       </Square>
     </VStack>
+  )
+}
+
+export function EmphasizedDemo() {
+  const [isVisible, setIsVisible] = useState<boolean>(false)
+
+  return (
+    <>
+      <Button size="sm" onClick={() => setIsVisible(!isVisible)}>
+        <Show when={isVisible} fallback="Show Emphasized Fade In">
+          Reset
+        </Show>
+      </Button>
+
+      <Show when={isVisible}>
+        <EmphasizedSlideIn>
+          <Box>This content will fade in with emphasis</Box>
+        </EmphasizedSlideIn>
+      </Show>
+    </>
   )
 }
