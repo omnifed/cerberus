@@ -15,10 +15,10 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['@ark-ui/react', '@cerberus-design/react'],
     serverComponentsHmrCache: true,
-    typedRoutes: true,
   },
 
   pageExtensions: ['md', 'mdx', 'ts', 'tsx', 'json'],
+  typedRoutes: true,
 
   images: {
     remotePatterns: [

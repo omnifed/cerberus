@@ -1,14 +1,13 @@
 import { Box, HStack, Scrollable } from '@/styled-system/jsx'
-import type { PropsWithChildren } from 'react'
 import type { Metadata } from 'next'
 import { SideNav } from '../components/shared/side-nav'
 import { getDocsMetadata } from './utils/helpers.server'
 import { AppBar, DocsPageLayout } from './shared'
-import type { RouteProps } from '../types'
+import type { ReactNode } from 'react'
 
 export const metadata: Metadata = getDocsMetadata()
 
-export default function DocsLayout(props: PropsWithChildren<RouteProps>) {
+export default function DocsLayout(props: { children: ReactNode }) {
   return (
     <HStack
       alignItems="flex-start"

@@ -1,4 +1,3 @@
-import type { RouteProps } from '@/app/types'
 import { getDocPageData } from '../../utils/helpers.server'
 import { Show, Text } from '@cerberus-design/react'
 import { HStack, VStack } from '@/styled-system/jsx'
@@ -14,7 +13,11 @@ export async function generateStaticParams() {
     .filter(Boolean)
 }
 
-export default async function GetStartedSlugPage(props: RouteProps) {
+export default async function GetStartedSlugPage(props: {
+  params: Promise<{
+    slug: string
+  }>
+}) {
   const { slug } = await props.params
   const page = getDocPageData('components', slug)
 
