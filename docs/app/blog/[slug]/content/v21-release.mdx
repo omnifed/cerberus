@@ -1,0 +1,146 @@
+---
+slug: cerberus-v021-release
+date: 2025-08-26
+author: caseyBaggz
+title: Cerberus v0.21 Release
+description: New Features and Improvements
+category: release
+version: 0.21.1
+timeToRead: 4
+tag: Release
+---
+
+import BashTabs from '@/app/components/bash-tabs'
+import CodePreview from '@/app/components/CodePreview'
+
+import { BasicExample } from '@/app/docs/components/[slug]/components/theme/static'
+import { NumberInputDemo } from '@/app/docs/components/[slug]/components/number-input/static'
+import { StaticPreview } from '@/app/docs/components/[slug]/components/pin-input/static'
+import {
+  SubtleDemo
+} from '@/app/docs/components/[slug]/components/notifications/static'
+
+We're excited to announce the release of Cerberus v0.21! This update brings powerful new components, improved styling capabilities, and several important fixes to make your development experience even smoother.
+
+> Our mission continues: make Cerberus easier to use, extend, and customize for every project.
+
+## New Components
+
+### NumberInput
+
+Introducing the new `NumberInput` component, designed for seamless numeric input with built-in accessibility and customization. Easily control min/max values, step increments, and styling using the familiar Cerberus API.
+
+<CodePreview preview={<NumberInputDemo />} />
+```tsx
+import { Field } from '@cerberus/react/field';
+import { NumberInput } from '@cerberus/react/number-input';
+import { Box } from 'styled-system/jsx';
+
+function NumberInputDemo() {
+  return (
+    <Box w="1/2">
+      <Field label="How many?" helperText="Choose your quantity.">
+        <NumberInput />
+      </Field>
+    </Box>
+  )
+}
+```
+
+### PinInput
+
+The new `PinInput` component makes it simple to build secure PIN or code entry forms. It supports custom lengths, masking, and full style customization.
+
+<CodePreview preview={<StaticPreview />} />
+```tsx
+import { PinInput, Field } from '@cerberus-design/react'
+import { HStack } from 'styled-system/jsx'
+
+export function StaticPreview() {
+  return (
+    <HStack w="1/2">
+      <Field label="Enter PIN">
+        <PinInput />
+      </Field>
+    </HStack>
+  )
+}
+```
+
+### Notifications - Subtle Variant
+
+Cerberus Notifications now support a “subtle” variant for less intrusive alerts. Use it for gentle feedback or status updates that blend into your UI.
+
+Just add the `-subtle` suffix to the toast `type`.
+
+<CodePreview preview={<SubtleDemo />} />
+```ts
+import { toaster } from '@cerberus/react/toaster'
+
+toaster.create({
+  type: 'info-subtle',
+  title: 'Update Available',
+  description: 'A new version of the app is available',
+  action: {
+    label: 'Refresh',
+    onClick: () => {
+      window.location.reload()
+    }
+  }
+})
+```
+
+## Factory - Universal Style Props
+
+All Cerberus components now inherit style props via the Factory system. This means you can use any CSS style property or the `css` prop on any component. Customizing appearance is now faster and more consistent across your app.
+
+> This applies to all Cerberus APIs (including factory components).
+
+```tsx
+import { Button } from '@cerberus/react/button';
+
+function CustomButtonPreview() {
+  return (
+    <Button
+      bgColor="danger.bg.initial"
+      color="danger.text.initial"
+      rounded="md"
+      transform="skew(-10deg)"
+      _hover={{
+        bgColor: 'black',
+        color: 'yellow',
+      }}
+      css={{
+        '&:is([data-custom=selector])': {
+          bgColor: 'blue.500',
+          color: 'white',
+        }
+      }}
+    >
+      Cerberus Forever
+    </Button>
+  )
+}
+```
+
+## Minor Updates & Fixes
+
+- **DatePicker**: Recipe fixes for trigger zIndex ensure popovers display correctly above other elements.
+- **Input**: Recipe now includes missing placeholder styles for a more consistent look.
+- **AnimationStyle**: JSX elements now render as expected, making it easier to add animations to your UI.
+
+## Upgrading
+
+To upgrade to Cerberus v0.21.1, run:
+
+<BashTabs code="npm run up:cerberus" />
+
+## What's Next?
+
+We're focused on expanding the Cerberus ecosystem with more components, improved customization, and even better developer experience. Stay tuned for:
+
+- New components
+- Improved customization options
+- Enhanced developer experience
+
+Thank you for being part of the Cerberus community!
