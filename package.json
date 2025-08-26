@@ -42,7 +42,8 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
     "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,astro}": [
-      "oxlint"
+      "oxlint",
+      "eslint --fix"
     ]
   },
   "author": "developers@omnifederal.com",
