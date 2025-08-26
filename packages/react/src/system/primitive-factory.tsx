@@ -44,7 +44,7 @@ export class CerberusPrimitive {
     }
 
     if (arkComponent) {
-      return cerberus(arkComponent)
+      return cerberus(arkComponent) as CerberusPrimitiveEl<T>
     }
 
     throw new Error(`Unknown component: ${component}`)

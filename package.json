@@ -16,35 +16,33 @@
     "test": "pnpm --filter tests run test:ci"
   },
   "dependencies": {
-    "typescript": "^5.8.2"
+    "typescript": "^5.9.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.31.0",
+    "@eslint/js": "^9.34.0",
     "@types/bun": "^1.2.21",
     "@types/eslint": "^8.56.12",
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/eslint__js": "^8.42.3",
     "@types/mdx": "^2.0.13",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
-    "eslint": "^9.24.0",
+    "eslint": "^9.34.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-config-standard-with-typescript": "^43.0.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-solid": "^0.14.5",
-    "eslint-plugin-sonarjs": "^3.0.4",
+    "eslint-plugin-sonarjs": "^3.0.5",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.5",
     "oxlint": "^1.9.0",
     "prettier": "3.6.2",
-    "typescript-eslint": "^8.39.0"
+    "typescript-eslint": "^8.41.0"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
     "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,astro}": [
-      "oxlint",
-      "eslint --fix"
+      "oxlint"
     ]
   },
   "author": "developers@omnifederal.com",
@@ -60,8 +58,10 @@
       "brace-expansion": "2.0.2"
     },
     "ignoredBuiltDependencies": [
-      "@carbon/icon-helpers",
-      "@carbon/icons-react",
+      "@tsparticles/engine",
+      "bun",
+      "esbuild",
+      "sharp",
       "unrs-resolver"
     ]
   }
