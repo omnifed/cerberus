@@ -4,7 +4,6 @@ import sonarjs from 'eslint-plugin-sonarjs'
 import react from 'eslint-plugin-react'
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js'
 import reactHooks from 'eslint-plugin-react-hooks/cjs/eslint-plugin-react-hooks.development.js'
-import solid from 'eslint-plugin-solid/configs/typescript'
 import tseslint from 'typescript-eslint'
 
 const OFF = 'off'
@@ -26,18 +25,13 @@ export default tseslint.config(
 
   {
     ignores: [
-      'packages/*/build/**/*',
-      'packages/*/.tsup/**/*',
+      'packages/*/dist/**/*',
+      'packages/*/styled-system/**/*',
       // Docs use their own eslint config
       'docs/**/*',
       // non-TS files
       'eslint.config.mjs',
-      'website/postcss.config.cjs',
-      'website/styled-system/**/*',
-      'packages/*/styled-system/**/*',
-      // files that are rooted with JS not TS or that we don't need to lint
-      // with hardcore TS rules
-      'packages/*/tsup.config.ts',
+      // We don't need to lint these
       'tests/**/*',
       'figma/**/*',
       'configs/**/*', // we will kill once we fully move to JSR'
@@ -74,22 +68,6 @@ export default tseslint.config(
   },
 
   {
-    name: '@cerberus-design/solid',
-    files: ['packages/solid/**/*.ts', 'packages/solid/**/*.tsx'],
-    // sonarjs is biased to react for jsx so we don't include it here
-    ...solid,
-    rules: {},
-  },
-
-  {
-    name: 'website',
-    files: ['website/**/*.ts', 'website/**/*.tsx'],
-    // sonarjs is biased to react for jsx so we don't include it here
-    ...solid,
-    rules: {},
-  },
-
-  {
     name: '@cerberus-design/configs',
     files: ['configs/**/*.mjs', 'configs/**/*.ts'],
     rules: {
@@ -100,14 +78,6 @@ export default tseslint.config(
   {
     name: 'tests',
     files: ['tests/**/*.ts', 'tests/**/*.tsx'],
-  },
-
-  {
-    name: 'solid-tests',
-    files: ['solid-tests/**/*.ts', 'solid-tests/**/*.tsx'],
-    // sonarjs is biased to react for jsx so we don't include it here
-    ...solid,
-    rules: {},
   },
 
   // this must be last

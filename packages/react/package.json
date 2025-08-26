@@ -1,6 +1,6 @@
 {
   "name": "@cerberus-design/react",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "description": "The Cerberus Design React component library.",
   "browserslist": "> 0.25%, not dead",
   "sideEffects": false,
@@ -9,9 +9,8 @@
   "module": "src/index.ts",
   "scripts": {
     "prepare": "panda codegen",
-    "build": "bun ../../configs/src/bun-build.mjs $(pwd)",
-    "deprecated:build": "tsup --experimental-dts noExternals",
-    "clean": "rm -rf ./build",
+    "build": "vite build",
+    "clean": "rm -rf ./dist",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
@@ -27,38 +26,40 @@
     "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/panda-preset": "workspace:*",
     "@internationalized/date": "^3.8.2",
-    "@microsoft/api-extractor": "^7.52.11",
     "@pandacss/dev": "^1.1.0",
     "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.8",
+    "@vitejs/plugin-react": "^5.0.1",
+    "globby": "^14.1.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "tsup": "^8.5.0"
+    "vite": "^7.1.3",
+    "vite-plugin-dts": "^4.5.4"
   },
   "publishConfig": {
     "access": "public",
-    "types": "build/legacy/index.d.cts",
-    "main": "build/legacy/index.cjs",
-    "module": "build/modern/index.js",
+    "types": "dist/index.d.cts",
+    "main": "dist/index.cjs",
+    "module": "dist/index.js",
     "exports": {
       ".": {
         "import": {
-          "types": "./build/modern/index.d.ts",
-          "default": "./build/modern/index.js"
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.js"
         },
         "require": {
-          "types": "./build/legacy/index.d.cts",
-          "default": "./build/legacy/index.cjs"
+          "types": "./dist/index.d.cts",
+          "default": "./dist/index.cjs"
         }
       },
       "./*": {
         "import": {
-          "types": "./build/modern/components/*/index.d.ts",
-          "default": "./build/modern/components/*/index.js"
+          "types": "./dist/components/*/index.d.ts",
+          "default": "./dist/components/*/index.js"
         },
         "require": {
-          "types": "./build/legacy/components/*/index.d.cts",
-          "default": "./build/legacy/components/*/index.cjs"
+          "types": "./dist/components/*/index.d.cts",
+          "default": "./dist/components/*/index.cjs"
         }
       },
       "./package.json": "./package.json"
@@ -66,16 +67,16 @@
     "typesVersions": {
       "*": {
         ".": [
-          "build/legacy/index.d.cts"
+          "dist/index.d.cts"
         ],
         "./*": [
-          "build/legacy/components/*/index.d.cts"
+          "dist/components/*/index.d.cts"
         ]
       }
     }
   },
   "files": [
-    "build/**/*",
+    "dist",
     "src/**/*"
   ],
   "keywords": [
