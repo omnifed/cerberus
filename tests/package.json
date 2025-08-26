@@ -13,11 +13,11 @@
     "@cerberus-design/panda-preset": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@happy-dom/global-registrator": "^18.0.1",
-    "@pandacss/types": "^0.54.0",
-    "@testing-library/jest-dom": "^6.6.3",
+    "@pandacss/types": "^1.1.0",
+    "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
-    "@types/react": "^19.1.9",
+    "@types/react": "^19.1.11",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   }
