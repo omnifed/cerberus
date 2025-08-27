@@ -85,4 +85,11 @@ const isBarrelComponent = (file: path.ParsedPath) =>
   !['presence', 'environment', 'locale'].includes(file.dir)
 
 const isSpecialFile = (file: path.ParsedPath) =>
-  ['index', 'factory'].includes(file.name)
+  [
+    'index',
+    'primitives',
+    'parts',
+    'factory',
+    'primitive-factory',
+    'defineIcons',
+  ].includes(file.name)
