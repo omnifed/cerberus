@@ -33,7 +33,7 @@ describe('datePicker recipe', () => {
           w: '1px',
           zIndex: 'decorator',
         },
-        w: '16.5rem',
+        w: '17.5rem',
       },
     })
   })

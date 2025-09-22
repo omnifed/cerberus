@@ -60,7 +60,7 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
       rounded: 'md',
       w: '9.25rem',
       '&:is([data-range])': {
-        w: '16.5rem',
+        w: '17.5rem',
         _before: {
           content: '""',
           bgColor: 'page.border.initial',
