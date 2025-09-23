@@ -9,7 +9,7 @@ ark: 'field'
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import { BasicFieldPreview, CustomField } from '../components/field/static'
+import { BasicFieldPreview, HiddenLabelPreview, CustomField } from '../components/field/static'
 
 
 ```ts
@@ -68,6 +68,40 @@ export function BasicFieldPreview() {
         </VStack>
       </Box>
     </form>
+  )
+}
+```
+</CodePreview>
+
+## Hidden Labels
+
+For accessibility compliance, use the `hideLabel` prop to visually hide labels while keeping them accessible to screen readers. This is useful for search inputs and other cases where the visual label would be redundant.
+
+<CodePreview preview={<HiddenLabelPreview />}>
+```tsx title="hidden-label-fields.tsx"
+import { Field, Input } from '@cerberus/react'
+import { Box, VStack } from 'styled-system/jsx'
+
+export function HiddenLabelFields() {
+  return (
+    <Box w="1/2">
+      <VStack alignItems="flex-start" gap="lg" w="full">
+        <Field
+          label="Search something"
+          helperText="Label is hidden but accessible to screen readers"
+          hideLabel
+        >
+          <Input name="search" type="search" placeholder="Type to search..." />
+        </Field>
+        <Field
+          label="Global search"
+          hideLabel
+          required
+        >
+          <Input name="global-search" type="search" placeholder="Search the entire site..." />
+        </Field>
+      </VStack>
+    </Box>
   )
 }
 ```
@@ -140,6 +174,7 @@ The `Field` component is an abstraction of the primitives and accepts the follow
 | helperText |         | The helper text to show below the field input. |
 | secondaryHelperText |         | The secondary helper text to show below the field input at the end of the row. |
 | errorText  |         | The error text to show below the field input. It replaces the helperText when visible. |
+| hideLabel | `false` | Whether to hide the label visually while keeping it accessible to screen readers. |
 
 
 The `Field` component also accepts all the props of the [`FieldRoot` primitive props](https://ark-ui.com/react/docs/components/field#api-reference)

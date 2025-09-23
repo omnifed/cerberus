@@ -27,6 +27,10 @@ export interface FieldProps extends FieldRootProps {
    * The error text of the field. Shown when the field is invalid.
    */
   errorText?: string
+  /**
+   * Whether to hide the label visually while keeping it accessible to screen readers.
+   */
+  hideLabel?: boolean
 }
 
 /**
@@ -52,13 +56,22 @@ export function Field(props: FieldProps) {
   const [statusProps, fieldProps, rootProps] = splitProps(
     props,
     ['disabled', 'required', 'readOnly', 'invalid'],
-    ['label', 'helperText', 'secondaryHelperText', 'errorText', 'children'],
+    [
+      'label',
+      'helperText',
+      'secondaryHelperText',
+      'errorText',
+      'hideLabel',
+      'children',
+    ],
   )
 
   return (
     <FieldRoot {...statusProps} {...rootProps}>
       <Show when={fieldProps.label}>
-        <FieldLabel>{fieldProps.label}</FieldLabel>
+        <FieldLabel hideLabel={fieldProps.hideLabel}>
+          {fieldProps.label}
+        </FieldLabel>
       </Show>
 
       {fieldProps.children}

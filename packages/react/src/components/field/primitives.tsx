@@ -9,6 +9,7 @@ import {
 } from '@ark-ui/react/field'
 import { ark, type HTMLArkProps } from '@ark-ui/react'
 import { field, type FieldVariantProps } from 'styled-system/recipes'
+import { css, cx } from 'styled-system/css'
 import {
   createCerberusPrimitive,
   type CerberusPrimitiveProps,
@@ -33,16 +34,24 @@ export const FieldRoot = withSlotRecipe(Field.Root, 'root')
 // Label
 
 function FieldLabelEl(props: FieldLabelProps) {
-  const { children, ...nativeProps } = props
+  const { children, hideLabel, className, ...nativeProps } = props
   return (
-    <Field.Label {...nativeProps}>
+    <Field.Label
+      {...nativeProps}
+      className={cx(className, hideLabel && css({ srOnly: true }))}
+    >
       {children}
       <Field.RequiredIndicator>(required)</Field.RequiredIndicator>
     </Field.Label>
   )
 }
 
-export type FieldLabelProps = CerberusPrimitiveProps<ArkFieldLabelProps>
+export type FieldLabelProps = CerberusPrimitiveProps<ArkFieldLabelProps> & {
+  /**
+   * Whether to hide the label visually while keeping it accessible to screen readers.
+   */
+  hideLabel?: boolean
+}
 export const FieldLabel = withSlotRecipe(FieldLabelEl, 'label')
 
 // Required Indicator
