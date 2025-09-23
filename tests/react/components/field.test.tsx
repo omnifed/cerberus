@@ -147,8 +147,8 @@ describe('<Field />', () => {
     )
     const label = screen.getByText(/Search something/i)
     expect(label).toBeInTheDocument()
-    // The label should have screen reader only styling applied
-    expect(label).toHaveClass('cerberus-label--usage_hidden')
+    // The label should have the data-screen-reader-only attribute
+    expect(label).toHaveAttribute('data-screen-reader-only', 'true')
   })
 
   test('should show label normally when hideLabel is false or undefined', () => {
@@ -165,8 +165,8 @@ describe('<Field />', () => {
     )
     const label = screen.getByText(/Normal Label/i)
     expect(label).toBeInTheDocument()
-    // The label should not have the hidden variant class
-    expect(label).not.toHaveClass('cerberus-label--usage_hidden')
+    // The label should not have the data-screen-reader-only attribute
+    expect(label).not.toHaveAttribute('data-screen-reader-only')
   })
 
   test('should work with hideLabel and required fields', () => {
@@ -187,6 +187,6 @@ describe('<Field />', () => {
 
     expect(label).toBeInTheDocument()
     expect(requiredIndicators.length).toBeGreaterThan(0)
-    expect(label).toHaveClass('cerberus-label--usage_hidden')
+    expect(label).toHaveAttribute('data-screen-reader-only', 'true')
   })
 })
