@@ -132,4 +132,61 @@ describe('<Field />', () => {
     expect(screen.getByText(/Label/i)).toBeInTheDocument()
     expect(screen.getByText(/Helper Text/i)).toBeInTheDocument()
   })
+
+  test('should hide label visually when hideLabel is true', () => {
+    render(
+      <Test
+        ids={{
+          control: 'searchInput',
+        }}
+        label="Search something"
+        hideLabel
+      >
+        <Input name="searchInput" type="text" />
+      </Test>,
+    )
+    const label = screen.getByText(/Search something/i)
+    expect(label).toBeInTheDocument()
+    // The label should have screen reader only styling applied
+    expect(label).toHaveClass('cerberus-label--usage_hidden')
+  })
+
+  test('should show label normally when hideLabel is false or undefined', () => {
+    render(
+      <Test
+        ids={{
+          control: 'normalInput',
+        }}
+        label="Normal Label"
+        hideLabel={false}
+      >
+        <Input name="normalInput" type="text" />
+      </Test>,
+    )
+    const label = screen.getByText(/Normal Label/i)
+    expect(label).toBeInTheDocument()
+    // The label should not have the hidden variant class
+    expect(label).not.toHaveClass('cerberus-label--usage_hidden')
+  })
+
+  test('should work with hideLabel and required fields', () => {
+    render(
+      <Test
+        ids={{
+          control: 'requiredSearch',
+        }}
+        label="Required Search Field"
+        hideLabel
+        required
+      >
+        <Input name="requiredSearch" type="text" />
+      </Test>,
+    )
+    const label = screen.getByText(/Required Search Field/i)
+    const requiredIndicators = screen.getAllByText(/(required)/i)
+
+    expect(label).toBeInTheDocument()
+    expect(requiredIndicators.length).toBeGreaterThan(0)
+    expect(label).toHaveClass('cerberus-label--usage_hidden')
+  })
 })
