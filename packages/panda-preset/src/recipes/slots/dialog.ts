@@ -95,6 +95,7 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
       lineClamp: 3,
       textStyle: 'body-md',
       textOverflow: 'ellipsis',
+      w: 'full',
     },
     closeTrigger: {
       position: 'absolute',

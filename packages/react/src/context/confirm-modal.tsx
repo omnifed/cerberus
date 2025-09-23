@@ -44,6 +44,11 @@ export interface BaseConfirmOptions {
    * The text for the cancel button.
    */
   cancelText: string
+  /**
+   * Whether to show the avatar icon at the top of the modal.
+   * @default true
+   */
+  showAvatar?: boolean
 }
 
 export interface DestructiveConfirmOptions extends BaseConfirmOptions {
@@ -117,6 +122,7 @@ export function ConfirmModal(
   const [open, setOpen] = useState<boolean>(false)
   const [content, setContent] = useState<ShowConfirmModalOptions | null>(null)
   const resolveRef = useRef<ShowResult>(null)
+  const showAvatar = content?.showAvatar ?? true
   const kind = content?.kind ?? 'non-destructive'
 
   const { icons } = useCerberusContext()
@@ -185,27 +191,29 @@ export function ConfirmModal(
             justify="space-between"
             w="full"
           >
-            <HStack
-              alignSelf="center"
-              justify="center"
-              paddingBlockEnd="md"
-              w="full"
-            >
-              <Show
-                when={palette === 'danger'}
-                fallback={
+            <Show when={showAvatar}>
+              <HStack
+                alignSelf="center"
+                justify="center"
+                paddingBlockEnd="md"
+                w="full"
+              >
+                <Show
+                  when={palette === 'danger'}
+                  fallback={
+                    <Avatar
+                      gradient="charon-light"
+                      fallback={<ConfirmIcon size={24} />}
+                    />
+                  }
+                >
                   <Avatar
-                    gradient="charon-light"
+                    gradient="hades-dark"
                     fallback={<ConfirmIcon size={24} />}
                   />
-                }
-              >
-                <Avatar
-                  gradient="hades-dark"
-                  fallback={<ConfirmIcon size={24} />}
-                />
-              </Show>
-            </HStack>
+                </Show>
+              </HStack>
+            </Show>
 
             <DialogHeading>{content?.heading}</DialogHeading>
 

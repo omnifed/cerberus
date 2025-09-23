@@ -13,6 +13,7 @@ import {
 import {
   NonDestructivePreview,
   DestructivePreview,
+  NoAvatarPreview,
 } from '../components/confirm-modal/static'
 
 ```ts
@@ -95,6 +96,56 @@ function SomeFeature() {
   )
 }
 
+function SomePage() {
+  return(
+    <ConfirmModal>
+      <SomeFeature />
+    </ConfirmModal>
+  )
+}
+```
+</CodePreview>
+
+### No Avatar
+
+<CodePreview preview={<NoAvatarPreview />}>
+```tsx title="some-feature.tsx" {26}
+import { ConfirmModal, useConfirmModal } from '@cerberus/react'
+
+function SomeFeature() {
+  const confirm = useConfirmModal()
+
+  const handleClick = useCallback(async () => {
+    const userConsent = await confirm.show({
+      heading: 'Add new payment method?',
+      description: (
+        <>
+          This will add a new payment method to your account to be billed for
+          future purchases.{' '}
+          <a
+            className={css({
+              textStyle: 'link',
+            })}
+            href="#"
+          >
+            Learn more
+          </a>
+          .
+        </>
+      ),
+      actionText: 'Yes, add payment method',
+      cancelText: NOPE,
+      showAvatar: false,
+    })
+    setConsent(userConsent)
+  }, [confirm])
+
+  return (
+    <Button onClick={handleConfirm}>Confirm</Button>
+  )
+}
+```
+```tsx title="some-page.tsx" {8}
 function SomePage() {
   return(
     <ConfirmModal>
