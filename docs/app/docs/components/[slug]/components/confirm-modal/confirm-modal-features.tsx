@@ -131,3 +131,49 @@ export function ConfirmOverviewFeature() {
     </>
   )
 }
+
+export function NoAvatarFeature() {
+  const confirm = useConfirmModal()
+  const [consent, setConsent] = useState<boolean | null>(null)
+
+  const handleClick = useCallback(async () => {
+    const userConsent = await confirm.show({
+      heading: 'Add new payment method?',
+      description: (
+        <>
+          This will add a new payment method to your account to be billed for
+          future purchases.{' '}
+          <a
+            className={css({
+              textStyle: 'link',
+            })}
+            href="#"
+          >
+            Learn more
+          </a>
+          .
+        </>
+      ),
+      actionText: 'Yes, add payment method',
+      cancelText: NOPE,
+      showAvatar: false,
+    })
+    setConsent(userConsent)
+  }, [confirm])
+
+  return (
+    <>
+      <div
+        className={hstack({
+          gap: '4',
+        })}
+      >
+        <Button onClick={handleClick}>Non-destructive</Button>
+      </div>
+
+      <Show when={consent !== null}>
+        <p>User consent: {JSON.stringify(consent)}</p>
+      </Show>
+    </>
+  )
+}
