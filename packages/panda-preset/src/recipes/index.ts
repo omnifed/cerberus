@@ -1,4 +1,5 @@
 import { button } from './button'
+import { buttonGroup } from './buttonGroup'
 import { iconButton } from './iconButton'
 import { label } from './label'
 import { tag } from './tag'
@@ -47,6 +48,7 @@ import { td } from './td'
 
 export const recipes = {
   button,
+  buttonGroup,
   fieldMessage,
   iconButton,
   label,
@@ -58,9 +60,9 @@ export const recipes = {
 }
 
 export const slotRecipes = {
-  avatar,
   accordion,
   admonition,
+  avatar,
   carousel,
   checkbox,
   circularProgress,
