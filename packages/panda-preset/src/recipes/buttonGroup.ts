@@ -17,9 +17,10 @@ export const buttonGroup: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   description: 'Styles for the buttonGroup component.',
 
   base: {
-    alignItems: 'center',
-    display: 'flex',
+    display: 'inline-flex',
     gap: 'var(--btn-group-gap)',
+    isolation: 'isolate',
+    position: 'relative',
   },
 
   variants: {
@@ -33,5 +34,7 @@ export const buttonGroup: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     },
   },
 
-  defaultVariants: {},
+  defaultVariants: {
+    layout: 'default',
+  },
 })
