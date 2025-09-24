@@ -211,6 +211,63 @@ const borderGradient: CustomUtilityConfig<'borderGradient'> = {
   },
 }
 
+const textGradient: CustomUtilityConfig<'textGradient'> = {
+  textGradient: {
+    className: 'text-gradient',
+    values: gradientValues,
+    transform(value: GradientValue, { token }) {
+      // Text gradients use background-clip: text to show gradient through text
+      const textGradientStyles = {
+        backgroundClip: 'text',
+        WebkitBackgroundClip: 'text',
+        color: 'transparent',
+      }
+
+      return {
+        // base
+        [conditions.lightMode]: {
+          backgroundImage: token(`${data.lightToken}.${value}`),
+          ...textGradientStyles,
+        },
+        [conditions.darkMode]: {
+          backgroundImage: token(`${data.darkToken}.${value}`),
+          ...textGradientStyles,
+        },
+        [conditions.systemMode]: {
+          backgroundImage: token(`${data.darkToken}.${value}`),
+          ...textGradientStyles,
+        },
+        // cerberus
+        [`[data-panda-theme=cerberus]${conditions.lightMode}`]: {
+          backgroundImage: token(`${data.lightToken}.${value}`),
+          ...textGradientStyles,
+        },
+        [`[data-panda-theme=cerberus]${conditions.darkMode}`]: {
+          backgroundImage: token(`${data.darkToken}.${value}`),
+          ...textGradientStyles,
+        },
+        [`[data-panda-theme=cerberus]${conditions.systemMode}`]: {
+          backgroundImage: token(`${data.darkToken}.${value}`),
+          ...textGradientStyles,
+        },
+        // acheron
+        [`[data-panda-theme=acheron]${conditions.lightMode}`]: {
+          backgroundImage: token(`${data.acheronLightToken}.${value}`),
+          ...textGradientStyles,
+        },
+        [`[data-panda-theme=acheron]${conditions.darkMode}`]: {
+          backgroundImage: token(`${data.acheronDarkToken}.${value}`),
+          ...textGradientStyles,
+        },
+        [`[data-panda-theme=acheron]${conditions.systemMode}`]: {
+          backgroundImage: token(`${data.acheronDarkToken}.${value}`),
+          ...textGradientStyles,
+        },
+      }
+    },
+  },
+}
+
 export const utilities = {
   extend: {
     ...mxi,
@@ -218,5 +275,6 @@ export const utilities = {
     ...size,
     ...gradient,
     ...borderGradient,
+    ...textGradient,
   },
 }

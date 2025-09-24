@@ -168,4 +168,66 @@ describe('utilities', () => {
         },
     })
   })
+
+  test('should export a textGradient utility', () => {
+    const textGradient = utilities.extend.textGradient
+    const args = {
+      token: jest.fn((value: string) => `{${value}}`),
+      raw: '',
+      utils: {
+        colorMix: jest.fn(),
+      },
+    } as unknown as TransformArgs
+    const textGradientStyles = {
+      backgroundClip: 'text',
+      WebkitBackgroundClip: 'text',
+      color: 'transparent',
+    }
+
+    expect(textGradient).toBeDefined()
+    expect(textGradient.className).toEqual('text-gradient')
+    expect(textGradient.values).toEqual(gradientValues)
+    expect(textGradient.transform?.('charon-light', args)).toMatchObject({
+      '[data-color-mode=dark] &, &.dark, .dark &': {
+        backgroundImage: '{gradients.cerberus.dark.charon-light}',
+        ...textGradientStyles,
+      },
+      '[data-color-mode=light] &, &.light, .light &': {
+        backgroundImage: '{gradients.cerberus.light.charon-light}',
+        ...textGradientStyles,
+      },
+      '[data-color-mode=system] &, &.system, .system &': {
+        backgroundImage: '{gradients.cerberus.dark.charon-light}',
+        ...textGradientStyles,
+      },
+      '[data-panda-theme=acheron][data-color-mode=dark] &, &.dark, .dark &': {
+        backgroundImage: '{gradients.acheron.dark.charon-light}',
+        ...textGradientStyles,
+      },
+      '[data-panda-theme=acheron][data-color-mode=light] &, &.light, .light &':
+        {
+          backgroundImage: '{gradients.acheron.light.charon-light}',
+          ...textGradientStyles,
+        },
+      '[data-panda-theme=acheron][data-color-mode=system] &, &.system, .system &':
+        {
+          backgroundImage: '{gradients.acheron.dark.charon-light}',
+          ...textGradientStyles,
+        },
+      '[data-panda-theme=cerberus][data-color-mode=dark] &, &.dark, .dark &': {
+        backgroundImage: '{gradients.cerberus.dark.charon-light}',
+        ...textGradientStyles,
+      },
+      '[data-panda-theme=cerberus][data-color-mode=light] &, &.light, .light &':
+        {
+          backgroundImage: '{gradients.cerberus.light.charon-light}',
+          ...textGradientStyles,
+        },
+      '[data-panda-theme=cerberus][data-color-mode=system] &, &.system, .system &':
+        {
+          backgroundImage: '{gradients.cerberus.dark.charon-light}',
+          ...textGradientStyles,
+        },
+    })
+  })
 })
