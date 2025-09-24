@@ -12,10 +12,9 @@ import {
 
 const { withRecipe } = createCerberusPrimitive(iconButton)
 
-/**
- * The root element of the Button component.
- */
-export type IconButtonRootProps = CerberusPrimitiveProps<
-  HTMLArkProps<'button'> & IconButtonVariantProps
->
+interface IconButtonBaseProps
+  extends HTMLArkProps<'button'>,
+    IconButtonVariantProps {}
+export type IconButtonRootProps = CerberusPrimitiveProps<IconButtonBaseProps>
+
 export const IconButtonRoot = withRecipe(ark.button)

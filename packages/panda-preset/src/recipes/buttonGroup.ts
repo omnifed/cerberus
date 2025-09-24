@@ -26,15 +26,49 @@ export const buttonGroup: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   variants: {
     layout: {
       default: {
-        gap: '{spacing.md}',
+        '--btn-group-gap': '{spacing.md}',
       },
       attached: {
-        gap: 0,
+        '--btn-group-gap': 0,
+        '& > :is([data-scope="button"])': {
+          borderTopRightRadius: '0!',
+          borderBottomRightRadius: '0!',
+        },
+        '& > :is([data-scope="icon-button"])': {
+          borderTopLeftRadius: '0!',
+          borderBottomLeftRadius: '0!',
+          borderBottomRightRadius: '0!',
+        },
       },
+    },
+    shape: {
+      sharp: {},
+      rounded: {},
+    },
+    usage: {
+      filled: {},
+      outlined: {},
+      ghost: {},
     },
   },
 
   defaultVariants: {
     layout: 'default',
+    shape: 'sharp',
+    usage: 'filled',
   },
+
+  compoundVariants: [
+    {
+      layout: 'attached',
+      shape: 'sharp',
+      usage: 'filled',
+      css: {
+        '& > :is([data-scope="icon-button"])': {
+          borderLeft: '1px solid',
+          borderLeftColor: 'page.border.initial',
+        },
+      },
+    },
+  ],
 })

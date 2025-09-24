@@ -1,8 +1,13 @@
 'use client'
 
 import { Fragment } from 'react'
-import { Button, ButtonParts } from '@cerberus-design/react'
-import { ArrowDownRight } from '@carbon/icons-react'
+import {
+  Button,
+  ButtonGroup,
+  ButtonParts,
+  IconButton,
+} from '@cerberus-design/react'
+import { ArrowDownRight, ChevronDown } from '@carbon/icons-react'
 import { HStack } from 'styled-system/jsx'
 import { grid, gridItem } from 'styled-system/patterns'
 import Link from 'next/link'
@@ -140,5 +145,26 @@ export function OverviewButtonPreview() {
         ))}
       </div>
     </>
+  )
+}
+
+export function ButtonGroupDemo() {
+  return (
+    <ButtonGroup>
+      <Button>Button 1</Button>
+      <Button>Button 2</Button>
+      <Button>Button 3</Button>
+    </ButtonGroup>
+  )
+}
+
+export function AttachedButtonGroupDemo() {
+  return (
+    <ButtonGroup layout="attached">
+      <Button>Main action</Button>
+      <IconButton ariaLabel="View options" shape="square" usage="filled">
+        <ChevronDown />
+      </IconButton>
+    </ButtonGroup>
   )
 }

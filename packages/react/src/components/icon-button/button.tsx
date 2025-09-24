@@ -19,6 +19,11 @@ export interface IconButtonProps extends IconButtonRootProps {
 export function IconButton(props: IconButtonProps) {
   const { ariaLabel, ...rootProps } = props
   return (
-    <IconButtonRoot {...rootProps} aria-label={ariaLabel ?? 'Icon Button'} />
+    <IconButtonRoot
+      {...rootProps}
+      aria-label={ariaLabel ?? 'Icon Button'}
+      data-scope="icon-button"
+      data-part="root"
+    />
   )
 }

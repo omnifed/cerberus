@@ -21,11 +21,29 @@ describe('buttonGroup recipe', () => {
     expect(buttonGroup?.variants).toEqual({
       layout: {
         default: {
-          gap: '{spacing.md}',
+          '--btn-group-gap': '{spacing.md}',
         },
         attached: {
-          gap: 0,
+          '--btn-group-gap': 0,
+          '& > :is([data-scope="button"])': {
+            borderTopRightRadius: '0!',
+            borderBottomRightRadius: '0!',
+          },
+          '& > :is([data-scope="icon-button"])': {
+            borderTopLeftRadius: '0!',
+            borderBottomLeftRadius: '0!',
+            borderBottomRightRadius: '0!',
+          },
         },
+      },
+      shape: {
+        sharp: {},
+        rounded: {},
+      },
+      usage: {
+        filled: {},
+        outlined: {},
+        ghost: {},
       },
     })
   })
@@ -33,6 +51,24 @@ describe('buttonGroup recipe', () => {
   test('should have no default variants', () => {
     expect(buttonGroup?.defaultVariants).toEqual({
       layout: 'default',
+      shape: 'sharp',
+      usage: 'filled',
     })
+  })
+
+  test('should have correct compound variants', () => {
+    expect(buttonGroup?.compoundVariants).toMatchObject([
+      {
+        layout: 'attached',
+        shape: 'sharp',
+        usage: 'filled',
+        css: {
+          '& > :is([data-scope="icon-button"])': {
+            borderLeft: '1px solid',
+            borderLeftColor: 'page.border.initial',
+          },
+        },
+      },
+    ])
   })
 })
