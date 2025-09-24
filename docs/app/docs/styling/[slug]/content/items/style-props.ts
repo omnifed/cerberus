@@ -4,6 +4,9 @@ import Background, {
 import Border, { frontmatter as borderFrontmatter } from '../border.mdx'
 import Effects, { frontmatter as effectsFrontmatter } from '../effects.mdx'
 import Spacing, { frontmatter as spacingFrontmatter } from '../spacing.mdx'
+import TextGradient, {
+  frontmatter as textGradientFrontmatter,
+} from '../text-gradient.mdx'
 import Transitions, {
   frontmatter as transitionsFrontmatter,
 } from '../transitions.mdx'
@@ -69,6 +72,19 @@ export const styleProps = [
   },
   {
     id: '3.6',
+    label: 'Text Gradient',
+    slug: 'text-gradient',
+    frontmatter: textGradientFrontmatter,
+    href: '/docs/styling/text-gradient',
+    meta: {
+      title: 'Text Gradient Styles in Cerberus Design System',
+      description:
+        'Learn how to apply text gradient styles to components in the Cerberus Design System.',
+    },
+    Content: TextGradient,
+  },
+  {
+    id: '3.7',
     label: 'Transitions',
     slug: 'transitions',
     frontmatter: transitionsFrontmatter,
@@ -81,7 +97,7 @@ export const styleProps = [
     Content: Transitions,
   },
   {
-    id: '3.7',
+    id: '3.8',
     label: 'Z-Index',
     slug: 'z-index',
     frontmatter: zIndexFrontmatter,
