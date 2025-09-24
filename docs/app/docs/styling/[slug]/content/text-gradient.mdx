@@ -3,7 +3,8 @@ title: Text Gradient
 description: JSX style props for applying text gradients using Cerberus tokens
 ---
 
-import { cerberus } from '@cerberus-design/react'
+import CodePreview from '@/app/components/CodePreview'
+import TextGradientPreview from '../components/text-gradient/static'
 
 ## Overview
 
@@ -45,32 +46,41 @@ function Example() {
 
 Here are some examples of text gradients in action:
 
-<cerberus.div 
-  display="flex" 
-  flexDirection="column" 
-  gap="4"
-  padding="6"
-  borderRadius="lg"
-  border="1px solid"
-  borderColor="colorPalette.border.initial"
-  marginY="6"
->
-  <cerberus.h3 textGradient="cerberus.dark.charon-dark" fontSize="2xl" fontWeight="bold">
-    Charon Dark Gradient
-  </cerberus.h3>
-  
-  <cerberus.div textGradient="cerberus.light.charon-light" fontSize="lg">
-    This text uses the Charon light gradient variant.
-  </cerberus.div>
-  
-  <cerberus.span textGradient="cerberus.dark.nyx-dark" fontSize="lg" fontWeight="semibold">
-    Nyx dark gradient creates a striking effect.
-  </cerberus.span>
-  
-  <cerberus.span textGradient="cerberus.light.amphiaraus-light" fontSize="lg">
-    Amphiaraus light gradient for subtle elegance.
-  </cerberus.span>
-</cerberus.div>
+<CodePreview preview={<TextGradientPreview />}>
+```tsx title="Text gradient examples"
+import { cerberus } from '@cerberus-design/react'
+
+export default function TextGradientDemo() {
+  return (
+    <cerberus.div 
+      display="flex" 
+      flexDirection="column" 
+      gap="4"
+      padding="6"
+      borderRadius="lg"
+      border="1px solid"
+      borderColor="colorPalette.border.initial"
+    >
+      <cerberus.h3 textGradient="cerberus.dark.charon-dark" fontSize="2xl" fontWeight="bold">
+        Charon Dark Gradient
+      </cerberus.h3>
+      
+      <cerberus.div textGradient="cerberus.light.charon-light" fontSize="lg">
+        This text uses the Charon light gradient variant.
+      </cerberus.div>
+      
+      <cerberus.span textGradient="cerberus.dark.nyx-dark" fontSize="lg" fontWeight="semibold">
+        Nyx dark gradient creates a striking effect.
+      </cerberus.span>
+      
+      <cerberus.span textGradient="cerberus.light.amphiaraus-light" fontSize="lg">
+        Amphiaraus light gradient for subtle elegance.
+      </cerberus.span>
+    </cerberus.div>
+  )
+}
+```
+</CodePreview>
 
 ## Available Gradient Tokens
 
@@ -84,28 +94,26 @@ Cerberus provides several gradient variants, each available in light and dark mo
 - `hades-light` / `hades-dark`
 - `asphodel-light` / `asphodel-dark`
 
-## Using with CSS Function
+## Advanced
 
-For more advanced use cases, you can use the CSS function with conditional styles:
+For theme-aware gradients, you can use conditional styles directly on the cerberus factory:
 
 ```tsx
-import { css } from 'styled-system/css'
+import { cerberus } from '@cerberus-design/react'
 
 function Example() {
   return (
-    <span
-      className={css({
-        display: 'block',
-        _cerberusTheme: {
-          textGradient: 'cerberus.dark.charon-dark',
-        },
-        _acheronTheme: {
-          textGradient: 'acheron.dark.charon-dark',
-        },
-      })}
+    <cerberus.span
+      display="block"
+      _cerberusTheme={{
+        textGradient: 'cerberus.dark.charon-dark',
+      }}
+      _acheronTheme={{
+        textGradient: 'acheron.dark.charon-dark',
+      }}
     >
       Theme-aware gradient text
-    </span>
+    </cerberus.span>
   )
 }
 ```
