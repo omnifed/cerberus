@@ -1,7 +1,6 @@
 'use client'
 
 import type { PropsWithChildren } from 'react'
-import type { ButtonVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
 import { splitProps } from '../../utils'
 import { Button, ButtonGroup, type ButtonProps } from '../button/index'
@@ -35,7 +34,7 @@ export function SplitButton(props: PropsWithChildren<SplitButtonProps>) {
   const iconShape = actionProps.shape === 'rounded' ? 'circle' : 'square'
 
   return (
-    <ButtonGroup layout="attached" usage={usage as ButtonVariantProps['usage']}>
+    <ButtonGroup layout="attached" shape={actionProps.shape}>
       <Button usage={usage} {...actionProps}>
         {actionText}
       </Button>

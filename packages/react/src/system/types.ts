@@ -33,7 +33,7 @@ export type WithRecipeOptions = {
   defaultProps?: Record<string, unknown>
 }
 
-export interface BaseCerberusProps extends ArkFactoryProps {
+export interface BaseCerberusProps extends ArkFactoryProps, JsxStyleProps {
   /**
    * The CSS styles applied to the component. Supports CSS Properties
    * declarations and style objects.
@@ -43,9 +43,7 @@ export interface BaseCerberusProps extends ArkFactoryProps {
 
 // Primitive Response
 
-export type CerberusPrimitiveProps<T> = PropsWithChildren<
-  BaseCerberusProps & JsxStyleProps & T
->
+export type CerberusPrimitiveProps<T> = PropsWithChildren<BaseCerberusProps & T>
 
 export type CerberusPrimitiveEl<T extends ElementType = ElementType> =
   CerberusComponent<CerberusPrimitiveProps<T> & HTMLCerberusProps<T>>

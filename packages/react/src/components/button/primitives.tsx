@@ -8,6 +8,7 @@ import {
   createCerberusPrimitive,
   type CerberusPrimitiveProps,
 } from '../../system/index'
+import type { HTMLAttributes } from 'react'
 
 /**
  * This module contains the Button component primitives.
@@ -22,10 +23,15 @@ const { withRecipe: withGroupRecipe } = createCerberusPrimitive(buttonGroup)
  */
 export const ButtonRoot = withRecipe(ark.button)
 
+const ButtonGroupEl = withGroupRecipe(ark.div)
+export type ButtonGroupProps = CerberusPrimitiveProps<
+  HTMLAttributes<HTMLDivElement> & ButtonGroupVariantProps
+>
+
 /**
  * The ButtonGroup component is a wrapper that groups multiple Button
  * components together.
  */
-export const ButtonGroup = withGroupRecipe(ark.div)
-export type ButtonGroupProps = CerberusPrimitiveProps<HTMLDivElement> &
-  ButtonGroupVariantProps
+export function ButtonGroup(props: ButtonGroupProps) {
+  return <ButtonGroupEl {...props} />
+}
