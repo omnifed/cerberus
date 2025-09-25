@@ -90,15 +90,18 @@ export function normalizeNestedTokens(data: NormalizeNestedTokensProps) {
 /**
  * Extracts the primitive token reference from a semantic token value
  * @param tokenValue - The semantic token value object containing base/_light/_dark values
- * @param mode - Current theme mode ('light' or 'dark')
+ * @param mode - Current theme mode ('light', 'dark', or 'system')
  * @returns The primitive token reference (e.g., "cerberus.neutral.80")
  */
 export function getPrimitiveTokenReference(
   tokenValue: SemanticToken['value'],
-  mode: 'light' | 'dark' = 'dark',
+  mode: 'light' | 'dark' | 'system' = 'dark',
 ): string | null {
+  // Handle system mode by defaulting to dark mode
+  const resolvedMode = mode === 'system' ? 'dark' : mode
+
   // Get the appropriate value based on mode
-  const modeKey = `_${mode}` as keyof typeof tokenValue
+  const modeKey = `_${resolvedMode}` as keyof typeof tokenValue
   const rawValue = tokenValue[modeKey] || tokenValue.base
 
   if (!rawValue) return null
