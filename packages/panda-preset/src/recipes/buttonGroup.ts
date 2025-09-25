@@ -35,9 +35,10 @@ export const buttonGroup: RecipeConfig<RecipeVariantRecord> = defineRecipe({
           borderBottomRightRadius: '0!',
         },
         '& > :is([data-scope="icon-button"])': {
+          borderLeft: '1px solid',
+          borderLeftColor: 'page.border.initial',
           borderTopLeftRadius: '0!',
           borderBottomLeftRadius: '0!',
-          borderBottomRightRadius: '0!',
         },
       },
     },
@@ -45,28 +46,20 @@ export const buttonGroup: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       sharp: {},
       rounded: {},
     },
-    usage: {
-      filled: {},
-      outlined: {},
-      ghost: {},
-    },
   },
 
   defaultVariants: {
     layout: 'default',
     shape: 'sharp',
-    usage: 'filled',
   },
 
   compoundVariants: [
     {
       layout: 'attached',
       shape: 'sharp',
-      usage: 'filled',
       css: {
         '& > :is([data-scope="icon-button"])': {
-          borderLeft: '1px solid',
-          borderLeftColor: 'page.border.initial',
+          borderBottomRightRadius: '0!',
         },
       },
     },

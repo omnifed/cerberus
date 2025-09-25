@@ -12,7 +12,9 @@ import {
   BasicButtonPreview,
   WithIconButtonPreview,
   PendingButtonDemo,
+  RoundedButtonPreview,
   SizesDemo,
+  UsageDemo,
   CustomButtonPreview,
   ButtonGroupDemo,
   AttachedButtonGroupDemo,
@@ -22,7 +24,7 @@ import {
 import { Button, ButtonParts, ButtonGroup } from '@cerberus/react'
 ```
 
-## Usage
+## Basic Usage
 
 <CodePreview preview={<BasicButtonPreview />}>
 ```tsx title="button.tsx"
@@ -71,6 +73,44 @@ function PendingButtonDemo() {
       <ButtonParts.Icon />
       Pending
     </ButtonParts.Root>
+  )
+}
+```
+</CodePreview>
+
+## Shapes
+
+The `Button` component comes in two shapes: `sharp` and `rounded`. You can set the shape by using the `shape` prop.
+
+<CodePreview preview={<RoundedButtonPreview />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+function RoundedButtonPreview() {
+  return (
+    <Button shape="rounded">Rounded styles</Button>
+  )
+}
+```
+</CodePreview>
+
+## Usage
+
+The `Button` component comes in three usage styles: `filled`, `outlined`, and `ghost`. You can set the usage by using the `usage` prop.
+
+<CodePreview preview={<UsageDemo />}>
+```tsx title="button.tsx"
+import { Button } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+function UsageDemo() {
+  return (
+    <HStack>
+      <Button usage="filled">Filled</Button>
+      <Button usage="outlined">Outlined</Button>
+      <Button usage="ghost">Ghost</Button>
+    </HStack>
   )
 }
 ```
@@ -125,15 +165,25 @@ You can create an attached button group by setting the `layout` prop to `attache
 ```tsx title="button-group.tsx"
 import { Button, ButtonGroup, IconButton } from '@cerberus/react'
 import { ChevronDown } from '@carbon/icons-react'
+import { HStack } from 'styled-system/jsx'
 
 function AttachedButtonGroupDemo() {
   return (
-    <ButtonGroup layout="attached">
-      <Button>Main action</Button>
-      <IconButton ariaLabel="View options" shape="square" usage="filled">
-        <ChevronDown />
-      </IconButton>
-    </ButtonGroup>
+    <HStack justify="center" w="full">
+      <ButtonGroup layout="attached">
+        <Button>Main action</Button>
+        <IconButton ariaLabel="View options" shape="square" usage="filled">
+          <ChevronDown />
+        </IconButton>
+      </ButtonGroup>
+
+      <ButtonGroup layout="attached">
+        <Button usage="outlined">Main action</Button>
+        <IconButton ariaLabel="View options" shape="square" usage="outlined">
+          <ChevronDown />
+        </IconButton>
+      </ButtonGroup>
+    </HStack>
   )
 }
 ```
@@ -184,6 +234,13 @@ The `Button` component is an abstraction of the primitives and accepts the follo
 | shape | `sharp`     | The shape of the button.              |
 | pending | `false`    | The loading state of the button. When a button has an `Icon` it will replace it with a spinner. When not, is shows a disabled state.     |
 | asChild | | Render the Button as the child component. |
+
+#### ButtonGroup Props
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| layout   | `default` | The layout of the button group. Can be `default` or `attached`. |
+| shape    | `sharp`   | The shape of the buttons in the group. Should match the `shape` prop of the `Button` components used. |
 
 ### Parts
 

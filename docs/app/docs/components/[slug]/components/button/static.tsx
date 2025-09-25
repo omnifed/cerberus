@@ -69,6 +69,16 @@ export function SizesDemo() {
   )
 }
 
+export function UsageDemo() {
+  return (
+    <HStack>
+      <Button usage="filled">Filled</Button>
+      <Button usage="outlined">Outlined</Button>
+      <Button usage="ghost">Ghost</Button>
+    </HStack>
+  )
+}
+
 export function CustomButtonPreview() {
   return (
     <Button
@@ -160,11 +170,20 @@ export function ButtonGroupDemo() {
 
 export function AttachedButtonGroupDemo() {
   return (
-    <ButtonGroup layout="attached">
-      <Button>Main action</Button>
-      <IconButton ariaLabel="View options" shape="square" usage="filled">
-        <ChevronDown />
-      </IconButton>
-    </ButtonGroup>
+    <HStack justify="center" w="full">
+      <ButtonGroup layout="attached">
+        <Button>Main action</Button>
+        <IconButton ariaLabel="View options" shape="square" usage="filled">
+          <ChevronDown />
+        </IconButton>
+      </ButtonGroup>
+
+      <ButtonGroup layout="attached">
+        <Button usage="outlined">Main action</Button>
+        <IconButton ariaLabel="View options" shape="square" usage="outlined">
+          <ChevronDown />
+        </IconButton>
+      </ButtonGroup>
+    </HStack>
   )
 }
