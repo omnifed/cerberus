@@ -4,6 +4,20 @@ description: A list of colors available in Cerberus.
 ---
 
 import { PaletteGroup }  from '../components/colors/palette-group'
+import { PrimitiveColorGroup } from '../components/colors/primitive-color-group'
+
+## Primitives
+
+Cerberus provides a comprehensive set of **primitive colors** (`theme.tokens.colors`) that serve as the foundation for all semantic tokens. These are the raw color values that semantic tokens reference.
+
+<PrimitiveColorGroup />
+
+Primitive colors are organized by color families and include numerical scales (e.g., `neutral.0` to `neutral.100`) that provide fine-grained control over color variations. These colors form the building blocks that semantic tokens reference to create meaningful, contextual color usage.
+
+**How Primitives Relate to Semantic Tokens:**
+- Semantic tokens like `page.bg.initial` reference primitive colors using token syntax: `{colors.cerberus.neutral.5}`
+- This creates a clear hierarchy: primitives → semantic tokens → component usage
+- Customizing primitive colors automatically updates all semantic tokens that reference them
 
 ## Semantic Tokens
 
