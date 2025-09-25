@@ -3,6 +3,7 @@ import { normalizeTokens, getTokenList } from '@/app/docs/utils/color-helpers'
 import { Box, Grid, GridItem, VStack } from '@/styled-system/jsx'
 import { For, Text } from '@cerberus-design/react'
 import { HexValue } from './hex-value'
+import { PrimitiveBinding } from './primitive-binding'
 
 interface PaletteGroupProps {
   palette: Sentiment
@@ -55,6 +56,7 @@ export function PaletteGroup(props: PaletteGroupProps) {
                 <Text as="small" textStyle="label-sm">
                   {toDotNotation(usage)}
                 </Text>
+                <PrimitiveBinding value={(token as SemanticToken).value} />
                 <HexValue value={(token as SemanticToken).value} />
               </VStack>
             </GridItem>
