@@ -1,7 +1,9 @@
 'use client'
 
 import type { PropsWithChildren } from 'react'
-import { Button, ButtonGroup } from '../button/index'
+import { useCerberusContext } from '../../context/cerberus'
+import { splitProps } from '../../utils'
+import { Button, ButtonGroup, type ButtonProps } from '../button/index'
 import { IconButton } from '../icon-button/index'
 import { Menu, MenuTrigger, MenuContent } from '../menu/index'
 
@@ -10,8 +12,8 @@ import { Menu, MenuTrigger, MenuContent } from '../menu/index'
  * @module SplitButton
  */
 
-export interface SplitButtonProps {
-  something?: boolean
+export interface SplitButtonProps extends ButtonProps {
+  actionText: string
 }
 
 /**
@@ -20,14 +22,35 @@ export interface SplitButtonProps {
  * @definition [Cerberus docs](https://cerberus.digitalu.designdocs/components/split-button)
  */
 export function SplitButton(props: PropsWithChildren<SplitButtonProps>) {
+  const [elProps, { usage = 'filled', actionText }, actionProps] = splitProps(
+    props,
+    ['children'],
+    ['usage', 'actionText'],
+  )
+
+  const { icons } = useCerberusContext()
+  const { selectArrow: SelectArrow } = icons
+
+  const iconShape = actionProps.shape === 'rounded' ? 'circle' : 'square'
+
   return (
-    <ButtonGroup layout="attached">
-      <Button>ACTION</Button>
+    <ButtonGroup layout="attached" usage={usage}>
+      <Button usage={usage} {...actionProps}>
+        {actionText}
+      </Button>
+
       <Menu>
         <MenuTrigger>
-          <IconButton ariaLabel="More options">X</IconButton>
+          <IconButton
+            ariaLabel="More options"
+            palette={actionProps.palette}
+            shape={iconShape}
+            usage={usage}
+          >
+            <SelectArrow />
+          </IconButton>
         </MenuTrigger>
-        <MenuContent>{props.children}</MenuContent>
+        <MenuContent>{elProps.children}</MenuContent>
       </Menu>
     </ButtonGroup>
   )

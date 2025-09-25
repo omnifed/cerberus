@@ -1,0 +1,114 @@
+---
+title: Split Button
+description: A button component that combines a primary action with a dropdown menu for additional actions.
+npm: '@cerberus-design/react'
+source: 'components/split-button'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { StaticPreview, BasicDemo } from '../components/split-button/static'
+
+```ts
+import { SplitButton, MenuItem } from '@cerberus/react'
+```
+
+## Usage
+
+The SplitButton component combines a primary action button with a dropdown menu for additional related actions.
+
+It's ideal for situations where you have a primary action that users perform most often, but also want to provide quick access to related secondary actions.
+
+<CodePreview preview={<StaticPreview />}>
+
+```tsx
+import { SplitButton, MenuItem } from '@cerberus/react'
+import { Save, Download } from '@carbon/icons-react'
+
+function StaticPreview() {
+  return (
+    <SplitButton>
+      <MenuItem value="save">
+        <Save size={16} />
+        Save
+      </MenuItem>
+      <MenuItem value="save_as">
+        <Save size={16} />
+        Save As...
+      </MenuItem>
+      <MenuItem value="export">
+        <Download size={16} />
+        Export
+      </MenuItem>
+    </SplitButton>
+  )
+}
+```
+
+</CodePreview>
+
+## Main Action
+
+The SplitButton accepts all standard button props for the primary action button, allowing you to customize its behavior.
+
+<CodePreview preview={<BasicDemo />}>
+```tsx
+import { SplitButton, MenuItem } from '@cerberus/react'
+import { Save, Download } from '@carbon/icons-react'
+
+function BasicDemo() {
+  return (
+    <SplitButton actionText="Main Action" pending>
+      <MenuItem value="save">
+        <Save size={16} />
+        Save
+      </MenuItem>
+      <MenuItem value="save_as">
+        <Save size={16} />
+        Save As...
+      </MenuItem>
+      <MenuItem value="export">
+        <Download size={16} />
+        Export
+      </MenuItem>
+    </SplitButton>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+The SplitButton component is built using the following primitive components:
+
+| Component    | Description                                           |
+| ------------ | ----------------------------------------------------- |
+| ButtonGroup  | Groups the primary button and dropdown trigger together |
+| Button       | The primary action button                             |
+| Menu         | The dropdown menu container                           |
+| MenuTrigger  | The dropdown trigger (IconButton)                    |
+| MenuContent  | The dropdown menu content container                   |
+| MenuItem     | Individual menu items within the dropdown            |
+
+## API
+
+### SplitButton
+
+The `SplitButton` component accepts the following props:
+
+| Name      | Default | Description                                      |
+| --------- | ------- | ------------------------------------------------ |
+| children  |         | MenuItem components to display in the dropdown  |
+| actionText |         | The text for the primary action button          |
+
+The SplitButton component internally uses:
+- [ButtonGroup](https://cerberus.digitalu.design/docs/components/button) for layout
+- [Button](https://cerberus.digitalu.design/docs/components/button) for the primary action
+- [Menu](https://cerberus.digitalu.design/docs/components/menu) for the dropdown functionality
+- [IconButton](https://cerberus.digitalu.design/docs/components/icon-button) for the dropdown trigger
+
+### MenuItem
+
+Use MenuItem components as children of SplitButton to define the available actions in the dropdown menu. See the [Menu documentation](https://cerberus.digitalu.design/docs/components/menu) for more details on MenuItem props.
+
+<NoteAdmonition description="The SplitButton component uses an attached ButtonGroup layout to ensure the primary button and dropdown trigger appear as a single unified control." />

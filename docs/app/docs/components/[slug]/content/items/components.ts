@@ -44,6 +44,9 @@ import PromptModal, {
 import Radio, { frontmatter as radioFrontmatter } from '../radio.mdx'
 import Rating, { frontmatter as ratingFrontmatter } from '../rating.mdx'
 import Select, { frontmatter as selectFrontmatter } from '../select.mdx'
+import SplitButton, {
+  frontmatter as splitButtonFrontmatter,
+} from '../split-button.mdx'
 import Switch, { frontmatter as switchFrontmatter } from '../switch.mdx'
 import Table, { frontmatter as tableFrontmatter } from '../table.mdx'
 import Tabs, { frontmatter as tabsFrontmatter } from '../tabs.mdx'
@@ -396,6 +399,19 @@ export const components = [
         'Explore the Select component in the Cerberus Design System for creating dropdown selections.',
     },
     Content: Select,
+  },
+  {
+    id: '1.3.22a',
+    label: 'Split Button',
+    slug: 'split-button',
+    href: '/docs/components/split-button',
+    frontmatter: splitButtonFrontmatter,
+    meta: {
+      title: 'Split Button Component in Cerberus Design System',
+      description:
+        'Explore the Split Button component in the Cerberus Design System for creating dropdown selections.',
+    },
+    Content: SplitButton,
   },
   {
     id: '1.3.23',
