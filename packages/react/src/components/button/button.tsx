@@ -27,23 +27,31 @@ const ButtonContext = createContext<ButtonContextValue>({
   pending: false,
 })
 
-export type ButtonProps = CerberusPrimitiveProps<
-  HTMLArkProps<'button'> &
-    ButtonVariantProps & {
-      pending?: boolean
-    }
->
+export interface ButtonProps
+  extends ButtonVariantProps,
+    HTMLArkProps<'button'> {
+  /**
+   * If true, the button will show a loading spinner.
+   */
+  pending?: boolean
+  disabled?: boolean
+}
 
 /**
  * A component that allows the user to perform actions
  * @see https://cerberus.digitalu.design/react/button
  */
-export function Button(props: ButtonProps) {
+export function Button(props: CerberusPrimitiveProps<ButtonProps>) {
   const { pending = false, ...nativeProps } = props
   const value = useMemo(() => ({ pending }), [pending])
   return (
     <ButtonContext.Provider value={value}>
-      <ButtonRoot {...nativeProps} disabled={pending || nativeProps.disabled} />
+      <ButtonRoot
+        {...nativeProps}
+        data-scope="button"
+        data-part="root"
+        disabled={pending ?? nativeProps.disabled}
+      />
     </ButtonContext.Provider>
   )
 }
@@ -56,7 +64,7 @@ export function ButtonIcon(props: PropsWithChildren<object>) {
   const { pending } = useContext(ButtonContext)
   return (
     <Show when={pending} fallback={<>{props.children}</>}>
-      <Box w="4">
+      <Box data-scope="button" data-part="button-spinner" w="4">
         <Spinner />
       </Box>
     </Show>

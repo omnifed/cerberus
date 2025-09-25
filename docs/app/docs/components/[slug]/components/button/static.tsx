@@ -1,8 +1,13 @@
 'use client'
 
 import { Fragment } from 'react'
-import { Button, ButtonParts } from '@cerberus-design/react'
-import { ArrowDownRight } from '@carbon/icons-react'
+import {
+  Button,
+  ButtonGroup,
+  ButtonParts,
+  IconButton,
+} from '@cerberus-design/react'
+import { ArrowDownRight, ChevronDown } from '@carbon/icons-react'
 import { HStack } from 'styled-system/jsx'
 import { grid, gridItem } from 'styled-system/patterns'
 import Link from 'next/link'
@@ -60,6 +65,16 @@ export function SizesDemo() {
     <HStack>
       <Button size="sm">Small</Button>
       <Button size="md">Medium</Button>
+    </HStack>
+  )
+}
+
+export function UsageDemo() {
+  return (
+    <HStack>
+      <Button usage="filled">Filled</Button>
+      <Button usage="outlined">Outlined</Button>
+      <Button usage="ghost">Ghost</Button>
     </HStack>
   )
 }
@@ -140,5 +155,35 @@ export function OverviewButtonPreview() {
         ))}
       </div>
     </>
+  )
+}
+
+export function ButtonGroupDemo() {
+  return (
+    <ButtonGroup>
+      <Button>Button 1</Button>
+      <Button>Button 2</Button>
+      <Button>Button 3</Button>
+    </ButtonGroup>
+  )
+}
+
+export function AttachedButtonGroupDemo() {
+  return (
+    <HStack justify="center" w="full">
+      <ButtonGroup layout="attached">
+        <Button>Main action</Button>
+        <IconButton ariaLabel="View options" shape="square" usage="filled">
+          <ChevronDown />
+        </IconButton>
+      </ButtonGroup>
+
+      <ButtonGroup layout="attached">
+        <Button usage="outlined">Main action</Button>
+        <IconButton ariaLabel="View options" shape="square" usage="outlined">
+          <ChevronDown />
+        </IconButton>
+      </ButtonGroup>
+    </HStack>
   )
 }
