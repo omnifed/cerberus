@@ -1,7 +1,7 @@
 'use client'
 
-import { type HTMLArkProps } from '@ark-ui/react/factory'
 import {
+  type ButtonHTMLAttributes,
   type PropsWithChildren,
   createContext,
   useContext,
@@ -29,12 +29,11 @@ const ButtonContext = createContext<ButtonContextValue>({
 
 export interface ButtonProps
   extends ButtonVariantProps,
-    HTMLArkProps<'button'> {
+    ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * If true, the button will show a loading spinner.
    */
   pending?: boolean
-  disabled?: boolean
 }
 
 /**
@@ -50,7 +49,7 @@ export function Button(props: CerberusPrimitiveProps<ButtonProps>) {
         {...nativeProps}
         data-scope="button"
         data-part="root"
-        disabled={pending ?? nativeProps.disabled}
+        disabled={pending || props.disabled}
       />
     </ButtonContext.Provider>
   )

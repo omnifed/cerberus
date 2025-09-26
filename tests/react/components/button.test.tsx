@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'bun:test'
 import { render, screen } from '@testing-library/react'
-import { Button, ButtonIcon } from '@cerberus-design/react'
+import { Button, ButtonIcon, ButtonParts } from '@cerberus-design/react'
 import { Model } from '@carbon/icons-react'
 
 describe('Button', () => {
@@ -72,5 +72,21 @@ describe('Button', () => {
         hidden: true,
       }),
     ).toBeInTheDocument()
+  })
+
+  test('should render a disabled button', () => {
+    render(<Button disabled>it works</Button>)
+    expect(screen.getByText(/it works/i)).toBeDisabled()
+  })
+
+  test('should render a pending button', () => {
+    render(
+      <ButtonParts.Root pending>
+        it works
+        <ButtonParts.Icon />
+      </ButtonParts.Root>,
+    )
+    expect(screen.getByText(/it works/i)).toBeDisabled()
+    expect(screen.getByRole('status')).toBeInTheDocument()
   })
 })
