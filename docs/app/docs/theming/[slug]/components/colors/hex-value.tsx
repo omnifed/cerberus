@@ -1,7 +1,9 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import type { SemanticToken } from '@cerberus-design/panda-preset'
 import { Text, useThemeContext } from '@cerberus-design/react'
+import { getSemanticTokenHexValue } from '@/app/docs/utils/color-helpers'
 
 interface HexValueProps {
   value: SemanticToken['value']
@@ -9,29 +11,27 @@ interface HexValueProps {
 
 export function HexValue(props: HexValueProps) {
   const { mode } = useThemeContext()
+  const [hexValue, setHexValue] = useState<string | null>(null)
+  const [isClient, setIsClient] = useState(false)
 
-  // Get the current value based on the active mode
-  const formattedMode = `_${mode}` as const
-  const modeValue = props.value[formattedMode as keyof typeof props.value]
+  // Handle client-side hydration
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
-  // Format the token to match the root CSS Property
-  const tokenValue = (modeValue ?? props.value.base)
-    .replace(/[{}]/g, '')
-    .replaceAll('.', '-')
-  const value = `--cerberus-${tokenValue}`
+  // Get the resolved hex color value based on the current theme and mode
+  useEffect(() => {
+    if (isClient) {
+      const value = getSemanticTokenHexValue(props.value, mode)
+      setHexValue(value)
+    }
+  }, [props.value, mode, isClient])
 
-  // TODO: Figure out how to get the correct value from the theme. Right now it
-  // just returns cerberus tokens
-  const colorValue = value
-
-  function formatHex() {
-    if (!colorValue) return null
-    return null
-  }
+  if (!isClient || !hexValue) return null
 
   return (
     <Text as="small" color="page.text.100" textStyle="label-sm">
-      {formatHex()}
+      {hexValue}
     </Text>
   )
 }
