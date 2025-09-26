@@ -1,7 +1,9 @@
+'use client'
+
 import type { SemanticToken, Sentiment } from '@cerberus-design/panda-preset'
 import { normalizeTokens, getTokenList } from '@/app/docs/utils/color-helpers'
 import { Box, Grid, GridItem, VStack } from '@/styled-system/jsx'
-import { For, Text } from '@cerberus-design/react'
+import { For, Text, useThemeContext } from '@cerberus-design/react'
 import { HexValue } from './hex-value'
 import { PrimitiveBinding } from './primitive-binding'
 
@@ -11,7 +13,8 @@ interface PaletteGroupProps {
 
 export function PaletteGroup(props: PaletteGroupProps) {
   const { palette } = props
-  const tokens = normalizeTokens(getTokenList(palette), palette)
+  const { theme } = useThemeContext()
+  const tokens = normalizeTokens(getTokenList(palette, theme), palette)
 
   function toDotNotation(value: string) {
     return value.replace(/-/g, '.')

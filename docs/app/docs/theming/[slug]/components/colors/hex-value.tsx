@@ -10,7 +10,7 @@ interface HexValueProps {
 }
 
 export function HexValue(props: HexValueProps) {
-  const { mode } = useThemeContext()
+  const { mode, theme } = useThemeContext()
   const [hexValue, setHexValue] = useState<string | null>(null)
   const [isClient, setIsClient] = useState(false)
 
@@ -25,7 +25,7 @@ export function HexValue(props: HexValueProps) {
       const value = getSemanticTokenHexValue(props.value, mode)
       setHexValue(value)
     }
-  }, [props.value, mode, isClient])
+  }, [props.value, mode, theme, isClient])
 
   if (!isClient || !hexValue) return null
 
