@@ -26,10 +26,10 @@ describe('acheron dangerTokens', () => {
 
   test('should have a acheron bg.hover property', () => {
     expect(dangerTokens.danger.bg.hover.value.base).toEqual(
-      formatSemanticToken`acheron.danger.50`,
+      formatSemanticToken`acheron.danger.40`,
     )
     expect(dangerTokens.danger.bg.hover.value._darkMode).toEqual(
-      formatSemanticToken`acheron.danger.50`,
+      formatSemanticToken`acheron.danger.40`,
     )
     expect(dangerTokens.danger.bg.hover.value._lightMode).toEqual(
       formatSemanticToken`acheron.danger.80`,
