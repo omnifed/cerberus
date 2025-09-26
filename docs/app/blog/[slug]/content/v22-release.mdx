@@ -27,7 +27,7 @@ We're thrilled to announce the release of Cerberus v0.22! This update introduces
 
 Organize related actions with the new `ButtonGroup` component. Perfect for creating sets of related buttons that work together as a cohesive unit.
 
-<CodePreview preview={<ButtonGroupDemo />}>
+<CodePreview preview={<ButtonGroupDemo />} />
 ```tsx
 import { Button, ButtonGroup } from '@cerberus/react'
 
@@ -41,13 +41,12 @@ function ButtonGroupDemo() {
   )
 }
 ```
-</CodePreview>
 
 #### Attached Layout
 
 Create seamless button combinations with the attached layout, ideal for primary actions with additional options.
 
-<CodePreview preview={<AttachedButtonGroupDemo />}>
+<CodePreview preview={<AttachedButtonGroupDemo />} />
 ```tsx
 import { Button, ButtonGroup, IconButton } from '@cerberus/react'
 import { ChevronDown } from '@carbon/icons-react'
@@ -73,13 +72,12 @@ function AttachedButtonGroupDemo() {
   )
 }
 ```
-</CodePreview>
 
 ### SplitButton
 
 Combine primary actions with dropdown menus using the new `SplitButton` component. This pattern is perfect when you have a main action users perform frequently, plus related secondary actions.
 
-<CodePreview preview={<SplitButtonDemo />}>
+<CodePreview preview={<SplitButtonDemo />} />
 ```tsx
 import { SplitButton, MenuItem } from '@cerberus/react'
 import { Save, Download } from '@carbon/icons-react'
@@ -103,7 +101,6 @@ function SplitButtonDemo() {
   )
 }
 ```
-</CodePreview>
 
 ## Enhanced Accessibility & UX
 
@@ -111,7 +108,7 @@ function SplitButtonDemo() {
 
 Improve accessibility compliance with the new `hideLabel` prop for Field components. Labels remain accessible to screen readers while being visually hidden when the context makes them redundant.
 
-<CodePreview preview={<HiddenLabelPreview />}>
+<CodePreview preview={<HiddenLabelPreview />} />
 ```tsx
 import { Field, Input } from '@cerberus/react'
 import { Box, VStack } from 'styled-system/jsx'
@@ -139,7 +136,6 @@ function HiddenLabelFields() {
   )
 }
 ```
-</CodePreview>
 
 ### CTAModal Content Prop
 
