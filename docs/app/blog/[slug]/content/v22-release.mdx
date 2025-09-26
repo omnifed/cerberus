@@ -1,0 +1,238 @@
+---
+slug: cerberus-v022-release
+date: 2025-01-21
+author: caseyBaggz
+title: Cerberus v0.22 Release
+description: Powerful New Components and Enhanced User Experience
+category: release
+version: 0.22.0
+timeToRead: 5
+tag: Release
+---
+
+import BashTabs from '@/app/components/bash-tabs'
+import CodePreview from '@/app/components/CodePreview'
+
+import { ButtonGroupDemo, AttachedButtonGroupDemo } from '@/app/docs/components/[slug]/components/button/static'
+import { StaticPreview as SplitButtonDemo } from '@/app/docs/components/[slug]/components/split-button/static'
+import { HiddenLabelPreview } from '@/app/docs/components/[slug]/components/field/static'
+
+We're thrilled to announce the release of Cerberus v0.22! This update introduces powerful new components that enhance user interactions, along with flexible customization options that make building intuitive interfaces easier than ever.
+
+> This release focuses on empowering developers with versatile button components and enhanced form accessibility.
+
+## New Components
+
+### ButtonGroup
+
+Organize related actions with the new `ButtonGroup` component. Perfect for creating sets of related buttons that work together as a cohesive unit.
+
+<CodePreview preview={<ButtonGroupDemo />} />
+```tsx
+import { Button, ButtonGroup } from '@cerberus/react'
+
+function ButtonGroupDemo() {
+  return (
+    <ButtonGroup>
+      <Button>Button 1</Button>
+      <Button>Button 2</Button>
+      <Button>Button 3</Button>
+    </ButtonGroup>
+  )
+}
+```
+
+#### Attached Layout
+
+Create seamless button combinations with the attached layout, ideal for primary actions with additional options.
+
+<CodePreview preview={<AttachedButtonGroupDemo />} />
+```tsx
+import { Button, ButtonGroup, IconButton } from '@cerberus/react'
+import { ChevronDown } from '@carbon/icons-react'
+import { HStack } from 'styled-system/jsx'
+
+function AttachedButtonGroupDemo() {
+  return (
+    <HStack justify="center" w="full">
+      <ButtonGroup layout="attached">
+        <Button>Main action</Button>
+        <IconButton ariaLabel="View options" shape="square" usage="filled">
+          <ChevronDown />
+        </IconButton>
+      </ButtonGroup>
+
+      <ButtonGroup layout="attached">
+        <Button usage="outlined">Main action</Button>
+        <IconButton ariaLabel="View options" shape="square" usage="outlined">
+          <ChevronDown />
+        </IconButton>
+      </ButtonGroup>
+    </HStack>
+  )
+}
+```
+
+### SplitButton
+
+Combine primary actions with dropdown menus using the new `SplitButton` component. This pattern is perfect when you have a main action users perform frequently, plus related secondary actions.
+
+<CodePreview preview={<SplitButtonDemo />} />
+```tsx
+import { SplitButton, MenuItem } from '@cerberus/react'
+import { Save, Download } from '@carbon/icons-react'
+
+function SplitButtonDemo() {
+  return (
+    <SplitButton actionText="Copy">
+      <MenuItem value="save">
+        <Save size={16} />
+        Save
+      </MenuItem>
+      <MenuItem value="save_as">
+        <Save size={16} />
+        Save As
+      </MenuItem>
+      <MenuItem value="export">
+        <Download size={16} />
+        Export
+      </MenuItem>
+    </SplitButton>
+  )
+}
+```
+
+## Enhanced Accessibility & UX
+
+### Hidden Field Labels
+
+Improve accessibility compliance with the new `hideLabel` prop for Field components. Labels remain accessible to screen readers while being visually hidden when the context makes them redundant.
+
+<CodePreview preview={<HiddenLabelPreview />} />
+```tsx
+import { Field, Input } from '@cerberus/react'
+import { Box, VStack } from 'styled-system/jsx'
+
+function HiddenLabelFields() {
+  return (
+    <Box w="1/2">
+      <VStack alignItems="flex-start" gap="lg" w="full">
+        <Field
+          label="Search something"
+          helperText="Label is hidden but accessible to screen readers"
+          hideLabel
+        >
+          <Input name="search" type="search" placeholder="Type to search..." />
+        </Field>
+        <Field
+          label="Global search"
+          hideLabel
+          required
+        >
+          <Input name="global-search" type="search" placeholder="Search the entire site..." />
+        </Field>
+      </VStack>
+    </Box>
+  )
+}
+```
+
+### CTAModal Content Prop
+
+The `CTAModal` now supports a flexible `content` prop that accepts custom JSX, giving you complete control over modal content beyond simple text descriptions.
+
+```tsx
+import { useCTAModal, createCTAModalActions, Field, Input, Textarea } from '@cerberus/react'
+import { VStack } from 'styled-system/jsx'
+
+function CTAWithCustomContent() {
+  const { show } = useCTAModal()
+
+  const handleClick = useCallback(() => {
+    show({
+      heading: 'Create New Item',
+      content: (
+        <VStack alignItems="flex-start" gap="lg" w="full">
+          <Field label="Name">
+            <Input placeholder="e.g., Cerberus" />
+          </Field>
+          <Field label="Description">
+            <Textarea placeholder="e.g., Cerberus is a design system..." />
+          </Field>
+        </VStack>
+      ),
+      actions: createCTAModalActions([
+        {
+          text: 'Create',
+          handleClick: () => alert('Created'),
+        },
+        {
+          text: 'Cancel',
+          handleClick: () => {},
+        },
+      ]),
+    })
+  }, [show])
+
+  return <Button onClick={handleClick}>Create Item</Button>
+}
+```
+
+### ConfirmModal Avatar Toggle
+
+Control avatar visibility in `ConfirmModal` with the new `showAvatar` prop, allowing for cleaner interfaces when avatars aren't needed.
+
+```tsx
+import { useConfirmModal } from '@cerberus/react'
+
+function ConfirmWithoutAvatar() {
+  const confirm = useConfirmModal()
+
+  const handleConfirm = useCallback(async () => {
+    const userConsent = await confirm.show({
+      heading: 'Confirm Action',
+      description: 'Are you sure you want to proceed?',
+      actionText: 'Yes, proceed',
+      cancelText: 'Cancel',
+      showAvatar: false, // Hide the avatar
+    })
+    
+    if (userConsent) {
+      // Handle confirmed action
+    }
+  }, [confirm])
+
+  return <Button onClick={handleConfirm}>Confirm Action</Button>
+}
+```
+
+## Bug Fixes & Improvements
+
+### DatePicker Enhancements
+
+- **Fix**: DatePicker recipe now supports wider content width, providing better accommodation for longer date formats and international locales.
+
+### Button Reliability
+
+- **Fix**: Resolved intermittent issues where the button `disabled` prop would not consistently apply, ensuring reliable disabled states across all usage patterns.
+
+### Dialog Improvements  
+
+- **Fix**: Dialog recipe descriptions now utilize full width, providing better text layout and readability in modal interfaces.
+
+## Upgrading
+
+To upgrade to Cerberus v0.22.0, run:
+
+<BashTabs code="npm run up:cerberus" />
+
+## What's Next?
+
+We continue to expand the Cerberus ecosystem with a focus on developer experience and component versatility. Coming up:
+
+- Enhanced customization APIs
+- Additional layout components
+- Improved component composition patterns
+- Expanded accessibility features
+
+Thank you for being part of the Cerberus community! These updates are driven by your feedback and real-world usage patterns.
