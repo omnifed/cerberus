@@ -128,7 +128,18 @@ export function CTAModal(props: PropsWithChildren<object>) {
                   }
                 />
                 <DialogHeading>{content?.heading}</DialogHeading>
-                <DialogDescription>{content?.description}</DialogDescription>
+
+                <Show when={content?.description}>
+                  <DialogDescription textAlign="center">
+                    {content?.description}
+                  </DialogDescription>
+                </Show>
+
+                <Show when={content?.content}>
+                  <DialogDescription textAlign="center">
+                    {content?.content}
+                  </DialogDescription>
+                </Show>
               </VStack>
             </VStack>
 
