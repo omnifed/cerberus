@@ -10,6 +10,7 @@ import CodePreview from '@/app/components/CodePreview'
 import {
   OverviewPreview,
   WithLinksDemo,
+  WithCustomDescriptionDemo,
 } from '../components/cta-modal/static'
 
 ```ts
@@ -114,6 +115,68 @@ function SomePage() {
   return(
     <CTAModal>
       <CTALinkFeature />
+    </CTAModal>
+  )
+}
+```
+</CodePreview>
+
+## With Content
+
+To use a custom content component, pass your custom component to the `content` prop of the `show` method.
+
+<CodePreview preview={<WithCustomDescriptionDemo />}>
+```tsx title="custom-description-dialog.tsx"
+'use client'
+
+import { Button, useCTAModal, createCTAModalActions } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+function CTAFeature() {
+  const { show } = useCTAModal()
+
+  const handleClick = useCallback(() => {
+    show({
+      heading: 'Copy or create a Cohort',
+      content: (
+        <VStack alignItems="flex-start" gap="lg" w="full">
+          <Field label="Name">
+            <Input placeholder="e.g., Cerberus" />
+          </Field>
+          <Field label="Description">
+            <Textarea placeholder="e.g., Cerberus is a design system..." />
+          </Field>
+        </VStack>
+      ),
+      actions: createCTAModalActions([
+        {
+          text: 'Create new',
+          handleClick: () => alert('Create new'),
+        },
+        {
+          text: 'Copy existing',
+          handleClick: () => alert('Copy existing'),
+        },
+      ]),
+    })
+  }, [show])
+
+
+  return (
+    <HStack gap="4">
+      <Button onClick={handleClick}>Update Cohorts</Button>
+    </HStack>
+  )
+}
+```
+```tsx title="page.tsx"
+import { CTAModal } from '@cerberus/react'
+import { CTAFeature } from './action-dialog'
+
+function SomePage() {
+  return(
+    <CTAModal>
+      <CTAFeature />
     </CTAModal>
   )
 }

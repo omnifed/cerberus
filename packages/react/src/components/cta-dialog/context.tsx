@@ -18,6 +18,10 @@ export interface ShowCTAModalOptions {
    */
   description?: string
   /**
+   * The content of the cta modal.
+   */
+  content?: ReactNode
+  /**
    * The icon used for the modal Avatar.
    */
   icon?: ReactNode

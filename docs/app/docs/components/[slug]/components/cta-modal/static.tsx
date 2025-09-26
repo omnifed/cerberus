@@ -1,5 +1,9 @@
 import { CTAModal } from '@cerberus-design/react'
-import { CTAFeature, CTALinkFeature } from './cta-modal-features'
+import {
+  CTADescriptionFeature,
+  CTAFeature,
+  CTALinkFeature,
+} from './cta-modal-features'
 
 export function OverviewPreview() {
   return (
@@ -13,6 +17,14 @@ export function WithLinksDemo() {
   return (
     <CTAModal>
       <CTALinkFeature />
+    </CTAModal>
+  )
+}
+
+export function WithCustomDescriptionDemo() {
+  return (
+    <CTAModal>
+      <CTADescriptionFeature />
     </CTAModal>
   )
 }
