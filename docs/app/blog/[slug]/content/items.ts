@@ -8,8 +8,27 @@ import V19ReleaseNotes, {
 import V21ReleaseNotes, {
   frontmatter as v21Frontmatter,
 } from './v21-release.mdx'
+import V22ReleaseNotes, {
+  frontmatter as v22Frontmatter,
+} from './v22-release.mdx'
 
 export const items = [
+  {
+    id: '1.0.3',
+    label: 'Cerberus v22 Release',
+    category: 'release',
+    version: 'v22',
+    slug: 'v22-release',
+    frontmatter: v22Frontmatter as unknown as BlogHeaderProps,
+    href: '/blog/v22-release',
+    meta: {
+      title: 'Cerberus v22 Release Notes',
+      description: 'Powerful New Components and Enhanced User Experience',
+      date: '2025-01-21',
+      timeToRead: '5 min read',
+    },
+    Content: V22ReleaseNotes,
+  },
   {
     id: '1.0.2',
     label: 'Cerberus v21 Release',
