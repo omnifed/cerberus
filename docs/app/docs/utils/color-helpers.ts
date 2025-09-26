@@ -7,30 +7,49 @@ import {
   successTokens,
   warningTokens,
   dataVizTokens,
+  acheronTheme,
   type SemanticToken,
   type Sentiment,
   type SentimentConfig,
   type Token,
 } from '@cerberus-design/panda-preset'
 
-export function getTokenList(palette: Sentiment): SentimentConfig[Sentiment] {
+export function getTokenList(
+  palette: Sentiment,
+  theme: string = 'cerberus',
+): SentimentConfig[Sentiment] {
+  // Choose the right token set based on theme
+  const tokens =
+    theme === 'acheron'
+      ? acheronTheme
+      : {
+          pageTokens,
+          actionTokens,
+          secondaryActionTokens,
+          infoTokens,
+          successTokens,
+          warningTokens,
+          dangerTokens,
+          dataVizTokens,
+        }
+
   switch (palette) {
     case 'page':
-      return pageTokens.page
+      return tokens.pageTokens.page
     case 'action':
-      return actionTokens.action
+      return tokens.actionTokens.action
     case 'secondaryAction':
-      return secondaryActionTokens.secondaryAction
+      return tokens.secondaryActionTokens.secondaryAction
     case 'info':
-      return infoTokens.info
+      return tokens.infoTokens.info
     case 'success':
-      return successTokens.success
+      return tokens.successTokens.success
     case 'warning':
-      return warningTokens.warning
+      return tokens.warningTokens.warning
     case 'danger':
-      return dangerTokens.danger
+      return tokens.dangerTokens.danger
     case 'dataViz':
-      return dataVizTokens.dataViz as SentimentConfig[Sentiment]
+      return tokens.dataVizTokens.dataViz as SentimentConfig[Sentiment]
     default:
       throw new Error('Invalid color palette')
   }
@@ -109,4 +128,51 @@ export function getPrimitiveTokenReference(
   // Extract the primitive token reference from the {colors.xxx} format
   const match = rawValue.match(/\{colors\.(.+)\}/)
   return match ? match[1] : rawValue
+}
+
+/**
+ * Resolves a primitive token reference to its actual hex color value
+ * @param tokenReference - The primitive token reference (e.g., "cerberus.neutral.80")
+ * @returns The hex color value (e.g., "#201935") or null if not found
+ */
+export function resolvePrimitiveTokenToHex(
+  tokenReference: string,
+): string | null {
+  if (typeof document === 'undefined') return null
+
+  // Convert the token reference to CSS variable format
+  // "cerberus.neutral.80" -> "--cerberus-colors-cerberus-neutral-80"
+  // But we need to use the actual theme: "acheron.neutral.80" -> "--cerberus-colors-acheron-neutral-80"
+  const cssVarName = `--cerberus-colors-${tokenReference.replace(/\./g, '-')}`
+
+  // Get the computed value from the document's style
+  const computedValue = getComputedStyle(document.documentElement)
+    .getPropertyValue(cssVarName)
+    .trim()
+
+  // Return the value if it exists and looks like a hex color
+  if (
+    computedValue &&
+    (computedValue.startsWith('#') || computedValue.startsWith('rgb'))
+  ) {
+    return computedValue
+  }
+
+  return null
+}
+
+/**
+ * Gets the resolved hex color value for a semantic token
+ * @param tokenValue - The semantic token value object containing base/_light/_dark values
+ * @param mode - Current theme mode ('light', 'dark', or 'system')
+ * @returns The resolved hex color value or null if not found
+ */
+export function getSemanticTokenHexValue(
+  tokenValue: SemanticToken['value'],
+  mode: 'light' | 'dark' | 'system' = 'dark',
+): string | null {
+  const primitiveRef = getPrimitiveTokenReference(tokenValue, mode)
+  if (!primitiveRef) return null
+
+  return resolvePrimitiveTokenToHex(primitiveRef)
 }
