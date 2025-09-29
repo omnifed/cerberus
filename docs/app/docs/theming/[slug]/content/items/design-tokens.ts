@@ -7,6 +7,9 @@ import Gradients, {
 } from '../gradients.mdx'
 import Shadows, { frontmatter as shadowsFrontmatter } from '../shadows.mdx'
 import Spacing, { frontmatter as spacingFrontmatter } from '../spacing.mdx'
+import Typography, {
+  frontmatter as typographyFrontmatter,
+} from '../typography.mdx'
 import ZIndex, { frontmatter as zIndexFrontmatter } from '../z-index.mdx'
 
 export const designTokens = [
@@ -81,7 +84,20 @@ export const designTokens = [
     Content: Shadows,
   },
   {
-    id: '2.1.6',
+    id: '2.1.7',
+    label: 'Typography',
+    slug: 'typography',
+    frontmatter: typographyFrontmatter,
+    href: '/docs/theming/typography',
+    meta: {
+      title: 'Typography in Cerberus Design System',
+      description:
+        'Explore the font tokens and text styles available in the Cerberus Design System for consistent typography.',
+    },
+    Content: Typography,
+  },
+  {
+    id: '2.1.8',
     label: 'Z-Index',
     slug: 'z-index',
     frontmatter: zIndexFrontmatter,

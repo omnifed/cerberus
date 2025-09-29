@@ -1,0 +1,98 @@
+---
+title: Typography
+description: A list of typography tokens available in Cerberus.
+---
+
+import { FontTokensGroup } from '../components/typography/font-tokens-group'
+import { TextStylesGroup } from '../components/typography/text-styles-group'
+
+## Font Tokens
+
+Cerberus provides a set of **font tokens** (`theme.tokens.fonts`) that define the font families used throughout the design system. These font tokens serve as the foundation for all text styles and typography decisions.
+
+<FontTokensGroup />
+
+Font tokens are designed to be semantic and descriptive:
+- `display` - Primary font reserved for display headings (Poppins)
+- `sans` - Primary font used for body text and regular headings (Poppins)  
+- `mono` - Monospace font used for code and technical content (Recursive)
+
+**Customizing Font Tokens:**
+
+Font tokens can be customized in two ways: at the Panda config level or through CSS custom properties.
+
+**Option 1: Panda Config Level**
+
+Override font tokens directly in your `panda.config.ts` file:
+
+```tsx title="panda.config.ts"
+import {
+  createCerberusConfig,
+  createCerberusPreset,
+} from '@cerberus/panda-preset'
+
+export default createCerberusConfig({
+  presets: [createCerberusPreset()],
+
+  include: ['./app/**/*.{ts,tsx}'],
+  exclude: [],
+
+  theme: {
+    tokens: {
+      fonts: {
+        // Override existing tokens
+        display: { value: "Inter Display, sans-serif" },
+        sans: { value: "Inter, system-ui, sans-serif" },
+        mono: { value: "JetBrains Mono, Menlo, monospace" },
+        
+        // Add new font tokens
+        brand: { value: "YourBrand Font, serif" },
+      },
+    },
+  },
+})
+```
+
+**Option 2: CSS Custom Properties**
+
+Font tokens reference CSS custom properties with fallbacks for flexibility:
+- Each token uses the pattern: `var(--font-{name}, var(--font-{family}, {fallback}))`
+- You can override fonts by setting the appropriate CSS custom properties in your application
+
+```css
+:root {
+  --font-display: "Custom Display Font", sans-serif;
+  --font-sans: "Custom Body Font", system-ui, sans-serif;
+  --font-mono: "Custom Mono Font", Menlo, monospace;
+}
+```
+
+## Text Styles
+
+Cerberus provides a comprehensive set of text styles that combine font families, sizes, weights, and spacing to create consistent typography patterns.
+
+<TextStylesGroup />
+
+**Text Style Categories:**
+- **Display** - Large headings for marketing and hero sections
+- **Heading** - Structured content headings (h1-h6) 
+- **Body** - Main content text in various sizes
+- **Label** - Form labels and UI text
+- **Button** - Button text styling
+- **Mono** - Monospace text for code and technical content
+
+**How to Use Text Styles:**
+Text styles can be applied using the `textStyle` prop on Text components or through PandaCSS:
+
+```tsx
+// Using Text component
+<Text textStyle="heading-lg">Large Heading</Text>
+
+// Using CSS function
+<div className={css({ textStyle: 'body-md' })}>Body text</div>
+```
+
+**Customization:**
+- Text styles are built from primitive font and sizing tokens
+- Override individual properties by extending the text style object
+- Create custom text styles following the same pattern for consistency
