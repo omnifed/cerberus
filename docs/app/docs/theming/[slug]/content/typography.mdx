@@ -18,9 +18,54 @@ Font tokens are designed to be semantic and descriptive:
 - `mono` - Monospace font used for code and technical content (Recursive)
 
 **Customizing Font Tokens:**
-- Font tokens reference CSS custom properties with fallbacks for flexibility
+
+Font tokens can be customized in two ways: at the Panda config level or through CSS custom properties.
+
+**Option 1: Panda Config Level**
+
+Override font tokens directly in your `panda.config.ts` file:
+
+```tsx title="panda.config.ts"
+import {
+  createCerberusConfig,
+  createCerberusPreset,
+} from '@cerberus/panda-preset'
+
+export default createCerberusConfig({
+  presets: [createCerberusPreset()],
+
+  include: ['./app/**/*.{ts,tsx}'],
+  exclude: [],
+
+  theme: {
+    tokens: {
+      fonts: {
+        // Override existing tokens
+        display: { value: "Inter Display, sans-serif" },
+        sans: { value: "Inter, system-ui, sans-serif" },
+        mono: { value: "JetBrains Mono, Menlo, monospace" },
+        
+        // Add new font tokens
+        brand: { value: "YourBrand Font, serif" },
+      },
+    },
+  },
+})
+```
+
+**Option 2: CSS Custom Properties**
+
+Font tokens reference CSS custom properties with fallbacks for flexibility:
 - Each token uses the pattern: `var(--font-{name}, var(--font-{family}, {fallback}))`
 - You can override fonts by setting the appropriate CSS custom properties in your application
+
+```css
+:root {
+  --font-display: "Custom Display Font", sans-serif;
+  --font-sans: "Custom Body Font", system-ui, sans-serif;
+  --font-mono: "Custom Mono Font", Menlo, monospace;
+}
+```
 
 ## Text Styles
 
