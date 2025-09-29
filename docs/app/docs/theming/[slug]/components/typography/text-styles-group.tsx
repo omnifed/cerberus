@@ -10,19 +10,19 @@ export function TextStylesGroup() {
   // Group text styles by category
   const groupedStyles = Object.entries(results).reduce(
     (acc, [nodeId, data]) => {
-      const name = data.name.replace('/', '-')
-      const category = name.split('-')[0]
+      const styleName = data.name.replace('/', '-')
+      const category = styleName.split('-')[0]
 
       if (!acc[category]) {
         acc[category] = []
       }
 
-      acc[category].push({ nodeId, name, ...data })
+      acc[category].push({ nodeId, styleName, ...data })
       return acc
     },
     {} as Record<
       string,
-      Array<{ nodeId: string; name: string } & (typeof results)[string]>
+      Array<{ nodeId: string; styleName: string } & (typeof results)[string]>
     >,
   )
 
@@ -89,7 +89,7 @@ export function TextStylesGroup() {
                           rounded="md"
                           w="full"
                         >
-                          <Text textStyle={style.name as any}>
+                          <Text textStyle={style.styleName as any}>
                             The quick brown fox jumps
                           </Text>
                         </Box>
