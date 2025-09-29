@@ -96,8 +96,8 @@ importers:
   docs:
     dependencies:
       '@carbon/icons-react':
-        specifier: ^11.65.0
-        version: 11.65.0(react@19.1.1)
+        specifier: ^11.68.0
+        version: 11.68.0(react@19.1.1)
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../configs
@@ -310,8 +310,8 @@ importers:
   tests:
     devDependencies:
       '@carbon/icons-react':
-        specifier: ^11.65.0
-        version: 11.65.0(react@19.1.1)
+        specifier: ^11.68.0
+        version: 11.68.0(react@19.1.1)
       '@cerberus-design/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
@@ -461,11 +461,11 @@ packages:
     resolution: {integrity: sha512-bkFqkLhh3pMBUQQkpVgWDWq/lqzc2678eUyDlTBhRqhCHFguYYGM0Efga7tYk4TogG/3x0EEl66/OQ+WGbWB/Q==}
     engines: {node: '>=6.9.0'}
 
-  '@carbon/icon-helpers@10.64.0':
-    resolution: {integrity: sha512-yzxBQkMyZcQvn2aM7vjRkoq34MfFi07ZxX5HOmSoHO6H6eFqiRiSuUjWq7x/OwYMV7ADpzvtQ8FjxLBvxdwi0Q==}
+  '@carbon/icon-helpers@10.67.0':
+    resolution: {integrity: sha512-b4fRuGaaM55/MY1o2t3v1vVwvjQ/byz7YuxO8dabOrTxus7OjtkAwHhWyEOzN+4icD12C3GXw1qSYVObyiIjHw==}
 
-  '@carbon/icons-react@11.65.0':
-    resolution: {integrity: sha512-mX7KjJJLghNRum97TCbY3eor/r79lOtNyFfdZ+LAzHC3+KPBrfqrEkUnbXkcfKKgrqLhUB1txiQJywp7/aoFBQ==}
+  '@carbon/icons-react@11.68.0':
+    resolution: {integrity: sha512-Z5es/MypJPh/WSpFQuDj/1E42faoDrfRLQQd2IUfENXFEtmmNNAyOhuGjayGn4iXCkCHwp+MfpM5BqKuknlAAQ==}
     peerDependencies:
       react: '>=16'
 
@@ -995,8 +995,8 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@ibm/telemetry-js@1.9.1':
-    resolution: {integrity: sha512-qq8RPafUJHUQieXVCte1kbJEx6JctWzbA/YkXzopbfzIDRT2+hbR9QmgH+KH7bDDNRcDbdHWvHfwJKzThlMtPg==}
+  '@ibm/telemetry-js@1.10.2':
+    resolution: {integrity: sha512-F8+/NNUwtm8BuFz18O9KPvIFTFDo8GUSoyhPxPjEpk7nEyEzWGfhIiEPhL00B2NdHRLDSljh3AiCfSnL/tutiQ==}
     hasBin: true
 
   '@img/sharp-darwin-arm64@0.34.3':
@@ -6206,14 +6206,14 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@carbon/icon-helpers@10.64.0':
+  '@carbon/icon-helpers@10.67.0':
     dependencies:
-      '@ibm/telemetry-js': 1.9.1
+      '@ibm/telemetry-js': 1.10.2
 
-  '@carbon/icons-react@11.65.0(react@19.1.1)':
+  '@carbon/icons-react@11.68.0(react@19.1.1)':
     dependencies:
-      '@carbon/icon-helpers': 10.64.0
-      '@ibm/telemetry-js': 1.9.1
+      '@carbon/icon-helpers': 10.67.0
+      '@ibm/telemetry-js': 1.10.2
       prop-types: 15.8.1
       react: 19.1.1
 
@@ -6654,7 +6654,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@ibm/telemetry-js@1.9.1': {}
+  '@ibm/telemetry-js@1.10.2': {}
 
   '@img/sharp-darwin-arm64@0.34.3':
     optionalDependencies:
