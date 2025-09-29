@@ -71,13 +71,7 @@ export function TextStylesGroup() {
               rounded="lg"
               w="full"
             >
-              <Grid
-                columns={{
-                  base: 1,
-                  lg: 2,
-                }}
-                gap="lg"
-              >
+              <Grid columns={1} gap="lg">
                 <For each={groupedStyles[category]}>
                   {(style) => (
                     <GridItem key={style.nodeId}>
