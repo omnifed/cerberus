@@ -103,9 +103,9 @@ export const pageTokens: PageTokens = {
           'The default backdrop color used for modals and dialogs on a page.',
         value: {
           // Figma converts the rgba to a HEX value which removes the opacity
-          base: 'rgba(19, 0, 36, 0.75)',
+          base: 'rgba(32, 25, 52, 0.8)',
           _lightMode: 'rgba(188, 186, 202, 0.50)',
-          _darkMode: 'rgba(19, 0, 36, 0.75)',
+          _darkMode: 'rgba(32, 25, 52, 0.8)',
         },
       },
     },
