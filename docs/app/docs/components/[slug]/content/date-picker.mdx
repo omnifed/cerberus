@@ -9,7 +9,7 @@ ark: 'date-picker'
 
 import CodePreview from '@/app/components/CodePreview'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import { StaticPreview, RangePreview } from '../components/date-picker/static'
+import { StaticPreview, RangePreview, CustomStylesDemo } from '../components/date-picker/static'
 import { RangeDefaultValuePreview } from '../components/date-picker/range-default-value.client'
 
 ```ts
@@ -126,6 +126,60 @@ function RangeDefaultValuePreview() {
 ```
 </CodePreview>
 
+### Custom Styles
+
+You can customize the DatePicker width and other styles using the `css` prop along with the `data-part` selector to target specific primitives.
+
+<CodePreview preview={<CustomStylesDemo />}>
+```tsx
+import {
+  DatePicker,
+  DatePickerLabel,
+  DatePickerInput,
+  DatePickerCalendar,
+  Field,
+} from '@cerberus/react'
+import { Grid } from 'styled-system/jsx'
+
+function CustomStylesDemo() {
+  return (
+    <Grid columns={2} gap="4" w="3/4">
+      <Field>
+        <DatePicker
+          name="custom_start_date"
+          css={{
+            w: 'full',
+            '& :is([data-part=control])': {
+              w: 'full',
+            },
+          }}
+        >
+          <DatePickerLabel>Start date</DatePickerLabel>
+          <DatePickerInput />
+          <DatePickerCalendar />
+        </DatePicker>
+      </Field>
+      <Field>
+        <DatePicker
+          name="custom_end_date"
+          css={{
+            w: 'full',
+            '& :is([data-part=control])': {
+              w: 'full',
+            },
+          }}
+        >
+          <DatePickerLabel>End date</DatePickerLabel>
+          <DatePickerInput />
+          <DatePickerCalendar />
+        </DatePicker>
+      </Field>
+    </Grid>
+  )
+}
+```
+</CodePreview>
+
 ## Date Helpers
 
 The `DatePicker` component relies on different date utilities to handle date parsing and formatting. Here are the options available:
@@ -209,6 +263,35 @@ You can utilize the primitive components or the `css` prop to customize the date
 | DatePickerTableBody      | The body of the calendar table. |
 | DatePickerTableCell      | The cell of the calendar table. |
 | DatePickerTableTrigger    | The trigger of the cell in the calendar table. |
+
+The Primitives additionally use the following data attributes for custom styling:
+
+| Name     | Value | Description                            |
+| -------- | ------| -------------------------------- |
+| `data-scope` | `date-picker` | The scope of the components.       |
+| `data-part` | `root` | The root container part. |
+| `data-part` | `label` | The label part. |
+| `data-part` | `control` | The control part. |
+| `data-part` | `input` | The input part. |
+| `data-part` | `trigger` | The trigger part. |
+| `data-part` | `clearTrigger` | The clear trigger part. |
+| `data-part` | `positioner` | The positioner part. |
+| `data-part` | `content` | The content part. |
+| `data-part` | `viewControl` | The view control part. |
+| `data-part` | `prevTrigger` | The previous trigger part. |
+| `data-part` | `nextTrigger` | The next trigger part. |
+| `data-part` | `viewTrigger` | The view trigger part. |
+| `data-part` | `rangeText` | The range text part. |
+| `data-part` | `yearSelect` | The year select part. |
+| `data-part` | `monthSelect` | The month select part. |
+| `data-part` | `view` | The view part. |
+| `data-part` | `table` | The table part. |
+| `data-part` | `tableHead` | The table head part. |
+| `data-part` | `tableBody` | The table body part. |
+| `data-part` | `tableRow` | The table row part. |
+| `data-part` | `tableHeader` | The table header part. |
+| `data-part` | `tableCell` | The table cell part. |
+| `data-part` | `tableCellTrigger` | The table cell trigger part. |
 
 ## API
 

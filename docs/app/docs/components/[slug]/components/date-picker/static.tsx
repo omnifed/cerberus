@@ -6,7 +6,7 @@ import {
   Field,
   RangePickerInput,
 } from '@cerberus-design/react'
-import { Box } from 'styled-system/jsx'
+import { Box, Grid } from 'styled-system/jsx'
 
 interface DPPreviewProps {
   id: string
@@ -37,5 +37,42 @@ export function RangePreview(props: DPPreviewProps) {
         </DatePicker>
       </Field>
     </Box>
+  )
+}
+
+export function CustomStylesDemo() {
+  return (
+    <Grid columns={2} gap="4" w="3/4">
+      <Field>
+        <DatePicker
+          name="custom_start_date"
+          css={{
+            w: 'full',
+            '& :is([data-part=control])': {
+              w: 'full',
+            },
+          }}
+        >
+          <DatePickerLabel>Start date</DatePickerLabel>
+          <DatePickerInput />
+          <DatePickerCalendar />
+        </DatePicker>
+      </Field>
+      <Field>
+        <DatePicker
+          name="custom_end_date"
+          css={{
+            w: 'full',
+            '& :is([data-part=control])': {
+              w: 'full',
+            },
+          }}
+        >
+          <DatePickerLabel>End date</DatePickerLabel>
+          <DatePickerInput />
+          <DatePickerCalendar />
+        </DatePicker>
+      </Field>
+    </Grid>
   )
 }
