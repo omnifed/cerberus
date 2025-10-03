@@ -1,11 +1,11 @@
 'use client'
 
-import type { PropsWithChildren } from 'react'
 import { useCerberusContext } from '../../context/cerberus'
 import { splitProps } from '../../utils'
 import { Button, ButtonGroup, type ButtonProps } from '../button/index'
 import { IconButton } from '../icon-button/index'
 import { Menu, MenuTrigger, MenuContent } from '../menu/index'
+import type { CerberusPrimitiveProps } from '../../system/types'
 
 /**
  * This module provides an abstraction for a SplitButton component.
@@ -21,7 +21,7 @@ export interface SplitButtonProps extends ButtonProps {
  * dropdown menu for additional actions.
  * @definition [Cerberus docs](https://cerberus.digitalu.designdocs/components/split-button)
  */
-export function SplitButton(props: PropsWithChildren<SplitButtonProps>) {
+export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
   const [elProps, { usage = 'filled', actionText }, actionProps] = splitProps(
     props,
     ['children'],

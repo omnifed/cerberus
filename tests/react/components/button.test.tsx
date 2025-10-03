@@ -89,4 +89,31 @@ describe('Button', () => {
     expect(screen.getByText(/it works/i)).toBeDisabled()
     expect(screen.getByRole('status')).toBeInTheDocument()
   })
+
+  test('should accept css prop from factory', () => {
+    render(
+      <Button css={{ color: 'blue' }} data-testid="css-button">
+        it works
+      </Button>,
+    )
+    expect(screen.getByTestId('css-button')).toBeInTheDocument()
+  })
+
+  test('should accept asChild prop from factory', () => {
+    render(
+      <Button asChild>
+        <a href="/test">Link as button</a>
+      </Button>,
+    )
+    expect(screen.getByRole('link')).toHaveTextContent('Link as button')
+  })
+
+  test('should accept style prop from factory', () => {
+    render(
+      <Button style={{ color: 'red' }} data-testid="style-button">
+        it works
+      </Button>,
+    )
+    expect(screen.getByTestId('style-button')).toHaveStyle({ color: 'red' })
+  })
 })
