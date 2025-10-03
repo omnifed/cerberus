@@ -42,7 +42,7 @@ export function RangePreview(props: DPPreviewProps) {
 
 export function CustomStylesDemo() {
   return (
-    <Grid columns={2} gap="4" px="3/4" w="full">
+    <Grid columns={2} gap="4" w="3/4">
       <Field>
         <DatePicker
           name="custom_start_date"
