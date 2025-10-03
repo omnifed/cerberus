@@ -55,4 +55,38 @@ describe('SplitButton', () => {
     )
     expect(screen.getByRole('button', { name: /action/i })).toBeDisabled()
   })
+
+  test('should accept css prop from factory', () => {
+    render(
+      <CerberusProvider config={config}>
+        <SplitButton
+          actionText="action"
+          css={{ color: 'blue' }}
+          data-testid="css-split-button"
+        >
+          <MenuItem value="item_1">Item 1</MenuItem>
+          <MenuItem value="item_2">Item 2</MenuItem>
+        </SplitButton>
+      </CerberusProvider>,
+    )
+    expect(screen.getByTestId('css-split-button')).toBeInTheDocument()
+  })
+
+  test('should accept style prop from factory', () => {
+    render(
+      <CerberusProvider config={config}>
+        <SplitButton
+          actionText="action"
+          style={{ color: 'red' }}
+          data-testid="style-split-button"
+        >
+          <MenuItem value="item_1">Item 1</MenuItem>
+          <MenuItem value="item_2">Item 2</MenuItem>
+        </SplitButton>
+      </CerberusProvider>,
+    )
+    expect(screen.getByTestId('style-split-button')).toHaveStyle({
+      color: 'red',
+    })
+  })
 })
