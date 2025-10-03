@@ -42,11 +42,12 @@ export function RangePreview(props: DPPreviewProps) {
 
 export function CustomStylesDemo() {
   return (
-    <Grid columns={2} gap="4" w="full">
+    <Grid columns={2} gap="4" px="3/4" w="full">
       <Field>
         <DatePicker
           name="custom_start_date"
           css={{
+            w: 'full',
             '& :is([data-part=control])': {
               w: 'full',
             },
@@ -61,6 +62,7 @@ export function CustomStylesDemo() {
         <DatePicker
           name="custom_end_date"
           css={{
+            w: 'full',
             '& :is([data-part=control])': {
               w: 'full',
             },

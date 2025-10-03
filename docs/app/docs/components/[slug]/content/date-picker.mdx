@@ -143,11 +143,12 @@ import { Grid } from 'styled-system/jsx'
 
 function CustomStylesDemo() {
   return (
-    <Grid columns={2} gap="4" w="full">
+    <Grid columns={2} gap="4" px="3/4" w="full">
       <Field>
         <DatePicker
           name="custom_start_date"
           css={{
+            w: 'full',
             '& :is([data-part=control])': {
               w: 'full',
             },
@@ -162,6 +163,7 @@ function CustomStylesDemo() {
         <DatePicker
           name="custom_end_date"
           css={{
+            w: 'full',
             '& :is([data-part=control])': {
               w: 'full',
             },
