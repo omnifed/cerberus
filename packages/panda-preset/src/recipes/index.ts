@@ -17,6 +17,7 @@ import { field } from './slots/field'
 import { fieldset } from './slots/fieldset'
 import { fileStatus } from './slots/fileStatus'
 import { fileUploader } from './slots/fileUploader'
+import { collapsible } from './slots/collapsible'
 import { menu } from './slots/menu'
 import { numberInput } from './slots/numberInput'
 import { pinInput } from './slots/pinInput'
@@ -67,6 +68,7 @@ export const slotRecipes = {
   checkbox,
   circularProgress,
   combobox,
+  collapsible,
   datePicker,
   dialog,
   field,
