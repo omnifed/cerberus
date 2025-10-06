@@ -23,9 +23,8 @@ const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(collapsible)
 
 // Root
 
-export type CollapsibleRootProps = CerberusPrimitiveProps<
-  ArkCollapsibleRootProps & CollapsibleVariantProps
->
+export type CollapsibleRootProps =
+  CerberusPrimitiveProps<ArkCollapsibleRootProps>
 export const CollapsibleRoot = withNoRecipe(Collapsible.Root)
 
 // Trigger
@@ -42,6 +41,7 @@ export const CollapsibleIndicator = withNoRecipe(Collapsible.Indicator)
 
 // Content
 
-export type CollapsibleContentProps =
-  CerberusPrimitiveProps<ArkCollapsibleContentProps>
+export type CollapsibleContentProps = CerberusPrimitiveProps<
+  ArkCollapsibleContentProps & CollapsibleVariantProps
+>
 export const CollapsibleContent = withSlotRecipe(Collapsible.Content, 'content')

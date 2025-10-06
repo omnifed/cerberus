@@ -25,21 +25,21 @@ export const collapsible: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   base: {
     content: {
+      animationDuration: 'fast',
       overflow: 'hidden',
     },
   },
 
   variants: {
     effect: {
-      default: {
+      none: {},
+      expandIn: {
         content: {
           _open: {
             animationName: 'expandHeight, fadeIn',
-            animationDuration: 'moderate',
           },
           _closed: {
             animationName: 'collapseHeight, fadeOut',
-            animationDuration: 'moderate',
           },
         },
       },
@@ -47,11 +47,9 @@ export const collapsible: Partial<SlotRecipeConfig> = defineSlotRecipe({
         content: {
           _open: {
             animationName: 'fadeIn',
-            animationDuration: 'moderate',
           },
           _closed: {
             animationName: 'fadeOut',
-            animationDuration: 'moderate',
           },
         },
       },
@@ -59,6 +57,6 @@ export const collapsible: Partial<SlotRecipeConfig> = defineSlotRecipe({
   },
 
   defaultVariants: {
-    effect: 'default',
+    effect: 'expandIn',
   },
 })

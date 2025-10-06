@@ -21,16 +21,16 @@ describe('Collapsible', () => {
     expect(screen.getByText(/content/i)).not.toBeVisible()
   })
 
-  test('should allow variant props on the Root', () => {
+  test('should allow variant props on the Content', () => {
     render(
-      <Collapsible.Root effect="fade" defaultOpen>
+      <Collapsible.Root defaultOpen>
         <Collapsible.Trigger>
           Trigger
           <Collapsible.Indicator>
             <ChevronDown />
           </Collapsible.Indicator>
         </Collapsible.Trigger>
-        <Collapsible.Content>content</Collapsible.Content>
+        <Collapsible.Content effect="fade">content</Collapsible.Content>
       </Collapsible.Root>,
     )
     expect(screen.getByText(/content/i)).toBeVisible()

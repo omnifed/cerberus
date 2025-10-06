@@ -8,6 +8,9 @@ import Avatar, { frontmatter as avatarFrontmatter } from '../avatar.mdx'
 import Button, { frontmatter as buttonFrontmatter } from '../button.mdx'
 import Carousel, { frontmatter as carouselFrontmatter } from '../carousel.mdx'
 import Checkbox, { frontmatter as checkboxFrontmatter } from '../checkbox.mdx'
+import CollapsibleComponent, {
+  frontmatter as collapsibleComponentFrontmatter,
+} from '../collapsible.mdx'
 import Combobox, { frontmatter as comboboxFrontmatter } from '../combobox.mdx'
 import ConfirmModal, {
   frontmatter as confirmModalFrontmatter,
@@ -139,6 +142,19 @@ export const components = [
         'Explore the Checkbox component in the Cerberus Design System for creating interactive checkboxes.',
     },
     Content: Checkbox,
+  },
+  {
+    id: '1.3.5a',
+    label: 'Collapsible',
+    slug: 'collapsible',
+    href: '/docs/components/collapsible',
+    frontmatter: collapsibleComponentFrontmatter,
+    meta: {
+      title: 'Collapsible Component in Cerberus Design System',
+      description:
+        'Discover how to use the Collapsible component in the Cerberus Design System.',
+    },
+    Content: CollapsibleComponent,
   },
   {
     id: '1.3.6',

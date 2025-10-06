@@ -1,0 +1,114 @@
+---
+title: Collapsible Component
+description: A flexible collapsible section for showing and hiding content.
+npm: '@cerberus-design/react'
+source: 'components/collapsible'
+recipe: 'slots/collapsible.ts'
+ark: 'collapsible'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { StaticPreview, FadeInPreview, CustomPreview } from '../components/collapsible/static'
+
+```ts
+import { Collapsible } from '@cerberus-design/react'
+```
+
+## Usage
+
+The Collapsible component allows you to show or hide content with a trigger. It is useful for accordions, dropdowns, and expandable sections.
+
+<CodePreview preview={<StaticPreview />}>
+```tsx
+'use client'
+
+import { Collapsible } from '@cerberus/react'
+import { Box, HStack } from 'styled-system/jsx'
+
+export function BasicDemo() {
+  return (
+    <HStack h="full" w="17rem">
+      <Collapsible.Root>
+        <Collapsible.Trigger>Toggle</Collapsible.Trigger>
+        <Collapsible.Content>
+          <Box
+            border="1px solid"
+            borderColor="page.border.initial"
+            p="md"
+            rounded="md"
+            w="full"
+          >
+            Collapsible content goes here.
+          </Box>
+        </Collapsible.Content>
+      </Collapsible.Root>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Effects
+
+To turn off the animation effect, you can set the `effect` prop to `none` on the `Collapsible.Content` component.
+
+<CodePreview preview={<FadeInPreview />}>
+```tsx /effect/
+function FadeInPreview() {
+  return (
+    <HStack h="full" w="17rem">
+      <Collapsible.Root>
+        <Collapsible.Trigger>Toggle</Collapsible.Trigger>
+        <Collapsible.Content effect="none">
+          <Box
+            border="1px solid"
+            borderColor="page.border.initial"
+            p="md"
+            rounded="md"
+            w="full"
+          >
+            Collapsible content goes here.
+          </Box>
+        </Collapsible.Content>
+      </Collapsible.Root>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components to build a custom collapsible solution.
+
+| Component           | Description                                   |
+| ------------------- | --------------------------------------------- |
+| CollapsibleRoot     | The context provider of the collapsible.      |
+| CollapsibleTrigger  | The button that toggles the collapsible.      |
+| CollapsibleIndicator| The indicator that shows the state.           |
+| CollapsibleContent  | The content of the collapsible.               |
+
+### Primitive Selectors
+
+Each primitive component has a data attribute for easy targeting.
+
+| Name     | Value | Description                            |
+| -------- | ------| -------------------------------- |
+| `data-scope` | `collapsible` | The scope of the components.       |
+| `data-part` | `root` | The root container part. |
+| `data-part` | `trigger` | The trigger part. |
+| `data-part` | `indicator` | The indicator part. |
+| `data-part` | `content` | The content part. |
+
+## API
+
+### Collapsible
+
+The `Collapsible` component is an Object containing all the primitive components.
+
+You can see additional options for the [Root component](https://ark-ui.com/react/docs/components/collapsible#api-reference).
+
+### Parts
+
+The `CollapsibleParts` API is the same as the `Collapsible` component.

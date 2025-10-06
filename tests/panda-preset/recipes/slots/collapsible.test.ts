@@ -27,21 +27,23 @@ describe('collapsible slot recipe', () => {
 
   it('should have a content slot defined in base styles', () => {
     expect(collapsible.base).toHaveProperty('content')
-    expect(collapsible.base?.content).toMatchObject({ overflow: 'hidden' })
+    expect(collapsible.base?.content).toMatchObject({
+      animationDuration: 'fast',
+      overflow: 'hidden',
+    })
   })
 
   it('should have variants defined', () => {
     expect(collapsible.variants).toMatchObject({
       effect: {
-        default: {
+        none: {},
+        expandIn: {
           content: {
             _open: {
               animationName: 'expandHeight, fadeIn',
-              animationDuration: 'moderate',
             },
             _closed: {
               animationName: 'collapseHeight, fadeOut',
-              animationDuration: 'moderate',
             },
           },
         },
@@ -49,11 +51,9 @@ describe('collapsible slot recipe', () => {
           content: {
             _open: {
               animationName: 'fadeIn',
-              animationDuration: 'moderate',
             },
             _closed: {
               animationName: 'fadeOut',
-              animationDuration: 'moderate',
             },
           },
         },
@@ -62,6 +62,6 @@ describe('collapsible slot recipe', () => {
   })
 
   it('should have defaultVariants defined', () => {
-    expect(collapsible.defaultVariants).toMatchObject({ effect: 'default' })
+    expect(collapsible.defaultVariants).toMatchObject({ effect: 'expandIn' })
   })
 })
