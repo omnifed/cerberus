@@ -1,0 +1,94 @@
+---
+title: Clipboard
+description: A component that allows users to copy text to their clipboard with visual feedback and customizable indicators.
+npm: '@cerberus-design/react'
+source: 'components/clipboard'
+recipe: 'slots/clipboard.ts'
+ark: 'clipboard'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { StaticPreview } from '../components/clipboard/static'
+
+```ts
+import { Clipboard } from '@cerberus/react'
+```
+
+## Usage
+
+The Clipboard component provides an accessible way to copy text to the user's clipboard with built-in visual feedback. It uses the native Clipboard API and provides loading states, success indicators, and error handling.
+
+<CodePreview preview={<StaticPreview />}>
+```tsx
+import { Clipboard } from '@cerberus/react'
+
+export function StaticPreview() {
+  return (
+    <Clipboard.Root value="Hello, World!">
+      <Clipboard.Label>Copy this text:</Clipboard.Label>
+      <Clipboard.Control>
+        <Clipboard.Input />
+        <Clipboard.Trigger>
+          <Clipboard.Indicator />
+        </Clipboard.Trigger>
+      </Clipboard.Control>
+    </Clipboard.Root>
+  )
+}
+```
+</CodePreview>
+
+## Other Variants
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the clipboard component.
+
+| Component           | Description                                          |
+| ------------------- | ---------------------------------------------------- |
+| ClipboardRoot       | The root context provider for the clipboard family. |
+| ClipboardLabel      | A label element for accessibility.                   |
+| ClipboardControl    | The wrapper for input and trigger elements.         |
+| ClipboardInput      | The input element containing the text to copy.      |
+| ClipboardTrigger    | The button that triggers the copy action.           |
+| ClipboardIndicator  | Shows the current state (copy/copied) with icons.   |
+| CopyText           | Shows the current state (copy/copied) with text.    |
+
+### Data Attributes
+
+The Clipboard component exposes several data attributes for better accessibility and customization.
+
+| Name     | Value | Description                            |
+| -------- | ------| -------------------------------- |
+| `data-scope` | `clipboard` | The scope of the components.       |
+| `data-part` | `root` | The root container part. |
+| `data-part` | `label` | The label part. |
+| `data-part` | `control` | The control part. |
+| `data-part` | `input` | The input part. |
+| `data-part` | `trigger` | The trigger part. |
+| `data-part` | `indicator` | The indicator part. |
+
+
+## API
+
+### Props
+
+The Clipboard.Root is an abstraction of the [Root component](https://ark-ui.com/react/docs/components/clipboard#api-reference).
+
+### Parts
+
+The `Clipboard` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the Clipboard parts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name      | Description                                                                  |
+| --------- | ---------------------------------------------------------------------------- |
+| Root      | The `ClipboardRoot` component which is the Provider for the family.         |
+| Label     | The `ClipboardLabel` component for accessibility.                           |
+| Control   | The `ClipboardControl` component wrapper.                                   |
+| Input     | The `ClipboardInput` component displaying the text.                         |
+| Trigger   | The `ClipboardTrigger` component button.                                    |
+| Indicator | The `CopyIndicator` component with default copy/checkmark icons.            |
+| CopyText  | The `CopyText` component with default "Copy"/"Copied" text indicators.      |
+| Context   | The raw context for accessing clipboard state within the component hierarchy.|

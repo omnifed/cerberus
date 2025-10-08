@@ -8,6 +8,9 @@ import Avatar, { frontmatter as avatarFrontmatter } from '../avatar.mdx'
 import Button, { frontmatter as buttonFrontmatter } from '../button.mdx'
 import Carousel, { frontmatter as carouselFrontmatter } from '../carousel.mdx'
 import Checkbox, { frontmatter as checkboxFrontmatter } from '../checkbox.mdx'
+import Clipboard, {
+  frontmatter as clipboardFrontmatter,
+} from '../clipboard.mdx'
 import CollapsibleComponent, {
   frontmatter as collapsibleComponentFrontmatter,
 } from '../collapsible.mdx'
@@ -142,6 +145,19 @@ export const components = [
         'Explore the Checkbox component in the Cerberus Design System for creating interactive checkboxes.',
     },
     Content: Checkbox,
+  },
+  {
+    id: '1.3.5b',
+    label: 'Clipboard',
+    slug: 'clipboard',
+    href: '/docs/components/clipboard',
+    frontmatter: clipboardFrontmatter,
+    meta: {
+      title: 'Clipboard Component in Cerberus Design System',
+      description:
+        'Learn how to use the Clipboard component in the Cerberus Design System for copying text to the clipboard.',
+    },
+    Content: Clipboard,
   },
   {
     id: '1.3.5a',
