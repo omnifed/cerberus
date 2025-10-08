@@ -2,8 +2,7 @@ import {
   AnimatedCheckmarkIcon,
   CopyIcon,
 } from '../../config/icons/checkbox.icons'
-import { Clipboard } from './parts'
-import type { ClipboardIndicatorProps } from './primitives'
+import { ClipboardIndicator, type ClipboardIndicatorProps } from './primitives'
 
 /**
  * A simple abstraction around the `Clipboard.Indicator` component that provides
@@ -11,8 +10,8 @@ import type { ClipboardIndicatorProps } from './primitives'
  */
 export function CopyIndicator(props: ClipboardIndicatorProps) {
   return (
-    <Clipboard.Indicator copied={<AnimatedCheckmarkIcon />} {...props}>
+    <ClipboardIndicator copied={<AnimatedCheckmarkIcon />} {...props}>
       <CopyIcon />
-    </Clipboard.Indicator>
+    </ClipboardIndicator>
   )
 }

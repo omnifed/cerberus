@@ -1,5 +1,4 @@
-import type { ClipboardIndicatorProps } from '@ark-ui/react'
-import { Clipboard } from './parts'
+import { ClipboardIndicator, type ClipboardIndicatorProps } from './primitives'
 
 /**
  * A simple abstraction around the `Clipboard.Indicator` component that provides
@@ -7,8 +6,8 @@ import { Clipboard } from './parts'
  */
 export function CopyText(props: ClipboardIndicatorProps) {
   return (
-    <Clipboard.Indicator copied="Copied" {...props}>
+    <ClipboardIndicator copied="Copied" {...props}>
       Copy
-    </Clipboard.Indicator>
+    </ClipboardIndicator>
   )
 }
