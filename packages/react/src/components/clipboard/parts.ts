@@ -5,10 +5,10 @@ import {
   ClipboardControl,
   ClipboardContext,
   ClipboardInput,
-  ClipboardTrigger,
 } from './primitives'
 import { CopyText } from './copy-text'
 import { CopyIndicator } from './copy-indicator'
+import { TriggerWithTooltip } from './trigger'
 
 /**
  * This module contains the parts of the Clipboard component.
@@ -68,7 +68,7 @@ export const Clipboard: ClipboardPartsValue = {
   Control: ClipboardControl,
   Context: ClipboardContext,
   Input: ClipboardInput,
-  Trigger: ClipboardTrigger,
+  Trigger: TriggerWithTooltip,
   Indicator: CopyIndicator,
   CopyText: CopyText,
 }

@@ -10,7 +10,12 @@ import { ClipboardIndicator, type ClipboardIndicatorProps } from './primitives'
  */
 export function CopyIndicator(props: ClipboardIndicatorProps) {
   return (
-    <ClipboardIndicator copied={<AnimatedCheckmarkIcon />} {...props}>
+    <ClipboardIndicator
+      copied={<AnimatedCheckmarkIcon />}
+      h="1em"
+      w="1em"
+      {...props}
+    >
       <CopyIcon />
     </ClipboardIndicator>
   )

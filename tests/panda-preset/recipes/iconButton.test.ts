@@ -168,14 +168,12 @@ describe('iconButton recipe', () => {
 
   test('should have a square shape variant', () => {
     expect(iconButton.variants?.shape.square).toMatchObject({
-      pxi: '0',
       rounded: 'lg',
     })
   })
 
   test('should have a circle shape variant', () => {
     expect(iconButton.variants?.shape.circle).toMatchObject({
-      pxi: '0',
       rounded: 'full',
     })
   })

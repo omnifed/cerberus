@@ -9,7 +9,7 @@ ark: 'clipboard'
 
 import CodePreview from '@/app/components/CodePreview'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import { StaticPreview } from '../components/clipboard/static'
+import { StaticPreview, ButtonPreview, TextPreview } from '../components/clipboard/static'
 
 ```ts
 import { Clipboard } from '@cerberus/react'
@@ -17,20 +17,56 @@ import { Clipboard } from '@cerberus/react'
 
 ## Usage
 
-The Clipboard component provides an accessible way to copy text to the user's clipboard with built-in visual feedback. It uses the native Clipboard API and provides loading states, success indicators, and error handling.
+The Clipboard component provides an accessible way to copy text to the user's clipboard with built-in visual feedback. It is unstyled by default, allowing for full customization.
 
 <CodePreview preview={<StaticPreview />}>
 ```tsx
-import { Clipboard } from '@cerberus/react'
+'use client'
+
+import { HStack } from 'styled-system/jsx'
+import { Clipboard, IconButton, Text } from '@cerberus/react'
 
 export function StaticPreview() {
   return (
     <Clipboard.Root value="Hello, World!">
-      <Clipboard.Label>Copy this text:</Clipboard.Label>
+      <Clipboard.Control asChild>
+        <HStack gap="md" w="full">
+          <Clipboard.Label asChild>
+            <Text as="small" textStyle="label-sm">
+              Hello, World!
+            </Text>
+          </Clipboard.Label>
+
+          <Clipboard.Trigger asChild>
+            <IconButton clipboard shape="square" size="sm" rounded="xs">
+              <Clipboard.Indicator />
+            </IconButton>
+          </Clipboard.Trigger>
+        </HStack>
+      </Clipboard.Control>
+    </Clipboard.Root>
+  )
+}
+```
+</CodePreview>
+
+## Custom Variations
+
+You can create custom variations of the Clipboard component by composing it with other components or by using inline style props.
+
+#### Button
+
+<CodePreview preview={<ButtonPreview />}>
+```tsx
+function ButtonPreview() {
+  return (
+    <Clipboard.Root value="Hello, World!">
       <Clipboard.Control>
-        <Clipboard.Input />
-        <Clipboard.Trigger>
-          <Clipboard.Indicator />
+        <Clipboard.Trigger asChild>
+          <Button color="action.text.initial">
+            <Clipboard.CopyText color="currentColor" />
+            <Clipboard.Indicator />
+          </Button>
         </Clipboard.Trigger>
       </Clipboard.Control>
     </Clipboard.Root>
@@ -39,7 +75,29 @@ export function StaticPreview() {
 ```
 </CodePreview>
 
-## Other Variants
+#### Copy Text
+
+<CodePreview preview={<TextPreview />}>
+```tsx
+function TextPreview() {
+  return (
+    <Clipboard.Root value="fake@email.com">
+      <Clipboard.Label asChild>
+        <Text as="small" textStyle="label-sm" color="page.text.200">
+          Copy Email
+        </Text>
+      </Clipboard.Label>
+
+      <Clipboard.Control>
+        <Clipboard.Trigger>
+          <Text textStyle="label-md">fake@email.com</Text>
+        </Clipboard.Trigger>
+      </Clipboard.Control>
+    </Clipboard.Root>
+  )
+}
+```
+</CodePreview>
 
 ## Primitives
 
@@ -72,9 +130,17 @@ The Clipboard component exposes several data attributes for better accessibility
 
 ## API
 
-### Props
+### Root
 
 The Clipboard.Root is an abstraction of the [Root component](https://ark-ui.com/react/docs/components/clipboard#api-reference).
+
+### Indicator
+
+The indicator accepts the following props:
+
+| Name     | Default | Description                            |
+| -------- | ------- | -------------------------------------- |
+| size   | `16` | The size of the indicator (in pixels). Can be `16`, `20`, `24`, or `32`. |
 
 ### Parts
 
