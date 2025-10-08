@@ -1,5 +1,6 @@
 import {
   Clipboard,
+  type ClipboardContextProps as ArkContextProps,
   type ClipboardRootProps as ArkRootProps,
   type ClipboardLabelProps as ArkLabelProps,
   type ClipboardControlProps as ArkControlProps,
@@ -18,6 +19,11 @@ import {
  */
 
 const { withNoRecipe } = createCerberusPrimitive()
+
+// Context
+
+export type ClipboardContextProps = ArkContextProps
+export const ClipboardContext = Clipboard.Context
 
 // Root
 

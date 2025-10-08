@@ -3,10 +3,12 @@ import {
   ClipboardRoot,
   ClipboardLabel,
   ClipboardControl,
+  ClipboardContext,
   ClipboardInput,
   ClipboardTrigger,
-  ClipboardIndicator,
 } from './primitives'
+import { CopyText } from './copy-text'
+import { CopyIndicator } from './copy-indicator'
 
 /**
  * This module contains the parts of the Clipboard component.
@@ -15,7 +17,7 @@ import {
 
 interface ClipboardPartsValue {
   /**
-   * The context provider of the clipboard.
+   * The root context provider of the clipboard.
    */
   Root: ElementType
   /**
@@ -31,13 +33,24 @@ interface ClipboardPartsValue {
    */
   Input: ElementType
   /**
+   * The raw context of the clipboard. Useful for obtaining the context state
+   * within the hierarchy of the clipboard component.
+   */
+  Context: ElementType
+  /**
    * The trigger of the clipboard.
    */
   Trigger: ElementType
   /**
-   * The indicator of the clipboard.
+   * A simple abstraction around the `Clipboard.Indicator` component that
+   * provides default "Copy" and "Copied" icons.
    */
   Indicator: ElementType
+  /**
+   * A simple abstraction around the `Clipboard.Indicator` component that
+   * provides default "Copy" and "Copied" text.
+   */
+  CopyText: ElementType
 }
 
 /**
@@ -53,7 +66,9 @@ export const Clipboard: ClipboardPartsValue = {
   Root: ClipboardRoot,
   Label: ClipboardLabel,
   Control: ClipboardControl,
+  Context: ClipboardContext,
   Input: ClipboardInput,
   Trigger: ClipboardTrigger,
-  Indicator: ClipboardIndicator,
+  Indicator: CopyIndicator,
+  CopyText: CopyText,
 }
