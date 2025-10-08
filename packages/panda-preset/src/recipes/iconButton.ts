@@ -49,11 +49,9 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     },
     shape: {
       square: {
-        pxi: '0',
         rounded: 'lg',
       },
       circle: {
-        pxi: '0',
         rounded: 'full',
       },
     },
