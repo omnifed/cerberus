@@ -11,8 +11,28 @@ import V21ReleaseNotes, {
 import V22ReleaseNotes, {
   frontmatter as v22Frontmatter,
 } from './v22-release.mdx'
+import V23ReleaseNotes, {
+  frontmatter as v23Frontmatter,
+} from './v23-release.mdx'
 
 export const items = [
+  {
+    id: '1.0.4',
+    label: 'Cerberus v23 Release',
+    category: 'release',
+    version: 'v23',
+    slug: 'v23-release',
+    frontmatter: v23Frontmatter as unknown as BlogHeaderProps,
+    href: '/blog/v23-release',
+    meta: {
+      title: 'Cerberus v23 Release Notes',
+      description:
+        'Powerful Utility Components for Enhanced Developer Experience',
+      date: '2025-01-28',
+      timeToRead: '4 min read',
+    },
+    Content: V23ReleaseNotes,
+  },
   {
     id: '1.0.3',
     label: 'Cerberus v22 Release',
