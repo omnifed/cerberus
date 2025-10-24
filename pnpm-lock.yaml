@@ -319,8 +319,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/react
       '@happy-dom/global-registrator':
-        specifier: ^18.0.1
-        version: 18.0.1
+        specifier: ^20.0.8
+        version: 20.0.8
       '@pandacss/types':
         specifier: ^1.4.1
         version: 1.4.1
@@ -959,8 +959,8 @@ packages:
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
 
-  '@happy-dom/global-registrator@18.0.1':
-    resolution: {integrity: sha512-xCy/cpEP8xyJ6u0eokYgaQxeUmcKqHx/+aC3R0DLa7/S38efhZAVDQqLJ5zzTguLFS0gvAzZHP40NGaLwRyapQ==}
+  '@happy-dom/global-registrator@20.0.8':
+    resolution: {integrity: sha512-6XJ7BGO3tz3yLZcrQF1JIQAEZ6u3mJ2EYfLSZDuZPC5EVdGtz5O2R/RlWgLYATc2tbkPnuxb9qHWHdT4TlzeOw==}
     engines: {node: '>=20.0.0'}
 
   '@humanfs/core@0.19.1':
@@ -1937,8 +1937,8 @@ packages:
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
 
-  '@types/node@20.19.19':
-    resolution: {integrity: sha512-pb1Uqj5WJP7wrcbLU7Ru4QtA0+3kAXrkutGiD26wUKzSMgNNaPARTUDQmElUXp64kh3cWdou3Q0C7qwwxqSFmg==}
+  '@types/node@20.19.23':
+    resolution: {integrity: sha512-yIdlVVVHXpmqRhtyovZAcSy0MiPcYWGkoO4CGe/+jpP0hmNuihm4XhHbADpK++MsiLHP5MVlv+bcgdF99kSiFQ==}
 
   '@types/node@24.7.0':
     resolution: {integrity: sha512-IbKooQVqUBrlzWTi79E8Fw78l8k1RNtlDDNWsFZs7XonuQSJ8oNYfEeclhprUldXISRMLzBpILuKgPlIxm+/Yw==}
@@ -3897,8 +3897,8 @@ packages:
   graphemesplit@2.6.0:
     resolution: {integrity: sha512-rG9w2wAfkpg0DILa1pjnjNfucng3usON360shisqIMUBw/87pojcBSrHmeE4UwryAuBih7g8m1oilf5/u8EWdQ==}
 
-  happy-dom@18.0.1:
-    resolution: {integrity: sha512-qn+rKOW7KWpVTtgIUi6RVmTBZJSe2k0Db0vh1f7CWrWclkkc7/Q+FrOfkZIb2eiErLyqu5AXEzE7XthO9JVxRA==}
+  happy-dom@20.0.8:
+    resolution: {integrity: sha512-TlYaNQNtzsZ97rNMBAm8U+e2cUQXNithgfCizkDgc11lgmN4j9CKMhO3FPGKWQYPwwkFcPpoXYF/CqEPLgzfOg==}
     engines: {node: '>=20.0.0'}
 
   has-bigints@1.1.0:
@@ -6841,10 +6841,10 @@ snapshots:
 
   '@floating-ui/utils@0.2.10': {}
 
-  '@happy-dom/global-registrator@18.0.1':
+  '@happy-dom/global-registrator@20.0.8':
     dependencies:
-      '@types/node': 20.19.19
-      happy-dom: 18.0.1
+      '@types/node': 20.19.23
+      happy-dom: 20.0.8
 
   '@humanfs/core@0.19.1': {}
 
@@ -7934,7 +7934,7 @@ snapshots:
 
   '@types/node@17.0.45': {}
 
-  '@types/node@20.19.19':
+  '@types/node@20.19.23':
     dependencies:
       undici-types: 6.21.0
 
@@ -7945,7 +7945,6 @@ snapshots:
   '@types/node@24.9.1':
     dependencies:
       undici-types: 7.16.0
-    optional: true
 
   '@types/react-dom@19.1.9(@types/react@19.1.13)':
     dependencies:
@@ -9444,7 +9443,7 @@ snapshots:
 
   bun-types@1.2.21(@types/react@19.1.13):
     dependencies:
-      '@types/node': 24.7.0
+      '@types/node': 24.9.1
       '@types/react': 19.1.13
 
   bun@1.2.15:
@@ -10675,9 +10674,9 @@ snapshots:
       js-base64: 3.7.7
       unicode-trie: 2.0.0
 
-  happy-dom@18.0.1:
+  happy-dom@20.0.8:
     dependencies:
-      '@types/node': 20.19.19
+      '@types/node': 20.19.23
       '@types/whatwg-mimetype': 3.0.2
       whatwg-mimetype: 3.0.0
 
@@ -13344,8 +13343,7 @@ snapshots:
 
   undici-types@7.14.0: {}
 
-  undici-types@7.16.0:
-    optional: true
+  undici-types@7.16.0: {}
 
   undici@5.29.0:
     dependencies:
