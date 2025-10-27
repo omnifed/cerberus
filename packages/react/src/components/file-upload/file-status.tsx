@@ -96,7 +96,7 @@ export function FileStatus(props: FileStatusProps) {
   const palette = useMemo(() => getPalette(status), [status])
   const modalIconPalette = useMemo(() => getModalIconPalette(status), [status])
   const styles = useMemo(() => {
-    switch (status) {
+    switch (status as processStatus) {
       case processStatus.TODO:
         return fileStatus({ status: 'todo' })
       case processStatus.PROCESSING:
@@ -190,7 +190,7 @@ function MatchFileStatusIcon(props: FileStatusElProps) {
     successNotification: DoneIcon,
   } = icons
 
-  switch (props.status) {
+  switch (props.status as processStatus) {
     case processStatus.TODO:
       return <TodoIcon size={props.size} />
     case processStatus.PROCESSING:
@@ -205,7 +205,7 @@ function MatchFileStatusIcon(props: FileStatusElProps) {
 }
 
 function MatchFileStatusText(props: FileStatusElProps) {
-  switch (props.status) {
+  switch (props.status as processStatus) {
     case processStatus.TODO:
       return 'Waiting to upload'
     case processStatus.PROCESSING:
@@ -222,7 +222,7 @@ function MatchFileStatusText(props: FileStatusElProps) {
 function MatchStatusAction(props: FileStatusElProps) {
   const { icons } = useCerberusContext()
   const { close: CloseIcon, redo: RedoIcon, delete: TrashIcon } = icons
-  switch (props.status) {
+  switch (props.status as processStatus) {
     case processStatus.TODO:
     case processStatus.PROCESSING:
       return <CloseIcon />
