@@ -6,7 +6,7 @@ source: 'components/text'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
-import TextPreview from '../components/text/static'
+import TextPreview, { DangerouslySetDemo } from '../components/text/static'
 
 ```ts
 import { Text } from '@cerberus/react'
@@ -18,7 +18,7 @@ import { Text } from '@cerberus/react'
 ```tsx title="Basic usage"
 import { Text } from '@cerberus/react'
 
-export default function TextDemo() {
+function TextDemo() {
   return (
     <>
       <Text
@@ -36,6 +36,31 @@ export default function TextDemo() {
         This is small text
       </Text>
     </>
+  )
+}
+```
+</CodePreview>
+
+## Raw HTML
+
+To render raw HTML, you can utilize the React `dangerouslySetInnerHTML` combined with the `whiteSpace` property.
+
+<CodePreview preview={<DangerouslySetDemo />}>
+```tsx title="Basic usage"
+import { Text } from '@cerberus/react'
+
+function DangerouslySetDemo() {
+  const rawHTML =
+    '<p>This is a raw paragraph with a <strong>bold</strong> word and a <br /> line break.</p>'
+
+  return (
+    <Text
+      dangerouslySetInnerHTML={{
+        __html: rawHTML,
+      }}
+      textStyle="body-sm"
+      whiteSpace="pre-wrap"
+    />
   )
 }
 ```
