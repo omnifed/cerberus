@@ -22,8 +22,8 @@ div.expressive-code {
   padding-top: var(--cerberus-spacing-md);
 }
 
-[data-code-theme='min-light'] .shiki,
-[data-code-theme='min-light'] .shiki span {
+[data-theme='min-light'] .shiki,
+[data-theme='min-light'] .shiki span {
   background-color: var(--shiki-min-light-bg) !important;
   color: var(--shiki-min-light) !important;
   font-size: 13.6px !important;
@@ -32,8 +32,8 @@ div.expressive-code {
   text-decoration: var(--shiki-min-light-text-decoration) !important;
 }
 
-[data-code-theme='night-owl'] .shiki,
-[data-code-theme='night-owl'] .shiki span {
+[data-theme='night-owl'] .shiki,
+[data-theme='night-owl'] .shiki span {
   background-color: var(--shiki-night-owl-bg) !important;
   color: var(--shiki-night-owl) !important;
   font-size: 13.6px !important;
@@ -42,8 +42,8 @@ div.expressive-code {
   text-decoration: var(--shiki-night-owl-text-decoration) !important;
 }
 
-[data-code-theme='everforest-light'] .shiki,
-[data-code-theme='everforest-light'] .shiki span {
+[data-theme='everforest-light'] .shiki,
+[data-theme='everforest-light'] .shiki span {
   background-color: var(--shiki-everforest-light-bg) !important;
   color: var(--shiki-everforest-light) !important;
   font-size: 13.6px !important;
@@ -52,8 +52,8 @@ div.expressive-code {
   text-decoration: var(--shiki-everforest-light-text-decoration) !important;
 }
 
-[data-code-theme='everforest-dark'] .shiki,
-[data-code-theme='everforest-dark'] .shiki span {
+[data-theme='everforest-dark'] .shiki,
+[data-theme='everforest-dark'] .shiki span {
   background-color: var(--shiki-everforest-dark-bg) !important;
   color: var(--shiki-everforest-dark) !important;
   font-size: 13.6px !important;

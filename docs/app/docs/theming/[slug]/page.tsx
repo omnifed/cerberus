@@ -1,3 +1,5 @@
+'use cache'
+
 import { Show, Text } from '@cerberus-design/react'
 import { VStack } from '@/styled-system/jsx/vstack'
 import { getDocPageData } from '../../utils/helpers.server'
