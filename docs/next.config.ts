@@ -1,23 +1,16 @@
 import createMDX from '@next/mdx'
-import emoji from 'remark-emoji'
-import remarkParse from 'remark-parse'
-import remarkGfm from 'remark-gfm'
-import remarkFrontmatter from 'remark-frontmatter'
-import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
-import rehypeExpressiveCode from 'rehype-expressive-code'
-import rehypeStringify from 'rehype-stringify'
-import rehypeSlug from 'rehype-slug'
-import rehypeAutoLinkHeadings from 'rehype-autolink-headings'
-import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
+import type { NextConfig } from 'next'
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['@ark-ui/react', '@cerberus-design/react'],
     serverComponentsHmrCache: true,
   },
 
   pageExtensions: ['md', 'mdx', 'ts', 'tsx', 'json'],
+
+  cacheComponents: true,
+  reactCompiler: true,
   typedRoutes: true,
 
   images: {
@@ -31,25 +24,19 @@ const nextConfig = {
 }
 
 const withMDX = createMDX({
-  experimental: {
-    mdxRs: {
-      mdxType: 'gfm',
-    },
-  },
-
   options: {
     remarkPlugins: [
-      emoji,
-      remarkParse,
-      remarkGfm,
-      remarkFrontmatter,
-      remarkMdxFrontmatter,
+      'remark-emoji',
+      'remark-parse',
+      'remark-gfm',
+      'remark-frontmatter',
+      'remark-mdx-frontmatter',
     ],
     rehypePlugins: [
       [
-        rehypeExpressiveCode,
+        'rehype-expressive-code',
         {
-          plugins: [pluginLineNumbers()],
+          plugins: ['@expressive-code/plugin-line-numbers'],
           styleOverrides: {
             borderWidth: '3px',
           },
@@ -59,12 +46,11 @@ const withMDX = createMDX({
             'everforest-dark',
             'everforest-light',
           ],
-          themeCssSelector: (theme) => `[data-code-theme='${theme.name}']`,
         },
       ],
-      rehypeSlug,
+      'rehype-slug',
       [
-        rehypeAutoLinkHeadings,
+        'rehype-autolink-headings',
         {
           behavior: 'wrap',
           properties: {
@@ -72,7 +58,7 @@ const withMDX = createMDX({
           },
         },
       ],
-      rehypeStringify,
+      'rehype-stringify',
     ],
   },
 })
