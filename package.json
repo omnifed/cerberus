@@ -31,7 +31,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-config-standard-with-typescript": "^43.0.1",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-sonarjs": "^3.0.5",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.3",

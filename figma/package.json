@@ -14,13 +14,13 @@
   },
   "dependencies": {
     "@cerberus-design/react": "workspace:*",
-    "react": "^19",
-    "react-dom": "^19"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@figma/code-connect": "^1.3.4",
-    "@figma/rest-api-spec": "^0.33.0",
-    "@types/react": "^19",
+    "@figma/rest-api-spec": "^0.34.0",
+    "@types/react": "^19.2.6",
     "dotenv": "^17.2.1"
   },
   "keywords": [],
