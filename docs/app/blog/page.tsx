@@ -1,3 +1,5 @@
+'use cache'
+
 import { ArrowRight } from '@carbon/icons-react'
 import { For, Text, Tag, Show } from '@cerberus-design/react'
 import {
@@ -12,7 +14,7 @@ import CerberusLogo from '@/app/components/cerberus-logo'
 import Link, { type LinkProps } from 'next/link'
 import { items } from './[slug]/content/items'
 
-export default function Page() {
+export default async function Page() {
   const featTitle = {
     blog: 'Blog',
     release: 'Cerberus',

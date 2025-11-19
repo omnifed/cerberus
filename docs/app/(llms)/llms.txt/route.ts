@@ -19,8 +19,6 @@ type Items =
   | typeof stylingItems
   | typeof themingItems
 
-export const dynamic = 'force-static'
-
 export const GET = async () => {
   const documentSets: DocumentSet[] = [
     {
@@ -117,7 +115,7 @@ export const GET = async () => {
   )
 
   return new Response(content, {
-    headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
   })
 }
 
