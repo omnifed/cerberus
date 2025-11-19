@@ -1,16 +1,5 @@
-// import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
-// import type { Themes } from '@cerberus-design/panda-preset'
 import createMDX from '@next/mdx'
 import type { NextConfig } from 'next'
-// import emoji from 'remark-emoji'
-// import remarkParse from 'remark-parse'
-// import remarkGfm from 'remark-gfm'
-// import remarkFrontmatter from 'remark-frontmatter'
-// import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
-// import rehypeExpressiveCode from 'rehype-expressive-code'
-// import rehypeStringify from 'rehype-stringify'
-// import rehypeSlug from 'rehype-slug'
-// import rehypeAutoLinkHeadings from 'rehype-autolink-headings'
 
 const nextConfig: NextConfig = {
   experimental: {
@@ -42,11 +31,6 @@ const withMDX = createMDX({
       'remark-gfm',
       'remark-frontmatter',
       'remark-mdx-frontmatter',
-      // emoji,
-      // remarkParse,
-      // remarkGfm,
-      // remarkFrontmatter,
-      // remarkMdxFrontmatter,
     ],
     rehypePlugins: [
       [
@@ -62,8 +46,6 @@ const withMDX = createMDX({
             'everforest-dark',
             'everforest-light',
           ],
-          // themeCssSelector: (theme: { name: Themes }) =>
-          //   `[data-code-theme='${theme.name}']`,
         },
       ],
       'rehype-slug',

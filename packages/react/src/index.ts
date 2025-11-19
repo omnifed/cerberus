@@ -82,6 +82,6 @@ export * from './system/index'
 
 export * from './types'
 
-// 3rd party
+// 3rd party exports
 
-export * from '@dnd-kit/core'
+export * from './index.client'
