@@ -29,11 +29,11 @@
     "@pandacss/dev": "^1.5.1",
     "@types/react": "^19.2.6",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.0.4",
+    "@vitejs/plugin-react": "^5.1.1",
     "globby": "^14.1.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "vite": "^7.1.10",
+    "vite": "^7.2.4",
     "vite-plugin-dts": "^4.5.4"
   },
   "publishConfig": {
