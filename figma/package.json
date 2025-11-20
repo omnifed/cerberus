@@ -23,6 +23,11 @@
     "@types/react": "^19.2.6",
     "dotenv": "^17.2.1"
   },
+  "pnpm": {
+    "overrides": {
+      "glob": ">=11.1.0"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"

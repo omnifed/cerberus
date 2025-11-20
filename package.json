@@ -52,11 +52,12 @@
     "node": ">=22.0.0",
     "bun": ">=1.2.16"
   },
-  "packageManager": "pnpm@10.19.0",
+  "packageManager": "pnpm@10.23.0",
   "pnpm": {
     "overrides": {
       "@eslint/plugin-kit": ">=0.3.4",
-      "brace-expansion": "2.0.2"
+      "brace-expansion": "2.0.2",
+      "js-yaml": ">=4.1.1"
     },
     "ignoredBuiltDependencies": [
       "@tsparticles/engine",
