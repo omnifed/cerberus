@@ -18,7 +18,7 @@ describe('config helpers', () => {
     expect(icons.accordionIndicator).toBe(TestIcon)
     expect(icons.checkbox).toBeDefined()
     expect(icons.fileUploader).toBeDefined()
-    expect(icons.indeterminate).toBeDefined
+    expect(icons.indeterminate).toBeDefined()
   })
 
   test('makeSystemConfig', () => {
