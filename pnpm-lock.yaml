@@ -326,8 +326,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/react
       '@happy-dom/global-registrator':
-        specifier: ^20.0.8
-        version: 20.0.8
+        specifier: ^20.0.10
+        version: 20.0.10
       '@pandacss/types':
         specifier: ^1.5.1
         version: 1.5.1
@@ -957,8 +957,8 @@ packages:
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
 
-  '@happy-dom/global-registrator@20.0.8':
-    resolution: {integrity: sha512-6XJ7BGO3tz3yLZcrQF1JIQAEZ6u3mJ2EYfLSZDuZPC5EVdGtz5O2R/RlWgLYATc2tbkPnuxb9qHWHdT4TlzeOw==}
+  '@happy-dom/global-registrator@20.0.10':
+    resolution: {integrity: sha512-GU0UBt9lJKhZlY/U0Bivj9ZVepDIQoAUupAAl/90THG4/urkzXNglkVYETsnt2pGBDgQ+4vBjMAbLu6XzcKcQA==}
     engines: {node: '>=20.0.0'}
 
   '@humanfs/core@0.19.1':
@@ -3900,8 +3900,8 @@ packages:
   graphemesplit@2.6.0:
     resolution: {integrity: sha512-rG9w2wAfkpg0DILa1pjnjNfucng3usON360shisqIMUBw/87pojcBSrHmeE4UwryAuBih7g8m1oilf5/u8EWdQ==}
 
-  happy-dom@20.0.8:
-    resolution: {integrity: sha512-TlYaNQNtzsZ97rNMBAm8U+e2cUQXNithgfCizkDgc11lgmN4j9CKMhO3FPGKWQYPwwkFcPpoXYF/CqEPLgzfOg==}
+  happy-dom@20.0.10:
+    resolution: {integrity: sha512-6umCCHcjQrhP5oXhrHQQvLB0bwb1UzHAHdsXy+FjtKoYjUhmNZsQL8NivwM1vDvNEChJabVrUYxUnp/ZdYmy2g==}
     engines: {node: '>=20.0.0'}
 
   has-bigints@1.1.0:
@@ -6769,10 +6769,10 @@ snapshots:
 
   '@floating-ui/utils@0.2.10': {}
 
-  '@happy-dom/global-registrator@20.0.8':
+  '@happy-dom/global-registrator@20.0.10':
     dependencies:
       '@types/node': 20.19.25
-      happy-dom: 20.0.8
+      happy-dom: 20.0.10
 
   '@humanfs/core@0.19.1': {}
 
@@ -10624,7 +10624,7 @@ snapshots:
       js-base64: 3.7.7
       unicode-trie: 2.0.0
 
-  happy-dom@20.0.8:
+  happy-dom@20.0.10:
     dependencies:
       '@types/node': 20.19.25
       '@types/whatwg-mimetype': 3.0.2
