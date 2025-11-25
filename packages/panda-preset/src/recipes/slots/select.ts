@@ -102,6 +102,7 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     positioner: {
       w: 'var(--reference-width)',
+      zIndex: 'dropdown!',
     },
     content: {
       bgColor: 'page.surface.100',

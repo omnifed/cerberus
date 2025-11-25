@@ -89,6 +89,7 @@ describe('select recipe', () => {
   test('should have a positioner style', () => {
     expect(select.base?.positioner).toMatchObject({
       w: 'var(--reference-width)',
+      zIndex: 'dropdown!',
     })
   })
 
