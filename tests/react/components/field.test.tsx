@@ -7,13 +7,14 @@ import {
   CerberusProvider,
   FieldParts,
   type FieldProps,
+  type CerberusPrimitiveProps,
 } from '@cerberus-design/react'
 import { makeConfig } from '@/utils'
 
 describe('<Field />', () => {
   const config = makeConfig()
 
-  function Test(props: FieldProps) {
+  function Test(props: CerberusPrimitiveProps<FieldProps>) {
     return (
       <CerberusProvider config={config}>
         <Field {...props} />
@@ -188,5 +189,18 @@ describe('<Field />', () => {
     expect(label).toBeInTheDocument()
     expect(requiredIndicators.length).toBeGreaterThan(0)
     expect(label.classList.toString()).toContain('sr')
+  })
+
+  test('should allow primitive props', () => {
+    render(
+      <Test label="Styled Input" bgColor="blue" css={{ mb: '20px' }}>
+        <Input name="styledInput" type="text" />
+      </Test>,
+    )
+    const fieldRoot = screen.getByText(/Styled Input/i).parentElement
+
+    expect(fieldRoot).toBeInTheDocument()
+    expect(fieldRoot?.classList.toString()).toContain('cerberus-bg-c_blue')
+    expect(fieldRoot?.classList.toString()).toContain('cerberus-mb_20px')
   })
 })
