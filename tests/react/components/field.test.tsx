@@ -191,7 +191,7 @@ describe('<Field />', () => {
     expect(label.classList.toString()).toContain('sr')
   })
 
-  test.only('should allow primitive props', () => {
+  test('should allow primitive props', () => {
     render(
       <Test label="Styled Input" bgColor="blue" css={{ mb: '20px' }}>
         <Input name="styledInput" type="text" />
