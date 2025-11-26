@@ -1,5 +1,6 @@
 import { type FieldRootProps } from '@ark-ui/react/field'
 import { HStack } from 'styled-system/jsx'
+import type { CerberusPrimitiveProps } from '../../system/types'
 import { splitProps } from '../../utils/index'
 import { Show } from '../show/index'
 import {
@@ -52,7 +53,7 @@ export interface FieldProps extends FieldRootProps {
  * </Field>
  * ```
  */
-export function Field(props: FieldProps) {
+export function Field(props: CerberusPrimitiveProps<FieldProps>) {
   const [statusProps, fieldProps, rootProps] = splitProps(
     props,
     ['disabled', 'required', 'readOnly', 'invalid'],
