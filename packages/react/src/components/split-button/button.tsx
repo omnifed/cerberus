@@ -2,7 +2,7 @@
 
 import { useCerberusContext } from '../../context/cerberus'
 import { splitProps } from '../../utils'
-import { Button, ButtonGroup, type ButtonProps } from '../button/index'
+import { ButtonGroup, ButtonParts, type ButtonProps } from '../button/index'
 import { IconButton } from '../icon-button/index'
 import { Menu, MenuTrigger, MenuContent } from '../menu/index'
 import type { CerberusPrimitiveProps } from '../../system/types'
@@ -35,21 +35,24 @@ export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
 
   return (
     <ButtonGroup layout="attached" shape={actionProps.shape}>
-      <Button usage={usage} {...actionProps}>
+      <ButtonParts.Root usage={usage} {...actionProps}>
+        <ButtonParts.Icon />
         {actionText}
-      </Button>
+      </ButtonParts.Root>
 
       <Menu>
         <MenuTrigger>
           <IconButton
             ariaLabel="More options"
             palette={actionProps.palette}
+            disabled={actionProps.pending}
             shape={iconShape}
             usage={usage}
           >
             <SelectArrow />
           </IconButton>
         </MenuTrigger>
+
         <MenuContent>{elProps.children}</MenuContent>
       </Menu>
     </ButtonGroup>
