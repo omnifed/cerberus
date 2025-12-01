@@ -143,8 +143,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1(@types/react@19.2.6)(react@19.2.0)
       '@next/mdx':
-        specifier: ^16.0.3
-        version: 16.0.3(@mdx-js/loader@3.1.1(webpack@5.91.0))(@mdx-js/react@3.1.1(@types/react@19.2.6)(react@19.2.0))
+        specifier: ^16.0.6
+        version: 16.0.6(@mdx-js/loader@3.1.1(webpack@5.91.0))(@mdx-js/react@3.1.1(@types/react@19.2.6)(react@19.2.0))
       '@pandacss/dev':
         specifier: ^1.5.1
         version: 1.5.1(jsdom@26.0.0)(typescript@5.9.3)
@@ -1213,8 +1213,8 @@ packages:
   '@next/eslint-plugin-next@16.0.3':
     resolution: {integrity: sha512-6sPWmZetzFWMsz7Dhuxsdmbu3fK+/AxKRtj7OB0/3OZAI2MHB/v2FeYh271LZ9abvnM1WIwWc/5umYjx0jo5sQ==}
 
-  '@next/mdx@16.0.3':
-    resolution: {integrity: sha512-uVl2JSEGAjBV+EVnpt1cZN88SK3lJ2n7Fc+iqTsgVx2g9+Y6ru+P6nuUgXd38OHPUIwzL6k2V1u4iV3kwuTySQ==}
+  '@next/mdx@16.0.6':
+    resolution: {integrity: sha512-NLWJg4mqYHbHr1uyxFIOVuGFn0ACRA0L/JuL8amr8Pos8ZrRQ1/CUw0rUh22D/kPlq5QOyF/vySl9yvuETmDBA==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
@@ -1917,9 +1917,6 @@ packages:
 
   '@types/eslint@8.56.12':
     resolution: {integrity: sha512-03ruubjWyOHlmljCVoxSuNDdmfZDzsrrz0P2LeJsOXr+ZwFQ+0yQIwNCwt/GYhV7Z31fgtXJTAEs+FYlEL851g==}
-
-  '@types/eslint@9.6.1':
-    resolution: {integrity: sha512-FXx2pKgId/WyYo2jXw63kk7/+TY7u7AziEJxJAnSFzHlqTAS3Ync6SvgYAN/k4/PQpnnVuzoMuVnByKK2qp0ag==}
 
   '@types/eslint__js@8.42.3':
     resolution: {integrity: sha512-alfG737uhmPdnvkrLdZLcEKJ/B8s9Y4hrZ+YAdzUeoArBlSUERA2E87ROfOaS4jd/C45fzOoZzidLc1IPwLqOw==}
@@ -7058,7 +7055,7 @@ snapshots:
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/mdx@16.0.3(@mdx-js/loader@3.1.1(webpack@5.91.0))(@mdx-js/react@3.1.1(@types/react@19.2.6)(react@19.2.0))':
+  '@next/mdx@16.0.6(@mdx-js/loader@3.1.1(webpack@5.91.0))(@mdx-js/react@3.1.1(@types/react@19.2.6)(react@19.2.0))':
     dependencies:
       source-map: 0.7.6
     optionalDependencies:
@@ -7843,7 +7840,7 @@ snapshots:
 
   '@types/eslint-scope@3.7.7':
     dependencies:
-      '@types/eslint': 9.6.1
+      '@types/eslint': 8.56.12
       '@types/estree': 1.0.8
     optional: true
 
@@ -7851,12 +7848,6 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.8
       '@types/json-schema': 7.0.15
-
-  '@types/eslint@9.6.1':
-    dependencies:
-      '@types/estree': 1.0.8
-      '@types/json-schema': 7.0.15
-    optional: true
 
   '@types/eslint__js@8.42.3':
     dependencies:
