@@ -13,6 +13,9 @@ import type { CerberusPrimitiveProps } from '../../system/types'
  */
 
 export interface SplitButtonProps extends ButtonProps {
+  /** T
+   * he text for the primary action button.
+   */
   actionText: string
 }
 
