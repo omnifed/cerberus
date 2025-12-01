@@ -24,7 +24,7 @@ export function StaticPreview() {
 
 export function BasicDemo() {
   return (
-    <SplitButton actionText="Main Action" disabled>
+    <SplitButton actionText="Main Action" pending>
       <MenuItem value="save">
         <Save size={16} />
         Save

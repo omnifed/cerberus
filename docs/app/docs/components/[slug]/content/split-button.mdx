@@ -49,7 +49,7 @@ function StaticPreview() {
 
 ## Main Action
 
-The SplitButton accepts all standard button props for the primary action button, allowing you to customize its behavior.
+The SplitButton accepts all standard `Button` props for the primary action button, allowing you to customize its behavior.
 
 <CodePreview preview={<BasicDemo />}>
 ```tsx
@@ -58,7 +58,7 @@ import { Save, Download } from '@carbon/icons-react'
 
 function BasicDemo() {
   return (
-    <SplitButton actionText="Main Action" disabled>
+    <SplitButton actionText="Main Action" pending>
       <MenuItem value="save">
         <Save size={16} />
         Save
@@ -85,7 +85,7 @@ The SplitButton component is built using the following primitive components:
 | ------------ | ----------------------------------------------------- |
 | ButtonGroup  | Groups the primary button and dropdown trigger together |
 | Button       | The primary action button                             |
-| Menu         | The dropdown menu container                           |
+| Menu         | The dropdown menu container. **Renders within parent context.**                           |
 | MenuTrigger  | The dropdown trigger (IconButton)                    |
 | MenuContent  | The dropdown menu content container                   |
 | MenuItem     | Individual menu items within the dropdown            |

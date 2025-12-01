@@ -50,7 +50,7 @@ import { VStack, HStack } from 'styled-system/jsx'
 
 function OverviewPreview() {
   return (
-    <DialogProvider id="basics-dialog">
+    <DialogProvider>
       <DialogTrigger asChild>
         <Button>open dialog</Button>
       </DialogTrigger>
@@ -101,7 +101,7 @@ import { VStack, HStack } from 'styled-system/jsx'
 
 function ModalFormPreview() {
   return (
-    <DialogProvider id="form-dialog" lazyMount>
+    <DialogProvider lazyMount>
       <DialogTrigger asChild>
         <Button>open lazy mounted form dialog</Button>
       </DialogTrigger>
