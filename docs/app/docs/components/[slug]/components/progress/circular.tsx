@@ -1,11 +1,25 @@
 'use client'
 
 import { HStack } from '@/styled-system/jsx'
-import { CircularProgress } from '@cerberus-design/react'
+import { CircularProgress, Text } from '@cerberus-design/react'
+
+function NotStartedText() {
+  return (
+    <Text textAlign="center" textStyle="heading-2xs" px="md">
+      Not Started
+    </Text>
+  )
+}
 
 export function CircularPreview() {
   return (
-    <HStack w="1/2">
+    <HStack>
+      <CircularProgress
+        id="0"
+        defaultValue={0}
+        label={<NotStartedText />}
+        hideValueText
+      />
       <CircularProgress id="25" defaultValue={25} />
       <CircularProgress id="50" defaultValue={50} />
       <CircularProgress id="75" defaultValue={75} />
@@ -27,5 +41,31 @@ export function SizesPreview() {
         size="lg"
       />
     </HStack>
+  )
+}
+
+export function HideValueTextPreview() {
+  return (
+    <HStack justify="center" w="1/2">
+      <CircularProgress
+        defaultValue={0}
+        label={<NotStartedText />}
+        hideValueText
+      />
+    </HStack>
+  )
+}
+
+export function CustomLabelPreview() {
+  return (
+    <CircularProgress
+      defaultValue={60}
+      label={
+        <Text color="yellow" textStyle="heading-sm">
+          Loading
+        </Text>
+      }
+      size="md"
+    />
   )
 }
