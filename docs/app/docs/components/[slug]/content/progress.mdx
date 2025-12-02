@@ -12,7 +12,7 @@ import {
   NoteAdmonition
 } from '@/app/components/Admonition'
 import { OverviewPreview } from '../components/progress/bar'
-import { CircularPreview, SizesPreview } from '../components/progress/circular'
+import { CircularPreview, SizesPreview, HideValueTextPreview, CustomLabelPreview } from '../components/progress/circular'
 
 ```tsx
 import { ProgressBar, CircularProgress } from '@cerberus/react'
@@ -68,12 +68,26 @@ The `CircularProgress` component is used to display a circular progress indicato
 ```tsx
 'use client'
 
-import { CircularProgress } from '@cerberus/react'
+import { CircularProgress, Text } from '@cerberus/react'
 import { HStack } from 'styled-system/jsx'
 
-export function CircularPreview() {
+function NotStartedText() {
   return (
-    <HStack w="1/2">
+    <Text textAlign="center" textStyle="heading-2xs" px="md">
+      Not Started
+    </Text>
+  )
+}
+
+function CircularPreview() {
+  return (
+    <HStack>
+      <CircularProgress
+        id="0"
+        defaultValue={0}
+        label={<NotStartedText />}
+        hideValueText
+      />
       <CircularProgress id="25" defaultValue={25} />
       <CircularProgress id="50" defaultValue={50} />
       <CircularProgress id="75" defaultValue={75} />
@@ -108,18 +122,61 @@ function SizesPreview() {
 ```
 </CodePreview>
 
-## Progress Bar Primitives
+### Hide Value Text
 
-You can utilize the primitive components or the `css` prop to customize the progress bar.
+The `CircularProgress` component allows you to hide the value text via the `hideValueText` prop.
+
+<CodePreview preview={<HideValueTextPreview />}>
+```tsx /hideValueText/
+function HideValueTextPreview() {
+  return (
+    <HStack justify="center" w="1/2">
+      <CircularProgress
+        defaultValue={0}
+        label={<NotStartedText />}
+        hideValueText
+      />
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+### Custom Label
+
+You can customize the label displayed below the value by passing a custom React node to the `label` prop.
+
+<CodePreview preview={<CustomLabelPreview />} >
+```tsx /label/
+function CustomLabelPreview() {
+  return (
+    <HStack justify="center" w="1/2">
+      <CircularProgress
+        defaultValue={60}
+        label={
+          <Text color="yellow" textStyle="heading-sm">
+            Loading
+          </Text>
+        }
+      />
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can utilize the primitive components or style props to customize the progress components.
+
+### Progress Bar
 
 | Component | Description |
 | --------- | ----------- |
 | ProgressBarRoot    | The container for the ProgressBar parts |
 | ProgressBarBar  | The percentage bar of the amount |
 
-## Circular Progress Primitives
-
-You can utilize the primitive components or the `css` prop to customize the circular progress.
+### Circular Progress
 
 | Component | Description |
 | --------- | ----------- |
@@ -130,6 +187,30 @@ You can utilize the primitive components or the `css` prop to customize the circ
 | CircularProgressCircle  | The container of the progress |
 | CircularProgressCircleTrack  | The track of the progress |
 | CircularProgressCircleRange  | The range of the progress |
+
+### CSS Variables
+
+Both `ProgressBar` and `CircularProgress` components expose CSS variables for easy customization.
+
+| Variable Name               | Description                               |
+| --------------------------- | ----------------------------------------- |
+| `--percent`                 | The percent value for the root.           |
+| `--radius`                  | The border radius value.                  |
+| `--circumference`           | The circumference value for the root.     |
+| `--offset`                  | The offset position of the element        |
+
+### Data Attributes
+
+Both `ProgressBar` and `CircularProgress` components expose data attributes for styling based on state.
+
+| Data Attribute              | Value.                                    |
+| --------------------------- | ----------------------------------------- |
+| `[data-scope]`              | progress                                  |
+| `[data-part]`               | The primitive layer (e.g. 'root')         |
+| `[data-max]`                | The value of `max`                        |
+| `[data-value]`              | The value of the progress                 |
+| `[data-state]`              | The state of the progress (e.g. 'loading') |
+| `[data-orientation]`      | The orientation of the progress (e.g. 'horizontal', 'vertical')        |
 
 ## API
 
@@ -148,6 +229,7 @@ You can utilize the primitive components or the `css` prop to customize the circ
 
 | Name     | Default | Description                                  |
 | -------- | ------- | -------------------------------------------- |
+| hideValueText |  `false`  | Hides the value text in the center of the circle. |
 | label    |    | A description of what the progress bar is for. |
 | size     |  `md`  | The size of the circular progress. |
 | usage    |  `filled`  | The fill style of the center circle used for the bg. |

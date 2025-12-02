@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import {
   CircularProgressCircle,
   CircularProgressCircleRange,
@@ -8,6 +9,7 @@ import {
   CircularProgressValueText,
   type CircularProgressRootProps,
 } from './primitives'
+import { Show } from '../show/show'
 
 export interface CircularProgressProps extends CircularProgressRootProps {
   /**
@@ -16,12 +18,18 @@ export interface CircularProgressProps extends CircularProgressRootProps {
   bgStyle?: 'filled' | 'transparent'
   /**
    * The label for the circular progress.
+   * @default 'Done'
    */
-  label?: string
+  label?: ReactNode
+  /**
+   * Whether to hide the value text inside the circular progress.
+   * @default false
+   */
+  hideValueText?: boolean
 }
 
 export function CircularProgress(props: CircularProgressProps) {
-  const { label, ...rootProps } = props
+  const { label, hideValueText, ...rootProps } = props
 
   return (
     <CircularProgressRoot {...rootProps}>
@@ -31,7 +39,9 @@ export function CircularProgress(props: CircularProgressProps) {
       </CircularProgressCircle>
 
       <CircularProgressInfoGroup>
-        <CircularProgressValueText />
+        <Show when={!hideValueText}>
+          <CircularProgressValueText />
+        </Show>
         <CircularProgressLabel>{label ?? 'Done'}</CircularProgressLabel>
       </CircularProgressInfoGroup>
     </CircularProgressRoot>
