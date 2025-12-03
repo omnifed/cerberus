@@ -17,9 +17,11 @@ import { css } from 'styled-system/css'
 import { hstack } from 'styled-system/patterns'
 import { FieldLabel, FieldRoot, Input } from '../components/field/index'
 import { Button } from '../components/button/button'
+import { Clipboard } from '../components/clipboard/index'
 import { Show } from '../components/show/index'
 import { Avatar } from '../components/avatar/avatar'
 import { Text } from '../components/text/index'
+import { IconButton } from '../components/icon-button/index'
 import {
   Dialog,
   DialogDescription,
@@ -232,9 +234,28 @@ export function PromptModal(
                   })}
                 >
                   Type
-                  <Text as="strong" textTransform="uppercase">
-                    {content?.key}
-                  </Text>
+                  <Clipboard.Root value={content?.key || ''}>
+                    <Clipboard.Control asChild>
+                      <HStack gap="xs" w="full">
+                        <Clipboard.Label asChild>
+                          <Text as="strong" userSelect="text">
+                            {content?.key}
+                          </Text>
+                        </Clipboard.Label>
+
+                        <Clipboard.Trigger asChild>
+                          <IconButton
+                            clipboard
+                            shape="square"
+                            size="sm"
+                            rounded="xs"
+                          >
+                            <Clipboard.Indicator />
+                          </IconButton>
+                        </Clipboard.Trigger>
+                      </HStack>
+                    </Clipboard.Control>
+                  </Clipboard.Root>
                   to confirm
                 </FieldLabel>
                 <Input name="confirm" onChange={handleChange} type="text" />

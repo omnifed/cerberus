@@ -11,7 +11,7 @@ export function NonDestructiveFeature() {
   const [userValue, setUserValue] = useState<string | null>(null)
 
   const handleClick = useCallback(async () => {
-    const key = 'SUPER_SECRET'
+    const key = 'super-secret'
     const userPrompt = await prompt.show({
       heading: 'Enter passkey',
       description:
@@ -81,7 +81,7 @@ export function PromptOverviewFeature() {
   const [userValue, setUserValue] = useState<string | null>(null)
 
   const handleClick = useCallback(async () => {
-    const key = 'SUPER_SECRET'
+    const key = 'kewl/d00d'
     const userPrompt = await prompt.show({
       heading: 'Enter passkey',
       description:
