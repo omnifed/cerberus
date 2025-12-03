@@ -5,6 +5,8 @@ import {
 
 export default createCerberusConfig({
   clean: true,
+  minify: process.env.NODE_ENV === 'production',
+
   presets: [createCerberusPreset()],
 
   globalVars: {

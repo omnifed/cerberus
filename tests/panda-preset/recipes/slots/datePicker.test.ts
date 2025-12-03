@@ -66,7 +66,6 @@ describe('datePicker recipe', () => {
       bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'action.border.100',
-      h: '19.75rem',
       overflow: 'hidden',
       rounded: 'sm',
       shadow: 'md',
