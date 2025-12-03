@@ -427,7 +427,7 @@
     "secondary-action": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.teal.100",
+        "$value": "cerberus.brand.100",
         "$description": "Text color inside of interactive items and icons that have an inverse background of the initial token. That may need a different style of emphasis. Use case may vary per product.",
         "$extensions": {
           "com.figma": {
@@ -439,7 +439,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.teal.90",
+        "$value": "cerberus.brand.50",
         "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product.",
         "$extensions": {
           "com.figma": {
@@ -451,7 +451,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.teal.80",
+        "$value": "cerberus.brand.90",
         "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product.",
         "$extensions": {
           "com.figma": {
@@ -463,7 +463,7 @@
       },
       "static": {
         "$type": "color",
-        "$value": "cerberus.teal.70",
+        "$value": "cerberus.brand.40",
         "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product.",
         "$extensions": {
           "com.figma": {
@@ -476,7 +476,7 @@
       "navigation": {
         "initial": {
           "$type": "color",
-          "$value": "cerberus.teal.80",
+          "$value": "cerberus.brand.60",
           "$description": "Text color of hyperlinks throughout the site. ",
           "$extensions": {
             "com.figma": {
@@ -488,7 +488,7 @@
         },
         "hover": {
           "$type": "color",
-          "$value": "cerberus.teal.90",
+          "$value": "cerberus.brand.50",
           "$description": "Text color of hyperlinks throughout the site while hovering. ",
           "$extensions": {
             "com.figma": {
@@ -500,7 +500,7 @@
         },
         "visited": {
           "$type": "color",
-          "$value": "cerberus.teal.100",
+          "$value": "cerberus.brand.100",
           "$description": "Text color of hyperlinks throughout the site that have been vistited",
           "$extensions": {
             "com.figma": {
@@ -913,7 +913,7 @@
     "secondary-action": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.teal.90",
+        "$value": "cerberus.brand.20",
         "$description": "for use on less prominent actionable borders, like input fields etc",
         "$extensions": {
           "com.figma": {
@@ -925,7 +925,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.teal.80",
+        "$value": "cerberus.brand.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -937,7 +937,7 @@
       },
       "focus": {
         "$type": "color",
-        "$value": "cerberus.teal.70",
+        "$value": "cerberus.brand.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1193,7 +1193,7 @@
     "secondary-action": {
       "initial": {
         "$type": "color",
-        "$value": "cerberus.teal.20",
+        "$value": "cerberus.brand.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1205,7 +1205,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.teal.30",
+        "$value": "cerberus.brand.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1217,7 +1217,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.teal.40",
+        "$value": "cerberus.brand.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1283,7 +1283,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.neutral.5",
+        "$value": "cerberus.brand.10",
         "$description": "Hover state of ghost action elements. Pair with text.action.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
@@ -1295,7 +1295,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.brand.10",
+        "$value": "cerberus.brand.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1435,7 +1435,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.teal.10",
+        "$value": "cerberus.neutral.15",
         "$description": "Hover state of ghost action elements. Pair with text.secondary-action.100 to meet accessibility requirements.",
         "$extensions": {
           "com.figma": {
@@ -1447,7 +1447,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.teal.20",
+        "$value": "cerberus.brand.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
