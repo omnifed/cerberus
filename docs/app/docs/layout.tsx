@@ -4,10 +4,14 @@ import { SideNav } from '../components/shared/side-nav'
 import { getDocsMetadata } from './utils/helpers.server'
 import { AppBar, DocsPageLayout } from './shared'
 import type { ReactNode } from 'react'
+import { cacheLife } from 'next/cache'
 
 export const metadata: Metadata = getDocsMetadata()
 
-export default function DocsLayout(props: { children: ReactNode }) {
+export default async function DocsLayout(props: { children: ReactNode }) {
+  'use cache'
+  cacheLife('hours')
+
   return (
     <HStack
       alignItems="flex-start"

@@ -24,7 +24,7 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
           <Nav />
 
           <cerberus.main role="main" css={{ h: 'full', w: 'full' }}>
-            {props.children}
+            <Suspense>{props.children}</Suspense>
           </cerberus.main>
 
           <NotificationCenter />
