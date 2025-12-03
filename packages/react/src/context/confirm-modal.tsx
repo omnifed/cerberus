@@ -178,7 +178,12 @@ export function ConfirmModal(
     <ConfirmModalContext.Provider value={value}>
       {props.children}
 
-      <DialogProvider open={open} onOpenChange={handleOpenChange}>
+      <DialogProvider
+        lazyMount
+        open={open}
+        onOpenChange={handleOpenChange}
+        unmountOnExit
+      >
         <Dialog
           size="sm"
           style={{

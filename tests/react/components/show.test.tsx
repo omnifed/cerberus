@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { Show } from '@cerberus-design/react'
 
 describe('Show', () => {
@@ -40,5 +40,16 @@ describe('Show', () => {
     )
     expect(screen.getByText('fallback')).toBeInTheDocument()
     expect(screen.queryByText('children')).not.toBeInTheDocument()
+  })
+
+  test('should lazy render children when condition is true', async () => {
+    const LazyChildren = () => <div>lazy children</div>
+    render(<Show when={false}>{() => <LazyChildren />}</Show>)
+    expect(screen.queryByText('lazy children')).not.toBeInTheDocument()
+
+    render(<Show when={true}>{() => <LazyChildren />}</Show>)
+    await waitFor(() => {
+      expect(screen.getByText('lazy children')).toBeInTheDocument()
+    })
   })
 })

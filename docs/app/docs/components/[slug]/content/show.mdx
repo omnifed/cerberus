@@ -6,11 +6,12 @@ source: 'components/show'
 ---
 
 import {
+  NoteAdmonition,
   WhenToUseAdmonition,
   WhenNotToUseAdmonition,
 } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import ShowPreview from '../components/show/static'
+import ShowPreview, { LazyPreview} from '../components/show/static'
 
 ```ts
 import { Show } from '@cerberus/react'
@@ -22,8 +23,12 @@ import { Show } from '@cerberus/react'
 
 The Show component takes a `when` prop that determines whether the children or the `fallback` content should be rendered. If `when` is true, the children are rendered. If `when` is false, the `fallback` content is rendered.
 
+### Eager Loading
+
+When passing elements as children, they are rendered eagerly into the Virtual DOM.
+
 <CodePreview preview={<ShowPreview />}>
-```tsx title="auth-feat.tsx"
+```tsx title="Eager Demo"
 'use client'
 
 import { Button, Show, Text, ToggleParts } from '@cerberus/react'
@@ -63,11 +68,47 @@ export default function ShowPreview() {
 ```
 </CodePreview>
 
+### Lazy Loading
+
+To defer rendering until the condition is true, you can pass a function as children. This function will only be called when the `when` condition is true.
+
+<NoteAdmonition description="Open the console to see when the lazy component is executed." />
+
+<CodePreview preview={<LazyPreview />}>
+```tsx title="Lazy Demo"
+'use client'
+
+function LazyPreview() {
+  const [loaded, setLoaded] = useState<boolean>(false)
+
+  function handleLoad() {
+    setLoaded(true)
+  }
+
+  return (
+    <VStack w="1/2">
+      <Button type="button" onClick={handleLoad}>
+        Load Content
+      </Button>
+
+      <Show when={loaded}>{() => <LazyComponent />}</Show>
+    </VStack>
+  )
+}
+
+function LazyComponent() {
+  console.log('Lazy component executed')
+  return <Text>This is a lazy loaded component!</Text>
+}
+```
+</CodePreview>
+
 
 ## API
 
 ```ts showLineNumbers=false
 export interface ShowProps {
+  children: ReactNode | (() => ReactNode)
   when: boolean | null | undefined
   fallback?: ReactNode
 }
@@ -83,3 +124,58 @@ The `Show` component accepts the following props:
 | -------- | ------- | ------------------------------------------------------------- |
 | when     | false   | The condition to evalue for showing the children or fallback. |
 | fallback | null    | The content to render when the condition is false.            |
+
+
+## Understanding React Rendering: Eager vs. Lazy Execution
+
+This section explains a fundamental concept in React development that affects when your components run their code, especially when using conditional rendering wrappers like `<Show>`. Understanding this difference is key to writing high-performance code and correctly controlling side effects, like data fetching.
+
+### The Core Misunderstanding: Execution vs. Rendering
+
+When a component updates, React goes through two main steps:
+
+1. Execution: The JavaScript function of your component runs.
+2. Rendering/V-DOM Update: The component's return value.
+
+#### 1. Eager Execution
+The JavaScript function of your component runs. (This is where your useState, useEffect, and data fetching logic execute). This pattern is what most developers instinctively use, but it causes the component's internal logic to run even if it's never shown on the screen.
+
+```typescript
+<Show when={isLoggedIn}>
+  <DashboardThatFetchesData />
+</Show>
+```
+
+##### What Happens Under the Hood (Compilation)
+
+The reason this is called **Eager Execution** is because the JavaScript compiler (like Babel, which processes JSX) must resolve **all props** for the `<Show>` component before it can call the `Show` function.
+
+1.**Parent Renders:** The parent component of `<Show>` runs.
+
+2.**Eager Prop Evaluation:** The compiler sees `<DashboardThatFetchesData />` and immediately executes the `DashboardThatFetchesData` component function to figure out what to pass as the children prop.
+
+3.**Side Effects Run:** Any logic or side effects within `DashboardThatFetchesData` (like a network request in `useEffect`) **will run now**.
+
+4.**Show Renders:** The `<Show>` component function runs. It receives an **already-executed** React Element object as props.children. Since `isLoggedIn` is false, it returns null or the fallback, and the Dashboard is **not rendered** in the DOM.
+
+<NoteAdmonition description="The key point: By the time the <Show> component decides not to render the children, it's too late—the child component's code has already run." />
+
+#### 2. The Lazy Execution
+
+To gain control over the Execution step, we must pass a **function** instead of an element object. This is known as the **Render Prop** pattern.
+
+```typescript
+<Show when={isLoggedIn}>
+  {() => <DashboardThatFetchesData />}
+</Show>
+```
+
+##### What Happens Under the Hood (Compilation)
+
+1.**Parent Renders:** The parent component of `<Show>` runs.
+
+2.**Lazy Prop Evaluation:** The compiler sees the prop value is a **plain JavaScript function** (`() => <DashboardThatFetchesData />`). It does **not** execute the function; it simply passes the function object as the `children` prop to `<Show>`.
+
+3.**Show Renders:** The `<Show>` function runs.
+  - If `isLoggedIn` is `false`: It returns `null` or the fallback. The `children` function is **never called, never executed**. Execution is successfully skipped.
+  - If `isLoggedIn` is `true`: It calls the function: `props.children()`. This is the first moment the `DashboardThatFetchesData` function executes, and its side effects begin.

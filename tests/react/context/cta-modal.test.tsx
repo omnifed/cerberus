@@ -81,15 +81,12 @@ describe('CTAModal & useCTAModal', () => {
         screen.getByText(/Create a new cohort or copy an existing one./i),
       ).toBeInTheDocument(),
     )
-    await waitFor(() =>
-      expect(screen.getByRole('button', { name: /create new/i })),
-    )
-    await waitFor(() =>
-      expect(screen.getByRole('button', { name: /copy existing/i })),
-    )
-    await waitFor(() =>
-      expect(screen.getByRole('img', { name: /custom-icon/i })),
-    )
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /create new/i }))
+      expect(screen.getByRole('button', { name: /copy existing/i }))
+      expect(screen.getByRole('img', { name: /custom-icon/i }))
+    })
+
     // close the modal
     await userEvent.click(screen.getByRole('button', { name: /create new/i }))
   })

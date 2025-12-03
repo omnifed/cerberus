@@ -172,7 +172,12 @@ export function PromptModal(
     <PromptModalContext.Provider value={value}>
       {props.children}
 
-      <DialogProvider open={open} onOpenChange={(e) => setOpen(e.open)}>
+      <DialogProvider
+        lazyMount
+        open={open}
+        onOpenChange={(e) => setOpen(e.open)}
+        unmountOnExit
+      >
         <Dialog
           size="sm"
           style={{

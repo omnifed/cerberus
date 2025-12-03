@@ -34,3 +34,26 @@ export default function ShowPreview() {
     </VStack>
   )
 }
+
+export function LazyPreview() {
+  const [loaded, setLoaded] = useState<boolean>(false)
+
+  function handleLoad() {
+    setLoaded(true)
+  }
+
+  return (
+    <VStack w="1/2">
+      <Button type="button" onClick={handleLoad}>
+        Load Content
+      </Button>
+
+      <Show when={loaded}>{() => <LazyComponent />}</Show>
+    </VStack>
+  )
+}
+
+function LazyComponent() {
+  console.log('Lazy component executed')
+  return <Text>This is a lazy loaded component!</Text>
+}

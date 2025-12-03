@@ -1,4 +1,4 @@
-import { type PropsWithChildren, type ReactNode } from 'react'
+import { type ReactNode } from 'react'
 
 /**
  * This module contains the Show component.
@@ -6,6 +6,12 @@ import { type PropsWithChildren, type ReactNode } from 'react'
  */
 
 export interface ShowProps<T> {
+  /**
+   * The children to render when the condition is true.
+   * This can be a ReactNode or a function that returns a ReactNode. Passing a
+   * function will lazy render the children only when needed.
+   */
+  children: ReactNode | (() => ReactNode)
   /**
    * The condition to render memoized children or the fallback content.
    */
@@ -26,16 +32,17 @@ export interface ShowProps<T> {
  *   <Dashboard />
  * </Show>
  */
-export function Show<T>(props: PropsWithChildren<ShowProps<T>>) {
+export function Show<T>(props: ShowProps<T>) {
   const { when, children, fallback } = props
 
   if (when) {
+    if (typeof children === 'function') {
+      return <>{children()}</>
+    }
     return <>{children}</>
   }
 
-  if (fallback) {
-    return <>{fallback}</>
-  }
+  if (fallback) return <>{fallback}</>
 
   return null
 }

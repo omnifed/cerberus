@@ -211,6 +211,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ol: (props) => (
       <ol
         className={css({
+          color: 'page.text.100',
           listStyleType: 'decimal',
           listStylePosition: 'inside',
           paddingBlockEnd: 'lg',
@@ -224,6 +225,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ul: (props) => (
       <ul
         className={css({
+          color: 'page.text.100',
           listStyleType: 'disc',
           pl: 'lg',
           pb: 'lg',

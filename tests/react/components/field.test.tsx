@@ -197,7 +197,7 @@ describe('<Field />', () => {
         <Input name="styledInput" type="text" />
       </Test>,
     )
-    const fieldRoot = screen.getByText(/Styled Input/i).parentElement
+    const fieldRoot = screen.getByRole('group')
 
     expect(fieldRoot).toBeInTheDocument()
     expect(fieldRoot?.classList.toString()).toContain('cerberus-bg-c_blue')
