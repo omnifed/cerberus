@@ -126,7 +126,7 @@ describe('Base > actionTokens', () => {
       getSemanticToken`cerberus.brand.80`,
     )
     expect(actionTokens.action.ghost.hover.value._lightMode).toBe(
-      getSemanticToken`cerberus.neutral.5`,
+      getSemanticToken`cerberus.brand.10`,
     )
   })
 
@@ -141,7 +141,7 @@ describe('Base > actionTokens', () => {
       getSemanticToken`cerberus.brand.70`,
     )
     expect(actionTokens.action.ghost.active.value._lightMode).toBe(
-      getSemanticToken`cerberus.brand.10`,
+      getSemanticToken`cerberus.brand.20`,
     )
   })
 

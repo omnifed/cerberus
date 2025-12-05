@@ -4,7 +4,7 @@ import { focusStates } from '@cerberus-design/panda-preset'
 import { css } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
 import Link, { type LinkProps } from 'next/link'
-import { useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { useLayoutEffect, useMemo, useState } from 'react'
 import { Box, Divider } from '@/styled-system/jsx'
 import { usePathname } from 'next/navigation'
 import { cerberus, For } from '@cerberus-design/react'
@@ -28,7 +28,6 @@ interface HeadingLink {
 
 export default function OnThisPage() {
   const pathname = usePathname()
-  const prevPathname = useRef<string | null>(null)
   const [links, setLinks] = useState<HeadingLink[]>([])
 
   const editPageLink = useMemo(() => {
@@ -42,13 +41,6 @@ export default function OnThisPage() {
 
   useLayoutEffect(() => {
     if (pathname) {
-      // Check if the pathname has changed
-      if (prevPathname.current === pathname) {
-        return
-      }
-
-      // Update the previous pathname
-      prevPathname.current = pathname
       // Clear the existing links
       setLinks([])
 
