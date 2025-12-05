@@ -142,13 +142,13 @@ describe('acheron secondaryActionTokens', () => {
   test('should have a acheron secondary-action.navigation.hover key', () => {
     expect(token.navigation.hover).toBeDefined()
     expect(token.navigation.hover.value.base).toBe(
-      getSemanticToken`cerberus.teal.50`,
+      getSemanticToken`cerberus.brand.30`,
     )
     expect(token.navigation.hover.value._darkMode).toBe(
-      getSemanticToken`cerberus.teal.50`,
+      getSemanticToken`cerberus.brand.30`,
     )
     expect(token.navigation.hover.value._lightMode).toBe(
-      getSemanticToken`cerberus.teal.90`,
+      getSemanticToken`cerberus.brand.50`,
     )
   })
 
