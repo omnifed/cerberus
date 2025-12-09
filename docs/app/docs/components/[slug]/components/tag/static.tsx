@@ -1,109 +1,48 @@
-import { Tag, type TagProps } from '@cerberus-design/react'
-import { Checkmark, Information } from '@carbon/icons-react'
-import { css } from 'styled-system/css'
+import { Tag, type TagProps, Text } from '@cerberus-design/react'
+import { gradientValues } from '@cerberus-design/panda-preset'
+import { Information } from '@carbon/icons-react'
+import { HStack, Grid, GridItem } from '@/styled-system/jsx'
 import { Fragment } from 'react'
-import { grid, gridItem, hstack, vstack } from 'styled-system/patterns'
-import { ClosableTagPreview } from './closable-tag'
 
 export type TagPreviewProps = TagProps
 
 export function BasicTagPreview() {
-  return <Tag>Filled</Tag>
-}
-
-export function OutlineTagPreview() {
   return (
-    <Tag shape="square" usage="outlined">
-      Outlined
-    </Tag>
+    <HStack gap="md">
+      <Tag>Filled</Tag>
+      <Tag>
+        <Information />
+        Start icon
+      </Tag>
+      <Tag>
+        End icon
+        <Information />
+      </Tag>
+    </HStack>
   )
 }
 
-export function SquareTagPreview() {
-  return <Tag shape="square">Square</Tag>
-}
-
-export function PillTagPreview() {
+export function UsageTagPreview() {
   return (
-    <Tag shape="pill">
-      <Checkmark />
-      Pill
-    </Tag>
+    <HStack gap="md">
+      <Tag usage="filled">Filled</Tag>
+      <Tag usage="outlined">Outlined</Tag>
+    </HStack>
   )
 }
 
-export function WithIconTagPreview() {
+export function ShapeTagPreview() {
   return (
-    <Tag>
-      <Information />
-      With icon
-    </Tag>
-  )
-}
-
-export function GradientTagPreview() {
-  return (
-    <div className={vstack()}>
-      <div className={hstack()}>
-        <Tag gradient="nyx-light" shape="square">
-          nyx light
-        </Tag>
-        <Tag gradient="charon-dark" shape="square">
-          charon dark
-        </Tag>
-        <Tag gradient="amphiaraus-dark" shape="square">
-          amphiaraus dark
-        </Tag>
-        <Tag gradient="thanatos-light" shape="square">
-          thanatos light
-        </Tag>
-        <Tag gradient="hades-dark" shape="square">
-          hades dark
-        </Tag>
-        <Tag gradient="asphodel-light" shape="square">
-          asphodel light
-        </Tag>
-      </div>
-
-      <div className={hstack()}>
-        <Tag gradient="nyx-light" shape="square" usage="outlined">
-          nyx light
-        </Tag>
-        <Tag gradient="charon-dark" shape="square" usage="outlined">
-          charon dark
-        </Tag>
-        <Tag gradient="amphiaraus-dark" shape="square" usage="outlined">
-          amphiaraus dark
-        </Tag>
-        <Tag gradient="thanatos-light" shape="square" usage="outlined">
-          thanatos light
-        </Tag>
-        <Tag gradient="hades-dark" shape="square" usage="outlined">
-          hades dark
-        </Tag>
-        <Tag gradient="asphodel-light" shape="square" usage="outlined">
-          asphodel light
-        </Tag>
-      </div>
-    </div>
-  )
-}
-
-export function GradientOutlinedTagPreview() {
-  return (
-    <Tag gradient="charon-dark" shape="square" usage="outlined">
-      Gradient
-    </Tag>
+    <HStack gap="md">
+      <Tag shape="pill">Pill</Tag>
+      <Tag shape="square">Square</Tag>
+    </HStack>
   )
 }
 
 export function CustomTagPreview() {
   return (
-    <Tag
-      className={css({
-        colorPalette: 'danger',
-      })}
-    >
+    <Tag colorPalette="danger" p="2" rounded="0!" transform="skew(-10deg)">
       Cerberus Forever
     </Tag>
   )
@@ -111,184 +50,134 @@ export function CustomTagPreview() {
 
 // Overview
 
-type TagTypes =
-  | 'pill'
-  | 'square'
-  | 'outlined'
-  | 'gradient-outlined'
-  | 'filled'
-  | 'closable'
-interface MatchTagProps {
-  kind: TagTypes
-  palette?: TagProps['palette'] | 'gradient'
+interface VariantProps {
+  usage: TagProps['usage']
+  shape: TagProps['shape']
 }
 
-function MatchTagPreview(props: MatchTagProps) {
-  switch (props.kind) {
-    case 'pill':
-      return <PillTagPreview />
-    case 'square':
-      return <SquareTagPreview />
-    case 'outlined':
-      return <OutlineTagPreview />
-    case 'gradient-outlined':
-      return <GradientOutlinedTagPreview />
-    case 'filled':
-      return <BasicTagPreview />
-    case 'closable':
-      return <ClosableTagPreview />
-    default:
-      return null
-  }
-}
-
-export function OverviewTagPreview() {
-  const btnTypes: TagTypes[] = [
-    'pill',
-    'square',
-    'outlined',
-    'gradient-outlined',
-    'filled',
-    'closable',
-  ]
-  return (
-    <>
-      <div
-        className={grid({
-          columns: 5,
-          gap: '4',
-          gridTemplateRows: '1fr 1fr',
-          w: '80%',
-        })}
-      >
-        {btnTypes.map((type, idx) => (
-          <Fragment key={type}>
-            <div
-              className={gridItem({
-                gridColumn: 'span 1',
-                gridRowStart: '1',
-                gridRowEnd: '2',
-                justifySelf: 'center',
-              })}
-            >
-              <MatchTagPreview kind={type} />
-            </div>
-            <div
-              className={gridItem({
-                gridColumn: 'span 1',
-                gridRowStart: '2',
-                gridRowEnd: '3',
-                justifySelf: 'center',
-              })}
-            >
-              {idx + 1}
-            </div>
-          </Fragment>
-        ))}
-      </div>
-    </>
-  )
-}
-
-function MatchTagPalettePreview(props: MatchTagProps) {
-  switch (props.palette) {
-    case 'page':
-      return (
-        <Tag palette="page" shape="square">
-          Page
-        </Tag>
-      )
-    case 'gradient':
-      return (
-        <Tag gradient="charon-dark" shape="square">
-          Gradient
-        </Tag>
-      )
-    case 'info':
-      return (
-        <Tag palette="info" shape="square" usage="outlined">
-          Info
-        </Tag>
-      )
-    case 'success':
-      return (
-        <Tag palette="success" shape="square" usage="outlined">
-          Success
-        </Tag>
-      )
-    case 'warning':
-      return (
-        <Tag palette="warning" shape="pill">
-          <Checkmark />
-          Warning
-        </Tag>
-      )
-    case 'danger':
-      return (
-        <Tag palette="danger" shape="pill">
-          <Checkmark />
-          Danger
-        </Tag>
-      )
-    default:
-      return null
-  }
-}
+const palettes: TagProps['palette'][] = [
+  'page',
+  'secondaryAction',
+  'info',
+  'success',
+  'warning',
+  'danger',
+]
+const variants: VariantProps[] = [
+  { usage: 'filled', shape: 'pill' },
+  { usage: 'outlined', shape: 'pill' },
+  { usage: 'filled', shape: 'square' },
+  { usage: 'outlined', shape: 'square' },
+]
+const COLOR_LIST = palettes.map((palette) => ({ palette, variants }))
+const GRAD_LIST = gradientValues.map((gradient) => ({ gradient, variants }))
 
 export function OverviewPaletteTagPreview() {
-  const btnTypes: TagTypes[] = [
-    'square',
-    'square',
-    'outlined',
-    'outlined',
-    'pill',
-    'pill',
-  ]
-  const palettes = [
-    'page',
-    'gradient',
-    'info',
-    'success',
-    'warning',
-    'danger',
-  ] as MatchTagProps['palette'][]
-
   return (
-    <>
-      <div
-        className={grid({
-          columns: 5,
-          gap: '4',
-          gridTemplateRows: '1fr 1fr',
-          w: '80%',
-        })}
-      >
-        {btnTypes.map((type, idx) => (
-          <Fragment key={`${type}:${idx}`}>
-            <div
-              className={gridItem({
-                gridColumn: 'span 1',
-                gridRowStart: '1',
-                gridRowEnd: '2',
-                justifySelf: 'center',
-              })}
-            >
-              <MatchTagPalettePreview kind={type} palette={palettes[idx]} />
-            </div>
-            <div
-              className={gridItem({
-                gridColumn: 'span 1',
-                gridRowStart: '2',
-                gridRowEnd: '3',
-                justifySelf: 'center',
-                textTransform: 'capitalize',
-              })}
-            >
-              {idx + 1}
-            </div>
-          </Fragment>
-        ))}
-      </div>
-    </>
+    <Grid columns={5} gap="md" px="lg" w="full">
+      {COLOR_LIST.map(({ palette, variants }) => (
+        <Fragment key={`${palette}`}>
+          <Text as="small">{palette}:</Text>
+          {variants.map(({ usage, shape }) => (
+            <GridItem key={`${palette}:${usage}:${shape}`} colSpan={1}>
+              <MatchTag palette={palette} usage={usage} shape={shape}>
+                <Information />
+                Label
+              </MatchTag>
+            </GridItem>
+          ))}
+        </Fragment>
+      ))}
+    </Grid>
   )
+}
+
+export function OverviewGradientTagPreview() {
+  return (
+    <Grid columns={5} gap="md" px="lg" w="full">
+      {GRAD_LIST.map(({ gradient, variants }) => (
+        <Fragment key={`${gradient}`}>
+          <Text as="small">{gradient}:</Text>
+          {variants.map(({ usage, shape }, idx) => (
+            <GridItem key={`${gradient}-${idx}`} colSpan={1}>
+              <Tag gradient={gradient} usage={usage} shape={shape}>
+                <Information />
+                Label
+              </Tag>
+            </GridItem>
+          ))}
+        </Fragment>
+      ))}
+    </Grid>
+  )
+}
+
+// Static Interface
+
+function MatchTag(props: TagProps) {
+  if ('palette' in props) {
+    return <MatchPaletteTag {...props} />
+  }
+
+  if ('gradient' in props) {
+    return <MatchGradientTag {...props} />
+  }
+
+  return <Tag {...props} />
+}
+
+function MatchPaletteTag(props: TagProps) {
+  switch (props.palette) {
+    case 'page':
+      return <Tag palette="page" {...props} />
+    case 'secondaryAction':
+      return <Tag palette="secondaryAction" {...props} />
+    case 'info':
+      return <Tag palette="info" {...props} />
+    case 'success':
+      return <Tag palette="success" {...props} />
+    case 'warning':
+      return <Tag palette="warning" {...props} />
+    case 'danger':
+      return <Tag palette="danger" {...props} />
+
+    default:
+      throw new Error(`Unsupported palette: ${props.palette}`)
+  }
+}
+
+function MatchGradientTag(props: TagProps) {
+  switch (props.gradient) {
+    case 'asphodel-dark':
+      return <Tag gradient="asphodel-dark" {...props} />
+    case 'asphodel-light':
+      return <Tag gradient="asphodel-light" {...props} />
+    case 'amphiaraus-dark':
+      return <Tag gradient="amphiaraus-dark" {...props} />
+    case 'amphiaraus-light':
+      return <Tag gradient="amphiaraus-light" {...props} />
+    case 'charon-dark':
+      return <Tag gradient="charon-dark" {...props} />
+    case 'charon-light':
+      return <Tag gradient="charon-light" {...props} />
+    case 'hades-dark':
+      return <Tag gradient="hades-dark" {...props} />
+    case 'hades-light':
+      return <Tag gradient="hades-light" {...props} />
+    case 'nyx-dark':
+      return <Tag gradient="nyx-dark" {...props} />
+    case 'nyx-light':
+      return <Tag gradient="nyx-light" {...props} />
+    case 'styx-dark':
+      return <Tag gradient="styx-dark" {...props} />
+    case 'styx-light':
+      return <Tag gradient="styx-light" {...props} />
+    case 'thanatos-dark':
+      return <Tag gradient="thanatos-dark" {...props} />
+    case 'thanatos-light':
+      return <Tag gradient="thanatos-light" {...props} />
+
+    default:
+      throw new Error(`Unsupported gradient: ${props.gradient}`)
+  }
 }

@@ -29,6 +29,7 @@ import {
 export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'icon-btn',
   description: 'WCAG Level AAA compliant button styles.',
+  jsx: ['IconButton', 'ClosableTag'],
 
   base: {
     ...buttonBase,

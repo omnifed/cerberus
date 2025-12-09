@@ -3,7 +3,6 @@ import {
   type RecipeConfig,
   type RecipeVariantRecord,
 } from '@pandacss/dev'
-import { filledUsage, tagBase, tagPalettes } from './shared/tag.base'
 import { createGradientVariants } from './shared/helpers'
 import { gradientValues } from '../utilities'
 import type {
@@ -11,8 +10,7 @@ import type {
   RecipeCompoundSelection,
   RecipeCompoundVariant,
 } from '@pandacss/types'
-
-const PAGE_TEXT_INITIAL = 'page.text.initial'
+import { nonActionPalettes, secondaryAction } from './shared/palettes'
 
 /**
  * This module contains the tag recipe.
@@ -26,24 +24,45 @@ const PAGE_TEXT_INITIAL = 'page.text.initial'
 export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'tag',
   description: 'WCAG Level AAA compliant tag styles.',
+  jsx: ['Tag', 'ClosableTag', 'TagRoot', 'El', /Tag$/, /TagRoot$/, /El$/],
 
-  base: tagBase,
+  base: {
+    alignItems: 'center',
+    display: 'inline-flex',
+    gap: 'xs',
+    justifyContent: 'center',
+    lineHeight: '0',
+    textTransform: 'capitalize',
+    userSelect: 'none',
+    whiteSpace: 'nowrap',
+  },
 
   variants: {
-    palette: tagPalettes,
+    palette: { ...nonActionPalettes, secondaryAction },
+
     gradient: createGradientVariants(),
+
     usage: {
-      filled: filledUsage,
+      // solid (non-gradient) variants
+      filled: {
+        bgColor: 'colorPalette.surface.200',
+        color: 'colorPalette.text.200',
+        gradient: undefined,
+        _secondaryActionPalette: {
+          bgColor: 'colorPalette.bg.initial',
+          color: 'colorPalette.text.100',
+        },
+      },
       outlined: {
         bgColor: 'inherit',
         border: '1.5px solid',
         borderColor: 'colorPalette.border.initial',
         color: 'colorPalette.text.100',
         _warningPalette: {
-          color: PAGE_TEXT_INITIAL,
+          color: 'colorPalette.text.initial',
         },
         _pagePalette: {
-          color: PAGE_TEXT_INITIAL,
+          color: 'page.text.initial',
         },
       },
     },
@@ -67,8 +86,8 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
 
   defaultVariants: {
     palette: 'page',
-    usage: 'filled',
     shape: 'pill',
+    usage: 'filled',
   },
 
   compoundVariants: createGradientOutlineVariants(),
@@ -86,7 +105,7 @@ function createGradientOutlineVariants(): Pretty<
       backgroundClip: 'padding-box, border-box',
       bgColor: 'page.surface.initial',
       borderGradient: name,
-      color: PAGE_TEXT_INITIAL,
+      color: 'page.text.initial',
     },
   }))
 }

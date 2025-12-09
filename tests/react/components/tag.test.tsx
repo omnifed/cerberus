@@ -103,4 +103,25 @@ describe('Tag', () => {
     await user.click(screen.getByLabelText(/Close/i))
     expect(onClick).toHaveBeenCalledTimes(1)
   })
+
+  test('should allow factory style props', () => {
+    render(
+      <Tag data-testid="tag" bgColor="black" css={{ mb: 0 }}>
+        it works
+      </Tag>,
+    )
+    expect(screen.getByTestId('tag')).toBeInTheDocument()
+    expect(screen.getByTestId('tag')).toHaveClass('cerberus-bg-c_black')
+    expect(screen.getByTestId('tag')).toHaveClass('cerberus-mb_0')
+  })
+
+  test('should allow factory asChild props', () => {
+    render(
+      <Tag asChild>
+        <button>test</button>
+      </Tag>,
+    )
+    expect(screen.getByText(/test/i)).toBeInTheDocument()
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
 })

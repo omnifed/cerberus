@@ -28,9 +28,10 @@ describe('tag recipe', () => {
     expect(tag.base).toMatchObject({
       alignItems: 'center',
       display: 'inline-flex',
-      gap: '2',
+      gap: 'xs',
       justifyContent: 'center',
       lineHeight: '0',
+      textTransform: 'capitalize',
       userSelect: 'none',
       whiteSpace: 'nowrap',
     })
@@ -71,11 +72,12 @@ describe('tag recipe', () => {
       bgColor: 'inherit',
       border: '1.5px solid',
       borderColor: 'colorPalette.border.initial',
+      color: 'colorPalette.text.100',
       _pagePalette: {
         color: PAGE_TEXT_INITIAL,
       },
       _warningPalette: {
-        color: PAGE_TEXT_INITIAL,
+        color: 'colorPalette.text.initial',
       },
     })
   })
