@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import { Suspense, type PropsWithChildren } from 'react'
 import { cerberus, NotificationCenter } from '@cerberus-design/react'
+import { CachedHTML } from './components/shared/html.cached'
 import { base, openGraph } from './shared-metadata'
 import { Nav } from './components/Nav'
 import CerberusConfig from './context/cerberus-config'
 
 import './globals.css'
-import { CachedHTML } from './components/shared/html.cached'
 
 export const metadata: Metadata = {
   title: 'Cerberus Design System',

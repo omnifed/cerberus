@@ -12,6 +12,7 @@ import {
   NoteAdmonition,
 } from '@/app/components/Admonition'
 import {
+  CustomConfigDemo,
   OverviewDemo,
   SubtleDemo
 } from '../components/notifications/static'
@@ -115,6 +116,50 @@ function Feature() {
   }, [])
 
   return <Button onClick={handleClick}>Trigger subtle notification</Button>
+}
+```
+</CodePreview>
+
+## Custom Configuration
+
+You can customize the notification behavior by calling the `createToaster` function. This allows you to create a new toaster instance with your desired configuration.
+
+We recommend scoping this to a component to ensure Next.js rehydration works correctly.
+
+<CodePreview preview={<CustomConfigDemo />}>
+```tsx title="Custom Configuration" /createToaster/
+'use client';
+
+import { createToaster, NotificationCenter, Button } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+function CustomConfigDemo() {
+  const customToaster = createToaster({
+    gap: 24,
+    overlap: false,
+    placement: 'bottom-end',
+  })
+
+  return (
+    <>
+      <HStack>
+        <Button
+          onClick={() => {
+            customToaster.create({
+              title: 'Custom Toaster',
+              description:
+                'This notification is using a custom toaster configuration.',
+              type: 'success',
+            })
+          }}
+        >
+          Show Notification
+        </Button>
+      </HStack>
+
+      <NotificationCenter toaster={customToaster} />
+    </>
+  )
 }
 ```
 </CodePreview>
