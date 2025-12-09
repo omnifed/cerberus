@@ -19,10 +19,10 @@
     "postcss": "*"
   },
   "devDependencies": {
-    "@ark-ui/react": "^5.28.0",
+    "@ark-ui/react": "^5.29.1",
     "@cerberus-design/configs": "workspace:*",
-    "@pandacss/dev": "^1.5.1",
-    "@pandacss/types": "^1.5.1"
+    "@pandacss/dev": "^1.7.0",
+    "@pandacss/types": "^1.7.0"
   },
   "publishConfig": {
     "access": "public",
