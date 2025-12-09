@@ -1,10 +1,6 @@
 'use client'
 
-import {
-  createToaster,
-  Toaster,
-  type CreateToasterReturn,
-} from '@ark-ui/react/toast'
+import { Toaster, type CreateToasterReturn } from '@ark-ui/react/toast'
 import { Box } from 'styled-system/jsx'
 import { Button, type ButtonProps } from '../button/button'
 import { Show } from '../show/index'
@@ -16,29 +12,30 @@ import type {
 } from './types'
 import { MatchNotificationIcon } from './match-icon'
 import { ToastCloseTrigger } from './close-trigger'
+import { toaster } from './toaster'
 
 /**
  * This module contains an abstraction of the Notification parts.
  * @module 'notification/center'
  */
 
-export const toaster: CreateToasterReturn = createToaster({
-  gap: 16,
-  overlap: true,
-  placement: 'top-end',
-})
-
 export function getEmphasis(type: NotifyOptionsType) {
   return type.includes('subtle') ? 'low' : 'high'
+}
+
+export interface NotificationCenterProps {
+  toaster: CreateToasterReturn
 }
 
 /**
  * The NotificationCenter component is an abstraction for the Notification
  * component. It manages displaying all the toasts in the center.
  */
-export function NotificationCenter() {
+export function NotificationCenter(props: NotificationCenterProps) {
+  const cachedToaster = props.toaster || toaster
+
   return (
-    <Toaster toaster={toaster}>
+    <Toaster toaster={cachedToaster}>
       {(toast) => (
         <NotificationParts.Root
           key={toast.id}
