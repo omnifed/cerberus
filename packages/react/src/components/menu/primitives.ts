@@ -48,7 +48,7 @@ export const MenuIndicator = withNoRecipe(ArkMenu.Indicator)
 // Positioner
 
 export type MenuPositionerProps = CerberusPrimitiveProps<ArkMenuPositionerProps>
-export const MenuPositioner = withNoRecipe(ArkMenu.Positioner)
+export const MenuPositioner = withSlotRecipe(ArkMenu.Positioner, 'positioner')
 
 // Content
 
