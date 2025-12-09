@@ -17,8 +17,10 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
   slots: menuAnatomy.keys(),
 
   base: {
+    positioner: {
+      zIndex: 'dropdown!',
+    },
     content: {
-      '--menu-z-index': 'zIndex.popover',
       bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'page.border.200',
@@ -30,7 +32,6 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       minW: '10rem',
       rounded: 'md',
       shadow: 'lg',
-      zIndex: 'calc(var(--menu-z-index) + var(--layer-index, 0))',
       ...focusStates,
       _open: {
         animationStyle: 'slide-fade-in',

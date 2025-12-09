@@ -8,9 +8,14 @@ describe('menu recipe', () => {
     expect(menu).toBeDefined()
   })
 
+  test('should have a positioner style', () => {
+    expect(menu.base?.positioner).toMatchObject({
+      zIndex: 'dropdown!',
+    })
+  })
+
   test('should have a base style', () => {
     expect(menu.base?.content).toMatchObject({
-      '--menu-z-index': 'zIndex.popover',
       bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'page.border.200',
@@ -20,7 +25,6 @@ describe('menu recipe', () => {
       minW: '10rem',
       rounded: 'md',
       shadow: 'lg',
-      zIndex: 'calc(var(--menu-z-index) + var(--layer-index, 0))',
       _open: {
         animationStyle: 'slide-fade-in',
         animationDuration: 'fast',

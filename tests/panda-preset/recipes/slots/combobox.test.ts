@@ -168,6 +168,7 @@ describe('combobox recipe', () => {
   test('should have base.positioner styles', () => {
     expect(combobox.base?.positioner).toMatchObject({
       w: 'var(--reference-width)',
+      zIndex: 'dropdown!',
     })
   })
 
