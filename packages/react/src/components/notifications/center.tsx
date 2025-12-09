@@ -24,7 +24,7 @@ export function getEmphasis(type: NotifyOptionsType) {
 }
 
 export interface NotificationCenterProps {
-  toaster: CreateToasterReturn
+  toaster?: CreateToasterReturn
 }
 
 /**
