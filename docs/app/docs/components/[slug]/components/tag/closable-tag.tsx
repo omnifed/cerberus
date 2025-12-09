@@ -1,12 +1,24 @@
 'use client'
 
+import { HStack } from '@/styled-system/jsx'
 import { Tag } from '@cerberus-design/react'
-import { useCallback } from 'react'
 
 export function ClosableTagPreview() {
-  const handleClick = useCallback(() => {
+  const handleClick = () => {
     console.log('Clicked!')
-  }, [])
+  }
 
-  return <Tag onClick={handleClick}>Closable</Tag>
+  return (
+    <HStack gap="md">
+      <Tag onClick={handleClick}>Closable</Tag>
+
+      <Tag palette="page" onClick={handleClick}>
+        Closable
+      </Tag>
+
+      <Tag palette="danger" onClick={handleClick}>
+        Closable
+      </Tag>
+    </HStack>
+  )
 }

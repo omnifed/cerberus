@@ -65,6 +65,10 @@
       "esbuild",
       "sharp",
       "unrs-resolver"
+    ],
+    "onlyBuiltDependencies": [
+      "@carbon/icon-helpers",
+      "@carbon/icons-react"
     ]
   }
 }

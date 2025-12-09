@@ -6,13 +6,17 @@ source: 'components/tag'
 recipe: 'tag.ts'
 ---
 
+import Link from 'next/link'
 import CodePreview from '@/app/components/CodePreview'
 import {
   NoteAdmonition,
 } from '@/app/components/Admonition'
 import {
   BasicTagPreview,
-  WithIconTagPreview,
+  UsageTagPreview,
+  ShapeTagPreview,
+  OverviewPaletteTagPreview,
+  OverviewGradientTagPreview,
   CustomTagPreview
 } from '../components/tag/static'
 import {
@@ -24,76 +28,206 @@ import {
 import { Tag } from '@cerberus/react'
 ```
 
-## Usage
+## Basic Usage
 
 You can mix and match all of the examples to create the tag style of your choosing.
 
 <CodePreview preview={<BasicTagPreview />}>
-```tsx title="tag.tsx"
+```tsx title="Basic Demo"
 import { Tag } from '@cerberus/react'
+import { Information } from '@carbon/icons-react'
+import { HStack } from 'styled-system/jsx'
 
-export function BasicTagPreview() {
-  return <Tag>Filled</Tag>
-}
-```
-</CodePreview>
-
-
-### With Icon
-
-<CodePreview preview={<WithIconTagPreview />}>
-```tsx title="tag.tsx"
-import { Tag } from '@cerberus/react'
-import { Information } from '@cerberus/icons'
-
-function WithIconTagPreview() {
+function BasicTagPreview() {
   return (
-    <Tag>
-      <Information />
-      With icon
-    </Tag>
+    <HStack gap="md">
+      <Tag>Filled</Tag>
+
+      <Tag>
+        <Information />
+        Start icon
+      </Tag>
+
+      <Tag>
+        End icon
+        <Information />
+      </Tag>
+    </HStack>
   )
 }
 ```
 </CodePreview>
 
-### Closable
+## Usage Variants
 
-To use a closable tag, just pass an `onClick` prop to the `Tag` component.
+Tags come in two usage variants: `outlined` and `filled`.
 
-<CodePreview preview={<ClosableTagPreview />}>
-```tsx title="tag.tsx" {11}
-'use client'
-
+<CodePreview preview={<UsageTagPreview />}>
+```tsx title="Filled Demo"
 import { Tag } from '@cerberus/react'
-import { useCallback } from 'react'
+import { HStack } from 'styled-system/jsx'
 
-function ClosableTagPreview() {
-  const handleClose = useCallback(() => {
-    console.log('Tag closed')
-  }, [])
-
-  return <Tag onClick={handleClose}>Closable</Tag>
+function UsageTagPreview() {
+  return (
+    <HStack gap="md">
+      <Tag usage="filled">Filled</Tag>
+      <Tag usage="outlined">Outlined</Tag>
+    </HStack>
+  )
 }
 ```
 </CodePreview>
 
-## Customization
+## Shape Variants
 
-You can customize the tag by utilizing the `cx` function.
+Tags come in two shape variants: `square` and `pill`.
+
+<CodePreview preview={<ShapeTagPreview />}>
+```tsx title="Shape Demo"
+import { Tag } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+function ShapeTagPreview() {
+  return (
+    <HStack gap="md">
+      <Tag shape="pill">Pill</Tag>
+      <Tag shape="square">Square</Tag>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Colors
+
+You can set the color of the tag by using the `palette` prop. By nature of CSS rules, only one of `palette` or `gradient` can be used at a time.
+
+<CodePreview preview={<OverviewPaletteTagPreview />}>
+```tsx title="Palette Demo"
+const palettes = [
+  'page',
+  'secondaryAction',
+  'info',
+  'success',
+  'warning',
+  'danger',
+]
+const variants = [
+  { usage: 'filled', shape: 'pill' },
+  { usage: 'outlined', shape: 'pill' },
+  { usage: 'filled', shape: 'square' },
+  { usage: 'outlined', shape: 'square' },
+]
+const COLOR_LIST = palettes.map((palette) => ({ palette, variants }))
+
+export function OverviewPaletteTagPreview() {
+  return (
+    <Grid columns={5} gap="md" px="lg" w="full">
+      {COLOR_LIST.map(({ palette, variants }) => (
+        <Fragment key={`${palette}`}>
+          <Text as="small">{palette}:</Text>
+          {variants.map((variant, idx) => (
+            <GridItem key={`${palette}-${idx}`} colSpan={1}>
+              <Tag
+                palette={palette}
+                usage={variant.usage}
+                shape={variant.shape}
+              >
+                <Information />
+                Label
+              </Tag>
+            </GridItem>
+          ))}
+        </Fragment>
+      ))}
+    </Grid>
+  )
+}
+```
+</CodePreview>
+
+
+## Gradients
+
+You can set the gradient of the tag by using the `gradient` prop. By nature of CSS rules, only one of `palette` or `gradient` can be used at a time.
+
+<CodePreview preview={<OverviewGradientTagPreview />}>
+```tsx title="Gradient Demo"
+function OverviewGradientTagPreview() {
+  return (
+    <Grid columns={5} gap="md" px="lg" w="full">
+      {GRAD_LIST.map(({ gradient, variants }) => (
+        <Fragment key={`${gradient}`}>
+          <Text as="small">{gradient}:</Text>
+          {variants.map((variant, idx) => (
+            <GridItem key={`${gradient}-${idx}`} colSpan={1}>
+              <Tag
+                gradient={gradient}
+                usage={variant.usage}
+                shape={variant.shape}
+              >
+                <Information />
+                Label
+              </Tag>
+            </GridItem>
+          ))}
+        </Fragment>
+      ))}
+    </Grid>
+  )
+}
+```
+</CodePreview>
+
+
+## Closable
+
+To use a closable tag, just pass an `onClick` prop to the `Tag` component. This will create a pill-shaped tag with a close icon button.
+
+<CodePreview preview={<ClosableTagPreview />}>
+```tsx title="Closable Demo" /onClick/
+'use client'
+
+import { Tag } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+function ClosableTagPreview() {
+  const handleClose = () => {
+    console.log('Tag closed')
+  }
+
+  return (
+    <HStack gap="md">
+      <Tag onClick={handleClick}>Closable</Tag>
+
+      <Tag palette="page" onClick={handleClick}>
+        Closable
+      </Tag>
+
+      <Tag palette="danger" onClick={handleClick}>
+        Closable
+      </Tag>
+    </HStack>
+  )
+}
+```
+</CodePreview>
+
+## Primitives
+
+You can customize the tag by utilizing style props and primitives. A Closable Tag is just a Tag with an IconButton inside.
+
+| Component | Description |
+| --------- | ----------- |
+| TagRoot    | The root wrapper of the tag.  |
 
 <CodePreview preview={<CustomTagPreview />}>
-```tsx title="tag.tsx"
+```tsx title="Custom Demo"
 import { Tag } from '@cerberus/react'
-import { css } from 'styled-system/css'
 
 export function CustomTagPreview() {
   return (
-    <Tag
-      className={css({
-        colorPalette: 'danger',
-      })}
-    >
+    <Tag colorPalette="danger" p="2" rounded="0!" transform="skew(-10deg)">
       Cerberus Forever
     </Tag>
   )
@@ -101,37 +235,62 @@ export function CustomTagPreview() {
 ```
 </CodePreview>
 
-## API
+### Data Attributes
 
-```ts showLineNumbers=false
-export type StaticTagProps = HTMLAttributes<HTMLSpanElement> &
-  TagVariantProps & {
-    onClick?: never
+The Primitives additionally use the following data attributes for custom styling:
+
+| Name     | Value | Description                            |
+| -------- | ------| -------------------------------- |
+| `data-scope` | `tag` | The scope of the components.       |
+| `data-part`  | `root` | The root wrapper of the tag.        |
+| `data-palette`  | *palette name* | The color palette of the tag.        |
+
+## Dynamic Tags
+
+Sometimes you may want to create Tags based on dynamic variables. In order to do this in a reliable way, we recommend using the Interface pattern.
+
+<NoteAdmonition description={
+  <>Remember that PandaCSS requires static styles to be known at build time. This is how it can reliably generate atomic styles. See <Link href="/docs/styling/conditional-styles">Conditional Styles</Link> for more information.</>
+} />
+
+```typescript
+import { Tag, type TagProps } from '@cerberus/react'
+
+/**
+ * This interface returns palette-based tags in a reliable way that PandaCSS
+ * can statically analyze.
+*/
+export function MatchPaletteTag(props: TagProps) {
+  switch (props.palette) {
+    case 'page':
+      return <Tag palette="page" {...props} />
+    case 'secondaryAction':
+      return <Tag palette="secondaryAction" {...props} />
+    case 'info':
+      return <Tag palette="info" {...props} />
+    case 'success':
+      return <Tag palette="success" {...props} />
+    case 'warning':
+      return <Tag palette="warning" {...props} />
+    case 'danger':
+      return <Tag palette="danger" {...props} />
+
+    default:
+      throw new Error(`Unsupported palette: ${props.palette}`)
   }
-
-export type ClickableTagProps = HTMLAttributes<HTMLSpanElement> & {
-  gradient?: never
-  palette?: never
-  onClick: MouseEventHandler<HTMLSpanElement>
-  shape?: never
-  usage?: never
 }
+```
 
-export type TagProps = StaticTagProps | ClickableTagProps
-
-define function Tag(props: PropsWithChildren<TagProps>): ReactNode
-````
-
-<NoteAdmonition description="Combining palette and gradient will yield to either only a palette or gradient Tag (i.e. they override each other)." />
+## API
 
 ### Props
 
-The `Tag` component accepts the following props:
+The `Tag` component is an abstraction of the primitives and accepts the following props:
 
 | Name     | Default | Description                            |
 | -------- | ------- | -------------------------------------- |
 | gradient | `undefined` | The gradient of the tag (overrides palette).           |
 | palette  | `page`   | The color palette of the tag (overrides gradient). |
 | usage    | `filled`    | The style treatment of the tag.    |
-| shape    | `square`    | The shape of the tag.              |
+| shape    | `pill`    | The shape of the tag.              |
 | onClick  | `undefined` | How to create a Closable tag.         |
