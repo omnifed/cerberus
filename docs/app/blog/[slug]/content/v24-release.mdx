@@ -1,0 +1,185 @@
+---
+slug: cerberus-v024-release
+date: 2025-12-10
+author: caseyBaggz
+title: Cerberus v0.24 Release
+description: Fine tuning & customization options
+category: release
+version: 0.24.0
+timeToRead: 4
+tag: Release
+---
+
+import BashTabs from '@/app/components/bash-tabs'
+import CodePreview from '@/app/components/CodePreview'
+
+import { LazyPreview} from '@/app/docs/components/[slug]/components/show/static'
+import { HideValueTextPreview } from '@/app/docs/components/[slug]/components/progress/circular'
+import { OverviewPaletteTagPreview } from '@/app/docs/components/[slug]/components/tag/static'
+import { NonDestructivePreview } from '@/app/docs/components/[slug]/components/prompt-modal/static'
+import {
+  CustomConfigDemo
+} from '@/app/docs/components/[slug]/components/notifications/static'
+
+Another release in the books with Cerberus v0.24! This update brings more stability with a few new customization features.
+
+## Components
+
+### Show
+
+Show gets powered up with the ability to **lazy load child content**. This is great for when you want to dynamically render a component which fetches data that you do not want to prefetch.
+
+You achieve this by simply passing a **function** as the child.
+
+<CodePreview preview={<LazyPreview />} />
+
+```tsx {17}
+import { Show } from '@cerberus/react'
+import { LazyComponent } from './components'
+
+function LazyPreview() {
+  const [loaded, setLoaded] = useState<boolean>(false)
+
+  function handleLoad() {
+    setLoaded(true)
+  }
+
+  return (
+    <VStack w="1/2">
+      <Button type="button" onClick={handleLoad}>
+        Load Content
+      </Button>
+
+      <Show when={loaded}>{() => <LazyComponent />}</Show>
+    </VStack>
+  )
+}
+```
+
+[Read the Show Docs](/docs/components/show)
+
+### CircularProgress
+
+CircularProgress gets buffed to allow you to **dynamically show the progress value**. This is great for when you want to show a custom message experience.
+
+Just add the new `hideValueText` prop and your custom `ReactNode` label.
+
+<CodePreview preview={<HideValueTextPreview />} />
+
+```tsx /hideValueText/
+function HideValueTextPreview() {
+  return (
+    <HStack justify="center" w="1/2">
+      <CircularProgress
+        defaultValue={0}
+        label={<NotStartedText />}
+        hideValueText
+      />
+    </HStack>
+  )
+}
+```
+
+[Read the Progress Docs](/docs/components/progress)
+
+### Tags
+
+An overly stale API finally gets converted to use **Cerberus Primitives**. You can now utilize factory props along with a more consistent API. Along with that we have massively plus'd up the docs page to include more examples.
+
+_No API changes._
+
+<CodePreview preview={<OverviewPaletteTagPreview />} />
+
+[Read the Tag Docs](/docs/components/tag)
+
+### Prompt Modal
+
+A hybrid fix and feature - the Prompt Modal no longer transforms the `key` passed in and additionally adds a `Clipboard` to improve the UX for people who are in a hurry.
+
+_No API changes._
+
+<CodePreview preview={<NonDestructivePreview />} />
+
+[Read the Prompt Modal Docs](/docs/components/prompt-modal)
+
+### Custom Notification Toasts
+
+You can now create a fully customized Toast Notification experience utilizing the `createToaster` config function and `Toaster` component.
+
+1. `createToaster` allows you to customize the global configuration
+2. `Toaster` allows you to create your own center
+
+<CodePreview preview={<CustomConfigDemo />} />
+
+```tsx /createToaster/
+'use client';
+
+import { createToaster, NotificationCenter, Button } from '@cerberus/react'
+import { HStack } from 'styled-system/jsx'
+
+function CustomConfigDemo() {
+  const customToaster = createToaster({
+    gap: 24,
+    overlap: false,
+    placement: 'bottom-end',
+  })
+
+  return (
+    <>
+      <HStack>
+        <Button
+          onClick={() => {
+            customToaster.create({
+              title: 'Custom Toaster',
+              description:
+                'This notification is using a custom toaster configuration.',
+              type: 'success',
+            })
+          }}
+        >
+          Show Notification
+        </Button>
+      </HStack>
+
+      <NotificationCenter toaster={customToaster} />
+    </>
+  )
+}
+```
+
+[Read the Notifications Docs](/docs/components/notifications)
+
+## Preset
+
+### Cerberus Theme Update
+
+We have overhauled the **Cerberus theme** `secondaryAction` palette to be more accessible and consistent with the primary `action` palette. This is now utilized in the Closable Tag component.
+
+[View the Colors Docs](/docs/theming/colors#secondary-action)
+
+## Other Updates
+
+Additionally, we have also shipped the following:
+
+- Feat: All Modal templates lazy load
+- Fix: Update `Select` & `Combobox` to set `z-index` in the layer tree
+- Fix: `Field` adds missing Primitive type wrapper
+- Fix: `SplitButton` should pass `pending` to MenuTrigger
+- Fix: `DatePicker` to not restrict calendar height so days are visible
+
+## Upgrading
+
+To upgrade to Cerberus v0.24.0, run:
+
+<BashTabs code="npm run up:cerberus" />
+
+## What's Next?
+
+We continue to enhance the Cerberus ecosystem with a focus on developer productivity and accessible design patterns. Coming up:
+
+- Enhanced form components
+- Additional utility components
+- Performance optimizations
+- Expanded documentation and examples
+
+Thank you for being part of the Cerberus community! These updates are driven by your feedback and real-world usage patterns.
