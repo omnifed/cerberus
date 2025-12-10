@@ -14,8 +14,27 @@ import V22ReleaseNotes, {
 import V23ReleaseNotes, {
   frontmatter as v23Frontmatter,
 } from './v23-release.mdx'
+import V24ReleaseNotes, {
+  frontmatter as v24Frontmatter,
+} from './v24-release.mdx'
 
 export const items = [
+  {
+    id: '1.0.5',
+    label: 'Cerberus v24 Release',
+    category: 'release',
+    version: 'v24',
+    slug: 'v24-release',
+    frontmatter: v24Frontmatter as unknown as BlogHeaderProps,
+    href: '/blog/v24-release',
+    meta: {
+      title: 'Cerberus v24 Release Notes',
+      description: 'Fine tuning & customization options.',
+      date: '2025-03-12',
+      timeToRead: '5 min read',
+    },
+    Content: V24ReleaseNotes,
+  },
   {
     id: '1.0.4',
     label: 'Cerberus v23 Release',
