@@ -8,4 +8,6 @@ export const toaster: CreateToasterReturn = createToaster({
   placement: 'top-end',
 })
 
-export { createToaster } from '@ark-ui/react/toast'
+// Re-exporting for easier customization
+
+export { createToaster, Toaster } from '@ark-ui/react/toast'
