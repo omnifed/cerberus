@@ -27,9 +27,8 @@ async function main() {
     '..', // scripts
     '..', // figma
     'packages',
-    'panda-preset',
-    'src',
     'tokens',
+    'src',
     'data',
   )
   const tokensFiles = tokenFilesFromLocalVariables(localVariables)
