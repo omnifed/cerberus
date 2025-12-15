@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@carbon/icons-react": "^11.70.0",
+    "@carbon/icons-react": "^11.71.0",
     "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@tsparticles/engine": "^3.9.1",
