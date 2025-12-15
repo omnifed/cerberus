@@ -331,6 +331,9 @@ importers:
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
+      '@cerberus/tokens':
+        specifier: workspace:*
+        version: link:../packages/tokens
       '@happy-dom/global-registrator':
         specifier: ^20.0.11
         version: 20.0.11

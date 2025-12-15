@@ -78,8 +78,6 @@ export const themeGradients = {
   },
 }
 
-export type PrimitiveCollection = RawTokens['primitives']['colors']
-
 // Helpers
 
 export function formatSpacingTokens(): PandaToken {

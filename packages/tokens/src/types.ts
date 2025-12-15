@@ -34,6 +34,8 @@ export type FigmaToken = {
   }
 }
 
+export type PrimitiveCollection = RawTokens['primitives']['colors']
+
 // PandaCSS
 
 export interface CerbyTokenValue {
