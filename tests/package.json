@@ -9,16 +9,16 @@
     "test:ci": "bun test --coverage"
   },
   "devDependencies": {
-    "@carbon/icons-react": "^11.70.0",
+    "@carbon/icons-react": "^11.71.0",
     "@cerberus-design/panda-preset": "workspace:*",
     "@cerberus-design/react": "workspace:*",
-    "@happy-dom/global-registrator": "^20.0.10",
+    "@happy-dom/global-registrator": "^20.0.11",
     "@pandacss/types": "^1.7.0",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.2.7",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   }
 }
