@@ -8,9 +8,7 @@
   "main": "src/index.ts",
   "module": "src/index.ts",
   "scripts": {
-    "build": "tsup --experimental-dts",
-    "clean": "rm -rf ./build",
-    "clean:tokens": "rm -rf ./src/tokens",
+    "clean": "rm -rf ./src/data",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "files": [
