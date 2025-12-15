@@ -18,7 +18,7 @@
     "@tsparticles/slim": "^3.9.1",
     "next": "16.0.7",
     "react": "19.2.1",
-    "react-dom": "19.2.1",
+    "react-dom": "19.2.3",
     "remove": "^0.1.5"
   },
   "devDependencies": {
