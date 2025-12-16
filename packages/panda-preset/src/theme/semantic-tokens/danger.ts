@@ -1,39 +1,13 @@
-import type { Prominence, SemanticToken } from './types'
-import { formatSemanticTokenValue } from '../../tokens'
+import {
+  type ContractDangerTokens,
+  type DangerTokens,
+  formatSemanticTokenValue,
+} from '@cerberus/tokens'
 
 /**
  * This module is a collection of danger tokens that are used to generate the theme.
  * @module dangerTokens
  */
-
-type DangerProminences = Exclude<Prominence, 300 | 400>
-type DangerTextProminence = Exclude<DangerProminences, 400>
-
-export interface ContractDangerTokens {
-  readonly danger: {
-    readonly bg: {
-      readonly initial: object
-      readonly hover: object
-      readonly active: object
-    }
-    readonly border: {
-      readonly initial: object
-    }
-    readonly ghost: {
-      readonly initial: object
-      readonly hover: object
-      readonly active: object
-    }
-    readonly surface: {
-      readonly initial: object
-      readonly 100: object
-      readonly 200: object
-    }
-    readonly text: {
-      readonly [P in DangerTextProminence]: object
-    }
-  }
-}
 
 export const contractDangerTokens: ContractDangerTokens = {
   danger: {
@@ -67,32 +41,6 @@ export const contractDangerTokens: ContractDangerTokens = {
       static: {},
     },
   },
-}
-
-export interface DangerTokens {
-  readonly danger: {
-    readonly bg: {
-      readonly initial: SemanticToken
-      readonly hover: SemanticToken
-      readonly active: SemanticToken
-    }
-    readonly border: {
-      readonly initial: SemanticToken
-    }
-    readonly ghost: {
-      readonly initial: SemanticToken
-      readonly hover: SemanticToken
-      readonly active: SemanticToken
-    }
-    readonly surface: {
-      readonly initial: SemanticToken
-      readonly 100: SemanticToken
-      readonly 200: SemanticToken
-    }
-    readonly text: {
-      readonly [P in DangerTextProminence]: SemanticToken
-    }
-  }
 }
 
 export const dangerTokens: DangerTokens = {

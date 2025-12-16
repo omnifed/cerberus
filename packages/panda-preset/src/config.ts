@@ -4,12 +4,13 @@ import {
   type Config,
   type Preset,
 } from '@pandacss/dev'
+import pandaPreset from '@pandacss/preset-panda'
+import { type RawThemes } from '@cerberus/tokens'
 import { globalCss } from './globalCss'
 import { conditions } from './conditions'
 import { utilities } from './utilities'
 import { patterns } from './patterns'
-import { baseTheme, type RawThemes } from './theme'
-import { acheronTheme } from './themes/acheron'
+import { baseTheme } from './theme'
 
 /**
  * This module contains the Cerberus preset and configuration options.
@@ -17,27 +18,23 @@ import { acheronTheme } from './themes/acheron'
  **/
 
 const cerberusPreset: Preset = definePreset({
-  name: 'cerberus',
+  name: '@cerberus/preset-base',
 
-  presets: ['@pandacss/dev/presets'],
+  presets: [pandaPreset],
 
   globalCss,
   conditions,
   utilities,
   patterns,
 
-  // default theme: cerberus
   theme: baseTheme,
 
-  // optional themes
   themes: {
     cerberus: baseTheme,
-    acheron: acheronTheme,
   },
 
-  // opt-into additional theme variants
   staticCss: {
-    themes: ['cerberus', 'acheron'],
+    themes: ['cerberus'],
   },
 })
 
@@ -113,6 +110,7 @@ export interface PresetOptions {
 export function createCerberusPreset(options?: PresetOptions): Preset {
   return definePreset({
     ...cerberusPreset,
+
     globalVars: {
       '--font-display': options?.displayFont ?? 'Poppins, sans-serif',
       '--font-sans': options?.sansFont ?? 'Poppins, sans-serif',

@@ -12,5 +12,3 @@ export * from './warning'
 export * from './danger'
 export * from './gradient'
 export * from './data-viz'
-
-export * from './types'

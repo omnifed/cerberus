@@ -26,6 +26,6 @@ describe('createCerberusPreset', () => {
     })
 
     expect(preset).toBeDefined()
-    expect(preset.name).toBe('cerberus')
+    expect(preset.name).toBe('@cerberus/preset-base')
   })
 })

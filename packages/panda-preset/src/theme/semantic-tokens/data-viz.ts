@@ -1,44 +1,13 @@
-import type { SemanticToken } from './types'
-import { formatSemanticTokenValue } from '../../tokens'
+import {
+  ContractDataVizTokens,
+  DataVizTokens,
+  formatSemanticTokenValue,
+} from '@cerberus/tokens'
 
 /**
  * This module is a collection of data-viz tokens that are used to generate the theme.
  * @module dataVizTokens
  */
-
-export type DataVisProminence =
-  | '50'
-  | '100'
-  | '200'
-  | '300'
-  | '400'
-  | '500'
-  | '600'
-  | '700'
-  | '800'
-  | '900'
-
-export interface ContractDataVizTokens {
-  readonly dataViz: {
-    readonly diverging: {
-      readonly [P in DataVisProminence]: object
-    }
-    readonly sequential: {
-      readonly [P in Exclude<
-        DataVisProminence,
-        '50' | '700' | '800' | '900'
-      >]: object
-    }
-    readonly qualitative: {
-      readonly [P in Exclude<DataVisProminence, '50' | '800' | '900'>]: object
-    }
-    readonly progress: {
-      readonly start: object
-      readonly end: object
-      readonly complete: object
-    }
-  }
-}
 
 export const contractDataVizTokens: ContractDataVizTokens = {
   dataViz: {
@@ -80,31 +49,6 @@ export const contractDataVizTokens: ContractDataVizTokens = {
       complete: {},
     },
   },
-}
-
-export interface DataVizTokens {
-  readonly dataViz: {
-    readonly diverging: {
-      readonly [P in DataVisProminence]: SemanticToken
-    }
-    readonly sequential: {
-      readonly [P in Exclude<
-        DataVisProminence,
-        '50' | '700' | '800' | '900'
-      >]: SemanticToken
-    }
-    readonly qualitative: {
-      readonly [P in Exclude<
-        DataVisProminence,
-        '50' | '800' | '900'
-      >]: SemanticToken
-    }
-    readonly progress: {
-      readonly start: SemanticToken
-      readonly end: SemanticToken
-      readonly complete: SemanticToken
-    }
-  }
 }
 
 export const dataVizTokens: DataVizTokens = {

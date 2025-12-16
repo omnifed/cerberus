@@ -1,5 +1,5 @@
 import { defineTextStyles, type TextStyles } from '@pandacss/dev'
-import { formatTextStyles, type NormalizedTextStyle } from '../tokens'
+import { formatTextStyles, type NormalizedTextStyle } from '@cerberus/tokens'
 
 export const figmaTextStyles: NormalizedTextStyle = formatTextStyles()
 

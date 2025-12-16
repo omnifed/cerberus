@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "prepare": "panda codegen",
+    "spec": "panda spec",
     "dev": "rm -rf .next && next dev",
     "build": "next build",
     "start": "next start",

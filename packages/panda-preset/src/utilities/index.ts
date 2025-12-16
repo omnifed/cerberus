@@ -177,6 +177,7 @@ const borderGradient: CustomUtilityConfig<'borderGradient'> = {
           backgroundImage: gradientBg + token(`${data.darkToken}.${value}`),
           color,
         },
+
         // cerberus
         [`[data-panda-theme=cerberus]${conditions.lightMode}`]: {
           backgroundImage: gradientBg + token(`${data.lightToken}.${value}`),
@@ -190,6 +191,7 @@ const borderGradient: CustomUtilityConfig<'borderGradient'> = {
           backgroundImage: gradientBg + token(`${data.darkToken}.${value}`),
           color,
         },
+
         // acheron
         [`[data-panda-theme=acheron]${conditions.lightMode}`]: {
           backgroundImage:

@@ -6,10 +6,6 @@ describe('conditions', () => {
     expect(conditions.cerberusTheme).toEqual('[data-panda-theme=cerberus] &')
   })
 
-  test('should have an acheronTheme', () => {
-    expect(conditions.acheronTheme).toEqual('[data-panda-theme=acheron] &')
-  })
-
   test('should have a lightMode', () => {
     expect(conditions.lightMode).toEqual(
       '[data-color-mode=light] &, &.light, .light &',

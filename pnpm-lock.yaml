@@ -247,10 +247,10 @@ importers:
     dependencies:
       autoprefixer:
         specifier: '*'
-        version: 10.4.21(postcss@8.4.49)
+        version: 10.4.21(postcss@8.5.6)
       postcss:
         specifier: '*'
-        version: 8.4.49
+        version: 8.5.6
       up:
         specifier: ^1.0.2
         version: 1.0.2
@@ -261,6 +261,37 @@ importers:
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../../configs
+      '@cerberus/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+      '@pandacss/dev':
+        specifier: ^1.7.0
+        version: 1.7.0(jsdom@26.0.0)(typescript@5.9.3)
+      '@pandacss/preset-panda':
+        specifier: ^1.7.1
+        version: 1.7.1
+      '@pandacss/types':
+        specifier: ^1.7.0
+        version: 1.7.0
+
+  packages/preset-acheron-theme:
+    dependencies:
+      autoprefixer:
+        specifier: '*'
+        version: 10.4.23(postcss@8.5.6)
+      postcss:
+        specifier: '*'
+        version: 8.5.6
+      up:
+        specifier: ^1.0.2
+        version: 1.0.2
+    devDependencies:
+      '@cerberus-design/configs':
+        specifier: workspace:*
+        version: link:../../configs
+      '@cerberus/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       '@pandacss/dev':
         specifier: ^1.7.0
         version: 1.7.0(jsdom@26.0.0)(typescript@5.9.3)
@@ -328,6 +359,9 @@ importers:
       '@cerberus-design/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
+      '@cerberus-design/preset-acheron-theme':
+        specifier: workspace:*
+        version: link:../packages/preset-acheron-theme
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
@@ -1429,6 +1463,9 @@ packages:
   '@pandacss/preset-panda@1.7.0':
     resolution: {integrity: sha512-QpQRbBfc5P+9NG+Por24JjUMMtR3Gmxx0Womm9TXdCQ0TzRniJBsx4PHR1FFHJQpG0gIKNj0Chxdim9wYkpFsw==}
 
+  '@pandacss/preset-panda@1.7.1':
+    resolution: {integrity: sha512-w9M/hDOMkVvZjxf5cy3+Hzi+1rnm4azpr0mbEowKLhlXFI+ubFt3iJPCEx/nx1Z0gs8kOu0EhydU6hnARlUkJQ==}
+
   '@pandacss/reporter@1.7.0':
     resolution: {integrity: sha512-T/kZ81nD/aQcZhNr8qN2FUUtd3GguqoDB+XbTOYrWU+xHVQmn2QNAqLeTxvWo1NQrpS/OwHOLApOc+sCrxZc5Q==}
 
@@ -1440,6 +1477,9 @@ packages:
 
   '@pandacss/types@1.7.0':
     resolution: {integrity: sha512-7RdXLuxXkxTQ7X3E2V0Cyj3Mco2pAwk6zUEY0XZh+gqJFpfMtDS1ZA4kAn/I6ff617lzBhb5K9+i7/iLRYe0TA==}
+
+  '@pandacss/types@1.7.1':
+    resolution: {integrity: sha512-cT0cyiU7t41CGa3629Ih+A41r7FFIWPnDGgxALKICfW/Xkn8oX/GMFU+cS0vsRcZqSKbEKlaJu/oC320qzYY9w==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -5108,10 +5148,6 @@ packages:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
 
-  postcss@8.4.49:
-    resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
-    engines: {node: ^10 || ^12 || >=14}
-
   postcss@8.5.6:
     resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
     engines: {node: ^10 || ^12 || >=14}
@@ -6326,7 +6362,7 @@ snapshots:
     dependencies:
       '@babel/compat-data': 7.28.5
       '@babel/helper-validator-option': 7.27.1
-      browserslist: 4.28.0
+      browserslist: 4.28.1
       lru-cache: 5.1.1
       semver: 6.3.1
 
@@ -7345,6 +7381,10 @@ snapshots:
     dependencies:
       '@pandacss/types': 1.7.0
 
+  '@pandacss/preset-panda@1.7.1':
+    dependencies:
+      '@pandacss/types': 1.7.1
+
   '@pandacss/reporter@1.7.0':
     dependencies:
       '@pandacss/core': 1.7.0
@@ -7366,6 +7406,8 @@ snapshots:
       ts-pattern: 5.9.0
 
   '@pandacss/types@1.7.0': {}
+
+  '@pandacss/types@1.7.1': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -9291,14 +9333,14 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  autoprefixer@10.4.21(postcss@8.4.49):
+  autoprefixer@10.4.21(postcss@8.5.6):
     dependencies:
       browserslist: 4.24.4
       caniuse-lite: 1.0.30001712
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.1.1
-      postcss: 8.4.49
+      postcss: 8.5.6
       postcss-value-parser: 4.2.0
 
   autoprefixer@10.4.23(postcss@8.5.6):
@@ -9459,7 +9501,7 @@ snapshots:
 
   caniuse-api@3.0.0:
     dependencies:
-      browserslist: 4.28.0
+      browserslist: 4.28.1
       caniuse-lite: 1.0.30001760
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
@@ -12163,7 +12205,7 @@ snapshots:
 
   postcss-merge-rules@7.0.7(postcss@8.5.6):
     dependencies:
-      browserslist: 4.28.0
+      browserslist: 4.28.1
       caniuse-api: 3.0.0
       cssnano-utils: 5.0.1(postcss@8.5.6)
       postcss: 8.5.6
@@ -12208,12 +12250,6 @@ snapshots:
   postcss-value-parser@4.2.0: {}
 
   postcss@8.4.31:
-    dependencies:
-      nanoid: 3.3.11
-      picocolors: 1.1.1
-      source-map-js: 1.2.1
-
-  postcss@8.4.49:
     dependencies:
       nanoid: 3.3.11
       picocolors: 1.1.1
