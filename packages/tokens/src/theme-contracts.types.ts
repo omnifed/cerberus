@@ -472,6 +472,22 @@ export interface DataVizTokens {
 
 // Gradients
 
+export type GradientValue =
+  | 'charon-light'
+  | 'charon-dark'
+  | 'nyx-light'
+  | 'nyx-dark'
+  | 'amphiaraus-light'
+  | 'amphiaraus-dark'
+  | 'styx-light'
+  | 'styx-dark'
+  | 'thanatos-light'
+  | 'thanatos-dark'
+  | 'hades-light'
+  | 'hades-dark'
+  | 'asphodel-light'
+  | 'asphodel-dark'
+
 export type GradientText = {
   readonly text: {
     readonly initial: SemanticToken

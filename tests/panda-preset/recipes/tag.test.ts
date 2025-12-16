@@ -1,5 +1,6 @@
 import { describe, test, expect } from 'bun:test'
-import { gradientValues, recipes } from '@cerberus-design/panda-preset'
+import { recipes } from '@cerberus-design/panda-preset'
+import { gradientValues } from '@cerberus/tokens'
 
 describe('tag recipe', () => {
   const { tag } = recipes

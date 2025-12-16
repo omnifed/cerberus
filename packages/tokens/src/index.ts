@@ -15,7 +15,7 @@ import type {
 } from './types'
 import type { Token } from '@pandacss/types'
 import { RawThemes, SemanticToken } from './semantic-tokens.types'
-import { GradientText } from './theme-contracts.types'
+import { GradientText, GradientValue } from './theme-contracts.types'
 
 // Types
 
@@ -79,6 +79,23 @@ export const themeGradients = {
     },
   },
 }
+
+export const gradientValues: GradientValue[] = [
+  'charon-light',
+  'charon-dark',
+  'nyx-light',
+  'nyx-dark',
+  'amphiaraus-light',
+  'amphiaraus-dark',
+  'styx-light',
+  'styx-dark',
+  'thanatos-light',
+  'thanatos-dark',
+  'hades-light',
+  'hades-dark',
+  'asphodel-light',
+  'asphodel-dark',
+]
 
 // Helpers
 
