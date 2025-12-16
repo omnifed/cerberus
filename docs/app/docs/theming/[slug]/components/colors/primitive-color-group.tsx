@@ -1,6 +1,6 @@
 'use client'
 
-import { primitiveColorTokens } from '@cerberus-design/panda-preset'
+import { primitiveColorTokens } from '@cerberus/tokens'
 import { Box, Grid, GridItem, VStack } from '@/styled-system/jsx'
 import { For, Text } from '@cerberus-design/react'
 

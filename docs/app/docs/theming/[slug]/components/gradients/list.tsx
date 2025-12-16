@@ -1,10 +1,10 @@
 import { cq, hstack, vstack } from 'styled-system/patterns'
-import { gradientValues } from '@cerberus-design/panda-preset'
 import { css } from 'styled-system/css'
 import { LogoFigma } from '@carbon/icons-react'
 import { Code } from '@/app/components/code'
 import { PAGE_TEXT_INITIAL } from '@/app/utils/const'
 import { Circle } from 'styled-system/jsx'
+import { gradientValues } from '@cerberus/tokens'
 
 export function GradientList() {
   return (

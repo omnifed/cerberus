@@ -1,6 +1,7 @@
 import { describe, test, expect, jest } from 'bun:test'
-import { gradientValues, utilities } from '@cerberus-design/panda-preset'
+import { utilities } from '@cerberus-design/panda-preset'
 import { type TransformArgs } from '@pandacss/types'
+import { gradientValues } from '@cerberus/tokens'
 
 describe('utilities', () => {
   const CHARON_LIGHT = '{gradients.acheron.dark.charon-light}'

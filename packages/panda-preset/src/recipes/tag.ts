@@ -3,8 +3,8 @@ import {
   type RecipeConfig,
   type RecipeVariantRecord,
 } from '@pandacss/dev'
+import { gradientValues } from '@cerberus/tokens'
 import { createGradientVariants } from './shared/helpers'
-import { gradientValues } from '../utilities'
 import type {
   Pretty,
   RecipeCompoundSelection,

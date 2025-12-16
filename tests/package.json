@@ -11,6 +11,7 @@
   "devDependencies": {
     "@carbon/icons-react": "^11.71.0",
     "@cerberus/tokens": "workspace:*",
+    "@cerberus-design/preset-acheron-theme": "workspace:*",
     "@cerberus-design/panda-preset": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@happy-dom/global-registrator": "^20.0.11",

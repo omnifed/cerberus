@@ -1,8 +1,8 @@
 import { Tag, type TagProps, Text } from '@cerberus-design/react'
-import { gradientValues } from '@cerberus-design/panda-preset'
 import { Information } from '@carbon/icons-react'
 import { HStack, Grid, GridItem } from '@/styled-system/jsx'
 import { Fragment } from 'react'
+import { gradientValues } from '@cerberus/tokens'
 
 export type TagPreviewProps = TagProps
 

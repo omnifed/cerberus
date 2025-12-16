@@ -1,5 +1,6 @@
 {
   "name": "@cerberus/react",
   "version": "0.24.0",
+  "license": "MIT",
   "exports": "./src/index.ts"
 }

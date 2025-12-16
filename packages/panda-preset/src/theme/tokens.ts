@@ -5,7 +5,7 @@ import {
   type PandaColor,
   type PandaGradient,
   type PandaToken,
-} from '../tokens'
+} from '@cerberus/tokens'
 
 /**
  * This module contains the tokens used in the main theme.

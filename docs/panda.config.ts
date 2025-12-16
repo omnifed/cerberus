@@ -2,12 +2,13 @@ import {
   createCerberusConfig,
   createCerberusPreset,
 } from '@cerberus-design/panda-preset'
+import { presetAcheronTheme } from '@cerberus-design/preset-acheron-theme'
 
 export default createCerberusConfig({
   clean: true,
   minify: process.env.NODE_ENV === 'production',
 
-  presets: [createCerberusPreset()],
+  presets: [createCerberusPreset(), presetAcheronTheme],
 
   globalVars: {
     '--nav-height': '3.75rem',

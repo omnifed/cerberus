@@ -1,0 +1,74 @@
+{
+  "name": "@cerberus-design/preset-acheron-theme",
+  "version": "0.24.0",
+  "description": "The official Acheron theme preset for the Cerberus design system",
+  "browserslist": "> 0.25%, not dead",
+  "sideEffects": false,
+  "type": "module",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "scripts": {
+    "build": "tsup --experimental-dts",
+    "clean": "rm -rf ./build",
+    "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
+  },
+  "peerDependencies": {
+    "@pandacss/dev": "^1.7.0",
+    "autoprefixer": "*",
+    "postcss": "*"
+  },
+  "devDependencies": {
+    "@cerberus/tokens": "workspace:*",
+    "@cerberus-design/configs": "workspace:*",
+    "@pandacss/dev": "^1.7.0",
+    "@pandacss/types": "^1.7.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "types": "build/legacy/index.d.ts",
+    "main": "build/legacy/index.cjs",
+    "module": "build/legacy/index.js",
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./build/modern/index.d.ts",
+          "default": "./build/modern/index.js"
+        },
+        "require": {
+          "types": "./build/modern/index.d.cts",
+          "default": "./build/modern/index.cjs"
+        }
+      },
+      "./package.json": "./package.json"
+    },
+    "typesVersions": {
+      "*": {
+        ".": [
+          "build/legacy/index.d.ts"
+        ]
+      }
+    }
+  },
+  "files": [
+    "build/**/*",
+    "src/**/*",
+    "index.ts"
+  ],
+  "keywords": [
+    "panda-css",
+    "omni-federal",
+    "design-system",
+    "css",
+    "recipe",
+    "ui",
+    "ui library",
+    "panda-css ui",
+    "digital university",
+    "du design system"
+  ],
+  "author": "developers@omnifederal.com",
+  "license": "ISC",
+  "dependencies": {
+    "up": "^1.0.2"
+  }
+}

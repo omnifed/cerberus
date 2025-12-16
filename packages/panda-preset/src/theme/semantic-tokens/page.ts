@@ -1,64 +1,14 @@
-import type { Prominence, SemanticToken } from './types'
-import { formatSemanticTokenValue, themeTokens } from '../../tokens'
-import { PAGE } from '../../recipes/shared/palettes'
+import {
+  type ContractPageTokens,
+  type PageTokens,
+  formatSemanticTokenValue,
+  themeTokens,
+} from '@cerberus/tokens'
 
 /**
  * This module is a collection of page tokens that are used to generate the theme.
  * @module pageTokens
  */
-
-export type PageProminence = Exclude<Prominence, 'static'>
-export type TextProminence = Exclude<PageProminence, 400>
-
-export interface ContractPageTokens {
-  readonly page: {
-    readonly backdrop: {
-      readonly initial: object
-    }
-    readonly bg: {
-      readonly initial: object
-      readonly 100: object
-      readonly 200: object
-      readonly 300: object
-    }
-    readonly border: {
-      readonly initial: object
-      readonly 100: object
-      readonly 200: object
-    }
-    readonly surface: {
-      readonly [P in PageProminence]: object
-    }
-    readonly text: {
-      readonly [P in TextProminence]: object
-    }
-  }
-}
-
-export interface PageTokens {
-  readonly page: {
-    readonly backdrop: {
-      readonly initial: SemanticToken
-    }
-    readonly bg: {
-      readonly initial: SemanticToken
-      readonly 100: SemanticToken
-      readonly 200: SemanticToken
-      readonly 300: SemanticToken
-    }
-    readonly border: {
-      readonly initial: SemanticToken
-      readonly 100: SemanticToken
-      readonly 200: SemanticToken
-    }
-    readonly surface: {
-      readonly [P in PageProminence]: SemanticToken
-    }
-    readonly text: {
-      readonly [P in Exclude<PageProminence, 400>]: SemanticToken
-    }
-  }
-}
 
 export const contractPageTokens: ContractPageTokens = {
   page: {
@@ -99,7 +49,7 @@ export const pageTokens: PageTokens = {
     backdrop: {
       initial: {
         description:
-          themeTokens.cerberus.dark.backdrop[PAGE].initial.$description ||
+          themeTokens.cerberus.dark.backdrop.page.initial.$description ||
           'The default backdrop color used for modals and dialogs on a page.',
         value: {
           // Figma converts the rgba to a HEX value which removes the opacity

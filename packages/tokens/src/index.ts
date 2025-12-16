@@ -14,11 +14,13 @@ import type {
   RawTokens,
 } from './types'
 import type { Token } from '@pandacss/types'
-import { RawThemes } from './semantic-tokens.types'
+import { RawThemes, SemanticToken } from './semantic-tokens.types'
+import { GradientText, GradientValue } from './theme-contracts.types'
 
 // Types
 
 export * from './semantic-tokens.types'
+export * from './theme-contracts.types'
 export * from './types'
 
 // Tokens
@@ -77,6 +79,23 @@ export const themeGradients = {
     },
   },
 }
+
+export const gradientValues: GradientValue[] = [
+  'charon-light',
+  'charon-dark',
+  'nyx-light',
+  'nyx-dark',
+  'amphiaraus-light',
+  'amphiaraus-dark',
+  'styx-light',
+  'styx-dark',
+  'thanatos-light',
+  'thanatos-dark',
+  'hades-light',
+  'hades-dark',
+  'asphodel-light',
+  'asphodel-dark',
+]
 
 // Helpers
 
@@ -191,6 +210,27 @@ export function getThemeTokenByPath(
   const lightPath = `light.${path}.$value`
   return getThemeSelector(darkPath, lightPath, theme)
 }
+
+export function createGradientToken(
+  name: string,
+  theme: RawThemes,
+): GradientText {
+  return {
+    text: {
+      initial: formatSemanticTokenValue(`gradient.${name}.text`, theme),
+    },
+  }
+}
+
+export function createContractGradientToken(): GradientText {
+  return {
+    text: {
+      initial: {} as SemanticToken,
+    },
+  }
+}
+
+// Private
 
 /**
  * This function returns the value of a token for a specific theme.

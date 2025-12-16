@@ -1,55 +1,45 @@
+import { createCerberusPreset } from '@cerberus-design/panda-preset'
+import { presetAcheronTheme as acheronTheme } from '@cerberus-design/preset-acheron-theme'
 import {
-  actionTokens,
-  dangerTokens,
-  infoTokens,
-  pageTokens,
-  secondaryActionTokens,
-  successTokens,
-  warningTokens,
-  dataVizTokens,
-  acheronTheme,
+  RawThemes,
   type SemanticToken,
   type Sentiment,
   type SentimentConfig,
   type Token,
-} from '@cerberus-design/panda-preset'
+} from '@cerberus/tokens'
 
 export function getTokenList(
   palette: Sentiment,
-  theme: string = 'cerberus',
+  theme: RawThemes = 'cerberus',
 ): SentimentConfig[Sentiment] {
-  // Choose the right token set based on theme
-  const tokens =
-    theme === 'acheron'
-      ? acheronTheme
-      : {
-          pageTokens,
-          actionTokens,
-          secondaryActionTokens,
-          infoTokens,
-          successTokens,
-          warningTokens,
-          dangerTokens,
-          dataVizTokens,
-        }
+  const acheronTokens = acheronTheme?.themes?.acheron?.semanticTokens as {
+    colors: SentimentConfig
+  }
+  const cerberusTokens = createCerberusPreset()?.themes?.cerberus
+    ?.semanticTokens as {
+    colors: SentimentConfig
+  }
+
+  const tokens: SentimentConfig =
+    theme === 'acheron' ? acheronTokens.colors : cerberusTokens.colors
 
   switch (palette) {
     case 'page':
-      return tokens.pageTokens.page
+      return tokens.page
     case 'action':
-      return tokens.actionTokens.action
+      return tokens.action
     case 'secondaryAction':
-      return tokens.secondaryActionTokens.secondaryAction
+      return tokens.secondaryAction
     case 'info':
-      return tokens.infoTokens.info
+      return tokens.info
     case 'success':
-      return tokens.successTokens.success
+      return tokens.success
     case 'warning':
-      return tokens.warningTokens.warning
+      return tokens.warning
     case 'danger':
-      return tokens.dangerTokens.danger
+      return tokens.danger
     case 'dataViz':
-      return tokens.dataVizTokens.dataViz as SentimentConfig[Sentiment]
+      return tokens.dataViz
     default:
       throw new Error('Invalid color palette')
   }

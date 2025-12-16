@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "prepare": "panda codegen",
+    "spec": "panda spec",
     "dev": "rm -rf .next && next dev",
     "build": "next build",
     "start": "next start",
@@ -11,6 +12,7 @@
   },
   "dependencies": {
     "@carbon/icons-react": "^11.71.0",
+    "@cerberus/tokens": "workspace:*",
     "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@tsparticles/engine": "^3.9.1",
@@ -22,6 +24,7 @@
     "remove": "^0.1.5"
   },
   "devDependencies": {
+    "@cerberus-design/preset-acheron-theme": "workspace:*",
     "@cerberus-design/panda-preset": "workspace:*",
     "@csstools/postcss-cascade-layers": "^5.0.2",
     "@expressive-code/plugin-line-numbers": "^0.41.3",

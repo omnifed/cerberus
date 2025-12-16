@@ -1,6 +1,9 @@
 import type { SystemStyleObject } from '@pandacss/types'
-import type { Sentiment } from '../../theme/semantic-tokens/types'
-import { gradientValues, type GradientValue } from '../../utilities'
+import {
+  gradientValues,
+  type GradientValue,
+  type Sentiment,
+} from '@cerberus/tokens'
 
 export type RecipePalette<K extends Sentiment[]> = K[]
 

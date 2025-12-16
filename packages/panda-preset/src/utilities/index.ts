@@ -1,4 +1,5 @@
 import type { PropertyConfig } from '@pandacss/dev'
+import { type GradientValue, gradientValues } from '@cerberus/tokens'
 import { conditions } from '../conditions'
 import data from './gradient.data.json' with { type: 'json' }
 
@@ -50,39 +51,6 @@ export const size: CustomUtilityConfig<'size'> = {
     },
   },
 }
-
-export type GradientValue =
-  | 'charon-light'
-  | 'charon-dark'
-  | 'nyx-light'
-  | 'nyx-dark'
-  | 'amphiaraus-light'
-  | 'amphiaraus-dark'
-  | 'styx-light'
-  | 'styx-dark'
-  | 'thanatos-light'
-  | 'thanatos-dark'
-  | 'hades-light'
-  | 'hades-dark'
-  | 'asphodel-light'
-  | 'asphodel-dark'
-
-export const gradientValues: GradientValue[] = [
-  'charon-light',
-  'charon-dark',
-  'nyx-light',
-  'nyx-dark',
-  'amphiaraus-light',
-  'amphiaraus-dark',
-  'styx-light',
-  'styx-dark',
-  'thanatos-light',
-  'thanatos-dark',
-  'hades-light',
-  'hades-dark',
-  'asphodel-light',
-  'asphodel-dark',
-]
 
 const gradient: CustomUtilityConfig<'gradient'> = {
   gradient: {
@@ -177,6 +145,7 @@ const borderGradient: CustomUtilityConfig<'borderGradient'> = {
           backgroundImage: gradientBg + token(`${data.darkToken}.${value}`),
           color,
         },
+
         // cerberus
         [`[data-panda-theme=cerberus]${conditions.lightMode}`]: {
           backgroundImage: gradientBg + token(`${data.lightToken}.${value}`),
@@ -190,6 +159,7 @@ const borderGradient: CustomUtilityConfig<'borderGradient'> = {
           backgroundImage: gradientBg + token(`${data.darkToken}.${value}`),
           color,
         },
+
         // acheron
         [`[data-panda-theme=acheron]${conditions.lightMode}`]: {
           backgroundImage:
