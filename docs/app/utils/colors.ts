@@ -1,4 +1,4 @@
-import type { RawThemes } from '@cerberus-design/panda-preset'
+import type { RawThemes } from '@cerberus/tokens'
 import type { ColorModes } from '@cerberus-design/react'
 
 export function getColorMode(currentMode: ColorModes): ColorModes {

@@ -5,15 +5,16 @@ This is the official [Panda-CSS](https://panda-css.com/) preset for the Cerberus
 ## Installation
 
 ```bash
-pnpm add -D @cerberus-design/panda-preset
+npx jsr add @cerberus/preset-acheron-theme
 ```
 
 ## Usage
 
 ```typescript
+// panda.config.ts
 import { defineConfig } from '@pandacss/dev'
-import pandaPreset from '@pandacss/preset-panda'
-import { cerberusPreset, cerberusConfig } from '@cerberus-design/panda-preset'
+import { cerberusPreset, cerberusConfig } from '@cerberus/panda-preset'
+import { acheronTheme } from '@cerberus/preset-acheron-theme'
 
 export default defineConfig({
   ...cerberusConfig,
@@ -21,33 +22,14 @@ export default defineConfig({
   include: ['./src/**/*.{ts,tsx,js,jsx}'],
   exclude: [],
 
-  presets: [pandaPreset, cerberusPreset],
+  presets: [cerberusPreset(), acheronTheme],
 })
 ```
 
 ## Features
 
 - [Conditions](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/conditions.ts)
-- [Utilities](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/utilities.ts)
-- [Patterns](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/patterns.ts)
-- [Global CSS](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/globalCss.ts)
-- [Key-frames](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/theme/keyframes.ts)
-- [Text Styles](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/theme/textStyles.ts)
-- [Tokens](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/theme/tokens.ts)
 - [Semantic Tokens](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/theme/semantic-tokens/index.ts)
-- [Recipes](https://github.com/omnifed/cerberus/blob/main/packages/panda-preset/src/recipes/index.ts)
-
-## NextJS Font Features
-
-If you use NextJS, we recommend the font and settings mentioned below. Unfortunately, NextJS enforces a rule of `Font loader values must be explicitly written literals.` which means you cannot use a variable to define the font settings or else we would also provide that. :sob:
-
-```typescript
-const poppins = Poppins({
-  display: 'swap',
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-})
-```
 
 ---
 

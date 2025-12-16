@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import type { SemanticToken } from '@cerberus-design/panda-preset'
+import type { SemanticToken } from '@cerberus/tokens'
 import { Text, useThemeContext } from '@cerberus-design/react'
 import { getSemanticTokenHexValue } from '@/app/docs/utils/color-helpers'
 

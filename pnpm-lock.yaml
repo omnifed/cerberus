@@ -105,6 +105,9 @@ importers:
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
+      '@cerberus/tokens':
+        specifier: workspace:*
+        version: link:../packages/tokens
       '@tsparticles/engine':
         specifier: ^3.9.1
         version: 3.9.1
