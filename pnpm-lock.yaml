@@ -130,6 +130,9 @@ importers:
       '@cerberus-design/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
+      '@cerberus-design/preset-acheron-theme':
+        specifier: workspace:*
+        version: link:../packages/preset-acheron-theme
       '@csstools/postcss-cascade-layers':
         specifier: ^5.0.2
         version: 5.0.2(postcss@8.5.6)
