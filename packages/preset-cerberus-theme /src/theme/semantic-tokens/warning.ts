@@ -1,8 +1,4 @@
-import {
-  type ContractWarningTokens,
-  type WarningTokens,
-  formatSemanticTokenValue,
-} from '@cerberus/tokens'
+import { type WarningTokens, formatSemanticTokenValue } from '@cerberus/tokens'
 import { getThemeName } from '../../config'
 
 /**
@@ -11,40 +7,6 @@ import { getThemeName } from '../../config'
  */
 
 const THEME = getThemeName()
-
-export const contractWarningTokens: ContractWarningTokens = {
-  warning: {
-    border: {
-      initial: {},
-    },
-
-    bg: {
-      initial: {},
-      hover: {},
-      active: {},
-    },
-
-    ghost: {
-      initial: {},
-      hover: {},
-      active: {},
-    },
-
-    surface: {
-      initial: {},
-      100: {},
-      200: {},
-    },
-
-    text: {
-      initial: {},
-      100: {},
-      200: {},
-      inverse: {},
-      static: {},
-    },
-  },
-}
 
 export const warningTokens: WarningTokens = {
   warning: {

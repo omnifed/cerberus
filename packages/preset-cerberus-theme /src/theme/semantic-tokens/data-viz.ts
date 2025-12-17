@@ -1,8 +1,4 @@
-import {
-  type ContractDataVizTokens,
-  type DataVizTokens,
-  formatSemanticTokenValue,
-} from '@cerberus/tokens'
+import { type DataVizTokens, formatSemanticTokenValue } from '@cerberus/tokens'
 import { getThemeName } from '../../config'
 
 /**
@@ -11,48 +7,6 @@ import { getThemeName } from '../../config'
  */
 
 const THEME = getThemeName()
-
-export const contractDataVizTokens: ContractDataVizTokens = {
-  dataViz: {
-    diverging: {
-      '50': {},
-      '100': {},
-      '200': {},
-      '300': {},
-      '400': {},
-      '500': {},
-      '600': {},
-      '700': {},
-      '800': {},
-      '900': {},
-    },
-
-    sequential: {
-      '100': {},
-      '200': {},
-      '300': {},
-      '400': {},
-      '500': {},
-      '600': {},
-    },
-
-    qualitative: {
-      '100': {},
-      '200': {},
-      '300': {},
-      '400': {},
-      '500': {},
-      '600': {},
-      '700': {},
-    },
-
-    progress: {
-      start: {},
-      end: {},
-      complete: {},
-    },
-  },
-}
 
 export const dataVizTokens: DataVizTokens = {
   dataViz: {

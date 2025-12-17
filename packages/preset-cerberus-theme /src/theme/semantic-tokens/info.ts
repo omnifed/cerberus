@@ -1,8 +1,4 @@
-import {
-  type ContractInfoTokens,
-  type InfoTokens,
-  formatSemanticTokenValue,
-} from '@cerberus/tokens'
+import { type InfoTokens, formatSemanticTokenValue } from '@cerberus/tokens'
 import { getThemeName } from '../../config'
 
 /**
@@ -11,40 +7,6 @@ import { getThemeName } from '../../config'
  */
 
 const THEME = getThemeName()
-
-export const contractInfoTokens: ContractInfoTokens = {
-  info: {
-    border: {
-      initial: {},
-      100: {},
-    },
-
-    bg: {
-      initial: {},
-      hover: {},
-      active: {},
-    },
-
-    ghost: {
-      initial: {},
-      hover: {},
-      active: {},
-    },
-
-    surface: {
-      initial: {},
-      100: {},
-      200: {},
-    },
-
-    text: {
-      initial: {},
-      100: {},
-      200: {},
-      static: {},
-    },
-  },
-}
 
 export const infoTokens: InfoTokens = {
   info: {

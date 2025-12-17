@@ -1,5 +1,4 @@
 import {
-  type ContractSecondaryActionTokens,
   type SecondaryActionTokens,
   formatSemanticTokenValue,
 } from '@cerberus/tokens'
@@ -11,40 +10,6 @@ import { getThemeName } from '../../config'
  */
 
 const THEME = getThemeName()
-
-export const contractSecondaryActionTokens: ContractSecondaryActionTokens = {
-  secondaryAction: {
-    bg: {
-      initial: {},
-      hover: {},
-      active: {},
-    },
-
-    border: {
-      initial: {},
-      100: {},
-    },
-
-    ghost: {
-      initial: {},
-      hover: {},
-      active: {},
-    },
-
-    navigation: {
-      initial: {},
-      hover: {},
-      visited: {},
-    },
-
-    text: {
-      initial: {},
-      100: {},
-      200: {},
-      static: {},
-    },
-  },
-}
 
 export const secondaryActionTokens: SecondaryActionTokens = {
   secondaryAction: {

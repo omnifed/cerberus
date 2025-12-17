@@ -1,8 +1,4 @@
-import {
-  type ActionTokens,
-  type ContractActionTokens,
-  formatSemanticTokenValue,
-} from '@cerberus/tokens'
+import { type ActionTokens, formatSemanticTokenValue } from '@cerberus/tokens'
 import { getThemeName } from '../../config'
 
 /**
@@ -11,38 +7,6 @@ import { getThemeName } from '../../config'
  */
 
 const THEME = getThemeName()
-
-export const contractActionTokens: ContractActionTokens = {
-  action: {
-    bg: {
-      initial: {},
-      hover: {},
-      active: {},
-    },
-    border: {
-      initial: {},
-      100: {},
-      focus: {},
-    },
-    ghost: {
-      initial: {},
-      hover: {},
-      active: {},
-    },
-    navigation: {
-      initial: {},
-      hover: {},
-      visited: {},
-    },
-    text: {
-      initial: {},
-      100: {},
-      200: {},
-      inverse: {},
-      static: {},
-    },
-  },
-}
 
 export const actionTokens: ActionTokens = {
   action: {
