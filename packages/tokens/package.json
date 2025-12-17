@@ -18,6 +18,6 @@
   "author": "developers@omnifederal.com",
   "license": "ISC",
   "devDependencies": {
-    "@pandacss/types": "^1.7.0"
+    "@pandacss/types": "^1.7.1"
   }
 }

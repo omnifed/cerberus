@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { secondaryActionTokens } from '@cerberus-design/panda-preset'
+import { secondaryActionTokens } from '@cerberus-design/preset-cerberus-theme'
 
 describe('secondaryActionTokens', () => {
   const token = secondaryActionTokens.secondaryAction

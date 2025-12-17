@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { pageTokens } from '@cerberus-design/panda-preset'
+import { pageTokens } from '@cerberus-design/preset-cerberus-theme'
 
 describe('Cerberus > page', () => {
   const token = pageTokens.page
@@ -15,12 +15,12 @@ describe('Cerberus > page', () => {
   // backdrop.initial
 
   test('should have a cerberus backdrop.initial property', () => {
-    expect(token.backdrop.initial.value.base).toEqual('rgba(32, 25, 52, 0.8)')
+    expect(token.backdrop.initial.value.base).toEqual('rgba(27, 26, 25, 0.50)')
     expect(token.backdrop.initial.value._darkMode).toEqual(
-      'rgba(32, 25, 52, 0.8)',
+      'rgba(27, 26, 25, 0.50)',
     )
     expect(token.backdrop.initial.value._lightMode).toEqual(
-      'rgba(188, 186, 202, 0.50)',
+      'rgba(106, 103, 100, 0.50)',
     )
   })
 

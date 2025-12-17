@@ -5,6 +5,7 @@ import {
   type Preset,
 } from '@pandacss/dev'
 import pandaPreset from '@pandacss/preset-panda'
+import { presetCerberusTheme } from '@cerberus-design/preset-cerberus-theme'
 import { type RawThemes } from '@cerberus/tokens'
 import { globalCss } from './globalCss'
 import { conditions } from './conditions'
@@ -20,21 +21,15 @@ import { baseTheme } from './theme'
 const cerberusPreset: Preset = definePreset({
   name: '@cerberus/preset-base',
 
-  presets: [pandaPreset],
+  presets: [pandaPreset, presetCerberusTheme],
 
   globalCss,
   conditions,
   utilities,
   patterns,
 
-  theme: baseTheme,
-
-  themes: {
-    cerberus: baseTheme,
-  },
-
-  staticCss: {
-    themes: ['cerberus'],
+  theme: {
+    extend: baseTheme,
   },
 })
 

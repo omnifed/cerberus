@@ -19,10 +19,10 @@ export function ThemeMenu() {
 
   const handleUpdateTheme = async (details: { value: string }) => {
     const newTheme = details.value as ThemeName
-    updateTheme(newTheme)
-    document.documentElement.dataset.codeTheme = getCodeTheme(mode, newTheme)
     const pandaTheme = await getTheme(newTheme)
     injectTheme(document.documentElement, pandaTheme)
+    updateTheme(newTheme)
+    document.documentElement.dataset.codeTheme = getCodeTheme(mode, newTheme)
   }
 
   return (

@@ -1,3 +1,4 @@
+import { defineConfig } from 'eslint/config'
 import eslint from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import sonarjs from 'eslint-plugin-sonarjs'
@@ -10,9 +11,9 @@ const OFF = 'off'
 // const WARN = 'warn'
 // const ERROR = 'error'
 
-export default tseslint.config(
+export default defineConfig([
   eslint.configs.recommended,
-  tseslint.configs.recommendedTypeChecked,
+  tseslint.configs.recommended,
 
   {
     languageOptions: {
@@ -56,6 +57,18 @@ export default tseslint.config(
   },
 
   {
+    name: '@cerberus-design/preset-acheron-theme',
+    files: ['packages/preset-acheron-theme/**/*.ts'],
+    ...sonarjs.recommended,
+  },
+
+  {
+    name: '@cerberus-design/preset-cerberus-theme',
+    files: ['packages/preset-cerberus-theme/**/*.ts'],
+    ...sonarjs.recommended,
+  },
+
+  {
     name: '@cerberus-design/react',
     files: ['packages/react/**/*.ts', 'packages/react/**/*.tsx'],
     plugins: {
@@ -82,4 +95,4 @@ export default tseslint.config(
 
   // this must be last
   eslintConfigPrettier,
-)
+])

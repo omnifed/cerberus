@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { dataVizTokens } from '@cerberus-design/panda-preset'
+import { dataVizTokens } from '@cerberus-design/preset-cerberus-theme'
 
 describe('dataVizTokens', () => {
   function formatSemanticToken(value: TemplateStringsArray) {

@@ -3,13 +3,14 @@ import {
   createContractGradientToken,
   createGradientToken,
 } from '@cerberus/tokens'
+import { getThemeName } from '../../config'
 
 /**
  * This module is a collection of info tokens that are used to generate the theme.
  * @module infoTokens
  */
 
-const THEME = 'cerberus'
+const THEME = getThemeName()
 
 export const contractGradientTokens: ContractGradientTokens = {
   gradient: {

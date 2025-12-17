@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { dangerTokens } from '@cerberus-design/panda-preset'
+import { dangerTokens } from '@cerberus-design/preset-cerberus-theme'
 
 describe('dangerTokens', () => {
   function formatSemanticToken(value: TemplateStringsArray) {

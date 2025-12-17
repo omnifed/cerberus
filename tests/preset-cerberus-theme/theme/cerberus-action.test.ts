@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { actionTokens } from '@cerberus-design/panda-preset'
+import { actionTokens } from '@cerberus-design/preset-cerberus-theme'
 
 describe('Base > actionTokens', () => {
   function getSemanticToken(value: TemplateStringsArray) {

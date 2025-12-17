@@ -1,12 +1,12 @@
-# Panda Preset - Acheron Theme
+# Panda Preset - Cerberus Theme
 
-This is the official [Panda-CSS](https://panda-css.com/) preset for the Acheron
+This is the official [Panda-CSS](https://panda-css.com/) preset for the Cerberus
 theme compatible with the Cerberus design system.
 
 ## Installation
 
 ```bash
-npx jsr add @cerberus/preset-acheron-theme
+npx jsr add @cerberus/preset-cerberus-theme
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ npx jsr add @cerberus/preset-acheron-theme
 // panda.config.ts
 import { defineConfig } from '@pandacss/dev'
 import { cerberusPreset, cerberusConfig } from '@cerberus/panda-preset'
-import { acheronTheme } from '@cerberus/preset-acheron-theme'
+import { cerberusTheme } from '@cerberus/preset-cerberus-theme'
 
 export default defineConfig({
   ...cerberusConfig,
@@ -23,7 +23,7 @@ export default defineConfig({
   include: ['./src/**/*.{ts,tsx,js,jsx}'],
   exclude: [],
 
-  presets: [cerberusPreset(), acheronTheme],
+  presets: [cerberusPreset(), cerberusTheme],
 })
 ```
 

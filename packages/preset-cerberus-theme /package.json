@@ -1,7 +1,7 @@
 {
-  "name": "@cerberus-design/panda-preset",
+  "name": "@cerberus-design/preset-cerberus-theme",
   "version": "0.24.0",
-  "description": "The official Panda-CSS preset for the omni-federal design system",
+  "description": "The official Cerberus theme preset for the Cerberus design system",
   "browserslist": "> 0.25%, not dead",
   "sideEffects": false,
   "type": "module",
@@ -10,7 +10,6 @@
   "scripts": {
     "build": "tsup --experimental-dts",
     "clean": "rm -rf ./build",
-    "clean:tokens": "rm -rf ./src/tokens",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
@@ -19,12 +18,9 @@
     "postcss": "*"
   },
   "devDependencies": {
-    "@ark-ui/react": "^5.30.0",
     "@cerberus-design/configs": "workspace:*",
-    "@cerberus-design/preset-cerberus-theme": "workspace:*",
     "@cerberus/tokens": "workspace:*",
     "@pandacss/dev": "^1.7.1",
-    "@pandacss/preset-panda": "^1.7.1",
     "@pandacss/types": "^1.7.1"
   },
   "publishConfig": {
