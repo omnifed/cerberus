@@ -1,5 +1,5 @@
 {
-  "name": "@cerberus/preset-acheron-theme",
+  "name": "@cerberus/preset-cerberus-theme",
   "version": "0.24.0",
   "license": "MIT",
   "exports": "./src/index.ts"
