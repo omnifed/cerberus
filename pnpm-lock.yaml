@@ -305,6 +305,31 @@ importers:
         specifier: ^1.7.0
         version: 1.7.0
 
+  'packages/preset-cerberus-theme ':
+    dependencies:
+      autoprefixer:
+        specifier: '*'
+        version: 10.4.23(postcss@8.5.6)
+      postcss:
+        specifier: '*'
+        version: 8.5.6
+      up:
+        specifier: ^1.0.2
+        version: 1.0.2
+    devDependencies:
+      '@cerberus-design/configs':
+        specifier: workspace:*
+        version: link:../../configs
+      '@cerberus/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+      '@pandacss/dev':
+        specifier: ^1.7.0
+        version: 1.7.0(jsdom@26.0.0)(typescript@5.9.3)
+      '@pandacss/types':
+        specifier: ^1.7.0
+        version: 1.7.1
+
   packages/react:
     dependencies:
       '@ark-ui/react':
@@ -368,6 +393,9 @@ importers:
       '@cerberus-design/preset-acheron-theme':
         specifier: workspace:*
         version: link:../packages/preset-acheron-theme
+      '@cerberus-design/preset-cerberus-theme':
+        specifier: workspace:*
+        version: 'link:../packages/preset-cerberus-theme '
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
