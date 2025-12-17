@@ -17,7 +17,6 @@ export * from './recipes/shared/states'
 export * from './theme/keyframes'
 export * from './theme/textStyles'
 export * from './theme/tokens'
-export * from './theme/semantic-tokens'
 export * from './theme-contract'
 
 export * from './types'
