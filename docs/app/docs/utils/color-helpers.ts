@@ -1,5 +1,5 @@
-import { createCerberusPreset } from '@cerberus-design/panda-preset'
 import { presetAcheronTheme as acheronTheme } from '@cerberus-design/preset-acheron-theme'
+import { presetCerberusTheme as cerberusTheme } from '@cerberus-design/preset-cerberus-theme'
 import {
   RawThemes,
   type SemanticToken,
@@ -15,8 +15,7 @@ export function getTokenList(
   const acheronTokens = acheronTheme?.themes?.acheron?.semanticTokens as {
     colors: SentimentConfig
   }
-  const cerberusTokens = createCerberusPreset()?.themes?.cerberus
-    ?.semanticTokens as {
+  const cerberusTokens = cerberusTheme?.themes?.cerberus?.semanticTokens as {
     colors: SentimentConfig
   }
 

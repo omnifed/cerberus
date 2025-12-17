@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@cerberus-design/panda-preset": "workspace:*",
+    "@cerberus-design/preset-cerberus-theme": "workspace:*",
     "@cerberus-design/preset-acheron-theme": "workspace:*",
     "@csstools/postcss-cascade-layers": "^5.0.2",
     "@expressive-code/plugin-line-numbers": "^0.41.3",
