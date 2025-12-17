@@ -1,4 +1,4 @@
-import type { Prominence, SemanticToken } from './semantic-tokens.types'
+import { Prominence, SemanticToken } from '../semantic-tokens.types'
 
 // Page
 

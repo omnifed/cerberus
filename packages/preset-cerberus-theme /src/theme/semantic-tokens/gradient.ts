@@ -1,6 +1,5 @@
 import {
   type ContractGradientTokens,
-  createContractGradientToken,
   createGradientToken,
 } from '@cerberus/tokens'
 import { getThemeName } from '../../config'
@@ -11,25 +10,6 @@ import { getThemeName } from '../../config'
  */
 
 const THEME = getThemeName()
-
-export const contractGradientTokens: ContractGradientTokens = {
-  gradient: {
-    'charon-light': createContractGradientToken(),
-    'charon-dark': createContractGradientToken(),
-    'nyx-light': createContractGradientToken(),
-    'nyx-dark': createContractGradientToken(),
-    'amphiaraus-light': createContractGradientToken(),
-    'amphiaraus-dark': createContractGradientToken(),
-    'styx-light': createContractGradientToken(),
-    'styx-dark': createContractGradientToken(),
-    'thanatos-light': createContractGradientToken(),
-    'thanatos-dark': createContractGradientToken(),
-    'hades-light': createContractGradientToken(),
-    'hades-dark': createContractGradientToken(),
-    'asphodel-light': createContractGradientToken(),
-    'asphodel-dark': createContractGradientToken(),
-  },
-}
 
 export const gradientTokens: ContractGradientTokens = {
   gradient: {

@@ -43,7 +43,6 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
     },
     item: {
-      colorPalette: 'action',
       alignItems: 'center',
       borderRadius: 'l1',
       color: 'page.text.initial',
@@ -61,7 +60,7 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       userSelect: 'none',
       width: 'full',
       _highlighted: {
-        bgColor: 'colorPalette.ghost.hover',
+        bgColor: 'action.ghost.hover',
       },
       _disabled: formStates._disabled,
     },

@@ -1,5 +1,4 @@
 import {
-  type ContractPageTokens,
   type PageTokens,
   formatSemanticTokenValue,
   themeTokens,
@@ -12,40 +11,6 @@ import { getThemeName } from '../../config'
  */
 
 const THEME = getThemeName()
-
-export const contractPageTokens: ContractPageTokens = {
-  page: {
-    backdrop: {
-      initial: {},
-    },
-    bg: {
-      initial: {},
-      100: {},
-      200: {},
-      300: {},
-    },
-    border: {
-      initial: {},
-      100: {},
-      200: {},
-    },
-    surface: {
-      initial: {},
-      inverse: {},
-      100: {},
-      200: {},
-      300: {},
-      400: {},
-    },
-    text: {
-      initial: {},
-      inverse: {},
-      100: {},
-      200: {},
-      300: {},
-    },
-  },
-}
 
 export const pageTokens: PageTokens = {
   page: {

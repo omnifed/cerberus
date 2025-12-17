@@ -384,6 +384,9 @@ importers:
 
   packages/tokens:
     devDependencies:
+      '@pandacss/dev':
+        specifier: ^1.7.1
+        version: 1.7.1(jsdom@26.0.0)(typescript@5.9.3)
       '@pandacss/types':
         specifier: ^1.7.1
         version: 1.7.1

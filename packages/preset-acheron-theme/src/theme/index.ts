@@ -1,5 +1,5 @@
+import { defineTheme } from '@cerberus/tokens'
 import { semanticTokens } from './semantic-tokens/config'
-import { defineTheme } from '../theme-contract'
 
 /**
  * This module contains the Acheron theme and configuration options.

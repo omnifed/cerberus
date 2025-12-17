@@ -14,13 +14,17 @@ import type {
   RawTokens,
 } from './types'
 import type { Token } from '@pandacss/types'
-import { RawThemes, SemanticToken } from './semantic-tokens.types'
-import { GradientText, GradientValue } from './theme-contracts.types'
+import type { RawThemes, SemanticToken } from './semantic-tokens.types'
+import type {
+  GradientText,
+  GradientValue,
+} from './theme-contract/theme-contracts.types'
 
 // Types
 
 export * from './semantic-tokens.types'
-export * from './theme-contracts.types'
+export * from './theme-contract/index'
+export * from './theme-contract/theme-contracts.types'
 export * from './types'
 
 // Tokens

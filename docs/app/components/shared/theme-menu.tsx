@@ -47,11 +47,11 @@ export function ThemeMenu() {
       </MenuTrigger>
 
       <MenuContent>
-        <MenuItem value="cerberus">
+        <MenuItem cursor="pointer" value="cerberus">
           <MatchThemeContent theme="cerberus" />
         </MenuItem>
 
-        <MenuItem value="acheron">
+        <MenuItem cursor="pointer" value="acheron">
           <MatchThemeContent theme="acheron" />
         </MenuItem>
       </MenuContent>
