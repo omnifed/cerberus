@@ -20,6 +20,10 @@ import type {
   GradientValue,
 } from './theme-contract/theme-contracts.types'
 
+// TEMP
+const elysiumDarkMode = acheronDarkMode
+const elysiumLightMode = acheronLightMode
+
 // Types
 
 export * from './semantic-tokens.types'
@@ -41,7 +45,8 @@ export const rawTokens: RawTokens = {
   },
 }
 
-// used in the docs
+// Used in the docs
+
 export const semanticColors = rawTokens.semanticColors.dark
 export const colors = rawTokens.primitives.colors
 export const spacing = rawTokens.primitives.spacing
@@ -50,9 +55,14 @@ export const primitiveColorTokens = rawTokens.primitives.colors
 export const darkTokens = semanticColorsDark
 export const lightTokens = semanticColorsLight
 
-// additional themes
+// Themes
+
 export const acheronDarkTokens = acheronDarkMode
 export const acheronLightTokens = acheronLightMode
+export const elysiumDarkTokens = elysiumDarkMode
+export const elysiumLightTokens = elysiumLightMode
+
+// Token Helpers
 
 export const themeTokens = {
   cerberus: {
@@ -62,6 +72,10 @@ export const themeTokens = {
   acheron: {
     dark: acheronDarkTokens,
     light: acheronLightTokens,
+  },
+  elysium: {
+    dark: elysiumDarkTokens,
+    light: elysiumLightTokens,
   },
 }
 
@@ -80,6 +94,14 @@ export const themeGradients = {
     },
     light: {
       ...lightTokens.gradient,
+    },
+  },
+  elysium: {
+    dark: {
+      ...elysiumDarkTokens.gradient,
+    },
+    light: {
+      ...elysiumLightTokens.gradient,
     },
   },
 }

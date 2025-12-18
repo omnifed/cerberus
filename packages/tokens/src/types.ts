@@ -1,8 +1,6 @@
 import primitiveColors from './data/primitive-colors.base.json' with { type: 'json' }
 import semanticColorsDark from './data/semantic-colors.cerberus-dark-mode.json' with { type: 'json' }
 import semanticColorsLight from './data/semantic-colors.cerberus-light-mode.json' with { type: 'json' }
-// import acheronDarkMode from './data/semantic-colors.acheron-dark-mode.json' with { type: 'json' }
-// import acheronLightMode from './data/semantic-colors.acheron-light-mode.json' with { type: 'json' }
 import textStyles from './data/text-styles.json' with { type: 'json' }
 import spacingTokens from './data/spacing.mode-1.json' with { type: 'json' }
 

@@ -69,6 +69,12 @@ export default defineConfig([
   },
 
   {
+    name: '@cerberus-design/preset-elysium-theme',
+    files: ['packages/preset-elysium-theme/**/*.ts'],
+    ...sonarjs.recommended,
+  },
+
+  {
     name: '@cerberus-design/react',
     files: ['packages/react/**/*.ts', 'packages/react/**/*.tsx'],
     plugins: {

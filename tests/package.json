@@ -13,6 +13,7 @@
     "@cerberus-design/panda-preset": "workspace:*",
     "@cerberus-design/preset-acheron-theme": "workspace:*",
     "@cerberus-design/preset-cerberus-theme": "workspace:*",
+    "@cerberus-design/preset-elysium-theme": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@cerberus/tokens": "workspace:*",
     "@happy-dom/global-registrator": "^20.0.11",
