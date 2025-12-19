@@ -1,8 +1,13 @@
 'use client'
 
-// Unstyled Ark utilities
+// Unstyled Ark Goodies
 
 export {
+  AccordionRootProvider,
+  useAccordion,
+  DialogRootProvider,
+  useDialog,
+  // utilities
   ClientOnly,
   DownloadTrigger,
   FocusTrap,
@@ -18,6 +23,6 @@ export {
   useLocaleContext,
 } from '@ark-ui/react'
 
-// 3rd party client exports
+// DEPRECATED
 
 export * from '@dnd-kit/core'
