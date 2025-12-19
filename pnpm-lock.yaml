@@ -126,9 +126,6 @@ importers:
       react-dom:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)
-      remove:
-        specifier: ^0.1.5
-        version: 0.1.5
     devDependencies:
       '@cerberus-design/panda-preset':
         specifier: workspace:*
@@ -223,6 +220,9 @@ importers:
       remark-parse:
         specifier: ^11.0.0
         version: 11.0.0
+      remove:
+        specifier: ^0.1.5
+        version: 0.1.5
       shiki:
         specifier: ^3.20.0
         version: 3.20.0

@@ -1,0 +1,75 @@
+---
+title: 'Environment'
+description: 'Set up components for custom environments like iframes, Shadow DOM, or Electron.'
+npm: '@cerberus-design/react'
+arkUtility: 'environment'
+---
+
+## Motivation
+
+We use [Zag.js](https://zagjs.com/overview/composition#custom-window-environment) internally, which relies on DOM query
+methods like `document.querySelectorAll` and `document.getElementById`. In custom environments like iframes, Shadow DOM,
+or Electron, these methods might not work as expected.
+
+To handle this, Ark UI includes the `EnvironmentProvider`, allowing you to set the appropriate root node or document,
+ensuring correct DOM queries.
+
+## Setup
+
+To support custom environments like an iframe, Shadow DOM or Electron, render the `EnvironmentProvider` component to
+provide the environment context to all Ark UI components.
+
+```tsx
+import { EnvironmentProvider } from '@cerberus/react'
+import Frame from 'react-frame-component'
+
+export const App = () => {
+  return (
+    <Frame title="IFrame Context">
+      <EnvironmentProvider>{/* Your App */}</EnvironmentProvider>
+    </Frame>
+  )
+}
+
+```
+
+
+### Usage in iframe
+
+The `EnvironmentProvider` component will automatically detect the current environment and set the correct environment
+context. However, you can also manually set the `Document` like shown in this example below:
+
+```jsx
+import Frame, { FrameContextConsumer } from 'react-frame-component'
+import { EnvironmentProvider } from '@cerberus/react'
+
+export const App = () => (
+  <Frame title="IFrame Context">
+    <FrameContextConsumer>
+      {({ document }) => <EnvironmentProvider value={document}>{/* Your App */}</EnvironmentProvider>}
+    </FrameContextConsumer>
+  </Frame>
+)
+```
+
+## Context
+
+Use the `useEnvironmentContext` hook to access the `RootNode`, `Document`, and `Window`.
+
+```tsx
+import { useEnvironmentContext } from '@cerberus/react'
+
+export const Usage = () => {
+  const { getRootNode } = useEnvironmentContext()
+
+  return <pre>{JSON.stringify(getRootNode(), null, 2)}</pre>
+}
+
+```
+
+
+## API Reference
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `value` | `RootNode` |  No |  |

@@ -20,8 +20,7 @@
     "@tsparticles/slim": "^3.9.1",
     "next": "16.0.10",
     "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "remove": "^0.1.5"
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@cerberus-design/panda-preset": "workspace:*",
@@ -46,6 +45,7 @@
     "eslint-config-next": "16.0.10",
     "eslint-import-resolver-typescript": "^4.4.4",
     "hast-util-to-jsx-runtime": "2.3.6",
+    "remove": "^0.1.5",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-expressive-code": "^0.41.3",
     "rehype-slug": "^6.0.0",

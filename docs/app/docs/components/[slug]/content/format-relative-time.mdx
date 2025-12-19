@@ -1,0 +1,53 @@
+---
+title: 'Format Relative Time'
+description: Format relative time using the native `Intl.RelativeTimeFormat` API.
+npm: '@cerberus/react'
+arkUtility: 'format-relative-time'
+---
+
+## Usage
+
+The relative time formatting logic is handled by the native `Intl.RelativeTimeFormat` API and smartly cached to avoid
+performance issues when using the same locale and options.
+
+```jsx
+import { Format } from '@cerberus/react'
+```
+
+## Examples
+
+### Basic
+
+Use the `Format.RelativeTime` component to format a relative time with default options.
+
+```tsx
+import { Format } from '@cerberus/react'
+
+export const RelativeTimeBasic = () => {
+  return (
+    <div>
+      Edited <Format.RelativeTime value={new Date('2025-05-05')} />
+    </div>
+  )
+}
+```
+
+This will show `Edited 7 months ago`
+
+### Short
+
+Use the `style="short"` prop to format the relative time in short format.
+
+```tsx
+import { Format } from '@cerberus/react'
+
+export const RelativeTimeShort = () => {
+  return (
+    <div>
+      Edited <Format.RelativeTime value={new Date('2025-05-05')} style="short" />
+    </div>
+  )
+}
+```
+
+This will show `Edited 7 mo. ago`
