@@ -10,6 +10,7 @@ export {
   Frame,
   Highlight,
   JsonTreeView,
+  useJsonTreeView,
   Presence,
   EnvironmentProvider,
   useEnvironmentContext,
