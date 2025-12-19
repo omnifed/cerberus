@@ -6,18 +6,25 @@ import { green } from './utils'
 import { tokenFilesFromLocalVariables } from './token-export'
 import { textStyleNodes } from './nodes/text-styles'
 
-async function main() {
+interface Options {
+  hasTextStyles: boolean
+  name: string
+}
+
+async function main(fileId: string, options: Options) {
   if (!process.env.FIGMA_ACCESS_TOKEN) {
     throw new Error('FIGMA_ACCESS_TOKEN env variables are required')
   }
 
   // Create Figma API client
-  const api = new FigmaApi(process.env.FIGMA_ACCESS_TOKEN)
+  const api = new FigmaApi(process.env.FIGMA_ACCESS_TOKEN, fileId)
 
   // Fetch all the Figma data
   const [localVariables, textStyles] = await Promise.all([
     api.getLocalVariables(),
-    api.getTextStyles(textStyleNodes),
+    options.hasTextStyles
+      ? api.getTextStyles(textStyleNodes)
+      : Promise.resolve({ nodes: [] }),
   ])
 
   // Get the path to the tokens directory
@@ -47,10 +54,13 @@ async function main() {
   )
 
   // Write text styles file
-  await write(
-    resolve(tokenDirPath, 'text-styles.json'),
-    JSON.stringify(textStyles.nodes, null, 2),
-  )
+  if (options.hasTextStyles) {
+    await write(
+      resolve(tokenDirPath, `${options.name}-text-styles.json`),
+      JSON.stringify(textStyles.nodes, null, 2),
+    )
+    console.log(`Wrote ${options.name}-text-styles.json`)
+  }
 
   console.log(
     green(
@@ -59,4 +69,12 @@ async function main() {
   )
 }
 
-main()
+main('ducwqOCxoxcWc3ReV3FYd8', {
+  hasTextStyles: true,
+  name: 'cerberus',
+})
+
+main('LVwP0fNzcEoLxwahJYvfYt', {
+  hasTextStyles: false,
+  name: 'elysium',
+})

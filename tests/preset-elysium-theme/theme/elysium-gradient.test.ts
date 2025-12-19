@@ -11,13 +11,13 @@ describe('Elysium > gradientTokens', () => {
   test('should have a elysium charon-light property', () => {
     expect(
       gradientTokens.gradient['charon-light'].text.initial.value.base,
-    ).toEqual(formatSemanticToken`elysium.brand.90`)
+    ).toEqual(formatSemanticToken`elysium.brand.100`)
     expect(
       gradientTokens.gradient['charon-light'].text.initial.value._darkMode,
-    ).toEqual(formatSemanticToken`elysium.brand.90`)
+    ).toEqual(formatSemanticToken`elysium.brand.100`)
     expect(
       gradientTokens.gradient['charon-light'].text.initial.value._lightMode,
-    ).toEqual(formatSemanticToken`elysium.brand.90`)
+    ).toEqual(formatSemanticToken`elysium.brand.100`)
   })
 
   // charon-dark
@@ -25,13 +25,13 @@ describe('Elysium > gradientTokens', () => {
   test('should have a elysium charon-dark property', () => {
     expect(
       gradientTokens.gradient['charon-dark'].text.initial.value.base,
-    ).toEqual(formatSemanticToken`elysium.brand.20`)
+    ).toEqual(formatSemanticToken`elysium.brand.10`)
     expect(
       gradientTokens.gradient['charon-dark'].text.initial.value._darkMode,
-    ).toEqual(formatSemanticToken`elysium.brand.20`)
+    ).toEqual(formatSemanticToken`elysium.brand.10`)
     expect(
       gradientTokens.gradient['charon-dark'].text.initial.value._lightMode,
-    ).toEqual(formatSemanticToken`elysium.brand.20`)
+    ).toEqual(formatSemanticToken`elysium.brand.10`)
   })
 
   // nyx-light
@@ -67,13 +67,13 @@ describe('Elysium > gradientTokens', () => {
   test('should have a elysium amphiaraus-light property', () => {
     expect(
       gradientTokens.gradient['amphiaraus-light'].text.initial.value.base,
-    ).toEqual(formatSemanticToken`elysium.info.80`)
+    ).toEqual(formatSemanticToken`elysium.info.90`)
     expect(
       gradientTokens.gradient['amphiaraus-light'].text.initial.value._darkMode,
-    ).toEqual(formatSemanticToken`elysium.info.80`)
+    ).toEqual(formatSemanticToken`elysium.info.90`)
     expect(
       gradientTokens.gradient['amphiaraus-light'].text.initial.value._lightMode,
-    ).toEqual(formatSemanticToken`elysium.info.80`)
+    ).toEqual(formatSemanticToken`elysium.info.90`)
   })
 
   // amphiaraus-dark
@@ -81,13 +81,13 @@ describe('Elysium > gradientTokens', () => {
   test('should have a elysium amphiaraus-dark property', () => {
     expect(
       gradientTokens.gradient['amphiaraus-dark'].text.initial.value.base,
-    ).toEqual(formatSemanticToken`elysium.info.20`)
+    ).toEqual(formatSemanticToken`elysium.info.10`)
     expect(
       gradientTokens.gradient['amphiaraus-dark'].text.initial.value._darkMode,
-    ).toEqual(formatSemanticToken`elysium.info.20`)
+    ).toEqual(formatSemanticToken`elysium.info.10`)
     expect(
       gradientTokens.gradient['amphiaraus-dark'].text.initial.value._lightMode,
-    ).toEqual(formatSemanticToken`elysium.info.20`)
+    ).toEqual(formatSemanticToken`elysium.info.10`)
   })
 
   // styx-light
@@ -95,13 +95,13 @@ describe('Elysium > gradientTokens', () => {
   test('should have a elysium styx-light property', () => {
     expect(
       gradientTokens.gradient['styx-light'].text.initial.value.base,
-    ).toEqual(formatSemanticToken`elysium.accent.90`)
+    ).toEqual(formatSemanticToken`elysium.accent.100`)
     expect(
       gradientTokens.gradient['styx-light'].text.initial.value._darkMode,
-    ).toEqual(formatSemanticToken`elysium.accent.90`)
+    ).toEqual(formatSemanticToken`elysium.accent.100`)
     expect(
       gradientTokens.gradient['styx-light'].text.initial.value._lightMode,
-    ).toEqual(formatSemanticToken`elysium.accent.90`)
+    ).toEqual(formatSemanticToken`elysium.accent.100`)
   })
 
   // styx-dark
@@ -123,13 +123,13 @@ describe('Elysium > gradientTokens', () => {
   test('should have a elysium thanatos-light property', () => {
     expect(
       gradientTokens.gradient['thanatos-light'].text.initial.value.base,
-    ).toEqual(formatSemanticToken`elysium.success.80`)
+    ).toEqual(formatSemanticToken`elysium.success.100`)
     expect(
       gradientTokens.gradient['thanatos-light'].text.initial.value._darkMode,
-    ).toEqual(formatSemanticToken`elysium.success.80`)
+    ).toEqual(formatSemanticToken`elysium.success.100`)
     expect(
       gradientTokens.gradient['thanatos-light'].text.initial.value._lightMode,
-    ).toEqual(formatSemanticToken`elysium.success.80`)
+    ).toEqual(formatSemanticToken`elysium.success.100`)
   })
 
   // thanatos-dark
@@ -137,13 +137,13 @@ describe('Elysium > gradientTokens', () => {
   test('should have a elysium thanatos-dark property', () => {
     expect(
       gradientTokens.gradient['thanatos-dark'].text.initial.value.base,
-    ).toEqual(formatSemanticToken`elysium.success.20`)
+    ).toEqual(formatSemanticToken`elysium.success.10`)
     expect(
       gradientTokens.gradient['thanatos-dark'].text.initial.value._darkMode,
-    ).toEqual(formatSemanticToken`elysium.success.20`)
+    ).toEqual(formatSemanticToken`elysium.success.10`)
     expect(
       gradientTokens.gradient['thanatos-dark'].text.initial.value._lightMode,
-    ).toEqual(formatSemanticToken`elysium.success.20`)
+    ).toEqual(formatSemanticToken`elysium.success.10`)
   })
 
   // hades-light
@@ -179,10 +179,10 @@ describe('Elysium > gradientTokens', () => {
   test('should have a elysium asphodel-light property', () => {
     expect(
       gradientTokens.gradient['asphodel-light'].text.initial.value.base,
-    ).toEqual(formatSemanticToken`elysium.warning.90`)
+    ).toEqual(formatSemanticToken`elysium.warning.100`)
     expect(
       gradientTokens.gradient['asphodel-light'].text.initial.value._darkMode,
-    ).toEqual(formatSemanticToken`elysium.warning.90`)
+    ).toEqual(formatSemanticToken`elysium.warning.100`)
     expect(
       gradientTokens.gradient['asphodel-light'].text.initial.value._lightMode,
     ).toEqual(formatSemanticToken`elysium.warning.90`)

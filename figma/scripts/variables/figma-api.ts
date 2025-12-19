@@ -1,10 +1,11 @@
 export default class FigmaApi {
   private baseUrl: string = 'https://api.figma.com'
-  private file: string = 'ducwqOCxoxcWc3ReV3FYd8'
+  private file: string
   private token: string
 
-  constructor(token: string) {
+  constructor(token: string, fileId: string) {
     this.token = token
+    this.file = fileId
   }
 
   public get figmaUrl(): string {

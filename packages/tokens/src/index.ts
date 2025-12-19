@@ -1,10 +1,3 @@
-import primitiveColors from './data/primitive-colors.base.json' with { type: 'json' }
-import semanticColorsDark from './data/semantic-colors.cerberus-dark-mode.json' with { type: 'json' }
-import semanticColorsLight from './data/semantic-colors.cerberus-light-mode.json' with { type: 'json' }
-import acheronDarkMode from './data/semantic-colors.acheron-dark-mode.json' with { type: 'json' }
-import acheronLightMode from './data/semantic-colors.acheron-light-mode.json' with { type: 'json' }
-import textStyles from './data/text-styles.json' with { type: 'json' }
-import spacingTokens from './data/spacing.mode-1.json' with { type: 'json' }
 import type {
   CerbyTokenValue,
   FigmaToken,
@@ -20,9 +13,18 @@ import type {
   GradientValue,
 } from './theme-contract/theme-contracts.types'
 
-// TEMP
-const elysiumDarkMode = acheronDarkMode
-const elysiumLightMode = acheronLightMode
+// Primitives
+import primitiveColors from './data/primitive-colors.base.json' with { type: 'json' }
+import textStyles from './data/text-styles.json' with { type: 'json' }
+import spacingTokens from './data/spacing.mode-1.json' with { type: 'json' }
+import elysiumPrimitives from './data/primitive-colors.color.json' with { type: 'json' }
+// Semantic
+import semanticColorsDark from './data/semantic-colors.cerberus-dark-mode.json' with { type: 'json' }
+import semanticColorsLight from './data/semantic-colors.cerberus-light-mode.json' with { type: 'json' }
+import acheronDarkMode from './data/semantic-colors.acheron-dark-mode.json' with { type: 'json' }
+import acheronLightMode from './data/semantic-colors.acheron-light-mode.json' with { type: 'json' }
+import elysiumDarkMode from './data/semantic-colors.elysium-dark-mode.json' with { type: 'json' }
+import elysiumLightMode from './data/semantic-colors.elysium-light-mode.json' with { type: 'json' }
 
 // Types
 
@@ -63,6 +65,11 @@ export const elysiumDarkTokens = elysiumDarkMode
 export const elysiumLightTokens = elysiumLightMode
 
 // Token Helpers
+
+const primitives = {
+  ...primitiveColors,
+  ...elysiumPrimitives,
+}
 
 export const themeTokens = {
   cerberus: {
@@ -138,8 +145,8 @@ export function formatSpacingTokens(): PandaToken {
 
 export function formatPrimitiveColors(): PandaColor {
   // primitive colors includes "spacing"
-  const { acheron, cerberus } = primitiveColors
-  const onlyThemePrimitiveColors = { acheron, cerberus }
+  const { acheron, cerberus, elysium } = primitives
+  const onlyThemePrimitiveColors = { acheron, cerberus, elysium }
 
   // format the primitive colors to match the Panda CSS format
   return Object.entries(onlyThemePrimitiveColors).reduce(

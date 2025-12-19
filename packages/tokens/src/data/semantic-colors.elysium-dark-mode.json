@@ -3,8 +3,8 @@
     "action": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.brand.80",
-        "$description": "Text action items that are sitting on a lighter background color, like secondary buttons etc. ",
+        "$value": "elysium.brand.40",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -15,8 +15,8 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.brand.60",
-        "$description": "reserved for interactive text, or icons using brand colors. ",
+        "$value": "elysium.brand.60",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -28,8 +28,8 @@
       "navigation": {
         "initial": {
           "$type": "color",
-          "$value": "cerberus.brand.60",
-          "$description": "Text color of hyperlinks throughout the site. ",
+          "$value": "elysium.brand.50",
+          "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -40,8 +40,8 @@
         },
         "hover": {
           "$type": "color",
-          "$value": "cerberus.brand.50",
-          "$description": "Text color of hyperlinks throughout the site while hovering",
+          "$value": "elysium.brand.40",
+          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -52,8 +52,8 @@
         },
         "visited": {
           "$type": "color",
-          "$value": "cerberus.neutral.60",
-          "$description": "Text color of hyperlinks throughout the site that have been visited",
+          "$value": "elysium.brand.20",
+          "$description": "",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -65,8 +65,8 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.brand.5",
-        "$description": "Text color inside of interactive items using the action palette\nUse for: Buttons (filled, outline). Button icons",
+        "$value": "elysium.brand.10",
+        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -77,7 +77,7 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "cerberus.brand.100",
+        "$value": "elysium.brand.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -89,11 +89,23 @@
       },
       "static": {
         "$type": "color",
-        "$value": "cerberus.brand.60",
-        "$description": "For use when a text color will not change between modes",
+        "$value": "elysium.brand.90",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text-alternate": {
+        "$type": "color",
+        "$value": "elysium.brand.30",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": true,
             "scopes": ["SHAPE_FILL", "TEXT_FILL"],
             "codeSyntax": {}
           }
@@ -103,8 +115,8 @@
     "page": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.neutral.40",
-        "$description": "Static text with the least amount of emphasis, like disabled text elements or captions. ",
+        "$value": "elysium.neutral.30",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -115,7 +127,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.neutral.60",
+        "$value": "elysium.neutral.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -127,8 +139,8 @@
       },
       "300": {
         "$type": "color",
-        "$value": "cerberus.brand.100",
-        "$description": "High emphasis static text on page, like page headers or section titles. ",
+        "$value": "elysium.neutral.white",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -139,22 +151,20 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.neutral.90",
-        "$description": "The default styling for static text and icons on a page.",
+        "$value": "elysium.neutral.5",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
             "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {
-              "WEB": "page.text.initial"
-            }
+            "codeSyntax": {}
           }
         }
       },
       "inverse": {
         "$type": "color",
-        "$value": "cerberus.neutral.white",
-        "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
+        "$value": "elysium.neutral.100",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -165,8 +175,8 @@
       },
       "static": {
         "$type": "color",
-        "$value": "cerberus.neutral.60",
-        "$description": "For use when a text color will not change between modes",
+        "$value": "elysium.neutral.80",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -176,11 +186,23 @@
         }
       }
     },
+    "text-brand": {
+      "$type": "color",
+      "$value": "elysium.brand.30",
+      "$description": "",
+      "$extensions": {
+        "com.figma": {
+          "hiddenFromPublishing": false,
+          "scopes": ["ALL_SCOPES"],
+          "codeSyntax": {}
+        }
+      }
+    },
     "danger": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.danger.80",
-        "$description": "Medium emphasis danger text ",
+        "$value": "elysium.danger.10",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -191,8 +213,8 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.danger.100",
-        "$description": "High emphasis text or icon to indicate a danger state, like an error within an input field, etc. ",
+        "$value": "elysium.danger.20",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -203,8 +225,8 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.danger.70",
-        "$description": "The default color of body danger text within a danger colored container. ",
+        "$value": "elysium.danger.60",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -215,8 +237,8 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "cerberus.danger.10",
-        "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
+        "$value": "elysium.danger.100",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -227,8 +249,8 @@
       },
       "static": {
         "$type": "color",
-        "$value": "cerberus.danger.80",
-        "$description": "For use when a text color will not change between modes",
+        "$value": "elysium.danger.70",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -241,7 +263,7 @@
     "warning": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.warning.90",
+        "$value": "elysium.warning.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -253,7 +275,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.warning.100",
+        "$value": "elysium.warning.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -265,8 +287,8 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.warning.90",
-        "$description": "The default color of body warning text and icons within a warning colored container. ",
+        "$value": "elysium.warning.40",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -277,20 +299,20 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "cerberus.warning.20",
-        "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
+        "$value": "elysium.warning.100",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "static": {
         "$type": "color",
-        "$value": "cerberus.warning.80",
-        "$description": "For use when a text color will not change between modes",
+        "$value": "elysium.warning.80",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -303,8 +325,8 @@
     "success": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.success.80",
-        "$description": "Medium emphasis success text ",
+        "$value": "elysium.success.20",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -315,8 +337,8 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.success.100",
-        "$description": "Highest emphasis success color",
+        "$value": "elysium.success.10",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -327,8 +349,8 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.success.60",
-        "$description": "The default color of body success text within a success colored container. ",
+        "$value": "elysium.success.60",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -339,20 +361,20 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "cerberus.success.10",
-        "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
+        "$value": "elysium.success.100",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "static": {
         "$type": "color",
-        "$value": "cerberus.success.70",
-        "$description": "For use when a text color will not change between modes",
+        "$value": "elysium.success.70",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -365,7 +387,7 @@
     "info": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.info.80",
+        "$value": "elysium.info.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -377,8 +399,8 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.info.100",
-        "$description": "High emphasis text or icon to indicate an info state or highlight information",
+        "$value": "elysium.info.10",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -389,8 +411,8 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.info.70",
-        "$description": "The default styling for static info text and icons within an info palette container",
+        "$value": "elysium.info.10",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -401,34 +423,8 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "cerberus.info.10",
-        "$description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "static": {
-        "$type": "color",
-        "$value": "cerberus.info.60",
-        "$description": "For use when a text color will not change between modes",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
-    "secondary-action": {
-      "100": {
-        "$type": "color",
-        "$value": "cerberus.brand.100",
-        "$description": "Text color inside of interactive items and icons that have an inverse background of the initial token. That may need a different style of emphasis. Use case may vary per product.",
+        "$value": "elysium.info.100",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -437,77 +433,15 @@
           }
         }
       },
-      "200": {
+      "static 2": {
         "$type": "color",
-        "$value": "cerberus.brand.50",
-        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product.",
+        "$value": "elysium.info.60",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
             "scopes": ["SHAPE_FILL", "TEXT_FILL"],
             "codeSyntax": {}
-          }
-        }
-      },
-      "initial": {
-        "$type": "color",
-        "$value": "cerberus.brand.90",
-        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product.",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "static": {
-        "$type": "color",
-        "$value": "cerberus.brand.40",
-        "$description": "Text color inside of interactive items\nUse for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product.",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "navigation": {
-        "initial": {
-          "$type": "color",
-          "$value": "cerberus.brand.60",
-          "$description": "Text color of hyperlinks throughout the site. ",
-          "$extensions": {
-            "com.figma": {
-              "hiddenFromPublishing": false,
-              "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-              "codeSyntax": {}
-            }
-          }
-        },
-        "hover": {
-          "$type": "color",
-          "$value": "cerberus.brand.50",
-          "$description": "Text color of hyperlinks throughout the site while hovering. ",
-          "$extensions": {
-            "com.figma": {
-              "hiddenFromPublishing": false,
-              "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-              "codeSyntax": {}
-            }
-          }
-        },
-        "visited": {
-          "$type": "color",
-          "$value": "cerberus.brand.100",
-          "$description": "Text color of hyperlinks throughout the site that have been vistited",
-          "$extensions": {
-            "com.figma": {
-              "hiddenFromPublishing": false,
-              "scopes": ["SHAPE_FILL", "TEXT_FILL"],
-              "codeSyntax": {}
-            }
           }
         }
       }
@@ -517,7 +451,7 @@
     "page": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.neutral.white",
+        "$value": "elysium.neutral.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -529,7 +463,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.neutral.5",
+        "$value": "elysium.neutral.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -541,19 +475,7 @@
       },
       "300": {
         "$type": "color",
-        "$value": "cerberus.neutral.10",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "400": {
-        "$type": "color",
-        "$value": "cerberus.neutral.15",
+        "$value": "elysium.neutral.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -565,7 +487,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.brand.5",
+        "$value": "elysium.neutral.100",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -577,7 +499,21 @@
       },
       "inverse": {
         "$type": "color",
-        "$value": "cerberus.neutral.90",
+        "$value": "elysium.neutral.5",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "neutral": {
+      "inverse-": {
+        "$type": "color",
+        "$value": "elysium.neutral.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -591,7 +527,7 @@
     "success": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.success.20",
+        "$value": "elysium.success.90",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -603,7 +539,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.success.60",
+        "$value": "elysium.success.80",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -615,7 +551,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.success.50",
+        "$value": "elysium.success.60",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -629,7 +565,7 @@
     "danger": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.danger.10",
+        "$value": "elysium.danger.90",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -641,7 +577,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.danger.60",
+        "$value": "elysium.danger.70",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -653,12 +589,12 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.danger.30",
-        "$description": "",
+        "$value": "elysium.danger.80",
+        "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -667,7 +603,7 @@
     "warning": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.warning.20",
+        "$value": "elysium.warning.90",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -679,24 +615,24 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.warning.60",
-        "$description": "",
+        "$value": "elysium.warning.50",
+        "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.warning.40",
-        "$description": "",
+        "$value": "elysium.warning.70",
+        "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -705,7 +641,7 @@
     "info": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.info.20",
+        "$value": "elysium.info.90",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -717,7 +653,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.info.50",
+        "$value": "elysium.info.60",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -729,7 +665,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.info.30",
+        "$value": "elysium.info.80",
         "$description": "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds",
         "$extensions": {
           "com.figma": {
@@ -745,36 +681,48 @@
     "page": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.brand.20",
+        "$value": "elysium.neutral.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL", "STROKE_COLOR", "EFFECT_COLOR"],
+            "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
             "codeSyntax": {}
           }
         }
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.neutral.20",
+        "$value": "elysium.neutral.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["STROKE_COLOR"],
+            "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": "elysium.neutral.20",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
             "codeSyntax": {}
           }
         }
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.neutral.15",
+        "$value": "elysium.neutral.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["STROKE_COLOR"],
+            "scopes": ["SHAPE_FILL", "STROKE_COLOR"],
             "codeSyntax": {}
           }
         }
@@ -783,8 +731,8 @@
     "success": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.success.50",
-        "$description": "for use on less prominent actionable borders, like input fields etc",
+        "$value": "elysium.success.30",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -795,7 +743,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.success.70",
+        "$value": "elysium.success.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -809,7 +757,7 @@
     "danger": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.danger.70",
+        "$value": "elysium.danger.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -821,7 +769,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.danger.50",
+        "$value": "elysium.danger.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -835,7 +783,7 @@
     "action": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.neutral.40",
+        "$value": "elysium.neutral.30",
         "$description": "for use on less prominent actionable borders, like input fields etc",
         "$extensions": {
           "com.figma": {
@@ -847,7 +795,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.brand.60",
+        "$value": "elysium.brand.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -859,7 +807,7 @@
       },
       "focus": {
         "$type": "color",
-        "$value": "cerberus.brand.70",
+        "$value": "elysium.brand.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -873,7 +821,7 @@
     "warning": {
       "initial": {
         "$type": "color",
-        "$value": "cerberus.warning.50",
+        "$value": "elysium.warning.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -887,7 +835,7 @@
     "info": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.info.40",
+        "$value": "elysium.info.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -899,45 +847,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.info.60",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["STROKE_COLOR"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
-    "secondary-action": {
-      "100": {
-        "$type": "color",
-        "$value": "cerberus.brand.20",
-        "$description": "for use on less prominent actionable borders, like input fields etc",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["STROKE_COLOR"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "initial": {
-        "$type": "color",
-        "$value": "cerberus.brand.30",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["STROKE_COLOR"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "focus": {
-        "$type": "color",
-        "$value": "cerberus.brand.40",
+        "$value": "elysium.info.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -952,24 +862,12 @@
   "icons": {
     "default": {
       "$type": "color",
-      "$value": "cerberus.neutral.100",
+      "$value": "elysium.neutral.white",
       "$description": "",
       "$extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": ["ALL_SCOPES"],
-          "codeSyntax": {}
-        }
-      }
-    },
-    "interactive-default": {
-      "$type": "color",
-      "$value": "cerberus.brand.70",
-      "$description": "",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["SHAPE_FILL"],
           "codeSyntax": {}
         }
       }
@@ -979,19 +877,19 @@
     "action": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.neutral.white",
+        "$value": "elysium.brand.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
-            "hiddenFromPublishing": true,
-            "scopes": [],
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.brand.60",
+        "$value": "elysium.brand.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1003,7 +901,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.brand.50",
+        "$value": "elysium.brand.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1015,7 +913,19 @@
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.brand.40",
+        "$value": "elysium.brand.70",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "100-hover": {
+        "$type": "color",
+        "$value": "elysium.neutral.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1029,7 +939,7 @@
     "page": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.neutral.10",
+        "$value": "elysium.neutral.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1041,19 +951,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.neutral.20",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "300": {
-        "$type": "color",
-        "$value": "cerberus.neutral.30",
+        "$value": "elysium.neutral.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1065,7 +963,7 @@
       },
       "initial": {
         "$type": "color",
-        "$value": "cerberus.brand.5",
+        "$value": "elysium.neutral.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1079,7 +977,7 @@
     "danger": {
       "initial": {
         "$type": "color",
-        "$value": "cerberus.danger.60",
+        "$value": "elysium.danger.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1091,7 +989,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.danger.80",
+        "$value": "elysium.danger.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1103,7 +1001,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.danger.90",
+        "$value": "elysium.danger.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1117,7 +1015,7 @@
     "info": {
       "initial": {
         "$type": "color",
-        "$value": "cerberus.info.30",
+        "$value": "elysium.info.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1129,7 +1027,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.info.20",
+        "$value": "elysium.info.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1141,7 +1039,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.info.50",
+        "$value": "elysium.info.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1155,7 +1053,7 @@
     "success": {
       "initial": {
         "$type": "color",
-        "$value": "cerberus.success.60",
+        "$value": "elysium.success.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1167,7 +1065,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.success.70",
+        "$value": "elysium.success.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1179,45 +1077,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.success.80",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
-    "secondary-action": {
-      "initial": {
-        "$type": "color",
-        "$value": "cerberus.brand.20",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "hover": {
-        "$type": "color",
-        "$value": "cerberus.brand.30",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "active": {
-        "$type": "color",
-        "$value": "cerberus.brand.40",
+        "$value": "elysium.success.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1231,7 +1091,7 @@
     "warning": {
       "initial": {
         "$type": "color",
-        "$value": "cerberus.warning.50",
+        "$value": "elysium.warning.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1243,7 +1103,7 @@
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.warning.60",
+        "$value": "elysium.warning.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1255,7 +1115,7 @@
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.warning.70",
+        "$value": "elysium.warning.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1271,36 +1131,36 @@
     "action": {
       "initial": {
         "$type": "color",
-        "$value": "cerberus.neutral.white",
+        "$value": "elysium.neutral.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.brand.10",
-        "$description": "Hover state of ghost action elements. Pair with text.action.100 to meet accessibility requirements.",
+        "$value": "elysium.brand.90",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.brand.20",
+        "$value": "elysium.brand.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -1309,36 +1169,36 @@
     "danger": {
       "initial": {
         "$type": "color",
-        "$value": "cerberus.neutral.white",
+        "$value": "elysium.neutral.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.danger.10",
-        "$description": "Hover state of ghost action elements. Pair with text.danger.100 to meet accessibility requirements.",
+        "$value": "elysium.danger.90",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.danger.20",
+        "$value": "elysium.danger.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -1347,36 +1207,36 @@
     "info": {
       "initial": {
         "$type": "color",
-        "$value": "cerberus.neutral.white",
+        "$value": "elysium.neutral.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.info.20",
-        "$description": "Hover state of ghost action elements. Pair with text.info.100 to meet accessibility requirements.",
+        "$value": "elysium.info.90",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.info.30",
+        "$value": "elysium.info.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -1385,74 +1245,36 @@
     "success": {
       "initial": {
         "$type": "color",
-        "$value": "cerberus.neutral.white",
+        "$value": "elysium.neutral.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.success.10",
-        "$description": "Hover state of ghost action elements. Pair with text.success.100 to meet accessibility requirements.",
+        "$value": "elysium.success.90",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.success.20",
+        "$value": "elysium.success.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
-    "secondary-action": {
-      "initial": {
-        "$type": "color",
-        "$value": "cerberus.neutral.white",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "hover": {
-        "$type": "color",
-        "$value": "cerberus.neutral.15",
-        "$description": "Hover state of ghost action elements. Pair with text.secondary-action.100 to meet accessibility requirements.",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "active": {
-        "$type": "color",
-        "$value": "cerberus.brand.20",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -1461,52 +1283,36 @@
     "warning": {
       "initial": {
         "$type": "color",
-        "$value": "cerberus.neutral.white",
+        "$value": "elysium.neutral.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "hover": {
         "$type": "color",
-        "$value": "cerberus.warning.20",
-        "$description": "Hover state of ghost action elements. Pair with text.warning.100 to meet accessibility requirements.",
+        "$value": "elysium.warning.90",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
       },
       "active": {
         "$type": "color",
-        "$value": "cerberus.warning.30",
+        "$value": "elysium.warning.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": ["FRAME_FILL", "SHAPE_FILL"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    }
-  },
-  "backdrop": {
-    "page": {
-      "initial": {
-        "$type": "color",
-        "$value": "#bcbaca80",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["SHAPE_FILL"],
+            "scopes": ["FRAME_FILL"],
             "codeSyntax": {}
           }
         }
@@ -1514,60 +1320,10 @@
     }
   },
   "data-viz": {
-    "progress": {
-      "start": {
-        "$type": "color",
-        "$value": "cerberus.brand.40",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "end": {
-        "$type": "color",
-        "$value": "cerberus.brand.70",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "complete": {
-        "$type": "color",
-        "$value": "cerberus.success.60",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "complete-end": {
-        "$type": "color",
-        "$value": "cerberus.success.50",
-        "$description": "",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
     "sequential": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.brand.10",
+        "$value": "elysium.brand.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1579,7 +1335,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.brand.40",
+        "$value": "elysium.brand.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1591,7 +1347,7 @@
       },
       "300": {
         "$type": "color",
-        "$value": "cerberus.brand.50",
+        "$value": "elysium.brand.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1603,7 +1359,7 @@
       },
       "400": {
         "$type": "color",
-        "$value": "cerberus.brand.70",
+        "$value": "elysium.brand.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1615,7 +1371,7 @@
       },
       "500": {
         "$type": "color",
-        "$value": "cerberus.brand.80",
+        "$value": "elysium.brand.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1627,7 +1383,7 @@
       },
       "600": {
         "$type": "color",
-        "$value": "cerberus.brand.90",
+        "$value": "elysium.brand.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1641,7 +1397,7 @@
     "diverging": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.warning.50",
+        "$value": "elysium.warning.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1653,7 +1409,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.warning.40",
+        "$value": "elysium.warning.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1665,7 +1421,7 @@
       },
       "300": {
         "$type": "color",
-        "$value": "cerberus.warning.30",
+        "$value": "elysium.warning.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1677,7 +1433,7 @@
       },
       "400": {
         "$type": "color",
-        "$value": "cerberus.warning.20",
+        "$value": "elysium.warning.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1689,7 +1445,7 @@
       },
       "500": {
         "$type": "color",
-        "$value": "cerberus.neutral.10",
+        "$value": "elysium.neutral.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1701,7 +1457,7 @@
       },
       "550": {
         "$type": "color",
-        "$value": "cerberus.brand.20",
+        "$value": "elysium.brand.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1713,7 +1469,7 @@
       },
       "600": {
         "$type": "color",
-        "$value": "cerberus.brand.30",
+        "$value": "elysium.brand.30",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1725,7 +1481,7 @@
       },
       "700": {
         "$type": "color",
-        "$value": "cerberus.brand.40",
+        "$value": "elysium.brand.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1737,7 +1493,7 @@
       },
       "800": {
         "$type": "color",
-        "$value": "cerberus.brand.50",
+        "$value": "elysium.brand.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1749,7 +1505,7 @@
       },
       "900": {
         "$type": "color",
-        "$value": "cerberus.brand.60",
+        "$value": "elysium.brand.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1761,7 +1517,7 @@
       },
       "050": {
         "$type": "color",
-        "$value": "cerberus.warning.60",
+        "$value": "#ddc919",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1775,7 +1531,7 @@
     "qualitative": {
       "100": {
         "$type": "color",
-        "$value": "cerberus.brand.50",
+        "$value": "elysium.brand.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1787,7 +1543,7 @@
       },
       "200": {
         "$type": "color",
-        "$value": "cerberus.warning.60",
+        "$value": "elysium.warning.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1799,7 +1555,7 @@
       },
       "300": {
         "$type": "color",
-        "$value": "cerberus.success.60",
+        "$value": "elysium.success.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1811,7 +1567,7 @@
       },
       "400": {
         "$type": "color",
-        "$value": "cerberus.info.50",
+        "$value": "elysium.accent.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1823,7 +1579,7 @@
       },
       "500": {
         "$type": "color",
-        "$value": "cerberus.brand.30",
+        "$value": "elysium.info.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1835,7 +1591,7 @@
       },
       "600": {
         "$type": "color",
-        "$value": "cerberus.teal.70",
+        "$value": "elysium.brand.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1845,9 +1601,9 @@
           }
         }
       },
-      "700": {
+      "600 2": {
         "$type": "color",
-        "$value": "cerberus.neutral.40",
+        "$value": "elysium.brand.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1860,39 +1616,41 @@
     }
   },
   "drop-shadow": {
-    "sm": {
-      "$type": "color",
-      "$value": "cerberus.drop-shadow.100",
-      "$description": "",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["EFFECT_COLOR"],
-          "codeSyntax": {}
-        }
+    "$type": "color",
+    "$value": "#48325b40",
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["EFFECT_COLOR"],
+        "codeSyntax": {}
       }
-    },
-    "md": {
-      "$type": "color",
-      "$value": "cerberus.drop-shadow.100",
-      "$description": "",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["EFFECT_COLOR"],
-          "codeSyntax": {}
-        }
+    }
+  },
+  "drop-shadow 2": {
+    "$type": "color",
+    "$value": "#48325b59",
+    "$description": "",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["EFFECT_COLOR"],
+        "codeSyntax": {}
       }
-    },
-    "lg": {
-      "$type": "color",
-      "$value": "cerberus.drop-shadow.200",
-      "$description": "",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["EFFECT_COLOR"],
-          "codeSyntax": {}
+    }
+  },
+  "backdrop": {
+    "page": {
+      "initial": {
+        "$type": "color",
+        "$value": "#1a1a1a99",
+        "$description": "",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["SHAPE_FILL"],
+            "codeSyntax": {}
+          }
         }
       }
     }
@@ -1901,41 +1659,31 @@
     "charon-light": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.brand.20",
+        "$value": "elysium.brand.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.brand.40",
+        "$value": "elysium.brand.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.brand.70",
+        "$value": "elysium.brand.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1949,41 +1697,31 @@
     "charon-dark": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.brand.70",
+        "$value": "elysium.brand.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.brand.40",
+        "$value": "elysium.brand.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.brand.10",
+        "$value": "elysium.brand.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -1997,42 +1735,32 @@
     "nyx-light": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.neutral.30",
+        "$value": "elysium.neutral.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "acheron.neutral.10",
+        "$value": "elysium.neutral.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.neutral.100",
-        "$description": "Reserved for usage only on top of gradients",
+        "$value": "elysium.neutral.90",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2045,42 +1773,32 @@
     "nyx-dark": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.neutral.100",
+        "$value": "elysium.neutral.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.neutral.60",
+        "$value": "elysium.neutral.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.neutral.20",
-        "$description": "Reserved for usage only on top of gradients",
+        "$value": "elysium.neutral.20",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2093,41 +1811,31 @@
     "thanatos-dark": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.success.60",
+        "$value": "elysium.success.70",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.success.80",
+        "$value": "elysium.success.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.success.20",
+        "$value": "elysium.success.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -2141,42 +1849,32 @@
     "thanatos-light": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.success.10",
+        "$value": "elysium.success.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.success.40",
+        "$value": "elysium.success.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.success.90",
-        "$description": "for text and icons on top of a gradient",
+        "$value": "elysium.success.100",
+        "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -2189,41 +1887,31 @@
     "amphiaraus-light": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.info.10",
+        "$value": "elysium.info.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.info.30",
+        "$value": "elysium.info.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.info.80",
+        "$value": "elysium.info.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -2237,41 +1925,31 @@
     "amphiaraus-dark": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.info.90",
+        "$value": "elysium.info.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.info.60",
+        "$value": "elysium.info.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.info.20",
+        "$value": "elysium.info.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -2285,41 +1963,31 @@
     "hades-light": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.danger.20",
+        "$value": "elysium.danger.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.danger.40",
+        "$value": "elysium.danger.40",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.danger.80",
+        "$value": "elysium.danger.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -2333,41 +2001,31 @@
     "hades-dark": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.danger.80",
+        "$value": "elysium.danger.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.danger.50",
+        "$value": "elysium.danger.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.danger.10",
+        "$value": "elysium.danger.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -2381,41 +2039,31 @@
     "styx-light": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.teal.20",
+        "$value": "elysium.accent.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.teal.50",
+        "$value": "elysium.accent.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.teal.90",
+        "$value": "elysium.accent.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -2429,41 +2077,31 @@
     "styx-dark": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.teal.100",
+        "$value": "elysium.accent.90",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.teal.60",
+        "$value": "elysium.accent.60",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.neutral.100",
+        "$value": "elysium.accent.10",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -2477,41 +2115,31 @@
     "asphodel-light": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.warning.20",
+        "$value": "elysium.warning.20",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.warning.50",
+        "$value": "elysium.warning.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.warning.90",
+        "$value": "elysium.warning.100",
         "$description": "",
         "$extensions": {
           "com.figma": {
@@ -2525,41 +2153,31 @@
     "asphodel-dark": {
       "start": {
         "$type": "color",
-        "$value": "cerberus.warning.80",
+        "$value": "elysium.warning.80",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "end": {
         "$type": "color",
-        "$value": "cerberus.warning.60",
+        "$value": "elysium.warning.50",
         "$description": "",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
-            "scopes": [
-              "FRAME_FILL",
-              "SHAPE_FILL",
-              "STROKE_COLOR",
-              "EFFECT_COLOR"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }
       },
       "text": {
         "$type": "color",
-        "$value": "cerberus.warning.100",
+        "$value": "elysium.warning.100",
         "$description": "",
         "$extensions": {
           "com.figma": {

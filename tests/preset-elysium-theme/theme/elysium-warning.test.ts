@@ -12,13 +12,13 @@ describe('Elysium > warning', () => {
 
   test('should have a elysium border.initial property', () => {
     expect(token.border.initial.value.base).toEqual(
-      formatSemanticToken`elysium.warning.30`,
+      formatSemanticToken`elysium.warning.20`,
     )
     expect(token.border.initial.value._darkMode).toEqual(
-      formatSemanticToken`elysium.warning.30`,
+      formatSemanticToken`elysium.warning.20`,
     )
     expect(token.border.initial.value._lightMode).toEqual(
-      formatSemanticToken`elysium.warning.50`,
+      formatSemanticToken`elysium.warning.70`,
     )
   })
 
@@ -26,13 +26,13 @@ describe('Elysium > warning', () => {
 
   test('should have a elysium bg.initial property', () => {
     expect(token.bg.initial.value.base).toEqual(
-      formatSemanticToken`elysium.warning.70`,
+      formatSemanticToken`elysium.warning.60`,
     )
     expect(token.bg.initial.value._darkMode).toEqual(
-      formatSemanticToken`elysium.warning.70`,
+      formatSemanticToken`elysium.warning.60`,
     )
     expect(token.bg.initial.value._lightMode).toEqual(
-      formatSemanticToken`elysium.warning.50`,
+      formatSemanticToken`elysium.warning.60`,
     )
   })
 
@@ -40,13 +40,13 @@ describe('Elysium > warning', () => {
 
   test('should have a elysium bg.hover property', () => {
     expect(token.bg.hover.value.base).toEqual(
-      formatSemanticToken`elysium.warning.60`,
+      formatSemanticToken`elysium.warning.50`,
     )
     expect(token.bg.hover.value._darkMode).toEqual(
-      formatSemanticToken`elysium.warning.60`,
+      formatSemanticToken`elysium.warning.50`,
     )
     expect(token.bg.hover.value._lightMode).toEqual(
-      formatSemanticToken`elysium.warning.60`,
+      formatSemanticToken`elysium.warning.70`,
     )
   })
 
@@ -60,7 +60,7 @@ describe('Elysium > warning', () => {
       formatSemanticToken`elysium.warning.40`,
     )
     expect(token.bg.active.value._lightMode).toEqual(
-      formatSemanticToken`elysium.warning.70`,
+      formatSemanticToken`elysium.warning.80`,
     )
   })
 
@@ -130,7 +130,7 @@ describe('Elysium > warning', () => {
       formatSemanticToken`elysium.warning.90`,
     )
     expect(token.surface['100'].value._lightMode).toEqual(
-      formatSemanticToken`elysium.warning.20`,
+      formatSemanticToken`elysium.warning.10`,
     )
   })
 
@@ -138,13 +138,13 @@ describe('Elysium > warning', () => {
 
   test('should have a elysium surface.200 property', () => {
     expect(token.surface['200'].value.base).toEqual(
-      formatSemanticToken`elysium.warning.60`,
+      formatSemanticToken`elysium.warning.50`,
     )
     expect(token.surface['200'].value._darkMode).toEqual(
-      formatSemanticToken`elysium.warning.60`,
+      formatSemanticToken`elysium.warning.50`,
     )
     expect(token.surface['200'].value._lightMode).toEqual(
-      formatSemanticToken`elysium.warning.50`,
+      formatSemanticToken`elysium.warning.60`,
     )
   })
 
@@ -158,7 +158,7 @@ describe('Elysium > warning', () => {
       formatSemanticToken`elysium.warning.40`,
     )
     expect(token.text.initial.value._lightMode).toEqual(
-      formatSemanticToken`elysium.warning.90`,
+      formatSemanticToken`elysium.warning.100`,
     )
   })
 

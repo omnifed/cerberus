@@ -22,9 +22,14 @@ function tokenValueFromVariable(
   localVariables: { [id: string]: LocalVariable },
 ) {
   const value = variable.valuesByMode[modeId]
+
   if (typeof value === 'object') {
     if ('type' in value && value.type === 'VARIABLE_ALIAS') {
       const aliasedVariable = localVariables[value.id]
+      if (aliasedVariable === undefined) {
+        console.error(`Alias refers to a non-existent variable: ${value.id}`)
+        return ''
+      }
       return aliasedVariable.name.replace(/\//g, '.')
     } else if ('r' in value) {
       return rgbToHex(value)

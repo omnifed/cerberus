@@ -34,7 +34,7 @@ describe('Elysium > page', () => {
       getSemanticToken`elysium.neutral.80`,
     )
     expect(token.bg['100'].value._lightMode).toEqual(
-      getSemanticToken`elysium.neutral.10`,
+      getSemanticToken`elysium.neutral.5`,
     )
   })
 
@@ -48,7 +48,7 @@ describe('Elysium > page', () => {
       getSemanticToken`elysium.neutral.80`,
     )
     expect(token.bg['100'].value._lightMode).toEqual(
-      getSemanticToken`elysium.neutral.10`,
+      getSemanticToken`elysium.neutral.5`,
     )
   })
 
@@ -84,13 +84,13 @@ describe('Elysium > page', () => {
 
   test('should have a elysium border.initial property', () => {
     expect(token.border.initial.value.base).toEqual(
-      getSemanticToken`elysium.neutral.70`,
+      getSemanticToken`elysium.neutral.50`,
     )
     expect(token.border.initial.value._darkMode).toEqual(
-      getSemanticToken`elysium.neutral.70`,
+      getSemanticToken`elysium.neutral.50`,
     )
     expect(token.border.initial.value._lightMode).toEqual(
-      getSemanticToken`elysium.neutral.20`,
+      getSemanticToken`elysium.neutral.30`,
     )
   })
 
@@ -98,13 +98,13 @@ describe('Elysium > page', () => {
 
   test('should have a elysium border.100 property', () => {
     expect(token.border[100].value.base).toEqual(
-      getSemanticToken`elysium.neutral.80`,
+      getSemanticToken`elysium.neutral.70`,
     )
     expect(token.border[100].value._darkMode).toEqual(
-      getSemanticToken`elysium.neutral.80`,
+      getSemanticToken`elysium.neutral.70`,
     )
     expect(token.border[100].value._lightMode).toEqual(
-      getSemanticToken`elysium.neutral.30`,
+      getSemanticToken`elysium.neutral.20`,
     )
   })
 
@@ -112,10 +112,10 @@ describe('Elysium > page', () => {
 
   test('should have a elysium border.200 property', () => {
     expect(token.border[200].value.base).toEqual(
-      getSemanticToken`elysium.neutral.50`,
+      getSemanticToken`elysium.neutral.60`,
     )
     expect(token.border[200].value._darkMode).toEqual(
-      getSemanticToken`elysium.neutral.50`,
+      getSemanticToken`elysium.neutral.60`,
     )
     expect(token.border[200].value._lightMode).toEqual(
       getSemanticToken`elysium.neutral.60`,
@@ -132,7 +132,7 @@ describe('Elysium > page', () => {
       getSemanticToken`elysium.neutral.100`,
     )
     expect(token.surface.initial.value._lightMode).toEqual(
-      getSemanticToken`elysium.neutral.0`,
+      getSemanticToken`elysium.neutral.white`,
     )
   })
 
@@ -146,7 +146,7 @@ describe('Elysium > page', () => {
       getSemanticToken`elysium.neutral.90`,
     )
     expect(token.surface[100].value._lightMode).toEqual(
-      getSemanticToken`elysium.neutral.white`,
+      getSemanticToken`elysium.neutral.5`,
     )
   })
 
@@ -202,7 +202,7 @@ describe('Elysium > page', () => {
       getSemanticToken`elysium.neutral.5`,
     )
     expect(token.surface.inverse.value._lightMode).toEqual(
-      getSemanticToken`elysium.neutral.100`,
+      getSemanticToken`elysium.neutral.90`,
     )
   })
 
@@ -224,10 +224,10 @@ describe('Elysium > page', () => {
 
   test('should have a elysium text.100 property', () => {
     expect(token.text[100].value.base).toEqual(
-      getSemanticToken`elysium.neutral.40`,
+      getSemanticToken`elysium.neutral.30`,
     )
     expect(token.text[100].value._darkMode).toEqual(
-      getSemanticToken`elysium.neutral.40`,
+      getSemanticToken`elysium.neutral.30`,
     )
     expect(token.text[100].value._lightMode).toEqual(
       getSemanticToken`elysium.neutral.50`,
@@ -244,7 +244,7 @@ describe('Elysium > page', () => {
       getSemanticToken`elysium.neutral.20`,
     )
     expect(token.text[200].value._lightMode).toEqual(
-      getSemanticToken`elysium.neutral.60`,
+      getSemanticToken`elysium.neutral.70`,
     )
   })
 
@@ -258,7 +258,7 @@ describe('Elysium > page', () => {
       getSemanticToken`elysium.neutral.white`,
     )
     expect(token.text[300].value._lightMode).toEqual(
-      getSemanticToken`elysium.neutral.100`,
+      getSemanticToken`elysium.brand.100`,
     )
   })
 

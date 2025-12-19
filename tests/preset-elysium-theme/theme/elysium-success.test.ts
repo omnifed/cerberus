@@ -12,10 +12,10 @@ describe('Elysium > success', () => {
 
   test('should have a elysium border.initial property', () => {
     expect(token.border.initial.value.base).toEqual(
-      formatSemanticToken`elysium.success.60`,
+      formatSemanticToken`elysium.success.50`,
     )
     expect(token.border.initial.value._darkMode).toEqual(
-      formatSemanticToken`elysium.success.60`,
+      formatSemanticToken`elysium.success.50`,
     )
     expect(token.border.initial.value._lightMode).toEqual(
       formatSemanticToken`elysium.success.70`,
@@ -26,10 +26,10 @@ describe('Elysium > success', () => {
 
   test('should have a elysium bg.initial property', () => {
     expect(token.bg.initial.value.base).toEqual(
-      formatSemanticToken`elysium.success.70`,
+      formatSemanticToken`elysium.success.60`,
     )
     expect(token.bg.initial.value._darkMode).toEqual(
-      formatSemanticToken`elysium.success.70`,
+      formatSemanticToken`elysium.success.60`,
     )
     expect(token.bg.initial.value._lightMode).toEqual(
       formatSemanticToken`elysium.success.60`,
@@ -40,10 +40,10 @@ describe('Elysium > success', () => {
 
   test('should have a elysium bg.hover property', () => {
     expect(token.bg.hover.value.base).toEqual(
-      formatSemanticToken`elysium.success.60`,
+      formatSemanticToken`elysium.success.50`,
     )
     expect(token.bg.hover.value._darkMode).toEqual(
-      formatSemanticToken`elysium.success.60`,
+      formatSemanticToken`elysium.success.50`,
     )
     expect(token.bg.hover.value._lightMode).toEqual(
       formatSemanticToken`elysium.success.70`,
@@ -54,10 +54,10 @@ describe('Elysium > success', () => {
 
   test('should have a elysium bg.active property', () => {
     expect(token.bg.active.value.base).toEqual(
-      formatSemanticToken`elysium.success.50`,
+      formatSemanticToken`elysium.success.40`,
     )
     expect(token.bg.active.value._darkMode).toEqual(
-      formatSemanticToken`elysium.success.50`,
+      formatSemanticToken`elysium.success.40`,
     )
     expect(token.bg.active.value._lightMode).toEqual(
       formatSemanticToken`elysium.success.80`,
@@ -96,10 +96,10 @@ describe('Elysium > success', () => {
 
   test('should have a elysium ghost.active property', () => {
     expect(token.ghost.active.value.base).toEqual(
-      formatSemanticToken`elysium.success.80`,
+      formatSemanticToken`elysium.success.90`,
     )
     expect(token.ghost.active.value._darkMode).toEqual(
-      formatSemanticToken`elysium.success.80`,
+      formatSemanticToken`elysium.success.90`,
     )
     expect(token.ghost.active.value._lightMode).toEqual(
       formatSemanticToken`elysium.success.20`,
@@ -116,7 +116,7 @@ describe('Elysium > success', () => {
       formatSemanticToken`elysium.success.60`,
     )
     expect(token.surface.initial.value._lightMode).toEqual(
-      formatSemanticToken`elysium.success.50`,
+      formatSemanticToken`elysium.success.60`,
     )
   })
 
@@ -130,7 +130,7 @@ describe('Elysium > success', () => {
       formatSemanticToken`elysium.success.90`,
     )
     expect(token.surface['100'].value._lightMode).toEqual(
-      formatSemanticToken`elysium.success.30`,
+      formatSemanticToken`elysium.success.20`,
     )
   })
 
@@ -152,13 +152,13 @@ describe('Elysium > success', () => {
 
   test('should have a elysium text.initial property', () => {
     expect(token.text.initial.value.base).toEqual(
-      formatSemanticToken`elysium.success.10`,
+      formatSemanticToken`elysium.success.60`,
     )
     expect(token.text.initial.value._darkMode).toEqual(
-      formatSemanticToken`elysium.success.10`,
+      formatSemanticToken`elysium.success.60`,
     )
     expect(token.text.initial.value._lightMode).toEqual(
-      formatSemanticToken`elysium.success.100`,
+      formatSemanticToken`elysium.success.90`,
     )
   })
 
@@ -166,13 +166,13 @@ describe('Elysium > success', () => {
 
   test('should have a elysium text.100 property', () => {
     expect(token.text[100].value.base).toEqual(
-      formatSemanticToken`elysium.success.40`,
+      formatSemanticToken`elysium.success.20`,
     )
     expect(token.text[100].value._darkMode).toEqual(
-      formatSemanticToken`elysium.success.40`,
+      formatSemanticToken`elysium.success.20`,
     )
     expect(token.text[100].value._lightMode).toEqual(
-      formatSemanticToken`elysium.success.80`,
+      formatSemanticToken`elysium.success.90`,
     )
   })
 
