@@ -50,7 +50,10 @@ import {
 export default createCerberusConfig({
   presets: [createCerberusPreset()],
 
-  include: ['./app/**/*.{ts,tsx}'],
+  include: [
+    './node_modules/@cerberus-design/react/**/*.{ts,tsx,js,jsx}', // track @cerberus/react components
+    './app/**/*.{ts,tsx}'
+  ],
   exclude: [],
 })
 ```
