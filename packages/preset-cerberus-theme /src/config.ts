@@ -15,16 +15,17 @@ export function getThemeName(): RawThemes {
 export const presetCerberusTheme: Preset = definePreset({
   name: '@cerberus/preset-cerberus-theme',
 
-  presets: [],
-
   conditions,
+
+  // We include this since it's used as the base theme to allow virtual colors
+  // to work with all other preset themes.
+  theme,
 
   themes: {
     cerberus: theme,
   },
 
-  // opt-into additional theme variants
   staticCss: {
-    themes: [getThemeName()],
+    themes: ['cerberus'],
   },
 })

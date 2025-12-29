@@ -15,15 +15,12 @@ export function getThemeName(): RawThemes {
 export const presetAcheronTheme: Preset = definePreset({
   name: '@cerberus/preset-acheron-theme',
 
-  presets: [],
-
   conditions,
 
   themes: {
     acheron: theme,
   },
 
-  // opt-into additional theme variants
   staticCss: {
     themes: ['acheron'],
   },

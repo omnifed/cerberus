@@ -102,7 +102,9 @@ export interface PresetOptions {
  * })
  * ```
  */
-export function createCerberusPreset(options?: PresetOptions): Preset {
+export async function createCerberusPreset(
+  options?: PresetOptions,
+): Promise<Preset> {
   return definePreset({
     ...cerberusPreset,
 
