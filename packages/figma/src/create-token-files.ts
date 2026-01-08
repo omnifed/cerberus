@@ -113,15 +113,17 @@ async function createTokenFiles() {
       })
     }
 
-    // Create temporary text nodes. This should eventually be replaced with
-    // proper primitives
-    const nodeContent = await createNodeFileContent(typographyNodes.nodes)
-    await oraPromise(
-      write(path.join(tokensDataPath, 'text-nodes.ts'), nodeContent),
-      {
-        text: 'Creating temporary text nodes file: text-nodes.ts',
-      },
-    )
+    if (typographyNodes?.nodes) {
+      // Create temporary text nodes. This should eventually be replaced with
+      // proper primitives
+      const nodeContent = await createNodeFileContent(typographyNodes!.nodes)
+      await oraPromise(
+        write(path.join(tokensDataPath, 'text-nodes.ts'), nodeContent),
+        {
+          text: 'Creating temporary text nodes file: text-nodes.ts',
+        },
+      )
+    }
   } catch (error) {
     console.error('Error creating collection files:', error)
     process.exit(1)

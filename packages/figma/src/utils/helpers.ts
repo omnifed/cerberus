@@ -1,4 +1,8 @@
-import { LocalVariable, LocalVariableCollection } from '@figma/rest-api-spec'
+import {
+  GetFileNodesResponse,
+  LocalVariable,
+  LocalVariableCollection,
+} from '@figma/rest-api-spec'
 import prettier from 'prettier'
 import {
   LocalVariables,
@@ -44,7 +48,11 @@ export async function createFileContent(
  * @param variables
  * @returns
  */
-export async function createNodeFileContent(nodes: Node[]): Promise<string> {
+export async function createNodeFileContent(
+  nodes: NonNullable<GetFileNodesResponse['nodes']>,
+): Promise<string> {
+  if (!nodes) return ''
+
   const rawTS = `
      /*
       * --------------------------------------------------------

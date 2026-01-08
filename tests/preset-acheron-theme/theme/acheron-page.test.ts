@@ -16,13 +16,13 @@ describe('Acheron > page', () => {
 
   test('should have a acheron backdrop.initial property', () => {
     expect(token.backdrop.initial.value.base).toEqual(
-      'rgba(0.054901961237192154, 0.05098039284348488, 0.0470588244497776, 0.5)',
+      'rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0.5)',
     )
     expect(token.backdrop.initial.value._darkMode).toEqual(
-      'rgba(0.054901961237192154, 0.05098039284348488, 0.0470588244497776, 0.5)',
+      'rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0.5)',
     )
     expect(token.backdrop.initial.value._lightMode).toEqual(
-      'rgba(0.4156862795352936, 0.40392157435417175, 0.3921568691730499, 0.5)',
+      'rgba(106.00000128149986, 103.0000014603138, 100.00000163912773, 0.5)',
     )
   })
 

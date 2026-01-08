@@ -51,3 +51,7 @@ export function rgbToHex({ r, g, b, ...rest }: RGB | RGBA) {
   const hex = [toHex(r), toHex(g), toHex(b)].join('')
   return `#${hex}` + (a !== 1 ? toHex(a) : '')
 }
+
+export function rgbaToString({ r, g, b, a }: RGBA) {
+  return `rgba(${r * 255}, ${g * 255}, ${b * 255}, ${a})`
+}

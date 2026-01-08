@@ -1,11 +1,12 @@
 import { Tokens } from '@pandacss/dev'
+import { RGBA, rgbaToString, rgbToHex } from '@cerberus/figma'
 import {
   GradientText,
   GradientValue,
 } from '../theme-contract/theme-contracts.types'
 import { GRADIENT_TEXT, GRADIENTS } from '../const'
 import { primitives } from '../tokens'
-import { VariableColor } from '../types'
+import { Recursive, Token } from '@pandacss/types'
 
 // Factories
 
@@ -16,15 +17,38 @@ export function createPrimitiveColors(): NonNullable<Tokens['colors']> {
     (acc, key) => {
       const idx = key as keyof typeof primitives.colors.tokens
       const token = primitives.colors.tokens[idx]
-      const color = token.valuesByMode[mode] as VariableColor
+      const color = token.valuesByMode[mode] as unknown as RGBA
+
+      let finalColor: string | RGBA = color
 
       if (token.resolvedType !== 'COLOR') {
         return acc
       }
 
-      acc[idx] = {
-        value: `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`,
-        description: token.description,
+      if (idx.includes('drop-shadow')) {
+        finalColor = rgbaToString(color)
+      } else {
+        finalColor = rgbToHex(color)
+      }
+
+      const path = key.split('.')
+      let current = acc
+
+      for (let i = 0; i < path.length; i++) {
+        const part = path[i]
+        const isLast = i === path.length - 1
+
+        if (isLast) {
+          current[part] = {
+            value: finalColor,
+            description: token.description,
+          }
+        } else {
+          if (!current[part]) {
+            current[part] = {}
+          }
+          current = current[part] as Recursive<Token<string>>
+        }
       }
       return acc
     },

@@ -1,3 +1,4 @@
+import { rgbaToString } from '@cerberus/figma'
 import { SemanticToken } from '../semantic-tokens.types'
 import { themes } from '../tokens'
 import { VariableColor } from '../types'
@@ -34,7 +35,7 @@ function _formatTokenValue(value: string | VariableColor): string {
   if (typeof value === 'string') {
     return `{colors.${value}}`
   } else if (typeof value === 'object') {
-    return `rgba(${value.r}, ${value.g}, ${value.b}, ${value.a})`
+    return rgbaToString(value)
   }
 
   throw new Error(`Format of variable value is invalid: ${value}`)

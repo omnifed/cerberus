@@ -1,3 +1,5 @@
+export type { RGB, RGBA } from '@figma/rest-api-spec'
+
 /**
  * The correct type that is returned from the Figma API.
  */
