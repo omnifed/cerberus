@@ -13,6 +13,7 @@ import {
 import { DogIcon } from '../icons/DogIcon'
 import { FireIcon } from '../icons/FireIcon'
 import { getCodeTheme } from '@/app/utils/colors'
+import { PalmTree } from '@carbon/icons-react'
 
 export function ThemeMenu() {
   const { mode, theme, updateTheme } = useThemeContext()
@@ -54,6 +55,10 @@ export function ThemeMenu() {
         <MenuItem cursor="pointer" value="acheron">
           <MatchThemeContent theme="acheron" />
         </MenuItem>
+
+        <MenuItem cursor="pointer" value="elysium">
+          <MatchThemeContent theme="elysium" />
+        </MenuItem>
       </MenuContent>
     </Menu>
   )
@@ -80,6 +85,15 @@ function MatchThemeContent({ theme }: MatchThemeContentProps) {
           <>
             <FireIcon />
             Acheron
+          </>
+        )}
+      </Show>
+
+      <Show when={theme === 'elysium'}>
+        {() => (
+          <>
+            <PalmTree />
+            Elysium
           </>
         )}
       </Show>

@@ -4,7 +4,6 @@ import { type TransformArgs } from '@pandacss/types'
 import { getGradients } from '@cerberus/tokens'
 
 describe('utilities', () => {
-  const CHARON_LIGHT = '{gradients.acheron.dark.charon-light}'
   const args = {
     token: {
       raw: jest.fn(),
@@ -54,9 +53,6 @@ describe('utilities', () => {
         colorMix: jest.fn(),
       },
     } as unknown as TransformArgs
-    // const color = '{colors.gradient.charon-light.text.initial}'
-    // const cerbLight = '{gradients.cerberus.light.charon-light}'
-    // const cerbDark = '{gradients.cerberus.dark.charon-light}'
 
     expect(cerbGradient).toBeDefined()
     expect(cerbGradient.className).toEqual('gradient')
@@ -64,47 +60,6 @@ describe('utilities', () => {
     expect(cerbGradient.transform?.('charon-light', args)).toMatchObject({
       backgroundImage: `linear-gradient(to right, var(--cerberus-colors-charon-light-start), var(--cerberus-colors-charon-light-end))`,
       color: `var(--cerberus-colors-charon-light-text)`,
-
-      // '[data-color-mode=dark] &, &.dark, .dark &': {
-      //   backgroundImage: cerbDark,
-      //   color,
-      // },
-      // '[data-color-mode=light] &, &.light, .light &': {
-      //   backgroundImage: cerbLight,
-      //   color,
-      // },
-      // '[data-color-mode=system] &, &.system, .system &': {
-      //   backgroundImage: cerbDark,
-      //   color,
-      // },
-      // '[data-panda-theme=acheron][data-color-mode=dark] &, &.dark, .dark &': {
-      //   backgroundImage: CHARON_LIGHT,
-      //   color,
-      // },
-      // '[data-panda-theme=acheron][data-color-mode=light] &, &.light, .light &':
-      //   {
-      //     backgroundImage: '{gradients.acheron.light.charon-light}',
-      //     color,
-      //   },
-      // '[data-panda-theme=acheron][data-color-mode=system] &, &.system, .system &':
-      //   {
-      //     backgroundImage: CHARON_LIGHT,
-      //     color,
-      //   },
-      // '[data-panda-theme=cerberus][data-color-mode=dark] &, &.dark, .dark &': {
-      //   backgroundImage: cerbDark,
-      //   color,
-      // },
-      // '[data-panda-theme=cerberus][data-color-mode=light] &, &.light, .light &':
-      //   {
-      //     backgroundImage: cerbLight,
-      //     color,
-      //   },
-      // '[data-panda-theme=cerberus][data-color-mode=system] &, &.system, .system &':
-      //   {
-      //     backgroundImage: cerbDark,
-      //     color,
-      //   },
     })
   })
 
@@ -125,51 +80,6 @@ describe('utilities', () => {
       backgroundImage:
         'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0),var(--cerberus-colors-charon-light-start), var(--cerberus-colors-charon-light-end)',
       color: 'var(--cerberus-colors-page-text-initial)',
-      // '[data-color-mode=dark] &, &.dark, .dark &': {
-      //   backgroundImage,
-      //   color,
-      // },
-      // '[data-color-mode=light] &, &.light, .light &': {
-      //   backgroundImage:
-      //     'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0),{gradients.cerberus.light.charon-light}',
-      //   color,
-      // },
-      // '[data-color-mode=system] &, &.system, .system &': {
-      //   backgroundImage,
-      //   color,
-      // },
-      // '[data-panda-theme=acheron][data-color-mode=dark] &, &.dark, .dark &': {
-      //   backgroundImage:
-      //     'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0),{gradients.acheron.dark.charon-light}',
-      //   color,
-      // },
-      // '[data-panda-theme=acheron][data-color-mode=light] &, &.light, .light &':
-      //   {
-      //     backgroundImage:
-      //       'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0),{gradients.acheron.light.charon-light}',
-      //     color,
-      //   },
-      // '[data-panda-theme=acheron][data-color-mode=system] &, &.system, .system &':
-      //   {
-      //     backgroundImage:
-      //       'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0),{gradients.acheron.dark.charon-light}',
-      //     color,
-      //   },
-      // '[data-panda-theme=cerberus][data-color-mode=dark] &, &.dark, .dark &': {
-      //   backgroundImage,
-      //   color,
-      // },
-      // '[data-panda-theme=cerberus][data-color-mode=light] &, &.light, .light &':
-      //   {
-      //     backgroundImage:
-      //       'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0),{gradients.cerberus.light.charon-light}',
-      //     color,
-      //   },
-      // '[data-panda-theme=cerberus][data-color-mode=system] &, &.system, .system &':
-      //   {
-      //     backgroundImage,
-      //     color,
-      //   },
     })
   })
 })

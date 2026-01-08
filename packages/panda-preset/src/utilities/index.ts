@@ -1,7 +1,5 @@
 import type { PropertyConfig } from '@pandacss/dev'
 import { type GradientValue, getGradients } from '@cerberus/tokens'
-// import { conditions } from '../conditions'
-// import data from './gradient.data.json' with { type: 'json' }
 
 /**
  * Note: Panda is very particular with utility configs. It doesn't like dynamic
@@ -51,6 +49,8 @@ export const size: CustomUtilityConfig<'size'> = {
     },
   },
 }
+
+// TODO: Start here - figure out why gradients aren't working
 
 const gradient: CustomUtilityConfig<'gradient'> = {
   gradient: {
