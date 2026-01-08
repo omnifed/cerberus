@@ -10,13 +10,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron border.initial property', () => {
     expect(infoTokens.info.border.initial.value.base).toEqual(
-      formatSemanticToken`acheron.info.50`,
+      formatSemanticToken`info.acheron.50`,
     )
     expect(infoTokens.info.border.initial.value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.50`,
+      formatSemanticToken`info.acheron.50`,
     )
     expect(infoTokens.info.border.initial.value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.60`,
+      formatSemanticToken`info.acheron.60`,
     )
   })
 
@@ -24,13 +24,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron border.100 property', () => {
     expect(infoTokens.info.border['100'].value.base).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`info.acheron.70`,
     )
     expect(infoTokens.info.border['100'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`info.acheron.70`,
     )
     expect(infoTokens.info.border['100'].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.40`,
+      formatSemanticToken`info.acheron.40`,
     )
   })
 
@@ -38,13 +38,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron bg.initial property', () => {
     expect(infoTokens.info.bg.initial.value.base).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`info.acheron.70`,
     )
     expect(infoTokens.info.bg.initial.value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`info.acheron.70`,
     )
     expect(infoTokens.info.bg.initial.value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.30`,
+      formatSemanticToken`info.acheron.30`,
     )
   })
 
@@ -52,13 +52,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron bg.hover property', () => {
     expect(infoTokens.info.bg.hover.value.base).toEqual(
-      formatSemanticToken`acheron.info.80`,
+      formatSemanticToken`info.acheron.80`,
     )
     expect(infoTokens.info.bg.hover.value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.80`,
+      formatSemanticToken`info.acheron.80`,
     )
     expect(infoTokens.info.bg.hover.value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.20`,
+      formatSemanticToken`info.acheron.20`,
     )
   })
 
@@ -66,13 +66,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron bg.active property', () => {
     expect(infoTokens.info.bg.active.value.base).toEqual(
-      formatSemanticToken`acheron.info.90`,
+      formatSemanticToken`info.acheron.90`,
     )
     expect(infoTokens.info.bg.active.value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.90`,
+      formatSemanticToken`info.acheron.90`,
     )
     expect(infoTokens.info.bg.active.value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.50`,
+      formatSemanticToken`info.acheron.50`,
     )
   })
 
@@ -94,13 +94,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron ghost.hover property', () => {
     expect(infoTokens.info.ghost.hover.value.base).toEqual(
-      formatSemanticToken`acheron.info.80`,
+      formatSemanticToken`info.acheron.80`,
     )
     expect(infoTokens.info.ghost.hover.value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.80`,
+      formatSemanticToken`info.acheron.80`,
     )
     expect(infoTokens.info.ghost.hover.value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.20`,
+      formatSemanticToken`info.acheron.20`,
     )
   })
 
@@ -108,13 +108,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron ghost.active property', () => {
     expect(infoTokens.info.ghost.active.value.base).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`info.acheron.70`,
     )
     expect(infoTokens.info.ghost.active.value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`info.acheron.70`,
     )
     expect(infoTokens.info.ghost.active.value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.30`,
+      formatSemanticToken`info.acheron.30`,
     )
   })
 
@@ -122,13 +122,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron surface.initial property', () => {
     expect(infoTokens.info.surface.initial.value.base).toEqual(
-      formatSemanticToken`acheron.info.50`,
+      formatSemanticToken`info.acheron.50`,
     )
     expect(infoTokens.info.surface.initial.value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.50`,
+      formatSemanticToken`info.acheron.50`,
     )
     expect(infoTokens.info.surface.initial.value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.30`,
+      formatSemanticToken`info.acheron.30`,
     )
   })
 
@@ -136,13 +136,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron surface.100 property', () => {
     expect(infoTokens.info.surface['100'].value.base).toEqual(
-      formatSemanticToken`acheron.info.90`,
+      formatSemanticToken`info.acheron.90`,
     )
     expect(infoTokens.info.surface['100'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.90`,
+      formatSemanticToken`info.acheron.90`,
     )
     expect(infoTokens.info.surface['100'].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.20`,
+      formatSemanticToken`info.acheron.20`,
     )
   })
 
@@ -150,13 +150,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron surface.200 property', () => {
     expect(infoTokens.info.surface['200'].value.base).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`info.acheron.70`,
     )
     expect(infoTokens.info.surface['200'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`info.acheron.70`,
     )
     expect(infoTokens.info.surface['200'].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.50`,
+      formatSemanticToken`info.acheron.50`,
     )
   })
 
@@ -164,13 +164,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron text.initial property', () => {
     expect(infoTokens.info.text.initial.value.base).toEqual(
-      formatSemanticToken`acheron.info.50`,
+      formatSemanticToken`info.acheron.50`,
     )
     expect(infoTokens.info.text.initial.value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.50`,
+      formatSemanticToken`info.acheron.50`,
     )
     expect(infoTokens.info.text.initial.value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`info.acheron.70`,
     )
   })
 
@@ -178,13 +178,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron text.100 property', () => {
     expect(infoTokens.info.text['100'].value.base).toEqual(
-      formatSemanticToken`acheron.info.30`,
+      formatSemanticToken`info.acheron.30`,
     )
     expect(infoTokens.info.text['100'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.30`,
+      formatSemanticToken`info.acheron.30`,
     )
     expect(infoTokens.info.text['100'].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.80`,
+      formatSemanticToken`info.acheron.80`,
     )
   })
 
@@ -192,13 +192,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron text.200 property', () => {
     expect(infoTokens.info.text['200'].value.base).toEqual(
-      formatSemanticToken`acheron.info.10`,
+      formatSemanticToken`info.acheron.10`,
     )
     expect(infoTokens.info.text['200'].value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.10`,
+      formatSemanticToken`info.acheron.10`,
     )
     expect(infoTokens.info.text['200'].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.100`,
+      formatSemanticToken`info.acheron.100`,
     )
   })
 
@@ -206,13 +206,13 @@ describe('acheron infoTokens', () => {
 
   test('should have a acheron text.static property', () => {
     expect(infoTokens.info.text.static.value.base).toEqual(
-      formatSemanticToken`acheron.info.60`,
+      formatSemanticToken`info.acheron.60`,
     )
     expect(infoTokens.info.text.static.value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.60`,
+      formatSemanticToken`info.acheron.60`,
     )
     expect(infoTokens.info.text.static.value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.60`,
+      formatSemanticToken`info.acheron.60`,
     )
   })
 })

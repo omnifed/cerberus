@@ -1,20 +1,14 @@
 import {
-  formatPrimitiveColors,
-  formatPrimitiveGradients,
-  formatSpacingTokens,
-  type PandaColor,
-  type PandaGradient,
-  type PandaToken,
+  createPrimitiveColors,
+  createPrimitiveRadii,
+  createPrimitiveSpacing,
 } from '@cerberus/tokens'
+import { defineTokens, Tokens } from '@pandacss/dev'
 
 /**
  * This module contains the tokens used in the main theme.
  * @module
  */
-
-const colors: PandaColor = formatPrimitiveColors()
-const gradients: PandaGradient = formatPrimitiveGradients()
-const spacing: PandaToken = formatSpacingTokens()
 
 const fonts = {
   display: {
@@ -113,11 +107,11 @@ const zIndex = {
   },
 }
 
-export const tokens = {
-  colors,
+export const tokens: NonNullable<Tokens> = defineTokens({
+  colors: createPrimitiveColors(),
   fonts,
-  gradients,
-  spacing,
+  radii: createPrimitiveRadii(),
+  spacing: createPrimitiveSpacing(),
   shadows,
   zIndex,
-}
+})

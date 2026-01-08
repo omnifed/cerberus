@@ -1,4 +1,4 @@
-import { type WarningTokens, formatSemanticTokenValue } from '@cerberus/tokens'
+import { type WarningTokens, createSemanticToken } from '@cerberus/tokens'
 import { getThemeName } from '../../config'
 
 /**
@@ -11,33 +11,33 @@ const THEME = getThemeName()
 export const warningTokens: WarningTokens = {
   warning: {
     border: {
-      initial: formatSemanticTokenValue('border.warning.initial', THEME),
+      initial: createSemanticToken(THEME, 'warning.border.initial'),
     },
 
     bg: {
-      initial: formatSemanticTokenValue('background.warning.initial', THEME),
-      hover: formatSemanticTokenValue('background.warning.hover', THEME),
-      active: formatSemanticTokenValue('background.warning.active', THEME),
+      initial: createSemanticToken(THEME, 'warning.background.initial'),
+      hover: createSemanticToken(THEME, 'warning.background.hover'),
+      active: createSemanticToken(THEME, 'warning.background.active'),
     },
 
     ghost: {
-      initial: formatSemanticTokenValue('ghost.warning.initial', THEME),
-      hover: formatSemanticTokenValue('ghost.warning.hover', THEME),
-      active: formatSemanticTokenValue('ghost.warning.active', THEME),
+      initial: createSemanticToken(THEME, 'warning.ghost.initial'),
+      hover: createSemanticToken(THEME, 'warning.ghost.hover'),
+      active: createSemanticToken(THEME, 'warning.ghost.active'),
     },
 
     surface: {
-      initial: formatSemanticTokenValue('surface.warning.initial', THEME),
-      100: formatSemanticTokenValue('surface.warning.100', THEME),
-      200: formatSemanticTokenValue('surface.warning.200', THEME),
+      initial: createSemanticToken(THEME, 'warning.surface.initial'),
+      100: createSemanticToken(THEME, 'warning.surface.100'),
+      200: createSemanticToken(THEME, 'warning.surface.200'),
     },
 
     text: {
-      initial: formatSemanticTokenValue('text.warning.initial', THEME),
-      100: formatSemanticTokenValue('text.warning.100', THEME),
-      200: formatSemanticTokenValue('text.warning.200', THEME),
-      inverse: formatSemanticTokenValue('text.warning.inverse', THEME),
-      static: formatSemanticTokenValue('text.warning.static', THEME),
+      initial: createSemanticToken(THEME, 'warning.text.initial'),
+      100: createSemanticToken(THEME, 'warning.text.100'),
+      200: createSemanticToken(THEME, 'warning.text.200'),
+      inverse: createSemanticToken(THEME, 'warning.text.inverse'),
+      static: createSemanticToken(THEME, 'warning.text.static'),
     },
   },
 }

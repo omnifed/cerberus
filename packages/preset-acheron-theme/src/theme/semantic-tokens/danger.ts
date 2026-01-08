@@ -1,4 +1,4 @@
-import { type DangerTokens, formatSemanticTokenValue } from '@cerberus/tokens'
+import { type DangerTokens, createSemanticToken } from '@cerberus/tokens'
 import { getThemeName } from '../../config'
 
 /**
@@ -11,33 +11,33 @@ const THEME = getThemeName()
 export const dangerTokens: DangerTokens = {
   danger: {
     bg: {
-      initial: formatSemanticTokenValue('background.danger.initial', THEME),
-      hover: formatSemanticTokenValue('background.danger.hover', THEME),
-      active: formatSemanticTokenValue('background.danger.active', THEME),
+      initial: createSemanticToken(THEME, 'danger.background.initial'),
+      hover: createSemanticToken(THEME, 'danger.background.hover'),
+      active: createSemanticToken(THEME, 'danger.background.active'),
     },
 
     border: {
-      initial: formatSemanticTokenValue('border.danger.initial', THEME),
+      initial: createSemanticToken(THEME, 'danger.border.initial'),
     },
 
     ghost: {
-      initial: formatSemanticTokenValue('ghost.danger.initial', THEME),
-      hover: formatSemanticTokenValue('ghost.danger.hover', THEME),
-      active: formatSemanticTokenValue('ghost.danger.active', THEME),
+      initial: createSemanticToken(THEME, 'danger.ghost.initial'),
+      hover: createSemanticToken(THEME, 'danger.ghost.hover'),
+      active: createSemanticToken(THEME, 'danger.ghost.active'),
     },
 
     surface: {
-      initial: formatSemanticTokenValue('surface.danger.initial', THEME),
-      100: formatSemanticTokenValue('surface.danger.100', THEME),
-      200: formatSemanticTokenValue('surface.danger.200', THEME),
+      initial: createSemanticToken(THEME, 'danger.surface.initial'),
+      100: createSemanticToken(THEME, 'danger.surface.100'),
+      200: createSemanticToken(THEME, 'danger.surface.200'),
     },
 
     text: {
-      initial: formatSemanticTokenValue('text.danger.initial', THEME),
-      100: formatSemanticTokenValue('text.danger.100', THEME),
-      200: formatSemanticTokenValue('text.danger.200', THEME),
-      inverse: formatSemanticTokenValue('text.danger.inverse', THEME),
-      static: formatSemanticTokenValue('text.danger.static', THEME),
+      initial: createSemanticToken(THEME, 'danger.text.initial'),
+      100: createSemanticToken(THEME, 'danger.text.100'),
+      200: createSemanticToken(THEME, 'danger.text.200'),
+      inverse: createSemanticToken(THEME, 'danger.text.inverse'),
+      static: createSemanticToken(THEME, 'danger.text.static'),
     },
   },
 }

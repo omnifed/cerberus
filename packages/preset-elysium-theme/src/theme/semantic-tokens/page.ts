@@ -1,8 +1,4 @@
-import {
-  type PageTokens,
-  formatSemanticTokenValue,
-  themeTokens,
-} from '@cerberus/tokens'
+import { type PageTokens, createSemanticToken } from '@cerberus/tokens'
 import { getThemeName } from '../../config'
 
 /**
@@ -15,46 +11,37 @@ const THEME = getThemeName()
 export const pageTokens: PageTokens = {
   page: {
     backdrop: {
-      initial: {
-        description:
-          themeTokens.cerberus.dark.backdrop.page.initial.$description,
-        value: {
-          // Figma converts the rgba to a HEX value which removes the opacity
-          base: 'rgba(27, 26, 25, 0.50)',
-          _lightMode: 'rgba(106, 103, 100, 0.50)',
-          _darkMode: 'rgba(27, 26, 25, 0.50)',
-        },
-      },
+      initial: createSemanticToken(THEME, 'page.backdrop.initial'),
     },
 
     bg: {
-      initial: formatSemanticTokenValue('background.page.initial', THEME),
-      100: formatSemanticTokenValue('background.page.100', THEME),
-      200: formatSemanticTokenValue('background.page.200', THEME),
-      300: formatSemanticTokenValue('background.page.300', THEME),
+      initial: createSemanticToken(THEME, 'page.background.initial'),
+      100: createSemanticToken(THEME, 'page.background.100'),
+      200: createSemanticToken(THEME, 'page.background.200'),
+      300: createSemanticToken(THEME, 'page.background.300'),
     },
 
     border: {
-      initial: formatSemanticTokenValue('border.page.initial', THEME),
-      100: formatSemanticTokenValue('border.page.100', THEME),
-      200: formatSemanticTokenValue('border.page.200', THEME),
+      initial: createSemanticToken(THEME, 'page.border.initial'),
+      100: createSemanticToken(THEME, 'page.border.100'),
+      200: createSemanticToken(THEME, 'page.border.200'),
     },
 
     surface: {
-      initial: formatSemanticTokenValue('surface.page.initial', THEME),
-      100: formatSemanticTokenValue('surface.page.100', THEME),
-      200: formatSemanticTokenValue('surface.page.200', THEME),
-      300: formatSemanticTokenValue('surface.page.300', THEME),
-      400: formatSemanticTokenValue('surface.page.400', THEME),
-      inverse: formatSemanticTokenValue('surface.page.inverse', THEME),
+      initial: createSemanticToken(THEME, 'page.surface.initial'),
+      100: createSemanticToken(THEME, 'page.surface.100'),
+      200: createSemanticToken(THEME, 'page.surface.200'),
+      300: createSemanticToken(THEME, 'page.surface.300'),
+      400: createSemanticToken(THEME, 'page.surface.400'),
+      inverse: createSemanticToken(THEME, 'page.surface.inverse'),
     },
 
     text: {
-      initial: formatSemanticTokenValue('text.page.initial', THEME),
-      100: formatSemanticTokenValue('text.page.100', THEME),
-      200: formatSemanticTokenValue('text.page.200', THEME),
-      300: formatSemanticTokenValue('text.page.300', THEME),
-      inverse: formatSemanticTokenValue('text.page.inverse', THEME),
+      initial: createSemanticToken(THEME, 'page.text.initial'),
+      100: createSemanticToken(THEME, 'page.text.100'),
+      200: createSemanticToken(THEME, 'page.text.200'),
+      300: createSemanticToken(THEME, 'page.text.300'),
+      inverse: createSemanticToken(THEME, 'page.text.inverse'),
     },
   },
 }

@@ -10,13 +10,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus bg.initial property', () => {
     expect(dangerTokens.danger.bg.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.danger.70`,
+      formatSemanticToken`danger.cerberus.70`,
     )
     expect(dangerTokens.danger.bg.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.70`,
+      formatSemanticToken`danger.cerberus.70`,
     )
     expect(dangerTokens.danger.bg.initial.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.60`,
+      formatSemanticToken`danger.cerberus.60`,
     )
   })
 
@@ -24,13 +24,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus bg.hover property', () => {
     expect(dangerTokens.danger.bg.hover.value.base).toEqual(
-      formatSemanticToken`cerberus.danger.40`,
+      formatSemanticToken`danger.cerberus.50`,
     )
     expect(dangerTokens.danger.bg.hover.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.40`,
+      formatSemanticToken`danger.cerberus.50`,
     )
     expect(dangerTokens.danger.bg.hover.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.80`,
+      formatSemanticToken`danger.cerberus.70`,
     )
   })
 
@@ -38,13 +38,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus bg.active property', () => {
     expect(dangerTokens.danger.bg.active.value.base).toEqual(
-      formatSemanticToken`cerberus.danger.30`,
+      formatSemanticToken`danger.cerberus.30`,
     )
     expect(dangerTokens.danger.bg.active.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.30`,
+      formatSemanticToken`danger.cerberus.30`,
     )
     expect(dangerTokens.danger.bg.active.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.90`,
+      formatSemanticToken`danger.cerberus.90`,
     )
   })
 
@@ -52,13 +52,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus border.initial property', () => {
     expect(dangerTokens.danger.border.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.danger.30`,
+      formatSemanticToken`danger.cerberus.30`,
     )
     expect(dangerTokens.danger.border.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.30`,
+      formatSemanticToken`danger.cerberus.30`,
     )
     expect(dangerTokens.danger.border.initial.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.50`,
+      formatSemanticToken`danger.cerberus.50`,
     )
   })
 
@@ -80,13 +80,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus ghost.hover property', () => {
     expect(dangerTokens.danger.ghost.hover.value.base).toEqual(
-      formatSemanticToken`cerberus.danger.90`,
+      formatSemanticToken`danger.cerberus.90`,
     )
     expect(dangerTokens.danger.ghost.hover.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.90`,
+      formatSemanticToken`danger.cerberus.90`,
     )
     expect(dangerTokens.danger.ghost.hover.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.10`,
+      formatSemanticToken`danger.cerberus.10`,
     )
   })
 
@@ -94,13 +94,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus ghost.active property', () => {
     expect(dangerTokens.danger.ghost.active.value.base).toEqual(
-      formatSemanticToken`cerberus.danger.80`,
+      formatSemanticToken`danger.cerberus.80`,
     )
     expect(dangerTokens.danger.ghost.active.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.80`,
+      formatSemanticToken`danger.cerberus.80`,
     )
     expect(dangerTokens.danger.ghost.active.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.20`,
+      formatSemanticToken`danger.cerberus.20`,
     )
   })
 
@@ -108,13 +108,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus surface.initial property', () => {
     expect(dangerTokens.danger.surface.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.danger.80`,
+      formatSemanticToken`danger.cerberus.80`,
     )
     expect(dangerTokens.danger.surface.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.80`,
+      formatSemanticToken`danger.cerberus.80`,
     )
     expect(dangerTokens.danger.surface.initial.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.30`,
+      formatSemanticToken`danger.cerberus.30`,
     )
   })
 
@@ -122,13 +122,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus surface.100 property', () => {
     expect(dangerTokens.danger.surface['100'].value.base).toEqual(
-      formatSemanticToken`cerberus.danger.90`,
+      formatSemanticToken`danger.cerberus.90`,
     )
     expect(dangerTokens.danger.surface['100'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.90`,
+      formatSemanticToken`danger.cerberus.90`,
     )
     expect(dangerTokens.danger.surface['100'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.10`,
+      formatSemanticToken`danger.cerberus.10`,
     )
   })
 
@@ -136,13 +136,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus surface.200 property', () => {
     expect(dangerTokens.danger.surface['200'].value.base).toEqual(
-      formatSemanticToken`cerberus.danger.70`,
+      formatSemanticToken`danger.cerberus.70`,
     )
     expect(dangerTokens.danger.surface['200'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.70`,
+      formatSemanticToken`danger.cerberus.70`,
     )
     expect(dangerTokens.danger.surface['200'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.60`,
+      formatSemanticToken`danger.cerberus.60`,
     )
   })
 
@@ -150,13 +150,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus text.initial property', () => {
     expect(dangerTokens.danger.text.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.danger.60`,
+      formatSemanticToken`danger.cerberus.60`,
     )
     expect(dangerTokens.danger.text.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.60`,
+      formatSemanticToken`danger.cerberus.60`,
     )
     expect(dangerTokens.danger.text.initial.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.70`,
+      formatSemanticToken`danger.cerberus.70`,
     )
   })
 
@@ -164,13 +164,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus text.100 property', () => {
     expect(dangerTokens.danger.text['100'].value.base).toEqual(
-      formatSemanticToken`cerberus.danger.30`,
+      formatSemanticToken`danger.cerberus.20`,
     )
     expect(dangerTokens.danger.text['100'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.30`,
+      formatSemanticToken`danger.cerberus.20`,
     )
     expect(dangerTokens.danger.text['100'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.80`,
+      formatSemanticToken`danger.cerberus.80`,
     )
   })
 
@@ -178,13 +178,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus text.200 property', () => {
     expect(dangerTokens.danger.text['200'].value.base).toEqual(
-      formatSemanticToken`cerberus.danger.10`,
+      formatSemanticToken`danger.cerberus.10`,
     )
     expect(dangerTokens.danger.text['200'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.10`,
+      formatSemanticToken`danger.cerberus.10`,
     )
     expect(dangerTokens.danger.text['200'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.100`,
+      formatSemanticToken`danger.cerberus.100`,
     )
   })
 
@@ -192,13 +192,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus text.inverse property', () => {
     expect(dangerTokens.danger.text.inverse.value.base).toEqual(
-      formatSemanticToken`cerberus.danger.90`,
+      formatSemanticToken`danger.cerberus.100`,
     )
     expect(dangerTokens.danger.text.inverse.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.90`,
+      formatSemanticToken`danger.cerberus.100`,
     )
     expect(dangerTokens.danger.text.inverse.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.10`,
+      formatSemanticToken`danger.cerberus.10`,
     )
   })
 
@@ -206,13 +206,13 @@ describe('dangerTokens', () => {
 
   test('should have a cerberus text.static property', () => {
     expect(dangerTokens.danger.text.static.value.base).toEqual(
-      formatSemanticToken`cerberus.danger.80`,
+      formatSemanticToken`danger.cerberus.80`,
     )
     expect(dangerTokens.danger.text.static.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.danger.80`,
+      formatSemanticToken`danger.cerberus.80`,
     )
     expect(dangerTokens.danger.text.static.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.danger.80`,
+      formatSemanticToken`danger.cerberus.80`,
     )
   })
 })

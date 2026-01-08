@@ -1,13 +1,13 @@
 import { describe, test, expect } from 'bun:test'
 import { recipes } from '@cerberus-design/panda-preset'
-import { gradientValues } from '@cerberus/tokens'
+import { getGradients } from '@cerberus/tokens'
 
 describe('tag recipe', () => {
   const { tag } = recipes
   const PAGE_TEXT_INITIAL = 'page.text.initial'
 
   function createGradientOutlineVariants() {
-    return gradientValues.map((name) => ({
+    return getGradients().map((name) => ({
       gradient: name,
       usage: 'outlined',
       css: {

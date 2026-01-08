@@ -10,13 +10,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium diverging.50 property', () => {
     expect(dataVizTokens.dataViz.diverging[50].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.60`,
+      formatSemanticToken`info.elysium.80`,
     )
     expect(dataVizTokens.dataViz.diverging[50].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.60`,
+      formatSemanticToken`info.elysium.80`,
     )
     expect(dataVizTokens.dataViz.diverging[50].value._lightMode).toEqual(
-      formatSemanticToken`elysium.brand.60`,
+      formatSemanticToken`info.elysium.80`,
     )
   })
 
@@ -24,13 +24,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium diverging.100 property', () => {
     expect(dataVizTokens.dataViz.diverging[100].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.50`,
+      formatSemanticToken`info.elysium.70`,
     )
     expect(dataVizTokens.dataViz.diverging[100].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.50`,
+      formatSemanticToken`info.elysium.70`,
     )
     expect(dataVizTokens.dataViz.diverging[100].value._lightMode).toEqual(
-      formatSemanticToken`elysium.brand.50`,
+      formatSemanticToken`info.elysium.70`,
     )
   })
 
@@ -38,13 +38,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium diverging.200 property', () => {
     expect(dataVizTokens.dataViz.diverging[200].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.40`,
+      formatSemanticToken`info.elysium.60`,
     )
     expect(dataVizTokens.dataViz.diverging[200].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.40`,
+      formatSemanticToken`info.elysium.60`,
     )
     expect(dataVizTokens.dataViz.diverging[200].value._lightMode).toEqual(
-      formatSemanticToken`elysium.brand.40`,
+      formatSemanticToken`info.elysium.60`,
     )
   })
 
@@ -52,13 +52,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium diverging.300 property', () => {
     expect(dataVizTokens.dataViz.diverging[300].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.30`,
+      formatSemanticToken`info.elysium.50`,
     )
     expect(dataVizTokens.dataViz.diverging[300].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.30`,
+      formatSemanticToken`info.elysium.50`,
     )
     expect(dataVizTokens.dataViz.diverging[300].value._lightMode).toEqual(
-      formatSemanticToken`elysium.brand.30`,
+      formatSemanticToken`info.elysium.50`,
     )
   })
 
@@ -66,13 +66,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium diverging.400 property', () => {
     expect(dataVizTokens.dataViz.diverging[400].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.20`,
+      formatSemanticToken`info.elysium.40`,
     )
     expect(dataVizTokens.dataViz.diverging[400].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.20`,
+      formatSemanticToken`info.elysium.40`,
     )
     expect(dataVizTokens.dataViz.diverging[400].value._lightMode).toEqual(
-      formatSemanticToken`elysium.brand.20`,
+      formatSemanticToken`info.elysium.30`,
     )
   })
 
@@ -80,13 +80,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium diverging.500 property', () => {
     expect(dataVizTokens.dataViz.diverging[500].value.base).toEqual(
-      formatSemanticToken`cerberus.neutral.5`,
+      formatSemanticToken`elysium.neutral.10`,
     )
     expect(dataVizTokens.dataViz.diverging[500].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.neutral.5`,
+      formatSemanticToken`elysium.neutral.10`,
     )
     expect(dataVizTokens.dataViz.diverging[500].value._lightMode).toEqual(
-      formatSemanticToken`elysium.neutral.5`,
+      formatSemanticToken`elysium.neutral.10`,
     )
   })
 
@@ -94,13 +94,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium diverging.600 property', () => {
     expect(dataVizTokens.dataViz.diverging[600].value.base).toEqual(
-      formatSemanticToken`cerberus.brand.30`,
+      formatSemanticToken`elysium.brand.40`,
     )
     expect(dataVizTokens.dataViz.diverging[600].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.brand.30`,
+      formatSemanticToken`elysium.brand.40`,
     )
     expect(dataVizTokens.dataViz.diverging[600].value._lightMode).toEqual(
-      formatSemanticToken`elysium.info.30`,
+      formatSemanticToken`elysium.brand.40`,
     )
   })
 
@@ -108,13 +108,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium diverging.700 property', () => {
     expect(dataVizTokens.dataViz.diverging[700].value.base).toEqual(
-      formatSemanticToken`cerberus.brand.40`,
+      formatSemanticToken`elysium.brand.50`,
     )
     expect(dataVizTokens.dataViz.diverging[700].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.brand.40`,
+      formatSemanticToken`elysium.brand.50`,
     )
     expect(dataVizTokens.dataViz.diverging[700].value._lightMode).toEqual(
-      formatSemanticToken`elysium.info.40`,
+      formatSemanticToken`elysium.brand.50`,
     )
   })
 
@@ -122,13 +122,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium diverging.800 property', () => {
     expect(dataVizTokens.dataViz.diverging[800].value.base).toEqual(
-      formatSemanticToken`cerberus.brand.50`,
+      formatSemanticToken`elysium.brand.60`,
     )
     expect(dataVizTokens.dataViz.diverging[800].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.brand.50`,
+      formatSemanticToken`elysium.brand.60`,
     )
     expect(dataVizTokens.dataViz.diverging[800].value._lightMode).toEqual(
-      formatSemanticToken`elysium.info.60`,
+      formatSemanticToken`elysium.brand.60`,
     )
   })
 
@@ -136,13 +136,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium diverging.900 property', () => {
     expect(dataVizTokens.dataViz.diverging[900].value.base).toEqual(
-      formatSemanticToken`cerberus.brand.60`,
+      formatSemanticToken`elysium.brand.70`,
     )
     expect(dataVizTokens.dataViz.diverging[900].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.brand.60`,
+      formatSemanticToken`elysium.brand.70`,
     )
     expect(dataVizTokens.dataViz.diverging[900].value._lightMode).toEqual(
-      formatSemanticToken`elysium.info.70`,
+      formatSemanticToken`elysium.brand.70`,
     )
   })
 
@@ -150,13 +150,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium sequential.100 property', () => {
     expect(dataVizTokens.dataViz.sequential[100].value.base).toEqual(
-      formatSemanticToken`elysium.brand.80`,
+      formatSemanticToken`elysium.brand.90`,
     )
     expect(dataVizTokens.dataViz.sequential[100].value._darkMode).toEqual(
-      formatSemanticToken`elysium.brand.80`,
+      formatSemanticToken`elysium.brand.90`,
     )
     expect(dataVizTokens.dataViz.sequential[100].value._lightMode).toEqual(
-      formatSemanticToken`elysium.brand.20`,
+      formatSemanticToken`elysium.brand.30`,
     )
   })
 
@@ -178,10 +178,10 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium sequential.300 property', () => {
     expect(dataVizTokens.dataViz.sequential[300].value.base).toEqual(
-      formatSemanticToken`elysium.brand.60`,
+      formatSemanticToken`elysium.brand.50`,
     )
     expect(dataVizTokens.dataViz.sequential[300].value._darkMode).toEqual(
-      formatSemanticToken`elysium.brand.60`,
+      formatSemanticToken`elysium.brand.50`,
     )
     expect(dataVizTokens.dataViz.sequential[300].value._lightMode).toEqual(
       formatSemanticToken`elysium.brand.50`,
@@ -192,10 +192,10 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium sequential.400 property', () => {
     expect(dataVizTokens.dataViz.sequential[400].value.base).toEqual(
-      formatSemanticToken`elysium.brand.40`,
+      formatSemanticToken`elysium.brand.30`,
     )
     expect(dataVizTokens.dataViz.sequential[400].value._darkMode).toEqual(
-      formatSemanticToken`elysium.brand.40`,
+      formatSemanticToken`elysium.brand.30`,
     )
     expect(dataVizTokens.dataViz.sequential[400].value._lightMode).toEqual(
       formatSemanticToken`elysium.brand.70`,
@@ -206,10 +206,10 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium sequential.500 property', () => {
     expect(dataVizTokens.dataViz.sequential[500].value.base).toEqual(
-      formatSemanticToken`elysium.brand.30`,
+      formatSemanticToken`elysium.brand.20`,
     )
     expect(dataVizTokens.dataViz.sequential[500].value._darkMode).toEqual(
-      formatSemanticToken`elysium.brand.30`,
+      formatSemanticToken`elysium.brand.20`,
     )
     expect(dataVizTokens.dataViz.sequential[500].value._lightMode).toEqual(
       formatSemanticToken`elysium.brand.80`,
@@ -220,13 +220,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium sequential.600 property', () => {
     expect(dataVizTokens.dataViz.sequential[600].value.base).toEqual(
-      formatSemanticToken`elysium.brand.10`,
+      formatSemanticToken`elysium.brand.5`,
     )
     expect(dataVizTokens.dataViz.sequential[600].value._darkMode).toEqual(
-      formatSemanticToken`elysium.brand.10`,
+      formatSemanticToken`elysium.brand.5`,
     )
     expect(dataVizTokens.dataViz.sequential[600].value._lightMode).toEqual(
-      formatSemanticToken`elysium.brand.90`,
+      formatSemanticToken`elysium.brand.100`,
     )
   })
 
@@ -240,7 +240,7 @@ describe('Elysium > dataVizTokens', () => {
       formatSemanticToken`elysium.brand.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[100].value._lightMode).toEqual(
-      formatSemanticToken`elysium.brand.60`,
+      formatSemanticToken`elysium.brand.50`,
     )
   })
 
@@ -248,13 +248,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium qualitative.200 property', () => {
     expect(dataVizTokens.dataViz.qualitative[200].value.base).toEqual(
-      formatSemanticToken`elysium.accent.70`,
+      formatSemanticToken`warning.elysium.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[200].value._darkMode).toEqual(
-      formatSemanticToken`elysium.accent.70`,
+      formatSemanticToken`warning.elysium.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[200].value._lightMode).toEqual(
-      formatSemanticToken`elysium.accent.70`,
+      formatSemanticToken`warning.elysium.60`,
     )
   })
 
@@ -262,13 +262,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium qualitative.300 property', () => {
     expect(dataVizTokens.dataViz.qualitative[300].value.base).toEqual(
-      formatSemanticToken`elysium.warning.60`,
+      formatSemanticToken`elysium.success.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[300].value._darkMode).toEqual(
-      formatSemanticToken`elysium.warning.60`,
+      formatSemanticToken`elysium.success.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[300].value._lightMode).toEqual(
-      formatSemanticToken`elysium.warning.60`,
+      formatSemanticToken`elysium.success.60`,
     )
   })
 
@@ -276,13 +276,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium qualitative.400 property', () => {
     expect(dataVizTokens.dataViz.qualitative[400].value.base).toEqual(
-      formatSemanticToken`elysium.success.50`,
+      formatSemanticToken`elysium.accent.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[400].value._darkMode).toEqual(
-      formatSemanticToken`elysium.success.50`,
+      formatSemanticToken`elysium.accent.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[400].value._lightMode).toEqual(
-      formatSemanticToken`elysium.success.50`,
+      formatSemanticToken`elysium.accent.60`,
     )
   })
 
@@ -290,13 +290,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium qualitative.500 property', () => {
     expect(dataVizTokens.dataViz.qualitative[500].value.base).toEqual(
-      formatSemanticToken`elysium.info.60`,
+      formatSemanticToken`info.elysium.50`,
     )
     expect(dataVizTokens.dataViz.qualitative[500].value._darkMode).toEqual(
-      formatSemanticToken`elysium.info.60`,
+      formatSemanticToken`info.elysium.50`,
     )
     expect(dataVizTokens.dataViz.qualitative[500].value._lightMode).toEqual(
-      formatSemanticToken`elysium.info.60`,
+      formatSemanticToken`info.elysium.50`,
     )
   })
 
@@ -304,13 +304,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium qualitative.600 property', () => {
     expect(dataVizTokens.dataViz.qualitative[600].value.base).toEqual(
-      formatSemanticToken`elysium.danger.50`,
+      formatSemanticToken`elysium.brand.10`,
     )
     expect(dataVizTokens.dataViz.qualitative[600].value._darkMode).toEqual(
-      formatSemanticToken`elysium.danger.50`,
+      formatSemanticToken`elysium.brand.10`,
     )
     expect(dataVizTokens.dataViz.qualitative[600].value._lightMode).toEqual(
-      formatSemanticToken`elysium.danger.50`,
+      formatSemanticToken`elysium.neutral.70`,
     )
   })
 
@@ -318,13 +318,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium qualitative.700 property', () => {
     expect(dataVizTokens.dataViz.qualitative[700].value.base).toEqual(
-      formatSemanticToken`elysium.neutral.30`,
+      formatSemanticToken`elysium.neutral.40`,
     )
     expect(dataVizTokens.dataViz.qualitative[700].value._darkMode).toEqual(
-      formatSemanticToken`elysium.neutral.30`,
+      formatSemanticToken`elysium.neutral.40`,
     )
     expect(dataVizTokens.dataViz.qualitative[700].value._lightMode).toEqual(
-      formatSemanticToken`elysium.neutral.30`,
+      formatSemanticToken`elysium.brand.80`,
     )
   })
 
@@ -332,13 +332,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium progress.start property', () => {
     expect(dataVizTokens.dataViz.progress.start.value.base).toEqual(
-      formatSemanticToken`elysium.brand.60`,
+      formatSemanticToken`elysium.brand.40`,
     )
     expect(dataVizTokens.dataViz.progress.start.value._darkMode).toEqual(
-      formatSemanticToken`elysium.brand.60`,
+      formatSemanticToken`elysium.brand.40`,
     )
     expect(dataVizTokens.dataViz.progress.start.value._lightMode).toEqual(
-      formatSemanticToken`elysium.brand.60`,
+      formatSemanticToken`elysium.brand.40`,
     )
   })
 
@@ -346,13 +346,13 @@ describe('Elysium > dataVizTokens', () => {
 
   test('should have a elysium progress.end property', () => {
     expect(dataVizTokens.dataViz.progress.end.value.base).toEqual(
-      formatSemanticToken`elysium.brand.80`,
+      formatSemanticToken`elysium.brand.70`,
     )
     expect(dataVizTokens.dataViz.progress.end.value._darkMode).toEqual(
-      formatSemanticToken`elysium.brand.80`,
+      formatSemanticToken`elysium.brand.70`,
     )
     expect(dataVizTokens.dataViz.progress.end.value._lightMode).toEqual(
-      formatSemanticToken`elysium.brand.80`,
+      formatSemanticToken`elysium.brand.70`,
     )
   })
 

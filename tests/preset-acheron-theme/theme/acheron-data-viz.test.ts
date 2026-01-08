@@ -10,10 +10,10 @@ describe('dataVizTokens', () => {
 
   test('should have a acheron diverging.50 property', () => {
     expect(dataVizTokens.dataViz.diverging[50].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.60`,
+      formatSemanticToken`warning.cerberus.60`,
     )
     expect(dataVizTokens.dataViz.diverging[50].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.60`,
+      formatSemanticToken`warning.cerberus.60`,
     )
     expect(dataVizTokens.dataViz.diverging[50].value._lightMode).toEqual(
       formatSemanticToken`acheron.brand.60`,
@@ -24,10 +24,10 @@ describe('dataVizTokens', () => {
 
   test('should have a acheron diverging.100 property', () => {
     expect(dataVizTokens.dataViz.diverging[100].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.50`,
+      formatSemanticToken`warning.cerberus.50`,
     )
     expect(dataVizTokens.dataViz.diverging[100].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.50`,
+      formatSemanticToken`warning.cerberus.50`,
     )
     expect(dataVizTokens.dataViz.diverging[100].value._lightMode).toEqual(
       formatSemanticToken`acheron.brand.50`,
@@ -38,10 +38,10 @@ describe('dataVizTokens', () => {
 
   test('should have a acheron diverging.200 property', () => {
     expect(dataVizTokens.dataViz.diverging[200].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.40`,
+      formatSemanticToken`warning.cerberus.40`,
     )
     expect(dataVizTokens.dataViz.diverging[200].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.40`,
+      formatSemanticToken`warning.cerberus.40`,
     )
     expect(dataVizTokens.dataViz.diverging[200].value._lightMode).toEqual(
       formatSemanticToken`acheron.brand.40`,
@@ -52,10 +52,10 @@ describe('dataVizTokens', () => {
 
   test('should have a acheron diverging.300 property', () => {
     expect(dataVizTokens.dataViz.diverging[300].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.30`,
+      formatSemanticToken`warning.cerberus.30`,
     )
     expect(dataVizTokens.dataViz.diverging[300].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.30`,
+      formatSemanticToken`warning.cerberus.30`,
     )
     expect(dataVizTokens.dataViz.diverging[300].value._lightMode).toEqual(
       formatSemanticToken`acheron.brand.30`,
@@ -66,10 +66,10 @@ describe('dataVizTokens', () => {
 
   test('should have a acheron diverging.400 property', () => {
     expect(dataVizTokens.dataViz.diverging[400].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.20`,
+      formatSemanticToken`warning.cerberus.20`,
     )
     expect(dataVizTokens.dataViz.diverging[400].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.20`,
+      formatSemanticToken`warning.cerberus.20`,
     )
     expect(dataVizTokens.dataViz.diverging[400].value._lightMode).toEqual(
       formatSemanticToken`acheron.brand.20`,
@@ -100,7 +100,7 @@ describe('dataVizTokens', () => {
       formatSemanticToken`cerberus.brand.30`,
     )
     expect(dataVizTokens.dataViz.diverging[600].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.30`,
+      formatSemanticToken`info.acheron.30`,
     )
   })
 
@@ -114,7 +114,7 @@ describe('dataVizTokens', () => {
       formatSemanticToken`cerberus.brand.40`,
     )
     expect(dataVizTokens.dataViz.diverging[700].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.40`,
+      formatSemanticToken`info.acheron.40`,
     )
   })
 
@@ -128,7 +128,7 @@ describe('dataVizTokens', () => {
       formatSemanticToken`cerberus.brand.50`,
     )
     expect(dataVizTokens.dataViz.diverging[800].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.60`,
+      formatSemanticToken`info.acheron.60`,
     )
   })
 
@@ -142,7 +142,7 @@ describe('dataVizTokens', () => {
       formatSemanticToken`cerberus.brand.60`,
     )
     expect(dataVizTokens.dataViz.diverging[900].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.70`,
+      formatSemanticToken`info.acheron.70`,
     )
   })
 
@@ -262,13 +262,13 @@ describe('dataVizTokens', () => {
 
   test('should have a acheron qualitative.300 property', () => {
     expect(dataVizTokens.dataViz.qualitative[300].value.base).toEqual(
-      formatSemanticToken`acheron.warning.60`,
+      formatSemanticToken`warning.acheron.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[300].value._darkMode).toEqual(
-      formatSemanticToken`acheron.warning.60`,
+      formatSemanticToken`warning.acheron.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[300].value._lightMode).toEqual(
-      formatSemanticToken`acheron.warning.60`,
+      formatSemanticToken`warning.acheron.60`,
     )
   })
 
@@ -290,13 +290,13 @@ describe('dataVizTokens', () => {
 
   test('should have a acheron qualitative.500 property', () => {
     expect(dataVizTokens.dataViz.qualitative[500].value.base).toEqual(
-      formatSemanticToken`acheron.info.60`,
+      formatSemanticToken`info.acheron.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[500].value._darkMode).toEqual(
-      formatSemanticToken`acheron.info.60`,
+      formatSemanticToken`info.acheron.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[500].value._lightMode).toEqual(
-      formatSemanticToken`acheron.info.60`,
+      formatSemanticToken`info.acheron.60`,
     )
   })
 
@@ -304,13 +304,13 @@ describe('dataVizTokens', () => {
 
   test('should have a acheron qualitative.600 property', () => {
     expect(dataVizTokens.dataViz.qualitative[600].value.base).toEqual(
-      formatSemanticToken`acheron.danger.50`,
+      formatSemanticToken`danger.acheron.50`,
     )
     expect(dataVizTokens.dataViz.qualitative[600].value._darkMode).toEqual(
-      formatSemanticToken`acheron.danger.50`,
+      formatSemanticToken`danger.acheron.50`,
     )
     expect(dataVizTokens.dataViz.qualitative[600].value._lightMode).toEqual(
-      formatSemanticToken`acheron.danger.50`,
+      formatSemanticToken`danger.acheron.50`,
     )
   })
 

@@ -15,12 +15,14 @@ describe('Elysium > page', () => {
   // backdrop.initial
 
   test('should have a elysium backdrop.initial property', () => {
-    expect(token.backdrop.initial.value.base).toEqual('rgba(27, 26, 25, 0.50)')
+    expect(token.backdrop.initial.value.base).toEqual(
+      'rgba(0.27732497453689575, 0.27732497453689575, 0.27732497453689575, 0.6000000238418579)',
+    )
     expect(token.backdrop.initial.value._darkMode).toEqual(
-      'rgba(27, 26, 25, 0.50)',
+      'rgba(0.27732497453689575, 0.27732497453689575, 0.27732497453689575, 0.6000000238418579)',
     )
     expect(token.backdrop.initial.value._lightMode).toEqual(
-      'rgba(106, 103, 100, 0.50)',
+      'rgba(0.7085617780685425, 0.7058011889457703, 0.7058011889457703, 0.6000000238418579)',
     )
   })
 
@@ -112,13 +114,13 @@ describe('Elysium > page', () => {
 
   test('should have a elysium border.200 property', () => {
     expect(token.border[200].value.base).toEqual(
-      getSemanticToken`elysium.neutral.60`,
+      getSemanticToken`elysium.neutral.30`,
     )
     expect(token.border[200].value._darkMode).toEqual(
-      getSemanticToken`elysium.neutral.60`,
+      getSemanticToken`elysium.neutral.30`,
     )
     expect(token.border[200].value._lightMode).toEqual(
-      getSemanticToken`elysium.neutral.60`,
+      getSemanticToken`elysium.neutral.40`,
     )
   })
 
@@ -132,7 +134,7 @@ describe('Elysium > page', () => {
       getSemanticToken`elysium.neutral.100`,
     )
     expect(token.surface.initial.value._lightMode).toEqual(
-      getSemanticToken`elysium.neutral.white`,
+      getSemanticToken`elysium.neutral.5`,
     )
   })
 
@@ -146,7 +148,7 @@ describe('Elysium > page', () => {
       getSemanticToken`elysium.neutral.90`,
     )
     expect(token.surface[100].value._lightMode).toEqual(
-      getSemanticToken`elysium.neutral.5`,
+      getSemanticToken`elysium.neutral.white`,
     )
   })
 
@@ -154,10 +156,10 @@ describe('Elysium > page', () => {
 
   test('should have a elysium surface.200 property', () => {
     expect(token.surface[200].value.base).toEqual(
-      getSemanticToken`elysium.neutral.80`,
+      getSemanticToken`elysium.neutral.70`,
     )
     expect(token.surface[200].value._darkMode).toEqual(
-      getSemanticToken`elysium.neutral.80`,
+      getSemanticToken`elysium.neutral.70`,
     )
     expect(token.surface[200].value._lightMode).toEqual(
       getSemanticToken`elysium.neutral.10`,
@@ -168,10 +170,10 @@ describe('Elysium > page', () => {
 
   test('should have a elysium surface.300 property', () => {
     expect(token.surface[300].value.base).toEqual(
-      getSemanticToken`elysium.neutral.70`,
+      getSemanticToken`elysium.neutral.60`,
     )
     expect(token.surface[300].value._darkMode).toEqual(
-      getSemanticToken`elysium.neutral.70`,
+      getSemanticToken`elysium.neutral.60`,
     )
     expect(token.surface[300].value._lightMode).toEqual(
       getSemanticToken`elysium.neutral.20`,
@@ -182,10 +184,10 @@ describe('Elysium > page', () => {
 
   test('should have a elysium surface.400 property', () => {
     expect(token.surface[400].value.base).toEqual(
-      getSemanticToken`elysium.neutral.60`,
+      getSemanticToken`elysium.neutral.50`,
     )
     expect(token.surface[400].value._darkMode).toEqual(
-      getSemanticToken`elysium.neutral.60`,
+      getSemanticToken`elysium.neutral.50`,
     )
     expect(token.surface[400].value._lightMode).toEqual(
       getSemanticToken`elysium.neutral.30`,
@@ -238,10 +240,10 @@ describe('Elysium > page', () => {
 
   test('should have a elysium text.200 property', () => {
     expect(token.text[200].value.base).toEqual(
-      getSemanticToken`elysium.neutral.20`,
+      getSemanticToken`elysium.neutral.10`,
     )
     expect(token.text[200].value._darkMode).toEqual(
-      getSemanticToken`elysium.neutral.20`,
+      getSemanticToken`elysium.neutral.10`,
     )
     expect(token.text[200].value._lightMode).toEqual(
       getSemanticToken`elysium.neutral.70`,
@@ -258,7 +260,7 @@ describe('Elysium > page', () => {
       getSemanticToken`elysium.neutral.white`,
     )
     expect(token.text[300].value._lightMode).toEqual(
-      getSemanticToken`elysium.brand.100`,
+      getSemanticToken`elysium.neutral.100`,
     )
   })
 

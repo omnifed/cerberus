@@ -1,6 +1,6 @@
 import type { SystemStyleObject } from '@pandacss/types'
 import {
-  gradientValues,
+  getGradients,
   type GradientValue,
   type Sentiment,
 } from '@cerberus/tokens'
@@ -63,7 +63,7 @@ export function createGradientVariants(): Record<
   GradientValue,
   SystemStyleObject
 > {
-  return gradientValues.reduce((acc, value) => {
+  return getGradients().reduce((acc, value) => {
     return {
       ...acc,
       [value]: {
@@ -92,7 +92,7 @@ export function createSlotGradientVariants(): Record<
   GradientValue,
   Record<'root', SystemStyleObject>
 > {
-  return gradientValues.reduce((acc, value) => {
+  return getGradients().reduce((acc, value) => {
     return {
       ...acc,
       [value]: {

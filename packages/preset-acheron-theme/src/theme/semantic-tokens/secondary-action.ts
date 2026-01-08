@@ -1,6 +1,6 @@
 import {
   type SecondaryActionTokens,
-  formatSemanticTokenValue,
+  createSemanticToken,
 } from '@cerberus/tokens'
 import { getThemeName } from '../../config'
 
@@ -14,54 +14,45 @@ const THEME = getThemeName()
 export const secondaryActionTokens: SecondaryActionTokens = {
   secondaryAction: {
     bg: {
-      initial: formatSemanticTokenValue(
-        'background.secondary-action.initial',
+      initial: createSemanticToken(
         THEME,
+        'secondary-action.background.initial',
       ),
-      hover: formatSemanticTokenValue(
-        'background.secondary-action.hover',
-        THEME,
-      ),
-      active: formatSemanticTokenValue(
-        'background.secondary-action.active',
-        THEME,
-      ),
+      hover: createSemanticToken(THEME, 'secondary-action.background.hover'),
+      active: createSemanticToken(THEME, 'secondary-action.background.active'),
     },
 
     border: {
-      initial: formatSemanticTokenValue(
-        'border.secondary-action.initial',
-        THEME,
-      ),
-      100: formatSemanticTokenValue('border.secondary-action.100', THEME),
+      initial: createSemanticToken(THEME, 'secondary-action.border.initial'),
+      100: createSemanticToken(THEME, 'secondary-action.border.100'),
     },
 
     ghost: {
-      initial: formatSemanticTokenValue(
-        'ghost.secondary-action.initial',
-        THEME,
-      ),
-      hover: formatSemanticTokenValue('ghost.secondary-action.hover', THEME),
-      active: formatSemanticTokenValue('ghost.secondary-action.active', THEME),
+      initial: createSemanticToken(THEME, 'secondary-action.ghost.initial'),
+      hover: createSemanticToken(THEME, 'secondary-action.ghost.hover'),
+      active: createSemanticToken(THEME, 'secondary-action.ghost.active'),
     },
 
     navigation: {
-      initial: formatSemanticTokenValue(
-        'text.secondary-action.navigation.initial',
+      initial: createSemanticToken(
         THEME,
+        'secondary-action.text.navigation.initial',
       ),
-      hover: formatSemanticTokenValue('text.secondary-action.navigation.hover'),
-      visited: formatSemanticTokenValue(
-        'text.secondary-action.navigation.visited',
+      hover: createSemanticToken(
         THEME,
+        'secondary-action.text.navigation.hover',
+      ),
+      visited: createSemanticToken(
+        THEME,
+        'secondary-action.text.navigation.visited',
       ),
     },
 
     text: {
-      initial: formatSemanticTokenValue('text.secondary-action.initial', THEME),
-      100: formatSemanticTokenValue('text.secondary-action.100', THEME),
-      200: formatSemanticTokenValue('text.secondary-action.200', THEME),
-      static: formatSemanticTokenValue('text.secondary-action.static', THEME),
+      initial: createSemanticToken(THEME, 'secondary-action.text.initial'),
+      100: createSemanticToken(THEME, 'secondary-action.text.100'),
+      200: createSemanticToken(THEME, 'secondary-action.text.200'),
+      static: createSemanticToken(THEME, 'secondary-action.text.static'),
     },
   },
 }
