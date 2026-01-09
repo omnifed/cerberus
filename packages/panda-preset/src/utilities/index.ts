@@ -50,74 +50,27 @@ export const size: CustomUtilityConfig<'size'> = {
   },
 }
 
-// TODO: Start here - figure out why gradients aren't working
-
 const gradient: CustomUtilityConfig<'gradient'> = {
   gradient: {
     className: 'gradient',
+    shorthand: 'grad',
     values: getGradients(),
-    transform(value: GradientValue | 'progress' | 'complete') {
-      // For some reason, we can only use dynamic token() argument values.
-      // Creating dynamic objects for the return throws an error in NextJS.
-      // const color = token(`colors.gradient.${value}.text.initial`)
-
+    transform(value: GradientValue | 'progress' | 'complete', { token }) {
       if (value === 'progress') {
         return {
-          backgroundImage:
-            'linear-gradient(to right, var(--cerberus-colors-data-viz-progress-start), var(--cerberus-colors-data-viz-progress-end))',
+          backgroundImage: `linear-gradient(to right, ${token('colors.data-viz.progress.start')}, ${token('colors.data-viz.progress.end')})`,
         }
       }
 
       if (value === 'complete') {
         return {
-          backgroundImage:
-            'linear-gradient(to right, var(--cerberus-colors-data-viz-progress-complete), var(--cerberus-colors-data-viz-progress-complete))',
+          backgroundImage: `linear-gradient(to right, ${token('colors.data-viz.progress.complete')}, ${token('colors.data-viz.progress.complete')})`,
         }
       }
 
       return {
-        backgroundImage: `linear-gradient(to right, var(--cerberus-colors-${value}-start), var(--cerberus-colors-${value}-end))`,
-        color: `var(--cerberus-colors-${value}-text)`,
-
-        // // base
-        // [conditions.lightMode]: {
-        //   backgroundImage: token(`${data.lightToken}.${value}`),
-        //   color,
-        // },
-        // [conditions.darkMode]: {
-        //   backgroundImage: token(`${data.darkToken}.${value}`),
-        //   color,
-        // },
-        // [conditions.systemMode]: {
-        //   backgroundImage: token(`${data.darkToken}.${value}`),
-        //   color,
-        // },
-        // // cerberus
-        // [`[data-panda-theme=cerberus]${conditions.lightMode}`]: {
-        //   backgroundImage: token(`${data.lightToken}.${value}`),
-        //   color,
-        // },
-        // [`[data-panda-theme=cerberus]${conditions.darkMode}`]: {
-        //   backgroundImage: token(`${data.darkToken}.${value}`),
-        //   color,
-        // },
-        // [`[data-panda-theme=cerberus]${conditions.systemMode}`]: {
-        //   backgroundImage: token(`${data.darkToken}.${value}`),
-        //   color,
-        // },
-        // // acheron
-        // [`[data-panda-theme=acheron]${conditions.lightMode}`]: {
-        //   backgroundImage: token(`${data.acheronLightToken}.${value}`),
-        //   color,
-        // },
-        // [`[data-panda-theme=acheron]${conditions.darkMode}`]: {
-        //   backgroundImage: token(`${data.acheronDarkToken}.${value}`),
-        //   color,
-        // },
-        // [`[data-panda-theme=acheron]${conditions.systemMode}`]: {
-        //   backgroundImage: token(`${data.acheronDarkToken}.${value}`),
-        //   color,
-        // },
+        backgroundImage: `linear-gradient(to right, ${token(`colors.gradient.${value}.start`)}, ${token(`colors.gradient.${value}.end`)})`,
+        color: token(`colors.gradient.${value}.text`),
       }
     },
   },
@@ -126,64 +79,12 @@ const gradient: CustomUtilityConfig<'gradient'> = {
 const borderGradient: CustomUtilityConfig<'borderGradient'> = {
   borderGradient: {
     className: 'border-gradient',
+    shorthand: 'borderGrad',
     values: getGradients(),
-    transform(value: GradientValue) {
-      // For some reason, we can only use dynamic token() argument values.
-      // Creating dynamic objects for the return throws an error in NextJS.
-      const color = 'var(--cerberus-colors-page-text-initial)'
-      const gradientBg =
-        'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0),'
-
+    transform(value: GradientValue, { token }) {
       return {
-        backgroundImage:
-          gradientBg +
-          `var(--cerberus-colors-${value}-start), var(--cerberus-colors-${value}-end)`,
-        color,
-
-        // // base
-        // [conditions.lightMode]: {
-        //   backgroundImage: gradientBg + token(`${data.lightToken}.${value}`),
-        //   color,
-        // },
-        // [conditions.darkMode]: {
-        //   backgroundImage: gradientBg + token(`${data.darkToken}.${value}`),
-        //   color,
-        // },
-        // [conditions.systemMode]: {
-        //   backgroundImage: gradientBg + token(`${data.darkToken}.${value}`),
-        //   color,
-        // },
-
-        // // cerberus
-        // [`[data-panda-theme=cerberus]${conditions.lightMode}`]: {
-        //   backgroundImage: gradientBg + token(`${data.lightToken}.${value}`),
-        //   color,
-        // },
-        // [`[data-panda-theme=cerberus]${conditions.darkMode}`]: {
-        //   backgroundImage: gradientBg + token(`${data.darkToken}.${value}`),
-        //   color,
-        // },
-        // [`[data-panda-theme=cerberus]${conditions.systemMode}`]: {
-        //   backgroundImage: gradientBg + token(`${data.darkToken}.${value}`),
-        //   color,
-        // },
-
-        // // acheron
-        // [`[data-panda-theme=acheron]${conditions.lightMode}`]: {
-        //   backgroundImage:
-        //     gradientBg + token(`${data.acheronLightToken}.${value}`),
-        //   color,
-        // },
-        // [`[data-panda-theme=acheron]${conditions.darkMode}`]: {
-        //   backgroundImage:
-        //     gradientBg + token(`${data.acheronDarkToken}.${value}`),
-        //   color,
-        // },
-        // [`[data-panda-theme=acheron]${conditions.systemMode}`]: {
-        //   backgroundImage:
-        //     gradientBg + token(`${data.acheronDarkToken}.${value}`),
-        //   color,
-        // },
+        backgroundImage: `conic-gradient(${token('colors.page.surface.initial')} 0 0), linear-gradient(to right, ${token(`colors.gradient.${value}.start`)}, ${token(`colors.gradient.${value}.end`)})`,
+        color: token(`colors.page.text.initial`),
       }
     },
   },

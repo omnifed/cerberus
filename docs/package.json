@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prepare": "panda codegen",
+    "prepare": "panda codegen && pnpm run spec",
     "spec": "panda spec",
     "dev": "rm -rf .next && next dev",
     "build": "next build",

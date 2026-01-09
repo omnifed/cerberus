@@ -253,7 +253,7 @@ Sometimes you may want to create Tags based on dynamic variables. In order to do
   <>Remember that PandaCSS requires static styles to be known at build time. This is how it can reliably generate atomic styles. See <Link href="/docs/styling/conditional-styles">Conditional Styles</Link> for more information.</>
 } />
 
-```typescript
+```typescript title="Interface demo"
 import { Tag, type TagProps } from '@cerberus/react'
 
 /**
@@ -280,6 +280,20 @@ export function MatchPaletteTag(props: TagProps) {
   }
 }
 ```
+
+Likewise, you can achieve this same result creating a component with the exact name as the recipe:
+
+```typescript title="Named demo"
+import { Tag as CerbyTag, type TagProps as CerbyTagProps } from '@cerberus/react'
+ 
+export function Tag(props: CerbyTagProps) {
+  return <CerbyTag {...props} />
+}
+```
+
+Because this component is named `Tag`, PandaCSS will allow dynamic styling for 
+the properties. This only happens when you create components that are named the 
+same as the recipe.
 
 ## API
 

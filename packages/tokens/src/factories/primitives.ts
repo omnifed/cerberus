@@ -63,10 +63,15 @@ export function createPrimitiveSpacing(): NonNullable<Tokens['spacing']> {
     (acc, key) => {
       const idx = key as keyof typeof primitives.spacing.tokens
       const token = primitives.spacing.tokens[idx]
-      const pxValue = token.valuesByMode[
+      let rawValue = token.valuesByMode[
         mode as keyof typeof token.valuesByMode
-      ] as number
-      const value = `${pxValue / 16}rem`
+      ] as number | string
+
+      if (token.name === 'none') {
+        rawValue = 0
+      }
+
+      const value = `${Number(rawValue) / 16}rem`
 
       // Skip old tokens that Figma is inlcuding in data
       if (idx.includes('corner-radii.')) return acc

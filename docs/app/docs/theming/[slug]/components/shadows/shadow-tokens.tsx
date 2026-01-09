@@ -1,55 +1,54 @@
-'use client'
-
+import allTokens from '@/styled-system/specs/tokens.json'
+import { For } from '@cerberus-design/react'
 import { Box, Grid } from 'styled-system/jsx'
-import { tokens } from '@cerberus-design/panda-preset'
 
 export function ShadowTokens() {
-  const shadowTokens = tokens.shadows
+  const shadowGroup = allTokens.data.find((token) => token.type === 'shadows')
+  const values = shadowGroup?.values ?? []
 
   return (
     <Grid columns={1} gap="6">
-      {Object.entries(shadowTokens).map(([key, shadow]) => (
-        <Box
-          key={key}
-          borderWidth="1px"
-          borderColor="page.border.initial"
-          rounded="md"
-          p="4"
-        >
-          <Grid columns={2} gap="4" alignItems="center">
-            <Box>
-              <Box
-                bg="page.surface.initial"
-                w="16"
-                h="16"
-                rounded="md"
-                shadow={key as 'sm' | 'md' | 'lg'}
-              />
-            </Box>
-            <Box>
-              <Box fontWeight="semibold" mb="2">
-                {key}
+      <For each={values}>
+        {(token) => (
+          <Box
+            key={token.name}
+            borderWidth="1px"
+            borderColor="page.border.initial"
+            rounded="md"
+            p="4"
+          >
+            <Grid columns={2} gap="4" alignItems="center">
+              <Box>
+                <Box
+                  bg="page.surface.initial"
+                  w="16"
+                  h="16"
+                  rounded="md"
+                  style={{
+                    boxShadow: token.cssVar,
+                  }}
+                />
               </Box>
-              <Box
-                fontFamily="mono"
-                fontSize="sm"
-                color="page.text.200"
-                bg="page.surface.100"
-                p="2"
-                rounded="sm"
-                overflowX="auto"
-              >
-                {typeof shadow.value === 'object' &&
-                !Array.isArray(shadow.value)
-                  ? `{offsetX: ${shadow.value.offsetX}, offsetY: ${shadow.value.offsetY}, blur: ${shadow.value.blur}, spread: ${shadow.value.spread}, color: "${shadow.value.color}"}`
-                  : Array.isArray(shadow.value)
-                    ? `[${shadow.value.map((s) => `"${s}"`).join(', ')}]`
-                    : `"${shadow.value}"`}
+              <Box>
+                <Box fontWeight="semibold" mb="2">
+                  {token.name}
+                </Box>
+                <Box
+                  fontFamily="mono"
+                  fontSize="sm"
+                  color="page.text.200"
+                  bg="page.surface.100"
+                  p="2"
+                  rounded="sm"
+                  overflowX="auto"
+                >
+                  {token.value}
+                </Box>
               </Box>
-            </Box>
-          </Grid>
-        </Box>
-      ))}
+            </Grid>
+          </Box>
+        )}
+      </For>
     </Grid>
   )
 }

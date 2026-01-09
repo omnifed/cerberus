@@ -58,8 +58,9 @@ describe('utilities', () => {
     expect(cerbGradient.className).toEqual('gradient')
     expect(cerbGradient.values).toEqual(getGradients())
     expect(cerbGradient.transform?.('charon-light', args)).toMatchObject({
-      backgroundImage: `linear-gradient(to right, var(--cerberus-colors-charon-light-start), var(--cerberus-colors-charon-light-end))`,
-      color: `var(--cerberus-colors-charon-light-text)`,
+      backgroundImage:
+        'linear-gradient(to right, {colors.gradient.charon-light.start}, {colors.gradient.charon-light.end})',
+      color: '{colors.gradient.charon-light.text}',
     })
   })
 
@@ -78,8 +79,8 @@ describe('utilities', () => {
     expect(cerbGradient.values).toEqual(getGradients())
     expect(cerbGradient.transform?.('charon-light', args)).toMatchObject({
       backgroundImage:
-        'conic-gradient(var(--cerberus-colors-page-surface-initial) 0 0),var(--cerberus-colors-charon-light-start), var(--cerberus-colors-charon-light-end)',
-      color: 'var(--cerberus-colors-page-text-initial)',
+        'conic-gradient({colors.page.surface.initial} 0 0), linear-gradient(to right, {colors.gradient.charon-light.start}, {colors.gradient.charon-light.end})',
+      color: '{colors.page.text.initial}',
     })
   })
 })

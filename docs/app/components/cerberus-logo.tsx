@@ -1,21 +1,22 @@
 import { css } from 'styled-system/css'
 
 export default function CerberusLogo() {
-  const cerbAccent = '#9F66D3'
-  const cerbShield = '#260048'
-  const acheronBrand60 = 'acheron.brand.60'
-  const acheronBrand100 = 'acheron.brand.100'
-
   const styles = css({
-    fill: cerbAccent,
+    fill: '#9F66D3',
     _acheronTheme: {
-      fill: acheronBrand60,
+      fill: 'acheron.brand.60',
+    },
+    _elysiumTheme: {
+      fill: 'elysium.brand.10',
     },
   })
   const accentStyles = css({
-    fill: cerbShield,
+    fill: '#260048',
     _acheronTheme: {
-      fill: acheronBrand100,
+      fill: 'acheron.brand.60',
+    },
+    _elysiumTheme: {
+      fill: 'elysium.brand.100',
     },
   })
 
