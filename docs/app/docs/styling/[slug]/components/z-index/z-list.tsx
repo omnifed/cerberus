@@ -3,6 +3,12 @@ import { tokens } from '@cerberus-design/panda-preset'
 import { hstack } from 'styled-system/patterns'
 
 export default function ZList() {
+  const zTokens = (
+    tokens as {
+      zIndex: Record<string, { value: string; description: string }>
+    }
+  ).zIndex
+
   return (
     <div
       className={css({
@@ -15,7 +21,7 @@ export default function ZList() {
           w: 'full',
         })}
       >
-        {Object.entries(tokens.zIndex).map(([key, value]) => (
+        {Object.entries(zTokens).map(([key, value]) => (
           <li
             className={css({
               borderTop: '1px solid',
