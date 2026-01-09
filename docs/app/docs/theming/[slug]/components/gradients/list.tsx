@@ -4,7 +4,7 @@ import { LogoFigma } from '@carbon/icons-react'
 import { Code } from '@/app/components/code'
 import { PAGE_TEXT_INITIAL } from '@/app/utils/const'
 import { Circle } from 'styled-system/jsx'
-import { gradientValues } from '@cerberus/tokens'
+import { getGradients } from '@cerberus/tokens'
 
 export function GradientList() {
   return (
@@ -21,7 +21,7 @@ export function GradientList() {
           w: 'full',
         })}
       >
-        {gradientValues.map((gradientName, index) => (
+        {getGradients().map((gradientName, index) => (
           <li
             className={css({
               flexShrink: 0,

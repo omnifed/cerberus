@@ -18,7 +18,7 @@ import { baseTheme } from './theme'
  * @module
  **/
 
-const cerberusPreset: Preset = definePreset({
+const basePreset: Preset = definePreset({
   name: '@cerberus/preset-base',
 
   presets: [pandaPreset, presetCerberusTheme],
@@ -30,6 +30,24 @@ const cerberusPreset: Preset = definePreset({
 
   theme: {
     extend: baseTheme,
+  },
+
+  staticCss: {
+    css: [
+      {
+        properties: {
+          colorPalette: [
+            'page',
+            'action',
+            'secondary-action',
+            'info',
+            'success',
+            'warning',
+            'danger',
+          ],
+        },
+      },
+    ],
   },
 })
 
@@ -106,7 +124,7 @@ export async function createCerberusPreset(
   options?: PresetOptions,
 ): Promise<Preset> {
   return definePreset({
-    ...cerberusPreset,
+    ...basePreset,
 
     globalVars: {
       '--font-display': options?.displayFont ?? 'Poppins, sans-serif',

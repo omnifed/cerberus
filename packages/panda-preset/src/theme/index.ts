@@ -19,6 +19,17 @@ export const baseTheme = defineTheme({
   slotRecipes,
   textStyles,
   animationStyles,
+  colorPalette: {
+    include: [
+      'page.*',
+      'action.*',
+      'secondary-action.*',
+      'info.*',
+      'success.*',
+      'warning.*',
+      'danger.*',
+    ],
+  },
 })
 
 export * from './animationStyles'

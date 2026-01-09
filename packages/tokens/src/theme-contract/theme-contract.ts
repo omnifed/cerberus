@@ -1,3 +1,5 @@
+import { getContractGradientToken, getGradients } from '../factories/primitives'
+import { Writable } from '../types'
 import type {
   ContractActionTokens,
   ContractDangerTokens,
@@ -9,7 +11,6 @@ import type {
   ContractSuccessTokens,
   ContractWarningTokens,
 } from './theme-contracts.types'
-import { createContractGradientToken } from '../index'
 
 /**
  * This module is used to define the theme contract.
@@ -120,22 +121,13 @@ export const contractDataVizTokens: ContractDataVizTokens = {
 }
 
 export const contractGradientTokens: ContractGradientTokens = {
-  gradient: {
-    'charon-light': createContractGradientToken(),
-    'charon-dark': createContractGradientToken(),
-    'nyx-light': createContractGradientToken(),
-    'nyx-dark': createContractGradientToken(),
-    'amphiaraus-light': createContractGradientToken(),
-    'amphiaraus-dark': createContractGradientToken(),
-    'styx-light': createContractGradientToken(),
-    'styx-dark': createContractGradientToken(),
-    'thanatos-light': createContractGradientToken(),
-    'thanatos-dark': createContractGradientToken(),
-    'hades-light': createContractGradientToken(),
-    'hades-dark': createContractGradientToken(),
-    'asphodel-light': createContractGradientToken(),
-    'asphodel-dark': createContractGradientToken(),
-  },
+  gradient: getGradients().reduce(
+    (acc, gradient) => {
+      acc[gradient] = getContractGradientToken()
+      return acc
+    },
+    {} as Writable<ContractGradientTokens['gradient']>,
+  ),
 }
 
 export const contractInfoTokens: ContractInfoTokens = {

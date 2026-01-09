@@ -10,13 +10,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus border.initial property', () => {
     expect(infoTokens.info.border.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`info.cerberus.50`,
     )
     expect(infoTokens.info.border.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`info.cerberus.50`,
     )
     expect(infoTokens.info.border.initial.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.60`,
+      formatSemanticToken`info.cerberus.60`,
     )
   })
 
@@ -24,13 +24,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus border.100 property', () => {
     expect(infoTokens.info.border['100'].value.base).toEqual(
-      formatSemanticToken`cerberus.info.70`,
+      formatSemanticToken`info.cerberus.70`,
     )
     expect(infoTokens.info.border['100'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.70`,
+      formatSemanticToken`info.cerberus.70`,
     )
     expect(infoTokens.info.border['100'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.40`,
+      formatSemanticToken`info.cerberus.40`,
     )
   })
 
@@ -38,13 +38,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus bg.initial property', () => {
     expect(infoTokens.info.bg.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.info.70`,
+      formatSemanticToken`info.cerberus.70`,
     )
     expect(infoTokens.info.bg.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.70`,
+      formatSemanticToken`info.cerberus.70`,
     )
     expect(infoTokens.info.bg.initial.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.30`,
+      formatSemanticToken`info.cerberus.30`,
     )
   })
 
@@ -52,13 +52,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus bg.hover property', () => {
     expect(infoTokens.info.bg.hover.value.base).toEqual(
-      formatSemanticToken`cerberus.info.90`,
+      formatSemanticToken`info.cerberus.90`,
     )
     expect(infoTokens.info.bg.hover.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.90`,
+      formatSemanticToken`info.cerberus.90`,
     )
     expect(infoTokens.info.bg.hover.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.20`,
+      formatSemanticToken`info.cerberus.20`,
     )
   })
 
@@ -66,13 +66,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus bg.active property', () => {
     expect(infoTokens.info.bg.active.value.base).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`info.cerberus.50`,
     )
     expect(infoTokens.info.bg.active.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`info.cerberus.50`,
     )
     expect(infoTokens.info.bg.active.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`info.cerberus.50`,
     )
   })
 
@@ -94,13 +94,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus ghost.hover property', () => {
     expect(infoTokens.info.ghost.hover.value.base).toEqual(
-      formatSemanticToken`cerberus.info.90`,
+      formatSemanticToken`info.cerberus.90`,
     )
     expect(infoTokens.info.ghost.hover.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.90`,
+      formatSemanticToken`info.cerberus.90`,
     )
     expect(infoTokens.info.ghost.hover.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.20`,
+      formatSemanticToken`info.cerberus.20`,
     )
   })
 
@@ -108,13 +108,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus ghost.active property', () => {
     expect(infoTokens.info.ghost.active.value.base).toEqual(
-      formatSemanticToken`cerberus.info.80`,
+      formatSemanticToken`info.cerberus.80`,
     )
     expect(infoTokens.info.ghost.active.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.80`,
+      formatSemanticToken`info.cerberus.80`,
     )
     expect(infoTokens.info.ghost.active.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.30`,
+      formatSemanticToken`info.cerberus.30`,
     )
   })
 
@@ -122,13 +122,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus surface.initial property', () => {
     expect(infoTokens.info.surface.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.info.80`,
+      formatSemanticToken`info.cerberus.80`,
     )
     expect(infoTokens.info.surface.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.80`,
+      formatSemanticToken`info.cerberus.80`,
     )
     expect(infoTokens.info.surface.initial.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.30`,
+      formatSemanticToken`info.cerberus.30`,
     )
   })
 
@@ -136,13 +136,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus surface.100 property', () => {
     expect(infoTokens.info.surface['100'].value.base).toEqual(
-      formatSemanticToken`cerberus.info.90`,
+      formatSemanticToken`info.cerberus.90`,
     )
     expect(infoTokens.info.surface['100'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.90`,
+      formatSemanticToken`info.cerberus.90`,
     )
     expect(infoTokens.info.surface['100'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.20`,
+      formatSemanticToken`info.cerberus.20`,
     )
   })
 
@@ -150,13 +150,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus surface.200 property', () => {
     expect(infoTokens.info.surface['200'].value.base).toEqual(
-      formatSemanticToken`cerberus.info.70`,
+      formatSemanticToken`info.cerberus.70`,
     )
     expect(infoTokens.info.surface['200'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.70`,
+      formatSemanticToken`info.cerberus.70`,
     )
     expect(infoTokens.info.surface['200'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`info.cerberus.50`,
     )
   })
 
@@ -164,13 +164,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus text.initial property', () => {
     expect(infoTokens.info.text.initial.value.base).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`info.cerberus.50`,
     )
     expect(infoTokens.info.text.initial.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`info.cerberus.50`,
     )
     expect(infoTokens.info.text.initial.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.70`,
+      formatSemanticToken`info.cerberus.70`,
     )
   })
 
@@ -178,13 +178,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus text.100 property', () => {
     expect(infoTokens.info.text['100'].value.base).toEqual(
-      formatSemanticToken`cerberus.info.40`,
+      formatSemanticToken`info.cerberus.40`,
     )
     expect(infoTokens.info.text['100'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.40`,
+      formatSemanticToken`info.cerberus.40`,
     )
     expect(infoTokens.info.text['100'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.80`,
+      formatSemanticToken`info.cerberus.80`,
     )
   })
 
@@ -192,13 +192,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus text.200 property', () => {
     expect(infoTokens.info.text['200'].value.base).toEqual(
-      formatSemanticToken`cerberus.info.10`,
+      formatSemanticToken`info.cerberus.10`,
     )
     expect(infoTokens.info.text['200'].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.10`,
+      formatSemanticToken`info.cerberus.10`,
     )
     expect(infoTokens.info.text['200'].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.100`,
+      formatSemanticToken`info.cerberus.100`,
     )
   })
 
@@ -206,13 +206,13 @@ describe('infoTokens', () => {
 
   test('should have a cerberus text.static property', () => {
     expect(infoTokens.info.text.static.value.base).toEqual(
-      formatSemanticToken`cerberus.info.60`,
+      formatSemanticToken`info.cerberus.60`,
     )
     expect(infoTokens.info.text.static.value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.60`,
+      formatSemanticToken`info.cerberus.60`,
     )
     expect(infoTokens.info.text.static.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.60`,
+      formatSemanticToken`info.cerberus.60`,
     )
   })
 })

@@ -15,12 +15,14 @@ describe('Cerberus > page', () => {
   // backdrop.initial
 
   test('should have a cerberus backdrop.initial property', () => {
-    expect(token.backdrop.initial.value.base).toEqual('rgba(27, 26, 25, 0.50)')
+    expect(token.backdrop.initial.value.base).toEqual(
+      'rgba(32.00000189244747, 25.000000409781933, 53.00000064074993, 0.800000011920929)',
+    )
     expect(token.backdrop.initial.value._darkMode).toEqual(
-      'rgba(27, 26, 25, 0.50)',
+      'rgba(32.00000189244747, 25.000000409781933, 53.00000064074993, 0.800000011920929)',
     )
     expect(token.backdrop.initial.value._lightMode).toEqual(
-      'rgba(106, 103, 100, 0.50)',
+      'rgba(188.0000039935112, 186.0000041127205, 202.00000315904617, 0.5)',
     )
   })
 

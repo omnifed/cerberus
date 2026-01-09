@@ -68,12 +68,12 @@ describe('acheron secondaryActionTokens', () => {
 
   test('should have a acheron secondary-action.border.100 key', () => {
     expect(token.border[100]).toBeDefined()
-    expect(token.border[100].value.base).toBe(getSemanticToken`acheron.info.80`)
+    expect(token.border[100].value.base).toBe(getSemanticToken`info.acheron.80`)
     expect(token.border[100].value._darkMode).toBe(
-      getSemanticToken`acheron.info.80`,
+      getSemanticToken`info.acheron.80`,
     )
     expect(token.border[100].value._lightMode).toBe(
-      getSemanticToken`acheron.info.90`,
+      getSemanticToken`info.acheron.90`,
     )
   })
 
@@ -142,13 +142,13 @@ describe('acheron secondaryActionTokens', () => {
   test('should have a acheron secondary-action.navigation.hover key', () => {
     expect(token.navigation.hover).toBeDefined()
     expect(token.navigation.hover.value.base).toBe(
-      getSemanticToken`cerberus.brand.30`,
+      getSemanticToken`acheron.accent.50`,
     )
     expect(token.navigation.hover.value._darkMode).toBe(
-      getSemanticToken`cerberus.brand.30`,
+      getSemanticToken`acheron.accent.50`,
     )
     expect(token.navigation.hover.value._lightMode).toBe(
-      getSemanticToken`cerberus.brand.50`,
+      getSemanticToken`info.acheron.80`,
     )
   })
 
@@ -157,13 +157,13 @@ describe('acheron secondaryActionTokens', () => {
   test('should have a acheron secondary-action.navigation.visited key', () => {
     expect(token.navigation.visited).toBeDefined()
     expect(token.navigation.visited.value.base).toBe(
-      getSemanticToken`acheron.info.70`,
+      getSemanticToken`info.acheron.70`,
     )
     expect(token.navigation.visited.value._darkMode).toBe(
-      getSemanticToken`acheron.info.70`,
+      getSemanticToken`info.acheron.70`,
     )
     expect(token.navigation.visited.value._lightMode).toBe(
-      getSemanticToken`acheron.info.90`,
+      getSemanticToken`info.acheron.90`,
     )
   })
 
@@ -201,12 +201,12 @@ describe('acheron secondaryActionTokens', () => {
 
   test('should have a acheron secondary-action.text.200 key', () => {
     expect(token.text['200']).toBeDefined()
-    expect(token.text['200'].value.base).toBe(getSemanticToken`acheron.info.40`)
+    expect(token.text['200'].value.base).toBe(getSemanticToken`info.acheron.40`)
     expect(token.text['200'].value._darkMode).toBe(
-      getSemanticToken`acheron.info.40`,
+      getSemanticToken`info.acheron.40`,
     )
     expect(token.text['200'].value._lightMode).toBe(
-      getSemanticToken`acheron.info.70`,
+      getSemanticToken`info.acheron.70`,
     )
   })
 
@@ -214,9 +214,9 @@ describe('acheron secondaryActionTokens', () => {
 
   test('should have a acheron secondary-action.text.static key', () => {
     expect(token.text.static).toBeDefined()
-    expect(token.text.static.value.base).toBe(getSemanticToken`acheron.info.70`)
+    expect(token.text.static.value.base).toBe(getSemanticToken`info.acheron.70`)
     expect(token.text.static.value._darkMode).toBe(
-      getSemanticToken`acheron.info.70`,
+      getSemanticToken`info.acheron.70`,
     )
     expect(token.text.static.value._lightMode).toBe(
       getSemanticToken`acheron.accent.70`,

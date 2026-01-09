@@ -6,39 +6,45 @@ export default function TextGradientPreview() {
     <cerberus.div display="flex" flexDirection="column" gap="4" padding="6">
       <cerberus.h3
         textStyle="h3"
-        className={css({
-          textGradient: 'cerberus.dark.charon-dark',
-        })}
+        textGradient="to-b"
+        gradientFrom="gradient.charon-dark.start"
+        gradientTo="gradient.charon-dark.end"
       >
         Charon Dark Gradient
       </cerberus.h3>
 
-      <cerberus.div
-        textStyle="body-lg"
+      <p
         className={css({
-          textGradient: 'cerberus.light.charon-light',
+          textStyle: 'body-lg',
+          textGradient: 'to-b',
+          gradientFrom: 'gradient.charon-light.start',
+          gradientTo: 'gradient.charon-light.end',
         })}
       >
         This text uses the Charon light gradient variant.
-      </cerberus.div>
+      </p>
 
-      <cerberus.span
-        textStyle="body-lg"
+      <p
         className={css({
-          textGradient: 'cerberus.dark.nyx-dark',
+          textStyle: 'heading-md',
+          textGradient: 'to-b',
+          gradientFrom: 'gradient.nyx-dark.start',
+          gradientTo: 'gradient.nyx-dark.end',
         })}
       >
         Nyx dark gradient creates a striking effect.
-      </cerberus.span>
+      </p>
 
-      <cerberus.span
-        textStyle="body-lg"
+      <p
         className={css({
-          textGradient: 'cerberus.light.amphiaraus-light',
+          textStyle: 'body-lg',
+          textGradient: 'to-b',
+          gradientFrom: 'gradient.amphiaraus-light.start',
+          gradientTo: 'gradient.amphiaraus-light.end',
         })}
       >
         Amphiaraus light gradient for subtle elegance.
-      </cerberus.span>
+      </p>
     </cerberus.div>
   )
 }

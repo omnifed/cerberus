@@ -1,57 +1,53 @@
-'use client'
-
 import { tokens } from '@cerberus-design/panda-preset'
-import { Box, Grid, GridItem, VStack } from '@/styled-system/jsx'
+import { Box, HStack, VStack } from '@/styled-system/jsx'
 import { For, Text } from '@cerberus-design/react'
 
+type FontToken = {
+  name: string
+  description: string
+  value: string
+}
+
 export function FontTokensGroup() {
-  const fontTokens = tokens.fonts
+  const fontTokens = tokens.fonts as Record<string, FontToken>
 
   return (
     <Box
       border="1px solid"
       borderColor="page.border.initial"
-      p="lg"
+      mb="lg"
+      px="lg"
+      pb="md"
       rounded="lg"
       w="full"
     >
-      <Grid
-        columns={{
-          base: 1,
-          md: 2,
-          lg: 3,
-        }}
-        gap="lg"
-      >
+      <VStack alignItems="flex-start" gap="lg" w="full">
         <For each={Object.entries(fontTokens)}>
           {([name, token]) => (
-            <GridItem key={name}>
+            <Box
+              key={name}
+              borderTop="1px solid"
+              borderTopColor="page.border.100"
+              _firstOfType={{
+                borderTop: 'initial',
+              }}
+              pt="md"
+              w="full"
+            >
               <VStack alignItems="flex-start" gap="sm" w="full">
-                <Box
-                  border="1px solid"
-                  borderColor="page.border.initial"
-                  p="md"
-                  rounded="md"
-                  w="full"
+                <Text
+                  fontFamily={name as 'display' | 'sans' | 'mono'}
+                  fontSize="xl"
+                  fontWeight="600"
                 >
-                  <Text
-                    fontFamily={name as 'display' | 'sans' | 'mono'}
-                    fontSize="xl"
-                    fontWeight="600"
-                  >
-                    The quick brown fox jumps
-                  </Text>
-                </Box>
+                  This is example text
+                </Text>
 
                 <VStack alignItems="flex-start" gap="xs" w="full">
-                  <Text
-                    fontFamily="mono"
-                    fontSize="sm"
-                    fontWeight="600"
-                    textStyle="label-sm"
-                  >
-                    {name}
-                  </Text>
+                  <HStack gap="2">
+                    <Text as="small">Value: </Text>
+                    <code>{name}</code>
+                  </HStack>
                   <Text color="page.text.200" fontSize="xs" textStyle="body-sm">
                     {token.description}
                   </Text>
@@ -60,10 +56,10 @@ export function FontTokensGroup() {
                   </Text>
                 </VStack>
               </VStack>
-            </GridItem>
+            </Box>
           )}
         </For>
-      </Grid>
+      </VStack>
     </Box>
   )
 }

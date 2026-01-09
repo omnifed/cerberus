@@ -3,7 +3,6 @@ packages:
   - tests
   - configs
   - docs
-  - figma
 
 ignoredBuiltDependencies:
   - unrs-resolver

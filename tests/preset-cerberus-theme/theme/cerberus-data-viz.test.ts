@@ -10,13 +10,13 @@ describe('dataVizTokens', () => {
 
   test('should have a cerberus diverging.50 property', () => {
     expect(dataVizTokens.dataViz.diverging[50].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.60`,
+      formatSemanticToken`warning.cerberus.60`,
     )
     expect(dataVizTokens.dataViz.diverging[50].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.60`,
+      formatSemanticToken`warning.cerberus.60`,
     )
     expect(dataVizTokens.dataViz.diverging[50].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.warning.60`,
+      formatSemanticToken`warning.cerberus.60`,
     )
   })
 
@@ -24,13 +24,13 @@ describe('dataVizTokens', () => {
 
   test('should have a cerberus diverging.100 property', () => {
     expect(dataVizTokens.dataViz.diverging[100].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.50`,
+      formatSemanticToken`warning.cerberus.50`,
     )
     expect(dataVizTokens.dataViz.diverging[100].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.50`,
+      formatSemanticToken`warning.cerberus.50`,
     )
     expect(dataVizTokens.dataViz.diverging[100].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.warning.50`,
+      formatSemanticToken`warning.cerberus.50`,
     )
   })
 
@@ -38,13 +38,13 @@ describe('dataVizTokens', () => {
 
   test('should have a cerberus diverging.200 property', () => {
     expect(dataVizTokens.dataViz.diverging[200].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.40`,
+      formatSemanticToken`warning.cerberus.40`,
     )
     expect(dataVizTokens.dataViz.diverging[200].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.40`,
+      formatSemanticToken`warning.cerberus.40`,
     )
     expect(dataVizTokens.dataViz.diverging[200].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.warning.40`,
+      formatSemanticToken`warning.cerberus.40`,
     )
   })
 
@@ -52,13 +52,13 @@ describe('dataVizTokens', () => {
 
   test('should have a cerberus diverging.300 property', () => {
     expect(dataVizTokens.dataViz.diverging[300].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.30`,
+      formatSemanticToken`warning.cerberus.30`,
     )
     expect(dataVizTokens.dataViz.diverging[300].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.30`,
+      formatSemanticToken`warning.cerberus.30`,
     )
     expect(dataVizTokens.dataViz.diverging[300].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.warning.30`,
+      formatSemanticToken`warning.cerberus.30`,
     )
   })
 
@@ -66,13 +66,13 @@ describe('dataVizTokens', () => {
 
   test('should have a cerberus diverging.400 property', () => {
     expect(dataVizTokens.dataViz.diverging[400].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.20`,
+      formatSemanticToken`warning.cerberus.20`,
     )
     expect(dataVizTokens.dataViz.diverging[400].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.20`,
+      formatSemanticToken`warning.cerberus.20`,
     )
     expect(dataVizTokens.dataViz.diverging[400].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.warning.20`,
+      formatSemanticToken`warning.cerberus.20`,
     )
   })
 
@@ -248,13 +248,13 @@ describe('dataVizTokens', () => {
 
   test('should have a cerberus qualitative.200 property', () => {
     expect(dataVizTokens.dataViz.qualitative[200].value.base).toEqual(
-      formatSemanticToken`cerberus.warning.60`,
+      formatSemanticToken`warning.cerberus.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[200].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.warning.60`,
+      formatSemanticToken`warning.cerberus.60`,
     )
     expect(dataVizTokens.dataViz.qualitative[200].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.warning.60`,
+      formatSemanticToken`warning.cerberus.60`,
     )
   })
 
@@ -276,13 +276,13 @@ describe('dataVizTokens', () => {
 
   test('should have a cerberus qualitative.400 property', () => {
     expect(dataVizTokens.dataViz.qualitative[400].value.base).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`info.cerberus.50`,
     )
     expect(dataVizTokens.dataViz.qualitative[400].value._darkMode).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`info.cerberus.50`,
     )
     expect(dataVizTokens.dataViz.qualitative[400].value._lightMode).toEqual(
-      formatSemanticToken`cerberus.info.50`,
+      formatSemanticToken`info.cerberus.50`,
     )
   })
 

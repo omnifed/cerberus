@@ -489,26 +489,13 @@ export type GradientValue =
   | 'asphodel-dark'
 
 export type GradientText = {
-  readonly text: {
-    readonly initial: SemanticToken
-  }
+  readonly start: SemanticToken
+  readonly end: SemanticToken
+  readonly text: SemanticToken
 }
 
 export interface ContractGradientTokens {
   readonly gradient: {
-    readonly 'charon-light': GradientText
-    readonly 'charon-dark': GradientText
-    readonly 'nyx-light': GradientText
-    readonly 'nyx-dark': GradientText
-    readonly 'amphiaraus-light': GradientText
-    readonly 'amphiaraus-dark': GradientText
-    readonly 'styx-light': GradientText
-    readonly 'styx-dark': GradientText
-    readonly 'thanatos-light': GradientText
-    readonly 'thanatos-dark': GradientText
-    readonly 'hades-light': GradientText
-    readonly 'hades-dark': GradientText
-    readonly 'asphodel-light': GradientText
-    readonly 'asphodel-dark': GradientText
+    readonly [key in GradientValue]: GradientText
   }
 }
