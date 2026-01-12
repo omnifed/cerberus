@@ -130,13 +130,13 @@ importers:
       '@cerberus-design/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
-      '@cerberus-design/preset-acheron-theme':
+      '@cerberus/preset-acheron-theme':
         specifier: workspace:*
         version: link:../packages/preset-acheron-theme
-      '@cerberus-design/preset-cerberus-theme':
+      '@cerberus/preset-cerberus-theme':
         specifier: workspace:*
         version: link:../packages/preset-cerberus-theme
-      '@cerberus-design/preset-elysium-theme':
+      '@cerberus/preset-elysium-theme':
         specifier: workspace:*
         version: link:../packages/preset-elysium-theme
       '@csstools/postcss-cascade-layers':
@@ -266,7 +266,7 @@ importers:
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../../configs
-      '@cerberus-design/preset-cerberus-theme':
+      '@cerberus/preset-cerberus-theme':
         specifier: workspace:*
         version: link:../preset-cerberus-theme
       '@cerberus/tokens':
@@ -423,18 +423,18 @@ importers:
       '@cerberus-design/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
-      '@cerberus-design/preset-acheron-theme':
-        specifier: workspace:*
-        version: link:../packages/preset-acheron-theme
-      '@cerberus-design/preset-cerberus-theme':
-        specifier: workspace:*
-        version: link:../packages/preset-cerberus-theme
-      '@cerberus-design/preset-elysium-theme':
-        specifier: workspace:*
-        version: link:../packages/preset-elysium-theme
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
+      '@cerberus/preset-acheron-theme':
+        specifier: workspace:*
+        version: link:../packages/preset-acheron-theme
+      '@cerberus/preset-cerberus-theme':
+        specifier: workspace:*
+        version: link:../packages/preset-cerberus-theme
+      '@cerberus/preset-elysium-theme':
+        specifier: workspace:*
+        version: link:../packages/preset-elysium-theme
       '@cerberus/tokens':
         specifier: workspace:*
         version: link:../packages/tokens

@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { actionTokens } from '@cerberus-design/preset-elysium-theme'
+import { actionTokens } from '@cerberus/preset-elysium-theme'
 
 describe('Elysium > actionTokens', () => {
   function getSemanticToken(value: TemplateStringsArray) {

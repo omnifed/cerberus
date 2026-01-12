@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { warningTokens } from '@cerberus-design/preset-acheron-theme'
+import { warningTokens } from '@cerberus/preset-acheron-theme'
 
 describe('warning', () => {
   const token = warningTokens.warning

@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { dataVizTokens } from '@cerberus-design/preset-elysium-theme'
+import { dataVizTokens } from '@cerberus/preset-elysium-theme'
 
 describe('Elysium > dataVizTokens', () => {
   function formatSemanticToken(value: TemplateStringsArray) {

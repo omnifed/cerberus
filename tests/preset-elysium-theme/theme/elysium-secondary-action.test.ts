@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { secondaryActionTokens } from '@cerberus-design/preset-elysium-theme'
+import { secondaryActionTokens } from '@cerberus/preset-elysium-theme'
 
 describe('Elysium > secondaryActionTokens', () => {
   const token = secondaryActionTokens.secondaryAction

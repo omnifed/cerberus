@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { secondaryActionTokens } from '@cerberus-design/preset-acheron-theme'
+import { secondaryActionTokens } from '@cerberus/preset-acheron-theme'
 
 describe('acheron secondaryActionTokens', () => {
   const token = secondaryActionTokens.secondaryAction

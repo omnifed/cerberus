@@ -5,11 +5,11 @@ import {
 import {
   presetAcheronTheme,
   getThemeName as getAcheronThemeName,
-} from '@cerberus-design/preset-acheron-theme'
+} from '@cerberus/preset-acheron-theme'
 import {
   presetElysiumTheme,
   getThemeName as getElysiumThemeName,
-} from '@cerberus-design/preset-elysium-theme'
+} from '@cerberus/preset-elysium-theme'
 
 export default createCerberusConfig({
   clean: true,

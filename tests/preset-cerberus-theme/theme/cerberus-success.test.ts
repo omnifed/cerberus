@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { successTokens } from '@cerberus-design/preset-cerberus-theme'
+import { successTokens } from '@cerberus/preset-cerberus-theme'
 
 describe('success', () => {
   function formatSemanticToken(value: TemplateStringsArray) {

@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { infoTokens } from '@cerberus-design/preset-acheron-theme'
+import { infoTokens } from '@cerberus/preset-acheron-theme'
 
 describe('acheron infoTokens', () => {
   function formatSemanticToken(value: TemplateStringsArray) {

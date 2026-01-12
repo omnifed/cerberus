@@ -2,7 +2,7 @@ import { describe, expect, test } from 'bun:test'
 import {
   getThemeName,
   presetCerberusTheme,
-} from '@cerberus-design/preset-cerberus-theme'
+} from '@cerberus/preset-cerberus-theme'
 
 describe('Cerberus Theme config', () => {
   test('should return a valid PandaCSS preset', () => {

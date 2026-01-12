@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { dangerTokens } from '@cerberus-design/preset-acheron-theme'
+import { dangerTokens } from '@cerberus/preset-acheron-theme'
 
 describe('acheron dangerTokens', () => {
   function formatSemanticToken(value: TemplateStringsArray) {

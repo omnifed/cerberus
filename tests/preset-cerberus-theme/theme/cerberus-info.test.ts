@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { infoTokens } from '@cerberus-design/preset-cerberus-theme'
+import { infoTokens } from '@cerberus/preset-cerberus-theme'
 
 describe('infoTokens', () => {
   function formatSemanticToken(value: TemplateStringsArray) {
