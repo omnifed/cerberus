@@ -1,4 +1,4 @@
-export const version = '0.25.0'
+export const version = '0.25.0-rc'
 export const nextTag = 'next'
 
 export const packages = [
