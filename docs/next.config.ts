@@ -84,6 +84,8 @@ const withMDX = createMDX({
             'night-owl',
             'everforest-dark',
             'everforest-light',
+            'vitesse-black',
+            'vitesse-light',
           ],
         },
       ],

@@ -17,8 +17,27 @@ import V23ReleaseNotes, {
 import V24ReleaseNotes, {
   frontmatter as v24Frontmatter,
 } from './v24-release.mdx'
+import V25ReleaseNotes, {
+  frontmatter as v25Frontmatter,
+} from './v25-release.mdx'
 
 export const items = [
+  {
+    id: '1.0.7',
+    label: 'Cerberus v25 Release',
+    category: 'release',
+    version: 'v25',
+    slug: 'v25-release',
+    frontmatter: v25Frontmatter as unknown as BlogHeaderProps,
+    href: '/blog/v25-release',
+    meta: {
+      title: 'Cerberus v25 Release Notes',
+      description: 'Ecosystem upgrade.',
+      date: '2026-012-01',
+      timeToRead: '5 min read',
+    },
+    Content: V25ReleaseNotes,
+  },
   {
     id: '1.0.5',
     label: 'Cerberus v24 Release',

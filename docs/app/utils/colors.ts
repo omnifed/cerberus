@@ -23,5 +23,12 @@ export function getCodeTheme(
       ? 'everforest-light'
       : 'everforest-dark'
   }
+
+  if (currentTheme === 'elysium') {
+    return getColorMode(currentMode) === 'dark'
+      ? 'vitesse-light'
+      : 'vitesse-black'
+  }
+
   return getColorMode(currentMode) === 'dark' ? 'min-light' : 'night-owl'
 }

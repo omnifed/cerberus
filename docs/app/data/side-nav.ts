@@ -1,3 +1,5 @@
+'use client'
+
 import categoriesData from './categories.react.json'
 import { type NavList } from '../components/SideNav'
 import type { LinkProps } from 'next/link'

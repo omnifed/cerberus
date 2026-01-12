@@ -1,4 +1,4 @@
-import { HStack } from 'styled-system/jsx'
+import { cerberus, HStack } from 'styled-system/jsx'
 import { Terminal } from '@carbon/icons-react'
 import { Show } from '@cerberus-design/react'
 import { getShikiOptions } from '@/lib/shiki'
@@ -18,11 +18,7 @@ export async function CodeBlock(props: CodeBlockProps) {
   )
 
   return (
-    <div
-      className={css({
-        my: 'md',
-      })}
-    >
+    <cerberus.div my="md">
       <Show when={props.language === 'sh'}>
         <HStack justify="space-between" w="full">
           <HStack textStyle="body-sm">
@@ -38,7 +34,8 @@ export async function CodeBlock(props: CodeBlockProps) {
           <CopyButton content={props.content} />
         </HStack>
       </Show>
-      <div dangerouslySetInnerHTML={{ __html: out }} />
-    </div>
+
+      <cerberus.div dangerouslySetInnerHTML={{ __html: out }} />
+    </cerberus.div>
   )
 }
