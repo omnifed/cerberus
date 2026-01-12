@@ -99,7 +99,7 @@ describe('combobox recipe', () => {
           color: 'page.text.100',
         },
       },
-      _invalid: {
+      _userInvalid: {
         borderColor: 'danger.border.initial',
       },
       '& :where(svg)': {

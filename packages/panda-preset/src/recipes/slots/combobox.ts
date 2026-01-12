@@ -106,7 +106,7 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
           color: 'page.text.100',
         },
       },
-      _invalid: {
+      _userInvalid: {
         borderColor: 'danger.border.initial',
       },
       '& :where(svg)': {
