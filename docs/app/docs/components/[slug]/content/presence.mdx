@@ -13,6 +13,8 @@ no longer required.
 
 
 ```tsx
+'use client'
+
 import { Presence } from '@cerberus/react'
 import { useState } from 'react'
 
@@ -27,7 +29,6 @@ export const Basic = () => {
     </>
   )
 }
-
 ```
 
 
@@ -37,6 +38,8 @@ To delay the mounting of a child component until the `present` prop is set to tr
 
 
 ```tsx
+'use client'
+
 import { Presence } from '@cerberus/react'
 import { useState } from 'react'
 
@@ -62,6 +65,8 @@ To remove the child component from the DOM when it's not present, use the `unmou
 
 
 ```tsx
+'use client'
+
 import { Presence } from '@cerberus/react'
 import { useState } from 'react'
 
@@ -88,6 +93,8 @@ Both `lazyMount` and `unmountOnExit` can be combined for a component to be mount
 unmounted when it's no longer present:
 
 ```tsx
+'use client'
+
 import { Presence } from '@cerberus/react'
 import { useState } from 'react'
 

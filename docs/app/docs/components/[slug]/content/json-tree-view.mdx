@@ -5,14 +5,19 @@ npm: '@cerberus/react'
 arkUtility: 'json-tree-view'
 ---
 
+import CodePreview from '@/app/components/CodePreview'
+import { Basic } from '../components/json-tree-view/static'
+
 ## Examples
 
 Learn how to use the `JsonTreeView` component in your project. Let's take a look at the most basic example:
 
-
+<CodePreview preview={<Basic />} />
 ```tsx
+'use client'
+
 import { JsonTreeView } from '@cerberus/react'
-import { ChevronRightIcon } from '@carbon/icons-react'
+import { ChevronRight } from '@carbon/icons-react'
 
 export const Basic = () => {
   return (
@@ -30,11 +35,10 @@ export const Basic = () => {
         },
       }}
     >
-      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
     </JsonTreeView.Root>
   )
 }
-
 ```
 
 ### Different Data Types
@@ -42,8 +46,10 @@ export const Basic = () => {
 The JSON tree view can display various JavaScript data types including objects, arrays, primitives, and special values:
 
 ```tsx
+'use client'
+
 import { JsonTreeView } from '@cerberus/react'
-import { ChevronRightIcon } from '@carbon/icons-react'
+import { ChevronRight } from '@carbon/icons-react'
 
 const testArray = [1, 2, 3, 4, 5]
 Object.defineProperties(testArray, {
@@ -65,7 +71,7 @@ export const ArrayData = () => {
         })(),
       }}
     >
-      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
     </JsonTreeView.Root>
   )
 }
@@ -77,8 +83,10 @@ export const ArrayData = () => {
 Display JavaScript functions, async functions, and generators in your JSON tree:
 
 ```tsx
+'use client'
+
 import { JsonTreeView } from '@cerberus/react'
-import { ChevronRightIcon } from '@carbon/icons-react'
+import { ChevronRight } from '@carbon/icons-react'
 
 const data = [
   function sum(a: number, b: number) {
@@ -95,7 +103,7 @@ const data = [
 export const Functions = () => {
   return (
     <JsonTreeView.Root data={data}>
-      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
     </JsonTreeView.Root>
   )
 }
@@ -107,8 +115,10 @@ export const Functions = () => {
 Regular expressions are displayed with their pattern and flags:
 
 ```tsx
+'use client'
+
 import { JsonTreeView } from '@cerberus/react'
-import { ChevronRightIcon } from '@carbon/icons-react'
+import { ChevronRight } from '@carbon/icons-react'
 
 const data = {
   regex: /^[a-z0-9]+/g,
@@ -118,7 +128,7 @@ const data = {
 export const Regex = () => {
   return (
     <JsonTreeView.Root data={data}>
-      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
     </JsonTreeView.Root>
   )
 }
@@ -130,15 +140,17 @@ export const Regex = () => {
 Error objects and their stack traces can be visualized:
 
 ```tsx
+'use client'
+
 import { JsonTreeView } from '@cerberus/react'
-import { ChevronRightIcon } from '@carbon/icons-react'
+import { ChevronRight } from '@carbon/icons-react'
 
 const data = new Error('Error')
 
 export const Errors = () => {
   return (
     <JsonTreeView.Root data={data}>
-      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
     </JsonTreeView.Root>
   )
 }
@@ -150,8 +162,10 @@ export const Errors = () => {
 Native JavaScript Map and Set objects are supported:
 
 ```tsx
+'use client'
+
 import { JsonTreeView } from '@cerberus/react'
-import { ChevronRightIcon } from '@carbon/icons-react'
+import { ChevronRight } from '@carbon/icons-react'
 
 const data = new Map<string, any>([
   ['name', 'ark-ui-json-tree'],
@@ -175,7 +189,7 @@ const data = new Map<string, any>([
 export const MapAndSet = () => {
   return (
     <JsonTreeView.Root data={data}>
-      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
     </JsonTreeView.Root>
   )
 }
@@ -187,8 +201,10 @@ export const MapAndSet = () => {
 Use the `defaultExpandedDepth` prop to control how many levels are expanded by default:
 
 ```tsx
+'use client'
+
 import { JsonTreeView } from '@cerberus/react'
-import { ChevronRightIcon } from '@carbon/icons-react'
+import { ChevronRight } from '@carbon/icons-react'
 
 export const ExpandLevel = () => {
   return (
@@ -207,7 +223,7 @@ export const ExpandLevel = () => {
         },
       }}
     >
-      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
     </JsonTreeView.Root>
   )
 }
@@ -221,8 +237,10 @@ You can customize how specific values are rendered using the `renderValue` prop.
 addresses clickable:
 
 ```tsx
+'use client'
+
 import { JsonTreeView } from '@cerberus/react'
-import { ChevronRightIcon } from '@carbon/icons-react'
+import { ChevronRight } from '@carbon/icons-react'
 
 export const RenderValue = () => {
   return (
@@ -242,7 +260,7 @@ export const RenderValue = () => {
       }}
     >
       <JsonTreeView.Tree
-        arrow={<ChevronRightIcon />}
+        arrow={<ChevronRight />}
         renderValue={(node) => {
           if (node.type === 'text' && typeof node.value === 'string' && isEmail(node.value)) {
             return (
@@ -278,7 +296,7 @@ The JSON tree view supports several configuration options to customize the displ
   collapseStringsAfterLength={50}
   groupArraysAfterLength={100}
 >
-  <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+  <JsonTreeView.Tree arrow={<ChevronRight />} />
 </JsonTreeView.Root>
 ```
 
@@ -296,8 +314,10 @@ The `RootProvider` component provides a context for the JSON tree view. It accep
 hook. You can leverage it to access the component state and methods from outside the JSON tree view.
 
 ```tsx
+'use client'
+
 import { JsonTreeView, useJsonTreeView } from '@cerberus/react'
-import { ChevronRightIcon } from '@carbon/icons-react'
+import { ChevronRight } from '@carbon/icons-react'
 
 export const RootProvider = () => {
   const jsonTreeView = useJsonTreeView({
@@ -317,7 +337,7 @@ export const RootProvider = () => {
 
   return (
     <JsonTreeView.RootProvider value={jsonTreeView}>
-      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
     </JsonTreeView.RootProvider>
   )
 }

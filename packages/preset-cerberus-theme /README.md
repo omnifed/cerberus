@@ -23,7 +23,7 @@ export default defineConfig({
   include: ['./src/**/*.{ts,tsx,js,jsx}'],
   exclude: [],
 
-  presets: [cerberusPreset(), cerberusTheme],
+  presets: [cerberusPreset()],
 })
 ```
 

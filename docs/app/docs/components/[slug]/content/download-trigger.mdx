@@ -5,6 +5,9 @@ npm: '@cerberus-design/react'
 arkUtility: 'download-trigger'
 ---
 
+import CodePreview from '@/app/components/CodePreview'
+import { Basic } from '../components/download-trigger/static'
+
 ## Motivation
 
 The `DownloadTrigger` component provides a convenient way to programmatically trigger file downloads in web
@@ -16,18 +19,24 @@ applications. It handles the complexities of downloading files, whether they are
 
 Pass the data you want to download to the `data` prop, and specify the `fileName` and `mimeType` of the file.
 
+<CodePreview preview={<Basic />} />
 ```tsx
-import { DownloadTrigger } from '@cerberus/react'
+import { Button, DownloadTrigger } from '@cerberus/react'
 
 export const Basic = () => {
   return (
-    <DownloadTrigger data="Hello world" fileName="hello.txt" mimeType="text/plain">
-      Download txt
-    </DownloadTrigger>
+    <Button asChild>
+      <DownloadTrigger
+        data="Hello world"
+        fileName="hello.txt"
+        mimeType="text/plain"
+      >
+        Download txt
+      </DownloadTrigger>
+    </Button>
   )
 }
 ```
-
 
 ### Download SVG
 

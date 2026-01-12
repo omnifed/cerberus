@@ -5,12 +5,15 @@ npm: '@cerberus/react'
 arkUtility: 'highlight'
 ---
 
+import CodePreview from '@/app/components/CodePreview'
+import { Basic } from '../components/highlight/static'
+
 ## Usage
 
 The Highlight component takes a `text` prop containing the full text and a `query` prop specifying the text to
 highlight. It then renders the text with highlighted portions wrapped in `<mark>` tags.
 
-
+<CodePreview preview={<Basic />} />
 ```tsx
 import { Highlight } from '@cerberus/react'
 
@@ -22,7 +25,6 @@ export const Basic = () => {
     />
   )
 }
-
 ```
 
 ### Multiple Queries

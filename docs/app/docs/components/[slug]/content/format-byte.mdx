@@ -5,6 +5,9 @@ npm: '@cerberus/react'
 arkUtility: 'format-byte'
 ---
 
+import CodePreview from '@/app/components/CodePreview'
+import { ByteBasic } from '../components/format/static'
+
 ## Usage
 
 The byte formatting component extends the number formatting capabilities to handle byte-specific formatting, including
@@ -20,7 +23,10 @@ import { Format } from '@cerberus/react'
 
 Use the `Format.Byte` component to format a byte value with default options.
 
+<CodePreview preview={<ByteBasic />} />
 ```tsx
+'use client'
+
 import { Format } from '@cerberus/react'
 
 export const ByteBasic = () => {
@@ -30,6 +36,7 @@ export const ByteBasic = () => {
     </div>
   )
 }
+
 ```
 
 ### Sizes
@@ -37,6 +44,8 @@ export const ByteBasic = () => {
 Use the `sizes` prop to specify custom byte sizes for formatting.
 
 ```tsx
+'use client'
+
 import { Format } from '@cerberus/react'
 
 export const ByteSizes = () => {
@@ -59,6 +68,8 @@ export const ByteSizes = () => {
 Use the `locale` prop to format the byte value according to a specific locale.
 
 ```tsx
+'use client'
+
 import { Format, LocaleProvider } from '@cerberus/react'
 
 export const ByteWithLocale = () => {
@@ -82,6 +93,8 @@ export const ByteWithLocale = () => {
 Use the `unit` prop to specify the unit of the byte value.
 
 ```tsx
+'use client'
+
 import { Format } from '@cerberus/react'
 
 export const ByteWithUnit = () => {
@@ -101,6 +114,8 @@ export const ByteWithUnit = () => {
 Use the `unitDisplay` prop to specify the display of the unit.
 
 ```tsx
+'use client'
+
 import { Format } from '@cerberus/react'
 
 export const ByteWithUnitDisplay = () => {

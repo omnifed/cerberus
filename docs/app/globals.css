@@ -22,11 +22,14 @@ div.expressive-code {
   padding-top: var(--cerberus-spacing-md);
 }
 
+.shiki span {
+  font-size: 13.6px !important;
+}
+
 [data-theme='min-light'] .shiki,
 [data-theme='min-light'] .shiki span {
   background-color: var(--shiki-min-light-bg) !important;
   color: var(--shiki-min-light) !important;
-  font-size: 13.6px !important;
   font-style: var(--shiki-min-light-font-style) !important;
   font-weight: var(--shiki-min-light-font-weight) !important;
   text-decoration: var(--shiki-min-light-text-decoration) !important;
@@ -36,7 +39,6 @@ div.expressive-code {
 [data-theme='night-owl'] .shiki span {
   background-color: var(--shiki-night-owl-bg) !important;
   color: var(--shiki-night-owl) !important;
-  font-size: 13.6px !important;
   font-style: var(--shiki-night-owl-font-style) !important;
   font-weight: var(--shiki-night-owl-font-weight) !important;
   text-decoration: var(--shiki-night-owl-text-decoration) !important;
@@ -46,7 +48,6 @@ div.expressive-code {
 [data-theme='everforest-light'] .shiki span {
   background-color: var(--shiki-everforest-light-bg) !important;
   color: var(--shiki-everforest-light) !important;
-  font-size: 13.6px !important;
   font-style: var(--shiki-everforest-light-font-style) !important;
   font-weight: var(--shiki-everforest-light-font-weight) !important;
   text-decoration: var(--shiki-everforest-light-text-decoration) !important;
@@ -56,8 +57,25 @@ div.expressive-code {
 [data-theme='everforest-dark'] .shiki span {
   background-color: var(--shiki-everforest-dark-bg) !important;
   color: var(--shiki-everforest-dark) !important;
-  font-size: 13.6px !important;
   font-style: var(--shiki-everforest-dark-font-style) !important;
   font-weight: var(--shiki-everforest-dark-font-weight) !important;
   text-decoration: var(--shiki-everforest-dark-text-decoration) !important;
+}
+
+[data-theme='vitesse-light'] .shiki,
+[data-theme='vitesse-light'] .shiki span {
+  background-color: var(--shiki-vitesse-light-bg) !important;
+  color: var(--shiki-vitesse-light) !important;
+  font-style: var(--shiki-vitesse-light-font-style) !important;
+  font-weight: var(--shiki-vitesse-light-font-weight) !important;
+  text-decoration: var(--shiki-vitesse-light-text-decoration) !important;
+}
+
+[data-theme='vitesse-black'] .shiki,
+[data-theme='vitesse-black'] .shiki span {
+  background-color: var(--shiki-vitesse-black-bg) !important;
+  color: var(--shiki-vitesse-black) !important;
+  font-style: var(--shiki-vitesse-black-font-style) !important;
+  font-weight: var(--shiki-vitesse-black-font-weight) !important;
+  text-decoration: var(--shiki-vitesse-black-text-decoration) !important;
 }

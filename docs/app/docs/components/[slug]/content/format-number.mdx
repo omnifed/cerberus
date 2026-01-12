@@ -5,6 +5,9 @@ npm: '@cerberus/react'
 arkUtility: 'format-number'
 ---
 
+import CodePreview from '@/app/components/CodePreview'
+import { NumberBasic } from '@/app/docs/components/[slug]/components/format/static'
+
 ## Usage
 
 The number formatting logic is handled by the native `Intl.NumberFormat` API and smartly cached to avoid performance
@@ -20,7 +23,10 @@ import { Format } from '@cerberus/react'
 
 Use the `Format.Number` component to format a number with default options.
 
+<CodePreview preview={<NumberBasic />} />
 ```tsx
+'use client'
+
 import { Format } from '@cerberus/react'
 
 export const NumberBasic = () => {
@@ -33,6 +39,8 @@ export const NumberBasic = () => {
 Use the `style="percent"` prop to format the number as a percentage.
 
 ```tsx
+'use client'
+
 import { Format } from '@cerberus/react'
 
 export const NumberWithPercentage = () => {
@@ -45,6 +53,8 @@ export const NumberWithPercentage = () => {
 Use the `style="currency"` prop along with the `currency` prop to format the number as a currency.
 
 ```tsx
+'use client'
+
 import { Format } from '@cerberus/react'
 
 export const NumberWithCurrency = () => {
@@ -57,6 +67,8 @@ export const NumberWithCurrency = () => {
 Use the `locale` prop to format the number according to a specific locale.
 
 ```tsx
+'use client'
+
 import { Format, LocaleProvider } from '@cerberus/react'
 
 export const NumberWithLocale = () => {
@@ -73,6 +85,8 @@ export const NumberWithLocale = () => {
 Use the `style="unit"` prop along with the `unit` prop to format the number with a specific unit.
 
 ```tsx
+'use client'
+
 import { Format } from '@cerberus/react'
 
 export const NumberWithUnit = () => {
@@ -86,6 +100,8 @@ export const NumberWithUnit = () => {
 Use the `notation="compact"` prop to format the number in compact notation.
 
 ```tsx
+'use client'
+
 import { Format } from '@cerberus/react'
 
 export const NumberWithCompact = () => {

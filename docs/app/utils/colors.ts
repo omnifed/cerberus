@@ -1,27 +1,33 @@
 import type { RawThemes } from '@cerberus/tokens'
 import type { ColorModes } from '@cerberus-design/react'
 
-export function getColorMode(currentMode: ColorModes): ColorModes {
-  switch (currentMode) {
-    case 'light':
-      return 'dark'
-    case 'dark':
-      return 'system'
-    case 'system':
-      return 'light'
-    default:
-      return 'system'
-  }
+interface ModeOptions {
+  light: string
+  dark: string
+  system: string
+}
+
+const SYNTAX_MAP: Record<RawThemes, ModeOptions> = {
+  cerberus: {
+    light: 'min-light',
+    dark: 'night-owl',
+    system: 'night-owl',
+  },
+  acheron: {
+    light: 'everforest-light',
+    dark: 'everforest-dark',
+    system: 'everforest-dark',
+  },
+  elysium: {
+    light: 'vitesse-light',
+    dark: 'vitesse-black',
+    system: 'vitesse-black',
+  },
 }
 
 export function getCodeTheme(
   currentMode: ColorModes,
   currentTheme: RawThemes,
 ): string {
-  if (currentTheme === 'acheron') {
-    return getColorMode(currentMode) === 'dark'
-      ? 'everforest-light'
-      : 'everforest-dark'
-  }
-  return getColorMode(currentMode) === 'dark' ? 'min-light' : 'night-owl'
+  return SYNTAX_MAP[currentTheme][currentMode]
 }

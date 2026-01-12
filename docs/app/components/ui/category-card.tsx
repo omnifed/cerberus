@@ -1,3 +1,5 @@
+'use client'
+
 import { Show, Text } from '@cerberus-design/react'
 import { Box, VStack } from 'styled-system/jsx'
 import { vstack } from 'styled-system/patterns'
@@ -13,7 +15,7 @@ interface CategoryCardProps {
 
 export default function CategoryCard(props: CategoryCardProps) {
   const metaKey = props.item.toLowerCase().replaceAll(' ', '-')
-  const item = sideNavData.find((navItem) => navItem.label === props.item)
+  const item = sideNavData?.find((navItem) => navItem.label === props.item)
   const meta = categoryMeta[metaKey as keyof typeof categoryMeta]
   const ImgFeature = meta.image
   const delay = props.delay ?? 0
