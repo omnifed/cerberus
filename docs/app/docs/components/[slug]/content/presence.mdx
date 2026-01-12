@@ -1,0 +1,122 @@
+---
+title: 'Presence'
+description: Helps control the rendering and unmounting of your content based on a given state.
+npm: '@cerberus/react'
+arkUtility: 'presence'
+---
+
+## Examples
+
+By default the child component starts out as hidden and remains hidden after the `present` state is toggled off. This is
+useful for situations where the element needs to be hidden initially and continue to stay hidden after its presence is
+no longer required.
+
+
+```tsx
+import { Presence } from '@cerberus/react'
+import { useState } from 'react'
+
+export const Basic = () => {
+  const [present, setPresent] = useState(false)
+  return (
+    <>
+      <button type="button" onClick={() => setPresent(!present)}>
+        Toggle
+      </button>
+      <Presence present={present}>Hidden and Hidden</Presence>
+    </>
+  )
+}
+
+```
+
+
+### Lazy Mount
+
+To delay the mounting of a child component until the `present` prop is set to true, use the `lazyMount` prop:
+
+
+```tsx
+import { Presence } from '@cerberus/react'
+import { useState } from 'react'
+
+export const LazyMount = () => {
+  const [present, setPresent] = useState(false)
+  return (
+    <>
+      <button type="button" onClick={() => setPresent(!present)}>
+        Toggle
+      </button>
+      <Presence present={present} lazyMount>
+        Unmounted and Hidden
+      </Presence>
+    </>
+  )
+}
+
+```
+
+### Unmount on Exit
+
+To remove the child component from the DOM when it's not present, use the `unmountOnExit` prop:
+
+
+```tsx
+import { Presence } from '@cerberus/react'
+import { useState } from 'react'
+
+export const UnmountOnExit = () => {
+  const [present, setPresent] = useState(false)
+  return (
+    <>
+      <button type="button" onClick={() => setPresent(!present)}>
+        Toggle
+      </button>
+      <Presence present={present} unmountOnExit>
+        Hidden and Unmounted on Exit
+      </Presence>
+    </>
+  )
+}
+
+```
+
+
+### Combining Lazy Mount and Unmount on Exit
+
+Both `lazyMount` and `unmountOnExit` can be combined for a component to be mounted only when it's present and to be
+unmounted when it's no longer present:
+
+```tsx
+import { Presence } from '@cerberus/react'
+import { useState } from 'react'
+
+export const LazyMountAndUnmountOnExit = () => {
+  const [present, setPresent] = useState(false)
+  return (
+    <>
+      <button type="button" onClick={() => setPresent(!present)}>
+        Toggle
+      </button>
+      <Presence present={present} lazyMount unmountOnExit>
+        Lazy Mount and Unmounted on Exit
+      </Presence>
+    </>
+  )
+}
+
+```
+
+
+## API Reference
+
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+| `immediate` | `boolean` | No | Whether to synchronize the present change immediately or defer it to the next frame |
+| `lazyMount` | `boolean` | No | Whether to enable lazy mounting |
+| `onExitComplete` | `VoidFunction` | No | Function called when the animation ends in the closed state |
+| `present` | `boolean` | No | Whether the node is present (controlled by the user) |
+| `skipAnimationOnMount` | `boolean` | No | Whether to allow the initial presence animation. |
+| `unmountOnExit` | `boolean` | No | Whether to unmount on exit. |

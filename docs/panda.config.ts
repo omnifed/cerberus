@@ -2,16 +2,18 @@ import {
   createCerberusConfig,
   createCerberusPreset,
 } from '@cerberus-design/panda-preset'
+import {
+  presetAcheronTheme,
+  getThemeName as getAcheronThemeName,
+} from '@cerberus-design/preset-acheron-theme'
+import {
+  presetElysiumTheme,
+  getThemeName as getElysiumThemeName,
+} from '@cerberus-design/preset-elysium-theme'
 
 export default createCerberusConfig({
   clean: true,
   minify: process.env.NODE_ENV === 'production',
-
-  presets: [createCerberusPreset()],
-
-  globalVars: {
-    '--nav-height': '3.75rem',
-  },
 
   include: [
     './node_modules/@cerberus-design/react/**/*.{ts,tsx,js,jsx}',
@@ -19,4 +21,14 @@ export default createCerberusConfig({
     './app/**/*.{ts,tsx}',
   ],
   exclude: [],
+
+  presets: [createCerberusPreset(), presetAcheronTheme, presetElysiumTheme],
+
+  globalVars: {
+    '--nav-height': '3.75rem',
+  },
+
+  staticCss: {
+    themes: ['cerberus', getAcheronThemeName(), getElysiumThemeName()],
+  },
 })

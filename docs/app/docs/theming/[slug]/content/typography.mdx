@@ -4,7 +4,6 @@ description: A list of typography tokens available in Cerberus.
 ---
 
 import { FontTokensGroup } from '../components/typography/font-tokens-group'
-import { TextStylesGroup } from '../components/typography/text-styles-group'
 
 ## Font Tokens
 
@@ -71,8 +70,6 @@ Font tokens reference CSS custom properties with fallbacks for flexibility:
 
 Cerberus provides a comprehensive set of text styles that combine font families, sizes, weights, and spacing to create consistent typography patterns.
 
-<TextStylesGroup />
-
 **Text Style Categories:**
 - **Display** - Large headings for marketing and hero sections
 - **Heading** - Structured content headings (h1-h6) 
@@ -88,8 +85,11 @@ Text styles can be applied using the `textStyle` prop on Text components or thro
 // Using Text component
 <Text textStyle="heading-lg">Large Heading</Text>
 
+// Using Cerberus Primitive
+<cerberus.p textStyle="body-md">Body Text</cerberus.p>
+
 // Using CSS function
-<div className={css({ textStyle: 'body-md' })}>Body text</div>
+<p className={css({ textStyle: 'body-md' })}>Body text</p>
 ```
 
 **Customization:**

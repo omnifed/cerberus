@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo, type MouseEvent } from 'react'
 import Link, { type LinkProps } from 'next/link'
-import { css, cx } from 'styled-system/css'
+import { css } from 'styled-system/css'
 import { grid, gridItem, hstack } from 'styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
 import {
@@ -17,18 +17,15 @@ import { AnimatingSunIcon } from './icons/AnimatingSunIcon'
 import { AnimatingMoonIcon } from './icons/AnimatingMoonIcon'
 import { usePathname } from 'next/navigation'
 import { focusStates } from '@cerberus-design/panda-preset'
-import { button } from 'styled-system/recipes'
-import { DogIcon } from './icons/DogIcon'
-import { FireIcon } from './icons/FireIcon'
-import { getTheme, injectTheme, type ThemeName } from 'styled-system/themes'
 import { INLINE_BLOCK, PAGE_BORDER_INITIAL } from '../utils/const'
 import { getCodeTheme, getColorMode } from '../utils/colors'
 import { AnimatingSystemIcon } from './icons/AnimatingSystemIcon'
 import { NavGHLogoContent, NavLogoContent } from './shared/nav/icon-items'
+import { ThemeMenu } from './shared/theme-menu'
 
 export function Nav() {
   const pathname = usePathname()
-  const { mode, theme, updateMode, updateTheme } = useThemeContext()
+  const { mode, theme, updateMode } = useThemeContext()
   const ariaLabel = useMemo(() => {
     switch (mode) {
       case 'light':
@@ -48,18 +45,6 @@ export function Nav() {
       document.documentElement.dataset.codeTheme = getCodeTheme(newMode, theme)
     },
     [updateMode, theme],
-  )
-
-  const handleUpdateTheme = useCallback(
-    async (e: MouseEvent<HTMLButtonElement>) => {
-      const currentTheme = e.currentTarget.value
-      const newTheme = currentTheme === 'cerberus' ? 'acheron' : 'cerberus'
-      updateTheme(newTheme)
-      document.documentElement.dataset.codeTheme = getCodeTheme(mode, newTheme)
-      const pandaTheme = await getTheme(newTheme as ThemeName)
-      injectTheme(document.documentElement, pandaTheme)
-    },
-    [updateTheme, mode],
   )
 
   return (
@@ -235,36 +220,7 @@ export function Nav() {
           </li>
 
           <li>
-            <button
-              className={cx(
-                css({
-                  bgColor: 'page.bg.100',
-                  border: '1px solid',
-                  borderColor: PAGE_BORDER_INITIAL,
-                  fontWeight: 500,
-                  h: '2.275rem',
-                  rounded: 'sm',
-                  textStyle: 'label-sm',
-                  textTransform: 'capitalize',
-                  _hover: {
-                    bgColor: 'page.bg.200',
-                  },
-                }),
-                button({
-                  palette: 'secondaryAction',
-                  shape: 'rounded',
-                  size: 'sm',
-                  usage: 'outlined',
-                }),
-              )}
-              onClick={handleUpdateTheme}
-              value={theme}
-            >
-              <Show when={theme === 'cerberus'} fallback={<FireIcon />}>
-                <DogIcon />
-              </Show>
-              {theme}
-            </button>
+            <ThemeMenu />
           </li>
         </ul>
       </section>

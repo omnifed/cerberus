@@ -38,7 +38,6 @@ describe('menu recipe', () => {
 
   test('should have a item style', () => {
     expect(menu.base?.item).toMatchObject({
-      colorPalette: 'action',
       alignItems: 'center',
       borderRadius: 'l1',
       color: 'page.text.initial',
@@ -56,7 +55,7 @@ describe('menu recipe', () => {
       userSelect: 'none',
       width: 'full',
       _highlighted: {
-        bgColor: 'colorPalette.ghost.hover',
+        bgColor: 'action.ghost.hover',
       },
       _disabled: {
         cursor: 'not-allowed',

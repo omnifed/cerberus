@@ -19,9 +19,9 @@ export function SideNav() {
       }}
     >
       <For each={getDocPageNavItems(section)}>
-        {(item) => (
+        {(item, idx) => (
           <Show
-            key={item.id}
+            key={`${idx}:${item.id}`}
             when={item.href}
             fallback={
               <Text

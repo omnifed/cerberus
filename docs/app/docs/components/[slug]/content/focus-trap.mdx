@@ -1,0 +1,166 @@
+---
+title: 'Focus Trap'
+description: 'Contains focus within a designated container until explicitly released.'
+npm: '@cerberus-design/react'
+arkUtility: 'focus-trap'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+
+## Motivation
+
+Focus trapping is essential for modal interfaces and other interactive elements that require user attention.
+
+The `FocusTrap` component helps maintain accessibility by ensuring keyboard focus remains within a designated container
+until explicitly released.
+
+## Examples
+
+```tsx
+import { FocusTrap } from '@cerberus/react'
+import { useState } from 'react'
+
+export const Basic = () => {
+  const [trapped, setTrapped] = useState(false)
+  return (
+    <>
+      <button onClick={() => setTrapped(true)}>Start Trap</button>
+      <FocusTrap returnFocusOnDeactivate={false} disabled={!trapped}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+            paddingBlock: '1rem',
+          }}
+        >
+          <input type="text" placeholder="input" />
+          <textarea placeholder="textarea" />
+          <button onClick={() => setTrapped(false)}>End Trap</button>
+        </div>
+      </FocusTrap>
+    </>
+  )
+}
+
+```
+
+### Autofocus
+
+The focus trap respects elements with the `autofocus` attribute.
+
+```tsx
+import { FocusTrap } from '@cerberus/react'
+import { useRef, useState } from 'react'
+
+export const Autofocus = () => {
+  const [trapped, setTrapped] = useState(false)
+  const toggle = () => setTrapped((c) => !c)
+
+  const buttonRef = useRef<HTMLButtonElement | null>(null)
+  const getButtonNode = () => {
+    const node = buttonRef.current
+    if (!node) throw new Error('Button not found')
+    return node
+  }
+
+  return (
+    <div>
+      <button ref={buttonRef} onClick={toggle}>
+        {trapped ? 'End Trap' : 'Start Trap'}
+      </button>
+      {trapped && (
+        <FocusTrap disabled={!trapped} setReturnFocus={getButtonNode}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+              paddingBlock: '1rem',
+            }}
+          >
+            <input type="text" placeholder="Regular input" />
+            {/* biome-ignore lint/a11y/noAutofocus: intentional */}
+            <input type="text" placeholder="Autofocused input" autoFocus />
+            <button onClick={() => setTrapped(false)}>End Trap</button>
+          </div>
+        </FocusTrap>
+      )}
+    </div>
+  )
+}
+
+```
+
+
+
+### Initial Focus
+
+Use the `initialFocus` prop to set the element that should receive initial focus when the trap is activated.
+
+```tsx
+import { FocusTrap } from '@cerberus/react'
+import { useRef, useState } from 'react'
+
+export const InitialFocus = () => {
+  const [trapped, setTrapped] = useState(false)
+  const toggle = () => setTrapped((c) => !c)
+
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  return (
+    <div>
+      <button onClick={toggle}>{trapped ? 'End Trap' : 'Start Trap'}</button>
+      <FocusTrap disabled={!trapped} initialFocus={() => inputRef.current}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+            paddingBlock: '1rem',
+          }}
+        >
+          <input type="text" placeholder="First input" />
+          <input ref={inputRef} type="text" placeholder="Second input (initial focus)" />
+          <textarea placeholder="textarea" />
+          <button onClick={() => setTrapped(false)}>End Trap</button>
+        </div>
+      </FocusTrap>
+    </div>
+  )
+}
+
+```
+
+
+
+## API Reference
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+| `disabled` | `boolean` | No | Whether the focus trap is disabled. |
+| `fallbackFocus` | `FocusTarget` | No | By default, an error will be thrown if the focus trap contains no
+elements in its tab order. With this option you can specify a
+fallback element to programmatically receive focus if no other
+tabbable elements are found. For example, you may want a popover's
+`<div>` to receive focus if the popover's content includes no
+tabbable elements. *Make sure the fallback element has a negative
+`tabindex` so it can be programmatically focused.|
+| `initialFocus` | `VoidFunction` | No | By default, when a focus trap is activated the first element in the
+focus trap's tab order will receive focus. With this option you can
+specify a different element to receive that initial focus, or use `false`
+for no initially focused element at all. |
+| `onActivate` | `VoidFunction` | No | A function that will be called **before** sending focus to the
+target element upon activation. |
+| `onDeactivate` | `VoidFunction` | No | A function that will be called **before** sending focus to the
+trigger element upon deactivation. |
+| `returnFocusOnDeactivate` | `boolean` | No | Default: `true`. If `false`, when the trap is deactivated,
+focus will *not* return to the element that had focus before activation. |
+| `setReturnFocus` |  | No | By default, focus trap on deactivation will return to the element that was focused before activation. |
+
+<NoteAdmonition description="If `initialFocus` is `false` (or a function that returns `false`),
+this function will not be called when the trap is activated, and no element
+will be initially focused. This function may still be called while the trap
+is active if things change such that there are no longer any tabbable nodes
+in the trap." />

@@ -1,8 +1,8 @@
 import { Tag, type TagProps, Text } from '@cerberus-design/react'
-import { gradientValues } from '@cerberus-design/panda-preset'
 import { Information } from '@carbon/icons-react'
 import { HStack, Grid, GridItem } from '@/styled-system/jsx'
 import { Fragment } from 'react'
+import { getGradients } from '@cerberus/tokens'
 
 export type TagPreviewProps = TagProps
 
@@ -70,7 +70,7 @@ const variants: VariantProps[] = [
   { usage: 'outlined', shape: 'square' },
 ]
 const COLOR_LIST = palettes.map((palette) => ({ palette, variants }))
-const GRAD_LIST = gradientValues.map((gradient) => ({ gradient, variants }))
+const GRAD_LIST = getGradients().map((gradient) => ({ gradient, variants }))
 
 export function OverviewPaletteTagPreview() {
   return (

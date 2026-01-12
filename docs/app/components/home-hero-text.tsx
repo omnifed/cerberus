@@ -5,12 +5,9 @@ export function HomeHeroText() {
     <span
       className={css({
         display: 'block',
-        _cerberusTheme: {
-          textGradient: 'cerberus.dark.charon-dark',
-        },
-        _acheronTheme: {
-          textGradient: 'acheron.dark.charon-dark',
-        },
+        textGradient: 'to-t',
+        gradientFrom: 'gradient.charon-dark.start',
+        gradientTo: 'gradient.charon-dark.end',
       })}
     >
       with Cerberus

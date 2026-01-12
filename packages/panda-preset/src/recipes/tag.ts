@@ -3,8 +3,8 @@ import {
   type RecipeConfig,
   type RecipeVariantRecord,
 } from '@pandacss/dev'
+import { getGradients } from '@cerberus/tokens'
 import { createGradientVariants } from './shared/helpers'
-import { gradientValues } from '../utilities'
 import type {
   Pretty,
   RecipeCompoundSelection,
@@ -96,7 +96,7 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
 function createGradientOutlineVariants(): Pretty<
   RecipeCompoundVariant<RecipeCompoundSelection<RecipeVariantRecord>>
 >[] {
-  return gradientValues.map((name) => ({
+  return getGradients().map((name) => ({
     gradient: name,
     usage: 'outlined',
     css: {

@@ -15,11 +15,15 @@ Text gradients allow you to apply beautiful gradient effects to text content usi
 Use the `textGradient` prop to apply a gradient to text. The gradient tokens follow the pattern `[theme].[mode].[variant]`.
 
 ```tsx
-import { Text } from '@cerberus-design/react'
+import { Text } from '@cerberus/react'
 
 function Example() {
   return (
-    <Text textGradient="cerberus.dark.charon-dark">
+    <Text
+      textGradient="to-t"
+      gradientFrom="gradient.charon-dark.start"
+      gradientTo="gradient.charon-dark.end"
+    >
       This text has a gradient effect
     </Text>
   )
@@ -31,11 +35,15 @@ function Example() {
 The Cerberus factory provides a convenient way to apply text gradients with inline styles:
 
 ```tsx
-import { cerberus } from '@cerberus-design/react'
+import { cerberus } from '@cerberus/react'
 
 function Example() {
   return (
-    <cerberus.span textGradient="cerberus.dark.charon-dark">
+    <cerberus.span
+      textGradient="to-t"
+      gradientFrom="gradient.charon-dark.start"
+      gradientTo="gradient.charon-dark.end"
+    >
       This is gradient text using the factory
     </cerberus.span>
   )
@@ -48,34 +56,53 @@ Here are some examples of text gradients in action:
 
 <CodePreview preview={<TextGradientPreview />}>
 ```tsx title="Text gradient examples"
-import { cerberus } from '@cerberus-design/react'
+import { cerberus } from '@cerberus/react'
+import { css } from 'styled-system/css'
 
-export default function TextGradientDemo() {
+export default function TextGradientPreview() {
   return (
-    <cerberus.div 
-      display="flex" 
-      flexDirection="column" 
-      gap="4"
-      padding="6"
-      borderRadius="lg"
-      border="1px solid"
-      borderColor="colorPalette.border.initial"
-    >
-      <cerberus.h3 textGradient="cerberus.dark.charon-dark" fontSize="2xl" fontWeight="bold">
+    <cerberus.div display="flex" flexDirection="column" gap="4" padding="6">
+      <cerberus.h3
+        textStyle="h3"
+        textGradient="to-b"
+        gradientFrom="gradient.charon-dark.start"
+        gradientTo="gradient.charon-dark.end"
+      >
         Charon Dark Gradient
       </cerberus.h3>
-      
-      <cerberus.div textGradient="cerberus.light.charon-light" fontSize="lg">
+
+      <p
+        className={css({
+          textStyle: 'body-lg',
+          textGradient: 'to-b',
+          gradientFrom: 'gradient.charon-light.start',
+          gradientTo: 'gradient.charon-light.end',
+        })}
+      >
         This text uses the Charon light gradient variant.
-      </cerberus.div>
-      
-      <cerberus.span textGradient="cerberus.dark.nyx-dark" fontSize="lg" fontWeight="semibold">
+      </p>
+
+      <p
+        className={css({
+          textStyle: 'heading-md',
+          textGradient: 'to-b',
+          gradientFrom: 'gradient.nyx-dark.start',
+          gradientTo: 'gradient.nyx-dark.end',
+        })}
+      >
         Nyx dark gradient creates a striking effect.
-      </cerberus.span>
-      
-      <cerberus.span textGradient="cerberus.light.amphiaraus-light" fontSize="lg">
+      </p>
+
+      <p
+        className={css({
+          textStyle: 'body-lg',
+          textGradient: 'to-b',
+          gradientFrom: 'gradient.amphiaraus-light.start',
+          gradientTo: 'gradient.amphiaraus-light.end',
+        })}
+      >
         Amphiaraus light gradient for subtle elegance.
-      </cerberus.span>
+      </p>
     </cerberus.div>
   )
 }
@@ -86,30 +113,28 @@ export default function TextGradientDemo() {
 
 Cerberus provides several gradient variants, each available in light and dark modes:
 
-- `charon-light` / `charon-dark`
-- `nyx-light` / `nyx-dark` 
-- `amphiaraus-light` / `amphiaraus-dark`
-- `styx-light` / `styx-dark`
-- `thanatos-light` / `thanatos-dark`
-- `hades-light` / `hades-dark`
-- `asphodel-light` / `asphodel-dark`
+[View the cerberus gradients](/docs/theming/gradients)
 
 ## Advanced
 
 For theme-aware gradients, you can use conditional styles directly on the cerberus factory:
 
 ```tsx
-import { cerberus } from '@cerberus-design/react'
+import { cerberus } from '@cerberus/react'
 
 function Example() {
   return (
     <cerberus.span
       display="block"
       _cerberusTheme={{
-        textGradient: 'cerberus.dark.charon-dark',
+        textGradient="to-b"
+        gradientFrom="gradient.charon-dark.start"
+        gradientTo="gradient.charon-dark.end"
       }}
       _acheronTheme={{
-        textGradient: 'acheron.dark.charon-dark',
+        textGradient="to-t"
+        gradientFrom="gradient.charon-light.start"
+        gradientTo="gradient.charon-light.end"
       }}
     >
       Theme-aware gradient text
