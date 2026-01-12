@@ -5,5 +5,6 @@ export const packages = [
   'panda-preset',
   'preset-acheron-theme',
   'preset-cerberus-theme',
+  'preset-elysium-theme',
   'react',
 ]

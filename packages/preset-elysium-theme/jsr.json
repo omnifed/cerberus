@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/preset-elysium-theme",
-  "version": "0.24.0",
+  "version": "0.25.0-rc",
   "license": "MIT",
   "exports": "./src/index.ts"
 }
