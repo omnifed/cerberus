@@ -7,13 +7,13 @@ export default function CerberusLogo() {
       fill: 'acheron.brand.60',
     },
     _elysiumTheme: {
-      fill: 'elysium.brand.10',
+      fill: 'elysium.brand.60',
     },
   })
   const accentStyles = css({
     fill: '#260048',
     _acheronTheme: {
-      fill: 'acheron.brand.60',
+      fill: 'acheron.brand.100',
     },
     _elysiumTheme: {
       fill: 'elysium.brand.100',
