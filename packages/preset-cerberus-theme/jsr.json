@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/preset-cerberus-theme",
-  "version": "0.25.0-rc",
+  "version": "0.25.0-rc.1",
   "license": "MIT",
   "exports": "./src/index.ts"
 }
