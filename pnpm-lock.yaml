@@ -291,9 +291,6 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2
     devDependencies:
-      '@cerberus-design/configs':
-        specifier: workspace:*
-        version: link:../../configs
       '@cerberus/tokens':
         specifier: workspace:*
         version: link:../tokens
@@ -316,9 +313,6 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2
     devDependencies:
-      '@cerberus-design/configs':
-        specifier: workspace:*
-        version: link:../../configs
       '@cerberus/tokens':
         specifier: workspace:*
         version: link:../tokens
@@ -341,9 +335,6 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2
     devDependencies:
-      '@cerberus-design/configs':
-        specifier: workspace:*
-        version: link:../../configs
       '@cerberus/tokens':
         specifier: workspace:*
         version: link:../tokens
