@@ -27,6 +27,121 @@ jobs:
       - run: pnpm build && pnpm publish --access public --no-git-checks
         working-directory: ./packages/react
 
+  jsr-publish-figma:
+    runs-on: ubuntu-latest
+    name: Publish Figma Latest Version to JSR
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/figma
+
+  jsr-publish-tokens:
+    runs-on: ubuntu-latest
+    name: Publish Tokens Latest Version to JSR
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/tokens
+
+  jsr-publish-preset-acheron:
+    runs-on: ubuntu-latest
+    name: Publish Acheron Theme Latest Version to JSR
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/preset-acheron-theme
+
+  jsr-publish-preset-cerberus:
+    runs-on: ubuntu-latest
+    name: Publish Cerberus Theme Latest Version to JSR
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/preset-cerberus-theme
+
+  jsr-publish-preset-elysium:
+    runs-on: ubuntu-latest
+    name: Publish Elysium Theme Latest Version to JSR
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/preset-elysium-theme
+
   jsr-publish-preset:
     runs-on: ubuntu-latest
     name: Publish Preset Latest Version to JSR
@@ -44,8 +159,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - uses: denoland/setup-deno@v2
         with:
-          cache: true,
-          deno-version: stable
+          cache: true
 
       - run: pnpm install && deno install
       - run: deno publish --allow-dirty
