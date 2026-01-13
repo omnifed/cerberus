@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/panda-preset",
-  "version": "0.25.0-rc.2",
+  "version": "0.25.0-rc.3",
   "description": "The official Panda-CSS preset for the omni-federal design system",
   "browserslist": "> 0.25%, not dead",
   "sideEffects": false,
