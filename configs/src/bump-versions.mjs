@@ -36,12 +36,12 @@ function bumpVersions() {
 
   console.log('Updating packages:', packages)
   console.log('Bumping versions to', _getReleaseVersion(values))
-  console.log('Updating package.json & jsr.json files...')
+  console.log('Updating package.json & deno.json files...')
 
   packages.forEach(async (pkg) => {
     const workspacePath = resolve(import.meta.dir, '..', '..', 'packages', pkg)
     const packageJsonPath = resolve(workspacePath, 'package.json')
-    const jsrPath = resolve(workspacePath, 'jsr.json')
+    const jsrPath = resolve(workspacePath, 'deno.json')
 
     // prep JSR update
     const jsrJson = await file(jsrPath).json()
