@@ -1,6 +1,0 @@
-{
-  "name": "@cerberus/figma",
-  "version": "0.25.0-rc.4",
-  "license": "MIT",
-  "exports": "./src/index.ts"
-}
