@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/panda-preset",
-  "version": "0.25.0-rc.6",
+  "version": "0.25.0-rc.7",
   "license": "MIT",
   "exports": "./src/index.ts"
 }
