@@ -37,7 +37,7 @@ function publish() {
 
   nonJSRPackages.forEach(async (pkg) => {
     const workspacePath = resolve(import.meta.dir, '..', '..', 'packages', pkg)
-    const jsrJsonPath = resolve(workspacePath, 'jsr.json')
+    const jsrJsonPath = resolve(workspacePath, 'deno.json')
     const rawFile = file(jsrJsonPath)
     const jsrJson = await rawFile.json()
     const json = JSON.stringify(

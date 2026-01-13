@@ -2,6 +2,17 @@ import { Tabs } from '@cerberus-design/react'
 import { css } from 'styled-system/css'
 import { Code } from './code'
 
+function formatJSRCmd(cmd: string): string {
+  const isJSR = cmd.includes('jsr')
+
+  if (isJSR) {
+    const [pp, _, jsr, add, pkg] = cmd.split(' ')
+    return `${pp} ${add} ${jsr}:${pkg}`
+  }
+
+  return cmd
+}
+
 interface BashTabsProps {
   code: string
 }
@@ -16,7 +27,7 @@ export default function BashTabs(props: BashTabsProps) {
       >
         <Tabs.Tab value="npm">NPM</Tabs.Tab>
         <Tabs.Tab value="pnpm">PNPM</Tabs.Tab>
-        <Tabs.Tab value="yarn">Yarn</Tabs.Tab>
+        <Tabs.Tab value="bun">Bun</Tabs.Tab>
       </Tabs.List>
 
       <div
@@ -30,15 +41,20 @@ export default function BashTabs(props: BashTabsProps) {
         </Tabs.Panel>
         <Tabs.Panel value="pnpm">
           <Code language="sh">
-            {props.code
-              .replace('npm', 'pnpm')
-              .replace('install', 'add')
-              .replace('npx', 'pnpm dlx')}
+            {formatJSRCmd(
+              props.code
+                .replace('npm', 'pnpm')
+                .replace('install', 'add')
+                .replace('npx', 'pnpm dlx'),
+            )}
           </Code>
         </Tabs.Panel>
-        <Tabs.Panel value="yarn">
+        <Tabs.Panel value="bun">
           <Code language="sh">
-            {props.code.replace('npm', 'yarn').replace('install', 'add')}
+            {props.code
+              .replace('npm', 'bun')
+              .replace('install', 'add')
+              .replace('npx', 'bunx')}
           </Code>
         </Tabs.Panel>
       </div>

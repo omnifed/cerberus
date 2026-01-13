@@ -1,6 +1,5 @@
 {
-  "name": "@cerberus/react",
+  "name": "@cerberus/figma",
   "version": "0.25.0-rc.5",
-  "license": "MIT",
   "exports": "./src/index.ts"
 }

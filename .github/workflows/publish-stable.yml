@@ -42,7 +42,11 @@ jobs:
           node-version: '22'
           cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true,
+          deno-version: stable
 
-      - run: pnpm install
-      - run: pnpm dlx jsr publish --allow-dirty
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
         working-directory: ./packages/panda-preset
