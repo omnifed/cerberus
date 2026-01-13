@@ -7,7 +7,7 @@ import { RGB, RGBA } from '@figma/rest-api-spec'
 export function colorApproximatelyEqual(
   colorA: RGB | RGBA,
   colorB: RGB | RGBA,
-) {
+): boolean {
   return rgbToHex(colorA) === rgbToHex(colorB)
 }
 
@@ -40,7 +40,7 @@ export function parseColor(color: string): RGB | RGBA {
   }
 }
 
-export function rgbToHex({ r, g, b, ...rest }: RGB | RGBA) {
+export function rgbToHex({ r, g, b, ...rest }: RGB | RGBA): string {
   const a = 'a' in rest ? rest.a : 1
 
   const toHex = (value: number) => {
@@ -52,6 +52,6 @@ export function rgbToHex({ r, g, b, ...rest }: RGB | RGBA) {
   return `#${hex}` + (a !== 1 ? toHex(a) : '')
 }
 
-export function rgbaToString({ r, g, b, a }: RGBA) {
+export function rgbaToString({ r, g, b, a }: RGBA): string {
   return `rgba(${r * 255}, ${g * 255}, ${b * 255}, ${a})`
 }
