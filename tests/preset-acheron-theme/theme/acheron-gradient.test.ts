@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { gradientTokens } from '@cerberus-design/preset-acheron-theme'
+import { gradientTokens } from '@cerberus/preset-acheron-theme'
 
 describe('acheron gradientTokens', () => {
   function formatSemanticToken(value: TemplateStringsArray) {

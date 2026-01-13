@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { successTokens } from '@cerberus-design/preset-acheron-theme'
+import { successTokens } from '@cerberus/preset-acheron-theme'
 
 describe('success', () => {
   const token = successTokens.success

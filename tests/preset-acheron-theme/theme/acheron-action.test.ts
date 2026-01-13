@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { actionTokens } from '@cerberus-design/preset-acheron-theme'
+import { actionTokens } from '@cerberus/preset-acheron-theme'
 
 describe('acheron actionTokens', () => {
   function getSemanticToken(value: TemplateStringsArray) {

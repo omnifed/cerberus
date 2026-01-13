@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { pageTokens } from '@cerberus-design/preset-cerberus-theme'
+import { pageTokens } from '@cerberus/preset-cerberus-theme'
 
 describe('Cerberus > page', () => {
   const token = pageTokens.page

@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { infoTokens } from '@cerberus-design/preset-elysium-theme'
+import { infoTokens } from '@cerberus/preset-elysium-theme'
 
 describe('Elysium > infoTokens', () => {
   function formatSemanticToken(value: TemplateStringsArray) {

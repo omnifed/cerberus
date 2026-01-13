@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { pageTokens } from '@cerberus-design/preset-elysium-theme'
+import { pageTokens } from '@cerberus/preset-elysium-theme'
 
 describe('Elysium > page', () => {
   const token = pageTokens.page

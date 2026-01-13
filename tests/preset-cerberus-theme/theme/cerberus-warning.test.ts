@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { warningTokens } from '@cerberus-design/preset-cerberus-theme'
+import { warningTokens } from '@cerberus/preset-cerberus-theme'
 
 describe('warning', () => {
   function formatSemanticToken(value: TemplateStringsArray) {

@@ -5,7 +5,7 @@ import {
   type Preset,
 } from '@pandacss/dev'
 import pandaPreset from '@pandacss/preset-panda'
-import { presetCerberusTheme } from '@cerberus-design/preset-cerberus-theme'
+import { presetCerberusTheme } from '@cerberus/preset-cerberus-theme'
 import { type RawThemes } from '@cerberus/tokens'
 import { globalCss } from './globalCss'
 import { conditions } from './conditions'

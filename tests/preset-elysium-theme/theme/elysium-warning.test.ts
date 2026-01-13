@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { warningTokens } from '@cerberus-design/preset-elysium-theme'
+import { warningTokens } from '@cerberus/preset-elysium-theme'
 
 describe('Elysium > warning', () => {
   const token = warningTokens.warning

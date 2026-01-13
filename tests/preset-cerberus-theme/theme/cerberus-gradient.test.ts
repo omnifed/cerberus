@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { gradientTokens } from '@cerberus-design/preset-cerberus-theme'
+import { gradientTokens } from '@cerberus/preset-cerberus-theme'
 
 describe('gradientTokens', () => {
   function formatSemanticToken(value: TemplateStringsArray) {

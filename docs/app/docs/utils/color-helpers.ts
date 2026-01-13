@@ -1,5 +1,5 @@
-import { presetAcheronTheme as acheronTheme } from '@cerberus-design/preset-acheron-theme'
-import { presetCerberusTheme as cerberusTheme } from '@cerberus-design/preset-cerberus-theme'
+import { presetAcheronTheme as acheronTheme } from '@cerberus/preset-acheron-theme'
+import { presetCerberusTheme as cerberusTheme } from '@cerberus/preset-cerberus-theme'
 import {
   RawThemes,
   type SemanticToken,

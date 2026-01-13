@@ -64,19 +64,19 @@ export default defineConfig([
   },
 
   {
-    name: '@cerberus-design/preset-acheron-theme',
+    name: '@cerberus/preset-acheron-theme',
     files: ['packages/preset-acheron-theme/**/*.ts'],
     ...sonarjs.recommended,
   },
 
   {
-    name: '@cerberus-design/preset-cerberus-theme',
+    name: '@cerberus/preset-cerberus-theme',
     files: ['packages/preset-cerberus-theme/**/*.ts'],
     ...sonarjs.recommended,
   },
 
   {
-    name: '@cerberus-design/preset-elysium-theme',
+    name: '@cerberus/preset-elysium-theme',
     files: ['packages/preset-elysium-theme/**/*.ts'],
     ...sonarjs.recommended,
   },

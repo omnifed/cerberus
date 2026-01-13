@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { gradientTokens } from '@cerberus-design/preset-elysium-theme'
+import { gradientTokens } from '@cerberus/preset-elysium-theme'
 
 describe('Elysium > gradientTokens', () => {
   function formatSemanticToken(value: TemplateStringsArray) {

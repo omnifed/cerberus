@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { successTokens } from '@cerberus-design/preset-elysium-theme'
+import { successTokens } from '@cerberus/preset-elysium-theme'
 
 describe('Elysium > success', () => {
   const token = successTokens.success

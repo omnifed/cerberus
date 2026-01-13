@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { dangerTokens } from '@cerberus-design/preset-elysium-theme'
+import { dangerTokens } from '@cerberus/preset-elysium-theme'
 
 describe('Elysium > dangerTokens', () => {
   function formatSemanticToken(value: TemplateStringsArray) {
