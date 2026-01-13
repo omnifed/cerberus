@@ -1,6 +1,6 @@
 {
   "name": "@cerberus-design/react",
-  "version": "0.25.0-rc.2",
+  "version": "0.25.0-rc.3",
   "description": "The Cerberus Design React component library.",
   "browserslist": "> 0.25%, not dead",
   "sideEffects": false,
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
-    "@cerberus-design/panda-preset": "workspace:*",
+    "@cerberus/panda-preset": "workspace:*",
     "@internationalized/date": "^3.10.0",
     "@pandacss/dev": "^1.8.0",
     "@types/react": "^19.2.7",

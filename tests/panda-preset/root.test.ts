@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import * as DS from '@cerberus-design/panda-preset'
+import * as DS from '@cerberus/panda-preset'
 
 describe('root', () => {
   test('should export a config', () => {

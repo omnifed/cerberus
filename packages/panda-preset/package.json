@@ -1,6 +1,6 @@
 {
-  "name": "@cerberus-design/panda-preset",
-  "version": "0.25.0-rc.2",
+  "name": "@cerberus/panda-preset",
+  "version": "0.25.0-rc.3",
   "description": "The official Panda-CSS preset for the omni-federal design system",
   "browserslist": "> 0.25%, not dead",
   "sideEffects": false,
@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "@ark-ui/react": "^5.30.0",
-    "@cerberus-design/configs": "workspace:*",
     "@cerberus/preset-cerberus-theme": "workspace:*",
     "@cerberus/tokens": "workspace:*",
     "@pandacss/dev": "^1.8.0",

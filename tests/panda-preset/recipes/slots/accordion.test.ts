@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { focusStates, slotRecipes } from '@cerberus-design/panda-preset'
+import { focusStates, slotRecipes } from '@cerberus/panda-preset'
 
 describe('accordion recipe', () => {
   const { accordion } = slotRecipes

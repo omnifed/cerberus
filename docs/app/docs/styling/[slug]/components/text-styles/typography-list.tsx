@@ -1,7 +1,7 @@
 'use client'
 
 import { css } from 'styled-system/css'
-import { textStyles } from '@cerberus-design/panda-preset'
+import { textStyles } from '@cerberus/panda-preset'
 import { useMemo, useState, type ChangeEvent } from 'react'
 import { TypographyBlock } from './typography-block'
 

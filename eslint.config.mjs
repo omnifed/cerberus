@@ -58,7 +58,7 @@ export default defineConfig([
   },
 
   {
-    name: '@cerberus-design/panda-preset',
+    name: '@cerberus/panda-preset',
     files: ['packages/panda-preset/**/*.ts'],
     ...sonarjs.recommended,
   },
