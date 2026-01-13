@@ -1,0 +1,25 @@
+{
+  "name": "@cerberus/tokens",
+  "version": "0.25.0",
+  "description": "The internal tokens for Cerberus presets.",
+  "browserslist": "> 0.25%, not dead",
+  "sideEffects": false,
+  "type": "module",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "scripts": {
+    "clean": "rm -rf ./src/data",
+    "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
+  },
+  "files": [
+    "src/**/*",
+    "index.ts"
+  ],
+  "author": "developers@omnifederal.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@cerberus/figma": "workspace:*",
+    "@pandacss/dev": "^1.8.0",
+    "@pandacss/types": "^1.8.0"
+  }
+}

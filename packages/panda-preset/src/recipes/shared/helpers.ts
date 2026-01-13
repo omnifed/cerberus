@@ -1,6 +1,9 @@
 import type { SystemStyleObject } from '@pandacss/types'
-import type { Sentiment } from '../../theme/semantic-tokens/types'
-import { gradientValues, type GradientValue } from '../../utilities'
+import {
+  getGradients,
+  type GradientValue,
+  type Sentiment,
+} from '@cerberus/tokens'
 
 export type RecipePalette<K extends Sentiment[]> = K[]
 
@@ -60,7 +63,7 @@ export function createGradientVariants(): Record<
   GradientValue,
   SystemStyleObject
 > {
-  return gradientValues.reduce((acc, value) => {
+  return getGradients().reduce((acc, value) => {
     return {
       ...acc,
       [value]: {
@@ -89,7 +92,7 @@ export function createSlotGradientVariants(): Record<
   GradientValue,
   Record<'root', SystemStyleObject>
 > {
-  return gradientValues.reduce((acc, value) => {
+  return getGradients().reduce((acc, value) => {
     return {
       ...acc,
       [value]: {

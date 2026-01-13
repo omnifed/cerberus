@@ -1,6 +1,6 @@
 'use client'
 
-import { tokens } from '@cerberus-design/panda-preset'
+import { tokens } from '@cerberus/panda-preset'
 import {
   Field,
   Select,
@@ -49,14 +49,14 @@ const zLayers = css({
 })
 
 export default function ZPreview() {
-  const [active, setActive] = useState<keyof typeof tokens.zIndex>('hide')
+  const [active, setActive] = useState<string>('hide')
 
-  const formattedCollection = Object.entries(tokens.zIndex).map(
-    ([key, value]) => ({
-      label: key,
-      value: String(value.value),
-    }),
-  )
+  const formattedCollection = Object.entries(
+    tokens.zIndex as Record<string, { value: string; description: string }>,
+  ).map(([key, value]) => ({
+    label: key,
+    value: String(value.value),
+  }))
   const collection = createSelectCollection(formattedCollection)
 
   function handleChange(event: SelectValueChangeDetails) {

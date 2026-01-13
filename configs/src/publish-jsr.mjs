@@ -33,11 +33,11 @@ function _getReleaseVersion(values) {
 
 function publish() {
   const { values } = _parseFlags(argv)
-  const nonJSXPackages = packages.filter((pkg) => !pkg.includes('react'))
+  const nonJSRPackages = packages.filter((pkg) => !pkg.includes('react'))
 
-  nonJSXPackages.forEach(async (pkg) => {
+  nonJSRPackages.forEach(async (pkg) => {
     const workspacePath = resolve(import.meta.dir, '..', '..', 'packages', pkg)
-    const jsrJsonPath = resolve(workspacePath, 'jsr.json')
+    const jsrJsonPath = resolve(workspacePath, 'deno.json')
     const rawFile = file(jsrJsonPath)
     const jsrJson = await rawFile.json()
     const json = JSON.stringify(

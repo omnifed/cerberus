@@ -8,8 +8,8 @@ import {
   SUCCESS,
   WARNING,
   DANGER,
-  type Sentiment,
-} from '@cerberus-design/panda-preset'
+} from '@cerberus/panda-preset'
+import { type Sentiment } from '@cerberus/tokens'
 
 describe('recipe helpers', () => {
   const slots = ['usage', 'size', 'kind']

@@ -1,7 +1,7 @@
 import {
   createCerberusConfig,
   createCerberusPreset,
-} from '@cerberus-design/panda-preset'
+} from '@cerberus/panda-preset'
 
 export default createCerberusConfig({
   clean: true,

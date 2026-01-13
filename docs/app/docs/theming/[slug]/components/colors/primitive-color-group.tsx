@@ -1,30 +1,55 @@
 'use client'
 
-import { primitiveColorTokens } from '@cerberus-design/panda-preset'
+import tokens from '@/styled-system/specs/tokens.json'
 import { Box, Grid, GridItem, VStack } from '@/styled-system/jsx'
-import { For, Text } from '@cerberus-design/react'
+import { For, Text, useThemeContext } from '@cerberus-design/react'
 
-interface PrimitiveColorGroupProps {
-  theme?: 'cerberus' | 'acheron'
+type ColorGroup = {
+  name: string
+  value: string
+  cssVar: string
 }
 
-export function PrimitiveColorGroup(props: PrimitiveColorGroupProps) {
-  const { theme = 'cerberus' } = props
-  const themeColors = primitiveColorTokens[theme]
+type TokenGroup = {
+  type: string
+  values: ColorGroup[]
+}
 
-  // Get all color palettes except 'drop-shadow' as it's not a color palette
-  const colorPalettes = Object.entries(themeColors).filter(
-    ([key]) => key !== 'drop-shadow',
+type TokensData = {
+  type: string
+  data: TokenGroup[]
+}
+
+export function PrimitiveColorGroup() {
+  const { theme } = useThemeContext()
+
+  const colors = (tokens as unknown as TokensData).data.find(
+    (group) => group.type === 'colors',
+  ) as TokenGroup
+  const colorPalettes = colors?.values?.filter((color) =>
+    color.name.includes(theme),
   )
 
   function formatPaletteName(palette: string): string {
-    // Convert palette names to proper case
     return palette.charAt(0).toUpperCase() + palette.slice(1)
   }
 
-  function getColorValue(color: any): string {
-    return color?.$value || '#000000'
-  }
+  const colorGroups = [
+    'brand',
+    'neutral',
+    'info',
+    'success',
+    'warning',
+    'danger',
+  ].reduce((acc, group) => {
+    const groupColors = colorPalettes?.filter((color) =>
+      color.name.includes(group),
+    )
+    if (groupColors) {
+      acc.push({ type: group, values: groupColors })
+    }
+    return acc
+  }, [] as TokenGroup[])
 
   return (
     <Box
@@ -35,16 +60,16 @@ export function PrimitiveColorGroup(props: PrimitiveColorGroupProps) {
       w="full"
     >
       <VStack gap="xl">
-        <For each={colorPalettes}>
-          {([paletteName, paletteColors]) => (
-            <Box key={paletteName} w="full">
+        <For each={colorGroups}>
+          {(group) => (
+            <Box key={group.type} w="full">
               <Text
                 as="h4"
                 textStyle="heading-sm"
                 mb="md"
                 color="page.text.initial"
               >
-                {formatPaletteName(paletteName)}
+                {formatPaletteName(group.type)}
               </Text>
               <Grid
                 columns={{
@@ -54,9 +79,9 @@ export function PrimitiveColorGroup(props: PrimitiveColorGroupProps) {
                 }}
                 gap="sm"
               >
-                <For each={Object.entries(paletteColors)}>
-                  {([colorKey, colorValue]) => (
-                    <GridItem key={colorKey}>
+                <For each={group.values}>
+                  {({ name, cssVar, value }) => (
+                    <GridItem key={name}>
                       <VStack justify="center" gap="xs">
                         <Box
                           border="1px solid"
@@ -65,7 +90,7 @@ export function PrimitiveColorGroup(props: PrimitiveColorGroupProps) {
                           rounded="md"
                           w="full"
                           style={{
-                            backgroundColor: getColorValue(colorValue),
+                            backgroundColor: cssVar,
                           }}
                         />
                         <Text
@@ -73,7 +98,7 @@ export function PrimitiveColorGroup(props: PrimitiveColorGroupProps) {
                           textStyle="label-xs"
                           textAlign="center"
                         >
-                          {colorKey}
+                          {name.split('.').pop()}
                         </Text>
                         <Text
                           as="small"
@@ -81,7 +106,7 @@ export function PrimitiveColorGroup(props: PrimitiveColorGroupProps) {
                           textStyle="body-xs"
                           textAlign="center"
                         >
-                          {getColorValue(colorValue)}
+                          {value}
                         </Text>
                       </VStack>
                     </GridItem>

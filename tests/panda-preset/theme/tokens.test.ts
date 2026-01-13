@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { tokens } from '@cerberus-design/panda-preset'
+import { tokens } from '@cerberus/panda-preset'
 
 describe('tokens', () => {
   test('should have a fonts key', () => {
@@ -7,15 +7,15 @@ describe('tokens', () => {
   })
 
   test('should have a fonts.display key', () => {
-    expect(tokens.fonts.display).toBeDefined()
+    expect(tokens.fonts?.display).toBeDefined()
   })
 
   test('should have a fonts.sans key', () => {
-    expect(tokens.fonts.sans).toBeDefined()
+    expect(tokens.fonts?.sans).toBeDefined()
   })
 
   test('should have a fonts.mono key', () => {
-    expect(tokens.fonts.mono).toBeDefined()
+    expect(tokens.fonts?.mono).toBeDefined()
   })
 
   test('should have a shadows key', () => {
@@ -23,15 +23,15 @@ describe('tokens', () => {
   })
 
   test('should have a shadows.sm key', () => {
-    expect(tokens.shadows.sm).toBeDefined()
+    expect(tokens.shadows?.sm).toBeDefined()
   })
 
   test('should have a shadows.md key', () => {
-    expect(tokens.shadows.md).toBeDefined()
+    expect(tokens.shadows?.md).toBeDefined()
   })
 
   test('should have a shadows.lg key', () => {
-    expect(tokens.shadows.lg).toBeDefined()
+    expect(tokens.shadows?.lg).toBeDefined()
   })
 
   test('should have a zIndex key', () => {
@@ -39,46 +39,46 @@ describe('tokens', () => {
   })
 
   test('should have a zIndex.hide key', () => {
-    expect(tokens.zIndex.hide).toBeDefined()
+    expect(tokens.zIndex?.hide).toBeDefined()
   })
 
   test('should have a zIndex.base key', () => {
-    expect(tokens.zIndex.base).toBeDefined()
+    expect(tokens.zIndex?.base).toBeDefined()
   })
 
   test('should have a zIndex.decorator key', () => {
-    expect(tokens.zIndex.decorator).toBeDefined()
+    expect(tokens.zIndex?.decorator).toBeDefined()
   })
 
   test('should have a zIndex.dropdown key', () => {
-    expect(tokens.zIndex.dropdown).toBeDefined()
+    expect(tokens.zIndex?.dropdown).toBeDefined()
   })
 
   test('should have a zIndex.sticky key', () => {
-    expect(tokens.zIndex.sticky).toBeDefined()
+    expect(tokens.zIndex?.sticky).toBeDefined()
   })
 
   test('should have a zIndex.banner key', () => {
-    expect(tokens.zIndex.banner).toBeDefined()
+    expect(tokens.zIndex?.banner).toBeDefined()
   })
 
   test('should have a zIndex.overlay key', () => {
-    expect(tokens.zIndex.overlay).toBeDefined()
+    expect(tokens.zIndex?.overlay).toBeDefined()
   })
 
   test('should have a zIndex.modal key', () => {
-    expect(tokens.zIndex.modal).toBeDefined()
+    expect(tokens.zIndex?.modal).toBeDefined()
   })
 
   test('should have a zIndex.popover key', () => {
-    expect(tokens.zIndex.popover).toBeDefined()
+    expect(tokens.zIndex?.popover).toBeDefined()
   })
 
   test('should have a zIndex.toast key', () => {
-    expect(tokens.zIndex.toast).toBeDefined()
+    expect(tokens.zIndex?.toast).toBeDefined()
   })
 
   test('should have a zIndex.tooltip key', () => {
-    expect(tokens.zIndex.tooltip).toBeDefined()
+    expect(tokens.zIndex?.tooltip).toBeDefined()
   })
 })

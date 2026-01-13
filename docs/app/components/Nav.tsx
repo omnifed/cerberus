@@ -1,66 +1,20 @@
 'use client'
 
-import { useCallback, useMemo, type MouseEvent } from 'react'
 import Link, { type LinkProps } from 'next/link'
-import { css, cx } from 'styled-system/css'
+import { css } from 'styled-system/css'
 import { grid, gridItem, hstack } from 'styled-system/patterns'
 import navData from '@/app/data/navLinks.json'
-import {
-  IconButton,
-  Show,
-  Tooltip,
-  useThemeContext,
-  type ColorModes,
-} from '@cerberus-design/react'
+import { Tooltip } from '@cerberus-design/react'
 import { version } from '@cerberus-design/configs'
-import { AnimatingSunIcon } from './icons/AnimatingSunIcon'
-import { AnimatingMoonIcon } from './icons/AnimatingMoonIcon'
 import { usePathname } from 'next/navigation'
-import { focusStates } from '@cerberus-design/panda-preset'
-import { button } from 'styled-system/recipes'
-import { DogIcon } from './icons/DogIcon'
-import { FireIcon } from './icons/FireIcon'
-import { getTheme, injectTheme, type ThemeName } from 'styled-system/themes'
+import { focusStates } from '@cerberus/panda-preset'
 import { INLINE_BLOCK, PAGE_BORDER_INITIAL } from '../utils/const'
-import { getCodeTheme, getColorMode } from '../utils/colors'
-import { AnimatingSystemIcon } from './icons/AnimatingSystemIcon'
 import { NavGHLogoContent, NavLogoContent } from './shared/nav/icon-items'
+import { ThemeMenu } from './shared/theme-menu'
+import { ModeMenu } from './shared/mode-menu'
 
 export function Nav() {
   const pathname = usePathname()
-  const { mode, theme, updateMode, updateTheme } = useThemeContext()
-  const ariaLabel = useMemo(() => {
-    switch (mode) {
-      case 'light':
-        return 'Switch to dark mode'
-      case 'dark':
-        return 'Switch to system mode'
-      default:
-        return 'Switch to light mode'
-    }
-  }, [mode])
-
-  const handleUpdateMode = useCallback(
-    (e: MouseEvent<HTMLButtonElement>) => {
-      const currentMode = e.currentTarget.value as ColorModes
-      const newMode = getColorMode(currentMode)
-      updateMode(newMode)
-      document.documentElement.dataset.codeTheme = getCodeTheme(newMode, theme)
-    },
-    [updateMode, theme],
-  )
-
-  const handleUpdateTheme = useCallback(
-    async (e: MouseEvent<HTMLButtonElement>) => {
-      const currentTheme = e.currentTarget.value
-      const newTheme = currentTheme === 'cerberus' ? 'acheron' : 'cerberus'
-      updateTheme(newTheme)
-      document.documentElement.dataset.codeTheme = getCodeTheme(mode, newTheme)
-      const pandaTheme = await getTheme(newTheme as ThemeName)
-      injectTheme(document.documentElement, pandaTheme)
-    },
-    [updateTheme, mode],
-  )
 
   return (
     <nav
@@ -211,60 +165,13 @@ export function Nav() {
           <NavGHLogoContent />
 
           <li>
-            <Tooltip content={ariaLabel}>
-              <IconButton
-                ariaLabel={ariaLabel}
-                onClick={handleUpdateMode}
-                value={mode}
-              >
-                <Show
-                  when={mode === 'system'}
-                  fallback={
-                    <Show
-                      when={mode === 'light'}
-                      fallback={<AnimatingMoonIcon />}
-                    >
-                      <AnimatingSunIcon />
-                    </Show>
-                  }
-                >
-                  <AnimatingSystemIcon />
-                </Show>
-              </IconButton>
+            <Tooltip content="Switch mode">
+              <ModeMenu />
             </Tooltip>
           </li>
 
           <li>
-            <button
-              className={cx(
-                css({
-                  bgColor: 'page.bg.100',
-                  border: '1px solid',
-                  borderColor: PAGE_BORDER_INITIAL,
-                  fontWeight: 500,
-                  h: '2.275rem',
-                  rounded: 'sm',
-                  textStyle: 'label-sm',
-                  textTransform: 'capitalize',
-                  _hover: {
-                    bgColor: 'page.bg.200',
-                  },
-                }),
-                button({
-                  palette: 'secondaryAction',
-                  shape: 'rounded',
-                  size: 'sm',
-                  usage: 'outlined',
-                }),
-              )}
-              onClick={handleUpdateTheme}
-              value={theme}
-            >
-              <Show when={theme === 'cerberus'} fallback={<FireIcon />}>
-                <DogIcon />
-              </Show>
-              {theme}
-            </button>
+            <ThemeMenu />
           </li>
         </ul>
       </section>

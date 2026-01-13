@@ -1,0 +1,5 @@
+{
+  "name": "@cerberus/figma",
+  "version": "0.25.0",
+  "exports": "./src/index.ts"
+}

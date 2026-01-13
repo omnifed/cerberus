@@ -8,7 +8,7 @@ import { useTheme, type UseThemeOptions } from '../hooks/useTheme'
  * @module Theme
  */
 
-export type DefaultThemes = 'cerberus' | 'acheron'
+export type DefaultThemes = 'cerberus' | 'acheron' | 'elysium'
 export type CustomThemes<K extends string = DefaultThemes> = 'cerberus' | K
 export type ColorModes = 'light' | 'dark' | 'system'
 

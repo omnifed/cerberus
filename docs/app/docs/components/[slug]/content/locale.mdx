@@ -1,0 +1,49 @@
+---
+title: 'Locale'
+description: 'A component that sets the locale for your app, formatting dates, numbers, and other locale-specific data.'
+npm: '@cerberus/react'
+arkUtility: 'locale'
+---
+
+## Setup
+
+The `LocaleProvider` component sets the locale for your app, formatting dates, numbers, and other locale-specific data.
+
+> **Note:** If no `LocaleProvider` is setup, the default locale for the app will be `en-US` and therefore the direction
+> will be `ltr`.
+
+
+```tsx
+import { LocaleProvider } from '@cerberus/react'
+
+export const App = () => {
+  return <LocaleProvider locale="de-DE">{/* Your App */}</LocaleProvider>
+}
+```
+
+
+
+## Usage
+
+To access the current locale and direction settings, use the `useLocaleContext` hook.
+
+
+```tsx
+import { useLocaleContext } from '@cerberus/react'
+
+export const Usage = () => {
+  const { locale, dir } = useLocaleContext()
+
+  return <pre>{JSON.stringify({ locale, dir }, null, 2)}</pre>
+}
+
+```
+
+
+## API Reference
+
+**LocaleProvider Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `locale` | `string` | Yes | The locale to use for the application. |

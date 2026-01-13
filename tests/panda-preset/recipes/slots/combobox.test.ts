@@ -1,9 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import {
-  focusStates,
-  formStates,
-  slotRecipes,
-} from '@cerberus-design/panda-preset'
+import { focusStates, formStates, slotRecipes } from '@cerberus/panda-preset'
 import { label } from 'styled-system/recipes'
 
 describe('combobox recipe', () => {
@@ -99,7 +95,7 @@ describe('combobox recipe', () => {
           color: 'page.text.100',
         },
       },
-      _invalid: {
+      _userInvalid: {
         borderColor: 'danger.border.initial',
       },
       '& :where(svg)': {

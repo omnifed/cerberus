@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import * as DS from '@cerberus-design/panda-preset'
+import * as DS from '@cerberus/panda-preset'
 
 describe('root', () => {
   test('should export a config', () => {
@@ -32,30 +32,6 @@ describe('root', () => {
 
   test('should export tokens', () => {
     expect(DS.tokens).toBeDefined()
-  })
-
-  test('should export pageTokens', () => {
-    expect(DS.pageTokens).toBeDefined()
-  })
-
-  test('should export actionTokens', () => {
-    expect(DS.actionTokens).toBeDefined()
-  })
-
-  test('should export infoTokens', () => {
-    expect(DS.infoTokens).toBeDefined()
-  })
-
-  test('should export dangerTokens', () => {
-    expect(DS.dangerTokens).toBeDefined()
-  })
-
-  test('should export warningTokens', () => {
-    expect(DS.warningTokens).toBeDefined()
-  })
-
-  test('should export successTokens', () => {
-    expect(DS.successTokens).toBeDefined()
   })
 
   test('should export recipes', () => {

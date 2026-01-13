@@ -1,0 +1,133 @@
+---
+title: 'Format Byte'
+description: 'Formats a byte value with automatic unit conversion and display options.'
+npm: '@cerberus/react'
+arkUtility: 'format-byte'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { ByteBasic } from '../components/format/static'
+
+## Usage
+
+The byte formatting component extends the number formatting capabilities to handle byte-specific formatting, including
+automatic unit conversion and display options.
+
+```jsx
+import { Format } from '@cerberus/react'
+```
+
+## Examples
+
+### Basic
+
+Use the `Format.Byte` component to format a byte value with default options.
+
+<CodePreview preview={<ByteBasic />} />
+```tsx
+'use client'
+
+import { Format } from '@cerberus/react'
+
+export const ByteBasic = () => {
+  return (
+    <div>
+      File size: <Format.Byte value={1450.45} />
+    </div>
+  )
+}
+
+```
+
+### Sizes
+
+Use the `sizes` prop to specify custom byte sizes for formatting.
+
+```tsx
+'use client'
+
+import { Format } from '@cerberus/react'
+
+export const ByteSizes = () => {
+  const byteSizes = [50, 5000, 5000000, 5000000000]
+
+  return (
+    <div>
+      {byteSizes.map((size, index) => (
+        <div key={index}>
+          <Format.Byte value={size} />
+        </div>
+      ))}
+    </div>
+  )
+}
+```
+
+### Locale
+
+Use the `locale` prop to format the byte value according to a specific locale.
+
+```tsx
+'use client'
+
+import { Format, LocaleProvider } from '@cerberus/react'
+
+export const ByteWithLocale = () => {
+  const locales = ['de-DE', 'zh-CN']
+  const value = 1450.45
+
+  return (
+    <div>
+      {locales.map((locale) => (
+        <LocaleProvider key={locale} locale={locale}>
+          <Format.Byte value={value} />
+        </LocaleProvider>
+      ))}
+    </div>
+  )
+}
+```
+
+### Unit
+
+Use the `unit` prop to specify the unit of the byte value.
+
+```tsx
+'use client'
+
+import { Format } from '@cerberus/react'
+
+export const ByteWithUnit = () => {
+  const value = 1450.45
+  const unit = 'bit'
+
+  return (
+    <div>
+      File size: <Format.Byte value={value} unit={unit} />
+    </div>
+  )
+}
+````
+
+### Unit Display
+
+Use the `unitDisplay` prop to specify the display of the unit.
+
+```tsx
+'use client'
+
+import { Format } from '@cerberus/react'
+
+export const ByteWithUnitDisplay = () => {
+  const value = 50345.53
+  const unitDisplays = ['narrow', 'short', 'long'] as const
+
+  return (
+    <div>
+      {unitDisplays.map((unitDisplay) => (
+        <Format.Byte key={unitDisplay} value={value} unitDisplay={unitDisplay} />
+      ))}
+    </div>
+  )
+}
+```

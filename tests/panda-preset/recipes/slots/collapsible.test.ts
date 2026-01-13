@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'bun:test'
-import { slotRecipes } from '@cerberus-design/panda-preset'
+import { slotRecipes } from '@cerberus/panda-preset'
 
 // Basic test to validate the collapsible recipe structure
 

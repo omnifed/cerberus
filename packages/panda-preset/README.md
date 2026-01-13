@@ -5,15 +5,15 @@ This is the official [Panda-CSS](https://panda-css.com/) preset for the Cerberus
 ## Installation
 
 ```bash
-pnpm add -D @cerberus-design/panda-preset
+npx jsr add @cerberus/panda-preset
 ```
 
 ## Usage
 
 ```typescript
+// panda.config.ts
 import { defineConfig } from '@pandacss/dev'
-import pandaPreset from '@pandacss/preset-panda'
-import { cerberusPreset, cerberusConfig } from '@cerberus-design/panda-preset'
+import { cerberusPreset, cerberusConfig } from '@cerberus/panda-preset'
 
 export default defineConfig({
   ...cerberusConfig,
@@ -21,7 +21,7 @@ export default defineConfig({
   include: ['./src/**/*.{ts,tsx,js,jsx}'],
   exclude: [],
 
-  presets: [pandaPreset, cerberusPreset],
+  presets: [cerberusPreset()],
 })
 ```
 

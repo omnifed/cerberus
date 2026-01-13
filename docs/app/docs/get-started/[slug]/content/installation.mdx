@@ -35,7 +35,9 @@ Head over to the [Panda CSS installation guide](https://panda-css.com/docs/insta
 
 ### Step 2 - Setup the Cerberus Preset
 
-In order to use the Cerberus React, you need to install the Cerberus preset package.
+In order to use the Cerberus React, you need to install the Cerberus preset package. 
+We use publish to [JSR](https://jsr.io/docs/using-packages) to ensure a better 
+experience for developers.
 
 <BashTabs code="npx jsr add @cerberus/panda-preset" />
 
@@ -60,8 +62,12 @@ export default createCerberusConfig({
 
 The `createCerberusConfig` function adds the recommended Cerberus settings and any additional settings you pass into it.
 
-The `createCerberusPreset` function does the same except on the preset level.
+The `createCerberusPreset` function does the same except on the preset level. 
+This will come with the base theme and two presets built in:
 
+ - **Base Theme**: Non-semantic tokens theme contents
+ - **PandaCSS Preset**: The required PandaCSS preset needed when customizing presets
+ - **Cerberus Theme Preset**: The Cerberus theme
 
 ### Step 3 - Update your root layout to trigger Cerberus
 

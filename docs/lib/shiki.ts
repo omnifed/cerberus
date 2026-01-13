@@ -4,6 +4,8 @@ export type CodeThemes =
   | 'night-owl'
   | 'everforest-light'
   | 'everforest-dark'
+  | 'vitesse-black'
+  | 'vitesse-light'
 
 export function createThemes(
   themes: CodeThemes[],
@@ -26,6 +28,8 @@ export function getShikiOptions(syntax: string) {
       'night-owl',
       'everforest-light',
       'everforest-dark',
+      'vitesse-black',
+      'vitesse-light',
     ]),
     // This is to prevent a bug from the shiki package which does not style
     // the default theme correctly.

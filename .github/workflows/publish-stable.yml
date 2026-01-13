@@ -12,7 +12,7 @@ env:
 jobs:
   npm-publish-react:
     runs-on: ubuntu-latest
-    name: Build & Publish React to NPM
+    name: NPM - Publish React
     steps:
       - uses: actions/checkout@v6
       - uses: oven-sh/setup-bun@v2
@@ -27,9 +27,9 @@ jobs:
       - run: pnpm build && pnpm publish --access public --no-git-checks
         working-directory: ./packages/react
 
-  jsr-publish-preset:
+  jsr-publish-figma:
     runs-on: ubuntu-latest
-    name: Publish Preset Latest Version to JSR
+    name: JSR - Publish Figma
     permissions:
       contents: read
       id-token: write
@@ -42,7 +42,130 @@ jobs:
           node-version: '22'
           cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
 
-      - run: pnpm install
-      - run: pnpm dlx jsr publish --allow-dirty
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/figma
+
+  jsr-publish-tokens:
+    runs-on: ubuntu-latest
+    name: JSR - Publish Tokens
+    needs: jsr-publish-figma
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/tokens
+
+  jsr-publish-preset-acheron:
+    runs-on: ubuntu-latest
+    name: JSR - Publish Acheron Theme
+    needs: jsr-publish-tokens
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/preset-acheron-theme
+
+  jsr-publish-preset-cerberus:
+    runs-on: ubuntu-latest
+    name: JSR - Publish Cerberus Theme
+    needs: jsr-publish-tokens
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/preset-cerberus-theme
+
+  jsr-publish-preset-elysium:
+    runs-on: ubuntu-latest
+    name: JSR - Publish Elysium Theme
+    needs: jsr-publish-tokens
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/preset-elysium-theme
+
+  jsr-publish-preset:
+    runs-on: ubuntu-latest
+    name: JSR - Publish Preset
+    needs: jsr-publish-preset-cerberus
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
         working-directory: ./packages/panda-preset

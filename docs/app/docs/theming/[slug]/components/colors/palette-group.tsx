@@ -1,6 +1,6 @@
 'use client'
 
-import type { SemanticToken, Sentiment } from '@cerberus-design/panda-preset'
+import type { SemanticToken, Sentiment } from '@cerberus/tokens'
 import { normalizeTokens, getTokenList } from '@/app/docs/utils/color-helpers'
 import { Box, Grid, GridItem, VStack } from '@/styled-system/jsx'
 import { For, Text, useThemeContext } from '@cerberus-design/react'

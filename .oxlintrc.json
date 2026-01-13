@@ -1,3 +1,4 @@
 {
-  "plugins": ["react", "react-perf"]
+  "plugins": ["react", "react-perf"],
+  "ignorePatterns": ["packages/tokens/src/data/**/*"]
 }

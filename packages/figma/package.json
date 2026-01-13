@@ -1,0 +1,30 @@
+{
+  "name": "@cerberus/figma",
+  "version": "0.25.0",
+  "description": "Figma helpers for syncing to your project.",
+  "sideEffects": false,
+  "type": "module",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "scripts": {
+    "figma:sync": "bun run ./src/create-token-files.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@figma/code-connect": "^1.3.4",
+    "@figma/rest-api-spec": "^0.35.0",
+    "dotenv": "^17.2.3",
+    "ora": "^9.0.0",
+    "prettier": "3.7.4"
+  },
+  "files": [
+    "src/**/*"
+  ],
+  "keywords": [
+    "figma",
+    "design",
+    "tokens"
+  ],
+  "author": "developers@omnifederal.com",
+  "license": "ISC"
+}

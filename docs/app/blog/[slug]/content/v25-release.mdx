@@ -1,0 +1,425 @@
+---
+slug: cerberus-v025-release
+date: 2026-12-01
+author: caseyBaggz
+title: Cerberus v0.25 Release
+description: Fine tuning & customization options
+category: release
+version: 0.25.0
+timeToRead: 4
+tag: Release
+---
+
+import BashTabs from '@/app/components/bash-tabs'
+import CodePreview from '@/app/components/CodePreview'
+
+import { Basic } from '@/app/docs/components/[slug]/components/download-trigger/static'
+import { 
+  ByteBasic, 
+  NumberBasic,
+  RelativeTimeShort
+} from '@/app/docs/components/[slug]/components/format/static'
+import { Basic as HighlightBasic } from '@/app/docs/components/[slug]/components/highlight/static'
+import { Basic as JsonTreeBasic } from '@/app/docs/components/[slug]/components/json-tree-view/static'
+
+Celebrating the first release of 2026! This release adds new features and improvements
+to our entire ecosystem.
+
+## Lego-blocking our way into 2026
+
+With a new year comes new goals. Our long-term vision has always been to create a
+"Design System Factory" that can be used to streamline design or development workflows.
+
+This release marks a significant milestone in our journey towards this vision.
+
+## Preset
+
+The Cerberus Preset has been updated to be more modular and customizable via the `preset`
+option in the configuration. Today, we have officially broken out preset content into
+their own packages to ensure each team is only using what they need.
+
+We have broken presets into two groups (more to come in the future):
+
+- **Core**: `@cerberus/panda-preset` & `@cerberus/preset-cerberus-theme`
+- **Themes**: Any individual theme compatible with our semantic token design
+
+If you haven't noticed, we have a new theme called **Elysium**. :eyes:
+
+### Preset Packages
+
+- `@cerberus/panda-preset`: The **core** preset of non-theme related primitives.
+- `@cerberus/preset-cerberus-theme`: The Cerberus theme.
+- `@cerberus/preset-acheron-theme`: The Acheron theme.
+- `@cerberus/preset-elysium-theme`: The Elysium theme.
+
+The **Core** preset will setup pretty much everything you need and additionally
+add the **Cerberus Theme** as the default theme. **Theme** packages will set the
+semantic tokens and add a condition selector for the theme.
+
+If you only need the **Cerberus Theme**, you don't need to do anything.
+
+#### Installation
+
+Use **JSR** to install any preset package:
+
+<BashTabs code="npx jsr add @cerberus/preset-elysium-theme" />
+
+#### Multi-theme Usage
+
+If you are using multiple themes in your app (like we do in the docs), we recommend
+the following steps:
+
+1. Install the new theme packages you want to use
+2. Update your `panda.config.ts` to include the new themes:
+
+```diff lang="ts"
+import {
+  createCerberusConfig,
+  createCerberusPreset,
+} from '@cerberus/panda-preset'
+import {
+  presetAcheronTheme,
+  getThemeName as getAcheronThemeName,
+} from '@cerberus/preset-acheron-theme'
+import {
+  presetElysiumTheme,
+  getThemeName as getElysiumThemeName,
+} from '@cerberus/preset-elysium-theme'
+
+export default createCerberusConfig({
+  // ...your existing config
+
++  presets: [createCerberusPreset(), presetAcheronTheme, presetElysiumTheme], 
++  
++  staticCss: { 
++    themes: ['cerberus', getAcheronThemeName(), getElysiumThemeName()], 
++  }, 
+})
+```
+
+[View the packages on Github](https://github.com/omnifed/cerberus/tree/main/packages)
+
+## React
+
+We have unleashed a _massive_ amount of utility components and hooks to simplify 
+common tasks and improve developer productivity.
+
+### Client Only
+
+The `ClientOnly` component renders its children only on the client side. This is 
+useful for components that need to access the DOM or browser APIs that are not 
+available on the server side.
+
+```tsx
+import { ClientOnly } from '@cerberus/react'
+
+export const WithFallback = () => (
+  <ClientOnly fallback={<div>Loading on the server...</div>}>
+    <div>This content is only rendered on the client side.</div>
+  </ClientOnly>
+)
+```
+
+[Read the Client Only Docs](/docs/components/client-only)
+
+### Download Trigger
+
+The `DownloadTrigger` component provides a convenient way to programmatically 
+trigger file downloads in web applications. It handles the complexities of 
+downloading files, whether they are URLs, Blobs, or other data types.
+
+<CodePreview preview={<Basic />} />
+```tsx
+import { DownloadTrigger } from '@cerberus/react'
+
+export const Basic = () => {
+  return (
+    <DownloadTrigger data="Hello world" fileName="hello.txt" mimeType="text/plain">
+      Download txt
+    </DownloadTrigger>
+  )
+}
+```
+
+[Read the Download Trigger Docs](/docs/components/download-trigger)
+
+### Environment
+
+To support custom environments like an iframe, Shadow DOM or Electron, render 
+the `EnvironmentProvider` component to provide the environment context to all 
+Ark UI components.
+
+```tsx
+import { EnvironmentProvider } from '@cerberus/react'
+import Frame from 'react-frame-component'
+
+export const App = () => {
+  return (
+    <Frame title="IFrame Context">
+      <EnvironmentProvider>{/* Your App */}</EnvironmentProvider>
+    </Frame>
+  )
+}
+```
+
+[Read the Environment Docs](/docs/components/environment)
+
+### Focus Trap
+
+The `FocusTrap` component helps maintain accessibility by ensuring keyboard focus 
+remains within a designated container until explicitly released.
+
+```tsx
+import { cerberus, FocusTrap } from '@cerberus/react'
+import { useState } from 'react'
+
+export const Basic = () => {
+  const [trapped, setTrapped] = useState(false)
+
+  return (
+    <>
+      <button onClick={() => setTrapped(true)}>Start Trap</button>
+
+      <FocusTrap returnFocusOnDeactivate={false} disabled={!trapped}>
+        <cerberus.div>
+          <input type="text" placeholder="input" />
+          <textarea placeholder="textarea" />
+          <button onClick={() => setTrapped(false)}>End Trap</button>
+        </cerberus.div>
+      </FocusTrap>
+    </>
+  )
+}
+```
+
+[Read the Focus Trap Docs](/docs/components/focus-trap)
+
+### Format Byte
+
+The `Format.Byte` component extends the number formatting capabilities to 
+handle byte-specific formatting, including automatic unit conversion and display 
+options.
+
+<CodePreview preview={<ByteBasic />} />
+```tsx
+'use client'
+
+import { Format } from '@cerberus/react'
+
+export const ByteBasic = () => {
+  return (
+    <div>
+      File size: <Format.Byte value={1450.45} />
+    </div>
+  )
+}
+```
+
+[Read the Format Byte Docs](/docs/components/format-byte)
+
+### Format Number
+
+The `Format.Number` component extends the number formatting capabilities to 
+handle number-specific formatting, including automatic unit conversion and display 
+options.
+
+<CodePreview preview={<NumberBasic />} />
+```tsx
+'use client'
+
+import { Format } from '@cerberus/react'
+
+export const NumberBasic = () => {
+  return (
+    <div>
+      File size: <Format.Number value={1450.45} />
+    </div>
+  )
+}
+```
+
+[Read the Format Number Docs](/docs/components/format-number)
+
+### Format Relative Time
+
+The relative time formatting logic is handled by the native Intl.RelativeTimeFormat API
+and smartly cached to avoid performance issues when using the same locale 
+and options.
+
+<CodePreview preview={<RelativeTimeShort />} />
+```tsx
+'use client'
+
+import { Format } from '@cerberus/react'
+
+export const RelativeTimeShort = () => {
+  return (
+    <div>
+      Edited <Format.RelativeTime value={new Date('2025-05-05')} style="short" />
+    </div>
+  )
+}
+```
+
+[Read the Format Relative Time Docs](/docs/components/format-relative-time)
+
+### Frame
+
+The `Frame` component is used to render a component in an iframe.
+
+- Tracks the size of the content and exposes them via css variables.
+- Support for `head` prop to inject scripts and styles.
+- Support for mount and unmount callbacks.
+
+```tsx
+'use client'
+
+import { Frame } from '@cerberus/react'
+
+export const Basic = () => {
+  return (
+    <Frame
+      title="Custom Frame"
+      style={{ border: '1px solid #ccc', width: '100%', height: 'var(--height)' }}
+      head={<style>{'body { background-color: #f0f0f0; }'}</style>}
+    >
+      <div style={{ padding: '40px' }}>
+        <h1>Hello from inside the frame!</h1>
+        <p>This content is rendered within our custom frame component using a Portal.</p>
+      </div>
+    </Frame>
+  )
+}
+```
+
+[Read the Frame Docs](/docs/components/frame)
+
+### Highlight
+
+The Highlight component takes a `text` prop containing the full text and a `query`
+prop specifying the text to highlight. It then renders the text with highlighted
+portions wrapped in `<mark>` tags.
+
+<CodePreview preview={<HighlightBasic />} />
+```tsx
+import { Highlight } from '@cerberus/react'
+
+export const Basic = () => {
+  return (
+    <Highlight
+      query="ipsum"
+      text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt"
+    />
+  )
+}
+```
+
+[Read the Highlight Docs](/docs/components/highlight)
+
+### JSON Tree View
+
+The JSON Tree View component takes a `data` prop containing the JSON data to be displayed. 
+It then renders the data in a tree-like structure with expandable nodes.
+
+<CodePreview preview={<JsonTreeBasic />} />
+```tsx
+import { JsonTreeView } from '@cerberus/react'
+import { ChevronRightIcon } from '@carbon/icons-react'
+
+export const Basic = () => {
+  return (
+    <JsonTreeView.Root
+      data={{
+        name: 'John Doe',
+        age: 30,
+        email: 'john.doe@example.com',
+        tags: ['tag1', 'tag2', 'tag3'],
+        address: {
+          street: '123 Main St',
+          city: 'Anytown',
+          state: 'CA',
+          zip: '12345',
+        },
+      }}
+    >
+      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
+    </JsonTreeView.Root>
+  )
+}
+```
+
+Note, this is a stylized example. The actual implementation will be unstyled text.
+
+[Read the JSON Tree View Docs](/docs/components/json-tree-view)
+
+### Locale
+
+The `LocaleProvider` component sets the locale for your app, formatting dates, 
+numbers, and other locale-specific data.
+
+If no `LocaleProvider` is setup, the default locale for the app will be `en-US` 
+and therefore the direction will be `ltr`.
+
+```tsx
+import { LocaleProvider } from '@cerberus/react'
+
+export const App = () => {
+  return <LocaleProvider locale="de-DE">{/* Your App */}</LocaleProvider>
+}
+```
+
+[Read the Locale Docs](/docs/components/locale)
+
+### Presence
+
+Control the visibility of a child component using the `Presence` component.
+
+By default the child component starts out as hidden and remains hidden after the 
+`present` state is toggled off. This is useful for situations where the element 
+needs to be hidden initially and continue to stay hidden after its presence is
+no longer required.
+
+```tsx
+'use client'
+
+import { Presence } from '@cerberus/react'
+import { useState } from 'react'
+
+export const Basic = () => {
+  const [present, setPresent] = useState(false)
+  return (
+    <>
+      <button type="button" onClick={() => setPresent(!present)}>
+        Toggle
+      </button>
+      <Presence present={present}>Hidden and Hidden</Presence>
+    </>
+  )
+}
+```
+
+[Read the Presence Docs](/docs/components/presence)
+
+## Other Updates
+
+Additionally, we have also shipped the following:
+
+- Feat: Expose `Dialog` and `Accordion` root providers and hooks
+- Fix: `combobox` recipe uses correct `_userInvalid` condition
+
+## What's Next?
+
+We continue to enhance the Cerberus ecosystem with a focus on developer productivity and accessible design patterns. Coming up:
+
+- Figma API for syncing tokens
+- Additional utility components
+- Additional presets for pick and play features
+- Expanded documentation and examples
+
+Thank you for being part of the Cerberus community! These updates are driven by your feedback and real-world usage patterns.
+
+## Upgrading
+
+To upgrade to Cerberus v0.25.0, run:
+
+<BashTabs code="npm run up:cerberus" />

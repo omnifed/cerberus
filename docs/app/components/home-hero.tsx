@@ -126,7 +126,7 @@ export default function HomeHero() {
 
       <div
         className={gridItem({
-          zIndex: 'sticky',
+          zIndex: 'decorator',
         })}
       >
         <span

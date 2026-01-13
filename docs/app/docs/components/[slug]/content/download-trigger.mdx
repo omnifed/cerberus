@@ -1,0 +1,90 @@
+---
+title: 'Download Trigger'
+description: 'Programmatically trigger file downloads'
+npm: '@cerberus-design/react'
+arkUtility: 'download-trigger'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { Basic } from '../components/download-trigger/static'
+
+## Motivation
+
+The `DownloadTrigger` component provides a convenient way to programmatically trigger file downloads in web
+applications. It handles the complexities of downloading files, whether they are URLs, Blobs, or other data types.
+
+## Examples
+
+### Basic
+
+Pass the data you want to download to the `data` prop, and specify the `fileName` and `mimeType` of the file.
+
+<CodePreview preview={<Basic />} />
+```tsx
+import { Button, DownloadTrigger } from '@cerberus/react'
+
+export const Basic = () => {
+  return (
+    <Button asChild>
+      <DownloadTrigger
+        data="Hello world"
+        fileName="hello.txt"
+        mimeType="text/plain"
+      >
+        Download txt
+      </DownloadTrigger>
+    </Button>
+  )
+}
+```
+
+### Download SVG
+
+Here's an example of how to download an SVG file.
+
+```tsx
+import { DownloadTrigger } from '@cerberus/react'
+
+export const Svg = () => {
+  return (
+    <DownloadTrigger
+      data='<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red"/></svg>'
+      fileName="circle.svg"
+      mimeType="image/svg+xml"
+    >
+      Download SVG
+    </DownloadTrigger>
+  )
+}
+```
+
+### Promise
+
+You can also trigger downloads from a promise that returns a `Blob`, `File`, or `string`.
+
+```tsx
+import { DownloadTrigger } from '@cerberus/react'
+
+export const WithPromise = () => {
+  const fetchImage = async () => {
+    const response = await fetch('https://picsum.photos/200/300')
+    return response.blob()
+  }
+
+  return (
+    <DownloadTrigger data={fetchImage} fileName="random-image.jpg" mimeType="image/jpeg">
+      Download Image
+    </DownloadTrigger>
+  )
+}
+```
+
+
+## API Reference
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `data` | `DownloadableData` |   Yes | The data to download |
+| `fileName` | `string` | Yes | The name of the file to download |
+| `mimeType` | `FileMimeType` | Yes | The MIME type of the data to download |
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |

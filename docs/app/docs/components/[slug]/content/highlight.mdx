@@ -1,0 +1,135 @@
+---
+title: 'Highlight'
+description: 'Highlight text with query'
+npm: '@cerberus/react'
+arkUtility: 'highlight'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { Basic } from '../components/highlight/static'
+
+## Usage
+
+The Highlight component takes a `text` prop containing the full text and a `query` prop specifying the text to
+highlight. It then renders the text with highlighted portions wrapped in `<mark>` tags.
+
+<CodePreview preview={<Basic />} />
+```tsx
+import { Highlight } from '@cerberus/react'
+
+export const Basic = () => {
+  return (
+    <Highlight
+      query="ipsum"
+      text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt"
+    />
+  )
+}
+```
+
+### Multiple Queries
+
+You can highlight multiple terms by passing an array of strings to the `query` prop.
+
+```tsx
+import { Highlight } from '@cerberus/react'
+
+export const Multiple = () => {
+  return (
+    <Highlight
+      query={['ipsum', 'amet']}
+      text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt"
+    />
+  )
+}
+
+```
+
+
+### Case Sensitivity
+
+By default, the highlighting is case-sensitive. Use the `ignoreCase` prop to make it case-insensitive.
+
+
+```tsx
+import { Highlight } from '@cerberus/react'
+
+export const IgnoreCase = () => (
+  <Highlight text="The quick brown Fox jumps over the lazy Dog." query={['fox', 'dog']} ignoreCase />
+)
+
+```
+
+
+### Match All
+
+By default, the Highlight component matches the first occurrence of the query. To highlight all occurrences of the
+query, set the `matchAll` prop to `true`.
+
+
+
+```tsx
+import { Highlight } from '@cerberus/react'
+
+export const MatchAll = () => (
+  <div>
+    <h3>Match All</h3>
+    <Highlight text="The quick brown fox jumps over the lazy fox." query="fox" matchAll={true} />
+
+    <h3>Match First Occurrence Only</h3>
+    <Highlight text="The quick brown fox jumps over the lazy fox." query="fox" matchAll={false} />
+  </div>
+)
+
+```
+
+### Exact Match
+
+By default, the Highlight component matches partial words. Use the `exactMatch` prop to only highlight whole words that
+match the query exactly.
+
+
+```tsx
+import { Highlight } from '@cerberus/react'
+
+export const ExactMatch = () => {
+  return (
+    <div>
+      <p>Without exactMatch (highlights partial matches):</p>
+      <Highlight query="cat" text="The cat is in the category. A cat-like creature." matchAll />
+      <p style={{ marginTop: '1rem' }}>With exactMatch (highlights whole words only):</p>
+      <Highlight query="cat" text="The cat is in the category. A cat-like creature." exactMatch matchAll />
+    </div>
+  )
+}
+
+```
+
+## API Reference
+
+**Highlight Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `query` | `string[]` | Yes | The query to highlight in the text |
+| `text` | `string` | Yes | The text to highlight |
+| `exactMatch` | `boolean` | No | Whether to match whole words only |
+| `ignoreCase` | `boolean` | No | Whether to ignore case while matching |
+| `matchAll` | `boolean` | No | Whether to match multiple instances of the query |
+
+
+## Customization
+
+The Highlight component wraps matched text in `<mark>` tags.
+
+```tsx
+<Highlight text="The quick brown fox jumps over the lazy fox." query="fox" className="highlighted-text" />
+```
+
+Style the `mark` tags using CSS to customize the appearance of highlighted text.
+
+```css
+.highlighted-text {
+  background-color: yellow;
+}
+```

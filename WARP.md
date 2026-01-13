@@ -67,13 +67,13 @@ pnpm --filter tests run test
 pnpm --filter @cerberus-design/react run build
 
 # Build Panda preset
-pnpm --filter @cerberus-design/panda-preset run build
+pnpm --filter @cerberus/panda-preset run build
 
 # Clean build artifacts for React
 pnpm --filter @cerberus-design/react run clean
 
 # Clean build artifacts for Panda preset
-pnpm --filter @cerberus-design/panda-preset run clean
+pnpm --filter @cerberus/panda-preset run clean
 ```
 
 ### Development Workflows

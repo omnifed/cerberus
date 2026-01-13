@@ -1,0 +1,419 @@
+---
+title: 'JSON Tree View'
+description: 'A component that displays a JSON object in a tree-like structure.'
+npm: '@cerberus/react'
+arkUtility: 'json-tree-view'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { Basic } from '../components/json-tree-view/static'
+
+## Examples
+
+Learn how to use the `JsonTreeView` component in your project. Let's take a look at the most basic example:
+
+<CodePreview preview={<Basic />} />
+```tsx
+'use client'
+
+import { JsonTreeView } from '@cerberus/react'
+import { ChevronRight } from '@carbon/icons-react'
+
+export const Basic = () => {
+  return (
+    <JsonTreeView.Root
+      data={{
+        name: 'John Doe',
+        age: 30,
+        email: 'john.doe@example.com',
+        tags: ['tag1', 'tag2', 'tag3'],
+        address: {
+          street: '123 Main St',
+          city: 'Anytown',
+          state: 'CA',
+          zip: '12345',
+        },
+      }}
+    >
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
+    </JsonTreeView.Root>
+  )
+}
+```
+
+### Different Data Types
+
+The JSON tree view can display various JavaScript data types including objects, arrays, primitives, and special values:
+
+```tsx
+'use client'
+
+import { JsonTreeView } from '@cerberus/react'
+import { ChevronRight } from '@carbon/icons-react'
+
+const testArray = [1, 2, 3, 4, 5]
+Object.defineProperties(testArray, {
+  customProperty: { value: 'custom value', enumerable: false, writable: false },
+  anotherProperty: { value: 42, enumerable: false, writable: false },
+})
+
+export const ArrayData = () => {
+  return (
+    <JsonTreeView.Root
+      data={{
+        normalArray: [1, 2, 3],
+        arrayWithNonEnumerableProperties: testArray,
+        sparseArray: (() => {
+          const sparse = []
+          sparse[0] = 'first'
+          sparse[5] = 'sixth'
+          return sparse
+        })(),
+      }}
+    >
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
+    </JsonTreeView.Root>
+  )
+}
+
+```
+
+### Functions and Methods
+
+Display JavaScript functions, async functions, and generators in your JSON tree:
+
+```tsx
+'use client'
+
+import { JsonTreeView } from '@cerberus/react'
+import { ChevronRight } from '@carbon/icons-react'
+
+const data = [
+  function sum(a: number, b: number) {
+    return a + b
+  },
+  async (promises: Promise<any>[]) => await Promise.all(promises),
+  function* generator(a: number) {
+    while (a > 0) {
+      yield a - 1
+    }
+  },
+]
+
+export const Functions = () => {
+  return (
+    <JsonTreeView.Root data={data}>
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
+    </JsonTreeView.Root>
+  )
+}
+
+```
+
+### Regular Expressions
+
+Regular expressions are displayed with their pattern and flags:
+
+```tsx
+'use client'
+
+import { JsonTreeView } from '@cerberus/react'
+import { ChevronRight } from '@carbon/icons-react'
+
+const data = {
+  regex: /^[a-z0-9]+/g,
+  case_insensitive: /^(?:[a-z0-9]+)foo.*?/i,
+}
+
+export const Regex = () => {
+  return (
+    <JsonTreeView.Root data={data}>
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
+    </JsonTreeView.Root>
+  )
+}
+
+```
+
+### Error Objects
+
+Error objects and their stack traces can be visualized:
+
+```tsx
+'use client'
+
+import { JsonTreeView } from '@cerberus/react'
+import { ChevronRight } from '@carbon/icons-react'
+
+const data = new Error('Error')
+
+export const Errors = () => {
+  return (
+    <JsonTreeView.Root data={data}>
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
+    </JsonTreeView.Root>
+  )
+}
+
+```
+
+### Map and Set Objects
+
+Native JavaScript Map and Set objects are supported:
+
+```tsx
+'use client'
+
+import { JsonTreeView } from '@cerberus/react'
+import { ChevronRight } from '@carbon/icons-react'
+
+const data = new Map<string, any>([
+  ['name', 'ark-ui-json-tree'],
+  ['license', 'MIT'],
+  ['elements', new Set(['ark-ui', 123, false, true, null, undefined, 456n])],
+  [
+    'nested',
+    new Map<string, any>([
+      [
+        'taglines',
+        new Set([
+          { name: 'ark-ui', feature: 'headless components' },
+          { name: 'ark-ui', feature: 'framework agnostic' },
+          { name: 'ark-ui', feature: 'accessible by default' },
+        ]),
+      ],
+    ]),
+  ],
+])
+
+export const MapAndSet = () => {
+  return (
+    <JsonTreeView.Root data={data}>
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
+    </JsonTreeView.Root>
+  )
+}
+
+```
+
+### Controlling Expand Level
+
+Use the `defaultExpandedDepth` prop to control how many levels are expanded by default:
+
+```tsx
+'use client'
+
+import { JsonTreeView } from '@cerberus/react'
+import { ChevronRight } from '@carbon/icons-react'
+
+export const ExpandLevel = () => {
+  return (
+    <JsonTreeView.Root
+      defaultExpandedDepth={1}
+      data={{
+        name: 'John Doe',
+        age: 30,
+        email: 'john.doe@example.com',
+        tags: ['tag1', 'tag2', 'tag3'],
+        address: {
+          street: '123 Main St',
+          city: 'Anytown',
+          state: 'CA',
+          zip: '12345',
+        },
+      }}
+    >
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
+    </JsonTreeView.Root>
+  )
+}
+
+```
+
+
+### Custom Value Rendering
+
+You can customize how specific values are rendered using the `renderValue` prop. This example shows how to make email
+addresses clickable:
+
+```tsx
+'use client'
+
+import { JsonTreeView } from '@cerberus/react'
+import { ChevronRight } from '@carbon/icons-react'
+
+export const RenderValue = () => {
+  return (
+    <JsonTreeView.Root
+      defaultExpandedDepth={2}
+      data={{
+        name: 'John Doe',
+        age: 30,
+        number: Number.NaN,
+        email: 'john.doe@example.com',
+        address: {
+          street: '123 Main St',
+          city: 'Anytown',
+          state: 'CA',
+          zip: '12345',
+        },
+      }}
+    >
+      <JsonTreeView.Tree
+        arrow={<ChevronRight />}
+        renderValue={(node) => {
+          if (node.type === 'text' && typeof node.value === 'string' && isEmail(node.value)) {
+            return (
+              <a href={`mailto:${node.value}`} target="_blank" rel="noreferrer">
+                {node.value}
+              </a>
+            )
+          }
+        }}
+      />
+    </JsonTreeView.Root>
+  )
+}
+
+const isEmail = (value: string) => {
+  const strippedValue = value.replace(/^"(.*)"$/, '$1')
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(strippedValue)
+}
+
+```
+
+### Configuration Options
+
+The JSON tree view supports several configuration options to customize the display:
+
+```tsx
+<JsonTreeView.Root
+  data={data}
+  defaultExpandedDepth={2}
+  quotesOnKeys={true}
+  showNonenumerable={true}
+  maxPreviewItems={5}
+  collapseStringsAfterLength={50}
+  groupArraysAfterLength={100}
+>
+  <JsonTreeView.Tree arrow={<ChevronRight />} />
+</JsonTreeView.Root>
+```
+
+**Configuration Options:**
+
+- **`quotesOnKeys`**: Whether to show quotes around object keys
+- **`showNonenumerable`**: Whether to show non-enumerable properties
+- **`maxPreviewItems`**: Maximum number of items to show in object/array previews
+- **`collapseStringsAfterLength`**: Collapse strings longer than this length
+- **`groupArraysAfterLength`**: Group array items when array is longer than this length
+
+### Using the Root Provider
+
+The `RootProvider` component provides a context for the JSON tree view. It accepts the value of the `useJsonTreeView`
+hook. You can leverage it to access the component state and methods from outside the JSON tree view.
+
+```tsx
+'use client'
+
+import { JsonTreeView, useJsonTreeView } from '@cerberus/react'
+import { ChevronRight } from '@carbon/icons-react'
+
+export const RootProvider = () => {
+  const jsonTreeView = useJsonTreeView({
+    data: {
+      name: 'John Doe',
+      age: 30,
+      email: 'john.doe@example.com',
+      tags: ['tag1', 'tag2', 'tag3'],
+      address: {
+        street: '123 Main St',
+        city: 'Anytown',
+        state: 'CA',
+        zip: '12345',
+      },
+    },
+  })
+
+  return (
+    <JsonTreeView.RootProvider value={jsonTreeView}>
+      <JsonTreeView.Tree arrow={<ChevronRight />} />
+    </JsonTreeView.RootProvider>
+  )
+}
+
+```
+
+> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
+## API Reference
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+| `canRename` | `(node: JsonNode<any>, indexPath: IndexPath) => boolean` | No | Function to determine if a node can be renamed |
+| `checkedValue` | `string[]` | No | The controlled checked node value |
+| `collapseStringsAfterLength` | `number` | No |  |
+| `data` | `{}` | No | The data to display in the tree. |
+| `defaultCheckedValue` | `string[]` | No | The initial checked node value when rendered.
+Use when you don't need to control the checked node value. |
+| `defaultExpandedDepth` | `number` | No | The default expand level. |
+| `defaultExpandedValue` | `string[]` | No | The initial expanded node ids when rendered.
+Use when you don't need to control the expanded node value. |
+| `defaultFocusedValue` | `string` | No | The initial focused node value when rendered.
+Use when you don't need to control the focused node value. |
+| `defaultSelectedValue` | `string[]` | No | The initial selected node value when rendered.
+Use when you don't need to control the selected node value. |
+| `expandedValue` | `string[]` | No | The controlled expanded node ids |
+| `expandOnClick` | `boolean` | No | Whether clicking on a branch should open it or not |
+| `focusedValue` | `string` | No | The value of the focused node |
+| `groupArraysAfterLength` | `number` | No |  |
+| `ids` | `Partial<{ root: string; tree: string; label: string; node: (value: string) => string }>` | No | The ids of the tree elements. Useful for composition. |
+| `lazyMount` | `boolean` | No | Whether to enable lazy mounting |
+| `loadChildren` | `(details: LoadChildrenDetails<JsonNode<any>>) => Promise<JsonNode<any>[]>` | No | Function to load children for a node asynchronously.
+When provided, branches will wait for this promise to resolve before expanding. |
+| `maxPreviewItems` | `number` | No |  |
+| `onBeforeRename` | `(details: RenameCompleteDetails) => boolean` | No | Called before a rename is completed. Return false to prevent the rename. |
+| `onCheckedChange` | `(details: CheckedChangeDetails) => void` | No | Called when the checked value changes |
+| `onExpandedChange` | `(details: ExpandedChangeDetails<JsonNode<any>>) => void` | No | Called when the tree is opened or closed |
+| `onFocusChange` | `(details: FocusChangeDetails<JsonNode<any>>) => void` | No | Called when the focused node changes |
+| `onLoadChildrenComplete` | `(details: LoadChildrenCompleteDetails<JsonNode<any>>) => void` | No | Called when a node finishes loading children |
+| `onLoadChildrenError` | `(details: LoadChildrenErrorDetails<JsonNode<any>>) => void` | No | Called when loading children fails for one or more nodes |
+| `onRenameComplete` | `(details: RenameCompleteDetails) => void` | No | Called when a node label rename is completed |
+| `onRenameStart` | `(details: RenameStartDetails<JsonNode<any>>) => void` | No | Called when a node starts being renamed |
+| `onSelectionChange` | `(details: SelectionChangeDetails<JsonNode<any>>) => void` | No | Called when the selection changes |
+| `quotesOnKeys` | `boolean` | No | Whether to show quotes on the keys. |
+| `selectedValue` | `string[]` | No | The controlled selected node value |
+| `selectionMode` | `'single' | 'multiple'` | No | Whether the tree supports multiple selection
+- "single": only one node can be selected
+- "multiple": multiple nodes can be selected |
+| `showNonenumerable` | `boolean` | No |  |
+| `typeahead` | `boolean` | No | Whether the tree supports typeahead search |
+| `unmountOnExit` | `boolean` | No | Whether to unmount on exit. |
+
+
+**JsonTreeViewRootProvider Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `value` | `UseTreeViewReturn<JsonNode<any>>` | Yes |  |
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+| `lazyMount` | `boolean` | No | Whether to enable lazy mounting |
+| `unmountOnExit` | `boolean` | No | Whether to unmount on exit. |
+
+
+**JsonTreeViewTree Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `arrow` | `ReactNode` | No | The icon to use for the arrow. |
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+| `indentGuide` | `any` | No | The indent guide to use for the tree. |
+| `renderValue` | `(node: JsonNodeHastElement) => ReactNode` | No | The function to render the value of the node. |
+
+
+
+## Accessibility
+
+The JSON tree view is built on top of the Tree View component and complies with the
+[Tree View WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/).

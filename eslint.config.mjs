@@ -1,3 +1,4 @@
+import { defineConfig } from 'eslint/config'
 import eslint from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import sonarjs from 'eslint-plugin-sonarjs'
@@ -10,9 +11,9 @@ const OFF = 'off'
 // const WARN = 'warn'
 // const ERROR = 'error'
 
-export default tseslint.config(
+export default defineConfig([
   eslint.configs.recommended,
-  tseslint.configs.recommendedTypeChecked,
+  tseslint.configs.recommended,
 
   {
     languageOptions: {
@@ -27,13 +28,14 @@ export default tseslint.config(
     ignores: [
       'packages/*/dist/**/*',
       'packages/*/styled-system/**/*',
+      'packages/tokens/src/data/**/*', // Generated files
+      'packages/figma/code-connect/**/*', // DEPRECATED
       // Docs use their own eslint config
       'docs/**/*',
       // non-TS files
       'eslint.config.mjs',
       // We don't need to lint these
       'tests/**/*',
-      'figma/**/*',
       'configs/**/*', // we will kill once we fully move to JSR'
     ],
   },
@@ -50,8 +52,32 @@ export default tseslint.config(
   },
 
   {
-    name: '@cerberus-design/panda-preset',
+    name: '@cerberus/figma',
+    files: ['packages/figma/**/*.ts'],
+    ...sonarjs.recommended,
+  },
+
+  {
+    name: '@cerberus/panda-preset',
     files: ['packages/panda-preset/**/*.ts'],
+    ...sonarjs.recommended,
+  },
+
+  {
+    name: '@cerberus/preset-acheron-theme',
+    files: ['packages/preset-acheron-theme/**/*.ts'],
+    ...sonarjs.recommended,
+  },
+
+  {
+    name: '@cerberus/preset-cerberus-theme',
+    files: ['packages/preset-cerberus-theme/**/*.ts'],
+    ...sonarjs.recommended,
+  },
+
+  {
+    name: '@cerberus/preset-elysium-theme',
+    files: ['packages/preset-elysium-theme/**/*.ts'],
     ...sonarjs.recommended,
   },
 
@@ -82,4 +108,4 @@ export default tseslint.config(
 
   // this must be last
   eslintConfigPrettier,
-)
+])

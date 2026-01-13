@@ -1,0 +1,111 @@
+---
+title: 'Frame'
+description: Used to render a component in an iframe
+npm: '@cerberus/react'
+arkUtility: 'frame'
+---
+
+## Usage
+
+The `Frame` component is used to render a component in an iframe.
+
+- Tracks the size of the content and exposes them via css variables.
+- Support for `head` prop to inject scripts and styles.
+- Support for mount and unmount callbacks.
+
+```jsx
+import { Frame } from '@cerberus/react'
+```
+
+## Examples
+
+### Basic
+
+Wrap your component in the `Frame` component to render it in an iframe.
+
+```tsx
+import { Frame } from '@cerberus/react'
+
+export const Basic = () => {
+  return (
+    <Frame
+      title="Custom Frame"
+      style={{ border: '1px solid #ccc', width: '100%', height: 'var(--height)' }}
+      head={<style>{'body { background-color: #f0f0f0; }'}</style>}
+    >
+      <div style={{ padding: '40px' }}>
+        <h1>Hello from inside the frame!</h1>
+        <p>This content is rendered within our custom frame component using a Portal.</p>
+      </div>
+    </Frame>
+  )
+}
+```
+
+### Injecting Script
+
+Using the `onMount` prop, you can inject a script into the iframe.
+
+```tsx
+import { Frame } from '@cerberus/react'
+import { useRef } from 'react'
+
+export const Script = () => {
+  const ref = useRef<HTMLIFrameElement>(null)
+  return (
+    <Frame
+      ref={ref}
+      title="Custom Frame"
+      onMount={() => {
+        const doc = ref.current?.contentDocument
+        if (!doc) return
+        const script = doc.createElement('script')
+        script.innerHTML = 'console.log("Hello from inside the frame!")'
+        doc.body.appendChild(script)
+      }}
+      style={{ border: '1px solid #ccc', width: '100%', height: 'var(--height)' }}
+    >
+      <div style={{ padding: '40px' }}>
+        <h1>Hello from inside the frame!</h1>
+        <p>This content is rendered within our custom frame component using a Portal.</p>
+      </div>
+    </Frame>
+  )
+```
+
+### Custom src doc
+
+Use the `srcDoc` prop to specify the HTML content of the page to use in the iframe.
+
+```tsx
+import { Frame } from '@cerberus/frame'
+
+const srcDoc = `<html><head>
+<link href="//use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet" />
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css" />
+<base target=_blank>
+</head><body style='overflow: hidden'><div></div></body></html>`
+
+export const SrcDoc = () => {
+  return (
+    <Frame title="Custom Frame" style={{ border: '1px solid #ccc', maxWidth: '800px', width: '100%' }} srcDoc={srcDoc}>
+      <h1 style={{ fontFamily: 'Open Sans, sans-serif' }}>Hello from inside the frame!</h1>
+      <p>This content is rendered within our custom frame component using a Portal.</p>
+      <p>The frame has custom initial content, including Font Awesome and Open Sans font.</p>
+    </Frame>
+  )
+}
+```
+
+## API Reference
+
+### Props
+
+**Component API Reference**
+
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `head` | `any`  | No | Additional content to be inserted into the frame's `<head>` |
+| `onMount` | `() => void` | No | Callback function to be executed when the frame is mounted |
+| `onUnmount` | `() => void` | No | Callback function to be executed when the frame is unmounted |
