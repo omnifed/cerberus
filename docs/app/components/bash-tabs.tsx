@@ -6,7 +6,7 @@ function formatJSRCmd(cmd: string): string {
   const isJSR = cmd.includes('jsr')
 
   if (isJSR) {
-    const [pp, dlx, jsr, add, pkg] = cmd.split(' ')
+    const [pp, _, jsr, add, pkg] = cmd.split(' ')
     return `${pp} ${add} ${jsr}:${pkg}`
   }
 
