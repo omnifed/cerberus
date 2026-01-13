@@ -12,7 +12,7 @@ env:
 jobs:
   npm-publish-react:
     runs-on: ubuntu-latest
-    name: Build & Publish React to NPM
+    name: NPM - Publish React
     steps:
       - uses: actions/checkout@v6
       - uses: oven-sh/setup-bun@v2
@@ -29,7 +29,7 @@ jobs:
 
   jsr-publish-figma:
     runs-on: ubuntu-latest
-    name: Publish Figma Latest Version to JSR
+    name: JSR - Publish Figma
     permissions:
       contents: read
       id-token: write
@@ -52,7 +52,8 @@ jobs:
 
   jsr-publish-tokens:
     runs-on: ubuntu-latest
-    name: Publish Tokens Latest Version to JSR
+    name: JSR - Publish Tokens
+    needs: jsr-publish-figma
     permissions:
       contents: read
       id-token: write
@@ -75,7 +76,8 @@ jobs:
 
   jsr-publish-preset-acheron:
     runs-on: ubuntu-latest
-    name: Publish Acheron Theme Latest Version to JSR
+    name: JSR - Publish Acheron Theme
+    needs: jsr-publish-tokens
     permissions:
       contents: read
       id-token: write
@@ -98,7 +100,8 @@ jobs:
 
   jsr-publish-preset-cerberus:
     runs-on: ubuntu-latest
-    name: Publish Cerberus Theme Latest Version to JSR
+    name: JSR - Publish Cerberus Theme
+    needs: jsr-publish-tokens
     permissions:
       contents: read
       id-token: write
@@ -121,7 +124,8 @@ jobs:
 
   jsr-publish-preset-elysium:
     runs-on: ubuntu-latest
-    name: Publish Elysium Theme Latest Version to JSR
+    name: JSR - Publish Elysium Theme
+    needs: jsr-publish-tokens
     permissions:
       contents: read
       id-token: write
@@ -144,7 +148,8 @@ jobs:
 
   jsr-publish-preset:
     runs-on: ubuntu-latest
-    name: Publish Preset Latest Version to JSR
+    name: JSR - Publish Preset
+    needs: jsr-publish-preset-cerberus
     permissions:
       contents: read
       id-token: write
