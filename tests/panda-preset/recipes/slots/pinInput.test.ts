@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'bun:test'
-import { slotRecipes } from '@cerberus-design/panda-preset'
-import { inputStyles } from '@cerberus-design/panda-preset/src/recipes/slots/field'
+import { slotRecipes } from '@cerberus/panda-preset'
+import { inputStyles } from '@cerberus/panda-preset/src/recipes/slots/field'
 
 describe('pin input recipe', () => {
   const { pinInput } = slotRecipes

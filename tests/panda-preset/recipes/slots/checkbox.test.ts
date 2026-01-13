@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { slotRecipes } from '@cerberus-design/panda-preset'
+import { slotRecipes } from '@cerberus/panda-preset'
 
 describe('checkbox recipe', () => {
   const { checkbox } = slotRecipes

@@ -23,7 +23,7 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "@cerberus-design/panda-preset": "workspace:*",
+    "@cerberus/panda-preset": "workspace:*",
     "@cerberus/preset-acheron-theme": "workspace:*",
     "@cerberus/preset-cerberus-theme": "workspace:*",
     "@cerberus/preset-elysium-theme": "workspace:*",

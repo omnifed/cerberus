@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { recipes } from '@cerberus-design/panda-preset'
+import { recipes } from '@cerberus/panda-preset'
 
 describe('fieldMessage recipe', () => {
   const { fieldMessage } = recipes

@@ -13,7 +13,7 @@ import {
   warning,
   danger,
   allPalettes,
-} from '@cerberus-design/panda-preset'
+} from '@cerberus/panda-preset'
 
 describe('recipe palettes', () => {
   test('should export PAGE', () => {

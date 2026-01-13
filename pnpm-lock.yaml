@@ -127,7 +127,7 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)
     devDependencies:
-      '@cerberus-design/panda-preset':
+      '@cerberus/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
       '@cerberus/preset-acheron-theme':
@@ -263,9 +263,6 @@ importers:
       '@ark-ui/react':
         specifier: ^5.30.0
         version: 5.30.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@cerberus-design/configs':
-        specifier: workspace:*
-        version: link:../../configs
       '@cerberus/preset-cerberus-theme':
         specifier: workspace:*
         version: link:../preset-cerberus-theme
@@ -369,7 +366,7 @@ importers:
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../../configs
-      '@cerberus-design/panda-preset':
+      '@cerberus/panda-preset':
         specifier: workspace:*
         version: link:../panda-preset
       '@internationalized/date':
@@ -420,12 +417,12 @@ importers:
       '@carbon/icons-react':
         specifier: ^11.71.0
         version: 11.71.0(react@19.2.3)
-      '@cerberus-design/panda-preset':
-        specifier: workspace:*
-        version: link:../packages/panda-preset
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
+      '@cerberus/panda-preset':
+        specifier: workspace:*
+        version: link:../packages/panda-preset
       '@cerberus/preset-acheron-theme':
         specifier: workspace:*
         version: link:../packages/preset-acheron-theme

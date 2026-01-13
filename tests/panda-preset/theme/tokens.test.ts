@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { tokens } from '@cerberus-design/panda-preset'
+import { tokens } from '@cerberus/panda-preset'
 
 describe('tokens', () => {
   test('should have a fonts key', () => {

@@ -1,6 +1,6 @@
 'use client'
 
-import { tokens } from '@cerberus-design/panda-preset'
+import { tokens } from '@cerberus/panda-preset'
 import {
   Field,
   Select,

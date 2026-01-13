@@ -1,6 +1,6 @@
 import { css } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
-import { textStyles } from '@cerberus-design/panda-preset'
+import { textStyles } from '@cerberus/panda-preset'
 import { Show } from '@cerberus-design/react'
 
 const textStyleData = Object.entries(textStyles).map(([key, value]) => ({

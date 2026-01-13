@@ -1,5 +1,5 @@
 import { describe, test, expect, jest } from 'bun:test'
-import { utilities } from '@cerberus-design/panda-preset'
+import { utilities } from '@cerberus/panda-preset'
 import { type TransformArgs } from '@pandacss/types'
 import { getGradients } from '@cerberus/tokens'
 

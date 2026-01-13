@@ -2,7 +2,7 @@ import { describe, expect, test } from 'bun:test'
 import {
   createCerberusConfig,
   createCerberusPreset,
-} from '@cerberus-design/panda-preset'
+} from '@cerberus/panda-preset'
 
 describe('createCerberusConfig', () => {
   test('should return a valid PandaCSS config', () => {

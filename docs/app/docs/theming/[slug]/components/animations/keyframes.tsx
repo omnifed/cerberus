@@ -1,5 +1,5 @@
 import { Box, HStack, VStack } from '@/styled-system/jsx'
-import { keyframes } from '@cerberus-design/panda-preset'
+import { keyframes } from '@cerberus/panda-preset'
 import { For, Text } from '@cerberus-design/react'
 
 export function Keyframes() {

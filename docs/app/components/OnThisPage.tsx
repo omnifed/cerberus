@@ -1,6 +1,6 @@
 'use client'
 
-import { focusStates } from '@cerberus-design/panda-preset'
+import { focusStates } from '@cerberus/panda-preset'
 import { css } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
 import Link, { type LinkProps } from 'next/link'

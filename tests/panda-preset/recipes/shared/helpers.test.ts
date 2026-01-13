@@ -8,7 +8,7 @@ import {
   SUCCESS,
   WARNING,
   DANGER,
-} from '@cerberus-design/panda-preset'
+} from '@cerberus/panda-preset'
 import { type Sentiment } from '@cerberus/tokens'
 
 describe('recipe helpers', () => {

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import type { HeadingItem, LinkItem } from './SideNav'
 import Link from 'next/link'
 import { ACTION_NAV_HOVER } from '../utils/const'
-import { focusStates } from '@cerberus-design/panda-preset'
+import { focusStates } from '@cerberus/panda-preset'
 import { Show } from '@cerberus-design/react'
 import { hstack } from 'styled-system/patterns'
 
