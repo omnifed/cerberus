@@ -8,6 +8,7 @@ overrides:
   '@eslint/plugin-kit': '>=0.3.4'
   brace-expansion: 2.0.2
   js-yaml: '>=4.1.1'
+  eslint-plugin-react-hooks>zod-validation-error: ^4.0.0
 
 importers:
 

@@ -1,3 +1,4 @@
+import { exit } from 'node:process'
 import {
   GetFileNodesResponse,
   GetLocalVariablesResponse,
@@ -40,7 +41,7 @@ class FigmaApi implements FigmaApiHost {
     return `${this.baseUrl}/v1/files/${this.file}`
   }
 
-  async getLocalVariables(): Promise<GetLocalVariablesResponse> {
+  async getLocalVariables(): Promise<GetLocalVariablesResponse | undefined> {
     try {
       const resp = await this.figmaFetch('/variables/local')
       const data = await resp.json()
@@ -48,11 +49,13 @@ class FigmaApi implements FigmaApiHost {
       return data
     } catch (error) {
       console.error('Error fetching local variables:', error)
-      process.exit(1)
+      exit(1)
     }
   }
 
-  async getPublishedVariables(): Promise<GetPublishedVariablesResponse> {
+  async getPublishedVariables(): Promise<
+    GetPublishedVariablesResponse | undefined
+  > {
     try {
       const resp = await this.figmaFetch('/variables/published')
       const data = await resp.json()
@@ -60,11 +63,11 @@ class FigmaApi implements FigmaApiHost {
       return data
     } catch (error) {
       console.error('Error fetching published variables:', error)
-      process.exit(1)
+      exit(1)
     }
   }
 
-  async getNodes(nodeIds: string): Promise<GetFileNodesResponse> {
+  async getNodes(nodeIds: string): Promise<GetFileNodesResponse | undefined> {
     try {
       const resp = await this.figmaFetch(`/nodes?ids=${nodeIds}`)
       const data = await resp.json()
@@ -72,7 +75,7 @@ class FigmaApi implements FigmaApiHost {
       return data
     } catch (error) {
       console.error('Error fetching file nodes:', error)
-      process.exit(1)
+      exit(1)
     }
   }
 }
