@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/tokens",
-  "version": "0.25.0-rc.7",
+  "version": "0.25.0",
   "description": "The internal tokens for Cerberus presets.",
   "browserslist": "> 0.25%, not dead",
   "sideEffects": false,
