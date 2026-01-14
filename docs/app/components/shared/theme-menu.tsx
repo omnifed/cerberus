@@ -8,6 +8,7 @@ import {
   MenuItem,
   MenuTrigger,
   Show,
+  Text,
   useThemeContext,
 } from '@cerberus-design/react'
 import { DogIcon } from '../icons/DogIcon'
@@ -75,7 +76,9 @@ function MatchThemeContent({ theme }: MatchThemeContentProps) {
         {() => (
           <>
             <DogIcon />
-            Cerberus
+            <Text display="inline" ps="sm" textStyle="body-sm">
+              Cerberus
+            </Text>
           </>
         )}
       </Show>
@@ -84,7 +87,9 @@ function MatchThemeContent({ theme }: MatchThemeContentProps) {
         {() => (
           <>
             <FireIcon />
-            Acheron
+            <Text display="inline" ps="sm" textStyle="body-sm">
+              Acheron
+            </Text>
           </>
         )}
       </Show>
@@ -93,7 +98,9 @@ function MatchThemeContent({ theme }: MatchThemeContentProps) {
         {() => (
           <>
             <PalmTree />
-            Elysium
+            <Text display="inline" ps="sm" textStyle="body-sm">
+              Elysium
+            </Text>
           </>
         )}
       </Show>
