@@ -7,6 +7,7 @@ import {
   MenuContent,
   MenuItem,
   MenuTrigger,
+  Text,
   useThemeContext,
 } from '@cerberus-design/react'
 import { getCodeTheme } from '@/app/utils/colors'
@@ -14,20 +15,10 @@ import { AnimatingMoonIcon } from '../icons/AnimatingMoonIcon'
 import { AnimatingSunIcon } from '../icons/AnimatingSunIcon'
 import { AnimatingSystemIcon } from '../icons/AnimatingSystemIcon'
 
-function getAriaLabel(mode: ColorModes): string {
-  switch (mode) {
-    case 'light':
-      return 'Switch to dark mode'
-    case 'dark':
-      return 'Switch to system mode'
-    default:
-      return 'Switch to light mode'
-  }
-}
-
 export function ModeMenu() {
   const { mode, theme, updateMode } = useThemeContext()
-  const ariaLabel = getAriaLabel(mode)
+
+  const ariaLabel = `Switch to ${mode} mode`
 
   const handleUpdateMode = (details: { value: string }) => {
     const newMode = details.value as ColorModes
@@ -77,7 +68,9 @@ function MatchModeContent(props: { mode: ColorModes }) {
   return (
     <>
       <MatchModeIcon mode={props.mode} />
-      Switch to {props.mode} mode
+      <Text display="inline" ps="sm" textStyle="body-sm">
+        {props.mode}
+      </Text>
     </>
   )
 }
