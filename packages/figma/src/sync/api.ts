@@ -1,4 +1,3 @@
-import { exit } from 'node:process'
 import {
   GetFileNodesResponse,
   GetLocalVariablesResponse,
@@ -12,6 +11,12 @@ export interface FigmaApiHost {
   localVars: GetLocalVariablesResponse | null
   publishedVars: GetPublishedVariablesResponse | null
   localFileNodes: GetFileNodesResponse | null
+  /**
+   * Fetches data from the Figma API.
+   * @param path - The path to fetch data from.
+   * @returns A promise that resolves to the fetched data.
+   */
+  figmaFetch: (path: string) => Promise<Response>
 }
 
 class FigmaApi implements FigmaApiHost {
@@ -28,7 +33,11 @@ class FigmaApi implements FigmaApiHost {
     this.file = fileId
   }
 
-  private figmaFetch = async (path: string) => {
+  private get figmaUrl(): string {
+    return `${this.baseUrl}/v1/files/${this.file}`
+  }
+
+  public figmaFetch = async (path: string) => {
     return await fetch(`${this.figmaUrl}${path}`, {
       headers: {
         Accept: '*/*',
@@ -36,51 +45,7 @@ class FigmaApi implements FigmaApiHost {
       },
     })
   }
-
-  public get figmaUrl(): string {
-    return `${this.baseUrl}/v1/files/${this.file}`
-  }
-
-  async getLocalVariables(): Promise<GetLocalVariablesResponse | undefined> {
-    try {
-      const resp = await this.figmaFetch('/variables/local')
-      const data = await resp.json()
-      this.localVars = data
-      return data
-    } catch (error) {
-      console.error('Error fetching local variables:', error)
-      exit(1)
-    }
-  }
-
-  async getPublishedVariables(): Promise<
-    GetPublishedVariablesResponse | undefined
-  > {
-    try {
-      const resp = await this.figmaFetch('/variables/published')
-      const data = await resp.json()
-      this.publishedVars = data
-      return data
-    } catch (error) {
-      console.error('Error fetching published variables:', error)
-      exit(1)
-    }
-  }
-
-  async getNodes(nodeIds: string): Promise<GetFileNodesResponse | undefined> {
-    try {
-      const resp = await this.figmaFetch(`/nodes?ids=${nodeIds}`)
-      const data = await resp.json()
-      this.localFileNodes = data
-      return data
-    } catch (error) {
-      console.error('Error fetching file nodes:', error)
-      exit(1)
-    }
-  }
 }
-
-export type FigmaApiType = FigmaApi
 
 /**
  * The core API for accessing Figma REST endpoints.
@@ -101,3 +66,5 @@ export function figma(
 
   return new FigmaApi(token, fileId)
 }
+
+export type FigmaApiType = FigmaApi
