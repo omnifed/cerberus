@@ -21,27 +21,28 @@ export interface FigmaApiHost {
 
 class FigmaApi implements FigmaApiHost {
   private baseUrl: string = 'https://api.figma.com'
-  private file: string
-  private token: string
+
+  #file: string
+  #token: string
 
   public localVars: GetLocalVariablesResponse | null = null
   public publishedVars: GetPublishedVariablesResponse | null = null
   public localFileNodes: GetFileNodesResponse | null = null
 
   constructor(token: string, fileId: string) {
-    this.token = token
-    this.file = fileId
+    this.#token = token
+    this.#file = fileId
   }
 
-  private get figmaUrl(): string {
-    return `${this.baseUrl}/v1/files/${this.file}`
+  public get figmaUrl(): string {
+    return `${this.baseUrl}/v1/files/${this.#file}`
   }
 
-  public figmaFetch = async (path: string) => {
+  public figmaFetch = async (path: string): Promise<Response> => {
     return await fetch(`${this.figmaUrl}${path}`, {
       headers: {
         Accept: '*/*',
-        'X-Figma-Token': this.token,
+        'X-Figma-Token': this.#token,
       },
     })
   }

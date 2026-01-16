@@ -412,6 +412,9 @@ importers:
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
+      '@cerberus/figma':
+        specifier: workspace:*
+        version: link:../packages/figma
       '@cerberus/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
