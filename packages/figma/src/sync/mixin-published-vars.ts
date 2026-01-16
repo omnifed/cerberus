@@ -1,19 +1,17 @@
+import { exit } from 'node:process'
 import { GetPublishedVariablesResponse } from '@figma/rest-api-spec'
 import { FigmaApiHost } from './api'
-
-export type Collections =
-  | GetPublishedVariablesResponse['meta']['variableCollections']
-  | null
-export type Variables =
-  | GetPublishedVariablesResponse['meta']['variables']
-  | null
-
-export type ListItem = {
-  id: string
-  name: string
-}
+import { Collections, ListItem, Variables } from './types'
 
 export type PublishedVarsMixin = {
+  /**
+   * Fetches the published variables from Figma API.
+   * @param this
+   * @returns GetPublishedVariablesResponse | null
+   */
+  getPublishedVariables: (
+    this: FigmaApiHost,
+  ) => Promise<GetPublishedVariablesResponse | undefined>
   /**
    * Get the collections from the published variable response.
    * @returns GetPublishedVariablesResponse['meta']['variableCollections']
@@ -37,6 +35,20 @@ export type PublishedVarsMixin = {
 }
 
 export const publishedVarsMixin: PublishedVarsMixin = {
+  async getPublishedVariables(
+    this: FigmaApiHost,
+  ): Promise<GetPublishedVariablesResponse | undefined> {
+    try {
+      const resp = await this.figmaFetch('/variables/published')
+      const data = await resp.json()
+      this.publishedVars = data
+      return data
+    } catch (error) {
+      console.error('Error fetching published variables:', error)
+      exit(1)
+    }
+  },
+
   collections(this: FigmaApiHost): Collections {
     return this.publishedVars?.meta.variableCollections ?? {}
   },

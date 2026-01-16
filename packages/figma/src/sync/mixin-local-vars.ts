@@ -1,27 +1,7 @@
-import {
-  GetLocalVariablesResponse,
-  LocalVariableCollection as OldLocalVariableCollection,
-  VariableValue,
-} from '@figma/rest-api-spec'
+import { exit } from 'node:process'
+import { GetLocalVariablesResponse } from '@figma/rest-api-spec'
+import { LocalCollections, LocalVariables } from './types'
 import { FigmaApiHost } from './api'
-
-export type LocalCollections = { [key: string]: LocalVariableCollection } | null
-export type LocalVariables =
-  | GetLocalVariablesResponse['meta']['variables']
-  | null
-export type LocalVariableCollection =
-  | (OldLocalVariableCollection & {
-      isExtension?: boolean
-      variableOverrides?: VariableOverride
-    })
-  | null
-
-export type VariableOverride = {
-  readonly [variableId: string]: VariableOverrideContent
-}
-export type VariableOverrideContent = {
-  [extendedModeId: string]: VariableValue
-}
 
 export type LocalVarsMixin = {
   /**
@@ -32,13 +12,34 @@ export type LocalVarsMixin = {
    * Returns the local variables.
    */
   localVariables: () => LocalVariables
+  /**
+   * Fetches local variables from Figma API.
+   */
+  getLocalVariables: () => Promise<GetLocalVariablesResponse | undefined>
 }
 
 export const localVarsMixin: LocalVarsMixin = {
-  localCollections(this: FigmaApiHost): LocalCollections {
-    return this.localVars?.meta.variableCollections ?? {}
+  async getLocalVariables(
+    this: FigmaApiHost,
+  ): Promise<GetLocalVariablesResponse | undefined> {
+    try {
+      const resp = await this.figmaFetch('/variables/local')
+      const data = await resp.json()
+      this.localVars = data
+      return data
+    } catch (error) {
+      console.error('Error fetching local variables:', error)
+      exit(1)
+    }
   },
+
+  localCollections(this: FigmaApiHost): LocalCollections {
+    if (!this.localVars) return null
+    return this.localVars.meta.variableCollections ?? {}
+  },
+
   localVariables(this: FigmaApiHost): LocalVariables {
-    return this.localVars?.meta.variables ?? {}
+    if (!this.localVars) return null
+    return this.localVars.meta.variables ?? {}
   },
 }
