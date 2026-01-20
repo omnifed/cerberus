@@ -40,6 +40,9 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       filled: filledUsage,
     },
     shape: {
+      default: {
+        rounded: 'sm',
+      },
       sharp: sharpRadii,
       rounded: {
         pxi: '8',

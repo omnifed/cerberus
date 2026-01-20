@@ -43,6 +43,7 @@ export const buttonGroup: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       },
     },
     shape: {
+      default: {},
       sharp: {},
       rounded: {},
     },
