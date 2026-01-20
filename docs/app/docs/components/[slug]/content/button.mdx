@@ -12,7 +12,7 @@ import {
   BasicButtonPreview,
   WithIconButtonPreview,
   PendingButtonDemo,
-  RoundedButtonPreview,
+  ShapesDemo,
   SizesDemo,
   UsageDemo,
   CustomButtonPreview,
@@ -82,14 +82,18 @@ function PendingButtonDemo() {
 
 The `Button` component comes in two shapes: `sharp` and `rounded`. You can set the shape by using the `shape` prop.
 
-<CodePreview preview={<RoundedButtonPreview />}>
+<CodePreview preview={<ShapesDemo />}>
 ```tsx title="button.tsx"
 import { Button } from '@cerberus/react'
 import { HStack } from 'styled-system/jsx'
 
-function RoundedButtonPreview() {
+function ShapesDemo() {
   return (
-    <Button shape="rounded">Rounded styles</Button>
+    <HStack>
+      <Button shape="default">Default</Button>
+      <Button shape="sharp">Sharp</Button>
+      <Button shape="rounded">Rounded</Button>
+    </HStack>
   )
 }
 ```
@@ -220,6 +224,29 @@ function CustomButtonPreview() {
 }
 ```
 </CodePreview>
+
+## Global Customization
+
+To enable global customization, you can modify the `theme` configuration in your `panda.config.ts` file. For example, to customize the button component globally:
+
+```typescript title="panda.config.ts"
+export default createCerberusConfig({
+  // ...
+  theme: {
+    extend: {
+      recipes: {
+        button: {
+          defaultVariants: {
+            shape: 'default',
+          },
+        },
+      }
+    }
+  }
+})
+```
+
+This change will set the default shape variant of all buttons to `default`.
 
 ## API
 

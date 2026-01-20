@@ -31,4 +31,16 @@ export default createCerberusConfig({
   staticCss: {
     themes: ['cerberus', getAcheronThemeName(), getElysiumThemeName()],
   },
+
+  theme: {
+    extend: {
+      recipes: {
+        button: {
+          defaultVariants: {
+            shape: 'default',
+          },
+        },
+      },
+    },
+  },
 })

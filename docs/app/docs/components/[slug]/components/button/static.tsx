@@ -60,6 +60,16 @@ export function WithIconButtonPreview() {
   )
 }
 
+export function ShapesDemo() {
+  return (
+    <HStack>
+      <Button shape="default">Default</Button>
+      <Button shape="sharp">Sharp</Button>
+      <Button shape="rounded">Rounded</Button>
+    </HStack>
+  )
+}
+
 export function SizesDemo() {
   return (
     <HStack>
