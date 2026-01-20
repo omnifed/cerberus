@@ -107,8 +107,6 @@ function GroupedOptionsDemo() {
 
 ## With Dialog
 
-To use the `Select` component with a dialog, you can use the `container` prop to render the dropdown in the dialog dom-tree.
-
 <CodePreview preview={<SelectWithDialogDemo />}>
 ```tsx title="Select with Dialog Demo" {16, 30-32}
 'use client'
@@ -123,11 +121,8 @@ import {
 } from '@cerberus/react'
 import { Box, VStack } from 'styled-system/jsx'
 import { SelectBasicPreview } from './select-preview'
-import { useRef } from 'react'
 
 export function SelectWithDialogDemo() {
-  const container = useRef(null)
-
   return (
     <DialogProvider>
       <DialogTrigger>Open Select Dialog</DialogTrigger>
@@ -140,8 +135,8 @@ export function SelectWithDialogDemo() {
             provide more context or instructions for the user.
           </DialogDescription>
 
-          <Box ref={container} w="full">
-            <SelectBasicPreview container={container} />
+          <Box w="full">
+            <SelectBasicPreview />
           </Box>
         </VStack>
       </Dialog>

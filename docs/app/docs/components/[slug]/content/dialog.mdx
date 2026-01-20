@@ -82,10 +82,8 @@ function OverviewPreview() {
 
 ## With DatePicker
 
-In order to display the DatePicker calendar in the correct layer, you need to add the `withModal` prop to the `DatePickerCalendar` component.
-
 <CodePreview preview={<ModalFormPreview id="dev-form-dialog" />}>
-```tsx title="some-page.tsx" {32}
+```tsx title="some-page.tsx"
 import { Model } from '@carbon/icons-react'
 import {
   DialogProvider,
@@ -117,7 +115,7 @@ function ModalFormPreview() {
               <DatePicker id="modal-form-picker" name="modal-form-picker">
                 <DatePickerLabel>Start date</DatePickerLabel>
                 <DatePickerInput />
-                <DatePickerCalendar withModal />
+                <DatePickerCalendar />
               </DatePicker>
             </Field>
           </form>

@@ -10,12 +10,9 @@ import {
   DialogTrigger,
 } from '@cerberus-design/react'
 import { SelectBasicPreview } from './static'
-import { useRef } from 'react'
 import { Box, VStack } from '@/styled-system/jsx'
 
 export function SelectWithDialogDemo() {
-  const container = useRef(null)
-
   return (
     <DialogProvider>
       <DialogTrigger asChild>
@@ -30,8 +27,8 @@ export function SelectWithDialogDemo() {
             provide more context or instructions for the user.
           </DialogDescription>
 
-          <Box ref={container} w="full">
-            <SelectBasicPreview container={container} />
+          <Box w="full">
+            <SelectBasicPreview />
           </Box>
         </VStack>
       </Dialog>

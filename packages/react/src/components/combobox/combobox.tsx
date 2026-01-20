@@ -7,14 +7,12 @@ import { useCerberusContext } from '../../context/cerberus'
 import { splitProps } from '../../utils/index'
 import type { SelectCollectionItem } from '../select/select'
 import { type FieldInputElProps } from '../field/index'
-import { Portal } from '../portal/index'
 import { Show } from '../show/index'
 import { ComboboxParts } from './parts'
 import { ComboboxStartIcon } from './primitives'
 
 export interface ComboboxProps
-  extends ComboboxRootProps<SelectCollectionItem>,
-    ComboboxVariantProps {
+  extends ComboboxRootProps<SelectCollectionItem>, ComboboxVariantProps {
   /**
    * The label that appears above the combobox input.
    */
@@ -24,9 +22,7 @@ export interface ComboboxProps
    */
   startIcon?: FieldInputElProps['startIcon']
   /**
-   * The container element to render the Select dropdown in. This is used
-   * to render the Select dropdown in a specific context, such as a modal.
-   * @default document.body
+   * @deprecated - this is no longer needed
    */
   container?: RefObject<HTMLElement | null>
 }
@@ -67,13 +63,11 @@ export function Combobox(props: ComboboxProps) {
         </ComboboxParts.Trigger>
       </ComboboxParts.Control>
 
-      <Portal container={elProps.container}>
-        <ComboboxParts.Positioner>
-          <ComboboxParts.Content size={rootProps.size}>
-            {elProps.children}
-          </ComboboxParts.Content>
-        </ComboboxParts.Positioner>
-      </Portal>
+      <ComboboxParts.Positioner>
+        <ComboboxParts.Content size={rootProps.size}>
+          {elProps.children}
+        </ComboboxParts.Content>
+      </ComboboxParts.Positioner>
     </ComboboxParts.Root>
   )
 }

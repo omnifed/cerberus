@@ -1,5 +1,3 @@
-import { Portal } from '../portal/index'
-import type { DatePickerCalendarProps } from './calendar'
 import { DatePickerParts } from './parts'
 import type { DatePickerContentProps } from './primitives'
 
@@ -14,15 +12,10 @@ import type { DatePickerContentProps } from './primitives'
  * primitives.
  * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
  */
-export function DatePickerContent(
-  props: DatePickerContentProps & DatePickerCalendarProps,
-) {
-  const { withModal, container, ...contentProps } = props
+export function DatePickerContent(props: DatePickerContentProps) {
   return (
-    <Portal disabled={withModal ?? false} container={container}>
-      <DatePickerParts.Positioner>
-        <DatePickerParts.Content {...contentProps} />
-      </DatePickerParts.Positioner>
-    </Portal>
+    <DatePickerParts.Positioner>
+      <DatePickerParts.Content {...props} />
+    </DatePickerParts.Positioner>
   )
 }
