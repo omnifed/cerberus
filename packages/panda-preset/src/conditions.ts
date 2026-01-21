@@ -16,7 +16,7 @@ export const conditions = {
   modalOpen: '&:is([data-modal-open=true])',
   placeholderShown: '&:is([data-placeholder-shown])',
   screenReaderOnly: '&:is([data-screen-reader-only=true])',
-  isOver: '&:is([data-over=true])',
+  isOver: '&:is([data-over=true], [data-dragging])',
   isDropped: '&:is([data-dropped=true])',
   isComplete: '&:is([data-complete=true])',
   dataReadOnly: '&:is([data-readonly])',
