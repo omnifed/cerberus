@@ -65,6 +65,7 @@ export const fileUploader: Partial<SlotRecipeConfig> = defineSlotRecipe({
       _isOver: hoverStyles,
     },
     label: {
+      cursor: 'pointer',
       textAlign: 'center',
       textStyle: 'label-sm',
       userSelect: 'none',

@@ -56,15 +56,18 @@ const gradient: CustomUtilityConfig<'gradient'> = {
     shorthand: 'grad',
     values: getGradients(),
     transform(value: GradientValue | 'progress' | 'complete', { token }) {
+      // For some reason, token() doesn't work in condition blocks?
       if (value === 'progress') {
         return {
-          backgroundImage: `linear-gradient(to right, ${token('colors.data-viz.progress.start')}, ${token('colors.data-viz.progress.end')})`,
+          backgroundImage:
+            'linear-gradient(to right, var(--cerberus-colors-data-viz-progress-start), var(--cerberus-colors-data-viz-progress-end))',
         }
       }
 
       if (value === 'complete') {
         return {
-          backgroundImage: `linear-gradient(to right, ${token('colors.data-viz.progress.complete')}, ${token('colors.data-viz.progress.complete')})`,
+          backgroundImage:
+            'linear-gradient(to right, var(--cerberus-colors-data-viz-progress-complete), var(--cerberus-colors-data-viz-progress-complete))',
         }
       }
 

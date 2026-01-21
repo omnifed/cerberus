@@ -4,14 +4,15 @@ import { UseFileUploadContext } from '@ark-ui/react'
 import { useCerberusContext } from '../../context/cerberus'
 import { IconButton } from '../icon-button/index'
 import { FileUploadParts } from './parts'
+import { FileUploadContextProps } from './primitives'
 
-export function ImgPreview() {
+export function ImgPreview(props: Omit<FileUploadContextProps, 'children'>) {
   const { icons } = useCerberusContext()
   const { close: Icon } = icons
 
   return (
     <FileUploadParts.ItemGroup>
-      <FileUploadParts.Context>
+      <FileUploadParts.Context {...props}>
         {(ctx: UseFileUploadContext) =>
           ctx.acceptedFiles.map((file) => (
             <FileUploadParts.Item

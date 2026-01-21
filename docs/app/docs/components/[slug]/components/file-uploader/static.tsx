@@ -5,7 +5,7 @@ export function BasicFileUploader() {
   return (
     <HStack justify="center" w="full">
       <FileUploader
-        accept=".csv,.docx"
+        accept="image/*"
         heading="Upload Files"
         name="basic-example"
       />
