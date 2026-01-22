@@ -47,6 +47,9 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
         color: 'page.text.100',
       },
     },
+    positioner: {
+      zIndex: 'dropdown!',
+    },
     control: {
       alignItems: 'center',
       display: 'flex',

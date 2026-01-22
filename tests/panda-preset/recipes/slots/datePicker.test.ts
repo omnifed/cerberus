@@ -38,6 +38,12 @@ describe('datePicker recipe', () => {
     })
   })
 
+  test('should have a positioner style', () => {
+    expect(datePicker.base?.positioner).toMatchObject({
+      zIndex: 'dropdown!',
+    })
+  })
+
   test('should have an input style', () => {
     expect(datePicker.base?.input).toMatchObject({
       bgColor: 'page.surface.initial',

@@ -150,7 +150,10 @@ export const DatePickerClearTrigger = withNoRecipe(DatePicker.ClearTrigger)
  */
 export type DatePickerPositionerProps =
   CerberusPrimitiveProps<ArkDatePickerPositionerProps>
-export const DatePickerPositioner = withNoRecipe(DatePicker.Positioner)
+export const DatePickerPositioner = withSlotRecipe(
+  DatePicker.Positioner,
+  'positioner',
+)
 
 /**
  * The year select input component of the DatePicker. This primitive has no
