@@ -2,8 +2,9 @@
 title: File Uploader
 description: A component to allow users to upload files and display their status.
 npm: '@cerberus-design/react'
-source: 'components/FileUploader.tsx'
+source: 'components/file-upload'
 recipe: 'slots/fileUploader.ts'
+ark: 'file-upload'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
@@ -101,59 +102,337 @@ export function UploadingCardsPreview() {
 ```
 </CodePreview>
 
-## Customizing
+## Accepted File Types
 
-To customize the FileUploader or FileStatus, we recommend extending the `fileUploader` or the `fileStatus` slot recipe in your panda config.
+Use the `accept` prop to restrict the file types that can be uploaded. This prop accepts MIME types (e.g., `image/png`,
+`image/jpeg`) or file extensions (e.g., `.pdf`, `.txt`).
+
+When users attempt to upload files that don't match the accepted types, these files will be automatically rejected and
+appear in the `rejectedFiles` array with a `FILE_INVALID_TYPE` error code.
+
+```typescript
+import { FileUploader } from '@cerberus-design/react';
+
+<FileUploader
+  id="file-uploader"
+  accept="image/png, image/jpeg"
+/>
+```
+
+## Error Handling
+
+The `FileUploader` component provides comprehensive validation and error handling 
+capabilities. You can set various constraints and handle different types of 
+validation errors:
+
+**Built-in Validation Props:**
+
+- `maxFiles` - Maximum number of files allowed
+- `maxFileSize` - Maximum file size in bytes
+- `minFileSize` - Minimum file size in bytes
+- `accept` - Allowed MIME types or file extensions
+
+**Built-in Error Types:**
+
+- `TOO_MANY_FILES` - Exceeds maxFiles limit
+- `FILE_INVALID_TYPE` - File type not in accept list
+- `FILE_TOO_LARGE` - File size exceeds maxFileSize
+- `FILE_TOO_SMALL` - File size below minFileSize
+- `FILE_INVALID` - Generic validation failure
+- `FILE_EXISTS` - Duplicate file detected
+
+
+```tsx
+import { 
+  FileUploader, 
+  FileUploadParts, 
+  createErrorMessages,
+  Text,
+} from '@cerberus/react'
+
+const errorMessages = createErrorMessages({
+  TOO_MANY_FILES: '📊 Too many files selected (max 3 allowed)',
+  FILE_INVALID_TYPE: '🚫 Invalid file type (only images and PDFs allowed)',
+  FILE_TOO_LARGE: '📏 File too large (max 1MB)',
+  FILE_TOO_SMALL: '📐 File too small (min 1KB)',
+  FILE_INVALID: '⚠️ Invalid file',
+  FILE_EXISTS: '🔄 File already exists',
+})
+
+export const ErrorHandling = () => {
+  return (
+    <FileUploader 
+      maxFiles={3}
+      maxFileSize={1024 * 1024} // 1MB
+      minFileSize={1024} // 1KB
+      accept="image/*,application/pdf" 
+      showPreview={false}
+    >
+      <div data-status="rejected">
+        <Text textStyle="heading-md">❌ Rejected Files</Text>
+
+        <FileUploadParts.ItemGroup>
+          <FileUploadParts.Context>
+            {({ rejectedFiles }) =>
+              rejectedFiles.length === 0 ? (
+                <Text>No rejected files</Text>
+              ) : (
+                rejectedFiles.map((fileRejection) => (
+                  <FileUploadParts.Item
+                    key={fileRejection.file.name}
+                    file={fileRejection.file}
+                    data-status="rejected"
+                  >
+                    <FileUploadParts.ItemName />
+                    <FileUploadParts.ItemSizeText />
+                    <div>
+                      <Text as="strong">Validation Errors:</Text>
+                      {fileRejection.errors.map((error, index) => (
+                        <div key={index} data-error-code={error}>
+                          {errorMessages[error as FileUploadFileError] || `❓ ${error}`}
+                        </div>
+                      ))}
+                    </div>
+                  </FileUploadParts.Item>
+                ))
+              )
+            }
+          </FileUploadParts.Context>
+        </FileUploadParts.ItemGroup>
+      </div>
+    </FileUploader>
+  )
+}
+```
+
+### Error Helpers
+
+To easily create error messages for the built-in error types, use the `createErrorMessages` function:
+
+```typescript
+createErrorMessages({
+  tooMany: 'Too many files were selected',
+  invalidType: 'This is not a valid file type',
+  tooLarge: 'File size exceeds the maximum allowed (3KB)',
+  tooSmall: 'File size must be at least 1KB',
+  invalid: 'File type is not supported. Please select a valid file type.',
+  exists: 'File already exists'
+})
+```
+
+All of the properties within the options Object are optional and will provide the following
+default error messages if not provided:
+
+```typescript
+{
+  TOO_MANY_FILES: options.tooMany || '📊 Too many files selected',
+  FILE_INVALID_TYPE: options.invalidType || '🚫 Invalid file type',
+  FILE_TOO_LARGE: options.tooLarge || '📏 File too large',
+  FILE_TOO_SMALL: options.tooSmall || '📐 File too small',
+  FILE_INVALID: options.invalid || '⚠️ Invalid file',
+  FILE_EXISTS: options.exists || '🔄 File already exists',
+}
+```
+
+## File Transformations
+
+Use the `transformFiles` prop to process files before they're added to the accepted files list. This is useful for file
+compression, format conversion, or adding metadata.
+
+**Common transformation use cases:**
+
+- **Image compression**: Use `image-conversion`, `browser-image-compression`, or similar libraries
+- **Format conversion**: Convert files to different formats (e.g., HEIC to JPEG)
+- **Metadata extraction**: Add EXIF data or other file information
+- **File validation**: Perform additional checks beyond basic validation
+- **Resizing**: Automatically resize images to specific dimensions
+
+```typescript
+import { FileUploader } from '@cerberus/react/file-upload'
+import { compressAccurately } from 'image-conversion'
+
+function FileTransformationsDemo() {
+  const transformFiles = async (files: File[]) => {
+    return Promise.all(
+      files.map(async (file) => {
+        if (file.type.startsWith('image/')) {
+          try {
+            // Compress image to ~200KB
+            const blob = await compressAccurately(file, 200)
+            return new File([blob], file.name, { type: blob.type })
+          } catch (error) {
+            console.error('Compression failed for:', file.name, error)
+            return file
+          }
+        }
+        return file // Return non-image files as-is
+      }),
+    )
+  }
+
+  return (
+    <FileUploader 
+      accept="image/*" 
+      maxFiles={5} 
+      transformFiles={transformFiles} 
+    />
+  )
+}
+```
+
+### Custom Validation
+
+Use the `validate` prop to implement custom validation logic beyond the built-in constraints.
+
+```tsx
+<FileUploadParts.Root
+  validate={(file) => {
+    if (file.name.length > 20) return ['FILE_NAME_TOO_LONG']
+    return null
+  }}
+/>
+```
+
+## Guides
+
+### File Previews
+
+The `FileUpload` component provides flexible preview options for different file types. Use `ItemPreview` with type
+matching to show appropriate previews based on file format.
+
+**Preview Types:**
+
+- `type="image/*"`: Shows image thumbnails using `ItemPreviewImage`
+- `type="video/*"`: For video file previews
+- `type="application/pdf"`: For PDF files
+- `type=".*"`: Generic fallback for any file type
+
+```tsx
+<FileUploadParts.ItemPreview type="image/*">
+  <FileUploadParts.ItemPreviewImage />
+</FileUploadParts.ItemPreview>
+
+<FileUploadParts.ItemPreview type="video/*">
+  <VideoIcon />
+</FileUploadParts.ItemPreview>
+
+<FileUploadParts.ItemPreview type="application/pdf">
+  <PdfIcon />
+</FileUploadParts.ItemPreview>
+
+<FileUploadParts.ItemPreview type=".*">
+  <FileIcon />
+</FileUploadParts.ItemPreview>
+```
+
+**File Metadata Display:**
+
+- `ItemName` - Shows the file name
+- `ItemSizeText` - Shows formatted file size (e.g., "2.5 MB")
+
+### Disable dropzone
+
+To disable drag-and-drop functionality, set the `allowDrop` prop to `false`.
+
+```tsx
+<FileUploader allowDrop={false} />
+```
+
+### Prevent document drop
+
+By default, when the dropzone is active, we prevent accidental navigation when files are dropped outside the dropzone.
+To prevent this behavior, set the `preventDocumentDrop` prop to `false`.
+
+```tsx
+<FileUploader preventDocumentDrop={false} />
+```
+
+### Prevent double open
+
+When you want to delegate clicking to the trigger and remove the dropzone from the tab order, you can use the
+`disableClick` prop. This prevents the the file picker from opening twice.
+
+```tsx
+<FileUploadParts.Dropzone disableClick>
+  <FileUploadParts.Trigger>Choose Files</FileUploadParts.Trigger>
+  Drag files here
+</FileUploadParts.Dropzone>
+```
+
+## Primitives
+
+You can utilize the primitive components or the style props to customize the file uploader.
+
+| Component | Description |
+| --------- | ----------- |
+| FileUploadRoot    | The context provider for the FileUploader parts |
+| FileUploadTrigger   | The trigger of the FileUploader |
+| FileUploadDropzone   | The dropzone of the FileUploader |
+| FileUploadLabel   | The label of the FileUploader |
+| FileUploadTrigger   | The trigger of the FileUploader |
+| FileUploadClearTrigger | The clear trigger of the FileUploader |
+| FileUPloadItemGroup | The container for the group of items |
+| FileUploadItem | The container for the item |
+| FileUploadItemPreview | The container of hte preview for the item |
+| FileUploadItemPreviewImage | The image preview for the item |
+| FileUploadItemName | The name of the item |
+| FileUploadItemSizeText | The size text of the item |
+| FileUploadItemDeleteTrigger | The delete trigger of the FileUploader |
+| FileUPloadHiddenInput | The hidden input of the FileUploader |
+| FileUploadContext | The context of the FileUploader |
+| FileUploadIcon | The icon of the FileUploader |
+| FileUploadHeading | The heading of the FileUploader |
+| FileUploadDescription | The description of the FileUploader |
 
 ## API
 
 ### FileUploader
 
-```ts showLineNumbers=false
-export interface FileUploaderProps
-  extends InputHTMLAttributes<HTMLInputElement> {
-  heading?: string
-  name: string
-  disabled?: boolean
-}
+| Prop | Type |  Description |
+|------|------|-------------|
+| `accept` | `Record<string, string[]>` | The accept file types |
+| `acceptedFiles` | `File[]` | The controlled accepted files |
+| `allowDrop` | `boolean` | Whether to allow drag and drop in the dropzone element |
+| `asChild` | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| `capture` | `'user' or 'environment'` | The default camera to use when capturing media |
+| `defaultAcceptedFiles` | `File[]` | The default accepted files when rendered. Use when you don't need to control the accepted files of the input. |
+| `directory` | `boolean` | Whether to accept directories, only works in webkit browsers |
+| `disabled` | `boolean` | Whether the file input is disabled |
+| `ids` | `Partial<PrimitiveStack>` | The ids of the elements. Useful for composition. |
+| `invalid` | `boolean` | Whether the file input is invalid |
+| `locale` | `string` | The current locale. Based on the BCP 47 definition. |
+| `maxFiles` | `number` | The maximum number of files |
+| `maxFileSize` | `number` | The maximum file size in bytes |
+| `minFileSize` | `number` | The minimum file size in bytes |
+| `name` | `string` | The name of the underlying file input |
+| `onFileAccept` | `(details: FileAcceptDetails) => void` | Function called when the file is accepted |
+| `onFileChange` | `(details: FileChangeDetails) => void` | Function called when the value changes, whether accepted or rejected |
+| `onFileReject` | `(details: FileRejectDetails) => void` | Function called when the file is rejected |
+| `preventDocumentDrop` | `boolean` | Whether to prevent the drop event on the document |
+| `required` | `boolean` | Whether the file input is required |
+| `transformFiles` | `(files: File[]) => Promise<File[]>` | Function to transform the accepted files to apply transformations |
+| `translations` | `IntlTranslations` | The localized messages to use. |
+| `validate` | `(file: File, details: FileValidateDetails) => FileError[] or null` | Function to validate a file |
+| `heading`  |   `string`     | The heading for the file uploader                             |
+| `showPreview`     |     `boolean`    | Whether to show the preview of the file or custom children.                                  |
 
-define function FileUploader(props: FileUploaderProps): ReactNode
-```
+#### Root Data Attributes:
+
+| Attribute | Value |
+|-----------|-------|
+| `[data-scope]` | file-upload |
+| `[data-part]` | root |
+| `[data-disabled]` | Present when disabled |
+| `[data-dragging]` | Present when in the dragging state |
+
 
 ### FileStatus
-
-```ts showLineNumbers=false
-export type FileStatusKey = (typeof processStatus)[keyof typeof processStatus]
-export type FileStatusActions = 'cancel' | 'retry' | 'delete'
-
-export interface FileBaseStatusProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
-  id: string
-  file: string
-  now: number
-  status: processStatus
-  onClick: (status: FileStatusActions, e: MouseEvent<HTMLButtonElement>) => void
-}
-export type FileStatusProps = FileBaseStatusProps & FileStatusVariantProps
-
-define function FileStatus(props: FileStatusProps): ReactNode
-```
-
-### Props
-
-The `FileUploader` component accepts the following props:
-
-| Name     | Default | Description                                                   |
-| -------- | ------- | ------------------------------------------------------------- |
-| heading  |         | The heading for the file uploader                             |
-| name     |         | The unique name of the file uploader                                  |
-| disabled |    false     | Whether the file uploader is disabled                         |
 
 The `FileStatus` component accepts the following props:
 
 | Name     | Default | Description                                                   |
 | -------- | ------- | ------------------------------------------------------------- |
-| id       |         | A unique identifier for the ProgressBar.            |
-| file     |         | The name of the file being processed                          |
-| now      |         | The current progress of the file upload                       |
-| status   |    'todo'     | The status of the file upload                                 |
+| `id`       |         | A unique identifier for the ProgressBar.            |
+| `file`     |         | The name of the file being processed                          |
+| `now`      |         | The current progress of the file upload                       |
+| `status`   |    `'todo'`     | The status of the file upload                                 |

@@ -1,4 +1,4 @@
-import { FileUploadFileError } from '@ark-ui/react'
+import { FileUploadFileError } from '@ark-ui/react/file-upload'
 
 type FileErrorTypes = {
   tooMany?: string
