@@ -16,16 +16,19 @@ import { FileUploader, FileStatus, processStatus } from '@cerberus/react'
 
 ## Uploading Files
 
-To allow users to upload files, use the `FileUploader` component.
+To allow users to upload files, use the `FileUploader` component. This will provide
+a drag-and-drop area for users to upload files which is also clickable.
+
+Once a valid file is added, a preview card of the file will be displayed.
 
 <CodePreview preview={<BasicFileUploader />}>
-```tsx title="file-uploader.tsx"
+```tsx title="img-uploader.tsx"
 import { FileUploader } from '@cerberus/react'
 
 export function BasicFileUploader() {
   return (
     <FileUploader
-      accept=".csv,.docx"
+      accept="image/*"
       heading="Upload Files"
       name="basic-example"
     />

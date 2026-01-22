@@ -50,7 +50,9 @@ export function FileUploader(props: PropsWithChildren<FileUploaderProps>) {
         </FileUploadParts.Label>
       </FileUploadParts.Dropzone>
 
-      <Show when={showPreview}>{() => <ImgPreview />}</Show>
+      <Show when={showPreview} fallback={<>{props.children}</>}>
+        {() => <ImgPreview />}
+      </Show>
 
       <FileUploadParts.HiddenInput />
     </FileUploadParts.Root>

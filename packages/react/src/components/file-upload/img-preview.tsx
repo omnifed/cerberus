@@ -1,6 +1,6 @@
 'use client'
 
-import { UseFileUploadContext } from '@ark-ui/react'
+import { UseFileUploadContext } from '@ark-ui/react/file-upload'
 import { useCerberusContext } from '../../context/cerberus'
 import { IconButton } from '../icon-button/index'
 import { FileUploadParts } from './parts'
