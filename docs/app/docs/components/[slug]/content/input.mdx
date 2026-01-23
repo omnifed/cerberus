@@ -67,30 +67,33 @@ export function BasicFieldPreview() {
 
 ## With Icons
 
-You can utilize the `startIcon` or `endIcon` props to add icons to the input.
+You can utilize the `startIcon` or `endIcon` props to add icons to the input. 
 
 <CodePreview preview={<SearchInputExample />}>
 ```tsx title="search-input.tsx"
-import { Field, Input, type InputProps } from '@cerberus/react'
+import { Field, Input } from '@cerberus/react'
 import { Search } from '@carbon/icons-react'
+import { VStack } from 'styled-system/jsx'
 
-export function SearchInputExample(props: InputProps) {
+export function SearchInputExample() {
   return (
-    <form action={someAction} method="post">
+    <VStack gap="md" w="1/2">
       <Field>
-        <Input
-          {...props}
-          startIcon={<Search />}
-          name="search"
-          placeholder="Search for anything"
-          type="text"
-        />
+        <Input startIcon={<Search />} placeholder="Search for anything" />
       </Field>
-    </form>
+      <Field>
+        <Input endIcon={<Search />} placeholder="Search for anything" />
+      </Field>
+      <Field invalid>
+        <Input endIcon={<Search />} placeholder="Search for anything" />
+      </Field>
+    </VStack>
   )
 }
 ```
 </CodePreview>
+
+<NoteAdmonition description="When and input is marked as invalid, the endIcon will be replaced by the invalid icon." />
 
 ## Customizing
 
