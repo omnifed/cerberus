@@ -6,8 +6,7 @@ import { field } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
 import type { HTMLAttributes, ReactNode } from 'react'
 
-export interface FieldStatusIndicatorProps
-  extends HTMLAttributes<HTMLSpanElement> {
+export interface FieldStatusIndicatorProps extends HTMLAttributes<HTMLSpanElement> {
   /**
    * The fallback content to display when the field is valid.
    */
@@ -33,9 +32,7 @@ export function FieldStatusIndicator(props: FieldStatusIndicatorProps) {
   const { icons } = useCerberusContext()
   const { invalid: InvalidIcon } = icons
 
-  if (!fieldContext) return null
-
-  if (fieldContext.invalid) {
+  if (fieldContext?.invalid) {
     return (
       <span
         {...nativeProps}
