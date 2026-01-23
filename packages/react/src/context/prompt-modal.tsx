@@ -27,7 +27,8 @@ import {
   DialogDescription,
   DialogHeading,
   DialogProvider,
-} from '../components/dialog'
+  DialogRootProps,
+} from '../components/dialog/index'
 import { useCerberusContext } from './cerberus'
 
 /**
@@ -87,7 +88,7 @@ export interface PromptModalValue {
 
 const PromptModalContext = createContext<PromptModalValue | null>(null)
 
-export type PromptModalProviderProps = PropsWithChildren<unknown>
+export type PromptModalProviderProps = PropsWithChildren<DialogRootProps>
 
 /**
  * Provides a prompt modal to the app.
@@ -119,10 +120,13 @@ export type PromptModalProviderProps = PropsWithChildren<unknown>
 export function PromptModal(
   props: PropsWithChildren<PromptModalProviderProps>,
 ) {
-  const resolveRef = useRef<PromptShowResult>(null)
+  const { children, ...rootProps } = props
+
   const [open, setOpen] = useState<boolean>(false)
   const [content, setContent] = useState<ShowPromptModalOptions | null>(null)
   const [inputValue, setInputValue] = useState<string>('')
+
+  const resolveRef = useRef<PromptShowResult>(null)
 
   const { icons } = useCerberusContext()
   const { promptModal: PromptIcon } = icons
@@ -172,13 +176,14 @@ export function PromptModal(
 
   return (
     <PromptModalContext.Provider value={value}>
-      {props.children}
+      {children}
 
       <DialogProvider
         lazyMount
         open={open}
         onOpenChange={(e) => setOpen(e.open)}
         unmountOnExit
+        {...rootProps}
       >
         <Dialog
           size="sm"
