@@ -4,6 +4,7 @@ description: 'The Confirm Modal component provides a way to confirm actions with
 npm: '@cerberus-design/react'
 source: 'context/confirm-modal.tsx'
 recipe: 'slots/dialog.ts'
+ark: 'dialog'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
@@ -156,9 +157,9 @@ function SomePage() {
 ```
 </CodePreview>
 
-## Customization
+## Primitives
 
-For customizing the Confirm Modal, we recommend extending the `confirmModal` slot recipe provided by the `@cerberus/panda-preset` package in your config.
+The ConfirmModal is an abstraction of the [Dialog primitives](./dialog) and does not provide any additional customization. To build your own ConfirmModal, use the `Dialog` components.
 
 ## API
 
@@ -171,8 +172,13 @@ export interface ConfirmModalProviderValue {
   show: (options: ShowConfirmModalOptions) => Promise<boolean>
 }
 
-define function ConfirmModal(props: PropsWithChildren<{}>): ReactNode
+define function ConfirmModal(props: PropsWithChildren<DialogRootProps>): ReactNode
 ````
+
+### ConfirmModal
+
+The `ConfirmModal` component is an abstraction of the Dialog and accepts the same 
+props as the `Dialog` component.
 
 ### Show Method Options
 
