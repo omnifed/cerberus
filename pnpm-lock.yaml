@@ -273,8 +273,8 @@ importers:
         specifier: ^1.8.1
         version: 1.8.1(hono@4.11.3)(jsdom@26.0.0)(typescript@5.9.3)
       '@pandacss/preset-panda':
-        specifier: ^1.7.1
-        version: 1.7.1
+        specifier: ^1.8.1
+        version: 1.8.1
       '@pandacss/types':
         specifier: ^1.8.1
         version: 1.8.1
@@ -1614,9 +1614,6 @@ packages:
   '@pandacss/preset-base@1.8.1':
     resolution: {integrity: sha512-NJtVQz4Dn3FuFLci8GvbXVGegKvAkYh7xB5TwJA5mqwRIOqWZ6+U/WoVXu9aR9wj3/EYAhqA5qUJQXrC6dUFmA==}
 
-  '@pandacss/preset-panda@1.7.1':
-    resolution: {integrity: sha512-w9M/hDOMkVvZjxf5cy3+Hzi+1rnm4azpr0mbEowKLhlXFI+ubFt3iJPCEx/nx1Z0gs8kOu0EhydU6hnARlUkJQ==}
-
   '@pandacss/preset-panda@1.8.1':
     resolution: {integrity: sha512-89QSWcSdhr1ViW6o0YMAQrSCxmY+xsrr0eA6GnNT6FWkjwL1QAtwjezWwODHN26BjlNTLmW8aK39Tepj6Wh2Aw==}
 
@@ -1628,9 +1625,6 @@ packages:
 
   '@pandacss/token-dictionary@1.8.1':
     resolution: {integrity: sha512-6uDH/QbxE/sS/QzfaSswxa+hMdDR1U3PUGVD/uCrt3tJ4zTHgR2icZ3vH9GN9k17WFutzcVQaKTKscY3PYn9TA==}
-
-  '@pandacss/types@1.7.1':
-    resolution: {integrity: sha512-cT0cyiU7t41CGa3629Ih+A41r7FFIWPnDGgxALKICfW/Xkn8oX/GMFU+cS0vsRcZqSKbEKlaJu/oC320qzYY9w==}
 
   '@pandacss/types@1.8.1':
     resolution: {integrity: sha512-5hNn6PsbmSWdHmfETGTGW+gpFmzf0xdKlzbFHIIKHZK+zicCtHIg6iMahZsf9wvYiBu0LAKwgdKR+kDMya5N8w==}
@@ -2162,9 +2156,6 @@ packages:
 
   '@types/eslint@8.56.12':
     resolution: {integrity: sha512-03ruubjWyOHlmljCVoxSuNDdmfZDzsrrz0P2LeJsOXr+ZwFQ+0yQIwNCwt/GYhV7Z31fgtXJTAEs+FYlEL851g==}
-
-  '@types/eslint@9.6.1':
-    resolution: {integrity: sha512-FXx2pKgId/WyYo2jXw63kk7/+TY7u7AziEJxJAnSFzHlqTAS3Ync6SvgYAN/k4/PQpnnVuzoMuVnByKK2qp0ag==}
 
   '@types/eslint__js@8.42.3':
     resolution: {integrity: sha512-alfG737uhmPdnvkrLdZLcEKJ/B8s9Y4hrZ+YAdzUeoArBlSUERA2E87ROfOaS4jd/C45fzOoZzidLc1IPwLqOw==}
@@ -7678,10 +7669,6 @@ snapshots:
     dependencies:
       '@pandacss/types': 1.8.1
 
-  '@pandacss/preset-panda@1.7.1':
-    dependencies:
-      '@pandacss/types': 1.7.1
-
   '@pandacss/preset-panda@1.8.1':
     dependencies:
       '@pandacss/types': 1.8.1
@@ -7705,8 +7692,6 @@ snapshots:
       '@pandacss/types': 1.8.1
       picomatch: 4.0.3
       ts-pattern: 5.9.0
-
-  '@pandacss/types@1.7.1': {}
 
   '@pandacss/types@1.8.1': {}
 
@@ -8227,7 +8212,7 @@ snapshots:
 
   '@types/eslint-scope@3.7.7':
     dependencies:
-      '@types/eslint': 9.6.1
+      '@types/eslint': 8.56.12
       '@types/estree': 1.0.8
     optional: true
 
@@ -8235,12 +8220,6 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.8
       '@types/json-schema': 7.0.15
-
-  '@types/eslint@9.6.1':
-    dependencies:
-      '@types/estree': 1.0.8
-      '@types/json-schema': 7.0.15
-    optional: true
 
   '@types/eslint__js@8.42.3':
     dependencies:
