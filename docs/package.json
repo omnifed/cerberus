@@ -36,7 +36,7 @@
     "@pandacss/types": "^1.8.1",
     "@shikijs/rehype": "^3.21.0",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^25.0.8",
+    "@types/node": "^25.0.10",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "@vercel/analytics": "^1.6.1",
