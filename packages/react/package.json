@@ -25,7 +25,7 @@
   "devDependencies": {
     "@cerberus-design/configs": "workspace:*",
     "@cerberus/panda-preset": "workspace:*",
-    "@internationalized/date": "^3.10.0",
+    "@internationalized/date": "^3.10.1",
     "@pandacss/dev": "^1.8.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
