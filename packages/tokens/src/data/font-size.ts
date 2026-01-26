@@ -79,8 +79,8 @@ export const tokens = {
     codeSyntax: {},
     deletedButReferenced: true,
   },
-  'font-weight.800': {
-    name: 'font-weight/800',
+  'font-weight MAKE PURE.800': {
+    name: 'font-weight MAKE PURE/800',
     id: 'VariableID:6959:25401',
     remote: false,
     key: '6f237272e405c578f7c583700b30e34eea92b0e2',
@@ -92,8 +92,8 @@ export const tokens = {
     scopes: ['FONT_STYLE'],
     codeSyntax: {},
   },
-  'font-weight.700': {
-    name: 'font-weight/700',
+  'font-weight MAKE PURE.700': {
+    name: 'font-weight MAKE PURE/700',
     id: 'VariableID:6957:25394',
     remote: false,
     key: '557fcffc0fdaa87ea8430b2edf853e4404cb2038',
@@ -105,8 +105,8 @@ export const tokens = {
     scopes: ['FONT_STYLE'],
     codeSyntax: {},
   },
-  'font-weight.600': {
-    name: 'font-weight/600',
+  'font-weight MAKE PURE.600': {
+    name: 'font-weight MAKE PURE/600',
     id: 'VariableID:6957:25389',
     remote: false,
     key: '89f41c9ede72c916261627d445301550be0f57f4',
@@ -118,8 +118,8 @@ export const tokens = {
     scopes: ['FONT_STYLE'],
     codeSyntax: {},
   },
-  'font-weight.500': {
-    name: 'font-weight/500',
+  'font-weight MAKE PURE.500': {
+    name: 'font-weight MAKE PURE/500',
     id: 'VariableID:6957:25390',
     remote: false,
     key: '501dc2b4d22f81b208fe11b0a17f3f12ae34708a',
@@ -131,8 +131,8 @@ export const tokens = {
     scopes: ['FONT_STYLE'],
     codeSyntax: {},
   },
-  'font-weight.400': {
-    name: 'font-weight/400',
+  'font-weight MAKE PURE.400': {
+    name: 'font-weight MAKE PURE/400',
     id: 'VariableID:6957:25391',
     remote: false,
     key: '57fdf06dc8250d9380226b8db77de681f0be89e4',
@@ -144,8 +144,8 @@ export const tokens = {
     scopes: ['FONT_STYLE'],
     codeSyntax: {},
   },
-  'font-weight.300': {
-    name: 'font-weight/300',
+  'font-weight MAKE PURE.300': {
+    name: 'font-weight MAKE PURE/300',
     id: 'VariableID:6957:25392',
     remote: false,
     key: 'c10210bbb0d0081507779762ec0cb1d7ea659a60',
@@ -157,8 +157,8 @@ export const tokens = {
     scopes: ['FONT_STYLE'],
     codeSyntax: {},
   },
-  'font-weight.200': {
-    name: 'font-weight/200',
+  'font-weight MAKE PURE.200': {
+    name: 'font-weight MAKE PURE/200',
     id: 'VariableID:6957:25393',
     remote: false,
     key: '943e089e570850c5f0b2f450486c2bf5a7b9498d',
