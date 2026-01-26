@@ -4,6 +4,7 @@ description: 'A modal component for displaying call-to-action messages.'
 npm: '@cerberus-design/react'
 source: 'components/cta-dialog'
 recipe: 'slots/dialog.ts'
+ark: 'dialog'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
@@ -183,13 +184,14 @@ function SomePage() {
 ```
 </CodePreview>
 
-## Customization
+## Primitives
 
 The CTAModal is an abstraction of the [Dialog primitives](./dialog) and does not provide any additional customization. To build your own CTAModal, use the `Dialog` components.
 
 ## API
 
-The `CTAModal` component is an abstraction of the Dialog primitives and does not accept any props.
+The `CTAModal` component is an abstraction of the Dialog and accepts the same 
+props as the `Dialog` component.
 
 ### Show Method Options
 

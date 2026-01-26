@@ -19,19 +19,30 @@ describe('FileUploader', () => {
 
     expect(screen.getByText(/upload files/i)).toBeInTheDocument()
     expect(screen.getByText(/import .csv, .docx files/i)).toBeInTheDocument()
-    expect(screen.getByText(/click to select files/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/upload files/i)).toBeInTheDocument()
+    expect(
+      screen.getByText(/Drag and drop files or click to upload/i),
+    ).toBeInTheDocument()
   })
 
-  test('should render a file uploader with hidden heading', () => {
+  test('should allow custom preview', () => {
     render(
       <CerberusProvider config={config}>
-        <FileUploader accept=".csv,.doc" name="no-heading" />
+        <FileUploader
+          accept="image/*"
+          heading="Upload Files"
+          name="basic-example"
+          showPreview={false}
+        >
+          <div>Custom Preview</div>
+        </FileUploader>
       </CerberusProvider>,
     )
 
-    expect(screen.queryByText(/upload files/i)).not.toBeInTheDocument()
-    expect(screen.getByText(/import .csv, .doc files/i)).toBeInTheDocument()
-    expect(screen.getByText(/click to select files/i)).toBeInTheDocument()
+    expect(screen.getByText(/upload files/i)).toBeInTheDocument()
+    expect(screen.getByText(/import any image file/i)).toBeInTheDocument()
+    expect(
+      screen.getByText(/Drag and drop files or click to upload/i),
+    ).toBeInTheDocument()
+    expect(screen.getByText(/custom preview/i)).toBeInTheDocument()
   })
 })

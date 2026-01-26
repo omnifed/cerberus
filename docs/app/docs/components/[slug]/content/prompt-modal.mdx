@@ -4,6 +4,7 @@ description: The Prompt Modal is used to prompt the user for input, such as a pa
 npm: '@cerberus-design/react'
 source: 'context/prompt-modal.tsx'
 recipe: 'slots/dialog.ts'
+ark: 'dialog'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
@@ -97,9 +98,9 @@ function SomePage() {
 ```
 </CodePreview>
 
-## Customization
+## Primitives
 
-For customizing the Prompt Modal, we recommend extending the `confirmModal` slot recipe provided by the `@cerberus/panda-preset` package in your config.
+The PromptModal is an abstraction of the [Dialog primitives](./dialog) and does not provide any additional customization. To build your own PromptModal, use the `Dialog` components.
 
 ## API
 
@@ -108,8 +109,13 @@ export interface PromptModalProviderValue {
   show: (options: PromptModalOptions) => Promise<string>
 }
 
-define function PromptModal(props: PropsWithChildren<{}>): ReactNode
+define function PromptModal(props: PropsWithChildren<DialogRootProps>): ReactNode
 ````
+
+###  PromptModal
+
+The `PromptModal` component is an abstraction of the Dialog and accepts the same 
+props as the `Dialog` component.
 
 ### Show Method Options
 

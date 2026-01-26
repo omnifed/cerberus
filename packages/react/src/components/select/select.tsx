@@ -2,7 +2,7 @@
 
 import { HStack } from 'styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
-import { Portal } from '../portal/index'
+import { splitProps } from '../../utils/index'
 import { Show } from '../show/index'
 import { SelectParts } from './parts'
 import type { RefObject } from 'react'
@@ -41,9 +41,7 @@ export interface SelectProps extends Omit<SelectRootProps, 'container'> {
    */
   placeholder?: string
   /**
-   * The container element to render the Select dropdown in. This is used
-   * to render the Select dropdown in a specific context, such as a modal.
-   * @default document.body
+   * @deprecated - this is no longer needed
    */
   container?: RefObject<HTMLElement | null>
 }
@@ -80,7 +78,10 @@ export interface SelectProps extends Omit<SelectRootProps, 'container'> {
  * }
  */
 export function Select(props: SelectProps) {
-  const { collection, container, placeholder, ...rootProps } = props
+  const [{ collection, placeholder }, rootProps] = splitProps(props, [
+    'collection',
+    'placeholder',
+  ])
 
   const { icons } = useCerberusContext()
   const { selectArrow: SelectArrow, invalid: InvalidIcon } = icons
@@ -102,13 +103,11 @@ export function Select(props: SelectProps) {
         </SelectParts.Trigger>
       </SelectParts.Control>
 
-      <Portal container={container}>
-        <SelectParts.Positioner>
-          <SelectParts.Content size={rootProps.size}>
-            {props.children}
-          </SelectParts.Content>
-        </SelectParts.Positioner>
-      </Portal>
+      <SelectParts.Positioner>
+        <SelectParts.Content size={rootProps.size}>
+          {props.children}
+        </SelectParts.Content>
+      </SelectParts.Positioner>
 
       <SelectParts.HiddenSelect />
     </SelectParts.Root>

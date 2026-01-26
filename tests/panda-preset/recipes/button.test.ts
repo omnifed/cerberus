@@ -130,6 +130,12 @@ describe('button recipe', () => {
     })
   })
 
+  test('should have a default shape variant', () => {
+    expect(button.variants?.shape.default).toMatchObject({
+      rounded: 'sm',
+    })
+  })
+
   test('should have a sharp shape variant', () => {
     expect(button.variants?.shape.sharp).toMatchObject({})
   })

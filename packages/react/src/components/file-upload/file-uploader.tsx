@@ -1,72 +1,60 @@
 'use client'
 
-import { cx } from 'styled-system/css'
-import { vstack } from 'styled-system/patterns'
-import { fileUploader } from 'styled-system/recipes'
-import { type InputHTMLAttributes } from 'react'
-import { Show } from '../show/index'
+import { PropsWithChildren } from 'react'
 import { useCerberusContext } from '../../context/cerberus'
+import { splitProps } from '../../utils'
+import { Show } from '../show/index'
 import { Avatar } from '../avatar/avatar'
+import { formatFileTypes } from './utils'
+import { ImgPreview } from './img-preview'
+import { FileUploadParts } from './parts'
+import { FileUploadRootProps } from './primitives'
 
-export interface FileUploaderProps
-  extends InputHTMLAttributes<HTMLInputElement> {
+export interface FileUploaderProps extends FileUploadRootProps {
   /**
    * The optional heading to display in the FileUploader component.
    */
   heading?: string
   /**
-   * The name of the file input element.
+   * Show a preview of the uploaded image.
    */
-  name: string
-  /**
-   * Disable the FileUploader component. Good for single-use file uploads.
-   */
-  disabled?: boolean
+  showPreview?: boolean
 }
 
 /**
  * A component that allows the user to upload files.
- * @see https://cerberus.digitalu.design/react/file-uploader
+ * @see https://cerberus.digitalu.design/docs/components/file-uploader
  */
-export function FileUploader(props: FileUploaderProps) {
+export function FileUploader(props: PropsWithChildren<FileUploaderProps>) {
+  const [elProps, rootProps] = splitProps(props, ['heading', 'showPreview'])
+  const { showPreview = true } = elProps
+
   const { icons } = useCerberusContext()
-  const styles = fileUploader()
   const { waitingFileUploader: Icon } = icons
 
   return (
-    <div
-      {...(props.disabled ? { 'aria-disabled': true } : {})}
-      className={cx(
-        vstack({
-          justify: 'center',
-        }),
-        styles.container,
-      )}
-    >
-      <div className={styles.icon}>
-        <Avatar gradient="charon-light" fallback={<Icon />} />
-      </div>
+    <FileUploadParts.Root {...rootProps}>
+      <FileUploadParts.Dropzone>
+        <FileUploadParts.Icon>
+          <Avatar gradient="charon-light" fallback={<Icon />} />
+        </FileUploadParts.Icon>
 
-      <label
-        className={cx(
-          vstack({
-            justify: 'center',
-          }),
-          styles.label,
-        )}
-        htmlFor={props.name}
-      >
-        <Show when={props.heading}>
-          <p className={styles.heading}>{props.heading}</p>
-        </Show>
-        Import {props.accept?.replace(',', ', ')} files
-        <p className={styles.description}>Click to select files</p>
-        <input
-          {...props}
-          className={cx(props.className, styles.input)}
-          type="file"
-        />
-      </label>
-    </div>
+        <FileUploadParts.Label>
+          <Show when={elProps.heading}>
+            <FileUploadParts.Heading>{elProps.heading}</FileUploadParts.Heading>
+          </Show>
+          Import {formatFileTypes(rootProps.accept)} files
+          <FileUploadParts.Description>
+            Drag and drop files or click to upload
+          </FileUploadParts.Description>
+        </FileUploadParts.Label>
+      </FileUploadParts.Dropzone>
+
+      <Show when={showPreview} fallback={<>{props.children}</>}>
+        {() => <ImgPreview />}
+      </Show>
+
+      <FileUploadParts.HiddenInput />
+    </FileUploadParts.Root>
   )
 }

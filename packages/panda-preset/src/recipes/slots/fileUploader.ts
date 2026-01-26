@@ -1,11 +1,17 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { fileUploadAnatomy } from '@ark-ui/react/file-upload'
 import { modalIconBase } from '../shared/modal.base'
-import { focusStates } from '../shared/states'
 
 /**
  * This module contains the fileUploader recipe.
  * @module
  */
+
+const hoverStyles = {
+  borderColor: 'action.border.focus',
+  borderStyle: 'solid',
+  bgColor: 'action.ghost.hover',
+}
 
 /**
  * Styles for the FileUploader components
@@ -15,30 +21,37 @@ import { focusStates } from '../shared/states'
 export const fileUploader: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'file-uploader',
   description: 'The styles for FileUploader components',
-  slots: ['container', 'label', 'icon', 'heading', 'description', 'input'],
+  slots: [...fileUploadAnatomy.keys(), 'icon', 'heading', 'description'],
   jsx: ['ConfirmModal', 'PromptModal'],
 
   base: {
-    container: {
-      // combine with vstack
+    root: {
+      alignItems: 'center',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'md',
+      maxW: '36rem',
+      w: 'full',
+    },
+    dropzone: {
+      alignItems: 'center',
+      bgColor: 'page.surface.100',
       borderColor: 'page.border.100',
       borderStyle: 'dashed',
       borderWidth: '2.5px',
-      bgColor: 'page.surface.100',
-      justify: 'center',
+      cursor: 'pointer',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 3,
+      justifyContent: 'center',
       minH: '14rem',
-      maxW: '36rem',
-      py: '6',
+      px: '6',
+      py: '4',
       rounded: 'md',
       transitionProperty: 'background-color, border, opacity',
       transitionDuration: '150ms',
       transitionTimingFunction: 'ease-in-out',
       w: 'full',
-      _hover: {
-        borderColor: 'action.border.focus',
-        borderStyle: 'solid',
-        bgColor: 'action.ghost.hover',
-      },
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.5',
@@ -48,49 +61,73 @@ export const fileUploader: Partial<SlotRecipeConfig> = defineSlotRecipe({
           bgColor: 'page.surface.100',
         },
       },
-      _isOver: {
-        borderColor: 'action.border.focus',
-        borderStyle: 'solid',
-        bgColor: 'action.ghost.hover',
-      },
-      _isDropped: {
-        opacity: '0.5',
-      },
+      _hover: hoverStyles,
+      _isOver: hoverStyles,
     },
     label: {
-      // combine with vstack
-      color: 'page.text.200',
-      gap: '1',
-      justify: 'center',
-      position: 'relative',
-      rounded: 'md',
+      cursor: 'pointer',
+      textAlign: 'center',
       textStyle: 'label-sm',
       userSelect: 'none',
     },
+    trigger: {},
+    clearTrigger: {},
+    itemGroup: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 3,
+      w: 'full',
+    },
+    item: {
+      animation: 'fadeIn 0.25s ease-out',
+      bgColor: 'page.surface.100',
+      borderColor: 'page.border.initial',
+      borderRadius: 'sm',
+      borderWidth: '1px',
+      columnGap: 3,
+      display: 'grid',
+      gridTemplateColumns: 'auto 1fr auto',
+      gridTemplateAreas: `
+             "preview name delete"
+             "preview size delete"
+             `,
+      p: '4',
+    },
+    itemPreview: {
+      gridArea: 'preview',
+    },
+    itemName: {
+      color: 'page.text.initial',
+      gridArea: 'name',
+      textStyle: 'label-sm',
+    },
+    itemSizeText: {
+      color: 'page.text.100',
+      gridArea: 'size',
+      textStyle: 'label-sm',
+    },
+    itemDeleteTrigger: {
+      alignSelf: 'center',
+      gridArea: 'delete',
+    },
+    itemPreviewImage: {
+      aspectRatio: '1',
+      height: '10',
+      objectFit: 'scale-down',
+      width: '10',
+    },
+
+    // custom
+
     icon: modalIconBase,
     heading: {
       color: 'page.text.initial',
       pt: '2',
-      textStyle: 'h6',
+      textStyle: 'heading-xs',
     },
     description: {
-      color: 'action.navigation.initial',
-      textDecoration: 'underline',
+      color: 'page.text.100',
       textStyle: 'label-sm',
-      transitionProperty: 'color',
-      transitionDuration: '150ms',
-    },
-    input: {
-      appearance: 'none',
-      bottom: '0',
-      cursor: 'pointer',
-      left: '0',
-      opacity: '0',
-      position: 'absolute',
-      right: '0',
-      rounded: 'md',
-      top: '0',
-      ...focusStates,
     },
   },
 })

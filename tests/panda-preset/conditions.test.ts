@@ -35,7 +35,7 @@ describe('conditions', () => {
   })
 
   test('should have an isOver', () => {
-    expect(conditions.isOver).toEqual('&:is([data-over=true])')
+    expect(conditions.isOver).toEqual('&:is([data-over=true], [data-dragging])')
   })
 
   test('should have an isDropped', () => {

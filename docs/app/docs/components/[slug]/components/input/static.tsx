@@ -1,17 +1,19 @@
 import { Field, Input } from '@cerberus-design/react'
 import { Search } from '@carbon/icons-react'
-import { Box } from 'styled-system/jsx'
+import { VStack } from 'styled-system/jsx'
 
 export function SearchInputExample() {
   return (
-    <Box w="1/2">
-      <Field
-        ids={{
-          control: 'search-input-example',
-        }}
-      >
+    <VStack gap="md" w="1/2">
+      <Field>
         <Input startIcon={<Search />} placeholder="Search for anything" />
       </Field>
-    </Box>
+      <Field>
+        <Input endIcon={<Search />} placeholder="Search for anything" />
+      </Field>
+      <Field invalid>
+        <Input endIcon={<Search />} placeholder="Search for anything" />
+      </Field>
+    </VStack>
   )
 }

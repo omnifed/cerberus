@@ -23,6 +23,7 @@ import {
   DialogHeading,
   DialogProvider,
   type OpenChangeDetails,
+  type DialogRootProps,
 } from '../components/dialog'
 import { useCerberusContext } from './cerberus'
 
@@ -89,7 +90,7 @@ export interface ConfirmModalValue {
 
 const ConfirmModalContext = createContext<ConfirmModalValue | null>(null)
 
-export type ConfirmModalProviderProps = PropsWithChildren<unknown>
+export type ConfirmModalProviderProps = PropsWithChildren<DialogRootProps>
 
 /**
  * Provides a confirm modal to the app.
@@ -119,9 +120,12 @@ export type ConfirmModalProviderProps = PropsWithChildren<unknown>
 export function ConfirmModal(
   props: PropsWithChildren<ConfirmModalProviderProps>,
 ) {
+  const { children, ...rootProps } = props
   const [open, setOpen] = useState<boolean>(false)
   const [content, setContent] = useState<ShowConfirmModalOptions | null>(null)
+
   const resolveRef = useRef<ShowResult>(null)
+
   const showAvatar = content?.showAvatar ?? true
   const kind = content?.kind ?? 'non-destructive'
 
@@ -176,13 +180,14 @@ export function ConfirmModal(
 
   return (
     <ConfirmModalContext.Provider value={value}>
-      {props.children}
+      {children}
 
       <DialogProvider
         lazyMount
         open={open}
         onOpenChange={handleOpenChange}
         unmountOnExit
+        {...rootProps}
       >
         <Dialog
           size="sm"

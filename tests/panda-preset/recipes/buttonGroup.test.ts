@@ -38,6 +38,7 @@ describe('buttonGroup recipe', () => {
         },
       },
       shape: {
+        default: {},
         sharp: {},
         rounded: {},
       },

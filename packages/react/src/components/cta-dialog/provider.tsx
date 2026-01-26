@@ -19,7 +19,8 @@ import {
   DialogDescription,
   DialogHeading,
   DialogProvider,
-} from '../dialog'
+  DialogRootProps,
+} from '../dialog/index'
 import { DialogCloseIconTrigger } from '../dialog/close-icon-trigger'
 import type { CTAButtonAction, CTAModalActionReturn } from './utils'
 import {
@@ -66,9 +67,12 @@ import { TriggerItem } from './trigger-item'
  * }, [cta])
  * ```
  */
-export function CTAModal(props: PropsWithChildren<object>) {
+export function CTAModal(props: PropsWithChildren<DialogRootProps>) {
+  const { children, ...rootProps } = props
+
   const [open, setOpen] = useState<boolean>(false)
   const [content, setContent] = useState<ShowCTAModalOptions | null>(null)
+
   const confirmIcon = content?.icon
 
   const { icons } = useCerberusContext()
@@ -102,13 +106,14 @@ export function CTAModal(props: PropsWithChildren<object>) {
 
   return (
     <CTAModalContext.Provider value={value}>
-      {props.children}
+      {children}
 
       <DialogProvider
         lazyMount
         open={open}
         onOpenChange={(e) => setOpen(e.open)}
         unmountOnExit
+        {...rootProps}
       >
         <Dialog
           size="sm"

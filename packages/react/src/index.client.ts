@@ -7,6 +7,8 @@ export {
   useAccordion,
   DialogRootProvider,
   useDialog,
+  FileUploadRootProvider,
+  useFileUpload,
   // utilities
   ClientOnly,
   DownloadTrigger,

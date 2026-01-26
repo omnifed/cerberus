@@ -6,14 +6,16 @@ import {
   type HTMLAttributes,
   type MouseEvent,
 } from 'react'
-import { fileStatus, type FileStatusVariantProps } from 'styled-system/recipes'
+import { VStack } from 'styled-system/jsx'
 import { css, cx } from 'styled-system/css'
-import { hstack, vstack } from 'styled-system/patterns'
+import { hstack } from 'styled-system/patterns'
+import { fileStatus, type FileStatusVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
-import { ProgressBar, type ProgressBarProps } from '../progress/index'
-import { IconButton } from '../icon-button/index'
 import { Avatar } from '../avatar/avatar'
 import { Field, FieldHelperText } from '../field/index'
+import { IconButton } from '../icon-button/index'
+import { ProgressBar, type ProgressBarProps } from '../progress/index'
+import { Text } from '../text/index'
 
 /**
  * This module contains the FileStatus component.
@@ -34,8 +36,10 @@ export type FileStatusKey = (typeof processStatus)[keyof typeof processStatus]
  * The actions that can be performed on a file.
  */
 export type FileStatusActions = 'cancel' | 'retry' | 'delete'
-export interface FileBaseStatusProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
+export interface FileBaseStatusProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  'onClick'
+> {
   /**
    * A unique identifier for the file status. Required for accessibility.
    */
@@ -130,21 +134,10 @@ export function FileStatus(props: FileStatusProps) {
         fallback={<MatchFileStatusIcon size={24} status={status} />}
       />
 
-      <div
-        className={vstack({
-          alignItems: 'flex-start',
-          gap: '0.12rem',
-          w: 'full',
-        })}
-      >
-        <small
-          className={css({
-            color: 'page.text.initial',
-            textStyle: 'label-sm',
-          })}
-        >
+      <VStack alignItems="flex-start" gap="0.12rem" w="full">
+        <Text as="small" color="page.text.initial" textStyle="label-sm">
           {file}
-        </small>
+        </Text>
         <ProgressBar
           id={props.id}
           label="File upload status"
@@ -161,7 +154,7 @@ export function FileStatus(props: FileStatusProps) {
             <MatchFileStatusText status={status} now={now} />
           </FieldHelperText>
         </Field>
-      </div>
+      </VStack>
 
       <IconButton
         ariaLabel={actionLabel}
