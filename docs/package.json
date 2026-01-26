@@ -27,7 +27,7 @@
     "@cerberus/preset-acheron-theme": "workspace:*",
     "@cerberus/preset-cerberus-theme": "workspace:*",
     "@cerberus/preset-elysium-theme": "workspace:*",
-    "@csstools/postcss-cascade-layers": "^5.0.2",
+    "@csstools/postcss-cascade-layers": "^6.0.0",
     "@expressive-code/plugin-line-numbers": "^0.41.6",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
