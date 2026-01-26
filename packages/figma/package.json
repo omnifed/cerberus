@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/figma",
-  "version": "0.26.0-rc.1",
+  "version": "0.25.1-rc.1",
   "description": "Figma helpers for syncing to your project.",
   "sideEffects": false,
   "type": "module",
