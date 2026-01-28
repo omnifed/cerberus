@@ -72,7 +72,7 @@ const gradient: CustomUtilityConfig<'gradient'> = {
       }
 
       return {
-        backgroundImage: `linear-gradient(to right, ${token(`colors.gradient.${value}.start`)}, ${token(`colors.gradient.${value}.end`)})`,
+        backgroundImage: `linear-gradient(to bottom left, ${token(`colors.gradient.${value}.start`)}, ${token(`colors.gradient.${value}.end`)})`,
         color: token(`colors.gradient.${value}.text`),
       }
     },

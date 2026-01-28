@@ -114,7 +114,7 @@ describe('gradientTokens', () => {
       formatSemanticToken`cerberus.teal.100`,
     )
     expect(gradientTokens.gradient['styx-dark'].text.value._lightMode).toEqual(
-      formatSemanticToken`cerberus.neutral.100`,
+      formatSemanticToken`cerberus.teal.100`,
     )
   })
 
