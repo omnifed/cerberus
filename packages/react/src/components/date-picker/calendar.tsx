@@ -1,4 +1,3 @@
-import type { RefObject } from 'react'
 import { splitProps } from '../../utils/index'
 import { DatePickerContent } from './content'
 import { DatePickerDayView } from './day-view'
@@ -16,10 +15,6 @@ export interface DatePickerCalendarProps {
    * @deprecated - this is no longer needed.
    */
   withModal?: boolean
-  /**
-   * @deprecated - this is no longer needed.
-   */
-  container?: RefObject<HTMLElement | null>
 }
 
 /**
@@ -40,7 +35,7 @@ export interface DatePickerCalendarProps {
 export function DatePickerCalendar(
   props: DatePickerCalendarProps & DatePickerContentProps,
 ) {
-  const [, contentProps] = splitProps(props, ['withModal', 'container'])
+  const [, contentProps] = splitProps(props, ['withModal'])
 
   return (
     <DatePickerContent {...contentProps}>
