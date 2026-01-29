@@ -29,11 +29,7 @@ export function SelectBasicPreview(props: Omit<SelectProps, 'collection'>) {
   return (
     <Box w="1/2">
       <Field label="Select Relative">
-        <Select
-          collection={collection}
-          container={props.container}
-          placeholder="Choose option"
-        >
+        <Select collection={collection} placeholder="Choose option">
           <For each={collection.items}>
             {(item) => <Option key={item.value} item={item} />}
           </For>
