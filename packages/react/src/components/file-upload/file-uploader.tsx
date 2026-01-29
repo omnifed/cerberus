@@ -39,7 +39,7 @@ export function FileUploader(props: PropsWithChildren<FileUploaderProps>) {
           <Avatar gradient="charon-light" fallback={<Icon />} />
         </FileUploadParts.Icon>
 
-        <FileUploadParts.Label>
+        <FileUploadParts.Content>
           <Show when={elProps.heading}>
             <FileUploadParts.Heading>{elProps.heading}</FileUploadParts.Heading>
           </Show>
@@ -47,7 +47,7 @@ export function FileUploader(props: PropsWithChildren<FileUploaderProps>) {
           <FileUploadParts.Description>
             Drag and drop files or click to upload
           </FileUploadParts.Description>
-        </FileUploadParts.Label>
+        </FileUploadParts.Content>
       </FileUploadParts.Dropzone>
 
       <Show when={showPreview} fallback={<>{props.children}</>}>
