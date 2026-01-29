@@ -10,14 +10,13 @@ import {
   OptionGroupLabel,
   createSelectCollection,
   Portal,
-  type SelectProps,
 } from '@cerberus-design/react'
 import { css, cx } from 'styled-system/css'
 import { hstack } from 'styled-system/patterns'
 import { Box } from 'styled-system/jsx'
 import { ChevronDownOutline } from '@carbon/icons-react'
 
-export function SelectBasicPreview(props: Omit<SelectProps, 'collection'>) {
+export function SelectBasicPreview() {
   const collection = createSelectCollection([
     { label: 'Hades', value: 'hades' },
     { label: 'Persephone', value: 'persephone' },
