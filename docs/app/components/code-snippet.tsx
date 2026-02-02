@@ -1,5 +1,5 @@
-import { cerberus } from '@cerberus-design/react'
 import { PropsWithChildren } from 'react'
+import { CollapsibleCode } from './code-preview/collapsible-code'
 import { getCodeString } from './code-preview/helpers'
 
 interface Props {
@@ -8,5 +8,5 @@ interface Props {
 
 export async function CodeSnippet(props: PropsWithChildren<Props>) {
   const content = await getCodeString(props.snippet)
-  return <cerberus.div dangerouslySetInnerHTML={{ __html: content }} />
+  return <CollapsibleCode code={content} />
 }
