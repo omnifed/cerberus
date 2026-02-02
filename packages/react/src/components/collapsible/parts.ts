@@ -1,5 +1,6 @@
 import type { ElementType } from 'react'
 import {
+  CollapsibleRootProvider,
   CollapsibleRoot,
   CollapsibleTrigger,
   CollapsibleIndicator,
@@ -12,6 +13,10 @@ import {
  */
 
 interface CollapsiblePartsValue {
+  /**
+   * The low-level context provider for advanced scenarios
+   */
+  RootProvider: ElementType
   /**
    * The context provider of the collapsible.
    */
@@ -40,6 +45,7 @@ interface CollapsiblePartsValue {
  * the entire family of components vs. only what you use.
  */
 export const Collapsible: CollapsiblePartsValue = {
+  RootProvider: CollapsibleRootProvider,
   Root: CollapsibleRoot,
   Trigger: CollapsibleTrigger,
   Indicator: CollapsibleIndicator,

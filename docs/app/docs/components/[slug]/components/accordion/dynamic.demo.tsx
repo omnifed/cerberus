@@ -1,7 +1,7 @@
 import { AccordionItemGroup, Accordion } from '@cerberus-design/react'
 import { Box } from 'styled-system/jsx'
 
-export async function DynamicAccordion() {
+export async function DynamicAccordionDemo() {
   return (
     <Box w="2/3">
       <Accordion>
