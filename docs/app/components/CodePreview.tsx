@@ -1,17 +1,24 @@
 import { type PropsWithChildren, type ReactNode } from 'react'
 import { Collapsible } from '@cerberus-design/react'
-import { HStack, VStack } from 'styled-system/jsx'
+import { Box, HStack, VStack } from 'styled-system/jsx'
 import { CollapsibleCode } from './code-preview/collapsible-code'
 import { CollapsibleProvider } from './code-preview/collapsible-provider.client'
+import { getExampleCode } from './code-preview/helpers'
+import { CopyButton } from './copy-button'
 
 interface CodePreviewProps {
   id: string
   preview: ReactNode | string
 }
 
-export default function CodePreview(
+export default async function CodePreview(
   props: PropsWithChildren<CodePreviewProps>,
 ) {
+  const { code, preview, fallback, rawContent } = await getExampleCode(
+    props.id,
+    props.children,
+  )
+
   return (
     <VStack
       border="1px solid"
@@ -22,12 +29,22 @@ export default function CodePreview(
       w="full"
     >
       <HStack justify="center" py="md" w="full">
-        {props.preview}
+        {preview ?? props.preview}
       </HStack>
 
       <CollapsibleProvider>
-        <Collapsible.Content>
-          <CollapsibleCode id={props.id}>{props.children}</CollapsibleCode>
+        <Collapsible.Content pos="relative">
+          <Box
+            left="calc(100% - 2rem)"
+            pos="sticky"
+            top="8"
+            w="fit-content"
+            zIndex="sticky"
+          >
+            <CopyButton content={rawContent} />
+          </Box>
+
+          <CollapsibleCode code={code} fallback={fallback} />
         </Collapsible.Content>
       </CollapsibleProvider>
     </VStack>

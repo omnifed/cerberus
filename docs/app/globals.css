@@ -21,3 +21,30 @@
   font-family: var(--font-mono);
   font-size: 0.8rem;
 }
+
+.shiki code {
+  display: block;
+  padding-block: 1rem;
+  padding-inline: 2rem;
+  width: 100%;
+}
+
+.shiki .indent {
+  display: inline-block;
+  position: relative;
+  left: var(--indent-offset);
+}
+
+.shiki .indent:empty {
+  height: 1lh;
+  vertical-align: bottom;
+}
+
+.shiki .indent::before {
+  content: '';
+  position: absolute;
+  opacity: 0.15;
+  width: 1px;
+  height: 100%;
+  background-color: currentColor;
+}
