@@ -20,4 +20,5 @@ export const DEMOS = {
     id: 'accordion.custom',
     preview: <CustomDemo />,
   },
+  meta: `import { Accordion, AccordionItemGroup } from '@cerberus/react'`,
 }
