@@ -1,87 +1,35 @@
-'use client'
-
-import { useState, type PropsWithChildren, type ReactNode } from 'react'
-import { Button, Show } from '@cerberus-design/react'
-import { Code, CodeHide } from '@carbon/icons-react'
-import { hstack, vstack } from 'styled-system/patterns'
+import { type PropsWithChildren, type ReactNode } from 'react'
+import { Collapsible } from '@cerberus-design/react'
+import { HStack, VStack } from 'styled-system/jsx'
+import { CollapsibleCode } from './code-preview/collapsible-code'
+import { CollapsibleProvider } from './code-preview/collapsible-provider.client'
 
 interface CodePreviewProps {
-  preview: ReactNode
+  id: string
+  preview: ReactNode | string
 }
 
 export default function CodePreview(
   props: PropsWithChildren<CodePreviewProps>,
 ) {
-  const [viewCode, setViewCode] = useState<boolean>(false)
-
-  function handleShowCode() {
-    setViewCode(true)
-  }
-
-  function handleHideCode() {
-    setViewCode(false)
-  }
-
   return (
-    <Show
-      when={viewCode}
-      fallback={
-        <PreviewLayout onShowCode={props.children ? handleShowCode : undefined}>
-          {props.preview}
-        </PreviewLayout>
-      }
+    <VStack
+      border="1px solid"
+      borderColor="page.border.initial"
+      gap="0"
+      rounded="lg"
+      shadow="md"
+      w="full"
     >
-      <header
-        className={hstack({
-          justifyContent: 'flex-end',
-          py: '4',
-        })}
-      >
-        <Button onClick={handleHideCode} usage="ghost" type="button">
-          Hide code
-          <CodeHide aria-hidden size="1.5rem" />
-        </Button>
-      </header>
-      {props.children}
-    </Show>
-  )
-}
+      <HStack justify="center" py="md" w="full">
+        {props.preview}
+      </HStack>
 
-interface PreviewLayoutProps {
-  onShowCode?: () => void
-}
-
-export function PreviewLayout(props: PropsWithChildren<PreviewLayoutProps>) {
-  return (
-    <div>
-      <header
-        className={hstack({
-          justifyContent: 'flex-end',
-          py: '4',
-        })}
-      >
-        <Show when={Boolean(props.onShowCode)}>
-          <Button onClick={props.onShowCode} usage="ghost" type="button">
-            Show code
-            <Code aria-hidden size="1.5rem" />
-          </Button>
-        </Show>
-      </header>
-      <section
-        className={vstack({
-          bgColor: 'page.surface.100',
-          border: '3px solid',
-          borderColor: 'info.border.initial',
-          borderRadius: 'xl',
-          justify: 'center',
-          mb: '4',
-          minH: '18.75rem',
-          position: 'relative',
-          py: '8',
-        })}
-      >
-        {props.children}
-      </section>
-    </div>
+      <CollapsibleProvider>
+        <Collapsible.Content>
+          <CollapsibleCode id={props.id}>{props.children}</CollapsibleCode>
+        </Collapsible.Content>
+      </CollapsibleProvider>
+    </VStack>
   )
 }
