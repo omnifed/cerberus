@@ -9,7 +9,7 @@
     "test:ci": "bun test --coverage"
   },
   "devDependencies": {
-    "@carbon/icons-react": "^11.71.0",
+    "@carbon/icons-react": "^11.74.0",
     "@cerberus-design/react": "workspace:*",
     "@cerberus/figma": "workspace:*",
     "@cerberus/panda-preset": "workspace:*",
