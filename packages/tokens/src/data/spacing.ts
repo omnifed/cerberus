@@ -47,7 +47,7 @@ export const tokens = {
     description: '',
     hiddenFromPublishing: false,
     valuesByMode: {},
-    scopes: ['TEXT_CONTENT', 'WIDTH_HEIGHT', 'GAP'],
+    scopes: ['WIDTH_HEIGHT', 'GAP'],
     codeSyntax: {},
   },
   '2xs': {
