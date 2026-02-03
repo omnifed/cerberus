@@ -4,108 +4,41 @@ description: Used to center its child within itself.
 panda: https://panda-css.com/docs/concepts/patterns#center
 ---
 
-```tsx
-import { Box, Center } from "styled-system/jsx";
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/center/static'
 
-const Demo = () => {
-  return (
-    <Center bg="page.surface.100" h="100px" maxW="320px">
-      <Box>This will be centered</Box>
-    </Center>
-  )
-}
-```
+<CodeSnippet snippet={DEMOS.meta} />
 
 ## Usage
 
-```tsx
-import { Center } from "styled-system/jsx";
-```
+The Center pattern is used to center the content of a container.
 
-```tsx
-<Center bg="tomato" h="100px" color="white">
-  This is the Center
-</Center>
-```
-
-## Examples
+<CodePreview {...DEMOS.basic} />
 
 ### Icon
 
 Center can be used to create frames around icons or numbers.
 
-```tsx
-import { Center, HStack } from "styled-system/jsx"
-import { Text } from "@cerberus/react"
-import { LuPhone } from "react-icons/lu"
-
-const Demo = () => {
-  return (
-    <HStack>
-      <Center w="40px" h="40px" bg="tomato" color="white">
-        <LuPhone />
-      </Center>
-
-      <Center w="40px" h="40px" bg="tomato" color="white">
-        <Text as="span" fontWeight="bold" fontSize="lg">
-          1
-        </Text>
-      </Center>
-    </HStack>
-  )
-}
-```
+<CodePreview {...DEMOS.icon} />
 
 ### Center with Inline
 
 Use the `inline` to change the display to `inline-flex`.
 
-```tsx
-import { Center } from "styled-system/jsx"
-import { Text } from "@cerberus/react"
-
-const Demo = () => {
-  return (
-    <Center inline bg="page.surface.100" h="100px" maxW="320px">
-      <Text>This will be centered</Text>
-    </Center>
-  )
-}
-```
+<CodePreview {...DEMOS.inline} />
 
 ### Square
 
 `Square` centers its child given the `size` (width and height).
 
-```tsx
-import { Square } from "styled-system/jsx"
-import { LuPhoneForwarded } from "react-icons/lu"
-
-const Demo = () => {
-  return (
-    <Square size="10" bg="purple.700" color="white">
-      <LuPhoneForwarded />
-    </Square>
-  )
-}
-```
+<CodePreview {...DEMOS.square} />
 
 ### Circle
 
 `Circle` centers its child given the `size` and creates a circle around it.
 
-```tsx
-import { Circle } from "styled-system/jsx"
-import { LuPhoneForwarded } from "react-icons/lu"
-
-const Demo = () => {
-  return (
-    <Circle size="10" bg="purple.700" color="white">
-      <LuPhoneForwarded />
-    </Circle>
-  )
-}
-```
+<CodePreview {...DEMOS.circle} />
 
 ## Props
 
