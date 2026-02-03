@@ -6,117 +6,45 @@ description:
 panda: https://panda-css.com/docs/concepts/patterns#box
 ---
 
-import { NoteAdmonition } from "@/app/components/Admonition";
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/box/static'
 
-```tsx
-import { Box } from "styled-system/jsx";
-
-const Demo = () => {
-  return (
-    <Box bgColor="page.surface.100" color="white" padding="4"  width="full" >
-      This is the Box
-    </Box>
-  )
-}
-```
+<CodeSnippet snippet={DEMOS.meta} />
 
 ## Usage
 
-The `Box` component provides an easy way to write styles with ease. It provides
-access to design tokens and an unmatched DX when writing responsive styles.
+The Box pattern does not contain any additional styles. With its function form 
+it's the equivalent of the css function. It can be useful with its JSX form and 
+is the equivalent of a styled.div component, serving mostly to get style props 
+available in JSX.
 
-```tsx
-import { Box } from "styled-system/jsx";
-```
-
-```tsx
-<Box />
-```
-
-## Examples
+<CodePreview {...DEMOS.basic} />
 
 ### Shorthand
 
 Use shorthand like `bgColor` instead of `backgroundColor`, `m` instead of `margin`, etc.
 
-```tsx
-import { Box } from "styled-system/jsx";
-
-const Demo = () => {
-  return (
-    <Box
-      bgColor="page.surface.100"
-      color="page.text.100"
-      m="md"
-      p="md"
-      w="full"
-    >
-      This is the Box
-    </Box>
-  )
-}
-```
+<CodePreview {...DEMOS.shorthand} />
 
 ### Pseudo Props
 
 Use pseudo props like `_hover` to apply styles on hover, `_focus` to apply
 styles on focus, etc.
 
-```tsx
-import { Box } from "styled-system/jsx";
-
-const Demo = () => {
-  return (
-    <Box bg="tomato" w="100%" p="4" color="white" _hover={{ bg: "green" }}>
-      This is the Box
-    </Box>
-  )
-}
-```
+<CodePreview {...DEMOS.pseudo} />
 
 ### Border
 
 Use the `border` and `borderColor` prop to apply border styles.
 
-```tsx
-import { Box } from "styled-system/jsx";
-
-const Demo = () => {
-  return (
-    <Box
-      border="1px solid"
-      borderColor="page.border.initial"
-      color="page.text.100"
-      p="4"
-    >
-      Box with a border
-    </Box>
-  )
-}
-
-```
+<CodePreview {...DEMOS.border} />
 
 ### Shadow
 
 Use the `boxShadow` or `shadow` prop to apply shadow styles.
 
-```tsx
-import { Box } from "styled-system/jsx";
-
-const Demo = () => {
-  return (
-    <Box
-      bgColor="page.surface.100"
-      color="page.text.100"
-      p="4"
-      rounded="md"
-      shadow="md"
-    >
-      This is the Box with shadow
-    </Box>
-  )
-}
-```
+<CodePreview {...DEMOS.shadow} />
 
 ## Props
 
