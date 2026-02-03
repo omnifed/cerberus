@@ -28,8 +28,9 @@ export async function getExampleCode(
     join(process.cwd(), basePath, examplePath),
     'utf-8',
   ).catch(() => 'Example not found')
+  const formattedContent = content.replaceAll('@cerberus-design', '@cerberus')
 
-  const code = await codeToHtml(content, getShikiOptions('tsx'))
+  const code = await codeToHtml(formattedContent, getShikiOptions('tsx'))
 
   return { code, rawContent: content, preview: null }
 }

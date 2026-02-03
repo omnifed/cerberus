@@ -29,6 +29,13 @@
   width: 100%;
 }
 
+.shiki .highlighted-word {
+  border: 1px solid var(--cerberus-colors-page-border-initial);
+  padding: 1px 3px;
+  margin: -1px -3px;
+  border-radius: 4px;
+}
+
 .shiki .indent {
   display: inline-block;
   position: relative;

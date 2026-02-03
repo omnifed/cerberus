@@ -2,6 +2,7 @@ import {
   transformerNotationDiff,
   transformerMetaHighlight,
   transformerRenderIndentGuides,
+  transformerNotationWordHighlight,
 } from '@shikijs/transformers'
 import {
   BundledLanguage,
@@ -34,6 +35,7 @@ export function getShikiOptions(
     theme: cerbyTheme,
     transformers: [
       transformerNotationDiff(),
+      transformerNotationWordHighlight(),
       transformerMetaHighlight(),
       transformerRenderIndentGuides(),
     ],
