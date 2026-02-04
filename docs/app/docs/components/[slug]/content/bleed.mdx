@@ -4,100 +4,30 @@ description: Used to break an element from the boundaries of its container
 panda: https://panda-css.com/docs/concepts/patterns#bleed
 ---
 
-```tsx
-import { Bleed, Box, VStack } from "styled-system/jsx"
-import { Text } from "@cerberus/react"
-import { DecorativeBox } from "compositions/lib/decorative-box"
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/bleed/static'
 
-const Demo = () => {
-  return (
-    <Box padding="10" rounded="sm" borderWidth="1px">
-      <Bleed inline="10">
-        <DecorativeBox height="20">Bleed</DecorativeBox>
-      </Bleed>
-
-      <VStack mt="6">
-        <Text as="h1" size="md">Some Heading</Text>
-        <Text>This is some descriptive content of the heading.</Text>
-      </VStack>
-    </Box>
-  )
-}
-```
+<CodeSnippet snippet={DEMOS.meta} />
 
 ## Usage
 
-```tsx
-import { Bleed } from "styled-system/jsx";
-```
+The Bleed pattern is used to create a full width element by negating the padding 
+applied to its parent container.
 
-```tsx
-<Bleed>
-  <div />
-</Bleed>
-```
-
-## Examples
+<CodePreview {...DEMOS.basic} />
 
 ### Vertical
 
 Use the `block` prop to make the element bleed vertically.
 
-```tsx
-import { Bleed, Box } from "styled-system/jsx"
-import { DecorativeBox } from "compositions/lib/decorative-box"
-
-const Demo = () => {
-  return (
-    <Box padding="10" rounded="sm" borderWidth="1px">
-      <Bleed block="10">
-        <DecorativeBox height="20">Bleed</DecorativeBox>
-      </Bleed>
-    </Box>
-  )
-}
-```
+<CodePreview {...DEMOS.vertical} />
 
 ### Specific Direction
 
-Use the `inlineStart`, `inlineEnd`, `blockStart`, and `blockEnd` props to make
-the element bleed in a specific direction.
+Use the `inline` and `block` props to make the element bleed in a specific direction.
 
-```tsx
-import { Bleed, Box, VStack } from "styled-system/jsx"
-import { DecorativeBox } from "compositions/lib/decorative-box"
-
-const Demo = () => {
-  return (
-    <VStack gap="8">
-      <Box padding="8" rounded="sm" borderWidth="1px">
-        <Bleed inlineStart="8">
-          <DecorativeBox height="8">inlineStart</DecorativeBox>
-        </Bleed>
-      </Box>
-
-      <Box padding="8" rounded="sm" borderWidth="1px">
-        <Bleed inlineEnd="8">
-          <DecorativeBox height="8">inlineEnd</DecorativeBox>
-        </Bleed>
-      </Box>
-
-      <Box padding="8" rounded="sm" borderWidth="1px">
-        <Bleed blockStart="8">
-          <DecorativeBox height="8">blockStart</DecorativeBox>
-        </Bleed>
-      </Box>
-
-      <Box padding="8" rounded="sm" borderWidth="1px">
-        <Bleed blockEnd="8">
-          <DecorativeBox height="8">blockEnd</DecorativeBox>
-        </Bleed>
-      </Box>
-    </VStack>
-  )
-}
-
-```
+<CodePreview {...DEMOS.direction} />
 
 ## Props
 
@@ -105,7 +35,3 @@ const Demo = () => {
 |--------------|-------------|-------------------------------------------------|
 | `inline`     | `SystemStyleObject['marginInline']`     | The negative margin on the x-axis. |
 | `block`      | `SystemStyleObject['marginBlock']`    | The negative margin on the y-axis.  |
-| `inlineStart`| `SystemStyleObject['marginInlineStart']` | The negative margin on the inline start axis. |
-| `inlineEnd`  | `SystemStyleObject['marginInlineEnd']`   | The negative margin on the inline end axis.   |
-| `blockStart` | `SystemStyleObject['marginBlockStart']`  | The negative margin on the block start axis.  |
-| `blockEnd`   | `SystemStyleObject['marginBlockEnd']`    | The negative margin on the block end axis.    |

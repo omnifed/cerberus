@@ -1,5 +1,6 @@
 import {
   Collapsible,
+  type CollapsibleRootProviderProps as ArkCollapsibleProviderProps,
   type CollapsibleRootProps as ArkCollapsibleRootProps,
   type CollapsibleTriggerProps as ArkCollapsibleTriggerProps,
   type CollapsibleIndicatorProps as ArkCollapsibleIndicatorProps,
@@ -20,6 +21,11 @@ import {
  */
 
 const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(collapsible)
+
+// Provider
+
+export type CollapsibleProviderProps = ArkCollapsibleProviderProps
+export const CollapsibleRootProvider = withNoRecipe(Collapsible.RootProvider)
 
 // Root
 

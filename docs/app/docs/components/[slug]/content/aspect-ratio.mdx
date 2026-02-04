@@ -4,94 +4,40 @@ description: Used to embed responsive videos and maps, etc.
 panda: https://panda-css.com/docs/concepts/patterns#aspect-ratio
 ---
 
-import { AspectRatio } from "@/styled-system/jsx";
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/aspect-ratio/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
 
 ## Usage
 
-```jsx
-import { AspectRatio } from "styled-system/jsx";
-```
-
-```tsx
-<AspectRatio>
-  <iframe
-    title="naruto"
-    src="https://www.youtube.com/embed/QhBnZ6NPOY0"
-    allowFullScreen
-  />
-</AspectRatio>
-```
-
-## Examples
+<CodePreview {...DEMOS.basic} />
 
 ### Image
 
 Here's how to embed an image that has a 4 by 3 aspect ratio.
 
-```tsx
-import { AspectRatio } from "styled-system/jsx";
-
-const Demo = () => {
-  return (
-    <AspectRatio maxW="400px" ratio={4 / 3}>
-      <img src="https://bit.ly/naruto-sage" alt="naruto" />
-    </AspectRatio>
-  )
-}
-
-```
+<CodePreview {...DEMOS.img} />
 
 ### Video
 
 To embed a video with a specific aspect ratio, use an iframe with `src` pointing
 to the link of the video.
 
-```tsx
-import { AspectRatio } from "styled-system/jsx";
-
-const Demo = () => {
-  return (
-    <AspectRatio maxW="560px" ratio={1}>
-      <iframe
-        title="naruto"
-        src="https://www.youtube.com/embed/QhBnZ6NPOY0"
-        allowFullScreen
-      />
-    </AspectRatio>
-  )
-}
-```
+<CodePreview {...DEMOS.video} />
 
 ### Google Map
 
 Here's how to embed a responsive Google map using `AspectRatio`.
 
-```tsx
-import { AspectRatio } from "styled-system/jsx";
-
-const Demo = () => {
-  return (
-    <AspectRatio ratio={16 / 9}>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng" />
-    </AspectRatio>
-  )
-}
-```
+<CodePreview {...DEMOS.maps} />
 
 ### Responsive
 
 Here's an example of applying a responsive aspect ratio to a box.
 
-```tsx
-import { AspectRatio } from "styled-system/jsx"
-import { DecorativeBox } from "compositions/lib/decorative-box"
-
-export const AspectRatioResponsive = () => (
-  <AspectRatio maxWidth="300px" ratio={{ base: 1, md: 16 / 9 }}>
-    <DecorativeBox>Box</DecorativeBox>
-  </AspectRatio>
-)
-```
+<CodePreview {...DEMOS.responsive} />
 
 ## Props
 

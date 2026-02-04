@@ -5,6 +5,8 @@
 export {
   AccordionRootProvider,
   useAccordion,
+  useCollapsible,
+  useCollapsibleContext,
   DialogRootProvider,
   useDialog,
   FileUploadRootProvider,

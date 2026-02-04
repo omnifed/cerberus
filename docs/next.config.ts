@@ -76,9 +76,7 @@ const withMDX = createMDX({
         'rehype-expressive-code',
         {
           plugins: ['@expressive-code/plugin-line-numbers'],
-          styleOverrides: {
-            borderWidth: '3px',
-          },
+          styleOverrides: {},
           themes: [
             'min-light',
             'night-owl',

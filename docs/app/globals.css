@@ -7,75 +7,51 @@
   color: var(--cerberus-colors-page-text-inverse);
 }
 
-/* Code blocks */
+/* Expressive Code - mdx code-blocks */
 
-div.expressive-code {
-  padding-bottom: var(--cerberus-spacing-lg);
+:is(.expressive-code > .has-title > .header) {
+  position: sticky;
+  top: 0;
+  z-index: var(--cerberus-z-index-sticky);
 }
 
-/* Skiki CSS for React Code elements (i.e. not markdown) */
+/* Skiki CSS - React Code elements (i.e. not markdown) */
 
 .shiki {
-  border-radius: var(--cerberus-radii-md);
-  padding-bottom: var(--cerberus-spacing-md);
-  padding-inline: var(--cerberus-spacing-lg);
-  padding-top: var(--cerberus-spacing-md);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
 }
 
-.shiki span {
-  font-size: 13.6px !important;
+.shiki code {
+  display: block;
+  padding-block: 1rem;
+  padding-inline: 2rem;
+  width: 100%;
 }
 
-[data-theme='min-light'] .shiki,
-[data-theme='min-light'] .shiki span {
-  background-color: var(--shiki-min-light-bg) !important;
-  color: var(--shiki-min-light) !important;
-  font-style: var(--shiki-min-light-font-style) !important;
-  font-weight: var(--shiki-min-light-font-weight) !important;
-  text-decoration: var(--shiki-min-light-text-decoration) !important;
+.shiki .highlighted-word {
+  border: 1px solid var(--cerberus-colors-page-border-initial);
+  padding: 1px 3px;
+  margin: -1px -3px;
+  border-radius: 4px;
 }
 
-[data-theme='night-owl'] .shiki,
-[data-theme='night-owl'] .shiki span {
-  background-color: var(--shiki-night-owl-bg) !important;
-  color: var(--shiki-night-owl) !important;
-  font-style: var(--shiki-night-owl-font-style) !important;
-  font-weight: var(--shiki-night-owl-font-weight) !important;
-  text-decoration: var(--shiki-night-owl-text-decoration) !important;
+.shiki .indent {
+  display: inline-block;
+  position: relative;
+  left: var(--indent-offset);
 }
 
-[data-theme='everforest-light'] .shiki,
-[data-theme='everforest-light'] .shiki span {
-  background-color: var(--shiki-everforest-light-bg) !important;
-  color: var(--shiki-everforest-light) !important;
-  font-style: var(--shiki-everforest-light-font-style) !important;
-  font-weight: var(--shiki-everforest-light-font-weight) !important;
-  text-decoration: var(--shiki-everforest-light-text-decoration) !important;
+.shiki .indent:empty {
+  height: 1lh;
+  vertical-align: bottom;
 }
 
-[data-theme='everforest-dark'] .shiki,
-[data-theme='everforest-dark'] .shiki span {
-  background-color: var(--shiki-everforest-dark-bg) !important;
-  color: var(--shiki-everforest-dark) !important;
-  font-style: var(--shiki-everforest-dark-font-style) !important;
-  font-weight: var(--shiki-everforest-dark-font-weight) !important;
-  text-decoration: var(--shiki-everforest-dark-text-decoration) !important;
-}
-
-[data-theme='vitesse-light'] .shiki,
-[data-theme='vitesse-light'] .shiki span {
-  background-color: var(--shiki-vitesse-light-bg) !important;
-  color: var(--shiki-vitesse-light) !important;
-  font-style: var(--shiki-vitesse-light-font-style) !important;
-  font-weight: var(--shiki-vitesse-light-font-weight) !important;
-  text-decoration: var(--shiki-vitesse-light-text-decoration) !important;
-}
-
-[data-theme='vitesse-black'] .shiki,
-[data-theme='vitesse-black'] .shiki span {
-  background-color: var(--shiki-vitesse-black-bg) !important;
-  color: var(--shiki-vitesse-black) !important;
-  font-style: var(--shiki-vitesse-black-font-style) !important;
-  font-weight: var(--shiki-vitesse-black-font-weight) !important;
-  text-decoration: var(--shiki-vitesse-black-text-decoration) !important;
+.shiki .indent::before {
+  content: '';
+  position: absolute;
+  opacity: 0.15;
+  width: 1px;
+  height: 100%;
+  background-color: currentColor;
 }

@@ -1,10 +1,9 @@
 import { cerberus, HStack } from 'styled-system/jsx'
 import { Terminal } from '@carbon/icons-react'
 import { Show } from '@cerberus-design/react'
-import { getShikiOptions } from '@/lib/shiki'
 import { css } from 'styled-system/css'
-import { codeToHtml } from 'shiki'
 import { CopyButton } from './copy-button'
+import { getCodeString } from './code-preview/helpers'
 
 interface CodeBlockProps {
   content: string
@@ -12,10 +11,7 @@ interface CodeBlockProps {
 }
 
 export async function CodeBlock(props: CodeBlockProps) {
-  const out = await codeToHtml(
-    props.content,
-    getShikiOptions(props.language ?? ''),
-  )
+  const out = await getCodeString(props.content)
 
   return (
     <cerberus.div my="md">
