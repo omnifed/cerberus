@@ -13,6 +13,7 @@ import {
   FileUploadItemName,
   FileUploadItemSizeText,
   FileUploadItemDeleteTrigger,
+  FileUploadContent,
   FileUploadIcon,
   FileUploadHiddenInput,
   FileUploadHeading,
@@ -82,6 +83,10 @@ interface FileUploadPartsValue {
    */
   Context: ElementType
   /**
+   * The content container of the dropzone.
+   */
+  Content: ElementType
+  /**
    * The icon of the uploader.
    */
   Icon: ElementType
@@ -120,6 +125,7 @@ export const FileUploadParts: FileUploadPartsValue = {
   ItemDeleteTrigger: FileUploadItemDeleteTrigger,
   HiddenInput: FileUploadHiddenInput,
   // custom cerby primitives
+  Content: FileUploadContent,
   Icon: FileUploadIcon,
   Heading: FileUploadHeading,
   Description: FileUploadDescription,

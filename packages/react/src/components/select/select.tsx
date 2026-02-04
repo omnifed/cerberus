@@ -5,7 +5,6 @@ import { useCerberusContext } from '../../context/cerberus'
 import { splitProps } from '../../utils/index'
 import { Show } from '../show/index'
 import { SelectParts } from './parts'
-import type { RefObject } from 'react'
 import type { SelectRootProps } from './primitives'
 
 /**
@@ -40,10 +39,6 @@ export interface SelectProps extends Omit<SelectRootProps, 'container'> {
    * The placeholder text when no option is selected.
    */
   placeholder?: string
-  /**
-   * @deprecated - this is no longer needed
-   */
-  container?: RefObject<HTMLElement | null>
 }
 
 /**

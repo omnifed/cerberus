@@ -134,6 +134,11 @@ export type FileUploadContextProps =
   CerberusPrimitiveProps<ArkFileUploadContextProps>
 export const FileUploadContext = withNoRecipe(FileUpload.Context)
 
+// Content
+
+export type FileUploadContentProps = CerberusPrimitiveProps<HTMLDivElement>
+export const FileUploadContent = withSlotRecipe('div', 'label')
+
 // Icon
 
 export type FileUploadIconProps = CerberusPrimitiveProps<HTMLDivElement>

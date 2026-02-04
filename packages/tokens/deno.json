@@ -1,5 +1,5 @@
 {
   "name": "@cerberus/tokens",
-  "version": "0.25.1",
+  "version": "0.25.2",
   "exports": "./src/index.ts"
 }
