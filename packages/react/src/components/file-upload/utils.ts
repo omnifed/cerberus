@@ -16,5 +16,5 @@ export function formatFileTypes(accept: FileUploadRootProps['accept']): string {
     return accept.split(',').join(', ')
   }
 
-  return 'any file'
+  return 'any'
 }
