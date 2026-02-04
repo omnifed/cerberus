@@ -45,4 +45,18 @@ describe('FileUploader', () => {
     ).toBeInTheDocument()
     expect(screen.getByText(/custom preview/i)).toBeInTheDocument()
   })
+
+  test('should show proper grammer if no accept given', () => {
+    render(
+      <CerberusProvider config={config}>
+        <FileUploader heading="Upload Files" name="basic-example" />
+      </CerberusProvider>,
+    )
+
+    expect(screen.getByText(/upload files/i)).toBeInTheDocument()
+    expect(screen.getByText(/import any file/i)).toBeInTheDocument()
+    expect(
+      screen.getByText(/Drag and drop files or click to upload/i),
+    ).toBeInTheDocument()
+  })
 })
