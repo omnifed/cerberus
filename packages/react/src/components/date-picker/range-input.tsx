@@ -21,7 +21,7 @@ export function RangePickerInput(props: RangePickerInputProps) {
       <DatePickerParts.Input
         {...props}
         data-range-input
-        placeholder={props.placeholder ?? 'MM DD YYYY'}
+        placeholder={props.placeholder ?? 'MM/DD/YYYY'}
         maxLength={11}
         index={0}
       />
@@ -29,7 +29,7 @@ export function RangePickerInput(props: RangePickerInputProps) {
         {...props}
         data-range-input
         data-range-end-input
-        placeholder={props.placeholder ?? 'MM DD YYYY'}
+        placeholder={props.placeholder ?? 'MM/DD/YYYY'}
         maxLength={11}
         index={1}
       />

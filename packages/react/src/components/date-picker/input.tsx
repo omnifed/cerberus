@@ -19,7 +19,7 @@ export function DatePickerInput(props: DatePickerInputElProps) {
       <DatePickerParts.Input
         {...props}
         maxLength={11}
-        placeholder={props.placeholder ?? 'MM DD YYYY'}
+        placeholder={props.placeholder ?? 'MM/DD/YYYY'}
       />
     </DatePickerParts.Control>
   )
