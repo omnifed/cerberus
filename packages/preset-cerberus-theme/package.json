@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/preset-cerberus-theme",
-  "version": "0.25.3-rc.1",
+  "version": "0.25.3",
   "description": "The official Cerberus theme preset for the Cerberus design system",
   "browserslist": "> 0.25%, not dead",
   "sideEffects": false,
