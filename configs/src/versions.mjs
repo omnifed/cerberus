@@ -1,4 +1,4 @@
-export const version = '0.25.2'
+export const version = '0.25.3-rc.1'
 export const nextTag = 'next'
 
 // Order matters
