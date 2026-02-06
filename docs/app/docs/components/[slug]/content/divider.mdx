@@ -4,90 +4,51 @@ description: Used to create visual separation between content.
 panda: https://panda-css.com/docs/concepts/patterns#divider
 ---
 
-```tsx
-import { Divider, Box, HStack } from "styled-system/jsx";
-import { DecorativeBox } from "compositions/lib/decorative-box";
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/divider/static'
 
-const Demo = () => {
-  return (
-    <HStack gap="md">
-      <DecorativeBox height="20">Left</DecorativeBox>
-      <Divider />
-      <DecorativeBox height="20">Right</DecorativeBox>
-    </HStack>
-  );
-};
-```
+<CodeSnippet snippet={DEMOS.meta} />
 
 ## Usage
 
-```tsx
-import { Divider } from "styled-system/jsx";
-```
+Used to visually separate content.
 
-```tsx
-<Divider />
-```
+<CodePreview {...DEMOS.basic} />
 
-## Examples
+## Appearance
+
+To change the appearance of the divider, use the `borderStyle` prop.
+
+<CodePreview {...DEMOS.appearance} />
 
 ### Orientation
 
 Use the `orientation` prop to change the orientation of the divider.
 
-```tsx
-import { Divider, VStack } from "styled-system/jsx";
-import { DecorativeBox } from "compositions/lib/decorative-box";
-
-const Demo = () => {
-  return (
-    <VStack gap="8">
-      <Divider orientation="horizontal" />
-      <Divider orientation="vertical" />
-    </VStack>
-  );
-};
-```
+<CodePreview {...DEMOS.orientation} />
 
 ### Thickness
 
 Use the `thickness` prop to change the thickness of the divider.
 
-```tsx
-import { Divider, VStack } from "styled-system/jsx";
-import { DecorativeBox } from "compositions/lib/decorative-box";
-
-const Demo = () => {
-  return (
-    <VStack gap="8">
-      <Divider thickness="1px" />
-      <Divider thickness="2px" />
-      <Divider thickness="4px" />
-    </VStack>
-  );
-};
-```
+<CodePreview {...DEMOS.thickness} />
 
 ### Color
 
 Use the `color` prop to change the color of the divider.
 
-```tsx
-import { Divider, VStack } from "styled-system/jsx";
-import { DecorativeBox } from "compositions/lib/decorative-box";
+<CodePreview {...DEMOS.color} />
 
-const Demo = () => {
-  return (
-    <VStack gap="8">
-      <Divider color="gray.200" />
-      <Divider color="blue.500" />
-      <Divider color="red.500" />
-    </VStack>
-  );
-};
-```
+## Label
+
+Create visual labels by combining a `Divider` with other layout components.
+
+<CodePreview {...DEMOS.label} />
 
 ## Props
+
+The `Divider` accepts any style prop in addition to the following:
 
 | Prop         | Type        | Description                                     |
 |--------------|-------------|-------------------------------------------------|
