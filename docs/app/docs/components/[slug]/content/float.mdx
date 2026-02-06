@@ -4,166 +4,56 @@ description: Used to anchor an element to the edge of a container.
 panda: https://panda-css.com/docs/concepts/patterns#float
 ---
 
-```tsx
-import { Box, Circle, Float } from "styled-system/jsx";
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/float/static'
 
-export const FloatBasic = () => (
-  <Box
-    bgColor="page.surface.initial"
-    h="80px"
-    pos="relative"
-    w="80px"
-  >
-    <Float>
-      <Circle size="5" bg="danger.surface.initial" color="danger.text.initial">
-        3
-      </Circle>
-    </Float>
-  </Box>
-)
-```
+<CodeSnippet snippet={DEMOS.meta} />
 
 ## Usage
 
-Float requires a parent element with `position: relative` style applied.
+Used to anchor an element to the edge of a container.
 
-```tsx
-import { Box, Float } from "styled-system/jsx";
-```
-
-```tsx
-<Box position="relative">
-  <Float>
-    <div />
-  </Float>
-</Box>
-```
-
-## Examples
+<CodePreview {...DEMOS.basic} />
 
 ### Placement
 
 Use the `placement` prop to position the element along the edges of the
 container.
 
-```tsx
-import { Box, Circle, Float, HStack, VStack } from "styled-system/jsx";
-import { For } from "@cerberus/react";
-
-export const FloatWithPlacements = () => (
-  <HStack gap="xl" wrap="wrap">
-    <For each={placements}>
-      {(placement) => (
-        <VStack key={placement} gap="3">
-          <p>{placement}</p>
-          <Box
-            bgColor="page.surface.100"
-            position="relative"
-            height="80px"
-            width="80px"
-          >
-            <Float placement={placement}>
-              <Circle size="5" bg="red" color="white">
-                3
-              </Circle>
-            </Float>
-          </Box>
-        </VStack>
-      )}
-    </For>
-  </HStack>
-)
-
-const placements = [
-  "bottom-end",
-  "bottom-start",
-  "top-end",
-  "top-start",
-  "bottom-center",
-  "top-center",
-  "middle-center",
-  "middle-end",
-  "middle-start",
-] as const
-```
+<CodePreview {...DEMOS.placements} />
 
 ### Offset X
 
 Use the `offsetX` prop to offset the element along the x-axis.
 
-```tsx
-import { Box, Circle, Float } from "styled-system/jsx";
-
-export const FloatWithOffsetX = () => (
-  <Box position="relative" w="80px" h="80px" bg="page.bg.initial">
-    <Float offsetX="-4">
-      <Circle size="5" bg="red" color="white">
-        3
-      </Circle>
-    </Float>
-  </Box>
-)
-```
+<CodePreview {...DEMOS.offsetX} />
 
 ### Offset Y
 
 Use the `offsetY` prop to offset the element along the y-axis.
 
-```tsx
-import { Box, Circle, Float } from "styled-system/jsx";
-
-export const FloatWithOffsetY = () => (
-  <Box position="relative" w="80px" h="80px" bg="page.bg.initial">
-    <Float offsetY="-4">
-      <Circle size="5" bg="red" color="white">
-        3
-      </Circle>
-    </Float>
-  </Box>
-)
-```
+<CodePreview {...DEMOS.offsetY} />
 
 ### Offset
 
 Use the `offset` prop to offset the element along both axes.
 
-```tsx
-import { Box, Circle, Float } from "styled-system/jsx";
-
-export const FloatWithOffset = () => (
-  <Box position="relative" w="80px" h="80px" bg="page.bg.initial">
-    <Float offset="-4">
-      <Circle size="5" bg="red" color="white">
-        3
-      </Circle>
-    </Float>
-  </Box>
-)
-```
+<CodePreview {...DEMOS.offset} />
 
 ### Avatar
 
 Here's an example of composing a `Float` component with an `Avatar` component.
 
-```tsx
-import { Box, Float } from "styled-system/jsx";
-import { Avatar } from "@cerberus/react";
-
-export const FloatWithAvatar = () => (
-  <Box position="relative" w="80px" h="80px" bg="page.bg.initial">
-    <Float>
-      <Avatar
-        src="https://avatars.githubusercontent.com/u/12345678?v=4"
-      />
-    </Float>
-  </Box>
-)
-```
+<CodePreview {...DEMOS.avatar} />
 
 ## Props
+
+The `Float` component accepts any style properties along with the following props:
 
 | Prop        | Type                | Description                                                                 |
 |-------------|---------------------|-----------------------------------------------------------------------------|
 | `placement` | `SystemStyleObject['float']` | The placement of the float element relative to its parent.                |
 | `offsetX`   | `SystemStyleObject['marginInline']` | The offset along the x-axis.                                               |
-| `offsetY`   | `SystemStyleObject['marginBlock']`  | The offset along the y-axis.                                               |
+| `offsetY`   | `SystemStyleObject['marginBlock']`  | The offset along the y-axis.                                                |
+| `offset`    | `SystemStyleObject['margin']`       | The offset along both axes.                                                 |
