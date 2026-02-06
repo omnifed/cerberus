@@ -1,23 +1,17 @@
 'use client'
 
-import navData from '@/app/data/navLinks.json'
 import { version } from '@cerberus-design/configs'
 import { Tooltip } from '@cerberus-design/react'
-import { focusStates } from '@cerberus/panda-preset'
-import Link, { type LinkProps } from 'next/link'
-import { usePathname } from 'next/navigation'
 import { css } from 'styled-system/css'
 import { Center, GridItem } from 'styled-system/jsx'
 import { grid, gridItem, hstack } from 'styled-system/patterns'
-import { INLINE_BLOCK, PAGE_BORDER_INITIAL } from '../utils/const'
+import { PAGE_BORDER_INITIAL } from '../utils/const'
 import { ModeMenu } from './shared/mode-menu'
 import { NavGHLogoContent, NavLogoContent } from './shared/nav/icon-items'
 import { Search } from './shared/nav/search'
 import { ThemeMenu } from './shared/theme-menu'
 
 export function Nav() {
-  const pathname = usePathname()
-
   return (
     <nav
       data-placement="bottom"
