@@ -29,7 +29,7 @@ export function PlacementsDemo() {
             position="relative"
             width="80px"
             height="80px"
-            bg="page.bg.initial"
+            bg="page.surface.100"
           >
             <MatchFloat placement={placement}>
               <Circle size="5" bg="red" color="white" textStyle="label-sm">
