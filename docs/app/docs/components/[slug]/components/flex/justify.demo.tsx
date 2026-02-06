@@ -1,0 +1,40 @@
+import { DecorativeBox } from '@/app/components/decorative-box'
+import { Flex } from 'styled-system/jsx'
+
+export function JustifyDemo() {
+  return (
+    <Flex direction="column" gap="lg" w="3/4">
+      <Flex gap="4" justify="flex-start">
+        <DecorativeBox height="10" width="120px" />
+        <DecorativeBox height="10" width="120px">
+          flex-start
+        </DecorativeBox>
+        <DecorativeBox height="10" width="120px" />
+      </Flex>
+
+      <Flex gap="4" justify="center">
+        <DecorativeBox height="10" width="120px" />
+        <DecorativeBox height="10" width="120px">
+          center
+        </DecorativeBox>
+        <DecorativeBox height="10" width="120px" />
+      </Flex>
+
+      <Flex gap="4" justify="flex-end">
+        <DecorativeBox height="10" width="120px" />
+        <DecorativeBox height="10" width="120px">
+          flex-end
+        </DecorativeBox>
+        <DecorativeBox height="10" width="120px" />
+      </Flex>
+
+      <Flex gap="4" justify="space-between">
+        <DecorativeBox height="10" width="120px" />
+        <DecorativeBox height="10" width="120px">
+          space-between
+        </DecorativeBox>
+        <DecorativeBox height="10" width="120px" />
+      </Flex>
+    </Flex>
+  )
+}
