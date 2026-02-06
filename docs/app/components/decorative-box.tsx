@@ -13,6 +13,7 @@ export function DecorativeBox(props: PropsWithChildren<Dict>) {
       display="flex"
       height="full"
       justifyContent="center"
+      textStyle="label-sm"
       width="full"
       {...props}
     />
