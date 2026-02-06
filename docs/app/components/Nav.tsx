@@ -1,21 +1,17 @@
 'use client'
 
-import Link, { type LinkProps } from 'next/link'
-import { css } from 'styled-system/css'
-import { grid, gridItem, hstack } from 'styled-system/patterns'
-import navData from '@/app/data/navLinks.json'
-import { Tooltip } from '@cerberus-design/react'
 import { version } from '@cerberus-design/configs'
-import { usePathname } from 'next/navigation'
-import { focusStates } from '@cerberus/panda-preset'
-import { INLINE_BLOCK, PAGE_BORDER_INITIAL } from '../utils/const'
-import { NavGHLogoContent, NavLogoContent } from './shared/nav/icon-items'
-import { ThemeMenu } from './shared/theme-menu'
+import { Tooltip } from '@cerberus-design/react'
+import { css } from 'styled-system/css'
+import { Center, GridItem } from 'styled-system/jsx'
+import { grid, gridItem, hstack } from 'styled-system/patterns'
+import { PAGE_BORDER_INITIAL } from '../utils/const'
 import { ModeMenu } from './shared/mode-menu'
+import { NavGHLogoContent, NavLogoContent } from './shared/nav/icon-items'
+import { Search } from './shared/nav/search'
+import { ThemeMenu } from './shared/theme-menu'
 
 export function Nav() {
-  const pathname = usePathname()
-
   return (
     <nav
       data-placement="bottom"
@@ -35,9 +31,11 @@ export function Nav() {
         top: 'md',
         zIndex: 'sticky',
         md: {
-          gridTemplateColumns: '3.25rem 1fr 1fr',
-          gridTemplateRows: '1fr',
+          gridTemplateColumns: '3.25rem 1fr 20rem',
+          gridTemplateRows: 'initial',
           h: '3.75rem',
+          gap: 'lg',
+          justifyContent: 'space-between',
           left: 'md',
           px: '6',
           w: 'calc(100% - 2rem)',
@@ -56,77 +54,11 @@ export function Nav() {
     >
       <NavLogoContent />
 
-      <section
-        className={gridItem({
-          gridColumnStart: 1,
-          gridColumnEnd: 4,
-          gridRowStart: 2,
-          gridRowEnd: 3,
-          md: {
-            gridColumnStart: 2,
-            gridColumnEnd: 3,
-            gridRowStart: 'initial',
-            gridRowEnd: 'initial',
-          },
-        })}
-      >
-        <nav
-          className={hstack({
-            border: '1px solid',
-            borderColor: PAGE_BORDER_INITIAL,
-            listStyle: 'none',
-            gap: '1px',
-            w: 'full',
-            md: {
-              border: 'none',
-              gap: 'initial',
-              px: 'lg',
-              w: 'auto',
-            },
-          })}
-        >
-          {navData.map((item) => (
-            <li
-              className={css({
-                overflow: 'hidden',
-                textAlign: 'center',
-                w: {
-                  base: '1/2',
-                  md: 'auto',
-                },
-              })}
-              key={item.id}
-            >
-              <Link
-                aria-current={
-                  pathname.includes(item.label.toLowerCase())
-                    ? 'page'
-                    : undefined
-                }
-                className={css({
-                  display: INLINE_BLOCK,
-                  fontSize: 'sm',
-                  px: 'lg',
-                  py: 'md',
-                  transition: 'color 250ms ease-in-out',
-                  w: 'full',
-                  _hover: {
-                    color: 'action.navigation.hover',
-                  },
-                  _currentPage: {
-                    color: 'action.navigation.visited',
-                    _focusVisible: focusStates._focusVisible,
-                  },
-                })}
-                href={item.href as LinkProps<string>['href']}
-                prefetch
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </nav>
-      </section>
+      <GridItem gridColumnStart="2" gridColumnEnd="3">
+        <Center ms="16rem">
+          <Search />
+        </Center>
+      </GridItem>
 
       <section
         className={gridItem({
