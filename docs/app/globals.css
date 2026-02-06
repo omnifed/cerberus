@@ -55,3 +55,126 @@
   height: 100%;
   background-color: currentColor;
 }
+
+/* DocSearch */
+
+:root {
+  --docsearch-primary-color: var(--cerberus-action-bg-initial);
+  --docsearch-soft-primary-color: var(--cerberus-colors-page-text-100);
+  --docsearch-subtle-color: var(--cerberus-colors-action-border-100);
+  --docsearch-text-color: var(--cerberus-colors-page-text-initial);
+  --docsearch-error-color: var(--cerberus-colors-danger-text-initial);
+  --docsearch-success-color: var(--cerberus-colors-success-text-initial);
+  --docsearch-secondary-text-color: var(--cerberus-colors-page-text-100);
+  --docsearch-background-color: var(--cerberus-colors-page-bg-100);
+  --docsearch-spacing: 12px;
+  --docsearch-icon-stroke-width: 1.4;
+  --docsearch-focus-color: var(--cerberus-colors-action-border-focus);
+  --docsearch-highlight-color: var(--cerberus-colors-action-bg-initial);
+  --docsearch-muted-color: var(--cerberus-colors-secondary-action-ghost-hover);
+  --docsearch-muted-color-darker: var(
+    --cerberus-colors-secondary-action-ghost-initial
+  );
+  --docsearch-icon-color: var(--cerberus-colors-page-text-100);
+  --docsearch-container-background: var(--cerberus-page-backdrop-initial);
+  --docsearch-logo-color: var(--cerberus-colors-page-surface-100);
+  --docsearch-border-radius: var(--cerberus-spacing-sm);
+  --docsearch-search-button-background: var(
+    --cerberus-colors-page-surface-initial
+  );
+  --docsearch-search-button-text-color: var(
+    --cerberus-colors-page-text-initial
+  );
+  --docsearch-modal-width: 800px;
+  --docsearch-modal-height: 600px;
+  --docsearch-modal-variable-height: 60dvh;
+  --docsearch-modal-background: var(--cerberus-colors-page-surface-100);
+  --docsearch-modal-shadow: var(--cerberus-shadows-md);
+  --docsearch-searchbox-height: 56px;
+  --docsearch-searchbox-initial-height: 56px;
+  --docsearch-searchbox-background: var(--cerberus-colors-page-surface-100);
+  --docsearch-searchbox-focus-background: var(
+    --cerberus-colors-page-surface-200
+  );
+  --docsearch-actions-width: 99px;
+  --docsearch-actions-height: 44px;
+  --docsearch-hit-height: 56px;
+  --docsearch-hit-color: var(--cerberus-colors-page-text-200);
+  --docsearch-hit-highlight-color: var(--cerberus-colors-page-surface-200);
+  --docsearch-hit-background: var(--cerberus-colors-page-surface-200);
+  --docsearch-key-background: var(--cerberus-colors-page-bg-100);
+  --docsearch-key-color: var(--cerberus-colors-page-text-100);
+  --docsearch-key-pressed-shadow: var(--cerberus-shadows-inset);
+  --docsearch-footer-height: 52px;
+  --docsearch-footer-background: var(--cerberus-colors-page-surface-100);
+  --docsearch-footer-shadow: var(--cerberus-shadows-md);
+  --fav-out-dur: 0.16s;
+  --del-dur: 0.15s;
+  --ease-smooth: cubic-bezier(0.25, 0.8, 0.4, 1);
+  --ease-fast: cubic-bezier(0.45, 0.15, 0.6, 0.9);
+  --shadow-pop: 0 4px 12px #0000000f;
+  --shimmer-bg: linear-gradient(
+    90deg,
+    #e0e3e8 0%,
+    var(--docsearch-muted-color) 20%,
+    var(--docsearch-muted-color) 60%,
+    #e0e3e8 95%
+  );
+  --docsearch-dropdown-menu-background: var(--docsearch-hit-background);
+  --docsearch-dropdown-menu-item-hover-background: var(
+    --docsearch-modal-background
+  );
+}
+
+.DocSearch-Container {
+  z-index: var(--cerberus-z-index-modal);
+}
+
+.DocSearch-Button {
+  border-radius: var(--cerberus-spacing-full);
+  max-width: 27rem;
+  padding-inline: var(--cerberus-spacing-md);
+  width: 100%;
+}
+
+.DocSearch-Button-Placeholder,
+.DocSearch-Search-Icon {
+  color: var(--cerberus-colors-page-text-100);
+  font-size: 0.8125rem;
+}
+
+.DocSearch-Search-Icon {
+  height: 1rem;
+  width: 1rem;
+}
+
+.DocSearch-Button-Key {
+  height: 20px;
+  width: 20px;
+}
+
+.DocSearch-Modal {
+  border: 1px solid var(--cerberus-colors-page-border-initial);
+}
+
+.DocSearch-Input {
+  padding-top: initial;
+}
+
+.DocSearch-Input::placeholder {
+  color: var(--cerberus-colors-page-text-100);
+}
+
+.DocSearch-Logo {
+  opacity: 0.2;
+}
+
+svg#Layer_1 path,
+svg#Layer_1 rect {
+  fill: var(--cerberus-colors-page-text-100);
+}
+
+.DocSearch-Commands-Key > svg {
+  height: 16px;
+  width: 16px;
+}
