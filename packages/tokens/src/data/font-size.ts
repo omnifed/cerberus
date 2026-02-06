@@ -39,8 +39,8 @@ export const collection = {
     'VariableID:6959:25448',
     'VariableID:6959:25451',
     'VariableID:6959:25449',
-    'VariableID:13509:624',
     'VariableID:13486:11753',
+    'VariableID:13509:624',
     'VariableID:6959:25450',
   ],
 } as const
@@ -354,9 +354,9 @@ export const tokens = {
   },
   'font-size.1000': {
     name: 'font-size/1000',
-    id: 'VariableID:13486:11753',
+    id: 'VariableID:13509:624',
     remote: false,
-    key: '0171f04eabfd6f352768d3efd26924f45a9322e8',
+    key: '0cdc4436921700a9405fb4214cd2f55bb34ee30c',
     variableCollectionId: 'VariableCollectionId:6957:22851',
     resolvedType: 'FLOAT',
     description: '',
