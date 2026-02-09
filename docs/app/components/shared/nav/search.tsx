@@ -6,8 +6,11 @@ export function Search() {
     <DocSearch
       appId="GH67DG1KS2"
       apiKey={process.env.NEXT_PUBLIC_DOCSEARCH_API_KEY as string}
-      indices={['Cerby Docs Website']}
-      askAi={process.env.NEXT_PUBLIC_DOCSEARCH_AI_KEY}
+      askAi={{
+        assistantId: process.env.NEXT_PUBLIC_DOCSEARCH_AI_KEY as string,
+        suggestedQuestions: true,
+      }}
+      indices={['Cerby Docs Website', 'algolia_ask_ai_suggested_questions']}
     />
   )
 }
