@@ -24,7 +24,7 @@
     "typescript": "*"
   },
   "devDependencies": {
-    "glob": "^11.0.0",
+    "glob": "^13.0.1",
     "tsup": "^8.5.1",
     "util": "^0.12.5"
   }
