@@ -3,13 +3,14 @@
 import { version } from '@cerberus-design/configs'
 import { Tooltip } from '@cerberus-design/react'
 import { css } from 'styled-system/css'
-import { Center, GridItem } from 'styled-system/jsx'
+import { Center, GridItem, HStack } from 'styled-system/jsx'
 import { grid, gridItem, hstack } from 'styled-system/patterns'
 import { PAGE_BORDER_INITIAL } from '../utils/const'
 import { ModeMenu } from './shared/mode-menu'
 import { NavGHLogoContent, NavLogoContent } from './shared/nav/icon-items'
 import { Search } from './shared/nav/search'
 import { ThemeMenu } from './shared/theme-menu'
+import { GlobalLink } from './shared/nav/global-link'
 
 export function Nav() {
   return (
@@ -31,7 +32,7 @@ export function Nav() {
         top: 'md',
         zIndex: 'sticky',
         md: {
-          gridTemplateColumns: '3.25rem 1fr 20rem',
+          gridTemplateColumns: '20rem 1fr 20rem',
           gridTemplateRows: 'initial',
           h: '3.75rem',
           gap: 'lg',
@@ -52,10 +53,16 @@ export function Nav() {
         },
       })}
     >
-      <NavLogoContent />
+      <GridItem gridColumnStart="1" gridColumnEnd="2">
+        <HStack gap="lg">
+          <NavLogoContent />
+          <GlobalLink href="/docs/get-started">Docs</GlobalLink>
+          <GlobalLink href="/blog">Blog</GlobalLink>
+        </HStack>
+      </GridItem>
 
       <GridItem gridColumnStart="2" gridColumnEnd="3">
-        <Center ms="16rem">
+        <Center>
           <Search />
         </Center>
       </GridItem>
