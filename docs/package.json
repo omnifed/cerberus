@@ -21,8 +21,8 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",
     "next": "16.1.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@cerberus/panda-preset": "workspace:*",
@@ -36,11 +36,11 @@
     "@next/mdx": "^16.1.6",
     "@pandacss/dev": "^1.8.1",
     "@pandacss/types": "^1.8.1",
-    "@shikijs/rehype": "^3.21.0",
-    "@shikijs/transformers": "^3.21.0",
+    "@shikijs/rehype": "^3.22.0",
+    "@shikijs/transformers": "^3.22.0",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^25.0.10",
-    "@types/react": "19.2.9",
+    "@types/node": "^25.2.2",
+    "@types/react": "19.2.13",
     "@types/react-dom": "19.2.3",
     "@vercel/analytics": "^1.6.1",
     "autoprefixer": "^10.4.24",
