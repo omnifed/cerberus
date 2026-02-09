@@ -50,15 +50,20 @@ export async function CachedHTML(props: PropsWithChildren<object>) {
       data-color-mode={defaultColorModeName}
       data-theme={getCodeTheme(defaultColorModeName, defaultThemeName)}
     >
-      {defaultThemeName && (
-        <head>
+      <head>
+        {defaultThemeName && (
           <style
             type="text/css"
             id={theme.id}
             dangerouslySetInnerHTML={{ __html: theme.css }}
           />
-        </head>
-      )}
+        )}
+        <link
+          rel="preconnect"
+          href="https://GH67DG1KS2-dsn.algolia.net"
+          crossOrigin="anonymous"
+        />
+      </head>
 
       <cerberus.body
         css={{
