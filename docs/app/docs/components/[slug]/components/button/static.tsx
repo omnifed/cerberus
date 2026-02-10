@@ -1,199 +1,49 @@
-'use client'
+import { BasicDemo } from './basic.demo'
+import { IconDemo } from './icon.demo'
+import { PendingDemo } from './pending.demo'
+import { ShapesDemo } from './shapes.demo'
+import { UsageDemo } from './usage.demo'
+import { SizeDemo } from './size.demo'
+import { GroupDemo } from './group.demo'
+import { AttachedDemo } from './attached.demo'
+import { CustomDemo } from './custom.demo'
 
-import { Fragment } from 'react'
-import {
-  Button,
-  ButtonGroup,
-  ButtonParts,
-  IconButton,
-} from '@cerberus-design/react'
-import { ArrowDownRight, ChevronDown } from '@carbon/icons-react'
-import { HStack } from 'styled-system/jsx'
-import { grid, gridItem } from 'styled-system/patterns'
-import Link from 'next/link'
-
-export function AsChildDemo() {
-  return (
-    <Button asChild>
-      <Link href="/docs/components/icon-button">See Icon Button</Link>
-    </Button>
-  )
-}
-
-export function BasicButtonPreview() {
-  return <Button>Default styles</Button>
-}
-
-export function DangerButtonPreview() {
-  return <Button palette="danger">Danger styles</Button>
-}
-
-export function OutlineButtonPreview() {
-  return <Button usage="outlined">Outlined styles</Button>
-}
-
-export function TextButtonPreview() {
-  return <Button usage="ghost">Ghost styles</Button>
-}
-
-export function RoundedButtonPreview() {
-  return <Button shape="rounded">Rounded styles</Button>
-}
-
-export function PendingButtonDemo() {
-  return (
-    <ButtonParts.Root pending>
-      <ButtonParts.Icon />
-      Pending
-    </ButtonParts.Root>
-  )
-}
-
-export function WithIconButtonPreview() {
-  return (
-    <ButtonParts.Root>
-      With icon
-      <ButtonParts.Icon>
-        <ArrowDownRight />
-      </ButtonParts.Icon>
-    </ButtonParts.Root>
-  )
-}
-
-export function ShapesDemo() {
-  return (
-    <HStack>
-      <Button shape="default">Default</Button>
-      <Button shape="sharp">Sharp</Button>
-      <Button shape="rounded">Rounded</Button>
-    </HStack>
-  )
-}
-
-export function SizesDemo() {
-  return (
-    <HStack>
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-    </HStack>
-  )
-}
-
-export function UsageDemo() {
-  return (
-    <HStack>
-      <Button usage="filled">Filled</Button>
-      <Button usage="outlined">Outlined</Button>
-      <Button usage="ghost">Ghost</Button>
-    </HStack>
-  )
-}
-
-export function CustomButtonPreview() {
-  return (
-    <Button
-      bgColor="danger.bg.initial"
-      color="danger.text.initial"
-      rounded="md"
-      transform="skew(-10deg)"
-      _hover={{
-        bgColor: 'black',
-        color: 'yellow',
-      }}
-    >
-      Cerberus Forever
-    </Button>
-  )
-}
-
-// Overview
-
-type ButtonTypes = 'sharp' | 'rounded' | 'outlined' | 'ghost'
-interface MatchButtonProps {
-  kind: ButtonTypes
-}
-
-function MatchButtonPreview(props: MatchButtonProps) {
-  switch (props.kind) {
-    case 'sharp':
-      return <BasicButtonPreview />
-    case 'rounded':
-      return <RoundedButtonPreview />
-    case 'outlined':
-      return <OutlineButtonPreview />
-    case 'ghost':
-      return <TextButtonPreview />
-    default:
-      return null
-  }
-}
-
-export function OverviewButtonPreview() {
-  const btnTypes: ButtonTypes[] = ['sharp', 'rounded', 'outlined', 'ghost']
-  return (
-    <>
-      <div
-        className={grid({
-          columns: 4,
-          gap: '4',
-          gridTemplateRows: '1fr 1fr',
-        })}
-      >
-        {btnTypes.map((type, idx) => (
-          <Fragment key={type}>
-            <div
-              className={gridItem({
-                gridColumn: 'span 1',
-                gridRowStart: '1',
-                gridRowEnd: '2',
-                justifySelf: 'center',
-              })}
-            >
-              <MatchButtonPreview kind={type} />
-            </div>
-            <div
-              className={gridItem({
-                gridColumn: 'span 1',
-                gridRowStart: '2',
-                gridRowEnd: '3',
-                justifySelf: 'center',
-              })}
-            >
-              {idx + 1}
-            </div>
-          </Fragment>
-        ))}
-      </div>
-    </>
-  )
-}
-
-export function ButtonGroupDemo() {
-  return (
-    <ButtonGroup>
-      <Button>Button 1</Button>
-      <Button>Button 2</Button>
-      <Button>Button 3</Button>
-    </ButtonGroup>
-  )
-}
-
-export function AttachedButtonGroupDemo() {
-  return (
-    <HStack justify="center" w="full">
-      <ButtonGroup layout="attached">
-        <Button>Main action</Button>
-        <IconButton ariaLabel="View options" shape="square" usage="filled">
-          <ChevronDown />
-        </IconButton>
-      </ButtonGroup>
-
-      <ButtonGroup layout="attached">
-        <Button usage="outlined">Main action</Button>
-        <IconButton ariaLabel="View options" shape="square" usage="outlined">
-          <ChevronDown />
-        </IconButton>
-      </ButtonGroup>
-    </HStack>
-  )
+export const DEMOS = {
+  basic: {
+    id: 'button.basic',
+    preview: <BasicDemo />,
+  },
+  icon: {
+    id: 'button.icon',
+    preview: <IconDemo />,
+  },
+  pending: {
+    id: 'button.pending',
+    preview: <PendingDemo />,
+  },
+  shapes: {
+    id: 'button.shapes',
+    preview: <ShapesDemo />,
+  },
+  usage: {
+    id: 'button.usage',
+    preview: <UsageDemo />,
+  },
+  size: {
+    id: 'button.size',
+    preview: <SizeDemo />,
+  },
+  group: {
+    id: 'button.group',
+    preview: <GroupDemo />,
+  },
+  attached: {
+    id: 'button.attached',
+    preview: <AttachedDemo />,
+  },
+  custom: {
+    id: 'button.custom',
+    preview: <CustomDemo />,
+  },
+  meta: `import { Button } from '@cerberus/react';`,
 }
