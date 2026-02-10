@@ -25,15 +25,6 @@ export class CerberusPrimitive {
     this.recipe = recipe ?? null
   }
 
-  private hasStyles(styles: string | undefined): Record<string, unknown> {
-    if (styles) {
-      return {
-        className: styles,
-      }
-    }
-    return {}
-  }
-
   private setupStyledComponent<T extends ElementType>(
     component: T | CerberusPrimitiveEl<T>,
   ) {
