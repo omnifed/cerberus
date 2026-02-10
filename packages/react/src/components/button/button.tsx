@@ -1,15 +1,9 @@
 'use client'
 
-import {
-  type ButtonHTMLAttributes,
-  type PropsWithChildren,
-  createContext,
-  useContext,
-  useMemo,
-} from 'react'
-import { type ButtonVariantProps } from 'styled-system/recipes'
+import { createContext, useContext, useMemo } from 'react'
 import { Box } from 'styled-system/jsx'
-import type { CerberusPrimitiveProps } from '../../system/types'
+import { type ButtonVariantProps } from 'styled-system/recipes'
+import type { CerberusProps } from '../../system/types'
 import { Show } from '../show/index'
 import { Spinner } from '../spinner/index'
 import { ButtonRoot } from './primitives'
@@ -27,9 +21,7 @@ const ButtonContext = createContext<ButtonContextValue>({
   pending: false,
 })
 
-export interface ButtonProps
-  extends ButtonVariantProps,
-    ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonVariantProps {
   /**
    * If true, the button will show a loading spinner.
    */
@@ -40,7 +32,7 @@ export interface ButtonProps
  * A component that allows the user to perform actions
  * @see https://cerberus.digitalu.design/react/button
  */
-export function Button(props: CerberusPrimitiveProps<ButtonProps>) {
+export function Button(props: CerberusProps<'button'> & ButtonProps) {
   const { pending = false, ...nativeProps } = props
   const value = useMemo(() => ({ pending }), [pending])
   return (
@@ -59,7 +51,7 @@ export function Button(props: CerberusPrimitiveProps<ButtonProps>) {
  * An icon to display in a button that utilizes the pending state to display
  * a loading spinner.
  */
-export function ButtonIcon(props: PropsWithChildren<object>) {
+export function ButtonIcon(props: CerberusProps<'div'>) {
   const { pending } = useContext(ButtonContext)
   return (
     <Show when={pending} fallback={<>{props.children}</>}>

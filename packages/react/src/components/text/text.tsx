@@ -1,5 +1,4 @@
-import type { HTMLAttributes } from 'react'
-import { cerberus, type CerberusPrimitiveProps } from '../../system/index'
+import { cerberus, CerberusProps } from '../../system/index'
 
 /**
  * This module exports a component for rendering text utilizing the styled-system JSX utility.
@@ -11,8 +10,7 @@ export type TextElements = 'p' | 'strong' | 'em' | 'small' | 'span'
 
 // For some reason we have to use the HTMLParagraphElement type here
 // or else TS will fail for non-style props like 'id' or 'className'
-export interface TextProps
-  extends CerberusPrimitiveProps<HTMLAttributes<HTMLParagraphElement>> {
+export interface TextProps extends CerberusProps<'p'> {
   /**
    * The element to render as. Defaults to 'p'.
    */

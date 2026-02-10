@@ -6,6 +6,12 @@ import type {
   RecipeVariantRecord,
   SlotRecipeVariantFn,
   SlotRecipeVariantRecord,
+  Dict,
+  JsxHTMLProps,
+  ComponentProps,
+  UnstyledProps,
+  AsProps,
+  Assign,
 } from 'styled-system/types'
 import type { ElementType, PropsWithChildren, CSSProperties } from 'react'
 import type { ark } from '@ark-ui/react/factory'
@@ -33,13 +39,23 @@ export type WithRecipeOptions = {
   defaultProps?: Record<string, unknown>
 }
 
-export interface BaseCerberusProps extends ArkFactoryProps, JsxStyleProps {
+export interface BaseCerberusProps
+  extends ArkFactoryProps, JsxStyleProps, Dict {
   /**
    * The CSS styles applied to the component. Supports CSS Properties
    * declarations and style objects.
    */
   style?: CSSProperties | Record<string, string>
 }
+
+export type CerberusProps<
+  T extends ElementType,
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  P extends Dict = {},
+> = JsxHTMLProps<
+  ComponentProps<T> & UnstyledProps & AsProps & ArkFactoryProps,
+  Assign<JsxStyleProps, P>
+>
 
 // Primitive Response
 

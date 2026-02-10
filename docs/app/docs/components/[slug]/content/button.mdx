@@ -6,192 +6,60 @@ source: 'components/button'
 recipe: 'button.ts'
 ---
 
-import CodePreview from '@/app/components/CodePreview'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import {
-  BasicButtonPreview,
-  WithIconButtonPreview,
-  PendingButtonDemo,
-  ShapesDemo,
-  SizesDemo,
-  UsageDemo,
-  CustomButtonPreview,
-  ButtonGroupDemo,
-  AttachedButtonGroupDemo,
-} from '../components/button/static'
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/button/static'
 
-```ts
-import { Button, ButtonParts, ButtonGroup } from '@cerberus/react'
-```
-
-## Basic Usage
-
-<CodePreview preview={<BasicButtonPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus/react'
-
-function BasicButtonPreview() {
-  return <Button>Default styles</Button>
-}
-```
-</CodePreview>
-
-
-### With Icon
-
-To display an icon, you can use the `ButtonParts.Icon` component.
-
-<CodePreview preview={<WithIconButtonPreview />}>
-```tsx title="button.tsx"
-import { ButtonParts } from '@cerberus/react'
-import { ArrowDownRight } from '@carbon/icons-react'
-
-function WithIconButton() {
-  return (
-    <ButtonParts.Root>
-      With icon
-      <ButtonParts.Icon>
-        <ArrowDownRight />
-      </ButtonParts.Icon>
-    </ButtonParts.Root>
-  )
-}
-```
-</CodePreview>
-
-## Pending
-
-To display a loading state, use the `ButtonParts.Icon` and set the `pending` prop to `true`. This will show a spinner in place of the icon.
-
-<CodePreview preview={<PendingButtonDemo />}>
-```tsx title="button.tsx"
-import { ButtonParts } from '@cerberus/react'
-
-function PendingButtonDemo() {
-  return (
-    <ButtonParts.Root pending>
-      <ButtonParts.Icon />
-      Pending
-    </ButtonParts.Root>
-  )
-}
-```
-</CodePreview>
-
-## Shapes
-
-The `Button` component comes in two shapes: `sharp` and `rounded`. You can set the shape by using the `shape` prop.
-
-<CodePreview preview={<ShapesDemo />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
-
-function ShapesDemo() {
-  return (
-    <HStack>
-      <Button shape="default">Default</Button>
-      <Button shape="sharp">Sharp</Button>
-      <Button shape="rounded">Rounded</Button>
-    </HStack>
-  )
-}
-```
-</CodePreview>
+<CodeSnippet snippet={DEMOS.meta} />
 
 ## Usage
 
-The `Button` component comes in three usage styles: `filled`, `outlined`, and `ghost`. You can set the usage by using the `usage` prop.
+<CodePreview {...DEMOS.basic} />
 
-<CodePreview preview={<UsageDemo />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
+### With Icon
 
-function UsageDemo() {
-  return (
-    <HStack>
-      <Button usage="filled">Filled</Button>
-      <Button usage="outlined">Outlined</Button>
-      <Button usage="ghost">Ghost</Button>
-    </HStack>
-  )
-}
-```
-</CodePreview>
+To display an icon, use the `ButtonParts` API.
+
+<CodePreview {...DEMOS.icon} />
+
+<NoteAdmonition description="When using the pending prop, the icon will be replaced with a spinner." />
+
+## Pending
+
+To display a loading state, use the `ButtonParts.Icon` and set the `pending` prop to `true`.
+
+<CodePreview {...DEMOS.pending} />
+
+## Shapes
+
+Use the `shape` prop to set the shape of the button. The `Button` component comes in three shapes: `default`, `sharp` and `rounded`.
+
+<CodePreview {...DEMOS.shapes} />
+
+## Usage
+
+Use the `usage` prop to set the usage style of the button. The `Button` component comes in three usage styles: `filled`, `outlined`, and `ghost`.
+
+<CodePreview {...DEMOS.usage} />
 
 ## Sizes
 
 The `Button` component comes in two sizes: `sm`, `md`. You can set the size by using the `size` prop.
 
-<CodePreview preview={<SizesDemo />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
-
-function SizesDemo() {
-  return (
-    <HStack>
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
-    </HStack>
-  )
-}
-```
-</CodePreview>
+<CodePreview {...DEMOS.size} />
 
 ## Group
 
 You can group buttons together using the `ButtonGroup` component.
 
-<CodePreview preview={<ButtonGroupDemo />}>
-```tsx title="button-group.tsx"
-import { Button, ButtonGroup } from '@cerberus/react'
-
-function ButtonGroupDemo() {
-  return (
-    <ButtonGroup>
-      <Button>Button 1</Button>
-      <Button>Button 2</Button>
-      <Button>Button 3</Button>
-    </ButtonGroup>
-  )
-}
-```
-</CodePreview>
+<CodePreview {...DEMOS.group} />
 
 ### Attached Button Group
 
 You can create an attached button group by setting the `layout` prop to `attached`.
 
-<CodePreview preview={<AttachedButtonGroupDemo />}>
-```tsx title="button-group.tsx"
-import { Button, ButtonGroup, IconButton } from '@cerberus/react'
-import { ChevronDown } from '@carbon/icons-react'
-import { HStack } from 'styled-system/jsx'
-
-function AttachedButtonGroupDemo() {
-  return (
-    <HStack justify="center" w="full">
-      <ButtonGroup layout="attached">
-        <Button>Main action</Button>
-        <IconButton ariaLabel="View options" shape="square" usage="filled">
-          <ChevronDown />
-        </IconButton>
-      </ButtonGroup>
-
-      <ButtonGroup layout="attached">
-        <Button usage="outlined">Main action</Button>
-        <IconButton ariaLabel="View options" shape="square" usage="outlined">
-          <ChevronDown />
-        </IconButton>
-      </ButtonGroup>
-    </HStack>
-  )
-}
-```
-</CodePreview>
+<CodePreview {...DEMOS.attached} />
 
 ## Primitives
 
@@ -199,31 +67,10 @@ You can utilize the primitive components or the `css` prop to customize the butt
 
 | Component | Description |
 | --------- | ----------- |
-| Button    | The context provider for the Button parts |
-| ButtonIcon  | The icon/spinner of the button |
+| Button.Root    | The context provider for the Button parts |
+| Button.Icon  | The icon/spinner of the button |
 
-<CodePreview preview={<CustomButtonPreview />}>
-```tsx title="button.tsx"
-import { Button } from '@cerberus/react'
-
-function CustomButtonPreview() {
-  return (
-    <Button
-      bgColor="danger.bg.initial"
-      color="danger.text.initial"
-      rounded="md"
-      transform="skew(-10deg)"
-      _hover={{
-        bgColor: 'black',
-        color: 'yellow',
-      }}
-    >
-      Cerberus Forever
-    </Button>
-  )
-}
-```
-</CodePreview>
+<CodePreview {...DEMOS.custom} />
 
 ## Global Customization
 

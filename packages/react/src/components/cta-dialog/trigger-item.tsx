@@ -1,7 +1,8 @@
-import { css, cx } from 'styled-system/css'
-import { Button, type ButtonProps } from '../button/button'
 import { ark } from '@ark-ui/react/factory'
+import { css, cx } from 'styled-system/css'
 import { button } from 'styled-system/recipes'
+import { CerberusProps } from '../../system/types'
+import { Button, type ButtonProps } from '../button/button'
 
 /**
  * This module provides the trigger item for the cta modal.
@@ -16,7 +17,7 @@ export interface TriggerItemProps extends ButtonProps {
  * Trigger item for the cta modal which renders content based on the actions.
  * type.
  */
-export function TriggerItem(props: TriggerItemProps) {
+export function TriggerItem(props: CerberusProps<'button'> & TriggerItemProps) {
   const { asChild, children, ...buttonProps } = props
 
   if (asChild) {
