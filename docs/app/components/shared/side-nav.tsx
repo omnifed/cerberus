@@ -4,6 +4,7 @@ import { getDocPageNavItems } from '@/app/docs/utils/helpers.server'
 import { cerberus, For, Show, Tag, Text } from '@cerberus-design/react'
 import { SideNavLinkItem } from './link-item'
 import { usePathname } from 'next/navigation'
+import { NEW } from './side-nav/tags'
 
 export function SideNav() {
   const pathname = usePathname()
@@ -36,13 +37,13 @@ export function SideNav() {
           >
             <SideNavLinkItem key={item.id} href={item.slug}>
               {item.label}
-              <Show when={item.tag}>
+              <Show when={NEW.includes(item.label)}>
                 <Tag
                   gradient="asphodel-dark"
                   usage="outlined"
                   textStyle="label-sm"
                 >
-                  {item.tag}
+                  New
                 </Tag>
               </Show>
             </SideNavLinkItem>
