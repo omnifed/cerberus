@@ -23,8 +23,10 @@ export function SideNavLinkItem(props: PropsWithChildren<LinkItemProps>) {
       href={props.href as LinkProps<string>['href']}
       prefetch
       className={css({
+        alignItems: 'center',
         color: 'page.text.200',
         display: 'inline-flex',
+        gap: 'md',
         px: 'sm',
         py: '0.75rem',
         rounded: 'sm',

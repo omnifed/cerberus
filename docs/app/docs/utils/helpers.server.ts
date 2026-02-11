@@ -81,6 +81,7 @@ export function getDocPageNavItems(routeGroup: string) {
       label: item.label,
       slug: item.slug,
       href: item.href,
+      tag: item.tag,
     })) || []
   )
 }

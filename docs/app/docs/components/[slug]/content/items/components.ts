@@ -369,6 +369,7 @@ export const components = [
         'Discover how to use the Pagination component in the Cerberus Design System for navigating through a series of pages.',
     },
     Content: Pagination,
+    tag: 'new',
   },
   {
     id: '1.3.17b',

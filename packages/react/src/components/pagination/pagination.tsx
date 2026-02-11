@@ -1,6 +1,7 @@
 'use client'
 
-import { Button, ButtonGroup, type ButtonGroupProps } from '../button/index'
+import { Button } from '../button/index'
+import { Group, type GroupProps } from '../group/index'
 import { PaginationParts } from './parts'
 import {
   PaginationRootProps,
@@ -9,7 +10,7 @@ import {
 import { NextTrigger, PrevTrigger } from './triggers'
 
 export interface PaginationProps extends PaginationRootProps {
-  layout?: ButtonGroupProps['layout']
+  layout?: GroupProps['layout']
 }
 
 /**
@@ -22,7 +23,7 @@ export function Pagination(props: PaginationProps) {
 
   return (
     <PaginationParts.Root {...rootProps}>
-      <ButtonGroup layout={layout} shape="default">
+      <Group layout={layout}>
         <PrevTrigger />
 
         <PaginationParts.Context>
@@ -44,7 +45,7 @@ export function Pagination(props: PaginationProps) {
         </PaginationParts.Context>
 
         <NextTrigger />
-      </ButtonGroup>
+      </Group>
     </PaginationParts.Root>
   )
 }

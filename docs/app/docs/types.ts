@@ -26,6 +26,7 @@ export interface DocPage {
     description: string
   }
   Content?: (props: MDXProps) => JSX.Element
+  tag?: 'new' | 'deprecated'
 }
 
 export interface DocFrontmatter {
