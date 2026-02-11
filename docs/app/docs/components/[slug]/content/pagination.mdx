@@ -1,0 +1,69 @@
+---
+title: Pagination
+description: A navigation component that allows users to browse through pages.
+npm: '@cerberus-design/react'
+source: 'components/pagination'
+ark: 'pagination'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { DEMOS } from '../components/pagination/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
+
+## Usage
+
+Used to navigate through a series of pages.
+
+<CodePreview {...DEMOS.basic} />
+
+## Attached
+
+To change the layout style of the pagination, you can use the `layout` prop from the 
+`ButtonGroup` component.
+
+<CodePreview {...DEMOS.attached} />
+
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the pagination.
+
+| Component               | Description |
+| ----------------------- | ----------- |
+| AccordionRoot               | The main container for the accordion items. |
+| AccordionItem           | Represents a single item within the accordion. |
+| AccordionItemTrigger    | The trigger element that toggles the visibility of the content. |
+| AccordionItemContent    | The content that is shown or hidden when the trigger is activated. |
+| AccordionItemIndicator  | An optional indicator to show the state of the accordion item. |
+
+
+
+## API
+
+### Pagination
+
+The `Pagination` component is an abstraction of the primitives and accepts the following props:
+
+| Name     | Default    |       Description                                   |
+| -------- | ------- | ------------------------------------------------------ |
+| size     | `lg`    | The size of the accordion item.                        |
+
+The Pagination is an abstraction of the [Root component](https://ark-ui.com/react/docs/components/pagination#api-reference).
+
+
+### Parts
+
+The `PaginationParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the PaginationParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name     | Description                            |
+| -------- | -------------------------------------- |
+| Root     | The `AccordionRoot` component which is the Provider for the family. |
+| Item     | The `AccordionItem` component which displays the item. |
+| ItemTrigger     | The `AccordionItemTrigger` component which is the visual title that triggers the content to open. |
+| ItemContent  | The `AccordionItemContent` component which displays the content that is revealed from the ItemTrigger. |
+| ItemIndicator | The `AccordionItemIndicator` component which displays the indicator (chevron) icon. |../components/static-preview

@@ -11,6 +11,7 @@ export {
   useDialog,
   FileUploadRootProvider,
   useFileUpload,
+  usePaginationContext,
   // utilities
   ClientOnly,
   DownloadTrigger,
@@ -26,7 +27,3 @@ export {
   LocaleProvider,
   useLocaleContext,
 } from '@ark-ui/react'
-
-// DEPRECATED
-
-export * from '@dnd-kit/core'

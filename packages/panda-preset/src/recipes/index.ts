@@ -1,5 +1,6 @@
 import { button } from './button'
 import { buttonGroup } from './buttonGroup'
+import { group } from './group'
 import { iconButton } from './iconButton'
 import { label } from './label'
 import { tag } from './tag'
@@ -51,6 +52,7 @@ export const recipes = {
   button,
   buttonGroup,
   fieldMessage,
+  group,
   iconButton,
   label,
   tag,
