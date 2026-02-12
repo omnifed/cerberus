@@ -9,6 +9,7 @@ import {
   buttonPalettes,
   filledUsage,
   notifyStyles,
+  outlinedSubtleUsage,
   outlinedUsage,
   textUsage,
 } from './shared/button.base'
@@ -47,6 +48,7 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       ghost: textUsage,
       filled: filledUsage,
       outlined: outlinedUsage,
+      ['outlined-subtle']: outlinedSubtleUsage,
     },
     shape: {
       square: {

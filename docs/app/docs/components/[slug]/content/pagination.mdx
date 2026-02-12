@@ -26,44 +26,125 @@ To change the layout style of the pagination, you can use the `layout` prop from
 
 <CodePreview {...DEMOS.attached} />
 
+## Compact
 
-## Primitives
+To show a compact pagination style, use the `compact` prop. This can be useful for mobile.
 
-You can utilize the primitive components or the `css` prop to customize the pagination.
+<CodePreview {...DEMOS.compact} />
 
-| Component               | Description |
-| ----------------------- | ----------- |
-| AccordionRoot               | The main container for the accordion items. |
-| AccordionItem           | Represents a single item within the accordion. |
-| AccordionItemTrigger    | The trigger element that toggles the visibility of the content. |
-| AccordionItemContent    | The content that is shown or hidden when the trigger is activated. |
-| AccordionItemIndicator  | An optional indicator to show the state of the accordion item. |
+## Data Slicing
 
+Use the `slice()` method to paginate actual data arrays. This method automatically 
+slices your data based on the current page and page size.
 
+<CodePreview {...DEMOS.slice} />
+
+## Alignment
+
+To align the pagination items, use the alignment props on a parent element. This 
+will be differentdepending on the layout.
+
+<CodePreview {...DEMOS.alignment} />
+
+## Controlled
+
+Use the `onPageChange` prop to control the active page of the pagination.
+
+<CodePreview {...DEMOS.controlled} />
+
+## Customization
+
+You can utilize the `css` prop to customize the pagination by selecting the desired
+prmitive `data-scope` layers.
+
+<CodePreview {...DEMOS.custom} />
 
 ## API
 
-### Pagination
+### Primitives
 
-The `Pagination` component is an abstraction of the primitives and accepts the following props:
+**Root Props:**
 
-| Name     | Default    |       Description                                   |
-| -------- | ------- | ------------------------------------------------------ |
-| size     | `lg`    | The size of the accordion item.                        |
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+| `count` | `number` | No | Total number of data items |
+| `defaultPage` | `number` | No | The initial active page when rendered.
+Use when you don't need to control the active page of the pagination. |
+| `defaultPageSize` | `number` | No | The initial number of data items per page when rendered. Use when you don't need to control the page size of the pagination. |
+| `getPageUrl` | `(details: PageUrlDetails) => string` | No | Function to generate href attributes for pagination links. Only used when `type` is set to "link". |
+| `ids` | `Partial<PrimitiveLayers>` | No | The ids of the elements in the accordion. Useful for composition. |
+| `onPageChange` | `(details: PageChangeDetails) => void` | No | Called when the page number is changed |
+| `onPageSizeChange` | `(details: PageSizeChangeDetails) => void` | No | Called when the page size is changed |
+| `page` | `number` | No | The controlled active page |
+| `pageSize` | `number` | No | The controlled number of data items per page |
+| `siblingCount` | `number` | No | Number of pages to show beside active page |
+| `translations` | `IntlTranslations` | No | Specifies the localized strings that identifies the accessibility elements and their states |
+| `type` | `'button', 'link'` | No | The type of the trigger element |
 
-The Pagination is an abstraction of the [Root component](https://ark-ui.com/react/docs/components/pagination#api-reference).
+
+**Ellipsis Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `index` | `number` | Yes |  |
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
 
 
-### Parts
+**Item Props:**
 
-The `PaginationParts` API is an Object containing the full family of components.
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `type` | `'page'` | Yes |  |
+| `value` | `number` | Yes |  |
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
 
-<NoteAdmonition description="It is best to only use the PaginationParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
-| Name     | Description                            |
-| -------- | -------------------------------------- |
-| Root     | The `AccordionRoot` component which is the Provider for the family. |
-| Item     | The `AccordionItem` component which displays the item. |
-| ItemTrigger     | The `AccordionItemTrigger` component which is the visual title that triggers the content to open. |
-| ItemContent  | The `AccordionItemContent` component which displays the content that is revealed from the ItemTrigger. |
-| ItemIndicator | The `AccordionItemIndicator` component which displays the indicator (chevron) icon. |../components/static-preview
+**Item Data Attributes:**
+
+| Attribute | Value |
+|-----------|-------|
+| `[data-scope]` | pagination |
+| `[data-part]` | item |
+| `[data-index]` | The index of the item |
+| `[data-selected]` | Present when selected |
+
+
+**NextTrigger Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+
+**NextTrigger Data Attributes:**
+
+| Attribute | Value |
+|-----------|-------|
+| `[data-scope]` | pagination |
+| `[data-part]` | next-trigger |
+| `[data-disabled]` | Present when disabled |
+
+
+**PrevTrigger Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+
+**PrevTrigger Data Attributes:**
+
+| Attribute | Value |
+|-----------|-------|
+| `[data-scope]` | pagination |
+| `[data-part]` | prev-trigger |
+| `[data-disabled]` | Present when disabled |
+
+
+**RootProvider Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `value` | `UsePaginationReturn` | Yes |  |
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |

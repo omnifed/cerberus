@@ -1,3 +1,6 @@
 export * from './pagination'
+export * from './triggers'
+export * from './compact'
+export * from './item-list'
 export * from './primitives'
 export * from './parts'
