@@ -6,7 +6,7 @@ import { PaginationContextDetails } from './primitives'
 import { NextTrigger, PrevTrigger } from './triggers'
 
 interface ItemListProps extends PaginationContextDetails {
-  layout: PaginationProps['layout']
+  layout?: PaginationProps['layout']
 }
 
 export function ItemList(props: ItemListProps) {

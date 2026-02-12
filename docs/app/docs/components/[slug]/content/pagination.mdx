@@ -52,6 +52,15 @@ Use the `onPageChange` prop to control the active page of the pagination.
 
 <CodePreview {...DEMOS.controlled} />
 
+## Page Size
+
+Control the number of items per page dynamically using `setPageSize()`. This example 
+shows how to integrate a native select element to change the page size.
+
+<NoteAdmonition description=" For uncontrolled behavior, use defaultPageSize to set the initial value. For controlled behavior, use pageSize and onPageSizeChange to programmatically manage the page size." />
+
+<CodePreview {...DEMOS.page} />
+
 ## Customization
 
 You can utilize the `css` prop to customize the pagination by selecting the desired
