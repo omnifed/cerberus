@@ -1,0 +1,159 @@
+---
+title: Pagination
+description: A navigation component that allows users to browse through pages.
+npm: '@cerberus-design/react'
+source: 'components/pagination'
+ark: 'pagination'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { DEMOS } from '../components/pagination/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
+
+## Usage
+
+Used to navigate through a series of pages.
+
+<CodePreview {...DEMOS.basic} />
+
+## Attached
+
+To change the layout style of the pagination, you can use the `layout` prop from the 
+`Group` component.
+
+<CodePreview {...DEMOS.attached} />
+
+## Compact
+
+To show a compact pagination style, use the `compact` prop. This can be useful for mobile.
+
+<CodePreview {...DEMOS.compact} />
+
+## Data Slicing
+
+Use the `slice()` method to paginate actual data arrays. This method automatically 
+slices your data based on the current page and page size.
+
+<CodePreview {...DEMOS.slice} />
+
+## Alignment
+
+To align the pagination items, use the alignment props on a parent element. This 
+will be differentdepending on the layout.
+
+<CodePreview {...DEMOS.alignment} />
+
+## Controlled
+
+Use the `onPageChange` prop to control the active page of the pagination.
+
+<CodePreview {...DEMOS.controlled} />
+
+## Page Size
+
+Control the number of items per page dynamically using `setPageSize()`. This example 
+shows how to integrate a native select element to change the page size.
+
+<NoteAdmonition description=" For uncontrolled behavior, use defaultPageSize to set the initial value. For controlled behavior, use pageSize and onPageSizeChange to programmatically manage the page size." />
+
+<CodePreview {...DEMOS.page} />
+
+## Customization
+
+You can utilize the `css` prop to customize the pagination by selecting the desired
+prmitive `data-scope` layers.
+
+<CodePreview {...DEMOS.custom} />
+
+## API
+
+### Primitives
+
+**Root Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+| `count` | `number` | No | Total number of data items |
+| `defaultPage` | `number` | No | The initial active page when rendered.
+Use when you don't need to control the active page of the pagination. |
+| `defaultPageSize` | `number` | No | The initial number of data items per page when rendered. Use when you don't need to control the page size of the pagination. |
+| `getPageUrl` | `(details: PageUrlDetails) => string` | No | Function to generate href attributes for pagination links. Only used when `type` is set to "link". |
+| `ids` | `Partial<PrimitiveLayers>` | No | The ids of the elements in the accordion. Useful for composition. |
+| `onPageChange` | `(details: PageChangeDetails) => void` | No | Called when the page number is changed |
+| `onPageSizeChange` | `(details: PageSizeChangeDetails) => void` | No | Called when the page size is changed |
+| `page` | `number` | No | The controlled active page |
+| `pageSize` | `number` | No | The controlled number of data items per page |
+| `siblingCount` | `number` | No | Number of pages to show beside active page |
+| `translations` | `IntlTranslations` | No | Specifies the localized strings that identifies the accessibility elements and their states |
+| `type` | `'button', 'link'` | No | The type of the trigger element |
+
+
+**Ellipsis Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `index` | `number` | Yes |  |
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+
+**Item Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `type` | `'page'` | Yes |  |
+| `value` | `number` | Yes |  |
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+
+**Item Data Attributes:**
+
+| Attribute | Value |
+|-----------|-------|
+| `[data-scope]` | pagination |
+| `[data-part]` | item |
+| `[data-index]` | The index of the item |
+| `[data-selected]` | Present when selected |
+
+
+**NextTrigger Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+
+**NextTrigger Data Attributes:**
+
+| Attribute | Value |
+|-----------|-------|
+| `[data-scope]` | pagination |
+| `[data-part]` | next-trigger |
+| `[data-disabled]` | Present when disabled |
+
+
+**PrevTrigger Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+
+**PrevTrigger Data Attributes:**
+
+| Attribute | Value |
+|-----------|-------|
+| `[data-scope]` | pagination |
+| `[data-part]` | prev-trigger |
+| `[data-disabled]` | Present when disabled |
+
+
+**RootProvider Props:**
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `value` | `UsePaginationReturn` | Yes |  |
+| `asChild` | `boolean` | No | Use the provided child element as the default rendered element, combining their props and behavior. |

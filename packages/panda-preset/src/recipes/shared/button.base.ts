@@ -24,6 +24,7 @@ export const buttonBase = {
   gap: '2',
   justifyContent: 'center',
   lineHeight: '0',
+  minW: '2.85rem',
   outline: 'none',
   textDecoration: 'none',
   transitionProperty: 'background-color, color',
@@ -48,6 +49,9 @@ export const nonTextStates = {
     _notDisabled: {
       bgColor: 'colorPalette.ghost.hover',
     },
+  },
+  _selected: {
+    bgColor: 'colorPalette.ghost.active',
   },
   _enabled: {
     _active: {
@@ -105,6 +109,18 @@ export const outlinedUsage = {
   bgColor: 'colorPalette.ghost.initial',
   border: '2px solid',
   borderColor: 'colorPalette.border.initial',
+}
+
+export const outlinedSubtleUsage = {
+  ...outlinedUsage,
+  border: '1px solid',
+  _selected: {
+    bgColor: 'action.bg.active',
+    color: 'action.text.initial',
+    _hover: {
+      color: 'action.text.200',
+    },
+  },
 }
 
 export const notifyStyles = {

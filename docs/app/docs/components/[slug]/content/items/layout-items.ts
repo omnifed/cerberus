@@ -11,6 +11,7 @@ import Divider, { frontmatter as dividerFrontmatter } from '../divider.mdx'
 import Flex, { frontmatter as flexFrontmatter } from '../flex.mdx'
 import Float, { frontmatter as floatFrontmatter } from '../float.mdx'
 import Grid, { frontmatter as gridFrontmatter } from '../grid.mdx'
+import Group, { frontmatter as groupFrontmatter } from '../group.mdx'
 import LinkOverlay, {
   frontmatter as linkOverlayFrontmatter,
 } from '../link-overlay.mdx'
@@ -142,6 +143,20 @@ export const layout = [
         'Explore the Grid component in the Cerberus Design System for creating complex and responsive grid layouts.',
     },
     Content: Grid,
+  },
+  {
+    id: '1.2.10',
+    label: 'Group',
+    slug: 'group',
+    href: '/docs/components/group',
+    frontmatter: groupFrontmatter,
+    meta: {
+      title: 'Group Component in Cerberus Design System',
+      description:
+        'Learn how to use the Group component in the Cerberus Design System to group and attach elements together.',
+    },
+    Content: Group,
+    tag: 'new',
   },
   {
     id: '1.2.9',

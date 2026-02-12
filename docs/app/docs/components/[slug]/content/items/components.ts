@@ -42,6 +42,9 @@ import Notifications, {
 import NumberInput, {
   frontmatter as numberInputFrontmatter,
 } from '../number-input.mdx'
+import Pagination, {
+  frontmatter as paginationFrontmatter,
+} from '../pagination.mdx'
 import PinInput, { frontmatter as pinInputFrontmatter } from '../pin-input.mdx'
 import Progress, { frontmatter as progressFrontmatter } from '../progress.mdx'
 import PromptModal, {
@@ -353,6 +356,20 @@ export const components = [
         'Discover how to use the Number Input component in the Cerberus Design System for managing numeric input fields.',
     },
     Content: NumberInput,
+  },
+  {
+    id: '1.3.17c',
+    label: 'Pagination',
+    slug: 'pagination',
+    href: '/docs/components/pagination',
+    frontmatter: paginationFrontmatter,
+    meta: {
+      title: 'Pagination Component in Cerberus Design System',
+      description:
+        'Discover how to use the Pagination component in the Cerberus Design System for navigating through a series of pages.',
+    },
+    Content: Pagination,
+    tag: 'new',
   },
   {
     id: '1.3.17b',
