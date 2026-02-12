@@ -6,6 +6,7 @@ export function UsageDemo() {
     <HStack>
       <Button usage="filled">Filled</Button>
       <Button usage="outlined">Outlined</Button>
+      <Button usage="outlined-subtle">Outlined Subtle</Button>
       <Button usage="ghost">Ghost</Button>
     </HStack>
   )

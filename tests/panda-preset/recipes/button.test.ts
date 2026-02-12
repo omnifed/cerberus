@@ -18,6 +18,7 @@ describe('button recipe', () => {
       gap: '2',
       justifyContent: 'center',
       lineHeight: '0',
+      minW: '2.85rem',
       outline: 'none',
       textDecoration: 'none',
       transitionProperty: 'background-color, color',
@@ -110,6 +111,14 @@ describe('button recipe', () => {
       bgColor: 'colorPalette.ghost.initial',
       border: '2px solid',
       borderColor: 'colorPalette.border.initial',
+    })
+  })
+
+  test('should have an outlined-subtle usage variant', () => {
+    expect(button.variants?.usage['outlined-subtle']).toMatchObject({
+      bgColor: 'colorPalette.ghost.initial',
+      borderColor: 'colorPalette.border.initial',
+      border: '1px solid',
     })
   })
 

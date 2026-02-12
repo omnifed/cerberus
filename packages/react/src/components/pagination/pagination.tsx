@@ -1,7 +1,7 @@
 'use client'
 
-import { Button } from '../button/index'
 import { Group, type GroupProps } from '../group/index'
+import { PaginationItem } from './item'
 import { PaginationParts } from './parts'
 import {
   PaginationRootProps,
@@ -31,13 +31,11 @@ export function Pagination(props: PaginationProps) {
             pagination.pages.map((page, index) =>
               page.type === 'page' ? (
                 <PaginationParts.Item key={index} {...page} asChild>
-                  <Button shape="default">{page.value}</Button>
+                  <PaginationItem>{page.value}</PaginationItem>
                 </PaginationParts.Item>
               ) : (
                 <PaginationParts.Ellipsis key={index} index={index} asChild>
-                  <Button disabled shape="default" usage="ghost">
-                    &#8230;
-                  </Button>
+                  <PaginationItem>&#8230;</PaginationItem>
                 </PaginationParts.Ellipsis>
               ),
             )
