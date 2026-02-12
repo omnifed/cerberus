@@ -119,6 +119,13 @@ describe('button recipe', () => {
       bgColor: 'colorPalette.ghost.initial',
       borderColor: 'colorPalette.border.initial',
       border: '1px solid',
+      _selected: {
+        bgColor: 'action.bg.active',
+        color: 'action.text.initial',
+        _hover: {
+          color: 'action.text.200',
+        },
+      },
     })
   })
 

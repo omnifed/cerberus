@@ -114,6 +114,13 @@ export const outlinedUsage = {
 export const outlinedSubtleUsage = {
   ...outlinedUsage,
   border: '1px solid',
+  _selected: {
+    bgColor: 'action.bg.active',
+    color: 'action.text.initial',
+    _hover: {
+      color: 'action.text.200',
+    },
+  },
 }
 
 export const notifyStyles = {
