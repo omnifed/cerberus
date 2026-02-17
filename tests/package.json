@@ -11,6 +11,7 @@
   "devDependencies": {
     "@carbon/icons-react": "^11.74.0",
     "@cerberus-design/react": "workspace:*",
+    "@cerberus-design/data-grid": "workspace:*",
     "@cerberus/figma": "workspace:*",
     "@cerberus/panda-preset": "workspace:*",
     "@cerberus/preset-acheron-theme": "workspace:*",

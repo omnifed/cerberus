@@ -457,6 +457,9 @@ importers:
       '@carbon/icons-react':
         specifier: ^11.74.0
         version: 11.74.0(react@19.2.4)
+      '@cerberus-design/data-grid':
+        specifier: workspace:*
+        version: link:../packages/data-grid
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
