@@ -108,6 +108,9 @@ importers:
       '@cerberus-design/configs':
         specifier: workspace:*
         version: link:../configs
+      '@cerberus-design/data-grid':
+        specifier: workspace:*
+        version: link:../packages/data-grid
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
