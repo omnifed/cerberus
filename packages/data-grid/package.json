@@ -1,0 +1,87 @@
+{
+  "name": "@cerberus-design/data-grid",
+  "version": "0.25.3",
+  "description": "The Cerberus Design React DataGrid component.",
+  "browserslist": "> 0.25%, not dead",
+  "sideEffects": false,
+  "type": "module",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "scripts": {
+    "prepare": "panda codegen",
+    "build": "vite build",
+    "clean": "rm -rf ./dist",
+    "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
+  },
+  "peerDependencies": {
+    "@pandacss/dev": "^1.7.0",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@cerberus-design/configs": "workspace:*",
+    "@cerberus/panda-preset": "workspace:*",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "globby": "^16.1.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "types": "dist/index.d.cts",
+    "main": "dist/index.cjs",
+    "module": "dist/index.js",
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.js"
+        },
+        "require": {
+          "types": "./dist/index.d.cts",
+          "default": "./dist/index.cjs"
+        }
+      },
+      "./*": {
+        "import": {
+          "types": "./dist/components/*/index.d.ts",
+          "default": "./dist/components/*/index.js"
+        },
+        "require": {
+          "types": "./dist/components/*/index.d.cts",
+          "default": "./dist/components/*/index.cjs"
+        }
+      },
+      "./package.json": "./package.json"
+    },
+    "typesVersions": {
+      "*": {
+        ".": [
+          "dist/index.d.cts"
+        ],
+        "./*": [
+          "dist/components/*/index.d.cts"
+        ]
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "src/**/*"
+  ],
+  "keywords": [
+    "panda-css",
+    "react",
+    "data grid",
+    "data grid component",
+    "react signals",
+    "react signals component"
+  ],
+  "author": "developers@omnifederal.com",
+  "license": "ISC"
+}

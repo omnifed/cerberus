@@ -10,4 +10,5 @@ export const packages = [
   'preset-elysium-theme',
   'panda-preset',
   'react',
+  'data-grid',
 ]
