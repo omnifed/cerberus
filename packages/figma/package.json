@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@figma/rest-api-spec": "^0.35.0",
+    "@figma/rest-api-spec": "^0.36.0",
     "dotenv": "^17.2.3",
     "ora": "^9.0.0",
     "prettier": "3.8.1"
