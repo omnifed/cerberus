@@ -94,6 +94,18 @@ export default defineConfig([
   },
 
   {
+    name: '@cerberus-design/data-grid',
+    files: ['packages/data-grid/**/*.ts', 'packages/data-grid/**/*.tsx'],
+    plugins: {
+      react,
+    },
+    ...sonarjs.recommended,
+    ...reactRecommended,
+    ...reactHooks.recommended,
+    rules: {},
+  },
+
+  {
     name: '@cerberus-design/configs',
     files: ['configs/**/*.mjs', 'configs/**/*.ts'],
     rules: {

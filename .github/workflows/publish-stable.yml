@@ -27,6 +27,23 @@ jobs:
       - run: pnpm build && pnpm publish --access public --no-git-checks
         working-directory: ./packages/react
 
+  npm-publish-data-grid:
+    runs-on: ubuntu-latest
+    name: NPM - Publish Data Grid
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          cache: 'pnpm'
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: pnpm install
+      - run: pnpm build && pnpm publish --access public --no-git-checks
+        working-directory: ./packages/data-grid
+
   jsr-publish-figma:
     runs-on: ubuntu-latest
     name: JSR - Publish Figma

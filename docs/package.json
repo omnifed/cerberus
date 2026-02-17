@@ -14,6 +14,7 @@
     "@carbon/icons-react": "^11.74.0",
     "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/react": "workspace:*",
+    "@cerberus-design/data-grid": "workspace:*",
     "@cerberus/tokens": "workspace:*",
     "@docsearch/css": "^4.5.4",
     "@docsearch/react": "^4.5.4",
