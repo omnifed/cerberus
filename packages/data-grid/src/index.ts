@@ -3,4 +3,6 @@
  * @module
  */
 
-export * from './init'
+export * from './column-helpers'
+
+export * from './types'

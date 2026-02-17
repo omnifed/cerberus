@@ -18,9 +18,11 @@
     "react": "*",
     "react-dom": "*"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@ark-ui/react": "^5.31.0",
+    "@preact/signals-core": "^1.13.0"
+  },
   "devDependencies": {
-    "@cerberus-design/configs": "workspace:*",
     "@cerberus/panda-preset": "workspace:*",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
