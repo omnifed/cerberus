@@ -1,10 +1,16 @@
 import ApiLinks from '@/app/components/ApiLinks'
 import { HStack, VStack } from '@/styled-system/jsx'
 import { Show, Text } from '@cerberus-design/react'
+import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import type { DocFrontmatter } from '../../types'
-import { getDocPageData } from '../../utils/helpers.server'
 import { items } from './content/items'
+
+type Props = {
+  params: Promise<{
+    slug: string
+  }>
+}
 
 export async function generateStaticParams() {
   return items
@@ -14,16 +20,17 @@ export async function generateStaticParams() {
     .filter(Boolean)
 }
 
-export default async function DataGridSlugPage(props: {
-  params: Promise<{
-    slug: string
-  }>
-}) {
+export default async function DataGridSlugPage(props: Props) {
   const { slug } = await props.params
-  const page = getDocPageData('data-grid', slug)
+  const page = await import(`./content/${slug}.mdx`)
 
   const frontmatter = page?.frontmatter as DocFrontmatter
-  const Doc = page?.Content
+  const Doc = page?.default
+
+  if (!page) {
+    console.error(`Page not found for slug: ${slug}`)
+    return notFound()
+  }
 
   const hasLinks =
     page?.frontmatter?.ark ||
@@ -32,8 +39,6 @@ export default async function DataGridSlugPage(props: {
     page?.frontmatter?.source ||
     page?.frontmatter?.panda ||
     page?.frontmatter?.package
-
-  if (!page) return null
 
   if (Doc) {
     return (

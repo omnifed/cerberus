@@ -1,10 +1,10 @@
 'use cache'
 
-import { getDocPageData } from '../../utils/helpers.server'
-import { Show, Text } from '@cerberus-design/react'
-import { HStack, VStack } from '@/styled-system/jsx'
-import type { DocFrontmatter } from '../../types'
 import ApiLinks from '@/app/components/ApiLinks'
+import { HStack, VStack } from '@/styled-system/jsx'
+import { Show, Text } from '@cerberus-design/react'
+import { notFound } from 'next/navigation'
+import type { DocFrontmatter } from '../../types'
 import { items } from './content/items'
 
 export async function generateStaticParams() {
@@ -21,10 +21,15 @@ export default async function GetStartedSlugPage(props: {
   }>
 }) {
   const { slug } = await props.params
-  const page = getDocPageData('components', slug)
+  const page = await import(`./content/${slug}.mdx`)
 
   const frontmatter = page?.frontmatter as DocFrontmatter
-  const Doc = page?.Content
+  const Doc = page?.default
+
+  if (!page) {
+    console.error(`Page not found for slug: ${slug}`)
+    return notFound()
+  }
 
   const hasLinks =
     page?.frontmatter?.ark ||

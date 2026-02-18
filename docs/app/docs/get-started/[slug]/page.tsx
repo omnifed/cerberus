@@ -1,8 +1,8 @@
 'use cache'
 
-import { Show, Text } from '@cerberus-design/react'
 import { VStack } from '@/styled-system/jsx/vstack'
-import { getDocPageData } from '../../utils/helpers.server'
+import { Show, Text } from '@cerberus-design/react'
+import { notFound } from 'next/navigation'
 import type { DocFrontmatter } from '../../types'
 import { items } from './content/items'
 
@@ -20,13 +20,14 @@ export default async function GetStartedSlugPage(props: {
   }>
 }) {
   const { slug } = await props.params
-  const page = getDocPageData('get-started', slug)
+  const page = await import(`./content/${slug}.mdx`)
+
   const frontmatter = page?.frontmatter as DocFrontmatter
-  const Doc = page?.Content
+  const Doc = page?.default
 
   if (!page) {
-    console.error(`No items found for slug: ${slug}`)
-    return null
+    console.error(`Page not found for slug: ${slug}`)
+    return notFound()
   }
 
   if (Doc) {
