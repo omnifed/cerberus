@@ -1,5 +1,3 @@
-'use cache'
-
 import ApiLinks from '@/app/components/ApiLinks'
 import { HStack, VStack } from '@/styled-system/jsx'
 import { Show, Text } from '@cerberus-design/react'
@@ -38,60 +36,54 @@ export default async function GetStartedSlugPage(props: {
     page?.frontmatter?.source ||
     page?.frontmatter?.panda
 
-  if (!page) return null
-
-  if (Doc) {
-    return (
-      <>
-        <Show when={frontmatter}>
-          <VStack
-            data-state={hasLinks ? 'links' : 'default'}
-            alignItems="flex-start"
-            gap="lg"
-            pb="lg"
-            w="full"
-            css={{
-              '&:is([data-state="links"])': {
-                border: '1px solid',
-                borderColor: 'page.border.initial',
-                bgColor: 'page.surface.100',
-                color: 'page.text.200',
-                gap: 'xs',
-                h: '19.625rem',
-                justifyContent: 'center',
-                mb: '3.5rem',
-                ps: '4rem',
-                rounded: 'xl',
-                '& > h1': {
-                  textStyle: 'heading-md',
-                },
-                '& > p': {
-                  textStyle: 'body-md',
-                  textWrap: 'pretty',
-                  w: '3/4',
-                },
+  return (
+    <>
+      <Show when={frontmatter}>
+        <VStack
+          data-state={hasLinks ? 'links' : 'default'}
+          alignItems="flex-start"
+          gap="lg"
+          pb="lg"
+          w="full"
+          css={{
+            '&:is([data-state="links"])': {
+              border: '1px solid',
+              borderColor: 'page.border.initial',
+              bgColor: 'page.surface.100',
+              color: 'page.text.200',
+              gap: 'xs',
+              h: '19.625rem',
+              justifyContent: 'center',
+              mb: '3.5rem',
+              ps: '4rem',
+              rounded: 'xl',
+              '& > h1': {
+                textStyle: 'heading-md',
               },
-            }}
-          >
-            <Text as="h1" color="inherit" textStyle="heading-lg">
-              {frontmatter?.title}
-            </Text>
-            <Text color="inherit" textStyle="heading-sm">
-              {frontmatter?.description}
-            </Text>
+              '& > p': {
+                textStyle: 'body-md',
+                textWrap: 'pretty',
+                w: '3/4',
+              },
+            },
+          }}
+        >
+          <Text as="h1" color="inherit" textStyle="heading-lg">
+            {frontmatter?.title}
+          </Text>
+          <Text color="inherit" textStyle="heading-sm">
+            {frontmatter?.description}
+          </Text>
 
-            <Show when={hasLinks}>
-              <HStack pt="2rem">
-                <ApiLinks {...frontmatter} />
-              </HStack>
-            </Show>
-          </VStack>
-        </Show>
+          <Show when={hasLinks}>
+            <HStack pt="2rem">
+              <ApiLinks {...frontmatter} />
+            </HStack>
+          </Show>
+        </VStack>
+      </Show>
 
-        <Doc />
-      </>
-    )
-  }
-
-  return null
+      <Doc />
+    </>
+  )
 }
