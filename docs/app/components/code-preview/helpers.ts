@@ -42,6 +42,7 @@ export async function getExampleCode(
  * @returns The code snippet as a string.
  */
 export async function getCodeString(snippet: string): Promise<string> {
+  'use cache'
   try {
     return await codeToHtml(snippet, getShikiOptions('tsx'))
   } catch (error) {

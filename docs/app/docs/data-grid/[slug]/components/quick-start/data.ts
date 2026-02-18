@@ -1,9 +1,8 @@
-'use client'
-
 import { Employee } from './data.demo'
 
 // In a real app, this comes from useQuery / Server Components
-export const generateData = (count: number): Employee[] => {
+export const generateData = async (count: number): Promise<Employee[]> => {
+  'use cache'
   return Array.from({ length: count }).map((_, i) => ({
     id: i + 1,
     firstName: ['James', 'Sarah', 'Michael', 'Jessica', 'David'][i % 5],
@@ -15,6 +14,6 @@ export const generateData = (count: number): Employee[] => {
       name: ['Engineering', 'Sales', 'Marketing', 'HR'][i % 4],
       code: ['ENG', 'SAL', 'MKT', 'HR'][i % 4],
     },
-    lastLogin: new Date(Date.now() - i * 10000000).toISOString(),
+    lastLogin: new Date(performance.now() - i * 10000000).toISOString(),
   }))
 }
