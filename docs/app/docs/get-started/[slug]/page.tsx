@@ -1,5 +1,3 @@
-'use cache'
-
 import { VStack } from '@/styled-system/jsx/vstack'
 import { Show, Text } from '@cerberus-design/react'
 import { notFound } from 'next/navigation'

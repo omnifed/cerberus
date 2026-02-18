@@ -1,5 +1,3 @@
-'use cache'
-
 import { ArrowRight } from '@carbon/icons-react'
 import { For, Text, Tag, Show } from '@cerberus-design/react'
 import {
