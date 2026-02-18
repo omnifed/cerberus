@@ -8,7 +8,8 @@ import { CopyButton } from './copy-button'
 
 interface CodePreviewProps {
   id: string
-  preview: ReactNode | string
+  preview?: ReactNode | string
+  context?: 'components' | 'data-grid'
 }
 
 export default async function CodePreview(
@@ -17,7 +18,12 @@ export default async function CodePreview(
   const { code, preview, fallback, rawContent } = await getExampleCode(
     props.id,
     props.children,
+    props.context,
   )
+
+  if (!props.preview && props.id) {
+    return <CollapsibleCode code={code} fallback={fallback} />
+  }
 
   return (
     <VStack

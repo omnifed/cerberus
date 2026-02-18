@@ -8,13 +8,11 @@
   "main": "src/index.ts",
   "module": "src/index.ts",
   "scripts": {
-    "prepare": "panda codegen",
     "build": "vite build",
     "clean": "rm -rf ./dist",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^1.7.0",
     "react": "*",
     "react-dom": "*"
   },
@@ -23,7 +21,6 @@
     "@preact/signals-core": "^1.13.0"
   },
   "devDependencies": {
-    "@cerberus/panda-preset": "workspace:*",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",

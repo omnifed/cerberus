@@ -10,6 +10,7 @@ export function AppBar() {
   const icons = {
     '1': Rocket,
     '2': LogoReact,
+    '2.a': LogoReact,
     '3': TaskTools,
     '4': ColorPalette,
   }
