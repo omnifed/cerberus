@@ -1,23 +1,4 @@
-import { type ReactNode } from 'react'
-import { type ColumnDef, type ColumnFeatures } from './types'
-
-type AccessorOptions<TData, TValue> = {
-  id?: string
-  header: string | ((props: { colId: string }) => ReactNode)
-  features?: ColumnFeatures
-  width?: number
-  minWidth?: number
-  maxWidth?: number
-  cell?: (props: { row: TData; value: TValue }) => ReactNode
-}
-
-type DisplayOptions<TData> = {
-  id: string
-  header: string | ((props: { colId: string }) => ReactNode)
-  width?: number
-  features?: { pinning?: ColumnFeatures['pinning'] }
-  cell: (props: { row: TData; value: undefined }) => ReactNode
-}
+import type { AccessorOptions, DisplayOptions, ColumnDef } from './types'
 
 /**
  * A helper to format columns which provides a heavily typed interface for

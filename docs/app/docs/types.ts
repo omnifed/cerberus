@@ -37,4 +37,5 @@ export interface DocFrontmatter {
   recipe?: string
   source?: string
   panda?: string
+  package?: string
 }

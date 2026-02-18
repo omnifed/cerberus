@@ -31,6 +31,7 @@ interface ApiLinksProps {
   ark?: string
   arkUtility?: string
   panda?: string
+  package?: string
 }
 
 export default function ApiLinks(props: ApiLinksProps) {
@@ -63,6 +64,24 @@ export default function ApiLinks(props: ApiLinksProps) {
           <a
             className={apiLinkStyles}
             href={`https://github.com/omnifed/cerberus/blob/main/packages/react/src/${props.source}`}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <LogoGithub />
+            source
+            <ArrowUpRight
+              size={12}
+              className={css({ color: 'page.text.100' })}
+            />
+          </a>
+        </li>
+      </Show>
+
+      <Show when={Boolean(props.package)}>
+        <li>
+          <a
+            className={apiLinkStyles}
+            href={`https://github.com/omnifed/cerberus/blob/main/packages/${props.package}`}
             rel="noopener noreferrer"
             target="_blank"
           >

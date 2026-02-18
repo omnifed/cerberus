@@ -1,5 +1,3 @@
-'use cache'
-
 import { Show } from '@cerberus-design/react'
 import { items } from './content/items'
 import { Container } from '@/styled-system/jsx'

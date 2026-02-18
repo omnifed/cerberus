@@ -16,12 +16,13 @@ export interface ExampleCodeReturn {
 export async function getExampleCode(
   id: string,
   fallback?: ReactNode,
+  context?: 'components' | 'data-grid',
 ): Promise<ExampleCodeReturn> {
   if (!id)
     return { code: fallback, preview: null, rawContent: '', fallback: true }
 
   const data = _getExampleData(id)
-  const basePath = _getBasePath()
+  const basePath = _getBasePath(context)
   const examplePath = _getExamplePath(data)
 
   const content = await readFile(
@@ -41,6 +42,7 @@ export async function getExampleCode(
  * @returns The code snippet as a string.
  */
 export async function getCodeString(snippet: string): Promise<string> {
+  'use cache'
   try {
     return await codeToHtml(snippet, getShikiOptions('tsx'))
   } catch (error) {
@@ -64,8 +66,9 @@ function _getExampleData(id: string): ExampleData {
   }
 }
 
-function _getBasePath(): string {
-  return 'app/docs/components/[slug]/'
+function _getBasePath(context?: 'components' | 'data-grid'): string {
+  const ctx = context || 'components'
+  return `/app/docs/${ctx}/[slug]/`
 }
 
 function _getExamplePath(data: ExampleData): string {

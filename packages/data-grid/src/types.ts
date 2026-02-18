@@ -56,3 +56,25 @@ export interface GridOptions<TData> {
     pinning?: Record<string, 'left' | 'right'>
   }
 }
+
+export type AccessorOptions<TData, TValue> = {
+  id?: string
+  header: string | ((props: { colId: string }) => ReactNode)
+  features?: ColumnFeatures
+  width?: number
+  minWidth?: number
+  maxWidth?: number
+  cell?: (props: { row: TData; value: TValue }) => ReactNode
+}
+
+export type DisplayOptions<TData> = {
+  id: string
+  header: string | ((props: { colId: string }) => ReactNode)
+  width?: number
+  features?: { pinning?: ColumnFeatures['pinning'] }
+  cell: (props: DisplayColCellProps<TData>) => ReactNode
+}
+
+// Utils
+
+export type DisplayColCellProps<TData> = { row: TData; value: undefined }
