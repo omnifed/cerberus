@@ -1,20 +1,18 @@
+import type { ark } from '@ark-ui/react/factory'
+import type { CSSProperties, ElementType, PropsWithChildren } from 'react'
 import type {
-  CerberusComponent,
-  HTMLCerberusProps,
+  AsProps,
+  Assign,
+  ComponentProps,
+  Dict,
+  JsxHTMLProps,
   JsxStyleProps,
   RecipeVariantFn,
   RecipeVariantRecord,
   SlotRecipeVariantFn,
   SlotRecipeVariantRecord,
-  Dict,
-  JsxHTMLProps,
-  ComponentProps,
   UnstyledProps,
-  AsProps,
-  Assign,
 } from 'styled-system/types'
-import type { ElementType, PropsWithChildren, CSSProperties } from 'react'
-import type { ark } from '@ark-ui/react/factory'
 
 // Method signatures for recipes
 
@@ -40,7 +38,7 @@ export type WithRecipeOptions = {
 }
 
 export interface BaseCerberusProps
-  extends ArkFactoryProps, JsxStyleProps, Dict {
+  extends ArkFactoryProps, JsxStyleProps, Dict, UnstyledProps, AsProps {
   /**
    * The CSS styles applied to the component. Supports CSS Properties
    * declarations and style objects.
@@ -59,10 +57,10 @@ export type CerberusProps<
 
 // Primitive Response
 
-export type CerberusPrimitiveProps<T> = PropsWithChildren<BaseCerberusProps & T>
+export type CerberusPrimitiveProps<T> = PropsWithChildren<BaseCerberusProps> & T
 
 export type CerberusPrimitiveEl<T extends ElementType = ElementType> =
-  CerberusComponent<CerberusPrimitiveProps<T> & HTMLCerberusProps<T>>
+  ElementType<CerberusProps<T>>
 
 // Factory
 

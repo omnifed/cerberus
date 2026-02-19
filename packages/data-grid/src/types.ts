@@ -1,4 +1,7 @@
+import { type ReadonlySignal, type Signal } from '@preact/signals-core'
 import { type ReactNode } from 'react'
+
+// --- Public Types ---
 
 export type ColumnFeatures = {
   /**
@@ -75,6 +78,49 @@ export type DisplayOptions<TData> = {
   cell: (props: DisplayColCellProps<TData>) => ReactNode
 }
 
-// Utils
+// --- Util types ---
 
 export type DisplayColCellProps<TData> = { row: TData; value: undefined }
+
+// --- Internal Types ---
+
+export type InternalColumn<TData> = {
+  id: string
+  // Mutable Signals
+  width: Signal<number>
+  pinned: Signal<'left' | 'right' | false>
+  isVisible: Signal<boolean>
+  // Static Config
+  sortable: boolean
+  filterable: boolean
+  getValue: (row: TData) => ReactNode
+  original: ColumnDef<TData>
+}
+
+export type SortState = { id: string; desc: boolean }
+
+export interface GridStore<TData> {
+  // State Signals
+  rows: Signal<TData[]>
+  columns: Signal<InternalColumn<TData>[]>
+  sorting: Signal<SortState[]>
+  globalFilter: Signal<string>
+
+  // Pagination Signals
+  pageIndex: Signal<number>
+  pageSize: Signal<number>
+
+  // Computed (Read-Only)
+  visibleRows: ReadonlySignal<TData[]>
+  rootCssVars: ReadonlySignal<Record<string, string>>
+  totalWidth: ReadonlySignal<number>
+  pageCount: ReadonlySignal<number>
+  rowCount: ReadonlySignal<number>
+
+  // Actions
+  resizeColumn: (colId: string, delta: number) => void
+  toggleSort: (colId: string, multi?: boolean) => void
+  setPage: (index: number) => void
+  setGlobalFilter: (val: string) => void
+  updateData: (newData: TData[]) => void
+}

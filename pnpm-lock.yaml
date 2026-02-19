@@ -250,9 +250,9 @@ importers:
 
   packages/data-grid:
     dependencies:
-      '@ark-ui/react':
-        specifier: ^5.31.0
-        version: 5.31.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@cerberus-design/react':
+        specifier: workspace:*
+        version: link:../react
       '@preact/signals-core':
         specifier: ^1.13.0
         version: 1.13.0
@@ -275,6 +275,9 @@ importers:
       react-dom:
         specifier: ^19.2.4
         version: 19.2.4(react@19.2.4)
+      styled-system:
+        specifier: workspace:*
+        version: link:../../styled-system
       vite:
         specifier: ^7.3.1
         version: 7.3.1(@types/node@25.2.3)(jiti@2.4.2)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.8.2)
@@ -402,19 +405,13 @@ importers:
       '@dnd-kit/core':
         specifier: ^6.3.1
         version: 6.3.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@pandacss/dev':
+        specifier: ^1.7.0
+        version: 1.8.2(jsdom@26.0.0)(typescript@5.9.3)
     devDependencies:
-      '@cerberus-design/configs':
-        specifier: workspace:*
-        version: link:../../configs
-      '@cerberus/panda-preset':
-        specifier: workspace:*
-        version: link:../panda-preset
       '@internationalized/date':
         specifier: ^3.11.0
         version: 3.11.0
-      '@pandacss/dev':
-        specifier: ^1.8.2
-        version: 1.8.2(jsdom@26.0.0)(typescript@5.9.3)
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -433,6 +430,9 @@ importers:
       react-dom:
         specifier: ^19.2.4
         version: 19.2.4(react@19.2.4)
+      styled-system:
+        specifier: workspace:*
+        version: link:../../styled-system
       vite:
         specifier: ^7.3.1
         version: 7.3.1(@types/node@25.2.3)(jiti@2.4.2)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.8.2)
@@ -451,6 +451,21 @@ importers:
       '@pandacss/types':
         specifier: ^1.8.2
         version: 1.8.2
+
+  styled-system:
+    devDependencies:
+      '@cerberus/panda-preset':
+        specifier: workspace:*
+        version: link:../packages/panda-preset
+      '@pandacss/dev':
+        specifier: ^1.8.2
+        version: 1.8.2(jsdom@26.0.0)(typescript@5.9.3)
+      '@types/react':
+        specifier: 19.2.2
+        version: 19.2.2
+      react:
+        specifier: ^19.2.4
+        version: 19.2.4
 
   tests:
     devDependencies:
@@ -505,6 +520,9 @@ importers:
       react-dom:
         specifier: ^19.2.4
         version: 19.2.4(react@19.2.4)
+      styled-system:
+        specifier: workspace:*
+        version: link:../styled-system
 
 packages:
 
@@ -2391,6 +2409,9 @@ packages:
 
   '@types/react@19.2.14':
     resolution: {integrity: sha512-ilcTH/UniCkMdtexkoCN0bI7pMcJDvmQFPvuPvmEaYA/NSfFTAgdUSLAoVjaRJm7+6PvcM+q1zYOwS4wTYMF9w==}
+
+  '@types/react@19.2.2':
+    resolution: {integrity: sha512-6mDvHUFSjyT2B2yeNx2nUgMxh9LtOWvkhIU3uePn2I2oyNymUAX1NIsdgviM4CH+JSrp2D2hsMvJOkxY+0wNRA==}
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
@@ -8575,6 +8596,10 @@ snapshots:
       '@types/react': 19.2.14
 
   '@types/react@19.2.14':
+    dependencies:
+      csstype: 3.2.3
+
+  '@types/react@19.2.2':
     dependencies:
       csstype: 3.2.3
 

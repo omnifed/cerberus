@@ -1,3 +1,5 @@
+'use client'
+
 import { OverflowMenuHorizontal } from '@carbon/icons-react'
 import { Format, IconButton, Tag, TagProps, Text } from '@cerberus-design/react'
 import { VStack } from 'styled-system/jsx'
