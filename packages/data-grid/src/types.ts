@@ -24,7 +24,7 @@ export type ColumnFeatures = {
   /**
    * Show pinning options in the column menu
    */
-  pinning?: 'left' | 'right' | false
+  pinning?: PinnedState
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -80,6 +80,7 @@ export type DisplayOptions<TData> = {
 
 // --- Util types ---
 
+export type PinnedState = 'left' | 'right' | false
 export type DisplayColCellProps<TData> = { row: TData; value: undefined }
 
 // --- Internal Types ---

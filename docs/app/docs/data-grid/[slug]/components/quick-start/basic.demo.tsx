@@ -10,7 +10,7 @@ export function BasicDemo() {
   const data = useFakeQuery(1000)
 
   return (
-    <HStack w="3/4">
+    <HStack h="20rem" w="3/4">
       <DataGrid columns={columns} data={data} />
     </HStack>
   )

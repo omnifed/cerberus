@@ -1,5 +1,6 @@
 'use client'
 
+import { For, Show } from '@cerberus-design/react'
 import {
   type CSSProperties,
   memo,
@@ -7,10 +8,67 @@ import {
   type ReactNode,
   useRef,
 } from 'react'
+import { Box, HStack } from 'styled-system/jsx'
 import { useSignalValue } from '../adapter'
 import { useDataGridContext } from '../context'
+import { usePinnedAttribute, usePinnedState } from '../hooks'
+import { PARTS, SCOPE } from '../parts'
 import type { InternalColumn } from '../types'
 import { useVirtualizer } from '../virtualizer'
+
+export function GridViewport() {
+  const store = useDataGridContext()
+  const columns = useSignalValue(store.columns)
+  const viewportRef = useRef<HTMLDivElement>(null)
+  const { virtualRows, totalHeight } = useVirtualizer(store, viewportRef)
+
+  return (
+    <Box
+      data-scope={SCOPE}
+      data-part={PARTS.VIEWPORT}
+      flex="1"
+      pos="relative"
+      w="full"
+      ref={viewportRef}
+    >
+      <HStack
+        gap="0"
+        h="2.5rem" // Must match rowHeight in virtualizer
+        pos="sticky"
+        top="0"
+        w="var(--total-grid-width)"
+        zIndex="sticky"
+      >
+        <For each={columns}>
+          {(col) => (
+            <Show when={col.isVisible.value} key={col.id}>
+              {() => <GridHeaderCell column={col} />}
+            </Show>
+          )}
+        </For>
+      </HStack>
+
+      <Box
+        pos="relative"
+        w="var(--total-grid-width)"
+        style={{
+          height: `${totalHeight}px`,
+        }}
+      >
+        <For each={virtualRows}>
+          {(vRow) => (
+            <GridRow
+              key={vRow.index}
+              row={vRow.data}
+              index={vRow.index}
+              offsetY={vRow.offsetY}
+            />
+          )}
+        </For>
+      </Box>
+    </Box>
+  )
+}
 
 // --- 1. Header Cell ---
 
@@ -20,8 +78,13 @@ export const GridHeaderCell = memo(function GridHeaderCell({
   column: InternalColumn<unknown>
 }) {
   const store = useDataGridContext()
+
   const sortState = useSignalValue(store.sorting)
-  const isPinned = useSignalValue(column.pinned)
+  const pinnedVal = useSignalValue(column.pinned)
+
+  const pinnedState = usePinnedState(pinnedVal)
+  const pinnedAttr = usePinnedAttribute(pinnedVal)
+
   const sort = sortState.find((s) => s.id === column.id)
 
   const handleMouseDown = (e: MouseEvent) => {
@@ -43,20 +106,54 @@ export const GridHeaderCell = memo(function GridHeaderCell({
   }
 
   const style: CSSProperties = {
+    left: pinnedVal === 'left' ? `var(--col-${column.id}-left)` : undefined,
+    right: pinnedVal === 'right' ? `var(--col-${column.id}-right)` : undefined,
     width: `var(--col-${column.id}-width)`,
-    position: isPinned ? 'sticky' : 'relative',
-    left: isPinned === 'left' ? `var(--col-${column.id}-left)` : undefined,
-    right: isPinned === 'right' ? `var(--col-${column.id}-right)` : undefined,
-    zIndex: isPinned ? 20 : 10,
   }
 
   return (
-    <div
-      className="group relative flex items-center px-4 py-3 bg-gray-50 border-b border-r border-gray-200 text-sm font-semibold text-gray-700 select-none"
+    <HStack
+      data-scope={SCOPE}
+      data-part={PARTS.HEAD_CELL}
+      data-state={pinnedState}
+      {...pinnedAttr}
+      alignItems="center"
+      bgColor="page.bg.initial"
+      borderBottom="1px solid"
+      borderColor="page.border.200"
+      gap="0"
+      h="full"
+      pos="relative"
+      px="md"
+      py="md"
+      userSelect="none"
+      textAlign="left"
+      textStyle="label-md"
+      verticalAlign="middle"
+      zIndex="10"
+      _first={{
+        borderTopLeftRadius: 'md',
+      }}
+      _last={{
+        borderTopRightRadius: 'md',
+      }}
+      _pinned={{
+        pos: 'sticky',
+        zIndex: 20,
+      }}
+      _leftPinned={{
+        borderRightColor: 'page.border.200',
+        borderRight: '1px solid',
+      }}
+      _rightPinned={{
+        borderLeftColor: 'page.border.200',
+        borderLeft: '1px solid',
+      }}
+      className="group"
       style={style}
     >
       <div
-        className={`flex-1 flex items-center gap-2 cursor-pointer ${column.sortable ? 'hover:text-black' : ''}`}
+        data-clx={`flex-1 flex items-center gap-2 cursor-pointer ${column.sortable ? 'hover:text-black' : ''}`}
         onClick={() => column.sortable && store.toggleSort(column.id)}
       >
         {/* Render String or Component Header */}
@@ -68,11 +165,11 @@ export const GridHeaderCell = memo(function GridHeaderCell({
       </div>
 
       <div
-        className="absolute right-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-blue-400 group-hover:bg-gray-300 transition-colors"
+        data-clx="absolute right-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-blue-400 group-hover:bg-gray-300 transition-colors"
         onMouseDown={handleMouseDown}
         onClick={(e) => e.stopPropagation()}
       />
-    </div>
+    </HStack>
   )
 })
 
@@ -88,25 +185,47 @@ export const GridCell = memo(function GridCell({
 }) {
   const value = column.getValue(row)
   const isPinned = useSignalValue(column.pinned)
+  const pinnedVal = useSignalValue(column.pinned)
+
+  const pinnedState = usePinnedState(pinnedVal)
+  const pinnedAttr = usePinnedAttribute(pinnedVal)
 
   const style: CSSProperties = {
-    width: `var(--col-${column.id}-width)`,
-    position: isPinned ? 'sticky' : 'relative',
     left: isPinned === 'left' ? `var(--col-${column.id}-left)` : undefined,
     right: isPinned === 'right' ? `var(--col-${column.id}-right)` : undefined,
-    zIndex: isPinned ? 10 : 0, // Lower than header
-    backgroundColor: isPinned ? 'var(--bg-color, white)' : undefined,
+    width: `var(--col-${column.id}-width)`,
   }
 
   return (
-    <div
-      className="flex items-center px-4 py-2 border-b border-r border-gray-100 text-sm text-gray-800 truncate"
+    <HStack
+      data-scope={SCOPE}
+      data-part={PARTS.CELL}
+      data-state={pinnedState}
+      {...pinnedAttr}
+      bgColor="inherit"
+      borderColor="page.border.200"
+      h="full"
+      pos="relative"
+      truncate
+      zIndex="base"
+      _pinned={{
+        pos: 'sticky',
+        zIndex: 20,
+      }}
+      _leftPinned={{
+        borderRightColor: 'page.border.200',
+        borderRight: '1px solid',
+      }}
+      _rightPinned={{
+        borderLeftColor: 'page.border.200',
+        borderLeft: '1px solid',
+      }}
       style={style}
     >
       {column.original.cell
         ? column.original.cell({ row, value })
         : (value as ReactNode)}
-    </div>
+    </HStack>
   )
 })
 
@@ -124,68 +243,29 @@ export const GridRow = memo(function GridRow({
   const columns = useSignalValue(store.columns)
 
   return (
-    <div
-      className="absolute left-0 w-full flex bg-white hover:bg-gray-50 transition-colors"
+    <HStack
+      data-scope={SCOPE}
+      data-part={PARTS.ROW}
+      bgColor="page.surface.100"
+      gap="0"
+      h="2.5rem" // Must match rowHeight in virtualizer
+      left="0"
+      pos="absolute"
+      w="full"
+      _even={{
+        bgColor: 'page.surface.initial',
+      }}
       style={{
         transform: `translateY(${offsetY}px)`,
-        height: '40px', // Must match rowHeight in virtualizer
       }}
     >
-      {columns.map(
-        (col) =>
-          col.isVisible.value && (
-            <GridCell key={col.id} row={row} column={col} />
-          ),
-      )}
-    </div>
+      <For each={columns}>
+        {(col) => (
+          <Show when={col.isVisible.value} key={col.id}>
+            {() => <GridCell row={row} column={col} />}
+          </Show>
+        )}
+      </For>
+    </HStack>
   )
 })
-
-// --- 4. The Viewport ---
-
-export function GridViewport() {
-  const store = useDataGridContext()
-  const columns = useSignalValue(store.columns)
-  const viewportRef = useRef<HTMLDivElement>(null)
-  const { virtualRows, totalHeight } = useVirtualizer(store, viewportRef)
-
-  return (
-    <div
-      ref={viewportRef}
-      className="flex-1 overflow-auto relative w-full"
-      style={{
-        // Ensure horizontal scroll works by forcing min-width
-        minWidth: '100%',
-      }}
-    >
-      {/* Sticky Header */}
-      <div
-        className="sticky top-0 flex z-30 shadow-sm"
-        style={{ minWidth: 'var(--total-grid-width)' }}
-      >
-        {columns.map(
-          (col) =>
-            col.isVisible.value && <GridHeaderCell key={col.id} column={col} />,
-        )}
-      </div>
-
-      {/* Scrollable Body Content */}
-      <div
-        className="relative"
-        style={{
-          height: `${totalHeight}px`,
-          minWidth: 'var(--total-grid-width)',
-        }}
-      >
-        {virtualRows.map((vRow) => (
-          <GridRow
-            key={vRow.index}
-            row={vRow.data}
-            index={vRow.index}
-            offsetY={vRow.offsetY}
-          />
-        ))}
-      </div>
-    </div>
-  )
-}

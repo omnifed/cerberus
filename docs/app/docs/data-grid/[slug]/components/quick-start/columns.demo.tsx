@@ -77,7 +77,7 @@ export const columns = [
   // F. Display Column (Right Pinned Actions)
   columnHelper.display({
     id: 'actions',
-    header: '',
+    header: 'Options',
     width: 60,
     features: {
       pinning: 'right',

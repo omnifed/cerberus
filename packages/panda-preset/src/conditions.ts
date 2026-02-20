@@ -7,18 +7,27 @@ export const conditions = {
   darkMode: '[data-color-mode=dark] &, &.dark, .dark &',
   systemMode: '[data-color-mode=system] &, &.system, .system &',
 
-  // states
+  // visual states
   open: '&:is([open], [data-open], [data-state=open])',
   closed: '&:is([closed], [data-closed], [data-state=closed])',
-  checked:
-    '&:is(:checked, [data-checked], [aria-checked=true], [data-state=checked])',
-  indeterminate: '&:is([data-state=indeterminate])',
   modalOpen: '&:is([data-modal-open=true])',
-  placeholderShown: '&:is([data-placeholder-shown])',
-  screenReaderOnly: '&:is([data-screen-reader-only=true])',
+  pinned: '&:is([data-pinned], [data-state=pinned])',
+  leftPinned: '&:is([data-pinned=left])',
+  rightPinned: '&:is([data-pinned=right])',
+
+  // D&D
   isOver: '&:is([data-over=true], [data-dragging])',
   isDropped: '&:is([data-dropped=true])',
   isComplete: '&:is([data-complete=true])',
+
+  // UI states
+  placeholderShown: '&:is([data-placeholder-shown])',
+  screenReaderOnly: '&:is([data-screen-reader-only=true])',
+
+  // input states
+  checked:
+    '&:is(:checked, [data-checked], [aria-checked=true], [data-state=checked])',
+  indeterminate: '&:is([data-state=indeterminate])',
   dataReadOnly: '&:is([data-readonly])',
   userInvalid: '&:is(:user-invalid, [aria-invalid], [data-invalid])',
   groupInvalid: '.group:is([data-invalid] &, [aria-invalid]) &',

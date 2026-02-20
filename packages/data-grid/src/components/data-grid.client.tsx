@@ -1,31 +1,21 @@
 'use client'
 
-import {
-  type CSSProperties,
-  type ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { type ReactNode, useEffect, useRef, useState } from 'react'
+import { HStack, Scrollable, Stack } from 'styled-system/jsx'
 import { DataGridProvider } from '../context'
+import { PARTS, SCOPE } from '../parts'
 import { createGridStore } from '../store'
 import type { GridOptions } from '../types'
 import { GridViewport } from './grid.client'
 
 interface DataGridProps<TData> extends GridOptions<TData> {
-  className?: string
   toolbar?: ReactNode
   footer?: ReactNode
 }
 
-export function DataGrid<TData>({
-  data,
-  columns,
-  className = '',
-  toolbar,
-  footer,
-  initialState,
-}: DataGridProps<TData>) {
+export function DataGrid<TData>(props: DataGridProps<TData>) {
+  const { data, columns, initialState } = props
+
   // Lazy cache store for React compatibility
   const [store] = useState(() =>
     createGridStore({
@@ -56,22 +46,39 @@ export function DataGrid<TData>({
 
   return (
     <DataGridProvider store={store}>
-      <div
+      {props.toolbar && (
+        <HStack data-scope={SCOPE} data-part={PARTS.TOOLBAR} w="full">
+          {props.toolbar}
+        </HStack>
+      )}
+
+      <Stack
+        data-scope={SCOPE}
+        data-part={PARTS.ROOT}
+        dir="columns"
+        h="full"
+        border="1px solid"
+        borderColor="page.border.initial"
+        rounded="lg"
+        overflow="hidden"
+        w="full"
         ref={rootRef}
-        className={`flex flex-col h-full bg-white border border-gray-200 rounded-lg overflow-hidden ${className}`}
-        style={
-          {
-            // Default CSS Variables for themes can go here
-            '--bg-color': '#ffffff',
-          } as CSSProperties
-        }
       >
-        {toolbar && <div className="flex-none">{toolbar}</div>}
+        <Scrollable
+          hideScrollbar
+          h="full"
+          w="full"
+          style={{
+            maxHeight: '20rem',
+          }}
+        >
+          <GridViewport />
+        </Scrollable>
 
-        <GridViewport />
-
-        <div className="flex-none">{footer}</div>
-      </div>
+        <HStack data-scope={SCOPE} data-part={PARTS.FOOTER} w="full">
+          {props.footer}
+        </HStack>
+      </Stack>
     </DataGridProvider>
   )
 }

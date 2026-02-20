@@ -14,22 +14,28 @@ export interface Conditions {
   _open: string
   /** `&:is([closed], [data-closed], [data-state=closed])` */
   _closed: string
-  /** `&:is(:checked, [data-checked], [aria-checked=true], [data-state=checked])` */
-  _checked: string
-  /** `&:is([data-state=indeterminate])` */
-  _indeterminate: string
   /** `&:is([data-modal-open=true])` */
   _modalOpen: string
-  /** `&:is([data-placeholder-shown])` */
-  _placeholderShown: string
-  /** `&:is([data-screen-reader-only=true])` */
-  _screenReaderOnly: string
+  /** `&:is([data-pinned], [data-state=pinned])` */
+  _pinned: string
+  /** `&:is([data-pinned=left])` */
+  _leftPinned: string
+  /** `&:is([data-pinned=right])` */
+  _rightPinned: string
   /** `&:is([data-over=true], [data-dragging])` */
   _isOver: string
   /** `&:is([data-dropped=true])` */
   _isDropped: string
   /** `&:is([data-complete=true])` */
   _isComplete: string
+  /** `&:is([data-placeholder-shown])` */
+  _placeholderShown: string
+  /** `&:is([data-screen-reader-only=true])` */
+  _screenReaderOnly: string
+  /** `&:is(:checked, [data-checked], [aria-checked=true], [data-state=checked])` */
+  _checked: string
+  /** `&:is([data-state=indeterminate])` */
+  _indeterminate: string
   /** `&:is([data-readonly])` */
   _dataReadOnly: string
   /** `&:is(:user-invalid, [aria-invalid], [data-invalid])` */

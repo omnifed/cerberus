@@ -24,6 +24,20 @@ describe('conditions', () => {
     )
   })
 
+  test('should have a pinned', () => {
+    expect(conditions.pinned).toEqual(
+      '&:is([data-pinned], [data-state=pinned])',
+    )
+  })
+
+  test('should have a leftPinned', () => {
+    expect(conditions.leftPinned).toEqual('&:is([data-pinned=left])')
+  })
+
+  test('should have a rightPinned', () => {
+    expect(conditions.rightPinned).toEqual('&:is([data-pinned=right])')
+  })
+
   test('should have a modalOpen', () => {
     expect(conditions.modalOpen).toEqual('&:is([data-modal-open=true])')
   })

@@ -6,6 +6,7 @@ package: 'data-grid'
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import BashTabs from '@/app/components/bash-tabs'
+import { CodeSnippet } from '@/app/components/code-snippet'
 
 ## What is Data Grid?
 
@@ -36,6 +37,17 @@ your local project:
 - [`@cerberus/panda-preset`](https://cerberus.digitalu.design/docs/get-started/installation)
 
 <NoteAdmonition description="The Data Grid utilizes the Cerberus ecosystem to ensure styling, APIs, and customization are consistent." />
+
+## PandaCSS Setup
+
+Once you have installed the Data Grid, we recommend adding it to the `include` array in your `panda.config.ts` file:
+
+<CodeSnippet snippet={`export default createCerberusConfig({
+    include: [
+      './node_modules/@cerberus/data-grid/src/components/*.{ts,tsx}',
+      // ...your other stuff,
+    ],
+})`} />
 
 ## Typescript
 
