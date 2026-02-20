@@ -11,10 +11,11 @@ import {
 import { Box, HStack } from 'styled-system/jsx'
 import { useSignalValue } from '../adapter'
 import { useDataGridContext } from '../context'
-import { usePinnedAttribute, usePinnedState } from '../hooks'
+import { useColumnStyles, usePinnedAttribute, usePinnedState } from '../hooks'
 import { PARTS, SCOPE } from '../parts'
 import type { InternalColumn } from '../types'
 import { useVirtualizer } from '../virtualizer'
+import { Dict } from 'styled-system/types'
 
 export function GridViewport() {
   const store = useDataGridContext()
@@ -84,6 +85,7 @@ export const GridHeaderCell = memo(function GridHeaderCell({
 
   const pinnedState = usePinnedState(pinnedVal)
   const pinnedAttr = usePinnedAttribute(pinnedVal)
+  const style = useColumnStyles(column, pinnedVal)
 
   const sort = sortState.find((s) => s.id === column.id)
 
@@ -105,19 +107,13 @@ export const GridHeaderCell = memo(function GridHeaderCell({
     window.addEventListener('mouseup', onUp)
   }
 
-  const style: CSSProperties = {
-    left: pinnedVal === 'left' ? `var(--col-${column.id}-left)` : undefined,
-    right: pinnedVal === 'right' ? `var(--col-${column.id}-right)` : undefined,
-    width: `var(--col-${column.id}-width)`,
-  }
-
   return (
     <HStack
       data-scope={SCOPE}
       data-part={PARTS.HEAD_CELL}
       data-state={pinnedState}
+      data-col={column.id}
       {...pinnedAttr}
-      alignItems="center"
       bgColor="page.bg.initial"
       borderBottom="1px solid"
       borderColor="page.border.200"
@@ -169,6 +165,10 @@ export const GridHeaderCell = memo(function GridHeaderCell({
         onMouseDown={handleMouseDown}
         onClick={(e) => e.stopPropagation()}
       />
+
+      <Show when={pinnedState === 'pinned'}>
+        {() => <ShadowFiller style={style} {...pinnedAttr} />}
+      </Show>
     </HStack>
   )
 })
@@ -184,17 +184,11 @@ export const GridCell = memo(function GridCell({
   column: InternalColumn<ReactNode>
 }) {
   const value = column.getValue(row)
-  const isPinned = useSignalValue(column.pinned)
   const pinnedVal = useSignalValue(column.pinned)
 
   const pinnedState = usePinnedState(pinnedVal)
   const pinnedAttr = usePinnedAttribute(pinnedVal)
-
-  const style: CSSProperties = {
-    left: isPinned === 'left' ? `var(--col-${column.id}-left)` : undefined,
-    right: isPinned === 'right' ? `var(--col-${column.id}-right)` : undefined,
-    width: `var(--col-${column.id}-width)`,
-  }
+  const style: CSSProperties = useColumnStyles(column, pinnedVal)
 
   return (
     <HStack
@@ -206,7 +200,10 @@ export const GridCell = memo(function GridCell({
       borderColor="page.border.200"
       h="full"
       pos="relative"
-      truncate
+      px="md"
+      py="md"
+      userSelect="none"
+      verticalAlign="middle"
       zIndex="base"
       _pinned={{
         pos: 'sticky',
@@ -225,6 +222,10 @@ export const GridCell = memo(function GridCell({
       {column.original.cell
         ? column.original.cell({ row, value })
         : (value as ReactNode)}
+
+      <Show when={pinnedState === 'pinned'}>
+        {() => <ShadowFiller style={style} {...pinnedAttr} />}
+      </Show>
     </HStack>
   )
 })
@@ -269,3 +270,38 @@ export const GridRow = memo(function GridRow({
     </HStack>
   )
 })
+
+// -- Shadow Filler
+
+interface ShadowFillerProps extends Dict {
+  style: CSSProperties
+}
+
+function ShadowFiller(props: ShadowFillerProps) {
+  const { style, ...rest } = props
+
+  return (
+    <Box
+      bottom="0"
+      h="full"
+      pos="absolute"
+      w="0.75rem"
+      zIndex="inherit"
+      _leftPinned={{
+        bgGradient: 'to-r',
+        gradientFrom: 'black/10',
+        gradientTo: 'transparent',
+      }}
+      _rightPinned={{
+        bgGradient: 'to-l',
+        gradientFrom: 'black/10',
+        gradientTo: 'transparent',
+      }}
+      style={{
+        left: style.left ? style.width : undefined,
+        right: style.right ? style.width : undefined,
+      }}
+      {...rest}
+    />
+  )
+}

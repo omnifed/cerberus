@@ -1,5 +1,6 @@
 'use client'
 
+import { Show } from '@cerberus-design/react'
 import { type ReactNode, useEffect, useRef, useState } from 'react'
 import { HStack, Scrollable, Stack } from 'styled-system/jsx'
 import { DataGridProvider } from '../context'
@@ -46,11 +47,13 @@ export function DataGrid<TData>(props: DataGridProps<TData>) {
 
   return (
     <DataGridProvider store={store}>
-      {props.toolbar && (
-        <HStack data-scope={SCOPE} data-part={PARTS.TOOLBAR} w="full">
-          {props.toolbar}
-        </HStack>
-      )}
+      <Show when={props.toolbar}>
+        {() => (
+          <HStack data-scope={SCOPE} data-part={PARTS.TOOLBAR} w="full">
+            {props.toolbar}
+          </HStack>
+        )}
+      </Show>
 
       <Stack
         data-scope={SCOPE}
@@ -75,9 +78,13 @@ export function DataGrid<TData>(props: DataGridProps<TData>) {
           <GridViewport />
         </Scrollable>
 
-        <HStack data-scope={SCOPE} data-part={PARTS.FOOTER} w="full">
-          {props.footer}
-        </HStack>
+        <Show when={props.footer}>
+          {() => (
+            <HStack data-scope={SCOPE} data-part={PARTS.FOOTER} w="full">
+              {props.footer}
+            </HStack>
+          )}
+        </Show>
       </Stack>
     </DataGridProvider>
   )
