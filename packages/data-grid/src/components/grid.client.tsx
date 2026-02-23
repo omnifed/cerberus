@@ -241,6 +241,9 @@ export const GridRow = memo(function GridRow({
       _even={{
         bgColor: 'page.surface.initial',
       }}
+      _hover={{
+        bgColor: 'page.surface.200',
+      }}
       style={{
         transform: `translateY(${offsetY}px)`,
       }}

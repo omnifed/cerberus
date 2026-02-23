@@ -5,17 +5,45 @@ import {
   Menu,
   MenuContent,
   MenuItem,
+  type MenuSelectionDetails,
   MenuSeparator,
   MenuTrigger,
-  SelectValueChangeDetails,
   Show,
 } from '@cerberus-design/react'
-import { ReactNode } from 'react'
-import { InternalColumn } from '../types'
+import { type ReactNode } from 'react'
+import { useSignalValue } from '../adapter'
+import { useDataGridContext } from '../context'
+import { InternalColumn, PinnedState } from '../types'
 
 export function HeaderCellOptions(props: InternalColumn<ReactNode>) {
-  function handleSelect(details: SelectValueChangeDetails) {
-    console.log(details)
+  const store = useDataGridContext()
+
+  function handleSelect(details: MenuSelectionDetails) {
+    const val = details.value
+    const specialVal = val.split('_')
+    const category = specialVal[0]
+    const action = specialVal[1]
+
+    if (val === 'filter') {
+      return console.log('Show Filter popover...')
+    }
+
+    switch (category) {
+      case 'pin':
+        return store.togglePinned(props.id, action as PinnedState)
+      case 'unpin':
+        return store.togglePinned(props.id, false)
+      case 'sort':
+        // This needs to be improved to support a direction
+        // return store.toggleSort(props.id, true)
+        return console.log('Handle sort', action)
+      default:
+        console.error('Unhandled action:', { details, action })
+    }
+  }
+
+  if (!props.sortable && !props.pinnable && !props.filterable) {
+    return null
   }
 
   return (
@@ -36,8 +64,7 @@ export function HeaderCellOptions(props: InternalColumn<ReactNode>) {
           <Show when={props.sortable}>
             <MenuSeparator />
           </Show>
-          <MenuItem value="right">Pin Right</MenuItem>
-          <MenuItem value="left">Pin Left</MenuItem>
+          <MatchPinnedItems pinned={props.pinned} />
         </Show>
 
         <Show when={props.filterable}>
@@ -47,4 +74,21 @@ export function HeaderCellOptions(props: InternalColumn<ReactNode>) {
       </MenuContent>
     </Menu>
   )
+}
+
+function MatchPinnedItems(props: {
+  pinned: InternalColumn<ReactNode>['pinned']
+}) {
+  const pinned = useSignalValue(props.pinned)
+  switch (pinned) {
+    case 'right':
+      return <MenuItem value="unpin_current">Unpin {pinned}</MenuItem>
+    default:
+      return (
+        <>
+          <MenuItem value="pin_right">Pin Right</MenuItem>
+          <MenuItem value="pin_left">Pin Left</MenuItem>
+        </>
+      )
+  }
 }

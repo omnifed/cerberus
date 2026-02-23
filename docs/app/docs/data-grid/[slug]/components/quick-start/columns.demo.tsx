@@ -81,9 +81,7 @@ export const columns = [
     header: 'Actions',
     width: 125,
     features: {
-      pinning: {
-        defaultPosition: 'right',
-      },
+      pinning: true,
     },
     cell: () => (
       <HStack justify="center" w="full">
