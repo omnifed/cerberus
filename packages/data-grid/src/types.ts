@@ -1,3 +1,4 @@
+import { PaginationRootProps } from '@cerberus-design/react'
 import { type ReadonlySignal, type Signal } from '@preact/signals-core'
 import { type ReactNode } from 'react'
 
@@ -24,7 +25,13 @@ export type ColumnFeatures = {
   /**
    * Show pinning options in the column menu
    */
-  pinning?: PinnedState
+  pinning?:
+    | (boolean & {
+        defaultPosition?: never
+      })
+    | {
+        defaultPosition?: PinnedState
+      }
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -34,17 +41,30 @@ export type ColumnDef<TData, TValue = any> = {
    * The label or custom compoent to display.
    */
   header: string | ((props: { colId: string }) => ReactNode)
+  /**
+   * A helper to access the value of the cell used to render a custom cell value.
+   */
   accessor: (row: TData) => TValue
-
-  // Visuals
-  width?: number
+  /**
+   * Strictly define the cell width. Expects a pixel-based number.
+   * @default 150px
+   */
   minWidth?: number
-  maxWidth?: number
+  /**
+   * Strictly define the cell width. Expects a pixel-based number.
+   * @default 150px
+   */
+  width?: number
 
   // Capability Flags
   features?: ColumnFeatures
 
-  // Renderer
+  /**
+   * The cell renderer. Provides access to the accessor value and row data. This
+   * is used to provide custom components for the cell content.
+   *
+   * If no content is provided a string will be rendered.
+   */
   cell?: (props: { row: TData; value: TValue }) => ReactNode
 }
 
@@ -54,9 +74,9 @@ export interface GridOptions<TData> {
 
   // Initial State
   initialState?: {
-    pagination?: { pageIndex: number; pageSize: number }
+    pagination?: PaginationRootProps
     sorting?: { id: string; desc: boolean }[]
-    pinning?: Record<string, 'left' | 'right'>
+    defaultPinnedCols?: Record<string, PinnedState>
   }
 }
 
@@ -80,7 +100,7 @@ export type DisplayOptions<TData> = {
 
 // --- Util types ---
 
-export type PinnedState = 'left' | 'right' | false
+export type PinnedState = 'left' | 'right' | undefined | boolean
 export type DisplayColCellProps<TData> = { row: TData; value: undefined }
 
 // --- Internal Types ---
@@ -89,9 +109,10 @@ export type InternalColumn<TData> = {
   id: string
   // Mutable Signals
   width: Signal<number>
-  pinned: Signal<'left' | 'right' | false>
+  pinned: Signal<PinnedState>
   isVisible: Signal<boolean>
   // Static Config
+  pinnable: boolean
   sortable: boolean
   filterable: boolean
   getValue: (row: TData) => ReactNode
@@ -120,6 +141,7 @@ export interface GridStore<TData> {
 
   // Actions
   resizeColumn: (colId: string, delta: number) => void
+  togglePinned: (colId: string, state: PinnedState) => void
   toggleSort: (colId: string, multi?: boolean) => void
   setPage: (index: number) => void
   setGlobalFilter: (val: string) => void

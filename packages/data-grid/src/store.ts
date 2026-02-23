@@ -12,19 +12,29 @@ export function createGridStore<TData>(
   const rows = signal(options.data)
   const globalFilter = signal('')
   const sorting = signal<SortState[]>(options.initialState?.sorting ?? [])
-  const pageIndex = signal(options.initialState?.pagination?.pageIndex ?? 0)
+  const pageIndex = signal(options.initialState?.pagination?.defaultPage ?? 0)
   const pageSize = signal(options.initialState?.pagination?.pageSize ?? 25)
+
+  const defaultFeatures = {
+    sorting: true,
+    pinning: true,
+    filtering: true,
+    resizing: true,
+  }
 
   // 2. Initialize Columns
   const initialCols = options.columns.map((col) => ({
     id: col.id,
     width: signal(col.width ?? 150),
     pinned: signal(
-      col.features?.pinning ?? options.initialState?.pinning?.[col.id] ?? false,
+      col.features?.pinning?.defaultPosition ??
+        options.initialState?.defaultPinnedCols?.[col.id] ??
+        false,
     ),
     isVisible: signal(true),
-    sortable: !!col.features?.sort,
-    filterable: !!col.features?.filter,
+    sortable: checkIfExists(col.features?.sort, defaultFeatures.sorting),
+    pinnable: checkIfExists(col.features?.pinning, defaultFeatures.pinning),
+    filterable: checkIfExists(col.features?.filter, defaultFeatures.filtering),
     getValue: col.accessor,
     original: col,
   }))
@@ -146,6 +156,12 @@ export function createGridStore<TData>(
       }
     },
 
+    togglePinned: (colId, state) => {
+      const col = columns.value.find((c) => c.id === colId)
+      if (!state) return
+      if (col) col.pinned.value = state ?? false
+    },
+
     toggleSort: (colId, multi) => {
       const current = sorting.value
       const exists = current.find((s) => s.id === colId)
@@ -173,4 +189,11 @@ export function createGridStore<TData>(
       pageIndex.value = 0 // Reset to first page on filter
     },
   }
+}
+
+function checkIfExists(
+  valueToCheck: unknown | undefined,
+  fallback: boolean,
+): boolean {
+  return valueToCheck !== null ? Boolean(valueToCheck) : fallback
 }

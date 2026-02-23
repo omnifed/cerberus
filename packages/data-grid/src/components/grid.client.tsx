@@ -1,13 +1,7 @@
 'use client'
 
 import { For, Show } from '@cerberus-design/react'
-import {
-  type CSSProperties,
-  memo,
-  type MouseEvent,
-  type ReactNode,
-  useRef,
-} from 'react'
+import { type CSSProperties, memo, type ReactNode, useRef } from 'react'
 import { Box, HStack } from 'styled-system/jsx'
 import { useSignalValue } from '../adapter'
 import { useDataGridContext } from '../context'
@@ -16,6 +10,7 @@ import { PARTS, SCOPE } from '../parts'
 import type { InternalColumn } from '../types'
 import { useVirtualizer } from '../virtualizer'
 import { Dict } from 'styled-system/types'
+import { HeaderCellOptions } from './features.client'
 
 export function GridViewport() {
   const store = useDataGridContext()
@@ -78,34 +73,34 @@ export const GridHeaderCell = memo(function GridHeaderCell({
 }: {
   column: InternalColumn<unknown>
 }) {
-  const store = useDataGridContext()
+  // const store = useDataGridContext()
 
-  const sortState = useSignalValue(store.sorting)
+  // const sortState = useSignalValue(store.sorting)
   const pinnedVal = useSignalValue(column.pinned)
 
   const pinnedState = usePinnedState(pinnedVal)
   const pinnedAttr = usePinnedAttribute(pinnedVal)
   const style = useColumnStyles(column, pinnedVal)
 
-  const sort = sortState.find((s) => s.id === column.id)
+  // const sort = sortState.find((s) => s.id === column.id)
 
-  const handleMouseDown = (e: MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    const startX = e.clientX
+  // const handleMouseDown = (e: MouseEvent) => {
+  //   e.preventDefault()
+  //   e.stopPropagation()
+  //   const startX = e.clientX
 
-    const onMove = (me: globalThis.MouseEvent) => {
-      store.resizeColumn(column.id, me.clientX - startX)
-    }
+  //   const onMove = (me: globalThis.MouseEvent) => {
+  //     store.resizeColumn(column.id, me.clientX - startX)
+  //   }
 
-    const onUp = () => {
-      window.removeEventListener('mousemove', onMove)
-      window.removeEventListener('mouseup', onUp)
-    }
+  //   const onUp = () => {
+  //     window.removeEventListener('mousemove', onMove)
+  //     window.removeEventListener('mouseup', onUp)
+  //   }
 
-    window.addEventListener('mousemove', onMove)
-    window.addEventListener('mouseup', onUp)
-  }
+  //   window.addEventListener('mousemove', onMove)
+  //   window.addEventListener('mouseup', onUp)
+  // }
 
   return (
     <HStack
@@ -117,8 +112,8 @@ export const GridHeaderCell = memo(function GridHeaderCell({
       bgColor="page.bg.initial"
       borderBottom="1px solid"
       borderColor="page.border.200"
-      gap="0"
       h="full"
+      justify="space-between"
       pos="relative"
       px="md"
       py="md"
@@ -126,6 +121,7 @@ export const GridHeaderCell = memo(function GridHeaderCell({
       textAlign="left"
       textStyle="label-md"
       verticalAlign="middle"
+      w="full"
       zIndex="10"
       _first={{
         borderTopLeftRadius: 'md',
@@ -148,23 +144,12 @@ export const GridHeaderCell = memo(function GridHeaderCell({
       className="group"
       style={style}
     >
-      <div
-        data-clx={`flex-1 flex items-center gap-2 cursor-pointer ${column.sortable ? 'hover:text-black' : ''}`}
-        onClick={() => column.sortable && store.toggleSort(column.id)}
-      >
-        {/* Render String or Component Header */}
-        {typeof column.original.header === 'function'
-          ? column.original.header({ colId: column.id })
-          : column.original.header}
+      {/* Render String or Component Header */}
+      {typeof column.original.header === 'function'
+        ? column.original.header({ colId: column.id })
+        : column.original.header}
 
-        {sort && (sort.desc ? 'down' : 'up')}
-      </div>
-
-      <div
-        data-clx="absolute right-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-blue-400 group-hover:bg-gray-300 transition-colors"
-        onMouseDown={handleMouseDown}
-        onClick={(e) => e.stopPropagation()}
-      />
+      <HeaderCellOptions {...column} />
 
       <Show when={pinnedState === 'pinned'}>
         {() => <ShadowFiller style={style} {...pinnedAttr} />}

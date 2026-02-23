@@ -67,14 +67,7 @@ export function DataGrid<TData>(props: DataGridProps<TData>) {
         w="full"
         ref={rootRef}
       >
-        <Scrollable
-          hideScrollbar
-          h="full"
-          w="full"
-          style={{
-            maxHeight: '20rem',
-          }}
-        >
+        <Scrollable hideScrollbar h="full" w="full">
           <GridViewport />
         </Scrollable>
 

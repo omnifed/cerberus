@@ -32,7 +32,10 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       minW: '10rem',
       rounded: 'md',
       shadow: 'lg',
-      ...focusStates,
+      _focusVisible: {
+        ...focusStates._focusVisible,
+        outlineColor: 'transparent',
+      },
       _open: {
         animationStyle: 'slide-fade-in',
         animationDuration: 'fast',
