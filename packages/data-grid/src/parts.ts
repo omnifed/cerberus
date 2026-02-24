@@ -1,4 +1,5 @@
 export const SCOPE = 'data-grid'
+export const DEFAULT_COL_H = 40
 
 export const PARTS = {
   TOOLBAR: 'toolbar',

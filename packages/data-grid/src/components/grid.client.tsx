@@ -8,7 +8,8 @@ import {
   type ReactNode,
   useRef,
 } from 'react'
-import { Box, HStack } from 'styled-system/jsx'
+import { Box, HStack, Scrollable } from 'styled-system/jsx'
+import type { Dict } from 'styled-system/types'
 import { useSignalValue } from '../adapter.client'
 import { useDataGridContext } from '../context.client'
 import {
@@ -19,7 +20,6 @@ import {
 import { PARTS, SCOPE } from '../parts'
 import type { InternalColumn } from '../types'
 import { useVirtualizer } from '../virtualizer.client'
-import { Dict } from 'styled-system/types'
 import { HeaderCellOptions } from './features.client'
 
 export function GridViewport() {
@@ -31,10 +31,14 @@ export function GridViewport() {
   const columns = useSignalValue(store.columns)
 
   return (
-    <Box
+    <Scrollable
+      hideScrollbar
       data-scope={SCOPE}
       data-part={PARTS.VIEWPORT}
       flex="1"
+      h="full"
+      minH="0"
+      minW="full"
       pos="relative"
       w="full"
       ref={viewportRef}
@@ -75,7 +79,7 @@ export function GridViewport() {
           )}
         </For>
       </Box>
-    </Box>
+    </Scrollable>
   )
 }
 
@@ -159,7 +163,6 @@ export const GridHeaderCell = memo(function GridHeaderCell(
       className="group"
       style={style}
     >
-      {/* Render String or Component Header */}
       {typeof column.original.header === 'function'
         ? column.original.header({ colId: column.id })
         : column.original.header}

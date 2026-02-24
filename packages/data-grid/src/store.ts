@@ -91,6 +91,7 @@ export function createGridStore<TData>(
   })
 
   const visibleRows = computed(() => {
+    return processedRows.value
     const start = pageIndex.value * pageSize.value
     return processedRows.value.slice(start, start + pageSize.value)
   })

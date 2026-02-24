@@ -2,7 +2,7 @@
 
 import { Show } from '@cerberus-design/react'
 import { type ReactNode, useEffect, useRef, useState } from 'react'
-import { HStack, Scrollable, Stack } from 'styled-system/jsx'
+import { HStack, Stack } from 'styled-system/jsx'
 import { DataGridProvider } from '../context.client'
 import { PARTS, SCOPE } from '../parts'
 import { createGridStore } from '../store'
@@ -16,6 +16,7 @@ interface DataGridProps<TData> extends GridOptions<TData> {
 
 export function DataGrid<TData>(props: DataGridProps<TData>) {
   const { data, columns, initialState } = props
+  const [ready, setReady] = useState<boolean>(false)
 
   // Lazy cache store for React compatibility
   const [store] = useState(() =>
@@ -41,6 +42,7 @@ export function DataGrid<TData>(props: DataGridProps<TData>) {
         Object.entries(vars).forEach(([key, val]) => {
           rootRef.current?.style.setProperty(key, val)
         })
+        if (!ready) setReady(true)
       }
     })
   }, [store])
@@ -67,9 +69,7 @@ export function DataGrid<TData>(props: DataGridProps<TData>) {
         w="full"
         ref={rootRef}
       >
-        <Scrollable hideScrollbar h="full" w="full">
-          <GridViewport />
-        </Scrollable>
+        <Show when={ready}>{() => <GridViewport />}</Show>
 
         <Show when={props.footer}>
           {() => (

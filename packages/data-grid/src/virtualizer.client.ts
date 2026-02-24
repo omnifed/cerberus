@@ -1,39 +1,49 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useSignalValue } from './adapter.client'
+import { DEFAULT_COL_H } from './parts'
 import type { GridStore } from './types'
 
 export function useVirtualizer(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  store: GridStore<any>,
+  store: GridStore<unknown>,
   viewportRef: React.RefObject<HTMLDivElement | null>,
 ) {
   const rows = useSignalValue(store.visibleRows)
-  const rowHeight = 40 // Default height, could be dynamic
+  const rowHeight = DEFAULT_COL_H
   const totalHeight = rows.length * rowHeight
 
-  const [scrollTop, setScrollTop] = useState(0)
+  // Force render updates in the React DOM
+  const [scrollTop, setScrollTop] = useState<number>(0)
+  const [containerHeight, setContainerHeight] = useState<number>(0)
 
   useEffect(() => {
     const el = viewportRef.current
     if (!el) return
 
     const onScroll = () => {
-      // Use RAF to decouple scroll event from React state update
       requestAnimationFrame(() => {
         setScrollTop(el.scrollTop)
       })
     }
-
     el.addEventListener('scroll', onScroll, { passive: true })
-    return () => el.removeEventListener('scroll', onScroll)
-  }, [])
 
-  const visibleCount = Math.ceil(
-    (viewportRef.current?.clientHeight ?? 600) / rowHeight,
-  )
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setContainerHeight(entry.contentRect.height)
+      }
+    })
+    observer.observe(el)
+
+    return () => {
+      el.removeEventListener('scroll', onScroll)
+      observer.disconnect()
+    }
+  }, [viewportRef])
+
   const buffer = 5
+  const visibleCount = Math.ceil((containerHeight || 600) / rowHeight)
+
   const start = Math.max(0, Math.floor(scrollTop / rowHeight) - buffer)
   const end = Math.min(rows.length, start + visibleCount + buffer * 2)
 
@@ -43,5 +53,8 @@ export function useVirtualizer(
     offsetY: (start + index) * rowHeight,
   }))
 
-  return { virtualRows, totalHeight, rowHeight }
+  return useMemo(
+    () => ({ virtualRows, totalHeight, rowHeight }),
+    [virtualRows, totalHeight, rowHeight],
+  )
 }
