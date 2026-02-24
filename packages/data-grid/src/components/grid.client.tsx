@@ -1,7 +1,13 @@
 'use client'
 
 import { For, Show } from '@cerberus-design/react'
-import { type CSSProperties, memo, type ReactNode, useRef } from 'react'
+import {
+  type CSSProperties,
+  memo,
+  PropsWithChildren,
+  type ReactNode,
+  useRef,
+} from 'react'
 import { Box, HStack } from 'styled-system/jsx'
 import { useSignalValue } from '../adapter'
 import { useDataGridContext } from '../context'
@@ -13,10 +19,12 @@ import { Dict } from 'styled-system/types'
 import { HeaderCellOptions } from './features.client'
 
 export function GridViewport() {
-  const store = useDataGridContext()
-  const columns = useSignalValue(store.columns)
   const viewportRef = useRef<HTMLDivElement>(null)
+
+  const store = useDataGridContext()
   const { virtualRows, totalHeight } = useVirtualizer(store, viewportRef)
+
+  const columns = useSignalValue(store.columns)
 
   return (
     <Box
@@ -27,22 +35,23 @@ export function GridViewport() {
       w="full"
       ref={viewportRef}
     >
-      <HStack
-        gap="0"
+      <Box
         h="2.5rem" // Must match rowHeight in virtualizer
         pos="sticky"
         top="0"
         w="var(--total-grid-width)"
         zIndex="sticky"
       >
-        <For each={columns}>
-          {(col) => (
-            <Show when={col.isVisible.value} key={col.id}>
-              {() => <GridHeaderCell column={col} />}
-            </Show>
-          )}
-        </For>
-      </HStack>
+        <HStack gap="0" h="full" pos="relative" w="full">
+          <For each={columns}>
+            {(col) => (
+              <Show when={col.isVisible.value} key={col.id}>
+                {() => <GridHeaderCell column={col} />}
+              </Show>
+            )}
+          </For>
+        </HStack>
+      </Box>
 
       <Box
         pos="relative"
@@ -68,15 +77,17 @@ export function GridViewport() {
 
 // --- 1. Header Cell ---
 
-export const GridHeaderCell = memo(function GridHeaderCell({
-  column,
-}: {
+interface GridHeaderCellProps {
   column: InternalColumn<unknown>
-}) {
-  // const store = useDataGridContext()
+}
 
-  // const sortState = useSignalValue(store.sorting)
+export const GridHeaderCell = memo(function GridHeaderCell(
+  props: GridHeaderCellProps,
+) {
+  const { column } = props
+
   const pinnedVal = useSignalValue(column.pinned)
+  // const sortState = useSignalValue(store.sorting)
 
   const pinnedState = usePinnedState(pinnedVal)
   const pinnedAttr = usePinnedAttribute(pinnedVal)
@@ -160,15 +171,16 @@ export const GridHeaderCell = memo(function GridHeaderCell({
 
 // --- 2. Body Cell ---
 
-export const GridCell = memo(function GridCell({
-  row,
-  column,
-}: {
+interface GridCellProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   row: any
   column: InternalColumn<ReactNode>
-}) {
+}
+
+export const GridCell = memo(function GridCell(props: GridCellProps) {
+  const { column, row } = props
   const value = column.getValue(row)
+
   const pinnedVal = useSignalValue(column.pinned)
 
   const pinnedState = usePinnedState(pinnedVal)
@@ -217,17 +229,36 @@ export const GridCell = memo(function GridCell({
 
 // --- 3. Body Row ---
 
-export const GridRow = memo(function GridRow({
-  row,
-  offsetY,
-}: {
+interface GridRowProps {
   row: unknown
   index: number
   offsetY: number
-}) {
+}
+
+export const GridRow = memo(function GridRow(props: GridRowProps) {
   const store = useDataGridContext()
   const columns = useSignalValue(store.columns)
 
+  return (
+    <GridRowContainer offsetY={props.offsetY}>
+      <For each={columns}>
+        {(col) => (
+          <Show when={col.isVisible.value} key={col.id}>
+            {() => <GridCell row={props.row} column={col} />}
+          </Show>
+        )}
+      </For>
+    </GridRowContainer>
+  )
+})
+
+// -- Row Container
+
+interface GridRowContainerProps {
+  offsetY: number
+}
+
+function GridRowContainer(props: PropsWithChildren<GridRowContainerProps>) {
   return (
     <HStack
       data-scope={SCOPE}
@@ -245,19 +276,13 @@ export const GridRow = memo(function GridRow({
         bgColor: 'page.surface.200',
       }}
       style={{
-        transform: `translateY(${offsetY}px)`,
+        transform: `translateY(${props.offsetY}px)`,
       }}
     >
-      <For each={columns}>
-        {(col) => (
-          <Show when={col.isVisible.value} key={col.id}>
-            {() => <GridCell row={row} column={col} />}
-          </Show>
-        )}
-      </For>
+      {props.children}
     </HStack>
   )
-})
+}
 
 // -- Shadow Filler
 

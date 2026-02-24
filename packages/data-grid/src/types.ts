@@ -75,8 +75,6 @@ export interface GridOptions<TData> {
   // Initial State
   initialState?: {
     pagination?: PaginationRootProps
-    sorting?: { id: string; desc: boolean }[]
-    defaultPinnedCols?: Record<string, PinnedState>
   }
 }
 
@@ -108,9 +106,9 @@ export type DisplayColCellProps<TData> = { row: TData; value: undefined }
 export type InternalColumn<TData> = {
   id: string
   // Mutable Signals
-  width: Signal<number>
   pinned: Signal<PinnedState>
   isVisible: Signal<boolean>
+  width: Signal<number>
   // Static Config
   pinnable: boolean
   sortable: boolean

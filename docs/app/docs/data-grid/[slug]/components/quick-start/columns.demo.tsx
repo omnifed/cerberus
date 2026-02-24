@@ -61,6 +61,9 @@ export const columns = [
   columnHelper.accessor('status', {
     header: 'Status',
     width: 110,
+    features: {
+      pinning: true,
+    },
     cell: ({ value }) => {
       const palette: Record<string, TagProps['palette']> = {
         active: 'success',

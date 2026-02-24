@@ -11,9 +11,9 @@ import {
   Show,
 } from '@cerberus-design/react'
 import { type ReactNode } from 'react'
-import { useSignalValue } from '../adapter'
 import { useDataGridContext } from '../context'
 import { InternalColumn, PinnedState } from '../types'
+import { MatchPinnedItems } from './pinned-items.client'
 
 export function HeaderCellOptions(props: InternalColumn<ReactNode>) {
   const store = useDataGridContext()
@@ -74,21 +74,4 @@ export function HeaderCellOptions(props: InternalColumn<ReactNode>) {
       </MenuContent>
     </Menu>
   )
-}
-
-function MatchPinnedItems(props: {
-  pinned: InternalColumn<ReactNode>['pinned']
-}) {
-  const pinned = useSignalValue(props.pinned)
-  switch (pinned) {
-    case 'right':
-      return <MenuItem value="unpin_current">Unpin {pinned}</MenuItem>
-    default:
-      return (
-        <>
-          <MenuItem value="pin_right">Pin Right</MenuItem>
-          <MenuItem value="pin_left">Pin Left</MenuItem>
-        </>
-      )
-  }
 }

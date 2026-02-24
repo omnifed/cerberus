@@ -1,5 +1,5 @@
 import { signal, computed } from '@preact/signals-core'
-import type { GridOptions, GridStore, SortState } from './types'
+import type { GridOptions, GridStore, InternalColumn, SortState } from './types'
 
 /**
  * Internal signal-based Store engine driving the state. We expose this in
@@ -11,7 +11,7 @@ export function createGridStore<TData>(
   // 1. Core State
   const rows = signal(options.data)
   const globalFilter = signal('')
-  const sorting = signal<SortState[]>(options.initialState?.sorting ?? [])
+  const sorting = signal<SortState[]>([])
   const pageIndex = signal(options.initialState?.pagination?.defaultPage ?? 0)
   const pageSize = signal(options.initialState?.pagination?.pageSize ?? 25)
 
@@ -19,11 +19,7 @@ export function createGridStore<TData>(
   const initialCols = options.columns.map((col) => ({
     id: col.id,
     width: signal(col.width ?? 150),
-    pinned: signal(
-      col.features?.pinning?.defaultPosition ??
-        options.initialState?.defaultPinnedCols?.[col.id] ??
-        false,
-    ),
+    pinned: signal(col.features?.pinning?.defaultPosition ?? false),
     isVisible: signal(true),
     getValue: col.accessor,
     original: col,
@@ -79,6 +75,21 @@ export function createGridStore<TData>(
   const rowCount = computed(() => processedRows.value.length)
   const pageCount = computed(() => Math.ceil(rowCount.value / pageSize.value))
 
+  const orderedColumns = computed(() => {
+    const left: InternalColumn<TData>[] = []
+    const center: InternalColumn<TData>[] = []
+    const right: InternalColumn<TData>[] = []
+
+    columns.value.forEach((col) => {
+      const pin = col.pinned.value
+      if (pin === 'left') left.push(col)
+      else if (pin === 'right') right.push(col)
+      else center.push(col)
+    })
+
+    return [...left, ...center, ...right]
+  })
+
   const visibleRows = computed(() => {
     const start = pageIndex.value * pageSize.value
     return processedRows.value.slice(start, start + pageSize.value)
@@ -87,23 +98,25 @@ export function createGridStore<TData>(
   // 5. Layout Engine (CSS Variables)
   const rootCssVars = computed(() => {
     const vars: Record<string, string> = {}
-    const cols = columns.value
+    const cols = orderedColumns.value
     let leftOffset = 0
     let rightOffset = 0
 
     // Pass 1: Widths & Left Pins
     cols.forEach((col) => {
       const w = col.width.value
+      const order = orderedColumns.value.findIndex(
+        (orderedCol) => orderedCol.id === col.id,
+      )
+
+      vars[`--col-${col.id}-order`] = `${order}`
       vars[`--col-${col.id}-width`] = `${w}px`
 
       if (col.pinned.value === 'left') {
         vars[`--col-${col.id}-left`] = `${leftOffset}px`
         leftOffset += w
       }
-    })
 
-    // Pass 2: Right Pins (Reverse)
-    ;[...cols].reverse().forEach((col) => {
       if (col.pinned.value === 'right') {
         vars[`--col-${col.id}-right`] = `${rightOffset}px`
         rightOffset += col.width.value
@@ -121,7 +134,6 @@ export function createGridStore<TData>(
     columns.value.reduce((acc, c) => acc + c.width.value, 0),
   )
 
-  // 6. Actions
   return {
     rows,
     columns,

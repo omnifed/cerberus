@@ -16,6 +16,7 @@ export function useColumnStyles(
   pinnedVal: PinnedState,
 ): CSSProperties {
   const styles: CSSProperties = {
+    order: `var(--col-${column.id}-order)`,
     left: pinnedVal === 'left' ? `var(--col-${column.id}-left)` : undefined,
     right: pinnedVal === 'right' ? `var(--col-${column.id}-right)` : undefined,
     width: `var(--col-${column.id}-width)`,
