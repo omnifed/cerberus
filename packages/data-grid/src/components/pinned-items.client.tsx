@@ -2,7 +2,7 @@
 
 import { MenuItem } from '@cerberus-design/react'
 import { type ElementType, type ReactNode } from 'react'
-import { useSignalValue } from '../adapter'
+import { useSignalValue } from '../adapter.client'
 import { InternalColumn } from '../types'
 
 export function MatchPinnedItems(props: {

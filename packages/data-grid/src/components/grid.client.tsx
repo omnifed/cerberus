@@ -9,12 +9,16 @@ import {
   useRef,
 } from 'react'
 import { Box, HStack } from 'styled-system/jsx'
-import { useSignalValue } from '../adapter'
-import { useDataGridContext } from '../context'
-import { useColumnStyles, usePinnedAttribute, usePinnedState } from '../hooks'
+import { useSignalValue } from '../adapter.client'
+import { useDataGridContext } from '../context.client'
+import {
+  useColumnStyles,
+  usePinnedAttribute,
+  usePinnedState,
+} from '../hooks.client'
 import { PARTS, SCOPE } from '../parts'
 import type { InternalColumn } from '../types'
-import { useVirtualizer } from '../virtualizer'
+import { useVirtualizer } from '../virtualizer.client'
 import { Dict } from 'styled-system/types'
 import { HeaderCellOptions } from './features.client'
 

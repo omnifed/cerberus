@@ -3,7 +3,7 @@
 import { Show } from '@cerberus-design/react'
 import { type ReactNode, useEffect, useRef, useState } from 'react'
 import { HStack, Scrollable, Stack } from 'styled-system/jsx'
-import { DataGridProvider } from '../context'
+import { DataGridProvider } from '../context.client'
 import { PARTS, SCOPE } from '../parts'
 import { createGridStore } from '../store'
 import type { GridOptions } from '../types'

@@ -1,3 +1,5 @@
+'use client'
+
 import { type ReactNode, type CSSProperties } from 'react'
 import type { InternalColumn, PinnedState } from './types'
 

@@ -5,6 +5,6 @@
 
 export * from './components/data-grid.client'
 export * from './column-helpers'
-export * from './context'
+export * from './context.client'
 
 export * from './types'

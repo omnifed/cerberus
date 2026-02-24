@@ -11,7 +11,7 @@ import {
   Show,
 } from '@cerberus-design/react'
 import { type ReactNode } from 'react'
-import { useDataGridContext } from '../context'
+import { useDataGridContext } from '../context.client'
 import { InternalColumn, PinnedState } from '../types'
 import { MatchPinnedItems } from './pinned-items.client'
 

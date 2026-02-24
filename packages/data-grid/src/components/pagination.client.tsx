@@ -1,7 +1,7 @@
 'use client'
 
-import { useDataGridContext } from '../context'
-import { useSignalValue } from '../adapter'
+import { useDataGridContext } from '../context.client'
+import { useSignalValue } from '../adapter.client'
 
 export function GridPagination() {
   const store = useDataGridContext()

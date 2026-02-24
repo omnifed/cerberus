@@ -1,3 +1,5 @@
+'use client'
+
 import { type Signal } from '@preact/signals-core'
 import { useSyncExternalStore } from 'react'
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useSignalValue } from './adapter'
+import { useSignalValue } from './adapter.client'
 import type { GridStore } from './types'
 
 export function useVirtualizer(
