@@ -1,38 +1,11 @@
-import { PaginationRootProps } from '@cerberus-design/react'
+import {
+  type EnforceNoProperties,
+  type PaginationRootProps,
+} from '@cerberus-design/react'
 import { type ReadonlySignal, type Signal } from '@preact/signals-core'
 import { type ReactNode } from 'react'
 
 // --- Public Types ---
-
-export type ColumnFeatures = {
-  /**
-   * Allow the column to be sorted and the rules to use.
-   */
-  sort?:
-    | boolean
-    | {
-        descFirst?: boolean
-        comparator?: (a: unknown, b: unknown) => number
-      }
-  /**
-   * Allow the column to be filtered and the rules to use.
-   */
-  filter?:
-    | boolean
-    | {
-        operator?: 'contains' | 'equals' | 'startsWith'
-      }
-  /**
-   * Show pinning options in the column menu
-   */
-  pinning?:
-    | (boolean & {
-        defaultPosition?: never
-      })
-    | {
-        defaultPosition?: PinnedState
-      }
-}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ColumnDef<TData, TValue = any> = {
@@ -96,11 +69,6 @@ export type DisplayOptions<TData> = {
   cell: (props: DisplayColCellProps<TData>) => ReactNode
 }
 
-// --- Util types ---
-
-export type PinnedState = 'left' | 'right' | undefined | boolean
-export type DisplayColCellProps<TData> = { row: TData; value: undefined }
-
 // --- Internal Types ---
 
 export type InternalColumn<TData> = {
@@ -120,30 +88,69 @@ export type InternalColumn<TData> = {
 
 export type SortState = { id: string; desc: boolean }
 
+// -- Store Context --
+
 export interface GridStore<TData> {
   // State Signals
-  rows: Signal<TData[]>
   columns: Signal<InternalColumn<TData>[]>
-  sorting: Signal<SortState[]>
+  rows: Signal<TData[]>
   globalFilter: Signal<string>
+  sorting: Signal<SortState[]>
 
   // Pagination Signals
   pageIndex: Signal<number>
   pageSize: Signal<number>
 
   // Computed (Read-Only)
-  visibleRows: ReadonlySignal<TData[]>
-  rootCssVars: ReadonlySignal<Record<string, string>>
-  totalWidth: ReadonlySignal<number>
   pageCount: ReadonlySignal<number>
+  rootCssVars: ReadonlySignal<Record<string, string>>
   rowCount: ReadonlySignal<number>
+  totalWidth: ReadonlySignal<number>
+  visibleRows: ReadonlySignal<TData[]>
 
   // Actions
   resizeColumn: (colId: string, delta: number) => void
-  togglePinned: (colId: string, state: PinnedState) => void
-  toggleSort: (colId: string, multi?: boolean) => void
+  setContainerWidth: (val: number) => void
   setPage: (index: number) => void
   setGlobalFilter: (val: string) => void
+  setSort: (colId: string, direction: SortDirection, multi: boolean) => void
+  togglePinned: (colId: string, state: PinnedState) => void
+  toggleSort: (colId: string, multi?: boolean) => void
   updateData: (newData: TData[]) => void
-  setContainerWidth: (val: number) => void
 }
+
+// -- Column Features --
+
+export type ColumnFeatures = {
+  /**
+   * Allow the column to be sorted and the rules to use.
+   */
+  sort?: (boolean & EnforceNoProperties<SortOptions>) | SortOptions
+  /**
+   * Allow the column to be filtered and the rules to use.
+   */
+  filter?:
+    | boolean
+    | {
+        operator?: 'contains' | 'equals' | 'startsWith'
+      }
+  /**
+   * Show pinning options in the column menu
+   */
+  pinning?: (boolean & EnforceNoProperties<PinnedOptions>) | PinnedOptions
+}
+
+export type PinnedOptions = {
+  defaultPosition?: PinnedState
+}
+
+export type SortOptions = {
+  firstSortDirection?: SortDirection
+  comparator?: (a: unknown, b: unknown) => number
+}
+
+// --- Util types ---
+
+export type SortDirection = 'asc' | 'desc' | null
+export type PinnedState = 'left' | 'right' | undefined | boolean
+export type DisplayColCellProps<TData> = { row: TData; value: undefined }

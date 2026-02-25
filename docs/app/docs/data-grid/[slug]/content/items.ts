@@ -33,4 +33,10 @@ export const items = [
     label: 'Pinning',
     slug: 'pinning',
   },
+  {
+    id: '1.2',
+    href: '/docs/data-grid/sort',
+    label: 'Sorting',
+    slug: 'sort',
+  },
 ]

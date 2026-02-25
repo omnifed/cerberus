@@ -11,24 +11,24 @@ export function createGridStore<TData>(
   const rows = signal(options.data)
   const containerWidth = signal(0)
 
-  const sorting = signal<SortState[]>([])
   const globalFilter = signal('')
+  const sorting = signal<SortState[]>([])
 
   const pageIndex = signal(options.initialState?.pagination?.defaultPage ?? 0)
   const pageSize = signal(options.initialState?.pagination?.pageSize ?? 25)
 
   const initialCols = options.columns.map((col) => ({
     id: col.id,
-    width: signal(col.width ?? 150),
-    pinned: signal(col.features?.pinning?.defaultPosition ?? false),
     isFlex: signal(col.width === undefined),
     isVisible: signal(true),
-    getValue: col.accessor,
     original: col,
+    pinned: signal(col.features?.pinning?.defaultPosition ?? false),
+    width: signal(col.width ?? 150),
+    getValue: col.accessor,
     // feature flags
-    sortable: Boolean(col.features?.sort),
     pinnable: Boolean(col.features?.pinning),
     filterable: Boolean(col.features?.filter),
+    sortable: Boolean(col.features?.sort),
   }))
   const columns = signal(initialCols)
 
@@ -58,10 +58,23 @@ export function createGridStore<TData>(
           const valA = col.getValue(a)
           const valB = col.getValue(b)
 
-          if (valA === valB) continue
+          if (valA === valB) continue // Move to next tie-breaker if equal
 
-          // Basic comparison (extend for dates/numbers)
-          const comparison = valA > valB ? 1 : -1
+          // Use custom comparator if provided
+          let comparison = 0
+          const customComparator =
+            typeof col.original.features?.sort === 'object'
+              ? col.original.features.sort.comparator
+              : undefined
+
+          if (customComparator) {
+            comparison = customComparator(valA, valB)
+          } else {
+            // Fallback: Default JS Comparison
+            comparison = valA > valB ? 1 : -1
+          }
+
+          // Invert the result if we are sorting descending
           return sort.desc ? -comparison : comparison
         }
         return 0
@@ -186,6 +199,30 @@ export function createGridStore<TData>(
       rows.value = newData
     },
 
+    setSort: (colId, direction, multi = false) => {
+      if (direction === null) {
+        sorting.value = sorting.value.filter((s) => s.id !== colId)
+        return
+      }
+
+      const current = sorting.value
+      const newSort = { id: colId, desc: direction === 'desc' }
+
+      if (multi) {
+        const existingIndex = current.findIndex((s) => s.id === colId)
+        if (existingIndex >= 0) {
+          const next = [...current]
+          next[existingIndex] = newSort
+          sorting.value = next
+        } else {
+          sorting.value = [...current, newSort]
+        }
+      } else {
+        // Single sort clears all other sorts
+        sorting.value = [newSort]
+      }
+    },
+
     togglePinned: (colId, state) => {
       const col = columns.value.find((c) => c.id === colId)
       if (col) col.pinned.value = state ?? false
@@ -194,6 +231,7 @@ export function createGridStore<TData>(
     toggleSort: (colId, multi) => {
       const current = sorting.value
       const exists = current.find((s) => s.id === colId)
+
       if (exists) {
         if (exists.desc) {
           sorting.value = current.filter((s) => s.id !== colId) // Remove

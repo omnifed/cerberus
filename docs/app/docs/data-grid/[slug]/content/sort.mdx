@@ -1,0 +1,40 @@
+---
+title: Column Sorting
+description: Learn about the column sorting feature in the Data Grid component.
+package: 'data-grid'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { DEMOS } from '../components/sorting/static'
+
+## Overview
+
+Sorting allows users to list the data in ascending or descending order. There are
+two ways for a user to sort:
+
+1. **Clicking on the header arrow icon**: This will toggle the order from ascending to descending and vice versa.
+2. **Using the sort menu**: Users can also use the sort menu to strictly determine the order of the data.
+
+<CodePreview {...DEMOS.basic} />
+
+## Implementing column sorting
+
+You must opt-in to column sorting by setting the `features.sort` prop to `true` or 
+utilzing the options object. Doing so will display the sorting options in the column menu.
+
+<CodePreview {...DEMOS.basic} />
+
+## Custom Comparator
+
+...TBD
+
+## Options
+
+The `sort` feature accepts either a `boolean` or an object with the following properties:
+
+<CodePreview {...DEMOS.data} />
+
+| Params    | Required    | Description                                        |
+| --------- | ----------- | -------------------------------------------------- |
+| `todo` |  `false` | Whether the column should be pinned by default. |
