@@ -30,6 +30,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
 
   base: {
     ...buttonBase,
+    minW: '2.85rem',
     pxi: '4',
   },
 

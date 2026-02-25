@@ -8,5 +8,5 @@ export default createCerberusConfig({
   presets: [createCerberusPreset()],
 
   exclude: [],
-  outdir: 'styled-system',
+  outdir: '.',
 })

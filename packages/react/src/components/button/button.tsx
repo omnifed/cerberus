@@ -2,11 +2,10 @@
 
 import { createContext, useContext, useMemo } from 'react'
 import { Box } from 'styled-system/jsx'
-import { type ButtonVariantProps } from 'styled-system/recipes'
 import type { CerberusProps } from '../../system/types'
 import { Show } from '../show/index'
 import { Spinner } from '../spinner/index'
-import { ButtonRoot } from './primitives'
+import { ButtonRoot, ButtonRootProps } from './primitives'
 
 /**
  * This module contains the Button component.
@@ -21,7 +20,7 @@ const ButtonContext = createContext<ButtonContextValue>({
   pending: false,
 })
 
-export interface ButtonProps extends ButtonVariantProps {
+export interface ButtonProps extends ButtonRootProps {
   /**
    * If true, the button will show a loading spinner.
    */
@@ -32,7 +31,7 @@ export interface ButtonProps extends ButtonVariantProps {
  * A component that allows the user to perform actions
  * @see https://cerberus.digitalu.design/react/button
  */
-export function Button(props: CerberusProps<'button'> & ButtonProps) {
+export function Button(props: ButtonProps) {
   const { pending = false, ...nativeProps } = props
   const value = useMemo(() => ({ pending }), [pending])
   return (

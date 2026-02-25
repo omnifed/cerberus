@@ -27,12 +27,6 @@ describe('button recipe', () => {
       userSelect: 'none',
       whiteSpace: 'nowrap',
       pxi: '4',
-      _focusVisible: {
-        boxShadow: 'none',
-        outline: '3px solid',
-        outlineColor: 'action.border.focus',
-        outlineOffset: '2px',
-      },
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.5',

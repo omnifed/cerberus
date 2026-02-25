@@ -6,7 +6,64 @@ package: 'data-grid'
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
+import { DEMOS } from '../components/columns/static'
 
 ## Overview
 
-TBD...
+Column definitions are the **foundational building blocks of the Data Grid component**. 
+They define the structure and appearance of each column, including its label, 
+data type, and formatting options. This creates a data-driven single source of truth 
+for the grid's visual representation.
+
+Thus, the `DataGrid` component is essentially just a container for the column definitions. 
+It just passes the state of the column to the `cell` definition which is what 
+renders the actual content of each cell.
+
+## Column Definitions
+
+There are three types of column definitions:
+
+1. [Display](#display-columns)
+2. [Accessor](#accessor-columns)
+3. [Accessor Function](#accessor-function-columns)
+
+All column definitions can display custom content using the `cell` property. 
+This allows you to customize the visual output appearance of each cell content.
+
+### Display Columns
+
+Display columns are used to render data that is not directly related to the feature controls. 
+They are typically used to display **static data** that should be ignored by 
+data-intesive features (e.g. filtering or sorting).
+
+<CodePreview {...DEMOS.display} />
+
+| Params    | Type    | Required                            |
+| --------- | ------- | ----------------------------------- |
+| options   | `DisplayOptions<TData>` | true                |
+
+### Accessor Columns
+
+Accessor columns are used to render data that is directly related to the data source. 
+Accessor columns are included in filtering and sorting features. Likewise, accessor 
+columns can perform custom rendering logic.
+
+<CodePreview {...DEMOS.accessor} />
+
+| Params    | Type    | Required                            |
+| --------- | ------- | ----------------------------------- |
+| key       | `string`  | true                              |
+| options   | `AccessorOptions<TData, TValue[TKey]>` | true       |
+
+### Accessor Function Columns
+
+Accessor function columns are used to render data that is derived from the data source. 
+They are typically used to display low-level customization like aggregating data or 
+performing complex calculations.
+
+<CodePreview {...DEMOS.accessorFn} />
+
+| Params     | Type    | Required                            |
+| ---------- | ------- | ----------------------------------- |
+| accessorFn | `(data: TData) => TValue` | true              |
+| options    | `AccessorOptions<TData, TValue>` | true       |

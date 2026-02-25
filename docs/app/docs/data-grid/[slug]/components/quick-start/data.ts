@@ -1,8 +1,10 @@
-import { Employee } from './data.demo'
+'use client'
 
-// In a real app, this comes from useQuery / Server Components
-export const generateData = async (count: number): Promise<Employee[]> => {
-  'use cache'
+import { useState } from 'react'
+import { Employee } from './data.demo'
+import { useEffect } from 'react'
+
+const generateData = (count: number): Employee[] => {
   return Array.from({ length: count }).map((_, i) => ({
     id: i + 1,
     firstName: ['James', 'Sarah', 'Michael', 'Jessica', 'David'][i % 5],
@@ -16,4 +18,14 @@ export const generateData = async (count: number): Promise<Employee[]> => {
     },
     lastLogin: new Date(performance.now() - i * 10000000).toISOString(),
   }))
+}
+
+export function useFakeQuery(count: number) {
+  const [state, setState] = useState<Employee[]>(() => generateData(count))
+
+  useEffect(() => {
+    setState(generateData(count))
+  }, [count])
+
+  return state
 }

@@ -3,6 +3,7 @@ packages:
   - tests
   - configs
   - docs
+  - styled-system
 
 ignoredBuiltDependencies:
   - unrs-resolver

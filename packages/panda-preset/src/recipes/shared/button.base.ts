@@ -1,4 +1,4 @@
-import { focusStates, formStates } from './states'
+import { formStates } from './states'
 import { actionPalettes, statePalettes } from './palettes'
 import type {
   Pretty,
@@ -24,7 +24,6 @@ export const buttonBase = {
   gap: '2',
   justifyContent: 'center',
   lineHeight: '0',
-  minW: '2.85rem',
   outline: 'none',
   textDecoration: 'none',
   transitionProperty: 'background-color, color',
@@ -35,7 +34,6 @@ export const buttonBase = {
   _disabled: {
     ...formStates._disabled,
   },
-  ...focusStates,
 }
 
 export const sharpRadii = {

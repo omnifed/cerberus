@@ -1,4 +1,4 @@
-import { type PropsWithChildren, type ReactNode } from 'react'
+import { Suspense, type PropsWithChildren, type ReactNode } from 'react'
 import { Collapsible } from '@cerberus-design/react'
 import { Box, HStack, VStack } from 'styled-system/jsx'
 import { CollapsibleCode } from './code-preview/collapsible-code'
@@ -34,9 +34,11 @@ export default async function CodePreview(
       shadow="md"
       w="full"
     >
-      <HStack justify="center" py="md" w="full">
-        {preview ?? props.preview}
-      </HStack>
+      <Suspense>
+        <HStack justify="center" py="md" w="full">
+          {preview ?? props.preview}
+        </HStack>
+      </Suspense>
 
       <CollapsibleProvider>
         <Collapsible.Content pos="relative">

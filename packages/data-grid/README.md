@@ -1,6 +1,6 @@
 # Cerberus DataGrid
 
-This is a DataGrid component for React.
+This is a DataGrid component for React. View the [official docs](https://cerberus.digitalu.design/docs/data-grid/overview).
 
 ## Installation
 
@@ -10,8 +10,10 @@ pnpm add @cerberus/data-grid@npm:@cerberus-design/data-grid
 
 ## Usage
 
-```typescript
-// TODO: add this
+```tsx
+import { createColumns, DataGrid } from '@cerberus/data-grid'
+
+// TODO...
 ```
 
 ---

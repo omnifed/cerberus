@@ -1,6 +1,8 @@
-import { OverflowMenuHorizontal } from '@carbon/icons-react'
+'use client'
+
+import { Edit } from '@carbon/icons-react'
 import { Format, IconButton, Tag, TagProps, Text } from '@cerberus-design/react'
-import { VStack } from 'styled-system/jsx'
+import { HStack, VStack } from 'styled-system/jsx'
 import { columnHelper } from './helper.demo'
 
 export const columns = [
@@ -9,7 +11,9 @@ export const columns = [
     header: 'ID',
     width: 80,
     features: {
-      pinning: 'left',
+      pinning: {
+        defaultPosition: 'left',
+      },
       sort: true,
     },
     cell: ({ value }) => <Text>#{value}</Text>,
@@ -20,7 +24,7 @@ export const columns = [
   columnHelper.accessorFn((row) => `${row.firstName} ${row.lastName}`, {
     id: 'fullName',
     header: 'Employee',
-    width: 200,
+    width: 250,
     features: {
       sort: true,
       filter: { operator: 'contains' },
@@ -39,7 +43,6 @@ export const columns = [
   columnHelper.accessorFn((row) => row.department.name, {
     id: 'department',
     header: 'Department',
-    width: 150,
     features: { sort: true },
   }),
 
@@ -57,7 +60,10 @@ export const columns = [
   // E. Status Badge
   columnHelper.accessor('status', {
     header: 'Status',
-    width: 100,
+    width: 110,
+    features: {
+      pinning: true,
+    },
     cell: ({ value }) => {
       const palette: Record<string, TagProps['palette']> = {
         active: 'success',
@@ -75,15 +81,17 @@ export const columns = [
   // F. Display Column (Right Pinned Actions)
   columnHelper.display({
     id: 'actions',
-    header: '',
-    width: 60,
+    header: 'Actions',
+    width: 125,
     features: {
-      pinning: 'right',
+      pinning: true,
     },
     cell: () => (
-      <IconButton ariaLabel="View more options">
-        <OverflowMenuHorizontal />
-      </IconButton>
+      <HStack justify="center" w="full">
+        <IconButton ariaLabel="View more options">
+          <Edit />
+        </IconButton>
+      </HStack>
     ),
   }),
 ]

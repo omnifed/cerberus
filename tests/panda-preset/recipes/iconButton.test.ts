@@ -29,12 +29,6 @@ describe('iconButton recipe', () => {
       h: '2.75rem',
       pxi: '0',
       w: '2.75rem',
-      _focusVisible: {
-        boxShadow: 'none',
-        outline: '3px solid',
-        outlineColor: 'action.border.focus',
-        outlineOffset: '2px',
-      },
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.5',

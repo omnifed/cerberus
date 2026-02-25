@@ -6,6 +6,12 @@ import dts from 'vite-plugin-dts'
 import { defineConfig } from 'vite'
 import pkg from './package.json'
 
+const allDependencies = [
+  ...Object.keys(pkg.dependencies ?? {}),
+  ...Object.keys(pkg.devDependencies ?? {}),
+  ...Object.keys(pkg.peerDependencies ?? {}),
+]
+
 export default defineConfig({
   logLevel: 'warn',
   plugins: [
@@ -30,11 +36,17 @@ export default defineConfig({
     },
     rollupOptions: {
       logLevel: 'silent',
-      external: [
-        ...Object.keys(pkg.dependencies ?? {}),
-        ...Object.keys(pkg.peerDependencies ?? {}),
-        'react/jsx-runtime',
-      ],
+      external: (id) => {
+        // Handle special cases
+        if (id === 'react/jsx-runtime' || id.startsWith('styled-system')) {
+          return true
+        }
+
+        // Handle all package.json dependencies and their subpaths
+        return allDependencies.some(
+          (dep) => id === dep || id.startsWith(`${dep}/`),
+        )
+      },
       output: [
         {
           format: 'cjs',
@@ -62,17 +74,34 @@ export default defineConfig({
 
 const renderBanner = (fileName: string) => {
   const file = path.parse(fileName)
-  if (['.client.'].includes(file.name)) {
-    console.log('filename is a client file')
+  if (
+    [
+      'portal',
+      'frame',
+      'client-only',
+      'focus-trap',
+      'download-trigger',
+    ].includes(file.name)
+  ) {
     return `'use client';`
   }
-
-  if (isServerFile(file)) {
+  if (isBarrelComponent(file) || isSpecialFile(file)) {
     return ''
   }
-
   return `'use client';`
 }
 
-const isServerFile = (file: path.ParsedPath) =>
-  ['index', 'init'].includes(file.name)
+// e.g Avatar.tsx, Accordion.tsx
+const isBarrelComponent = (file: path.ParsedPath) =>
+  file.dir.endsWith(file.name) &&
+  !['presence', 'environment', 'locale'].includes(file.dir)
+
+const isSpecialFile = (file: path.ParsedPath) =>
+  [
+    'index',
+    'primitives',
+    'parts',
+    'factory',
+    'primitive-factory',
+    'defineIcons',
+  ].includes(file.name)

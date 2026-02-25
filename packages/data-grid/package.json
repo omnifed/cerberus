@@ -17,7 +17,7 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@ark-ui/react": "^5.31.0",
+    "@cerberus-design/react": "workspace:*",
     "@preact/signals-core": "^1.13.0"
   },
   "devDependencies": {
@@ -27,6 +27,7 @@
     "globby": "^16.1.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "styled-system": "workspace:*",
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4"
   },

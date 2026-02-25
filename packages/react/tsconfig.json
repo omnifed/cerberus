@@ -1,12 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "include": ["src"],
-  "exclude": ["build"],
+  "exclude": ["dist"],
 
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "baseUrl": "./"
   }
 }

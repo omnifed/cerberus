@@ -27,9 +27,9 @@ export default defineConfig([
   {
     ignores: [
       'packages/*/dist/**/*',
-      'packages/*/styled-system/**/*',
       'packages/tokens/src/data/**/*', // Generated files
       'packages/figma/code-connect/**/*', // DEPRECATED
+      'styled-system/**/*',
       // Docs use their own eslint config
       'docs/**/*',
       // non-TS files
