@@ -42,7 +42,7 @@ export type ColumnDef<TData, TValue = any> = {
    */
   header: string | ((props: { colId: string }) => ReactNode)
   /**
-   * A helper to access the value of the cell used to render a custom cell value.
+   * A helper to access and manage the preferred value of the cell.
    */
   accessor: (row: TData) => TValue
   /**
@@ -107,6 +107,7 @@ export type InternalColumn<TData> = {
   id: string
   // Mutable Signals
   pinned: Signal<PinnedState>
+  isFlex: Signal<boolean>
   isVisible: Signal<boolean>
   width: Signal<number>
   // Static Config
@@ -144,4 +145,5 @@ export interface GridStore<TData> {
   setPage: (index: number) => void
   setGlobalFilter: (val: string) => void
   updateData: (newData: TData[]) => void
+  setContainerWidth: (val: number) => void
 }

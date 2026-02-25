@@ -35,7 +35,6 @@ export function GridViewport() {
       hideScrollbar
       data-scope={SCOPE}
       data-part={PARTS.VIEWPORT}
-      flex="1"
       h="full"
       minH="0"
       minW="full"

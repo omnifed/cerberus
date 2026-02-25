@@ -17,7 +17,7 @@ export type DisplayOptions<TData> = {
 //   header: '',
 //   width: 60,
 //   features: {
-//     pinning: 'right',
+//     pinning: true,
 //   },
 //   cell: () => (
 //     <IconButton ariaLabel="View more options">

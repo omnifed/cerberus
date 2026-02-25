@@ -8,18 +8,20 @@ import type { GridOptions, GridStore, InternalColumn, SortState } from './types'
 export function createGridStore<TData>(
   options: GridOptions<TData>,
 ): GridStore<TData> {
-  // 1. Core State
   const rows = signal(options.data)
-  const globalFilter = signal('')
+  const containerWidth = signal(0)
+
   const sorting = signal<SortState[]>([])
+  const globalFilter = signal('')
+
   const pageIndex = signal(options.initialState?.pagination?.defaultPage ?? 0)
   const pageSize = signal(options.initialState?.pagination?.pageSize ?? 25)
 
-  // 2. Initialize Columns
   const initialCols = options.columns.map((col) => ({
     id: col.id,
     width: signal(col.width ?? 150),
     pinned: signal(col.features?.pinning?.defaultPosition ?? false),
+    isFlex: signal(col.width === undefined),
     isVisible: signal(true),
     getValue: col.accessor,
     original: col,
@@ -30,13 +32,12 @@ export function createGridStore<TData>(
   }))
   const columns = signal(initialCols)
 
-  // 3. Derived: Filtered & Sorted Rows
+  // Processed with data-intensive features
   const processedRows = computed(() => {
     let result = [...rows.value]
     const filter = globalFilter.value.toLowerCase()
     const sortState = sorting.value
 
-    // A. Filtering
     if (filter) {
       result = result.filter((row) => {
         // Simple search across all filterable columns
@@ -48,7 +49,6 @@ export function createGridStore<TData>(
       })
     }
 
-    // B. Sorting
     if (sortState.length > 0) {
       result.sort((a, b) => {
         for (const sort of sortState) {
@@ -71,7 +71,7 @@ export function createGridStore<TData>(
     return result
   })
 
-  // 4. Derived: Pagination
+  // 4. Derived: Pagination - More than likely kill since Ark-UI handles
   const rowCount = computed(() => processedRows.value.length)
   const pageCount = computed(() => Math.ceil(rowCount.value / pageSize.value))
 
@@ -92,41 +92,75 @@ export function createGridStore<TData>(
 
   const visibleRows = computed(() => {
     return processedRows.value
-    const start = pageIndex.value * pageSize.value
-    return processedRows.value.slice(start, start + pageSize.value)
   })
 
-  // 5. Layout Engine (CSS Variables)
   const rootCssVars = computed(() => {
     const vars: Record<string, string> = {}
-    const cols = orderedColumns.value
-    let leftOffset = 0
-    let rightOffset = 0
+    const visibleCols: InternalColumn<TData>[] = []
 
-    // Pass 1: Widths & Left Pins
-    cols.forEach((col) => {
-      const w = col.width.value
+    const cols = columns.value
+    const cWidth = containerWidth.value
+
+    let fixedSpace = 0
+    let flexCount = 0
+
+    // --- PASS 1: Metrics Gathering ---
+    for (let i = 0; i < cols.length; i++) {
+      const col = cols[i]
+      if (!col.isVisible.value) continue
+
+      visibleCols.push(col)
+      if (col.isFlex.value) {
+        flexCount++
+      } else {
+        fixedSpace += col.width.value
+      }
+
       const order = orderedColumns.value.findIndex(
         (orderedCol) => orderedCol.id === col.id,
       )
-
       vars[`--col-${col.id}-order`] = `${order}`
-      vars[`--col-${col.id}-width`] = `${w}px`
+    }
+
+    // Math for flex columns
+    const remainingSpace = Math.max(0, cWidth - fixedSpace)
+    const flexWidth = flexCount > 0 ? remainingSpace / flexCount : 0
+
+    let leftOffset = 0
+    let totalW = 0
+    const computedWidths = new Float64Array(visibleCols.length)
+
+    // --- PASS 2: Forward Assignment (Widths & Left Pins) ---
+    for (let i = 0; i < visibleCols.length; i++) {
+      const col = visibleCols[i]
+
+      let finalWidth = col.width.value
+      if (col.isFlex.value) {
+        finalWidth = Math.max(col.original.minWidth ?? 150, flexWidth)
+      }
+
+      computedWidths[i] = finalWidth // Cache for the reverse pass
+      totalW += finalWidth
+      vars[`--col-${col.id}-width`] = `${finalWidth}px`
 
       if (col.pinned.value === 'left') {
         vars[`--col-${col.id}-left`] = `${leftOffset}px`
-        leftOffset += w
+        leftOffset += finalWidth
       }
+    }
 
+    // --- PASS 3: Reverse Assignment (Right Pins) ---
+    // We only iterate backwards through the visible columns, using the cached widths.
+    let rightOffset = 0
+    for (let i = visibleCols.length - 1; i >= 0; i--) {
+      const col = visibleCols[i]
       if (col.pinned.value === 'right') {
         vars[`--col-${col.id}-right`] = `${rightOffset}px`
-        rightOffset += col.width.value
+        rightOffset += computedWidths[i]
       }
-    })
+    }
 
-    // Add total width for scrolling container
-    vars['--total-grid-width'] =
-      `${cols.reduce((acc, c) => acc + c.width.value, 0)}px`
+    vars['--total-grid-width'] = `${totalW}px`
 
     return vars
   })
@@ -150,17 +184,6 @@ export function createGridStore<TData>(
 
     updateData: (newData) => {
       rows.value = newData
-    },
-
-    resizeColumn: (colId, delta) => {
-      const col = columns.value.find((c) => c.id === colId)
-      if (col) {
-        // Enforce min width
-        col.width.value = Math.max(
-          col.original.minWidth ?? 50,
-          col.width.value + delta,
-        )
-      }
     },
 
     togglePinned: (colId, state) => {
@@ -193,6 +216,34 @@ export function createGridStore<TData>(
     setGlobalFilter: (val) => {
       globalFilter.value = val
       pageIndex.value = 0 // Reset to first page on filter
+    },
+
+    setContainerWidth: (w: number) => {
+      containerWidth.value = w
+    },
+
+    resizeColumn: (colId: string, delta: number) => {
+      const col = columns.value.find((c) => c.id === colId)
+      if (col) {
+        if (col.isFlex.value) {
+          const fixedSpace = columns.value
+            .filter((c) => !c.isFlex.value)
+            .reduce((a, b) => a + b.width.value, 0)
+          const flexCount = columns.value.filter((c) => c.isFlex.value).length
+          const currentFlexWidth = Math.max(
+            col.original.minWidth ?? 150,
+            (containerWidth.value - fixedSpace) / flexCount,
+          )
+
+          col.width.value = currentFlexWidth
+          col.isFlex.value = false // Disable flex behavior permanently for this column
+        }
+
+        col.width.value = Math.max(
+          col.original.minWidth ?? 50,
+          col.width.value + delta,
+        )
+      }
     },
   }
 }

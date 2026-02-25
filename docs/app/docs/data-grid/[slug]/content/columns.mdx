@@ -10,14 +10,16 @@ import { DEMOS } from '../components/columns/static'
 
 ## Overview
 
-Column definitions are the **foundational building blocks of the Data Grid component**. 
+Column definitions are the **foundational building blocks** of the Data Grid component. 
 They define the structure and appearance of each column, including its label, 
 data type, and formatting options. This creates a data-driven single source of truth 
 for the grid's visual representation.
 
-Thus, the `DataGrid` component is essentially just a container for the column definitions. 
-It just passes the state of the column to the `cell` definition which is what 
-renders the actual content of each cell.
+Thus, the `DataGrid` component is essentially just a layout container that simply 
+renders column definitions. It passes the state of the column to the `cell` 
+property which is what renders the actual content of each cell.
+
+Each column has the ability to opt-in to features listed in the Features section.
 
 ## Column Definitions
 
@@ -32,9 +34,8 @@ This allows you to customize the visual output appearance of each cell content.
 
 ### Display Columns
 
-Display columns are used to render data that is not directly related to the feature controls. 
-They are typically used to display **static data** that should be ignored by 
-data-intesive features (e.g. filtering or sorting).
+Display columns are used to render **static columns** that do not utilize 
+data-driven column features (e.g., filtering or sorting). 
 
 <CodePreview {...DEMOS.display} />
 
@@ -42,11 +43,12 @@ data-intesive features (e.g. filtering or sorting).
 | --------- | ------- | ----------------------------------- |
 | options   | `DisplayOptions<TData>` | true                |
 
+<NoteAdmonition description="Due to their static nature, display columns only allow the pinning feature." />
+
 ### Accessor Columns
 
-Accessor columns are used to render data that is directly related to the data source. 
-Accessor columns are included in filtering and sorting features. Likewise, accessor 
-columns can perform custom rendering logic.
+Accessor columns are used to render data that is directly related to the data source
+and utilize all features.
 
 <CodePreview {...DEMOS.accessor} />
 
@@ -67,3 +69,18 @@ performing complex calculations.
 | ---------- | ------- | ----------------------------------- |
 | accessorFn | `(data: TData) => TValue` | true              |
 | options    | `AccessorOptions<TData, TValue>` | true       |
+
+## Shared Column Options
+
+Both Display and Accessor columns share the following options:
+
+| Params    | Type     | Required | Description                            |
+| --------- | -------- | ---------|--------------------------------------- |
+| `id`      | `string` | true     | Unique identifier for the column       |
+| `header`  | `string/Fn` | true | Header text or function to generate header text |
+| `accessor` | `Fn` | true | Accessor function or key to access data |
+| `minWidth` | `number` | false | Minimum width of the column |
+| `width` | `number` | false | Strict width of the column. Omitting this will render a flexed column. |
+| `maxWidth` | `number` | false | Maximum width of the column |
+| `features` | `Feature[]` | false | Array of features to enable on the column |
+| `cell` | `CellOptions<TData, TValue>` | false | Options for rendering the cell. Not providing this will render a string. |
