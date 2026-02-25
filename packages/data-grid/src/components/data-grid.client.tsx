@@ -9,6 +9,17 @@ import { createGridStore } from '../store'
 import type { GridOptions } from '../types'
 import { GridViewport } from './grid.client'
 
+// Features
+// TODO: Figure out sorting 🚧
+// TODO: Figure out filtering (requires popover API)
+
+// Layout
+// TODO: Figure out pagination
+// TODO: Figure out Toolbar
+// TODO: Figure out footer
+
+// TODO: Figure out icons
+
 interface DataGridProps<TData> extends GridOptions<TData> {
   toolbar?: ReactNode
   footer?: ReactNode
