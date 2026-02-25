@@ -1,7 +1,7 @@
 import { type ColumnFeatures } from '@cerberus-design/data-grid'
 import { ReactNode } from 'react'
 
-type AccessorOptions<TData, TValue> = {
+export type AccessorOptions<TData, TValue> = {
   id?: string
   header: string | ((props: { colId: string }) => ReactNode)
   features?: ColumnFeatures

@@ -56,7 +56,7 @@ export function DataGrid<TData>(props: DataGridProps<TData>) {
         if (!ready) setReady(true)
       }
     })
-  }, [store])
+  }, [store, ready])
 
   return (
     <DataGridProvider store={store}>

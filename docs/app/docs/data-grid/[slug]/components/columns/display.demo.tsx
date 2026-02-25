@@ -4,7 +4,7 @@ import {
 } from '@cerberus-design/data-grid'
 import { ReactNode } from 'react'
 
-type DisplayOptions<TData> = {
+export type DisplayOptions<TData> = {
   id: string
   header: string | ((props: { colId: string }) => ReactNode)
   width?: number
