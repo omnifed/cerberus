@@ -10,7 +10,6 @@ import type { GridOptions } from '../types'
 import { GridViewport } from './grid.client'
 
 // Features
-// TODO: Figure out sorting 🚧
 // TODO: Figure out filtering (requires popover API)
 
 // Layout

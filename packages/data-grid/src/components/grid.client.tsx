@@ -88,6 +88,8 @@ interface GridHeaderCellProps {
   column: InternalColumn<unknown>
 }
 
+// TODO: Implement toggle sorting and hover options display via css
+
 export const GridHeaderCell = memo(function GridHeaderCell(
   props: GridHeaderCellProps,
 ) {

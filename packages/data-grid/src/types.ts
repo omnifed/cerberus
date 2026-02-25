@@ -113,7 +113,7 @@ export interface GridStore<TData> {
   setContainerWidth: (val: number) => void
   setPage: (index: number) => void
   setGlobalFilter: (val: string) => void
-  setSort: (colId: string, direction: SortDirection, multi: boolean) => void
+  setSort: (colId: string, direction: SortDirection, multi?: boolean) => void
   togglePinned: (colId: string, state: PinnedState) => void
   toggleSort: (colId: string, multi?: boolean) => void
   updateData: (newData: TData[]) => void

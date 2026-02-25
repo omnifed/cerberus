@@ -5,27 +5,41 @@ import {
   Menu,
   MenuContent,
   MenuItem,
-  type MenuSelectionDetails,
   MenuSeparator,
   MenuTrigger,
   Show,
+  type MenuSelectionDetails,
 } from '@cerberus-design/react'
-import { type ReactNode } from 'react'
+import { useMemo, type ReactNode } from 'react'
+import { useSignalValue } from '../adapter.client'
 import { useDataGridContext } from '../context.client'
-import { InternalColumn, PinnedState } from '../types'
+import { InternalColumn, PinnedState, SortDirection } from '../types'
 import { MatchPinnedItems } from './pinned-items.client'
+import { MatchSortItems } from './sort-items.client'
 
 export function HeaderCellOptions(props: InternalColumn<ReactNode>) {
   const store = useDataGridContext()
+  const sorting = useSignalValue(store.sorting)
+
+  const sortedVal = useMemo(() => {
+    const idx = sorting.findIndex((data) => data.id === props.id)
+    if (idx === -1) return undefined
+    return sorting[idx]
+  }, [sorting, props.id])
 
   function handleSelect(details: MenuSelectionDetails) {
     const val = details.value
     const specialVal = val.split('_')
+
     const category = specialVal[0]
     const action = specialVal[1]
 
+    // Non-action items
     if (val === 'filter') {
       return console.log('Show Filter popover...')
+    }
+    if (val === 'unsort') {
+      return store.setSort(props.id, null)
     }
 
     switch (category) {
@@ -34,9 +48,7 @@ export function HeaderCellOptions(props: InternalColumn<ReactNode>) {
       case 'unpin':
         return store.togglePinned(props.id, false)
       case 'sort':
-        // This needs to be improved to support a direction
-        // return store.toggleSort(props.id, true)
-        return console.log('Handle sort', action)
+        return store.setSort(props.id, (action as SortDirection) ?? null)
       default:
         console.error('Unhandled action:', { details, action })
     }
@@ -56,8 +68,7 @@ export function HeaderCellOptions(props: InternalColumn<ReactNode>) {
 
       <MenuContent>
         <Show when={props.sortable}>
-          <MenuItem value="sort_asc">Sort by ASC</MenuItem>
-          <MenuItem value="sort_desc">Sort by DESC</MenuItem>
+          <MatchSortItems sorting={sortedVal} />
         </Show>
 
         <Show when={props.pinnable}>
