@@ -24,7 +24,9 @@ export type ColumnDef<TData, TValue = any> = {
    */
   minWidth?: number
   /**
-   * Strictly define the cell width. Expects a pixel-based number.
+   * Strictly define the cell width. Expects a pixel-based number. If the width
+   * provided is smaller than what is required for features, the minimum width
+   * of 100px will be used instead.
    * @default 150px
    */
   width?: number
@@ -144,13 +146,14 @@ export type PinnedOptions = {
   defaultPosition?: PinnedState
 }
 
-export type SortOptions = {
+export type SortOptions<TData> = {
   firstSortDirection?: SortDirection
-  comparator?: (a: unknown, b: unknown) => number
+  comparator?: Comparator<TData>
 }
 
 // --- Util types ---
 
+export type Comparator<T> = (a: T, b: T) => number
 export type SortDirection = 'asc' | 'desc' | null
 export type PinnedState = 'left' | 'right' | undefined | boolean
 export type DisplayColCellProps<TData> = { row: TData; value: undefined }

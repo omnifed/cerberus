@@ -11,10 +11,11 @@ import { DEMOS } from '../components/sorting/static'
 ## Overview
 
 Sorting allows users to list the data in ascending or descending order. There are
-two ways for a user to sort:
+three ways for a user to sort:
 
-1. **Clicking on the header arrow icon**: This will toggle the order from ascending to descending and vice versa.
+1. **Clicking on the header-cell icon**: This will toggle the order from ascending to descending and vice versa.
 2. **Using the sort menu**: Users can also use the sort menu to strictly determine the order of the data.
+3. **Multi-column sorting**: Hold the `Shift` key while clicking on the second sort button.
 
 <CodePreview {...DEMOS.basic} />
 
@@ -25,9 +26,26 @@ utilzing the options object. Doing so will display the sorting options in the co
 
 <CodePreview {...DEMOS.basic} />
 
+## Multi-column Sorting
+
+Multi-column sorting is enabled by default on the toggle sort button. To use 
+multi-column sorting hold the `Shift` key while clicking on the second sort button.
+
+<CodePreview {...DEMOS.multi} />
+
 ## Custom Comparator
 
-...TBD
+A comparator determines how two cell values should be sorted. The default comparator 
+uses the vanilla JavaScript basic comparison of `a` and `b`. 
+
+When using the `accessorFn` method, the comparator uses the value returned from the 
+`accessorFn` callback provided as the first argument.
+
+To provide a custom comparator, you can pass a function as the `features.sort.comparator` option.
+
+<NoteAdmonition description="Dates will naturally sort in order without any customization. This example just shows how to customize the sorting behavior." />
+
+<CodePreview {...DEMOS.comparator} />
 
 ## Options
 
@@ -37,4 +55,5 @@ The `sort` feature accepts either a `boolean` or an object with the following pr
 
 | Params    | Required    | Description                                        |
 | --------- | ----------- | -------------------------------------------------- |
-| `todo` |  `false` | Whether the column should be pinned by default. |
+| `firstSortDirection` | `false` | The initial sort direction for the column. |
+| `comparator` | `false` | A custom comparator function for sorting. |

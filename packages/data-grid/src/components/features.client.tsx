@@ -61,7 +61,14 @@ export function HeaderCellOptions(props: InternalColumn<ReactNode>) {
   return (
     <Menu onSelect={handleSelect}>
       <MenuTrigger>
-        <IconButton ariaLabel="View more options" size="sm">
+        <IconButton
+          ariaLabel="View more options"
+          size="sm"
+          opacity="0"
+          transitionProperty="opacity"
+          transitionDuration="fast"
+          _groupHover={{ opacity: 1 }}
+        >
           I
         </IconButton>
       </MenuTrigger>

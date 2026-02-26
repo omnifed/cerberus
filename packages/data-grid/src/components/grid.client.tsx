@@ -1,11 +1,12 @@
 'use client'
 
-import { For, Show } from '@cerberus-design/react'
+import { For, IconButton, Show } from '@cerberus-design/react'
 import {
   type CSSProperties,
   memo,
   PropsWithChildren,
   type ReactNode,
+  type MouseEvent,
   useRef,
 } from 'react'
 import { Box, HStack, Scrollable } from 'styled-system/jsx'
@@ -94,6 +95,7 @@ export const GridHeaderCell = memo(function GridHeaderCell(
   props: GridHeaderCellProps,
 ) {
   const { column } = props
+  const store = useDataGridContext()
 
   const pinnedVal = useSignalValue(column.pinned)
   // const sortState = useSignalValue(store.sorting)
@@ -102,7 +104,9 @@ export const GridHeaderCell = memo(function GridHeaderCell(
   const pinnedAttr = usePinnedAttribute(pinnedVal)
   const style = useColumnStyles(column, pinnedVal)
 
-  // const sort = sortState.find((s) => s.id === column.id)
+  function handleToggleSorting(e: MouseEvent<HTMLButtonElement>) {
+    store.toggleSort(column.id, e.shiftKey)
+  }
 
   // const handleMouseDown = (e: MouseEvent) => {
   //   e.preventDefault()
@@ -164,9 +168,29 @@ export const GridHeaderCell = memo(function GridHeaderCell(
       className="group"
       style={style}
     >
-      {typeof column.original.header === 'function'
-        ? column.original.header({ colId: column.id })
-        : column.original.header}
+      <HStack
+        gap="sm"
+        _groupHover={{
+          '& :is(button)': {
+            opacity: '1',
+          },
+        }}
+      >
+        {typeof column.original.header === 'function'
+          ? column.original.header({ colId: column.id })
+          : column.original.header}
+
+        <IconButton
+          ariaLabel="Toggle sorting"
+          size="sm"
+          opacity="0"
+          transitionProperty="opacity"
+          transitionDuration="fast"
+          onClick={handleToggleSorting}
+        >
+          T
+        </IconButton>
+      </HStack>
 
       <HeaderCellOptions {...column} />
 

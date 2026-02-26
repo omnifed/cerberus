@@ -17,19 +17,33 @@ export function createGridStore<TData>(
   const pageIndex = signal(options.initialState?.pagination?.defaultPage ?? 0)
   const pageSize = signal(options.initialState?.pagination?.pageSize ?? 25)
 
-  const initialCols = options.columns.map((col) => ({
-    id: col.id,
-    isFlex: signal(col.width === undefined),
-    isVisible: signal(true),
-    original: col,
-    pinned: signal(col.features?.pinning?.defaultPosition ?? false),
-    width: signal(col.width ?? 150),
-    getValue: col.accessor,
-    // feature flags
-    pinnable: Boolean(col.features?.pinning),
-    filterable: Boolean(col.features?.filter),
-    sortable: Boolean(col.features?.sort),
-  }))
+  const initialCols = options.columns.map((col) => {
+    const pinnable = Boolean(col.features?.pinning)
+    const filterable = Boolean(col.features?.filter)
+    const sortable = Boolean(col.features?.sort)
+
+    const hasFeatures = pinnable || filterable || sortable
+    const minWForFeatures = 100
+
+    let finalWidth = col.width ?? 150
+    if (hasFeatures && col.width && col.width < minWForFeatures) {
+      finalWidth = minWForFeatures
+    }
+
+    return {
+      id: col.id,
+      isFlex: signal(col.width === undefined),
+      isVisible: signal(true),
+      original: col,
+      pinned: signal(col.features?.pinning?.defaultPosition ?? false),
+      width: signal(finalWidth),
+      getValue: col.accessor,
+      // feature flags
+      pinnable,
+      filterable,
+      sortable,
+    }
+  })
   const columns = signal(initialCols)
 
   // Processed with data-intensive features
@@ -230,18 +244,19 @@ export function createGridStore<TData>(
 
     toggleSort: (colId, multi) => {
       const current = sorting.value
-      const exists = current.find((s) => s.id === colId)
+      const exists = current.findIndex((s) => s.id === colId) !== -1
+
+      const updatedSort = current.map((s) => {
+        if (s.id === colId) {
+          return { ...s, desc: !s.desc }
+        }
+        return s
+      })
 
       if (exists) {
-        if (exists.desc) {
-          sorting.value = current.filter((s) => s.id !== colId) // Remove
-        } else {
-          sorting.value = current.map((s) =>
-            s.id === colId ? { ...s, desc: true } : s,
-          ) // Asc -> Desc
-        }
+        sorting.value = multi ? [...current, ...updatedSort] : [...updatedSort]
       } else {
-        const newSort = { id: colId, desc: false }
+        const newSort = { id: colId, desc: true }
         sorting.value = multi ? [...current, newSort] : [newSort]
       }
     },

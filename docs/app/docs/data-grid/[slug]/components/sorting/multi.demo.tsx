@@ -5,9 +5,9 @@ import { Box } from 'styled-system/jsx'
 import { useFakeQuery } from '../quick-start/data'
 import { columns } from './columns'
 
-export function BasicDemo() {
+export function MultiDemo() {
   // Normally this would be from useQuery or a server-side API call
-  const data = useFakeQuery(1000)
+  const data = useFakeQuery(500)
 
   return (
     <Box h="20rem" w="90%">
