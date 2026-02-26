@@ -20,8 +20,8 @@ export function ComparatorDemo() {
 //   header: 'Last Login',
 //   features: {
 //     sort: {
-//       comparator: (a: string, b: string) =>
-//         new Date(a).getTime() - new Date(b).getTime(),
+//       comparator: (a, b) =>
+//         new Date(a as string).getTime() - new Date(b as string).getTime(),
 //     },
 //   },
 //   cell: ({ value }) => {

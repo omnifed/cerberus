@@ -1,14 +1,14 @@
-import { type ColumnFeatures } from '@cerberus-design/data-grid'
-import { ReactNode } from 'react'
+import { type ColCell, type ColumnFeatures } from '@cerberus-design/data-grid'
+import { type ReactNode } from 'react'
 
-export type AccessorOptions<TData, TValue> = {
+export type AccessorOptions<TData, TKey extends keyof TData> = {
   id?: string
   header: string | ((props: { colId: string }) => ReactNode)
-  features?: ColumnFeatures<TData>
-  width?: number
   minWidth?: number
   maxWidth?: number
-  cell?: (props: { row: TData; value: TValue }) => ReactNode
+  width?: number
+  features?: ColumnFeatures<TData, TKey>
+  cell?: ColCell<TData>
 }
 
 // columnHelper.accessorFn((row) => `${row.firstName} ${row.lastName}`, {

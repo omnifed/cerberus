@@ -17,7 +17,7 @@ export function createGridStore<TData>(
   const pageIndex = signal(options.initialState?.pagination?.defaultPage ?? 0)
   const pageSize = signal(options.initialState?.pagination?.pageSize ?? 25)
 
-  const initialCols = options.columns.map((col) => {
+  const initialCols: InternalColumn<TData>[] = options.columns.map((col) => {
     const pinnable = Boolean(col.features?.pinning)
     const filterable = Boolean(col.features?.filter)
     const sortable = Boolean(col.features?.sort)

@@ -10,8 +10,8 @@ export const columns = [
     header: 'Last Login',
     features: {
       sort: {
-        comparator: (a: Employee['lastLogin'], b: Employee['lastLogin']) =>
-          new Date(a).getTime() - new Date(b).getTime(),
+        comparator: (a, b) =>
+          new Date(a as string).getTime() - new Date(b as string).getTime(),
       },
     },
     cell: ({ value }) => {

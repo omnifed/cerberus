@@ -213,7 +213,7 @@ export const GridCell = memo(function GridCell<TData>(
   props: GridCellProps<TData>,
 ) {
   const { column, row } = props
-  const value = column.getValue(row)
+  const value = column.getValue(row) as keyof TData
 
   const pinnedVal = useSignalValue(column.pinned)
 
