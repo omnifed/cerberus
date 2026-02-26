@@ -8,7 +8,7 @@ export type DisplayOptions<TData> = {
   id: string
   header: string | ((props: { colId: string }) => ReactNode)
   width?: number
-  features?: { pinning?: ColumnFeatures['pinning'] }
+  features?: { pinning?: ColumnFeatures<TData>['pinning'] }
   cell: (props: DisplayColCellProps<TData>) => ReactNode
 }
 

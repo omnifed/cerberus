@@ -10,15 +10,15 @@ import {
   Show,
   type MenuSelectionDetails,
 } from '@cerberus-design/react'
-import { useMemo, type ReactNode } from 'react'
+import { useMemo } from 'react'
 import { useSignalValue } from '../adapter.client'
 import { useDataGridContext } from '../context.client'
 import { InternalColumn, PinnedState, SortDirection } from '../types'
 import { MatchPinnedItems } from './pinned-items.client'
 import { MatchSortItems } from './sort-items.client'
 
-export function HeaderCellOptions(props: InternalColumn<ReactNode>) {
-  const store = useDataGridContext()
+export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
+  const store = useDataGridContext<TData>()
   const sorting = useSignalValue(store.sorting)
 
   const sortedVal = useMemo(() => {

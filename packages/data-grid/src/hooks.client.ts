@@ -1,6 +1,6 @@
 'use client'
 
-import { type ReactNode, type CSSProperties } from 'react'
+import { type CSSProperties } from 'react'
 import type { InternalColumn, PinnedState } from './types'
 
 export function usePinnedState(pinned: PinnedState): 'pinned' | 'unpinned' {
@@ -13,8 +13,8 @@ export function usePinnedAttribute(
   return pinned ? { 'data-pinned': pinned } : undefined
 }
 
-export function useColumnStyles(
-  column: InternalColumn<unknown> | InternalColumn<ReactNode>,
+export function useColumnStyles<TData>(
+  column: InternalColumn<TData>,
   pinnedVal: PinnedState,
 ): CSSProperties {
   const styles: CSSProperties = {

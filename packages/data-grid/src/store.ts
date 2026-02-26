@@ -69,8 +69,8 @@ export function createGridStore<TData>(
           const col = columns.value.find((c) => c.id === sort.id)
           if (!col) continue
 
-          const valA = col.getValue(a)
-          const valB = col.getValue(b)
+          const valA = col.getValue(a) as TData[keyof TData]
+          const valB = col.getValue(b) as TData[keyof TData]
 
           if (valA === valB) continue // Move to next tie-breaker if equal
 

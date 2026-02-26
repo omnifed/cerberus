@@ -85,17 +85,17 @@ export function GridViewport() {
 
 // --- 1. Header Cell ---
 
-interface GridHeaderCellProps {
-  column: InternalColumn<unknown>
+interface GridHeaderCellProps<TData> {
+  column: InternalColumn<TData>
 }
 
 // TODO: Implement toggle sorting and hover options display via css
 
-export const GridHeaderCell = memo(function GridHeaderCell(
-  props: GridHeaderCellProps,
+export const GridHeaderCell = memo(function GridHeaderCell<TData>(
+  props: GridHeaderCellProps<TData>,
 ) {
   const { column } = props
-  const store = useDataGridContext()
+  const store = useDataGridContext<TData>()
 
   const pinnedVal = useSignalValue(column.pinned)
   // const sortState = useSignalValue(store.sorting)
@@ -203,13 +203,15 @@ export const GridHeaderCell = memo(function GridHeaderCell(
 
 // --- 2. Body Cell ---
 
-interface GridCellProps {
+interface GridCellProps<TData> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   row: any
-  column: InternalColumn<ReactNode>
+  column: InternalColumn<TData>
 }
 
-export const GridCell = memo(function GridCell(props: GridCellProps) {
+export const GridCell = memo(function GridCell<TData>(
+  props: GridCellProps<TData>,
+) {
   const { column, row } = props
   const value = column.getValue(row)
 

@@ -2,6 +2,7 @@
 
 import { DateFormatter, Format, Text } from '@cerberus-design/react'
 import { VStack } from 'styled-system/jsx'
+import { Employee } from '../quick-start/data.demo'
 import { columnHelper } from '../quick-start/helper.demo'
 
 export const columns = [
@@ -9,7 +10,7 @@ export const columns = [
     header: 'Last Login',
     features: {
       sort: {
-        comparator: (a: string, b: string) =>
+        comparator: (a: Employee['lastLogin'], b: Employee['lastLogin']) =>
           new Date(a).getTime() - new Date(b).getTime(),
       },
     },

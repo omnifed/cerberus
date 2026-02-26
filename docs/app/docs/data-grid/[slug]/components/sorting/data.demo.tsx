@@ -1,6 +1,7 @@
-export type SortDirection = 'asc' | 'desc' | null
-
-export type SortOptions = {
+export type SortOptions<TData, TKey extends keyof TData> = {
   firstSortDirection?: SortDirection
-  comparator?: (a: unknown, b: unknown) => number
+  comparator?: Comparator<TData[TKey]>
 }
+
+export type SortDirection = 'asc' | 'desc' | null
+export type Comparator<TValue> = (a: TValue, b: TValue) => number

@@ -41,22 +41,24 @@ export function createColumnHelper<TData>() {
   return {
     accessor: <TKey extends keyof TData>(
       key: TKey,
-      options: AccessorOptions<TData, TData[TKey]>,
-    ): ColumnDef<TData> => ({
+      options: AccessorOptions<TData, TData[TKey], TKey>,
+    ): ColumnDef<TData, TData[TKey], TKey> => ({
       id: options.id ?? (key as string),
       accessor: (row) => row[key],
       ...options,
     }),
 
-    accessorFn: <TValue>(
+    accessorFn: <TValue, TKey extends keyof TData>(
       accessorFn: (row: TData) => TValue,
-      options: AccessorOptions<TData, TValue> & { id: string },
-    ): ColumnDef<TData> => ({
+      options: AccessorOptions<TData, TValue, TKey> & { id: string },
+    ): ColumnDef<TData, TValue, TKey> => ({
       accessor: accessorFn,
       ...options,
     }),
 
-    display: (options: DisplayOptions<TData>): ColumnDef<TData> => ({
+    display: <TKey extends keyof TData>(
+      options: DisplayOptions<TData, TKey>,
+    ): ColumnDef<TData, undefined, TKey> => ({
       accessor: () => undefined,
       ...options,
     }),

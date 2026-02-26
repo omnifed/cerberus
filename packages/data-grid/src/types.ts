@@ -7,8 +7,11 @@ import { type ReactNode } from 'react'
 
 // --- Public Types ---
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ColumnDef<TData, TValue = any> = {
+export type ColumnDef<
+  TData,
+  TValue = unknown | ReactNode,
+  TKey extends keyof TData = keyof TData,
+> = {
   id: string
   /**
    * The label or custom compoent to display.
@@ -32,7 +35,7 @@ export type ColumnDef<TData, TValue = any> = {
   width?: number
 
   // Capability Flags
-  features?: ColumnFeatures<TData>
+  features?: ColumnFeatures<TData, TKey>
 
   /**
    * The cell renderer. Provides access to the accessor value and row data. This
@@ -53,21 +56,21 @@ export interface GridOptions<TData> {
   }
 }
 
-export type AccessorOptions<TData, TValue> = {
+export type AccessorOptions<TData, TValue, TKey extends keyof TData> = {
   id?: string
   header: string | ((props: { colId: string }) => ReactNode)
-  features?: ColumnFeatures<TData>
+  features?: ColumnFeatures<TData, TKey>
   width?: number
   minWidth?: number
   maxWidth?: number
   cell?: (props: { row: TData; value: TValue }) => ReactNode
 }
 
-export type DisplayOptions<TData> = {
+export type DisplayOptions<TData, TKey extends keyof TData> = {
   id: string
   header: string | ((props: { colId: string }) => ReactNode)
   width?: number
-  features?: { pinning?: ColumnFeatures<TData>['pinning'] }
+  features?: { pinning?: ColumnFeatures<TData, TKey>['pinning'] }
   cell: (props: DisplayColCellProps<TData>) => ReactNode
 }
 
@@ -84,7 +87,7 @@ export type InternalColumn<TData> = {
   pinnable: boolean
   sortable: boolean
   filterable: boolean
-  getValue: (row: TData) => ReactNode
+  getValue: (row: TData) => unknown
   original: ColumnDef<TData>
 }
 
@@ -123,13 +126,13 @@ export interface GridStore<TData> {
 
 // -- Column Features --
 
-export type ColumnFeatures<TData> = {
+export type ColumnFeatures<TData, TKey extends keyof TData> = {
   /**
    * Allow the column to be sorted and the rules to use.
    */
   sort?:
-    | (boolean & EnforceNoProperties<SortOptions<TData>>)
-    | SortOptions<TData>
+    | (boolean & EnforceNoProperties<SortOptions<TData, TKey>>)
+    | SortOptions<TData, TKey>
   /**
    * Allow the column to be filtered and the rules to use.
    */
@@ -148,14 +151,14 @@ export type PinnedOptions = {
   defaultPosition?: PinnedState
 }
 
-export type SortOptions<TData> = {
+export type SortOptions<TData, TKey extends keyof TData> = {
   firstSortDirection?: SortDirection
-  comparator?: Comparator<TData>
+  comparator?: Comparator<TData[TKey]>
 }
 
 // --- Util types ---
 
-export type Comparator<T> = (a: T, b: T) => number
+export type Comparator<TValue> = (a: TValue, b: TValue) => number
 export type SortDirection = 'asc' | 'desc' | null
 export type PinnedState = 'left' | 'right' | undefined | boolean
 export type DisplayColCellProps<TData> = { row: TData; value: undefined }
