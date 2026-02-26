@@ -1,63 +1,40 @@
-import { PaginationRootProps } from '@cerberus-design/react'
+import {
+  type EnforceNoProperties,
+  type PaginationRootProps,
+} from '@cerberus-design/react'
 import { type ReadonlySignal, type Signal } from '@preact/signals-core'
 import { type ReactNode } from 'react'
 
 // --- Public Types ---
 
-export type ColumnFeatures = {
-  /**
-   * Allow the column to be sorted and the rules to use.
-   */
-  sort?:
-    | boolean
-    | {
-        descFirst?: boolean
-        comparator?: (a: unknown, b: unknown) => number
-      }
-  /**
-   * Allow the column to be filtered and the rules to use.
-   */
-  filter?:
-    | boolean
-    | {
-        operator?: 'contains' | 'equals' | 'startsWith'
-      }
-  /**
-   * Show pinning options in the column menu
-   */
-  pinning?:
-    | (boolean & {
-        defaultPosition?: never
-      })
-    | {
-        defaultPosition?: PinnedState
-      }
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ColumnDef<TData, TValue = any> = {
+export type ColumnDef<TData, TKey extends keyof TData = keyof TData> = {
   id: string
   /**
    * The label or custom compoent to display.
    */
   header: string | ((props: { colId: string }) => ReactNode)
   /**
-   * A helper to access the value of the cell used to render a custom cell value.
+   * A helper to access and manage the preferred value of the cell.
    */
-  accessor: (row: TData) => TValue
+  accessor:
+    | DisplayColAccessor
+    | AccessorAccessor<TData, TKey>
+    | AccessorFn<TData>
   /**
    * Strictly define the cell width. Expects a pixel-based number.
    * @default 150px
    */
   minWidth?: number
   /**
-   * Strictly define the cell width. Expects a pixel-based number.
+   * Strictly define the cell width. Expects a pixel-based number. If the width
+   * provided is smaller than what is required for features, the minimum width
+   * of 100px will be used instead.
    * @default 150px
    */
   width?: number
 
   // Capability Flags
-  features?: ColumnFeatures
+  features?: ColumnFeatures<TData, TKey>
 
   /**
    * The cell renderer. Provides access to the accessor value and row data. This
@@ -65,7 +42,7 @@ export type ColumnDef<TData, TValue = any> = {
    *
    * If no content is provided a string will be rendered.
    */
-  cell?: (props: { row: TData; value: TValue }) => ReactNode
+  cell?: ColCell<TData>
 }
 
 export interface GridOptions<TData> {
@@ -78,28 +55,25 @@ export interface GridOptions<TData> {
   }
 }
 
-export type AccessorOptions<TData, TValue> = {
+// -- Column Definitions --
+
+export type AccessorOptions<TData, TKey extends keyof TData> = {
   id?: string
   header: string | ((props: { colId: string }) => ReactNode)
-  features?: ColumnFeatures
+  features?: ColumnFeatures<TData, TKey>
   width?: number
   minWidth?: number
   maxWidth?: number
-  cell?: (props: { row: TData; value: TValue }) => ReactNode
+  cell?: ColCell<TData>
 }
 
-export type DisplayOptions<TData> = {
+export type DisplayOptions<TData, TKey extends keyof TData> = {
   id: string
   header: string | ((props: { colId: string }) => ReactNode)
   width?: number
-  features?: { pinning?: ColumnFeatures['pinning'] }
-  cell: (props: DisplayColCellProps<TData>) => ReactNode
+  features?: { pinning?: ColumnFeatures<TData, TKey>['pinning'] }
+  cell: ColCell<TData>
 }
-
-// --- Util types ---
-
-export type PinnedState = 'left' | 'right' | undefined | boolean
-export type DisplayColCellProps<TData> = { row: TData; value: undefined }
 
 // --- Internal Types ---
 
@@ -107,41 +81,95 @@ export type InternalColumn<TData> = {
   id: string
   // Mutable Signals
   pinned: Signal<PinnedState>
+  isFlex: Signal<boolean>
   isVisible: Signal<boolean>
   width: Signal<number>
   // Static Config
   pinnable: boolean
   sortable: boolean
   filterable: boolean
-  getValue: (row: TData) => ReactNode
+  getValue: ColumnDef<TData>['accessor']
   original: ColumnDef<TData>
 }
 
 export type SortState = { id: string; desc: boolean }
 
+// -- Store Context --
+
 export interface GridStore<TData> {
   // State Signals
-  rows: Signal<TData[]>
   columns: Signal<InternalColumn<TData>[]>
-  sorting: Signal<SortState[]>
+  rows: Signal<TData[]>
   globalFilter: Signal<string>
+  sorting: Signal<SortState[]>
 
   // Pagination Signals
   pageIndex: Signal<number>
   pageSize: Signal<number>
 
   // Computed (Read-Only)
-  visibleRows: ReadonlySignal<TData[]>
-  rootCssVars: ReadonlySignal<Record<string, string>>
-  totalWidth: ReadonlySignal<number>
   pageCount: ReadonlySignal<number>
+  rootCssVars: ReadonlySignal<Record<string, string>>
   rowCount: ReadonlySignal<number>
+  totalWidth: ReadonlySignal<number>
+  visibleRows: ReadonlySignal<TData[]>
 
   // Actions
   resizeColumn: (colId: string, delta: number) => void
-  togglePinned: (colId: string, state: PinnedState) => void
-  toggleSort: (colId: string, multi?: boolean) => void
+  setContainerWidth: (val: number) => void
   setPage: (index: number) => void
   setGlobalFilter: (val: string) => void
+  setSort: (colId: string, direction: SortDirection, multi?: boolean) => void
+  togglePinned: (colId: string, state: PinnedState) => void
+  toggleSort: (colId: string, multi?: boolean) => void
   updateData: (newData: TData[]) => void
 }
+
+// -- Column Features --
+
+export type ColumnFeatures<TData, TKey extends keyof TData> = {
+  /**
+   * Allow the column to be sorted and the rules to use.
+   */
+  sort?:
+    | (boolean & EnforceNoProperties<SortOptions<TData, TKey>>)
+    | SortOptions<TData, TKey>
+  /**
+   * Allow the column to be filtered and the rules to use.
+   */
+  filter?:
+    | boolean
+    | {
+        operator?: 'contains' | 'equals' | 'startsWith'
+      }
+  /**
+   * Show pinning options in the column menu
+   */
+  pinning?: (boolean & EnforceNoProperties<PinnedOptions>) | PinnedOptions
+}
+
+export type PinnedOptions = {
+  defaultPosition?: PinnedState
+}
+
+export type SortOptions<TData, TKey extends keyof TData> = {
+  firstSortDirection?: SortDirection
+  comparator?: Comparator<TData[TKey]>
+}
+
+// -- Column Props --
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ColCell<TData> = (props: { row: TData; value: any }) => ReactNode
+
+export type DisplayColAccessor = () => undefined
+export type AccessorAccessor<TData, TKey extends keyof TData> = (
+  row: TData,
+) => TData[TKey]
+export type AccessorFn<TData> = (row: TData) => ReactNode
+
+// --- Features ---
+
+export type Comparator<TValue> = (a: TValue, b: TValue) => number
+export type SortDirection = 'asc' | 'desc' | null
+export type PinnedState = 'left' | 'right' | undefined | boolean

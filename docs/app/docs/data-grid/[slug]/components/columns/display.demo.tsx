@@ -1,15 +1,12 @@
-import {
-  type ColumnFeatures,
-  type DisplayColCellProps,
-} from '@cerberus-design/data-grid'
+import { type ColCell, type ColumnFeatures } from '@cerberus-design/data-grid'
 import { ReactNode } from 'react'
 
-export type DisplayOptions<TData> = {
+export type DisplayOptions<TData, TKey extends keyof TData> = {
   id: string
   header: string | ((props: { colId: string }) => ReactNode)
   width?: number
-  features?: { pinning?: ColumnFeatures['pinning'] }
-  cell: (props: DisplayColCellProps<TData>) => ReactNode
+  features?: { pinning?: ColumnFeatures<TData, TKey>['pinning'] }
+  cell: ColCell<TData>
 }
 
 // columnHelper.display({
@@ -17,7 +14,7 @@ export type DisplayOptions<TData> = {
 //   header: '',
 //   width: 60,
 //   features: {
-//     pinning: 'right',
+//     pinning: true,
 //   },
 //   cell: () => (
 //     <IconButton ariaLabel="View more options">

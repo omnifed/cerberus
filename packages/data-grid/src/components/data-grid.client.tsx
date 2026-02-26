@@ -10,7 +10,6 @@ import type { GridOptions } from '../types'
 import { GridViewport } from './grid.client'
 
 // Features
-// TODO: Figure out sorting 🚧
 // TODO: Figure out filtering (requires popover API)
 
 // Layout
@@ -27,6 +26,8 @@ interface DataGridProps<TData> extends GridOptions<TData> {
 
 export function DataGrid<TData>(props: DataGridProps<TData>) {
   const { data, columns, initialState } = props
+
+  const rootRef = useRef<HTMLDivElement>(null)
   const [ready, setReady] = useState<boolean>(false)
 
   // Lazy cache store for React compatibility
@@ -38,25 +39,33 @@ export function DataGrid<TData>(props: DataGridProps<TData>) {
     }),
   )
 
-  // Layout Engine Injection -TEMP
-  // We attach the CSS variables to the root DOM node via Ref
-  const rootRef = useRef<HTMLDivElement>(null)
-
   useEffect(() => {
     store.updateData(data)
   }, [data, store])
 
   useEffect(() => {
-    return store.rootCssVars.subscribe((vars) => {
-      if (rootRef.current) {
-        // Fast DOM updates without React render
-        Object.entries(vars).forEach(([key, val]) => {
-          rootRef.current?.style.setProperty(key, val)
-        })
-        if (!ready) setReady(true)
+    const el = rootRef.current
+    if (!el) return
+
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        store.setContainerWidth(entry.contentRect.width)
       }
     })
-  }, [store, ready])
+    observer.observe(el)
+
+    const unsubscribe = store.rootCssVars.subscribe((vars) => {
+      Object.entries(vars).forEach(([key, val]) => {
+        el.style.setProperty(key, val)
+      })
+      setReady((prev) => (prev ? prev : true))
+    })
+
+    return () => {
+      observer.disconnect()
+      unsubscribe()
+    }
+  }, [store])
 
   return (
     <DataGridProvider store={store}>

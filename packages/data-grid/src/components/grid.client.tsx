@@ -1,11 +1,12 @@
 'use client'
 
-import { For, Show } from '@cerberus-design/react'
+import { For, IconButton, Show } from '@cerberus-design/react'
 import {
   type CSSProperties,
   memo,
   PropsWithChildren,
   type ReactNode,
+  type MouseEvent,
   useRef,
 } from 'react'
 import { Box, HStack, Scrollable } from 'styled-system/jsx'
@@ -35,7 +36,6 @@ export function GridViewport() {
       hideScrollbar
       data-scope={SCOPE}
       data-part={PARTS.VIEWPORT}
-      flex="1"
       h="full"
       minH="0"
       minW="full"
@@ -85,14 +85,17 @@ export function GridViewport() {
 
 // --- 1. Header Cell ---
 
-interface GridHeaderCellProps {
-  column: InternalColumn<unknown>
+interface GridHeaderCellProps<TData> {
+  column: InternalColumn<TData>
 }
 
-export const GridHeaderCell = memo(function GridHeaderCell(
-  props: GridHeaderCellProps,
+// TODO: Implement toggle sorting and hover options display via css
+
+export const GridHeaderCell = memo(function GridHeaderCell<TData>(
+  props: GridHeaderCellProps<TData>,
 ) {
   const { column } = props
+  const store = useDataGridContext<TData>()
 
   const pinnedVal = useSignalValue(column.pinned)
   // const sortState = useSignalValue(store.sorting)
@@ -101,7 +104,9 @@ export const GridHeaderCell = memo(function GridHeaderCell(
   const pinnedAttr = usePinnedAttribute(pinnedVal)
   const style = useColumnStyles(column, pinnedVal)
 
-  // const sort = sortState.find((s) => s.id === column.id)
+  function handleToggleSorting(e: MouseEvent<HTMLButtonElement>) {
+    store.toggleSort(column.id, e.shiftKey)
+  }
 
   // const handleMouseDown = (e: MouseEvent) => {
   //   e.preventDefault()
@@ -163,9 +168,29 @@ export const GridHeaderCell = memo(function GridHeaderCell(
       className="group"
       style={style}
     >
-      {typeof column.original.header === 'function'
-        ? column.original.header({ colId: column.id })
-        : column.original.header}
+      <HStack
+        gap="sm"
+        _groupHover={{
+          '& :is(button)': {
+            opacity: '1',
+          },
+        }}
+      >
+        {typeof column.original.header === 'function'
+          ? column.original.header({ colId: column.id })
+          : column.original.header}
+
+        <IconButton
+          ariaLabel="Toggle sorting"
+          size="sm"
+          opacity="0"
+          transitionProperty="opacity"
+          transitionDuration="fast"
+          onClick={handleToggleSorting}
+        >
+          T
+        </IconButton>
+      </HStack>
 
       <HeaderCellOptions {...column} />
 
@@ -178,15 +203,17 @@ export const GridHeaderCell = memo(function GridHeaderCell(
 
 // --- 2. Body Cell ---
 
-interface GridCellProps {
+interface GridCellProps<TData> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   row: any
-  column: InternalColumn<ReactNode>
+  column: InternalColumn<TData>
 }
 
-export const GridCell = memo(function GridCell(props: GridCellProps) {
+export const GridCell = memo(function GridCell<TData>(
+  props: GridCellProps<TData>,
+) {
   const { column, row } = props
-  const value = column.getValue(row)
+  const value = column.getValue(row) as keyof TData
 
   const pinnedVal = useSignalValue(column.pinned)
 

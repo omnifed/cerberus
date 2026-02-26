@@ -22,4 +22,21 @@ export const items = [
     label: 'Columns',
     slug: 'columns',
   },
+  {
+    id: '1.0',
+    label: 'Features',
+    href: '',
+  },
+  {
+    id: '1.1',
+    href: '/docs/data-grid/pinning',
+    label: 'Pinning',
+    slug: 'pinning',
+  },
+  {
+    id: '1.2',
+    href: '/docs/data-grid/sort',
+    label: 'Sorting',
+    slug: 'sort',
+  },
 ]

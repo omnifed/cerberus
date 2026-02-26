@@ -4,6 +4,7 @@ description: Learn how to use the Data Grid component in your React application.
 package: 'data-grid'
 ---
 
+import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
 import { CodeSnippet } from '@/app/components/code-snippet'
 import { DEMOS } from '../components/quick-start/static'
@@ -30,6 +31,8 @@ is typed.
 
 ## Step 2: Setup Columns
 
+**Columns are the engine that run the Data Grid.**
+
 Columns are defined using the `createColumnHelper`. This will provide a strictly
 typed interface for defining individual columns.
 
@@ -42,7 +45,7 @@ Pass in your data type to the `createColumnHelper` function and build your colum
 
 Once you have setup your helper singleton, you can start building columns. 
 
-There are three types of columns: 
+There are three methods available to create columns: 
 
 - `display`: Non-interactive columns.
 - `accessor`: Interactive columns that utilize the `features` options.
@@ -58,6 +61,8 @@ You can learn more about the columns in on the [Columns](/docs/data-grid/columns
 
 The final step is to add the DataGrid component to your application. You simply
 pass in the data, columns, and any other feature-related props.
+
+<NoteAdmonition description="For contstrained layouts (seen in the demo preview), we recommend wrapping the DataGrid in a container that has a strict height defined." />
 
 <CodePreview {...DEMOS.basic} />
 

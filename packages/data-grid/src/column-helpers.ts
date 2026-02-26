@@ -1,4 +1,9 @@
-import type { AccessorOptions, DisplayOptions, ColumnDef } from './types'
+import type {
+  AccessorOptions,
+  DisplayOptions,
+  ColumnDef,
+  AccessorFn,
+} from './types'
 
 /**
  * A helper to format columns which provides a heavily typed interface for
@@ -41,22 +46,24 @@ export function createColumnHelper<TData>() {
   return {
     accessor: <TKey extends keyof TData>(
       key: TKey,
-      options: AccessorOptions<TData, TData[TKey]>,
+      options: AccessorOptions<TData, keyof TData>,
     ): ColumnDef<TData> => ({
       id: options.id ?? (key as string),
       accessor: (row) => row[key],
       ...options,
     }),
 
-    accessorFn: <TValue>(
-      accessorFn: (row: TData) => TValue,
-      options: AccessorOptions<TData, TValue> & { id: string },
+    accessorFn: (
+      accessorFn: AccessorFn<TData>,
+      options: AccessorOptions<TData, keyof TData> & { id: string },
     ): ColumnDef<TData> => ({
       accessor: accessorFn,
       ...options,
     }),
 
-    display: (options: DisplayOptions<TData>): ColumnDef<TData> => ({
+    display: <TKey extends keyof TData>(
+      options: DisplayOptions<TData, TKey>,
+    ): ColumnDef<TData> => ({
       accessor: () => undefined,
       ...options,
     }),
