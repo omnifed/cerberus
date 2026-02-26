@@ -32,7 +32,7 @@ export type ColumnDef<TData, TValue = any> = {
   width?: number
 
   // Capability Flags
-  features?: ColumnFeatures
+  features?: ColumnFeatures<TData>
 
   /**
    * The cell renderer. Provides access to the accessor value and row data. This
@@ -56,7 +56,7 @@ export interface GridOptions<TData> {
 export type AccessorOptions<TData, TValue> = {
   id?: string
   header: string | ((props: { colId: string }) => ReactNode)
-  features?: ColumnFeatures
+  features?: ColumnFeatures<TData>
   width?: number
   minWidth?: number
   maxWidth?: number
@@ -67,7 +67,7 @@ export type DisplayOptions<TData> = {
   id: string
   header: string | ((props: { colId: string }) => ReactNode)
   width?: number
-  features?: { pinning?: ColumnFeatures['pinning'] }
+  features?: { pinning?: ColumnFeatures<TData>['pinning'] }
   cell: (props: DisplayColCellProps<TData>) => ReactNode
 }
 
@@ -123,11 +123,13 @@ export interface GridStore<TData> {
 
 // -- Column Features --
 
-export type ColumnFeatures = {
+export type ColumnFeatures<TData> = {
   /**
    * Allow the column to be sorted and the rules to use.
    */
-  sort?: (boolean & EnforceNoProperties<SortOptions>) | SortOptions
+  sort?:
+    | (boolean & EnforceNoProperties<SortOptions<TData>>)
+    | SortOptions<TData>
   /**
    * Allow the column to be filtered and the rules to use.
    */
