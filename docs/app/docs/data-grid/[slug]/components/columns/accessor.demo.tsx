@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 export type AccessorOptions<TData, TValue> = {
   id?: string
   header: string | ((props: { colId: string }) => ReactNode)
-  features?: ColumnFeatures
+  features?: ColumnFeatures<TData>
   width?: number
   minWidth?: number
   maxWidth?: number
