@@ -13,12 +13,13 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^1.7.0",
+    "@pandacss/dev": "^1.8.2",
     "react": "*",
     "react-dom": "*"
   },
   "dependencies": {
-    "@ark-ui/react": "^5.32.0"
+    "@ark-ui/react": "^5.32.0",
+    "@carbon/icons-react": "^11.74.0"
   },
   "devDependencies": {
     "@internationalized/date": "^3.11.0",

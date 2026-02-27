@@ -1,15 +1,5 @@
-import { CheckmarkIcon, IndeterminateIcon } from './icons/checkbox.icons'
-import { AnimatingUploadIcon } from '../components/AnimatingUploadIcon'
+import { defaultIcons } from './icons/default'
 import type { DefinedIcons, IconType } from './types'
-
-const defaultIcons: Pick<
-  DefinedIcons,
-  'checkbox' | 'fileUploader' | 'indeterminate'
-> = {
-  checkbox: CheckmarkIcon,
-  fileUploader: AnimatingUploadIcon,
-  indeterminate: IndeterminateIcon,
-}
 
 /**
  * Defines the icons that will be used in Cerberus React components via the
