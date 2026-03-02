@@ -32,7 +32,7 @@ import {
 /**
  * Fallback icons when there is no custom set provided by the user.
  */
-export const defaultIcons: DefinedIcons = {
+export const defaultIcons: Required<DefinedIcons> = {
   accordionIndicator: ChevronDown,
   avatar: UserFilled,
   calendar: Calendar,

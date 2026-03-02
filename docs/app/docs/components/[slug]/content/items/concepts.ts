@@ -18,6 +18,12 @@ export const concepts = [
   },
   {
     id: '1.1.3',
+    label: 'Cerberus Context',
+    slug: 'cerberus-context',
+    href: '/docs/components/cerberus-context',
+  },
+  {
+    id: '1.1.4',
     label: 'Testing',
     slug: 'testing',
     href: '/docs/components/testing',

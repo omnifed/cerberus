@@ -1,8 +1,14 @@
 export const items = [
   {
-    id: '1.1',
+    id: '1.0',
     label: 'Overview',
     href: '',
+  },
+  {
+    id: '1.1',
+    label: 'Get Started',
+    slug: 'get-started',
+    href: '/docs/get-started/get-started',
   },
   {
     id: '1.2',

@@ -1,250 +1,135 @@
 ---
-title: Getting Started
-description: A step-by-step guide to get started with Cerberus Design System
+title: Installation
+description: A step-by-step guide to install Cerberus
 ---
 
 import { NoteAdmonition } from '@/app/components/Admonition'
 import BashTabs from '@/app/components/bash-tabs'
+import CodePreview from '@/app/components/CodePreview'
 import { CodeSnippet } from '@/app/components/code-snippet'
-
-### What is Cerberus?
-
-Cerberus is a UI-like flexible design system that is built on top of Panda CSS. It uses two foundational packages:
-
-1. Panda Preset
-2. React
-
-#### Panda Preset
-
-The Cerberus Panda Preset is a set of tokens, recipes, conditions, utilities, patterns, and more that are built on top of Panda CSS. It provides a consistent look and feel for your application and makes it easy to get started with Panda CSS.
-
-#### Cerberus React
-
-The Cerberus React is a set of pre-configured components that are built on top of the Panda CSS preset. It provides a set of components that can be categorized into 3 groups:
-
-1. **Abstractions** - Abstracted component APIs of the primitives
-2. **Primitives** - Low level component APIs for fine-grained control
-3. **Parts** - Object oriented components that are used to build the abstractions
+import { DEMOS } from '../components/installation/static'
+import { DEMOS as ContextDemos } from '@/app/docs/components/[slug]/components/cerberus-context/static'
 
 ## Setup Guide
 
+For a better developer experience, we recommend using either [Deno](https://deno.com/) 
+or [pnPm](https://pnpm.io/) as your package manager which has first class support for [JSR](https://jsr.io/) packages. 
+
+You can still use NPM, it will just require a bit more configuration.
+
 ### Step 1 - Setup Panda CSS
 
-Before you can use the Cerberus, you need to have Panda CSS installed and setup in your project.
+Before you can use the Cerberus, you need to have Panda CSS installed and setup in 
+your project. **This is the preferred style engine for Cerberus**.
 
 Head over to the [Panda CSS installation guide](https://panda-css.com/docs/installation/nextjs) to get started.
 
+<NoteAdmonition description="We recommend using the App Router for your Next.js project. The Pages Router (deprecated) has some known issues regarding atomic css generation." />
+
 ### Step 2 - Setup the Cerberus Preset
 
-In order to use the Cerberus React, you need to install the Cerberus preset package. 
-We use publish to [JSR](https://jsr.io/docs/using-packages) to ensure a better 
-experience for developers.
+Now that Panda is installed, you need to install the Cerberus preset package. 
+We publish as many packages to [JSR](https://jsr.io/docs/using-packages) as possible 
+to ensure a better experience for developers.
 
 <BashTabs code="npx jsr add @cerberus/panda-preset" />
 
 Next, update your PandaCSS config to utilize the Cerberus helpers:
 
-```ts title="panda.config.ts"
-import {
-  createCerberusConfig,
-  createCerberusPreset,
-} from '@cerberus/panda-preset'
+<CodeSnippet snippet={DEMOS.panda} />
 
-export default createCerberusConfig({
-  presets: [createCerberusPreset()],
+<br />
 
-  include: [
-    './node_modules/@cerberus/react/**/*.{ts,tsx,js,jsx}', // track @cerberus/react components
-    './app/**/*.{ts,tsx}'
-  ],
-  exclude: [],
-})
-```
-
-The `createCerberusConfig` function adds the recommended Cerberus settings and any additional settings you pass into it.
+The `createCerberusConfig` function adds the required Cerberus config settings 
+to PandaCSS along with any additional settings you pass into it.
 
 The `createCerberusPreset` function does the same except on the preset level. 
-This will come with the base theme and two presets built in:
 
- - **Base Theme**: Non-semantic tokens theme contents
+The core preset comes with the base "cerberus" theme and PandaCSS presets built in:
+
+ - **Core Preset**: Non-semantic tokens theme contents (recipes, utilities, conditions, etc.)
  - **PandaCSS Preset**: The required PandaCSS preset needed when customizing presets
  - **Cerberus Theme Preset**: The Cerberus theme
 
-### Step 3 - Update your root layout to trigger Cerberus
+ <NoteAdmonition description="If you are using the panda-preset there is no need to install the additional PanaCSS base presets. The core preset will set everything up on your behalf." />
+ 
+ ### Step 3 - Setup Fonts
+
+The Cerberus core preset includes a set of font helpers. In order to utilize them,
+your project needs to have your preferred fonts assigned to the following CSS variables:
+
+- `--font-display`: Any display heading text-style
+- `--font-sans`: Any other text style
+- `--font-mono`: Any monospace text style
+
+If using NextJS, you can simply import and assign these with the fonts package:
+
+<CodeSnippet snippet={DEMOS.fonts} />
+
+### Step 4 - Update your root layout to initiate Cerberus
 
 Because Cerberus provides multiple themes and modes out of the box, you need to initialize your root layout to trigger the default options you want to use.
 
 To connect the Cerberus theme, add the required `data` attributes to your root `html` tag.
 
-```tsx title="app/layout.tsx" {3}
-function RootLayout({ children }) {
-  return (
-    <html lang="en" data-panda-theme="cerberus" data-color-mode="light">
-      <body>{children}</body>
-    </html>
-  )
-}
-```
+<CodeSnippet snippet={DEMOS.layout} />
+<br/ >
 
-This is a good point to run your `panda codegen` command to generate the Cerberus related additions.
+**Important:** This is a good point to run the `panda codegen` command to 
+generate the Cerberus related additions. 
 
-#### Path Aliases
+Once this has been run, you can start using Cerberus styles and themes in your project.
+If you are interested in using the React library, continue 
 
-Cerberus React assumes you have your `baseUrl` setup to the root location in your `tsconfig.json` file. If you do not, or use a different location, you should include a path alias for the `styled-system/*` location.
+## Using React
 
-```ts title="tsconfig.json" {3}
-{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    }
-  }
-}
-```
+To add the React library to your project, continue in the guide.
 
-### Step 4 - Setup Cerberus React
+<NoteAdmonition description="The React library requires the Panda-Preset to be setup in order to use." />
 
-Cerberus React is icon agnostic which means you should install the Icon library of choice before installing the Cerberus React package.
+### Step 1 - Update Path Aliases
+
+Cerberus React assumes the `baseUrl` is setup to the root location in your `tsconfig.json` file.
+
+If you do not, or use a different location, you should include a path alias for 
+the `styled-system/*` location. Not doing so will result in build errors.
+
+<CodeSnippet snippet={DEMOS.config} />
+
+<NoteAdmonition description={
+<>If using Deno, simply setup your import map to include the <code>styled-system/*</code> alias.</>
+} />
+
+### Step 2 - Install Cerberus React
+
+Now that your base path is setup, you can install Cerberus React.
 
 <BashTabs code="npm install @cerberus/react@npm:@cerberus-design/react" />
 
-<NoteAdmonition description="In the snippet above, we are simply creating an alias path for NPM to use of the name we prefer." />
+<NoteAdmonition description="In the snippet above, we are simply creating an alias path for NPM to use of the name we prefer. For Deno users, we recommend adding an alias to your import map for consistency." />
 
-### Step 5 - Registering Your Icons
+### Step 3 - Use the Cerberus Context Provider
 
-Because Cerberus React is icon agnostic, you need to register the library you prefer. This will map certain icons to the Cerberus components that depend on them.
+In order for components to have access to icons, you must wrap your application with the `CerberusProvider` context.
 
-If you do not have an icon preference, we recommend using the Carbon Icons library.
+<CodePreview {...ContextDemos.basic} />
+<br />
 
-<BashTabs code="npm install @carbon/icons-react" />
+At this point, you are ready to start using Cerberus React.
 
-#### Create your Cerberus Config
+### Optional - Registering Custom Icons
 
-In Next, you will need to create a new file to wrap your application with the `CerberusProvider` where you will keep your global settings.
+React comes built in with the [Carbon Icons](https://carbondesignsystem.com/elements/icons/library/) set.
+However, if you prefer a different icon library, you can register it with **Cerberus Context Provider**.
 
-We will name this abstraction `CerberusConfig` since it will own the Cerberus configuration.
+[Learn how to register custom icons with the Cerberus Context Provider](/docs/components/cerberus-context)
 
-```tsx title="context/cerberus-config.tsx"
-'use client'
+### Tip: Add a Cerberus script
 
-import {
-  CerberusProvider,
-  defineIcons,
-  makeSystemConfig,
-} from '@cerberus/react'
-import {
-  Calendar,
-  Checkmark,
-  CheckmarkOutline,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  ChevronUp,
-  Close,
-  CloudUpload,
-  Information,
-  Restart,
-  TrashCan,
-  UserFilled,
-  Warning,
-  WarningAlt,
-  WarningFilled,
-} from '@carbon/icons-react'
-import type { PropsWithChildren } from 'react'
+To help make maintaining a breeze, add this new script to your `package.json` to 
+use when you need to upgrade Cerberus:
 
-/**
- * This module provides a Cerberus configuration component which must to be used
- * in a client abstraction because of React 19 rules around data passing into
- * props.
- */
-
-const icons = defineIcons({
-  accordionIndicator: ChevronDown,
-  avatar: UserFilled,
-  calendar: Calendar,
-  calendarPrev: ChevronLeft,
-  calendarNext: ChevronRight,
-  close: Close,
-  confirmModal: Information,
-  delete: TrashCan,
-  decrement: ChevronDown,
-  promptModal: Information,
-  waitingFileUploader: CloudUpload,
-  infoNotification: Information,
-  successNotification: CheckmarkOutline,
-  warningNotification: WarningAlt,
-  dangerNotification: WarningFilled,
-  increment: ChevronUp,
-  invalid: WarningFilled,
-  invalidAlt: Warning,
-  redo: Restart,
-  selectArrow: ChevronDown,
-  selectChecked: Checkmark,
-  toggleChecked: Checkmark,
-})
-
-const config = makeSystemConfig({
-  icons,
-})
-
-export default function CerberusConfig(props: PropsWithChildren<{}>) {
-  return <CerberusProvider config={config}>{props.children}</CerberusProvider>
-}
-```
-
-Then wrap your application with the `CerberusConfig` component:
-
-```tsx title="app/layout.tsx" {32-34}
-import { Poppins, Recursive } from 'next/font/google'
-import { type PropsWithChildren } from 'react'
-import { css, cx } from 'styled-system/css'
-import CerberusConfig from '@/context/cerberus-config'
-
-import './globals.css'
-
-const poppins = Poppins({
-  display: 'swap',
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-poppins',
-})
-const recursive = Recursive({
-  display: 'swap',
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-recursive',
-})
-
-interface RootProps {}
-
-export default function RootLayout(props: PropsWithChildren<RootProps>) {
-  return (
-    <html
-      className={cx(poppins.variable, recursive.variable)}
-      data-panda-theme="cerberus"
-      data-color-mode="light"
-      lang="en"
-    >
-      <body>
-        <CerberusConfig>
-          {props.children}
-        </CerberusConfig>
-      </body>
-    </html>
-  )
-}
-```
-
-#### Tip: Add a Cerberus script
-
-To help make maintaining a breeze, add this new script to your `package.json` to use when you need to upgrade Cerberus:
-
-```json title="package.json"
-"scripts": {
-  "up:cerberus": "pnpm up @cerberus/react@latest && pnpm dlx jsr add @cerberus/panda-preset && pnpm up @pandacss/dev@latest"
-}
-```
+<CodeSnippet snippet={DEMOS.tips} />
 
 Now you can update Cerberus and PandaCSS with a single command:
 

@@ -1,3 +1,4 @@
+import { defaultIcons } from './icons/default'
 import type { SystemConfig } from './types'
 
 /**
@@ -20,8 +21,20 @@ import type { SystemConfig } from './types'
  * </CerberusProvider>
  * ```
  */
-export function makeSystemConfig(options: SystemConfig): SystemConfig {
-  return options
+export function makeSystemConfig(options?: SystemConfig): SystemConfig {
+  if (!options) {
+    return {
+      icons: defaultIcons,
+    }
+  }
+
+  return {
+    ...options,
+    icons: {
+      ...defaultIcons,
+      ...options.icons,
+    },
+  }
 }
 
 export * from './defineIcons'

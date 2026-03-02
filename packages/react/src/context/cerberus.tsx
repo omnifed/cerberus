@@ -1,7 +1,12 @@
 'use client'
 
-import { createContext, useContext, type PropsWithChildren } from 'react'
-import type { SystemConfig } from '../config'
+import {
+  createContext,
+  useContext,
+  useMemo,
+  type PropsWithChildren,
+} from 'react'
+import { makeSystemConfig, type SystemConfig } from '../config'
 
 /**
  * This  module contains the Cerberus configuration context and helpers.
@@ -13,7 +18,7 @@ type CerberusContextValue = SystemConfig
 const CerberusContext = createContext<CerberusContextValue | null>(null)
 
 interface CerberusProviderProps {
-  config: SystemConfig
+  config?: SystemConfig
 }
 
 /**
@@ -24,8 +29,12 @@ interface CerberusProviderProps {
 export function CerberusProvider(
   props: PropsWithChildren<CerberusProviderProps>,
 ) {
+  const value = useMemo(() => {
+    return props.config || makeSystemConfig()
+  }, [props.config])
+
   return (
-    <CerberusContext.Provider value={props.config}>
+    <CerberusContext.Provider value={value}>
       {props.children}
     </CerberusContext.Provider>
   )

@@ -15,7 +15,7 @@ import type { DefinedIcons, IconType } from './types'
  * ```
  */
 export function defineIcons<T extends IconType>(
-  icons: DefinedIcons,
+  icons: DefinedIcons<T>,
 ): Required<DefinedIcons<T>> {
   return {
     ...defaultIcons,
