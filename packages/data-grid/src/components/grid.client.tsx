@@ -114,7 +114,7 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
     const result = sortingVal.find((item) => item.id === column.id)
     if (result) return result.desc
     return false
-  }, [sortingVal])
+  }, [sortingVal, column.id])
 
   const SortAscIcon = icons.sortAsc
   const SortDescIcon = icons.sortDesc
