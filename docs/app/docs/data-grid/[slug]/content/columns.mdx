@@ -79,8 +79,8 @@ Both Display and Accessor columns share the following options:
 | `id`      | `string` | true     | Unique identifier for the column       |
 | `header`  | `string/Fn` | true | Header text or function to generate header text |
 | `accessor` | `Fn` | true | Accessor function or key to access data |
-| `minWidth` | `number` | false | Minimum width of the column |
-| `width` | `number` | false | Strict width of the column. Omitting this will render a flexed column. |
-| `maxWidth` | `number` | false | Maximum width of the column |
+| `minWidth` | `number` | false | Minimum width of the column. **Ensure your column width is large enough to fit all features and content** |
+| `width` | `number` | false | Strict width of the column. Omitting this will render a flexed column. Adding this will override all widths. **Ensure your column width is large enough to fit all features and content** |
+| `maxWidth` | `number` | false | Maximum width of the column. **Ensure your column width is large enough to fit all features and content** |
 | `features` | `Feature[]` | false | Array of features to enable on the column |
 | `cell` | `CellOptions<TData, TValue>` | false | Options for rendering the cell. Not providing this will render a string. |

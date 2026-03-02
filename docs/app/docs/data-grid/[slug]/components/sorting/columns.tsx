@@ -43,7 +43,7 @@ export const columns = [
 
   columnHelper.accessor('salary', {
     header: 'Salary',
-    width: 120,
+    width: 135,
     features: { sort: true },
     cell: ({ value }) => (
       <Format.Number value={value} style="currency" currency="USD" />
