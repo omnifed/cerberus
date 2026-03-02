@@ -11,8 +11,6 @@ import {
   Information,
   OverflowMenuVertical,
   Restart,
-  SortAscending,
-  SortDescending,
   TrashCan,
   UserFilled,
   Warning,
@@ -28,6 +26,7 @@ import {
   PinRightFilledIcon,
   PinRightIcon,
 } from './pinned.icons'
+import { SortAscIcon, SortDescIcon } from './sort.icons'
 
 /**
  * Fallback icons when there is no custom set provided by the user.
@@ -59,8 +58,8 @@ export const defaultIcons: Required<DefinedIcons> = {
   redo: Restart,
   selectArrow: ChevronDown,
   selectChecked: Checkmark,
-  sortAsc: SortAscending,
-  sortDesc: SortDescending,
+  sortAsc: SortAscIcon,
+  sortDesc: SortDescIcon,
   successNotification: CheckmarkOutline,
   toggleChecked: Checkmark,
   waitingFileUploader: CloudUpload,
