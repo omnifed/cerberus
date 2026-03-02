@@ -1,12 +1,19 @@
 'use client'
 
-import { For, IconButton, Show } from '@cerberus-design/react'
+import {
+  For,
+  IconButton,
+  Show,
+  Tooltip,
+  useCerberusContext,
+} from '@cerberus-design/react'
 import {
   type CSSProperties,
   memo,
-  PropsWithChildren,
-  type ReactNode,
   type MouseEvent,
+  type PropsWithChildren,
+  type ReactNode,
+  useMemo,
   useRef,
 } from 'react'
 import { Box, HStack, Scrollable } from 'styled-system/jsx'
@@ -89,20 +96,28 @@ interface GridHeaderCellProps<TData> {
   column: InternalColumn<TData>
 }
 
-// TODO: Implement toggle sorting and hover options display via css
-
 export const GridHeaderCell = memo(function GridHeaderCell<TData>(
   props: GridHeaderCellProps<TData>,
 ) {
   const { column } = props
   const store = useDataGridContext<TData>()
+  const { icons } = useCerberusContext()
 
   const pinnedVal = useSignalValue(column.pinned)
-  // const sortState = useSignalValue(store.sorting)
+  const sortingVal = useSignalValue(store.sorting)
 
   const pinnedState = usePinnedState(pinnedVal)
   const pinnedAttr = usePinnedAttribute(pinnedVal)
   const style = useColumnStyles(column, pinnedVal)
+
+  const isSortedDesc = useMemo(() => {
+    const result = sortingVal.find((item) => item.id === column.id)
+    if (result) return result.desc
+    return false
+  }, [sortingVal, column.id])
+
+  const SortAscIcon = icons.sortAsc
+  const SortDescIcon = icons.sortDesc
 
   function handleToggleSorting(e: MouseEvent<HTMLButtonElement>) {
     store.toggleSort(column.id, e.shiftKey)
@@ -180,16 +195,29 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
           ? column.original.header({ colId: column.id })
           : column.original.header}
 
-        <IconButton
-          ariaLabel="Toggle sorting"
-          size="sm"
-          opacity="0"
-          transitionProperty="opacity"
-          transitionDuration="fast"
-          onClick={handleToggleSorting}
-        >
-          T
-        </IconButton>
+        <Show when={column.sortable}>
+          <Tooltip
+            content={isSortedDesc ? 'Sort Ascending' : 'Sort Decending'}
+            openDelay={800}
+            asChild
+          >
+            <IconButton
+              ariaLabel="Toggle sorting"
+              size="sm"
+              opacity={{
+                base: 1,
+                md: 0,
+              }}
+              transitionProperty="opacity"
+              transitionDuration="fast"
+              onClick={handleToggleSorting}
+            >
+              <Show when={isSortedDesc} fallback={<SortAscIcon />}>
+                <SortDescIcon />
+              </Show>
+            </IconButton>
+          </Tooltip>
+        </Show>
       </HStack>
 
       <HeaderCellOptions {...column} />

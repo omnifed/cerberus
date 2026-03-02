@@ -116,7 +116,7 @@ export default function HomeHero() {
                 }),
                 button(),
               )}
-              href="/docs/get-started/installation"
+              href="/docs/get-started/get-started"
             >
               Get Started
             </Link>

@@ -1,11 +1,13 @@
 'use client'
 
-import { MenuItem } from '@cerberus-design/react'
+import { MenuItem, useCerberusContext } from '@cerberus-design/react'
 import { type ElementType } from 'react'
+import { HStack, Square } from 'styled-system/jsx'
 import { SortState } from '../types'
 
 export function MatchSortItems(props: { sorting: SortState | undefined }) {
   const { sorting } = props
+
   const MenuItems: Record<string, ElementType> = {
     asc: SortAsc,
     desc: SortDesc,
@@ -39,13 +41,40 @@ export function MatchSortItems(props: { sorting: SortState | undefined }) {
 }
 
 function UnsortItem() {
-  return <MenuItem value="unsort">Unsort</MenuItem>
+  return (
+    <MenuItem value="unsort">
+      <HStack gap="sm" w="full">
+        <Square size="4" />
+        Unsort
+      </HStack>
+    </MenuItem>
+  )
 }
 
 function SortAsc() {
-  return <MenuItem value="sort_asc">Sort ASC</MenuItem>
+  const { icons } = useCerberusContext()
+  const Icon = icons.sortAsc
+
+  return (
+    <MenuItem value="sort_asc">
+      <HStack gap="sm" w="full">
+        <Icon />
+        Sort ASC
+      </HStack>
+    </MenuItem>
+  )
 }
 
 function SortDesc() {
-  return <MenuItem value="sort_desc">Sort DESC</MenuItem>
+  const { icons } = useCerberusContext()
+  const Icon = icons.sortDesc
+
+  return (
+    <MenuItem value="sort_desc">
+      <HStack gap="sm" w="full">
+        <Icon />
+        Sort DESC
+      </HStack>
+    </MenuItem>
+  )
 }

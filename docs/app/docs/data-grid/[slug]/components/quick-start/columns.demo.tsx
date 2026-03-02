@@ -49,7 +49,7 @@ export const columns = [
   // D. Formatting (Numeric Sort, String Display)
   columnHelper.accessor('salary', {
     header: 'Salary',
-    width: 120,
+    minWidth: 135,
     features: { sort: true }, // ✅ Sorts numerically (100 before 500)
     // We format the visual ONLY. The underlying data remains a number.
     cell: ({ value }) => (

@@ -3,19 +3,6 @@
  * @module
  */
 
-// deprecated
-
-export * from './components/deprecated/FieldMessage'
-export * from './components/deprecated/FieldsetLabel'
-export * from './components/deprecated/Label'
-export * from './components/deprecated/NavMenuTrigger'
-export * from './components/deprecated/NavMenuList'
-export * from './components/deprecated/NavMenuLink'
-export * from './components/deprecated/Legend'
-export * from './hooks/useDate'
-export * from './hooks/useToggle'
-export * from './components/Droppable'
-
 // components
 
 export * from './components/admonition/index'

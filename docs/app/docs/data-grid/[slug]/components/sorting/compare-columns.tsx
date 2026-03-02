@@ -2,7 +2,6 @@
 
 import { DateFormatter, Format, Text } from '@cerberus-design/react'
 import { VStack } from 'styled-system/jsx'
-import { Employee } from '../quick-start/data.demo'
 import { columnHelper } from '../quick-start/helper.demo'
 
 export const columns = [

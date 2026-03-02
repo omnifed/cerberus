@@ -13,31 +13,38 @@ export interface SystemConfig {
 }
 
 export interface DefinedIcons<T extends IconType = IconType> {
-  accordionIndicator: T
-  avatar: T
-  calendar: T
-  calendarPrev: T
-  calendarNext: T
+  accordionIndicator?: T
+  avatar?: T
+  calendar?: T
+  calendarPrev?: T
+  calendarNext?: T
   checkbox?: T
-  close: T
-  confirmModal: T
-  decrement: T
-  delete: T
-  promptModal: T
-  waitingFileUploader: T
+  close?: T
+  confirmModal?: T
+  decrement?: T
+  delete?: T
+  dangerNotification?: T
   fileUploader?: T
   indeterminate?: T
-  infoNotification: T
-  successNotification: T
-  warningNotification: T
-  dangerNotification: T
-  increment: T
-  invalid: T
-  invalidAlt: T
-  redo: T
-  selectArrow: T
-  selectChecked: T
-  toggleChecked: T
+  increment?: T
+  infoNotification?: T
+  invalid?: T
+  invalidAlt?: T
+  moreVertical?: T
+  pinLeft?: T
+  pinLeftFilled?: T
+  pinRight?: T
+  pinRightFilled?: T
+  promptModal?: T
+  redo?: T
+  selectArrow?: T
+  selectChecked?: T
+  sortAsc?: T
+  sortDesc?: T
+  successNotification?: T
+  toggleChecked?: T
+  waitingFileUploader?: T
+  warningNotification?: T
 }
 
 // types

@@ -8,6 +8,7 @@ import {
   MenuSeparator,
   MenuTrigger,
   Show,
+  useCerberusContext,
   type MenuSelectionDetails,
 } from '@cerberus-design/react'
 import { useMemo } from 'react'
@@ -20,6 +21,9 @@ import { MatchSortItems } from './sort-items.client'
 export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
   const store = useDataGridContext<TData>()
   const sorting = useSignalValue(store.sorting)
+
+  const { icons } = useCerberusContext()
+  const MoreOptionsIcon = icons.moreVertical
 
   const sortedVal = useMemo(() => {
     const idx = sorting.findIndex((data) => data.id === props.id)
@@ -64,12 +68,15 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
         <IconButton
           ariaLabel="View more options"
           size="sm"
-          opacity="0"
+          opacity={{
+            base: 1,
+            md: 0,
+          }}
           transitionProperty="opacity"
           transitionDuration="fast"
           _groupHover={{ opacity: 1 }}
         >
-          I
+          <MoreOptionsIcon />
         </IconButton>
       </MenuTrigger>
 

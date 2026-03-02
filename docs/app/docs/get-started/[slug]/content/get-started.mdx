@@ -1,0 +1,84 @@
+---
+title: Get Started
+description: A step-by-step guide to get started with Cerberus
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import BashTabs from '@/app/components/bash-tabs'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS} from '../components/installation/static'
+
+### What is Cerberus?
+
+Cerberus is a Design System factory built on top of Panda CSS. This means you 
+can create the strict ruleset of your own design system guidelines with the 
+flexibility of a UI-library.
+
+Cerberus provides an extensive ecosystem which consists of:
+
+1. **PandaCSS Presets**: core tools and themes
+2. **React**: flexible primitive components with accessibility features
+3. **Data Grid**: a compositional component that is feature-rich and accesssible
+4. **Signals**: a signal-based reactive state management system made for React
+
+#### Panda Presets
+
+Cerberus has multiple presets that can be used to customize the look and feel of 
+your application. You can pick and choose which presets you want to use.
+
+- **Panda Preset**: the core base (required) - a set of tokens, recipes, conditions, utilities, 
+patterns. Comes with the _Cerberus Theme preset_ built in.
+- **Theme Presets**: a set of customized semantic tokens and conditions that change the colors of the semantic theme palettes
+
+<NoteAdmonition description="The only preset required to get started with Cerberus is the Panda Preset. You do not need to add any additional themes when using the core preset." />
+
+## React
+
+The React package is a set of primitive React components (low-level layers) that
+consume the _core preset_ recipes for sytling. Anything in the [Components](/docs/components/overview)
+section of the docs comes from the React package.
+
+The React library comes with the following benefits:
+
+- **[Factory](/docs/styling/cerberus-factory)**: a helper to create super-powered JSX elements
+- **[Composition](/docs/components/composition)**: easily replace parent components with the child via `asChild` (built into the Factory)
+- **[Primitives]**: low-level component layers to build your own version of a component
+- **[Abstractions]**: streamlined abstractions for more complex components
+
+### Using Icons
+
+The React library provides a default set of icons ([Carbon Icons](https://carbondesignsystem.com/elements/icons/library/)) 
+via the [Cerberus Context Provider](/docs/components/cerberus-context). However,
+if you are interested in using a different icon set, you can simply register it
+with the provider via the `defineIcons` helper.
+
+## Data Grid
+
+The Data Grid package is a single component that provides a powerful and flexible 
+way to display tabular data. It uses the React library to create and manage the grid
+in addition to the Signal library to manage the state.
+
+We call advanced component APIs like this **compositional components**. 
+
+## Signals
+
+Signals are a way to manage reactive state that is external to the React library.
+This concept has become popular thanks to [SolidJS](https://docs.solidjs.com/).
+Thus, we have created a wrapper around the [Preact Signals Core](https://preactjs.com/guide/v10/signals/)
+library to allow signal usage in React components.
+
+This is a powerful way to ensure React components are optimized for performance and
+only re-render when absolutely necessary. **This ultimately means that your application
+will show state updates without any unnecessary re-renders.**.
+
+The Signals library powers the Data Grid package.
+
+## Doc Sections
+
+The docs are organized into sections that cover different aspects of Cerberus:
+
+- **[Get Started](/docs/get-started)**: General overview and installation instructions.
+- **[Components](/docs/components)**: Everything related to the React package.
+- **[Data Grid](/docs/data-grid)**: Everything related to the Data Grid package.
+- **[Styling](/docs/styling)**: Everything related to using styles in Cerberus.
+- **[Theming](/docs/theming)**: Everything related to theming and theme customization in Cerberus.
