@@ -19,7 +19,7 @@ import { GridViewport } from './grid.client'
 
 // TODO: Figure out icons
 
-interface DataGridProps<TData> extends GridOptions<TData> {
+export interface DataGridProps<TData> extends GridOptions<TData> {
   toolbar?: ReactNode
   footer?: ReactNode
 }

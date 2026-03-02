@@ -13,12 +13,6 @@ function formatJSRCmd(cmd: string): string {
 
   if (isDeno) {
     const [dno, add, pkg] = cmd.split(' ')
-    console.log({
-      cmd,
-      dno,
-      add,
-      pkg,
-    })
     return `${dno} ${add} npm:${pkg}`
   }
 
@@ -38,13 +32,6 @@ function formatDenoCmd(cmd: string): string {
   if (pkg.includes('/react')) {
     finalPkg = `@cerberus-design/react`
   }
-  console.log({
-    cmd,
-    dno,
-    add,
-    pkg,
-    finalPkg,
-  })
   return `${dno} ${add} npm:${finalPkg}`
 }
 

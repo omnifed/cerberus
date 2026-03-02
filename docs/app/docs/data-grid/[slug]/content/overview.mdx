@@ -49,6 +49,18 @@ Once you have installed the Data Grid, we recommend adding it to the `include` a
     ],
 })`} />
 
+## React
+
+The Data Grid uses the Cerberus React library internally to ensure consistency.
+However, if your project **does not use the Cerberus React library**, you will need
+to export the Data Grid differently:
+
+<CodeSnippet snippet={`import { CerberusDataGrid } from '@cerberus/data-grid'`} />
+<br />
+
+This will provide a Data Grid wrapped in the [Cerberus Context Provider](/docs/components/cerberus-context)
+which provides the necessary context for the Data Grid to function correctly.
+
 ## Typescript
 
 The Data Grid is built with TypeScript and provides type definitions for all props and
