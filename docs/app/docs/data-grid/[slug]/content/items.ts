@@ -23,6 +23,12 @@ export const items = [
     slug: 'columns',
   },
   {
+    id: '0.4',
+    href: '/docs/data-grid/context',
+    label: 'Context',
+    slug: 'context',
+  },
+  {
     id: '1.0',
     label: 'Layout',
     href: '',
