@@ -79,7 +79,10 @@ export function DataGrid<TData>(props: DataGridProps<TData>) {
         data-scope={SCOPE}
         data-part={PARTS.ROOT}
         dir="columns"
+        maxH="inherit"
+        minH="inherit"
         h="full"
+        bgColor="page.surface.100/55"
         border="1px solid"
         borderColor="page.border.initial"
         rounded="lg"

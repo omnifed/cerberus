@@ -1,0 +1,24 @@
+---
+title: Toolbar
+description: Learn how to create custom toolbars in the Data Grid component.
+package: 'data-grid'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { DEMOS } from '../components/toolbar/static'
+
+## Overview
+
+The Toolbar is a reserved area above the Data Grid component typically used for
+global actions for the grid itself.
+
+To add a custom toolbar, you can use the `toolbar` prop and pass a React component.
+
+Since the toolbar is positioned within the Data Grid component, **it shares the same
+height restrictions as the grid itself**. Ensure your parent height is set appropriately
+to accommodate the toolbar.
+
+<NoteAdmonition description="If you don't need the context of the grid, we recommended rendering your toolbar outside of the Data Grid component." />
+
+<CodePreview {...DEMOS.basic} />
