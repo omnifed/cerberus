@@ -23,18 +23,41 @@ export const items = [
     slug: 'columns',
   },
   {
+    id: '0.4',
+    href: '/docs/data-grid/context',
+    label: 'Context',
+    slug: 'context',
+  },
+  {
     id: '1.0',
-    label: 'Features',
+    label: 'Layout',
     href: '',
   },
   {
     id: '1.1',
+    href: '/docs/data-grid/dimensions',
+    label: 'Dimensions',
+    slug: 'dimensions',
+  },
+  {
+    id: '1.2',
+    href: '/docs/data-grid/toolbar',
+    label: 'Toolbar',
+    slug: 'toolbar',
+  },
+  {
+    id: '2.0',
+    label: 'Features',
+    href: '',
+  },
+  {
+    id: '2.1',
     href: '/docs/data-grid/pinning',
     label: 'Pinning',
     slug: 'pinning',
   },
   {
-    id: '1.2',
+    id: '2.2',
     href: '/docs/data-grid/sort',
     label: 'Sorting',
     slug: 'sort',

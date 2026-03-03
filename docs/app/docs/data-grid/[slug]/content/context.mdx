@@ -1,0 +1,78 @@
+---
+title: Data Grid Context
+description: A signal-driven store for reading and updating state in a highly performant way.
+package: 'data-grid'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import BashTabs from '@/app/components/bash-tabs'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import CodePreview from '@/app/components/CodePreview'
+import { DEMOS } from '../components/context/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
+
+## Overview
+
+The Data Grid runs on a **signal-driven** store for reading and updating state in a
+highly performant way. This allows the grid to bypass React's internal reactivity
+system, preventing unnecessary re-renders and improving overall performance by
+manaing state outside of the scope of React components.
+
+To learn more about signals and how they work, see the [Preact Signals documentation](https://preactjs.com/guide/v10/signals/).
+
+## Using the context 
+
+To recieve the context from the Data Grid, you simply use the `useDataGridContext` hook
+like you would any other hook in React.
+
+<CodePreview {...DEMOS.basic} />
+
+## Reading Values
+
+Since the context is comprised of signals, you need to use them in a way that will
+ensure the reactivity is being tracked via the `useSignal` hook.
+
+This is provide access to the reactivity state without causing re-renders in your
+React components.
+
+<NoteAdmonition description="Accessing a context value without using the mentioned hook will not be reactive." />
+
+<CodePreview {...DEMOS.signal} />
+
+## Using Actions
+
+Since actions only write reactivity changes, you can use them without the `useSignal` hook.
+
+<CodePreview {...DEMOS.action} />
+
+## Store Reference
+
+The Data Grid store provides both getter and setter helpers for accessing and updating state
+in a signal-based reactive manner:
+
+### Reactive Values
+
+| Name          | Type          | Description                                  |
+|---------------|---------------|----------------------------------------------|
+| `columns`     | `Signal<InternalColumn<TData>[]>` | A list of processed columns. |
+| `rows`        | `Signal<TData[]>` | A list of processed rows.                |
+| `globalFilter` | `Signal<string>` | The current global filter value used for column filtering. |
+| `sorting`     | `Signal<SortState[]>` | The current sorting state of the grid. |
+| `rootCssVars` | `ReadonlySignal<CSSProperties>` | The current CSS variables for the grid root element. |
+| `rowCount`    | `ReadonlySignal<number>` | The current number of rows in the grid. |
+| `totalWidth`  | `ReadonlySignal<number>` | The total width of the grid (used for pinning). |
+| `visibleRows` | `ReadonlySignal<TData[]>` | The list of visible rows in the viewport. |
+
+### Actions
+
+| Name          | Type          | Description                                  |
+|---------------|---------------|----------------------------------------------|
+| `resizeColumn` | `(columnId: string, delta: number) => void` | Resizes a column by updating its width.|
+| `setContainerWidth` | `(width: number) => void` | Updates the width of the grid container. |
+| `setPage` | `(page: number) => void` | Updates the current page of the grid. |
+| `setGlobalFilter` | `(val: string) => void` | Updates the global filter value. |
+| `setSort` | `(colId: string, direction: SortDirection, multi?: boolean) => void` | Updates the sorting state of the grid. |
+| `togglePinned` | `(colId: string, state: PinnedState) => void` | Toggles the pinned state of a column. |
+| `toggleSort` | `(colId: string, multi?: boolean) => void` | Toggles the sort direction of a column. |
+| `updateData` | `(data: TData[]) => void` | Updates the grid data.             |

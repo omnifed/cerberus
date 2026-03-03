@@ -1,0 +1,57 @@
+---
+title: Dimensions
+description: Learn how to control the dimensions of the Data Grid component.
+package: 'data-grid'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { DEMOS } from '../components/dimensions/static'
+
+## Overview
+
+The Data Grid has no intrinsic dimensions: **you must set the dimensions or else 
+it may not display correctly**. By default, the Data Grid fills the space of its 
+parent container, so that container must have intrinsic dimensions. 
+
+In other words, if the container has no child elements, then it still must have 
+non-zero dimensions.
+
+<NoteAdmonition description="We highly recommend setting a height on any parent container to ensure virtualization is utilized. This will improve performance by limiting the number of elements rendered in the DOM." />
+
+## Flex Parent Container
+
+The Data Grid can be placed inside a flex parent container like `VStack`, `Stack`, 
+or `HStack`. Without setting a `height`, the Data Grid takes as much space as it 
+needs to display all rows.
+
+<NoteAdmonition description="When using a flex container you gain the benefit of controlling the layout spacing via the gap property. See the Toolbar page for examples." />
+
+<CodePreview {...DEMOS.flex} />
+
+### Min and max height
+
+The Data Grid will inherit the `minH` and `maxH` values from its parent container.
+Using these would constrain the dimensions in the event of row quantities change.
+Most of the time, setting a static `height` is sufficient enough.
+
+<CodePreview {...DEMOS.max} />
+
+### Percentage height
+
+When using percentages (%) for height or width, make sure that the Data Grid's 
+parent container has intrinsic dimensions. Browsers adjust the element based on 
+a percentage of its parent's size. If the parent has no size, the percentage 
+will be zero.
+
+To put simply, an instrinsic height must be set on a parent in the DOM tree for
+the Data Grid parent to have a non-zero size.
+
+## Static Parent Container
+
+Static parent containers follow the same rules as flex containers. The only difference
+is that layout spacing must be controlled via the Toolbar or Footer components.
+
+<NoteAdmonition description="In the demo the Toolbar is adding margin bottom to itself to add spacing between itself and the Data Grid." />
+
+<CodePreview {...DEMOS.static} />

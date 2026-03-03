@@ -10,3 +10,5 @@ export * from './column-helpers'
 export * from './context.client'
 
 export * from './types'
+
+export { useSignalValue } from './adapter.client'
