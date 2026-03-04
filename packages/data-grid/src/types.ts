@@ -46,18 +46,38 @@ export type ColumnDef<TData, TKey extends keyof TData = keyof TData> = {
 }
 
 export interface GridOptions<TData> {
+  /**
+   * The full Array of data you want the grid to render.
+   */
   data: TData[]
+  /**
+   * A list of Defined Columns created using the column helper.
+   */
   columns: ColumnDef<TData>[]
-
-  // Initial State
+  /**
+   * Initial options for feature-related settings.
+   */
   initialState?: {
     pagination?: PaginationOptions
   }
 }
 
 export type PaginationOptions = {
+  /**
+   * The default page index to start on.
+   */
   defaultPage?: PaginationRootProps['defaultPage']
+  /**
+   * The default page size to start with. **Must be included in customRange if
+   * using any value other than 25, 50, or 100**.
+   *
+   * default: 0
+   */
   pageSize?: PaginationRootProps['pageSize']
+  /**
+   * A custom range of page sizes to display in the page size dropdown.
+   */
+  customRange?: number[]
 }
 
 // -- Column Definitions --
@@ -111,6 +131,7 @@ export interface GridStore<TData> {
   // Pagination Signals
   pageIndex: Signal<number>
   pageSize: Signal<number>
+  pageRange: Signal<number[]>
 
   // Computed (Read-Only)
   pageCount: ReadonlySignal<number>

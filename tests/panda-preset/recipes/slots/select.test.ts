@@ -107,12 +107,6 @@ describe('select recipe', () => {
       p: 'xs',
       rounded: 'md',
       shadow: 'lg',
-      _focusVisible: {
-        boxShadow: 'none',
-        outline: '3px solid',
-        outlineColor: 'action.border.focus',
-        outlineOffset: '2px',
-      },
       _open: {
         animationStyle: 'slide-fade-in',
         animationDuration: 'fast',
@@ -139,12 +133,6 @@ describe('select recipe', () => {
       transitionDuration: 'fast',
       transitionProperty: 'background, color',
       transitionTimingFunction: 'default',
-      _focusVisible: {
-        boxShadow: 'none',
-        outline: '3px solid',
-        outlineColor: 'action.border.focus',
-        outlineOffset: '2px',
-      },
       _highlighted: {
         bgColor: 'page.bg.200',
       },

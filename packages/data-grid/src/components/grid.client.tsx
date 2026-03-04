@@ -25,7 +25,7 @@ import {
   usePinnedAttribute,
   usePinnedState,
 } from '../hooks.client'
-import { PARTS, SCOPE } from '../parts'
+import { PARTS, SCOPE } from '../const'
 import type { InternalColumn } from '../types'
 import { useVirtualizer } from '../virtualizer.client'
 import { HeaderCellOptions } from './features.client'

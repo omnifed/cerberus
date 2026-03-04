@@ -8,12 +8,14 @@ import {
   type PaginationContextDetails,
   PaginationParts,
   PrevTrigger,
+  SelectValueChangeDetails,
   Show,
   Text,
 } from '@cerberus-design/react'
 import { Divider, HStack } from 'styled-system/jsx'
 import { useSignalValue } from '../adapter.client'
 import { useDataGridContext } from '../context.client'
+import { CountMenu } from './count-menu.client'
 
 export function GridPagination() {
   const store = useDataGridContext()
@@ -70,13 +72,12 @@ export function GridPagination() {
                   >
                     Rows per page:
                   </Text>
-                  <Text
-                    as="small"
-                    color="page.text.initial"
-                    textStyle="label-sm"
-                  >
-                    {pagination.pageSize}
-                  </Text>
+
+                  <CountMenu
+                    onValueChange={(details: SelectValueChangeDetails) => {
+                      pagination.setPageSize(Number(details.value))
+                    }}
+                  />
                 </HStack>
 
                 <Group>

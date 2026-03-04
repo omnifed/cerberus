@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useSignalValue } from './adapter.client'
-import { DEFAULT_COL_H } from './parts'
+import { DEFAULT_COL_H } from './const'
 import type { GridStore } from './types'
 
 export function useVirtualizer(
