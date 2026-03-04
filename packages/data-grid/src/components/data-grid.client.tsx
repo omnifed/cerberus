@@ -22,7 +22,7 @@ export interface DataGridProps<TData> extends GridOptions<TData> {
 }
 
 function DataGridEl<TData>(props: DataGridProps<TData>) {
-  const { data, columns, initialState } = props
+  const { data } = props
 
   const rootRef = useRef<HTMLDivElement>(null)
   const [ready, setReady] = useState<boolean>(false)
@@ -31,8 +31,9 @@ function DataGridEl<TData>(props: DataGridProps<TData>) {
   const [store] = useState(() =>
     createGridStore({
       data,
-      columns,
-      initialState,
+      columns: props.columns,
+      initialState: props.initialState,
+      onPageChange: props.onPageChange,
     }),
   )
 

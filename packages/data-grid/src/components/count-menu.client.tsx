@@ -24,7 +24,7 @@ export function CountMenu(props: CountMenuProps) {
   const pageSize = useSignalValue(state.pageSize)
   const range = useSignalValue(state.pageRange)
 
-  const Icon = icons.selectArrow
+  const Icon = icons.caretDown
 
   const collection = createSelectCollection(
     range.map((size) => {
@@ -43,7 +43,13 @@ export function CountMenu(props: CountMenuProps) {
           size="sm"
         >
           <SelectParts.Control>
-            <SelectParts.Trigger border="none" minW="initial" ps="0" pe="0">
+            <SelectParts.Trigger
+              border="none"
+              minW="initial"
+              gap="xs"
+              ps="0"
+              pe="0"
+            >
               <SelectParts.ValueText />
               <HStack>
                 <SelectParts.Indicator>
@@ -54,7 +60,7 @@ export function CountMenu(props: CountMenuProps) {
           </SelectParts.Control>
 
           <SelectParts.Positioner>
-            <SelectParts.Content>
+            <SelectParts.Content minW="7rem">
               <For each={collection.items}>
                 {(item) => <Option key={item.value} item={item} />}
               </For>

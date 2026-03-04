@@ -26,11 +26,11 @@ export function GridPagination() {
   const rowCount = useSignalValue(store.rowCount)
 
   function handlePageChange(details: PageDetails) {
-    console.log(details)
+    store.setPage(details)
   }
 
   function handlePageSizeChange(details: PageSizeChangeDetails) {
-    console.log(details)
+    store.setPageSize(details.pageSize)
   }
 
   return (

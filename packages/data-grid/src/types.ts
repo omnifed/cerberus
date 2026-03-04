@@ -1,4 +1,5 @@
 import {
+  PageDetails,
   type EnforceNoProperties,
   type PaginationRootProps,
 } from '@cerberus-design/react'
@@ -60,6 +61,10 @@ export interface GridOptions<TData> {
   initialState?: {
     pagination?: PaginationOptions
   }
+  /**
+   * Called when a user clicks on a pagination page trigger.
+   */
+  onPageChange?: (details: PageDetails) => void
 }
 
 export type PaginationOptions = {
@@ -143,7 +148,8 @@ export interface GridStore<TData> {
   // Actions
   resizeColumn: (colId: string, delta: number) => void
   setContainerWidth: (val: number) => void
-  setPage: (index: number) => void
+  setPage: (details: PageDetails) => void
+  setPageSize: (size: number) => void
   setGlobalFilter: (val: string) => void
   setSort: (colId: string, direction: SortDirection, multi?: boolean) => void
   togglePinned: (colId: string, state: PinnedState) => void

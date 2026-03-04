@@ -121,6 +121,10 @@ export function createGridStore<TData>(
   })
 
   const visibleRows = computed(() => {
+    if (pageSize.value && pageCount.value > 1) {
+      const start = pageIndex.value * pageSize.value
+      return processedRows.value.slice(start, start + pageSize.value)
+    }
     return processedRows.value
   })
 
@@ -265,9 +269,15 @@ export function createGridStore<TData>(
       }
     },
 
-    setPage: (p) => {
+    setPage: (details) => {
       const max = Math.max(0, pageCount.value - 1)
-      pageIndex.value = Math.max(0, Math.min(p, max))
+      pageIndex.value = Math.max(0, Math.min(details.page, max))
+      options.onPageChange?.(details)
+    },
+
+    setPageSize: (size) => {
+      pageSize.value = size
+      pageIndex.value = 0 // Reset to first page on page size change
     },
 
     setGlobalFilter: (val) => {
