@@ -51,8 +51,13 @@ export interface GridOptions<TData> {
 
   // Initial State
   initialState?: {
-    pagination?: PaginationRootProps
+    pagination?: PaginationOptions
   }
+}
+
+export type PaginationOptions = {
+  defaultPage?: PaginationRootProps['defaultPage']
+  pageSize?: PaginationRootProps['pageSize']
 }
 
 // -- Column Definitions --

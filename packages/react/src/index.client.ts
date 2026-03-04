@@ -11,6 +11,7 @@ export {
   useDialog,
   FileUploadRootProvider,
   useFileUpload,
+  usePagination,
   usePaginationContext,
   // utilities
   ClientOnly,

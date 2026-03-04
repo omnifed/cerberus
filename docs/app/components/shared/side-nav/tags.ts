@@ -1,1 +1,1 @@
-export const NEW = ['Group', 'Pagination']
+export const NEW = ['/docs/components/group', '/docs/components/pagination']

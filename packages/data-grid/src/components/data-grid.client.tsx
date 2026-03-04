@@ -1,20 +1,19 @@
 'use client'
 
 import { Show } from '@cerberus-design/react'
-import { type ReactNode, useEffect, useRef, useState } from 'react'
+import { memo, type ReactNode, useEffect, useRef, useState } from 'react'
 import { HStack, Stack } from 'styled-system/jsx'
 import { DataGridProvider } from '../context.client'
 import { PARTS, SCOPE } from '../parts'
 import { createGridStore } from '../store'
 import type { GridOptions } from '../types'
 import { GridViewport } from './grid.client'
+import { GridPagination } from './pagination.client'
 
 // Features
 // TODO: Figure out filtering (requires popover API)
 
 // Layout
-// TODO: Figure out pagination
-// TODO: Figure out Toolbar
 // TODO: Figure out footer
 
 export interface DataGridProps<TData> extends GridOptions<TData> {
@@ -22,7 +21,7 @@ export interface DataGridProps<TData> extends GridOptions<TData> {
   footer?: ReactNode
 }
 
-export function DataGrid<TData>(props: DataGridProps<TData>) {
+function DataGridEl<TData>(props: DataGridProps<TData>) {
   const { data, columns, initialState } = props
 
   const rootRef = useRef<HTMLDivElement>(null)
@@ -81,6 +80,7 @@ export function DataGrid<TData>(props: DataGridProps<TData>) {
         dir="columns"
         maxH="inherit"
         minH="inherit"
+        gap="0"
         h="full"
         bgColor="page.surface.100/55"
         border="1px solid"
@@ -99,7 +99,11 @@ export function DataGrid<TData>(props: DataGridProps<TData>) {
             </HStack>
           )}
         </Show>
+
+        <GridPagination />
       </Stack>
     </DataGridProvider>
   )
 }
+
+export const DataGrid = memo(DataGridEl)

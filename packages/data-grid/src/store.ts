@@ -15,7 +15,7 @@ export function createGridStore<TData>(
   const sorting = signal<SortState[]>([])
 
   const pageIndex = signal(options.initialState?.pagination?.defaultPage ?? 0)
-  const pageSize = signal(options.initialState?.pagination?.pageSize ?? 25)
+  const pageSize = signal(options.initialState?.pagination?.pageSize ?? 0)
 
   const initialCols: InternalColumn<TData>[] = options.columns.map((col) => {
     const pinnable = Boolean(col.features?.pinning)
@@ -98,7 +98,7 @@ export function createGridStore<TData>(
     return result
   })
 
-  // 4. Derived: Pagination - More than likely kill since Ark-UI handles
+  // Derived pagination - Ark handles the rest
   const rowCount = computed(() => processedRows.value.length)
   const pageCount = computed(() => Math.ceil(rowCount.value / pageSize.value))
 

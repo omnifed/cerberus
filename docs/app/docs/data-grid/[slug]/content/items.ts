@@ -46,6 +46,12 @@ export const items = [
     slug: 'toolbar',
   },
   {
+    id: '1.3',
+    href: '/docs/data-grid/pagination',
+    label: 'Pagination',
+    slug: 'pagination',
+  },
+  {
     id: '2.0',
     label: 'Features',
     href: '',
