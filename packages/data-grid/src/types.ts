@@ -6,7 +6,36 @@ import {
 import { type ReadonlySignal, type Signal } from '@preact/signals-core'
 import { type ReactNode } from 'react'
 
-// --- Public Types ---
+export interface GridOptions<TData> {
+  /**
+   * The full Array of data you want the grid to render.
+   */
+  data: TData[]
+  /**
+   * A list of Defined Columns created using the column helper.
+   */
+  columns: ColumnDef<TData>[]
+  /**
+   * Initial options for feature-related settings.
+   */
+  initialState?: {
+    pagination?: PaginationOptions
+  }
+  /**
+   * Called when a user clicks on a pagination page trigger.
+   */
+  onPageChange?: (details: PageDetails) => void
+  /**
+   * Content to display above the Data Grid and within the Grid context.
+   */
+  toolbar?: ReactNode
+  /**
+   * Content to display below the Data Grid and within the Grid context.
+   */
+  footer?: ReactNode
+}
+
+// --- Column Types ---
 
 export type ColumnDef<TData, TKey extends keyof TData = keyof TData> = {
   id: string
@@ -44,27 +73,6 @@ export type ColumnDef<TData, TKey extends keyof TData = keyof TData> = {
    * If no content is provided a string will be rendered.
    */
   cell?: ColCell<TData>
-}
-
-export interface GridOptions<TData> {
-  /**
-   * The full Array of data you want the grid to render.
-   */
-  data: TData[]
-  /**
-   * A list of Defined Columns created using the column helper.
-   */
-  columns: ColumnDef<TData>[]
-  /**
-   * Initial options for feature-related settings.
-   */
-  initialState?: {
-    pagination?: PaginationOptions
-  }
-  /**
-   * Called when a user clicks on a pagination page trigger.
-   */
-  onPageChange?: (details: PageDetails) => void
 }
 
 export type PaginationOptions = {

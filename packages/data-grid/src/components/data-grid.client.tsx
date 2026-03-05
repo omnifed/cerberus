@@ -1,7 +1,7 @@
 'use client'
 
 import { Show } from '@cerberus-design/react'
-import { memo, type ReactNode, useEffect, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import { HStack, Stack } from 'styled-system/jsx'
 import { DataGridProvider } from '../context.client'
 import { PARTS, SCOPE } from '../const'
@@ -16,12 +16,7 @@ import { GridPagination } from './pagination.client'
 // Layout
 // TODO: Figure out footer
 
-export interface DataGridProps<TData> extends GridOptions<TData> {
-  toolbar?: ReactNode
-  footer?: ReactNode
-}
-
-function DataGridEl<TData>(props: DataGridProps<TData>) {
+function DataGridEl<TData>(props: GridOptions<TData>) {
   const { data } = props
 
   const rootRef = useRef<HTMLDivElement>(null)
@@ -107,4 +102,4 @@ function DataGridEl<TData>(props: DataGridProps<TData>) {
   )
 }
 
-export const DataGrid = memo(DataGridEl)
+export const DataGrid = memo(DataGridEl) as typeof DataGridEl
