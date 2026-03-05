@@ -2,7 +2,7 @@
 
 import { useCerberusContext } from '../../context/cerberus'
 import { PropsWithChildren } from 'react'
-import { IconButton } from '../icon-button/index'
+import { IconButton, type IconButtonProps } from '../icon-button/index'
 import { PaginationParts } from './parts'
 import { GroupProps } from '../group'
 
@@ -32,9 +32,10 @@ export function NextTrigger(props: TriggerProps) {
   )
 }
 
-interface TriggerProps {
+export interface TriggerBaseProps {
   layout?: GroupProps['layout']
 }
+export type TriggerProps = TriggerBaseProps & Omit<IconButtonProps, 'clipboard'>
 
 function PaginationTrigger(props: PropsWithChildren<TriggerProps>) {
   const { layout, ...btnProps } = props

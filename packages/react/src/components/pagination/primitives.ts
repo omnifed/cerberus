@@ -8,6 +8,8 @@ import {
   type PaginationRootProps as ArkPaginationRootProps,
   type PaginationRootProviderProps as ArkPaginationRootProviderProps,
   type UsePaginationReturn as ArkUsePaginationReturn,
+  type PaginationPageUrlDetails,
+  type PaginationPageSizeChangeDetails,
 } from '@ark-ui/react/pagination'
 import { createCerberusPrimitive } from '../../system/index'
 
@@ -35,3 +37,5 @@ export type PaginationRootProviderProps = ArkPaginationRootProviderProps
 export const PaginationRootProvider = withNoRecipe(Pagination.RootProvider)
 
 export type PaginationContextDetails = ArkUsePaginationReturn
+export type PageDetails = PaginationPageUrlDetails
+export type PageSizeChangeDetails = PaginationPageSizeChangeDetails

@@ -1,0 +1,37 @@
+---
+title: Data Grid API
+description: The API reference for the Data Grid component.
+package: 'data-grid'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+
+## API
+
+The Data Grid API provides the following props:
+
+| Params    | Required | Description                                           |
+| --------- | -------- | ----------------------------------------------------- |
+| `data`    | `true` | The full set of data to display in the grid.            |
+| `columns` | `true` | The list of defined columns using the column helper.    |
+| `initialState` | `false` | The initial state of the grid for pagination settings. |
+| `toolbar` | `false` | The component to render in the grid toolbar slot. |
+| `footer` | `false` | The component to render in the grid footer slot. |
+
+## Slot Attributes
+
+Each slot layer is assigned a unique `data-part` attribute for styling and targeting 
+specific slot layers.
+
+| Name         | Value         | Description                                   |
+| ------------ | ------------- | --------------------------------------------- |
+| `data-scope` | `data-grid`   | The scope of the components.                  |
+| `data-part`  | `toolbar`     | The container of the toolbar slot.            |
+| `data-part`  | `root`        | The container Data Grid family.               |
+| `data-part`  | `viewport`    | The container of the viewport slot.           |
+| `data-part`  | `head-cell`   | The container of the head cell slot.          |
+| `data-part`  | `row`         | The container of the row slot.                |
+| `data-part`  | `row-cell`    | The container of the row cell slot.           |
+| `data-part`  | `footer`      | The container of the footer slot.             |
+
+<NoteAdmonition description="Any other slot part displayed in the Grid is inherited from the Cerberus React component API for that item." />

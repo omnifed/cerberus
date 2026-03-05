@@ -1,0 +1,66 @@
+---
+title: Pagination 
+description: Learn how to use pagination in the data grid.
+package: 'data-grid'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { DEMOS } from '../components/pagination/static'
+
+## Overview
+
+Pagination allows you to display a subset of data at a time which can be navigated
+through using the pagination controls.
+
+**By default, the pagination is handled on the client**. This means you have to give 
+the rows of all pages to the Data Grid. If your dataset is too big, and you want 
+to fetch the pages on demand, you can create a custom action in a custom 
+[Toolbar](/docs/data-grid/toolbar) action.
+
+## Implementing Pagination
+
+You must opt-in to pagination by setting the `initialState.pagination.pageSize` prop
+on the Data Grid. Doing so will display a static footer of pagination controls at 
+the bottom of the grid.
+
+<CodePreview {...DEMOS.basic} />
+
+## Page Sizes
+
+<NoteAdmonition description="The Data Grid comes built-int with a range of three predefined page sizes: 25, 50, and 100." />
+
+To enable custom page sizes, you need to provide two properties to the 
+`pagination` options:
+
+1. `customRange`: An array of custom page sizes to display in the dropdown.
+2. `pageSize`: The initial page size to use when the grid is first rendered. **This must be one of the values in `customRange`.**
+
+Once you have supplied these props correctly, the Data Grid page size dropdown
+will display your custom page sizes instead of the default ones.
+
+<CodePreview {...DEMOS.sizes} />
+
+## Page Change Action
+
+You can trigger a callback when the page change action is fired by providing a 
+`onPageChange` prop to the Data Grid. This will recieve a `details` object with
+the current page number and page size.
+
+This is useful for analytics or tracking page changes.
+
+<NoteAdmonition description="If you plan on fetching more data on page change, the grid state will reset which includes the page state. This is due to the nature of client-side pagination." />
+
+<CodePreview {...DEMOS.change} />
+
+## Options
+
+The `pagination` options accept the following properties:
+
+<CodePreview {...DEMOS.data} />
+
+| Params    | Required    | Description                                        |
+| --------- | ----------- | -------------------------------------------------- |
+| `defaultPage` | `false` | The index of the page to display by default. |
+| `pageSize` | `false` | The initial page size to use when the grid is first rendered. **This must be one of the values in `customRange`.** |
+| `customRange` | `false` | An array of custom page sizes to display in the dropdown. **This must include the `pageSize` value.** |

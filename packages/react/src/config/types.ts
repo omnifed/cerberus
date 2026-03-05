@@ -18,6 +18,7 @@ export interface DefinedIcons<T extends IconType = IconType> {
   calendar?: T
   calendarPrev?: T
   calendarNext?: T
+  caretDown?: T
   checkbox?: T
   close?: T
   confirmModal?: T

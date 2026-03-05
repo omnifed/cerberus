@@ -37,7 +37,7 @@ export function SideNav() {
           >
             <SideNavLinkItem key={item.id} href={item.slug}>
               {item.label}
-              <Show when={NEW.includes(item.label)}>
+              <Show when={NEW.includes(item.href)}>
                 <Tag
                   gradient="asphodel-dark"
                   usage="outlined"

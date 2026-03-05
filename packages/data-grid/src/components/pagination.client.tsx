@@ -1,47 +1,93 @@
 'use client'
 
-import { useDataGridContext } from '../context.client'
+import {
+  Group,
+  NextTrigger,
+  type PageDetails,
+  type PageSizeChangeDetails,
+  type PaginationContextDetails,
+  PaginationParts,
+  PrevTrigger,
+  SelectValueChangeDetails,
+  Show,
+  Text,
+} from '@cerberus-design/react'
+import { Divider, HStack } from 'styled-system/jsx'
 import { useSignalValue } from '../adapter.client'
+import { useDataGridContext } from '../context.client'
+import { CountMenu } from './count-menu.client'
 
 export function GridPagination() {
   const store = useDataGridContext()
 
   const pageIndex = useSignalValue(store.pageIndex)
-  const pageCount = useSignalValue(store.pageCount)
   const pageSize = useSignalValue(store.pageSize)
   const rowCount = useSignalValue(store.rowCount)
 
-  // Simple Pagination UI (Can be replaced with <Pagination.Root> from Ark)
-  return (
-    <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 bg-white">
-      <div className="text-sm text-gray-500">
-        Showing <span className="font-medium">{pageIndex * pageSize + 1}</span>{' '}
-        to{' '}
-        <span className="font-medium">
-          {Math.min((pageIndex + 1) * pageSize, rowCount)}
-        </span>{' '}
-        of <span className="font-medium">{rowCount}</span> results
-      </div>
+  function handlePageChange(details: PageDetails) {
+    store.setPage(details)
+  }
 
-      <div className="flex items-center gap-2">
-        <button
-          onClick={() => store.setPage(pageIndex - 1)}
-          disabled={pageIndex === 0}
-          className="p-1 rounded hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+  function handlePageSizeChange(details: PageSizeChangeDetails) {
+    store.setPageSize(details.pageSize)
+  }
+
+  return (
+    <Show when={pageSize}>
+      {() => (
+        <PaginationParts.Root
+          count={rowCount}
+          onPageChange={handlePageChange}
+          onPageSizeChange={handlePageSizeChange}
+          page={pageIndex}
+          pageSize={pageSize}
         >
-          &gt;
-        </button>
-        <span className="text-sm font-medium text-gray-700">
-          Page {pageIndex + 1} of {pageCount}
-        </span>
-        <button
-          onClick={() => store.setPage(pageIndex + 1)}
-          disabled={pageIndex >= pageCount - 1}
-          className="p-1 rounded hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          &lt;
-        </button>
-      </div>
-    </div>
+          <PaginationParts.Context>
+            {(pagination: PaginationContextDetails) => (
+              <HStack
+                bgColor="page.surface.100"
+                borderTop="1px solid"
+                borderTopColor="page.border.initial"
+                justify="space-between"
+                px="md"
+                py="sm"
+                w="full"
+              >
+                <HStack gap="sm">
+                  <Text as="small" color="page.text.100" textStyle="label-sm">
+                    {pagination.page}-{pagination.pageSize} of{' '}
+                    {pagination.totalPages}
+                  </Text>
+                  <Divider
+                    color="page.border.200"
+                    orientation="vertical"
+                    h="1rem"
+                    thickness="1px"
+                  />
+                  <Text
+                    as="small"
+                    color="page.text.initial"
+                    textStyle="label-sm"
+                  >
+                    Rows per page:
+                  </Text>
+
+                  <CountMenu
+                    onValueChange={(details: SelectValueChangeDetails) => {
+                      pagination.setPageSize(Number(details.value))
+                    }}
+                  />
+                </HStack>
+
+                <Group>
+                  <PrevTrigger size="sm" />
+                  <NextTrigger size="sm" />
+                </Group>
+              </HStack>
+            )}
+          </PaginationParts.Context>
+        </PaginationParts.Root>
+      )}
+    </Show>
   )
 }

@@ -1,5 +1,6 @@
 import {
   Calendar,
+  CaretDown,
   Checkmark,
   CheckmarkOutline,
   ChevronDown,
@@ -37,6 +38,7 @@ export const defaultIcons: Required<DefinedIcons> = {
   calendar: Calendar,
   calendarPrev: ChevronLeft,
   calendarNext: ChevronRight,
+  caretDown: CaretDown,
   checkbox: CheckmarkIcon,
   close: Close,
   confirmModal: Information,
