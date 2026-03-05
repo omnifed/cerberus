@@ -68,4 +68,15 @@ export const items = [
     label: 'Sorting',
     slug: 'sort',
   },
+  {
+    id: '3.0',
+    label: 'Reference',
+    href: '',
+  },
+  {
+    id: '3.1',
+    href: '/docs/data-grid/api',
+    label: 'API',
+    slug: 'api',
+  },
 ]

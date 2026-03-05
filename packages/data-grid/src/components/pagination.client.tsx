@@ -21,7 +21,6 @@ export function GridPagination() {
   const store = useDataGridContext()
 
   const pageIndex = useSignalValue(store.pageIndex)
-  const pageCount = useSignalValue(store.pageCount)
   const pageSize = useSignalValue(store.pageSize)
   const rowCount = useSignalValue(store.rowCount)
 
@@ -34,7 +33,7 @@ export function GridPagination() {
   }
 
   return (
-    <Show when={pageSize && pageCount > 1}>
+    <Show when={pageSize}>
       {() => (
         <PaginationParts.Root
           count={rowCount}
