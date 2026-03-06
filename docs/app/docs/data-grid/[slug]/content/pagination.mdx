@@ -20,9 +20,9 @@ to fetch the pages on demand, you can create a custom action in a custom
 
 ## Implementing Pagination
 
-You must opt-in to pagination by setting the `initialState.pagination.pageSize` prop
-on the Data Grid. Doing so will display a static footer of pagination controls at 
-the bottom of the grid.
+You must opt-in to pagination by setting the `initialState.pagination` prop to either `true`
+or using a `PaginationOptions` object on the Data Grid. Doing so will display a 
+static footer of pagination controls at the bottom of the grid.
 
 <CodePreview {...DEMOS.basic} />
 
@@ -30,16 +30,29 @@ the bottom of the grid.
 
 <NoteAdmonition description="The Data Grid comes built-int with a range of three predefined page sizes: 25, 50, and 100." />
 
-To enable custom page sizes, you need to provide two properties to the 
-`pagination` options:
+To enable custom page sizes, you need to provide a `customRange` value to the 
+`pagination` options. This should be an Array of numbers representing the page sizes to display in the dropdown.
 
-1. `customRange`: An array of custom page sizes to display in the dropdown.
-2. `pageSize`: The initial page size to use when the grid is first rendered. **This must be one of the values in `customRange`.**
-
-Once you have supplied these props correctly, the Data Grid page size dropdown
-will display your custom page sizes instead of the default ones.
+When this is provided, the Data Grid will use the first value in `customRange` as the initial page size.
 
 <CodePreview {...DEMOS.sizes} />
+
+## Default Page
+
+To set the default page, you can provide a `defaultPage` value to the `pagination` options.
+
+<CodePreview {...DEMOS.page} />
+
+## Count
+
+To set the total number of items in the grid, you can provide a `count` value to the `pagination` options.
+
+The Data Grid automatically calculates the total number of pages based on the 
+`count` and `pageSize` values when using client-side pagination.
+
+This is mostly useful when using server-side pagination where the total count is known beforehand.
+
+<CodePreview {...DEMOS.count} />
 
 ## Page Change Action
 
@@ -62,5 +75,6 @@ The `pagination` options accept the following properties:
 | Params    | Required    | Description                                        |
 | --------- | ----------- | -------------------------------------------------- |
 | `defaultPage` | `false` | The index of the page to display by default. |
+| `count` | `false` | The total number of items in the grid. **This is useful for server-side pagination design** |
 | `pageSize` | `false` | The initial page size to use when the grid is first rendered. **This must be one of the values in `customRange`.** |
 | `customRange` | `false` | An array of custom page sizes to display in the dropdown. **This must include the `pageSize` value.** |

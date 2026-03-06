@@ -11,6 +11,13 @@ export const PARTS = {
   FOOTER: 'footer',
 }
 
+// Pagination
+export const SM_PAGE_SIZE = 25
+export const MD_PAGE_SIZE = 50
+export const LG_PAGE_SIZE = 100
+
+export const DEFAULT_PAGE_SIZES = [SM_PAGE_SIZE, MD_PAGE_SIZE, LG_PAGE_SIZE]
+
 // Row sizing
 
 export const XS = 'xs'

@@ -20,7 +20,7 @@ export interface GridOptions<TData> {
    * Initial options for feature-related settings.
    */
   initialState?: {
-    pagination?: PaginationOptions
+    pagination?: boolean | PaginationOptions
   }
   /**
    * Called when a user clicks on a pagination page trigger.
@@ -84,6 +84,11 @@ export type ColumnDef<TData, TKey extends keyof TData = keyof TData> = {
 }
 
 export type PaginationOptions = {
+  /**
+   * The total number of rows that exist. This is useful if you choose to use
+   * server-side pagination design.
+   */
+  count?: PaginationRootProps['count']
   /**
    * The default page index to start on.
    */

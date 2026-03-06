@@ -36,6 +36,7 @@ export function GridPagination() {
     <Show when={pageSize}>
       {() => (
         <PaginationParts.Root
+          defaultPage={pageIndex ? pageIndex : 1}
           count={rowCount}
           onPageChange={handlePageChange}
           onPageSizeChange={handlePageSizeChange}

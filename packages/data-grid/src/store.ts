@@ -1,6 +1,12 @@
 import { signal, computed } from '@preact/signals-core'
 import type { GridOptions, GridStore, InternalColumn, SortState } from './types'
-import { determineRowHeight } from './utils'
+import {
+  determineInitialCount,
+  determinePageIndex,
+  determinePageRange,
+  determinePageSize,
+  determineRowHeight,
+} from './utils'
 
 /**
  * Internal signal-based Store engine driving the state. We expose this in
@@ -16,10 +22,10 @@ export function createGridStore<TData>(
   const globalFilter = signal('')
   const sorting = signal<SortState[]>([])
 
-  const pageIndex = signal(options.initialState?.pagination?.defaultPage ?? 0)
-  const pageSize = signal(options.initialState?.pagination?.pageSize ?? 0)
+  const pageIndex = signal(determinePageIndex(options.initialState?.pagination))
+  const pageSize = signal(determinePageSize(options.initialState?.pagination))
   const pageRange = signal<number[]>(
-    options.initialState?.pagination?.customRange ?? [25, 50, 100],
+    determinePageRange(options.initialState?.pagination),
   )
 
   const initialCols: InternalColumn<TData>[] = options.columns.map((col) => {
@@ -104,7 +110,11 @@ export function createGridStore<TData>(
   })
 
   // Derived pagination - Ark handles the rest
-  const rowCount = computed(() => processedRows.value.length)
+  const rowCount = computed(
+    () =>
+      determineInitialCount(options?.initialState?.pagination) ??
+      processedRows.value.length,
+  )
   const pageCount = computed(() => Math.ceil(rowCount.value / pageSize.value))
 
   const orderedColumns = computed(() => {
