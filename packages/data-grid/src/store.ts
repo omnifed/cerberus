@@ -1,5 +1,6 @@
 import { signal, computed } from '@preact/signals-core'
 import type { GridOptions, GridStore, InternalColumn, SortState } from './types'
+import { determineRowHeight } from './utils'
 
 /**
  * Internal signal-based Store engine driving the state. We expose this in
@@ -8,8 +9,9 @@ import type { GridOptions, GridStore, InternalColumn, SortState } from './types'
 export function createGridStore<TData>(
   options: GridOptions<TData>,
 ): GridStore<TData> {
-  const rows = signal(options.data)
   const containerWidth = signal(0)
+  const rows = signal(options.data)
+  const rowSize = signal(determineRowHeight(options.rowSize))
 
   const globalFilter = signal('')
   const sorting = signal<SortState[]>([])
@@ -195,6 +197,7 @@ export function createGridStore<TData>(
     }
 
     vars['--total-grid-width'] = `${totalW}px`
+    vars['--row-height'] = `${rowSize.value}px`
 
     return vars
   })
@@ -204,19 +207,22 @@ export function createGridStore<TData>(
   )
 
   return {
-    rows,
+    // Signals
     columns,
-    sorting,
+    rows,
+    rowCount,
+    rowSize,
     globalFilter,
+    pageCount,
     pageIndex,
     pageSize,
     pageRange,
-    visibleRows,
+    sorting,
     rootCssVars,
     totalWidth,
-    pageCount,
-    rowCount,
+    visibleRows,
 
+    // Actions
     updateData: (newData) => {
       rows.value = newData
     },

@@ -28,6 +28,7 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
       data,
       columns: props.columns,
       initialState: props.initialState,
+      rowSize: props.rowSize,
       onPageChange: props.onPageChange,
     }),
   )

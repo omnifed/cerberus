@@ -41,12 +41,18 @@ export const items = [
   },
   {
     id: '1.2',
+    href: '/docs/data-grid/sizing',
+    label: 'Sizing',
+    slug: 'sizing',
+  },
+  {
+    id: '1.3',
     href: '/docs/data-grid/toolbar',
     label: 'Toolbar',
     slug: 'toolbar',
   },
   {
-    id: '1.3',
+    id: '1.4',
     href: '/docs/data-grid/pagination',
     label: 'Pagination',
     slug: 'pagination',

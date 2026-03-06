@@ -51,7 +51,7 @@ export function GridViewport() {
       ref={viewportRef}
     >
       <Box
-        h="2.5rem" // Must match rowHeight in virtualizer
+        h="var(--row-height)"
         pos="sticky"
         top="0"
         w="var(--total-grid-width)"
@@ -155,7 +155,6 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
       justify="space-between"
       pos="relative"
       px="md"
-      py="md"
       userSelect="none"
       textAlign="left"
       textStyle="label-md"
@@ -260,7 +259,6 @@ export const GridCell = memo(function GridCell<TData>(
       h="full"
       pos="relative"
       px="md"
-      py="md"
       userSelect="none"
       verticalAlign="middle"
       zIndex="base"
@@ -327,7 +325,7 @@ function GridRowContainer(props: PropsWithChildren<GridRowContainerProps>) {
       data-part={PARTS.ROW}
       bgColor="page.surface.100"
       gap="0"
-      h="2.5rem" // Must match rowHeight in virtualizer
+      h="var(--row-height)"
       left="0"
       pos="absolute"
       w="full"

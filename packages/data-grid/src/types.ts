@@ -5,6 +5,7 @@ import {
 } from '@cerberus-design/react'
 import { type ReadonlySignal, type Signal } from '@preact/signals-core'
 import { type ReactNode } from 'react'
+import { type RowSize } from './const'
 
 export interface GridOptions<TData> {
   /**
@@ -33,6 +34,13 @@ export interface GridOptions<TData> {
    * Content to display below the Data Grid and within the Grid context.
    */
   footer?: ReactNode
+  /**
+   * The visual spacing of cells within a row. Can be a predefined size or any
+   * valid CSS sizing value.
+   *
+   * **default**: 'md'.
+   */
+  rowSize?: RowSizeOptions
 }
 
 // --- Column Types ---
@@ -150,6 +158,7 @@ export interface GridStore<TData> {
   pageCount: ReadonlySignal<number>
   rootCssVars: ReadonlySignal<Record<string, string>>
   rowCount: ReadonlySignal<number>
+  rowSize: ReadonlySignal<number>
   totalWidth: ReadonlySignal<number>
   visibleRows: ReadonlySignal<TData[]>
 
@@ -164,6 +173,8 @@ export interface GridStore<TData> {
   toggleSort: (colId: string, multi?: boolean) => void
   updateData: (newData: TData[]) => void
 }
+
+export type RowSizeOptions = RowSize | number
 
 // -- Column Features --
 
