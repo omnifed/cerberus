@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useSignalValue } from './adapter.client'
-import { DEFAULT_COL_H } from './const'
 import type { GridStore } from './types'
 
 export function useVirtualizer(
@@ -10,7 +9,8 @@ export function useVirtualizer(
   viewportRef: React.RefObject<HTMLDivElement | null>,
 ) {
   const rows = useSignalValue(store.visibleRows)
-  const rowHeight = DEFAULT_COL_H
+  const rowHeight = useSignalValue(store.rowSize)
+
   const totalHeight = rows.length * rowHeight
 
   // Force render updates in the React DOM
