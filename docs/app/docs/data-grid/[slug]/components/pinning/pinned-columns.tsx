@@ -25,7 +25,7 @@ export const columns = [
       pinning: true,
     },
     cell: ({ row, value }) => (
-      <VStack alignItems="flex-start" gap="2">
+      <VStack alignItems="flex-start" gap="0">
         <Text textStyle="body-md">{value}</Text>
         <Text color="page.text.100" textStyle="label-sm">
           {row.email}

@@ -10,12 +10,42 @@ import { DEMOS } from '../components/sizing/static'
 
 ## Overview
 
-...TBD
+Row sizing options are avaiable for the Data Grid component vai the `rowSize` prop.
+Utilizing this will either reduce or increase the visual size of all rows 
+(including headers).
 
-### Size Options
+This is a great option if you want to display more content within a cell without
+it feeling compact.
 
-...TBD
+## Size Options
 
-## Predefined Sizes
+The Data Grid has a flexible sizing system that allows you to choose from predefined
+size options or define a custom size if needed. **All sizes are defined in pixels**
+to ensure virtualization works correctly.
+
+When no `rowSize` is provided, the Data Grid will use the `sm` size.
+
+<NoteAdmonition description="Cells are rendered in a flex row container, to enable the use of any flex-related property for your content." />
+
+### Predefined Sizes
+
+There are several predefined size options available: `xs` to `xl`.
 
 <CodePreview {...DEMOS.basic} />
+
+#### Predefined Size Guide
+
+| Size | Pixel Value |
+|------|-------------|
+| `xs` | 32          |
+| `sm` | 40          |
+| `md` | 48          |
+| `lg` | 56          |
+| `xl` | 64          |
+
+### Custom Sizes
+
+You can also define a custom size by passing a number directly to the `rowSize` prop.
+This allows you to use any pixel value you need.
+
+<CodePreview {...DEMOS.custom} />
