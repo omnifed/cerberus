@@ -1,4 +1,5 @@
 import {
+  DEFAULT_PAGE_IDX,
   DEFAULT_PAGE_SIZES,
   ROW_SIZES,
   type RowSize,
@@ -47,13 +48,13 @@ export function determinePageSize(
 export function determinePageIndex(
   options?: boolean | PaginationOptions,
 ): number {
-  if (!options) return 0
+  if (!options) return DEFAULT_PAGE_IDX
 
   if (typeof options === 'boolean' && options === true) {
-    return 0
+    return DEFAULT_PAGE_IDX
   }
 
-  return options.defaultPage ?? 0
+  return options.defaultPage ?? DEFAULT_PAGE_IDX
 }
 
 export function determinePageRange(

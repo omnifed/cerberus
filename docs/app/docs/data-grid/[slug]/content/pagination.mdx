@@ -52,6 +52,8 @@ The Data Grid automatically calculates the total number of pages based on the
 
 This is mostly useful when using server-side pagination where the total count is known beforehand.
 
+<NoteAdmonition description="By opting into this option you are forcing the grid to render without virtualization applied. You are also opting into managing the full pagination state and the page count will reset the index to the first page if changed." />
+
 <CodePreview {...DEMOS.count} />
 
 ## Page Change Action

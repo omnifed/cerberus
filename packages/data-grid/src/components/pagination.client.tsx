@@ -56,8 +56,8 @@ export function GridPagination() {
               >
                 <HStack gap="sm">
                   <Text as="small" color="page.text.100" textStyle="label-sm">
-                    {pagination.page}-{pagination.pageSize} of{' '}
-                    {pagination.totalPages}
+                    {pagination.pageRange.start}-{pagination.pageRange.end} of{' '}
+                    {pagination.count}
                   </Text>
                   <Divider
                     color="page.border.200"
@@ -82,6 +82,14 @@ export function GridPagination() {
 
                 <Group>
                   <PrevTrigger size="sm" />
+                  <Text
+                    as="small"
+                    color="page.text.200"
+                    lineHeight="inherit"
+                    textStyle="label-sm"
+                  >
+                    {pagination.page} of {pagination.totalPages}
+                  </Text>
                   <NextTrigger size="sm" />
                 </Group>
               </HStack>

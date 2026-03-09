@@ -7,6 +7,7 @@ import {
   determinePageSize,
   determineRowHeight,
 } from './utils'
+import { DEFAULT_PAGE_IDX } from './const'
 
 /**
  * Internal signal-based Store engine driving the state. We expose this in
@@ -26,6 +27,9 @@ export function createGridStore<TData>(
   const pageSize = signal(determinePageSize(options.initialState?.pagination))
   const pageRange = signal<number[]>(
     determinePageRange(options.initialState?.pagination),
+  )
+  const isServerPaginated = signal<boolean>(
+    Boolean(determineInitialCount(options.initialState?.pagination)),
   )
 
   const initialCols: InternalColumn<TData>[] = options.columns.map((col) => {
@@ -56,6 +60,16 @@ export function createGridStore<TData>(
     }
   })
   const columns = signal(initialCols)
+
+  const currentPageRange = computed(() => {
+    const dataIdx = pageIndex.value - 1
+    const isFirstPage = dataIdx === 0
+    const start = isFirstPage ? 0 : dataIdx * pageSize.value - 1
+    return {
+      start,
+      end: pageIndex.value * pageSize.value,
+    }
+  })
 
   // Processed with data-intensive features
   const processedRows = computed(() => {
@@ -134,8 +148,8 @@ export function createGridStore<TData>(
 
   const visibleRows = computed(() => {
     if (pageSize.value && pageCount.value > 1) {
-      const start = pageIndex.value * pageSize.value
-      return processedRows.value.slice(start, start + pageSize.value)
+      const currentRange = currentPageRange.value
+      return processedRows.value.slice(currentRange.start, currentRange.end)
     }
     return processedRows.value
   })
@@ -217,18 +231,19 @@ export function createGridStore<TData>(
   )
 
   return {
-    // Signals
     columns,
     rows,
-    rowCount,
-    rowSize,
     globalFilter,
+    sorting,
     pageCount,
     pageIndex,
     pageSize,
     pageRange,
-    sorting,
+    currentPageRange,
+    isServerPaginated,
     rootCssVars,
+    rowCount,
+    rowSize,
     totalWidth,
     visibleRows,
 
@@ -286,19 +301,21 @@ export function createGridStore<TData>(
     },
 
     setPage: (details) => {
-      const max = Math.max(0, pageCount.value - 1)
-      pageIndex.value = Math.max(0, Math.min(details.page, max))
+      pageIndex.value = details.page
       options.onPageChange?.(details)
     },
 
     setPageSize: (size) => {
+      if (isServerPaginated.value) {
+        // Reset to first page on size change to reset pagination
+        pageIndex.value = DEFAULT_PAGE_IDX
+      }
       pageSize.value = size
-      pageIndex.value = 0 // Reset to first page on page size change
     },
 
     setGlobalFilter: (val) => {
       globalFilter.value = val
-      pageIndex.value = 0 // Reset to first page on filter
+      pageIndex.value = DEFAULT_PAGE_IDX // Reset to first page on filter
     },
 
     setContainerWidth: (w: number) => {

@@ -8,6 +8,11 @@ export function useVirtualizer(
   store: GridStore<unknown>,
   viewportRef: React.RefObject<HTMLDivElement | null>,
 ) {
+  const isServerPaginated = useSignalValue(store.isServerPaginated)
+  if (isServerPaginated) {
+    return useMemo(() => ({ virtualRows: [], totalHeight: 0 }), [])
+  }
+
   const rows = useSignalValue(store.visibleRows)
   const rowHeight = useSignalValue(store.rowSize)
 

@@ -148,19 +148,21 @@ export type SortState = { id: string; desc: boolean }
 // -- Store Context --
 
 export interface GridStore<TData> {
-  // State Signals
+  // State
   columns: Signal<InternalColumn<TData>[]>
   rows: Signal<TData[]>
   globalFilter: Signal<string>
   sorting: Signal<SortState[]>
 
-  // Pagination Signals
+  // Pagination
   pageIndex: Signal<number>
   pageSize: Signal<number>
   pageRange: Signal<number[]>
-
-  // Computed (Read-Only)
   pageCount: ReadonlySignal<number>
+  currentPageRange: ReadonlySignal<{ start: number; end: number }>
+  isServerPaginated: ReadonlySignal<boolean>
+
+  // Styling
   rootCssVars: ReadonlySignal<Record<string, string>>
   rowCount: ReadonlySignal<number>
   rowSize: ReadonlySignal<number>

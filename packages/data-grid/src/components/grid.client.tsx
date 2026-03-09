@@ -16,7 +16,7 @@ import {
   useMemo,
   useRef,
 } from 'react'
-import { Box, HStack, Scrollable } from 'styled-system/jsx'
+import { Box, HStack, Scrollable, Stack } from 'styled-system/jsx'
 import type { Dict } from 'styled-system/types'
 import { useSignalValue } from '../adapter.client'
 import { useDataGridContext } from '../context.client'
@@ -37,6 +37,10 @@ export function GridViewport() {
   const { virtualRows, totalHeight } = useVirtualizer(store, viewportRef)
 
   const columns = useSignalValue(store.columns)
+
+  const isServerPaginated = useSignalValue(store.isServerPaginated)
+  const staticRows = useSignalValue(store.rows)
+  const currentPageRange = useSignalValue(store.currentPageRange)
 
   return (
     <Scrollable
@@ -68,24 +72,42 @@ export function GridViewport() {
         </HStack>
       </Box>
 
-      <Box
-        pos="relative"
-        w="var(--total-grid-width)"
-        style={{
-          height: `${totalHeight}px`,
-        }}
+      <Show
+        when={isServerPaginated}
+        fallback={
+          <Box
+            pos="relative"
+            w="var(--total-grid-width)"
+            style={{
+              height: `${totalHeight}px`,
+            }}
+          >
+            <For each={virtualRows}>
+              {(vRow) => (
+                <GridRow
+                  key={vRow.index}
+                  row={vRow.data}
+                  index={vRow.index}
+                  offsetY={vRow.offsetY}
+                />
+              )}
+            </For>
+          </Box>
+        }
       >
-        <For each={virtualRows}>
-          {(vRow) => (
-            <GridRow
-              key={vRow.index}
-              row={vRow.data}
-              index={vRow.index}
-              offsetY={vRow.offsetY}
-            />
-          )}
-        </For>
-      </Box>
+        {() => (
+          <Stack direction="column" gap="0" w="var(--total-grid-width)">
+            <For
+              each={staticRows.slice(
+                currentPageRange.start,
+                currentPageRange.end,
+              )}
+            >
+              {(row, index) => <GridRow key={index} row={row} index={index} />}
+            </For>
+          </Stack>
+        )}
+      </Show>
     </Scrollable>
   )
 }
@@ -292,7 +314,7 @@ export const GridCell = memo(function GridCell<TData>(
 interface GridRowProps {
   row: unknown
   index: number
-  offsetY: number
+  offsetY?: number
 }
 
 export const GridRow = memo(function GridRow(props: GridRowProps) {
@@ -315,19 +337,20 @@ export const GridRow = memo(function GridRow(props: GridRowProps) {
 // -- Row Container
 
 interface GridRowContainerProps {
-  offsetY: number
+  offsetY?: number
 }
 
 function GridRowContainer(props: PropsWithChildren<GridRowContainerProps>) {
+  const isVirtualized = props.offsetY !== undefined
+
   return (
     <HStack
       data-scope={SCOPE}
       data-part={PARTS.ROW}
+      data-render={isVirtualized ? 'virtualized' : 'static'}
       bgColor="page.surface.100"
       gap="0"
       h="var(--row-height)"
-      left="0"
-      pos="absolute"
       w="full"
       _even={{
         bgColor: 'page.surface.initial',
@@ -335,8 +358,14 @@ function GridRowContainer(props: PropsWithChildren<GridRowContainerProps>) {
       _hover={{
         bgColor: 'page.surface.200',
       }}
+      css={{
+        '&:is([data-render=virtualized])': {
+          pos: 'absolute',
+          left: 0,
+        },
+      }}
       style={{
-        transform: `translateY(${props.offsetY}px)`,
+        transform: isVirtualized ? `translateY(${props.offsetY}px)` : undefined,
       }}
     >
       {props.children}

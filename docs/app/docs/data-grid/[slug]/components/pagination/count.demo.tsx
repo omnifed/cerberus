@@ -5,10 +5,13 @@ import { useState } from 'react'
 import { Stack } from 'styled-system/jsx'
 import { columns } from '../quick-start/columns.demo'
 import { useFakeQuery } from '../quick-start/data'
-import { useEffect } from 'react'
+
+const count = 1000
+const maxPageSize = 100
 
 export function CountDemo() {
-  const [current, setCurrent] = useState<number>(100)
+  const [current, setCurrent] = useState<number>(maxPageSize)
+
   // Normally this would be from useQuery or a server-side API call
   const data = useFakeQuery(current)
 
@@ -18,13 +21,14 @@ export function CountDemo() {
         columns={columns}
         data={data}
         initialState={{
-          pagination: {
-            count: 1000,
-          },
+          pagination: { count },
         }}
         onPageChange={(details) => {
           console.log(details)
-          setCurrent(details.page * details.pageSize)
+          const currentPages = Math.ceil(data.length / details.pageSize)
+          const hasEnough = details.page + 1 <= currentPages
+          if (hasEnough) return
+          setCurrent((prev) => prev + maxPageSize)
         }}
       />
     </Stack>
