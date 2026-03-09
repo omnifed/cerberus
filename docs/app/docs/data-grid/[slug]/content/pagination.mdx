@@ -43,16 +43,24 @@ To set the default page, you can provide a `defaultPage` value to the `paginatio
 
 <CodePreview {...DEMOS.page} />
 
-## Count
+## Count 
 
-To set the total number of items in the grid, you can provide a `count` value to the `pagination` options.
+For **server-side pagination** where the total count is known beforehand, you can 
+provide a `count` value to the `pagination` options.
 
 The Data Grid automatically calculates the total number of pages based on the 
-`count` and `pageSize` values when using client-side pagination.
+`count` and `pageSize` values when using _client-side pagination_.
 
-This is mostly useful when using server-side pagination where the total count is known beforehand.
-
-<NoteAdmonition description="By opting into this option you are forcing the grid to render without virtualization applied. You are also opting into managing the full pagination state and the page count will reset the index to the first page if changed." />
+<NoteAdmonition description={
+<>
+  By opting in to this option you are forcing the grid to render: 
+    <ul style={{ paddingTop: '1rem' }}>
+      <li>without virtualization applied</li>
+      <li>without automatic state management of the pagination</li>
+      <li>the page count will reset the index to the first page if changed</li>
+    </ul>
+</>
+} />
 
 <CodePreview {...DEMOS.count} />
 
