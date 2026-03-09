@@ -20,7 +20,7 @@ export interface GridOptions<TData> {
    * Initial options for feature-related settings.
    */
   initialState?: {
-    pagination?: PaginationOptions
+    pagination?: boolean | PaginationOptions
   }
   /**
    * Called when a user clicks on a pagination page trigger.
@@ -85,6 +85,11 @@ export type ColumnDef<TData, TKey extends keyof TData = keyof TData> = {
 
 export type PaginationOptions = {
   /**
+   * The total number of rows that exist. This is useful if you choose to use
+   * server-side pagination design.
+   */
+  count?: PaginationRootProps['count']
+  /**
    * The default page index to start on.
    */
   defaultPage?: PaginationRootProps['defaultPage']
@@ -143,19 +148,21 @@ export type SortState = { id: string; desc: boolean }
 // -- Store Context --
 
 export interface GridStore<TData> {
-  // State Signals
+  // State
   columns: Signal<InternalColumn<TData>[]>
   rows: Signal<TData[]>
   globalFilter: Signal<string>
   sorting: Signal<SortState[]>
 
-  // Pagination Signals
+  // Pagination
   pageIndex: Signal<number>
   pageSize: Signal<number>
   pageRange: Signal<number[]>
-
-  // Computed (Read-Only)
   pageCount: ReadonlySignal<number>
+  currentPageRange: ReadonlySignal<{ start: number; end: number }>
+  isServerPaginated: ReadonlySignal<boolean>
+
+  // Styling
   rootCssVars: ReadonlySignal<Record<string, string>>
   rowCount: ReadonlySignal<number>
   rowSize: ReadonlySignal<number>

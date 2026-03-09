@@ -17,7 +17,6 @@ export function SizesDemo() {
         initialState={{
           pagination: {
             customRange: [10, 20, 50],
-            pageSize: 10,
           },
         }}
       />

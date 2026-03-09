@@ -1,6 +1,13 @@
 import { signal, computed } from '@preact/signals-core'
 import type { GridOptions, GridStore, InternalColumn, SortState } from './types'
-import { determineRowHeight } from './utils'
+import {
+  determineInitialCount,
+  determinePageIndex,
+  determinePageRange,
+  determinePageSize,
+  determineRowHeight,
+} from './utils'
+import { DEFAULT_PAGE_IDX } from './const'
 
 /**
  * Internal signal-based Store engine driving the state. We expose this in
@@ -16,10 +23,13 @@ export function createGridStore<TData>(
   const globalFilter = signal('')
   const sorting = signal<SortState[]>([])
 
-  const pageIndex = signal(options.initialState?.pagination?.defaultPage ?? 0)
-  const pageSize = signal(options.initialState?.pagination?.pageSize ?? 0)
+  const pageIndex = signal(determinePageIndex(options.initialState?.pagination))
+  const pageSize = signal(determinePageSize(options.initialState?.pagination))
   const pageRange = signal<number[]>(
-    options.initialState?.pagination?.customRange ?? [25, 50, 100],
+    determinePageRange(options.initialState?.pagination),
+  )
+  const isServerPaginated = signal<boolean>(
+    Boolean(determineInitialCount(options.initialState?.pagination)),
   )
 
   const initialCols: InternalColumn<TData>[] = options.columns.map((col) => {
@@ -50,6 +60,16 @@ export function createGridStore<TData>(
     }
   })
   const columns = signal(initialCols)
+
+  const currentPageRange = computed(() => {
+    const dataIdx = pageIndex.value - 1
+    const isFirstPage = dataIdx === 0
+    const start = isFirstPage ? 0 : dataIdx * pageSize.value - 1
+    return {
+      start,
+      end: pageIndex.value * pageSize.value,
+    }
+  })
 
   // Processed with data-intensive features
   const processedRows = computed(() => {
@@ -104,7 +124,11 @@ export function createGridStore<TData>(
   })
 
   // Derived pagination - Ark handles the rest
-  const rowCount = computed(() => processedRows.value.length)
+  const rowCount = computed(
+    () =>
+      determineInitialCount(options?.initialState?.pagination) ??
+      processedRows.value.length,
+  )
   const pageCount = computed(() => Math.ceil(rowCount.value / pageSize.value))
 
   const orderedColumns = computed(() => {
@@ -124,8 +148,8 @@ export function createGridStore<TData>(
 
   const visibleRows = computed(() => {
     if (pageSize.value && pageCount.value > 1) {
-      const start = pageIndex.value * pageSize.value
-      return processedRows.value.slice(start, start + pageSize.value)
+      const currentRange = currentPageRange.value
+      return processedRows.value.slice(currentRange.start, currentRange.end)
     }
     return processedRows.value
   })
@@ -207,18 +231,19 @@ export function createGridStore<TData>(
   )
 
   return {
-    // Signals
     columns,
     rows,
-    rowCount,
-    rowSize,
     globalFilter,
+    sorting,
     pageCount,
     pageIndex,
     pageSize,
     pageRange,
-    sorting,
+    currentPageRange,
+    isServerPaginated,
     rootCssVars,
+    rowCount,
+    rowSize,
     totalWidth,
     visibleRows,
 
@@ -276,19 +301,21 @@ export function createGridStore<TData>(
     },
 
     setPage: (details) => {
-      const max = Math.max(0, pageCount.value - 1)
-      pageIndex.value = Math.max(0, Math.min(details.page, max))
+      pageIndex.value = details.page
       options.onPageChange?.(details)
     },
 
     setPageSize: (size) => {
+      if (isServerPaginated.value) {
+        // Reset to first page on size change to reset pagination
+        pageIndex.value = DEFAULT_PAGE_IDX
+      }
       pageSize.value = size
-      pageIndex.value = 0 // Reset to first page on page size change
     },
 
     setGlobalFilter: (val) => {
       globalFilter.value = val
-      pageIndex.value = 0 // Reset to first page on filter
+      pageIndex.value = DEFAULT_PAGE_IDX // Reset to first page on filter
     },
 
     setContainerWidth: (w: number) => {
