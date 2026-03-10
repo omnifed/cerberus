@@ -253,6 +253,9 @@ importers:
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../react
+      '@cerberus-design/signals':
+        specifier: workspace:*
+        version: link:../signals
       '@preact/signals-core':
         specifier: ^1.13.0
         version: 1.13.0
