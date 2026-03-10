@@ -43,7 +43,7 @@ import type { Accessor, Setter } from '../core/types'
  * - [useRead](https://cerberus.digitalu.design/docs/signals/use-read)
  */
 export function useSignal<T>(initialValue: T): [T, Setter<T>, Accessor<T>] {
-  const [get, set] = useMemo(() => createSignal(initialValue), [])
+  const [get, set] = useMemo(() => createSignal(initialValue), [initialValue])
   const value = useRead(get)
   return [value, set, get]
 }

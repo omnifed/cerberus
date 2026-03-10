@@ -1,6 +1,6 @@
 import { useRead } from './useRead'
 import type { Accessor } from '../core/types'
-import { type MutationState } from 'src/core/createMutation'
+import { type MutationState } from '../core/createMutation'
 
 /**
  * ## Creating Mutations in Components

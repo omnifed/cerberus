@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { createSignal, createMutation } from '@cerberus-design/signals'
+import { createMutation } from '@cerberus-design/signals'
 
 describe('createMutation', () => {
   test('should return a Tuple', () => {

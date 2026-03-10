@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { act, render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { createSignal, createQuery, useQuery } from '@cerberus-design/signals'
 
 describe('useQuery', () => {
