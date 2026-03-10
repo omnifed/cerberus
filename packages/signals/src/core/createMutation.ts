@@ -63,6 +63,17 @@ type MutationReturn<T, V> = [
  *
  * Returns the mutation accessor which can be passed to the `useMutation` hook.
  *
+ * ### Mutation Options
+ *
+ * | Option | Description |
+ * |--------|-------------|
+ * | `onSuccess` | A callback function to run after a successful mutation. |
+ * | `onError` | A callback function to run after a failed mutation. |
+ * | `invalidate` | An array of query keys to invalidate after a successful mutation. |
+ *
+ * `onSuccess` is valuable when you need to keep a signal up to date with the
+ * latest mutation result in the event a query doesn't handle that.
+ *
  * ## Return Properties
  *
  * | Property | Description |
