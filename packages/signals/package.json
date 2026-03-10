@@ -13,16 +13,13 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-dom": "*"
+    "react": "*"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
     "globby": "^16.1.0",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4",
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4"
   },
@@ -42,32 +39,18 @@
           "default": "./dist/index.cjs"
         }
       },
-      "./*": {
-        "import": {
-          "types": "./dist/components/*/index.d.ts",
-          "default": "./dist/components/*/index.js"
-        },
-        "require": {
-          "types": "./dist/components/*/index.d.cts",
-          "default": "./dist/components/*/index.cjs"
-        }
-      },
       "./package.json": "./package.json"
     },
     "typesVersions": {
       "*": {
         ".": [
           "dist/index.d.cts"
-        ],
-        "./*": [
-          "dist/components/*/index.d.cts"
         ]
       }
     }
   },
   "files": [
-    "dist",
-    "src/**/*"
+    "dist"
   ],
   "keywords": [
     "panda-css",
