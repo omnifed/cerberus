@@ -1,7 +1,7 @@
 {
-  "name": "@cerberus-design/data-grid",
+  "name": "@cerberus-design/signals",
   "version": "0.25.3",
-  "description": "The Cerberus Design React DataGrid component.",
+  "description": "The Cerberus Design React signals library.",
   "browserslist": "> 0.25%, not dead",
   "sideEffects": false,
   "type": "module",
@@ -13,22 +13,13 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-dom": "*"
-  },
-  "dependencies": {
-    "@cerberus-design/react": "workspace:*",
-    "@cerberus-design/signals": "workspace:*",
-    "@preact/signals-core": "^1.13.0"
+    "react": "*"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
     "globby": "^16.1.0",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "styled-system": "workspace:*",
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4"
   },
@@ -48,14 +39,24 @@
           "default": "./dist/index.cjs"
         }
       },
-      "./*": {
+      "./core": {
         "import": {
-          "types": "./dist/components/*/index.d.ts",
-          "default": "./dist/components/*/index.js"
+          "types": "./dist/core/index.d.ts",
+          "default": "./dist/core/index.js"
         },
         "require": {
-          "types": "./dist/components/*/index.d.cts",
-          "default": "./dist/components/*/index.cjs"
+          "types": "./dist/core/index.d.cts",
+          "default": "./dist/core/index.cjs"
+        }
+      },
+      "./react": {
+        "import": {
+          "types": "./dist/react/index.d.ts",
+          "default": "./dist/react/index.js"
+        },
+        "require": {
+          "types": "./dist/react/index.d.cts",
+          "default": "./dist/react/index.cjs"
         }
       },
       "./package.json": "./package.json"
@@ -64,16 +65,12 @@
       "*": {
         ".": [
           "dist/index.d.cts"
-        ],
-        "./*": [
-          "dist/components/*/index.d.cts"
         ]
       }
     }
   },
   "files": [
-    "dist",
-    "src/**/*"
+    "dist"
   ],
   "keywords": [
     "panda-css",

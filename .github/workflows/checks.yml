@@ -37,3 +37,35 @@ jobs:
       - run: pnpm install
       - run: pnpm run build
         working-directory: ./packages/react
+
+  data-grid:
+    runs-on: ubuntu-latest
+    name: Data Grid successfully builds
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          cache: 'pnpm'
+          node-version: '22'
+
+      - run: pnpm install
+      - run: pnpm run build
+        working-directory: ./packages/data-grid
+
+  signals:
+    runs-on: ubuntu-latest
+    name: Signals successfully builds
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          cache: 'pnpm'
+          node-version: '22'
+
+      - run: pnpm install
+      - run: pnpm run build
+        working-directory: ./packages/signals
