@@ -29,6 +29,8 @@ import { createContext, useContext, useRef, type ReactNode } from 'react'
  *
  * The hook that provides access to the store within the provider value.
  *
+ * ## Resources
+ * [Cerberus Signals Docs](https://cerberus.digitalu.design/docs/signals/overview)
  */
 export function createStoreContext<TStore>() {
   // 1. Create the Context scoped to this specific factory call

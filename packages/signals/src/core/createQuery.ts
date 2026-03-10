@@ -12,6 +12,45 @@ export type QueryAccessor<T, Args> = Accessor<QueryState<T>> & {
   readonly currentArgs: Args
 }
 
+/**
+ * ## Creating Querys
+ *
+ * A helper function to create a resource cache that subscribes to the signal store.
+ * This is useful for fetching data from an API or other data source that depends
+ * on signal arguments.
+ *
+ * This helper eliminates the need to use the React `useEffect` hook for fetching
+ * and managing data state. By storing arguments into signals, the query will automatically
+ * re-fetch when the signals change or invalidation is triggered by a mutation.
+ *
+ * On it's own - the query does not fetch data. It only manages the cache and subscribes
+ * to signal changes. To fetch data, pass the query accessor to the `useQuery` hook.
+ *
+ * ### Fetching data
+ *
+ * To use a query within a component, pass the query accessor to the `useQuery`
+ * hook which then returns the cahced or latest query state.
+ *
+ * ## API
+ *
+ * | Parameters | Description |
+ * |------------|-------------|
+ * | `fn`       |  The effect function to run when signals change. |
+ *
+ * Returns the query accessor which can be passed to the `useQuery` hook.
+ *
+ * ## Return Properties
+ *
+ * Along with the query accessor, additional properties can be accessed for invalidation.
+ *
+ * | Property | Description |
+ * | -------- | ----------- |
+ * | `key`    | An invalidation key to be used with `createMutation`. |
+ *
+ * ## Resources
+ * - [Cerberus Signals Docs](https://cerberus.digitalu.design/docs/signals/overview)
+ * - [useQuery hook](https://cerberus.digitalu.design/docs/signals/use-query)
+ */
 export function createQuery<T, Args>(
   argsAccessor: Accessor<Args | null | undefined>,
   fetcher: (args: Args) => Promise<T>,

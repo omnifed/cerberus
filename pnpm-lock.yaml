@@ -502,6 +502,9 @@ importers:
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
+      '@cerberus-design/signals':
+        specifier: workspace:*
+        version: link:../packages/signals
       '@cerberus/figma':
         specifier: workspace:*
         version: link:../packages/figma

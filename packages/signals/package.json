@@ -39,6 +39,26 @@
           "default": "./dist/index.cjs"
         }
       },
+      "./core": {
+        "import": {
+          "types": "./dist/core/index.d.ts",
+          "default": "./dist/core/index.js"
+        },
+        "require": {
+          "types": "./dist/core/index.d.cts",
+          "default": "./dist/core/index.cjs"
+        }
+      },
+      "./react": {
+        "import": {
+          "types": "./dist/react/index.d.ts",
+          "default": "./dist/react/index.js"
+        },
+        "require": {
+          "types": "./dist/react/index.d.cts",
+          "default": "./dist/react/index.cjs"
+        }
+      },
       "./package.json": "./package.json"
     },
     "typesVersions": {
