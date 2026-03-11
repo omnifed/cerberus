@@ -74,34 +74,11 @@ export default defineConfig({
 
 const renderBanner = (fileName: string) => {
   const file = path.parse(fileName)
-  if (
-    [
-      'portal',
-      'frame',
-      'client-only',
-      'focus-trap',
-      'download-trigger',
-    ].includes(file.name)
-  ) {
-    return `'use client';`
-  }
-  if (isBarrelComponent(file) || isSpecialFile(file)) {
-    return ''
-  }
+
+  if (['client'].includes(file.name)) return `'use client';`
+  if (isSpecialFile(file)) return ''
+
   return `'use client';`
 }
 
-// e.g Avatar.tsx, Accordion.tsx
-const isBarrelComponent = (file: path.ParsedPath) =>
-  file.dir.endsWith(file.name) &&
-  !['presence', 'environment', 'locale'].includes(file.dir)
-
-const isSpecialFile = (file: path.ParsedPath) =>
-  [
-    'index',
-    'primitives',
-    'parts',
-    'factory',
-    'primitive-factory',
-    'defineIcons',
-  ].includes(file.name)
+const isSpecialFile = (file: path.ParsedPath) => ['index'].includes(file.name)

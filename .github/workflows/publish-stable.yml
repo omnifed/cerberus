@@ -47,6 +47,7 @@ jobs:
   npm-publish-data-grid:
     runs-on: ubuntu-latest
     name: NPM - Publish Data Grid
+    needs: [npm-publish-react, npm-publish-signals]
     steps:
       - uses: actions/checkout@v6
       - uses: oven-sh/setup-bun@v2

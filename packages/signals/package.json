@@ -18,7 +18,7 @@
   "devDependencies": {
     "@types/react": "^19.2.14",
     "@vitejs/plugin-react": "^5.1.2",
-    "globby": "^16.1.0",
+    "globby": "^16.1.1",
     "react": "^19.2.4",
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4"
@@ -65,12 +65,19 @@
       "*": {
         ".": [
           "dist/index.d.cts"
+        ],
+        "./core": [
+          "dist/core/index.d.cts"
+        ],
+        "./react": [
+          "dist/react/index.d.cts"
         ]
       }
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "package.json"
   ],
   "keywords": [
     "panda-css",
