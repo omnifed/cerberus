@@ -65,12 +65,19 @@
       "*": {
         ".": [
           "dist/index.d.cts"
+        ],
+        "./core": [
+          "dist/core/index.d.cts"
+        ],
+        "./react": [
+          "dist/react/index.d.cts"
         ]
       }
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "package.json"
   ],
   "keywords": [
     "panda-css",
