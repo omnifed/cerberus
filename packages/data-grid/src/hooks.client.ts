@@ -1,6 +1,6 @@
 'use client'
 
-import { type CSSProperties } from 'react'
+import { useMemo, type CSSProperties } from 'react'
 import type { InternalColumn, PinnedState } from './types'
 
 export function usePinnedState(pinned: PinnedState): 'pinned' | 'unpinned' {
@@ -17,11 +17,16 @@ export function useColumnStyles<TData>(
   column: InternalColumn<TData>,
   pinnedVal: PinnedState,
 ): CSSProperties {
-  const styles: CSSProperties = {
-    order: `var(--col-${column.id}-order)`,
-    left: pinnedVal === 'left' ? `var(--col-${column.id}-left)` : undefined,
-    right: pinnedVal === 'right' ? `var(--col-${column.id}-right)` : undefined,
-    width: `var(--col-${column.id}-width)`,
-  }
+  const styles: CSSProperties = useMemo(
+    () => ({
+      order: `var(--col-${column.id}-order)`,
+      left: pinnedVal === 'left' ? `var(--col-${column.id}-left)` : undefined,
+      right:
+        pinnedVal === 'right' ? `var(--col-${column.id}-right)` : undefined,
+      width: `var(--col-${column.id}-width)`,
+    }),
+    [column.id, pinnedVal],
+  )
+
   return styles
 }

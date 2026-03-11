@@ -1,31 +1,23 @@
 'use client'
 
-import { createContext, type PropsWithChildren, useContext } from 'react'
+import { createStoreContext } from '@cerberus-design/signals'
+import type { ReactNode } from 'react'
 import type { GridStore } from './types'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const DataGridContext = createContext<GridStore<any> | null>(null)
+const { StoreProvider: BaseProvider, useStore: useBaseStore } =
+  createStoreContext<GridStore<unknown>>()
 
-// Provider
-
-export function DataGridProvider<TData>(
-  props: PropsWithChildren<{
-    store: GridStore<TData>
-  }>,
-) {
+export function DataGridProvider<TData>(props: {
+  createStore: () => GridStore<TData>
+  children: ReactNode
+}) {
   return (
-    <DataGridContext.Provider value={props.store}>
+    <BaseProvider createStore={props.createStore as () => GridStore<unknown>}>
       {props.children}
-    </DataGridContext.Provider>
+    </BaseProvider>
   )
 }
 
-// Hook
-
-export function useDataGridContext<TData = unknown>(): GridStore<TData> {
-  const context = useContext(DataGridContext)
-  if (!context) {
-    throw new Error('useDataGridContext must be used within a DataGrid')
-  }
-  return context as GridStore<TData>
+export function useDataGridContext<TData>(): GridStore<TData> {
+  return useBaseStore() as GridStore<TData>
 }

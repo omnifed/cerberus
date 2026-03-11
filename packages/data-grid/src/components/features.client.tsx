@@ -11,8 +11,8 @@ import {
   useCerberusContext,
   type MenuSelectionDetails,
 } from '@cerberus-design/react'
+import { useRead } from '@cerberus-design/signals'
 import { useMemo } from 'react'
-import { useSignalValue } from '../adapter.client'
 import { useDataGridContext } from '../context.client'
 import { InternalColumn, PinnedState, SortDirection } from '../types'
 import { MatchPinnedItems } from './pinned-items.client'
@@ -20,7 +20,7 @@ import { MatchSortItems } from './sort-items.client'
 
 export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
   const store = useDataGridContext<TData>()
-  const sorting = useSignalValue(store.sorting)
+  const sorting = useRead(store.sorting)
 
   const { icons } = useCerberusContext()
   const MoreOptionsIcon = icons.moreVertical

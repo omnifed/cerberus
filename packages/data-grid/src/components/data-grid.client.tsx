@@ -1,10 +1,11 @@
 'use client'
 
 import { Show } from '@cerberus-design/react'
-import { memo, useEffect, useRef, useState } from 'react'
+import { createEffect, useSignal } from '@cerberus-design/signals'
+import { memo, useEffect, useMemo, useRef } from 'react'
 import { HStack, Stack } from 'styled-system/jsx'
-import { DataGridProvider } from '../context.client'
 import { PARTS, SCOPE } from '../const'
+import { DataGridProvider } from '../context.client'
 import { createGridStore } from '../store'
 import type { GridOptions } from '../types'
 import { GridViewport } from './grid.client'
@@ -19,24 +20,30 @@ import { GridPagination } from './pagination.client'
 function DataGridEl<TData>(props: GridOptions<TData>) {
   const { data } = props
 
-  const rootRef = useRef<HTMLDivElement>(null)
-  const [ready, setReady] = useState<boolean>(false)
-
-  // Lazy cache store for React compatibility
-  const [store] = useState(() =>
-    createGridStore({
-      data,
-      columns: props.columns,
-      initialState: props.initialState,
-      rowSize: props.rowSize,
-      onPageChange: props.onPageChange,
-    }),
+  // Only create the graph ONCE when the component mounts. The store
+  // keeps track of its own state and does not depend on the props passed in.
+  const store = useMemo(
+    () =>
+      createGridStore({
+        data,
+        columns: props.columns,
+        initialState: props.initialState,
+        rowSize: props.rowSize,
+        onPageChange: props.onPageChange,
+      }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   )
 
+  const [ready, setReady] = useSignal<boolean>(false)
+  const rootRef = useRef<HTMLDivElement>(null)
+
+  // Sync data in store with props
   useEffect(() => {
     store.updateData(data)
   }, [data, store])
 
+  // Set root CSS vars with rootRef
   useEffect(() => {
     const el = rootRef.current
     if (!el) return
@@ -48,21 +55,25 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
     })
     observer.observe(el)
 
-    const unsubscribe = store.rootCssVars.subscribe((vars) => {
-      Object.entries(vars).forEach(([key, val]) => {
+    // Reactively apply CSS variables when they change in the store
+    // This bypasses React entirely for performance
+    const cleanupSignalEffect = createEffect(() => {
+      Object.entries(store.rootCssVars()).forEach(([key, val]) => {
         el.style.setProperty(key, val)
       })
-      setReady((prev) => (prev ? prev : true))
     })
+
+    // Immediately mark as ready so the Viewport renders
+    setReady(true)
 
     return () => {
       observer.disconnect()
-      unsubscribe()
+      cleanupSignalEffect()
     }
-  }, [store])
+  }, [store, setReady])
 
   return (
-    <DataGridProvider store={store}>
+    <DataGridProvider createStore={() => store}>
       <Show when={props.toolbar}>
         {() => (
           <HStack data-scope={SCOPE} data-part={PARTS.TOOLBAR} w="full">

@@ -1,15 +1,15 @@
 'use client'
 
 import { MenuItem, useCerberusContext } from '@cerberus-design/react'
+import { useRead } from '@cerberus-design/signals'
 import { type ElementType, type ReactNode } from 'react'
-import { useSignalValue } from '../adapter.client'
-import { InternalColumn } from '../types'
 import { HStack } from 'styled-system/jsx'
+import { InternalColumn } from '../types'
 
 export function MatchPinnedItems(props: {
   pinned: InternalColumn<ReactNode>['pinned']
 }) {
-  const pinned = useSignalValue(props.pinned)
+  const pinned = useRead(props.pinned)
   const MenuItems: Record<string, ElementType> = {
     right: PinRightItem,
     left: PinLeftItem,

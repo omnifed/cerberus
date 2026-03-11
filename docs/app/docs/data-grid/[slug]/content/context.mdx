@@ -19,7 +19,7 @@ highly performant way. This allows the grid to bypass React's internal reactivit
 system, preventing unnecessary re-renders and improving overall performance by
 manaing state outside of the scope of React components.
 
-To learn more about signals and how they work, see the [Preact Signals documentation](https://preactjs.com/guide/v10/signals/).
+To learn more about signals and how they work, see the [Signals documentation](https://cerberus.digitalu.design/docs/signals/overview).
 
 ## Using the context 
 
@@ -28,13 +28,14 @@ like you would any other hook in React.
 
 <CodePreview {...DEMOS.basic} />
 
-## Reading Values
+## Reading Signals
 
-Since the context is comprised of signals, you need to use them in a way that will
-ensure the reactivity is being tracked via the `useSignalValue` hook.
+When reading signals values from the context, you need to use them in a way that will
+ensure the **reactivity is being tracked** via the `useRead` hook from the Cerberus
+Signals library.
 
-This is provide access to the reactivity state without causing re-renders in your
-React components.
+This will subscribe to the signal's reactivity and provide the latest value when
+used within a component.
 
 <NoteAdmonition description="Accessing a context value without using the mentioned hook will not be reactive." />
 
@@ -42,7 +43,7 @@ React components.
 
 ## Using Actions
 
-Since actions only write reactivity changes, you can use them without the `useSignal` hook.
+Since actions only write changes, you can use them directly from the store.
 
 <CodePreview {...DEMOS.action} />
 
@@ -55,14 +56,14 @@ in a signal-based reactive manner:
 
 | Name          | Type          | Description                                  |
 |---------------|---------------|----------------------------------------------|
-| `columns`     | `Signal<InternalColumn<TData>[]>` | A list of processed columns. |
-| `rows`        | `Signal<TData[]>` | A list of processed rows.                |
-| `globalFilter` | `Signal<string>` | The current global filter value used for column filtering. |
-| `sorting`     | `Signal<SortState[]>` | The current sorting state of the grid. |
-| `rootCssVars` | `ReadonlySignal<CSSProperties>` | The current CSS variables for the grid root element. |
-| `rowCount`    | `ReadonlySignal<number>` | The current number of rows in the grid. |
-| `totalWidth`  | `ReadonlySignal<number>` | The total width of the grid (used for pinning). |
-| `visibleRows` | `ReadonlySignal<TData[]>` | The list of visible rows in the viewport. |
+| `columns`     | `Accessor<InternalColumn<TData>[]>` | A list of processed columns. |
+| `rows`        | `Accessor<TData[]>` | A list of processed rows.                |
+| `globalFilter` | `Accessor<string>` | The current global filter value used for column filtering. |
+| `sorting`     | `Accessor<SortState[]>` | The current sorting state of the grid. |
+| `rootCssVars` | `ReadonlyAccessor<CSSProperties>` | The current CSS variables for the grid root element. |
+| `rowCount`    | `ReadonlyAccessor<number>` | The current number of rows in the grid. |
+| `totalWidth`  | `ReadonlyAccessor<number>` | The total width of the grid (used for pinning). |
+| `visibleRows` | `ReadonlyAccessor<TData[]>` | The list of visible rows in the viewport. |
 
 ### Actions
 

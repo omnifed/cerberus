@@ -9,8 +9,8 @@ import {
   SelectRootProps,
   useCerberusContext,
 } from '@cerberus-design/react'
+import { useRead } from '@cerberus-design/signals'
 import { Box, HStack } from 'styled-system/jsx'
-import { useSignalValue } from '../adapter.client'
 import { useDataGridContext } from '../context.client'
 
 interface CountMenuProps {
@@ -21,8 +21,8 @@ export function CountMenu(props: CountMenuProps) {
   const state = useDataGridContext()
   const { icons } = useCerberusContext()
 
-  const pageSize = useSignalValue(state.pageSize)
-  const range = useSignalValue(state.pageRange)
+  const pageSize = useRead(state.pageSize)
+  const range = useRead(state.pageRange)
 
   const Icon = icons.caretDown
 

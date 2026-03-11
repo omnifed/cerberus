@@ -1,7 +1,9 @@
+'use client'
+
 import { useMemo } from 'react'
 import { createSignal } from '../core/createSignal'
-import { useRead } from './useRead'
 import type { Accessor, Setter } from '../core/types'
+import { useRead } from './useRead.client'
 
 /**
  * ## Creating Signals in Components

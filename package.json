@@ -42,8 +42,7 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
     "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,astro}": [
-      "oxlint",
-      "eslint --fix"
+      "oxlint --fix"
     ]
   },
   "author": "developers@omnifederal.com",
@@ -52,7 +51,7 @@
     "node": ">=22.0.0",
     "bun": ">=1.2.16"
   },
-  "packageManager": "pnpm@10.32.0",
+  "packageManager": "pnpm@10.32.1",
   "pnpm": {
     "overrides": {
       "@eslint/plugin-kit": ">=0.3.4",

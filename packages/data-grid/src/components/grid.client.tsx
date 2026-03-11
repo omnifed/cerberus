@@ -7,6 +7,7 @@ import {
   Tooltip,
   useCerberusContext,
 } from '@cerberus-design/react'
+import { useRead } from '@cerberus-design/signals'
 import {
   type CSSProperties,
   memo,
@@ -18,14 +19,13 @@ import {
 } from 'react'
 import { Box, HStack, Scrollable, Stack } from 'styled-system/jsx'
 import type { Dict } from 'styled-system/types'
-import { useSignalValue } from '../adapter.client'
+import { PARTS, SCOPE } from '../const'
 import { useDataGridContext } from '../context.client'
 import {
   useColumnStyles,
   usePinnedAttribute,
   usePinnedState,
 } from '../hooks.client'
-import { PARTS, SCOPE } from '../const'
 import type { InternalColumn } from '../types'
 import { useVirtualizer } from '../virtualizer.client'
 import { HeaderCellOptions } from './features.client'
@@ -36,11 +36,11 @@ export function GridViewport() {
   const store = useDataGridContext()
   const { virtualRows, totalHeight } = useVirtualizer(store, viewportRef)
 
-  const columns = useSignalValue(store.columns)
+  const columns = useRead(store.columns)
 
-  const isServerPaginated = useSignalValue(store.isServerPaginated)
-  const staticRows = useSignalValue(store.rows)
-  const currentPageRange = useSignalValue(store.currentPageRange)
+  const isServerPaginated = useRead(store.isServerPaginated)
+  const staticRows = useRead(store.rows)
+  const currentPageRange = useRead(store.currentPageRange)
 
   return (
     <Scrollable
@@ -55,16 +55,26 @@ export function GridViewport() {
       ref={viewportRef}
     >
       <Box
+        role="grid"
+        aria-rowcount={staticRows.length + 1}
+        aria-colcount={columns.length}
         h="var(--row-height)"
         pos="sticky"
         top="0"
         w="var(--total-grid-width)"
         zIndex="sticky"
       >
-        <HStack gap="0" h="full" pos="relative" w="full">
+        <HStack
+          aria-rowIndex="1"
+          role="rowgroup"
+          gap="0"
+          h="full"
+          pos="relative"
+          w="full"
+        >
           <For each={columns}>
             {(col) => (
-              <Show when={col.isVisible.value} key={col.id}>
+              <Show when={col.isVisible()} key={col.id}>
                 {() => <GridHeaderCell column={col} />}
               </Show>
             )}
@@ -125,8 +135,8 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
   const store = useDataGridContext<TData>()
   const { icons } = useCerberusContext()
 
-  const pinnedVal = useSignalValue(column.pinned)
-  const sortingVal = useSignalValue(store.sorting)
+  const pinnedVal = useRead(column.pinned)
+  const sortingVal = useRead(store.sorting)
 
   const pinnedState = usePinnedState(pinnedVal)
   const pinnedAttr = usePinnedAttribute(pinnedVal)
@@ -165,6 +175,7 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
 
   return (
     <HStack
+      role="columnheader"
       data-scope={SCOPE}
       data-part={PARTS.HEAD_CELL}
       data-state={pinnedState}
@@ -264,7 +275,7 @@ export const GridCell = memo(function GridCell<TData>(
   const { column, row } = props
   const value = column.getValue(row) as keyof TData
 
-  const pinnedVal = useSignalValue(column.pinned)
+  const pinnedVal = useRead(column.pinned)
 
   const pinnedState = usePinnedState(pinnedVal)
   const pinnedAttr = usePinnedAttribute(pinnedVal)
@@ -272,6 +283,7 @@ export const GridCell = memo(function GridCell<TData>(
 
   return (
     <HStack
+      role="cell"
       data-scope={SCOPE}
       data-part={PARTS.CELL}
       data-state={pinnedState}
@@ -319,13 +331,13 @@ interface GridRowProps {
 
 export const GridRow = memo(function GridRow(props: GridRowProps) {
   const store = useDataGridContext()
-  const columns = useSignalValue(store.columns)
+  const columns = useRead(store.columns)
 
   return (
     <GridRowContainer offsetY={props.offsetY}>
       <For each={columns}>
         {(col) => (
-          <Show when={col.isVisible.value} key={col.id}>
+          <Show when={col.isVisible()} key={col.id}>
             {() => <GridCell row={props.row} column={col} />}
           </Show>
         )}
@@ -345,6 +357,7 @@ function GridRowContainer(props: PropsWithChildren<GridRowContainerProps>) {
 
   return (
     <HStack
+      role="row"
       data-scope={SCOPE}
       data-part={PARTS.ROW}
       data-render={isVirtualized ? 'virtualized' : 'static'}
