@@ -18,15 +18,15 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@ark-ui/react": "^5.32.0",
-    "@carbon/icons-react": "^11.74.0"
+    "@ark-ui/react": "^5.34.1",
+    "@carbon/icons-react": "^11.76.0"
   },
   "devDependencies": {
     "@internationalized/date": "^3.11.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
-    "globby": "^16.1.0",
+    "globby": "^16.1.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "styled-system": "workspace:*",
