@@ -1,4 +1,6 @@
-import { useRead } from './useRead'
+'use client'
+
+import { useRead } from './useRead.client'
 import type { Accessor } from '../core/types'
 import type { QueryState } from '../core/query-cache'
 

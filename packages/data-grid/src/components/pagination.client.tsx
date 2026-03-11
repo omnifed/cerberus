@@ -55,7 +55,12 @@ export function GridPagination() {
                 w="full"
               >
                 <HStack gap="sm">
-                  <Text as="small" color="page.text.100" textStyle="label-sm">
+                  <Text
+                    as="small"
+                    color="page.text.100"
+                    textStyle="label-sm"
+                    userSelect="none"
+                  >
                     {pagination.pageRange.start}-{pagination.pageRange.end} of{' '}
                     {pagination.count}
                   </Text>
@@ -69,6 +74,7 @@ export function GridPagination() {
                     as="small"
                     color="page.text.initial"
                     textStyle="label-sm"
+                    userSelect="none"
                   >
                     Rows per page:
                   </Text>
@@ -87,6 +93,7 @@ export function GridPagination() {
                     color="page.text.200"
                     lineHeight="inherit"
                     textStyle="label-sm"
+                    userSelect="none"
                   >
                     {pagination.page} of {pagination.totalPages}
                   </Text>

@@ -16,11 +16,14 @@ export function useVirtualizer(
   const [containerHeight, setContainerHeight] = useSignal<number>(0)
 
   useEffect(() => {
+    let rafId: number
     const el = viewportRef.current
+
     if (!el) return
 
     const onScroll = () => {
-      requestAnimationFrame(() => {
+      if (rafId) cancelAnimationFrame(rafId) // Cancel the pending frame
+      rafId = requestAnimationFrame(() => {
         setScrollTop(el.scrollTop)
       })
     }
@@ -35,6 +38,7 @@ export function useVirtualizer(
 
     return () => {
       el.removeEventListener('scroll', onScroll)
+      if (rafId) cancelAnimationFrame(rafId) // Cancel any pending frame
       observer.disconnect()
     }
   }, [viewportRef, setScrollTop, setContainerHeight])

@@ -1,6 +1,8 @@
-import React, { memo } from 'react'
-import { useRead } from './useRead'
+'use client'
+
+import { memo } from 'react'
 import type { Accessor } from '../core/types'
+import { useRead } from './useRead.client'
 
 export interface ReactiveTextProps {
   data: Accessor<string | number>

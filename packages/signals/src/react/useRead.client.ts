@@ -1,3 +1,5 @@
+'use client'
+
 import { useSyncExternalStore, useCallback } from 'react'
 import { createEffect } from '../core/createEffect'
 import type { Accessor } from '../core/types'
@@ -47,5 +49,5 @@ export function useRead<T>(accessor: Accessor<T>): T {
     return accessor()
   }, [accessor])
 
-  return useSyncExternalStore(subscribe, getSnapshot)
+  return useSyncExternalStore(subscribe, getSnapshot, getSnapshot)
 }

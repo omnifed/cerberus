@@ -1,4 +1,4 @@
-import { createSignal, createComputed } from '@cerberus-design/signals'
+import { createSignal, createComputed, batch } from '@cerberus-design/signals'
 import type {
   GridOptions,
   GridStore,
@@ -14,7 +14,6 @@ import {
   determineRowHeight,
 } from './utils'
 import { DEFAULT_PAGE_IDX } from './const'
-import { batch } from '@preact/signals-core'
 
 /**
  * Internal signal-based Store engine driving the state. We expose this in

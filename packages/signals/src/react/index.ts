@@ -1,7 +1,7 @@
-export { useRead } from './useRead'
-export { useSignal } from './useSignal'
-export { useQuery } from './useQuery'
-export { useMutation } from './useMutation'
+export { useRead } from './useRead.client'
+export { useSignal } from './useSignal.client'
+export { useQuery } from './useQuery.client'
+export { useMutation } from './useMutation.client'
 
-export { ReactiveText } from './reactive-text'
-export { createStoreContext } from './store-context'
+export { ReactiveText } from './reactive-text.client'
+export { createStoreContext } from './store-context.client'
