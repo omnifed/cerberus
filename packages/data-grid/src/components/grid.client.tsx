@@ -55,13 +55,23 @@ export function GridViewport() {
       ref={viewportRef}
     >
       <Box
+        role="grid"
+        aria-rowcount={staticRows.length + 1}
+        aria-colcount={columns.length}
         h="var(--row-height)"
         pos="sticky"
         top="0"
         w="var(--total-grid-width)"
         zIndex="sticky"
       >
-        <HStack gap="0" h="full" pos="relative" w="full">
+        <HStack
+          aria-rowIndex="1"
+          role="rowgroup"
+          gap="0"
+          h="full"
+          pos="relative"
+          w="full"
+        >
           <For each={columns}>
             {(col) => (
               <Show when={col.isVisible()} key={col.id}>
@@ -165,6 +175,7 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
 
   return (
     <HStack
+      role="columnheader"
       data-scope={SCOPE}
       data-part={PARTS.HEAD_CELL}
       data-state={pinnedState}
@@ -272,6 +283,7 @@ export const GridCell = memo(function GridCell<TData>(
 
   return (
     <HStack
+      role="cell"
       data-scope={SCOPE}
       data-part={PARTS.CELL}
       data-state={pinnedState}
@@ -345,6 +357,7 @@ function GridRowContainer(props: PropsWithChildren<GridRowContainerProps>) {
 
   return (
     <HStack
+      role="row"
       data-scope={SCOPE}
       data-part={PARTS.ROW}
       data-render={isVirtualized ? 'virtualized' : 'static'}

@@ -20,7 +20,8 @@ import { GridPagination } from './pagination.client'
 function DataGridEl<TData>(props: GridOptions<TData>) {
   const { data } = props
 
-  // Only create the graph ONCE when the component mounts
+  // Only create the graph ONCE when the component mounts. The store
+  // keeps track of its own state and does not depend on the props passed in.
   const store = useMemo(
     () =>
       createGridStore({
@@ -30,6 +31,7 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
         rowSize: props.rowSize,
         onPageChange: props.onPageChange,
       }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   )
 
@@ -68,7 +70,7 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
       observer.disconnect()
       cleanupSignalEffect()
     }
-  }, [store])
+  }, [store, setReady])
 
   return (
     <DataGridProvider createStore={() => store}>
