@@ -12,7 +12,6 @@ describe('DataGrid', () => {
     },
   ]
   type Row = (typeof data)[0]
-  type TData = typeof data
 
   const helper = createColumnHelper<Row>()
 
