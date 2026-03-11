@@ -3,6 +3,7 @@ import {
   createColumnHelper,
   CerberusDataGrid,
   DataGrid,
+  useDataGridContext,
 } from '@cerberus-design/data-grid'
 
 describe('entry file', () => {
@@ -16,5 +17,9 @@ describe('entry file', () => {
 
   test('should export DataGrid component', () => {
     expect(DataGrid).toBeDefined()
+  })
+
+  test('should export useDataGridContext hook', () => {
+    expect(useDataGridContext).toBeDefined()
   })
 })
