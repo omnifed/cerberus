@@ -1,9 +1,3 @@
 {
-  "recommendations": [
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
-    "SonarSource.sonarlint-vscode",
-    "Gruntfuggly.todo-tree",
-    "CodeViz.codeviz"
-  ]
+  "recommendations": ["oxc.oxc-vscode", "SonarSource.sonarlint-vscode"]
 }
