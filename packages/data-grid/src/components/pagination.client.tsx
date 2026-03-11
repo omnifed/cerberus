@@ -13,16 +13,16 @@ import {
   Text,
 } from '@cerberus-design/react'
 import { Divider, HStack } from 'styled-system/jsx'
-import { useSignalValue } from '../adapter.client'
 import { useDataGridContext } from '../context.client'
 import { CountMenu } from './count-menu.client'
+import { useRead } from '@cerberus-design/signals'
 
 export function GridPagination() {
   const store = useDataGridContext()
 
-  const pageIndex = useSignalValue(store.pageIndex)
-  const pageSize = useSignalValue(store.pageSize)
-  const rowCount = useSignalValue(store.rowCount)
+  const pageIndex = useRead(store.pageIndex)
+  const pageSize = useRead(store.pageSize)
+  const rowCount = useRead(store.rowCount)
 
   function handlePageChange(details: PageDetails) {
     store.setPage(details)

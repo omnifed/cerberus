@@ -114,6 +114,9 @@ importers:
       '@cerberus-design/react':
         specifier: workspace:*
         version: link:../packages/react
+      '@cerberus-design/signals':
+        specifier: workspace:*
+        version: link:../packages/signals
       '@cerberus/tokens':
         specifier: workspace:*
         version: link:../packages/tokens
@@ -256,9 +259,6 @@ importers:
       '@cerberus-design/signals':
         specifier: workspace:*
         version: link:../signals
-      '@preact/signals-core':
-        specifier: ^1.13.0
-        version: 1.13.0
     devDependencies:
       '@types/react':
         specifier: ^19.2.14
@@ -1822,9 +1822,6 @@ packages:
 
   '@pandacss/types@1.8.2':
     resolution: {integrity: sha512-4678uTBYiqesy07w4IPIC137dxnrjAAswFLDCvhtEsEP2zOL3VYmDrOdHP5hnwF75R1b4tubG4/vQqGujf0dCg==}
-
-  '@preact/signals-core@1.13.0':
-    resolution: {integrity: sha512-slT6XeTCAbdql61GVLlGU4x7XHI7kCZV5Um5uhE4zLX4ApgiiXc0UYFvVOKq06xcovzp7p+61l68oPi563ARKg==}
 
   '@rolldown/pluginutils@1.0.0-beta.53':
     resolution: {integrity: sha512-vENRlFU4YbrwVqNDZ7fLvy+JR1CRkyr01jhSiDpE1u6py3OMzQfztQU2jxykW3ALNxO4kSlqIDeYyD0Y9RcQeQ==}
@@ -8032,8 +8029,6 @@ snapshots:
       ts-pattern: 5.9.0
 
   '@pandacss/types@1.8.2': {}
-
-  '@preact/signals-core@1.13.0': {}
 
   '@rolldown/pluginutils@1.0.0-beta.53': {}
 

@@ -18,8 +18,7 @@
   },
   "dependencies": {
     "@cerberus-design/react": "workspace:*",
-    "@cerberus-design/signals": "workspace:*",
-    "@preact/signals-core": "^1.13.0"
+    "@cerberus-design/signals": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",

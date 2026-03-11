@@ -1,26 +1,19 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
-import { useSignalValue } from './adapter.client'
+import { useRead, useSignal } from '@cerberus-design/signals'
+import { type RefObject, useEffect, useMemo } from 'react'
 import type { GridStore } from './types'
 
 export function useVirtualizer(
   store: GridStore<unknown>,
-  viewportRef: React.RefObject<HTMLDivElement | null>,
+  viewportRef: RefObject<HTMLDivElement | null>,
 ) {
-  const isServerPaginated = useSignalValue(store.isServerPaginated)
-  if (isServerPaginated) {
-    return useMemo(() => ({ virtualRows: [], totalHeight: 0 }), [])
-  }
+  const isServerPaginated = useRead(store.isServerPaginated)
+  const rows = useRead(store.visibleRows)
+  const rowHeight = useRead(store.rowSize)
 
-  const rows = useSignalValue(store.visibleRows)
-  const rowHeight = useSignalValue(store.rowSize)
-
-  const totalHeight = rows.length * rowHeight
-
-  // Force render updates in the React DOM
-  const [scrollTop, setScrollTop] = useState<number>(0)
-  const [containerHeight, setContainerHeight] = useState<number>(0)
+  const [scrollTop, setScrollTop] = useSignal<number>(0)
+  const [containerHeight, setContainerHeight] = useSignal<number>(0)
 
   useEffect(() => {
     const el = viewportRef.current
@@ -44,22 +37,26 @@ export function useVirtualizer(
       el.removeEventListener('scroll', onScroll)
       observer.disconnect()
     }
-  }, [viewportRef])
+  }, [viewportRef, setScrollTop, setContainerHeight])
 
-  const buffer = 5
-  const visibleCount = Math.ceil((containerHeight || 600) / rowHeight)
+  return useMemo(() => {
+    if (isServerPaginated) {
+      return { virtualRows: [], totalHeight: 0, rowHeight }
+    }
 
-  const start = Math.max(0, Math.floor(scrollTop / rowHeight) - buffer)
-  const end = Math.min(rows.length, start + visibleCount + buffer * 2)
+    const totalHeight = rows.length * rowHeight
+    const buffer = 5
+    const visibleCount = Math.ceil((containerHeight || 600) / rowHeight)
 
-  const virtualRows = rows.slice(start, end).map((row, index) => ({
-    data: row,
-    index: start + index,
-    offsetY: (start + index) * rowHeight,
-  }))
+    const start = Math.max(0, Math.floor(scrollTop / rowHeight) - buffer)
+    const end = Math.min(rows.length, start + visibleCount + buffer * 2)
 
-  return useMemo(
-    () => ({ virtualRows, totalHeight, rowHeight }),
-    [virtualRows, totalHeight, rowHeight],
-  )
+    const virtualRows = rows.slice(start, end).map((row, index) => ({
+      data: row,
+      index: start + index,
+      offsetY: (start + index) * rowHeight,
+    }))
+
+    return { virtualRows, totalHeight, rowHeight }
+  }, [isServerPaginated, rows, rowHeight, scrollTop, containerHeight])
 }

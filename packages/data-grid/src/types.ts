@@ -3,7 +3,7 @@ import {
   type EnforceNoProperties,
   type PaginationRootProps,
 } from '@cerberus-design/react'
-import { type ReadonlySignal, type Signal } from '@preact/signals-core'
+import { Setter, type Accessor } from '@cerberus-design/signals'
 import { type ReactNode } from 'react'
 import { type RowSize } from './const'
 
@@ -131,16 +131,20 @@ export type DisplayOptions<TData, TKey extends keyof TData> = {
 export type InternalColumn<TData> = {
   id: string
   // Mutable Signals
-  pinned: Signal<PinnedState>
-  isFlex: Signal<boolean>
-  isVisible: Signal<boolean>
-  width: Signal<number>
+  pinned: Accessor<PinnedState>
+  isFlex: Accessor<boolean>
+  isVisible: Accessor<boolean>
+  width: Accessor<number>
   // Static Config
   pinnable: boolean
   sortable: boolean
   filterable: boolean
   getValue: ColumnDef<TData>['accessor']
   original: ColumnDef<TData>
+  // setters
+  setFlex: Setter<boolean>
+  setColWidth: Setter<number>
+  setPinned: Setter<PinnedState>
 }
 
 export type SortState = { id: string; desc: boolean }
@@ -149,25 +153,25 @@ export type SortState = { id: string; desc: boolean }
 
 export interface GridStore<TData> {
   // State
-  columns: Signal<InternalColumn<TData>[]>
-  rows: Signal<TData[]>
-  globalFilter: Signal<string>
-  sorting: Signal<SortState[]>
+  columns: Accessor<InternalColumn<TData>[]>
+  rows: Accessor<TData[]>
+  globalFilter: Accessor<string>
+  sorting: Accessor<SortState[]>
 
   // Pagination
-  pageIndex: Signal<number>
-  pageSize: Signal<number>
-  pageRange: Signal<number[]>
-  pageCount: ReadonlySignal<number>
-  currentPageRange: ReadonlySignal<{ start: number; end: number }>
-  isServerPaginated: ReadonlySignal<boolean>
+  pageIndex: Accessor<number>
+  pageSize: Accessor<number>
+  pageRange: Accessor<number[]>
+  pageCount: Accessor<number>
+  currentPageRange: Accessor<{ start: number; end: number }>
+  isServerPaginated: Accessor<boolean>
 
   // Styling
-  rootCssVars: ReadonlySignal<Record<string, string>>
-  rowCount: ReadonlySignal<number>
-  rowSize: ReadonlySignal<number>
-  totalWidth: ReadonlySignal<number>
-  visibleRows: ReadonlySignal<TData[]>
+  rootCssVars: Accessor<Record<string, string>>
+  rowCount: Accessor<number>
+  rowSize: Accessor<number>
+  totalWidth: Accessor<number>
+  visibleRows: Accessor<TData[]>
 
   // Actions
   resizeColumn: (colId: string, delta: number) => void

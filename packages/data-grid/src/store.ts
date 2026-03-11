@@ -1,5 +1,11 @@
-import { signal, computed } from '@preact/signals-core'
-import type { GridOptions, GridStore, InternalColumn, SortState } from './types'
+import { createSignal, createComputed } from '@cerberus-design/signals'
+import type {
+  GridOptions,
+  GridStore,
+  InternalColumn,
+  PinnedState,
+  SortState,
+} from './types'
 import {
   determineInitialCount,
   determinePageIndex,
@@ -8,6 +14,7 @@ import {
   determineRowHeight,
 } from './utils'
 import { DEFAULT_PAGE_IDX } from './const'
+import { batch } from '@preact/signals-core'
 
 /**
  * Internal signal-based Store engine driving the state. We expose this in
@@ -16,19 +23,23 @@ import { DEFAULT_PAGE_IDX } from './const'
 export function createGridStore<TData>(
   options: GridOptions<TData>,
 ): GridStore<TData> {
-  const containerWidth = signal(0)
-  const rows = signal(options.data)
-  const rowSize = signal(determineRowHeight(options.rowSize))
+  const [containerWidth, setContainerWidth] = createSignal<number>(0)
+  const [rows, setRows] = createSignal<TData[]>(options.data)
+  const [rowSize] = createSignal<number>(determineRowHeight(options.rowSize))
 
-  const globalFilter = signal('')
-  const sorting = signal<SortState[]>([])
+  const [globalFilter, setGlobalFilter] = createSignal<string>('')
+  const [sorting, setSorting] = createSignal<SortState[]>([])
 
-  const pageIndex = signal(determinePageIndex(options.initialState?.pagination))
-  const pageSize = signal(determinePageSize(options.initialState?.pagination))
-  const pageRange = signal<number[]>(
+  const [pageIndex, setPageIndex] = createSignal<number>(
+    determinePageIndex(options.initialState?.pagination),
+  )
+  const [pageSize, setPageSize] = createSignal<number>(
+    determinePageSize(options.initialState?.pagination),
+  )
+  const [pageRange] = createSignal<number[]>(
     determinePageRange(options.initialState?.pagination),
   )
-  const isServerPaginated = signal<boolean>(
+  const [isServerPaginated] = createSignal<boolean>(
     Boolean(determineInitialCount(options.initialState?.pagination)),
   )
 
@@ -45,42 +56,55 @@ export function createGridStore<TData>(
       finalWidth = minWForFeatures
     }
 
+    const [isVisible] = createSignal<boolean>(true)
+    const [isFlex, setFlex] = createSignal<boolean>(col.width === undefined)
+    const [pinned, setPinned] = createSignal<PinnedState>(
+      col.features?.pinning?.defaultPosition ?? false,
+    )
+    const [width, setColWidth] = createSignal<number>(finalWidth)
+
     return {
       id: col.id,
-      isFlex: signal(col.width === undefined),
-      isVisible: signal(true),
+      isFlex,
+      isVisible,
       original: col,
-      pinned: signal(col.features?.pinning?.defaultPosition ?? false),
-      width: signal(finalWidth),
+      pinned,
+      width,
       getValue: col.accessor,
       // feature flags
       pinnable,
       filterable,
       sortable,
+      // setters
+      setFlex,
+      setPinned,
+      setColWidth,
     }
   })
-  const columns = signal(initialCols)
+  const [columns] = createSignal<InternalColumn<TData>[]>(initialCols)
 
-  const currentPageRange = computed(() => {
-    const dataIdx = pageIndex.value - 1
-    const isFirstPage = dataIdx === 0
-    const start = isFirstPage ? 0 : dataIdx * pageSize.value - 1
-    return {
-      start,
-      end: pageIndex.value * pageSize.value,
-    }
-  })
+  const currentPageRange = createComputed<{ start: number; end: number }>(
+    () => {
+      const dataIdx = pageIndex() - 1
+      const isFirstPage = dataIdx === 0
+      const start = isFirstPage ? 0 : dataIdx * pageSize() - 1
+      return {
+        start,
+        end: pageIndex() * pageSize(),
+      }
+    },
+  )
 
   // Processed with data-intensive features
-  const processedRows = computed(() => {
-    let result = [...rows.value]
-    const filter = globalFilter.value.toLowerCase()
-    const sortState = sorting.value
+  const processedRows = createComputed(() => {
+    let result = [...rows()]
+    const filter = globalFilter().toLowerCase()
+    const sortState = sorting()
 
     if (filter) {
       result = result.filter((row) => {
         // Simple search across all filterable columns
-        return columns.value.some((col) => {
+        return columns().some((col) => {
           if (!col.filterable) return false
           const val = String(col.getValue(row)).toLowerCase()
           return val.includes(filter)
@@ -91,7 +115,7 @@ export function createGridStore<TData>(
     if (sortState.length > 0) {
       result.sort((a, b) => {
         for (const sort of sortState) {
-          const col = columns.value.find((c) => c.id === sort.id)
+          const col = columns().find((c) => c.id === sort.id)
           if (!col) continue
 
           const valA = col.getValue(a) as TData[keyof TData]
@@ -124,20 +148,20 @@ export function createGridStore<TData>(
   })
 
   // Derived pagination - Ark handles the rest
-  const rowCount = computed(
+  const rowCount = createComputed(
     () =>
       determineInitialCount(options?.initialState?.pagination) ??
-      processedRows.value.length,
+      processedRows().length,
   )
-  const pageCount = computed(() => Math.ceil(rowCount.value / pageSize.value))
+  const pageCount = createComputed(() => Math.ceil(rowCount() / pageSize()))
 
-  const orderedColumns = computed(() => {
+  const orderedColumns = createComputed(() => {
     const left: InternalColumn<TData>[] = []
     const center: InternalColumn<TData>[] = []
     const right: InternalColumn<TData>[] = []
 
-    columns.value.forEach((col) => {
-      const pin = col.pinned.value
+    columns().forEach((col) => {
+      const pin = col.pinned()
       if (pin === 'left') left.push(col)
       else if (pin === 'right') right.push(col)
       else center.push(col)
@@ -146,20 +170,20 @@ export function createGridStore<TData>(
     return [...left, ...center, ...right]
   })
 
-  const visibleRows = computed(() => {
-    if (pageSize.value && pageCount.value > 1) {
-      const currentRange = currentPageRange.value
-      return processedRows.value.slice(currentRange.start, currentRange.end)
+  const visibleRows = createComputed(() => {
+    if (pageSize() && pageCount() > 1) {
+      const currentRange = currentPageRange()
+      return processedRows().slice(currentRange.start, currentRange.end)
     }
-    return processedRows.value
+    return processedRows()
   })
 
-  const rootCssVars = computed(() => {
+  const rootCssVars = createComputed(() => {
     const vars: Record<string, string> = {}
     const visibleCols: InternalColumn<TData>[] = []
 
-    const cols = columns.value
-    const cWidth = containerWidth.value
+    const cols = columns()
+    const cWidth = containerWidth()
 
     let fixedSpace = 0
     let flexCount = 0
@@ -167,16 +191,16 @@ export function createGridStore<TData>(
     // --- PASS 1: Metrics Gathering ---
     for (let i = 0; i < cols.length; i++) {
       const col = cols[i]
-      if (!col.isVisible.value) continue
+      if (!col.isVisible()) continue
 
       visibleCols.push(col)
-      if (col.isFlex.value) {
+      if (col.isFlex()) {
         flexCount++
       } else {
-        fixedSpace += col.width.value
+        fixedSpace += col.width()
       }
 
-      const order = orderedColumns.value.findIndex(
+      const order = orderedColumns().findIndex(
         (orderedCol) => orderedCol.id === col.id,
       )
       vars[`--col-${col.id}-order`] = `${order}`
@@ -194,8 +218,8 @@ export function createGridStore<TData>(
     for (let i = 0; i < visibleCols.length; i++) {
       const col = visibleCols[i]
 
-      let finalWidth = col.width.value
-      if (col.isFlex.value) {
+      let finalWidth = col.width()
+      if (col.isFlex()) {
         finalWidth = Math.max(col.original.minWidth ?? 150, flexWidth)
       }
 
@@ -203,7 +227,7 @@ export function createGridStore<TData>(
       totalW += finalWidth
       vars[`--col-${col.id}-width`] = `${finalWidth}px`
 
-      if (col.pinned.value === 'left') {
+      if (col.pinned() === 'left') {
         vars[`--col-${col.id}-left`] = `${leftOffset}px`
         leftOffset += finalWidth
       }
@@ -214,20 +238,20 @@ export function createGridStore<TData>(
     let rightOffset = 0
     for (let i = visibleCols.length - 1; i >= 0; i--) {
       const col = visibleCols[i]
-      if (col.pinned.value === 'right') {
+      if (col.pinned() === 'right') {
         vars[`--col-${col.id}-right`] = `${rightOffset}px`
         rightOffset += computedWidths[i]
       }
     }
 
     vars['--total-grid-width'] = `${totalW}px`
-    vars['--row-height'] = `${rowSize.value}px`
+    vars['--row-height'] = `${rowSize()}px`
 
     return vars
   })
 
-  const totalWidth = computed(() =>
-    columns.value.reduce((acc, c) => acc + c.width.value, 0),
+  const totalWidth = createComputed(() =>
+    columns().reduce((acc, c) => acc + c.width(), 0),
   )
 
   return {
@@ -249,16 +273,16 @@ export function createGridStore<TData>(
 
     // Actions
     updateData: (newData) => {
-      rows.value = newData
+      setRows(newData)
     },
 
     setSort: (colId, direction, multi = false) => {
       if (direction === null) {
-        sorting.value = sorting.value.filter((s) => s.id !== colId)
+        setSorting(sorting().filter((s) => s.id !== colId))
         return
       }
 
-      const current = sorting.value
+      const current = sorting()
       const newSort = { id: colId, desc: direction === 'desc' }
 
       if (multi) {
@@ -266,23 +290,23 @@ export function createGridStore<TData>(
         if (existingIndex >= 0) {
           const next = [...current]
           next[existingIndex] = newSort
-          sorting.value = next
+          setSorting(next)
         } else {
-          sorting.value = [...current, newSort]
+          setSorting([...current, newSort])
         }
       } else {
         // Single sort clears all other sorts
-        sorting.value = [newSort]
+        setSorting([newSort])
       }
     },
 
     togglePinned: (colId, state) => {
-      const col = columns.value.find((c) => c.id === colId)
-      if (col) col.pinned.value = state ?? false
+      const col = columns().find((c) => c.id === colId)
+      if (col) col.setPinned(state ?? false)
     },
 
     toggleSort: (colId, multi) => {
-      const current = sorting.value
+      const current = sorting()
       const exists = current.findIndex((s) => s.id === colId) !== -1
 
       const updatedSort = current.map((s) => {
@@ -293,55 +317,56 @@ export function createGridStore<TData>(
       })
 
       if (exists) {
-        sorting.value = multi ? [...current, ...updatedSort] : [...updatedSort]
+        setSorting(multi ? [...current, ...updatedSort] : [...updatedSort])
       } else {
         const newSort = { id: colId, desc: true }
-        sorting.value = multi ? [...current, newSort] : [newSort]
+        setSorting(multi ? [...current, newSort] : [newSort])
       }
     },
 
     setPage: (details) => {
-      pageIndex.value = details.page
+      setPageIndex(details.page)
       options.onPageChange?.(details)
     },
 
     setPageSize: (size) => {
-      if (isServerPaginated.value) {
+      if (isServerPaginated()) {
         // Reset to first page on size change to reset pagination
-        pageIndex.value = DEFAULT_PAGE_IDX
+        setPageIndex(DEFAULT_PAGE_IDX)
       }
-      pageSize.value = size
+      setPageSize(size)
     },
 
     setGlobalFilter: (val) => {
-      globalFilter.value = val
-      pageIndex.value = DEFAULT_PAGE_IDX // Reset to first page on filter
+      batch(() => {
+        setGlobalFilter(val)
+        setPageIndex(DEFAULT_PAGE_IDX) // Reset to first page on filter
+      })
     },
 
     setContainerWidth: (w: number) => {
-      containerWidth.value = w
+      setContainerWidth(w)
     },
 
     resizeColumn: (colId: string, delta: number) => {
-      const col = columns.value.find((c) => c.id === colId)
+      const col = columns().find((c) => c.id === colId)
       if (col) {
-        if (col.isFlex.value) {
-          const fixedSpace = columns.value
-            .filter((c) => !c.isFlex.value)
-            .reduce((a, b) => a + b.width.value, 0)
-          const flexCount = columns.value.filter((c) => c.isFlex.value).length
+        if (col.isFlex()) {
+          const fixedSpace = columns()
+            .filter((c) => !c.isFlex())
+            .reduce((a, b) => a + b.width(), 0)
+          const flexCount = columns().filter((c) => c.isFlex()).length
           const currentFlexWidth = Math.max(
             col.original.minWidth ?? 150,
-            (containerWidth.value - fixedSpace) / flexCount,
+            (containerWidth() - fixedSpace) / flexCount,
           )
 
-          col.width.value = currentFlexWidth
-          col.isFlex.value = false // Disable flex behavior permanently for this column
+          col.setColWidth(currentFlexWidth)
+          col.setFlex(false) // Disable flex behavior permanently for this column
         }
 
-        col.width.value = Math.max(
-          col.original.minWidth ?? 50,
-          col.width.value + delta,
+        col.setColWidth(
+          Math.max(col.original.minWidth ?? 50, col.width() + delta),
         )
       }
     },

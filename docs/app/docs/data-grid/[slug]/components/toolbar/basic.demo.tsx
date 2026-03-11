@@ -1,10 +1,7 @@
 'use client'
 
-import {
-  DataGrid,
-  useDataGridContext,
-  useSignalValue,
-} from '@cerberus-design/data-grid'
+import { DataGrid, useDataGridContext } from '@cerberus-design/data-grid'
+import { useRead } from '@cerberus-design/signals'
 import { HStack, Stack } from 'styled-system/jsx'
 import { columns } from '../quick-start/columns.demo'
 import { useFakeQuery } from '../quick-start/data'
@@ -23,6 +20,6 @@ export function BasicDemo() {
 
 function Toolbar() {
   const store = useDataGridContext<Employee>()
-  const totalCount = useSignalValue(store.rowCount)
+  const totalCount = useRead(store.rowCount)
   return <HStack w="full">This table has {totalCount} rows</HStack>
 }
