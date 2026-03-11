@@ -1,12 +1,6 @@
 'use client'
 
-import {
-  For,
-  IconButton,
-  Show,
-  Tooltip,
-  useCerberusContext,
-} from '@cerberus-design/react'
+import { For, IconButton, Show, Tooltip, useCerberusContext } from '@cerberus-design/react'
 import { useRead } from '@cerberus-design/signals'
 import {
   type CSSProperties,
@@ -21,11 +15,7 @@ import { Box, HStack, Scrollable, Stack } from 'styled-system/jsx'
 import type { Dict } from 'styled-system/types'
 import { PARTS, SCOPE } from '../const'
 import { useDataGridContext } from '../context.client'
-import {
-  useColumnStyles,
-  usePinnedAttribute,
-  usePinnedState,
-} from '../hooks.client'
+import { useColumnStyles, usePinnedAttribute, usePinnedState } from '../hooks.client'
 import type { InternalColumn } from '../types'
 import { useVirtualizer } from '../virtualizer.client'
 import { HeaderCellOptions } from './features.client'
@@ -64,14 +54,7 @@ export function GridViewport() {
         w="var(--total-grid-width)"
         zIndex="sticky"
       >
-        <HStack
-          aria-rowIndex="1"
-          role="rowgroup"
-          gap="0"
-          h="full"
-          pos="relative"
-          w="full"
-        >
+        <HStack aria-rowindex="1" role="rowgroup" gap="0" h="full" pos="relative" w="full">
           <For each={columns}>
             {(col) => (
               <Show when={col.isVisible()} key={col.id}>
@@ -107,12 +90,7 @@ export function GridViewport() {
       >
         {() => (
           <Stack direction="column" gap="0" w="var(--total-grid-width)">
-            <For
-              each={staticRows.slice(
-                currentPageRange.start,
-                currentPageRange.end,
-              )}
-            >
+            <For each={staticRows.slice(currentPageRange.start, currentPageRange.end)}>
               {(row, index) => <GridRow key={index} row={row} index={index} />}
             </For>
           </Stack>
@@ -269,9 +247,7 @@ interface GridCellProps<TData> {
   column: InternalColumn<TData>
 }
 
-export const GridCell = memo(function GridCell<TData>(
-  props: GridCellProps<TData>,
-) {
+export const GridCell = memo(function GridCell<TData>(props: GridCellProps<TData>) {
   const { column, row } = props
   const value = column.getValue(row) as keyof TData
 
@@ -310,9 +286,7 @@ export const GridCell = memo(function GridCell<TData>(
       }}
       style={style}
     >
-      {column.original.cell
-        ? column.original.cell({ row, value })
-        : (value as ReactNode)}
+      {column.original.cell ? column.original.cell({ row, value }) : (value as ReactNode)}
 
       <Show when={pinnedState === 'pinned'}>
         {() => <ShadowFiller style={style} {...pinnedAttr} />}
