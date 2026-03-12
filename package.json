@@ -30,7 +30,7 @@
     "prettier": "3.8.1"
   },
   "lint-staged": {
-    "**/*": "oxfmt --write",
+    "**/*": "oxfmt --write --no-error-on-unmatched-pattern",
     "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,astro}": [
       "oxlint --fix"
     ]
