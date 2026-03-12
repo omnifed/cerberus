@@ -1,6 +1,6 @@
 {
   "name": "@cerberus-design/signals",
-  "version": "0.25.3",
+  "version": "1.0.0-rc.1",
   "description": "The Cerberus Design React signals library.",
   "keywords": [
     "data grid",
