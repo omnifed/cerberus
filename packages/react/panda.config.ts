@@ -1,6 +1,7 @@
-import { defineConfig } from '@pandacss/dev'
+import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
 
-export default defineConfig({
-  preflight: true,
+export default createCerberusConfig({
+  clean: true,
+  presets: [createCerberusPreset()],
   include: ['./src/**/*.{ts,tsx}'],
 })

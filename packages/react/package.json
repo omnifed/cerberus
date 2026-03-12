@@ -77,6 +77,7 @@
     "@carbon/icons-react": "^11.76.0"
   },
   "devDependencies": {
+    "@cerberus/panda-preset": "workspace:*",
     "@internationalized/date": "^3.11.0",
     "@pandacss/dev": "^1.9.0",
     "@types/react": "^19.2.14",
