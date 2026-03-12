@@ -4,6 +4,13 @@ import { exit } from 'node:process'
 import { parseArgs } from 'util'
 import { version, nextTag, packages } from './versions.mjs'
 
+/**
+ * This module publishes NPM. Only React-related packages are published to NPM
+ * in order to support Jest which still relies on cjs.
+ */
+
+const NPM_PACKAGES = ['react', 'data-grid', 'signals']
+
 function _parseFlags(args) {
   return parseArgs({
     args,
@@ -25,8 +32,7 @@ function _parseFlags(args) {
 
 function _getReleaseVersion(values) {
   if (values.next && !values.commit) throw new Error('Missing commit hash')
-  if (values.next && values.commit)
-    return `${version}-next-${values.commit.slice(0, 7)}`
+  if (values.next && values.commit) return `${version}-next-${values.commit.slice(0, 7)}`
   if (values.stable) return version
   exit(1)
 }
@@ -44,20 +50,15 @@ function _getTags(values) {
 function publish() {
   const { values } = _parseFlags(argv)
   const release = _getTags(values)
-  const onlyNpmPackages = packages.filter(
-    (pkg) => pkg === 'react' || pkg === 'styled-system',
-  )
+
+  const onlyNpmPackages = packages.filter((pkg) => NPM_PACKAGES.includes(pkg))
 
   onlyNpmPackages.forEach(async (pkg) => {
     const workspacePath = resolve(import.meta.dir, '..', '..', 'packages', pkg)
     const packageJsonPath = resolve(workspacePath, 'package.json')
     const rawFile = file(packageJsonPath)
     const packageJson = await rawFile.json()
-    const json = JSON.stringify(
-      { ...packageJson, version: _getReleaseVersion(values) },
-      null,
-      2,
-    )
+    const json = JSON.stringify({ ...packageJson, version: _getReleaseVersion(values) }, null, 2)
 
     // eslint-disable-next-line no-undef
     console.log('Updating version in', packageJsonPath)
