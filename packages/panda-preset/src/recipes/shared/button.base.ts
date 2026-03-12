@@ -1,4 +1,4 @@
-import { focusStates, formStates } from './states'
+import { formStates } from './states'
 import { actionPalettes, statePalettes } from './palettes'
 import type {
   Pretty,
@@ -34,7 +34,6 @@ export const buttonBase = {
   _disabled: {
     ...formStates._disabled,
   },
-  ...focusStates,
 }
 
 export const sharpRadii = {
@@ -48,6 +47,9 @@ export const nonTextStates = {
     _notDisabled: {
       bgColor: 'colorPalette.ghost.hover',
     },
+  },
+  _selected: {
+    bgColor: 'colorPalette.ghost.active',
   },
   _enabled: {
     _active: {
@@ -107,26 +109,38 @@ export const outlinedUsage = {
   borderColor: 'colorPalette.border.initial',
 }
 
+export const outlinedSubtleUsage = {
+  ...outlinedUsage,
+  border: '1px solid',
+  _selected: {
+    bgColor: 'action.bg.active',
+    color: 'action.text.initial',
+    _hover: {
+      color: 'action.text.200',
+    },
+  },
+}
+
 export const notifyStyles = {
   position: 'relative',
   _after: {
     alignItems: 'center',
-    backgroundColor: 'var(--cerberus-colors-danger-surface-200)',
-    borderRadius: 'full',
-    display: 'flex',
-    color: 'var(--cerberus-colors-danger-text-200)',
+    bgColor: 'danger.surface.200',
+    color: 'danger.text.200',
     content: 'attr(data-notify-count)',
-    flexDirection: 'column',
+    display: 'inline-flex',
     fontFamily: 'mono',
     fontSize: '0.625rem',
-    height: '1rem',
+    h: '1rem',
+    insetBlockEnd: 'auto',
+    insetInlineStart: 'auto',
+    insetInlineEnd: 0,
     justifyContent: 'center',
-    left: '50%',
-    lineHeight: '0.5625rem',
-    position: 'absolute',
+    pos: 'absolute',
     paddingInlineStart: 'calc(0.25rem + 2px)',
     paddingInlineEnd: 'xs',
-    textAlign: 'center',
+    rounded: 'full',
+    translate: '50% -50%',
   },
 }
 

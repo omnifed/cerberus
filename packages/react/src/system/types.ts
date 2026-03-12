@@ -1,14 +1,18 @@
+import type { ark } from '@ark-ui/react/factory'
+import type { CSSProperties, ElementType, PropsWithChildren } from 'react'
 import type {
-  CerberusComponent,
-  HTMLCerberusProps,
+  AsProps,
+  Assign,
+  ComponentProps,
+  Dict,
+  JsxHTMLProps,
   JsxStyleProps,
   RecipeVariantFn,
   RecipeVariantRecord,
   SlotRecipeVariantFn,
   SlotRecipeVariantRecord,
+  UnstyledProps,
 } from 'styled-system/types'
-import type { ElementType, PropsWithChildren, CSSProperties } from 'react'
-import type { ark } from '@ark-ui/react/factory'
 
 // Method signatures for recipes
 
@@ -33,7 +37,8 @@ export type WithRecipeOptions = {
   defaultProps?: Record<string, unknown>
 }
 
-export interface BaseCerberusProps extends ArkFactoryProps, JsxStyleProps {
+export interface BaseCerberusProps
+  extends ArkFactoryProps, JsxStyleProps, Dict, UnstyledProps, AsProps {
   /**
    * The CSS styles applied to the component. Supports CSS Properties
    * declarations and style objects.
@@ -41,12 +46,21 @@ export interface BaseCerberusProps extends ArkFactoryProps, JsxStyleProps {
   style?: CSSProperties | Record<string, string>
 }
 
+export type CerberusProps<
+  T extends ElementType,
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  P extends Dict = {},
+> = JsxHTMLProps<
+  ComponentProps<T> & UnstyledProps & AsProps & ArkFactoryProps,
+  Assign<JsxStyleProps, P>
+>
+
 // Primitive Response
 
-export type CerberusPrimitiveProps<T> = PropsWithChildren<BaseCerberusProps & T>
+export type CerberusPrimitiveProps<T> = PropsWithChildren<BaseCerberusProps> & T
 
 export type CerberusPrimitiveEl<T extends ElementType = ElementType> =
-  CerberusComponent<CerberusPrimitiveProps<T> & HTMLCerberusProps<T>>
+  ElementType<CerberusProps<T>>
 
 // Factory
 

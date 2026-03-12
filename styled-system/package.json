@@ -1,0 +1,51 @@
+{
+  "name": "styled-system",
+  "version": "0.0.0",
+  "scripts": {
+    "prepare": "panda codegen"
+  },
+  "devDependencies": {
+    "@cerberus/panda-preset": "workspace:*",
+    "@pandacss/dev": "^1.9.0",
+    "@types/react": "19.2.14",
+    "react": "^19.2.4"
+  },
+  "exports": {
+    "./css": {
+      "types": "./css/index.d.ts",
+      "require": "./css/index.mjs",
+      "import": "./css/index.mjs"
+    },
+    "./tokens": {
+      "types": "./tokens/index.d.ts",
+      "require": "./tokens/index.mjs",
+      "import": "./tokens/index.mjs"
+    },
+    "./types": {
+      "types": "./types/index.d.ts",
+      "require": "./types/index.mjs",
+      "import": "./types/index.mjs"
+    },
+    "./patterns": {
+      "types": "./patterns/index.d.ts",
+      "require": "./patterns/index.mjs",
+      "import": "./patterns/index.mjs"
+    },
+    "./recipes": {
+      "types": "./recipes/index.d.ts",
+      "require": "./recipes/index.mjs",
+      "import": "./recipes/index.mjs"
+    },
+    "./jsx": {
+      "types": "./jsx/index.d.ts",
+      "require": "./jsx/index.mjs",
+      "import": "./jsx/index.mjs"
+    },
+    "./jsx/factory": {
+      "types": "./jsx/factory.d.ts",
+      "require": "./jsx/factory.mjs",
+      "import": "./jsx/factory.mjs"
+    },
+    "./styles.css": "./styles.css"
+  }
+}

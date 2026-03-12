@@ -1,0 +1,6 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": ["coverage", ".husky", "pnpm-lock.yaml", "packages/*/dist", "packages/*/build"],
+  "semi": false,
+  "singleQuote": true
+}

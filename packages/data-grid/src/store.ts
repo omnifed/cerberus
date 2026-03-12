@@ -1,0 +1,373 @@
+import { createSignal, createComputed, batch } from '@cerberus-design/signals'
+import type {
+  GridOptions,
+  GridStore,
+  InternalColumn,
+  PinnedState,
+  SortState,
+} from './types'
+import {
+  determineInitialCount,
+  determinePageIndex,
+  determinePageRange,
+  determinePageSize,
+  determineRowHeight,
+} from './utils'
+import { DEFAULT_PAGE_IDX } from './const'
+
+/**
+ * Internal signal-based Store engine driving the state. We expose this in
+ * the public Context API.
+ */
+export function createGridStore<TData>(
+  options: GridOptions<TData>,
+): GridStore<TData> {
+  const [containerWidth, setContainerWidth] = createSignal<number>(0)
+  const [rows, setRows] = createSignal<TData[]>(options.data)
+  const [rowSize] = createSignal<number>(determineRowHeight(options.rowSize))
+
+  const [globalFilter, setGlobalFilter] = createSignal<string>('')
+  const [sorting, setSorting] = createSignal<SortState[]>([])
+
+  const [pageIndex, setPageIndex] = createSignal<number>(
+    determinePageIndex(options.initialState?.pagination),
+  )
+  const [pageSize, setPageSize] = createSignal<number>(
+    determinePageSize(options.initialState?.pagination),
+  )
+  const [pageRange] = createSignal<number[]>(
+    determinePageRange(options.initialState?.pagination),
+  )
+  const [isServerPaginated] = createSignal<boolean>(
+    Boolean(determineInitialCount(options.initialState?.pagination)),
+  )
+
+  const initialCols: InternalColumn<TData>[] = options.columns.map((col) => {
+    const pinnable = Boolean(col.features?.pinning)
+    const filterable = Boolean(col.features?.filter)
+    const sortable = Boolean(col.features?.sort)
+
+    const hasFeatures = pinnable || filterable || sortable
+    const minWForFeatures = 100
+
+    let finalWidth = col.width ?? 150
+    if (hasFeatures && col.width && col.width < minWForFeatures) {
+      finalWidth = minWForFeatures
+    }
+
+    const [isVisible] = createSignal<boolean>(true)
+    const [isFlex, setFlex] = createSignal<boolean>(col.width === undefined)
+    const [pinned, setPinned] = createSignal<PinnedState>(
+      col.features?.pinning?.defaultPosition ?? false,
+    )
+    const [width, setColWidth] = createSignal<number>(finalWidth)
+
+    return {
+      id: col.id,
+      isFlex,
+      isVisible,
+      original: col,
+      pinned,
+      width,
+      getValue: col.accessor,
+      // feature flags
+      pinnable,
+      filterable,
+      sortable,
+      // setters
+      setFlex,
+      setPinned,
+      setColWidth,
+    }
+  })
+  const [columns] = createSignal<InternalColumn<TData>[]>(initialCols)
+
+  const currentPageRange = createComputed<{ start: number; end: number }>(
+    () => {
+      const dataIdx = pageIndex() - 1
+      const isFirstPage = dataIdx === 0
+      const start = isFirstPage ? 0 : dataIdx * pageSize() - 1
+      return {
+        start,
+        end: pageIndex() * pageSize(),
+      }
+    },
+  )
+
+  // Processed with data-intensive features
+  const processedRows = createComputed(() => {
+    let result = [...rows()]
+    const filter = globalFilter().toLowerCase()
+    const sortState = sorting()
+
+    if (filter) {
+      result = result.filter((row) => {
+        // Simple search across all filterable columns
+        return columns().some((col) => {
+          if (!col.filterable) return false
+          const val = String(col.getValue(row)).toLowerCase()
+          return val.includes(filter)
+        })
+      })
+    }
+
+    if (sortState.length > 0) {
+      result.sort((a, b) => {
+        for (const sort of sortState) {
+          const col = columns().find((c) => c.id === sort.id)
+          if (!col) continue
+
+          const valA = col.getValue(a) as TData[keyof TData]
+          const valB = col.getValue(b) as TData[keyof TData]
+
+          if (valA === valB) continue // Move to next tie-breaker if equal
+
+          // Use custom comparator if provided
+          let comparison = 0
+          const customComparator =
+            typeof col.original.features?.sort === 'object'
+              ? col.original.features.sort.comparator
+              : undefined
+
+          if (customComparator) {
+            comparison = customComparator(valA, valB)
+          } else {
+            // Fallback: Default JS Comparison
+            comparison = valA > valB ? 1 : -1
+          }
+
+          // Invert the result if we are sorting descending
+          return sort.desc ? -comparison : comparison
+        }
+        return 0
+      })
+    }
+
+    return result
+  })
+
+  // Derived pagination - Ark handles the rest
+  const rowCount = createComputed(
+    () =>
+      determineInitialCount(options?.initialState?.pagination) ??
+      processedRows().length,
+  )
+  const pageCount = createComputed(() => Math.ceil(rowCount() / pageSize()))
+
+  const orderedColumns = createComputed(() => {
+    const left: InternalColumn<TData>[] = []
+    const center: InternalColumn<TData>[] = []
+    const right: InternalColumn<TData>[] = []
+
+    columns().forEach((col) => {
+      const pin = col.pinned()
+      if (pin === 'left') left.push(col)
+      else if (pin === 'right') right.push(col)
+      else center.push(col)
+    })
+
+    return [...left, ...center, ...right]
+  })
+
+  const visibleRows = createComputed(() => {
+    if (pageSize() && pageCount() > 1) {
+      const currentRange = currentPageRange()
+      return processedRows().slice(currentRange.start, currentRange.end)
+    }
+    return processedRows()
+  })
+
+  const rootCssVars = createComputed(() => {
+    const vars: Record<string, string> = {}
+    const visibleCols: InternalColumn<TData>[] = []
+
+    const cols = columns()
+    const cWidth = containerWidth()
+
+    let fixedSpace = 0
+    let flexCount = 0
+
+    // --- PASS 1: Metrics Gathering ---
+    for (let i = 0; i < cols.length; i++) {
+      const col = cols[i]
+      if (!col.isVisible()) continue
+
+      visibleCols.push(col)
+      if (col.isFlex()) {
+        flexCount++
+      } else {
+        fixedSpace += col.width()
+      }
+
+      const order = orderedColumns().findIndex(
+        (orderedCol) => orderedCol.id === col.id,
+      )
+      vars[`--col-${col.id}-order`] = `${order}`
+    }
+
+    // Math for flex columns
+    const remainingSpace = Math.max(0, cWidth - fixedSpace)
+    const flexWidth = flexCount > 0 ? remainingSpace / flexCount : 0
+
+    let leftOffset = 0
+    let totalW = 0
+    const computedWidths = new Float64Array(visibleCols.length)
+
+    // --- PASS 2: Forward Assignment (Widths & Left Pins) ---
+    for (let i = 0; i < visibleCols.length; i++) {
+      const col = visibleCols[i]
+
+      let finalWidth = col.width()
+      if (col.isFlex()) {
+        finalWidth = Math.max(col.original.minWidth ?? 150, flexWidth)
+      }
+
+      computedWidths[i] = finalWidth // Cache for the reverse pass
+      totalW += finalWidth
+      vars[`--col-${col.id}-width`] = `${finalWidth}px`
+
+      if (col.pinned() === 'left') {
+        vars[`--col-${col.id}-left`] = `${leftOffset}px`
+        leftOffset += finalWidth
+      }
+    }
+
+    // --- PASS 3: Reverse Assignment (Right Pins) ---
+    // We only iterate backwards through the visible columns, using the cached widths.
+    let rightOffset = 0
+    for (let i = visibleCols.length - 1; i >= 0; i--) {
+      const col = visibleCols[i]
+      if (col.pinned() === 'right') {
+        vars[`--col-${col.id}-right`] = `${rightOffset}px`
+        rightOffset += computedWidths[i]
+      }
+    }
+
+    vars['--total-grid-width'] = `${totalW}px`
+    vars['--row-height'] = `${rowSize()}px`
+
+    return vars
+  })
+
+  const totalWidth = createComputed(() =>
+    columns().reduce((acc, c) => acc + c.width(), 0),
+  )
+
+  return {
+    columns,
+    rows,
+    globalFilter,
+    sorting,
+    pageCount,
+    pageIndex,
+    pageSize,
+    pageRange,
+    currentPageRange,
+    isServerPaginated,
+    rootCssVars,
+    rowCount,
+    rowSize,
+    totalWidth,
+    visibleRows,
+
+    // Actions
+    updateData: (newData) => {
+      setRows(newData)
+    },
+
+    setSort: (colId, direction, multi = false) => {
+      if (direction === null) {
+        setSorting(sorting().filter((s) => s.id !== colId))
+        return
+      }
+
+      const current = sorting()
+      const newSort = { id: colId, desc: direction === 'desc' }
+
+      if (multi) {
+        const existingIndex = current.findIndex((s) => s.id === colId)
+        if (existingIndex >= 0) {
+          const next = [...current]
+          next[existingIndex] = newSort
+          setSorting(next)
+        } else {
+          setSorting([...current, newSort])
+        }
+      } else {
+        // Single sort clears all other sorts
+        setSorting([newSort])
+      }
+    },
+
+    togglePinned: (colId, state) => {
+      const col = columns().find((c) => c.id === colId)
+      if (col) col.setPinned(state ?? false)
+    },
+
+    toggleSort: (colId, multi) => {
+      const current = sorting()
+      const exists = current.findIndex((s) => s.id === colId) !== -1
+
+      const updatedSort = current.map((s) => {
+        if (s.id === colId) {
+          return { ...s, desc: !s.desc }
+        }
+        return s
+      })
+
+      if (exists) {
+        setSorting(multi ? [...current, ...updatedSort] : [...updatedSort])
+      } else {
+        const newSort = { id: colId, desc: true }
+        setSorting(multi ? [...current, newSort] : [newSort])
+      }
+    },
+
+    setPage: (details) => {
+      setPageIndex(details.page)
+      options.onPageChange?.(details)
+    },
+
+    setPageSize: (size) => {
+      if (isServerPaginated()) {
+        // Reset to first page on size change to reset pagination
+        setPageIndex(DEFAULT_PAGE_IDX)
+      }
+      setPageSize(size)
+    },
+
+    setGlobalFilter: (val) => {
+      batch(() => {
+        setGlobalFilter(val)
+        setPageIndex(DEFAULT_PAGE_IDX) // Reset to first page on filter
+      })
+    },
+
+    setContainerWidth: (w: number) => {
+      setContainerWidth(w)
+    },
+
+    resizeColumn: (colId: string, delta: number) => {
+      const col = columns().find((c) => c.id === colId)
+      if (col) {
+        if (col.isFlex()) {
+          const fixedSpace = columns()
+            .filter((c) => !c.isFlex())
+            .reduce((a, b) => a + b.width(), 0)
+          const flexCount = columns().filter((c) => c.isFlex()).length
+          const currentFlexWidth = Math.max(
+            col.original.minWidth ?? 150,
+            (containerWidth() - fixedSpace) / flexCount,
+          )
+
+          col.setColWidth(currentFlexWidth)
+          col.setFlex(false) // Disable flex behavior permanently for this column
+        }
+
+        col.setColWidth(
+          Math.max(col.original.minWidth ?? 50, col.width() + delta),
+        )
+      }
+    },
+  }
+}

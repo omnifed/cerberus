@@ -30,6 +30,8 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
         <Link
           aria-current={pathname === props.route ? 'page' : undefined}
           className={hstack({
+            alignItems: 'center',
+            display: 'inline-flex',
             justify: 'space-between',
             paddingInlineEnd: '6',
             transition: 'color 250ms ease-in-out',

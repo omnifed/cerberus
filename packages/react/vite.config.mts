@@ -6,6 +6,12 @@ import dts from 'vite-plugin-dts'
 import { defineConfig } from 'vite'
 import pkg from './package.json'
 
+const allDependencies = [
+  ...Object.keys(pkg.dependencies ?? {}),
+  ...Object.keys(pkg.devDependencies ?? {}),
+  ...Object.keys(pkg.peerDependencies ?? {}),
+]
+
 export default defineConfig({
   logLevel: 'warn',
   plugins: [
@@ -30,11 +36,17 @@ export default defineConfig({
     },
     rollupOptions: {
       logLevel: 'silent',
-      external: [
-        ...Object.keys(pkg.dependencies ?? {}),
-        ...Object.keys(pkg.peerDependencies ?? {}),
-        'react/jsx-runtime',
-      ],
+      external: (id) => {
+        // Handle special cases
+        if (id === 'react/jsx-runtime' || id.startsWith('styled-system')) {
+          return true
+        }
+
+        // Handle all package.json dependencies and their subpaths
+        return allDependencies.some(
+          (dep) => id === dep || id.startsWith(`${dep}/`),
+        )
+      },
       output: [
         {
           format: 'cjs',

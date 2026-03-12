@@ -78,3 +78,7 @@ export const MenuItemGroupLabelEl = withSlotRecipe(
 
 export type MenuSeparatorProps = CerberusPrimitiveProps<ArkMenuSeparatorProps>
 export const MenuSeparatorEl = withSlotRecipe(ArkMenu.Separator, 'separator')
+
+// Types
+
+export type { MenuSelectionDetails } from '@ark-ui/react/menu'

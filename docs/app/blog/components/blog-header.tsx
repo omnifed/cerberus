@@ -11,6 +11,8 @@ export interface BlogHeaderProps {
   date: string
   description?: string
   timeToRead?: string
+  category?: string
+  version?: string
 }
 
 export default function BlogHeader(props: BlogHeaderProps) {

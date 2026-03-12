@@ -40,6 +40,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           css({
             my: 6,
             textStyle: 'heading-md',
+            '& :is(a > code)': {
+              backgroundColor: 'var(--shiki-background)',
+              borderRadius: '4px',
+              color: 'var(--shiki-token-keyword)',
+              letterSpacing: '0.01em',
+              paddingInline: '0.3rem',
+              paddingBlock: '0.2rem',
+            },
           }),
           headlineStyles,
         )}
@@ -198,14 +206,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
             borderRight: 'none',
           },
           '& > code:not(.code)': {
-            bgColor: 'page.surface.100',
-            color: 'success.text.100',
-            px: 'sm',
-            py: 'sm',
-            fontSize: 'sm',
-            lineHeight: 2,
-            textStyle: 'mono',
-            rounded: 'md',
+            backgroundColor: 'var(--shiki-background)',
+            borderRadius: '4px',
+            color: 'var(--shiki-token-keyword)',
+            letterSpacing: '0.01em',
+            paddingInline: '0.3rem',
+            paddingBlock: '0.2rem',
+            fontSize: '0.875rem',
           },
         })}
         {...props}

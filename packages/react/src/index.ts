@@ -3,19 +3,6 @@
  * @module
  */
 
-// deprecated
-
-export * from './components/deprecated/FieldMessage'
-export * from './components/deprecated/FieldsetLabel'
-export * from './components/deprecated/Label'
-export * from './components/deprecated/NavMenuTrigger'
-export * from './components/deprecated/NavMenuList'
-export * from './components/deprecated/NavMenuLink'
-export * from './components/deprecated/Legend'
-export * from './hooks/useDate'
-export * from './hooks/useToggle'
-export * from './components/Droppable'
-
 // components
 
 export * from './components/admonition/index'
@@ -36,10 +23,12 @@ export * from './components/field/index'
 export * from './components/fieldset/index'
 export * from './components/file-upload/index'
 export * from './components/for/index'
+export * from './components/group/index'
 export * from './components/icon-button/index'
 export * from './components/menu/index'
 export * from './components/notifications/index'
 export * from './components/number-input/index'
+export * from './components/pagination/index'
 export * from './components/pin-input/index'
 export * from './components/portal/index'
 export * from './components/progress/index'

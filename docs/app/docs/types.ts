@@ -26,6 +26,7 @@ export interface DocPage {
     description: string
   }
   Content?: (props: MDXProps) => JSX.Element
+  tag?: 'new' | 'deprecated'
 }
 
 export interface DocFrontmatter {
@@ -36,4 +37,5 @@ export interface DocFrontmatter {
   recipe?: string
   source?: string
   panda?: string
+  package?: string
 }

@@ -72,7 +72,6 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionProperty: 'background, box-shadow, border-color',
       transitionTimingFunction: 'default',
       w: 'full',
-      ...focusStates,
       _placeholderShown: {
         color: 'page.text.100',
       },
@@ -117,7 +116,6 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       p: 'xs',
       rounded: 'md',
       shadow: 'lg',
-      ...focusStates,
       _open: {
         animationStyle: 'slide-fade-in',
         animationDuration: 'fast',

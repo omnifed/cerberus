@@ -1,9 +1,8 @@
-'use cache'
-
-import { Show } from '@cerberus-design/react'
-import { items } from './content/items'
 import { Container } from '@/styled-system/jsx'
+import { Show } from '@cerberus-design/react'
+import { notFound } from 'next/navigation'
 import BlogHeader, { type BlogHeaderProps } from '../components/blog-header'
+import { items } from './content/items'
 
 export async function generateStaticParams() {
   return items
@@ -19,13 +18,14 @@ export default async function BlogSlugPage(props: {
   }>
 }) {
   const { slug } = await props.params
-  const page = items.find((item) => item.slug === slug)
+  const page = await import(`./content/${slug}.mdx`)
+
   const frontmatter = page?.frontmatter as BlogHeaderProps
-  const Doc = page?.Content
+  const Doc = page?.default
 
   if (!page) {
-    console.error(`No items found for slug: ${slug}`)
-    return null
+    console.error(`Page not found for slug: ${slug}`)
+    return notFound()
   }
 
   if (Doc) {

@@ -1,0 +1,90 @@
+---
+title: Pagination 
+description: Learn how to use pagination in the data grid.
+package: 'data-grid'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { DEMOS } from '../components/pagination/static'
+
+## Overview
+
+Pagination allows you to display a subset of data at a time which can be navigated
+through using the pagination controls.
+
+**By default, the pagination is handled on the client**. This means you have to give 
+the rows of all pages to the Data Grid. If your dataset is too big, and you want 
+to fetch the pages on demand, you can create a custom action in a custom 
+[Toolbar](/docs/data-grid/toolbar) action.
+
+## Implementing Pagination
+
+You must opt-in to pagination by setting the `initialState.pagination` prop to either `true`
+or using a `PaginationOptions` object on the Data Grid. Doing so will display a 
+static footer of pagination controls at the bottom of the grid.
+
+<CodePreview {...DEMOS.basic} />
+
+## Page Sizes
+
+<NoteAdmonition description="The Data Grid comes built-int with a range of three predefined page sizes: 25, 50, and 100." />
+
+To enable custom page sizes, you need to provide a `customRange` value to the 
+`pagination` options. This should be an Array of numbers representing the page sizes to display in the dropdown.
+
+When this is provided, the Data Grid will use the first value in `customRange` as the initial page size.
+
+<CodePreview {...DEMOS.sizes} />
+
+## Default Page
+
+To set the default page, you can provide a `defaultPage` value to the `pagination` options.
+
+<CodePreview {...DEMOS.page} />
+
+## Count 
+
+For **server-side pagination** where the total count is known beforehand, you can 
+provide a `count` value to the `pagination` options.
+
+The Data Grid automatically calculates the total number of pages based on the 
+`count` and `pageSize` values when using _client-side pagination_.
+
+<NoteAdmonition description={
+<>
+  By opting in to this option you are forcing the grid to render: 
+    <ul style={{ paddingTop: '1rem' }}>
+      <li>without virtualization applied</li>
+      <li>without automatic state management of the pagination</li>
+      <li>the page count will reset the index to the first page if changed</li>
+    </ul>
+</>
+} />
+
+<CodePreview {...DEMOS.count} />
+
+## Page Change Action
+
+You can trigger a callback when the page change action is fired by providing a 
+`onPageChange` prop to the Data Grid. This will recieve a `details` object with
+the current page number and page size.
+
+This is useful for analytics or tracking page changes.
+
+<NoteAdmonition description="If you plan on fetching more data on page change, the grid state will reset which includes the page state. This is due to the nature of client-side pagination." />
+
+<CodePreview {...DEMOS.change} />
+
+## Options
+
+The `pagination` options accept the following properties:
+
+<CodePreview {...DEMOS.data} />
+
+| Params    | Required    | Description                                        |
+| --------- | ----------- | -------------------------------------------------- |
+| `defaultPage` | `false` | The index of the page to display by default. |
+| `count` | `false` | The total number of items in the grid. **This is useful for server-side pagination design** |
+| `pageSize` | `false` | The initial page size to use when the grid is first rendered. **This must be one of the values in `customRange`.** |
+| `customRange` | `false` | An array of custom page sizes to display in the dropdown. **This must include the `pageSize` value.** |

@@ -1,0 +1,39 @@
+---
+title: Column Pinning
+description: Learn about the column pinning feature in the Data Grid component.
+package: 'data-grid'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { DEMOS } from '../components/pinning/static'
+
+## Overview
+
+Pinned columns (also known as sticky, frozen, and locked) are visible at all times 
+while scrolling the Data Grid horizontally. Users can access this feature through 
+the column menu to pin and unpin columns to either the left or right side. 
+
+## Implementing column pinning
+
+You must opt-in to column pinning by setting the `features.pinning` prop to `true` or 
+utilzing the options object. Doing so will display the pinning options in the column menu.
+
+<CodePreview {...DEMOS.basic} />
+
+## Default Pinning
+
+To set a column to be pinned by default, you can use the `defaultPosition` property 
+in the `features.pinning` object.
+
+<CodePreview {...DEMOS.pinned} />
+
+## Options
+
+The `pinning` feature accepts either a `boolean` or an object with the following properties:
+
+<CodePreview {...DEMOS.data} />
+
+| Params    | Required    | Description                                        |
+| --------- | ----------- | -------------------------------------------------- |
+| `defaultPosition` |  `false` | Whether the column should be pinned by default. |

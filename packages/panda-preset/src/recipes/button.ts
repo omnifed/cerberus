@@ -8,6 +8,7 @@ import {
   buttonCompoundVariants,
   buttonPalettes,
   filledUsage,
+  outlinedSubtleUsage,
   outlinedUsage,
   sharpRadii,
   textUsage,
@@ -29,6 +30,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
 
   base: {
     ...buttonBase,
+    minW: '2.85rem',
     pxi: '4',
   },
 
@@ -37,6 +39,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     usage: {
       ghost: textUsage,
       outlined: outlinedUsage,
+      'outlined-subtle': outlinedSubtleUsage,
       filled: filledUsage,
     },
     shape: {

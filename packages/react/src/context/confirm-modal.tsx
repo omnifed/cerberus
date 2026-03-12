@@ -60,7 +60,7 @@ export interface DestructiveConfirmOptions extends BaseConfirmOptions {
   /**
    * The description of the confirm modal. Can only be a string for destructive confirm modals.
    */
-  description?: string
+  description?: ReactNode
 }
 
 export interface NonDestructiveConfirmModalOptions extends BaseConfirmOptions {

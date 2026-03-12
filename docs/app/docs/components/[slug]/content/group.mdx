@@ -1,0 +1,44 @@
+---
+title: Group
+description: Used to layout its children in an attached or normal group.
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/group/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
+
+## Usage
+
+Used to group and attach elements together.
+
+<CodePreview {...DEMOS.basic} />
+
+## Attached
+
+Use the `layout` prop to attach the group of children together.
+
+<CodePreview {...DEMOS.attached} />
+
+## Grow
+
+Use the `grow` variant of the `layout` prop to make the children fill the space.
+
+<CodePreview {...DEMOS.grow} />
+
+## Orientation
+
+Use the `orientation` prop to change the direction of the children.
+
+<CodePreview {...DEMOS.orientation} />
+
+## Props
+
+The `Group` component accepts any style properties along with the following props:
+
+| Prop        | Type         | Description                                    |
+|-------------|--------------|------------------------------------------------|
+| `layout`     | `default, attached, grow` | The layout of the children along the cross axis. |
+| `orientation` | `horizontal, vertical` | The direction of the children. |
+| `asChild` | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |

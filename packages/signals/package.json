@@ -1,0 +1,92 @@
+{
+  "name": "@cerberus-design/signals",
+  "version": "0.25.3",
+  "description": "The Cerberus Design React signals library.",
+  "browserslist": "> 0.25%, not dead",
+  "sideEffects": false,
+  "type": "module",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "scripts": {
+    "build": "vite build",
+    "clean": "rm -rf ./dist",
+    "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@vitejs/plugin-react": "^5.1.2",
+    "globby": "^16.1.1",
+    "react": "^19.2.4",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "types": "dist/index.d.cts",
+    "main": "dist/index.cjs",
+    "module": "dist/index.js",
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.js"
+        },
+        "require": {
+          "types": "./dist/index.d.cts",
+          "default": "./dist/index.cjs"
+        }
+      },
+      "./core": {
+        "import": {
+          "types": "./dist/core/index.d.ts",
+          "default": "./dist/core/index.js"
+        },
+        "require": {
+          "types": "./dist/core/index.d.cts",
+          "default": "./dist/core/index.cjs"
+        }
+      },
+      "./react": {
+        "import": {
+          "types": "./dist/react/index.d.ts",
+          "default": "./dist/react/index.js"
+        },
+        "require": {
+          "types": "./dist/react/index.d.cts",
+          "default": "./dist/react/index.cjs"
+        }
+      },
+      "./package.json": "./package.json"
+    },
+    "typesVersions": {
+      "*": {
+        ".": [
+          "dist/index.d.cts"
+        ],
+        "./core": [
+          "dist/core/index.d.cts"
+        ],
+        "./react": [
+          "dist/react/index.d.cts"
+        ]
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "keywords": [
+    "panda-css",
+    "react",
+    "data grid",
+    "data grid component",
+    "react signals",
+    "react signals component"
+  ],
+  "author": "developers@omnifederal.com",
+  "license": "ISC"
+}
