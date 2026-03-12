@@ -28,7 +28,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - run: pnpm install
-      - run: pnpm build && pnpm publish --access public --no-git-checks
+      - run: pnpm build && pnpm publish --tag latest --access public --no-git-checks
         working-directory: ./packages/react
 
   npm-publish-signals:
@@ -45,7 +45,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - run: pnpm install
-      - run: pnpm build && pnpm publish --access public --no-git-checks
+      - run: pnpm build && pnpm publish --tag latest --access public --no-git-checks
         working-directory: ./packages/signals
 
   npm-publish-data-grid:
@@ -63,7 +63,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - run: pnpm install
-      - run: pnpm build && pnpm publish --access public --no-git-checks
+      - run: pnpm build && pnpm publish --tag latest --access public --no-git-checks
         working-directory: ./packages/data-grid
 
   jsr-publish-figma:
