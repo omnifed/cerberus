@@ -42,6 +42,7 @@
   "packageManager": "pnpm@10.32.1",
   "pnpm": {
     "overrides": {
+      "@hono/node-server": ">=1.19.10",
       "express-rate-limit": ">=8.2.2",
       "hono": ">=4.12.7",
       "minimatch": ">=10.2.3"
