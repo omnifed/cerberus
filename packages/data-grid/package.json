@@ -12,6 +12,9 @@
   ],
   "license": "ISC",
   "author": "developers@omnifederal.com",
+  "repository": {
+    "url": "https://github.com/omnifed/cerberus"
+  },
   "files": [
     "dist",
     "package.json"
