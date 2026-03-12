@@ -1,31 +1,28 @@
 {
   "name": "@cerberus-design/configs",
   "version": "0.0.0",
-  "description": "The internal shared configurations for the projects.",
   "private": true,
-  "type": "module",
-  "module": "index.mjs",
-  "main": "index.mjs",
-  "types": "index.d.ts",
+  "description": "The internal shared configurations for the projects.",
   "files": [
     "index.mjs",
     "index.d.ts",
     "src/**/*"
   ],
+  "type": "module",
+  "main": "index.mjs",
+  "module": "index.mjs",
+  "types": "index.d.ts",
   "scripts": {
     "build:react": "bun ./src/bun-build.mjs",
     "bump:versions": "bun ./src/bump-versions.mjs --stable",
     "publish": "bun ./src/publish.mjs",
     "publish:jsr": "bun ./src/publish-jsr.mjs"
   },
-  "peerDependencies": {
-    "bun": "*",
-    "tsup": "*",
-    "typescript": "*"
-  },
   "devDependencies": {
     "glob": "^13.0.1",
-    "tsup": "^8.5.1",
     "util": "^0.12.5"
+  },
+  "peerDependencies": {
+    "bun": "*"
   }
 }

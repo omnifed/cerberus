@@ -1,4 +1,4 @@
 {
-  "plugins": ["react", "react-perf"],
+  "plugins": ["import", "react", "react-perf"],
   "ignorePatterns": ["packages/tokens/src/data/**/*", "styled-system/**/*"]
 }

@@ -23,6 +23,7 @@ styled-system/recipes
 styled-system/themes
 styled-system/tokens
 styled-system/types
+styled-system/helpers.mjs
 
 docs/styled-system
 packages/*/styled-system
