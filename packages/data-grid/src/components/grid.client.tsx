@@ -54,7 +54,7 @@ export function GridViewport() {
         w="var(--total-grid-width)"
         zIndex="sticky"
       >
-        <HStack aria-rowindex="1" role="rowgroup" gap="0" h="full" pos="relative" w="full">
+        <HStack aria-rowindex={1} role="rowgroup" gap="0" h="full" pos="relative" w="full">
           <For each={columns}>
             {(col) => (
               <Show when={col.isVisible()} key={col.id}>
