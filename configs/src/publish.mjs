@@ -9,7 +9,7 @@ import { version, nextTag, packages } from './versions.mjs'
  * in order to support Jest which still relies on cjs.
  */
 
-const NPM_PACKAGES = ['react', 'data-grid', 'signals']
+const NPM_PACKAGES = ['react', 'signals', 'data-grid']
 
 function _parseFlags(args) {
   return parseArgs({
@@ -60,11 +60,9 @@ function publish() {
     const packageJson = await rawFile.json()
     const json = JSON.stringify({ ...packageJson, version: _getReleaseVersion(values) }, null, 2)
 
-    // eslint-disable-next-line no-undef
     console.log('Updating version in', packageJsonPath)
     write(packageJsonPath, json)
 
-    // eslint-disable-next-line no-undef
     try {
       console.log('Building', pkg, `at ${workspacePath}`)
       await $`pnpm --filter @cerberus-design/${pkg} build`
@@ -73,7 +71,6 @@ function publish() {
       exit(1)
     }
 
-    // eslint-disable-next-line no-undef
     try {
       console.log(`Publishing ${pkg} with tag ${release}`)
       await $`cd ${workspacePath} && pnpm publish --tag ${release} --no-git-checks`
