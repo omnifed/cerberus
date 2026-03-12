@@ -2,32 +2,26 @@
   "name": "@cerberus-design/signals",
   "version": "0.25.3",
   "description": "The Cerberus Design React signals library.",
-  "browserslist": "> 0.25%, not dead",
-  "sideEffects": false,
+  "keywords": [
+    "data grid",
+    "data grid component",
+    "panda-css",
+    "react",
+    "react signals",
+    "react signals component"
+  ],
+  "license": "ISC",
+  "author": "developers@omnifederal.com",
+  "files": [
+    "dist",
+    "package.json"
+  ],
   "type": "module",
+  "sideEffects": false,
   "main": "src/index.ts",
   "module": "src/index.ts",
-  "scripts": {
-    "build": "vite build",
-    "clean": "rm -rf ./dist",
-    "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
-  },
-  "peerDependencies": {
-    "react": "*"
-  },
-  "devDependencies": {
-    "@types/react": "^19.2.14",
-    "@vitejs/plugin-react": "^5.1.2",
-    "globby": "^16.1.1",
-    "react": "^19.2.4",
-    "vite": "^7.3.1",
-    "vite-plugin-dts": "^4.5.4"
-  },
   "publishConfig": {
     "access": "public",
-    "types": "dist/index.d.cts",
-    "main": "dist/index.cjs",
-    "module": "dist/index.js",
     "exports": {
       ".": {
         "import": {
@@ -61,6 +55,9 @@
       },
       "./package.json": "./package.json"
     },
+    "main": "dist/index.cjs",
+    "module": "dist/index.js",
+    "types": "dist/index.d.cts",
     "typesVersions": {
       "*": {
         ".": [
@@ -75,18 +72,21 @@
       }
     }
   },
-  "files": [
-    "dist",
-    "package.json"
-  ],
-  "keywords": [
-    "panda-css",
-    "react",
-    "data grid",
-    "data grid component",
-    "react signals",
-    "react signals component"
-  ],
-  "author": "developers@omnifederal.com",
-  "license": "ISC"
+  "scripts": {
+    "build": "vite build",
+    "clean": "rm -rf ./dist",
+    "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@vitejs/plugin-react": "^5.1.2",
+    "globby": "^16.1.1",
+    "react": "^19.2.4",
+    "vite": "^8.0.0",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "browserslist": "> 0.25%, not dead"
 }
