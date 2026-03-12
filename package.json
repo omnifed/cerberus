@@ -46,7 +46,8 @@
       "ajv": ">=8.18.0",
       "express-rate-limit": ">=8.2.2",
       "hono": ">=4.12.7",
-      "minimatch": ">=10.2.3"
+      "minimatch": ">=10.2.3",
+      "rollup": ">=4.59.0"
     },
     "ignoredBuiltDependencies": [
       "@tsparticles/engine",
