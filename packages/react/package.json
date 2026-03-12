@@ -88,7 +88,7 @@
     "vite-plugin-dts": "^4.5.4"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^1.8.2",
+    "@pandacss/dev": "^1.9.0",
     "react": "*",
     "react-dom": "*"
   },
