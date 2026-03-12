@@ -50,7 +50,8 @@
     }
   },
   "scripts": {
-    "build": "vite build",
+    "generate:info": "pnpm panda ship --outfile dist/panda.buildinfo.json",
+    "build": "vite build && pnpm generate:info",
     "clean": "rm -rf ./dist",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
@@ -59,6 +60,7 @@
     "@cerberus-design/signals": "workspace:*"
   },
   "devDependencies": {
+    "@pandacss/dev": "^1.9.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
