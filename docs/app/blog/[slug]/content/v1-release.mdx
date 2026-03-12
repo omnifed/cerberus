@@ -1,0 +1,218 @@
+---
+slug: cerberus-v1-release
+date: 2026-11-03
+author: caseyBaggz
+title: Cerberus v1 Release
+description: The Data Grid is born
+category: release
+version: 1.0
+timeToRead: 4
+tag: Release
+---
+
+import BashTabs from '@/app/components/bash-tabs'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import CodePreview from '@/app/components/CodePreview'
+
+import { DEMOS as GroupDemos } from '@/app/docs/components/[slug]/components/group/static'
+import { DEMOS as PaginationDemos } from '@/app/docs/components/[slug]/components/pagination/static'
+import { DEMOS as ButtonDemos } from '@/app/docs/components/[slug]/components/button/static'
+import { DEMOS as DataGridDemos } from '@/app/docs/data-grid/[slug]/components/quick-start/static'
+
+This release adds new features, packages, and improvements to our entire ecosystem.
+
+## Overview
+
+Welcome to Cerberus v1! This is a massive release and we have a lot to cover, so
+here is a brief overview of what's new:
+
+- [Easy Installation](#easy-installation) - get started faster than ever
+- [React Features](#react-features) - new primitive APIs and general updates
+- [Panda Preset](#panda-preset) - recipe and condition updates
+- [Data Grid](#data-grid) - a new compositional component API
+
+## Easy Installation
+
+When we first launched Cerberus, the goal was to provide a low-level API that
+would give complete control to our users. Since then, we've learned that most
+of the teams using Cerberus prefer a more opinionated approach that is more baked
+into the framework like a UI library.
+
+Thus, we have simiplified the installation dramatically by **adding Carbon Icons
+as the default icon library**.
+
+This means you no longer need to setup a custom config for the `CerberusProvider`
+unless you want to customize the icon set.
+
+The result is a more streamlined installation experience that gets you up and running
+faster than ever before.
+
+View the [installation guide](/docs/get-started/installation) for more details.
+
+## React Features
+
+In this release, we have quite a few improvements and additions to our React
+library. Let's start with a bang...
+
+### Breaking Changes
+
+We have had some deprecated APIs hanging around for close to a year now. In this
+release, we have removed them and replaced them with a more modern API.
+
+- All APIs that were marked as deprecated have been removed
+- `@dnd-kit` has been removed as a dependency as a whole
+
+This shouldn't affect anyone unless you have been ignoring the deprecation warnings
+for a very long time. :joy:
+
+### Group
+
+Sometimes you want to group elements together in different ways. We've added the
+`Group` component to help with this.
+
+From different orientations to gap options, we've got you covered. Here is an
+example of using it to attach elements together:
+
+<CodePreview {...GroupDemos.attached} />
+<br />
+
+Checkout the [Group documentation for more details](/docs/components/group).
+
+### Pagination
+
+We've added a `Pagination` component to help streamline pagination in your app.
+Fully accessible and customizable, it provides the flexibility you need regardless
+of your chosen pagination strategy.
+
+In this demo, we show how you can use the `Pagination` API to manage and slice
+your data efficiently.
+
+<CodePreview {...PaginationDemos.slice} />
+<br />
+
+Checkout the [Pagination documentation for more details](/docs/components/pagination).
+
+### `EnforceNoProperties` type
+
+Sometimes you need a type that should strictly enforce the usage of some properties
+and not others depending on the context. We do this often with our component APIs.
+
+Thus, we have added a `EnforceNoProperties` type that allows you easily achieve this.
+
+<CodeSnippet snippet={`pinning?: (boolean & EnforceNoProperties<PinnedOptions>) | PinnedOptions`} />
+<br />
+
+This type will convert the Record passed into it to have a value of `never`.
+
+### Other Improvements
+
+- Fix: Builds no longer leak internal dependencies
+- Fix: Builds are overall smaller and more efficient
+- Fix: Some menus and buttons no longer trigger random `focus` outlines
+- Fix: `Button` and `Text` autocomplete style props correctly
+- Feat: Expose `MenuSelectionDetails` type
+- Feat: Allow `ReactNode` descriptions for destructive Prompt modals
+
+## Panda Preset
+
+Our core preset plugin got a little boost as well with a new button recipe and
+conditions.
+
+### New Button Variant
+
+Buttons now include a `outlined-subtle` variant that provides a less prominent
+stroke style.
+
+<CodePreview {...ButtonDemos.usage} />
+<br />
+
+Checkout the [Button documentation for more details](/docs/components/button).
+
+### New Conditions
+
+Along with our new Data Grid API, we have added some new conditions to help with
+conditional styling:
+
+| Condition      | Value                                        |
+| -------------- | -------------------------------------------- |
+| `_pinned`      | `'&:is([data-pinned], [data-state=pinned])'` |
+| `_leftPinned`  | `'&:is([data-pinned=left])'`                 |
+| `_rightPinned` | `'&:is([data-pinned=right])'`                |
+
+## Officially Cerberus
+
+Cerberus has always aimed for the long-term goal of creating an entire platform
+of high performant components and tools that help streamline web development.
+
+In our first year, we focused on the foundation: _a plugin-based architecture that
+worked seamlessly with React components._
+
+This year we are building on that foundation to create a landmark powerhouse that
+is **more than just a collection of components**.
+
+We will achieve that by adding two more players in the ecosystem:
+
+- **Compositional components**: Fully-baked feature packed React components
+- **Signals**: An external Signal-based state management library for React
+
+This release, introduces our first **compositional component**: The Data Grid
+
+## Data Grid
+
+The Data Grid is a React component built to provide a drop-in solution for displaying
+data-heavy tables with features like filtering, sorting, pagination, and more. Our
+execution is inspired by the ideaology of MUI's DataGrid component with the performance
+enhancements of TanStack Table.
+
+<CodePreview {...DataGridDemos.basic} />
+<br />
+
+The concept is simple:
+
+1. Define your columns (and opt-in to features)
+2. Pass your columns and data to the grid
+
+**Supported Features:**
+
+- Virtualization
+- Sorting (and multi-column sorting)
+- Pinning
+- Pagination
+- Access to state context
+- Custom Toolbars
+- Signal-driven state management for enhanced performance
+
+**Dependencies:**
+
+The Data Grid is a "pure" Cerberus component that only uses two dependencies:
+
+- Cerberus React
+- Cerberus Signals
+
+Checkout the [Data Grid documentation](/docs/data-grid/overview) for more details.
+
+#### Signals Early Preview
+
+The Data Grid "soft launches" a new signal-based state management system for
+React. This is the state management that React should have had from the beginning
+_and still doesn't provide_.
+
+We will dive deeper into signals in our _next release_ when we launch it publicly.
+
+If you are interested in an early preview of signals, you can install it from npm:
+
+<BashTabs code="npm install @cerberus/signals@npm:@cerberus-design/signals" />
+
+## Thanks!
+
+This is a monumental release and one of the most significant updates to Cerberus
+since its inception.
+
+A special thanks to everyone who has helped validate and shape the APIs and docs
+for this release.
+
+## Upgrading
+
+To upgrade to this release, you can install the latest version of Cerberus React:
+
+<BashTabs code="npm run up:cerberus" />

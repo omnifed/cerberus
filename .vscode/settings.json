@@ -38,9 +38,9 @@
     "Watsonx",
     "wixmp"
   ],
-  "prettier.configPath": ".prettierrc",
-  "prettier.prettierPath": "./node_modules/prettier",
-  "prettier.singleQuote": true,
+  "oxc.fmt.configPath": ".oxfmtrc.json",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsdk": "node_modules/typescript/lib"
 }
