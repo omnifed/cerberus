@@ -3,68 +3,36 @@ title: Scrollable
 description: A layout pattern to create scrollable containers.
 ---
 
-import { NoteAdmonition } from "@/app/components/Admonition";
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/scrollable/static'
 
-```tsx
-import { Scrollable } from "styled-system/jsx";
-
-const Demo = () => {
-  return (
-    <Scrollable h="200px">
-      <Box bgColor="page.surface.100" color="white" padding="4"  width="full" >
-        This is the Box
-      </Box>
-    </Scrollable>
-  )
-}
-```
+<CodeSnippet snippet={DEMOS.meta} />
 
 ## Usage
 
-The `Scrollable` component provides an easy way to create scrollable containers without having to worry about overflow styles.
+The `Scrollable` component provides an easy way to create scrollable containers
+without having to worry about overflow styles.
 
-```tsx
-import { Scrollable } from "styled-system/jsx";
-```
+<CodePreview {...DEMOS.basic} />
 
-```tsx
-<Scrollable />
-```
-
-## Examples
-
-### Direction
+## Direction
 
 Use `vertical` or `horizontal` to control the overflow scrolling direction.
 
-```tsx
-import { Scrollable } from "styled-system/jsx";
+<CodePreview {...DEMOS.direction} />
 
-const Demo = () => {
-  return (
-    <Scrollable direction="horizontal" w="200px">
-      This is horizontal scrolling content.
-    </Scrollable>
-  )
-}
-```
-
-### Scrollbar visibility
+## Scrollbar visibility
 
 You can control the visibility of the scrollbar using the `hideScrollbar` prop.
 
-```tsx
-import { Scrollable } from "styled-system/jsx";
-const Demo = () => {
-  return (
-    <Scrollable hideScrollbar>
-      This is content with a hidden scrollbar.
-    </Scrollable>
-  )
-}
-```
+<CodePreview {...DEMOS.visibility} />
 
 ## Props
 
-The `Box` component supports all CSS properties as props, making it easy to
-style elements.
+The `Scrollable` component supports all CSS properties as props, along with the following additional props:
+
+| Prop            | Type                         | Description                                |
+| --------------- | ---------------------------- | ------------------------------------------ |
+| `direction`     | `'vertical' \| 'horizontal'` | Controls the overflow scrolling direction. |
+| `hideScrollbar` | `boolean`                    | Hides the scrollbar.                       |
