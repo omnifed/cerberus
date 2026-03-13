@@ -70,8 +70,8 @@ export const collection = {
     'VariableID:6586:3803',
     'VariableID:6586:3804',
     'VariableID:6586:3805',
-    'VariableID:7228:19106',
     'VariableID:6586:3807',
+    'VariableID:7228:19106',
     'VariableID:11926:1770',
     'VariableID:8434:35148',
     'VariableID:8434:35149',
@@ -105,15 +105,15 @@ export const collection = {
     'VariableID:6742:34976',
     'VariableID:6742:34977',
     'VariableID:9057:6107',
-    'VariableID:11926:1771',
     'VariableID:6742:34979',
+    'VariableID:11926:1771',
     'VariableID:9057:6105',
     'VariableID:9057:6106',
     'VariableID:6742:34980',
     'VariableID:8578:21627',
     'VariableID:10393:6864',
-    'VariableID:6715:34660',
     'VariableID:13034:396',
+    'VariableID:6715:34660',
     'VariableID:13034:397',
     'VariableID:6715:34661',
     'VariableID:6715:34662',
@@ -123,8 +123,8 @@ export const collection = {
     'VariableID:6750:4357',
     'VariableID:6750:4718',
     'VariableID:13697:8126',
-    'VariableID:13697:8127',
     'VariableID:8945:7710',
+    'VariableID:13697:8127',
     'VariableID:12503:130',
     'VariableID:12503:131',
     'VariableID:12503:132',
@@ -262,8 +262,7 @@ export const tokens = {
     key: '2d1371f8a9cd7e1b2193ad25ee8f7416d8fcfc44',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'Text color of hyperlinks throughout the site that have been visited',
+    description: 'Text color of hyperlinks throughout the site that have been visited',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.neutral.60',
@@ -328,8 +327,7 @@ export const tokens = {
     key: '79074b65a03f4f1112ea808a1d1d714b0070398b',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'High emphasis static text on page, like page headers or section titles. ',
+    description: 'High emphasis static text on page, like page headers or section titles. ',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.brand.100',
@@ -506,8 +504,7 @@ export const tokens = {
     key: 'b10a14fc19181b892852fdeb10ad331b4f9548d0',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'for use on less prominent actionable borders, like input fields etc',
+    description: 'for use on less prominent actionable borders, like input fields etc',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.success.50',
@@ -622,8 +619,7 @@ export const tokens = {
     key: 'd122c34a515b4954ff2376c6418226b7a826c6b4',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'The default color of body danger text within a danger colored container. ',
+    description: 'The default color of body danger text within a danger colored container. ',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'danger.cerberus.70',
@@ -869,8 +865,7 @@ export const tokens = {
     key: '5e31bd249897f5712259805f251dc9255835f67a',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'The default color of body success text within a success colored container. ',
+    description: 'The default color of body success text within a success colored container. ',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.success.60',
@@ -1076,6 +1071,22 @@ export const tokens = {
     scopes: [],
     codeSyntax: {},
   },
+  'page.background.initial': {
+    name: 'background/page/initial',
+    id: 'VariableID:6586:3807',
+    remote: false,
+    key: '85fbc6722bf9efae9474da08b68747537c867f3a',
+    variableCollectionId: 'VariableCollectionId:4328:23832',
+    resolvedType: 'COLOR',
+    description: '',
+    hiddenFromPublishing: false,
+    valuesByMode: {
+      '4328:3': 'cerberus.brand.5',
+      '4738:0': 'cerberus.brand.100',
+    },
+    scopes: ['FRAME_FILL', 'SHAPE_FILL'],
+    codeSyntax: {},
+  },
   'text.success.inverse': {
     name: 'text/success/inverse',
     id: 'VariableID:7228:19106',
@@ -1091,22 +1102,6 @@ export const tokens = {
       '4738:0': 'cerberus.success.100',
     },
     scopes: ['ALL_SCOPES'],
-    codeSyntax: {},
-  },
-  'page.background.initial': {
-    name: 'background/page/initial',
-    id: 'VariableID:6586:3807',
-    remote: false,
-    key: '85fbc6722bf9efae9474da08b68747537c867f3a',
-    variableCollectionId: 'VariableCollectionId:4328:23832',
-    resolvedType: 'COLOR',
-    description: '',
-    hiddenFromPublishing: false,
-    valuesByMode: {
-      '4328:3': 'cerberus.brand.5',
-      '4738:0': 'cerberus.brand.100',
-    },
-    scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     codeSyntax: {},
   },
   'text.success.static': {
@@ -1212,8 +1207,7 @@ export const tokens = {
     key: '0961f92da3d1345a3c3f3d1a6a652a31ef39a097',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'for use on less prominent actionable borders, like input fields etc',
+    description: 'for use on less prominent actionable borders, like input fields etc',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.neutral.40',
@@ -1620,8 +1614,7 @@ export const tokens = {
     key: '290019392d40245b331a8edbf6a56dfe9ca127dd',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'High emphasis text or icon to indicate an info state or highlight information',
+    description: 'High emphasis text or icon to indicate an info state or highlight information',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'info.cerberus.100',
@@ -1647,22 +1640,6 @@ export const tokens = {
     scopes: ['ALL_SCOPES'],
     codeSyntax: {},
   },
-  'info.text.static': {
-    name: 'text/info/static',
-    id: 'VariableID:11926:1771',
-    remote: false,
-    key: 'd270969d9a74ffe844d2e6bdaf6551e90fdf6955',
-    variableCollectionId: 'VariableCollectionId:4328:23832',
-    resolvedType: 'COLOR',
-    description: 'For use when a text color will not change between modes',
-    hiddenFromPublishing: false,
-    valuesByMode: {
-      '4328:3': 'info.cerberus.60',
-      '4738:0': 'info.cerberus.60',
-    },
-    scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    codeSyntax: {},
-  },
   'info.surface.initial': {
     name: 'surface/info/initial',
     id: 'VariableID:6742:34979',
@@ -1678,6 +1655,22 @@ export const tokens = {
       '4738:0': 'info.cerberus.80',
     },
     scopes: ['FRAME_FILL'],
+    codeSyntax: {},
+  },
+  'info.text.static': {
+    name: 'text/info/static',
+    id: 'VariableID:11926:1771',
+    remote: false,
+    key: 'd270969d9a74ffe844d2e6bdaf6551e90fdf6955',
+    variableCollectionId: 'VariableCollectionId:4328:23832',
+    resolvedType: 'COLOR',
+    description: 'For use when a text color will not change between modes',
+    hiddenFromPublishing: false,
+    valuesByMode: {
+      '4328:3': 'info.cerberus.60',
+      '4738:0': 'info.cerberus.60',
+    },
+    scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     codeSyntax: {},
   },
   'info.surface.100': {
@@ -1772,22 +1765,6 @@ export const tokens = {
     scopes: ['SHAPE_FILL'],
     codeSyntax: {},
   },
-  'data-viz.sequential.100': {
-    name: 'data-viz/sequential/100',
-    id: 'VariableID:6715:34660',
-    remote: false,
-    key: 'e0a9eef368b271e146fdd26972dbae7b9deb94aa',
-    variableCollectionId: 'VariableCollectionId:4328:23832',
-    resolvedType: 'COLOR',
-    description: '',
-    hiddenFromPublishing: false,
-    valuesByMode: {
-      '4328:3': 'cerberus.brand.10',
-      '4738:0': 'cerberus.brand.80',
-    },
-    scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    codeSyntax: {},
-  },
   'data-viz.progress.start': {
     name: 'data-viz/progress/start',
     id: 'VariableID:13034:396',
@@ -1802,6 +1779,22 @@ export const tokens = {
       '4738:0': 'cerberus.brand.40',
     },
     scopes: ['ALL_SCOPES'],
+    codeSyntax: {},
+  },
+  'data-viz.sequential.100': {
+    name: 'data-viz/sequential/100',
+    id: 'VariableID:6715:34660',
+    remote: false,
+    key: 'e0a9eef368b271e146fdd26972dbae7b9deb94aa',
+    variableCollectionId: 'VariableCollectionId:4328:23832',
+    resolvedType: 'COLOR',
+    description: '',
+    hiddenFromPublishing: false,
+    valuesByMode: {
+      '4328:3': 'cerberus.brand.10',
+      '4738:0': 'cerberus.brand.80',
+    },
+    scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     codeSyntax: {},
   },
   'data-viz.progress.end': {
@@ -1948,6 +1941,22 @@ export const tokens = {
     scopes: ['ALL_SCOPES'],
     codeSyntax: {},
   },
+  'drop-shadow.lg': {
+    name: 'drop-shadow/lg',
+    id: 'VariableID:8945:7710',
+    remote: false,
+    key: '49488f914a94f5b22676fdd5e0f63d99af5b2bec',
+    variableCollectionId: 'VariableCollectionId:4328:23832',
+    resolvedType: 'COLOR',
+    description: '',
+    hiddenFromPublishing: false,
+    valuesByMode: {
+      '4328:3': 'cerberus.drop-shadow.200',
+      '4738:0': 'cerberus.drop-shadow.1000',
+    },
+    scopes: ['EFFECT_COLOR'],
+    codeSyntax: {},
+  },
   'data-viz.progress.complete-end': {
     name: 'data-viz/progress/complete-end',
     id: 'VariableID:13697:8127',
@@ -1964,22 +1973,6 @@ export const tokens = {
     scopes: ['ALL_SCOPES'],
     codeSyntax: {},
     deletedButReferenced: true,
-  },
-  'drop-shadow.lg': {
-    name: 'drop-shadow/lg',
-    id: 'VariableID:8945:7710',
-    remote: false,
-    key: '49488f914a94f5b22676fdd5e0f63d99af5b2bec',
-    variableCollectionId: 'VariableCollectionId:4328:23832',
-    resolvedType: 'COLOR',
-    description: '',
-    hiddenFromPublishing: false,
-    valuesByMode: {
-      '4328:3': 'cerberus.drop-shadow.200',
-      '4738:0': 'cerberus.drop-shadow.1000',
-    },
-    scopes: ['EFFECT_COLOR'],
-    codeSyntax: {},
   },
   'gradient.charon-light.start': {
     name: 'gradient/charon-light/start',
@@ -2308,8 +2301,7 @@ export const tokens = {
     key: '8083c7ae9b36cd61ca365f7605cd171b02215aa4',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'for use on less prominent actionable borders, like input fields etc',
+    description: 'for use on less prominent actionable borders, like input fields etc',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.brand.20',
@@ -2409,8 +2401,7 @@ export const tokens = {
     key: '4cea705c939797d21607495a940900f8e54a05ef',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'Text color of hyperlinks throughout the site while hovering. ',
+    description: 'Text color of hyperlinks throughout the site while hovering. ',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.brand.50',
@@ -2426,8 +2417,7 @@ export const tokens = {
     key: 'ef884c304d36931b482f40c4325945a09bef5192',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'Text color of hyperlinks throughout the site that have been vistited',
+    description: 'Text color of hyperlinks throughout the site that have been vistited',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.brand.100',
