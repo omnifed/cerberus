@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/preset-cerberus-theme",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0",
   "description": "The official Cerberus theme preset for the Cerberus design system",
   "keywords": [
     "css",

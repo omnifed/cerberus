@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/figma",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0",
   "description": "Figma helpers for syncing to your project.",
   "keywords": [
     "design",

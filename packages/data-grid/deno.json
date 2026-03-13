@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/data-grid",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0",
   "license": "MIT",
   "exports": "./src/index.ts"
 }
