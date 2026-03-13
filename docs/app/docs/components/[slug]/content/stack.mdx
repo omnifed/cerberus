@@ -4,92 +4,47 @@ description: Used to layout its children in a vertical or horizontal stack.
 panda: https://panda-css.com/docs/concepts/patterns#stack
 ---
 
-```tsx
-import { Stack } from "styled-system/jsx"
-import { DecorativeBox } from "compositions/lib/decorative-box"
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/stack/static'
 
-const Demo = () => {
-  return (
-    <Stack>
-      <DecorativeBox h="20" />
-      <DecorativeBox h="20" />
-      <DecorativeBox h="20" />
-    </Stack>
-  )
-}
-```
+<CodeSnippet snippet={DEMOS.meta} />
 
 ## Usage
 
 By default, Stack applies `flex-direction: column` and `gap: 8px` to its
 children.
 
-```tsx
-import { HStack, Stack, VStack } from "styled-system/jsx";
-```
-
-```tsx
-<Stack>
-  <div />
-  <div />
-</Stack>
-```
-
-## Examples
+<CodePreview {...DEMOS.basic} />
 
 ### Horizontal
 
 Use the `direction` prop to change the direction of the stack.
 
-```tsx
-import { Stack } from "styled-system/jsx";
-import { DecorativeBox } from "compositions/lib/decorative-box";
-
-const Demo = () => {
-  return (
-    <Stack direction="horizontal" gap="md">
-      <DecorativeBox h="10" />
-      <DecorativeBox h="10" />
-      <DecorativeBox h="10" />
-    </Stack>
-  );
-};
-```
+<CodePreview {...DEMOS.horizontal} />
 
 ### HStack
 
 Alternatively, you can use the `HStack` to create a horizontal stack and align
 its children horizontally.
 
-```tsx
-import { HStack } from "styled-system/jsx";
-import { DecorativeBox } from "compositions/lib/decorative-box";
-const Demo = () => {
-  return (
-    <HStack gap="md">
-      <DecorativeBox h="10" />
-      <DecorativeBox h="10" />
-      <DecorativeBox h="10" />
-    </HStack>
-  );
-};
-```
+<CodePreview {...DEMOS.hstack} />
 
 ### VStack
 
 Use the `VStack` to create a vertical stack and align its children vertically.
 
-```tsx
-import { VStack } from "styled-system/jsx";
-import { DecorativeBox } from "compositions/lib/decorative-box";
+<CodePreview {...DEMOS.vstack} />
 
-const Demo = () => {
-  return (
-    <VStack gap="md">
-      <DecorativeBox h="10" />
-      <DecorativeBox h="10" />
-      <DecorativeBox h="10" />
-    </VStack>
-  );
-};
-```
+## Responsive Direction
+
+<CodePreview {...DEMOS.responsive} />
+
+## Props
+
+| Prop        | Type                                   | Description                           |
+| ----------- | -------------------------------------- | ------------------------------------- |
+| `direction` | `'row' \| 'column' \| ResponsiveValue` | The direction of the stack.           |
+| `gap`       | `CerberusSpacing`                      | The gap between the stack items.      |
+| `align`     | `CSSProperties['align-items']`         | The alignment of the stack items.     |
+| `justify`   | `CSSProperties['justify-content']`     | The justification of the stack items. |
