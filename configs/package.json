@@ -13,10 +13,7 @@
   "module": "index.mjs",
   "types": "index.d.ts",
   "scripts": {
-    "build:react": "bun ./src/bun-build.mjs",
-    "bump:versions": "bun ./src/bump-versions.mjs --stable",
-    "publish": "bun ./src/publish.mjs",
-    "publish:jsr": "bun ./src/publish-jsr.mjs"
+    "bump:versions": "bun ./src/bump-versions.mjs --stable"
   },
   "devDependencies": {
     "glob": "^13.0.1",

@@ -18,5 +18,5 @@ export const DEMOS = {
     id: 'quick-start.columns',
     context: 'data-grid',
   },
-  meta: `import { DataGrid } from '@cerberus/data-grid';`,
+  meta: `import { DataGrid, createColumnHelper } from '@cerberus/data-grid';`,
 }

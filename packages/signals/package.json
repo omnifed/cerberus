@@ -1,6 +1,6 @@
 {
   "name": "@cerberus-design/signals",
-  "version": "0.25.3",
+  "version": "1.0.0",
   "description": "The Cerberus Design React signals library.",
   "keywords": [
     "data grid",
@@ -12,6 +12,9 @@
   ],
   "license": "ISC",
   "author": "developers@omnifederal.com",
+  "repository": {
+    "url": "https://github.com/omnifed/cerberus"
+  },
   "files": [
     "dist",
     "package.json"

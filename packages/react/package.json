@@ -1,6 +1,6 @@
 {
   "name": "@cerberus-design/react",
-  "version": "0.25.3",
+  "version": "1.0.0",
   "description": "The Cerberus Design React component library.",
   "keywords": [
     "css",
@@ -16,9 +16,12 @@
   ],
   "license": "ISC",
   "author": "developers@omnifederal.com",
+  "repository": {
+    "url": "https://github.com/omnifed/cerberus"
+  },
   "files": [
     "dist",
-    "src/**/*"
+    "package.json"
   ],
   "type": "module",
   "sideEffects": false,
@@ -64,7 +67,8 @@
     }
   },
   "scripts": {
-    "build": "vite build",
+    "generate:info": "pnpm panda ship --outfile dist/panda.buildinfo.json",
+    "build": "vite build && pnpm generate:info",
     "clean": "rm -rf ./dist",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
@@ -73,7 +77,9 @@
     "@carbon/icons-react": "^11.76.0"
   },
   "devDependencies": {
+    "@cerberus/panda-preset": "workspace:*",
     "@internationalized/date": "^3.11.0",
+    "@pandacss/dev": "^1.9.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
@@ -85,7 +91,7 @@
     "vite-plugin-dts": "^4.5.4"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^1.8.2",
+    "@pandacss/dev": "^1.9.0",
     "react": "*",
     "react-dom": "*"
   },

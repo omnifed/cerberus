@@ -1,22 +1,20 @@
-import {
-  defineConfig,
-  definePreset,
-  type Config,
-  type Preset,
-} from '@pandacss/dev'
-import pandaPreset from '@pandacss/preset-panda'
 import { presetCerberusTheme } from '@cerberus/preset-cerberus-theme'
 import { type RawThemes } from '@cerberus/tokens'
-import { globalCss } from './globalCss'
+import { defineConfig, definePreset, type Config, type Preset } from '@pandacss/dev'
+import pandaPreset from '@pandacss/preset-panda'
 import { conditions } from './conditions'
-import { utilities } from './utilities'
+import { globalCss } from './globalCss'
 import { patterns } from './patterns'
+import { createStaticRecipeList } from './scripts'
 import { baseTheme } from './theme'
+import { utilities } from './utilities'
 
 /**
  * This module contains the Cerberus preset and configuration options.
  * @module
  **/
+
+const staticRecipes = createStaticRecipeList()
 
 const basePreset: Preset = definePreset({
   name: '@cerberus/preset-base',
@@ -48,6 +46,7 @@ const basePreset: Preset = definePreset({
         },
       },
     ],
+    recipes: staticRecipes,
   },
 })
 
@@ -120,9 +119,7 @@ export interface PresetOptions {
  * })
  * ```
  */
-export async function createCerberusPreset(
-  options?: PresetOptions,
-): Promise<Preset> {
+export async function createCerberusPreset(options?: PresetOptions): Promise<Preset> {
   return definePreset({
     ...basePreset,
 

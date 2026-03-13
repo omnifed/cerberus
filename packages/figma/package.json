@@ -1,9 +1,19 @@
 {
   "name": "@cerberus/figma",
-  "version": "0.25.3",
+  "version": "1.0.0",
   "description": "Figma helpers for syncing to your project.",
-  "sideEffects": false,
+  "keywords": [
+    "design",
+    "figma",
+    "tokens"
+  ],
+  "license": "ISC",
+  "author": "developers@omnifederal.com",
+  "files": [
+    "src/**/*"
+  ],
   "type": "module",
+  "sideEffects": false,
   "main": "src/index.ts",
   "module": "src/index.ts",
   "scripts": {
@@ -15,15 +25,5 @@
     "dotenv": "^17.2.3",
     "ora": "^9.3.0",
     "prettier": "3.8.1"
-  },
-  "files": [
-    "src/**/*"
-  ],
-  "keywords": [
-    "figma",
-    "design",
-    "tokens"
-  ],
-  "author": "developers@omnifederal.com",
-  "license": "ISC"
+  }
 }

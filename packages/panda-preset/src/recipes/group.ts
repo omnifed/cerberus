@@ -1,6 +1,6 @@
-import { defineRecipe } from '@pandacss/dev'
+import { defineRecipe, type RecipeConfig, type RecipeVariantRecord } from '@pandacss/dev'
 
-export const group = defineRecipe({
+export const group: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'group',
   description: 'The styles for the Group component',
   jsx: ['Group', 'ButtonGroup'],

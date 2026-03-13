@@ -133,24 +133,6 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
     store.toggleSort(column.id, e.shiftKey)
   }
 
-  // const handleMouseDown = (e: MouseEvent) => {
-  //   e.preventDefault()
-  //   e.stopPropagation()
-  //   const startX = e.clientX
-
-  //   const onMove = (me: globalThis.MouseEvent) => {
-  //     store.resizeColumn(column.id, me.clientX - startX)
-  //   }
-
-  //   const onUp = () => {
-  //     window.removeEventListener('mousemove', onMove)
-  //     window.removeEventListener('mouseup', onUp)
-  //   }
-
-  //   window.addEventListener('mousemove', onMove)
-  //   window.addEventListener('mouseup', onUp)
-  // }
-
   return (
     <HStack
       role="columnheader"
@@ -161,7 +143,7 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
       {...pinnedAttr}
       bgColor="page.bg.initial"
       borderBottom="1px solid"
-      borderColor="page.border.200"
+      borderBottomColor="page.border.200"
       h="full"
       justify="space-between"
       pos="relative"

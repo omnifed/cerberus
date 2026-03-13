@@ -28,7 +28,7 @@ data-heavy application.
 
 ### Dependency Requirements
 
-The `DataGrid` component requires the following dependencies to be installed in 
+The `DataGrid` component requires the following dependencies to be installed in
 your local project:
 
 - [`react`](https://react.dev/)
@@ -40,14 +40,16 @@ your local project:
 
 ## PandaCSS Setup
 
-Once you have installed the Data Grid, we recommend adding it to the `include` array in your `panda.config.ts` file:
+Once you have installed the Data Grid, update the `include` array in your `panda.config.ts` file:
 
-<CodeSnippet snippet={`export default createCerberusConfig({
+<CodeSnippet
+  snippet={`export default createCerberusConfig({
     include: [
-      './node_modules/@cerberus/data-grid/src/components/*.{ts,tsx}',
+      "./node_modules/@cerberus/data-grid/dist/panda.buildinfo.json",
       // ...your other stuff,
     ],
-})`} />
+})`}
+/>
 
 ## React
 
