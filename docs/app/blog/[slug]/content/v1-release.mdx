@@ -47,23 +47,29 @@ unless you want to customize the icon set.
 The result is a more streamlined installation experience that gets you up and running
 faster than ever before.
 
-View the [installation guide](/docs/get-started/installation) for more details.
+View the [new installation guide](/docs/get-started/installation) for more details.
 
 ## React Features
 
 In this release, we have quite a few improvements and additions to our React
-library. Let's start with a bang...
+library.
+
+Let's start with a bang...
 
 ### Breaking Changes
 
 We have had some deprecated APIs hanging around for close to a year now. In this
-release, we have removed them and replaced them with a more modern API.
+release, we have removed and/or replaced them with more modern APIs.
+
+**Changes**
 
 - All APIs that were marked as deprecated have been removed
 - `@dnd-kit` has been removed as a dependency as a whole
 
 This shouldn't affect anyone unless you have been ignoring the deprecation warnings
-for a very long time. :joy:
+for a very long time. :eyes:
+
+Now let's get to the good stuff...
 
 ### Group
 
@@ -102,12 +108,13 @@ Thus, we have added a `EnforceNoProperties` type that allows you easily achieve 
 <CodeSnippet snippet={`pinning?: (boolean & EnforceNoProperties<PinnedOptions>) | PinnedOptions`} />
 <br />
 
-This type will convert the Record passed into it to have a value of `never`.
+This type will convert the Record passed into it to have a values of `never`. The
+result is a more strict and reliable type environment.
 
 ### Other Improvements
 
-- Fix: Builds no longer leak internal dependencies
-- Fix: Builds are overall smaller and more efficient
+- Fix: React build no longer leaks internal dependencies
+- Fix: React-related builds are overall smaller
 - Fix: Some menus and buttons no longer trigger random `focus` outlines
 - Fix: `Button` and `Text` autocomplete style props correctly
 - Feat: Expose `MenuSelectionDetails` type
@@ -139,7 +146,7 @@ conditional styling:
 | `_leftPinned`  | `'&:is([data-pinned=left])'`                 |
 | `_rightPinned` | `'&:is([data-pinned=right])'`                |
 
-## Officially Cerberus
+## The Year of Cerberus
 
 Cerberus has always aimed for the long-term goal of creating an entire platform
 of high performant components and tools that help streamline web development.
@@ -199,7 +206,7 @@ _and still doesn't provide_.
 
 We will dive deeper into signals in our _next release_ when we launch it publicly.
 
-If you are interested in an early preview of signals, you can install it from npm:
+If you are interested in an early preview of signals, you can install it today:
 
 <BashTabs code="npm install @cerberus/signals@npm:@cerberus-design/signals" />
 

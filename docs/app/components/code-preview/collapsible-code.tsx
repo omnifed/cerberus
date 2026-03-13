@@ -13,6 +13,7 @@ export async function CollapsibleCode(props: PropsWithChildren<Props>) {
     <>
       <Scrollable
         hideScrollbar
+        bgColor="var(--shiki-background)"
         maxH="xl"
         maxW="full"
         pos="relative"

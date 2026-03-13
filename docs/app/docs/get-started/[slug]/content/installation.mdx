@@ -12,14 +12,14 @@ import { DEMOS as ContextDemos } from '@/app/docs/components/[slug]/components/c
 
 ## Setup Guide
 
-For a better developer experience, we recommend using either [Deno](https://deno.com/) 
-or [pnPm](https://pnpm.io/) as your package manager which has first class support for [JSR](https://jsr.io/) packages. 
+For a better developer experience, we recommend using either [Deno](https://deno.com/)
+or [pnPm](https://pnpm.io/) as your package manager which has first class support for [JSR](https://jsr.io/) packages.
 
 You can still use NPM, it will just require a bit more configuration.
 
 ### Step 1 - Setup Panda CSS
 
-Before you can use the Cerberus, you need to have Panda CSS installed and setup in 
+Before you can use the Cerberus, you need to have Panda CSS installed and setup in
 your project. **This is the preferred style engine for Cerberus**.
 
 Head over to the [Panda CSS installation guide](https://panda-css.com/docs/installation/nextjs) to get started.
@@ -28,8 +28,8 @@ Head over to the [Panda CSS installation guide](https://panda-css.com/docs/insta
 
 ### Step 2 - Setup the Cerberus Preset
 
-Now that Panda is installed, you need to install the Cerberus preset package. 
-We publish as many packages to [JSR](https://jsr.io/docs/using-packages) as possible 
+Now that Panda is installed, you need to install the Cerberus preset package.
+We publish as many packages to [JSR](https://jsr.io/docs/using-packages) as possible
 to ensure a better experience for developers.
 
 <BashTabs code="npx jsr add @cerberus/panda-preset" />
@@ -40,20 +40,19 @@ Next, update your PandaCSS config to utilize the Cerberus helpers:
 
 <br />
 
-The `createCerberusConfig` function adds the required Cerberus config settings 
+The `createCerberusConfig` function adds the required Cerberus config settings
 to PandaCSS along with any additional settings you pass into it.
 
-The `createCerberusPreset` function does the same except on the preset level. 
+The `createCerberusPreset` function does the same except on the preset level.
 
 The core preset comes with the base "cerberus" theme and PandaCSS presets built in:
 
- - **Core Preset**: Non-semantic tokens theme contents (recipes, utilities, conditions, etc.)
- - **PandaCSS Preset**: The required PandaCSS preset needed when customizing presets
- - **Cerberus Theme Preset**: The Cerberus theme
+- **Core Preset**: Non-semantic tokens theme contents (recipes, utilities, conditions, etc.)
+- **PandaCSS Preset**: The required PandaCSS preset needed when customizing presets
+- **Cerberus Theme Preset**: The Cerberus theme
 
- <NoteAdmonition description="If you are using the panda-preset there is no need to install the additional PanaCSS base presets. The core preset will set everything up on your behalf." />
- 
- ### Step 3 - Setup Fonts
+<NoteAdmonition description="If you are using the panda-preset there is no need to install the additional PanaCSS base presets. The core preset will set everything up on your behalf." />
+### Step 3 - Setup Fonts
 
 The Cerberus core preset includes a set of font helpers. In order to utilize them,
 your project needs to have your preferred fonts assigned to the following CSS variables:
@@ -62,7 +61,7 @@ your project needs to have your preferred fonts assigned to the following CSS va
 - `--font-sans`: Any other text style
 - `--font-mono`: Any monospace text style
 
-If using NextJS, you can simply import and assign these with the fonts package:
+If using NextJS fonts, you can simply import and assign these with the fonts package:
 
 <CodeSnippet snippet={DEMOS.fonts} />
 
@@ -73,13 +72,13 @@ Because Cerberus provides multiple themes and modes out of the box, you need to 
 To connect the Cerberus theme, add the required `data` attributes to your root `html` tag.
 
 <CodeSnippet snippet={DEMOS.layout} />
-<br/ >
+<br />
 
-**Important:** This is a good point to run the `panda codegen` command to 
-generate the Cerberus related additions. 
+**Important:** This is a good point to run the `panda codegen` command to
+generate the Cerberus related additions.
 
 Once this has been run, you can start using Cerberus styles and themes in your project.
-If you are interested in using the React library, continue 
+If you are interested in using the React library, continue
 
 ## Using React
 
@@ -91,14 +90,19 @@ To add the React library to your project, continue in the guide.
 
 Cerberus React assumes the `baseUrl` is setup to the root location in your `tsconfig.json` file.
 
-If you do not, or use a different location, you should include a path alias for 
+If you do not, or use a different location, you should include a path alias for
 the `styled-system/*` location. Not doing so will result in build errors.
 
 <CodeSnippet snippet={DEMOS.config} />
 
-<NoteAdmonition description={
-<>If using Deno, simply setup your import map to include the <code>styled-system/*</code> alias.</>
-} />
+<NoteAdmonition
+  description={
+    <>
+      If using Deno, simply setup your import map to include the <code>styled-system/\*</code>{' '}
+      alias.
+    </>
+  }
+/>
 
 ### Step 2 - Install Cerberus React
 
@@ -107,6 +111,12 @@ Now that your base path is setup, you can install Cerberus React.
 <BashTabs code="npm install @cerberus/react@npm:@cerberus-design/react" />
 
 <NoteAdmonition description="In the snippet above, we are simply creating an alias path for NPM to use of the name we prefer. For Deno users, we recommend adding an alias to your import map for consistency." />
+
+#### Update your `panda.config.ts`
+
+Add the build config to the `include` array so Panda can generate the styles.
+
+<CodeSnippet snippet={DEMOS.reactPanda} />
 
 ### Step 3 - Use the Cerberus Context Provider
 
@@ -124,12 +134,19 @@ However, if you prefer a different icon library, you can register it with **Cerb
 
 [Learn how to register custom icons with the Cerberus Context Provider](/docs/components/cerberus-context)
 
+### Optional - Multi-theme support
+
+If you want to support multiple themes, you can use the `presetAcheronTheme` and `getThemeName` helpers to configure your theme.
+
+<CodeSnippet snippet={DEMOS.multiTheme} />
+
 ### Tip: Add a Cerberus script
 
-To help make maintaining a breeze, add this new script to your `package.json` to 
+To help make maintaining a breeze, add these scripts to your `package.json` to
 use when you need to upgrade Cerberus:
 
 <CodeSnippet snippet={DEMOS.tips} />
+<br />
 
 Now you can update Cerberus and PandaCSS with a single command:
 
