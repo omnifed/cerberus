@@ -1,54 +1,32 @@
 ---
 title: Link Overlay
-description: Used to create an overlay that can be used as a link.
+description: Used to stretch a link over a container.
 panda: https://panda-css.com/docs/concepts/patterns#linkoverlay
 ---
 
-```tsx
-import { Box, LinkOverlay } from 'styled-system/jsx'
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/link-overlay/static'
 
-function App() {
-  return (
-    <Box pos="relative">
-      <img src="https://via.placeholder.com/150" alt="placeholder" />
-      <LinkOverlay href="#">
-        View more
-      </LinkOverlay>
-    </Box>
-  )
-}
-```
+<CodeSnippet snippet={DEMOS.meta} />
 
 ## Usage
 
-```tsx
-import { LinkOverlay } from "styled-system/jsx";
-```
+The link overlay pattern is used to expand a link's clickable area to its nearest
+parent with `position: relative`.
 
-```tsx
-<LinkOverlay href="https://example.com">
-  Click here
-</LinkOverlay>
-```
+<CodePreview {...DEMOS.basic} />
 
-## Examples
+## How it works
 
-### Basic Link Overlay
+This pattern replaces the `LinkOverlay` component with a `<a>` element, allowing
+the link to expand to its nearest parent and passing all props through.
 
-```tsx
-import { Box, LinkOverlay } from 'styled-system/jsx'
-function App() {
-  return (
-    <Box pos="relative">
-      <img src="https://via.placeholder.com/150" alt="placeholder" />
-      <LinkOverlay href="https://example.com">
-        View more
-      </LinkOverlay>
-    </Box>
-  )
-}
-```
+### Caveat
+
+One of the side-effects of this technique is that the content can't be "selectable"
+(i.e. with a pointing device), however, this seems to be pretty uncommon in web design.
 
 ## Props
 
-LinkOverlay accepts all CSS properties.
+LinkOverlay accepts all CSS properties and that of an `<a>` element.
