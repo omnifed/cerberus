@@ -47,7 +47,7 @@
     "@vercel/analytics": "^1.6.1",
     "autoprefixer": "^10.4.24",
     "babel-plugin-react-compiler": "^1.0.0",
-    "eslint": "^8",
+    "eslint": "^10",
     "eslint-config-next": "16.1.6",
     "eslint-import-resolver-typescript": "^4.4.4",
     "hast-util-to-jsx-runtime": "2.3.6",
