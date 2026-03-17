@@ -12,7 +12,8 @@ import { NoteAdmonition } from '@/app/components/Admonition'
 import {
   BasicTabsPreview,
   SecondaryTabsPreview,
-  CustomTabsPreview
+  CustomTabsPreview,
+  VerticalTabsPreview,
 } from '../components/tabs/static'
 
 ```ts
@@ -76,13 +77,13 @@ function SecondaryTabsPreview() {
 
 You can utilize the primitive components or the `css` prop to customize the tabs.
 
-| Component | Description |
-| --------- | ----------- |
-| TabsRoot    | The context provider for the tabs parts |
-| TabsList   | The list container of the tabs |
-| TabsTrigger   | The tab components of the tabs |
-| TabsIndicator   | The indicator of the active tabs state |
-| TabsContent | The panel container for the tabs. |
+| Component     | Description                             |
+| ------------- | --------------------------------------- |
+| TabsRoot      | The context provider for the tabs parts |
+| TabsList      | The list container of the tabs          |
+| TabsTrigger   | The tab components of the tabs          |
+| TabsIndicator | The indicator of the active tabs state  |
+| TabsContent   | The panel container for the tabs.       |
 
 <CodePreview preview={<CustomTabsPreview />}>
 ```tsx title="Custom tabs demo"
@@ -90,23 +91,23 @@ import { Tabs, For } from '@cerberus/react'
 import { Box } from 'styled-system/jsx'
 
 function CustomTabsPreview() {
-  const tabData = [
-    {
-      id: 'asphodel',
-      label: 'Asphodel',
-      content: 'A peaceful and quiet region of the underworld.',
-    },
-    {
-      id: 'elysium',
-      label: 'Elysium',
-      content: 'A paradise for the souls of the heroic and the virtuous.',
-    },
-    {
-      id: 'tartarus',
-      label: 'Tartarus',
-      content: 'A deep abyss used as a dungeon of torment and suffering.',
-    },
-  ]
+const tabData = [
+{
+id: 'asphodel',
+label: 'Asphodel',
+content: 'A peaceful and quiet region of the underworld.',
+},
+{
+id: 'elysium',
+label: 'Elysium',
+content: 'A paradise for the souls of the heroic and the virtuous.',
+},
+{
+id: 'tartarus',
+label: 'Tartarus',
+content: 'A deep abyss used as a dungeon of torment and suffering.',
+},
+]
 
     return (
       <Box w="1/2">
@@ -158,9 +159,44 @@ function CustomTabsPreview() {
           </For>
         </Tabs.Root>
       </Box>
+
+)
+}
+
+````
+</CodePreview>
+
+## Orientation
+
+Use the `orientation` prop to render tabs vertically. The `indicatorPlacement` prop can be set to "before" (it defaults to "after").
+
+<CodePreview preview={<VerticalTabsPreview />}>
+```tsx title="Vertical tabs demo"
+import { Tabs } from '@cerberus/react'
+import { Box } from 'styled-system/jsx'
+
+export function VerticalTabsPreview() {
+  return (
+    <Box w="full">
+      <Tabs.Root
+        defaultValue="overview"
+        orientation="vertical"
+        indicatorPlacement="before"
+      >
+        <Tabs.List>
+          <Tabs.Tab value="overview">Overview</Tabs.Tab>
+          <Tabs.Tab value="features">Features</Tabs.Tab>
+          <Tabs.Tab value="pricing">Pricing</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value="overview">Overview content</Tabs.Panel>
+        <Tabs.Panel value="features">Features content</Tabs.Panel>
+        <Tabs.Panel value="pricing">Pricing content</Tabs.Panel>
+      </Tabs.Root>
+    </Box>
   )
 }
-```
+````
+
 </CodePreview>
 
 ## API
@@ -169,9 +205,10 @@ function CustomTabsPreview() {
 
 The `Tabs` component is an abstraction of the primitives and accepts the following props:
 
-| Name     | Default | Description                                            |
-| -------- | ------- | ------------------------------------------------------ |
-| palette     |  `action`   | The color palette of the tabs                   |
+| Name               | Default  | Description                                                                                                                                                                 |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| palette            | `action` | The color palette of the tabs                                                                                                                                               |
+| indicatorPlacement | `after`  | The position of the active tab indicator. Placement follows the document flow: `before` renders at the start edge (top or left), `after` at the end edge (bottom or right). |
 
 The `Tabs.Root` component also accepts all the props of the [`TabsRoot` primitive props](https://ark-ui.com/react/docs/components/tabs#api-reference)
 
@@ -181,12 +218,12 @@ The `Tabs` API is an Object containing the full family of abstracted components.
 
 <NoteAdmonition description="Although the Tabs API is similar to the TabsParts, it returns abstractions of the primitives. The TabsParts return the primitives only." />
 
-| Name     | Description                            |
-| -------- | -------------------------------------- |
-| Root     | An abstraction of the `TabsRoot`.      |
-| List     | An abstraction of the `TabsList` and `TabsIndicator`.      |
-| Tab      | An abstraction of the `TabsTrigger`. |
-| Panel    | An abstraction of the `TabsContent`. |
+| Name  | Description                                           |
+| ----- | ----------------------------------------------------- |
+| Root  | An abstraction of the `TabsRoot`.                     |
+| List  | An abstraction of the `TabsList` and `TabsIndicator`. |
+| Tab   | An abstraction of the `TabsTrigger`.                  |
+| Panel | An abstraction of the `TabsContent`.                  |
 
 ### Parts
 
@@ -194,10 +231,10 @@ The `TabsParts` API is an Object containing the full family of components.
 
 <NoteAdmonition description="It is best to only use the TabsParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
-| Name     | Description                            |
-| -------- | -------------------------------------- |
-| Root     | The `TabsRoot` component which is the Provider for the family. |
-| List     | The `TabsList` component which is the container for the tabs. |
-| Trigger | The `TabsTrigger` component which is the tab component. |
-| Content  | The `TabsContent` component which is the panel container. |
-| Indicator  | The `TabsIndicator` component which displays based on the active state. |
+| Name      | Description                                                             |
+| --------- | ----------------------------------------------------------------------- |
+| Root      | The `TabsRoot` component which is the Provider for the family.          |
+| List      | The `TabsList` component which is the container for the tabs.           |
+| Trigger   | The `TabsTrigger` component which is the tab component.                 |
+| Content   | The `TabsContent` component which is the panel container.               |
+| Indicator | The `TabsIndicator` component which displays based on the active state. |

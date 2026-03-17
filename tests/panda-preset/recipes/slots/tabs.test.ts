@@ -19,6 +19,7 @@ describe('tabs recipe', () => {
     expect(tabs.base?.list).toMatchObject({
       borderBottom: '1px solid',
       borderBottomColor: 'action.border.100',
+      display: 'flex',
       gap: '0',
       position: 'relative',
       w: 'full',
@@ -57,7 +58,12 @@ describe('tabs recipe', () => {
       _motionSafe: {
         transition: 'all 200ms ease-in-out',
         _after: {
-          transitionProperty: 'height',
+          transitionProperty: 'height, width',
+          transitionDuration: '200ms',
+          transitionTimingFunction: 'ease-in-out',
+        },
+        _before: {
+          transitionProperty: 'height, width',
           transitionDuration: '200ms',
           transitionTimingFunction: 'ease-in-out',
         },
@@ -73,7 +79,7 @@ describe('tabs recipe', () => {
         right: '0',
         h: '0',
         w: 'full',
-        willChange: 'height',
+        willChange: 'height, width',
         zIndex: '-1',
       },
       _hover: {
@@ -86,6 +92,11 @@ describe('tabs recipe', () => {
         color: 'colorPalette.text.200',
         _before: {
           h: '3px',
+        },
+        _hover: {
+          _after: {
+            h: '0',
+          },
         },
       },
     })
@@ -111,8 +122,9 @@ describe('tabs recipe', () => {
       animationDelay: '200ms',
       animationFillMode: 'forwards',
       bgColor: 'colorPalette.border.initial',
-      bottom: 0,
       h: '4px',
+      insetBlockEnd: 'var(--tabs-indicator-block-end)',
+      insetBlockStart: 'var(--tabs-indicator-block-start)',
       opacity: 0,
       w: 'var(--width)',
       zIndex: 'decorator',
@@ -137,6 +149,7 @@ describe('tabs recipe', () => {
   test('should have a default variant', () => {
     expect(tabs.defaultVariants).toMatchObject({
       palette: 'action',
+      indicatorPlacement: 'after',
     })
   })
 })

@@ -19,15 +19,34 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   base: {
     root: {
+      '--tabs-indicator-block-end': '0',
+      '--tabs-indicator-block-start': 'auto',
+      '--tabs-indicator-inline-end': 'auto',
+      '--tabs-indicator-inline-start': '0',
       rounded: 'md',
       w: 'full',
+      _vertical: {
+        alignItems: 'stretch',
+        display: 'flex',
+        gap: '4',
+      },
     },
     list: {
       borderBottom: '1px solid',
       borderBottomColor: 'action.border.100',
+      display: 'flex',
       gap: '0',
       position: 'relative',
       w: 'full',
+      _vertical: {
+        alignItems: 'stretch',
+        borderBottom: 'none',
+        borderRight: '1px solid',
+        borderRightColor: 'action.border.100',
+        flexDirection: 'column',
+        flexShrink: 0,
+        w: 'auto',
+      },
     },
     trigger: {
       alignItems: 'center',
@@ -45,8 +64,13 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
       _motionSafe: {
         transition: 'all 200ms ease-in-out',
         _after: {
-          transitionProperty: 'height',
           transitionDuration: '200ms',
+          transitionProperty: 'height, width',
+          transitionTimingFunction: 'ease-in-out',
+        },
+        _before: {
+          transitionDuration: '200ms',
+          transitionProperty: 'height, width',
           transitionTimingFunction: 'ease-in-out',
         },
       },
@@ -61,7 +85,7 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
         right: '0',
         h: '0',
         w: 'full',
-        willChange: 'height',
+        willChange: 'height, width',
         zIndex: '-1',
       },
       ...focusStates,
@@ -83,11 +107,50 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
           },
         },
       },
+      _vertical: {
+        borderTopLeftRadius: '0',
+        borderTopRightRadius: '0',
+        justifyContent: 'flex-start',
+        textAlign: 'left',
+        w: 'full',
+        _after: {
+          borderTopLeftRadius: '0',
+          borderTopRightRadius: '0',
+          bottom: 'auto',
+          h: 'full',
+          left: '0',
+          right: 'auto',
+          top: '0',
+          w: '0',
+        },
+        _hover: {
+          _after: {
+            h: 'full',
+            w: 'full',
+          },
+        },
+        _selected: {
+          _before: {
+            h: 'full',
+            w: '3px',
+          },
+          _hover: {
+            _after: {
+              h: 'full',
+              w: '0',
+            },
+          },
+        },
+      },
     },
     content: {
       rounded: 'md',
       w: 'full',
       ...focusStates,
+      _vertical: {
+        flex: '1',
+        minW: '0',
+      },
     },
     indicator: {
       animationName: 'fadeIn',
@@ -97,9 +160,19 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
       bgColor: 'colorPalette.border.initial',
       bottom: 0,
       h: '4px',
+      insetBlockEnd: 'var(--tabs-indicator-block-end)',
+      insetBlockStart: 'var(--tabs-indicator-block-start)',
       opacity: 0,
       w: 'var(--width)',
       zIndex: 'decorator',
+      _vertical: {
+        h: 'var(--height)',
+        insetBlockEnd: 'auto',
+        insetBlockStart: 'var(--top)',
+        insetInlineEnd: 'var(--tabs-indicator-inline-end)',
+        insetInlineStart: 'var(--tabs-indicator-inline-start)',
+        w: '4px',
+      },
     },
   },
 
@@ -112,9 +185,28 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
         root: secondaryAction,
       },
     },
+    indicatorPlacement: {
+      before: {
+        root: {
+          '--tabs-indicator-block-end': 'auto',
+          '--tabs-indicator-block-start': '0',
+          '--tabs-indicator-inline-end': 'auto',
+          '--tabs-indicator-inline-start': '0',
+        },
+      },
+      after: {
+        root: {
+          '--tabs-indicator-block-end': '0',
+          '--tabs-indicator-block-start': 'auto',
+          '--tabs-indicator-inline-end': '0',
+          '--tabs-indicator-inline-start': 'auto',
+        },
+      },
+    },
   },
 
   defaultVariants: {
     palette: 'action',
+    indicatorPlacement: 'after',
   },
 })
