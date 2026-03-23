@@ -105,8 +105,8 @@ export const collection = {
     'VariableID:6742:34976',
     'VariableID:6742:34977',
     'VariableID:9057:6107',
-    'VariableID:11926:1771',
     'VariableID:6742:34979',
+    'VariableID:11926:1771',
     'VariableID:9057:6105',
     'VariableID:9057:6106',
     'VariableID:6742:34980',
@@ -123,8 +123,8 @@ export const collection = {
     'VariableID:6750:4357',
     'VariableID:6750:4718',
     'VariableID:13697:8126',
-    'VariableID:13697:8127',
     'VariableID:8945:7710',
+    'VariableID:13697:8127',
     'VariableID:12503:130',
     'VariableID:12503:131',
     'VariableID:12503:132',
@@ -262,8 +262,7 @@ export const tokens = {
     key: '2d1371f8a9cd7e1b2193ad25ee8f7416d8fcfc44',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'Text color of hyperlinks throughout the site that have been visited',
+    description: 'Text color of hyperlinks throughout the site that have been visited',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.neutral.60',
@@ -506,8 +505,7 @@ export const tokens = {
     key: 'b10a14fc19181b892852fdeb10ad331b4f9548d0',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'for use on less prominent actionable borders, like input fields etc',
+    description: 'for use on less prominent actionable borders, like input fields etc',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.success.50',
@@ -1212,8 +1210,7 @@ export const tokens = {
     key: '0961f92da3d1345a3c3f3d1a6a652a31ef39a097',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'for use on less prominent actionable borders, like input fields etc',
+    description: 'for use on less prominent actionable borders, like input fields etc',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.neutral.40',
@@ -1647,22 +1644,6 @@ export const tokens = {
     scopes: ['ALL_SCOPES'],
     codeSyntax: {},
   },
-  'info.text.static': {
-    name: 'text/info/static',
-    id: 'VariableID:11926:1771',
-    remote: false,
-    key: 'd270969d9a74ffe844d2e6bdaf6551e90fdf6955',
-    variableCollectionId: 'VariableCollectionId:4328:23832',
-    resolvedType: 'COLOR',
-    description: 'For use when a text color will not change between modes',
-    hiddenFromPublishing: false,
-    valuesByMode: {
-      '4328:3': 'info.cerberus.60',
-      '4738:0': 'info.cerberus.60',
-    },
-    scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    codeSyntax: {},
-  },
   'info.surface.initial': {
     name: 'surface/info/initial',
     id: 'VariableID:6742:34979',
@@ -1678,6 +1659,22 @@ export const tokens = {
       '4738:0': 'info.cerberus.80',
     },
     scopes: ['FRAME_FILL'],
+    codeSyntax: {},
+  },
+  'info.text.static': {
+    name: 'text/info/static',
+    id: 'VariableID:11926:1771',
+    remote: false,
+    key: 'd270969d9a74ffe844d2e6bdaf6551e90fdf6955',
+    variableCollectionId: 'VariableCollectionId:4328:23832',
+    resolvedType: 'COLOR',
+    description: 'For use when a text color will not change between modes',
+    hiddenFromPublishing: false,
+    valuesByMode: {
+      '4328:3': 'info.cerberus.60',
+      '4738:0': 'info.cerberus.60',
+    },
+    scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     codeSyntax: {},
   },
   'info.surface.100': {
@@ -1948,6 +1945,22 @@ export const tokens = {
     scopes: ['ALL_SCOPES'],
     codeSyntax: {},
   },
+  'drop-shadow.lg': {
+    name: 'drop-shadow/lg',
+    id: 'VariableID:8945:7710',
+    remote: false,
+    key: '49488f914a94f5b22676fdd5e0f63d99af5b2bec',
+    variableCollectionId: 'VariableCollectionId:4328:23832',
+    resolvedType: 'COLOR',
+    description: '',
+    hiddenFromPublishing: false,
+    valuesByMode: {
+      '4328:3': 'cerberus.drop-shadow.200',
+      '4738:0': 'cerberus.drop-shadow.1000',
+    },
+    scopes: ['EFFECT_COLOR'],
+    codeSyntax: {},
+  },
   'data-viz.progress.complete-end': {
     name: 'data-viz/progress/complete-end',
     id: 'VariableID:13697:8127',
@@ -1964,22 +1977,6 @@ export const tokens = {
     scopes: ['ALL_SCOPES'],
     codeSyntax: {},
     deletedButReferenced: true,
-  },
-  'drop-shadow.lg': {
-    name: 'drop-shadow/lg',
-    id: 'VariableID:8945:7710',
-    remote: false,
-    key: '49488f914a94f5b22676fdd5e0f63d99af5b2bec',
-    variableCollectionId: 'VariableCollectionId:4328:23832',
-    resolvedType: 'COLOR',
-    description: '',
-    hiddenFromPublishing: false,
-    valuesByMode: {
-      '4328:3': 'cerberus.drop-shadow.200',
-      '4738:0': 'cerberus.drop-shadow.1000',
-    },
-    scopes: ['EFFECT_COLOR'],
-    codeSyntax: {},
   },
   'gradient.charon-light.start': {
     name: 'gradient/charon-light/start',
@@ -2308,8 +2305,7 @@ export const tokens = {
     key: '8083c7ae9b36cd61ca365f7605cd171b02215aa4',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'for use on less prominent actionable borders, like input fields etc',
+    description: 'for use on less prominent actionable borders, like input fields etc',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.brand.20',
@@ -2409,8 +2405,7 @@ export const tokens = {
     key: '4cea705c939797d21607495a940900f8e54a05ef',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'Text color of hyperlinks throughout the site while hovering. ',
+    description: 'Text color of hyperlinks throughout the site while hovering. ',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.brand.50',
@@ -2426,8 +2421,7 @@ export const tokens = {
     key: 'ef884c304d36931b482f40c4325945a09bef5192',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'Text color of hyperlinks throughout the site that have been vistited',
+    description: 'Text color of hyperlinks throughout the site that have been vistited',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.brand.100',
