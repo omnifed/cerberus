@@ -111,7 +111,7 @@ export const nodes = {
         x: -4152.52001953125,
         y: -508.0400085449219,
         width: 220.3515625,
-        height: 42.67999267578125,
+        height: 42.680023193359375,
       },
       constraints: { vertical: 'TOP', horizontal: 'LEFT' },
       characters: 'Display md',
@@ -223,8 +223,7 @@ export const nodes = {
         name: 'display/sm',
         styleType: 'TEXT',
         remote: false,
-        description:
-          'bold text used in things like marketing cards, data viz etc',
+        description: 'bold text used in things like marketing cards, data viz etc',
       },
     },
   },
@@ -824,7 +823,6 @@ export const nodes = {
       boundVariables: {
         fills: [{ type: 'VARIABLE_ALIAS', id: 'VariableID:6554:4910' }],
         fontWeight: [{ type: 'VARIABLE_ALIAS', id: 'VariableID:6957:25391' }],
-        fontFamily: [{ type: 'VARIABLE_ALIAS', id: 'VariableID:22119:7399' }],
         fontSize: [{ type: 'VARIABLE_ALIAS', id: 'VariableID:6959:25443' }],
       },
       blendMode: 'PASS_THROUGH',
@@ -1031,8 +1029,7 @@ export const nodes = {
         name: 'label/sm',
         styleType: 'TEXT',
         remote: false,
-        description:
-          'default lable for things like radio buttons, input fields etc',
+        description: 'default lable for things like radio buttons, input fields etc',
       },
     },
   },
@@ -1518,9 +1515,9 @@ export const nodes = {
       absoluteBoundingBox: { x: -2314, y: -426, width: 78, height: 20 },
       absoluteRenderBounds: {
         x: -2313.0400390625,
-        y: -419.8599853515625,
+        y: -419.8600158691406,
         width: 76.033203125,
-        height: 11.079986572265625,
+        height: 11.08001708984375,
       },
       constraints: { vertical: 'TOP', horizontal: 'LEFT' },
       characters: 'mono-sm',
