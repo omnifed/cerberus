@@ -17,7 +17,7 @@
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/signals": "workspace:*",
     "@cerberus/tokens": "workspace:*",
-    "@docsearch/css": "^4.6.0",
+    "@docsearch/css": "^4.6.2",
     "@docsearch/react": "^4.6.0",
     "@tsparticles/engine": "^3.9.1",
     "@tsparticles/react": "^3.0.0",
