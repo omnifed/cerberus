@@ -16,7 +16,7 @@
     "bump:versions": "bun ./src/bump-versions.mjs --stable"
   },
   "devDependencies": {
-    "glob": "^13.0.1",
+    "glob": "^13.0.6",
     "util": "^0.12.5"
   },
   "peerDependencies": {
