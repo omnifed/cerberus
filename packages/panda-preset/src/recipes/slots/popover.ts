@@ -68,22 +68,19 @@ export const popover: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
     },
     header: {
-      paddingInline: 'var(--popover-padding)',
-      paddingTop: 'var(--popover-padding)',
+      px: 'var(--popover-padding)',
+      pt: 'var(--popover-padding)',
     },
     body: {
-      padding: 'var(--popover-padding)',
+      p: 'var(--popover-padding)',
       flex: '1',
     },
     footer: {
-      display: 'flex',
       alignItems: 'center',
-      paddingInline: 'var(--popover-padding)',
-      paddingBottom: 'var(--popover-padding)',
+      display: 'flex',
+      px: 'var(--popover-padding)',
+      pb: 'var(--popover-padding)',
     },
-    trigger: {},
-    anchor: {},
-    positioner: {},
     arrow: {
       '--arrow-size': '0.75rem',
       '--arrow-background': 'var(--popover-bg)',
