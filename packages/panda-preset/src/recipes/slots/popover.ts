@@ -82,12 +82,15 @@ export const popover: Partial<SlotRecipeConfig> = defineSlotRecipe({
       pb: 'var(--popover-padding)',
     },
     arrow: {
-      '--arrow-size': '0.75rem',
       '--arrow-background': 'var(--popover-bg)',
+      '--arrow-shadow-color': 'colors.page.border.100',
+      '--arrow-size': '0.75rem',
     },
     arrowTip: {
-      borderTopWidth: '1px',
+      borderLeftColor: 'var(--arrow-shadow-color)',
       borderLeftWidth: '1px',
+      borderTopColor: 'var(--arrow-shadow-color)',
+      borderTopWidth: '1px',
     },
     closeTrigger: {
       position: 'absolute',

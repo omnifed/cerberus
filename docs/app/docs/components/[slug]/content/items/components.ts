@@ -151,6 +151,12 @@ export const components = [
     href: '/docs/components/pin-input',
   },
   {
+    id: '1.3.17c',
+    label: 'Popover',
+    slug: 'popover',
+    href: '/docs/components/popover',
+  },
+  {
     id: '1.3.18',
     label: 'Progress',
     slug: 'progress',

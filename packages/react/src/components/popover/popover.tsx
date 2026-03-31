@@ -1,36 +1,40 @@
 import { type PropsWithChildren, type ReactNode } from 'react'
-import { splitProps } from '../../utils/index'
 import { Show } from '../show/show'
 import { PopoverParts } from './parts'
+import { PlacementContainer } from './placement-container'
 import { PopoverRootProps } from './primitives'
 
 export interface PopoverBaseProps extends PopoverRootProps {
   trigger: ReactNode
-  anchor?: ReactNode
+  usage?: 'default' | 'arrow'
 }
 
 export type PopoverProps = PropsWithChildren<PopoverBaseProps>
 
-function PopoverRoot(props: PopoverRootProps) {
-  const [slots, variantProps, ...rootProps] = splitProps(
-    props,
-    ['trigger', 'anchor', 'children'],
-    ['size'],
-  )
+function PopoverRoot(props: PopoverProps) {
+  const { trigger, anchor, children, size, usage, ...rootProps } = props
+  const slots = { trigger, anchor, children }
+  const variantProps = { size, usage }
 
   return (
     <PopoverParts.Root {...rootProps}>
       <PopoverParts.Trigger asChild>{slots.trigger}</PopoverParts.Trigger>
 
-      <Show when={slots.anchor}>
-        {() => <PopoverParts.Anchor>{slots.anchor}</PopoverParts.Anchor>}
-      </Show>
-
-      <PopoverParts.Positioner>
+      <PlacementContainer
+        positioning={(props as unknown as PopoverRootProps).positioning}
+      >
         <PopoverParts.Content size={variantProps.size}>
+          <Show when={variantProps.usage === 'arrow'}>
+            {() => (
+              <PopoverParts.Arrow>
+                <PopoverParts.ArrowTip />
+              </PopoverParts.Arrow>
+            )}
+          </Show>
+
           {slots.children}
         </PopoverParts.Content>
-      </PopoverParts.Positioner>
+      </PlacementContainer>
     </PopoverParts.Root>
   )
 }

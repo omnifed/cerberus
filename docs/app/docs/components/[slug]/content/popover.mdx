@@ -1,0 +1,146 @@
+---
+title: Popover
+description: Used to show detailed information inside a pop-up.
+npm: '@cerberus-design/react'
+source: 'components/popover'
+recipe: 'slots/popover.ts'
+ark: 'popover'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { DEMOS } from '../components/popover/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
+
+## Usage
+
+The `Popover` component is a controlled abstraction of the primitive parts that can be used to show or hide content.
+
+<CodePreview {...DEMOS.basic} />
+
+## Helper Slots
+
+For advanced layouts, you can utilize the helper slots to streamline styling. Layout related slots correspond to the `size` variant provided.
+
+<CodePreview {...DEMOS.slots} />
+
+### Slots
+
+The following slots are available on the `Popover` object:
+
+| Component     | Description                                    |
+| ------------- | ---------------------------------------------- |
+| `Header`      | Useful for controlling header block styles.    |
+| `Body`        | Useful for controlling "body" block styles.    |
+| `Footer`      | Useful for controlling footer block styles.    |
+| `Title`       | Useful for controlling heading-related styles. |
+| `Description` | Useful for controlling body-related styles.    |
+
+## Sizes
+
+The `Popover` component supports sizes: `xs` to `lg`. This changes the padding of the layout slots.
+
+<CodePreview {...DEMOS.size} />
+
+## Arrow
+
+Set the `usage` prop to `arrow` to show an arrow tip.
+
+<CodePreview {...DEMOS.arrow} />
+
+## Positioning
+
+Use the `positioning.placement` prop to configure the underlying `floating-ui` positioning logic.
+
+<CodePreview {...DEMOS.placement} />
+
+## Lazy Mounting
+
+Use the `lazyMounted` and/or `unmountOnExit` prop to defer the mounting of the popover content until it's opened.
+
+<CodePreview {...DEMOS.lazy} />
+
+## Nesting
+
+Popovers can be nested within each other. Each nested popover maintains its own open state and positioning.
+
+<CodePreview {...DEMOS.nested} />
+
+## Anchor
+
+Use `PopoverParts.Anchor` to position the popover relative to a different element than the trigger.
+
+<NoteAdmonition description="Anchor positioning requires the use of PopoverParts since there needs to be an entire layout adjustment." />
+
+<CodePreview {...DEMOS.anchor} />
+
+## Customizing
+
+You can customize the `Popover` using style props and data selectors on any slot primitve.
+
+<CodePreview {...DEMOS.custom} />
+
+## Primitives
+
+The layers of the Accordion which can be used to create a fully custom solution.
+
+| Component              | Description                                                        |
+| ---------------------- | ------------------------------------------------------------------ |
+| AccordionRoot          | The main container for the accordion items.                        |
+| AccordionItem          | Represents a single item within the accordion.                     |
+| AccordionItemTrigger   | The trigger element that toggles the visibility of the content.    |
+| AccordionItemContent   | The content that is shown or hidden when the trigger is activated. |
+| AccordionItemIndicator | An optional indicator to show the state of the accordion item.     |
+
+### Data Attributes
+
+The primitives additionally use the following data attributes for custom styling:
+
+| Name         | Value            | Description                            |
+| ------------ | ---------------- | -------------------------------------- |
+| `data-scope` | `accordion`      | The scope of the components.           |
+| `data-part`  | `root`           | The root layer of the scope.           |
+| `data-part`  | `item`           | The item layer of the scope.           |
+| `data-part`  | `item-trigger`   | The item trigger layer of the scope.   |
+| `data-part`  | `item-content`   | The item content layer of the scope.   |
+| `data-part`  | `item-indicator` | The item indicator layer of the scope. |
+
+## API
+
+### Accordion
+
+The `Accordion` component is an abstraction of the primitives and accepts the following props:
+
+| Name | Default | Description                     |
+| ---- | ------- | ------------------------------- |
+| size | `lg`    | The size of the accordion item. |
+
+The Accordion is an abstraction of the [Root component](https://ark-ui.com/react/docs/components/accordion#api-reference).
+
+### AccordionItemGroup
+
+The `AccordionItemGroup` component is an abstraction of the primitives and accepts the following props:
+
+| Name              | Default | Description                                      |
+| ----------------- | ------- | ------------------------------------------------ |
+| heading           |         | The heading of the accordion item.               |
+| value             |         | The value of the accordion item. Must be unique. |
+| indicatorPosition | `end`   | The position of the indicator.                   |
+
+The AccordionItemGroup is an abstraction of the [Item component](https://ark-ui.com/react/docs/components/accordion#api-reference).
+
+### Parts
+
+The `AccordionParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the AccordionParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name          | Description                                                                                            |
+| ------------- | ------------------------------------------------------------------------------------------------------ |
+| Root          | The `AccordionRoot` component which is the Provider for the family.                                    |
+| Item          | The `AccordionItem` component which displays the item.                                                 |
+| ItemTrigger   | The `AccordionItemTrigger` component which is the visual title that triggers the content to open.      |
+| ItemContent   | The `AccordionItemContent` component which displays the content that is revealed from the ItemTrigger. |
+| ItemIndicator | The `AccordionItemIndicator` component which displays the indicator (chevron) icon.                    |
