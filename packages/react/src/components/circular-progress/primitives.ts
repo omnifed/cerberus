@@ -13,7 +13,6 @@ import {
   type CircularProgressVariantProps,
 } from 'styled-system/recipes'
 import {
-  cerberus,
   createCerberusPrimitive,
   type CerberusPrimitiveProps,
 } from '../../system/index'
@@ -34,23 +33,18 @@ export const CircularProgressRoot = withSlotRecipe(Progress.Root, 'root')
 
 // Label
 
-export type CircularProgressLabelProps =
-  CerberusPrimitiveProps<ProgressLabelProps>
+export type CircularProgressLabelProps = CerberusPrimitiveProps<ProgressLabelProps>
 export const CircularProgressLabel = withSlotRecipe(Progress.Label, 'label')
 
 // ValueText
 
 export type CircularProgressValueTextProps =
   CerberusPrimitiveProps<ProgressValueTextProps>
-export const CircularProgressValueText = withSlotRecipe(
-  Progress.ValueText,
-  'valueText',
-)
+export const CircularProgressValueText = withSlotRecipe(Progress.ValueText, 'valueText')
 
 // Circle
 
-export type CircularProgressCircleProps =
-  CerberusPrimitiveProps<ProgressCircleProps>
+export type CircularProgressCircleProps = CerberusPrimitiveProps<ProgressCircleProps>
 export const CircularProgressCircle = withSlotRecipe(Progress.Circle, 'circle')
 
 // CircleTrack
@@ -74,7 +68,4 @@ export const CircularProgressCircleRange = withSlotRecipe(
 // InfoGroup
 
 export type CircularProgressInfoGroupProps = HTMLArkProps<'div'>
-export const CircularProgressInfoGroup = withSlotRecipe(
-  cerberus.div,
-  'infoGroup',
-)
+export const CircularProgressInfoGroup = withSlotRecipe('div', 'infoGroup')
