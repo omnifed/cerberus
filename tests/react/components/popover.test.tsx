@@ -14,8 +14,24 @@ describe('Popover', () => {
         <Popover.Body>This is content</Popover.Body>
       </Popover>,
     )
-    screen.debug()
     expect(screen.getByText('This is content')).toBeInTheDocument()
+  })
+
+  test('appended components are available', () => {
+    render(
+      <Popover trigger={<button>Open</button>}>
+        <Popover.Title>title</Popover.Title>
+        <Popover.Description>description</Popover.Description>
+        <Popover.Header>header</Popover.Header>
+        <Popover.Body>body</Popover.Body>
+        <Popover.Footer>footer</Popover.Footer>
+      </Popover>,
+    )
+    expect(screen.getByText(/title/i)).toBeInTheDocument()
+    expect(screen.getByText(/description/i)).toBeInTheDocument()
+    expect(screen.getByText(/header/i)).toBeInTheDocument()
+    expect(screen.getByText(/body/i)).toBeInTheDocument()
+    expect(screen.getByText(/footer/i)).toBeInTheDocument()
   })
 
   test('renders a custom build', () => {
