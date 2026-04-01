@@ -1,84 +1,68 @@
 'use client'
 
+import { Box, Divider, Scrollable, Stack } from '@/styled-system/jsx'
+import { ArrowUpRight, LogoGithub } from '@carbon/icons-react'
+import { cerberus, For, Text } from '@cerberus-design/react'
+import {
+  createComputed,
+  createQuery,
+  createSignal,
+  useQuery,
+} from '@cerberus-design/signals'
 import { focusStates } from '@cerberus/panda-preset'
+import Link, { type LinkProps } from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useEffect, useMemo } from 'react'
 import { css } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
-import Link, { type LinkProps } from 'next/link'
-import { useLayoutEffect, useMemo, useState } from 'react'
-import { Box, Divider } from '@/styled-system/jsx'
-import { usePathname } from 'next/navigation'
-import { cerberus, For } from '@cerberus-design/react'
-import { ArrowUpRight, LogoGithub } from '@carbon/icons-react'
 
-interface OverrideHeading {
-  href: string
-}
+const [url, setUrl] = createSignal<string>('')
 
-interface NodeOverride {
-  href: {
-    nodeValue: string
+const query = createQuery(url, async (currentUrl) => {
+  if (!currentUrl) return []
+  const response = await fetch(currentUrl)
+
+  if (!response.ok) {
+    console.error(`Failed to fetch MDX: ${response.status}`)
+    return []
   }
-}
+
+  // MUST parse as text(), MDX is not JSON
+  const mdxText = await response.text()
+  return parseHeadingsFromMDX(mdxText)
+})
 
 interface HeadingLink {
   id: string
   label: string
   path: string
+  level: number // Added to track hierarchy
 }
 
 export default function OnThisPage() {
   const pathname = usePathname()
-  const [links, setLinks] = useState<HeadingLink[]>([])
+  const data = useQuery(query)
 
   const editPageLink = useMemo(() => {
     const base = 'https://github.com/omnifed/cerberus/blob/main/docs/app'
-    const directory =
-      pathname?.split('/').slice(0, -1).join('/') ?? 'docs/components'
+    const directory = pathname?.split('/').slice(0, -1).join('/') ?? 'docs/components'
     const file = pathname?.split('/').pop() || 'index'
     const githubPathname = `${directory}/%5Bslug%5D/content/${file}`
-    return `${base}${githubPathname}.mdx`
-  }, [pathname])
-
-  useLayoutEffect(() => {
-    if (pathname) {
-      // Clear the existing links
-      setLinks([])
-
-      // Find all headings with the class 'heading' in the document
-      // and extract their href attributes and text content
-      // This assumes that the headings are rendered in the document
-      // and have the class 'heading' applied to them.
-      // Note: This will only work if the headings are rendered in the document
-      // and not in a separate component that is not mounted yet.
-      const nodeList = document.querySelectorAll('a.heading')
-
-      for (let i = 0; i < nodeList.length; i++) {
-        const heading = nodeList[i]
-        const overrideHeading = heading as unknown as OverrideHeading
-        const attributes = heading.attributes as unknown as NodeOverride
-        setLinks((prevLinks) => [
-          ...prevLinks,
-          {
-            id: attributes.href.nodeValue ?? '#',
-            label: heading.textContent ?? '',
-            path: overrideHeading.href,
-          },
-        ])
-      }
+    return {
+      rawUrl: `https://raw.githubusercontent.com/omnifed/cerberus/refs/heads/main/docs/app${githubPathname}.mdx`,
+      editUrl: `${base}${githubPathname}.mdx`,
     }
   }, [pathname])
 
+  const links = createComputed<HeadingLink[]>(() => {
+    return Array.isArray(data) ? data : []
+  })
+
+  useEffect(() => setUrl(editPageLink.rawUrl), [editPageLink])
+
   return (
-    <Box h="fit-content" px="md" w="full">
-      <p
-        className={css({
-          color: 'page.text.100',
-          textStyle: 'h6',
-          mb: '4',
-        })}
-      >
-        On this page
-      </p>
+    <Scrollable hideScrollbar h="full" px="md" w="full">
+      <Heading />
 
       <ul
         aria-label="Page sections"
@@ -87,12 +71,26 @@ export default function OnThisPage() {
           gap: 2,
         })}
       >
-        <For each={links}>
+        <For each={links()}>
           {(link, idx) => (
-            <cerberus.li key={`${link.id}-${idx}`}>
+            <cerberus.li
+              key={`${link.id}-${idx}`}
+              data-level={link.level}
+              className={css({
+                // Satisfies Requirement #2: Indent h3 elements
+                ml: link.level === 3 ? '4' : '0',
+                ms: 0,
+                width: 'full',
+                '& :is([data-level=3])': {
+                  ms: 'sm',
+                },
+              })}
+            >
               <Link
                 aria-current={
-                  window.location.hash === link.id ? 'page' : undefined
+                  typeof window !== 'undefined' && window.location.hash === link.id
+                    ? 'page'
+                    : undefined
                 }
                 href={link.id as LinkProps<string>['href']}
                 className={css({
@@ -118,7 +116,7 @@ export default function OnThisPage() {
           )}
         </For>
 
-        <cerberus.li>
+        <cerberus.li className={css({ width: 'full' })}>
           <Divider
             color="page.border.initial"
             my="md"
@@ -152,6 +150,52 @@ export default function OnThisPage() {
           </cerberus.a>
         </cerberus.li>
       </ul>
+    </Scrollable>
+  )
+}
+
+export function OTPFallback() {
+  return (
+    <Box h="full" px="md" w="full">
+      <Heading />
+      <Stack direction="column" gap="sm">
+        <For each={Array.from({ length: 4 })}>
+          {(_, index) => (
+            <Text aria-busy key={index} bgColor="page.bg.100/30" rounded="sm">
+              Loading...
+            </Text>
+          )}
+        </For>
+      </Stack>
     </Box>
+  )
+}
+
+function parseHeadingsFromMDX(mdxContent: string): HeadingLink[] {
+  const headingRegex = /^(##|###)\s+(.+)$/gm
+  const links: HeadingLink[] = []
+  let match
+
+  while ((match = headingRegex.exec(mdxContent)) !== null) {
+    const level = match[1].length
+    const label = match[2].replace(/<[^>]+>/g, '').trim()
+    const id =
+      '#' +
+      label
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '')
+
+    links.push({ id, label, path: id, level })
+  }
+
+  return links
+}
+
+function Heading() {
+  return (
+    <Text color="page.text.100" textStyle="headings-xs" mb="md">
+      On this page
+    </Text>
   )
 }

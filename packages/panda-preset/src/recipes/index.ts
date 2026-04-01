@@ -22,6 +22,7 @@ import { collapsible } from './slots/collapsible'
 import { menu } from './slots/menu'
 import { numberInput } from './slots/numberInput'
 import { pinInput } from './slots/pinInput'
+import { popover } from './slots/popover'
 import { progressBar } from './slots/progressBar'
 import { radioGroup } from './slots/radio'
 import { ratingGroup } from './slots/ratingGroup'
@@ -83,6 +84,7 @@ export const slotRecipes = {
   notification,
   numberInput,
   pinInput,
+  popover,
   progressBar,
   radioGroup,
   ratingGroup,
