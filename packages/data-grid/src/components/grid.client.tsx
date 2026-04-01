@@ -1,6 +1,12 @@
 'use client'
 
-import { For, IconButton, Show, Tooltip, useCerberusContext } from '@cerberus-design/react'
+import {
+  For,
+  IconButton,
+  Show,
+  Tooltip,
+  useCerberusContext,
+} from '@cerberus-design/react'
 import { useRead } from '@cerberus-design/signals'
 import {
   type CSSProperties,
@@ -9,96 +15,14 @@ import {
   type PropsWithChildren,
   type ReactNode,
   useMemo,
-  useRef,
 } from 'react'
-import { Box, HStack, Scrollable, Stack } from 'styled-system/jsx'
+import { Box, HStack } from 'styled-system/jsx'
 import type { Dict } from 'styled-system/types'
 import { PARTS, SCOPE } from '../const'
 import { useDataGridContext } from '../context.client'
 import { useColumnStyles, usePinnedAttribute, usePinnedState } from '../hooks.client'
 import type { InternalColumn } from '../types'
-import { useVirtualizer } from '../virtualizer.client'
 import { HeaderCellOptions } from './features.client'
-
-export function GridViewport() {
-  const viewportRef = useRef<HTMLDivElement>(null)
-
-  const store = useDataGridContext()
-  const { virtualRows, totalHeight } = useVirtualizer(store, viewportRef)
-
-  const columns = useRead(store.columns)
-
-  const isServerPaginated = useRead(store.isServerPaginated)
-  const staticRows = useRead(store.rows)
-  const currentPageRange = useRead(store.currentPageRange)
-
-  return (
-    <Scrollable
-      hideScrollbar
-      data-scope={SCOPE}
-      data-part={PARTS.VIEWPORT}
-      h="full"
-      minH="0"
-      minW="full"
-      pos="relative"
-      w="full"
-      ref={viewportRef}
-    >
-      <Box
-        role="grid"
-        aria-rowcount={staticRows.length + 1}
-        aria-colcount={columns.length}
-        h="var(--row-height)"
-        pos="sticky"
-        top="0"
-        w="var(--total-grid-width)"
-        zIndex="sticky"
-      >
-        <HStack aria-rowindex={1} role="rowgroup" gap="0" h="full" pos="relative" w="full">
-          <For each={columns}>
-            {(col) => (
-              <Show when={col.isVisible()} key={col.id}>
-                {() => <GridHeaderCell column={col} />}
-              </Show>
-            )}
-          </For>
-        </HStack>
-      </Box>
-
-      <Show
-        when={isServerPaginated}
-        fallback={
-          <Box
-            pos="relative"
-            w="var(--total-grid-width)"
-            style={{
-              height: `${totalHeight}px`,
-            }}
-          >
-            <For each={virtualRows}>
-              {(vRow) => (
-                <GridRow
-                  key={vRow.index}
-                  row={vRow.data}
-                  index={vRow.index}
-                  offsetY={vRow.offsetY}
-                />
-              )}
-            </For>
-          </Box>
-        }
-      >
-        {() => (
-          <Stack direction="column" gap="0" w="var(--total-grid-width)">
-            <For each={staticRows.slice(currentPageRange.start, currentPageRange.end)}>
-              {(row, index) => <GridRow key={index} row={row} index={index} />}
-            </For>
-          </Stack>
-        )}
-      </Show>
-    </Scrollable>
-  )
-}
 
 // --- 1. Header Cell ---
 
@@ -268,7 +192,9 @@ export const GridCell = memo(function GridCell<TData>(props: GridCellProps<TData
       }}
       style={style}
     >
-      {column.original.cell ? column.original.cell({ row, value }) : (value as ReactNode)}
+      {column.original.cell
+        ? column.original.cell({ row, value })
+        : (value as ReactNode)}
 
       <Show when={pinnedState === 'pinned'}>
         {() => <ShadowFiller style={style} {...pinnedAttr} />}

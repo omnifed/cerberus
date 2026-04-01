@@ -17,8 +17,17 @@ The Data Grid API provides the following props:
 | `initialState` | `false`  | The initial state of the grid for pagination settings.         |
 | `rowSize`      | `false`  | The size of each row in pixels or one of the predefined sizes. |
 | `toolbar`      | `false`  | The component to render in the grid toolbar slot.              |
+| `overlays`     | `false`  | Optional overlays to render within the viewport.               |
 | `footer`       | `false`  | The component to render in the grid footer slot.               |
 | `theme`        | `false`  | Custom style options to apply to the grid layout.              |
+
+### Overlay Slots
+
+The `overlays` prop expects an Object of the following optional properties in the table below. Each property expects a `ReactNode` value:
+
+| Name        | Description                                                                                                     |
+| ----------- | --------------------------------------------------------------------------------------------------------------- |
+| `noContent` | Displays when there are no rows present in the data or if the data has filtered out all rows to an empty state. |
 
 ## Slot Attributes
 

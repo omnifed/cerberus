@@ -81,4 +81,29 @@ describe('DataGrid', () => {
     // Not sure the best way to test this
     expect(screen.getByText('Display')).toBeInTheDocument()
   })
+
+  test('renders fallback no content overlay', () => {
+    render(
+      <CerberusProvider>
+        <DataGrid data={[]} columns={columns} />
+      </CerberusProvider>,
+    )
+    expect(screen.getByText(/no rows found/i)).toBeInTheDocument()
+  })
+
+  test('renders custom no content overlay', () => {
+    const NoContent = () => <div>Custom no content</div>
+    render(
+      <CerberusProvider>
+        <DataGrid
+          data={[]}
+          columns={columns}
+          overlays={{
+            noContent: <NoContent />,
+          }}
+        />
+      </CerberusProvider>,
+    )
+    expect(screen.getByText(/custom no content/i)).toBeInTheDocument()
+  })
 })

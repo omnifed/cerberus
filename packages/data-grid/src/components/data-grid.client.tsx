@@ -8,8 +8,8 @@ import { PARTS, SCOPE } from '../const'
 import { DataGridProvider } from '../context.client'
 import { createGridStore } from '../store'
 import type { GridOptions } from '../types'
-import { GridViewport } from './grid.client'
 import { GridPagination } from './pagination.client'
+import { GridViewport } from './viewport.client'
 
 function DataGridEl<TData>(props: GridOptions<TData>) {
   const { data } = props
@@ -93,7 +93,7 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
         w="full"
         ref={rootRef}
       >
-        <Show when={ready}>{() => <GridViewport />}</Show>
+        <Show when={ready}>{() => <GridViewport overlays={props.overlays} />}</Show>
         <GridPagination />
       </Stack>
 

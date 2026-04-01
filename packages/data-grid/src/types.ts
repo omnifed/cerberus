@@ -31,6 +31,10 @@ export interface GridOptions<TData> {
    */
   toolbar?: ReactNode
   /**
+   * Content to within the Data Grid and within the Grid context.
+   */
+  overlays?: OverlaySlots
+  /**
    * Content to display below the Data Grid and within the Grid context.
    */
   footer?: ReactNode
@@ -194,7 +198,9 @@ export type ColumnFeatures<TData, TKey extends keyof TData> = {
   /**
    * Allow the column to be sorted and the rules to use.
    */
-  sort?: (boolean & EnforceNoProperties<SortOptions<TData, TKey>>) | SortOptions<TData, TKey>
+  sort?:
+    | (boolean & EnforceNoProperties<SortOptions<TData, TKey>>)
+    | SortOptions<TData, TKey>
   /**
    * Allow the column to be filtered and the rules to use.
    */
@@ -224,7 +230,9 @@ export type SortOptions<TData, TKey extends keyof TData> = {
 export type ColCell<TData> = (props: { row: TData; value: any }) => ReactNode
 
 export type DisplayColAccessor = () => undefined
-export type AccessorAccessor<TData, TKey extends keyof TData> = (row: TData) => TData[TKey]
+export type AccessorAccessor<TData, TKey extends keyof TData> = (
+  row: TData,
+) => TData[TKey]
 export type AccessorFn<TData> = (row: TData) => ReactNode
 
 // --- Features ---
@@ -232,6 +240,14 @@ export type AccessorFn<TData> = (row: TData) => ReactNode
 export type Comparator<TValue> = (a: TValue, b: TValue) => number
 export type SortDirection = 'asc' | 'desc' | null
 export type PinnedState = 'left' | 'right' | undefined | boolean
+
+export type OverlaySlots = {
+  /**
+   * A custom component to display within the Grid Viewport when no rows are
+   * present in the data or filtered out. Defaults to a basic fallback.
+   */
+  noContent?: ReactNode
+}
 
 export type ThemeOptions = {
   /**
