@@ -49,7 +49,6 @@ export {
   NumberInputRootProvider,
   usePagination,
   usePaginationContext,
-  PaginationRootProvider,
   usePasswordInput,
   PasswordInputRootProvider,
   usePinInput,
