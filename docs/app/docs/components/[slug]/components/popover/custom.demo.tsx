@@ -1,3 +1,5 @@
+'use client'
+
 import { PopoverParts } from '@cerberus-design/react'
 
 export function CustomDemo() {

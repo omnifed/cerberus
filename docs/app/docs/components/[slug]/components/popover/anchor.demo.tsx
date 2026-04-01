@@ -1,3 +1,5 @@
+'use client'
+
 import { HStack } from '@/styled-system/jsx'
 import { Button, Input, PopoverParts } from '@cerberus-design/react'
 

@@ -1,6 +1,7 @@
 import type { PropsWithChildren } from 'react'
 import { Box, Container, HStack } from '@/styled-system/jsx'
-import OnThisPage from '@/app/components/OnThisPage'
+import OnThisPage, { OTPFallback } from '@/app/components/OnThisPage'
+import { Suspense } from 'react'
 
 /**
  * This component is the layout for all the pages in the "Docs" section
@@ -13,6 +14,7 @@ import OnThisPage from '@/app/components/OnThisPage'
 export function DocsPageLayout(props: PropsWithChildren<object>) {
   return (
     <HStack
+      data-slot="page-layout"
       alignItems="flex-start"
       h="full"
       gap="0"
@@ -41,14 +43,17 @@ export function DocsPageLayout(props: PropsWithChildren<object>) {
 
       <Box
         display={{ base: 'none', md: 'block' }}
+        h="full"
         pos="sticky"
         pr="md"
-        pt="lg"
+        py="lg"
         top="lg"
         w="20rem"
         zIndex="base"
       >
-        <OnThisPage />
+        <Suspense fallback={<OTPFallback />}>
+          <OnThisPage />
+        </Suspense>
       </Box>
     </HStack>
   )
