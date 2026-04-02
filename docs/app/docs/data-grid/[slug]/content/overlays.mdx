@@ -1,0 +1,33 @@
+---
+title: Overlays
+description: Learn about the overlays for the Data Grid component.
+package: 'data-grid'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { DEMOS } from '../components/overlays/static'
+
+## Overview
+
+The Data Grid comes with placeholder content overlays that live within the contextual provider.
+When provided, any component used for the overlay slot will have access to the Data Grid context
+via the `useDataGridContext` hook.
+
+You can utilize an overlay by adding the name of the slot as a property to the `DataGrid` `overlays` prop. Each overlay slot comes with a default fallback when no custom component is provided.
+
+Overlay slots are placed within the grid viewport which is the body of the Data Grid.
+
+## No Content
+
+The `noContent` overlay appears when there are no rows to display in the Data Grid. This can be from providing an empty `data` Array or being filtered out via a feature or store action.
+
+<CodePreview {...DEMOS.defaultNone} />
+
+### Custom No Content
+
+Pass a component to the `overlays.noContent` prop to display a custom overlay.
+
+For convenience, the content is placed within a [`Center`](/docs/components/center) parent that matches the height of the viewport area.
+
+<CodePreview {...DEMOS.none} />

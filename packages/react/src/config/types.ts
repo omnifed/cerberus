@@ -43,6 +43,7 @@ export interface DefinedIcons<T extends IconType = IconType> {
   sortAsc?: T
   sortDesc?: T
   successNotification?: T
+  table?: T
   toggleChecked?: T
   waitingFileUploader?: T
   warningNotification?: T

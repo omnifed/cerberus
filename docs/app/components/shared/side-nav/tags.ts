@@ -1,1 +1,1 @@
-export const NEW = ['/docs/components/popover']
+export const NEW = ['/docs/components/popover', '/docs/data-grid/overlays']
