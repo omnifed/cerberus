@@ -27,6 +27,10 @@ export interface GridOptions<TData> {
    */
   onPageChange?: (details: PageDetails) => void
   /**
+   * When set to true, renders the `overlays.loading` component.
+   */
+  pending?: boolean
+  /**
    * Content to display above the Data Grid and within the Grid context.
    */
   toolbar?: ReactNode
@@ -160,6 +164,7 @@ export interface GridStore<TData> {
   // State
   columns: Accessor<InternalColumn<TData>[]>
   rows: Accessor<TData[]>
+  pending: Accessor<boolean>
   globalFilter: Accessor<string>
   sorting: Accessor<SortState[]>
 
@@ -188,6 +193,7 @@ export interface GridStore<TData> {
   togglePinned: (colId: string, state: PinnedState) => void
   toggleSort: (colId: string, multi?: boolean) => void
   updateData: (newData: TData[]) => void
+  updatePending: (newState: boolean) => void
 }
 
 export type RowSizeOptions = RowSize | number
@@ -240,6 +246,7 @@ export type AccessorFn<TData> = (row: TData) => ReactNode
 export type Comparator<TValue> = (a: TValue, b: TValue) => number
 export type SortDirection = 'asc' | 'desc' | null
 export type PinnedState = 'left' | 'right' | undefined | boolean
+export type LoadingVariant = 'skeleton' | 'linear' | 'circular' | ReactNode
 
 export type OverlaySlots = {
   /**
@@ -247,6 +254,11 @@ export type OverlaySlots = {
    * present in the data or filtered out. Defaults to a basic fallback.
    */
   noContent?: ReactNode
+  /**
+   * A custom component to display within the Grid Viewport when the `pending`
+   * prop is set to true.
+   */
+  pending?: LoadingVariant
 }
 
 export type ThemeOptions = {

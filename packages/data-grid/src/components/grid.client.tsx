@@ -151,14 +151,15 @@ interface GridCellProps<TData> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   row: any
   column: InternalColumn<TData>
+  pending: boolean
 }
 
 export const GridCell = memo(function GridCell<TData>(props: GridCellProps<TData>) {
   const { column, row } = props
+
   const value = column.getValue(row) as keyof TData
 
   const pinnedVal = useRead(column.pinned)
-
   const pinnedState = usePinnedState(pinnedVal)
   const pinnedAttr = usePinnedAttribute(pinnedVal)
   const style: CSSProperties = useColumnStyles(column, pinnedVal)
@@ -192,9 +193,24 @@ export const GridCell = memo(function GridCell<TData>(props: GridCellProps<TData
       }}
       style={style}
     >
-      {column.original.cell
-        ? column.original.cell({ row, value })
-        : (value as ReactNode)}
+      <Show
+        when={!props.pending}
+        fallback={
+          <Box
+            aria-busy="true"
+            my="xs"
+            rounded="md"
+            w="full"
+            style={{
+              height: 'calc(var(--row-height) / 3)',
+            }}
+          />
+        }
+      >
+        {column.original.cell
+          ? column.original.cell({ row, value })
+          : (value as ReactNode)}
+      </Show>
 
       <Show when={pinnedState === 'pinned'}>
         {() => <ShadowFiller style={style} {...pinnedAttr} />}
@@ -213,14 +229,16 @@ interface GridRowProps {
 
 export const GridRow = memo(function GridRow(props: GridRowProps) {
   const store = useDataGridContext()
+
   const columns = useRead(store.columns)
+  const pending = useRead(store.pending)
 
   return (
     <GridRowContainer offsetY={props.offsetY}>
       <For each={columns}>
         {(col) => (
           <Show when={col.isVisible()} key={col.id}>
-            {() => <GridCell row={props.row} column={col} />}
+            {() => <GridCell row={props.row} column={col} pending={pending} />}
           </Show>
         )}
       </For>
@@ -234,7 +252,7 @@ interface GridRowContainerProps {
   offsetY?: number
 }
 
-function GridRowContainer(props: PropsWithChildren<GridRowContainerProps>) {
+export function GridRowContainer(props: PropsWithChildren<GridRowContainerProps>) {
   const isVirtualized = props.offsetY !== undefined
 
   return (

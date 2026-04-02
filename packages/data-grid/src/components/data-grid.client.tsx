@@ -24,6 +24,7 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
         initialState: props.initialState,
         rowSize: props.rowSize,
         onPageChange: props.onPageChange,
+        pending: props.pending,
         theme: props.theme,
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,11 +35,17 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
   const rootRef = useRef<HTMLDivElement>(null)
 
   // Sync data in store with props
+
   useEffect(() => {
     store.updateData(data)
   }, [data, store])
 
+  useEffect(() => {
+    store.updatePending(Boolean(props.pending))
+  }, [props.pending, store])
+
   // Set root CSS vars with rootRef
+
   useEffect(() => {
     const el = rootRef.current
     if (!el) return

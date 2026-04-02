@@ -25,6 +25,8 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   const [rows, setRows] = createSignal<TData[]>(options.data)
   const [rowSize] = createSignal<number>(determineRowHeight(options.rowSize))
 
+  const [pending, setPending] = createSignal<boolean>(options.pending ?? false)
+
   const [globalFilter, setGlobalFilter] = createSignal<string>('')
   const [sorting, setSorting] = createSignal<SortState[]>([])
 
@@ -34,7 +36,9 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   const [pageSize, setPageSize] = createSignal<number>(
     determinePageSize(options.initialState?.pagination),
   )
-  const [pageRange] = createSignal<number[]>(determinePageRange(options.initialState?.pagination))
+  const [pageRange] = createSignal<number[]>(
+    determinePageRange(options.initialState?.pagination),
+  )
   const [isServerPaginated] = createSignal<boolean>(
     Boolean(determineInitialCount(options.initialState?.pagination)),
   )
@@ -143,7 +147,9 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
 
   // Derived pagination - Ark handles the rest
   const rowCount = createComputed(
-    () => determineInitialCount(options?.initialState?.pagination) ?? processedRows().length,
+    () =>
+      determineInitialCount(options?.initialState?.pagination) ??
+      processedRows().length,
   )
   const pageCount = createComputed(() => Math.ceil(rowCount() / pageSize()))
 
@@ -257,13 +263,16 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     return vars
   })
 
-  const totalWidth = createComputed(() => columns().reduce((acc, c) => acc + c.width(), 0))
+  const totalWidth = createComputed(() =>
+    columns().reduce((acc, c) => acc + c.width(), 0),
+  )
 
   return {
     columns,
     rows,
     globalFilter,
     sorting,
+    pending,
     pageCount,
     pageIndex,
     pageSize,
@@ -279,6 +288,10 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     // Actions
     updateData: (newData) => {
       setRows(newData)
+    },
+
+    updatePending: (newState) => {
+      setPending(newState)
     },
 
     setSort: (colId, direction, multi = false) => {

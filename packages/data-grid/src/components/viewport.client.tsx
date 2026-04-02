@@ -9,7 +9,7 @@ import { useDataGridContext } from '../context.client'
 import type { OverlaySlots } from '../types'
 import { useVirtualizer } from '../virtualizer.client'
 import { GridHeaderCell, GridRow } from './grid.client'
-import { NoContentOverlay } from './overlays'
+import { NoContentOverlay, PendingOverlay } from './overlays'
 
 interface GridViewportProps {
   overlays?: OverlaySlots
@@ -24,11 +24,13 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
   const rowCount = useRead(store.rowCount)
   const staticRows = useRead(store.rows)
 
+  const pending = useRead(store.pending)
+
   return (
     <Scrollable
-      hideScrollbar
       data-scope={SCOPE}
       data-part={PARTS.VIEWPORT}
+      hideScrollbar
       h="full"
       minH="0"
       minW="full"
@@ -69,6 +71,10 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
         fallback={<NoContentOverlay custom={props.overlays?.noContent} />}
       >
         {() => <TableRows viewportRef={viewportRef} />}
+      </Show>
+
+      <Show when={pending}>
+        {() => <PendingOverlay variant={props.overlays?.pending} />}
       </Show>
     </Scrollable>
   )
