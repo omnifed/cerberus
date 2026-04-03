@@ -32,10 +32,11 @@ describe('progressBar recipe', () => {
       },
       _motionSafe: {
         _indeterminate: {
-          animationName: 'rubberBand',
-          animationIterationCount: 'infinite',
+          animationName: 'indeterminate',
           animationDuration: '1.25s',
           animationTimingFunction: 'ease-in-out',
+          animationIterationCount: 'infinite',
+          w: '3/4',
         },
       },
     })
