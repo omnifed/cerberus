@@ -1,5 +1,5 @@
-import { ProgressBar, Show } from '@cerberus-design/react'
-import { Box, Center } from 'styled-system/jsx'
+import { ProgressBar, Show, Spinner } from '@cerberus-design/react'
+import { Box, Center, Square } from 'styled-system/jsx'
 import type { OverlaySlots } from '../types'
 import { NoContent } from './no-content.client'
 
@@ -85,5 +85,11 @@ function LinearOverlay() {
 }
 
 function CircularOverlay() {
-  return <>circular</>
+  return (
+    <Center h="full" w="full">
+      <Square size="12">
+        <Spinner />
+      </Square>
+    </Center>
+  )
 }

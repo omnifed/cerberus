@@ -139,6 +139,3 @@ const TableRows = memo((props: TableRowsProps) => {
     </Show>
   )
 })
-function createMemo<T>(arg0: () => boolean, p0: never[]) {
-  throw new Error('Function not implemented.')
-}

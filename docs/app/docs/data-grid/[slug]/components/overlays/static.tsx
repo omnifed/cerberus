@@ -2,6 +2,7 @@ import { DefaultNoContentDemo } from './default-none.demo'
 import { NoContentDemo } from './none.demo'
 import { SkeletonDemo } from './skeleton.demo'
 import { LinearDemo } from './linear.demo'
+import { CircularDemo } from './circular.demo'
 import { ColumnDemo } from './column.demo'
 
 export const DEMOS = {
@@ -23,6 +24,11 @@ export const DEMOS = {
   linear: {
     id: 'overlays.linear',
     preview: <LinearDemo />,
+    context: 'data-grid',
+  },
+  circular: {
+    id: 'overlays.circular',
+    preview: <CircularDemo />,
     context: 'data-grid',
   },
   column: {
