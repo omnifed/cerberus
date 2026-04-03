@@ -44,17 +44,21 @@ The Data Grid supports 3 loading overlay variants out of the box:
 
 For convenience, the content is placed within an absolutely positioned [`Box`](/docs/components/box) parent that matches the height of the viewport area and sits above the row content.
 
-### Cell pending with Suspense
-
-For cell level pending states, you can take advantage of `Suspense` to provide column-level loading states if Promises are used within the [Column Definition](/docs/data-grid/columns) cell.
-
-This is a natural resource provided by React (and [Signals](/docs/signals/overview)) that _doesn't require any additional prop management on the Data Grid_.
-
-<CodePreview {...DEMOS.none} />
-
 ### Skeleton
 
 Pass `'skeleton'` to the `overlays.pending` prop to display a skeleton pending overlay.
+
+<CodePreview {...DEMOS.skeleton} />
+
+### Linear
+
+Pass `'linear'` to the `overlays.pending` prop to display a linear-progress pending overlay.
+
+<CodePreview {...DEMOS.skeleton} />
+
+### Circular
+
+Pass `'circular'` to the `overlays.pending` prop to display a circular-progress pending overlay.
 
 <CodePreview {...DEMOS.skeleton} />
 
@@ -63,3 +67,15 @@ Pass `'skeleton'` to the `overlays.pending` prop to display a skeleton pending o
 Pass a component to the `overlays.loading` prop to display a custom overlay.
 
 <CodePreview {...DEMOS.none} />
+
+### Cell pending with Suspense
+
+For cell level pending states, you can take advantage of `Suspense` to provide column-level loading states if Promises are used within the [Column Definition](/docs/data-grid/columns) cell.
+
+This is a natural resource provided by React (and [Signals](/docs/signals/overview)) that _doesn't require any additional prop management on the Data Grid_.
+
+<NoteAdmonition description="If using mutations, you need to manually manage the loading state by omitting the Suspense component and instead using the loading prop from useMutation." />
+
+> _:bulb: "Wow! That was fast after the first click?!"_ <br /><br />Yup! The Cerberus signals lib caches querys. Since the state saves a string, the cache is smart enough to know that a string of "success" already exists. Thus, it bypasses the fetch. If the strings where unique (or the data more complex) it would handle it accordingly.
+
+<CodePreview {...DEMOS.column} />

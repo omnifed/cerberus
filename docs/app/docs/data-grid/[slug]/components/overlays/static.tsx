@@ -1,6 +1,7 @@
 import { DefaultNoContentDemo } from './default-none.demo'
 import { NoContentDemo } from './none.demo'
 import { SkeletonDemo } from './skeleton.demo'
+import { ColumnDemo } from './column.demo'
 
 export const DEMOS = {
   defaultNone: {
@@ -16,6 +17,11 @@ export const DEMOS = {
   skeleton: {
     id: 'overlays.skeleton',
     preview: <SkeletonDemo />,
+    context: 'data-grid',
+  },
+  column: {
+    id: 'overlays.column',
+    preview: <ColumnDemo />,
     context: 'data-grid',
   },
 }
