@@ -4,6 +4,7 @@ import { SkeletonDemo } from './skeleton.demo'
 import { LinearDemo } from './linear.demo'
 import { CircularDemo } from './circular.demo'
 import { ColumnDemo } from './column.demo'
+import { CustomDemo } from './custom.demo'
 
 export const DEMOS = {
   defaultNone: {
@@ -34,6 +35,11 @@ export const DEMOS = {
   column: {
     id: 'overlays.column',
     preview: <ColumnDemo />,
+    context: 'data-grid',
+  },
+  custom: {
+    id: 'overlays.custom',
+    preview: <CustomDemo />,
     context: 'data-grid',
   },
 }
