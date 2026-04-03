@@ -14,7 +14,7 @@ import { DEMOS } from '../components/cerberus-context/static'
 
 ## Usage
 
-The Cerberus Context provides the ability to register custom options for internal 
+The Cerberus Context provides the ability to register custom options for internal
 component usage.
 
 <CodePreview {...DEMOS.basic} />
@@ -28,7 +28,7 @@ via the `makeSystemConfig` helper.
 
 ## Registering Custom Icons
 
-To register a different set of icons for your application, you can use the 
+To register a different set of icons for your application, you can use the
 `defineIcons` function and pass it to the `icons` prop of the `CerberusProvider`
 `config` property.
 
@@ -38,44 +38,45 @@ To register a different set of icons for your application, you can use the
 
 Here is the exhaustive list of icon overrides you can configure:
 
-| Name         | Description                                                    |
-|--------------|----------------------------------------------------------------|
-| `accordionIndicator` | The arrow indicator used in accordion components.      |
-| `avatar`     | The fallback icon used when no avatar is available.            |
-| `calendar`   | The calendar icon used in date picker components.              |
-| `calendarPrev` | The prev month trigger icon used in date picker components.  |
-| `calendarNext` | The next month trigger icon used in date picker components.  |
-| `caretDown`  | The caret down icon used in dropdown components.               |
-| `checkbox`   | The checkbox icon used in checkbox components.                 |
-| `close`      | The close icon used in closeable components.                   |
-| `confirmModal` | The header icon used in confirm modals.                      |
-| `decrement`  | The icon used for decrement triggers.                          |
-| `delete`     | The icon used for delete triggers.                             |
-| `dangerNotification` | The icon used for danger notifications.                |
-| `fileUploader` | The icon used for file uploader components.                  |
-| `indeterminate` | The icon used for indeterminate states.                     |
-| `increment`  | The icon used for increment triggers.                          |
-| `infoNotification` | The icon used for info notifications.                    |
-| `invalid`    | The icon used for invalid states.                              |
-| `invalidAlt` | The icon used for alternative invalid states.                  |
-| `moreVertical` | The icon used for more options triggers.                     |
-| `pinLeft`    | The icon used for pin left triggers.                           |
-| `pinLeftFilled` | The icon used for pin left triggers with a filled style.    |
-| `pinRight`   | The icon used for pin right triggers.                          |
-| `pinRightFilled` | The icon used for pin right triggers with a filled style.  |
-| `promptModal` | The icon used for prompt modal triggers.                      |
-| `redo`       | The icon used for redo triggers.                               |
-| `selectArrow` | The icon used for select menu  triggers.                      |
-| `selectChecked` | The icon used for the checked state of a select menu item.  |
-| `sortAsc`    | The icon used for ascending sort triggers.                     |
-| `sortDesc`   | The icon used for descending sort triggers.                    |
-| `successNotification` | The icon used for success notifications.              |
-| `toggleChecked` | The icon used for toggle checked triggers.                  |
-| `waitingFileUploader` | The icon used for a loading state in the File Uploader.|
-| `warningNotification` | The icon used for warning notifications.              |
+| Name                  | Description                                                 |
+| --------------------- | ----------------------------------------------------------- |
+| `accordionIndicator`  | The arrow indicator used in accordion components.           |
+| `avatar`              | The fallback icon used when no avatar is available.         |
+| `calendar`            | The calendar icon used in date picker components.           |
+| `calendarPrev`        | The prev month trigger icon used in date picker components. |
+| `calendarNext`        | The next month trigger icon used in date picker components. |
+| `caretDown`           | The caret down icon used in dropdown components.            |
+| `checkbox`            | The checkbox icon used in checkbox components.              |
+| `close`               | The close icon used in closeable components.                |
+| `confirmModal`        | The header icon used in confirm modals.                     |
+| `decrement`           | The icon used for decrement triggers.                       |
+| `delete`              | The icon used for delete triggers.                          |
+| `dangerNotification`  | The icon used for danger notifications.                     |
+| `fileUploader`        | The icon used for file uploader components.                 |
+| `indeterminate`       | The icon used for indeterminate states.                     |
+| `increment`           | The icon used for increment triggers.                       |
+| `infoNotification`    | The icon used for info notifications.                       |
+| `invalid`             | The icon used for invalid states.                           |
+| `invalidAlt`          | The icon used for alternative invalid states.               |
+| `moreVertical`        | The icon used for more options triggers.                    |
+| `pinLeft`             | The icon used for pin left triggers.                        |
+| `pinLeftFilled`       | The icon used for pin left triggers with a filled style.    |
+| `pinRight`            | The icon used for pin right triggers.                       |
+| `pinRightFilled`      | The icon used for pin right triggers with a filled style.   |
+| `promptModal`         | The icon used for prompt modal triggers.                    |
+| `redo`                | The icon used for redo triggers.                            |
+| `selectArrow`         | The icon used for select menu triggers.                     |
+| `selectChecked`       | The icon used for the checked state of a select menu item.  |
+| `sortAsc`             | The icon used for ascending sort triggers.                  |
+| `sortDesc`            | The icon used for descending sort triggers.                 |
+| `successNotification` | The icon used for success notifications.                    |
+| `table`               | An icon used to represent tables.                           |
+| `toggleChecked`       | The icon used for toggle checked triggers.                  |
+| `waitingFileUploader` | The icon used for a loading state in the File Uploader.     |
+| `warningNotification` | The icon used for warning notifications.                    |
 
 ## Config Options
 
-| Name         | Description                                                    |
-|--------------|----------------------------------------------------------------|
-| `icons` | Custom icons to register for all component usage.                   |
+| Name    | Description                                       |
+| ------- | ------------------------------------------------- |
+| `icons` | Custom icons to register for all component usage. |

@@ -73,7 +73,7 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
 
   '& :is(div,main,section,header,footer,nav,a,span,button,li,p)': {
     _loading: {
-      bgColor: 'page.border.200',
+      bgColor: 'page.bg.100/60',
       color: 'transparent',
       userSelect: 'none',
       _motionSafe: {

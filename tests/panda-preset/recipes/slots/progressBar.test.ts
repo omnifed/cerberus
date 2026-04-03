@@ -32,10 +32,11 @@ describe('progressBar recipe', () => {
       },
       _motionSafe: {
         _indeterminate: {
-          animationName: 'rubberBand',
-          animationIterationCount: 'infinite',
+          animationName: 'indeterminate',
           animationDuration: '1.25s',
           animationTimingFunction: 'ease-in-out',
+          animationIterationCount: 'infinite',
+          w: '3/4',
         },
       },
     })
@@ -44,6 +45,11 @@ describe('progressBar recipe', () => {
   test('should have variants', () => {
     expect(progressBar.variants).toMatchObject({
       size: {
+        xs: {
+          root: {
+            h: '0.25rem',
+          },
+        },
         sm: {
           root: {
             h: '0.75rem',

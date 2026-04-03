@@ -27,9 +27,17 @@ export interface GridOptions<TData> {
    */
   onPageChange?: (details: PageDetails) => void
   /**
+   * When set to true, renders the `overlays.loading` component.
+   */
+  pending?: boolean
+  /**
    * Content to display above the Data Grid and within the Grid context.
    */
   toolbar?: ReactNode
+  /**
+   * Content to within the Data Grid and within the Grid context.
+   */
+  overlays?: OverlaySlots
   /**
    * Content to display below the Data Grid and within the Grid context.
    */
@@ -156,8 +164,10 @@ export interface GridStore<TData> {
   // State
   columns: Accessor<InternalColumn<TData>[]>
   rows: Accessor<TData[]>
+  pending: Accessor<boolean>
   globalFilter: Accessor<string>
   sorting: Accessor<SortState[]>
+  visibleRows: Accessor<TData[]>
 
   // Pagination
   pageIndex: Accessor<number>
@@ -168,11 +178,11 @@ export interface GridStore<TData> {
   isServerPaginated: Accessor<boolean>
 
   // Styling
+  hasSkeleton: Accessor<boolean>
   rootCssVars: Accessor<Record<string, string>>
   rowCount: Accessor<number>
   rowSize: Accessor<number>
   totalWidth: Accessor<number>
-  visibleRows: Accessor<TData[]>
 
   // Actions
   resizeColumn: (colId: string, delta: number) => void
@@ -184,6 +194,7 @@ export interface GridStore<TData> {
   togglePinned: (colId: string, state: PinnedState) => void
   toggleSort: (colId: string, multi?: boolean) => void
   updateData: (newData: TData[]) => void
+  updatePending: (newState: boolean) => void
 }
 
 export type RowSizeOptions = RowSize | number
@@ -194,7 +205,9 @@ export type ColumnFeatures<TData, TKey extends keyof TData> = {
   /**
    * Allow the column to be sorted and the rules to use.
    */
-  sort?: (boolean & EnforceNoProperties<SortOptions<TData, TKey>>) | SortOptions<TData, TKey>
+  sort?:
+    | (boolean & EnforceNoProperties<SortOptions<TData, TKey>>)
+    | SortOptions<TData, TKey>
   /**
    * Allow the column to be filtered and the rules to use.
    */
@@ -224,7 +237,9 @@ export type SortOptions<TData, TKey extends keyof TData> = {
 export type ColCell<TData> = (props: { row: TData; value: any }) => ReactNode
 
 export type DisplayColAccessor = () => undefined
-export type AccessorAccessor<TData, TKey extends keyof TData> = (row: TData) => TData[TKey]
+export type AccessorAccessor<TData, TKey extends keyof TData> = (
+  row: TData,
+) => TData[TKey]
 export type AccessorFn<TData> = (row: TData) => ReactNode
 
 // --- Features ---
@@ -232,6 +247,20 @@ export type AccessorFn<TData> = (row: TData) => ReactNode
 export type Comparator<TValue> = (a: TValue, b: TValue) => number
 export type SortDirection = 'asc' | 'desc' | null
 export type PinnedState = 'left' | 'right' | undefined | boolean
+export type LoadingVariant = 'skeleton' | 'linear' | 'circular' | ReactNode
+
+export type OverlaySlots = {
+  /**
+   * A custom component to display within the Grid Viewport when no rows are
+   * present in the data or filtered out. Defaults to a basic fallback.
+   */
+  noContent?: ReactNode
+  /**
+   * A custom component to display within the Grid Viewport when the `pending`
+   * prop is set to true.
+   */
+  pending?: LoadingVariant
+}
 
 export type ThemeOptions = {
   /**
