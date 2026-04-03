@@ -152,6 +152,7 @@ interface GridCellProps<TData> {
   row: any
   column: InternalColumn<TData>
   pending: boolean
+  hasSkeleton: boolean
 }
 
 export const GridCell = memo(function GridCell<TData>(props: GridCellProps<TData>) {
@@ -194,22 +195,24 @@ export const GridCell = memo(function GridCell<TData>(props: GridCellProps<TData
       style={style}
     >
       <Show
-        when={!props.pending}
+        when={props.pending && props.hasSkeleton}
         fallback={
-          <Box
-            aria-busy="true"
-            my="xs"
-            rounded="md"
-            w="full"
-            style={{
-              height: 'calc(var(--row-height) / 3)',
-            }}
-          />
+          <>
+            {column.original.cell
+              ? column.original.cell({ row, value })
+              : (value as ReactNode)}
+          </>
         }
       >
-        {column.original.cell
-          ? column.original.cell({ row, value })
-          : (value as ReactNode)}
+        <Box
+          aria-busy="true"
+          my="xs"
+          rounded="md"
+          w="full"
+          style={{
+            height: 'calc(var(--row-height) / 3)',
+          }}
+        />
       </Show>
 
       <Show when={pinnedState === 'pinned'}>
@@ -232,13 +235,21 @@ export const GridRow = memo(function GridRow(props: GridRowProps) {
 
   const columns = useRead(store.columns)
   const pending = useRead(store.pending)
+  const hasSkeleton = useRead(store.hasSkeleton)
 
   return (
     <GridRowContainer offsetY={props.offsetY}>
       <For each={columns}>
         {(col) => (
           <Show when={col.isVisible()} key={col.id}>
-            {() => <GridCell row={props.row} column={col} pending={pending} />}
+            {() => (
+              <GridCell
+                row={props.row}
+                column={col}
+                hasSkeleton={hasSkeleton}
+                pending={pending}
+              />
+            )}
           </Show>
         )}
       </For>

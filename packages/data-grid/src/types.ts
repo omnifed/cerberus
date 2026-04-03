@@ -167,6 +167,7 @@ export interface GridStore<TData> {
   pending: Accessor<boolean>
   globalFilter: Accessor<string>
   sorting: Accessor<SortState[]>
+  visibleRows: Accessor<TData[]>
 
   // Pagination
   pageIndex: Accessor<number>
@@ -177,11 +178,11 @@ export interface GridStore<TData> {
   isServerPaginated: Accessor<boolean>
 
   // Styling
+  hasSkeleton: Accessor<boolean>
   rootCssVars: Accessor<Record<string, string>>
   rowCount: Accessor<number>
   rowSize: Accessor<number>
   totalWidth: Accessor<number>
-  visibleRows: Accessor<TData[]>
 
   // Actions
   resizeColumn: (colId: string, delta: number) => void

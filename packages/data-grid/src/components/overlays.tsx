@@ -1,9 +1,12 @@
-import { Show } from '@cerberus-design/react'
+import { ProgressBar, Show } from '@cerberus-design/react'
 import { Box, Center } from 'styled-system/jsx'
 import type { OverlaySlots } from '../types'
 import { NoContent } from './no-content.client'
 
+// For some reason we have to use dynamic styles for these to work?
 const overlayStyle = {
+  backgroundColor:
+    'color-mix(in srgb, var(--cerberus-colors-page-surface-initial) 70%, transparent)',
   height: 'calc(100% - var(--row-height))',
 }
 
@@ -34,7 +37,6 @@ export function PendingOverlay(props: PendingOverlayProps) {
 
   return (
     <Box
-      bgColor="page.bg.100/75"
       bottom="0"
       left="0"
       overflow="hidden"
@@ -71,7 +73,15 @@ function MatchPendingOverlay(props: PendingOverlayProps) {
 }
 
 function LinearOverlay() {
-  return <>linear</>
+  return (
+    <ProgressBar
+      id="dg-loading"
+      indeterminate
+      label="Data grid loading"
+      size="xs"
+      usage="block"
+    />
+  )
 }
 
 function CircularOverlay() {

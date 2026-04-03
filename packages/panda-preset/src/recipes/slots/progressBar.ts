@@ -38,10 +38,11 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
       _motionSafe: {
         _indeterminate: {
-          animationName: 'rubberBand',
-          animationIterationCount: 'infinite',
+          animationName: 'indeterminate',
           animationDuration: '1.25s',
           animationTimingFunction: 'ease-in-out',
+          animationIterationCount: 'infinite',
+          w: '3/4',
         },
       },
     },
@@ -49,6 +50,11 @@ export const progressBar: Partial<SlotRecipeConfig> = defineSlotRecipe({
 
   variants: {
     size: {
+      xs: {
+        root: {
+          h: '0.25rem',
+        },
+      },
       sm: {
         root: {
           h: '0.75rem',

@@ -24,6 +24,7 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
         initialState: props.initialState,
         rowSize: props.rowSize,
         onPageChange: props.onPageChange,
+        overlays: props.overlays,
         pending: props.pending,
         theme: props.theme,
       }),

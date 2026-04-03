@@ -2,7 +2,7 @@
 
 import { For, Show } from '@cerberus-design/react'
 import { useRead } from '@cerberus-design/signals'
-import { memo, useRef, type RefObject } from 'react'
+import { memo, useMemo, useRef, type RefObject } from 'react'
 import { Box, HStack, Scrollable, Stack } from 'styled-system/jsx'
 import { PARTS, SCOPE } from '../const'
 import { useDataGridContext } from '../context.client'
@@ -26,16 +26,27 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
 
   const pending = useRead(store.pending)
 
+  const shouldLock = useMemo<boolean>(() => {
+    if (!props.overlays) return false
+    return props.overlays?.pending !== 'skeleton'
+  }, [props.overlays])
+
   return (
     <Scrollable
       data-scope={SCOPE}
       data-part={PARTS.VIEWPORT}
+      data-lock={pending && shouldLock}
       hideScrollbar
       h="full"
       minH="0"
       minW="full"
       pos="relative"
       w="full"
+      css={{
+        '&:is([data-lock=true])': {
+          overflow: 'hidden!',
+        },
+      }}
       ref={viewportRef}
     >
       <Box
@@ -128,3 +139,6 @@ const TableRows = memo((props: TableRowsProps) => {
     </Show>
   )
 })
+function createMemo<T>(arg0: () => boolean, p0: never[]) {
+  throw new Error('Function not implemented.')
+}

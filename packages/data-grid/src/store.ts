@@ -26,6 +26,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   const [rowSize] = createSignal<number>(determineRowHeight(options.rowSize))
 
   const [pending, setPending] = createSignal<boolean>(options.pending ?? false)
+  const [hasSkeleton] = createSignal<boolean>(options.overlays?.pending === 'skeleton')
 
   const [globalFilter, setGlobalFilter] = createSignal<string>('')
   const [sorting, setSorting] = createSignal<SortState[]>([])
@@ -273,6 +274,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     globalFilter,
     sorting,
     pending,
+    hasSkeleton,
     pageCount,
     pageIndex,
     pageSize,

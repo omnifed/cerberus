@@ -44,6 +44,11 @@ describe('progressBar recipe', () => {
   test('should have variants', () => {
     expect(progressBar.variants).toMatchObject({
       size: {
+        xs: {
+          root: {
+            h: '0.25rem',
+          },
+        },
         sm: {
           root: {
             h: '0.75rem',

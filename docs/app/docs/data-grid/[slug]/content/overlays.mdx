@@ -16,7 +16,9 @@ via the `useDataGridContext` hook.
 
 You can utilize an overlay by adding the name of the slot as a property to the Data Grid `overlays` prop. Each overlay slot comes with a default fallback when no custom component is provided.
 
-Overlay slots are placed within the grid viewport which is the body of the Data Grid.
+Overlay slots are placed within the grid viewport which is the body of the Data Grid
+
+<NoteAdmonition description="All overlays outside of the skeleton will lock the scroll. This includes custom pending overlay components." />
 
 ## No Content
 
@@ -54,7 +56,7 @@ Pass `'skeleton'` to the `overlays.pending` prop to display a skeleton pending o
 
 Pass `'linear'` to the `overlays.pending` prop to display a linear-progress pending overlay.
 
-<CodePreview {...DEMOS.skeleton} />
+<CodePreview {...DEMOS.linear} />
 
 ### Circular
 
