@@ -41,7 +41,7 @@
     "@shikijs/rehype": "^4.0.2",
     "@shikijs/transformers": "^4.0.2",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.5.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vercel/analytics": "^2.0.1",
