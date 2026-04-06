@@ -1,4 +1,4 @@
-import { ThemeOptions } from './types'
+import { FilterOperator, ThemeOptions } from './types'
 
 export const SCOPE = 'data-grid'
 
@@ -15,12 +15,26 @@ export const PARTS = {
 }
 
 // Pagination
+
 export const DEFAULT_PAGE_IDX = 1 // based on Ark API
 export const SM_PAGE_SIZE = 25
 export const MD_PAGE_SIZE = 50
 export const LG_PAGE_SIZE = 100
 
 export const DEFAULT_PAGE_SIZES = [SM_PAGE_SIZE, MD_PAGE_SIZE, LG_PAGE_SIZE]
+
+// Filtering
+
+export const OPERATORS: Record<FilterOperator, FilterOperator> = {
+  contains: 'contains',
+  equals: 'equals',
+  starts_with: 'starts_with',
+  ends_with: 'ends_with',
+  greater_than: 'greater_than',
+  less_than: 'less_than',
+  between: 'between',
+  includes_some: 'includes_some',
+}
 
 // Row sizing
 
@@ -47,6 +61,8 @@ export const ROW_SIZES: RowSizeData = {
     [XL]: 64,
   },
 }
+
+// Theming
 
 export const DEFAULT_THEME: ThemeOptions = {
   border: '1px solid',

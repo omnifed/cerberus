@@ -165,7 +165,8 @@ export interface GridStore<TData> {
   columns: Accessor<InternalColumn<TData>[]>
   rows: Accessor<TData[]>
   pending: Accessor<boolean>
-  globalFilter: Accessor<string>
+  globalFilter: Accessor<BaseFilterState>
+  colFilters: Accessor<ColumnFilterState[]>
   sorting: Accessor<SortState[]>
   visibleRows: Accessor<TData[]>
 
@@ -189,7 +190,8 @@ export interface GridStore<TData> {
   setContainerWidth: (val: number) => void
   setPage: (details: PageDetails) => void
   setPageSize: (size: number) => void
-  setGlobalFilter: (val: string) => void
+  setGlobalFilter: (val: BaseFilterState) => void
+  setColFilter: (val: ColumnFilterState[]) => void
   setSort: (colId: string, direction: SortDirection, multi?: boolean) => void
   togglePinned: (colId: string, state: PinnedState) => void
   toggleSort: (colId: string, multi?: boolean) => void
@@ -211,11 +213,7 @@ export type ColumnFeatures<TData, TKey extends keyof TData> = {
   /**
    * Allow the column to be filtered and the rules to use.
    */
-  filter?:
-    | boolean
-    | {
-        operator?: 'contains' | 'equals' | 'startsWith'
-      }
+  filter?: boolean | FilterFn<TData>
   /**
    * Show pinning options in the column menu
    */
@@ -248,6 +246,38 @@ export type Comparator<TValue> = (a: TValue, b: TValue) => number
 export type SortDirection = 'asc' | 'desc' | null
 export type PinnedState = 'left' | 'right' | undefined | boolean
 export type LoadingVariant = 'skeleton' | 'linear' | 'circular' | ReactNode
+export type FilterFn<TData> = (
+  row: TData,
+  columnId: string,
+  filterValue: unknown,
+) => boolean
+
+export type FilterOperator =
+  | 'contains'
+  | 'equals'
+  | 'starts_with'
+  | 'ends_with'
+  | 'greater_than'
+  | 'less_than'
+  | 'between'
+  | 'includes_some'
+
+export type BaseFilterState = {
+  /**
+   * The preferred operator to use for filtering the data.
+   */
+  operator: FilterOperator
+  // We use 'unknown' because a filter value could be a string (search input),
+  // an array (multi-select checkboxes), a boolean (toggle), or a custom object.
+  value: unknown
+}
+
+export type ColumnFilterState = BaseFilterState & {
+  /**
+   * The column.id the filter is meant to be applied to.
+   */
+  id: string
+}
 
 export type OverlaySlots = {
   /**

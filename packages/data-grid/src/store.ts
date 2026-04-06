@@ -1,5 +1,8 @@
-import { createSignal, createComputed, batch } from '@cerberus-design/signals'
+import { batch, createComputed, createSignal } from '@cerberus-design/signals'
+import { DEFAULT_PAGE_IDX, DEFAULT_THEME, OPERATORS } from './const'
 import type {
+  BaseFilterState,
+  ColumnFilterState,
   GridOptions,
   GridStore,
   InternalColumn,
@@ -8,13 +11,13 @@ import type {
   ThemeOptions,
 } from './types'
 import {
+  applyFilterOperator,
   determineInitialCount,
   determinePageIndex,
   determinePageRange,
   determinePageSize,
   determineRowHeight,
 } from './utils'
-import { DEFAULT_PAGE_IDX, DEFAULT_THEME } from './const'
 
 /**
  * Internal signal-based Store engine driving the state. We expose this in
@@ -28,7 +31,11 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   const [pending, setPending] = createSignal<boolean>(options.pending ?? false)
   const [hasSkeleton] = createSignal<boolean>(options.overlays?.pending === 'skeleton')
 
-  const [globalFilter, setGlobalFilter] = createSignal<string>('')
+  const [globalFilter, setGlobalFilter] = createSignal<BaseFilterState>({
+    operator: OPERATORS.contains,
+    value: null,
+  })
+  const [colFilters, setColFilters] = createSignal<ColumnFilterState[]>([])
   const [sorting, setSorting] = createSignal<SortState[]>([])
 
   const [pageIndex, setPageIndex] = createSignal<number>(
@@ -94,63 +101,91 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     }
   })
 
-  // Processed with data-intensive features
-  const processedRows = createComputed(() => {
+  const filteredRows = createComputed(() => {
     let result = [...rows()]
-    const filter = globalFilter().toLowerCase()
-    const sortState = sorting()
+    const gFilter = globalFilter()
+    const cFilters = colFilters()
 
-    if (filter) {
+    if (cFilters.length > 0) {
       result = result.filter((row) => {
-        // Simple search across all filterable columns
-        return columns().some((col) => {
-          if (!col.filterable) return false
-          const val = String(col.getValue(row)).toLowerCase()
-          return val.includes(filter)
+        // Every column filter must pass (AND logic)
+        return cFilters.every((filter) => {
+          const col = columns().find((c) => c.id === filter.id)
+          if (!col || !col.filterable) return true
+
+          const customFn =
+            typeof col.original.features?.filter === 'function'
+              ? col.original.features.filter
+              : undefined
+
+          if (customFn) {
+            return customFn(row, col.id, filter.value)
+          }
+
+          // 2. Fallback to standard engine
+          const operator = OPERATORS.contains
+
+          const cellValue = col.getValue(row)
+          return applyFilterOperator(cellValue, filter.value, operator)
         })
       })
     }
 
-    if (sortState.length > 0) {
-      result.sort((a, b) => {
-        for (const sort of sortState) {
-          const col = columns().find((c) => c.id === sort.id)
-          if (!col) continue
-
-          const valA = col.getValue(a) as TData[keyof TData]
-          const valB = col.getValue(b) as TData[keyof TData]
-
-          if (valA === valB) continue // Move to next tie-breaker if equal
-
-          // Use custom comparator if provided
-          let comparison = 0
-          const customComparator =
-            typeof col.original.features?.sort === 'object'
-              ? col.original.features.sort.comparator
-              : undefined
-
-          if (customComparator) {
-            comparison = customComparator(valA, valB)
-          } else {
-            // Fallback: Default JS Comparison
-            comparison = valA > valB ? 1 : -1
-          }
-
-          // Invert the result if we are sorting descending
-          return sort.desc ? -comparison : comparison
-        }
-        return 0
+    // B. Apply Global Filter (Fuzzy search across all filterable columns)
+    if (gFilter) {
+      result = result.filter((row) => {
+        return columns().some((col) => {
+          if (!col.filterable) return false
+          const cellValue = col.getValue(row)
+          return applyFilterOperator(cellValue, gFilter.value, gFilter.operator)
+        })
       })
     }
 
     return result
   })
 
+  const sortedRows = createComputed(() => {
+    const currentRows = [...filteredRows()]
+    const sortState = sorting()
+
+    if (sortState.length === 0) return currentRows
+
+    return currentRows.sort((a, b) => {
+      for (const sort of sortState) {
+        const col = columns().find((c) => c.id === sort.id)
+        if (!col) continue
+
+        const valA = col.getValue(a) as TData[keyof TData]
+        const valB = col.getValue(b) as TData[keyof TData]
+
+        if (valA === valB) continue // Move to next tie-breaker if equal
+
+        // Use custom comparator if provided
+        let comparison = 0
+        const customComparator =
+          typeof col.original.features?.sort === 'object'
+            ? col.original.features.sort.comparator
+            : undefined
+
+        if (customComparator) {
+          comparison = customComparator(valA, valB)
+        } else {
+          // Fallback: Default JS Comparison
+          comparison = valA > valB ? 1 : -1
+        }
+
+        // Invert the result if we are sorting descending
+        return sort.desc ? -comparison : comparison
+      }
+      return 0
+    })
+  })
+
   // Derived pagination - Ark handles the rest
   const rowCount = createComputed(
     () =>
-      determineInitialCount(options?.initialState?.pagination) ??
-      processedRows().length,
+      determineInitialCount(options?.initialState?.pagination) ?? sortedRows().length,
   )
   const pageCount = createComputed(() => Math.ceil(rowCount() / pageSize()))
 
@@ -172,9 +207,9 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   const visibleRows = createComputed(() => {
     if (pageSize() && pageCount() > 1) {
       const currentRange = currentPageRange()
-      return processedRows().slice(currentRange.start, currentRange.end)
+      return sortedRows().slice(currentRange.start, currentRange.end)
     }
-    return processedRows()
+    return sortedRows()
   })
 
   const rootCssVars = createComputed(() => {
@@ -271,7 +306,11 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   return {
     columns,
     rows,
+    rowCount,
+    rowSize,
+    visibleRows,
     globalFilter,
+    colFilters,
     sorting,
     pending,
     hasSkeleton,
@@ -282,10 +321,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     currentPageRange,
     isServerPaginated,
     rootCssVars,
-    rowCount,
-    rowSize,
     totalWidth,
-    visibleRows,
 
     // Actions
     updateData: (newData) => {
@@ -359,9 +395,13 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
 
     setGlobalFilter: (val) => {
       batch(() => {
-        setGlobalFilter(val)
+        setGlobalFilter((prev) => ({ ...prev, ...val }))
         setPageIndex(DEFAULT_PAGE_IDX) // Reset to first page on filter
       })
+    },
+
+    setColFilter: (val) => {
+      setColFilters([...val])
     },
 
     setContainerWidth: (w: number) => {
