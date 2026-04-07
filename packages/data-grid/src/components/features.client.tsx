@@ -38,9 +38,9 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
     const category = specialVal[0]
     const action = specialVal[1]
 
-    // Non-action items
+    // Flat-action items
     if (val === 'filter') {
-      return console.log('Show Filter popover...')
+      return store.setShowColFilter(true)
     }
     if (val === 'unsort') {
       return store.setSort(props.id, null)

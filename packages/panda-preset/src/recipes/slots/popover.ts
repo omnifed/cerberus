@@ -97,6 +97,10 @@ export const popover: Partial<SlotRecipeConfig> = defineSlotRecipe({
       right: 'md',
       top: 'md',
       zIndex: 'decorator',
+      _focus: {
+        outline: 'none',
+        boxShadow: 'none',
+      },
     },
   },
 

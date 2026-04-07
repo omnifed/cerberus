@@ -86,13 +86,7 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
         )}
       </Show>
 
-      <DGPopover
-        open={true}
-        positioning={{
-          placement: 'top-end',
-          offset: { mainAxis: -12 },
-        }}
-      >
+      <DGPopover>
         <DGPopoverAnchor>
           <Stack
             data-scope={SCOPE}
