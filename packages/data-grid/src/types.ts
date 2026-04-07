@@ -165,6 +165,7 @@ export interface GridStore<TData> {
   columns: Accessor<InternalColumn<TData>[]>
   rows: Accessor<TData[]>
   pending: Accessor<boolean>
+  showColFilter: Accessor<boolean>
   globalFilter: Accessor<BaseFilterState>
   colFilters: Accessor<ColumnFilterState[]>
   sorting: Accessor<SortState[]>
@@ -192,6 +193,7 @@ export interface GridStore<TData> {
   setPageSize: (size: number) => void
   setGlobalFilter: (val: BaseFilterState) => void
   setColFilter: (val: ColumnFilterState[]) => void
+  setShowColFilter: (val: boolean) => void
   setSort: (colId: string, direction: SortDirection, multi?: boolean) => void
   togglePinned: (colId: string, state: PinnedState) => void
   toggleSort: (colId: string, multi?: boolean) => void

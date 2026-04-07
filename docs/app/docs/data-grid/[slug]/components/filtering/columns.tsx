@@ -25,6 +25,10 @@ export const columns = [
     minWidth: 300,
     features: {
       sort: true,
+      filter: (row, colId, val) => {
+        console.log({ row, colId, val })
+        return true
+      },
     },
     cell: ({ row, value }) => (
       <VStack alignItems="flex-start" gap="0">
@@ -39,13 +43,13 @@ export const columns = [
   columnHelper.accessorFn((row) => row.department.name, {
     id: 'department',
     header: 'Department',
-    features: { sort: true },
+    features: { sort: true, filter: true },
   }),
 
   columnHelper.accessor('salary', {
     header: 'Salary',
     width: 135,
-    features: { sort: true, filter: true },
+    features: { sort: true },
     cell: ({ value }) => (
       <Format.Number value={value} style="currency" currency="USD" />
     ),

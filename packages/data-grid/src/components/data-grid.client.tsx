@@ -9,6 +9,7 @@ import { DataGridProvider } from '../context.client'
 import { createGridStore } from '../store'
 import type { GridOptions } from '../types'
 import { GridPagination } from './pagination.client'
+import { DGPopover, DGPopoverAnchor } from './popover.client'
 import { GridViewport } from './viewport.client'
 
 function DataGridEl<TData>(props: GridOptions<TData>) {
@@ -85,25 +86,37 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
         )}
       </Show>
 
-      <Stack
-        data-scope={SCOPE}
-        data-part={PARTS.ROOT}
-        dir="columns"
-        maxH="inherit"
-        minH="inherit"
-        gap="0"
-        h="full"
-        bgColor="page.surface.100/55"
-        border="var(--border, 1px solid)"
-        borderColor="var(--border-color, var(--cerberus-colors-page-border-initial))"
-        rounded="var(--rounded, var(--cerberus-radii-lg))"
-        overflow="hidden"
-        w="full"
-        ref={rootRef}
+      <DGPopover
+        open={true}
+        positioning={{
+          placement: 'top-end',
+          offset: { mainAxis: -12 },
+        }}
       >
-        <Show when={ready}>{() => <GridViewport overlays={props.overlays} />}</Show>
-        <GridPagination />
-      </Stack>
+        <DGPopoverAnchor>
+          <Stack
+            data-scope={SCOPE}
+            data-part={PARTS.ROOT}
+            dir="columns"
+            maxH="inherit"
+            minH="inherit"
+            gap="0"
+            h="full"
+            bgColor="page.surface.100/55"
+            border="var(--border, 1px solid)"
+            borderColor="var(--border-color, var(--cerberus-colors-page-border-initial))"
+            rounded="var(--rounded, var(--cerberus-radii-lg))"
+            overflow="hidden"
+            w="full"
+            ref={rootRef}
+          >
+            <Show when={ready}>
+              {() => <GridViewport overlays={props.overlays} rootRef={rootRef} />}
+            </Show>
+            <GridPagination />
+          </Stack>
+        </DGPopoverAnchor>
+      </DGPopover>
 
       <Show when={props.footer}>
         {() => (

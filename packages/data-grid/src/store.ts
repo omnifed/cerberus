@@ -31,6 +31,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   const [pending, setPending] = createSignal<boolean>(options.pending ?? false)
   const [hasSkeleton] = createSignal<boolean>(options.overlays?.pending === 'skeleton')
 
+  const [showColFilter, setShowColFilter] = createSignal<boolean>(false)
   const [globalFilter, setGlobalFilter] = createSignal<BaseFilterState>({
     operator: OPERATORS.contains,
     value: null,
@@ -309,6 +310,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     rowCount,
     rowSize,
     visibleRows,
+    showColFilter,
     globalFilter,
     colFilters,
     sorting,
@@ -402,6 +404,10 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
 
     setColFilter: (val) => {
       setColFilters([...val])
+    },
+
+    setShowColFilter: (val) => {
+      setShowColFilter(val)
     },
 
     setContainerWidth: (w: number) => {

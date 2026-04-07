@@ -5,7 +5,7 @@ import { PlacementContainer } from './placement-container'
 import { PopoverRootProps } from './primitives'
 
 export interface PopoverBaseProps extends PopoverRootProps {
-  trigger: ReactNode
+  trigger?: ReactNode
   usage?: 'default' | 'arrow'
 }
 
@@ -18,7 +18,9 @@ function PopoverRoot(props: PopoverProps) {
 
   return (
     <PopoverParts.Root {...rootProps}>
-      <PopoverParts.Trigger asChild>{slots.trigger}</PopoverParts.Trigger>
+      <Show when={trigger}>
+        {() => <PopoverParts.Trigger asChild>{trigger}</PopoverParts.Trigger>}
+      </Show>
 
       <PlacementContainer
         positioning={(props as unknown as PopoverRootProps).positioning}

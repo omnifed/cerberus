@@ -4,7 +4,6 @@ import {
   IconButton,
   Menu,
   MenuContent,
-  MenuItem,
   MenuSeparator,
   MenuTrigger,
   Show,
@@ -15,6 +14,7 @@ import { useRead } from '@cerberus-design/signals'
 import { useMemo } from 'react'
 import { useDataGridContext } from '../context.client'
 import { InternalColumn, PinnedState, SortDirection } from '../types'
+import { FilterMenuItem } from './filter-item.client'
 import { MatchPinnedItems } from './pinned-items.client'
 import { MatchSortItems } from './sort-items.client'
 
@@ -94,7 +94,7 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
 
         <Show when={props.filterable}>
           <MenuSeparator />
-          <MenuItem value="filter">Filter</MenuItem>
+          <FilterMenuItem />
         </Show>
       </MenuContent>
     </Menu>

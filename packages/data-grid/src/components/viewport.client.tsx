@@ -10,8 +10,10 @@ import type { OverlaySlots } from '../types'
 import { useVirtualizer } from '../virtualizer.client'
 import { GridHeaderCell, GridRow } from './grid.client'
 import { NoContentOverlay, PendingOverlay } from './overlays'
+import { DGPopoverContent } from './popover.client'
 
 interface GridViewportProps {
+  rootRef: RefObject<HTMLDivElement | null>
   overlays?: OverlaySlots
 }
 
@@ -89,6 +91,8 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
       <Show when={pending}>
         {() => <PendingOverlay variant={props.overlays?.pending} />}
       </Show>
+
+      <DGPopoverContent ref={props.rootRef} />
     </Scrollable>
   )
 })
