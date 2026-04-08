@@ -20,7 +20,7 @@ export function FilterMenuItem() {
         <MenuItem value="clear-filter">
           <HStack gap="sm" w="full">
             <ClearIcon />
-            Remove Filter
+            Clear Filters
           </HStack>
         </MenuItem>
       }

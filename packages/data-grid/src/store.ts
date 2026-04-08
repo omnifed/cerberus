@@ -107,12 +107,6 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     const gFilter = globalFilter()
     const cFilters = colFilters()
 
-    console.log({
-      result,
-      gFilter,
-      cFilters,
-    })
-
     if (cFilters.length > 0) {
       result = result.filter((row) => {
         // Every column filter must pass (AND logic)

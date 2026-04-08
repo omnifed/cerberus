@@ -7,16 +7,15 @@ import {
   Tooltip,
   useCerberusContext,
 } from '@cerberus-design/react'
-import { useRead } from '@cerberus-design/signals'
+import { createComputed, useRead } from '@cerberus-design/signals'
 import {
   type CSSProperties,
   memo,
   type MouseEvent,
   type PropsWithChildren,
   type ReactNode,
-  useMemo,
 } from 'react'
-import { Box, HStack } from 'styled-system/jsx'
+import { Box, Center, HStack } from 'styled-system/jsx'
 import type { Dict } from 'styled-system/types'
 import { PARTS, SCOPE } from '../const'
 import { useDataGridContext } from '../context.client'
@@ -34,27 +33,38 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
   props: GridHeaderCellProps<TData>,
 ) {
   const { column } = props
+
   const store = useDataGridContext<TData>()
   const { icons } = useCerberusContext()
 
   const pinnedVal = useRead(column.pinned)
   const sortingVal = useRead(store.sorting)
+  const colFilters = useRead(store.colFilters)
 
   const pinnedState = usePinnedState(pinnedVal)
   const pinnedAttr = usePinnedAttribute(pinnedVal)
   const style = useColumnStyles(column, pinnedVal)
 
-  const isSortedDesc = useMemo(() => {
+  const isSortedDesc = createComputed(() => {
     const result = sortingVal.find((item) => item.id === column.id)
     if (result) return result.desc
     return false
-  }, [sortingVal, column.id])
+  })
+
+  const hasFilters = createComputed(() => {
+    return colFilters.some((filter) => filter.id === column.id)
+  })
 
   const SortAscIcon = icons.sortAsc
   const SortDescIcon = icons.sortDesc
+  const EditFilterIcon = icons.filterEdit
 
   function handleToggleSorting(e: MouseEvent<HTMLButtonElement>) {
     store.toggleSort(column.id, e.shiftKey)
+  }
+
+  function handleEditFilters() {
+    store.setShowColFilter(true)
   }
 
   return (
@@ -111,9 +121,17 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
           ? column.original.header({ colId: column.id })
           : column.original.header}
 
+        <Show when={hasFilters()}>
+          <Tooltip content="Edit filters" openDelay={800} asChild>
+            <IconButton ariaLabel="Edit filters" size="sm" onClick={handleEditFilters}>
+              <EditFilterIcon />
+            </IconButton>
+          </Tooltip>
+        </Show>
+
         <Show when={column.sortable}>
           <Tooltip
-            content={isSortedDesc ? 'Sort Ascending' : 'Sort Decending'}
+            content={isSortedDesc() ? 'Sort Ascending' : 'Sort Decending'}
             openDelay={800}
             asChild
           >
@@ -128,7 +146,7 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
               transitionDuration="fast"
               onClick={handleToggleSorting}
             >
-              <Show when={isSortedDesc} fallback={<SortAscIcon />}>
+              <Show when={isSortedDesc()} fallback={<SortAscIcon />}>
                 <SortDescIcon />
               </Show>
             </IconButton>
@@ -136,7 +154,18 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
         </Show>
       </HStack>
 
-      <HeaderCellOptions {...column} />
+      <Center
+        bgColor="var(--head-cell-bg-color)"
+        bottom="0"
+        pos="absolute"
+        px="sm"
+        right="0"
+        top="0"
+        w="fit-content"
+        zIndex="11"
+      >
+        <HeaderCellOptions {...column} />
+      </Center>
 
       <Show when={pinnedState === 'pinned'}>
         {() => <ShadowFiller style={style} {...pinnedAttr} />}
