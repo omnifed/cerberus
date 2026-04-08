@@ -10,26 +10,24 @@ import { DEMOS } from '../components/filtering/static'
 
 ## Overview
 
-Sorting allows users to list the data in ascending or descending order. There are
-three ways for a user to sort:
+Filtering allows users to view a subset of data based on criteria. There are
+three ways for a user to filter:
 
-1. **Clicking on the header-cell icon**: This will toggle the order from ascending to descending and vice versa.
-2. **Using the sort menu**: Users can also use the sort menu to strictly determine the order of the data.
-3. **Multi-column sorting**: Hold the `Shift` key while clicking on the second sort button.
-
-<CodePreview {...DEMOS.basic} />
-
-## Implementing column sorting
-
-You must opt-in to column sorting by setting the `features.sort` prop to `true` or
-utilzing the options object. Doing so will display the sorting options in the column menu.
+1. **Single-column filtering**: Clicking the "Filter" option from the feature menu when the column has opted into filtering.
+2. **Multi-column filtering**: Clicking the plus icon to add a new row to the single-column filter option from #1.
+3. **Global filtering**: Utilizing the `setGlobalFilter` action from the [Data Grid Context](/docs/data-grid/context).
 
 <CodePreview {...DEMOS.basic} />
 
-## Multi-column Sorting
+## Implementing column filtering
 
-Multi-column sorting is enabled by default on the toggle sort button. To use
-multi-column sorting hold the `Shift` key while clicking on the second sort button.
+You must opt-in to column filtering by setting the `features.filter` prop to `true` or passing in a custom filter function. Doing so will display the filter option in the column menu.
+
+<CodePreview {...DEMOS.basic} />
+
+## Multi-column Filtering
+
+Multi-column filtering is enabled by default. The user simply adds a new column-based filter group by pressing the "plus" icon in the popover.
 
 <CodePreview {...DEMOS.basic} />
 

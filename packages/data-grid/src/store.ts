@@ -107,6 +107,12 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     const gFilter = globalFilter()
     const cFilters = colFilters()
 
+    console.log({
+      result,
+      gFilter,
+      cFilters,
+    })
+
     if (cFilters.length > 0) {
       result = result.filter((row) => {
         // Every column filter must pass (AND logic)
@@ -133,7 +139,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     }
 
     // B. Apply Global Filter (Fuzzy search across all filterable columns)
-    if (gFilter) {
+    if (gFilter.value) {
       result = result.filter((row) => {
         return columns().some((col) => {
           if (!col.filterable) return false
@@ -184,10 +190,11 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   })
 
   // Derived pagination - Ark handles the rest
-  const rowCount = createComputed(
-    () =>
-      determineInitialCount(options?.initialState?.pagination) ?? sortedRows().length,
-  )
+  const rowCount = createComputed(() => {
+    return (
+      determineInitialCount(options?.initialState?.pagination) ?? sortedRows().length
+    )
+  })
   const pageCount = createComputed(() => Math.ceil(rowCount() / pageSize()))
 
   const orderedColumns = createComputed(() => {
