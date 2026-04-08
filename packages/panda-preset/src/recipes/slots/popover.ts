@@ -51,7 +51,7 @@ export const popover: Partial<SlotRecipeConfig> = defineSlotRecipe({
       outline: '0',
       pos: 'relative',
       rounded: 'sm',
-      shadow: 'sm',
+      boxShadow: 'xl',
       transformOrigin: 'var(--transform-origin)',
       width: {
         base: 'min(var(--popover-mobile-size), var(--popover-size))',

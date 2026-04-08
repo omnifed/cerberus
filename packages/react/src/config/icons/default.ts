@@ -1,4 +1,5 @@
 import {
+  ArrowRight,
   Calendar,
   CaretDown,
   Checkmark,
@@ -36,6 +37,7 @@ import { SortAscIcon, SortDescIcon } from './sort.icons'
  */
 export const defaultIcons: Required<DefinedIcons> = {
   accordionIndicator: ChevronDown,
+  arrowRight: ArrowRight,
   avatar: UserFilled,
   calendar: Calendar,
   calendarPrev: ChevronLeft,

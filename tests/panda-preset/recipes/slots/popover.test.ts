@@ -70,7 +70,7 @@ describe('popover recipe', () => {
         outline: '0',
         pos: 'relative',
         rounded: 'sm',
-        shadow: 'sm',
+        boxShadow: 'xl',
         transformOrigin: 'var(--transform-origin)',
         width: {
           base: 'min(var(--popover-mobile-size), var(--popover-size))',

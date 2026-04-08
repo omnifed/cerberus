@@ -14,6 +14,7 @@ export interface SystemConfig {
 
 export interface DefinedIcons<T extends IconType = IconType> {
   accordionIndicator?: T
+  arrowRight?: T
   avatar?: T
   calendar?: T
   calendarPrev?: T
