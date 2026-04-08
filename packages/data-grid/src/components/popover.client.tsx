@@ -14,13 +14,15 @@ import {
   PopoverRootProps,
   Portal,
   Select,
+  SelectRootProps,
+  Show,
   useCerberusContext,
 } from '@cerberus-design/react'
 import { useRead } from '@cerberus-design/signals'
 import { type HTMLAttributes, type PropsWithChildren, type RefObject } from 'react'
-import { useFormStatus } from 'react-dom'
+import { FormStatus, useFormStatus } from 'react-dom'
 import type { ColumnFilterState, FilterOperator } from 'src/types'
-import { Box, HStack } from 'styled-system/jsx'
+import { Box, HStack, Stack } from 'styled-system/jsx'
 import { OPERATORS } from '../const'
 import { useDataGridContext } from '../context.client'
 
@@ -117,11 +119,9 @@ function FilterForm<TData>() {
 function FormFields<TData>() {
   const status = useFormStatus()
 
-  const { icons } = useCerberusContext()
-  const { arrowRight: Icon } = icons
-
   const store = useDataGridContext<TData>()
   const cols = useRead(store.columns)
+  const filters = useRead(store.colFilters)
 
   const colCollection = createSelectCollection(
     cols.map((col) => ({ value: col.id, label: String(col.original.header) })),
@@ -134,16 +134,56 @@ function FormFields<TData>() {
   )
 
   return (
+    <Stack direction="column" gap="sm" w="full">
+      <For
+        each={filters}
+        fallback={
+          <FormSection
+            colCollection={colCollection}
+            operatorCollection={operatorCollection}
+            defaultColValue={cols[0].id}
+            status={status}
+          />
+        }
+      >
+        {(filter) => (
+          <FormSection
+            key={`row:${filter.id}`}
+            colCollection={colCollection}
+            operatorCollection={operatorCollection}
+            defaultColValue={cols[0].id}
+            filter={filter}
+            status={status}
+            multi
+          />
+        )}
+      </For>
+    </Stack>
+  )
+}
+
+interface FormSectionProps {
+  colCollection: SelectRootProps['collection']
+  operatorCollection: SelectRootProps['collection']
+  filter?: ColumnFilterState
+  defaultColValue: string
+  status: FormStatus
+  multi?: boolean
+}
+
+function FormSection(props: FormSectionProps) {
+  const { filter } = props
+  return (
     <HStack gap="sm" w="full">
       <Field label="Select a column">
         <Select
-          collection={colCollection}
+          collection={props.colCollection}
           name="column"
           placeholder="Choose option"
           size="sm"
-          defaultValue={[cols[0].id]}
+          defaultValue={[filter?.id ?? props.defaultColValue]}
         >
-          <For each={colCollection.items}>
+          <For each={props.colCollection.items}>
             {(item) => <Option key={item.value} item={item} />}
           </For>
         </Select>
@@ -151,34 +191,49 @@ function FormFields<TData>() {
 
       <Field label="Select a operator">
         <Select
-          collection={operatorCollection}
+          collection={props.operatorCollection}
           name="operator"
           placeholder="Choose option"
           size="sm"
-          defaultValue={[Object.keys(OPERATORS)[0]]}
+          defaultValue={[filter?.operator ?? Object.keys(OPERATORS)[0]]}
         >
-          <For each={operatorCollection.items}>
+          <For each={props.operatorCollection.items}>
             {(item) => <Option key={item.value} item={item} />}
           </For>
         </Select>
       </Field>
 
       <Field label="Value" required>
-        <Input name="value" size="sm" />
+        <Input name="value" size="sm" defaultValue={filter?.value} />
       </Field>
 
-      <Box alignSelf="flex-end" mb="0.25rem">
-        <IconButton
-          ariaLabel="Submit form"
-          disabled={status.pending}
-          type="submit"
-          usage="filled"
-          h="2rem!"
-          w="2rem!"
-        >
-          <Icon />
-        </IconButton>
-      </Box>
+      <Show when={!props.multi}>
+        <SubmitButton pending={props.status.pending} />
+      </Show>
     </HStack>
+  )
+}
+
+interface SubmitButtonProps {
+  pending: boolean
+}
+
+function SubmitButton(props: SubmitButtonProps) {
+  const { icons } = useCerberusContext()
+  const { arrowRight: Icon } = icons
+
+  return (
+    <Box alignSelf="flex-end" mb="0.25rem">
+      <IconButton
+        ariaLabel="Submit form"
+        disabled={props.pending}
+        type="submit"
+        usage="filled"
+        h="2rem!"
+        w="2rem!"
+      >
+        <Icon />
+      </IconButton>
+    </Box>
   )
 }
