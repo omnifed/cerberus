@@ -12,6 +12,7 @@ import {
 } from '@cerberus-design/react'
 import { useRead } from '@cerberus-design/signals'
 import { useMemo } from 'react'
+import { FEATURE_VALUES } from '../const'
 import { useDataGridContext } from '../context.client'
 import { InternalColumn, PinnedState, SortDirection } from '../types'
 import { FilterMenuItem } from './filter-item.client'
@@ -39,19 +40,23 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
     const action = specialVal[1]
 
     // Flat-action items
-    if (val === 'filter') {
-      return store.setShowColFilter(true)
-    }
-    if (val === 'unsort') {
-      return store.setSort(props.id, null)
+    switch (val) {
+      case FEATURE_VALUES.filter:
+        return store.setShowColFilter(true)
+      case FEATURE_VALUES.filterClear:
+        return store.setColFilter([])
+      case FEATURE_VALUES.unsort:
+        return store.setSort(props.id, null)
+      default:
+        break
     }
 
     switch (category) {
-      case 'pin':
+      case FEATURE_VALUES.pin:
         return store.togglePinned(props.id, action as PinnedState)
-      case 'unpin':
+      case FEATURE_VALUES.unpin:
         return store.togglePinned(props.id, false)
-      case 'sort':
+      case FEATURE_VALUES.sort:
         return store.setSort(props.id, (action as SortDirection) ?? null)
       default:
         console.error('Unhandled action:', { details, action })

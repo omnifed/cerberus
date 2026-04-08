@@ -28,6 +28,7 @@ export interface DefinedIcons<T extends IconType = IconType> {
   dangerNotification?: T
   fileUploader?: T
   filter?: T
+  filterClear?: T
   indeterminate?: T
   increment?: T
   infoNotification?: T

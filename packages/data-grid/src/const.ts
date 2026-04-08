@@ -14,6 +14,23 @@ export const PARTS = {
   FOOTER: 'footer',
 }
 
+// Features
+
+export const FEATURE_VALUES = {
+  filter: 'filter',
+  filterClear: 'clear-filter',
+  pin: 'pin',
+  pinRight: 'pin_right',
+  pinLeft: 'pin_left',
+  unpin: 'unpin',
+  unpinRight: 'unpin_right',
+  unpinLeft: 'unpin_left',
+  unsort: 'unsort',
+  sort: 'sort',
+  sortAsc: 'sort_asc',
+  sortDesc: 'sort_desc',
+}
+
 // Pagination
 
 export const DEFAULT_PAGE_IDX = 1 // based on Ark API
