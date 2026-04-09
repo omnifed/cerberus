@@ -12,7 +12,7 @@ import {
 } from '@cerberus-design/react'
 import { useRead } from '@cerberus-design/signals'
 import { useMemo } from 'react'
-import { FEATURE_VALUES } from '../const'
+import { FEATURE_VALUES, OPERATORS } from '../const'
 import { useDataGridContext } from '../context.client'
 import { InternalColumn, PinnedState, SortDirection } from '../types'
 import { FilterMenuItem } from './filter-item.client'
@@ -42,9 +42,13 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
     // Flat-action items
     switch (val) {
       case FEATURE_VALUES.filter:
-        return store.setShowColFilter(true)
+        return handleInitFilter()
       case FEATURE_VALUES.filterClear:
-        return store.setColFilter([])
+        return store.setColFilter((prev) => ({
+          ...prev,
+          active: prev.active.filter((id) => id !== props.id),
+          editing: null,
+        }))
       case FEATURE_VALUES.unsort:
         return store.setSort(props.id, null)
       default:
@@ -61,6 +65,23 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
       default:
         console.error('Unhandled action:', { details, action })
     }
+  }
+
+  function handleInitFilter() {
+    store.setColFilter((prev) => ({
+      ...prev,
+      editing: props.id,
+      active: [...prev.active, props.id],
+      filters: {
+        ...prev.filters,
+        [props.id]: {
+          id: props.id,
+          operator: OPERATORS.contains,
+          value: '',
+        },
+      },
+    }))
+    return store.setShowColFilter(true)
   }
 
   if (!props.sortable && !props.pinnable && !props.filterable) {
@@ -99,7 +120,7 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
 
         <Show when={props.filterable}>
           <MenuSeparator />
-          <FilterMenuItem />
+          <FilterMenuItem colId={props.id} />
         </Show>
       </MenuContent>
     </Menu>

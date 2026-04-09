@@ -167,7 +167,7 @@ export interface GridStore<TData> {
   pending: Accessor<boolean>
   showColFilter: Accessor<boolean>
   globalFilter: Accessor<BaseFilterState>
-  colFilters: Accessor<ColumnFilterState[]>
+  colFilters: Accessor<ColumnFilterState>
   sorting: Accessor<SortState[]>
   visibleRows: Accessor<TData[]>
 
@@ -192,7 +192,7 @@ export interface GridStore<TData> {
   setPage: (details: PageDetails) => void
   setPageSize: (size: number) => void
   setGlobalFilter: (val: BaseFilterState) => void
-  setColFilter: (val: ColumnFilterState[]) => void
+  setColFilter: Setter<ColumnFilterState>
   setShowColFilter: (val: boolean) => void
   setSort: (colId: string, direction: SortDirection, multi?: boolean) => void
   togglePinned: (colId: string, state: PinnedState) => void
@@ -274,11 +274,17 @@ export type BaseFilterState = {
   value: unknown
 }
 
-export type ColumnFilterState = BaseFilterState & {
+export type ColumnFilter = BaseFilterState & {
   /**
    * The column.id the filter is meant to be applied to.
    */
   id: string
+}
+
+export type ColumnFilterState = {
+  active: string[]
+  filters: Record<string, ColumnFilter>
+  editing: string | null
 }
 
 export type OverlaySlots = {

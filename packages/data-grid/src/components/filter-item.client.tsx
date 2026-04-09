@@ -1,13 +1,22 @@
 'use client'
 
 import { MenuItem, Show, useCerberusContext } from '@cerberus-design/react'
-import { useRead } from '@cerberus-design/signals'
+import { createComputed, useRead } from '@cerberus-design/signals'
 import { HStack } from 'styled-system/jsx'
 import { useDataGridContext } from '../context.client'
+import { InternalColumn } from 'src/types'
 
-export function FilterMenuItem() {
+interface FilterMenuItemProps<TData> {
+  colId: InternalColumn<TData>['id']
+}
+
+export function FilterMenuItem<TData>(props: FilterMenuItemProps<TData>) {
   const store = useDataGridContext()
   const colDefs = useRead(store.colFilters)
+
+  const hasFilter = createComputed(() => {
+    return colDefs.active.some((filterId) => filterId === props.colId)
+  })
 
   const { icons } = useCerberusContext()
   const FilterIcon = icons.filter
@@ -15,20 +24,20 @@ export function FilterMenuItem() {
 
   return (
     <Show
-      when={!colDefs.length}
+      when={hasFilter()}
       fallback={
-        <MenuItem value="clear-filter">
+        <MenuItem value="filter">
           <HStack gap="sm" w="full">
-            <ClearIcon />
-            Clear Filters
+            <FilterIcon />
+            Filter
           </HStack>
         </MenuItem>
       }
     >
-      <MenuItem value="filter">
+      <MenuItem value="clear-filter">
         <HStack gap="sm" w="full">
-          <FilterIcon />
-          Filter
+          <ClearIcon />
+          Clear Filter
         </HStack>
       </MenuItem>
     </Show>

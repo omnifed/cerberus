@@ -36,7 +36,11 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     operator: OPERATORS.contains,
     value: null,
   })
-  const [colFilters, setColFilters] = createSignal<ColumnFilterState[]>([])
+  const [colFilters, setColFilters] = createSignal<ColumnFilterState>({
+    active: [],
+    filters: {},
+    editing: null,
+  })
   const [sorting, setSorting] = createSignal<SortState[]>([])
 
   const [pageIndex, setPageIndex] = createSignal<number>(
@@ -107,11 +111,12 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     const gFilter = globalFilter()
     const cFilters = colFilters()
 
-    if (cFilters.length > 0) {
+    if (cFilters.active.length > 0) {
       result = result.filter((row) => {
-        // Every column filter must pass (AND logic)
-        return cFilters.every((filter) => {
-          const col = columns().find((c) => c.id === filter.id)
+        return cFilters.active.every((filterId) => {
+          const col = columns().find((c) => c.id === filterId)
+          const filter = cFilters.filters[filterId]
+
           if (!col || !col.filterable) return true
 
           const customFn =
@@ -123,11 +128,8 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
             return customFn(row, col.id, filter.value)
           }
 
-          // 2. Fallback to standard engine
-          const operator = OPERATORS.contains
-
           const cellValue = col.getValue(row)
-          return applyFilterOperator(cellValue, filter.value, operator)
+          return applyFilterOperator(cellValue, filter.value, filter.operator)
         })
       })
     }
@@ -404,7 +406,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     },
 
     setColFilter: (val) => {
-      setColFilters([...val])
+      setColFilters(val)
     },
 
     setShowColFilter: (val) => {

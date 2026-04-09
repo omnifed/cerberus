@@ -17,7 +17,7 @@ import {
 } from 'react'
 import { Box, Center, HStack } from 'styled-system/jsx'
 import type { Dict } from 'styled-system/types'
-import { PARTS, SCOPE } from '../const'
+import { OPERATORS, PARTS, SCOPE } from '../const'
 import { useDataGridContext } from '../context.client'
 import { useColumnStyles, usePinnedAttribute, usePinnedState } from '../hooks.client'
 import type { InternalColumn } from '../types'
@@ -52,7 +52,7 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
   })
 
   const hasFilters = createComputed(() => {
-    return colFilters.some((filter) => filter.id === column.id)
+    return colFilters.active.some((filterId) => filterId === column.id)
   })
 
   const SortAscIcon = icons.sortAsc
@@ -64,6 +64,19 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
   }
 
   function handleEditFilters() {
+    store.setColFilter((prev) => ({
+      ...prev,
+      active: [...prev.active, column.id],
+      filters: {
+        ...prev.filters,
+        [column.id]: {
+          id: column.id,
+          operator: OPERATORS.contains,
+          value: '',
+        },
+      },
+      editing: column.id,
+    }))
     store.setShowColFilter(true)
   }
 

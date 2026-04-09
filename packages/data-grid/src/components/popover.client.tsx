@@ -1,6 +1,8 @@
 'use client'
 
 import {
+  Button,
+  ButtonGroup,
   cerberus,
   createSelectCollection,
   Field,
@@ -15,16 +17,15 @@ import {
   Portal,
   Select,
   SelectRootProps,
-  Show,
   useCerberusContext,
 } from '@cerberus-design/react'
-import { useRead } from '@cerberus-design/signals'
+import { createComputed, useRead } from '@cerberus-design/signals'
 import { type HTMLAttributes, type PropsWithChildren, type RefObject } from 'react'
 import { FormStatus, useFormStatus } from 'react-dom'
-import type { ColumnFilterState, FilterOperator } from 'src/types'
 import { Box, HStack, Stack } from 'styled-system/jsx'
 import { OPERATORS } from '../const'
 import { useDataGridContext } from '../context.client'
+import type { ColumnFilter, FilterOperator } from '../types'
 
 export function DGPopover(props: PropsWithChildren<PopoverRootProps>) {
   const store = useDataGridContext()
@@ -38,10 +39,18 @@ export function DGPopover(props: PropsWithChildren<PopoverRootProps>) {
   return (
     <PopoverParts.Root
       {...props}
+      lazyMount
       open={open}
-      onOpenChange={(details: OpenChangeDetails) =>
+      onOpenChange={(details: OpenChangeDetails) => {
+        if (!details.open) {
+          store.setColFilter((prev) => ({
+            ...prev,
+            active: prev.active.filter((filterId) => prev.filters[filterId].value),
+            editing: null,
+          }))
+        }
         store.setShowColFilter(details.open)
-      }
+      }}
       portalled
       positioning={{
         placement: 'top-start',
@@ -75,7 +84,7 @@ export function DGPopoverContent(props: DGPopoverContentProps) {
             '--popover-size': '37.5rem!',
           }}
         >
-          <PopoverParts.Body>
+          <PopoverParts.Header>
             <PopoverParts.CloseTrigger asChild>
               <IconButtonRoot size="sm" usage="ghost">
                 <CloseIcon />
@@ -85,11 +94,9 @@ export function DGPopoverContent(props: DGPopoverContentProps) {
             <PopoverParts.Title textStyle="label-md">
               Filter By Column
             </PopoverParts.Title>
+          </PopoverParts.Header>
 
-            <Box gap="sm" pt="0.62rem" w="full">
-              <FilterForm />
-            </Box>
-          </PopoverParts.Body>
+          <FilterForm />
         </PopoverParts.Content>
       </PopoverParts.Positioner>
     </Portal>
@@ -99,20 +106,29 @@ export function DGPopoverContent(props: DGPopoverContentProps) {
 function FilterForm<TData>() {
   const store = useDataGridContext<TData>()
 
-  // TODO: Update this to handle multi-select
   function filter(formData: FormData) {
-    const payload: ColumnFilterState = {
+    const payload: ColumnFilter = {
       id: formData.get('column') as string,
       operator: formData.get('operator') as FilterOperator,
       value: formData.get('value') as string,
     }
-    store.setColFilter([payload])
+    store.setColFilter((prev) => ({
+      ...prev,
+      active: [...prev.active, payload.id],
+      filters: {
+        ...prev.filters,
+        [payload.id]: payload,
+      },
+      editing: null,
+    }))
     store.setShowColFilter(false)
   }
 
   return (
     <cerberus.form action={filter} w="full">
-      <FormFields />
+      <PopoverParts.Body>
+        <FormFields />
+      </PopoverParts.Body>
     </cerberus.form>
   )
 }
@@ -122,7 +138,11 @@ function FormFields<TData>() {
 
   const store = useDataGridContext<TData>()
   const cols = useRead(store.columns)
-  const filters = useRead(store.colFilters)
+  const colFilters = useRead(store.colFilters)
+
+  const filterToEdit = createComputed<ColumnFilter>(() => {
+    return colFilters.filters[colFilters.editing as keyof typeof colFilters.filters]
+  })
 
   const colCollection = createSelectCollection(
     cols.map((col) => ({ value: col.id, label: String(col.original.header) })),
@@ -134,31 +154,17 @@ function FormFields<TData>() {
     })),
   )
 
+  if (!filterToEdit()) return null
+
   return (
     <Stack direction="column" gap="sm" w="full">
-      <For
-        each={filters}
-        fallback={
-          <FormSection
-            colCollection={colCollection}
-            operatorCollection={operatorCollection}
-            defaultColValue={cols[0].id}
-            status={status}
-          />
-        }
-      >
-        {(filter) => (
-          <FormSection
-            key={`row:${filter.id}`}
-            colCollection={colCollection}
-            operatorCollection={operatorCollection}
-            defaultColValue={cols[0].id}
-            filter={filter}
-            status={status}
-            multi
-          />
-        )}
-      </For>
+      <FormSection
+        colCollection={colCollection}
+        operatorCollection={operatorCollection}
+        defaultColValue={cols[0].id}
+        filter={filterToEdit()}
+        status={status}
+      />
     </Stack>
   )
 }
@@ -166,14 +172,14 @@ function FormFields<TData>() {
 interface FormSectionProps {
   colCollection: SelectRootProps['collection']
   operatorCollection: SelectRootProps['collection']
-  filter?: ColumnFilterState
   defaultColValue: string
   status: FormStatus
-  multi?: boolean
+  filter?: ColumnFilter
 }
 
 function FormSection(props: FormSectionProps) {
   const { filter } = props
+
   return (
     <HStack gap="sm" w="full">
       <Field label="Select a column">
@@ -196,7 +202,7 @@ function FormSection(props: FormSectionProps) {
           name="operator"
           placeholder="Choose option"
           size="sm"
-          defaultValue={[filter?.operator ?? Object.keys(OPERATORS)[0]]}
+          defaultValue={[filter?.operator ?? OPERATORS.contains]}
         >
           <For each={props.operatorCollection.items}>
             {(item) => <Option key={item.value} item={item} />}
@@ -208,9 +214,43 @@ function FormSection(props: FormSectionProps) {
         <Input name="value" size="sm" defaultValue={filter?.value} />
       </Field>
 
-      <Show when={!props.multi}>
-        <SubmitButton pending={props.status.pending} />
-      </Show>
+      <SubmitButton pending={props.status.pending} />
+    </HStack>
+  )
+}
+
+function _FormFooter() {
+  const store = useDataGridContext()
+  return (
+    <HStack justify="space-between" w="full">
+      <ButtonGroup>
+        <Button
+          onClick={() => console.log('Add filter to list')}
+          size="sm"
+          type="button"
+          usage="ghost"
+        >
+          Add Filter
+        </Button>
+        <Button
+          onClick={() =>
+            store.setColFilter((prev) => ({
+              ...prev,
+              active: [],
+              editing: null,
+            }))
+          }
+          size="sm"
+          type="button"
+          usage="ghost"
+        >
+          Clear All
+        </Button>
+      </ButtonGroup>
+
+      <Button size="sm" type="submit">
+        Apply
+      </Button>
     </HStack>
   )
 }
