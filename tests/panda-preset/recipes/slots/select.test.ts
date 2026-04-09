@@ -48,7 +48,7 @@ describe('select recipe', () => {
       minW: 9,
       position: 'relative',
       pxi: 'md',
-      rounded: 'md',
+      rounded: 'sm',
       textStyle: 'body-sm',
       transitionDuration: 'normal',
       transitionProperty: 'background, box-shadow, border-color',
@@ -107,6 +107,10 @@ describe('select recipe', () => {
       p: 'xs',
       rounded: 'md',
       shadow: 'lg',
+      _focus: {
+        outline: 'none',
+        boxShadow: 'none',
+      },
       _open: {
         animationStyle: 'slide-fade-in',
         animationDuration: 'fast',

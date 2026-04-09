@@ -9,5 +9,9 @@ export function SignalDemo() {
   const store = useDataGridContext<Employee>()
   const globalFilter = useRead(store.globalFilter)
 
-  return <Text>The global filter is: {globalFilter}</Text>
+  return (
+    <Text>
+      The global filter is: <pre>{JSON.stringify(globalFilter, null, 2)}</pre>
+    </Text>
+  )
 }

@@ -1,4 +1,5 @@
 import {
+  ArrowRight,
   Calendar,
   CaretDown,
   Checkmark,
@@ -9,6 +10,9 @@ import {
   ChevronUp,
   Close,
   CloudUpload,
+  Filter,
+  FilterEdit,
+  FilterRemove,
   Information,
   OverflowMenuVertical,
   Restart,
@@ -35,6 +39,7 @@ import { SortAscIcon, SortDescIcon } from './sort.icons'
  */
 export const defaultIcons: Required<DefinedIcons> = {
   accordionIndicator: ChevronDown,
+  arrowRight: ArrowRight,
   avatar: UserFilled,
   calendar: Calendar,
   calendarPrev: ChevronLeft,
@@ -47,6 +52,9 @@ export const defaultIcons: Required<DefinedIcons> = {
   decrement: ChevronDown,
   delete: TrashCan,
   fileUploader: AnimatingUploadIcon,
+  filter: Filter,
+  filterEdit: FilterEdit,
+  filterClear: FilterRemove,
   increment: ChevronUp,
   indeterminate: IndeterminateIcon,
   infoNotification: Information,

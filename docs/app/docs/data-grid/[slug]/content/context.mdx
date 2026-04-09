@@ -21,7 +21,7 @@ manaing state outside of the scope of React components.
 
 To learn more about signals and how they work, see the [Signals documentation](https://cerberus.digitalu.design/docs/signals/overview).
 
-## Using the context 
+## Using the context
 
 To recieve the context from the Data Grid, you simply use the `useDataGridContext` hook
 like you would any other hook in React.
@@ -54,26 +54,41 @@ in a signal-based reactive manner:
 
 ### Reactive Values
 
-| Name          | Type          | Description                                  |
-|---------------|---------------|----------------------------------------------|
-| `columns`     | `Accessor<InternalColumn<TData>[]>` | A list of processed columns. |
-| `rows`        | `Accessor<TData[]>` | A list of processed rows.                |
-| `globalFilter` | `Accessor<string>` | The current global filter value used for column filtering. |
-| `sorting`     | `Accessor<SortState[]>` | The current sorting state of the grid. |
-| `rootCssVars` | `ReadonlyAccessor<CSSProperties>` | The current CSS variables for the grid root element. |
-| `rowCount`    | `ReadonlyAccessor<number>` | The current number of rows in the grid. |
-| `totalWidth`  | `ReadonlyAccessor<number>` | The total width of the grid (used for pinning). |
-| `visibleRows` | `ReadonlyAccessor<TData[]>` | The list of visible rows in the viewport. |
+| Name                | Type                                        | Description                                                |
+| ------------------- | ------------------------------------------- | ---------------------------------------------------------- |
+| `columns`           | `ReadonlyAccessor<InternalColumn<TData>[]>` | A list of processed columns.                               |
+| `rows`              | `ReadonlyAccessor<TData[]>`                 | A list of processed rows.                                  |
+| `rowCount`          | `ReadonlyAccessor<number>`                  | The current number of rows in the grid.                    |
+| `rowSize`           | `ReadonlyAccessor<number>`                  | The height of the row.                                     |
+| `pending`           | `ReadonlyAccessor<boolean>`                 | The state of the `pending` prop of the Data Grid.          |
+| `hasSkeleton`       | `ReadonlyAccessor<boolean>`                 | If a skeleton overlay option is provided.                  |
+| `globalFilter`      | `ReadonlyAccessor<BaseFilterState>`         | The current global filter value used for column filtering. |
+| `collFilters`       | `ReadonlyAccessor<ColumnFilterState>`       | The current column filters used.                           |
+| `showColFilter`     | `ReadonlyAccessor<boolean>`                 | If the user has chosen the column filter feature option.   |
+| `sorting`           | `ReadonlyAccessor<SortState[]>`             | The current sorting state of the grid.                     |
+| `pageCount`         | `ReadonlyAccessor<number>`                  | The current page count of the grid.                        |
+| `pageIndex`         | `ReadonlyAccessor<number>`                  | The current page index of the grid.                        |
+| `pageSize`          | `ReadonlyAccessor<number>`                  | The current page size of the grid.                         |
+| `pageRange`         | `ReadonlyAccessor<number[]>`                | The page range options of the grid.                        |
+| `currentPageSize`   | `ReadonlyAccessor<number>`                  | The current page range of the grid.                        |
+| `isServerPaginated` | `ReadonlyAccessor<boolean>`                 | If pagination is using server-based.                       |
+| `rootCssVars`       | `ReadonlyAccessor<CSSProperties>`           | The current CSS variables for the grid root element.       |
+| `totalWidth`        | `ReadonlyAccessor<number>`                  | The total width of the grid (used for pinning).            |
+| `visibleRows`       | `ReadonlyAccessor<TData[]>`                 | The list of visible rows in the viewport.                  |
 
 ### Actions
 
-| Name          | Type          | Description                                  |
-|---------------|---------------|----------------------------------------------|
-| `resizeColumn` | `(columnId: string, delta: number) => void` | Resizes a column by updating its width.|
-| `setContainerWidth` | `(width: number) => void` | Updates the width of the grid container. |
-| `setPage` | `(page: number) => void` | Updates the current page of the grid. |
-| `setGlobalFilter` | `(val: string) => void` | Updates the global filter value. |
-| `setSort` | `(colId: string, direction: SortDirection, multi?: boolean) => void` | Updates the sorting state of the grid. |
-| `togglePinned` | `(colId: string, state: PinnedState) => void` | Toggles the pinned state of a column. |
-| `toggleSort` | `(colId: string, multi?: boolean) => void` | Toggles the sort direction of a column. |
-| `updateData` | `(data: TData[]) => void` | Updates the grid data.             |
+| Name                | Type                                                                 | Description                              |
+| ------------------- | -------------------------------------------------------------------- | ---------------------------------------- |
+| `resizeColumn`      | `(columnId: string, delta: number) => void`                          | Resizes a column by updating its width.  |
+| `setContainerWidth` | `(width: number) => void`                                            | Updates the width of the grid container. |
+| `setPage`           | `(page: number) => void`                                             | Updates the current page of the grid.    |
+| `setPageSize`       | `(page: number) => void`                                             | Updates the page size of the grid.       |
+| `setGlobalFilter`   | `(val: BaseFilterState) => void`                                     | Updates the global filter value.         |
+| `setColFilter`      | `Setter<ColumnFilterState>`                                          | Updates the col filter value.            |
+| `setShowColFilter`  | `(val: boolean) => void`                                             | Updates the showColFilter value.         |
+| `setSort`           | `(colId: string, direction: SortDirection, multi?: boolean) => void` | Updates the sorting state of the grid.   |
+| `togglePinned`      | `(colId: string, state: PinnedState) => void`                        | Toggles the pinned state of a column.    |
+| `toggleSort`        | `(colId: string, multi?: boolean) => void`                           | Toggles the sort direction of a column.  |
+| `updateData`        | `(data: TData[]) => void`                                            | Updates the grid data.                   |
+| `updatePending`     | `(newState: boolean) => void`                                        | Updates the pending state.               |

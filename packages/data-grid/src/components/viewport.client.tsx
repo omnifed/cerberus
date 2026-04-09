@@ -1,7 +1,7 @@
 'use client'
 
 import { For, Show } from '@cerberus-design/react'
-import { useRead } from '@cerberus-design/signals'
+import { createComputed, useRead } from '@cerberus-design/signals'
 import { memo, useMemo, useRef, type RefObject } from 'react'
 import { Box, HStack, Scrollable, Stack } from 'styled-system/jsx'
 import { PARTS, SCOPE } from '../const'
@@ -10,8 +10,10 @@ import type { OverlaySlots } from '../types'
 import { useVirtualizer } from '../virtualizer.client'
 import { GridHeaderCell, GridRow } from './grid.client'
 import { NoContentOverlay, PendingOverlay } from './overlays'
+import { DGPopoverContent } from './popover.client'
 
 interface GridViewportProps {
+  rootRef: RefObject<HTMLDivElement | null>
   overlays?: OverlaySlots
 }
 
@@ -26,16 +28,18 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
 
   const pending = useRead(store.pending)
 
-  const shouldLock = useMemo<boolean>(() => {
-    if (!props.overlays) return false
-    return props.overlays?.pending !== 'skeleton'
+  const shouldLock = createComputed(() => rowCount <= 0)
+  const hasNonSkeleton = useMemo<boolean>(() => {
+    const overlays = props.overlays
+    if (!overlays) return false
+    return overlays?.pending !== 'skeleton'
   }, [props.overlays])
 
   return (
     <Scrollable
       data-scope={SCOPE}
       data-part={PARTS.VIEWPORT}
-      data-lock={pending && shouldLock}
+      data-lock={(pending && hasNonSkeleton) || shouldLock()}
       hideScrollbar
       h="full"
       minH="0"
@@ -87,6 +91,8 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
       <Show when={pending}>
         {() => <PendingOverlay variant={props.overlays?.pending} />}
       </Show>
+
+      <DGPopoverContent ref={props.rootRef} />
     </Scrollable>
   )
 })

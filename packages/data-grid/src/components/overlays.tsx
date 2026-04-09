@@ -4,7 +4,7 @@ import type { OverlaySlots } from '../types'
 import { NoContent } from './no-content.client'
 
 // For some reason we have to use dynamic styles for these to work?
-const overlayStyle = {
+export const overlayStyle = {
   backgroundColor:
     'color-mix(in srgb, var(--cerberus-colors-page-surface-initial) 70%, transparent)',
   height: 'calc(100% - var(--row-height))',

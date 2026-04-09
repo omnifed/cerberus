@@ -100,6 +100,12 @@ export const items = [
     slug: 'sort',
   },
   {
+    id: '2.3',
+    href: '/docs/data-grid/filtering',
+    label: 'Filtering',
+    slug: 'filtering',
+  },
+  {
     id: '3.0',
     label: 'Reference',
     href: '',

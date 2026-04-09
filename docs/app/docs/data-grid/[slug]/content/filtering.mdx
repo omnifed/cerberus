@@ -1,0 +1,71 @@
+---
+title: Filtering
+description: Learn about the filtering feature in the Data Grid component.
+package: 'data-grid'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { DEMOS } from '../components/filtering/static'
+
+## Overview
+
+Filtering allows users to view a subset of data based on criteria. There are
+three ways for a user to filter:
+
+1. **Single-column filtering**: Clicking the "Filter" option from the feature menu when the column has opted into filtering.
+2. **Multi-column filtering**: Following option 1 for any additional column
+3. **Global filtering**: Utilizing the `setGlobalFilter` action from the [Data Grid Context](/docs/data-grid/context).
+
+**Active Actions**
+
+Once a filter is active, the user can:
+
+1. **Edit filters**: Clicking the added "Edit filter" icon button that displays in the column header that has the active filter.
+2. **Clear filters**: Clicking the "Clear Filter" option in the column feature menu.
+
+<CodePreview {...DEMOS.basic} />
+
+## Implementing column filtering
+
+You must opt-in to column filtering by setting the `features.filter` prop to `true` or passing in a custom filter function. Doing so will display the filter option in the column menu.
+
+<CodePreview {...DEMOS.basic} />
+
+## Multi-column Filtering
+
+Multi-column filtering is enabled by default. The user simply selects another column to filter in addition to any other column that is actively filtered.
+
+## Global Filtering
+
+You can globally filter the Grid by utilizing the `setGlobalFilter` action in any slot component you provide.
+
+In this example, we create a custom Toolbar that filters the grid globally on input.
+
+<CodePreview {...DEMOS.global} />
+
+## Custom Comparator
+
+A comparator determines how two cell values should be filtered. The default comparator uses the vanilla JavaScript basic comparison from the [Operator](#operators) provided.
+
+To provide a custom comparator, you can pass a function as the `features.filter` option.
+
+The snippet below is the same comparator we are using for all the demos on this page.
+
+<CodePreview {...DEMOS.compare} />
+
+### Operators
+
+The Data Grid provides an `OPERATORS` constant which is used to ensure consistency across any filter-based approach you may use.
+
+<CodePreview {...DEMOS.operators} />
+
+## Options
+
+The `filter` feature accepts either a `boolean` or a custom filter function that provides the following arguments:
+
+| Params        | Type      | Description                               |
+| ------------- | --------- | ----------------------------------------- |
+| `row`         | `TData`   | The row of the grid comparing the filter. |
+| `columnId`    | `string`  | The columnId the filter is applied to.    |
+| `filterValue` | `unknown` | The value provided to the filter.         |

@@ -8,5 +8,6 @@ export * from './components/cerby-data-grid.client'
 export { useDataGridContext } from './context.client'
 
 export * from './column-helpers'
+export { OPERATORS } from './const'
 
 export * from './types'

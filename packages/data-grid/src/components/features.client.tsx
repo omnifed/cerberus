@@ -4,7 +4,6 @@ import {
   IconButton,
   Menu,
   MenuContent,
-  MenuItem,
   MenuSeparator,
   MenuTrigger,
   Show,
@@ -13,8 +12,10 @@ import {
 } from '@cerberus-design/react'
 import { useRead } from '@cerberus-design/signals'
 import { useMemo } from 'react'
+import { FEATURE_VALUES, OPERATORS } from '../const'
 import { useDataGridContext } from '../context.client'
 import { InternalColumn, PinnedState, SortDirection } from '../types'
+import { FilterMenuItem } from './filter-item.client'
 import { MatchPinnedItems } from './pinned-items.client'
 import { MatchSortItems } from './sort-items.client'
 
@@ -38,24 +39,49 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
     const category = specialVal[0]
     const action = specialVal[1]
 
-    // Non-action items
-    if (val === 'filter') {
-      return console.log('Show Filter popover...')
-    }
-    if (val === 'unsort') {
-      return store.setSort(props.id, null)
+    // Flat-action items
+    switch (val) {
+      case FEATURE_VALUES.filter:
+        return handleInitFilter()
+      case FEATURE_VALUES.filterClear:
+        return store.setColFilter((prev) => ({
+          ...prev,
+          active: prev.active.filter((id) => id !== props.id),
+          editing: null,
+        }))
+      case FEATURE_VALUES.unsort:
+        return store.setSort(props.id, null)
+      default:
+        break
     }
 
     switch (category) {
-      case 'pin':
+      case FEATURE_VALUES.pin:
         return store.togglePinned(props.id, action as PinnedState)
-      case 'unpin':
+      case FEATURE_VALUES.unpin:
         return store.togglePinned(props.id, false)
-      case 'sort':
+      case FEATURE_VALUES.sort:
         return store.setSort(props.id, (action as SortDirection) ?? null)
       default:
         console.error('Unhandled action:', { details, action })
     }
+  }
+
+  function handleInitFilter() {
+    store.setColFilter((prev) => ({
+      ...prev,
+      editing: props.id,
+      active: [...prev.active, props.id],
+      filters: {
+        ...prev.filters,
+        [props.id]: {
+          id: props.id,
+          operator: OPERATORS.contains,
+          value: '',
+        },
+      },
+    }))
+    return store.setShowColFilter(true)
   }
 
   if (!props.sortable && !props.pinnable && !props.filterable) {
@@ -94,7 +120,7 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
 
         <Show when={props.filterable}>
           <MenuSeparator />
-          <MenuItem value="filter">Filter</MenuItem>
+          <FilterMenuItem colId={props.id} />
         </Show>
       </MenuContent>
     </Menu>
