@@ -112,8 +112,8 @@ export const collection = {
     'VariableID:6742:34980',
     'VariableID:8578:21627',
     'VariableID:10393:6864',
-    'VariableID:6715:34660',
     'VariableID:13034:396',
+    'VariableID:6715:34660',
     'VariableID:13034:397',
     'VariableID:6715:34661',
     'VariableID:6715:34662',
@@ -169,8 +169,8 @@ export const collection = {
     'VariableID:11705:39544',
     'VariableID:11705:39546',
     'VariableID:11705:39547',
-    'VariableID:11705:39548',
     'VariableID:11705:39550',
+    'VariableID:11705:39548',
     'VariableID:11705:39549',
     'VariableID:11705:39551',
     'VariableID:11705:39552',
@@ -262,8 +262,7 @@ export const tokens = {
     key: '2d1371f8a9cd7e1b2193ad25ee8f7416d8fcfc44',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'Text color of hyperlinks throughout the site that have been visited',
+    description: 'Text color of hyperlinks throughout the site that have been visited',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.neutral.60',
@@ -506,8 +505,7 @@ export const tokens = {
     key: 'b10a14fc19181b892852fdeb10ad331b4f9548d0',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'for use on less prominent actionable borders, like input fields etc',
+    description: 'for use on less prominent actionable borders, like input fields etc',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.success.50',
@@ -1212,8 +1210,7 @@ export const tokens = {
     key: '0961f92da3d1345a3c3f3d1a6a652a31ef39a097',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'for use on less prominent actionable borders, like input fields etc',
+    description: 'for use on less prominent actionable borders, like input fields etc',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.neutral.40',
@@ -1772,22 +1769,6 @@ export const tokens = {
     scopes: ['SHAPE_FILL'],
     codeSyntax: {},
   },
-  'data-viz.sequential.100': {
-    name: 'data-viz/sequential/100',
-    id: 'VariableID:6715:34660',
-    remote: false,
-    key: 'e0a9eef368b271e146fdd26972dbae7b9deb94aa',
-    variableCollectionId: 'VariableCollectionId:4328:23832',
-    resolvedType: 'COLOR',
-    description: '',
-    hiddenFromPublishing: false,
-    valuesByMode: {
-      '4328:3': 'cerberus.brand.10',
-      '4738:0': 'cerberus.brand.80',
-    },
-    scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    codeSyntax: {},
-  },
   'data-viz.progress.start': {
     name: 'data-viz/progress/start',
     id: 'VariableID:13034:396',
@@ -1802,6 +1783,22 @@ export const tokens = {
       '4738:0': 'cerberus.brand.40',
     },
     scopes: ['ALL_SCOPES'],
+    codeSyntax: {},
+  },
+  'data-viz.sequential.100': {
+    name: 'data-viz/sequential/100',
+    id: 'VariableID:6715:34660',
+    remote: false,
+    key: 'e0a9eef368b271e146fdd26972dbae7b9deb94aa',
+    variableCollectionId: 'VariableCollectionId:4328:23832',
+    resolvedType: 'COLOR',
+    description: '',
+    hiddenFromPublishing: false,
+    valuesByMode: {
+      '4328:3': 'cerberus.brand.10',
+      '4738:0': 'cerberus.brand.80',
+    },
+    scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     codeSyntax: {},
   },
   'data-viz.progress.end': {
@@ -2308,8 +2305,7 @@ export const tokens = {
     key: '8083c7ae9b36cd61ca365f7605cd171b02215aa4',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'for use on less prominent actionable borders, like input fields etc',
+    description: 'for use on less prominent actionable borders, like input fields etc',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.brand.20',
@@ -2409,8 +2405,7 @@ export const tokens = {
     key: '4cea705c939797d21607495a940900f8e54a05ef',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'Text color of hyperlinks throughout the site while hovering. ',
+    description: 'Text color of hyperlinks throughout the site while hovering. ',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.brand.50',
@@ -2426,8 +2421,7 @@ export const tokens = {
     key: 'ef884c304d36931b482f40c4325945a09bef5192',
     variableCollectionId: 'VariableCollectionId:4328:23832',
     resolvedType: 'COLOR',
-    description:
-      'Text color of hyperlinks throughout the site that have been vistited',
+    description: 'Text color of hyperlinks throughout the site that have been vistited',
     hiddenFromPublishing: false,
     valuesByMode: {
       '4328:3': 'cerberus.brand.100',
@@ -2693,22 +2687,6 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     codeSyntax: {},
   },
-  'data-viz.diverging.900': {
-    name: 'data-viz/diverging/900',
-    id: 'VariableID:11705:39548',
-    remote: false,
-    key: 'd8629f2c6f073be514afb7235cc0cb4f47f2fb9a',
-    variableCollectionId: 'VariableCollectionId:4328:23832',
-    resolvedType: 'COLOR',
-    description: '',
-    hiddenFromPublishing: false,
-    valuesByMode: {
-      '4328:3': 'cerberus.brand.60',
-      '4738:0': 'cerberus.brand.60',
-    },
-    scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    codeSyntax: {},
-  },
   'data-viz.qualitative.100': {
     name: 'data-viz/qualitative/100',
     id: 'VariableID:11705:39550',
@@ -2721,6 +2699,22 @@ export const tokens = {
     valuesByMode: {
       '4328:3': 'cerberus.brand.50',
       '4738:0': 'cerberus.brand.50',
+    },
+    scopes: ['FRAME_FILL', 'SHAPE_FILL'],
+    codeSyntax: {},
+  },
+  'data-viz.diverging.900': {
+    name: 'data-viz/diverging/900',
+    id: 'VariableID:11705:39548',
+    remote: false,
+    key: 'd8629f2c6f073be514afb7235cc0cb4f47f2fb9a',
+    variableCollectionId: 'VariableCollectionId:4328:23832',
+    resolvedType: 'COLOR',
+    description: '',
+    hiddenFromPublishing: false,
+    valuesByMode: {
+      '4328:3': 'cerberus.brand.60',
+      '4738:0': 'cerberus.brand.60',
     },
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     codeSyntax: {},
