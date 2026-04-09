@@ -31,11 +31,11 @@ describe('CerberusDataGrid', () => {
 
   test('renders without crashing', () => {
     render(<CerberusDataGrid data={data} columns={columns} />)
-    expect(screen.getAllByText('Display')).toHaveLength(3)
-    // expect(screen.getByText('static content')).toBeInTheDocument()
-    expect(screen.getAllByText('Second')).toHaveLength(3)
-    // expect(screen.getByText('two')).toBeInTheDocument()
-    expect(screen.getAllByText('Third')).toHaveLength(3)
-    // expect(screen.getByText('three')).toBeInTheDocument()
+    expect(screen.getByText('Display')).toBeInTheDocument()
+    expect(screen.getByText('static content')).toBeInTheDocument()
+    expect(screen.getByText('Second')).toBeInTheDocument()
+    expect(screen.getByText('two')).toBeInTheDocument()
+    expect(screen.getByText('Third')).toBeInTheDocument()
+    expect(screen.getByText('three')).toBeInTheDocument()
   })
 })
