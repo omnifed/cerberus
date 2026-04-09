@@ -27,7 +27,7 @@ export const columns = [
     width: 250,
     features: {
       sort: true,
-      filter: { operator: 'contains' },
+      filter: true,
     },
     cell: ({ row, value }) => (
       <VStack alignItems="flex-start" gap="0">
@@ -70,11 +70,7 @@ export const columns = [
         inactive: 'page',
         on_leave: 'info',
       }
-      return (
-        <Tag palette={palette[value]}>
-          {value.replace('_', ' ').toUpperCase()}
-        </Tag>
-      )
+      return <Tag palette={palette[value]}>{value.replace('_', ' ').toUpperCase()}</Tag>
     },
   }),
 
