@@ -63,7 +63,7 @@ in a signal-based reactive manner:
 | `pending`           | `ReadonlyAccessor<boolean>`                 | The state of the `pending` prop of the Data Grid.          |
 | `hasSkeleton`       | `ReadonlyAccessor<boolean>`                 | If a skeleton overlay option is provided.                  |
 | `globalFilter`      | `ReadonlyAccessor<BaseFilterState>`         | The current global filter value used for column filtering. |
-| `collFilters`       | `ReadonlyAccessor<ColumnFilterState[]>`     | The current column filters used.                           |
+| `collFilters`       | `ReadonlyAccessor<ColumnFilterState>`       | The current column filters used.                           |
 | `showColFilter`     | `ReadonlyAccessor<boolean>`                 | If the user has chosen the column filter feature option.   |
 | `sorting`           | `ReadonlyAccessor<SortState[]>`             | The current sorting state of the grid.                     |
 | `pageCount`         | `ReadonlyAccessor<number>`                  | The current page count of the grid.                        |
@@ -85,7 +85,7 @@ in a signal-based reactive manner:
 | `setPage`           | `(page: number) => void`                                             | Updates the current page of the grid.    |
 | `setPageSize`       | `(page: number) => void`                                             | Updates the page size of the grid.       |
 | `setGlobalFilter`   | `(val: BaseFilterState) => void`                                     | Updates the global filter value.         |
-| `setColFilter`      | `(val: ColumnFilterState[]) => void`                                 | Updates the col filter value.            |
+| `setColFilter`      | `Setter<ColumnFilterState>`                                          | Updates the col filter value.            |
 | `setShowColFilter`  | `(val: boolean) => void`                                             | Updates the showColFilter value.         |
 | `setSort`           | `(colId: string, direction: SortDirection, multi?: boolean) => void` | Updates the sorting state of the grid.   |
 | `togglePinned`      | `(colId: string, state: PinnedState) => void`                        | Toggles the pinned state of a column.    |
