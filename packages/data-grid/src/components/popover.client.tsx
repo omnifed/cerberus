@@ -99,6 +99,7 @@ export function DGPopoverContent(props: DGPopoverContentProps) {
 function FilterForm<TData>() {
   const store = useDataGridContext<TData>()
 
+  // TODO: Update this to handle multi-select
   function filter(formData: FormData) {
     const payload: ColumnFilterState = {
       id: formData.get('column') as string,
