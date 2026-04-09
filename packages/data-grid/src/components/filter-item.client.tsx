@@ -4,7 +4,7 @@ import { MenuItem, Show, useCerberusContext } from '@cerberus-design/react'
 import { createComputed, useRead } from '@cerberus-design/signals'
 import { HStack } from 'styled-system/jsx'
 import { useDataGridContext } from '../context.client'
-import { InternalColumn } from 'src/types'
+import type { InternalColumn } from '../types'
 
 interface FilterMenuItemProps<TData> {
   colId: InternalColumn<TData>['id']
