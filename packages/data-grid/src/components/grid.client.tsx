@@ -7,7 +7,7 @@ import {
   Tooltip,
   useCerberusContext,
 } from '@cerberus-design/react'
-import { createComputed, useRead } from '@cerberus-design/signals'
+import { batch, createComputed, useRead } from '@cerberus-design/signals'
 import {
   type CSSProperties,
   memo,
@@ -64,20 +64,26 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
   }
 
   function handleEditFilters() {
-    store.setColFilter((prev) => ({
-      ...prev,
-      active: [...prev.active, column.id],
-      filters: {
-        ...prev.filters,
-        [column.id]: {
-          id: column.id,
-          operator: OPERATORS.contains,
-          value: '',
+    const fallbackFilter = {
+      id: column.id,
+      operator: OPERATORS.contains,
+      value: '',
+    }
+    batch(() => {
+      store.setColFilter((prev) => ({
+        ...prev,
+        active: [...prev.active, column.id],
+        filters: {
+          ...prev.filters,
+          [column.id]: {
+            ...fallbackFilter,
+            ...prev.filters[column.id],
+          },
         },
-      },
-      editing: column.id,
-    }))
-    store.setShowColFilter(true)
+        editing: column.id,
+      }))
+      store.setShowColFilter(true)
+    })
   }
 
   return (
