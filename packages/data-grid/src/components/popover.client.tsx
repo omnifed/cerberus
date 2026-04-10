@@ -19,7 +19,7 @@ import {
   SelectRootProps,
   useCerberusContext,
 } from '@cerberus-design/react'
-import { createComputed, useRead } from '@cerberus-design/signals'
+import { batch, createComputed, useRead } from '@cerberus-design/signals'
 import { type HTMLAttributes, type PropsWithChildren, type RefObject } from 'react'
 import { FormStatus, useFormStatus } from 'react-dom'
 import { Box, HStack, Stack } from 'styled-system/jsx'
@@ -112,16 +112,19 @@ function FilterForm<TData>() {
       operator: formData.get('operator') as FilterOperator,
       value: formData.get('value') as string,
     }
-    store.setColFilter((prev) => ({
-      ...prev,
-      active: [...prev.active, payload.id],
-      filters: {
-        ...prev.filters,
-        [payload.id]: payload,
-      },
-      editing: null,
-    }))
-    store.setShowColFilter(false)
+
+    batch(() => {
+      store.setColFilter((prev) => ({
+        ...prev,
+        active: [...prev.active, payload.id],
+        filters: {
+          ...prev.filters,
+          [payload.id]: payload,
+        },
+        editing: null,
+      }))
+      store.setShowColFilter(false)
+    })
   }
 
   return (
@@ -179,7 +182,6 @@ interface FormSectionProps {
 
 function FormSection(props: FormSectionProps) {
   const { filter } = props
-
   return (
     <HStack gap="sm" w="full">
       <Field label="Select a column">
