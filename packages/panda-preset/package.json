@@ -61,7 +61,7 @@
     "up": "^1.0.2"
   },
   "devDependencies": {
-    "@ark-ui/react": "^5.35.0",
+    "@ark-ui/react": "^5.36.0",
     "@cerberus/preset-cerberus-theme": "workspace:*",
     "@cerberus/tokens": "workspace:*",
     "@pandacss/dev": "^1.9.1",
