@@ -1,0 +1,134 @@
+---
+slug: cerberus-v1-2-release
+date: 04-13-2026
+author: caseyBaggz
+title: Cerberus v1.2 Release
+description: Data Grid updates
+category: release
+version: 1.2
+timeToRead: 2
+tag: Release
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import BashTabs from '@/app/components/bash-tabs'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import CodePreview from '@/app/components/CodePreview'
+
+import { DEMOS as PopoverDemos } from '@/app/docs/components/[slug]/components/popover/static'
+import { DEMOS as GridOverlayDemos } from '@/app/docs/data-grid/[slug]/components/overlays/static'
+import { DEMOS as GridFilterDemos } from '@/app/docs/data-grid/[slug]/components/filtering/static'
+
+This release adds new features to React and the Data Grid.
+
+## Overview
+
+Here is a brief overview of what's new:
+
+- [React Features](#react-features) - new primitive APIs and general updates
+- [Data Grid Features](#data-grid-features) - Data Grid gets some new goodies
+
+## React Features
+
+### Popover
+
+We have added a new `Popover` API for when you need something a little more verbose than a Tooltip - but not as heavy weight as a Dialog/Alert.
+
+<CodePreview {...PopoverDemos.slots} />
+<br />
+
+Checkout the [Popover documentation for more details](/docs/components/popover).
+
+## Data Grid Features
+
+Our goal is to keep the Data Grid API growing with each release. We have two
+important updates with v1.2:
+
+### Overlays
+
+We've added support for overlay slots which allow you to create custom views for different states within the Data Grid viewport.
+
+Simply add an `overlays` prop to the `DataGrid` with your options.
+
+Each overlay comes with built-in presets or you can pass a custom component to render in it's stead.
+
+#### No Content
+
+For when there is no data to render, we have the `noContent` overlay.
+
+<CodePreview {...GridOverlayDemos.defaultNone} />
+<br />
+
+### Pending
+
+Cerberus provides three different pending state overlays:
+
+- **skeleton**: an animated placeholder of the Data Grid.
+- **linear-progress**: an indeterminate linear progress bar.
+- **circular-progress**: a circular loading spinner.
+
+For a custom solution, just provide your preferred component instead of one of these three options.
+
+#### Skeleton
+
+<CodePreview {...GridOverlayDemos.skeleton} />
+<br />
+
+#### Linear
+
+<CodePreview {...GridOverlayDemos.linear} />
+<br />
+
+#### Circular
+
+<CodePreview {...GridOverlayDemos.circular} />
+<br />
+
+Checkout the [Data Grid overlays documentation](/docs/data-grid/overlays) for more details.
+
+### Filtering
+
+The Data Grid now supports three different types of filtering out of the box:
+
+1. **Single-column filtering**: Clicking the "Filter" option from the feature menu when the column has opted into filtering.
+2. **Multi-column filtering**: Following option 1 for any additional column
+3. **Global filtering**: Utilizing the `setGlobalFilter` action from the [Data Grid Context](/docs/data-grid/context).
+
+**Active Actions**
+
+Once a filter is active, the user can:
+
+1. **Edit filters**: Clicking the added "Edit filter" icon button that displays in the column header that has the active filter.
+2. **Clear filters**: Clicking the "Clear Filter" option in the column feature menu.
+
+<NoteAdmonition
+  description={
+    <>
+      Depending on your column definitions, you may notice header titles getting cut
+      off. <strong>This is not a bug</strong> - the column just needs to be wider in the
+      strict definition set.
+      <br />
+      <br /> In a future release we will also have column-resizing which will also help
+      with this.
+    </>
+  }
+/>
+
+<CodePreview {...GridFilterDemos.basic} />
+<br />
+
+Checkout the [Data Grid Filtering documentation](/docs/data-grid/filtering) for more details.
+
+## Thanks!
+
+This is another great release introducing some beneficial tools and features.
+
+A special thanks to everyone who has helped validate the APIs, docs, and submitted features or bugfixes for this release.
+
+> There is no "I" in Cerber-"US"
+
+## Upgrading
+
+To upgrade to this release, you can install the latest version of Cerberus React:
+
+<BashTabs code="npm run up:cerberus" />
