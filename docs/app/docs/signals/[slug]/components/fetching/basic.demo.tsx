@@ -30,13 +30,16 @@ function UserInfo() {
 }
 
 export function BasicDemo() {
+  function handleClick() {
+    setCurrentUser(crypto.randomUUID())
+  }
+
   return (
     <Stack direction="column" justify="space-between" w="3/4">
       <Suspense fallback={<Box aria-busy h="96px" rounded="sm" w="full" />}>
         <UserInfo />
       </Suspense>
-
-      <Button onClick={() => setCurrentUser(crypto.randomUUID())}>Change User</Button>
+      <Button onClick={handleClick}>Change User</Button>
     </Stack>
   )
 }
