@@ -43,9 +43,7 @@ export default defineConfig({
         }
 
         // Handle all package.json dependencies and their subpaths
-        return allDependencies.some(
-          (dep) => id === dep || id.startsWith(`${dep}/`),
-        )
+        return allDependencies.some((dep) => id === dep || id.startsWith(`${dep}/`))
       },
       output: [
         {
@@ -73,6 +71,8 @@ export default defineConfig({
 })
 
 const renderBanner = (fileName: string) => {
+  if (fileName.startsWith('_virtual/')) return ''
+
   const file = path.parse(fileName)
 
   if (['client'].includes(file.name)) return `'use client';`
