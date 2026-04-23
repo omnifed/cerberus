@@ -1,6 +1,6 @@
 ---
 title: Using Signals
-description: Learn how to use fine-grained signals in React.
+description: Learn how to use signals within the React render context.
 package: 'signals'
 ---
 
@@ -13,16 +13,16 @@ import { DEMOS } from '../components/signal/static'
 
 ## Usage
 
-When you want to create a signal **within a component** context.
+When you want to create a signal **within the React render** context which triggers re-renders.
 
-There are two ways to read a global signal within a component:
+There are two ways to read a signal from `useSignal`:
 
-1. `ReactiveText` (recommended) for fine-grained reactivity
-2. Calling the accessor within the JSX
+1. Using the non-accessor value
+2. Combining the `Accessor` with `ReactiveText` for fine-grained reactivity
 
 ## Basic State
 
-`useSignal` works just like `createSignal` on a local component scale.
+`useSignal` is a more reliable version of `useState` that includes an additional `Accessor` as the third Tuple item.
 
 <CodePreview {...DEMOS.use} />
 
@@ -50,6 +50,24 @@ The setter API is the exact same as the `createSignal` Setter and accepts any ty
 of setting value or callback.
 
 <CodePreview {...DEMOS.use} />
+
+## `useSignal` vs. `useState`: The "Stale Closure" Killer
+
+React's `useState` traps values in closures. This is the root cause of 90% of React bugs. If you use `useState` inside a `setInterval`, an event listener, or an async fetch block, it will read the old, stale value from when the component first rendered.
+
+To fix it, you have to juggle `useRef` and complex `useEffect` dependency arrays.
+
+`useSignal` completely destroys this problem because it returns a getter Accessor function as the third option in the Tuple:
+
+<CodePreview {...DEMOS.killer} />
+
+### Separation of State and Lifecycle
+
+With `useState`, the state is glued to the component. If the component unmounts, the state dies.
+
+With `useSignal`, the state lives in the external reactive graph, and `useRead` just "peeks" at it. This means you can trigger complex business logic (`createEffect`, `createComputed`) completely outside of React's render cycle.
+
+If `setLocal` updates the signal, it instantly triggers any pure-JS `createEffect` you have listening to it, synchronously, before React even begins its slow VDOM render phase.
 
 ## API
 
