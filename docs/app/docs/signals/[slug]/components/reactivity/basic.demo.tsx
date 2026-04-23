@@ -4,10 +4,16 @@ import { HStack, Stack } from '@/styled-system/jsx'
 import { Button, Text } from '@cerberus-design/react'
 import { ReactiveText, useSignal } from '@cerberus-design/signals'
 import { createRenderStore } from '../render-store'
+import { useEffect } from 'react'
+
+const store = createRenderStore()
 
 export function BasicDemo() {
-  const store = createRenderStore()
   const [local, setLocal] = useSignal<string>('hello')
+
+  useEffect(() => {
+    return () => store.onUnmount()
+  }, [])
 
   store.trackRenders()
 
@@ -29,11 +35,13 @@ export function BasicDemo() {
         </Button>
       </Stack>
 
-      <Stack>
-        <Text>{local}</Text>
+      <Stack userSelect="none">
+        <Text>Local: {local}</Text>
 
-        {/* Not re-rendered - but the text value is updated */}
-        <ReactiveText data={store.count} />
+        <Text>
+          {/* Not re-rendered - only the html text value is updated */}
+          Count: <ReactiveText data={store.count} />
+        </Text>
 
         <Text>
           Renders: <ReactiveText data={store.renderCount} />
