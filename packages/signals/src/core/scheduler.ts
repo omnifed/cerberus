@@ -14,7 +14,11 @@ export function popObserver() {
 
 // Batching State
 
+// Keep for backward compat if needed, but migrate internal usage
 export const batchedObservers: Set<Observer> = new Set<Observer>()
+
+const observerQueue: Set<Observer>[] = []
+let maxDepth = 0
 let isBatching: boolean = false
 let isFlushing: boolean = false
 
@@ -45,27 +49,42 @@ export function batch<T>(fn: () => T): void {
 }
 
 export function schedule(observer: Observer): void {
-  batchedObservers.add(observer)
+  const depth = observer.depth
+  if (!observerQueue[depth]) {
+    observerQueue[depth] = new Set()
+  }
+
+  observerQueue[depth].add(observer)
+  if (depth > maxDepth) maxDepth = depth
+
   if (!isBatching && !isFlushing) flush()
 }
 
 function flush(): void {
-  if (isFlushing || batchedObservers.size === 0) return
-
+  if (isFlushing) return
   isFlushing = true
 
   try {
-    while (batchedObservers.size > 0) {
-      const queue = Array.from(batchedObservers)
-      batchedObservers.clear()
-      // Sort ascending by depth. Closest to the root (Signal) runs first.
-      queue.sort((a, b) => a.depth - b.depth)
+    for (let i = 0; i <= maxDepth; i++) {
+      const bucket = observerQueue[i]
+      if (bucket && bucket.size > 0) {
+        const queue = Array.from(bucket)
+        bucket.clear()
 
-      for (const observer of queue) {
-        observer.execute()
+        for (const observer of queue) {
+          try {
+            observer.execute()
+          } catch (err) {
+            console.error(
+              'Cerberus Signals: Unhandled error in observer execution',
+              err,
+            )
+          }
+        }
       }
     }
   } finally {
     isFlushing = false
+    maxDepth = 0
   }
 }
