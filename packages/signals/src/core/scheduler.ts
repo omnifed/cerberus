@@ -4,20 +4,10 @@ import type { Observer, Owner } from './types'
 
 export let activeObserver: Observer | null = null
 export let activeOwner: Owner | null = null
-const observerStack: Observer[] = []
 
 export function setActiveContext(observer: Observer | null, owner: Owner | null) {
   activeObserver = observer
   activeOwner = owner
-}
-
-export function pushObserver(observer: Observer) {
-  if (activeObserver) observerStack.push(activeObserver)
-  activeObserver = observer
-}
-
-export function popObserver() {
-  activeObserver = observerStack.pop() || null
 }
 
 export function schedule(observer: Observer): void {
