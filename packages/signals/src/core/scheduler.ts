@@ -1,7 +1,15 @@
-import type { Observer } from './types'
+import type { Observer, Owner } from './types'
+
+// Observers
 
 export let activeObserver: Observer | null = null
+export let activeOwner: Owner | null = null
 const observerStack: Observer[] = []
+
+export function setActiveContext(observer: Observer | null, owner: Owner | null) {
+  activeObserver = observer
+  activeOwner = owner
+}
 
 export function pushObserver(observer: Observer) {
   if (activeObserver) observerStack.push(activeObserver)
@@ -12,7 +20,37 @@ export function popObserver() {
   activeObserver = observerStack.pop() || null
 }
 
-// Batching State
+export function schedule(observer: Observer): void {
+  const depth = observer.depth
+  if (!observerQueue[depth]) {
+    observerQueue[depth] = new Set()
+  }
+
+  observerQueue[depth].add(observer)
+  if (depth > maxDepth) maxDepth = depth
+
+  if (!isBatching && !isFlushing) flush()
+}
+
+export function cleanNode(owner: Owner) {
+  if (owner.owned !== null) {
+    for (let i = 0; i < owner.owned.length; i++) {
+      const child = owner.owned[i]
+      cleanNode(child)
+      if ('cleanup' in child) (child as Observer).cleanup()
+    }
+    owner.owned = null
+  }
+
+  if (owner.cleanups !== null) {
+    for (let i = 0; i < owner.cleanups.length; i++) {
+      owner.cleanups[i]()
+    }
+    owner.cleanups = null
+  }
+}
+
+// Batching
 
 // Keep for backward compat if needed, but migrate internal usage
 export const batchedObservers: Set<Observer> = new Set<Observer>()
@@ -48,17 +86,7 @@ export function batch<T>(fn: () => T): void {
   }
 }
 
-export function schedule(observer: Observer): void {
-  const depth = observer.depth
-  if (!observerQueue[depth]) {
-    observerQueue[depth] = new Set()
-  }
-
-  observerQueue[depth].add(observer)
-  if (depth > maxDepth) maxDepth = depth
-
-  if (!isBatching && !isFlushing) flush()
-}
+// Private
 
 function flush(): void {
   if (isFlushing) return
