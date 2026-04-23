@@ -7,6 +7,7 @@
     "lint:ts": "tsc --noEmit",
     "test": "bun test",
     "test:bench": "bun run ./signals/scheduler.bench.ts",
+    "test:bench:query": "bun run ./signals/query.bench.ts",
     "test:ci": "bun test --coverage"
   },
   "devDependencies": {
