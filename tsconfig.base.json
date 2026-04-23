@@ -17,7 +17,6 @@
     "noEmit": true,
     "composite": true,
     "strict": true,
-    "downlevelIteration": true,
     "skipLibCheck": true,
 
     "jsx": "react-jsx",
