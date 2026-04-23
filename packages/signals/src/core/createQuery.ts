@@ -1,10 +1,6 @@
 import { createEffect } from './createEffect'
 import { createSignal } from './createSignal'
-import {
-  getQueryVersionSignal,
-  globalQueryCache,
-  QueryState,
-} from './query-cache'
+import { getQueryVersionSignal, globalQueryCache, QueryState } from './query-cache'
 import type { Accessor, SignalTuple } from './types'
 
 export type QueryAccessor<T, Args> = Accessor<QueryState<T>> & {
@@ -103,9 +99,7 @@ export function createQuery<T, Args>(
       setCache({ ...initialState, promise })
     }
 
-    const [getCache] = globalQueryCache.get(cacheKey)! as SignalTuple<
-      QueryState<T>
-    >
+    const [getCache] = globalQueryCache.get(cacheKey)! as SignalTuple<QueryState<T>>
 
     // We run an inner effect to continuously sync the active state.
     createEffect(() => {
@@ -133,7 +127,7 @@ export function hashArgs(args: unknown): string {
   if (args === null || args === undefined) return ''
 
   if (Array.isArray(args)) {
-    return JSON.stringify(args)
+    return JSON.stringify(args.map((item) => hashArgs(item)))
   }
 
   if (typeof args === 'object') {
@@ -143,7 +137,10 @@ export function hashArgs(args: unknown): string {
     Object.keys(safeArgs)
       .sort()
       .forEach((key) => {
-        sortedObj[key] = safeArgs[key]
+        sortedObj[key] =
+          typeof safeArgs[key] === 'object' && safeArgs[key] !== null
+            ? JSON.parse(hashArgs(safeArgs[key]))
+            : safeArgs[key]
       })
 
     return JSON.stringify(sortedObj)
