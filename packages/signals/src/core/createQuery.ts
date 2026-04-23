@@ -125,26 +125,22 @@ export function createQuery<T, Args>(
 
 export function hashArgs(args: unknown): string {
   if (args === null || args === undefined) return ''
+  if (typeof args !== 'object') return String(args)
 
   if (Array.isArray(args)) {
-    return JSON.stringify(args.map((item) => hashArgs(item)))
+    let res = '['
+    for (let i = 0; i < args.length; i++) {
+      res += (i > 0 ? ',' : '') + hashArgs(args[i])
+    }
+    return res + ']'
   }
 
-  if (typeof args === 'object') {
-    const sortedObj: Record<string, unknown> = {}
-    const safeArgs = args as Record<string, unknown>
-
-    Object.keys(safeArgs)
-      .sort()
-      .forEach((key) => {
-        sortedObj[key] =
-          typeof safeArgs[key] === 'object' && safeArgs[key] !== null
-            ? JSON.parse(hashArgs(safeArgs[key]))
-            : safeArgs[key]
-      })
-
-    return JSON.stringify(sortedObj)
+  const keys = Object.keys(args as Record<string, unknown>).sort()
+  let res = '{'
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i]
+    const val = (args as Record<string, unknown>)[key]
+    res += (i > 0 ? ',' : '') + '"' + key + '":' + hashArgs(val)
   }
-
-  return String(args)
+  return res + '}'
 }

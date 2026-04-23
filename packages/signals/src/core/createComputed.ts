@@ -60,22 +60,14 @@ export function createComputed<T>(fn: () => T): Accessor<T> {
   }
 
   const getter: Accessor<T> = () => {
-    if (activeObserver) {
-      node.observers.add(activeObserver)
-      activeObserver.dependencies.add(node)
-      if (activeObserver.depth <= node.depth) {
-        activeObserver.depth = node.depth + 1
-      }
-    }
-
     if (isEvaluating) {
       throw new Error('Cerberus Signals: Circular dependency detected in computed.')
     }
 
     if (isStale) {
-      cleanNode(node) // Clean previous run's children
-      node.cleanup() // Clear old dependencies
-      node.depth = 0
+      cleanNode(node)
+      node.cleanup()
+      node.depth = 0 // Reset depth
 
       const prevObserver = activeObserver
       const prevOwner = activeOwner
@@ -90,6 +82,17 @@ export function createComputed<T>(fn: () => T): Accessor<T> {
         setActiveContext(prevObserver, prevOwner)
       }
     }
+
+    // --- TOPOLOGICAL SORT UPDATE ---
+    // Register the dependency AFTER evaluation so node.depth is 100% accurate
+    if (activeObserver) {
+      node.observers.add(activeObserver)
+      activeObserver.dependencies.add(node)
+      if (activeObserver.depth <= node.depth) {
+        activeObserver.depth = node.depth + 1
+      }
+    }
+
     return value
   }
 
