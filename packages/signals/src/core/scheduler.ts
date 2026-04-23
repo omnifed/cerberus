@@ -1,4 +1,4 @@
-import type { Observer, Owner } from './types'
+import type { Accessor, Observer, Owner } from './types'
 
 // Observers
 
@@ -94,12 +94,12 @@ export function onCleanup(fn: () => void) {
  * Useful for reading the latest value of a signal without triggering
  * re-evaluations when that signal changes.
  */
-export function untrack<T>(fn: () => T): T {
+export function untrack<T>(signal: Accessor<T>): T {
   const prevObserver = activeObserver
   setActiveContext(null, activeOwner) // Disable tracking, keep ownership
 
   try {
-    return fn()
+    return signal()
   } finally {
     setActiveContext(prevObserver, activeOwner)
   }
