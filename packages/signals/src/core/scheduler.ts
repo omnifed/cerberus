@@ -125,17 +125,12 @@ function flush(): void {
     for (let i = 0; i <= maxDepth; i++) {
       const bucket = observerQueue[i]
       if (bucket && bucket.size > 0) {
-        const queue = Array.from(bucket)
-        bucket.clear()
-
-        for (const observer of queue) {
+        for (const observer of bucket) {
+          bucket.delete(observer)
           try {
             observer.execute()
           } catch (err) {
-            console.error(
-              'Cerberus Signals: Unhandled error in observer execution',
-              err,
-            )
+            console.error('Cerberus Signals: Unhandled error in observer', err)
           }
         }
       }
