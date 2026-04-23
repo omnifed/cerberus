@@ -94,3 +94,11 @@ subscriber is updated after the signal it depends on.
 In this example, the `double` signal will always be updated after `count` due to
 synchronous reactivity. This ensures that `double` is always up-to-date with the
 latest value of `count`.
+
+## Nesting Signals
+
+Because signals are subscription-based, it opens the doors to news ways of thinking about state management. For example, you _could_ nest Signals if you wanted to. Everything is subscribed vs. React state which just updates because a function is re-run from top to bottom (fake reactivity).
+
+<NoteAdmonition description="We do not recommend using this pattern. This is just an informative note to show that Signals are more powerful that React state. It would be better to use other primitives devoted to this like createComputed." />
+
+<CodePreview {...DEMOS.nesting} />

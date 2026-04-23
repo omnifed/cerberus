@@ -76,6 +76,12 @@ export const items = [
     slug: 'batch',
   },
   {
+    id: '1.8',
+    href: '/docs/signals/untrack',
+    label: 'untrack',
+    slug: 'untrack',
+  },
+  {
     id: '2.0',
     label: 'Hooks',
     href: '',
