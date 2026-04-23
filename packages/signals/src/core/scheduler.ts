@@ -86,6 +86,35 @@ export function batch<T>(fn: () => T): void {
   }
 }
 
+/**
+ * ## Register a Cleanup Function
+ * Registers a callback to be executed when the current computation is
+ * re-evaluated or explicitly destroyed.
+ */
+export function onCleanup(fn: () => void) {
+  if (activeOwner !== null) {
+    if (activeOwner.cleanups === null) activeOwner.cleanups = []
+    activeOwner.cleanups.push(fn)
+  }
+}
+
+/**
+ * ## Untrack Signal Dependencies
+ * Executes a function without tracking any signals read within it.
+ * Useful for reading the latest value of a signal without triggering
+ * re-evaluations when that signal changes.
+ */
+export function untrack<T>(fn: () => T): T {
+  const prevObserver = activeObserver
+  setActiveContext(null, activeOwner) // Disable tracking, keep ownership
+
+  try {
+    return fn()
+  } finally {
+    setActiveContext(prevObserver, activeOwner)
+  }
+}
+
 // Private
 
 function flush(): void {
