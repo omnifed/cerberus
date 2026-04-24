@@ -111,6 +111,12 @@ export const items = [
     slug: 'use-signal',
   },
   {
+    id: '2.5',
+    href: '/docs/signals/use-store',
+    label: 'useStore',
+    slug: 'use-store',
+  },
+  {
     id: '3.0',
     label: 'Components',
     href: '',

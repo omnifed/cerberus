@@ -39,5 +39,6 @@ export const DEMOS = {
     context: 'signals',
   },
   hookMeta: `import { useSignal } from '@cerberus/signals'`,
+  storeMeta: `import { useStore } from '@cerberus/signals'`,
   meta: `import { createSignal } from '@cerberus/signals'`,
 }

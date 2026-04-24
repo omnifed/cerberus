@@ -1,0 +1,36 @@
+---
+title: Using Store Instances
+description: Learn how to use instances of stores as an alternative to Context.
+package: 'signals'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/signal/static'
+
+<CodeSnippet snippet={DEMOS.storeMeta} />
+
+## Usage
+
+When you want to use a **unqiue instance** of a global [Store](/docs/signals/stores) but do not need a [Context API](/docs/signals/create-store-context).
+
+## Using the Store
+
+Simply pass in a store to the `useStore` hook and recieve a memoized version of it - protected against re-renders.
+
+<CodePreview {...DEMOS.read} />
+
+For more information about stores, see the [Stores page](/docs/signals/stores).
+
+## API
+
+`useStore` accepts the following options:
+
+| Params  | Required | Description                           |
+| ------- | -------- | ------------------------------------- |
+| `store` | Yes      | The store function reference to call. |
+
+### Return
+
+`useStore` returns a memoized version of the store value (e.g., what the store returns);
