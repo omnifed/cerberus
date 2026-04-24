@@ -2,20 +2,19 @@
 
 import { HStack } from '@/styled-system/jsx'
 import { Button, Text } from '@cerberus-design/react'
-import { ReactiveText, useSignal } from '@cerberus-design/signals'
-import { createRenderStore } from '../render-store'
+import { ReactiveText, useSignal, useStore } from '@cerberus-design/signals'
 import { useEffect } from 'react'
-
-const store = createRenderStore()
+import { createRenderStore } from '../render-store'
 
 export function UseDemo() {
+  const store = useStore(createRenderStore)
   const [count, setCount, getCount] = useSignal<number>(0)
 
   const increment = () => setCount(count + 1)
 
   useEffect(() => {
     return () => store.onUnmount()
-  }, [])
+  }, [store])
 
   store.trackRenders()
 
