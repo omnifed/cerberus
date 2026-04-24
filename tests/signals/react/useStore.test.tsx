@@ -1,7 +1,7 @@
-import { describe, test, expect } from 'bun:test'
-import { act, render, screen, waitFor } from '@testing-library/react'
-import { createSignal, ReactiveText, useStore } from '@cerberus-design/signals'
 import { user } from '@/utils'
+import { createSignal, ReactiveText, useStore } from '@cerberus-design/signals'
+import { render, screen, waitFor } from '@testing-library/react'
+import { describe, expect, test } from 'bun:test'
 
 describe('useStore', () => {
   function testStore() {
