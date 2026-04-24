@@ -1,0 +1,29 @@
+---
+title: Cleanup Effects
+description: Learn how to register cleanup functions to effects.
+package: 'signals'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/effect/static'
+
+<CodeSnippet snippet={DEMOS.cleanupMeta} />
+
+## Usage
+
+The `onCleanup` primitive is useful when you need to do something when an effect or computation is destroyed or re-evaluated.
+
+`onCleanup` works within the scope of either:
+
+1. [`createEffect`](/docs/signals/create-effect)
+2. [`createComputed`](/docs/signals/create-computed)
+
+In this example, we ensure a timer is cleared when it's parent effect is destroyed.
+
+<CodePreview {...DEMOS.cleanup} />
+
+## API
+
+`onCleanup` accepts a callback function and operates functionally the same at `createEffect` and `createComputed`.
