@@ -77,6 +77,12 @@ export const items = [
   },
   {
     id: '1.8',
+    href: '/docs/signals/on-cleanup',
+    label: 'onCleanup',
+    slug: 'on-cleanup',
+  },
+  {
+    id: '1.9',
     href: '/docs/signals/untrack',
     label: 'untrack',
     slug: 'untrack',

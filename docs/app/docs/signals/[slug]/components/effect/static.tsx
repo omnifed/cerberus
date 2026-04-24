@@ -12,5 +12,10 @@ export const DEMOS = {
     preview: <NativeEffectDemo />,
     context: 'signals',
   },
+  cleanup: {
+    id: 'effect.cleanup',
+    context: 'signals',
+  },
+  cleanupMeta: `import { onCleanup } from '@cerberus/signals'`,
   meta: `import { createEffect } from '@cerberus/signals'`,
 }
