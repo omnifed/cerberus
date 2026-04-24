@@ -1,7 +1,7 @@
 'use client'
 
 import { DecorativeBox } from '@/app/components/decorative-box'
-import { HStack, Scrollable, Stack } from '@/styled-system/jsx'
+import { HStack, Stack } from '@/styled-system/jsx'
 import { Button, For, Text } from '@cerberus-design/react'
 import {
   createComputed,
