@@ -3,24 +3,17 @@
 import { Box, Divider, Scrollable, Stack } from '@/styled-system/jsx'
 import { ArrowUpRight, LogoGithub } from '@carbon/icons-react'
 import { cerberus, For, Text } from '@cerberus-design/react'
-import {
-  createComputed,
-  createQuery,
-  createSignal,
-  useQuery,
-} from '@cerberus-design/signals'
+import { createComputed, createQuery, useQuery } from '@cerberus-design/signals'
 import { focusStates } from '@cerberus/panda-preset'
 import Link, { type LinkProps } from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import { css } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
 
-const [url, setUrl] = createSignal<string>('')
-
-const query = createQuery(url, async (currentUrl) => {
-  if (!currentUrl) return []
-  const response = await fetch(currentUrl)
+const query = createQuery(async (url: string) => {
+  if (!url) return []
+  const response = await fetch(url)
 
   if (!response.ok) {
     console.error(`Failed to fetch MDX: ${response.status}`)
@@ -30,7 +23,7 @@ const query = createQuery(url, async (currentUrl) => {
   // MUST parse as text(), MDX is not JSON
   const mdxText = await response.text()
   return parseHeadingsFromMDX(mdxText)
-})
+}, 'queryOnThisPage')
 
 interface HeadingLink {
   id: string
@@ -41,8 +34,6 @@ interface HeadingLink {
 
 export default function OnThisPage() {
   const pathname = usePathname()
-  const data = useQuery(query)
-
   const editPageLink = useMemo(() => {
     const base = 'https://github.com/omnifed/cerberus/blob/main/docs/app'
     const directory = pathname?.split('/').slice(0, -1).join('/') ?? 'docs/components'
@@ -54,11 +45,11 @@ export default function OnThisPage() {
     }
   }, [pathname])
 
+  const data = useQuery(query(editPageLink.rawUrl))
+
   const links = createComputed<HeadingLink[]>(() => {
     return Array.isArray(data) ? data : []
   })
-
-  useEffect(() => setUrl(editPageLink.rawUrl), [editPageLink])
 
   return (
     <Scrollable hideScrollbar h="full" px="md" w="full">

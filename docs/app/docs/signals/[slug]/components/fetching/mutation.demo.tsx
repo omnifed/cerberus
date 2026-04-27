@@ -1,53 +1,79 @@
 'use client'
 
-import { Box, Stack } from '@/styled-system/jsx'
-import { Button } from '@cerberus-design/react'
-import { createMutation, createQuery, useMutation, useQuery } from '@cerberus-design/signals'
+import { Box, HStack } from '@/styled-system/jsx'
+import { Button, Text } from '@cerberus-design/react'
+import {
+  createMutation,
+  createQuery,
+  setQueryData,
+  useMutation,
+  useQuery,
+} from '@cerberus-design/signals'
 import { Suspense } from 'react'
 
-// Fake DB
+// 1. Define Query Factory
+const getUser = createQuery<User, string>(async (id: string) => {
+  return await api.getUser(id)
+}, 'queryGetUser')
 
-type User = {
-  id: string
-  name: string
-}
-
-let dbUser: User = { id: '', name: '' }
-
-// Data fetching
-
-const query = createQuery(
-  () => 'init',
-  async () => dbUser,
-)
-
-const mutation = createMutation(
-  async (newId: User['id']) => {
-    dbUser = { id: newId, name: `User ${newId}` }
-    return dbUser
+// 2. Define Mutation Factory
+const updateUser = createMutation((payload: User) => api.updateUser(payload), {
+  // Optimistically update the UI instantly
+  onMutate: (vars) => {
+    setQueryData<User>(getUser.key(vars.id), (prev) => {
+      if (!prev) return { id: vars.id, name: vars.name }
+      return { ...prev, name: vars.name }
+    })
   },
-  {
-    invalidate: () => [query.key],
-  },
-)
+  // Declarative cache invalidation using factory keys
+  invalidate: (_data, vars) => [getUser.key(vars.id)],
+})
 
-// UI
-
-function UserInfo() {
-  const data = useQuery(query)
-  return <pre>{JSON.stringify(data, null, 2)}</pre>
+// 3. Consume in Components seamlessly
+function UserProfile(props: { id: User['id'] }) {
+  const user = useQuery(getUser(props.id))
+  return <Text>{user.name}</Text>
 }
 
 export function MutationDemo() {
-  const { mutate } = useMutation(mutation)
+  // Pretend this is from the URL or via props.id
+  const id = crypto.randomUUID()
+
+  const { mutate, _status } = useMutation(updateUser)
+
+  function handleUpdate() {
+    mutate({ id, name: `User ${crypto.randomUUID()}` })
+  }
 
   return (
-    <Stack direction="column" justify="space-between" w="3/4">
-      <Suspense fallback={<Box aria-busy h="200px" w="full" />}>
-        <UserInfo />
-      </Suspense>
+    <HStack gap="lg" w="3/4">
+      <Button onClick={handleUpdate}>Update Name</Button>
 
-      <Button onClick={() => mutate(crypto.randomUUID())}>Change User</Button>
-    </Stack>
+      <Suspense fallback={<Box aria-busy h="44px" rounded="sm" w="366px" />}>
+        <UserProfile id={id} />
+      </Suspense>
+    </HStack>
   )
+}
+
+// API
+
+type User = { id: string; name: string }
+
+const fakeDB = new Map<string, User>()
+const delay = (ms: number) => new Promise((res) => setTimeout(res, ms))
+
+const api = {
+  getUser: async (id: User['id']) => {
+    await delay(500)
+    if (!fakeDB.has(id)) {
+      fakeDB.set(id, { id, name: `User ${id}` })
+    }
+    return fakeDB.get(id)!
+  },
+  updateUser: async (payload: User) => {
+    await delay(500)
+    fakeDB.set(payload.id, { id: payload.id, name: payload.name })
+    return payload
+  },
 }

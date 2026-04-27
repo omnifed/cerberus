@@ -24,12 +24,20 @@ export const DEMOS = {
     preview: <StatusDemo />,
     context: 'signals',
   },
+  without: {
+    id: 'fetching.without',
+    context: 'signals',
+  },
+  sub: {
+    id: 'fetching.sub',
+    context: 'signals',
+  },
 
   queryMeta: `import { createQuery, useQuery } from '@cerberus/signals'`,
   mutationMeta: `import { createMutation, useMutation } from '@cerberus/signals'`,
   useQueryMeta: `import { useQuery } from '@cerberus/signals'`,
   useMutationMeta: `import { useMutation } from '@cerberus/signals'`,
 
-  queryUsageMeta: `const data = useQuery(myQuery)`,
+  queryUsageMeta: `const data = useQuery(myQuery(props.id))`,
   mutationUsageMeta: `const { mutate, ...state } = useMutation(myMutation)`,
 }
