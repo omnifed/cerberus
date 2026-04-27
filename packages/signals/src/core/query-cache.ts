@@ -26,15 +26,15 @@ export function getQueryVersionSignal(hashKey: string) {
   return queryVersions.get(hashKey)!
 }
 
-export function invalidateQuery<T>(args: T) {
-  const hashKey = hashArgs(args)
+export function invalidateQuery(hashKey: string) {
   globalQueryCache.delete(hashKey)
   const [getVersion, setVersion] = getQueryVersionSignal(hashKey)
   setVersion(getVersion() + 1)
 }
 
 export function invalidateAllQueries() {
-  for (const key of Array.from(globalQueryCache.keys())) {
+  const allKeys = Array.from(globalQueryCache.keys())
+  for (const key of allKeys) {
     const [getVersion, setVersion] = getQueryVersionSignal(key)
     globalQueryCache.delete(key)
     setVersion(getVersion() + 1)
