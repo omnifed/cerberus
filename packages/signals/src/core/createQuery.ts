@@ -36,7 +36,9 @@ export function createQuery<T, Args>(
           initializeCacheNode(hash, args, fetcher)
         } else {
           const [getCache] = globalQueryCache.get(hash)!
-          if (getCache().status === 'error') {
+          const state = getCache()
+          // THE FIX: Trigger background fetch if invalidated!
+          if (state.status === 'error' || state.isInvalidated) {
             executeFetch(hash, args, fetcher)
           }
         }
@@ -76,6 +78,7 @@ function initializeCacheNode<T, Args>(
     data: undefined,
     error: undefined,
     promise: null,
+    isInvalidated: false,
   }
   const cacheSignal = createSignal(initialState)
   globalQueryCache.set(
@@ -148,7 +151,12 @@ function executeFetch<T, Args>(
           }))
           throw error
         })
-      setCache((prev) => ({ ...prev, status: 'pending', promise }))
+      setCache((prev) => ({
+        ...prev,
+        status: 'pending',
+        promise,
+        isInvalidated: false, // Reset flag
+      }))
     }
   } catch (error) {
     setCache((prev) => ({
