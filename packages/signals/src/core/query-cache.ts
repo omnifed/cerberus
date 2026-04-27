@@ -1,4 +1,3 @@
-import { hashArgs } from './createQuery'
 import { createSignal } from './createSignal'
 import type { SignalTuple } from './types'
 
@@ -9,6 +8,7 @@ export interface QueryState<T> {
   error: unknown | undefined
   status: QueryStatus
   promise: Promise<T> | null
+  isInvalidated: boolean
 }
 
 export const globalQueryCache = new Map<string, SignalTuple<QueryState<unknown>>>()
@@ -27,7 +27,13 @@ export function getQueryVersionSignal(hashKey: string) {
 }
 
 export function invalidateQuery(hashKey: string) {
-  globalQueryCache.delete(hashKey)
+  // 1. Mark as invalidated WITHOUT deleting the optimistic data
+  const cacheHit = globalQueryCache.get(hashKey)
+  if (cacheHit) {
+    const [getCache, setCache] = cacheHit as SignalTuple<QueryState<unknown>>
+    setCache({ ...getCache(), isInvalidated: true })
+  }
+  // 2. Trigger component re-render
   const [getVersion, setVersion] = getQueryVersionSignal(hashKey)
   setVersion(getVersion() + 1)
 }
@@ -35,9 +41,7 @@ export function invalidateQuery(hashKey: string) {
 export function invalidateAllQueries() {
   const allKeys = Array.from(globalQueryCache.keys())
   for (const key of allKeys) {
-    const [getVersion, setVersion] = getQueryVersionSignal(key)
-    globalQueryCache.delete(key)
-    setVersion(getVersion() + 1)
+    invalidateQuery(key) // Reuse the logic
   }
 }
 
@@ -51,6 +55,7 @@ export function setQueryData<T>(hashKey: string, updater: (prev: T | undefined) 
       data: updater(undefined),
       error: undefined,
       promise: null,
+      isInvalidated: false,
     }
     globalQueryCache.set(
       hashKey,
@@ -67,6 +72,7 @@ export function setQueryData<T>(hashKey: string, updater: (prev: T | undefined) 
     data: updater(currentState.data),
     status: 'success',
     promise: null,
+    isInvalidated: false,
   })
 }
 

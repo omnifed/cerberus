@@ -1,7 +1,7 @@
 'use client'
 
-import { Box, HStack } from '@/styled-system/jsx'
-import { Button, Text } from '@cerberus-design/react'
+import { Box, HStack, Stack } from '@/styled-system/jsx'
+import { Button, Tag, Text } from '@cerberus-design/react'
 import {
   createMutation,
   createQuery,
@@ -39,7 +39,7 @@ export function MutationDemo() {
   // Pretend this is from the URL or via props.id
   const id = crypto.randomUUID()
 
-  const { mutate, _status } = useMutation(updateUser)
+  const { mutate, status } = useMutation(updateUser)
 
   function handleUpdate() {
     mutate({ id, name: `User ${crypto.randomUUID()}` })
@@ -49,9 +49,12 @@ export function MutationDemo() {
     <HStack gap="lg" w="3/4">
       <Button onClick={handleUpdate}>Update Name</Button>
 
-      <Suspense fallback={<Box aria-busy h="44px" rounded="sm" w="366px" />}>
-        <UserProfile id={id} />
-      </Suspense>
+      <Stack>
+        <Suspense fallback={<Box aria-busy h="44px" rounded="sm" w="366px" />}>
+          <UserProfile id={id} />
+        </Suspense>
+        <Tag w="fit-content">{status}</Tag>
+      </Stack>
     </HStack>
   )
 }

@@ -21,8 +21,9 @@ export function useQuery<T>(queryAccessor: QueryAccessor<T>): T {
   const state = useRead(stableAccessor)
 
   // 4. Integrate with React Suspense
-  // STRICT BYPASS: If 'streaming', we do NOT suspend. The UI receives partial data.
-  if (state.status === 'pending' && state.promise) {
+  // STRICT BYPASS: If we have ANY data (optimistic or stale),
+  // do NOT suspend. Let the UI show the data while the background fetch runs
+  if (state.status === 'pending' && state.promise && state.data === undefined) {
     throw state.promise
   }
 
