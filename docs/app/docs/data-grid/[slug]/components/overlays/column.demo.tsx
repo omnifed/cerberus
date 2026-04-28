@@ -4,12 +4,12 @@ import { Box, HStack } from '@/styled-system/jsx'
 import { DataGrid } from '@cerberus-design/data-grid'
 import { Button, Tag, TagProps, Text } from '@cerberus-design/react'
 import {
+  createComputed,
   createMutation,
   createQuery,
   setQueryData,
   useMutation,
   useQuery,
-  useSignal,
 } from '@cerberus-design/signals'
 import { Suspense } from 'react'
 import { createFakeQuery } from '../quick-start/data'
@@ -36,11 +36,14 @@ export const columns = [
       sort: true,
     },
     cell: ({ row, value }) => (
-      // Granular Suspense boundary protecting just this cell
+      // Granular Suspense boundary protecting just the text/tag content
       <HStack justify="space-between" w="full">
         <Suspense fallback={<Box aria-busy h="24px" rounded="full" w="full" />}>
           <SmartColumn row={String(row.id)} value={value} />
         </Suspense>
+
+        {/* Trigger stays outside Suspense so it never disappears */}
+        <SmartTrigger row={String(row.id)} />
       </HStack>
     ),
   }),
@@ -53,23 +56,14 @@ export const columns = [
 ]
 
 // --- Smart Column Component ---
-
-// --- Smart Column Component ---
 interface SmartColumnProps {
   row: string
   value: string
 }
 
 function SmartColumn(props: SmartColumnProps) {
-  const accessor = getRowStage(props.row)
-
-  // 1. useQuery handles Suspense and gives us the raw data
-  const stage = useQuery(accessor)
-
-  // 2. The Magic of Signals: We can read the raw accessor directly
-  // to get the background meta-data without disrupting React Suspense!
-  const rawState = accessor()
-  const isBackgroundFetching = rawState.status === 'pending'
+  // 1. Fetches row data. Suspends ONLY this specific cell on first load.
+  const stage = useQuery(getRowStage(props.row))
 
   // Visual helper for the tag colors
   const palette: Record<string, TagProps['palette']> = {
@@ -82,57 +76,38 @@ function SmartColumn(props: SmartColumnProps) {
   }
 
   return (
-    <>
-      <HStack gap="sm">
-        <Text textStyle="body-md">{props.value}</Text>
-        <Tag palette={palette[stage]}>{stage}</Tag>
-      </HStack>
-
-      {/* Pass the background fetching status to the trigger */}
-      <SmartTrigger
-        row={props.row}
-        currentStage={stage}
-        isFetching={isBackgroundFetching}
-      />
-    </>
+    <HStack gap="sm">
+      <Text textStyle="body-md">{props.value}</Text>
+      <Tag palette={palette[stage]}>{stage}</Tag>
+    </HStack>
   )
 }
 
-// --- Smart Trigger (Race Condition Protected) ---
-function SmartTrigger(props: {
-  row: string
-  currentStage: string
-  isFetching: boolean
-}) {
+function SmartTrigger(props: { row: string }) {
   const { mutate } = useMutation(updateRowStage)
-  const [isMutating, setIsMutating] = useSignal<boolean>(false)
 
-  async function handleUpdate() {
-    setIsMutating(true)
-    try {
-      await mutate({ id: props.row, stage: getNextStage(props.currentStage) })
-    } finally {
-      setIsMutating(false)
-    }
+  const currentState = createComputed(() => {
+    return (getRowStage(props.row)().data as string) || 'Pending'
+  })
+
+  function handleUpdate() {
+    mutate({ id: props.row, stage: getNextStage(currentState()) })
   }
 
-  // Hide the button if they have reached the final stage
-  if (props.currentStage === 'Active') return null
+  // Reactively hide the button if the signal says they reached the final stage
+  // We call the signal directly to force re-rendering
+  if (getRowStage(props.row)().data === 'Active') return null
 
   return (
-    <Button
-      onClick={handleUpdate}
-      size="sm"
-      // The button now spins if it's mutating OR if background SWR is verifying the data!
-      pending={isMutating || props.isFetching}
-    >
+    <Button onClick={handleUpdate} size="sm">
       Next Stage
     </Button>
   )
 }
 
 // --- Global Query & Mutation Factories ---
-const getRowStage = createQuery((id: string) => api.getStage(id), 'queryRowStage')
+
+const getRowStage = createQuery((id: string) => api.getStage(id), 'row-stage')
 
 const updateRowStage = createMutation(
   (payload: { id: string; stage: string }) => api.updateStage(payload),
