@@ -118,6 +118,7 @@ function initializeCacheNode<T, Args>(
     error: undefined,
     promise: null,
     isInvalidated: false,
+    version: 0,
   }
   const cacheSignal = createSignal(initialState)
   globalQueryCache.set(
@@ -135,33 +136,37 @@ function executeFetch<T, Args>(
     ctx: FetcherContext<T>,
   ) => Promise<T> | AsyncGenerator<T, void, unknown>,
 ) {
-  const [, setCache] = globalQueryCache.get(hashKey)! as SignalTuple<QueryState<T>>
+  const [getCache, setCache] = globalQueryCache.get(hashKey)! as SignalTuple<
+    QueryState<T>
+  >
 
-  const context: FetcherContext<T> = {
-    update: (updater) =>
-      setCache((prev) => ({ ...prev, status: 'streaming', data: updater(prev.data) })),
-  }
+  // THE FIX: Fallbacks ensure we never compare NaN
+  const startingVersion = getCache().version || 0
+  const isStale = () => (getCache().version || 0) !== startingVersion
 
   try {
-    const result = fetcher(args, context)
+    const result = fetcher(args, {
+      update: (updater) => {
+        if (isStale()) return
+        setCache((prev) => ({ ...prev, status: 'streaming', data: updater(prev.data) }))
+      },
+    })
 
-    // Handle Async Generators (Streaming)
+    // --- STREAMING LOGIC ---
     if (result != null && typeof (result as any)[Symbol.asyncIterator] === 'function') {
       const asyncIterable = result as AsyncGenerator<T, void, unknown>
-
-      // 1. Manually extract the iterator
       const iterator = asyncIterable[Symbol.asyncIterator]()
 
-      // 2. Create a Promise that ONLY waits for the FIRST chunk
       const firstChunkPromise = iterator
         .next()
         .then((firstResult) => {
+          if (isStale()) return getCache().data as T // ABORT if mutated!
+
           if (firstResult.done) {
             setCache((prev) => ({ ...prev, status: 'success', promise: null }))
             return firstResult.value as T
           }
 
-          // The first chunk arrived! Update state and drop the promise to unblock React.
           setCache((prev) => ({
             ...prev,
             status: 'streaming',
@@ -170,11 +175,11 @@ function executeFetch<T, Args>(
             promise: null,
           }))
 
-          // 3. Continue the rest of the stream quietly in the background
           ;(async () => {
             try {
               let next = await iterator.next()
               while (!next.done) {
+                if (isStale()) return // ABORT mid-stream if mutated!
                 setCache((prev) => ({
                   ...prev,
                   status: 'streaming',
@@ -184,27 +189,30 @@ function executeFetch<T, Args>(
                 }))
                 next = await iterator.next()
               }
-              setCache((prev) => ({ ...prev, status: 'success' }))
+              if (!isStale()) setCache((prev) => ({ ...prev, status: 'success' }))
             } catch (error) {
-              setCache((prev) => ({ ...prev, status: 'error', error, promise: null }))
+              if (!isStale())
+                setCache((prev) => ({ ...prev, status: 'error', error, promise: null }))
             }
           })()
 
           return firstResult.value as T
         })
         .catch((error) => {
-          setCache((prev) => ({ ...prev, status: 'error', error, promise: null }))
+          if (!isStale())
+            setCache((prev) => ({ ...prev, status: 'error', error, promise: null }))
           throw error
         })
 
-      // 4. Hand the firstChunkPromise to React Suspense
       setCache((prev) => ({ ...prev, status: 'pending', promise: firstChunkPromise }))
       return
     }
 
+    // --- STANDARD PROMISE LOGIC ---
     if (result instanceof Promise) {
       const promise = result
         .then((data) => {
+          if (isStale()) return getCache().data as T
           setCache((prev) => ({
             ...prev,
             status: 'success',
@@ -215,6 +223,7 @@ function executeFetch<T, Args>(
           return data
         })
         .catch((error) => {
+          if (isStale()) return
           setCache((prev) => ({
             ...prev,
             status: 'error',
@@ -224,21 +233,24 @@ function executeFetch<T, Args>(
           }))
           throw error
         })
+
       setCache((prev) => ({
         ...prev,
         status: 'pending',
-        promise,
-        isInvalidated: false, // Reset flag
+        promise: promise as Promise<T>,
+        isInvalidated: false,
       }))
     }
   } catch (error) {
-    setCache((prev) => ({
-      ...prev,
-      status: 'error',
-      data: undefined,
-      error,
-      promise: null,
-    }))
+    if (!isStale())
+      setCache((prev) => ({
+        ...prev,
+        status: 'error',
+        data: undefined,
+        error,
+        promise: null,
+        isInvalidated: false,
+      }))
   }
 }
 
