@@ -3,6 +3,7 @@ import { MutationDemo } from './mutation.demo'
 import { NoOptmisticDemo } from './noOptimistic.demo'
 import { DataDemo } from './data.demo'
 import { StatusDemo } from './status.demo'
+import { StreamingDemo } from './streaming.demo'
 
 export const DEMOS = {
   basic: {
@@ -28,6 +29,11 @@ export const DEMOS = {
   status: {
     id: 'fetching.status',
     preview: <StatusDemo />,
+    context: 'signals',
+  },
+  streaming: {
+    id: 'fetching.streaming',
+    preview: <StreamingDemo />,
     context: 'signals',
   },
   without: {

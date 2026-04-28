@@ -72,6 +72,12 @@ This is incredibly useful for syncing data to vanilla DOM elements, Web Componen
 
 <CodePreview {...DEMOS.sub} />
 
+## Streaming Reponses (Async Generators)
+
+Cerberus queries also support streaming data via [Async Generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator). This is powerful if you are using an LLM API or your local API supports data streaming.
+
+<CodePreview {...DEMOS.streaming} />
+
 ## Optimistic Updates
 
 Queries have a built-in optimistic store when combined with [Mutations](/docs/signals/create-mutation). This means the UI will update in "real-time" while the query will fetch in the background and eventually overwrite the optimistic store.
