@@ -5,6 +5,32 @@ import type { QueryAccessor } from '../core/createQuery'
 import { releaseQuery, retainQuery } from '../core/query-cache'
 import { useRead } from './useRead.client'
 
+/**
+ * ## Creating Queries in Components
+ *
+ * A hook that provides a convenient way to use queries in React components.
+ * This hook simply deconstructs the query provided and utilizes `useRead`
+ * to subscribe to the query's state.
+ *
+ * `useQuery` accepts the Accessor returned from `createQuery`.
+ *
+ * ## API
+ *
+ * | Parameters | Description |
+ * |------------|-------------|
+ * | `queryAccessor` |  The result from `createQuery`. |
+ *
+ * ## Return Properties
+ *
+ * | Property | Description |
+ * | -------- | ----------- |
+ * | `state`  | The current state of the query. |
+ *
+ * ## Resources
+ * - [Cerberus Signals Docs](https://cerberus.digitalu.design/docs/signals/overview)
+ * - [createQuery](https://cerberus.digitalu.design/docs/signals/create-query)
+ * - [useRead](https://cerberus.digitalu.design/docs/signals/use-read)
+ */
 export function useQuery<T>(queryAccessor: QueryAccessor<T>): T {
   // 1. Stabilize the accessor using its deterministic key.
   // This completely eliminates the React 19 infinite loop error!
