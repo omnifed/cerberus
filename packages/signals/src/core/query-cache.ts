@@ -9,6 +9,7 @@ export interface QueryState<T> {
   status: QueryStatus
   promise: Promise<T> | null
   isInvalidated: boolean
+  version: number
 }
 
 export const globalQueryCache = new Map<string, SignalTuple<QueryState<unknown>>>()
@@ -41,14 +42,13 @@ export function invalidateQuery(hashKey: string) {
 export function invalidateAllQueries() {
   const allKeys = Array.from(globalQueryCache.keys())
   for (const key of allKeys) {
-    invalidateQuery(key) // Reuse the logic
+    invalidateQuery(key)
   }
 }
 
 export function setQueryData<T>(hashKey: string, updater: (prev: T | undefined) => T) {
   let cacheHit = globalQueryCache.get(hashKey) as SignalTuple<QueryState<T>> | undefined
 
-  // If it doesn't exist yet, seamlessly create it for the optimistic data
   if (!cacheHit) {
     const initialState: QueryState<T> = {
       status: 'success',
@@ -56,6 +56,7 @@ export function setQueryData<T>(hashKey: string, updater: (prev: T | undefined) 
       error: undefined,
       promise: null,
       isInvalidated: false,
+      version: 1, // Start at 1
     }
     globalQueryCache.set(
       hashKey,
@@ -73,6 +74,7 @@ export function setQueryData<T>(hashKey: string, updater: (prev: T | undefined) 
     status: 'success',
     promise: null,
     isInvalidated: false,
+    version: (currentState.version || 0) + 1,
   })
 }
 
