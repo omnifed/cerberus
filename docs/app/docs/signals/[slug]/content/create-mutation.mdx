@@ -1,6 +1,6 @@
 ---
 title: Creating Mutations
-description: Learn how to mutate cached queries in React.
+description: Learn how to update queries in React.
 package: 'signals'
 ---
 
@@ -13,56 +13,100 @@ import { DEMOS } from '../components/fetching/static'
 
 ## Usage
 
-`createMutation` allows you define a way to trigger a query-like function in
-response to an action that can perform mutations to the data.
+`createMutation` allows you create a Mutation Factory that works alongside Cerberus Queries. Mutations provide _optimistic updates_ and invalidation options to keep your UI seamlessly "real-time" by fetching in the background on your behalf.
 
-For the most part, if you have a signal-based query, there is no need for a mutation
-unless you are performing unique actions like form submissions.
+**Mutations are used when you want to make updates to data that is associated with a query.**
 
-Additionally, mutations allow you to define a list of querys to invalidate after
-the mutation has been called.
+Likewise, if you have a query that will never have update-related actions associated with it - you don't need mutations.
 
 ## Creating Mutations
 
-Mutations take a Promise to call when run and an optional options Object.
+Creating a mutation requires two things:
+
+1. A Promise to call when activated
+2. Mutation options to utilize when `mutate` is called
+
+Ultimately, when you create a mutation you are really just creating a factory that can be called where ever and whenever you are ready.
 
 <CodePreview {...DEMOS.mutation} />
 
 ## Using Mutations
 
-`createMutation` only _defines_ a mutation and does not actually call it. To use the
-mutation you must pass the returned value into the `useMutation` hook.
+Depending on your goals will determine how to you the mutation. The following sections outline the different use cases whether you are optimistically updating or not.
 
-<CodeSnippet snippet={DEMOS.mutationUsageMeta} />
+**Mutations can live at any level**. All that matters is that the factory has access to the `query.key` to reference.
+
+There are no restrictions to Cerberus Signal Primitives which means you can use them at any scope.
+
+### Pattern 1: Optimistic Updates
+
+Optimistic updates allow you to update the state of your query data which which will render in the UI immediately while calling the Promise-based mutation in the background.
+
+This is done by using the `setQueryData` helper function.
+
+**Utilizing this helper will allow your application to appearingly have "real-time" functionality.**
+
+Once the mutation is settled, the return value will automagically overwrite the optimistic value. If these are the same - there will be no visual difference in the UI. If there is a descrepency, the UI will automagically be corrected.
+
+To use optimitic updates, add the `onMutate` method to the options Object of your second argument and call the `setQueryData` helper to update the state.
+
+<CodeSnippet snippet={DEMOS.optimisticMeta} />
 <br />
 
-The value returned is an Obect containing the `mutate` method and the state of the
-mutation defined.
+The `setQueryData` helper accepts a `query.key` with the same arguments that the original query expects. This is done by using the [`key` property](/docs/signals/create-query#api) from the original query.
+
+<CodePreview {...DEMOS.mutation} />
+
+### Pattern 2: Non-optimistically
+
+If you are interested in a legacy approach that matches traditional application updates via visual loading states - simply omit the `onMutate` option (and thus not using `setQueryData`).
+
+`onMutate` does not create the optimistic update - `setQueryData` does. So, if you needed the `onMutate` lifecycle method you can still use it.
+
+<CodePreview {...DEMOS.noOptimistic} />
+
+### Within Components
+
+To use mutations within a component, pass the factory to the `useMutation` hook. This will return an Object that contains the `mutate` method and any of the other [return properties](#return).
+
+<CodeSnippet snippet={DEMOS.mutationUsageMeta} />
 
 ## API
 
 `createMutation` accepts the following options:
 
-| Params  | Required | Description                                                     |
-| ------- | -------- | --------------------------------------------------------------- |
-| mutator | `true`   | The Promise-based function to call when the `mutate` is called. |
-| options | `false`  | An Object of conditional options for defined mutations.         |
+| Params  | Required | Description                                                  |
+| ------- | -------- | ------------------------------------------------------------ |
+| mutator | `true`   | The Promise-based function used when the `mutate` is called. |
+| options | `false`  | An Object of conditional options for defined mutations.      |
 
 ### Mutation Options
 
 The options Objecct contains the following optional properties:
 
-| Property     | Type                                              | Description                                                          |
-| ------------ | ------------------------------------------------- | -------------------------------------------------------------------- |
-| `invalidate` | `'all' \| ((data: T, variables: V) => unknown[])` | A list of `query.key` to invalidate once the mutation has completed. |
-| `onSuccess`  | `(data: T, variables: V) => void`                 | A callback to run when the mutation is successful.                   |
-| `onError`    | `(error: unknown, variables: V) => void`          | A callback to run when the mutation has errored.                     |
+| Property     | Type                                             | Description                                                          |
+| ------------ | ------------------------------------------------ | -------------------------------------------------------------------- |
+| `onMutate`   | `(variables: V) => void`                         | A callback to run when the mutation is triggered.                    |
+| `onSuccess`  | `(data: T, variables: V) => void`                | A callback to run when the mutation is successful.                   |
+| `onError`    | `(error: unknown, variables: V) => void`         | A callback to run when the mutation has errored.                     |
+| `invalidate` | `'all' \| ((data: T, variables: V) => string[])` | A list of `query.key` to invalidate once the mutation has completed. |
 
 ### Return
 
-`createMutation` returns a `MutationTuple` to be passed into `useMutation`:
+`useMutation` returns a `MutationReturn` Object that contains the following properties:
 
-| Index | Type                           | Description                              |
-| ----- | ------------------------------ | ---------------------------------------- |
-| 0     | `(variables: V) => Promise<T>` | A function used to trigger the mutation. |
-| 1     | `Accessor<MutationState<T>>`   | The state of the mutation.               |
+| Index    | Type                                          | Description                                  |
+| -------- | --------------------------------------------- | -------------------------------------------- |
+| `mutate` | `(variables: V) => Promise<T>`                | A function used to trigger the mutation.     |
+| `status` | `'idle' \| 'pending' \| 'success' \| 'error'` | The Promise-based status of the mutation.    |
+| `error`  | `unknown \| undefined`                        | The error thrown when something bad happens. |
+| `data`   | `T  \| undefined`                             | The data returned from the mutation.         |
+
+### `setQueryData`
+
+`setQueryData` doesn't return anything and accepts following properties:
+
+| Index     | Type                          | Description                                                                                                                             |
+| --------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `hashKey` | `string`                      | A unique key provide from calling the `query.key` method with the expected arguments passed in provided from the `onMutate` parameters. |
+| `updater` | `(prev: T \| undefined) => T` | A setter function that returns the query data state if existing and expects the new state returned.                                     |

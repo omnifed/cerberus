@@ -1,5 +1,6 @@
 import { BasicDemo } from './basic.demo'
 import { MutationDemo } from './mutation.demo'
+import { NoOptmisticDemo } from './noOptimistic.demo'
 import { DataDemo } from './data.demo'
 import { StatusDemo } from './status.demo'
 
@@ -12,6 +13,11 @@ export const DEMOS = {
   mutation: {
     id: 'fetching.mutation',
     preview: <MutationDemo />,
+    context: 'signals',
+  },
+  noOptimistic: {
+    id: 'fetching.noOptimistic',
+    preview: <NoOptmisticDemo />,
     context: 'signals',
   },
   data: {
@@ -40,4 +46,14 @@ export const DEMOS = {
 
   queryUsageMeta: `const data = useQuery(myQuery(props.id))`,
   mutationUsageMeta: `const { mutate, ...state } = useMutation(myMutation)`,
+
+  optimisticMeta: `const updateUser = createMutation((payload: User) => api.updateUser(payload), {
+    // Optimistically update the UI instantly
+    onMutate: (vars) => {
+      setQueryData<User>(getUser.key(vars.id), (prev) => {
+        if (!prev) return { id: vars.id, name: vars.name }
+        return { ...prev, name: vars.name }
+      })
+    },
+  })`,
 }
