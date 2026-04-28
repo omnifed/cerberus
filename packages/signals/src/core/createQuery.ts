@@ -106,26 +106,60 @@ function executeFetch<T, Args>(
   try {
     const result = fetcher(args, context)
 
+    // Handle Async Generators (Streaming)
     if (result != null && typeof (result as any)[Symbol.asyncIterator] === 'function') {
       const asyncIterable = result as AsyncGenerator<T, void, unknown>
-      const promise = (async () => {
-        try {
-          for await (const nextState of asyncIterable) {
-            setCache((prev) => ({
-              ...prev,
-              status: 'streaming',
-              data: nextState,
-              error: undefined,
-              promise: null,
-            }))
+
+      // 1. Manually extract the iterator
+      const iterator = asyncIterable[Symbol.asyncIterator]()
+
+      // 2. Create a Promise that ONLY waits for the FIRST chunk
+      const firstChunkPromise = iterator
+        .next()
+        .then((firstResult) => {
+          if (firstResult.done) {
+            setCache((prev) => ({ ...prev, status: 'success', promise: null }))
+            return firstResult.value as T
           }
-          setCache((prev) => ({ ...prev, status: 'success' }))
-        } catch (error) {
+
+          // The first chunk arrived! Update state and drop the promise to unblock React.
+          setCache((prev) => ({
+            ...prev,
+            status: 'streaming',
+            data: firstResult.value,
+            error: undefined,
+            promise: null,
+          }))
+
+          // 3. Continue the rest of the stream quietly in the background
+          ;(async () => {
+            try {
+              let next = await iterator.next()
+              while (!next.done) {
+                setCache((prev) => ({
+                  ...prev,
+                  status: 'streaming',
+                  data: next.value as T,
+                  error: undefined,
+                  promise: null,
+                }))
+                next = await iterator.next()
+              }
+              setCache((prev) => ({ ...prev, status: 'success' }))
+            } catch (error) {
+              setCache((prev) => ({ ...prev, status: 'error', error, promise: null }))
+            }
+          })()
+
+          return firstResult.value as T
+        })
+        .catch((error) => {
           setCache((prev) => ({ ...prev, status: 'error', error, promise: null }))
           throw error
-        }
-      })() as Promise<T>
-      setCache((prev) => ({ ...prev, status: 'pending', promise }))
+        })
+
+      // 4. Hand the firstChunkPromise to React Suspense
+      setCache((prev) => ({ ...prev, status: 'pending', promise: firstChunkPromise }))
       return
     }
 
