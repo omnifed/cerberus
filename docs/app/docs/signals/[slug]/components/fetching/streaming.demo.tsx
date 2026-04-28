@@ -33,12 +33,10 @@ const getChatStream = createQuery<string, string>(async function* (prompt: strin
   }
 }, 'queryChatStream')
 
-// --- 3. Consume in Component ---
-function ChatWindow(props: { prompt: string }) {
-  // 1. Initially suspends while waiting for the network connection
-  // 2. Automatically resumes and streams as chunks arrive
-  const chatResponse = useQuery(getChatStream(props.prompt))
+// --- UI ---
 
+function ChatWindow(props: { prompt: string }) {
+  const chatResponse = useQuery(getChatStream(props.prompt))
   return (
     <Stack gap="md" p="md" bg="surface.container" rounded="md">
       <Text textStyle="body-md">{chatResponse}</Text>
@@ -47,6 +45,7 @@ function ChatWindow(props: { prompt: string }) {
 }
 
 export function StreamingDemo() {
+  // we use hooks to force re-renders of the form content
   const [input, setInput] = useSignal('How does Cerberus handle streams?')
   const [submittedPrompt, setSubmittedPrompt] = useSignal('')
 

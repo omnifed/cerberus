@@ -1,5 +1,8 @@
 import { createQuery, hashArgs } from '@cerberus-design/signals/src/core/createQuery'
-import { invalidateQuery } from '@cerberus-design/signals/src/core/query-cache'
+import {
+  invalidateQuery,
+  setQueryData,
+} from '@cerberus-design/signals/src/core/query-cache'
 import { bench, run, group } from 'mitata'
 
 group('Query API Data Layer', () => {
@@ -36,7 +39,7 @@ group('Query API Data Layer', () => {
     }
   })
 
-  // Setup for Invalidation test
+  // Setup for Invalidation & Optimistic UI tests
   const dynamicFetcher = async (id: number) => ({ id, ts: Date.now() })
   const getUser = createQuery(dynamicFetcher, 'user-query')
 
@@ -44,11 +47,17 @@ group('Query API Data Layer', () => {
   const userAccessor = getUser(999)
   userAccessor()
 
+  bench('Optimistic UI Update (setQueryData)', () => {
+    // Measures the raw speed of injecting data directly into an existing cache node.
+    // This proves that "onMutate" handlers will never block the main thread.
+    setQueryData(userAccessor.key, (prev: any) => ({ ...prev, optimistic: true }))
+  })
+
   bench('Cache Invalidation Sweep', () => {
     // Proves that triggering an invalidation correctly finds the key,
-    // drops the cache, and forces the underlying version signal to bump
+    // updates the stale flag, and forces the underlying version signal to bump
     // without locking up the thread.
-    invalidateQuery(userAccessor.key) // We can read the key directly from the accessor
+    invalidateQuery(userAccessor.key)
   })
 })
 
