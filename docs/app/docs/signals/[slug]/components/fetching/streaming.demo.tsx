@@ -1,15 +1,7 @@
 'use client'
 
 import { Stack } from '@/styled-system/jsx'
-import {
-  Button,
-  cerberus,
-  Field,
-  Group,
-  Input,
-  Show,
-  Text,
-} from '@cerberus-design/react'
+import { Button, Field, Group, Input, Show, Text } from '@cerberus-design/react'
 import { createQuery, useQuery, useSignal } from '@cerberus-design/signals'
 import { ChangeEvent, Suspense } from 'react'
 
@@ -35,9 +27,8 @@ const getChatStream = createQuery<string, string>(async function* (prompt: strin
   // Listen to the stream and accumulate chunks
   for await (const chunk of fakeLLMStream(prompt)) {
     fullText += chunk
-
     // The moment this yields, Cerberus sets the cache status to 'streaming'
-    // and passes the partial data directly to the UI!
+    // and passes the partial data directly to the UI
     yield fullText
   }
 }, 'queryChatStream')
