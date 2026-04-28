@@ -4,5 +4,6 @@ export { createEffect } from './createEffect'
 export { createQuery } from './createQuery'
 export { createMutation } from './createMutation'
 export { batch, onCleanup, untrack } from './scheduler'
-export { setQueryData } from './query-cache'
+export { setQueryData, type QueryStatus } from './query-cache'
+
 export type { Accessor, Setter, SignalTuple } from './types'
