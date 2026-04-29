@@ -13,10 +13,11 @@ import { DEMOS } from '../components/fetching/static'
 
 ## Usage
 
-`useMudation` allows you call a defined mutation (via [`createMutation`](/docs/signals/create-mutation))
-to trigger and action for usage within your React component.
+`useMutation` allows you to use a mutation factory (via [`createMutation`](/docs/signals/create-mutation)) within the scope of a React component.
 
-Mutations's have built in support for `Suspense` and Error Boundaries with no extra effort.
+Mutations's allow you to update the state of a query and have built in support for `Suspense` and Error Boundaries with no extra effort.
+
+When utilizing the `invalidate` option, a query will automagically update once the mutation has resolved. Combing this with `onMutate/setQueryData` will create optimistic updates in the UI.
 
 ## Using Mutations
 
@@ -26,23 +27,23 @@ To use a mutation call the `mutate` method from the return Object.
 
 ## Data
 
-The `data` property is a mirrored store of the query associated with the mutation.
+The `data` property contains the returned value of the mutation. This is not necessary for UI updates as mutations were designed to update querys on your behalf through invalidation.
 
 <CodePreview {...DEMOS.data} />
 
 ## Status
 
-The `status` property is the state associated with the mutation when triggered.
+The `status` property is the lifecycle state associated with the mutation. To learn more about mutation lifecycles, see the [create mutation docs](/docs/signals/create-mutation).
 
-<CodePreview {...DEMOS.status} />
+<CodePreview {...DEMOS.mutation} />
 
 ## API
 
 `useMutation` accepts the following options:
 
-| Params          | Required | Description                         |
-| --------------- | -------- | ----------------------------------- |
-| `MutationTuple` | `true`   | The result of the mutation defined. |
+| Params          | Required | Description                                |
+| --------------- | -------- | ------------------------------------------ |
+| `MutationTuple` | Yes      | The value of the defined mutation factory. |
 
 ### Return
 
@@ -51,6 +52,6 @@ The `status` property is the state associated with the mutation when triggered.
 | Property | Type                           | Description                                         |
 | -------- | ------------------------------ | --------------------------------------------------- |
 | `mutate` | `(variables: V) => Promise<T>` | A function that calls the defined mutation Promise. |
+| `status` | `MutationStatus`               | The Promise-based status state of the mutation.     |
 | `data`   | `T \| undefined`               | The cached state of the query associated with it.   |
 | `error`  | `unknown \| undefined`         | The error thrown from the mutation.                 |
-| `status` | `MutationStatus`               | The Promise-based status state of the mutation.     |
