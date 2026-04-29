@@ -11,7 +11,7 @@ import {
 import { Suspense } from 'react'
 
 // 1. Define Query Factory
-const getUser = createQuery<User, string>(async (id: string) => {
+const getUser = createQuery(async (id: string) => {
   return await api.getUser(id)
 }, 'queryGetUser')
 
