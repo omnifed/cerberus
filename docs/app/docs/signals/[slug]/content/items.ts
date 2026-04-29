@@ -76,6 +76,18 @@ export const items = [
     slug: 'batch',
   },
   {
+    id: '1.8',
+    href: '/docs/signals/on-cleanup',
+    label: 'onCleanup',
+    slug: 'on-cleanup',
+  },
+  {
+    id: '1.9',
+    href: '/docs/signals/untrack',
+    label: 'untrack',
+    slug: 'untrack',
+  },
+  {
     id: '2.0',
     label: 'Hooks',
     href: '',
@@ -103,6 +115,12 @@ export const items = [
     href: '/docs/signals/use-signal',
     label: 'useSignal',
     slug: 'use-signal',
+  },
+  {
+    id: '2.5',
+    href: '/docs/signals/use-store',
+    label: 'useStore',
+    slug: 'use-store',
   },
   {
     id: '3.0',

@@ -1,5 +1,11 @@
-import type { Observable, Observer, Accessor } from './types'
-import { activeObserver, pushObserver, popObserver, schedule } from './scheduler'
+import {
+  activeObserver,
+  activeOwner,
+  cleanNode,
+  schedule,
+  setActiveContext,
+} from './scheduler'
+import type { Accessor, Observable, Observer } from './types'
 
 /**
  * ## Creating a Computed Value
@@ -25,11 +31,14 @@ import { activeObserver, pushObserver, popObserver, schedule } from './scheduler
 export function createComputed<T>(fn: () => T): Accessor<T> {
   let value: T
   let isStale: boolean = true
+  let isEvaluating: boolean = false
 
   const node: Observable & Observer = {
     observers: new Set(),
     dependencies: new Set(),
     depth: 0,
+    owned: null,
+    cleanups: null,
     execute() {
       if (isStale) return
       isStale = true
@@ -44,26 +53,46 @@ export function createComputed<T>(fn: () => T): Accessor<T> {
     },
   }
 
+  // Link to active parent owner immediately
+  if (activeOwner !== null) {
+    if (activeOwner.owned === null) activeOwner.owned = []
+    activeOwner.owned.push(node)
+  }
+
   const getter: Accessor<T> = () => {
+    if (isEvaluating) {
+      throw new Error('Cerberus Signals: Circular dependency detected in computed.')
+    }
+
+    if (isStale) {
+      cleanNode(node)
+      node.cleanup()
+      node.depth = 0 // Reset depth
+
+      const prevObserver = activeObserver
+      const prevOwner = activeOwner
+      setActiveContext(node, node)
+      isEvaluating = true
+
+      try {
+        value = fn()
+        isStale = false
+      } finally {
+        isEvaluating = false
+        setActiveContext(prevObserver, prevOwner)
+      }
+    }
+
+    // --- TOPOLOGICAL SORT UPDATE ---
+    // Register the dependency AFTER evaluation so node.depth is 100% accurate
     if (activeObserver) {
       node.observers.add(activeObserver)
       activeObserver.dependencies.add(node)
-      // --- TOPOLOGICAL SORT UPDATE (Observable side) ---
       if (activeObserver.depth <= node.depth) {
         activeObserver.depth = node.depth + 1
       }
     }
 
-    if (isStale) {
-      node.cleanup()
-      // --- TOPOLOGICAL SORT UPDATE (Observer side) ---
-      node.depth = 0
-      pushObserver(node)
-      value = fn()
-      popObserver()
-
-      isStale = false
-    }
     return value
   }
 

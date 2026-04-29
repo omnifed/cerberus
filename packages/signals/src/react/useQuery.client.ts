@@ -1,47 +1,63 @@
 'use client'
 
+import { useEffect, useMemo } from 'react'
+import type { QueryAccessor, QueryOptions } from '../core/createQuery'
+import { releaseQuery, retainQuery } from '../core/query-cache'
 import { useRead } from './useRead.client'
-import type { Accessor } from '../core/types'
-import type { QueryState } from '../core/query-cache'
 
 /**
- * ## Using Queries in Components
+ * ## Creating Queries in Components
  *
- * A hook that subscribes to a query state and returns the cached or latest data.
+ * A hook that provides a convenient way to use queries in React components.
+ * This hook simply deconstructs the query provided and utilizes `useRead`
+ * to subscribe to the query's state.
  *
- * This hook also integrates with React Suspense and Error Boundaries to handle
- * loading and error states automatically.
- *
- * ### Fetching data
- *
- * When a query is passed to `useQuery`, the hook will subscribe to the query state
- * and automagically return the cached or latest data.
+ * `useQuery` accepts the Accessor returned from `createQuery`.
  *
  * ## API
  *
  * | Parameters | Description |
  * |------------|-------------|
- * | `queryAccessor` | The result from `createQuery`. |
+ * | `queryAccessor` |  The result from `createQuery`. |
  *
- * ## Return
+ * ## Return Properties
  *
- * The return value is the cached or latest data from the query state.
+ * | Property | Description |
+ * | -------- | ----------- |
+ * | `state`  | The current state of the query. |
  *
  * ## Resources
  * - [Cerberus Signals Docs](https://cerberus.digitalu.design/docs/signals/overview)
  * - [createQuery](https://cerberus.digitalu.design/docs/signals/create-query)
+ * - [useRead](https://cerberus.digitalu.design/docs/signals/use-read)
  */
-export function useQuery<T>(queryAccessor: Accessor<QueryState<T>>): T {
-  const state = useRead(queryAccessor)
+export function useQuery<T>(
+  queryAccessor: QueryAccessor<T>,
+  options?: QueryOptions<T>,
+): T {
+  // oxlint-disable-next-line eslint-plugin-react-hooks/exhaustive-deps
+  const stableAccessor = useMemo(() => queryAccessor, [queryAccessor.key])
+  if (options?.initialData !== undefined) {
+    stableAccessor(options)
+  }
+
+  useEffect(() => {
+    retainQuery(stableAccessor.key)
+    return () => releaseQuery(stableAccessor.key)
+  }, [stableAccessor.key])
+
+  const state = useRead(stableAccessor)
 
   // Integrate with React Suspense
-  if (state.status === 'pending' && state.promise) {
-    throw state.promise // Suspends the component
+  // STRICT BYPASS: If we have ANY data (optimistic or stale),
+  // do NOT suspend. Let the UI show the data while the background fetch runs
+  if (state.status === 'pending' && state.promise && state.data === undefined) {
+    throw state.promise
   }
 
   // Integrate with React Error Boundaries
   if (state.status === 'error') {
-    throw state.error // Triggers closest <ErrorBoundary>
+    throw state.error
   }
 
   return state.data as T

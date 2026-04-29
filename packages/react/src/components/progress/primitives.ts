@@ -1,13 +1,5 @@
-import { type HTMLArkProps } from '@ark-ui/react/factory'
-import {
-  progressBar,
-  type ProgressBarVariantProps,
-} from 'styled-system/recipes'
-import {
-  cerberus,
-  createCerberusPrimitive,
-  type CerberusPrimitiveProps,
-} from '../../system/index'
+import { progressBar, type ProgressBarVariantProps } from 'styled-system/recipes'
+import { type CerberusProps, createCerberusPrimitive } from '../../system/index'
 
 /**
  * This module contains the ProgressBar component primitives.
@@ -18,10 +10,8 @@ const { withSlotRecipe } = createCerberusPrimitive(progressBar)
 
 // Root
 
-export type ProgressBarRootProps = CerberusPrimitiveProps<
-  HTMLArkProps<'div'> & ProgressBarVariantProps
->
-export const ProgressBarRoot = withSlotRecipe(cerberus.div, 'root', {
+export type ProgressBarRootProps = CerberusProps<'div'> & ProgressBarVariantProps
+export const ProgressBarRoot = withSlotRecipe('div', 'root', {
   defaultProps: {
     'aria-valuemin': '0',
     'aria-valuemax': '100',
@@ -31,7 +21,5 @@ export const ProgressBarRoot = withSlotRecipe(cerberus.div, 'root', {
 
 // Bar
 
-export type ProgressBarBarProps = CerberusPrimitiveProps<
-  HTMLArkProps<'div'> & ProgressBarVariantProps
->
-export const ProgressBarBar = withSlotRecipe(cerberus.div, 'bar')
+export type ProgressBarBarProps = CerberusProps<'div'> & ProgressBarVariantProps
+export const ProgressBarBar = withSlotRecipe('div', 'bar')

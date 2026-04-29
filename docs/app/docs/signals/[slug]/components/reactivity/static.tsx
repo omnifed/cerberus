@@ -1,4 +1,5 @@
 import { BasicDemo } from './basic.demo'
+import { NestingDemo } from './nesting.demo'
 
 export const DEMOS = {
   basic: {
@@ -12,6 +13,11 @@ export const DEMOS = {
   },
   sync: {
     id: 'reactivity.sync',
+    context: 'signals',
+  },
+  nesting: {
+    id: 'reactivity.nesting',
+    preview: <NestingDemo />,
     context: 'signals',
   },
 }

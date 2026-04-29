@@ -1,8 +1,7 @@
 'use client'
 
+import type { MutationStatus, MutationTuple } from '../core/createMutation'
 import { useRead } from './useRead.client'
-import type { Accessor } from '../core/types'
-import { type MutationStatus, type MutationState } from '../core/createMutation'
 
 type MutationReturn<T, V> = {
   status: MutationStatus
@@ -39,7 +38,7 @@ type MutationReturn<T, V> = {
  * - [useRead](https://cerberus.digitalu.design/docs/signals/use-read)
  */
 export function useMutation<T, V>(
-  mutationTuple: [mutate: (variables: V) => Promise<T>, getState: Accessor<MutationState<T>>],
+  mutationTuple: MutationTuple<T, V>,
 ): MutationReturn<T, V> {
   const [mutate, getState] = mutationTuple
   const state = useRead(getState)

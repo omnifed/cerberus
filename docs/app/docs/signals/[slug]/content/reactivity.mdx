@@ -13,15 +13,39 @@ import { DEMOS } from '../components/reactivity/static'
 
 Reactivity powers the interactivity in React applications. This programming
 paradigm refers to a system's ability to respond to changes in data or state
-automatically. In React, this is **natively built into the JSX render engine**
-which means that when state changes, React re-renders any component that either
-_defines_ or _consumes_ it.
+automatically.
 
-**Cerberus Signals remove that constraint** and provide a way to control to
-_define_ and _consume_ state without causing re-renders when updates happen.
+In React, this is _false positive_ **natively built into the JSX render engine**.
+This means, when state changes, React "re-renders" any component that either _defines_ or _consumes_ it. Ultimately, the "reactivity" is just a component function being called over and over (e.g., false positive).
 
-This example shows the diversity of just _one_ of the APIs the signals library
-provide:
+**Cerberus Signals remove that constraint** and provides a way to control the
+_define_ and _consume_ state without causing re-renders when updates happen (e.g., true reactivity).
+
+### Primitives vs. Hooks
+
+Cerberus Signals comes with two flavors of APIs: **Primitives** and **Hooks**.
+
+Each API type will yield an intentional different result to keep the library flexible where you may need in your application.
+
+<NoteAdmonition description="We recommend defaulting to primtives. They are more flexible and provide fine-grained outcomes." />
+
+#### Primitives
+
+Primitives are functions **that can be called in any location and scope**.
+
+It doesn't matter if you are using it on the global scope, in your component, in a callback, React effect, or even a Node script. _There are no boundaries to primitives._
+
+Primitives live outside of the React scope and **do not trigger component re-renders**.
+
+#### Hooks
+
+Hooks are React functions that are **restricted to a component scope**.
+
+You know the rules: top level only - React knows about it.
+
+Hooks live inside of the React scope and **_do_ trigger component re-renders**.
+
+This example shows how both the primitve and hook APIs affect a component render-cycle:
 
 <CodePreview {...DEMOS.basic} />
 <br />
@@ -72,8 +96,9 @@ Subscribers work based on two main actions:
 
 There are multiple APIs that subscribe to signals:
 
-- `createEffect`: watch for state updates without affecting the React lifecycle
-- `batch`: batch signal updates
+- [`createEffect`](/docs/signals/create-effect): watch for state updates without affecting the React lifecycle
+- [`createComputed`](/docs/signals/create-computed): compute a new value based on other signals.
+- [`batch`](/docs/signals/batch): batch signal updates
 - Any query or query related API
 
 ## Synchronous Reactivity
@@ -94,3 +119,11 @@ subscriber is updated after the signal it depends on.
 In this example, the `double` signal will always be updated after `count` due to
 synchronous reactivity. This ensures that `double` is always up-to-date with the
 latest value of `count`.
+
+## Nesting Signals
+
+Because signals are subscription-based, it opens the doors to news ways of thinking about state management. For example, you _could_ nest Signals if you wanted to. Everything is subscribed vs. React state which just updates because a function is re-run from top to bottom (fake reactivity).
+
+<NoteAdmonition description="We do not recommend using this pattern. This is just an informative note to show that Signals are more powerful that React state. It would be better to use other primitives devoted to this like createComputed." />
+
+<CodePreview {...DEMOS.nesting} />

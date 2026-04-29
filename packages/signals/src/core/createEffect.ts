@@ -1,5 +1,5 @@
+import { activeObserver, activeOwner, cleanNode, setActiveContext } from './scheduler'
 import type { Observer } from './types'
-import { pushObserver, popObserver } from './scheduler'
 
 /**
  * ## Reactive Side Effects
@@ -34,35 +34,49 @@ import { pushObserver, popObserver } from './scheduler'
  * ## Resources
  * [Cerberus Signals Docs](https://cerberus.digitalu.design/docs/signals/overview)
  */
-export function createEffect(fn: () => void | (() => void)): () => void {
-  let cleanupFn: (() => void) | void
+// createEffect.ts
 
+export function createEffect(fn: () => void | (() => void)): () => void {
   const effect: Observer = {
     dependencies: new Set(),
     depth: 0,
+    owned: null,
+    cleanups: null,
+
     execute() {
-      if (typeof cleanupFn === 'function') cleanupFn()
+      cleanNode(effect)
       effect.cleanup()
-      // --- TOPOLOGICAL SORT UPDATE ---
       effect.depth = 0
-      pushObserver(effect)
-      cleanupFn = fn()
-      popObserver()
+
+      const prevObserver = activeObserver
+      const prevOwner = activeOwner
+      setActiveContext(effect, effect)
+
+      try {
+        const cleanupFn = fn()
+        if (typeof cleanupFn === 'function') {
+          if (effect.cleanups === null) effect.cleanups = []
+          effect.cleanups.push(cleanupFn)
+        }
+      } finally {
+        setActiveContext(prevObserver, prevOwner)
+      }
     },
     cleanup() {
-      for (const dep of effect.dependencies) {
-        dep.observers.delete(effect)
-      }
+      for (const dep of effect.dependencies) dep.observers.delete(effect)
       effect.dependencies.clear()
     },
   }
 
-  // Initial run to establish the dependency graph
+  if (activeOwner !== null) {
+    if (activeOwner.owned === null) activeOwner.owned = []
+    activeOwner.owned.push(effect)
+  }
+
   effect.execute()
 
-  // Return a manual drop/teardown function for the consumer
   return () => {
-    if (typeof cleanupFn === 'function') cleanupFn()
+    cleanNode(effect)
     effect.cleanup()
   }
 }

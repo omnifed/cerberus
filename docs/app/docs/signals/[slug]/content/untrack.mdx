@@ -1,0 +1,26 @@
+---
+title: Untrack Signals
+description: Learn how to read signals without subscribing to updates.
+package: 'signals'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/untrack/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
+
+## Usage
+
+The `untrack` primitive is useful when you want to make multiple signal updates at
+once. This can include individual updates or signals updating simultaneously to
+a peer signal updating.
+
+In this example, we update a signal and show the latest result (tracked) and what the untracked version is.
+
+<CodePreview {...DEMOS.basic} />
+
+## API
+
+`untrack` accepts an `Accessor` signal and returns the unsubscribed value at the time of calling.

@@ -1,5 +1,8 @@
 export const NEW = [
-  '/docs/components/popover',
-  '/docs/data-grid/overlays',
-  '/docs/data-grid/filtering',
+  '/docs/signals/create-query',
+  '/docs/signals/create-mutation',
+  '/docs/signals/on-cleanup',
+  '/docs/signals/untrack',
+  '/docs/signals/use-store',
+  '/docs/signals/use-query',
 ]

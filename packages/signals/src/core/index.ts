@@ -3,5 +3,7 @@ export { createComputed } from './createComputed'
 export { createEffect } from './createEffect'
 export { createQuery } from './createQuery'
 export { createMutation } from './createMutation'
-export { batch } from './scheduler'
+export { batch, onCleanup, untrack } from './scheduler'
+export { setQueryData, type QueryStatus } from './query-cache'
+
 export type { Accessor, Setter, SignalTuple } from './types'

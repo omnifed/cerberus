@@ -16,23 +16,22 @@ import { DEMOS } from '../components/signal/static'
 When you want to create a signal **outside of a component** context. This can be
 used globally, in a store, or any other way your purpose needs.
 
-There are two ways to read a global signal within a component:
+There are two ways to read a global signal within a component JSX:
 
 1. `ReactiveText` (recommended) for fine-grained reactivity
-2. `useRead` hook for manual consumption
+2. `useRead` hook for reference consumption within JSX
 
 ## Basic State
 
-`createSignal` works just like `useSignal` on a non-component scale.
+`createSignal` allows you to manage state outside of the React render context.
 
 <CodePreview {...DEMOS.basic} />
 
 ## Reading State
 
-The easiest way to read the state of primitive-based signal is the `ReactiveText`
-component which provided fine-grained reactivity control.
+The easiest way to get the current value of primitive-based signal is the `ReactiveText` component (which provides fine-grained reactivity).
 
-When you don't care about fine-grained reactivity, you can use the `useRead` hook.
+When you need to reference a signal in any JSX-related context (e.g., `Show` or `For`) use the `useRead` hook to obtain the value.
 
 <CodePreview {...DEMOS.read} />
 

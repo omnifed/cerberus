@@ -1,32 +1,36 @@
 'use client'
 
-import { HStack } from '@/styled-system/jsx'
+import { HStack, Stack } from '@/styled-system/jsx'
 import { Button, Text } from '@cerberus-design/react'
-import { createSignal, ReactiveText } from '@cerberus-design/signals'
+import { ReactiveText } from '@cerberus-design/signals'
+import { useEffect } from 'react'
+import { createRenderStore } from '../render-store'
 
-function createDemoStore() {
-  const [count, setCount] = createSignal<number>(0)
-  const [renderCount, setRenderCount] = createSignal<number>(0)
-  return { count, setCount, renderCount, setRenderCount }
-}
+const store = createRenderStore()
 
 export function BasicDemo() {
-  const store = createDemoStore()
-  const increment = () => store.setCount(store.count() + 1)
+  const increment = () => {
+    store.setCount((prev) => prev + 1)
+  }
 
-  store.setRenderCount(store.renderCount() + 1)
+  useEffect(() => {
+    return () => store.onUnmount()
+  }, [])
+
+  store.trackRenders()
 
   return (
     <HStack justify="space-between" w="3/4">
-      <HStack gap="md" w="full">
-        <Button onClick={increment}>Increment</Button>
-        <ReactiveText data={store.count} />
-      </HStack>
+      <Button onClick={increment}>Increment</Button>
 
-      <HStack gap="md" w="full">
-        <Text>Render Count:</Text>
-        <ReactiveText data={store.renderCount} />
-      </HStack>
+      <Stack>
+        <Text>
+          Count: <ReactiveText data={store.count} />
+        </Text>
+        <Text>
+          Render Count: <ReactiveText data={store.renderCount} />
+        </Text>
+      </Stack>
     </HStack>
   )
 }

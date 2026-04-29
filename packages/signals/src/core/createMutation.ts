@@ -1,5 +1,5 @@
 import { createSignal } from './createSignal'
-import { invalidateQuery, invalidateAllQueries } from './query-cache'
+import { invalidateAllQueries, invalidateQuery } from './query-cache'
 import type { Accessor } from './types'
 
 export type MutationStatus = 'idle' | 'pending' | 'success' | 'error'
@@ -11,12 +11,13 @@ export interface MutationState<T> {
 }
 
 interface MutationOptions<T, V> {
+  onMutate?: (variables: V) => void
   onSuccess?: (data: T, variables: V) => void
   onError?: (error: unknown, variables: V) => void
-  invalidate?: 'all' | ((data: T, variables: V) => unknown[])
+  invalidate?: 'all' | ((data: T, variables: V) => string[]) // Enforce strict string arrays from factory keys
 }
 
-type MutationReturn<T, V> = [
+export type MutationTuple<T, V> = [
   mutate: (variables: V) => Promise<T>,
   getState: Accessor<MutationState<T>>,
 ]
@@ -88,7 +89,7 @@ type MutationReturn<T, V> = [
 export function createMutation<T, V>(
   mutator: (variables: V) => Promise<T>,
   options?: MutationOptions<T, V>,
-): MutationReturn<T, V> {
+): MutationTuple<T, V> {
   const [getState, setState] = createSignal<MutationState<T>>({
     status: 'idle',
     data: undefined,
@@ -97,21 +98,18 @@ export function createMutation<T, V>(
 
   const mutate = async (variables: V): Promise<T> => {
     setState({ status: 'pending', data: undefined, error: undefined })
+    if (options?.onMutate) options.onMutate(variables)
 
     try {
       const data = await mutator(variables)
       setState({ status: 'success', data, error: undefined })
 
-      // --- Declarative Invalidation Logic ---
       if (options?.invalidate) {
         if (options.invalidate === 'all') {
           invalidateAllQueries()
         } else {
-          // Execute the function to get the fresh keys at the exact moment of success
           const keysToInvalidate = options.invalidate(data, variables)
-          for (const key of keysToInvalidate) {
-            invalidateQuery(key)
-          }
+          for (const key of keysToInvalidate) invalidateQuery(key)
         }
       }
 
