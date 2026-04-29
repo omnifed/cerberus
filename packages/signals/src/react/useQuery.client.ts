@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useMemo } from 'react'
-import type { QueryAccessor } from '../core/createQuery'
+import type { QueryAccessor, QueryOptions } from '../core/createQuery'
 import { releaseQuery, retainQuery } from '../core/query-cache'
 import { useRead } from './useRead.client'
 
@@ -31,29 +31,31 @@ import { useRead } from './useRead.client'
  * - [createQuery](https://cerberus.digitalu.design/docs/signals/create-query)
  * - [useRead](https://cerberus.digitalu.design/docs/signals/use-read)
  */
-export function useQuery<T>(queryAccessor: QueryAccessor<T>): T {
-  // 1. Stabilize the accessor using its deterministic key.
-  // This completely eliminates the React 19 infinite loop error!
+export function useQuery<T>(
+  queryAccessor: QueryAccessor<T>,
+  options?: QueryOptions<T>,
+): T {
   // oxlint-disable-next-line eslint-plugin-react-hooks/exhaustive-deps
   const stableAccessor = useMemo(() => queryAccessor, [queryAccessor.key])
+  if (options?.initialData !== undefined) {
+    stableAccessor(options)
+  }
 
-  // 2. Manage Garbage Collection reference counting
   useEffect(() => {
     retainQuery(stableAccessor.key)
     return () => releaseQuery(stableAccessor.key)
   }, [stableAccessor.key])
 
-  // 3. Read the state via useSyncExternalStore
   const state = useRead(stableAccessor)
 
-  // 4. Integrate with React Suspense
+  // Integrate with React Suspense
   // STRICT BYPASS: If we have ANY data (optimistic or stale),
   // do NOT suspend. Let the UI show the data while the background fetch runs
   if (state.status === 'pending' && state.promise && state.data === undefined) {
     throw state.promise
   }
 
-  // 5. Integrate with React Error Boundaries
+  // Integrate with React Error Boundaries
   if (state.status === 'error') {
     throw state.error
   }
