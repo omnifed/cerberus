@@ -21,7 +21,7 @@ async function* fakeLLMStream(prompt: string) {
 
 // --- 2. Define Streaming Query Factory ---
 // The fetcher uses `async function*` and yields the accumulated state
-const getChatStream = createQuery<string, string>(async function* (prompt: string) {
+const getChatStream = createQuery(async function* (prompt: string) {
   let fullText = ''
 
   // Listen to the stream and accumulate chunks
