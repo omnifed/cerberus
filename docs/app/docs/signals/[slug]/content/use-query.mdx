@@ -13,24 +13,30 @@ import { DEMOS } from '../components/fetching/static'
 
 ## Usage
 
-`useQuery` allows you call a defined query (via [`createQuery`](/docs/signals/create-query))
-to obtain the signal-based value for display within your React component.
+`useQuery` allows you use a query factory (via [`createQuery`](/docs/signals/create-query))
+within the scope of a React component.
 
-The return of `useQuery` is a read-only value which is the result of _calling an Accessor_.
+The return of `useQuery` is a **read-only** value which is the result of the query fetcher.
 
 Query's have built in support for `Suspense` and Error Boundaries with no extra effort.
 
 ## Using Queries
 
-To obtain a query value, simply pass in the defined query to the hook and bind
+To use query factories within React components, simply pass in the defined query to the hook and bind
 the value in your JSX.
 
 <CodePreview {...DEMOS.basic} />
 
+## Initial Data
+
+If you would like to bypass the initial fetch with pre-loaded data that matches the return of the query factory being used (e.g., parent server component fetch) - add and options Object as the last argument with the property `initialData`.
+
+<CodePreview {...DEMOS.client} />
+
 ## With Suspense
 
-To utilize the native React `Suspense` API with your query, simply wrap the parent
-of the component calling the query in `Suspense` as per requirements of the React
+To utilize the native React `Suspense` API with your query, wrap the parent
+of the component using the query in `Suspense` as per requirements of the React
 API.
 
 To learn more about `Suspense`, [read the React docs](https://react.dev/reference/react/Suspense).
@@ -46,10 +52,19 @@ To learn more about Error Boundaries, see the [Error Boundary library on NPM](ht
 
 `useQuery` accepts the following options:
 
-| Params                    | Required | Description           |
-| ------------------------- | -------- | --------------------- |
-| `Accessor<QueryState<T>>` | `true`   | The query to utilize. |
+| Params                    | Required | Description                                                        |
+| ------------------------- | -------- | ------------------------------------------------------------------ |
+| `Accessor<QueryState<T>>` | Yes      | The query to utilize.                                              |
+| `QueryOptions<T>`         | No       | [Additional options](#query-options) to use for the query factory. |
 
 ### Return
 
 `useQuery` returns the value of the Promise defined in `createQuery`.
+
+### Query Options
+
+The `QueryOption` Object contains the following properties:
+
+| Params        | Required | Description                                                                                      |
+| ------------- | -------- | ------------------------------------------------------------------------------------------------ |
+| `initialData` | No       | When provided will bypass the initial query fetch and instead return the value of `initialData`. |
