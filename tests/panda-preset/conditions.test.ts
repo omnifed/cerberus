@@ -7,15 +7,11 @@ describe('conditions', () => {
   })
 
   test('should have a lightMode', () => {
-    expect(conditions.lightMode).toEqual(
-      '[data-color-mode=light] &, &.light, .light &',
-    )
+    expect(conditions.lightMode).toEqual('[data-color-mode=light] &, &.light, .light &')
   })
 
   test('should have a darkMode', () => {
-    expect(conditions.darkMode).toEqual(
-      '[data-color-mode=dark] &, &.dark, .dark &',
-    )
+    expect(conditions.darkMode).toEqual('[data-color-mode=dark] &, &.dark, .dark &')
   })
 
   test('should have a systemMode', () => {
@@ -25,9 +21,7 @@ describe('conditions', () => {
   })
 
   test('should have a pinned', () => {
-    expect(conditions.pinned).toEqual(
-      '&:is([data-pinned], [data-state=pinned])',
-    )
+    expect(conditions.pinned).toEqual('&:is([data-pinned], [data-state=pinned])')
   })
 
   test('should have a leftPinned', () => {
@@ -43,9 +37,7 @@ describe('conditions', () => {
   })
 
   test('should have a screenReaderOnly', () => {
-    expect(conditions.screenReaderOnly).toEqual(
-      '&:is([data-screen-reader-only=true])',
-    )
+    expect(conditions.screenReaderOnly).toEqual('&:is([data-screen-reader-only=true])')
   })
 
   test('should have an isOver', () => {
@@ -75,9 +67,7 @@ describe('conditions', () => {
   })
 
   test('should have an open', () => {
-    expect(conditions.open).toEqual(
-      '&:is([open], [data-open], [data-state=open])',
-    )
+    expect(conditions.open).toEqual('&:is([open], [data-open], [data-state=open])')
   })
 
   test('should have a closed', () => {
@@ -135,15 +125,11 @@ describe('conditions', () => {
   })
 
   test('should have a startIndicator', () => {
-    expect(conditions.startIndicator).toEqual(
-      '&:is([data-indicator-position=start])',
-    )
+    expect(conditions.startIndicator).toEqual('&:is([data-indicator-position=start])')
   })
 
   test('should have an endIndicator', () => {
-    expect(conditions.endIndicator).toEqual(
-      '&:is([data-indicator-position=end])',
-    )
+    expect(conditions.endIndicator).toEqual('&:is([data-indicator-position=end])')
   })
 
   test('should have an xsSize', () => {
@@ -247,9 +233,7 @@ describe('conditions', () => {
   })
 
   test('should have a info', () => {
-    expect(conditions.info).toEqual(
-      '&:is([data-type=info], [data-type=info-subtle])',
-    )
+    expect(conditions.info).toEqual('&:is([data-type=info], [data-type=info-subtle])')
   })
 
   test('should have a success', () => {
@@ -275,15 +259,11 @@ describe('conditions', () => {
   })
 
   test('should have a today', () => {
-    expect(conditions.today).toEqual(
-      '&:is([data-today=true], [data-date=today])',
-    )
+    expect(conditions.today).toEqual('&:is([data-today=true], [data-date=today])')
   })
 
   test('should have a pastDay', () => {
-    expect(conditions.pastDay).toEqual(
-      '&:is([data-past-day=true], [data-date=past])',
-    )
+    expect(conditions.pastDay).toEqual('&:is([data-past-day=true], [data-date=past])')
   })
 
   test('should have an inRange', () => {
@@ -304,5 +284,9 @@ describe('conditions', () => {
 
   test('should have a vertical orientation', () => {
     expect(conditions.vertical).toEqual('&:is([data-orientation=vertical])')
+  })
+
+  test('should have an icon', () => {
+    expect(conditions.icon).toEqual('& :where(svg)')
   })
 })

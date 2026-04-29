@@ -16,6 +16,8 @@ export * from './recipes/shared/states'
 
 export * from './theme/keyframes'
 export * from './theme/textStyles'
+export * from './theme/layerStyles'
+
 export * from './theme/tokens'
 export * from './theme-contract'
 

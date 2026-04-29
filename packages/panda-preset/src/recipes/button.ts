@@ -4,7 +4,6 @@ import {
   type RecipeVariantRecord,
 } from '@pandacss/dev'
 import {
-  buttonBase,
   buttonCompoundVariants,
   buttonPalettes,
   filledUsage,
@@ -29,9 +28,33 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   description: 'WCAG Level AAA compliant button styles.',
 
   base: {
-    ...buttonBase,
-    minW: '2.85rem',
-    pxi: '4',
+    alignItems: 'center',
+    appearance: 'none',
+    borderWidth: '1px',
+    borderColor: 'transparent',
+    cursor: 'button',
+    display: 'inline-flex',
+    gap: 'sm',
+    justifyContent: 'center',
+    flexShrink: '0',
+    focusVisibleRing: 'outside',
+    fontWeight: '600',
+    isolation: 'isolate',
+    lineHeight: '0',
+    outline: 'none',
+    position: 'relative',
+    textDecoration: 'none',
+    transitionProperty: 'common',
+    transitionDuration: 'moderate',
+    userSelect: 'none',
+    verticalAlign: 'middle',
+    whiteSpace: 'nowrap',
+    _disabled: {
+      layerStyle: 'disabled',
+    },
+    _icon: {
+      flexShrink: '0',
+    },
   },
 
   variants: {
@@ -56,7 +79,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       sm: {
         h: '2rem',
         marginBlock: '0.375rem', // add a11y target size
-        pxi: '3',
+        px: '0.75rem',
         textStyle: 'button-sm',
         md: {
           marginBlock: 'initial',
@@ -64,6 +87,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       },
       md: {
         h: '2.75rem',
+        px: 'md',
         textStyle: 'button-md',
       },
     },
