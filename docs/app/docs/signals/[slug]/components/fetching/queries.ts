@@ -18,9 +18,11 @@ export type User = {
 }
 
 const users = new Map<User['id'], User>()
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const api = {
   getUser: async (id: string): Promise<User> => {
+    await delay(800)
     const user = users.get(id)
     if (user) return user
     const newUser = await getUser(id)
