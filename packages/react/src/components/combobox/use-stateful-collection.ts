@@ -45,8 +45,10 @@ export function useStatefulCollection(
         return setItems(initialItems)
       }
       setItems((prev) =>
-        prev.filter((item) =>
-          item.value.includes(details.inputValue.toLowerCase()),
+        prev.filter(
+          (item) =>
+            item.value.toLowerCase().includes(details.inputValue.toLowerCase()) ||
+            item.label.toLowerCase().includes(details.inputValue.toLowerCase()),
         ),
       )
       setFilterValue(details.inputValue.split(''))
