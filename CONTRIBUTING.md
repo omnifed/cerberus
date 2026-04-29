@@ -35,7 +35,7 @@ We can't wait to see what you build!
 8. Lint your changes: `pnpm lint` and `pnpm lint:ox`.
 9. Commit your changes: `git commit -am 'feat: my new feature'`.
 10. Push to the branch: `git push origin my-branch-name`.
-11. Submit a pull request **IN DRAFT MODE**. Be sure to **fill out** the PR template.
+11. Submit a pull request **IN DRAFT MODE** to the current `next/*` branch. Be sure to **fill out** the PR template.
 12. Once all the tests have passed in the CI in your draft PR, mark it as ready for review. _This will automatically notify and assign the maintainers._
 13. Wait for a maintainer to review your PR.
 
