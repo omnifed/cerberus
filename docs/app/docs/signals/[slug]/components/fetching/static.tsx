@@ -44,6 +44,14 @@ export const DEMOS = {
     id: 'fetching.sub',
     context: 'signals',
   },
+  server: {
+    id: 'fetching.server',
+    context: 'signals',
+  },
+  client: {
+    id: 'fetching.client',
+    context: 'signals',
+  },
 
   queryMeta: `import { createQuery, useQuery } from '@cerberus/signals'`,
   mutationMeta: `import { createMutation, useMutation } from '@cerberus/signals'`,

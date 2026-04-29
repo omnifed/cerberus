@@ -78,6 +78,24 @@ Cerberus queries also support streaming data via [Async Generators](https://deve
 
 <CodePreview {...DEMOS.streaming} />
 
+## Server Component Pattern
+
+In an SSR environment, you execute the factory's **raw fetcher directly**, bypassing the reactive cache. Then, you pass that data down to your Client Components to "hydrate" or seed the Cerberus cache, ensuring the client doesn't double-fetch on mount.
+
+This is the standard SSR pattern for React.
+
+### 1. Server Component (Fetching)
+
+Expose the raw, stateless fetcher function from your factory. You simply await it like a standard asynchronous function.
+
+<CodePreview {...DEMOS.server} />
+
+### 2. Client Component
+
+On the client side, use the `initialData` property. If the Cerberus cache is empty, it will instantly seed the cache with the server's data, skipping the `<Suspense>` boundary entirely.
+
+<CodePreview {...DEMOS.client} />
+
 ## Optimistic Updates
 
 Queries have a built-in optimistic store when combined with [Mutations](/docs/signals/create-mutation). This means the UI will update in "real-time" while the query will fetch in the background and eventually overwrite the optimistic store.

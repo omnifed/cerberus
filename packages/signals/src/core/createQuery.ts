@@ -1,15 +1,31 @@
-// createQuery.ts
 import { createSignal } from './createSignal'
-import { untrack } from './scheduler' // Make sure you import untrack!
 import { getQueryVersionSignal, globalQueryCache, type QueryState } from './query-cache'
+import { untrack } from './scheduler'
 import type { Accessor, SignalTuple } from './types'
+
+export type ExtractQueryData<TReturn> =
+  TReturn extends Promise<infer U>
+    ? U
+    : TReturn extends AsyncGenerator<infer U, void, unknown>
+      ? U
+      : never
 
 export type FetcherContext<T> = {
   update: (updater: (prev: T | undefined) => T) => void
 }
 
-export type QueryAccessor<T> = Accessor<QueryState<T>> & {
+export interface QueryOptions<T> {
+  initialData?: T
+}
+
+export type QueryAccessor<T> = ((options?: QueryOptions<T>) => QueryState<T>) & {
   readonly key: string
+}
+
+export interface QueryFactory<Args, TReturn> {
+  (argsOrAccessor: Args | Accessor<Args>): QueryAccessor<ExtractQueryData<TReturn>>
+  key: (args: Args) => string
+  fetcher: (args: Args) => TReturn
 }
 
 /**
@@ -51,32 +67,35 @@ export type QueryAccessor<T> = Accessor<QueryState<T>> & {
  * - [Cerberus Signals Docs](https://cerberus.digitalu.design/docs/signals/overview)
  * - [useQuery hook](https://cerberus.digitalu.design/docs/signals/use-query)
  */
-export function createQuery<T, Args>(
-  fetcher: (
-    args: Args,
-    context: FetcherContext<T>,
-  ) => Promise<T> | AsyncGenerator<T, void, unknown>,
+export function createQuery<
+  Args,
+  TReturn extends Promise<any> | AsyncGenerator<any, void, unknown>,
+>(
+  fetcher: (args: Args, context: FetcherContext<ExtractQueryData<TReturn>>) => TReturn,
   baseKey: string,
-) {
+): QueryFactory<Args, TReturn> {
+  type T = ExtractQueryData<TReturn>
+
   const queryInvoker = (argsOrAccessor: Args | Accessor<Args>): QueryAccessor<T> => {
-    // This is purely a getter. It has ZERO side effects when created
-    const queryAccessor = () => {
+    const queryAccessor = (options?: QueryOptions<T>) => {
       const isReactive = typeof argsOrAccessor === 'function'
       const args = isReactive ? (argsOrAccessor as Accessor<Args>)() : argsOrAccessor
       const hash = hashArgs([baseKey, args])
 
-      // Subscribe to invalidations. Any tracking context (like useRead) reading this will auto-subscribe.
+      // Subscribe to invalidations. Any tracking context (like useRead) reading
+      // this will auto-subscribe.
       const [getVersion] = getQueryVersionSignal(hash)
       getVersion()
 
       // UNTRACK the check and initialization so we don't cause infinite React rendering loops
       untrack(() => {
         if (!globalQueryCache.has(hash)) {
-          initializeCacheNode(hash, args, fetcher)
+          // Pass the hydration options to the cache initializer
+          initializeCacheNode(hash, args, fetcher, options)
         } else {
           const [getCache] = globalQueryCache.get(hash)!
           const state = getCache()
-          // THE FIX: Trigger background fetch if invalidated!
+          // Trigger background fetch if invalidated
           if (state.status === 'error' || state.isInvalidated) {
             executeFetch(hash, args, fetcher)
           }
@@ -101,6 +120,8 @@ export function createQuery<T, Args>(
   }
 
   queryInvoker.key = (args: Args) => hashArgs([baseKey, args])
+  queryInvoker.fetcher = (args: Args) => fetcher(args, { update: () => {} })
+
   return queryInvoker
 }
 
@@ -111,7 +132,25 @@ function initializeCacheNode<T, Args>(
     args: Args,
     ctx: FetcherContext<T>,
   ) => Promise<T> | AsyncGenerator<T, void, unknown>,
+  options?: QueryOptions<T>,
 ) {
+  if (options !== undefined && 'initialData' in options) {
+    const initialState: QueryState<T> = {
+      status: 'success',
+      data: options.initialData,
+      error: undefined,
+      promise: null,
+      isInvalidated: false,
+      version: 1, // Protect against immediate race conditions
+    }
+    const cacheSignal = createSignal(initialState)
+    globalQueryCache.set(
+      hashKey,
+      cacheSignal as unknown as SignalTuple<QueryState<unknown>>,
+    )
+    return
+  }
+
   const initialState: QueryState<T> = {
     status: 'pending',
     data: undefined,
@@ -140,7 +179,6 @@ function executeFetch<T, Args>(
     QueryState<T>
   >
 
-  // THE FIX: Fallbacks ensure we never compare NaN
   const startingVersion = getCache().version || 0
   const isStale = () => (getCache().version || 0) !== startingVersion
 
@@ -179,7 +217,7 @@ function executeFetch<T, Args>(
             try {
               let next = await iterator.next()
               while (!next.done) {
-                if (isStale()) return // ABORT mid-stream if mutated!
+                if (isStale()) return // ABORT mid-stream if mutated
                 setCache((prev) => ({
                   ...prev,
                   status: 'streaming',
@@ -208,7 +246,6 @@ function executeFetch<T, Args>(
       return
     }
 
-    // --- STANDARD PROMISE LOGIC ---
     if (result instanceof Promise) {
       const promise = result
         .then((data) => {
