@@ -13,6 +13,8 @@ export default async function UserPage({ params }: Props) {
   // This is completely memory-safe for Node.js environments.
   const initialUserData = await queryUser.fetcher(id)
 
+  if (!initialUserData) return null
+
   return (
     <main>
       {/* 2. Pass the fetched data to the Client Component */}
