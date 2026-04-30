@@ -1,10 +1,10 @@
 'use client'
 
-import { useCerberusContext } from '../../context/cerberus'
 import { PropsWithChildren } from 'react'
-import { IconButton, type IconButtonProps } from '../icon-button/index'
-import { PaginationParts } from './parts'
+import { useCerberusContext } from '../../context/cerberus'
 import { GroupProps } from '../group'
+import { IconButton, IconButtonRootProps } from '../icon-button/index'
+import { PaginationParts } from './parts'
 
 export function PrevTrigger(props: TriggerProps) {
   const { icons } = useCerberusContext()
@@ -32,23 +32,15 @@ export function NextTrigger(props: TriggerProps) {
   )
 }
 
-export interface TriggerBaseProps {
+export interface TriggerProps extends IconButtonRootProps {
   layout?: GroupProps['layout']
 }
-export type TriggerProps = TriggerBaseProps & Omit<IconButtonProps, 'clipboard'>
 
 function PaginationTrigger(props: PropsWithChildren<TriggerProps>) {
   const { layout, ...btnProps } = props
 
   if (layout === 'attached') {
-    return (
-      <IconButton
-        shape="square"
-        usage="outlined-subtle"
-        clipboard
-        {...btnProps}
-      />
-    )
+    return <IconButton shape="square" usage="outlined-subtle" clipboard {...btnProps} />
   }
 
   return <IconButton shape="square" clipboard {...btnProps} />

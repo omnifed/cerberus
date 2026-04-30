@@ -15,7 +15,7 @@
     "@tanstack/query-core": "^5.100.1"
   },
   "devDependencies": {
-    "@carbon/icons-react": "^11.76.0",
+    "@carbon/icons-react": "^11.79.0",
     "@cerberus-design/data-grid": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/signals": "workspace:*",
@@ -25,7 +25,7 @@
     "@cerberus/preset-cerberus-theme": "workspace:*",
     "@cerberus/preset-elysium-theme": "workspace:*",
     "@cerberus/tokens": "workspace:*",
-    "@happy-dom/global-registrator": "^20.8.9",
+    "@happy-dom/global-registrator": "^20.9.0",
     "@pandacss/types": "^1.10.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.1",
