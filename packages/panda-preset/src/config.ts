@@ -43,6 +43,7 @@ const basePreset: Preset = definePreset({
             'warning',
             'danger',
           ],
+          layerStyle: ['*'],
         },
       },
     ],

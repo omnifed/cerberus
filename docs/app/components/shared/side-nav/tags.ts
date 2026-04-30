@@ -5,4 +5,5 @@ export const NEW = [
   '/docs/signals/untrack',
   '/docs/signals/use-store',
   '/docs/signals/use-query',
+  '/docs/styling/layer-styles',
 ]

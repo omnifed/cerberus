@@ -12,24 +12,31 @@ describe('button recipe', () => {
   test('should have a base style', () => {
     expect(button.base).toMatchObject({
       alignItems: 'center',
-      cursor: 'pointer',
+      appearance: 'none',
+      borderWidth: '1px',
+      borderColor: 'transparent',
+      cursor: 'button',
       display: 'inline-flex',
-      fontWeight: '600',
-      gap: '2',
+      gap: 'sm',
       justifyContent: 'center',
+      flexShrink: '0',
+      focusVisibleRing: 'outside',
+      fontWeight: '600',
+      isolation: 'isolate',
       lineHeight: '0',
-      minW: '2.85rem',
       outline: 'none',
+      position: 'relative',
       textDecoration: 'none',
-      transitionProperty: 'background-color, color',
-      transitionDuration: 'fast',
-      transitionTimingFunction: 'ease-in-out',
+      transitionProperty: 'common',
+      transitionDuration: 'moderate',
       userSelect: 'none',
+      verticalAlign: 'middle',
       whiteSpace: 'nowrap',
-      pxi: '4',
       _disabled: {
-        cursor: 'not-allowed',
-        opacity: '0.5',
+        layerStyle: 'disabled',
+      },
+      _icon: {
+        flexShrink: '0',
       },
     })
   })
@@ -160,8 +167,8 @@ describe('button recipe', () => {
   test('should have a small size variant', () => {
     expect(button.variants?.size.sm).toMatchObject({
       h: '2rem',
-      marginBlock: '0.375rem', // add a11y target size
-      pxi: '3',
+      marginBlock: '0.375rem',
+      px: '0.75rem',
       textStyle: 'button-sm',
       md: {
         marginBlock: 'initial',
@@ -172,6 +179,7 @@ describe('button recipe', () => {
   test('should have a medium size variant', () => {
     expect(button.variants?.size.md).toMatchObject({
       h: '2.75rem',
+      px: 'md',
       textStyle: 'button-md',
     })
   })

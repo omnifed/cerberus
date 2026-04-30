@@ -25,8 +25,7 @@ export const conditions = {
   screenReaderOnly: '&:is([data-screen-reader-only=true])',
 
   // input states
-  checked:
-    '&:is(:checked, [data-checked], [aria-checked=true], [data-state=checked])',
+  checked: '&:is(:checked, [data-checked], [aria-checked=true], [data-state=checked])',
   indeterminate: '&:is([data-state=indeterminate])',
   dataReadOnly: '&:is([data-readonly])',
   userInvalid: '&:is(:user-invalid, [aria-invalid], [data-invalid])',
@@ -65,6 +64,7 @@ export const conditions = {
   xlSize: '&:is([data-size=xl])',
 
   // elements
+  icon: '& :where(svg)',
   notify: '&:is([data-notify=true])',
   startIcon: '&:is([data-start-icon=true])',
   tooltip: '&:is([data-tooltip=true])',
@@ -96,6 +96,5 @@ export const conditions = {
   info: '&:is([data-type=info], [data-type=info-subtle])',
   success: '&:is([data-type=success], [data-type=success-subtle])',
   warning: '&:is([data-type=warning], [data-type=warning-subtle])',
-  danger:
-    '&:is([data-type=danger], [data-type=danger-subtle], [data-type=error])',
+  danger: '&:is([data-type=danger], [data-type=danger-subtle], [data-type=error])',
 }
