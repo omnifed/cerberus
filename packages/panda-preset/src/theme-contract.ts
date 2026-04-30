@@ -16,6 +16,7 @@ export const defineTheme: DefinedTheme = defineThemeContract({
   keyframes: {},
   recipes: {},
   slotRecipes: {},
+  layerStyles: {},
   textStyles: {},
   tokens: {
     colors: {},

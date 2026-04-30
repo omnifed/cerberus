@@ -1,0 +1,56 @@
+---
+title: Layer Styles
+description: Learn how to use layer styles to define visual properties.
+---
+
+import BashTabs from '@/app/components/bash-tabs'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/layer-styles/static'
+
+## Overview
+
+Layer styles allow you to define visual properties. The common properties are:
+
+- Color or text color
+- Background color
+- Border width and border color
+- Box shadow
+- Opacity
+
+## Defining layer styles
+
+Layer styles are defined using the `defineLayerStyles` function.
+
+<CodeSnippet snippet={DEMOS.definingMeta} />
+
+## Built-in layer styles
+
+Chakra UI provides a set of built-in layer styles.
+
+<DEMOS.basic />
+
+## Updating the theme
+
+To use the layer styles, update the `theme` object with the `layerStyles`
+property.
+
+<CodeSnippet snippet={DEMOS.updating} />
+
+After updating the theme, run the `typegen` command to generate the typings. See
+the [CLI docs](/docs/get-started/cli#chakra-typegen) for how to run typegen in
+postinstall, CI, and monorepos.
+
+<BashTabs code="npm run prepare" />
+
+## Using layer styles
+
+Now you can use `layerStyle` property in your components.
+
+<CodeSnippet snippet={DEMOS.usingMeta} />
+<br />
+
+To utilize in the `css` function:
+
+<CodeSnippet snippet={DEMOS.useFunctionMeta} />

@@ -17,10 +17,11 @@ export const baseTheme = defineTheme({
   tokens,
   keyframes,
   recipes,
-  layerStyles,
   slotRecipes,
+  layerStyles,
   textStyles,
   animationStyles,
+
   colorPalette: {
     include: [
       'page.*',
