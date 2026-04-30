@@ -77,8 +77,8 @@ function ParentDialog(props: ParentDialogProps) {
             <Text textStyle="heading-sm">Edit Content</Text>
           </DialogHeading>
           <DialogDescription maxW="prose">
-            Make changes to your content. You'll be asked to confirm before closing if
-            there are unsaved changes.
+            Make changes to your content. You&apos;ll be asked to confirm before closing
+            if there are unsaved changes.
           </DialogDescription>
 
           <Field>

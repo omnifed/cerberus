@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import type { SemanticToken } from '@cerberus/tokens'
-import { Text, useThemeContext } from '@cerberus-design/react'
 import { getSemanticTokenHexValue } from '@/app/docs/utils/color-helpers'
+import { Text, useThemeContext } from '@cerberus-design/react'
+import { useSignal } from '@cerberus-design/signals'
+import type { SemanticToken } from '@cerberus/tokens'
+import { useEffect, useRef } from 'react'
 
 interface HexValueProps {
   value: SemanticToken['value']
@@ -11,23 +12,20 @@ interface HexValueProps {
 
 export function HexValue(props: HexValueProps) {
   const { mode, theme } = useThemeContext()
-  const [hexValue, setHexValue] = useState<string | null>(null)
-  const [isClient, setIsClient] = useState(false)
+  const prevTheme = useRef(theme)
 
-  // Handle client-side hydration
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
+  const [hexValue, setHexValue] = useSignal<string | null>(
+    getSemanticTokenHexValue(props.value, mode),
+  )
 
-  // Get the resolved hex color value based on the current theme and mode
   useEffect(() => {
-    if (isClient) {
-      const value = getSemanticTokenHexValue(props.value, mode)
-      setHexValue(value)
+    if (prevTheme.current !== theme) {
+      setHexValue(getSemanticTokenHexValue(props.value, mode))
+      prevTheme.current = theme
     }
-  }, [props.value, mode, theme, isClient])
+  }, [theme, setHexValue, mode, props.value])
 
-  if (!isClient || !hexValue) return null
+  if (!hexValue) return null
 
   return (
     <Text as="small" color="page.text.100" textStyle="label-sm">

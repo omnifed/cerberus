@@ -1,10 +1,5 @@
-import { ark } from '@ark-ui/react/factory'
-import { HTMLAttributes } from 'react'
 import { iconButton, type IconButtonVariantProps } from 'styled-system/recipes'
-import {
-  CerberusPrimitiveProps,
-  createCerberusPrimitive,
-} from '../../system/index'
+import { type CerberusProps, createCerberusPrimitive } from '../../system/index'
 
 /**
  * This module contains the IconButton component primitives.
@@ -13,7 +8,5 @@ import {
 
 const { withRecipe } = createCerberusPrimitive(iconButton)
 
-export type IconButtonRootProps = CerberusPrimitiveProps<
-  HTMLAttributes<HTMLButtonElement> & IconButtonVariantProps
->
-export const IconButtonRoot = withRecipe(ark.button)
+export type IconButtonRootProps = CerberusProps<'button'> & IconButtonVariantProps
+export const IconButtonRoot = withRecipe('button')

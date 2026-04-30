@@ -1,13 +1,9 @@
 'use client'
 
-import {
-  Clipboard,
-  IconButton,
-  type IconButtonProps,
-} from '@cerberus-design/react'
+import { Clipboard, ClipboardRootProps, IconButton } from '@cerberus-design/react'
 
-interface CopyButtonProps extends Omit<IconButtonProps, 'ariaLabel'> {
-  content: string
+interface CopyButtonProps {
+  content: ClipboardRootProps['value']
 }
 
 export function CopyButton(props: CopyButtonProps) {

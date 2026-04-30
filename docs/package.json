@@ -7,10 +7,10 @@
     "dev": "rm -rf .next && panda codegen && panda spec && next dev",
     "build": "pnpm run panda:build && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@carbon/icons-react": "^11.76.0",
+    "@carbon/icons-react": "^11.79.0",
     "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/data-grid": "workspace:*",
     "@cerberus-design/react": "workspace:*",
@@ -46,7 +46,7 @@
     "@vercel/analytics": "^2.0.1",
     "autoprefixer": "^10.5.0",
     "babel-plugin-react-compiler": "^1.0.0",
-    "eslint": "^10.1.0",
+    "eslint": "^9.21.0",
     "eslint-config-next": "16.2.4",
     "eslint-import-resolver-typescript": "^4.4.4",
     "hast-util-to-jsx-runtime": "2.3.6",

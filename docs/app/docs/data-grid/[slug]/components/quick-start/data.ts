@@ -1,7 +1,6 @@
 'use client'
 
 import { createSignal } from '@cerberus-design/signals'
-import { useEffect, useState } from 'react'
 import { Employee } from './data.demo'
 
 const generateData = (count: number): Employee[] => {
@@ -24,13 +23,7 @@ const generateData = (count: number): Employee[] => {
  * @deprecated use `createFakeQuery` instead
  */
 export function useFakeQuery(count: number) {
-  const [state, setState] = useState<Employee[]>(() => generateData(count))
-
-  useEffect(() => {
-    setState(generateData(count))
-  }, [count])
-
-  return state
+  return generateData(count)
 }
 
 export function createFakeQuery(count: number) {
