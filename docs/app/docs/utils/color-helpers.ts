@@ -1,5 +1,6 @@
 import { presetAcheronTheme as acheronTheme } from '@cerberus/preset-acheron-theme'
 import { presetCerberusTheme as cerberusTheme } from '@cerberus/preset-cerberus-theme'
+import { presetElysiumTheme as elysiumTheme } from '@cerberus/preset-elysium-theme'
 import {
   RawThemes,
   type SemanticToken,
@@ -18,9 +19,24 @@ export function getTokenList(
   const cerberusTokens = cerberusTheme?.themes?.cerberus?.semanticTokens as {
     colors: SentimentConfig
   }
+  const elysiumTokens = elysiumTheme?.themes?.elysium?.semanticTokens as {
+    colors: SentimentConfig
+  }
 
-  const tokens: SentimentConfig =
-    theme === 'acheron' ? acheronTokens.colors : cerberusTokens.colors
+  function getTokens(): SentimentConfig {
+    switch (theme) {
+      case 'acheron':
+        return acheronTokens.colors
+      case 'cerberus':
+        return cerberusTokens.colors
+      case 'elysium':
+        return elysiumTokens.colors
+      default:
+        return cerberusTokens.colors
+    }
+  }
+
+  const tokens: SentimentConfig = getTokens()
 
   switch (palette) {
     case 'page':
@@ -83,14 +99,11 @@ export function normalizeNestedTokens(data: NormalizeNestedTokensProps) {
       return { ...acc, [`${palette}-${key}-${tokenKey}`]: nestedToken }
 
     const nestedTokenKeys = Object.keys(nestedToken)
-    const normalizedNestedToken = nestedTokenKeys.reduce(
-      (acc, nestedTokenKey) => {
-        const value = nestedToken[nestedTokenKey as keyof typeof nestedToken]
-        const tokenName = `${palette}-${key}-${tokenKey}-${nestedTokenKey}`
-        return { ...acc, [tokenName]: value }
-      },
-      {},
-    )
+    const normalizedNestedToken = nestedTokenKeys.reduce((acc, nestedTokenKey) => {
+      const value = nestedToken[nestedTokenKey as keyof typeof nestedToken]
+      const tokenName = `${palette}-${key}-${tokenKey}-${nestedTokenKey}`
+      return { ...acc, [tokenName]: value }
+    }, {})
     return { ...acc, ...normalizedNestedToken }
   }, {})
 }
@@ -124,9 +137,7 @@ export function getPrimitiveTokenReference(
  * @param tokenReference - The primitive token reference (e.g., "cerberus.neutral.80")
  * @returns The hex color value (e.g., "#201935") or null if not found
  */
-export function resolvePrimitiveTokenToHex(
-  tokenReference: string,
-): string | null {
+export function resolvePrimitiveTokenToHex(tokenReference: string): string | null {
   if (typeof document === 'undefined') return null
 
   // Convert the token reference to CSS variable format

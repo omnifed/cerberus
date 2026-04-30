@@ -1,10 +1,49 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import Particles, { initParticlesEngine } from '@tsparticles/react'
+import { useRootColors, useThemeContext } from '@cerberus-design/react'
+import { useSignal } from '@cerberus-design/signals'
 import { type ISourceOptions } from '@tsparticles/engine'
+import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
-import { useThemeContext, useRootColors } from '@cerberus-design/react'
+import { useEffect } from 'react'
+
+export function Scene() {
+  const { theme } = useThemeContext()
+  const { colors, refetch } = useRootColors(colorList)
+  const [init, setInit] = useSignal<boolean>(false)
+
+  const options = {
+    ...fire,
+    background: {
+      image: `radial-gradient(75% 82% at 52% 100%, ${colors[colorList[0]]}40 0%, transparent 100%)`,
+    },
+  }
+
+  // this should be run only once per application lifetime
+  // TS Particles requires the element to exist before initializing
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine)
+    }).then(() => {
+      setInit(true)
+    })
+  }, [setInit])
+
+  useEffect(() => {
+    if (window && theme) {
+      // We need to wait for the theme to be applied to the root element
+      setTimeout(async () => {
+        await refetch()
+      }, 10)
+    }
+  }, [theme, refetch])
+
+  if (init) {
+    return <Particles id="tsparticles" options={options} />
+  }
+
+  return null
+}
 
 const fire = {
   fpsLimit: 40,
@@ -57,44 +96,3 @@ const fire = {
 } as ISourceOptions
 
 const colorList = ['action-bg-initial']
-
-export function Scene() {
-  const [init, setInit] = useState<boolean>(false)
-  const [options, setOptions] = useState<ISourceOptions>(fire)
-  const { theme } = useThemeContext()
-  const { colors, refetch } = useRootColors(colorList)
-
-  // this should be run only once per application lifetime
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine)
-    }).then(() => {
-      setInit(true)
-    })
-  }, [])
-
-  useEffect(() => {
-    if (window && theme) {
-      // We need to wait for the theme to be applied to the root element
-      setTimeout(async () => {
-        await refetch()
-      }, 10)
-    }
-  }, [theme, refetch])
-
-  useEffect(() => {
-    const start = colors[colorList[0]]
-    setOptions((prev) => ({
-      ...prev,
-      background: {
-        image: `radial-gradient(75% 82% at 52% 100%, ${start}40 0%, transparent 100%)`,
-      },
-    }))
-  }, [colors])
-
-  if (init) {
-    return <Particles id="tsparticles" options={options} />
-  }
-
-  return null
-}
