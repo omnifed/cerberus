@@ -295,8 +295,8 @@ importers:
         specifier: ^1.10.0
         version: 1.10.0(jsdom@26.0.0)(typescript@6.0.2)
       '@pandacss/preset-panda':
-        specifier: ^1.8.2
-        version: 1.8.2
+        specifier: ^1.10.0
+        version: 1.10.0
       '@pandacss/types':
         specifier: ^1.10.0
         version: 1.10.0
@@ -1884,9 +1884,6 @@ packages:
   '@pandacss/preset-panda@1.10.0':
     resolution: {integrity: sha512-ExQEiVy/iT1Lma8r2tVTb0dgouiG6AGi9wN7EV/1u94Qkw+G0KB+n6geEhiWBSkstnXvuZjFM2nF17mLmrO2mw==}
 
-  '@pandacss/preset-panda@1.8.2':
-    resolution: {integrity: sha512-rcqHrusEEyHUq+mOJg/rPPr8//Pe+I8R4GFio3J+peQ3ZfvamNslpOz/KuTQvGzLGfH538aZC51bnJ4mjSpSAQ==}
-
   '@pandacss/reporter@1.10.0':
     resolution: {integrity: sha512-EtHGixI9v7j1znGcvpRv+cXQ+DwHRf/JhpnKrFAErKm4Q/pMysE0Lm6ANlqBeDQ7w2SGPdkow0heUZ4AohXHFg==}
 
@@ -1898,9 +1895,6 @@ packages:
 
   '@pandacss/types@1.10.0':
     resolution: {integrity: sha512-8R8s0QevHtT6Le8HH5hN1DJ1qH9EYeUGtI2MhvXIChV3xjd2EZqhKpNTK7w2iw30z8mJhvCj0dWIUopn0sN2XQ==}
-
-  '@pandacss/types@1.8.2':
-    resolution: {integrity: sha512-4678uTBYiqesy07w4IPIC137dxnrjAAswFLDCvhtEsEP2zOL3VYmDrOdHP5hnwF75R1b4tubG4/vQqGujf0dCg==}
 
   '@rolldown/binding-android-arm64@1.0.0-rc.15':
     resolution: {integrity: sha512-YYe6aWruPZDtHNpwu7+qAHEMbQ/yRl6atqb/AhznLTnD3UY99Q1jE7ihLSahNWkF4EqRPVC4SiR4O0UkLK02tA==}
@@ -7556,10 +7550,6 @@ snapshots:
     dependencies:
       '@pandacss/types': 1.10.0
 
-  '@pandacss/preset-panda@1.8.2':
-    dependencies:
-      '@pandacss/types': 1.8.2
-
   '@pandacss/reporter@1.10.0':
     dependencies:
       '@pandacss/core': 1.10.0
@@ -7581,8 +7571,6 @@ snapshots:
       ts-pattern: 5.9.0
 
   '@pandacss/types@1.10.0': {}
-
-  '@pandacss/types@1.8.2': {}
 
   '@rolldown/binding-android-arm64@1.0.0-rc.15':
     optional: true
