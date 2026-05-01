@@ -8,13 +8,11 @@ ark: 'toast'
 ---
 
 import CodePreview from '@/app/components/CodePreview'
-import {
-  NoteAdmonition,
-} from '@/app/components/Admonition'
+import { NoteAdmonition } from '@/app/components/Admonition'
 import {
   CustomConfigDemo,
   OverviewDemo,
-  SubtleDemo
+  SubtleDemo,
 } from '../components/notifications/static'
 import { NotifyBadgePreview } from '../components/notifications/notify-badge'
 
@@ -33,23 +31,24 @@ The `NotificationCenter` component is used to manage notifications in your appli
 import { toaster } from '@cerberus/react'
 
 function Feature() {
-  const handleClick = useCallback(() => {
-    toaster.create({
-      type: 'info',
-      title: 'Update Available',
-      description: 'A new version of the app is available',
-      action: {
-        label: 'Refresh',
-        onClick: () => {
-          window.location.reload()
-        }
-      }
-    })
-  }, [])
-
-  return <Button onClick={handleClick}>Trigger notification</Button>
+const handleClick = useCallback(() => {
+toaster.create({
+type: 'info',
+title: 'Update Available',
+description: 'A new version of the app is available',
+action: {
+label: 'Refresh',
+onClick: () => {
+window.location.reload()
 }
-```
+}
+})
+}, [])
+
+return <Button onClick={handleClick}>Trigger notification</Button>
+}
+
+````
 ```tsx title="layout.tsx"
 import { NotificationCenter } from '@cerberus/react'
 
@@ -61,7 +60,8 @@ export function Layout(props: PropsWithChildren<{}>) {
     </>
   )
 }
-```
+````
+
 </CodePreview>
 
 ### Types
@@ -75,24 +75,25 @@ Just update the `options.types` to change the theme of the notification. The opt
 import { toaster } from '@cerberus/react'
 
 function Feature() {
-  const handleClick = useCallback(() => {
-    toaster.create({
-      type: 'loading',
-      title: 'Loading',
-      description: 'It's taking longer than normal.',
-    })
-  }, [toaster.create])
+const handleClick = useCallback(() => {
+toaster.create({
+type: 'loading',
+title: 'Loading',
+description: 'It's taking longer than normal.',
+})
+}, [toaster.create])
 
-  return <Button onClick={handleClick}>Trigger notification</Button>
+return <Button onClick={handleClick}>Trigger notification</Button>
 }
-```
+
+````
 </CodePreview>
 
 ## Subtle Notifications
 
 Subtle notifications are a less intrusive way to inform users about events or updates. They typically have a softer appearance and may not require immediate user action.
 
-Use the `-subtle` suffix with the notification type to create a subtle notification.
+Use the `usage: 'subtle'` option to create a subtle notification.
 
 <CodePreview preview={<SubtleDemo />}>
 ```tsx title="Subtle Notifications Demo"
@@ -103,7 +104,8 @@ import { toaster } from '@cerberus/react'
 function Feature() {
   const handleClick = useCallback(() => {
     toaster.create({
-      type: 'info-subtle',
+      type: 'info',
+      usage: 'subtle',
       title: 'Update Available',
       description: 'A new version of the app is available',
       action: {
@@ -117,7 +119,8 @@ function Feature() {
 
   return <Button onClick={handleClick}>Trigger subtle notification</Button>
 }
-```
+````
+
 </CodePreview>
 
 ## Custom Configuration
@@ -134,34 +137,36 @@ import { createToaster, NotificationCenter, Button } from '@cerberus/react'
 import { HStack } from 'styled-system/jsx'
 
 function CustomConfigDemo() {
-  const customToaster = createToaster({
-    gap: 24,
-    overlap: false,
-    placement: 'bottom-end',
-  })
+const customToaster = createToaster({
+gap: 24,
+overlap: false,
+placement: 'bottom-end',
+})
 
-  return (
-    <>
-      <HStack>
-        <Button
-          onClick={() => {
-            customToaster.create({
-              title: 'Custom Toaster',
-              description:
-                'This notification is using a custom toaster configuration.',
-              type: 'success',
-            })
-          }}
-        >
-          Show Notification
-        </Button>
-      </HStack>
+return (
+
+<>
+<HStack>
+<Button
+onClick={() => {
+customToaster.create({
+title: 'Custom Toaster',
+description:
+'This notification is using a custom toaster configuration.',
+type: 'success',
+})
+}} >
+Show Notification
+</Button>
+</HStack>
 
       <NotificationCenter toaster={customToaster} />
     </>
-  )
+
+)
 }
-```
+
+````
 </CodePreview>
 
 ## Badges
@@ -186,22 +191,22 @@ export function NotifyBadgePreview() {
   </IconButton>
   )
 }
-```
-</CodePreview>
+````
 
+</CodePreview>
 
 ## Primitives
 
 You can utilize the primitive components to customize the toast notification.
 
-| Component | Description |
-| --------- | ----------- |
-| NotificationProvider    | The context provider for the toast notifications. |
-| NotificationRoot | The context provider for the toast parts. |
-| NotificationHeading | The title heading of the toast. |
-| NotificationDescription | The description of the toast. |
-| NotificationCloseTrigger | The close button of the toast. |
-| NotificationActionTrigger | The action button of the toast. |
+| Component                 | Description                                       |
+| ------------------------- | ------------------------------------------------- |
+| NotificationProvider      | The context provider for the toast notifications. |
+| NotificationRoot          | The context provider for the toast parts.         |
+| NotificationHeading       | The title heading of the toast.                   |
+| NotificationDescription   | The description of the toast.                     |
+| NotificationCloseTrigger  | The close button of the toast.                    |
+| NotificationActionTrigger | The action button of the toast.                   |
 
 ## API
 
@@ -213,23 +218,24 @@ The `NotificationCenter` component is an abstraction of the primitives and doesn
 
 The `toaster` object is used to create notifications and accepts the following options:
 
-| Name     | Type     | Description                            |
-| -------- | -------- | -------------------------------------- |
-| type     | string   | The type of notification. Options are `info`, `success`, `warning`, `error`, and `loading`. |
-| title    | string   | The title of the notification. |
-| description | string | The description of the notification. |
-| action   | `ToasterAction`   | The action object of the notification. |
-| duration | number   | A custom duration of the notification. |
-| onClose  | function | The callback function when the notification is closed. |
+| Name        | Type                    | Description                                                                                 |
+| ----------- | ----------------------- | ------------------------------------------------------------------------------------------- |
+| type        | string                  | The type of notification. Options are `info`, `success`, `warning`, `error`, and `loading`. |
+| title       | string                  | The title of the notification.                                                              |
+| description | string                  | The description of the notification.                                                        |
+| action      | `ToasterAction`         | The action object of the notification.                                                      |
+| duration    | number                  | A custom duration of the notification.                                                      |
+| onClose     | function                | The callback function when the notification is closed.                                      |
+| usage       | `'subtle' \| 'default'` | The visual type of the notification. The default option is `default`.                       |
 
 ### `ToasterAction`
 
 The `ToasterAction` object is used to create an action button for the notification and accepts the following options:
 
-| Name     | Type     | Description                            |
-| -------- | -------- | -------------------------------------- |
-| label    | string   | The label of the action button. |
-| onClick  | function | The callback function when the action button is clicked. |
+| Name    | Type     | Description                                              |
+| ------- | -------- | -------------------------------------------------------- |
+| label   | string   | The label of the action button.                          |
+| onClick | function | The callback function when the action button is clicked. |
 
 ### Parts
 
@@ -237,10 +243,10 @@ The `NotificationParts` API is an Object containing the full family of component
 
 <NoteAdmonition description="It is best to only use the NotificationParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
-| Name     | Description                            |
-| -------- | -------------------------------------- |
-| Root     | The `NotificationRoot` component which is the Provider for the toast. |
-| Heading     | The `NotificationHeading` component which displays the heading title for the toast. |
-| Description     | The `NotificationDescription` component which displays the description for the toast. |
-| CloseTrigger     | The `NotificationCloseTrigger` component which displays the close button for the toast. |
-| ActionTrigger     | The `NotificationActionTrigger` component which displays the action button for the toast. |
+| Name          | Description                                                                               |
+| ------------- | ----------------------------------------------------------------------------------------- |
+| Root          | The `NotificationRoot` component which is the Provider for the toast.                     |
+| Heading       | The `NotificationHeading` component which displays the heading title for the toast.       |
+| Description   | The `NotificationDescription` component which displays the description for the toast.     |
+| CloseTrigger  | The `NotificationCloseTrigger` component which displays the close button for the toast.   |
+| ActionTrigger | The `NotificationActionTrigger` component which displays the action button for the toast. |

@@ -7,7 +7,3 @@ export const toaster: CreateToasterReturn = createToaster({
   overlap: true,
   placement: 'top-end',
 })
-
-// Re-exporting for easier customization
-
-export { createToaster, Toaster } from '@ark-ui/react/toast'

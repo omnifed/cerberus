@@ -4,8 +4,8 @@ import { ark } from '@ark-ui/react/factory'
 import { toast } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
 import { Spinner } from '../spinner/index'
-import type { NotifyOptions, NotifyOptionsType } from './types'
 import { getEmphasis } from './center'
+import type { NotifyOptions } from './types'
 
 /**
  * This private module contains a component that returns the correct icon for a
@@ -14,11 +14,7 @@ import { getEmphasis } from './center'
  * @module 'notification/match-icon'
  */
 
-interface MatchNotificationIconProps {
-  type?: NotifyOptions['palette']
-}
-
-export function MatchNotificationIcon(props: MatchNotificationIconProps) {
+export function MatchNotificationIcon(props: NotifyOptions) {
   const { icons } = useCerberusContext()
   const type = props.type?.split('-')[0] || 'info'
   const styles = toast()
@@ -27,10 +23,7 @@ export function MatchNotificationIcon(props: MatchNotificationIconProps) {
   const Icon = icons[key] || ToastLoadingIcon
 
   return (
-    <ark.div
-      data-emphasis={getEmphasis(props.type as NotifyOptionsType)}
-      className={styles.icon}
-    >
+    <ark.div data-emphasis={getEmphasis(props)} className={styles.icon}>
       <Icon />
     </ark.div>
   )
