@@ -1,4 +1,5 @@
 export const NEW = [
+  '/docs/components/button',
   '/docs/signals/create-query',
   '/docs/signals/create-mutation',
   '/docs/signals/on-cleanup',
