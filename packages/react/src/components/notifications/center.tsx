@@ -1,6 +1,7 @@
 'use client'
 
 import { Toaster, type CreateToasterReturn } from '@ark-ui/react/toast'
+import { useMemo } from 'react'
 import { Box } from 'styled-system/jsx'
 import { Button, type ButtonProps } from '../button/button'
 import { Show } from '../show/index'
@@ -8,15 +9,16 @@ import { ToastCloseTrigger } from './close-trigger'
 import { MatchNotificationIcon } from './match-icon'
 import { NotificationParts } from './parts'
 import { toaster } from './toaster'
-import type { NotifyOptions, NotifyOptionsType } from './types'
+import type { NotifyOptions } from './types'
 
 /**
  * This module contains an abstraction of the Notification parts.
  * @module 'notification/center'
  */
 
-export function getEmphasis(type: NotifyOptionsType) {
-  return type.includes('subtle') ? 'low' : 'high'
+export function getEmphasis(options: NotifyOptions) {
+  if (options.usage === 'subtle') return 'low'
+  return 'high'
 }
 
 export interface NotificationCenterProps {
@@ -28,16 +30,13 @@ export interface NotificationCenterProps {
  * component. It manages displaying all the toasts in the center.
  */
 export function NotificationCenter(props: NotificationCenterProps) {
-  const cachedToaster = props.toaster || toaster
+  const cachedToaster = useMemo(() => props.toaster || toaster, [props.toaster])
 
   return (
     <Toaster toaster={cachedToaster}>
       {(toast) => (
-        <NotificationParts.Root
-          key={toast.id}
-          data-emphasis={getEmphasis((toast.type ?? 'info') as NotifyOptionsType)}
-        >
-          <MatchNotificationIcon type={toast.type as NotifyOptions['palette']} />
+        <NotificationParts.Root key={toast.id} data-emphasis={getEmphasis(toast)}>
+          <MatchNotificationIcon type={toast.type} />
 
           <Box flex="1" paddingBlock="sm">
             <NotificationParts.Heading>{toast.title}</NotificationParts.Heading>

@@ -18,7 +18,7 @@
     "description": "Please check your connection."
   },
   "danger": {
-    "type": "danger",
+    "type": "error",
     "title": "Unable to Update",
     "description": "An error occurred. Please try again."
   },
