@@ -45,7 +45,7 @@ Use the `usage` prop to set the usage style of the button. The `Button` componen
 
 ## Sizes
 
-The `Button` component comes in two sizes: `sm`, `md`. You can set the size by using the `size` prop.
+Use the `size` prop to change the Button size. The options are `xs` up to `2xl`.
 
 <CodePreview {...DEMOS.size} />
 
@@ -87,13 +87,14 @@ This change will set the default shape variant of all buttons to `default`.
 
 The `Button` component is an abstraction of the primitives and accepts the following props:
 
-| Name    | Default  | Description                                                                                                                          |
-| ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| palette | `action` | The color palette (any of the Cerberus palettes) of the button.                                                                      |
-| usage   | `filled` | The style treatment of the button.                                                                                                   |
-| shape   | `sharp`  | The shape of the button.                                                                                                             |
-| pending | `false`  | The loading state of the button. When a button has an `Icon` it will replace it with a spinner. When not, is shows a disabled state. |
-| asChild |          | Render the Button as the child component.                                                                                            |
+| Name      | Default  | Description                                                                                                                          |
+| --------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `palette` | `action` | The color palette (any of the Cerberus palettes) of the button.                                                                      |
+| `usage`   | `filled` | The style treatment of the button.                                                                                                   |
+| `shape`   | `sharp`  | The shape of the button.                                                                                                             |
+| `size`    | `lg`     | The size of the Button.                                                                                                              |
+| `pending` | `false`  | The loading state of the button. When a button has an `Icon` it will replace it with a spinner. When not, is shows a disabled state. |
+| `asChild` |          | Render the Button as the child component.                                                                                            |
 
 #### ButtonGroup Props
 
