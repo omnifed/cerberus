@@ -86,7 +86,7 @@
     "globby": "^16.2.0",
     "react": "^19.2.5",
     "vite": "^8.0.8",
-    "vite-plugin-dts": "^4.5.4"
+    "vite-plugin-dts": "^5.0.0"
   },
   "peerDependencies": {
     "react": "*"
