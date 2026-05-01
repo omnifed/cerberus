@@ -13,7 +13,9 @@ import { DEMOS } from '../components/effect/static'
 
 ## Usage
 
-The `onCleanup` primitive is useful when you need to do something when an effect or computation is destroyed or re-evaluated.
+The `onCleanup` primitive is an essential memory-management tool within the Cerberus Signals reactivity system. It allows you to register a callback function that will execute right before a reactive context (like `createEffect` or `createComputed`) re-evaluates, or when that context is permanently destroyed.
+
+This is the signal-based equivalent of returning a cleanup function in React's useEffect, but with significantly more flexibility.
 
 `onCleanup` works within the scope of either:
 
@@ -23,6 +25,17 @@ The `onCleanup` primitive is useful when you need to do something when an effect
 In this example, we ensure a timer is cleared when it's parent effect is destroyed.
 
 <CodePreview {...DEMOS.cleanup} />
+
+## When to use
+
+Whenever an effect re-runs, any side effects from its previous run (like event listeners, intervals, or network requests) must be disposed of, or your application will suffer from severe memory leaks and race conditions.
+
+Unlike React, where you must return a single cleanup function at the very end of your hook, `onCleanup` can be called anywhere inside your reactive scope, even deeply nested inside helper functions.
+
+1. **DOM Subscriptions**: Removing `window` or `document` event listeners when the dependencies change.
+2. **Timer Management**: Clearing `setTimeout` or `setInterval` cycles.
+3. **Network Cancellation**: Triggering an `AbortController` to cancel stale network requests if a user rapidly clicks a button.
+4. **Composable Helpers**: Building custom reactive utilities that manage their own memory cleanup without forcing the consumer to manually handle it.
 
 ## API
 

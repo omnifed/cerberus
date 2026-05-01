@@ -1,0 +1,251 @@
+---
+slug: cerberus-v1-3-release
+date: 05-01-2026
+author: caseyBaggz
+title: Cerberus v1.3 Release
+description: Signals Boosted
+category: release
+version: 1.3
+timeToRead: 4
+tag: Release
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import BashTabs from '@/app/components/bash-tabs'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import CodePreview from '@/app/components/CodePreview'
+
+import { DEMOS as FetchingDemos } from '@/app/docs/signals/[slug]/components/fetching/static'
+import { DEMOS as EffectDemos } from '@/app/docs/signals/[slug]/components/effect/static'
+import { DEMOS as UntrackDemos } from '@/app/docs/signals/[slug]/components/untrack/static'
+import { DEMOS as SignalDemos } from '@/app/docs/signals/[slug]/components/signal/static'
+import { DEMOS as ButtonDemos } from '@/app/docs/components/[slug]/components/button/static'
+import { SubtleDemo } from '@/app/docs/components/[slug]/components/components/notifications/static'
+
+This release massively improves Signals performance along with minor React updates.
+
+## Overview
+
+Here is a brief overview of what's new:
+
+- [React Features](#react-features) - Button & Toast Notification updates
+- [Signals Features](#signals-features) - Signals become the Tanstack Query killer
+
+## React Features
+
+The React updates contain some new features and stability fixes for the `Button` along with a **breaking change** for the `toaster` options regarding _subtle_ notifications.
+
+### Button
+
+We've added some new sizes to the `Button` recipe along with making the styling overall more stable when used in complex flex layouts.
+
+**New Button size range**: `xs` up to `2xl` <br />
+**Default size**: `lg` (this is visually the old medium)
+
+<CodePreview {...ButtonDemos.size} />
+<br />
+
+Fix: Button no longer allows a flex parent to shrink its width. Likewise, buttons now have built in SVG size management when using non-strict width SVGs.
+
+Checkout the [Button documentation for more details](/docs/components/button).
+
+### Toast Notifications
+
+Due to changes in the toaster engine there is a minor **breaking change** for subtle notifications (default notifications are un-affected).
+
+**Migration PathL:**
+
+1. Subtle variants should use the default `type` name _without_ the `-subtle` prefix.
+2. Subtle variants should now include `usage: 'subtle'` within the `ToastOptions` object.
+
+Additionally, all deprecated APIs have been removed. These warnings have been around for almost a year - it's time.
+
+While this update is not ideal, it does open the door to new Toast-related opportunities in the future.
+
+View the [Notification documentation for more details](/docs/components/notifications).
+
+## Signals Features
+
+> As of v1.3.0 - Signals are almost as performant as [SolidJS](https://docs.solidjs.com/) and querys **outperform [Tanstack Query](https://tanstack.com/query/latest) on multiple levels**!
+
+In this next phase of Signals, we have improved the scheduling algorithm along with the improving the query caching and query API. This has created a massive increaese in performance which we will see later. :rocket:
+
+### General Doc Updates
+
+Across the board, we have updated a lot of doc pages and demos to provide more information around Signals: what they are, why they are important, and why you should be using them over React state/existing fetching designs.
+
+### New Primitives
+
+Primitives are the building blocks to Cerby Signals. They can be called in any scope and used however you want. There are no boundaries with primitives.
+
+Let's checkout the new APIs in this release.
+
+#### Cleanup Helper
+
+The `onCleanup` primitive is an essential memory-management tool within the Cerberus Signals reactivity system. It allows you to register a callback function that will execute right before a reactive context (like `createEffect` or `createComputed`) re-evaluates, or when that context is permanently destroyed.
+
+In this example, we ensure a timer is cleared when it's parent effect is destroyed.
+
+<CodePreview {...EffectDemos.cleanup} />
+<br />
+
+View the [`onCleanup` docs](/docs/signals/on-cleanup)
+
+#### Untracking Signals
+
+The `untrack` primitive allows you to read the current value of a signal inside a reactive context (like `createEffect`, `createComputed`, or a React render phase) without subscribing to that signal.
+
+This prevents unwanted re-evaluations, React infinite loops, and over-subscribing to state changes.
+
+In this example, we update a signal and show the latest result (tracked) and what the untracked version is.
+
+<CodePreview {...UntrackDemos.basic} />
+<br />
+
+View the [`untrack` docs](/docs/signals/untrack)
+
+### Query Overhaul
+
+Along with the signal engine, we have also improved the query cache and event algorithms which have allowed us to not only improve performance but expand the APIs.
+
+#### Query Factory
+
+When you call `createQuery` you are essentially creating a "Query Factory" to be used later to perform the fetch in however way you may want.
+
+**Creating a query now requires two things**:
+
+1. A Promise to call when activated
+2. A unique key which is used to cache the result
+
+Depending on how you want to use the factory depends on how you execute the query. You can use it in any shape, but for the sake of this article, we will discuss component usage only.
+
+##### Client Component Pattern
+
+Nothing changes here. Just pass the factory in the `useQuery` hook and have the data ready before the return hits.
+
+<CodeSnippet snippet={FetchingDemos.queryUsageMeta} />
+
+##### Server Component Pattern
+
+In an SSR environment, you execute the factory's **raw fetcher directly**, bypassing the reactive cache. Then, you pass that data down to your Client Components to "hydrate" or seed the Cerberus cache, ensuring the client doesn't double-fetch on mount.
+
+This is the standard SSR pattern for React.
+
+###### 1. Server Component (Fetching)
+
+Expose the raw, stateless fetcher function from your factory. You simply await it like a standard asynchronous function.
+
+<CodePreview {...FetchingDemos.server} />
+
+###### 2. Client Component
+
+On the client side, use the `initialData` property. If the Cerberus cache is empty, it will instantly seed the cache with the server's data, skipping the `<Suspense>` boundary entirely.
+
+<CodePreview {...FetchingDemos.client} />
+<br />
+
+##### Streaming Reponses (Async Generators)
+
+Cerberus queries also support streaming data via [Async Generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator). This is powerful if you are using an LLM API or your local API supports data streaming.
+
+<CodePreview {...FetchingDemos.streaming} />
+<br />
+
+View the [`createQuery` docs](/docs/signals/create-query)
+
+#### Mutation Factory
+
+We have added more options to the `createMutation` primitive which now includes **optimistic updates**. This means that you can have "real-time" UI while fetches automagically fetch in the background and update the query state when resolved.
+
+In this example, we provide optimistic updates via the `onMutate/setQueryData` APIs which instantly update the UI while the query is run in the background.
+
+If your optimistic update is incorrect, the UI will naturally resolve itself when the query completes.
+
+<CodePreview {...FetchingDemos.mutation} />
+<br />
+
+View the [`createMutation` docs](/docs/signals/create-mutation)
+
+### New Hooks
+
+#### Unique store instances
+
+When you want to use a **unqiue instance** of a global [Store](/docs/signals/stores) but do not need a [Context API](/docs/signals/create-store-context) - use the `useStore` hook.
+
+<CodePreview {...SignalDemos.useStore} />
+<br />
+
+View the [`useStore` docs](/docs/signals/use-store)
+
+### Benchmarks
+
+Now let's talk about the good stuff - performance improvements with hard data.
+
+#### Overall improvements
+
+Cerby Signals were already performing at _0(1)_ but that is never good enough. Here is our own before/after with our engine upgrades:
+
+#### Signal Benchmarks
+
+| Benchmark       | Original (v1.2.1) | Current (v1.3.0) | Result          |
+| --------------- | ----------------- | ---------------- | --------------- |
+| Deep Dependency | 318.17 µs         | 226.83 µs        | **~28% Faster** |
+| Wide Fan-Out    | 2.26 ms           | 3.17 ms          | **~40% Slower** |
+| Diamond Problem | 323.05 µs         | 458.60 µs        | **~40% Slower** |
+
+While this seems like a loss - it is still lightning fast compared to the upgraded ownership and versioning we have built into subscriptions to be more reliable.
+
+##### The Reality of Reactivity
+
+This is completely normal. Frameworks like SolidJS and Vue go through this exact pendulum swing. We traded raw, bare-metal speed for enterprise-grade memory safety (cleaning up event listeners and aborting network requests).
+
+> Even with the "regression," processing 10,000 effects in 3 milliseconds is still _blazing fast_ and easily clears the 16ms frame budget for 60FPS UI updates.
+
+Our next planned update should improve these metrics even further.
+
+Now let's look at the real gains from this side effect: querys.
+
+#### Query Benchmarks
+
+| Benchmark             | Original (v1.2.1) | Current (v1.3.0) | Delta                  |
+| --------------------- | ----------------- | ---------------- | ---------------------- |
+| Cache Retrieval (10k) | 8.88 ms           | 1.68 ms          | **~5.2x Faster**       |
+| Retrieval Memory      | 20.61 MB          | 20.72 KB         | **~99.9% Less Memory** |
+| Invalidation Sweep    | 868.52 ns         | 151.80 ns        | **~5.7x Faster**       |
+
+##### Conclusion
+
+While our internal `onCleanup` addition added a tiny _microsecond_ tax to the raw scheduler engine, the query data layer you built on top of it is functioning at absolute peak efficiency. We traded ~80 nanoseconds in key hashing for a massive **500% speed increase** in data retrieval and a **99.9% reduction in memory** allocation.
+
+Now let's put the rubber to the road and go head to head with Tanstack Query.
+
+#### Cerberus Signals vs. TanStack Query
+
+We ran a head-to-head performance benchmark comparing the Cerberus Signals data layer against the industry standard, TanStack Query Core. The tests were run in Bun (v1.2.16) on an Apple M3 Pro, measuring both raw execution speed and the memory footprint (p75/p99) of the Garbage Collector.
+
+By leveraging an _O(1)_ signal-based memory map instead of heavy class instantiations, Cerberus completely eliminates massive amounts of memory overhead while doubling the speed of standard operations.
+
+| Benchmark Scenario                             | Metric     | TanStack Query Core | Cerberus Signals | The Cerberus Advantage |
+| ---------------------------------------------- | ---------- | ------------------- | ---------------- | ---------------------- |
+| **Cache Retrieval**_(10,000 concurrent reads)_ | **Speed**  | 3.02 ms             | **1.53 ms**      | **2x Faster**          |
+|                                                | **Memory** | 59.62 KB            | **639.72 bytes** | **98.9% Less Memory**  |
+| **Cache Invalidation** _(Stale data sweep)_    | **Speed**  | 472.77 ns           | **146.41 ns**    | **3.2x Faster**        |
+|                                                | **Memory** | 12.29 bytes         | **3.39 bytes**   | **72.4% Less Memory**  |
+
+_Note: Memory measurements represent the p75/p99 allocations recorded during the benchmark loops._
+
+**The Takeaway:** When scaling to thousands of reactive components, memory allocation becomes the primary bottleneck for UI thread frame rates. Cerberus Signals delivers enterprise-grade concurrency features (like Race-Condition Locks and React 19 Hydration) while consuming **fractional kilobytes** of memory compared to the megabytes allocated by traditional context-based providers.
+
+## Thanks!
+
+This is another great release introducing some beneficial tools and features.
+
+A special thanks to everyone who has helped validate the APIs, docs, and submitted features or bugfixes for this release.
+
+> There is no "I" in Cerber-"US"
+
+## Upgrading
+
+To upgrade to this release, you can install the latest version of Cerberus React:
+
+<BashTabs code="npm run up:cerberus" />
