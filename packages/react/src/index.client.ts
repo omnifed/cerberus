@@ -84,6 +84,8 @@ export {
   TagsInputRootProvider,
   useTimer,
   TimerRootProvider,
+  createToaster,
+  Toaster,
   useToggle,
   useToggleContext,
   useToggleGroup,

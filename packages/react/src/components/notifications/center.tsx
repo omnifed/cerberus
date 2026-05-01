@@ -4,15 +4,11 @@ import { Toaster, type CreateToasterReturn } from '@ark-ui/react/toast'
 import { Box } from 'styled-system/jsx'
 import { Button, type ButtonProps } from '../button/button'
 import { Show } from '../show/index'
-import { NotificationParts } from './parts'
-import type {
-  NotifyOptions,
-  NotifyOptionsType,
-  UseNotificationCenterReturn,
-} from './types'
-import { MatchNotificationIcon } from './match-icon'
 import { ToastCloseTrigger } from './close-trigger'
+import { MatchNotificationIcon } from './match-icon'
+import { NotificationParts } from './parts'
 import { toaster } from './toaster'
+import type { NotifyOptions, NotifyOptionsType } from './types'
 
 /**
  * This module contains an abstraction of the Notification parts.
@@ -39,13 +35,9 @@ export function NotificationCenter(props: NotificationCenterProps) {
       {(toast) => (
         <NotificationParts.Root
           key={toast.id}
-          data-emphasis={getEmphasis(
-            (toast.type ?? 'info') as NotifyOptionsType,
-          )}
+          data-emphasis={getEmphasis((toast.type ?? 'info') as NotifyOptionsType)}
         >
-          <MatchNotificationIcon
-            type={toast.type as NotifyOptions['palette']}
-          />
+          <MatchNotificationIcon type={toast.type as NotifyOptions['palette']} />
 
           <Box flex="1" paddingBlock="sm">
             <NotificationParts.Heading>{toast.title}</NotificationParts.Heading>
@@ -70,19 +62,4 @@ export function NotificationCenter(props: NotificationCenterProps) {
       )}
     </Toaster>
   )
-}
-
-/**
- * @deprecated use `toaster` instead
- */
-export function useNotificationCenter(): UseNotificationCenterReturn {
-  function notify(options: NotifyOptions) {
-    toaster.create({
-      title: options.heading,
-      description: options.description,
-      type: options.palette,
-      action: options.action,
-    })
-  }
-  return { ...toaster, notify }
 }

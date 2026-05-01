@@ -1,4 +1,3 @@
-import type { CreateToasterReturn } from '@ark-ui/react/toast'
 import type { ReactNode } from 'react'
 
 export type NotifyOptionsType =
@@ -34,11 +33,4 @@ export interface NotifyOptions {
     label: string
     onClick: () => void
   }
-}
-
-export type UseNotificationCenterReturn = CreateToasterReturn & {
-  /**
-   * @deprecated use `create` instead
-   */
-  notify: (options: NotifyOptions) => void
 }
