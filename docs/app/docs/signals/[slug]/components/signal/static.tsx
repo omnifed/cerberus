@@ -3,6 +3,7 @@ import { ReadDemo } from './read.demo'
 import { StateDemo } from './state.demo'
 import { StoreDemo } from './store.demo'
 import { UseDemo } from './use.demo'
+import { UseStoreDemo } from './useStore.demo'
 
 export const DEMOS = {
   basic: {
@@ -28,6 +29,11 @@ export const DEMOS = {
   use: {
     id: 'signal.use',
     preview: <UseDemo />,
+    context: 'signals',
+  },
+  useStore: {
+    id: 'signal.useStore',
+    preview: <UseStoreDemo />,
     context: 'signals',
   },
   updates: {

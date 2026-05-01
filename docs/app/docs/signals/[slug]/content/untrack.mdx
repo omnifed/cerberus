@@ -13,13 +13,26 @@ import { DEMOS } from '../components/untrack/static'
 
 ## Usage
 
-The `untrack` primitive is useful when you want to make multiple signal updates at
-once. This can include individual updates or signals updating simultaneously to
-a peer signal updating.
+The `untrack` primitive allows you to read the current value of a signal inside a reactive context (like `createEffect`, `createComputed`, or a React render phase) without subscribing to that signal.
+
+This prevents unwanted re-evaluations, React infinite loops, and over-subscribing to state changes.
 
 In this example, we update a signal and show the latest result (tracked) and what the untracked version is.
 
 <CodePreview {...DEMOS.basic} />
+
+## When to use
+
+By default, any signal read inside a tracking context will automatically bind to it. When that signal updates, the context re-runs. However, there are common scenarios where you only want to read the data, not react to it:
+
+1. **Logging or Analytics**: You want to fire an analytics event when `userSignal` changes, but you need to include the `themeSignal` value in the payload without re-firing the event when the theme changes.
+2. **Preventing Infinite Loops**: You need to conditionally initialize or mutate state based on the current value of a cache, without accidentally subscribing the surrounding component to the cache's internal lifecycle.
+3. **Optimizing Component Renders**: In React integrations, bypassing unnecessary subscriptions keeps your component from re-rendering _O(1)_ updates that don't affect the DOM.
+
+## Best Practices
+
+- **Keep it synchronous**: `untrack` only disables tracking for the synchronous execution of the callback. If you use `await` inside the callback, signals read after the `await` might resume tracking depending on the environment context.
+- **Keep it targeted**: Wrap only the specific signal reads you want to isolate. Wrapping entire large blocks of logic can lead to accidentally missing subscriptions you actually intended to track.
 
 ## API
 
