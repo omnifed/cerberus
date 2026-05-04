@@ -28,15 +28,17 @@ import { Information } from '@carbon/icons-react'
 import { Tooltip } from '@cerberus/react'
 
 function BasicTooltipPreview() {
-  return (
-    <Tooltip
+return (
+
+<Tooltip
       content="Get information from something that has a very long description."
     >
-      <Information />
-    </Tooltip>
-  )
+<Information />
+</Tooltip>
+)
 }
-```
+
+````
 </CodePreview>
 
 ## Positioning
@@ -89,22 +91,22 @@ function PositioningTooltipPreview() {
     </HStack>
   )
 }
-```
+````
+
 </CodePreview>
 
 ## Primitives
 
 You can utilize the primitive components or the `css` prop to customize the checkbox.
 
-| Component | Description |
-| --------- | ----------- |
-| TooltipRoot    | The context provider for the Tooltip parts |
-| TooltipTrigger   | The focusable element that triggers the tooltip on hover |
-| TooltipPositioner   | The positioning container for the tooltip |
-| TooltipContent   | The content of the tooltip |
-| TooltipArrow | The arrow container of the tooltip bubble |
-| TooltipArrowTip  | The tip of the arrow |
-
+| Component         | Description                                              |
+| ----------------- | -------------------------------------------------------- |
+| TooltipRoot       | The context provider for the Tooltip parts               |
+| TooltipTrigger    | The focusable element that triggers the tooltip on hover |
+| TooltipPositioner | The positioning container for the tooltip                |
+| TooltipContent    | The content of the tooltip                               |
+| TooltipArrow      | The arrow container of the tooltip bubble                |
+| TooltipArrowTip   | The tip of the arrow                                     |
 
 ## API
 
@@ -112,10 +114,10 @@ You can utilize the primitive components or the `css` prop to customize the chec
 
 The `Tooltip` component is an abstraction of the primitives and accepts the following props:
 
-| Name     | Default | Description                                            |
-| -------- | ------- | ------------------------------------------------------ |
-| content  |     | What to display in the Tooltip.                            |
-
+| Name    | Default | Description                                         |
+| ------- | ------- | --------------------------------------------------- |
+| content |         | What to display in the Tooltip.                     |
+| portal  | `false` | When true, renders the `content` within a `Portal`. |
 
 The `Tooltip` component also accepts all the props of the [`TooltipRoot` primitive props](https://ark-ui.com/react/docs/components/tooltip#api-reference)
 
@@ -125,11 +127,11 @@ The `TooltipParts` API is an Object containing the full family of components.
 
 <NoteAdmonition description="It is best to only use the TooltipParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
-| Name     | Description                            |
-| -------- | -------------------------------------- |
-| Root     | The `TooltipRoot` component.           |
-| Trigger     | The `TooltipTrigger` component.     |
-| Positioner     | The `TooltipPositioner` component. |
-| Content  | The `TooltipContent` component.        |
-| Arrow | The `TooltipArrow` component.             |
-| ArrowTip  | The `TooltipArrowTip` component.      |
+| Name       | Description                        |
+| ---------- | ---------------------------------- |
+| Root       | The `TooltipRoot` component.       |
+| Trigger    | The `TooltipTrigger` component.    |
+| Positioner | The `TooltipPositioner` component. |
+| Content    | The `TooltipContent` component.    |
+| Arrow      | The `TooltipArrow` component.      |
+| ArrowTip   | The `TooltipArrowTip` component.   |

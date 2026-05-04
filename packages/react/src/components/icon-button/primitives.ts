@@ -9,4 +9,9 @@ import { type CerberusProps, createCerberusPrimitive } from '../../system/index'
 const { withRecipe } = createCerberusPrimitive(iconButton)
 
 export type IconButtonRootProps = CerberusProps<'button'> & IconButtonVariantProps
-export const IconButtonRoot = withRecipe('button')
+export const IconButtonRoot = withRecipe('button', {
+  defaultProps: {
+    'data-scope': 'icon-button',
+    'data-part': 'root',
+  },
+})

@@ -31,11 +31,6 @@ export type IconButtonProps = IconButtonRootProps &
 export function IconButton(props: IconButtonProps) {
   const { ariaLabel, clipboard, ...rootProps } = props
   return (
-    <IconButtonRoot
-      {...rootProps}
-      {...(!clipboard && { 'aria-label': ariaLabel })}
-      data-scope="icon-button"
-      data-part="root"
-    />
+    <IconButtonRoot {...rootProps} {...(!clipboard && { 'aria-label': ariaLabel })} />
   )
 }

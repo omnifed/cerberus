@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { TooltipParts } from './parts'
 import type { TooltipRootProps } from './primitives'
+import { TooltipRenderer } from './renderer'
 
 /**
  * This module contains the Tooltip component.
@@ -12,6 +13,10 @@ export interface TooltipProps extends Omit<TooltipRootProps, 'content'> {
    * The text content to display in the tooltip.
    */
   content: ReactNode
+  /**
+   * Whether to render the content within a Portal or not. Default is set to **false**.
+   */
+  portal?: boolean
 }
 
 /**
@@ -24,7 +29,7 @@ export interface TooltipProps extends Omit<TooltipRootProps, 'content'> {
  * </Tooltip>
  */
 export function Tooltip(props: TooltipProps) {
-  const { content, children, ...rootProps } = props
+  const { content, children, portal, ...rootProps } = props
   const position = {
     placement: props.positioning || 'top',
   }
@@ -33,14 +38,16 @@ export function Tooltip(props: TooltipProps) {
     <TooltipParts.Root openDelay={400} positioning={position} {...rootProps}>
       <TooltipParts.Trigger asChild>{children}</TooltipParts.Trigger>
 
-      <TooltipParts.Positioner>
-        <TooltipParts.Content>
-          <TooltipParts.Arrow>
-            <TooltipParts.ArrowTip />
-          </TooltipParts.Arrow>
-          {content}
-        </TooltipParts.Content>
-      </TooltipParts.Positioner>
+      <TooltipRenderer portal={Boolean(portal)}>
+        <TooltipParts.Positioner>
+          <TooltipParts.Content>
+            <TooltipParts.Arrow>
+              <TooltipParts.ArrowTip />
+            </TooltipParts.Arrow>
+            {content}
+          </TooltipParts.Content>
+        </TooltipParts.Positioner>
+      </TooltipRenderer>
     </TooltipParts.Root>
   )
 }

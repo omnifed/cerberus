@@ -64,11 +64,19 @@ While this update is not ideal, it does open the door to new Toast-related oppor
 
 View the [Notification documentation for more details](/docs/components/notifications).
 
+### Other notable changes
+
+Here are some high-level improvements made:
+
+1. `Tooltip` now accepts a `portal` prop to determine how to render content
+2. Data Grid has tooltip render issues from #1 - that's fixed
+3. `useStatefulCollection` now filters by `label` in addition to `value`
+
 ## Signals Features
 
 > As of v1.3.0 - Signals are almost as performant as [SolidJS](https://docs.solidjs.com/) and querys **outperform [Tanstack Query](https://tanstack.com/query/latest) on multiple levels**!
 
-In this next phase of Signals, we have improved the scheduling algorithm along with the improving the query caching and query API. This has created a massive increaese in performance which we will see later. :rocket:
+In this next phase of Signals, we have improved the scheduling algorithm along with the improving the query caching and query API. This has created a massive increaese in query performance which we will see later. :rocket:
 
 ### General Doc Updates
 

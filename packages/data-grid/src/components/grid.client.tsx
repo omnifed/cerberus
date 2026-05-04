@@ -2,7 +2,7 @@
 
 import {
   For,
-  IconButton,
+  IconButtonRoot,
   Show,
   Tooltip,
   useCerberusContext,
@@ -141,10 +141,10 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
           : column.original.header}
 
         <Show when={hasFilters()}>
-          <Tooltip content="Edit filters" openDelay={800} asChild>
-            <IconButton ariaLabel="Edit filters" size="sm" onClick={handleEditFilters}>
+          <Tooltip content="Edit filters" openDelay={800} portal>
+            <IconButtonRoot clipboard size="sm" onClick={handleEditFilters}>
               <EditFilterIcon />
-            </IconButton>
+            </IconButtonRoot>
           </Tooltip>
         </Show>
 
@@ -152,10 +152,9 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
           <Tooltip
             content={isSortedDesc() ? 'Sort Ascending' : 'Sort Decending'}
             openDelay={800}
-            asChild
+            portal
           >
-            <IconButton
-              ariaLabel="Toggle sorting"
+            <IconButtonRoot
               size="sm"
               opacity={{
                 base: 1,
@@ -168,7 +167,7 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
               <Show when={isSortedDesc()} fallback={<SortAscIcon />}>
                 <SortDescIcon />
               </Show>
-            </IconButton>
+            </IconButtonRoot>
           </Tooltip>
         </Show>
       </HStack>
