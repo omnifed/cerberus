@@ -1,6 +1,6 @@
-import { defineLayerStyles } from '@pandacss/dev'
+import { defineLayerStyles, type LayerStyles } from '@pandacss/dev'
 
-export const layerStyles = defineLayerStyles({
+export const layerStyles: LayerStyles = defineLayerStyles({
   // outline: some border color + color combination
   outline: {
     subtle: {
