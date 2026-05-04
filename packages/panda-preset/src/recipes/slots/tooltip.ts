@@ -59,5 +59,8 @@ export const tooltip: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
       ...focusStates,
     },
+    positioner: {
+      zIndex: 'tooltip!',
+    },
   },
 })
