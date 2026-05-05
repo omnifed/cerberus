@@ -64,7 +64,10 @@ export const conditions = {
   xlSize: '&:is([data-size=xl])',
 
   // elements
+  button: '& :where([data-scope=button])',
   icon: '& :where(svg)',
+  iconButton: '& :where([data-scope=icon-button])',
+  menuTrigger: '& :where([data-scope=menu][data-part=trigger])',
   notify: '&:is([data-notify=true])',
   startIcon: '&:is([data-start-icon=true])',
   tooltip: '&:is([data-tooltip=true])',
