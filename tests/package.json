@@ -7,7 +7,12 @@
     "lint:ts": "tsc --noEmit",
     "test": "bun test",
     "test:bench": "bun run ./signals/scheduler.bench.ts",
+    "test:bench:query": "bun run ./signals/query.bench.ts",
+    "test:bench:tanstack": "bun run ./signals/tanstack-compare.bench.ts",
     "test:ci": "bun test --coverage"
+  },
+  "dependencies": {
+    "@tanstack/query-core": "^5.100.1"
   },
   "devDependencies": {
     "@carbon/icons-react": "^11.79.0",
@@ -21,7 +26,7 @@
     "@cerberus/preset-elysium-theme": "workspace:*",
     "@cerberus/tokens": "workspace:*",
     "@happy-dom/global-registrator": "^20.9.0",
-    "@pandacss/types": "^1.10.0",
+    "@pandacss/types": "^1.11.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.1",
     "@testing-library/user-event": "^14.6.1",

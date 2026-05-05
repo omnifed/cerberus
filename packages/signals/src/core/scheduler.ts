@@ -1,20 +1,52 @@
-import type { Observer } from './types'
+import type { Accessor, Observer, Owner } from './types'
+
+// Observers
 
 export let activeObserver: Observer | null = null
-const observerStack: Observer[] = []
+export let activeOwner: Owner | null = null
 
-export function pushObserver(observer: Observer) {
-  if (activeObserver) observerStack.push(activeObserver)
+export function setActiveContext(observer: Observer | null, owner: Owner | null) {
   activeObserver = observer
+  activeOwner = owner
 }
 
-export function popObserver() {
-  activeObserver = observerStack.pop() || null
+export function schedule(observer: Observer): void {
+  const depth = observer.depth
+  if (!observerQueue[depth]) {
+    observerQueue[depth] = new Set()
+  }
+
+  observerQueue[depth].add(observer)
+  if (depth > maxDepth) maxDepth = depth
+
+  if (!isBatching && !isFlushing) flush()
 }
 
-// Batching State
+export function cleanNode(owner: Owner) {
+  if (owner.owned !== null) {
+    for (let i = 0; i < owner.owned.length; i++) {
+      const child = owner.owned[i]
+      cleanNode(child)
+      if ('cleanup' in child) (child as Observer).cleanup()
+    }
+    owner.owned = null
+  }
 
+  if (owner.cleanups !== null) {
+    for (let i = 0; i < owner.cleanups.length; i++) {
+      owner.cleanups[i]()
+    }
+    owner.cleanups = null
+  }
+}
+
+// Batching
+
+// Keep for backward compat if needed, but migrate internal usage
 export const batchedObservers: Set<Observer> = new Set<Observer>()
+
+const observerQueue: Set<Observer>[] = []
+let maxDepth = 0
 let isBatching: boolean = false
 let isFlushing: boolean = false
 
@@ -44,28 +76,57 @@ export function batch<T>(fn: () => T): void {
   }
 }
 
-export function schedule(observer: Observer): void {
-  batchedObservers.add(observer)
-  if (!isBatching && !isFlushing) flush()
+/**
+ * ## Register a Cleanup Function
+ * Registers a callback to be executed when the current computation is
+ * re-evaluated or explicitly destroyed.
+ */
+export function onCleanup(fn: () => void) {
+  if (activeOwner !== null) {
+    if (activeOwner.cleanups === null) activeOwner.cleanups = []
+    activeOwner.cleanups.push(fn)
+  }
 }
 
-function flush(): void {
-  if (isFlushing || batchedObservers.size === 0) return
+/**
+ * ## Untrack Signal Dependencies
+ * Executes a function without tracking any signals read within it.
+ * Useful for reading the latest value of a signal without triggering
+ * re-evaluations when that signal changes.
+ */
+export function untrack<T>(signal: Accessor<T>): T {
+  const prevObserver = activeObserver
+  setActiveContext(null, activeOwner) // Disable tracking, keep ownership
 
+  try {
+    return signal()
+  } finally {
+    setActiveContext(prevObserver, activeOwner)
+  }
+}
+
+// Private
+
+function flush(): void {
+  if (isFlushing) return
   isFlushing = true
 
   try {
-    while (batchedObservers.size > 0) {
-      const queue = Array.from(batchedObservers)
-      batchedObservers.clear()
-      // Sort ascending by depth. Closest to the root (Signal) runs first.
-      queue.sort((a, b) => a.depth - b.depth)
-
-      for (const observer of queue) {
-        observer.execute()
+    for (let i = 0; i <= maxDepth; i++) {
+      const bucket = observerQueue[i]
+      if (bucket && bucket.size > 0) {
+        for (const observer of bucket) {
+          bucket.delete(observer)
+          try {
+            observer.execute()
+          } catch (err) {
+            console.error('Cerberus Signals: Unhandled error in observer', err)
+          }
+        }
       }
     }
   } finally {
     isFlushing = false
+    maxDepth = 0
   }
 }

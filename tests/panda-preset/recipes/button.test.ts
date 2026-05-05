@@ -12,24 +12,31 @@ describe('button recipe', () => {
   test('should have a base style', () => {
     expect(button.base).toMatchObject({
       alignItems: 'center',
-      cursor: 'pointer',
+      appearance: 'none',
+      borderWidth: '1px',
+      borderColor: 'transparent',
+      cursor: 'button',
       display: 'inline-flex',
-      fontWeight: '600',
-      gap: '2',
+      gap: 'sm',
       justifyContent: 'center',
+      flexShrink: '0',
+      focusVisibleRing: 'outside',
+      fontWeight: '600',
+      isolation: 'isolate',
       lineHeight: '0',
-      minW: '2.85rem',
       outline: 'none',
+      position: 'relative',
       textDecoration: 'none',
-      transitionProperty: 'background-color, color',
-      transitionDuration: 'fast',
-      transitionTimingFunction: 'ease-in-out',
+      transitionProperty: 'common',
+      transitionDuration: 'moderate',
       userSelect: 'none',
+      verticalAlign: 'middle',
       whiteSpace: 'nowrap',
-      pxi: '4',
       _disabled: {
-        cursor: 'not-allowed',
-        opacity: '0.5',
+        layerStyle: 'disabled',
+      },
+      _icon: {
+        flexShrink: '0',
       },
     })
   })
@@ -157,22 +164,89 @@ describe('button recipe', () => {
     })
   })
 
+  test('should have a xs size variant', () => {
+    expect(button.variants?.size.xs).toMatchObject({
+      h: '6',
+      minW: '6',
+      fontSize: 'xs',
+      textStyle: 'button-sm',
+      px: '2',
+      gap: '1',
+      _icon: {
+        width: '3.5',
+        height: '3.5',
+      },
+    })
+  })
+
   test('should have a small size variant', () => {
     expect(button.variants?.size.sm).toMatchObject({
-      h: '2rem',
-      marginBlock: '0.375rem', // add a11y target size
-      pxi: '3',
+      h: '9',
+      minW: '9',
+      px: '3.5',
       textStyle: 'button-sm',
-      md: {
-        marginBlock: 'initial',
+      gap: '2',
+      _icon: {
+        width: '4',
+        height: '4',
       },
     })
   })
 
   test('should have a medium size variant', () => {
     expect(button.variants?.size.md).toMatchObject({
-      h: '2.75rem',
+      h: '10',
+      minW: '10',
       textStyle: 'button-md',
+      px: '4',
+      gap: '2',
+      _icon: {
+        width: '5',
+        height: '5',
+      },
+    })
+  })
+
+  test('should have a large size variant', () => {
+    expect(button.variants?.size.lg).toMatchObject({
+      h: '11',
+      minW: '11',
+      textStyle: 'button-md',
+      px: '5',
+      gap: '3',
+      _icon: {
+        width: '5',
+        height: '5',
+      },
+    })
+  })
+
+  test('should have a xl size variant', () => {
+    expect(button.variants?.size.xl).toMatchObject({
+      h: '12',
+      minW: '12',
+      textStyle: 'button-md',
+      px: '5',
+      gap: '2.5',
+      _icon: {
+        width: '5',
+        height: '5',
+      },
+    })
+  })
+
+  test('should have a 2xl size variant', () => {
+    expect(button.variants?.size['2xl']).toMatchObject({
+      h: '16',
+      minW: '16',
+      fontSize: 'lg',
+      textStyle: 'button-md',
+      px: '7',
+      gap: '3',
+      _icon: {
+        width: '6',
+        height: '6',
+      },
     })
   })
 
@@ -209,7 +283,7 @@ describe('button recipe', () => {
       palette: 'action',
       usage: 'filled',
       shape: 'sharp',
-      size: 'md',
+      size: 'lg',
     })
   })
 })

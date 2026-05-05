@@ -1,8 +1,9 @@
 import { BasicDemo } from './basic.demo'
-import { StoreDemo } from './store.demo'
 import { ReadDemo } from './read.demo'
 import { StateDemo } from './state.demo'
+import { StoreDemo } from './store.demo'
 import { UseDemo } from './use.demo'
+import { UseStoreDemo } from './useStore.demo'
 
 export const DEMOS = {
   basic: {
@@ -30,10 +31,20 @@ export const DEMOS = {
     preview: <UseDemo />,
     context: 'signals',
   },
+  useStore: {
+    id: 'signal.useStore',
+    preview: <UseStoreDemo />,
+    context: 'signals',
+  },
   updates: {
     id: 'signal.updates',
     context: 'signals',
   },
+  killer: {
+    id: 'signal.killer',
+    context: 'signals',
+  },
   hookMeta: `import { useSignal } from '@cerberus/signals'`,
+  storeMeta: `import { useStore } from '@cerberus/signals'`,
   meta: `import { createSignal } from '@cerberus/signals'`,
 }

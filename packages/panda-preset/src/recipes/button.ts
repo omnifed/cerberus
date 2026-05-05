@@ -4,7 +4,6 @@ import {
   type RecipeVariantRecord,
 } from '@pandacss/dev'
 import {
-  buttonBase,
   buttonCompoundVariants,
   buttonPalettes,
   filledUsage,
@@ -29,9 +28,33 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   description: 'WCAG Level AAA compliant button styles.',
 
   base: {
-    ...buttonBase,
-    minW: '2.85rem',
-    pxi: '4',
+    alignItems: 'center',
+    appearance: 'none',
+    borderWidth: '1px',
+    borderColor: 'transparent',
+    cursor: 'button',
+    display: 'inline-flex',
+    gap: 'sm',
+    justifyContent: 'center',
+    flexShrink: '0',
+    focusVisibleRing: 'outside',
+    fontWeight: '600',
+    isolation: 'isolate',
+    lineHeight: '0',
+    outline: 'none',
+    position: 'relative',
+    textDecoration: 'none',
+    transitionProperty: 'common',
+    transitionDuration: 'moderate',
+    userSelect: 'none',
+    verticalAlign: 'middle',
+    whiteSpace: 'nowrap',
+    _disabled: {
+      layerStyle: 'disabled',
+    },
+    _icon: {
+      flexShrink: '0',
+    },
   },
 
   variants: {
@@ -53,18 +76,73 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       },
     },
     size: {
-      sm: {
-        h: '2rem',
-        marginBlock: '0.375rem', // add a11y target size
-        pxi: '3',
+      xs: {
+        h: '6',
+        minW: '6',
+        fontSize: 'xs',
         textStyle: 'button-sm',
-        md: {
-          marginBlock: 'initial',
+        px: '2',
+        gap: '1',
+        _icon: {
+          width: '3.5',
+          height: '3.5',
+        },
+      },
+      sm: {
+        h: '9',
+        minW: '9',
+        px: '3.5',
+        textStyle: 'button-sm',
+        gap: '2',
+        _icon: {
+          width: '4',
+          height: '4',
         },
       },
       md: {
-        h: '2.75rem',
+        h: '10',
+        minW: '10',
         textStyle: 'button-md',
+        px: '4',
+        gap: '2',
+        _icon: {
+          width: '5',
+          height: '5',
+        },
+      },
+      lg: {
+        h: '11',
+        minW: '11',
+        textStyle: 'button-md',
+        px: '5',
+        gap: '3',
+        _icon: {
+          width: '5',
+          height: '5',
+        },
+      },
+      xl: {
+        h: '12',
+        minW: '12',
+        textStyle: 'button-md',
+        px: '5',
+        gap: '2.5',
+        _icon: {
+          width: '5',
+          height: '5',
+        },
+      },
+      '2xl': {
+        h: '16',
+        minW: '16',
+        fontSize: 'lg',
+        textStyle: 'button-md',
+        px: '7',
+        gap: '3',
+        _icon: {
+          width: '6',
+          height: '6',
+        },
       },
     },
   },
@@ -75,6 +153,6 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     palette: 'action',
     usage: 'filled',
     shape: 'sharp',
-    size: 'md',
+    size: 'lg',
   },
 })

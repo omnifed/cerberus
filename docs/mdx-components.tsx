@@ -14,7 +14,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h1
         className={cx(
           css({
-            my: 6,
+            my: 'lg',
             textStyle: 'heading-lg',
           }),
           headlineStyles,
@@ -26,7 +26,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h2
         className={cx(
           css({
-            my: 6,
+            my: 'lg',
             textStyle: 'heading-md',
           }),
           headlineStyles,
@@ -38,8 +38,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h3
         className={cx(
           css({
-            my: 6,
-            textStyle: 'heading-md',
+            my: 5,
+            textStyle: 'heading-sm',
             '& :is(a > code)': {
               backgroundColor: 'var(--shiki-background)',
               borderRadius: '4px',
@@ -58,8 +58,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h4
         className={cx(
           css({
-            my: 6,
-            textStyle: 'heading-md',
+            my: 5,
+            textStyle: 'heading-sm',
           }),
           headlineStyles,
         )}
@@ -70,7 +70,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h5
         className={cx(
           css({
-            my: 6,
+            my: 'md',
             textStyle: 'heading-sm',
           }),
           headlineStyles,
@@ -82,7 +82,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h6
         className={cx(
           css({
-            my: 6,
+            my: 'md',
             textStyle: 'heading-xs',
           }),
           headlineStyles,
@@ -95,7 +95,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className={css({
           color: 'page.text.100',
           lineHeight: '165%',
-          pb: '6',
+          pb: 'lg',
           textStyle: 'body-md',
           textWrap: 'pretty',
           '& > code:not(.code)': {

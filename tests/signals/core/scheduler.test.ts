@@ -1,5 +1,12 @@
 import { describe, test, expect } from 'bun:test'
-import { createSignal, createComputed, createEffect, batch } from '@cerberus-design/signals'
+import {
+  createSignal,
+  createComputed,
+  createEffect,
+  batch,
+  onCleanup,
+  untrack,
+} from '@cerberus-design/signals'
 
 describe('Graph Execution & Topological Sorting', () => {
   test('resolves the Diamond Problem (no glitches or redundant executions)', () => {
@@ -151,5 +158,152 @@ describe('Graph Execution & Topological Sorting', () => {
     // Execution ripples perfectly down the depths
     expect(finalValue).toBe(4)
     expect(effectExecutions).toBe(2)
+  })
+})
+
+describe('untrack API', () => {
+  test('reads signal value without subscribing to updates', () => {
+    const [getTracked, setTracked] = createSignal(1)
+    const [getUntracked, setUntracked] = createSignal(10)
+
+    let effectRuns = 0
+    let latestTracked = 0
+    let latestUntracked = 0
+
+    createEffect(() => {
+      effectRuns++
+      latestTracked = getTracked()
+      latestUntracked = untrack(() => getUntracked())
+    })
+
+    // Initial mount assertions
+    expect(effectRuns).toBe(1)
+    expect(latestTracked).toBe(1)
+    expect(latestUntracked).toBe(10)
+
+    // Update the UNTRACKED signal
+    setUntracked(20)
+
+    // The effect should NOT run because it did not subscribe to getUntracked
+    expect(effectRuns).toBe(1)
+    expect(latestUntracked).toBe(10) // State remains stale in the effect closure
+
+    // Update the TRACKED signal
+    setTracked(2)
+
+    // The effect should run, and it should pick up the new untracked value
+    expect(effectRuns).toBe(2)
+    expect(latestTracked).toBe(2)
+    expect(latestUntracked).toBe(20)
+  })
+
+  test('can be nested inside computeds', () => {
+    const [getA, setA] = createSignal('A')
+    const [getB, setB] = createSignal('B')
+
+    let computedRuns = 0
+
+    const getDerived = createComputed(() => {
+      computedRuns++
+      return `${getA()} + ${untrack(() => getB())}`
+    })
+
+    // Computeds are lazy, so we must read it to initialize
+    expect(getDerived()).toBe('A + B')
+    expect(computedRuns).toBe(1)
+
+    // Updating B should not invalidate the computed
+    setB('B-updated')
+    expect(getDerived()).toBe('A + B') // Stale, because it wasn't re-evaluated
+    expect(computedRuns).toBe(1)
+
+    // Updating A should trigger a re-evaluation and grab the latest B
+    setA('A-updated')
+    expect(getDerived()).toBe('A-updated + B-updated')
+    expect(computedRuns).toBe(2)
+  })
+})
+
+describe('onCleanup API', () => {
+  test('executes cleanup closure strictly before re-evaluation', () => {
+    const [getCount, setCount] = createSignal(0)
+
+    let cleanupRuns = 0
+    let effectRuns = 0
+
+    createEffect(() => {
+      effectRuns++
+      getCount() // Register dependency
+
+      onCleanup(() => {
+        cleanupRuns++
+      })
+    })
+
+    // Mount
+    expect(effectRuns).toBe(1)
+    expect(cleanupRuns).toBe(0) // Has not cleaned up yet
+
+    // First mutation
+    setCount(1)
+    expect(effectRuns).toBe(2)
+    expect(cleanupRuns).toBe(1) // Cleaned up the first run prior to evaluating the second
+
+    // Second mutation
+    setCount(2)
+    expect(effectRuns).toBe(3)
+    expect(cleanupRuns).toBe(2) // Cleaned up the second run prior to evaluating the third
+  })
+
+  test('executes cleanup closure on explicit disposal', () => {
+    let cleanupRuns = 0
+
+    const dispose = createEffect(() => {
+      onCleanup(() => {
+        cleanupRuns++
+      })
+    })
+
+    expect(cleanupRuns).toBe(0)
+
+    // Manually teardown the effect
+    dispose()
+    expect(cleanupRuns).toBe(1)
+
+    // Calling dispose again should be a no-op (memory safety check)
+    dispose()
+    expect(cleanupRuns).toBe(1)
+  })
+
+  test('handles multiple onCleanup calls in the same context', () => {
+    const [getTrigger, setTrigger] = createSignal(false)
+    const executionOrder: string[] = []
+
+    createEffect(() => {
+      getTrigger()
+
+      onCleanup(() => executionOrder.push('cleanup-1'))
+      onCleanup(() => executionOrder.push('cleanup-2'))
+    })
+
+    expect(executionOrder.length).toBe(0)
+
+    setTrigger(true)
+
+    // Both cleanups should fire in the order they were registered
+    expect(executionOrder).toEqual(['cleanup-1', 'cleanup-2'])
+  })
+
+  test('safely ignores onCleanup when called outside an active owner context', () => {
+    let didRun = false
+
+    // Calling outside of createEffect or createComputed
+    onCleanup(() => {
+      didRun = true
+    })
+
+    // It should not throw, but it also shouldn't have an owner to attach to.
+    // If it didn't throw, the test passes.
+    expect(didRun).toBe(false)
   })
 })

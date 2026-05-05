@@ -1,19 +1,52 @@
 'use client'
 
-import { HStack } from '@/styled-system/jsx'
-import { Button } from '@cerberus-design/react'
+import { HStack, Stack } from '@/styled-system/jsx'
+import { Button, Text } from '@cerberus-design/react'
 import { ReactiveText, useSignal } from '@cerberus-design/signals'
+import { createRenderStore } from '../render-store'
+import { useEffect } from 'react'
+
+const store = createRenderStore()
 
 export function BasicDemo() {
-  const [count, setCount, getCount] = useSignal<number>(0)
+  const [local, setLocal] = useSignal<string>('hello')
+
+  useEffect(() => {
+    return () => store.onUnmount()
+  }, [])
+
+  store.trackRenders()
 
   return (
-    <HStack gap="md">
-      <Button onClick={() => setCount(getCount() + 1)}>Increment</Button>
-      <p>{count}</p>
+    <HStack justify="space-between" w="1/2">
+      <Stack>
+        <Button size="sm" onClick={() => store.setCount((prev) => prev + 1)}>
+          Increment
+        </Button>
+        <Button
+          size="sm"
+          onClick={() =>
+            setLocal((prev) => {
+              return prev === 'hello' ? 'world' : 'hello'
+            })
+          }
+        >
+          Set Local
+        </Button>
+      </Stack>
 
-      {/* Not re-rendered - but the text value is updated */}
-      <ReactiveText data={getCount} />
+      <Stack userSelect="none">
+        <Text>Local: {local}</Text>
+
+        <Text>
+          {/* Not re-rendered - only the html text value is updated */}
+          Count: <ReactiveText data={store.count} />
+        </Text>
+
+        <Text>
+          Renders: <ReactiveText data={store.renderCount} />
+        </Text>
+      </Stack>
     </HStack>
   )
 }

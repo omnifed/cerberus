@@ -1,188 +1,282 @@
-# Cerberus React Signals
+# ⚡️ Cerberus Signals
 
-**True fine-grained reactivity for React. The Developer Experience of SolidJS, built on standard React primitives.**
+An enterprise-grade, $O(1)$ signal-based state and data-fetching engine.
 
-> [View the official docs for Cerberus Signals](https://cerberus.digitalu.design/docs/signals/overview)
+Designed from the ground up to bypass the heavy abstraction costs of traditional state managers, Cerberus delivers industry-leading performance by utilizing flat Map lookups, direct signal memory pointers, and an automated Garbage Collection system. It is fully memory-safe for React 19 Strict Mode while remaining 100% framework-agnostic at its core.
 
-`@cerberus/signals` is a high-performance, zero-dependency state management and data-fetching engine. It completely eliminates dependency arrays, avoids the "Context re-render cascade," and brings $O(1)$ component targeting to your React applications safely via `useSyncExternalStore`.
+This README is a high-level summary of the API. To view the full API [view the official Docs](https://cerberus.digitalu.design/docs/signals/overview).
 
-## ✨ Why this library?
+## Why Cerberus Signals?
 
-- **Zero Dependency Arrays:** No more `useMemo`, `useCallback`, or `useEffect` tracking bugs. The reactive graph handles topological sorting automatically.
-- **$O(1)$ Component Targeting:** State updates bypass the parent-to-child Virtual DOM cascade. Only the exact components that read the signal re-render.
-- **First-Class Async & Caching:** Built-in `createQuery` and `createMutation` with automatic deduplication, React `<Suspense>` support, and declarative cache invalidation.
-- **SSR Safe:** Factory-pattern domain stores guarantee memory safety in Next.js and Remix.
-- **No Monkey-Patching:** 100% compliant with React Concurrent Mode. We don't hijack `JSX.createElement`.
+### vs. React State (`useState` + `useEffect`)
+
+Fetching data natively in React requires boilerplate. You have to manually track `isLoading`, `data`, and `error` states. More importantly, React state is bound to the component lifecycle. If two components need the same data, you either fetch it twice (causing network waterfalls) or you lift the state up and drill it down (causing unnecessary re-renders). Cerberus lifts your data out of the component lifecycle entirely. It fetches once, caches globally, and granularly updates only the components that need it using fine-grained signals.
+
+### vs. Tanstack Query
+
+Tanstack Query is the industry standard, but it carries a heavy architectural cost. Under the hood, it relies on deeply nested class instances (`QueryClient`, `QueryCache`, `Query`, `QueryObserver`), React Context for client injection, and fuzzy-matching event emitters for invalidations.
+
+Cerberus takes a completely different path: **The Global Factory Pattern**.
+
+- **Zero Context:** No `<QueryClientProvider>` required.
+- **Zero Allocations:** We use flat, $O(1)$ V8-optimized `Map` lookups. Rendering 10,000 components querying the same data incurs zero `useEffect` or `useRef` allocations.
+- **Instant Invalidations:** We bypass fuzzy-matching loops. Invalidations are resolved via direct memory pointers in a fraction of a microsecond.
+- **Native AI Streaming:** We natively support `AsyncGenerators` (`yield`), pushing chunks directly to the UI while cleanly bypassing React Suspense mid-stream.
 
 ---
 
-## 📦 Installation
+## Table of Contents
+
+1. [Installation](#1-installation)
+2. [Primitives (Framework Agnostic)](#2-primitives-framework-agnostic)
+3. [React Hooks](#3-react-hooks)
+4. [Components & Architecture](#4-components--architecture)
+5. [Benchmarks](#5-benchmarks)
+
+---
+
+## 1. Installation
 
 ```bash
 pnpm install @cerberus-design/signals
-
 ```
-
-_(Note: React 18+ is required as a peer dependency)._
 
 ---
 
-## 🧠 Core Concepts: The Reactive Triad
+## 2. Primitives (Framework Agnostic)
 
-Our pure JavaScript core (`@cerberus/signals/core`) is built on three primitives. They can be used anywhere—inside React, Vanilla JS, or Node.js workers.
+The core power of Cerberus is that the data engine has zero dependencies on React. Our primitives export standard JavaScript functions that can be used in **any scope**: web workers, Node.js servers, Next.js/Remix router loaders, or vanilla JS utilities.
 
-### 1. `createSignal` (State)
+### `createSignal`
 
-The foundation. It returns a familiar `[getter, setter]` tuple.
+Use globally in any scope (stores, scripts, server, client, whatever).
 
 ```typescript
-import { createSignal } from '@cerberus/signals'
+import { createSignal } from '@cerberus-design/signals'
 
-const [getCount, setCount] = createSignal(0)
-setCount(getCount() + 1)
+// A global signal
+export const [one, setOne] = createSignal<number>(1)
+
+// Or with stores
+export function createUserStore() {
+  const [firstName, setFirstName] = createSignal('')
+  const [lastName, setLastName] = createSignal('')
+  const [somethingElse, setSomethingElse] = createSignal('')
+
+  const fullName = createComputed(() => `${firstName()} ${lastName()}`)
+
+  return {
+    firstName,
+    lastName,
+    fullName,
+
+    setUser: (user: User) => {
+      batch(() => {
+        setFirstName(user.first)
+        setLastName(user.last)
+      })
+    },
+  }
+}
 ```
 
-> **⚠️ Important Rule:** Always use **immutable updates** for objects and arrays. `setUsers([...getUsers(), newUser])`. The graph uses strict equality (`!==`) to detect changes.
+### `createComputed`
 
-### 2. `createComputed` (Derived State)
-
-Lazily evaluates and caches derived data. It only re-runs if its underlying signals change _and_ it is actively being read.
+Create computations of other signals with ease.
 
 ```typescript
-import { createComputed } from '@cerberus/signals'
+import { createSignal, createComputed } from '@cerberus-design/signals'
 
-const getDouble = createComputed(() => getCount() * 2)
+const [firstName, setFirstName] = createSignal('')
+const [lastName, setLastName] = createSignal('')
+
+export const fullName = createComputed(() => `${firstName()} ${lastName()}`)
 ```
 
-### 3. `createEffect` (Side Effects)
+### `createEffect`
 
-Automatically tracks any signals read inside it and re-runs synchronously when they change.
+Do things when signals change.
 
 ```typescript
-import { createEffect } from '@cerberus/signals'
+import { createEffect } from '@cerberus-design/signals'
+
+const [firstName, setFirstName] = createSignal('')
+const [lastName, setLastName] = createSignal('')
+
+export const fullName = createComputed(() => `${firstName()} ${lastName()}`)
 
 createEffect(() => {
-  console.log(`The count is now: ${getCount()}`)
+  if (fullName) {
+    trackUser(fullName)
+  }
 })
 ```
 
----
+### `createQuery` (The Global Factory)
 
-## ⚛️ React Integration
-
-Import from `@cerberus/signals/react` to safely bridge the reactive graph into your component tree.
-
-### Local State (`useSignal` & `useRead`)
-
-Replace `useState` with `useSignal` to avoid stale closures, and use `useRead` to subscribe to external signals.
-
-```tsx
-import { useSignal, useRead } from '@cerberus/signals/react'
-import { getGlobalTheme } from '../store'
-
-export function Counter() {
-  const [count, setCount, getCount] = useSignal(0) // Local state
-  const theme = useRead(getGlobalTheme) // Global state
-
-  return <button onClick={() => setCount((c) => c + 1)}>Clicks: {count}</button>
-}
-```
-
-### Micro-Optimizations (`<ReactiveText>`)
-
-For high-frequency updates (e.g., typing, canvas coordinates), bypass the component's VDOM diff entirely:
-
-```tsx
-import { ReactiveText } from '@cerberus/signals/react'
-
-// The parent component will NEVER re-render when getMouseX updates!
-;<p>
-  X-Coord: <ReactiveText data={getMouseX} />
-</p>
-```
-
----
-
-## 🌍 Global State & SSR
-
-Define your domain logic in pure TypeScript files, then use our factory pattern to inject them safely for Next.js/Remix Server-Side Rendering.
-
-**1. Create the Store Blueprint:**
+You define your queries globally. This returns a "Query Accessor" factory.
 
 ```typescript
-// store.ts
-import { createSignal, createComputed } from '@cerberus/signals'
-import { createStoreContext } from '@cerberus/signals/react'
+import { createQuery } from '@cerberus-design/signals'
 
-export function createAuthStore() {
-  const [getUser, setUser] = createSignal<{ name: string } | null>(null)
-  const isAuthenticated = createComputed(() => getUser() !== null)
-
-  return { user: getUser, isAuthenticated, setUser }
-}
-
-export const { StoreProvider, useStore } =
-  createStoreContext<ReturnType<typeof createAuthStore>>()
+// Define the factory outside of any component
+export const getUser = createQuery(
+  async (id: string) => {
+    const res = await fetch(`/api/users/${id}`)
+    return res.json()
+  },
+  'user-query', // The base cache key
+)
 ```
 
-**2. Inject and Consume in React:**
+**Using it outside of React:**
+When you invoke the factory, it returns an accessor. Calling the accessor gives you the raw `QueryState`.
 
-```tsx
-// App.tsx
-;<StoreProvider createStore={createAuthStore}>
-  <Navbar />
-</StoreProvider>
+```typescript
+// Inside a Vanilla JS function, Web Worker, or Router Loader
+async function preloadUser(userId: string) {
+  // 1. Invoke the factory to get the accessor
+  const userAccessor = getUser(userId)
 
-// Navbar.tsx
-const auth = useStore() // 100% typed!
-const isAuth = useRead(auth.isAuthenticated)
-```
+  // 2. Read the raw signal state
+  const state = userAccessor()
 
----
+  if (state.status === 'success') {
+    return state.data
+  }
 
-## 📡 Async State & Caching
-
-Stop writing `useEffect` for data fetching. Our library natively supports reactive querying, automatic deduplication, and declarative mutations.
-
-### `createQuery`
-
-Provide a reactive argument function and a fetcher. It automatically integrates with React `<Suspense>`.
-
-```tsx
-import { createSignal } from '@cerberus/signals'
-import { createQuery } from '@cerberus/signals/core'
-import { useQuery } from '@cerberus/signals/react'
-
-const [getUserId] = createSignal(1)
-
-// Automatically re-fetches when getUserId() changes!
-export const userQuery = createQuery(getUserId, async (id) => {
-  return await fetch(`/api/users/${id}`).then((res) => res.json())
-})
-
-export function Profile() {
-  const user = useQuery(userQuery) // Suspends while pending!
-  return <h1>{user.name}</h1>
+  if (state.status === 'pending' && state.promise) {
+    // Await the fetch imperatively
+    return await state.promise
+  }
 }
 ```
 
 ### `createMutation`
 
-Mutate data and declaratively invalidate cache keys using the dynamic `.key` property on your queries.
+Mutations define how you change data on the server. They integrate deeply with our cache primitives to provide flawless Optimistic UI updates.
 
 ```typescript
-import { createMutation } from '@cerberus/signals/core'
+import { createMutation, setQueryData, invalidateQuery } from '@cerberus-design/signals'
+import { getUser } from './queries'
 
 export const updateUser = createMutation(
-  async (name: string) =>
-    fetch(`/api/users/${getUserId()}`, { method: 'POST', body: name }),
+  (payload: { id: string; name: string }) => api.updateUser(payload),
   {
-    // Evaluates exactly when the mutation succeeds, clearing the exact cache entry!
-    invalidate: () => [userQuery.key],
+    // 1. Optimistic Update: Fires instantly before the network request finishes
+    onMutate: (vars) => {
+      // Use the factory's .key() method for deterministic cache targeting
+      setQueryData(getUser.key(vars.id), (prev) => {
+        if (!prev) return prev
+        return { ...prev, name: vars.name }
+      })
+    },
+    // 2. Invalidation: Fires after the network request finishes
+    invalidate: (data, vars) => [getUser.key(vars.id)],
   },
 )
 ```
 
+### Cache Management Primitives
+
+- `setQueryData(key, updater)`: Mutate the cache synchronously. Executes in ~128ns.
+- `invalidateQuery(key)`: Marks the data as stale and triggers a background refetch (Stale-While-Revalidate).
+- `invalidateAllQueries()`: Sweeps the entire engine.
+
 ---
 
-_Copyright (c) 2024 Digital University, All Rights Reserved_
+## 3. React Hooks
+
+When you bring Cerberus into React, our hooks wire the framework-agnostic signals directly into React 19's `useSyncExternalStore` and Suspense lifecycles.
+
+### `useQuery`
+
+Consumes a query accessor. It automatically handles React Suspense, Error Boundaries, and background Garbage Collection.
+
+```tsx
+import { useQuery } from '@cerberus-design/signals'
+import { getUser } from '../queries'
+
+export function UserProfile({ id }: { id: string }) {
+  // 1. If data is missing, this throws a Promise to <Suspense>
+  // 2. If data is present (even if stale), it bypasses Suspense (SWR)
+  const user = useQuery(getUser(id))
+
+  return <h1>{user.name}</h1>
+}
+```
+
+### `useMutation`
+
+Wires your mutation factory to the UI, providing execution triggers and loading states.
+
+```tsx
+import { useMutation } from '@cerberus-design/signals'
+import { updateUser } from '../mutations'
+
+export function UpdateForm({ id }: { id: string }) {
+  const { mutate, status } = useMutation(updateUser)
+
+  return (
+    <button onClick={() => mutate({ id, name: 'New Name' })}>
+      {status === 'pending' ? 'Saving...' : 'Save'}
+    </button>
+  )
+}
+```
+
+---
+
+## 4. Components & Architecture
+
+### React Suspense Integration
+
+Cerberus is built natively for React Suspense. You do not need `if (isLoading)` checks in your components. Simply wrap your UI in a `<Suspense>` boundary.
+
+```tsx
+import { Suspense } from 'react'
+
+export function App() {
+  return (
+    <Suspense fallback={<div className="spinner" />}>
+      <UserProfile id="user-1" />
+    </Suspense>
+  )
+}
+```
+
+### AI Streaming (Async Generators)
+
+Cerberus natively supports the `yield` keyword for LLM streaming. Our engine uses a "First-Chunk Promise" architecture: it suspends React while waiting for the network, but wakes React up the exact millisecond the first chunk of data yields, streaming the rest of the response to the UI without blocking the main thread.
+
+```tsx
+export const getChatStream = createQuery(async function* (prompt: string) {
+  const response = await fetch('/api/chat', { method: 'POST', body: prompt })
+  const reader = response.body?.getReader()
+  const decoder = new TextDecoder()
+
+  let fullText = ''
+  while (true) {
+    const { done, value } = await reader!.read()
+    if (done) break
+
+    fullText += decoder.decode(value)
+    yield fullText // Automatically updates the UI!
+  }
+}, 'chat-stream')
+```
+
+---
+
+## 5. Benchmarks
+
+Cerberus is designed to be the fastest data layer in the JavaScript ecosystem. Benchmarks were run directly against `@tanstack/query-core` (v5) on an Apple M3 Pro using `mitata`.
+
+| Operation                            | Tanstack Query Core | Cerberus Signals | Performance Gain              |
+| :----------------------------------- | :------------------ | :--------------- | :---------------------------- |
+| **Cache Retrieval (10k concurrent)** | 3.08 ms             | **1.54 ms**      | **2x Faster** (50% less time) |
+| **Retrieval Memory Overhead**        | ~58.37 kb           | **~6.32 kb**     | **~89% Less Memory**          |
+| **Cache Invalidation Sweep**         | 485.13 ns           | **108.83 ns**    | **~4.4x Faster**              |
+| **Optimistic UI (setQueryData)**     | -                   | **128.15 ns**    | _Instantaneous_               |
+
+_Note: Cerberus achieves these metrics by eliminating class instantiations, fuzzy-matching loops, and React hook dependencies during active renders, heavily reducing Garbage Collection pauses during complex application states._

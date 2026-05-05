@@ -1,15 +1,31 @@
-import { createEffect } from './createEffect'
 import { createSignal } from './createSignal'
-import {
-  getQueryVersionSignal,
-  globalQueryCache,
-  QueryState,
-} from './query-cache'
+import { getQueryVersionSignal, globalQueryCache, type QueryState } from './query-cache'
+import { untrack } from './scheduler'
 import type { Accessor, SignalTuple } from './types'
 
-export type QueryAccessor<T, Args> = Accessor<QueryState<T>> & {
+export type ExtractQueryData<TReturn> =
+  TReturn extends Promise<infer U>
+    ? U
+    : TReturn extends AsyncGenerator<infer U, void, unknown>
+      ? U
+      : never
+
+export type FetcherContext<T> = {
+  update: (updater: (prev: T | undefined) => T) => void
+}
+
+export interface QueryOptions<T> {
+  initialData?: T
+}
+
+export type QueryAccessor<T> = ((options?: QueryOptions<T>) => QueryState<T>) & {
   readonly key: string
-  readonly currentArgs: Args
+}
+
+export interface QueryFactory<Args, TReturn> {
+  (argsOrAccessor: Args | Accessor<Args>): QueryAccessor<ExtractQueryData<TReturn>>
+  key: (args: Args) => string
+  fetcher: (args: Args) => TReturn
 }
 
 /**
@@ -51,103 +67,248 @@ export type QueryAccessor<T, Args> = Accessor<QueryState<T>> & {
  * - [Cerberus Signals Docs](https://cerberus.digitalu.design/docs/signals/overview)
  * - [useQuery hook](https://cerberus.digitalu.design/docs/signals/use-query)
  */
-export function createQuery<T, Args>(
-  argsAccessor: Accessor<Args | null | undefined>,
-  fetcher: (args: Args) => Promise<T>,
-): QueryAccessor<T, Args> {
-  const [getActiveState, setActiveState] = createSignal<QueryState<T>>({
+export function createQuery<
+  Args,
+  TReturn extends Promise<any> | AsyncGenerator<any, void, unknown>,
+>(
+  fetcher: (args: Args, context: FetcherContext<ExtractQueryData<TReturn>>) => TReturn,
+  baseKey: string,
+): QueryFactory<Args, TReturn> {
+  type T = ExtractQueryData<TReturn>
+
+  const queryInvoker = (argsOrAccessor: Args | Accessor<Args>): QueryAccessor<T> => {
+    const queryAccessor = (options?: QueryOptions<T>) => {
+      const isReactive = typeof argsOrAccessor === 'function'
+      const args = isReactive ? (argsOrAccessor as Accessor<Args>)() : argsOrAccessor
+      const hash = hashArgs([baseKey, args])
+
+      // Subscribe to invalidations. Any tracking context (like useRead) reading
+      // this will auto-subscribe.
+      const [getVersion] = getQueryVersionSignal(hash)
+      getVersion()
+
+      // UNTRACK the check and initialization so we don't cause infinite React rendering loops
+      untrack(() => {
+        if (!globalQueryCache.has(hash)) {
+          // Pass the hydration options to the cache initializer
+          initializeCacheNode(hash, args, fetcher, options)
+        } else {
+          const [getCache] = globalQueryCache.get(hash)!
+          const state = getCache()
+          // Trigger background fetch if invalidated
+          if (state.status === 'error' || state.isInvalidated) {
+            executeFetch(hash, args, fetcher)
+          }
+        }
+      })
+
+      // Read and return the actual data OUTSIDE untrack, so useRead subscribes to it
+      const [getCache] = globalQueryCache.get(hash)!
+      return getCache()
+    }
+
+    Object.defineProperty(queryAccessor, 'key', {
+      get: () => {
+        const isReactive = typeof argsOrAccessor === 'function'
+        const args = isReactive ? (argsOrAccessor as Accessor<Args>)() : argsOrAccessor
+        return hashArgs([baseKey, args])
+      },
+      enumerable: true,
+    })
+
+    return queryAccessor as QueryAccessor<T>
+  }
+
+  queryInvoker.key = (args: Args) => hashArgs([baseKey, args])
+  queryInvoker.fetcher = (args: Args) => fetcher(args, { update: () => {} })
+
+  return queryInvoker
+}
+
+function initializeCacheNode<T, Args>(
+  hashKey: string,
+  args: Args,
+  fetcher: (
+    args: Args,
+    ctx: FetcherContext<T>,
+  ) => Promise<T> | AsyncGenerator<T, void, unknown>,
+  options?: QueryOptions<T>,
+) {
+  if (options !== undefined && 'initialData' in options) {
+    const initialState: QueryState<T> = {
+      status: 'success',
+      data: options.initialData,
+      error: undefined,
+      promise: null,
+      isInvalidated: false,
+      version: 1, // Protect against immediate race conditions
+    }
+    const cacheSignal = createSignal(initialState)
+    globalQueryCache.set(
+      hashKey,
+      cacheSignal as unknown as SignalTuple<QueryState<unknown>>,
+    )
+    return
+  }
+
+  const initialState: QueryState<T> = {
     status: 'pending',
     data: undefined,
     error: undefined,
     promise: null,
-  })
+    isInvalidated: false,
+    version: 0,
+  }
+  const cacheSignal = createSignal(initialState)
+  globalQueryCache.set(
+    hashKey,
+    cacheSignal as unknown as SignalTuple<QueryState<unknown>>,
+  )
+  executeFetch(hashKey, args, fetcher)
+}
 
-  createEffect(() => {
-    const args = argsAccessor()
-    const cacheKey = hashArgs(args)
+function executeFetch<T, Args>(
+  hashKey: string,
+  args: Args,
+  fetcher: (
+    args: Args,
+    ctx: FetcherContext<T>,
+  ) => Promise<T> | AsyncGenerator<T, void, unknown>,
+) {
+  const [getCache, setCache] = globalQueryCache.get(hashKey)! as SignalTuple<
+    QueryState<T>
+  >
 
-    if (!args || !cacheKey) return
+  const startingVersion = getCache().version || 0
+  const isStale = () => (getCache().version || 0) !== startingVersion
 
-    // We must read the version signal here to register this effect
-    // as a subscriber. When `invalidateQuery` increments this version,
-    // this entire effect will re-run, see the cache is gone, and fetch anew.
-    const [getVersion] = getQueryVersionSignal(cacheKey)
-    getVersion()
+  try {
+    const result = fetcher(args, {
+      update: (updater) => {
+        if (isStale()) return
+        setCache((prev) => ({ ...prev, status: 'streaming', data: updater(prev.data) }))
+      },
+    })
 
-    if (!globalQueryCache.has(cacheKey)) {
-      const initialState: QueryState<T> = {
-        status: 'pending',
-        data: undefined,
-        error: undefined,
-        promise: null,
-      }
+    // --- STREAMING LOGIC ---
+    if (result != null && typeof (result as any)[Symbol.asyncIterator] === 'function') {
+      const asyncIterable = result as AsyncGenerator<T, void, unknown>
+      const iterator = asyncIterable[Symbol.asyncIterator]()
 
-      const cacheSignal = createSignal(initialState)
-      globalQueryCache.set(
-        cacheKey,
-        cacheSignal as unknown as SignalTuple<QueryState<unknown>>,
-      )
+      const firstChunkPromise = iterator
+        .next()
+        .then((firstResult) => {
+          if (isStale()) return getCache().data as T // ABORT if mutated!
 
-      const [, setCache] = cacheSignal
+          if (firstResult.done) {
+            setCache((prev) => ({ ...prev, status: 'success', promise: null }))
+            return firstResult.value as T
+          }
 
-      const promise = fetcher(args)
-        .then((data) => {
-          setCache({ status: 'success', data, error: undefined, promise: null })
-          return data
+          setCache((prev) => ({
+            ...prev,
+            status: 'streaming',
+            data: firstResult.value,
+            error: undefined,
+            promise: null,
+          }))
+
+          ;(async () => {
+            try {
+              let next = await iterator.next()
+              while (!next.done) {
+                if (isStale()) return // ABORT mid-stream if mutated
+                setCache((prev) => ({
+                  ...prev,
+                  status: 'streaming',
+                  data: next.value as T,
+                  error: undefined,
+                  promise: null,
+                }))
+                next = await iterator.next()
+              }
+              if (!isStale()) setCache((prev) => ({ ...prev, status: 'success' }))
+            } catch (error) {
+              if (!isStale())
+                setCache((prev) => ({ ...prev, status: 'error', error, promise: null }))
+            }
+          })()
+
+          return firstResult.value as T
         })
         .catch((error) => {
-          setCache({ status: 'error', data: undefined, error, promise: null })
+          if (!isStale())
+            setCache((prev) => ({ ...prev, status: 'error', error, promise: null }))
           throw error
         })
 
-      setCache({ ...initialState, promise })
+      setCache((prev) => ({ ...prev, status: 'pending', promise: firstChunkPromise }))
+      return
     }
 
-    const [getCache] = globalQueryCache.get(cacheKey)! as SignalTuple<
-      QueryState<T>
-    >
+    if (result instanceof Promise) {
+      const promise = result
+        .then((data) => {
+          if (isStale()) return getCache().data as T
+          setCache((prev) => ({
+            ...prev,
+            status: 'success',
+            data,
+            error: undefined,
+            promise: null,
+          }))
+          return data
+        })
+        .catch((error) => {
+          if (isStale()) return
+          setCache((prev) => ({
+            ...prev,
+            status: 'error',
+            data: undefined,
+            error,
+            promise: null,
+          }))
+          throw error
+        })
 
-    // We run an inner effect to continuously sync the active state.
-    createEffect(() => {
-      setActiveState(getCache())
-    })
-  })
-
-  const queryAccessor = getActiveState as QueryAccessor<T, Args>
-
-  Object.defineProperties(queryAccessor, {
-    key: {
-      get: () => hashArgs(argsAccessor()),
-      enumerable: true,
-    },
-    currentArgs: {
-      get: () => argsAccessor(),
-      enumerable: true,
-    },
-  })
-
-  return queryAccessor
+      setCache((prev) => ({
+        ...prev,
+        status: 'pending',
+        promise: promise as Promise<T>,
+        isInvalidated: false,
+      }))
+    }
+  } catch (error) {
+    if (!isStale())
+      setCache((prev) => ({
+        ...prev,
+        status: 'error',
+        data: undefined,
+        error,
+        promise: null,
+        isInvalidated: false,
+      }))
+  }
 }
 
 export function hashArgs(args: unknown): string {
   if (args === null || args === undefined) return ''
-
+  if (typeof args !== 'object') return String(args)
   if (Array.isArray(args)) {
-    return JSON.stringify(args)
+    let res = '['
+    for (let i = 0; i < args.length; i++) res += (i > 0 ? ',' : '') + hashArgs(args[i])
+    return res + ']'
   }
-
-  if (typeof args === 'object') {
-    const sortedObj: Record<string, unknown> = {}
-    const safeArgs = args as Record<string, unknown>
-
-    Object.keys(safeArgs)
-      .sort()
-      .forEach((key) => {
-        sortedObj[key] = safeArgs[key]
-      })
-
-    return JSON.stringify(sortedObj)
+  const keys = Object.keys(args as Record<string, unknown>).sort()
+  let res = '{'
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i]
+    res +=
+      (i > 0 ? ',' : '') +
+      '"' +
+      key +
+      '":' +
+      hashArgs((args as Record<string, unknown>)[key])
   }
-
-  return String(args)
+  return res + '}'
 }

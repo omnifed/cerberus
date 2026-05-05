@@ -12,19 +12,27 @@ import { DEMOS } from '../components/fetching/static'
 ## Introduction
 
 Fetching data from a remote API or database is a core task for most applications.
-Cerberus Signals provide foundational tools like the [`createQuery`](/docs/signals/create-query)
-primitive and [`createMutation`](/docs/signals/create-mutation) to manage
-asynchronous data.
+Cerberus Signals provide foundational primitives like [`createQuery`](/docs/signals/create-query)
+and [`createMutation`](/docs/signals/create-mutation) to manage asynchronous data.
 
-Fetching data with signals will **automatically cache** the response until it is
-invalidated through a **mutation**.
+Cerberus Signals data fetching APIs come with the following benefits:
+
+1. **High performing**: our benchmarks outperform Tanstack queries by over 60% in some areas
+2. **Caching**: all queries are cached until invalidated
+3. **Optimistic updates**: built in support for "real-time" optimistic UI updates
+4. **Data Streaming**: compatible with Async Generators for LLM responses
+5. **SSR Sync**: fetch data on the server and sync it to a client-side query
+6. **Suspense**: native support for React Suspense
+7. **Error Boundaries**: native support for Error Boundaries
 
 ## Fetching Data
 
 To fetch (and cache) data using signals, simply follow two steps:
 
-1. Define a query
-2. Trigger the query via the `useQuery` hook in your component
+1. Define a query factory via [`createQuery`](/docs/signals/create-query)
+2. Use the factory via [`useQuery`](/docs/signals/use-query) in your component
+
+In this example we use a **Signal to trigger a new query request**. When using this design you, _opt-out_ of optimistic UI updates and fallback to legacy loading-based UI changes.
 
 <CodePreview {...DEMOS.basic} />
 <br />
@@ -32,35 +40,54 @@ To fetch (and cache) data using signals, simply follow two steps:
 In this example there are a few things happening:
 
 1. The "backend API"
-2. The query
+2. The query factory
 3. The component using the query
 4. An action that updates the global `currentUser` state
 
-When you pass an _Accessor_ into the query definition, it will auto-fetch, invalidate,
+When you pass an _Signal Accessor_ into the query definition, it will auto-fetch, invalidate,
 and cache the result when the signal Accessor updates. This means, with this design
-**mutations are not neccessary.**
+**mutations are not neccessary** - but still strongly recommended.
 
-<NoteAdmonition description="Refresh the page to see the cached response. This happens because we are passing a signal accessor as the first value." />
+## Optimistically Updating Query Data
 
-## Mutating Data
+When you want to perform an action related to a query, you utilize a mutation factory via [`createMutation`](/docs/signals/create-mutation).
 
-Sometimes, you may have a complex scenario where that prevents you from using
-a signal utilized as the query "data store". **This is where mutations come in**.
+When combined with `query.key`, this factory will automagically sync and update the query if it is listed in the `invalidate` options.
 
-In order to mutate non-signal based data, follow these steps:
-
-1. Init the query with a non-accessor function
-2. Define the mutation. _Optional: pass the query.key into invalidate to clear the cache for that query._
-3. Use the mution action
+Even more, when combined with `onMutate/onSetData`, the UI will optimistically update while the query _runs in the background_ creating a "real-time" like experience in the UI.
 
 <CodePreview {...DEMOS.mutation} />
 <br />
 
 Here's what's happening in this demo:
 
-1. A non-signal based store (e.g. database)
-2. A query that does not watch an Accessor signal
-3. A mutation that updates the "db" and invalidates the user query cache
-4. A button calling the `mutate` action to trigger the mutation callback and invalidation
+1. A query factory is created
+2. A mutation factory is created
+   a. `onMutate/setQueryData` provides optimistic updates to the `query`
+   b. `invalidate` breaks the `query` cache to ensure the latest data is fetched in the background
+3. The UI is automagically synced with the query data
+4. Actions call the `mutate` helper to trigger mutations.
 
-<NoteAdmonition description="Anytime a non-signal accessor is passed to a query, it bypasses the auto functionality and converts it to only be manually updated via mutations." />
+## Server Component Pattern
+
+In an SSR environment, you execute the factory's **raw fetcher directly**, bypassing the reactive cache. Then, you pass that data down to your Client Components to "hydrate" or seed the Cerberus cache, ensuring the client doesn't double-fetch on mount.
+
+This is the standard SSR pattern for React.
+
+### 1. Server Component (Fetching)
+
+Expose the raw, stateless fetcher function from your factory. You simply await it like a standard asynchronous function.
+
+<CodePreview {...DEMOS.server} />
+
+### 2. Client Component
+
+On the client side, use the `initialData` property. If the Cerberus cache is empty, it will instantly seed the cache with the server's data, skipping the `<Suspense>` boundary entirely.
+
+<CodePreview {...DEMOS.client} />
+
+## Streaming Reponses (Async Generators)
+
+Cerberus queries also support streaming data via [Async Generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator). This is powerful if you are using an LLM API or your local API supports data streaming.
+
+<CodePreview {...DEMOS.streaming} />

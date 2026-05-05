@@ -1,8 +1,9 @@
-import { defineTheme } from '../theme-contract'
 import { recipes, slotRecipes } from '../recipes'
+import { defineTheme } from '../theme-contract'
 import { animationStyles } from './animationStyles'
 import { easings } from './easings'
 import { keyframes } from './keyframes'
+import { layerStyles } from './layerStyles'
 import { textStyles } from './textStyles'
 import { tokens } from './tokens'
 
@@ -17,8 +18,10 @@ export const baseTheme = defineTheme({
   keyframes,
   recipes,
   slotRecipes,
+  layerStyles,
   textStyles,
   animationStyles,
+
   colorPalette: {
     include: [
       'page.*',
@@ -35,5 +38,6 @@ export const baseTheme = defineTheme({
 export * from './animationStyles'
 export * from './easings'
 export * from './keyframes'
-export * from './tokens'
+export * from './layerStyles'
 export * from './textStyles'
+export * from './tokens'

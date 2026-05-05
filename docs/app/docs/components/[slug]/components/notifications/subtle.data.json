@@ -1,6 +1,7 @@
 {
   "infoSubtle": {
-    "type": "info-subtle",
+    "type": "info",
+    "usage": "subtle",
     "title": "Update Available",
     "description": "A new version of the app is available.",
     "action": {
@@ -8,23 +9,27 @@
     }
   },
   "successSubtle": {
-    "type": "success-subtle",
+    "type": "success",
     "title": "Profile Updated",
+    "usage": "subtle",
     "description": "Your profile has been updated."
   },
   "warningSubtle": {
-    "type": "warning-subtle",
+    "type": "warning",
     "title": "Slow Network",
+    "usage": "subtle",
     "description": "Please check your connection."
   },
   "dangerSubtle": {
-    "type": "danger-subtle",
+    "type": "error",
     "title": "Unable to Update",
+    "usage": "subtle",
     "description": "An error occurred. Please try again."
   },
   "loadingSubtle": {
-    "type": "loading-subtle",
+    "type": "loading",
     "title": "Loading",
+    "usage": "subtle",
     "description": "It's taking longer than normal."
   }
 }

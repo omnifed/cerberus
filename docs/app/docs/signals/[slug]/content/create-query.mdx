@@ -13,57 +13,40 @@ import { DEMOS } from '../components/fetching/static'
 
 ## Usage
 
-`createQuery` allows you define a fetcher that can be **auto-fetched** and **cached**
-when partnered with a signal Accessor. This creates a streamlined and high-performant
+`createQuery` allows you define a fetcher factory that is **auto-fetched** and **cached** with or without an Accessor value. This creates a streamlined and high-performant
 way to fetch data within your application with less effort.
 
-The return value of a query is inteded to be used with `useQuery`.
+The value of a query is inteded to be consumed by `useQuery`.
 
 A query is just a fancy wrapper that subscribes to the signals Observer. This means
-that **it can be used for any scenario that is Promise-based** - not just data-fetching.
+that **it can be used for any scenario that is Promise-based** - not just data-fetching. If you have a Promise, it can be a query.
 
 See the [features table](#features-table) to understand how to best utilize queries
 for each scenario you may have.
+
+<NoteAdmonition description="Queries are compatible with React Suspense and Error Boundaries." />
 
 ## Creating Queries
 
 Creating a query requires two things:
 
-1. A signal or signal-like accessor to subscribe to
-2. A Promise to call when activated
+1. A Promise to call when activated
+2. A unique key which is used to cache the result
 
-### With Signals
-
-If you pass a signal `Accessor` as the first argument, the query will subscribe
-to that signal and **auto-call** the Promise provided when the signal value changes.
-Likewise, the result of the Promise will then be **cached** until invalidated via
-a mutation.
-
-When using a query bound to a signal **there is no need for creating mutations**.
-You simply update the signal it is subscribed to.
-
-**Caching lifecycle**:
-
-1. First call &rarr; fetch data and cache
-2. Any call with same signal value &rarr; return cached value
-3. Signal updates &rarr; fetch data and cache
+Ultimately, when you create a query you are really just creating a factory that can be called where ever and whenever you are ready.
 
 <CodePreview {...DEMOS.basic} />
 
-### Without Signals
-
-When you pass in an signal-like function that is not a true Accessor, **you forfeit
-any auto-fetching and caching features**. This means you must utilize mutations in
-order to update the state via the [`createMutation`](/docs/signals/create-mutation)
-APIs.
-
-<CodePreview {...DEMOS.mutation} />
-
 ## Using Queries
 
-`createQuery` only _defines_ a query and does not actually call it. To use the
-query you must pass the returned value into the `useQuery` hook which reads the
-signal-based result.
+Depending on your goals will determine how to use the query. The following sections outline the different use cases depending on whether you are fetching data within a component or outside of one.
+
+There are no restrictions to Cerberus Signal Primitives which means you can use them at any scope.
+
+### With Components
+
+`createQuery` only _defines_ a query factory and does not actually call it. To use the
+query in a component you must pass the returned value into the `useQuery` hook which re-runs when the arguments provided change.
 
 <CodeSnippet snippet={DEMOS.queryUsageMeta} />
 <br />
@@ -71,23 +54,71 @@ signal-based result.
 The value returned is the result from calling the signal-tracked Accessor. This
 is equivalent to the return value from the `useRead` hook.
 
+### Without Components
+
+There are two different patterns you can use depending on your fetching goals outside of components.
+
+#### Pattern 1: Imperative Await (Standard Async)
+
+If you just want to trigger the fetch and wait for the result in a standard async function, you can simply await the `Promise` attached to the pending state.
+
+<CodePreview {...DEMOS.without} />
+
+#### Pattern 2: Reactive Subscription (The Signal Way)
+
+If you want a vanilla JS function to automatically react to the data whenever it arrives (or whenever it is invalidated and refetched in the background), you drop it into a `createEffect`.
+
+This is incredibly useful for syncing data to vanilla DOM elements, Web Components, or external non-React stores.
+
+<CodePreview {...DEMOS.sub} />
+
+## Streaming Reponses (Async Generators)
+
+Cerberus queries also support streaming data via [Async Generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator). This is powerful if you are using an LLM API or your local API supports data streaming.
+
+<CodePreview {...DEMOS.streaming} />
+
+## Server Component Pattern
+
+In an SSR environment, you execute the factory's **raw fetcher directly**, bypassing the reactive cache. Then, you pass that data down to your Client Components to "hydrate" or seed the Cerberus cache, ensuring the client doesn't double-fetch on mount.
+
+This is the standard SSR pattern for React.
+
+### 1. Server Component (Fetching)
+
+Expose the raw, stateless fetcher function from your factory. You simply await it like a standard asynchronous function.
+
+<CodePreview {...DEMOS.server} />
+
+### 2. Client Component
+
+On the client side, use the `initialData` property. If the Cerberus cache is empty, it will instantly seed the cache with the server's data, skipping the `<Suspense>` boundary entirely.
+
+<CodePreview {...DEMOS.client} />
+
+## Optimistic Updates
+
+Queries have a built-in optimistic store when combined with [Mutations](/docs/signals/create-mutation). This means the UI will update in "real-time" while the query will fetch in the background and eventually overwrite the optimistic store.
+
+Mutations are only necessary if you are _writing updates_. If your query is only intended to be read-only, it will automagically fetch when the params change.
+
 ## Features Table
 
 | Feature            | With Signal        | Without Signal     |
 | ------------------ | ------------------ | ------------------ |
 | auto-intial fetch  | :white_check_mark: | :white_check_mark: |
-| auto-refresh fetch | :white_check_mark: | :x:                |
-| caching            | :white_check_mark: | :x:                |
-| requires mutation  | :x:                | :white_check_mark: |
+| auto-refresh fetch | :white_check_mark: | :white_check_mark: |
+| caching            | :white_check_mark: | :white_check_mark: |
+| requires mutation  | :x:                | :x:                |
 
 ## API
 
 `createQuery` accepts the following options:
 
-| Params                    | Required | Description                         |
-| ------------------------- | -------- | ----------------------------------- |
-| `Accessor<T> \| Function` | `true`   | The signal to subscribe to.         |
-| `Promise<any>`            | `true`   | The Promise to call when activated. |
+| Params         | Required | Description                            |
+| -------------- | -------- | -------------------------------------- |
+| `Promise<any>` | `true`   | The Promise to call when activated.    |
+| `key`          | `true`   | A unique key used for caching queries. |
 
 ### Return
 
@@ -99,3 +130,9 @@ is equivalent to the return value from the `useRead` hook.
 | `currentArgs` | `Args` | The args passed into `createQuery` stored in a reference.       |
 
 <NoteAdmonition description="The query.key is SHA generated from the contents of the query parameters. This means, if you have multiple signal-like queries, they should each have unique return values or else they will be synced together." />
+
+### Typing
+
+`createQuery` accepts two arguements to strictly type the return result `<CacheNode, Args>`. These are naturally deferred through our strict type chain. This means you don't need to worry about it outside of rare use cases.
+
+However, we do recommend using this if you are creating a query that doesn't expect any arguments: `createQuery<string, void>(...)`.

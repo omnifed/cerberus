@@ -2,7 +2,7 @@
 
 import { HStack } from '@/styled-system/jsx'
 import { Button, Show, Text } from '@cerberus-design/react'
-import { createEffect, useSignal } from '@cerberus-design/signals'
+import { createEffect, onCleanup, useSignal } from '@cerberus-design/signals'
 import { useEffect } from 'react'
 
 function MountedMeta() {
@@ -17,7 +17,7 @@ function MountedMeta() {
         setCount((prev) => prev + 1)
       }, 1000)
 
-      return () => clearInterval(interval)
+      onCleanup(() => clearInterval(interval))
     })
 
     return () => {
