@@ -6,6 +6,7 @@ import { ButtonGroup, ButtonParts, type ButtonProps } from '../button/index'
 import { IconButton } from '../icon-button/index'
 import { Menu, MenuTrigger, MenuContent } from '../menu/index'
 import type { CerberusPrimitiveProps } from '../../system/types'
+import { useMemo } from 'react'
 
 /**
  * This module provides an abstraction for a SplitButton component.
@@ -34,7 +35,10 @@ export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
   const { icons } = useCerberusContext()
   const { selectArrow: SelectArrow } = icons
 
-  const iconShape = actionProps.shape === 'rounded' ? 'circle' : 'square'
+  const iconShape = useMemo(() => {
+    console.log({ shape: actionProps.shape })
+    return actionProps.shape === 'rounded' ? 'circle' : 'square'
+  }, [actionProps.shape])
 
   return (
     <ButtonGroup layout="attached" shape={actionProps.shape}>

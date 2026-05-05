@@ -286,7 +286,21 @@ describe('conditions', () => {
     expect(conditions.vertical).toEqual('&:is([data-orientation=vertical])')
   })
 
+  test('should have a button', () => {
+    expect(conditions.button).toEqual('& :where([data-scope=button])')
+  })
+
   test('should have an icon', () => {
     expect(conditions.icon).toEqual('& :where(svg)')
+  })
+
+  test('should have an iconButton', () => {
+    expect(conditions.iconButton).toEqual('& :where([data-scope=icon-button])')
+  })
+
+  test('should have a menuTrigger', () => {
+    expect(conditions.menuTrigger).toEqual(
+      '& :where([data-scope=menu][data-part=trigger])',
+    )
   })
 })
