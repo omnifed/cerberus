@@ -36,7 +36,6 @@ export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
   const { selectArrow: SelectArrow } = icons
 
   const iconShape = useMemo(() => {
-    console.log({ shape: actionProps.shape })
     return actionProps.shape === 'rounded' ? 'circle' : 'square'
   }, [actionProps.shape])
 
