@@ -25,11 +25,17 @@ describe('buttonGroup recipe', () => {
         },
         attached: {
           '--btn-group-gap': 0,
-          '& > :is([data-scope="button"])': {
+          _button: {
             borderTopRightRadius: '0!',
             borderBottomRightRadius: '0!',
           },
-          '& > :is([data-scope="icon-button"])': {
+          _iconButton: {
+            borderLeft: '1px solid',
+            borderLeftColor: 'page.border.initial',
+            borderTopLeftRadius: '0!',
+            borderBottomLeftRadius: '0!',
+          },
+          _menuTrigger: {
             borderLeft: '1px solid',
             borderLeftColor: 'page.border.initial',
             borderTopLeftRadius: '0!',
@@ -58,7 +64,10 @@ describe('buttonGroup recipe', () => {
         layout: 'attached',
         shape: 'sharp',
         css: {
-          '& > :is([data-scope="icon-button"])': {
+          _iconButton: {
+            borderBottomRightRadius: '0!',
+          },
+          _menuTrigger: {
             borderBottomRightRadius: '0!',
           },
         },
