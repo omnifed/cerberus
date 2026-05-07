@@ -26,5 +26,5 @@ overrides:
   flatted: '>=3.4.2'
   lodash: '>=4.18.0'
   # docs
-  'eslint>ajv': '^6.12.6'
+  eslint>ajv: '^6.12.6'
   '@eslint/eslintrc>ajv': '^6.12.6'
