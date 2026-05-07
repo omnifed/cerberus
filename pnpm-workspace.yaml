@@ -5,5 +5,14 @@ packages:
   - docs
   - styled-system
 
+allowBuilds:
+  '@carbon/icon-helpers': true
+  '@carbon/icons-react': true
+  '@tsparticles/engine': true
+  bun: true
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+
 ignoredBuiltDependencies:
   - unrs-resolver
