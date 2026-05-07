@@ -295,8 +295,8 @@ importers:
         specifier: ^1.11.0
         version: 1.11.0(jsdom@26.0.0)(typescript@6.0.2)
       '@pandacss/preset-panda':
-        specifier: ^1.10.0
-        version: 1.10.0
+        specifier: ^1.11.0
+        version: 1.11.0
       '@pandacss/types':
         specifier: ^1.11.0
         version: 1.11.0
@@ -1898,9 +1898,6 @@ packages:
   '@pandacss/preset-base@1.11.0':
     resolution: {integrity: sha512-/P4ZW2g9fbIN7eBMyrIDqPvAIGep1rkA7r0AmwDXKp1qZ0amCbXKRmUgC53NvbK6BOcz3faLFJD0Vb8x929g3g==}
 
-  '@pandacss/preset-panda@1.10.0':
-    resolution: {integrity: sha512-ExQEiVy/iT1Lma8r2tVTb0dgouiG6AGi9wN7EV/1u94Qkw+G0KB+n6geEhiWBSkstnXvuZjFM2nF17mLmrO2mw==}
-
   '@pandacss/preset-panda@1.11.0':
     resolution: {integrity: sha512-+4GPhmur6v4H0K9l+lfCdd2OxgwUQKkbXFaFAkcXHt8i+Sf7vzSmcycANFUnXBnot4HWK5WJVJ5Ql6tvMMBo1Q==}
 
@@ -1912,9 +1909,6 @@ packages:
 
   '@pandacss/token-dictionary@1.11.0':
     resolution: {integrity: sha512-Kq23p56VmprZoQSYWFjMtaxiC+QLRS7jOaKUi9eJCKykl51rOMelFo6Ch/akserqIQcwAcTRYlFjnNW8GIynFg==}
-
-  '@pandacss/types@1.10.0':
-    resolution: {integrity: sha512-8R8s0QevHtT6Le8HH5hN1DJ1qH9EYeUGtI2MhvXIChV3xjd2EZqhKpNTK7w2iw30z8mJhvCj0dWIUopn0sN2XQ==}
 
   '@pandacss/types@1.11.0':
     resolution: {integrity: sha512-7TBzd9QDTu6boJIU4Bf4SuvZ+bCwl9evsn9ymr8c7ISHyil1nJqC02V5O6j6H9w6XlKFFSYLQU7v1f3FOMeQew==}
@@ -7595,10 +7589,6 @@ snapshots:
     dependencies:
       '@pandacss/types': 1.11.0
 
-  '@pandacss/preset-panda@1.10.0':
-    dependencies:
-      '@pandacss/types': 1.10.0
-
   '@pandacss/preset-panda@1.11.0':
     dependencies:
       '@pandacss/types': 1.11.0
@@ -7622,8 +7612,6 @@ snapshots:
       '@pandacss/types': 1.11.0
       picomatch: 4.0.4
       ts-pattern: 5.9.0
-
-  '@pandacss/types@1.10.0': {}
 
   '@pandacss/types@1.11.0': {}
 
