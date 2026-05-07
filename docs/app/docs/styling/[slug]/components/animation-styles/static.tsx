@@ -10,7 +10,7 @@ import {
   VStack,
 } from '@/styled-system/jsx'
 import { Button, For, Show } from '@cerberus-design/react'
-import options from './options.json' assert { type: 'json' }
+import options from './options.json' with { type: 'json' }
 
 export function AnimationStylesDemo() {
   const [activeOption, setActiveOption] = useState<string>(options[0].value)

@@ -12,6 +12,7 @@
     "target": "esnext",
     "moduleResolution": "bundler",
     "moduleDetection": "force",
+    "types": ["bun"],
 
     "allowImportingTsExtensions": true,
     "noEmit": true,

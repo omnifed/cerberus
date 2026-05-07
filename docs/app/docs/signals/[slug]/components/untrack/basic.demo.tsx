@@ -2,13 +2,12 @@
 
 import { HStack, Stack } from '@/styled-system/jsx'
 import { Button, Text } from '@cerberus-design/react'
-import { ReactiveText, untrack } from '@cerberus-design/signals'
-import { useEffect, useMemo } from 'react'
+import { ReactiveText, untrack, useStore } from '@cerberus-design/signals'
+import { useEffect } from 'react'
 import { createRenderStore } from '../render-store'
 
 export function BasicDemo() {
-  // We only do this because we are tracking renders in a fragile React Effect
-  const store = useMemo(createRenderStore, [])
+  const store = useStore(createRenderStore)
 
   const increment = () => {
     store.setCount((prev) => prev + 1)
