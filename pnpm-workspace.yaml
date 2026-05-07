@@ -16,3 +16,18 @@ allowBuilds:
 
 ignoredBuiltDependencies:
   - unrs-resolver
+
+overrides:
+  '@hono/node-server': '>=1.19.13'
+  ajv: '>=8.18.0'
+  express-rate-limit: '>=8.2.2'
+  hono: '>=4.12.12'
+  minimatch: '>=10.2.3'
+  path-to-regexp: '>=8.4.0'
+  picomatch: '>=4.0.4'
+  rollup: '>=4.59.0'
+  flatted: '>=3.4.2'
+  lodash: '>=4.18.0'
+  # docs
+  'eslint>ajv': '^6.12.6'
+  '@eslint/eslintrc>ajv': '^6.12.6'
