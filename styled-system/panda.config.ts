@@ -1,7 +1,4 @@
-import {
-  createCerberusConfig,
-  createCerberusPreset,
-} from '@cerberus/panda-preset'
+import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
 
 export default createCerberusConfig({
   clean: true,

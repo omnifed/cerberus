@@ -5,8 +5,8 @@
 
   "compilerOptions": {
     "paths": {
-      "@cerberus-design/react": ["node_modules/@cerberus-design/react/src/*"],
-      "@cerberus-design/icons": ["node_modules/@cerberus-design/icons/src/*"]
+      "@cerberus-design/react": ["./node_modules/@cerberus-design/react/src/*"],
+      "@cerberus-design/icons": ["./node_modules/@cerberus-design/icons/src/*"]
     }
   }
 }
