@@ -1,5 +1,6 @@
 import {
   Combobox,
+  type ComboboxContextProps as ArkComboboxContextProps,
   type ComboboxClearTriggerProps as ArkComboboxClearTriggerProps,
   type ComboboxContentProps as ArkComboboxContentProps,
   type ComboboxControlProps as ArkComboboxControlProps,
@@ -34,6 +35,9 @@ const { withSlotRecipe } = createCerberusPrimitive(combobox)
  * component.
  */
 
+export const ComboboxContext = Combobox.Context
+export type ComboboxContextProps<T> = ArkComboboxContextProps<T>
+
 export const ComboboxRoot = withSlotRecipe(Combobox.Root, 'root')
 export type ComboboxRootProps = CerberusPrimitiveProps<
   ArkComboboxRootProps<SelectCollectionItem> & ComboboxVariantProps
@@ -49,8 +53,7 @@ export type ComboboxLabelProps = CerberusPrimitiveProps<ArkComboboxLabelProps>
  * The control that wraps the combobox input.
  */
 export const ComboboxControl = withSlotRecipe(Combobox.Control, 'control')
-export type ComboboxControlProps =
-  CerberusPrimitiveProps<ArkComboboxControlProps>
+export type ComboboxControlProps = CerberusPrimitiveProps<ArkComboboxControlProps>
 
 /**
  * The input of the combobox.
@@ -62,8 +65,7 @@ export type ComboboxInputProps = CerberusPrimitiveProps<ArkComboboxInputProps>
  * The trigger that opens the dropdown.
  */
 export const ComboboxTrigger = withSlotRecipe(Combobox.Trigger, 'trigger')
-export type ComboboxTriggerProps =
-  CerberusPrimitiveProps<ArkComboboxTriggerProps>
+export type ComboboxTriggerProps = CerberusPrimitiveProps<ArkComboboxTriggerProps>
 
 /**
  * The trigger to clear the combobox input.
@@ -78,12 +80,8 @@ export type ComboboxClearTriggerProps =
 /**
  * The positioner that wraps the content.
  */
-export const ComboboxPositioner = withSlotRecipe(
-  Combobox.Positioner,
-  'positioner',
-)
-export type ComboboxPositionerProps =
-  CerberusPrimitiveProps<ArkComboboxPositionerProps>
+export const ComboboxPositioner = withSlotRecipe(Combobox.Positioner, 'positioner')
+export type ComboboxPositionerProps = CerberusPrimitiveProps<ArkComboboxPositionerProps>
 
 /**
  * The content of the combobox component.
@@ -97,8 +95,7 @@ export type ComboboxContentProps = CerberusPrimitiveProps<
  * A group of items in the combobox component.
  */
 export const ComboboxItemGroup = withSlotRecipe(Combobox.ItemGroup, 'itemGroup')
-export type ComboboxItemGroupProps =
-  CerberusPrimitiveProps<ArkComboboxItemGroupProps>
+export type ComboboxItemGroupProps = CerberusPrimitiveProps<ArkComboboxItemGroupProps>
 
 /**
  * The label for a group of items in the combobox component.
@@ -120,8 +117,7 @@ export type ComboboxItemProps = CerberusPrimitiveProps<ArkComboboxItemProps>
  * The text that labels a single item of the combobox.
  */
 export const ComboboxItemText = withSlotRecipe(Combobox.ItemText, 'itemText')
-export type ComboboxItemTextProps =
-  CerberusPrimitiveProps<ArkComboboxItemTextProps>
+export type ComboboxItemTextProps = CerberusPrimitiveProps<ArkComboboxItemTextProps>
 
 /**
  * The indicator that appears when the item has been selected.
@@ -137,9 +133,7 @@ export type ComboboxItemIndicatorProps =
  * The icon that appears at the start of the combobox input.
  */
 export const ComboboxStartIcon = withSlotRecipe(ark.span, 'startIcon')
-export type ComboboxStartIconProps = CerberusPrimitiveProps<
-  HTMLArkProps<'span'>
->
+export type ComboboxStartIconProps = CerberusPrimitiveProps<HTMLArkProps<'span'>>
 
 // We are only doing this to make the API consistent
 export const ComboItemText = ComboboxItemText
