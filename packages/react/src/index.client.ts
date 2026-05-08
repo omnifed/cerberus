@@ -2,6 +2,8 @@
 
 // Unstyled Ark Goodies
 
+export { useAsyncList } from '@ark-ui/react/collection'
+
 export {
   AccordionRootProvider,
   useAccordion,
@@ -20,6 +22,7 @@ export {
   useColorPicker,
   ColorPickerRootProvider,
   useCombobox,
+  createListCollection,
   ComboboxRootProvider,
   useDatePicker,
   DatePickerRootProvider,

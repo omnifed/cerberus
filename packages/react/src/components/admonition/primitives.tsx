@@ -11,7 +11,7 @@ const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(admonition)
 /**
  * The `AdmonitionRoot` component is the container for the Admonition.
  */
-export const AdmonitionRoot = withSlotRecipe('animateMotion', 'root', {
+export const AdmonitionRoot = withSlotRecipe('div', 'root', {
   defaultProps: {
     'data-scope': 'admonition',
     'data-part': 'root',
