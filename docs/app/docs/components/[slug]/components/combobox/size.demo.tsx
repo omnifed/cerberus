@@ -16,7 +16,7 @@ import { sizes } from './meta'
 export function SizeDemo() {
   return (
     <Stack gap="md" w="3/4">
-      <For each={sizes}>{(size) => <SizeBox key={size} size={size} />}</For>
+      <For each={sizes}>{(size) => <SizeBox key={String(size)} size={size} />}</For>
     </Stack>
   )
 }
