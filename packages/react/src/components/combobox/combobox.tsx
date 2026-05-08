@@ -4,14 +4,12 @@ import type { ComboboxRootProps } from '@ark-ui/react/combobox'
 import type { ComboboxVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
 import { splitProps } from '../../utils/index'
-import type { SelectCollectionItem } from '../select/select'
 import { type FieldInputElProps } from '../field/index'
 import { Show } from '../show/index'
 import { ComboboxParts } from './parts'
 import { ComboboxStartIcon } from './primitives'
 
-export interface ComboboxProps
-  extends ComboboxRootProps<SelectCollectionItem>, ComboboxVariantProps {
+export interface ComboboxProps<T> extends ComboboxRootProps<T>, ComboboxVariantProps {
   /**
    * The label that appears above the combobox input.
    */
@@ -22,7 +20,7 @@ export interface ComboboxProps
   startIcon?: FieldInputElProps['startIcon']
 }
 
-export function Combobox(props: ComboboxProps) {
+export function Combobox<T>(props: ComboboxProps<T>) {
   const [{ startIcon, label, ...elProps }, rootProps] = splitProps(props, [
     'label',
     'children',
@@ -45,9 +43,7 @@ export function Combobox(props: ComboboxProps) {
           <ComboboxStartIcon>{startIcon}</ComboboxStartIcon>
         </Show>
 
-        <ComboboxParts.Input
-          {...(hasStartIcon && { 'data-has': 'start-indicator' })}
-        />
+        <ComboboxParts.Input {...(hasStartIcon && { 'data-has': 'start-indicator' })} />
 
         <ComboboxParts.ClearTrigger>
           <CloseIcon />

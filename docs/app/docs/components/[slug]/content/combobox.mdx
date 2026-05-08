@@ -7,356 +7,131 @@ recipe: 'slots/combobox.ts'
 ark: 'combobox'
 ---
 
-import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
-import { BasicPreview, StartIconPreview, GroupedItemsPreview, FieldPreview, CustomDemo } from '../components/combobox/static'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { DEMOS } from '../components/combobox/static'
 
-```ts
-import {
-  Combobox,
-  ComboItemGroup,
-  ComboItemWithIndicator,
-  ComboItemText
-} from '@cerberus/react'
-```
-
-<NoteAdmonition description="Notice the naming convention of ComboItemGroup (the abstraction) and ComboboxItemGroup the primitive." />
+<CodeSnippet snippet={DEMOS.meta} />
 
 ## Usage
 
-The `Combobox` component is an abstraction component that provides a fully functional combobox. It is built on top of the `Select` component and allows additional functionality such as filtering.
+The `Combobox` is an abracted API that combines multiple primitives into a single root component. You combine this with the `useStatefulCollection` hook to create a filterable select component.
 
-<CodePreview preview={<BasicPreview />}>
-```tsx
-'use client'
-
-import {
-  For,
-  Combobox,
-  ComboItemWithIndicator,
-  ComboItemText,
-  useStatefulCollection,
-} from '@cerberus/react'
-import { Box, VStack } from 'styled-system/jsx'
-import { useMemo, useState } from 'react'
-
-const initialItems = [
-  { label: 'Hades', value: 'hades' },
-  { label: 'Persephone', value: 'persephone' },
-  { label: 'Zeus', value: 'zeus', disabled: true },
-  { label: 'Poseidon', value: 'poseidon' },
-  { label: 'Hera', value: 'hera' },
-]
-
-function BasicPreview() {
-  const { collection, handleInputChange } =
-    useStatefulCollection(initialItems)
-
-  return (
-    <Box w="1/2">
-      <Combobox
-        collection={collection}
-        label="Select Relative"
-        onInputValueChange={handleInputChange}
-        placeholder="Choose option"
-      >
-        <For
-          each={collection.items}
-          fallback={
-            <VStack paddingBlock="6" w="full">
-              <Text textAlign="center" textStyle="label-sm">
-                No results found
-              </Text>
-            </VStack>
-          }
-        >
-          {(item) => (
-            <ComboItemWithIndicator key={item.value} item={item}>
-              <ComboItemText>{item.label}</ComboItemText>
-            </ComboItemWithIndicator>
-          )}
-        </For>
-      </Combobox>
-    </Box>
-  )
-}
-```
-</CodePreview>
+<CodePreview {...DEMOS.basic} />
 
 ## With Start Icon
 
-To add an icon to the start position of the input, use the `startIcon` prop to pass in your `ReactNode`.
+To add an icon to the start position of the input, use the `startIcon` prop to pass in your icon of choice.
 
-<CodePreview preview={<StartIconPreview />}>
-```tsx {34}
-'use client'
+<CodePreview {...DEMOS.start} />
 
-import {
-  For,
-  Combobox,
-  ComboItemWithIndicator,
-  ComboItemText,
-  useStatefulCollection,
-} from '@cerberus/react'
-import { Box, VStack } from 'styled-system/jsx'
-import { useMemo, useState } from 'react'
-import { Search } from '@carbon/icons-react'
+## Sizes
 
-const initialItems = [
-  { label: 'Hades', value: 'hades' },
-  { label: 'Persephone', value: 'persephone' },
-  { label: 'Zeus', value: 'zeus', disabled: true },
-  { label: 'Poseidon', value: 'poseidon' },
-  { label: 'Hera', value: 'hera' },
-]
+The `Combobox` component supports sizes: `sm` to `lg`. The default is `md`.
 
-function StartIconPreview() {
-  const { collection, handleInputChange } =
-    useStatefulCollection(initialItems)
-
-  return (
-    <Box w="1/2">
-      <Combobox
-        collection={collection}
-        label="Select Relative"
-        onInputValueChange={handleInputChange}
-        openOnClick
-        placeholder="Choose option"
-        startIcon={<Search />}
-      >
-        <For
-          each={collection.items}
-          fallback={
-            <VStack paddingBlock="6" w="full">
-              <Text textAlign="center" textStyle="label-sm">
-                No results found
-              </Text>
-            </VStack>
-          }
-        >
-          {(item) => (
-            <ComboItemWithIndicator key={item.value} item={item}>
-              <ComboItemText>{item.label}</ComboItemText>
-            </ComboItemWithIndicator>
-          )}
-        </For>
-      </Combobox>
-    </Box>
-  )
-}
-```
-</CodePreview>
-
-## Grouped Items
-
-To group items, use the `ComboItemGroup` component (not ComboboxItemGroup).
-
-<CodePreview preview={<GroupedItemsPreview />}>
-```tsx {24}
-import {
-  For,
-  Combobox,
-  ComboItemGroup,
-  ComboItemWithIndicator,
-  ComboItemText,
-  useStatefulCollection,
-} from '@cerberus/react'
-import { Box } from 'styled-system/jsx'
-
-function GroupedItemsPreview() {
-  const { collection, handleInputChange } =
-    useStatefulCollection(comboInitialItems)
-
-  return (
-    <Box w="1/2">
-      <Combobox
-        collection={collection}
-        label="Select Relative"
-        onInputValueChange={handleInputChange}
-        placeholder="Choose option"
-        startIcon={<Search />}
-      >
-        <ComboItemGroup label="The fam">
-          <For
-            each={collection.items}
-            fallback={
-              <VStack paddingBlock="6" w="full">
-                <Text textAlign="center" textStyle="label-sm">
-                  No results found
-                </Text>
-              </VStack>
-            }
-          >
-            {(item) => (
-              <ComboItemWithIndicator key={item.value} item={item}>
-                <ComboItemText>{item.label}</ComboItemText>
-              </ComboItemWithIndicator>
-            )}
-          </For>
-        </ComboItemGroup>
-      </Combobox>
-    </Box>
-  )
-}
-```
-</CodePreview>
+<CodePreview {...DEMOS.size} />
 
 ## With Field
 
 Wrap the `Combobox` component with the `Field` component to add additional functionality such as error and helper text when using it in a form.
 
-<CodePreview preview={<FieldPreview />}>
-```tsx
-'use client'
+<CodePreview {...DEMOS.field} />
 
-import {
-  For,
-  Field,
-  Combobox,
-  ComboItemWithIndicator,
-  ComboItemText,
-  useStatefulCollection,
-} from '@cerberus/react'
-import { Box } from 'styled-system/jsx'
+## Context
 
-function FieldPreview() {
-  const { collection, handleInputChange } =
-    useStatefulCollection(comboInitialItems)
+Access the combobox's state with `ComboboxContext` or the `useComboboxContext` hook—useful for displaying the selected value or building custom UI.
 
-  return (
-    <Box w="1/2">
-      <Field
-        label="Select Relative"
-        helperText="This is saved to your profile"
-        errorText="You must select something."
-        required
-      >
-        <Combobox
-          collection={collection}
-          onInputValueChange={handleInputChange}
-          placeholder="Choose option"
-          form="myForm"
-        >
-          <For
-            each={collection.items}
-            fallback={
-              <VStack paddingBlock="6" w="full">
-                <Text textAlign="center" textStyle="label-sm">
-                  No results found
-                </Text>
-              </VStack>
-            }
-          >
-            {(item) => (
-              <ComboItemWithIndicator key={item.value} item={item}>
-                <ComboItemText>{item.label}</ComboItemText>
-              </ComboItemWithIndicator>
-            )}
-          </For>
-        </Combobox>
-      </Field>
-    </Box>
-  )
-}
-```
-</CodePreview>
+<NoteAdmonition description="Since combobox is an abstracted API, you'll need to build your own to obtain the context as we do in the example below." />
+
+<CodePreview {...DEMOS.context} />
+
+## Grouped Items
+
+To group items, use the `ComboItemGroup` component (not ComboboxItemGroup).
+
+<CodePreview {...DEMOS.group} />
+
+## Async Loading
+
+Combine the collection with a [query](/docs/signals/create-query) to load data asynchronously with signal-based speed.
+
+<CodePreview {...DEMOS.loading} />
+
+## Highlight Matching Text
+
+Combine the `ComboItemText` component with the `Highlight` component to highlight matching text in the dropdown.
+
+<CodePreview {...DEMOS.highlight} />
+
+## Creatable
+
+Allow users to create new options when their search doesn't match any existing items. This is useful for tags, categories, or other custom values.
+
+<CodePreview {...DEMOS.creatable} />
+
+## Customizing
+
+<CodePreview {...DEMOS.custom} />
+
+## Guides
+
+### Router Links
+
+Customize the `navigate` prop on `Combobox` to integrate with your router. Using Tanstack Router:
+
+<CodeSnippet snippet={DEMOS.linksMeta} />
+
+### Custom Objects
+
+By default, the combobox collection expects an array of objects with label and value properties. In some cases, you may need to deal with custom objects.
+
+Use the `itemToString` and `itemToValue` props to map the custom object to the required interface.
+
+<CodeSnippet snippet={DEMOS.objectsMeta} />
+
+### Type Safety
+
+The `ComboboxRootProps` type enables you to create typed wrapper components that maintain full type safety for collection items.
+
+<CodeSnippet snippet={DEMOS.typeMeta} />
+
+### Large Datasets
+
+The recommended way of managing large lists is to use the `limit` property on the `useListCollection` hook. This will limit the number of rendered items in the DOM to improve performance.
+
+<CodeSnippet snippet={DEMOS.largeMeta} />
+
+### Available Size
+
+The following css variables are exposed to the `ComboboxPositioner` which you can use to style the `ComboboxContent`.
+
+<CodeSnippet snippet={DEMOS.varsMeta} />
+<br />
+
+For example, if you want to make sure the maximum height doesn't exceed the available height, you can use the following:
+
+<CodeSnippet snippet={DEMOS.styleMeta} />
 
 ## Primitives
 
 You can utilize the primitive components or the `css` prop to customize the Combobox.
 
-| Component | Description |
-| --------- | ----------- |
-| ComboboxRoot    | The context provider for the combobox family |
-| ComboboxLabel   | The label that appears above the combobox input |
-| ComboboxControl | The wrapper to the combobox trigger that opens the dropdown |
-| ComboboxInput | The input field of the combobox |
-| ComboboxTrigger | he trigger that opens the dropdown |
-| ComboboxClearTrigger | The trigger that clears the selected value |
-| ComboboxPositioner | The wrapper that positions the dropdown |
-| ComboboxContent | The content of the dropdown (i.e. the container itself) |
-| ComboboxItemGroup | The group of options in the dropdown |
-| ComboboxItemGroupLabel | The label for the group of options |
-| ComboboxItem | The option in the dropdown |
-| ComboboxItemText | The text label of the option |
-| ComboboxItemIndicator | The indicator shown when the option is selected |
-
-<CodePreview preview={<CustomDemo />}>
-```tsx
-'use client'
-
-import {
-  For,
-  Portal,
-  ComboboxParts,
-  useStatefulCollection,
-} from '@cerberus/react'
-import { Box } from 'styled-system/jsx'
-
-
-function CustomDemo() {
-  const { collection, handleInputChange } =
-    useStatefulCollection(comboInitialItems)
-
-  return (
-    <Box w="1/2">
-      <ComboboxParts.Root
-        collection={collection}
-        onInputValueChange={handleInputChange}
-        css={{
-          transform: 'skewX(-10deg)',
-        }}
-      >
-        <ComboboxParts.Label
-          css={{
-            textTransform: 'uppercase',
-          }}
-        >
-          Custom label
-        </ComboboxParts.Label>
-
-        <ComboboxParts.Control>
-          <ComboboxParts.Input />
-
-          <ComboboxParts.Trigger>
-            <ChevronDownOutline />
-          </ComboboxParts.Trigger>
-        </ComboboxParts.Control>
-
-        <Portal>
-          <ComboboxParts.Positioner>
-            <ComboboxParts.Content>
-              <For
-                each={collection.items}
-                fallback={
-                  <VStack paddingBlock="6" w="full">
-                    <Text textAlign="center" textStyle="label-sm">
-                      No results found
-                    </Text>
-                  </VStack>
-                }
-              >
-                {(item) => (
-                  <ComboboxParts.Item key={item.value} item={item}>
-                    <ComboboxParts.ItemText css={{ fontSize: 'xl' }}>
-                      {item.label}
-                    </ComboboxParts.ItemText>
-                    <ComboboxParts.ItemIndicator>
-                      🔥
-                    </ComboboxParts.ItemIndicator>
-                  </ComboboxParts.Item>
-                )}
-              </For>
-            </ComboboxParts.Content>
-          </ComboboxParts.Positioner>
-        </Portal>
-      </ComboboxParts.Root>
-    </Box>
-  )
-}
-```
-</CodePreview>
-
+| Component              | Description                                                 |
+| ---------------------- | ----------------------------------------------------------- |
+| ComboboxRoot           | The context provider for the combobox family                |
+| ComboboxLabel          | The label that appears above the combobox input             |
+| ComboboxControl        | The wrapper to the combobox trigger that opens the dropdown |
+| ComboboxInput          | The input field of the combobox                             |
+| ComboboxTrigger        | he trigger that opens the dropdown                          |
+| ComboboxClearTrigger   | The trigger that clears the selected value                  |
+| ComboboxPositioner     | The wrapper that positions the dropdown                     |
+| ComboboxContent        | The content of the dropdown (i.e. the container itself)     |
+| ComboboxItemGroup      | The group of options in the dropdown                        |
+| ComboboxItemGroupLabel | The label for the group of options                          |
+| ComboboxItem           | The option in the dropdown                                  |
+| ComboboxItemText       | The text label of the option                                |
+| ComboboxItemIndicator  | The indicator shown when the option is selected             |
 
 ## API
 
@@ -364,44 +139,332 @@ function CustomDemo() {
 
 The `Combobox` component is an abstraction of our primitives and accepts the following props:
 
-| Name     | Default | Description                                            |
-| -------- | ------- | ------------------------------------------------------ |
-| size        | `md`    | The size of the combobox. |
-| startIcon  |         | The icon to display at the start of the input. |
+| Name        | Default | Description                                    |
+| ----------- | ------- | ---------------------------------------------- |
+| `size`      | `md`    | The size of the combobox.                      |
+| `startIcon` |         | The icon to display at the start of the input. |
 
 The `Combobox` component also accepts all the props of the [`ComboboxRoot` primitive props](https://ark-ui.com/react/docs/components/combobox#api-reference)
 
 ### ItemWithIndicator
 
-The `ItemWithIndicator` component is an abstraction of our primitives and  accepts all the props of the [`ComboboxItem` primitive props](https://ark-ui.com/react/docs/components/combobox#api-reference)
+The `ItemWithIndicator` component is an abstraction of our primitives and accepts all the props of the [`ComboboxItem` primitive props](https://ark-ui.com/react/docs/components/combobox#api-reference)
 
 ### ComboItemGroup
 
 The `ComboItemGroup` component is an abstraction of our primitives and accepts the following props:
 
-| Name     | Default | Description                                            |
-| -------- | ------- | ------------------------------------------------------ |
-| label    |         | The label of the group.                                |
+| Name    | Default | Description             |
+| ------- | ------- | ----------------------- |
+| `label` |         | The label of the group. |
 
-The `ComboItemGroup` component is an abstraction of our primitives and  accepts all the props of the [`ComboboxItemGroup` primitive props](https://ark-ui.com/react/docs/components/combobox#api-reference)
+The `ComboItemGroup` component is an abstraction of our primitives and accepts all the props of the [`ComboboxItemGroup` primitive props](https://ark-ui.com/react/docs/components/combobox#api-reference)
+
+## Primitive API
+
+### Root Props
+
+| Prop                      | Type                                           | Required | Description                                                                                                                                                                                                                          |
+| ------------------------- | ---------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `collection`              | `ListCollection<T>`                            | Yes      | The collection of items                                                                                                                                                                                                              |
+| `allowCustomValue`        | `boolean`                                      | No       | Whether to allow typing custom values in the input                                                                                                                                                                                   |
+| `alwaysSubmitOnEnter`     | `boolean`                                      | No       | Whether to always submit on Enter key press, even if popup is open.                                                                                                                                                                  |
+| `asChild`                 | `boolean`                                      | No       | Use the provided child element as the default rendered element, combining their props and behavior.                                                                                                                                  |
+| `autoFocus`               | `boolean`                                      | No       | Whether to autofocus the input on mount                                                                                                                                                                                              |
+| `closeOnSelect`           | `boolean`                                      | No       | Whether to close the combobox when an item is selected.                                                                                                                                                                              |
+| `autoFocus`               | `boolean`                                      | No       | Whether to autofocus the input on mount                                                                                                                                                                                              |
+| `closeOnSelect`           | `boolean`                                      | No       | Whether to close the combobox when an item is selected.                                                                                                                                                                              |
+| `composite`               | `boolean`                                      | No       | Whether the combobox is a composed with other composite widgets like tabs                                                                                                                                                            |
+| `defaultHighlightedValue` | `string`                                       | No       | The initial highlighted value of the combobox when rendered. Use when you don't need to control the highlighted value of the combobox.                                                                                               |
+| `defaultInputValue`       | `string`                                       | No       | The initial value of the combobox's input when rendered. Use when you don't need to control the value of the combobox's input.                                                                                                       |
+| `defaultOpen`             | `boolean`                                      | No       | The initial open state of the combobox when rendered. Use when you don't need to control the open state of the combobox.                                                                                                             |
+| `defaultValue`            | `string[]`                                     | No       | The initial value of the combobox's selected items when rendered. Use when you don't need to control the value of the combobox's selected items.                                                                                     |
+| `disabled`                | `boolean`                                      | No       | Whether the combobox is disabled                                                                                                                                                                                                     |
+| `disableLayer`            | `boolean`                                      | No       | Whether to disable registering this a dismissable layer                                                                                                                                                                              |
+| `form`                    | `string`                                       | No       | The associate form of the combobox.                                                                                                                                                                                                  |
+| `highlightedValue`        | `string`                                       | No       | The controlled highlighted value of the combobox                                                                                                                                                                                     |
+| `id`                      | `string`                                       | No       | The unique identifier of the machine.                                                                                                                                                                                                |
+| `ids`                     | `Partial<Parts>`                               | No       | The ids of the elements in the combobox. Useful for composition.                                                                                                                                                                     |
+| `immediate`               | `boolean`                                      | No       | Whether to synchronize the present change immediately or defer it to the next frame                                                                                                                                                  |
+| `inputBehavior`           | `'none'  \| 'autohighlight' \| 'autocomplete'` | No       | Defines the auto-completion behavior of the combobox. `autohighlight`: The first focused item is highlighted as the user types, `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated |
+| `inputValue`              | `string`                                       | No       | The controlled value of the combobox's input                                                                                                                                                                                         |
+| `invalid`                 | `boolean`                                      | No       | Whether the combobox is invalid                                                                                                                                                                                                      |
+| `lazyMount`               | `boolean`                                      | No       | Whether to enable lazy mounting                                                                                                                                                                                                      |
+| `loopFocus`               | `boolean`                                      | No       | Whether to loop the keyboard navigation through the items                                                                                                                                                                            |
+| `multiple`                | `boolean`                                      | No       | Whether to allow multiple selection. **Good to know:** When `multiple` is `true`, the `selectionBehavior` is automatically set to `clear`. It is recommended to render the selected items in a separate container.                   |
+| `name`                    | `string`                                       | No       | The `name` attribute of the combobox's input. Useful for form submission                                                                                                                                                             |
+| `navigate`                | `(details: NavigateDetails) => void`           | No       | Function to navigate to the selected item                                                                                                                                                                                            |
+| `onExitComplete`          | `VoidFunction`                                 | No       | Function called when the animation ends in the closed state                                                                                                                                                                          |
+| `onFocusOutside`          | `(event: FocusOutsideEvent) => void`           | No       | Function called when the focus is moved outside the component                                                                                                                                                                        |
+| `onHighlightChange`       | `(details: HighlightChangeDetails<T>) => void` | No       | Function called when an item is highlighted using the pointer or keyboard navigation.                                                                                                                                                |
+| `onInputValueChange`      | `(details: InputValueChangeDetails) => void`   | No       | Function called when the input's value changes                                                                                                                                                                                       |
+| `onInteractOutside`       | `(event: InteractOutsideEvent) => void`        | No       | Function called when an interaction happens outside the component                                                                                                                                                                    |
+| `onOpenChange`            | `(details: OpenChangeDetails) => void`         | No       | Function called when the popup is opened                                                                                                                                                                                             |
+| `onPointerDownOutside`    | `(event: PointerDownOutsideEvent) => void`     | No       | Function called when the pointer is pressed down outside the component                                                                                                                                                               |
+| `onSelect`                | `(details: SelectionDetails) => void`          | No       | Function called when an item is selected                                                                                                                                                                                             |
+| `onValueChange`           | `(details: ValueChangeDetails<T>) => void`     | No       | Function called when a new item is selected                                                                                                                                                                                          |
+| `open`                    | `boolean`                                      | No       | The controlled open state of the combobox                                                                                                                                                                                            |
+| `openOnChange`            | `boolean`                                      | No       | Whether to show the combobox when the input value changes                                                                                                                                                                            |
+| `openOnClick`             | `boolean`                                      | No       | Whether to open the combobox popup on initial click on the input                                                                                                                                                                     |
+| `openOnKeyPress`          | `boolean`                                      | No       | Whether to open the combobox on arrow key press                                                                                                                                                                                      |
+| `placeholder`             | `string`                                       | No       | The placeholder text of the combobox's input                                                                                                                                                                                         |
+| `positioning`             | `PositioningOptions`                           | No       | The positioning options to dynamically position the menu                                                                                                                                                                             |
+| `present`                 | `boolean`                                      | No       | Whether the node is present (controlled by the user)                                                                                                                                                                                 |
+| `readOnly`                | `boolean`                                      | No       | Whether the combobox is readonly. This puts the combobox in a "non-editable" mode but the user can still interact with it                                                                                                            |
+| `required`                | `boolean`                                      | No       | Whether the combobox is required                                                                                                                                                                                                     |
+| `scrollToIndexFn`         | `(details: ScrollToIndexDetails) => void`      | No       | Function to scroll to a specific index                                                                                                                                                                                               |
+| `selectionBehavior`       | `'clear' \| 'replace' \| 'preserve'`           | No       | The behavior of the combobox input when an item is selected. `replace`: The selected item string is set as the input value, `clear`: The input value is cleared, `preserve`: The input value is preserved                            |
+| `skipAnimationOnMount`    | `boolean`                                      | No       | Whether to allow the initial presence animation.                                                                                                                                                                                     |
+| `translations`            | `IntlTranslations`                             | No       | Specifies the localized strings that identifies the accessibility elements and their states                                                                                                                                          |
+| `unmountOnExit`           | `boolean`                                      | No       | Whether to unmount on exit.                                                                                                                                                                                                          |
+| `value` \| `string[]`     | No                                             | No       | The controlled value of the combobox's selected items                                                                                                                                                                                |
+
+### Root Data Attributes:
+
+| Attribute         | Value                  |
+| ----------------- | ---------------------- |
+| `[data-scope]`    | combobox               |
+| `[data-part]`     | root                   |
+| `[data-invalid]`  | Present when invalid   |
+| `[data-readonly]` | Present when read-only |
+
+### ClearTrigger Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### ClearTrigger Data Attributes:
+
+| Attribute        | Value                |
+| ---------------- | -------------------- |
+| `[data-scope]`   | combobox             |
+| `[data-part]`    | clear-trigger        |
+| `[data-invalid]` | Present when invalid |
+
+### Content Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Content Data Attributes:
+
+| Attribute           | Value                             |
+| ------------------- | --------------------------------- |
+| `[data-scope]`      | combobox                          |
+| `[data-part]`       | content                           |
+| `[data-state]`      | "open" \| "closed"                |
+| `[data-nested]`     | listbox                           |
+| `[data-has-nested]` | listbox                           |
+| `[data-placement]`  | The placement of the content      |
+| `[data-empty]`      | Present when the content is empty |
+
+#### Content CSS Variables:
+
+| Variable               | Description                                     |
+| ---------------------- | ----------------------------------------------- |
+| `--layer-index`        | The index of the dismissable in the layer stack |
+| `--nested-layer-count` | The number of nested comboboxs                  |
+
+### Control Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Control Data Attributes:
+
+| Attribute         | Value                 |
+| ----------------- | --------------------- |
+| `[data-scope]`    | combobox              |
+| `[data-part]`     | control               |
+| `[data-state]`    | "open" \| "closed"    |
+| `[data-focus]`    | Present when focused  |
+| `[data-disabled]` | Present when disabled |
+| `[data-invalid]`  | Present when invalid  |
+
+### Input Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Input Data Attributes:
+
+| Attribute          | Value                |
+| ------------------ | -------------------- |
+| `[data-scope]`     | combobox             |
+| `[data-part]`      | input                |
+| `[data-invalid]`   | Present when invalid |
+| `[data-autofocus]` |                      |
+| `[data-state]`     | "open" \| "closed"   |
+
+#### ItemGroupLabel Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### ItemGroup Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### ItemGroup Data Attributes:
+
+| Attribute      | Value                             |
+| -------------- | --------------------------------- |
+| `[data-scope]` | combobox                          |
+| `[data-part]`  | item-group                        |
+| `[data-empty]` | Present when the content is empty |
+
+### ItemIndicator Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### ItemIndicator Data Attributes:
+
+| Attribute      | Value                    |
+| -------------- | ------------------------ |
+| `[data-scope]` | combobox                 |
+| `[data-part]`  | item-indicator           |
+| `[data-state]` | "checked" \| "unchecked" |
+
+### Item Props:
+
+| Prop           | Type      | Required | Description                                                                                         |
+| -------------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild`      | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+| `item`         | `any`     | No       | The item to render                                                                                  |
+| `persistFocus` | `boolean` | No       | Whether hovering outside should clear the highlighted state                                         |
+
+#### Item Data Attributes:
+
+| Attribute            | Value                    |
+| -------------------- | ------------------------ |
+| `[data-scope]`       | combobox                 |
+| `[data-part]`        | item                     |
+| `[data-highlighted]` | Present when highlighted |
+| `[data-state]`       | "checked" \| "unchecked" |
+| `[data-disabled]`    | Present when disabled    |
+| `[data-value]`       | The value of the item    |
+
+### ItemText Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### ItemText Data Attributes:
+
+| Attribute            | Value                    |
+| -------------------- | ------------------------ |
+| `[data-scope]`       | combobox                 |
+| `[data-part]`        | item-text                |
+| `[data-state]`       | "checked" \| "unchecked" |
+| `[data-disabled]`    | Present when disabled    |
+| `[data-highlighted]` | Present when highlighted |
+
+### Label Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Label Data Attributes:
+
+| Attribute         | Value                  |
+| ----------------- | ---------------------- |
+| `[data-scope]`    | combobox               |
+| `[data-part]`     | label                  |
+| `[data-readonly]` | Present when read-only |
+| `[data-disabled]` | Present when disabled  |
+| `[data-invalid]`  | Present when invalid   |
+| `[data-required]` | Present when required  |
+| `[data-focus]`    | Present when focused   |
+
+### List Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### List Data Attributes:
+
+| Attribute      | Value                             |
+| -------------- | --------------------------------- |
+| `[data-scope]` | combobox                          |
+| `[data-part]`  | list                              |
+| `[data-empty]` | Present when the content is empty |
+
+### Positioner Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Positioner CSS Variables:
+
+| Variable             | Description                         |
+| -------------------- | ----------------------------------- |
+| `--reference-width`  | The width of the reference element  |
+| `--reference-height` | The height of the root              |
+| `--available-width`  | The available width in viewport     |
+| `--available-height` | The available height in viewport    |
+| `--x`                | The x position for transform        |
+| `--y`                | The y position for transform        |
+| `--z-index`          | The z-index value                   |
+| `--transform-origin` | The transform origin for animations |
+
+### RootProvider Props:
+
+| Prop                   | Type                   | Required | Description                                                                                         |
+| ---------------------- | ---------------------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `value`                | `UseComboboxReturn<T>` | Yes      |                                                                                                     |
+| `asChild`              | `boolean`              | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+| `immediate`            | `boolean`              | No       | Whether to synchronize the present change immediately or defer it to the next frame                 |
+| `lazyMount`            | `boolean`              | No       | Whether to enable lazy mounting                                                                     |
+| `onExitComplete`       | `VoidFunction`         | No       | Function called when the animation ends in the closed state                                         |
+| `present`              | `boolean`              | No       | Whether the node is present (controlled by the user)                                                |
+| `skipAnimationOnMount` | `boolean`              | No       | Whether to allow the initial presence animation.                                                    |
+| `unmountOnExit`        | `boolean`              | No       | Whether to unmount on exit.                                                                         |
+
+### Trigger Props:
+
+| Prop        | Type      | Required | Description                                                                                         |
+| ----------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild`   | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+| `focusable` | `boolean` | No       | Whether the trigger is focusable                                                                    |
+
+#### Trigger Data Attributes:
+
+| Attribute          | Value                  |
+| ------------------ | ---------------------- |
+| `[data-scope]`     | combobox               |
+| `[data-part]`      | trigger                |
+| `[data-state]`     | "open" \| "closed"     |
+| `[data-invalid]`   | Present when invalid   |
+| `[data-focusable]` |                        |
+| `[data-readonly]`  | Present when read-only |
+| `[data-disabled]`  | Present when disabled  |
+
+## Hooks
 
 ### useStatefulCollection
 
 The `useStatefulCollection` function is a utility hook that creates a collection of options and filters the list based on the user input.
 
-```ts
-function useStatefulCollection(
-  initialItems: SelectCollectionItem[] = [],
-): StatefulCollectionReturn
-```
-
 #### Returns
 
-| Name     | Description                            |
-| -------- | -------------------------------------- |
-| collection  | The collection of options. |
-| filterChars  | The filter value split into an Array of chars. |
-| handleInputChange | The function to pass to `onInputValueChange`. |
+| Name              | Description                                    |
+| ----------------- | ---------------------------------------------- |
+| collection        | The collection of options.                     |
+| filterChars       | The filter value split into an Array of chars. |
+| handleInputChange | The function to pass to `onInputValueChange`.  |
 
 ### Parts
 
@@ -409,18 +472,18 @@ The `ComboboxParts` API is an Object containing the full family of components.
 
 <NoteAdmonition description="It is best to only use the ComboboxParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
-| Name     | Description                            |
-| -------- | -------------------------------------- |
-| Root     | The `ComboboxRoot` component which is the Provider for the family. |
-| Label     | The `ComboboxLabel` component which displays the label. |
-| Control     | The `ComboboxControl` component which is the container for the visual field. |
-| Input     | The `ComboboxInput` component which is the visual field. |
-| Trigger     | The `ComboboxTrigger` component which is the trigger for the dropdown. |
-| ClearTrigger     | The `ComboboxClearTrigger` component which is the trigger to clear the value. |
-| Positioner | The `ComboboxPositioner` component which is controls the positioning for the dropdown. |
-| Content  | The `ComboboxContent` component which is the dropdown itself. |
-| ItemGroup | The `ComboboxItemGroup` component which is the group of options in the dropdown. |
-| ItemGroupLabel | The `ComboboxItemGroupLabel` component which is the label for the group of options. |
-| Item     | The `ComboboxItem` component which is the option in the dropdown. |
-| ItemText | The `ComboboxItemText` component which is the text label of the option. |
-| ItemIndicator | The `ComboboxItemIndicator` component which displays based on the `checked` state. |
+| Name           | Description                                                                            |
+| -------------- | -------------------------------------------------------------------------------------- |
+| Root           | The `ComboboxRoot` component which is the Provider for the family.                     |
+| Label          | The `ComboboxLabel` component which displays the label.                                |
+| Control        | The `ComboboxControl` component which is the container for the visual field.           |
+| Input          | The `ComboboxInput` component which is the visual field.                               |
+| Trigger        | The `ComboboxTrigger` component which is the trigger for the dropdown.                 |
+| ClearTrigger   | The `ComboboxClearTrigger` component which is the trigger to clear the value.          |
+| Positioner     | The `ComboboxPositioner` component which is controls the positioning for the dropdown. |
+| Content        | The `ComboboxContent` component which is the dropdown itself.                          |
+| ItemGroup      | The `ComboboxItemGroup` component which is the group of options in the dropdown.       |
+| ItemGroupLabel | The `ComboboxItemGroupLabel` component which is the label for the group of options.    |
+| Item           | The `ComboboxItem` component which is the option in the dropdown.                      |
+| ItemText       | The `ComboboxItemText` component which is the text label of the option.                |
+| ItemIndicator  | The `ComboboxItemIndicator` component which displays based on the `checked` state.     |

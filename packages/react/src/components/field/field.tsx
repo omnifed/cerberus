@@ -1,15 +1,11 @@
 import { type FieldRootProps } from '@ark-ui/react/field'
+import { ReactNode } from 'react'
 import { HStack } from 'styled-system/jsx'
 import type { CerberusPrimitiveProps } from '../../system/types'
 import { splitProps } from '../../utils/index'
 import { Show } from '../show/index'
-import {
-  FieldErrorText,
-  FieldHelperText,
-  FieldLabel,
-  FieldRoot,
-} from './primitives'
 import { HelperText } from './helper-text'
+import { FieldErrorText, FieldHelperText, FieldLabel, FieldRoot } from './primitives'
 
 export interface FieldProps extends FieldRootProps {
   /**
@@ -19,7 +15,7 @@ export interface FieldProps extends FieldRootProps {
   /**
    * The helper text of the field.
    */
-  helperText?: string
+  helperText?: ReactNode
   /**
    * A helper text positioned at the end of the field. Good for Textarea fields.
    */
@@ -70,17 +66,13 @@ export function Field(props: CerberusPrimitiveProps<FieldProps>) {
   return (
     <FieldRoot {...statusProps} {...rootProps}>
       <Show when={fieldProps.label}>
-        <FieldLabel hideLabel={fieldProps.hideLabel}>
-          {fieldProps.label}
-        </FieldLabel>
+        <FieldLabel hideLabel={fieldProps.hideLabel}>{fieldProps.label}</FieldLabel>
       </Show>
 
       {fieldProps.children}
 
       <HStack justifyContent="space-between" w="full">
-        <HelperText invalid={statusProps.invalid}>
-          {fieldProps.helperText}
-        </HelperText>
+        <HelperText invalid={statusProps.invalid}>{fieldProps.helperText}</HelperText>
 
         <FieldErrorText>{fieldProps.errorText}</FieldErrorText>
 

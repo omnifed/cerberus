@@ -2,6 +2,7 @@ import type { ElementType } from 'react'
 import {
   ComboboxClearTrigger,
   ComboboxContent,
+  ComboboxContext,
   ComboboxControl,
   ComboboxInput,
   ComboboxItem,
@@ -21,6 +22,10 @@ import {
  */
 
 interface ComboboxPartsValue {
+  /**
+   * A uitility component to pass the context without a hook.
+   */
+  Context: ElementType
   /**
    * The context provider for the Select component.
    */
@@ -85,6 +90,7 @@ interface ComboboxPartsValue {
  * the entire family of components vs. only what you use.
  */
 export const ComboboxParts: ComboboxPartsValue = {
+  Context: ComboboxContext,
   Root: ComboboxRoot,
   Label: ComboboxLabel,
   Control: ComboboxControl,
