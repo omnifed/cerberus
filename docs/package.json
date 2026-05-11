@@ -31,7 +31,7 @@
     "@cerberus/preset-cerberus-theme": "workspace:*",
     "@cerberus/preset-elysium-theme": "workspace:*",
     "@csstools/postcss-cascade-layers": "^6.0.0",
-    "@expressive-code/plugin-line-numbers": "^0.41.7",
+    "@expressive-code/plugin-line-numbers": "^0.42.0",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.2.4",
