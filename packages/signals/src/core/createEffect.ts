@@ -1,5 +1,11 @@
-import { activeObserver, activeOwner, cleanNode, setActiveContext } from './scheduler'
-import type { Observer } from './types'
+import {
+  activeObserver,
+  activeOwner,
+  cleanNode,
+  endTracking,
+  setActiveContext,
+} from './scheduler'
+import { EffectNode, NodeFlags, Owner } from './types'
 
 /**
  * ## Reactive Side Effects
@@ -34,38 +40,15 @@ import type { Observer } from './types'
  * ## Resources
  * [Cerberus Signals Docs](https://cerberus.digitalu.design/docs/signals/overview)
  */
-// createEffect.ts
-
 export function createEffect(fn: () => void | (() => void)): () => void {
-  const effect: Observer = {
-    dependencies: new Set(),
-    depth: 0,
+  const effect: EffectNode = {
+    deps: null,
+    depsTail: null,
+    flags: NodeFlags.Dirty, // start dirty — run immediately
+    height: 0,
     owned: null,
     cleanups: null,
-
-    execute() {
-      cleanNode(effect)
-      effect.cleanup()
-      effect.depth = 0
-
-      const prevObserver = activeObserver
-      const prevOwner = activeOwner
-      setActiveContext(effect, effect)
-
-      try {
-        const cleanupFn = fn()
-        if (typeof cleanupFn === 'function') {
-          if (effect.cleanups === null) effect.cleanups = []
-          effect.cleanups.push(cleanupFn)
-        }
-      } finally {
-        setActiveContext(prevObserver, prevOwner)
-      }
-    },
-    cleanup() {
-      for (const dep of effect.dependencies) dep.observers.delete(effect)
-      effect.dependencies.clear()
-    },
+    fn,
   }
 
   if (activeOwner !== null) {
@@ -73,10 +56,32 @@ export function createEffect(fn: () => void | (() => void)): () => void {
     activeOwner.owned.push(effect)
   }
 
-  effect.execute()
+  // Immediate first run (outside scheduler — same as v1.3)
+  runEffect(effect)
 
   return () => {
     cleanNode(effect)
-    effect.cleanup()
+    endTracking(effect)
+  }
+}
+
+// Internal — called by the scheduler flush and on first run
+
+export function runEffect(effect: EffectNode): void {
+  endTracking(effect) // prune stale deps from previous run
+
+  const prevObserver = activeObserver
+  const prevOwner = activeOwner
+  setActiveContext(effect, effect as Owner)
+  effect.flags &= ~(NodeFlags.Dirty | NodeFlags.Check)
+
+  try {
+    const cleanup = effect.fn()
+    if (typeof cleanup === 'function') {
+      if (effect.cleanups === null) effect.cleanups = []
+      effect.cleanups.push(cleanup)
+    }
+  } finally {
+    setActiveContext(prevObserver, prevOwner)
   }
 }

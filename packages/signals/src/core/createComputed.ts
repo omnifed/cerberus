@@ -1,11 +1,18 @@
 import {
   activeObserver,
   activeOwner,
-  cleanNode,
-  schedule,
+  endTracking,
+  propagate,
   setActiveContext,
+  trackDep,
 } from './scheduler'
-import type { Accessor, Observable, Observer } from './types'
+import {
+  NodeFlags,
+  type Accessor,
+  type ComputedNode,
+  type EffectNode,
+  type Owner,
+} from './types'
 
 /**
  * ## Creating a Computed Value
@@ -29,72 +36,107 @@ import type { Accessor, Observable, Observer } from './types'
  * [Cerberus Signals Docs](https://cerberus.digitalu.design/docs/signals/overview)
  */
 export function createComputed<T>(fn: () => T): Accessor<T> {
-  let value: T
-  let isStale: boolean = true
-  let isEvaluating: boolean = false
-
-  const node: Observable & Observer = {
-    observers: new Set(),
-    dependencies: new Set(),
-    depth: 0,
+  const node: ComputedNode<T> = {
+    value: undefined as T,
+    subs: null,
+    subsTail: null,
+    deps: null,
+    depsTail: null,
+    flags: NodeFlags.Dirty, // start dirty — first read triggers evaluation
+    height: 0,
+    fn,
     owned: null,
     cleanups: null,
-    execute() {
-      if (isStale) return
-      isStale = true
-      const currentObservers = Array.from(node.observers)
-      for (const observer of currentObservers) {
-        schedule(observer)
-      }
-    },
-    cleanup() {
-      for (const dep of node.dependencies) dep.observers.delete(node)
-      node.dependencies.clear()
-    },
   }
 
-  // Link to active parent owner immediately
+  // Register with active owner for cleanup
   if (activeOwner !== null) {
     if (activeOwner.owned === null) activeOwner.owned = []
     activeOwner.owned.push(node)
   }
 
   const getter: Accessor<T> = () => {
-    if (isEvaluating) {
+    // Circular dependency guard
+    if (node.flags & NodeFlags.Running) {
       throw new Error('Cerberus Signals: Circular dependency detected in computed.')
     }
 
-    if (isStale) {
-      cleanNode(node)
-      node.cleanup()
-      node.depth = 0 // Reset depth
-
-      const prevObserver = activeObserver
-      const prevOwner = activeOwner
-      setActiveContext(node, node)
-      isEvaluating = true
-
-      try {
-        value = fn()
-        isStale = false
-      } finally {
-        isEvaluating = false
-        setActiveContext(prevObserver, prevOwner)
-      }
+    // Lazily resolve if stale
+    if (node.flags & (NodeFlags.Dirty | NodeFlags.Check)) {
+      resolveComputed(node)
     }
 
-    // --- TOPOLOGICAL SORT UPDATE ---
-    // Register the dependency AFTER evaluation so node.depth is 100% accurate
-    if (activeObserver) {
-      node.observers.add(activeObserver)
-      activeObserver.dependencies.add(node)
-      if (activeObserver.depth <= node.depth) {
-        activeObserver.depth = node.depth + 1
-      }
+    // Register this computed as a dependency of the outer context
+    if (activeObserver !== null) {
+      trackDep(node as ComputedNode<unknown>, activeObserver)
     }
 
-    return value
+    return node.value
   }
 
   return getter
+}
+
+// Internal - called by the scheduler flush and on first run
+
+/**
+ * Forces a computed to re-evaluate if it is Dirty or Check-resolved-to-Dirty.
+ * Called lazily from updateIfNecessary — never from the scheduler directly.
+ */
+export function resolveComputed(node: ComputedNode<unknown>): void {
+  if (node.flags & NodeFlags.Dirty) {
+    _rerunComputed(node)
+    return
+  }
+
+  if (node.flags & NodeFlags.Check) {
+    let link = node.deps
+    let needsRerun = false
+
+    while (link !== null) {
+      const dep = link.dep
+
+      if ('fn' in dep) {
+        const computed = dep as ComputedNode<unknown>
+
+        if (computed.flags & (NodeFlags.Dirty | NodeFlags.Check)) {
+          const prevValue = computed.value
+          resolveComputed(computed)
+          if (computed.value !== prevValue) {
+            needsRerun = true
+            break
+          }
+        }
+      }
+
+      link = link.nextDep
+    }
+
+    if (needsRerun) _rerunComputed(node)
+    else node.flags &= ~NodeFlags.Check
+  }
+}
+
+function _rerunComputed<T>(node: ComputedNode<T>): void {
+  // Clean up stale deps from previous run
+  endTracking(node)
+
+  const prevObserver = activeObserver
+  const prevOwner = activeOwner
+  setActiveContext(node as unknown as EffectNode, node as Owner)
+  node.flags = (node.flags & ~(NodeFlags.Dirty | NodeFlags.Check)) | NodeFlags.Running
+
+  try {
+    const newValue = node.fn()
+    node.flags &= ~NodeFlags.Running
+
+    if (newValue !== node.value) {
+      node.value = newValue
+      // Value changed — propagate to subscribers
+      propagate(node as ComputedNode<unknown>)
+    }
+  } finally {
+    node.flags &= ~NodeFlags.Running
+    setActiveContext(prevObserver, prevOwner)
+  }
 }
