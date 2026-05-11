@@ -233,7 +233,7 @@ export function updateIfNecessary(sub: ComputedNode<unknown> | EffectNode): bool
 // Batching
 
 // Keep for backward compat if needed, but migrate internal usage
-export const batchedObservers: Set<Observer> = new Set<Observer>()
+export const batchedObservers: Set<EffectNode> = new Set<EffectNode>()
 
 const observerQueue: Set<EffectNode>[] = []
 let maxDepth = 0
