@@ -34,7 +34,7 @@
     "@types/react": "^19.2.14",
     "mitata": "^1.0.34",
     "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "react-dom": "^19.2.6",
     "styled-system": "workspace:*"
   }
 }
