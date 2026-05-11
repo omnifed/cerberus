@@ -20,6 +20,8 @@ export function setActiveContext(observer: EffectNode | null, owner: Owner | nul
   activeOwner = owner
 }
 
+// Engine
+
 /**
  * Called when a reactive node is READ inside an active computation.
  * Links dep → sub in O(1). Zero allocation when dep order is stable
@@ -99,27 +101,23 @@ function unlinkDep(link: Link): void {
   else dep.subs = nextSub
 }
 
-/**
- * @deprecated
- */
-export function schedule(observer: EffectNode): void {
-  const depth = observer.depth
-  if (!observerQueue[depth]) {
-    observerQueue[depth] = new Set()
-  }
+// export function schedule(observer: EffectNode): void {
+//   const depth = observer.depth
+//   if (!observerQueue[depth]) {
+//     observerQueue[depth] = new Set()
+//   }
 
-  observerQueue[depth].add(observer)
-  if (depth > maxDepth) maxDepth = depth
+//   observerQueue[depth].add(observer)
+//   if (depth > maxDepth) maxDepth = depth
 
-  if (!isBatching && !isFlushing) flush()
-}
+//   if (!isBatching && !isFlushing) _flush()
+// }
 
 export function cleanNode(owner: Owner) {
   if (owner.owned !== null) {
     for (let i = 0; i < owner.owned.length; i++) {
       const child = owner.owned[i]
       cleanNode(child)
-      if ('cleanup' in child) (child as EffectNode).cleanup()
     }
     owner.owned = null
   }
@@ -262,7 +260,7 @@ export function batch<T>(fn: () => T): void {
   } finally {
     isBatching = false
     // Only flush if we aren't already in the middle of a flush cycle
-    if (!isFlushing) flush()
+    if (!isFlushing) _flush()
   }
 }
 
@@ -297,8 +295,10 @@ export function untrack<T>(signal: Accessor<T>): T {
 
 // Private
 
-function flush(): void {
+function _flush(): void {
+  if (maxDepth === 0) return
   if (isFlushing) return
+
   isFlushing = true
 
   try {
@@ -309,20 +309,11 @@ function flush(): void {
 
         if (updateIfNecessary(effect)) {
           try {
-            runEffect(effect) // was: observer.execute()
+            runEffect(effect)
           } catch (err) {
             console.error('Cerberus Signals: Unhandled error in effect', err)
           }
         }
-        // if (bucket && bucket.size > 0) {
-        //   for (const observer of bucket) {
-        //     bucket.delete(observer)
-        //     try {
-        //       observer.execute()
-        //     } catch (err) {
-        //       console.error('Cerberus Signals: Unhandled error in observer', err)
-        //     }
-        //   }
       }
     }
   } finally {

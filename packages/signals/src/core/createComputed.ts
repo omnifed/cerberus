@@ -68,7 +68,7 @@ export function createComputed<T>(fn: () => T): Accessor<T> {
 
     // Register this computed as a dependency of the outer context
     if (activeObserver !== null) {
-      trackDep(node as ComputedNode<unknown>, activeObserver)
+      trackDep(node as ComputedNode<T>, activeObserver)
     }
 
     return node.value
@@ -83,7 +83,7 @@ export function createComputed<T>(fn: () => T): Accessor<T> {
  * Forces a computed to re-evaluate if it is Dirty or Check-resolved-to-Dirty.
  * Called lazily from updateIfNecessary — never from the scheduler directly.
  */
-export function resolveComputed(node: ComputedNode<unknown>): void {
+export function resolveComputed<T>(node: ComputedNode<T>): void {
   if (node.flags & NodeFlags.Dirty) {
     _rerunComputed(node)
     return

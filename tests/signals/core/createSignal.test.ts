@@ -5,6 +5,7 @@ describe('createSignal', () => {
   test('should return an accessor function', () => {
     const [get] = createSignal<string>('1')
     expect(typeof get).toBe('function')
+    expect(get()).toBe('1')
   })
 
   test('should return a setter function', () => {
@@ -17,5 +18,7 @@ describe('createSignal', () => {
     expect(get()).toBe('1')
     set('2')
     expect(get()).toBe('2')
+    set((prev) => prev + '3')
+    expect(get()).toBe('23')
   })
 })
