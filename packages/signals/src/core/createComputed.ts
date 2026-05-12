@@ -1,6 +1,7 @@
 import {
   activeObserver,
   activeOwner,
+  cleanNode,
   endTracking,
   propagate,
   setActiveContext,
@@ -118,8 +119,8 @@ export function resolveComputed<T>(node: ComputedNode<T>): void {
 }
 
 function _rerunComputed<T>(node: ComputedNode<T>): void {
-  // Reset the tail to start O(1) link reuse from the beginning
   node.depsTail = null
+  cleanNode(node)
 
   const prevObserver = activeObserver
   const prevOwner = activeOwner
@@ -129,9 +130,9 @@ function _rerunComputed<T>(node: ComputedNode<T>): void {
   try {
     const newValue = node.fn()
     node.flags &= ~NodeFlags.Running
+
     if (newValue !== node.value) {
       node.value = newValue
-      // Value changed — propagate to subscribers
       propagate(node as ComputedNode<unknown>)
     }
   } finally {

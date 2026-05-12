@@ -70,6 +70,8 @@ export function createEffect(fn: () => void | (() => void)): () => void {
 export function runEffect(effect: EffectNode): void {
   effect.depsTail = null
 
+  cleanNode(effect)
+
   const prevObserver = activeObserver
   const prevOwner = activeOwner
   setActiveContext(effect, effect as Owner)
