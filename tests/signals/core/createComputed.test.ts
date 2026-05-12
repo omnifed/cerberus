@@ -5,9 +5,8 @@ describe('createComputed', () => {
   test('should return a computed value', () => {
     const [firstName, setFirstName] = createSignal<string>('John')
     const [lastName, setLastName] = createSignal<string>('Doe')
-    const fullName = createComputed<string>(
-      () => `${firstName()} ${lastName()}`,
-    )
+
+    const fullName = createComputed<string>(() => `${firstName()} ${lastName()}`)
 
     expect(fullName()).toBe('John Doe')
     setFirstName('Jane')
