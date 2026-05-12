@@ -78,8 +78,7 @@ export function CustomConfigDemo() {
           onClick={() => {
             customToaster.create({
               title: 'Custom Toaster',
-              description:
-                'This notification is using a custom toaster configuration.',
+              description: 'This notification is using a custom toaster configuration.',
               type: 'success',
             })
           }}
@@ -129,11 +128,21 @@ export function SubtleDemo() {
 
   return (
     <HStack>
-      <Button onClick={handleInfo}>info-subtle</Button>
-      <Button onClick={handleSuccess}>success-subtle</Button>
-      <Button onClick={handleWarning}>warning-subtle</Button>
-      <Button onClick={handleError}>error-subtle</Button>
-      <Button onClick={handleLoading}>loading-subtle</Button>
+      <Button size="sm" onClick={handleInfo}>
+        info-subtle
+      </Button>
+      <Button size="sm" onClick={handleSuccess}>
+        success-subtle
+      </Button>
+      <Button size="sm" onClick={handleWarning}>
+        warning-subtle
+      </Button>
+      <Button size="sm" onClick={handleError}>
+        error-subtle
+      </Button>
+      <Button size="sm" onClick={handleLoading}>
+        loading-subtle
+      </Button>
     </HStack>
   )
 }

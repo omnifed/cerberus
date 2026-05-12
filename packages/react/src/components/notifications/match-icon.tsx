@@ -19,7 +19,7 @@ export function MatchNotificationIcon(props: NotifyOptions) {
   const type = props.type?.split('-')[0] || 'info'
   const styles = toast()
 
-  const key = `${type}Notification` as keyof typeof icons
+  const key = getToastIconKey(type) as keyof typeof icons
   const Icon = icons[key] || ToastLoadingIcon
 
   return (
@@ -31,4 +31,9 @@ export function MatchNotificationIcon(props: NotifyOptions) {
 
 function ToastLoadingIcon() {
   return <Spinner size="1rem" />
+}
+
+function getToastIconKey(type: string): string {
+  if (type === 'error') return type
+  return `${type}Notification`
 }

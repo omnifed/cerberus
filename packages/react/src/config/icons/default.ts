@@ -51,6 +51,7 @@ export const defaultIcons: Required<DefinedIcons> = {
   dangerNotification: WarningFilled,
   decrement: ChevronDown,
   delete: TrashCan,
+  error: WarningFilled,
   fileUploader: AnimatingUploadIcon,
   filter: Filter,
   filterEdit: FilterEdit,
