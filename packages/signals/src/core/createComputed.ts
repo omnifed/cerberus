@@ -141,27 +141,3 @@ function _rerunComputed<T>(node: ComputedNode<T>): void {
 
   endTracking(node)
 }
-
-// function _rerunComputed<T>(node: ComputedNode<T>): void {
-//   // Clean up stale deps from previous run
-//   endTracking(node)
-
-//   const prevObserver = activeObserver
-//   const prevOwner = activeOwner
-//   setActiveContext(node as unknown as EffectNode, node as Owner)
-//   node.flags = (node.flags & ~(NodeFlags.Dirty | NodeFlags.Check)) | NodeFlags.Running
-
-//   try {
-//     const newValue = node.fn()
-//     node.flags &= ~NodeFlags.Running
-
-//     if (newValue !== node.value) {
-//       node.value = newValue
-//       // Value changed — propagate to subscribers
-//       propagate(node as ComputedNode<unknown>)
-//     }
-//   } finally {
-//     node.flags &= ~NodeFlags.Running
-//     setActiveContext(prevObserver, prevOwner)
-//   }
-// }

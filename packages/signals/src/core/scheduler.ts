@@ -101,18 +101,6 @@ function unlinkDep(link: Link): void {
   else dep.subs = nextSub
 }
 
-// export function schedule(observer: EffectNode): void {
-//   const depth = observer.depth
-//   if (!observerQueue[depth]) {
-//     observerQueue[depth] = new Set()
-//   }
-
-//   observerQueue[depth].add(observer)
-//   if (depth > maxDepth) maxDepth = depth
-
-//   if (!isBatching && !isFlushing) _flush()
-// }
-
 export function scheduleEffect(effect: EffectNode): void {
   const height = effect.height
   if (!observerQueue[height]) {
