@@ -68,12 +68,14 @@ export function createEffect(fn: () => void | (() => void)): () => void {
 // Internal — called by the scheduler flush and on first run
 
 export function runEffect(effect: EffectNode): void {
-  endTracking(effect) // prune stale deps from previous run
+  effect.depsTail = null
 
   const prevObserver = activeObserver
   const prevOwner = activeOwner
   setActiveContext(effect, effect as Owner)
-  effect.flags &= ~(NodeFlags.Dirty | NodeFlags.Check)
+
+  effect.flags =
+    (effect.flags & ~(NodeFlags.Dirty | NodeFlags.Check)) | NodeFlags.Running
 
   try {
     const cleanup = effect.fn()
@@ -82,6 +84,9 @@ export function runEffect(effect: EffectNode): void {
       effect.cleanups.push(cleanup)
     }
   } finally {
+    effect.flags &= ~NodeFlags.Running
     setActiveContext(prevObserver, prevOwner)
   }
+
+  endTracking(effect)
 }

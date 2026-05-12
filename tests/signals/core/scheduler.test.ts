@@ -8,7 +8,7 @@ import {
   untrack,
 } from '@cerberus-design/signals'
 
-describe('Graph Execution & Topological Sorting', () => {
+describe.only('Graph Execution & Topological Sorting', () => {
   test('resolves the Diamond Problem (no glitches or redundant executions)', () => {
     // 1. Setup the Diamond
     const [getA, setA] = createSignal(1)

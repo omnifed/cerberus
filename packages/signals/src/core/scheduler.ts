@@ -113,6 +113,17 @@ function unlinkDep(link: Link): void {
 //   if (!isBatching && !isFlushing) _flush()
 // }
 
+export function scheduleEffect(effect: EffectNode): void {
+  const height = effect.height
+  if (!observerQueue[height]) {
+    observerQueue[height] = new Set()
+  }
+
+  observerQueue[height].add(effect)
+  if (height > maxDepth) maxDepth = height
+  if (!isBatching && !isFlushing) _flush()
+}
+
 export function cleanNode(owner: Owner) {
   if (owner.owned !== null) {
     for (let i = 0; i < owner.owned.length; i++) {
@@ -140,20 +151,19 @@ export function propagate(node: SignalNode<unknown> | ComputedNode<unknown>): vo
 
   while (link !== null) {
     const sub = link.sub
-    const isComputed = 'fn' in sub
+    const isComputed = 'subs' in sub
 
     if (isComputed) {
       const computed = sub as ComputedNode<unknown>
-      if (!(computed.flags & (NodeFlags.Dirty | NodeFlags.Check))) {
+      if (!(computed.flags & (NodeFlags.Dirty | NodeFlags.Check | NodeFlags.Running))) {
         computed.flags |= NodeFlags.Dirty
-        // Computed's own subs only need Check — the computed hasn't re-run yet
-        propagateCheck(computed)
+        _propagateCheck(computed)
       }
     } else {
       const effect = sub as EffectNode
-      if (!(effect.flags & NodeFlags.Dirty)) {
+      if (!(effect.flags & (NodeFlags.Dirty | NodeFlags.Running))) {
         effect.flags |= NodeFlags.Dirty
-        runEffect(effect) // add to height-sorted queue
+        scheduleEffect(effect)
       }
     }
 
@@ -166,19 +176,17 @@ export function propagate(node: SignalNode<unknown> | ComputedNode<unknown>): vo
  * but has not yet re-evaluated. Subscribers of this computed should not be
  * marked Dirty (the computed might produce the same value), only Check.
  */
-function propagateCheck(node: ComputedNode<unknown>): void {
+function _propagateCheck(node: ComputedNode<unknown>): void {
   let link = node.subs
 
   while (link !== null) {
     const sub = link.sub
-
-    if (!(sub.flags & (NodeFlags.Dirty | NodeFlags.Check))) {
+    if (!(sub.flags & (NodeFlags.Dirty | NodeFlags.Check | NodeFlags.Running))) {
       sub.flags |= NodeFlags.Check
-
-      if ('fn' in sub) {
-        propagateCheck(sub as ComputedNode<unknown>)
+      if ('subs' in sub) {
+        _propagateCheck(sub as ComputedNode<unknown>)
       } else {
-        runEffect(sub as EffectNode)
+        scheduleEffect(sub as EffectNode)
       }
     }
 
@@ -296,15 +304,16 @@ export function untrack<T>(signal: Accessor<T>): T {
 // Private
 
 function _flush(): void {
-  if (maxDepth === 0) return
   if (isFlushing) return
-
   isFlushing = true
 
   try {
     for (let i = 0; i <= maxDepth; i++) {
       const bucket = observerQueue[i]
+      if (!bucket || bucket.size === 0) continue
+
       for (const effect of bucket) {
+        // Remove the effect from the queue immediately
         bucket.delete(effect)
 
         if (updateIfNecessary(effect)) {
