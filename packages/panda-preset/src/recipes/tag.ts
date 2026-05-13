@@ -49,8 +49,8 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         color: 'colorPalette.text.200',
         gradient: undefined,
         _secondaryActionPalette: {
-          bgColor: 'colorPalette.bg.initial',
-          color: 'colorPalette.text.100',
+          bgColor: 'secondaryAction.bg.initial',
+          color: 'secondaryAction.text.100',
         },
       },
       outlined: {
