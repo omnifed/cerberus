@@ -215,43 +215,31 @@ describe('conditions', () => {
   })
 
   test('should have a page', () => {
-    expect(conditions.page).toEqual(
-      '&:is([data-type=page], [data-type=page-subtle], [data-type=loading])',
-    )
+    expect(conditions.page).toEqual('&:is([data-type=page], [data-type=loading])')
   })
 
   test('should have a action', () => {
-    expect(conditions.action).toEqual(
-      '&:is([data-type=action], [data-type=action-subtle])',
-    )
+    expect(conditions.action).toEqual('&:is([data-type=action])')
   })
 
   test('should have a secondaryAction', () => {
-    expect(conditions.secondaryAction).toEqual(
-      '&:is([data-type=secondaryAction], [data-type=secondaryAction-subtle])',
-    )
+    expect(conditions.secondaryAction).toEqual('&:is([data-type=secondaryAction])')
   })
 
   test('should have a info', () => {
-    expect(conditions.info).toEqual('&:is([data-type=info], [data-type=info-subtle])')
+    expect(conditions.info).toEqual('&:is([data-type=info])')
   })
 
   test('should have a success', () => {
-    expect(conditions.success).toEqual(
-      '&:is([data-type=success], [data-type=success-subtle])',
-    )
+    expect(conditions.success).toEqual('&:is([data-type=success])')
   })
 
   test('should have a warning', () => {
-    expect(conditions.warning).toEqual(
-      '&:is([data-type=warning], [data-type=warning-subtle])',
-    )
+    expect(conditions.warning).toEqual('&:is([data-type=warning])')
   })
 
   test('should have a danger', () => {
-    expect(conditions.danger).toEqual(
-      '&:is([data-type=danger], [data-type=danger-subtle], [data-type=error])',
-    )
+    expect(conditions.danger).toEqual('&:is([data-type=danger], [data-type=error])')
   })
 
   test('should have a isComplete', () => {
@@ -302,5 +290,17 @@ describe('conditions', () => {
     expect(conditions.menuTrigger).toEqual(
       '& :where([data-scope=menu][data-part=trigger])',
     )
+  })
+
+  test('should have a highEmphasis', () => {
+    expect(conditions.highEmphasis).toEqual('&:is([data-emphasis=high])')
+  })
+
+  test('should have a subtleEmphasis', () => {
+    expect(conditions.subtleEmphasis).toEqual('&:is([data-emphasis=subtle])')
+  })
+
+  test('should have a lowEmphasis', () => {
+    expect(conditions.lowEmphasis).toEqual('&:is([data-emphasis=low])')
   })
 })

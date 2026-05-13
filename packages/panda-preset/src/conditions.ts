@@ -35,6 +35,7 @@ export const conditions = {
 
   // emphasis
   highEmphasis: '&:is([data-emphasis=high])',
+  subtleEmphasis: '&:is([data-emphasis=subtle])',
   lowEmphasis: '&:is([data-emphasis=low])',
 
   // dates
@@ -92,12 +93,11 @@ export const conditions = {
   dangerPalette: '&:is([data-palette=danger])',
 
   // palette types
-  page: '&:is([data-type=page], [data-type=page-subtle], [data-type=loading])',
-  action: '&:is([data-type=action], [data-type=action-subtle])',
-  secondaryAction:
-    '&:is([data-type=secondaryAction], [data-type=secondaryAction-subtle])',
-  info: '&:is([data-type=info], [data-type=info-subtle])',
-  success: '&:is([data-type=success], [data-type=success-subtle])',
-  warning: '&:is([data-type=warning], [data-type=warning-subtle])',
-  danger: '&:is([data-type=danger], [data-type=danger-subtle], [data-type=error])',
+  page: '&:is([data-type=page], [data-type=loading])',
+  action: '&:is([data-type=action])',
+  secondaryAction: '&:is([data-type=secondaryAction])',
+  info: '&:is([data-type=info])',
+  success: '&:is([data-type=success])',
+  warning: '&:is([data-type=warning])',
+  danger: '&:is([data-type=danger], [data-type=error])',
 }

@@ -16,11 +16,6 @@ import type { NotifyOptions } from './types'
  * @module 'notification/center'
  */
 
-export function getEmphasis(options: NotifyOptions) {
-  if (options.usage === 'subtle') return 'low'
-  return 'high'
-}
-
 export interface NotificationCenterProps {
   toaster?: CreateToasterReturn
 }
@@ -31,12 +26,24 @@ export interface NotificationCenterProps {
  */
 export function NotificationCenter(props: NotificationCenterProps) {
   const cachedToaster = useMemo(() => props.toaster || toaster, [props.toaster])
+  const typeToPalette = useMemo<Record<string, ButtonProps['palette']>>(
+    () => ({
+      info: 'info',
+      success: 'success',
+      warning: 'warning',
+      error: 'danger',
+    }),
+    [],
+  )
 
   return (
     <Toaster toaster={cachedToaster}>
       {(toast) => (
-        <NotificationParts.Root key={toast.id} data-emphasis={getEmphasis(toast)}>
-          <MatchNotificationIcon type={toast.type} />
+        <NotificationParts.Root
+          key={toast.id}
+          data-emphasis={(toast as NotifyOptions).usage ?? 'high'}
+        >
+          <MatchNotificationIcon {...toast} />
 
           <Box flex="1" paddingBlock="sm">
             <NotificationParts.Heading>{toast.title}</NotificationParts.Heading>
@@ -46,7 +53,7 @@ export function NotificationCenter(props: NotificationCenterProps) {
             <Show when={toast.action}>
               <NotificationParts.ActionTrigger asChild>
                 <Button
-                  palette={toast.type as ButtonProps['palette']}
+                  palette={typeToPalette[String(toast.type)]}
                   usage="ghost"
                   size="sm"
                 >

@@ -26,12 +26,14 @@ export interface DefinedIcons<T extends IconType = IconType> {
   decrement?: T
   delete?: T
   dangerNotification?: T
+  error?: T
   fileUploader?: T
   filter?: T
   filterEdit?: T
   filterClear?: T
   indeterminate?: T
   increment?: T
+  info?: T
   infoNotification?: T
   invalid?: T
   invalidAlt?: T
@@ -46,11 +48,13 @@ export interface DefinedIcons<T extends IconType = IconType> {
   selectChecked?: T
   sortAsc?: T
   sortDesc?: T
+  success?: T
   successNotification?: T
   table?: T
   toggleChecked?: T
   waitingFileUploader?: T
   warningNotification?: T
+  warning?: T
 }
 
 // types
