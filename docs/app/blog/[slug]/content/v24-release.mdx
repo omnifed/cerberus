@@ -13,13 +13,11 @@ tag: Release
 import BashTabs from '@/app/components/bash-tabs'
 import CodePreview from '@/app/components/CodePreview'
 
-import { LazyPreview} from '@/app/docs/components/[slug]/components/show/static'
+import { LazyPreview } from '@/app/docs/components/[slug]/components/show/static'
 import { HideValueTextPreview } from '@/app/docs/components/[slug]/components/progress/circular'
-import { OverviewPaletteTagPreview } from '@/app/docs/components/[slug]/components/tag/static'
+import { DEMOS } from '@/app/docs/components/[slug]/components/tag/static'
 import { NonDestructivePreview } from '@/app/docs/components/[slug]/components/prompt-modal/static'
-import {
-  CustomConfigDemo
-} from '@/app/docs/components/[slug]/components/notifications/static'
+import { CustomConfigDemo } from '@/app/docs/components/[slug]/components/notifications/static'
 
 Another release in the books with Cerberus v0.24! This update brings more stability with a few new customization features.
 
@@ -70,11 +68,7 @@ Just add the new `hideValueText` prop and your custom `ReactNode` label.
 function HideValueTextPreview() {
   return (
     <HStack justify="center" w="1/2">
-      <CircularProgress
-        defaultValue={0}
-        label={<NotStartedText />}
-        hideValueText
-      />
+      <CircularProgress defaultValue={0} label={<NotStartedText />} hideValueText />
     </HStack>
   )
 }
@@ -88,7 +82,7 @@ An overly stale API finally gets converted to use **Cerberus Primitives**. You c
 
 _No API changes._
 
-<CodePreview preview={<OverviewPaletteTagPreview />} />
+<CodePreview preview={<DEMOS.basic.preview />} />
 
 [Read the Tag Docs](/docs/components/tag)
 
@@ -112,7 +106,7 @@ You can now create a fully customized Toast Notification experience utilizing th
 <CodePreview preview={<CustomConfigDemo />} />
 
 ```tsx /createToaster/
-'use client';
+'use client'
 
 import { createToaster, NotificationCenter, Button } from '@cerberus/react'
 import { HStack } from 'styled-system/jsx'
@@ -131,8 +125,7 @@ function CustomConfigDemo() {
           onClick={() => {
             customToaster.create({
               title: 'Custom Toaster',
-              description:
-                'This notification is using a custom toaster configuration.',
+              description: 'This notification is using a custom toaster configuration.',
               type: 'success',
             })
           }}
