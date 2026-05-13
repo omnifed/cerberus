@@ -42,7 +42,7 @@ describe('toast recipe', () => {
       transitionProperty: 'translate, scale, opacity, height',
       transitionTimingFunction: 'default',
       userSelect: 'none',
-      _lowEmphasis: {
+      _subtleEmphasis: {
         bgColor: 'page.surface.200',
         borderLeft: '3px solid',
         borderLeftColor: 'colorPalette.border.initial',
@@ -58,25 +58,13 @@ describe('toast recipe', () => {
           colorPalette: 'page',
         },
       },
-      _info: {
-        colorPalette: 'info',
-      },
-      _success: {
-        colorPalette: 'success',
-      },
-      _warning: {
-        colorPalette: 'warning',
-      },
-      _danger: {
-        colorPalette: 'danger',
-      },
     })
   })
 
   test('should have a base.icon style', () => {
     expect(toast.base?.icon).toMatchObject({
       paddingInlineStart: 'md',
-      _lowEmphasis: {
+      _subtleEmphasis: {
         color: 'colorPalette.text.100',
       },
       _highEmphasis: {

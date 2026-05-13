@@ -4,7 +4,6 @@ import { ark } from '@ark-ui/react/factory'
 import { toast } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
 import { Spinner } from '../spinner/index'
-import { getEmphasis } from './center'
 import type { NotifyOptions } from './types'
 
 /**
@@ -16,14 +15,13 @@ import type { NotifyOptions } from './types'
 
 export function MatchNotificationIcon(props: NotifyOptions) {
   const { icons } = useCerberusContext()
-  const type = props.type?.split('-')[0] || 'info'
+  const type = (props.type || 'info') as keyof typeof icons
   const styles = toast()
 
-  const key = getToastIconKey(type) as keyof typeof icons
-  const Icon = icons[key] || ToastLoadingIcon
+  const Icon = icons[type] || ToastLoadingIcon
 
   return (
-    <ark.div data-emphasis={getEmphasis(props)} className={styles.icon}>
+    <ark.div data-emphasis={props.usage} className={styles.icon}>
       <Icon />
     </ark.div>
   )
@@ -31,9 +29,4 @@ export function MatchNotificationIcon(props: NotifyOptions) {
 
 function ToastLoadingIcon() {
   return <Spinner size="1rem" />
-}
-
-function getToastIconKey(type: string): string {
-  if (type === 'error') return type
-  return `${type}Notification`
 }

@@ -46,7 +46,7 @@ export const toast: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionProperty: 'translate, scale, opacity, height',
       transitionTimingFunction: 'default',
       userSelect: 'none',
-      _lowEmphasis: {
+      _subtleEmphasis: {
         bgColor: 'page.surface.200',
         borderLeft: '3px solid',
         borderLeftColor: 'colorPalette.border.initial',
@@ -77,7 +77,7 @@ export const toast: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     icon: {
       paddingInlineStart: 'md',
-      _lowEmphasis: {
+      _subtleEmphasis: {
         color: 'colorPalette.text.100',
       },
       _highEmphasis: {
