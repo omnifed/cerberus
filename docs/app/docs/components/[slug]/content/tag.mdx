@@ -22,33 +22,49 @@ You can mix and match all of the examples to create the tag style of your choosi
 
 ## Usage Variants
 
-Tags come in two usage variants: `outlined` and `filled`.
+Use the `usage` prop to change the style of the tag.
 
+<CodeSnippet snippet={DEMOS.usageMeta} />
+<br />
 <CodePreview {...DEMOS.usage} />
 
 ## Shape Variants
 
-Tags come in two shape variants: `square` and `pill`.
+Use the `shape` prop to change the shape of the tag.
 
+<CodeSnippet snippet={DEMOS.shapesMeta} />
+<br />
 <CodePreview {...DEMOS.shape} />
 
 ## Colors
 
-You can set the color of the tag by using the `palette` prop. By nature of CSS rules, only one of `palette` or `gradient` can be used at a time.
+You can set the color of the tag by using the `palette` prop.
 
-<CodePreview {...DEMOS.basic} />
+<NoteAdmonition description="By nature of CSS rules, only a `palette` or `gradient` can be used at a time. This is because the `palette` prop sets the background color, and the `gradient` prop sets the background gradient." />
+
+<CodeSnippet snippet={DEMOS.paletteMeta} />
+<br />
+<CodePreview {...DEMOS.palette} />
 
 ## Gradients
 
-You can set the gradient of the tag by using the `gradient` prop. By nature of CSS rules, only one of `palette` or `gradient` can be used at a time.
+You can set the gradient of the tag by using the `gradient` prop.
 
-<CodePreview {...DEMOS.basic} />
+<NoteAdmonition description="By nature of CSS rules, only a `palette` or `gradient` can be used at a time. This is because the `palette` prop sets the background color, and the `gradient` prop sets the background gradient." />
+
+<CodePreview {...DEMOS.gradient} />
 
 ## Closable
 
 To use a closable tag, just pass an `onClick` prop to the `Tag` component. This will create a pill-shaped tag with a close icon button.
 
 <CodePreview {...DEMOS.closable} />
+
+## Customizing
+
+You can customize the `Tag` using style props and data selectors on any slot primitve.
+
+<CodePreview {...DEMOS.custom} />
 
 ## Primitives
 
@@ -57,8 +73,6 @@ You can customize the tag by utilizing style props and primitives. A Closable Ta
 | Component | Description                  |
 | --------- | ---------------------------- |
 | TagRoot   | The root wrapper of the tag. |
-
-<CodePreview {...DEMOS.basic} />
 
 ### Data Attributes
 
@@ -69,63 +83,6 @@ The Primitives additionally use the following data attributes for custom styling
 | `data-scope`   | `tag`          | The scope of the components.  |
 | `data-part`    | `root`         | The root wrapper of the tag.  |
 | `data-palette` | _palette name_ | The color palette of the tag. |
-
-## Dynamic Tags
-
-Sometimes you may want to create Tags based on dynamic variables. In order to do this in a reliable way, we recommend using the Interface pattern.
-
-<NoteAdmonition
-  description={
-    <>
-      Remember that PandaCSS requires static styles to be known at build time. This is
-      how it can reliably generate atomic styles. See{' '}
-      <Link href="/docs/styling/conditional-styles">Conditional Styles</Link> for more
-      information.
-    </>
-  }
-/>
-
-```typescript title="Interface demo"
-import { Tag, type TagProps } from '@cerberus/react'
-
-/**
- * This interface returns palette-based tags in a reliable way that PandaCSS
- * can statically analyze.
-*/
-export function MatchPaletteTag(props: TagProps) {
-  switch (props.palette) {
-    case 'page':
-      return <Tag palette="page" {...props} />
-    case 'secondaryAction':
-      return <Tag palette="secondaryAction" {...props} />
-    case 'info':
-      return <Tag palette="info" {...props} />
-    case 'success':
-      return <Tag palette="success" {...props} />
-    case 'warning':
-      return <Tag palette="warning" {...props} />
-    case 'danger':
-      return <Tag palette="danger" {...props} />
-
-    default:
-      throw new Error(`Unsupported palette: ${props.palette}`)
-  }
-}
-```
-
-Likewise, you can achieve this same result creating a component with the exact name as the recipe:
-
-```typescript title="Named demo"
-import { Tag as CerbyTag, type TagProps as CerbyTagProps } from '@cerberus/react'
-
-export function Tag(props: CerbyTagProps) {
-  return <CerbyTag {...props} />
-}
-```
-
-Because this component is named `Tag`, PandaCSS will allow dynamic styling for
-the properties. This only happens when you create components that are named the
-same as the recipe.
 
 ## API
 

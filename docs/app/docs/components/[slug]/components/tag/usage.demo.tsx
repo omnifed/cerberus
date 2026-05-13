@@ -1,11 +1,17 @@
 import { HStack } from '@/styled-system/jsx'
-import { Tag } from '@cerberus-design/react'
+import { For, Tag } from '@cerberus-design/react'
+import { tagUsages } from './data'
 
 export function UsageDemo() {
   return (
     <HStack gap="md">
-      <Tag usage="filled">Filled</Tag>
-      <Tag usage="outlined">Outlined</Tag>
+      <For each={tagUsages}>
+        {(usage) => (
+          <Tag key={usage} usage={usage}>
+            {usage}
+          </Tag>
+        )}
+      </For>
     </HStack>
   )
 }

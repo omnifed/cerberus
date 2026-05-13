@@ -1,11 +1,17 @@
 import { HStack } from '@/styled-system/jsx'
-import { Tag } from '@cerberus-design/react'
+import { For, Tag } from '@cerberus-design/react'
+import { tagShapes } from './data'
 
 export function ShapeDemo() {
   return (
     <HStack gap="md">
-      <Tag shape="pill">Pill</Tag>
-      <Tag shape="square">Square</Tag>
+      <For each={tagShapes}>
+        {(shape) => (
+          <Tag key={shape} shape={shape}>
+            {shape}
+          </Tag>
+        )}
+      </For>
     </HStack>
   )
 }
