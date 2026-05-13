@@ -1,52 +1,40 @@
-import { Tag, type TagProps, Text } from '@cerberus-design/react'
+import { Grid, GridItem } from '@/styled-system/jsx'
 import { Information } from '@carbon/icons-react'
-import { HStack, Grid, GridItem } from '@/styled-system/jsx'
-import { Fragment } from 'react'
+import { Tag, type TagProps, Text } from '@cerberus-design/react'
 import { getGradients } from '@cerberus/tokens'
+import { Fragment } from 'react'
+
+import { BasicDemo } from './basic.demo'
+import { CustomDemo } from './custom.demo'
+import { ShapeDemo } from './shape.demo'
+import { UsageDemo } from './usage.demo'
+import { ClosableDemo } from './closable.demo'
+
+export const DEMOS = {
+  basic: {
+    id: 'tag.basic',
+    preview: <BasicDemo />,
+  },
+  usage: {
+    id: 'tag.usage',
+    preview: <UsageDemo />,
+  },
+  shape: {
+    id: 'tag.shape',
+    preview: <ShapeDemo />,
+  },
+  custom: {
+    id: 'tag.custom',
+    preview: <CustomDemo />,
+  },
+  closable: {
+    id: 'tag.closable',
+    preview: <ClosableDemo />,
+  },
+  meta: `import { Tag } from '@cerberus/react'`,
+}
 
 export type TagPreviewProps = TagProps
-
-export function BasicTagPreview() {
-  return (
-    <HStack gap="md">
-      <Tag>Filled</Tag>
-      <Tag>
-        <Information />
-        Start icon
-      </Tag>
-      <Tag>
-        End icon
-        <Information />
-      </Tag>
-    </HStack>
-  )
-}
-
-export function UsageTagPreview() {
-  return (
-    <HStack gap="md">
-      <Tag usage="filled">Filled</Tag>
-      <Tag usage="outlined">Outlined</Tag>
-    </HStack>
-  )
-}
-
-export function ShapeTagPreview() {
-  return (
-    <HStack gap="md">
-      <Tag shape="pill">Pill</Tag>
-      <Tag shape="square">Square</Tag>
-    </HStack>
-  )
-}
-
-export function CustomTagPreview() {
-  return (
-    <Tag colorPalette="danger" p="2" rounded="0!" transform="skew(-10deg)">
-      Cerberus Forever
-    </Tag>
-  )
-}
 
 // Overview
 

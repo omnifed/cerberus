@@ -3,7 +3,7 @@
 import { HStack } from '@/styled-system/jsx'
 import { Tag } from '@cerberus-design/react'
 
-export function ClosableTagPreview() {
+export function ClosableDemo() {
   const handleClick = () => {
     console.log('Clicked!')
   }
@@ -12,7 +12,7 @@ export function ClosableTagPreview() {
     <HStack gap="md">
       <Tag onClick={handleClick}>Closable</Tag>
 
-      <Tag palette="page" onClick={handleClick}>
+      <Tag palette="info" onClick={handleClick}>
         Closable
       </Tag>
 
