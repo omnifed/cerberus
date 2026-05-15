@@ -12,14 +12,14 @@ import {
   useQuery,
 } from '@cerberus-design/signals'
 import { Suspense } from 'react'
-import { createFakeQuery } from '../quick-start/data'
+import { queryEmployees } from '../api'
 import { columnHelper } from '../quick-start/helper.demo'
 
 export function ColumnDemo() {
-  const data = createFakeQuery(25)
+  const data = useQuery(queryEmployees(25))
   return (
     <HStack h="20rem" w="3/4">
-      <DataGrid columns={columns} data={data()} />
+      <DataGrid columns={columns} data={data} />
     </HStack>
   )
 }

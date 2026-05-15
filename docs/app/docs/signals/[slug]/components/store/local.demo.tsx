@@ -10,7 +10,6 @@ import {
   useRead,
   useStore,
 } from '@cerberus-design/signals'
-import { useMemo } from 'react'
 
 function myStore() {
   const [count, setCount] = createSignal<number>(0)

@@ -108,8 +108,7 @@ const TableRows = memo((props: TableRowsProps) => {
   const { virtualRows, totalHeight } = useVirtualizer(store, props.viewportRef)
 
   const isServerPaginated = useRead(store.isServerPaginated)
-  const staticRows = useRead(store.rows)
-  const currentPageRange = useRead(store.currentPageRange)
+  const staticRows = useRead(store.visibleRows)
 
   return (
     <Show
@@ -137,7 +136,7 @@ const TableRows = memo((props: TableRowsProps) => {
     >
       {() => (
         <Stack direction="column" gap="0" w="var(--total-grid-width)">
-          <For each={staticRows.slice(currentPageRange.start, currentPageRange.end)}>
+          <For each={staticRows}>
             {(row, index) => <GridRow key={index} row={row} index={index} />}
           </For>
         </Stack>

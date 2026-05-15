@@ -1,5 +1,6 @@
 'use client'
 
+import { type PageDetails } from '@cerberus-design/react'
 import { createQuery } from '@cerberus-design/signals'
 import { Employee } from './quick-start/data.demo'
 
@@ -39,19 +40,23 @@ type ApiResponse<T> = {
 }
 
 const api = {
-  selectEmployees: async (): Promise<Employee[]> => {
+  selectEmployees: async (limit?: number): Promise<Employee[]> => {
     await delay(100)
-    return employees
+    return employees.slice(0, limit ?? employees.length)
   },
-  selectPaginatedEmployees: async (count: number): Promise<ApiResponse<Employee[]>> => {
-    const data = employees.slice(0, count)
+  selectPaginatedEmployees: async (
+    details: PageDetails,
+  ): Promise<ApiResponse<Employee[]>> => {
     await delay(100)
+    const offset = (details.page - 1) * details.pageSize
+    const limit = details.pageSize
+    const data = employees.slice(offset, offset + limit)
     return {
       data,
       pagination: {
         count: employees.length,
-        limit: count,
-        offset: 0,
+        limit,
+        offset,
       },
     }
   },

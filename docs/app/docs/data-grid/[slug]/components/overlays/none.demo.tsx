@@ -3,17 +3,18 @@
 import { Corn } from '@carbon/icons-react'
 import { DataGrid } from '@cerberus-design/data-grid'
 import { Text } from '@cerberus-design/react'
+import { useQuery } from '@cerberus-design/signals'
 import { HStack, VStack } from 'styled-system/jsx'
+import { queryEmployees } from '../api'
 import { columns } from '../quick-start/columns.demo'
-import { createFakeQuery } from '../quick-start/data'
 
 export function NoContentDemo() {
-  const data = createFakeQuery(0)
+  const data = useQuery(queryEmployees(0))
   return (
     <HStack h="20rem" w="3/4">
       <DataGrid
         columns={columns}
-        data={data()}
+        data={data}
         overlays={{
           noContent: <CustomNoContent />,
         }}

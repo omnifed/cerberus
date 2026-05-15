@@ -97,12 +97,11 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   const [columns] = createSignal<InternalColumn<TData>[]>(initialCols)
 
   const currentPageRange = createComputed<{ start: number; end: number }>(() => {
-    const dataIdx = pageIndex() - 1
-    const isFirstPage = dataIdx === 0
-    const start = isFirstPage ? 0 : dataIdx * pageSize() - 1
+    const idx = pageIndex()
+    const size = pageSize()
     return {
-      start,
-      end: pageIndex() * pageSize(),
+      start: (idx - 1) * size,
+      end: idx * size,
     }
   })
 
@@ -209,11 +208,25 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   })
 
   const visibleRows = createComputed(() => {
-    if (pageSize() && pageCount() > 1) {
-      const currentRange = currentPageRange()
-      return sortedRows().slice(currentRange.start, currentRange.end)
+    const size = pageSize()
+    const count = pageCount()
+    const index = pageIndex()
+    const rows = sortedRows()
+
+    if (isServerPaginated()) {
+      console.log('isServerPaginated, returning rows', rows)
+      return rows
     }
-    return sortedRows()
+
+    // TODO: Figure out why currentPageRange does not work here (e.g. does not trigger updates)
+
+    if (size && count > 1) {
+      const start = (index - 1) * size
+      const end = index * size
+      return rows.slice(start, end)
+    }
+
+    return rows
   })
 
   const rootCssVars = createComputed(() => {
@@ -387,8 +400,6 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
 
     setPage: (details) => {
       setPageIndex(details.page)
-      // This is logging the wrong store...
-      console.log('setPage', { id: tempId, options, details, data: rowCount() })
       options.onPageChange?.(details)
     },
 
