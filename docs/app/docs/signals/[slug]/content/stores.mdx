@@ -50,9 +50,7 @@ If you have a store that can be called on the global scope (**outside of a compo
 
 ### Local Component Store
 
-If a store **must live within a component**, then you will need to take precautions to ensure React does not corrupt your store state via wrapping your store in `useMemo`.
-
-<NoteAdmonition description="Wrapping your store in useMemo is only required if you are using the useRead hook to obtain the reactive value from a store. If your component is only calling actions or utilizing the ReactiveText component, then it is unneccessary (as shown in the demos in the prior sections)." />
+If a store **must live within a component**, then you will need to take precautions to ensure React does not corrupt your store state via wrapping your store in [`useStore`](/docs/signals/use-store).
 
 <CodePreview {...DEMOS.local} />
 
@@ -62,4 +60,4 @@ Since stores are essentially a primitive that contain primitives, you will need
 to utilize the `ReactiveText` or `useRead` APIs in order to obtain the reactive
 values within the scope of any component.
 
-When calling a store **within a component** and reading a value with `useRead` you must wrap your store in `useMemo` to ensure React does not corrupt the signal state.
+When calling a store **within a component** and reading a value with `useRead` you must wrap your store in `useStore` to ensure React does not corrupt the signal state.

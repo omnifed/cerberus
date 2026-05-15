@@ -1,34 +1,30 @@
 'use client'
 
 import { DataGrid } from '@cerberus-design/data-grid'
-import { useState } from 'react'
+import { useQuery, useSignal } from '@cerberus-design/signals'
 import { Stack } from 'styled-system/jsx'
+import { queryPaginatedEmployees } from '../api'
 import { columns } from '../quick-start/columns.demo'
-import { useFakeQuery } from '../quick-start/data'
-
-const count = 1000
-const maxPageSize = 100
 
 export function CountDemo() {
-  const [current, setCurrent] = useState<number>(maxPageSize)
+  const [current, setCurrent] = useSignal<number>(100)
 
-  // Normally this would be from useQuery or a server-side API call
-  const data = useFakeQuery(current)
+  const data = useQuery(queryPaginatedEmployees(current))
 
   return (
     <Stack direction="column" h="20rem" w="3/4">
       <DataGrid
         columns={columns}
-        data={data}
+        data={data.data}
         initialState={{
-          pagination: { count },
+          pagination: { count: data.pagination.count },
         }}
         onPageChange={(details) => {
           console.log(details)
-          const currentPages = Math.ceil(data.length / details.pageSize)
+          const currentPages = Math.ceil(data.pagination.count / details.pageSize)
           const hasEnough = details.page + 1 <= currentPages
           if (hasEnough) return
-          setCurrent((prev) => prev + maxPageSize)
+          setCurrent((prev) => prev + current)
         }}
       />
     </Stack>

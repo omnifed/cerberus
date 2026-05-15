@@ -61,7 +61,7 @@ export function GridPagination() {
                     textStyle="label-sm"
                     userSelect="none"
                   >
-                    {pagination.pageRange.start}-{pagination.pageRange.end} of{' '}
+                    {pagination.pageRange.start + 1}-{pagination.pageRange.end} of{' '}
                     {pagination.count}
                   </Text>
                   <Divider

@@ -387,6 +387,8 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
 
     setPage: (details) => {
       setPageIndex(details.page)
+      // This is logging the wrong store...
+      console.log('setPage', { id: tempId, options, details, data: rowCount() })
       options.onPageChange?.(details)
     },
 
