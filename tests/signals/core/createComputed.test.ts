@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { createComputed, createSignal } from '@cerberus-design/signals'
+import { createComputed, createEffect, createSignal } from '@cerberus-design/signals'
 
 describe('createComputed', () => {
   test('should return a computed value', () => {
@@ -53,5 +53,31 @@ describe('createComputed', () => {
     expect(nested()).toBe('nested: 0 units (0)')
     setValue(1)
     expect(nested()).toBe('nested: 1 units (1)')
+  })
+
+  test('should PUSH updates to observers when returning a new object reference', () => {
+    const [page, setPage] = createSignal(1)
+
+    const currentPageRange = createComputed(() => {
+      return { start: page() * 25, end: page() * 25 + 25 }
+    })
+
+    let effectRuns = 0
+    let latestRange = null
+
+    createEffect(() => {
+      effectRuns++
+      latestRange = currentPageRange()
+    })
+
+    // Mount
+    expect(effectRuns).toBe(1)
+
+    setPage(2)
+
+    // ASSERTION: Did the computed PUSH the notification to the effect?
+    // We do NOT call currentPageRange() manually here
+    expect(effectRuns).toBe(2)
+    expect(latestRange).toMatchObject({ start: 50, end: 75 })
   })
 })

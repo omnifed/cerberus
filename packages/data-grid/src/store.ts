@@ -210,20 +210,13 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   const visibleRows = createComputed(() => {
     const size = pageSize()
     const count = pageCount()
-    const index = pageIndex()
     const rows = sortedRows()
 
-    if (isServerPaginated()) {
-      console.log('isServerPaginated, returning rows', rows)
-      return rows
-    }
-
-    // TODO: Figure out why currentPageRange does not work here (e.g. does not trigger updates)
+    if (isServerPaginated()) return rows
 
     if (size && count > 1) {
-      const start = (index - 1) * size
-      const end = index * size
-      return rows.slice(start, end)
+      const ctx = currentPageRange()
+      return rows.slice(ctx.start, ctx.end)
     }
 
     return rows
