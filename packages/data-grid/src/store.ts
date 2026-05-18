@@ -1,16 +1,14 @@
-import { batch, createComputed, createSignal } from '@cerberus-design/signals'
-import { DEFAULT_PAGE_IDX, DEFAULT_THEME, OPERATORS } from './const'
-import { createDataStore, createPaginationStore } from './stores'
+import { createComputed, createSignal } from '@cerberus-design/signals'
+import { DEFAULT_THEME } from './const'
+import { createDataStore, createFilterStore, createPaginationStore } from './stores'
 import type {
-  BaseFilterState,
-  ColumnFilterState,
   GridOptions,
   GridStore,
   InternalColumn,
   SortState,
   ThemeOptions,
 } from './types'
-import { applyFilterOperator, determineInitialCount } from './utils'
+import { determineInitialCount } from './utils'
 
 /**
  * Internal signal-based Store engine driving the state. We expose this in
@@ -20,94 +18,20 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   // 1. Core Data
   const dataStore = createDataStore(options)
 
-  // 2. Pagination
+  // 2. Feature Stores
   const paginationStore = createPaginationStore(options)
+  const filterStore = createFilterStore(dataStore)
 
   const [containerWidth, setContainerWidth] = createSignal<number>(0)
 
   const [pending, setPending] = createSignal<boolean>(options.pending ?? false)
   const [hasSkeleton] = createSignal<boolean>(options.overlays?.pending === 'skeleton')
 
-  const [showColFilter, setShowColFilter] = createSignal<boolean>(false)
-  const [globalFilter, setGlobalFilter] = createSignal<BaseFilterState>({
-    operator: OPERATORS.contains,
-    value: null,
-  })
-  const [colFilters, setColFilters] = createSignal<ColumnFilterState>({
-    active: [],
-    filters: {},
-    editing: null,
-  })
   const [sorting, setSorting] = createSignal<SortState[]>([])
 
-  // const [pageIndex, setPageIndex] = createSignal<number>(
-  //   determinePageIndex(options.initialState?.pagination),
-  // )
-  // const [pageSize, setPageSize] = createSignal<number>(
-  //   determinePageSize(options.initialState?.pagination),
-  // )
-  // const [pageRange] = createSignal<number[]>(
-  //   determinePageRange(options.initialState?.pagination),
-  // )
-  // const [isServerPaginated] = createSignal<boolean>(
-  //   Boolean(determineInitialCount(options.initialState?.pagination)),
-  // )
-
-  // const currentPageRange = createComputed<{ start: number; end: number }>(() => {
-  //   const idx = pageIndex()
-  //   const size = pageSize()
-  //   return {
-  //     start: (idx - 1) * size,
-  //     end: idx * size,
-  //   }
-  // })
-
-  const filteredRows = createComputed(() => {
-    const rows = dataStore.rows()
-    const columns = dataStore.columns()
-    let result = [...rows]
-    const gFilter = globalFilter()
-    const cFilters = colFilters()
-
-    if (cFilters.active.length > 0) {
-      result = result.filter((row) => {
-        return cFilters.active.every((filterId) => {
-          const col = columns.find((c) => c.id === filterId)
-          const filter = cFilters.filters[filterId]
-
-          if (!col || !col.filterable) return true
-
-          const customFn =
-            typeof col.original.features?.filter === 'function'
-              ? col.original.features.filter
-              : undefined
-
-          if (customFn) {
-            return customFn(row, col.id, filter.value)
-          }
-
-          const cellValue = col.getValue(row)
-          return applyFilterOperator(cellValue, filter.value, filter.operator)
-        })
-      })
-    }
-
-    // B. Apply Global Filter (Fuzzy search across all filterable columns)
-    if (gFilter.value) {
-      result = result.filter((row) => {
-        return columns.some((col) => {
-          if (!col.filterable) return false
-          const cellValue = col.getValue(row)
-          return applyFilterOperator(cellValue, gFilter.value, gFilter.operator)
-        })
-      })
-    }
-
-    return result
-  })
-
   const sortedRows = createComputed(() => {
-    const currentRows = [...filteredRows()]
+    const filteredRows = filterStore.filteredRows()
+    const currentRows = [...filteredRows]
     const sortState = sorting()
     const cols = dataStore.columns()
 
@@ -147,7 +71,8 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   // Derived pagination - Ark handles the rest
   const rowCount = createComputed(() => {
     return (
-      determineInitialCount(options?.initialState?.pagination) ?? filteredRows().length
+      determineInitialCount(options?.initialState?.pagination) ??
+      filterStore.filteredRows().length
     )
   })
   const pageCount = createComputed(() =>
@@ -264,20 +189,13 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   return {
     ...dataStore,
     ...paginationStore,
+    ...filterStore,
     rowCount,
     visibleRows,
-    showColFilter,
-    globalFilter,
-    colFilters,
     sorting,
     pending,
     hasSkeleton,
     pageCount,
-    // pageIndex,
-    // pageSize,
-    // pageRange,
-    // currentPageRange,
-    // isServerPaginated,
     rootCssVars,
     totalWidth,
 
@@ -333,34 +251,6 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
         const newSort = { id: colId, desc: true }
         setSorting(multi ? [...current, newSort] : [newSort])
       }
-    },
-
-    // setPage: (details) => {
-    //   setPageIndex(details.page)
-    //   options.onPageChange?.(details)
-    // },
-
-    // setPageSize: (size) => {
-    //   if (isServerPaginated()) {
-    //     // Reset to first page on size change to reset pagination
-    //     setPageIndex(DEFAULT_PAGE_IDX)
-    //   }
-    //   setPageSize(size)
-    // },
-
-    setGlobalFilter: (val) => {
-      batch(() => {
-        setGlobalFilter((prev) => ({ ...prev, ...val }))
-        paginationStore.setPageIndex(DEFAULT_PAGE_IDX) // Reset to first page on filter
-      })
-    },
-
-    setColFilter: (val) => {
-      setColFilters(val)
-    },
-
-    setShowColFilter: (val) => {
-      setShowColFilter(val)
     },
 
     setContainerWidth: (w: number) => {
