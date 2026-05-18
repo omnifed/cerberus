@@ -12,7 +12,7 @@
     "test:ci": "bun test --coverage"
   },
   "dependencies": {
-    "@tanstack/query-core": "^5.100.1"
+    "@tanstack/query-core": "^5.100.10"
   },
   "devDependencies": {
     "@carbon/icons-react": "^11.79.0",
