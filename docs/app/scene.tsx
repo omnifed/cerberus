@@ -1,16 +1,18 @@
 'use client'
 
 import { useRootColors, useThemeContext } from '@cerberus-design/react'
-import { useSignal } from '@cerberus-design/signals'
-import { type ISourceOptions } from '@tsparticles/engine'
-import Particles, { initParticlesEngine } from '@tsparticles/react'
+import { type Engine, type ISourceOptions } from '@tsparticles/engine'
+import Particles, { ParticlesProvider } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
 import { useEffect } from 'react'
+
+const particlesInit = async (engine: Engine) => {
+  await loadSlim(engine)
+}
 
 export function Scene() {
   const { theme } = useThemeContext()
   const { colors, refetch } = useRootColors(colorList)
-  const [init, setInit] = useSignal<boolean>(false)
 
   const options = {
     ...fire,
@@ -18,16 +20,6 @@ export function Scene() {
       image: `radial-gradient(75% 82% at 52% 100%, ${colors[colorList[0]]}40 0%, transparent 100%)`,
     },
   }
-
-  // this should be run only once per application lifetime
-  // TS Particles requires the element to exist before initializing
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine)
-    }).then(() => {
-      setInit(true)
-    })
-  }, [setInit])
 
   useEffect(() => {
     if (window && theme) {
@@ -38,11 +30,17 @@ export function Scene() {
     }
   }, [theme, refetch])
 
-  if (init) {
-    return <Particles id="tsparticles" options={options} />
-  }
+  return (
+    <ParticlesProvider init={particlesInit}>
+      <Particles id="tsparticles" options={options} />
+    </ParticlesProvider>
+  )
 
-  return null
+  // if (init) {
+  //   return <Particles id="tsparticles" options={options} />
+  // }
+
+  // return null
 }
 
 const fire = {
