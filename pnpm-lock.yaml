@@ -88,8 +88,8 @@ importers:
         specifier: ^4.0.2
         version: 4.0.2
       '@tsparticles/react':
-        specifier: ^4.0.2
-        version: 4.0.2(@tsparticles/engine@4.0.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: ^4.0.3
+        version: 4.0.3(@tsparticles/engine@4.0.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@tsparticles/slim':
         specifier: ^4.0.2
         version: 4.0.2
@@ -2025,8 +2025,8 @@ packages:
     peerDependencies:
       '@tsparticles/engine': 4.0.2
 
-  '@tsparticles/react@4.0.2':
-    resolution: {integrity: sha512-mwO9cDoSWIBqeA7rm4fi/Co3Y6egADefr6ryRXsyiZolOCTlSA8J8B8hz69ypqdiQrAnuku9X+S71rw2ba6kyg==}
+  '@tsparticles/react@4.0.3':
+    resolution: {integrity: sha512-Pls4fcUxhF2wwMSfA9czJFYs9Gr2PhC9BeUqJHkqhpAIzZU7TL8IX+CBPaufEpEBlPx7kzmliTegeS4exYXgwA==}
     peerDependencies:
       '@tsparticles/engine': workspace:^
       react: '>=16.8.0'
@@ -6907,7 +6907,7 @@ snapshots:
     dependencies:
       '@tsparticles/engine': 4.0.2
 
-  '@tsparticles/react@4.0.2(@tsparticles/engine@4.0.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@tsparticles/react@4.0.3(@tsparticles/engine@4.0.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@tsparticles/engine': 4.0.2
       react: 19.2.6
