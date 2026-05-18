@@ -143,15 +143,31 @@ export function propagate(node: SignalNode<unknown> | ComputedNode<unknown>): vo
 
     if (isComputed) {
       const computed = sub as ComputedNode<unknown>
-      if (!(computed.flags & (NodeFlags.Dirty | NodeFlags.Check | NodeFlags.Running))) {
-        computed.flags |= NodeFlags.Dirty
-        _propagateCheck(computed)
+      const flags = computed.flags
+
+      // Guard against running nodes to prevent circular tracking
+      if (!(flags & (NodeFlags.Dirty | NodeFlags.Running))) {
+        // Upgrade Check to Dirty (and clear Check)
+        computed.flags = (flags & ~NodeFlags.Check) | NodeFlags.Dirty
+
+        // Only propagate downward if it was completely clean
+        if (!(flags & NodeFlags.Check)) {
+          _propagateCheck(computed)
+        }
       }
     } else {
       const effect = sub as EffectNode
-      if (!(effect.flags & (NodeFlags.Dirty | NodeFlags.Running))) {
-        effect.flags |= NodeFlags.Dirty
-        scheduleEffect(effect)
+      const flags = effect.flags
+
+      // Guard against running nodes to prevent circular tracking
+      if (!(flags & (NodeFlags.Dirty | NodeFlags.Running))) {
+        effect.flags = (flags & ~NodeFlags.Check) | NodeFlags.Dirty
+
+        // Only schedule if it was completely clean
+        // (If it was Check, it is already in the scheduler queue)
+        if (!(flags & NodeFlags.Check)) {
+          scheduleEffect(effect)
+        }
       }
     }
 

@@ -150,12 +150,13 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   const sortedRows = createComputed(() => {
     const currentRows = [...filteredRows()]
     const sortState = sorting()
+    const cols = columns()
 
     if (sortState.length === 0) return currentRows
 
     return currentRows.sort((a, b) => {
       for (const sort of sortState) {
-        const col = columns().find((c) => c.id === sort.id)
+        const col = cols.find((c) => c.id === sort.id)
         if (!col) continue
 
         const valA = col.getValue(a) as TData[keyof TData]
@@ -187,7 +188,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   // Derived pagination - Ark handles the rest
   const rowCount = createComputed(() => {
     return (
-      determineInitialCount(options?.initialState?.pagination) ?? sortedRows().length
+      determineInitialCount(options?.initialState?.pagination) ?? filteredRows().length
     )
   })
   const pageCount = createComputed(() => Math.ceil(rowCount() / pageSize()))
@@ -209,12 +210,11 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
 
   const visibleRows = createComputed(() => {
     const size = pageSize()
-    const count = pageCount()
     const rows = sortedRows()
 
     if (isServerPaginated()) return rows
 
-    if (size && count > 1) {
+    if (size) {
       const ctx = currentPageRange()
       return rows.slice(ctx.start, ctx.end)
     }

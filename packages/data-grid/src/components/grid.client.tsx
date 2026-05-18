@@ -142,7 +142,7 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
 
         <Show when={hasFilters()}>
           <Tooltip content="Edit filters" openDelay={800} portal>
-            <IconButtonRoot clipboard size="sm" onClick={handleEditFilters}>
+            <IconButtonRoot size="sm" onClick={handleEditFilters}>
               <EditFilterIcon />
             </IconButtonRoot>
           </Tooltip>

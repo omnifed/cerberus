@@ -80,4 +80,57 @@ describe('createComputed', () => {
     expect(effectRuns).toBe(2)
     expect(latestRange).toMatchObject({ start: 50, end: 75 })
   })
+
+  test('should properly update sibling branches when one branch is read early (Sibling Cleansing)', () => {
+    const [getSource, setSource] = createSignal(1)
+
+    // The shared dependency (represents `filteredRows`)
+    let filterEvaluations = 0
+    const getFiltered = createComputed(() => {
+      filterEvaluations++
+      return getSource() * 10
+    })
+
+    // Sibling 1: The Early Reader (represents `rowCount` pulled by `GridViewport`)
+    let rowCountEvaluations = 0
+    const getRowCount = createComputed(() => {
+      rowCountEvaluations++
+      return getFiltered() + 1
+    })
+
+    // Sibling 2: The Delayed Pipeline (represents `sortedRows` pulled later by `TableRows`)
+    let sortEvaluations = 0
+    const getSorted = createComputed(() => {
+      sortEvaluations++
+      return getFiltered() + 2
+    })
+
+    const getVisible = createComputed(() => getSorted() + 3)
+
+    // --- INITIAL MOUNT ---
+    expect(getRowCount()).toBe(11) // 10 + 1
+    expect(getVisible()).toBe(15) // 10 + 2 + 3
+
+    expect(filterEvaluations).toBe(1)
+    expect(rowCountEvaluations).toBe(1)
+    expect(sortEvaluations).toBe(1)
+
+    // --- THE MUTATION ---
+    setSource(2)
+
+    // --- THE EARLY READ ---
+    // React renders GridViewport first, which reads rowCount.
+    // This forces getFiltered to evaluate and become "clean".
+    expect(getRowCount()).toBe(21) // 20 + 1
+
+    // --- THE DELAYED READ ---
+    // React renders TableRows later, which reads visibleRows.
+    // If the bug exists, getSorted won't know getFiltered changed,
+    // and getVisible will incorrectly return 15 instead of 25.
+    expect(getVisible()).toBe(25) // 20 + 2 + 3
+
+    // Ensure it actually re-evaluated the sorted pipeline
+    expect(sortEvaluations).toBe(2)
+    expect(filterEvaluations).toBe(2)
+  })
 })
