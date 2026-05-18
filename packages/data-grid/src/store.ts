@@ -1,6 +1,6 @@
 import { batch, createComputed, createSignal } from '@cerberus-design/signals'
 import { DEFAULT_PAGE_IDX, DEFAULT_THEME, OPERATORS } from './const'
-import { createDataStore } from './stores'
+import { createDataStore, createPaginationStore } from './stores'
 import type {
   BaseFilterState,
   ColumnFilterState,
@@ -10,20 +10,18 @@ import type {
   SortState,
   ThemeOptions,
 } from './types'
-import {
-  applyFilterOperator,
-  determineInitialCount,
-  determinePageIndex,
-  determinePageRange,
-  determinePageSize,
-} from './utils'
+import { applyFilterOperator, determineInitialCount } from './utils'
 
 /**
  * Internal signal-based Store engine driving the state. We expose this in
  * the public Context API.
  */
 export function createGridStore<TData>(options: GridOptions<TData>): GridStore<TData> {
+  // 1. Core Data
   const dataStore = createDataStore(options)
+
+  // 2. Pagination
+  const paginationStore = createPaginationStore(options)
 
   const [containerWidth, setContainerWidth] = createSignal<number>(0)
 
@@ -42,27 +40,27 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   })
   const [sorting, setSorting] = createSignal<SortState[]>([])
 
-  const [pageIndex, setPageIndex] = createSignal<number>(
-    determinePageIndex(options.initialState?.pagination),
-  )
-  const [pageSize, setPageSize] = createSignal<number>(
-    determinePageSize(options.initialState?.pagination),
-  )
-  const [pageRange] = createSignal<number[]>(
-    determinePageRange(options.initialState?.pagination),
-  )
-  const [isServerPaginated] = createSignal<boolean>(
-    Boolean(determineInitialCount(options.initialState?.pagination)),
-  )
+  // const [pageIndex, setPageIndex] = createSignal<number>(
+  //   determinePageIndex(options.initialState?.pagination),
+  // )
+  // const [pageSize, setPageSize] = createSignal<number>(
+  //   determinePageSize(options.initialState?.pagination),
+  // )
+  // const [pageRange] = createSignal<number[]>(
+  //   determinePageRange(options.initialState?.pagination),
+  // )
+  // const [isServerPaginated] = createSignal<boolean>(
+  //   Boolean(determineInitialCount(options.initialState?.pagination)),
+  // )
 
-  const currentPageRange = createComputed<{ start: number; end: number }>(() => {
-    const idx = pageIndex()
-    const size = pageSize()
-    return {
-      start: (idx - 1) * size,
-      end: idx * size,
-    }
-  })
+  // const currentPageRange = createComputed<{ start: number; end: number }>(() => {
+  //   const idx = pageIndex()
+  //   const size = pageSize()
+  //   return {
+  //     start: (idx - 1) * size,
+  //     end: idx * size,
+  //   }
+  // })
 
   const filteredRows = createComputed(() => {
     const rows = dataStore.rows()
@@ -152,16 +150,18 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
       determineInitialCount(options?.initialState?.pagination) ?? filteredRows().length
     )
   })
-  const pageCount = createComputed(() => Math.ceil(rowCount() / pageSize()))
+  const pageCount = createComputed(() =>
+    Math.ceil(rowCount() / paginationStore.pageSize()),
+  )
 
   const visibleRows = createComputed(() => {
-    const size = pageSize()
+    const size = paginationStore.pageSize()
     const rows = sortedRows()
 
-    if (isServerPaginated()) return rows
+    if (paginationStore.isServerPaginated()) return rows
 
     if (size) {
-      const ctx = currentPageRange()
+      const ctx = paginationStore.currentPageRange()
       return rows.slice(ctx.start, ctx.end)
     }
 
@@ -263,6 +263,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
 
   return {
     ...dataStore,
+    ...paginationStore,
     rowCount,
     visibleRows,
     showColFilter,
@@ -272,11 +273,11 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     pending,
     hasSkeleton,
     pageCount,
-    pageIndex,
-    pageSize,
-    pageRange,
-    currentPageRange,
-    isServerPaginated,
+    // pageIndex,
+    // pageSize,
+    // pageRange,
+    // currentPageRange,
+    // isServerPaginated,
     rootCssVars,
     totalWidth,
 
@@ -334,23 +335,23 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
       }
     },
 
-    setPage: (details) => {
-      setPageIndex(details.page)
-      options.onPageChange?.(details)
-    },
+    // setPage: (details) => {
+    //   setPageIndex(details.page)
+    //   options.onPageChange?.(details)
+    // },
 
-    setPageSize: (size) => {
-      if (isServerPaginated()) {
-        // Reset to first page on size change to reset pagination
-        setPageIndex(DEFAULT_PAGE_IDX)
-      }
-      setPageSize(size)
-    },
+    // setPageSize: (size) => {
+    //   if (isServerPaginated()) {
+    //     // Reset to first page on size change to reset pagination
+    //     setPageIndex(DEFAULT_PAGE_IDX)
+    //   }
+    //   setPageSize(size)
+    // },
 
     setGlobalFilter: (val) => {
       batch(() => {
         setGlobalFilter((prev) => ({ ...prev, ...val }))
-        setPageIndex(DEFAULT_PAGE_IDX) // Reset to first page on filter
+        paginationStore.setPageIndex(DEFAULT_PAGE_IDX) // Reset to first page on filter
       })
     },
 
