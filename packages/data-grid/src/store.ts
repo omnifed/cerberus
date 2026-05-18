@@ -1,12 +1,12 @@
 import { batch, createComputed, createSignal } from '@cerberus-design/signals'
 import { DEFAULT_PAGE_IDX, DEFAULT_THEME, OPERATORS } from './const'
+import { createDataStore } from './stores'
 import type {
   BaseFilterState,
   ColumnFilterState,
   GridOptions,
   GridStore,
   InternalColumn,
-  PinnedState,
   SortState,
   ThemeOptions,
 } from './types'
@@ -16,7 +16,6 @@ import {
   determinePageIndex,
   determinePageRange,
   determinePageSize,
-  determineRowHeight,
 } from './utils'
 
 /**
@@ -24,9 +23,9 @@ import {
  * the public Context API.
  */
 export function createGridStore<TData>(options: GridOptions<TData>): GridStore<TData> {
+  const dataStore = createDataStore(options)
+
   const [containerWidth, setContainerWidth] = createSignal<number>(0)
-  const [rows, setRows] = createSignal<TData[]>(options.data)
-  const [rowSize] = createSignal<number>(determineRowHeight(options.rowSize))
 
   const [pending, setPending] = createSignal<boolean>(options.pending ?? false)
   const [hasSkeleton] = createSignal<boolean>(options.overlays?.pending === 'skeleton')
@@ -56,46 +55,6 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     Boolean(determineInitialCount(options.initialState?.pagination)),
   )
 
-  const initialCols: InternalColumn<TData>[] = options.columns.map((col) => {
-    const pinnable = Boolean(col.features?.pinning)
-    const filterable = Boolean(col.features?.filter)
-    const sortable = Boolean(col.features?.sort)
-
-    const hasFeatures = pinnable || filterable || sortable
-    const minWForFeatures = 100
-
-    let finalWidth = col.width ?? 150
-    if (hasFeatures && col.width && col.width < minWForFeatures) {
-      finalWidth = minWForFeatures
-    }
-
-    const [isVisible] = createSignal<boolean>(true)
-    const [isFlex, setFlex] = createSignal<boolean>(col.width === undefined)
-    const [pinned, setPinned] = createSignal<PinnedState>(
-      col.features?.pinning?.defaultPosition ?? false,
-    )
-    const [width, setColWidth] = createSignal<number>(finalWidth)
-
-    return {
-      id: col.id,
-      isFlex,
-      isVisible,
-      original: col,
-      pinned,
-      width,
-      getValue: col.accessor,
-      // feature flags
-      pinnable,
-      filterable,
-      sortable,
-      // setters
-      setFlex,
-      setPinned,
-      setColWidth,
-    }
-  })
-  const [columns] = createSignal<InternalColumn<TData>[]>(initialCols)
-
   const currentPageRange = createComputed<{ start: number; end: number }>(() => {
     const idx = pageIndex()
     const size = pageSize()
@@ -106,14 +65,16 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   })
 
   const filteredRows = createComputed(() => {
-    let result = [...rows()]
+    const rows = dataStore.rows()
+    const columns = dataStore.columns()
+    let result = [...rows]
     const gFilter = globalFilter()
     const cFilters = colFilters()
 
     if (cFilters.active.length > 0) {
       result = result.filter((row) => {
         return cFilters.active.every((filterId) => {
-          const col = columns().find((c) => c.id === filterId)
+          const col = columns.find((c) => c.id === filterId)
           const filter = cFilters.filters[filterId]
 
           if (!col || !col.filterable) return true
@@ -136,7 +97,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     // B. Apply Global Filter (Fuzzy search across all filterable columns)
     if (gFilter.value) {
       result = result.filter((row) => {
-        return columns().some((col) => {
+        return columns.some((col) => {
           if (!col.filterable) return false
           const cellValue = col.getValue(row)
           return applyFilterOperator(cellValue, gFilter.value, gFilter.operator)
@@ -150,7 +111,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   const sortedRows = createComputed(() => {
     const currentRows = [...filteredRows()]
     const sortState = sorting()
-    const cols = columns()
+    const cols = dataStore.columns()
 
     if (sortState.length === 0) return currentRows
 
@@ -193,21 +154,6 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   })
   const pageCount = createComputed(() => Math.ceil(rowCount() / pageSize()))
 
-  const orderedColumns = createComputed(() => {
-    const left: InternalColumn<TData>[] = []
-    const center: InternalColumn<TData>[] = []
-    const right: InternalColumn<TData>[] = []
-
-    columns().forEach((col) => {
-      const pin = col.pinned()
-      if (pin === 'left') left.push(col)
-      else if (pin === 'right') right.push(col)
-      else center.push(col)
-    })
-
-    return [...left, ...center, ...right]
-  })
-
   const visibleRows = createComputed(() => {
     const size = pageSize()
     const rows = sortedRows()
@@ -226,7 +172,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     const vars: Record<string, string> = {}
     const visibleCols: InternalColumn<TData>[] = []
 
-    const cols = columns()
+    const cols = dataStore.columns()
     const cWidth = containerWidth()
 
     let fixedSpace = 0
@@ -244,7 +190,9 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
         fixedSpace += col.width()
       }
 
-      const order = orderedColumns().findIndex((orderedCol) => orderedCol.id === col.id)
+      const order = dataStore
+        .orderedColumns()
+        .findIndex((orderedCol) => orderedCol.id === col.id)
       vars[`--col-${col.id}-order`] = `${order}`
     }
 
@@ -287,7 +235,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     }
 
     vars['--total-grid-width'] = `${totalW}px`
-    vars['--row-height'] = `${rowSize()}px`
+    vars['--row-height'] = `${dataStore.rowSize()}px`
 
     // setup theme
     const theme = {
@@ -310,14 +258,12 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   })
 
   const totalWidth = createComputed(() =>
-    columns().reduce((acc, c) => acc + c.width(), 0),
+    dataStore.columns().reduce((acc, c) => acc + c.width(), 0),
   )
 
   return {
-    columns,
-    rows,
+    ...dataStore,
     rowCount,
-    rowSize,
     visibleRows,
     showColFilter,
     globalFilter,
@@ -335,9 +281,6 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     totalWidth,
 
     // Actions
-    updateData: (newData) => {
-      setRows(newData)
-    },
 
     updatePending: (newState) => {
       setPending(newState)
@@ -368,7 +311,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     },
 
     togglePinned: (colId, state) => {
-      const col = columns().find((c) => c.id === colId)
+      const col = dataStore.columns().find((c) => c.id === colId)
       if (col) col.setPinned(state ?? false)
     },
 
@@ -424,13 +367,14 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     },
 
     resizeColumn: (colId: string, delta: number) => {
-      const col = columns().find((c) => c.id === colId)
+      const col = dataStore.columns().find((c) => c.id === colId)
       if (col) {
         if (col.isFlex()) {
-          const fixedSpace = columns()
+          const fixedSpace = dataStore
+            .columns()
             .filter((c) => !c.isFlex())
             .reduce((a, b) => a + b.width(), 0)
-          const flexCount = columns().filter((c) => c.isFlex()).length
+          const flexCount = dataStore.columns().filter((c) => c.isFlex()).length
           const currentFlexWidth = Math.max(
             col.original.minWidth ?? 150,
             (containerWidth() - fixedSpace) / flexCount,
