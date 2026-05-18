@@ -1,6 +1,5 @@
 'use client'
 
-import { createSignal } from '@cerberus-design/signals'
 import { Employee } from './data.demo'
 
 const generateData = (count: number): Employee[] => {
@@ -27,6 +26,5 @@ export function useFakeQuery(count: number) {
 }
 
 export function createFakeQuery(count: number) {
-  const [state] = createSignal<Employee[]>(generateData(count))
-  return state
+  return generateData(count)
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useRef } from 'react'
 
 /**
  * ## Using global stores within React components
@@ -14,6 +14,9 @@ import { useMemo } from 'react'
  * This is an alternative to using the `createSignalStore` factory to create a
  * reusable context provider of the store.
  *
+ * > **Note:** This hook expects the store to be created in the global scope. Creating
+ * stores within a component is highly volatile due to React's fragile reconciliation process.
+ *
  * | Parameters | Type | Description |
  * |------------|------|-------------|
  * | `store` | `T` | The global store to use within the component. |
@@ -23,7 +26,12 @@ import { useMemo } from 'react'
  * - [useStore](https://cerberus.digitalu.design/docs/signals/use-store)
  * - [createSignalStore](https://cerberus.digitalu.design/docs/signals/create-store-context)
  */
-export function useStore<T>(store: () => T): T {
-  // oxlint-disable-next-line eslint-plugin-react-hooks/exhaustive-deps
-  return useMemo(() => store(), [])
+export function useStore<T>(storeFactory: () => T): T {
+  const storeRef = useRef<T | null>(null)
+
+  if (storeRef.current === null) {
+    storeRef.current = storeFactory()
+  }
+
+  return storeRef.current as T
 }

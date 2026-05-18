@@ -2,8 +2,9 @@
 
 import { DataGrid, ThemeOptions } from '@cerberus-design/data-grid'
 import { For, Text } from '@cerberus-design/react'
+import { useQuery } from '@cerberus-design/signals'
 import { Center, HStack, VStack } from 'styled-system/jsx'
-import { createFakeQuery } from '../quick-start/data'
+import { queryEmployees } from '../api'
 import { columnHelper } from '../quick-start/helper.demo'
 
 const customTheme: ThemeOptions = {
@@ -38,13 +39,11 @@ const columns = Array.from({ length: 4 }, (_, i) =>
 )
 
 export function BasicDemo() {
-  // Normally this would be from useQuery or a server-side API call
-  const data = createFakeQuery(10)
-
+  const data = useQuery(queryEmployees(10))
   return (
     <HStack h="20rem" w="3/4">
       <Legend />
-      <DataGrid columns={columns} data={data()} rowSize="lg" theme={customTheme} />
+      <DataGrid columns={columns} data={data} rowSize="lg" theme={customTheme} />
     </HStack>
   )
 }

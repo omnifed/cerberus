@@ -24,8 +24,8 @@ store data passed in.
 
 <CodePreview {...DEMOS.basic} />
 <br />
-In this demo we have a global store that manages signals. We then generate the context APIs and pass
-the `MyStore` type so we obtain strict type accountability.
+In this demo we have a global store that manages signals. We then generate the context
+APIs and pass the `MyStore` type so we obtain strict type accountability.
 
 In our main component we use the `StoreProvider` and pass our store to the
 `createStore` prop.
@@ -36,7 +36,11 @@ In the child component we utilize the `useStore` hook to gain access to the stor
 
 ## API
 
-`createStoreContext` doesn't accept any parameters and is essentially just a factory.
+`createStoreContext` doesn't accepts the following props:
+
+| Property | Type     | Description                                                            |
+| -------- | -------- | ---------------------------------------------------------------------- |
+| `name`   | `string` | Optional. The name of the store to assign as the context display name. |
 
 ### Return
 

@@ -3,16 +3,16 @@
 import { Search } from '@carbon/icons-react'
 import { DataGrid, OPERATORS, useDataGridContext } from '@cerberus-design/data-grid'
 import { Button, cerberus, Field, Input, Show } from '@cerberus-design/react'
-import { useRead } from '@cerberus-design/signals'
+import { useQuery, useRead } from '@cerberus-design/signals'
 import { HStack, Stack } from 'styled-system/jsx'
-import { createFakeQuery } from '../quick-start/data'
+import { queryEmployees } from '../api'
 import { columns } from './columns'
 
 export function GlobalDemo() {
-  const data = createFakeQuery(200)
+  const data = useQuery(queryEmployees(200))
   return (
     <Stack direction="column" h="25rem" w="90%">
-      <DataGrid columns={columns} data={data()} toolbar={<Toolbar />} />
+      <DataGrid columns={columns} data={data} toolbar={<Toolbar />} />
     </Stack>
   )
 }
