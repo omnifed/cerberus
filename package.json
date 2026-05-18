@@ -24,8 +24,8 @@
     "@types/mdx": "^2.0.13",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
-    "oxfmt": "^0.48.0",
-    "oxlint": "^1.63.0"
+    "oxfmt": "^0.50.0",
+    "oxlint": "^1.65.0"
   },
   "lint-staged": {
     "**/*": "oxfmt --write --no-error-on-unmatched-pattern",
