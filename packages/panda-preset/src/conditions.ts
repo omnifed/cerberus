@@ -20,6 +20,10 @@ export const conditions = {
   isDropped: '&:is([data-dropped=true])',
   isComplete: '&:is([data-complete=true])',
 
+  // Motion states
+  paused: '&:is([data-paused], [data-paused=true])',
+  reverse: '&:is([data-reverse], [data-reverse=true])',
+
   // UI states
   placeholderShown: '&:is([data-placeholder-shown])',
   screenReaderOnly: '&:is([data-screen-reader-only=true])',
@@ -56,6 +60,12 @@ export const conditions = {
   // orientations
   horizontal: '&:is([data-orientation=horizontal])',
   vertical: '&:is([data-orientation=vertical])',
+
+  // sides
+  sideBottom: '&:is([data-side=bottom])',
+  sideTop: '&:is([data-side=top])',
+  sideStart: '&:is([data-side=start])',
+  sideEnd: '&:is([data-side=end])',
 
   // sizes
   xsSize: '&:is([data-size=xs])',

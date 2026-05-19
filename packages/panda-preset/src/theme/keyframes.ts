@@ -171,4 +171,14 @@ export const keyframes: CssKeyframes = defineKeyframes({
       transform: 'scale(1)',
     },
   },
+
+  // marquee
+  marqueeX: {
+    from: { transform: 'translateX(0%)' },
+    to: { transform: 'translateX(var(--marquee-translate))' },
+  },
+  marqueeY: {
+    from: { transform: 'translateY(0%)' },
+    to: { transform: 'translateY(var(--marquee-translate))' },
+  },
 })
