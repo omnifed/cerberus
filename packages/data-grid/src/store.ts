@@ -33,7 +33,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     rowSize: dataStore.rowSize,
   })
 
-  // Derived pagination - Ark handles the rest
+  // Derived pagination for SSR - Cerby handles client-side pagination
   const rowCount = createComputed(() => {
     return (
       determineInitialCount(options?.initialState?.pagination) ??

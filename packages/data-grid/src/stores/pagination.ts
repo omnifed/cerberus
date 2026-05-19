@@ -1,5 +1,10 @@
 import { type PageDetails } from '@cerberus-design/react'
-import { type Accessor, createComputed, createSignal } from '@cerberus-design/signals'
+import {
+  type Accessor,
+  createComputed,
+  createSignal,
+  type Setter,
+} from '@cerberus-design/signals'
 import { DEFAULT_PAGE_IDX } from '../const'
 import { GridOptions } from '../types'
 import {
@@ -17,7 +22,7 @@ type PaginationStore = {
   isServerPaginated: Accessor<boolean>
   // Actions
   setPage: (details: PageDetails) => void
-  setPageIndex: (index: number) => void
+  setPageIndex: Setter<number>
   setPageSize: (size: number) => void
 }
 
@@ -58,9 +63,7 @@ export function createPaginationStore<TData>(
       options.onPageChange?.(details)
     },
 
-    setPageIndex: (index) => {
-      setPageIndex(index)
-    },
+    setPageIndex,
 
     setPageSize: (size) => {
       if (isServerPaginated()) {
