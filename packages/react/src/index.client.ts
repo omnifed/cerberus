@@ -52,6 +52,7 @@ export {
   useListbox,
   ListboxRootProvider,
   useMarquee,
+  type MarqueeRootProviderProps,
   MarqueeRootProvider,
   useMenu,
   MenuRootProvider,
