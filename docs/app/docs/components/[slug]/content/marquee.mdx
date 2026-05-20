@@ -1,0 +1,216 @@
+---
+title: Marquee
+description: A marquee component that scrolls text horizontally.
+npm: '@cerberus-design/react'
+source: 'components/marquee'
+recipe: 'slots/marquee.ts'
+ark: 'marquee'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { DEMOS } from '../components/marquee/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
+
+## Usage
+
+The `Marquee` is an abracted API that combines multiple primitives into a single root component.
+
+<CodePreview {...DEMOS.basic} />
+
+## Spacing
+
+Use the `spacing` prop to control the gap between content instances.
+
+<CodePreview {...DEMOS.spacing} />
+
+## Reverse
+
+Use the `reverse` prop to reverse the direction of the marquee.
+
+<CodePreview {...DEMOS.reverse} />
+
+## Vertical Animation
+
+Use the `side` prop to animate the marquee vertically. The options are `top` and `bottom`.
+
+<CodePreview {...DEMOS.side} />
+
+## Speed
+
+Use the `speed` prop to control the animation speed in pixels per second.
+
+<CodePreview {...DEMOS.speed} />
+
+## Edges
+
+Use the `edges` prop to display stylized edges on the marquee. The options are `both`, `start`, and `end`.
+
+<CodePreview {...DEMOS.edges} />
+
+## Pause on Interaction
+
+Use the `pauseOnInteraction` prop to pause the marquee when users hover or focus on it, improving accessibility.
+
+<CodePreview {...DEMOS.pause} />
+
+## Context
+
+Access the combobox's state with `ComboboxContext` or the `useComboboxContext` hook—useful for displaying the selected value or building custom UI.
+
+<NoteAdmonition description="Since combobox is an abstracted API, you'll need to build your own to obtain the context as we do in the example below." />
+
+<CodePreview {...DEMOS.store} />
+
+## Finite Loops
+
+To loop the marquee a finite number of times, set the `loopCount` prop on Marquee. Alternatively, use the `onLoopComplete` and `onComplete` callbacks to track the number of completed loops or when the animation fully finishes.
+
+<CodePreview {...DEMOS.finite} />
+
+## Guides
+
+### CSS Variables
+
+The marquee component exposes CSS variables that can be used to customize its behavior and appearance.
+
+<CodeSnippet snippet={DEMOS.customMeta} />
+
+| Variable               | Description                         | Default                |
+| ---------------------- | ----------------------------------- | ---------------------- |
+| `--marquee-duration`   | Animation duration                  | Computed               |
+| `--marquee-delay`      | Animation delay before starting     | `0s`                   |
+| `--marquee-loop-count` | Number of animation iterations      | `infinite`             |
+| `--marquee-edge-color` | Color for the edge gradient overlay | `page.surface.initial` |
+| `--marquee-edge-size`  | Size of the edge gradient           | `20%`                  |
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the Marquee.
+
+| Component       | Description                                           |
+| --------------- | ----------------------------------------------------- |
+| MarqueeRoot     | The context provider for the Marquee family           |
+| MarqueeEdge     | The stylistic edge of the Marquee                     |
+| MarqueeViewport | The viewport container that holds the Marquee content |
+| MarqueeContent  | The content of the Marquee                            |
+| MarqueeItem     | The item to be displayed in the Marquee               |
+
+## API
+
+### Root Props
+
+| Prop                 | Type                                                                              | Required | Description                                                                                                  |
+| -------------------- | --------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
+| `asChild`            | `boolean`                                                                         | No       | Use the provided child element as the default rendered element, combining their props and behavior.          |
+| `autoFill`           | `boolean`                                                                         | No       | Whether to automatically duplicate content to fill the container.                                            |
+| `defaultPaused`      | `boolean`                                                                         | No       | Whether the marquee is paused by default.                                                                    |
+| `delay`              | `number`                                                                          | No       | The delay before the animation starts (in seconds).                                                          |
+| `ids`                | `Partial<{ root: string; viewport: string; content: (index: number) => string }>` | No       | The ids of the elements in the marquee. Useful for composition.                                              |
+| `loopCount`          | `number`                                                                          | No       | The number of times to loop the animation (0 = infinite).                                                    |
+| `onComplete`         | `() => void`                                                                      | No       | Function called when the marquee completes all loops and stops. Only fires for finite loops (loopCount > 0). |
+| `onLoopComplete`     | `() => void`                                                                      | No       | Function called when the marquee completes one loop iteration.                                               |
+| `onPauseChange`      | `(details: PauseStatusDetails) => void`                                           | No       | Function called when the pause status changes.                                                               |
+| `paused`             | `boolean`                                                                         | No       | Whether the marquee is paused.                                                                               |
+| `pauseOnInteraction` | `boolean`                                                                         | No       | Whether to pause the marquee on user interaction (hover, focus).                                             |
+| `reverse`            | `boolean`                                                                         | No       | Whether to reverse the animation direction.                                                                  |
+| `side`               | `Side`                                                                            | No       | The side/direction the marquee scrolls towards.                                                              |
+| `spacing`            | `string`                                                                          | No       | The spacing between marquee items.                                                                           |
+| `speed`              | `number`                                                                          | No       | The speed of the marquee animation in pixels per second.                                                     |
+| `translations`       | `IntlTranslations`                                                                | No       | The localized messages to use.                                                                               |
+
+#### Root Data Attributes:
+
+| Attribute            | Value                          |
+| -------------------- | ------------------------------ |
+| `[data-scope]`       | marquee                        |
+| `[data-part]`        | root                           |
+| `[data-state]`       | "paused" \| "idle"             |
+| `[data-orientation]` | The orientation of the marquee |
+| `[data-paused]`      | Present when paused            |
+
+#### Root CSS Variables:
+
+| Variable               | Description                               |
+| ---------------------- | ----------------------------------------- |
+| `--marquee-duration`   | The marquee duration value for the Root   |
+| `--marquee-spacing`    | The marquee spacing value for the Root    |
+| `--marquee-delay`      | The marquee delay value for the Root      |
+| `--marquee-loop-count` | The marquee loop count value for the Root |
+| `--marquee-translate`  | The marquee translate value for the Root  |
+
+### Content Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Content Data Attributes:
+
+| Attribute            | Value                          |
+| -------------------- | ------------------------------ |
+| `[data-scope]`       | marquee                        |
+| `[data-part]`        |                                |
+| `[data-index]`       | The index of the item          |
+| `[data-orientation]` | The orientation of the content |
+| `[data-side]`        |                                |
+| `[data-reverse]`     |                                |
+| `[data-clone]`       |                                |
+
+### Edge Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `side`    | `Side`    | Yes      | The side where the edge gradient should appear.                                                     |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Edge Data Attributes:
+
+| Attribute            | Value                       |
+| -------------------- | --------------------------- |
+| `[data-scope]`       | marquee                     |
+| `[data-part]`        |                             |
+| `[data-side]`        |                             |
+| `[data-orientation]` | The orientation of the edge |
+
+### Item Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Viewport Props:
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Viewport Data Attributes:
+
+| Attribute            | Value                           |
+| -------------------- | ------------------------------- |
+| `[data-scope]`       | marquee                         |
+| `[data-part]`        |                                 |
+| `[data-orientation]` | The orientation of the viewport |
+| `[data-side]`        |                                 |
+
+### RootProvider Props:
+
+| Prop      | Type               | Required | Description                                                                                         |
+| --------- | ------------------ | -------- | --------------------------------------------------------------------------------------------------- |
+| `value`   | `UseMarqueeReturn` | Yes      |                                                                                                     |
+| `asChild` | `boolean`          | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Parts
+
+The `Marquee` API is an Object containing the full family of components.
+
+| Name     | Description                                           |
+| -------- | ----------------------------------------------------- |
+| Root     | The context provider for the Marquee family           |
+| Edge     | The stylistic edge of the Marquee                     |
+| Viewport | The viewport container that holds the Marquee content |
+| Content  | The content of the Marquee                            |
+| Item     | The item to be displayed in the Marquee               |

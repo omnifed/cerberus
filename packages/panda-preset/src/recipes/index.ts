@@ -19,6 +19,7 @@ import { fieldset } from './slots/fieldset'
 import { fileStatus } from './slots/fileStatus'
 import { fileUploader } from './slots/fileUploader'
 import { collapsible } from './slots/collapsible'
+import { marquee } from './slots/marquee'
 import { menu } from './slots/menu'
 import { numberInput } from './slots/numberInput'
 import { pinInput } from './slots/pinInput'
@@ -79,6 +80,7 @@ export const slotRecipes = {
   fileStatus,
   fileUploader,
   input,
+  marquee,
   menu,
   modal,
   notification,

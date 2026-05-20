@@ -303,4 +303,30 @@ describe('conditions', () => {
   test('should have a lowEmphasis', () => {
     expect(conditions.lowEmphasis).toEqual('&:is([data-emphasis=low])')
   })
+
+  test('should have a paused state', () => {
+    expect(conditions.paused).toEqual(
+      '&:is([data-paused], [data-paused=true], [data-state=paused])',
+    )
+  })
+
+  test('should have a reverse state', () => {
+    expect(conditions.reverse).toEqual('&:is([data-reverse], [data-reverse=true])')
+  })
+
+  test('should have a sideBottom', () => {
+    expect(conditions.sideBottom).toEqual('&:is([data-side=bottom])')
+  })
+
+  test('should have a sideTop', () => {
+    expect(conditions.sideTop).toEqual('&:is([data-side=top])')
+  })
+
+  test('should have a sideStart', () => {
+    expect(conditions.sideStart).toEqual('&:is([data-side=start])')
+  })
+
+  test('should have a sideEnd', () => {
+    expect(conditions.sideEnd).toEqual('&:is([data-side=end])')
+  })
 })
