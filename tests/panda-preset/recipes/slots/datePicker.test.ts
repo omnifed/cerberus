@@ -128,14 +128,12 @@ describe('datePicker recipe', () => {
     expect(datePicker.base?.tableCell).toMatchObject({
       _selected: {
         '&:has(> [data-range-start])': {
-          backgroundImage:
-            'linear-gradient(0deg,var(--cerberus-colors-page-surface-100) 0%, var(--cerberus-colors-page-surface-100) 10%, var(--cerberus-colors-page-bg-100) 10%, var(--cerberus-colors-page-bg-100) 90%, var(--cerberus-colors-page-surface-100) 90%, var(--cerberus-colors-page-surface-100) 100%)',
+          bgColor: 'page.bg.100',
           borderTopLeftRadius: 'full',
           borderBottomLeftRadius: 'full',
         },
         '&:has(> [data-range-end])': {
-          backgroundImage:
-            'linear-gradient(0deg,var(--cerberus-colors-page-surface-100) 0%, var(--cerberus-colors-page-surface-100) 10%, var(--cerberus-colors-page-bg-100) 10%, var(--cerberus-colors-page-bg-100) 90%, var(--cerberus-colors-page-surface-100) 90%, var(--cerberus-colors-page-surface-100) 100%)',
+          bgColor: 'page.bg.100',
           borderTopRightRadius: 'full',
           borderBottomRightRadius: 'full',
         },
