@@ -4,6 +4,9 @@ import { CerberusPrimitiveProps, createCerberusPrimitive } from '../../system'
 
 const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(marquee)
 
+export type MarqueeRootProviderProps = CerberusPrimitiveProps<Marquee.RootProviderProps>
+export const MarqueeRootProvider = withSlotRecipe(Marquee.RootProvider, 'root')
+
 export type MarqueeRootProps = CerberusPrimitiveProps<
   Marquee.RootProps & MarqueeVariantProps
 >

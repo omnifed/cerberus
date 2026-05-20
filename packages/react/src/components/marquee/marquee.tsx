@@ -1,5 +1,7 @@
+import { MarqueeContext } from '@ark-ui/react'
 import { Show } from '../show/show'
 import {
+  MarqueeRootProvider,
   MarqueeContent,
   MarqueeEdge,
   MarqueeItem,
@@ -7,9 +9,9 @@ import {
   MarqueeViewport,
   type MarqueeRootProps,
 } from './primitives'
-import { shouldShowEdge } from './utils'
+import { getStartEdge, shouldShowEdge, getEndEdge } from './utils'
 
-export type MarqueeEdgeOption = 'both' | 'start' | 'end'
+export type MarqueeEdgeOption = 'both' | MarqueeRootProps['side']
 
 export type MarqueeProps = MarqueeRootProps & {
   /**
@@ -26,22 +28,24 @@ export function Marquee(props: MarqueeProps) {
   const { children, edges, ...rootProps } = props
 
   return (
-    <MarqueeRoot {...rootProps}>
-      <Show when={shouldShowEdge('start', edges)}>
-        {() => <MarqueeEdge side="start" />}
+    <MarqueeRoot autoFill {...rootProps}>
+      <Show when={shouldShowEdge(['start', 'top', 'both'], edges)}>
+        {() => <MarqueeEdge side={getStartEdge(edges, rootProps.side)} />}
       </Show>
 
       <MarqueeViewport>
         <MarqueeContent>{children}</MarqueeContent>
       </MarqueeViewport>
 
-      <Show when={shouldShowEdge('end', edges)}>
-        {() => <MarqueeEdge side="end" />}
+      <Show when={shouldShowEdge(['end', 'bottom', 'both'], edges)}>
+        {() => <MarqueeEdge side={getEndEdge(edges, rootProps.side)} />}
       </Show>
     </MarqueeRoot>
   )
 }
 
+Marquee.Context = MarqueeContext
+Marquee.RootProvider = MarqueeRootProvider
 Marquee.Root = MarqueeRoot
 Marquee.Edge = MarqueeEdge
 Marquee.Viewport = MarqueeViewport

@@ -305,7 +305,9 @@ describe('conditions', () => {
   })
 
   test('should have a paused state', () => {
-    expect(conditions.paused).toEqual('&:is([data-paused], [data-paused=true])')
+    expect(conditions.paused).toEqual(
+      '&:is([data-paused], [data-paused=true], [data-state=paused])',
+    )
   })
 
   test('should have a reverse state', () => {

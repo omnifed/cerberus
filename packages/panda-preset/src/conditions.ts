@@ -21,7 +21,7 @@ export const conditions = {
   isComplete: '&:is([data-complete=true])',
 
   // Motion states
-  paused: '&:is([data-paused], [data-paused=true])',
+  paused: '&:is([data-paused], [data-paused=true], [data-state=paused])',
   reverse: '&:is([data-reverse], [data-reverse=true])',
 
   // UI states
