@@ -1,6 +1,7 @@
 packages:
   - packages/*
   - tests
+  - bench
   - configs
   - docs
   - styled-system

@@ -8,6 +8,8 @@ An enterprise-grade, **O(1)** signal-based state management and data-fetching en
 
 Designed from the ground up to bypass the heavy abstraction costs of traditional state managers (like Redux or Zustand), Cerberus delivers industry-leading performance by utilizing flat Map lookups, direct signal memory pointers, and an automated Garbage Collection system. It is fully memory-safe for React 19 Strict Mode, natively supports React Suspense, and remains 100% framework-agnostic at its core.
 
+> "We designed Cerberus to solve real-world React state at scale. While some engines optimize for perfectly linear, simple state chains, Cerberus is engineered to dominate complex, tangled dependency graphs. In the 10,000-node Diamond Problem—the hardest topological challenge in UI reactivity—Cerberus outperforms Reactively, Alien-Signals, and Preact, delivering glitch-free resolution in ~200 microseconds."
+
 📖 [View the Official Documentation](https://cerberus.digitalu.design/docs/signals/overview)
 
 ---
