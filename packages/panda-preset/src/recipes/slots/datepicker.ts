@@ -10,9 +10,6 @@ import { input } from '../shared/input.base'
 
 const SELECTED_TEXT = 'action.text.initial'
 
-const GRAD =
-  'linear-gradient(0deg,var(--cerberus-colors-page-surface-100) 0%, var(--cerberus-colors-page-surface-100) 10%, var(--cerberus-colors-page-bg-100) 10%, var(--cerberus-colors-page-bg-100) 90%, var(--cerberus-colors-page-surface-100) 90%, var(--cerberus-colors-page-surface-100) 100%)'
-
 /**
  * Styles for the datePicker family components
  * @definition [ARK docs](https://ark-ui.com/react/docs/components/datePicker)
@@ -155,12 +152,12 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
     tableCell: {
       _selected: {
         '&:has(> [data-range-start])': {
-          backgroundImage: GRAD,
+          bgColor: 'page.bg.100',
           borderTopLeftRadius: 'full',
           borderBottomLeftRadius: 'full',
         },
         '&:has(> [data-range-end])': {
-          backgroundImage: GRAD,
+          bgColor: 'page.bg.100',
           borderTopRightRadius: 'full',
           borderBottomRightRadius: 'full',
         },

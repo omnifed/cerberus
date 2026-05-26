@@ -1,23 +1,19 @@
 'use client'
 
 import { createStoreContext } from '@cerberus-design/signals'
-import type { ReactNode } from 'react'
+import { PropsWithChildren } from 'react'
 import type { GridStore } from './types'
 
-const { StoreProvider: BaseProvider, useStore: useBaseStore } =
-  createStoreContext<GridStore<unknown>>()
+const { StoreProvider, useStore } = createStoreContext<GridStore<any>>()
 
-export function DataGridProvider<TData>(props: {
-  createStore: () => GridStore<TData>
-  children: ReactNode
-}) {
-  return (
-    <BaseProvider createStore={props.createStore as () => GridStore<unknown>}>
-      {props.children}
-    </BaseProvider>
-  )
+export function DataGridProvider<TData>(
+  props: PropsWithChildren<{
+    createStore: () => GridStore<TData>
+  }>,
+) {
+  return <StoreProvider createStore={props.createStore}>{props.children}</StoreProvider>
 }
 
 export function useDataGridContext<TData>(): GridStore<TData> {
-  return useBaseStore() as GridStore<TData>
+  return useStore() as GridStore<TData>
 }

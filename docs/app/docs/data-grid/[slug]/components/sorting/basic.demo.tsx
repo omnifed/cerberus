@@ -1,17 +1,16 @@
 'use client'
 
 import { DataGrid } from '@cerberus-design/data-grid'
+import { useQuery } from '@cerberus-design/signals'
 import { Box } from 'styled-system/jsx'
-import { createFakeQuery } from '../quick-start/data'
+import { queryEmployees } from '../api'
 import { columns } from './columns'
 
 export function BasicDemo() {
-  // Normally this would be from useQuery or a server-side API call
-  const data = createFakeQuery(1000)
-
+  const data = useQuery(queryEmployees(1000))
   return (
     <Box h="20rem" w="90%">
-      <DataGrid columns={columns} data={data()} />
+      <DataGrid columns={columns} data={data} />
     </Box>
   )
 }

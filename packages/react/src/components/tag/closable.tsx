@@ -34,7 +34,7 @@ export function ClosableTag(props: ClosableTagProps) {
       {children}
 
       <IconButton
-        ariaLabel="Close"
+        ariaLabel="Close tag"
         onClick={onClick}
         palette={palette as IconButtonProps['palette']}
         usage="filled"

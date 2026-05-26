@@ -119,10 +119,10 @@ export const components = [
     href: '/docs/components/loading-states',
   },
   {
-    id: '1.3.16',
-    label: 'Menu',
-    slug: 'menu',
-    href: '/docs/components/menu',
+    id: '1.3.16a',
+    label: 'Marquee',
+    slug: 'marquee',
+    href: '/docs/components/marquee',
   },
   {
     id: '1.3.17',

@@ -1,6 +1,10 @@
 'use client'
 
-import { createContext, useContext, useRef, type ReactNode } from 'react'
+import { createContext, PropsWithChildren, useContext, useRef } from 'react'
+
+export interface StoreProviderProps<TStore> {
+  createStore: () => TStore
+}
 
 /**
  * ## Signals Store Factory
@@ -34,38 +38,31 @@ import { createContext, useContext, useRef, type ReactNode } from 'react'
  * ## Resources
  * [Cerberus Signals Docs](https://cerberus.digitalu.design/docs/signals/overview)
  */
-export function createStoreContext<TStore>() {
+export function createStoreContext<TStore>(name?: string) {
   // 1. Create the Context scoped to this specific factory call
   const StoreContext = createContext<TStore | null>(null)
 
   // 2. The Provider handles the lazy SSR initialization securely
-  function StoreProvider({
-    createStore,
-    children,
-  }: {
-    createStore: () => TStore
-    children: ReactNode
-  }) {
+  function StoreProvider(props: PropsWithChildren<StoreProviderProps<TStore>>) {
     const storeRef = useRef<TStore | null>(null)
 
-    if (!storeRef.current) {
-      storeRef.current = createStore()
+    if (storeRef.current === null) {
+      storeRef.current = props.createStore()
     }
 
     return (
       <StoreContext.Provider value={storeRef.current}>
-        {children}
+        {props.children}
       </StoreContext.Provider>
     )
   }
+  StoreProvider.displayName = name ?? 'CerberusStoreProvider'
 
-  // 3. The Hook automatically infers TStore (No casting required by the user!)
+  // 3. The Hook
   function useStore(): TStore {
     const store = useContext(StoreContext)
     if (store === null) {
-      throw new Error(
-        'useStore must be used within its corresponding StoreProvider.',
-      )
+      throw new Error('useStore must be used within its corresponding StoreProvider.')
     }
     return store
   }

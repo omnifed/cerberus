@@ -1,0 +1,212 @@
+---
+slug: cerberus-v1-4-release
+date: 05-21-2026
+author: caseyBaggz
+title: Cerberus v1.4 Release
+description: Signals Final Blow
+category: release
+version: 1.4
+timeToRead: 7
+tag: Release
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import BashTabs from '@/app/components/bash-tabs'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import CodePreview from '@/app/components/CodePreview'
+
+import { DEMOS as MarqueeDemos } from '@/app/docs/components/[slug]/components/marquee/static'
+
+import { DEMOS as FetchingDemos } from '@/app/docs/signals/[slug]/components/fetching/static'
+import { DEMOS as EffectDemos } from '@/app/docs/signals/[slug]/components/effect/static'
+import { DEMOS as UntrackDemos } from '@/app/docs/signals/[slug]/components/untrack/static'
+import { DEMOS as SignalDemos } from '@/app/docs/signals/[slug]/components/signal/static'
+import { DEMOS as ButtonDemos } from '@/app/docs/components/[slug]/components/button/static'
+import { SubtleDemo } from '@/app/docs/components/[slug]/components/components/notifications/static'
+
+This release massively improves Signals performance (again) giving the final blow to
+obliterate Tanstack Query.
+
+## Overview
+
+Here is a brief overview of what's new:
+
+- [Preset Features](#preset-features) - Recipes, conditions, animations, oh my!
+- [React Features](#react-features) - Marquee, Combobox helpers, and fixes
+- [Signals Features](#signals-features) - Signals performance obliterates Tanstack Query
+
+## Preset Features
+
+There are a substancial amount of additions to the preset features. Most are
+small, but here's the list of notable additions:
+
+### New Conditions
+
+We've added quite a few new condition types to the preset features in tandem with the Marquee recipe.
+
+| Name              | Selector                                      |
+| ----------------- | --------------------------------------------- |
+| `_info`           | `&:is([data-type=info])`                      |
+| `_success`        | `&:is([data-type=success])`                   |
+| `_warning`        | `&:is([data-type=warning])`                   |
+| `_danger`         | `&:is([data-type=danger], [data-type=error])` |
+| `_subtleEmphasis` | `&:is([data-emphasis=subtle])`                |
+| `_paused`         | `&:is([data-paused], [data-paused=true])`     |
+| `_reverse`        | `&:is([data-reverse], [data-reverse=true])`   |
+| `_sideBottom`     | `&:is([data-side=bottom])`                    |
+| `_sideTop`        | `&:is([data-side=top])`                       |
+| `_sideStart`      | `&:is([data-side=start])`                     |
+| `_sideEnd`        | `&:is([data-side=end])`                       |
+
+View the [Conditional Styles docs](/docs/styling/conditional-styles)
+
+### Keyframes
+
+Likewise, with the Marquee, we've added some new keyframes to spice up the animation experience.
+
+| Name       | Description                  |
+| ---------- | ---------------------------- |
+| `marqueeX` | Horizontal marquee animation |
+| `marqueeY` | Vertical marquee animation   |
+
+View the [Keyframes docs](/docs/theming/animations#keyframes)
+
+## React Features
+
+The React updates contain some new features and stability fixes.
+
+### Marquee
+
+We've added a new Marquee API for when you need some tasty additions added to your
+marketing site.
+
+<CodePreview {...MarqueeDemos.basic} />
+<br />
+
+Checkout the [Marquee documentation for more details](/docs/components/marquee).
+
+### Other notable changes
+
+Here are some high-level improvements made:
+
+1. Feat: Exposed a TON of helpers for the Combobox API & improved typing
+2. Feat: `Field.helperText` now accepts `ReactNode`
+3. Fix: Clickable Tags now have a background color
+4. Fix: `Admonition.Root` now renders a `div`
+5. Fix: Toast variants display the correct icon
+6. Fix: Subtle Toast variants styles have been improved
+7. Data Grid Fix: Pagination has been improved (not React but...React)
+
+## Signals Features
+
+> As of v1.4.0 - Signals outperform: [React](https://react.dev/), [Zustand](https://zustand.docs.pmnd.rs/learn/getting-started/introduction), [Legend State](https://legendapp.com/open-source/state/), and querys **outperform [Tanstack Query](https://tanstack.com/query/latest) on multiple levels**
+
+In this next phase of Signals, we have improved the scheduling algorithm to use a push/pull model which has significantly improved performance across the board. We designed Cerberus to solve real-world React state at scale. While some engines optimize for perfectly linear, simple state chains, Cerberus is engineered to dominate complex, tangled dependency graphs.
+
+This has set Cerberus to be a showstopper for React state management and query libraries across the industry. No opionions, just hard data - so let's see it.
+
+### Benchmarks
+
+Cerby Signals were already performing at _0(1)_ but that is never good enough. Here are the differences between v1.3.0 and v1.4.0:
+
+#### Version Comparison
+
+| Benchmark       | Previous (v1.3.0) | Current (v1.4.0) | Result           |
+| --------------- | ----------------- | ---------------- | ---------------- |
+| Deep Dependency | 226.83 µs         | 38.07 µs         | **~5.8x Faster** |
+| Wide Fan-Out    | 3.17 ms           | 173.68 µs        | **~18x Faster**  |
+| Diamond Problem | 458.60 µs         | 208.42 µs        | **~2.2x Faster** |
+
+#### Industry Engine Comparison
+
+Now that we have seen the performance improvements, let's compare Cerberus to other popular signal-based engines.
+
+The following benchmarks compare Cerberus to the following libraries:
+
+- [**Alien Signals**](https://github.com/stackblitz/alien-signals)
+- [**Preact**](https://preactjs.com/guide/v10/signals)
+- [**Signia**](https://signia.tldraw.dev/)
+- [**Reactively**](https://github.com/milomg/reactively)
+
+##### The Deep Dependency Chain (The Call-Stack Test)
+
+| Rank | Library       | Time       |
+| ---- | ------------- | ---------- |
+| 1    | Alien Signals | ~19 µs     |
+| 2    | Preact        | ~22 µs     |
+| 3    | **Cerberus**  | **~38 µs** |
+| 4    | Signia        | ~53 µs     |
+| 5    | Reactively    | ~56 µs     |
+
+**What this means:** This test measures pure, unadulterated pointer-chasing and call-stack depth. Alien-Signals and Preact win here because their internal node structures are incredibly lean. They essentially act as highly optimized linked lists when state is linear.
+
+Cerberus sits comfortably in the middle. You are paying a slight "tax" (~18 µs behind Alien) here. This is almost certainly because the data structures you use to prevent glitches and handle complex sorting add a tiny bit of overhead when the graph is perfectly simple and linear. Reactively pays an even heavier tax here because its global versioning system is overkill for a single straight line.
+
+##### Wide Fan-Out (The Iteration Test)
+
+| Rank | Library       | Time        |
+| ---- | ------------- | ----------- |
+| 1    | Preact        | ~152 µs     |
+| 2    | **Cerberus**  | **~173 µs** |
+| 3    | Alien-Signals | ~186 µs     |
+| 4    | Reactively    | ~190 µs     |
+| 5    | Signia        | ~399 µs     |
+
+**What this means:** This tests how fast an engine can notify 10,000 distinct listeners when a single source changes. Preact takes the win, but Cerberus is a razor-thin 21 µs behind them, securing a dominant second place. Our memory allocation and iteration loops are exceptionally tight.
+
+Signia starts to show its architectural limits here, taking more than twice as long as Cerberus.
+
+##### The Diamond Problem (The Architecture Test)
+
+| Rank | Library       | Time        |
+| ---- | ------------- | ----------- |
+| 1    | **Cerberus**  | **~208 µs** |
+| 2    | Reactively    | ~222 µs     |
+| 3    | Preact        | ~264 µs     |
+| 4    | Alien-Signals | ~277 µs     |
+| 5    | Signia        | ~6.95 ms    |
+
+**What this means:** This is the holy grail of reactivity, and _Cerberus is the fastest in the (React) world at it_. The Diamond Problem represents real-world, complex application state—where multiple derived values funnel into a single UI component.
+
+- **Why we won**: Our graph resolution algorithm is flawless. We successfully deduplicate the execution path so the sink only evaluates exactly once after all 10,000 mid-nodes have settled, and we do it faster than Reactively's highly touted versioning system.
+- **The Signia Collapse**: Look at Signia's time—6.95 milliseconds. This is a massive 33x drop-off. Signia's epoch-clock architecture likely suffers from severe "glitching" at this scale, meaning the sink is being forced to re-evaluate prematurely or multiple times before the graph fully settles.
+
+### Query Benchmarks
+
+By nature, since queries use the signals engine, they are inherently faster than their v1.3.0 counterparts.
+
+| Benchmark               | Previous (v1.3.0) | Current (v1.4.0) | Delta            |
+| ----------------------- | ----------------- | ---------------- | ---------------- |
+| Complex Objects sorting | untested          | 579.28 ms        |                  |
+| Cache Retrieval (10k)   | 1.68 ms           | 1.65 ms          | **~1x Faster**   |
+| Optimistic Updates      | 128 ns            | 103 ns           | **~1.2x Faster** |
+| Invalidation Sweep      | 151.80 ns         | 106 ns           | **~1.4x Faster** |
+
+#### Cerberus Signals vs. TanStack Query
+
+This is a total sweep. At this point, we have mathematically proven that Cerberus is not just a faster reactivity engine, but a significantly more efficient data layer than the industry standard.
+
+Here is the exact breakdown of how our architecture dismantled TanStack Query across the board.
+
+| Data Layer Operation        | Cerberus Time | TanStack Time | Delta            |
+| --------------------------- | ------------- | ------------- | ---------------- |
+| Hashing & Serialization     | ~176 ns       | ~760 ns       | **4.3x Faster**  |
+| Cache Retrieval (10k Reads) | ~4.01 ms      | ~9.19 ms      | **2.2x Faster**  |
+| Optimistic Updates          | ~48 ns        | ~1.24 µs      | **25.8x Faster** |
+| Invalidation Sweep          | ~43 ns        | ~279 ns       | **6.4x Faster**  |
+
+Our performance gains here are not accidental; they are the direct result of stripping away heavily abstracted observer patterns in favor of raw signal bindings and direct memory references.
+
+## Thanks!
+
+This is another great release introducing some beneficial tools and overall improvements.
+
+A special thanks to everyone who has helped validate the APIs, docs, and submitted features or bugfixes for this release.
+
+> There is no "I" in Cerber-"US"
+
+## Upgrading
+
+To upgrade to this release, you can install the latest version of Cerberus React:
+
+<BashTabs code="npm run up:cerberus" />

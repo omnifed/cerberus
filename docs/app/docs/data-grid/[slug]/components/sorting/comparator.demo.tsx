@@ -1,14 +1,13 @@
 'use client'
 
 import { DataGrid } from '@cerberus-design/data-grid'
+import { useQuery } from '@cerberus-design/signals'
 import { Box } from 'styled-system/jsx'
-import { useFakeQuery } from '../quick-start/data'
+import { queryEmployees } from '../api'
 import { columns } from './compare-columns'
 
 export function ComparatorDemo() {
-  // Normally this would be from useQuery or a server-side API call
-  const data = useFakeQuery(100)
-
+  const data = useQuery(queryEmployees(100))
   return (
     <Box h="20rem" w="90%">
       <DataGrid columns={columns} data={data} />

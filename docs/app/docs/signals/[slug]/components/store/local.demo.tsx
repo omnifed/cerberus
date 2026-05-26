@@ -8,8 +8,8 @@ import {
   createSignal,
   ReactiveText,
   useRead,
+  useStore,
 } from '@cerberus-design/signals'
-import { useMemo } from 'react'
 
 function myStore() {
   const [count, setCount] = createSignal<number>(0)
@@ -26,7 +26,7 @@ function myStore() {
 
 export function LocalDemo() {
   // You only need to do this if you are using `useRead` for iteration
-  const store = useMemo(() => myStore(), [])
+  const store = useStore(myStore)
   const count = useRead(store.count)
 
   return (

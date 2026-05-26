@@ -1,5 +1,5 @@
-import type { Observable, Accessor, Setter, SignalTuple } from './types'
-import { activeObserver, schedule, batch } from './scheduler'
+import { activeObserver, batch, propagate, trackDep } from './scheduler'
+import type { Accessor, Setter, SignalNode, SignalTuple } from './types'
 
 /**
  * ## Create Signal
@@ -38,33 +38,30 @@ import { activeObserver, schedule, batch } from './scheduler'
  * [Cerberus Signals Docs](https://cerberus.digitalu.design/docs/signals/overview)
  */
 export function createSignal<T>(initialValue: T): SignalTuple<T> {
-  let value = initialValue
-  const node: Observable = { observers: new Set(), depth: 0 }
-
-  const getter: Accessor<T> = () => {
-    if (activeObserver) {
-      node.observers.add(activeObserver)
-      activeObserver.dependencies.add(node)
-      // Ensure the observer evaluating this signal is strictly deeper in the graph
-      if (activeObserver.depth <= node.depth) {
-        activeObserver.depth = node.depth + 1
-      }
-    }
-    return value
+  const node: SignalNode<T> = {
+    value: initialValue,
+    subs: null,
+    subsTail: null,
   }
 
-  const setter: Setter<T> = (nextValue): void => {
-    const newValue = typeof nextValue === 'function' ? (nextValue as Setter<T>)(value) : nextValue
+  const getter: Accessor<T> = () => {
+    // Register dependency if inside a reactive context
+    if (activeObserver !== null) {
+      trackDep(node as SignalNode<unknown>, activeObserver)
+    }
+    return node.value
+  }
 
-    if (newValue !== value) {
-      value = newValue as T
-      const currentObservers = Array.from(node.observers)
-      // --- SCHEDULER DELEGATION UPDATE ---
-      batch(() => {
-        for (const observer of currentObservers) {
-          schedule(observer)
-        }
-      })
+  const setter: Setter<T> = (nextValue) => {
+    const newValue =
+      typeof nextValue === 'function'
+        ? (nextValue as (prev: T) => T)(node.value)
+        : nextValue
+
+    if (newValue !== node.value) {
+      node.value = newValue
+      // Zero allocation — linked list traversal
+      batch(() => propagate(node as SignalNode<unknown>))
     }
   }
 

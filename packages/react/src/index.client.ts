@@ -52,7 +52,6 @@ export {
   useListbox,
   ListboxRootProvider,
   useMarquee,
-  MarqueeRootProvider,
   useMenu,
   MenuRootProvider,
   useNumberInput,

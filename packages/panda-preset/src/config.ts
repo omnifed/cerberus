@@ -38,6 +38,7 @@ const basePreset: Preset = definePreset({
             'page',
             'action',
             'secondary-action',
+            'secondaryAction',
             'info',
             'success',
             'warning',

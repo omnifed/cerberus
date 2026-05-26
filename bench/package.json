@@ -1,0 +1,27 @@
+{
+  "name": "bench",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Benchmarks for the repository.",
+  "scripts": {
+    "lint:ts": "tsc --noEmit",
+    "bench:engine": "bun run ./bechmarks/engine.bench.ts",
+    "bench:query": "bun run ./bechmarks/query.bench.ts",
+    "bench:tanstack": "bun run ./bechmarks/query-tanstack.bench.ts"
+  },
+  "dependencies": {
+    "@preact/signals-core": "^1.14.2",
+    "@reactively/core": "^0.0.8",
+    "@tanstack/query-core": "^5.100.9",
+    "alien-signals": "^3.2.1",
+    "signia": "^0.1.5"
+  },
+  "devDependencies": {
+    "@cerberus-design/signals": "workspace:*",
+    "@types/bun": "^1.3.13",
+    "@types/react": "^19.2.14",
+    "mitata": "^1.0.34",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  }
+}

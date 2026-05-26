@@ -11,7 +11,7 @@ export function BasicDemo() {
 
   return (
     <HStack h="20rem" w="3/4">
-      <DataGrid columns={columns} data={data()} />
+      <DataGrid columns={columns} data={data} />
     </HStack>
   )
 }

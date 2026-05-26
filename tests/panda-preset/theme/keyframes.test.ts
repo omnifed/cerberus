@@ -237,4 +237,20 @@ describe('keyframes', () => {
       transform: 'scale(1)',
     })
   })
+
+  test('should export marqueeX', () => {
+    expect(keyframes.marqueeX).toBeDefined()
+    expect(keyframes.marqueeX.from).toEqual({ transform: 'translateX(0%)' })
+    expect(keyframes.marqueeX.to).toEqual({
+      transform: 'translateX(var(--marquee-translate))',
+    })
+  })
+
+  test('should export marqueeY', () => {
+    expect(keyframes.marqueeY).toBeDefined()
+    expect(keyframes.marqueeY.from).toEqual({ transform: 'translateY(0%)' })
+    expect(keyframes.marqueeY.to).toEqual({
+      transform: 'translateY(var(--marquee-translate))',
+    })
+  })
 })
