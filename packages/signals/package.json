@@ -24,7 +24,22 @@
   "main": "src/index.ts",
   "module": "src/index.ts",
   "publishConfig": {
-    "access": "public",
+    "main": "dist/index.cjs",
+    "module": "dist/index.js",
+    "types": "dist/index.d.cts",
+    "typesVersions": {
+      "*": {
+        ".": [
+          "dist/index.d.cts"
+        ],
+        "./core": [
+          "dist/core/index.d.cts"
+        ],
+        "./react": [
+          "dist/react/index.d.cts"
+        ]
+      }
+    },
     "exports": {
       ".": {
         "import": {
@@ -58,22 +73,7 @@
       },
       "./package.json": "./package.json"
     },
-    "main": "dist/index.cjs",
-    "module": "dist/index.js",
-    "types": "dist/index.d.cts",
-    "typesVersions": {
-      "*": {
-        ".": [
-          "dist/index.d.cts"
-        ],
-        "./core": [
-          "dist/core/index.d.cts"
-        ],
-        "./react": [
-          "dist/react/index.d.cts"
-        ]
-      }
-    }
+    "access": "public"
   },
   "scripts": {
     "build": "vite build",
@@ -85,8 +85,8 @@
     "@vitejs/plugin-react": "^6.0.1",
     "globby": "^16.2.0",
     "react": "^19.2.6",
-    "vite": "^8.0.8",
-    "vite-plugin-dts": "^5.0.0"
+    "vite": "^8.0.14",
+    "vite-plugin-dts": "^5.0.1"
   },
   "peerDependencies": {
     "react": "*"
