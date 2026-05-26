@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/panda-preset",
-  "version": "1.4.0-rc.1",
+  "version": "1.4.0",
   "description": "The official Panda-CSS preset for the omni-federal design system",
   "keywords": [
     "css",
@@ -26,7 +26,16 @@
   "main": "src/index.ts",
   "module": "src/index.ts",
   "publishConfig": {
-    "access": "public",
+    "main": "build/legacy/index.cjs",
+    "module": "build/legacy/index.js",
+    "types": "build/legacy/index.d.ts",
+    "typesVersions": {
+      "*": {
+        ".": [
+          "build/legacy/index.d.ts"
+        ]
+      }
+    },
     "exports": {
       ".": {
         "import": {
@@ -40,16 +49,7 @@
       },
       "./package.json": "./package.json"
     },
-    "main": "build/legacy/index.cjs",
-    "module": "build/legacy/index.js",
-    "types": "build/legacy/index.d.ts",
-    "typesVersions": {
-      "*": {
-        ".": [
-          "build/legacy/index.d.ts"
-        ]
-      }
-    }
+    "access": "public"
   },
   "scripts": {
     "build": "tsup --experimental-dts",
