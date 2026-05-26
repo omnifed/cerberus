@@ -5,13 +5,14 @@
   "description": "Benchmarks for the repository.",
   "scripts": {
     "lint:ts": "tsc --noEmit",
+    "bench:engine": "bun run ./bechmarks/engine.bench.ts",
     "bench:query": "bun run ./bechmarks/query.bench.ts",
-    "bench:engine": "bun run ./bechmarks/engine.bench.ts"
+    "bench:tanstack": "bun run ./bechmarks/query-tanstack.bench.ts"
   },
   "dependencies": {
     "@preact/signals-core": "^1.14.2",
     "@reactively/core": "^0.0.8",
-    "@tanstack/query-core": "^5.100.1",
+    "@tanstack/query-core": "^5.100.9",
     "alien-signals": "^3.2.1",
     "signia": "^0.1.5"
   },
