@@ -64,7 +64,7 @@
     "@pandacss/dev": "^1.11.1",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
+    "@vitejs/plugin-react": "^6.0.2",
     "globby": "^16.2.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
