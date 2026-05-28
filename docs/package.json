@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@carbon/icons-react": "^11.79.0",
+    "@carbon/icons-react": "^11.81.0",
     "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/data-grid": "workspace:*",
     "@cerberus-design/react": "workspace:*",
