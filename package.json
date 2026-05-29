@@ -24,7 +24,7 @@
     "@types/mdx": "^2.0.13",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.5",
-    "oxfmt": "^0.50.0",
+    "oxfmt": "^0.52.0",
     "oxlint": "^1.65.0"
   },
   "lint-staged": {
