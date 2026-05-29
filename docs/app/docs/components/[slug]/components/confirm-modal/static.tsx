@@ -1,39 +1,19 @@
-import { ConfirmModal } from '@cerberus-design/react'
-import {
-  ConfirmOverviewFeature,
-  DestructiveFeature,
-  NoAvatarFeature,
-  NonDestructiveFeature,
-} from './confirm-modal-features'
+import { NoAvatarDemo } from './avatar.demo'
+import { BasicDemo } from './basic.demo'
+import { DestructiveDemo } from './destructive.demo'
 
-export function NonDestructivePreview() {
-  return (
-    <ConfirmModal>
-      <NonDestructiveFeature />
-    </ConfirmModal>
-  )
-}
-
-export function NoAvatarPreview() {
-  return (
-    <ConfirmModal>
-      <NoAvatarFeature />
-    </ConfirmModal>
-  )
-}
-
-export function DestructivePreview() {
-  return (
-    <ConfirmModal>
-      <DestructiveFeature />
-    </ConfirmModal>
-  )
-}
-
-export function OverviewPreview() {
-  return (
-    <ConfirmModal>
-      <ConfirmOverviewFeature />
-    </ConfirmModal>
-  )
+export const DEMOS = {
+  basic: {
+    id: 'confirm-modal.basic',
+    preview: <BasicDemo />,
+  },
+  destructive: {
+    id: 'confirm-modal.destructive',
+    preview: <DestructiveDemo />,
+  },
+  avatar: {
+    id: 'confirm-modal.avatar',
+    preview: <NoAvatarDemo />,
+  },
+  meta: `import { ConfirmModal, useConfirmModal } from "@cerberus/react"`,
 }
