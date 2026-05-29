@@ -282,8 +282,8 @@ importers:
   packages/figma:
     devDependencies:
       '@figma/rest-api-spec':
-        specifier: ^0.38.0
-        version: 0.38.0
+        specifier: ^0.39.0
+        version: 0.39.0
       dotenv:
         specifier: ^17.3.1
         version: 17.4.2
@@ -1019,8 +1019,8 @@ packages:
   '@expressive-code/plugin-text-markers@0.42.0':
     resolution: {integrity: sha512-l59lUx8fq1v5g6SpmbDjiU0+7IdfbiWnAyRmtTVSpfhyq+nZMN4UcmYyu2b9Mynhzt7Gr+O+cXyEPDNb2AVWVQ==}
 
-  '@figma/rest-api-spec@0.38.0':
-    resolution: {integrity: sha512-U5AyHjhYDKBbRlrtFib9CYLyCcGbO00s/GZw0gI7mI0NRyVGrUWVHE5hveeEXo0yRPEtmDTb0peqNCoVLjPskA==}
+  '@figma/rest-api-spec@0.39.0':
+    resolution: {integrity: sha512-yum/JRypoDMqX3eH5u+sxCzbW/2DHVwhr3KvgIOPUqAUP8hQTnkK3L2ArlJzl6Y6ohWhODyGn3fAvbpKsdILAw==}
 
   '@floating-ui/core@1.7.5':
     resolution: {integrity: sha512-1Ih4WTWyw0+lKyFMcBHGbb5U5FtuHJuujoyyr5zTaWS5EYMeT6Jb2AuDeftsCsEuchO+mM2ij5+q9crhydzLhQ==}
@@ -6060,7 +6060,7 @@ snapshots:
     dependencies:
       '@expressive-code/core': 0.42.0
 
-  '@figma/rest-api-spec@0.38.0': {}
+  '@figma/rest-api-spec@0.39.0': {}
 
   '@floating-ui/core@1.7.5':
     dependencies:
