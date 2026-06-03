@@ -78,9 +78,9 @@
   },
   "devDependencies": {
     "@cerberus/panda-preset": "workspace:*",
-    "@internationalized/date": "^3.12.0",
+    "@internationalized/date": "^3.12.2",
     "@pandacss/dev": "^1.11.1",
-    "@types/react": "^19.2.15",
+    "@types/react": "^19.2.16",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.2",
     "globby": "^16.2.0",

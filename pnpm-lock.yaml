@@ -60,8 +60,8 @@ importers:
         specifier: ^1.3.14
         version: 1.3.14
       '@types/react':
-        specifier: ^19.2.14
-        version: 19.2.15
+        specifier: ^19.2.16
+        version: 19.2.16
       mitata:
         specifier: ^1.0.34
         version: 1.0.34
@@ -110,7 +110,7 @@ importers:
         version: 4.6.3
       '@docsearch/react':
         specifier: ^4.6.3
-        version: 4.6.3(@algolia/client-search@5.52.1)(@types/react@19.2.15)(algoliasearch@5.52.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(search-insights@2.17.3)
+        version: 4.6.3(@algolia/client-search@5.52.1)(@types/react@19.2.16)(algoliasearch@5.52.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(search-insights@2.17.3)
       '@tsparticles/engine':
         specifier: 4.0.5
         version: 4.0.5
@@ -153,10 +153,10 @@ importers:
         version: 3.1.1
       '@mdx-js/react':
         specifier: ^3.1.1
-        version: 3.1.1(@types/react@19.2.15)(react@19.2.6)
+        version: 3.1.1(@types/react@19.2.16)(react@19.2.6)
       '@next/mdx':
         specifier: ^16.2.6
-        version: 16.2.6(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.15)(react@19.2.6))
+        version: 16.2.6(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.16)(react@19.2.6))
       '@pandacss/dev':
         specifier: ^1.11.1
         version: 1.11.1(typescript@6.0.3)
@@ -176,11 +176,11 @@ importers:
         specifier: ^25.9.1
         version: 25.9.1
       '@types/react':
-        specifier: 19.2.15
-        version: 19.2.15
+        specifier: 19.2.16
+        version: 19.2.16
       '@types/react-dom':
         specifier: 19.2.3
-        version: 19.2.3(@types/react@19.2.15)
+        version: 19.2.3(@types/react@19.2.16)
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1(next@16.2.6(@babel/core@7.29.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)
@@ -252,11 +252,11 @@ importers:
         specifier: ^1.11.1
         version: 1.11.1(typescript@6.0.3)
       '@types/react':
-        specifier: ^19.2.15
-        version: 19.2.15
+        specifier: ^19.2.16
+        version: 19.2.16
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.3(@types/react@19.2.15)
+        version: 19.2.3(@types/react@19.2.16)
       '@vitejs/plugin-react':
         specifier: ^6.0.2
         version: 6.0.2(babel-plugin-react-compiler@1.0.0)(vite@8.0.14(@types/node@25.9.1)(yaml@2.9.0))
@@ -404,17 +404,17 @@ importers:
         specifier: workspace:*
         version: link:../panda-preset
       '@internationalized/date':
-        specifier: ^3.12.0
-        version: 3.12.0
+        specifier: ^3.12.2
+        version: 3.12.2
       '@pandacss/dev':
         specifier: ^1.11.1
         version: 1.11.1(typescript@6.0.3)
       '@types/react':
-        specifier: ^19.2.15
-        version: 19.2.15
+        specifier: ^19.2.16
+        version: 19.2.16
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.3(@types/react@19.2.15)
+        version: 19.2.3(@types/react@19.2.16)
       '@vitejs/plugin-react':
         specifier: ^6.0.2
         version: 6.0.2(babel-plugin-react-compiler@1.0.0)(vite@8.0.14(@types/node@25.9.1)(yaml@2.9.0))
@@ -440,8 +440,8 @@ importers:
   packages/signals:
     devDependencies:
       '@types/react':
-        specifier: ^19.2.15
-        version: 19.2.15
+        specifier: ^19.2.16
+        version: 19.2.16
       '@vitejs/plugin-react':
         specifier: ^6.0.2
         version: 6.0.2(babel-plugin-react-compiler@1.0.0)(vite@8.0.14(@types/node@25.9.1)(yaml@2.9.0))
@@ -479,8 +479,8 @@ importers:
         specifier: ^1.11.1
         version: 1.11.1(typescript@6.0.3)
       '@types/react':
-        specifier: 19.2.15
-        version: 19.2.15
+        specifier: 19.2.16
+        version: 19.2.16
       react:
         specifier: ^19.2.6
         version: 19.2.6
@@ -528,7 +528,7 @@ importers:
         version: 6.9.1
       '@testing-library/react':
         specifier: ^16.3.1
-        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.16))(@types/react@19.2.16)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@testing-library/user-event':
         specifier: ^14.6.1
         version: 14.6.1(@testing-library/dom@10.4.1)
@@ -536,8 +536,8 @@ importers:
         specifier: ^1.3.14
         version: 1.3.14
       '@types/react':
-        specifier: ^19.2.14
-        version: 19.2.15
+        specifier: ^19.2.16
+        version: 19.2.16
       react:
         specifier: ^19.2.6
         version: 19.2.6
@@ -1220,6 +1220,9 @@ packages:
 
   '@internationalized/date@3.12.0':
     resolution: {integrity: sha512-/PyIMzK29jtXaGU23qTvNZxvBXRtKbNnGDFD+PY6CZw/Y8Ex8pFUzkuCJCG9aOqmShjqhS9mPqP6Dk5onQY8rQ==}
+
+  '@internationalized/date@3.12.2':
+    resolution: {integrity: sha512-FY1Y+H64NDs+HAF6omlnWxm3mEpfgaCSWtL5l551ZZfImA+kGjPFgrnJrGjH6lfmLL0g8Z/mBu1R3kufeCp6Jw==}
 
   '@internationalized/number@3.6.6':
     resolution: {integrity: sha512-iFgmQaXHE0vytNfpLZWOC2mEJCBRzcUxt53Xf/yCXG93lRvqas237i3r7X4RKMwO3txiyZD4mQjKAByFv6UGSQ==}
@@ -1935,112 +1938,132 @@ packages:
 
   '@tsparticles/basic@4.0.5':
     resolution: {integrity: sha512-JWAsRUh8v8RYxLilAAlcwIvUlO2Jfl0DW2t+aAm0OAp4WjmebWSYeG+/CV6Ov+ynV/38vEDAYQIRpyG8Vpmyrg==}
+    deprecated: Please update to version 4.1.1
 
   '@tsparticles/canvas-utils@4.0.5':
     resolution: {integrity: sha512-U/KtQBuv1reSTnpyBswp4SfhDjOSG9lvcR8Z+1FTV+5/Vfjz2hEy3p61dN934xffrY24uFJE1f60m1npwZ4Ayg==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/engine@4.0.5':
     resolution: {integrity: sha512-ovFQNzz18Ef0ww7wPqykHWU06K1EhTkMPZhoIZQQaRbFmKKoE+5LyTGGTZGzGjQ4GjHLZq7l9kGl1oInpzoK4Q==}
+    deprecated: Please update to version 4.1.1
 
   '@tsparticles/interaction-external-attract@4.0.5':
     resolution: {integrity: sha512-k/2/TGRhCEJHUTWjcarWzG2c4OdHKihkjrEaKaLNuLOtJr30IPAzD4WSs8TDUEFAh1lEKmpC3stbRcjMmHMnMQ==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-external-bounce@4.0.5':
     resolution: {integrity: sha512-p6KWrxFmhWXvae3HA3SpE5q8X7eVvPKpxbqjk+pK648zb20u8iCpD+7ahadkey10TxggC7ffAa20ATLGftchdw==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-external-bubble@4.0.5':
     resolution: {integrity: sha512-rFBCF0oOD2bFDM/VmN1M/8LC114UXOvJSyAHmxB1z3N9u/S1MfQBz3nh98D6hTsYAyc9pKdaInDWqBQxabEmUw==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-external-connect@4.0.5':
     resolution: {integrity: sha512-e9xmZGLI8C7yf+G9Bpbh30QxwXDJkbV16d012jrjVklRnT2iQvs6y2p1KGI3xTNWkyKAKnyIiXYRRSSvBgc4+Q==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-external-destroy@4.0.5':
     resolution: {integrity: sha512-AX9o1nytQVQdCvhSzF2fzJwVyG0dtSmWIgC1HBklCoARmyydyWOJ2rt0/4sPCu0RjEYeUDI6LSTzzCy6LSJaTw==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-external-grab@4.0.5':
     resolution: {integrity: sha512-xa+zfluNw+nhoNxBbqeM62QYvfb0NV+gt91R/1bYHJb8CmflBiYhLX5kO3dsGu/zzpjnccqnEN5UDnvPKO8niQ==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-external-parallax@4.0.5':
     resolution: {integrity: sha512-arNHolnrksrbeLjDZbVDStwgNZAudkRoC3BnR+a2bzVEyGQnix/3MVT+N1PnrSnd0KuXN+yec+N3MlU91aJ2FQ==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-external-pause@4.0.5':
     resolution: {integrity: sha512-ehMtDvISL40Sr8cQ6vqv67LjwV9xj92OI7RkigTViJiwC4+GNv+3mdEb9Nn/dBphuQ2LmjZAc9b7FfPmBoKIdQ==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-external-push@4.0.5':
     resolution: {integrity: sha512-XmDUE7HoAIJf9MFC+7WBuEvTk9RfXyLSLFWxRmyEapy4AMDUyWR8DhZU+yslj440W1J0rq28vPOjsOYUwvY9tQ==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-external-remove@4.0.5':
     resolution: {integrity: sha512-Vd3KWTPwmguAJR1xmwrYwv7ItFL7xqxDzTS0YfDwtm7glXQG/Uo8lszxcASQTw6DNvSG6opGisGlO+dGSX0uJw==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-external-repulse@4.0.5':
     resolution: {integrity: sha512-Fpd8PBJDRcBohuJbwpr99annMWVVuct5EPiTRsyigshrERpFr4xDHPodhgVJ6A9IFs0NGMH5Kfa1WReSsM8tCA==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-external-slow@4.0.5':
     resolution: {integrity: sha512-u1RFBXmsOWVPnmdgOsgI3Usg8By0u+xARS1faU+DeQx0UCZeVTbRKR9/f+afcP36EVGb9y5Ij4+zjq5M84dmbA==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-particles-attract@4.0.5':
     resolution: {integrity: sha512-1FWdRXB32s1LUrV7u0D+mu88WxRq8ijmUfqTlEHMPX/nNPKoSRbic4pN1fTxdbH9hD21S+rjECBmaLmEzpqnVg==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-particles-collisions@4.0.5':
     resolution: {integrity: sha512-kF5f/7xnjj3tPFUFxuPe2TX8Ee0ZNJskvU0gXjNb6UER9WuvK596gkJWxeWib8VMyKgAywyV0Mp/hXQh0YsJRw==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/interaction-particles-links@4.0.5':
     resolution: {integrity: sha512-06+CKi4DwbmBwoIuHc/PTpnI7V7loqFgmddY16xPXzDs5i9W/Uhhovg5d5yplFOTxmiNLF9QY0Yz6aMHZ3f7cQ==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
       '@tsparticles/plugin-interactivity': 4.0.5
 
   '@tsparticles/plugin-blend@4.0.5':
     resolution: {integrity: sha512-7w21hS28GnD4ac5uooRskmMprFUCJs6wHveC4CY5XiiE7ldcHTUMNT9b2fwXMFawBZDSezfjhCms7zhIQDbjgg==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/plugin-easing-quad@4.0.5':
     resolution: {integrity: sha512-CsRCndjCeRAUAz+l7zrYEWdw8JK7gbNBxnq5sRcaflESDLNtyeZQtkYoVsMouUgbr4/UdShLMi1IqQiR117vpw==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
@@ -2051,26 +2074,31 @@ packages:
 
   '@tsparticles/plugin-hsl-color@4.0.5':
     resolution: {integrity: sha512-gdey7PUKPijnG9hIfrD3z8N4xjyOyRWXsvaGXhoMgpaD47Vcc/wsIXmx/0Znsct0cEEXByXoMQyM8MRO1yTg0w==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/plugin-interactivity@4.0.5':
     resolution: {integrity: sha512-tRTvH5/MUy/3MNG344rBNuTFxLVCo9MaiYU3d0cxg9Xuh1jVOsIcNj3KbQrOdYvFowzVml8+cAeMGfLtsQoyDw==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/plugin-move@4.0.5':
     resolution: {integrity: sha512-IJVS/f7QHEfGz4LSlidAmLPPGc2Jj1vp6ydxvMOIyjzPrxS8PIYqsXB0jWjy2fr5KT6+VCNDX+7fY8v0EK9OOg==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/plugin-rgb-color@4.0.5':
     resolution: {integrity: sha512-+JDxQWW1WupxnDwvN+C0vWQmOvBFkvtvK2MJ6qNjOI9/7Nj8s0xzwm5KGqVUWkaF16K3+AihNjEQRb/M8E5skg==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/react@4.0.5':
     resolution: {integrity: sha512-3XJmucy/gOgPzQ+i5ZAt3LD8840xdxLPfbNMuRk8D/fHhxI07SHx/8GhODcqnHHHme1zEf0/zUdFee73PuH+NA==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': workspace:^
       react: '>=16.8.0'
@@ -2078,69 +2106,83 @@ packages:
 
   '@tsparticles/shape-circle@4.0.5':
     resolution: {integrity: sha512-y2CcWNCnC2m2/DaE5CsWbJSCjKsLbOySdT9qgyezmT/boYHupJuNNNOeXP56Tlq+je1wZpayCIAKOpl+VhBtiw==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/shape-emoji@4.0.5':
     resolution: {integrity: sha512-OyEtJ+tspbIQz21S2aUReH1yllIsZ8eAQ+OthcXllviS43hUSjlNdhsYhlJquIX4pU4UixpMaNngM2CaUDb4RQ==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/shape-image@4.0.5':
     resolution: {integrity: sha512-2tmJly5jLDJo8MtWOYbBTy07h7cZQ3vMLbux4frANBVgUJxipKl4DK0o2uXx0Qq7g+yMOObIPb17GR8FC2KQdg==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/shape-line@4.0.5':
     resolution: {integrity: sha512-5pcbqrkH1l9spGV7nYpfEiA94NlZYGYUEBP8x/Hk4SIyvV1085ewonDj+fPcoOad27JXaq076xZlqJZMxo/9WA==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/shape-polygon@4.0.5':
     resolution: {integrity: sha512-RZwLXtSsnX/KC8Jxjlvp/eSBPs7pU9uN06peWGsteqFUteuMMaCvTPzNpOX0yevDsDKWj8YOklaD89GjrEZ1GQ==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/shape-square@4.0.5':
     resolution: {integrity: sha512-TMwvEp81/RhJfwRQM/Z7/D56ZZX8RbKd+8OT2DFtk1RJ0OMp+JQT3untwU0rV5pbQsazrlFWj5pnUk5Dy1kTlQ==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/shape-star@4.0.5':
     resolution: {integrity: sha512-Gg9kg3iTDywyN0PSTliQFa6CFdS4vtTRnSw7Yi1ofAL8KDQHzakpLHoRnKeJJudFHtLOQgJkX7/jVG1yZ82nbw==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/slim@4.0.5':
     resolution: {integrity: sha512-W90wnex7dZsYszd+J98IoKUX5U+7Q53r9USsPl8edpY1vNJvJh0VijY5Hbi1KTIbG1w/9DCn7HAvMLRyv99gYQ==}
+    deprecated: Please update to version 4.1.1
 
   '@tsparticles/updater-life@4.0.5':
     resolution: {integrity: sha512-ncBXJ6HljAK6ddMkjh0NQu2IrkC6IGBtPn6cH+/74kn1S2Aa4m8pOlQzUbvSbvT9NRoLDaWp+/M1vn+Wx8ISvQ==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/updater-opacity@4.0.5':
     resolution: {integrity: sha512-VNuJyLleqRgRfefmTbTg8bnCEyg1I24zJ46y9TMXwzklrz7A/7go94bt/0SO1nUGpRkOhJ06/2LkRrN1dH4gSQ==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/updater-out-modes@4.0.5':
     resolution: {integrity: sha512-1SeMXkvEfJB5v6AeMVB2qFXzvzOMLMAhKfgQ4IJpnOttjKEAOn/ATq9t7HGPlaR2yL/uC2X1awyNmKs2U6nuJg==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/updater-paint@4.0.5':
     resolution: {integrity: sha512-wb2jdSOwkCaosZqvXicwYn/QADXbQlrGy6EqImX9Mdplssq8wlVGEe8DjfFFhVtbq7w4mY7mXis1rhPRYYzZGg==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/updater-rotate@4.0.5':
     resolution: {integrity: sha512-9uMiwrumR0UQeqKYAx8dzLMdvaqH3aqzP8zK0d5Goib0fVaQaiILdNIHqMGiH/PjJ4JuGTtV5KqeFEwdSCFQ9Q==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
   '@tsparticles/updater-size@4.0.5':
     resolution: {integrity: sha512-MNCJph1o0uwdOXrFQ2myXd3gtn8MnqKb2XMCEZfYRcnGvxzoTPo8H2IH3wqebagj5u8Ah0pk0yWmvBW0239kfQ==}
+    deprecated: Please update to version 4.1.1
     peerDependencies:
       '@tsparticles/engine': 4.0.5
 
@@ -2194,8 +2236,8 @@ packages:
     peerDependencies:
       '@types/react': ^19.2.0
 
-  '@types/react@19.2.15':
-    resolution: {integrity: sha512-eRwcGNHve+E8qtEQSSRl6urh+rFop4v8gm6O8rGv25CodbvFdLjA1vVQ1KkiFE0w0UPOnb8tDiFKL5lp0rtY5Q==}
+  '@types/react@19.2.16':
+    resolution: {integrity: sha512-esJiCAnl0kfpNdE69f3So4WJUXy95dLZydX0KwK46riIHDzHM7O9Vtf9xCHW0PXIqvgqNrswl522kA/5yx+F4w==}
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
@@ -5863,21 +5905,21 @@ snapshots:
 
   '@ctrl/tinycolor@4.2.0': {}
 
-  '@docsearch/core@4.6.3(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@docsearch/core@4.6.3(@types/react@19.2.16)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     optionalDependencies:
-      '@types/react': 19.2.15
+      '@types/react': 19.2.16
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
 
   '@docsearch/css@4.6.3': {}
 
-  '@docsearch/react@4.6.3(@algolia/client-search@5.52.1)(@types/react@19.2.15)(algoliasearch@5.52.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(search-insights@2.17.3)':
+  '@docsearch/react@4.6.3(@algolia/client-search@5.52.1)(@types/react@19.2.16)(algoliasearch@5.52.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(search-insights@2.17.3)':
     dependencies:
       '@algolia/autocomplete-core': 1.19.2(@algolia/client-search@5.52.1)(algoliasearch@5.52.1)(search-insights@2.17.3)
-      '@docsearch/core': 4.6.3(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@docsearch/core': 4.6.3(@types/react@19.2.16)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@docsearch/css': 4.6.3
     optionalDependencies:
-      '@types/react': 19.2.15
+      '@types/react': 19.2.16
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
       search-insights: 2.17.3
@@ -6198,6 +6240,10 @@ snapshots:
     dependencies:
       '@swc/helpers': 0.5.23
 
+  '@internationalized/date@3.12.2':
+    dependencies:
+      '@swc/helpers': 0.5.23
+
   '@internationalized/number@3.6.6':
     dependencies:
       '@swc/helpers': 0.5.23
@@ -6258,10 +6304,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.1.1(@types/react@19.2.15)(react@19.2.6)':
+  '@mdx-js/react@3.1.1(@types/react@19.2.16)(react@19.2.6)':
     dependencies:
       '@types/mdx': 2.0.13
-      '@types/react': 19.2.15
+      '@types/react': 19.2.16
       react: 19.2.6
 
   '@modelcontextprotocol/sdk@1.29.0(zod@4.4.3)':
@@ -6306,12 +6352,12 @@ snapshots:
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/mdx@16.2.6(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.15)(react@19.2.6))':
+  '@next/mdx@16.2.6(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.16)(react@19.2.6))':
     dependencies:
       source-map: 0.7.6
     optionalDependencies:
       '@mdx-js/loader': 3.1.1
-      '@mdx-js/react': 3.1.1(@types/react@19.2.15)(react@19.2.6)
+      '@mdx-js/react': 3.1.1(@types/react@19.2.16)(react@19.2.6)
 
   '@next/swc-darwin-arm64@16.2.6':
     optional: true
@@ -6859,15 +6905,15 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
 
-  '@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.16))(@types/react@19.2.16)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@babel/runtime': 7.29.2
       '@testing-library/dom': 10.4.1
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
     optionalDependencies:
-      '@types/react': 19.2.15
-      '@types/react-dom': 19.2.3(@types/react@19.2.15)
+      '@types/react': 19.2.16
+      '@types/react-dom': 19.2.3(@types/react@19.2.16)
 
   '@testing-library/user-event@14.6.1(@testing-library/dom@10.4.1)':
     dependencies:
@@ -7140,11 +7186,11 @@ snapshots:
     dependencies:
       undici-types: 7.24.6
 
-  '@types/react-dom@19.2.3(@types/react@19.2.15)':
+  '@types/react-dom@19.2.3(@types/react@19.2.16)':
     dependencies:
-      '@types/react': 19.2.15
+      '@types/react': 19.2.16
 
-  '@types/react@19.2.15':
+  '@types/react@19.2.16':
     dependencies:
       csstype: 3.2.3
 
