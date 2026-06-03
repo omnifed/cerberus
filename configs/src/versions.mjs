@@ -11,7 +11,4 @@ export const packages = [
   'preset-cerberus-theme',
   'preset-elysium-theme',
   'panda-preset',
-  // 'react',
-  // 'signals',
-  // 'data-grid',
 ]
