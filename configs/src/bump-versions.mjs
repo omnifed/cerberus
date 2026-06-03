@@ -40,7 +40,7 @@ function bumpVersions() {
 
   packages.forEach(async (pkg) => {
     const workspacePath = resolve(import.meta.dir, '..', '..', 'packages', pkg)
-    const packageJsonPath = resolve(workspacePath, 'package.json')
+    // const packageJsonPath = resolve(workspacePath, 'package.json')
     const jsrPath = resolve(workspacePath, 'deno.json')
 
     // prep JSR update
@@ -52,16 +52,16 @@ function bumpVersions() {
     )
 
     // prep package.json update
-    const rawFile = file(packageJsonPath)
-    const packageJson = await rawFile.json()
-    const json = JSON.stringify(
-      { ...packageJson, version: _getReleaseVersion(values) },
-      null,
-      2,
-    )
+    // const rawFile = file(packageJsonPath)
+    // const packageJson = await rawFile.json()
+    // const json = JSON.stringify(
+    //   { ...packageJson, version: _getReleaseVersion(values) },
+    //   null,
+    //   2,
+    // )
 
-    console.log('Updating version in', packageJsonPath)
-    write(packageJsonPath, json)
+    // console.log('Updating version in', packageJsonPath)
+    // write(packageJsonPath, json)
 
     console.log('Updating version in', jsrPath)
     write(jsrPath, jsr)
