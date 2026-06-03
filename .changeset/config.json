@@ -3,8 +3,9 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [["@cerberus/*"], ["@cerberus-design/*"]],
+  "format": "oxfmt",
   "linked": [],
-  "access": "restricted",
+  "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": ["bench", "docs", "styled-system", "tests", "@cerberus-design/configs"]
