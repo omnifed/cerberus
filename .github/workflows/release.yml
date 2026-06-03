@@ -1,0 +1,66 @@
+name: 🚀 Release (Bot PR & Stable)
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+permissions:
+  contents: write # Required to push tags
+  pull-requests: write # Required to open/update the Version PR
+  id-token: write # Required for JSR
+
+jobs:
+  release:
+    name: Manage Version PR & Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          cache: 'pnpm'
+          node-version: 26
+      - uses: oven-sh/setup-bun@v2
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+
+      - name: Create Version PR or Tag Release
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: pnpm ci:version
+          commit: 'chore(release): version packages'
+          title: 'chore(release): version packages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # This block ONLY runs when you merge the Version PR
+      - name: Publish Stable Packages
+        if: steps.changesets.outputs.published == 'true'
+        run: |
+          # NPM Releases (using the 'latest' tag)
+          # ORDER MATTERS
+          cd packages/react && pnpm build && pnpm publish --tag latest --no-git-checks
+          cd ../signals && pnpm build && pnpm publish --tag latest --no-git-checks
+          cd ../data-grid && pnpm build && pnpm publish --tag latest --no-git-checks
+
+          # JSR Releases
+          # ORDER MATTERS
+          cd ../figma && deno publish --allow-dirty
+          cd ../tokens && deno publish --allow-dirty
+          cd ../preset-acheron-theme && deno publish --allow-dirty
+          cd ../preset-cerberus-theme && deno publish --allow-dirty
+          cd ../preset-elysium-theme && deno publish --allow-dirty
+          cd ../panda-preset && deno publish --allow-dirty

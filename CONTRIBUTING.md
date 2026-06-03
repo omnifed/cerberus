@@ -23,42 +23,68 @@ If you haven't found any interesting information on this page then we encourage 
 
 We can't wait to see what you build!
 
-## Contribution Process
+## Development and Release Workflow
 
-1. Fork the repository.
-2. Clone the forked repository to your local system.
-3. Install the required tools: [pnPm](https://pnpm.io/) and [Bun](https://bun.sh)
-4. Install the dependencies: `pnpm install` in the **root directory**.
-5. Create a new branch: `git checkout -b my-branch-name`.
-6. Make your changes (including unit tests).
-7. Test your changes: `pnpm test:ci`.
-8. Lint your changes: `pnpm lint` and `pnpm lint:ox`.
-9. Commit your changes: `git commit -am 'feat: my new feature'`.
-10. Push to the branch: `git push origin my-branch-name`.
-11. Submit a pull request **IN DRAFT MODE** to the current `next/*` branch. Be sure to **fill out** the PR template.
-12. Once all the tests have passed in the CI in your draft PR, mark it as ready for review. _This will automatically notify and assign the maintainers._
-13. Wait for a maintainer to review your PR.
+Cerberus uses [Trunk-Based Development](https://trunkbaseddevelopment.com/) and [Changesets](https://github.com/changesets/changesets) to manage versioning, changelogs, and package releases.
 
-**Note**: Any PR that does not follow these guidelines will be closed without any notice. This includes _properly filling out the PR template._
+Our repository has a single source of truth: `main`. All feature work and bug fixes should be branched off `main` and merged directly back into `main` via Pull Request.
 
-**First time contributors**: If this is your first PR, you will need approval for
-CI jobs to run. Contact or wait for an admin to handle this process.
+### 1. Creating a Changeset
+
+When you submit a PR that alters the public API or fixes a bug, you must include a changeset. This tells our release bot whether your change is a major, minor, or patch bump, and provides the text for the `CHANGELOG.md`.
+
+To create a changeset, run the following command at the root of the repository:
+
+```bash
+pnpm changeset
+```
+
+The CLI will prompt you to:
+
+1. Select which packages your PR modifies.
+2. Choose the SemVer bump type (major, minor, or patch).
+3. Write a short description of the change (this will be added directly to the changelog).
+
+Once finished, a small Markdown file will be generated in the .changeset folder. Commit this file along with your code changes.
+
+> **Note:** If you forget to add a changeset, our GitHub bot will leave a comment on your PR reminding you to do so. Minor internal chores or typo fixes in documentation do not require a changeset.
+
+### 2. Validating with Canary Releases (Pre-releases)
+
+We do not use long-lived release branches. Instead, we use continuous canary releases.
+
+Whenever a Pull Request is merged into main, our CI automatically publishes a "snapshot" version (e.g., 0.0.0-next-20260603) to npm and JSR under the @next tag.
+
+If you want to test your merged feature in your own application before our official release, simply install the canary version:
+
+```bash
+# Example
+pnpm install @cerberus-design/react@next
+```
+
+### 3. The Stable Release Process (Maintainers Only)
+
+Every time a feature merges into `main`, the Changeset bot aggregates the changes and updates a single, persistent Pull Request titled "Version Packages".
+
+This automated PR maintains the calculated version bumps and finalized changelogs. When the core team determines it is time for a stable release (usually every 2-3 weeks), we merge this PR. Merging the "Version Packages" PR automatically creates the GitHub Release tag and publishes the stable packages to both NPM and JSR.
 
 ### Review Process
 
-1. A maintainer will review your PR and may request changes.
-2. Make the requested changes.
-3. Repeat steps 7-13 until the PR is approved.
+1. Create a "Draft PR" and keep it a draft until all tests pass and the changeset is added.
+2. Once the PR is ready, remove the draft status and an admin will be notified.
+3. A maintainer will review your PR and may request changes.
+4. Make the requested changes.
+5. Repeat steps 7-13 until the PR is approved.
 
 ### Merge Process
 
 1. Once the PR is approved, a maintainer will merge it.
-2. The PR will be closed and the changes will be merged into the main branch.
-3. The main branch will ship the latest updates in the `next` tagged release.
+2. The PR will be closed and the changes will be merged into the `main` branch.
+3. The `main` branch will ship the latest updates in the `next` tagged release.
 
 ## Development
 
-For the best outcome to the repo, we recommend **working in the root directory**.
+For the best experience, we recommend **working in the root directory**.
 This repository uses [pnPm workspaces](https://pnpm.io/workspaces) which automagically
 manages all scopes when you stay in the root.
 
