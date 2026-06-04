@@ -11,7 +11,7 @@ import {
   useQuery,
   useRead,
 } from '@cerberus-design/signals'
-import { HStack, Stack, VStack } from 'styled-system/jsx'
+import { Center, HStack, Stack, VStack } from 'styled-system/jsx'
 import { queryEmployees } from '../api'
 import { columns } from '../quick-start/columns.demo'
 
@@ -49,7 +49,7 @@ export function InitialDemo() {
               data={data}
               overlays={{
                 initial: <CustomInitial />,
-                pending: 'skeleton',
+                pending: 'linear',
               }}
               pending={pending}
             />
@@ -62,17 +62,12 @@ export function InitialDemo() {
 
 function CustomInitial() {
   return (
-    <VStack
-      animationName="pulse"
-      animationIterationCount="infinite"
-      color="page.text.100"
-      gap="md"
-    >
-      <Corn size={24} />
-      <Text color="page.text.initial" textStyle="body-md">
-        Shelling corn...
-      </Text>
-    </VStack>
+    <Center bgColor="page.surface.initial" h="full" w="full">
+      <VStack gap="md">
+        <Corn size={24} />
+        <Text textStyle="body-md">Shelling corn...</Text>
+      </VStack>
+    </Center>
   )
 }
 

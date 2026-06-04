@@ -27,8 +27,10 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
   const staticRows = useRead(store.rows)
 
   const pending = useRead(store.pending)
+  const pendingVariant = useRead(store.pendingVariant)
 
   const shouldLock = createComputed(() => rowCount <= 0)
+
   const hasNonSkeleton = useMemo<boolean>(() => {
     const overlays = props.overlays
     if (!overlays) return false
@@ -88,9 +90,7 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
         {() => <TableRows viewportRef={viewportRef} />}
       </Show>
 
-      <Show when={pending}>
-        {() => <PendingOverlay variant={props.overlays?.pending} />}
-      </Show>
+      <Show when={pending}>{() => <PendingOverlay variant={pendingVariant} />}</Show>
 
       <DGPopoverContent ref={props.rootRef} />
     </Scrollable>
