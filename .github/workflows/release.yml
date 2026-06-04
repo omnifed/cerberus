@@ -1,24 +1,23 @@
-name: 🚀 Release (Bot PR & Stable)
+# NPM forces us to use a single file for publishing
+
+name: 🚀 Release Pipeline
 
 on:
   push:
     branches:
       - main
 
+# Prevent parallel runs from colliding
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
-env:
-  CI: true
-  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
 permissions:
-  contents: write # Required to push tags
-  pull-requests: write # Required to open/update the Version PR
-  id-token: write # Required for OIDC
+  contents: write # Required to push tags and commits
+  pull-requests: write # Required for Changesets to open the PR
+  id-token: write # STRICTLY REQUIRED for NPM OIDC & JSR
 
 jobs:
-  release:
-    name: Manage Version PR & Publish
+  release-pipeline:
+    name: Manage Release Pipeline
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -30,15 +29,54 @@ jobs:
         with:
           cache: 'pnpm'
           node-version: 26
+          registry-url: 'https://registry.npmjs.org' # Required to establish OIDC audience
+
       - uses: oven-sh/setup-bun@v2
       - uses: denoland/setup-deno@v2
         with:
           cache: true
 
-      - run: pnpm install && deno install
+      - name: Install Dependencies
+        run: pnpm install && deno install
 
-      - name: Create Version PR or Tag Release
-        id: changesets
+      - name: Build Workspaces
+        run: pnpm -r build
+
+      # ====================================================================
+      # PATH A: STABLE PUBLISH
+      # Runs ONLY when you merge the automated "Version Packages" PR
+      # ====================================================================
+      - name: Publish Stable Packages
+        if: startsWith(github.event.head_commit.message, 'chore(release)')
+        run: |
+          # NPM Releases (OIDC naturally authenticates this step)
+          cd packages/react && pnpm publish --tag latest --access public --no-git-checks
+          cd ../signals && pnpm publish --tag latest --access public --no-git-checks
+          cd ../data-grid && pnpm publish --tag latest --access public --no-git-checks
+
+          # JSR Releases
+          cd ../figma && deno publish --allow-dirty
+          cd ../tokens && deno publish --allow-dirty
+          cd ../preset-acheron-theme && deno publish --allow-dirty
+          cd ../preset-cerberus-theme && deno publish --allow-dirty
+          cd ../preset-elysium-theme && deno publish --allow-dirty
+          cd ../panda-preset && deno publish --allow-dirty
+
+      - name: Create GitHub Release Tag
+        if: startsWith(github.event.head_commit.message, 'chore(release)')
+        run: |
+          # Use React package as the source of truth for the workspace version
+          VERSION=$(node -p "require('./packages/react/package.json').version")
+          gh release create "v$VERSION" --title "v$VERSION" --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ====================================================================
+      # PATH B: BOT PR & CANARY PUBLISH
+      # Runs on normal feature PR merges
+      # ====================================================================
+      - name: Create Version PR
+        if: "!startsWith(github.event.head_commit.message, 'chore(release)')"
         uses: changesets/action@v1
         with:
           version: pnpm ci:version
@@ -47,18 +85,26 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # This block ONLY runs when you merge the Version PR
-      - name: Publish Stable Packages
-        if: steps.changesets.outputs.published == 'true'
+      - name: Generate Canary Versions
+        if: "!startsWith(github.event.head_commit.message, 'chore(release)')"
         run: |
-          # NPM Releases (using the 'latest' tag)
-          # ORDER MATTERS
-          cd packages/react && pnpm build && pnpm publish --tag latest --no-git-checks
-          cd ../signals && pnpm build && pnpm publish --tag latest --no-git-checks
-          cd ../data-grid && pnpm build && pnpm publish --tag latest --no-git-checks
+          # The Changesets action leaves the runner on the PR branch if it made an update.
+          # We MUST return to a clean main branch state before generating the snapshot.
+          git checkout main
+          git reset --hard origin/main
 
-          # JSR Releases
-          # ORDER MATTERS
+          pnpm changeset version --snapshot next
+          cd configs && bun ./src/bump-versions.mjs
+
+      - name: Publish Canary Packages
+        if: "!startsWith(github.event.head_commit.message, 'chore(release)')"
+        run: |
+          # NPM Releases (Canary)
+          cd packages/react && pnpm publish --tag next --access public --no-git-checks
+          cd ../signals && pnpm publish --tag next --access public --no-git-checks
+          cd ../data-grid && pnpm publish --tag next --access public --no-git-checks
+
+          # JSR Releases (Canary)
           cd ../figma && deno publish --allow-dirty
           cd ../tokens && deno publish --allow-dirty
           cd ../preset-acheron-theme && deno publish --allow-dirty
