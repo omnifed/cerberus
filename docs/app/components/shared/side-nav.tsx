@@ -25,12 +25,7 @@ export function SideNav() {
             key={`${idx}:${item.id}`}
             when={item.href}
             fallback={
-              <Text
-                color="page.text.100"
-                px="sm"
-                py="0.75rem"
-                textStyle="heading-2xs"
-              >
+              <Text color="page.text.100" px="sm" py="0.75rem" textStyle="heading-2xs">
                 {item.label}
               </Text>
             }
@@ -38,12 +33,8 @@ export function SideNav() {
             <SideNavLinkItem key={item.id} href={item.slug}>
               {item.label}
               <Show when={NEW.includes(item.href)}>
-                <Tag
-                  gradient="asphodel-dark"
-                  usage="outlined"
-                  textStyle="label-sm"
-                >
-                  New
+                <Tag palette="page" usage="outlined" textStyle="label-sm">
+                  Preview
                 </Tag>
               </Show>
             </SideNavLinkItem>

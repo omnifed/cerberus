@@ -5,11 +5,19 @@ import {
   Setter,
 } from '@cerberus-design/signals'
 import { DEFAULT_THEME } from '../const'
-import type { GridOptions, InternalColumn, PinnedState, ThemeOptions } from '../types'
+import type {
+  GridOptions,
+  InternalColumn,
+  LoadingVariant,
+  PinnedState,
+  ThemeOptions,
+} from '../types'
 import { DataStore } from './data'
 
-type LayoutStore = {
+export type LayoutStore = {
+  phase: Accessor<Phase>
   pending: Accessor<boolean>
+  pendingVariant: Accessor<LoadingVariant>
   hasSkeleton: Accessor<boolean>
   rootCssVars: Accessor<Record<string, string>>
   totalWidth: Accessor<number>
@@ -20,6 +28,7 @@ type LayoutStore = {
   updatePending: (newState: boolean) => void
 }
 
+type Phase = 'initial' | 'initialPending' | 'mounted'
 type LayoutGridOptions<T> = Omit<GridOptions<T>, 'columns' | 'rowSize'>
 
 type Options<T> = {
@@ -30,6 +39,7 @@ type Options<T> = {
 
 export function createLayoutStore<T>(options: Options<T>): LayoutStore {
   const [containerWidth, setContainerWidth] = createSignal<number>(0)
+  const [phase, setPhase] = createSignal<Phase>('initialPending')
   const [pending, setPending] = createSignal<boolean>(options.pending ?? false)
   const [hasSkeleton] = createSignal<boolean>(options.overlays?.pending === 'skeleton')
 
@@ -126,8 +136,23 @@ export function createLayoutStore<T>(options: Options<T>): LayoutStore {
     options.columns().reduce((acc, c) => acc + c.width(), 0),
   )
 
+  const pendingVariant = createComputed(() => {
+    const isPending = pending()
+    const currentPhase = phase()
+
+    if (!isPending) return undefined
+
+    if (currentPhase === 'initialPending' && options.overlays?.initial) {
+      return options.overlays.initial
+    }
+
+    return options.overlays?.pending
+  })
+
   return {
+    phase,
     pending,
+    pendingVariant,
     hasSkeleton,
     rootCssVars,
     totalWidth,
@@ -161,8 +186,18 @@ export function createLayoutStore<T>(options: Options<T>): LayoutStore {
       if (col) col.setPinned(state ?? false)
     },
 
-    updatePending: (newState) => {
+    updatePending: (newState: boolean) => {
       setPending(newState)
+      const currentPhase = phase()
+
+      if (newState && currentPhase === 'initial') {
+        setPhase('initialPending')
+      } else if (
+        !newState &&
+        (currentPhase === 'initialPending' || currentPhase === 'initial')
+      ) {
+        setPhase('mounted')
+      }
     },
   }
 }

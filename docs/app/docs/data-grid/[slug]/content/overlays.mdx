@@ -4,6 +4,7 @@ description: Learn about the overlays for the Data Grid component.
 package: 'data-grid'
 ---
 
+import { Tag } from '@cerberus-design/react'
 import { NoteAdmonition } from '@/app/components/Admonition'
 import CodePreview from '@/app/components/CodePreview'
 import { DEMOS } from '../components/overlays/static'
@@ -69,6 +70,23 @@ Pass `'circular'` to the `overlays.pending` prop to display a circular-progress 
 Pass a component to the `overlays.loading` prop to display a custom overlay.
 
 <CodePreview {...DEMOS.custom} />
+
+### Initial Loading <Tag palette="page" usage="outlined" textStyle="label-sm">Preview</Tag>
+
+For initial loading states, you can use the `overlays.initialPending` prop to display a pending overlay.
+
+This will render the specific pending value only during the mounting phase of the component. Once `data` has been populated for the first time, the `pending` overlay will be used from then on.
+
+#### The Initial Pending Phase
+
+The initial pending phase is determined by two conditions:
+
+- The Data Grid is mounted for the first time.
+- The `pending` prop is set to `true` for the first time.
+
+Once these conditions are met, the `pending` overlay will be displayed from that point forward.
+
+<CodePreview {...DEMOS.initial} />
 
 ### Cell pending with Suspense
 

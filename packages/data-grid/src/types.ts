@@ -6,6 +6,7 @@ import {
 import { Setter, type Accessor } from '@cerberus-design/signals'
 import { type ReactNode } from 'react'
 import { type RowSize } from './const'
+import { LayoutStore } from './stores'
 
 export interface GridOptions<TData> {
   /**
@@ -160,7 +161,7 @@ export type SortState = { id: string; desc: boolean }
 
 // -- Store Context --
 
-export interface GridStore<TData> {
+export interface GridStore<TData> extends LayoutStore {
   // State
   columns: Accessor<InternalColumn<TData>[]>
   rows: Accessor<TData[]>
@@ -188,7 +189,6 @@ export interface GridStore<TData> {
 
   // Actions
   resizeColumn: (colId: string, delta: number) => void
-  setContainerWidth: (val: number) => void
   setPage: (details: PageDetails) => void
   setPageSize: (size: number) => void
   setGlobalFilter: (val: BaseFilterState) => void
@@ -294,10 +294,19 @@ export type OverlaySlots = {
    */
   noContent?: ReactNode
   /**
-   * A custom component to display within the Grid Viewport when the `pending`
-   * prop is set to true.
+   * When provided (and the DataGrid has finished the initial pending phase), the
+   * `pending` overlay will be displayed within the Grid Viewport any time
+   * the `DataGrid.pending` prop is set to `true`.
    */
   pending?: LoadingVariant
+  /**
+   * When provided, the `initial` overlay will be displayed within the Grid Viewport
+   * when the DataGrid has not yet finished the initial pending phase. This is triggered
+   * by the `DataGrid.pending` prop being set to `true` for the first time on the initial load.
+   *
+   * Once the `DataGrid.pending` prop is set to `false`, the `overlays.pending` slot will be used.
+   */
+  initial?: LoadingVariant
 }
 
 export type ThemeOptions = {

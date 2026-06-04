@@ -58,8 +58,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h4
         className={cx(
           css({
-            my: 5,
-            textStyle: 'heading-sm',
+            my: 'md',
+            textStyle: 'heading-xs',
           }),
           headlineStyles,
         )}
@@ -70,8 +70,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h5
         className={cx(
           css({
-            my: 'md',
-            textStyle: 'heading-sm',
+            my: 'sm',
+            textStyle: 'heading-2xs',
           }),
           headlineStyles,
         )}
@@ -82,8 +82,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h6
         className={cx(
           css({
-            my: 'md',
-            textStyle: 'heading-xs',
+            my: 'sm',
+            textStyle: 'heading-2xs',
           }),
           headlineStyles,
         )}
