@@ -294,10 +294,19 @@ export type OverlaySlots = {
    */
   noContent?: ReactNode
   /**
-   * A custom component to display within the Grid Viewport when the `pending`
-   * prop is set to true.
+   * When provided (and the DataGrid has finished the initial pending phase), the
+   * `pending` overlay will be displayed within the Grid Viewport any time
+   * the `DataGrid.pending` prop is set to `true`.
    */
   pending?: LoadingVariant
+  /**
+   * When provided, the `initial` overlay will be displayed within the Grid Viewport
+   * when the DataGrid has not yet finished the initial pending phase. This is triggered
+   * by the `DataGrid.pending` prop being set to `true` for the first time on the initial load.
+   *
+   * Once the `DataGrid.pending` prop is set to `false`, the `overlays.pending` slot will be used.
+   */
+  initial?: LoadingVariant
 }
 
 export type ThemeOptions = {

@@ -77,6 +77,15 @@ For initial loading states, you can use the `overlays.initialPending` prop to di
 
 This will render the specific pending value only during the mounting phase of the component. Once `data` has been populated for the first time, the `pending` overlay will be used from then on.
 
+#### The Initial Pending Phase
+
+The initial pending phase is determined by two conditions:
+
+- The Data Grid is mounted for the first time.
+- The `pending` prop is set to `true` for the first time.
+
+Once these conditions are met, the `pending` overlay will be displayed from that point forward.
+
 <CodePreview {...DEMOS.initial} />
 
 ### Cell pending with Suspense
