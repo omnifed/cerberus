@@ -1,0 +1,35 @@
+'use client'
+
+import { Corn } from '@carbon/icons-react'
+import { DataGrid } from '@cerberus-design/data-grid'
+import { Text } from '@cerberus-design/react'
+import { useQuery } from '@cerberus-design/signals'
+import { HStack, VStack } from 'styled-system/jsx'
+import { queryEmployees } from '../api'
+import { columns } from '../quick-start/columns.demo'
+
+export function InitialDemo() {
+  const data = useQuery(queryEmployees(0))
+  return (
+    <HStack h="20rem" w="3/4">
+      <DataGrid
+        columns={columns}
+        data={data}
+        overlays={{
+          noContent: <CustomNoContent />,
+        }}
+      />
+    </HStack>
+  )
+}
+
+function CustomNoContent() {
+  return (
+    <VStack color="page.text.100" gap="md">
+      <Corn size={24} />
+      <Text color="page.text.initial" textStyle="body-md">
+        Shelling corn...
+      </Text>
+    </VStack>
+  )
+}

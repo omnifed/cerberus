@@ -1,1 +1,1 @@
-export const NEW = ['/docs/components/marquee']
+export const NEW: string[] = []
