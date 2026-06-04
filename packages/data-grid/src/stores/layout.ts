@@ -9,6 +9,7 @@ import type { GridOptions, InternalColumn, PinnedState, ThemeOptions } from '../
 import { DataStore } from './data'
 
 type LayoutStore = {
+  phase: Accessor<Phase>
   pending: Accessor<boolean>
   hasSkeleton: Accessor<boolean>
   rootCssVars: Accessor<Record<string, string>>
@@ -20,6 +21,7 @@ type LayoutStore = {
   updatePending: (newState: boolean) => void
 }
 
+type Phase = 'initial' | 'mounted'
 type LayoutGridOptions<T> = Omit<GridOptions<T>, 'columns' | 'rowSize'>
 
 type Options<T> = {
@@ -30,6 +32,7 @@ type Options<T> = {
 
 export function createLayoutStore<T>(options: Options<T>): LayoutStore {
   const [containerWidth, setContainerWidth] = createSignal<number>(0)
+  const [phase, setPhase] = createSignal<Phase>('initial')
   const [pending, setPending] = createSignal<boolean>(options.pending ?? false)
   const [hasSkeleton] = createSignal<boolean>(options.overlays?.pending === 'skeleton')
 
@@ -127,6 +130,7 @@ export function createLayoutStore<T>(options: Options<T>): LayoutStore {
   )
 
   return {
+    phase,
     pending,
     hasSkeleton,
     rootCssVars,
