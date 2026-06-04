@@ -12,10 +12,12 @@ on:
       - 'CHANGELOG.md'
 
 env:
+  CI: true
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 permissions:
-  id-token: write # Required for JSR
+  id-token: write # Required for OIDC
+  contents: read
 
 jobs:
   snapshot:

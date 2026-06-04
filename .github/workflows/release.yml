@@ -8,12 +8,13 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 env:
+  CI: true
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 permissions:
   contents: write # Required to push tags
   pull-requests: write # Required to open/update the Version PR
-  id-token: write # Required for JSR
+  id-token: write # Required for OIDC
 
 jobs:
   release:
