@@ -39,9 +39,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install && deno install
 
-      - name: Build Workspaces
-        run: pnpm -r build
-
       # ====================================================================
       # PATH A: STABLE PUBLISH
       # Runs ONLY when you merge the automated "Version Packages" PR
@@ -50,9 +47,9 @@ jobs:
         if: startsWith(github.event.head_commit.message, 'chore(release)')
         run: |
           # NPM Releases (OIDC naturally authenticates this step)
-          cd packages/react && pnpm publish --tag latest --access public --no-git-checks
-          cd ../signals && pnpm publish --tag latest --access public --no-git-checks
-          cd ../data-grid && pnpm publish --tag latest --access public --no-git-checks
+          cd packages/react && pnpm build && pnpm publish --tag latest --access public --no-git-checks
+          cd ../signals && pnpm build && pnpm publish --tag latest --access public --no-git-checks
+          cd ../data-grid && pnpm build && pnpm publish --tag latest --access public --no-git-checks
 
           # JSR Releases
           cd ../figma && deno publish --allow-dirty
@@ -100,9 +97,9 @@ jobs:
         if: "!startsWith(github.event.head_commit.message, 'chore(release)')"
         run: |
           # NPM Releases (Canary)
-          cd packages/react && pnpm publish --tag next --access public --no-git-checks
-          cd ../signals && pnpm publish --tag next --access public --no-git-checks
-          cd ../data-grid && pnpm publish --tag next --access public --no-git-checks
+          cd packages/react && pnpm build && pnpm publish --tag next --access public --no-git-checks
+          cd ../signals && pnpm build && pnpm publish --tag next --access public --no-git-checks
+          cd ../data-grid && pnpm build && pnpm publish --tag next --access public --no-git-checks
 
           # JSR Releases (Canary)
           cd ../figma && deno publish --allow-dirty
