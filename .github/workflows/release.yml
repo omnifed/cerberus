@@ -45,19 +45,7 @@ jobs:
       # ====================================================================
       - name: Publish Stable Packages
         if: startsWith(github.event.head_commit.message, 'chore(release)')
-        run: |
-          # NPM Releases (OIDC naturally authenticates this step)
-          cd packages/react && pnpm build && pnpm publish --tag latest --access public --no-git-checks
-          cd ../signals && pnpm build && pnpm publish --tag latest --access public --no-git-checks
-          cd ../data-grid && pnpm build && pnpm publish --tag latest --access public --no-git-checks
-
-          # JSR Releases
-          cd ../figma && deno publish --allow-dirty
-          cd ../tokens && deno publish --allow-dirty
-          cd ../preset-acheron-theme && deno publish --allow-dirty
-          cd ../preset-cerberus-theme && deno publish --allow-dirty
-          cd ../preset-elysium-theme && deno publish --allow-dirty
-          cd ../panda-preset && deno publish --allow-dirty
+        run: cd configs && bun ./src/publish-stable.mjs
 
       - name: Create GitHub Release Tag
         if: startsWith(github.event.head_commit.message, 'chore(release)')
@@ -96,16 +84,4 @@ jobs:
 
       - name: Publish Canary Packages
         if: "!startsWith(github.event.head_commit.message, 'chore(release)')"
-        run: |
-          # NPM Releases (Canary)
-          cd packages/react && pnpm build && pnpm publish --tag next --access public --no-git-checks
-          cd ../signals && pnpm build && pnpm publish --tag next --access public --no-git-checks
-          cd ../data-grid && pnpm build && pnpm publish --tag next --access public --no-git-checks
-
-          # JSR Releases (Canary)
-          cd ../figma && deno publish --allow-dirty
-          cd ../tokens && deno publish --allow-dirty
-          cd ../preset-acheron-theme && deno publish --allow-dirty
-          cd ../preset-cerberus-theme && deno publish --allow-dirty
-          cd ../preset-elysium-theme && deno publish --allow-dirty
-          cd ../panda-preset && deno publish --allow-dirty
+        run: cd configs && bun ./src/publish-canary.mjs
