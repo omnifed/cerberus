@@ -4,9 +4,12 @@
   "commit": false,
   "fixed": [["@cerberus/*"], ["@cerberus-design/*"]],
   "format": "oxfmt",
+  "ignore": ["bench", "docs", "styled-system", "tests", "@cerberus-design/configs"],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["bench", "docs", "styled-system", "tests", "@cerberus-design/configs"]
+  "snapshot": {
+    "prereleaseTemplate": "{tag}-{commit}"
+  }
 }

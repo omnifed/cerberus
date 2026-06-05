@@ -91,7 +91,8 @@ jobs:
           git reset --hard origin/main
 
           pnpm changeset version --snapshot next
-          cd configs && bun ./src/bump-versions.mjs
+          SHORT_SHA=$(git rev-parse --short=7 HEAD)
+          cd configs && bun ./src/bump-versions.mjs --next --commit=$SHORT_SHA
 
       - name: Publish Canary Packages
         if: "!startsWith(github.event.head_commit.message, 'chore(release)')"
