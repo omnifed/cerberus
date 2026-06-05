@@ -1,10 +1,16 @@
 import { $ } from 'bun'
-import { jsrPackages } from './versions.mjs'
+import { resolve } from 'node:path'
+import { npmPackages, jsrPackages } from './versions.mjs'
+
+// Always resolve to the root of the repository
+const repoRoot = resolve(import.meta.dir, '..', '..')
 
 console.log('🧪 Publishing NPM Stable Packages in dependant order...')
-await $`cd packages/react && pnpm build && pnpm publish --tag latest --access public --no-git-checks`
-await $`cd packages/signals && pnpm build  && pnpm publish --tag latest --access public --no-git-checks`
-await $`cd packages/data-grid && pnpm build  && pnpm publish --tag latest --access public --no-git-checks`
+for (const pkg of npmPackages) {
+  await $`cd packages/${pkg} && pnpm build && pnpm publish --tag latest --access public --no-git-checks`.cwd(
+    repoRoot,
+  )
+}
 
 console.log('🧪 Publishing JSR Canary Packages in dependant order...')
 for (const pkg of jsrPackages) {
