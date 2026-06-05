@@ -1,22 +1,17 @@
 import { argv, file, write } from 'bun'
 import { resolve } from 'node:path'
+import { readdir } from 'node:fs/promises'
 import { exit } from 'node:process'
 import { parseArgs } from 'util'
-import { version, packages } from './versions.mjs'
+import { version } from './versions.mjs'
 
 function _parseFlags(args) {
   return parseArgs({
     args,
     options: {
-      next: {
-        type: 'boolean',
-      },
-      stable: {
-        type: 'boolean',
-      },
-      commit: {
-        type: 'string',
-      },
+      next: { type: 'boolean' },
+      stable: { type: 'boolean' },
+      commit: { type: 'string' },
     },
     strict: true,
     allowPositionals: true,
@@ -31,27 +26,37 @@ function _getReleaseVersion(values) {
   exit(1)
 }
 
-function bumpVersions() {
+async function bumpVersions() {
   const { values } = _parseFlags(argv)
+  const releaseVersion = _getReleaseVersion(values)
+  const packagesDir = resolve(import.meta.dir, '..', '..', 'packages')
 
-  console.log('Updating packages:', packages)
-  console.log('Bumping versions to', _getReleaseVersion(values))
-  console.log('Updating package.json & deno.json files...')
+  console.log('Bumping all workspaces to:', releaseVersion)
 
-  packages.forEach(async (pkg) => {
-    const workspacePath = resolve(import.meta.dir, '..', '..', 'packages', pkg)
+  // Dynamically read all folders in the packages/ directory
+  const workspaces = await readdir(packagesDir)
+
+  for (const pkg of workspaces) {
+    const workspacePath = resolve(packagesDir, pkg)
     const jsrPath = resolve(workspacePath, 'deno.json')
+    const pkgPath = resolve(workspacePath, 'package.json')
 
-    const jsrJson = await file(jsrPath).json()
-    const jsr = JSON.stringify(
-      { ...jsrJson, version: _getReleaseVersion(values) },
-      null,
-      2,
-    )
+    // Update deno.json if it exists
+    const jsrFile = file(jsrPath)
+    if (await jsrFile.exists()) {
+      const jsrJson = await jsrFile.json()
+      write(jsrPath, JSON.stringify({ ...jsrJson, version: releaseVersion }, null, 2))
+      console.log(`✅ Updated JSR version in ${pkg}`)
+    }
 
-    console.log('Updating version in', jsrPath)
-    write(jsrPath, jsr)
-  })
+    // Update package.json if it exists
+    const pkgFile = file(pkgPath)
+    if (await pkgFile.exists()) {
+      const pkgJson = await pkgFile.json()
+      write(pkgPath, JSON.stringify({ ...pkgJson, version: releaseVersion }, null, 2))
+      console.log(`✅ Updated NPM version in ${pkg}`)
+    }
+  }
 }
 
 bumpVersions()

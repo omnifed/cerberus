@@ -90,7 +90,7 @@ jobs:
           git checkout main
           git reset --hard origin/main
 
-          pnpm changeset version --snapshot next
+          pnpm changeset version
           SHORT_SHA=$(git rev-parse --short=7 HEAD)
           cd configs && bun ./src/bump-versions.mjs --next --commit=$SHORT_SHA
 
