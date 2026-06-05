@@ -67,7 +67,7 @@
     "@vitejs/plugin-react": "^6.0.2",
     "globby": "^16.2.0",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6",
+    "react-dom": "^19.2.7",
     "styled-system": "workspace:*",
     "vite": "^8.0.14",
     "vite-plugin-dts": "^5.0.1"
