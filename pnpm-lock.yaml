@@ -319,8 +319,8 @@ importers:
         specifier: ^1.11.1
         version: 1.11.1(typescript@6.0.3)
       '@pandacss/preset-panda':
-        specifier: ^1.11.1
-        version: 1.11.1
+        specifier: ^1.11.2
+        version: 1.11.2
       '@pandacss/types':
         specifier: ^1.11.1
         version: 1.11.1
@@ -1790,6 +1790,9 @@ packages:
   '@pandacss/preset-panda@1.11.1':
     resolution: {integrity: sha512-+0ZV4d5TZIqbXLh4xRIptuOd/VOc7YncOfeHZn9uWzGKi04uob9I/8mQ/hgSSRWCKmaLpRzsBDuijr2ODD59iA==}
 
+  '@pandacss/preset-panda@1.11.2':
+    resolution: {integrity: sha512-DI+RiO8kJgxV9gdke1h0S/Jb1g7joj0bFaIZt5kMGehpF9diPsQ7YTIkjRe4iT6aRnuPZsLEfUUuL5Sv/LjXcw==}
+
   '@pandacss/reporter@1.11.1':
     resolution: {integrity: sha512-8F/A7o0MeqYW6ElocfzRvSdja4cs4LXIMQrriHH3c1k8BerLmIs9/sdf2KAwV8fo3CeNmb4blEM8dsrxa6vTrg==}
 
@@ -1801,6 +1804,9 @@ packages:
 
   '@pandacss/types@1.11.1':
     resolution: {integrity: sha512-VkigbeCwlDyyMBlQeRwOMLshSRjNB/2HqvfZvaVXT4+5miAYUAKeQDR88UqUL2aqPWkltTxMVEwBnqSQdC8+jw==}
+
+  '@pandacss/types@1.11.2':
+    resolution: {integrity: sha512-oabgahUINapS6dmhwNZFM65QJEu6U7GWhTWXsNIAKJIqMoMwJ3EdqqmTci+0joVToIfxG4cpR7ie9BdBpCIJFQ==}
 
   '@preact/signals-core@1.14.2':
     resolution: {integrity: sha512-RZHdBj9ZF4n40Rp4jS052EHHjBWf96P9oNdXPfhQTovCuWY9iQn3Gq+gOTJSgBO9A/JBuPfMOWsSX/lIU9Pc/A==}
@@ -7116,6 +7122,10 @@ snapshots:
     dependencies:
       '@pandacss/types': 1.11.1
 
+  '@pandacss/preset-panda@1.11.2':
+    dependencies:
+      '@pandacss/types': 1.11.2
+
   '@pandacss/reporter@1.11.1':
     dependencies:
       '@pandacss/core': 1.11.1
@@ -7137,6 +7147,8 @@ snapshots:
       ts-pattern: 5.9.0
 
   '@pandacss/types@1.11.1': {}
+
+  '@pandacss/types@1.11.2': {}
 
   '@preact/signals-core@1.14.2': {}
 
@@ -9087,14 +9099,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.59.2(eslint@9.39.4)(typescript@6.0.3))(eslint-import-resolver-node@0.3.10)(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.4):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.59.2(eslint@9.39.4)(typescript@6.0.3))(eslint-import-resolver-node@0.3.10)(eslint-import-resolver-typescript@4.4.4)(eslint@9.39.4):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 8.59.2(eslint@9.39.4)(typescript@6.0.3)
       eslint: 9.39.4
       eslint-import-resolver-node: 0.3.10
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@9.39.4)
+      eslint-import-resolver-typescript: 4.4.4(eslint-plugin-import@2.32.0)(eslint@9.39.4)
     transitivePeerDependencies:
       - supports-color
 
@@ -9109,7 +9121,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.39.4
       eslint-import-resolver-node: 0.3.10
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.59.2(eslint@9.39.4)(typescript@6.0.3))(eslint-import-resolver-node@0.3.10)(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.4)
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.59.2(eslint@9.39.4)(typescript@6.0.3))(eslint-import-resolver-node@0.3.10)(eslint-import-resolver-typescript@4.4.4)(eslint@9.39.4)
       hasown: 2.0.3
       is-core-module: 2.16.2
       is-glob: 4.0.3
