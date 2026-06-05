@@ -1,5 +1,5 @@
 import { RAW_GITHUB_DOCS_URL } from '@/lib/constants'
-import { version } from '@cerberus-design/configs'
+import { version } from '@cerberus-design/react/package.json'
 import { items as blogItems } from '@/app/blog/[slug]/content/items'
 import { items as getStartedItems } from '@/app/docs/get-started/[slug]/content/items'
 import { items as componentsItems } from '@/app/docs/components/[slug]/content/items'
@@ -107,7 +107,9 @@ export const GET = async () => {
         }
 
         const childrenContent = set.children ? generateContent(set.children) : ''
-        const currentContent = set.href ? `- [${set.title}](${createGithubUrl(set.href)})` : ''
+        const currentContent = set.href
+          ? `- [${set.title}](${createGithubUrl(set.href)})`
+          : ''
 
         return `${currentContent}\n${childrenContent}`.trim()
       })

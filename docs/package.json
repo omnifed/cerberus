@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@carbon/icons-react": "^11.81.0",
-    "@cerberus-design/configs": "workspace:*",
     "@cerberus-design/data-grid": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/signals": "workspace:*",

@@ -1,6 +1,6 @@
 'use client'
 
-import { version } from '@cerberus-design/configs'
+import { version } from '@cerberus-design/react/package.json'
 import { Tooltip } from '@cerberus-design/react'
 import { css } from 'styled-system/css'
 import { Center, GridItem, HStack } from 'styled-system/jsx'
