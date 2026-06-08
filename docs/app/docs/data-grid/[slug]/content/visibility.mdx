@@ -1,0 +1,45 @@
+---
+title: Column Visibility
+description: Learn about the column visibility feature in the Data Grid component.
+package: 'data-grid'
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import CodePreview from '@/app/components/CodePreview'
+import { DEMOS } from '../components/visibility/static'
+
+## Overview
+
+Column visibility allows you to control which columns are visible in the Data Grid.
+Users can access this feature through the column menu to show/manage columns.
+
+There will be two options presented to the user:
+
+- **Hide**: Hides the column from view.
+- **Manage**: Allows the user to manage the visibility of all columns.
+
+Once a column is hidden, it will not be visible in the Data Grid and the only way to show it is through the **Manage** option.
+
+## Implementing column visibility
+
+You must opt-in to column visibility by setting the `features.visibility` prop to `true` or
+utilzing the options object. Doing so will display the visibility options in the column menu.
+
+<CodePreview {...DEMOS.basic} />
+
+## Default Visibility
+
+To set a column to be hidden by default, you can use the `defaultHidden` property
+in the `features.visibility` object.
+
+<CodePreview {...DEMOS.hidden} />
+
+## Options
+
+The `visibility` feature accepts either a `boolean` or an object with the following properties:
+
+<CodePreview {...DEMOS.def} />
+
+| Params          | Required | Description                                     |
+| --------------- | -------- | ----------------------------------------------- |
+| `defaultHidden` | `false`  | Whether the column should be hidden by default. |
