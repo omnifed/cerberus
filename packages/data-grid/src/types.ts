@@ -220,10 +220,22 @@ export type ColumnFeatures<TData, TKey extends keyof TData> = {
    * Show pinning options in the column menu
    */
   pinning?: (boolean & EnforceNoProperties<PinnedOptions>) | PinnedOptions
+  /**
+   * Show visibility options in the column menu (e.g., hide/manage column).
+   */
+  visibility?: (boolean & EnforceNoProperties<VisibilityOptions>) | VisibilityOptions
 }
 
 export type PinnedOptions = {
   defaultPosition?: PinnedState
+}
+
+export type VisibilityOptions = {
+  /**
+   * Hide the column initially on first render and allow the user to determine
+   * if they want to see it via the manage columns menu.
+   */
+  defaultHidden: boolean
 }
 
 export type SortOptions<TData, TKey extends keyof TData> = {
