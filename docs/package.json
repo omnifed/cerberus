@@ -17,7 +17,7 @@
     "@cerberus/tokens": "workspace:*",
     "@docsearch/css": "^4.6.3",
     "@docsearch/react": "^4.6.3",
-    "@tsparticles/engine": "4.0.5",
+    "@tsparticles/engine": "4.1.3",
     "@tsparticles/react": "4.0.5",
     "@tsparticles/slim": "4.0.5",
     "next": "16.2.7",
