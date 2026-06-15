@@ -223,7 +223,7 @@ export type ColumnFeatures<TData, TKey extends keyof TData> = {
   /**
    * Show visibility options in the column menu (e.g., hide/manage column).
    */
-  visibility?: (boolean & EnforceNoProperties<VisibilityOptions>) | VisibilityOptions
+  visibility?: boolean | VisibilityOptions
 }
 
 export type PinnedOptions = {
