@@ -6,6 +6,7 @@ import {
   MenuContent,
   MenuSeparator,
   MenuTrigger,
+  Portal,
   Show,
   useCerberusContext,
   type MenuSelectionDetails,
@@ -18,6 +19,7 @@ import { InternalColumn, PinnedState, SortDirection } from '../types'
 import { FilterMenuItem } from './filter-item.client'
 import { MatchPinnedItems } from './pinned-items.client'
 import { MatchSortItems } from './sort-items.client'
+import { MatchVisibleItems } from './visibile-items.client'
 
 export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
   const store = useDataGridContext<TData>()
@@ -31,6 +33,20 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
     if (idx === -1) return undefined
     return sorting[idx]
   }, [sorting, props.id])
+
+  const featureList = useMemo(() => {
+    // ORDER MATTERS
+    return [
+      Number(props.sortable),
+      Number(props.pinnable),
+      Number(props.filterable),
+      Number(props.visibility),
+    ]
+  }, [props.sortable, props.pinnable, props.filterable, props.visibility])
+
+  function hasParentFeatureOn(idx: number): boolean {
+    return featureList.slice(0, idx).some((val) => val === 1)
+  }
 
   function handleSelect(details: MenuSelectionDetails) {
     const val = details.value
@@ -51,6 +67,8 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
         }))
       case FEATURE_VALUES.unsort:
         return store.setSort(props.id, null)
+      case FEATURE_VALUES.manageVisibility:
+        return console.log('Manage visibility flat', props.id)
       default:
         break
     }
@@ -62,6 +80,8 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
         return store.togglePinned(props.id, false)
       case FEATURE_VALUES.sort:
         return store.setSort(props.id, (action as SortDirection) ?? null)
+      case FEATURE_VALUES.hide:
+        return console.log('Hide column', props.id)
       default:
         console.error('Unhandled action:', { details, action })
     }
@@ -84,7 +104,7 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
     return store.setShowColFilter(true)
   }
 
-  if (!props.sortable && !props.pinnable && !props.filterable) {
+  if (featureList.every((val) => val === 0)) {
     return null
   }
 
@@ -106,23 +126,34 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
         </IconButton>
       </MenuTrigger>
 
-      <MenuContent>
-        <Show when={props.sortable}>
-          <MatchSortItems sorting={sortedVal} />
-        </Show>
-
-        <Show when={props.pinnable}>
+      <Portal>
+        <MenuContent maxH="initial">
           <Show when={props.sortable}>
-            <MenuSeparator />
+            <MatchSortItems sorting={sortedVal} />
           </Show>
-          <MatchPinnedItems pinned={props.pinned} />
-        </Show>
 
-        <Show when={props.filterable}>
-          <MenuSeparator />
-          <FilterMenuItem colId={props.id} />
-        </Show>
-      </MenuContent>
+          <Show when={props.pinnable}>
+            <Show when={hasParentFeatureOn(1)}>
+              <MenuSeparator />
+            </Show>
+            <MatchPinnedItems pinned={props.pinned} />
+          </Show>
+
+          <Show when={props.filterable}>
+            <Show when={hasParentFeatureOn(2)}>
+              <MenuSeparator />
+            </Show>
+            <FilterMenuItem colId={props.id} />
+          </Show>
+
+          <Show when={props.visibility}>
+            <Show when={hasParentFeatureOn(3)}>
+              <MenuSeparator />
+            </Show>
+            <MatchVisibleItems colId={props.id} isVisible={props.isVisible} />
+          </Show>
+        </MenuContent>
+      </Portal>
     </Menu>
   )
 }

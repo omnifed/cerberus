@@ -21,7 +21,7 @@ export const columns = [
     id: 'fullName',
     header: 'Employee',
     minWidth: 300,
-    features: { visibility: true },
+    features: { filter: true, sort: true, pinning: true, visibility: true },
     cell: ({ row, value }) => (
       <VStack alignItems="flex-start" gap="0">
         <Text textStyle="body-md">{value}</Text>
@@ -35,7 +35,7 @@ export const columns = [
   columnHelper.accessorFn((row) => row.department.name, {
     id: 'department',
     header: 'Department',
-    features: { visibility: true },
+    features: { filter: true, visibility: true },
   }),
 
   columnHelper.accessor('salary', {
@@ -55,6 +55,7 @@ export const columns = [
     id: 'actions',
     header: 'Actions',
     width: 125,
+    features: { pinning: true, visibility: true },
     cell: () => (
       <HStack justify="center" w="full">
         <IconButton ariaLabel="View more options">

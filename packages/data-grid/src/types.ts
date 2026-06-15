@@ -132,7 +132,10 @@ export type DisplayOptions<TData, TKey extends keyof TData> = {
   id: string
   header: string | ((props: { colId: string }) => ReactNode)
   width?: number
-  features?: { pinning?: ColumnFeatures<TData, TKey>['pinning'] }
+  features?: {
+    pinning?: ColumnFeatures<TData, TKey>['pinning']
+    visibility?: ColumnFeatures<TData, TKey>['visibility']
+  }
   cell: ColCell<TData>
 }
 
@@ -149,12 +152,14 @@ export type InternalColumn<TData> = {
   pinnable: boolean
   sortable: boolean
   filterable: boolean
+  visibility: boolean
   getValue: ColumnDef<TData>['accessor']
   original: ColumnDef<TData>
   // setters
   setFlex: Setter<boolean>
   setColWidth: Setter<number>
   setPinned: Setter<PinnedState>
+  setVisible: Setter<boolean>
 }
 
 export type SortState = { id: string; desc: boolean }
@@ -223,7 +228,7 @@ export type ColumnFeatures<TData, TKey extends keyof TData> = {
   /**
    * Show visibility options in the column menu (e.g., hide/manage column).
    */
-  visibility?: boolean | VisibilityOptions
+  visibility?: (boolean & EnforceNoProperties<VisibilityOptions>) | VisibilityOptions
 }
 
 export type PinnedOptions = {
@@ -235,7 +240,7 @@ export type VisibilityOptions = {
    * Hide the column initially on first render and allow the user to determine
    * if they want to see it via the manage columns menu.
    */
-  defaultHidden: boolean
+  defaultHidden?: boolean
 }
 
 export type SortOptions<TData, TKey extends keyof TData> = {

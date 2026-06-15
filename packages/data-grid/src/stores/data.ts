@@ -52,8 +52,9 @@ function createInitColumns<TData>(
     const pinnable = Boolean(col.features?.pinning)
     const filterable = Boolean(col.features?.filter)
     const sortable = Boolean(col.features?.sort)
+    const visibility = Boolean(col.features?.visibility)
 
-    const hasFeatures = pinnable || filterable || sortable
+    const hasFeatures = pinnable || filterable || sortable || visibility
     const minWForFeatures = 100
 
     let finalWidth = col.width ?? 150
@@ -61,11 +62,13 @@ function createInitColumns<TData>(
       finalWidth = minWForFeatures
     }
 
-    const [isVisible] = createSignal<boolean>(true)
+    const isInitiallyHidden = col.features?.visibility?.defaultHidden ?? false
+
     const [isFlex, setFlex] = createSignal<boolean>(col.width === undefined)
     const [pinned, setPinned] = createSignal<PinnedState>(
       col.features?.pinning?.defaultPosition ?? false,
     )
+    const [isVisible, setVisible] = createSignal<boolean>(!isInitiallyHidden)
     const [width, setColWidth] = createSignal<number>(finalWidth)
 
     return {
@@ -80,10 +83,12 @@ function createInitColumns<TData>(
       pinnable,
       filterable,
       sortable,
+      visibility,
       // setters
       setFlex,
       setPinned,
       setColWidth,
+      setVisible,
     }
   })
 }

@@ -22,6 +22,7 @@ export interface DefinedIcons<T extends IconType = IconType> {
   caretDown?: T
   checkbox?: T
   close?: T
+  column?: T
   confirmModal?: T
   decrement?: T
   delete?: T
@@ -52,6 +53,7 @@ export interface DefinedIcons<T extends IconType = IconType> {
   successNotification?: T
   table?: T
   toggleChecked?: T
+  viewOff?: T
   waitingFileUploader?: T
   warningNotification?: T
   warning?: T
