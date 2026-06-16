@@ -24,6 +24,7 @@ import { MatchVisibleItems } from './visibile-items.client'
 export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
   const store = useDataGridContext<TData>()
   const sorting = useRead(store.sorting)
+  const hiddenColsMaxReached = useRead(store.hiddenColsMaxReached)
 
   const { icons } = useCerberusContext()
   const MoreOptionsIcon = icons.moreVertical
@@ -81,10 +82,15 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
       case FEATURE_VALUES.sort:
         return store.setSort(props.id, (action as SortDirection) ?? null)
       case FEATURE_VALUES.hide:
-        return console.log('Hide column', props.id)
+        return handleHide()
       default:
         console.error('Unhandled action:', { details, action })
     }
+  }
+
+  function handleHide() {
+    if (hiddenColsMaxReached) return
+    props.setVisible(false)
   }
 
   function handleInitFilter() {
@@ -150,7 +156,11 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
             <Show when={hasParentFeatureOn(3)}>
               <MenuSeparator />
             </Show>
-            <MatchVisibleItems colId={props.id} isVisible={props.isVisible} />
+            <MatchVisibleItems
+              colId={props.id}
+              isVisible={props.isVisible}
+              isLastVisibleCol={hiddenColsMaxReached}
+            />
           </Show>
         </MenuContent>
       </Portal>

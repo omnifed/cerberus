@@ -13,6 +13,7 @@ export const columns = [
       pinning: {
         defaultPosition: 'left',
       },
+      visibility: true,
     },
     cell: ({ value }) => <Text>#{value}</Text>,
   }),

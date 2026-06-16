@@ -6,7 +6,7 @@ import {
 import { Setter, type Accessor } from '@cerberus-design/signals'
 import { type ReactNode } from 'react'
 import { type RowSize } from './const'
-import { LayoutStore } from './stores'
+import { DataStore, LayoutStore } from './stores'
 
 export interface GridOptions<TData> {
   /**
@@ -166,7 +166,7 @@ export type SortState = { id: string; desc: boolean }
 
 // -- Store Context --
 
-export interface GridStore<TData> extends LayoutStore {
+export interface GridStore<TData> extends LayoutStore, DataStore<TData> {
   // State
   columns: Accessor<InternalColumn<TData>[]>
   rows: Accessor<TData[]>

@@ -8,13 +8,14 @@ import { type Accessor, useRead } from '@cerberus-design/signals'
 type Props = {
   colId: string
   isVisible: Accessor<boolean>
+  isLastVisibleCol: boolean
 }
 
 export function MatchVisibleItems(props: Props) {
   const visible = useRead(props.isVisible)
   return (
     <>
-      <Show when={visible}>{() => <HideItem />}</Show>
+      <Show when={visible && !props.isLastVisibleCol}>{() => <HideItem />}</Show>
       <ManageCols />
     </>
   )
