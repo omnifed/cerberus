@@ -6,7 +6,7 @@ import {
 import { Setter, type Accessor } from '@cerberus-design/signals'
 import { type ReactNode } from 'react'
 import { type RowSize } from './const'
-import { DataStore, LayoutStore } from './stores'
+import { DataStore, LayoutStore, VisibilityStore } from './stores'
 
 export interface GridOptions<TData> {
   /**
@@ -166,7 +166,8 @@ export type SortState = { id: string; desc: boolean }
 
 // -- Store Context --
 
-export interface GridStore<TData> extends LayoutStore, DataStore<TData> {
+export interface GridStore<TData>
+  extends LayoutStore, DataStore<TData>, VisibilityStore {
   // State
   columns: Accessor<InternalColumn<TData>[]>
   rows: Accessor<TData[]>
@@ -176,6 +177,7 @@ export interface GridStore<TData> extends LayoutStore, DataStore<TData> {
   colFilters: Accessor<ColumnFilterState>
   sorting: Accessor<SortState[]>
   visibleRows: Accessor<TData[]>
+  featureOpen: Accessor<FeatureOpenOption>
 
   // Pagination
   pageIndex: Accessor<number>
@@ -324,6 +326,11 @@ export type OverlaySlots = {
    * Once the `DataGrid.pending` prop is set to `false`, the `overlays.pending` slot will be used.
    */
   initial?: LoadingVariant
+}
+
+export type FeatureOpenOption = {
+  open: boolean
+  key: 'filter' | 'manage' | null
 }
 
 export type ThemeOptions = {

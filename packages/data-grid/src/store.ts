@@ -5,8 +5,9 @@ import {
   createLayoutStore,
   createPaginationStore,
   createSortStore,
+  createVisibilityStore,
 } from './stores'
-import type { GridOptions, GridStore } from './types'
+import type { FeatureOpenOption, GridOptions, GridStore } from './types'
 import { determineInitialCount } from './utils'
 
 /**
@@ -24,6 +25,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     columns: dataStore.columns,
     filteredRows: filterStore.filteredRows,
   })
+  const visibilityStore = createVisibilityStore()
 
   // 3. Layout
   const layoutStore = createLayoutStore({
@@ -58,14 +60,22 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
     return rows
   })
 
+  const featureOpen = createComputed<FeatureOpenOption>(() => {
+    if (filterStore.colFilters().editing) return { open: true, key: 'filter' }
+    if (visibilityStore.showManage()) return { open: true, key: 'manage' }
+    return { open: false, key: null }
+  })
+
   return {
     ...dataStore,
     ...paginationStore,
     ...filterStore,
     ...sortStore,
+    ...visibilityStore,
     ...layoutStore,
     rowCount,
     pageCount,
     visibleRows,
+    featureOpen,
   }
 }

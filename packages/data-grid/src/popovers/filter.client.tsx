@@ -3,86 +3,32 @@
 import {
   Button,
   ButtonGroup,
-  cerberus,
   createSelectCollection,
   Field,
   For,
   IconButton,
   IconButtonRoot,
   Input,
-  OpenChangeDetails,
-  Option,
   PopoverParts,
-  PopoverRootProps,
+  Option,
   Portal,
   Select,
   SelectRootProps,
-  Show,
   useCerberusContext,
 } from '@cerberus-design/react'
 import { batch, createComputed, useRead } from '@cerberus-design/signals'
-import { type HTMLAttributes, type PropsWithChildren, type RefObject } from 'react'
+import { type RefObject } from 'react'
 import { FormStatus, useFormStatus } from 'react-dom'
-import { Box, HStack, Stack } from 'styled-system/jsx'
+import { Box, cerberus, HStack, Stack } from 'styled-system/jsx'
 import { OPERATORS } from '../const'
 import { useDataGridContext } from '../context.client'
-import type { ColumnFilter, FilterOperator } from '../types'
-import { ManageColsPopover } from '../popovers/manage-cols.client'
+import { ColumnFilter, FilterOperator } from '../types'
 
-export function DGPopover(props: PropsWithChildren<PopoverRootProps>) {
-  const store = useDataGridContext()
-
-  const colH = useRead(store.rowSize)
-  const featureStore = useRead(store.featureOpen)
-
-  const popH = 119
-  const mainAxis = popH + colH
-  const open = featureStore.open
-
-  return (
-    <PopoverParts.Root
-      {...props}
-      lazyMount
-      open={open}
-      onOpenChange={(details: OpenChangeDetails) => {
-        if (!details.open) {
-          batch(() => {
-            store.setColFilter((prev) => ({
-              ...prev,
-              active: prev.active.filter((filterId) => prev.filters[filterId].value),
-              editing: null,
-            }))
-            store.setShowManage(false)
-          })
-        }
-      }}
-      portalled
-      positioning={{
-        placement: 'top-start',
-        offset: {
-          mainAxis: -mainAxis,
-        },
-      }}
-    />
-  )
-}
-
-export function DGPopoverAnchor(
-  props: PropsWithChildren<HTMLAttributes<HTMLDivElement>>,
-) {
-  return <PopoverParts.Anchor {...props} asChild />
-}
-
-// DEPRECATED ---------------------------
-
-interface DGPopoverContentProps {
+interface FilterPopoverProps {
   ref: RefObject<HTMLDivElement | null>
 }
 
-export function DGPopoverContent(props: DGPopoverContentProps) {
-  const store = useDataGridContext()
-  const featureOpen = useRead(store.featureOpen)
-
+export function FilterPopover(props: FilterPopoverProps) {
   const { icons } = useCerberusContext()
   const CloseIcon = icons?.close
 
@@ -106,8 +52,7 @@ export function DGPopoverContent(props: DGPopoverContentProps) {
             </PopoverParts.Title>
           </PopoverParts.Header>
 
-          <Show when={featureOpen.key === 'filter'}>{() => <FilterForm />}</Show>
-          <Show when={featureOpen.key === 'manage'}>{() => <ManageColsPopover />}</Show>
+          <FilterForm />
         </PopoverParts.Content>
       </PopoverParts.Positioner>
     </Portal>
@@ -134,6 +79,7 @@ function FilterForm<TData>() {
         },
         editing: null,
       }))
+      store.setShowColFilter(false)
     })
   }
 

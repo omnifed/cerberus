@@ -54,31 +54,34 @@ in a signal-based reactive manner:
 
 ### Reactive Values
 
-| Name                | Type                                       | Description                                                 |
-| ------------------- | ------------------------------------------ | ----------------------------------------------------------- |
-| `columns`           | `Accessor<InternalColumn<TData>[]>`        | A list of processed columns.                                |
-| `orderedColumns`    | `Accessor<InternalColumn<TData>[]>`        | A list of ordered columns.                                  |
-| `rows`              | `Accessor<TData[]>`                        | A list of processed rows.                                   |
-| `rowSize`           | `Accessor<number>`                         | The height of the row.                                      |
-| `rowCount`          | `Accessor<number>`                         | The current number of rows in the grid.                     |
-| `pageIndex`         | `Accessor<number>`                         | The current page index of the grid.                         |
-| `pageSize`          | `Accessor<number>`                         | The current page size of the grid.                          |
-| `pageRange`         | `Accessor<number[]>`                       | The page range options of the grid.                         |
-| `currentPageRange`  | `Accessor<{ start: number; end: number }>` | The current page range.                                     |
-| `pageCount`         | `Accessor<number>`                         | The current page count of the grid used for SSR pagination. |
-| `isServerPaginated` | `Accessor<boolean>`                        | If pagination is using server-based.                        |
-| `showColFilter`     | `Accessor<boolean>`                        | If the user has chosen the column filter feature option.    |
-| `globalFilter`      | `Accessor<BaseFilterState>`                | The current global filter value used for column filtering.  |
-| `collFilters`       | `Accessor<ColumnFilterState>`              | The current column filters used.                            |
-| `filteredRows`      | `Accessor<TData[]>`                        | The rows after filtering.                                   |
-| `sorting`           | `Accessor<SortState[]>`                    | The current sorting state of the grid.                      |
-| `sortedRows`        | `Accessor<TData[]>`                        | The rows after sorting.                                     |
-| `phase`             | `Accessor<Phase>`                          | The current phase of the grid layout.                       |
-| `pending`           | `Accessor<boolean>`                        | The state of the `pending` prop of the Data Grid.           |
-| `hasSkeleton`       | `Accessor<boolean>`                        | If a skeleton overlay option is provided.                   |
-| `rootCssVars`       | `Accessor<Record<string, string>>`         | The current CSS variables for the grid root element.        |
-| `totalWidth`        | `Accessor<number>`                         | The total width of the grid (used for pinning).             |
-| `visibleRows`       | `Accessor<TData[]>`                        | The list of visible rows in the viewport.                   |
+| Name                   | Type                                       | Description                                                    |
+| ---------------------- | ------------------------------------------ | -------------------------------------------------------------- |
+| `columns`              | `Accessor<InternalColumn<TData>[]>`        | A list of processed columns.                                   |
+| `orderedColumns`       | `Accessor<InternalColumn<TData>[]>`        | A list of ordered columns.                                     |
+| `rows`                 | `Accessor<TData[]>`                        | A list of processed rows.                                      |
+| `rowSize`              | `Accessor<number>`                         | The height of the row.                                         |
+| `rowCount`             | `Accessor<number>`                         | The current number of rows in the grid.                        |
+| `totalHiddenCols`      | `Accessor<number>`                         | The total number of hidden columns.                            |
+| `hiddenColsMaxReached` | `Accessor<boolean>`                        | Whether the maximum number of hidden columns has been reached. |
+| `pageIndex`            | `Accessor<number>`                         | The current page index of the grid.                            |
+| `pageSize`             | `Accessor<number>`                         | The current page size of the grid.                             |
+| `pageRange`            | `Accessor<number[]>`                       | The page range options of the grid.                            |
+| `currentPageRange`     | `Accessor<{ start: number; end: number }>` | The current page range.                                        |
+| `pageCount`            | `Accessor<number>`                         | The current page count of the grid used for SSR pagination.    |
+| `isServerPaginated`    | `Accessor<boolean>`                        | If pagination is using server-based.                           |
+| `showColFilter`        | `Accessor<boolean>`                        | If the user has chosen the column filter feature option.       |
+| `globalFilter`         | `Accessor<BaseFilterState>`                | The current global filter value used for column filtering.     |
+| `collFilters`          | `Accessor<ColumnFilterState>`              | The current column filters used.                               |
+| `filteredRows`         | `Accessor<TData[]>`                        | The rows after filtering.                                      |
+| `sorting`              | `Accessor<SortState[]>`                    | The current sorting state of the grid.                         |
+| `sortedRows`           | `Accessor<TData[]>`                        | The rows after sorting.                                        |
+| `showManage`           | `Accessor<boolean>`                        | If the manage columns menu is open.                            |
+| `phase`                | `Accessor<Phase>`                          | The current phase of the grid layout.                          |
+| `pending`              | `Accessor<boolean>`                        | The state of the `pending` prop of the Data Grid.              |
+| `hasSkeleton`          | `Accessor<boolean>`                        | If a skeleton overlay option is provided.                      |
+| `rootCssVars`          | `Accessor<Record<string, string>>`         | The current CSS variables for the grid root element.           |
+| `totalWidth`           | `Accessor<number>`                         | The total width of the grid (used for pinning).                |
+| `visibleRows`          | `Accessor<TData[]>`                        | The list of visible rows in the viewport.                      |
 
 ### Actions
 
@@ -92,6 +95,7 @@ in a signal-based reactive manner:
 | `setGlobalFilter`   | `Setter<BaseFilterState>`                                            | Updates the global filter value.            |
 | `setColFilter`      | `Setter<ColumnFilterState>`                                          | Updates the col filter value.               |
 | `setShowColFilter`  | `Setter<boolean>`                                                    | Updates the showColFilter value.            |
+| `setShowManage`     | `Setter<boolean>`                                                    | Updates the showManage value.               |
 | `setSort`           | `(colId: string, direction: SortDirection, multi?: boolean) => void` | Updates the sorting state of the grid.      |
 | `toggleSort`        | `(colId: string, multi?: boolean) => void`                           | Toggles the sort direction of a column.     |
 | `togglePinned`      | `(colId: string, state: PinnedState) => void`                        | Toggles the pinned state of a column.       |

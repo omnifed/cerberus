@@ -69,7 +69,7 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
       case FEATURE_VALUES.unsort:
         return store.setSort(props.id, null)
       case FEATURE_VALUES.manageVisibility:
-        return console.log('Manage visibility flat', props.id)
+        return store.setShowManage(true)
       default:
         break
     }
@@ -107,7 +107,6 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
         },
       },
     }))
-    return store.setShowColFilter(true)
   }
 
   if (featureList.every((val) => val === 0)) {

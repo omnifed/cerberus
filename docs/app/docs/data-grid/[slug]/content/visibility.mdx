@@ -20,10 +20,11 @@ There will be two options presented to the user:
 
 Once a column is hidden, it will not be visible in the Data Grid and the only way to show it is through the **Manage** option.
 
+When there is only a single visible column left in the Grid, only the **Manage** option will be displayed.
+
 ## Implementing column visibility
 
-You must opt-in to column visibility by setting the `features.visibility` prop to `true` or
-utilzing the options object. Doing so will display the visibility options in the column menu.
+You must opt-in to the column visibility feature by setting the `features.visibility` prop to `true` or by utilizing the options object. Doing so will display the visibility options in the column menu.
 
 <CodePreview {...DEMOS.basic} />
 
