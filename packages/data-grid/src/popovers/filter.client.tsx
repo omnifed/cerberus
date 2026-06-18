@@ -7,59 +7,21 @@ import {
   Field,
   For,
   IconButton,
-  IconButtonRoot,
   Input,
-  PopoverParts,
   Option,
-  Portal,
+  PopoverParts,
   Select,
   SelectRootProps,
   useCerberusContext,
 } from '@cerberus-design/react'
 import { batch, createComputed, useRead } from '@cerberus-design/signals'
-import { type RefObject } from 'react'
 import { FormStatus, useFormStatus } from 'react-dom'
 import { Box, cerberus, HStack, Stack } from 'styled-system/jsx'
 import { OPERATORS } from '../const'
 import { useDataGridContext } from '../context.client'
 import { ColumnFilter, FilterOperator } from '../types'
 
-interface FilterPopoverProps {
-  ref: RefObject<HTMLDivElement | null>
-}
-
-export function FilterPopover(props: FilterPopoverProps) {
-  const { icons } = useCerberusContext()
-  const CloseIcon = icons?.close
-
-  return (
-    <Portal container={props.ref}>
-      <PopoverParts.Positioner>
-        <PopoverParts.Content
-          css={{
-            '--popover-size': '37.5rem!',
-          }}
-        >
-          <PopoverParts.Header>
-            <PopoverParts.CloseTrigger asChild>
-              <IconButtonRoot size="sm" usage="ghost">
-                <CloseIcon />
-              </IconButtonRoot>
-            </PopoverParts.CloseTrigger>
-
-            <PopoverParts.Title textStyle="label-md">
-              Filter By Column
-            </PopoverParts.Title>
-          </PopoverParts.Header>
-
-          <FilterForm />
-        </PopoverParts.Content>
-      </PopoverParts.Positioner>
-    </Portal>
-  )
-}
-
-function FilterForm<TData>() {
+export function FilterForm<TData>() {
   const store = useDataGridContext<TData>()
 
   function filter(formData: FormData) {

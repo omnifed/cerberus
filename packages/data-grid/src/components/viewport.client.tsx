@@ -7,10 +7,10 @@ import { Box, HStack, Scrollable, Stack } from 'styled-system/jsx'
 import { PARTS, SCOPE } from '../const'
 import { useDataGridContext } from '../context.client'
 import type { OverlaySlots } from '../types'
+import { PopoverContent } from '../ui/popover.client'
 import { useVirtualizer } from '../virtualizer.client'
 import { GridHeaderCell, GridRow } from './grid.client'
 import { NoContentOverlay, PendingOverlay } from './overlays'
-import { DGPopoverContent } from './popover.client'
 
 interface GridViewportProps {
   rootRef: RefObject<HTMLDivElement | null>
@@ -92,7 +92,7 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
 
       <Show when={pending}>{() => <PendingOverlay variant={pendingVariant} />}</Show>
 
-      <DGPopoverContent ref={props.rootRef} />
+      <PopoverContent ref={props.rootRef} />
     </Scrollable>
   )
 })
