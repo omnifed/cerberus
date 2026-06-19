@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Unit tests pass
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     name: React successfully builds
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Data Grid successfully builds
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6
@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Signals successfully builds
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6
