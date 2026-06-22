@@ -2,17 +2,16 @@
 
 import { For, Show } from '@cerberus-design/react'
 import { createComputed, useRead } from '@cerberus-design/signals'
-import { lazy, memo, Suspense, useMemo, useRef, type RefObject } from 'react'
+import { memo, useMemo, useRef, type RefObject } from 'react'
 import { Box, HStack, Scrollable, Stack } from 'styled-system/jsx'
 import { PARTS, SCOPE } from '../const'
 import { useDataGridContext } from '../context.client'
+import { NoColumnsLayout } from '../layouts/no-columns.client'
 import type { OverlaySlots } from '../types'
 import { PopoverContent } from '../ui/popover.client'
 import { useVirtualizer } from '../virtualizer.client'
 import { GridHeaderCell, GridRow } from './grid.client'
 import { NoContentOverlay, PendingOverlay } from './overlays'
-
-const NoColsLayout = lazy(() => import('../layouts/no-columns'))
 
 interface GridViewportProps {
   rootRef: RefObject<HTMLDivElement | null>
@@ -41,11 +40,7 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
   }, [props.overlays])
 
   if (allColsHidden) {
-    return (
-      <Suspense>
-        <NoColsLayout />
-      </Suspense>
-    )
+    return <NoColumnsLayout />
   }
 
   return (
