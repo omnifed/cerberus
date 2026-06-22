@@ -153,6 +153,7 @@ export type InternalColumn<TData> = {
   sortable: boolean
   filterable: boolean
   visibility: boolean
+  defaultVisibility: boolean
   getValue: ColumnDef<TData>['accessor']
   original: ColumnDef<TData>
   // setters

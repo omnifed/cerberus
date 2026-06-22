@@ -13,9 +13,9 @@ export function NoColumnsLayout() {
   const Icon = icons.table
   const ResetIcon = icons.redo
 
-  function handleToggleAll() {
+  function handleReset() {
     cols.forEach((col) => {
-      col.setVisible(true)
+      col.setVisible(col.defaultVisibility)
     })
   }
 
@@ -27,7 +27,7 @@ export function NoColumnsLayout() {
           <Text textStyle="label-md">No visible columns</Text>
         </VStack>
 
-        <Button onClick={handleToggleAll} usage="outlined" shape="rounded" size="sm">
+        <Button onClick={handleReset} usage="outlined" shape="rounded" size="sm">
           <ResetIcon />
           Reset Columns
         </Button>

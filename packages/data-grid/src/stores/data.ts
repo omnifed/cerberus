@@ -10,6 +10,7 @@ export type DataStore<TData> = {
   allColsHidden: Accessor<boolean>
   totalHiddenCols: Accessor<number>
   hiddenColsMaxReached: Accessor<boolean>
+
   // Actions
   updateData: (data: TData[]) => void
 }
@@ -100,6 +101,7 @@ function createInitColumns<TData>(
       filterable,
       sortable,
       visibility,
+      defaultVisibility: !isInitiallyHidden,
       // setters
       setFlex,
       setPinned,

@@ -35,6 +35,12 @@ export function ManageColsPopover() {
     })
   }
 
+  function handleReset() {
+    cols.forEach((col) => {
+      col.setVisible(col.defaultVisibility)
+    })
+  }
+
   return (
     <>
       <Show when={cols.length >= 7}>
@@ -70,7 +76,7 @@ export function ManageColsPopover() {
 
       <PopoverParts.Footer justifyContent="space-between">
         <Checkbox onCheckedChange={handleToggleAll}>Show/Hide All</Checkbox>
-        <Button size="sm" usage="ghost">
+        <Button onClick={handleReset} size="sm" usage="ghost">
           Reset
         </Button>
       </PopoverParts.Footer>
