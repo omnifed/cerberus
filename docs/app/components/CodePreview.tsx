@@ -12,9 +12,7 @@ interface CodePreviewProps {
   context?: 'components' | 'data-grid'
 }
 
-export default async function CodePreview(
-  props: PropsWithChildren<CodePreviewProps>,
-) {
+export default async function CodePreview(props: PropsWithChildren<CodePreviewProps>) {
   const { code, preview, fallback, rawContent } = await getExampleCode(
     props.id,
     props.children,
@@ -47,7 +45,7 @@ export default async function CodePreview(
             pos="sticky"
             top="8"
             w="fit-content"
-            zIndex="sticky"
+            zIndex="decorator"
           >
             <CopyButton content={rawContent} />
           </Box>

@@ -1,6 +1,5 @@
 import { BasicDemo } from './basic.demo'
-// import { HiddenDemo } from './hidden.demo'
-// import { DefaultVisibilityDemo } from './default-visibility.demo'
+import { HiddenDemo } from './hidden.demo'
 
 export const DEMOS = {
   basic: {
@@ -10,7 +9,7 @@ export const DEMOS = {
   },
   hidden: {
     id: 'visibility.hidden',
-    preview: null,
+    preview: <HiddenDemo />,
     context: 'data-grid',
   },
   def: {

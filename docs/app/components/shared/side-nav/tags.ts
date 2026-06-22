@@ -1,3 +1,3 @@
 export const NEW: string[] = ['/docs/data-grid/visibility']
 
-// Inline: DG.Overlays.Initial
+// Inline NEW: DG.Overlays.Initial
