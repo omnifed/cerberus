@@ -53,6 +53,24 @@ export const columns = [
   }),
 
   columnHelper.display({
+    id: 'lastLogin',
+    header: 'Last Login',
+    features: { pinning: true, visibility: true },
+    cell: (cell) => (
+      <Text color="page.text.100" textStyle="mono-xs">
+        <Format.RelativeTime value={new Date(cell.row.lastLogin)} />
+      </Text>
+    ),
+  }),
+
+  columnHelper.display({
+    id: 'lastName',
+    header: 'Last Name',
+    features: { pinning: true, visibility: true },
+    cell: (cell) => <Text textStyle="body-md">{cell.row.lastName}</Text>,
+  }),
+
+  columnHelper.display({
     id: 'actions',
     header: 'Actions',
     width: 125,

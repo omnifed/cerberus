@@ -1,21 +1,20 @@
 'use client'
 
 import {
-  PopoverRootProps,
-  PopoverParts,
-  OpenChangeDetails,
-  useCerberusContext,
-  Portal,
   IconButtonRoot,
+  OpenChangeDetails,
+  PopoverParts,
+  PopoverRootProps,
+  Portal,
   Show,
+  useCerberusContext,
 } from '@cerberus-design/react'
-import { useRead, batch } from '@cerberus-design/signals'
-import { PropsWithChildren, HTMLAttributes, RefObject } from 'react'
+import { batch, useRead } from '@cerberus-design/signals'
+import { HTMLAttributes, PropsWithChildren, RefObject } from 'react'
 import { useDataGridContext } from '../context.client'
-import { ManageColsPopover } from '../popovers/manage-cols.client'
 import { FilterForm } from '../popovers/filter.client'
+import { ManageColsPopover } from '../popovers/manage-cols.client'
 import { getMainAxis, meta, type MetaKey } from '../popovers/meta'
-import { css } from 'styled-system/css'
 
 export function Popover(props: PropsWithChildren<PopoverRootProps>) {
   const store = useDataGridContext()
@@ -23,8 +22,6 @@ export function Popover(props: PropsWithChildren<PopoverRootProps>) {
   const colH = useRead(store.rowSize)
   const featureOpen = useRead(store.featureOpen)
 
-  // const popH = 119
-  // const mainAxis = popH + colH
   const open = featureOpen.open
   const key = String(featureOpen.key) as MetaKey
 

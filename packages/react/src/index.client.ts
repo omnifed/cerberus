@@ -15,6 +15,7 @@ export {
   CarouselRootProvider,
   useCheckbox,
   CheckboxRootProvider,
+  type CheckboxCheckedChangeDetails,
   useClipboard,
   ClipboardRootProvider,
   useCollapsible,

@@ -3,6 +3,7 @@
 import {
   Button,
   Checkbox,
+  CheckboxCheckedChangeDetails,
   Field,
   For,
   Input,
@@ -14,6 +15,7 @@ import { useRead, useSignal } from '@cerberus-design/signals'
 import { type ChangeEvent } from 'react'
 import { Divider, type DividerProps, Scrollable, Stack } from 'styled-system/jsx'
 import { useDataGridContext } from '../context.client'
+import { InternalColumn } from '../types'
 
 export function ManageColsPopover() {
   const [filter, setFilter] = useSignal<string>('')
@@ -25,7 +27,13 @@ export function ManageColsPopover() {
   )
 
   const ctx = useCerberusContext()
-  const Icon = ctx.icons.filter
+  const Icon = ctx.icons.search
+
+  function handleToggleAll(details: CheckboxCheckedChangeDetails) {
+    cols.forEach((col) => {
+      col.setVisible(Boolean(details.checked))
+    })
+  }
 
   return (
     <>
@@ -53,9 +61,7 @@ export function ManageColsPopover() {
         <PopoverParts.Body>
           <Stack gap="md">
             <For each={filteredCols}>
-              {(col) => (
-                <Checkbox key={col.id}>{col.original.header as string}</Checkbox>
-              )}
+              {(col) => <ManageCheckbox key={col.id} {...col} />}
             </For>
           </Stack>
         </PopoverParts.Body>
@@ -63,12 +69,32 @@ export function ManageColsPopover() {
       <ManageDivider />
 
       <PopoverParts.Footer justifyContent="space-between">
-        <Checkbox>Show/Hide All</Checkbox>
+        <Checkbox onCheckedChange={handleToggleAll}>Show/Hide All</Checkbox>
         <Button size="sm" usage="ghost">
           Reset
         </Button>
       </PopoverParts.Footer>
     </>
+  )
+}
+
+function ManageCheckbox<TData>(props: InternalColumn<TData>) {
+  const checked = useRead(props.isVisible)
+
+  function handleCheckedCol(id: string, details: CheckboxCheckedChangeDetails) {
+    props.setVisible(Boolean(details.checked))
+  }
+
+  return (
+    <Checkbox
+      checked={checked}
+      onCheckedChange={(details) => {
+        handleCheckedCol(props.id, details)
+      }}
+      value={props.id}
+    >
+      {props.original.header as string}
+    </Checkbox>
   )
 }
 

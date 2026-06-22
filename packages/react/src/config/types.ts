@@ -45,6 +45,7 @@ export interface DefinedIcons<T extends IconType = IconType> {
   pinRightFilled?: T
   promptModal?: T
   redo?: T
+  search?: T
   selectArrow?: T
   selectChecked?: T
   sortAsc?: T
