@@ -7,7 +7,7 @@ import { Box, HStack, Scrollable, Stack } from 'styled-system/jsx'
 import { PARTS, SCOPE } from '../const'
 import { useDataGridContext } from '../context.client'
 import { NoColumnsLayout } from '../layouts/no-columns.client'
-import type { OverlaySlots } from '../types'
+import type { InternalColumn, OverlaySlots } from '../types'
 import { PopoverContent } from '../ui/popover.client'
 import { useVirtualizer } from '../virtualizer.client'
 import { GridHeaderCell, GridRow } from './grid.client'
@@ -80,11 +80,7 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
           w="full"
         >
           <For each={columns}>
-            {(col) => (
-              <Show when={col.isVisible()} key={col.id}>
-                {() => <GridHeaderCell column={col} />}
-              </Show>
-            )}
+            {(col) => <VisibleHeaderCell column={col} key={col.id} />}
           </For>
         </HStack>
       </Box>
@@ -102,6 +98,11 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
     </Scrollable>
   )
 })
+
+function VisibleHeaderCell(props: { column: InternalColumn<unknown> }) {
+  const isVisible = useRead(props.column.isVisible)
+  return <Show when={isVisible}>{() => <GridHeaderCell column={props.column} />}</Show>
+}
 
 // Rows to display
 
