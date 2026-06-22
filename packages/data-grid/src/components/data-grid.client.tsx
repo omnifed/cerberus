@@ -8,8 +8,8 @@ import { PARTS, SCOPE } from '../const'
 import { DataGridProvider } from '../context.client'
 import { createGridStore } from '../store'
 import type { GridOptions, GridStore } from '../types'
+import { Popover, PopoverAnchor } from '../ui/popover.client'
 import { GridPagination } from './pagination.client'
-import { DGPopover, DGPopoverAnchor } from './popover.client'
 import { GridViewport } from './viewport.client'
 
 function DataGridEl<TData>(props: GridOptions<TData>) {
@@ -81,8 +81,8 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
         )}
       </Show>
 
-      <DGPopover>
-        <DGPopoverAnchor>
+      <Popover>
+        <PopoverAnchor>
           <Stack
             data-scope={SCOPE}
             data-part={PARTS.ROOT}
@@ -104,8 +104,8 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
             </Show>
             <GridPagination />
           </Stack>
-        </DGPopoverAnchor>
-      </DGPopover>
+        </PopoverAnchor>
+      </Popover>
 
       <Show when={props.footer}>
         {() => (

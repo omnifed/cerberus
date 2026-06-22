@@ -29,6 +29,8 @@ export const FEATURE_VALUES = {
   sort: 'sort',
   sortAsc: 'sort_asc',
   sortDesc: 'sort_desc',
+  hide: 'hide',
+  manageVisibility: 'manage_visibility',
 }
 
 // Pagination

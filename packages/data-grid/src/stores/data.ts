@@ -7,6 +7,10 @@ export type DataStore<TData> = {
   orderedColumns: Accessor<InternalColumn<TData>[]>
   rows: Accessor<TData[]>
   rowSize: Accessor<number>
+  allColsHidden: Accessor<boolean>
+  totalHiddenCols: Accessor<number>
+  hiddenColsMaxReached: Accessor<boolean>
+
   // Actions
   updateData: (data: TData[]) => void
 }
@@ -15,6 +19,16 @@ export function createDataStore<TData>(options: GridOptions<TData>): DataStore<T
   const [rows, setRows] = createSignal<TData[]>(options.data)
   const [rowSize] = createSignal<number>(determineRowHeight(options.rowSize))
   const [columns] = createSignal<InternalColumn<TData>[]>(createInitColumns(options))
+
+  const totalHiddenCols = createComputed<number>(() => {
+    return columns().filter((col) => !col.isVisible()).length
+  })
+  const hiddenColsMaxReached = createComputed<boolean>(() => {
+    return totalHiddenCols() === columns().length - 1
+  })
+  const allColsHidden = createComputed<boolean>(() => {
+    return columns().every((col) => !col.isVisible())
+  })
 
   const orderedColumns = createComputed(() => {
     const left: InternalColumn<TData>[] = []
@@ -36,6 +50,9 @@ export function createDataStore<TData>(options: GridOptions<TData>): DataStore<T
     orderedColumns,
     rows,
     rowSize,
+    allColsHidden,
+    hiddenColsMaxReached,
+    totalHiddenCols,
 
     updateData: (newData) => {
       setRows(newData)
@@ -52,8 +69,9 @@ function createInitColumns<TData>(
     const pinnable = Boolean(col.features?.pinning)
     const filterable = Boolean(col.features?.filter)
     const sortable = Boolean(col.features?.sort)
+    const visibility = Boolean(col.features?.visibility)
 
-    const hasFeatures = pinnable || filterable || sortable
+    const hasFeatures = pinnable || filterable || sortable || visibility
     const minWForFeatures = 100
 
     let finalWidth = col.width ?? 150
@@ -61,11 +79,13 @@ function createInitColumns<TData>(
       finalWidth = minWForFeatures
     }
 
-    const [isVisible] = createSignal<boolean>(true)
+    const isInitiallyHidden = col.features?.visibility?.defaultHidden ?? false
+
     const [isFlex, setFlex] = createSignal<boolean>(col.width === undefined)
     const [pinned, setPinned] = createSignal<PinnedState>(
       col.features?.pinning?.defaultPosition ?? false,
     )
+    const [isVisible, setVisible] = createSignal<boolean>(!isInitiallyHidden)
     const [width, setColWidth] = createSignal<number>(finalWidth)
 
     return {
@@ -80,10 +100,13 @@ function createInitColumns<TData>(
       pinnable,
       filterable,
       sortable,
+      visibility,
+      defaultVisibility: !isInitiallyHidden,
       // setters
       setFlex,
       setPinned,
       setColWidth,
+      setVisible,
     }
   })
 }

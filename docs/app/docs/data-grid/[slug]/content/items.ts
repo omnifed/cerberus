@@ -106,6 +106,12 @@ export const items = [
     slug: 'filtering',
   },
   {
+    id: '2.4',
+    href: '/docs/data-grid/visibility',
+    label: 'Visibility',
+    slug: 'visibility',
+  },
+  {
     id: '3.0',
     label: 'Reference',
     href: '',

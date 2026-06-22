@@ -6,7 +6,7 @@ import {
 import { Setter, type Accessor } from '@cerberus-design/signals'
 import { type ReactNode } from 'react'
 import { type RowSize } from './const'
-import { LayoutStore } from './stores'
+import { DataStore, LayoutStore, VisibilityStore } from './stores'
 
 export interface GridOptions<TData> {
   /**
@@ -132,7 +132,10 @@ export type DisplayOptions<TData, TKey extends keyof TData> = {
   id: string
   header: string | ((props: { colId: string }) => ReactNode)
   width?: number
-  features?: { pinning?: ColumnFeatures<TData, TKey>['pinning'] }
+  features?: {
+    pinning?: ColumnFeatures<TData, TKey>['pinning']
+    visibility?: ColumnFeatures<TData, TKey>['visibility']
+  }
   cell: ColCell<TData>
 }
 
@@ -149,19 +152,23 @@ export type InternalColumn<TData> = {
   pinnable: boolean
   sortable: boolean
   filterable: boolean
+  visibility: boolean
+  defaultVisibility: boolean
   getValue: ColumnDef<TData>['accessor']
   original: ColumnDef<TData>
   // setters
   setFlex: Setter<boolean>
   setColWidth: Setter<number>
   setPinned: Setter<PinnedState>
+  setVisible: Setter<boolean>
 }
 
 export type SortState = { id: string; desc: boolean }
 
 // -- Store Context --
 
-export interface GridStore<TData> extends LayoutStore {
+export interface GridStore<TData>
+  extends LayoutStore, DataStore<TData>, VisibilityStore {
   // State
   columns: Accessor<InternalColumn<TData>[]>
   rows: Accessor<TData[]>
@@ -171,6 +178,7 @@ export interface GridStore<TData> extends LayoutStore {
   colFilters: Accessor<ColumnFilterState>
   sorting: Accessor<SortState[]>
   visibleRows: Accessor<TData[]>
+  featureOpen: Accessor<FeatureOpenOption>
 
   // Pagination
   pageIndex: Accessor<number>
@@ -220,10 +228,22 @@ export type ColumnFeatures<TData, TKey extends keyof TData> = {
    * Show pinning options in the column menu
    */
   pinning?: (boolean & EnforceNoProperties<PinnedOptions>) | PinnedOptions
+  /**
+   * Show visibility options in the column menu (e.g., hide/manage column).
+   */
+  visibility?: (boolean & EnforceNoProperties<VisibilityOptions>) | VisibilityOptions
 }
 
 export type PinnedOptions = {
   defaultPosition?: PinnedState
+}
+
+export type VisibilityOptions = {
+  /**
+   * Hide the column initially on first render and allow the user to determine
+   * if they want to see it via the manage columns menu.
+   */
+  defaultHidden?: boolean
 }
 
 export type SortOptions<TData, TKey extends keyof TData> = {
@@ -307,6 +327,11 @@ export type OverlaySlots = {
    * Once the `DataGrid.pending` prop is set to `false`, the `overlays.pending` slot will be used.
    */
   initial?: LoadingVariant
+}
+
+export type FeatureOpenOption = {
+  open: boolean
+  key: 'filter' | 'manage' | null
 }
 
 export type ThemeOptions = {

@@ -6,11 +6,12 @@ import { memo, useMemo, useRef, type RefObject } from 'react'
 import { Box, HStack, Scrollable, Stack } from 'styled-system/jsx'
 import { PARTS, SCOPE } from '../const'
 import { useDataGridContext } from '../context.client'
-import type { OverlaySlots } from '../types'
+import { NoColumnsLayout } from '../layouts/no-columns.client'
+import type { InternalColumn, OverlaySlots } from '../types'
+import { PopoverContent } from '../ui/popover.client'
 import { useVirtualizer } from '../virtualizer.client'
 import { GridHeaderCell, GridRow } from './grid.client'
 import { NoContentOverlay, PendingOverlay } from './overlays'
-import { DGPopoverContent } from './popover.client'
 
 interface GridViewportProps {
   rootRef: RefObject<HTMLDivElement | null>
@@ -25,6 +26,7 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
   const columns = useRead(store.columns)
   const rowCount = useRead(store.rowCount)
   const staticRows = useRead(store.rows)
+  const allColsHidden = useRead(store.allColsHidden)
 
   const pending = useRead(store.pending)
   const pendingVariant = useRead(store.pendingVariant)
@@ -36,6 +38,10 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
     if (!overlays) return false
     return overlays?.pending !== 'skeleton'
   }, [props.overlays])
+
+  if (allColsHidden) {
+    return <NoColumnsLayout />
+  }
 
   return (
     <Scrollable
@@ -74,11 +80,7 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
           w="full"
         >
           <For each={columns}>
-            {(col) => (
-              <Show when={col.isVisible()} key={col.id}>
-                {() => <GridHeaderCell column={col} />}
-              </Show>
-            )}
+            {(col) => <VisibleHeaderCell column={col} key={col.id} />}
           </For>
         </HStack>
       </Box>
@@ -92,10 +94,15 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
 
       <Show when={pending}>{() => <PendingOverlay variant={pendingVariant} />}</Show>
 
-      <DGPopoverContent ref={props.rootRef} />
+      <PopoverContent ref={props.rootRef} />
     </Scrollable>
   )
 })
+
+function VisibleHeaderCell(props: { column: InternalColumn<unknown> }) {
+  const isVisible = useRead(props.column.isVisible)
+  return <Show when={isVisible}>{() => <GridHeaderCell column={props.column} />}</Show>
+}
 
 // Rows to display
 

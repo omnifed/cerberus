@@ -37,6 +37,7 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
   const store = useDataGridContext<TData>()
   const { icons } = useCerberusContext()
 
+  const isVisible = useRead(column.isVisible)
   const pinnedVal = useRead(column.pinned)
   const sortingVal = useRead(store.sorting)
   const colFilters = useRead(store.colFilters)
@@ -85,6 +86,8 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
       store.setShowColFilter(true)
     })
   }
+
+  if (!isVisible) return null
 
   return (
     <HStack
@@ -207,10 +210,13 @@ export const GridCell = memo(function GridCell<TData>(props: GridCellProps<TData
 
   const value = column.getValue(row) as keyof TData
 
+  const isVisible = useRead(column.isVisible)
   const pinnedVal = useRead(column.pinned)
   const pinnedState = usePinnedState(pinnedVal)
   const pinnedAttr = usePinnedAttribute(pinnedVal)
   const style: CSSProperties = useColumnStyles(column, pinnedVal)
+
+  if (!isVisible) return null
 
   return (
     <HStack
@@ -288,16 +294,13 @@ export const GridRow = memo(function GridRow(props: GridRowProps) {
     <GridRowContainer offsetY={props.offsetY}>
       <For each={columns}>
         {(col) => (
-          <Show when={col.isVisible()} key={col.id}>
-            {() => (
-              <GridCell
-                row={props.row}
-                column={col}
-                hasSkeleton={hasSkeleton}
-                pending={pending}
-              />
-            )}
-          </Show>
+          <GridCell
+            key={col.id}
+            row={props.row}
+            column={col}
+            hasSkeleton={hasSkeleton}
+            pending={pending}
+          />
         )}
       </For>
     </GridRowContainer>

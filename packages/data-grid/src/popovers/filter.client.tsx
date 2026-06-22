@@ -3,107 +3,25 @@
 import {
   Button,
   ButtonGroup,
-  cerberus,
   createSelectCollection,
   Field,
   For,
   IconButton,
-  IconButtonRoot,
   Input,
-  OpenChangeDetails,
   Option,
   PopoverParts,
-  PopoverRootProps,
-  Portal,
   Select,
   SelectRootProps,
   useCerberusContext,
 } from '@cerberus-design/react'
 import { batch, createComputed, useRead } from '@cerberus-design/signals'
-import { type HTMLAttributes, type PropsWithChildren, type RefObject } from 'react'
 import { FormStatus, useFormStatus } from 'react-dom'
-import { Box, HStack, Stack } from 'styled-system/jsx'
+import { Box, cerberus, HStack, Stack } from 'styled-system/jsx'
 import { OPERATORS } from '../const'
 import { useDataGridContext } from '../context.client'
-import type { ColumnFilter, FilterOperator } from '../types'
+import { ColumnFilter, FilterOperator } from '../types'
 
-export function DGPopover(props: PropsWithChildren<PopoverRootProps>) {
-  const store = useDataGridContext()
-
-  const colH = useRead(store.rowSize)
-  const open = useRead(store.showColFilter)
-
-  const popH = 119
-  const mainAxis = popH + colH
-
-  return (
-    <PopoverParts.Root
-      {...props}
-      lazyMount
-      open={open}
-      onOpenChange={(details: OpenChangeDetails) => {
-        if (!details.open) {
-          store.setColFilter((prev) => ({
-            ...prev,
-            active: prev.active.filter((filterId) => prev.filters[filterId].value),
-            editing: null,
-          }))
-        }
-        store.setShowColFilter(details.open)
-      }}
-      portalled
-      positioning={{
-        placement: 'top-start',
-        offset: {
-          mainAxis: -mainAxis,
-        },
-      }}
-    />
-  )
-}
-
-export function DGPopoverAnchor(
-  props: PropsWithChildren<HTMLAttributes<HTMLDivElement>>,
-) {
-  return <PopoverParts.Anchor {...props} asChild />
-}
-
-interface DGPopoverContentProps {
-  ref: RefObject<HTMLDivElement | null>
-}
-
-export function DGPopoverContent(props: DGPopoverContentProps) {
-  const { icons } = useCerberusContext()
-  const CloseIcon = icons?.close
-
-  return (
-    <Portal container={props.ref}>
-      <PopoverParts.Positioner>
-        <PopoverParts.Content
-          css={{
-            '--popover-size': '37.5rem!',
-          }}
-        >
-          <PopoverParts.Header>
-            <PopoverParts.CloseTrigger asChild>
-              <IconButtonRoot size="sm" usage="ghost">
-                <CloseIcon />
-              </IconButtonRoot>
-            </PopoverParts.CloseTrigger>
-
-            <PopoverParts.Title textStyle="label-md">
-              Filter By Column
-            </PopoverParts.Title>
-          </PopoverParts.Header>
-
-          <FilterForm />
-        </PopoverParts.Content>
-      </PopoverParts.Positioner>
-    </Portal>
-  )
-}
-
-function FilterForm<TData>() {
+export function FilterForm<TData>() {
   const store = useDataGridContext<TData>()
 
   function filter(formData: FormData) {
