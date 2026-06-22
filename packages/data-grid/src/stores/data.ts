@@ -7,6 +7,7 @@ export type DataStore<TData> = {
   orderedColumns: Accessor<InternalColumn<TData>[]>
   rows: Accessor<TData[]>
   rowSize: Accessor<number>
+  allColsHidden: Accessor<boolean>
   totalHiddenCols: Accessor<number>
   hiddenColsMaxReached: Accessor<boolean>
   // Actions
@@ -23,6 +24,9 @@ export function createDataStore<TData>(options: GridOptions<TData>): DataStore<T
   })
   const hiddenColsMaxReached = createComputed<boolean>(() => {
     return totalHiddenCols() === columns().length - 1
+  })
+  const allColsHidden = createComputed<boolean>(() => {
+    return columns().every((col) => !col.isVisible())
   })
 
   const orderedColumns = createComputed(() => {
@@ -45,6 +49,7 @@ export function createDataStore<TData>(options: GridOptions<TData>): DataStore<T
     orderedColumns,
     rows,
     rowSize,
+    allColsHidden,
     hiddenColsMaxReached,
     totalHiddenCols,
 
