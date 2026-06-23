@@ -7,6 +7,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 env:
   CI: true
   FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
