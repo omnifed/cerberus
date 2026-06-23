@@ -2,6 +2,9 @@ name: 🧾 Code Checks
 
 on: [merge_group, pull_request]
 
+permissions:
+  contents: read
+
 env:
   CI: true
 
