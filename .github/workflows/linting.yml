@@ -2,6 +2,9 @@ name: 💅 Lint Checks
 
 on: [merge_group, pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   lint-ox:
     runs-on: ubuntu-latest
