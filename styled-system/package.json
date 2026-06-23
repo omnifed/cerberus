@@ -44,8 +44,8 @@
   },
   "devDependencies": {
     "@cerberus/panda-preset": "workspace:*",
-    "@pandacss/dev": "^1.11.2",
-    "@types/react": "19.2.16",
+    "@pandacss/dev": "^1.11.3",
+    "@types/react": "19.2.17",
     "react": "^19.2.7"
   }
 }
