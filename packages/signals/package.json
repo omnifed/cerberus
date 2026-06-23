@@ -85,8 +85,8 @@
     "@vitejs/plugin-react": "^6.0.2",
     "globby": "^16.2.0",
     "react": "^19.2.7",
-    "vite": "^8.0.14",
-    "vite-plugin-dts": "^5.0.1"
+    "vite": "^8.0.16",
+    "vite-plugin-dts": "^5.0.2"
   },
   "peerDependencies": {
     "react": "*"

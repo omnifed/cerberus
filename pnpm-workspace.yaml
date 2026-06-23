@@ -18,7 +18,15 @@ allowBuilds:
   sharp: true
   unrs-resolver: true
 
+auditConfig:
+  # Only non-package related allowed here
+  ignoreGhsas:
+    - GHSA-h67p-54hq-rp68 # changeset
+    - GHSA-qx2v-qp2m-jg93 # postcss (docs)
+
 overrides:
+  # pandacss
+  brace-expansion: '>=5.0.6'
   # docs
-  eslint>ajv: '^6.12.6'
   '@eslint/eslintrc>ajv': '^6.12.6'
+  eslint>ajv: '^6.12.6'
