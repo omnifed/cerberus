@@ -81,7 +81,7 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "devDependencies": {
-    "@types/react": "^19.2.16",
+    "@types/react": "^19.2.17",
     "@vitejs/plugin-react": "^6.0.2",
     "globby": "^16.2.0",
     "react": "^19.2.7",
