@@ -1,18 +1,16 @@
-import type { Metadata } from 'next'
-import { Suspense, type PropsWithChildren } from 'react'
+import seoConfig from '@/seo.config'
 import { cerberus, NotificationCenter } from '@cerberus-design/react'
-import { CachedHTML } from './components/shared/html.cached'
-import { base, openGraph } from './shared-metadata'
+import { Metadata } from 'next'
+import { Suspense, type PropsWithChildren } from 'react'
 import { Nav } from './components/Nav'
+import { CachedHTML } from './components/shared/html.cached'
 import CerberusConfig from './context/cerberus-config'
 
 import './globals.css'
 
-export const metadata: Metadata = {
-  title: 'Cerberus Design System',
-  ...base,
-  openGraph,
-}
+export const metadata: Metadata = seoConfig
+
+// Component
 
 interface RootProps {}
 

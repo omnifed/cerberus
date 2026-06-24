@@ -2,9 +2,10 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Cerberus',
+    name: 'Cerberus UI Platform',
     short_name: 'Cerberus',
-    description: 'A design system factory platform for React.',
+    description:
+      'An infra-level UI platform to create cohesion and consistency so teams and agents can build faster, together.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
