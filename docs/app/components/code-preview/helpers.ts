@@ -2,7 +2,7 @@
 
 import { getShikiOptions } from '@/lib/shiki'
 import { readFile } from 'node:fs/promises'
-import { join } from 'node:path'
+import { join, relative, resolve } from 'node:path'
 import { ReactNode } from 'react'
 import { codeToHtml } from 'shiki'
 
@@ -25,10 +25,14 @@ export async function getExampleCode(
   const basePath = _getBasePath(context)
   const examplePath = _getExamplePath(data)
 
-  const content = await readFile(
-    join(process.cwd(), basePath, examplePath),
-    'utf-8',
-  ).catch(() => 'Example not found')
+  const safeRoot = resolve(process.cwd(), `.${basePath}`)
+  const resolvedPath = resolve(safeRoot, examplePath)
+  const rootToFile = relative(safeRoot, resolvedPath)
+  if (rootToFile.startsWith('..') || rootToFile === '' || rootToFile.includes('..\\')) {
+    return { code: fallback, preview: null, rawContent: '', fallback: true }
+  }
+
+  const content = await readFile(resolvedPath, 'utf-8').catch(() => 'Example not found')
   const formattedContent = content.replaceAll('@cerberus-design', '@cerberus')
 
   const code = await codeToHtml(formattedContent, getShikiOptions('tsx'))
@@ -59,7 +63,10 @@ interface ExampleData {
 }
 
 function _getExampleData(id: string): ExampleData {
-  const [el, demo] = id?.split('.') ?? ['', '']
+  const [elRaw, demoRaw] = id?.split('.') ?? ['', '']
+  const segmentPattern = /^[a-zA-Z0-9-]+$/
+  const el = segmentPattern.test(elRaw) ? elRaw : ''
+  const demo = segmentPattern.test(demoRaw) ? demoRaw : ''
   return {
     el,
     demo,
