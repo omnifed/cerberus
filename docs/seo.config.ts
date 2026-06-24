@@ -20,10 +20,10 @@ const seoConfig: Metadata = defineMetadata({
   },
   manifest: '/site.webmanifest',
   icons: [
-    { rel: 'icon', url: '/favicon.ico' },
-    { rel: 'apple-touch-icon', url: '/apple-touch-icon.png' },
-    { rel: 'mask-icon', url: '/favicon.ico' },
-    { rel: 'image/x-icon', url: '/favicon.ico' },
+    { rel: 'icon', url: '/icon.svg' },
+    { rel: 'apple-touch-icon', url: '/icon.svg' },
+    { rel: 'mask-icon', url: '/icon.svg' },
+    { rel: 'image/x-icon', url: '/icon.svg' },
   ],
 })
 
