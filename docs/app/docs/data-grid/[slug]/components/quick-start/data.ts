@@ -1,5 +1,6 @@
 'use client'
 
+import { generateFakeSalary } from '../api'
 import { Employee } from './data.demo'
 
 const generateData = (count: number): Employee[] => {
@@ -9,7 +10,7 @@ const generateData = (count: number): Employee[] => {
     lastName: ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones'][i % 5],
     email: `employee.${i + 1}@company.com`,
     status: ['active', 'inactive', 'on_leave'][i % 3] as Employee['status'],
-    salary: 50000 + Math.random() * 100000,
+    salary: generateFakeSalary(),
     department: {
       name: ['Engineering', 'Sales', 'Marketing', 'HR'][i % 4],
       code: ['ENG', 'SAL', 'MKT', 'HR'][i % 4],

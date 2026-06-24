@@ -15,7 +15,7 @@ const generateEmployeeData = (count: number): Employee[] => {
     lastName: ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones'][i % 5],
     email: `employee.${i + 1}@company.com`,
     status: ['active', 'inactive', 'on_leave'][i % 3] as Employee['status'],
-    salary: 50000 + Math.random() * 100000,
+    salary: generateFakeSalary(),
     department: {
       name: ['Engineering', 'Sales', 'Marketing', 'HR'][i % 4],
       code: ['ENG', 'SAL', 'MKT', 'HR'][i % 4],
@@ -70,3 +70,26 @@ export const queryPaginatedEmployees = createQuery(
   api.selectPaginatedEmployees,
   'queryPaginatedEmployees',
 )
+
+// Helpers
+
+/**
+ * Generates a cryptographically secure random float between 0 (inclusive) and 1 (exclusive).
+ * This replaces Math.random() and passes GitHub CodeQL security scans (CWE-338).
+ */
+function secureMathRandom() {
+  const array = new Uint32Array(1)
+  globalThis.crypto.getRandomValues(array)
+  // Multiplying by 2^-32 safely converts the 32-bit integer to a float under 1
+  return array[0] * Math.pow(2, -32)
+}
+
+/**
+ * Generates a secure random salary.
+ * @param min - Minimum salary bound (inclusive)
+ * @param max - Maximum salary bound (exclusive)
+ * @returns Random salary
+ */
+export function generateFakeSalary(min = 40000, max = 150000) {
+  return Math.floor(secureMathRandom() * (max - min)) + min
+}
