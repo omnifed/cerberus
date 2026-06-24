@@ -169,7 +169,7 @@ function parseHeadingsFromMDX(mdxContent: string): HeadingLink[] {
 
   while ((match = headingRegex.exec(mdxContent)) !== null) {
     const level = match[1].length
-    const label = match[2].replace(/<[^>]+>/g, '').trim()
+    const label = match[2].replace(/[<>]/g, '').trim()
     const id =
       '#' +
       label
