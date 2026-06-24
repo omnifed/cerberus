@@ -2,8 +2,15 @@ import { ImageResponse } from 'next/og'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { Logo } from './logo'
+import { CheckmarkFilled } from '@carbon/icons-react'
 
-const poppins = await readFile(join(process.cwd(), 'public/fonts/poppins-regular.ttf'))
+const bodyPoppins = await readFile(
+  join(process.cwd(), 'public/fonts/poppins-regular.ttf'),
+)
+const poppins = await readFile(
+  join(process.cwd(), 'public/fonts/poppins-semi-bold.ttf'),
+)
+
 const upperFirst = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 
 const getFontSize = (title: string) => {
@@ -15,97 +22,168 @@ const getFontSize = (title: string) => {
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
-    const title = searchParams.get('title') || 'There is no "I" in CerberUS'
-    const description = searchParams.get('description')
-    const category = searchParams.get('category')
+
+    // TODO: Get the file frontmatter from the URL path
+
+    const category = searchParams.get('category') || 'Docs'
+    const title = searchParams.get('title') || 'Cerberus'
+    const description =
+      searchParams.get('description') ||
+      'Improving React development for humans and agents.'
+    const lib = searchParams.get('package')
 
     return new ImageResponse(
       <div
         style={{
-          backgroundColor: '#130024',
-          color: '#fcfbfe',
           display: 'flex',
+          background: `linear-gradient(220deg, #0C0420 -4.87%, #392E55 100%)`,
           flexDirection: 'column',
-          padding: '80px',
+          padding: '44px',
           height: '100%',
           width: '100%',
         }}
       >
         <div
           style={{
+            backgroundColor: '#130024',
+            borderRadius: '16px',
+            boxShadow: '0 0 24px 10px rgba(5, 1, 8, 0.35)',
+            color: '#fcfbfe',
             display: 'flex',
-            marginBottom: '56px',
+            flexDirection: 'column',
+            height: '100%',
+            paddingLeft: '32px',
+            paddingRight: '32px',
+            width: '100%',
           }}
         >
-          <Logo />
-        </div>
-
-        <div style={{ display: 'flex', gap: '0px' }}>
           <div
             style={{
               display: 'flex',
-              flexDirection: 'column',
-              maxWidth: '72%',
-              flex: '1',
+              justifyContent: 'space-between',
+              outline: 'none',
+              paddingBottom: '30px',
+              paddingTop: '30px',
             }}
           >
-            {category && (
-              <div
+            <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
+              <Logo />
+              <p
                 style={{
-                  display: 'flex',
+                  color: '#DFCCF0',
                   fontFamily: 'Poppins',
-                  color: '#dedce5',
-                  fontSize: '24px',
-                  marginBottom: '16px',
+                  fontSize: '32px',
+                  textTransform: 'uppercase',
                 }}
               >
-                Cerby / {upperFirst(category)}
+                Cerberus UI Platform
+              </p>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '11px' }}>
+              <div
+                style={{
+                  alignItems: 'center',
+                  background:
+                    'linear-gradient(103deg, #E8F8ED -78.15%, #71D192 129.96%)',
+                  borderRadius: '8px',
+                  color: '#07471E',
+                  display: 'flex',
+                  gap: '4px',
+                  paddingBottom: '5.5px',
+                  paddingLeft: '10px',
+                  paddingRight: '10px',
+                  paddingTop: '5.5px',
+                }}
+              >
+                <CheckmarkFilled size={20} />
+                ARIA AA Compliant
               </div>
-            )}
+              <div
+                style={{
+                  alignItems: 'center',
+                  background: 'linear-gradient(207deg,#E6F3FB 16.67%, #9ACFEE 100%)',
+                  borderRadius: '8px',
+                  color: '#015280',
+                  display: 'flex',
+                  gap: '4px',
+                  paddingBottom: '5.5px',
+                  paddingLeft: '10px',
+                  paddingRight: '10px',
+                  paddingTop: '5.5px',
+                }}
+              >
+                Panda CSS
+              </div>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', gap: '0px' }}>
             <div
               style={{
-                fontSize: getFontSize(title),
-                fontFamily: 'Poppins',
-                fontWeight: 700,
-                letterSpacing: '-1.5px',
+                display: 'flex',
+                flexDirection: 'column',
+                maxWidth: '80%',
+                flex: '1',
               }}
             >
-              {upperFirst(title)}
-            </div>
-            {description && (
+              {category && (
+                <div
+                  style={{
+                    display: 'flex',
+                    fontFamily: 'Poppins-Regular',
+                    color: '#dedce5',
+                    fontSize: '16px',
+                    marginBottom: '16px',
+                  }}
+                >
+                  Cerby / {upperFirst(category)}
+                </div>
+              )}
+
               <div
                 style={{
-                  marginTop: '24px',
-                  fontSize: '28px',
+                  fontSize: getFontSize(title),
                   fontFamily: 'Poppins',
-                  fontWeight: 400,
-                  color: '#dedce5',
-                  lineHeight: 1.4,
-                }}
-              >
-                {description}
-              </div>
-            )}
-            {!category && !description && (
-              <div
-                style={{
-                  marginTop: '40px',
-                  fontSize: '40px',
-                  fontFamily: 'Poppins',
-                  fontWeight: 700,
+                  lineHeight: '140%',
                   letterSpacing: '-1.5px',
-                  color: '#0c0420',
-                  borderRadius: '12px',
-                  backgroundColor: '#f9f9fb',
-                  padding: '12px 24px',
-                  border: '6px solid #0c0420',
-                  boxShadow: '4px 3px 0px 0px #0c0420',
-                  alignSelf: 'flex-start',
                 }}
               >
-                pnpm i @cerberus-design/react
+                {upperFirst(title)}
               </div>
-            )}
+
+              {description && (
+                <div
+                  style={{
+                    fontSize: '28px',
+                    fontFamily: 'Poppins-Regular',
+                    color: '#dedce5',
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {description}
+                </div>
+              )}
+
+              <div
+                style={{
+                  alignSelf: 'flex-start',
+                  backgroundColor: '#130A2A',
+                  border: '1px solid #BB93E1',
+                  borderRadius: '8px',
+                  boxShadow: '4px 3px 0px 0px #0c0420',
+                  color: '#dedce5',
+                  display: 'flex',
+                  fontSize: '24px',
+                  fontFamily: 'Poppins-Regular',
+                  letterSpacing: '-1.5px',
+                  marginTop: '40px',
+                  padding: '8px 16px',
+                }}
+              >
+                {lib ? `package: ${lib}` : `pnpm i @cerberus-design/react`}
+              </div>
+            </div>
           </div>
         </div>
       </div>,
@@ -120,8 +198,14 @@ export async function GET(request: Request) {
             style: 'normal',
             weight: 700,
           },
+          {
+            name: 'Poppins-Regular',
+            data: bodyPoppins,
+            style: 'normal',
+            weight: 600,
+          },
         ],
-        debug: true,
+        debug: false,
       },
     )
   } catch (error: unknown) {
