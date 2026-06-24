@@ -2,7 +2,7 @@
 
 import { getShikiOptions } from '@/lib/shiki'
 import { readFile } from 'node:fs/promises'
-import { join, relative, resolve } from 'node:path'
+import { relative, resolve } from 'node:path'
 import { ReactNode } from 'react'
 import { codeToHtml } from 'shiki'
 
@@ -18,8 +18,7 @@ export async function getExampleCode(
   fallback?: ReactNode,
   context?: 'components' | 'data-grid',
 ): Promise<ExampleCodeReturn> {
-  if (!id)
-    return { code: fallback, preview: null, rawContent: '', fallback: true }
+  if (!id) return { code: fallback, preview: null, rawContent: '', fallback: true }
 
   const data = _getExampleData(id)
   const basePath = _getBasePath(context)
