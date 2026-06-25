@@ -36,7 +36,8 @@ jobs:
           cache: true
 
       - name: Install Dependencies
-        run: pnpm install && deno install && pnpm --filter styled-system run prepare
+        # --no-frozen-lockfile forces pnpm to heal the desynced lockfile and correctly link styled-system
+        run: pnpm install --no-frozen-lockfile && deno install && pnpm --filter styled-system run prepare
 
       # ====================================================================
       # PATH A: STABLE PUBLISH
