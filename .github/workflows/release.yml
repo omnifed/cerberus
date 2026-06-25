@@ -43,6 +43,11 @@ jobs:
       # PATH A: STABLE PUBLISH
       # Runs when Version PR is merged OR triggered manually
       # ====================================================================
+      - name: Build NPM Packages
+        if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
+        # Build from the root so Panda CSS resolves correctly
+        run: pnpm --filter "@cerberus-design/react" --filter "@cerberus-design/signals" --filter "@cerberus-design/data-grid" build
+
       - name: Publish Stable Packages
         if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
         run: cd configs && bun ./src/publish-stable.mjs

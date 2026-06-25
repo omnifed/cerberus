@@ -8,7 +8,7 @@ const repoRoot = resolve(import.meta.dir, '..', '..')
 console.log('🧪 Publishing NPM Stable Packages in dependant order...')
 for (const pkg of npmPackages) {
   console.log(`Publishing @cerberus-design/${pkg}...`)
-  await $`cd packages/${pkg} && pnpm build && pnpm publish --tag next --access public --no-git-checks`.cwd(
+  await $`cd packages/${pkg} && pnpm publish --tag next --access public --no-git-checks`.cwd(
     repoRoot,
   )
 }
