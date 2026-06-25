@@ -8,9 +8,7 @@ const repoRoot = resolve(import.meta.dir, '..', '..')
 console.log('🧪 Publishing NPM Stable Packages in dependant order...')
 for (const pkg of npmPackages) {
   console.log(`Publishing @cerberus-design/${pkg}...`)
-  await $`cd packages/${pkg} && pnpm build && pnpm publish --tag latest --access public --no-git-checks`.cwd(
-    repoRoot,
-  )
+  await $`pnpm --filter "@cerberus-design/${pkg}" build && pnpm --filter "@cerberus-design/${pkg}" publish --tag latest --access public --no-git-checks`.cwd(repoRoot)
 }
 
 console.log('🧪 Publishing JSR Canary Packages in dependant order...')
