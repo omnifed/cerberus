@@ -1,5 +1,11 @@
 export const items = [
   {
+    id: '2.1.4',
+    label: 'Cerberus v1.5 Release',
+    slug: 'v1-5-release',
+    href: '/blog/v1-5-release',
+  },
+  {
     id: '2.1.3',
     label: 'Cerberus v1.4 Release',
     slug: 'v1-4-release',
