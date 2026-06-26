@@ -61,6 +61,7 @@ in a signal-based reactive manner:
 | `rows`                 | `Accessor<TData[]>`                        | A list of processed rows.                                      |
 | `rowSize`              | `Accessor<number>`                         | The height of the row.                                         |
 | `rowCount`             | `Accessor<number>`                         | The current number of rows in the grid.                        |
+| `allColsHidden`        | `Accessor<boolean>`                        | Whether all columns are hidden. Created via a computation.     |
 | `totalHiddenCols`      | `Accessor<number>`                         | The total number of hidden columns.                            |
 | `hiddenColsMaxReached` | `Accessor<boolean>`                        | Whether the maximum number of hidden columns has been reached. |
 | `pageIndex`            | `Accessor<number>`                         | The current page index of the grid.                            |
@@ -71,7 +72,7 @@ in a signal-based reactive manner:
 | `isServerPaginated`    | `Accessor<boolean>`                        | If pagination is using server-based.                           |
 | `showColFilter`        | `Accessor<boolean>`                        | If the user has chosen the column filter feature option.       |
 | `globalFilter`         | `Accessor<BaseFilterState>`                | The current global filter value used for column filtering.     |
-| `collFilters`          | `Accessor<ColumnFilterState>`              | The current column filters used.                               |
+| `colFilters`           | `Accessor<ColumnFilterState>`              | The current column filters used.                               |
 | `filteredRows`         | `Accessor<TData[]>`                        | The rows after filtering.                                      |
 | `sorting`              | `Accessor<SortState[]>`                    | The current sorting state of the grid.                         |
 | `sortedRows`           | `Accessor<TData[]>`                        | The rows after sorting.                                        |

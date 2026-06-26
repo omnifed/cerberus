@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import type { DocFrontmatter } from '../../types'
 import { items } from './content/items'
+import { Metadata } from 'next/types'
 
 type Props = {
   params: Promise<{
@@ -18,6 +19,27 @@ export async function generateStaticParams() {
       if (slug.href) return { slug: slug.slug }
     })
     .filter(Boolean)
+}
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const { slug } = await props.params
+  const slugPath = Array.isArray(slug) ? slug.join('/') : slug
+
+  try {
+    const page = await import(`./content/${slug}.mdx`)
+    const frontmatter = page?.frontmatter as DocFrontmatter
+
+    return {
+      title: frontmatter?.title,
+      description: frontmatter?.description,
+      openGraph: {
+        images: [`/og/docs/signals/${slugPath}`],
+      },
+    }
+  } catch {
+    // Fallback if the MDX file doesn't exist
+    return {}
+  }
 }
 
 export default async function SignalsSlugPage(props: Props) {
