@@ -18,8 +18,13 @@ permissions:
   id-token: write # STRICTLY REQUIRED for NPM OIDC & JSR
 
 jobs:
-  release-pipeline:
-    name: Manage Release Pipeline
+  # ====================================================================
+  # PATH B: BOT PR & CANARY PUBLISH
+  # Runs on normal feature PR merges
+  # ====================================================================
+  canary-pipeline:
+    name: Canary Pipeline
+    if: "!contains(github.event.head_commit.message, 'chore(release): version packages') && github.event_name != 'workflow_dispatch'"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -31,7 +36,7 @@ jobs:
         with:
           cache: 'pnpm'
           node-version: 26
-          registry-url: 'https://registry.npmjs.org' # Required to establish OIDC audience
+          registry-url: 'https://registry.npmjs.org'
 
       - uses: oven-sh/setup-bun@v2
       - uses: denoland/setup-deno@v2
@@ -39,32 +44,9 @@ jobs:
           cache: true
 
       - name: Install Dependencies
-        # --no-frozen-lockfile forces pnpm to heal the desynced lockfile and correctly link styled-system
         run: pnpm install --no-frozen-lockfile && deno install && pnpm --filter styled-system run prepare
 
-      # ====================================================================
-      # PATH A: STABLE PUBLISH
-      # Runs when Version PR is merged OR triggered manually
-      # ====================================================================
-      - name: Publish Stable Packages
-        if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
-        run: cd configs && bun ./src/publish-stable.mjs
-
-      - name: Create GitHub Release Tag
-        if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
-        run: |
-          # Use React package as the source of truth for the workspace version
-          VERSION=$(node -p "require('./packages/react/package.json').version")
-          gh release create "v$VERSION" --title "v$VERSION" --generate-notes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # ====================================================================
-      # PATH B: BOT PR & CANARY PUBLISH
-      # Runs on normal feature PR merges
-      # ====================================================================
       - name: Create Version PR
-        if: "!contains(github.event.head_commit.message, 'chore(release): version packages') && github.event_name != 'workflow_dispatch'"
         uses: changesets/action@v1
         with:
           version: pnpm ci:version
@@ -74,10 +56,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Canary Versions
-        if: "!contains(github.event.head_commit.message, 'chore(release): version packages') && github.event_name != 'workflow_dispatch'"
         run: |
-          # The Changesets action leaves the runner on the PR branch if it made an update.
-          # We MUST return to a clean main branch state before generating the snapshot.
           git checkout main
           git reset --hard origin/main
           pnpm changeset version
@@ -85,5 +64,214 @@ jobs:
           cd configs && bun ./src/bump-versions.mjs --next --commit=$SHORT_SHA
 
       - name: Publish Canary Packages
-        if: "!contains(github.event.head_commit.message, 'chore(release): version packages') && github.event_name != 'workflow_dispatch'"
         run: cd configs && bun ./src/publish-canary.mjs
+
+  # ====================================================================
+  # PATH A: STABLE PUBLISH
+  # Runs when Version PR is merged OR triggered manually
+  # Due to no changeset from versioning existing we have to publish
+  # manually via workflow dispatch to keep pnpm context
+  # ====================================================================
+  npm-publish-react:
+    if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
+    runs-on: ubuntu-latest
+    name: NPM - Publish React
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          cache: 'pnpm'
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: pnpm install
+      - run: pnpm build && pnpm publish --tag latest --access public --no-git-checks
+        working-directory: ./packages/react
+
+  npm-publish-signals:
+    if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
+    runs-on: ubuntu-latest
+    name: NPM - Publish Signals
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          cache: 'pnpm'
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: pnpm install
+      - run: pnpm build && pnpm publish --tag latest --access public --no-git-checks
+        working-directory: ./packages/signals
+
+  npm-publish-data-grid:
+    if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
+    runs-on: ubuntu-latest
+    name: NPM - Publish Data Grid
+    needs: [npm-publish-react, npm-publish-signals]
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          cache: 'pnpm'
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: pnpm install
+      - run: pnpm build && pnpm publish --tag latest --access public --no-git-checks
+        working-directory: ./packages/data-grid
+
+  jsr-publish-figma:
+    if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
+    runs-on: ubuntu-latest
+    name: JSR - Publish Figma
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/figma
+
+  jsr-publish-tokens:
+    if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
+    runs-on: ubuntu-latest
+    name: JSR - Publish Tokens
+    needs: jsr-publish-figma
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/tokens
+
+  jsr-publish-preset-acheron:
+    if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
+    runs-on: ubuntu-latest
+    name: JSR - Publish Acheron Theme
+    needs: jsr-publish-tokens
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/preset-acheron-theme
+
+  jsr-publish-preset-cerberus:
+    if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
+    runs-on: ubuntu-latest
+    name: JSR - Publish Cerberus Theme
+    needs: jsr-publish-tokens
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/preset-cerberus-theme
+
+  jsr-publish-preset-elysium:
+    if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
+    runs-on: ubuntu-latest
+    name: JSR - Publish Elysium Theme
+    needs: jsr-publish-tokens
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/preset-elysium-theme
+
+  jsr-publish-preset:
+    if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
+    runs-on: ubuntu-latest
+    name: JSR - Publish Preset
+    needs: jsr-publish-preset-cerberus
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/panda-preset
