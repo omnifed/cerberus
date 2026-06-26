@@ -8,7 +8,8 @@ const repoRoot = resolve(import.meta.dir, '..', '..')
 console.log('🧪 Publishing NPM Stable Packages in dependent order...')
 for (const pkg of npmPackages) {
   console.log(`Publishing @cerberus-design/${pkg}...`)
-  await $`cd packages/${pkg} && pnpm build && pnpm publish --tag latest --access public --no-git-checks`.cwd(
+  // Intentionally run'pnpm install' before the build to force workspace symlink reconciliation
+  await $`cd packages/${pkg} && pnpm install && pnpm build && pnpm publish --tag latest --access public --no-git-checks`.cwd(
     repoRoot,
   )
 }
