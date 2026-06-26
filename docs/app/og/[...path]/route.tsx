@@ -1,26 +1,47 @@
+import { DocFrontmatter } from '@/app/docs/types'
+import { CheckmarkFilled } from '@carbon/icons-react'
+import { Show } from '@cerberus-design/react'
 import { ImageResponse } from 'next/og'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { Logo } from './logo'
-import { CheckmarkFilled } from '@carbon/icons-react'
+import { Logo } from '../logo'
 
 const upperFirst = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 
 const getFontSize = (title: string) => {
-  if (title.length < 14) return '104px'
-  if (title.length < 28) return '84px'
+  if (title.length < 10) return '104px'
+  if (title.length < 20) return '84px'
   return '64px'
 }
 
-export async function GET(request: Request) {
+type Props = {
+  params: Promise<{
+    path: string[]
+  }>
+}
+
+export async function GET(request: Request, props: Props) {
   try {
-    const { searchParams } = new URL(request.url)
-    const category = searchParams.get('category') || 'Docs'
-    const title = searchParams.get('title') || 'Cerberus'
+    const { path } = await props.params
+    const slug = path[path.length - 1]
+
+    let page
+
+    if (path.length > 2) {
+      const [scope, section] = path
+      page = await import(`@/app/${scope}/${section}/[slug]/content/${slug}.mdx`)
+    } else {
+      const [scope] = path
+      page = await import(`@/app/${scope}/[slug]/content/${slug}.mdx`)
+    }
+
+    const frontmatter = page?.frontmatter as DocFrontmatter | undefined
+
+    const category = path[1] || 'Docs'
+    const title = frontmatter?.title || 'Cerberus'
     const description =
-      searchParams.get('description') ||
-      'Improving React development for humans and agents.'
-    const lib = searchParams.get('package')
+      frontmatter?.description || 'Improving React development for humans and agents.'
+    const lib = frontmatter?.package
 
     const bodyPoppins = await readFile(
       join(process.cwd(), 'public/fonts/poppins-regular.ttf'),
@@ -134,7 +155,7 @@ export async function GET(request: Request) {
                     marginBottom: '16px',
                   }}
                 >
-                  Cerby / {upperFirst(category)}
+                  Cerby / {upperFirst(category).replace('-', ' ')} / {upperFirst(slug)}
                 </div>
               )}
 
@@ -142,7 +163,7 @@ export async function GET(request: Request) {
                 style={{
                   fontSize: getFontSize(title),
                   fontFamily: 'Poppins',
-                  lineHeight: '140%',
+                  lineHeight: '1.4',
                   letterSpacing: '-1.5px',
                 }}
               >
@@ -155,31 +176,36 @@ export async function GET(request: Request) {
                     fontSize: '28px',
                     fontFamily: 'Poppins-Regular',
                     color: '#dedce5',
+                    maxLines: 2,
+                    lineClamp: 2,
                     lineHeight: 1.4,
+                    textOverflow: 'ellipsis',
                   }}
                 >
                   {description}
                 </div>
               )}
 
-              <div
-                style={{
-                  alignSelf: 'flex-start',
-                  backgroundColor: '#130A2A',
-                  border: '1px solid #BB93E1',
-                  borderRadius: '8px',
-                  boxShadow: '4px 3px 0px 0px #0c0420',
-                  color: '#dedce5',
-                  display: 'flex',
-                  fontSize: '24px',
-                  fontFamily: 'Poppins-Regular',
-                  letterSpacing: '-1.5px',
-                  marginTop: '40px',
-                  padding: '8px 16px',
-                }}
-              >
-                {lib ? `package: ${lib}` : `pnpm i @cerberus-design/react`}
-              </div>
+              <Show when={description.length <= 81}>
+                <div
+                  style={{
+                    alignSelf: 'flex-start',
+                    backgroundColor: '#130A2A',
+                    border: '1px solid #BB93E1',
+                    borderRadius: '8px',
+                    boxShadow: '4px 3px 0px 0px #0c0420',
+                    color: '#dedce5',
+                    display: 'flex',
+                    fontSize: '24px',
+                    fontFamily: 'Poppins-Regular',
+                    letterSpacing: '-1.5px',
+                    marginTop: '40px',
+                    padding: '8px 16px',
+                  }}
+                >
+                  {lib ? `package: ${lib}` : `pnpm i @cerberus-design/react`}
+                </div>
+              </Show>
             </div>
           </div>
         </div>
@@ -206,8 +232,7 @@ export async function GET(request: Request) {
       },
     )
   } catch (error: unknown) {
-    console.log(error)
-    console.log(error instanceof Error ? error.message : String(error))
+    console.error(error instanceof Error ? error.message : String(error))
     return new Response('Failed to generate the image', { status: 500 })
   }
 }
