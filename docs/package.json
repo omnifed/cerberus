@@ -47,7 +47,7 @@
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9.21.0",
     "eslint-config-next": "16.2.6",
-    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-import-resolver-typescript": "^4.4.5",
     "hast-util-to-jsx-runtime": "2.3.6",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-expressive-code": "^0.43.1",
