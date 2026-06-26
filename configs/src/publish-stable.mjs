@@ -5,15 +5,15 @@ import { npmPackages, jsrPackages } from './versions.mjs'
 // Always resolve to the root of the repository
 const repoRoot = resolve(import.meta.dir, '..', '..')
 
-console.log('🧪 Publishing NPM Stable Packages in dependant order...')
+console.log('🧪 Publishing NPM Stable Packages in dependent order...')
 for (const pkg of npmPackages) {
   console.log(`Publishing @cerberus-design/${pkg}...`)
-  await $`cd packages/${pkg} &&  pnpm build && pnpm publish --tag next --access public --no-git-checks`.cwd(
+  await $`cd packages/${pkg} && pnpm build && pnpm publish --tag latest --access public --no-git-checks`.cwd(
     repoRoot,
   )
 }
 
-console.log('🧪 Publishing JSR Stable Packages in dependant order...')
+console.log('🧪 Publishing JSR Stable Packages in dependent order...')
 for (const pkg of jsrPackages) {
   console.log(`Publishing @cerberus/${pkg}...`)
   await $`cd packages/${pkg} && deno publish --allow-dirty`.cwd(repoRoot)
