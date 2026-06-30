@@ -12,7 +12,7 @@
   "dependencies": {
     "@preact/signals-core": "^1.14.2",
     "@reactively/core": "^0.0.8",
-    "@tanstack/query-core": "^5.101.0",
+    "@tanstack/query-core": "^5.101.2",
     "alien-signals": "^3.2.1",
     "signia": "^0.1.5"
   },
