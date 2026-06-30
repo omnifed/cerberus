@@ -33,9 +33,6 @@ jobs:
         run: pnpm run figma:sync
         working-directory: ./packages/figma
 
-      - name: Bypass local git hooks
-        run: rm -rf .husky
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v8
         with:
