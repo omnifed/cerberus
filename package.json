@@ -36,5 +36,5 @@
     "bun": ">=1.2.16",
     "node": ">=24.0.0"
   },
-  "packageManager": "pnpm@11.8.0"
+  "packageManager": "pnpm@11.9.0"
 }
