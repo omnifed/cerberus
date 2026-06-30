@@ -7,6 +7,13 @@ import { format } from 'oxfmt'
 import type { LocalVariables, VariableOverrideContent } from '../sync/types'
 import type { CollectionMode, NormalizedCollectionMode } from '../types'
 
+// These match the root oxfmt config
+const formatRules = {
+  printWidth: 88,
+  semi: false,
+  singleQuote: true,
+}
+
 /**
  * Create a file content for a collection.
  * @param collectionData
@@ -35,7 +42,7 @@ export async function createFileContent(
   export const tokens = ${JSON.stringify(variables)} as const;
 `
 
-  const { code } = await format('collection.ts', rawTS, { singleQuote: true })
+  const { code } = await format('collection.ts', rawTS, formatRules)
   return code
 }
 
@@ -63,7 +70,7 @@ export async function createNodeFileContent(
 
   // Format the raw string using oxfmt's Node.js API
   // The .ts extension tells the formatter to use the TypeScript parser
-  const { code } = await format('nodes.ts', rawTS, { singleQuote: true })
+  const { code } = await format('nodes.ts', rawTS, formatRules)
   return code
 }
 
