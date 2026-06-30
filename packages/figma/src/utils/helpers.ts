@@ -15,6 +15,22 @@ const formatRules = {
 }
 
 /**
+ * A custom replacer for JSON.stringify that deeply sorts object keys alphabetically.
+ * This guarantees 100% deterministic string output regardless of API key ordering.
+ */
+function deepSortObjectKeys(key: string, value: any) {
+  if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
+    return Object.keys(value)
+      .sort()
+      .reduce((sorted: Record<string, any>, k: string) => {
+        sorted[k] = value[k]
+        return sorted
+      }, {})
+  }
+  return value
+}
+
+/**
  * Create a file content for a collection.
  * @param collectionData
  * @param variables
@@ -27,6 +43,7 @@ export async function createFileContent(
   const typedModes = (collectionData?.modes || []) as unknown as CollectionMode[]
   const modes = _normalizeModes(typedModes)
 
+  // Apply the deepSortObjectKeys replacer to all stringified objects
   const rawTS = `
   /*
     * --------------------------------------------------------
@@ -35,11 +52,11 @@ export async function createFileContent(
     * --------------------------------------------------------
     */
 
-  export const collection = ${JSON.stringify(collectionData)} as const;
+  export const collection = ${JSON.stringify(collectionData, deepSortObjectKeys)} as const;
 
-  export const modes = ${JSON.stringify(modes)} as const;
+  export const modes = ${JSON.stringify(modes, deepSortObjectKeys)} as const;
 
-  export const tokens = ${JSON.stringify(variables)} as const;
+  export const tokens = ${JSON.stringify(variables, deepSortObjectKeys)} as const;
 `
 
   const { code } = await format('collection.ts', rawTS, formatRules)
@@ -48,8 +65,7 @@ export async function createFileContent(
 
 /**
  * Create a file content for a collection.
- * @param collectionData
- * @param variables
+ * @param nodes
  * @returns
  */
 export async function createNodeFileContent(
@@ -57,6 +73,7 @@ export async function createNodeFileContent(
 ): Promise<string> {
   if (!nodes) return ''
 
+  // Apply the deepSortObjectKeys replacer here as well
   const rawTS = `
   /*
     * --------------------------------------------------------
@@ -65,11 +82,9 @@ export async function createNodeFileContent(
     * --------------------------------------------------------
     */
 
-    export const nodes = ${JSON.stringify(nodes)} as const;
+    export const nodes = ${JSON.stringify(nodes, deepSortObjectKeys)} as const;
 `
 
-  // Format the raw string using oxfmt's Node.js API
-  // The .ts extension tells the formatter to use the TypeScript parser
   const { code } = await format('nodes.ts', rawTS, formatRules)
   return code
 }
