@@ -40,4 +40,3 @@ jobs:
           title: '[chore]: update tokens from Figma'
           body: 'This PR updates the latest tokens from Figma.'
           branch: chore/update-tokens
-          branch-suffix: timestamp
