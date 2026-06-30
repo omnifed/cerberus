@@ -8,6 +8,7 @@ on:
 env:
   CI: true
   FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+  HUSKY: 0 # Instructs Husky to skip hooks in this environment
 
 jobs:
   sync-figma-to-tokens:
@@ -31,6 +32,9 @@ jobs:
       - name: Sync variables in Figma file to tokens
         run: pnpm run figma:sync
         working-directory: ./packages/figma
+
+      - name: Bypass local git hooks
+        run: rm -rf .husky
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v8
