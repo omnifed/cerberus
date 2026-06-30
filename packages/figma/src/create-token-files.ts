@@ -86,7 +86,7 @@ async function createTokenFiles() {
       const activeVars = collectionData?.variableIds || []
       // const isExtended = collectionData?.isExtension || false
 
-      const data = activeVars.reduce(
+      const rawData = activeVars.reduce(
         (acc: Record<string, LocalVariable>, id: string) => {
           const variable = localVars.variables?.[id]
 
@@ -106,7 +106,17 @@ async function createTokenFiles() {
         {} as Record<string, LocalVariable>,
       )
 
-      const content = await createFileContent(collectionData, data)
+      const sortedData = Object.keys(rawData)
+        .sort()
+        .reduce(
+          (acc: Record<string, LocalVariable>, key: string) => {
+            acc[key] = rawData[key]
+            return acc
+          },
+          {} as Record<string, LocalVariable>,
+        )
+
+      const content = await createFileContent(collectionData, sortedData)
 
       await oraPromise(write(collectionPath, content), {
         text: `Creating collection file: ${fileName}`,
@@ -117,12 +127,9 @@ async function createTokenFiles() {
       // Create temporary text nodes. This should eventually be replaced with
       // proper primitives
       const nodeContent = await createNodeFileContent(typographyNodes!.nodes)
-      await oraPromise(
-        write(path.join(tokensDataPath, 'text-nodes.ts'), nodeContent),
-        {
-          text: 'Creating temporary text nodes file: text-nodes.ts',
-        },
-      )
+      await oraPromise(write(path.join(tokensDataPath, 'text-nodes.ts'), nodeContent), {
+        text: 'Creating temporary text nodes file: text-nodes.ts',
+      })
     }
   } catch (error) {
     console.error('Error creating collection files:', error)

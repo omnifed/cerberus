@@ -9,6 +9,10 @@ packages:
   - docs
   - styled-system
 
+catalogs:
+  oxc:
+    oxfmt: ^0.56.0
+
 allowBuilds:
   '@carbon/icon-helpers': true
   '@carbon/icons-react': true
