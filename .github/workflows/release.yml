@@ -12,6 +12,10 @@ on:
 # Prevent parallel runs from colliding
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+env:
+  CI: true
+  HUSKY: 0 # Instructs Husky to skip hooks in this environment
+
 permissions:
   contents: write # Required to push tags and commits
   pull-requests: write # Required for Changesets to open the PR
@@ -45,6 +49,9 @@ jobs:
 
       - name: Install Dependencies
         run: pnpm install --no-frozen-lockfile && deno install && pnpm --filter styled-system run prepare
+
+      - name: Bypass local git hooks
+        run: rm -rf .husky
 
       - name: Create Version PR
         uses: changesets/action@v1
