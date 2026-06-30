@@ -50,9 +50,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --no-frozen-lockfile && deno install && pnpm --filter styled-system run prepare
 
-      - name: Bypass local git hooks
-        run: rm -rf .husky
-
       - name: Create Version PR
         uses: changesets/action@v1
         with:
