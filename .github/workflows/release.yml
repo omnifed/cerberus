@@ -12,6 +12,10 @@ on:
 # Prevent parallel runs from colliding
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+env:
+  CI: true
+  HUSKY: 0 # Instructs Husky to skip hooks in this environment
+
 permissions:
   contents: write # Required to push tags and commits
   pull-requests: write # Required for Changesets to open the PR
