@@ -1,5 +1,11 @@
 # @cerberus/figma
 
+## 1.5.1
+
+### Patch Changes
+
+- d475347: Replace prettier with oxfmt
+
 ## 1.5.0
 
 ### Minor Changes

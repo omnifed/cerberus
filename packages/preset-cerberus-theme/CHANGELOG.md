@@ -1,5 +1,7 @@
 # @cerberus/preset-cerberus-theme
 
+## 1.5.1
+
 ## 1.5.0
 
 ### Minor Changes
