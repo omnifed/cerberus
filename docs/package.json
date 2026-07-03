@@ -18,7 +18,7 @@
     "@docsearch/css": "^4.6.3",
     "@docsearch/react": "^4.6.3",
     "@tsparticles/engine": "4.2.1",
-    "@tsparticles/react": "4.2.1",
+    "@tsparticles/react": "4.3.1",
     "@tsparticles/slim": "4.2.1",
     "next": "16.2.9",
     "react": "19.2.7",
