@@ -1,15 +1,15 @@
 import { file, write } from 'bun'
+import { resolve, join } from 'node:path'
 import { parse } from 'yaml'
-import path from 'path'
 import { jsrPackages } from './versions.mjs'
 
-const repoRoot = process.cwd()
+const repoRoot = resolve(import.meta.dir, '..', '..')
 
 export async function run() {
   console.log('🔄 Injecting Pnpm catalogs into Deno import maps...')
 
   // 1. Read and parse pnpm-workspace.yaml
-  const workspaceFile = file(path.join(repoRoot, 'pnpm-workspace.yaml'))
+  const workspaceFile = file(join(repoRoot, 'pnpm-workspace.yaml'))
   const workspaceText = await workspaceFile.text()
   const workspace = parse(workspaceText)
 
@@ -18,11 +18,11 @@ export async function run() {
   const defaultCatalog = workspace.catalog || {}
 
   for (const pkg of jsrPackages) {
-    const pkgDirPath = path.join(repoRoot, 'packages', pkg)
+    const pkgDirPath = join(repoRoot, 'packages', pkg)
 
     // 2. Load package.json and deno.json
-    const pkgJsonFile = file(path.join(pkgDirPath, 'package.json'))
-    const denoJsonFile = file(path.join(pkgDirPath, 'deno.json'))
+    const pkgJsonFile = file(join(pkgDirPath, 'package.json'))
+    const denoJsonFile = file(join(pkgDirPath, 'deno.json'))
 
     if (!(await pkgJsonFile.exists()) || !(await denoJsonFile.exists())) {
       console.warn(`⏭️  Skipping ${pkg}: Missing package.json or deno.json`)
