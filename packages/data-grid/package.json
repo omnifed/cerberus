@@ -61,19 +61,19 @@
   },
   "devDependencies": {
     "@cerberus/panda-preset": "workspace:*",
-    "@pandacss/dev": "^1.11.3",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.2",
-    "globby": "^16.2.0",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "@pandacss/dev": "^1.11.4",
+    "@types/react": "catalog:jsx",
+    "@types/react-dom": "catalog:jsx",
+    "@vitejs/plugin-react": "catalog:jsx",
+    "globby": "catalog:jsx",
+    "react": "catalog:jsx",
+    "react-dom": "catalog:jsx",
     "styled-system": "workspace:*",
-    "vite": "^8.0.16",
-    "vite-plugin-dts": "^5.0.2"
+    "vite": "catalog:jsx",
+    "vite-plugin-dts": "catalog:jsx"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^1.9.0",
+    "@pandacss/dev": "*",
     "react": "*",
     "react-dom": "*"
   },

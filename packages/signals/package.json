@@ -81,12 +81,12 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "devDependencies": {
-    "@types/react": "^19.2.17",
-    "@vitejs/plugin-react": "^6.0.2",
-    "globby": "^16.2.0",
-    "react": "^19.2.7",
-    "vite": "^8.0.16",
-    "vite-plugin-dts": "^5.0.2"
+    "@types/react": "catalog:jsx",
+    "@vitejs/plugin-react": "catalog:jsx",
+    "globby": "catalog:jsx",
+    "react": "catalog:jsx",
+    "vite": "catalog:jsx",
+    "vite-plugin-dts": "catalog:jsx"
   },
   "peerDependencies": {
     "react": "*"

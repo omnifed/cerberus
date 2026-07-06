@@ -52,24 +52,19 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsup --experimental-dts",
-    "clean": "rm -rf ./build",
-    "clean:tokens": "rm -rf ./src/tokens",
+    "build": "echo \"No build step for JSR packages\"",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
-  "dependencies": {
-    "up": "^1.0.2"
-  },
   "devDependencies": {
-    "@ark-ui/react": "^5.37.2",
+    "@ark-ui/react": "catalog:ark",
     "@cerberus/preset-cerberus-theme": "workspace:*",
     "@cerberus/tokens": "workspace:*",
-    "@pandacss/dev": "^1.11.3",
-    "@pandacss/preset-panda": "^1.11.3",
-    "@pandacss/types": "^1.11.3"
+    "@pandacss/dev": "^1.11.4",
+    "@pandacss/preset-panda": "catalog:pandacss",
+    "@pandacss/types": "catalog:pandacss"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^1.7.0",
+    "@pandacss/dev": "*",
     "autoprefixer": "*",
     "postcss": "*"
   },

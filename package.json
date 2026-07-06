@@ -24,7 +24,7 @@
     "@types/bun": "^1.3.14",
     "@types/mdx": "^2.0.14",
     "husky": "^9.1.7",
-    "lint-staged": "^17.0.5",
+    "lint-staged": "^17.0.8",
     "oxfmt": "catalog:oxc",
     "oxlint": "^1.71.0"
   },
@@ -36,5 +36,5 @@
     "bun": ">=1.2.16",
     "node": ">=24.0.0"
   },
-  "packageManager": "pnpm@11.9.0"
+  "packageManager": "pnpm@11.10.0"
 }
