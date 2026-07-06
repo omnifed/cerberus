@@ -25,8 +25,8 @@ export const collection = {
     'VariableID:5738:5305',
     'VariableID:13516:4206',
     'VariableID:5686:24675',
-    'VariableID:22124:4473',
     'VariableID:5686:24676',
+    'VariableID:22124:4473',
     'VariableID:5686:24677',
   ],
 } as const
