@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@carbon/icons-react": "^11.82.0",
+    "@carbon/icons-react": "catalog:jsx",
     "@cerberus-design/data-grid": "workspace:*",
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/signals": "workspace:*",
@@ -21,8 +21,8 @@
     "@tsparticles/react": "4.2.1",
     "@tsparticles/slim": "4.2.1",
     "next": "16.2.9",
-    "react": "19.2.7",
-    "react-dom": "19.2.7"
+    "react": "catalog:jsx",
+    "react-dom": "catalog:jsx"
   },
   "devDependencies": {
     "@cerberus/panda-preset": "workspace:*",
@@ -34,14 +34,14 @@
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.2.9",
-    "@pandacss/dev": "^1.11.3",
-    "@pandacss/types": "^1.11.3",
+    "@pandacss/dev": "catalog:pandacss",
+    "@pandacss/types": "catalog:pandacss",
     "@shikijs/rehype": "^4.3.0",
     "@shikijs/transformers": "^4.3.0",
     "@types/mdx": "^2.0.14",
     "@types/node": "^26.0.0",
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
+    "@types/react": "catalog:jsx",
+    "@types/react-dom": "catalog:jsx",
     "@vercel/analytics": "^2.0.1",
     "autoprefixer": "^10.5.0",
     "babel-plugin-react-compiler": "^1.0.0",

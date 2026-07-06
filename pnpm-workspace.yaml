@@ -12,6 +12,22 @@ packages:
 catalogs:
   oxc:
     oxfmt: ^0.56.0
+  ark:
+    '@ark-ui/react': ^5.37.2
+  pandacss:
+    '@pandacss/dev': ^1.11.3
+    '@pandacss/preset-panda': ^1.11.3
+    '@pandacss/types': ^1.11.3
+  jsx:
+    '@carbon/icons-react': ^11.82.0
+    globby: ^16.2.0
+    react: ^19.2.7
+    react-dom: ^19.2.7
+    '@types/react': ^19.2.17
+    '@types/react-dom': ^19.2.3
+    vite: ^8.0.16
+    vite-plugin-dts: ^5.0.2
+    '@vitejs/plugin-react': ^6.0.2
 
 allowBuilds:
   '@carbon/icon-helpers': true

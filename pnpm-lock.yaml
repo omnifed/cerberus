@@ -5,10 +5,52 @@ settings:
   excludeLinksFromLockfile: false
 
 catalogs:
+  ark:
+    '@ark-ui/react':
+      specifier: ^5.37.2
+      version: 5.37.2
+  jsx:
+    '@carbon/icons-react':
+      specifier: ^11.82.0
+      version: 11.82.0
+    '@types/react':
+      specifier: ^19.2.17
+      version: 19.2.17
+    '@types/react-dom':
+      specifier: ^19.2.3
+      version: 19.2.3
+    '@vitejs/plugin-react':
+      specifier: ^6.0.2
+      version: 6.0.2
+    globby:
+      specifier: ^16.2.0
+      version: 16.2.0
+    react:
+      specifier: ^19.2.7
+      version: 19.2.7
+    react-dom:
+      specifier: ^19.2.7
+      version: 19.2.7
+    vite:
+      specifier: ^8.0.16
+      version: 8.0.16
+    vite-plugin-dts:
+      specifier: ^5.0.2
+      version: 5.0.2
   oxc:
     oxfmt:
       specifier: ^0.56.0
       version: 0.56.0
+  pandacss:
+    '@pandacss/dev':
+      specifier: ^1.11.3
+      version: 1.11.3
+    '@pandacss/preset-panda':
+      specifier: ^1.11.3
+      version: 1.11.3
+    '@pandacss/types':
+      specifier: ^1.11.3
+      version: 1.11.3
 
 overrides:
   brace-expansion: '>=5.0.6'
@@ -98,7 +140,7 @@ importers:
   docs:
     dependencies:
       '@carbon/icons-react':
-        specifier: ^11.82.0
+        specifier: catalog:jsx
         version: 11.82.0(react@19.2.7)
       '@cerberus-design/data-grid':
         specifier: workspace:*
@@ -131,10 +173,10 @@ importers:
         specifier: 16.2.9
         version: 16.2.9(@babel/core@7.29.7)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       react:
-        specifier: 19.2.7
+        specifier: catalog:jsx
         version: 19.2.7
       react-dom:
-        specifier: 19.2.7
+        specifier: catalog:jsx
         version: 19.2.7(react@19.2.7)
     devDependencies:
       '@cerberus/panda-preset':
@@ -165,10 +207,10 @@ importers:
         specifier: ^16.2.9
         version: 16.2.9(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.7))
       '@pandacss/dev':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3(typescript@6.0.3)
       '@pandacss/types':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3
       '@shikijs/rehype':
         specifier: ^4.3.0
@@ -183,10 +225,10 @@ importers:
         specifier: ^26.0.0
         version: 26.0.0
       '@types/react':
-        specifier: 19.2.17
+        specifier: catalog:jsx
         version: 19.2.17
       '@types/react-dom':
-        specifier: 19.2.3
+        specifier: catalog:jsx
         version: 19.2.3(@types/react@19.2.17)
       '@vercel/analytics':
         specifier: ^2.0.1
@@ -256,34 +298,34 @@ importers:
         specifier: workspace:*
         version: link:../panda-preset
       '@pandacss/dev':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3(typescript@6.0.3)
       '@types/react':
-        specifier: ^19.2.17
+        specifier: catalog:jsx
         version: 19.2.17
       '@types/react-dom':
-        specifier: ^19.2.3
+        specifier: catalog:jsx
         version: 19.2.3(@types/react@19.2.17)
       '@vitejs/plugin-react':
-        specifier: ^6.0.2
+        specifier: catalog:jsx
         version: 6.0.2(babel-plugin-react-compiler@1.0.0)(vite@8.0.16(@types/node@26.0.0)(yaml@2.9.0))
       globby:
-        specifier: ^16.2.0
+        specifier: catalog:jsx
         version: 16.2.0
       react:
-        specifier: ^19.2.7
+        specifier: catalog:jsx
         version: 19.2.7
       react-dom:
-        specifier: ^19.2.7
+        specifier: catalog:jsx
         version: 19.2.7(react@19.2.7)
       styled-system:
         specifier: workspace:*
         version: link:../../styled-system
       vite:
-        specifier: ^8.0.16
+        specifier: catalog:jsx
         version: 8.0.16(@types/node@26.0.0)(yaml@2.9.0)
       vite-plugin-dts:
-        specifier: ^5.0.2
+        specifier: catalog:jsx
         version: 5.0.2(rolldown@1.0.3)(typescript@6.0.3)(vite@8.0.16(@types/node@26.0.0)(yaml@2.9.0))
 
   packages/figma:
@@ -305,16 +347,13 @@ importers:
     dependencies:
       autoprefixer:
         specifier: '*'
-        version: 10.5.0(postcss@8.5.15)
+        version: 10.5.0(postcss@8.5.14)
       postcss:
         specifier: '*'
-        version: 8.5.15
-      up:
-        specifier: ^1.0.2
-        version: 1.0.2
+        version: 8.5.14
     devDependencies:
       '@ark-ui/react':
-        specifier: ^5.37.2
+        specifier: catalog:ark
         version: 5.37.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@cerberus/preset-cerberus-theme':
         specifier: workspace:*
@@ -323,13 +362,13 @@ importers:
         specifier: workspace:*
         version: link:../tokens
       '@pandacss/dev':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3(typescript@6.0.3)
       '@pandacss/preset-panda':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3
       '@pandacss/types':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3
 
   packages/preset-acheron-theme:
@@ -348,63 +387,57 @@ importers:
         specifier: workspace:*
         version: link:../tokens
       '@pandacss/dev':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3(typescript@6.0.3)
       '@pandacss/types':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3
 
   packages/preset-cerberus-theme:
     dependencies:
       autoprefixer:
         specifier: '*'
-        version: 10.5.0(postcss@8.5.15)
+        version: 10.5.0(postcss@8.5.14)
       postcss:
         specifier: '*'
-        version: 8.5.15
-      up:
-        specifier: ^1.0.2
-        version: 1.0.2
+        version: 8.5.14
     devDependencies:
       '@cerberus/tokens':
         specifier: workspace:*
         version: link:../tokens
       '@pandacss/dev':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3(typescript@6.0.3)
       '@pandacss/types':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3
 
   packages/preset-elysium-theme:
     dependencies:
       autoprefixer:
         specifier: '*'
-        version: 10.5.0(postcss@8.5.15)
+        version: 10.5.0(postcss@8.5.14)
       postcss:
         specifier: '*'
-        version: 8.5.15
-      up:
-        specifier: ^1.0.2
-        version: 1.0.2
+        version: 8.5.14
     devDependencies:
       '@cerberus/tokens':
         specifier: workspace:*
         version: link:../tokens
       '@pandacss/dev':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3(typescript@6.0.3)
       '@pandacss/types':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3
 
   packages/react:
     dependencies:
       '@ark-ui/react':
-        specifier: ^5.37.2
+        specifier: catalog:ark
         version: 5.37.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@carbon/icons-react':
-        specifier: ^11.82.0
+        specifier: catalog:jsx
         version: 11.82.0(react@19.2.7)
     devDependencies:
       '@cerberus/panda-preset':
@@ -414,55 +447,55 @@ importers:
         specifier: ^3.12.2
         version: 3.12.2
       '@pandacss/dev':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3(typescript@6.0.3)
       '@types/react':
-        specifier: ^19.2.17
+        specifier: catalog:jsx
         version: 19.2.17
       '@types/react-dom':
-        specifier: ^19.2.3
+        specifier: catalog:jsx
         version: 19.2.3(@types/react@19.2.17)
       '@vitejs/plugin-react':
-        specifier: ^6.0.2
+        specifier: catalog:jsx
         version: 6.0.2(babel-plugin-react-compiler@1.0.0)(vite@8.0.16(@types/node@26.0.0)(yaml@2.9.0))
       globby:
-        specifier: ^16.2.0
+        specifier: catalog:jsx
         version: 16.2.0
       react:
-        specifier: ^19.2.7
+        specifier: catalog:jsx
         version: 19.2.7
       react-dom:
-        specifier: ^19.2.7
+        specifier: catalog:jsx
         version: 19.2.7(react@19.2.7)
       styled-system:
         specifier: workspace:*
         version: link:../../styled-system
       vite:
-        specifier: ^8.0.16
+        specifier: catalog:jsx
         version: 8.0.16(@types/node@26.0.0)(yaml@2.9.0)
       vite-plugin-dts:
-        specifier: ^5.0.2
+        specifier: catalog:jsx
         version: 5.0.2(rolldown@1.0.3)(typescript@6.0.3)(vite@8.0.16(@types/node@26.0.0)(yaml@2.9.0))
 
   packages/signals:
     devDependencies:
       '@types/react':
-        specifier: ^19.2.17
+        specifier: catalog:jsx
         version: 19.2.17
       '@vitejs/plugin-react':
-        specifier: ^6.0.2
+        specifier: catalog:jsx
         version: 6.0.2(babel-plugin-react-compiler@1.0.0)(vite@8.0.16(@types/node@26.0.0)(yaml@2.9.0))
       globby:
-        specifier: ^16.2.0
+        specifier: catalog:jsx
         version: 16.2.0
       react:
-        specifier: ^19.2.7
+        specifier: catalog:jsx
         version: 19.2.7
       vite:
-        specifier: ^8.0.16
+        specifier: catalog:jsx
         version: 8.0.16(@types/node@26.0.0)(yaml@2.9.0)
       vite-plugin-dts:
-        specifier: ^5.0.2
+        specifier: catalog:jsx
         version: 5.0.2(rolldown@1.0.3)(typescript@6.0.3)(vite@8.0.16(@types/node@26.0.0)(yaml@2.9.0))
 
   packages/tokens:
@@ -471,10 +504,10 @@ importers:
         specifier: workspace:*
         version: link:../figma
       '@pandacss/dev':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3(typescript@6.0.3)
       '@pandacss/types':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3
 
   styled-system:
@@ -483,19 +516,19 @@ importers:
         specifier: workspace:*
         version: link:../packages/panda-preset
       '@pandacss/dev':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3(typescript@6.0.3)
       '@types/react':
-        specifier: 19.2.17
+        specifier: catalog:jsx
         version: 19.2.17
       react:
-        specifier: ^19.2.7
+        specifier: catalog:jsx
         version: 19.2.7
 
   tests:
     devDependencies:
       '@carbon/icons-react':
-        specifier: ^11.82.0
+        specifier: catalog:jsx
         version: 11.82.0(react@19.2.7)
       '@cerberus-design/data-grid':
         specifier: workspace:*
@@ -528,7 +561,7 @@ importers:
         specifier: ^20.10.6
         version: 20.10.6
       '@pandacss/types':
-        specifier: ^1.11.3
+        specifier: catalog:pandacss
         version: 1.11.3
       '@testing-library/jest-dom':
         specifier: ^6.9.1
@@ -543,13 +576,13 @@ importers:
         specifier: ^1.3.14
         version: 1.3.14
       '@types/react':
-        specifier: ^19.2.17
+        specifier: catalog:jsx
         version: 19.2.17
       react:
-        specifier: ^19.2.7
+        specifier: catalog:jsx
         version: 19.2.7
       react-dom:
-        specifier: ^19.2.7
+        specifier: catalog:jsx
         version: 19.2.7(react@19.2.7)
       styled-system:
         specifier: workspace:*
@@ -3289,9 +3322,6 @@ packages:
   electron-to-chromium@1.5.351:
     resolution: {integrity: sha512-9D7Iqx8RImSvCnOsj86rCH6eQjZFQoM04Jn6HnZVM0Nu/G58/gmKYQ1d12MZTbjQbQSTGI8nwEy07ErsA2slLA==}
 
-  electron-to-chromium@1.5.376:
-    resolution: {integrity: sha512-cUVA7/RvbFTEuw/i3obUwDTRIXojaxkResf+ibByPFxjc6XK3VNtcQXV0NSbAlJ0FMjcJGgftVVB4Qo184EXvA==}
-
   electron-to-chromium@1.5.381:
     resolution: {integrity: sha512-n9Wa6yB+vDsGuA8AKbl/0z7HbvWqt5jxIdvr1IUicd0ryPrk7/xzwqLv8D9AbbvZ6avVNtXYLTfmgFHkwkyelg==}
 
@@ -4661,10 +4691,6 @@ packages:
 
   node-releases@2.0.38:
     resolution: {integrity: sha512-3qT/88Y3FbH/Kx4szpQQ4HzUbVrHPKTLVpVocKiLfoYvw9XSGOX2FmD2d6DrXbVYyAQTF2HeF6My8jmzx7/CRw==}
-
-  node-releases@2.0.48:
-    resolution: {integrity: sha512-1uz8041X6LoI6ZSdZacM9lVY28vuzDlSKitnpbSNK0RfKoIJkX29NBPVEFXhnuSuEOA9Ww0xnPJ+ILWbGAv8DA==}
-    engines: {node: '>=18'}
 
   node-releases@2.0.50:
     resolution: {integrity: sha512-J6l92tKHX6w8Jy5nO1Vuc01NoIiRGi/d6qBKVxh+IQ8Cr3b6HbVNfKiF8ZpFKufTwpwxMmce2W3iQZ861ZRyTg==}
@@ -6465,7 +6491,7 @@ snapshots:
       hast-util-to-html: 9.0.5
       hast-util-to-text: 4.0.2
       hastscript: 9.0.1
-      postcss: 8.5.15
+      postcss: 8.5.16
       postcss-nested: 6.2.0(postcss@8.5.15)
       unist-util-visit: 5.1.0
       unist-util-visit-parents: 6.0.2
@@ -7875,7 +7901,7 @@ snapshots:
       '@vue/shared': 3.5.25
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.14
+      postcss: 8.5.16
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.5.25':
@@ -8609,6 +8635,15 @@ snapshots:
 
   async-function@1.0.0: {}
 
+  autoprefixer@10.5.0(postcss@8.5.14):
+    dependencies:
+      browserslist: 4.28.2
+      caniuse-lite: 1.0.30001792
+      fraction.js: 5.3.4
+      picocolors: 1.1.1
+      postcss: 8.5.14
+      postcss-value-parser: 4.2.0
+
   autoprefixer@10.5.0(postcss@8.5.15):
     dependencies:
       browserslist: 4.28.2
@@ -8676,10 +8711,10 @@ snapshots:
 
   browserslist@4.28.1:
     dependencies:
-      baseline-browser-mapping: 2.10.38
+      baseline-browser-mapping: 2.10.40
       caniuse-lite: 1.0.30001799
-      electron-to-chromium: 1.5.376
-      node-releases: 2.0.48
+      electron-to-chromium: 1.5.381
+      node-releases: 2.0.50
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
 
   browserslist@4.28.2:
@@ -8927,8 +8962,6 @@ snapshots:
 
   electron-to-chromium@1.5.351: {}
 
-  electron-to-chromium@1.5.376: {}
-
   electron-to-chromium@1.5.381: {}
 
   emoji-regex@10.6.0: {}
@@ -9079,7 +9112,7 @@ snapshots:
   esast-util-from-js@2.0.1:
     dependencies:
       '@types/estree-jsx': 1.0.5
-      acorn: 8.16.0
+      acorn: 8.17.0
       esast-util-from-estree: 2.0.0
       vfile-message: 4.0.3
 
@@ -9347,7 +9380,7 @@ snapshots:
 
   estree-util-attach-comments@3.0.0:
     dependencies:
-      '@types/estree': 1.0.8
+      '@types/estree': 1.0.9
 
   estree-util-build-jsx@3.0.1:
     dependencies:
@@ -9726,7 +9759,7 @@ snapshots:
 
   hast-util-to-estree@3.1.3:
     dependencies:
-      '@types/estree': 1.0.8
+      '@types/estree': 1.0.9
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.4
       comma-separated-tokens: 2.0.3
@@ -10533,7 +10566,7 @@ snapshots:
 
   micromark-extension-mdx-expression@3.0.1:
     dependencies:
-      '@types/estree': 1.0.8
+      '@types/estree': 1.0.9
       devlop: 1.1.0
       micromark-factory-mdx-expression: 2.0.3
       micromark-factory-space: 2.0.1
@@ -10544,7 +10577,7 @@ snapshots:
 
   micromark-extension-mdx-jsx@3.0.2:
     dependencies:
-      '@types/estree': 1.0.8
+      '@types/estree': 1.0.9
       devlop: 1.1.0
       estree-util-is-identifier-name: 3.0.0
       micromark-factory-mdx-expression: 2.0.3
@@ -10561,7 +10594,7 @@ snapshots:
 
   micromark-extension-mdxjs-esm@3.0.0:
     dependencies:
-      '@types/estree': 1.0.8
+      '@types/estree': 1.0.9
       devlop: 1.1.0
       micromark-core-commonmark: 2.0.3
       micromark-util-character: 2.1.1
@@ -10597,7 +10630,7 @@ snapshots:
 
   micromark-factory-mdx-expression@2.0.3:
     dependencies:
-      '@types/estree': 1.0.8
+      '@types/estree': 1.0.9
       devlop: 1.1.0
       micromark-factory-space: 2.0.1
       micromark-util-character: 2.1.1
@@ -10661,7 +10694,7 @@ snapshots:
 
   micromark-util-events-to-acorn@2.0.3:
     dependencies:
-      '@types/estree': 1.0.8
+      '@types/estree': 1.0.9
       '@types/unist': 3.0.3
       devlop: 1.1.0
       estree-util-visit: 2.0.0
@@ -10806,8 +10839,6 @@ snapshots:
       semver: 6.3.1
 
   node-releases@2.0.38: {}
-
-  node-releases@2.0.48: {}
 
   node-releases@2.0.50: {}
 
@@ -11219,7 +11250,7 @@ snapshots:
 
   recma-parse@1.0.0:
     dependencies:
-      '@types/estree': 1.0.8
+      '@types/estree': 1.0.9
       esast-util-from-js: 2.0.1
       unified: 11.0.5
       vfile: 6.0.3
@@ -12099,7 +12130,7 @@ snapshots:
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
-      postcss: 8.5.15
+      postcss: 8.5.16
       rolldown: 1.0.3
       tinyglobby: 0.2.17
     optionalDependencies:

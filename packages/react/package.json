@@ -73,25 +73,25 @@
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "dependencies": {
-    "@ark-ui/react": "^5.37.2",
-    "@carbon/icons-react": "^11.82.0"
+    "@ark-ui/react": "catalog:ark",
+    "@carbon/icons-react": "catalog:jsx"
   },
   "devDependencies": {
     "@cerberus/panda-preset": "workspace:*",
     "@internationalized/date": "^3.12.2",
-    "@pandacss/dev": "^1.11.3",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.2",
-    "globby": "^16.2.0",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "@pandacss/dev": "catalog:pandacss",
+    "@types/react": "catalog:jsx",
+    "@types/react-dom": "catalog:jsx",
+    "@vitejs/plugin-react": "catalog:jsx",
+    "globby": "catalog:jsx",
+    "react": "catalog:jsx",
+    "react-dom": "catalog:jsx",
     "styled-system": "workspace:*",
-    "vite": "^8.0.16",
-    "vite-plugin-dts": "^5.0.2"
+    "vite": "catalog:jsx",
+    "vite-plugin-dts": "catalog:jsx"
   },
   "peerDependencies": {
-    "@pandacss/dev": "^1.9.0",
+    "@pandacss/dev": "*",
     "react": "*",
     "react-dom": "*"
   },
