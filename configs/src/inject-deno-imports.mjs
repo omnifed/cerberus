@@ -1,26 +1,19 @@
 import { file, write } from 'bun'
-import { resolve, join } from 'node:path'
+import { join } from 'node:path'
 import { parse } from 'yaml'
-import { jsrPackages } from './versions.mjs'
 
-const repoRoot = resolve(import.meta.dir, '..', '..')
-
-export async function run() {
-  console.log('🔄 Injecting Pnpm catalogs into Deno import maps...')
-
+export async function injectDenoImports(jsrPackages, repoRoot) {
   // 1. Read and parse pnpm-workspace.yaml
   const workspaceFile = file(join(repoRoot, 'pnpm-workspace.yaml'))
   const workspaceText = await workspaceFile.text()
   const workspace = parse(workspaceText)
 
-  // Handle both named catalogs and the default catalog
   const namedCatalogs = workspace.catalogs || {}
   const defaultCatalog = workspace.catalog || {}
 
   for (const pkg of jsrPackages) {
     const pkgDirPath = join(repoRoot, 'packages', pkg)
 
-    // 2. Load package.json and deno.json
     const pkgJsonFile = file(join(pkgDirPath, 'package.json'))
     const denoJsonFile = file(join(pkgDirPath, 'deno.json'))
 
@@ -35,25 +28,20 @@ export async function run() {
     denoJson.imports = denoJson.imports || {}
     let modified = false
 
-    // 3. Aggregate all dependencies to check for catalogs
     const allDeps = {
       ...(pkgJson.dependencies || {}),
       ...(pkgJson.devDependencies || {}),
       ...(pkgJson.peerDependencies || {}),
     }
 
-    // 4. Map catalog protocols to actual versions
     for (const [depName, versionStr] of Object.entries(allDeps)) {
       if (versionStr.startsWith('catalog:')) {
-        // Extract the catalog name (e.g., "catalog:pandacss" -> "pandacss").
-        // If it's just "catalog:", it uses the default catalog.
         const catalogName = versionStr.split(':')[1]
         const resolvedVersion = catalogName
           ? namedCatalogs[catalogName]?.[depName]
           : defaultCatalog[depName]
 
         if (resolvedVersion) {
-          // If the version is already an npm:/jsr: specifier, use it. Otherwise, prefix with npm:
           const importSpecifier =
             resolvedVersion.startsWith('npm:') || resolvedVersion.startsWith('jsr:')
               ? resolvedVersion
@@ -68,11 +56,8 @@ export async function run() {
       }
     }
 
-    // 5. Save the updated deno.json
     if (modified) {
       await write(denoJsonFile, JSON.stringify(denoJson, null, 2) + '\n')
     }
   }
-
-  console.log('🚀 Import injection complete!')
 }
