@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@cerberus/tokens": "workspace:*",
-    "@pandacss/dev": "^1.11.4",
+    "@pandacss/dev": "catalog:pandacss",
     "@pandacss/types": "catalog:pandacss"
   },
   "peerDependencies": {
