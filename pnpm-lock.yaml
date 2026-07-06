@@ -345,6 +345,12 @@ importers:
 
   packages/panda-preset:
     dependencies:
+      '@ark-ui/react':
+        specifier: catalog:ark
+        version: 5.37.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@pandacss/preset-panda':
+        specifier: catalog:pandacss
+        version: 1.11.4
       autoprefixer:
         specifier: '*'
         version: 10.5.0(postcss@8.5.14)
@@ -352,9 +358,6 @@ importers:
         specifier: '*'
         version: 8.5.14
     devDependencies:
-      '@ark-ui/react':
-        specifier: catalog:ark
-        version: 5.37.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@cerberus/preset-cerberus-theme':
         specifier: workspace:*
         version: link:../preset-cerberus-theme
@@ -364,9 +367,6 @@ importers:
       '@pandacss/dev':
         specifier: catalog:pandacss
         version: 1.11.4(typescript@6.0.3)
-      '@pandacss/preset-panda':
-        specifier: catalog:pandacss
-        version: 1.11.4
       '@pandacss/types':
         specifier: catalog:pandacss
         version: 1.11.4
@@ -379,9 +379,6 @@ importers:
       postcss:
         specifier: '*'
         version: 8.5.15
-      up:
-        specifier: ^1.0.2
-        version: 1.0.2
     devDependencies:
       '@cerberus/tokens':
         specifier: workspace:*
@@ -5630,9 +5627,6 @@ packages:
 
   unrs-resolver@1.12.2:
     resolution: {integrity: sha512-dmlRxBJJayXjqTwC+JtF1HhJmgf3ftQ3YejFcZrf4+KKtJv0qDsK1pjqaaVjG7wJ5NJ6UVP1OqRMQ71Z4C3rxQ==}
-
-  up@1.0.2:
-    resolution: {integrity: sha512-PKVGUj7i1qMWSR83H3PZpw1h+21wAr1qxqF/8zgTVHS+sHTsu1zvepQDoDJN0Kv49quNJwWgAKDAK2xPy7jocg==}
 
   update-browserslist-db@1.2.3:
     resolution: {integrity: sha512-Js0m9cx+qOgDxo0eMiFGEueWztz+d4+M3rGlmKPT+T4IS/jP4ylw3Nwpu6cpTTP8R1MAC1kF4VbdLt3ARf209w==}
@@ -11999,8 +11993,6 @@ snapshots:
       '@unrs/resolver-binding-win32-arm64-msvc': 1.12.2
       '@unrs/resolver-binding-win32-ia32-msvc': 1.12.2
       '@unrs/resolver-binding-win32-x64-msvc': 1.12.2
-
-  up@1.0.2: {}
 
   update-browserslist-db@1.2.3(browserslist@4.28.1):
     dependencies:

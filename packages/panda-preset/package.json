@@ -55,12 +55,14 @@
     "build": "echo \"No build step for JSR packages\"",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
-  "devDependencies": {
+  "dependencies": {
     "@ark-ui/react": "catalog:ark",
+    "@pandacss/preset-panda": "catalog:pandacss"
+  },
+  "devDependencies": {
     "@cerberus/preset-cerberus-theme": "workspace:*",
     "@cerberus/tokens": "workspace:*",
     "@pandacss/dev": "catalog:pandacss",
-    "@pandacss/preset-panda": "catalog:pandacss",
     "@pandacss/types": "catalog:pandacss"
   },
   "peerDependencies": {

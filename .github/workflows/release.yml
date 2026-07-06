@@ -48,7 +48,7 @@ jobs:
           cache: true
 
       - name: Install Dependencies
-        run: pnpm install --no-frozen-lockfile && deno install && pnpm --filter styled-system run prepare
+        run: pnpm install --no-frozen-lockfile && pnpm --filter styled-system run prepare && deno install
 
       - name: Create Version PR
         uses: changesets/action@v1

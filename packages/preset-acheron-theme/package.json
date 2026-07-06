@@ -55,9 +55,6 @@
     "build": "echo \"No build step for JSR packages\"",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
-  "dependencies": {
-    "up": "^1.0.2"
-  },
   "devDependencies": {
     "@cerberus/tokens": "workspace:*",
     "@pandacss/dev": "^1.11.4",
