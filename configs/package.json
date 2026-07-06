@@ -13,12 +13,12 @@
   "module": "index.mjs",
   "types": "index.d.ts",
   "scripts": {
-    "bump:versions": "bun ./src/bump-versions.mjs --stable",
-    "inject:deno-imports": "bun ./src/inject-deno-imports.mjs"
+    "bump:versions": "bun ./src/bump-versions.mjs --stable"
   },
   "devDependencies": {
     "glob": "^13.0.6",
-    "util": "^0.12.5"
+    "util": "^0.12.5",
+    "yaml": "^2.9.0"
   },
   "peerDependencies": {
     "bun": "*"
