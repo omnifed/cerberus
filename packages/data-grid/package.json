@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@cerberus/panda-preset": "workspace:*",
-    "@pandacss/dev": "catalog:pandacss",
+    "@pandacss/dev": "^1.11.4",
     "@types/react": "catalog:jsx",
     "@types/react-dom": "catalog:jsx",
     "@vitejs/plugin-react": "catalog:jsx",
