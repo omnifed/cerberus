@@ -28,10 +28,11 @@ export async function injectDenoImports(jsrPackages, repoRoot) {
     denoJson.imports = denoJson.imports || {}
     let modified = false
 
+    // Order matters
     const allDeps = {
-      ...(pkgJson.dependencies || {}),
-      ...(pkgJson.devDependencies || {}),
       ...(pkgJson.peerDependencies || {}),
+      ...(pkgJson.devDependencies || {}),
+      ...(pkgJson.dependencies || {}),
     }
 
     for (const [depName, versionStr] of Object.entries(allDeps)) {
