@@ -362,7 +362,7 @@ importers:
         specifier: workspace:*
         version: link:../tokens
       '@pandacss/dev':
-        specifier: ^1.11.4
+        specifier: catalog:pandacss
         version: 1.11.4(typescript@6.0.3)
       '@pandacss/preset-panda':
         specifier: catalog:pandacss

@@ -13,6 +13,8 @@ env:
 jobs:
   sync-figma-to-tokens:
     runs-on: ubuntu-latest
+    # CIRCUIT BREAKER: Do not run if the commit came from our bot's PR
+    if: "!contains(github.event.head_commit.message, 'update tokens from Figma')"
     permissions:
       contents: write
       pull-requests: write

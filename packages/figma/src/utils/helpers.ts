@@ -15,11 +15,31 @@ const formatRules = {
 }
 
 /**
- * A custom replacer for JSON.stringify that deeply sorts object keys alphabetically.
- * This guarantees 100% deterministic string output regardless of API key ordering.
+ * A custom replacer for JSON.stringify that deeply sorts object keys alphabetically,
+ * AND deterministically sorts arrays to prevent Figma API shifting from causing false diffs.
  */
 function deepSortObjectKeys(key: string, value: any) {
-  if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
+  if (value !== null && typeof value === 'object') {
+    // 1. Handle Arrays: Sort them deterministically
+    if (Array.isArray(value)) {
+      return [...value].sort((a, b) => {
+        // If the array contains objects, sort by a stable property
+        if (
+          typeof a === 'object' &&
+          a !== null &&
+          typeof b === 'object' &&
+          b !== null
+        ) {
+          const idA = a.id || a.name || a.key || JSON.stringify(a)
+          const idB = b.id || b.name || b.key || JSON.stringify(b)
+          return idA < idB ? -1 : idA > idB ? 1 : 0
+        }
+        // If it's a primitive array, sort normally
+        return a < b ? -1 : a > b ? 1 : 0
+      })
+    }
+
+    // 2. Handle Objects: Sort keys alphabetically
     return Object.keys(value)
       .sort()
       .reduce((sorted: Record<string, any>, k: string) => {
@@ -27,6 +47,7 @@ function deepSortObjectKeys(key: string, value: any) {
         return sorted
       }, {})
   }
+
   return value
 }
 

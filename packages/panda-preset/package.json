@@ -59,7 +59,7 @@
     "@ark-ui/react": "catalog:ark",
     "@cerberus/preset-cerberus-theme": "workspace:*",
     "@cerberus/tokens": "workspace:*",
-    "@pandacss/dev": "^1.11.4",
+    "@pandacss/dev": "catalog:pandacss",
     "@pandacss/preset-panda": "catalog:pandacss",
     "@pandacss/types": "catalog:pandacss"
   },
