@@ -119,7 +119,7 @@ export const collection = {
     'VariableID:18289:3479',
     'VariableID:18303:12040',
     'VariableID:22119:7399',
-    'VariableID:22119:8904',
+    'VariableID:22141:8826',
     'VariableID:4328:23833',
     'VariableID:4737:11565',
     'VariableID:4737:5172',
@@ -1163,6 +1163,7 @@ export const tokens = {
   },
   'font.brand': {
     codeSyntax: {},
+    deletedButReferenced: true,
     description: '',
     hiddenFromPublishing: true,
     id: 'VariableID:22119:7399',
@@ -1172,19 +1173,6 @@ export const tokens = {
     resolvedType: 'STRING',
     scopes: ['ALL_SCOPES'],
     valuesByMode: { '4328:3': 'Poppins', '4738:0': 'Poppins' },
-    variableCollectionId: 'VariableCollectionId:4328:23832',
-  },
-  'font.monospace': {
-    codeSyntax: {},
-    description: '',
-    hiddenFromPublishing: true,
-    id: 'VariableID:22119:8904',
-    key: 'a450978e20569aa53ef9a06b1b00be9b4f417b8b',
-    name: 'font/monospace',
-    remote: false,
-    resolvedType: 'STRING',
-    scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'Recursive', '4738:0': 'Recursive' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'ghost.success.active': {
@@ -2070,7 +2058,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.10', '4738:0': 'cerberus.neutral.80' },
+    valuesByMode: { '4328:3': 'cerberus.neutral.5', '4738:0': 'cerberus.neutral.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.background.200': {
@@ -2083,7 +2071,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.20', '4738:0': 'cerberus.neutral.70' },
+    valuesByMode: { '4328:3': 'cerberus.neutral.15', '4738:0': 'cerberus.neutral.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.background.300': {
@@ -2096,7 +2084,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.30', '4738:0': 'cerberus.neutral.60' },
+    valuesByMode: { '4328:3': 'cerberus.neutral.20', '4738:0': 'cerberus.neutral.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.background.initial': {
@@ -2109,7 +2097,10 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.5', '4738:0': 'cerberus.brand.100' },
+    valuesByMode: {
+      '4328:3': 'cerberus.neutral.white',
+      '4738:0': 'cerberus.brand.100',
+    },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.border.100': {
@@ -2218,6 +2209,34 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: { '4328:3': 'cerberus.brand.5', '4738:0': 'cerberus.neutral.100' },
+    variableCollectionId: 'VariableCollectionId:4328:23832',
+  },
+  'page.surface.initial.alpha-300': {
+    codeSyntax: {},
+    deletedButReferenced: true,
+    description:
+      'Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface\nUse for: Page backgrounds',
+    hiddenFromPublishing: false,
+    id: 'VariableID:22141:8826',
+    key: '64b3909eccb29da5ebf75dbb1f4585393da7c11f',
+    name: 'surface/page/initial/alpha-300',
+    remote: false,
+    resolvedType: 'COLOR',
+    scopes: ['FRAME_FILL'],
+    valuesByMode: {
+      '4328:3': {
+        a: 0.699999988079071,
+        b: 0.9960784316062927,
+        g: 0.9843137264251709,
+        r: 0.9882352948188782,
+      },
+      '4738:0': {
+        a: 0.699999988079071,
+        b: 0.12600000202655792,
+        g: 0.0139999995008111,
+        r: 0.04573332890868187,
+      },
+    },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.surface.inverse': {
@@ -2408,7 +2427,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.20', '4738:0': 'cerberus.brand.80' },
+    valuesByMode: { '4328:3': 'cerberus.neutral.15', '4738:0': 'cerberus.neutral.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.ghost.hover': {
@@ -2422,7 +2441,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.15', '4738:0': 'cerberus.brand.90' },
+    valuesByMode: { '4328:3': 'cerberus.neutral.10', '4738:0': 'cerberus.neutral.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.ghost.initial': {
