@@ -82,6 +82,7 @@
   },
   "devDependencies": {
     "@types/react": "catalog:jsx",
+    "@typescript/typescript6": "catalog:jsx",
     "@vitejs/plugin-react": "catalog:jsx",
     "globby": "catalog:jsx",
     "react": "catalog:jsx",

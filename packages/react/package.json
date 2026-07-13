@@ -82,6 +82,7 @@
     "@pandacss/dev": "^1.11.4",
     "@types/react": "catalog:jsx",
     "@types/react-dom": "catalog:jsx",
+    "@typescript/typescript6": "catalog:jsx",
     "@vitejs/plugin-react": "catalog:jsx",
     "globby": "catalog:jsx",
     "react": "catalog:jsx",
