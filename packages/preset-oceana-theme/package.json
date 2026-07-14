@@ -1,0 +1,71 @@
+{
+  "name": "@cerberus/preset-oceana-theme",
+  "version": "1.5.0",
+  "description": "The official Oceana theme preset for the Cerberus design system",
+  "keywords": [
+    "css",
+    "design-system",
+    "digital university",
+    "du design system",
+    "oceana",
+    "oceana theme",
+    "omni-federal",
+    "panda-css",
+    "panda-css ui",
+    "recipe",
+    "ui",
+    "ui library"
+  ],
+  "license": "ISC",
+  "author": "developers@omnifederal.com",
+  "files": [
+    "build/**/*",
+    "src/**/*",
+    "index.ts"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "publishConfig": {
+    "main": "build/legacy/index.cjs",
+    "module": "build/legacy/index.js",
+    "types": "build/legacy/index.d.ts",
+    "typesVersions": {
+      "*": {
+        ".": [
+          "build/legacy/index.d.ts"
+        ]
+      }
+    },
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./build/modern/index.d.ts",
+          "default": "./build/modern/index.js"
+        },
+        "require": {
+          "types": "./build/modern/index.d.cts",
+          "default": "./build/modern/index.cjs"
+        }
+      },
+      "./package.json": "./package.json"
+    },
+    "access": "public"
+  },
+  "scripts": {
+    "build": "echo \"No build step for JSR packages\"",
+    "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
+  },
+  "devDependencies": {
+    "@cerberus/tokens": "workspace:*",
+    "@pandacss/dev": "catalog:pandacss",
+    "@pandacss/types": "catalog:pandacss"
+  },
+  "peerDependencies": {
+    "@pandacss/dev": "*",
+    "autoprefixer": "*",
+    "postcss": "*"
+  },
+  "browserslist": "> 0.25%, not dead"
+}

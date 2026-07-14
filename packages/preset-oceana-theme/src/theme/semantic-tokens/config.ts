@@ -1,0 +1,29 @@
+import { defineSemanticTokens } from '@pandacss/dev'
+import { pageTokens } from './page'
+import { actionTokens } from './action'
+import { secondaryActionTokens } from './secondary-action'
+import { infoTokens } from './info'
+import { successTokens } from './success'
+import { warningTokens } from './warning'
+import { dangerTokens } from './danger'
+import { dataVizTokens } from './data-viz'
+import { gradientTokens } from './gradient'
+
+/**
+ * This module contains the configuration for the semantic tokens of the acheron theme.
+ * @module
+ */
+
+export const semanticTokens = defineSemanticTokens({
+  colors: {
+    ...pageTokens,
+    ...actionTokens,
+    ...secondaryActionTokens,
+    ...infoTokens,
+    ...successTokens,
+    ...warningTokens,
+    ...dangerTokens,
+    ...dataVizTokens,
+    ...gradientTokens,
+  },
+})
