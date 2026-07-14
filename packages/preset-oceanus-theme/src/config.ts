@@ -1,7 +1,7 @@
-import { definePreset, type Preset } from '@pandacss/dev'
 import { type RawThemes } from '@cerberus/tokens'
-import { theme } from './theme/index'
+import { definePreset, type Preset } from '@pandacss/dev'
 import { conditions } from './conditions'
+import { theme } from './theme/index'
 
 /**
  * This module contains the Cerberus preset and configuration options.
@@ -9,18 +9,18 @@ import { conditions } from './conditions'
  **/
 
 export function getThemeName(): RawThemes {
-  return 'elysium'
+  return 'oceanus'
 }
 
-export const presetElysiumTheme: Preset = definePreset({
-  name: '@cerberus/preset-elysium-theme',
+export const presetOceanusTheme: Preset = definePreset({
+  name: '@cerberus/preset-oceanus-theme',
 
   presets: [],
 
   conditions,
 
   themes: {
-    elysium: theme,
+    oceanus: theme,
   },
 
   // opt-into additional theme variants

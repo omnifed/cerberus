@@ -1,4 +1,4 @@
-# @cerberus/preset-elysium-theme
+# @cerberus/preset-oceanus-theme
 
 ## 1.5.0
 

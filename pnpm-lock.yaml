@@ -440,7 +440,7 @@ importers:
         specifier: catalog:pandacss
         version: 1.11.4
 
-  packages/preset-oceana-theme:
+  packages/preset-oceanus-theme:
     dependencies:
       autoprefixer:
         specifier: '*'
