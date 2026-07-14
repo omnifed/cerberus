@@ -591,6 +591,9 @@ importers:
       '@cerberus/preset-elysium-theme':
         specifier: workspace:*
         version: link:../packages/preset-elysium-theme
+      '@cerberus/preset-oceanus-theme':
+        specifier: workspace:*
+        version: link:../packages/preset-oceanus-theme
       '@cerberus/tokens':
         specifier: workspace:*
         version: link:../packages/tokens

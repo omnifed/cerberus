@@ -10,22 +10,22 @@ import {
   dangerTokens,
   gradientTokens,
   dataVizTokens,
-  presetCerberusTheme,
-} from '@cerberus/preset-cerberus-theme'
+  presetOceanusTheme,
+} from '@cerberus/preset-oceanus-theme'
 import { describe, expect, test } from 'bun:test'
 
-describe('Cerberus Theme', () => {
+describe('Oceanus Theme', () => {
   test('should return a valid preset config', () => {
-    expect(presetCerberusTheme).toBeDefined()
-    expect(presetCerberusTheme.name).toBe('@cerberus/preset-cerberus-theme')
+    expect(presetOceanusTheme).toBeDefined()
+    expect(presetOceanusTheme.name).toBe('@cerberus/preset-oceanus-theme')
   })
 
   test('should provide a theme name helper', () => {
-    expect(getThemeName()).toBe('cerberus')
+    expect(getThemeName()).toBe('oceanus')
   })
 
   test('should provide a new condition', () => {
-    expect(conditions.cerberusTheme).toEqual('[data-panda-theme=cerberus] &')
+    expect(conditions.oceanusTheme).toEqual('[data-panda-theme=oceanus] &')
   })
 
   test('pageTokens should match the established baseline', () => {
