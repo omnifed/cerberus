@@ -1,6 +1,7 @@
 'use client'
 
-import { getTheme, injectTheme, type ThemeName } from 'styled-system/themes'
+import { getCodeTheme } from '@/app/utils/colors'
+import { PalmTree, SailboatOffshore } from '@carbon/icons-react'
 import {
   Button,
   Menu,
@@ -11,10 +12,9 @@ import {
   Text,
   useThemeContext,
 } from '@cerberus-design/react'
+import { getTheme, injectTheme, type ThemeName } from 'styled-system/themes'
 import { DogIcon } from '../icons/DogIcon'
 import { FireIcon } from '../icons/FireIcon'
-import { getCodeTheme } from '@/app/utils/colors'
-import { PalmTree } from '@carbon/icons-react'
 
 export function ThemeMenu() {
   const { mode, theme, updateTheme } = useThemeContext()
@@ -60,6 +60,10 @@ export function ThemeMenu() {
         <MenuItem cursor="pointer" value="elysium">
           <MatchThemeContent theme="elysium" />
         </MenuItem>
+
+        <MenuItem cursor="pointer" value="oceanus">
+          <MatchThemeContent theme="oceanus" />
+        </MenuItem>
       </MenuContent>
     </Menu>
   )
@@ -100,6 +104,17 @@ function MatchThemeContent({ theme }: MatchThemeContentProps) {
             <PalmTree />
             <Text display="inline" ps="sm" textStyle="body-sm">
               Elysium
+            </Text>
+          </>
+        )}
+      </Show>
+
+      <Show when={theme === 'oceanus'}>
+        {() => (
+          <>
+            <SailboatOffshore />
+            <Text display="inline" ps="sm" textStyle="body-sm">
+              Oceanus
             </Text>
           </>
         )}

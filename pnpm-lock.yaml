@@ -197,6 +197,9 @@ importers:
       '@cerberus/preset-elysium-theme':
         specifier: workspace:*
         version: link:../packages/preset-elysium-theme
+      '@cerberus/preset-oceanus-theme':
+        specifier: workspace:*
+        version: link:../packages/preset-oceanus-theme
       '@csstools/postcss-cascade-layers':
         specifier: ^6.0.0
         version: 6.0.0(postcss@8.5.17)
