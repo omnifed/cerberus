@@ -1,0 +1,1644 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cerberus Theme pageTokens should match the established baseline 1`] = `
+{
+  "page": {
+    "backdrop": {
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "rgba(32.00000189244747, 25.000000409781933, 53.00000064074993, 0.800000011920929)",
+          "_lightMode": "rgba(188.0000039935112, 186.0000041127205, 202.00000315904617, 0.5)",
+          "base": "rgba(32.00000189244747, 25.000000409781933, 53.00000064074993, 0.800000011920929)",
+        },
+      },
+    },
+    "bg": {
+      "100": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.80}",
+          "_lightMode": "{colors.cerberus.neutral.5}",
+          "base": "{colors.cerberus.neutral.80}",
+        },
+      },
+      "200": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.70}",
+          "_lightMode": "{colors.cerberus.neutral.15}",
+          "base": "{colors.cerberus.neutral.70}",
+        },
+      },
+      "300": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.60}",
+          "_lightMode": "{colors.cerberus.neutral.20}",
+          "base": "{colors.cerberus.neutral.60}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.100}",
+          "_lightMode": "{colors.cerberus.neutral.white}",
+          "base": "{colors.cerberus.brand.100}",
+        },
+      },
+    },
+    "border": {
+      "100": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.60}",
+          "_lightMode": "{colors.cerberus.brand.20}",
+          "base": "{colors.cerberus.neutral.60}",
+        },
+      },
+      "200": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.50}",
+          "_lightMode": "{colors.cerberus.neutral.20}",
+          "base": "{colors.cerberus.neutral.50}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.70}",
+          "_lightMode": "{colors.cerberus.neutral.15}",
+          "base": "{colors.cerberus.neutral.70}",
+        },
+      },
+    },
+    "surface": {
+      "100": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.90}",
+          "_lightMode": "{colors.cerberus.neutral.white}",
+          "base": "{colors.cerberus.neutral.90}",
+        },
+      },
+      "200": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.80}",
+          "_lightMode": "{colors.cerberus.neutral.5}",
+          "base": "{colors.cerberus.neutral.80}",
+        },
+      },
+      "300": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.70}",
+          "_lightMode": "{colors.cerberus.neutral.10}",
+          "base": "{colors.cerberus.neutral.70}",
+        },
+      },
+      "400": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.60}",
+          "_lightMode": "{colors.cerberus.neutral.15}",
+          "base": "{colors.cerberus.neutral.60}",
+        },
+      },
+      "initial": {
+        "description": 
+"Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
+Use for: Page backgrounds"
+,
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.100}",
+          "_lightMode": "{colors.cerberus.brand.5}",
+          "base": "{colors.cerberus.neutral.100}",
+        },
+      },
+      "inverse": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.5}",
+          "_lightMode": "{colors.cerberus.neutral.90}",
+          "base": "{colors.cerberus.neutral.5}",
+        },
+      },
+    },
+    "text": {
+      "100": {
+        "description": "Static text with the least amount of emphasis, like disabled text elements or captions. ",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.20}",
+          "_lightMode": "{colors.cerberus.neutral.40}",
+          "base": "{colors.cerberus.neutral.20}",
+        },
+      },
+      "200": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.10}",
+          "_lightMode": "{colors.cerberus.neutral.60}",
+          "base": "{colors.cerberus.neutral.10}",
+        },
+      },
+      "300": {
+        "description": "High emphasis static text on page, like page headers or section titles. ",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.white}",
+          "_lightMode": "{colors.cerberus.brand.100}",
+          "base": "{colors.cerberus.neutral.white}",
+        },
+      },
+      "initial": {
+        "description": "The default styling for static text and icons on a page.",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.5}",
+          "_lightMode": "{colors.cerberus.neutral.90}",
+          "base": "{colors.cerberus.brand.5}",
+        },
+      },
+      "inverse": {
+        "description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.100}",
+          "_lightMode": "{colors.cerberus.neutral.white}",
+          "base": "{colors.cerberus.neutral.100}",
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Cerberus Theme actionTokens should match the established baseline 1`] = `
+{
+  "action": {
+    "bg": {
+      "active": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.70}",
+          "_lightMode": "{colors.cerberus.brand.40}",
+          "base": "{colors.cerberus.brand.70}",
+        },
+      },
+      "hover": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.50}",
+          "_lightMode": "{colors.cerberus.brand.50}",
+          "base": "{colors.cerberus.brand.50}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.60}",
+          "_lightMode": "{colors.cerberus.brand.60}",
+          "base": "{colors.cerberus.brand.60}",
+        },
+      },
+    },
+    "border": {
+      "100": {
+        "description": "for use on less prominent actionable borders, like input fields etc",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.30}",
+          "_lightMode": "{colors.cerberus.neutral.40}",
+          "base": "{colors.cerberus.neutral.30}",
+        },
+      },
+      "focus": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.40}",
+          "_lightMode": "{colors.cerberus.brand.70}",
+          "base": "{colors.cerberus.brand.40}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.30}",
+          "_lightMode": "{colors.cerberus.brand.60}",
+          "base": "{colors.cerberus.brand.30}",
+        },
+      },
+    },
+    "ghost": {
+      "active": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.70}",
+          "_lightMode": "{colors.cerberus.brand.20}",
+          "base": "{colors.cerberus.brand.70}",
+        },
+      },
+      "hover": {
+        "description": "Hover state of ghost action elements. Pair with text.action.100 to meet accessibility requirements.",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.80}",
+          "_lightMode": "{colors.cerberus.brand.10}",
+          "base": "{colors.cerberus.brand.80}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.100}",
+          "_lightMode": "{colors.cerberus.neutral.white}",
+          "base": "{colors.cerberus.brand.100}",
+        },
+      },
+    },
+    "navigation": {
+      "hover": {
+        "description": "Text color of hyperlinks throughout the site while hovering",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.20}",
+          "_lightMode": "{colors.cerberus.brand.50}",
+          "base": "{colors.cerberus.brand.20}",
+        },
+      },
+      "initial": {
+        "description": "Text color of hyperlinks throughout the site. ",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.30}",
+          "_lightMode": "{colors.cerberus.brand.60}",
+          "base": "{colors.cerberus.brand.30}",
+        },
+      },
+      "visited": {
+        "description": "Text color of hyperlinks throughout the site that have been visited",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.20}",
+          "_lightMode": "{colors.cerberus.neutral.60}",
+          "base": "{colors.cerberus.brand.20}",
+        },
+      },
+    },
+    "text": {
+      "100": {
+        "description": "Text action items that are sitting on a lighter background color, like secondary buttons etc. ",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.40}",
+          "_lightMode": "{colors.cerberus.brand.80}",
+          "base": "{colors.cerberus.brand.40}",
+        },
+      },
+      "200": {
+        "description": "reserved for interactive text, or icons using brand colors. ",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.30}",
+          "_lightMode": "{colors.cerberus.brand.60}",
+          "base": "{colors.cerberus.brand.30}",
+        },
+      },
+      "initial": {
+        "description": 
+"Text color inside of interactive items using the action palette
+Use for: Buttons (filled, outline). Button icons"
+,
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.white}",
+          "_lightMode": "{colors.cerberus.brand.5}",
+          "base": "{colors.cerberus.neutral.white}",
+        },
+      },
+      "inverse": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.5}",
+          "_lightMode": "{colors.cerberus.brand.100}",
+          "base": "{colors.cerberus.brand.5}",
+        },
+      },
+      "static": {
+        "description": "For use when a text color will not change between modes",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.60}",
+          "_lightMode": "{colors.cerberus.brand.60}",
+          "base": "{colors.cerberus.brand.60}",
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Cerberus Theme secondaryActionTokens should match the established baseline 1`] = `
+{
+  "secondaryAction": {
+    "bg": {
+      "active": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.30}",
+          "_lightMode": "{colors.cerberus.brand.40}",
+          "base": "{colors.cerberus.brand.30}",
+        },
+      },
+      "hover": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.50}",
+          "_lightMode": "{colors.cerberus.brand.30}",
+          "base": "{colors.cerberus.neutral.50}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.60}",
+          "_lightMode": "{colors.cerberus.brand.20}",
+          "base": "{colors.cerberus.neutral.60}",
+        },
+      },
+    },
+    "border": {
+      "100": {
+        "description": "for use on less prominent actionable borders, like input fields etc",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.70}",
+          "_lightMode": "{colors.cerberus.brand.20}",
+          "base": "{colors.cerberus.brand.70}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.50}",
+          "_lightMode": "{colors.cerberus.brand.30}",
+          "base": "{colors.cerberus.brand.50}",
+        },
+      },
+    },
+    "ghost": {
+      "active": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.70}",
+          "_lightMode": "{colors.cerberus.neutral.15}",
+          "base": "{colors.cerberus.neutral.70}",
+        },
+      },
+      "hover": {
+        "description": "Hover state of ghost action elements. Pair with text.secondary-action.100 to meet accessibility requirements.",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.80}",
+          "_lightMode": "{colors.cerberus.neutral.10}",
+          "base": "{colors.cerberus.neutral.80}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.100}",
+          "_lightMode": "{colors.cerberus.neutral.white}",
+          "base": "{colors.cerberus.brand.100}",
+        },
+      },
+    },
+    "navigation": {
+      "hover": {
+        "description": "Text color of hyperlinks throughout the site while hovering. ",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.30}",
+          "_lightMode": "{colors.cerberus.brand.50}",
+          "base": "{colors.cerberus.brand.30}",
+        },
+      },
+      "initial": {
+        "description": "Text color of hyperlinks throughout the site. ",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.10}",
+          "_lightMode": "{colors.cerberus.brand.60}",
+          "base": "{colors.cerberus.brand.10}",
+        },
+      },
+      "visited": {
+        "description": "Text color of hyperlinks throughout the site that have been vistited",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.20}",
+          "_lightMode": "{colors.cerberus.brand.100}",
+          "base": "{colors.cerberus.brand.20}",
+        },
+      },
+    },
+    "text": {
+      "100": {
+        "description": "Text color inside of interactive items and icons that have an inverse background of the initial token. That may need a different style of emphasis. Use case may vary per product.",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.10}",
+          "_lightMode": "{colors.cerberus.brand.100}",
+          "base": "{colors.cerberus.brand.10}",
+        },
+      },
+      "200": {
+        "description": 
+"Text color inside of interactive items
+Use for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product."
+,
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.30}",
+          "_lightMode": "{colors.cerberus.brand.50}",
+          "base": "{colors.cerberus.brand.30}",
+        },
+      },
+      "initial": {
+        "description": 
+"Text color inside of interactive items
+Use for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product."
+,
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.20}",
+          "_lightMode": "{colors.cerberus.brand.90}",
+          "base": "{colors.cerberus.brand.20}",
+        },
+      },
+      "static": {
+        "description": 
+"Text color inside of interactive items
+Use for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product."
+,
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.40}",
+          "_lightMode": "{colors.cerberus.brand.40}",
+          "base": "{colors.cerberus.brand.40}",
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Cerberus Theme infoTokens should match the established baseline 1`] = `
+{
+  "info": {
+    "bg": {
+      "active": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.50}",
+          "_lightMode": "{colors.info.cerberus.50}",
+          "base": "{colors.info.cerberus.50}",
+        },
+      },
+      "hover": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.90}",
+          "_lightMode": "{colors.info.cerberus.20}",
+          "base": "{colors.info.cerberus.90}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.70}",
+          "_lightMode": "{colors.info.cerberus.30}",
+          "base": "{colors.info.cerberus.70}",
+        },
+      },
+    },
+    "border": {
+      "100": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.70}",
+          "_lightMode": "{colors.info.cerberus.40}",
+          "base": "{colors.info.cerberus.70}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.50}",
+          "_lightMode": "{colors.info.cerberus.60}",
+          "base": "{colors.info.cerberus.50}",
+        },
+      },
+    },
+    "ghost": {
+      "active": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.80}",
+          "_lightMode": "{colors.info.cerberus.30}",
+          "base": "{colors.info.cerberus.80}",
+        },
+      },
+      "hover": {
+        "description": "Hover state of ghost action elements. Pair with text.info.100 to meet accessibility requirements.",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.90}",
+          "_lightMode": "{colors.info.cerberus.20}",
+          "base": "{colors.info.cerberus.90}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.100}",
+          "_lightMode": "{colors.cerberus.neutral.white}",
+          "base": "{colors.cerberus.brand.100}",
+        },
+      },
+    },
+    "surface": {
+      "100": {
+        "description": 
+"Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
+Use for: Page backgrounds"
+,
+        "value": {
+          "_darkMode": "{colors.info.cerberus.90}",
+          "_lightMode": "{colors.info.cerberus.20}",
+          "base": "{colors.info.cerberus.90}",
+        },
+      },
+      "200": {
+        "description": 
+"Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
+Use for: Page backgrounds"
+,
+        "value": {
+          "_darkMode": "{colors.info.cerberus.70}",
+          "_lightMode": "{colors.info.cerberus.50}",
+          "base": "{colors.info.cerberus.70}",
+        },
+      },
+      "initial": {
+        "description": 
+"Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
+Use for: Page backgrounds"
+,
+        "value": {
+          "_darkMode": "{colors.info.cerberus.80}",
+          "_lightMode": "{colors.info.cerberus.30}",
+          "base": "{colors.info.cerberus.80}",
+        },
+      },
+    },
+    "text": {
+      "100": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.40}",
+          "_lightMode": "{colors.info.cerberus.80}",
+          "base": "{colors.info.cerberus.40}",
+        },
+      },
+      "200": {
+        "description": "High emphasis text or icon to indicate an info state or highlight information",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.10}",
+          "_lightMode": "{colors.info.cerberus.100}",
+          "base": "{colors.info.cerberus.10}",
+        },
+      },
+      "initial": {
+        "description": "The default styling for static info text and icons within an info palette container",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.50}",
+          "_lightMode": "{colors.info.cerberus.70}",
+          "base": "{colors.info.cerberus.50}",
+        },
+      },
+      "static": {
+        "description": "For use when a text color will not change between modes",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.60}",
+          "_lightMode": "{colors.info.cerberus.60}",
+          "base": "{colors.info.cerberus.60}",
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Cerberus Theme successTokens should match the established baseline 1`] = `
+{
+  "success": {
+    "bg": {
+      "active": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.40}",
+          "_lightMode": "{colors.cerberus.success.80}",
+          "base": "{colors.cerberus.success.40}",
+        },
+      },
+      "hover": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.50}",
+          "_lightMode": "{colors.cerberus.success.70}",
+          "base": "{colors.cerberus.success.50}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.50}",
+          "_lightMode": "{colors.cerberus.success.60}",
+          "base": "{colors.cerberus.success.50}",
+        },
+      },
+    },
+    "border": {
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.50}",
+          "_lightMode": "{colors.cerberus.success.70}",
+          "base": "{colors.cerberus.success.50}",
+        },
+      },
+    },
+    "ghost": {
+      "active": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.80}",
+          "_lightMode": "{colors.cerberus.success.20}",
+          "base": "{colors.cerberus.success.80}",
+        },
+      },
+      "hover": {
+        "description": "Hover state of ghost action elements. Pair with text.success.100 to meet accessibility requirements.",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.90}",
+          "_lightMode": "{colors.cerberus.success.10}",
+          "base": "{colors.cerberus.success.90}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.100}",
+          "_lightMode": "{colors.cerberus.neutral.white}",
+          "base": "{colors.cerberus.brand.100}",
+        },
+      },
+    },
+    "surface": {
+      "100": {
+        "description": 
+"Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
+Use for: Page backgrounds"
+,
+        "value": {
+          "_darkMode": "{colors.cerberus.success.90}",
+          "_lightMode": "{colors.cerberus.success.20}",
+          "base": "{colors.cerberus.success.90}",
+        },
+      },
+      "200": {
+        "description": 
+"Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
+Use for: Page backgrounds"
+,
+        "value": {
+          "_darkMode": "{colors.cerberus.success.80}",
+          "_lightMode": "{colors.cerberus.success.60}",
+          "base": "{colors.cerberus.success.80}",
+        },
+      },
+      "initial": {
+        "description": 
+"Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
+Use for: Page backgrounds"
+,
+        "value": {
+          "_darkMode": "{colors.cerberus.success.60}",
+          "_lightMode": "{colors.cerberus.success.50}",
+          "base": "{colors.cerberus.success.60}",
+        },
+      },
+    },
+    "text": {
+      "100": {
+        "description": "Medium emphasis success text ",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.30}",
+          "_lightMode": "{colors.cerberus.success.80}",
+          "base": "{colors.cerberus.success.30}",
+        },
+      },
+      "200": {
+        "description": "Highest emphasis success color",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.10}",
+          "_lightMode": "{colors.cerberus.success.100}",
+          "base": "{colors.cerberus.success.10}",
+        },
+      },
+      "initial": {
+        "description": "The default color of body success text within a success colored container. ",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.60}",
+          "_lightMode": "{colors.cerberus.success.60}",
+          "base": "{colors.cerberus.success.60}",
+        },
+      },
+      "inverse": {
+        "description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.100}",
+          "_lightMode": "{colors.cerberus.success.10}",
+          "base": "{colors.cerberus.success.100}",
+        },
+      },
+      "static": {
+        "description": "For use when a text color will not change between modes",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.70}",
+          "_lightMode": "{colors.cerberus.success.70}",
+          "base": "{colors.cerberus.success.70}",
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Cerberus Theme warningTokens should match the established baseline 1`] = `
+{
+  "warning": {
+    "bg": {
+      "active": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.40}",
+          "_lightMode": "{colors.warning.cerberus.70}",
+          "base": "{colors.warning.cerberus.40}",
+        },
+      },
+      "hover": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.60}",
+          "_lightMode": "{colors.warning.cerberus.60}",
+          "base": "{colors.warning.cerberus.60}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.70}",
+          "_lightMode": "{colors.warning.cerberus.50}",
+          "base": "{colors.warning.cerberus.70}",
+        },
+      },
+    },
+    "border": {
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.20}",
+          "_lightMode": "{colors.warning.cerberus.50}",
+          "base": "{colors.warning.cerberus.20}",
+        },
+      },
+    },
+    "ghost": {
+      "active": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.80}",
+          "_lightMode": "{colors.warning.cerberus.30}",
+          "base": "{colors.warning.cerberus.80}",
+        },
+      },
+      "hover": {
+        "description": "Hover state of ghost action elements. Pair with text.warning.100 to meet accessibility requirements.",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.90}",
+          "_lightMode": "{colors.warning.cerberus.20}",
+          "base": "{colors.warning.cerberus.90}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.100}",
+          "_lightMode": "{colors.cerberus.neutral.white}",
+          "base": "{colors.cerberus.brand.100}",
+        },
+      },
+    },
+    "surface": {
+      "100": {
+        "description": 
+"Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
+Use for: Page backgrounds"
+,
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.90}",
+          "_lightMode": "{colors.warning.cerberus.20}",
+          "base": "{colors.warning.cerberus.90}",
+        },
+      },
+      "200": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.50}",
+          "_lightMode": "{colors.warning.cerberus.60}",
+          "base": "{colors.warning.cerberus.50}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.70}",
+          "_lightMode": "{colors.warning.cerberus.40}",
+          "base": "{colors.warning.cerberus.70}",
+        },
+      },
+    },
+    "text": {
+      "100": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.30}",
+          "_lightMode": "{colors.warning.cerberus.90}",
+          "base": "{colors.warning.cerberus.30}",
+        },
+      },
+      "200": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.100}",
+          "_lightMode": "{colors.warning.cerberus.100}",
+          "base": "{colors.warning.cerberus.100}",
+        },
+      },
+      "initial": {
+        "description": "The default color of body warning text and icons within a warning colored container. ",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.40}",
+          "_lightMode": "{colors.warning.cerberus.90}",
+          "base": "{colors.warning.cerberus.40}",
+        },
+      },
+      "inverse": {
+        "description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.100}",
+          "_lightMode": "{colors.warning.cerberus.20}",
+          "base": "{colors.warning.cerberus.100}",
+        },
+      },
+      "static": {
+        "description": "For use when a text color will not change between modes",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.80}",
+          "_lightMode": "{colors.warning.cerberus.80}",
+          "base": "{colors.warning.cerberus.80}",
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Cerberus Theme dangerTokens should match the established baseline 1`] = `
+{
+  "danger": {
+    "bg": {
+      "active": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.30}",
+          "_lightMode": "{colors.danger.cerberus.90}",
+          "base": "{colors.danger.cerberus.30}",
+        },
+      },
+      "hover": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.50}",
+          "_lightMode": "{colors.danger.cerberus.70}",
+          "base": "{colors.danger.cerberus.50}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.70}",
+          "_lightMode": "{colors.danger.cerberus.60}",
+          "base": "{colors.danger.cerberus.70}",
+        },
+      },
+    },
+    "border": {
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.30}",
+          "_lightMode": "{colors.danger.cerberus.50}",
+          "base": "{colors.danger.cerberus.30}",
+        },
+      },
+    },
+    "ghost": {
+      "active": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.80}",
+          "_lightMode": "{colors.danger.cerberus.20}",
+          "base": "{colors.danger.cerberus.80}",
+        },
+      },
+      "hover": {
+        "description": "Hover state of ghost action elements. Pair with text.danger.100 to meet accessibility requirements.",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.90}",
+          "_lightMode": "{colors.danger.cerberus.10}",
+          "base": "{colors.danger.cerberus.90}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.100}",
+          "_lightMode": "{colors.cerberus.neutral.white}",
+          "base": "{colors.cerberus.brand.100}",
+        },
+      },
+    },
+    "surface": {
+      "100": {
+        "description": 
+"Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
+Use for: Page backgrounds"
+,
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.90}",
+          "_lightMode": "{colors.danger.cerberus.10}",
+          "base": "{colors.danger.cerberus.90}",
+        },
+      },
+      "200": {
+        "description": 
+"Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
+Use for: Page backgrounds"
+,
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.70}",
+          "_lightMode": "{colors.danger.cerberus.60}",
+          "base": "{colors.danger.cerberus.70}",
+        },
+      },
+      "initial": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.80}",
+          "_lightMode": "{colors.danger.cerberus.30}",
+          "base": "{colors.danger.cerberus.80}",
+        },
+      },
+    },
+    "text": {
+      "100": {
+        "description": "Medium emphasis danger text ",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.20}",
+          "_lightMode": "{colors.danger.cerberus.80}",
+          "base": "{colors.danger.cerberus.20}",
+        },
+      },
+      "200": {
+        "description": "High emphasis text or icon to indicate a danger state, like an error within an input field, etc. ",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.10}",
+          "_lightMode": "{colors.danger.cerberus.100}",
+          "base": "{colors.danger.cerberus.10}",
+        },
+      },
+      "initial": {
+        "description": "The default color of body danger text within a danger colored container. ",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.60}",
+          "_lightMode": "{colors.danger.cerberus.70}",
+          "base": "{colors.danger.cerberus.60}",
+        },
+      },
+      "inverse": {
+        "description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.100}",
+          "_lightMode": "{colors.danger.cerberus.10}",
+          "base": "{colors.danger.cerberus.100}",
+        },
+      },
+      "static": {
+        "description": "For use when a text color will not change between modes",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.80}",
+          "_lightMode": "{colors.danger.cerberus.80}",
+          "base": "{colors.danger.cerberus.80}",
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Cerberus Theme gradientTokens should match the established baseline 1`] = `
+{
+  "gradient": {
+    "amphiaraus-dark": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.60}",
+          "_lightMode": "{colors.info.cerberus.60}",
+          "base": "{colors.info.cerberus.60}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.90}",
+          "_lightMode": "{colors.info.cerberus.90}",
+          "base": "{colors.info.cerberus.90}",
+        },
+      },
+      "text": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.20}",
+          "_lightMode": "{colors.info.cerberus.20}",
+          "base": "{colors.info.cerberus.20}",
+        },
+      },
+    },
+    "amphiaraus-light": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.30}",
+          "_lightMode": "{colors.info.cerberus.30}",
+          "base": "{colors.info.cerberus.30}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.10}",
+          "_lightMode": "{colors.info.cerberus.10}",
+          "base": "{colors.info.cerberus.10}",
+        },
+      },
+      "text": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.80}",
+          "_lightMode": "{colors.info.cerberus.80}",
+          "base": "{colors.info.cerberus.80}",
+        },
+      },
+    },
+    "asphodel-dark": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.60}",
+          "_lightMode": "{colors.warning.cerberus.60}",
+          "base": "{colors.warning.cerberus.60}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.80}",
+          "_lightMode": "{colors.warning.cerberus.80}",
+          "base": "{colors.warning.cerberus.80}",
+        },
+      },
+      "text": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.100}",
+          "_lightMode": "{colors.warning.cerberus.100}",
+          "base": "{colors.warning.cerberus.100}",
+        },
+      },
+    },
+    "asphodel-light": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.50}",
+          "_lightMode": "{colors.warning.cerberus.50}",
+          "base": "{colors.warning.cerberus.50}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.20}",
+          "_lightMode": "{colors.warning.cerberus.20}",
+          "base": "{colors.warning.cerberus.20}",
+        },
+      },
+      "text": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.90}",
+          "_lightMode": "{colors.warning.cerberus.90}",
+          "base": "{colors.warning.cerberus.90}",
+        },
+      },
+    },
+    "charon-dark": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.40}",
+          "_lightMode": "{colors.cerberus.brand.40}",
+          "base": "{colors.cerberus.brand.40}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.70}",
+          "_lightMode": "{colors.cerberus.brand.70}",
+          "base": "{colors.cerberus.brand.70}",
+        },
+      },
+      "text": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.10}",
+          "_lightMode": "{colors.cerberus.brand.10}",
+          "base": "{colors.cerberus.brand.10}",
+        },
+      },
+    },
+    "charon-light": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.40}",
+          "_lightMode": "{colors.cerberus.brand.40}",
+          "base": "{colors.cerberus.brand.40}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.20}",
+          "_lightMode": "{colors.cerberus.brand.20}",
+          "base": "{colors.cerberus.brand.20}",
+        },
+      },
+      "text": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.70}",
+          "_lightMode": "{colors.cerberus.brand.70}",
+          "base": "{colors.cerberus.brand.70}",
+        },
+      },
+    },
+    "hades-dark": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.50}",
+          "_lightMode": "{colors.danger.cerberus.50}",
+          "base": "{colors.danger.cerberus.50}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.80}",
+          "_lightMode": "{colors.danger.cerberus.80}",
+          "base": "{colors.danger.cerberus.80}",
+        },
+      },
+      "text": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.10}",
+          "_lightMode": "{colors.danger.cerberus.10}",
+          "base": "{colors.danger.cerberus.10}",
+        },
+      },
+    },
+    "hades-light": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.40}",
+          "_lightMode": "{colors.danger.cerberus.40}",
+          "base": "{colors.danger.cerberus.40}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.20}",
+          "_lightMode": "{colors.danger.cerberus.20}",
+          "base": "{colors.danger.cerberus.20}",
+        },
+      },
+      "text": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.danger.cerberus.80}",
+          "_lightMode": "{colors.danger.cerberus.80}",
+          "base": "{colors.danger.cerberus.80}",
+        },
+      },
+    },
+    "nyx-dark": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.60}",
+          "_lightMode": "{colors.cerberus.neutral.60}",
+          "base": "{colors.cerberus.neutral.60}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.100}",
+          "_lightMode": "{colors.cerberus.neutral.100}",
+          "base": "{colors.cerberus.neutral.100}",
+        },
+      },
+      "text": {
+        "description": "Reserved for usage only on top of gradients",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.20}",
+          "_lightMode": "{colors.cerberus.neutral.20}",
+          "base": "{colors.cerberus.neutral.20}",
+        },
+      },
+    },
+    "nyx-light": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.10}",
+          "_lightMode": "{colors.acheron.neutral.10}",
+          "base": "{colors.cerberus.neutral.10}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.30}",
+          "_lightMode": "{colors.cerberus.neutral.30}",
+          "base": "{colors.cerberus.neutral.30}",
+        },
+      },
+      "text": {
+        "description": "Reserved for usage only on top of gradients",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.100}",
+          "_lightMode": "{colors.cerberus.neutral.100}",
+          "base": "{colors.cerberus.neutral.100}",
+        },
+      },
+    },
+    "styx-dark": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.teal.70}",
+          "_lightMode": "{colors.cerberus.teal.70}",
+          "base": "{colors.cerberus.teal.70}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.teal.50}",
+          "_lightMode": "{colors.cerberus.teal.50}",
+          "base": "{colors.cerberus.teal.50}",
+        },
+      },
+      "text": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.teal.100}",
+          "_lightMode": "{colors.cerberus.teal.100}",
+          "base": "{colors.cerberus.teal.100}",
+        },
+      },
+    },
+    "styx-light": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.teal.50}",
+          "_lightMode": "{colors.cerberus.teal.50}",
+          "base": "{colors.cerberus.teal.50}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.teal.20}",
+          "_lightMode": "{colors.cerberus.teal.20}",
+          "base": "{colors.cerberus.teal.20}",
+        },
+      },
+      "text": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.teal.90}",
+          "_lightMode": "{colors.cerberus.teal.90}",
+          "base": "{colors.cerberus.teal.90}",
+        },
+      },
+    },
+    "thanatos-dark": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.80}",
+          "_lightMode": "{colors.cerberus.success.80}",
+          "base": "{colors.cerberus.success.80}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.60}",
+          "_lightMode": "{colors.cerberus.success.60}",
+          "base": "{colors.cerberus.success.60}",
+        },
+      },
+      "text": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.20}",
+          "_lightMode": "{colors.cerberus.success.20}",
+          "base": "{colors.cerberus.success.20}",
+        },
+      },
+    },
+    "thanatos-light": {
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.40}",
+          "_lightMode": "{colors.cerberus.success.40}",
+          "base": "{colors.cerberus.success.40}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.10}",
+          "_lightMode": "{colors.cerberus.success.10}",
+          "base": "{colors.cerberus.success.10}",
+        },
+      },
+      "text": {
+        "description": "for text and icons on top of a gradient",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.90}",
+          "_lightMode": "{colors.cerberus.success.90}",
+          "base": "{colors.cerberus.success.90}",
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`Cerberus Theme dataVizTokens should match the established baseline 1`] = `
+{
+  "dataViz": {
+    "diverging": {
+      "100": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.50}",
+          "_lightMode": "{colors.warning.cerberus.50}",
+          "base": "{colors.warning.cerberus.50}",
+        },
+      },
+      "200": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.40}",
+          "_lightMode": "{colors.warning.cerberus.40}",
+          "base": "{colors.warning.cerberus.40}",
+        },
+      },
+      "300": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.30}",
+          "_lightMode": "{colors.warning.cerberus.30}",
+          "base": "{colors.warning.cerberus.30}",
+        },
+      },
+      "400": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.20}",
+          "_lightMode": "{colors.warning.cerberus.20}",
+          "base": "{colors.warning.cerberus.20}",
+        },
+      },
+      "50": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.60}",
+          "_lightMode": "{colors.warning.cerberus.60}",
+          "base": "{colors.warning.cerberus.60}",
+        },
+      },
+      "500": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.10}",
+          "_lightMode": "{colors.cerberus.neutral.10}",
+          "base": "{colors.cerberus.neutral.10}",
+        },
+      },
+      "600": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.30}",
+          "_lightMode": "{colors.cerberus.brand.30}",
+          "base": "{colors.cerberus.brand.30}",
+        },
+      },
+      "700": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.40}",
+          "_lightMode": "{colors.cerberus.brand.40}",
+          "base": "{colors.cerberus.brand.40}",
+        },
+      },
+      "800": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.50}",
+          "_lightMode": "{colors.cerberus.brand.50}",
+          "base": "{colors.cerberus.brand.50}",
+        },
+      },
+      "900": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.60}",
+          "_lightMode": "{colors.cerberus.brand.60}",
+          "base": "{colors.cerberus.brand.60}",
+        },
+      },
+    },
+    "progress": {
+      "complete": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.60}",
+          "_lightMode": "{colors.cerberus.success.60}",
+          "base": "{colors.cerberus.success.60}",
+        },
+      },
+      "end": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.70}",
+          "_lightMode": "{colors.cerberus.brand.70}",
+          "base": "{colors.cerberus.brand.70}",
+        },
+      },
+      "start": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.40}",
+          "_lightMode": "{colors.cerberus.brand.40}",
+          "base": "{colors.cerberus.brand.40}",
+        },
+      },
+    },
+    "qualitative": {
+      "100": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.50}",
+          "_lightMode": "{colors.cerberus.brand.50}",
+          "base": "{colors.cerberus.brand.50}",
+        },
+      },
+      "200": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.warning.cerberus.60}",
+          "_lightMode": "{colors.warning.cerberus.60}",
+          "base": "{colors.warning.cerberus.60}",
+        },
+      },
+      "300": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.success.60}",
+          "_lightMode": "{colors.cerberus.success.60}",
+          "base": "{colors.cerberus.success.60}",
+        },
+      },
+      "400": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.info.cerberus.50}",
+          "_lightMode": "{colors.info.cerberus.50}",
+          "base": "{colors.info.cerberus.50}",
+        },
+      },
+      "500": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.30}",
+          "_lightMode": "{colors.cerberus.brand.30}",
+          "base": "{colors.cerberus.brand.30}",
+        },
+      },
+      "600": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.teal.70}",
+          "_lightMode": "{colors.cerberus.teal.70}",
+          "base": "{colors.cerberus.teal.70}",
+        },
+      },
+      "700": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.neutral.40}",
+          "_lightMode": "{colors.cerberus.neutral.40}",
+          "base": "{colors.cerberus.neutral.40}",
+        },
+      },
+    },
+    "sequential": {
+      "100": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.80}",
+          "_lightMode": "{colors.cerberus.brand.10}",
+          "base": "{colors.cerberus.brand.80}",
+        },
+      },
+      "200": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.60}",
+          "_lightMode": "{colors.cerberus.brand.40}",
+          "base": "{colors.cerberus.brand.60}",
+        },
+      },
+      "300": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.50}",
+          "_lightMode": "{colors.cerberus.brand.50}",
+          "base": "{colors.cerberus.brand.50}",
+        },
+      },
+      "400": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.40}",
+          "_lightMode": "{colors.cerberus.brand.70}",
+          "base": "{colors.cerberus.brand.40}",
+        },
+      },
+      "500": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.20}",
+          "_lightMode": "{colors.cerberus.brand.80}",
+          "base": "{colors.cerberus.brand.20}",
+        },
+      },
+      "600": {
+        "description": "",
+        "value": {
+          "_darkMode": "{colors.cerberus.brand.10}",
+          "_lightMode": "{colors.cerberus.brand.90}",
+          "base": "{colors.cerberus.brand.10}",
+        },
+      },
+    },
+  },
+}
+`;

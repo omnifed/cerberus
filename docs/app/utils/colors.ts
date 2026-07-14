@@ -23,11 +23,16 @@ const SYNTAX_MAP: Record<RawThemes, ModeOptions> = {
     dark: 'vitesse-black',
     system: 'vitesse-black',
   },
+  oceanus: {
+    light: 'vitesse-light',
+    dark: 'vitesse-black',
+    system: 'vitesse-black',
+  },
 }
 
-export function getCodeTheme(
-  currentMode: ColorModes,
-  currentTheme: RawThemes,
-): string {
+/**
+ * @deprecated - use shiki codesyntax instead
+ */
+export function getCodeTheme(currentMode: ColorModes, currentTheme: RawThemes): string {
   return SYNTAX_MAP[currentTheme][currentMode]
 }

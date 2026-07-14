@@ -197,6 +197,9 @@ importers:
       '@cerberus/preset-elysium-theme':
         specifier: workspace:*
         version: link:../packages/preset-elysium-theme
+      '@cerberus/preset-oceanus-theme':
+        specifier: workspace:*
+        version: link:../packages/preset-oceanus-theme
       '@csstools/postcss-cascade-layers':
         specifier: ^6.0.0
         version: 6.0.0(postcss@8.5.17)
@@ -440,6 +443,25 @@ importers:
         specifier: catalog:pandacss
         version: 1.11.4
 
+  packages/preset-oceanus-theme:
+    dependencies:
+      autoprefixer:
+        specifier: '*'
+        version: 10.5.2(postcss@8.5.17)
+      postcss:
+        specifier: '*'
+        version: 8.5.17
+    devDependencies:
+      '@cerberus/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+      '@pandacss/dev':
+        specifier: catalog:pandacss
+        version: 1.11.4(typescript@7.0.2)
+      '@pandacss/types':
+        specifier: catalog:pandacss
+        version: 1.11.4
+
   packages/react:
     dependencies:
       '@ark-ui/react':
@@ -569,6 +591,9 @@ importers:
       '@cerberus/preset-elysium-theme':
         specifier: workspace:*
         version: link:../packages/preset-elysium-theme
+      '@cerberus/preset-oceanus-theme':
+        specifier: workspace:*
+        version: link:../packages/preset-oceanus-theme
       '@cerberus/tokens':
         specifier: workspace:*
         version: link:../packages/tokens
@@ -8124,7 +8149,7 @@ snapshots:
       '@vue/shared': 3.5.25
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.14
+      postcss: 8.5.17
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.5.25':

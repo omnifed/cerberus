@@ -1,7 +1,4 @@
-import {
-  createCerberusConfig,
-  createCerberusPreset,
-} from '@cerberus/panda-preset'
+import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
 import {
   presetAcheronTheme,
   getThemeName as getAcheronThemeName,
@@ -10,6 +7,10 @@ import {
   presetElysiumTheme,
   getThemeName as getElysiumThemeName,
 } from '@cerberus/preset-elysium-theme'
+import {
+  presetOceanusTheme,
+  getThemeName as getOceanusThemeName,
+} from '@cerberus/preset-oceanus-theme'
 
 export default createCerberusConfig({
   clean: true,
@@ -23,19 +24,22 @@ export default createCerberusConfig({
   ],
   exclude: [],
 
-  presets: [createCerberusPreset(), presetAcheronTheme, presetElysiumTheme],
+  presets: [
+    createCerberusPreset(),
+    presetAcheronTheme,
+    presetElysiumTheme,
+    presetOceanusTheme,
+  ],
 
   globalVars: {
     '--nav-height': '3.75rem',
     '--shiki-background': 'var(--cerberus-colors-page-surface-100)',
     '--shiki-foreground': 'var(--cerberus-colors-page-text-initial)',
-    '--shiki-token-keyword':
-      'var(--cerberus-colors-secondary-action-text-initial)',
+    '--shiki-token-keyword': 'var(--cerberus-colors-secondary-action-text-initial)',
     '--shiki-token-function': 'var(--cerberus-colors-info-text-initial)',
     '--shiki-token-string': 'var(--cerberus-colors-success-text-initial)',
     '--shiki-token-constant': 'var(--cerberus-colors-warning-text-initial)',
-    '--shiki-token-string-expression':
-      'var(--cerberus-colors-success-bg-active)',
+    '--shiki-token-string-expression': 'var(--cerberus-colors-success-bg-active)',
     '--shiki-token-parameter': 'var(--cerberus-colors-page-text-initial)',
     '--shiki-token-punctuation': 'var(--cerberus-colors-page-text-100)',
     '--shiki-token-comment': 'var(--cerberus-colors-page-text-100)',
@@ -43,7 +47,12 @@ export default createCerberusConfig({
   },
 
   staticCss: {
-    themes: ['cerberus', getAcheronThemeName(), getElysiumThemeName()],
+    themes: [
+      'cerberus',
+      getAcheronThemeName(),
+      getElysiumThemeName(),
+      getOceanusThemeName(),
+    ],
   },
 
   theme: {

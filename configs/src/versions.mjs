@@ -12,5 +12,6 @@ export const jsrPackages = [
   'preset-acheron-theme',
   'preset-cerberus-theme',
   'preset-elysium-theme',
+  'preset-oceanus-theme',
   'panda-preset',
 ]

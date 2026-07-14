@@ -45,4 +45,15 @@ export const items = [
     slug: 'context-7',
     href: '/docs/get-started/context-7',
   },
+  {
+    id: '3.0',
+    label: 'Presets',
+    href: '',
+  },
+  {
+    id: '3.1',
+    label: 'Themes',
+    slug: 'themes',
+    href: '/docs/get-started/themes',
+  },
 ]

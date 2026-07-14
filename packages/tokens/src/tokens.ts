@@ -1,19 +1,10 @@
 import { tokens as primitiveColors, modes as colorModes } from './data/colors'
-import {
-  tokens as primitiveSpacing,
-  modes as spacingModes,
-} from './data/spacing'
+import { tokens as primitiveSpacing, modes as spacingModes } from './data/spacing'
 import { tokens as primitiveRadii, modes as radiiModes } from './data/radii'
-import {
-  tokens as primitiveFontSize,
-  modes as fontSizeModes,
-} from './data/font-size'
+import { tokens as primitiveFontSize, modes as fontSizeModes } from './data/font-size'
 
 // Compositions
-import {
-  tokens as textStyle,
-  modes as textStylesMode,
-} from './data/text-styles'
+import { tokens as textStyle, modes as textStylesMode } from './data/text-styles'
 
 // Themes
 import {
@@ -31,6 +22,11 @@ import {
   tokens as elysiumTokens,
   modes as elysiumModes,
 } from './data/elysium'
+import {
+  collection as oceanusCollection,
+  tokens as oceanusTokens,
+  modes as oceanusModes,
+} from './data/oceanus'
 
 // TEMPORARY
 import { nodes } from './data/text-nodes'
@@ -80,5 +76,10 @@ export const themes = {
     collection: elysiumCollection,
     tokens: elysiumTokens,
     modes: elysiumModes,
+  },
+  oceanus: {
+    collection: oceanusCollection,
+    tokens: oceanusTokens,
+    modes: oceanusModes,
   },
 }

@@ -36,14 +36,7 @@ export type Usage =
  * @description **noun**, how something stands out.
  * @readonly **optional**
  */
-export type Prominence =
-  | 'initial'
-  | 'inverse'
-  | 'static'
-  | 100
-  | 200
-  | 300
-  | 400
+export type Prominence = 'initial' | 'inverse' | 'static' | 100 | 200 | 300 | 400
 
 /**
  * The state of an color.
@@ -62,8 +55,8 @@ export type GradientUsage = 'start' | 'end' | 'text'
 /**
  * The Cerberus theme of a color.
  */
-export type Themes = 'cerberusTheme' | 'acheronTheme' | 'elysiumTheme'
-export type RawThemes = 'cerberus' | 'acheron' | 'elysium'
+export type Themes = 'cerberusTheme' | 'acheronTheme' | 'elysiumTheme' | 'oceanusTheme'
+export type RawThemes = 'cerberus' | 'acheron' | 'elysium' | 'oceanus'
 
 /**
  * The mode option of a Cerberus theme.

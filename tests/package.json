@@ -18,6 +18,7 @@
     "@cerberus/preset-acheron-theme": "workspace:*",
     "@cerberus/preset-cerberus-theme": "workspace:*",
     "@cerberus/preset-elysium-theme": "workspace:*",
+    "@cerberus/preset-oceanus-theme": "workspace:*",
     "@cerberus/tokens": "workspace:*",
     "@happy-dom/global-registrator": "^20.10.6",
     "@pandacss/types": "catalog:pandacss",

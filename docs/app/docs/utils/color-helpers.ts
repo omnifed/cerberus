@@ -1,6 +1,8 @@
 import { presetAcheronTheme as acheronTheme } from '@cerberus/preset-acheron-theme'
 import { presetCerberusTheme as cerberusTheme } from '@cerberus/preset-cerberus-theme'
 import { presetElysiumTheme as elysiumTheme } from '@cerberus/preset-elysium-theme'
+import { presetOceanusTheme as oceanusTheme } from '@cerberus/preset-oceanus-theme'
+
 import {
   RawThemes,
   type SemanticToken,
@@ -22,6 +24,9 @@ export function getTokenList(
   const elysiumTokens = elysiumTheme?.themes?.elysium?.semanticTokens as {
     colors: SentimentConfig
   }
+  const oceanusTokens = oceanusTheme?.themes?.oceanus?.semanticTokens as {
+    colors: SentimentConfig
+  }
 
   function getTokens(): SentimentConfig {
     switch (theme) {
@@ -31,6 +36,8 @@ export function getTokenList(
         return cerberusTokens.colors
       case 'elysium':
         return elysiumTokens.colors
+      case 'oceanus':
+        return oceanusTokens.colors
       default:
         return cerberusTokens.colors
     }

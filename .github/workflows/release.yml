@@ -208,6 +208,32 @@ jobs:
         working-directory: ./packages/preset-acheron-theme
         continue-on-error: true # Bypasses the known Base64url provenance decoding bug
 
+  jsr-publish-preset-oceanus:
+    if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
+    runs-on: ubuntu-latest
+    name: JSR - Publish Oceanus Theme
+    needs: jsr-publish-tokens
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+        with:
+          cache: true
+
+      - run: pnpm install && deno install
+      - run: deno publish --allow-dirty
+        working-directory: ./packages/preset-oceanus-theme
+        continue-on-error: true # Bypasses the known Base64url provenance decoding bug
+
   jsr-publish-preset-cerberus:
     if: "contains(github.event.head_commit.message, 'chore(release): version packages') || github.event_name == 'workflow_dispatch'"
     runs-on: ubuntu-latest

@@ -1,0 +1,6 @@
+{
+  "name": "@cerberus/preset-oceanus-theme",
+  "version": "1.5.0",
+  "license": "MIT",
+  "exports": "./src/index.ts"
+}

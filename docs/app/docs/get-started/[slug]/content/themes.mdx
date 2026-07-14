@@ -1,0 +1,57 @@
+---
+title: Theme Presets
+description: Learn how to use different themes in Cerberus
+---
+
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { NoteAdmonition } from '@/app/components/Admonition'
+
+<NoteAdmonition description="Every theme listed is featured on this website in the theme selector menu located in the top right corner." />
+
+Cerberus has a set of additional theme presets that you can use to quickly apply a consistent look and feel to your application.
+
+You can either use the official theme presets or create your own theme and submit it as a pull request to the [Cerberus GitHub repository](https://github.com/omnifed/cerberus).
+
+## List of Cerberus Themes
+
+- [`@cerberus/preset-cerberus-theme`](https://github.com/omnifed/cerberus/tree/main/packages/preset-cerberus-theme): the base theme which comes built-in with Cerberus
+- [`@cerberus/preset-acheron-theme`](https://github.com/omnifed/cerberus/tree/main/packages/preset-acheron-theme): A earthy toned theme
+- [`@cerberus/preset-elysium-theme`](https://github.com/omnifed/cerberus/tree/main/packages/preset-elysium-theme): A high-contrast theme
+- [`@cerberus/preset-oceanus-theme`](https://github.com/omnifed/cerberus/tree/main/packages/preset-oceanus-theme): A blue theme
+
+### Contents
+
+A theme preset should contains the following configuration updates and helpers:
+
+- [Semantic Tokens](/docs/theming/colors#semantic-tokens)
+- Theme-specific condition using the naming convention `[themeName]Theme`
+- A `getThemeName` helper function
+
+### Package Naming
+
+Theme packages should be named `@cerberus/preset-[themeName]-theme`.
+
+## Using Official Theme Presets
+
+To use any of the official theme presets, install the package and update your `panda.config.ts` file accordingly.
+
+<CodeSnippet snippet={`// panda.config.ts
+import { defineConfig } from '@pandacss/dev'
+import { cerberusPreset, cerberusConfig } from '@cerberus/panda-preset'
+import {
+  acheronTheme,
+  getAcheronThemeName,
+} from '@cerberus/preset-acheron-theme'
+
+export default defineConfig({
+    ...cerberusConfig,
+  
+    include: ['./src/**/*.{ts,tsx,js,jsx}'],
+    exclude: [],
+    
+    presets: [cerberusPreset(), acheronTheme],
+    
+    staticCss: {
+      themes: ['cerberus', getAcheronThemeName()],
+    },
+})`} />

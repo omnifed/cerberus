@@ -13,7 +13,6 @@ const seoConfig: Metadata = defineMetadata({
       'Cerberus UI Platform - Build your brand & products with accessibility and performance in mind',
   },
   description: 'Build your brand & products with accessibility and performance in mind',
-  themeColor: '#F6E458',
   openGraph: {
     images: `${publicUrl}/og`,
     url: publicUrl,

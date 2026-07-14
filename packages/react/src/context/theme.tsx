@@ -8,7 +8,7 @@ import { useTheme, type UseThemeOptions } from '../hooks/useTheme'
  * @module Theme
  */
 
-export type DefaultThemes = 'cerberus' | 'acheron' | 'elysium'
+export type DefaultThemes = 'cerberus' | 'acheron' | 'elysium' | 'oceanus'
 export type CustomThemes<K extends string = DefaultThemes> = 'cerberus' | K
 export type ColorModes = 'light' | 'dark' | 'system'
 
@@ -31,9 +31,7 @@ export interface ThemeContextValue<T extends string = DefaultThemes> {
   updateMode: (mode: ColorModes) => void
 }
 
-const ThemeContext = createContext<ThemeContextValue<DefaultThemes> | null>(
-  null,
-)
+const ThemeContext = createContext<ThemeContextValue<DefaultThemes> | null>(null)
 
 export interface ThemeProviderProps extends UseThemeOptions {
   /**
@@ -64,11 +62,7 @@ export function ThemeProvider(props: PropsWithChildren<ThemeProviderProps>) {
     updateTheme: props.updateTheme,
   }) as ThemeContextValue<DefaultThemes>
 
-  return (
-    <ThemeContext.Provider value={state}>
-      {props.children}
-    </ThemeContext.Provider>
-  )
+  return <ThemeContext.Provider value={state}>{props.children}</ThemeContext.Provider>
 }
 
 /**
