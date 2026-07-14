@@ -127,7 +127,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'FLOAT',
     scopes: [],
-    valuesByMode: { '5686:5': 500 },
+    valuesByMode: { '5686:5': 999 },
     variableCollectionId: 'VariableCollectionId:5686:24674',
   },
   lg: {

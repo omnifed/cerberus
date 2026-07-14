@@ -135,10 +135,10 @@ describe('Elysium > actionTokens', () => {
   test('should have a elysium action.ghost.active key', () => {
     expect(actionTokens.action.ghost.active).toBeDefined()
     expect(actionTokens.action.ghost.active.value.base).toBe(
-      getSemanticToken`elysium.brand.80`,
+      getSemanticToken`elysium.neutral.50`,
     )
     expect(actionTokens.action.ghost.active.value._darkMode).toBe(
-      getSemanticToken`elysium.brand.80`,
+      getSemanticToken`elysium.neutral.50`,
     )
     expect(actionTokens.action.ghost.active.value._lightMode).toBe(
       getSemanticToken`elysium.neutral.10`,

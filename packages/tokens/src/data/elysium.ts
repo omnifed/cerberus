@@ -127,7 +127,6 @@ export const collection = {
     'VariableID:18289:3479': 'VariableOverrideId:22034:9798',
     'VariableID:18303:12040': 'VariableOverrideId:22008:349',
     'VariableID:22119:7399': 'VariableOverrideId:22119:7400',
-    'VariableID:22119:8904': 'VariableOverrideId:22119:8905',
     'VariableID:4328:23833': 'VariableOverrideId:21998:7283',
     'VariableID:4737:11565': 'VariableOverrideId:21998:7305',
     'VariableID:4737:5172': 'VariableOverrideId:21998:7280',
@@ -322,8 +321,6 @@ export const collection = {
     'VariableID:13697:8126',
     'VariableID:18289:3479',
     'VariableID:18303:12040',
-    'VariableID:22119:7399',
-    'VariableID:22119:8904',
     'VariableID:4328:23833',
     'VariableID:4737:11565',
     'VariableID:4737:5172',
@@ -442,7 +439,7 @@ export const collection = {
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6858',
+        id: 'VariableID:21998:6848',
         type: 'VARIABLE_ALIAS',
       },
     },
@@ -1413,10 +1410,6 @@ export const collection = {
     'VariableID:22119:7399': {
       'VariableCollectionId:21998:4900/21998:12': 'General Sans Variable',
       'VariableCollectionId:21998:4900/21998:13': 'General Sans Variable',
-    },
-    'VariableID:22119:8904': {
-      'VariableCollectionId:21998:4900/21998:12': 'Source Code Pro',
-      'VariableCollectionId:21998:4900/21998:13': 'Source Code Pro',
     },
     'VariableID:4328:23833': {
       'VariableCollectionId:21998:4900/21998:12': {
@@ -2471,7 +2464,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.10',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.80',
+      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3457,38 +3450,6 @@ export const tokens = {
     valuesByMode: {
       'VariableCollectionId:21998:4900/21998:12': 'elysium.drop-shadow.100',
       'VariableCollectionId:21998:4900/21998:13': 'elysium.drop-shadow.800',
-    },
-    variableCollectionId: 'VariableCollectionId:4328:23832',
-  },
-  'font.brand': {
-    codeSyntax: {},
-    description: '',
-    hiddenFromPublishing: true,
-    id: 'VariableID:22119:7399',
-    key: '8470428e1e4d57ac48df710a7c955aed33046f74',
-    name: 'font/brand',
-    remote: false,
-    resolvedType: 'STRING',
-    scopes: ['ALL_SCOPES'],
-    valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'General Sans Variable',
-      'VariableCollectionId:21998:4900/21998:13': 'General Sans Variable',
-    },
-    variableCollectionId: 'VariableCollectionId:4328:23832',
-  },
-  'font.monospace': {
-    codeSyntax: {},
-    description: '',
-    hiddenFromPublishing: true,
-    id: 'VariableID:22119:8904',
-    key: 'a450978e20569aa53ef9a06b1b00be9b4f417b8b',
-    name: 'font/monospace',
-    remote: false,
-    resolvedType: 'STRING',
-    scopes: ['ALL_SCOPES'],
-    valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'Source Code Pro',
-      'VariableCollectionId:21998:4900/21998:13': 'Source Code Pro',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
