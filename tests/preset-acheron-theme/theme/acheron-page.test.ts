@@ -29,56 +29,48 @@ describe('Acheron > page', () => {
   // bg.initial
 
   test('should have a acheron bg.100 property', () => {
-    expect(token.bg['100'].value.base).toEqual(
-      getSemanticToken`acheron.neutral.80`,
-    )
+    expect(token.bg['100'].value.base).toEqual(getSemanticToken`acheron.neutral.80`)
     expect(token.bg['100'].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.80`,
     )
     expect(token.bg['100'].value._lightMode).toEqual(
-      getSemanticToken`acheron.neutral.10`,
+      getSemanticToken`acheron.neutral.5`,
     )
   })
 
   // bg.100
 
   test('should have a acheron bg.100 property', () => {
-    expect(token.bg['100'].value.base).toEqual(
-      getSemanticToken`acheron.neutral.80`,
-    )
+    expect(token.bg['100'].value.base).toEqual(getSemanticToken`acheron.neutral.80`)
     expect(token.bg['100'].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.80`,
     )
     expect(token.bg['100'].value._lightMode).toEqual(
-      getSemanticToken`acheron.neutral.10`,
+      getSemanticToken`acheron.neutral.5`,
     )
   })
 
   // bg.200
 
   test('should have a acheron bg.200 property', () => {
-    expect(token.bg['200'].value.base).toEqual(
-      getSemanticToken`acheron.neutral.70`,
-    )
+    expect(token.bg['200'].value.base).toEqual(getSemanticToken`acheron.neutral.70`)
     expect(token.bg['200'].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.70`,
     )
     expect(token.bg['200'].value._lightMode).toEqual(
-      getSemanticToken`acheron.neutral.20`,
+      getSemanticToken`acheron.neutral.10`,
     )
   })
 
   // bg.300
 
   test('should have a acheron bg.300 property', () => {
-    expect(token.bg['300'].value.base).toEqual(
-      getSemanticToken`acheron.neutral.60`,
-    )
+    expect(token.bg['300'].value.base).toEqual(getSemanticToken`acheron.neutral.60`)
     expect(token.bg['300'].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.60`,
     )
     expect(token.bg['300'].value._lightMode).toEqual(
-      getSemanticToken`acheron.neutral.30`,
+      getSemanticToken`acheron.neutral.20`,
     )
   })
 
@@ -99,9 +91,7 @@ describe('Acheron > page', () => {
   // border.100
 
   test('should have a acheron border.100 property', () => {
-    expect(token.border[100].value.base).toEqual(
-      getSemanticToken`acheron.neutral.80`,
-    )
+    expect(token.border[100].value.base).toEqual(getSemanticToken`acheron.neutral.80`)
     expect(token.border[100].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.80`,
     )
@@ -113,9 +103,7 @@ describe('Acheron > page', () => {
   // border.200
 
   test('should have a acheron border.200 property', () => {
-    expect(token.border[200].value.base).toEqual(
-      getSemanticToken`acheron.neutral.50`,
-    )
+    expect(token.border[200].value.base).toEqual(getSemanticToken`acheron.neutral.50`)
     expect(token.border[200].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.50`,
     )
@@ -141,9 +129,7 @@ describe('Acheron > page', () => {
   // surface.100
 
   test('should have a acheron surface.100 property', () => {
-    expect(token.surface[100].value.base).toEqual(
-      getSemanticToken`acheron.neutral.90`,
-    )
+    expect(token.surface[100].value.base).toEqual(getSemanticToken`acheron.neutral.90`)
     expect(token.surface[100].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.90`,
     )
@@ -155,9 +141,7 @@ describe('Acheron > page', () => {
   // surface.200
 
   test('should have a acheron surface.200 property', () => {
-    expect(token.surface[200].value.base).toEqual(
-      getSemanticToken`acheron.neutral.80`,
-    )
+    expect(token.surface[200].value.base).toEqual(getSemanticToken`acheron.neutral.80`)
     expect(token.surface[200].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.80`,
     )
@@ -169,9 +153,7 @@ describe('Acheron > page', () => {
   // surface.300
 
   test('should have a acheron surface.300 property', () => {
-    expect(token.surface[300].value.base).toEqual(
-      getSemanticToken`acheron.neutral.70`,
-    )
+    expect(token.surface[300].value.base).toEqual(getSemanticToken`acheron.neutral.70`)
     expect(token.surface[300].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.70`,
     )
@@ -183,9 +165,7 @@ describe('Acheron > page', () => {
   // surface.400
 
   test('should have a acheron surface.400 property', () => {
-    expect(token.surface[400].value.base).toEqual(
-      getSemanticToken`acheron.neutral.60`,
-    )
+    expect(token.surface[400].value.base).toEqual(getSemanticToken`acheron.neutral.60`)
     expect(token.surface[400].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.60`,
     )
@@ -211,9 +191,7 @@ describe('Acheron > page', () => {
   // text.initial
 
   test('should have a acheron text.initial property', () => {
-    expect(token.text.initial.value.base).toEqual(
-      getSemanticToken`acheron.neutral.5`,
-    )
+    expect(token.text.initial.value.base).toEqual(getSemanticToken`acheron.neutral.5`)
     expect(token.text.initial.value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.5`,
     )
@@ -225,9 +203,7 @@ describe('Acheron > page', () => {
   // text.100
 
   test('should have a acheron text.100 property', () => {
-    expect(token.text[100].value.base).toEqual(
-      getSemanticToken`acheron.neutral.40`,
-    )
+    expect(token.text[100].value.base).toEqual(getSemanticToken`acheron.neutral.40`)
     expect(token.text[100].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.40`,
     )
@@ -239,9 +215,7 @@ describe('Acheron > page', () => {
   // text.200
 
   test('should have a acheron text.200 property', () => {
-    expect(token.text[200].value.base).toEqual(
-      getSemanticToken`acheron.neutral.20`,
-    )
+    expect(token.text[200].value.base).toEqual(getSemanticToken`acheron.neutral.20`)
     expect(token.text[200].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.20`,
     )
@@ -253,9 +227,7 @@ describe('Acheron > page', () => {
   // text.300
 
   test('should have a acheron text.300 property', () => {
-    expect(token.text[300].value.base).toEqual(
-      getSemanticToken`acheron.neutral.white`,
-    )
+    expect(token.text[300].value.base).toEqual(getSemanticToken`acheron.neutral.white`)
     expect(token.text[300].value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.white`,
     )
@@ -267,9 +239,7 @@ describe('Acheron > page', () => {
   // text.inverse
 
   test('should have a acheron text.inverse property', () => {
-    expect(token.text.inverse.value.base).toEqual(
-      getSemanticToken`acheron.neutral.100`,
-    )
+    expect(token.text.inverse.value.base).toEqual(getSemanticToken`acheron.neutral.100`)
     expect(token.text.inverse.value._darkMode).toEqual(
       getSemanticToken`acheron.neutral.100`,
     )
