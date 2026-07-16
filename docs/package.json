@@ -17,9 +17,6 @@
     "@cerberus/tokens": "workspace:*",
     "@docsearch/css": "^4.6.3",
     "@docsearch/react": "^4.6.3",
-    "@tsparticles/engine": "4.3.1",
-    "@tsparticles/react": "4.3.1",
-    "@tsparticles/slim": "4.3.1",
     "next": "16.2.10",
     "react": "catalog:jsx",
     "react-dom": "catalog:jsx"
