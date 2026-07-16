@@ -7,6 +7,21 @@
   color: var(--cerberus-colors-page-text-inverse);
 }
 
+/* Living Backgrounds */
+
+.living-canvas {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  pointer-events: none;
+  background-color: #001829; /* Fallback for your Deepest Water color */
+}
+
 /* Expressive Code - mdx code-blocks */
 
 :is(.expressive-code > .has-title > .header) {
@@ -83,19 +98,13 @@
   --docsearch-focus-color: var(--cerberus-colors-action-border-focus);
   --docsearch-highlight-color: var(--cerberus-colors-action-bg-initial);
   --docsearch-muted-color: var(--cerberus-colors-secondary-action-ghost-hover);
-  --docsearch-muted-color-darker: var(
-    --cerberus-colors-secondary-action-ghost-initial
-  );
+  --docsearch-muted-color-darker: var(--cerberus-colors-secondary-action-ghost-initial);
   --docsearch-icon-color: var(--cerberus-colors-page-text-100);
   --docsearch-container-background: var(--cerberus-page-backdrop-initial);
   --docsearch-logo-color: var(--cerberus-colors-page-surface-100);
   --docsearch-border-radius: var(--cerberus-spacing-sm);
-  --docsearch-search-button-background: var(
-    --cerberus-colors-page-surface-initial
-  );
-  --docsearch-search-button-text-color: var(
-    --cerberus-colors-page-text-initial
-  );
+  --docsearch-search-button-background: var(--cerberus-colors-page-surface-initial);
+  --docsearch-search-button-text-color: var(--cerberus-colors-page-text-initial);
   --docsearch-modal-width: 800px;
   --docsearch-modal-height: 600px;
   --docsearch-modal-variable-height: 60dvh;
@@ -104,9 +113,7 @@
   --docsearch-searchbox-height: 56px;
   --docsearch-searchbox-initial-height: 56px;
   --docsearch-searchbox-background: var(--cerberus-colors-page-surface-100);
-  --docsearch-searchbox-focus-background: var(
-    --cerberus-colors-page-surface-200
-  );
+  --docsearch-searchbox-focus-background: var(--cerberus-colors-page-surface-200);
   --docsearch-actions-width: 99px;
   --docsearch-actions-height: 44px;
   --docsearch-hit-height: 56px;
@@ -132,9 +139,7 @@
     #e0e3e8 95%
   );
   --docsearch-dropdown-menu-background: var(--docsearch-hit-background);
-  --docsearch-dropdown-menu-item-hover-background: var(
-    --docsearch-modal-background
-  );
+  --docsearch-dropdown-menu-item-hover-background: var(--docsearch-modal-background);
 }
 
 .DocSearch-Container {

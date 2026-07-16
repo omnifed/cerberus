@@ -1,7 +1,7 @@
 import { VStack } from '@/styled-system/jsx'
-import HomeHero from './components/home-hero'
-import { Scene } from './scene'
 import { cacheLife } from 'next/cache'
+import { SceneMatcher } from './components/backgrounds/scene-matcher'
+import HomeHero from './components/home-hero'
 
 export default async function Home() {
   'use cache'
@@ -13,7 +13,7 @@ export default async function Home() {
         <HomeHero />
       </VStack>
 
-      <Scene />
+      <SceneMatcher />
     </>
   )
 }

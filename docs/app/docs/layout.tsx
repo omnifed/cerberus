@@ -1,10 +1,11 @@
 import { Box, HStack, Scrollable } from '@/styled-system/jsx'
 import type { Metadata } from 'next'
-import { SideNav } from '../components/shared/side-nav'
-import { getDocsMetadata } from './utils/helpers.server'
-import { AppBar, DocsPageLayout } from './shared'
-import type { ReactNode } from 'react'
 import { cacheLife } from 'next/cache'
+import type { ReactNode } from 'react'
+import { SideNav } from '../components/shared/side-nav'
+import { AppBar, DocsPageLayout } from './shared'
+import { getDocsMetadata } from './utils/helpers.server'
+import { SceneMatcher } from '../components/backgrounds/scene-matcher'
 
 export const metadata: Metadata = getDocsMetadata()
 
@@ -50,9 +51,11 @@ export default async function DocsLayout(props: { children: ReactNode }) {
         </HStack>
       </Box>
 
-      <Box bgColor="page.surface.initial" flex="2" h="full">
+      <Box flex="2" h="full">
         <DocsPageLayout>{props.children}</DocsPageLayout>
       </Box>
+
+      <SceneMatcher />
     </HStack>
   )
 }

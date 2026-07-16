@@ -25,6 +25,7 @@ export default async function CodePreview(props: PropsWithChildren<CodePreviewPr
 
   return (
     <VStack
+      bgColor="page.surface.initial/20"
       border="1px solid"
       borderColor="page.border.initial"
       gap="0"
