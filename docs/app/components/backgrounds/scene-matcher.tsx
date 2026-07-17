@@ -6,6 +6,7 @@ import CerberusBackground from './cerberus'
 import ElysiumBackground from './elysium'
 import OceanusBackground from './oceanus'
 import AcheronDayBackground from './acheron-day'
+import ElysiumDayBackground from './elysium-day'
 
 export function SceneMatcher() {
   const { theme, mode } = useThemeContext()
@@ -19,7 +20,7 @@ export function SceneMatcher() {
       case 'cerberus':
         return <CerberusBackground />
       case 'elysium':
-        return <ElysiumBackground />
+        return <ElysiumDayBackground />
       case 'acheron':
         return <AcheronDayBackground />
       default:
