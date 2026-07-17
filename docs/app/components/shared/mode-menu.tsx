@@ -14,6 +14,7 @@ import { getCodeTheme } from '@/app/utils/colors'
 import { AnimatingMoonIcon } from '../icons/AnimatingMoonIcon'
 import { AnimatingSunIcon } from '../icons/AnimatingSunIcon'
 import { AnimatingSystemIcon } from '../icons/AnimatingSystemIcon'
+import { Box } from '@/styled-system/jsx'
 
 export function ModeMenu() {
   const { mode, theme, updateMode } = useThemeContext()
@@ -65,12 +66,34 @@ function MatchModeIcon(props: { mode: ColorModes }) {
 }
 
 function MatchModeContent(props: { mode: ColorModes }) {
+  const { mode } = useThemeContext()
   return (
     <>
-      <MatchModeIcon mode={props.mode} />
-      <Text display="inline" ps="sm" textStyle="body-sm">
-        {props.mode}
+      <Box
+        aria-selected={props.mode === mode}
+        _selected={{
+          color: 'action.text.200',
+        }}
+      >
+        <MatchModeIcon mode={props.mode} />
+      </Box>
+      <Text
+        aria-selected={props.mode === mode}
+        display="inline"
+        ps="sm"
+        textStyle="body-sm"
+        _selected={{
+          color: 'action.text.200',
+        }}
+      >
+        {modeLabels[props.mode]}
       </Text>
     </>
   )
+}
+
+const modeLabels: Record<ColorModes, string> = {
+  light: 'Day',
+  dark: 'Night',
+  system: 'Preview',
 }

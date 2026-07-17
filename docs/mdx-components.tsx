@@ -181,7 +181,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className={css({
           borderRight: '1px solid',
           borderColor: PAGE_BORDER_100,
-          bgColor: 'page.surface.100',
+          bgColor: 'page.surface.100/70',
           textAlign: 'left',
           px: 'md',
           py: 'lg',
@@ -196,6 +196,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     td: (props) => (
       <td
         className={css({
+          backdropFilter: 'auto',
+          backdropBlur: '16px',
+          backdropSaturate: '180%',
+          boxShadow:
+            '0 4px 30px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+          bgColor: 'page.surface.initial/20',
           borderTop: '1px solid',
           borderRight: '1px solid',
           borderColor: PAGE_BORDER_100,
@@ -215,6 +221,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
             fontSize: '0.75rem',
           },
         })}
+        style={{
+          backdropFilter: 'var(--backdrop-blur) var(--backdrop-saturate)',
+        }}
         {...props}
       />
     ),

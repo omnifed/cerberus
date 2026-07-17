@@ -26,12 +26,18 @@ export default async function CodePreview(props: PropsWithChildren<CodePreviewPr
   return (
     <VStack
       bgColor="page.surface.initial/20"
+      backdropFilter="auto"
+      backdropBlur="16px"
+      backdropSaturate="180%"
       border="1px solid"
-      borderColor="page.border.initial"
+      borderColor="page.border.initial/30"
+      boxShadow="0 4px 30px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
       gap="0"
       rounded="lg"
-      shadow="md"
       w="full"
+      style={{
+        backdropFilter: 'var(--backdrop-blur) var(--backdrop-saturate)',
+      }}
     >
       <Suspense>
         <HStack justify="center" py="md" w="full">

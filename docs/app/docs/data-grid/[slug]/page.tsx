@@ -67,32 +67,40 @@ export default async function DataGridSlugPage(props: Props) {
       <Suspense>
         <Show when={frontmatter}>
           <VStack
-            data-state={hasLinks ? 'links' : 'default'}
             alignItems="flex-start"
-            gap="lg"
+            bgColor="page.surface.initial/20"
+            backdropFilter="auto"
+            backdropBlur="16px"
+            backdropSaturate="180%"
+            border="1px solid"
+            borderColor="page.border.initial/30"
+            boxShadow="0 4px 30px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
+            color="page.text.200"
+            gap="xs"
+            h="19.625rem"
+            justifyContent="center"
+            mb="3.5rem"
+            ps="4rem"
+            rounded="xl"
             pb="lg"
             w="full"
+            _systemMode={{
+              bgColor: 'page.surface.100',
+              borderColor: 'page.border.100',
+              boxShadow: 'none',
+            }}
             css={{
-              '&:is([data-state="links"])': {
-                border: '1px solid',
-                borderColor: 'page.border.initial',
-                bgColor: 'page.surface.100',
-                color: 'page.text.200',
-                gap: 'xs',
-                h: '19.625rem',
-                justifyContent: 'center',
-                mb: '3.5rem',
-                ps: '4rem',
-                rounded: 'xl',
-                '& > h1': {
-                  textStyle: 'heading-md',
-                },
-                '& > p': {
-                  textStyle: 'body-md',
-                  textWrap: 'pretty',
-                  w: '3/4',
-                },
+              '& > h1': {
+                textStyle: 'heading-md',
               },
+              '& > p': {
+                textStyle: 'body-md',
+                textWrap: 'pretty',
+                w: '3/4',
+              },
+            }}
+            style={{
+              backdropFilter: 'var(--backdrop-blur) var(--backdrop-saturate)',
             }}
           >
             <Text as="h1" color="inherit" textStyle="heading-lg">

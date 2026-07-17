@@ -10,16 +10,16 @@
 /* Living Backgrounds */
 
 .living-canvas {
-  position: fixed;
-  top: 0;
-  right: 0;
+  background-color: var(--cerberus-colors-page-surface-initial);
   bottom: 0;
-  left: 0;
-  width: 100%;
   height: 100%;
-  z-index: -10;
+  left: 0;
   pointer-events: none;
-  background-color: #001829; /* Fallback for your Deepest Water color */
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: -10;
 }
 
 /* Expressive Code - mdx code-blocks */
