@@ -1,6 +1,7 @@
 'use client'
 
 import { useThemeContext } from '@cerberus-design/react'
+import AcheronBackground from './acheron'
 import CerberusBackground from './cerberus'
 import ElysiumBackground from './elysium'
 import OceanusBackground from './oceanus'
@@ -19,6 +20,8 @@ export function SceneMatcher() {
       return <CerberusBackground />
     case 'elysium':
       return <ElysiumBackground />
+    case 'acheron':
+      return <AcheronBackground />
     default:
       return null
   }
