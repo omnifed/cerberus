@@ -26,9 +26,7 @@ export function PrimitiveColorGroup() {
   const colors = (tokens as unknown as TokensData).data.find(
     (group) => group.type === 'colors',
   ) as TokenGroup
-  const colorPalettes = colors?.values?.filter((color) =>
-    color.name.includes(theme),
-  )
+  const colorPalettes = colors?.values?.filter((color) => color.name.includes(theme))
 
   function formatPaletteName(palette: string): string {
     return palette.charAt(0).toUpperCase() + palette.slice(1)
@@ -42,9 +40,7 @@ export function PrimitiveColorGroup() {
     'warning',
     'danger',
   ].reduce((acc, group) => {
-    const groupColors = colorPalettes?.filter((color) =>
-      color.name.includes(group),
-    )
+    const groupColors = colorPalettes?.filter((color) => color.name.includes(group))
     if (groupColors) {
       acc.push({ type: group, values: groupColors })
     }
@@ -55,6 +51,7 @@ export function PrimitiveColorGroup() {
     <Box
       border="1px solid"
       borderColor="page.border.initial"
+      bgColor="page.surface.100/70"
       p="lg"
       rounded="lg"
       w="full"
@@ -63,12 +60,7 @@ export function PrimitiveColorGroup() {
         <For each={colorGroups}>
           {(group) => (
             <Box key={group.type} w="full">
-              <Text
-                as="h4"
-                textStyle="heading-sm"
-                mb="md"
-                color="page.text.initial"
-              >
+              <Text as="h4" textStyle="heading-sm" mb="md" color="page.text.initial">
                 {formatPaletteName(group.type)}
               </Text>
               <Grid
@@ -93,11 +85,7 @@ export function PrimitiveColorGroup() {
                             backgroundColor: cssVar,
                           }}
                         />
-                        <Text
-                          as="small"
-                          textStyle="label-xs"
-                          textAlign="center"
-                        >
+                        <Text as="small" textStyle="label-xs" textAlign="center">
                           {name.split('.').pop()}
                         </Text>
                         <Text

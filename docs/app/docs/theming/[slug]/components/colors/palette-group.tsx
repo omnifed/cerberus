@@ -29,6 +29,7 @@ export function PaletteGroup(props: PaletteGroupProps) {
     <Box
       border="1px solid"
       borderColor="page.border.initial"
+      bgColor="page.surface.100/70"
       p="lg"
       rounded="lg"
       w="full"

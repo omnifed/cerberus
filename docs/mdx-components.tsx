@@ -196,6 +196,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     td: (props) => (
       <td
         className={css({
+          bgColor: 'page.surface.100/70',
           borderTop: '1px solid',
           borderRight: '1px solid',
           borderColor: PAGE_BORDER_100,
