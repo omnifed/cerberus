@@ -80,15 +80,15 @@ export const GET = async () => {
       .filter(Boolean) as DocumentSet[]
   }
 
-  function createGithubUrl(href: string): string {
+  function createContentUrl(href: string): string {
     const splitUrl = href.split('/')
     const isBlog = splitUrl.length === 3
 
     const path = isBlog
-      ? `${splitUrl[1]}/%5Bslug%5D/content/${splitUrl[2]}`
-      : `${splitUrl[1]}/${splitUrl[2]}/%5Bslug%5D/content/${splitUrl[3]}`
+      ? `${splitUrl[1]}/%5Bslug%5D/content/${splitUrl[2]}.mdx`
+      : `/llms/${splitUrl[2]}/${splitUrl[3]}.txt`
 
-    return `${RAW_GITHUB_DOCS_URL}/${path}.mdx`
+    return path
   }
 
   function generateContent(sets: DocumentSet[]): string {
@@ -108,7 +108,7 @@ export const GET = async () => {
 
         const childrenContent = set.children ? generateContent(set.children) : ''
         const currentContent = set.href
-          ? `- [${set.title}](${createGithubUrl(set.href)})`
+          ? `- [${set.title}](${createContentUrl(set.href)})`
           : ''
 
         return `${currentContent}\n${childrenContent}`.trim()
