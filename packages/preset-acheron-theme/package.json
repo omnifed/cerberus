@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/preset-acheron-theme",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "The official Acheron theme preset for the Cerberus design system",
   "keywords": [
     "css",

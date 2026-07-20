@@ -1,5 +1,11 @@
 # @cerberus/preset-oceanus-theme
 
+## 1.6.0
+
+### Minor Changes
+
+- 86c01a4: Add Oceanus theme
+
 ## 1.5.0
 
 ### Minor Changes

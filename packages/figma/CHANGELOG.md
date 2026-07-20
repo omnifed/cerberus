@@ -1,5 +1,14 @@
 # @cerberus/figma
 
+## 1.6.0
+
+### Patch Changes
+
+- d475347: Replace prettier with oxfmt
+- e17f2a9: Dependency update
+- ec21994: Dependency Updates
+- ee1ed7c: Update token values on certain palettes
+
 ## 1.5.0
 
 ### Minor Changes
