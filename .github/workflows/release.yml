@@ -152,6 +152,10 @@ jobs:
           cache: true
 
       - run: pnpm install && deno install
+
+      - name: Inject Deno imports
+        run: cd configs && bun ./src/publish-stable.mjs
+
       - run: deno publish --allow-dirty
         working-directory: ./packages/figma
         continue-on-error: true # Bypasses the known Base64url provenance decoding bug
@@ -178,6 +182,10 @@ jobs:
           cache: true
 
       - run: pnpm install && deno install
+
+      - name: Inject Deno imports
+        run: cd configs && bun ./src/publish-stable.mjs
+
       - run: deno publish --allow-dirty
         working-directory: ./packages/tokens
         continue-on-error: true # Bypasses the known Base64url provenance decoding bug
@@ -204,6 +212,10 @@ jobs:
           cache: true
 
       - run: pnpm install && deno install
+
+      - name: Inject Deno imports
+        run: cd configs && bun ./src/publish-stable.mjs
+
       - run: deno publish --allow-dirty
         working-directory: ./packages/preset-acheron-theme
         continue-on-error: true # Bypasses the known Base64url provenance decoding bug
@@ -230,6 +242,10 @@ jobs:
           cache: true
 
       - run: pnpm install && deno install
+
+      - name: Inject Deno imports
+        run: cd configs && bun ./src/publish-stable.mjs
+
       - run: deno publish --allow-dirty
         working-directory: ./packages/preset-oceanus-theme
         continue-on-error: true # Bypasses the known Base64url provenance decoding bug
@@ -256,6 +272,10 @@ jobs:
           cache: true
 
       - run: pnpm install && deno install
+
+      - name: Inject Deno imports
+        run: cd configs && bun ./src/publish-stable.mjs
+
       - run: deno publish --allow-dirty
         working-directory: ./packages/preset-cerberus-theme
         continue-on-error: true # Bypasses the known Base64url provenance decoding bug
@@ -282,6 +302,10 @@ jobs:
           cache: true
 
       - run: pnpm install && deno install
+
+      - name: Inject Deno imports
+        run: cd configs && bun ./src/publish-stable.mjs
+
       - run: deno publish --allow-dirty
         working-directory: ./packages/preset-elysium-theme
         continue-on-error: true # Bypasses the known Base64url provenance decoding bug
@@ -308,6 +332,10 @@ jobs:
           cache: true
 
       - run: pnpm install && deno install
+
+      - name: Inject Deno imports
+        run: cd configs && bun ./src/publish-stable.mjs
+
       - run: deno publish --allow-dirty
         working-directory: ./packages/panda-preset
         continue-on-error: true # Bypasses the known Base64url provenance decoding bug
