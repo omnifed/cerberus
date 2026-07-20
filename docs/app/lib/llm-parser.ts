@@ -37,7 +37,11 @@ export async function processMdxForLlm(
 
     if (id) {
       // Passing the context ensures your helper looks in the right directory
-      const { rawContent, fallback } = await getExampleCode(id, null, contextCtx)
+      const { rawContent, fallback } = await getExampleCode(
+        id,
+        null,
+        contextCtx as 'components' | 'data-grid',
+      )
       const replacement = fallback
         ? `\n\`\`\`tsx\n// Code not found for demo: ${id}\n\`\`\`\n`
         : `\n\`\`\`tsx\n${rawContent.trim()}\n\`\`\`\n`
@@ -46,7 +50,7 @@ export async function processMdxForLlm(
     }
   }
 
-  const snippetRegex = /<CodeSnippet\s+snippet=(?:\{?`|"|)(.*?)(?:`\}|"|)\s*\/>/gs
+  const snippetRegex = /<CodeSnippet\s+snippet=(?:\{?`|"|)(.*?)(?:`\}|"|)\s*\/>/g
   processedText = processedText.replace(snippetRegex, (match, code) => {
     if (code.startsWith('{') && code.endsWith('}')) {
       return `\n\`\`\`tsx\n// Source available in static configuration: ${code}\n\`\`\`\n`

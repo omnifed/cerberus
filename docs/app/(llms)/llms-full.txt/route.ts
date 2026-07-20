@@ -63,7 +63,7 @@ async function processMdxForLlm(rawMdx: string, filePath: string): Promise<strin
   }
 
   // Resolve <CodeSnippet /> string literals
-  const snippetRegex = /<CodeSnippet\s+snippet=(?:\{?`|"|)(.*?)(?:`\}|"|)\s*\/>/gs
+  const snippetRegex = /<CodeSnippet\s+snippet=(?:\{?`|"|)(.*?)(?:`\}|"|)\s*\/>/g
   processedText = processedText.replace(snippetRegex, (match, code) => {
     // If a JS variable was passed (like {DEMOS.meta}), note it for the LLM
     // since regex cannot evaluate imported module variables.
