@@ -125,10 +125,12 @@ export const GET = async () => {
 }
 
 const TEMPLATE = `
-# Cerberus Design System Documentation
+# Cerberus UI Platform Documentation
 
 @doc-version: ${version}
 @doc-version-notes: Some features may have extended or refined behavior in minor or patch releases
+
+Full documenation: /llms-full.txt
 
 %DOCUMENT_SETS%
 `
