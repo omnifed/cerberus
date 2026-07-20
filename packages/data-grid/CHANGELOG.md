@@ -1,5 +1,19 @@
 # @cerberus-design/data-grid
 
+## 1.6.0
+
+### Patch Changes
+
+- e17f2a9: Dependency update
+- ec21994: Dependency Updates
+- ee1ed7c: Update token values on certain palettes
+- Updated dependencies [86c01a4]
+- Updated dependencies [e17f2a9]
+- Updated dependencies [ec21994]
+- Updated dependencies [ee1ed7c]
+  - @cerberus-design/react@1.6.0
+  - @cerberus-design/signals@1.6.0
+
 ## 1.5.0
 
 ### Minor Changes
