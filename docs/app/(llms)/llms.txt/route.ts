@@ -1,12 +1,11 @@
-import { RAW_GITHUB_DOCS_URL } from '@/lib/constants'
-import { version } from '@cerberus-design/react/package.json'
 import { items as blogItems } from '@/app/blog/[slug]/content/items'
-import { items as getStartedItems } from '@/app/docs/get-started/[slug]/content/items'
 import { items as componentsItems } from '@/app/docs/components/[slug]/content/items'
+import { items as dataGridItems } from '@/app/docs/data-grid/[slug]/content/items'
+import { items as getStartedItems } from '@/app/docs/get-started/[slug]/content/items'
+import { items as signalsItems } from '@/app/docs/signals/[slug]/content/items'
 import { items as stylingItems } from '@/app/docs/styling/[slug]/content/items'
 import { items as themingItems } from '@/app/docs/theming/[slug]/content/items'
-import { items as dataGridItems } from '@/app/docs/data-grid/[slug]/content/items'
-import { items as signalsItems } from '@/app/docs/signals/[slug]/content/items'
+import { version } from '@cerberus-design/react/package.json'
 
 interface DocumentSet {
   title: string
