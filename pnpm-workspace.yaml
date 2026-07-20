@@ -11,7 +11,7 @@ packages:
 
 catalogs:
   oxc:
-    oxfmt: ^0.58.0
+    oxfmt: ^0.59.0
   ark:
     '@ark-ui/react': ^5.37.2
   pandacss:
@@ -20,7 +20,7 @@ catalogs:
     '@pandacss/types': ^1.11.4
   jsx:
     '@carbon/icons-react': ^11.83.0
-    globby: ^16.2.0
+    globby: ^16.2.2
     react: ^19.2.7
     react-dom: ^19.2.7
     '@types/react': ^19.2.17
