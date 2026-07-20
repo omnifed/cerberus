@@ -17,33 +17,33 @@ exports[`Oceanus Theme pageTokens should match the established baseline 1`] = `
       "100": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.90}",
+          "_darkMode": "{colors.oceanus.neutral.95}",
           "_lightMode": "{colors.oceanus.neutral.20}",
-          "base": "{colors.oceanus.neutral.90}",
+          "base": "{colors.oceanus.neutral.95}",
         },
       },
       "200": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.80}",
+          "_darkMode": "{colors.oceanus.neutral.90}",
           "_lightMode": "{colors.oceanus.neutral.30}",
-          "base": "{colors.oceanus.neutral.80}",
+          "base": "{colors.oceanus.neutral.90}",
         },
       },
       "300": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.100}",
+          "_darkMode": "{colors.oceanus.neutral.80}",
           "_lightMode": "{colors.oceanus.neutral.40}",
-          "base": "{colors.oceanus.neutral.100}",
+          "base": "{colors.oceanus.neutral.80}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.95}",
+          "_darkMode": "{colors.oceanus.neutral.100}",
           "_lightMode": "{colors.oceanus.neutral.10}",
-          "base": "{colors.oceanus.neutral.95}",
+          "base": "{colors.oceanus.neutral.100}",
         },
       },
     },
