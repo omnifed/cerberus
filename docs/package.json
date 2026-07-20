@@ -41,7 +41,7 @@
     "@types/react": "catalog:jsx",
     "@types/react-dom": "catalog:jsx",
     "@vercel/analytics": "^2.0.1",
-    "autoprefixer": "^10.5.2",
+    "autoprefixer": "^10.5.4",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9.21.0",
     "eslint-config-next": "16.2.10",
