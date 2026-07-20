@@ -1352,7 +1352,7 @@ export const collection = {
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:22141:1845/22141:1': {
-        id: 'VariableID:22135:15547',
+        id: 'VariableID:22135:15549',
         type: 'VARIABLE_ALIAS',
       },
     },
@@ -1674,7 +1674,7 @@ export const collection = {
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:22141:1845/22141:1': {
-        id: 'VariableID:22141:2020',
+        id: 'VariableID:22135:15547',
         type: 'VARIABLE_ALIAS',
       },
     },
@@ -1934,7 +1934,7 @@ export const collection = {
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:22141:1845/22141:1': {
-        id: 'VariableID:22135:15548',
+        id: 'VariableID:22141:2020',
         type: 'VARIABLE_ALIAS',
       },
     },
@@ -1944,7 +1944,7 @@ export const collection = {
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:22141:1845/22141:1': {
-        id: 'VariableID:22135:15549',
+        id: 'VariableID:22135:15548',
         type: 'VARIABLE_ALIAS',
       },
     },
@@ -4367,7 +4367,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:22141:1845/22141:0': 'oceanus.neutral.20',
-      'VariableCollectionId:22141:1845/22141:1': 'oceanus.neutral.90',
+      'VariableCollectionId:22141:1845/22141:1': 'oceanus.neutral.95',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4383,7 +4383,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:22141:1845/22141:0': 'oceanus.neutral.30',
-      'VariableCollectionId:22141:1845/22141:1': 'oceanus.neutral.80',
+      'VariableCollectionId:22141:1845/22141:1': 'oceanus.neutral.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4399,7 +4399,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:22141:1845/22141:0': 'oceanus.neutral.40',
-      'VariableCollectionId:22141:1845/22141:1': 'oceanus.neutral.100',
+      'VariableCollectionId:22141:1845/22141:1': 'oceanus.neutral.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4415,7 +4415,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:22141:1845/22141:0': 'oceanus.neutral.10',
-      'VariableCollectionId:22141:1845/22141:1': 'oceanus.neutral.95',
+      'VariableCollectionId:22141:1845/22141:1': 'oceanus.neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
