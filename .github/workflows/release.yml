@@ -65,10 +65,10 @@ jobs:
           git reset --hard origin/main
           pnpm changeset version
           SHORT_SHA=$(git rev-parse --short=7 HEAD)
-          cd configs && bun ./src/bump-versions.mjs --next --commit=$SHORT_SHA
+          cd scripts && bun ./src/bump-versions.mjs --next --commit=$SHORT_SHA
 
       - name: Publish Canary Packages
-        run: cd configs && bun ./src/publish-canary.mjs
+        run: cd scripts && bun ./src/publish-canary.mjs
 
   # ====================================================================
   # PATH A: STABLE PUBLISH
@@ -154,7 +154,7 @@ jobs:
       - run: pnpm install && deno install
 
       - name: Inject Deno imports
-        run: cd configs && bun ./src/publish-stable.mjs
+        run: cd scripts && bun ./src/publish-stable.mjs
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/figma
@@ -184,7 +184,7 @@ jobs:
       - run: pnpm install && deno install
 
       - name: Inject Deno imports
-        run: cd configs && bun ./src/publish-stable.mjs
+        run: cd scripts && bun ./src/publish-stable.mjs
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/tokens
@@ -214,7 +214,7 @@ jobs:
       - run: pnpm install && deno install
 
       - name: Inject Deno imports
-        run: cd configs && bun ./src/publish-stable.mjs
+        run: cd scripts && bun ./src/publish-stable.mjs
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/preset-acheron-theme
@@ -244,7 +244,7 @@ jobs:
       - run: pnpm install && deno install
 
       - name: Inject Deno imports
-        run: cd configs && bun ./src/publish-stable.mjs
+        run: cd scripts && bun ./src/publish-stable.mjs
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/preset-oceanus-theme
@@ -274,7 +274,7 @@ jobs:
       - run: pnpm install && deno install
 
       - name: Inject Deno imports
-        run: cd configs && bun ./src/publish-stable.mjs
+        run: cd scripts && bun ./src/publish-stable.mjs
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/preset-cerberus-theme
@@ -304,7 +304,7 @@ jobs:
       - run: pnpm install && deno install
 
       - name: Inject Deno imports
-        run: cd configs && bun ./src/publish-stable.mjs
+        run: cd scripts && bun ./src/publish-stable.mjs
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/preset-elysium-theme
@@ -334,7 +334,7 @@ jobs:
       - run: pnpm install && deno install
 
       - name: Inject Deno imports
-        run: cd configs && bun ./src/publish-stable.mjs
+        run: cd scripts && bun ./src/publish-stable.mjs
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/panda-preset

@@ -124,7 +124,7 @@ pnpm run test
 - **`packages/react`**: React component library using panda-preset for styling
 - **`docs/`**: Next.js documentation website showcasing components
 - **`tests/`**: Centralized test suite using Bun and Testing Library
-- **`configs/`**: Shared configuration files
+- **`scripts/`**: Shared scripts for building and publishing
 - **`.llms/`**: AI/LLM integration documentation and guidelines
 
 ### Key Files to Know

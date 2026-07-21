@@ -102,7 +102,7 @@ The repository follows a workspace-based architecture with these key packages:
 - **`packages/react`**: React component library that uses the panda-preset for styling
 - **`docs/`**: Next.js documentation website showcasing components and usage
 - **`tests/`**: Centralized test suite using Bun and Testing Library
-- **`configs/`**: Shared configuration files
+- **`scripts/`**: Shared script files for building, testing, and publishing
 - **`.agents/`**: AI/LLM integration documentation and guidelines
 
 ### Styling Architecture

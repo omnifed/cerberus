@@ -1,5 +1,5 @@
 {
-  "name": "@cerberus-design/configs",
+  "name": "scripts",
   "version": "0.0.0",
   "private": true,
   "description": "The internal shared configurations for the projects.",

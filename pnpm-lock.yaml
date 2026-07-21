@@ -128,22 +128,6 @@ importers:
         specifier: ^19.2.7
         version: 19.2.7(react@19.2.7)
 
-  configs:
-    dependencies:
-      bun:
-        specifier: '*'
-        version: 1.3.14
-    devDependencies:
-      glob:
-        specifier: ^13.0.6
-        version: 13.0.6
-      util:
-        specifier: ^0.12.5
-        version: 0.12.5
-      yaml:
-        specifier: ^2.9.0
-        version: 2.9.0
-
   docs:
     dependencies:
       '@carbon/icons-react':
@@ -538,6 +522,22 @@ importers:
       '@pandacss/types':
         specifier: catalog:pandacss
         version: 1.11.4
+
+  scripts:
+    dependencies:
+      bun:
+        specifier: '*'
+        version: 1.3.14
+    devDependencies:
+      glob:
+        specifier: ^13.0.6
+        version: 13.0.6
+      util:
+        specifier: ^0.12.5
+        version: 0.12.5
+      yaml:
+        specifier: ^2.9.0
+        version: 2.9.0
 
   styled-system:
     devDependencies:
