@@ -1332,9 +1332,9 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "text": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.accent.100}",
-          "_lightMode": "{colors.oceanus.accent.100}",
-          "base": "{colors.oceanus.accent.100}",
+          "_darkMode": "{colors.oceanus.accent.20}",
+          "_lightMode": "{colors.oceanus.accent.20}",
+          "base": "{colors.oceanus.accent.20}",
         },
       },
     },
