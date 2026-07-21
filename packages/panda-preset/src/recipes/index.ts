@@ -28,6 +28,7 @@ import { progressBar } from './slots/progressBar'
 import { radioGroup } from './slots/radio'
 import { ratingGroup } from './slots/ratingGroup'
 import { select } from './slots/select'
+import { slider } from './slots/slider'
 import { switchRecipe } from './slots/switch'
 import { table } from './slots/table'
 import { tabs } from './slots/tabs'
@@ -91,6 +92,7 @@ export const slotRecipes = {
   radioGroup,
   ratingGroup,
   select,
+  slider,
   switchRecipe,
   table,
   tabs,

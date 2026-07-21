@@ -1,6 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { sliderAnatomy } from '@ark-ui/react'
-import { focusStates } from '../shared/states'
 
 /**
  * This module contains the slider recipe.

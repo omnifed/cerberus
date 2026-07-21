@@ -1,7 +1,9 @@
 import { describe, test, expect } from 'bun:test'
-import { slider } from '../../../../packages/panda-preset/src/recipes/slots/slider'
+import { slotRecipes } from '@cerberus/panda-preset'
 
 describe('Slider Recipe', () => {
+  const { slider } = slotRecipes
+
   test('should be defined', () => {
     expect(slider).toBeDefined()
   })

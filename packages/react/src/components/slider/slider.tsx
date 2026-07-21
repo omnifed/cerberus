@@ -1,5 +1,3 @@
-import { withSlotRecipe } from './primitives'
-
-/**
- * Slider component implementation
- */
+export function Slider() {
+  return <div role="slider" />
+}

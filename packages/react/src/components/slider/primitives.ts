@@ -1,4 +1,4 @@
-import {} from '@ark-ui/react/slider'
+import { Slider } from '@ark-ui/react/slider'
 import { slider, type SliderVariantProps } from 'styled-system/recipes'
 import {
   createCerberusPrimitive,
@@ -11,3 +11,8 @@ import {
  */
 
 const { withSlotRecipe } = createCerberusPrimitive(slider)
+
+export type SliderRootProps = CerberusPrimitiveProps<
+  Slider.RootProps & SliderVariantProps
+>
+export const SliderRoot = withSlotRecipe(Slider.Root, 'root')
