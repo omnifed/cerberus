@@ -1238,11 +1238,11 @@ export const collection = {
     },
     'VariableID:12735:347': {
       'VariableCollectionId:22141:1845/22141:0': {
-        id: 'VariableID:22135:15571',
+        id: 'VariableID:22135:15579',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:22141:1845/22141:1': {
-        id: 'VariableID:22135:15571',
+        id: 'VariableID:22135:15579',
         type: 'VARIABLE_ALIAS',
       },
     },
@@ -3922,8 +3922,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:22141:1845/22141:0': 'oceanus.accent.100',
-      'VariableCollectionId:22141:1845/22141:1': 'oceanus.accent.100',
+      'VariableCollectionId:22141:1845/22141:0': 'oceanus.accent.20',
+      'VariableCollectionId:22141:1845/22141:1': 'oceanus.accent.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },

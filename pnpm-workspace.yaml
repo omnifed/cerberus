@@ -48,6 +48,7 @@ auditConfig:
 overrides:
   # pandacss
   brace-expansion: '>=5.0.6'
+  '@hono/node-server': '>=2.0.5'
   # docs
   '@eslint/eslintrc>ajv': '^6.12.6'
   eslint>ajv: '^6.12.6'
