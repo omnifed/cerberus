@@ -1,5 +1,11 @@
 # @cerberus/figma
 
+## 1.6.1
+
+### Patch Changes
+
+- cd1fccf: Dependency update
+
 ## 1.6.0
 
 ### Patch Changes
