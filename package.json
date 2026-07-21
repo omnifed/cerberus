@@ -15,7 +15,7 @@
     "lint": "pnpm lint:packages && pnpm lint:tests",
     "test": "pnpm --filter tests run test:ci",
     "ci:version": "changeset version && bun ./scripts/src/bump-versions.mjs --stable && pnpm install --no-frozen-lockfile",
-    "gen:component": "bun scripts/bootstrap-component.ts"
+    "gen:component": "bun ./scripts/src/bootstrap-component.ts"
   },
   "dependencies": {
     "typescript": "^7.0.2"
