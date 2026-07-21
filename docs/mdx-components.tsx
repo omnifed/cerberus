@@ -2,6 +2,7 @@ import { css, cx } from 'styled-system/css'
 import type { MDXComponents } from 'mdx/types'
 import Image, { ImageProps } from 'next/image'
 import { PAGE_BORDER_100 } from './app/utils/const'
+import { divider } from './styled-system/patterns'
 
 const headlineStyles = css({
   color: 'page.text.initial',
@@ -276,6 +277,18 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           '& :is(p)': {
             pb: 'initial',
           },
+        })}
+        {...props}
+      />
+    ),
+    hr: (props) => (
+      <hr
+        className={divider({
+          color: 'page.border.initial',
+          orientation: 'horizontal',
+          mb: '2xl',
+          mt: 'sm',
+          thickness: '0.3px',
         })}
         {...props}
       />

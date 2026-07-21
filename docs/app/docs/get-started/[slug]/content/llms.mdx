@@ -5,14 +5,30 @@ description: Learn how to get tools like Cursor, Windsurf, GitHub Copilot, ChatG
 
 ## What is LLMs.txt?
 
-We support [LLMs.txt](https://llmstxt.org/) files for making the Cerberus UI documentation available to large language models
-(LLMs). This feature helps AI tools better understand our component library, its APIs, and usage patterns.
+We support [LLMs.txt](https://llmstxt.org/) files for making the Cerberus UI documentation available to large language models.
+
+This feature helps AI tools better understand our ecosystem, its APIs, and usage patterns.
 
 ## Available Routes
 
-We provide one LLMs.txt route to help AI tools access our documentation:
+We provide multiple routes to help agents access our documentation:
 
-- [llms.txt](https://cerberus.digitalu.design/llms.txt) - Contains a structured overview of all documentation pages.
+- [**/llms.txt**](/llms.txt) - Contains a structured overview of all documentation pages. This is a table of contents for the agent documentation.
+- [**/llms-full.txt**](/llms-full.txt) - Contains the full documentation content for all pages.
+
+---
+
+Page specific docs are available if you have a limited context window.
+
+These routes follow the current naming convention: `llms/[section]/[slug].txt`
+
+For example, here are some pages from the different sections of the documentation:
+
+- [**/llms/components/button.txt**](/llms/components/button.txt) - Button component documentation
+- [**/llms/data-grid/overview.txt**](/llms/data-grid/overview.txt) - Data grid overview documentation
+- [**/llms/signals/overview.txt**](/llms/signals/overview.txt) - Signals overview documentation
+- [**/llms/styling/cerberus-factory.txt**](/llms/styling/cerberus-factory.txt) - Styling Cerberus Factory
+- [**/llms/theming/overview.txt**](/llms/theming/overview.txt) - Theming overview documentation
 
 ## Usage with AI Tools
 

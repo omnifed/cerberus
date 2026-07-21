@@ -1,12 +1,11 @@
-import { RAW_GITHUB_DOCS_URL } from '@/lib/constants'
-import { version } from '@cerberus-design/react/package.json'
 import { items as blogItems } from '@/app/blog/[slug]/content/items'
-import { items as getStartedItems } from '@/app/docs/get-started/[slug]/content/items'
 import { items as componentsItems } from '@/app/docs/components/[slug]/content/items'
+import { items as dataGridItems } from '@/app/docs/data-grid/[slug]/content/items'
+import { items as getStartedItems } from '@/app/docs/get-started/[slug]/content/items'
+import { items as signalsItems } from '@/app/docs/signals/[slug]/content/items'
 import { items as stylingItems } from '@/app/docs/styling/[slug]/content/items'
 import { items as themingItems } from '@/app/docs/theming/[slug]/content/items'
-import { items as dataGridItems } from '@/app/docs/data-grid/[slug]/content/items'
-import { items as signalsItems } from '@/app/docs/signals/[slug]/content/items'
+import { version } from '@cerberus-design/react/package.json'
 
 interface DocumentSet {
   title: string
@@ -80,15 +79,15 @@ export const GET = async () => {
       .filter(Boolean) as DocumentSet[]
   }
 
-  function createGithubUrl(href: string): string {
+  function createContentUrl(href: string): string {
     const splitUrl = href.split('/')
     const isBlog = splitUrl.length === 3
 
     const path = isBlog
-      ? `${splitUrl[1]}/%5Bslug%5D/content/${splitUrl[2]}`
-      : `${splitUrl[1]}/${splitUrl[2]}/%5Bslug%5D/content/${splitUrl[3]}`
+      ? `${splitUrl[1]}/%5Bslug%5D/content/${splitUrl[2]}.mdx`
+      : `/llms/${splitUrl[2]}/${splitUrl[3]}.txt`
 
-    return `${RAW_GITHUB_DOCS_URL}/${path}.mdx`
+    return path
   }
 
   function generateContent(sets: DocumentSet[]): string {
@@ -108,7 +107,7 @@ export const GET = async () => {
 
         const childrenContent = set.children ? generateContent(set.children) : ''
         const currentContent = set.href
-          ? `- [${set.title}](${createGithubUrl(set.href)})`
+          ? `- [${set.title}](${createContentUrl(set.href)})`
           : ''
 
         return `${currentContent}\n${childrenContent}`.trim()
@@ -125,10 +124,12 @@ export const GET = async () => {
 }
 
 const TEMPLATE = `
-# Cerberus Design System Documentation
+# Cerberus UI Platform Documentation
 
 @doc-version: ${version}
 @doc-version-notes: Some features may have extended or refined behavior in minor or patch releases
+
+Full documenation: /llms-full.txt
 
 %DOCUMENT_SETS%
 `
