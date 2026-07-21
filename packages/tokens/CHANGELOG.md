@@ -1,5 +1,11 @@
 # @cerberus/tokens
 
+## 1.6.1
+
+### Patch Changes
+
+- 5fa4042: Update Oceanus gradient token
+
 ## 1.6.0
 
 ### Minor Changes

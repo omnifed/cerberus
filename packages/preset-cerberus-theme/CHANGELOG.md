@@ -1,5 +1,7 @@
 # @cerberus/preset-cerberus-theme
 
+## 1.6.1
+
 ## 1.6.0
 
 ### Patch Changes
