@@ -1,5 +1,5 @@
 {
-  "name": "@cerberus-design/configs",
+  "name": "scripts",
   "version": "0.0.0",
   "private": true,
   "description": "The internal shared configurations for the projects.",
@@ -16,7 +16,9 @@
     "bump:versions": "bun ./src/bump-versions.mjs --stable"
   },
   "devDependencies": {
+    "@clack/prompts": "^1.7.0",
     "glob": "^13.0.6",
+    "picocolors": "^1.1.1",
     "util": "^0.12.5",
     "yaml": "^2.9.0"
   },

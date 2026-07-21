@@ -4,7 +4,7 @@
   "commit": false,
   "fixed": [["@cerberus/*"], ["@cerberus-design/*"]],
   "format": "oxfmt",
-  "ignore": ["bench", "docs", "styled-system", "tests", "@cerberus-design/configs"],
+  "ignore": ["bench", "docs", "styled-system", "tests", "scripts"],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
