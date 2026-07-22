@@ -52,6 +52,17 @@ async function main() {
       reactDir: join('packages', 'react', 'src', 'components', kebab),
       testReactDir: join('tests', 'react', 'components'),
       testRecipeDir: join('tests', 'panda-preset', 'recipes', 'slots'),
+      // Docs paths
+      docsContentDir: join('docs', 'app', 'docs', 'components', kebab, 'content'),
+      docsCompDir: join(
+        'docs',
+        'app',
+        'docs',
+        'components',
+        kebab,
+        'components',
+        kebab,
+      ),
     }
 
     // Ensure directories exist
@@ -140,18 +151,100 @@ describe('${pascal} Component', () => {
 })
 `
     const recipeTestContent = `import { describe, test, expect } from 'bun:test'
-  import { slotRecipes } from '@cerberus/panda-preset'
+import { slotRecipes } from '@cerberus/panda-preset'
 
-  describe('${pascal} Recipe', () => {
-    const { ${camel} } = slotRecipes
+describe('${pascal} Recipe', () => {
+  const { ${camel} } = slotRecipes
 
-    test('should be defined', () => {
-      expect(${camel}).toBeDefined()
-    })
+  test('should be defined', () => {
+    expect(${camel}).toBeDefined()
   })
+})
 `
     await writeFile(join(paths.testReactDir, `${kebab}.test.tsx`), reactTestContent)
     await writeFile(join(paths.testRecipeDir, `${kebab}.test.ts`), recipeTestContent)
+
+    // 4. Create Docs Files
+    const staticDemoContent = `import { BasicDemo } from "./basic.demo"
+
+export const DEMOS = {
+  basic: {
+    id: "${kebab}.basic",
+    preview: <BasicDemo />
+  },
+  custom: {
+    id: "${kebab}.custom",
+    preview: null
+  },
+  meta: "import { ${pascal} } from '@cerberus-design/react'"
+}
+`
+    const basicDemoContent = `import { ${pascal} } from "@cerberus-design/react"
+
+export function BasicDemo() {
+  return null;
+}
+`
+    const mdxContent = `---
+title: ${pascal}
+description: Add your description for this component
+npm: '@cerberus-design/react'
+source: 'components/${kebab}'
+recipe: 'slots/${kebab}.ts'
+ark: '${kebab}'
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { NoteAdmonition } from '@/app/components/Admonition'
+import { DEMOS } from '../components/${kebab}/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
+
+## Usage
+
+Add a basic description about this component here...
+
+<CodePreview {...DEMOS.basic} />
+
+## Customizing
+
+You can customize the \`${pascal}\` using style props and data selectors on any slot primitive.
+
+<CodePreview {...DEMOS.custom} />
+
+## Guides
+
+Add any guides here...
+
+## Primitives
+
+The layers of the \`${pascal}\` which can be used to create a fully custom solution.
+
+| Component           | Description                                        |
+| ------------------- | -------------------------------------------------- |
+| \`Root\`              | The main container for the ${pascal}.                |
+
+### Data Attributes
+
+The primitives additionally use the following data attributes for custom styling:
+
+| Name         | Value         | Description                         |
+| ------------ | ------------- | ----------------------------------- |
+| \`data-scope\` | \`${kebab}\`      | The scope of the components.        |
+
+## API
+
+### Root Props
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| \`asChild\` | \`boolean\` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+`
+
+    await writeFile(join(paths.docsCompDir, 'static.tsx'), staticDemoContent)
+    await writeFile(join(paths.docsCompDir, 'basic.demo.tsx'), basicDemoContent)
+    await writeFile(join(paths.docsContentDir, `${kebab}.mdx`), mdxContent)
 
     s.stop(pc.green(`✔ ${pascal} successfully bootstrapped!`))
 
@@ -163,6 +256,9 @@ describe('${pascal} Component', () => {
   - packages/react/src/components/${kebab}/${kebab}.tsx
   - tests/react/components/${kebab}.test.tsx
   - tests/panda-preset/recipes/slots/${kebab}.test.ts
+  - docs/app/docs/components/${kebab}/content/${kebab}.mdx
+  - docs/app/docs/components/${kebab}/components/${kebab}/static.tsx
+  - docs/app/docs/components/${kebab}/components/${kebab}/basic.demo.tsx
 `),
     )
   } catch (error) {
