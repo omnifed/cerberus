@@ -1,5 +1,6 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { sliderAnatomy } from '@ark-ui/react'
+import { allPalettes, allSlotPalettes } from '../shared/palettes'
 
 /**
  * This module contains the slider recipe.
@@ -38,6 +39,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
       position: 'relative',
       textStyle: 'body-sm',
       touchAction: 'none',
+      w: 'full',
     },
     label: {
       textStyle: 'label-sm',
@@ -93,6 +95,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
   },
 
   variants: {
+    palette: allSlotPalettes,
     size: {
       sm: {
         root: {
@@ -123,9 +126,28 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
     },
     usage: {
+      gradient: {
+        track: {
+          bgColor: 'page.surface.300',
+          _disabled: {
+            opacity: '0.5',
+          },
+        },
+        range: {
+          gradient: 'charon-dark',
+        },
+        thumb: {
+          bgColor: 'action.ghost.initial',
+          borderWidth: '2px',
+          borderColor: 'action.border.initial',
+          _disabled: {
+            opacity: '0.5',
+          },
+        },
+      },
       filled: {
         track: {
-          bgColor: 'colorPalette.surface.300',
+          bgColor: 'page.surface.300',
           _disabled: {
             opacity: '0.5',
           },
@@ -134,9 +156,9 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           bgColor: 'colorPalette.bg.initial',
         },
         thumb: {
-          bg: 'action.ghost.initial',
+          bgColor: 'action.ghost.initial',
           _disabled: {
-            bg: 'border.emphasized',
+            opacity: '0.5',
           },
         },
       },
@@ -146,7 +168,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           shadow: 'inset',
         },
         range: {
-          gradient: 'charon-dark',
+          bgColor: 'colorPalette.bg.initial',
         },
         thumb: {
           borderWidth: '2px',
@@ -214,8 +236,9 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
   },
 
   defaultVariants: {
+    palette: 'action',
     size: 'lg',
     orientation: 'horizontal',
-    usage: 'filled',
+    usage: 'gradient',
   },
 })

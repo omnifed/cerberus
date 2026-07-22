@@ -49,6 +49,15 @@ export const SliderRange = withSlotRecipe(Slider.Range, 'range')
 export type SliderThumbProps = CerberusPrimitiveProps<Slider.ThumbProps>
 export const SliderThumb = withSlotRecipe(Slider.Thumb, 'thumb')
 
+// DraggingIndicator
+
+export type SliderDraggingIndicatorProps =
+  CerberusPrimitiveProps<Slider.DraggingIndicatorProps>
+export const SliderDraggingIndicator = withSlotRecipe(
+  Slider.DraggingIndicator,
+  'draggingIndicator',
+)
+
 // MarkerGroup
 
 export type SliderMarkerGroupProps = CerberusPrimitiveProps<Slider.MarkerGroupProps>

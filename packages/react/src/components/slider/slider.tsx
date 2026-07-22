@@ -1,15 +1,25 @@
 import { SliderRootProvider } from '@ark-ui/react'
+import { ReactNode } from 'react'
+import { HStack } from 'styled-system/jsx'
+import { Show } from '../show/show'
 import {
-  SliderLabel,
-  SliderRoot,
   SliderControl,
-  SliderTrack,
-  SliderRange,
-  SliderThumb,
-  SliderMarkerGroup,
-  SliderMarker,
+  SliderDraggingIndicator,
   SliderHiddenInput,
+  SliderLabel,
+  SliderMarker,
+  SliderMarkerGroup,
+  SliderRange,
+  SliderRoot,
+  SliderRootProps,
+  SliderThumb,
+  SliderTrack,
+  SliderValueText,
 } from './primitives'
+
+export type SliderProps = SliderRootProps & {
+  label?: ReactNode
+}
 
 /**
  * ## Slider Component
@@ -20,8 +30,30 @@ import {
  *
  * @see {@link https://cerberus.digitalu.design/docs/components/slider}
  */
-export function Slider() {
-  return <div role="slider" />
+export function Slider(props: SliderProps) {
+  return (
+    <SliderRoot {...props}>
+      <HStack justify="space-between" w="full">
+        <Show when={props.label}>{() => <SliderLabel>{props.label}</SliderLabel>}</Show>
+        <SliderValueText />
+      </HStack>
+
+      <SliderControl>
+        <SliderTrack>
+          <SliderRange />
+        </SliderTrack>
+
+        <SliderThumb>
+          <SliderDraggingIndicator />
+          <SliderHiddenInput />
+        </SliderThumb>
+
+        <SliderMarkerGroup>
+          <SliderMarker />
+        </SliderMarkerGroup>
+      </SliderControl>
+    </SliderRoot>
+  )
 }
 
 // Parts

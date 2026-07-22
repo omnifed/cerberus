@@ -49,6 +49,18 @@ export const allPalettes = {
   danger,
 }
 
+export const allSlotPalettes: Record<
+  string,
+  { root: (typeof allPalettes)[keyof typeof allPalettes] }
+> = Object.entries(allPalettes).reduce((prev, [key, val]) => {
+  return {
+    ...prev,
+    [key]: {
+      root: val,
+    },
+  }
+}, {})
+
 export const actionPalettes = {
   action,
   secondaryAction,
