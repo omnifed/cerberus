@@ -14,7 +14,24 @@ import { sliderAnatomy } from '@ark-ui/react'
 export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'slider',
   slots: sliderAnatomy.keys(),
-  jsx: [],
+  jsx: [
+    // primitives
+    'SliderRoot',
+    'SliderLabel',
+    'SliderValueText',
+    'SliderControl',
+    'SliderTrack',
+    'SliderRange',
+    'SliderThumb',
+    'SliderMarkerGroup',
+    'SliderMarker',
+    // abstractions
+    'Slider',
+  ],
 
   base: {},
+
+  variants: {},
+
+  defaultVariants: {},
 })
