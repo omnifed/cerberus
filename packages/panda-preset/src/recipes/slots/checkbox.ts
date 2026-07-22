@@ -48,7 +48,7 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       borderColor: 'action.border.initial',
       color: 'page.text.initial',
       flexShrink: 0,
-      rounded: 'sm',
+      rounded: 'xs',
       transitionProperty: 'border-color,background-color',
       transitionDuration: 'fast',
       transitionTimingFunction: 'ease-in-out',
@@ -66,7 +66,7 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
       _disabled: {
         ...formStates._disabled,
-        bgColor: 'page.bg.200',
+        bgColor: 'bg.action.initial',
       },
       _userInvalid: {
         bgColor: 'danger.bg.initial',
