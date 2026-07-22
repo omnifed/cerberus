@@ -62,7 +62,6 @@ async function main() {
     // 1. Create Recipe File
     const recipeContent = `import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { ${camel}Anatomy } from '@ark-ui/react'
-import { focusStates } from '../shared/states'
 
 /**
  * This module contains the ${camel} recipe.
@@ -77,15 +76,24 @@ import { focusStates } from '../shared/states'
 export const ${camel}: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: '${camel}',
   slots: ${camel}Anatomy.keys(),
-  jsx: [],
+  jsx: [
+    // primitives
+    '${pascal}Root',
+    // abstractions
+    '${pascal}',
+  ],
 
-  base: {}
+  base: {},
+
+  variants: {},
+
+  defaultVariants: {},
 })
 `
     await writeFile(join(paths.recipeDir, `${kebab}.ts`), recipeContent)
 
     // 2. Create React Component Files
-    const primitivesContent = `import {} from '@ark-ui/react/${kebab}'
+    const primitivesContent = `import { ${pascal} } from '@ark-ui/react/${kebab}'
 import { ${camel}, type ${pascal}VariantProps } from 'styled-system/recipes'
 import {
   createCerberusPrimitive,
@@ -98,15 +106,22 @@ import {
  */
 
 const { withSlotRecipe } = createCerberusPrimitive(${camel})
+
+// Root
+
+export type ${pascal}RootProps = CerberusPrimitiveProps<${pascal}.RootProps & ${pascal}VariantProps>
+export const ${pascal}Root = withSlotRecipe(${pascal}.Root, 'root')
 `
     const indexContent = `export * from './${kebab}'
 export * from './primitives'
 `
-    const componentContent = `import { withSlotRecipe } from './primitives'
+    const componentContent = `import { ${pascal}Root } from './primitives'
 
-/**
- * ${pascal} component implementation
- */
+export type ${pascal}Props = ${pascal}RootProps
+
+export function ${pascal}(props: ${pascal}Props) {
+  return null;
+}
 `
     await writeFile(join(paths.reactDir, 'primitives.ts'), primitivesContent)
     await writeFile(join(paths.reactDir, 'index.ts'), indexContent)
@@ -114,22 +129,26 @@ export * from './primitives'
 
     // 3. Create Test Files
     const reactTestContent = `import { describe, test, expect } from 'bun:test'
+import { render, screen } from '@testing-library/react'
+import { ${pascal} } from '@cerberus-design/react'
 
 describe('${pascal} Component', () => {
-  test('should render correctly', () => {
-    // Add component tests here
-    expect(true).toBe(true)
+  test('should render a ${pascal} element', () => {
+    render(<${pascal} />)
+    expect(screen.getByRole('slider')).toBeInTheDocument()
   })
 })
 `
     const recipeTestContent = `import { describe, test, expect } from 'bun:test'
-import { ${camel} } from '../../../../packages/panda-preset/src/recipes/slots/${kebab}'
+  import { slotRecipes } from '@cerberus/panda-preset'
 
-describe('${pascal} Recipe', () => {
-  test('should be defined', () => {
-    expect(${camel}).toBeDefined()
+  describe('${pascal} Recipe', () => {
+    const { ${camel} } = slotRecipes
+
+    test('should be defined', () => {
+      expect(${camel}).toBeDefined()
+    })
   })
-})
 `
     await writeFile(join(paths.testReactDir, `${kebab}.test.tsx`), reactTestContent)
     await writeFile(join(paths.testRecipeDir, `${kebab}.test.ts`), recipeTestContent)
