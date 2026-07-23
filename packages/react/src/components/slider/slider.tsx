@@ -16,6 +16,7 @@ import {
   SliderTrack,
   SliderValueText,
 } from './primitives'
+import { SliderThumbs } from './thumbs'
 
 export type SliderProps = SliderRootProps
 
@@ -44,10 +45,11 @@ export function Slider(props: SliderProps) {
           <SliderRange usage={props.usage} />
         </SliderTrack>
 
-        <SliderThumb orientation={props.orientation} usage={props.usage}>
-          <SliderDraggingIndicator />
-          <SliderHiddenInput />
-        </SliderThumb>
+        <SliderThumbs
+          defaultValue={props.defaultValue}
+          orientation={props.orientation}
+          usage={props.usage}
+        />
 
         <SliderMarkerGroup orientation={props.orientation}>
           <SliderMarker orientation={props.orientation} />
@@ -67,6 +69,8 @@ Slider.Control = SliderControl
 Slider.Track = SliderTrack
 Slider.Range = SliderRange
 Slider.Thumb = SliderThumb
+Slider.Thumbs = SliderThumbs
+Slider.DraggingIndicator = SliderDraggingIndicator
 Slider.MarkerGroup = SliderMarkerGroup
 Slider.Marker = SliderMarker
 Slider.Marks = SliderMarks

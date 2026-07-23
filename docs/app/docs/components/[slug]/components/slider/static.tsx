@@ -1,6 +1,7 @@
 import { BasicDemo } from './basic.demo'
 import { LabelDemo } from './label.demo'
 import { PaletteDemo } from './palette.demo'
+import { RangeDemo } from './range.demo'
 import { SizesDemo } from './sizes.demo'
 import { UsageDemo } from './usage.demo'
 
@@ -16,6 +17,10 @@ export const DEMOS = {
   palette: {
     id: 'slider.palette',
     preview: <PaletteDemo />,
+  },
+  range: {
+    id: 'slider.range',
+    preview: <RangeDemo />,
   },
   sizes: {
     id: 'slider.sizes',
@@ -41,5 +46,6 @@ export const DEMOS = {
   <SliderMarker />
 </SliderMarkerGroup>`,
 
+  thumbsShortcut: `<Slider.Thumbs values={[25, 50]} />`,
   marksShortcut: `<Slider.Marks values={[0, 25, 50, 75, 100]} />`,
 }

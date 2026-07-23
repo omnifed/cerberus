@@ -50,6 +50,16 @@ You can customize the color palette of the `Slider` by using the `palette` prop.
 
 <CodePreview {...DEMOS.palette} />
 
+### Range Slider
+
+To create a range slider, set multiple values to the `defaultValue` prop.
+
+<CodePreview {...DEMOS.range} />
+
+### Prevent Overlapping
+
+Use the `minStepsBetweenThumbs` prop to avoid thumbs with the same value.
+
 ## Guides
 
 This abstraction renders the following shortcuts internally to streamline development.
@@ -65,6 +75,10 @@ The `Slider.Track` and `Slider.Range` slots are used to render the track and ran
 The `Slider.Thumb`, `Slider.DraggingIndicator`, and `Slider.HiddenInput` slots are used to render the thumb of the slider.
 
 <CodeSnippet snippet={DEMOS.thumbShortcut} />
+<br />
+If you want to render a range of thumbs, we also provide the `Slider.Thumbs` slot.
+
+<CodeSnippet snippet={DEMOS.thumbsShortcut} />
 
 ### `Slider.Marks`
 
