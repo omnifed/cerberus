@@ -1,5 +1,7 @@
 import { BasicDemo } from './basic.demo'
+import { CollisionDemo } from './collision.demo'
 import { LabelDemo } from './label.demo'
+import { OverlapDemo } from './overlap.demo'
 import { PaletteDemo } from './palette.demo'
 import { RangeDemo } from './range.demo'
 import { SizesDemo } from './sizes.demo'
@@ -13,6 +15,14 @@ export const DEMOS = {
   label: {
     id: 'slider.label',
     preview: <LabelDemo />,
+  },
+  overlap: {
+    id: 'slider.overlap',
+    preview: <OverlapDemo />,
+  },
+  collision: {
+    id: 'slider.collision',
+    preview: <CollisionDemo />,
   },
   palette: {
     id: 'slider.palette',
