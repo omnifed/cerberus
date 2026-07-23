@@ -292,6 +292,10 @@ describe('conditions', () => {
     )
   })
 
+  test('should have a label', () => {
+    expect(conditions.label).toEqual('& :where([data-part=label])')
+  })
+
   test('should have a highEmphasis', () => {
     expect(conditions.highEmphasis).toEqual('&:is([data-emphasis=high])')
   })
@@ -328,5 +332,9 @@ describe('conditions', () => {
 
   test('should have a sideEnd', () => {
     expect(conditions.sideEnd).toEqual('&:is([data-side=end])')
+  })
+
+  test('should have a dragging state', () => {
+    expect(conditions.dragging).toEqual('&:is([data-dragging])')
   })
 })

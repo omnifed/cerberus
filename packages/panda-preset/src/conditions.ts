@@ -19,6 +19,7 @@ export const conditions = {
   isOver: '&:is([data-over=true], [data-dragging])',
   isDropped: '&:is([data-dropped=true])',
   isComplete: '&:is([data-complete=true])',
+  dragging: '&:is([data-dragging])',
 
   // Motion states
   paused: '&:is([data-paused], [data-paused=true], [data-state=paused])',
@@ -76,8 +77,8 @@ export const conditions = {
 
   // elements
   button: '& :where([data-scope=button])',
-  icon: '& :where(svg)',
   iconButton: '& :where([data-scope=icon-button])',
+  label: '& :where([data-part=label])',
   menuTrigger: '& :where([data-scope=menu][data-part=trigger])',
   notify: '&:is([data-notify=true])',
   startIcon: '&:is([data-start-icon=true])',

@@ -4,7 +4,7 @@ import { Slider } from '@cerberus-design/react'
 export function BasicDemo() {
   return (
     <HStack w="3/4">
-      <Slider defaultValue={[30]} label="Kewl gauge" />
+      <Slider defaultValue={[30]} />
     </HStack>
   )
 }

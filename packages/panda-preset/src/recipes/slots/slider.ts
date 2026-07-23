@@ -1,6 +1,6 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { sliderAnatomy } from '@ark-ui/react'
-import { allPalettes, allSlotPalettes } from '../shared/palettes'
+import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { allSlotPalettes } from '../shared/palettes'
 
 /**
  * This module contains the slider recipe.
@@ -41,9 +41,6 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
       touchAction: 'none',
       w: 'full',
     },
-    label: {
-      textStyle: 'label-sm',
-    },
     control: {
       alignItems: 'center',
       display: 'inline-flex',
@@ -80,11 +77,13 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
     thumb: {
       alignItems: 'center',
       borderRadius: 'full',
+      cursor: 'pointer',
       display: 'flex',
       height: 'var(--slider-thumb-size)',
       justifyContent: 'center',
       outline: 0,
-      transition: 'shadow',
+      transitionProperty: 'box-shadow, background-color',
+      transitionDuration: 'fast',
       width: 'var(--slider-thumb-size)',
       zIndex: '2',
       _focusVisible: {
@@ -104,6 +103,9 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           '--slider-marker-center': '6px',
           '--slider-marker-size': '0.06rem',
           '--slider-marker-inset': '3px',
+          _label: {
+            textStyle: 'label-sm',
+          },
         },
       },
       md: {
@@ -113,6 +115,9 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           '--slider-marker-center': '7px',
           '--slider-marker-size': '0.12rem',
           '--slider-marker-inset': '4px',
+          _label: {
+            textStyle: 'label-sm',
+          },
         },
       },
       lg: {
@@ -122,6 +127,9 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           '--slider-marker-center': '9px',
           '--slider-marker-size': '0.19rem',
           '--slider-marker-inset': '5px',
+          _label: {
+            textStyle: 'label-md',
+          },
         },
       },
     },
@@ -143,6 +151,12 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           _disabled: {
             opacity: '0.5',
           },
+          _hover: {
+            bgColor: 'action.ghost.hover',
+          },
+          _dragging: {
+            bgColor: 'action.ghost.active!',
+          },
         },
       },
       filled: {
@@ -156,7 +170,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           bgColor: 'colorPalette.bg.initial',
         },
         thumb: {
-          bgColor: 'action.ghost.initial',
+          bgColor: 'colorPalette.bg.initial',
           _disabled: {
             opacity: '0.5',
           },
@@ -164,18 +178,26 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
       outlined: {
         track: {
-          bgColor: 'colorPalette.surface.300',
+          bgColor: 'page.surface.300',
+          border: '1px solid',
+          borderColor: 'colorPalette.bg.initial',
           shadow: 'inset',
         },
         range: {
           bgColor: 'colorPalette.bg.initial',
         },
         thumb: {
+          bgColor: 'page.surface.initial',
           borderWidth: '2px',
           borderColor: 'action.border.initial',
-          bgColor: 'colorPalette.bg.100',
           _disabled: {
             opacity: '0.5',
+          },
+          _hover: {
+            bgColor: 'action.ghost.hover',
+          },
+          _dragging: {
+            bgColor: 'action.ghost.active!',
           },
         },
       },

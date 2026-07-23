@@ -16,10 +16,9 @@ import {
   SliderTrack,
   SliderValueText,
 } from './primitives'
+import { SliderMarks } from './marks'
 
-export type SliderProps = SliderRootProps & {
-  label?: ReactNode
-}
+export type SliderProps = SliderRootProps
 
 /**
  * ## Slider Component
@@ -33,23 +32,26 @@ export type SliderProps = SliderRootProps & {
 export function Slider(props: SliderProps) {
   return (
     <SliderRoot {...props}>
-      <HStack justify="space-between" w="full">
-        <Show when={props.label}>{() => <SliderLabel>{props.label}</SliderLabel>}</Show>
-        <SliderValueText />
-      </HStack>
+      <Show when={props.children}>
+        {() => (
+          <HStack justify="space-between" w="full">
+            {props.children}
+          </HStack>
+        )}
+      </Show>
 
-      <SliderControl>
-        <SliderTrack>
-          <SliderRange />
+      <SliderControl orientation={props.orientation}>
+        <SliderTrack orientation={props.orientation} usage={props.usage}>
+          <SliderRange usage={props.usage} />
         </SliderTrack>
 
-        <SliderThumb>
+        <SliderThumb orientation={props.orientation} usage={props.usage}>
           <SliderDraggingIndicator />
           <SliderHiddenInput />
         </SliderThumb>
 
-        <SliderMarkerGroup>
-          <SliderMarker />
+        <SliderMarkerGroup orientation={props.orientation}>
+          <SliderMarker orientation={props.orientation} />
         </SliderMarkerGroup>
       </SliderControl>
     </SliderRoot>
@@ -61,10 +63,12 @@ export function Slider(props: SliderProps) {
 Slider.Provider = SliderRootProvider
 Slider.Root = SliderRoot
 Slider.Label = SliderLabel
+Slider.ValueText = SliderValueText
 Slider.Control = SliderControl
 Slider.Track = SliderTrack
 Slider.Range = SliderRange
 Slider.Thumb = SliderThumb
 Slider.MarkerGroup = SliderMarkerGroup
 Slider.Marker = SliderMarker
+Slider.Marks = SliderMarks
 Slider.HiddenInput = SliderHiddenInput

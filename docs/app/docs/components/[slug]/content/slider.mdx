@@ -16,6 +16,54 @@ import { DEMOS } from '../components/slider/static'
 
 ## Usage
 
-The `Slider` component is a controlled abstraction of the primitive parts that can be used to show or hide content.
+The `Slider` component is a controlled abstraction of the primitive slots to render a slider control.
 
 <CodePreview {...DEMOS.basic} />
+
+## Examples
+
+### Label
+
+The `Slider` component supports adding header content (such as a label) through its children. This content is rendered within an `HStack` that `justifyContent` is set to `space-between`.
+
+In this example, we include the `Slider.ValueText` which displays the current value of the slider.
+
+<CodePreview {...DEMOS.label} />
+
+### Sizes
+
+The `Slider` component supports different sizes through the `size` prop. The default size is `lg`.
+
+<CodePreview {...DEMOS.sizes} />
+
+### Usage
+
+You can control the style of the `Slider` by using the `usage` prop. The default usage is `gradient`.
+
+<CodePreview {...DEMOS.usage} />
+
+## Guides
+
+This abstraction renders the following shortcuts internally to streamline development.
+
+### `Slider.Track`
+
+The `Slider.Track` and `Slider.Range` slots are used to render the track and range of the slider.
+
+<CodeSnippet snippet={DEMOS.trackShortcut} />
+
+### `Slider.Thumb`
+
+The `Slider.Thumb`, `Slider.DraggingIndicator`, and `Slider.HiddenInput` slots are used to render the thumb of the slider.
+
+<CodeSnippet snippet={DEMOS.thumbShortcut} />
+
+### `Slider.Marks`
+
+The `Slider.MarkerGroup` and `Slider.Marker` slots are used to render the mark of the slider.
+
+<CodeSnippet snippet={DEMOS.markShortcut} />
+<br />
+If you want to render a couple of marks, we also provide the `Slider.Marks` slot.
+
+<CodeSnippet snippet={DEMOS.marksShortcut} />
