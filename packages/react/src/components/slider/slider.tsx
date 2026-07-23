@@ -1,7 +1,7 @@
 import { SliderRootProvider } from '@ark-ui/react'
-import { ReactNode } from 'react'
 import { HStack } from 'styled-system/jsx'
 import { Show } from '../show/show'
+import { SliderMarks } from './marks'
 import {
   SliderControl,
   SliderDraggingIndicator,
@@ -16,7 +16,6 @@ import {
   SliderTrack,
   SliderValueText,
 } from './primitives'
-import { SliderMarks } from './marks'
 
 export type SliderProps = SliderRootProps
 

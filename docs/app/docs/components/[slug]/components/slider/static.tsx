@@ -1,5 +1,6 @@
 import { BasicDemo } from './basic.demo'
 import { LabelDemo } from './label.demo'
+import { PaletteDemo } from './palette.demo'
 import { SizesDemo } from './sizes.demo'
 import { UsageDemo } from './usage.demo'
 
@@ -11,6 +12,10 @@ export const DEMOS = {
   label: {
     id: 'slider.label',
     preview: <LabelDemo />,
+  },
+  palette: {
+    id: 'slider.palette',
+    preview: <PaletteDemo />,
   },
   sizes: {
     id: 'slider.sizes',

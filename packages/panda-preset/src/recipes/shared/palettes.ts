@@ -61,6 +61,19 @@ export const allSlotPalettes: Record<
   }
 }, {})
 
+export const noPageSlotPalettes: Record<
+  string,
+  { root: (typeof allPalettes)[keyof typeof allPalettes] }
+> = Object.entries(allPalettes).reduce((prev, [key, val]) => {
+  if (key === PAGE || key === SECONDARY_ACTION) return prev
+  return {
+    ...prev,
+    [key]: {
+      root: val,
+    },
+  }
+}, {})
+
 export const actionPalettes = {
   action,
   secondaryAction,

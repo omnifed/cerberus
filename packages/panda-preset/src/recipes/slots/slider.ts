@@ -1,6 +1,6 @@
 import { sliderAnatomy } from '@ark-ui/react'
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { allSlotPalettes } from '../shared/palettes'
+import { noPageSlotPalettes } from '../shared/palettes'
 
 /**
  * This module contains the slider recipe.
@@ -94,7 +94,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
   },
 
   variants: {
-    palette: allSlotPalettes,
+    palette: noPageSlotPalettes,
     size: {
       sm: {
         root: {
@@ -189,7 +189,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
         thumb: {
           bgColor: 'page.surface.initial',
           borderWidth: '2px',
-          borderColor: 'action.border.initial',
+          borderColor: 'colorPalette.bg.initial',
           _disabled: {
             opacity: '0.5',
           },
