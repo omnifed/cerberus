@@ -1,5 +1,7 @@
 import { BasicDemo } from './basic.demo'
 import { CollisionDemo } from './collision.demo'
+import { DisabledDemo } from './disabled.demo'
+
 import { LabelDemo } from './label.demo'
 import { OverlapDemo } from './overlap.demo'
 import { PaletteDemo } from './palette.demo'
@@ -11,6 +13,10 @@ export const DEMOS = {
   basic: {
     id: 'slider.basic',
     preview: <BasicDemo />,
+  },
+  disabled: {
+    id: 'slider.disabled',
+    preview: <DisabledDemo />,
   },
   label: {
     id: 'slider.label',

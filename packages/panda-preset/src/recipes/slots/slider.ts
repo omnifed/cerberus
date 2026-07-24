@@ -47,6 +47,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
       position: 'relative',
     },
     track: {
+      bgColor: 'page.surface.300',
       borderRadius: 'full',
       flex: '1',
       overflow: 'hidden',
@@ -86,6 +87,9 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionDuration: 'fast',
       width: 'var(--slider-thumb-size)',
       zIndex: '2',
+      _diabled: {
+        cursor: 'not-allowed',
+      },
       _focusVisible: {
         ring: '3px',
         ringColor: 'action.border.focus',
@@ -135,21 +139,23 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     usage: {
       gradient: {
-        track: {
-          bgColor: 'page.surface.300',
-          _disabled: {
-            opacity: '0.5',
-          },
-        },
         range: {
           gradient: 'charon-dark',
+          _disabled: {
+            bgColor: 'page.bg.300',
+            gradient: 'none',
+          },
         },
         thumb: {
           bgColor: 'action.ghost.initial',
           borderWidth: '2px',
           borderColor: 'action.border.initial',
           _disabled: {
-            opacity: '0.5',
+            bgColor: 'page.bg.initial',
+            borderColor: 'page.border.initial',
+            _hover: {
+              bgColor: 'page.bg.initial',
+            },
           },
           _hover: {
             bgColor: 'action.ghost.hover',
@@ -160,38 +166,44 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
         },
       },
       filled: {
-        track: {
-          bgColor: 'page.surface.300',
-          _disabled: {
-            opacity: '0.5',
-          },
-        },
         range: {
           bgColor: 'colorPalette.bg.initial',
+          _disabled: {
+            bgColor: 'page.bg.300',
+          },
         },
         thumb: {
           bgColor: 'colorPalette.bg.initial',
           _disabled: {
-            opacity: '0.5',
+            bgColor: 'page.bg.300',
           },
         },
       },
       outlined: {
         track: {
-          bgColor: 'page.surface.300',
           border: '1px solid',
-          borderColor: 'colorPalette.bg.initial',
+          borderColor: 'colorPalette.bg.initial/50',
           shadow: 'inset',
+          _disabled: {
+            borderColor: 'page.bg.300',
+          },
         },
         range: {
           bgColor: 'colorPalette.bg.initial',
+          _disabled: {
+            bgColor: 'page.bg.300',
+          },
         },
         thumb: {
           bgColor: 'page.surface.initial',
           borderWidth: '2px',
           borderColor: 'colorPalette.bg.initial',
           _disabled: {
-            opacity: '0.5',
+            bgColor: 'page.bg.initial',
+            borderColor: 'page.border.initial',
+            _hover: {
+              bgColor: 'page.bg.initial',
+            },
           },
           _hover: {
             bgColor: 'action.ghost.hover',
