@@ -9,6 +9,7 @@ import {
   SliderLabel,
   SliderMarker,
   SliderMarkerGroup,
+  SliderMarkerIndicator,
   SliderRange,
   SliderRoot,
   SliderRootProps,
@@ -18,7 +19,9 @@ import {
 } from './primitives'
 import { SliderThumbs } from './thumbs'
 
-export type SliderProps = SliderRootProps
+export type SliderProps = SliderRootProps & {
+  marks?: Array<Marker>
+}
 
 /**
  * ## Slider Component
@@ -51,9 +54,11 @@ export function Slider(props: SliderProps) {
           usage={props.usage}
         />
 
-        <SliderMarkerGroup orientation={props.orientation}>
-          <SliderMarker orientation={props.orientation} />
-        </SliderMarkerGroup>
+        <Show when={props.marks?.length}>
+          {() => (
+            <SliderMarks orientation={props.orientation} marks={props.marks ?? []} />
+          )}
+        </Show>
       </SliderControl>
     </SliderRoot>
   )
@@ -73,5 +78,6 @@ Slider.Thumbs = SliderThumbs
 Slider.DraggingIndicator = SliderDraggingIndicator
 Slider.MarkerGroup = SliderMarkerGroup
 Slider.Marker = SliderMarker
+Slider.MarkerIndicator = SliderMarkerIndicator
 Slider.Marks = SliderMarks
 Slider.HiddenInput = SliderHiddenInput

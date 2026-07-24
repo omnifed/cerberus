@@ -1,6 +1,7 @@
 import { Slider } from '@ark-ui/react/slider'
 import { slider, type SliderVariantProps } from 'styled-system/recipes'
 import {
+  CerberusProps,
   createCerberusPrimitive,
   type CerberusPrimitiveProps,
 } from '../../system/index'
@@ -67,6 +68,11 @@ export const SliderMarkerGroup = withSlotRecipe(Slider.MarkerGroup, 'markerGroup
 
 export type SliderMarkerProps = CerberusPrimitiveProps<Slider.MarkerProps>
 export const SliderMarker = withSlotRecipe(Slider.Marker, 'marker')
+
+// MarkerIndicator
+
+export type SliderMarkerIndicatorProps = CerberusProps<'div'>
+export const SliderMarkerIndicator = withSlotRecipe('div', 'markerIndicator')
 
 // HiddenInput
 

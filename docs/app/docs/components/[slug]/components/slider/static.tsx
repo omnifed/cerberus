@@ -1,12 +1,13 @@
 import { BasicDemo } from './basic.demo'
 import { CollisionDemo } from './collision.demo'
 import { DisabledDemo } from './disabled.demo'
-
 import { LabelDemo } from './label.demo'
+import { MarksDemo } from './marks.demo'
 import { OverlapDemo } from './overlap.demo'
 import { PaletteDemo } from './palette.demo'
 import { RangeDemo } from './range.demo'
 import { SizesDemo } from './sizes.demo'
+import { StepsDemo } from './steps.demo'
 import { UsageDemo } from './usage.demo'
 
 export const DEMOS = {
@@ -21,6 +22,10 @@ export const DEMOS = {
   label: {
     id: 'slider.label',
     preview: <LabelDemo />,
+  },
+  marks: {
+    id: 'slider.marks',
+    preview: <MarksDemo />,
   },
   overlap: {
     id: 'slider.overlap',
@@ -41,6 +46,10 @@ export const DEMOS = {
   sizes: {
     id: 'slider.sizes',
     preview: <SizesDemo />,
+  },
+  steps: {
+    id: 'slider.steps',
+    preview: <StepsDemo />,
   },
   usage: {
     id: 'slider.usage',

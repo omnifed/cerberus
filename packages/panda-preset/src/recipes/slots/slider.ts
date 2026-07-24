@@ -14,7 +14,7 @@ import { noPageSlotPalettes } from '../shared/palettes'
  */
 export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'slider',
-  slots: sliderAnatomy.keys(),
+  slots: [...sliderAnatomy.keys(), 'markerIndicator'],
   jsx: [
     // primitives
     'SliderRoot',
@@ -26,6 +26,8 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
     'SliderThumb',
     'SliderMarkerGroup',
     'SliderMarker',
+    'SliderMarkerIndicator',
+    'SliderDraggingIndicator',
     // abstractions
     'Slider',
   ],
@@ -34,7 +36,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
     root: {
       display: 'flex',
       flexDirection: 'column',
-      gap: '1',
+      gap: 'sm',
       isolation: 'isolate',
       position: 'relative',
       textStyle: 'body-sm',
@@ -55,26 +57,30 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
     range: {
       height: 'inherit',
       width: 'inherit',
-      _disabled: { bg: 'border.emphasized!' },
     },
     markerGroup: {
       position: 'absolute!',
       zIndex: '1',
     },
     marker: {
-      '--marker-bg': { base: 'white', _underValue: 'colors.bg' },
+      '--marker-bg': {
+        base: '{colors.page.text.100}',
+        _underValue: '{colors.page.surface.initial}',
+      },
       alignItems: 'center',
-      color: 'fg.muted',
+      color: 'page.text.100',
       display: 'flex',
-      gap: 'calc(var(--slider-thumb-size) / 2)',
-      textStyle: 'body-xs',
+      fontFamily: 'mono',
+      gap: 'calc(var(--slider-thumb-size) / 2.5)',
+      textStyle: 'label-sm',
     },
-    draggingIndicator: {
+    markerIndicator: {
       bgColor: 'var(--marker-bg)',
       borderRadius: 'full',
-      height: 'calc(var(--slider-track-size) - var(--slider-marker-size))',
-      width: 'calc(var(--slider-track-size) - var(--slider-marker-size))',
+      height: 'calc(var(--slider-track-size) - (var(--slider-marker-size) * 2))',
+      width: 'calc(var(--slider-track-size) - (var(--slider-marker-size) * 2))',
     },
+    draggingIndicator: {},
     thumb: {
       alignItems: 'center',
       borderRadius: 'full',
@@ -87,9 +93,6 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
       transitionDuration: 'fast',
       width: 'var(--slider-thumb-size)',
       zIndex: '2',
-      _diabled: {
-        cursor: 'not-allowed',
-      },
       _focusVisible: {
         ring: '3px',
         ringColor: 'action.border.focus',
@@ -104,7 +107,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
         root: {
           '--slider-thumb-size': '1.5rem',
           '--slider-track-size': '0.5rem',
-          '--slider-marker-center': '6px',
+          '--slider-marker-center': '9px',
           '--slider-marker-size': '0.06rem',
           '--slider-marker-inset': '3px',
           _label: {
@@ -116,7 +119,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
         root: {
           '--slider-thumb-size': '1.75rem',
           '--slider-track-size': '0.75rem',
-          '--slider-marker-center': '7px',
+          '--slider-marker-center': '10px',
           '--slider-marker-size': '0.12rem',
           '--slider-marker-inset': '4px',
           _label: {
@@ -128,7 +131,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
         root: {
           '--slider-thumb-size': '2rem',
           '--slider-track-size': '1rem',
-          '--slider-marker-center': '9px',
+          '--slider-marker-center': '11px',
           '--slider-marker-size': '0.19rem',
           '--slider-marker-inset': '5px',
           _label: {
@@ -153,6 +156,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           _disabled: {
             bgColor: 'page.bg.initial',
             borderColor: 'page.border.initial',
+            cursor: 'not-allowed',
             _hover: {
               bgColor: 'page.bg.initial',
             },
@@ -176,6 +180,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           bgColor: 'colorPalette.bg.initial',
           _disabled: {
             bgColor: 'page.bg.300',
+            cursor: 'not-allowed',
           },
         },
       },
@@ -201,6 +206,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           _disabled: {
             bgColor: 'page.bg.initial',
             borderColor: 'page.border.initial',
+            cursor: 'not-allowed',
             _hover: {
               bgColor: 'page.bg.initial',
             },
