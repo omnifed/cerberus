@@ -49,8 +49,8 @@ catalogs:
       specifier: ^1.11.4
       version: 1.11.4
     '@pandacss/preset-panda':
-      specifier: ^1.11.4
-      version: 1.11.4
+      specifier: ^1.11.5
+      version: 1.11.5
     '@pandacss/types':
       specifier: ^1.11.4
       version: 1.11.4
@@ -341,7 +341,7 @@ importers:
         version: 5.37.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@pandacss/preset-panda':
         specifier: catalog:pandacss
-        version: 1.11.4
+        version: 1.11.5
       autoprefixer:
         specifier: '*'
         version: 10.5.2(postcss@8.5.17)
@@ -1893,6 +1893,10 @@ packages:
     resolution: {integrity: sha512-Z6yrY7o0Xyqc6JpnAZ954APGs5VhLeZLJqTzAJw9eu6Y0pP5SWaOeztZCdPwWZvK3LbyXliYzc3FY4cxEaVYNg==}
     engines: {node: '>=20'}
 
+  '@pandacss/preset-panda@1.11.5':
+    resolution: {integrity: sha512-wWIfVtCemq0u5uGA92UNpPifbipwT2ihPUr2bMV9m4JiIUkex04vX7A1ZhMPgon8a2Jm/VFEw2I22e44vxkEXg==}
+    engines: {node: '>=20'}
+
   '@pandacss/reporter@1.11.4':
     resolution: {integrity: sha512-6+lCjdOTGwlL+P6RKEDlmExcYwgoedlLhR7JAgw0UF9IvgMxvmH7Xk6RX8drYq6B+a1fGG4RN9V371ySZKLzbg==}
     engines: {node: '>=20'}
@@ -1907,6 +1911,10 @@ packages:
 
   '@pandacss/types@1.11.4':
     resolution: {integrity: sha512-Bn+ez7ckm2E406QBF0W2ckEeFIBFo91qvOy10/bdxxiAHR76fBmg6tr4YlHbLHdXpcSBjXFWrGWo8nqyKJSx2A==}
+    engines: {node: '>=20'}
+
+  '@pandacss/types@1.11.5':
+    resolution: {integrity: sha512-R5rIsjzELuOd0SNAk8Ox2b0pgSAwWnc6aJvKA4sEA5qqQtC+VuUbMK6JakvjDyTDyJ5hwfidwg1QqOebbdIaQQ==}
     engines: {node: '>=20'}
 
   '@preact/signals-core@1.14.4':
@@ -7221,6 +7229,10 @@ snapshots:
     dependencies:
       '@pandacss/types': 1.11.4
 
+  '@pandacss/preset-panda@1.11.5':
+    dependencies:
+      '@pandacss/types': 1.11.5
+
   '@pandacss/reporter@1.11.4':
     dependencies:
       '@pandacss/core': 1.11.4
@@ -7242,6 +7254,8 @@ snapshots:
       ts-pattern: 5.9.0
 
   '@pandacss/types@1.11.4': {}
+
+  '@pandacss/types@1.11.5': {}
 
   '@preact/signals-core@1.14.4': {}
 
