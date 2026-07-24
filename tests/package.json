@@ -20,7 +20,7 @@
     "@cerberus/preset-elysium-theme": "workspace:*",
     "@cerberus/preset-oceanus-theme": "workspace:*",
     "@cerberus/tokens": "workspace:*",
-    "@happy-dom/global-registrator": "^20.10.6",
+    "@happy-dom/global-registrator": "^20.11.1",
     "@pandacss/types": "catalog:pandacss",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.1",
