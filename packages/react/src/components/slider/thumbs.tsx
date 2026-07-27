@@ -4,7 +4,7 @@ import { SliderDraggingIndicator, SliderHiddenInput, SliderThumb } from './primi
 import { SliderProps } from './slider'
 
 type SliderThumbsProps = {
-  defaultValue: SliderProps['defaultValue']
+  value: SliderProps['value'] | SliderProps['defaultValue']
   direction: SliderProps['orientation']
   usage: SliderProps['usage']
   showIndicator?: SliderProps['showIndicator']
@@ -12,7 +12,7 @@ type SliderThumbsProps = {
 
 export function SliderThumbs(props: SliderThumbsProps) {
   return (
-    <For each={props.defaultValue}>
+    <For each={props.value}>
       {(num, idx) => (
         <SliderThumb
           key={`thumb:${num}`}

@@ -51,10 +51,10 @@ export function Slider(props: SliderProps) {
         </SliderTrack>
 
         <SliderThumbs
-          defaultValue={props.defaultValue}
           direction={props.orientation}
           showIndicator={showIndicator}
           usage={props.usage}
+          value={props.defaultValue ?? props.value}
         />
 
         <Show when={props.marks?.length}>

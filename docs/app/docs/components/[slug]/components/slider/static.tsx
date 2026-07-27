@@ -1,5 +1,6 @@
 import { BasicDemo } from './basic.demo'
 import { CollisionDemo } from './collision.demo'
+import { ControlledDemo } from './controlled.demo'
 import { DisabledDemo } from './disabled.demo'
 import { DraggingIndicatorDemo } from './indicator.demo'
 import { LabelDemo } from './label.demo'
@@ -16,6 +17,10 @@ export const DEMOS = {
   basic: {
     id: 'slider.basic',
     preview: <BasicDemo />,
+  },
+  controlled: {
+    id: 'slider.controlled',
+    preview: <ControlledDemo />,
   },
   disabled: {
     id: 'slider.disabled',
