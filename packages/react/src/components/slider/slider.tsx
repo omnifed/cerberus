@@ -1,7 +1,7 @@
 import { SliderRootProvider } from '@ark-ui/react'
 import { HStack } from 'styled-system/jsx'
 import { Show } from '../show/show'
-import { SliderMarks } from './marks'
+import { Marker, SliderMarks } from './marks'
 import {
   SliderControl,
   SliderDraggingIndicator,
@@ -34,7 +34,7 @@ export type SliderProps = SliderRootProps & {
  */
 export function Slider(props: SliderProps) {
   return (
-    <SliderRoot {...props}>
+    <SliderRoot {...props} direction={props.orientation}>
       <Show when={props.children}>
         {() => (
           <HStack justify="space-between" w="full">
@@ -43,20 +43,20 @@ export function Slider(props: SliderProps) {
         )}
       </Show>
 
-      <SliderControl orientation={props.orientation}>
-        <SliderTrack orientation={props.orientation} usage={props.usage}>
+      <SliderControl direction={props.orientation}>
+        <SliderTrack direction={props.orientation} usage={props.usage}>
           <SliderRange usage={props.usage} />
         </SliderTrack>
 
         <SliderThumbs
           defaultValue={props.defaultValue}
-          orientation={props.orientation}
+          direction={props.orientation}
           usage={props.usage}
         />
 
         <Show when={props.marks?.length}>
           {() => (
-            <SliderMarks orientation={props.orientation} marks={props.marks ?? []} />
+            <SliderMarks direction={props.orientation} marks={props.marks ?? []} />
           )}
         </Show>
       </SliderControl>

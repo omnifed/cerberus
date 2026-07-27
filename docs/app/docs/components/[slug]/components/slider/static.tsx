@@ -9,6 +9,7 @@ import { RangeDemo } from './range.demo'
 import { SizesDemo } from './sizes.demo'
 import { StepsDemo } from './steps.demo'
 import { UsageDemo } from './usage.demo'
+import { VerticalDemo } from './vert.demo'
 
 export const DEMOS = {
   basic: {
@@ -54,6 +55,10 @@ export const DEMOS = {
   usage: {
     id: 'slider.usage',
     preview: <UsageDemo />,
+  },
+  vertical: {
+    id: 'slider.vert',
+    preview: <VerticalDemo />,
   },
 
   meta: "import { Slider } from '@cerberus/react'",

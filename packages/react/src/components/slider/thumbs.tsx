@@ -5,7 +5,7 @@ import { SliderProps } from './slider'
 
 type SliderThumbsProps = {
   defaultValue: SliderProps['defaultValue']
-  orientation: SliderProps['orientation']
+  direction: SliderProps['orientation']
   usage: SliderProps['usage']
   showIndicator?: boolean
 }
@@ -17,7 +17,7 @@ export function SliderThumbs(props: SliderThumbsProps) {
         <SliderThumb
           key={`thumb:${num}`}
           index={idx}
-          orientation={props.orientation}
+          direction={props.direction}
           usage={props.usage}
         >
           <SliderHiddenInput />

@@ -41,7 +41,6 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
       position: 'relative',
       textStyle: 'body-sm',
       touchAction: 'none',
-      w: 'full',
     },
     control: {
       alignItems: 'center',
@@ -220,20 +219,22 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
         },
       },
     },
-    orientation: {
+    direction: {
       vertical: {
         root: {
-          display: 'inline-flex',
+          maxW: 'max-content',
+          w: 'initial',
         },
         control: {
           flexDirection: 'column',
           height: '100%',
           minWidth: 'var(--slider-thumb-size)',
-          '&:has(.chakra-slider__markerLabel)': {
-            marginEnd: 'md',
-          },
+          // '&:has(.chakra-slider__markerLabel)': {
+          //   marginEnd: 'md',
+          // },
         },
         track: {
+          h: 'full',
           width: 'var(--slider-track-size)',
         },
         thumb: {
@@ -249,13 +250,16 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
         },
       },
       horizontal: {
+        root: {
+          w: 'full',
+        },
         control: {
           flexDirection: 'row',
-          width: '100%',
           minHeight: 'var(--slider-thumb-size)',
-          '&:has(.chakra-slider__markerLabel)': {
-            marginBottom: 'md',
-          },
+          width: 'full',
+          // '&:has(.chakra-slider__markerLabel)': {
+          //   marginBottom: '4',
+          // },
         },
         track: {
           height: 'var(--slider-track-size)',
@@ -265,8 +269,8 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           translate: '0 -50%',
         },
         markerGroup: {
-          top: 'var(--slider-marker-center)',
           insetInline: 'var(--slider-marker-inset)',
+          top: 'var(--slider-marker-center)',
         },
         marker: {
           flexDirection: 'column',
@@ -278,7 +282,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
   defaultVariants: {
     palette: 'action',
     size: 'lg',
-    orientation: 'horizontal',
+    direction: 'horizontal',
     usage: 'gradient',
   },
 })

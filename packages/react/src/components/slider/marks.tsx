@@ -4,7 +4,7 @@ import { SliderMarker, SliderMarkerGroup, SliderMarkerIndicator } from './primit
 import { SliderProps } from './slider'
 
 export type SliderMarksProps = {
-  orientation?: SliderProps['orientation']
+  direction?: SliderProps['orientation']
   marks: Array<Marker>
 }
 export type Marker = number | { value: number; label: ReactNode }
@@ -16,13 +16,14 @@ export type Marker = number | { value: number; label: ReactNode }
  *
  * | Prop | Type | Description |
  * | --- | --- | --- |
+ * | `direction` | `'horizontal' | 'vertical'` | The direction of the slider. |
  * | `marks` | `Array<number>` | The value of the slider as an array of numbers representing the mark values. |
  */
 export function SliderMarks(props: SliderMarksProps) {
   return (
-    <SliderMarkerGroup orientation={props.orientation}>
+    <SliderMarkerGroup direction={props.direction}>
       <For each={props.marks}>
-        {(mark, idx) => <Mark key={idx} orientation={props.orientation} mark={mark} />}
+        {(mark, idx) => <Mark key={idx} direction={props.direction} mark={mark} />}
       </For>
     </SliderMarkerGroup>
   )
@@ -33,7 +34,7 @@ function Mark(props: Omit<SliderMarksProps, 'marks'> & { mark: Marker }) {
   const value = typeof mark === 'number' ? mark : mark.value
   const label = typeof mark === 'number' ? mark : (mark.label ?? mark.value)
   return (
-    <SliderMarker orientation={props.orientation} value={value}>
+    <SliderMarker direction={props.direction} value={value}>
       <SliderMarkerIndicator />
       {label}
     </SliderMarker>
