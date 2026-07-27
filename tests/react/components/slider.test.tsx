@@ -1,14 +1,18 @@
 import { describe, test, expect } from 'bun:test'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { Slider } from '@cerberus-design/react'
 
 describe('Slider Component', () => {
-  test('should render a slider element', () => {
+  test('should render a slider element', async () => {
     render(
-      <Slider>
+      <Slider defaultValue={[50]}>
         <Slider.Label>Test</Slider.Label>
+        <Slider.ValueText />
       </Slider>,
     )
-    expect(screen.getByText(/test/i)).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByText(/test/i)).toBeInTheDocument()
+      expect(screen.getByText(/50/i)).toBeInTheDocument()
+    })
   })
 })
