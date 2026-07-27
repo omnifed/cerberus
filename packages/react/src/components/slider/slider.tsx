@@ -1,4 +1,3 @@
-import { SliderRootProvider } from '@ark-ui/react'
 import { HStack } from 'styled-system/jsx'
 import { Show } from '../show/show'
 import { Marker, SliderMarks } from './marks'
@@ -13,6 +12,7 @@ import {
   SliderRange,
   SliderRoot,
   SliderRootProps,
+  SliderProvider,
   SliderThumb,
   SliderTrack,
   SliderValueText,
@@ -69,7 +69,7 @@ export function Slider(props: SliderProps) {
 
 // Parts
 
-Slider.Provider = SliderRootProvider
+Slider.Provider = SliderProvider
 Slider.Root = SliderRoot
 Slider.Label = SliderLabel
 Slider.ValueText = SliderValueText

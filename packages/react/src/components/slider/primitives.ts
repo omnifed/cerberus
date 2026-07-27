@@ -13,6 +13,13 @@ import {
 
 const { withSlotRecipe, withNoRecipe } = createCerberusPrimitive(slider)
 
+// Provider
+
+export type SliderProviderProps = CerberusPrimitiveProps<
+  Slider.RootProviderProps & SliderVariantProps
+>
+export const SliderProvider = withSlotRecipe(Slider.RootProvider, 'root')
+
 // Root
 
 export type SliderRootProps = CerberusPrimitiveProps<

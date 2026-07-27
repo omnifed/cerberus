@@ -5,8 +5,8 @@ import { SliderProps } from './slider'
 
 type SliderThumbsProps = {
   value: SliderProps['value'] | SliderProps['defaultValue']
-  direction: SliderProps['orientation']
-  usage: SliderProps['usage']
+  direction?: SliderProps['orientation']
+  usage?: SliderProps['usage']
   showIndicator?: SliderProps['showIndicator']
 }
 

@@ -10,6 +10,7 @@ import { PaletteDemo } from './palette.demo'
 import { RangeDemo } from './range.demo'
 import { SizesDemo } from './sizes.demo'
 import { StepsDemo } from './steps.demo'
+import { StoreDemo } from './store.demo'
 import { UsageDemo } from './usage.demo'
 import { VerticalDemo } from './vert.demo'
 
@@ -61,6 +62,10 @@ export const DEMOS = {
   steps: {
     id: 'slider.steps',
     preview: <StepsDemo />,
+  },
+  store: {
+    id: 'slider.store',
+    preview: <StoreDemo />,
   },
   usage: {
     id: 'slider.usage',

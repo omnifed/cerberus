@@ -110,6 +110,16 @@ When you want to control the slider value programmatically, use the `onValueChan
 
 <CodePreview {...DEMOS.controlled} />
 
+### Store
+
+An alternative way to control the Slider is to use the `Provider` component and the `useSlider` store hook.
+
+This way you can access the slider state and methods from outside the slider.
+
+<NoteAdmonition description="When using using the Provider component, you are opting out of the Slider abstraction which means you need to utilize the utility components mentioned in the Guides section." />
+
+<CodePreview {...DEMOS.store} />
+
 ## Guides
 
 This abstraction renders the following shortcuts internally to streamline development.
