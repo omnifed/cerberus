@@ -66,7 +66,7 @@ export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       },
       _disabled: {
         ...formStates._disabled,
-        bgColor: 'bg.action.initial',
+        bgColor: 'action.bg.initial',
       },
       _userInvalid: {
         bgColor: 'danger.bg.initial',
