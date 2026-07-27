@@ -18,7 +18,7 @@ describe('tooltip recipe', () => {
       rounded: 'sm',
       maxH: '6rem',
       maxW: '17rem',
-      shadow: 'lg',
+      shadow: 'sm',
       textStyle: 'label-sm',
       textWrap: 'pretty',
       w: 'max-content',

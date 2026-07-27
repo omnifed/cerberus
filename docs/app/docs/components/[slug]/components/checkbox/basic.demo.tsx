@@ -13,6 +13,12 @@ const items = [
     id: 'legal',
     label: 'I would like to receive marketing emails',
   },
+  {
+    id: 'disabled',
+    label: 'This is a disabled checkbox',
+    disabled: true,
+    checked: true,
+  },
 ]
 
 export function BasicDemo() {
@@ -23,8 +29,10 @@ export function BasicDemo() {
           {(item) => (
             <Checkbox
               key={item.id}
+              disabled={item?.disabled}
               ids={{ control: item.id }}
               required={item?.required}
+              checked={item?.checked}
             >
               {item.label}
             </Checkbox>

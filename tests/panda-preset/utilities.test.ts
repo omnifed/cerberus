@@ -56,7 +56,7 @@ describe('utilities', () => {
 
     expect(cerbGradient).toBeDefined()
     expect(cerbGradient.className).toEqual('gradient')
-    expect(cerbGradient.values).toEqual(getGradients())
+    expect(cerbGradient.values).toEqual([...getGradients(), 'none'])
     expect(cerbGradient.transform?.('charon-light', args)).toMatchObject({
       backgroundImage:
         'linear-gradient(to bottom left, {colors.gradient.charon-light.start}, {colors.gradient.charon-light.end})',

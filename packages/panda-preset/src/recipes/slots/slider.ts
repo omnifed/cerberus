@@ -1,5 +1,6 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { sliderAnatomy } from '@ark-ui/react'
+import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { noPageSlotPalettes } from '../shared/palettes'
 
 /**
  * This module contains the slider recipe.
@@ -13,8 +14,322 @@ import { sliderAnatomy } from '@ark-ui/react'
  */
 export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'slider',
-  slots: sliderAnatomy.keys(),
-  jsx: [],
+  slots: [...sliderAnatomy.keys(), 'markerIndicator'],
+  jsx: [
+    // primitives
+    'SliderRoot',
+    'SliderLabel',
+    'SliderValueText',
+    'SliderControl',
+    'SliderTrack',
+    'SliderRange',
+    'SliderThumb',
+    'SliderMarkerGroup',
+    'SliderMarker',
+    'SliderMarkerIndicator',
+    'SliderDraggingIndicator',
+    // abstractions
+    'Slider',
+  ],
 
-  base: {},
+  base: {
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'sm',
+      isolation: 'isolate',
+      position: 'relative',
+      textStyle: 'body-sm',
+      touchAction: 'none',
+    },
+    control: {
+      alignItems: 'center',
+      display: 'inline-flex',
+      position: 'relative',
+    },
+    track: {
+      bgColor: 'page.surface.300',
+      borderRadius: 'full',
+      flex: '1',
+      overflow: 'hidden',
+    },
+    range: {
+      height: 'inherit',
+      width: 'inherit',
+    },
+    markerGroup: {
+      position: 'absolute!',
+      zIndex: '1',
+    },
+    marker: {
+      '--marker-bg': {
+        base: '{colors.page.text.100}',
+        _underValue: '{colors.page.surface.initial}',
+      },
+      alignItems: 'center',
+      color: 'page.text.100',
+      display: 'flex',
+      fontFamily: 'mono',
+      gap: 'calc(var(--slider-thumb-size) / 2.5)',
+      textStyle: 'label-sm',
+    },
+    markerIndicator: {
+      bgColor: 'var(--marker-bg)',
+      borderRadius: 'full',
+      height: 'calc(var(--slider-track-size) - (var(--slider-marker-size) * 2))',
+      width: 'calc(var(--slider-track-size) - (var(--slider-marker-size) * 2))',
+    },
+    draggingIndicator: {
+      bgColor: 'page.surface.inverse',
+      color: 'page.text.inverse',
+      pointerEvents: 'none',
+      px: '3',
+      py: 2,
+      rounded: 'sm',
+      maxH: '6rem',
+      shadow: 'sm',
+      textAlign: 'center',
+      textStyle: 'label-sm',
+      textWrap: 'pretty',
+      whiteSpace: 'nowrap',
+      w: '2.75rem',
+      _open: {
+        animationStyle: 'scale-fade-in',
+        animationDuration: 'fast',
+      },
+      _closed: {
+        animationStyle: 'scale-fade-out',
+        animationDuration: 'fast',
+      },
+    },
+    thumb: {
+      alignItems: 'center',
+      borderRadius: 'full',
+      cursor: 'pointer',
+      display: 'flex',
+      height: 'var(--slider-thumb-size)',
+      justifyContent: 'center',
+      outline: 0,
+      transitionProperty: 'box-shadow, background-color',
+      transitionDuration: 'fast',
+      width: 'var(--slider-thumb-size)',
+      zIndex: '2',
+      _focusVisible: {
+        ring: '3px',
+        ringColor: 'action.border.focus',
+      },
+    },
+  },
+
+  variants: {
+    palette: noPageSlotPalettes,
+    size: {
+      sm: {
+        root: {
+          '--slider-thumb-size': '1.5rem',
+          '--slider-track-size': '0.5rem',
+          '--slider-marker-center': '9px',
+          '--slider-marker-size': '0.06rem',
+          '--slider-marker-inset': '3px',
+          '--slider-dragging-indicator-offset': '-2rem',
+          _label: {
+            textStyle: 'label-sm',
+          },
+        },
+      },
+      md: {
+        root: {
+          '--slider-thumb-size': '1.75rem',
+          '--slider-track-size': '0.75rem',
+          '--slider-marker-center': '10px',
+          '--slider-marker-size': '0.12rem',
+          '--slider-marker-inset': '4px',
+          '--slider-dragging-indicator-offset': '-2.25rem',
+          _label: {
+            textStyle: 'label-sm',
+          },
+        },
+      },
+      lg: {
+        root: {
+          '--slider-thumb-size': '2rem',
+          '--slider-track-size': '1rem',
+          '--slider-marker-center': '11px',
+          '--slider-marker-size': '0.19rem',
+          '--slider-marker-inset': '5px',
+          '--slider-dragging-indicator-offset': '-2.5rem',
+          _label: {
+            textStyle: 'label-md',
+          },
+        },
+      },
+    },
+    usage: {
+      gradient: {
+        range: {
+          gradient: 'charon-dark',
+          _disabled: {
+            bgColor: 'page.bg.300',
+            gradient: 'none',
+          },
+        },
+        thumb: {
+          bgColor: 'action.ghost.initial',
+          borderWidth: '2px',
+          borderColor: 'action.border.initial',
+          _disabled: {
+            bgColor: 'page.bg.initial',
+            borderColor: 'page.border.initial',
+            cursor: 'not-allowed',
+            _hover: {
+              bgColor: 'page.bg.initial',
+            },
+          },
+          _hover: {
+            bgColor: 'action.ghost.hover',
+          },
+          _dragging: {
+            bgColor: 'action.ghost.active!',
+          },
+        },
+      },
+      filled: {
+        range: {
+          bgColor: 'colorPalette.bg.initial',
+          _disabled: {
+            bgColor: 'page.bg.300',
+          },
+        },
+        thumb: {
+          bgColor: 'colorPalette.bg.initial',
+          _disabled: {
+            bgColor: 'page.bg.300',
+            cursor: 'not-allowed',
+          },
+        },
+      },
+      outlined: {
+        track: {
+          border: '1px solid',
+          borderColor: 'colorPalette.bg.initial/50',
+          shadow: 'inset',
+          _disabled: {
+            borderColor: 'page.bg.300',
+          },
+        },
+        range: {
+          bgColor: 'colorPalette.bg.initial',
+          _disabled: {
+            bgColor: 'page.bg.300',
+          },
+        },
+        thumb: {
+          bgColor: 'page.surface.initial',
+          borderWidth: '2px',
+          borderColor: 'colorPalette.bg.initial',
+          _disabled: {
+            bgColor: 'page.bg.initial',
+            borderColor: 'page.border.initial',
+            cursor: 'not-allowed',
+            _hover: {
+              bgColor: 'page.bg.initial',
+            },
+          },
+          _hover: {
+            bgColor: 'action.ghost.hover',
+          },
+          _dragging: {
+            bgColor: 'action.ghost.active!',
+          },
+        },
+      },
+    },
+    direction: {
+      vertical: {
+        root: {
+          maxW: 'max-content',
+          w: 'initial',
+        },
+        control: {
+          flexDirection: 'column',
+          height: '100%',
+          minWidth: 'var(--slider-thumb-size)',
+        },
+        track: {
+          h: 'full',
+          width: 'var(--slider-track-size)',
+        },
+        thumb: {
+          left: '50%',
+          translate: '-50% 0',
+        },
+        draggingIndicator: {
+          right: '2.5rem',
+          _after: {
+            content: "''",
+            border: '6px solid',
+            borderColor: 'transparent',
+            borderLeftColor: 'page.surface.inverse',
+            display: 'inline-block',
+            left: '100%',
+            pos: 'absolute',
+            top: '50%',
+            transform: 'translateY(-50%)',
+          },
+        },
+        markerGroup: {
+          insetStart: 'var(--slider-marker-center)',
+          insetBlock: 'var(--slider-marker-inset)',
+        },
+        marker: {
+          flexDirection: 'row',
+        },
+      },
+      horizontal: {
+        root: {
+          w: 'full',
+        },
+        control: {
+          flexDirection: 'row',
+          minHeight: 'var(--slider-thumb-size)',
+          width: 'full',
+        },
+        track: {
+          height: 'var(--slider-track-size)',
+        },
+        thumb: {
+          top: '50%',
+          translate: '0 -50%',
+        },
+        draggingIndicator: {
+          top: 'var(--slider-dragging-indicator-offset)',
+          _after: {
+            content: "''",
+            border: '6px solid',
+            borderColor: 'transparent',
+            borderTopColor: 'page.surface.inverse',
+            display: 'inline-block',
+            left: '50%',
+            pos: 'absolute',
+            top: '100%',
+            transform: 'translateX(-50%)',
+          },
+        },
+        markerGroup: {
+          insetInline: 'var(--slider-marker-inset)',
+          top: 'var(--slider-marker-center)',
+        },
+        marker: {
+          flexDirection: 'column',
+        },
+      },
+    },
+  },
+
+  defaultVariants: {
+    palette: 'action',
+    size: 'lg',
+    direction: 'horizontal',
+    usage: 'gradient',
+  },
 })

@@ -278,10 +278,6 @@ describe('conditions', () => {
     expect(conditions.button).toEqual('& :where([data-scope=button])')
   })
 
-  test('should have an icon', () => {
-    expect(conditions.icon).toEqual('& :where(svg)')
-  })
-
   test('should have an iconButton', () => {
     expect(conditions.iconButton).toEqual('& :where([data-scope=icon-button])')
   })
@@ -290,6 +286,10 @@ describe('conditions', () => {
     expect(conditions.menuTrigger).toEqual(
       '& :where([data-scope=menu][data-part=trigger])',
     )
+  })
+
+  test('should have a label', () => {
+    expect(conditions.label).toEqual('& :where([data-part=label])')
   })
 
   test('should have a highEmphasis', () => {
@@ -328,5 +328,9 @@ describe('conditions', () => {
 
   test('should have a sideEnd', () => {
     expect(conditions.sideEnd).toEqual('&:is([data-side=end])')
+  })
+
+  test('should have a dragging state', () => {
+    expect(conditions.dragging).toEqual('&:is([data-dragging])')
   })
 })

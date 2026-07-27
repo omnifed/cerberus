@@ -54,8 +54,14 @@ const gradient: CustomUtilityConfig<'gradient'> = {
   gradient: {
     className: 'gradient',
     shorthand: 'grad',
-    values: getGradients(),
-    transform(value: GradientValue | 'progress' | 'complete', { token }) {
+    values: [...getGradients(), 'none'],
+    transform(value: GradientValue | 'progress' | 'complete' | 'none', { token }) {
+      if (value === 'none') {
+        return {
+          backgroundImage: 'initial',
+        }
+      }
+
       // For some reason, token() doesn't work in condition blocks?
       if (value === 'progress') {
         return {

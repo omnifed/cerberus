@@ -188,6 +188,12 @@ export const components = [
   },
   {
     id: '1.3.22a',
+    label: 'Slider',
+    slug: 'slider',
+    href: '/docs/components/slider',
+  },
+  {
+    id: '1.3.22b',
     label: 'Split Button',
     slug: 'split-button',
     href: '/docs/components/split-button',

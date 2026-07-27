@@ -46,7 +46,7 @@ describe('checkbox recipe', () => {
       borderColor: 'action.border.initial',
       color: 'page.text.initial',
       flexShrink: 0,
-      rounded: 'sm',
+      rounded: 'xs',
       transitionProperty: 'border-color,background-color',
       transitionDuration: 'fast',
       transitionTimingFunction: 'ease-in-out',
@@ -70,7 +70,7 @@ describe('checkbox recipe', () => {
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.5',
-        bgColor: 'page.bg.200',
+        bgColor: 'action.bg.initial',
       },
       _userInvalid: {
         bgColor: 'danger.bg.initial',
