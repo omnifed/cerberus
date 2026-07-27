@@ -120,6 +120,16 @@ This way you can access the slider state and methods from outside the slider.
 
 <CodePreview {...DEMOS.store} />
 
+## Change End
+
+Use the `onValueChangeEnd` prop to listen to the end of the slider change. This will fire when the user releases the slider thumb.
+
+<CodePreview {...DEMOS.changeEnd} />
+
+## Customizing
+
+You can fully customize every slot layer of the Slider using style props.
+
 ## Guides
 
 This abstraction renders the following shortcuts internally to streamline development.
@@ -130,7 +140,7 @@ The `Slider.Track` and `Slider.Range` slots are used to render the track and ran
 
 <CodeSnippet snippet={DEMOS.trackShortcut} />
 
-### `Slider.Thumb`
+### `Slider.Thumbs`
 
 The `Slider.Thumb`, `Slider.DraggingIndicator`, and `Slider.HiddenInput` slots are used to render the thumb of the slider.
 
@@ -149,3 +159,257 @@ The `Slider.MarkerGroup` and `Slider.Marker` slots are used to render the mark o
 If you want to render a couple of marks, we also provide the `Slider.Marks` slot.
 
 <CodeSnippet snippet={DEMOS.marksShortcut} />
+
+### Custom CSS Variables
+
+To help streamline custom styling, the slider uses a set of CSS variables that you can override:
+
+<CodeSnippet snippet={DEMOS.cssVariables} />
+
+## Primitive Slots
+
+The Slider exposes the following primitive slots:
+
+| Component           | Description                                                                           |
+| ------------------- | ------------------------------------------------------------------------------------- |
+| `Provider`          | The Provider context to use in place of the `Root` for the hook-based store solution. |
+| `Root`              | The root element of the slider.                                                       |
+| `Label`             | The label element of the slider.                                                      |
+| `ValueText`         | The value text element of the slider.                                                 |
+| `Control`           | The control element of the slider.                                                    |
+| `Track`             | The track element of the slider.                                                      |
+| `Range`             | The range element of the slider.                                                      |
+| `Thumb`             | The thumb element of the slider.                                                      |
+| `Thumbs`            | An abstraction of the `Thumb` and `DraggingIndicator` elements of the slider.         |
+| `DraggingIndicator` | The dragging indicator element of the slider.                                         |
+| `MarkerGroup`       | The marker group element of the slider.                                               |
+| `Marker`            | The marker element of the slider.                                                     |
+| `MarkerIndicator`   | The marker indicator element of the slider.                                           |
+| `Marks`             | An abstraction of the `Marker` elements of the slider.                                |
+| `HiddenInput`       | The hidden input element of the slider.                                               |
+
+## API
+
+### Root
+
+| Prop                     | Type                                    | Required | Description                                                                                                                                                                                |
+| ------------------------ | --------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `aria-label`             | `string[]`                              | No       | The aria-label of each slider thumb. Useful for providing an accessible name to the slider                                                                                                 |
+| `aria-labelledby`        | `string[]`                              | No       | The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider                                                                              |
+| `asChild`                | `boolean`                               | No       | Use the provided child element as the default rendered element, combining their props and behavior.                                                                                        |
+| `defaultValue`           | `number[]`                              | No       | The initial value of the slider when rendered.Use when you don't need to control the value of the slider.                                                                                  |
+| `disabled`               | `boolean`                               | No       | Whether the slider is disabled                                                                                                                                                             |
+| `form`                   | `string`                                | No       | The associate form of the underlying input element.                                                                                                                                        |
+| `getAriaValueText`       | `(details: ValueTextDetails) => string` | No       | Function that returns a human readable value for the slider thumb                                                                                                                          |
+| `id`                     | `string`                                | No       | The unique identifier of the machine.                                                                                                                                                      |
+| `ids`                    | `Partial<Slots>`                        | No       | The ids of the elements in the slider. Useful for composition.                                                                                                                             |
+| `invalid`                | `boolean`                               | No       | Whether the slider is invalid                                                                                                                                                              |
+| `max`                    | `number`                                | No       | The maximum value of the slider                                                                                                                                                            |
+| `min`                    | `number`                                | No       | The minimum value of the slider                                                                                                                                                            |
+| `minStepsBetweenThumbs`  | `number`                                | No       | The minimum permitted steps between multiple thumbs. `minStepsBetweenThumbs` \* `step` should reflect the gap between the thumbs. `step: 1` and `minStepsBetweenThumbs: 10` => gap is `10` |
+| `name`                   | `string`                                | No       | The name associated with each slider thumb (when used in a form)                                                                                                                           |
+| `onFocusChange`          | `(details: FocusChangeDetails) => void` | No       | Function invoked when the slider's focused index changes                                                                                                                                   |
+| `onValueChange`          | `(details: ValueChangeDetails) => void` | No       | Function invoked when the value of the slider changes                                                                                                                                      |
+| `onValueChangeEnd`       | `(details: ValueChangeDetails) => void` | No       | Function invoked when the slider value change is done                                                                                                                                      |
+| `orientation`            | `'horizontal' \| 'vertical'`            | No       | The orientation of the slider                                                                                                                                                              |
+| `origin`                 | `'center' \| 'start' \| 'end'`          | No       | The origin of the slider range. The track is filled from the origin to the thumb for single values.                                                                                        |
+| `readOnly`               | `boolean`                               | No       | Whether the slider is read-only                                                                                                                                                            |
+| `step`                   | `number`                                | No       | The step value of the slider                                                                                                                                                               |
+| `thumbAlignment`         | `'center' \| 'contain'`                 | No       | The alignment of the slider thumb relative to the track                                                                                                                                    |
+| `thumbCollisionBehavior` | `'none' \| 'push' \| 'swap'`            | No       | Controls how thumbs behave when they collide during pointer interactions.                                                                                                                  |
+| `thumbSize`              | `{ width: number; height: number }`     | No       | The slider thumbs dimensions                                                                                                                                                               |
+| `value`                  | `number[]`                              | No       | The controlled value of the slider                                                                                                                                                         |
+
+#### Data Attributes:
+
+| Attribute            | Value                              |
+| -------------------- | ---------------------------------- |
+| `[data-scope]`       | slider                             |
+| `[data-part]`        | root                               |
+| `[data-disabled]`    | Present when disabled              |
+| `[data-orientation]` | The orientation of the slider      |
+| `[data-dragging]`    | Present when in the dragging state |
+| `[data-invalid]`     | Present when invalid               |
+| `[data-focus]`       | Present when focused               |
+
+#### CSS Variables:
+
+| Variable                   | Description                       |
+| -------------------------- | --------------------------------- |
+| `--slider-thumb-width`     | The thumb width of the slider     |
+| `--slider-thumb-height`    | The thumb height of the slider    |
+| `--slider-thumb-transform` | The thumb transform of the slider |
+| `--slider-range-start`     | The range start of the slider     |
+| `--slider-range-end`       | The range end of the slider       |
+| `--translate-x`            | The horizontal translation value  |
+| `--translate-y`            | The vertical translation value    |
+
+### Provider
+
+| Prop      | Type              | Required | Description                                                                                         |
+| --------- | ----------------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `value`   | `UseSliderReturn` | Yes      |                                                                                                     |
+| `asChild` | `boolean`         | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Control
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute            | Value                              |
+| -------------------- | ---------------------------------- |
+| `[data-scope]`       | slider                             |
+| `[data-part]`        | control                            |
+| `[data-dragging]`    | Present when in the dragging state |
+| `[data-disabled]`    | Present when disabled              |
+| `[data-orientation]` | The orientation of the control     |
+| `[data-invalid]`     | Present when invalid               |
+| `[data-focus]`       | Present when focused               |
+
+### DraggingIndicator
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute            | Value                                    |
+| -------------------- | ---------------------------------------- |
+| `[data-scope]`       | slider                                   |
+| `[data-part]`        | dragging-indicator                       |
+| `[data-orientation]` | The orientation of the draggingindicator |
+| `[data-state]`       | "open" \| "closed"                       |
+
+### HiddenInput
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Label
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute            | Value                              |
+| -------------------- | ---------------------------------- |
+| `[data-scope]`       | slider                             |
+| `[data-part]`        | label                              |
+| `[data-disabled]`    | Present when disabled              |
+| `[data-orientation]` | The orientation of the label       |
+| `[data-invalid]`     | Present when invalid               |
+| `[data-dragging]`    | Present when in the dragging state |
+| `[data-focus]`       | Present when focused               |
+
+### MarkerGroup
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute            | Value                              |
+| -------------------- | ---------------------------------- |
+| `[data-scope]`       | slider                             |
+| `[data-part]`        | marker-group                       |
+| `[data-orientation]` | The orientation of the markergroup |
+
+## Marker
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `value`   | `number`  | Yes      |                                                                                                     |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute            | Value                         |
+| -------------------- | ----------------------------- |
+| `[data-scope]`       | slider                        |
+| `[data-part]`        | marker                        |
+| `[data-orientation]` | The orientation of the marker |
+| `[data-value]`       | The value of the item         |
+| `[data-disabled]`    | Present when disabled         |
+| `[data-state]`       |                               |
+
+### Range
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute            | Value                              |
+| -------------------- | ---------------------------------- |
+| `[data-scope]`       | slider                             |
+| `[data-part]`        | range                              |
+| `[data-dragging]`    | Present when in the dragging state |
+| `[data-focus]`       | Present when focused               |
+| `[data-invalid]`     | Present when invalid               |
+| `[data-disabled]`    | Present when disabled              |
+| `[data-orientation]` | The orientation of the range       |
+
+### Thumb
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `index`   | `number`  | Yes      |                                                                                                     |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+| `name`    | `string`  | No       |                                                                                                     |
+
+#### Data Attributes
+
+| Attribute            | Value                              |
+| -------------------- | ---------------------------------- |
+| `[data-scope]`       | slider                             |
+| `[data-part]`        | thumb                              |
+| `[data-index]`       | The index of the item              |
+| `[data-name]`        |                                    |
+| `[data-disabled]`    | Present when disabled              |
+| `[data-orientation]` | The orientation of the thumb       |
+| `[data-focus]`       | Present when focused               |
+| `[data-dragging]`    | Present when in the dragging state |
+
+### Track
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute            | Value                              |
+| -------------------- | ---------------------------------- |
+| `[data-scope]`       | slider                             |
+| `[data-part]`        | track                              |
+| `[data-disabled]`    | Present when disabled              |
+| `[data-invalid]`     | Present when invalid               |
+| `[data-dragging]`    | Present when in the dragging state |
+| `[data-orientation]` | The orientation of the track       |
+| `[data-focus]`       | Present when focused               |
+
+### ValueText
+
+| Prop      | Type      | Required | Description                                                                                         |
+| --------- | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `asChild` | `boolean` | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute            | Value                            |
+| -------------------- | -------------------------------- |
+| `[data-scope]`       | slider                           |
+| `[data-part]`        | value-text                       |
+| `[data-disabled]`    | Present when disabled            |
+| `[data-orientation]` | The orientation of the valuetext |
+| `[data-invalid]`     | Present when invalid             |
+| `[data-focus]`       | Present when focused             |

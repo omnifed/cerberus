@@ -1,4 +1,5 @@
 import { BasicDemo } from './basic.demo'
+import { ChangeEndDemo } from './changeEnd.demo'
 import { CollisionDemo } from './collision.demo'
 import { ControlledDemo } from './controlled.demo'
 import { DisabledDemo } from './disabled.demo'
@@ -18,6 +19,10 @@ export const DEMOS = {
   basic: {
     id: 'slider.basic',
     preview: <BasicDemo />,
+  },
+  changeEnd: {
+    id: 'slider.changeEnd',
+    preview: <ChangeEndDemo />,
   },
   controlled: {
     id: 'slider.controlled',
@@ -93,4 +98,11 @@ export const DEMOS = {
 
   thumbsShortcut: `<Slider.Thumbs values={[25, 50]} />`,
   marksShortcut: `<Slider.Marks values={[0, 25, 50, 75, 100]} />`,
+
+  cssVariables: `'--slider-thumb-size': '1.5rem'   // size of the thumb
+'--slider-track-size': '0.5rem'   // height of the track
+'--slider-marker-center': '9px'   // the center position of the track
+'--slider-marker-size': '0.06rem' // size of the marker
+'--slider-marker-inset': '3px'    // distance from the track edge to the marker
+'--slider-dragging-indicator-offset': '-2rem' // The gap between the thumb and the dragging indicator`,
 }
