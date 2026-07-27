@@ -21,6 +21,7 @@ import { SliderThumbs } from './thumbs'
 
 export type SliderProps = SliderRootProps & {
   marks?: Array<Marker>
+  showIndicator?: boolean
 }
 
 /**
@@ -33,8 +34,9 @@ export type SliderProps = SliderRootProps & {
  * @see {@link https://cerberus.digitalu.design/docs/components/slider}
  */
 export function Slider(props: SliderProps) {
+  const { showIndicator, ...rootProps } = props
   return (
-    <SliderRoot {...props} direction={props.orientation}>
+    <SliderRoot {...rootProps} direction={props.orientation}>
       <Show when={props.children}>
         {() => (
           <HStack justify="space-between" w="full">
@@ -51,6 +53,7 @@ export function Slider(props: SliderProps) {
         <SliderThumbs
           defaultValue={props.defaultValue}
           direction={props.orientation}
+          showIndicator={showIndicator}
           usage={props.usage}
         />
 

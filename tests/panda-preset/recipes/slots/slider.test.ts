@@ -115,7 +115,23 @@ describe('Slider Recipe', () => {
   })
 
   test('should have draggingIndicator styles', () => {
-    expect(base.draggingIndicator).toMatchObject({})
+    expect(base.draggingIndicator).toMatchObject({
+      animationStyle: 'scale-fade-in',
+      animationDuration: 'fast',
+      bgColor: 'page.surface.inverse',
+      color: 'page.text.inverse',
+      pointerEvents: 'none',
+      px: '3',
+      py: 2,
+      rounded: 'sm',
+      maxH: '6rem',
+      maxW: '17rem',
+      shadow: 'lg',
+      textStyle: 'label-sm',
+      textWrap: 'pretty',
+      whiteSpace: 'nowrap',
+      w: 'max-content',
+    })
   })
 
   test('should have thumb styles', () => {

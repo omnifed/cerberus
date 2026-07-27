@@ -7,7 +7,7 @@ type SliderThumbsProps = {
   defaultValue: SliderProps['defaultValue']
   direction: SliderProps['orientation']
   usage: SliderProps['usage']
-  showIndicator?: boolean
+  showIndicator?: SliderProps['showIndicator']
 }
 
 export function SliderThumbs(props: SliderThumbsProps) {
@@ -21,7 +21,9 @@ export function SliderThumbs(props: SliderThumbsProps) {
           usage={props.usage}
         >
           <SliderHiddenInput />
-          <Show when={props.showIndicator}>{() => <SliderDraggingIndicator />}</Show>
+          <Show when={props.showIndicator}>
+            {() => <SliderDraggingIndicator direction={props.direction} />}
+          </Show>
         </SliderThumb>
       )}
     </For>

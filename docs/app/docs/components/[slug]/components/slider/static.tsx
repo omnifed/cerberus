@@ -1,6 +1,7 @@
 import { BasicDemo } from './basic.demo'
 import { CollisionDemo } from './collision.demo'
 import { DisabledDemo } from './disabled.demo'
+import { DraggingIndicatorDemo } from './indicator.demo'
 import { LabelDemo } from './label.demo'
 import { MarksDemo } from './marks.demo'
 import { OverlapDemo } from './overlap.demo'
@@ -19,6 +20,10 @@ export const DEMOS = {
   disabled: {
     id: 'slider.disabled',
     preview: <DisabledDemo />,
+  },
+  indicator: {
+    id: 'slider.indicator',
+    preview: <DraggingIndicatorDemo />,
   },
   label: {
     id: 'slider.label',

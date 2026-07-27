@@ -79,7 +79,29 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
       height: 'calc(var(--slider-track-size) - (var(--slider-marker-size) * 2))',
       width: 'calc(var(--slider-track-size) - (var(--slider-marker-size) * 2))',
     },
-    draggingIndicator: {},
+    draggingIndicator: {
+      bgColor: 'page.surface.inverse',
+      color: 'page.text.inverse',
+      pointerEvents: 'none',
+      px: '3',
+      py: 2,
+      rounded: 'sm',
+      maxH: '6rem',
+      shadow: 'sm',
+      textAlign: 'center',
+      textStyle: 'label-sm',
+      textWrap: 'pretty',
+      whiteSpace: 'nowrap',
+      w: '2.75rem',
+      _open: {
+        animationStyle: 'scale-fade-in',
+        animationDuration: 'fast',
+      },
+      _closed: {
+        animationStyle: 'scale-fade-out',
+        animationDuration: 'fast',
+      },
+    },
     thumb: {
       alignItems: 'center',
       borderRadius: 'full',
@@ -109,6 +131,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           '--slider-marker-center': '9px',
           '--slider-marker-size': '0.06rem',
           '--slider-marker-inset': '3px',
+          '--slider-dragging-indicator-offset': '-2rem',
           _label: {
             textStyle: 'label-sm',
           },
@@ -121,6 +144,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           '--slider-marker-center': '10px',
           '--slider-marker-size': '0.12rem',
           '--slider-marker-inset': '4px',
+          '--slider-dragging-indicator-offset': '-2.25rem',
           _label: {
             textStyle: 'label-sm',
           },
@@ -133,6 +157,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           '--slider-marker-center': '11px',
           '--slider-marker-size': '0.19rem',
           '--slider-marker-inset': '5px',
+          '--slider-dragging-indicator-offset': '-2.5rem',
           _label: {
             textStyle: 'label-md',
           },
@@ -238,6 +263,20 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           left: '50%',
           translate: '-50% 0',
         },
+        draggingIndicator: {
+          right: '2.5rem',
+          _after: {
+            content: "''",
+            border: '6px solid',
+            borderColor: 'transparent',
+            borderLeftColor: 'page.surface.inverse',
+            display: 'inline-block',
+            left: '100%',
+            pos: 'absolute',
+            top: '50%',
+            transform: 'translateY(-50%)',
+          },
+        },
         markerGroup: {
           insetStart: 'var(--slider-marker-center)',
           insetBlock: 'var(--slider-marker-inset)',
@@ -261,6 +300,20 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
         thumb: {
           top: '50%',
           translate: '0 -50%',
+        },
+        draggingIndicator: {
+          top: 'var(--slider-dragging-indicator-offset)',
+          _after: {
+            content: "''",
+            border: '6px solid',
+            borderColor: 'transparent',
+            borderTopColor: 'page.surface.inverse',
+            display: 'inline-block',
+            left: '50%',
+            pos: 'absolute',
+            top: '100%',
+            transform: 'translateX(-50%)',
+          },
         },
         markerGroup: {
           insetInline: 'var(--slider-marker-inset)',
