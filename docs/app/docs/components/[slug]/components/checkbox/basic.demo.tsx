@@ -2,7 +2,6 @@
 
 import { Box } from '@/styled-system/jsx'
 import { Checkbox, CheckboxGroup, For } from '@cerberus-design/react'
-import { checkbox } from '@cerberus/panda-preset/src/recipes/slots/checkbox'
 
 const items = [
   {
