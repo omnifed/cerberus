@@ -229,9 +229,6 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           flexDirection: 'column',
           height: '100%',
           minWidth: 'var(--slider-thumb-size)',
-          // '&:has(.chakra-slider__markerLabel)': {
-          //   marginEnd: 'md',
-          // },
         },
         track: {
           h: 'full',
@@ -257,9 +254,6 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           flexDirection: 'row',
           minHeight: 'var(--slider-thumb-size)',
           width: 'full',
-          // '&:has(.chakra-slider__markerLabel)': {
-          //   marginBottom: '4',
-          // },
         },
         track: {
           height: 'var(--slider-track-size)',

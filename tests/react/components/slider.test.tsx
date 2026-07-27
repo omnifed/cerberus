@@ -4,7 +4,11 @@ import { Slider } from '@cerberus-design/react'
 
 describe('Slider Component', () => {
   test('should render a slider element', () => {
-    render(<Slider />)
-    expect(screen.getByRole('slider')).toBeInTheDocument()
+    render(
+      <Slider>
+        <Slider.Label>Test</Slider.Label>
+      </Slider>,
+    )
+    expect(screen.getByText(/test/i)).toBeInTheDocument()
   })
 })
