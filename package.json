@@ -27,7 +27,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",
     "oxfmt": "catalog:oxc",
-    "oxlint": "^1.74.0"
+    "oxlint": "^1.75.0"
   },
   "lint-staged": {
     "**/*": "oxfmt --write --no-error-on-unmatched-pattern",
