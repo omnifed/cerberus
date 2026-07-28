@@ -63,7 +63,7 @@
   "peerDependencies": {
     "@pandacss/dev": "*",
     "autoprefixer": "*",
-    "postcss": "*"
+    "postcss": ">=8.5.18"
   },
   "browserslist": "> 0.25%, not dead"
 }
