@@ -10,7 +10,7 @@ export function BasicDemo() {
   const data = useQuery(queryEmployees(1000))
   return (
     <Stack direction="column" h="20rem" w="3/4">
-      <DataGrid columns={columns} data={data} initialState={{ pagination: true }} />
+      <DataGrid columns={columns} data={data} pagination />
     </Stack>
   )
 }

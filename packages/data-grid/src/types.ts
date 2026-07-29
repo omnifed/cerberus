@@ -6,7 +6,7 @@ import {
 import { Setter, type Accessor } from '@cerberus-design/signals'
 import { type ReactNode } from 'react'
 import { type RowSize } from './const'
-import { DataStore, LayoutStore, VisibilityStore } from './stores'
+import { DataStore, LayoutStore, PaginationStore, VisibilityStore } from './stores'
 
 export interface GridOptions<TData> {
   /**
@@ -198,7 +198,7 @@ export type SortState = { id: string; desc: boolean }
 // -- Store Context --
 
 export interface GridStore<TData>
-  extends LayoutStore, DataStore<TData>, VisibilityStore {
+  extends LayoutStore, DataStore<TData>, PaginationStore, VisibilityStore {
   // State
   columns: Accessor<InternalColumn<TData>[]>
   rows: Accessor<TData[]>
@@ -211,12 +211,7 @@ export interface GridStore<TData>
   featureOpen: Accessor<FeatureOpenOption>
 
   // Pagination
-  pageIndex: Accessor<number>
-  pageSize: Accessor<number>
-  pageRange: Accessor<number[]>
   pageCount: Accessor<number>
-  currentPageRange: Accessor<{ start: number; end: number }>
-  isServerPaginated: Accessor<boolean>
 
   // Styling
   hasSkeleton: Accessor<boolean>
@@ -227,8 +222,6 @@ export interface GridStore<TData>
 
   // Actions
   resizeColumn: (colId: string, delta: number) => void
-  setPage: (details: PageDetails) => void
-  setPageSize: (size: number) => void
   setGlobalFilter: (val: BaseFilterState) => void
   setColFilter: Setter<ColumnFilterState>
   setShowColFilter: (val: boolean) => void
