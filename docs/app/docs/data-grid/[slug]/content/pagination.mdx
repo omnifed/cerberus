@@ -13,16 +13,18 @@ import { DEMOS } from '../components/pagination/static'
 Pagination allows you to display a subset of data at a time which can be navigated
 through using the pagination controls.
 
-**By default, the pagination is handled on the client**. This means you have to give
-the rows of all pages to the Data Grid. If your dataset is too big, and you want
-to fetch the pages on demand, you can create a custom action in a custom
-[Toolbar](/docs/data-grid/toolbar) action.
+There are two types of pagination supported: **client-side** and **server-side**.
+
+- **Client-side pagination:** Default. The Data Grid manages everything in exchange of the full set of data being provided.
+- **Server-side pagination:** Opt-in via the `count` property on the `PaginationOptions` object. Using this requires manual management of the entire pagination state.
 
 ## Implementing Pagination
 
-You must opt-in to pagination by setting the `initialState.pagination` prop to either `true`
+You must opt-in to pagination by setting the `pagination` prop to either `true`
 or using a `PaginationOptions` object on the Data Grid. Doing so will display a
 static footer of pagination controls at the bottom of the grid.
+
+Defining a `count` property on the `PaginationOptions` object will enable **server-side pagination**. See the [Server-Side Pagination](/docs/data-grid/pagination#server-side-pagination) section for more details.
 
 <CodePreview {...DEMOS.basic} />
 
@@ -43,9 +45,9 @@ To set the default page, you can provide a `defaultPage` value to the `paginatio
 
 <CodePreview {...DEMOS.page} />
 
-## Count
+## Server-Side Pagination
 
-For **server-side pagination** where the total count is known beforehand, you can
+For **server-side pagination** where the total `count` is known beforehand, you can
 provide a `count` value to the `pagination` options.
 
 This also means that the Data Grid will no longer automatically calculate the

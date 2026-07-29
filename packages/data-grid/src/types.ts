@@ -18,15 +18,28 @@ export interface GridOptions<TData> {
    */
   columns: ColumnDef<TData>[]
   /**
+   * @deprecated use DataGrid `pagination` prop instead
    * Initial options for feature-related settings.
+   *
+   * **THIS FEATURE WILL BE REMOVED IN VERSION: 1.9**
    */
   initialState?: {
     pagination?: boolean | PaginationOptions
   }
   /**
-   * Called when a user clicks on a pagination page trigger.
+   * @deprecated use DataGrid `pagination` prop instead
+   *
+   * **THIS FEATURE WILL BE REMOVED IN VERSION: 1.9**
    */
   onPageChange?: (details: PageDetails) => void
+  /**
+   * Determines if pagination features will be displayed on the DataGrid.
+   *
+   * The use of client vs. server pagination is determined by the use of the `count` property.
+   *
+   * When `count` is defined, **server pagination** is used; otherwise, client pagination is used.
+   */
+  pagination?: boolean | PaginationOptions
   /**
    * When set to true, renders the `overlays.loading` component.
    */
@@ -95,11 +108,6 @@ export type ColumnDef<TData, TKey extends keyof TData = keyof TData> = {
 
 export type PaginationOptions = {
   /**
-   * The total number of rows that exist. This is useful if you choose to use
-   * server-side pagination design.
-   */
-  count?: PaginationRootProps['count']
-  /**
    * The default page index to start on.
    */
   defaultPage?: PaginationRootProps['defaultPage']
@@ -114,6 +122,28 @@ export type PaginationOptions = {
    * A custom range of page sizes to display in the page size dropdown.
    */
   customRange?: number[]
+  /**
+   * **Server-side pagination**. The total number of rows that exist.
+   *
+   * This will trigger the Data Grid to use server-side pagination which by nature
+   * opts-out of client-side pagination and virtualization.
+   */
+  count?: PaginationRootProps['count']
+  /**
+   * **Server-side pagination**. A callback that is invoked when the page index changes via
+   * the user clicking a pagination navigation button.
+   */
+  onPageChange?: PaginationRootProps['onPageChange']
+  /**
+   * **Server-side pagination**. A callback that is invoked when the page size changes via
+   * the user clicking an item in the page size dropdown.
+   */
+  onPageSizeChange?: PaginationRootProps['onPageSizeChange']
+  /**
+   * **Server-side pagination**. A callback that is invoked when the column sorting changes via
+   * the user clicking a sort trigger from either the column header or the features menu.
+   */
+  onSortChange?: GridStore<unknown>['setSort']
 }
 
 // -- Column Definitions --

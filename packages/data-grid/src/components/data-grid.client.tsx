@@ -22,12 +22,13 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
     createGridStore({
       data,
       columns: props.columns,
-      initialState: props.initialState,
       rowSize: props.rowSize,
-      onPageChange: props.onPageChange,
       overlays: props.overlays,
+      pagination: props.pagination,
       pending: props.pending,
       theme: props.theme,
+      initialState: props.initialState,
+      onPageChange: props.onPageChange,
     }),
   )
 
