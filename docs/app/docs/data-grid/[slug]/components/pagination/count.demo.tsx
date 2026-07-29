@@ -1,15 +1,18 @@
 'use client'
 
-import { DataGrid } from '@cerberus-design/data-grid'
-import { type PageDetails } from '@cerberus-design/react'
+import { DataGrid, SortDirection } from '@cerberus-design/data-grid'
+import { PageSizeChangeDetails, type PageDetails } from '@cerberus-design/react'
 import { useQuery } from '@cerberus-design/signals'
 import { useState, useTransition } from 'react'
 import { Stack } from 'styled-system/jsx'
 import { queryPaginatedEmployees } from '../api'
 import { columns } from '../quick-start/columns.demo'
 
+// Use native React state and transitions for updates to override Suspense.
+// Transitions prevent harsh reloads of the Data Grid post-initial rendering.
+// This is the only time you are required to use React state over Cerberus Signals.
+// React transitions require React state to work.
 function useDeferredValue() {
-  // Use native React state and transitions for loading state to override Suspsense
   const [current, setCurrent] = useState<PageDetails>({
     page: 1,
     pageSize: 25,
@@ -34,15 +37,29 @@ export function CountDemo() {
     })
   }
 
+  function handlePageSizeChange(details: PageSizeChangeDetails) {
+    console.log(details)
+  }
+
+  function handleSortChange(colId: string, direction: SortDirection, multi?: boolean) {
+    console.log({ colId, direction, multi })
+  }
+
   return (
     <Stack direction="column" h="20rem" w="3/4">
       <DataGrid
         columns={columns}
         data={data.data}
-        initialState={{
-          pagination: { count: data.pagination.count },
+        overlays={{
+          initial: 'skeleton',
+          pending: 'linear',
         }}
-        onPageChange={handlePageChange}
+        pagination={{
+          count: data.pagination.count,
+          onPageChange: handlePageChange,
+          onPageSizeChange: handlePageSizeChange,
+          onSortChange: handleSortChange,
+        }}
         pending={pending}
       />
     </Stack>

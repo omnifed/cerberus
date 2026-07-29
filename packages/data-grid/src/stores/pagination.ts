@@ -1,8 +1,8 @@
-import { type PageDetails } from '@cerberus-design/react'
+import { PageSizeChangeDetails, type PageDetails } from '@cerberus-design/react'
 import {
-  type Accessor,
   createComputed,
   createSignal,
+  type Accessor,
   type Setter,
 } from '@cerberus-design/signals'
 import { DEFAULT_PAGE_IDX } from '../const'
@@ -14,7 +14,7 @@ import {
   determinePageSize,
 } from '../utils'
 
-type PaginationStore = {
+export type PaginationStore = {
   currentPageRange: Accessor<{ start: number; end: number }>
   pageIndex: Accessor<number>
   pageSize: Accessor<number>
@@ -23,23 +23,28 @@ type PaginationStore = {
   // Actions
   setPage: (details: PageDetails) => void
   setPageIndex: Setter<number>
-  setPageSize: (size: number) => void
+  setPageSize: (details: PageSizeChangeDetails) => void
 }
 
 export function createPaginationStore<TData>(
   options: GridOptions<TData>,
 ): PaginationStore {
+  const initOptions = options.initialState?.pagination || options.pagination
+
+  const hasOptions = typeof initOptions === 'object'
+  const optionActions = {
+    onPageChange: hasOptions && initOptions.onPageChange,
+    onPageSizeChange: hasOptions && initOptions.onPageSizeChange,
+  }
+  const onPageChange = options.onPageChange || optionActions.onPageChange
+
   const [pageIndex, setPageIndex] = createSignal<number>(
-    determinePageIndex(options.initialState?.pagination),
+    determinePageIndex(initOptions),
   )
-  const [pageSize, setPageSize] = createSignal<number>(
-    determinePageSize(options.initialState?.pagination),
-  )
-  const [pageRange] = createSignal<number[]>(
-    determinePageRange(options.initialState?.pagination),
-  )
+  const [pageSize, setPageSize] = createSignal<number>(determinePageSize(initOptions))
+  const [pageRange] = createSignal<number[]>(determinePageRange(initOptions))
   const [isServerPaginated] = createSignal<boolean>(
-    Boolean(determineInitialCount(options.initialState?.pagination)),
+    Boolean(determineInitialCount(initOptions)),
   )
 
   const currentPageRange = createComputed<{ start: number; end: number }>(() => {
@@ -60,17 +65,18 @@ export function createPaginationStore<TData>(
 
     setPage: (details) => {
       setPageIndex(details.page)
-      options.onPageChange?.(details)
+      if (onPageChange) onPageChange(details)
     },
 
     setPageIndex,
 
-    setPageSize: (size) => {
+    setPageSize: (details) => {
       if (isServerPaginated()) {
         // Reset to first page on size change to reset pagination
         setPageIndex(DEFAULT_PAGE_IDX)
       }
-      setPageSize(size)
+      setPageSize(details.pageSize)
+      if (optionActions.onPageSizeChange) optionActions.onPageSizeChange(details)
     },
   }
 }

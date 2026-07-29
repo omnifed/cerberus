@@ -41,7 +41,7 @@ type ApiResponse<T> = {
 
 const api = {
   selectEmployees: async (limit?: number): Promise<Employee[]> => {
-    await delay(100)
+    await delay(150)
     return employees.slice(0, limit ?? employees.length)
   },
   selectPaginatedEmployees: async (

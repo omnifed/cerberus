@@ -29,7 +29,7 @@ export function GridPagination() {
   }
 
   function handlePageSizeChange(details: PageSizeChangeDetails) {
-    store.setPageSize(details.pageSize)
+    store.setPageSize(details)
   }
 
   return (
