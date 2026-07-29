@@ -15,6 +15,11 @@ import { determineInitialCount } from './utils'
  * the public Context API.
  */
 export function createGridStore<TData>(options: GridOptions<TData>): GridStore<TData> {
+  const onSortChange =
+    typeof options?.pagination === 'object'
+      ? options.pagination.onSortChange
+      : undefined
+
   // 1. Core Data
   const dataStore = createDataStore(options)
 
@@ -24,6 +29,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   const sortStore = createSortStore({
     columns: dataStore.columns,
     filteredRows: filterStore.filteredRows,
+    onSortChange,
   })
   const visibilityStore = createVisibilityStore()
 
@@ -38,7 +44,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   // Derived pagination for SSR - Cerby handles client-side pagination
   const rowCount = createComputed(() => {
     return (
-      determineInitialCount(options?.initialState?.pagination) ??
+      determineInitialCount(options?.initialState?.pagination || options.pagination) ??
       filterStore.filteredRows().length
     )
   })

@@ -1,5 +1,5 @@
 import { type Accessor, createComputed, createSignal } from '@cerberus-design/signals'
-import type { SortState } from '../types'
+import type { PaginationOptions, SortState } from '../types'
 import { type DataStore } from './data'
 import { type FilterStore } from './filter'
 
@@ -14,6 +14,7 @@ type SortStore<TData> = {
 type Options<TData> = {
   columns: DataStore<TData>['columns']
   filteredRows: FilterStore<TData>['filteredRows']
+  onSortChange?: PaginationOptions['onSortChange']
 }
 
 export function createSortStore<TData>(options: Options<TData>): SortStore<TData> {
@@ -67,6 +68,7 @@ export function createSortStore<TData>(options: Options<TData>): SortStore<TData
 
       if (direction === null) {
         setSorting(current.filter((s) => s.id !== colId))
+        options.onSortChange?.(colId, direction, multi)
         return
       }
 
@@ -85,6 +87,8 @@ export function createSortStore<TData>(options: Options<TData>): SortStore<TData
         // Single sort clears all other sorts
         setSorting([newSort])
       }
+
+      options.onSortChange?.(colId, direction, multi)
     },
 
     toggleSort: (colId, multi) => {
@@ -104,6 +108,9 @@ export function createSortStore<TData>(options: Options<TData>): SortStore<TData
         const newSort = { id: colId, desc: true }
         setSorting(multi ? [...current, newSort] : [newSort])
       }
+
+      const direction = updatedSort.find((s) => s.id === colId)?.desc ? 'desc' : 'asc'
+      options.onSortChange?.(colId, direction, multi)
     },
   }
 }

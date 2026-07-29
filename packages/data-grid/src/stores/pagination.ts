@@ -33,9 +33,8 @@ export function createPaginationStore<TData>(
 
   const hasOptions = typeof initOptions === 'object'
   const optionActions = {
-    onPageChange: hasOptions ? initOptions.onPageChange : undefined,
-    onPageSizeChange: hasOptions ? initOptions.onPageSizeChange : undefined,
-    onSortChange: hasOptions ? initOptions.onSortChange : undefined,
+    onPageChange: hasOptions && initOptions.onPageChange,
+    onPageSizeChange: hasOptions && initOptions.onPageSizeChange,
   }
   const onPageChange = options.onPageChange || optionActions.onPageChange
 
