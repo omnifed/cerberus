@@ -37,7 +37,7 @@
     "@shikijs/rehype": "^4.3.1",
     "@shikijs/transformers": "^4.3.1",
     "@types/mdx": "^2.0.14",
-    "@types/node": "^26.1.1",
+    "@types/node": "catalog:types",
     "@types/react": "catalog:jsx",
     "@types/react-dom": "catalog:jsx",
     "@vercel/analytics": "^2.0.1",
