@@ -1,20 +1,20 @@
+import { LocalVariable } from '@figma/rest-api-spec'
 import { write } from 'bun'
-import { oraPromise } from 'ora'
 import { mkdir } from 'node:fs/promises'
 import path from 'node:path'
+import { oraPromise } from 'ora'
 import { figma, FigmaApiType } from './sync/api'
 import { localVarsMixin } from './sync/mixin-local-vars'
-import { publishedVarsMixin } from './sync/mixin-published-vars'
 import { fileNodesMixin } from './sync/mixin-nodes'
-import { getTokensDataPath } from './utils/path'
-import { slugify } from './utils/slugify'
-import { LocalVariable } from '@figma/rest-api-spec'
+import { publishedVarsMixin } from './sync/mixin-published-vars'
 import {
   createFileContent,
   createNodeFileContent,
   createSemanticTokenPath,
   resolveValuesByMode,
 } from './utils/helpers'
+import { getTokensDataPath } from './utils/path'
+import { slugify } from './utils/slugify'
 
 // TEMPORARY IMPORT
 import { textStyleNodes } from './temp-text-styles'
