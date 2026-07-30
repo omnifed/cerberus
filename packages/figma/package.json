@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@figma/rest-api-spec": "^0.41.0",
+    "@types/node": "catalog:types",
     "dotenv": "^17.3.1",
     "ora": "^9.3.0",
     "oxfmt": "catalog:oxc"
