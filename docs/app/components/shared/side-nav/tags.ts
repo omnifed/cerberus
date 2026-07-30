@@ -1,3 +1,3 @@
-export const NEW: string[] = ['/docs/components/slider', '/docs/data-grid/pagination']
+export const NEW: string[] = []
 
 // Inline NEW: []

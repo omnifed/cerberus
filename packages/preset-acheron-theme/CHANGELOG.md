@@ -1,5 +1,11 @@
 # @cerberus/preset-acheron-theme
 
+## 1.7.0
+
+### Patch Changes
+
+- 79f23bf: bump weekly deps
+
 ## 1.6.0
 
 ### Patch Changes
