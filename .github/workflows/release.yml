@@ -141,20 +141,14 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
-        with:
-          node-version: '24'
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
       - uses: denoland/setup-deno@v2
         with:
           cache: true
 
-      - run: pnpm install && deno install
-
       - name: Inject Deno imports
         run: cd scripts && bun ./src/publish-stable.mjs
+
+      - run: deno install
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/figma
@@ -171,20 +165,14 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
-        with:
-          node-version: '24'
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
       - uses: denoland/setup-deno@v2
         with:
           cache: true
 
-      - run: pnpm install && deno install
-
       - name: Inject Deno imports
         run: cd scripts && bun ./src/publish-stable.mjs
+
+      - run: deno install
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/tokens
@@ -201,20 +189,14 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
-        with:
-          node-version: '24'
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
       - uses: denoland/setup-deno@v2
         with:
           cache: true
 
-      - run: pnpm install && deno install
-
       - name: Inject Deno imports
         run: cd scripts && bun ./src/publish-stable.mjs
+
+      - run: deno install
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/preset-acheron-theme
@@ -231,20 +213,14 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
-        with:
-          node-version: '24'
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
       - uses: denoland/setup-deno@v2
         with:
           cache: true
 
-      - run: pnpm install && deno install
-
       - name: Inject Deno imports
         run: cd scripts && bun ./src/publish-stable.mjs
+
+      - run: deno install
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/preset-oceanus-theme
@@ -261,20 +237,14 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
-        with:
-          node-version: '24'
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
       - uses: denoland/setup-deno@v2
         with:
           cache: true
 
-      - run: pnpm install && deno install
-
       - name: Inject Deno imports
         run: cd scripts && bun ./src/publish-stable.mjs
+
+      - run: deno install
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/preset-cerberus-theme
@@ -291,20 +261,14 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
-        with:
-          node-version: '24'
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
       - uses: denoland/setup-deno@v2
         with:
           cache: true
 
-      - run: pnpm install && deno install
-
       - name: Inject Deno imports
         run: cd scripts && bun ./src/publish-stable.mjs
+
+      - run: deno install
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/preset-elysium-theme
@@ -321,20 +285,14 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v7
-        with:
-          node-version: '24'
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
       - uses: denoland/setup-deno@v2
         with:
           cache: true
 
-      - run: pnpm install && deno install
-
       - name: Inject Deno imports
         run: cd scripts && bun ./src/publish-stable.mjs
+
+      - run: deno install
 
       - run: deno publish --allow-dirty
         working-directory: ./packages/panda-preset
