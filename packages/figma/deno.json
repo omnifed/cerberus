@@ -1,8 +1,5 @@
 {
   "name": "@cerberus/figma",
   "version": "1.6.0",
-  "exports": "./src/index.ts",
-  "compilerOptions": {
-    "lib": ["esnext", "dom", "deno.ns", "node"]
-  }
+  "exports": "./src/index.ts"
 }
