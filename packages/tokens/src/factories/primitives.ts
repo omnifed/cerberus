@@ -1,9 +1,6 @@
 import { Tokens } from '@pandacss/dev'
-import { RGBA, rgbaToString, rgbToHex } from '@cerberus/figma'
-import {
-  GradientText,
-  GradientValue,
-} from '../theme-contract/theme-contracts.types'
+import { type RGBA, rgbaToString, rgbToHex } from '@cerberus/figma/helpers'
+import { GradientText, GradientValue } from '../theme-contract/theme-contracts.types'
 import { GRADIENT_TEXT, GRADIENTS } from '../const'
 import { primitives } from '../tokens'
 import { Recursive, Token } from '@pandacss/types'
@@ -63,9 +60,9 @@ export function createPrimitiveSpacing(): NonNullable<Tokens['spacing']> {
     (acc, key) => {
       const idx = key as keyof typeof primitives.spacing.tokens
       const token = primitives.spacing.tokens[idx]
-      let rawValue = token.valuesByMode[
-        mode as keyof typeof token.valuesByMode
-      ] as number | string
+      let rawValue = token.valuesByMode[mode as keyof typeof token.valuesByMode] as
+        | number
+        | string
 
       if (token.name === 'none') {
         rawValue = 0

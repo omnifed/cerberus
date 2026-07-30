@@ -1,4 +1,3 @@
-import { exit } from 'node:process'
 import { FigmaApiHost } from './api'
 import { FileNodes } from './types'
 import { GetFileNodesResponse } from '@figma/rest-api-spec'
@@ -31,8 +30,7 @@ export const fileNodesMixin: FileNodesMixin = {
       this.localFileNodes = data
       return data
     } catch (error) {
-      console.error('Error fetching file nodes:', error)
-      exit(1)
+      throw new Error('Error fetching file nodes: ', { cause: error })
     }
   },
 

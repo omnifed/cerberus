@@ -1,4 +1,4 @@
-import { rgbaToString } from '@cerberus/figma'
+import { rgbaToString } from '@cerberus/figma/helpers'
 import { SemanticToken } from '../semantic-tokens.types'
 import { themes } from '../tokens'
 import { VariableColor } from '../types'
