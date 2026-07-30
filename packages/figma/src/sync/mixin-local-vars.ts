@@ -1,7 +1,6 @@
-import { exit } from 'node:process'
 import { GetLocalVariablesResponse } from '@figma/rest-api-spec'
-import { LocalCollections, LocalVariables } from './types'
 import { FigmaApiHost } from './api'
+import { LocalCollections, LocalVariables } from './types'
 
 export type LocalVarsMixin = {
   /**
@@ -28,8 +27,7 @@ export const localVarsMixin: LocalVarsMixin = {
       this.localVars = data
       return data
     } catch (error) {
-      console.error('Error fetching local variables:', error)
-      exit(1)
+      throw new Error('Error fetching local variables: ', { cause: error })
     }
   },
 

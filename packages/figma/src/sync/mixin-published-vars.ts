@@ -1,4 +1,3 @@
-import { exit } from 'node:process'
 import { GetPublishedVariablesResponse } from '@figma/rest-api-spec'
 import { FigmaApiHost } from './api'
 import { Collections, ListItem, Variables } from './types'
@@ -44,8 +43,7 @@ export const publishedVarsMixin: PublishedVarsMixin = {
       this.publishedVars = data
       return data
     } catch (error) {
-      console.error('Error fetching published variables:', error)
-      exit(1)
+      throw new Error('Error fetching published variables: ', { cause: error })
     }
   },
 
@@ -58,20 +56,18 @@ export const publishedVarsMixin: PublishedVarsMixin = {
   },
 
   createCollectionList(this: FigmaApiHost): ListItem[] {
-    return Object.values(
-      this.publishedVars?.meta.variableCollections ?? {},
-    ).map((collection) => ({
-      id: collection.id,
-      name: collection.name,
-    }))
+    return Object.values(this.publishedVars?.meta.variableCollections ?? {}).map(
+      (collection) => ({
+        id: collection.id,
+        name: collection.name,
+      }),
+    )
   },
 
   createVariableList(this: FigmaApiHost): ListItem[] {
-    return Object.values(this.publishedVars?.meta.variables ?? {}).map(
-      (variable) => ({
-        id: variable.id,
-        name: variable.name,
-      }),
-    )
+    return Object.values(this.publishedVars?.meta.variables ?? {}).map((variable) => ({
+      id: variable.id,
+      name: variable.name,
+    }))
   },
 }
