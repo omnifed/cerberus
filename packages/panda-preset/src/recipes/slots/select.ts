@@ -115,11 +115,7 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       overflowY: 'auto',
       p: 'xs',
       rounded: 'md',
-      shadow: 'lg',
-      _focus: {
-        outline: 'none',
-        boxShadow: 'none',
-      },
+      shadow: 'sm',
       _open: {
         animationStyle: 'slide-fade-in',
         animationDuration: 'fast',
