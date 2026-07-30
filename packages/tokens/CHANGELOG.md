@@ -1,5 +1,15 @@
 # @cerberus/tokens
 
+## 1.7.0
+
+### Minor Changes
+
+- 5e1ff38: Improve Figma SDK and add helpers export path
+
+### Patch Changes
+
+- 5fa4042: Update Oceanus gradient token
+
 ## 1.6.0
 
 ### Minor Changes

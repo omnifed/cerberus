@@ -1,5 +1,16 @@
 # @cerberus-design/react
 
+## 1.7.0
+
+### Minor Changes
+
+- c058e2e: Add Slider API and recipe
+
+### Patch Changes
+
+- 79f23bf: bump weekly deps
+- 212fe1c: Dependency updates
+
 ## 1.6.0
 
 ### Minor Changes

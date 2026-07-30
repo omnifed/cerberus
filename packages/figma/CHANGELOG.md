@@ -1,5 +1,16 @@
 # @cerberus/figma
 
+## 1.7.0
+
+### Minor Changes
+
+- 5e1ff38: Improve Figma SDK and add helpers export path
+
+### Patch Changes
+
+- cd1fccf: Dependency update
+- 835d5dc: Add node types to deps
+
 ## 1.6.0
 
 ### Patch Changes

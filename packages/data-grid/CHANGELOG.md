@@ -1,5 +1,20 @@
 # @cerberus-design/data-grid
 
+## 1.7.0
+
+### Minor Changes
+
+- 086f476: Add new pagination prop to Data Grid and deprecate related props
+
+### Patch Changes
+
+- 79f23bf: bump weekly deps
+- Updated dependencies [79f23bf]
+- Updated dependencies [c058e2e]
+- Updated dependencies [212fe1c]
+  - @cerberus-design/react@1.7.0
+  - @cerberus-design/signals@1.7.0
+
 ## 1.6.0
 
 ### Patch Changes
