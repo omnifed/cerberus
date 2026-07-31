@@ -1,10 +1,10 @@
-import { Box, Container } from '@/styled-system/jsx'
+import { DocFrontmatter } from '@/app/docs/types'
+import { Container } from '@/styled-system/jsx'
 import { Show } from '@cerberus-design/react'
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next/types'
 import BlogHeader, { type BlogHeaderProps } from '../components/blog-header'
 import { items } from './content/items'
-import { DocFrontmatter } from '@/app/docs/types'
-import { Metadata } from 'next/types'
 
 type Props = {
   params: Promise<{
