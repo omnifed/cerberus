@@ -55,6 +55,17 @@ export default async function DocsLayout(props: { children: ReactNode }) {
         <DocsPageLayout>{props.children}</DocsPageLayout>
       </Box>
 
+      <Box
+        bgGradient="to-tr"
+        gradientFrom="page.surface.initial"
+        gradientTo="transparent"
+        pos="fixed"
+        top="0"
+        left="0"
+        h="full"
+        w="full"
+        zIndex="-9"
+      />
       <SceneMatcher />
     </HStack>
   )

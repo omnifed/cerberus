@@ -1,4 +1,4 @@
-import { Container } from '@/styled-system/jsx'
+import { Box, Container } from '@/styled-system/jsx'
 import { Show } from '@cerberus-design/react'
 import { notFound } from 'next/navigation'
 import BlogHeader, { type BlogHeaderProps } from '../components/blog-header'
@@ -46,21 +46,21 @@ export default async function BlogSlugPage(props: Props) {
   const page = await import(`./content/${slug}.mdx`)
 
   const frontmatter = page?.frontmatter as BlogHeaderProps
-  const Doc = page?.default
+  const Blog = page?.default
 
   if (!page) {
     console.error(`Page not found for slug: ${slug}`)
     return notFound()
   }
 
-  if (Doc) {
+  if (Blog) {
     return (
-      <Container paddingBlockStart="5rem" maxW="88ch">
+      <Container pt="5rem" maxW="88ch">
         <Show when={frontmatter != null}>
           <BlogHeader {...frontmatter} />
         </Show>
 
-        <Doc />
+        <Blog />
       </Container>
     )
   }
