@@ -23,9 +23,14 @@ function ContainerBox() {
   return (
     <DecorativeBox
       bgColor={{
-        base: 'tomato',
-        '@/sm': 'indigo',
-        '@/md': 'purple',
+        base: 'action.bg.initial',
+        '@/sm': 'info.surface.initial',
+        '@/md': 'warning.surface.initial',
+      }}
+      color={{
+        base: 'action.text.initial',
+        '@/sm': 'info.text.100',
+        '@/md': 'warning.text.100',
       }}
       h="200px"
       p="md"

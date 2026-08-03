@@ -23,7 +23,7 @@ function ContainerBox() {
   return (
     <DecorativeBox
       bgColor={{
-        base: 'tomato',
+        base: 'danger.bg.initial',
         '@/sm': 'indigo',
         '@/md': 'purple',
       }}
