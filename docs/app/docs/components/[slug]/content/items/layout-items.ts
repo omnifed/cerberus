@@ -35,6 +35,12 @@ export const layout = [
     href: '/docs/components/container',
   },
   {
+    id: '1.2.5a',
+    label: 'Container Query',
+    slug: 'container-query',
+    href: '/docs/components/container-query',
+  },
+  {
     id: '1.2.6a',
     label: 'Divider',
     slug: 'divider',

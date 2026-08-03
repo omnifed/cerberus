@@ -1,0 +1,57 @@
+---
+title: Container Query
+description: Apply styles to an element based on certain attributes of its container.
+panda: https://panda-css.com/docs/concepts/patterns#cq-container-query
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/cq/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
+
+## Usage
+
+The `Cq` component is used to apply styles based on the width of the **container**. This is a useful alternative to media queries which are based on the width of the browser viewport.
+
+`Cq` provides two utility props:
+
+- `name`: The name of the container query, Maps to the `containerName` [CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/container-name).
+- `type`: The type of the container query. Maps to the `containerType` [CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/container-type). Defaults to `inline-size`.
+
+The container query size conditions use the following syntax: `@/[size]` or `@[custom-name]/[size]`
+
+<CodePreview {...DEMOS.basic} />
+
+### Name
+
+The `name` prop is used to define the name of the container query. This must be defined in the Panda config in order to use it on the `Cq` component.
+
+Once "registered", the `name` prop can be used to add container-specific boundaries and styles.
+
+#### Step 1: Register container names and sizes
+
+<CodeSnippet snippet={DEMOS.configMeta} />
+
+#### Step 2: Use `Cq` to apply container query styles
+
+<CodeSnippet snippet={DEMOS.componentMeta} />
+
+### Type
+
+The `type` prop is used to define the type of the container query. Defaults to `inline-size`.
+
+<CodePreview {...DEMOS.type} />
+
+## Guide
+
+### Default Sizes
+
+The following sizes are included with Cerberus by default:
+
+<CodeSnippet snippet={DEMOS.sizesMeta} />
+
+## Props
+
+The `Cq` component supports all CSS properties as props, making it easy to
+style elements.
