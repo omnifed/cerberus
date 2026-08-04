@@ -30,7 +30,7 @@ catalogs:
     '@vitejs/plugin-react': ^6.0.3
     '@typescript/typescript6': ^6.0.0 # required for vite-dts
   types:
-    '@types/node': '^26.1.1'
+    '@types/node': '^26.1.2'
 
 allowBuilds:
   '@carbon/icon-helpers': true
