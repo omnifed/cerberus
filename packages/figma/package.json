@@ -36,6 +36,7 @@
     "./package.json": "./package.json"
   },
   "scripts": {
+    "lint:ts": "tsc --noEmit",
     "figma:sync": "bun run ./src/create-token-files.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
