@@ -19,7 +19,7 @@ catalogs:
     '@pandacss/preset-panda': ^1.11.5
     '@pandacss/types': ^1.11.5
   jsx:
-    '@carbon/icons-react': ^11.83.0
+    '@carbon/icons-react': ^11.85.0
     globby: ^16.2.2
     react: ^19.2.7
     react-dom: ^19.2.7
