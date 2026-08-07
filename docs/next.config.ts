@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['@ark-ui/react', '@cerberus-design/react'],
     serverComponentsHmrCache: true,
+    turbopackRustReactCompiler: true,
+    useOffline: true,
+    useTypeScriptCli: true,
   },
 
   pageExtensions: ['md', 'mdx', 'ts', 'tsx', 'json'],

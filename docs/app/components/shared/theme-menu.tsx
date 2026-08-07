@@ -12,7 +12,7 @@ import {
   Text,
   useThemeContext,
 } from '@cerberus-design/react'
-import { getTheme, injectTheme, type ThemeName } from 'styled-system/themes'
+import { type ThemeName } from 'styled-system/themes'
 import { DogIcon } from '../icons/DogIcon'
 import { FireIcon } from '../icons/FireIcon'
 
@@ -21,8 +21,6 @@ export function ThemeMenu() {
 
   const handleUpdateTheme = async (details: { value: string }) => {
     const newTheme = details.value as ThemeName
-    const pandaTheme = await getTheme(newTheme)
-    injectTheme(document.documentElement, pandaTheme)
     updateTheme(newTheme)
     document.documentElement.dataset.codeTheme = getCodeTheme(mode, newTheme)
   }

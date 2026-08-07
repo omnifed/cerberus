@@ -10,15 +10,16 @@
     "start:docs": "pnpm --filter docs run dev",
     "lint:es": "eslint . --max-warnings=0",
     "lint:ox": "oxlint --deny-warnings",
-    "lint:packages": "pnpm --filter @cerberus-design/* run -w lint:ts",
+    "lint:npmPackages": "pnpm --filter @cerberus-design/* run -w lint:ts",
+    "lint:jsrPackages": "pnpm --filter @cerberus/* run -w lint:ts",
     "lint:tests": "pnpm --filter tests run lint:ts",
-    "lint": "pnpm lint:packages && pnpm lint:tests",
+    "lint": "pnpm lint:npmPackages && pnpm lint:jsrPackages && pnpm lint:tests",
     "test": "pnpm --filter tests run test:ci",
     "ci:version": "changeset version && bun ./scripts/src/bump-versions.mjs --stable && pnpm install --no-frozen-lockfile",
     "gen:component": "bun ./scripts/src/bootstrap-component.ts"
   },
   "dependencies": {
-    "typescript": "^7.0.2"
+    "typescript": "catalog:ts"
   },
   "devDependencies": {
     "@changesets/cli": "^2.31.1",
@@ -37,5 +38,5 @@
     "bun": ">=1.2.16",
     "node": ">=24.0.0"
   },
-  "packageManager": "pnpm@11.18.0"
+  "packageManager": "pnpm@11.20.0"
 }
