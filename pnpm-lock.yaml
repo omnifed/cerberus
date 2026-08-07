@@ -23,8 +23,8 @@ catalogs:
       specifier: ^6.0.0
       version: 6.0.2
     '@vitejs/plugin-react':
-      specifier: ^6.0.3
-      version: 6.0.3
+      specifier: ^6.0.5
+      version: 6.0.5
     globby:
       specifier: ^16.2.2
       version: 16.2.2
@@ -311,7 +311,7 @@ importers:
         version: 6.0.2
       '@vitejs/plugin-react':
         specifier: catalog:jsx
-        version: 6.0.3(babel-plugin-react-compiler@1.0.0)(vite@8.2.1(@types/node@26.1.1)(yaml@2.9.0))
+        version: 6.0.5(babel-plugin-react-compiler@1.0.0)(vite@8.2.1(@types/node@26.1.1)(yaml@2.9.0))
       globby:
         specifier: catalog:jsx
         version: 16.2.2
@@ -482,7 +482,7 @@ importers:
         version: 6.0.2
       '@vitejs/plugin-react':
         specifier: catalog:jsx
-        version: 6.0.3(babel-plugin-react-compiler@1.0.0)(vite@8.2.1(@types/node@26.1.1)(yaml@2.9.0))
+        version: 6.0.5(babel-plugin-react-compiler@1.0.0)(vite@8.2.1(@types/node@26.1.1)(yaml@2.9.0))
       globby:
         specifier: catalog:jsx
         version: 16.2.2
@@ -512,7 +512,7 @@ importers:
         version: 6.0.2
       '@vitejs/plugin-react':
         specifier: catalog:jsx
-        version: 6.0.3(babel-plugin-react-compiler@1.0.0)(vite@8.2.1(@types/node@26.1.1)(yaml@2.9.0))
+        version: 6.0.5(babel-plugin-react-compiler@1.0.0)(vite@8.2.1(@types/node@26.1.1)(yaml@2.9.0))
       globby:
         specifier: catalog:jsx
         version: 16.2.2
@@ -2540,8 +2540,8 @@ packages:
       vue-router:
         optional: true
 
-  '@vitejs/plugin-react@6.0.3':
-    resolution: {integrity: sha512-vmFvco5/QuC2f9Oj+wTk0+9XeDFkHxSamwZKYc7MxYwKICfvUvlMhqKI0VuICPltGqh1neqBKDvO4kes1ya8vg==}
+  '@vitejs/plugin-react@6.0.5':
+    resolution: {integrity: sha512-BOVzne/NL162sMdResB25mUv+vWMF5NoAjNf09TeGlE7ZpszZWSD3winycicLJw72yeVsoCn/2kOhEuCvEShMA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       '@rolldown/plugin-babel': ^0.1.7 || ^0.2.0
@@ -7650,7 +7650,7 @@ snapshots:
       next: 16.3.0(@babel/core@7.29.7(supports-color@7.2.0))(@types/node@26.1.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       react: 19.2.7
 
-  '@vitejs/plugin-react@6.0.3(babel-plugin-react-compiler@1.0.0)(vite@8.2.1(@types/node@26.1.1)(yaml@2.9.0))':
+  '@vitejs/plugin-react@6.0.5(babel-plugin-react-compiler@1.0.0)(vite@8.2.1(@types/node@26.1.1)(yaml@2.9.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
       vite: 8.2.1(@types/node@26.1.1)(yaml@2.9.0)
