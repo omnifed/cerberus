@@ -2,7 +2,6 @@ import { setCookie } from '@/app/actions/cookies'
 import { getCachedTheme } from '@/app/actions/theme'
 import { getCodeTheme } from '@/app/utils/colors'
 import { cx } from '@/styled-system/css'
-import { getTheme } from '@/styled-system/themes'
 import {
   cerberus,
   ThemeProvider,
@@ -31,7 +30,6 @@ export async function CachedHTML(props: PropsWithChildren<object>) {
   const { themeName, colorModeName } = await getCachedTheme()
   const defaultThemeName = themeName || 'cerberus'
   const defaultColorModeName = colorModeName || 'light'
-  const theme = defaultThemeName && (await getTheme(defaultThemeName))
 
   const handleUpdateTheme = async (theme: DefaultThemes) => {
     'use server'
@@ -52,13 +50,6 @@ export async function CachedHTML(props: PropsWithChildren<object>) {
       data-theme={getCodeTheme(defaultColorModeName, defaultThemeName)}
     >
       <head>
-        {defaultThemeName && (
-          <style
-            type="text/css"
-            id={theme.id}
-            dangerouslySetInnerHTML={{ __html: theme.css }}
-          />
-        )}
         <link
           rel="preconnect"
           href="https://GH67DG1KS2-dsn.algolia.net"
