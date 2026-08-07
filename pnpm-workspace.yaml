@@ -19,7 +19,7 @@ catalogs:
     '@pandacss/preset-panda': ^1.11.5
     '@pandacss/types': ^1.11.5
   jsx:
-    '@carbon/icons-react': ^11.83.0
+    '@carbon/icons-react': ^11.85.0
     globby: ^16.2.2
     react: ^19.2.7
     react-dom: ^19.2.7
@@ -27,12 +27,12 @@ catalogs:
     '@types/react-dom': ^19.2.4
     vite: ^8.2.1
     vite-plugin-dts: ^5.0.2
-    '@vitejs/plugin-react': ^6.0.3
+    '@vitejs/plugin-react': ^6.0.5
     '@typescript/typescript6': ^6.0.0 # required for vite-dts
   ts:
     typescript: ^7.0.2
   types:
-    '@types/node': '^26.1.1'
+    '@types/node': '^26.1.2'
 
 allowBuilds:
   '@carbon/icon-helpers': true
