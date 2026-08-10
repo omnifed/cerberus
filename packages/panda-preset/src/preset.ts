@@ -31,7 +31,7 @@ const basePreset: Preset = definePreset({
   },
 
   staticCss: {
-    themes: presetCerberusTheme.staticCss.themes,
+    themes: presetCerberusTheme.staticCss?.themes,
     css: [
       {
         properties: {
@@ -90,7 +90,7 @@ export interface PresetOptions {
  * })
  * ```
  */
-export async function createCerberusPreset(options?: PresetOptions): Promise<Preset> {
+export function createCerberusPreset(options?: PresetOptions): Preset {
   return definePreset({
     ...basePreset,
 

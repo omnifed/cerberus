@@ -4,6 +4,7 @@
  **/
 
 export * from './config'
+export * from './preset'
 
 export * from './conditions'
 export * from './patterns'

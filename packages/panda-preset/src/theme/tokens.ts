@@ -1,5 +1,5 @@
 import {
-  // createPrimitiveColors,
+  createPrimitiveColors,
   createPrimitiveRadii,
   createPrimitiveSpacing,
 } from '@cerberus/tokens'
@@ -107,6 +107,7 @@ const zIndex = {
 }
 
 export const tokens: NonNullable<Tokens> = defineTokens({
+  colors: createPrimitiveColors(),
   fonts,
   radii: createPrimitiveRadii(),
   spacing: createPrimitiveSpacing(),
