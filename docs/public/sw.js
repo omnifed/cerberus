@@ -7,7 +7,7 @@ self.addEventListener('push', function (event) {
       badge: '/badge.png',
       vibrate: [100, 50, 100],
       data: {
-        dateOfArrival: Date.now(),
+        dateOfArrival: performance.now(),
         primaryKey: '2',
       },
     }

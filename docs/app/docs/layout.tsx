@@ -7,6 +7,8 @@ import { AppBar, DocsPageLayout } from './shared'
 import { getDocsMetadata } from './utils/helpers.server'
 import { SceneMatcher } from '../components/backgrounds/scene-matcher'
 
+export const prefetch = 'partial'
+
 export const metadata: Metadata = getDocsMetadata()
 
 export default async function DocsLayout(props: { children: ReactNode }) {
