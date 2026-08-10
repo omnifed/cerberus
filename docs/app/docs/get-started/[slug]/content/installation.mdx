@@ -98,8 +98,8 @@ the `styled-system/*` location. Not doing so will result in build errors.
 <NoteAdmonition
   description={
     <>
-      If using Deno, simply setup your import map to include the <code>styled-system/\*</code>{' '}
-      alias.
+      If using Deno, simply setup your import map to include the{' '}
+      <code>styled-system/\*</code> alias.
     </>
   }
 />
@@ -141,6 +141,8 @@ If you want to support multiple themes, you can use the `presetAcheronTheme` and
 <CodeSnippet snippet={DEMOS.multiTheme} />
 
 ### Tip: Add a Cerberus script
+
+<NoteAdmonition description="If using pnPm, you can utilize the catalogs feature instead which provides a better experience for managing dependencies." />
 
 To help make maintaining a breeze, add these scripts to your `package.json` to
 use when you need to upgrade Cerberus:

@@ -2,10 +2,6 @@ import { describe, test, expect } from 'bun:test'
 import { conditions } from '@cerberus/panda-preset'
 
 describe('conditions', () => {
-  test('should have a cerberusTheme', () => {
-    expect(conditions.cerberusTheme).toEqual('[data-panda-theme=cerberus] &')
-  })
-
   test('should have a lightMode', () => {
     expect(conditions.lightMode).toEqual('[data-color-mode=light] &, &.light, .light &')
   })

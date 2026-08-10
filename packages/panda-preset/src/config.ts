@@ -1,58 +1,11 @@
-import { presetCerberusTheme } from '@cerberus/preset-cerberus-theme'
-import { type RawThemes } from '@cerberus/tokens'
-import { defineConfig, definePreset, type Config, type Preset } from '@pandacss/dev'
-import pandaPreset from '@pandacss/preset-panda'
-import { conditions } from './conditions'
-import { globalCss } from './globalCss'
-import { patterns } from './patterns'
-import { createStaticRecipeList } from './scripts'
-import { baseTheme } from './theme'
-import { utilities } from './utilities'
+import { defineConfig, type Config } from '@pandacss/dev'
 
 /**
- * This module contains the Cerberus preset and configuration options.
+ * This module contains the Cerberus configuration options.
  * @module
  **/
 
-const staticRecipes = createStaticRecipeList()
-
-const basePreset: Preset = definePreset({
-  name: '@cerberus/preset-base',
-
-  presets: [pandaPreset, presetCerberusTheme],
-
-  globalCss,
-  conditions,
-  utilities,
-  patterns,
-
-  theme: {
-    extend: baseTheme,
-  },
-
-  staticCss: {
-    css: [
-      {
-        properties: {
-          colorPalette: [
-            'page',
-            'action',
-            'secondary-action',
-            'secondaryAction',
-            'info',
-            'success',
-            'warning',
-            'danger',
-          ],
-          layerStyle: ['*'],
-        },
-      },
-    ],
-    recipes: staticRecipes,
-  },
-})
-
-const cerberusConfig: Config = defineConfig({
+const baseConfig: Config = defineConfig({
   preflight: true,
   prefix: 'cerberus',
 
@@ -63,11 +16,23 @@ const cerberusConfig: Config = defineConfig({
 })
 
 /**
- * A function to easily define a PandaCSS configuration with Cerberus settings.
- * @param options PandaCSS configuration options
- * @returns PandaCSS configuration with Cerberus settings
+ * ## createCerberusConfig
+ * A function to define a PandaCSS configuration with built-in Cerberus settings.
  *
- * @example
+ * This helper will automatically merge themes from passed presets and register static
+ * themes for CSS emission.
+ *
+ * ### Props
+ *
+ * | Prop | Type | Description |
+ * | --- | --- | --- |
+ * | options | Config  | A PandaCSS configuration object. |
+ *
+ * ### Returns
+ * A PandaCSS configuration object with options provided merged with Cerberus settings.
+ *
+ * ### Example
+ *
  * ```typescript
  * import { createCerberusConfig } from '@cerberus/panda-preset'
  *
@@ -78,62 +43,40 @@ const cerberusConfig: Config = defineConfig({
  * ```
  */
 export function createCerberusConfig(options?: Config): Config {
+  const userPresets = options?.presets ?? []
+  const mergedStaticCssThemes: string[] = []
+
+  // Automatically collect all `themes` objects across synchronous presets
+  const mergedThemes = userPresets.reduce<Record<string, any>>((acc, preset: any) => {
+    if (!preset) return acc
+    const isObj = typeof preset === 'object'
+    if (isObj && preset.staticCss?.themes) {
+      mergedStaticCssThemes.push(...preset.staticCss.themes)
+    }
+    if (isObj && preset.themes) {
+      return { ...acc, ...preset.themes }
+    }
+    return acc
+  }, {})
+
+  // Automatically register all detected theme names
+  const existingStaticThemes = options?.staticCss?.themes ?? []
+  const staticThemes = Array.from(
+    new Set([...mergedStaticCssThemes, ...existingStaticThemes]),
+  )
+
   return defineConfig({
-    ...cerberusConfig,
+    ...baseConfig,
     ...options,
-  })
-}
 
-export interface PresetOptions {
-  /**
-   * The fontFamily to use for Display textStyles.
-   * @default 'Poppins, sans-serif'
-   */
-  displayFont?: string
-  /**
-   * The fontFamily to use for non-display textStyles.
-   * @default 'Poppins, sans-serif'
-   */
-  sansFont?: string
-  /**
-   * The fontFamily to use for Mono textStyles.
-   * @default 'Recursive, monospace'
-   */
-  monoFont?: string
-}
+    themes: {
+      ...mergedThemes,
+      ...options?.themes,
+    },
 
-/**
- * A function to easily define a PandaCSS preset with Cerberus settings.
- * @param options PandaCSS preset options
- * @returns PandaCSS preset with Cerberus settings
- *
- * @example
- * ```typescript
- * import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
- *
- * export default createCerberusConfig({
- *   clean: true,
- *   exclude: [],
- *
- *  presets: [createCerberusPreset({
- *   // custom preset options
- *  })],
- * })
- * ```
- */
-export async function createCerberusPreset(options?: PresetOptions): Promise<Preset> {
-  return definePreset({
-    ...basePreset,
-
-    globalVars: {
-      '--font-display': options?.displayFont ?? 'Poppins, sans-serif',
-      '--font-sans': options?.sansFont ?? 'Poppins, sans-serif',
-      '--font-mono': options?.monoFont ?? 'Recursive, monospace',
+    staticCss: {
+      ...options?.staticCss,
+      themes: staticThemes.length > 0 ? staticThemes : undefined,
     },
   })
 }
-
-/**
- * The built-in themes supported by Cerberus.
- */
-export const supportedThemes: RawThemes[] = ['cerberus', 'acheron']

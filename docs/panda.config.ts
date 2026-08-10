@@ -1,20 +1,14 @@
 import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
-import {
-  presetAcheronTheme,
-  getThemeName as getAcheronThemeName,
-} from '@cerberus/preset-acheron-theme'
-import {
-  presetElysiumTheme,
-  getThemeName as getElysiumThemeName,
-} from '@cerberus/preset-elysium-theme'
-import {
-  presetOceanusTheme,
-  getThemeName as getOceanusThemeName,
-} from '@cerberus/preset-oceanus-theme'
+import { presetAcheronTheme } from '@cerberus/preset-acheron-theme'
+import { presetElysiumTheme } from '@cerberus/preset-elysium-theme'
+import { presetOceanusTheme } from '@cerberus/preset-oceanus-theme'
+
+const isProd = process.env.NODE_ENV === 'production'
 
 export default createCerberusConfig({
   clean: true,
-  minify: process.env.NODE_ENV === 'production',
+  minify: isProd,
+  // hash: isProd,
 
   include: [
     './node_modules/@cerberus-design/react/**/*.{ts,tsx,js,jsx}',
@@ -44,15 +38,6 @@ export default createCerberusConfig({
     '--shiki-token-punctuation': 'var(--cerberus-colors-page-text-100)',
     '--shiki-token-comment': 'var(--cerberus-colors-page-text-100)',
     '--shiki-token-link': 'var(--cerberus-colors-action-text-navigation-hover)',
-  },
-
-  staticCss: {
-    themes: [
-      'cerberus',
-      getAcheronThemeName(),
-      getElysiumThemeName(),
-      getOceanusThemeName(),
-    ],
   },
 
   theme: {

@@ -1,12 +1,16 @@
-import { Tokens } from '@pandacss/dev'
 import { type RGBA, rgbaToString, rgbToHex } from '@cerberus/figma/helpers'
-import { GradientText, GradientValue } from '../theme-contract/theme-contracts.types'
+import type { Recursive, Token, Tokens } from '@pandacss/types'
 import { GRADIENT_TEXT, GRADIENTS } from '../const'
-import { primitives } from '../tokens'
-import { Recursive, Token } from '@pandacss/types'
+import { primitives } from '../primitives'
+import { GradientText, GradientValue } from '../theme-contract/theme-contracts.types'
 
-// Factories
+/**
+ * This module contains factories for creating primitive PandaCSS tokens.
+ */
 
+/**
+ * @deprecated use theme-specific factory instead
+ */
 export function createPrimitiveColors(): NonNullable<Tokens['colors']> {
   const mode = primitives.colors.modes.value
 
@@ -51,6 +55,10 @@ export function createPrimitiveColors(): NonNullable<Tokens['colors']> {
     },
     {} as NonNullable<Tokens['colors']>,
   )
+}
+
+export function createCerberusPrimitiveColors(): NonNullable<Tokens['colors']> {
+  return _buildPrimitiveColorsByGroup('cerberus')
 }
 
 export function createPrimitiveSpacing(): NonNullable<Tokens['spacing']> {
@@ -113,4 +121,55 @@ export function getContractGradientToken(): GradientText {
 
 export function getGradients(): GradientValue[] {
   return GRADIENTS
+}
+
+// Helpers
+
+function _buildPrimitiveColorsByGroup(
+  groupKey: keyof typeof primitives,
+): NonNullable<Tokens['colors']> {
+  const group = primitives[groupKey]
+  const mode = group.collection.defaultModeId
+
+  return Object.keys(group.tokens).reduce(
+    (acc, key) => {
+      // @ts-expect-error this is correct
+      const token = group.tokens[key]
+      const color = token.valuesByMode[mode] as unknown as RGBA
+
+      let finalColor: string | RGBA = color
+
+      if (token.resolvedType !== 'COLOR') {
+        return acc
+      }
+
+      if (key.includes('drop-shadow')) {
+        finalColor = rgbaToString(color)
+      } else {
+        finalColor = rgbToHex(color)
+      }
+
+      const path = key.split('.')
+      let current = acc
+
+      for (let i = 0; i < path.length; i++) {
+        const part = path[i]
+        const isLast = i === path.length - 1
+
+        if (isLast) {
+          current[part] = {
+            value: finalColor,
+            description: token.description,
+          }
+        } else {
+          if (!current[part]) {
+            current[part] = {}
+          }
+          current = current[part] as Recursive<Token<string>>
+        }
+      }
+      return acc
+    },
+    {} as NonNullable<Tokens['colors']>,
+  )
 }

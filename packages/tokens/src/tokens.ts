@@ -1,54 +1,29 @@
-import { tokens as primitiveColors, modes as colorModes } from './data/colors'
-import { tokens as primitiveSpacing, modes as spacingModes } from './data/spacing'
-import { tokens as primitiveRadii, modes as radiiModes } from './data/radii'
-import { tokens as primitiveFontSize, modes as fontSizeModes } from './data/font-size'
-
-// Compositions
 import { tokens as textStyle, modes as textStylesMode } from './data/text-styles'
-
-// Themes
-import {
-  collection as acheronCollection,
-  tokens as acheronTokens,
-  modes as acheronModes,
-} from './data/acheron'
-import {
-  collection as cerberusCollection,
-  tokens as cerberusTokens,
-  modes as cerberusModes,
-} from './data/cerberus'
-import {
-  collection as elysiumCollection,
-  tokens as elysiumTokens,
-  modes as elysiumModes,
-} from './data/elysium'
-import {
-  collection as oceanusCollection,
-  tokens as oceanusTokens,
-  modes as oceanusModes,
-} from './data/oceanus'
 
 // TEMPORARY
 import { nodes } from './data/text-nodes'
 
-export const primitives = {
-  colors: {
-    tokens: primitiveColors,
-    modes: colorModes,
-  },
-  spacing: {
-    tokens: primitiveSpacing,
-    modes: spacingModes,
-  },
-  radii: {
-    tokens: primitiveRadii,
-    modes: radiiModes,
-  },
-  fontSize: {
-    tokens: primitiveFontSize,
-    modes: fontSizeModes,
-  },
-}
+// Semantic Tokens
+import {
+  collection as acheronCollection,
+  modes as acheronModes,
+  tokens as acheronTokens,
+} from './data/acheron'
+import {
+  collection as cerberusCollection,
+  modes as cerberusModes,
+  tokens as cerberusTokens,
+} from './data/cerberus'
+import {
+  collection as elysiumCollection,
+  modes as elysiumModes,
+  tokens as elysiumTokens,
+} from './data/elysium'
+import {
+  collection as oceanusCollection,
+  modes as oceanusModes,
+  tokens as oceanusTokens,
+} from './data/oceanus'
 
 export const compositions = {
   textStyle: {

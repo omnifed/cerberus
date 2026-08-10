@@ -2,16 +2,6 @@ import { VStack } from '@/styled-system/jsx/vstack'
 import { Show, Text } from '@cerberus-design/react'
 import { notFound } from 'next/navigation'
 import type { DocFrontmatter } from '../../types'
-import { items } from './content/items'
-import { Metadata } from 'next/types'
-
-export async function generateStaticParams() {
-  return items
-    .map((slug) => {
-      if (slug.href) return { slug: slug.slug }
-    })
-    .filter(Boolean)
-}
 
 type Props = {
   params: Promise<{
@@ -19,32 +9,7 @@ type Props = {
   }>
 }
 
-export async function generateMetadata(props: Props): Promise<Metadata> {
-  const { slug } = await props.params
-  const slugPath = Array.isArray(slug) ? slug.join('/') : slug
-
-  try {
-    const page = await import(`./content/${slug}.mdx`)
-    const frontmatter = page?.frontmatter as DocFrontmatter
-
-    return {
-      title: frontmatter?.title,
-      description: frontmatter?.description,
-      openGraph: {
-        images: [`/og/docs/get-started/${slugPath}`],
-      },
-    }
-  } catch {
-    // Fallback if the MDX file doesn't exist
-    return {}
-  }
-}
-
-export default async function GetStartedSlugPage(props: {
-  params: Promise<{
-    slug: string
-  }>
-}) {
+export default async function GetStartedSlugPage(props: Props) {
   const { slug } = await props.params
   const page = await import(`./content/${slug}.mdx`)
 
