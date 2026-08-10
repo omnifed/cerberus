@@ -8,7 +8,7 @@ const isProd = process.env.NODE_ENV === 'production'
 export default createCerberusConfig({
   clean: true,
   minify: isProd,
-  hash: isProd,
+  // hash: isProd,
 
   include: [
     './node_modules/@cerberus-design/react/**/*.{ts,tsx,js,jsx}',
