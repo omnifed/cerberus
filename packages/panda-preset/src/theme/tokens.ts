@@ -71,8 +71,7 @@ const zIndex = {
 
   // elements
   dropdown: {
-    description:
-      'Used for positioning any dropdown like elements in the layer stack',
+    description: 'Used for positioning any dropdown like elements in the layer stack',
     value: 1000,
   },
   sticky: {
@@ -108,7 +107,7 @@ const zIndex = {
 }
 
 export const tokens: NonNullable<Tokens> = defineTokens({
-  colors: createPrimitiveColors(),
+  // colors: createPrimitiveColors(),
   fonts,
   radii: createPrimitiveRadii(),
   spacing: createPrimitiveSpacing(),
