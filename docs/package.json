@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "panda:build": "panda codegen --config panda.prod.ts && panda spec",
+    "panda:build": "panda codegen && panda spec",
     "dev": "rm -rf .next && panda codegen && panda spec && next dev",
     "build": "pnpm run panda:build && next build",
     "start": "next start",

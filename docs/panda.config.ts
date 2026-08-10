@@ -40,15 +40,6 @@ export default createCerberusConfig({
     '--shiki-token-link': 'var(--cerberus-colors-action-text-navigation-hover)',
   },
 
-  // staticCss: {
-  //   themes: [
-  //     'cerberus',
-  //     getAcheronThemeName(),
-  //     getElysiumThemeName(),
-  //     getOceanusThemeName(),
-  //   ],
-  // },
-
   theme: {
     extend: {
       recipes: {
