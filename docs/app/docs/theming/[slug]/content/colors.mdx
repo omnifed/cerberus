@@ -3,25 +3,44 @@ title: Colors
 description: A list of colors available in Cerberus.
 ---
 
-import { PaletteGroup }  from '../components/colors/palette-group'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { PaletteGroup } from '../components/colors/palette-group'
 import { PrimitiveColorGroup } from '../components/colors/primitive-color-group'
 
 ## Primitives
 
 Cerberus provides a comprehensive set of **primitive colors** (`theme.tokens.colors`) that serve as the foundation for all semantic tokens. These are the raw color values that semantic tokens reference.
 
-<PrimitiveColorGroup />
-
 Primitive colors are organized by color families and include numerical scales (e.g., `neutral.0` to `neutral.100`) that provide fine-grained control over color variations. These colors form the building blocks that semantic tokens reference to create meaningful, contextual color usage.
 
 **How Primitives Relate to Semantic Tokens:**
+
 - Semantic tokens like `page.bg.initial` reference primitive colors using token syntax: `{colors.cerberus.neutral.5}`
 - This creates a clear hierarchy: primitives → semantic tokens → component usage
 - Customizing primitive colors automatically updates all semantic tokens that reference them
 
+<PrimitiveColorGroup />
+<br />
+
 ## Semantic Tokens
 
-Cerberus provides a set of semantic colors that drive our themes.
+Cerberus provides a set of palettes that have an intentional purpose which contribtutes to the
+overall theme. This creates a clear, consistent color scheme that can be easily customized.
+
+### Naming Convention
+
+Cerberus uses a naming convention for semantic tokens to ensure clarity and maintainability. Each color is named based on its purpose and context, making it easier to understand its intended use.
+
+Semantic token naming convention:
+
+<CodeSnippet snippet="[palette].[usage].[prominence?].[interaction?]" />
+
+| Name        | Description                                                            |
+| ----------- | ---------------------------------------------------------------------- |
+| Palette     | The category/context of where the color is used.                       |
+| Usage       | How the color is used within the context.                              |
+| Prominence  | Optional.The hierarchy of the color used within the page context.      |
+| Interaction | Optional. The element interaction type the color should be applied to. |
 
 ### Page
 
@@ -70,18 +89,3 @@ Used for danger states, such as error messages, notifications, and other negativ
 Used for data visualization elements, such as charts, graphs, and other visual representations of data.
 
 <PaletteGroup palette="dataViz" />
-
-## Naming Convention
-
-Cerberus uses a consistent naming convention for colors to ensure clarity and maintainability. Each color is named based on its purpose and context, making it easier to understand its intended use.
-
-```bash
-[palette?].[usage].[prominence?].[interaction?]
-```
-
-| Name        | Description                                                    |
-| ----------- | -------------------------------------------------------------- |
-| Palette     | The category/context of where the color is used.               |
-| Usage       | How the color is used within the context.                      |
-| Prominence  | The hierarchy of the color used within the page context.       |
-| Interaction | The element interaction type the color should be applied to.   |

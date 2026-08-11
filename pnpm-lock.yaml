@@ -172,6 +172,9 @@ importers:
         specifier: catalog:jsx
         version: 19.2.7(react@19.2.7)
     devDependencies:
+      '@cerberus/figma':
+        specifier: workspace:*
+        version: link:../packages/figma
       '@cerberus/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda-preset
