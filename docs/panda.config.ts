@@ -20,9 +20,9 @@ export default createCerberusConfig({
 
   presets: [
     createCerberusPreset(),
-    presetAcheronTheme,
-    presetElysiumTheme,
-    presetOceanusTheme,
+    // presetAcheronTheme,
+    // presetElysiumTheme,
+    // presetOceanusTheme,
   ],
 
   globalVars: {

@@ -319,6 +319,7 @@ export const collection = {
     'VariableID:13697:8126',
     'VariableID:18289:3479',
     'VariableID:18303:12040',
+    'VariableID:24885:16823',
     'VariableID:4328:23833',
     'VariableID:4737:11565',
     'VariableID:4737:5172',
@@ -2925,7 +2926,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.60',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.cerberus.60',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2941,7 +2942,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.50',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.cerberus.50',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2957,7 +2958,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.40',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.cerberus.40',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2973,7 +2974,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.30',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.cerberus.30',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2989,7 +2990,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.20',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.cerberus.20',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3021,7 +3022,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:21998:4899/21998:10': 'info.acheron.20',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.brand.20',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3037,7 +3038,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:21998:4899/21998:10': 'info.acheron.30',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.brand.30',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3053,7 +3054,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:21998:4899/21998:10': 'info.acheron.40',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.brand.40',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3069,7 +3070,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:21998:4899/21998:10': 'info.acheron.60',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.brand.50',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3085,7 +3086,7 @@ export const tokens = {
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
       'VariableCollectionId:21998:4899/21998:10': 'info.acheron.70',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.brand.60',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3357,7 +3358,7 @@ export const tokens = {
     scopes: ['EFFECT_COLOR'],
     valuesByMode: {
       'VariableCollectionId:21998:4899/21998:10': 'acheron.drop-shadow.200',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.drop-shadow.1000',
+      'VariableCollectionId:21998:4899/21998:11': 'drop-shadow.1000',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4079,6 +4080,22 @@ export const tokens = {
     valuesByMode: {
       'VariableCollectionId:21998:4899/21998:10': 'acheron.success.40',
       'VariableCollectionId:21998:4899/21998:11': 'acheron.success.40',
+    },
+    variableCollectionId: 'VariableCollectionId:4328:23832',
+  },
+  'gradient.thanatos-light.end 2': {
+    codeSyntax: {},
+    description: '',
+    hiddenFromPublishing: false,
+    id: 'VariableID:24885:16823',
+    key: '731e4dcdfd86d23ec5db218b909453d79e2b2fd7',
+    name: 'gradient/thanatos-light/end 2',
+    remote: false,
+    resolvedType: 'COLOR',
+    scopes: ['ALL_SCOPES'],
+    valuesByMode: {
+      'VariableCollectionId:21998:4899/21998:10': 'success.40',
+      'VariableCollectionId:21998:4899/21998:11': 'success.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },

@@ -78,5 +78,14 @@ export function createCerberusConfig(options?: Config): Config {
       ...options?.staticCss,
       themes: staticThemes.length > 0 ? staticThemes : undefined,
     },
+
+    hooks: {
+      'preset:resolved': ({ utils, preset, name }) => {
+        if (name === '@pandacss/preset-panda') {
+          return utils.omit(preset, ['theme.tokens.colors'])
+        }
+        return preset
+      },
+    },
   })
 }
