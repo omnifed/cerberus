@@ -29,8 +29,14 @@ export function createSemanticToken(
   }
 }
 
-// Private
-
+/**
+ * Formats a token value as a PandaCSS registered color primitive or an RGB value.
+ * All Cerberus themes register color primitives using the naming convention of `[theme].[figmaValue]`
+ *
+ * @param value - The token value to format.
+ * @param theme - The theme to use for formatting (default: 'cerberus').
+ * @returns The formatted token value as a string.
+ */
 function _formatTokenValue(value: string | VariableColor): string {
   if (typeof value === 'string') {
     return `{colors.${value}}`

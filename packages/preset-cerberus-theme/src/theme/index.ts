@@ -1,5 +1,6 @@
 import { createCerberusPrimitiveColors, defineTheme } from '@cerberus/tokens'
 import { type Config } from '@pandacss/dev'
+import { getThemeName } from '../config'
 import { semanticTokens } from './semantic-tokens/config'
 
 /**
@@ -15,3 +16,12 @@ export const theme: Config['theme'] = defineTheme({
     },
   },
 })
+
+export const themes: Config['themes'] = {
+  [getThemeName()]: {
+    tokens: {
+      colors: createCerberusPrimitiveColors(),
+    },
+    semanticTokens,
+  },
+}

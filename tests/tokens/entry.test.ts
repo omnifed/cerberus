@@ -6,8 +6,11 @@ describe('Tokens', () => {
     expect(tokens.createTextStyles).toBeDefined()
   })
 
-  test('should export createPrimitiveColors', () => {
-    expect(tokens.createPrimitiveColors).toBeDefined()
+  test('should export theme primitive color creators', () => {
+    expect(tokens.createAcheronPrimitiveColors).toBeDefined()
+    expect(tokens.createCerberusPrimitiveColors).toBeDefined()
+    expect(tokens.createElysiumPrimitiveColors).toBeDefined()
+    expect(tokens.createOceanusPrimitiveColors).toBeDefined()
   })
 
   test('should export createPrimitiveSpacing', () => {

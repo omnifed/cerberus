@@ -28,8 +28,24 @@ import {
   tokens as primitiveSpacing,
   modes as spacingModes,
 } from './data/spacing'
+import { RawThemes } from './semantic-tokens.types'
 
-export const primitives = {
+export type PrimitiveGroup =
+  | PrimitiveThemeGroup
+  | 'colors'
+  | 'spacing'
+  | 'radii'
+  | 'fontSize'
+
+export type PrimitiveThemeGroup = RawThemes
+
+export type PrimitiveValue = {
+  collection: any
+  tokens: any
+  modes: any
+}
+
+export const primitives: Record<PrimitiveGroup, PrimitiveValue> = {
   colors: {
     collection: colorsCollection,
     tokens: primitiveColors,
@@ -45,6 +61,17 @@ export const primitives = {
     tokens: acheronPrimitives,
     modes: acheronPrimitiveModes,
   },
+  elysium: {
+    collection: cerbyCollection,
+    tokens: cerbyPrimitives,
+    modes: cerbyPrimitiveModes,
+  },
+  oceanus: {
+    collection: cerbyCollection,
+    tokens: cerbyPrimitives,
+    modes: cerbyPrimitiveModes,
+  },
+
   spacing: {
     collection: spacingCollection,
     tokens: primitiveSpacing,

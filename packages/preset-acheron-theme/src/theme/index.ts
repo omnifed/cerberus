@@ -1,5 +1,6 @@
-import { createAcheronPrimitiveColors, defineTheme } from '@cerberus/tokens'
-import { SemanticTokens } from '@pandacss/types'
+import { createAcheronPrimitiveColors } from '@cerberus/tokens'
+import { Config } from '@pandacss/types'
+import { getThemeName } from '../config'
 import { semanticTokens } from './semantic-tokens/config'
 
 /**
@@ -7,11 +8,11 @@ import { semanticTokens } from './semantic-tokens/config'
  * @module
  */
 
-export const theme: { semanticTokens: SemanticTokens } = defineTheme({
-  semanticTokens,
-  extend: {
+export const themes: Config['themes'] = {
+  [getThemeName()]: {
     tokens: {
       colors: createAcheronPrimitiveColors(),
     },
+    semanticTokens,
   },
-})
+}

@@ -15,8 +15,6 @@ export function getThemeName(): RawThemes {
 export const presetElysiumTheme: Preset = definePreset({
   name: '@cerberus/preset-elysium-theme',
 
-  presets: [],
-
   conditions,
 
   themes: {
