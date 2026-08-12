@@ -4,25 +4,25 @@ export default function CerberusLogo() {
   const styles = css({
     fill: '#9F66D3',
     _acheronTheme: {
-      fill: 'acheron.brand.60',
+      fill: '{colors.brand.60}',
     },
     _elysiumTheme: {
-      fill: 'elysium.brand.60',
+      fill: '{colors.brand.60}',
     },
     _oceanusTheme: {
-      fill: 'oceanus.brand.40',
+      fill: '{colors.brand.40}',
     },
   })
   const accentStyles = css({
     fill: '#260048',
     _acheronTheme: {
-      fill: 'acheron.brand.100',
+      fill: '{colors.brand.100}',
     },
     _elysiumTheme: {
-      fill: 'elysium.brand.100',
+      fill: '{colors.brand.100}',
     },
     _oceanusTheme: {
-      fill: 'oceanus.brand.90',
+      fill: '{colors.brand.90}',
     },
   })
 
