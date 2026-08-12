@@ -1,29 +1,20 @@
 'use client'
 
 import { Box, Grid, GridItem, HStack, VStack } from '@/styled-system/jsx'
-import tokens from '@/styled-system/specs/tokens.json'
-import { cerberus, For, Text } from '@cerberus-design/react'
-
-type ColorGroup = {
-  name: string
-  value: string
-  cssVar: string
-}
-
-type TokenGroup = {
-  type: string
-  values: ColorGroup[]
-}
-
-type TokensData = {
-  type: string
-  data: TokenGroup[]
-}
+import themesMeta from '@/styled-system/specs/themes.json'
+import { cerberus, For, Text, useThemeContext } from '@cerberus-design/react'
+import { RawThemes } from '@cerberus/tokens'
+import { RawTheme } from 'shiki'
 
 export function PrimitiveColorGroup() {
-  function formatPaletteName(palette: string): string {
-    return palette.charAt(0).toUpperCase() + palette.slice(1)
-  }
+  const { theme, mode } = useThemeContext()
+
+  const activeTheme = getTokensByTheme(theme)
+  if (!activeTheme) return null
+
+  const primitives = groupColorsByPrefix(activeTheme.tokens[0])
+
+  const semTokens = activeTheme?.semanticTokens ?? []
 
   return (
     <Box
@@ -35,7 +26,7 @@ export function PrimitiveColorGroup() {
       w="full"
     >
       <VStack gap="2xl">
-        <For each={Object.keys(result)}>
+        <For each={Object.keys(primitives)}>
           {(group) => (
             <Box key={group} w="full">
               <HStack gap="none" justify="space-between" mb="md" w="full">
@@ -61,34 +52,8 @@ export function PrimitiveColorGroup() {
                 }}
                 gap="sm"
               >
-                <For each={Object.values(result[group])}>
-                  {({ name, cssVar, value }) => (
-                    <GridItem key={name}>
-                      <VStack justify="center" gap="xs">
-                        <Box
-                          border="1px solid"
-                          borderColor="page.border.initial"
-                          h="3rem"
-                          rounded="md"
-                          w="full"
-                          style={{
-                            backgroundColor: cssVar,
-                          }}
-                        />
-                        <Text as="small" textStyle="label-xs" textAlign="center">
-                          {name.split('.').pop()}
-                        </Text>
-                        <Text
-                          as="small"
-                          color="page.text.100"
-                          textStyle="body-xs"
-                          textAlign="center"
-                        >
-                          {value.includes('rgba') ? formatRgba(value) : value}
-                        </Text>
-                      </VStack>
-                    </GridItem>
-                  )}
+                <For each={Object.values(primitives[group])}>
+                  {(value) => <PrimitiveSwatch key={value.name} {...value} />}
                 </For>
               </Grid>
             </Box>
@@ -99,15 +64,72 @@ export function PrimitiveColorGroup() {
   )
 }
 
-const colorTokens = (tokens as unknown as TokensData).data.find(
-  (group) => group.type === 'colors',
-) as TokenGroup
+function PrimitiveSwatch(props: TokenValue) {
+  const { name, cssVar, values } = props
+  const value = values[0]?.value // no conditions for primitives
 
-const result = groupColorsByPrefix(colorTokens)
+  return (
+    <GridItem key={name}>
+      <VStack justify="center" gap="xs">
+        <Box
+          border="1px solid"
+          borderColor="page.border.initial"
+          h="3rem"
+          rounded="md"
+          w="full"
+          style={{
+            backgroundColor: cssVar,
+          }}
+        />
+        <Text as="small" textStyle="label-xs" textAlign="center">
+          {name.split('.').pop()}
+        </Text>
+        <Text as="small" color="page.text.100" textStyle="body-xs" textAlign="center">
+          {value.includes('rgba') ? formatRgba(value) : value}
+        </Text>
+      </VStack>
+    </GridItem>
+  )
+}
 
-function groupColorsByPrefix(data: TokenGroup): Record<string, ColorGroup[]> {
+// Helpers
+
+type ThemeGroup = {
+  name: RawTheme
+  tokens: Tokens[]
+  semanticTokens: any[]
+}
+
+type Tokens = {
+  type: 'colors'
+  values: TokenValue[]
+  tokenFunctionExamples: string[]
+  functionExamples: string[]
+  jsxExamples: string[]
+}
+
+type TokenValue = {
+  name: string
+  values: Values[]
+  cssVar: string
+}
+
+type Values = {
+  value: string
+  condition: string
+}
+
+function getTokensByTheme(theme: RawThemes): ThemeGroup | null {
+  const group = themesMeta.data.find(
+    (group) => group.name === (theme as unknown as string),
+  )
+  if (!group) return null
+  return group as unknown as ThemeGroup
+}
+
+function groupColorsByPrefix(data: Tokens): Record<string, TokenValue[]> {
   const values = data.values
-  const grouped: Record<string, ColorGroup[]> = {}
+  const grouped: Record<string, TokenValue[]> = {}
 
   for (let i = 0; i < values.length; i++) {
     const item = values[i]
@@ -125,6 +147,10 @@ function groupColorsByPrefix(data: TokenGroup): Record<string, ColorGroup[]> {
   }
 
   return grouped
+}
+
+function formatPaletteName(palette: string): string {
+  return (palette.charAt(0).toUpperCase() + palette.slice(1)).replace('-', ' ')
 }
 
 function formatRgba(rgbaString: string): string {
