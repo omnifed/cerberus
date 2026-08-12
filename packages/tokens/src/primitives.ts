@@ -4,6 +4,11 @@ import {
   tokens as cerbyPrimitives,
 } from './data/cerberus-colors'
 import {
+  collection as acheronCollection,
+  modes as acheronPrimitiveModes,
+  tokens as acheronPrimitives,
+} from './data/acheron-colors'
+import {
   collection as colorsCollection,
   modes as colorModes,
   tokens as primitiveColors,
@@ -34,6 +39,11 @@ export const primitives = {
     collection: cerbyCollection,
     tokens: cerbyPrimitives,
     modes: cerbyPrimitiveModes,
+  },
+  acheron: {
+    collection: acheronCollection,
+    tokens: acheronPrimitives,
+    modes: acheronPrimitiveModes,
   },
   spacing: {
     collection: spacingCollection,

@@ -61,6 +61,10 @@ export function createCerberusPrimitiveColors(): NonNullable<Tokens['colors']> {
   return _buildPrimitiveColorsByGroup('cerberus')
 }
 
+export function createAcheronPrimitiveColors(): NonNullable<Tokens['colors']> {
+  return _buildPrimitiveColorsByGroup('acheron')
+}
+
 export function createPrimitiveSpacing(): NonNullable<Tokens['spacing']> {
   const mode = primitives.spacing.modes.value
 
