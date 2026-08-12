@@ -7,14 +7,12 @@ import { RawThemes } from '@cerberus/tokens'
 import { RawTheme } from 'shiki'
 
 export function PrimitiveColorGroup() {
-  const { theme, mode } = useThemeContext()
+  const { theme } = useThemeContext()
 
   const activeTheme = getTokensByTheme(theme)
   if (!activeTheme) return null
 
   const primitives = groupColorsByPrefix(activeTheme.tokens[0])
-
-  const semTokens = activeTheme?.semanticTokens ?? []
 
   return (
     <Box
