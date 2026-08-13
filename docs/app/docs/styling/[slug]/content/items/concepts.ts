@@ -52,4 +52,10 @@ export const concepts = [
     slug: 'cascade-layers',
     href: '/docs/styling/cascade-layers',
   },
+  {
+    id: '1.10',
+    label: 'Utilities',
+    slug: 'utilities',
+    href: '/docs/styling/utilities',
+  },
 ]

@@ -125,6 +125,12 @@ export const components = [
     href: '/docs/components/marquee',
   },
   {
+    id: '1.3.16b',
+    label: 'Menu',
+    slug: 'menu',
+    href: '/docs/components/menu',
+  },
+  {
     id: '1.3.17',
     label: 'Notifications',
     slug: 'notifications',

@@ -102,8 +102,10 @@ const borderGradient: CustomUtilityConfig<'borderGradient'> = {
 
 export const utilities: Config['utilities'] = {
   extend: {
+    // These are no longer neccessary as [m/p]x utilities now do this by default
     ...mxi,
     ...pxi,
+
     ...size,
     ...gradient,
     ...borderGradient,
