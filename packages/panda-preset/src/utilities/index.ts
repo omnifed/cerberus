@@ -1,5 +1,6 @@
-import type { PropertyConfig } from '@pandacss/dev'
+import type { Config, PropertyConfig } from '@pandacss/dev'
 import { type GradientValue, getGradients } from '@cerberus/tokens'
+import { createFocusRing } from './helpers'
 
 /**
  * Note: Panda is very particular with utility configs. It doesn't like dynamic
@@ -99,12 +100,42 @@ const borderGradient: CustomUtilityConfig<'borderGradient'> = {
   },
 }
 
-export const utilities = {
+export const utilities: Config['utilities'] = {
   extend: {
     ...mxi,
     ...pxi,
     ...size,
     ...gradient,
     ...borderGradient,
+
+    focusRing: createFocusRing('&:is(:focus, [data-focus])'),
+    focusVisibleRing: createFocusRing('&:is(:focus-visible, [data-focus-visible])'),
+    focusRingColor: {
+      values: 'colors',
+      transform(value: string, { utils }) {
+        const prop = '--focus-ring-color'
+        const mix = utils.colorMix(value)
+        if (mix.invalid) return { [prop]: value }
+        const cssVar = '--mix-' + prop
+        return {
+          [cssVar]: mix.value,
+          [prop]: `var(${cssVar}, ${mix.color})`,
+        }
+      },
+    },
+    focusRingOffset: {
+      values: 'spacing',
+      transform: (v: string) => ({ '--focus-ring-offset': v }),
+    },
+    focusRingWidth: {
+      values: 'borderWidths',
+      property: 'outlineWidth',
+      transform: (v: string) => ({ '--focus-ring-width': v }),
+    },
+    focusRingStyle: {
+      values: 'borderStyles',
+      property: 'outlineStyle',
+      transform: (v: string) => ({ '--focus-ring-style': v }),
+    },
   },
 }
