@@ -6,9 +6,9 @@ export default function CerberusLogo() {
     _acheronTheme: {
       fill: '{colors.brand.60}',
     },
-    // _elysiumTheme: {
-    //   fill: '{colors.brand.60}',
-    // },
+    _elysiumTheme: {
+      fill: '{colors.brand.60}',
+    },
     // _oceanusTheme: {
     //   fill: '{colors.brand.40}',
     // },
@@ -18,9 +18,9 @@ export default function CerberusLogo() {
     _acheronTheme: {
       fill: '{colors.brand.100}',
     },
-    // _elysiumTheme: {
-    //   fill: '{colors.brand.100}',
-    // },
+    _elysiumTheme: {
+      fill: '{colors.brand.100}',
+    },
     // _oceanusTheme: {
     //   fill: '{colors.brand.90}',
     // },

@@ -21,7 +21,7 @@ import { RawThemes } from '@cerberus/tokens'
 const supportedThemes: RawThemes[] = [
   'cerberus',
   'acheron',
-  // 'elysium',
+  'elysium',
   // 'oceanus',
 ]
 

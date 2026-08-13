@@ -1,12 +1,18 @@
-import { defineTheme } from '@cerberus/tokens'
+import { createElysiumPrimitiveColors } from '@cerberus/tokens'
+import { Config } from '@pandacss/types'
+import { getThemeName } from '../config'
 import { semanticTokens } from './semantic-tokens/config'
-import { SemanticTokens } from '@pandacss/dev'
 
 /**
  * This module contains the Acheron theme and configuration options.
  * @module
  */
 
-export const theme: { semanticTokens: SemanticTokens } = defineTheme({
-  semanticTokens,
-})
+export const themes: Config['themes'] = {
+  [getThemeName()]: {
+    tokens: {
+      colors: createElysiumPrimitiveColors(),
+    },
+    semanticTokens,
+  },
+}

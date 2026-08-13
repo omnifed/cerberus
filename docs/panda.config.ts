@@ -1,6 +1,6 @@
 import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
 import { presetAcheronTheme } from '@cerberus/preset-acheron-theme'
-// import { presetElysiumTheme } from '@cerberus/preset-elysium-theme'
+import { presetElysiumTheme } from '@cerberus/preset-elysium-theme'
 // import { presetOceanusTheme } from '@cerberus/preset-oceanus-theme'
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -21,7 +21,7 @@ export default createCerberusConfig({
   presets: [
     createCerberusPreset(),
     presetAcheronTheme,
-    // presetElysiumTheme,
+    presetElysiumTheme,
     // presetOceanusTheme,
   ],
 
