@@ -21,6 +21,7 @@ export const buttonBase = {
   cursor: 'pointer',
   display: 'inline-flex',
   fontWeight: '600',
+  focusVisibleRing: 'outside',
   gap: '2',
   justifyContent: 'center',
   lineHeight: '0',

@@ -26,8 +26,7 @@ describe('switchRecipe recipe', () => {
       gap: 'sm',
       position: 'relative',
       verticalAlign: 'middle',
-      '--switch-x':
-        'calc(var(--switch-width) - calc(var(--switch-height) + 0.20rem))',
+      '--switch-x': 'calc(var(--switch-width) - calc(var(--switch-height) + 0.20rem))',
     })
   })
 
@@ -52,11 +51,6 @@ describe('switchRecipe recipe', () => {
       transitionProperty: 'background-color, outline',
       transitionDuration: 'fast',
       w: 'var(--switch-width)',
-      _focusVisible: {
-        outline: '3px solid',
-        outlineColor: 'action.border.focus',
-        outlineOffset: '2px',
-      },
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.5',
@@ -82,6 +76,7 @@ describe('switchRecipe recipe', () => {
       display: 'flex',
       flexDirection: 'column',
       flexShrink: 0,
+      focusVisibleRing: 'outside',
       h: 'var(--thumb-size)',
       justifyContent: 'center',
       p: '0.125rem',
