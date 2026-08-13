@@ -9,6 +9,11 @@ import {
   tokens as acheronPrimitives,
 } from './data/acheron-colors'
 import {
+  collection as elysiumCollection,
+  modes as elysiumPrimitiveModes,
+  tokens as elysiumPrimitives,
+} from './data/elysium-colors'
+import {
   collection as colorsCollection,
   modes as colorModes,
   tokens as primitiveColors,
@@ -62,9 +67,9 @@ export const primitives: Record<PrimitiveGroup, PrimitiveValue> = {
     modes: acheronPrimitiveModes,
   },
   elysium: {
-    collection: cerbyCollection,
-    tokens: cerbyPrimitives,
-    modes: cerbyPrimitiveModes,
+    collection: elysiumCollection,
+    tokens: elysiumPrimitives,
+    modes: elysiumPrimitiveModes,
   },
   oceanus: {
     collection: cerbyCollection,
