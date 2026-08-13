@@ -9,9 +9,9 @@ export default function CerberusLogo() {
     _elysiumTheme: {
       fill: '{colors.brand.60}',
     },
-    // _oceanusTheme: {
-    //   fill: '{colors.brand.40}',
-    // },
+    _oceanusTheme: {
+      fill: '{colors.brand.40}',
+    },
   })
   const accentStyles = css({
     fill: '#260048',
@@ -21,9 +21,9 @@ export default function CerberusLogo() {
     _elysiumTheme: {
       fill: '{colors.brand.100}',
     },
-    // _oceanusTheme: {
-    //   fill: '{colors.brand.90}',
-    // },
+    _oceanusTheme: {
+      fill: '{colors.brand.90}',
+    },
   })
 
   return (

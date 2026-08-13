@@ -8,7 +8,7 @@ exports[`Oceanus Theme pageTokens should match the established baseline 1`] = `
         "description": "",
         "value": {
           "_darkMode": "rgba(28.000000230968, 29.000000171363354, 33.00000183284283, 0.800000011920929)",
-          "_lightMode": "{colors.oceanus.drop-shadow.300}",
+          "_lightMode": "{colors.drop-shadow.300}",
           "base": "rgba(28.000000230968, 29.000000171363354, 33.00000183284283, 0.800000011920929)",
         },
       },
@@ -17,33 +17,33 @@ exports[`Oceanus Theme pageTokens should match the established baseline 1`] = `
       "100": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.95}",
-          "_lightMode": "{colors.oceanus.neutral.20}",
-          "base": "{colors.oceanus.neutral.95}",
+          "_darkMode": "{colors.neutral.95}",
+          "_lightMode": "{colors.neutral.20}",
+          "base": "{colors.neutral.95}",
         },
       },
       "200": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.90}",
-          "_lightMode": "{colors.oceanus.neutral.30}",
-          "base": "{colors.oceanus.neutral.90}",
+          "_darkMode": "{colors.neutral.90}",
+          "_lightMode": "{colors.neutral.30}",
+          "base": "{colors.neutral.90}",
         },
       },
       "300": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.80}",
-          "_lightMode": "{colors.oceanus.neutral.40}",
-          "base": "{colors.oceanus.neutral.80}",
+          "_darkMode": "{colors.neutral.80}",
+          "_lightMode": "{colors.neutral.40}",
+          "base": "{colors.neutral.80}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.100}",
-          "_lightMode": "{colors.oceanus.neutral.10}",
-          "base": "{colors.oceanus.neutral.100}",
+          "_darkMode": "{colors.neutral.100}",
+          "_lightMode": "{colors.neutral.10}",
+          "base": "{colors.neutral.100}",
         },
       },
     },
@@ -51,25 +51,25 @@ exports[`Oceanus Theme pageTokens should match the established baseline 1`] = `
       "100": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.80}",
-          "_lightMode": "{colors.oceanus.neutral.20}",
-          "base": "{colors.oceanus.neutral.80}",
+          "_darkMode": "{colors.neutral.80}",
+          "_lightMode": "{colors.neutral.20}",
+          "base": "{colors.neutral.80}",
         },
       },
       "200": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.50}",
-          "_lightMode": "{colors.oceanus.neutral.40}",
-          "base": "{colors.oceanus.neutral.50}",
+          "_darkMode": "{colors.neutral.50}",
+          "_lightMode": "{colors.neutral.40}",
+          "base": "{colors.neutral.50}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.90}",
-          "_lightMode": "{colors.oceanus.neutral.30}",
-          "base": "{colors.oceanus.neutral.90}",
+          "_darkMode": "{colors.neutral.90}",
+          "_lightMode": "{colors.neutral.30}",
+          "base": "{colors.neutral.90}",
         },
       },
     },
@@ -77,33 +77,33 @@ exports[`Oceanus Theme pageTokens should match the established baseline 1`] = `
       "100": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.95}",
-          "_lightMode": "{colors.oceanus.neutral.5}",
-          "base": "{colors.oceanus.neutral.95}",
+          "_darkMode": "{colors.neutral.95}",
+          "_lightMode": "{colors.brand.5}",
+          "base": "{colors.neutral.95}",
         },
       },
       "200": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.90}",
-          "_lightMode": "{colors.oceanus.neutral.10}",
-          "base": "{colors.oceanus.neutral.90}",
+          "_darkMode": "{colors.neutral.90}",
+          "_lightMode": "{colors.neutral.10}",
+          "base": "{colors.neutral.90}",
         },
       },
       "300": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.80}",
-          "_lightMode": "{colors.oceanus.neutral.20}",
-          "base": "{colors.oceanus.neutral.80}",
+          "_darkMode": "{colors.neutral.80}",
+          "_lightMode": "{colors.neutral.20}",
+          "base": "{colors.neutral.80}",
         },
       },
       "400": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.70}",
-          "_lightMode": "{colors.oceanus.neutral.40}",
-          "base": "{colors.oceanus.neutral.70}",
+          "_darkMode": "{colors.neutral.70}",
+          "_lightMode": "{colors.neutral.40}",
+          "base": "{colors.neutral.70}",
         },
       },
       "initial": {
@@ -112,17 +112,17 @@ exports[`Oceanus Theme pageTokens should match the established baseline 1`] = `
 Use for: Page backgrounds"
 ,
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.100}",
-          "_lightMode": "{colors.oceanus.neutral.white}",
-          "base": "{colors.oceanus.neutral.100}",
+          "_darkMode": "{colors.neutral.100}",
+          "_lightMode": "{colors.neutral.white}",
+          "base": "{colors.neutral.100}",
         },
       },
       "inverse": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.10}",
-          "_lightMode": "{colors.oceanus.neutral.95}",
-          "base": "{colors.oceanus.neutral.10}",
+          "_darkMode": "{colors.neutral.10}",
+          "_lightMode": "{colors.neutral.95}",
+          "base": "{colors.neutral.10}",
         },
       },
     },
@@ -130,41 +130,41 @@ Use for: Page backgrounds"
       "100": {
         "description": "Static text with the least amount of emphasis, like disabled text elements or captions. ",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.60}",
-          "_lightMode": "{colors.oceanus.neutral.80}",
-          "base": "{colors.oceanus.neutral.60}",
+          "_darkMode": "{colors.neutral.60}",
+          "_lightMode": "{colors.neutral.80}",
+          "base": "{colors.neutral.60}",
         },
       },
       "200": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.40}",
-          "_lightMode": "{colors.oceanus.neutral.90}",
-          "base": "{colors.oceanus.neutral.40}",
+          "_darkMode": "{colors.neutral.40}",
+          "_lightMode": "{colors.neutral.90}",
+          "base": "{colors.neutral.40}",
         },
       },
       "300": {
         "description": "High emphasis static text on page, like page headers or section titles. ",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.white}",
-          "_lightMode": "{colors.oceanus.neutral.100}",
-          "base": "{colors.oceanus.neutral.white}",
+          "_darkMode": "{colors.neutral.white}",
+          "_lightMode": "{colors.neutral.100}",
+          "base": "{colors.neutral.white}",
         },
       },
       "initial": {
         "description": "The default styling for static text and icons on a page.",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.10}",
-          "_lightMode": "{colors.oceanus.neutral.95}",
-          "base": "{colors.oceanus.neutral.10}",
+          "_darkMode": "{colors.neutral.10}",
+          "_lightMode": "{colors.neutral.95}",
+          "base": "{colors.neutral.10}",
         },
       },
       "inverse": {
         "description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.95}",
-          "_lightMode": "{colors.oceanus.neutral.white}",
-          "base": "{colors.oceanus.neutral.95}",
+          "_darkMode": "{colors.neutral.95}",
+          "_lightMode": "{colors.neutral.white}",
+          "base": "{colors.neutral.95}",
         },
       },
     },
@@ -179,25 +179,25 @@ exports[`Oceanus Theme actionTokens should match the established baseline 1`] = 
       "active": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.50}",
-          "_lightMode": "{colors.oceanus.brand.80}",
-          "base": "{colors.oceanus.brand.50}",
+          "_darkMode": "{colors.brand.60}",
+          "_lightMode": "{colors.brand.80}",
+          "base": "{colors.brand.60}",
         },
       },
       "hover": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.50}",
-          "_lightMode": "{colors.oceanus.brand.70}",
-          "base": "{colors.oceanus.brand.50}",
+          "_darkMode": "{colors.brand.50}",
+          "_lightMode": "{colors.brand.70}",
+          "base": "{colors.brand.50}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.70}",
-          "_lightMode": "{colors.oceanus.brand.60}",
-          "base": "{colors.oceanus.brand.70}",
+          "_darkMode": "{colors.brand.70}",
+          "_lightMode": "{colors.brand.60}",
+          "base": "{colors.brand.70}",
         },
       },
     },
@@ -205,25 +205,25 @@ exports[`Oceanus Theme actionTokens should match the established baseline 1`] = 
       "100": {
         "description": "for use on less prominent actionable borders, like input fields etc",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.30}",
-          "_lightMode": "{colors.oceanus.neutral.60}",
-          "base": "{colors.oceanus.neutral.30}",
+          "_darkMode": "{colors.neutral.30}",
+          "_lightMode": "{colors.neutral.60}",
+          "base": "{colors.neutral.30}",
         },
       },
       "focus": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.10}",
-          "_lightMode": "{colors.oceanus.brand.90}",
-          "base": "{colors.oceanus.brand.10}",
+          "_darkMode": "{colors.brand.10}",
+          "_lightMode": "{colors.brand.90}",
+          "base": "{colors.brand.10}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.5}",
-          "_lightMode": "{colors.oceanus.brand.100}",
-          "base": "{colors.oceanus.brand.5}",
+          "_darkMode": "{colors.brand.5}",
+          "_lightMode": "{colors.brand.100}",
+          "base": "{colors.brand.5}",
         },
       },
     },
@@ -231,25 +231,25 @@ exports[`Oceanus Theme actionTokens should match the established baseline 1`] = 
       "active": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.80}",
-          "_lightMode": "{colors.oceanus.neutral.20}",
-          "base": "{colors.oceanus.neutral.80}",
+          "_darkMode": "{colors.neutral.80}",
+          "_lightMode": "{colors.neutral.30}",
+          "base": "{colors.neutral.80}",
         },
       },
       "hover": {
         "description": "Hover state of ghost action elements. Pair with text.action.100 to meet accessibility requirements.",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.90}",
-          "_lightMode": "{colors.oceanus.neutral.20}",
-          "base": "{colors.oceanus.neutral.90}",
+          "_darkMode": "{colors.neutral.90}",
+          "_lightMode": "{colors.neutral.20}",
+          "base": "{colors.neutral.90}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.100}",
-          "_lightMode": "{colors.oceanus.neutral.white}",
-          "base": "{colors.oceanus.neutral.100}",
+          "_darkMode": "{colors.neutral.100}",
+          "_lightMode": "{colors.neutral.white}",
+          "base": "{colors.neutral.100}",
         },
       },
     },
@@ -257,25 +257,25 @@ exports[`Oceanus Theme actionTokens should match the established baseline 1`] = 
       "hover": {
         "description": "Text color of hyperlinks throughout the site while hovering",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.50}",
-          "_lightMode": "{colors.oceanus.brand.80}",
-          "base": "{colors.oceanus.brand.50}",
+          "_darkMode": "{colors.brand.50}",
+          "_lightMode": "{colors.brand.80}",
+          "base": "{colors.brand.50}",
         },
       },
       "initial": {
         "description": "Text color of hyperlinks throughout the site. ",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.40}",
-          "_lightMode": "{colors.oceanus.brand.70}",
-          "base": "{colors.oceanus.brand.40}",
+          "_darkMode": "{colors.brand.40}",
+          "_lightMode": "{colors.brand.70}",
+          "base": "{colors.brand.40}",
         },
       },
       "visited": {
         "description": "Text color of hyperlinks throughout the site that have been visited",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.30}",
-          "_lightMode": "{colors.oceanus.brand.100}",
-          "base": "{colors.oceanus.brand.30}",
+          "_darkMode": "{colors.brand.30}",
+          "_lightMode": "{colors.brand.100}",
+          "base": "{colors.brand.30}",
         },
       },
     },
@@ -283,17 +283,17 @@ exports[`Oceanus Theme actionTokens should match the established baseline 1`] = 
       "100": {
         "description": "Text action items that are sitting on a lighter background color, like secondary buttons etc. ",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.50}",
-          "_lightMode": "{colors.oceanus.brand.80}",
-          "base": "{colors.oceanus.brand.50}",
+          "_darkMode": "{colors.brand.50}",
+          "_lightMode": "{colors.brand.80}",
+          "base": "{colors.brand.50}",
         },
       },
       "200": {
         "description": "reserved for interactive text, or icons using brand colors. ",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.10}",
-          "_lightMode": "{colors.oceanus.brand.100}",
-          "base": "{colors.oceanus.brand.10}",
+          "_darkMode": "{colors.brand.10}",
+          "_lightMode": "{colors.brand.100}",
+          "base": "{colors.brand.10}",
         },
       },
       "initial": {
@@ -302,25 +302,25 @@ exports[`Oceanus Theme actionTokens should match the established baseline 1`] = 
 Use for: Buttons (filled, outline). Button icons"
 ,
         "value": {
-          "_darkMode": "{colors.oceanus.brand.5}",
-          "_lightMode": "{colors.oceanus.brand.5}",
-          "base": "{colors.oceanus.brand.5}",
+          "_darkMode": "{colors.brand.5}",
+          "_lightMode": "{colors.brand.5}",
+          "base": "{colors.brand.5}",
         },
       },
       "inverse": {
         "description": "",
         "value": {
           "_darkMode": "{colors.brand.5}",
-          "_lightMode": "{colors.oceanus.brand.100}",
+          "_lightMode": "{colors.brand.100}",
           "base": "{colors.brand.5}",
         },
       },
       "static": {
         "description": "For use when a text color will not change between modes",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.50}",
-          "_lightMode": "{colors.oceanus.brand.50}",
-          "base": "{colors.oceanus.brand.50}",
+          "_darkMode": "{colors.brand.50}",
+          "_lightMode": "{colors.brand.50}",
+          "base": "{colors.brand.50}",
         },
       },
     },
@@ -335,25 +335,25 @@ exports[`Oceanus Theme secondaryActionTokens should match the established baseli
       "active": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.70}",
+          "_darkMode": "{colors.neutral.70}",
           "_lightMode": "{colors.oceanus.neutral.40}",
-          "base": "{colors.oceanus.neutral.70}",
+          "base": "{colors.neutral.70}",
         },
       },
       "hover": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.80}",
-          "_lightMode": "{colors.oceanus.neutral.30}",
-          "base": "{colors.oceanus.neutral.80}",
+          "_darkMode": "{colors.neutral.80}",
+          "_lightMode": "{colors.neutral.30}",
+          "base": "{colors.neutral.80}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.90}",
-          "_lightMode": "{colors.oceanus.neutral.20}",
-          "base": "{colors.oceanus.neutral.90}",
+          "_darkMode": "{colors.neutral.90}",
+          "_lightMode": "{colors.neutral.20}",
+          "base": "{colors.neutral.90}",
         },
       },
     },
@@ -361,17 +361,17 @@ exports[`Oceanus Theme secondaryActionTokens should match the established baseli
       "100": {
         "description": "for use on less prominent actionable borders, like input fields etc",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.80}",
-          "_lightMode": "{colors.oceanus.neutral.30}",
-          "base": "{colors.oceanus.neutral.80}",
+          "_darkMode": "{colors.neutral.80}",
+          "_lightMode": "{colors.brand.30}",
+          "base": "{colors.neutral.80}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.60}",
-          "_lightMode": "{colors.oceanus.brand.60}",
-          "base": "{colors.oceanus.brand.60}",
+          "_darkMode": "{colors.brand.60}",
+          "_lightMode": "{colors.brand.60}",
+          "base": "{colors.brand.60}",
         },
       },
     },
@@ -379,25 +379,25 @@ exports[`Oceanus Theme secondaryActionTokens should match the established baseli
       "active": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.80}",
-          "_lightMode": "{colors.oceanus.brand.30}",
-          "base": "{colors.oceanus.brand.80}",
+          "_darkMode": "{colors.brand.80}",
+          "_lightMode": "{colors.brand.30}",
+          "base": "{colors.brand.80}",
         },
       },
       "hover": {
         "description": "Hover state of ghost action elements. Pair with text.secondary-action.100 to meet accessibility requirements.",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.90}",
-          "_lightMode": "{colors.oceanus.brand.20}",
-          "base": "{colors.oceanus.brand.90}",
+          "_darkMode": "{colors.brand.90}",
+          "_lightMode": "{colors.brand.20}",
+          "base": "{colors.brand.90}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.100}",
-          "_lightMode": "{colors.oceanus.neutral.white}",
-          "base": "{colors.oceanus.brand.100}",
+          "_darkMode": "{colors.brand.100}",
+          "_lightMode": "{colors.neutral.white}",
+          "base": "{colors.brand.100}",
         },
       },
     },
@@ -405,25 +405,25 @@ exports[`Oceanus Theme secondaryActionTokens should match the established baseli
       "hover": {
         "description": "Text color of hyperlinks throughout the site while hovering. ",
         "value": {
-          "_darkMode": "{colors.brand.30}",
-          "_lightMode": "{colors.brand.50}",
-          "base": "{colors.brand.30}",
+          "_darkMode": "{colors.accent.30}",
+          "_lightMode": "{colors.accent.50}",
+          "base": "{colors.accent.30}",
         },
       },
       "initial": {
         "description": "Text color of hyperlinks throughout the site. ",
         "value": {
-          "_darkMode": "{colors.brand.10}",
-          "_lightMode": "{colors.brand.60}",
-          "base": "{colors.brand.10}",
+          "_darkMode": "{colors.accent.10}",
+          "_lightMode": "{colors.accent.60}",
+          "base": "{colors.accent.10}",
         },
       },
       "visited": {
         "description": "Text color of hyperlinks throughout the site that have been vistited",
         "value": {
-          "_darkMode": "{colors.brand.20}",
-          "_lightMode": "{colors.brand.100}",
-          "base": "{colors.brand.20}",
+          "_darkMode": "{colors.accent.20}",
+          "_lightMode": "{colors.accent.100}",
+          "base": "{colors.accent.20}",
         },
       },
     },
@@ -431,9 +431,9 @@ exports[`Oceanus Theme secondaryActionTokens should match the established baseli
       "100": {
         "description": "Text color inside of interactive items and icons that have an inverse background of the initial token. That may need a different style of emphasis. Use case may vary per product.",
         "value": {
-          "_darkMode": "{colors.brand.10}",
-          "_lightMode": "{colors.brand.100}",
-          "base": "{colors.brand.10}",
+          "_darkMode": "{colors.accent.10}",
+          "_lightMode": "{colors.accent.100}",
+          "base": "{colors.accent.10}",
         },
       },
       "200": {
@@ -442,9 +442,9 @@ exports[`Oceanus Theme secondaryActionTokens should match the established baseli
 Use for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product."
 ,
         "value": {
-          "_darkMode": "{colors.brand.30}",
-          "_lightMode": "{colors.brand.50}",
-          "base": "{colors.brand.30}",
+          "_darkMode": "{colors.accent.30}",
+          "_lightMode": "{colors.accent.50}",
+          "base": "{colors.accent.30}",
         },
       },
       "initial": {
@@ -453,9 +453,9 @@ Use for: Buttons (filled, outline). Button icons that may need a different style
 Use for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product."
 ,
         "value": {
-          "_darkMode": "{colors.brand.20}",
-          "_lightMode": "{colors.brand.90}",
-          "base": "{colors.brand.20}",
+          "_darkMode": "{colors.accent.20}",
+          "_lightMode": "{colors.accent.90}",
+          "base": "{colors.accent.20}",
         },
       },
       "static": {
@@ -464,9 +464,9 @@ Use for: Buttons (filled, outline). Button icons that may need a different style
 Use for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product."
 ,
         "value": {
-          "_darkMode": "{colors.brand.40}",
-          "_lightMode": "{colors.brand.40}",
-          "base": "{colors.brand.40}",
+          "_darkMode": "{colors.accent.40}",
+          "_lightMode": "{colors.accent.40}",
+          "base": "{colors.accent.40}",
         },
       },
     },
@@ -481,25 +481,25 @@ exports[`Oceanus Theme infoTokens should match the established baseline 1`] = `
       "active": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.60}",
-          "_lightMode": "{colors.info.oceanus.50}",
-          "base": "{colors.info.oceanus.60}",
+          "_darkMode": "{colors.info.60}",
+          "_lightMode": "{colors.info.50}",
+          "base": "{colors.info.60}",
         },
       },
       "hover": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.90}",
-          "_lightMode": "{colors.info.oceanus.40}",
-          "base": "{colors.info.oceanus.90}",
+          "_darkMode": "{colors.info.90}",
+          "_lightMode": "{colors.info.40}",
+          "base": "{colors.info.90}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.70}",
-          "_lightMode": "{colors.info.oceanus.30}",
-          "base": "{colors.info.oceanus.70}",
+          "_darkMode": "{colors.info.70}",
+          "_lightMode": "{colors.info.30}",
+          "base": "{colors.info.70}",
         },
       },
     },
@@ -507,17 +507,17 @@ exports[`Oceanus Theme infoTokens should match the established baseline 1`] = `
       "100": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.70}",
-          "_lightMode": "{colors.info.oceanus.40}",
-          "base": "{colors.info.oceanus.70}",
+          "_darkMode": "{colors.info.70}",
+          "_lightMode": "{colors.info.40}",
+          "base": "{colors.info.70}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.80}",
-          "_lightMode": "{colors.info.oceanus.60}",
-          "base": "{colors.info.oceanus.80}",
+          "_darkMode": "{colors.info.80}",
+          "_lightMode": "{colors.info.60}",
+          "base": "{colors.info.80}",
         },
       },
     },
@@ -525,25 +525,25 @@ exports[`Oceanus Theme infoTokens should match the established baseline 1`] = `
       "active": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.70}",
-          "_lightMode": "{colors.info.oceanus.40}",
-          "base": "{colors.info.oceanus.70}",
+          "_darkMode": "{colors.info.70}",
+          "_lightMode": "{colors.info.40}",
+          "base": "{colors.info.70}",
         },
       },
       "hover": {
         "description": "Hover state of ghost action elements. Pair with text.info.100 to meet accessibility requirements.",
         "value": {
-          "_darkMode": "{colors.info.oceanus.80}",
-          "_lightMode": "{colors.info.oceanus.30}",
-          "base": "{colors.info.oceanus.80}",
+          "_darkMode": "{colors.info.80}",
+          "_lightMode": "{colors.info.30}",
+          "base": "{colors.info.80}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.100}",
-          "_lightMode": "{colors.oceanus.neutral.white}",
-          "base": "{colors.oceanus.neutral.100}",
+          "_darkMode": "{colors.neutral.100}",
+          "_lightMode": "{colors.neutral.white}",
+          "base": "{colors.neutral.100}",
         },
       },
     },
@@ -554,9 +554,9 @@ exports[`Oceanus Theme infoTokens should match the established baseline 1`] = `
 Use for: Page backgrounds"
 ,
         "value": {
-          "_darkMode": "{colors.info.oceanus.90}",
-          "_lightMode": "{colors.info.oceanus.20}",
-          "base": "{colors.info.oceanus.90}",
+          "_darkMode": "{colors.info.90}",
+          "_lightMode": "{colors.info.20}",
+          "base": "{colors.info.90}",
         },
       },
       "200": {
@@ -565,9 +565,9 @@ Use for: Page backgrounds"
 Use for: Page backgrounds"
 ,
         "value": {
-          "_darkMode": "{colors.info.oceanus.70}",
-          "_lightMode": "{colors.info.oceanus.50}",
-          "base": "{colors.info.oceanus.70}",
+          "_darkMode": "{colors.info.70}",
+          "_lightMode": "{colors.info.50}",
+          "base": "{colors.info.70}",
         },
       },
       "initial": {
@@ -576,9 +576,9 @@ Use for: Page backgrounds"
 Use for: Page backgrounds"
 ,
         "value": {
-          "_darkMode": "{colors.info.oceanus.80}",
-          "_lightMode": "{colors.info.oceanus.30}",
-          "base": "{colors.info.oceanus.80}",
+          "_darkMode": "{colors.info.80}",
+          "_lightMode": "{colors.info.30}",
+          "base": "{colors.info.80}",
         },
       },
     },
@@ -586,33 +586,33 @@ Use for: Page backgrounds"
       "100": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.10}",
-          "_lightMode": "{colors.info.oceanus.100}",
-          "base": "{colors.info.oceanus.10}",
+          "_darkMode": "{colors.info.10}",
+          "_lightMode": "{colors.info.100}",
+          "base": "{colors.info.10}",
         },
       },
       "200": {
         "description": "High emphasis text or icon to indicate an info state or highlight information",
         "value": {
-          "_darkMode": "{colors.info.oceanus.30}",
-          "_lightMode": "{colors.info.oceanus.80}",
-          "base": "{colors.info.oceanus.30}",
+          "_darkMode": "{colors.info.30}",
+          "_lightMode": "{colors.info.80}",
+          "base": "{colors.info.30}",
         },
       },
       "initial": {
         "description": "The default styling for static info text and icons within an info palette container",
         "value": {
-          "_darkMode": "{colors.info.oceanus.50}",
-          "_lightMode": "{colors.info.oceanus.70}",
-          "base": "{colors.info.oceanus.50}",
+          "_darkMode": "{colors.info.50}",
+          "_lightMode": "{colors.info.70}",
+          "base": "{colors.info.50}",
         },
       },
       "static": {
         "description": "For use when a text color will not change between modes",
         "value": {
-          "_darkMode": "{colors.info.oceanus.70}",
-          "_lightMode": "{colors.info.oceanus.70}",
-          "base": "{colors.info.oceanus.70}",
+          "_darkMode": "{colors.info.70}",
+          "_lightMode": "{colors.info.70}",
+          "base": "{colors.info.70}",
         },
       },
     },
@@ -627,25 +627,25 @@ exports[`Oceanus Theme successTokens should match the established baseline 1`] =
       "active": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.success.60}",
-          "_lightMode": "{colors.oceanus.success.80}",
-          "base": "{colors.oceanus.success.60}",
+          "_darkMode": "{colors.success.60}",
+          "_lightMode": "{colors.success.80}",
+          "base": "{colors.success.60}",
         },
       },
       "hover": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.success.40}",
-          "_lightMode": "{colors.oceanus.success.70}",
-          "base": "{colors.oceanus.success.40}",
+          "_darkMode": "{colors.success.40}",
+          "_lightMode": "{colors.success.70}",
+          "base": "{colors.success.40}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.success.50}",
-          "_lightMode": "{colors.oceanus.success.60}",
-          "base": "{colors.oceanus.success.50}",
+          "_darkMode": "{colors.success.50}",
+          "_lightMode": "{colors.success.60}",
+          "base": "{colors.success.50}",
         },
       },
     },
@@ -653,9 +653,9 @@ exports[`Oceanus Theme successTokens should match the established baseline 1`] =
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.success.50}",
-          "_lightMode": "{colors.oceanus.success.70}",
-          "base": "{colors.oceanus.success.50}",
+          "_darkMode": "{colors.success.50}",
+          "_lightMode": "{colors.success.70}",
+          "base": "{colors.success.50}",
         },
       },
     },
@@ -663,25 +663,25 @@ exports[`Oceanus Theme successTokens should match the established baseline 1`] =
       "active": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.success.70}",
-          "_lightMode": "{colors.oceanus.success.30}",
-          "base": "{colors.oceanus.success.70}",
+          "_darkMode": "{colors.success.70}",
+          "_lightMode": "{colors.success.30}",
+          "base": "{colors.success.70}",
         },
       },
       "hover": {
         "description": "Hover state of ghost action elements. Pair with text.success.100 to meet accessibility requirements.",
         "value": {
-          "_darkMode": "{colors.oceanus.success.90}",
-          "_lightMode": "{colors.oceanus.success.20}",
-          "base": "{colors.oceanus.success.90}",
+          "_darkMode": "{colors.success.90}",
+          "_lightMode": "{colors.success.20}",
+          "base": "{colors.success.90}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.100}",
-          "_lightMode": "{colors.oceanus.neutral.white}",
-          "base": "{colors.oceanus.neutral.100}",
+          "_darkMode": "{colors.neutral.100}",
+          "_lightMode": "{colors.neutral.white}",
+          "base": "{colors.neutral.100}",
         },
       },
     },
@@ -692,9 +692,9 @@ exports[`Oceanus Theme successTokens should match the established baseline 1`] =
 Use for: Page backgrounds"
 ,
         "value": {
-          "_darkMode": "{colors.oceanus.success.100}",
-          "_lightMode": "{colors.oceanus.success.20}",
-          "base": "{colors.oceanus.success.100}",
+          "_darkMode": "{colors.success.100}",
+          "_lightMode": "{colors.success.20}",
+          "base": "{colors.success.100}",
         },
       },
       "200": {
@@ -703,9 +703,9 @@ Use for: Page backgrounds"
 Use for: Page backgrounds"
 ,
         "value": {
-          "_darkMode": "{colors.oceanus.success.90}",
-          "_lightMode": "{colors.oceanus.success.60}",
-          "base": "{colors.oceanus.success.90}",
+          "_darkMode": "{colors.success.90}",
+          "_lightMode": "{colors.success.60}",
+          "base": "{colors.success.90}",
         },
       },
       "initial": {
@@ -714,9 +714,9 @@ Use for: Page backgrounds"
 Use for: Page backgrounds"
 ,
         "value": {
-          "_darkMode": "{colors.oceanus.success.60}",
-          "_lightMode": "{colors.oceanus.success.50}",
-          "base": "{colors.oceanus.success.60}",
+          "_darkMode": "{colors.success.60}",
+          "_lightMode": "{colors.success.50}",
+          "base": "{colors.success.60}",
         },
       },
     },
@@ -724,41 +724,41 @@ Use for: Page backgrounds"
       "100": {
         "description": "Medium emphasis success text ",
         "value": {
-          "_darkMode": "{colors.oceanus.success.10}",
-          "_lightMode": "{colors.oceanus.success.100}",
-          "base": "{colors.oceanus.success.10}",
+          "_darkMode": "{colors.success.10}",
+          "_lightMode": "{colors.success.100}",
+          "base": "{colors.success.10}",
         },
       },
       "200": {
         "description": "Highest emphasis success color",
         "value": {
-          "_darkMode": "{colors.oceanus.success.30}",
-          "_lightMode": "{colors.oceanus.success.80}",
-          "base": "{colors.oceanus.success.30}",
+          "_darkMode": "{colors.success.30}",
+          "_lightMode": "{colors.success.80}",
+          "base": "{colors.success.30}",
         },
       },
       "initial": {
         "description": "The default color of body success text within a success colored container. ",
         "value": {
-          "_darkMode": "{colors.oceanus.success.60}",
-          "_lightMode": "{colors.oceanus.success.60}",
-          "base": "{colors.oceanus.success.60}",
+          "_darkMode": "{colors.success.60}",
+          "_lightMode": "{colors.success.60}",
+          "base": "{colors.success.60}",
         },
       },
       "inverse": {
         "description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "value": {
-          "_darkMode": "{colors.oceanus.success.100}",
-          "_lightMode": "{colors.oceanus.success.10}",
-          "base": "{colors.oceanus.success.100}",
+          "_darkMode": "{colors.success.100}",
+          "_lightMode": "{colors.success.10}",
+          "base": "{colors.success.100}",
         },
       },
       "static": {
         "description": "For use when a text color will not change between modes",
         "value": {
-          "_darkMode": "{colors.oceanus.success.70}",
-          "_lightMode": "{colors.oceanus.success.70}",
-          "base": "{colors.oceanus.success.70}",
+          "_darkMode": "{colors.success.70}",
+          "_lightMode": "{colors.success.70}",
+          "base": "{colors.success.70}",
         },
       },
     },
@@ -773,25 +773,25 @@ exports[`Oceanus Theme warningTokens should match the established baseline 1`] =
       "active": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.60}",
-          "_lightMode": "{colors.warning.oceanus.60}",
-          "base": "{colors.warning.oceanus.60}",
+          "_darkMode": "{colors.warning.60}",
+          "_lightMode": "{colors.warning.60}",
+          "base": "{colors.warning.60}",
         },
       },
       "hover": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.80}",
-          "_lightMode": "{colors.warning.oceanus.40}",
-          "base": "{colors.warning.oceanus.80}",
+          "_darkMode": "{colors.warning.80}",
+          "_lightMode": "{colors.warning.40}",
+          "base": "{colors.warning.80}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.70}",
-          "_lightMode": "{colors.warning.oceanus.50}",
-          "base": "{colors.warning.oceanus.70}",
+          "_darkMode": "{colors.warning.70}",
+          "_lightMode": "{colors.warning.50}",
+          "base": "{colors.warning.70}",
         },
       },
     },
@@ -799,9 +799,9 @@ exports[`Oceanus Theme warningTokens should match the established baseline 1`] =
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.30}",
-          "_lightMode": "{colors.warning.oceanus.50}",
-          "base": "{colors.warning.oceanus.30}",
+          "_darkMode": "{colors.warning.30}",
+          "_lightMode": "{colors.warning.50}",
+          "base": "{colors.warning.30}",
         },
       },
     },
@@ -809,25 +809,25 @@ exports[`Oceanus Theme warningTokens should match the established baseline 1`] =
       "active": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.70}",
-          "_lightMode": "{colors.warning.oceanus.40}",
-          "base": "{colors.warning.oceanus.70}",
+          "_darkMode": "{colors.warning.70}",
+          "_lightMode": "{colors.warning.40}",
+          "base": "{colors.warning.70}",
         },
       },
       "hover": {
         "description": "Hover state of ghost action elements. Pair with text.warning.100 to meet accessibility requirements.",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.80}",
-          "_lightMode": "{colors.warning.oceanus.30}",
-          "base": "{colors.warning.oceanus.80}",
+          "_darkMode": "{colors.warning.80}",
+          "_lightMode": "{colors.warning.30}",
+          "base": "{colors.warning.80}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.100}",
-          "_lightMode": "{colors.oceanus.neutral.white}",
-          "base": "{colors.oceanus.neutral.100}",
+          "_darkMode": "{colors.neutral.100}",
+          "_lightMode": "{colors.neutral.white}",
+          "base": "{colors.neutral.100}",
         },
       },
     },
@@ -838,25 +838,25 @@ exports[`Oceanus Theme warningTokens should match the established baseline 1`] =
 Use for: Page backgrounds"
 ,
         "value": {
-          "_darkMode": "{colors.warning.oceanus.90}",
-          "_lightMode": "{colors.warning.oceanus.20}",
-          "base": "{colors.warning.oceanus.90}",
+          "_darkMode": "{colors.warning.90}",
+          "_lightMode": "{colors.warning.20}",
+          "base": "{colors.warning.90}",
         },
       },
       "200": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.50}",
-          "_lightMode": "{colors.warning.oceanus.60}",
-          "base": "{colors.warning.oceanus.50}",
+          "_darkMode": "{colors.warning.50}",
+          "_lightMode": "{colors.warning.60}",
+          "base": "{colors.warning.50}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.70}",
-          "_lightMode": "{colors.warning.oceanus.40}",
-          "base": "{colors.warning.oceanus.70}",
+          "_darkMode": "{colors.warning.70}",
+          "_lightMode": "{colors.warning.40}",
+          "base": "{colors.warning.70}",
         },
       },
     },
@@ -864,41 +864,41 @@ Use for: Page backgrounds"
       "100": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.30}",
-          "_lightMode": "{colors.warning.oceanus.80}",
-          "base": "{colors.warning.oceanus.30}",
+          "_darkMode": "{colors.warning.30}",
+          "_lightMode": "{colors.warning.80}",
+          "base": "{colors.warning.30}",
         },
       },
       "200": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.100}",
-          "_lightMode": "{colors.warning.oceanus.100}",
-          "base": "{colors.warning.oceanus.100}",
+          "_darkMode": "{colors.warning.90}",
+          "_lightMode": "{colors.warning.100}",
+          "base": "{colors.warning.90}",
         },
       },
       "initial": {
         "description": "The default color of body warning text and icons within a warning colored container. ",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.40}",
-          "_lightMode": "{colors.warning.oceanus.90}",
-          "base": "{colors.warning.oceanus.40}",
+          "_darkMode": "{colors.warning.40}",
+          "_lightMode": "{colors.warning.90}",
+          "base": "{colors.warning.40}",
         },
       },
       "inverse": {
         "description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.100}",
-          "_lightMode": "{colors.warning.oceanus.20}",
-          "base": "{colors.warning.oceanus.100}",
+          "_darkMode": "{colors.warning.100}",
+          "_lightMode": "{colors.warning.20}",
+          "base": "{colors.warning.100}",
         },
       },
       "static": {
         "description": "For use when a text color will not change between modes",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.70}",
-          "_lightMode": "{colors.warning.oceanus.70}",
-          "base": "{colors.warning.oceanus.70}",
+          "_darkMode": "{colors.warning.70}",
+          "_lightMode": "{colors.warning.70}",
+          "base": "{colors.warning.70}",
         },
       },
     },
@@ -913,25 +913,25 @@ exports[`Oceanus Theme dangerTokens should match the established baseline 1`] = 
       "active": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.30}",
-          "_lightMode": "{colors.danger.oceanus.80}",
-          "base": "{colors.danger.oceanus.30}",
+          "_darkMode": "{colors.danger.30}",
+          "_lightMode": "{colors.danger.80}",
+          "base": "{colors.danger.30}",
         },
       },
       "hover": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.50}",
-          "_lightMode": "{colors.danger.oceanus.70}",
-          "base": "{colors.danger.oceanus.50}",
+          "_darkMode": "{colors.danger.50}",
+          "_lightMode": "{colors.danger.70}",
+          "base": "{colors.danger.50}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.80}",
-          "_lightMode": "{colors.danger.oceanus.60}",
-          "base": "{colors.danger.oceanus.80}",
+          "_darkMode": "{colors.danger.80}",
+          "_lightMode": "{colors.danger.60}",
+          "base": "{colors.danger.80}",
         },
       },
     },
@@ -939,9 +939,9 @@ exports[`Oceanus Theme dangerTokens should match the established baseline 1`] = 
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.30}",
-          "_lightMode": "{colors.danger.oceanus.50}",
-          "base": "{colors.danger.oceanus.30}",
+          "_darkMode": "{colors.danger.30}",
+          "_lightMode": "{colors.danger.50}",
+          "base": "{colors.danger.30}",
         },
       },
     },
@@ -949,25 +949,25 @@ exports[`Oceanus Theme dangerTokens should match the established baseline 1`] = 
       "active": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.70}",
-          "_lightMode": "{colors.danger.oceanus.40}",
-          "base": "{colors.danger.oceanus.70}",
+          "_darkMode": "{colors.danger.70}",
+          "_lightMode": "{colors.danger.40}",
+          "base": "{colors.danger.70}",
         },
       },
       "hover": {
         "description": "Hover state of ghost action elements. Pair with text.danger.100 to meet accessibility requirements.",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.80}",
-          "_lightMode": "{colors.danger.oceanus.30}",
-          "base": "{colors.danger.oceanus.80}",
+          "_darkMode": "{colors.danger.80}",
+          "_lightMode": "{colors.danger.30}",
+          "base": "{colors.danger.80}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.100}",
-          "_lightMode": "{colors.oceanus.neutral.white}",
-          "base": "{colors.oceanus.neutral.100}",
+          "_darkMode": "{colors.neutral.100}",
+          "_lightMode": "{colors.neutral.white}",
+          "base": "{colors.neutral.100}",
         },
       },
     },
@@ -978,9 +978,9 @@ exports[`Oceanus Theme dangerTokens should match the established baseline 1`] = 
 Use for: Page backgrounds"
 ,
         "value": {
-          "_darkMode": "{colors.danger.oceanus.90}",
-          "_lightMode": "{colors.danger.oceanus.10}",
-          "base": "{colors.danger.oceanus.90}",
+          "_darkMode": "{colors.danger.90}",
+          "_lightMode": "{colors.danger.10}",
+          "base": "{colors.danger.90}",
         },
       },
       "200": {
@@ -989,17 +989,17 @@ Use for: Page backgrounds"
 Use for: Page backgrounds"
 ,
         "value": {
-          "_darkMode": "{colors.danger.oceanus.70}",
-          "_lightMode": "{colors.danger.oceanus.60}",
-          "base": "{colors.danger.oceanus.70}",
+          "_darkMode": "{colors.danger.70}",
+          "_lightMode": "{colors.danger.60}",
+          "base": "{colors.danger.70}",
         },
       },
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.80}",
-          "_lightMode": "{colors.danger.oceanus.30}",
-          "base": "{colors.danger.oceanus.80}",
+          "_darkMode": "{colors.danger.80}",
+          "_lightMode": "{colors.danger.30}",
+          "base": "{colors.danger.80}",
         },
       },
     },
@@ -1007,41 +1007,41 @@ Use for: Page backgrounds"
       "100": {
         "description": "Medium emphasis danger text ",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.20}",
-          "_lightMode": "{colors.danger.oceanus.80}",
-          "base": "{colors.danger.oceanus.20}",
+          "_darkMode": "{colors.danger.20}",
+          "_lightMode": "{colors.danger.80}",
+          "base": "{colors.danger.20}",
         },
       },
       "200": {
         "description": "High emphasis text or icon to indicate a danger state, like an error within an input field, etc. ",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.10}",
+          "_darkMode": "{colors.danger.10}",
           "_lightMode": "{colors.danger.100}",
-          "base": "{colors.danger.oceanus.10}",
+          "base": "{colors.danger.10}",
         },
       },
       "initial": {
         "description": "The default color of body danger text within a danger colored container. ",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.60}",
-          "_lightMode": "{colors.danger.oceanus.70}",
-          "base": "{colors.danger.oceanus.60}",
+          "_darkMode": "{colors.danger.60}",
+          "_lightMode": "{colors.danger.70}",
+          "base": "{colors.danger.60}",
         },
       },
       "inverse": {
         "description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.100}",
-          "_lightMode": "{colors.danger.oceanus.20}",
-          "base": "{colors.danger.oceanus.100}",
+          "_darkMode": "{colors.danger.100}",
+          "_lightMode": "{colors.danger.20}",
+          "base": "{colors.danger.100}",
         },
       },
       "static": {
         "description": "For use when a text color will not change between modes",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.70}",
-          "_lightMode": "{colors.danger.oceanus.70}",
-          "base": "{colors.danger.oceanus.70}",
+          "_darkMode": "{colors.danger.70}",
+          "_lightMode": "{colors.danger.70}",
+          "base": "{colors.danger.70}",
         },
       },
     },
@@ -1056,25 +1056,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.60}",
-          "_lightMode": "{colors.info.oceanus.60}",
-          "base": "{colors.info.oceanus.60}",
+          "_darkMode": "{colors.info.60}",
+          "_lightMode": "{colors.info.60}",
+          "base": "{colors.info.60}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.90}",
-          "_lightMode": "{colors.info.oceanus.90}",
-          "base": "{colors.info.oceanus.90}",
+          "_darkMode": "{colors.info.90}",
+          "_lightMode": "{colors.info.90}",
+          "base": "{colors.info.90}",
         },
       },
       "text": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.10}",
-          "_lightMode": "{colors.info.oceanus.10}",
-          "base": "{colors.info.oceanus.10}",
+          "_darkMode": "{colors.info.10}",
+          "_lightMode": "{colors.info.10}",
+          "base": "{colors.info.10}",
         },
       },
     },
@@ -1082,25 +1082,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.40}",
-          "_lightMode": "{colors.info.oceanus.40}",
-          "base": "{colors.info.oceanus.40}",
+          "_darkMode": "{colors.info.40}",
+          "_lightMode": "{colors.info.40}",
+          "base": "{colors.info.40}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.20}",
-          "_lightMode": "{colors.info.oceanus.20}",
-          "base": "{colors.info.oceanus.20}",
+          "_darkMode": "{colors.info.20}",
+          "_lightMode": "{colors.info.20}",
+          "base": "{colors.info.20}",
         },
       },
       "text": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.100}",
-          "_lightMode": "{colors.info.oceanus.100}",
-          "base": "{colors.info.oceanus.100}",
+          "_darkMode": "{colors.info.100}",
+          "_lightMode": "{colors.info.100}",
+          "base": "{colors.info.100}",
         },
       },
     },
@@ -1108,25 +1108,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.60}",
-          "_lightMode": "{colors.warning.oceanus.60}",
-          "base": "{colors.warning.oceanus.60}",
+          "_darkMode": "{colors.warning.60}",
+          "_lightMode": "{colors.warning.60}",
+          "base": "{colors.warning.60}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.80}",
-          "_lightMode": "{colors.warning.oceanus.80}",
-          "base": "{colors.warning.oceanus.80}",
+          "_darkMode": "{colors.warning.80}",
+          "_lightMode": "{colors.warning.80}",
+          "base": "{colors.warning.80}",
         },
       },
       "text": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.100}",
-          "_lightMode": "{colors.warning.oceanus.100}",
-          "base": "{colors.warning.oceanus.100}",
+          "_darkMode": "{colors.warning.100}",
+          "_lightMode": "{colors.warning.100}",
+          "base": "{colors.warning.100}",
         },
       },
     },
@@ -1134,25 +1134,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.50}",
-          "_lightMode": "{colors.warning.oceanus.50}",
-          "base": "{colors.warning.oceanus.50}",
+          "_darkMode": "{colors.warning.50}",
+          "_lightMode": "{colors.warning.50}",
+          "base": "{colors.warning.50}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.20}",
-          "_lightMode": "{colors.warning.oceanus.20}",
-          "base": "{colors.warning.oceanus.20}",
+          "_darkMode": "{colors.warning.20}",
+          "_lightMode": "{colors.warning.20}",
+          "base": "{colors.warning.20}",
         },
       },
       "text": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.100}",
-          "_lightMode": "{colors.warning.oceanus.100}",
-          "base": "{colors.warning.oceanus.100}",
+          "_darkMode": "{colors.warning.100}",
+          "_lightMode": "{colors.warning.100}",
+          "base": "{colors.warning.100}",
         },
       },
     },
@@ -1160,25 +1160,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.60}",
-          "_lightMode": "{colors.oceanus.brand.60}",
-          "base": "{colors.oceanus.brand.60}",
+          "_darkMode": "{colors.brand.60}",
+          "_lightMode": "{colors.brand.60}",
+          "base": "{colors.brand.60}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.100}",
-          "_lightMode": "{colors.oceanus.brand.100}",
-          "base": "{colors.oceanus.brand.100}",
+          "_darkMode": "{colors.brand.100}",
+          "_lightMode": "{colors.brand.100}",
+          "base": "{colors.brand.100}",
         },
       },
       "text": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.5}",
-          "_lightMode": "{colors.oceanus.brand.5}",
-          "base": "{colors.oceanus.brand.5}",
+          "_darkMode": "{colors.brand.5}",
+          "_lightMode": "{colors.brand.5}",
+          "base": "{colors.brand.5}",
         },
       },
     },
@@ -1186,25 +1186,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.40}",
-          "_lightMode": "{colors.oceanus.brand.40}",
-          "base": "{colors.oceanus.brand.40}",
+          "_darkMode": "{colors.brand.40}",
+          "_lightMode": "{colors.brand.40}",
+          "base": "{colors.brand.40}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.20}",
-          "_lightMode": "{colors.oceanus.brand.20}",
-          "base": "{colors.oceanus.brand.20}",
+          "_darkMode": "{colors.brand.20}",
+          "_lightMode": "{colors.brand.20}",
+          "base": "{colors.brand.20}",
         },
       },
       "text": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.100}",
-          "_lightMode": "{colors.oceanus.brand.100}",
-          "base": "{colors.oceanus.brand.100}",
+          "_darkMode": "{colors.brand.100}",
+          "_lightMode": "{colors.brand.100}",
+          "base": "{colors.brand.100}",
         },
       },
     },
@@ -1212,25 +1212,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.50}",
-          "_lightMode": "{colors.danger.oceanus.50}",
-          "base": "{colors.danger.oceanus.50}",
+          "_darkMode": "{colors.danger.50}",
+          "_lightMode": "{colors.danger.50}",
+          "base": "{colors.danger.50}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.80}",
-          "_lightMode": "{colors.danger.oceanus.80}",
-          "base": "{colors.danger.oceanus.80}",
+          "_darkMode": "{colors.danger.80}",
+          "_lightMode": "{colors.danger.80}",
+          "base": "{colors.danger.80}",
         },
       },
       "text": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.10}",
-          "_lightMode": "{colors.danger.oceanus.10}",
-          "base": "{colors.danger.oceanus.10}",
+          "_darkMode": "{colors.danger.10}",
+          "_lightMode": "{colors.danger.10}",
+          "base": "{colors.danger.10}",
         },
       },
     },
@@ -1238,25 +1238,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.40}",
-          "_lightMode": "{colors.danger.oceanus.40}",
-          "base": "{colors.danger.oceanus.40}",
+          "_darkMode": "{colors.danger.40}",
+          "_lightMode": "{colors.danger.40}",
+          "base": "{colors.danger.40}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.20}",
-          "_lightMode": "{colors.danger.oceanus.20}",
-          "base": "{colors.danger.oceanus.20}",
+          "_darkMode": "{colors.danger.20}",
+          "_lightMode": "{colors.danger.20}",
+          "base": "{colors.danger.20}",
         },
       },
       "text": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.danger.oceanus.100}",
-          "_lightMode": "{colors.danger.oceanus.100}",
-          "base": "{colors.danger.oceanus.100}",
+          "_darkMode": "{colors.danger.100}",
+          "_lightMode": "{colors.danger.100}",
+          "base": "{colors.danger.100}",
         },
       },
     },
@@ -1264,25 +1264,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.90}",
-          "_lightMode": "{colors.oceanus.neutral.90}",
-          "base": "{colors.oceanus.neutral.90}",
+          "_darkMode": "{colors.neutral.90}",
+          "_lightMode": "{colors.neutral.90}",
+          "base": "{colors.neutral.90}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.100}",
-          "_lightMode": "{colors.oceanus.neutral.100}",
-          "base": "{colors.oceanus.neutral.100}",
+          "_darkMode": "{colors.neutral.95}",
+          "_lightMode": "{colors.neutral.95}",
+          "base": "{colors.neutral.95}",
         },
       },
       "text": {
         "description": "Reserved for usage only on top of gradients",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.10}",
-          "_lightMode": "{colors.oceanus.neutral.10}",
-          "base": "{colors.oceanus.neutral.10}",
+          "_darkMode": "{colors.neutral.10}",
+          "_lightMode": "{colors.neutral.10}",
+          "base": "{colors.neutral.10}",
         },
       },
     },
@@ -1290,25 +1290,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.10}",
-          "_lightMode": "{colors.oceanus.neutral.10}",
-          "base": "{colors.oceanus.neutral.10}",
+          "_darkMode": "{colors.neutral.10}",
+          "_lightMode": "{colors.neutral.10}",
+          "base": "{colors.neutral.10}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.30}",
-          "_lightMode": "{colors.oceanus.neutral.30}",
-          "base": "{colors.oceanus.neutral.30}",
+          "_darkMode": "{colors.neutral.30}",
+          "_lightMode": "{colors.neutral.30}",
+          "base": "{colors.neutral.30}",
         },
       },
       "text": {
         "description": "Reserved for usage only on top of gradients",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.100}",
-          "_lightMode": "{colors.oceanus.neutral.95}",
-          "base": "{colors.oceanus.neutral.100}",
+          "_darkMode": "{colors.neutral.95}",
+          "_lightMode": "{colors.neutral.95}",
+          "base": "{colors.neutral.95}",
         },
       },
     },
@@ -1316,25 +1316,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.accent.60}",
-          "_lightMode": "{colors.oceanus.accent.60}",
-          "base": "{colors.oceanus.accent.60}",
+          "_darkMode": "{colors.accent.60}",
+          "_lightMode": "{colors.accent.60}",
+          "base": "{colors.accent.60}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.accent.90}",
-          "_lightMode": "{colors.oceanus.accent.90}",
-          "base": "{colors.oceanus.accent.90}",
+          "_darkMode": "{colors.accent.90}",
+          "_lightMode": "{colors.accent.90}",
+          "base": "{colors.accent.90}",
         },
       },
       "text": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.accent.20}",
-          "_lightMode": "{colors.oceanus.accent.20}",
-          "base": "{colors.oceanus.accent.20}",
+          "_darkMode": "{colors.accent.20}",
+          "_lightMode": "{colors.accent.20}",
+          "base": "{colors.accent.20}",
         },
       },
     },
@@ -1342,25 +1342,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.accent.50}",
-          "_lightMode": "{colors.oceanus.accent.50}",
-          "base": "{colors.oceanus.accent.50}",
+          "_darkMode": "{colors.accent.50}",
+          "_lightMode": "{colors.accent.50}",
+          "base": "{colors.accent.50}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.accent.20}",
-          "_lightMode": "{colors.oceanus.accent.20}",
-          "base": "{colors.oceanus.accent.20}",
+          "_darkMode": "{colors.accent.20}",
+          "_lightMode": "{colors.accent.20}",
+          "base": "{colors.accent.20}",
         },
       },
       "text": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.accent.100}",
-          "_lightMode": "{colors.oceanus.accent.100}",
-          "base": "{colors.oceanus.accent.100}",
+          "_darkMode": "{colors.accent.100}",
+          "_lightMode": "{colors.accent.100}",
+          "base": "{colors.accent.100}",
         },
       },
     },
@@ -1368,25 +1368,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.success.90}",
-          "_lightMode": "{colors.oceanus.success.90}",
-          "base": "{colors.oceanus.success.90}",
+          "_darkMode": "{colors.success.90}",
+          "_lightMode": "{colors.success.90}",
+          "base": "{colors.success.90}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.success.70}",
-          "_lightMode": "{colors.oceanus.success.70}",
-          "base": "{colors.oceanus.success.70}",
+          "_darkMode": "{colors.success.70}",
+          "_lightMode": "{colors.success.70}",
+          "base": "{colors.success.70}",
         },
       },
       "text": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.success.20}",
-          "_lightMode": "{colors.oceanus.success.20}",
-          "base": "{colors.oceanus.success.20}",
+          "_darkMode": "{colors.success.20}",
+          "_lightMode": "{colors.success.20}",
+          "base": "{colors.success.20}",
         },
       },
     },
@@ -1394,25 +1394,25 @@ exports[`Oceanus Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.success.40}",
-          "_lightMode": "{colors.oceanus.success.40}",
-          "base": "{colors.oceanus.success.40}",
+          "_darkMode": "{colors.success.40}",
+          "_lightMode": "{colors.success.40}",
+          "base": "{colors.success.40}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.success.20}",
-          "_lightMode": "{colors.oceanus.success.20}",
-          "base": "{colors.oceanus.success.20}",
+          "_darkMode": "{colors.success.20}",
+          "_lightMode": "{colors.success.20}",
+          "base": "{colors.success.20}",
         },
       },
       "text": {
         "description": "for text and icons on top of a gradient",
         "value": {
-          "_darkMode": "{colors.oceanus.success.90}",
-          "_lightMode": "{colors.oceanus.success.90}",
-          "base": "{colors.oceanus.success.90}",
+          "_darkMode": "{colors.success.90}",
+          "_lightMode": "{colors.success.90}",
+          "base": "{colors.success.90}",
         },
       },
     },
@@ -1427,81 +1427,81 @@ exports[`Oceanus Theme dataVizTokens should match the established baseline 1`] =
       "100": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.50}",
-          "_lightMode": "{colors.info.oceanus.50}",
-          "base": "{colors.info.oceanus.50}",
+          "_darkMode": "{colors.info.50}",
+          "_lightMode": "{colors.info.50}",
+          "base": "{colors.info.50}",
         },
       },
       "200": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.40}",
-          "_lightMode": "{colors.info.oceanus.40}",
-          "base": "{colors.info.oceanus.40}",
+          "_darkMode": "{colors.info.40}",
+          "_lightMode": "{colors.info.40}",
+          "base": "{colors.info.40}",
         },
       },
       "300": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.30}",
-          "_lightMode": "{colors.info.oceanus.30}",
-          "base": "{colors.info.oceanus.30}",
+          "_darkMode": "{colors.info.30}",
+          "_lightMode": "{colors.info.30}",
+          "base": "{colors.info.30}",
         },
       },
       "400": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.20}",
-          "_lightMode": "{colors.info.oceanus.20}",
-          "base": "{colors.info.oceanus.20}",
+          "_darkMode": "{colors.info.20}",
+          "_lightMode": "{colors.info.20}",
+          "base": "{colors.info.20}",
         },
       },
       "50": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.60}",
-          "_lightMode": "{colors.info.oceanus.60}",
-          "base": "{colors.info.oceanus.60}",
+          "_darkMode": "{colors.info.60}",
+          "_lightMode": "{colors.info.60}",
+          "base": "{colors.info.60}",
         },
       },
       "500": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.10}",
-          "_lightMode": "{colors.info.oceanus.10}",
-          "base": "{colors.info.oceanus.10}",
+          "_darkMode": "{colors.info.10}",
+          "_lightMode": "{colors.info.10}",
+          "base": "{colors.info.10}",
         },
       },
       "600": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.40}",
-          "_lightMode": "{colors.warning.oceanus.40}",
-          "base": "{colors.warning.oceanus.40}",
+          "_darkMode": "{colors.warning.40}",
+          "_lightMode": "{colors.warning.40}",
+          "base": "{colors.warning.40}",
         },
       },
       "700": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.60}",
-          "_lightMode": "{colors.warning.oceanus.60}",
-          "base": "{colors.warning.oceanus.60}",
+          "_darkMode": "{colors.warning.60}",
+          "_lightMode": "{colors.warning.60}",
+          "base": "{colors.warning.60}",
         },
       },
       "800": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.80}",
-          "_lightMode": "{colors.warning.oceanus.80}",
-          "base": "{colors.warning.oceanus.80}",
+          "_darkMode": "{colors.warning.80}",
+          "_lightMode": "{colors.warning.80}",
+          "base": "{colors.warning.80}",
         },
       },
       "900": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.90}",
-          "_lightMode": "{colors.warning.oceanus.90}",
-          "base": "{colors.warning.oceanus.90}",
+          "_darkMode": "{colors.warning.90}",
+          "_lightMode": "{colors.warning.90}",
+          "base": "{colors.warning.90}",
         },
       },
     },
@@ -1509,25 +1509,25 @@ exports[`Oceanus Theme dataVizTokens should match the established baseline 1`] =
       "complete": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.success.60}",
-          "_lightMode": "{colors.oceanus.success.60}",
-          "base": "{colors.oceanus.success.60}",
+          "_darkMode": "{colors.success.60}",
+          "_lightMode": "{colors.success.60}",
+          "base": "{colors.success.60}",
         },
       },
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.70}",
-          "_lightMode": "{colors.oceanus.brand.70}",
-          "base": "{colors.oceanus.brand.70}",
+          "_darkMode": "{colors.brand.70}",
+          "_lightMode": "{colors.brand.70}",
+          "base": "{colors.brand.70}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.40}",
-          "_lightMode": "{colors.oceanus.brand.40}",
-          "base": "{colors.oceanus.brand.40}",
+          "_darkMode": "{colors.brand.40}",
+          "_lightMode": "{colors.brand.40}",
+          "base": "{colors.brand.40}",
         },
       },
     },
@@ -1535,57 +1535,57 @@ exports[`Oceanus Theme dataVizTokens should match the established baseline 1`] =
       "100": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.50}",
-          "_lightMode": "{colors.oceanus.brand.50}",
-          "base": "{colors.oceanus.brand.50}",
+          "_darkMode": "{colors.neutral.50}",
+          "_lightMode": "{colors.brand.50}",
+          "base": "{colors.neutral.50}",
         },
       },
       "200": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.accent.60}",
-          "_lightMode": "{colors.oceanus.accent.60}",
-          "base": "{colors.oceanus.accent.60}",
+          "_darkMode": "{colors.accent.60}",
+          "_lightMode": "{colors.accent.60}",
+          "base": "{colors.accent.60}",
         },
       },
       "300": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.60}",
-          "_lightMode": "{colors.warning.oceanus.60}",
-          "base": "{colors.warning.oceanus.60}",
+          "_darkMode": "{colors.warning.60}",
+          "_lightMode": "{colors.warning.60}",
+          "base": "{colors.warning.60}",
         },
       },
       "400": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.oceanus.60}",
-          "_lightMode": "{colors.info.oceanus.60}",
-          "base": "{colors.info.oceanus.60}",
+          "_darkMode": "{colors.info.60}",
+          "_lightMode": "{colors.info.60}",
+          "base": "{colors.info.60}",
         },
       },
       "500": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.80}",
-          "_lightMode": "{colors.oceanus.brand.80}",
-          "base": "{colors.oceanus.brand.80}",
+          "_darkMode": "{colors.brand.80}",
+          "_lightMode": "{colors.brand.80}",
+          "base": "{colors.brand.80}",
         },
       },
       "600": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.warning.oceanus.40}",
-          "_lightMode": "{colors.warning.oceanus.40}",
-          "base": "{colors.warning.oceanus.40}",
+          "_darkMode": "{colors.brand.40}",
+          "_lightMode": "{colors.brand.40}",
+          "base": "{colors.brand.40}",
         },
       },
       "700": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.neutral.70}",
-          "_lightMode": "{colors.oceanus.neutral.70}",
-          "base": "{colors.oceanus.neutral.70}",
+          "_darkMode": "{colors.neutral.70}",
+          "_lightMode": "{colors.neutral.70}",
+          "base": "{colors.neutral.70}",
         },
       },
     },
@@ -1593,49 +1593,49 @@ exports[`Oceanus Theme dataVizTokens should match the established baseline 1`] =
       "100": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.100}",
-          "_lightMode": "{colors.oceanus.brand.10}",
-          "base": "{colors.oceanus.brand.100}",
+          "_darkMode": "{colors.brand.100}",
+          "_lightMode": "{colors.brand.10}",
+          "base": "{colors.brand.100}",
         },
       },
       "200": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.90}",
-          "_lightMode": "{colors.oceanus.brand.30}",
-          "base": "{colors.oceanus.brand.90}",
+          "_darkMode": "{colors.brand.90}",
+          "_lightMode": "{colors.brand.30}",
+          "base": "{colors.brand.90}",
         },
       },
       "300": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.70}",
-          "_lightMode": "{colors.oceanus.brand.50}",
-          "base": "{colors.oceanus.brand.70}",
+          "_darkMode": "{colors.brand.70}",
+          "_lightMode": "{colors.brand.50}",
+          "base": "{colors.brand.70}",
         },
       },
       "400": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.50}",
-          "_lightMode": "{colors.oceanus.brand.70}",
-          "base": "{colors.oceanus.brand.50}",
+          "_darkMode": "{colors.brand.50}",
+          "_lightMode": "{colors.brand.70}",
+          "base": "{colors.brand.50}",
         },
       },
       "500": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.30}",
-          "_lightMode": "{colors.oceanus.brand.90}",
-          "base": "{colors.oceanus.brand.30}",
+          "_darkMode": "{colors.brand.30}",
+          "_lightMode": "{colors.brand.90}",
+          "base": "{colors.brand.30}",
         },
       },
       "600": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.oceanus.brand.10}",
-          "_lightMode": "{colors.oceanus.brand.100}",
-          "base": "{colors.oceanus.brand.10}",
+          "_darkMode": "{colors.brand.10}",
+          "_lightMode": "{colors.brand.100}",
+          "base": "{colors.brand.10}",
         },
       },
     },

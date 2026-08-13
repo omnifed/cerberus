@@ -13,17 +13,12 @@ import {
   Text,
   useThemeContext,
 } from '@cerberus-design/react'
+import { RawThemes } from '@cerberus/tokens'
 import { type ThemeName } from 'styled-system/themes'
 import { DogIcon } from '../icons/DogIcon'
 import { FireIcon } from '../icons/FireIcon'
-import { RawThemes } from '@cerberus/tokens'
 
-const supportedThemes: RawThemes[] = [
-  'cerberus',
-  'acheron',
-  'elysium',
-  // 'oceanus',
-]
+const supportedThemes: RawThemes[] = ['cerberus', 'acheron', 'elysium', 'oceanus']
 
 export function ThemeMenu() {
   const { mode, theme, updateTheme } = useThemeContext()

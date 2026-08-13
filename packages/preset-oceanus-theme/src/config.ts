@@ -1,7 +1,7 @@
 import { type RawThemes } from '@cerberus/tokens'
 import { definePreset, type Preset } from '@pandacss/dev'
 import { conditions } from './conditions'
-import { theme } from './theme/index'
+import { themes } from './theme/index'
 
 /**
  * This module contains the Cerberus preset and configuration options.
@@ -17,11 +17,8 @@ export const presetOceanusTheme: Preset = definePreset({
 
   conditions,
 
-  themes: {
-    oceanus: theme,
-  },
+  themes,
 
-  // opt-into additional theme variants
   staticCss: {
     themes: [getThemeName()],
   },
