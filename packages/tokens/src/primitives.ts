@@ -14,6 +14,11 @@ import {
   tokens as elysiumPrimitives,
 } from './data/elysium-colors'
 import {
+  collection as oceanusCollection,
+  modes as oceanusPrimitiveModes,
+  tokens as oceanusPrimitives,
+} from './data/oceanus-colors'
+import {
   collection as colorsCollection,
   modes as colorModes,
   tokens as primitiveColors,
@@ -72,9 +77,9 @@ export const primitives: Record<PrimitiveGroup, PrimitiveValue> = {
     modes: elysiumPrimitiveModes,
   },
   oceanus: {
-    collection: cerbyCollection,
-    tokens: cerbyPrimitives,
-    modes: cerbyPrimitiveModes,
+    collection: oceanusCollection,
+    tokens: oceanusPrimitives,
+    modes: oceanusPrimitiveModes,
   },
 
   spacing: {
