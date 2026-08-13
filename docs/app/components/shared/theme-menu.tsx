@@ -4,6 +4,7 @@ import { getCodeTheme } from '@/app/utils/colors'
 import { PalmTree, SailboatOffshore } from '@carbon/icons-react'
 import {
   Button,
+  For,
   Menu,
   MenuContent,
   MenuItem,
@@ -15,6 +16,14 @@ import {
 import { type ThemeName } from 'styled-system/themes'
 import { DogIcon } from '../icons/DogIcon'
 import { FireIcon } from '../icons/FireIcon'
+import { RawThemes } from '@cerberus/tokens'
+
+const supportedThemes: RawThemes[] = [
+  'cerberus',
+  'acheron',
+  'elysium',
+  // 'oceanus',
+]
 
 export function ThemeMenu() {
   const { mode, theme, updateTheme } = useThemeContext()
@@ -47,28 +56,20 @@ export function ThemeMenu() {
       </MenuTrigger>
 
       <MenuContent>
-        <MenuItem cursor="pointer" value="cerberus">
-          <MatchThemeContent theme="cerberus" />
-        </MenuItem>
-
-        <MenuItem cursor="pointer" value="acheron">
-          <MatchThemeContent theme="acheron" />
-        </MenuItem>
-
-        <MenuItem cursor="pointer" value="elysium">
-          <MatchThemeContent theme="elysium" />
-        </MenuItem>
-
-        <MenuItem cursor="pointer" value="oceanus">
-          <MatchThemeContent theme="oceanus" />
-        </MenuItem>
+        <For each={supportedThemes}>
+          {(theme) => (
+            <MenuItem key={theme} cursor="pointer" value={theme}>
+              <MatchThemeContent theme={theme} />
+            </MenuItem>
+          )}
+        </For>
       </MenuContent>
     </Menu>
   )
 }
 
 interface MatchThemeContentProps {
-  theme: ThemeName
+  theme: RawThemes
 }
 
 function MatchThemeContent({ theme }: MatchThemeContentProps) {

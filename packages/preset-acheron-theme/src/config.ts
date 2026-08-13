@@ -1,7 +1,7 @@
-import { definePreset, type Preset } from '@pandacss/dev'
 import { type RawThemes } from '@cerberus/tokens'
-import { theme } from './theme/index'
+import { definePreset, type Preset } from '@pandacss/dev'
 import { conditions } from './conditions'
+import { themes } from './theme/index'
 
 /**
  * This module contains the Cerberus preset and configuration options.
@@ -15,15 +15,11 @@ export function getThemeName(): RawThemes {
 export const presetAcheronTheme: Preset = definePreset({
   name: '@cerberus/preset-acheron-theme',
 
-  presets: [],
-
   conditions,
 
-  themes: {
-    acheron: theme,
-  },
+  themes,
 
   staticCss: {
-    themes: ['acheron'],
+    themes: [getThemeName()],
   },
 })

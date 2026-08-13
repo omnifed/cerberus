@@ -15,8 +15,6 @@ export function getThemeName(): RawThemes {
 export const presetOceanusTheme: Preset = definePreset({
   name: '@cerberus/preset-oceanus-theme',
 
-  presets: [],
-
   conditions,
 
   themes: {

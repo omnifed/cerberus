@@ -310,9 +310,9 @@ Use for: Buttons (filled, outline). Button icons"
       "inverse": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.cerberus.brand.5}",
+          "_darkMode": "{colors.brand.5}",
           "_lightMode": "{colors.oceanus.brand.100}",
-          "base": "{colors.cerberus.brand.5}",
+          "base": "{colors.brand.5}",
         },
       },
       "static": {
@@ -405,25 +405,25 @@ exports[`Oceanus Theme secondaryActionTokens should match the established baseli
       "hover": {
         "description": "Text color of hyperlinks throughout the site while hovering. ",
         "value": {
-          "_darkMode": "{colors.cerberus.brand.30}",
-          "_lightMode": "{colors.cerberus.brand.50}",
-          "base": "{colors.cerberus.brand.30}",
+          "_darkMode": "{colors.brand.30}",
+          "_lightMode": "{colors.brand.50}",
+          "base": "{colors.brand.30}",
         },
       },
       "initial": {
         "description": "Text color of hyperlinks throughout the site. ",
         "value": {
-          "_darkMode": "{colors.cerberus.brand.10}",
-          "_lightMode": "{colors.cerberus.brand.60}",
-          "base": "{colors.cerberus.brand.10}",
+          "_darkMode": "{colors.brand.10}",
+          "_lightMode": "{colors.brand.60}",
+          "base": "{colors.brand.10}",
         },
       },
       "visited": {
         "description": "Text color of hyperlinks throughout the site that have been vistited",
         "value": {
-          "_darkMode": "{colors.cerberus.brand.20}",
-          "_lightMode": "{colors.cerberus.brand.100}",
-          "base": "{colors.cerberus.brand.20}",
+          "_darkMode": "{colors.brand.20}",
+          "_lightMode": "{colors.brand.100}",
+          "base": "{colors.brand.20}",
         },
       },
     },
@@ -431,9 +431,9 @@ exports[`Oceanus Theme secondaryActionTokens should match the established baseli
       "100": {
         "description": "Text color inside of interactive items and icons that have an inverse background of the initial token. That may need a different style of emphasis. Use case may vary per product.",
         "value": {
-          "_darkMode": "{colors.cerberus.brand.10}",
-          "_lightMode": "{colors.cerberus.brand.100}",
-          "base": "{colors.cerberus.brand.10}",
+          "_darkMode": "{colors.brand.10}",
+          "_lightMode": "{colors.brand.100}",
+          "base": "{colors.brand.10}",
         },
       },
       "200": {
@@ -442,9 +442,9 @@ exports[`Oceanus Theme secondaryActionTokens should match the established baseli
 Use for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product."
 ,
         "value": {
-          "_darkMode": "{colors.cerberus.brand.30}",
-          "_lightMode": "{colors.cerberus.brand.50}",
-          "base": "{colors.cerberus.brand.30}",
+          "_darkMode": "{colors.brand.30}",
+          "_lightMode": "{colors.brand.50}",
+          "base": "{colors.brand.30}",
         },
       },
       "initial": {
@@ -453,9 +453,9 @@ Use for: Buttons (filled, outline). Button icons that may need a different style
 Use for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product."
 ,
         "value": {
-          "_darkMode": "{colors.cerberus.brand.20}",
-          "_lightMode": "{colors.cerberus.brand.90}",
-          "base": "{colors.cerberus.brand.20}",
+          "_darkMode": "{colors.brand.20}",
+          "_lightMode": "{colors.brand.90}",
+          "base": "{colors.brand.20}",
         },
       },
       "static": {
@@ -464,9 +464,9 @@ Use for: Buttons (filled, outline). Button icons that may need a different style
 Use for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product."
 ,
         "value": {
-          "_darkMode": "{colors.cerberus.brand.40}",
-          "_lightMode": "{colors.cerberus.brand.40}",
-          "base": "{colors.cerberus.brand.40}",
+          "_darkMode": "{colors.brand.40}",
+          "_lightMode": "{colors.brand.40}",
+          "base": "{colors.brand.40}",
         },
       },
     },
@@ -1016,7 +1016,7 @@ Use for: Page backgrounds"
         "description": "High emphasis text or icon to indicate a danger state, like an error within an input field, etc. ",
         "value": {
           "_darkMode": "{colors.danger.oceanus.10}",
-          "_lightMode": "{colors.danger.cerberus.100}",
+          "_lightMode": "{colors.danger.100}",
           "base": "{colors.danger.oceanus.10}",
         },
       },

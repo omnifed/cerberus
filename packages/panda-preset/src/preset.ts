@@ -26,7 +26,6 @@ const basePreset: Preset = definePreset({
   patterns,
 
   theme: {
-    ...presetCerberusTheme.theme,
     extend: baseTheme,
   },
 

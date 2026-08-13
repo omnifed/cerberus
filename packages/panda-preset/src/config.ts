@@ -43,6 +43,7 @@ const baseConfig: Config = defineConfig({
  * ```
  */
 export function createCerberusConfig(options?: Config): Config {
+  const userHooks = options?.hooks ?? {}
   const userPresets = options?.presets ?? []
   const mergedStaticCssThemes: string[] = []
 
@@ -77,6 +78,17 @@ export function createCerberusConfig(options?: Config): Config {
     staticCss: {
       ...options?.staticCss,
       themes: staticThemes.length > 0 ? staticThemes : undefined,
+    },
+
+    hooks: {
+      'preset:resolved': ({ utils, preset, name }) => {
+        if (name === '@pandacss/preset-panda') {
+          return utils.omit(preset, ['theme.tokens.colors'])
+        }
+        return preset
+      },
+      // Let the user override omiting panda colors if they want to keep them
+      ...userHooks,
     },
   })
 }

@@ -415,151 +415,151 @@ export const collection = {
   variableOverrides: {
     'VariableID:10197:659': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6855',
+        id: 'VariableID:24847:2281',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6843',
+        id: 'VariableID:24847:2273',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:660': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6853',
+        id: 'VariableID:24847:2286',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6846',
+        id: 'VariableID:24847:2250',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:661': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6852',
+        id: 'VariableID:24847:2276',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6848',
+        id: 'VariableID:24847:2226',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:667': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6855',
+        id: 'VariableID:24847:2281',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6843',
+        id: 'VariableID:24847:2273',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:668': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6896',
+        id: 'VariableID:24847:2228',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6888',
+        id: 'VariableID:24847:2274',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:669': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6895',
+        id: 'VariableID:24847:2249',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6889',
+        id: 'VariableID:24847:2244',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:673': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6855',
+        id: 'VariableID:24847:2281',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6843',
+        id: 'VariableID:24847:2273',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:674': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6886',
+        id: 'VariableID:24847:2236',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6878',
+        id: 'VariableID:24847:2252',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:675': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6885',
+        id: 'VariableID:24847:2237',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6878',
+        id: 'VariableID:24847:2241',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:676': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6855',
+        id: 'VariableID:24847:2281',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6843',
+        id: 'VariableID:24847:2273',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:677': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6862',
+        id: 'VariableID:24847:2280',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6858',
+        id: 'VariableID:24847:2275',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:678': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6861',
+        id: 'VariableID:24847:2277',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10284:1769': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6858',
+        id: 'VariableID:24847:2275',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6861',
+        id: 'VariableID:24847:2277',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10284:1770': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6857',
+        id: 'VariableID:24847:2287',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6863',
+        id: 'VariableID:24847:2271',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10284:1771': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6856',
+        id: 'VariableID:24847:2278',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6865',
+        id: 'VariableID:24847:2233',
         type: 'VARIABLE_ALIAS',
       },
     },
@@ -579,547 +579,547 @@ export const collection = {
     },
     'VariableID:11198:4105': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6901',
+        id: 'VariableID:24847:2218',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6901',
+        id: 'VariableID:24847:2218',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11198:4106': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6900',
+        id: 'VariableID:24847:2222',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6902',
+        id: 'VariableID:24847:2217',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11198:4107': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6899',
+        id: 'VariableID:24847:2224',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6903',
+        id: 'VariableID:24847:2216',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11304:502': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6855',
+        id: 'VariableID:24847:2281',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6843',
+        id: 'VariableID:24847:2273',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11304:503': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6926',
+        id: 'VariableID:24847:2211',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6918',
+        id: 'VariableID:24847:2230',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11304:504': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6925',
+        id: 'VariableID:24847:2238',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6919',
+        id: 'VariableID:24847:2220',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11304:505': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6855',
+        id: 'VariableID:24847:2281',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6843',
+        id: 'VariableID:24847:2273',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11304:506': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6905',
+        id: 'VariableID:24847:2265',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6898',
+        id: 'VariableID:24847:2225',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11304:507': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6904',
+        id: 'VariableID:24847:2279',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6899',
+        id: 'VariableID:24847:2224',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11546:27': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6858',
+        id: 'VariableID:24847:2275',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6864',
+        id: 'VariableID:24847:2264',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11549:40': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6920',
+        id: 'VariableID:24847:2283',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6920',
+        id: 'VariableID:24847:2283',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11549:41': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6921',
+        id: 'VariableID:24847:2213',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6921',
+        id: 'VariableID:24847:2213',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11549:42': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6863',
+        id: 'VariableID:24847:2271',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6863',
+        id: 'VariableID:24847:2271',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11549:43': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6922',
+        id: 'VariableID:24847:2257',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6922',
+        id: 'VariableID:24847:2257',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11549:44': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6924',
+        id: 'VariableID:24847:2212',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6923',
+        id: 'VariableID:24847:2246',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39543': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6919',
+        id: 'VariableID:24847:2220',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6919',
+        id: 'VariableID:24847:2220',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39544': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6862',
+        id: 'VariableID:24847:2280',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6862',
+        id: 'VariableID:24847:2280',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39545': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6852',
+        id: 'VariableID:24847:2276',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6852',
+        id: 'VariableID:24847:2276',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39546': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6861',
+        id: 'VariableID:24847:2277',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6861',
+        id: 'VariableID:24847:2277',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39547': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6860',
+        id: 'VariableID:24847:2247',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6860',
+        id: 'VariableID:24847:2247',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39548': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39549': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6901',
+        id: 'VariableID:24847:2218',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6901',
+        id: 'VariableID:24847:2218',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39550': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6861',
+        id: 'VariableID:24847:2277',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6860',
+        id: 'VariableID:24847:2247',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39551': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6881',
+        id: 'VariableID:24847:2243',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6881',
+        id: 'VariableID:24847:2243',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39552': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6871',
+        id: 'VariableID:24847:2251',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6871',
+        id: 'VariableID:24847:2251',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39553': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6922',
+        id: 'VariableID:24847:2257',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6922',
+        id: 'VariableID:24847:2257',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39554': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6846',
+        id: 'VariableID:24847:2250',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6865',
+        id: 'VariableID:24847:2267',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39555': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6858',
+        id: 'VariableID:24847:2275',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6849',
+        id: 'VariableID:24847:2280',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11748:39651': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6856',
+        id: 'VariableID:24847:2278',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6866',
+        id: 'VariableID:24847:2259',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1491': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6845',
+        id: 'VariableID:24847:2260',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6845',
+        id: 'VariableID:24847:2260',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1597': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6890',
+        id: 'VariableID:24847:2234',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6890',
+        id: 'VariableID:24847:2234',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1601': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6899',
+        id: 'VariableID:24847:2224',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6899',
+        id: 'VariableID:24847:2224',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1764': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6858',
+        id: 'VariableID:24847:2275',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6858',
+        id: 'VariableID:24847:2275',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1770': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6880',
+        id: 'VariableID:24847:2245',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6880',
+        id: 'VariableID:24847:2245',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1771': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6921',
+        id: 'VariableID:24847:2213',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6921',
+        id: 'VariableID:24847:2213',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1802': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6860',
+        id: 'VariableID:24847:2247',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6860',
+        id: 'VariableID:24847:2247',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12499:126': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6882',
+        id: 'VariableID:24847:2240',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6882',
+        id: 'VariableID:24847:2240',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12500:127': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6886',
+        id: 'VariableID:24847:2236',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6886',
+        id: 'VariableID:24847:2236',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:128': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6878',
+        id: 'VariableID:24847:2252',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6878',
+        id: 'VariableID:24847:2252',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:129': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6880',
+        id: 'VariableID:24847:2245',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6880',
+        id: 'VariableID:24847:2245',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:130': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6864',
+        id: 'VariableID:24847:2264',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6864',
+        id: 'VariableID:24847:2264',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:131': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6860',
+        id: 'VariableID:24847:2247',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6860',
+        id: 'VariableID:24847:2247',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:132': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6856',
+        id: 'VariableID:24847:2278',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6856',
+        id: 'VariableID:24847:2278',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:134': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6925',
+        id: 'VariableID:24847:2238',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6925',
+        id: 'VariableID:24847:2238',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:135': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6922',
+        id: 'VariableID:24847:2257',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6922',
+        id: 'VariableID:24847:2257',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:137': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6918',
+        id: 'VariableID:24847:2230',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6918',
+        id: 'VariableID:24847:2230',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12508:140': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6877',
+        id: 'VariableID:24847:2262',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6877',
+        id: 'VariableID:24847:2262',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12522:14': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6849',
+        id: 'VariableID:24847:2215',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6848',
+        id: 'VariableID:24847:2226',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12522:15': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6853',
+        id: 'VariableID:24847:2286',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6853',
+        id: 'VariableID:24847:2286',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12522:16': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6844',
+        id: 'VariableID:24847:2235',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6844',
+        id: 'VariableID:24847:563',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12724:11': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6844',
+        id: 'VariableID:24847:2235',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6844',
+        id: 'VariableID:24847:2235',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12724:12': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6848',
+        id: 'VariableID:24847:2226',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6848',
+        id: 'VariableID:24847:2226',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12724:13': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6851',
+        id: 'VariableID:24847:2205',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6851',
+        id: 'VariableID:24847:2205',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12724:19': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6886',
+        id: 'VariableID:24847:2236',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6886',
+        id: 'VariableID:24847:2236',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12724:28': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6918',
+        id: 'VariableID:24847:2230',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
@@ -1129,7 +1129,7 @@ export const collection = {
     },
     'VariableID:12724:29': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6921',
+        id: 'VariableID:24847:2213',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
@@ -1139,271 +1139,271 @@ export const collection = {
     },
     'VariableID:12724:30': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6926',
+        id: 'VariableID:24847:2211',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6926',
+        id: 'VariableID:24847:2211',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:327': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6857',
+        id: 'VariableID:24847:2287',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6857',
+        id: 'VariableID:24847:2287',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:328': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6860',
+        id: 'VariableID:24847:2247',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6860',
+        id: 'VariableID:24847:2247',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:329': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6865',
+        id: 'VariableID:24847:2233',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6865',
+        id: 'VariableID:24847:2233',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:331': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6895',
+        id: 'VariableID:24847:2249',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6893',
+        id: 'VariableID:24847:2239',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:332': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6893',
+        id: 'VariableID:24847:2239',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6895',
+        id: 'VariableID:24847:2249',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:333': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6889',
+        id: 'VariableID:24847:2244',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6889',
+        id: 'VariableID:24847:2244',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:338': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6889',
+        id: 'VariableID:24847:2244',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6889',
+        id: 'VariableID:24847:2244',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:339': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6892',
+        id: 'VariableID:24847:2229',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6892',
+        id: 'VariableID:24847:2229',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:340': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6896',
+        id: 'VariableID:24847:2228',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6896',
+        id: 'VariableID:24847:2228',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12735:342': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6876',
+        id: 'VariableID:24847:2242',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6876',
+        id: 'VariableID:24847:2242',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12735:343': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6872',
+        id: 'VariableID:24847:2284',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6872',
+        id: 'VariableID:24847:2284',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12735:344': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6867',
+        id: 'VariableID:24847:2261',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6867',
+        id: 'VariableID:24847:2261',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12735:345': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6868',
+        id: 'VariableID:24847:2269',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6868',
+        id: 'VariableID:24847:2269',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12735:346': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6871',
+        id: 'VariableID:24847:2251',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6871',
+        id: 'VariableID:24847:2251',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12735:347': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6876',
+        id: 'VariableID:24847:2242',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6876',
+        id: 'VariableID:24847:2242',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12738:349': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6905',
+        id: 'VariableID:24847:2265',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6905',
+        id: 'VariableID:24847:2265',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12738:350': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6901',
+        id: 'VariableID:24847:2218',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6901',
+        id: 'VariableID:24847:2218',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12738:351': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6898',
+        id: 'VariableID:24847:2225',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6897',
+        id: 'VariableID:24847:2227',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12738:352': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6899',
+        id: 'VariableID:24847:2224',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6899',
+        id: 'VariableID:24847:2224',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12738:353': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6902',
+        id: 'VariableID:24847:2217',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6902',
+        id: 'VariableID:24847:2217',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12738:354': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6897',
+        id: 'VariableID:24847:2227',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6897',
+        id: 'VariableID:24847:2476',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:13034:396': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6862',
+        id: 'VariableID:24847:2280',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6862',
+        id: 'VariableID:24847:2280',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:13034:397': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:13697:8126': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6881',
+        id: 'VariableID:24847:2243',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6881',
+        id: 'VariableID:24847:2243',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:18289:3479': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6850',
+        id: 'VariableID:24847:2267',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6848',
+        id: 'VariableID:24847:2226',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:18303:12040': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6850',
+        id: 'VariableID:24847:2267',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6847',
+        id: 'VariableID:24847:2270',
         type: 'VARIABLE_ALIAS',
       },
     },
@@ -1413,321 +1413,321 @@ export const collection = {
     },
     'VariableID:4328:23833': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6844',
+        id: 'VariableID:24847:2235',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6853',
+        id: 'VariableID:24847:2286',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4737:11565': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6855',
+        id: 'VariableID:24847:2281',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6844',
+        id: 'VariableID:24847:2235',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4737:5172': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6848',
+        id: 'VariableID:24847:2226',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6850',
+        id: 'VariableID:24847:2267',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4737:6059': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6853',
+        id: 'VariableID:24847:2286',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6843',
+        id: 'VariableID:24847:2273',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4737:6060': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6852',
+        id: 'VariableID:24847:2276',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6846',
+        id: 'VariableID:24847:2250',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4738:14841': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6846',
+        id: 'VariableID:24847:2250',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6852',
+        id: 'VariableID:24847:2276',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4738:15017': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6850',
+        id: 'VariableID:24847:2267',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6848',
+        id: 'VariableID:24847:2226',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4745:23305': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6851',
+        id: 'VariableID:24847:2205',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6846',
+        id: 'VariableID:24847:2250',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4745:23306': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6848',
+        id: 'VariableID:24847:2226',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6851',
+        id: 'VariableID:24847:2205',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4745:23307': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6892',
+        id: 'VariableID:24847:2229',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6894',
+        id: 'VariableID:24847:2268',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4979:7097': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6851',
+        id: 'VariableID:24847:2205',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6847',
+        id: 'VariableID:24847:2270',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6492:4538': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6890',
+        id: 'VariableID:24847:2234',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6892',
+        id: 'VariableID:24847:2229',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6492:4539': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6889',
+        id: 'VariableID:24847:2244',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6894',
+        id: 'VariableID:24847:2268',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6492:4540': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6887',
+        id: 'VariableID:24847:2282',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6896',
+        id: 'VariableID:24847:2228',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6500:4541': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6897',
+        id: 'VariableID:24847:2227',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6903',
+        id: 'VariableID:24847:2216',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6500:4542': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6898',
+        id: 'VariableID:24847:2225',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6904',
+        id: 'VariableID:24847:2279',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6500:4543': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6897',
+        id: 'VariableID:24847:2227',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6897',
+        id: 'VariableID:24847:2227',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6500:4544': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6856',
+        id: 'VariableID:24847:2278',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6856',
+        id: 'VariableID:24847:2278',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6500:4545': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6858',
+        id: 'VariableID:24847:2275',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6862',
+        id: 'VariableID:24847:2280',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6500:4546': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6846',
+        id: 'VariableID:24847:2250',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6853',
+        id: 'VariableID:24847:2286',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6554:4910': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6843',
+        id: 'VariableID:24847:2273',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6855',
+        id: 'VariableID:24847:2281',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6572:5577': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6844',
+        id: 'VariableID:24847:2235',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6852',
+        id: 'VariableID:24847:2276',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6572:5578': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6878',
+        id: 'VariableID:24847:2252',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6881',
+        id: 'VariableID:24847:2243',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6572:5579': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6878',
+        id: 'VariableID:24847:2241',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6885',
+        id: 'VariableID:24847:2237',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6572:5580': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6877',
+        id: 'VariableID:24847:2262',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6886',
+        id: 'VariableID:24847:2236',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3782': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6844',
+        id: 'VariableID:24847:2235',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6853',
+        id: 'VariableID:24847:2286',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3787': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6881',
+        id: 'VariableID:24847:2243',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6881',
+        id: 'VariableID:24847:2243',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3797': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6896',
+        id: 'VariableID:24847:2228',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6888',
+        id: 'VariableID:24847:2274',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3802': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6861',
+        id: 'VariableID:24847:2277',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6860',
+        id: 'VariableID:24847:2247',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3803': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6863',
+        id: 'VariableID:24847:2271',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6862',
+        id: 'VariableID:24847:2280',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3804': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6864',
+        id: 'VariableID:24847:2264',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3805': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6855',
+        id: 'VariableID:24847:2281',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6844',
+        id: 'VariableID:24847:2235',
         type: 'VARIABLE_ALIAS',
       },
     },
@@ -1743,581 +1743,581 @@ export const collection = {
     },
     'VariableID:6586:3807': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6855',
+        id: 'VariableID:24847:2281',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6844',
+        id: 'VariableID:24847:2235',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6706:4229': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6849',
+        id: 'VariableID:24847:2215',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6850',
+        id: 'VariableID:24847:2267',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6706:4230': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6846',
+        id: 'VariableID:24847:2250',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6852',
+        id: 'VariableID:24847:2276',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6706:4231': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6847',
+        id: 'VariableID:24847:2270',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6850',
+        id: 'VariableID:24847:2267',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6706:6049': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6881',
+        id: 'VariableID:24847:2243',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6879',
+        id: 'VariableID:24847:2241',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6713:6583': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6906',
+        id: 'VariableID:24847:2221',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6898',
+        id: 'VariableID:24847:2225',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34659': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6900',
+        id: 'VariableID:24847:2222',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6905',
+        id: 'VariableID:24847:231',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34660': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6863',
+        id: 'VariableID:24847:2271',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6857',
+        id: 'VariableID:24847:2287',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34661': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6862',
+        id: 'VariableID:24847:2280',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34662': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6861',
+        id: 'VariableID:24847:2277',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6861',
+        id: 'VariableID:24847:2277',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34663': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6863',
+        id: 'VariableID:24847:2271',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34664': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6892',
+        id: 'VariableID:24847:2229',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6890',
+        id: 'VariableID:24847:2234',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34665': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6893',
+        id: 'VariableID:24847:2239',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6892',
+        id: 'VariableID:24847:2229',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34666': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6889',
+        id: 'VariableID:24847:2244',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6894',
+        id: 'VariableID:24847:2268',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34675': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6887',
+        id: 'VariableID:24847:2228',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6887',
+        id: 'VariableID:24847:2282',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6742:34975': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6918',
+        id: 'VariableID:24847:2230',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6926',
+        id: 'VariableID:24847:2211',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6742:34976': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6919',
+        id: 'VariableID:24847:2220',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6925',
+        id: 'VariableID:24847:2212',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6742:34977': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6917',
+        id: 'VariableID:24847:2214',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6926',
+        id: 'VariableID:24847:2238',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6742:34979': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6923',
+        id: 'VariableID:24847:2246',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6919',
+        id: 'VariableID:24847:2220',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6742:34980': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6921',
+        id: 'VariableID:24847:2213',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6922',
+        id: 'VariableID:24847:2257',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6750:4357': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6907',
+        id: 'VariableID:24847:2263',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6914',
+        id: 'VariableID:24847:2206',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6750:4718': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6908',
+        id: 'VariableID:24847:2256',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6915',
+        id: 'VariableID:24847:2223',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6843:35067': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6856',
+        id: 'VariableID:24847:2278',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6855',
+        id: 'VariableID:24847:2281',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6843:35068': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6857',
+        id: 'VariableID:24847:2287',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6864',
+        id: 'VariableID:24847:2264',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6843:35069': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6845',
+        id: 'VariableID:24847:2260',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6865',
+        id: 'VariableID:24847:2233',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:7228:19106': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6886',
+        id: 'VariableID:24847:2236',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6877',
+        id: 'VariableID:24847:2262',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8434:35148': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6853',
+        id: 'VariableID:24847:2286',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6845',
+        id: 'VariableID:24847:2260',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8434:35149': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6851',
+        id: 'VariableID:24847:2205',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6846',
+        id: 'VariableID:24847:2250',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8434:35153': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6924',
+        id: 'VariableID:24847:2246',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6920',
+        id: 'VariableID:24847:2283',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8434:35154': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6925',
+        id: 'VariableID:24847:2238',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6918',
+        id: 'VariableID:24847:2230',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8434:35155': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6922',
+        id: 'VariableID:24847:2257',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6922',
+        id: 'VariableID:24847:2257',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8578:21627': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6923',
+        id: 'VariableID:24847:2246',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6920',
+        id: 'VariableID:24847:2283',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8578:21628': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6880',
+        id: 'VariableID:24847:2245',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6882',
+        id: 'VariableID:24847:2240',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8578:21630': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6882',
+        id: 'VariableID:24847:2240',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6884',
+        id: 'VariableID:24847:2253',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8578:21631': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6890',
+        id: 'VariableID:24847:2234',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6893',
+        id: 'VariableID:24847:2239',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8665:408': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6855',
+        id: 'VariableID:24847:2281',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6843',
+        id: 'VariableID:24847:2273',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8945:7710': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6909',
+        id: 'VariableID:24847:2209',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6916',
+        id: 'VariableID:24847:2204',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9022:7600': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6881',
+        id: 'VariableID:24847:2243',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6881',
+        id: 'VariableID:24847:2243',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9022:7601': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6880',
+        id: 'VariableID:24847:2245',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6882',
+        id: 'VariableID:24847:2240',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9022:7602': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6879',
+        id: 'VariableID:24847:2241',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6883',
+        id: 'VariableID:24847:2248',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9022:7645': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6885',
+        id: 'VariableID:24847:2237',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6878',
+        id: 'VariableID:24847:2252',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9054:5933': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6903',
+        id: 'VariableID:24847:2216',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6900',
+        id: 'VariableID:24847:2222',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9054:5934': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6901',
+        id: 'VariableID:24847:2218',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6902',
+        id: 'VariableID:24847:2217',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9054:5935': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6905',
+        id: 'VariableID:24847:2265',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6897',
+        id: 'VariableID:24847:2227',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9054:6104': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6894',
+        id: 'VariableID:24847:2268',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6889',
+        id: 'VariableID:24847:2244',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9057:6105': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6926',
+        id: 'VariableID:24847:2211',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6918',
+        id: 'VariableID:24847:2230',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9057:6106': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6922',
+        id: 'VariableID:24847:2257',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6921',
+        id: 'VariableID:24847:2213',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9057:6107': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6926',
+        id: 'VariableID:24847:2211',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6917',
+        id: 'VariableID:24847:2214',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9057:6108': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6891',
+        id: 'VariableID:24847:2232',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6890',
+        id: 'VariableID:24847:2234',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1374': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6864',
+        id: 'VariableID:24847:2264',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6857',
+        id: 'VariableID:24847:2287',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1375': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6862',
+        id: 'VariableID:24847:2280',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1376': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6862',
+        id: 'VariableID:24847:2280',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1379': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6858',
+        id: 'VariableID:24847:2275',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6863',
+        id: 'VariableID:24847:2271',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1380': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6862',
+        id: 'VariableID:24847:2280',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1381': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6859',
+        id: 'VariableID:24847:2254',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1382': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6857',
+        id: 'VariableID:24847:2287',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6863',
+        id: 'VariableID:24847:2271',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1383': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6856',
+        id: 'VariableID:24847:2278',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6865',
+        id: 'VariableID:24847:2233',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1384': {
       'VariableCollectionId:21998:4900/21998:12': {
-        id: 'VariableID:21998:6858',
+        id: 'VariableID:24847:2275',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4900/21998:13': {
-        id: 'VariableID:21998:6861',
+        id: 'VariableID:24847:2277',
         type: 'VARIABLE_ALIAS',
       },
     },
@@ -2351,8 +2351,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: [],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.white',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.90',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.white',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2367,8 +2367,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.20',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.70',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.20',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2383,8 +2383,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.30',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.40',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.30',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2399,8 +2399,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.50',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.60',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.50',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2415,8 +2415,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.60',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.30',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.60',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2431,8 +2431,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.10',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.70',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2447,8 +2447,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.50',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.20',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.50',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2463,8 +2463,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.10',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.50',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.10',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2480,8 +2480,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.5',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.70',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.5',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2496,8 +2496,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.white',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.100',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.white',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2513,8 +2513,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.80',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.40',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.80',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2529,8 +2529,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.5',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.70',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.5',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2546,8 +2546,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.100',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.100',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.100',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2562,8 +2562,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.10',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.90',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2578,8 +2578,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.20',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.90',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2594,8 +2594,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.100',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.white',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.100',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.white',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2610,8 +2610,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.80',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.10',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.80',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2626,8 +2626,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.80',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.80',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.80',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2642,8 +2642,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.80',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.40',
+      'VariableCollectionId:21998:4900/21998:12': 'success.80',
+      'VariableCollectionId:21998:4900/21998:13': 'success.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2658,8 +2658,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.50',
+      'VariableCollectionId:21998:4900/21998:12': 'success.70',
+      'VariableCollectionId:21998:4900/21998:13': 'success.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2674,8 +2674,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.60',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.60',
+      'VariableCollectionId:21998:4900/21998:12': 'success.60',
+      'VariableCollectionId:21998:4900/21998:13': 'success.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2690,8 +2690,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.50',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.30',
+      'VariableCollectionId:21998:4900/21998:12': 'success.50',
+      'VariableCollectionId:21998:4900/21998:13': 'success.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2706,8 +2706,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.50',
+      'VariableCollectionId:21998:4900/21998:12': 'success.70',
+      'VariableCollectionId:21998:4900/21998:13': 'success.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2722,8 +2722,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.80',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.30',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.80',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2738,8 +2738,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.40',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.50',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.40',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2754,8 +2754,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.50',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.70',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.50',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2770,8 +2770,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.70',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.40',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.70',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2786,8 +2786,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.50',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.30',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.50',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2802,8 +2802,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.20',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.80',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.20',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2819,8 +2819,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.10',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.90',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.10',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2835,8 +2835,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.white',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.100',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.white',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2852,8 +2852,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.10',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.90',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.10',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2869,8 +2869,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.60',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.70',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.60',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2885,8 +2885,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.30',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.80',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.30',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2901,8 +2901,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.80',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.30',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.80',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2918,8 +2918,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.100',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.10',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.100',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2935,8 +2935,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.70',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.50',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.70',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2952,8 +2952,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.100',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.100',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.10',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2968,8 +2968,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.70',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.70',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.70',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2984,8 +2984,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.80',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.80',
+      'VariableCollectionId:21998:4900/21998:12': 'info.80',
+      'VariableCollectionId:21998:4900/21998:13': 'info.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3000,8 +3000,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.70',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.70',
+      'VariableCollectionId:21998:4900/21998:12': 'info.70',
+      'VariableCollectionId:21998:4900/21998:13': 'info.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3016,8 +3016,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.60',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.60',
+      'VariableCollectionId:21998:4900/21998:12': 'info.60',
+      'VariableCollectionId:21998:4900/21998:13': 'info.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3032,8 +3032,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.50',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.50',
+      'VariableCollectionId:21998:4900/21998:12': 'info.50',
+      'VariableCollectionId:21998:4900/21998:13': 'info.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3048,8 +3048,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.30',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.40',
+      'VariableCollectionId:21998:4900/21998:12': 'info.30',
+      'VariableCollectionId:21998:4900/21998:13': 'info.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3064,8 +3064,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.10',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.10',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.10',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3080,8 +3080,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.30',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.30',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.30',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3096,8 +3096,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.40',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.40',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.40',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3112,8 +3112,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.50',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.50',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.50',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3128,8 +3128,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.60',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.60',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.60',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3144,8 +3144,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.70',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.70',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3160,8 +3160,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.60',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.60',
+      'VariableCollectionId:21998:4900/21998:12': 'success.60',
+      'VariableCollectionId:21998:4900/21998:13': 'success.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3176,8 +3176,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.70',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.70',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3192,8 +3192,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.40',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.40',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.40',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3208,8 +3208,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.50',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.60',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.50',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3224,8 +3224,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.60',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.60',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.60',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3240,8 +3240,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.60',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.60',
+      'VariableCollectionId:21998:4900/21998:12': 'success.60',
+      'VariableCollectionId:21998:4900/21998:13': 'success.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3256,8 +3256,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.accent.60',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.accent.60',
+      'VariableCollectionId:21998:4900/21998:12': 'accent.60',
+      'VariableCollectionId:21998:4900/21998:13': 'accent.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3272,8 +3272,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.50',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.50',
+      'VariableCollectionId:21998:4900/21998:12': 'info.50',
+      'VariableCollectionId:21998:4900/21998:13': 'info.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3288,8 +3288,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.10',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.70',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3304,8 +3304,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.80',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.40',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.80',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3320,8 +3320,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.30',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.90',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.30',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3336,8 +3336,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.40',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.70',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.40',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3352,8 +3352,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.50',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.50',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.50',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3368,8 +3368,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.30',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.70',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3384,8 +3384,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.80',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.20',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.80',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3400,8 +3400,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.100',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.5',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.100',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.5',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3416,8 +3416,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['EFFECT_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.drop-shadow.300',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.drop-shadow.1000',
+      'VariableCollectionId:21998:4900/21998:12': 'drop-shadow.300',
+      'VariableCollectionId:21998:4900/21998:13': 'drop-shadow.1000',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3432,8 +3432,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['EFFECT_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.drop-shadow.200',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.drop-shadow.900',
+      'VariableCollectionId:21998:4900/21998:12': 'drop-shadow.200',
+      'VariableCollectionId:21998:4900/21998:13': 'drop-shadow.900',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3448,8 +3448,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['EFFECT_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.drop-shadow.100',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.drop-shadow.800',
+      'VariableCollectionId:21998:4900/21998:12': 'drop-shadow.100',
+      'VariableCollectionId:21998:4900/21998:13': 'drop-shadow.800',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3464,8 +3464,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.20',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.90',
+      'VariableCollectionId:21998:4900/21998:12': 'success.20',
+      'VariableCollectionId:21998:4900/21998:13': 'success.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3481,8 +3481,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.10',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.90',
+      'VariableCollectionId:21998:4900/21998:12': 'success.10',
+      'VariableCollectionId:21998:4900/21998:13': 'success.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3497,8 +3497,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.white',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.100',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.white',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3513,7 +3513,7 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.60',
+      'VariableCollectionId:21998:4900/21998:12': 'info.60',
       'VariableCollectionId:21998:4900/21998:13': 'info.elysium.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
@@ -3529,7 +3529,7 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.90',
+      'VariableCollectionId:21998:4900/21998:12': 'info.90',
       'VariableCollectionId:21998:4900/21998:13': 'info.elysium.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
@@ -3545,8 +3545,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.10',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.10',
+      'VariableCollectionId:21998:4900/21998:12': 'info.10',
+      'VariableCollectionId:21998:4900/21998:13': 'info.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3561,8 +3561,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.50',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.50',
+      'VariableCollectionId:21998:4900/21998:12': 'info.50',
+      'VariableCollectionId:21998:4900/21998:13': 'info.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3577,8 +3577,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.20',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.20',
+      'VariableCollectionId:21998:4900/21998:12': 'info.20',
+      'VariableCollectionId:21998:4900/21998:13': 'info.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3593,8 +3593,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.90',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.90',
+      'VariableCollectionId:21998:4900/21998:12': 'info.90',
+      'VariableCollectionId:21998:4900/21998:13': 'info.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3609,8 +3609,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.50',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.50',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.50',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3625,8 +3625,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.80',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.80',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.80',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3641,8 +3641,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.100',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.100',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.100',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3657,8 +3657,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.60',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.60',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.60',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3673,8 +3673,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.20',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.20',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.20',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3689,8 +3689,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.90',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.100',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.90',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3705,8 +3705,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.60',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.60',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.60',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3721,8 +3721,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.90',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.90',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3737,8 +3737,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.10',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.10',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.10',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3753,8 +3753,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.60',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.60',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.60',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3769,8 +3769,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.20',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.20',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.20',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3785,8 +3785,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.100',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.100',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.100',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3801,8 +3801,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.50',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.50',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.50',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3817,8 +3817,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.80',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.80',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.80',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3833,8 +3833,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.10',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.10',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.10',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3849,8 +3849,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.40',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.20',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.40',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3865,8 +3865,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.20',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.40',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.20',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3881,8 +3881,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'danger.elysium.80',
-      'VariableCollectionId:21998:4900/21998:13': 'danger.elysium.80',
+      'VariableCollectionId:21998:4900/21998:12': 'danger.80',
+      'VariableCollectionId:21998:4900/21998:13': 'danger.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3897,8 +3897,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.50',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.50',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.50',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3913,8 +3913,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.90',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.90',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3929,8 +3929,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.20',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.20',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.20',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3945,8 +3945,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.5',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.5',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.5',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.5',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3961,8 +3961,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.40',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.50',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.40',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3977,8 +3977,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.90',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.90',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3993,8 +3993,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.accent.60',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.accent.60',
+      'VariableCollectionId:21998:4900/21998:12': 'accent.60',
+      'VariableCollectionId:21998:4900/21998:13': 'accent.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4009,8 +4009,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.accent.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.accent.90',
+      'VariableCollectionId:21998:4900/21998:12': 'accent.90',
+      'VariableCollectionId:21998:4900/21998:13': 'accent.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4025,8 +4025,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.accent.10',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.accent.10',
+      'VariableCollectionId:21998:4900/21998:12': 'accent.10',
+      'VariableCollectionId:21998:4900/21998:13': 'accent.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4041,8 +4041,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.accent.50',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.accent.50',
+      'VariableCollectionId:21998:4900/21998:12': 'accent.50',
+      'VariableCollectionId:21998:4900/21998:13': 'accent.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4057,8 +4057,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.accent.10',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.accent.10',
+      'VariableCollectionId:21998:4900/21998:12': 'accent.10',
+      'VariableCollectionId:21998:4900/21998:13': 'accent.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4073,8 +4073,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.accent.100',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.accent.100',
+      'VariableCollectionId:21998:4900/21998:12': 'accent.100',
+      'VariableCollectionId:21998:4900/21998:13': 'accent.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4089,8 +4089,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.70',
+      'VariableCollectionId:21998:4900/21998:12': 'success.70',
+      'VariableCollectionId:21998:4900/21998:13': 'success.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4105,8 +4105,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.90',
+      'VariableCollectionId:21998:4900/21998:12': 'success.90',
+      'VariableCollectionId:21998:4900/21998:13': 'success.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4121,8 +4121,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.10',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.10',
+      'VariableCollectionId:21998:4900/21998:12': 'success.10',
+      'VariableCollectionId:21998:4900/21998:13': 'success.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4137,8 +4137,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.50',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.50',
+      'VariableCollectionId:21998:4900/21998:12': 'success.50',
+      'VariableCollectionId:21998:4900/21998:13': 'success.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4153,8 +4153,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.10',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.10',
+      'VariableCollectionId:21998:4900/21998:12': 'success.10',
+      'VariableCollectionId:21998:4900/21998:13': 'success.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4169,8 +4169,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.100',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.100',
+      'VariableCollectionId:21998:4900/21998:12': 'success.100',
+      'VariableCollectionId:21998:4900/21998:13': 'success.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4185,8 +4185,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.50',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.50',
+      'VariableCollectionId:21998:4900/21998:12': 'info.50',
+      'VariableCollectionId:21998:4900/21998:13': 'info.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4201,8 +4201,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.20',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.90',
+      'VariableCollectionId:21998:4900/21998:12': 'info.20',
+      'VariableCollectionId:21998:4900/21998:13': 'info.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4217,8 +4217,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.30',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.70',
+      'VariableCollectionId:21998:4900/21998:12': 'info.40',
+      'VariableCollectionId:21998:4900/21998:13': 'info.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4233,8 +4233,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.40',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.70',
+      'VariableCollectionId:21998:4900/21998:12': 'info.40',
+      'VariableCollectionId:21998:4900/21998:13': 'info.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4249,8 +4249,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.60',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.50',
+      'VariableCollectionId:21998:4900/21998:12': 'info.60',
+      'VariableCollectionId:21998:4900/21998:13': 'info.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4265,8 +4265,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.20',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.80',
+      'VariableCollectionId:21998:4900/21998:12': 'info.20',
+      'VariableCollectionId:21998:4900/21998:13': 'info.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4282,8 +4282,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.10',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.90',
+      'VariableCollectionId:21998:4900/21998:12': 'info.10',
+      'VariableCollectionId:21998:4900/21998:13': 'info.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4298,8 +4298,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.white',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.100',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.white',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4315,8 +4315,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.10',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.90',
+      'VariableCollectionId:21998:4900/21998:12': 'info.10',
+      'VariableCollectionId:21998:4900/21998:13': 'info.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4332,8 +4332,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.50',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.60',
+      'VariableCollectionId:21998:4900/21998:12': 'info.50',
+      'VariableCollectionId:21998:4900/21998:13': 'info.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4349,8 +4349,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.40',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.80',
+      'VariableCollectionId:21998:4900/21998:12': 'info.40',
+      'VariableCollectionId:21998:4900/21998:13': 'info.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4365,8 +4365,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.80',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.20',
+      'VariableCollectionId:21998:4900/21998:12': 'info.80',
+      'VariableCollectionId:21998:4900/21998:13': 'info.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4382,8 +4382,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.100',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.10',
+      'VariableCollectionId:21998:4900/21998:12': 'info.100',
+      'VariableCollectionId:21998:4900/21998:13': 'info.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4399,8 +4399,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.90',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.10',
+      'VariableCollectionId:21998:4900/21998:12': 'info.90',
+      'VariableCollectionId:21998:4900/21998:13': 'info.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4416,8 +4416,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.10',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.100',
+      'VariableCollectionId:21998:4900/21998:12': 'info.10',
+      'VariableCollectionId:21998:4900/21998:13': 'info.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4432,8 +4432,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'info.elysium.60',
-      'VariableCollectionId:21998:4900/21998:13': 'info.elysium.60',
+      'VariableCollectionId:21998:4900/21998:12': 'info.60',
+      'VariableCollectionId:21998:4900/21998:13': 'info.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4474,8 +4474,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.5',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.80',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.5',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4490,8 +4490,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.20',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.70',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.20',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4506,8 +4506,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.30',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.60',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.30',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4522,8 +4522,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.white',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.90',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.white',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4538,8 +4538,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['EFFECT_COLOR', 'SHAPE_FILL', 'STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.20',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.70',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.20',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4554,8 +4554,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.40',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.30',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.40',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4570,8 +4570,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.30',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.50',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.30',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4586,8 +4586,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.white',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.90',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.white',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4602,8 +4602,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.10',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.70',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.10',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4618,8 +4618,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.20',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.60',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.20',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4634,8 +4634,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.30',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.50',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.30',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4651,8 +4651,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.5',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.100',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.5',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4667,8 +4667,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.5',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.90',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.5',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4684,8 +4684,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.50',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.30',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.50',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4700,8 +4700,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.10',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.70',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4717,8 +4717,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.100',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.white',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.100',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.white',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4733,8 +4733,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.5',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.90',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.5',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4750,8 +4750,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.white',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.100',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.white',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4766,8 +4766,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.80',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.80',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.80',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4782,8 +4782,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.40',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.70',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4798,8 +4798,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.40',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.70',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.40',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4814,8 +4814,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.20',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.90',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.20',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4830,8 +4830,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.70',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.70',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4846,8 +4846,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.40',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.70',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4862,8 +4862,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.80',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.30',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.80',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4878,8 +4878,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.50',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.70',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.50',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4895,8 +4895,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.40',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.80',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.40',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4911,8 +4911,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.white',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.100',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.white',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4928,8 +4928,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.100',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.10',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.100',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4945,8 +4945,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.80',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.50',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.80',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4962,8 +4962,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.30',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.90',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4978,8 +4978,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.30',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.90',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4994,8 +4994,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.80',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.50',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.80',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5010,8 +5010,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.100',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.10',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.100',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5027,8 +5027,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.brand.60',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.brand.60',
+      'VariableCollectionId:21998:4900/21998:12': 'brand.60',
+      'VariableCollectionId:21998:4900/21998:13': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5044,8 +5044,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.20',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.90',
+      'VariableCollectionId:21998:4900/21998:12': 'success.20',
+      'VariableCollectionId:21998:4900/21998:13': 'success.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5061,8 +5061,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.60',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.80',
+      'VariableCollectionId:21998:4900/21998:12': 'success.60',
+      'VariableCollectionId:21998:4900/21998:13': 'success.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5078,8 +5078,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.60',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.60',
+      'VariableCollectionId:21998:4900/21998:12': 'success.60',
+      'VariableCollectionId:21998:4900/21998:13': 'success.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5094,8 +5094,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.20',
+      'VariableCollectionId:21998:4900/21998:12': 'success.80',
+      'VariableCollectionId:21998:4900/21998:13': 'success.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5110,8 +5110,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.100',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.10',
+      'VariableCollectionId:21998:4900/21998:12': 'success.100',
+      'VariableCollectionId:21998:4900/21998:13': 'success.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5127,8 +5127,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.90',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.60',
+      'VariableCollectionId:21998:4900/21998:12': 'success.90',
+      'VariableCollectionId:21998:4900/21998:13': 'success.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5144,8 +5144,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.10',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.100',
+      'VariableCollectionId:21998:4900/21998:12': 'success.10',
+      'VariableCollectionId:21998:4900/21998:13': 'success.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5160,8 +5160,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.success.70',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.success.70',
+      'VariableCollectionId:21998:4900/21998:12': 'success.70',
+      'VariableCollectionId:21998:4900/21998:13': 'success.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5176,8 +5176,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.80',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.40',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.80',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5192,8 +5192,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.70',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.50',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.70',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5208,8 +5208,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.60',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.60',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.60',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5224,8 +5224,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.70',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.20',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.70',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5240,8 +5240,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.30',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.80',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.30',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5257,8 +5257,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.20',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.90',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.20',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5273,8 +5273,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'elysium.neutral.white',
-      'VariableCollectionId:21998:4900/21998:13': 'elysium.neutral.100',
+      'VariableCollectionId:21998:4900/21998:12': 'neutral.white',
+      'VariableCollectionId:21998:4900/21998:13': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5290,8 +5290,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.10',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.90',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.10',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5306,8 +5306,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.60',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.50',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.60',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5322,8 +5322,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.40',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.70',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.40',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5338,8 +5338,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.90',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.30',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.90',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5354,8 +5354,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.100',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.100',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.100',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5371,8 +5371,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.100',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.40',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.100',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5388,8 +5388,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.20',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.100',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.20',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5404,8 +5404,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4900/21998:12': 'warning.elysium.80',
-      'VariableCollectionId:21998:4900/21998:13': 'warning.elysium.80',
+      'VariableCollectionId:21998:4900/21998:12': 'warning.80',
+      'VariableCollectionId:21998:4900/21998:13': 'warning.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },

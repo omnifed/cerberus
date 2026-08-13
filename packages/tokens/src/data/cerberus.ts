@@ -233,10 +233,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: [],
-    valuesByMode: {
-      '4328:3': 'cerberus.neutral.white',
-      '4738:0': 'cerberus.neutral.90',
-    },
+    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'neutral.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.background.active': {
@@ -249,7 +246,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.40', '4738:0': 'cerberus.brand.70' },
+    valuesByMode: { '4328:3': 'brand.40', '4738:0': 'brand.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.background.hover': {
@@ -262,7 +259,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.50', '4738:0': 'cerberus.brand.50' },
+    valuesByMode: { '4328:3': 'brand.50', '4738:0': 'brand.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.background.initial': {
@@ -275,7 +272,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.60', '4738:0': 'cerberus.brand.60' },
+    valuesByMode: { '4328:3': 'brand.60', '4738:0': 'brand.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.border.100': {
@@ -288,7 +285,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.40', '4738:0': 'cerberus.neutral.30' },
+    valuesByMode: { '4328:3': 'neutral.40', '4738:0': 'neutral.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.border.focus': {
@@ -301,7 +298,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'cerberus.brand.70', '4738:0': 'cerberus.brand.40' },
+    valuesByMode: { '4328:3': 'brand.70', '4738:0': 'brand.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.border.initial': {
@@ -314,7 +311,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'cerberus.brand.60', '4738:0': 'cerberus.brand.30' },
+    valuesByMode: { '4328:3': 'brand.60', '4738:0': 'brand.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.ghost.active': {
@@ -327,7 +324,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.20', '4738:0': 'cerberus.brand.70' },
+    valuesByMode: { '4328:3': 'brand.20', '4738:0': 'brand.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.ghost.hover': {
@@ -341,7 +338,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.10', '4738:0': 'cerberus.brand.80' },
+    valuesByMode: { '4328:3': 'brand.10', '4738:0': 'brand.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.ghost.initial': {
@@ -354,10 +351,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: {
-      '4328:3': 'cerberus.neutral.white',
-      '4738:0': 'cerberus.brand.100',
-    },
+    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.text.100': {
@@ -371,7 +365,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.80', '4738:0': 'cerberus.brand.40' },
+    valuesByMode: { '4328:3': 'brand.80', '4738:0': 'brand.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.text.200': {
@@ -384,7 +378,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.60', '4738:0': 'cerberus.brand.30' },
+    valuesByMode: { '4328:3': 'brand.60', '4738:0': 'brand.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.text.initial': {
@@ -398,7 +392,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.5', '4738:0': 'cerberus.neutral.white' },
+    valuesByMode: { '4328:3': 'brand.5', '4738:0': 'brand.5' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.text.inverse': {
@@ -411,7 +405,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.100', '4738:0': 'cerberus.brand.5' },
+    valuesByMode: { '4328:3': 'brand.100', '4738:0': 'brand.5' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.text.navigation.hover': {
@@ -424,7 +418,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.50', '4738:0': 'cerberus.brand.20' },
+    valuesByMode: { '4328:3': 'brand.50', '4738:0': 'brand.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.text.navigation.initial': {
@@ -437,7 +431,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.60', '4738:0': 'cerberus.brand.30' },
+    valuesByMode: { '4328:3': 'brand.60', '4738:0': 'brand.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.text.navigation.visited': {
@@ -450,7 +444,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.60', '4738:0': 'cerberus.brand.20' },
+    valuesByMode: { '4328:3': 'neutral.60', '4738:0': 'neutral.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.text.static': {
@@ -463,7 +457,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.60', '4738:0': 'cerberus.brand.60' },
+    valuesByMode: { '4328:3': 'brand.60', '4738:0': 'brand.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'background.success.active': {
@@ -476,7 +470,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.80', '4738:0': 'cerberus.success.40' },
+    valuesByMode: { '4328:3': 'success.80', '4738:0': 'success.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'background.success.hover': {
@@ -489,7 +483,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.70', '4738:0': 'cerberus.success.50' },
+    valuesByMode: { '4328:3': 'success.70', '4738:0': 'success.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'background.success.initial': {
@@ -502,7 +496,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.60', '4738:0': 'cerberus.success.50' },
+    valuesByMode: { '4328:3': 'success.60', '4738:0': 'success.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'border.success.100': {
@@ -515,7 +509,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'cerberus.success.50', '4738:0': 'cerberus.success.30' },
+    valuesByMode: { '4328:3': 'success.50', '4738:0': 'success.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'border.success.initial': {
@@ -528,7 +522,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'cerberus.success.70', '4738:0': 'cerberus.success.50' },
+    valuesByMode: { '4328:3': 'success.70', '4738:0': 'success.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.background.active': {
@@ -541,7 +535,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'danger.cerberus.90', '4738:0': 'danger.cerberus.30' },
+    valuesByMode: { '4328:3': 'danger.90', '4738:0': 'danger.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.background.hover': {
@@ -554,7 +548,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'danger.cerberus.70', '4738:0': 'danger.cerberus.50' },
+    valuesByMode: { '4328:3': 'danger.70', '4738:0': 'danger.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.background.initial': {
@@ -567,7 +561,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'danger.cerberus.60', '4738:0': 'danger.cerberus.70' },
+    valuesByMode: { '4328:3': 'danger.60', '4738:0': 'danger.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.border.100': {
@@ -580,7 +574,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'danger.cerberus.70', '4738:0': 'danger.cerberus.40' },
+    valuesByMode: { '4328:3': 'danger.70', '4738:0': 'danger.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.border.initial': {
@@ -593,7 +587,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'danger.cerberus.50', '4738:0': 'danger.cerberus.30' },
+    valuesByMode: { '4328:3': 'danger.50', '4738:0': 'danger.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.ghost.active': {
@@ -606,7 +600,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'danger.cerberus.20', '4738:0': 'danger.cerberus.80' },
+    valuesByMode: { '4328:3': 'danger.20', '4738:0': 'danger.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.ghost.hover': {
@@ -620,7 +614,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'danger.cerberus.10', '4738:0': 'danger.cerberus.90' },
+    valuesByMode: { '4328:3': 'danger.10', '4738:0': 'danger.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.ghost.initial': {
@@ -633,10 +627,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: {
-      '4328:3': 'cerberus.neutral.white',
-      '4738:0': 'cerberus.brand.100',
-    },
+    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.surface.100': {
@@ -650,7 +641,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'danger.cerberus.10', '4738:0': 'danger.cerberus.90' },
+    valuesByMode: { '4328:3': 'danger.10', '4738:0': 'danger.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.surface.200': {
@@ -664,7 +655,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'danger.cerberus.60', '4738:0': 'danger.cerberus.70' },
+    valuesByMode: { '4328:3': 'danger.60', '4738:0': 'danger.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.surface.initial': {
@@ -677,7 +668,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'danger.cerberus.30', '4738:0': 'danger.cerberus.80' },
+    valuesByMode: { '4328:3': 'danger.30', '4738:0': 'danger.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.text.100': {
@@ -690,7 +681,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'danger.cerberus.80', '4738:0': 'danger.cerberus.20' },
+    valuesByMode: { '4328:3': 'danger.80', '4738:0': 'danger.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.text.200': {
@@ -704,7 +695,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'danger.cerberus.100', '4738:0': 'danger.cerberus.10' },
+    valuesByMode: { '4328:3': 'danger.100', '4738:0': 'danger.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.text.initial': {
@@ -718,7 +709,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'danger.cerberus.70', '4738:0': 'danger.cerberus.60' },
+    valuesByMode: { '4328:3': 'danger.70', '4738:0': 'danger.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.text.inverse': {
@@ -732,7 +723,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'danger.cerberus.10', '4738:0': 'danger.cerberus.100' },
+    valuesByMode: { '4328:3': 'danger.10', '4738:0': 'danger.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.text.static': {
@@ -745,7 +736,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'danger.cerberus.80', '4738:0': 'danger.cerberus.80' },
+    valuesByMode: { '4328:3': 'danger.80', '4738:0': 'danger.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.diverging.050': {
@@ -758,7 +749,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.60', '4738:0': 'warning.cerberus.60' },
+    valuesByMode: { '4328:3': 'warning.60', '4738:0': 'warning.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.diverging.100': {
@@ -771,7 +762,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.50', '4738:0': 'warning.cerberus.50' },
+    valuesByMode: { '4328:3': 'warning.50', '4738:0': 'warning.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.diverging.200': {
@@ -784,7 +775,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.40', '4738:0': 'warning.cerberus.40' },
+    valuesByMode: { '4328:3': 'warning.40', '4738:0': 'warning.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.diverging.300': {
@@ -797,7 +788,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.30', '4738:0': 'warning.cerberus.30' },
+    valuesByMode: { '4328:3': 'warning.30', '4738:0': 'warning.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.diverging.400': {
@@ -810,7 +801,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.20', '4738:0': 'warning.cerberus.20' },
+    valuesByMode: { '4328:3': 'warning.20', '4738:0': 'warning.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.diverging.500': {
@@ -823,7 +814,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.10', '4738:0': 'cerberus.neutral.10' },
+    valuesByMode: { '4328:3': 'neutral.10', '4738:0': 'neutral.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.diverging.550': {
@@ -836,7 +827,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.20', '4738:0': 'cerberus.brand.20' },
+    valuesByMode: { '4328:3': 'brand.20', '4738:0': 'brand.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.diverging.600': {
@@ -849,7 +840,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.30', '4738:0': 'cerberus.brand.30' },
+    valuesByMode: { '4328:3': 'brand.30', '4738:0': 'brand.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.diverging.700': {
@@ -862,7 +853,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.40', '4738:0': 'cerberus.brand.40' },
+    valuesByMode: { '4328:3': 'brand.40', '4738:0': 'brand.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.diverging.800': {
@@ -875,7 +866,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.50', '4738:0': 'cerberus.brand.50' },
+    valuesByMode: { '4328:3': 'brand.50', '4738:0': 'brand.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.diverging.900': {
@@ -888,7 +879,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.60', '4738:0': 'cerberus.brand.60' },
+    valuesByMode: { '4328:3': 'brand.60', '4738:0': 'brand.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.progress.complete': {
@@ -901,7 +892,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.success.60', '4738:0': 'cerberus.success.60' },
+    valuesByMode: { '4328:3': 'success.60', '4738:0': 'success.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.progress.complete-end': {
@@ -928,7 +919,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.brand.70', '4738:0': 'cerberus.brand.70' },
+    valuesByMode: { '4328:3': 'brand.70', '4738:0': 'brand.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.progress.start': {
@@ -941,7 +932,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.brand.40', '4738:0': 'cerberus.brand.40' },
+    valuesByMode: { '4328:3': 'brand.40', '4738:0': 'brand.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.qualitative.100': {
@@ -954,7 +945,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.50', '4738:0': 'cerberus.brand.50' },
+    valuesByMode: { '4328:3': 'brand.50', '4738:0': 'brand.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.qualitative.200': {
@@ -967,7 +958,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.60', '4738:0': 'warning.cerberus.60' },
+    valuesByMode: { '4328:3': 'warning.60', '4738:0': 'warning.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.qualitative.300': {
@@ -980,7 +971,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.60', '4738:0': 'cerberus.success.60' },
+    valuesByMode: { '4328:3': 'success.60', '4738:0': 'success.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.qualitative.400': {
@@ -993,7 +984,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.50', '4738:0': 'info.cerberus.50' },
+    valuesByMode: { '4328:3': 'info.50', '4738:0': 'info.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.qualitative.500': {
@@ -1006,7 +997,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.30', '4738:0': 'cerberus.brand.30' },
+    valuesByMode: { '4328:3': 'brand.30', '4738:0': 'brand.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.qualitative.600': {
@@ -1019,7 +1010,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.teal.70', '4738:0': 'cerberus.teal.70' },
+    valuesByMode: { '4328:3': 'accent.70', '4738:0': 'accent.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.qualitative.700': {
@@ -1032,7 +1023,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.40', '4738:0': 'cerberus.neutral.40' },
+    valuesByMode: { '4328:3': 'neutral.40', '4738:0': 'neutral.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.sequential.100': {
@@ -1045,7 +1036,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.10', '4738:0': 'cerberus.brand.80' },
+    valuesByMode: { '4328:3': 'brand.10', '4738:0': 'brand.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.sequential.200': {
@@ -1058,7 +1049,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.40', '4738:0': 'cerberus.brand.60' },
+    valuesByMode: { '4328:3': 'brand.40', '4738:0': 'brand.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.sequential.300': {
@@ -1071,7 +1062,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.50', '4738:0': 'cerberus.brand.50' },
+    valuesByMode: { '4328:3': 'brand.50', '4738:0': 'brand.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.sequential.400': {
@@ -1084,7 +1075,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.70', '4738:0': 'cerberus.brand.40' },
+    valuesByMode: { '4328:3': 'brand.70', '4738:0': 'brand.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.sequential.500': {
@@ -1097,7 +1088,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.80', '4738:0': 'cerberus.brand.20' },
+    valuesByMode: { '4328:3': 'brand.80', '4738:0': 'brand.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'data-viz.sequential.600': {
@@ -1110,7 +1101,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.90', '4738:0': 'cerberus.brand.10' },
+    valuesByMode: { '4328:3': 'brand.90', '4738:0': 'brand.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'drop-shadow.lg': {
@@ -1123,10 +1114,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['EFFECT_COLOR'],
-    valuesByMode: {
-      '4328:3': 'cerberus.drop-shadow.200',
-      '4738:0': 'cerberus.drop-shadow.1000',
-    },
+    valuesByMode: { '4328:3': 'drop-shadow.200', '4738:0': 'drop-shadow.1000' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'drop-shadow.md': {
@@ -1139,10 +1127,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['EFFECT_COLOR'],
-    valuesByMode: {
-      '4328:3': 'cerberus.drop-shadow.100',
-      '4738:0': 'cerberus.drop-shadow.700',
-    },
+    valuesByMode: { '4328:3': 'drop-shadow.100', '4738:0': 'drop-shadow.700' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'drop-shadow.sm': {
@@ -1155,10 +1140,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['EFFECT_COLOR'],
-    valuesByMode: {
-      '4328:3': 'cerberus.drop-shadow.100',
-      '4738:0': 'cerberus.drop-shadow.500',
-    },
+    valuesByMode: { '4328:3': 'drop-shadow.100', '4738:0': 'drop-shadow.500' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'font.brand': {
@@ -1185,7 +1167,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.20', '4738:0': 'cerberus.success.80' },
+    valuesByMode: { '4328:3': 'success.20', '4738:0': 'success.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'ghost.success.hover': {
@@ -1199,7 +1181,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.10', '4738:0': 'cerberus.success.90' },
+    valuesByMode: { '4328:3': 'success.10', '4738:0': 'success.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'ghost.success.initial': {
@@ -1212,10 +1194,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: {
-      '4328:3': 'cerberus.neutral.white',
-      '4738:0': 'cerberus.brand.100',
-    },
+    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.amphiaraus-dark.end': {
@@ -1228,7 +1207,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'info.cerberus.60', '4738:0': 'info.cerberus.60' },
+    valuesByMode: { '4328:3': 'info.60', '4738:0': 'info.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.amphiaraus-dark.start': {
@@ -1241,7 +1220,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'info.cerberus.90', '4738:0': 'info.cerberus.90' },
+    valuesByMode: { '4328:3': 'info.90', '4738:0': 'info.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.amphiaraus-dark.text': {
@@ -1254,7 +1233,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'info.cerberus.20', '4738:0': 'info.cerberus.20' },
+    valuesByMode: { '4328:3': 'info.20', '4738:0': 'info.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.amphiaraus-light.end': {
@@ -1267,7 +1246,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'info.cerberus.30', '4738:0': 'info.cerberus.30' },
+    valuesByMode: { '4328:3': 'info.30', '4738:0': 'info.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.amphiaraus-light.start': {
@@ -1280,7 +1259,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'info.cerberus.10', '4738:0': 'info.cerberus.10' },
+    valuesByMode: { '4328:3': 'info.10', '4738:0': 'info.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.amphiaraus-light.text': {
@@ -1293,7 +1272,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'info.cerberus.80', '4738:0': 'info.cerberus.80' },
+    valuesByMode: { '4328:3': 'info.80', '4738:0': 'info.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.asphodel-dark.end': {
@@ -1306,7 +1285,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'warning.cerberus.60', '4738:0': 'warning.cerberus.60' },
+    valuesByMode: { '4328:3': 'warning.60', '4738:0': 'warning.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.asphodel-dark.start': {
@@ -1319,7 +1298,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'warning.cerberus.80', '4738:0': 'warning.cerberus.80' },
+    valuesByMode: { '4328:3': 'warning.80', '4738:0': 'warning.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.asphodel-dark.text': {
@@ -1332,10 +1311,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: {
-      '4328:3': 'warning.cerberus.100',
-      '4738:0': 'warning.cerberus.100',
-    },
+    valuesByMode: { '4328:3': 'warning.100', '4738:0': 'warning.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.asphodel-light.end': {
@@ -1348,7 +1324,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'warning.cerberus.50', '4738:0': 'warning.cerberus.50' },
+    valuesByMode: { '4328:3': 'warning.50', '4738:0': 'warning.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.asphodel-light.start': {
@@ -1361,7 +1337,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'warning.cerberus.20', '4738:0': 'warning.cerberus.20' },
+    valuesByMode: { '4328:3': 'warning.20', '4738:0': 'warning.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.asphodel-light.text': {
@@ -1374,7 +1350,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'warning.cerberus.90', '4738:0': 'warning.cerberus.90' },
+    valuesByMode: { '4328:3': 'warning.90', '4738:0': 'warning.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.charon-dark.end': {
@@ -1387,7 +1363,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.brand.40', '4738:0': 'cerberus.brand.40' },
+    valuesByMode: { '4328:3': 'brand.40', '4738:0': 'brand.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.charon-dark.start': {
@@ -1400,7 +1376,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.brand.70', '4738:0': 'cerberus.brand.70' },
+    valuesByMode: { '4328:3': 'brand.70', '4738:0': 'brand.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.charon-dark.text': {
@@ -1413,7 +1389,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.brand.10', '4738:0': 'cerberus.brand.10' },
+    valuesByMode: { '4328:3': 'brand.10', '4738:0': 'brand.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.charon-light.end': {
@@ -1426,7 +1402,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.brand.40', '4738:0': 'cerberus.brand.40' },
+    valuesByMode: { '4328:3': 'brand.40', '4738:0': 'brand.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.charon-light.start': {
@@ -1439,7 +1415,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.brand.20', '4738:0': 'cerberus.brand.20' },
+    valuesByMode: { '4328:3': 'brand.20', '4738:0': 'brand.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.charon-light.text': {
@@ -1452,7 +1428,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.brand.70', '4738:0': 'cerberus.brand.70' },
+    valuesByMode: { '4328:3': 'brand.70', '4738:0': 'brand.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.hades-dark.end': {
@@ -1465,7 +1441,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'danger.cerberus.50', '4738:0': 'danger.cerberus.50' },
+    valuesByMode: { '4328:3': 'danger.50', '4738:0': 'danger.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.hades-dark.start': {
@@ -1478,7 +1454,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'danger.cerberus.80', '4738:0': 'danger.cerberus.80' },
+    valuesByMode: { '4328:3': 'danger.80', '4738:0': 'danger.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.hades-dark.text': {
@@ -1491,7 +1467,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'danger.cerberus.10', '4738:0': 'danger.cerberus.10' },
+    valuesByMode: { '4328:3': 'danger.10', '4738:0': 'danger.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.hades-light.end': {
@@ -1504,7 +1480,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'danger.cerberus.40', '4738:0': 'danger.cerberus.40' },
+    valuesByMode: { '4328:3': 'danger.40', '4738:0': 'danger.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.hades-light.start': {
@@ -1517,7 +1493,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'danger.cerberus.20', '4738:0': 'danger.cerberus.20' },
+    valuesByMode: { '4328:3': 'danger.20', '4738:0': 'danger.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.hades-light.text': {
@@ -1530,7 +1506,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'danger.cerberus.80', '4738:0': 'danger.cerberus.80' },
+    valuesByMode: { '4328:3': 'danger.80', '4738:0': 'danger.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.nyx-dark.end': {
@@ -1543,7 +1519,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.60', '4738:0': 'cerberus.neutral.60' },
+    valuesByMode: { '4328:3': 'neutral.60', '4738:0': 'neutral.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.nyx-dark.start': {
@@ -1556,10 +1532,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: {
-      '4328:3': 'cerberus.neutral.100',
-      '4738:0': 'cerberus.neutral.100',
-    },
+    valuesByMode: { '4328:3': 'neutral.100', '4738:0': 'neutral.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.nyx-dark.text': {
@@ -1572,7 +1545,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.20', '4738:0': 'cerberus.neutral.20' },
+    valuesByMode: { '4328:3': 'neutral.20', '4738:0': 'neutral.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.nyx-light.end': {
@@ -1585,7 +1558,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'acheron.neutral.10', '4738:0': 'cerberus.neutral.10' },
+    valuesByMode: { '4328:3': 'neutral.10', '4738:0': 'neutral.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.nyx-light.start': {
@@ -1598,7 +1571,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.30', '4738:0': 'cerberus.neutral.30' },
+    valuesByMode: { '4328:3': 'neutral.30', '4738:0': 'neutral.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.nyx-light.text': {
@@ -1611,10 +1584,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: {
-      '4328:3': 'cerberus.neutral.100',
-      '4738:0': 'cerberus.neutral.100',
-    },
+    valuesByMode: { '4328:3': 'neutral.100', '4738:0': 'neutral.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.styx-dark.end': {
@@ -1627,7 +1597,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.teal.70', '4738:0': 'cerberus.teal.70' },
+    valuesByMode: { '4328:3': 'accent.70', '4738:0': 'accent.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.styx-dark.start': {
@@ -1640,7 +1610,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.teal.50', '4738:0': 'cerberus.teal.50' },
+    valuesByMode: { '4328:3': 'accent.50', '4738:0': 'accent.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.styx-dark.text': {
@@ -1653,7 +1623,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.teal.100', '4738:0': 'cerberus.teal.100' },
+    valuesByMode: { '4328:3': 'accent.100', '4738:0': 'accent.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.styx-light.end': {
@@ -1666,7 +1636,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.teal.50', '4738:0': 'cerberus.teal.50' },
+    valuesByMode: { '4328:3': 'accent.50', '4738:0': 'accent.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.styx-light.start': {
@@ -1679,7 +1649,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.teal.20', '4738:0': 'cerberus.teal.20' },
+    valuesByMode: { '4328:3': 'accent.20', '4738:0': 'accent.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.styx-light.text': {
@@ -1692,7 +1662,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.teal.90', '4738:0': 'cerberus.teal.90' },
+    valuesByMode: { '4328:3': 'accent.90', '4738:0': 'accent.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.thanatos-dark.end': {
@@ -1705,7 +1675,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.success.80', '4738:0': 'cerberus.success.80' },
+    valuesByMode: { '4328:3': 'success.80', '4738:0': 'success.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.thanatos-dark.start': {
@@ -1718,7 +1688,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.success.60', '4738:0': 'cerberus.success.60' },
+    valuesByMode: { '4328:3': 'success.60', '4738:0': 'success.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.thanatos-dark.text': {
@@ -1731,7 +1701,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.success.20', '4738:0': 'cerberus.success.20' },
+    valuesByMode: { '4328:3': 'success.20', '4738:0': 'success.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.thanatos-light.end': {
@@ -1744,7 +1714,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.success.40', '4738:0': 'cerberus.success.40' },
+    valuesByMode: { '4328:3': 'success.40', '4738:0': 'success.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.thanatos-light.start': {
@@ -1757,7 +1727,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.success.10', '4738:0': 'cerberus.success.10' },
+    valuesByMode: { '4328:3': 'success.10', '4738:0': 'success.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.thanatos-light.text': {
@@ -1770,7 +1740,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.success.90', '4738:0': 'cerberus.success.90' },
+    valuesByMode: { '4328:3': 'success.90', '4738:0': 'success.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'icons.default': {
@@ -1814,7 +1784,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.50', '4738:0': 'info.cerberus.50' },
+    valuesByMode: { '4328:3': 'info.50', '4738:0': 'info.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.background.hover': {
@@ -1827,7 +1797,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.20', '4738:0': 'info.cerberus.90' },
+    valuesByMode: { '4328:3': 'info.20', '4738:0': 'info.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.background.initial': {
@@ -1840,7 +1810,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.30', '4738:0': 'info.cerberus.70' },
+    valuesByMode: { '4328:3': 'info.30', '4738:0': 'info.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.border.100': {
@@ -1853,7 +1823,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'info.cerberus.40', '4738:0': 'info.cerberus.70' },
+    valuesByMode: { '4328:3': 'info.40', '4738:0': 'info.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.border.initial': {
@@ -1866,7 +1836,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'info.cerberus.60', '4738:0': 'info.cerberus.50' },
+    valuesByMode: { '4328:3': 'info.60', '4738:0': 'info.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.ghost.active': {
@@ -1879,7 +1849,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.30', '4738:0': 'info.cerberus.80' },
+    valuesByMode: { '4328:3': 'info.30', '4738:0': 'info.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.ghost.hover': {
@@ -1893,7 +1863,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.20', '4738:0': 'info.cerberus.90' },
+    valuesByMode: { '4328:3': 'info.20', '4738:0': 'info.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.ghost.initial': {
@@ -1906,10 +1876,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: {
-      '4328:3': 'cerberus.neutral.white',
-      '4738:0': 'cerberus.brand.100',
-    },
+    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.surface.100': {
@@ -1923,7 +1890,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.20', '4738:0': 'info.cerberus.90' },
+    valuesByMode: { '4328:3': 'info.20', '4738:0': 'info.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.surface.200': {
@@ -1937,7 +1904,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.50', '4738:0': 'info.cerberus.70' },
+    valuesByMode: { '4328:3': 'info.50', '4738:0': 'info.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.surface.initial': {
@@ -1951,7 +1918,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.30', '4738:0': 'info.cerberus.80' },
+    valuesByMode: { '4328:3': 'info.30', '4738:0': 'info.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.text.100': {
@@ -1964,7 +1931,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.80', '4738:0': 'info.cerberus.40' },
+    valuesByMode: { '4328:3': 'info.80', '4738:0': 'info.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.text.200': {
@@ -1978,7 +1945,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.100', '4738:0': 'info.cerberus.10' },
+    valuesByMode: { '4328:3': 'info.100', '4738:0': 'info.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.text.initial': {
@@ -1992,7 +1959,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.70', '4738:0': 'info.cerberus.50' },
+    valuesByMode: { '4328:3': 'info.70', '4738:0': 'info.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.text.inverse': {
@@ -2006,7 +1973,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'info.cerberus.10', '4738:0': 'info.cerberus.100' },
+    valuesByMode: { '4328:3': 'info.10', '4738:0': 'info.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.text.static': {
@@ -2019,7 +1986,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'info.cerberus.60', '4738:0': 'info.cerberus.60' },
+    valuesByMode: { '4328:3': 'info.60', '4738:0': 'info.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.backdrop.initial': {
@@ -2058,7 +2025,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.5', '4738:0': 'cerberus.neutral.80' },
+    valuesByMode: { '4328:3': 'neutral.5', '4738:0': 'neutral.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.background.200': {
@@ -2071,7 +2038,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.15', '4738:0': 'cerberus.neutral.70' },
+    valuesByMode: { '4328:3': 'neutral.15', '4738:0': 'neutral.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.background.300': {
@@ -2084,7 +2051,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.20', '4738:0': 'cerberus.neutral.60' },
+    valuesByMode: { '4328:3': 'neutral.20', '4738:0': 'neutral.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.background.initial': {
@@ -2097,10 +2064,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: {
-      '4328:3': 'cerberus.neutral.white',
-      '4738:0': 'cerberus.brand.100',
-    },
+    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.border.100': {
@@ -2113,7 +2077,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['EFFECT_COLOR', 'SHAPE_FILL', 'STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'cerberus.brand.20', '4738:0': 'cerberus.neutral.60' },
+    valuesByMode: { '4328:3': 'brand.20', '4738:0': 'neutral.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.border.200': {
@@ -2126,7 +2090,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.20', '4738:0': 'cerberus.neutral.50' },
+    valuesByMode: { '4328:3': 'neutral.20', '4738:0': 'neutral.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.border.initial': {
@@ -2139,7 +2103,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.15', '4738:0': 'cerberus.neutral.70' },
+    valuesByMode: { '4328:3': 'neutral.15', '4738:0': 'neutral.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.surface.100': {
@@ -2152,10 +2116,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: {
-      '4328:3': 'cerberus.neutral.white',
-      '4738:0': 'cerberus.neutral.90',
-    },
+    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'neutral.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.surface.200': {
@@ -2168,7 +2129,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.5', '4738:0': 'cerberus.neutral.80' },
+    valuesByMode: { '4328:3': 'neutral.5', '4738:0': 'neutral.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.surface.300': {
@@ -2181,7 +2142,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.10', '4738:0': 'cerberus.neutral.70' },
+    valuesByMode: { '4328:3': 'neutral.10', '4738:0': 'neutral.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.surface.400': {
@@ -2194,7 +2155,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.15', '4738:0': 'cerberus.neutral.60' },
+    valuesByMode: { '4328:3': 'neutral.15', '4738:0': 'neutral.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.surface.initial': {
@@ -2208,7 +2169,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.5', '4738:0': 'cerberus.neutral.100' },
+    valuesByMode: { '4328:3': 'brand.5', '4738:0': 'neutral.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.surface.initial.alpha-300': {
@@ -2249,7 +2210,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.90', '4738:0': 'cerberus.neutral.5' },
+    valuesByMode: { '4328:3': 'neutral.90', '4738:0': 'neutral.5' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.text.100': {
@@ -2263,7 +2224,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.40', '4738:0': 'cerberus.neutral.20' },
+    valuesByMode: { '4328:3': 'neutral.40', '4738:0': 'neutral.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.text.200': {
@@ -2276,7 +2237,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.60', '4738:0': 'cerberus.neutral.10' },
+    valuesByMode: { '4328:3': 'neutral.60', '4738:0': 'neutral.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.text.300': {
@@ -2290,10 +2251,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: {
-      '4328:3': 'cerberus.brand.100',
-      '4738:0': 'cerberus.neutral.white',
-    },
+    valuesByMode: { '4328:3': 'brand.100', '4738:0': 'neutral.white' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.text.initial': {
@@ -2306,7 +2264,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.90', '4738:0': 'cerberus.brand.5' },
+    valuesByMode: { '4328:3': 'neutral.90', '4738:0': 'brand.5' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.text.inverse': {
@@ -2320,10 +2278,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: {
-      '4328:3': 'cerberus.neutral.white',
-      '4738:0': 'cerberus.neutral.100',
-    },
+    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'neutral.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'page.text.static': {
@@ -2336,7 +2291,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.60', '4738:0': 'cerberus.neutral.60' },
+    valuesByMode: { '4328:3': 'neutral.60', '4738:0': 'neutral.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.background.active': {
@@ -2349,7 +2304,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.40', '4738:0': 'cerberus.brand.30' },
+    valuesByMode: { '4328:3': 'brand.40', '4738:0': 'brand.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.background.hover': {
@@ -2362,7 +2317,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.30', '4738:0': 'cerberus.neutral.50' },
+    valuesByMode: { '4328:3': 'brand.30', '4738:0': 'neutral.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.background.initial': {
@@ -2375,7 +2330,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.20', '4738:0': 'cerberus.neutral.60' },
+    valuesByMode: { '4328:3': 'brand.20', '4738:0': 'neutral.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.border.100': {
@@ -2388,7 +2343,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'cerberus.brand.20', '4738:0': 'cerberus.brand.70' },
+    valuesByMode: { '4328:3': 'brand.20', '4738:0': 'brand.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.border.focus': {
@@ -2401,7 +2356,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'cerberus.brand.40', '4738:0': 'cerberus.brand.40' },
+    valuesByMode: { '4328:3': 'brand.40', '4738:0': 'brand.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.border.initial': {
@@ -2414,7 +2369,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'cerberus.brand.30', '4738:0': 'cerberus.brand.50' },
+    valuesByMode: { '4328:3': 'brand.30', '4738:0': 'brand.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.ghost.active': {
@@ -2427,7 +2382,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.15', '4738:0': 'cerberus.neutral.70' },
+    valuesByMode: { '4328:3': 'neutral.15', '4738:0': 'neutral.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.ghost.hover': {
@@ -2441,7 +2396,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.neutral.10', '4738:0': 'cerberus.neutral.80' },
+    valuesByMode: { '4328:3': 'neutral.10', '4738:0': 'neutral.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.ghost.initial': {
@@ -2454,10 +2409,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: {
-      '4328:3': 'cerberus.neutral.white',
-      '4738:0': 'cerberus.brand.100',
-    },
+    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.text.100': {
@@ -2471,7 +2423,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.100', '4738:0': 'cerberus.brand.10' },
+    valuesByMode: { '4328:3': 'brand.100', '4738:0': 'brand.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.text.200': {
@@ -2485,7 +2437,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.50', '4738:0': 'cerberus.brand.30' },
+    valuesByMode: { '4328:3': 'brand.50', '4738:0': 'brand.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.text.initial': {
@@ -2499,7 +2451,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.90', '4738:0': 'cerberus.brand.20' },
+    valuesByMode: { '4328:3': 'brand.90', '4738:0': 'brand.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.text.navigation.hover': {
@@ -2512,7 +2464,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.50', '4738:0': 'cerberus.brand.30' },
+    valuesByMode: { '4328:3': 'brand.50', '4738:0': 'brand.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.text.navigation.initial': {
@@ -2525,7 +2477,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.60', '4738:0': 'cerberus.brand.10' },
+    valuesByMode: { '4328:3': 'brand.60', '4738:0': 'brand.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.text.navigation.visited': {
@@ -2538,7 +2490,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.100', '4738:0': 'cerberus.brand.20' },
+    valuesByMode: { '4328:3': 'brand.100', '4738:0': 'brand.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.text.static': {
@@ -2552,7 +2504,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.brand.40', '4738:0': 'cerberus.brand.40' },
+    valuesByMode: { '4328:3': 'brand.40', '4738:0': 'brand.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'surface.success.100': {
@@ -2566,7 +2518,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.20', '4738:0': 'cerberus.success.90' },
+    valuesByMode: { '4328:3': 'success.20', '4738:0': 'success.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'surface.success.200': {
@@ -2580,7 +2532,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.60', '4738:0': 'cerberus.success.80' },
+    valuesByMode: { '4328:3': 'success.60', '4738:0': 'success.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'surface.success.initial': {
@@ -2594,7 +2546,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.50', '4738:0': 'cerberus.success.60' },
+    valuesByMode: { '4328:3': 'success.50', '4738:0': 'success.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'text.success.100': {
@@ -2607,7 +2559,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.80', '4738:0': 'cerberus.success.30' },
+    valuesByMode: { '4328:3': 'success.80', '4738:0': 'success.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'text.success.200': {
@@ -2620,7 +2572,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.100', '4738:0': 'cerberus.success.10' },
+    valuesByMode: { '4328:3': 'success.100', '4738:0': 'success.10' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'text.success.initial': {
@@ -2634,7 +2586,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.60', '4738:0': 'cerberus.success.60' },
+    valuesByMode: { '4328:3': 'success.60', '4738:0': 'success.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'text.success.inverse': {
@@ -2648,7 +2600,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'cerberus.success.10', '4738:0': 'cerberus.success.100' },
+    valuesByMode: { '4328:3': 'success.10', '4738:0': 'success.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'text.success.static': {
@@ -2661,7 +2613,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'cerberus.success.70', '4738:0': 'cerberus.success.70' },
+    valuesByMode: { '4328:3': 'success.70', '4738:0': 'success.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.background.active': {
@@ -2674,7 +2626,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.70', '4738:0': 'warning.cerberus.40' },
+    valuesByMode: { '4328:3': 'warning.70', '4738:0': 'warning.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.background.hover': {
@@ -2687,7 +2639,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.60', '4738:0': 'warning.cerberus.60' },
+    valuesByMode: { '4328:3': 'warning.60', '4738:0': 'warning.60' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.background.initial': {
@@ -2700,7 +2652,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.50', '4738:0': 'warning.cerberus.70' },
+    valuesByMode: { '4328:3': 'warning.50', '4738:0': 'warning.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.border.initial': {
@@ -2713,7 +2665,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
-    valuesByMode: { '4328:3': 'warning.cerberus.50', '4738:0': 'warning.cerberus.20' },
+    valuesByMode: { '4328:3': 'warning.50', '4738:0': 'warning.20' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.ghost.active': {
@@ -2726,7 +2678,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.30', '4738:0': 'warning.cerberus.80' },
+    valuesByMode: { '4328:3': 'warning.30', '4738:0': 'warning.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.ghost.hover': {
@@ -2740,7 +2692,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.20', '4738:0': 'warning.cerberus.90' },
+    valuesByMode: { '4328:3': 'warning.20', '4738:0': 'warning.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.ghost.initial': {
@@ -2753,10 +2705,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: {
-      '4328:3': 'cerberus.neutral.white',
-      '4738:0': 'cerberus.brand.100',
-    },
+    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.surface.100': {
@@ -2770,7 +2719,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.20', '4738:0': 'warning.cerberus.90' },
+    valuesByMode: { '4328:3': 'warning.20', '4738:0': 'warning.90' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.surface.200': {
@@ -2783,7 +2732,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.60', '4738:0': 'warning.cerberus.50' },
+    valuesByMode: { '4328:3': 'warning.60', '4738:0': 'warning.50' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.surface.initial': {
@@ -2796,7 +2745,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.40', '4738:0': 'warning.cerberus.70' },
+    valuesByMode: { '4328:3': 'warning.40', '4738:0': 'warning.70' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.text.100': {
@@ -2809,7 +2758,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.90', '4738:0': 'warning.cerberus.30' },
+    valuesByMode: { '4328:3': 'warning.90', '4738:0': 'warning.30' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.text.200': {
@@ -2822,10 +2771,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: {
-      '4328:3': 'warning.cerberus.100',
-      '4738:0': 'warning.cerberus.100',
-    },
+    valuesByMode: { '4328:3': 'warning.100', '4738:0': 'warning.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.text.initial': {
@@ -2839,7 +2785,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.90', '4738:0': 'warning.cerberus.40' },
+    valuesByMode: { '4328:3': 'warning.90', '4738:0': 'warning.40' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.text.inverse': {
@@ -2853,7 +2799,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
-    valuesByMode: { '4328:3': 'warning.cerberus.20', '4738:0': 'warning.cerberus.100' },
+    valuesByMode: { '4328:3': 'warning.20', '4738:0': 'warning.100' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.text.static': {
@@ -2866,7 +2812,7 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
-    valuesByMode: { '4328:3': 'warning.cerberus.80', '4738:0': 'warning.cerberus.80' },
+    valuesByMode: { '4328:3': 'warning.80', '4738:0': 'warning.80' },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
 } as const

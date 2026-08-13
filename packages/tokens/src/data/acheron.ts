@@ -413,151 +413,151 @@ export const collection = {
   variableOverrides: {
     'VariableID:10197:659': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:43',
+        id: 'VariableID:24847:567',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:660': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:52',
+        id: 'VariableID:24847:574',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:45',
+        id: 'VariableID:24847:540',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:661': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:51',
+        id: 'VariableID:24847:547',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:46',
+        id: 'VariableID:24847:585',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:667': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:43',
+        id: 'VariableID:24847:567',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:668': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:83',
+        id: 'VariableID:24847:549',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:77',
+        id: 'VariableID:24847:568',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:669': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:82',
+        id: 'VariableID:24847:535',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:78',
+        id: 'VariableID:24847:590',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:673': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:43',
+        id: 'VariableID:24847:567',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:674': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:74',
+        id: 'VariableID:24847:558',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:66',
+        id: 'VariableID:24847:552',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:675': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:73',
+        id: 'VariableID:24847:541',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:67',
+        id: 'VariableID:24847:548',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:676': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:43',
+        id: 'VariableID:24847:567',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:677': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:64',
+        id: 'VariableID:24847:551',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:55',
+        id: 'VariableID:24847:589',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10197:678': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:63',
+        id: 'VariableID:24847:554',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:57',
+        id: 'VariableID:24847:565',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10284:1769': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:58',
+        id: 'VariableID:24847:561',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:59',
+        id: 'VariableID:24847:559',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10284:1770': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:97',
+        id: 'VariableID:24847:565',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:60',
+        id: 'VariableID:24847:556',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:10284:1771': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:96',
+        id: 'VariableID:24847:566',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:98',
+        id: 'VariableID:24847:561',
         type: 'VARIABLE_ALIAS',
       },
     },
@@ -577,1687 +577,1731 @@ export const collection = {
     },
     'VariableID:11198:4105': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:90',
+        id: 'VariableID:24847:225',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:88',
+        id: 'VariableID:24847:532',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11198:4106': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:89',
+        id: 'VariableID:24847:538',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:89',
+        id: 'VariableID:24847:538',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11198:4107': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:88',
+        id: 'VariableID:24847:532',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:91',
+        id: 'VariableID:24847:530',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11304:502': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:43',
+        id: 'VariableID:24847:567',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11304:503': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:103',
+        id: 'VariableID:24847:515',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:97',
+        id: 'VariableID:24847:518',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11304:504': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:102',
+        id: 'VariableID:24847:525',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:98',
+        id: 'VariableID:24847:514',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11304:505': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:43',
+        id: 'VariableID:24847:567',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11304:506': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:93',
+        id: 'VariableID:24847:527',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:86',
+        id: 'VariableID:24847:564',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11304:507': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:92',
+        id: 'VariableID:24847:528',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:87',
+        id: 'VariableID:24847:533',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11546:27': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:46',
+        id: 'VariableID:24847:585',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:51',
+        id: 'VariableID:24847:547',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11549:40': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:49',
+        id: 'VariableID:24847:576',
+        type: 'VARIABLE_ALIAS',
+      },
+      'VariableCollectionId:21998:4899/21998:11': {
+        id: 'VariableID:24847:576',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11549:41': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:50',
+        id: 'VariableID:24847:581',
+        type: 'VARIABLE_ALIAS',
+      },
+      'VariableCollectionId:21998:4899/21998:11': {
+        id: 'VariableID:24847:581',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11549:42': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:103',
+        id: 'VariableID:24847:554',
+        type: 'VARIABLE_ALIAS',
+      },
+      'VariableCollectionId:21998:4899/21998:11': {
+        id: 'VariableID:24847:554',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11549:43': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:51',
+        id: 'VariableID:24847:547',
+        type: 'VARIABLE_ALIAS',
+      },
+      'VariableCollectionId:21998:4899/21998:11': {
+        id: 'VariableID:24847:547',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11549:44': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:52',
+        id: 'VariableID:24847:574',
+        type: 'VARIABLE_ALIAS',
+      },
+      'VariableCollectionId:21998:4899/21998:11': {
+        id: 'VariableID:24847:574',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39543': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
+        type: 'VARIABLE_ALIAS',
+      },
+      'VariableCollectionId:21998:4899/21998:11': {
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39544': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:102',
+        id: 'VariableID:24847:555',
+        type: 'VARIABLE_ALIAS',
+      },
+      'VariableCollectionId:21998:4899/21998:11': {
+        id: 'VariableID:24847:555',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39545': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:42',
+        id: 'VariableID:24847:579',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:4328:23826',
+        id: 'VariableID:24847:579',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39546': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:101',
+        id: 'VariableID:24847:571',
+        type: 'VARIABLE_ALIAS',
+      },
+      'VariableCollectionId:21998:4899/21998:11': {
+        id: 'VariableID:24847:571',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39547': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:99',
+        id: 'VariableID:24847:559',
+        type: 'VARIABLE_ALIAS',
+      },
+      'VariableCollectionId:21998:4899/21998:11': {
+        id: 'VariableID:24847:559',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39548': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:98',
+        id: 'VariableID:24847:561',
+        type: 'VARIABLE_ALIAS',
+      },
+      'VariableCollectionId:21998:4899/21998:11': {
+        id: 'VariableID:24847:561',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39549': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:58',
+        id: 'VariableID:24847:561',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:58',
+        id: 'VariableID:24847:561',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39550': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39551': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:89',
+        id: 'VariableID:24847:538',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:89',
+        id: 'VariableID:24847:538',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39552': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:70',
+        id: 'VariableID:24847:542',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:70',
+        id: 'VariableID:24847:542',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39553': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:99',
+        id: 'VariableID:24847:513',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:99',
+        id: 'VariableID:24847:513',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39554': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:80',
+        id: 'VariableID:24847:537',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:80',
+        id: 'VariableID:24847:537',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11705:39555': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:39',
+        id: 'VariableID:24847:569',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:39',
+        id: 'VariableID:24847:569',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11748:39651': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:45',
+        id: 'VariableID:24847:540',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:53',
+        id: 'VariableID:24847:572',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1491': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:36',
+        id: 'VariableID:24847:539',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:36',
+        id: 'VariableID:24847:539',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1597': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:77',
+        id: 'VariableID:24847:568',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:77',
+        id: 'VariableID:24847:568',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1601': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:87',
+        id: 'VariableID:24847:533',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:87',
+        id: 'VariableID:24847:533',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1764': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1770': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:68',
+        id: 'VariableID:24847:546',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:68',
+        id: 'VariableID:24847:546',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1771': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:99',
+        id: 'VariableID:24847:513',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:99',
+        id: 'VariableID:24847:513',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:11926:1802': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:58',
+        id: 'VariableID:24847:561',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:98',
+        id: 'VariableID:24847:561',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12499:126': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:71',
+        id: 'VariableID:24847:560',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:71',
+        id: 'VariableID:24847:560',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12500:127': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:74',
+        id: 'VariableID:24847:558',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:74',
+        id: 'VariableID:24847:558',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:128': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:69',
+        id: 'VariableID:24847:577',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:69',
+        id: 'VariableID:24847:577',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:129': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:67',
+        id: 'VariableID:24847:548',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:67',
+        id: 'VariableID:24847:548',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:130': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:52',
+        id: 'VariableID:24847:574',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:52',
+        id: 'VariableID:24847:574',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:131': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:49',
+        id: 'VariableID:24847:576',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:49',
+        id: 'VariableID:24847:576',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:132': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:45',
+        id: 'VariableID:24847:540',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:45',
+        id: 'VariableID:24847:540',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:134': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:104',
+        id: 'VariableID:24847:509',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:104',
+        id: 'VariableID:24847:509',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:135': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:102',
+        id: 'VariableID:24847:525',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:102',
+        id: 'VariableID:24847:525',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12503:137': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:97',
+        id: 'VariableID:24847:518',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:97',
+        id: 'VariableID:24847:518',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12508:140': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:67',
+        id: 'VariableID:24847:548',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:67',
+        id: 'VariableID:24847:548',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12522:14': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:38',
+        id: 'VariableID:24847:583',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:38',
+        id: 'VariableID:24847:583',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12522:15': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:40',
+        id: 'VariableID:24847:510',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:40',
+        id: 'VariableID:24847:510',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12522:16': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:33',
+        id: 'VariableID:24847:563',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:33',
+        id: 'VariableID:24847:563',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12724:11': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12724:12': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:36',
+        id: 'VariableID:24847:539',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:36',
+        id: 'VariableID:24847:539',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12724:13': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:40',
+        id: 'VariableID:24847:510',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:40',
+        id: 'VariableID:24847:510',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12724:19': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:73',
+        id: 'VariableID:24847:541',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:73',
+        id: 'VariableID:24847:541',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12724:28': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:96',
+        id: 'VariableID:24847:553',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:96',
+        id: 'VariableID:24847:553',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12724:29': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:99',
+        id: 'VariableID:24847:513',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:99',
+        id: 'VariableID:24847:513',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12724:30': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:103',
+        id: 'VariableID:24847:515',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:103',
+        id: 'VariableID:24847:515',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:327': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:46',
+        id: 'VariableID:24847:585',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:46',
+        id: 'VariableID:24847:585',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:328': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:329': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:52',
+        id: 'VariableID:24847:574',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:52',
+        id: 'VariableID:24847:574',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:331': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:83',
+        id: 'VariableID:24847:549',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:83',
+        id: 'VariableID:24847:549',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:332': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:81',
+        id: 'VariableID:24847:536',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:81',
+        id: 'VariableID:24847:536',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:333': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:77',
+        id: 'VariableID:24847:568',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:77',
+        id: 'VariableID:24847:568',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:338': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:77',
+        id: 'VariableID:24847:568',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:77',
+        id: 'VariableID:24847:568',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:339': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:80',
+        id: 'VariableID:24847:537',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:80',
+        id: 'VariableID:24847:537',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12729:340': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:84',
+        id: 'VariableID:24847:580',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:84',
+        id: 'VariableID:24847:580',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12735:342': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:63',
+        id: 'VariableID:24847:554',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:63',
+        id: 'VariableID:24847:554',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12735:343': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:60',
+        id: 'VariableID:24847:556',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:60',
+        id: 'VariableID:24847:556',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12735:344': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:56',
+        id: 'VariableID:24847:566',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:56',
+        id: 'VariableID:24847:566',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12735:345': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:56',
+        id: 'VariableID:24847:566',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:56',
+        id: 'VariableID:24847:566',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12735:346': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:59',
+        id: 'VariableID:24847:559',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:59',
+        id: 'VariableID:24847:559',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12735:347': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:64',
+        id: 'VariableID:24847:551',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:64',
+        id: 'VariableID:24847:2242',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12738:349': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:93',
+        id: 'VariableID:24847:527',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:93',
+        id: 'VariableID:24847:527',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12738:350': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:90',
+        id: 'VariableID:24847:531',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:90',
+        id: 'VariableID:24847:531',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12738:351': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:86',
+        id: 'VariableID:24847:564',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:86',
+        id: 'VariableID:24847:564',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12738:352': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:87',
+        id: 'VariableID:24847:533',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:87',
+        id: 'VariableID:24847:533',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12738:353': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:90',
+        id: 'VariableID:24847:531',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:90',
+        id: 'VariableID:24847:531',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:12738:354': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:85',
+        id: 'VariableID:24847:588',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:85',
+        id: 'VariableID:24847:588',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:13034:396': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:13034:397': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:46',
+        id: 'VariableID:24847:585',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:46',
+        id: 'VariableID:24847:585',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:13697:8126': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:69',
+        id: 'VariableID:24847:577',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:69',
+        id: 'VariableID:24847:577',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:18289:3479': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:39',
+        id: 'VariableID:24847:569',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:36',
+        id: 'VariableID:24847:539',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:18303:12040': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:40',
+        id: 'VariableID:11497:52',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:36',
+        id: 'VariableID:24847:539',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4328:23833': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:33',
+        id: 'VariableID:24847:563',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:42',
+        id: 'VariableID:24847:2286',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4737:11565': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:43',
+        id: 'VariableID:24847:567',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:33',
+        id: 'VariableID:24847:563',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4737:5172': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:37',
+        id: 'VariableID:24847:534',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:38',
+        id: 'VariableID:24847:583',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4737:6059': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:17218:4358',
+        id: 'VariableID:24847:573',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4737:6060': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:41',
+        id: 'VariableID:24847:592',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:34',
+        id: 'VariableID:24847:578',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4738:14841': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:36',
+        id: 'VariableID:24847:539',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:40',
+        id: 'VariableID:24847:510',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4738:15017': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:40',
+        id: 'VariableID:24847:510',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:35',
+        id: 'VariableID:24847:550',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4745:23305': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:39',
+        id: 'VariableID:24847:569',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:34',
+        id: 'VariableID:24847:578',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4745:23306': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:46',
+        id: 'VariableID:24847:585',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4745:23307': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:78',
+        id: 'VariableID:24847:590',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:81',
+        id: 'VariableID:24847:536',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:4979:7097': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:40',
+        id: 'VariableID:24847:510',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:35',
+        id: 'VariableID:24847:550',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6492:4538': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:78',
+        id: 'VariableID:24847:590',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:79',
+        id: 'VariableID:24847:586',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6492:4539': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:77',
+        id: 'VariableID:24847:568',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:82',
+        id: 'VariableID:24847:535',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6492:4540': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:75',
+        id: 'VariableID:24847:575',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:84',
+        id: 'VariableID:24847:580',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6500:4541': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:86',
+        id: 'VariableID:24847:564',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:91',
+        id: 'VariableID:24847:530',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6500:4542': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:86',
+        id: 'VariableID:24847:564',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:92',
+        id: 'VariableID:24847:528',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6500:4543': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:85',
+        id: 'VariableID:24847:588',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:85',
+        id: 'VariableID:24847:588',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6500:4544': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:44',
+        id: 'VariableID:24847:562',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:44',
+        id: 'VariableID:24847:562',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6500:4545': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:46',
+        id: 'VariableID:24847:585',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:49',
+        id: 'VariableID:24847:576',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6500:4546': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:45',
+        id: 'VariableID:24847:540',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:50',
+        id: 'VariableID:24847:581',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6554:4910': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:43',
+        id: 'VariableID:24847:567',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6572:5577': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:44',
+        id: 'VariableID:24847:562',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:54',
+        id: 'VariableID:24847:570',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6572:5578': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:65',
+        id: 'VariableID:24847:545',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:74',
+        id: 'VariableID:24847:558',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6572:5579': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:67',
+        id: 'VariableID:24847:548',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:71',
+        id: 'VariableID:24847:560',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6572:5580': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:65',
+        id: 'VariableID:24847:545',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:74',
+        id: 'VariableID:24847:558',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3782': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:42',
+        id: 'VariableID:24847:579',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3787': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:70',
+        id: 'VariableID:24847:542',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:69',
+        id: 'VariableID:24847:577',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3797': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:84',
+        id: 'VariableID:24847:580',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:76',
+        id: 'VariableID:24847:543',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3802': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3803': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:49',
+        id: 'VariableID:24847:576',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:49',
+        id: 'VariableID:24847:576',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3804': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:50',
+        id: 'VariableID:24847:581',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:50',
+        id: 'VariableID:24847:581',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3805': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:54',
+        id: 'VariableID:24847:570',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:33',
+        id: 'VariableID:24847:563',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6586:3807': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:43',
+        id: 'VariableID:24847:567',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6706:4229': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:36',
+        id: 'VariableID:24847:539',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:37',
+        id: 'VariableID:24847:534',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6706:4230': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:47',
+        id: 'VariableID:24847:582',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:47',
+        id: 'VariableID:24847:582',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6706:4231': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:37',
+        id: 'VariableID:24847:534',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:37',
+        id: 'VariableID:24847:534',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6706:6049': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:69',
+        id: 'VariableID:24847:577',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:67',
+        id: 'VariableID:24847:548',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6713:6583': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:93',
+        id: 'VariableID:24847:527',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:86',
+        id: 'VariableID:24847:564',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34659': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:90',
+        id: 'VariableID:24847:531',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:92',
+        id: 'VariableID:24847:528',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34660': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:52',
+        id: 'VariableID:24847:574',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:46',
+        id: 'VariableID:24847:585',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34661': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:50',
+        id: 'VariableID:24847:581',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:47',
+        id: 'VariableID:24847:582',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34662': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:49',
+        id: 'VariableID:24847:576',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34663': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:47',
+        id: 'VariableID:24847:582',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:50',
+        id: 'VariableID:24847:581',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34664': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:79',
+        id: 'VariableID:24847:586',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:77',
+        id: 'VariableID:24847:568',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34665': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:77',
+        id: 'VariableID:24847:568',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:81',
+        id: 'VariableID:24847:536',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34666': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:76',
+        id: 'VariableID:24847:543',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:81',
+        id: 'VariableID:24847:263',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6715:34675': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:84',
+        id: 'VariableID:24847:580',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:76',
+        id: 'VariableID:24847:543',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6742:34975': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:98',
+        id: 'VariableID:24847:514',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:100',
+        id: 'VariableID:24847:512',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6742:34976': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:97',
+        id: 'VariableID:24847:518',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:102',
+        id: 'VariableID:24847:525',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6742:34977': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:95',
+        id: 'VariableID:24847:516',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:104',
+        id: 'VariableID:24847:509',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6742:34979': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:102',
+        id: 'VariableID:24847:525',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:100',
+        id: 'VariableID:24847:512',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6742:34980': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:99',
+        id: 'VariableID:24847:513',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:100',
+        id: 'VariableID:24847:512',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6750:4357': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:17218:4348',
+        id: 'VariableID:24847:660',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:17218:4353',
+        id: 'VariableID:24847:529',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6750:4718': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:17218:4349',
+        id: 'VariableID:24847:523',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:17218:4354',
+        id: 'VariableID:24847:591',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6843:35067': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:46',
+        id: 'VariableID:24847:585',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:48',
+        id: 'VariableID:24847:584',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6843:35068': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:47',
+        id: 'VariableID:24847:582',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:49',
+        id: 'VariableID:24847:576',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:6843:35069': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:45',
+        id: 'VariableID:24847:540',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:47',
+        id: 'VariableID:24847:582',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:7228:19106': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:74',
+        id: 'VariableID:24847:558',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:65',
+        id: 'VariableID:24847:545',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8434:35148': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:42',
+        id: 'VariableID:24847:579',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:34',
+        id: 'VariableID:24847:578',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8434:35149': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:41',
+        id: 'VariableID:24847:572',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:35',
+        id: 'VariableID:24847:550',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8434:35153': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:102',
+        id: 'VariableID:24847:525',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:98',
+        id: 'VariableID:24847:514',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8434:35154': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:103',
+        id: 'VariableID:24847:515',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:97',
+        id: 'VariableID:24847:518',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8434:35155': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:100',
+        id: 'VariableID:24847:512',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:96',
+        id: 'VariableID:24847:553',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8578:21627': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:101',
+        id: 'VariableID:24847:511',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:98',
+        id: 'VariableID:24847:514',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8578:21628': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:68',
+        id: 'VariableID:24847:546',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:69',
+        id: 'VariableID:24847:577',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8578:21630': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:70',
+        id: 'VariableID:24847:542',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:70',
+        id: 'VariableID:24847:542',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8578:21631': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:80',
+        id: 'VariableID:24847:537',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:79',
+        id: 'VariableID:24847:586',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8665:408': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:43',
+        id: 'VariableID:24847:567',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:32',
+        id: 'VariableID:24847:587',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:8945:7710': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:17218:4349',
+        id: 'VariableID:24847:522',
+        type: 'VARIABLE_ALIAS',
+      },
+      'VariableCollectionId:21998:4899/21998:11': {
+        id: 'VariableID:24847:517',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9022:7600': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:69',
+        id: 'VariableID:24847:577',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:68',
+        id: 'VariableID:24847:546',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9022:7601': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:68',
+        id: 'VariableID:24847:546',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:69',
+        id: 'VariableID:24847:577',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9022:7602': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:67',
+        id: 'VariableID:24847:548',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:70',
+        id: 'VariableID:24847:542',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9022:7645': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:72',
+        id: 'VariableID:24847:544',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:66',
+        id: 'VariableID:24847:552',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9054:5933': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:91',
+        id: 'VariableID:24847:530',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:88',
+        id: 'VariableID:24847:532',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9054:5934': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:90',
+        id: 'VariableID:24847:531',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:89',
+        id: 'VariableID:24847:538',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9054:5935': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:93',
+        id: 'VariableID:24847:527',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:85',
+        id: 'VariableID:24847:588',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9054:6104': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:82',
+        id: 'VariableID:24847:535',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:79',
+        id: 'VariableID:24847:586',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9057:6105': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:103',
+        id: 'VariableID:24847:515',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:96',
+        id: 'VariableID:24847:553',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9057:6106': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:100',
+        id: 'VariableID:24847:512',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:98',
+        id: 'VariableID:24847:514',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9057:6107': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:104',
+        id: 'VariableID:24847:509',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:95',
+        id: 'VariableID:24847:516',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9057:6108': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:79',
+        id: 'VariableID:24847:586',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:78',
+        id: 'VariableID:24847:590',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1374': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:62',
+        id: 'VariableID:24847:555',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:55',
+        id: 'VariableID:24847:589',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1375': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:61',
+        id: 'VariableID:24847:571',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:56',
+        id: 'VariableID:24847:566',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1376': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:60',
+        id: 'VariableID:24847:556',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:59',
+        id: 'VariableID:24847:559',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1379': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:57',
+        id: 'VariableID:24847:565',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:59',
+        id: 'VariableID:24847:559',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1380': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:58',
+        id: 'VariableID:24847:561',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:60',
+        id: 'VariableID:24847:556',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1381': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:96',
+        id: 'VariableID:24847:566',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:97',
+        id: 'VariableID:24847:565',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1382': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:57',
+        id: 'VariableID:24847:565',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:60',
+        id: 'VariableID:24847:556',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1383': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:56',
+        id: 'VariableID:24847:566',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:59',
+        id: 'VariableID:24847:559',
         type: 'VARIABLE_ALIAS',
       },
     },
     'VariableID:9976:1384': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:11497:98',
+        id: 'VariableID:24847:561',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:11497:101',
+        id: 'VariableID:24847:571',
         type: 'VARIABLE_ALIAS',
       },
     },
@@ -2291,8 +2335,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: [],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.5',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.90',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.5',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2307,8 +2351,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.40',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.40',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.40',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2323,8 +2367,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.50',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.50',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.50',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2339,8 +2383,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.60',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.60',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2355,8 +2399,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.50',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.50',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.50',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2371,8 +2415,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.70',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.70',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.70',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2387,8 +2431,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.60',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.80',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2403,8 +2447,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.30',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.80',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.30',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2420,8 +2464,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.90',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.20',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2436,8 +2480,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2453,8 +2497,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.50',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.80',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2469,8 +2513,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.90',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.40',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.90',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2486,8 +2530,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.100',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.100',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.100',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2502,8 +2546,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.100',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.5',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.100',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.5',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2518,8 +2562,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.70',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.50',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.70',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2534,8 +2578,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.60',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.80',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2550,8 +2594,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.90',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.70',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.90',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2566,8 +2610,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.60',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.60',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2582,8 +2626,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.50',
+      'VariableCollectionId:21998:4899/21998:10': 'success.80',
+      'VariableCollectionId:21998:4899/21998:11': 'success.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2598,8 +2642,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.70',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.60',
+      'VariableCollectionId:21998:4899/21998:10': 'success.70',
+      'VariableCollectionId:21998:4899/21998:11': 'success.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2614,8 +2658,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.70',
+      'VariableCollectionId:21998:4899/21998:10': 'success.60',
+      'VariableCollectionId:21998:4899/21998:11': 'success.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2630,8 +2674,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.50',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.50',
+      'VariableCollectionId:21998:4899/21998:10': 'success.50',
+      'VariableCollectionId:21998:4899/21998:11': 'success.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2646,8 +2690,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.70',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.60',
+      'VariableCollectionId:21998:4899/21998:10': 'success.70',
+      'VariableCollectionId:21998:4899/21998:11': 'success.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2662,8 +2706,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.90',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.40',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.90',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2678,8 +2722,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.80',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.40',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.80',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2694,8 +2738,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.60',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.80',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.60',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2710,8 +2754,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.50',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.60',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.50',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2726,8 +2770,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.70',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.40',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.70',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2742,8 +2786,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.30',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.70',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.30',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2759,8 +2803,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.20',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.80',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.20',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2775,8 +2819,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2792,8 +2836,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.10',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.90',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.10',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2809,8 +2853,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.60',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.70',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.60',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2825,8 +2869,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.30',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.60',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.30',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2841,8 +2885,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.80',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.30',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.80',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2858,8 +2902,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.100',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.10',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.100',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2875,8 +2919,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.70',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.60',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.70',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2892,8 +2936,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.10',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.90',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.10',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2908,8 +2952,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.80',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.80',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.80',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2924,8 +2968,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.60',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.cerberus.60',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.60',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2940,8 +2984,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.50',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.cerberus.50',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.50',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2956,8 +3000,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.40',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.cerberus.40',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.40',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2972,8 +3016,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.30',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.cerberus.30',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.30',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2988,8 +3032,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.20',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.cerberus.20',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.20',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3004,8 +3048,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.5',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.neutral.5',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.5',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.5',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3020,8 +3064,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.20',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.brand.20',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.20',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3036,8 +3080,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.30',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.brand.30',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.30',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3052,8 +3096,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.40',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.brand.40',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.40',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3068,8 +3112,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.60',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.brand.50',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.60',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3084,8 +3128,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.70',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.brand.60',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.70',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3100,8 +3144,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.60',
+      'VariableCollectionId:21998:4899/21998:10': 'success.60',
+      'VariableCollectionId:21998:4899/21998:11': 'success.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3116,8 +3160,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.80',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.80',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3132,8 +3176,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.60',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.60',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3148,8 +3192,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.60',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.60',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3164,8 +3208,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.70',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.70',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.70',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3180,8 +3224,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.60',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.60',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.60',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3196,8 +3240,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.50',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.50',
+      'VariableCollectionId:21998:4899/21998:10': 'success.50',
+      'VariableCollectionId:21998:4899/21998:11': 'success.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3212,8 +3256,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.60',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.60',
+      'VariableCollectionId:21998:4899/21998:10': 'info.60',
+      'VariableCollectionId:21998:4899/21998:11': 'info.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3228,8 +3272,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.50',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.50',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.50',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3244,8 +3288,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.30',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.30',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.30',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3260,8 +3304,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.80',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.20',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3276,8 +3320,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.40',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.70',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.40',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3292,8 +3336,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.50',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.60',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.50',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3308,8 +3352,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.70',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.40',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.70',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3324,8 +3368,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.30',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.80',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3340,8 +3384,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.90',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.10',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.90',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3356,8 +3400,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['EFFECT_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.drop-shadow.200',
-      'VariableCollectionId:21998:4899/21998:11': 'cerberus.drop-shadow.1000',
+      'VariableCollectionId:21998:4899/21998:10': 'drop-shadow.300',
+      'VariableCollectionId:21998:4899/21998:11': 'drop-shadow.1000',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3372,8 +3416,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['EFFECT_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.drop-shadow.200',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.drop-shadow.700',
+      'VariableCollectionId:21998:4899/21998:10': 'drop-shadow.200',
+      'VariableCollectionId:21998:4899/21998:11': 'drop-shadow.700',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3388,8 +3432,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['EFFECT_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.drop-shadow.100',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.drop-shadow.600',
+      'VariableCollectionId:21998:4899/21998:10': 'drop-shadow.100',
+      'VariableCollectionId:21998:4899/21998:11': 'drop-shadow.600',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3404,8 +3448,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.80',
+      'VariableCollectionId:21998:4899/21998:10': 'success.20',
+      'VariableCollectionId:21998:4899/21998:11': 'success.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3421,8 +3465,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.10',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.90',
+      'VariableCollectionId:21998:4899/21998:10': 'success.10',
+      'VariableCollectionId:21998:4899/21998:11': 'success.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3437,8 +3481,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3453,8 +3497,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.60',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.60',
+      'VariableCollectionId:21998:4899/21998:10': 'info.60',
+      'VariableCollectionId:21998:4899/21998:11': 'info.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3469,8 +3513,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.90',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.90',
+      'VariableCollectionId:21998:4899/21998:10': 'info.90',
+      'VariableCollectionId:21998:4899/21998:11': 'info.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3485,8 +3529,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.20',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.20',
+      'VariableCollectionId:21998:4899/21998:10': 'info.20',
+      'VariableCollectionId:21998:4899/21998:11': 'info.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3501,8 +3545,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.30',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.30',
+      'VariableCollectionId:21998:4899/21998:10': 'info.30',
+      'VariableCollectionId:21998:4899/21998:11': 'info.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3517,8 +3561,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.10',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.10',
+      'VariableCollectionId:21998:4899/21998:10': 'info.10',
+      'VariableCollectionId:21998:4899/21998:11': 'info.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3533,8 +3577,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.80',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.80',
+      'VariableCollectionId:21998:4899/21998:10': 'info.80',
+      'VariableCollectionId:21998:4899/21998:11': 'info.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3549,8 +3593,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.50',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.50',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.50',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3565,8 +3609,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.80',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.80',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.80',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3581,8 +3625,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.100',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.100',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.100',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3597,8 +3641,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.50',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.50',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.50',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3613,8 +3657,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.20',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.20',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.20',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3629,8 +3673,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.90',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.90',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.90',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3645,8 +3689,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.60',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.60',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3661,8 +3705,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.80',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.80',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3677,8 +3721,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.20',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.20',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3693,8 +3737,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.50',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.50',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.50',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3709,8 +3753,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.20',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.20',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3725,8 +3769,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.90',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.brand.90',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.90',
+      'VariableCollectionId:21998:4899/21998:11': 'brand.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3741,8 +3785,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.50',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.50',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.50',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3757,8 +3801,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.80',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.80',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.80',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3773,8 +3817,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.10',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.10',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.10',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3789,8 +3833,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.40',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.40',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.40',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3805,8 +3849,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.20',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.20',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.20',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3821,8 +3865,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'danger.acheron.80',
-      'VariableCollectionId:21998:4899/21998:11': 'danger.acheron.80',
+      'VariableCollectionId:21998:4899/21998:10': 'danger.80',
+      'VariableCollectionId:21998:4899/21998:11': 'danger.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3837,8 +3881,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.60',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.60',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3853,8 +3897,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.100',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.100',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3869,8 +3913,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.20',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.20',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3885,8 +3929,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.20',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.20',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3901,8 +3945,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.40',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.40',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.40',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3917,8 +3961,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.90',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.90',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.90',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3933,8 +3977,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.60',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.60',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3949,8 +3993,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.90',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.90',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.90',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3965,8 +4009,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.10',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.10',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.10',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3981,8 +4025,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.50',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.50',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.50',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3997,8 +4041,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.20',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.20',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4013,8 +4057,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.90',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.90',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.90',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4029,8 +4073,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.80',
+      'VariableCollectionId:21998:4899/21998:10': 'success.80',
+      'VariableCollectionId:21998:4899/21998:11': 'success.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4045,8 +4089,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.60',
+      'VariableCollectionId:21998:4899/21998:10': 'success.60',
+      'VariableCollectionId:21998:4899/21998:11': 'success.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4061,8 +4105,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.20',
+      'VariableCollectionId:21998:4899/21998:10': 'success.20',
+      'VariableCollectionId:21998:4899/21998:11': 'success.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4077,8 +4121,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.40',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.40',
+      'VariableCollectionId:21998:4899/21998:10': 'success.40',
+      'VariableCollectionId:21998:4899/21998:11': 'success.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4093,8 +4137,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.10',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.10',
+      'VariableCollectionId:21998:4899/21998:10': 'success.10',
+      'VariableCollectionId:21998:4899/21998:11': 'success.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4109,8 +4153,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.80',
+      'VariableCollectionId:21998:4899/21998:10': 'success.80',
+      'VariableCollectionId:21998:4899/21998:11': 'success.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4125,8 +4169,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.50',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.90',
+      'VariableCollectionId:21998:4899/21998:10': 'info.50',
+      'VariableCollectionId:21998:4899/21998:11': 'info.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4141,8 +4185,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.20',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.80',
+      'VariableCollectionId:21998:4899/21998:10': 'info.20',
+      'VariableCollectionId:21998:4899/21998:11': 'info.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4157,8 +4201,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.30',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.70',
+      'VariableCollectionId:21998:4899/21998:10': 'info.30',
+      'VariableCollectionId:21998:4899/21998:11': 'info.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4173,8 +4217,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.40',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.70',
+      'VariableCollectionId:21998:4899/21998:10': 'info.40',
+      'VariableCollectionId:21998:4899/21998:11': 'info.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4189,8 +4233,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.60',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.50',
+      'VariableCollectionId:21998:4899/21998:10': 'info.60',
+      'VariableCollectionId:21998:4899/21998:11': 'info.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4205,8 +4249,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.30',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.70',
+      'VariableCollectionId:21998:4899/21998:10': 'info.30',
+      'VariableCollectionId:21998:4899/21998:11': 'info.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4222,8 +4266,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.20',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.80',
+      'VariableCollectionId:21998:4899/21998:10': 'info.20',
+      'VariableCollectionId:21998:4899/21998:11': 'info.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4238,8 +4282,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4255,8 +4299,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.20',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.90',
+      'VariableCollectionId:21998:4899/21998:10': 'info.20',
+      'VariableCollectionId:21998:4899/21998:11': 'info.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4272,8 +4316,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.50',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.70',
+      'VariableCollectionId:21998:4899/21998:10': 'info.50',
+      'VariableCollectionId:21998:4899/21998:11': 'info.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4289,8 +4333,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.30',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.50',
+      'VariableCollectionId:21998:4899/21998:10': 'info.30',
+      'VariableCollectionId:21998:4899/21998:11': 'info.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4305,8 +4349,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.80',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.30',
+      'VariableCollectionId:21998:4899/21998:10': 'info.80',
+      'VariableCollectionId:21998:4899/21998:11': 'info.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4322,8 +4366,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.100',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.10',
+      'VariableCollectionId:21998:4899/21998:10': 'info.100',
+      'VariableCollectionId:21998:4899/21998:11': 'info.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4339,8 +4383,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.70',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.50',
+      'VariableCollectionId:21998:4899/21998:10': 'info.70',
+      'VariableCollectionId:21998:4899/21998:11': 'info.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4356,8 +4400,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.10',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.100',
+      'VariableCollectionId:21998:4899/21998:10': 'info.10',
+      'VariableCollectionId:21998:4899/21998:11': 'info.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4372,8 +4416,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.60',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.60',
+      'VariableCollectionId:21998:4899/21998:10': 'info.60',
+      'VariableCollectionId:21998:4899/21998:11': 'info.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4414,8 +4458,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.5',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.80',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.5',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4430,8 +4474,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.10',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.70',
+      'VariableCollectionId:21998:4899/21998:10': 'brand.10',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4446,8 +4490,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.60',
+      'VariableCollectionId:21998:4899/21998:10': 'acheron.brand.20',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4462,8 +4506,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4478,8 +4522,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['EFFECT_COLOR', 'SHAPE_FILL', 'STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.30',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.80',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.30',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4494,8 +4538,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.50',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.60',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4510,8 +4554,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.70',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.20',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4526,8 +4570,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.90',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4542,8 +4586,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.10',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.80',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.10',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4558,8 +4602,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.70',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.20',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4574,8 +4618,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.30',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.60',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.30',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4591,8 +4635,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.0',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.0',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4607,8 +4651,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.100',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.5',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.100',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.5',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4624,8 +4668,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.50',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.40',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.50',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4640,8 +4684,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.20',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.60',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.20',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4657,8 +4701,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.100',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.white',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.100',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.white',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4673,8 +4717,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.90',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.5',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.90',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.5',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4690,8 +4734,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4706,8 +4750,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.60',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.60',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4722,8 +4766,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.50',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.60',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.50',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4738,8 +4782,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.40',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.90',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.40',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4754,8 +4798,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.30',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.100',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.30',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4770,8 +4814,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.90',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.80',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.90',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4786,8 +4830,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.70',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.50',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.70',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4802,8 +4846,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.60',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.80',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4818,8 +4862,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.20',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.80',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.20',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4835,8 +4879,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.10',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.100',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.10',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4851,8 +4895,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4868,8 +4912,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.90',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.60',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.90',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4885,8 +4929,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.70',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.40',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.70',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4902,8 +4946,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.50',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.80',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4918,8 +4962,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.50',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.80',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.50',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4934,8 +4978,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.70',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.accent.60',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.70',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4950,8 +4994,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'info.acheron.90',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.70',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.90',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4967,8 +5011,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.accent.70',
-      'VariableCollectionId:21998:4899/21998:11': 'info.acheron.70',
+      'VariableCollectionId:21998:4899/21998:10': 'accent.70',
+      'VariableCollectionId:21998:4899/21998:11': 'accent.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4984,8 +5028,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.30',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.90',
+      'VariableCollectionId:21998:4899/21998:10': 'success.30',
+      'VariableCollectionId:21998:4899/21998:11': 'success.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5001,8 +5045,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.60',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.80',
+      'VariableCollectionId:21998:4899/21998:10': 'success.60',
+      'VariableCollectionId:21998:4899/21998:11': 'success.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5018,8 +5062,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.50',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.60',
+      'VariableCollectionId:21998:4899/21998:10': 'success.50',
+      'VariableCollectionId:21998:4899/21998:11': 'success.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5034,8 +5078,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.80',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.40',
+      'VariableCollectionId:21998:4899/21998:10': 'success.80',
+      'VariableCollectionId:21998:4899/21998:11': 'success.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5050,8 +5094,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.100',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.10',
+      'VariableCollectionId:21998:4899/21998:10': 'success.100',
+      'VariableCollectionId:21998:4899/21998:11': 'success.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5067,8 +5111,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.100',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.10',
+      'VariableCollectionId:21998:4899/21998:10': 'success.100',
+      'VariableCollectionId:21998:4899/21998:11': 'success.10',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5084,8 +5128,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.10',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.100',
+      'VariableCollectionId:21998:4899/21998:10': 'success.10',
+      'VariableCollectionId:21998:4899/21998:11': 'success.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5100,8 +5144,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.success.70',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.success.70',
+      'VariableCollectionId:21998:4899/21998:10': 'success.70',
+      'VariableCollectionId:21998:4899/21998:11': 'success.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5116,8 +5160,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.70',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.40',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.70',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5132,8 +5176,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.60',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.60',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.60',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5148,8 +5192,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.50',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.70',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.50',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5164,8 +5208,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['STROKE_COLOR'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.50',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.30',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.50',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5180,8 +5224,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.30',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.80',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.30',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5197,8 +5241,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.20',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.90',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.20',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5213,8 +5257,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'acheron.neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'acheron.neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
+      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5230,8 +5274,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.20',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.90',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.20',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.90',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5246,8 +5290,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.50',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.60',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.50',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.60',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5262,8 +5306,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.40',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.70',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.40',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.70',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5278,8 +5322,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.90',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.30',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.90',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.30',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5294,8 +5338,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.100',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.100',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.100',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5311,8 +5355,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.90',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.40',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.90',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.40',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5328,8 +5372,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['ALL_SCOPES'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.20',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.100',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.20',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.100',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5344,8 +5388,8 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['SHAPE_FILL', 'TEXT_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'warning.acheron.80',
-      'VariableCollectionId:21998:4899/21998:11': 'warning.acheron.80',
+      'VariableCollectionId:21998:4899/21998:10': 'warning.80',
+      'VariableCollectionId:21998:4899/21998:11': 'warning.80',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },

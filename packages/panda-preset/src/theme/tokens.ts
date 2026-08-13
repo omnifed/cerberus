@@ -1,8 +1,4 @@
-import {
-  createPrimitiveColors,
-  createPrimitiveRadii,
-  createPrimitiveSpacing,
-} from '@cerberus/tokens'
+import { createPrimitiveRadii, createPrimitiveSpacing } from '@cerberus/tokens'
 import { defineTokens, Tokens } from '@pandacss/dev'
 
 /**
@@ -107,7 +103,6 @@ const zIndex = {
 }
 
 export const tokens: NonNullable<Tokens> = defineTokens({
-  colors: createPrimitiveColors(),
   fonts,
   radii: createPrimitiveRadii(),
   spacing: createPrimitiveSpacing(),
