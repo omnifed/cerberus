@@ -15,7 +15,7 @@
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/signals": "workspace:*",
     "@cerberus/tokens": "workspace:*",
-    "@docsearch/css": "^4.7.0",
+    "@docsearch/css": "^5.0.0",
     "@docsearch/react": "^4.7.0",
     "next": "16.3.0",
     "react": "catalog:jsx",
