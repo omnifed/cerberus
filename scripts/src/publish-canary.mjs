@@ -21,7 +21,9 @@ await injectDenoImports(jsrPackages, repoRoot).catch((err) => {
 console.log('🧪 Publishing JSR Canary Packages...')
 for (const pkg of jsrPackages) {
   console.log(`Publishing @cerberus/${pkg}...`)
-  await $`cd packages/${pkg} && deno publish --allow-dirty`.cwd(repoRoot)
+  await $`cd packages/${pkg} && deno publish --allow-dirty --no-provenance`.cwd(
+    repoRoot,
+  )
   await $`sleep 3`.cwd(repoRoot) // JSR network buffer
 }
 
