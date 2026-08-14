@@ -7,7 +7,7 @@ const repoRoot = resolve(import.meta.dir, '..', '..')
 
 console.log('🧪 Publishing NPM Canary Packages in dependent order...')
 for (const pkg of npmPackages) {
-  await $`cd packages/${pkg} && pnpm build && pnpm publish --tag next --access public --no-git-checks`.cwd(
+  await $`cd packages/${pkg} && pnpm build && pnpm publish --tag next --access public --no-git-checks --allow-same-version`.cwd(
     repoRoot,
   )
 }
