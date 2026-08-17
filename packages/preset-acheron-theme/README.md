@@ -15,10 +15,7 @@ npx jsr add @cerberus/preset-acheron-theme
 // panda.config.ts
 import { defineConfig } from '@pandacss/dev'
 import { cerberusPreset, cerberusConfig } from '@cerberus/panda-preset'
-import {
-  acheronTheme,
-  getAcheronThemeName,
-} from '@cerberus/preset-acheron-theme'
+import { acheronTheme } from '@cerberus/preset-acheron-theme'
 
 export default defineConfig({
   ...cerberusConfig,
@@ -27,10 +24,6 @@ export default defineConfig({
   exclude: [],
 
   presets: [cerberusPreset(), acheronTheme],
-
-  staticCss: {
-    themes: ['cerberus', getAcheronThemeName()],
-  },
 })
 ```
 
