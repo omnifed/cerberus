@@ -15,7 +15,7 @@ npx jsr add @cerberus/preset-oceanus-theme
 // panda.config.ts
 import { defineConfig } from '@pandacss/dev'
 import { cerberusPreset, cerberusConfig } from '@cerberus/panda-preset'
-import { oceanusTheme, getOceanusThemeName } from '@cerberus/preset-oceanus-theme'
+import { oceanusTheme } from '@cerberus/preset-oceanus-theme'
 
 export default defineConfig({
   ...cerberusConfig,
@@ -24,10 +24,6 @@ export default defineConfig({
   exclude: [],
 
   presets: [cerberusPreset(), oceanusTheme],
-
-  staticCss: {
-    themes: ['cerberus', getOceanusThemeName()],
-  },
 })
 ```
 

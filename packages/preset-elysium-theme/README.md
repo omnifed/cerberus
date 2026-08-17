@@ -15,10 +15,7 @@ npx jsr add @cerberus/preset-elysium-theme
 // panda.config.ts
 import { defineConfig } from '@pandacss/dev'
 import { cerberusPreset, cerberusConfig } from '@cerberus/panda-preset'
-import {
-  elysiumTheme,
-  getElysiumThemeName,
-} from '@cerberus/preset-elysium-theme'
+import { elysiumTheme } from '@cerberus/preset-elysium-theme'
 
 export default defineConfig({
   ...cerberusConfig,
@@ -27,10 +24,6 @@ export default defineConfig({
   exclude: [],
 
   presets: [cerberusPreset(), elysiumTheme],
-
-  staticCss: {
-    themes: ['cerberus', getElysiumThemeName()],
-  },
 })
 ```
 
