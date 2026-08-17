@@ -8,18 +8,34 @@ import { GradientText, GradientValue } from '../theme-contract/theme-contracts.t
  * This module contains factories for creating primitive PandaCSS tokens.
  */
 
+/**
+ * A utility function for building the Cerberus theme primitive colors to register
+ * with PandaCSS.
+ */
 export function createCerberusPrimitiveColors(): NonNullable<Tokens['colors']> {
   return _buildPrimitiveColorsByGroup('cerberus')
 }
 
+/**
+ * A utility function for building the Acheron theme primitive colors to register
+ * with PandaCSS.
+ */
 export function createAcheronPrimitiveColors(): NonNullable<Tokens['colors']> {
   return _buildPrimitiveColorsByGroup('acheron')
 }
 
+/**
+ * A utility function for building the Elysium theme primitive colors to register
+ * with PandaCSS.
+ */
 export function createElysiumPrimitiveColors(): NonNullable<Tokens['colors']> {
   return _buildPrimitiveColorsByGroup('elysium')
 }
 
+/**
+ * A utility function for building the Oceanus theme primitive colors to register
+ * with PandaCSS.
+ */
 export function createOceanusPrimitiveColors(): NonNullable<Tokens['colors']> {
   return _buildPrimitiveColorsByGroup('oceanus')
 }
@@ -54,6 +70,9 @@ export function createPrimitiveSpacing(): NonNullable<Tokens['spacing']> {
   )
 }
 
+/**
+ * A utility function for building radii primitives to register with PandaCSS.
+ */
 export function createPrimitiveRadii(): NonNullable<Tokens['radii']> {
   const mode = primitives.radii.modes.value
 
@@ -78,10 +97,16 @@ export function createPrimitiveRadii(): NonNullable<Tokens['radii']> {
 
 // Getters
 
+/**
+ * Returns the contract gradient token key.
+ */
 export function getContractGradientToken(): GradientText {
   return GRADIENT_TEXT
 }
 
+/**
+ * Returns the list of Cerberus gradients.
+ */
 export function getGradients(): GradientValue[] {
   return GRADIENTS
 }

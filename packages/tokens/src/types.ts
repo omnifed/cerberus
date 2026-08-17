@@ -10,8 +10,14 @@ export type NodeMeta = {
 
 // Helpers
 
+/**
+ * Simplifies a type by removing readonly modifiers.
+ */
 export type Simplify<T> = T extends unknown ? { [K in keyof T]: T[K] } : never
 
+/**
+ * Represents a variable color with red, green, blue, and alpha components.
+ */
 export type VariableColor = {
   r: number
   g: number
@@ -19,10 +25,16 @@ export type VariableColor = {
   a: number
 }
 
+/**
+ * Represents a writable type by removing readonly modifiers.
+ */
 export type Writable<T> = {
   -readonly [K in keyof T]: T[K]
 }
 
+/**
+ * Represents a proxy value that can be used to read and write values of type T.
+ */
 export type ProxyValue<T> = {
   <Value>(definition: Value extends T ? Value : T): Value
 } & {
