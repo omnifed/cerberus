@@ -1,5 +1,11 @@
 # @cerberus-design/signals
 
+## 1.7.1
+
+### Patch Changes
+
+- d38326b: Force patch update to ensure 3.0 works
+
 ## 1.7.0
 
 ## 1.6.0
@@ -14,7 +20,8 @@
 
 ### Minor Changes
 
-- 6f0b035: Add "visibility" feature option to the DataGrid columns API and new "search" and "filter" icons to the Cerberus icons context.
+- 6f0b035: Add "visibility" feature option to the DataGrid columns API and new
+  "search" and "filter" icons to the Cerberus icons context.
 
 ### Patch Changes
 

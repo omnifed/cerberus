@@ -1,5 +1,15 @@
 # @cerberus/panda-preset
 
+## 1.8.0
+
+### Minor Changes
+
+- 93abefd: Add focus-related utilities to panda-preset
+
+### Patch Changes
+
+- d38326b: Force patch update to ensure 3.0 works
+
 ## 1.7.0
 
 ### Minor Changes
@@ -24,7 +34,8 @@
 
 ### Minor Changes
 
-- 6f0b035: Add "visibility" feature option to the DataGrid columns API and new "search" and "filter" icons to the Cerberus icons context.
+- 6f0b035: Add "visibility" feature option to the DataGrid columns API and new
+  "search" and "filter" icons to the Cerberus icons context.
 
 ### Patch Changes
 

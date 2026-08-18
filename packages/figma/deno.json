@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/figma",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "exports": {
     ".": "./src/index.ts",
     "./helpers": "./src/utils/index.ts"
