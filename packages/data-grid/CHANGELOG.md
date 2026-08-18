@@ -1,5 +1,14 @@
 # @cerberus-design/data-grid
 
+## 1.7.1
+
+### Patch Changes
+
+- d38326b: Force patch update to ensure 3.0 works
+- Updated dependencies [d38326b]
+  - @cerberus-design/react@1.7.1
+  - @cerberus-design/signals@1.7.1
+
 ## 1.7.0
 
 ### Minor Changes
@@ -33,8 +42,12 @@
 
 ### Minor Changes
 
-- 79a766e: Added support for an initial pending state to display via the `overlays.initial` property. This will be rendered in the viewport when the grid is mounted and `pending` for the first time. Any `pending` update after that phase will use the `overlays.pending` option.
-- 6f0b035: Add "visibility" feature option to the DataGrid columns API and new "search" and "filter" icons to the Cerberus icons context.
+- 79a766e: Added support for an initial pending state to display via the
+  `overlays.initial` property. This will be rendered in the viewport when the
+  grid is mounted and `pending` for the first time. Any `pending` update after
+  that phase will use the `overlays.pending` option.
+- 6f0b035: Add "visibility" feature option to the DataGrid columns API and new
+  "search" and "filter" icons to the Cerberus icons context.
 
 ### Patch Changes
 
