@@ -3,7 +3,6 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [["@cerberus/*"], ["@cerberus-design/*"]],
-  "format": "oxfmt",
   "ignore": ["bench", "docs", "styled-system", "tests", "scripts"],
   "linked": [],
   "access": "public",
