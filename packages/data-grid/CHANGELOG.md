@@ -1,5 +1,17 @@
 # @cerberus-design/data-grid
 
+## 1.8.0
+
+### Minor Changes
+
+- c378057: Force minor version from missed opportunity
+
+### Patch Changes
+
+- Updated dependencies [c378057]
+  - @cerberus-design/react@1.8.0
+  - @cerberus-design/signals@1.8.0
+
 ## 1.7.1
 
 ### Patch Changes
