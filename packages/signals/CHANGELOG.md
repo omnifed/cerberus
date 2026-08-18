@@ -1,5 +1,11 @@
 # @cerberus-design/signals
 
+## 1.8.0
+
+### Minor Changes
+
+- c378057: Force minor version from missed opportunity
+
 ## 1.7.1
 
 ### Patch Changes

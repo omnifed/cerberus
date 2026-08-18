@@ -4,6 +4,12 @@
 
 ### Minor Changes
 
+- c378057: Force minor version from missed opportunity
+
+## 1.8.0
+
+### Minor Changes
+
 - 0dad388: Refactor Oceanus to register primitive colors locally
 
 ### Patch Changes

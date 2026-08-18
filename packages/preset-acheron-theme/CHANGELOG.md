@@ -2,6 +2,12 @@
 
 ## 1.8.0
 
+### Minor Changes
+
+- c378057: Force minor version from missed opportunity
+
+## 1.8.0
+
 ### Patch Changes
 
 - d38326b: Force patch update to ensure 3.0 works
