@@ -6,21 +6,21 @@ import { createQuery, useQuery, useSignal } from '@cerberus-design/signals'
 import { Suspense } from 'react'
 
 // Define Query Factory
-const query = createQuery(fetchUser, 'get-user')
+const queryUser = createQuery(fetchUser, 'queryUser')
 
 interface UserInfoProps {
   user: User['id']
 }
 
 function UserInfo(props: UserInfoProps) {
-  const data = useQuery(query(props.user))
+  const data = useQuery(queryUser(props.user))
   return <pre>{JSON.stringify(data, null, 2)}</pre>
 }
 
 export function BasicDemo() {
   // pretend this is from route params instead of a signal. useSignal will force
   // the render update like a URL param change would.
-  const [user, setUser] = useSignal<User['id']>(crypto.randomUUID())
+  const [user, setUser] = useSignal<User['id']>('16aad9b1-67e2-443b-bb09-df6cf0ee4f49')
 
   return (
     <Stack direction="column" justify="space-between" w="3/4">
