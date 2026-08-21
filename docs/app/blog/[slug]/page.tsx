@@ -1,9 +1,9 @@
+import { BlogHeader } from '@/components/blog-header'
 import { MDXContent } from '@/components/mdx-content'
 import { getBlogPost } from '@/lib/blog-content'
 import { Container } from '@/styled-system/jsx'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next/types'
-import BlogHeader from '../components/blog-header'
 
 type Props = {
   params: Promise<{

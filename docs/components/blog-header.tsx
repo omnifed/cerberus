@@ -3,7 +3,7 @@ import { authors } from '@/data/authors'
 import { HStack, VStack } from '@/styled-system/jsx'
 import { Avatar, DateFormatter, Tag, Text } from '@cerberus-design/react'
 
-export default function BlogHeader(props: Post) {
+export function BlogHeader(props: Post) {
   const author = authors[props.author as keyof typeof authors]
   if (!author) {
     console.error(`Author ${props.author} not found in authorData`)

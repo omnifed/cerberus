@@ -1,7 +1,7 @@
+import { BlogLink } from '@/components/blog-link'
 import { getBlogPosts } from '@/lib/blog-content'
 import { Container, Grid, GridItem } from '@/styled-system/jsx'
 import { For, Text } from '@cerberus-design/react'
-import { BlogLink } from './components/blog-link'
 
 export default async function Page() {
   const posts = getBlogPosts()
