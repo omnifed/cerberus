@@ -6,15 +6,17 @@ import { css } from '@/styled-system/css'
 import { divider } from '@/styled-system/patterns'
 import Image, { ImageProps } from 'next/image'
 import { PropsWithChildren } from 'react'
+import { Example } from './example/index'
 import { mdxLists } from './mdx-lists'
 import { mdxTable } from './mdx-table'
 import { mdxText } from './mdx-text'
 
 export const sharedComponents = {
   BashTabs,
+  Example,
+  NoteAdmonition,
   CodeSnippet,
   CodePreview,
-  NoteAdmonition,
 
   // Next
   Image,

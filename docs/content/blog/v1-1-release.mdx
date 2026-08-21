@@ -10,13 +10,6 @@ timeToRead: 4
 tag: Release
 ---
 
-import { DEMOS as TabsDemos } from '@/app/docs/components/[slug]/components/tabs/static'
-import { DEMOS as GridLayoutDemos } from '@/app/docs/data-grid/[slug]/components/layout/static'
-import { DEMOS as GridThemeDemos } from '@/app/docs/data-grid/[slug]/components/theme/static'
-import { DEMOS as signalDemos } from '@/app/docs/signals/[slug]/components/signal/static'
-import { DEMOS as storeDemos } from '@/app/docs/signals/[slug]/components/store/static'
-import { DEMOS as fetchingDemos } from '@/app/docs/signals/[slug]/components/fetching/static'
-
 This release adds new features, packages, and improvements to our entire ecosystem.
 
 ## Overview
@@ -40,7 +33,7 @@ and `indicatorPosition` props.
 
 The `indicatorPosition` will decide where the active indicator (e.g., line) is positioned matching the start/end positioning of our other position-related APIs.
 
-<CodePreview {...TabsDemos.vertical} />
+<Example path="components/tabs" demo="basic" />
 <br />
 
 Checkout the [Tabs documentation for more details](/docs/components/tabs).
@@ -58,7 +51,7 @@ content within the scope of the Grid Store via the `footer` prop.
 This works just like the `toolbar` in regards to just drop in the component you want
 rendered in that slot (and optionally use the `useDataGridContext` to get juicy data).
 
-<CodePreview {...GridLayoutDemos.basic} />
+<Example path="data-grid/layout" demo="footer" />
 <br />
 
 Checkout the [Data Grid footer documentation](/docs/data-grid/footer) for more details.
@@ -74,7 +67,7 @@ from the **cell content** rendered.
 Thus, the `ThemeOptions` offered to pass into the `theme` prop are the only safe
 styles we define for the layout.
 
-<CodePreview {...GridThemeDemos.basic} />
+<Example path="data-grid/theme" demo="basic" />
 <br />
 
 Checkout the [Data Grid Theme documentation](/docs/data-grid/theme) for more details.
@@ -112,7 +105,7 @@ If you have worked with Proxy-based state before, you know what we mean. :wink:
 With Cerberus signals, you can create **global signals** via `createSignal` or
 local (component-based) via the `useSignal` hook.
 
-<CodePreview {...signalDemos.basic} />
+<Example path="signals/signal" demo="basic" />
 <br />
 
 Read the [Reactivity documentation](/docs/signals/reactivity)
@@ -124,7 +117,7 @@ to create a scalable reactive API. This is how we design the Data Grid context!
 
 In Cerberus Signals, you can do this elegantly without any additional APIs.
 
-<CodePreview {...storeDemos.global} />
+<Example path="signals/store" demo="basic" />
 <br />
 
 Read the [Stores documentation](/docs/signals/stores)
@@ -141,7 +134,7 @@ Since these APIs are not related to React, you can **use them on any scope.** Li
 
 > Did we mention **no dependency arrays**? You don't need them with Cerberus Signals.
 
-<CodePreview {...storeDemos.global} />
+<Example path="signals/store" demo="global" />
 <br />
 
 - Read the [Computed documentation](/docs/signals/create-computed)
@@ -165,7 +158,7 @@ There are two steps to creating a signal-based promise:
 
 :bulb: _Any Cerberus query-related API is compatible with React `Suspense` and Error Boundaries out of the box._
 
-<CodePreview {...fetchingDemos.basic} />
+<Example path="signals/fetching" demo="basic" />
 <br />
 
 - Read the [query documentation](/docs/signals/create-query)

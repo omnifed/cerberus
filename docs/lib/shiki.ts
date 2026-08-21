@@ -1,13 +1,14 @@
 import {
-  transformerNotationDiff,
   transformerMetaHighlight,
-  transformerRenderIndentGuides,
+  transformerNotationDiff,
   transformerNotationWordHighlight,
+  transformerRenderIndentGuides,
 } from '@shikijs/transformers'
 import {
   BundledLanguage,
   BundledTheme,
   CodeToHastOptions,
+  codeToHtml,
   createCssVariablesTheme,
 } from 'shiki'
 
@@ -39,5 +40,19 @@ export function getShikiOptions(
       transformerMetaHighlight(),
       transformerRenderIndentGuides(),
     ],
+  }
+}
+
+/**
+ * Converts a code snippet to a shiki string. Mostly used for non-demo purposes.
+ * @param snippet - The code snippet to convert.
+ * @returns The code snippet as a string.
+ */
+export async function getCodeString(snippet: string): Promise<string> {
+  try {
+    return await codeToHtml(snippet, getShikiOptions('tsx'))
+  } catch (error) {
+    console.error('Error converting code to string:', error)
+    return ''
   }
 }

@@ -7,103 +7,29 @@ recipe: 'slots/tabs.ts'
 ark: 'tabs'
 ---
 
-import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import {
-  BasicTabsPreview,
-  SecondaryTabsPreview,
-  CustomTabsPreview,
-  VerticalTabsPreview,
-} from '../components/tabs/static'
+import { Example } from '@/components/example'
 
-```ts
-import { Tabs } from '@cerberus/react'
-```
+<CodeSnippet snippet="import { Tabs } from '@cerberus/react'" />
 
 ## Usage
 
 The `Tabs` component is used to create a tabbed interface.
 
-<CodePreview preview={<BasicTabsPreview />}>
-```tsx title="Basic demo"
-import { Tabs } from '@cerberus/react'
-import { Box } from 'styled-system/jsx'
-
-export function BasicTabsPreview() {
-  return (
-    <Box w="1/2">
-      <Tabs.Root defaultValue="overview">
-        <Tabs.List>
-          <Tabs.Tab value="overview">Overview</Tabs.Tab>
-          <Tabs.Tab value="features">Features</Tabs.Tab>
-          <Tabs.Tab value="pricing">Pricing</Tabs.Tab>
-        </Tabs.List>
-        <Tabs.Panel value="overview">Overview content</Tabs.Panel>
-        <Tabs.Panel value="features">Features content</Tabs.Panel>
-        <Tabs.Panel value="pricing">Pricing content</Tabs.Panel>
-      </Tabs.Root>
-    </Box>
-  )
-}
-```
-</CodePreview>
+<Example path="components/tabs" demo="basic" />
 
 ## Palette
 
 The `palette` prop can be used to change the color of the Tabs.
 
-<CodePreview preview={<SecondaryTabsPreview />}>
-```tsx title="tabs.tsx" {4}
-function SecondaryTabsPreview() {
-  return (
-    <Box w="1/2">
-      <Tabs.Root defaultValue="overview-1" palette="secondaryAction">
-        <Tabs.List>
-          <Tabs.Tab value="overview-1">Overview</Tabs.Tab>
-          <Tabs.Tab value="features-1">Features</Tabs.Tab>
-          <Tabs.Tab value="pricing-1">Pricing</Tabs.Tab>
-        </Tabs.List>
-        <Tabs.Panel value="overview-1">Overview content</Tabs.Panel>
-        <Tabs.Panel value="features-1">Features content</Tabs.Panel>
-        <Tabs.Panel value="pricing-1">Pricing content</Tabs.Panel>
-      </Tabs.Root>
-    </Box>
-  )
-}
-```
-</CodePreview>
+<Example path="components/tabs" demo="secondary" />
 
 ## Orientation
 
 Use the `orientation` prop to render tabs vertically. The `indicatorPlacement` prop can be set to "start" (it defaults to "end").
 
-<CodePreview preview={<VerticalTabsPreview />}>
-```tsx title="Vertical tabs demo"
-import { Tabs } from '@cerberus/react'
-import { Box } from 'styled-system/jsx'
-
-export function VerticalTabsPreview() {
-  return (
-    <Box w="full">
-      <Tabs.Root
-        defaultValue="overview"
-        orientation="vertical"
-        indicatorPlacement="start"
-      >
-        <Tabs.List>
-          <Tabs.Tab value="overview">Overview</Tabs.Tab>
-          <Tabs.Tab value="features">Features</Tabs.Tab>
-          <Tabs.Tab value="pricing">Pricing</Tabs.Tab>
-        </Tabs.List>
-        <Tabs.Panel value="overview">Overview content</Tabs.Panel>
-        <Tabs.Panel value="features">Features content</Tabs.Panel>
-        <Tabs.Panel value="pricing">Pricing content</Tabs.Panel>
-      </Tabs.Root>
-    </Box>
-  )
-}
-```
-</CodePreview>
+<Example path="components/tabs" demo="vertical" />
 
 ## Primitives
 
@@ -117,84 +43,7 @@ You can utilize the primitive components or the `css` prop to customize the tabs
 | TabsIndicator | The indicator of the active tabs state  |
 | TabsContent   | The panel container for the tabs.       |
 
-<CodePreview preview={<CustomTabsPreview />}>
-```tsx title="Custom tabs demo"
-import { Tabs, For } from '@cerberus/react'
-import { Box } from 'styled-system/jsx'
-
-function CustomTabsPreview() {
-const tabData = [
-{
-id: 'asphodel',
-label: 'Asphodel',
-content: 'A peaceful and quiet region of the underworld.',
-},
-{
-id: 'elysium',
-label: 'Elysium',
-content: 'A paradise for the souls of the heroic and the virtuous.',
-},
-{
-id: 'tartarus',
-label: 'Tartarus',
-content: 'A deep abyss used as a dungeon of torment and suffering.',
-},
-]
-
-return (
-<Box w="1/2">
-<Tabs.Root defaultValue="asphodel">
-<Tabs.List
-css={{
-            bgColor: 'page.surface.200',
-            borderBottom: 'none',
-            rounded: 'md',
-            '& > :is([data-part=indicator])': {
-              bgColor: 'danger.surface.initial',
-              h: 'var(--height)',
-              rounded: 'md',
-              zIndex: 'base',
-            },
-          }} >
-{tabData.map((tab) => (
-<Tabs.Tab
-css={{
-                zIndex: 'decorator',
-                _selected: {
-                  color: 'danger.text.100',
-                },
-                _after: {
-                  display: 'none',
-                },
-              }}
-key={tab.id}
-value={tab.value} >
-{tab.label}
-</Tabs.Tab>
-))}
-</Tabs.List>
-
-        <For each={tabData}>
-          {(tab) => (
-            <Tabs.Panel
-              key={tab.id}
-              value={tab.value}
-              css={{
-                paddingBlock: 'md',
-              }}
-            >
-              {tab.content}
-            </Tabs.Panel>
-          )}
-        </For>
-      </Tabs.Root>
-    </Box>
-
-)
-}
-
-```
-</CodePreview>
+<Example path="components/tabs" demo="custom" />
 
 ## API
 
@@ -236,4 +85,7 @@ The `TabsParts` API is an Object containing the full family of components.
 | Trigger   | The `TabsTrigger` component which is the tab component.                 |
 | Content   | The `TabsContent` component which is the panel container.               |
 | Indicator | The `TabsIndicator` component which displays based on the active state. |
+
+```
+
 ```
