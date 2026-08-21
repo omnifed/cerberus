@@ -1,5 +1,12 @@
 # @cerberus-design/react
 
+## 1.8.1
+
+### Patch Changes
+
+- 1a294bd: Fix Compiler warnings
+- 629735e: Depedency updates
+
 ## 1.8.0
 
 ### Minor Changes

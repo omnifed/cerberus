@@ -1,5 +1,15 @@
 # @cerberus-design/data-grid
 
+## 1.8.1
+
+### Patch Changes
+
+- 1a294bd: Fix Compiler warnings
+- Updated dependencies [1a294bd]
+- Updated dependencies [629735e]
+  - @cerberus-design/react@1.8.1
+  - @cerberus-design/signals@1.8.1
+
 ## 1.8.0
 
 ### Minor Changes
