@@ -1,10 +1,10 @@
+import { type Post } from '#site/content'
 import { authors } from '@/data/authors'
-import { BlogFrontmatter } from '@/lib/content'
 import { HStack, VStack } from '@/styled-system/jsx'
 import { Avatar, DateFormatter, Tag, Text } from '@cerberus-design/react'
 
-export default function BlogHeader(props: BlogFrontmatter) {
-  const author = authors[props.author]
+export default function BlogHeader(props: Post) {
+  const author = authors[props.author as keyof typeof authors]
   if (!author) {
     console.error(`Author ${props.author} not found in authorData`)
     return null

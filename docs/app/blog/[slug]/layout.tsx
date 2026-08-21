@@ -1,13 +1,10 @@
-import { getBlogSlugs } from '@/lib/content'
+import { getBlogSlugs } from '@/lib/blog-content'
 import { Box } from '@/styled-system/jsx'
 import { cacheLife } from 'next/cache'
 import { PropsWithChildren } from 'react'
 
 export async function generateStaticParams() {
-  const files = getBlogSlugs()
-  return files.map((file) => ({
-    slug: file.replace(/\.mdx$/, ''),
-  }))
+  return getBlogSlugs() ?? []
 }
 
 export default async function Layout(props: PropsWithChildren<object>) {

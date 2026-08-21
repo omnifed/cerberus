@@ -1,16 +1,23 @@
+import { getBlogPosts } from '@/lib/blog-content'
 import { Container, Grid, GridItem } from '@/styled-system/jsx'
 import { For, Text } from '@cerberus-design/react'
-import { items } from './[slug]/content/items'
 import { BlogLink } from './components/blog-link'
 
 export default async function Page() {
+  const posts = getBlogPosts()
+
   return (
     <Container paddingBlock="4rem">
       <header>
         <Text as="h1" textStyle="heading-xl">
           Changeblog
         </Text>
-        <Text color="page.text.100" fontSize="1.25rem" paddingBlockStart="sm" textStyle="body-lg">
+        <Text
+          color="page.text.100"
+          fontSize="1.25rem"
+          paddingBlockStart="sm"
+          textStyle="body-lg"
+        >
           The Cerberus blog and updates for changes and releases.
         </Text>
       </header>
@@ -25,10 +32,10 @@ export default async function Page() {
         paddingBlockStart="4rem"
         w="full"
       >
-        <For each={items}>
-          {(meta, idx) => (
-            <GridItem key={meta.id}>
-              <BlogLink idx={idx} slug={meta.slug} />
+        <For each={posts}>
+          {(post, idx) => (
+            <GridItem key={post.slug}>
+              <BlogLink idx={idx} {...post} />
             </GridItem>
           )}
         </For>

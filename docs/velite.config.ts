@@ -1,4 +1,6 @@
 import { defineConfig, s } from 'velite'
+import rehypeSlug from 'rehype-slug'
+import rehypePrettyCode from 'rehype-pretty-code'
 
 export default defineConfig({
   root: 'content',
@@ -19,13 +21,17 @@ export default defineConfig({
         description: s.string(),
         author: s.string(),
         date: s.isodate(),
-        slug: s.path(),
+        slug: s.string(),
         category: s.string(),
-        version: s.string(),
+        version: s.number(),
         timeToRead: s.number(),
         tag: s.string(),
         code: s.mdx(),
       }),
     },
+  },
+
+  mdx: {
+    rehypePlugins: [rehypeSlug, rehypePrettyCode],
   },
 })
