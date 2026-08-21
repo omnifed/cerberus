@@ -1,10 +1,9 @@
-import { DocFrontmatter } from '@/app/docs/types'
+import { getBlogPost } from '@/lib/content'
 import { Container } from '@/styled-system/jsx'
 import { Show } from '@cerberus-design/react'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next/types'
-import BlogHeader, { type BlogHeaderProps } from '../components/blog-header'
-import { items } from './content/items'
+import BlogHeader from '../components/blog-header'
 
 type Props = {
   params: Promise<{
@@ -12,25 +11,22 @@ type Props = {
   }>
 }
 
-export async function generateStaticParams() {
-  return items
-    .map((slug) => {
-      if (slug.href) return { slug: slug.slug }
-    })
-    .filter(Boolean)
-}
-
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const { slug } = await props.params
   const slugPath = Array.isArray(slug) ? slug.join('/') : slug
 
+  const blog = getBlogPost(slug)
+  if (!blog) return notFound()
+
+  const { frontmatter } = blog
+
   try {
-    const page = await import(`./content/${slug}.mdx`)
-    const frontmatter = page?.frontmatter as DocFrontmatter
+    // const page = await import(`./content/${slug}.mdx`)
+    // const frontmatter = page?.frontmatter as DocFrontmatter
 
     return {
-      title: frontmatter?.title,
-      description: frontmatter?.description,
+      title: frontmatter.title,
+      description: frontmatter.description,
       openGraph: {
         images: [`/og/blog/${slugPath}`],
       },
@@ -43,27 +39,19 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
 export default async function BlogSlugPage(props: Props) {
   const { slug } = await props.params
-  const page = await import(`./content/${slug}.mdx`)
 
-  const frontmatter = page?.frontmatter as BlogHeaderProps
-  const Blog = page?.default
+  const blog = getBlogPost(slug)
+  if (!blog) return notFound()
 
-  if (!page) {
-    console.error(`Page not found for slug: ${slug}`)
-    return notFound()
-  }
+  const { frontmatter, content: Blog } = blog
 
-  if (Blog) {
-    return (
-      <Container pt="5rem" maxW="88ch">
-        <Show when={frontmatter != null}>
-          <BlogHeader {...frontmatter} />
-        </Show>
+  return (
+    <Container pt="5rem" maxW="88ch">
+      <Show when={frontmatter != null}>
+        <BlogHeader {...frontmatter} />
+      </Show>
 
-        <Blog />
-      </Container>
-    )
-  }
-
-  return null
+      <Blog />
+    </Container>
+  )
 }

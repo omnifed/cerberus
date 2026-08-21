@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "panda:build": "panda codegen && panda spec",
-    "dev": "rm -rf .next && panda codegen && panda spec && next dev",
-    "build": "pnpm run panda:build && next build",
+    "velite:build": "velite",
+    "dev": "rm -rf .next && pnpm run velite:build && panda codegen && panda spec && next dev",
+    "build": "pnpm run velite:build && pnpm run panda:build && next build",
     "start": "next start",
     "lint": "eslint ."
   },
@@ -59,6 +60,7 @@
     "remark-parse": "^11.0.0",
     "remove": "^0.1.5",
     "shiki": "^4.4.3",
-    "typescript": "catalog:ts"
+    "typescript": "catalog:ts",
+    "velite": "^0.4.0"
   }
 }

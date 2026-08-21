@@ -1,0 +1,91 @@
+---
+slug: cerberus-v1-5-release
+date: 06-26-2026
+author: caseyBaggz
+title: Cerberus v1.5 Release
+description: Data Grid Goodies
+category: release
+version: 1.5
+timeToRead: 3
+tag: Release
+---
+
+import { NoteAdmonition } from '@/app/components/Admonition'
+import BashTabs from '@/app/components/bash-tabs'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import CodePreview from '@/app/components/CodePreview'
+
+import { DEMOS as InitialLoadingDemos } from '@/app/docs/data-grid/[slug]/components/overlays/static'
+import { DEMOS as VisibilityDemos } from '@/app/docs/data-grid/[slug]/components/visibility/static'
+
+This release provides new features to the Data Grid along with general bugfixes.
+
+## Overview
+
+Here is a brief overview of what's new:
+
+- [React Features](#react-features) - New icons and fixes
+- [Data Grid Features](#data-grid-features) - Initial loading and column visibility
+
+## React Features
+
+This release was admittedly focused heavier on the Data Grid and less on the React features. Here are the high-level improvements made:
+
+1. Feat: Exposed the `CheckboxCheckedChangeDetails` type
+2. Feat: Defined new `Context.icons` of `search` , `filter`
+
+> **Note**: As a reminder, the context icons are built in and meant to be used for _fallback_ icons when no custom icon is provided for that use case. We **do not** recommend using them in place of local icons.
+
+## Data Grid Features
+
+We added two new beneficial features to the Data Grid which also exposes new context Actions and Accessors as a result.
+
+### Initial Loading
+
+We added a new `overlays.initialPending` prop to the Data Grid that allows you to show an initial loading phase to the Data Grid.
+
+This will render the only during the mounting phase of the component. Once `data` has been populated for the first time, the `pending` overlay will be used from then on.
+
+<CodePreview {...InitialLoadingDemos.initial} />
+
+#### New Context Values
+
+| Name    | Type              | Description                                                     |
+| ------- | ----------------- | --------------------------------------------------------------- |
+| `phase` | `Accessor<Phase>` | The current phase of the grid layout created via a computation. |
+
+View the [Initial Loading docs](/docs/data-grid/overlays#initial-loading)
+
+### Column Visibility
+
+In v1.5 we have added a new Feature that allows users to Hide or Manage the visibility of columns in the Data Grid.
+
+This is achieved by setting the `features.visibility` prop to `true` or by utilizing the options object. Doing so will display the visibility options in the column menu.
+
+> **Note**: We have updated the background color of Data Grid Popovers used for features to improve contrast and readability.
+
+<CodePreview {...VisibilityDemos.basic} />
+
+#### New Context Values
+
+| Name                   | Type                | Description                                                                               |
+| ---------------------- | ------------------- | ----------------------------------------------------------------------------------------- |
+| `allColsHidden`        | `Accessor<boolean>` | Whether all columns are hidden. Created via a computation.                                |
+| `totalHiddenCols`      | `Accessor<number>`  | The total number of hidden columns created via computation.                               |
+| `hiddenColsMaxReached` | `Accessor<boolean>` | Whether the maximum number of hidden columns has been reached. Created via a computation. |
+
+View the [Column Visibility docs](/docs/data-grid/visibility)
+
+## Thanks!
+
+This is another great release introducing some beneficial tools and overall improvements.
+
+A special thanks to everyone who has helped validate the APIs, docs, and submitted features or bugfixes for this release.
+
+> There is no "I" in Cerber-"US"
+
+## Upgrading
+
+To upgrade to this release, you can install the latest version of Cerberus React:
+
+<BashTabs code="npm run up:cerberus" />

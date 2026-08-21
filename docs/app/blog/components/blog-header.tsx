@@ -1,22 +1,10 @@
-import { Avatar, DateFormatter, Tag, Text } from '@cerberus-design/react'
+import { authors } from '@/data/authors'
+import { BlogFrontmatter } from '@/lib/content'
 import { HStack, VStack } from '@/styled-system/jsx'
-import authorData from '../data/authors.json'
+import { Avatar, DateFormatter, Tag, Text } from '@cerberus-design/react'
 
-type authors = 'caseyBaggz'
-
-export interface BlogHeaderProps {
-  author: authors
-  title: string
-  tag: string
-  date: string
-  description?: string
-  timeToRead?: string
-  category?: string
-  version?: string
-}
-
-export default function BlogHeader(props: BlogHeaderProps) {
-  const author = authorData[props.author]
+export default function BlogHeader(props: BlogFrontmatter) {
+  const author = authors[props.author]
   if (!author) {
     console.error(`Author ${props.author} not found in authorData`)
     return null

@@ -1,0 +1,265 @@
+---
+slug: cerberus-v1-1-release
+date: 03-24-2026
+author: caseyBaggz
+title: Cerberus v1.1 Release
+description: Introducing Signals
+category: release
+version: 1.1
+timeToRead: 4
+tag: Release
+---
+
+import Image from 'next/image'
+import BashTabs from '@/app/components/bash-tabs'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import CodePreview from '@/app/components/CodePreview'
+
+import { DEMOS as TabsDemos } from '@/app/docs/components/[slug]/components/tabs/static'
+import { DEMOS as GridLayoutDemos } from '@/app/docs/data-grid/[slug]/components/layout/static'
+import { DEMOS as GridThemeDemos } from '@/app/docs/data-grid/[slug]/components/theme/static'
+import { DEMOS as signalDemos } from '@/app/docs/signals/[slug]/components/signal/static'
+import { DEMOS as storeDemos } from '@/app/docs/signals/[slug]/components/store/static'
+import { DEMOS as fetchingDemos } from '@/app/docs/signals/[slug]/components/fetching/static'
+
+This release adds new features, packages, and improvements to our entire ecosystem.
+
+## Overview
+
+Kicking v1.1 with a bang...or should I say..._signal_? :eyes:
+
+> _Takes note: never write that joke again..._ :joy:
+
+Here is a brief overview of what's new:
+
+- [React Features](#react-features) - new primitive APIs and general updates
+- [Data Grid Features](#data-grid-features) - Data Grid gets some new goodies
+- [Signals](#signals) - React signal-based management and data-fetching at _0(1)_ speed
+
+## React Features
+
+### Tabs
+
+We have improved the Tabs API to support vertical orienation via the `orientation`
+and `indicatorPosition` props.
+
+The `indicatorPosition` will decide where the active indicator (e.g., line) is positioned matching the start/end positioning of our other position-related APIs.
+
+<CodePreview {...TabsDemos.vertical} />
+<br />
+
+Checkout the [Tabs documentation for more details](/docs/components/tabs).
+
+## Data Grid Features
+
+Our goal is to keep the Data Grid API growing with each release. We have two
+important updates with v1.1:
+
+### Footer Slot
+
+We've added support for a footer slot that will allow you to add custom
+content within the scope of the Grid Store via the `footer` prop.
+
+This works just like the `toolbar` in regards to just drop in the component you want
+rendered in that slot (and optionally use the `useDataGridContext` to get juicy data).
+
+<CodePreview {...GridLayoutDemos.basic} />
+<br />
+
+Checkout the [Data Grid footer documentation](/docs/data-grid/footer) for more details.
+
+### Theming
+
+Sometimes, you may have an intricate design that calls for the Data Grid but with
+some visual tweaks. We help streamline that effort with the new `theme` prop.
+
+Overall, the Data Grid doesn't style that much. The true style of the Grid comes
+from the **cell content** rendered.
+
+Thus, the `ThemeOptions` offered to pass into the `theme` prop are the only safe
+styles we define for the layout.
+
+<CodePreview {...GridThemeDemos.basic} />
+<br />
+
+Checkout the [Data Grid Theme documentation](/docs/data-grid/theme) for more details.
+
+## Signals
+
+In v1.1 we introduce potentially one of the most impactful tools to the React
+ecosystem since Tanstack: **Cerberus Signals**.
+
+### The Problem
+
+Since migrating to hooks, React has become more than it was ever orignally designed
+to be as an API. This means that it has scaled past its architecture. Especially,
+now that it is saturated in the market, the team can no longer move in the direction they need to for the best result for its users.
+
+Thus, the rise of libraries like [SolidJS](https://docs.solidjs.com/) who introduced
+the "Signal" pattern as an external state manager - validating there was hope for the future of frontend development.
+
+### Current Solutions
+
+There have been many external state libraries for React before Cerberus Signals. Rrom Redux to the closest signal-based solution Legend-State. However, all have fallen short
+in some area whether architecture or developer experience.
+
+We believe that we have fixed and improved in all of those areas. Let's dive in.
+
+> Cerberus Signals is highly inspired by [SolidJS](https://docs.solidjs.com/) in more than one way. This wouldn't exist without the Solid core team pushing boundaries and dreaming big.
+
+### State managent
+
+Signal-based state managent is the foundation of Cerberus Signals. We intentionally
+avoid the use of Proxies which compliment how the React engine works. A positive side-effect of this is also providing a better developer experience for debugging.
+
+If you have worked with Proxy-based state before, you know what we mean. :wink:
+
+With Cerberus signals, you can create **global signals** via `createSignal` or
+local (component-based) via the `useSignal` hook.
+
+<CodePreview {...signalDemos.basic} />
+<br />
+
+Read the [Reactivity documentation](/docs/signals/reactivity)
+
+### Stores
+
+Sometimes you may want a global single-source of truth for a chunk of signals and actions
+to create a scalable reactive API. This is how we design the Data Grid context!
+
+In Cerberus Signals, you can do this elegantly without any additional APIs.
+
+<CodePreview {...storeDemos.global} />
+<br />
+
+Read the [Stores documentation](/docs/signals/stores)
+
+### Effects & Composition
+
+Since Cerberus Signals are external to the React render engine, there is no longer
+a need for native APIs like `useMemo` or `useEffect` (unless you want to bring in the component lifecycle).
+
+Thus, you can `createComputed` values from multiple signals and watch for changes
+with `createEffect`.
+
+Since these APIs are not related to React, you can **use them on any scope.** Likewise, **effects can be nested** if you wanted to.
+
+> Did we mention **no dependency arrays**? You don't need them with Cerberus Signals.
+
+<CodePreview {...storeDemos.global} />
+<br />
+
+- Read the [Computed documentation](/docs/signals/create-computed)
+- Read the [Effects documentation](/docs/signals/create-effect)
+
+### Querys & Mutations
+
+One of the best parts of SolidJS is the magical signal-based fetching. We
+provide a similar API via queries.
+
+> We use the term "fetching" but queries resolve **any Promise**. The only limitation to what a query is for your application is your own imagination.
+
+Even more, when a query is referencing a signal - it will **autofetch** when the signal updates along with **caching** the result until it is invalidated.
+
+There are two steps to creating a signal-based promise:
+
+1. Define a query via `createQuery`
+2. Use the query in a component via the `useQuery` hook.
+
+> If you reference a signal in a query **you do not need mutations**. Just simply manage the signal being referenced.
+
+:bulb: _Any Cerberus query-related API is compatible with React `Suspense` and Error Boundaries out of the box._
+
+<CodePreview {...fetchingDemos.basic} />
+<br />
+
+- Read the [query documentation](/docs/signals/create-query)
+- Read the [mutation documentation](/docs/signals/create-mutation)
+
+### Benchmarks
+
+Now for the most important part - **the hard data**.
+
+None of this matters if this design doesn't scale. The goal for Cerberus Signals was to allow React developers to have as close to a SolidJS experience as possible in terms of performance and JSX rendering.
+
+If we can't make React render at _0(1)_ it's a waste...
+
+Today I'm proud to say the benchmarks on the APIs validate the effort and passion of our work has paid off.
+
+**Signal Benchmarks:**
+
+<div
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    height: '600px',
+    position: 'relative',
+  }}
+>
+  <Image
+    alt="Benchmark results for the signal APIs"
+    src="/signals-bench.webp"
+    fill
+    style={{
+      objectFit: 'contain',
+    }}
+  />
+</div>
+<br />
+
+Let's break down the results:
+
+- **The Diamond Problem (328 µs/iter)**: This is our crowning achievement. We just proved that iterating over a Set of 1,000 computeds, sorting them by depth, and executing them top-down takes 0.3 milliseconds.
+- **Wide Fan-Out (2.10 ms/iter)**: A buttery-smooth 60 frames-per-second UI gives you a budget of 16.6 ms per frame. Our graph can notify and execute 10,000 individual effects in just 2.1 ms. That leaves over 14 milliseconds for React to do its actual DOM painting.
+- **Deep Dependency Chain (318 µs/iter)**: A 1,000-level deep calculation resolved in a third of a millisecond. This proves our scheduler and `isFlushing` lock are incredibly efficient and prevent stack overflows.
+
+**Query Benchmarks:**
+
+<div
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    height: '600px',
+    position: 'relative',
+  }}
+>
+  <Image
+    alt="Benchmark results for the signal APIs"
+    src="/query-bench.webp"
+    fill
+    style={{
+      objectFit: 'contain',
+    }}
+  />
+</div>
+<br />
+
+These numbers are phenomenal:
+
+- 1. **The hashArgs Victory (398 ns)**
+     Sorting object keys and running JSON.stringify is notoriously dangerous in JavaScript because it can block the main thread. Our implementation is executing in 398 nanoseconds.
+  - **The Reality:** A microsecond is 1,000 nanoseconds. A millisecond is 1,000 microseconds. It takes a browser roughly 16,000 microseconds to paint a single frame. Our hashing algorithm is taking less than half of one microsecond. It is virtually invisible to the CPU.
+
+- 2. **Cache Retrieval & Deduplication (9.08 ms for 10,000 calls)**
+     This is the most critical benchmark for our Data Grid. If a user renders 10,000 rows, and each row calls `useQuery` for a shared configuration or parent data state, React has to mount 10,000 hooks.
+  - **The Reality:** Our library processes all 10,000 of those cache lookups and deduplicates them in 9 milliseconds. That averages out to 0.0009 milliseconds per query call. It proves that our `createSignal` wrapper will never be the bottleneck in a massive React application.
+
+### Installing Signals
+
+If you are interested in adopting signals, you can install it today:
+
+<BashTabs code="npm install @cerberus/signals@npm:@cerberus-design/signals" />
+
+## Thanks!
+
+This is another monumental release introducing a massive tool to the React community via Cerberus Signals.
+
+A special thanks to everyone who has helped validate the APIs, docs, and submitted features or bugfixes for this release.
+
+> There is no "I" in Cerber-"US"
+
+## Upgrading
+
+To upgrade to this release, you can install the latest version of Cerberus React:
+
+<BashTabs code="npm run up:cerberus" />
