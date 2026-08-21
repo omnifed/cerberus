@@ -69,6 +69,8 @@ interface PopoverContentProps {
 }
 
 export function PopoverContent(props: PopoverContentProps) {
+  const { ref } = props
+
   const store = useDataGridContext()
   const featureOpen = useRead(store.featureOpen)
 
@@ -78,7 +80,7 @@ export function PopoverContent(props: PopoverContentProps) {
   const data = meta[featureOpen.key as keyof typeof meta]
 
   return (
-    <Portal container={props.ref}>
+    <Portal container={ref}>
       <PopoverParts.Positioner>
         <PopoverParts.Content
           bgColor="page.bg.100"

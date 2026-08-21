@@ -19,6 +19,8 @@ interface GridViewportProps {
 }
 
 export const GridViewport = memo(function GridViewport(props: GridViewportProps) {
+  const { rootRef, overlays } = props
+
   const viewportRef = useRef<HTMLDivElement>(null)
 
   const store = useDataGridContext()
@@ -34,10 +36,9 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
   const shouldLock = createComputed(() => rowCount <= 0)
 
   const hasNonSkeleton = useMemo<boolean>(() => {
-    const overlays = props.overlays
     if (!overlays) return false
     return overlays?.pending !== 'skeleton'
-  }, [props.overlays])
+  }, [overlays])
 
   if (allColsHidden) {
     return <NoColumnsLayout />
@@ -87,14 +88,14 @@ export const GridViewport = memo(function GridViewport(props: GridViewportProps)
 
       <Show
         when={rowCount > 0}
-        fallback={<NoContentOverlay custom={props.overlays?.noContent} />}
+        fallback={<NoContentOverlay custom={overlays?.noContent} />}
       >
         {() => <TableRows viewportRef={viewportRef} />}
       </Show>
 
       <Show when={pending}>{() => <PendingOverlay variant={pendingVariant} />}</Show>
 
-      <PopoverContent ref={props.rootRef} />
+      <PopoverContent ref={rootRef} />
     </Scrollable>
   )
 })

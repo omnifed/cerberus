@@ -1,12 +1,6 @@
 'use client'
 
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useState,
-} from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   type ColorModes,
   type CustomThemes,
@@ -50,8 +44,17 @@ export function useTheme<C extends string = DefaultThemes>(
   options: UseThemeOptions<C> = {},
 ): ThemeContextValue<C> {
   const { updateMode, updateTheme, cache } = options
-  const [theme, setTheme] = useState<CustomThemes<C>>(defaultTheme)
-  const [colorMode, setColorMode] = useState<ColorModes>(defaultColorMode)
+
+  const [theme, setTheme] = useState<CustomThemes<C>>(() => {
+    if (typeof window === 'undefined') return defaultTheme
+    const stored = localStorage.getItem(THEME_KEY)
+    return (stored as CustomThemes<C>) ?? defaultTheme
+  })
+  const [colorMode, setColorMode] = useState<ColorModes>(() => {
+    if (typeof window === 'undefined') return defaultColorMode
+    const stored = localStorage.getItem(MODE_KEY)
+    return (stored as ColorModes) ?? defaultColorMode
+  })
 
   const handleThemeChange = useCallback(
     (newTheme: C) => {
@@ -69,24 +72,11 @@ export function useTheme<C extends string = DefaultThemes>(
     [updateMode],
   )
 
-  useLayoutEffect(() => {
-    const theme = localStorage.getItem(THEME_KEY)
-    if (theme) {
-      setTheme(theme as CustomThemes<C>)
-    }
-  }, [])
-
-  useLayoutEffect(() => {
-    const mode = localStorage.getItem(MODE_KEY)
-    if (mode) {
-      setColorMode(mode as ColorModes)
-    }
-  }, [])
-
+  // Synchronization effects are now limited with compiler strictly to updating
+  // external systems (DOM attributes & caching updates)
   useEffect(() => {
     const root = document.documentElement
     root.dataset.pandaTheme = theme
-
     if (cache) {
       localStorage.setItem(THEME_KEY, theme)
     }
@@ -96,17 +86,14 @@ export function useTheme<C extends string = DefaultThemes>(
     const root = document.documentElement
 
     if (colorMode === 'system') {
-      root.dataset.colorMode = window.matchMedia('(prefers-color-scheme: dark)')
-        .matches
+      root.dataset.colorMode = window.matchMedia('(prefers-color-scheme: dark)').matches
         ? 'dark'
         : 'light'
     } else {
       root.dataset.colorMode = colorMode
     }
 
-    if (cache) {
-      localStorage.setItem(MODE_KEY, colorMode)
-    }
+    if (cache) localStorage.setItem(MODE_KEY, colorMode)
   }, [colorMode, cache])
 
   return useMemo(
