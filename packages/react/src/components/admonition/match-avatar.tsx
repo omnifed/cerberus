@@ -1,7 +1,7 @@
 'use client'
 
+import { type ElementType } from 'react'
 import type { AdmonitionVariantProps } from 'styled-system/recipes'
-import { useRef, type ReactNode } from 'react'
 import { useCerberusContext } from '../../context/cerberus'
 import { Avatar } from '../avatar/avatar'
 
@@ -11,11 +11,11 @@ import { Avatar } from '../avatar/avatar'
  */
 
 interface AvatarRefProps {
-  page: ReactNode
-  info: ReactNode
-  success: ReactNode
-  warning: ReactNode
-  danger: ReactNode
+  page: ElementType
+  info: ElementType
+  success: ElementType
+  warning: ElementType
+  danger: ElementType
 }
 
 type MatchAvatarProps = AdmonitionVariantProps
@@ -31,22 +31,24 @@ export function MatchAvatar(props: MatchAvatarProps) {
     dangerNotification: DangerIcon,
   } = icons
 
-  // cache the el since the result is static and the component is client side
-  const elRef = useRef<AvatarRefProps>({
-    page: <Avatar gradient="charon-light" fallback={<InfoIcon />} size="sm" />,
-    info: (
-      <Avatar gradient="amphiaraus-dark" fallback={<InfoIcon />} size="sm" />
-    ),
-    success: (
-      <Avatar gradient="thanatos-dark" fallback={<SuccessIcon />} size="sm" />
-    ),
-    warning: (
-      <Avatar gradient="asphodel-light" fallback={<WarningIcon />} size="sm" />
-    ),
-    danger: (
-      <Avatar gradient="hades-light" fallback={<DangerIcon />} size="sm" />
-    ),
-  })
+  const ICON_MAP: AvatarRefProps = {
+    page: InfoIcon,
+    info: InfoIcon,
+    success: SuccessIcon,
+    warning: WarningIcon,
+    danger: DangerIcon,
+  }
 
-  return <>{elRef.current[palette]}</>
+  const gradient = GRADIENT_MAP[palette]
+  const Fallback = ICON_MAP[palette]
+
+  return <Avatar gradient={gradient} fallback={<Fallback />} size="sm" />
+}
+
+const GRADIENT_MAP: Record<string, string> = {
+  page: 'charon-light',
+  info: 'amphiaraus-dark',
+  success: 'thanatos-dark',
+  warning: 'asphodel-light',
+  danger: 'hades-light',
 }

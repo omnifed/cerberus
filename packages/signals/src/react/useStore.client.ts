@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useState } from 'react'
 
 /**
  * ## Using global stores within React components
@@ -27,11 +27,7 @@ import { useRef } from 'react'
  * - [createSignalStore](https://cerberus.digitalu.design/docs/signals/create-store-context)
  */
 export function useStore<T>(storeFactory: () => T): T {
-  const storeRef = useRef<T | null>(null)
-
-  if (storeRef.current === null) {
-    storeRef.current = storeFactory()
-  }
-
-  return storeRef.current as T
+  // oxlint-disable-next-line react-hooks/exhaustive-deps
+  const [cachedStore] = useState<T>(() => storeFactory())
+  return cachedStore
 }

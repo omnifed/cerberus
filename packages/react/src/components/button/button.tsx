@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useMemo } from 'react'
+import { createContext, useContext } from 'react'
 import { css, cx } from 'styled-system/css'
 import { Box } from 'styled-system/jsx'
 import { button } from 'styled-system/recipes'
@@ -40,8 +40,7 @@ function ButtonEl(props: ButtonProps) {
   const { pending = false, ...nativeProps } = elProps
 
   const styles = button(variantProps)
-
-  const value = useMemo(() => ({ pending }), [pending])
+  const value = { pending }
 
   return (
     <ButtonContext.Provider value={value}>
@@ -61,10 +60,11 @@ function ButtonEl(props: ButtonProps) {
  * a loading spinner.
  */
 export function ButtonIcon(props: CerberusProps<'div'>) {
+  const { children, ref } = props
   const { pending } = useContext(ButtonContext)
   return (
-    <Show when={pending} fallback={<>{props.children}</>}>
-      <Box data-scope="button" data-part="button-spinner" ref={props.ref} w="4">
+    <Show when={pending} fallback={<>{children}</>}>
+      <Box data-scope="button" data-part="button-spinner" ref={ref} w="4">
         <Spinner />
       </Box>
     </Show>

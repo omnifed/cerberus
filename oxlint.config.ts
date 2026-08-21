@@ -1,0 +1,11 @@
+import { defineConfig } from 'oxlint'
+
+export default defineConfig({
+  plugins: ['import', 'react', 'react-perf'],
+
+  ignorePatterns: [
+    'packages/tokens/src/data/**/*',
+    'styled-system/**/*',
+    '!styled-system/panda.config.ts',
+  ],
+})

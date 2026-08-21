@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, PropsWithChildren, useContext, useRef } from 'react'
+import { createContext, PropsWithChildren, useContext, useState } from 'react'
 
 export interface StoreProviderProps<TStore> {
   createStore: () => TStore
@@ -43,18 +43,15 @@ export function createStoreContext<TStore>(name?: string) {
   const StoreContext = createContext<TStore | null>(null)
 
   // 2. The Provider handles the lazy SSR initialization securely
-  function StoreProvider(props: PropsWithChildren<StoreProviderProps<TStore>>) {
-    const storeRef = useRef<TStore | null>(null)
+  function StoreProvider({
+    children,
+    createStore,
+  }: PropsWithChildren<StoreProviderProps<TStore>>) {
+    // useState with a callback guarantees createStore() is only executed
+    // once upon the initial render, satisfying the compiler's purity rules.
+    const [store] = useState(() => createStore())
 
-    if (storeRef.current === null) {
-      storeRef.current = props.createStore()
-    }
-
-    return (
-      <StoreContext.Provider value={storeRef.current}>
-        {props.children}
-      </StoreContext.Provider>
-    )
+    return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
   }
   StoreProvider.displayName = name ?? 'CerberusStoreProvider'
 
