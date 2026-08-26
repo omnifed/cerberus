@@ -25,6 +25,7 @@ export function createTextStyles(): NonNullable<Theme['textStyles']> {
           fontSize: `${data.style.fontSize / 16}rem`,
           letterSpacing: `${data.style.letterSpacing / 16}rem`,
           lineHeight: `${Math.floor(data.style.lineHeightPercentFontSize)}%`,
+          textWrap: 'pretty',
         },
       }
 
