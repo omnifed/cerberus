@@ -1,8 +1,8 @@
-import { HStack, VStack } from 'styled-system/jsx'
 import { Notification } from '@carbon/icons-react'
 import { IconButton, Tag, formatNotifyCount } from '@cerberus-design/react'
+import { HStack, VStack } from 'styled-system/jsx'
 
-export function NotifyBadgePreview() {
+export function NotifyBadgeDemo() {
   const count = formatNotifyCount(100)
   return (
     <HStack alignItems="flex-end" justify="center" gap="10" w="1/3">

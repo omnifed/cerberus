@@ -1,0 +1,30 @@
+export const messages = {
+  info: {
+    type: 'info',
+    title: 'Update Available',
+    description: 'A new version of the app is available.',
+    action: {
+      label: 'Refresh',
+    },
+  },
+  success: {
+    type: 'success',
+    title: 'Profile Updated',
+    description: 'Your profile has been updated.',
+  },
+  warning: {
+    type: 'warning',
+    title: 'Slow Network',
+    description: 'Please check your connection.',
+  },
+  danger: {
+    type: 'error',
+    title: 'Unable to Update',
+    description: 'An error occurred. Please try again.',
+  },
+  loading: {
+    type: 'loading',
+    title: 'Loading',
+    description: "It's taking longer than normal.",
+  },
+}
