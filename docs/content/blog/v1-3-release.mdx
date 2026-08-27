@@ -14,7 +14,6 @@ import { DEMOS as FetchingDemos } from '@/app/docs/signals/[slug]/components/fet
 import { DEMOS as EffectDemos } from '@/app/docs/signals/[slug]/components/effect/static'
 import { DEMOS as UntrackDemos } from '@/app/docs/signals/[slug]/components/untrack/static'
 import { DEMOS as SignalDemos } from '@/app/docs/signals/[slug]/components/signal/static'
-import { DEMOS as ButtonDemos } from '@/app/docs/components/[slug]/components/button/static'
 import { SubtleDemo } from '@/app/docs/components/[slug]/components/components/notifications/static'
 
 This release massively improves Signals performance along with minor React updates.
@@ -37,7 +36,7 @@ We've added some new sizes to the `Button` recipe along with making the styling 
 **New Button size range**: `xs` up to `2xl` <br />
 **Default size**: `lg` (this is visually the old medium)
 
-<CodePreview {...ButtonDemos.size} />
+<Example path="components/button" demo="size" />
 <br />
 
 Fix: Button no longer allows a flex parent to shrink its width. Likewise, buttons now have built in SVG size management when using non-strict width SVGs.

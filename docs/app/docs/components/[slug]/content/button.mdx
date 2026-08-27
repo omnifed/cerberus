@@ -6,22 +6,22 @@ source: 'components/button'
 recipe: 'button.ts'
 ---
 
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/components/button'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
 import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/button/static'
 
-<CodeSnippet snippet={DEMOS.meta} />
+<CodeSnippet snippet="import { Button } from '@cerberus/react';" />
 
 ## Usage
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/button" demo="basic" />
 
 ### With Icon
 
 To display an icon, use the `ButtonParts` API.
 
-<CodePreview {...DEMOS.icon} />
+<Example path="components/button" demo="icon" />
 
 <NoteAdmonition description="When using the pending prop, the icon will be replaced with a spinner." />
 
@@ -29,37 +29,37 @@ To display an icon, use the `ButtonParts` API.
 
 To display a loading state, use the `ButtonParts.Icon` and set the `pending` prop to `true`.
 
-<CodePreview {...DEMOS.pending} />
+<Example path="components/button" demo="pending" />
 
 ## Shapes
 
 Use the `shape` prop to set the shape of the button. The `Button` component comes in three shapes: `default`, `sharp` and `rounded`.
 
-<CodePreview {...DEMOS.shapes} />
+<Example path="components/button" demo="shapes" />
 
 ## Usage
 
 Use the `usage` prop to set the usage style of the button. The `Button` component comes in three usage styles: `filled`, `outlined`, and `ghost`.
 
-<CodePreview {...DEMOS.usage} />
+<Example path="components/button" demo="usage" />
 
 ## Sizes
 
 Use the `size` prop to change the Button size. The options are `xs` up to `2xl`.
 
-<CodePreview {...DEMOS.size} />
+<Example path="components/button" demo="size" />
 
 ## Group
 
 You can group buttons together using the `ButtonGroup` component.
 
-<CodePreview {...DEMOS.group} />
+<Example path="components/button" demo="group" />
 
 ### Attached Button Group
 
 You can create an attached button group by setting the `layout` prop to `attached`.
 
-<CodePreview {...DEMOS.attached} />
+<Example path="components/button" demo="attached" />
 
 ## Primitives
 
@@ -70,13 +70,13 @@ You can utilize the primitive components or the `css` prop to customize the butt
 | Button.Root | The context provider for the Button parts |
 | Button.Icon | The icon/spinner of the button            |
 
-<CodePreview {...DEMOS.custom} />
+<Example path="components/button" demo="custom" />
 
 ## Global Customization
 
 To enable global customization, you can modify the `theme` configuration in your `panda.config.ts` file. For example, to customize the button component globally:
 
-<CodePreview {...DEMOS.global} />
+<Example path="components/button" demo="global" />
 <br />
 
 This change will set the default shape variant of all buttons to `default`.

@@ -10,7 +10,6 @@ timeToRead: 3
 tag: Release
 ---
 
-import { DEMOS as InitialLoadingDemos } from '@/app/docs/data-grid/[slug]/components/overlays/static'
 import { DEMOS as VisibilityDemos } from '@/app/docs/data-grid/[slug]/components/visibility/static'
 
 This release provides new features to the Data Grid along with general bugfixes.
@@ -41,7 +40,7 @@ We added a new `overlays.initialPending` prop to the Data Grid that allows you t
 
 This will render the only during the mounting phase of the component. Once `data` has been populated for the first time, the `pending` overlay will be used from then on.
 
-<CodePreview {...InitialLoadingDemos.initial} />
+<Example path="data-grid/overlays" demo="initial" />
 
 #### New Context Values
 
