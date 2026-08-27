@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "panda:build": "panda codegen && panda spec",
-    "dev": "rm -rf .next && pnpm run velite:build && panda codegen && panda spec && next dev",
-    "build": "pnpm run velite:build && pnpm run panda:build && next build",
+    "dev": "rm -rf .next && pnpm run build:panda && pnpm run /^dev:.*/",
+    "dev:next": "next dev",
+    "dev:velite": "velite dev --watch",
+    "build": "pnpm run --sequential /^build:.*/",
+    "build:a": "velite",
+    "build:b": "panda codegen && panda spec",
+    "build:c": "next build",
     "start": "next start",
-    "lint": "eslint .",
-    "velite:build": "velite",
-    "velite:dev": "velite dev --watch"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@carbon/icons-react": "catalog:jsx",

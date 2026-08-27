@@ -1,4 +1,4 @@
-import { items as blogItems } from '@/app/blog/[slug]/content/items'
+import { blog } from '#site/content'
 import { items as componentsItems } from '@/app/docs/components/[slug]/content/items'
 import { items as dataGridItems } from '@/app/docs/data-grid/[slug]/content/items'
 import { items as getStartedItems } from '@/app/docs/get-started/[slug]/content/items'
@@ -15,7 +15,6 @@ interface DocumentSet {
 }
 type Items =
   | typeof getStartedItems
-  | typeof blogItems
   | typeof componentsItems
   | typeof stylingItems
   | typeof themingItems
@@ -63,7 +62,10 @@ export const GET = async () => {
     {
       title: 'Blog',
       type: 'section',
-      children: formatItemsToDocSet(blogItems),
+      children: blog.map((item) => ({
+        title: item.title,
+        href: `/blog/${item.slug}`,
+      })),
     },
   ]
 
@@ -112,7 +114,7 @@ export const GET = async () => {
 
         return `${currentContent}\n${childrenContent}`.trim()
       })
-      .filter(Boolean) // Remove empty strings
+      .filter(Boolean)
       .join('\n')
   }
 
