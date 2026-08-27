@@ -1,8 +1,24 @@
-import { VStack } from '@/styled-system/jsx'
-import { Text } from '@cerberus-design/react'
-import { columnHelper } from '../quick-start/helper.demo'
+'use client'
+
+import { Edit } from '@carbon/icons-react'
+import { Format, IconButton, Text } from '@cerberus-design/react'
+import { HStack, VStack } from 'styled-system/jsx'
+import { columnHelper } from '../col-defs/employees'
 
 export const columns = [
+  columnHelper.accessor('id', {
+    header: 'ID',
+    width: 80,
+    features: {
+      pinning: {
+        defaultPosition: 'left',
+      },
+      sort: true,
+      filter: true,
+    },
+    cell: ({ value }) => <Text>#{value}</Text>,
+  }),
+
   columnHelper.accessorFn((row) => `${row.firstName} ${row.lastName}`, {
     id: 'fullName',
     header: 'Employee',
@@ -31,6 +47,34 @@ export const columns = [
           {row.email}
         </Text>
       </VStack>
+    ),
+  }),
+
+  columnHelper.accessorFn((row) => row.department.name, {
+    id: 'department',
+    header: 'Department',
+    features: { sort: true, filter: true },
+  }),
+
+  columnHelper.accessor('salary', {
+    header: 'Salary',
+    width: 135,
+    features: { sort: true },
+    cell: ({ value }) => (
+      <Format.Number value={value} style="currency" currency="USD" />
+    ),
+  }),
+
+  columnHelper.display({
+    id: 'actions',
+    header: 'Actions',
+    width: 125,
+    cell: () => (
+      <HStack justify="center" w="full">
+        <IconButton ariaLabel="View more options">
+          <Edit />
+        </IconButton>
+      </HStack>
     ),
   }),
 ]

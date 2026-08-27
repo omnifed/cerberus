@@ -4,8 +4,8 @@ description: Learn about the filtering feature in the Data Grid component.
 package: 'data-grid'
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { DEMOS } from '../components/filtering/static'
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/data-grid/filtering'
 
 ## Overview
 
@@ -23,13 +23,13 @@ Once a filter is active, the user can:
 1. **Edit filters**: Clicking the added "Edit filter" icon button that displays in the column header that has the active filter.
 2. **Clear filters**: Clicking the "Clear Filter" option in the column feature menu.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="data-grid/filtering" demo="basic" />
 
 ## Implementing column filtering
 
 You must opt-in to column filtering by setting the `features.filter` prop to `true` or passing in a custom filter function. Doing so will display the filter option in the column menu.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="data-grid/filtering" demo="basic" />
 
 ## Multi-column Filtering
 
@@ -41,7 +41,7 @@ You can globally filter the Grid by utilizing the `setGlobalFilter` action in an
 
 In this example, we create a custom Toolbar that filters the grid globally on input.
 
-<CodePreview {...DEMOS.global} />
+<Example path="data-grid/filtering" demo="global" />
 
 ## Custom Comparator
 
@@ -51,13 +51,13 @@ To provide a custom comparator, you can pass a function as the `features.filter`
 
 The snippet below is the same comparator we are using for all the demos on this page.
 
-<CodePreview {...DEMOS.compare} />
+<Example path="data-grid/filtering" demo="compare" />
 
 ### Operators
 
 The Data Grid provides an `OPERATORS` constant which is used to ensure consistency across any filter-based approach you may use.
 
-<CodePreview {...DEMOS.operators} />
+<Example path="data-grid/filtering" demo="operators" />
 
 ## Options
 
