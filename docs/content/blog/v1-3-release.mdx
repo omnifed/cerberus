@@ -10,12 +10,6 @@ timeToRead: 4
 tag: Release
 ---
 
-import { DEMOS as FetchingDemos } from '@/app/docs/signals/[slug]/components/fetching/static'
-import { DEMOS as EffectDemos } from '@/app/docs/signals/[slug]/components/effect/static'
-import { DEMOS as UntrackDemos } from '@/app/docs/signals/[slug]/components/untrack/static'
-import { DEMOS as SignalDemos } from '@/app/docs/signals/[slug]/components/signal/static'
-import { SubtleDemo } from '@/app/docs/components/[slug]/components/components/notifications/static'
-
 This release massively improves Signals performance along with minor React updates.
 
 ## Overview
@@ -56,6 +50,8 @@ Additionally, all deprecated APIs have been removed. These warnings have been ar
 
 While this update is not ideal, it does open the door to new Toast-related opportunities in the future.
 
+<Example path="components/notifications" demo="subtle" />
+<br />
 View the [Notification documentation for more details](/docs/components/notifications).
 
 ### Other notable changes
@@ -89,9 +85,8 @@ The `onCleanup` primitive is an essential memory-management tool within the Cerb
 
 In this example, we ensure a timer is cleared when it's parent effect is destroyed.
 
-<CodePreview {...EffectDemos.cleanup} />
+<Example path="signals/effect" demo="cleanup" />
 <br />
-
 View the [`onCleanup` docs](/docs/signals/on-cleanup)
 
 #### Untracking Signals
@@ -102,9 +97,8 @@ This prevents unwanted re-evaluations, React infinite loops, and over-subscribin
 
 In this example, we update a signal and show the latest result (tracked) and what the untracked version is.
 
-<CodePreview {...UntrackDemos.basic} />
+<Example path="signals/untrack" demo="basic" />
 <br />
-
 View the [`untrack` docs](/docs/signals/untrack)
 
 ### Query Overhaul
@@ -126,7 +120,8 @@ Depending on how you want to use the factory depends on how you execute the quer
 
 Nothing changes here. Just pass the factory in the `useQuery` hook and have the data ready before the return hits.
 
-<CodeSnippet snippet={FetchingDemos.queryUsageMeta} />
+<CodeSnippet snippet="const data = useQuery(myQuery(props.id))" />
+<br />
 
 ##### Server Component Pattern
 
@@ -138,20 +133,20 @@ This is the standard SSR pattern for React.
 
 Expose the raw, stateless fetcher function from your factory. You simply await it like a standard asynchronous function.
 
-<CodePreview {...FetchingDemos.server} />
+<Example path="signals/fetching" demo="server" />
 
 ###### 2. Client Component
 
 On the client side, use the `initialData` property. If the Cerberus cache is empty, it will instantly seed the cache with the server's data, skipping the `<Suspense>` boundary entirely.
 
-<CodePreview {...FetchingDemos.client} />
+<Example path="signals/fetching" demo="client" />
 <br />
 
 ##### Streaming Reponses (Async Generators)
 
 Cerberus queries also support streaming data via [Async Generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator). This is powerful if you are using an LLM API or your local API supports data streaming.
 
-<CodePreview {...FetchingDemos.streaming} />
+<Example path="signals/fetching" demo="streaming" />
 <br />
 
 View the [`createQuery` docs](/docs/signals/create-query)
@@ -164,7 +159,7 @@ In this example, we provide optimistic updates via the `onMutate/setQueryData` A
 
 If your optimistic update is incorrect, the UI will naturally resolve itself when the query completes.
 
-<CodePreview {...FetchingDemos.mutation} />
+<Example path="signals/fetching" demo="mutation" />
 <br />
 
 View the [`createMutation` docs](/docs/signals/create-mutation)
@@ -175,7 +170,7 @@ View the [`createMutation` docs](/docs/signals/create-mutation)
 
 When you want to use a **unqiue instance** of a global [Store](/docs/signals/stores) but do not need a [Context API](/docs/signals/create-store-context) - use the `useStore` hook.
 
-<CodePreview {...SignalDemos.useStore} />
+<Example path="signals/signal" demo="use-store" />
 <br />
 
 View the [`useStore` docs](/docs/signals/use-store)

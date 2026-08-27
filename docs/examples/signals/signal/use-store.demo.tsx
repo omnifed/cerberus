@@ -17,7 +17,9 @@ export function UseStoreDemo() {
     return () => store.onUnmount()
   }, [store])
 
-  store.trackRenders()
+  useEffect(() => {
+    store.trackRenders()
+  })
 
   return (
     <HStack justify="space-between" w="3/4">
