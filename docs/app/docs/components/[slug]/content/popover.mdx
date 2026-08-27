@@ -7,10 +7,10 @@ recipe: 'slots/popover.ts'
 ark: 'popover'
 ---
 
-import CodePreview from '@/app/components/CodePreview'
+import { Example } from '@/components/example'
 import { CodeSnippet } from '@/app/components/code-snippet'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import { DEMOS } from '../components/popover/static'
+import { DEMOS } from '@/examples/components/popover'
 
 <CodeSnippet snippet={DEMOS.meta} />
 
@@ -18,13 +18,13 @@ import { DEMOS } from '../components/popover/static'
 
 The `Popover` component is a controlled abstraction of the primitive parts that can be used to show or hide content.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/popover" demo="basic" />
 
 ## Helper Slots
 
 For advanced layouts, you can utilize the helper slots to streamline styling. Layout related slots correspond to the `size` variant provided.
 
-<CodePreview {...DEMOS.slots} />
+<Example path="components/popover" demo="slots" />
 
 ### Slots
 
@@ -42,31 +42,31 @@ The following slots are available on the `Popover` object:
 
 The `Popover` component supports sizes: `xs` to `lg`. This changes the padding of the layout slots.
 
-<CodePreview {...DEMOS.size} />
+<Example path="components/popover" demo="sizes" />
 
 ## Arrow
 
 Set the `usage` prop to `arrow` to show an arrow tip.
 
-<CodePreview {...DEMOS.arrow} />
+<Example path="components/popover" demo="arrow" />
 
 ## Positioning
 
 Use the `positioning.placement` prop to configure the underlying `floating-ui` positioning logic.
 
-<CodePreview {...DEMOS.placement} />
+<Example path="components/popover" demo="placement" />
 
 ## Lazy Mounting
 
 Use the `lazyMounted` and/or `unmountOnExit` prop to defer the mounting of the popover content until it's opened.
 
-<CodePreview {...DEMOS.lazy} />
+<Example path="components/popover" demo="lazy" />
 
 ## Nesting
 
 Popovers can be nested within each other. Each nested popover maintains its own open state and positioning.
 
-<CodePreview {...DEMOS.nested} />
+<Example path="components/popover" demo="nested" />
 
 ## Anchor
 
@@ -74,13 +74,13 @@ Use `PopoverParts.Anchor` to position the popover relative to a different elemen
 
 <NoteAdmonition description="Anchor positioning requires the use of PopoverParts since there needs to be an entire layout adjustment." />
 
-<CodePreview {...DEMOS.anchor} />
+<Example path="components/popover" demo="anchor" />
 
 ## Customizing
 
 You can customize the `Popover` using style props and data selectors on any slot primitve.
 
-<CodePreview {...DEMOS.custom} />
+<Example path="components/popover" demo="custom" />
 
 ## Guides
 

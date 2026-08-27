@@ -3,7 +3,7 @@ import { Collapsible } from '@cerberus-design/react'
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { ReactNode, Suspense } from 'react'
-import { Box, HStack, VStack } from 'styled-system/jsx'
+import { Box, HStack, Stack, VStack } from 'styled-system/jsx'
 import { CollapsibleCode } from './collapsible-code'
 import { CollapsibleProvider } from './collapsible-provider.client'
 import { CopyButton } from './copy-button.client'
@@ -15,37 +15,69 @@ interface ExampleProps {
 
 // This handles the heavy lifting, file reading, and cached Shiki execution.
 async function ExampleContent({ path, demo }: ExampleProps) {
-  let previewNode: ReactNode
+  let previewNode: ReactNode | null = null
   let rawContent = ''
 
   try {
-    const module = await import(`@/examples/${path}/index.tsx`)
-    const demoDef = module.DEMOS[demo]
-
-    if (!demoDef || !demoDef.preview) {
-      throw new Error('Demo or preview node not exported')
+    // Attempt to grab the preview from the registry.
+    // We wrap this in its own try/catch so it fails silently if
+    // the registry or demo key doesn't exist for code-only snippets.
+    try {
+      const module = await import(`@/examples/${path}/index.tsx`)
+      const demoDef = module.DEMOS?.[demo]
+      if (demoDef?.preview) {
+        previewNode = demoDef.preview
+      }
+    } catch (importError) {
+      // Ignored: Likely a code-only snippet without a registry entry
+      console.error('Error loading demo:', importError)
     }
-    previewNode = demoDef.preview
 
+    // Read the source file from disk.
+    // This is the true source of truth, so if this fails, we throw the error.
     const filePath = resolve(process.cwd(), `examples/${path}/${demo}.demo.tsx`)
     rawContent = await readFile(filePath, 'utf-8')
     rawContent = rawContent.replaceAll('@cerberus-design', '@cerberus/react')
-  } catch (error) {
-    console.error('Error loading example:', error)
+  } catch {
     return (
-      <div className="p-4 text-red-500 border border-red-500 rounded-md">
-        Failed to load demo:{' '}
+      <Stack
+        border="1px solid"
+        borderColor="danger.border.initial"
+        color="danger.text.100"
+        p="md"
+        rounded="md"
+      >
+        Failed to load code file:{' '}
         <code>
-          {path}/{demo}
+          {path}/{demo}.demo.tsx
         </code>
-      </div>
+      </Stack>
     )
   }
 
   const highlightedHtml = await getCodeString(rawContent)
 
+  if (!previewNode) {
+    return (
+      <Box
+        border="1px solid"
+        borderColor="page.border.initial/30"
+        my="6"
+        overflow="hidden"
+        pos="relative"
+        rounded="lg"
+      >
+        <Box right="4" pos="absolute" top="4" zIndex="decorator">
+          <CopyButton content={rawContent} />
+        </Box>
+        <CollapsibleCode htmlCode={highlightedHtml} />
+      </Box>
+    )
+  }
+
   return (
     <VStack
+      data-slot="example:root"
       bgColor="page.surface.initial/20"
       backdropFilter="auto"
       backdropBlur="16px"
@@ -57,7 +89,13 @@ async function ExampleContent({ path, demo }: ExampleProps) {
       rounded="lg"
       w="full"
     >
-      <HStack justify="center" py="md" w="full">
+      <HStack
+        data-slot="example:preview"
+        contain="content"
+        justify="center"
+        py="md"
+        w="full"
+      >
         {previewNode}
       </HStack>
 

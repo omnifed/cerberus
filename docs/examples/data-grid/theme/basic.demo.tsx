@@ -1,11 +1,11 @@
 'use client'
 
-import { queryEmployees } from '@/app/docs/data-grid/[slug]/components/api'
-import { columnHelper } from '@/app/docs/data-grid/[slug]/components/quick-start/helper.demo'
 import { DataGrid, ThemeOptions } from '@cerberus-design/data-grid'
 import { For, Text } from '@cerberus-design/react'
 import { useQuery } from '@cerberus-design/signals'
 import { Center, HStack, VStack } from 'styled-system/jsx'
+import { queryEmployees } from '../api'
+import { columnHelper } from '../col-defs/employees'
 
 const customTheme: ThemeOptions = {
   border: 'none',

@@ -1,7 +1,6 @@
 import { NoteAdmonition } from '@/app/components/Admonition'
 import BashTabs from '@/app/components/bash-tabs'
 import { CodeSnippet } from '@/app/components/code-snippet'
-import CodePreview from '@/app/components/CodePreview'
 import { css } from '@/styled-system/css'
 import { divider } from '@/styled-system/patterns'
 import Image, { ImageProps } from 'next/image'
@@ -16,7 +15,6 @@ export const sharedComponents = {
   Example,
   NoteAdmonition,
   CodeSnippet,
-  CodePreview,
 
   // Next
   Image,

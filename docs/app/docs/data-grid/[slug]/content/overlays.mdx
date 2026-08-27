@@ -4,10 +4,9 @@ description: Learn about the overlays for the Data Grid component.
 package: 'data-grid'
 ---
 
-import { Tag } from '@cerberus-design/react'
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/data-grid/overlays'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import { DEMOS } from '../components/overlays/static'
 
 ## Overview
 
@@ -25,7 +24,7 @@ Overlay slots are placed within the grid viewport which is the body of the Data 
 
 The `noContent` overlay appears when there are no rows to display in the Data Grid. This can be from providing an empty `data` Array or being filtered out via a feature or store action.
 
-<CodePreview {...DEMOS.defaultNone} />
+<Example path="data-grid/overlays" demo="default-none" />
 
 ### Custom No Content
 
@@ -33,7 +32,7 @@ Pass a component to the `overlays.noContent` prop to display a custom overlay.
 
 For convenience, the content is placed within a [`Center`](/docs/components/center) parent that matches the height of the viewport area.
 
-<CodePreview {...DEMOS.none} />
+<Example path="data-grid/overlays" demo="none" />
 
 ## Pending
 
@@ -51,25 +50,25 @@ For convenience, the content is placed within an absolutely positioned [`Box`](/
 
 Pass `'skeleton'` to the `overlays.pending` prop to display a skeleton pending overlay.
 
-<CodePreview {...DEMOS.skeleton} />
+<Example path="data-grid/overlays" demo="skeleton" />
 
 ### Linear
 
 Pass `'linear'` to the `overlays.pending` prop to display a linear-progress pending overlay.
 
-<CodePreview {...DEMOS.linear} />
+<Example path="data-grid/overlays" demo="linear" />
 
 ### Circular
 
 Pass `'circular'` to the `overlays.pending` prop to display a circular-progress pending overlay.
 
-<CodePreview {...DEMOS.circular} />
+<Example path="data-grid/overlays" demo="circular" />
 
 ### Custom Loading
 
 Pass a component to the `overlays.loading` prop to display a custom overlay.
 
-<CodePreview {...DEMOS.custom} />
+<Example path="data-grid/overlays" demo="custom" />
 
 ### Initial Loading
 
@@ -86,7 +85,7 @@ The initial pending phase is determined by two conditions:
 
 Once these conditions are met, the `pending` overlay will be displayed from that point forward.
 
-<CodePreview {...DEMOS.initial} />
+<Example path="data-grid/overlays" demo="initial" />
 
 ### Cell pending with Suspense
 
@@ -98,4 +97,4 @@ This is a natural resource provided by React (and [Signals](/docs/signals/overvi
 
 > _:bulb: "Wow! That was fast after the first click?!"_ <br /><br />Yup! The Cerberus signals lib caches querys. Since the state saves a string, the cache is smart enough to know that a string of "success" already exists. Thus, it bypasses the fetch. If the strings where unique (or the data more complex) it would handle it accordingly.
 
-<CodePreview {...DEMOS.column} />
+<Example path="data-grid/overlays" demo="column" />

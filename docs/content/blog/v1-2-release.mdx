@@ -10,8 +10,6 @@ timeToRead: 2
 tag: Release
 ---
 
-import { DEMOS as PopoverDemos } from '@/app/docs/components/[slug]/components/popover/static'
-import { DEMOS as GridOverlayDemos } from '@/app/docs/data-grid/[slug]/components/overlays/static'
 import { DEMOS as GridFilterDemos } from '@/app/docs/data-grid/[slug]/components/filtering/static'
 
 This release adds new features to React and the Data Grid.
@@ -29,7 +27,7 @@ Here is a brief overview of what's new:
 
 We have added a new `Popover` API for when you need something a little more verbose than a Tooltip - but not as heavy weight as a Dialog/Alert.
 
-<CodePreview {...PopoverDemos.slots} />
+<Example path="components/popover" demo="slots" />
 <br />
 
 Checkout the [Popover documentation for more details](/docs/components/popover).
@@ -51,7 +49,7 @@ Each overlay comes with built-in presets or you can pass a custom component to r
 
 For when there is no data to render, we have the `noContent` overlay.
 
-<CodePreview {...GridOverlayDemos.defaultNone} />
+<Example path="data-grid/overlays" demo="default-none" />
 <br />
 
 ### Pending
@@ -66,17 +64,17 @@ For a custom solution, just provide your preferred component instead of one of t
 
 #### Skeleton
 
-<CodePreview {...GridOverlayDemos.skeleton} />
+<Example path="data-grid/overlays" demo="skeleton" />
 <br />
 
 #### Linear
 
-<CodePreview {...GridOverlayDemos.linear} />
+<Example path="data-grid/overlays" demo="linear" />
 <br />
 
 #### Circular
 
-<CodePreview {...GridOverlayDemos.circular} />
+<Example path="data-grid/overlays" demo="circular" />
 <br />
 
 Checkout the [Data Grid overlays documentation](/docs/data-grid/overlays) for more details.

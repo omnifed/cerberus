@@ -5,7 +5,6 @@ export const DEMOS = {
     preview: <BasicDemo />,
   },
   options: {
-    id: 'theme.options',
     preview: null,
   },
 }

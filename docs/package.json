@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "rm -rf .next && pnpm run build:panda && pnpm run /^dev:.*/",
+    "dev": "rm -rf .next && pnpm run build:b && pnpm run /^dev:.*/",
     "dev:next": "next dev",
     "dev:velite": "velite dev --watch",
     "build": "pnpm run --sequential /^build:.*/",

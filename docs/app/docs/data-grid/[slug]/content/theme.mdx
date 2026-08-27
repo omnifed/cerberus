@@ -4,10 +4,8 @@ description: Learn how to customize the theme for the Data Grid component.
 package: 'data-grid'
 ---
 
+import { Example } from '@/components/example'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/theme/static'
 
 ## Overview
 
@@ -31,7 +29,7 @@ legend to show to the left of the Data Grid.
 Take note of how the Column definitions are also providing customized cell content
 in a way that also changes the appearance of the layout.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="data-grid/theme" demo="basic" />
 
 ## Type Safety
 
@@ -39,7 +37,7 @@ To provide the best typescript experience, we recommend assigning the `ThemeOpti
 type to a constant that will define your theme. This will enforce auto-completion
 while holding the constant accountable to fulfill the `ThemeOptions` type.
 
-<CodePreview {...DEMOS.options} />
+<Example path="data-grid/theme" demo="options" />
 
 ## Theme Options
 
