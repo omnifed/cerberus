@@ -17,7 +17,6 @@ export function CollapsibleCode({ htmlCode }: Props) {
       <cerberus.div
         dangerouslySetInnerHTML={{ __html: htmlCode }}
         suppressHydrationWarning
-        className="p-4 text-sm"
       />
     </Scrollable>
   )

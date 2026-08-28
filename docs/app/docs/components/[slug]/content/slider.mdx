@@ -7,18 +7,18 @@ recipe: 'slots/slider.ts'
 ark: 'slider'
 ---
 
-import CodePreview from '@/app/components/CodePreview'
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/components/slider'
 import { CodeSnippet } from '@/app/components/code-snippet'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import { DEMOS } from '../components/slider/static'
 
-<CodeSnippet snippet={DEMOS.meta} />
+<CodeSnippet snippet="import { Slider } from '@cerberus/react'" />
 
 ## Usage
 
 The `Slider` component is a controlled abstraction of the primitive slots to render a slider control.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/slider" demo="basic" />
 
 ## Examples
 
@@ -28,19 +28,19 @@ The `Slider` component supports adding header content (such as a label) through 
 
 In this example, we include the `Slider.ValueText` which displays the current value of the slider.
 
-<CodePreview {...DEMOS.label} />
+<Example path="components/slider" demo="label" />
 
 ### Sizes
 
 The `Slider` component supports different sizes through the `size` prop. The default size is `lg`.
 
-<CodePreview {...DEMOS.sizes} />
+<Example path="components/slider" demo="sizes" />
 
 ### Usage
 
 You can control the style of the `Slider` by using the `usage` prop. The default usage is `gradient`.
 
-<CodePreview {...DEMOS.usage} />
+<Example path="components/slider" demo="usage" />
 
 ### Palette
 
@@ -48,67 +48,67 @@ You can customize the color palette of the `Slider` by using the `palette` prop.
 
 <NoteAdmonition description="Palettes are only customizable for non-gradient usages by nature of how CSS backgrounds work." />
 
-<CodePreview {...DEMOS.palette} />
+<Example path="components/slider" demo="palette" />
 
 ### Range Slider
 
 To create a range slider, set multiple values to the `defaultValue` prop.
 
-<CodePreview {...DEMOS.range} />
+<Example path="components/slider" demo="range" />
 
 ### Prevent Overlapping
 
 Use the `minStepsBetweenThumbs` prop to avoid thumbs with the same value.
 
-<CodePreview {...DEMOS.overlap} />
+<Example path="components/slider" demo="overlap" />
 
 ### Collision Behavior
 
 Use the `thumbCollisionBehavior` prop to control how thumbs interact when they collide. Options are `"none"` (default), `"push"`, or `"swap"`.
 
-<CodePreview {...DEMOS.collision} />
+<Example path="components/slider" demo="collision" />
 
 ### Value Text
 
 To display the value text of the slider, use the `Slider.ValueText` slot.
 
-<CodePreview {...DEMOS.label} />
+<Example path="components/slider" demo="label" />
 
 ### Disabled
 
 To disable the slider, use the `disabled` prop.
 
-<CodePreview {...DEMOS.disabled} />
+<Example path="components/slider" demo="disabled" />
 
 ### Steps
 
 Use the `step` prop to define the step size of the slider which will create a discrete stop on value marker.
 
-<CodePreview {...DEMOS.steps} />
+<Example path="components/slider" demo="steps" />
 
 ### Marks
 
 To display marks on the slider, use the `marks` prop.
 
-<CodePreview {...DEMOS.marks} />
+<Example path="components/slider" demo="marks" />
 
 ### Dragging Indicator
 
 To display the dragging indicator, use the `showIndicator` prop.
 
-<CodePreview {...DEMOS.indicator} />
+<Example path="components/slider" demo="indicator" />
 
 ### Vertical
 
 To display a vertical slider, use the `orientation` prop.
 
-<CodePreview {...DEMOS.vertical} />
+<Example path="components/slider" demo="vertical" />
 
 ### Controlled
 
 When you want to control the slider value programmatically, use the `onValueChange` in combination with the `value` prop.
 
-<CodePreview {...DEMOS.controlled} />
+<Example path="components/slider" demo="controlled" />
 
 ### Store
 
@@ -118,13 +118,13 @@ This way you can access the slider state and methods from outside the slider.
 
 <NoteAdmonition description="When using using the Provider component, you are opting out of the Slider abstraction which means you need to utilize the utility components mentioned in the Guides section." />
 
-<CodePreview {...DEMOS.store} />
+<Example path="components/slider" demo="store" />
 
 ## Change End
 
 Use the `onValueChangeEnd` prop to listen to the end of the slider change. This will fire when the user releases the slider thumb.
 
-<CodePreview {...DEMOS.changeEnd} />
+<Example path="components/slider" demo="changeEnd" />
 
 ## Customizing
 
@@ -138,33 +138,53 @@ This abstraction renders the following shortcuts internally to streamline develo
 
 The `Slider.Track` and `Slider.Range` slots are used to render the track and range of the slider.
 
-<CodeSnippet snippet={DEMOS.trackShortcut} />
+<CodeSnippet
+  snippet={`<SliderTrack>
+    <SliderRange />
+</SliderTrack>`}
+/>
 
 ### `Slider.Thumbs`
 
 The `Slider.Thumb`, `Slider.DraggingIndicator`, and `Slider.HiddenInput` slots are used to render the thumb of the slider.
 
-<CodeSnippet snippet={DEMOS.thumbShortcut} />
+<CodeSnippet
+  snippet={`<SliderThumb>
+    <SliderDraggingIndicator />
+    <SliderHiddenInput />
+</SliderThumb>`}
+/>
 <br />
 If you want to render a range of thumbs, we also provide the `Slider.Thumbs` slot.
 
-<CodeSnippet snippet={DEMOS.thumbsShortcut} />
+<CodeSnippet snippet="<Slider.Thumbs values={[25, 50]} />" />
 
 ### `Slider.Marks`
 
 The `Slider.MarkerGroup` and `Slider.Marker` slots are used to render the mark of the slider.
 
-<CodeSnippet snippet={DEMOS.markShortcut} />
+<CodeSnippet
+  snippet={`<SliderMarkerGroup>
+    <SliderMarker />
+</SliderMarkerGroup>`}
+/>
 <br />
 If you want to render a couple of marks, we also provide the `Slider.Marks` slot.
 
-<CodeSnippet snippet={DEMOS.marksShortcut} />
+<CodeSnippet snippet="<Slider.Marks values={[0, 25, 50, 75, 100]} />" />
 
 ### Custom CSS Variables
 
 To help streamline custom styling, the slider uses a set of CSS variables that you can override:
 
-<CodeSnippet snippet={DEMOS.cssVariables} />
+<CodeSnippet
+  snippet={`'--slider-thumb-size': '1.5rem'   // size of the thumb
+'--slider-track-size': '0.5rem'   // height of the track
+'--slider-marker-center': '9px'   // the center position of the track
+'--slider-marker-size': '0.06rem' // size of the marker
+'--slider-marker-inset': '3px'    // distance from the track edge to the marker
+'--slider-dragging-indicator-offset': '-2rem' // The gap between the thumb and the dragging indicator`}
+/>
 
 ## Primitive Slots
 
