@@ -1,17 +1,20 @@
-import type { PropsWithChildren } from 'react'
-import { Box, Container, HStack } from '@/styled-system/jsx'
-import OnThisPage, { OTPFallback } from '@/app/components/OnThisPage'
-import { Suspense } from 'react'
+'use client'
 
-/**
- * This component is the layout for all the pages in the "Docs" section
- * of the app. It includes a main content area for the documentation
- * and the "On this page" sidebar for navigation.
- *
- * We don't use Scrollable here because it causes issues with the
- * "On this page" sidebar stickiness.
- */
+import OnThisPage, { OTPFallback } from '@/app/components/OnThisPage'
+import { TableOfContents } from '@/components/toc'
+import { getDocPost } from '@/lib/docs-content'
+import { Box, Container, HStack } from '@/styled-system/jsx'
+import { Show } from '@cerberus-design/react'
+import { useParams } from 'next/navigation'
+import { Suspense, type PropsWithChildren } from 'react'
+
 export function DocsPageLayout(props: PropsWithChildren<object>) {
+  const { slug } = useParams()
+  const reliableSlug = typeof slug === 'string' ? [slug] : (slug ?? [])
+  const path = getRoutePath(reliableSlug)
+
+  const post = getDocPost(path)
+
   return (
     <HStack
       data-slot="page-layout"
@@ -51,10 +54,21 @@ export function DocsPageLayout(props: PropsWithChildren<object>) {
         w="20rem"
         zIndex="base"
       >
-        <Suspense fallback={<OTPFallback />}>
-          <OnThisPage />
-        </Suspense>
+        <Show
+          when={post?.toc}
+          fallback={
+            <Suspense fallback={<OTPFallback />}>
+              <OnThisPage />
+            </Suspense>
+          }
+        >
+          <TableOfContents items={post?.toc ?? []} />
+        </Show>
       </Box>
     </HStack>
   )
+}
+
+function getRoutePath(slug: string[]): string {
+  return slug?.join('/') || '' // Handles the root /docs path
 }

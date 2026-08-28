@@ -11,11 +11,7 @@ export const prefetch = 'partial'
 
 export const metadata: Metadata = getDocsMetadata()
 
-type Props = {
-  params: Promise<{ slug: string[] }>
-}
-
-export default async function DocsLayout(props: PropsWithChildren<Props>) {
+export default async function DocsLayout(props: PropsWithChildren<object>) {
   'use cache'
   cacheLife('hours')
 
