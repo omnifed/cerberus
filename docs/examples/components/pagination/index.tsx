@@ -9,36 +9,27 @@ import { CustomDemo } from './custom.demo'
 
 export const DEMOS = {
   basic: {
-    id: 'pagination.basic',
     preview: <BasicDemo />,
   },
   attached: {
-    id: 'pagination.attached',
     preview: <AttachedDemo />,
   },
   compact: {
-    id: 'pagination.compact',
     preview: <CompactDemo />,
   },
   slice: {
-    id: 'pagination.slice',
     preview: <SliceDemo />,
   },
   alignment: {
-    id: 'pagination.alignment',
     preview: <AlignmentDemo />,
   },
   controlled: {
-    id: 'pagination.controlled',
     preview: <ControlledDemo />,
   },
   page: {
-    id: 'pagination.page',
     preview: <PageDemo />,
   },
   custom: {
-    id: 'pagination.custom',
     preview: <CustomDemo />,
   },
-  meta: `import { Pagination } from '@cerberus/react'`,
 }

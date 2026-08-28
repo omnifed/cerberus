@@ -1,10 +1,10 @@
 'use client'
 
 import { Pagination } from '@cerberus-design/react'
-import { useState } from 'react'
+import { useSignal } from '@cerberus-design/signals'
 
 export function ControlledDemo() {
-  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [currentPage, setCurrentPage] = useSignal<number>(1)
 
   return (
     <Pagination
