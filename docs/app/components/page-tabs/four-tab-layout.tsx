@@ -21,9 +21,7 @@ export interface FourTabLayoutProps {
  * A layout component that renders a page with four tabs used for the
  * Components section. The tabs are Overview, Guidelines, Dev, and A11y.
  */
-export default function FourTabLayout(
-  props: PropsWithChildren<FourTabLayoutProps>,
-) {
+export default function FourTabLayout(props: PropsWithChildren<FourTabLayoutProps>) {
   const { tabs, tabIcons } = createFourTabData()
 
   return (
@@ -87,10 +85,7 @@ export default function FourTabLayout(
                   asChild
                 >
                   <Link
-                    href={
-                      `/react/${props.path}/${tab}` as LinkProps<string>['href']
-                    }
-                    prefetch
+                    href={`/react/${props.path}/${tab}` as LinkProps<string>['href']}
                   >
                     {tabIcons[tab]}
                     {tab}

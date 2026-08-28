@@ -22,9 +22,7 @@ export interface TwoTabLayoutProps {
  * A layout component that renders a page with two tabs used for the
  * Components section. The tabs are Overview, Dev.
  */
-export default function TwoTabLayout(
-  props: PropsWithChildren<TwoTabLayoutProps>,
-) {
+export default function TwoTabLayout(props: PropsWithChildren<TwoTabLayoutProps>) {
   const { tabs, tabIcons } = createTwoTabData()
   return (
     <>
@@ -90,7 +88,6 @@ export default function TwoTabLayout(
                     href={
                       `/${props.path}/${tab as string}` as LinkProps<string>['href']
                     }
-                    prefetch
                   >
                     {tabIcons[tab]}
                     {tab}

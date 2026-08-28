@@ -1,11 +1,13 @@
 import { blog } from '#site/content'
 import { items as componentsItems } from '@/app/docs/components/[slug]/content/items'
-import { items as dataGridItems } from '@/app/docs/data-grid/[slug]/content/items'
 import { items as getStartedItems } from '@/app/docs/get-started/[slug]/content/items'
 import { items as signalsItems } from '@/app/docs/signals/[slug]/content/items'
 import { items as stylingItems } from '@/app/docs/styling/[slug]/content/items'
 import { items as themingItems } from '@/app/docs/theming/[slug]/content/items'
+import { getDataGridDocs } from '@/lib/docs-content'
 import { version } from '@cerberus-design/react/package.json'
+
+const dataGridItems = getDataGridDocs()
 
 interface DocumentSet {
   title: string
@@ -40,7 +42,10 @@ export const GET = async () => {
         {
           title: 'Data Grid',
           type: 'sub-section',
-          children: formatItemsToDocSet(dataGridItems),
+          children: dataGridItems.map((item) => ({
+            title: item.title,
+            href: `/docs/${item.category}/${item.slug}`,
+          })),
         },
         {
           title: 'Signals',
