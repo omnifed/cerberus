@@ -6,7 +6,7 @@ import { useQuery } from '@cerberus-design/signals'
 import { useState, useTransition } from 'react'
 import { Stack } from 'styled-system/jsx'
 import { queryPaginatedEmployees } from '../api'
-import { columns } from '../quick-start/columns.demo'
+import { columns } from '../col-defs/employees'
 
 // Use native React state and transitions for updates to override Suspense.
 // Transitions prevent harsh reloads of the Data Grid post-initial rendering.

@@ -4,7 +4,7 @@ import { DataGrid } from '@cerberus-design/data-grid'
 import { useQuery } from '@cerberus-design/signals'
 import { Stack } from 'styled-system/jsx'
 import { queryEmployees } from '../api'
-import { columns } from '../quick-start/columns.demo'
+import { columns } from '../col-defs/employees'
 
 export function SizesDemo() {
   const data = useQuery(queryEmployees(1000))

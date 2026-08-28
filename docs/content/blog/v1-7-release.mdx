@@ -10,8 +10,6 @@ timeToRead: 3
 tag: Release
 ---
 
-import { DEMOS as GridDemos } from '@/app/docs/data-grid/[slug]/components/pagination/static'
-
 This release provides new features to the Data Grid and introduces the Slider component.
 
 ## Overview
@@ -49,7 +47,7 @@ This will trigger the rendering switch which will opt-out of row virtualization 
 
 <NoteAdmonition description="A reminder that when using server-side pagination, you are opting out of automatic pagination control. This means you must manually handle pagination state and update the grid as needed." />
 
-<CodePreview {...GridDemos.count} />
+<Example path="data-grid/pagination" demo="count" />
 <br />
 
 View the [Data Grid Pagination docs](/docs/data-grid/pagination)

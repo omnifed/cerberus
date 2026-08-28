@@ -4,9 +4,9 @@ description: Learn how to use pagination in the data grid.
 package: 'data-grid'
 ---
 
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/components/pagination'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import { DEMOS } from '../components/pagination/static'
 
 ## Overview
 
@@ -26,7 +26,7 @@ static footer of pagination controls at the bottom of the grid.
 
 Defining a `count` property on the `PaginationOptions` object will enable **server-side pagination**. See the [Server-Side Pagination](/docs/data-grid/pagination#server-side-pagination) section for more details.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="data-grid/pagination" demo="basic" />
 
 ## Page Sizes
 
@@ -37,13 +37,13 @@ To enable custom page sizes, you need to provide a `customRange` value to the
 
 When this is provided, the Data Grid will use the first value in `customRange` as the initial page size.
 
-<CodePreview {...DEMOS.sizes} />
+<Example path="data-grid/pagination" demo="sizes" />
 
 ## Default Page
 
 To set the default page, you can provide a `defaultPage` value to the `pagination` options.
 
-<CodePreview {...DEMOS.page} />
+<Example path="data-grid/pagination" demo="page" />
 
 ## Server-Side Pagination
 
@@ -54,7 +54,7 @@ This also means that the Data Grid will no longer automatically calculate the
 total number of pages based on the `count` and `pageSize` values
 (as per usual for server-side pagination).
 
-<CodePreview {...DEMOS.count} />
+<Example path="data-grid/pagination" demo="count" />
 
 ## Options
 
