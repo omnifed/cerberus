@@ -3,7 +3,7 @@
 import { Edit } from '@carbon/icons-react'
 import { Format, IconButton, Text } from '@cerberus-design/react'
 import { HStack, VStack } from 'styled-system/jsx'
-import { columnHelper } from '../quick-start/helper.demo'
+import { columnHelper } from '../col-defs/employees'
 
 export const columns = [
   columnHelper.accessor('id', {

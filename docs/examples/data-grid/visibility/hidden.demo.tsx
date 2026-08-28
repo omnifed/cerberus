@@ -1,12 +1,12 @@
 'use client'
 
 import { Edit } from '@carbon/icons-react'
-import { Format, IconButton, Text } from '@cerberus-design/react'
-import { HStack, VStack, Box } from 'styled-system/jsx'
-import { columnHelper } from '../quick-start/helper.demo'
-import { useQuery } from '@cerberus-design/signals'
 import { DataGrid } from '@cerberus-design/data-grid'
+import { Format, IconButton, Text } from '@cerberus-design/react'
+import { useQuery } from '@cerberus-design/signals'
+import { Box, HStack, VStack } from 'styled-system/jsx'
 import { queryEmployees } from '../api'
+import { columnHelper } from '../col-defs/employees'
 
 export function HiddenDemo() {
   const data = useQuery(queryEmployees(200))

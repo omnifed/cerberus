@@ -4,9 +4,8 @@ description: Learn about the column visibility feature in the Data Grid componen
 package: 'data-grid'
 ---
 
-import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import { DEMOS } from '../components/visibility/static'
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/data-grid/visibility'
 
 ## Overview
 
@@ -33,20 +32,20 @@ If the column list equals or exceeds 7 columns, a Search input will be displayed
 
 You must opt-in to the column visibility feature by setting the `features.visibility` prop to `true` or by utilizing the options object. Doing so will display the visibility options in the column menu.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="data-grid/visibility" demo="basic" />
 
 ## Default Visibility
 
 To set a column to be hidden by default, you can use the `defaultHidden` property
 in the `features.visibility` object.
 
-<CodePreview {...DEMOS.hidden} />
+<Example path="data-grid/visibility" demo="hidden" />
 
 ## Options
 
 The `visibility` feature accepts either a `boolean` or an object with the following properties:
 
-<CodePreview {...DEMOS.def} />
+<Example path="data-grid/visibility" demo="def" />
 
 | Params          | Required | Description                                     |
 | --------------- | -------- | ----------------------------------------------- |
