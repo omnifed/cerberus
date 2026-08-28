@@ -4,9 +4,9 @@ description: Learn how to create custom footers in the Data Grid component.
 package: 'data-grid'
 ---
 
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/data-grid/layout'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import { DEMOS } from '../components/layout/static'
 
 ## Overview
 
@@ -21,7 +21,7 @@ to accommodate the footer.
 
 <NoteAdmonition description="If you don't need the context of the grid, we recommended rendering your footer outside of the Data Grid component." />
 
-<CodePreview {...DEMOS.footer} />
+<Example path="data-grid/layout" demo="footer" />
 
 ## Grid Context
 

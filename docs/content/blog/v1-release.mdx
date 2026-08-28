@@ -12,7 +12,6 @@ tag: Release
 
 import { DEMOS as GroupDemos } from '@/app/docs/components/[slug]/components/group/static'
 import { DEMOS as PaginationDemos } from '@/app/docs/components/[slug]/components/pagination/static'
-import { DEMOS as DataGridDemos } from '@/app/docs/data-grid/[slug]/components/quick-start/static'
 
 This release adds new features, packages, and improvements to our entire ecosystem.
 
@@ -100,9 +99,7 @@ and not others depending on the context. We do this often with our component API
 
 Thus, we have added a `EnforceNoProperties` type that allows you easily achieve this.
 
-<CodeSnippet
-  snippet={`pinning?: (boolean & EnforceNoProperties<PinnedOptions>) | PinnedOptions`}
-/>
+<CodeSnippet snippet="pinning?: (boolean & EnforceNoProperties<PinnedOptions>) | PinnedOptions" />
 <br />
 
 This type will convert the Record passed into it to have a values of `never`. The
@@ -168,7 +165,7 @@ data-heavy tables with features like filtering, sorting, pagination, and more. O
 execution is inspired by the ideaology of MUI's DataGrid component with the performance
 enhancements of TanStack Table.
 
-<CodePreview {...DataGridDemos.basic} />
+<Example path="data-grid/quick-start" demo="basic" />
 <br />
 
 The concept is simple:

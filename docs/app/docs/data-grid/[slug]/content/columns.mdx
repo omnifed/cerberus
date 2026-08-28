@@ -4,9 +4,9 @@ description: Learn about building columns in the Data Grid component.
 package: 'data-grid'
 ---
 
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/data-grid/columns'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import { DEMOS } from '../components/columns/static'
 
 ## Overview
 
@@ -48,7 +48,7 @@ This allows you to customize the visual output appearance of each cell content.
 Display columns are used to render **static columns** that do not utilize
 data-driven column features (e.g., filtering or sorting).
 
-<CodePreview {...DEMOS.display} />
+<Example path="data-grid/columns" demo="display" />
 
 | Params  | Type                    | Required |
 | ------- | ----------------------- | -------- |
@@ -61,7 +61,7 @@ data-driven column features (e.g., filtering or sorting).
 Accessor columns are used to render data that is directly related to the data source
 and utilize all features.
 
-<CodePreview {...DEMOS.accessor} />
+<Example path="data-grid/columns" demo="accessor" />
 
 | Params  | Type                                   | Required |
 | ------- | -------------------------------------- | -------- |
@@ -74,7 +74,7 @@ Accessor function columns are used to render data that is derived from the data 
 They are typically used to display low-level customization like aggregating data or
 performing complex calculations.
 
-<CodePreview {...DEMOS.accessorFn} />
+<Example path="data-grid/columns" demo="accessorFn" />
 
 | Params     | Type                             | Required |
 | ---------- | -------------------------------- | -------- |

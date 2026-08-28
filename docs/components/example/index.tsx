@@ -3,7 +3,7 @@ import { Collapsible } from '@cerberus-design/react'
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { ReactNode, Suspense } from 'react'
-import { Box, HStack, Stack, VStack } from 'styled-system/jsx'
+import { Box, Float, HStack, Stack, VStack } from 'styled-system/jsx'
 import { CollapsibleCode } from './collapsible-code'
 import { CollapsibleProvider } from './collapsible-provider.client'
 import { CopyButton } from './copy-button.client'
@@ -95,15 +95,9 @@ async function ExampleContent({ path, demo }: ExampleProps) {
 
       <CollapsibleProvider>
         <Collapsible.Content pos="relative">
-          <Box
-            left="calc(100% - 3rem)"
-            pos="absolute"
-            top="4"
-            w="fit-content"
-            zIndex="decorator"
-          >
+          <Float placement="top-end" offset="6" zIndex="decorator">
             <CopyButton content={rawContent} />
-          </Box>
+          </Float>
 
           <CollapsibleCode htmlCode={highlightedHtml} />
         </Collapsible.Content>

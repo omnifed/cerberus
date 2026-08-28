@@ -4,13 +4,13 @@ description: A signal-driven store for reading and updating state in a highly pe
 package: 'data-grid'
 ---
 
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/data-grid/sorting'
 import { NoteAdmonition } from '@/app/components/Admonition'
 import BashTabs from '@/app/components/bash-tabs'
 import { CodeSnippet } from '@/app/components/code-snippet'
-import CodePreview from '@/app/components/CodePreview'
-import { DEMOS } from '../components/context/static'
 
-<CodeSnippet snippet={DEMOS.meta} />
+<CodeSnippet snippet="import { useDataGridContext } from '@cerberus/data-grid'" />
 
 ## Overview
 
@@ -26,7 +26,7 @@ To learn more about signals and how they work, see the [Signals documentation](h
 To recieve the context from the Data Grid, you simply use the `useDataGridContext` hook
 like you would any other hook in React.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="data-grid/context" demo="basic" />
 
 ## Reading Signals
 
@@ -39,13 +39,13 @@ used within a component.
 
 <NoteAdmonition description="Accessing a context value without using the mentioned hook will not be reactive." />
 
-<CodePreview {...DEMOS.signal} />
+<Example path="data-grid/context" demo="signal" />
 
 ## Using Actions
 
 Since actions only write changes, you can use them directly from the store.
 
-<CodePreview {...DEMOS.action} />
+<Example path="data-grid/context" demo="action" />
 
 ## Store Reference
 

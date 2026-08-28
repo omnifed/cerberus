@@ -1,11 +1,11 @@
 'use client'
 
 import { DecorativeBox } from '@/app/components/decorative-box'
-import { queryEmployees } from '@/app/docs/data-grid/[slug]/components/api'
-import { columns } from '@/app/docs/data-grid/[slug]/components/quick-start/columns.demo'
 import { Stack } from '@/styled-system/jsx'
 import { DataGrid } from '@cerberus-design/data-grid'
 import { useQuery } from '@cerberus-design/signals'
+import { queryEmployees } from '../api'
+import { columns } from '../col-defs/employees'
 
 export function BasicDemo() {
   const data = useQuery(queryEmployees(10))
