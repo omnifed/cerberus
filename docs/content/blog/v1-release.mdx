@@ -10,9 +10,6 @@ timeToRead: 4
 tag: Release
 ---
 
-import { DEMOS as GroupDemos } from '@/app/docs/components/[slug]/components/group/static'
-import { DEMOS as PaginationDemos } from '@/app/docs/components/[slug]/components/pagination/static'
-
 This release adds new features, packages, and improvements to our entire ecosystem.
 
 ## Overview
@@ -73,7 +70,7 @@ Sometimes you want to group elements together in different ways. We've added the
 From different orientations to gap options, we've got you covered. Here is an
 example of using it to attach elements together:
 
-<CodePreview {...GroupDemos.attached} />
+<Example path="components/group" demo="attached" />
 <br />
 
 Checkout the [Group documentation for more details](/docs/components/group).
@@ -87,7 +84,7 @@ of your chosen pagination strategy.
 In this demo, we show how you can use the `Pagination` API to manage and slice
 your data efficiently.
 
-<CodePreview {...PaginationDemos.slice} />
+<Example path="components/pagination" demo="slice" />
 <br />
 
 Checkout the [Pagination documentation for more details](/docs/components/pagination).
