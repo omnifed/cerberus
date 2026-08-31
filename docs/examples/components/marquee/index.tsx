@@ -1,13 +1,12 @@
 import { BasicDemo } from './basic.demo'
-import { SpacingDemo } from './spacing.demo'
+import { EdgesDemo } from './edges.demo'
+import { FiniteDemo } from './finite.demo'
+import { PauseDemo } from './pause.demo'
 import { ReverseDemo } from './reverse.demo'
 import { SideDemo } from './side.demo'
+import { SpacingDemo } from './spacing.demo'
 import { SpeedDemo } from './speed.demo'
-import { EdgesDemo } from './edges.demo'
-import { PauseDemo } from './pause.demo'
 import { StoreDemo } from './store.demo'
-import { FiniteDemo } from './finite.demo'
-import { VarsDemo } from './vars.demo'
 
 export const DEMOS = {
   basic: {

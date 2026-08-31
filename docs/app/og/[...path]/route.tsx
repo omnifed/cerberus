@@ -58,7 +58,7 @@ export async function GET(request: Request, props: Props) {
           description = frontmatter.description || description
           lib = frontmatter.package
         }
-      } catch (err) {
+      } catch {
         // Silent catch: use defaults if legacy page is also not found
       }
     }
