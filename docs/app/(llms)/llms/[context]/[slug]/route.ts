@@ -5,6 +5,10 @@ import { NextResponse } from 'next/server'
 import { readFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 
+function isVeliteContent(context: string): boolean {
+  return context === 'blog' || context === 'data-grid' || context === 'get-started'
+}
+
 export async function GET(
   request: Request,
   props: { params: Promise<{ context: string; slug: string }> },
@@ -18,7 +22,7 @@ export async function GET(
       docs: docs as typeof docs,
     }
 
-    const isVelite = context === 'blog' || context === 'data-grid'
+    const isVelite = isVeliteContent(context)
     const validContext = context as 'data-grid' | 'components'
 
     let docsDir = null

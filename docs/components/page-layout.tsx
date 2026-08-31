@@ -52,7 +52,7 @@ export function DocsPageLayout(props: PropsWithChildren<object>) {
         py="lg"
         top="lg"
         w="20rem"
-        zIndex="base"
+        zIndex="-1"
       >
         <Show
           when={post?.toc}

@@ -1,12 +1,13 @@
-import { blog } from '#site/content'
 import { items as componentsItems } from '@/app/docs/components/[slug]/content/items'
-import { items as getStartedItems } from '@/app/docs/get-started/[slug]/content/items'
 import { items as signalsItems } from '@/app/docs/signals/[slug]/content/items'
 import { items as stylingItems } from '@/app/docs/styling/[slug]/content/items'
 import { items as themingItems } from '@/app/docs/theming/[slug]/content/items'
-import { getDataGridDocs } from '@/lib/docs-content'
+import { getBlogPosts } from '@/lib/blog-content'
+import { getDataGridDocs, getGetStartedDocs } from '@/lib/docs-content'
 import { version } from '@cerberus-design/react/package.json'
 
+const blogPosts = getBlogPosts()
+const getStartedItems = getGetStartedDocs()
 const dataGridItems = getDataGridDocs()
 
 interface DocumentSet {
@@ -16,7 +17,6 @@ interface DocumentSet {
   children?: DocumentSet[]
 }
 type Items =
-  | typeof getStartedItems
   | typeof componentsItems
   | typeof stylingItems
   | typeof themingItems
@@ -31,7 +31,10 @@ export const GET = async () => {
         {
           title: 'Get Started',
           type: 'sub-section',
-          children: formatItemsToDocSet(getStartedItems),
+          children: getStartedItems.map((item) => ({
+            title: item.title,
+            href: `/docs/${item.category}/${item.slug}`,
+          })),
         },
         {
           title: 'Components',
@@ -66,7 +69,7 @@ export const GET = async () => {
     {
       title: 'Blog',
       type: 'section',
-      children: blog.map((item) => ({
+      children: blogPosts.map((item) => ({
         title: item.title,
         href: `/blog/${item.slug}`,
       })),

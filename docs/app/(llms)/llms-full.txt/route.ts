@@ -119,7 +119,7 @@ export async function GET() {
     // --- PHASE 2: Process Legacy MDX Content ---
     const docsDir = resolve(process.cwd(), 'app/docs')
     // Exclude the 'data-grid' folder so we don't process it twice
-    const legacyFiles = await getAllMdxFiles(docsDir, ['data-grid'])
+    const legacyFiles = await getAllMdxFiles(docsDir, ['data-grid', 'get-started'])
 
     for (const filePath of legacyFiles) {
       const rawContent = await readFile(filePath, 'utf-8')

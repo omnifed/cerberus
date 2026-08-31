@@ -56,7 +56,7 @@ export function Nav() {
       <GridItem gridColumnStart="1" gridColumnEnd="2">
         <HStack gap="lg">
           <NavLogoContent />
-          <GlobalLink href="/docs/get-started">Docs</GlobalLink>
+          <GlobalLink href="/docs/get-started/get-started">Docs</GlobalLink>
           <GlobalLink href="/blog">Blog</GlobalLink>
         </HStack>
       </GridItem>
