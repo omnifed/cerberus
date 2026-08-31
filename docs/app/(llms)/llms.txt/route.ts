@@ -20,7 +20,6 @@ type Items =
   | typeof componentsItems
   | typeof stylingItems
   | typeof themingItems
-  | typeof dataGridItems
   | typeof signalsItems
 
 export const GET = async () => {

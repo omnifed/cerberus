@@ -5,11 +5,9 @@ import { NextResponse } from 'next/server'
 import { readFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 
-type Context = 'blog' | 'data-grid' | 'components' | 'signals' | 'styling' | 'theming'
-
 export async function GET(
   request: Request,
-  props: { params: Promise<{ context: Context; slug: string }> },
+  props: { params: Promise<{ context: string; slug: string }> },
 ) {
   try {
     const { context, slug: rawSlug } = await props.params

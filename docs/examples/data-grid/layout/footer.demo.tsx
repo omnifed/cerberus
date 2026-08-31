@@ -3,7 +3,7 @@
 import { DataGrid, useDataGridContext } from '@cerberus-design/data-grid'
 import { useQuery, useRead } from '@cerberus-design/signals'
 import { HStack, Stack } from 'styled-system/jsx'
-import { queryEmployees } from '../api'
+import { type Employee, queryEmployees } from '../api'
 import { columns } from '../col-defs/employees'
 
 export function FooterDemo() {
