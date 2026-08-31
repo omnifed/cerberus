@@ -88,12 +88,8 @@ export const GET = async () => {
 
   function createContentUrl(href: string): string {
     const splitUrl = href.split('/')
-    const isBlog = splitUrl.length === 3
-
-    const path = isBlog
-      ? `${splitUrl[1]}/%5Bslug%5D/content/${splitUrl[2]}.mdx`
-      : `/llms/${splitUrl[2]}/${splitUrl[3]}.txt`
-
+    const isBlog = href.includes('/blog/')
+    const path = isBlog ? `/llms${href}.txt` : `/llms/${splitUrl[2]}/${splitUrl[3]}.txt`
     return path
   }
 

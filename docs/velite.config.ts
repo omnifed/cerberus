@@ -27,6 +27,7 @@ export default defineConfig({
         timeToRead: s.number(),
         tag: s.string(),
         code: s.mdx(),
+        raw: s.raw(), // for llms routes
       }),
     },
     docs: {
@@ -49,6 +50,7 @@ export default defineConfig({
           group: s.string(),
           order: s.number().default(999),
           code: s.mdx(),
+          raw: s.raw(), // for llms routes
         })
         .transform((data) => {
           // Transforms "docs/components/button" -> "components/button"
