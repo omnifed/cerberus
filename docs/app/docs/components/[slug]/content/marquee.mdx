@@ -7,54 +7,54 @@ recipe: 'slots/marquee.ts'
 ark: 'marquee'
 ---
 
-import CodePreview from '@/app/components/CodePreview'
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/components/marquee'
 import { CodeSnippet } from '@/app/components/code-snippet'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import { DEMOS } from '../components/marquee/static'
 
-<CodeSnippet snippet={DEMOS.meta} />
+<CodeSnippet snippet="import { Marquee } from '@cerberus/react'" />
 
 ## Usage
 
 The `Marquee` is an abracted API that combines multiple primitives into a single root component.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/marquee" demo="basic" />
 
 ## Spacing
 
 Use the `spacing` prop to control the gap between content instances.
 
-<CodePreview {...DEMOS.spacing} />
+<Example path="components/marquee" demo="spacing" />
 
 ## Reverse
 
 Use the `reverse` prop to reverse the direction of the marquee.
 
-<CodePreview {...DEMOS.reverse} />
+<Example path="components/marquee" demo="reverse" />
 
 ## Vertical Animation
 
 Use the `side` prop to animate the marquee vertically. The options are `top` and `bottom`.
 
-<CodePreview {...DEMOS.side} />
+<Example path="components/marquee" demo="side" />
 
 ## Speed
 
 Use the `speed` prop to control the animation speed in pixels per second.
 
-<CodePreview {...DEMOS.speed} />
+<Example path="components/marquee" demo="speed" />
 
 ## Edges
 
 Use the `edges` prop to display stylized edges on the marquee. The options are `both`, `start`, and `end`.
 
-<CodePreview {...DEMOS.edges} />
+<Example path="components/marquee" demo="edges" />
 
 ## Pause on Interaction
 
 Use the `pauseOnInteraction` prop to pause the marquee when users hover or focus on it, improving accessibility.
 
-<CodePreview {...DEMOS.pause} />
+<Example path="components/marquee" demo="pause" />
 
 ## Context
 
@@ -62,13 +62,13 @@ Access the combobox's state with `ComboboxContext` or the `useComboboxContext` h
 
 <NoteAdmonition description="Since combobox is an abstracted API, you'll need to build your own to obtain the context as we do in the example below." />
 
-<CodePreview {...DEMOS.store} />
+<Example path="components/marquee" demo="store" />
 
 ## Finite Loops
 
 To loop the marquee a finite number of times, set the `loopCount` prop on Marquee. Alternatively, use the `onLoopComplete` and `onComplete` callbacks to track the number of completed loops or when the animation fully finishes.
 
-<CodePreview {...DEMOS.finite} />
+<Example path="components/marquee" demo="finite" />
 
 ## Guides
 
@@ -76,7 +76,7 @@ To loop the marquee a finite number of times, set the `loopCount` prop on Marque
 
 The marquee component exposes CSS variables that can be used to customize its behavior and appearance.
 
-<CodeSnippet snippet={DEMOS.customMeta} />
+<Example path="components/marquee" demo="vars" />
 
 | Variable               | Description                         | Default                |
 | ---------------------- | ----------------------------------- | ---------------------- |

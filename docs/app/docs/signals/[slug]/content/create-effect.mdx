@@ -4,12 +4,12 @@ description: Learn how to create effects using Signals in React.
 package: 'signals'
 ---
 
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/signals/effect'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
 import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/effect/static'
 
-<CodeSnippet snippet={DEMOS.meta} />
+<CodeSnippet snippet="import { createEffect } from '@cerberus/signals'" />
 
 ## Usage
 
@@ -30,7 +30,7 @@ when `getCount` is updated.
 
 <NoteAdmonition description="In order for createEffect to track signal subscriptions, it is required that Accessors are used in the body." />
 
-<CodePreview {...DEMOS.basic} />
+<Example path="signals/effect" demo="basic" />
 
 ## With React effects
 
@@ -44,13 +44,13 @@ _the React component render lifecycle_.
       <br />
       <br />
       The only time you should use native React effects is if you need to access the{' '}
-      <em>React component lifecycle</em>. All other scenarios can be achieved using any of the
-      primitive APIs this library offers.
+      <em>React component lifecycle</em>. All other scenarios can be achieved using any
+      of the primitive APIs this library offers.
     </>
   }
 />
 
-<CodePreview {...DEMOS.native} />
+<Example path="signals/effect" demo="native" />
 
 ## API
 

@@ -24,7 +24,6 @@ export function LinkItem(props: PropsWithChildren<LinkItemProps>) {
     <Link
       aria-current={isCurrentPage() ? 'page' : undefined}
       href={props.href as LinkProps<string>['href']}
-      prefetch
       className={cx(
         'group',
         css({

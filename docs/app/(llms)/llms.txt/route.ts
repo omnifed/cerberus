@@ -1,11 +1,13 @@
-import { items as blogItems } from '@/app/blog/[slug]/content/items'
+import { blog } from '#site/content'
 import { items as componentsItems } from '@/app/docs/components/[slug]/content/items'
-import { items as dataGridItems } from '@/app/docs/data-grid/[slug]/content/items'
 import { items as getStartedItems } from '@/app/docs/get-started/[slug]/content/items'
 import { items as signalsItems } from '@/app/docs/signals/[slug]/content/items'
 import { items as stylingItems } from '@/app/docs/styling/[slug]/content/items'
 import { items as themingItems } from '@/app/docs/theming/[slug]/content/items'
+import { getDataGridDocs } from '@/lib/docs-content'
 import { version } from '@cerberus-design/react/package.json'
+
+const dataGridItems = getDataGridDocs()
 
 interface DocumentSet {
   title: string
@@ -15,11 +17,9 @@ interface DocumentSet {
 }
 type Items =
   | typeof getStartedItems
-  | typeof blogItems
   | typeof componentsItems
   | typeof stylingItems
   | typeof themingItems
-  | typeof dataGridItems
   | typeof signalsItems
 
 export const GET = async () => {
@@ -41,7 +41,10 @@ export const GET = async () => {
         {
           title: 'Data Grid',
           type: 'sub-section',
-          children: formatItemsToDocSet(dataGridItems),
+          children: dataGridItems.map((item) => ({
+            title: item.title,
+            href: `/docs/${item.category}/${item.slug}`,
+          })),
         },
         {
           title: 'Signals',
@@ -63,7 +66,10 @@ export const GET = async () => {
     {
       title: 'Blog',
       type: 'section',
-      children: formatItemsToDocSet(blogItems),
+      children: blog.map((item) => ({
+        title: item.title,
+        href: `/blog/${item.slug}`,
+      })),
     },
   ]
 
@@ -81,12 +87,8 @@ export const GET = async () => {
 
   function createContentUrl(href: string): string {
     const splitUrl = href.split('/')
-    const isBlog = splitUrl.length === 3
-
-    const path = isBlog
-      ? `${splitUrl[1]}/%5Bslug%5D/content/${splitUrl[2]}.mdx`
-      : `/llms/${splitUrl[2]}/${splitUrl[3]}.txt`
-
+    const isBlog = href.includes('/blog/')
+    const path = isBlog ? `/llms${href}.txt` : `/llms/${splitUrl[2]}/${splitUrl[3]}.txt`
     return path
   }
 
@@ -112,7 +114,7 @@ export const GET = async () => {
 
         return `${currentContent}\n${childrenContent}`.trim()
       })
-      .filter(Boolean) // Remove empty strings
+      .filter(Boolean)
       .join('\n')
   }
 

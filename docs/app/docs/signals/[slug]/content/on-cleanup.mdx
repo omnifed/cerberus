@@ -4,12 +4,12 @@ description: Learn how to register cleanup functions to effects.
 package: 'signals'
 ---
 
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/signals/effect'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
 import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/effect/static'
 
-<CodeSnippet snippet={DEMOS.cleanupMeta} />
+<CodeSnippet snippet="import { onCleanup } from '@cerberus/signals'" />
 
 ## Usage
 
@@ -24,7 +24,7 @@ This is the signal-based equivalent of returning a cleanup function in React's u
 
 In this example, we ensure a timer is cleared when it's parent effect is destroyed.
 
-<CodePreview {...DEMOS.cleanup} />
+<Example path="signals/effect" demo="cleanup" />
 
 ## When to use
 

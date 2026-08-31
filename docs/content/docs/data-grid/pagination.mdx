@@ -1,0 +1,95 @@
+---
+title: Pagination
+description: Learn how to use pagination in the data grid.
+package: 'data-grid'
+group: Layout
+order: 7
+---
+
+## Overview
+
+Pagination allows you to display a subset of data at a time which can be navigated
+through using the pagination controls.
+
+There are two types of pagination supported: **client-side** and **server-side**.
+
+- **Client-side pagination:** Default. The Data Grid manages everything in exchange of the full set of data being provided.
+- **Server-side pagination:** Opt-in via the `count` property on the `PaginationOptions` object. Using this requires manual management of the entire pagination state.
+
+## Implementing Pagination
+
+You must opt-in to pagination by setting the `pagination` prop to either `true`
+or using a `PaginationOptions` object on the Data Grid. Doing so will display a
+static footer of pagination controls at the bottom of the grid.
+
+Defining a `count` property on the `PaginationOptions` object will enable **server-side pagination**. See the [Server-Side Pagination](/docs/data-grid/pagination#server-side-pagination) section for more details.
+
+<Example path="data-grid/pagination" demo="basic" />
+
+## Page Sizes
+
+<NoteAdmonition description="The Data Grid comes built-int with a range of three predefined page sizes: 25, 50, and 100." />
+
+To enable custom page sizes, you need to provide a `customRange` value to the
+`pagination` options. This should be an Array of numbers representing the page sizes to display in the dropdown.
+
+When this is provided, the Data Grid will use the first value in `customRange` as the initial page size.
+
+<Example path="data-grid/pagination" demo="sizes" />
+
+## Default Page
+
+To set the default page, you can provide a `defaultPage` value to the `pagination` options.
+
+<Example path="data-grid/pagination" demo="page" />
+
+## Server-Side Pagination
+
+For **server-side pagination** where the total `count` is known beforehand, you can
+provide a `count` value to the `pagination` options.
+
+This also means that the Data Grid will no longer automatically calculate the
+total number of pages based on the `count` and `pageSize` values
+(as per usual for server-side pagination).
+
+<Example path="data-grid/pagination" demo="count" />
+
+## Options
+
+The `pagination` options accept the following properties:
+
+| Params             | Required | Description                                                                                                        |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------ |
+| `defaultPage`      | `false`  | The index of the page to display by default.                                                                       |
+| `count`            | `false`  | The total number of items in the grid. **This is useful for server-side pagination design**                        |
+| `pageSize`         | `false`  | The initial page size to use when the grid is first rendered. **This must be one of the values in `customRange`.** |
+| `customRange`      | `false`  | An array of custom page sizes to display in the dropdown. **This must include the `pageSize` value.**              |
+| `onPageChange`     | `false`  | A function to call when the page changes. **This is useful for server-side pagination design**                     |
+| `onPageSizeChange` | `false`  | A function to call when the page size changes. **This is useful for server-side pagination design**                |
+| `onSortChange`     | `false`  | A function to call when the sort order changes. **This is useful for server-side sorting design**                  |
+
+## Pagination Context
+
+The `useDataGridContext` hook provides access to the pagination state and can be used to update it from the component level within the grid.
+
+### Signals
+
+| Name                | Type                                       | Description                                                 |
+| ------------------- | ------------------------------------------ | ----------------------------------------------------------- |
+| `pageIndex`         | `Accessor<number>`                         | The current page index of the grid.                         |
+| `pageSize`          | `Accessor<number>`                         | The current page size of the grid.                          |
+| `pageRange`         | `Accessor<number[]>`                       | The page range options of the grid.                         |
+| `currentPageRange`  | `Accessor<{ start: number; end: number }>` | The current page range.                                     |
+| `pageCount`         | `Accessor<number>`                         | The current page count of the grid used for SSR pagination. |
+| `isServerPaginated` | `Accessor<boolean>`                        | If pagination is using server-based.                        |
+| `sorting`           | `Accessor<SortState[]>`                    | The current sorting state of the grid.                      |
+
+### Actions
+
+| Name           | Type                                                                 | Description                                 |
+| -------------- | -------------------------------------------------------------------- | ------------------------------------------- |
+| `setPage`      | `(details: PageDetails) => void`                                     | Updates the current page of the grid.       |
+| `setPageIndex` | `Setter<number>`                                                     | Updates the current page index of the grid. |
+| `setPageSize`  | `(size: number) => void`                                             | Updates the page size of the grid.          |
+| `setSort`      | `(colId: string, direction: SortDirection, multi?: boolean) => void` | Updates the sorting state of the grid.      |
+| `toggleSort`   | `(colId: string, multi?: boolean) => void`                           | Toggles the sort direction of a column.     |

@@ -1,46 +1,86 @@
 'use client'
 
+import { DocPage } from '@/app/docs/types'
 import { getDocPageNavItems } from '@/app/docs/utils/helpers.server'
+import { OrderedNavTree } from '@/lib/docs-content'
 import { cerberus, For, Show, Tag, Text } from '@cerberus-design/react'
-import { SideNavLinkItem } from './link-item'
 import { usePathname } from 'next/navigation'
+import { SideNavLinkItem } from './link-item'
 import { NEW } from './side-nav/tags'
 
 export function SideNav() {
   const pathname = usePathname()
-  const section = pathname.split('/')[2] || ''
+  const category = pathname.split('/')[2] || ''
+
+  const isVelite = category === 'data-grid'
+  const items = getDocPageNavItems(category)
 
   return (
-    <cerberus.nav
-      css={{
-        minW: '12.875rem',
-        px: 'sm',
-        py: 'lg',
-        w: 'full',
-      }}
-    >
-      <For each={getDocPageNavItems(section)}>
-        {(item, idx) => (
-          <Show
-            key={`${idx}:${item.id}`}
-            when={item.href}
-            fallback={
-              <Text color="page.text.100" px="sm" py="0.75rem" textStyle="heading-2xs">
-                {item.label}
-              </Text>
-            }
-          >
-            <SideNavLinkItem key={item.id} href={item.slug}>
-              {item.label}
-              <Show when={NEW.includes(item.href)}>
-                <Tag palette="page" usage="outlined" textStyle="label-sm">
-                  Preview
-                </Tag>
-              </Show>
-            </SideNavLinkItem>
-          </Show>
-        )}
-      </For>
+    <cerberus.nav minW="12.875rem" px="sm" py="lg" w="full">
+      <Show when={isVelite} fallback={<OldNavList items={items as DocPage[]} />}>
+        {() => <NavList items={items as OrderedNavTree} />}
+      </Show>
     </cerberus.nav>
+  )
+}
+
+type NavListProps = {
+  items: OrderedNavTree
+}
+
+function NavList(props: NavListProps) {
+  return (
+    <For each={props.items}>
+      {({ groupName, links }) => (
+        <div>
+          <Text color="page.text.100" px="sm" py="0.75rem" textStyle="heading-2xs">
+            {groupName}
+          </Text>
+          <For each={links}>
+            {(item) => (
+              <SideNavLinkItem key={item.title} href={item.href}>
+                {item.title.replace(/data grid/i, '')}
+                <Show when={NEW.includes(item.href)}>
+                  <Tag palette="page" usage="outlined" textStyle="label-sm">
+                    Preview
+                  </Tag>
+                </Show>
+              </SideNavLinkItem>
+            )}
+          </For>
+        </div>
+      )}
+    </For>
+  )
+}
+
+type OldNavListProps = {
+  items: DocPage[]
+}
+
+function OldNavList(props: OldNavListProps) {
+  return (
+    <For each={props.items}>
+      {(item, idx) => (
+        <Show
+          key={`${item.id}:${item.slug ?? idx}`}
+          when={item.slug}
+          fallback={
+            <Text color="page.text.100" px="sm" py="0.75rem" textStyle="heading-2xs">
+              {item.label}
+            </Text>
+          }
+        >
+          <SideNavLinkItem key={item.slug} href={item.slug}>
+            {item.label}
+            <Show when={NEW.includes(item.slug)}>
+              <Tag palette="page" usage="outlined" textStyle="label-sm">
+                Preview
+              </Tag>
+            </Show>
+          </SideNavLinkItem>
+        </Show>
+      )}
+    </For>
   )
 }

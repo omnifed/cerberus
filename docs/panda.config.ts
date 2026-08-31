@@ -14,7 +14,7 @@ export default createCerberusConfig({
     './node_modules/@cerberus-design/react/**/*.{ts,tsx,js,jsx}',
     './node_modules/@cerberus-design/data-grid/src/components/*.client.{ts,tsx}',
     './mdx-components.tsx',
-    './app/**/*.{ts,tsx}',
+    './**/*.{ts,tsx}',
   ],
   exclude: [],
 

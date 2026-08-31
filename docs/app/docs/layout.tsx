@@ -1,17 +1,17 @@
 import { Box, HStack, Scrollable } from '@/styled-system/jsx'
 import type { Metadata } from 'next'
 import { cacheLife } from 'next/cache'
-import type { ReactNode } from 'react'
+import type { PropsWithChildren } from 'react'
+import { SceneMatcher } from '../components/backgrounds/scene-matcher'
 import { SideNav } from '../components/shared/side-nav'
 import { AppBar, DocsPageLayout } from './shared'
 import { getDocsMetadata } from './utils/helpers.server'
-import { SceneMatcher } from '../components/backgrounds/scene-matcher'
 
 export const prefetch = 'partial'
 
 export const metadata: Metadata = getDocsMetadata()
 
-export default async function DocsLayout(props: { children: ReactNode }) {
+export default async function DocsLayout(props: PropsWithChildren<object>) {
   'use cache'
   cacheLife('hours')
 

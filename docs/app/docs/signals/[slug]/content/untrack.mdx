@@ -4,12 +4,11 @@ description: Learn how to read signals without subscribing to updates.
 package: 'signals'
 ---
 
-import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/signals/untrack'
 import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/untrack/static'
 
-<CodeSnippet snippet={DEMOS.meta} />
+<CodeSnippet snippet="import { untrack } from '@cerberus/signals'" />
 
 ## Usage
 
@@ -19,7 +18,7 @@ This prevents unwanted re-evaluations, React infinite loops, and over-subscribin
 
 In this example, we update a signal and show the latest result (tracked) and what the untracked version is.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="signals/untrack" demo="basic" />
 
 ## When to use
 

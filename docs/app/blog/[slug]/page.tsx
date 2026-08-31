@@ -1,10 +1,9 @@
-import { DocFrontmatter } from '@/app/docs/types'
+import { BlogHeader } from '@/components/blog-header'
+import { MDXContent } from '@/components/mdx-content'
+import { getBlogPost } from '@/lib/blog-content'
 import { Container } from '@/styled-system/jsx'
-import { Show } from '@cerberus-design/react'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next/types'
-import BlogHeader, { type BlogHeaderProps } from '../components/blog-header'
-import { items } from './content/items'
 
 type Props = {
   params: Promise<{
@@ -12,58 +11,36 @@ type Props = {
   }>
 }
 
-export async function generateStaticParams() {
-  return items
-    .map((slug) => {
-      if (slug.href) return { slug: slug.slug }
-    })
-    .filter(Boolean)
-}
-
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const { slug } = await props.params
   const slugPath = Array.isArray(slug) ? slug.join('/') : slug
 
-  try {
-    const page = await import(`./content/${slug}.mdx`)
-    const frontmatter = page?.frontmatter as DocFrontmatter
+  const post = getBlogPost(slug)
+  if (!post) return notFound()
 
+  try {
     return {
-      title: frontmatter?.title,
-      description: frontmatter?.description,
+      title: post.title,
+      description: post.description,
       openGraph: {
         images: [`/og/blog/${slugPath}`],
       },
     }
   } catch {
-    // Fallback if the MDX file doesn't exist
     return {}
   }
 }
 
 export default async function BlogSlugPage(props: Props) {
   const { slug } = await props.params
-  const page = await import(`./content/${slug}.mdx`)
 
-  const frontmatter = page?.frontmatter as BlogHeaderProps
-  const Blog = page?.default
+  const post = getBlogPost(slug)
+  if (!post) return notFound()
 
-  if (!page) {
-    console.error(`Page not found for slug: ${slug}`)
-    return notFound()
-  }
-
-  if (Blog) {
-    return (
-      <Container pt="5rem" maxW="88ch">
-        <Show when={frontmatter != null}>
-          <BlogHeader {...frontmatter} />
-        </Show>
-
-        <Blog />
-      </Container>
-    )
-  }
-
-  return null
+  return (
+    <Container pt="5rem" maxW="88ch">
+      <BlogHeader {...post} />
+      <MDXContent code={post.code} />
+    </Container>
+  )
 }

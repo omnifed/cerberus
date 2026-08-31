@@ -1,3 +1,4 @@
+import { Doc } from '@/lib/docs-content'
 import type { MDXProps } from 'mdx/types'
 import type { JSX } from 'react'
 
@@ -12,7 +13,7 @@ export interface DocMetadata {
 }
 
 export interface DocItem extends DocPage {
-  items: DocPage[]
+  items: Doc[]
 }
 
 export interface DocPage {

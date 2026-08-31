@@ -21,7 +21,6 @@ export function SideNavLinkItem(props: PropsWithChildren<LinkItemProps>) {
     <Link
       aria-current={isCurrentPage() ? 'page' : undefined}
       href={props.href as LinkProps<string>['href']}
-      prefetch
       className={css({
         alignItems: 'center',
         color: 'page.text.200',
