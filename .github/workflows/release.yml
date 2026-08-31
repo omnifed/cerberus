@@ -51,7 +51,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile && pnpm --filter styled-system run prepare && deno install
 
       - name: Create Version PR
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
           version: pnpm ci:version
           commit: 'chore(release): version packages'
