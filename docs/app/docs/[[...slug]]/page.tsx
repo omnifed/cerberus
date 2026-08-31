@@ -1,4 +1,5 @@
 import ApiLinks from '@/app/components/ApiLinks'
+import { CopyPageMenu } from '@/components/copy-page-menu'
 import { MDXContent } from '@/components/mdx-content'
 import { getDocPost, getDocSlugs } from '@/lib/docs-content'
 import { HStack, Stack } from '@/styled-system/jsx'
@@ -58,36 +59,25 @@ export default async function DocsPage(props: PropsWithChildren<Props>) {
         borderColor="page.border.initial/30"
         boxShadow="0 4px 30px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)"
         color="page.text.200"
-        gap="xs"
         h="19.625rem"
-        justifyContent="center"
-        mb="3.5rem"
+        justify="center"
+        pos="relative"
         ps="4rem"
-        rounded="xl"
         pb="lg"
+        rounded="xl"
         _systemMode={{
           bgColor: 'page.surface.100',
           borderColor: 'page.border.100',
           boxShadow: 'none',
         }}
-        css={{
-          '& > h1': {
-            textStyle: 'heading-md',
-          },
-          '& > p': {
-            textStyle: 'body-md',
-            textWrap: 'pretty',
-            w: '3/4',
-          },
-        }}
         style={{
           backdropFilter: 'var(--backdrop-blur) var(--backdrop-saturate)',
         }}
       >
-        <Text as="h1" color="inherit" textStyle="heading-lg">
+        <Text as="h1" color="inherit" textStyle="heading-md">
           {doc.title}
         </Text>
-        <Text color="inherit" textStyle="heading-sm">
+        <Text color="inherit" textStyle="body-md" w="3/4">
           {doc.description}
         </Text>
 
@@ -97,6 +87,10 @@ export default async function DocsPage(props: PropsWithChildren<Props>) {
           </HStack>
         </Show>
       </Stack>
+
+      <HStack justify="flex-end" pt="lg" w="full">
+        <CopyPageMenu endpoint={`/llms/${doc.slugAsParams}`} />
+      </HStack>
 
       <MDXContent code={doc.code} />
     </>
