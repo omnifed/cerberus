@@ -78,7 +78,7 @@ exports[`Oceanus Theme pageTokens should match the established baseline 1`] = `
         "description": "",
         "value": {
           "_darkMode": "{colors.neutral.95}",
-          "_lightMode": "{colors.brand.5}",
+          "_lightMode": "{colors.neutral.5}",
           "base": "{colors.neutral.95}",
         },
       },
