@@ -4,6 +4,7 @@ import {
   transformerNotationWordHighlight,
   transformerRenderIndentGuides,
 } from '@shikijs/transformers'
+import { connection } from 'next/server'
 import {
   BundledLanguage,
   BundledTheme,
@@ -50,6 +51,7 @@ export function getShikiOptions(
  */
 export async function getCodeString(snippet: string): Promise<string> {
   try {
+    await connection()
     return await codeToHtml(snippet, getShikiOptions('tsx'))
   } catch (error) {
     console.error('Error converting code to string:', error)
