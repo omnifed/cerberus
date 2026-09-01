@@ -17,6 +17,7 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
   slots: menuAnatomy.keys(),
 
   base: {
+    positioner: {},
     content: {
       '--menu-z-index': 'zIndex.popover',
       bgColor: 'page.surface.100',
