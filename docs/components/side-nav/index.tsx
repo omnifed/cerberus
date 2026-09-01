@@ -37,7 +37,7 @@ function NavList(props: NavListProps) {
   return (
     <For each={props.items}>
       {({ groupName, links }) => (
-        <div>
+        <div key={groupName}>
           <Text color="page.text.100" px="sm" py="0.75rem" textStyle="heading-2xs">
             {groupName}
           </Text>
@@ -71,7 +71,13 @@ function OldNavList(props: OldNavListProps) {
           key={`${item.id}:${item.slug ?? idx}`}
           when={item.slug}
           fallback={
-            <Text color="page.text.100" px="sm" py="0.75rem" textStyle="heading-2xs">
+            <Text
+              key={item.id}
+              color="page.text.100"
+              px="sm"
+              py="0.75rem"
+              textStyle="heading-2xs"
+            >
               {item.label}
             </Text>
           }
