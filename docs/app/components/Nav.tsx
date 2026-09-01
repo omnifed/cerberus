@@ -11,6 +11,9 @@ import { NavGHLogoContent, NavLogoContent } from './shared/nav/icon-items'
 import { Search } from './shared/nav/search'
 import { ThemeMenu } from './shared/theme-menu'
 import { GlobalLink } from './shared/nav/global-link'
+import { type LinkProps } from 'next/link'
+
+const GET_STARTED_PATH = '/docs/get-started/get-started' as LinkProps<string>['href']
 
 export function Nav() {
   return (
@@ -56,7 +59,7 @@ export function Nav() {
       <GridItem gridColumnStart="1" gridColumnEnd="2">
         <HStack gap="lg">
           <NavLogoContent />
-          <GlobalLink href="/docs/get-started/get-started">Docs</GlobalLink>
+          <GlobalLink href={GET_STARTED_PATH}>Docs</GlobalLink>
           <GlobalLink href="/blog">Blog</GlobalLink>
         </HStack>
       </GridItem>
