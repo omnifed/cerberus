@@ -1,14 +1,14 @@
-import { PropsWithChildren } from 'react'
-import { CollapsibleCode } from './code-preview/collapsible-code'
-import { getCodeString } from './code-preview/helpers'
+import { CollapsibleCode } from '@/components/example/collapsible-code'
+import { getCodeString } from '@/lib/shiki'
 import { Box } from '@/styled-system/jsx'
+import { PropsWithChildren } from 'react'
 
 interface Props {
   snippet: string
 }
 
 export async function CodeSnippet(props: PropsWithChildren<Props>) {
-  const content = await getCodeString(props.snippet)
+  const highlightedHtml = await getCodeString(props.snippet)
   return (
     <Box
       border="1px solid"
@@ -19,7 +19,7 @@ export async function CodeSnippet(props: PropsWithChildren<Props>) {
       rounded="lg"
       zIndex="-1"
     >
-      <CollapsibleCode code={content} />
+      <CollapsibleCode htmlCode={highlightedHtml} />
     </Box>
   )
 }

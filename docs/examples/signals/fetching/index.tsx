@@ -21,37 +21,15 @@ export const DEMOS = {
     preview: <StreamingDemo />,
   },
   without: {
-    id: 'fetching.without',
-    context: 'signals',
+    preview: null,
   },
   sub: {
-    id: 'fetching.sub',
-    context: 'signals',
+    preview: null,
   },
   server: {
-    id: 'fetching.server',
-    context: 'signals',
+    preview: null,
   },
   client: {
-    id: 'fetching.client',
-    context: 'signals',
+    preview: null,
   },
-
-  queryMeta: `import { createQuery, useQuery } from '@cerberus/signals'`,
-  mutationMeta: `import { createMutation, useMutation } from '@cerberus/signals'`,
-  useQueryMeta: `import { useQuery } from '@cerberus/signals'`,
-  useMutationMeta: `import { useMutation } from '@cerberus/signals'`,
-
-  queryUsageMeta: `const data = useQuery(myQuery(props.id))`,
-  mutationUsageMeta: `const { mutate, ...state } = useMutation(myMutation)`,
-
-  optimisticMeta: `const updateUser = createMutation((payload: User) => api.updateUser(payload), {
-    // Optimistically update the UI instantly
-    onMutate: (vars) => {
-      setQueryData<User>(getUser.key(vars.id), (prev) => {
-        if (!prev) return { id: vars.id, name: vars.name }
-        return { ...prev, name: vars.name }
-      })
-    },
-  })`,
 }

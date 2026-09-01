@@ -2,15 +2,11 @@
 
 import { DocPage } from '@/app/docs/types'
 import { getDocPageNavItems } from '@/app/docs/utils/helpers.server'
-import { OrderedNavTree } from '@/lib/docs-content'
+import { OrderedNavTree, isVeliteContent } from '@/lib/docs-content'
 import { cerberus, For, Show, Tag, Text } from '@cerberus-design/react'
 import { usePathname } from 'next/navigation'
 import { LinkItem } from './link-item'
 import { NEW } from './tags'
-
-function isVelite(category: string): boolean {
-  return category === 'data-grid' || category === 'get-started'
-}
 
 export function SideNav() {
   const pathname = usePathname()
@@ -20,7 +16,7 @@ export function SideNav() {
   return (
     <cerberus.nav minW="12.875rem" px="sm" py="lg" w="full">
       <Show
-        when={isVelite(category)}
+        when={isVeliteContent(category)}
         fallback={<OldNavList items={items as DocPage[]} />}
       >
         {() => <NavList items={items as OrderedNavTree} />}

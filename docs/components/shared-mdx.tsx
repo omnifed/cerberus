@@ -1,10 +1,10 @@
-import { NoteAdmonition } from '@/app/components/Admonition'
+import { NoteAdmonition, WarningAdmonition } from '@/app/components/Admonition'
 import BashTabs from '@/app/components/bash-tabs'
-import { CodeSnippet } from '@/app/components/code-snippet'
 import { css } from '@/styled-system/css'
 import { divider } from '@/styled-system/patterns'
 import Image, { ImageProps } from 'next/image'
 import { PropsWithChildren } from 'react'
+import { CodeSnippet } from './code-snippet'
 import { Example } from './example/index'
 import { mdxLists } from './mdx-lists'
 import { mdxTable } from './mdx-table'
@@ -14,6 +14,7 @@ export const sharedComponents = {
   BashTabs,
   Example,
   NoteAdmonition,
+  WarningAdmonition,
   CodeSnippet,
 
   // Next

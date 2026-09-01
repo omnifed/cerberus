@@ -16,5 +16,4 @@ export const DEMOS = {
   local: {
     preview: <LocalDemo />,
   },
-  meta: `import { createStoreContext } from '@cerberus/signals'`,
 }

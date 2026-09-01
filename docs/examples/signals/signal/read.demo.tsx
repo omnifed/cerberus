@@ -1,7 +1,6 @@
 'use client'
 
 import { DecorativeBox } from '@/app/components/decorative-box'
-import { createRenderStore } from '@/app/docs/signals/[slug]/components/render-store'
 import { HStack, Stack } from '@/styled-system/jsx'
 import { Button, For, Text } from '@cerberus-design/react'
 import {
@@ -11,6 +10,8 @@ import {
   useStore,
 } from '@cerberus-design/signals'
 import { useEffect } from 'react'
+import { createRenderStore } from '../render-store'
+import { useTrackRenders } from './track-renders'
 
 const store = createRenderStore()
 
@@ -19,11 +20,7 @@ export function ReadDemo() {
   const increment = () => store.setCount(store.count() + 1)
   const getCount = () => alert(store.count())
 
-  useEffect(() => {
-    return () => store.onUnmount()
-  }, [])
-
-  store.trackRenders()
+  useTrackRenders(store)
 
   return (
     <Stack gap="md" w="3/4">

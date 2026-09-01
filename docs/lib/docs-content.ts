@@ -9,6 +9,15 @@ export type OrderedNavTree = Array<{
   links: Array<Doc & { href: string }>
 }>
 
+export function isVeliteContent(context: string): boolean {
+  return (
+    context === 'blog' ||
+    context === 'data-grid' ||
+    context === 'get-started' ||
+    context === 'signals'
+  )
+}
+
 export function getDocs() {
   return docs
 }
@@ -51,7 +60,7 @@ function getNonVeliteItems(category: string) {
   return groupItems.items || []
 }
 
-// Get
+// Get Started
 
 export function getGetStartedDocs() {
   return _filterByCategory('get-started')
@@ -71,6 +80,19 @@ export function getDataGridDocLinks(): OrderedNavTree {
   return _getOrderedDocLinks(
     ['Get started', 'Layout', 'Features', 'Reference'],
     'data-grid',
+  )
+}
+
+// Signals
+
+export function getSignalsDocs() {
+  return _filterByCategory('signals')
+}
+
+export function getSignalsDocLinks(): OrderedNavTree {
+  return _getOrderedDocLinks(
+    ['Get started', 'Primitives', 'Hooks', 'Components'],
+    'signals',
   )
 }
 
