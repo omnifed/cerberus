@@ -11,16 +11,16 @@ interface LinkItemProps {
 
 export function LinkItem(props: PropsWithChildren<LinkItemProps>) {
   const pathname = usePathname()
+  const nextHref = `/${props.href}` as LinkProps<string>['href']
 
   function isCurrentPage(): boolean {
-    const component = pathname.split('/')[3] || ''
-    return props.href === component
+    return nextHref === pathname
   }
 
   return (
     <Link
       aria-current={isCurrentPage() ? 'page' : undefined}
-      href={props.href as LinkProps<string>['href']}
+      href={nextHref}
       className={css({
         alignItems: 'center',
         color: 'page.text.200',

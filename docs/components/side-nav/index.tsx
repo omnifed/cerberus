@@ -76,7 +76,7 @@ function OldNavList(props: OldNavListProps) {
             </Text>
           }
         >
-          <LinkItem key={item.slug} href={item.slug}>
+          <LinkItem key={item.slug} href={item.href.slice(1)}>
             {item.label}
             <Show when={NEW.includes(item.slug)}>
               <Tag palette="page" usage="outlined" textStyle="label-sm">

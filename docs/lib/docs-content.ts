@@ -94,7 +94,7 @@ export function _getOrderedDocLinks(
 
       acc[doc.group].push({
         ...doc,
-        href: `/docs/${doc.slugAsParams}`,
+        href: doc.path,
       })
 
       return acc
