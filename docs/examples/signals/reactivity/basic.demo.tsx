@@ -3,19 +3,15 @@
 import { HStack, Stack } from '@/styled-system/jsx'
 import { Button, Text } from '@cerberus-design/react'
 import { ReactiveText, useSignal } from '@cerberus-design/signals'
-import { useEffect } from 'react'
 import { createRenderStore } from '../render-store'
+import { useTrackRenders } from '../signal/track-renders'
 
 const store = createRenderStore()
 
 export function BasicDemo() {
   const [local, setLocal] = useSignal<string>('hello')
 
-  useEffect(() => {
-    return () => store.onUnmount()
-  }, [])
-
-  store.trackRenders()
+  useTrackRenders(store)
 
   return (
     <HStack justify="space-between" w="1/2">

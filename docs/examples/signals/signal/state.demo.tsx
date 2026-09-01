@@ -4,8 +4,8 @@ import { HStack, Stack } from '@/styled-system/jsx'
 import { Add, Subtract } from '@carbon/icons-react'
 import { Group, IconButton, Text } from '@cerberus-design/react'
 import { createComputed, createSignal, ReactiveText } from '@cerberus-design/signals'
-import { useEffect } from 'react'
 import { createRenderStore } from '../render-store'
+import { useTrackRenders } from './track-renders'
 
 const store = createRenderStore()
 
@@ -18,11 +18,7 @@ export function StateDemo() {
   const increment = () => setCount(count().concat([1]))
   const decrement = () => setCount((prev) => prev.slice(0, -1))
 
-  useEffect(() => {
-    return () => store.onUnmount()
-  }, [])
-
-  store.trackRenders()
+  useTrackRenders(store)
 
   return (
     <Stack direction="column" gap="md" w="3/4">

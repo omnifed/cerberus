@@ -3,8 +3,8 @@
 import { HStack, Stack } from '@/styled-system/jsx'
 import { Button, Text } from '@cerberus-design/react'
 import { ReactiveText, useStore } from '@cerberus-design/signals'
-import { useEffect } from 'react'
 import { createRenderStore } from '../render-store'
+import { useTrackRenders } from './track-renders'
 
 export function UseStoreDemo() {
   const store = useStore(createRenderStore)
@@ -13,13 +13,7 @@ export function UseStoreDemo() {
     store.setCount((prev) => prev + 1)
   }
 
-  useEffect(() => {
-    return () => store.onUnmount()
-  }, [store])
-
-  useEffect(() => {
-    store.trackRenders()
-  })
+  useTrackRenders(store)
 
   return (
     <HStack justify="space-between" w="3/4">

@@ -9,6 +9,15 @@ export type OrderedNavTree = Array<{
   links: Array<Doc & { href: string }>
 }>
 
+export function isVeliteContent(context: string): boolean {
+  return (
+    context === 'blog' ||
+    context === 'data-grid' ||
+    context === 'get-started' ||
+    context === 'signals'
+  )
+}
+
 export function getDocs() {
   return docs
 }

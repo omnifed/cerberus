@@ -1,18 +1,10 @@
 import { blog, docs } from '#site/content'
 import { processMdxForLlm } from '@/app/lib/llm-parser'
+import { isVeliteContent } from '@/lib/docs-content'
 import { processMdx } from '@/utils/process-mdx'
 import { NextResponse } from 'next/server'
 import { readFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
-
-function isVeliteContent(context: string): boolean {
-  return (
-    context === 'blog' ||
-    context === 'data-grid' ||
-    context === 'get-started' ||
-    context === 'signals'
-  )
-}
 
 export async function GET(
   request: Request,
