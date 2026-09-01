@@ -1,4 +1,4 @@
-import { NoteAdmonition } from '@/app/components/Admonition'
+import { NoteAdmonition, WarningAdmonition } from '@/app/components/Admonition'
 import BashTabs from '@/app/components/bash-tabs'
 import { CodeSnippet } from '@/app/components/code-snippet'
 import { css } from '@/styled-system/css'
@@ -14,6 +14,7 @@ export const sharedComponents = {
   BashTabs,
   Example,
   NoteAdmonition,
+  WarningAdmonition,
   CodeSnippet,
 
   // Next

@@ -1,10 +1,10 @@
 'use client'
 
-import { createRenderStore } from '@/app/docs/signals/[slug]/components/render-store'
 import { HStack } from '@/styled-system/jsx'
 import { Button, Text } from '@cerberus-design/react'
 import { ReactiveText, useSignal, useStore } from '@cerberus-design/signals'
 import { useEffect } from 'react'
+import { createRenderStore } from '../render-store'
 
 export function UseDemo() {
   const store = useStore(createRenderStore)

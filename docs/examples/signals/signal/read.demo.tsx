@@ -1,7 +1,6 @@
 'use client'
 
 import { DecorativeBox } from '@/app/components/decorative-box'
-import { createRenderStore } from '@/app/docs/signals/[slug]/components/render-store'
 import { HStack, Stack } from '@/styled-system/jsx'
 import { Button, For, Text } from '@cerberus-design/react'
 import {
@@ -11,6 +10,7 @@ import {
   useStore,
 } from '@cerberus-design/signals'
 import { useEffect } from 'react'
+import { createRenderStore } from '../render-store'
 
 const store = createRenderStore()
 

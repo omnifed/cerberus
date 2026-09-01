@@ -6,7 +6,12 @@ import { readFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 
 function isVeliteContent(context: string): boolean {
-  return context === 'blog' || context === 'data-grid' || context === 'get-started'
+  return (
+    context === 'blog' ||
+    context === 'data-grid' ||
+    context === 'get-started' ||
+    context === 'signals'
+  )
 }
 
 export async function GET(

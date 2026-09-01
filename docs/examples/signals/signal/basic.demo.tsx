@@ -1,9 +1,9 @@
 'use client'
 
-import { createRenderStore } from '@/app/docs/signals/[slug]/components/render-store'
 import { HStack, Stack } from '@/styled-system/jsx'
 import { Button, Text } from '@cerberus-design/react'
 import { ReactiveText, useStore } from '@cerberus-design/signals'
+import { createRenderStore } from '../render-store'
 import { useTrackRenders } from './track-renders'
 
 export function BasicDemo() {
