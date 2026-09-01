@@ -1,8 +1,8 @@
+import { getDocsItems } from '@/app/docs/utils/helpers.server'
 import { VStack } from '@/styled-system/jsx'
 import { BeeBat, ColorPalette, IbmMq, LogoReact, Rocket } from '@carbon/icons-react'
 import { For } from '@cerberus-design/react'
 import { LinkItem } from './link-item'
-import { getDocsItems } from '../utils/helpers.server'
 
 export function AppBar() {
   const navItems = getDocsItems()
@@ -33,7 +33,11 @@ export function AppBar() {
     >
       <For each={navItems}>
         {(item) => (
-          <LinkItem key={item.id} icon={getIcon(item.id as keyof typeof icons)} {...item}>
+          <LinkItem
+            key={item.id}
+            icon={getIcon(item.id as keyof typeof icons)}
+            {...item}
+          >
             {item.label}
           </LinkItem>
         )}

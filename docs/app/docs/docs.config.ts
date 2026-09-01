@@ -1,6 +1,5 @@
-import { type Doc, getDataGridDocs } from '@/lib/docs-content'
+import { type Doc, getDataGridDocs, getGetStartedDocs } from '@/lib/docs-content'
 import { items as componentsItems } from './components/[slug]/content/items'
-import { items as getStartedItems } from './get-started/[slug]/content/items'
 import { items as signalsItems } from './signals/[slug]/content/items'
 import { items as stylingItems } from './styling/[slug]/content/items'
 import { items as themingItems } from './theming/[slug]/content/items'
@@ -24,7 +23,7 @@ export const config: DocConfig = {
         description:
           'Learn how to get started with the Cerberus Design System, including installation and basic usage.',
       },
-      items: getStartedItems as unknown as Doc[],
+      items: getGetStartedDocs(),
     },
     {
       id: '2',

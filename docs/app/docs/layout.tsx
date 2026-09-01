@@ -1,10 +1,11 @@
+import { AppBar } from '@/components/app-bar'
+import { DocsPageLayout } from '@/components/page-layout'
+import { SideNav } from '@/components/side-nav'
 import { Box, HStack, Scrollable } from '@/styled-system/jsx'
 import type { Metadata } from 'next'
 import { cacheLife } from 'next/cache'
 import type { PropsWithChildren } from 'react'
 import { SceneMatcher } from '../components/backgrounds/scene-matcher'
-import { SideNav } from '../components/shared/side-nav'
-import { AppBar, DocsPageLayout } from './shared'
 import { getDocsMetadata } from './utils/helpers.server'
 
 export const prefetch = 'partial'

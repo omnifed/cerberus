@@ -9,22 +9,23 @@ describe('menu recipe', () => {
   })
 
   test('should have a positioner style', () => {
-    expect(menu.base?.positioner).toMatchObject({
-      zIndex: 'dropdown!',
-    })
+    expect(menu.base?.positioner).toMatchObject({})
   })
 
   test('should have a base style', () => {
     expect(menu.base?.content).toMatchObject({
+      '--menu-z-index': 'zIndex.popover',
       bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'page.border.200',
       boxShadow: 'lg',
       overflow: 'hidden',
       p: 'xs',
+      pos: 'relative',
       minW: '10rem',
       rounded: 'md',
       shadow: 'lg',
+      zIndex: 'calc(var(--menu-z-index) + var(--layer-index, 0))',
       _open: {
         animationStyle: 'slide-fade-in',
         animationDuration: 'fast',
@@ -39,7 +40,7 @@ describe('menu recipe', () => {
   test('should have a item style', () => {
     expect(menu.base?.item).toMatchObject({
       alignItems: 'center',
-      borderRadius: 'l1',
+      borderRadius: 'sm',
       color: 'page.text.initial',
       cursor: 'menuitem',
       display: 'flex',

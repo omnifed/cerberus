@@ -1,4 +1,4 @@
-import { getDataGridDocLinks } from '@/lib/docs-content'
+import { getDataGridDocLinks, getGetStartedDocLinks } from '@/lib/docs-content'
 import type { Metadata } from 'next'
 import { config } from '../docs.config'
 import type { DocPage } from '../types'
@@ -35,6 +35,8 @@ export function getDocPageNavItems(category: string) {
   switch (category) {
     case 'data-grid':
       return getDataGridDocLinks()
+    case 'get-started':
+      return getGetStartedDocLinks()
     default:
       return getNonVeliteItems(category)
   }

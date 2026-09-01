@@ -5,8 +5,8 @@ import { getDocPageNavItems } from '@/app/docs/utils/helpers.server'
 import { OrderedNavTree } from '@/lib/docs-content'
 import { cerberus, For, Show, Tag, Text } from '@cerberus-design/react'
 import { usePathname } from 'next/navigation'
-import { SideNavLinkItem } from './link-item'
-import { NEW } from './side-nav/tags'
+import { LinkItem } from './link-item'
+import { NEW } from './tags'
 
 function isVelite(category: string): boolean {
   return category === 'data-grid' || category === 'get-started'
@@ -15,9 +15,6 @@ function isVelite(category: string): boolean {
 export function SideNav() {
   const pathname = usePathname()
   const category = pathname.split('/')[2] || ''
-
-  console.log({ category })
-
   const items = getDocPageNavItems(category)
 
   return (
@@ -37,24 +34,23 @@ type NavListProps = {
 }
 
 function NavList(props: NavListProps) {
-  console.log({ items: props.items })
   return (
     <For each={props.items}>
       {({ groupName, links }) => (
-        <div>
+        <div key={groupName}>
           <Text color="page.text.100" px="sm" py="0.75rem" textStyle="heading-2xs">
             {groupName}
           </Text>
           <For each={links}>
             {(item) => (
-              <SideNavLinkItem key={item.title} href={item.href}>
+              <LinkItem key={item.title} href={item.href}>
                 {item.title.replace(/data grid/i, '')}
                 <Show when={NEW.includes(item.href)}>
                   <Tag palette="page" usage="outlined" textStyle="label-sm">
                     Preview
                   </Tag>
                 </Show>
-              </SideNavLinkItem>
+              </LinkItem>
             )}
           </For>
         </div>
@@ -68,7 +64,6 @@ type OldNavListProps = {
 }
 
 function OldNavList(props: OldNavListProps) {
-  console.log('Old nav list...')
   return (
     <For each={props.items}>
       {(item, idx) => (
@@ -76,19 +71,25 @@ function OldNavList(props: OldNavListProps) {
           key={`${item.id}:${item.slug ?? idx}`}
           when={item.slug}
           fallback={
-            <Text color="page.text.100" px="sm" py="0.75rem" textStyle="heading-2xs">
+            <Text
+              key={item.id}
+              color="page.text.100"
+              px="sm"
+              py="0.75rem"
+              textStyle="heading-2xs"
+            >
               {item.label}
             </Text>
           }
         >
-          <SideNavLinkItem key={item.slug} href={item.slug}>
+          <LinkItem key={item.slug} href={item.href.slice(1)}>
             {item.label}
             <Show when={NEW.includes(item.slug)}>
               <Tag palette="page" usage="outlined" textStyle="label-sm">
                 Preview
               </Tag>
             </Show>
-          </SideNavLinkItem>
+          </LinkItem>
         </Show>
       )}
     </For>
