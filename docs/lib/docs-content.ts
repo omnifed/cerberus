@@ -10,13 +10,7 @@ export type OrderedNavTree = Array<{
 }>
 
 export function isVeliteContent(context: string): boolean {
-  return (
-    context === 'blog' ||
-    context === 'data-grid' ||
-    context === 'get-started' ||
-    context === 'signals' ||
-    context === 'theming'
-  )
+  return context !== 'components'
 }
 
 export function getDocs() {
@@ -43,6 +37,12 @@ export function getDocPageNavItems(category: string) {
       return getDataGridDocLinks()
     case 'get-started':
       return getGetStartedDocLinks()
+    case 'styling':
+      return getStylingDocLinks()
+    case 'signals':
+      return getSignalsDocLinks()
+    case 'theming':
+      return getThemingDocLinks()
     default:
       return getNonVeliteItems(category)
   }
@@ -71,6 +71,16 @@ export function getGetStartedDocLinks(): OrderedNavTree {
   return _getOrderedDocLinks(['Overview', 'AI', 'Presets'], 'get-started')
 }
 
+// Components
+
+export function getComponentsDocs() {
+  return _filterByCategory('components')
+}
+
+export function getComponentsDocLinks(): OrderedNavTree {
+  return _getOrderedDocLinks(['Concepts', 'Design Tokens'], 'components')
+}
+
 // Data Grid
 
 export function getDataGridDocs() {
@@ -95,6 +105,16 @@ export function getSignalsDocLinks(): OrderedNavTree {
     ['Get started', 'Primitives', 'Hooks', 'Components'],
     'signals',
   )
+}
+
+// Styling
+
+export function getStylingDocs() {
+  return _filterByCategory('styling')
+}
+
+export function getStylingDocLinks(): OrderedNavTree {
+  return _getOrderedDocLinks(['Concepts', 'Compositions', 'Style Props'], 'styling')
 }
 
 // Theming

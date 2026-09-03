@@ -1,0 +1,101 @@
+---
+title: Text Gradient
+description: JSX style props for applying text gradients using Cerberus tokens
+---
+
+## Overview
+
+Text gradients allow you to apply beautiful gradient effects to text content using Cerberus gradient tokens. This is based on the [PandaCSS text gradients documentation](https://panda-css.com/docs/docs/utilities/gradients#text-gradients).
+
+## Using textGradient prop
+
+Use the `textGradient` prop to apply a gradient to text. The gradient tokens follow the pattern `[theme].[mode].[variant]`.
+
+```tsx
+import { Text } from '@cerberus/react'
+
+function Example() {
+  return (
+    <Text
+      textGradient="to-t"
+      gradientFrom="gradient.charon-dark.start"
+      gradientTo="gradient.charon-dark.end"
+    >
+      This text has a gradient effect
+    </Text>
+  )
+}
+```
+
+## Using Cerberus Factory
+
+The Cerberus factory provides a convenient way to apply text gradients with inline styles:
+
+```tsx
+import { cerberus } from '@cerberus/react'
+
+function Example() {
+  return (
+    <cerberus.span
+      textGradient="to-t"
+      gradientFrom="gradient.charon-dark.start"
+      gradientTo="gradient.charon-dark.end"
+    >
+      This is gradient text using the factory
+    </cerberus.span>
+  )
+}
+```
+
+## Live Examples
+
+Here are some examples of text gradients in action:
+
+<TextGradient />
+
+## Available Gradient Tokens
+
+Cerberus provides several gradient variants, each available in light and dark modes:
+
+[View the cerberus gradients](/docs/theming/gradients)
+
+## Advanced
+
+For theme-aware gradients, you can use conditional styles directly on the cerberus factory:
+
+```tsx
+import { cerberus } from '@cerberus/react'
+
+function Example() {
+  return (
+    <cerberus.span
+      display="block"
+      _cerberusTheme={{
+        textGradient="to-b"
+        gradientFrom="gradient.charon-dark.start"
+        gradientTo="gradient.charon-dark.end"
+      }}
+      _acheronTheme={{
+        textGradient="to-t"
+        gradientFrom="gradient.charon-light.start"
+        gradientTo="gradient.charon-light.end"
+      }}
+    >
+      Theme-aware gradient text
+    </cerberus.span>
+  )
+}
+```
+
+## Style Props Reference
+
+| Prop           | CSS Property                          | Token Category |
+| -------------- | ------------------------------------- | -------------- |
+| `textGradient` | `background-image`, `background-clip` | `gradients`    |
+
+## Implementation Notes
+
+- Text gradients use `background-image` with `background-clip: text` to achieve the effect
+- The text becomes transparent and the background gradient shows through
+- Works best with bold or medium font weights for better visibility
+- Supports theme-aware gradients that adapt to light/dark modes

@@ -1,0 +1,75 @@
+---
+title: Utilities
+description: Custom CSS properties to create developer-friendly styling.
+jsr: '@cerberus/panda-preset'
+---
+
+## What is a Utility?
+
+Utilities are are a way to create your own CSS properties. They can do a variety of things, including map existing properties to a set of values or tokens.
+
+The Cerberus base `panda-preset` comes with a handlful of pre-defined utilities that you can use out of the box.
+
+<NoteAdmonition description="Did you know that every CSS property you use in PandaCSS is just a utility? This is similar to how JSX native components are a copy of HTML elements." />
+
+You use utilities just like you would any other CSS property.
+
+| Selector           | Description                                                                                                                                                                                                   | Shorthand    |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| `size`             | Assigns the value provided to both the `width` and `height` properties                                                                                                                                        |              |
+| `gradient`         | Assigns the Cerberus gradient provided to the `background` property                                                                                                                                           |              |
+| `borderGradient`   | Creates a custom border gradient effect for the element.                                                                                                                                                      | `borderGrad` |
+| `focusRing`        | Creates a local CSS variable of `--focus-ring` for the element with the value provided that will be defined within a `'&:is(:focus, [data-focus])'` selector.                                                 |              |
+| `focusVisibleRing` | Does the same as `focusRing`, but using the `'&:is(:focus-visible, [data-focus-visible])'` selector.                                                                                                          |              |
+| `focusRingColor`   | Creates local variables of `--focus-ring-color` and `--mix-focus-ring-color` for the element using the value provided. **Cerberus themes come built in with a focus token** so this utility is not necessary. |              |
+| `focusRingOffset`  | Creates a local CSS variable of `--focus-ring-offset` for the element with the value provided.                                                                                                                |              |
+| `focusRingWidth`   | Creates a local CSS variable of `--focus-ring-width` for the element with the value provided.                                                                                                                 |              |
+| `focusRingStyle`   | Creates a local CSS variable of `--focus-ring-style` for the element with the value provided.                                                                                                                 |              |
+
+## Creating Utilities
+
+To create a new utility, you simply `extend` the `utilities` object in your root configuration (not the theme).
+
+Each utility is a function that returns an Object with the following structure:
+
+- `className` : The className the property maps to
+- `shorthand`: The shorthand or alias version of the property
+- `values`: The possible values the property can have. Could be a token category, or an enum of values, string, number, or boolean.
+- `transform`: A function that converts the value to a valid css object
+
+For example, let's say you wanted to create a new `br` utility instead of using the built-in `rounded` utility.
+
+```ts title="panda.config.ts"
+import { defineConfig } from '@pandacss/dev'
+
+export default defineConfig({
+  utilities: {
+    extend: {
+      br: {
+        className: 'rounded', // css({ br: "sm" }) => rounded-sm
+        values: 'radii', // connect values to the radii tokens
+        transform(value) {
+          return { borderRadius: value }
+        },
+      },
+    },
+  },
+})
+```
+
+## Using Utilities
+
+Once you have defined your utilities, you first need to **regenerate** the CSS output to include your new utilities.
+
+<BashTabs code="npm panda codegen" />
+<br />
+
+After your `styled-system` has been updated, you can use your new `br` utility in your components.
+
+```tsx
+import { Button } from '@cerberus/react'
+
+export const MyButton = () => {
+  return <Button br="sm" />
+}
+```
