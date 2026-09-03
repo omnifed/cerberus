@@ -1,4 +1,3 @@
-import { connection } from 'next/server'
 import { codeToHtml } from 'shiki'
 import { getShikiOptions } from './shiki'
 
@@ -9,7 +8,6 @@ import { getShikiOptions } from './shiki'
  */
 export async function getCodeString(snippet: string): Promise<string> {
   try {
-    await connection()
     return await codeToHtml(snippet, getShikiOptions('tsx'))
   } catch (error) {
     console.error('Error converting code to string:', error)
