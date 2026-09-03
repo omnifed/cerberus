@@ -107,11 +107,7 @@ Check out the [Styling Components guide](/react/docs/guides/styling) to learn mo
 </Step>
 
 <Step number="5" title="That's it">
-
-Congratulations! You've successfully set up and styled your components using Ark UI. If you run into any issues or have
-questions, open an issue on our [GitHub](https://github.com/chakra-ui/ark/issues/new/choose) or reach out on
-[Discord](https://discord.gg/ww6HE5xaZ2).
-
+https://cerberus.digitalu.design/
 Happy hacking! ✌️
 
 </Step>
@@ -2148,10 +2144,6 @@ individuals who continually drive us to innovate and improve.
 - [Park UI](https://park-ui.com) - For providing the styled component demos featured in this project
 - [Radix Vue](https://www.radix-vue.com/) - For `useForwardPropsEmits`, which we re-export to build closed Vue
   components
-
-## License
-
-This project is licensed under the terms of the [MIT license](https://github.com/chakra-ui/ark/blob/main/LICENSE).
 
 
 # LLMs.txt
@@ -4249,11 +4241,7 @@ const Demo = () => {
     </Avatar.Root>
   )
 }
-```
 
-> Refer to this [Github Discussion](https://github.com/chakra-ui/ark/discussions/3147) for more information.
-
-## API Reference
 
 ### Root
 
@@ -5408,10 +5396,6 @@ import { useState } from 'react'
 
 export const Controlled = () => {
   const [url, setUrl] = useState('https://ark-ui.com')
-
-  const handleUrlChange = () => {
-    setUrl('https://chakra-ui.com')
-  }
 
   return (
     <Clipboard.Root value={url} onValueChange={({ value }) => setUrl(value)}>
@@ -10359,10 +10343,6 @@ provide access to the internal state of the component.
 ```tsx
 import { Editable } from '@ark-ui/react/editable'
 
-export const CustomControls = () => (
-  <Editable.Root placeholder="enter a value" defaultValue="Chakra">
-    <Editable.Label>Label</Editable.Label>
-    <Editable.Area>
       <Editable.Input />
       <Editable.Preview />
     </Editable.Area>
@@ -18447,11 +18427,7 @@ export const RootProvider = () => {
 
   return (
     <>
-      <button
-        onClick={() => {
-          setValue('https://chakra-ui.com')
-        }}
-      >
+
         Set Value
       </button>
       <QrCode.RootProvider value={qrCode}>
@@ -27053,11 +27029,7 @@ const collection = createTreeCollection<Node>({
       },
       {
         id: 'external',
-        name: 'External Links',
-        children: [
-          { id: 'external/github', name: 'GitHub Repository', href: 'https://github.com/chakra-ui/zag' },
-          { id: 'external/npm', name: 'NPM Package', href: 'https://www.npmjs.com/package/@zag-js/core' },
-          { id: 'external/docs', name: 'Official Docs', href: 'https://zagjs.com' },
+
         ],
       },
       { id: 'readme.md', name: 'README.md', href: '/readme' },

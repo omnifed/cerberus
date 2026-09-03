@@ -1,3 +1,5 @@
+'use client'
+
 import { Box, EmphasizedSlideIn } from '@/styled-system/jsx'
 import { Button, Show } from '@cerberus-design/react'
 import { useSignal } from '@cerberus-design/signals'

@@ -1,4 +1,4 @@
-import { getCodeString } from '@/lib/shiki'
+import { getCodeString } from '@/lib/get-code-string'
 import { Collapsible } from '@cerberus-design/react'
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'

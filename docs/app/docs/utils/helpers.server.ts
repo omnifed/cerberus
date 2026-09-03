@@ -2,6 +2,7 @@ import {
   getDataGridDocLinks,
   getGetStartedDocLinks,
   getSignalsDocLinks,
+  getStylingDocLinks,
   getThemingDocLinks,
 } from '@/lib/docs-content'
 import type { Metadata } from 'next'
@@ -44,6 +45,8 @@ export function getDocPageNavItems(category: string) {
       return getGetStartedDocLinks()
     case 'signals':
       return getSignalsDocLinks()
+    case 'styling':
+      return getStylingDocLinks()
     case 'theming':
       return getThemingDocLinks()
     default:

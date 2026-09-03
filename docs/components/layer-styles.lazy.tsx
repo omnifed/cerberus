@@ -9,14 +9,14 @@ const layerStyles = {
   states: getStateStyles(),
 }
 
-export function BasicDemo() {
+export default function LayerStyles() {
   return (
-    <Stack gap="2xl" py="lg" w="full">
+    <Stack gap="2xl" py="lg">
       <For each={Object.keys(layerStyles)}>
         {(name) => (
-          <Stack gap="md" w="full">
+          <Stack key={name} gap="md" w="full">
             <Text textStyle="heading-2xs">{getLabel(name)}</Text>
-            <HStack flexWrap="wrap" gap="md" w="full">
+            <HStack flexWrap="wrap" gap="lg" w="full">
               <For each={layerStyles[name as keyof typeof layerStyles]}>
                 {(item) => <LayerStyle key={item.name} layerStyle={item.name} />}
               </For>

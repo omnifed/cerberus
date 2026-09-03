@@ -123,6 +123,7 @@ export async function GET() {
       'data-grid',
       'get-started',
       'signals',
+      'styling',
       'theming',
     ])
 

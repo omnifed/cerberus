@@ -1,14 +1,10 @@
 ---
 title: Animation Styles
 description: Learn how to use animation styles to define reusable motion properties.
+jsr: '@cerberus/panda-preset'
+group: Compositions
+order: 1
 ---
-
-import CodePreview from '@/app/components/CodePreview'
-import { NoteAdmonition } from '@/app/components/Admonition'
-import {
-  AnimationStylesDemo,
-  EmphasizedDemo,
-} from '../components/animation-styles/static'
 
 ## Overview
 
@@ -49,7 +45,7 @@ const animationStyles = defineAnimationStyles({
 
 Cerberus provides a set of built-in animation styles that you can use.
 
-<AnimationStylesDemo />
+<AnimationStyles />
 
 <NoteAdmonition description="You can change the direction of some animations by using the `data-placement` attribute with the value of: top,bottom,left, or right." />
 
@@ -94,12 +90,4 @@ Now you can use `animationStyle` property in your components.
 
 To make using animations even easier, Cerberus provides JSX patterns for all built-in animation styles. You can use these patterns to quickly apply animations to your components.
 
-<CodePreview preview={<EmphasizedDemo />}>
-```tsx
-import { Box, EmphasizedSlideIn } from "styled-system/jsx"
-
-<EmphasizedSlideIn>
-  <Box>This content will slide in with emphasis</Box>
-</EmphasizedSlideIn>
-```
-</CodePreview>
+<Example path="styling/animation-styles" demo="jsx" />

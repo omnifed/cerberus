@@ -1,6 +1,9 @@
 ---
 title: Layer Styles
 description: Learn how to use layer styles to define visual properties.
+jsr: '@cerberus/panda-preset'
+group: Compositions
+order: 2
 ---
 
 ## Overview
@@ -23,9 +26,9 @@ import { defineLayerStyles } from '@pandacss/dev'
 
 ## Built-in layer styles
 
-Chakra UI provides a set of built-in layer styles.
+Cerberus provides a set of built-in layer styles.
 
-<Example path="styling/layer-styles" demo="basic" />
+<LayerStyles />
 
 ## Updating the theme
 
@@ -43,19 +46,22 @@ export const config = defineConfig({
 })
 ```
 
-After updating the theme, run the `typegen` command to generate the typings. See
-the [CLI docs](/docs/get-started/cli#chakra-typegen) for how to run typegen in
-postinstall, CI, and monorepos.
-
 <BashTabs code="npm run prepare" />
 
 ## Using layer styles
 
 Now you can use `layerStyle` property in your components.
 
-<CodeSnippet snippet={DEMOS.usingMeta} />
+```tsx
+<Box layerStyle="outline.subtle" />
+```
+
 <br />
 
 To utilize in the `css` function:
 
-<CodeSnippet snippet={DEMOS.useFunctionMeta} />
+```ts
+css({
+  layerStyle: 'outline.subtle',
+})
+```

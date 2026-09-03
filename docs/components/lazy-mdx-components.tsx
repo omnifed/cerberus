@@ -5,6 +5,7 @@ const Durations = dynamic(() => import('./animations/durations.lazy'))
 const FontTokensGroup = dynamic(() => import('./typography/font-tokens-group.lazy'))
 const GradientList = dynamic(() => import('./gradients/list.lazy'))
 const Keyframes = dynamic(() => import('./animations/keyframes.lazy'))
+const LayerStyles = dynamic(() => import('./layer-styles.lazy'))
 const PaletteGroup = dynamic(() => import('./colors/palette-group.lazy'))
 const PrimitiveColorGroup = dynamic(() => import('./colors/primitive-color-group.lazy'))
 const ShadowTokens = dynamic(() => import('./shadows/shadow-tokens.lazy'))
@@ -20,6 +21,7 @@ export const lazyMdxComponents = {
   FontTokensGroup,
   GradientList,
   Keyframes,
+  LayerStyles,
   PaletteGroup,
   PrimitiveColorGroup,
   ShadowTokens,
