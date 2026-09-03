@@ -123,6 +123,7 @@ export async function GET() {
       'data-grid',
       'get-started',
       'signals',
+      'theming',
     ])
 
     for (const filePath of legacyFiles) {

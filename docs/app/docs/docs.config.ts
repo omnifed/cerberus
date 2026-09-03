@@ -3,10 +3,10 @@ import {
   getDataGridDocs,
   getGetStartedDocs,
   getSignalsDocs,
+  getThemingDocs,
 } from '@/lib/docs-content'
 import { items as componentsItems } from './components/[slug]/content/items'
 import { items as stylingItems } from './styling/[slug]/content/items'
-import { items as themingItems } from './theming/[slug]/content/items'
 import type { DocConfig } from './types'
 
 export const config: DocConfig = {
@@ -87,7 +87,7 @@ export const config: DocConfig = {
         description:
           'Discover how to create and apply themes in the Cerberus Design System for a consistent look and feel.',
       },
-      items: themingItems as unknown as Doc[],
+      items: getThemingDocs(),
     },
   ],
 }

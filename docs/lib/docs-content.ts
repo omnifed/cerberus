@@ -14,7 +14,8 @@ export function isVeliteContent(context: string): boolean {
     context === 'blog' ||
     context === 'data-grid' ||
     context === 'get-started' ||
-    context === 'signals'
+    context === 'signals' ||
+    context === 'theming'
   )
 }
 
@@ -94,6 +95,16 @@ export function getSignalsDocLinks(): OrderedNavTree {
     ['Get started', 'Primitives', 'Hooks', 'Components'],
     'signals',
   )
+}
+
+// Theming
+
+export function getThemingDocs() {
+  return _filterByCategory('theming')
+}
+
+export function getThemingDocLinks(): OrderedNavTree {
+  return _getOrderedDocLinks(['Concepts', 'Design Tokens'], 'theming')
 }
 
 // utils

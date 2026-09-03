@@ -1,12 +1,21 @@
-import { defineConfig, s } from 'velite'
-import rehypeSlug from 'rehype-slug'
+import {
+  transformerMetaHighlight,
+  transformerNotationDiff,
+  transformerNotationWordHighlight,
+  transformerRenderIndentGuides,
+  transformerNotationFocus,
+  transformerNotationErrorLevel,
+} from '@shikijs/transformers'
 import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeSlug from 'rehype-slug'
+import { defineConfig, s } from 'velite'
+import { cerbyTheme } from './lib/shiki'
 
 export default defineConfig({
   root: 'content',
 
   output: {
-    data: '.velite', // Outputs the compiled JS/JSON here
+    data: '.velite',
     assets: 'public/static',
     base: '/static/',
     clean: true,
@@ -67,6 +76,22 @@ export default defineConfig({
   },
 
   mdx: {
-    rehypePlugins: [rehypeSlug, rehypePrettyCode],
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypePrettyCode,
+        {
+          theme: cerbyTheme,
+          transformers: [
+            transformerNotationDiff(),
+            transformerNotationWordHighlight(),
+            transformerMetaHighlight(),
+            transformerRenderIndentGuides(),
+            transformerNotationFocus(),
+            transformerNotationErrorLevel(),
+          ],
+        },
+      ],
+    ],
   },
 })

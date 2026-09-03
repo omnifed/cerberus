@@ -4,7 +4,7 @@ import {
   transformerNotationWordHighlight,
   transformerRenderIndentGuides,
 } from '@shikijs/transformers'
-import { connection } from 'next/server'
+// import { connection } from 'next/server'
 import {
   BundledLanguage,
   BundledTheme,
@@ -13,6 +13,9 @@ import {
   createCssVariablesTheme,
 } from 'shiki'
 
+/**
+ * @deprecated - kill after full velite transition
+ */
 export type CodeThemes =
   | 'nord'
   | 'min-light'
@@ -51,7 +54,7 @@ export function getShikiOptions(
  */
 export async function getCodeString(snippet: string): Promise<string> {
   try {
-    await connection()
+    // await connection()
     return await codeToHtml(snippet, getShikiOptions('tsx'))
   } catch (error) {
     console.error('Error converting code to string:', error)
