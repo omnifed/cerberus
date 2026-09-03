@@ -1415,7 +1415,7 @@ export const collection = {
     },
     'VariableID:4737:11565': {
       'VariableCollectionId:22141:1845/22141:0': {
-        id: 'VariableID:24847:2503',
+        id: 'VariableID:24847:2528',
         type: 'VARIABLE_ALIAS',
       },
       'VariableCollectionId:22141:1845/22141:1': {
@@ -4563,7 +4563,7 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL'],
     valuesByMode: {
-      'VariableCollectionId:22141:1845/22141:0': 'brand.5',
+      'VariableCollectionId:22141:1845/22141:0': 'neutral.5',
       'VariableCollectionId:22141:1845/22141:1': 'neutral.95',
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
