@@ -1,5 +1,5 @@
 import { CollapsibleCode } from '@/components/example/collapsible-code'
-import { getCodeString } from '@/lib/shiki'
+import { getCodeString } from '@/lib/get-code-string'
 import { Box } from '@/styled-system/jsx'
 import { PropsWithChildren } from 'react'
 
@@ -7,6 +7,9 @@ interface Props {
   snippet: string
 }
 
+/**
+ * @deprecated use inline {@link CodeSnippet} instead
+ */
 export async function CodeSnippet(props: PropsWithChildren<Props>) {
   'use cache'
   const highlightedHtml = await getCodeString(props.snippet)

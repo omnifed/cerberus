@@ -1,11 +1,11 @@
 import { items as componentsItems } from '@/app/docs/components/[slug]/content/items'
-import { items as stylingItems } from '@/app/docs/styling/[slug]/content/items'
 import { getBlogPosts } from '@/lib/blog-content'
 import {
   Doc,
   getDataGridDocs,
   getGetStartedDocs,
   getSignalsDocs,
+  getStylingDocs,
   getThemingDocs,
 } from '@/lib/docs-content'
 import { version } from '@cerberus-design/react/package.json'
@@ -14,6 +14,7 @@ const blogPosts = getBlogPosts()
 const getStartedItems = getGetStartedDocs()
 const dataGridItems = getDataGridDocs()
 const signalsItems = getSignalsDocs()
+const stylingItems = getStylingDocs()
 const themingItems = getThemingDocs()
 
 function createChildrenFromItems(items: Doc[]): DocumentSet[] {
@@ -29,7 +30,7 @@ interface DocumentSet {
   href?: string
   children?: DocumentSet[]
 }
-type Items = typeof componentsItems | typeof stylingItems
+type Items = typeof componentsItems
 
 export const GET = async () => {
   const documentSets: DocumentSet[] = [
@@ -60,7 +61,7 @@ export const GET = async () => {
         {
           title: 'Styling',
           type: 'sub-section',
-          children: formatItemsToDocSet(stylingItems),
+          children: createChildrenFromItems(stylingItems),
         },
         {
           title: 'Theming',

@@ -46,7 +46,13 @@ export default async function DocsPage(props: PropsWithChildren<Props>) {
   if (!doc) return notFound()
 
   const hasLinks =
-    doc.ark || doc.npm || doc.recipe || doc.source || doc.panda || doc.package
+    doc.ark ||
+    doc.npm ||
+    doc.recipe ||
+    doc.source ||
+    doc.panda ||
+    doc.package ||
+    doc.jsr
 
   return (
     <>

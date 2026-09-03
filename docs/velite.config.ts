@@ -52,6 +52,7 @@ export default defineConfig({
           ark: s.string().optional(),
           panda: s.string().optional(),
           package: s.string().optional(),
+          jsr: s.string().optional(),
           // Velite returns the relative path (e.g., 'docs/components/button')
           path: s.path(),
           // Velite automatically parses headings to generate a TOC array
