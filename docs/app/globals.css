@@ -82,6 +82,17 @@
   background-color: currentColor;
 }
 
+figcaption[data-rehype-pretty-code-title] {
+  color: var(--cerberus-colors-page-text-100);
+  border-bottom: 1px solid var(--cerberus-colors-page-border-initial);
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  font-family: 'Recursive';
+  font-size: 0.875rem;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+}
+
 /* DocSearch */
 
 :root {

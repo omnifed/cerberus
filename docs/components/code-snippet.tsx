@@ -8,6 +8,7 @@ interface Props {
 }
 
 export async function CodeSnippet(props: PropsWithChildren<Props>) {
+  'use cache'
   const highlightedHtml = await getCodeString(props.snippet)
   return (
     <Box

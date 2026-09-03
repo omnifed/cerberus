@@ -6,6 +6,8 @@ import Image, { ImageProps } from 'next/image'
 import { PropsWithChildren } from 'react'
 import { CodeSnippet } from './code-snippet'
 import { Example } from './example/index'
+import { lazyMdxComponents } from './lazy-mdx-components'
+import { mdxCode } from './mdx-code'
 import { mdxLists } from './mdx-lists'
 import { mdxTable } from './mdx-table'
 import { mdxText } from './mdx-text'
@@ -17,6 +19,8 @@ export const sharedComponents = {
   WarningAdmonition,
   CodeSnippet,
 
+  ...lazyMdxComponents,
+
   // Next
   Image,
 
@@ -24,6 +28,7 @@ export const sharedComponents = {
   ...mdxText,
   ...mdxTable,
   ...mdxLists,
+  ...mdxCode,
 
   img: (props: PropsWithChildren<ImageProps>) => (
     <Image

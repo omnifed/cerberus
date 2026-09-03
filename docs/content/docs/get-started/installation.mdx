@@ -31,19 +31,16 @@ to ensure a better experience for developers.
 
 Next, update your PandaCSS config to utilize the Cerberus helpers:
 
-<CodeSnippet snippet={`import {
-  createCerberusConfig,
-  createCerberusPreset,
-} from '@cerberus/panda-preset'
+```ts
+import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
 
 export default createCerberusConfig({
   presets: [createCerberusPreset()],
 
-include: [
-'./app/**/*.{ts,tsx}'
-],
-exclude: [],
-})`} />
+  include: ['./app/**/*.{ts,tsx}'],
+  exclude: [],
+})
+```
 
 <br />
 
@@ -70,20 +67,22 @@ your project needs to have your preferred fonts assigned to the following CSS va
 
 If using NextJS fonts, you can simply import and assign these with the fonts package:
 
-<CodeSnippet snippet={`import { Poppins, Recursive } from 'next/font/google'
+```ts
+import { Poppins, Recursive } from 'next/font/google'
 
 const poppins = Poppins({
-display: 'swap',
-subsets: ['latin'],
-weight: ['400', '600', '700'],
-variable: '--font-sans',
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-sans',
 })
 const recursive = Recursive({
-display: 'swap',
-subsets: ['latin'],
-weight: ['400'],
-variable: '--font-mono',
-})`} />
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-mono',
+})
+```
 
 ### Step 4 - Update your root layout to initiate Cerberus
 
@@ -91,15 +90,17 @@ Because Cerberus provides multiple themes and modes out of the box, you need to 
 
 To connect the Cerberus theme, add the required `data` attributes to your root `html` tag.
 
-<CodeSnippet
-  snippet={`function RootLayout({ children }) {
-    return (
+```tsx
+function RootLayout({ children }) {
+  return (
       <html lang="en" data-panda-theme="cerberus" data-color-mode="light">
         <body>{children}</body>
       </html>
     )
-  }`}
-/>
+  )
+}
+```
+
 <br />
 
 **Important:** This is a good point to run the `panda codegen` command to
@@ -121,15 +122,14 @@ Cerberus React assumes the `baseUrl` is setup to the root location in your `tsco
 If you do not, or use a different location, you should include a path alias for
 the `styled-system/*` location. Not doing so will result in build errors.
 
-<CodeSnippet
-  snippet={`// tsconfig.json
-  {
-    "compilerOptions": {
-      "baseUrl": ".",
-      // ...your config options
-    }
-  }`}
-/>
+```json title="tsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": "."
+    // ...your config options
+  }
+}
+```
 
 <NoteAdmonition
   description={
@@ -152,17 +152,18 @@ Now that your base path is setup, you can install Cerberus React.
 
 Add the build config to the `include` array so Panda can generate the styles.
 
-<CodeSnippet snippet={`import { createCerberusConfig, createCerberusPreset } from "@cerberus/panda-preset";
+```ts
+import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
 
 export default createCerberusConfig({
-// ...your previous settings
+  // ...your previous settings
 
-    include: [
-      "./node_modules/@cerberus/react/dist/panda.buildinfo.json",
-      "./app/**/*.{ts,tsx,js,jsx}",
-    ],
-
-});`} />
+  include: [
+    './node_modules/@cerberus/react/dist/panda.buildinfo.json',
+    './app/**/*.{ts,tsx,js,jsx}',
+  ],
+})
+```
 
 ### Step 3 - Use the Cerberus Context Provider
 
@@ -184,25 +185,26 @@ However, if you prefer a different icon library, you can register it with **Cerb
 
 If you want to support multiple themes, you can use the `presetAcheronTheme` and `getThemeName` helpers to configure your theme.
 
-<CodeSnippet snippet={`import { createCerberusConfig, createCerberusPreset } from "@cerberus/panda-preset";
-  import { presetAcheronTheme, getThemeName } from "@cerberus/preset-acheron-theme";
+```ts
+import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
+import { presetAcheronTheme, getThemeName } from '@cerberus/preset-acheron-theme'
 
 export default createCerberusConfig({
-clean: true,
-preflight: true,
+  clean: true,
+  preflight: true,
 
-    presets: [createCerberusPreset(), presetAcheronTheme],
+  presets: [createCerberusPreset(), presetAcheronTheme],
 
-    include: [
-      "./node_modules/@cerberus/react/dist/panda.buildinfo.json",
-      "./app/**/*.{ts,tsx,js,jsx}",
-    ],
+  include: [
+    './node_modules/@cerberus/react/dist/panda.buildinfo.json',
+    './app/**/*.{ts,tsx,js,jsx}',
+  ],
 
-    staticCss: {
-      themes: ["cerberus", getThemeName()],
-    },
-
-});`} />
+  staticCss: {
+    themes: ['cerberus', getThemeName()],
+  },
+})
+```
 
 ### Tip: Add a Cerberus script
 

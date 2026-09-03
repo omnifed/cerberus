@@ -34,23 +34,21 @@ Theme packages should be named `@cerberus/preset-[themeName]-theme`.
 
 To use any of the official theme presets, install the package and update your `panda.config.ts` file accordingly.
 
-<CodeSnippet snippet={`// panda.config.ts
+```ts title="panda.config.ts"
 import { defineConfig } from '@pandacss/dev'
 import { cerberusPreset, cerberusConfig } from '@cerberus/panda-preset'
-import {
-  acheronTheme,
-  getAcheronThemeName,
-} from '@cerberus/preset-acheron-theme'
+import { acheronTheme, getAcheronThemeName } from '@cerberus/preset-acheron-theme'
 
 export default defineConfig({
-    ...cerberusConfig,
-  
-    include: ['./src/**/*.{ts,tsx,js,jsx}'],
-    exclude: [],
-    
-    presets: [cerberusPreset(), acheronTheme],
-    
-    staticCss: {
-      themes: ['cerberus', getAcheronThemeName()],
-    },
-})`} />
+  ...cerberusConfig,
+
+  include: ['./src/**/*.{ts,tsx,js,jsx}'],
+  exclude: [],
+
+  presets: [cerberusPreset(), acheronTheme],
+
+  staticCss: {
+    themes: ['cerberus', getAcheronThemeName()],
+  },
+})
+```

@@ -1,14 +1,27 @@
 import { items as componentsItems } from '@/app/docs/components/[slug]/content/items'
 import { items as stylingItems } from '@/app/docs/styling/[slug]/content/items'
-import { items as themingItems } from '@/app/docs/theming/[slug]/content/items'
 import { getBlogPosts } from '@/lib/blog-content'
-import { getDataGridDocs, getGetStartedDocs, getSignalsDocs } from '@/lib/docs-content'
+import {
+  Doc,
+  getDataGridDocs,
+  getGetStartedDocs,
+  getSignalsDocs,
+  getThemingDocs,
+} from '@/lib/docs-content'
 import { version } from '@cerberus-design/react/package.json'
 
 const blogPosts = getBlogPosts()
 const getStartedItems = getGetStartedDocs()
 const dataGridItems = getDataGridDocs()
 const signalsItems = getSignalsDocs()
+const themingItems = getThemingDocs()
+
+function createChildrenFromItems(items: Doc[]): DocumentSet[] {
+  return items.map((item) => ({
+    title: item.title,
+    href: `/docs/${item.category}/${item.slug}`,
+  }))
+}
 
 interface DocumentSet {
   title: string
@@ -16,7 +29,7 @@ interface DocumentSet {
   href?: string
   children?: DocumentSet[]
 }
-type Items = typeof componentsItems | typeof stylingItems | typeof themingItems
+type Items = typeof componentsItems | typeof stylingItems
 
 export const GET = async () => {
   const documentSets: DocumentSet[] = [
@@ -27,10 +40,7 @@ export const GET = async () => {
         {
           title: 'Get Started',
           type: 'sub-section',
-          children: getStartedItems.map((item) => ({
-            title: item.title,
-            href: `/docs/${item.category}/${item.slug}`,
-          })),
+          children: createChildrenFromItems(getStartedItems),
         },
         {
           title: 'Components',
@@ -40,18 +50,12 @@ export const GET = async () => {
         {
           title: 'Data Grid',
           type: 'sub-section',
-          children: dataGridItems.map((item) => ({
-            title: item.title,
-            href: `/docs/${item.category}/${item.slug}`,
-          })),
+          children: createChildrenFromItems(dataGridItems),
         },
         {
           title: 'Signals',
           type: 'sub-section',
-          children: signalsItems.map((item) => ({
-            title: item.title,
-            href: `/docs/${item.category}/${item.slug}`,
-          })),
+          children: createChildrenFromItems(signalsItems),
         },
         {
           title: 'Styling',
@@ -61,7 +65,7 @@ export const GET = async () => {
         {
           title: 'Theming',
           type: 'sub-section',
-          children: formatItemsToDocSet(themingItems),
+          children: createChildrenFromItems(themingItems),
         },
       ],
     },
