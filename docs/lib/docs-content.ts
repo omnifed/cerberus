@@ -33,14 +33,16 @@ export function getDocPost(path: string): Doc | void {
  */
 export function getDocPageNavItems(category: string) {
   switch (category) {
-    case 'data-grid':
-      return getDataGridDocLinks()
     case 'get-started':
       return getGetStartedDocLinks()
-    case 'styling':
-      return getStylingDocLinks()
+    // case 'components':
+    //   return getComponentsDocLinks()
+    case 'data-grid':
+      return getDataGridDocLinks()
     case 'signals':
       return getSignalsDocLinks()
+    case 'styling':
+      return getStylingDocLinks()
     case 'theming':
       return getThemingDocLinks()
     default:

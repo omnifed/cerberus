@@ -23,29 +23,31 @@ A design token consists of the following properties:
 
 Tokens are defined in the under the `theme` key in your system config.
 
-<CodeSnippet snippet={`import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
+```ts
+import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
 
 export default createCerberusConfig({
   presets: [createCerberusPreset()],
 
-include: ['./app/**/*.{ts,tsx}'],
-exclude: [],
+  include: ['./app/**/*.{ts,tsx}'],
+  exclude: [],
 
-theme: {
-tokens: {
-colors: {
-primary: { value: '#0FEE0F' },
-secondary: { value: '#EE0F0F' },
-},
-fonts: {
-body: { value: 'system-ui, sans-serif' },
-},
-shadows: {
-custom: { value: '0 4px 8px rgba(0, 0, 0, 0.1)' },
-},
-},
-},
-})`} />
+  theme: {
+    tokens: {
+      colors: {
+        primary: { value: '#0FEE0F' },
+        secondary: { value: '#EE0F0F' },
+      },
+      fonts: {
+        body: { value: 'system-ui, sans-serif' },
+      },
+      shadows: {
+        custom: { value: '0 4px 8px rgba(0, 0, 0, 0.1)' },
+      },
+    },
+  },
+})
+```
 
 <WarningAdmonition description="Token values need to be nested in an object with a `value` key. This is to allow for additional properties like `description` and more in the future." />
 
@@ -58,11 +60,11 @@ typings for your tokens.
 
 This will provide autocompletion for your tokens in your editor.
 
-<CodeSnippet
-  snippet={`<Box color="primary" fontFamily="body">
+```tsx
+<Box color="primary" fontFamily="body">
   Hello World
-</Box>`}
-/>
+</Box>
+```
 
 ### Token reference syntax
 
@@ -78,13 +80,13 @@ This is achieved through the token reference syntax: `{path.to.token}`.
 Here’s an example where token reference syntax is applied to both the border and
 p (padding) props:
 
-<CodeSnippet
-  snippet={`<Box
+```tsx
+<Box
   border="1px solid {colors.red.300}"
   p="{spacing.4} {spacing.6} {spacing.8} {spacing.10}"
   boxShadow="{spacing.4} {spacing.2} {spacing.2} {colors.red.300}"
-/>`}
 />
+```
 
 ## Token Nesting
 
@@ -93,36 +95,40 @@ want to group related tokens together.
 
 <NoteAdmonition description="Use the `DEFAULT` key to define the default value of a nested token." />
 
-<CodeSnippet snippet={`export default createCerberusConfig({
+```ts
+export default createCerberusConfig({
   presets: [createCerberusPreset()],
 
-include: ['./app/**/*.{ts,tsx}'],
-exclude: [],
+  include: ['./app/**/*.{ts,tsx}'],
+  exclude: [],
 
-theme: {
-tokens: {
-colors: {
-red: {
-DEFAULT: { value: '#EE0F0F' },
-100: { value: '#EE0F0F' },
-},
-},
-fonts: {
-body: { value: 'system-ui, sans-serif' },
-},
-},
-},
-})`} />
+  theme: {
+    tokens: {
+      colors: {
+        red: {
+          DEFAULT: { value: '#EE0F0F' },
+          100: { value: '#EE0F0F' },
+        },
+      },
+      fonts: {
+        body: { value: 'system-ui, sans-serif' },
+      },
+    },
+  },
+})
+```
 
 <br />
 
-<CodeSnippet snippet={`<Box
+```tsx
+<Box
   // 👇🏻 This will use the `DEFAULT` value
   bg="red"
   color="red.100"
 >
   Hello World
-</Box>`} />
+</Box>
+```
 
 ## Token Types
 
@@ -132,7 +138,8 @@ Colors have meaning and support the purpose of the content, communicating things
 like hierarchy of information, and states. It is mostly defined as a string
 value or reference to other tokens.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   colors: {
@@ -140,14 +147,16 @@ export const tokens = defineTokens({
       100: { value: '#fff1f0' },
     },
   },
-})`} />
+})
+```
 
 ### Gradients
 
 Gradient tokens represent a smooth transition between two or more colors. Its
 value can be defined as a string or a composite value.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   gradients: {
@@ -158,22 +167,24 @@ export const tokens = defineTokens({
     primary: {
       value: { type: 'linear', placement: 'to right', stops: ['red', 'blue'] },
     },
-
-},
-})`} />
+  },
+})
+```
 
 ### Sizes
 
 Size tokens represent the width and height of an element. Its value is defined
 as a string.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   sizes: {
     sm: { value: '12px' },
   },
-})`} />
+})
+```
 
 > Size tokens are typically used in `width`, `height`, `minWidth`, `maxWidth`,
 > `minHeight`, `maxHeight` properties.
@@ -183,13 +194,15 @@ export const tokens = defineTokens({
 Spacing tokens represent the margin and padding of an element. Its value is
 defined as a string.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   spacing: {
     gutter: { value: '12px' },
   },
-})`} />
+})
+```
 
 > Spacing tokens are typically used in `margin`, `padding`, `gap`, and
 > `{top,right,bottom,left}` properties.
@@ -199,14 +212,16 @@ export const tokens = defineTokens({
 Font tokens represent the font family of a text element. Its value is defined as
 a string or an array of strings.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   fonts: {
     body: { value: 'Inter, sans-serif' },
     heading: { value: ['Roboto Mono', 'sans-serif'] },
   },
-})`} />
+})
+```
 
 > Font tokens are typically used in `font-family` property.
 
@@ -215,13 +230,15 @@ export const tokens = defineTokens({
 Font size tokens represent the size of a text element. Its value is defined as a
 string.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   fontSizes: {
     sm: { value: '12px' },
   },
-})`} />
+})
+```
 
 > Font size tokens are typically used in `font-size` property.
 
@@ -230,13 +247,15 @@ export const tokens = defineTokens({
 Font weight tokens represent the weight of a text element. Its value is defined
 as a string.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   fontWeights: {
     bold: { value: '700' },
   },
-})`} />
+})
+```
 
 > Font weight tokens are typically used in `font-weight` property.
 
@@ -245,13 +264,15 @@ export const tokens = defineTokens({
 Letter spacing tokens represent the spacing between letters in a text element.
 Its value is defined as a string.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   letterSpacings: {
     wide: { value: '0.1em' },
   },
-})`} />
+})
+```
 
 > Letter spacing tokens are typically used in `letter-spacing` property.
 
@@ -260,13 +281,15 @@ export const tokens = defineTokens({
 Line height tokens represent the height of a line of text. Its value is defined
 as a string.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   lineHeights: {
     normal: { value: '1.5' },
   },
-})`} />
+})
+```
 
 > Line height tokens are typically used in `line-height` property.
 
@@ -274,13 +297,15 @@ export const tokens = defineTokens({
 
 Radii tokens represent the radius of a border. Its value is defined as a string.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   radii: {
     sm: { value: '4px' },
   },
-})`} />
+})
+```
 
 > Radii tokens are typically used in `border-radius` property.
 
@@ -289,7 +314,8 @@ export const tokens = defineTokens({
 A border is a line surrounding a UI element. You can define them as string
 values or as a composite value
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   borders: {
@@ -300,7 +326,8 @@ export const tokens = defineTokens({
     // composite value
     accent: { value: { width: '1px', color: 'red', style: 'solid' } },
   },
-})`} />
+})
+```
 
 > Border tokens are typically used in `border`, `border-top`, `border-right`,
 > `border-bottom`, `border-left`, `outline` properties.
@@ -310,7 +337,8 @@ export const tokens = defineTokens({
 Border width tokens represent the width of a border. Its value is defined as a
 string.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   borderWidths: {
@@ -318,14 +346,16 @@ export const tokens = defineTokens({
     thick: { value: '2px' },
     medium: { value: '1.5px' },
   },
-})`} />
+})
+```
 
 ### Shadows
 
 Shadow tokens represent the shadow of an element. Its value is defined as single
 or multiple values containing a string or a composite value.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   shadows: {
@@ -346,7 +376,8 @@ export const tokens = defineTokens({
       value: ['0 1px 2px 0 rgba(0, 0, 0, 0.05)', '0 1px 4px 0 rgba(0, 0, 0, 0.1)'],
     },
   },
-})`} />
+})
+```
 
 > Shadow tokens are typically used in `box-shadow` property.
 
@@ -356,7 +387,8 @@ Easing tokens represent the easing function of an animation or transition. Its
 value is defined as a string or an array of values representing the cubic
 bezier.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   easings: {
@@ -365,7 +397,8 @@ export const tokens = defineTokens({
     // array value
     easeOut: { value: [0.4, 0, 0.2, 1] },
   },
-})`} />
+})
+```
 
 > Ease tokens are typically used in `transition-timing-function` property.
 
@@ -373,13 +406,15 @@ export const tokens = defineTokens({
 
 Opacity tokens help you set the opacity of an element.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   opacity: {
     50: { value: 0.5 },
   },
-})`} />
+})
+```
 
 > Opacity tokens are typically used in `opacity` property.
 
@@ -387,13 +422,15 @@ export const tokens = defineTokens({
 
 This token type represents the depth of an element's position on the z-axis.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   zIndex: {
     modal: { value: 1000 },
   },
-})`} />
+})
+```
 
 > Z-index tokens are typically used in `z-index` property.
 
@@ -402,12 +439,13 @@ export const tokens = defineTokens({
 Asset tokens represent a url or svg string. Its value is defined as a string or
 a composite value.
 
-<CodeSnippet
-  snippet={`type CompositeAsset = { type: 'url' | 'svg'; value: string }
-type Asset = string | CompositeAsset`}
-/>
+```ts
+type CompositeAsset = { type: 'url' | 'svg'; value: string }
+type Asset = string | CompositeAsset
+```
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   tokens: {
@@ -420,7 +458,8 @@ export const tokens = defineTokens({
       },
     },
   },
-})`} />
+})
+```
 
 > Asset tokens are typically used in `background-image` property.
 
@@ -429,13 +468,15 @@ export const tokens = defineTokens({
 Duration tokens represent the length of time in milliseconds an animation or
 animation cycle takes to complete. Its value is defined as a string.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   durations: {
     fast: { value: '100ms' },
   },
-})`} />
+})
+```
 
 > Duration tokens are typically used in `transition-duration` and
 > `animation-duration` properties.
@@ -445,7 +486,8 @@ export const tokens = defineTokens({
 Animation tokens represent a keyframe animation. Its value is defined as a
 string value.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   animations: {
@@ -453,7 +495,8 @@ export const tokens = defineTokens({
       value: 'spin 1s linear infinite',
     },
   },
-})`} />
+})
+```
 
 > Animation tokens are typically used in `animation` property.
 
@@ -462,11 +505,13 @@ export const tokens = defineTokens({
 Aspect ratio tokens represent the aspect ratio of an element. Its value is
 defined as a string.
 
-<CodeSnippet snippet={`import { defineTokens } from '@pandacss/dev'
+```ts
+import { defineTokens } from '@pandacss/dev'
 
 export const tokens = defineTokens({
   aspectRatios: {
     '1:1': { value: '1 / 1' },
     '16:9': { value: '16 / 9' },
   },
-})`} />
+})
+```

@@ -8,14 +8,9 @@ import type { PropsWithChildren } from 'react'
 import { SceneMatcher } from '../components/backgrounds/scene-matcher'
 import { getDocsMetadata } from './utils/helpers.server'
 
-export const prefetch = 'partial'
-
 export const metadata: Metadata = getDocsMetadata()
 
 export default async function DocsLayout(props: PropsWithChildren<object>) {
-  'use cache'
-  cacheLife('hours')
-
   return (
     <HStack
       alignItems="flex-start"
@@ -26,6 +21,7 @@ export default async function DocsLayout(props: PropsWithChildren<object>) {
     >
       <Box h="full" pb="md" pt="md" pl="md" pos="relative" w="21rem">
         <HStack
+          data-pagefind-ignore
           data-placement="right"
           bgColor="page.surface.100"
           border="1px solid"

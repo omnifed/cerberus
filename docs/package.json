@@ -10,6 +10,7 @@
     "build:a": "velite",
     "build:b": "panda codegen && panda spec",
     "build:c": "next build",
+    "build:d": "pnx pagefind --site .next/server/app --output-path public/pagefind",
     "start": "next start",
     "lint": "eslint ."
   },

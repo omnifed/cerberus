@@ -8,9 +8,6 @@ export async function generateStaticParams() {
 }
 
 export default async function Layout(props: PropsWithChildren<object>) {
-  'use cache'
-  cacheLife('hours')
-
   return (
     <>
       {props.children}

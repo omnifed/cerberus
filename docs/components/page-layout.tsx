@@ -45,6 +45,7 @@ export function DocsPageLayout(props: PropsWithChildren<object>) {
       </Container>
 
       <Box
+        data-pagefind-ignore
         display={{ base: 'none', md: 'block' }}
         h="full"
         pos="sticky"

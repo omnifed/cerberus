@@ -8,6 +8,8 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next/types'
 import { type PropsWithChildren } from 'react'
 
+export const dynamic = 'force-static'
+
 export async function generateStaticParams() {
   return getDocSlugs() ?? []
 }
@@ -94,11 +96,13 @@ export default async function DocsPage(props: PropsWithChildren<Props>) {
         </Show>
       </Stack>
 
-      <HStack justify="flex-end" pt="lg" w="full">
+      <HStack data-pagefind-ignore justify="flex-end" pt="lg" w="full">
         <CopyPageMenu endpoint={`/llms/${doc.slugAsParams}`} />
       </HStack>
 
-      <MDXContent code={doc.code} />
+      <article data-pagefind-body>
+        <MDXContent code={doc.code} />
+      </article>
     </>
   )
 }
