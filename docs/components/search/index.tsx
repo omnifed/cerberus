@@ -6,13 +6,14 @@ import {
   Dialog,
   DialogProvider,
   DialogTrigger,
-  Input,
   Show,
   Text,
 } from '@cerberus-design/react'
 import { createEffect, onCleanup, useSignal } from '@cerberus-design/signals'
 import { ChangeEvent, Suspense } from 'react'
+import { Footer } from './footer'
 import { SearchResults } from './results'
+import { SearchInput } from './search-input'
 
 export function Search() {
   const [input, setInput, getInput] = useSignal<string>('')
@@ -56,23 +57,14 @@ export function Search() {
           </HStack>
         </DialogTrigger>
 
-        <Dialog>
-          <Input
+        <Dialog p="lg" size="md">
+          <SearchInput
             onChange={(e: ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
-            placeholder="Search documentation..."
             value={input}
           />
+
           <Show when={input !== ''}>
-            <Box
-              w="full"
-              bg="page.surface.100"
-              border="1px solid"
-              borderColor="page.border.initial"
-              mt="2"
-              rounded="md"
-              shadow="md"
-              overflow="hidden"
-            >
+            <Box mt="2" w="full">
               {debouncedQuery === '' ? (
                 <Text p="4" textStyle="body-sm" color="page.text.100">
                   Searching...
@@ -90,6 +82,8 @@ export function Search() {
               )}
             </Box>
           </Show>
+
+          <Footer />
         </Dialog>
       </Box>
     </DialogProvider>

@@ -11,6 +11,7 @@ describe('accordion recipe', () => {
     border: '1px solid',
     borderColor: 'action.border.100',
     color: 'page.text.initial',
+    focusVisibleRing: 'inside',
     paddingInline: 'md',
     position: 'relative',
     rounded: 'sm',

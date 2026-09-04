@@ -15,6 +15,7 @@ export const inputStyles = {
   border: '1px solid',
   borderColor: 'action.border.100',
   color: 'page.text.initial',
+  focusVisibleRing: 'inside',
   paddingInline: 'md',
   position: 'relative',
   rounded: 'sm',
@@ -25,9 +26,6 @@ export const inputStyles = {
   _hover: {
     borderColor: 'action.border.initial',
   },
-  _focus: {
-    bgColor: 'page.surface.100',
-  },
   _userInvalid: {
     borderColor: 'danger.border.initial',
   },
@@ -35,7 +33,6 @@ export const inputStyles = {
     color: 'page.text.100',
   },
   ...formStates,
-  ...focusStates,
 }
 
 const endIndicatorStyles = {

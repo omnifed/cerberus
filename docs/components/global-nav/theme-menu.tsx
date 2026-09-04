@@ -13,18 +13,18 @@ import {
   useThemeContext,
 } from '@cerberus-design/react'
 import { RawThemes } from '@cerberus/tokens'
-import { type ReactNode } from 'react'
+import { type ElementType } from 'react'
 import { type ThemeName } from 'styled-system/themes'
 import { DogIcon } from '../icons/dog'
 import { FireIcon } from '../icons/fire'
 
 const supportedThemes: RawThemes[] = ['cerberus', 'acheron', 'elysium', 'oceanus']
 
-const icons: Record<RawThemes, ReactNode> = {
-  cerberus: <DogIcon />,
-  acheron: <FireIcon />,
-  elysium: <PalmTree />,
-  oceanus: <SailboatOffshore />,
+const icons: Record<RawThemes, ElementType> = {
+  cerberus: DogIcon,
+  acheron: FireIcon,
+  elysium: PalmTree,
+  oceanus: SailboatOffshore,
 }
 
 export function ThemeMenu() {
@@ -78,7 +78,7 @@ function MatchThemeContent({ theme }: MatchThemeContentProps) {
   const Icon = icons[theme]
   return (
     <>
-      {Icon}
+      <Icon suppressHydrationWarning />
       <Text display="inline" ps="sm" textStyle="body-sm" textTransform="capitalize">
         {theme}
       </Text>

@@ -58,7 +58,7 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <Script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
 
       <cerberus.body
