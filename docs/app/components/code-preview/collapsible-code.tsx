@@ -17,14 +17,12 @@ export async function CollapsibleCode(props: PropsWithChildren<Props>) {
         maxH="xl"
         maxW="full"
         pos="relative"
-        css={{
-          '& :is(.expressive-code > .frame)': {
-            '--header-border-radius': 0,
-          },
-        }}
       >
         <Show when={!props.fallback} fallback={props.code}>
-          <cerberus.div dangerouslySetInnerHTML={{ __html: props.code }} />
+          <cerberus.div
+            dangerouslySetInnerHTML={{ __html: props.code }}
+            suppressHydrationWarning
+          />
         </Show>
       </Scrollable>
     </>

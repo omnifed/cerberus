@@ -1,10 +1,13 @@
-import type { DocConfig, DocPage } from './types'
-import { items as getStartedItems } from './get-started/[slug]/content/items'
+import {
+  type Doc,
+  getDataGridDocs,
+  getGetStartedDocs,
+  getSignalsDocs,
+  getStylingDocs,
+  getThemingDocs,
+} from '@/lib/docs-content'
 import { items as componentsItems } from './components/[slug]/content/items'
-import { items as dataGridItems } from './data-grid/[slug]/content/items'
-import { items as signalsItems } from './signals/[slug]/content/items'
-import { items as stylingItems } from './styling/[slug]/content/items'
-import { items as themingItems } from './theming/[slug]/content/items'
+import type { DocConfig } from './types'
 
 export const config: DocConfig = {
   meta: {
@@ -24,7 +27,7 @@ export const config: DocConfig = {
         description:
           'Learn how to get started with the Cerberus Design System, including installation and basic usage.',
       },
-      items: getStartedItems as DocPage[],
+      items: getGetStartedDocs(),
     },
     {
       id: '2',
@@ -36,7 +39,7 @@ export const config: DocConfig = {
         description:
           'Explore the various components available in the Cerberus Design System and how to use them.',
       },
-      items: componentsItems as DocPage[],
+      items: componentsItems as unknown as Doc[],
     },
     {
       id: '2.a',
@@ -48,7 +51,7 @@ export const config: DocConfig = {
         description:
           'Explore the various components available in the Cerberus Design System and how to use them.',
       },
-      items: dataGridItems as unknown as DocPage[],
+      items: getDataGridDocs(),
     },
     {
       id: '2.b',
@@ -60,7 +63,7 @@ export const config: DocConfig = {
         description:
           'Explore the various components available in the Cerberus Design System and how to use them.',
       },
-      items: signalsItems as unknown as DocPage[],
+      items: getSignalsDocs(),
     },
     {
       id: '3',
@@ -72,7 +75,7 @@ export const config: DocConfig = {
         description:
           'Learn how to style components in the Cerberus Design System to match your design requirements.',
       },
-      items: stylingItems as DocPage[],
+      items: getStylingDocs(),
     },
     {
       id: '4',
@@ -84,7 +87,7 @@ export const config: DocConfig = {
         description:
           'Discover how to create and apply themes in the Cerberus Design System for a consistent look and feel.',
       },
-      items: themingItems as DocPage[],
+      items: getThemingDocs(),
     },
   ],
 }

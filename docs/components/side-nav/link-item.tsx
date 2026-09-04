@@ -1,0 +1,56 @@
+'use client'
+
+import { css } from '@/styled-system/css'
+import Link, { type LinkProps } from 'next/link'
+import { usePathname } from 'next/navigation'
+import type { PropsWithChildren } from 'react'
+
+interface LinkItemProps {
+  href: string
+}
+
+export function LinkItem(props: PropsWithChildren<LinkItemProps>) {
+  const pathname = usePathname()
+  const nextHref = `/${props.href}` as LinkProps<string>['href']
+
+  function isCurrentPage(): boolean {
+    return nextHref === pathname
+  }
+
+  return (
+    <Link
+      aria-current={isCurrentPage() ? 'page' : undefined}
+      href={nextHref}
+      className={css({
+        alignItems: 'center',
+        color: 'page.text.200',
+        display: 'inline-flex',
+        gap: 'md',
+        px: 'sm',
+        py: '0.75rem',
+        rounded: 'sm',
+        textStyle: 'label-sm',
+        transitionProperty: 'background-color,color',
+        transitionDuration: 'fast',
+        w: 'full',
+        _hover: {
+          bgColor: 'action.ghost.hover',
+          color: 'action.text.inverse',
+        },
+        _currentPage: {
+          bgColor: 'action.ghost.active',
+          color: 'action.text.inverse',
+          _hover: {
+            '&:is([aria-current="page"])': {
+              bgColor: 'action.ghost.active',
+              color: 'action.text.inverse',
+              cursor: 'default',
+            },
+          },
+        },
+      })}
+    >
+      {props.children}
+    </Link>
+  )
+}

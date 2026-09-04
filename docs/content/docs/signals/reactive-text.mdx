@@ -1,0 +1,43 @@
+---
+title: Reactive Text
+description: Learn how to read signals with fine-grained reactivity in React.
+package: 'signals'
+group: Components
+order: 1
+---
+
+<CodeSnippet snippet="import { ReactiveText } from '@cerberus/signals" />
+
+## Usage
+
+`ReactiveText` was created to provide fine-grained updates to the VDOM without
+triggering component re-renders when the signal updates.
+
+This allows React to function as close as possible to [SolidJS v1](https://docs.solidjs.com/quick-start)
+where the JSX only renders once.
+
+## Reading State
+
+To render a signal, just pass the `Accessor` function to the `data` prop.
+
+<NoteAdmonition
+  description={
+    <>
+      The data prop expects either a String or Number value.
+      <br />
+      <br />
+      To render complex lists, utilize the For component to loop through the content and
+      then ReactiveText to display specific signal nodes.
+    </>
+  }
+/>
+
+<Example path="signals/reactivity" demo="basic" />
+
+## API
+
+`ReactiveText` accepts the following options:
+
+| Params | Required           | Description                                 |
+| ------ | ------------------ | ------------------------------------------- |
+| `data` | `String \| Number` | The Accessor to watch and render in the UI. |

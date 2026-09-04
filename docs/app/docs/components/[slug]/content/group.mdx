@@ -3,41 +3,41 @@ title: Group
 description: Used to layout its children in an attached or normal group.
 ---
 
-import CodePreview from '@/app/components/CodePreview'
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/components/group'
 import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/group/static'
 
-<CodeSnippet snippet={DEMOS.meta} />
+<CodeSnippet snippet="import { Group } from '@cerberus/react'" />
 
 ## Usage
 
 Used to group and attach elements together.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/group" demo="basic" />
 
 ## Attached
 
 Use the `layout` prop to attach the group of children together.
 
-<CodePreview {...DEMOS.attached} />
+<Example path="components/group" demo="attached" />
 
 ## Grow
 
 Use the `grow` variant of the `layout` prop to make the children fill the space.
 
-<CodePreview {...DEMOS.grow} />
+<Example path="components/group" demo="grow" />
 
 ## Orientation
 
 Use the `orientation` prop to change the direction of the children.
 
-<CodePreview {...DEMOS.orientation} />
+<Example path="components/group" demo="orientation" />
 
 ## Stack
 
 Use the `stack` variant of the `layout` with `orientation` to stack the children.
 
-<CodePreview {...DEMOS.stack} />
+<Example path="components/group" demo="stack" />
 
 ## Props
 
@@ -46,5 +46,5 @@ The `Group` component accepts any style properties along with the following prop
 | Prop          | Type                                   | Description                                                                                         |
 | ------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | `layout`      | `default \| attached \| grow \| stack` | The layout of the children along the cross axis.                                                    |
-| `orientation` | `horizontal, vertical`                 | The direction of the children.                                                                      |
+| `orientation` | `horizontal \| vertical`               | The direction of the children.                                                                      |
 | `asChild`     | `boolean`                              | Use the provided child element as the default rendered element, combining their props and behavior. |

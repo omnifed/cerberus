@@ -47,7 +47,6 @@ export default function MatchSideNavItem(props: HeadingItem | LinkItem) {
             _focusVisible: focusStates._focusVisible,
           })}
           href={props.route}
-          prefetch
         >
           {props.label}
           <Show when={props.tag}>

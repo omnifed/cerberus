@@ -7,87 +7,24 @@ recipe: 'slots/toast.ts'
 ark: 'toast'
 ---
 
-import CodePreview from '@/app/components/CodePreview'
+import { Example } from '@/components/example'
+import { DEMOS } from '@/examples/components/notifications'
 import { NoteAdmonition } from '@/app/components/Admonition'
-import {
-  CustomConfigDemo,
-  OverviewDemo,
-  SubtleDemo,
-} from '../components/notifications/static'
-import { NotifyBadgePreview } from '../components/notifications/notify-badge'
+import { CodeSnippet } from '@/app/components/code-snippet'
 
-```ts
-import { NotificationCenter, toaster } from '@cerberus/react'
-```
+<CodeSnippet snippet="import { NotificationCenter, toaster } from '@cerberus/react'" />
 
 ## Usage
 
 The `NotificationCenter` component is used to manage notifications in your application. It works together with the `toaster` object to display notifications.
 
-<CodePreview preview={<OverviewDemo />}>
-```tsx title="Basic demo" {7-17}
-'use client';
+<Example path="components/notifications" demo="basic" />
 
-import { toaster } from '@cerberus/react'
+## Types
 
-function Feature() {
-const handleClick = useCallback(() => {
-toaster.create({
-type: 'info',
-title: 'Update Available',
-description: 'A new version of the app is available',
-action: {
-label: 'Refresh',
-onClick: () => {
-window.location.reload()
-}
-}
-})
-}, [])
+Update the `options.types` of the `toaster.create` function to change the theme of the notification.
 
-return <Button onClick={handleClick}>Trigger notification</Button>
-}
-
-````
-```tsx title="layout.tsx"
-import { NotificationCenter } from '@cerberus/react'
-
-export function Layout(props: PropsWithChildren<{}>) {
-  return (
-    <>
-      {props.children}
-      <NotificationCenter />
-    </>
-  )
-}
-````
-
-</CodePreview>
-
-### Types
-
-Just update the `options.types` to change the theme of the notification. The options are `info`, `success`, `warning`, `danger`, and `loading`.
-
-<CodePreview preview={<OverviewDemo />}>
-```tsx title="Types demo" {8}
-'use client';
-
-import { toaster } from '@cerberus/react'
-
-function Feature() {
-const handleClick = useCallback(() => {
-toaster.create({
-type: 'loading',
-title: 'Loading',
-description: 'It's taking longer than normal.',
-})
-}, [toaster.create])
-
-return <Button onClick={handleClick}>Trigger notification</Button>
-}
-
-````
-</CodePreview>
+The options are `info`, `success`, `warning`, `danger`, and `loading`.
 
 ## Subtle Notifications
 
@@ -95,79 +32,15 @@ Subtle notifications are a less intrusive way to inform users about events or up
 
 Use the `usage: 'subtle'` option to create a subtle notification.
 
-<CodePreview preview={<SubtleDemo />}>
-```tsx title="Subtle Notifications Demo"
-'use client';
-
-import { toaster } from '@cerberus/react'
-
-function Feature() {
-  const handleClick = useCallback(() => {
-    toaster.create({
-      type: 'info',
-      usage: 'subtle',
-      title: 'Update Available',
-      description: 'A new version of the app is available',
-      action: {
-        label: 'Refresh',
-        onClick: () => {
-          window.location.reload()
-        }
-      }
-    })
-  }, [])
-
-  return <Button onClick={handleClick}>Trigger subtle notification</Button>
-}
-````
-
-</CodePreview>
+<Example path="components/notifications" demo="subtle" />
 
 ## Custom Configuration
 
 You can customize the notification behavior by calling the `createToaster` function. This allows you to create a new toaster instance with your desired configuration.
 
-We recommend scoping this to a component to ensure Next.js rehydration works correctly.
+You can either use it as a local one-off or pass it into the `NotificationCenter` component for a global change.
 
-<CodePreview preview={<CustomConfigDemo />}>
-```tsx title="Custom Configuration" /createToaster/
-'use client';
-
-import { createToaster, NotificationCenter, Button } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
-
-function CustomConfigDemo() {
-const customToaster = createToaster({
-gap: 24,
-overlap: false,
-placement: 'bottom-end',
-})
-
-return (
-
-<>
-<HStack>
-<Button
-onClick={() => {
-customToaster.create({
-title: 'Custom Toaster',
-description:
-'This notification is using a custom toaster configuration.',
-type: 'success',
-})
-}} >
-Show Notification
-</Button>
-</HStack>
-
-      <NotificationCenter toaster={customToaster} />
-    </>
-
-)
-}
-
-````
-</CodePreview>
+<Example path="components/notifications" demo="custom" />
 
 ## Badges
 
@@ -175,25 +48,7 @@ Badges can be used to show the number of notifications on any trigger by using t
 
 <NoteAdmonition description="Combine this with the `formatNotifyCount` helper that will restrict the count to 3 digits." />
 
-<CodePreview preview={<NotifyBadgePreview />}>
-```tsx title="some-page.tsx" {8-9}
-import { IconButton, formatNotifyCount } from '@cerberus/react'
-import { Notifications } from '@cerberus/icons'
-
-export function NotifyBadgePreview() {
-  return (
-    <IconButton
-      ariaLabel="View notifications"
-      data-notify
-      data-notify-count={formatNotifyCount(100)}
-    >
-    <Notifications />
-  </IconButton>
-  )
-}
-````
-
-</CodePreview>
+<Example path="components/notifications" demo="notify-badge" />
 
 ## Primitives
 

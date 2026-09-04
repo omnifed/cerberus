@@ -1,0 +1,96 @@
+'use client'
+
+import { Edit } from '@carbon/icons-react'
+import { createColumnHelper } from '@cerberus-design/data-grid'
+import { Format, IconButton, Tag, TagProps, Text } from '@cerberus-design/react'
+import { HStack, VStack } from 'styled-system/jsx'
+import { type Employee } from '../api'
+
+export const columnHelper = createColumnHelper<Employee>()
+
+export const columns = [
+  // A. "ID" Column that can be pinned and sorted
+  columnHelper.accessor('id', {
+    header: 'ID',
+    width: 80,
+    features: {
+      pinning: {
+        defaultPosition: 'left',
+      },
+      sort: true,
+    },
+    cell: ({ value }) => <Text>#{value}</Text>,
+  }),
+
+  // B. Derived Accessor (Function)
+  // We combine First + Last name for sorting/filtering, but render custom UI
+  columnHelper.accessorFn((row) => `${row.firstName} ${row.lastName}`, {
+    id: 'fullName',
+    header: 'Employee',
+    width: 250,
+    features: {
+      sort: true,
+      filter: true,
+    },
+    cell: ({ row, value }) => (
+      <VStack alignItems="flex-start" gap="0">
+        <Text textStyle="body-md">{value}</Text>
+        <Text color="page.text.100" textStyle="label-sm">
+          {row.email}
+        </Text>
+      </VStack>
+    ),
+  }),
+
+  // C. Deep Accessor (Nested Object) using a plain text string for the cell
+  columnHelper.accessorFn((row) => row.department.name, {
+    id: 'department',
+    header: 'Department',
+    features: { sort: true },
+  }),
+
+  // D. Formatting (Numeric Sort, String Display)
+  columnHelper.accessor('salary', {
+    header: 'Salary',
+    minWidth: 135,
+    features: { sort: true }, // ✅ Sorts numerically (100 before 500)
+    // We format the visual ONLY. The underlying data remains a number.
+    cell: ({ value }) => (
+      <Format.Number value={value} style="currency" currency="USD" />
+    ),
+  }),
+
+  // E. Status Badge
+  columnHelper.accessor('status', {
+    header: 'Status',
+    width: 110,
+    features: {
+      pinning: true,
+    },
+    cell: ({ value }) => {
+      const palette: Record<string, TagProps['palette']> = {
+        active: 'success',
+        inactive: 'page',
+        on_leave: 'info',
+      }
+      return <Tag palette={palette[value]}>{value.replace('_', ' ').toUpperCase()}</Tag>
+    },
+  }),
+
+  // F. Display Column (Right Pinned Actions)
+  columnHelper.display({
+    id: 'actions',
+    header: 'Actions',
+    width: 125,
+    features: {
+      pinning: true,
+    },
+    cell: () => (
+      <HStack justify="center" w="full">
+        <IconButton ariaLabel="View more options">
+          <Edit />
+        </IconButton>
+      </HStack>
+    ),
+  }),
+]

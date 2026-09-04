@@ -1,0 +1,46 @@
+---
+title: Overview
+description: An extremely lightweight and blazing fast fine-grain reactivity system for React.
+package: 'signals'
+group: Get started
+order: 1
+---
+
+## What is Signals?
+
+The architectural landscape of frontend state management in 2026 reflects a
+fundamental tension between React’s top-down, component-based reconciliation model
+and the industry’s growing demand for fine-grained, localized reactivity. While
+React continues to dominate the enterprise ecosystem, powering over 79 million
+websites worldwide, its reliance on the Virtual DOM (VDOM) for state synchronization
+introduces inherent performance bottlenecks at scale.
+
+Cerberus Signals fills the gap that current external libraries have missed by
+creating a fine-grained, ultra-lightweight, approach that out-performs in all areas
+with an easy to use DX to provide full control and flexibility where you need.
+
+## Installation
+
+<BashTabs code="npm install @cerberus/signals@npm:@cerberus-design/signals" />
+
+### Dependency Requirements
+
+The Signals library only requires the use of React to be installed in your project.
+
+## React
+
+Our Signals library was built to ensure compatibility with React compiler and the
+19+ API design. We have APIs that support both client and server rendering to meet
+whichever need your use case might have.
+
+## Typescript
+
+Signals is built with typescript and provides additional meaningful type exports
+in addition to the APIs. If any demo requires the use of the `use client` directive
+you will see it displayed in the code preview.
+
+## Server-side Rendering
+
+Any API which uses the `createX` naming convention is server-side compatible.
+Client-focused APIs are designed primarily as hooks to improve the developer experience
+and overall understanding.

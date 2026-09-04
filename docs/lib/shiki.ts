@@ -1,8 +1,8 @@
 import {
-  transformerNotationDiff,
   transformerMetaHighlight,
-  transformerRenderIndentGuides,
+  transformerNotationDiff,
   transformerNotationWordHighlight,
+  transformerRenderIndentGuides,
 } from '@shikijs/transformers'
 import {
   BundledLanguage,
@@ -11,6 +11,9 @@ import {
   createCssVariablesTheme,
 } from 'shiki'
 
+/**
+ * @deprecated - kill after full velite transition
+ */
 export type CodeThemes =
   | 'nord'
   | 'min-light'

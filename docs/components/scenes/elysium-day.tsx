@@ -1,0 +1,339 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+
+// --- SHADERS ---
+const vertexShaderSource = `
+  attribute vec2 a_position;
+  void main() {
+    gl_Position = vec4(a_position, 0.0, 1.0);
+  }
+`
+
+const fragmentShaderSource = `
+  precision mediump float;
+  uniform vec2 u_resolution;
+  uniform float u_time;
+  uniform float u_lightMode; // <-- Added uniform for theme transition
+
+  // --- MATH & NOISE UTILS ---
+  vec2 hash(vec2 p) {
+    p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
+    return fract(sin(p) * 43758.5453);
+  }
+
+  float valueNoise(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+    f = f * f * (3.0 - 2.0 * f);
+    return mix(mix(fract(sin(dot(i + vec2(0.0, 0.0), vec2(12.9898, 78.233))) * 43758.5453),
+                   fract(sin(dot(i + vec2(1.0, 0.0), vec2(12.9898, 78.233))) * 43758.5453), f.x),
+               mix(fract(sin(dot(i + vec2(0.0, 1.0), vec2(12.9898, 78.233))) * 43758.5453),
+                   fract(sin(dot(i + vec2(1.0, 1.0), vec2(12.9898, 78.233))) * 43758.5453), f.x), f.y);
+  }
+
+  // FBM for soft clouds
+  float fbm(vec2 p) {
+    float v = 0.0;
+    float a = 0.5;
+    vec2 shift = vec2(100.0);
+    mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.50));
+    for (int i = 0; i < 4; ++i) {
+      v += a * valueNoise(p);
+      p = rot * p * 2.0 + shift;
+      a *= 0.5;
+    }
+    return v;
+  }
+
+  // 1. Magical Rising Motes (Fireflies)
+  float magicalMotes(vec2 uv, float time) {
+    float p = 0.0;
+    // Layered grids for particles
+    for(float i = 1.0; i <= 2.0; i++) {
+      vec2 gridUv = uv * (12.0 * i);
+
+      // Apply infinite, slow upward drift to the grid itself so they never stop
+      gridUv.y -= time * (0.015 * i);
+
+      vec2 id = floor(gridUv);
+      vec2 f = fract(gridUv) - 0.5;
+      vec2 r = hash(id);
+
+      // Sparsity: dramatically reduce quantity (was 0.8, now 0.95)
+      if(r.x > 0.95) {
+        // --- Firefly Movement Math ---
+        // Slower, complex, erratic jitter using multiple sine waves
+        float jitterX = sin(time * (0.8 + r.y * 1.0) + r.x * 10.0) * 0.25;
+        float jitterY = cos(time * (0.6 + r.x * 0.8) + r.y * 8.0) * 0.2;
+
+        // Anchor randomly around the cell center, apply bounded jitter
+        vec2 center = (r - 0.5) * 0.3 + vec2(jitterX, jitterY);
+
+        // Calculate distance from current pixel 'f' to the moving 'center'
+        float dist = length(f - center);
+
+        float radius = 0.04 * (r.y * 0.5 + 0.5);
+        // Slower pulse brightness
+        float brightness = 0.2 + 0.8 * sin(time * (1.0 + r.x * 1.5) + r.x * 10.0);
+
+        // Smoothstep prevents negative brightness
+        brightness = max(0.0, brightness);
+
+        // Motes fade out slowly by the upper middle of the screen
+        // Use global global uv for the fade so they reliably vanish high up
+        float heightFade = smoothstep(0.8, 0.2, uv.y);
+
+        p += smoothstep(radius, 0.0, dist) * brightness * heightFade;
+      }
+    }
+    return p;
+  }
+
+  // 2. Varied Twinkling Starfield
+  float stars(vec2 uv, float time) {
+    float s = 0.0;
+
+    // Layer 1: Dense, tiny, faint background stars
+    vec2 grid1 = uv * 60.0;
+    vec2 id1 = floor(grid1);
+    vec2 f1 = fract(grid1) - 0.5;
+    vec2 r1 = hash(id1);
+    if(r1.x > 0.85) {
+      float d1 = length(f1 - r1 * 0.2);
+      float rad1 = 0.015;
+      float b1 = 0.3 + 0.2 * sin(time * 0.5 + r1.x * 10.0);
+      s += smoothstep(rad1, 0.0, d1) * b1;
+    }
+
+    // Layer 2: Sparse, larger, brighter foreground stars
+    vec2 grid2 = uv * 25.0;
+    vec2 id2 = floor(grid2);
+    vec2 f2 = fract(grid2) - 0.5;
+    vec2 r2 = hash(id2);
+    if(r2.x > 0.92) {
+      float d2 = length(f2 - r2 * 0.2);
+      float rad2 = 0.04 * (r2.y * 0.5 + 0.5);
+      float b2 = 0.6 + 0.4 * sin(time * 1.2 + r2.x * 20.0);
+      s += smoothstep(rad2, 0.0, d2) * b2;
+    }
+
+    return s;
+  }
+
+  // 3. The Moon & Glow
+  // Replaces the generic "beams" with a distinct celestial body
+  float moon(vec2 uv) {
+    // Calculate aspect ratio dynamically to anchor the moon relative to the screen width
+    float aspect = u_resolution.x / u_resolution.y;
+
+    // Position moon slightly outside the top right view (5% out of bounds)
+    vec2 moonPos = vec2(aspect * 1.05, 1.05);
+    float dist = distance(uv, moonPos);
+
+    // Hard core of the moon (mostly off-screen now, but here for edge cases)
+    float core = smoothstep(0.06, 0.05, dist);
+
+    // Soft outer glow (attenuation) - decreased divisor from 30.0 to 15.0 to spread the glow further into the screen
+    float glow = 1.0 / (1.0 + dist * dist * 15.0);
+
+    return core + glow * 0.6; // Slightly boosted the glow intensity to compensate for the distance
+  }
+
+  void main() {
+    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+    vec2 aspectUv = uv;
+    aspectUv.x *= u_resolution.x / u_resolution.y;
+
+    float time = u_time;
+
+    // --- COLORS (Elysium Tokens) ---
+
+    // DARK MODE COLORS
+    vec3 darkSkyBottom = vec3(0.047, 0.043, 0.047); // neutral.100 (Pitch black/purple)
+    vec3 darkSkyTop    = vec3(0.090, 0.086, 0.098); // neutral.90
+    vec3 darkMoon      = vec3(0.384, 0.643, 0.549); // action.bg.initial (brand.60)
+    vec3 darkCloud     = vec3(0.4, 0.45, 0.5);      // Ghostly blue/grey
+
+    // LIGHT MODE COLORS
+    vec3 lightSkyBottom = vec3(0.980, 0.980, 0.980); // neutral.5 (Near white)
+    vec3 lightSkyTop    = vec3(0.953, 0.969, 0.871); // brand.20 (Pale yellow-green sky)
+    vec3 lightSun       = vec3(0.808, 0.871, 0.486); // action.bg.initial (brand.50)
+    vec3 lightCloud     = vec3(1.0, 1.0, 1.0);       // Pure white fluffy daytime clouds
+
+    // SHARED
+    vec3 magicColor = vec3(0.858, 0.470, 0.192); // accent.60 (Golden/Orange)
+
+    // CROSSFADE INTERPOLATION
+    vec3 skyBottom      = mix(darkSkyBottom, lightSkyBottom, u_lightMode);
+    vec3 skyTop         = mix(darkSkyTop, lightSkyTop, u_lightMode);
+    vec3 celestialColor = mix(darkMoon, lightSun, u_lightMode);
+    vec3 cloudBase      = mix(darkCloud, lightCloud, u_lightMode);
+
+    // 1. Deep Sky Gradient
+    vec3 finalColor = mix(skyBottom, skyTop, uv.y);
+
+    // 2. Varied Stars (Fade out completely during the day)
+    float starField = stars(aspectUv, time);
+    finalColor += vec3(0.9, 0.9, 1.0) * starField * smoothstep(0.2, 0.5, uv.y) * (1.0 - u_lightMode);
+
+    // 3. Explicit Clouds (FBM)
+    vec2 cloudUv = aspectUv * 3.0 - vec2(time * 0.03, 0.0);
+    float cloudNoise = fbm(cloudUv);
+    float cloudMask = smoothstep(0.4, 0.8, cloudNoise);
+
+    // Dark mode clouds are lit by the moon. Light mode clouds are bright white.
+    vec3 cloudColorDark = cloudBase * darkMoon;
+    vec3 cloudColorLight = cloudBase;
+    vec3 activeCloudColor = mix(cloudColorDark, cloudColorLight, u_lightMode);
+
+    float activeCloudOpacity = mix(0.6, 0.8, u_lightMode); // Thicker during the day
+    finalColor = mix(finalColor, activeCloudColor, cloudMask * activeCloudOpacity);
+
+    // 4. The Celestial Body (Moon/Sun)
+    float celestialGlow = moon(aspectUv);
+    // Additive blending works beautifully for a glowing orb in both modes
+    finalColor += celestialColor * celestialGlow * (1.0 - cloudMask * 0.3);
+
+    // 5. Magical Rising Motes
+    float motes = magicalMotes(aspectUv, time);
+
+    // Dark mode motes glow (additive). Light mode motes are painted on (alpha) so they don't wash out.
+    vec3 darkMotesBlend = finalColor + magicColor * motes;
+    vec3 lightMotesBlend = mix(finalColor, magicColor, motes * 0.8);
+    finalColor = mix(darkMotesBlend, lightMotesBlend, u_lightMode);
+
+    gl_FragColor = vec4(finalColor, 1.0);
+  }
+`
+
+// --- UTILS ---
+const createShader = (gl: WebGLRenderingContext, type: number, source: string) => {
+  const shader = gl.createShader(type)
+  if (!shader) return null
+  gl.shaderSource(shader, source)
+  gl.compileShader(shader)
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.error('Shader compile error:', gl.getShaderInfoLog(shader))
+    gl.deleteShader(shader)
+    return null
+  }
+  return shader
+}
+
+const createProgram = (
+  gl: WebGLRenderingContext,
+  vShader: WebGLShader,
+  fShader: WebGLShader,
+) => {
+  const program = gl.createProgram()
+  if (!program) return null
+  gl.attachShader(program, vShader)
+  gl.attachShader(program, fShader)
+  gl.linkProgram(program)
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    console.error('Program link error:', gl.getProgramInfoLog(program))
+    gl.deleteProgram(program)
+    return null
+  }
+  return program
+}
+
+export default function ElysiumDayBackground() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const gl = canvas.getContext('webgl', { alpha: false, antialias: false })
+    if (!gl) return
+
+    const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource)
+    const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource)
+    if (!vertexShader || !fragmentShader) return
+
+    const program = createProgram(gl, vertexShader, fragmentShader)
+    if (!program) return
+
+    const positionLocation = gl.getAttribLocation(program, 'a_position')
+    const resolutionLocation = gl.getUniformLocation(program, 'u_resolution')
+    const timeLocation = gl.getUniformLocation(program, 'u_time')
+    const lightModeLocation = gl.getUniformLocation(program, 'u_lightMode')
+
+    const positionBuffer = gl.createBuffer()
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([
+        -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, 1.0, 1.0, -1.0, 1.0, 1.0,
+      ]),
+      gl.STATIC_DRAW,
+    )
+
+    const resize = () => {
+      const pr = Math.min(window.devicePixelRatio, 2)
+      canvas.width = window.innerWidth * pr
+      canvas.height = window.innerHeight * pr
+      gl.viewport(0, 0, canvas.width, canvas.height)
+    }
+    window.addEventListener('resize', resize)
+    resize()
+
+    let frameId: number
+    let startTime = performance.now()
+    let isVisible = true
+    let currentLightMode = 0.0 // Tracks the smooth crossfade
+
+    const render = (now: number) => {
+      if (!isVisible) return
+
+      const time = (now - startTime) * 0.001
+
+      // Check for 'dark' class or data-theme
+      const isDark =
+        document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark'
+
+      // Smoothly interpolate the lightMode uniform
+      const targetLightMode = isDark ? 0.0 : 1.0
+      currentLightMode += (targetLightMode - currentLightMode) * 0.05
+
+      gl.useProgram(program)
+      gl.enableVertexAttribArray(positionLocation)
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
+      gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0)
+
+      gl.uniform2f(resolutionLocation, canvas.width, canvas.height)
+      gl.uniform1f(timeLocation, time)
+      gl.uniform1f(lightModeLocation, currentLightMode)
+
+      gl.drawArrays(gl.TRIANGLES, 0, 6)
+      frameId = requestAnimationFrame(render)
+    }
+    frameId = requestAnimationFrame(render)
+
+    const onVisibilityChange = () => {
+      isVisible = !document.hidden
+      if (isVisible) {
+        startTime = performance.now() - (performance.now() - startTime)
+        frameId = requestAnimationFrame(render)
+      } else {
+        cancelAnimationFrame(frameId)
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+
+    return () => {
+      window.removeEventListener('resize', resize)
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+      cancelAnimationFrame(frameId)
+      gl.deleteProgram(program)
+      gl.deleteShader(vertexShader)
+      gl.deleteShader(fragmentShader)
+      gl.deleteBuffer(positionBuffer)
+    }
+  }, [])
+
+  return <canvas ref={canvasRef} aria-hidden="true" className="living-canvas" />
+}

@@ -17,10 +17,9 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
   slots: menuAnatomy.keys(),
 
   base: {
-    positioner: {
-      zIndex: 'dropdown!',
-    },
+    positioner: {},
     content: {
+      '--menu-z-index': 'zIndex.popover',
       bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'page.border.200',
@@ -28,10 +27,12 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       overflow: 'hidden',
       overflowY: 'auto',
       p: 'xs',
+      pos: 'relative',
       maxH: '19.5rem',
       minW: '10rem',
       rounded: 'md',
       shadow: 'lg',
+      zIndex: 'calc(var(--menu-z-index) + var(--layer-index, 0))',
       _focusVisible: {
         ...focusStates._focusVisible,
         outlineColor: 'transparent',
@@ -47,7 +48,7 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     item: {
       alignItems: 'center',
-      borderRadius: 'l1',
+      borderRadius: 'sm',
       color: 'page.text.initial',
       cursor: 'menuitem',
       display: 'flex',

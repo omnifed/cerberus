@@ -1,0 +1,33 @@
+---
+title: Computing Signal Values
+description: Learn how to combine signals to create a single value in React.
+package: 'signals'
+group: Primitives
+order: 4
+---
+
+<CodeSnippet snippet="import { createComputed } from '@cerberus/signals'" />
+
+## Usage
+
+Sometimes you may want to create a new signal that is computed from other signal
+values. This is where the `createComputed` primitive comes in.
+
+This API is similar to the native `useMemo` hook from React without the need for
+providing a depedency Array.
+
+In this example, we create a computed signal based on two raw signals. Likewise,
+we utilize the `createEffect` primitive which sets the signal value without React
+getting involved.
+
+<NoteAdmonition description="In order for createComputed to track signal subscriptions, it is required that Accessors are used in the body." />
+
+<Example path="signals/computed" demo="basic" />
+
+## API
+
+`createComputed` accepts a callback function and returns the value in a form of
+a Signal `Accessor`.
+
+**Important:** be sure to use `Accessor` getters _not_ values within a `createComputed`
+primitive. Ignoring to do so will cause stale values that will not be updated.

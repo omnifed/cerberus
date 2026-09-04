@@ -1,3 +1,4 @@
+import { docs, blog } from '#site/content'
 import { DocFrontmatter } from '@/app/docs/types'
 import { CheckmarkFilled } from '@carbon/icons-react'
 import { Show } from '@cerberus-design/react'
@@ -23,25 +24,44 @@ type Props = {
 export async function GET(request: Request, props: Props) {
   try {
     const { path } = await props.params
+    const urlPath = path.join('/') // e.g., 'components/button'
     const slug = path[path.length - 1]
+    const category = path.length > 1 ? path[path.length - 2] : 'Docs'
 
-    let page
+    let title = 'Cerberus'
+    let description = 'Improving React development for humans and agents.'
+    let lib: string | undefined
 
-    if (path.length > 2) {
-      const [scope, section] = path
-      page = await import(`@/app/${scope}/${section}/[slug]/content/${slug}.mdx`)
+    // 1. Check Velite Collections First
+    const veliteDoc = [...docs, ...blog].find(
+      (d) => (d as any).slugAsParams === urlPath || d.slug === urlPath,
+    )
+
+    if (veliteDoc) {
+      title = veliteDoc.title
+      description = veliteDoc.description || description
+      lib = (veliteDoc as any).package // If added to Velite schema
     } else {
-      const [scope] = path
-      page = await import(`@/app/${scope}/[slug]/content/${slug}.mdx`)
+      // 2. Fallback to Legacy Imports for unmigrated routes
+      let page
+      try {
+        if (path.length > 2) {
+          const [scope, section] = path
+          page = await import(`@/app/${scope}/${section}/[slug]/content/${slug}.mdx`)
+        } else {
+          const [scope] = path
+          page = await import(`@/app/${scope}/[slug]/content/${slug}.mdx`)
+        }
+        const frontmatter = page?.frontmatter as DocFrontmatter | undefined
+        if (frontmatter) {
+          title = frontmatter.title || title
+          description = frontmatter.description || description
+          lib = frontmatter.package
+        }
+      } catch {
+        // Silent catch: use defaults if legacy page is also not found
+      }
     }
-
-    const frontmatter = page?.frontmatter as DocFrontmatter | undefined
-
-    const category = path[1] || 'Docs'
-    const title = frontmatter?.title || 'Cerberus'
-    const description =
-      frontmatter?.description || 'Improving React development for humans and agents.'
-    const lib = frontmatter?.package
 
     const bodyPoppins = await readFile(
       join(process.cwd(), 'public/fonts/poppins-regular.ttf'),
