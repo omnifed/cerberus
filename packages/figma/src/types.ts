@@ -1,3 +1,5 @@
+import { TypeStyle } from '@figma/rest-api-spec'
+
 export type { RGB, RGBA } from '@figma/rest-api-spec'
 
 /**
@@ -10,3 +12,12 @@ export type CollectionMode = {
 }
 
 export type NormalizedCollectionMode = Record<string, CollectionMode | string>
+
+/**
+ * These two types are only needed because figma api type doesn't include textWrapStyle
+ * which is being returned by the api
+ */
+export type TextWrapStyle = 'BALANCE' | 'PRETTY' | 'STABLE'
+export type TextNodeStyle = TypeStyle & {
+  textWrapStyle?: TextWrapStyle
+}

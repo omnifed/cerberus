@@ -2,6 +2,7 @@ import { Theme } from '@pandacss/types'
 import { compositions } from '../tokens'
 import { NodeMeta } from '../types'
 import { toKebabCase } from '../utils/helpers'
+import { TextNodeStyle } from '@cerberus/figma/helpers'
 
 export function createTextStyles(): NonNullable<Theme['textStyles']> {
   const nodes = compositions.textStyle.nodes
@@ -25,6 +26,7 @@ export function createTextStyles(): NonNullable<Theme['textStyles']> {
           fontSize: `${data.style.fontSize / 16}rem`,
           letterSpacing: `${data.style.letterSpacing / 16}rem`,
           lineHeight: `${Math.floor(data.style.lineHeightPercentFontSize)}%`,
+          textWrap: _getTextWrapFromStyleData(data.style),
         },
       }
 
@@ -73,4 +75,11 @@ function getHeadingElementTag(
     default:
       return 'h1'
   }
+}
+
+function _getTextWrapFromStyleData(style: TextNodeStyle): string | undefined {
+  if ('textWrapStyle' in style) {
+    return style.textWrapStyle?.toLowerCase()
+  }
+  return undefined
 }
