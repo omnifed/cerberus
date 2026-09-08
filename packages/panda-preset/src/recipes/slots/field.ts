@@ -1,6 +1,6 @@
 import { fieldAnatomy } from '@ark-ui/react'
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { focusStates, formStates } from '../shared/states'
+import { formStates } from '../shared/states'
 
 /**
  * This module contains the field recipe.

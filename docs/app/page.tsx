@@ -1,5 +1,4 @@
 import { VStack } from '@/styled-system/jsx'
-import { cacheLife } from 'next/cache'
 import { SceneMatcher } from './components/backgrounds/scene-matcher'
 import HomeHero from './components/home-hero'
 

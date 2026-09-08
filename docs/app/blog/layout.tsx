@@ -1,6 +1,5 @@
 import { SceneMatcher } from '@/components/scenes/scene-matcher'
 import { Box } from '@/styled-system/jsx'
-import { cacheLife } from 'next/cache'
 import { Metadata } from 'next/types'
 import { PropsWithChildren } from 'react'
 import { getDocsMetadata } from '../docs/utils/helpers.server'
