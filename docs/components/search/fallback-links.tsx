@@ -9,16 +9,7 @@ export function FallbackLinks() {
       <For each={APP_BAR_LINKS}>
         {(item) => (
           <DialogCloseTrigger key={item.label} asChild>
-            <StyledLink
-              href={item.href}
-              px="md"
-              py="sm"
-              rounded="sm"
-              transition="colors"
-              _hover={{
-                bgColor: 'action.ghost.hover',
-              }}
-            >
+            <StyledLink data-search-item href={item.href}>
               <HStack gap="sm" w="full">
                 <item.Icon />
                 <Text textStyle="label-md">{item.label}</Text>

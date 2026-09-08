@@ -7,7 +7,20 @@ import { createQuery, useQuery } from '@cerberus-design/signals'
 import Link, { LinkProps } from 'next/link'
 import { Fragment } from 'react/jsx-runtime'
 
-export const StyledLink = cerberus(Link)
+export const StyledLink = cerberus(Link, {
+  base: {
+    px: 'md',
+    py: 'sm',
+    rounded: 'sm',
+    transition: 'colors',
+    _highlighted: {
+      bgColor: 'action.ghost.hover',
+    },
+    _hover: {
+      bgColor: 'action.ghost.hover',
+    },
+  },
+})
 
 type Props = {
   query: string
@@ -30,16 +43,7 @@ export function SearchResults({ query }: Props) {
         {(res: any, index: number) => (
           <Fragment key={`${res.meta.title}-${index}`}>
             <DialogCloseTrigger asChild>
-              <StyledLink
-                href={cleanURL(res.url)}
-                px="md"
-                py="sm"
-                rounded="sm"
-                transition="colors"
-                _hover={{
-                  bgColor: 'action.ghost.hover',
-                }}
-              >
+              <StyledLink data-search-item href={cleanURL(res.url)}>
                 <HStack gap="sm" w="full">
                   <Document />
                   <Text textStyle="label-md">{res.meta.title}</Text>
@@ -61,16 +65,10 @@ export function SearchResults({ query }: Props) {
                     {(sub: any, index: number) => (
                       <DialogCloseTrigger asChild>
                         <StyledLink
+                          data-search-item
                           key={`${sub.title}-${index}`}
                           href={cleanURL(sub.url)}
-                          px="md"
-                          py="sm"
-                          rounded="sm"
-                          transition="colors"
                           userSelect="none"
-                          _hover={{
-                            bgColor: 'action.ghost.hover',
-                          }}
                         >
                           <HStack gap="sm" w="full">
                             <Square flexShrink="0" size="4">

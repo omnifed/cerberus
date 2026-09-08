@@ -40,6 +40,7 @@ export function DocsPageLayout(props: PropsWithChildren<object>) {
         }}
         maxW="88ch"
         w="full"
+        zIndex="1"
       >
         {props.children}
       </Container>
@@ -53,7 +54,6 @@ export function DocsPageLayout(props: PropsWithChildren<object>) {
         py="lg"
         top="lg"
         w="20rem"
-        zIndex="-1"
       >
         <Show
           when={post?.toc}
