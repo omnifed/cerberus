@@ -16,7 +16,7 @@ export function FallbackLinks() {
               rounded="sm"
               transition="colors"
               _hover={{
-                bgColor: 'page.bg.initial',
+                bgColor: 'action.ghost.hover',
               }}
             >
               <HStack gap="sm" w="full">

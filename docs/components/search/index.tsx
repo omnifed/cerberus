@@ -4,12 +4,13 @@ import { Box, HStack, Scrollable } from '@/styled-system/jsx'
 import { Add, MacCommand, Search as SearchIcon } from '@carbon/icons-react'
 import {
   Dialog,
+  DialogOpenChangeDetails,
   DialogProvider,
   DialogTrigger,
   Show,
   Text,
 } from '@cerberus-design/react'
-import { createEffect, onCleanup, useSignal } from '@cerberus-design/signals'
+import { useSignal } from '@cerberus-design/signals'
 import { ChangeEvent, Suspense } from 'react'
 import { FallbackLinks } from './fallback-links'
 import { Footer } from './footer'
@@ -17,21 +18,14 @@ import { SearchResults } from './results'
 import { SearchInput } from './search-input'
 
 export function Search() {
-  const [input, setInput, getInput] = useSignal<string>('')
-  const [debouncedQuery, setDebouncedQuery] = useSignal<string>('')
-
-  createEffect(() => {
-    const currentInput = getInput()
-
-    const timer = setTimeout(() => {
-      setDebouncedQuery(currentInput)
-    }, 200)
-
-    onCleanup(() => clearTimeout(timer))
-  })
+  const [input, setInput] = useSignal<string>('')
 
   return (
-    <DialogProvider>
+    <DialogProvider
+      onOpenChange={(details: DialogOpenChangeDetails) => {
+        if (!details.open) setInput('')
+      }}
+    >
       <Box maxW="27rem" w="full">
         <DialogTrigger
           aria-label="Search (Meta+k)"
@@ -73,13 +67,9 @@ export function Search() {
                 </Box>
               }
             >
-              {debouncedQuery === '' ? (
-                <SearchingText />
-              ) : (
-                <Suspense fallback={<SearchingText />}>
-                  <SearchResults query={debouncedQuery} />
-                </Suspense>
-              )}
+              <Suspense fallback={<SearchingText />}>
+                <SearchResults query={input} />
+              </Suspense>
             </Show>
           </Scrollable>
 
