@@ -1,11 +1,12 @@
+import { BeeBat, ColorPalette, IbmMq, LogoReact, Rocket } from '@carbon/icons-react'
+import type { LinkProps } from 'next/link'
 import { type ElementType } from 'react'
-import { Rocket, LogoReact, IbmMq, BeeBat, ColorPalette } from '@carbon/icons-react'
 
 type Link = {
   Icon: ElementType
   label: string
   group: string
-  href: string
+  href: LinkProps<any>['href']
 }
 
 export const APP_BAR_LINKS: Link[] = [

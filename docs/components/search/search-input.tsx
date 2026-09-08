@@ -10,7 +10,7 @@ type Props = {
 
 export function SearchInput(props: Props) {
   return (
-    <Field label="What is your query, mortal?">
+    <Field label="What dost thou seek, mortal?">
       <Input startIcon={<Search />} onChange={props.onChange} value={props.value} />
     </Field>
   )

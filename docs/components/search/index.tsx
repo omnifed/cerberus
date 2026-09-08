@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, HStack } from '@/styled-system/jsx'
+import { Box, HStack, Scrollable } from '@/styled-system/jsx'
 import { Add, MacCommand, Search as SearchIcon } from '@carbon/icons-react'
 import {
   Dialog,
@@ -11,6 +11,7 @@ import {
 } from '@cerberus-design/react'
 import { createEffect, onCleanup, useSignal } from '@cerberus-design/signals'
 import { ChangeEvent, Suspense } from 'react'
+import { FallbackLinks } from './fallback-links'
 import { Footer } from './footer'
 import { SearchResults } from './results'
 import { SearchInput } from './search-input'
@@ -63,29 +64,36 @@ export function Search() {
             value={input}
           />
 
-          <Show when={input !== ''}>
-            <Box mt="2" w="full">
+          <Scrollable h="28rem" pb="2.5rem" w="full">
+            <Show
+              when={input !== ''}
+              fallback={
+                <Box mt="md" w="full">
+                  <FallbackLinks />
+                </Box>
+              }
+            >
               {debouncedQuery === '' ? (
-                <Text p="4" textStyle="body-sm" color="page.text.100">
-                  Searching...
-                </Text>
+                <SearchingText />
               ) : (
-                <Suspense
-                  fallback={
-                    <Text p="4" textStyle="body-sm" color="page.text.100">
-                      Searching...
-                    </Text>
-                  }
-                >
+                <Suspense fallback={<SearchingText />}>
                   <SearchResults query={debouncedQuery} />
                 </Suspense>
               )}
-            </Box>
-          </Show>
+            </Show>
+          </Scrollable>
 
           <Footer />
         </Dialog>
       </Box>
     </DialogProvider>
+  )
+}
+
+function SearchingText() {
+  return (
+    <Text as="em" color="page.text.100" display="block" p="md" textStyle="label-sm">
+      Searching the Underworld...
+    </Text>
   )
 }
