@@ -11,7 +11,6 @@ interface Props {
  * @deprecated use inline {@link CodeSnippet} instead
  */
 export async function CodeSnippet(props: PropsWithChildren<Props>) {
-  'use cache'
   const highlightedHtml = await getCodeString(props.snippet)
   return (
     <Box

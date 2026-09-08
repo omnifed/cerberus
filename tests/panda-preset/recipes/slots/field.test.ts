@@ -1,7 +1,7 @@
-import { describe, test, expect } from 'bun:test'
-import { slotRecipes } from '@cerberus/panda-preset'
+import { formStates, slotRecipes } from '@cerberus/panda-preset'
+import { describe, expect, test } from 'bun:test'
 
-describe('accordion recipe', () => {
+describe('field recipe', () => {
   const { field } = slotRecipes
   const smallLabel = 'label-sm'
   const disabledText = 'page.text.100'
@@ -11,6 +11,7 @@ describe('accordion recipe', () => {
     border: '1px solid',
     borderColor: 'action.border.100',
     color: 'page.text.initial',
+    focusVisibleRing: 'inside',
     paddingInline: 'md',
     position: 'relative',
     rounded: 'sm',
@@ -21,21 +22,13 @@ describe('accordion recipe', () => {
     _hover: {
       borderColor: 'action.border.initial',
     },
-    _placeholder: {
-      color: 'page.text.100',
-    },
-    _focus: {
-      bgColor: 'page.surface.100',
-    },
     _userInvalid: {
       borderColor: 'danger.border.initial',
     },
-    _focusVisible: {
-      boxShadow: 'none',
-      outline: '3px solid',
-      outlineColor: 'action.border.focus',
-      outlineOffset: '2px',
+    _placeholder: {
+      color: 'page.text.100',
     },
+    ...formStates,
   }
 
   const endIndicatorStyles = {

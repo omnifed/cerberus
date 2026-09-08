@@ -40,11 +40,13 @@ export function DocsPageLayout(props: PropsWithChildren<object>) {
         }}
         maxW="88ch"
         w="full"
+        zIndex="1"
       >
         {props.children}
       </Container>
 
       <Box
+        data-pagefind-ignore
         display={{ base: 'none', md: 'block' }}
         h="full"
         pos="sticky"
@@ -52,7 +54,6 @@ export function DocsPageLayout(props: PropsWithChildren<object>) {
         py="lg"
         top="lg"
         w="20rem"
-        zIndex="-1"
       >
         <Show
           when={post?.toc}

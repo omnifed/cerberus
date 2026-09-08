@@ -5,6 +5,8 @@ import { Container } from '@/styled-system/jsx'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next/types'
 
+export const dynamic = 'force-static'
+
 type Props = {
   params: Promise<{
     slug: string

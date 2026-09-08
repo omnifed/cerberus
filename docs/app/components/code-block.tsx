@@ -11,7 +11,6 @@ interface CodeBlockProps {
 }
 
 export async function CodeBlock(props: CodeBlockProps) {
-  'use cache'
   const out = await getCodeString(props.content)
 
   return (
