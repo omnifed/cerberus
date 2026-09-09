@@ -1,5 +1,11 @@
 # @cerberus/figma
 
+## 1.8.1
+
+### Patch Changes
+
+- 07a2410: fixes focus ring for input recipe
+
 ## 1.8.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @cerberus-design/signals
 
+## 1.8.1
+
+### Patch Changes
+
+- 1a294bd: Fix Compiler warnings
+
 ## 1.8.0
 
 ### Minor Changes

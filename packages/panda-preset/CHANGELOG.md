@@ -1,5 +1,12 @@
 # @cerberus/panda-preset
 
+## 1.8.1
+
+### Patch Changes
+
+- 07a2410: fixes focus ring for input recipe
+- 07a2410: Update menu recipe to use z-index layering
+
 ## 1.8.0
 
 ### Minor Changes
