@@ -100,7 +100,11 @@ export default async function DocsPage(props: PropsWithChildren<Props>) {
         <CopyPageMenu endpoint={`/llms/${doc.slugAsParams}`} />
       </HStack>
 
-      <article data-pagefind-body>
+      <article
+        data-pagefind-body
+        data-pagefind-meta={`category:${doc.category}`}
+        data-pagefind-filter={`section:docs`}
+      >
         <MDXContent code={doc.code} />
       </article>
     </>

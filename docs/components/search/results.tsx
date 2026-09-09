@@ -2,7 +2,7 @@
 
 import { cerberus, HStack, Square, Stack } from '@/styled-system/jsx'
 import { Document, Hashtag } from '@carbon/icons-react'
-import { DialogCloseTrigger, For, Show, Text } from '@cerberus-design/react'
+import { DialogCloseTrigger, For, Show, Tag, Text } from '@cerberus-design/react'
 import { createQuery, useQuery } from '@cerberus-design/signals'
 import Link, { LinkProps } from 'next/link'
 import { Fragment } from 'react/jsx-runtime'
@@ -24,10 +24,11 @@ export const StyledLink = cerberus(Link, {
 
 type Props = {
   query: string
+  activeFilter: string
 }
 
-export function SearchResults({ query }: Props) {
-  const results = useQuery(querySearch(query))
+export function SearchResults({ query, activeFilter }: Props) {
+  const results = useQuery(querySearch({ searchTerm: query, activeFilter }))
 
   if (results.length === 0) {
     return (
@@ -47,6 +48,11 @@ export function SearchResults({ query }: Props) {
                 <HStack gap="sm" w="full">
                   <Document />
                   <Text textStyle="label-md">{res.meta.title}</Text>
+                  <Show when={res.meta.category}>
+                    <Tag size="sm" usage="outlined">
+                      {res.meta.category}
+                    </Tag>
+                  </Show>
                 </HStack>
               </StyledLink>
             </DialogCloseTrigger>
@@ -63,10 +69,9 @@ export function SearchResults({ query }: Props) {
                 >
                   <For each={res.sub_results}>
                     {(sub: any, index: number) => (
-                      <DialogCloseTrigger asChild>
+                      <DialogCloseTrigger key={`${sub.title}-${index}`} asChild>
                         <StyledLink
                           data-search-item
-                          key={`${sub.title}-${index}`}
                           href={cleanURL(sub.url)}
                           userSelect="none"
                         >
@@ -115,28 +120,38 @@ export function SearchResults({ query }: Props) {
 
 let pagefindInstance: any = null
 
-const querySearch = createQuery(async (searchTerm: string) => {
-  if (!searchTerm) return []
+const querySearch = createQuery(
+  async (args: { searchTerm: string; activeFilter: string }) => {
+    const { searchTerm, activeFilter } = args
+    if (!searchTerm) return []
 
-  if (!pagefindInstance && typeof window !== 'undefined') {
-    try {
-      // Bypass Turbopack's AST parser to load the static index at runtime
-      const bypassBundler = new Function('url', 'return import(url)')
-      pagefindInstance = await bypassBundler('/pagefind/pagefind.js')
-      await pagefindInstance.options({})
-    } catch {
-      console.warn('Pagefind index not found. Run a build to generate search data.')
-      return []
+    if (!pagefindInstance && typeof window !== 'undefined') {
+      try {
+        // Bypass Turbopack's AST parser to load the static index at runtime
+        const bypassBundler = new Function('url', 'return import(url)')
+        pagefindInstance = await bypassBundler('/pagefind/pagefind.js')
+        await pagefindInstance.options({})
+      } catch {
+        console.warn('Pagefind index not found. Run a build to generate search data.')
+        return []
+      }
     }
-  }
 
-  const search = await pagefindInstance.debouncedSearch(searchTerm)
-  const topResults = await Promise.all(
-    search.results.slice(0, 5).map((r: any) => r.data()),
-  )
+    const formattedFilter = !activeFilter ? 'all' : activeFilter
+    const options =
+      formattedFilter === 'all' ? {} : { filters: { section: formattedFilter } }
 
-  return topResults
-}, 'querySearch')
+    const search = await pagefindInstance.debouncedSearch(searchTerm)
+    const topResults = await Promise.all(
+      search.results.slice(0, 5).map((r: any) => r.data()),
+    )
+
+    console.log({ topResults, searchTerm, options })
+
+    return topResults
+  },
+  'querySearch',
+)
 
 function cleanURL(url: string): LinkProps<any>['href'] {
   return url.replace('.html', '')

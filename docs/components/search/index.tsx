@@ -10,29 +10,32 @@ import {
   Show,
   Text,
 } from '@cerberus-design/react'
-import { useSignal } from '@cerberus-design/signals'
+import { useRead, useStore } from '@cerberus-design/signals'
 import { ChangeEvent, Suspense, useEffect, useRef } from 'react'
 import { FallbackLinks } from './fallback-links'
 import { Footer } from './footer'
 import { SearchResults } from './results'
 import { SearchInput } from './search-input'
+import { searchStore, SearchStore } from './store'
 
 export function Search() {
   const containerRef = useRef<HTMLDivElement>(null)
 
-  const [open, setOpen] = useSignal<boolean>(false)
-  const [input, setInput] = useSignal<string>('')
+  const store = useStore<SearchStore>(searchStore)
+  const search = useRead(store.search)
+  const open = useRead(store.open)
+  const activeFilter = useRead(store.filter)
 
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
-        setOpen((prev) => !prev)
+        store.setOpen((prev) => !prev)
       }
     }
     document.addEventListener('keydown', handleGlobalKeyDown)
     return () => document.removeEventListener('keydown', handleGlobalKeyDown)
-  }, [setOpen])
+  }, [store])
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter') {
@@ -87,8 +90,8 @@ export function Search() {
     <DialogProvider
       open={open}
       onOpenChange={(details: DialogOpenChangeDetails) => {
-        setOpen(details.open)
-        if (!details.open) setInput('')
+        store.setOpen(details.open)
+        if (!details.open) store.setSearch('')
       }}
     >
       <Box maxW="27rem" w="full">
@@ -117,31 +120,30 @@ export function Search() {
           </HStack>
         </DialogTrigger>
 
-        <Dialog p="lg" size="md">
-          {/* Attach the ref and keyboard listener to the content wrapper */}
-          <Box ref={containerRef} onKeyDown={handleKeyDown}>
-            <SearchInput
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
-              value={input}
-            />
+        <Dialog ref={containerRef} onKeyDown={handleKeyDown} p="lg" size="md">
+          <SearchInput
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              store.setSearch(e.target.value)
+            }
+            value={search}
+          />
 
-            <Scrollable h="28rem" pb="2.5rem" w="full">
-              <Show
-                when={input !== ''}
-                fallback={
-                  <Box mt="md" w="full">
-                    <FallbackLinks />
-                  </Box>
-                }
-              >
-                <Suspense fallback={<SearchingText />}>
-                  <SearchResults query={input} />
-                </Suspense>
-              </Show>
-            </Scrollable>
+          <Scrollable h="28rem" pb="2.5rem" w="full">
+            <Show
+              when={search !== ''}
+              fallback={
+                <Box mt="md" w="full">
+                  <FallbackLinks />
+                </Box>
+              }
+            >
+              <Suspense fallback={<SearchingText />}>
+                <SearchResults query={search} activeFilter={activeFilter} />
+              </Suspense>
+            </Show>
+          </Scrollable>
 
-            <Footer />
-          </Box>
+          <Footer />
         </Dialog>
       </Box>
     </DialogProvider>
