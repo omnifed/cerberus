@@ -1,5 +1,14 @@
 # @cerberus/tokens
 
+## 1.8.1
+
+### Patch Changes
+
+- 3a6b273: Update oceanus tokens and text-nodes
+- 07a2410: fixes focus ring for input recipe
+- 07a2410: Update menu recipe to use z-index layering
+- 2bcb32f: Add 'text-wrap: pretty' to text styles
+
 ## 1.8.0
 
 ### Minor Changes
