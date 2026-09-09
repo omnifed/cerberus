@@ -1,0 +1,50 @@
+---
+title: Center
+description: Used to center its child within itself.
+panda: https://panda-css.com/docs/concepts/patterns#center
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/center/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
+
+## Usage
+
+The Center pattern is used to center the content of a container.
+
+<CodePreview {...DEMOS.basic} />
+
+### Icon
+
+Center can be used to create frames around icons or numbers.
+
+<CodePreview {...DEMOS.icon} />
+
+### Center with Inline
+
+Use the `inline` to change the display to `inline-flex`.
+
+<CodePreview {...DEMOS.inline} />
+
+### Square
+
+`Square` centers its child given the `size` (width and height).
+
+<CodePreview {...DEMOS.square} />
+
+### Circle
+
+`Circle` centers its child given the `size` and creates a circle around it.
+
+<CodePreview {...DEMOS.circle} />
+
+## Props
+
+Center accepts CSS properties and the following specific props:
+
+| Prop     | Type      | Description                               |
+| -------- | --------- | ----------------------------------------- |
+| `inline` | `boolean` | Changes the display to `inline-flex`.     |
+| `size`   | `string`  | Sets the width and height of the element. |

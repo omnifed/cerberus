@@ -1,0 +1,48 @@
+---
+title: Aspect Ratio
+description: Used to embed responsive videos and maps, etc.
+panda: https://panda-css.com/docs/concepts/patterns#aspect-ratio
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/aspect-ratio/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
+
+## Usage
+
+<CodePreview {...DEMOS.basic} />
+
+### Image
+
+Here's how to embed an image that has a 4 by 3 aspect ratio.
+
+<CodePreview {...DEMOS.img} />
+
+### Video
+
+To embed a video with a specific aspect ratio, use an iframe with `src` pointing
+to the link of the video.
+
+<CodePreview {...DEMOS.video} />
+
+### Google Map
+
+Here's how to embed a responsive Google map using `AspectRatio`.
+
+<CodePreview {...DEMOS.maps} />
+
+### Responsive
+
+Here's an example of applying a responsive aspect ratio to a box.
+
+<CodePreview {...DEMOS.responsive} />
+
+## Props
+
+These props can be passed to the `AspectRatio` component.
+
+| Prop    | Type                       | Description                                                                             |
+| ------- | -------------------------- | --------------------------------------------------------------------------------------- |
+| `ratio` | `ConditionalValue<number>` | The aspect ratio of the Box. Common values are: `21/9`, `16/9`, `9/16`, `4/3`, `1.85/1` |

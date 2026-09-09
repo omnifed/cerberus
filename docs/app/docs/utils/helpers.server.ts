@@ -1,4 +1,5 @@
 import {
+  getComponentsDocLinks,
   getDataGridDocLinks,
   getGetStartedDocLinks,
   getSignalsDocLinks,
@@ -7,7 +8,6 @@ import {
 } from '@/lib/docs-content'
 import type { Metadata } from 'next'
 import { config } from '../docs.config'
-import type { DocPage } from '../types'
 
 /**
  * Get metadata for the documentation site.
@@ -43,6 +43,8 @@ export function getDocPageNavItems(category: string) {
       return getDataGridDocLinks()
     case 'get-started':
       return getGetStartedDocLinks()
+    case 'components':
+      return getComponentsDocLinks()
     case 'signals':
       return getSignalsDocLinks()
     case 'styling':
@@ -50,19 +52,6 @@ export function getDocPageNavItems(category: string) {
     case 'theming':
       return getThemingDocLinks()
     default:
-      return getNonVeliteItems(category)
+      throw new Error(`No items found for route group: ${category}`)
   }
-}
-
-function getNonVeliteItems(category: string) {
-  const groupItems =
-    config.items.find((item) => item.slug === category) ??
-    ({
-      items: [],
-    } as { items: DocPage[] })
-  if (!groupItems) {
-    throw new Error(`No items found for route group: ${category}`)
-  }
-
-  return groupItems.items || []
 }

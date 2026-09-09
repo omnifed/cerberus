@@ -1,8 +1,7 @@
 'use client'
 
-import { DocPage } from '@/app/docs/types'
 import { getDocPageNavItems } from '@/app/docs/utils/helpers.server'
-import { isVeliteContent, OrderedNavTree } from '@/lib/docs-content'
+import { OrderedNavTree } from '@/lib/docs-content'
 import { cerberus, For, Show, Tag, Text } from '@cerberus-design/react'
 import { usePathname } from 'next/navigation'
 import { SideNavLinkItem } from './link-item'
@@ -16,12 +15,7 @@ export function SideNav() {
 
   return (
     <cerberus.nav minW="12.875rem" px="sm" py="lg" w="full">
-      <Show
-        when={isVeliteContent(category)}
-        fallback={<OldNavList items={items as DocPage[]} />}
-      >
-        {() => <NavList items={items as OrderedNavTree} />}
-      </Show>
+      <NavList items={items as OrderedNavTree} />
     </cerberus.nav>
   )
 }
@@ -51,37 +45,6 @@ function NavList(props: NavListProps) {
             )}
           </For>
         </div>
-      )}
-    </For>
-  )
-}
-
-type OldNavListProps = {
-  items: DocPage[]
-}
-
-function OldNavList(props: OldNavListProps) {
-  return (
-    <For each={props.items}>
-      {(item, idx) => (
-        <Show
-          key={`${item.id}:${item.slug ?? idx}`}
-          when={item.slug}
-          fallback={
-            <Text color="page.text.100" px="sm" py="0.75rem" textStyle="heading-2xs">
-              {item.label}
-            </Text>
-          }
-        >
-          <SideNavLinkItem key={item.slug} href={item.slug}>
-            {item.label}
-            <Show when={NEW.includes(item.slug)}>
-              <Tag palette="page" usage="outlined" textStyle="label-sm">
-                Preview
-              </Tag>
-            </Show>
-          </SideNavLinkItem>
-        </Show>
       )}
     </For>
   )

@@ -1,0 +1,57 @@
+---
+title: Divider
+description: Used to create visual separation between content.
+panda: https://panda-css.com/docs/concepts/patterns#divider
+---
+
+import CodePreview from '@/app/components/CodePreview'
+import { CodeSnippet } from '@/app/components/code-snippet'
+import { DEMOS } from '../components/divider/static'
+
+<CodeSnippet snippet={DEMOS.meta} />
+
+## Usage
+
+Used to visually separate content.
+
+<CodePreview {...DEMOS.basic} />
+
+## Appearance
+
+To change the appearance of the divider, use the `borderStyle` prop.
+
+<CodePreview {...DEMOS.appearance} />
+
+### Orientation
+
+Use the `orientation` prop to change the orientation of the divider.
+
+<CodePreview {...DEMOS.orientation} />
+
+### Thickness
+
+Use the `thickness` prop to change the thickness of the divider.
+
+<CodePreview {...DEMOS.thickness} />
+
+### Color
+
+Use the `color` prop to change the color of the divider.
+
+<CodePreview {...DEMOS.color} />
+
+## Label
+
+Create visual labels by combining a `Divider` with other layout components.
+
+<CodePreview {...DEMOS.label} />
+
+## Props
+
+The `Divider` accepts any style prop in addition to the following:
+
+| Prop          | Type                  | Description                                                 |
+| ------------- | --------------------- | ----------------------------------------------------------- |
+| `orientation` | `horizontal,vertical` | The orientation of the divider. Defaults to `"horizontal"`. |
+| `thickness`   | `string`              | The thickness of the divider. Defaults to `"1px"`.          |
+| `color`       | `string`              | The color of the divider. Defaults to `"gray.200"`.         |

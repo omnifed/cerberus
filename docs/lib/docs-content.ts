@@ -9,10 +9,6 @@ export type OrderedNavTree = Array<{
   links: Array<Doc & { href: string }>
 }>
 
-export function isVeliteContent(context: string): boolean {
-  return context !== 'components'
-}
-
 export function getDocs() {
   return docs
 }
@@ -35,8 +31,8 @@ export function getDocPageNavItems(category: string) {
   switch (category) {
     case 'get-started':
       return getGetStartedDocLinks()
-    // case 'components':
-    //   return getComponentsDocLinks()
+    case 'components':
+      return getComponentsDocLinks()
     case 'data-grid':
       return getDataGridDocLinks()
     case 'signals':
@@ -80,7 +76,10 @@ export function getComponentsDocs() {
 }
 
 export function getComponentsDocLinks(): OrderedNavTree {
-  return _getOrderedDocLinks(['Concepts', 'Design Tokens'], 'components')
+  return _getOrderedDocLinks(
+    ['Concepts', 'Layout', 'Components', 'Utilities'],
+    'components',
+  )
 }
 
 // Data Grid
