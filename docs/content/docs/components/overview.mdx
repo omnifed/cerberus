@@ -1,17 +1,74 @@
 ---
-title: Components
-description: Accessible and easy to use or customize UI components
+title: Overview
+description: Learn about the Primitive UI components Cerberus provides
+group: Concepts
+order: 1
 ---
 
-import CategoryList from '@/app/components/CategoryList'
+## What is the Components Library?
 
-## Categories
+Our React components library provides a set of reusable UI components that you can use to build your application. These are specifically primitive layers that you can use to build your own custom UI components or layouts. Think of it as a set of "building blocks" for your UI.
 
-Here are a list of the components available in this library, grouped by their functionality:
+Every component in the library is customizable via the [Cerberus Factory](/docs/styling/cerberus-factory). This means that every component can accept style or `asChild` props to customize its appearance or behavior.
 
-<CategoryList group="actions" />
-<CategoryList group="communication" />
-<CategoryList group="containment" />
-<CategoryList group="navigation" />
-<CategoryList group="selection" />
-<CategoryList group="inputs" />
+## Installation
+
+To install the Components Library, run the following command which will create an alias `@cerberus/react` to `@cerberus-design/react`. This will help keep your imports consistent and avoid versioning issues.
+
+<BashTabs code="npm install @cerberus/react@npm:@cerberus-design/react" />
+
+### Dependency Requirements
+
+The `@cerberus/react` package requires the following dependencies to be installed in
+your local project:
+
+- [`react`](https://react.dev/)
+- [`react-dom`](https://react.dev/)
+- [`@pandacss/dev`](https://panda-css.com/docs/overview/getting-started)
+- [`@cerberus/panda-preset`](https://cerberus.digitalu.design/docs/get-started/installation)
+
+> **Note:** This package utilizes the Cerberus ecosystem to ensure styling, APIs, and customization are consistent.
+
+## PandaCSS Setup
+
+Once you have installed the `@cerberus/react` package, update the `include` array in your `panda.config.ts` file:
+
+```typescript
+export default createCerberusConfig({
+  include: [
+    './node_modules/@cerberus/react/dist/panda.buildinfo.json',
+    // ...your other stuff,
+  ],
+})
+```
+
+## Context
+
+The `@cerberus/react` package provides a [Context Provider](/docs/components/cerberus-context) which allows the components to access some important configrations and/or
+custom settings you might have.
+
+Wrap your application with the `CerberusProvider` to make the context available to all components.
+
+We recommend creating a module that exports the `CerberusAppProvider` component so you can easily scope the configuration and settings within its own file.
+
+```tsx title="@/components/providers/cerberus.tsx"
+'use client'
+
+import { CerberusProvider, makeSystemConfig } from '@cerberus/react'
+import { PropsWithChildren } from 'react'
+
+const config = makeSystemConfig()
+
+export function CerberusAppProvider(props: PropsWithChildren) {
+  return <CerberusProvider config={config}>{props.children}</CerberusProvider>
+}
+```
+
+## Typescript
+
+The `@cerberus/react` package is built with TypeScript and provides type definitions for all props and methods. This ensures that your code is type-safe and helps catch errors early.
+
+## Server-side Rendering
+
+The `@cerberus/react` package is built for modern React and is designed to work seamlessly with server-side rendering frameworks like Next.js. Each example will display `use client` directives
+when client-side rendering is required.

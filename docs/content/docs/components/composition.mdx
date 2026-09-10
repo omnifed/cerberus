@@ -1,30 +1,9 @@
 ---
+title: Composition
+description: Learn how to compose components in Cerberus.
+group: Concepts
+order: 2
 ---
-
-import { WarningAdmonition } from '@/app/components/Admonition'
-
-## Composition
-
-<strong>Learn how to compose components in Cerberus.</strong>
-
-## The `as` Prop
-
-Used to change the underlying HTML element that a React component renders. It
-provides a straightforward way to change the underlying element while retaining
-the component's functionality.
-
-```tsx
-<Text as="h3">Hello, world!</Text>
-```
-
-<WarningAdmonition
-  description={
-    <>
-      This is only available for the <code>Text</code> component which is a wrapper
-      around our text-related patterns.
-    </>
-  }
-/>
 
 ## The `asChild` Prop
 
@@ -63,3 +42,22 @@ const MyComponent = forwardRef((props, ref) => {
   <MyComponent> Click me </MyComponent>
 </Button>
 ```
+
+## The Text Component
+
+The `Text` component allows you to change the underlying HTML element that a React component renders via the `as` prop. It provides a straightforward way to change the underlying element while retaining the component's functionality.
+
+This is to help reduce the amount of JSX you need to write for typography driven UI.
+
+```tsx
+<Text as="h3">Hello, world!</Text>
+```
+
+<WarningAdmonition
+  description={
+    <>
+      This is only available for the <code>Text</code> component which is a wrapper
+      around our text-related patterns.
+    </>
+  }
+/>

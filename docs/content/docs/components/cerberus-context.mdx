@@ -3,28 +3,47 @@ title: Cerberus Context
 description: Register custom options for interal component usage.
 npm: '@cerberus-design/react'
 source: 'components/context'
+group: Concepts
+order: 3
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { NoteAdmonition } from '@/app/components/Admonition'
-import { DEMOS } from '../components/cerberus-context/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { CerberusProvider, makeSystemConfig, defineIcons } from '@cerberus/react'
+```
 
 ## Usage
 
 The Cerberus Context provides the ability to register custom options for internal
 component usage.
 
-<CodePreview {...DEMOS.basic} />
+```tsx
+'use client'
+
+import { CerberusProvider } from '@cerberus-design/react'
+import { type PropsWithChildren } from 'react'
+
+export function CerberusConfig(props: PropsWithChildren) {
+  return <CerberusProvider>{props.children}</CerberusProvider>
+}
+```
 
 ## Config
 
 The Cerberus Context configuration is passed to the `config` property of the `CerberusProvider`
 via the `makeSystemConfig` helper.
 
-<CodePreview {...DEMOS.config} />
+```tsx
+'use client'
+
+import { CerberusProvider, makeSystemConfig } from '@cerberus-design/react'
+import { PropsWithChildren } from 'react'
+
+const config = makeSystemConfig()
+
+export function ConfigDemo(props: PropsWithChildren) {
+  return <CerberusProvider config={config}>{props.children}</CerberusProvider>
+}
+```
 
 ## Registering Custom Icons
 
@@ -32,7 +51,26 @@ To register a different set of icons for your application, you can use the
 `defineIcons` function and pass it to the `icons` prop of the `CerberusProvider`
 `config` property.
 
-<CodePreview {...DEMOS.icons} />
+```tsx
+'use client'
+
+import { CerberusProvider, defineIcons, makeSystemConfig } from '@cerberus-design/react'
+import { ChevronDown } from '@carbon/icons-react'
+import type { PropsWithChildren } from 'react'
+
+const icons = defineIcons({
+  // Add a different icon for the accordion indicator
+  accordionIndicator: ChevronDown,
+})
+
+const config = makeSystemConfig({
+  icons,
+})
+
+export default function CerberusConfig(props: PropsWithChildren<{}>) {
+  return <CerberusProvider config={config}>{props.children}</CerberusProvider>
+}
+```
 
 ### Icon overrides
 
