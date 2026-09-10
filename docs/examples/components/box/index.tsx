@@ -6,24 +6,18 @@ import { ShadowDemo } from './shadow.demo'
 
 export const DEMOS = {
   basic: {
-    id: 'box.basic',
     preview: <BasicDemo />,
   },
   shorthand: {
-    id: 'box.shorthand',
     preview: <ShorthandDemo />,
   },
   pseudo: {
-    id: 'box.pseudo',
     preview: <PsuedoDemo />,
   },
   border: {
-    id: 'box.border',
     preview: <BorderDemo />,
   },
   shadow: {
-    id: 'box.shadow',
     preview: <ShadowDemo />,
   },
-  meta: `import { Box } from 'styled-system/jsx'`,
 }

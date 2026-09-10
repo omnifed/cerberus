@@ -2,46 +2,46 @@
 title: Aspect Ratio
 description: Used to embed responsive videos and maps, etc.
 panda: https://panda-css.com/docs/concepts/patterns#aspect-ratio
+group: Layout
+order: 1
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/aspect-ratio/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { AspectRatio } from 'styled-system/jsx'
+```
 
 ## Usage
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/aspect-ratio" demo="basic" />
 
 ### Image
 
 Here's how to embed an image that has a 4 by 3 aspect ratio.
 
-<CodePreview {...DEMOS.img} />
+<Example path="components/aspect-ratio" demo="img" />
 
 ### Video
 
 To embed a video with a specific aspect ratio, use an iframe with `src` pointing
 to the link of the video.
 
-<CodePreview {...DEMOS.video} />
+<Example path="components/aspect-ratio" demo="video" />
 
 ### Google Map
 
 Here's how to embed a responsive Google map using `AspectRatio`.
 
-<CodePreview {...DEMOS.maps} />
+<Example path="components/aspect-ratio" demo="maps" />
 
 ### Responsive
 
 Here's an example of applying a responsive aspect ratio to a box.
 
-<CodePreview {...DEMOS.responsive} />
+<Example path="components/aspect-ratio" demo="responsive" />
 
 ## Props
 
-These props can be passed to the `AspectRatio` component.
+These props can be passed to the `AspectRatio` component in addition to style and factory props.
 
 | Prop    | Type                       | Description                                                                             |
 | ------- | -------------------------- | --------------------------------------------------------------------------------------- |

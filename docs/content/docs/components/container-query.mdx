@@ -2,13 +2,13 @@
 title: Container Query
 description: Apply styles to an element based on certain attributes of its container.
 panda: https://panda-css.com/docs/concepts/patterns#cq-container-query
+group: Layout
+order: 6
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/cq/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Cq } from 'styled-system/jsx'
+```
 
 ## Usage
 
@@ -21,7 +21,7 @@ The `Cq` component is used to apply styles based on the width of the **container
 
 The container query size conditions use the following syntax: `@/[size]` or `@[custom-name]/[size]`
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/cq" demo="basic" />
 
 ### Name
 
@@ -31,17 +31,46 @@ Once "registered", the `name` prop can be used to add container-specific boundar
 
 #### Step 1: Register container names and sizes
 
-<CodeSnippet snippet={DEMOS.configMeta} />
+```ts title="panda.config.ts"
+export default createCerberusConfig({
+  // ...
+  theme: {
+    extend: {
+      containerNames: ['sidebar', 'content'],
+      containerSizes: {
+        xs: '40em',
+        sm: '60em',
+        md: '80em',
+      },
+    },
+  },
+})
+```
 
 #### Step 2: Use `Cq` to apply container query styles
 
-<CodeSnippet snippet={DEMOS.componentMeta} />
+```tsx
+import { Box, Cq } from 'styled-system/jsx'
+
+export function UsageDemo() {
+  return (
+    <Cq name="sidebar">
+      <Box
+        fontSize={{
+          base: 'lg',
+          '@sidebar/sm': 'md',
+        }}
+      />
+    </Cq>
+  )
+}
+```
 
 ### Type
 
 The `type` prop is used to define the type of the container query. Defaults to `inline-size`.
 
-<CodePreview {...DEMOS.type} />
+<Example path="components/cq" demo="type" />
 
 ## Guide
 
@@ -49,7 +78,22 @@ The `type` prop is used to define the type of the container query. Defaults to `
 
 The following sizes are included with Cerberus by default:
 
-<CodeSnippet snippet={DEMOS.sizesMeta} />
+```ts
+{
+  xs: '320px',
+  sm: '384px',
+  md: '448px',
+  lg: '512px',
+  xl: '576px',
+  '2xl': '672px',
+  '3xl': '768px',
+  '4xl': '896px',
+  '5xl': '1024px',
+  '6xl': '1152px',
+  '7xl': '1280px',
+  '8xl': '1440px'
+}
+```
 
 ## Props
 

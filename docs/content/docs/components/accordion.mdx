@@ -5,38 +5,37 @@ npm: '@cerberus-design/react'
 source: 'components/accordion'
 recipe: 'slots/accordion.ts'
 ark: 'accordion'
+group: Components
+order: 1
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { NoteAdmonition } from '@/app/components/Admonition'
-import { DEMOS } from '../components/accordion/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Accordion, AccordionItemGroup } from '@cerberus/react'
+```
 
 ## Usage
 
 The Accordion component is a controlled abstraction of the primitive components that can be used to show or hide content. It can be used in a group with other accordion items to allow for multiple selections.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/accordion" demo="basic" />
 
 ## Indicator Position
 
 The `AccordionItemGroup` component supports two indicator positions: `start` and `end`. This changes the position of the icon indicator displayed.
 
-<CodePreview {...DEMOS.indicator} />
+<Example path="components/accordion" demo="indicator" />
 
 ## Sizes
 
 The `Accordion` component supports two sizes: `sm` and `lg`. This changes the size of the icon indicator displayed.
 
-<CodePreview {...DEMOS.size} />
+<Example path="components/accordion" demo="size" />
 
 ## Customizing
 
 You can customize the Accordion using style props and data selectors.
 
-<CodePreview {...DEMOS.custom} />
+<Example path="components/accordion" demo="custom" />
 
 ## Primitives
 
@@ -69,9 +68,9 @@ The primitives additionally use the following data attributes for custom styling
 
 The `Accordion` component is an abstraction of the primitives and accepts the following props:
 
-| Name | Default | Description                     |
-| ---- | ------- | ------------------------------- |
-| size | `lg`    | The size of the accordion item. |
+| Name   | Default | Description                     |
+| ------ | ------- | ------------------------------- |
+| `size` | `lg`    | The size of the accordion item. |
 
 The Accordion is an abstraction of the [Root component](https://ark-ui.com/react/docs/components/accordion#api-reference).
 
@@ -79,11 +78,11 @@ The Accordion is an abstraction of the [Root component](https://ark-ui.com/react
 
 The `AccordionItemGroup` component is an abstraction of the primitives and accepts the following props:
 
-| Name              | Default | Description                                      |
-| ----------------- | ------- | ------------------------------------------------ |
-| heading           |         | The heading of the accordion item.               |
-| value             |         | The value of the accordion item. Must be unique. |
-| indicatorPosition | `end`   | The position of the indicator.                   |
+| Name                | Default | Description                                      |
+| ------------------- | ------- | ------------------------------------------------ |
+| `heading`           |         | The heading of the accordion item.               |
+| `value`             |         | The value of the accordion item. Must be unique. |
+| `indicatorPosition` | `end`   | The position of the indicator.                   |
 
 The AccordionItemGroup is an abstraction of the [Item component](https://ark-ui.com/react/docs/components/accordion#api-reference).
 
@@ -93,10 +92,10 @@ The `AccordionParts` API is an Object containing the full family of components.
 
 <NoteAdmonition description="It is best to only use the AccordionParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
-| Name          | Description                                                                                            |
-| ------------- | ------------------------------------------------------------------------------------------------------ |
-| Root          | The `AccordionRoot` component which is the Provider for the family.                                    |
-| Item          | The `AccordionItem` component which displays the item.                                                 |
-| ItemTrigger   | The `AccordionItemTrigger` component which is the visual title that triggers the content to open.      |
-| ItemContent   | The `AccordionItemContent` component which displays the content that is revealed from the ItemTrigger. |
-| ItemIndicator | The `AccordionItemIndicator` component which displays the indicator (chevron) icon.                    |
+| Name            | Description                                                                                            |
+| --------------- | ------------------------------------------------------------------------------------------------------ |
+| `Root`          | The `AccordionRoot` component which is the Provider for the family.                                    |
+| `Item`          | The `AccordionItem` component which displays the item.                                                 |
+| `ItemTrigger`   | The `AccordionItemTrigger` component which is the visual title that triggers the content to open.      |
+| `ItemContent`   | The `AccordionItemContent` component which displays the content that is revealed from the ItemTrigger. |
+| `ItemIndicator` | The `AccordionItemIndicator` component which displays the indicator (chevron) icon.                    |

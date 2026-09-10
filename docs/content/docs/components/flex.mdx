@@ -2,61 +2,61 @@
 title: Flex
 description: Used to manage flex layouts as an alternative to HStack and VStack.
 panda: https://panda-css.com/docs/concepts/patterns#flex
+group: Layout
+order: 8
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/flex/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Flex } from 'styled-system/jsx'
+```
 
 ## Usage
 
 Used to manage flex layouts
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/flex" demo="basic" />
 
 ### Direction
 
 Use the `direction` or `flexDirection` prop to change the direction of the flex
 
-<CodePreview {...DEMOS.direction} />
+<Example path="components/flex" demo="direction" />
 
 ### Align
 
 Use the `align` or `alignItems` prop to align the children along the cross axis.
 
-<CodePreview {...DEMOS.align} />
+<Example path="components/flex" demo="align" />
 
 ### Justify
 
 Use the `justify` or `justifyContent` prop to align the children along the main
 axis.
 
-<CodePreview {...DEMOS.justify} />
+<Example path="components/flex" demo="justify" />
 
 ### Order
 
 Use the `order` prop to change the order of the children.
 
-<CodePreview {...DEMOS.order} />
+<Example path="components/flex" demo="order" />
 
 ### Auto Margin
 
 Apply margin to a flex item to push it away from its siblings.
 
-<CodePreview {...DEMOS.margin} />
+<Example path="components/flex" demo="margin" />
 
 ### Wrap
 
 Use the `wrap` or `flexWrap` prop to wrap the children when they overflow the
 parent.
 
-<CodePreview {...DEMOS.wrap} />
+<Example path="components/flex" demo="wrap" />
 
 ## Props
 
-The `Flex` component accepts any style properties along with the following props:
+The `Flex` component accepts the following utility props in addition to style and factory props:
 
 | Prop        | Type                                  | Description                                         |
 | ----------- | ------------------------------------- | --------------------------------------------------- |

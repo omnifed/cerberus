@@ -1,36 +1,36 @@
 ---
 title: Scrollable
 description: A layout pattern to create scrollable containers.
+group: Layout
+order: 13
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/scrollable/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Scrollable } from 'styled-system/jsx'
+```
 
 ## Usage
 
 The `Scrollable` component provides an easy way to create scrollable containers
 without having to worry about overflow styles.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/scrollable" demo="basic" />
 
 ## Direction
 
 Use `vertical` or `horizontal` to control the overflow scrolling direction.
 
-<CodePreview {...DEMOS.direction} />
+<Example path="components/scrollable" demo="direction" />
 
 ## Scrollbar visibility
 
 You can control the visibility of the scrollbar using the `hideScrollbar` prop.
 
-<CodePreview {...DEMOS.visibility} />
+<Example path="components/scrollable" demo="visibility" />
 
 ## Props
 
-The `Scrollable` component supports all CSS properties as props, along with the following additional props:
+The `Scrollable` component accepts the following utility props in addition to style and factory props:
 
 | Prop            | Type                         | Description                                |
 | --------------- | ---------------------------- | ------------------------------------------ |

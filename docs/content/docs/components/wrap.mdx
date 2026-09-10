@@ -3,49 +3,51 @@ title: Wrap
 description: Used to add space between elements and wraps automatically if there isn't
   enough space.
 panda: https://panda-css.com/docs/concepts/patterns#wrap
+group: Layout
+order: 15
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/wrap/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Wrap, WrapItem } from 'styled-system/jsx'
+```
 
 ## Usage
 
 By default, `Wrap` applies `display: flex`, `flex-wrap: wrap`, and `gap: 8px` to
 its children.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/wrap" demo="basic" />
 
 ### Gap or Spacing
 
 Pass the `gap` prop to apply a consistent spacing between each child, even if it
 wraps.
 
-<CodePreview {...DEMOS.gap} />
+<Example path="components/wrap" demo="gap" />
 
 ### Alignment
 
 Pass the `align` prop to change the alignment of the child along the cross axis.
 
-<CodePreview {...DEMOS.align} />
+<Example path="components/wrap" demo="align" />
 
 ### Justify
 
 Pass the `justify` prop to change the alignment of the child along the main
 axis.
 
-<CodePreview {...DEMOS.justify} />
+<Example path="components/wrap" demo="justify" />
 
 ### Row and Column Gap
 
 Pass the `rowGap` and `columnGap` props to apply a consistent spacing between
 the rows and columns.
 
-<CodePreview {...DEMOS.rowCol} />
+<Example path="components/wrap" demo="row-col" />
 
 ## Props
+
+The `Wrap` component accepts the following utility props in addition to style and factory props:
 
 | Prop        | Type                               | Description          |
 | ----------- | ---------------------------------- | -------------------- |

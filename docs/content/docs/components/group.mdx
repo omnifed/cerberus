@@ -1,13 +1,13 @@
 ---
 title: Group
 description: Used to layout its children in an attached or normal group.
+group: Layout
+order: 11
 ---
 
-import { Example } from '@/components/example'
-import { DEMOS } from '@/examples/components/group'
-import { CodeSnippet } from '@/app/components/code-snippet'
-
-<CodeSnippet snippet="import { Group } from '@cerberus/react'" />
+```ts
+import { Group } from '@cerberus/react'
+```
 
 ## Usage
 
@@ -41,7 +41,7 @@ Use the `stack` variant of the `layout` with `orientation` to stack the children
 
 ## Props
 
-The `Group` component accepts any style properties along with the following props:
+The `Group` component accepts the following utility props in addition to style and factory props:
 
 | Prop          | Type                                   | Description                                                                                         |
 | ------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------- |

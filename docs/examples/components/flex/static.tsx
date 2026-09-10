@@ -8,32 +8,24 @@ import { WrapDemo } from './wrap.demo'
 
 export const DEMOS = {
   basic: {
-    id: 'flex.basic',
     preview: <BasicDemo />,
   },
   direction: {
-    id: 'flex.direction',
     preview: <DirectionDemo />,
   },
   align: {
-    id: 'flex.align',
     preview: <AlignDemo />,
   },
   justify: {
-    id: 'flex.justify',
     preview: <JustifyDemo />,
   },
   order: {
-    id: 'flex.order',
     preview: <OrderDemo />,
   },
   margin: {
-    id: 'flex.margin',
     preview: <MarginDemo />,
   },
   wrap: {
-    id: 'flex.wrap',
     preview: <WrapDemo />,
   },
-  meta: `import { Flex } from "styled-system/jsx";`,
 }

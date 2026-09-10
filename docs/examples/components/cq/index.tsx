@@ -1,9 +1,11 @@
 import { BasicDemo } from './basic.demo'
+import { TypeDemo } from './type.demo'
 
 export const DEMOS = {
   basic: {
-    id: 'link-overlay.basic',
     preview: <BasicDemo />,
   },
-  meta: `import { LinkOverlay } from "styled-system/jsx";`,
+  type: {
+    preview: <TypeDemo />,
+  },
 }

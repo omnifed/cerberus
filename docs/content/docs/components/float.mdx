@@ -2,54 +2,54 @@
 title: Float
 description: Used to anchor an element to the edge of a container.
 panda: https://panda-css.com/docs/concepts/patterns#float
+group: Layout
+order: 9
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/float/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Float } from 'styled-system/jsx'
+```
 
 ## Usage
 
 Used to anchor an element to the edge of a container.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/float" demo="basic" />
 
 ### Placement
 
 Use the `placement` prop to position the element along the edges of the
 container.
 
-<CodePreview {...DEMOS.placements} />
+<Example path="components/float" demo="placements" />
 
 ### Offset X
 
 Use the `offsetX` prop to offset the element along the x-axis.
 
-<CodePreview {...DEMOS.offsetX} />
+<Example path="components/float" demo="offsetX" />
 
 ### Offset Y
 
 Use the `offsetY` prop to offset the element along the y-axis.
 
-<CodePreview {...DEMOS.offsetY} />
+<Example path="components/float" demo="offsetY" />
 
 ### Offset
 
 Use the `offset` prop to offset the element along both axes.
 
-<CodePreview {...DEMOS.offset} />
+<Example path="components/float" demo="offset" />
 
 ### Avatar
 
 Here's an example of composing a `Float` component with an `Avatar` component.
 
-<CodePreview {...DEMOS.avatar} />
+<Example path="components/float" demo="avatar" />
 
 ## Props
 
-The `Float` component accepts any style properties along with the following props:
+The `Float` component accepts the following utility props in addition to style and factory props:
 
 | Prop        | Type                                | Description                                                |
 | ----------- | ----------------------------------- | ---------------------------------------------------------- |

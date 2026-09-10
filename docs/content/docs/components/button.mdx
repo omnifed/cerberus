@@ -4,14 +4,13 @@ description: Used to trigger actions or events.
 npm: '@cerberus-design/react'
 source: 'components/button'
 recipe: 'button.ts'
+group: Components
+order: 4
 ---
 
-import { Example } from '@/components/example'
-import { DEMOS } from '@/examples/components/button'
-import { NoteAdmonition } from '@/app/components/Admonition'
-import { CodeSnippet } from '@/app/components/code-snippet'
-
-<CodeSnippet snippet="import { Button } from '@cerberus/react';" />
+```ts
+import { Button } from '@cerberus/react'
+```
 
 ## Usage
 
@@ -65,10 +64,10 @@ You can create an attached button group by setting the `layout` prop to `attache
 
 You can utilize the primitive components or the `css` prop to customize the button.
 
-| Component   | Description                               |
-| ----------- | ----------------------------------------- |
-| Button.Root | The context provider for the Button parts |
-| Button.Icon | The icon/spinner of the button            |
+| Component     | Description                               |
+| ------------- | ----------------------------------------- |
+| `Button.Root` | The context provider for the Button parts |
+| `Button.Icon` | The icon/spinner of the button            |
 
 <Example path="components/button" demo="custom" />
 
@@ -98,7 +97,7 @@ The `Button` component is an abstraction of the primitives and accepts the follo
 
 #### ButtonGroup Props
 
-| Name   | Default   | Description                                                                                           |
-| ------ | --------- | ----------------------------------------------------------------------------------------------------- |
-| layout | `default` | The layout of the button group. Can be `default` or `attached`.                                       |
-| shape  | `sharp`   | The shape of the buttons in the group. Should match the `shape` prop of the `Button` components used. |
+| Name     | Default   | Description                                                                                           |
+| -------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| `layout` | `default` | The layout of the button group. Can be `default` or `attached`.                                       |
+| `shape`  | `sharp`   | The shape of the buttons in the group. Should match the `shape` prop of the `Button` components used. |

@@ -6,24 +6,18 @@ import { RowColDemo } from './row-col.demo'
 
 export const DEMOS = {
   basic: {
-    id: 'wrap.basic',
     preview: <BasicDemo />,
   },
   gap: {
-    id: 'wrap.gap',
     preview: <GapDemo />,
   },
   align: {
-    id: 'wrap.align',
     preview: <AlignDemo />,
   },
   justify: {
-    id: 'wrap.justify',
     preview: <JustifyDemo />,
   },
-  rowCol: {
-    id: 'wrap.row-col',
+  'row-col': {
     preview: <RowColDemo />,
   },
-  meta: `import { Wrap, WrapItem } from "styled-system/jsx"`,
 }

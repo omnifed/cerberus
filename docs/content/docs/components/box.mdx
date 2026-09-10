@@ -3,49 +3,48 @@ title: Box
 description: The most abstract styling component in Cerberus on top of which all other
   Cerberus components are built.
 panda: https://panda-css.com/docs/concepts/patterns#box
+group: Layout
+order: 3
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/box/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Box } from 'styled-system/jsx'
+```
 
 ## Usage
 
 The Box pattern does not contain any additional styles. With its function form
-it's the equivalent of the css function. It can be useful with its JSX form and
-is the equivalent of a styled.div component, serving mostly to get style props
+it's the equivalent of the `css` function. It can be useful with its JSX form and
+is the equivalent of a `styled.div` component, serving mostly to get style props
 available in JSX.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/box" demo="basic" />
 
 ### Shorthand
 
 Use shorthand like `bgColor` instead of `backgroundColor`, `m` instead of `margin`, etc.
 
-<CodePreview {...DEMOS.shorthand} />
+<Example path="components/box" demo="shorthand" />
 
 ### Pseudo Props
 
 Use pseudo props like `_hover` to apply styles on hover, `_focus` to apply
 styles on focus, etc.
 
-<CodePreview {...DEMOS.pseudo} />
+<Example path="components/box" demo="pseudo" />
 
 ### Border
 
 Use the `border` and `borderColor` prop to apply border styles.
 
-<CodePreview {...DEMOS.border} />
+<Example path="components/box" demo="border" />
 
 ### Shadow
 
 Use the `boxShadow` or `shadow` prop to apply shadow styles.
 
-<CodePreview {...DEMOS.shadow} />
+<Example path="components/box" demo="shadow" />
 
 ## Props
 
-The `Box` component supports all CSS properties as props, making it easy to
-style elements.
+The `Box` component supports all style or factory props for styling.

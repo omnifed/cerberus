@@ -2,20 +2,20 @@
 title: Link Overlay
 description: Used to stretch a link over a container.
 panda: https://panda-css.com/docs/concepts/patterns#linkoverlay
+group: Layout
+order: 12
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/link-overlay/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { LinkOverlay } from 'styled-system/jsx'
+```
 
 ## Usage
 
 The link overlay pattern is used to expand a link's clickable area to its nearest
 parent with `position: relative`.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/link-overlay" demo="basic" />
 
 ## How it works
 

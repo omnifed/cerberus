@@ -4,25 +4,25 @@ description:
   Used to constrain a content's width to the current breakpoint, while keeping
   it fluid.
 panda: https://panda-css.com/docs/concepts/patterns#container
+group: Layout
+order: 5
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/container/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Container } from 'styled-system/jsx'
+```
 
 ## Usage
 
 The default `maxWidth` is `8xl` which maps to `90rem (1440px)`.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/container" demo="basic" />
 
 ### Sizes
 
 Use the `maxWidth` prop to change the size of the container.
 
-<CodePreview {...DEMOS.sizes} />
+<Example path="components/container" demo="sizes" />
 
 ## Props
 

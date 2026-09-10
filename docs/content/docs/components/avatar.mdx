@@ -5,14 +5,13 @@ npm: '@cerberus-design/react'
 source: 'components/avatar'
 recipe: '/slots/avatar.ts'
 ark: 'avatar'
+group: Components
+order: 3
 ---
 
-import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/avatar/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Avatar } from '@cerberus/react'
+```
 
 ## Usage
 
@@ -20,31 +19,31 @@ The `Avatar` component is used to represent a user or entity. It can be used to 
 
 <NoteAdmonition description="The avatar uses a smart hierarchy method. If a source is provided and loads successfully - it will be shown. In all other cases, the fallback will be shown." />
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/avatar" demo="basic" />
 
 ## Sizes
 
 You can change the size of an Avatar with the `size` prop.
 
-<CodePreview {...DEMOS.sizes} />
+<Example path="components/avatar" demo="sizes" />
 
 ## Gradients
 
 Use the `gradient` prop to use any [gradient](/docs/theming/gradients) for the background color.
 
-<CodePreview {...DEMOS.gradient} />
+<Example path="components/avatar" demo="gradient" />
 
 ## Group
 
 Use the `Group` component to stack Avatars together.
 
-<CodePreview {...DEMOS.group} />
+<Example path="components/avatar" demo="group" />
 
 ## Badge
 
 Use the `Float` component to show badges.
 
-<CodePreview {...DEMOS.float} />
+<Example path="components/avatar" demo="float" />
 
 ## `asChild` Prop
 
@@ -52,23 +51,23 @@ You can use the `asChild` prop to render the `Avatar` component as a different e
 
 This is great for when you need to link the avatar to a profile page.
 
-<CodePreview {...DEMOS.next} />
+<Example path="components/avatar" demo="next" />
 
 ## Customization
 
 You can customize the Avatar any way you like with style props and data-selectors.
 
-<CodePreview {...DEMOS.custom} />
+<Example path="components/avatar" demo="custom" />
 
 ## Primitives
 
 The layers of the Avatar which can be used to create a fully custom solution.
 
-| Component      | Description                                    |
-| -------------- | ---------------------------------------------- |
-| AvatarRoot     | The context provider for the Avatar parts      |
-| AvatarImage    | The img of the avatar                          |
-| AvatarFallback | The fallback content to display for the avatar |
+| Component        | Description                                    |
+| ---------------- | ---------------------------------------------- |
+| `AvatarRoot`     | The context provider for the Avatar parts      |
+| `AvatarImage`    | The img of the avatar                          |
+| `AvatarFallback` | The fallback content to display for the avatar |
 
 ### Data Attributes
 
@@ -87,13 +86,13 @@ The primitives additionally use the following data attributes for custom styling
 
 The `Avatar` component is an abstraction of the primitives and accepts the following props:
 
-| Name     | Default | Description                                       |
-| -------- | ------- | ------------------------------------------------- |
-| fallback |         | The fallback content to display for the avatar.   |
-| src      |         | The `src` of the avatar.                          |
-| alt      |         | The `alt` of the avatar. Required if using `src`. |
-| gradient | `none`  | The gradient theme to display                     |
-| size     | `md`    | This size of the avatar.                          |
+| Name       | Default | Description                                       |
+| ---------- | ------- | ------------------------------------------------- |
+| `fallback` |         | The fallback content to display for the avatar.   |
+| `src`      |         | The `src` of the avatar.                          |
+| `alt`      |         | The `alt` of the avatar. Required if using `src`. |
+| `gradient` | `none`  | The gradient theme to display                     |
+| `size`     | `md`    | This size of the avatar.                          |
 
 The `Avatar` component also accepts all the props of the [`AvatarRoot` primitive props](https://ark-ui.com/react/docs/components/avatar#api-reference)
 
@@ -103,8 +102,8 @@ The `AvatarParts` API is an Object containing the full family of components.
 
 <NoteAdmonition description="It is best to only use the AvatarParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
-| Name     | Description                                                                                               |
-| -------- | --------------------------------------------------------------------------------------------------------- |
-| Root     | The `AvatarRoot` component which is the Provider for the family.                                          |
-| Image    | The `AvatarImage` component which displays the image.                                                     |
-| Fallback | The `AvatarFallback` component which is the content to show when there is no image (or it fails to load). |
+| Name       | Description                                                                                               |
+| ---------- | --------------------------------------------------------------------------------------------------------- |
+| `Root`     | The `AvatarRoot` component which is the Provider for the family.                                          |
+| `Image`    | The `AvatarImage` component which displays the image.                                                     |
+| `Fallback` | The `AvatarFallback` component which is the content to show when there is no image (or it fails to load). |

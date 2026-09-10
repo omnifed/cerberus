@@ -2,45 +2,47 @@
 title: Stack
 description: Used to layout its children in a vertical or horizontal stack.
 panda: https://panda-css.com/docs/concepts/patterns#stack
+group: Layout
+order: 14
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/stack/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Stack, HStack, VStack } from 'styled-system/jsx'
+```
 
 ## Usage
 
 By default, Stack applies `flex-direction: column` and `gap: 8px` to its
 children.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/stack" demo="basic" />
 
 ### Horizontal
 
 Use the `direction` prop to change the direction of the stack.
 
-<CodePreview {...DEMOS.horizontal} />
+<Example path="components/stack" demo="horizontal" />
 
 ### HStack
 
 Alternatively, you can use the `HStack` to create a horizontal stack and align
 its children horizontally.
 
-<CodePreview {...DEMOS.hstack} />
+<Example path="components/stack" demo="hstack" />
 
 ### VStack
 
 Use the `VStack` to create a vertical stack and align its children vertically.
 
-<CodePreview {...DEMOS.vstack} />
+<Example path="components/stack" demo="vstack" />
 
 ## Responsive Direction
 
-<CodePreview {...DEMOS.responsive} />
+<Example path="components/stack" demo="responsive" />
 
 ## Props
+
+The `Stack` component accepts the following utility props in addition to style and factory props:
 
 | Prop        | Type                                   | Description                           |
 | ----------- | -------------------------------------- | ------------------------------------- |

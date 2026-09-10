@@ -2,34 +2,36 @@
 title: Grid
 description: Used to manage grid layouts.
 panda: https://panda-css.com/docs/concepts/patterns#grid
+group: Layout
+order: 10
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/grid/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Grid } from 'styled-system/jsx'
+```
 
 ## Usage
 
 Easily create grid layouts with the `Grid` component.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/grid" demo="basic" />
 
 ### Col Span
 
 Pass `colSpan` prop to `GridItem` to span across columns.
 
-<CodePreview {...DEMOS.colspan} />
+<Example path="components/grid" demo="colspan" />
 
 ### Spanning Columns
 
 In some layouts, you may need certain grid items to span specific amount of
 columns or rows instead of an even distribution
 
-<CodePreview {...DEMOS.spanning} />
+<Example path="components/grid" demo="spanning" />
 
 ## Props
+
+The `Grid` component accepts the following utility props in addition to style and factory props:
 
 | Prop                | Type                                       | Description                                  |
 | ------------------- | ------------------------------------------ | -------------------------------------------- |
