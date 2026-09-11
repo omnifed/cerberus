@@ -3,12 +3,9 @@ title: Loading States
 description: Loading states are used to indicate that content is being loaded.
 npm: '@cerberus-design/react'
 source: 'components/spinner'
+group: Components
+order: 19
 ---
-
-import CodePreview from '@/app/components/CodePreview'
-import { OverviewPreview } from '../components/loading-states/loading'
-import { OverviewSpinnerPreview } from '../components/loading-states/spinner'
-import { CustomSpinner } from '../components/loading-states/custom-spinner'
 
 ## Skeletor API
 
@@ -20,105 +17,28 @@ To show a skeleton loading state, simply add the `aria-busy` attribute to the el
 </div>
 ```
 
-<CodePreview preview={<OverviewPreview />}>
-```tsx
-import { Tag, Text } from '@cerberus/react'
-import { Box, Circle, HStack, VStack } from 'styled-system/jsx'
-import { css } from 'styled-system/css'
-
-export function OverviewPreview() {
-  return (
-    <HStack justify="space-between" w="3/4">
-      <VStack alignItems="flex-start">
-        <HStack justify="space-between" w="full">
-          <Box aria-busy="true" rounded="sm">
-            <Text>This is a description of something.</Text>
-          </Box>
-          <HStack>
-            <Circle aria-busy="true" size="6" />
-            <Circle aria-busy="true" size="6" />
-            <Circle aria-busy="true" size="6" />
-          </HStack>
-        </HStack>
-        <Box aria-busy="true" rounded="sm">
-          <Text as="h2">Trash content</Text>
-          <Text>
-            Trash content is a place where you can find all the content that you
-            have deleted. You can restore or permanently delete the content from
-            here.
-          </Text>
-        </Box>
-        <Tag
-          className={css({
-            alignSelf: 'center',
-          })}
-          shape="pill"
-        >
-          Skeleton
-        </Tag>
-      </VStack>
-    </HStack>
-  )
-}
-```
-</CodePreview>
+<Example path="components/loading-states" demo="loading" />
 
 ### Spinners
 
-<CodePreview preview={<OverviewSpinnerPreview />}>
-```tsx
-import { Button, Spinner } from '@cerberus/react'
+Cerberus provides a `Spinner` component that can be used to indicate a loading state.
 
-function MyComponent() {
-return (
-<Button>
-<Spinner size="1em" />
-Saving
-</Button>
-)
-}
+<NoteAdmonition description="Spinners are built into Buttons via the Button.Icon component. This example is only beneficial use outside of buttons." />
 
-````
-</CodePreview>
+<Example path="components/loading-states" demo="spinner" />
 
 ## Customization
 
 The `Spinner` component is a simple SVG element that can be styled with CSS.
 
-<CodePreview preview={<CustomSpinner />}>
-```tsx
-import { cerberus, Spinner } from '@cerberus-design/react'
-
-function CustomSpinner() {
-  return (
-    <cerberus.div
-      css={{
-        color: 'yellow',
-        w: 20,
-      }}
-    >
-      <Spinner />
-    </cerberus.div>
-  )
-}
-````
-
-</CodePreview>
+<Example path="components/loading-states" demo="custom" />
 
 ## API
-
-```ts showLineNumbers=false
-export type SpinnerProps = SVGProps<SVGSVGElement> & {
-  size?: number | string
-}
-
-define function Spinner(props: SpinnerProps): ReactNode
-```
 
 ### Props
 
 The `Spinner` component accepts the same props as an SVG element.
 
-| Name | Default | Description                                   |
-| ---- | ------- | --------------------------------------------- |
-| size |         | A strict `height` and `width` of the Spinner. |
+| Name   | Default | Description                                   |
+| ------ | ------- | --------------------------------------------- |
+| `size` |         | A strict `height` and `width` of the Spinner. |

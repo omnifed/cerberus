@@ -5,26 +5,32 @@ npm: '@cerberus-design/react'
 source: 'components/dialog'
 recipe: 'slots/dialog.ts'
 ark: 'dialog'
+group: Components
+order: 13
 ---
 
-import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/dialog/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import {
+  Dialog,
+  DialogTrigger,
+  DialogHeading,
+  DialogDescription,
+  DialogCloseTrigger,
+  DialogCloseIconTrigger,
+} from '@cerberus-design/react'
+```
 
 ## Usage
 
 To use the Dialog component, wrap it in a `DialogProvider` and use the `DialogTrigger` component to open the dialog. The `Dialog` component is a controlled component that can be used to display content in a modal.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/dialog" demo="basic" />
 
 ### Sizes
 
 The Dialog component supports different sizes. You can set the size prop to `xs` to `lg`, or `full`.
 
-<CodePreview {...DEMOS.sizes} />
+<Example path="components/dialog" demo="sizes" />
 
 ### Controlled
 
@@ -32,13 +38,13 @@ Manage the dialog state using the `open` and `onOpenChange` props.
 
 <NoteAdmonition description="Notice how the dialog triggers automagically handle the state management via onOpenChange." />
 
-<CodePreview {...DEMOS.controlled} />
+<Example path="components/dialog" demo="controlled" />
 
 ### Root Provider
 
 An alternative way to control the dialog is to use the `RootProvider` component and the `useDialog` hook. This way you can access the state and methods from outside the component.
 
-<CodePreview {...DEMOS.root} />
+<Example path="components/dialog" demo="root" />
 
 ### Lazy Mount
 
@@ -46,57 +52,62 @@ Use `lazyMount` to render dialog content only when first opened. Combine with `u
 
 Prefer this over conditionally rendering DialogProvider — see [Conditional Rendering](#conditional-rendering).
 
-<CodePreview {...DEMOS.lazy} />
+<Example path="components/dialog" demo="lazy" />
 
 ### Inside Scroll
 
 Make the content area scrollable while keeping header and footer fixed using `maxHeight` and `overflow: auto`.
 
-<CodePreview {...DEMOS.inside} />
+<Example path="components/dialog" demo="inside" />
 
 ### Outside Scroll
 
 Make the positioner scrollable so the dialog can extend beyond the viewport.
 
-<CodePreview {...DEMOS.outside} />
+<Example path="components/dialog" demo="outside" />
 
 ### Initial Focus
 
 Use `initialFocusEl` to control which element receives focus when the dialog opens.
 
-<CodePreview {...DEMOS.focus} />
+<Example path="components/dialog" demo="focus" />
 
 ### Final Focus
 
 Use `finalFocusEl` to control which element receives focus when the dialog closes. Defaults to the trigger element.
 
-<CodePreview {...DEMOS.final} />
+<Example path="components/dialog" demo="final" />
 
 ### Context
 
 Access the dialog's state and methods with `DialogContext` or the `useDialogContext` hook.
 
-<CodePreview {...DEMOS.context} />
+<Example path="components/dialog" demo="context" />
 
 ### Open from Menu
 
 Open a dialog imperatively from a `Menu` item using the `onClick` handler.
 
-<CodePreview {...DEMOS.menu} />
+<Example path="components/dialog" demo="menu" />
 
 ### Nested
 
 Nest dialogs within one another. The parent receives `data-has-nested` and `--nested-layer-count` CSS variable for styling effects like zoom-out:
 
-<CodeSnippet snippet={DEMOS.nestedCss} />
+```css
+[data-part='content'][data-has-nested] {
+  transform: scale(calc(1 - var(--nested-layer-count) * 0.05));
+}
+```
+
 <br />
-<CodePreview {...DEMOS.nested} />
+<Example path="components/dialog" demo="nested" />
 
 ### Confirmation
 
 Intercept close attempts to show confirmation prompts, preventing data loss from unsaved changes.
 
-<CodePreview {...DEMOS.confirmation} />
+<Example path="components/dialog" demo="confirmation" />
 
 ### Non-Modal
 
@@ -107,7 +118,7 @@ We don't recommend using a non-modal dialog due to the accessibility concerns th
 - (optional) set the `closeOnInteractOutside` prop to `false`
   Preview
 
-<CodePreview {...DEMOS.non} />
+<Example path="components/dialog" demo="non" />
 
 ## Guides
 
@@ -124,19 +135,23 @@ Unmounting `Dialog.Root` when toggling open state can break focus, scroll lock, 
 
 When you want portal content out of the DOM while closed, add `lazyMount` and `unmountOnExit` to the root.
 
-<CodePreview {...DEMOS.behavior} />
+<Example path="components/dialog" demo="behavior" />
 
 ### Z-index Stacking
 
 Use the `--layer-index` CSS variable for z-index management of stacked dialogs:
 
-<CodeSnippet snippet={DEMOS.zIndexCss} />
+```css
+[data-part='content'] {
+  z-index: calc(var(--layer-index));
+}
+```
 
 ### Dynamic Imports
 
 When using `lazyMount` with `lazy` or Next.js `dynamic`, wrap the imported component in `Suspense`:
 
-<CodePreview {...DEMOS.dynamic} />
+<Example path="components/dialog" demo="dynamic" />
 
 ### Customizing
 
@@ -146,17 +161,17 @@ You can customize the `Dialog` using style props and data selectors on any slot 
 
 You can utilize the primitive components or the `css` prop to customize the dialog.
 
-| Component              | Description                                                  |
-| ---------------------- | ------------------------------------------------------------ |
-| DialogProvider         | The main state context for the dialog.                       |
-| DialogTrigger          | The trigger element that opens the dialog.                   |
-| DialogBackdrop         | The backdrop that covers the page when the dialog is open.   |
-| DialogPositioner       | The container that positions the dialog content.             |
-| DialogContent          | The content that is shown within the dialog.                 |
-| DialogHeading          | The heading title of the dialog.                             |
-| DialogDescription      | The description of the dialog.                               |
-| DialogCloseTrigger     | The trigger element that closes the dialog.                  |
-| DialogCloseIconTrigger | The trigger element that closes the dialog with an "x" icon. |
+| Component                | Description                                                  |
+| ------------------------ | ------------------------------------------------------------ |
+| `DialogProvider`         | The main state context for the dialog.                       |
+| `DialogTrigger`          | The trigger element that opens the dialog.                   |
+| `DialogBackdrop`         | The backdrop that covers the page when the dialog is open.   |
+| `DialogPositioner`       | The container that positions the dialog content.             |
+| `DialogContent`          | The content that is shown within the dialog.                 |
+| `DialogHeading`          | The heading title of the dialog.                             |
+| `DialogDescription`      | The description of the dialog.                               |
+| `DialogCloseTrigger`     | The trigger element that closes the dialog.                  |
+| `DialogCloseIconTrigger` | The trigger element that closes the dialog with an "x" icon. |
 
 ## API
 

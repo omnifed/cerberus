@@ -5,12 +5,9 @@ npm: '@cerberus-design/react'
 source: 'components/marquee'
 recipe: 'slots/marquee.ts'
 ark: 'marquee'
+group: Components
+order: 20
 ---
-
-import { Example } from '@/components/example'
-import { DEMOS } from '@/examples/components/marquee'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { NoteAdmonition } from '@/app/components/Admonition'
 
 <CodeSnippet snippet="import { Marquee } from '@cerberus/react'" />
 
@@ -90,13 +87,13 @@ The marquee component exposes CSS variables that can be used to customize its be
 
 You can utilize the primitive components or the `css` prop to customize the Marquee.
 
-| Component       | Description                                           |
-| --------------- | ----------------------------------------------------- |
-| MarqueeRoot     | The context provider for the Marquee family           |
-| MarqueeEdge     | The stylistic edge of the Marquee                     |
-| MarqueeViewport | The viewport container that holds the Marquee content |
-| MarqueeContent  | The content of the Marquee                            |
-| MarqueeItem     | The item to be displayed in the Marquee               |
+| Component         | Description                                           |
+| ----------------- | ----------------------------------------------------- |
+| `MarqueeRoot`     | The context provider for the Marquee family           |
+| `MarqueeEdge`     | The stylistic edge of the Marquee                     |
+| `MarqueeViewport` | The viewport container that holds the Marquee content |
+| `MarqueeContent`  | The content of the Marquee                            |
+| `MarqueeItem`     | The item to be displayed in the Marquee               |
 
 ## API
 
@@ -207,10 +204,10 @@ You can utilize the primitive components or the `css` prop to customize the Marq
 
 The `Marquee` API is an Object containing the full family of components.
 
-| Name     | Description                                           |
-| -------- | ----------------------------------------------------- |
-| Root     | The context provider for the Marquee family           |
-| Edge     | The stylistic edge of the Marquee                     |
-| Viewport | The viewport container that holds the Marquee content |
-| Content  | The content of the Marquee                            |
-| Item     | The item to be displayed in the Marquee               |
+| Name       | Description                                           |
+| ---------- | ----------------------------------------------------- |
+| `Root`     | The context provider for the Marquee family           |
+| `Edge`     | The stylistic edge of the Marquee                     |
+| `Viewport` | The viewport container that holds the Marquee content |
+| `Content`  | The content of the Marquee                            |
+| `Item`     | The item to be displayed in the Marquee               |

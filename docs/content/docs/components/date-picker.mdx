@@ -5,16 +5,9 @@ npm: '@cerberus-design/react'
 source: 'components/date-picker'
 recipe: 'slots/datepicker.ts'
 ark: 'date-picker'
+group: Components
+order: 12
 ---
-
-import CodePreview from '@/app/components/CodePreview'
-import { NoteAdmonition } from '@/app/components/Admonition'
-import {
-  StaticPreview,
-  RangePreview,
-  CustomStylesDemo,
-} from '../components/date-picker/static'
-import { RangeDefaultValuePreview } from '../components/date-picker/range-default-value.client'
 
 ```ts
 import {
@@ -31,65 +24,13 @@ The DatePicker component is a controlled component that allows users to select a
 
 ### Single Date Picker
 
-<CodePreview preview={<StaticPreview id="dev-static" />}>
-```tsx
-import {
-  DatePicker,
-  DatePickerLabel,
-  DatePickerInput,
-  DatePickerCalendar,
-  Field,
-} from '@cerberus/react'
-import { Box } from 'styled-system/jsx'
-
-function StaticPreview() {
-return (
-<Box w="2/3">
-<Field>
-<DatePicker id="start_date" name="start_date">
-<DatePickerLabel>Start date</DatePickerLabel>
-<DatePickerInput />
-<DatePickerCalendar />
-</DatePicker>
-</Field>
-</Box>
-)
-}
-
-````
-</CodePreview>
+<Example path="components/date-picker" demo="basic" />
 
 ### Date Range Picker
 
 To create a date range picker, set the `selectionMode` prop to `range` on the `DatePicker` component and use the `RangePickerInput` component as the input field.
 
-<CodePreview preview={<RangePreview id="dev-range" />}>
-```tsx
-import {
-  DatePicker,
-  DatePickerLabel,
-  RangePickerInput,
-  DatePickerCalendar,
-  Field,
-} from '@cerberus/react'
-import { Box } from 'styled-system/jsx'
-
-function RangePreview() {
-  return (
-    <Box gap="4" w="2/3">
-      <Field>
-        <DatePicker id="range_dates" name="range_dates" selectionMode="range">
-          <DatePickerLabel>Search range</DatePickerLabel>
-          <RangePickerInput />
-          <DatePickerCalendar />
-        </DatePicker>
-      </Field>
-    </Box>
-  )
-}
-````
-
-</CodePreview>
+<Example path="components/date-picker" demo="range" />
 
 #### Using Default Values
 
@@ -97,95 +38,13 @@ You can set the default values for the range date picker by passing the `default
 
 <NoteAdmonition description="The `defaultValue` prop is only used when the component is first rendered. If you need to update the value dynamically, use the `value` prop instead." />
 
-<CodePreview preview={<RangeDefaultValuePreview />}>
-```tsx {18}
-import {
-  DatePicker,
-  DatePickerLabel,
-  RangePickerInput,
-  DatePickerCalendar,
-  Field,
-  parseDate,
-} from '@cerberus/react'
-import { Box } from 'styled-system/jsx'
-
-function RangeDefaultValuePreview() {
-const defaultValue = parseDate(['2025-01-01', '2025-01-15'])
-
-return (
-<Box gap="4" w="2/3">
-<Field>
-<DatePicker
-          defaultValue={defaultValue}
-          name="range_dates_dv"
-          selectionMode="range"
-        >
-<DatePickerLabel>Search range</DatePickerLabel>
-<RangePickerInput />
-<DatePickerCalendar />
-</DatePicker>
-</Field>
-</Box>
-)
-}
-
-````
-</CodePreview>
+<Example path="components/date-picker" demo="rangeDefault" />
 
 ### Custom Styles
 
 You can customize the DatePicker width and other styles using the `css` prop along with the `data-part` selector to target specific primitives.
 
-<CodePreview preview={<CustomStylesDemo />}>
-```tsx
-import {
-  DatePicker,
-  DatePickerLabel,
-  DatePickerInput,
-  DatePickerCalendar,
-  Field,
-} from '@cerberus/react'
-import { Grid } from 'styled-system/jsx'
-
-function CustomStylesDemo() {
-  return (
-    <Grid columns={2} gap="4" w="3/4">
-      <Field>
-        <DatePicker
-          name="custom_start_date"
-          css={{
-            w: 'full',
-            '& :is([data-part=control])': {
-              w: 'full',
-            },
-          }}
-        >
-          <DatePickerLabel>Start date</DatePickerLabel>
-          <DatePickerInput />
-          <DatePickerCalendar />
-        </DatePicker>
-      </Field>
-      <Field>
-        <DatePicker
-          name="custom_end_date"
-          css={{
-            w: 'full',
-            '& :is([data-part=control])': {
-              w: 'full',
-            },
-          }}
-        >
-          <DatePickerLabel>End date</DatePickerLabel>
-          <DatePickerInput />
-          <DatePickerCalendar />
-        </DatePicker>
-      </Field>
-    </Grid>
-  )
-}
-````
-
-</CodePreview>
+<Example path="components/date-picker" demo="custom" />
 
 ## Date Helpers
 
@@ -195,7 +54,7 @@ The `DatePicker` component relies on different date utilities to handle date par
 
 You can create a structured date Object using the `CalendarDate` class. This function accepts a date string or an object with year, month, and day properties.
 
-```tsx
+```ts
 import { CalendarDate } from '@cerberus/react'
 const date = new CalendarDate(2022, 2, 3)
 ```
@@ -220,7 +79,7 @@ const date = new CalendarDate(2022, 2, 3)
 
 You can use the `parseDate` function to convert an array of date strings into a date object that the `DatePicker` can understand.
 
-```tsx
+```ts
 import { parseDate } from '@cerberus/react'
 const date = parseDate(['2025-01-01', '2025-01-15'])
 ```
@@ -245,7 +104,7 @@ const date = parseDate(['2025-01-01', '2025-01-15'])
 
 You can use the `today` function to get the current date in a format that the `DatePicker` can understand.
 
-```tsx
+```ts
 import { today, getLocalTimeZone } from '@cerberus/react'
 
 const nyDate = today('America/New_York')
@@ -272,7 +131,7 @@ const localDate = today(getLocalTimeZone())
 
 You can use the `DateFormatter` class to format a date object into a string. This is useful for displaying dates in a human-readable format.
 
-```tsx
+```ts
 import { DateFormatter } from '@cerberus/react'
 
 const formatter = new DateFormatter('en-US', {
@@ -302,32 +161,32 @@ const date = formatter.format(new Date()) // "January 1, 2025"
 
 You can utilize the primitive components or the `css` prop to customize the date picker.
 
-| Component              | Description                                         |
-| ---------------------- | --------------------------------------------------- |
-| DatePickerRoot         | The main container for the date-picker items.       |
-| DatePickerLabel        | The label for the date-picker.                      |
-| DatePickerControl      | The control for the date-picker.                    |
-| DatePickerInput        | The input field and trigger for the date-picker.    |
-| DatePickerTrigger      | The trigger for the date-picker.                    |
-| DatePickerClearTrigger | The trigger to clear the date-picker.               |
-| DatePickerPositioner   | The positioner for the date-picker.                 |
-| DatePickerContent      | The content of the date-picker calendar.            |
-| DatePickerYearSelect   | The select input for the year in the date-picker.   |
-| DatePickerMonthSelect  | The select input for the month in the date-picker.  |
-| DatePickerView         | The container (view) of the calendar.               |
-| DatePickerContext      | The context provider for the date-picker calendar.  |
-| DatePickerViewControl  | The triggers that update the calendar in the view.  |
-| DatePickerPrevTrigger  | The trigger to navigate to the previous view.       |
-| DatePickerNextTrigger  | The trigger to navigate to the next view.           |
-| DatePickerViewTrigger  | The trigger to navigate to a specific view.         |
-| DatePickerRangeText    | The text that displays the range of dates selected. |
-| DatePickerTable        | The table that contains the calendar.               |
-| DatePickerTableRow     | The row of the calendar table.                      |
-| DatePickerTableHead    | The header of the calendar table.                   |
-| DatePickerTableHeader  | The header cell of the calendar table.              |
-| DatePickerTableBody    | The body of the calendar table.                     |
-| DatePickerTableCell    | The cell of the calendar table.                     |
-| DatePickerTableTrigger | The trigger of the cell in the calendar table.      |
+| Component                | Description                                         |
+| ------------------------ | --------------------------------------------------- |
+| `DatePickerRoot`         | The main container for the date-picker items.       |
+| `DatePickerLabel`        | The label for the date-picker.                      |
+| `DatePickerControl`      | The control for the date-picker.                    |
+| `DatePickerInput`        | The input field and trigger for the date-picker.    |
+| `DatePickerTrigger`      | The trigger for the date-picker.                    |
+| `DatePickerClearTrigger` | The trigger to clear the date-picker.               |
+| `DatePickerPositioner`   | The positioner for the date-picker.                 |
+| `DatePickerContent`      | The content of the date-picker calendar.            |
+| `DatePickerYearSelect`   | The select input for the year in the date-picker.   |
+| `DatePickerMonthSelect`  | The select input for the month in the date-picker.  |
+| `DatePickerView`         | The container (view) of the calendar.               |
+| `DatePickerContext`      | The context provider for the date-picker calendar.  |
+| `DatePickerViewControl`  | The triggers that update the calendar in the view.  |
+| `DatePickerPrevTrigger`  | The trigger to navigate to the previous view.       |
+| `DatePickerNextTrigger`  | The trigger to navigate to the next view.           |
+| `DatePickerViewTrigger`  | The trigger to navigate to a specific view.         |
+| `DatePickerRangeText`    | The text that displays the range of dates selected. |
+| `DatePickerTable`        | The table that contains the calendar.               |
+| `DatePickerTableRow`     | The row of the calendar table.                      |
+| `DatePickerTableHead`    | The header of the calendar table.                   |
+| `DatePickerTableHeader`  | The header cell of the calendar table.              |
+| `DatePickerTableBody`    | The body of the calendar table.                     |
+| `DatePickerTableCell`    | The cell of the calendar table.                     |
+| `DatePickerTableTrigger` | The trigger of the cell in the calendar table.      |
 
 ### Data Attributes
 
@@ -382,29 +241,29 @@ The `DatePickerParts` API is an Object containing the full family of components.
 
 <NoteAdmonition description="It is best to only use the DatePickerParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
-| Name         | Description                                                                              |
-| ------------ | ---------------------------------------------------------------------------------------- |
-| Root         | The `DatePickerRoot` component and main container for the date-picker items.             |
-| Label        | The `DatePickerLabel` component and label for the date-picker.                           |
-| Control      | The `DatePickerControl` component and control for the date-picker.                       |
-| Input        | The `DatePickerInput` component and input field and trigger for the date-picker.         |
-| Trigger      | The `DatePickerRoot` component and trigger for the date-picker.                          |
-| ClearTrigger | The `DatePickerClearTrigger` component and trigger to clear the date-picker.             |
-| Positioner   | The `DatePickerPositioner` component and positioner for the date-picker.                 |
-| Content      | The `DatePickerContent` component and content of the date-picker calendar.               |
-| YearSelect   | The `DatePickerYearSelect` component and select input for the year in the date-picker.   |
-| MonthSelect  | The `DatePickerMonthSelect` component and select input for the month in the date-picker. |
-| View         | The `DatePickerView` component and container (view) of the calendar.                     |
-| Context      | The `DatePickerContext` component and context provider for the date-picker calendar.     |
-| ViewControl  | The `DatePickerViewControl` component and triggers that update the calendar in the view. |
-| PrevTrigger  | The `DatePickerPrevTrigger` component and trigger to navigate to the previous view.      |
-| NextTrigger  | The `DatePickerNextTrigger` component and trigger to navigate to the next view.          |
-| ViewTrigger  | The `DatePickerViewTrigger` component and trigger to navigate to a specific view.        |
-| RangeText    | The `DatePickerRangeText` component and text that displays the range of dates selected.  |
-| Table        | The `DatePickerTable` component and table that contains the calendar.                    |
-| TableRow     | The `DatePickerTableRow` component and row of the calendar table.                        |
-| TableHead    | The `DatePickerTableHead` component and header of the calendar table.                    |
-| TableHeader  | The `DatePickerTableHeader` component and header cell of the calendar table.             |
-| TableBody    | The `DatePickerTableBody` component and body of the calendar table.                      |
-| TableCell    | The `DatePickerTableCell` component and cell of the calendar table.                      |
-| TableTrigger | The `DatePickerTableTrigger` component and trigger of the cell in the calendar table.    |
+| Name           | Description                                                                              |
+| -------------- | ---------------------------------------------------------------------------------------- |
+| `Root`         | The `DatePickerRoot` component and main container for the date-picker items.             |
+| `Label`        | The `DatePickerLabel` component and label for the date-picker.                           |
+| `Control`      | The `DatePickerControl` component and control for the date-picker.                       |
+| `Input`        | The `DatePickerInput` component and input field and trigger for the date-picker.         |
+| `Trigger`      | The `DatePickerRoot` component and trigger for the date-picker.                          |
+| `ClearTrigger` | The `DatePickerClearTrigger` component and trigger to clear the date-picker.             |
+| `Positioner`   | The `DatePickerPositioner` component and positioner for the date-picker.                 |
+| `Content`      | The `DatePickerContent` component and content of the date-picker calendar.               |
+| `YearSelect`   | The `DatePickerYearSelect` component and select input for the year in the date-picker.   |
+| `MonthSelect`  | The `DatePickerMonthSelect` component and select input for the month in the date-picker. |
+| `View`         | The `DatePickerView` component and container (view) of the calendar.                     |
+| `Context`      | The `DatePickerContext` component and context provider for the date-picker calendar.     |
+| `ViewControl`  | The `DatePickerViewControl` component and triggers that update the calendar in the view. |
+| `PrevTrigger`  | The `DatePickerPrevTrigger` component and trigger to navigate to the previous view.      |
+| `NextTrigger`  | The `DatePickerNextTrigger` component and trigger to navigate to the next view.          |
+| `ViewTrigger`  | The `DatePickerViewTrigger` component and trigger to navigate to a specific view.        |
+| `RangeText`    | The `DatePickerRangeText` component and text that displays the range of dates selected.  |
+| `Table`        | The `DatePickerTable` component and table that contains the calendar.                    |
+| `TableRow`     | The `DatePickerTableRow` component and row of the calendar table.                        |
+| `TableHead`    | The `DatePickerTableHead` component and header of the calendar table.                    |
+| `TableHeader`  | The `DatePickerTableHeader` component and header cell of the calendar table.             |
+| `TableBody`    | The `DatePickerTableBody` component and body of the calendar table.                      |
+| `TableCell`    | The `DatePickerTableCell` component and cell of the calendar table.                      |
+| `TableTrigger` | The `DatePickerTableTrigger` component and trigger of the cell in the calendar table.    |

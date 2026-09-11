@@ -5,38 +5,37 @@ npm: '@cerberus-design/react'
 source: 'components/combobox'
 recipe: 'slots/combobox.ts'
 ark: 'combobox'
+group: Components
+order: 9
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { NoteAdmonition } from '@/app/components/Admonition'
-import { DEMOS } from '../components/combobox/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Combobox, ComboItemWithIndicator, ComboItemText } from '@cerberus/react'
+```
 
 ## Usage
 
 The `Combobox` is an abracted API that combines multiple primitives into a single root component. You combine this with the `useStatefulCollection` hook to create a filterable select component.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/combobox" demo="basic" />
 
 ## With Start Icon
 
 To add an icon to the start position of the input, use the `startIcon` prop to pass in your icon of choice.
 
-<CodePreview {...DEMOS.start} />
+<Example path="components/combobox" demo="start" />
 
 ## Sizes
 
 The `Combobox` component supports sizes: `sm` to `lg`. The default is `md`.
 
-<CodePreview {...DEMOS.size} />
+<Example path="components/combobox" demo="size" />
 
 ## With Field
 
 Wrap the `Combobox` component with the `Field` component to add additional functionality such as error and helper text when using it in a form.
 
-<CodePreview {...DEMOS.field} />
+<Example path="components/combobox" demo="field" />
 
 ## Context
 
@@ -44,35 +43,35 @@ Access the combobox's state with `ComboboxContext` or the `useComboboxContext` h
 
 <NoteAdmonition description="Since combobox is an abstracted API, you'll need to build your own to obtain the context as we do in the example below." />
 
-<CodePreview {...DEMOS.context} />
+<Example path="components/combobox" demo="context" />
 
 ## Grouped Items
 
 To group items, use the `ComboItemGroup` component (not ComboboxItemGroup).
 
-<CodePreview {...DEMOS.group} />
+<Example path="components/combobox" demo="group" />
 
 ## Async Loading
 
 Combine the collection with a [query](/docs/signals/create-query) to load data asynchronously with signal-based speed.
 
-<CodePreview {...DEMOS.loading} />
+<Example path="components/combobox" demo="loading" />
 
 ## Highlight Matching Text
 
 Combine the `ComboItemText` component with the `Highlight` component to highlight matching text in the dropdown.
 
-<CodePreview {...DEMOS.highlight} />
+<Example path="components/combobox" demo="highlight" />
 
 ## Creatable
 
 Allow users to create new options when their search doesn't match any existing items. This is useful for tags, categories, or other custom values.
 
-<CodePreview {...DEMOS.creatable} />
+<Example path="components/combobox" demo="creatable" />
 
 ## Customizing
 
-<CodePreview {...DEMOS.custom} />
+<Example path="components/combobox" demo="custom" />
 
 ## Guides
 
@@ -80,7 +79,23 @@ Allow users to create new options when their search doesn't match any existing i
 
 Customize the `navigate` prop on `Combobox` to integrate with your router. Using Tanstack Router:
 
-<CodeSnippet snippet={DEMOS.linksMeta} />
+```tsx
+import { Combobox } from '@cerberus/react'
+import { useNavigate } from '@tanstack/react-router'
+
+function Demo() {
+  const navigate = useNavigate()
+  return (
+    <Combobox
+      navigate={(e) => {
+        navigate({ to: e.node.href })
+      }}
+    >
+      {/* ... */}
+    </Combobox>
+  )
+}
+```
 
 ### Custom Objects
 
@@ -88,50 +103,82 @@ By default, the combobox collection expects an array of objects with label and v
 
 Use the `itemToString` and `itemToValue` props to map the custom object to the required interface.
 
-<CodeSnippet snippet={DEMOS.objectsMeta} />
+```ts
+const items = [
+  { country: 'United States', code: 'US', flag: '🇺🇸' },
+  { country: 'Canada', code: 'CA', flag: '🇨🇦' },
+  { country: 'Australia', code: 'AU', flag: '🇦🇺' },
+  // ...
+]
+
+const { collection } = useListCollection({
+  initialItems: items,
+  itemToString: (item) => item.country,
+  itemToValue: (item) => item.code,
+})
+```
 
 ### Type Safety
 
 The `ComboboxRootProps` type enables you to create typed wrapper components that maintain full type safety for collection items.
 
-<CodeSnippet snippet={DEMOS.typeMeta} />
+```tsx
+const Combobox = (props: ComboboxRootProps) => {
+  return <CerbyCombobox {...props}>{/* ... */}</CerbyCombobox>
+}
+```
 
 ### Large Datasets
 
 The recommended way of managing large lists is to use the `limit` property on the `useListCollection` hook. This will limit the number of rendered items in the DOM to improve performance.
 
-<CodeSnippet snippet={DEMOS.largeMeta} />
+```ts
+const { collection } = useListCollection({
+  initialItems: items,
+  limit: 10,
+})
+```
 
 ### Available Size
 
 The following css variables are exposed to the `ComboboxPositioner` which you can use to style the `ComboboxContent`.
 
-<CodeSnippet snippet={DEMOS.varsMeta} />
-<br />
+```css
+/* width of the combobox control */
+--reference-width: <pixel-value>;
+/* width of the available viewport */
+--available-width: <pixel-value>;
+/* height of the available viewport */
+--available-height: <pixel-value>;
+```
 
 For example, if you want to make sure the maximum height doesn't exceed the available height, you can use the following:
 
-<CodeSnippet snippet={DEMOS.styleMeta} />
+```css
+[data-scope='combobox'][data-part='content'] {
+  max-height: calc(var(--available-height) - 100px);
+}
+```
 
 ## Primitives
 
 You can utilize the primitive components or the `css` prop to customize the Combobox.
 
-| Component              | Description                                                 |
-| ---------------------- | ----------------------------------------------------------- |
-| ComboboxRoot           | The context provider for the combobox family                |
-| ComboboxLabel          | The label that appears above the combobox input             |
-| ComboboxControl        | The wrapper to the combobox trigger that opens the dropdown |
-| ComboboxInput          | The input field of the combobox                             |
-| ComboboxTrigger        | he trigger that opens the dropdown                          |
-| ComboboxClearTrigger   | The trigger that clears the selected value                  |
-| ComboboxPositioner     | The wrapper that positions the dropdown                     |
-| ComboboxContent        | The content of the dropdown (i.e. the container itself)     |
-| ComboboxItemGroup      | The group of options in the dropdown                        |
-| ComboboxItemGroupLabel | The label for the group of options                          |
-| ComboboxItem           | The option in the dropdown                                  |
-| ComboboxItemText       | The text label of the option                                |
-| ComboboxItemIndicator  | The indicator shown when the option is selected             |
+| Component                | Description                                                 |
+| ------------------------ | ----------------------------------------------------------- |
+| `ComboboxRoot`           | The context provider for the combobox family                |
+| `ComboboxLabel`          | The label that appears above the combobox input             |
+| `ComboboxControl`        | The wrapper to the combobox trigger that opens the dropdown |
+| `ComboboxInput`          | The input field of the combobox                             |
+| `ComboboxTrigger`        | he trigger that opens the dropdown                          |
+| `ComboboxClearTrigger`   | The trigger that clears the selected value                  |
+| `ComboboxPositioner`     | The wrapper that positions the dropdown                     |
+| `ComboboxContent`        | The content of the dropdown (i.e. the container itself)     |
+| `ComboboxItemGroup`      | The group of options in the dropdown                        |
+| `ComboboxItemGroupLabel` | The label for the group of options                          |
+| `ComboboxItem`           | The option in the dropdown                                  |
+| `ComboboxItemText`       | The text label of the option                                |
+| `ComboboxItemIndicator`  | The indicator shown when the option is selected             |
 
 ## API
 
@@ -472,18 +519,18 @@ The `ComboboxParts` API is an Object containing the full family of components.
 
 <NoteAdmonition description="It is best to only use the ComboboxParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
 
-| Name           | Description                                                                            |
-| -------------- | -------------------------------------------------------------------------------------- |
-| Root           | The `ComboboxRoot` component which is the Provider for the family.                     |
-| Label          | The `ComboboxLabel` component which displays the label.                                |
-| Control        | The `ComboboxControl` component which is the container for the visual field.           |
-| Input          | The `ComboboxInput` component which is the visual field.                               |
-| Trigger        | The `ComboboxTrigger` component which is the trigger for the dropdown.                 |
-| ClearTrigger   | The `ComboboxClearTrigger` component which is the trigger to clear the value.          |
-| Positioner     | The `ComboboxPositioner` component which is controls the positioning for the dropdown. |
-| Content        | The `ComboboxContent` component which is the dropdown itself.                          |
-| ItemGroup      | The `ComboboxItemGroup` component which is the group of options in the dropdown.       |
-| ItemGroupLabel | The `ComboboxItemGroupLabel` component which is the label for the group of options.    |
-| Item           | The `ComboboxItem` component which is the option in the dropdown.                      |
-| ItemText       | The `ComboboxItemText` component which is the text label of the option.                |
-| ItemIndicator  | The `ComboboxItemIndicator` component which displays based on the `checked` state.     |
+| Name             | Description                                                                            |
+| ---------------- | -------------------------------------------------------------------------------------- |
+| `Root`           | The `ComboboxRoot` component which is the Provider for the family.                     |
+| `Label`          | The `ComboboxLabel` component which displays the label.                                |
+| `Control`        | The `ComboboxControl` component which is the container for the visual field.           |
+| `Input`          | The `ComboboxInput` component which is the visual field.                               |
+| `Trigger`        | The `ComboboxTrigger` component which is the trigger for the dropdown.                 |
+| `ClearTrigger`   | The `ComboboxClearTrigger` component which is the trigger to clear the value.          |
+| `Positioner`     | The `ComboboxPositioner` component which is controls the positioning for the dropdown. |
+| `Content`        | The `ComboboxContent` component which is the dropdown itself.                          |
+| `ItemGroup`      | The `ComboboxItemGroup` component which is the group of options in the dropdown.       |
+| `ItemGroupLabel` | The `ComboboxItemGroupLabel` component which is the label for the group of options.    |
+| `Item`           | The `ComboboxItem` component which is the option in the dropdown.                      |
+| `ItemText`       | The `ComboboxItemText` component which is the text label of the option.                |
+| `ItemIndicator`  | The `ComboboxItemIndicator` component which displays based on the `checked` state.     |

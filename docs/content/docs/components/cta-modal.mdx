@@ -5,14 +5,9 @@ npm: '@cerberus-design/react'
 source: 'components/cta-dialog'
 recipe: 'slots/dialog.ts'
 ark: 'dialog'
+group: Components
+order: 11
 ---
-
-import CodePreview from '@/app/components/CodePreview'
-import {
-  OverviewPreview,
-  WithLinksDemo,
-  WithCustomDescriptionDemo,
-} from '../components/cta-modal/static'
 
 ```ts
 import { CTAModal, useCTAModal, createCTAModalActions } from '@cerberus/react'
@@ -24,170 +19,19 @@ To use the CTAModal, wrap your component with the `CTAModal` provider and use th
 
 To create your actions, use the `createCTAModalActions` function.
 
-<CodePreview preview={<OverviewPreview />}>
-```tsx title="action-dialog.tsx"
-'use client'
-
-import { Button, useCTAModal, createCTAModalActions } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
-
-function CTAFeature() {
-const { show } = useCTAModal()
-
-const handleClick = useCallback(() => {
-show({
-heading: 'Copy or create a Cohort',
-description: 'Create a new cohort or copy an existing one.',
-actions: createCTAModalActions([
-{
-text: 'Create new',
-handleClick: () => alert('Create new'),
-},
-{
-text: 'Copy existing',
-handleClick: () => alert('Copy existing'),
-},
-]),
-})
-}, [show])
-
-return (
-<HStack gap="4">
-<Button onClick={handleClick}>Update Cohorts</Button>
-</HStack>
-)
-}
-
-````
-```tsx title="page.tsx"
-import { CTAModal } from '@cerberus/react'
-import { CTAFeature } from './action-dialog'
-
-function SomePage() {
-  return(
-    <CTAModal>
-      <CTAFeature />
-    </CTAModal>
-  )
-}
-````
-
-</CodePreview>
+<Example path="components/cta-modal" demo="basic" />
 
 ## With Links
 
 To use links instead of buttons, pass your link components to the `createCTAModalActions` function.
 
-<CodePreview preview={<WithLinksDemo />}>
-```tsx title="link-dialog.tsx"
-'use client'
-import { Button, useCTAModal, createCTAModalActions } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
-import Link from 'next/link'
-
-function CTALinkFeature() {
-const { show } = useCTAModal()
-
-const handleLinkClick = useCallback(() => {
-show({
-heading: 'Copy or create a Cohort',
-description: 'Create a new cohort or copy an existing one.',
-actions: createCTAModalActions([
-<Link key="cta:link:btn" href="/react/button">
-See Button Docs
-</Link>,
-<Link key="cta:link:docs" href="/react/dialog">
-See Dialog Docs
-</Link>,
-]),
-})
-}, [show])
-
-return (
-<HStack gap="4">
-<Button onClick={handleLinkClick}>Update Cohorts</Button>
-</HStack>
-)
-}
-
-````
-```tsx title="page.tsx"
-import { CTAModal } from '@cerberus/react'
-import { CTALinkFeature } from './link-dialog'
-
-function SomePage() {
-  return(
-    <CTAModal>
-      <CTALinkFeature />
-    </CTAModal>
-  )
-}
-````
-
-</CodePreview>
+<Example path="components/cta-modal" demo="links" />
 
 ## With Content
 
 To use a custom content component, pass your custom component to the `content` prop of the `show` method.
 
-<CodePreview preview={<WithCustomDescriptionDemo />}>
-```tsx title="custom-description-dialog.tsx"
-'use client'
-
-import { Button, useCTAModal, createCTAModalActions } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
-
-function CTAFeature() {
-const { show } = useCTAModal()
-
-const handleClick = useCallback(() => {
-show({
-heading: 'Copy or create a Cohort',
-content: (
-<VStack alignItems="flex-start" gap="lg" w="full">
-<Field label="Name">
-<Input placeholder="e.g., Cerberus" />
-</Field>
-<Field label="Description">
-<Textarea placeholder="e.g., Cerberus is a design system..." />
-</Field>
-</VStack>
-),
-actions: createCTAModalActions([
-{
-text: 'Create new',
-handleClick: () => alert('Create new'),
-},
-{
-text: 'Copy existing',
-handleClick: () => alert('Copy existing'),
-},
-]),
-})
-}, [show])
-
-return (
-<HStack gap="4">
-<Button onClick={handleClick}>Update Cohorts</Button>
-</HStack>
-)
-}
-
-````
-```tsx title="page.tsx"
-import { CTAModal } from '@cerberus/react'
-import { CTAFeature } from './action-dialog'
-
-function SomePage() {
-  return(
-    <CTAModal>
-      <CTAFeature />
-    </CTAModal>
-  )
-}
-````
-
-</CodePreview>
+<Example path="components/cta-modal" demo="custom-description" />
 
 ## Primitives
 
@@ -202,12 +46,12 @@ props as the `Dialog` component.
 
 The `show` method accepts the following options:
 
-| Name        | Default     | Description                                                                                   |
-| ----------- | ----------- | --------------------------------------------------------------------------------------------- |
-| heading     | `''`        | The heading of the modal.                                                                     |
-| description | `''`        | The description of the modal.                                                                 |
-| icon        | `undefined` | The icon to display in the modal.                                                             |
-| actions     | `[]`        | The actions to display in the modal. **Requires the use of `createCTAModalActions` utility.** |
+| Name          | Default     | Description                                                                                   |
+| ------------- | ----------- | --------------------------------------------------------------------------------------------- |
+| `heading`     | `void`      | The heading of the modal.                                                                     |
+| `description` | `void``     | The description of the modal.                                                                 |
+| `icon`        | `undefined` | The icon to display in the modal.                                                             |
+| `actions`     | `[]`        | The actions to display in the modal. **Requires the use of `createCTAModalActions` utility.** |
 
 ### Utilities
 
@@ -215,10 +59,10 @@ The `createCTAModalActions` utility accepts an array of objects with the followi
 
 ## Action
 
-| Name        | Default     | Description                      |
-| ----------- | ----------- | -------------------------------- |
-| text        | `''`        | The text of the action.          |
-| handleClick | `undefined` | The click handler of the action. |
+| Name          | Default     | Description                      |
+| ------------- | ----------- | -------------------------------- |
+| `text`        | `''`        | The text of the action.          |
+| `handleClick` | `undefined` | The click handler of the action. |
 
 ## Link
 

@@ -5,61 +5,60 @@ npm: '@cerberus-design/react'
 source: 'components/collapsible'
 recipe: 'slots/collapsible.ts'
 ark: 'collapsible'
+group: Components
+order: 8
 ---
 
-import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { DEMOS } from '../components/collapsible/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Collapsible } from '@cerberus/react'
+```
 
 ## Usage
 
 The Collapsible component allows you to show or hide content with a trigger. It is useful for accordions, dropdowns, and expandable sections.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/collapsible" demo="basic" />
 
 ## Initial Open
 
 Use the `defaultOpen` prop to render the collapsible in an open state by default.
 
-<CodePreview {...DEMOS.open} />
+<Example path="components/collapsible" demo="open" />
 
 ## Partial Height
 
 Use the `collapsedHeight` prop to show a preview of the content when collapsed.
 
-<CodePreview {...DEMOS.partial} />
+<Example path="components/collapsible" demo="partial" />
 
 ## Effects
 
 To turn off the animation effect, you can set the `effect` prop to `none` on the `Collapsible.Content` component.
 
-<CodePreview {...DEMOS.fade} />
+<Example path="components/collapsible" demo="fade" />
 
 ## Controlled
 
 Use the `open` and `onOpenChange` props to control the collapsible state.
 
-<CodePreview {...DEMOS.controlled} />
+<Example path="components/collapsible" demo="controlled" />
 
 ## Customization
 
 You can customize the Collapsible component any way you like with style props and data-selectors.
 
-<CodePreview {...DEMOS.custom} />
+<Example path="components/collapsible" demo="custom" />
 
 ## Primitives
 
 You can utilize the primitive components to build a custom collapsible solution.
 
-| Component            | Description                              |
-| -------------------- | ---------------------------------------- |
-| CollapsibleRoot      | The context provider of the collapsible. |
-| CollapsibleTrigger   | The button that toggles the collapsible. |
-| CollapsibleIndicator | The indicator that shows the state.      |
-| CollapsibleContent   | The content of the collapsible.          |
+| Component              | Description                              |
+| ---------------------- | ---------------------------------------- |
+| `CollapsibleRoot`      | The context provider of the collapsible. |
+| `CollapsibleTrigger`   | The button that toggles the collapsible. |
+| `CollapsibleIndicator` | The indicator that shows the state.      |
+| `CollapsibleContent`   | The content of the collapsible.          |
 
 ### Data Attributes
 

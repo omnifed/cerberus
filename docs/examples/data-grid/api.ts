@@ -19,7 +19,7 @@ export type Employee = {
 
 // Utils
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+export const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const generateEmployeeData = (count: number): Employee[] => {
   return Array.from({ length: count }).map((_, i) => ({

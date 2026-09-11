@@ -44,6 +44,7 @@ export {
   FieldsetRootProvider,
   useFileUpload,
   FileUploadRootProvider,
+  type UseFileUploadContext,
   useFloatingPanel,
   FloatingPanelRootProvider,
   useImageCropper,

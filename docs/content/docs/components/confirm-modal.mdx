@@ -5,32 +5,33 @@ npm: '@cerberus-design/react'
 source: 'context/confirm-modal.tsx'
 recipe: 'slots/dialog.ts'
 ark: 'dialog'
+group: Components
+order: 10
 ---
 
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { NoteAdmonition } from '@/app/components/Admonition'
-import { DEMOS } from '../components/confirm-modal/static'
+```ts
+import { ConfirmModal, useConfirmModal } from '@cerberus/react'
+```
 
-<CodeSnippet snippet={DEMOS.meta} />
+<NoteAdmonition description="ConfirmModal is considered a dialog template. This means it's a pre-configured layout that is not fully customizable by nature. If you want to fully customize the modal, use the Dialog instead." />
 
 ## Usage
 
 The `ConfirmModal` component is a controlled abstraction of the [Dialog](/docs/components/dialog).
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/confirm-modal" demo="basic" />
 
 ## Destructive
 
 To show a destructive confirm modal, set the `kind` prop in the options to `'destructive'`.
 
-<CodePreview {...DEMOS.destructive} />
+<Example path="components/confirm-modal" demo="destructive" />
 
 ### No Avatar
 
 To change the visibility of the avatar, set `showAvatar` to `false` in the options.
 
-<CodePreview {...DEMOS.avatar} />
+<Example path="components/confirm-modal" demo="avatar" />
 
 ## Primitives
 
