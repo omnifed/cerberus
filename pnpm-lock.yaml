@@ -231,8 +231,8 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1(next@16.3.4(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.1.2)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
       autoprefixer:
-        specifier: ^10.5.4
-        version: 10.5.4(postcss@8.5.26)
+        specifier: ^10.5.5
+        version: 10.5.5(postcss@8.5.28)
       babel-plugin-react-compiler:
         specifier: ^1.0.0
         version: 1.0.0
@@ -2822,8 +2822,8 @@ packages:
     peerDependencies:
       postcss: '>=8.5.18'
 
-  autoprefixer@10.5.4:
-    resolution: {integrity: sha512-MaU0U/za7N3r6brxD4YB/l4NSrFzLPlANv6wEuQVaIPlD3L4W9rFcQPbL/EilY9BHhHvhfcz3gInDLrEtWT4EA==}
+  autoprefixer@10.5.5:
+    resolution: {integrity: sha512-uiRYvQYe/nNSzBJ7OUnd2/TZVsAdob3blml44teEpee9Cc1f4rGZFewO+JT3Wo8mgFOSzNqes4FHZn/Qz8WOuw==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
@@ -2917,9 +2917,6 @@ packages:
 
   caniuse-lite@1.0.30001805:
     resolution: {integrity: sha512-52noaS3DubycKSXaU30TwPGIp+POyQSUVa5jBEq3vkRkY0kjyb3LQgvhU6WGyCcyXqVLWO0Cw0Q6BSdD0kUfVA==}
-
-  caniuse-lite@1.0.30001806:
-    resolution: {integrity: sha512-72Cuvd95zbSYPKq6Fhg8eDJRlzgWDf7/mtoZv6Qe/DYNCEBdNxoA3+rZAU2ZhGCpZlns3EssFavaZomckT5Uuw==}
 
   caniuse-lite@1.0.30001810:
     resolution: {integrity: sha512-TITQPUkaz+aVk5GL6NhOdwk1aEaNTSDPsGFWrTuhKGtjTF70jL/Oht2W4c6rXUe5fu7Ie19VIahAXHIIiWWNeg==}
@@ -7748,13 +7745,13 @@ snapshots:
       postcss: 8.5.23
       postcss-value-parser: 4.2.0
 
-  autoprefixer@10.5.4(postcss@8.5.26):
+  autoprefixer@10.5.5(postcss@8.5.28):
     dependencies:
       browserslist: 4.28.8
-      caniuse-lite: 1.0.30001806
+      caniuse-lite: 1.0.30001810
       fraction.js: 5.3.4
       picocolors: 1.1.1
-      postcss: 8.5.26
+      postcss: 8.5.28
       postcss-value-parser: 4.2.0
 
   available-typed-arrays@1.0.7:
@@ -7848,8 +7845,6 @@ snapshots:
   callsites@3.1.0: {}
 
   caniuse-lite@1.0.30001805: {}
-
-  caniuse-lite@1.0.30001806: {}
 
   caniuse-lite@1.0.30001810: {}
 
