@@ -11,8 +11,8 @@ catalogs:
       version: 5.39.1
   jsx:
     '@carbon/icons-react':
-      specifier: ^11.86.0
-      version: 11.86.0
+      specifier: ^11.87.0
+      version: 11.87.0
     '@types/react':
       specifier: ^19.2.18
       version: 19.2.18
@@ -147,7 +147,7 @@ importers:
     dependencies:
       '@carbon/icons-react':
         specifier: catalog:jsx
-        version: 11.86.0(react@19.2.8)
+        version: 11.87.0(react@19.2.8)
       '@cerberus-design/data-grid':
         specifier: workspace:*
         version: link:../packages/data-grid
@@ -466,7 +466,7 @@ importers:
         version: 5.39.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@carbon/icons-react':
         specifier: catalog:jsx
-        version: 11.86.0(react@19.2.8)
+        version: 11.87.0(react@19.2.8)
     devDependencies:
       '@cerberus/panda-preset':
         specifier: workspace:*
@@ -585,7 +585,7 @@ importers:
     devDependencies:
       '@carbon/icons-react':
         specifier: catalog:jsx
-        version: 11.86.0(react@19.2.8)
+        version: 11.87.0(react@19.2.8)
       '@cerberus-design/data-grid':
         specifier: workspace:*
         version: link:../packages/data-grid
@@ -733,11 +733,11 @@ packages:
     resolution: {integrity: sha512-Vj1jF3cPfxg7OAfoI7QnVKLoILlm2JF9pnVHrX8qx7AHMiYWT+NDAA7jChlNgRS4WTLc/fD1lXLmPixluj+3Gg==}
     engines: {node: '>=6.9.0'}
 
-  '@carbon/icon-helpers@10.80.0':
-    resolution: {integrity: sha512-OPL8yV9qHd5wE1EZJwtwbeWfN5YERwkN9iF6qlDZ9XtTpBQiXcPhe6Lg2ws+mr0iZt35q/8mM0nOjiXyOxP64Q==}
+  '@carbon/icon-helpers@10.81.0':
+    resolution: {integrity: sha512-3ga+ZpXzo+aL5rGSZu5xEdXGyEzSUGBe0IqvlcFxeav2gcrrE5w0G8ZAvUPsPWJXybjrXKW0CQaGAtsgNkmLLA==}
 
-  '@carbon/icons-react@11.86.0':
-    resolution: {integrity: sha512-xr6CqakeS1FwfFojiz1t5v4nfYig2AugvisDF84dQuVXR7k/vep6DWSj24/c7rRXOUhM+BC9aEMoGIdUjOGglw==}
+  '@carbon/icons-react@11.87.0':
+    resolution: {integrity: sha512-s3hYxy2qlWHZPjd44BpKx1jJAjYDWOLxO0xyJEcFiEqbqR3L+Sg+CeWuNR2L18AfslyNHg5wwB2+zASrwDC/yg==}
     peerDependencies:
       react: '>=16'
 
@@ -5537,13 +5537,13 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@carbon/icon-helpers@10.80.0':
+  '@carbon/icon-helpers@10.81.0':
     dependencies:
       '@ibm/telemetry-js': 1.11.0
 
-  '@carbon/icons-react@11.86.0(react@19.2.8)':
+  '@carbon/icons-react@11.87.0(react@19.2.8)':
     dependencies:
-      '@carbon/icon-helpers': 10.80.0
+      '@carbon/icon-helpers': 10.81.0
       '@ibm/telemetry-js': 1.11.0
       prop-types: 15.8.1
       react: 19.2.8
