@@ -1,5 +1,6 @@
 'use client'
 
+import { Box, VStack } from '@/styled-system/jsx'
 import {
   Button,
   Dialog,
@@ -9,10 +10,9 @@ import {
   DialogProvider,
   DialogTrigger,
 } from '@cerberus-design/react'
-import { SelectBasicPreview } from './static'
-import { Box, VStack } from '@/styled-system/jsx'
+import { BasicDemo } from './basic.demo'
 
-export function SelectWithDialogDemo() {
+export function WithDialogDemo() {
   return (
     <DialogProvider>
       <DialogTrigger asChild>
@@ -28,7 +28,7 @@ export function SelectWithDialogDemo() {
           </DialogDescription>
 
           <Box w="full">
-            <SelectBasicPreview />
+            <BasicDemo />
           </Box>
         </VStack>
       </Dialog>
