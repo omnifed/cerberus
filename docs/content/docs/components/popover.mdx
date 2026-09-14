@@ -5,14 +5,13 @@ npm: '@cerberus-design/react'
 source: 'components/popover'
 recipe: 'slots/popover.ts'
 ark: 'popover'
+group: Components
+order: 26
 ---
 
-import { Example } from '@/components/example'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { NoteAdmonition } from '@/app/components/Admonition'
-import { DEMOS } from '@/examples/components/popover'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Popover } from '@cerberus/react'
+```
 
 ## Usage
 
@@ -88,38 +87,42 @@ You can customize the `Popover` using style props and data selectors on any slot
 
 The following css variables are exposed to the `PopoverPositioner` which you can use to style the `PopoverContent`
 
-<CodeSnippet
-  snippet={`// width of the popover trigger
+```css
+// width of the popover trigger
 --reference-width: <pixel-value>;
 // width of the available viewport
 --available-width: <pixel-value>;
 // height of the available viewpor
---available-height: <pixel-value>;`}
-/>
+--available-height: <pixel-value>;
+```
 
 For example, if you want to make sure the maximum height doesn't exceed the available height, use the following css:
 
-<CodeSnippet snippet={DEMOS.dataSelector} />
+```css
+[data-part='content'] {
+  max-height: calc(var(--available-height) - 100px);
+}
+```
 
 ## Primitives
 
 The layers of the `Popover` which can be used to create a fully custom solution.
 
-| Component           | Description                                        |
-| ------------------- | -------------------------------------------------- |
-| PopoverRoot         | The main container for the popover.                |
-| PopoverTrigger      | The trigger that toggles the popover content.      |
-| PopoverAnchor       | The container to anchor the popover content to.    |
-| PopoverPositioner   | The positioning container for the popover content. |
-| PopoverArrow        | The arrow container.                               |
-| PopoverArrowTip     | The actual visible arrow.                          |
-| PopoverContent      | The content container.                             |
-| PopoverTitle        | The heading for a popover.                         |
-| PopoverDescription  | The description for a popover.                     |
-| PopoverCloseTrigger | The close trigger for a popover.                   |
-| PopoverHeader       | The header for a popover.                          |
-| PopoverBody         | The body for a popover.                            |
-| PopoverFooter       | The footer for a popover.                          |
+| Component             | Description                                        |
+| --------------------- | -------------------------------------------------- |
+| `PopoverRoot`         | The main container for the popover.                |
+| `PopoverTrigger`      | The trigger that toggles the popover content.      |
+| `PopoverAnchor`       | The container to anchor the popover content to.    |
+| `PopoverPositioner`   | The positioning container for the popover content. |
+| `PopoverArrow`        | The arrow container.                               |
+| `PopoverArrowTip`     | The actual visible arrow.                          |
+| `PopoverContent`      | The content container.                             |
+| `PopoverTitle`        | The heading for a popover.                         |
+| `PopoverDescription`  | The description for a popover.                     |
+| `PopoverCloseTrigger` | The close trigger for a popover.                   |
+| `PopoverHeader`       | The header for a popover.                          |
+| `PopoverBody`         | The body for a popover.                            |
+| `PopoverFooter`       | The footer for a popover.                          |
 
 ### Data Attributes
 

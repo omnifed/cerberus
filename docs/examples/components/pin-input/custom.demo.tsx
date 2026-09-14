@@ -1,50 +1,7 @@
-'use client'
-
-import { PinInput, PinInputParts, Field } from '@cerberus-design/react'
 import { HStack } from '@/styled-system/jsx'
+import { PinInputParts } from '@cerberus-design/react'
 
-export function StaticPreview() {
-  return (
-    <HStack w="1/2">
-      <Field label="Enter PIN">
-        <PinInput />
-      </Field>
-    </HStack>
-  )
-}
-
-export function CountPreview() {
-  return (
-    <HStack w="1/2">
-      <Field label="5 Digits">
-        <PinInput placeholder={undefined} count={5} />
-      </Field>
-    </HStack>
-  )
-}
-
-export function SizesPreview() {
-  return (
-    <HStack justify="space-between" w="1/2">
-      <Field label="Medium">
-        <PinInput size="md" />
-      </Field>
-      <Field label="Large">
-        <PinInput size="lg" />
-      </Field>
-    </HStack>
-  )
-}
-
-export function BlurCompletePreview() {
-  return (
-    <HStack w="1/2">
-      <PinInput blurOnComplete onValueComplete={() => alert('Input complete!')} />
-    </HStack>
-  )
-}
-
-export function CustomPreview() {
+export function CustomDemo() {
   return (
     <HStack w="1/2">
       <PinInputParts.Root

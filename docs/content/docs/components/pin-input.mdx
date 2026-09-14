@@ -5,17 +5,9 @@ npm: '@cerberus-design/react'
 source: 'components/pin-input'
 recipe: 'slots/pin-input.ts'
 ark: 'pin-input'
+group: Components
+order: 25
 ---
-
-import CodePreview from '@/app/components/CodePreview'
-import { NoteAdmonition } from '@/app/components/Admonition'
-import {
-  StaticPreview,
-  SizesPreview,
-  CountPreview,
-  BlurCompletePreview,
-  CustomPreview,
-} from '../components/pin-input/static'
 
 ```ts
 import { PinInput } from '@cerberus/react'
@@ -25,196 +17,190 @@ import { PinInput } from '@cerberus/react'
 
 The PinInput component lets users enter fixed-length codes (such as verification codes or PINs) one character at a time. It manages focus movement between inputs and aggregates the value for you.
 
-<CodePreview preview={<StaticPreview />}>
-```tsx
-import { PinInput, Field } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
-
-export function StaticPreview() {
-  return (
-    <HStack w="1/2">
-      <Field label="Enter PIN">
-        <PinInput />
-      </Field>
-    </HStack>
-  )
-}
-```
-</CodePreview>
+<Example path="components/pin-input" demo="basic" />
 
 ## Blur on complete
 
 By default, the last input maintains focus when filled, and we invoke the `onValueComplete` callback. To blur the last input when the user completes the input, set the prop `blurOnComplete` to true.
 
-<CodePreview preview={<BlurCompletePreview />}>
-```tsx
-import { PinInput } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
-
-export function StaticPreview() {
-  return (
-    <HStack w="1/2">
-      <PinInput blurOnComplete />
-    </HStack>
-  )
-}
-```
-</CodePreview>
+<Example path="components/pin-input" demo="blur" />
 
 ## Count
 
 The `count` prop determines the number of individual input boxes rendered. This is useful for specifying the length of the PIN or code the user needs to enter.
 
-<CodePreview preview={<CountPreview />}>
-```tsx /count/
-import { PinInput, Field } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
-
-export function CountPreview() {
-  return (
-    <HStack w="1/2">
-      <Field label="5 Digits">
-        <PinInput placeholder={undefined} count={5} />
-      </Field>
-    </HStack>
-  )
-}
-```
-</CodePreview>
+<Example path="components/pin-input" demo="count" />
 
 ## Sizes
 
 The PinInput component supports different sizes to accommodate various design requirements.
 
-<CodePreview preview={<SizesPreview />}>
-```tsx
-import { PinInput, Field } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
+<Example path="components/pin-input" demo="sizes" />
 
-export function SizesPreview() {
-  return (
-    <HStack w="1/2">
-      <Field label="Medium">
-        <PinInput size="md" />
-      </Field>
-      <Field label="Large">
-        <PinInput size="lg" />
-      </Field>
-    </HStack>
-  )
-}
-```
-</CodePreview>
+## Customization
+
+You can customize the PinInput component using style props or the [primitive components](#primitives).
+
+<Example path="components/pin-input" demo="custom" />
 
 ## Primitives
 
-You can utilize the primitive components or the `css` prop to customize the PinInput component.
-
-| Component           | Description                            |
-| ------------------- | -------------------------------------- |
-| PinInputRoot        | Root context provider for the family.  |
-| PinInputLabel       | Accessible label element.              |
-| PinInputControl     | Wraps the individual input boxes.      |
-| PinInputInput       | A single character input field.        |
-| PinInputHiddenInput | Aggregated hidden input used in forms. |
-
-<CodePreview preview={<CustomPreview />}>
-
-```tsx
-import { PinInputParts } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
-
-function CustomPreview() {
-  return (
-    <HStack w="1/2">
-      <PinInputParts.Root
-        css={{
-          w: 'full',
-        }}
-      >
-        <PinInputParts.Control
-          css={{
-            transform: 'translateX(-4px)',
-          }}
-        >
-          {Array.from({ length: 4 }, (_, index) => (
-            <PinInputParts.Input
-              key={index}
-              index={index}
-              css={{
-                border: '2px solid',
-                borderColor: 'black',
-                borderRadius: 'md',
-                h: '24',
-                w: '24',
-                textAlign: 'center',
-                fontSize: 'lg',
-                lineHeight: '12',
-                '&:focus': {
-                  borderColor: 'danger.bg.initial',
-                  boxShadow: '0 0 0 3px rgba(255, 69, 58, 0.6)',
-                },
-              }}
-            />
-          ))}
-        </PinInputParts.Control>
-        <PinInputParts.HiddenInput />
-      </PinInputParts.Root>
-    </HStack>
-  )
-}
-```
-
-</CodePreview>
-
-## API
-
-### PinInput
-
-The `PinInput` component is an abstraction over the primitive parts and exposes all Ark UI **Root** props. Below is a reference table for convenience (see the [Ark UI Pin Input API](https://ark-ui.com/docs/components/pin-input#api-reference) for authoritative details).
-
-| Name            | Default     | Description                                                                         |
-| --------------- | ----------- | ----------------------------------------------------------------------------------- |
-| asChild         |             | Use the provided child element as the rendered element.                             |
-| autoFocus       |             | Auto‑focus the first input on mount.                                                |
-| blurOnComplete  |             | Blur the last input when the value becomes complete.                                |
-| count           |             | Number of inputs to render (improves SSR a11y; will become required in next major). |
-| defaultValue    |             | Uncontrolled initial value array (e.g. `['1','2','3']`).                            |
-| disabled        |             | Disable the entire pin input.                                                       |
-| dir             | `ltr`       | Text direction; affects arrow key navigation.                                       |
-| form            |             | Id of an external form to associate the hidden input with.                          |
-| id              |             | Base id used to derive ids for parts.                                               |
-| ids             |             | Object of element id overrides for composition.                                     |
-| invalid         |             | Mark the pin input as invalid. Adds `data-invalid`.                                 |
-| mask            |             | Mask each input character similar to a password field.                              |
-| name            |             | Name attribute for the hidden input (form submission).                              |
-| onValueChange   |             | Fired whenever any input value changes. Provides `{ value, valueAsString }`.        |
-| onValueComplete |             | Fired when all inputs have valid values (typing or paste).                          |
-| onValueInvalid  |             | Fired when an invalid value is entered (fails `type` or `pattern`).                 |
-| otp             |             | Enables one‑time‑code autocomplete optimizations (`autocomplete="one-time-code"`).  |
-| pattern         |             | Regular expression the characters must satisfy.                                     |
-| placeholder     | `"○"`       | Placeholder character shown in empty inputs.                                        |
-| readOnly        |             | Make inputs read‑only.                                                              |
-| required        |             | Mark the inputs as required.                                                        |
-| selectOnFocus   |             | Select the existing character when an input gains focus.                            |
-| translations    |             | Localized strings for accessibility / messages.                                     |
-| type            | `"numeric"` | Allowed character set: `numeric`, `alphabetic`, or `alphanumeric`.                  |
-| value           |             | Controlled value array (set length to number of inputs).                            |
-
-The `PinInput` component also accepts standard DOM props for the root element and mirrors the Ark UI Root behavior.
-
-The PinInput is an abstraction of the underlying Ark UI primitive [Root component](https://ark-ui.com/react/docs/components/pin-input).
+| Component             | Description                            |
+| --------------------- | -------------------------------------- |
+| `PinInputRoot`        | Root context provider for the family.  |
+| `PinInputLabel`       | Accessible label element.              |
+| `PinInputControl`     | Wraps the individual input boxes.      |
+| `PinInputInput`       | A single character input field.        |
+| `PinInputHiddenInput` | Aggregated hidden input used in forms. |
 
 ### Parts
 
 The `PinInputParts` API is an object containing the full family of components.
 
-<NoteAdmonition description="It is best to only use the PinInputParts if you are building a custom solution. Importing object-based components can increase bundle size because every part is included." />
+| Name          | Description                                                        |
+| ------------- | ------------------------------------------------------------------ |
+| `Root`        | The `PinInputRoot` component which is the provider for the family. |
+| `Label`       | The `PinInputLabel` component.                                     |
+| `Control`     | The `PinInputControl` layout wrapper.                              |
+| `Input`       | The `PinInputInput` component.                                     |
+| `HiddenInput` | The `PinInputHiddenInput` component.                               |
 
-| Name        | Description                                                        |
-| ----------- | ------------------------------------------------------------------ |
-| Root        | The `PinInputRoot` component which is the provider for the family. |
-| Label       | The `PinInputLabel` component.                                     |
-| Control     | The `PinInputControl` layout wrapper.                              |
-| Input       | The `PinInputInput` component.                                     |
-| HiddenInput | The `PinInputHiddenInput` component.                               |
+## API
+
+### Root
+
+#### Props
+
+| Prop                  | Type                                                                                                            | Required | Default     | Description                                                                                                             |
+| --------------------- | --------------------------------------------------------------------------------------------------------------- | -------- | ----------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **`asChild`**         | `boolean`                                                                                                       | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior.                     |
+| **`autoFocus`**       | `boolean`                                                                                                       | false    | `undefined` | Whether to auto-focus the first input.                                                                                  |
+| **`autoSubmit`**      | `boolean`                                                                                                       | false    | `undefined` | Whether to auto-submit the owning form when all inputs are filled.                                                      |
+| **`blurOnComplete`**  | `boolean`                                                                                                       | false    | `undefined` | Whether to blur the input when the value is complete                                                                    |
+| **`count`**           | `number`                                                                                                        | false    | `undefined` | The number of inputs to render to improve SSR aria attributes.<br>This will be required in next major version.          |
+| **`defaultValue`**    | `string[]`                                                                                                      | false    | `undefined` | The initial value of the the pin input when rendered.<br>Use when you don't need to control the value of the pin input. |
+| **`disabled`**        | `boolean`                                                                                                       | false    | `undefined` | Whether the inputs are disabled                                                                                         |
+| **`form`**            | `string`                                                                                                        | false    | `undefined` | The associate form of the underlying input element.                                                                     |
+| **`id`**              | `string`                                                                                                        | false    | `undefined` | The unique identifier of the machine.                                                                                   |
+| **`ids`**             | `Partial<{ root: string, hiddenInput: string, label: string, control: string, input: (id: string) => string }>` | false    | `undefined` | The ids of the elements in the pin input. Useful for composition.                                                       |
+| **`invalid`**         | `boolean`                                                                                                       | false    | `undefined` | Whether the pin input is in the invalid state                                                                           |
+| **`mask`**            | `boolean`                                                                                                       | false    | `undefined` | If `true`, the input's value will be masked just like `type=password`                                                   |
+| **`name`**            | `string`                                                                                                        | false    | `undefined` | The name of the input element. Useful for form submission.                                                              |
+| **`onValueChange`**   | `(details: ValueChangeDetails) => void`                                                                         | false    | `undefined` | Function called on input change                                                                                         |
+| **`onValueComplete`** | `(details: ValueChangeDetails) => void`                                                                         | false    | `undefined` | Function called when all inputs have valid values                                                                       |
+| **`onValueInvalid`**  | `(details: ValueInvalidDetails) => void`                                                                        | false    | `undefined` | Function called when an invalid value is entered                                                                        |
+| **`otp`**             | `boolean`                                                                                                       | false    | `undefined` | If `true`, the pin input component signals to its fields that they should<br>use `autocomplete="one-time-code"`.        |
+| **`pattern`**         | `string`                                                                                                        | false    | `undefined` | The regular expression that the user-entered input value is checked against.                                            |
+| **`placeholder`**     | `string`                                                                                                        | false    | `"○"`       | The placeholder text for the input                                                                                      |
+| **`readOnly`**        | `boolean`                                                                                                       | false    | `undefined` | Whether the pin input is in the valid state                                                                             |
+| **`required`**        | `boolean`                                                                                                       | false    | `undefined` | Whether the pin input is required                                                                                       |
+| **`sanitizeValue`**   | `(value: string) => string`                                                                                     | false    | `undefined` | Function to sanitize pasted values before validation.<br>Useful for stripping dashes, spaces, or other formatting.      |
+| **`selectOnFocus`**   | `boolean`                                                                                                       | false    | `undefined` | Whether to select input value when input is focused                                                                     |
+| **`translations`**    | `IntlTranslations`                                                                                              | false    | `undefined` | Specifies the localized strings that identifies the accessibility elements and their states                             |
+| **`type`**            | `'numeric' \| 'alphanumeric' \| 'alphabetic'`                                                                   | false    | `"numeric"` | The type of value the pin-input should allow                                                                            |
+| **`value`**           | `string[]`                                                                                                      | false    | `undefined` | The controlled value of the the pin input.                                                                              |
+
+#### Data Attributes
+
+| Attribute           | Description / Value                          |
+| ------------------- | -------------------------------------------- |
+| **`data-scope`**    | pin-input                                    |
+| **`data-part`**     | root                                         |
+| **`data-invalid`**  | Present when invalid                         |
+| **`data-disabled`** | Present when disabled                        |
+| **`data-complete`** | Present when the pin-input value is complete |
+| **`data-readonly`** | Present when read-only                       |
+
+### Control
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### HiddenInput
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Input
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`index`**   | `number`  | true     | `undefined` | undefined                                                                                           |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute           | Description / Value                      |
+| ------------------- | ---------------------------------------- |
+| **`data-scope`**    | pin-input                                |
+| **`data-part`**     | input                                    |
+| **`data-disabled`** | Present when disabled                    |
+| **`data-complete`** | Present when the input value is complete |
+| **`data-filled`**   |                                          |
+| **`data-index`**    | The index of the item                    |
+| **`data-invalid`**  | Present when invalid                     |
+
+### Label
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute           | Description / Value                      |
+| ------------------- | ---------------------------------------- |
+| **`data-scope`**    | pin-input                                |
+| **`data-part`**     | label                                    |
+| **`data-invalid`**  | Present when invalid                     |
+| **`data-disabled`** | Present when disabled                    |
+| **`data-complete`** | Present when the label value is complete |
+| **`data-required`** | Present when required                    |
+| **`data-readonly`** | Present when read-only                   |
+
+### RootProvider
+
+#### Props
+
+| Prop          | Type                | Required | Default     | Description                                                                                         |
+| ------------- | ------------------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`value`**   | `UsePinInputReturn` | true     | `undefined` | undefined                                                                                           |
+| **`asChild`** | `boolean`           | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Context
+
+**API:**
+
+| Property          | Type                                     | Description                                                       |
+| ----------------- | ---------------------------------------- | ----------------------------------------------------------------- |
+| `value`           | `string[]`                               | The value of the input as an array of strings.                    |
+| `valueAsString`   | `string`                                 | The value of the input as a string.                               |
+| `complete`        | `boolean`                                | Whether all inputs are filled.                                    |
+| `count`           | `number`                                 | The number of inputs to render                                    |
+| `items`           | `number[]`                               | The array of input values.                                        |
+| `setValue`        | `(value: string[]) => void`              | Function to set the value of the inputs.                          |
+| `clearValue`      | `VoidFunction`                           | Function to clear the value of the inputs.                        |
+| `setValueAtIndex` | `(index: number, value: string) => void` | Function to set the value of the input at a specific index.       |
+| `focus`           | `VoidFunction`                           | Function to focus the pin-input. This will focus the first input. |
+
+## Accessibility
+
+### Keyboard Support
+
+| Key               | Description                                                                  |
+| ----------------- | ---------------------------------------------------------------------------- |
+| **`ArrowLeft`**   | Moves focus to the previous input                                            |
+| **`ArrowRight`**  | Moves focus to the next input                                                |
+| **`Backspace`**   | Deletes the value in the current input and moves focus to the previous input |
+| **`Delete`**      | Deletes the value in the current input                                       |
+| **`Control + V`** | Pastes the value into the input fields                                       |

@@ -5,193 +5,63 @@ npm: '@cerberus-design/react'
 source: 'components/progress'
 recipe: 'slots/progressBar.ts'
 ark: 'progress-circular'
+group: Components
+order: 27
 ---
-
-import CodePreview from '@/app/components/CodePreview'
-import { NoteAdmonition } from '@/app/components/Admonition'
-import { OverviewPreview } from '../components/progress/bar'
-import {
-  CircularPreview,
-  SizesPreview,
-  HideValueTextPreview,
-  CustomLabelPreview,
-} from '../components/progress/circular'
 
 ```tsx
 import { ProgressBar, CircularProgress } from '@cerberus/react'
 ```
 
-## Usage
-
-### Progress Bar
+## Progress Bar
 
 The `ProgressBar` component is used to display a linear progress indicator. It can be used in both determinate and indeterminate states.
 
-<CodePreview preview={<OverviewPreview />}>
-```tsx
-import { ProgressBar, Tag } from '@cerberus/react'
-import { HStack, VStack } from 'styled-system/jsx'
+<Example path="components/progress" demo="bar" />
 
-export function OverviewPreview() {
-  return (
-    <HStack
-      gap="10"
-      w="3/4"
-    >
-      <VStack gap="md" w="full">
-        <ProgressBar
-          id="rounded-example"
-          label="rounded progress example"
-          size="sm"
-          now={75}
-        />
-        <Tag shape="pill">Rounded</Tag>
-      </VStack>
-      <VStack gap="md" w="full">
-        <ProgressBar
-          id="block-example"
-          label="block progress example"
-          size="sm"
-          usage="block"
-          now={75}
-        />
-        <Tag shape="pill">Block</Tag>
-      </VStack>
-    </HStack>
-  )
-}
-```
-</CodePreview>
+### Sizes
+
+The `ProgressBar` component supports different sizes via the `size` prop.
+
+<Example path="components/progress" demo="barSize" />
+
+### Usage
+
+To show different styles of the `ProgressBar`, use the `usage` prop.
+
+<Example path="components/progress" demo="barUsage" />
+
+### States
+
+The `ProgressBar` component supports both determinate and indeterminate states.
+
+<Example path="components/progress" demo="barState" />
 
 ## Circular Progress
 
 The `CircularProgress` component is used to display a circular progress indicator. It will scale to the size of its container.
 
-<CodePreview preview={<CircularPreview />}>
-```tsx
-'use client'
-
-import { CircularProgress, Text } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
-
-function NotStartedText() {
-return (
-<Text textAlign="center" textStyle="heading-2xs" px="md">
-Not Started
-</Text>
-)
-}
-
-function CircularPreview() {
-return (
-<HStack>
-<CircularProgress
-id="0"
-defaultValue={0}
-label={<NotStartedText />}
-hideValueText
-/>
-<CircularProgress id="25" defaultValue={25} />
-<CircularProgress id="50" defaultValue={50} />
-<CircularProgress id="75" defaultValue={75} />
-<CircularProgress id="complete" label="complete" defaultValue={100} />
-</HStack>
-)
-}
-
-````
-</CodePreview>
+<Example path="components/progress" demo="circular" />
 
 ### Sizes
 
 The `CircularProgress` component supports different sizes via the `size` prop.
 
-<CodePreview preview={<SizesPreview />}>
-```tsx
-function SizesPreview() {
-  return (
-    <HStack w="1/2">
-      <CircularProgress id="25" defaultValue={25} size="xs" />
-      <CircularProgress id="50" defaultValue={50} size="sm" />
-      <CircularProgress id="75" defaultValue={75} size="md" />
-      <CircularProgress
-        id="complete"
-        label="complete"
-        defaultValue={100}
-        size="lg"
-      />
-    </HStack>
-  )
-}
-````
-
-</CodePreview>
+<Example path="components/progress" demo="circularSize" />
 
 ### Hide Value Text
 
 The `CircularProgress` component allows you to hide the value text via the `hideValueText` prop.
 
-<CodePreview preview={<HideValueTextPreview />}>
-```tsx /hideValueText/
-function HideValueTextPreview() {
-  return (
-    <HStack justify="center" w="1/2">
-      <CircularProgress
-        defaultValue={0}
-        label={<NotStartedText />}
-        hideValueText
-      />
-    </HStack>
-  )
-}
-```
-</CodePreview>
+<Example path="components/progress" demo="hideValueText" />
 
 ### Custom Label
 
 You can customize the label displayed below the value by passing a custom React node to the `label` prop.
 
-<CodePreview preview={<CustomLabelPreview />} >
-```tsx /label/
-function CustomLabelPreview() {
-  return (
-    <HStack justify="center" w="1/2">
-      <CircularProgress
-        defaultValue={60}
-        label={
-          <Text color="yellow" textStyle="heading-sm">
-            Loading
-          </Text>
-        }
-      />
-    </HStack>
-  )
-}
-```
-</CodePreview>
+<Example path="components/progress" demo="label" />
 
-## Primitives
-
-You can utilize the primitive components or style props to customize the progress components.
-
-### Progress Bar
-
-| Component       | Description                             |
-| --------------- | --------------------------------------- |
-| ProgressBarRoot | The container for the ProgressBar parts |
-| ProgressBarBar  | The percentage bar of the amount        |
-
-### Circular Progress
-
-| Component                   | Description                                               |
-| --------------------------- | --------------------------------------------------------- |
-| CircularProgressRoot        | The context provider for the CircularProgress parts       |
-| CircularProgressInfoGroup   | The container for the text parts                          |
-| CircularProgressLabel       | The descriptive text below the value                      |
-| CircularProgressValueText   | The value of the progress, displayed in the center circle |
-| CircularProgressCircle      | The container of the progress                             |
-| CircularProgressCircleTrack | The track of the progress                                 |
-| CircularProgressCircleRange | The range of the progress                                 |
+## Guides
 
 ### CSS Variables
 
@@ -204,31 +74,39 @@ Both `ProgressBar` and `CircularProgress` components expose CSS variables for ea
 | `--circumference` | The circumference value for the root. |
 | `--offset`        | The offset position of the element    |
 
-### Data Attributes
+## Primitives
 
-Both `ProgressBar` and `CircularProgress` components expose data attributes for styling based on state.
+You can utilize the primitive components or style props to customize the progress components.
 
-| Data Attribute       | Value.                                                          |
-| -------------------- | --------------------------------------------------------------- |
-| `[data-scope]`       | progress                                                        |
-| `[data-part]`        | The primitive layer (e.g. 'root')                               |
-| `[data-max]`         | The value of `max`                                              |
-| `[data-value]`       | The value of the progress                                       |
-| `[data-state]`       | The state of the progress (e.g. 'loading')                      |
-| `[data-orientation]` | The orientation of the progress (e.g. 'horizontal', 'vertical') |
+### Progress Bar
+
+| Component         | Description                             |
+| ----------------- | --------------------------------------- |
+| `ProgressBarRoot` | The container for the ProgressBar parts |
+| `ProgressBarBar`  | The percentage bar of the amount        |
+
+### Circular Progress
+
+| Component                     | Description                                               |
+| ----------------------------- | --------------------------------------------------------- |
+| `CircularProgressRoot`        | The context provider for the CircularProgress parts       |
+| `CircularProgressInfoGroup`   | The container for the text parts                          |
+| `CircularProgressLabel`       | The descriptive text below the value                      |
+| `CircularProgressValueText`   | The value of the progress, displayed in the center circle |
+| `CircularProgressCircle`      | The container of the progress                             |
+| `CircularProgressCircleTrack` | The track of the progress                                 |
+| `CircularProgressCircleRange` | The range of the progress                                 |
 
 ## API
 
 ### ProgressBar
 
-| Name          | Default   | Description                                       |
-| ------------- | --------- | ------------------------------------------------- |
-| id            |           | The id of the CircularProgress.                   |
-| label         |           | A description of what the progress bar is for.    |
-| size          | `md`      | The size of the progress bar.                     |
-| usage         | `rounded` | The style of the progress bar.                    |
-| now           |           | The current progress value.                       |
-| indeterminate | `false`   | If the progress bar is in an indeterminate state. |
+| Name | Default | Description                     |
+| ---- | ------- | ------------------------------- |
+| id   |         | The id of the CircularProgress. |
+
+| now | | The current progress value. |
+| indeterminate | `false` | If the progress bar is in an indeterminate state. |
 
 ### CircularProgress
 
@@ -239,4 +117,154 @@ Both `ProgressBar` and `CircularProgress` components expose data attributes for 
 | size          | `md`     | The size of the circular progress.                   |
 | usage         | `filled` | The fill style of the center circle used for the bg. |
 
-The `CircularProgress` component also accepts all the props of the [`CircularProgressRoot` primitive props](https://ark-ui.com/react/docs/components/progress-circular#api-reference)
+### Root
+
+#### Props
+
+| Prop                | Type                                                                      | Required | Default                | Description                                                                                                               |
+| ------------------- | ------------------------------------------------------------------------- | -------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **`asChild`**       | `boolean`                                                                 | false    | `undefined`            | Use the provided child element as the default rendered element, combining their props and behavior.                       |
+| **`defaultValue`**  | `number`                                                                  | false    | `50`                   | The initial value of the progress bar when rendered.<br>Use when you don't need to control the value of the progress bar. |
+| **`formatOptions`** | `NumberFormatOptions`                                                     | false    | `{ style: "percent" }` | The options to use for formatting the value.                                                                              |
+| **`id`**            | `string`                                                                  | false    | `undefined`            | The unique identifier of the machine.                                                                                     |
+| **`ids`**           | `Partial<{ root: string; track: string; label: string; circle: string }>` | false    | `undefined`            | The ids of the elements in the progress bar. Useful for composition.                                                      |
+| **`locale`**        | `string`                                                                  | false    | `"en-US"`              | The locale to use for formatting the value.                                                                               |
+| **`max`**           | `number`                                                                  | false    | `100`                  | The maximum allowed value of the progress bar.                                                                            |
+| **`min`**           | `number`                                                                  | false    | `0`                    | The minimum allowed value of the progress bar.                                                                            |
+| **`onValueChange`** | `(details: ValueChangeDetails) => void`                                   | false    | `undefined`            | Callback fired when the value changes.                                                                                    |
+| **`orientation`**   | `'horizontal' \| 'vertical'`                                              | false    | `"horizontal"`         | The orientation of the element.                                                                                           |
+| **`translations`**  | `IntlTranslations`                                                        | false    | `undefined`            | The localized messages to use.                                                                                            |
+| **`value`**         | `number`                                                                  | false    | `undefined`            | The controlled value of the progress bar.                                                                                 |
+| **`label`**         | `string`                                                                  | false    | `undefined`            | The label of the progress bar.                                                                                            |
+| **`size`**          | `ProgressSize`                                                            | false    | `undefined`            | The size of the progress bar.                                                                                             |
+| **`usage`**         | `'rounded' \| 'circular' \| 'filled'`                                     | false    | `undefined`            | The usage of the progress bar.                                                                                            |
+
+#### Data Attributes
+
+| Attribute              | Description / Value             |
+| ---------------------- | ------------------------------- |
+| **`data-scope`**       | progress                        |
+| **`data-part`**        | root                            |
+| **`data-max`**         |                                 |
+| **`data-value`**       | The value of the item           |
+| **`data-state`**       |                                 |
+| **`data-orientation`** | The orientation of the progress |
+
+### Circle
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### CircleRange
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute        | Description / Value |
+| ---------------- | ------------------- |
+| **`data-scope`** | progress            |
+| **`data-part`**  | circle-range        |
+| **`data-state`** |                     |
+
+### CircleTrack
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute              | Description / Value                |
+| ---------------------- | ---------------------------------- |
+| **`data-scope`**       | progress                           |
+| **`data-part`**        | circle-track                       |
+| **`data-orientation`** | The orientation of the circletrack |
+
+### Label
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute              | Description / Value          |
+| ---------------------- | ---------------------------- |
+| **`data-scope`**       | progress                     |
+| **`data-part`**        | label                        |
+| **`data-orientation`** | The orientation of the label |
+
+### Range
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute              | Description / Value          |
+| ---------------------- | ---------------------------- |
+| **`data-scope`**       | progress                     |
+| **`data-part`**        | range                        |
+| **`data-orientation`** | The orientation of the range |
+| **`data-state`**       |                              |
+
+### RootProvider
+
+#### Props
+
+| Prop          | Type                | Required | Default     | Description                                                                                         |
+| ------------- | ------------------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`value`**   | `UseProgressReturn` | true     | `undefined` | undefined                                                                                           |
+| **`asChild`** | `boolean`           | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Track
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### ValueText
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### View
+
+#### Props
+
+| Prop          | Type            | Required | Default     | Description                                                                                         |
+| ------------- | --------------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`state`**   | `ProgressState` | true     | `undefined` | undefined                                                                                           |
+| **`asChild`** | `boolean`       | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute        | Description / Value |
+| ---------------- | ------------------- |
+| **`data-scope`** | progress            |
+| **`data-part`**  | view                |
+| **`data-state`** |                     |
+
+## Accessibility
+
+Complies with the [the progressbar role requirements.](https://w3c.github.io/aria/#progressbar).

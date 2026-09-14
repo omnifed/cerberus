@@ -5,16 +5,9 @@ npm: '@cerberus-design/react'
 source: 'components/radio'
 recipe: 'slots/radio.ts'
 ark: 'radio-group'
+group: Components
+order: 29
 ---
-
-import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import {
-  BasicDemo,
-  OrientationDemo,
-  SizeDemo,
-  CustomDemo,
-} from '../components/radio/static'
 
 ```ts
 import { RadioGroup, Radio, RadioParts } from '@cerberus/react'
@@ -24,149 +17,184 @@ import { RadioGroup, Radio, RadioParts } from '@cerberus/react'
 
 The Radio component is a controlled component that can be used to select one option from a set. Simply wrap the `Radio` components in a `RadioGroup` component to create a group of radio buttons.
 
-<CodePreview preview={<BasicDemo />}>
-```tsx title="basic demo"
-import { Radio, RadioGroup } from '@cerberus/react'
-
-export function BasicDemo() {
-  return (
-    <RadioGroup defaultValue="cerberus">
-      <Radio value="cerberus">Cerberus</Radio>
-      <Radio value="hades">Hades</Radio>
-      <Radio value="zeus">Zeus</Radio>
-    </RadioGroup>
-  )
-}
-```
-</CodePreview>
+<Example path="components/radio" demo="basic" />
 
 ## Orientation
 
 The `RadioGroup` component supports two orientations: `horizontal`, and `vertical`. The default orientation is `horizontal`.
 
-<CodePreview preview={<OrientationDemo />}>
-```tsx title="Orientation demo" /orientation/
-import { Radio, RadioGroup } from '@cerberus/react'
-
-export function OrientationDemo() {
-  return (
-    <RadioGroup defaultValue="cerberus" orientation="vertical">
-      <Radio value="cerberus">Cerberus</Radio>
-      <Radio value="hades">Hades</Radio>
-      <Radio value="zeus">Zeus</Radio>
-    </RadioGroup>
-  )
-}
-```
-</CodePreview>
+<Example path="components/radio" demo="orientation" />
 
 ## Sizes
 
 The Radio component supports two sizes: `sm`, and `md`. The default size is `sm`.
 
-<CodePreview preview={<SizeDemo />}>
-```tsx title="size demo"
-import { Radio, RadioGroup } from '@cerberus/react'
+<Example path="components/radio" demo="size" />
 
-export function SizeDemo() {
-  return (
-    <RadioGroup defaultValue="cerberus">
-      <Radio size="md" value="cerberus">Cerberus</Radio>
-      <Radio size="md" value="hades">Hades</Radio>
-      <Radio size="md" value="zeus">Zeus</Radio>
-    </RadioGroup>
-  )
-}
-```
-</CodePreview>
+## Customizing
+
+To customize the Radio, use style props or the [Primitives](#primitives).
+
+<Example path="components/radio" demo="custom" />
 
 ## Primitives
 
 You can utilize the primitive components or the `css` prop to customize the radio.
 
-| Component                 | Description                                         |
-| ------------------------- | --------------------------------------------------- |
-| RadioGroupRoot            | The context provider for the RadioGroup parts       |
-| RadioGroupLabel           | The label of the radio                              |
-| RadioGroupIndicator       | The indicator of the radio state                    |
-| RadioGroupItem            | The container of the label and control of the radio |
-| RadioGroupItemText        | The label for a single radio                        |
-| RadioGroupItemControl     | The visual input of a single radio                  |
-| RadioGroupItemHiddenInput | The native input for the radio                      |
-
-<CodePreview preview={<CustomDemo />}>
-```tsx title="custom radio demo" {8-10}
-import { RadioParts } from '@cerberus/react'
-
-function CustomDemo() {
-return (
-<RadioParts.Root>
-<RadioParts.Item>
-<RadioParts.ItemText
-css={{
-            textStyle: 'body-lg',
-          }} >
-Cerberus
-</RadioParts.ItemText>
-<RadioParts.ItemControl
-css={{
-            bgColor: 'info.bg.initial',
-            h: 8,
-            w: 8,
-            transform: 'skew(-10deg)',
-            _checked: {
-              bg: 'warning.bg.initial',
-            },
-          }}
-/>
-<RadioParts.ItemHiddenInput />
-</RadioParts.Item>
-</RadioParts.Root>
-)
-}
-
-```
-</CodePreview>
-
+| Component                   | Description                                         |
+| --------------------------- | --------------------------------------------------- |
+| `RadioGroupRoot`            | The context provider for the RadioGroup parts       |
+| `RadioGroupLabel`           | The label of the radio                              |
+| `RadioGroupIndicator`       | The indicator of the radio state                    |
+| `RadioGroupItem`            | The container of the label and control of the radio |
+| `RadioGroupItemText`        | The label for a single radio                        |
+| `RadioGroupItemControl`     | The visual input of a single radio                  |
+| `RadioGroupItemHiddenInput` | The native input for the radio                      |
 
 ## API
 
-### Props
+### Root
 
-#### RadioGroup
+#### Props
 
-The `RadioGroup` component is an abstraction of the primitives and accepts the following props:
+| Prop                | Type                                                                                                                                                                                                                     | Required | Default     | Description                                                                                                               |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ----------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **`asChild`**       | `boolean`                                                                                                                                                                                                                | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior.                       |
+| **`defaultValue`**  | `string`                                                                                                                                                                                                                 | false    | `undefined` | The initial value of the checked radio when rendered.<br>Use when you don't need to control the value of the radio group. |
+| **`disabled`**      | `boolean`                                                                                                                                                                                                                | false    | `undefined` | If `true`, the radio group will be disabled                                                                               |
+| **`form`**          | `string`                                                                                                                                                                                                                 | false    | `undefined` | The associate form of the underlying input.                                                                               |
+| **`id`**            | `string`                                                                                                                                                                                                                 | false    | `undefined` | The unique identifier of the machine.                                                                                     |
+| **`ids`**           | `Partial<{ root: string, label: string, indicator: string, item: (value: string) => string, itemLabel: (value: string) => string, itemControl: (value: string) => string, itemHiddenInput: (value: string) => string }>` | false    | `undefined` | The ids of the elements in the radio. Useful for composition.                                                             |
+| **`invalid`**       | `boolean`                                                                                                                                                                                                                | false    | `undefined` | If `true`, the radio group is marked as invalid.                                                                          |
+| **`name`**          | `string`                                                                                                                                                                                                                 | false    | `undefined` | The name of the input fields in the radio<br>(Useful for form submission).                                                |
+| **`onValueChange`** | `(details: ValueChangeDetails) => void`                                                                                                                                                                                  | false    | `undefined` | Function called once a radio is checked                                                                                   |
+| **`orientation`**   | `'horizontal' \| 'vertical'`                                                                                                                                                                                             | false    | `undefined` | Orientation of the radio group                                                                                            |
+| **`readOnly`**      | `boolean`                                                                                                                                                                                                                | false    | `undefined` | Whether the radio group is read-only                                                                                      |
+| **`required`**      | `boolean`                                                                                                                                                                                                                | false    | `undefined` | If `true`, the radio group is marked as required.                                                                         |
+| **`value`**         | `string`                                                                                                                                                                                                                 | false    | `undefined` | The controlled value of the radio group                                                                                   |
 
-| Name     | Default | Description                                            |
-| -------- | ------- | ------------------------------------------------------ |
-| orientation |  `horizontal`   | This orientation of the group.              |
+#### Data Attributes
 
+| Attribute              | Description / Value                |
+| ---------------------- | ---------------------------------- |
+| **`data-scope`**       | radio-group                        |
+| **`data-part`**        | root                               |
+| **`data-orientation`** | The orientation of the radio-group |
+| **`data-disabled`**    | Present when disabled              |
+| **`data-invalid`**     | Present when invalid               |
+| **`data-required`**    | Present when required              |
 
-The `RadioGroup` component also accepts all the props of the [`RadioGroupRoot` primitive props](https://ark-ui.com/react/docs/components/radio-group#api-reference)
+### Indicator
 
-#### Radio
+#### Props
 
-The `Radio` component is an abstraction of the primitives and accepts the following props:
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
 
-| Name     | Default | Description                                            |
-| -------- | ------- | ------------------------------------------------------ |
-| size |  `sm`   | The size of the radio.                                     |
+#### Data Attributes
 
-The `Radio` component also accepts all the props of the [`RadioGroupItem` primitive props](https://ark-ui.com/react/docs/components/radio-group#api-reference)
+| Attribute              | Description / Value              |
+| ---------------------- | -------------------------------- |
+| **`data-scope`**       | radio-group                      |
+| **`data-part`**        | indicator                        |
+| **`data-disabled`**    | Present when disabled            |
+| **`data-orientation`** | The orientation of the indicator |
 
-### Parts
+### ItemControl
 
-The `RadioParts` API is an Object containing the full family of components.
+#### Props
 
-<NoteAdmonition description="It is best to only use the RadioParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
 
-| Name     | Description                            |
-| -------- | -------------------------------------- |
-| Root     | The `RadioGroupRoot` component which is the Provider for the family. |
-| Label     | The `RadioGroupLabel` component which displays the label and "required" notice. |
-| Indicator  | The `RadioGroupIndicator` component which displays based on the `checked` state. |
-| Item  | The `RadioGroupItem` component which is the container to a single radio item. |
-| ItemText  | The `RadioGroupItemText` component which is the label of the radio. |
-| ItemControl     | The `RadioGroupItemControl` component which is the visual field. |
-| HiddenInput  | The `RadioGroupHiddenInput` component which displays the native input. |
-```
+#### Data Attributes
+
+| Attribute         | Description / Value            |
+| ----------------- | ------------------------------ |
+| **`data-scope`**  | radio-group                    |
+| **`data-part`**   | item-control                   |
+| **`data-active`** | Present when active or pressed |
+
+### ItemHiddenInput
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Item
+
+#### Props
+
+| Prop           | Type      | Required | Default     | Description                                                                                         |
+| -------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`value`**    | `string`  | true     | `undefined` | undefined                                                                                           |
+| **`asChild`**  | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| **`disabled`** | `boolean` | false    | `undefined` | undefined                                                                                           |
+| **`invalid`**  | `boolean` | false    | `undefined` | undefined                                                                                           |
+
+### ItemText
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Label
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute              | Description / Value          |
+| ---------------------- | ---------------------------- |
+| **`data-scope`**       | radio-group                  |
+| **`data-part`**        | label                        |
+| **`data-orientation`** | The orientation of the label |
+| **`data-disabled`**    | Present when disabled        |
+| **`data-invalid`**     | Present when invalid         |
+| **`data-required`**    | Present when required        |
+
+### RootProvider
+
+#### Props
+
+| Prop          | Type                  | Required | Default     | Description                                                                                         |
+| ------------- | --------------------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`value`**   | `UseRadioGroupReturn` | true     | `undefined` | undefined                                                                                           |
+| **`asChild`** | `boolean`             | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Context
+
+**API:**
+
+| Property       | Type                              | Description                                    |
+| -------------- | --------------------------------- | ---------------------------------------------- |
+| `value`        | `string \| null`                  | The current value of the radio group           |
+| `setValue`     | `(value: string) => void`         | Function to set the value of the radio group   |
+| `clearValue`   | `VoidFunction`                    | Function to clear the value of the radio group |
+| `focus`        | `VoidFunction`                    | Function to focus the radio group              |
+| `getItemState` | `(props: ItemProps) => ItemState` | Returns the state details of a radio input     |
+
+## Accessibility
+
+Complies with the [Radio WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/).
+
+### Keyboard Support
+
+| Key              | Description                                                                        |
+| ---------------- | ---------------------------------------------------------------------------------- |
+| **`Tab`**        | Moves focus to either the checked radio item or the first radio item in the group. |
+| **`Space`**      | When focus is on an unchecked radio item, checks it.                               |
+| **`ArrowDown`**  | Moves focus and checks the next radio item in the group.                           |
+| **`ArrowRight`** | Moves focus and checks the next radio item in the group.                           |
+| **`ArrowUp`**    | Moves focus to the previous radio item in the group.                               |
+| **`ArrowLeft`**  | Moves focus to the previous radio item in the group.                               |

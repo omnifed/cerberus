@@ -5,17 +5,9 @@ npm: '@cerberus-design/react'
 source: 'components/rating'
 recipe: 'slots/ratingGroup.ts'
 ark: 'rating-group'
+group: Components
+order: 30
 ---
-
-import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import {
-  BasicDemo,
-  ReadOnlyHalfDemo,
-  OrientationDemo,
-  SizeDemo,
-  CustomDemo,
-} from '../components/rating/static'
 
 ```ts
 import { Rating, RatingParts } from '@cerberus/react'
@@ -25,196 +17,164 @@ import { Rating, RatingParts } from '@cerberus/react'
 
 The `Rating` component is an abstracted `client` component that provides a way to select a value from a range of values. It is used to provide feedback on a scale. The default `count` is 5, and the default `value` is 0.
 
-<CodePreview preview={<BasicDemo />}>
-```tsx title="basic demo"
-'use client'
-
-import { Rating } from '@cerberus/react'
-import { StarFilled } from '@carbon/icons-react'
-
-export function BasicDemo() {
-  return <Rating defaultValue={3}>{() => <StarFilled size={24} />}</Rating>
-}
-```
-</CodePreview>
+<Example path="components/rating" demo="basic" />
 
 ## Readonly State
 
 To render the `Rating` component in a read-only state, you can use the `readOnly` prop.
 
-<CodePreview preview={<ReadOnlyHalfDemo />}>
-```tsx title="readonly demo"
-'use client'
-
-import { Rating } from '@cerberus/react'
-import { StarHalf, StarFilled } from '@carbon/icons-react'
-
-function ReadOnlyHalfDemo() {
-return (
-<Rating defaultValue={4.5} allowHalf readOnly>
-{({ half, highlighted }) => {
-if (half) return <StarHalf size={24} />
-if (highlighted) return <StarFilled size={24} />
-return <Star size={24} />
-}}
-</Rating>
-)
-}
-
-````
-</CodePreview>
+<Example path="components/rating" demo="readOnly" />
 
 ## Orientation
 
 The `Rating` component supports two layout orientations for label usage: `horizontal`, and `vertical`. The default orientation is `vertical`.
 
-<CodePreview preview={<OrientationDemo />}>
-```tsx title="Orientation demo" {10-11}
-'use client'
-
-import { Rating } from '@cerberus/react'
-import { StarHalf, StarFilled } from '@carbon/icons-react'
-
-function OrientationDemo() {
-  return (
-    <Box w="1/2">
-      <Rating
-        allowHalf
-        defaultValue={4.5}
-        label="Average Rating"
-        orientation="horizontal"
-        readOnly
-      >
-        {({ half }) => {
-          if (half) return <StarHalf size={24} />
-          return <StarFilled size={24} />
-        }}
-      </Rating>
-    </Box>
-  )
-}
-````
-
-</CodePreview>
+<Example path="components/rating" demo="orientation" />
 
 ## Sizes
 
-The Rating component supports two sizes: `sm`, and `md`. The default size is `sm`.
+The `Rating` component supports two sizes: `sm`, and `md`. The default size is `sm`.
 
-<CodePreview preview={<SizeDemo />}>
-```tsx title="size demo" {8}
-'use client'
+<Example path="components/rating" demo="size" />
 
-import { Rating } from '@cerberus/react'
-import { StarFilled } from '@carbon/icons-react'
+## Customizing
 
-function SizeDemo() {
-return (
-<Rating defaultValue={3} label="This is a medium label" size="md">
-{() => <StarFilled size={24} />}
-</Rating>
-)
-}
+To customize the `Rating` component use style props or the [Primitive components](#primitives).
 
-````
-</CodePreview>
+<Example path="components/rating" demo="custom" />
 
 ## Primitives
 
 You can utilize the primitive components or the `css` prop to customize the radio.
 
-| Component | Description |
-| --------- | ----------- |
-| RatingRoot    | The context provider for the Rating parts |
-| RatingLabel   | The label of the rating |
-| RatingControl | The visual control of the rating  |
-| RatingContext | The context provider for the rating |
-| RatingItem   | The container of the rating item |
-| RatingItemContext | The context provider for a rating item |
-| RatingHiddenInput  | The native input for the rating |
-
-<CodePreview preview={<CustomDemo />}>
-```tsx title="custom rating demo"
-import { RatingParts, type UseRatingGroupContext } from '@cerberus/react'
-import { Box } from 'styled-system/jsx'
-
-function CustomDemo() {
-  return (
-    <Box w="1/2">
-      <RatingParts.Root
-        defaultValue={3}
-        orientation="horizontal"
-        css={{
-          transform: 'skewX(-10deg)',
-        }}
-      >
-        <RatingParts.Label
-          css={{
-            textStyle: 'heading-xs',
-            textTransform: 'uppercase',
-          }}
-        >
-          This is a custom rating
-        </RatingParts.Label>
-
-        <RatingParts.Control>
-          <RatingParts.Context>
-            {(context: UseRatingGroupContext) =>
-              context.items.map((item) => (
-                <RatingParts.Item
-                  key={item}
-                  index={item}
-                  css={{
-                    _highlighted: {
-                      colorPalette: 'danger',
-                      scale: '1.2',
-                    },
-                  }}
-                >
-                  <RatingParts.ItemContext>
-                    {() => <StarFilled size={24} />}
-                  </RatingParts.ItemContext>
-                </RatingParts.Item>
-              ))
-            }
-          </RatingParts.Context>
-          <RatingParts.HiddenInput />
-        </RatingParts.Control>
-      </RatingParts.Root>
-    </Box>
-  )
-}
-````
-
-</CodePreview>
+| Component           | Description                               |
+| ------------------- | ----------------------------------------- |
+| `RatingRoot`        | The context provider for the Rating parts |
+| `RatingLabel`       | The label of the rating                   |
+| `RatingControl`     | The visual control of the rating          |
+| `RatingContext`     | The context provider for the rating       |
+| `RatingItem`        | The container of the rating item          |
+| `RatingItemContext` | The context provider for a rating item    |
+| `RatingHiddenInput` | The native input for the rating           |
 
 ## API
 
-### Props
+### Root
 
-#### Rating
+#### Props
 
-The `Rating` component is an abstraction of the primitives and accepts the following props:
+| Prop                | Type                                                                                                           | Required | Default     | Description                                                                                                   |
+| ------------------- | -------------------------------------------------------------------------------------------------------------- | -------- | ----------- | ------------------------------------------------------------------------------------------------------------- |
+| **`allowHalf`**     | `boolean`                                                                                                      | false    | `undefined` | Whether to allow half stars.                                                                                  |
+| **`asChild`**       | `boolean`                                                                                                      | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior.           |
+| **`autoFocus`**     | `boolean`                                                                                                      | false    | `undefined` | Whether to autofocus the rating.                                                                              |
+| **`count`**         | `number`                                                                                                       | false    | `5`         | The total number of ratings.                                                                                  |
+| **`defaultValue`**  | `number`                                                                                                       | false    | `undefined` | The initial value of the rating when rendered.<br>Use when you don't need to control the value of the rating. |
+| **`disabled`**      | `boolean`                                                                                                      | false    | `undefined` | Whether the rating is disabled.                                                                               |
+| **`form`**          | `string`                                                                                                       | false    | `undefined` | The associate form of the underlying input element.                                                           |
+| **`id`**            | `string`                                                                                                       | false    | `undefined` | The unique identifier of the machine.                                                                         |
+| **`ids`**           | `Partial<{ root: string, label: string, hiddenInput: string, control: string, item: (id: string) => string }>` | false    | `undefined` | The ids of the elements in the rating. Useful for composition.                                                |
+| **`name`**          | `string`                                                                                                       | false    | `undefined` | The name attribute of the rating element (used in forms).                                                     |
+| **`onHoverChange`** | `(details: HoverChangeDetails) => void`                                                                        | false    | `undefined` | Function to be called when the rating value is hovered.                                                       |
+| **`onValueChange`** | `(details: ValueChangeDetails) => void`                                                                        | false    | `undefined` | Function to be called when the rating value changes.                                                          |
+| **`readOnly`**      | `boolean`                                                                                                      | false    | `undefined` | Whether the rating is readonly.                                                                               |
+| **`required`**      | `boolean`                                                                                                      | false    | `undefined` | Whether the rating is required.                                                                               |
+| **`translations`**  | `IntlTranslations`                                                                                             | false    | `undefined` | Specifies the localized strings that identifies the accessibility elements and their states                   |
+| **`value`**         | `number`                                                                                                       | false    | `undefined` | The controlled value of the rating                                                                            |
 
-| Name        | Default      | Description                      |
-| ----------- | ------------ | -------------------------------- |
-| orientation | `horizontal` | This orientation of the group.   |
-| palette     | `action`     | The color palette of the items . |
-| size        | `sm`         | The size of the label.           |
+### Control
 
-The `Rating` component also accepts all the props of the [`RatingRoot` primitive props](https://ark-ui.com/react/docs/components/rating-group#api-reference)
+#### Props
 
-### Parts
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
 
-The `RatingParts` API is an Object containing the full family of components.
+#### Data Attributes
 
-<NoteAdmonition description="It is best to only use the RatingParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+| Attribute           | Description / Value    |
+| ------------------- | ---------------------- |
+| **`data-scope`**    | rating-group           |
+| **`data-part`**     | control                |
+| **`data-readonly`** | Present when read-only |
+| **`data-disabled`** | Present when disabled  |
 
-| Name        | Description                                                                        |
-| ----------- | ---------------------------------------------------------------------------------- |
-| Root        | The `RatingRoot` component which is the Provider for the family.                   |
-| Label       | The `RatingLabel` component which displays the label.                              |
-| Control     | The `RatingControl` component which displays the visual rating.                    |
-| Item        | The `RatingItem` component which is the container to a single item.                |
-| ItemContext | The `RatingItemContext` component which is the context provider for a single item. |
-| HiddenInput | The `RatingHiddenInput` component which displays the native radio.                 |
+### HiddenInput
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Item
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`index`**   | `number`  | true     | `undefined` | undefined                                                                                           |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute              | Description / Value      |
+| ---------------------- | ------------------------ |
+| **`data-scope`**       | rating-group             |
+| **`data-part`**        | item                     |
+| **`data-disabled`**    | Present when disabled    |
+| **`data-readonly`**    | Present when read-only   |
+| **`data-checked`**     | Present when checked     |
+| **`data-highlighted`** | Present when highlighted |
+| **`data-half`**        |                          |
+
+### Label
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute           | Description / Value   |
+| ------------------- | --------------------- |
+| **`data-scope`**    | rating-group          |
+| **`data-part`**     | label                 |
+| **`data-disabled`** | Present when disabled |
+| **`data-required`** | Present when required |
+
+### RootProvider
+
+#### Props
+
+| Prop          | Type                   | Required | Default     | Description                                                                                         |
+| ------------- | ---------------------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`value`**   | `UseRatingGroupReturn` | true     | `undefined` | undefined                                                                                           |
+| **`asChild`** | `boolean`              | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Context
+
+**API:**
+
+| Property       | Type                              | Description                                                                      |
+| -------------- | --------------------------------- | -------------------------------------------------------------------------------- |
+| `setValue`     | `(value: number) => void`         | Sets the value of the rating group                                               |
+| `clearValue`   | `VoidFunction`                    | Clears the value of the rating group                                             |
+| `hovering`     | `boolean`                         | Whether the rating group is being hovered                                        |
+| `value`        | `number`                          | The current value of the rating group                                            |
+| `hoveredValue` | `number`                          | The value of the currently hovered rating                                        |
+| `count`        | `number`                          | The total number of ratings                                                      |
+| `items`        | `number[]`                        | The array of rating values. Returns an array of numbers from 1 to the max value. |
+| `getItemState` | `(props: ItemProps) => ItemState` | Returns the state of a rating item                                               |
+
+## Accessibility
+
+### Keyboard Support
+
+| Key              | Description                                                                                      |
+| ---------------- | ------------------------------------------------------------------------------------------------ |
+| **`ArrowRight`** | Moves focus to the next star, increasing the rating value based on the `allowHalf` property.     |
+| **`ArrowLeft`**  | Moves focus to the previous star, decreasing the rating value based on the `allowHalf` property. |
+| **`Enter`**      | Selects the focused star in the rating group.                                                    |
