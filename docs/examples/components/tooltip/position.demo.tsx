@@ -1,18 +1,10 @@
 'use client'
 
-import { Information, InformationFilled } from '@carbon/icons-react'
+import { HStack } from '@/styled-system/jsx'
+import { InformationFilled } from '@carbon/icons-react'
 import { Tooltip } from '@cerberus-design/react'
-import { HStack } from 'styled-system/jsx'
 
-export function BasicTooltipPreview() {
-  return (
-    <Tooltip content="Get information from something that has a very long description.">
-      <Information />
-    </Tooltip>
-  )
-}
-
-export function PositioningTooltipPreview() {
+export function PositionDemo() {
   return (
     <HStack gap="3xl">
       <Tooltip

@@ -4,37 +4,31 @@ description: 'Used for categorizing or labeling content'
 npm: '@cerberus-design/react'
 source: 'components/tag'
 recipe: 'tag.ts'
+group: Components
+order: 37
 ---
 
-import Link from 'next/link'
-import CodePreview from '@/app/components/CodePreview'
-import { CodeSnippet } from '@/app/components/code-snippet'
-import { NoteAdmonition } from '@/app/components/Admonition'
-import { DEMOS } from '../components/tag/static'
-
-<CodeSnippet snippet={DEMOS.meta} />
+```ts
+import { Tag } from '@cerberus/react'
+```
 
 ## Usage
 
 You can mix and match all of the examples to create the tag style of your choosing.
 
-<CodePreview {...DEMOS.basic} />
+<Example path="components/tag" demo="basic" />
 
 ## Usage Variants
 
 Use the `usage` prop to change the style of the tag.
 
-<CodeSnippet snippet={DEMOS.usageMeta} />
-<br />
-<CodePreview {...DEMOS.usage} />
+<Example path="components/tag" demo="usage" />
 
 ## Shape Variants
 
 Use the `shape` prop to change the shape of the tag.
 
-<CodeSnippet snippet={DEMOS.shapesMeta} />
-<br />
-<CodePreview {...DEMOS.shape} />
+<Example path="components/tag" demo="shape" />
 
 ## Colors
 
@@ -42,9 +36,7 @@ You can set the color of the tag by using the `palette` prop.
 
 <NoteAdmonition description="By nature of CSS rules, only a `palette` or `gradient` can be used at a time. This is because the `palette` prop sets the background color, and the `gradient` prop sets the background gradient." />
 
-<CodeSnippet snippet={DEMOS.paletteMeta} />
-<br />
-<CodePreview {...DEMOS.palette} />
+<Example path="components/tag" demo="palette" />
 
 ## Gradients
 
@@ -52,19 +44,19 @@ You can set the gradient of the tag by using the `gradient` prop.
 
 <NoteAdmonition description="By nature of CSS rules, only a `palette` or `gradient` can be used at a time. This is because the `palette` prop sets the background color, and the `gradient` prop sets the background gradient." />
 
-<CodePreview {...DEMOS.gradient} />
+<Example path="components/tag" demo="gradient" />
 
 ## Closable
 
 To use a closable tag, just pass an `onClick` prop to the `Tag` component. This will create a pill-shaped tag with a close icon button.
 
-<CodePreview {...DEMOS.closable} />
+<Example path="components/tag" demo="closable" />
 
 ## Customizing
 
 You can customize the `Tag` using style props and data selectors on any slot primitve.
 
-<CodePreview {...DEMOS.custom} />
+<Example path="components/tag" demo="custom" />
 
 ## Primitives
 
@@ -72,7 +64,7 @@ You can customize the tag by utilizing style props and primitives. A Closable Ta
 
 | Component | Description                  |
 | --------- | ---------------------------- |
-| TagRoot   | The root wrapper of the tag. |
+| `TagRoot` | The root wrapper of the tag. |
 
 ### Data Attributes
 
@@ -90,10 +82,10 @@ The Primitives additionally use the following data attributes for custom styling
 
 The `Tag` component is an abstraction of the primitives and accepts the following props:
 
-| Name     | Default     | Description                                        |
-| -------- | ----------- | -------------------------------------------------- |
-| gradient | `undefined` | The gradient of the tag (overrides palette).       |
-| palette  | `page`      | The color palette of the tag (overrides gradient). |
-| usage    | `filled`    | The style treatment of the tag.                    |
-| shape    | `pill`      | The shape of the tag.                              |
-| onClick  | `undefined` | How to create a Closable tag.                      |
+| Name       | Default     | Description                                        |
+| ---------- | ----------- | -------------------------------------------------- |
+| `gradient` | `undefined` | The gradient of the tag (overrides palette).       |
+| `palette`  | `page`      | The color palette of the tag (overrides gradient). |
+| `usage`    | `filled`    | The style treatment of the tag.                    |
+| `shape`    | `pill`      | The shape of the tag.                              |
+| `onClick`  | `undefined` | How to create a Closable tag.                      |

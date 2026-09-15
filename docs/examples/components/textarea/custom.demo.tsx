@@ -1,27 +1,7 @@
-import { Field, FieldParts, Textarea } from '@cerberus-design/react'
-import { Box } from 'styled-system/jsx'
+import { Box } from '@/styled-system/jsx'
+import { FieldParts } from '@cerberus-design/react'
 
-export function BasicTextarea() {
-  return (
-    <Box w="1/2">
-      <FieldParts.Root ids={{ control: 'basicTextarea' }}>
-        <FieldParts.Textarea />
-      </FieldParts.Root>
-    </Box>
-  )
-}
-
-export function SecondaryTextTextarea() {
-  return (
-    <Box w="1/2">
-      <Field label="Anything else you want to tell us?" secondaryHelperText="0/300">
-        <Textarea name="secondary_text" />
-      </Field>
-    </Box>
-  )
-}
-
-export function CustomField() {
+export function CustomDemo() {
   return (
     <Box w="1/2">
       <FieldParts.Root ids={{ control: 'customField' }}>

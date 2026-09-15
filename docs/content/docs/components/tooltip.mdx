@@ -5,14 +5,9 @@ npm: '@cerberus-design/react'
 source: 'components/tooltip'
 recipe: 'slots/tooltip.ts'
 ark: 'tooltip'
+group: Components
+order: 41
 ---
-
-import { NoteAdmonition } from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import {
-  BasicTooltipPreview,
-  PositioningTooltipPreview,
-} from '../components/tooltip/static'
 
 ```ts
 import { Tooltip } from '@cerberus/react'
@@ -20,118 +15,171 @@ import { Tooltip } from '@cerberus/react'
 
 ## Usage
 
-<CodePreview preview={<BasicTooltipPreview />}>
-```tsx
-'use client'
-
-import { Information } from '@carbon/icons-react'
-import { Tooltip } from '@cerberus/react'
-
-function BasicTooltipPreview() {
-return (
-
-<Tooltip
-      content="Get information from something that has a very long description."
-    >
-<Information />
-</Tooltip>
-)
-}
-
-````
-</CodePreview>
+<Example path="components/tooltip" demo="basic" />
 
 ## Positioning
 
 You can position the tooltip relative to the target element using the `position` prop.
 
-<CodePreview preview={<PositioningTooltipPreview />}>
-```tsx title="Positioning Demo"
-'use client'
-
-import { InformationFilled } from '@carbon/icons-react'
-import { Tooltip } from '@cerberus/react'
-import { HStack } from 'styled-system/jsx'
-
-function PositioningTooltipPreview() {
-  return (
-    <HStack gap="3xl">
-      <Tooltip
-        content="Top position"
-        positioning={{
-          placement: 'top',
-        }}
-      >
-        <InformationFilled />
-      </Tooltip>
-      <Tooltip
-        content="Right position"
-        positioning={{
-          placement: 'right',
-        }}
-      >
-        <InformationFilled />
-      </Tooltip>
-      <Tooltip
-        content="Bottom position"
-        positioning={{
-          placement: 'bottom',
-        }}
-      >
-        <InformationFilled />
-      </Tooltip>
-      <Tooltip
-        content="Left position"
-        positioning={{
-          placement: 'left',
-        }}
-      >
-        <InformationFilled />
-      </Tooltip>
-    </HStack>
-  )
-}
-````
-
-</CodePreview>
+<Example path="components/tooltip" demo="position" />
 
 ## Primitives
 
 You can utilize the primitive components or the `css` prop to customize the checkbox.
 
-| Component         | Description                                              |
-| ----------------- | -------------------------------------------------------- |
-| TooltipRoot       | The context provider for the Tooltip parts               |
-| TooltipTrigger    | The focusable element that triggers the tooltip on hover |
-| TooltipPositioner | The positioning container for the tooltip                |
-| TooltipContent    | The content of the tooltip                               |
-| TooltipArrow      | The arrow container of the tooltip bubble                |
-| TooltipArrowTip   | The tip of the arrow                                     |
-
-## API
-
-### Props
-
-The `Tooltip` component is an abstraction of the primitives and accepts the following props:
-
-| Name    | Default | Description                                         |
-| ------- | ------- | --------------------------------------------------- |
-| content |         | What to display in the Tooltip.                     |
-| portal  | `false` | When true, renders the `content` within a `Portal`. |
-
-The `Tooltip` component also accepts all the props of the [`TooltipRoot` primitive props](https://ark-ui.com/react/docs/components/tooltip#api-reference)
+| Component           | Description                                              |
+| ------------------- | -------------------------------------------------------- |
+| `TooltipRoot`       | The context provider for the Tooltip parts               |
+| `TooltipTrigger`    | The focusable element that triggers the tooltip on hover |
+| `TooltipPositioner` | The positioning container for the tooltip                |
+| `TooltipContent`    | The content of the tooltip                               |
+| `TooltipArrow`      | The arrow container of the tooltip bubble                |
+| `TooltipArrowTip`   | The tip of the arrow                                     |
 
 ### Parts
 
 The `TooltipParts` API is an Object containing the full family of components.
 
-<NoteAdmonition description="It is best to only use the TooltipParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+| Name         | Description                        |
+| ------------ | ---------------------------------- |
+| `Root`       | The `TooltipRoot` component.       |
+| `Trigger`    | The `TooltipTrigger` component.    |
+| `Positioner` | The `TooltipPositioner` component. |
+| `Content`    | The `TooltipContent` component.    |
+| `Arrow`      | The `TooltipArrow` component.      |
+| `ArrowTip`   | The `TooltipArrowTip` component.   |
 
-| Name       | Description                        |
-| ---------- | ---------------------------------- |
-| Root       | The `TooltipRoot` component.       |
-| Trigger    | The `TooltipTrigger` component.    |
-| Positioner | The `TooltipPositioner` component. |
-| Content    | The `TooltipContent` component.    |
-| Arrow      | The `TooltipArrow` component.      |
-| ArrowTip   | The `TooltipArrowTip` component.   |
+## API
+
+### Root
+
+#### Props
+
+| Prop                       | Type                                                                                                                            | Required | Default          | Description                                                                                                                                                                                                      |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`aria-label`**           | `string`                                                                                                                        | false    | `undefined`      | Custom label for the tooltip.                                                                                                                                                                                    |
+| **`closeDelay`**           | `number`                                                                                                                        | false    | `150`            | The close delay of the tooltip.                                                                                                                                                                                  |
+| **`closeOnClick`**         | `boolean`                                                                                                                       | false    | `true`           | Whether the tooltip should close on click                                                                                                                                                                        |
+| **`closeOnEscape`**        | `boolean`                                                                                                                       | false    | `true`           | Whether to close the tooltip when the Escape key is pressed.                                                                                                                                                     |
+| **`closeOnPointerDown`**   | `boolean`                                                                                                                       | false    | `true`           | Whether to close the tooltip on pointerdown.                                                                                                                                                                     |
+| **`closeOnScroll`**        | `boolean`                                                                                                                       | false    | `true`           | Whether the tooltip should close on scroll                                                                                                                                                                       |
+| **`defaultOpen`**          | `boolean`                                                                                                                       | false    | `undefined`      | The initial open state of the tooltip when rendered.<br>Use when you don't need to control the open state of the tooltip.                                                                                        |
+| **`defaultTriggerValue`**  | `string`                                                                                                                        | false    | `undefined`      | The initial trigger value when rendered.<br>Use when you don't need to control the trigger value.                                                                                                                |
+| **`disabled`**             | `boolean`                                                                                                                       | false    | `undefined`      | Whether the tooltip is disabled                                                                                                                                                                                  |
+| **`hideMode`**             | `HideMode`                                                                                                                      | false    | `'display-none'` | How to hide content when mounted but not present.<br>- `'display-none'`: HTML `hidden` attribute. Effects stay alive.<br>- `'activity'`: React 19 `<Activity mode="hidden">`. Effects pause. Requires React 19+. |
+| **`id`**                   | `string`                                                                                                                        | false    | `undefined`      | The unique identifier of the machine.                                                                                                                                                                            |
+| **`ids`**                  | `Partial<{ trigger: string \| ((value?: string \| undefined) => string), content: string, arrow: string, positioner: string }>` | false    | `undefined`      | The ids of the elements in the tooltip. Useful for composition.                                                                                                                                                  |
+| **`immediate`**            | `boolean`                                                                                                                       | false    | `undefined`      | Whether to synchronize the present change immediately or defer it to the next frame                                                                                                                              |
+| **`interactive`**          | `boolean`                                                                                                                       | false    | `false`          | Whether the tooltip's content is interactive.<br>In this mode, the tooltip will remain open when user hovers over the content.                                                                                   |
+| **`lazyMount`**            | `boolean`                                                                                                                       | false    | `false`          | Whether to enable lazy mounting                                                                                                                                                                                  |
+| **`onExitComplete`**       | `VoidFunction`                                                                                                                  | false    | `undefined`      | Function called when the animation ends in the closed state                                                                                                                                                      |
+| **`onOpenChange`**         | `(details: OpenChangeDetails) => void`                                                                                          | false    | `undefined`      | Function called when the tooltip is opened.                                                                                                                                                                      |
+| **`onTriggerValueChange`** | `(details: TriggerValueChangeDetails) => void`                                                                                  | false    | `undefined`      | Function called when the trigger value changes.                                                                                                                                                                  |
+| **`open`**                 | `boolean`                                                                                                                       | false    | `undefined`      | The controlled open state of the tooltip                                                                                                                                                                         |
+| **`openDelay`**            | `number`                                                                                                                        | false    | `400`            | The open delay of the tooltip.                                                                                                                                                                                   |
+| **`positioning`**          | `PositioningOptions`                                                                                                            | false    | `undefined`      | The user provided options used to position the popover content                                                                                                                                                   |
+| **`present`**              | `boolean`                                                                                                                       | false    | `undefined`      | Whether the node is present (controlled by the user)                                                                                                                                                             |
+| **`skipAnimationOnMount`** | `boolean`                                                                                                                       | false    | `false`          | Whether to allow the initial presence animation.                                                                                                                                                                 |
+| **`triggerValue`**         | `string`                                                                                                                        | false    | `undefined`      | The controlled trigger value                                                                                                                                                                                     |
+| **`unmountOnExit`**        | `boolean`                                                                                                                       | false    | `false`          | Whether to unmount on exit.                                                                                                                                                                                      |
+
+### Arrow
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### ArrowTip
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Content
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute            | Description / Value                                       |
+| -------------------- | --------------------------------------------------------- |
+| **`data-scope`**     | tooltip                                                   |
+| **`data-part`**      | content                                                   |
+| **`data-state`**     | "open" \| "closed"                                        |
+| **`data-instant`**   |                                                           |
+| **`data-placement`** | The placement of the content                              |
+| **`data-side`**      | The side of the trigger that the content is positioned on |
+
+### Positioner
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### RootProvider
+
+#### Props
+
+| Prop                       | Type               | Required | Default          | Description                                                                                                                                                                                                      |
+| -------------------------- | ------------------ | -------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`value`**                | `UseTooltipReturn` | true     | `undefined`      | undefined                                                                                                                                                                                                        |
+| **`hideMode`**             | `HideMode`         | false    | `'display-none'` | How to hide content when mounted but not present.<br>- `'display-none'`: HTML `hidden` attribute. Effects stay alive.<br>- `'activity'`: React 19 `<Activity mode="hidden">`. Effects pause. Requires React 19+. |
+| **`immediate`**            | `boolean`          | false    | `undefined`      | Whether to synchronize the present change immediately or defer it to the next frame                                                                                                                              |
+| **`lazyMount`**            | `boolean`          | false    | `false`          | Whether to enable lazy mounting                                                                                                                                                                                  |
+| **`onExitComplete`**       | `VoidFunction`     | false    | `undefined`      | Function called when the animation ends in the closed state                                                                                                                                                      |
+| **`present`**              | `boolean`          | false    | `undefined`      | Whether the node is present (controlled by the user)                                                                                                                                                             |
+| **`skipAnimationOnMount`** | `boolean`          | false    | `false`          | Whether to allow the initial presence animation.                                                                                                                                                                 |
+| **`unmountOnExit`**        | `boolean`          | false    | `false`          | Whether to unmount on exit.                                                                                                                                                                                      |
+
+### Trigger
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| **`value`**   | `string`  | false    | `undefined` | The value that identifies this specific trigger                                                     |
+
+#### Data Attributes
+
+| Attribute           | Description / Value   |
+| ------------------- | --------------------- |
+| **`data-scope`**    | tooltip               |
+| **`data-part`**     | trigger               |
+| **`data-value`**    | The value of the item |
+| **`data-current`**  | Present when current  |
+| **`data-expanded`** | Present when expanded |
+| **`data-state`**    | "open" \| "closed"    |
+
+### Context
+
+**API:**
+
+| Property          | Type                                              | Description                        |
+| ----------------- | ------------------------------------------------- | ---------------------------------- |
+| `open`            | `boolean`                                         | Whether the tooltip is open.       |
+| `setOpen`         | `(open: boolean) => void`                         | Function to open the tooltip.      |
+| `triggerValue`    | `string \| null`                                  | The trigger value                  |
+| `setTriggerValue` | `(value: string \| null) => void`                 | Function to set the trigger value  |
+| `reposition`      | `(options?: Partial<PositioningOptions>) => void` | Function to reposition the popover |
+
+## Accessibility
+
+Complies with the [Tooltip WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/).
+
+### Keyboard Support
+
+| Key          | Description                                |
+| ------------ | ------------------------------------------ |
+| **`Tab`**    | Opens/closes the tooltip without delay.    |
+| **`Escape`** | If open, closes the tooltip without delay. |
