@@ -7,7 +7,7 @@ const { withNoRecipe } = createCerberusPrimitive()
 const Root = withNoRecipe(JsonTreeView.Root)
 const Tree = withNoRecipe(JsonTreeView.Tree)
 
-export const Basic = () => {
+export function BasicDemo() {
   return (
     <Root
       data={{

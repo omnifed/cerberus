@@ -1,0 +1,48 @@
+---
+title: 'Format Relative Time'
+description: Format relative time using the native `Intl.RelativeTimeFormat` API.
+npm: '@cerberus/react'
+arkUtility: 'format-relative-time'
+group: Utilities
+order: 9
+---
+
+## Usage
+
+The time formatting logic supports both string (`HH:mm[:ss]`) and `Date` inputs.
+
+```ts
+import { Format } from '@cerberus/react'
+```
+
+## Examples
+
+### Basic
+
+Use the `Format.Time` component to format a time value with default options.
+
+<Example path="components/format" demo="time" />
+
+### Date
+
+Use a `Date` object as the `value`.
+
+<Example path="components/format" demo="date" />
+
+### Seconds
+
+Use the `withSeconds` prop to include seconds in the output.
+
+<Example path="components/format" demo="seconds" />
+
+### AM/PM Labels
+
+Use `amLabel` and `pmLabel` to customize day-period labels when using 12-hour format.
+
+<Example path="components/format" demo="timeLabel" />
+
+### Locale
+
+Use the locale provider to format the time according to a specific locale.
+
+<Example path="components/format" demo="locale" />

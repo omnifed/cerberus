@@ -3,6 +3,8 @@ title: 'Client Only'
 description: 'Renders children only on the client side.'
 npm: '@cerberus-design/react'
 arkUtility: 'client-only'
+group: Utilities
+order: 1
 ---
 
 ## Motivation
@@ -14,32 +16,18 @@ access the DOM or browser APIs that are not available on the server side.
 
 ### Basic
 
-```tsx
-import { ClientOnly } from '@cerberus/react'
-
-export const Basic = () => (
-  <ClientOnly>
-    <div>This content is only rendered on the client side.</div>
-  </ClientOnly>
-)
-```
+<Example path="components/client-only" demo="basic" />
 
 ### With Fallback
 
-```tsx
-import { ClientOnly } from '@cerberus/react'
+To render someting on the server before rendering on the client, use the `fallback` prop.
 
-export const WithFallback = () => (
-  <ClientOnly fallback={<div>Loading on the server...</div>}>
-    <div>This content is only rendered on the client side.</div>
-  </ClientOnly>
-)
-```
+<Example path="components/client-only" demo="fallback" />
 
-## API Reference
+## API
 
-**Component API Reference**
+### Props
 
-| Prop       | Type  | Required | Description                                   |
-| ---------- | ----- | -------- | --------------------------------------------- |
-| `fallback` | `any` | No       | Shows value when rendering on the server side |
+| Prop           | Type  | Required | Default     | Description |
+| -------------- | ----- | -------- | ----------- | ----------- |
+| **`fallback`** | `any` | false    | `undefined` | undefined   |

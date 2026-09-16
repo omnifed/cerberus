@@ -1,6 +1,6 @@
 import { Button, DownloadTrigger } from '@cerberus-design/react'
 
-export const Basic = () => {
+export function BasicDemo() {
   return (
     <Button asChild>
       <DownloadTrigger data="Hello world" fileName="hello.txt" mimeType="text/plain">

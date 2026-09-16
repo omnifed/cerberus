@@ -3,279 +3,58 @@ title: 'JSON Tree View'
 description: 'A component that displays a JSON object in a tree-like structure.'
 npm: '@cerberus/react'
 arkUtility: 'json-tree-view'
+group: Utilities
+order: 14
 ---
-
-import CodePreview from '@/app/components/CodePreview'
-import { Basic } from '../components/json-tree-view/static'
 
 ## Examples
 
 Learn how to use the `JsonTreeView` component in your project. Let's take a look at the most basic example:
 
-<CodePreview preview={<Basic />} />
-```tsx 'use client'
-
-import { JsonTreeView } from '@cerberus/react'
-import { ChevronRight } from '@carbon/icons-react'
-
-export const Basic = () => {
-  return (
-    <JsonTreeView.Root
-      data={{
-        name: 'John Doe',
-        age: 30,
-        email: 'john.doe@example.com',
-        tags: ['tag1', 'tag2', 'tag3'],
-        address: {
-          street: '123 Main St',
-          city: 'Anytown',
-          state: 'CA',
-          zip: '12345',
-        },
-      }}
-    >
-      <JsonTreeView.Tree arrow={<ChevronRight />} />
-    </JsonTreeView.Root>
-  )
-}
-```
+<Example path="components/json-tree-view" demo="basic" />
 
 ### Different Data Types
 
 The JSON tree view can display various JavaScript data types including objects, arrays, primitives, and special values:
 
-```tsx
-'use client'
-
-import { JsonTreeView } from '@cerberus/react'
-import { ChevronRight } from '@carbon/icons-react'
-
-const testArray = [1, 2, 3, 4, 5]
-Object.defineProperties(testArray, {
-  customProperty: { value: 'custom value', enumerable: false, writable: false },
-  anotherProperty: { value: 42, enumerable: false, writable: false },
-})
-
-export const ArrayData = () => {
-  return (
-    <JsonTreeView.Root
-      data={{
-        normalArray: [1, 2, 3],
-        arrayWithNonEnumerableProperties: testArray,
-        sparseArray: (() => {
-          const sparse = []
-          sparse[0] = 'first'
-          sparse[5] = 'sixth'
-          return sparse
-        })(),
-      }}
-    >
-      <JsonTreeView.Tree arrow={<ChevronRight />} />
-    </JsonTreeView.Root>
-  )
-}
-```
+<Example path="components/json-tree-view" demo="data" />
 
 ### Functions and Methods
 
 Display JavaScript functions, async functions, and generators in your JSON tree:
 
-```tsx
-'use client'
-
-import { JsonTreeView } from '@cerberus/react'
-import { ChevronRight } from '@carbon/icons-react'
-
-const data = [
-  function sum(a: number, b: number) {
-    return a + b
-  },
-  async (promises: Promise<any>[]) => await Promise.all(promises),
-  function* generator(a: number) {
-    while (a > 0) {
-      yield a - 1
-    }
-  },
-]
-
-export const Functions = () => {
-  return (
-    <JsonTreeView.Root data={data}>
-      <JsonTreeView.Tree arrow={<ChevronRight />} />
-    </JsonTreeView.Root>
-  )
-}
-```
+<Example path="components/json-tree-view" demo="js" />
 
 ### Regular Expressions
 
 Regular expressions are displayed with their pattern and flags:
 
-```tsx
-'use client'
-
-import { JsonTreeView } from '@cerberus/react'
-import { ChevronRight } from '@carbon/icons-react'
-
-const data = {
-  regex: /^[a-z0-9]+/g,
-  case_insensitive: /^(?:[a-z0-9]+)foo.*?/i,
-}
-
-export const Regex = () => {
-  return (
-    <JsonTreeView.Root data={data}>
-      <JsonTreeView.Tree arrow={<ChevronRight />} />
-    </JsonTreeView.Root>
-  )
-}
-```
+<Example path="components/json-tree-view" demo="expressions" />
 
 ### Error Objects
 
 Error objects and their stack traces can be visualized:
 
-```tsx
-'use client'
-
-import { JsonTreeView } from '@cerberus/react'
-import { ChevronRight } from '@carbon/icons-react'
-
-const data = new Error('Error')
-
-export const Errors = () => {
-  return (
-    <JsonTreeView.Root data={data}>
-      <JsonTreeView.Tree arrow={<ChevronRight />} />
-    </JsonTreeView.Root>
-  )
-}
-```
+<Example path="components/json-tree-view" demo="error" />
 
 ### Map and Set Objects
 
 Native JavaScript Map and Set objects are supported:
 
-```tsx
-'use client'
-
-import { JsonTreeView } from '@cerberus/react'
-import { ChevronRight } from '@carbon/icons-react'
-
-const data = new Map<string, any>([
-  ['name', 'ark-ui-json-tree'],
-  ['license', 'MIT'],
-  ['elements', new Set(['ark-ui', 123, false, true, null, undefined, 456n])],
-  [
-    'nested',
-    new Map<string, any>([
-      [
-        'taglines',
-        new Set([
-          { name: 'ark-ui', feature: 'headless components' },
-          { name: 'ark-ui', feature: 'framework agnostic' },
-          { name: 'ark-ui', feature: 'accessible by default' },
-        ]),
-      ],
-    ]),
-  ],
-])
-
-export const MapAndSet = () => {
-  return (
-    <JsonTreeView.Root data={data}>
-      <JsonTreeView.Tree arrow={<ChevronRight />} />
-    </JsonTreeView.Root>
-  )
-}
-```
+<Example path="components/json-tree-view" demo="map" />
 
 ### Controlling Expand Level
 
 Use the `defaultExpandedDepth` prop to control how many levels are expanded by default:
 
-```tsx
-'use client'
-
-import { JsonTreeView } from '@cerberus/react'
-import { ChevronRight } from '@carbon/icons-react'
-
-export const ExpandLevel = () => {
-  return (
-    <JsonTreeView.Root
-      defaultExpandedDepth={1}
-      data={{
-        name: 'John Doe',
-        age: 30,
-        email: 'john.doe@example.com',
-        tags: ['tag1', 'tag2', 'tag3'],
-        address: {
-          street: '123 Main St',
-          city: 'Anytown',
-          state: 'CA',
-          zip: '12345',
-        },
-      }}
-    >
-      <JsonTreeView.Tree arrow={<ChevronRight />} />
-    </JsonTreeView.Root>
-  )
-}
-```
+<Example path="components/json-tree-view" demo="expand" />
 
 ### Custom Value Rendering
 
 You can customize how specific values are rendered using the `renderValue` prop. This example shows how to make email
 addresses clickable:
 
-```tsx
-'use client'
-
-import { JsonTreeView } from '@cerberus/react'
-import { ChevronRight } from '@carbon/icons-react'
-
-export const RenderValue = () => {
-  return (
-    <JsonTreeView.Root
-      defaultExpandedDepth={2}
-      data={{
-        name: 'John Doe',
-        age: 30,
-        number: Number.NaN,
-        email: 'john.doe@example.com',
-        address: {
-          street: '123 Main St',
-          city: 'Anytown',
-          state: 'CA',
-          zip: '12345',
-        },
-      }}
-    >
-      <JsonTreeView.Tree
-        arrow={<ChevronRight />}
-        renderValue={(node) => {
-          if (
-            node.type === 'text' &&
-            typeof node.value === 'string' &&
-            isEmail(node.value)
-          ) {
-            return (
-              <a href={`mailto:${node.value}`} target="_blank" rel="noreferrer">
-                {node.value}
-              </a>
-            )
-          }
-        }}
-      />
-    </JsonTreeView.Root>
-  )
-}
-
-const isEmail = (value: string) => {
-  const strippedValue = value.replace(/^"(.*)"$/, '$1')
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(strippedValue)
-}
-```
+<Example path="components/json-tree-view" demo="custom" />
 
 ### Configuration Options
 
@@ -342,69 +121,91 @@ export const RootProvider = () => {
 
 ## API Reference
 
-| Prop                                                                            | Type                                                                                      | Required    | Description                                                                                         |
-| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| `asChild`                                                                       | `boolean`                                                                                 | No          | Use the provided child element as the default rendered element, combining their props and behavior. |
-| `canRename`                                                                     | `(node: JsonNode<any>, indexPath: IndexPath) => boolean`                                  | No          | Function to determine if a node can be renamed                                                      |
-| `checkedValue`                                                                  | `string[]`                                                                                | No          | The controlled checked node value                                                                   |
-| `collapseStringsAfterLength`                                                    | `number`                                                                                  | No          |                                                                                                     |
-| `data`                                                                          | `{}`                                                                                      | No          | The data to display in the tree.                                                                    |
-| `defaultCheckedValue`                                                           | `string[]`                                                                                | No          | The initial checked node value when rendered.                                                       |
-| Use when you don't need to control the checked node value.                      |
-| `defaultExpandedDepth`                                                          | `number`                                                                                  | No          | The default expand level.                                                                           |
-| `defaultExpandedValue`                                                          | `string[]`                                                                                | No          | The initial expanded node ids when rendered.                                                        |
-| Use when you don't need to control the expanded node value.                     |
-| `defaultFocusedValue`                                                           | `string`                                                                                  | No          | The initial focused node value when rendered.                                                       |
-| Use when you don't need to control the focused node value.                      |
-| `defaultSelectedValue`                                                          | `string[]`                                                                                | No          | The initial selected node value when rendered.                                                      |
-| Use when you don't need to control the selected node value.                     |
-| `expandedValue`                                                                 | `string[]`                                                                                | No          | The controlled expanded node ids                                                                    |
-| `expandOnClick`                                                                 | `boolean`                                                                                 | No          | Whether clicking on a branch should open it or not                                                  |
-| `focusedValue`                                                                  | `string`                                                                                  | No          | The value of the focused node                                                                       |
-| `groupArraysAfterLength`                                                        | `number`                                                                                  | No          |                                                                                                     |
-| `ids`                                                                           | `Partial<{ root: string; tree: string; label: string; node: (value: string) => string }>` | No          | The ids of the tree elements. Useful for composition.                                               |
-| `lazyMount`                                                                     | `boolean`                                                                                 | No          | Whether to enable lazy mounting                                                                     |
-| `loadChildren`                                                                  | `(details: LoadChildrenDetails<JsonNode<any>>) => Promise<JsonNode<any>[]>`               | No          | Function to load children for a node asynchronously.                                                |
-| When provided, branches will wait for this promise to resolve before expanding. |
-| `maxPreviewItems`                                                               | `number`                                                                                  | No          |                                                                                                     |
-| `onBeforeRename`                                                                | `(details: RenameCompleteDetails) => boolean`                                             | No          | Called before a rename is completed. Return false to prevent the rename.                            |
-| `onCheckedChange`                                                               | `(details: CheckedChangeDetails) => void`                                                 | No          | Called when the checked value changes                                                               |
-| `onExpandedChange`                                                              | `(details: ExpandedChangeDetails<JsonNode<any>>) => void`                                 | No          | Called when the tree is opened or closed                                                            |
-| `onFocusChange`                                                                 | `(details: FocusChangeDetails<JsonNode<any>>) => void`                                    | No          | Called when the focused node changes                                                                |
-| `onLoadChildrenComplete`                                                        | `(details: LoadChildrenCompleteDetails<JsonNode<any>>) => void`                           | No          | Called when a node finishes loading children                                                        |
-| `onLoadChildrenError`                                                           | `(details: LoadChildrenErrorDetails<JsonNode<any>>) => void`                              | No          | Called when loading children fails for one or more nodes                                            |
-| `onRenameComplete`                                                              | `(details: RenameCompleteDetails) => void`                                                | No          | Called when a node label rename is completed                                                        |
-| `onRenameStart`                                                                 | `(details: RenameStartDetails<JsonNode<any>>) => void`                                    | No          | Called when a node starts being renamed                                                             |
-| `onSelectionChange`                                                             | `(details: SelectionChangeDetails<JsonNode<any>>) => void`                                | No          | Called when the selection changes                                                                   |
-| `quotesOnKeys`                                                                  | `boolean`                                                                                 | No          | Whether to show quotes on the keys.                                                                 |
-| `selectedValue`                                                                 | `string[]`                                                                                | No          | The controlled selected node value                                                                  |
-| `selectionMode`                                                                 | `'single'                                                                                 | 'multiple'` | No                                                                                                  | Whether the tree supports multiple selection |
+### Root
 
-- "single": only one node can be selected
-- "multiple": multiple nodes can be selected |
-  | `showNonenumerable` | `boolean` | No | |
-  | `typeahead` | `boolean` | No | Whether the tree supports typeahead search |
-  | `unmountOnExit` | `boolean` | No | Whether to unmount on exit. |
+#### Props
 
-**JsonTreeViewRootProvider Props:**
+| Prop                             | Type                                                                                      | Required | Default          | Description                                                                                                                                                                                                      |
+| -------------------------------- | ----------------------------------------------------------------------------------------- | -------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`asChild`**                    | `boolean`                                                                                 | false    | `undefined`      | Use the provided child element as the default rendered element, combining their props and behavior.                                                                                                              |
+| **`canRename`**                  | `(node: JsonNode<any>, indexPath: IndexPath) => boolean`                                  | false    | `undefined`      | Function to determine if a node can be renamed                                                                                                                                                                   |
+| **`checkedValue`**               | `string[]`                                                                                | false    | `undefined`      | The controlled checked node value                                                                                                                                                                                |
+| **`collapseStringsAfterLength`** | `number`                                                                                  | false    | `undefined`      | undefined                                                                                                                                                                                                        |
+| **`data`**                       | `{}`                                                                                      | false    | `undefined`      | The data to display in the tree.                                                                                                                                                                                 |
+| **`defaultCheckedValue`**        | `string[]`                                                                                | false    | `undefined`      | The initial checked node value when rendered.<br>Use when you don't need to control the checked node value.                                                                                                      |
+| **`defaultExpandedDepth`**       | `number`                                                                                  | false    | `undefined`      | The default expand level.                                                                                                                                                                                        |
+| **`defaultExpandedValue`**       | `string[]`                                                                                | false    | `undefined`      | The initial expanded node ids when rendered.<br>Use when you don't need to control the expanded node value.                                                                                                      |
+| **`defaultFocusedValue`**        | `string`                                                                                  | false    | `undefined`      | The initial focused node value when rendered.<br>Use when you don't need to control the focused node value.                                                                                                      |
+| **`defaultSelectedValue`**       | `string[]`                                                                                | false    | `undefined`      | The initial selected node value when rendered.<br>Use when you don't need to control the selected node value.                                                                                                    |
+| **`expandedValue`**              | `string[]`                                                                                | false    | `undefined`      | The controlled expanded node ids                                                                                                                                                                                 |
+| **`expandOnClick`**              | `boolean`                                                                                 | false    | `true`           | Whether clicking on a branch should open it or not                                                                                                                                                               |
+| **`focusedValue`**               | `string`                                                                                  | false    | `undefined`      | The value of the focused node                                                                                                                                                                                    |
+| **`groupArraysAfterLength`**     | `number`                                                                                  | false    | `undefined`      | undefined                                                                                                                                                                                                        |
+| **`hideMode`**                   | `HideMode`                                                                                | false    | `'display-none'` | How to hide content when mounted but not present.<br>- `'display-none'`: HTML `hidden` attribute. Effects stay alive.<br>- `'activity'`: React 19 `<Activity mode="hidden">`. Effects pause. Requires React 19+. |
+| **`ids`**                        | `Partial<{ root: string; tree: string; label: string; node: (value: string) => string }>` | false    | `undefined`      | The ids of the tree elements. Useful for composition.                                                                                                                                                            |
+| **`lazyMount`**                  | `boolean`                                                                                 | false    | `false`          | Whether to enable lazy mounting                                                                                                                                                                                  |
+| **`loadChildren`**               | `(details: LoadChildrenDetails<JsonNode<any>>) => Promise<JsonNode<any>[]>`               | false    | `undefined`      | Function to load children for a node asynchronously.<br>When provided, branches will wait for this promise to resolve before expanding.                                                                          |
+| **`maxPreviewItems`**            | `number`                                                                                  | false    | `undefined`      | undefined                                                                                                                                                                                                        |
+| **`onBeforeRename`**             | `(details: RenameCompleteDetails) => boolean`                                             | false    | `undefined`      | Called before a rename is completed. Return false to prevent the rename.                                                                                                                                         |
+| **`onCheckedChange`**            | `(details: CheckedChangeDetails) => void`                                                 | false    | `undefined`      | Called when the checked value changes                                                                                                                                                                            |
+| **`onExpandedChange`**           | `(details: ExpandedChangeDetails<JsonNode<any>>) => void`                                 | false    | `undefined`      | Called when the tree is opened or closed                                                                                                                                                                         |
+| **`onFocusChange`**              | `(details: FocusChangeDetails<JsonNode<any>>) => void`                                    | false    | `undefined`      | Called when the focused node changes                                                                                                                                                                             |
+| **`onLoadChildrenComplete`**     | `(details: LoadChildrenCompleteDetails<JsonNode<any>>) => void`                           | false    | `undefined`      | Called when a node finishes loading children                                                                                                                                                                     |
+| **`onLoadChildrenError`**        | `(details: LoadChildrenErrorDetails<JsonNode<any>>) => void`                              | false    | `undefined`      | Called when loading children fails for one or more nodes                                                                                                                                                         |
+| **`onRenameComplete`**           | `(details: RenameCompleteDetails) => void`                                                | false    | `undefined`      | Called when a node label rename is completed                                                                                                                                                                     |
+| **`onRenameStart`**              | `(details: RenameStartDetails<JsonNode<any>>) => void`                                    | false    | `undefined`      | Called when a node starts being renamed                                                                                                                                                                          |
+| **`onSelectionChange`**          | `(details: SelectionChangeDetails<JsonNode<any>>) => void`                                | false    | `undefined`      | Called when the selection changes                                                                                                                                                                                |
+| **`quotesOnKeys`**               | `boolean`                                                                                 | false    | `undefined`      | Whether to show quotes on the keys.                                                                                                                                                                              |
+| **`scrollToIndexFn`**            | `(details: ScrollToIndexDetails<JsonNode<any>>) => void`                                  | false    | `undefined`      | Function to scroll to a specific index.<br>Useful for virtualized tree views.                                                                                                                                    |
+| **`selectedValue`**              | `string[]`                                                                                | false    | `undefined`      | The controlled selected node value                                                                                                                                                                               |
+| **`selectionMode`**              | `'single' \| 'multiple'`                                                                  | false    | `"single"`       | Whether the tree supports multiple selection<br>- "single": only one node can be selected<br>- "multiple": multiple nodes can be selected                                                                        |
+| **`showNonenumerable`**          | `boolean`                                                                                 | false    | `undefined`      | undefined                                                                                                                                                                                                        |
+| **`translations`**               | `IntlTranslations`                                                                        | false    | `undefined`      | Specifies the localized strings that identifies the accessibility elements and their states                                                                                                                      |
+| **`typeahead`**                  | `boolean`                                                                                 | false    | `true`           | Whether the tree supports typeahead search                                                                                                                                                                       |
+| **`unmountOnExit`**              | `boolean`                                                                                 | false    | `false`          | Whether to unmount on exit.                                                                                                                                                                                      |
 
-| Prop            | Type                               | Required | Description                                                                                         |
-| --------------- | ---------------------------------- | -------- | --------------------------------------------------------------------------------------------------- |
-| `value`         | `UseTreeViewReturn<JsonNode<any>>` | Yes      |                                                                                                     |
-| `asChild`       | `boolean`                          | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
-| `lazyMount`     | `boolean`                          | No       | Whether to enable lazy mounting                                                                     |
-| `unmountOnExit` | `boolean`                          | No       | Whether to unmount on exit.                                                                         |
+### JsonTreeViewRootProvider
 
-**JsonTreeViewTree Props:**
+#### Props
 
-| Prop          | Type                                       | Required | Description                                                                                         |
-| ------------- | ------------------------------------------ | -------- | --------------------------------------------------------------------------------------------------- |
-| `arrow`       | `ReactNode`                                | No       | The icon to use for the arrow.                                                                      |
-| `asChild`     | `boolean`                                  | No       | Use the provided child element as the default rendered element, combining their props and behavior. |
-| `indentGuide` | `any`                                      | No       | The indent guide to use for the tree.                                                               |
-| `renderValue` | `(node: JsonNodeHastElement) => ReactNode` | No       | The function to render the value of the node.                                                       |
+| Prop                | Type                    | Required | Default          | Description                                                                                                                                                                                                      |
+| ------------------- | ----------------------- | -------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`value`**         | `UseJsonTreeViewReturn` | true     | `undefined`      | undefined                                                                                                                                                                                                        |
+| **`asChild`**       | `boolean`               | false    | `undefined`      | Use the provided child element as the default rendered element, combining their props and behavior.                                                                                                              |
+| **`hideMode`**      | `HideMode`              | false    | `'display-none'` | How to hide content when mounted but not present.<br>- `'display-none'`: HTML `hidden` attribute. Effects stay alive.<br>- `'activity'`: React 19 `<Activity mode="hidden">`. Effects pause. Requires React 19+. |
+| **`lazyMount`**     | `boolean`               | false    | `false`          | Whether to enable lazy mounting                                                                                                                                                                                  |
+| **`unmountOnExit`** | `boolean`               | false    | `false`          | Whether to unmount on exit.                                                                                                                                                                                      |
+
+### JsonTreeViewTree
+
+#### Props
+
+| Prop              | Type                                                                     | Required | Default     | Description                                                                                         |
+| ----------------- | ------------------------------------------------------------------------ | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`arrow`**       | `ReactElement<unknown, string \| JSXElementConstructor<any>>`            | false    | `undefined` | The icon to use for the arrow.                                                                      |
+| **`asChild`**     | `boolean`                                                                | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| **`indentGuide`** | `boolean \| ReactElement<unknown, string \| JSXElementConstructor<any>>` | false    | `undefined` | The indent guide to use for the tree.                                                               |
+| **`renderValue`** | `(node: JsonNodeHastElement) => ReactNode`                               | false    | `undefined` | The function to render the value of the node.                                                       |
 
 ## Accessibility
 
 The JSON tree view is built on top of the Tree View component and complies with the
 [Tree View WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/).
+
+### Keyboard Support
+
+| Key                     | Description                                                                                                                                          |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`Tab`**               | Moves focus to the tree view, placing the first tree view item in focus.                                                                             |
+| **`Enter + Space`**     | Selects the item or branch node                                                                                                                      |
+| **`ArrowDown`**         | Moves focus to the next node                                                                                                                         |
+| **`ArrowUp`**           | Moves focus to the previous node                                                                                                                     |
+| **`ArrowRight`**        | When focus is on a closed branch node, opens the branch.<br> When focus is on an open branch node, moves focus to the first item node.               |
+| **`ArrowLeft`**         | When focus is on an open branch node, closes the node.<br> When focus is on an item or branch node, moves focus to its parent branch node.           |
+| **`Home`**              | Moves focus to first node without opening or closing a node.                                                                                         |
+| **`End`**               | Moves focus to the last node that can be focused without expanding any nodes that are closed.                                                        |
+| **`a-z + A-Z`**         | Focus moves to the next node with a name that starts with the typed character. The search logic ignores nodes that are descendants of closed branch. |
+| **`*`**                 | Expands all sibling nodes that are at the same depth as the focused node.                                                                            |
+| **`Shift + ArrowDown`** | Moves focus to and toggles the selection state of the next node.                                                                                     |
+| **`Shift + ArrowUp`**   | Moves focus to and toggles the selection state of the previous node.                                                                                 |
+| **`Ctrl + A`**          | Selects all nodes in the tree. If all nodes are selected, unselects all nodes.                                                                       |

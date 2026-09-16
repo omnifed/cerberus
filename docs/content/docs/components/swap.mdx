@@ -1,0 +1,282 @@
+---
+title: 'Swap'
+description: Helps control the rendering and unmounting of your content based on a given state.
+npm: '@cerberus/react'
+arkUtility: 'swap'
+group: Utilities
+order: 18
+---
+
+```ts
+import { Swap } from '@cerberus/react'
+```
+
+## Anatomy
+
+```tsx
+<Swap.Root>
+  <Swap.Indicator />
+</Swap.Root>
+```
+
+## Examples
+
+### Fade
+
+Swap between two icons with a fade animation. Set the `swap` prop to toggle between the `on` and `off` indicators.
+
+```tsx
+'use client'
+
+import { Button, Swap } from '@cerberus/react'
+import { useSignal } from '@cerberus/signals'
+import { CheckIcon, XIcon } from 'lucide-react'
+import styles from 'styles/swap.module.css'
+
+export const Fade = () => {
+  const [swapped, setSwapped] = useSignal(false)
+
+  return (
+    <Button onClick={() => setSwapped((prev) => !prev)}>
+      <Swap.Root swap={swapped}>
+        <Swap.Indicator type="on" className={styles.FadeIndicator}>
+          <CheckIcon />
+        </Swap.Indicator>
+        <Swap.Indicator type="off" className={styles.FadeIndicator}>
+          <XIcon />
+        </Swap.Indicator>
+      </Swap.Root>
+    </Button>
+  )
+}
+```
+
+### Flip
+
+Add a 3D flip effect by setting `perspective` on the root and using `rotateY` keyframes on the indicators.
+
+```tsx
+import { Button, Swap } from '@cerberus/react'
+import { useSignal } from '@cerberus/signals'
+import { PauseIcon, PlayIcon } from 'lucide-react'
+import styles from 'styles/swap.module.css'
+
+export const Flip = () => {
+  const [swapped, setSwapped] = useState(false)
+
+  return (
+    <Button onClick={() => setSwapped((prev) => !prev)}>
+      <Swap.Root swap={swapped} style={{ perspective: '200px' }}>
+        <Swap.Indicator type="on" className={styles.FlipIndicator}>
+          <PlayIcon />
+        </Swap.Indicator>
+        <Swap.Indicator type="off" className={styles.FlipIndicator}>
+          <PauseIcon />
+        </Swap.Indicator>
+      </Swap.Root>
+    </Button>
+  )
+}
+```
+
+### Rotate
+
+Rotate the indicators in and out with a spin transition.
+
+```tsx
+import { Swap } from '@cerberus/react'
+import { MoonIcon, SunIcon } from 'lucide-react'
+import { useState } from 'react'
+import styles from 'styles/swap.module.css'
+
+export const Rotate = () => {
+  const [swapped, setSwapped] = useState(false)
+
+  return (
+    <button
+      type="button"
+      className={styles.Button}
+      onClick={() => setSwapped((prev) => !prev)}
+    >
+      <Swap.Root swap={swapped}>
+        <Swap.Indicator type="on" className={styles.RotateIndicator}>
+          <SunIcon />
+        </Swap.Indicator>
+        <Swap.Indicator type="off" className={styles.RotateIndicator}>
+          <MoonIcon />
+        </Swap.Indicator>
+      </Swap.Root>
+    </button>
+  )
+}
+```
+
+### Scale
+
+Scale the indicators up and down for a pop-in effect.
+
+```tsx
+import { Swap } from '@cerberus/react'
+import { Volume2Icon, VolumeXIcon } from 'lucide-react'
+import { useState } from 'react'
+import styles from 'styles/swap.module.css'
+
+export const Scale = () => {
+  const [swapped, setSwapped] = useState(false)
+
+  return (
+    <button
+      type="button"
+      className={styles.Button}
+      onClick={() => setSwapped((prev) => !prev)}
+    >
+      <Swap.Root swap={swapped}>
+        <Swap.Indicator type="on" className={styles.ScaleIndicator}>
+          <Volume2Icon />
+        </Swap.Indicator>
+        <Swap.Indicator type="off" className={styles.ScaleIndicator}>
+          <VolumeXIcon />
+        </Swap.Indicator>
+      </Swap.Root>
+    </button>
+  )
+}
+```
+
+## Guides
+
+### How It Works
+
+Swap renders two indicators stacked on top of each other in a 1x1 CSS grid. The `swap` prop controls which indicator is
+visible. Each indicator uses the presence system, so you get `data-state="open"` and `data-state="closed"` attributes to
+drive your CSS animations.
+
+### Animating Indicators
+
+Target `data-state` on each indicator to define enter and exit animations:
+
+```css
+.indicator[data-state='open'] {
+  animation: fade-in 200ms ease-out;
+}
+
+.indicator[data-state='closed'] {
+  animation: fade-out 100ms ease-in;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+```
+
+You can combine animations for richer effects. For example, scale with fade:
+
+```css
+.indicator[data-state='open'] {
+  animation:
+    scale-in 200ms ease-out,
+    fade-in 200ms ease-out;
+}
+
+.indicator[data-state='closed'] {
+  animation:
+    scale-out 100ms ease-in,
+    fade-out 100ms ease-in;
+}
+```
+
+### 3D Flip Animation
+
+For a flip effect, set `perspective` on the root and use `backface-visibility: hidden` on indicators:
+
+```css
+.flip-indicator {
+  backface-visibility: hidden;
+}
+
+.flip-indicator[data-state='open'] {
+  animation: flip-in 400ms ease;
+}
+
+.flip-indicator[data-state='closed'] {
+  animation: flip-out 200ms ease;
+}
+
+@keyframes flip-in {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes flip-out {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+```
+
+### Lazy Mount
+
+Use `lazyMount` and `unmountOnExit` to control when indicators mount and unmount. This keeps the DOM clean when
+indicators aren't visible.
+
+```tsx
+<Swap.Root swap={swapped} lazyMount unmountOnExit>
+  <Swap.Indicator type="on">...</Swap.Indicator>
+  <Swap.Indicator type="off">...</Swap.Indicator>
+</Swap.Root>
+```
+
+## API Reference
+
+### Root
+
+#### Props
+
+| Prop                | Type       | Required | Default          | Description                                                                                                                                                                                                      |
+| ------------------- | ---------- | -------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`asChild`**       | `boolean`  | false    | `undefined`      | Use the provided child element as the default rendered element, combining their props and behavior.                                                                                                              |
+| **`hideMode`**      | `HideMode` | false    | `'display-none'` | How to hide content when mounted but not present.<br>- `'display-none'`: HTML `hidden` attribute. Effects stay alive.<br>- `'activity'`: React 19 `<Activity mode="hidden">`. Effects pause. Requires React 19+. |
+| **`lazyMount`**     | `boolean`  | false    | `false`          | Whether to enable lazy mounting                                                                                                                                                                                  |
+| **`swap`**          | `boolean`  | false    | `false`          | Whether the swap is in the "on" state.                                                                                                                                                                           |
+| **`unmountOnExit`** | `boolean`  | false    | `false`          | Whether to unmount on exit.                                                                                                                                                                                      |
+
+### Indicator
+
+#### Props
+
+| Prop          | Type            | Required | Default     | Description                                                                                         |
+| ------------- | --------------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`type`**    | `'on' \| 'off'` | true     | `undefined` | undefined                                                                                           |
+| **`asChild`** | `boolean`       | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### RootProvider
+
+#### Props
+
+| Prop          | Type            | Required | Default     | Description                                                                                         |
+| ------------- | --------------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`value`**   | `UseSwapReturn` | true     | `undefined` | undefined                                                                                           |
+| **`asChild`** | `boolean`       | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Context

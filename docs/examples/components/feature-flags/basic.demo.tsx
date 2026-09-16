@@ -1,17 +1,11 @@
-'use client'
-
 import { FeatureFlag, FeatureFlags } from '@cerberus-design/react'
-import { useMemo } from 'react'
 
-export default function FeatureFlagsPreview() {
-  const flags = useMemo(
-    () => ({
-      featureOne: true,
-      featureTwo: false,
-    }),
-    [],
-  )
+const flags = {
+  featureOne: true,
+  featureTwo: false,
+}
 
+export function BasicDemo() {
   return (
     <FeatureFlags flags={flags}>
       <FeatureFlag flag="featureOne">This is a visible feature</FeatureFlag>
