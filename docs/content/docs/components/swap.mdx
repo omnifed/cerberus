@@ -4,7 +4,7 @@ description: Helps control the rendering and unmounting of your content based on
 npm: '@cerberus/react'
 arkUtility: 'swap'
 group: Utilities
-order: 18
+order: 19
 ---
 
 ```ts
@@ -253,13 +253,13 @@ indicators aren't visible.
 
 #### Props
 
-| Prop                | Type       | Required | Default          | Description                                                                                                                                                                                                      |
-| ------------------- | ---------- | -------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`asChild`**       | `boolean`  | false    | `undefined`      | Use the provided child element as the default rendered element, combining their props and behavior.                                                                                                              |
-| **`hideMode`**      | `HideMode` | false    | `'display-none'` | How to hide content when mounted but not present.<br>- `'display-none'`: HTML `hidden` attribute. Effects stay alive.<br>- `'activity'`: React 19 `<Activity mode="hidden">`. Effects pause. Requires React 19+. |
-| **`lazyMount`**     | `boolean`  | false    | `false`          | Whether to enable lazy mounting                                                                                                                                                                                  |
-| **`swap`**          | `boolean`  | false    | `false`          | Whether the swap is in the "on" state.                                                                                                                                                                           |
-| **`unmountOnExit`** | `boolean`  | false    | `false`          | Whether to unmount on exit.                                                                                                                                                                                      |
+| Prop                | Type       | Required | Default          | Description                                                                                                                                                                                                          |
+| ------------------- | ---------- | -------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`asChild`**       | `boolean`  | false    | `undefined`      | Use the provided child element as the default rendered element, combining their props and behavior.                                                                                                                  |
+| **`hideMode`**      | `HideMode` | false    | `'display-none'` | How to hide content when mounted but not present.<br />- `'display-none'`: HTML `hidden` attribute. Effects stay alive.<br />- `'activity'`: React 19 `<Activity mode="hidden">`. Effects pause. Requires React 19+. |
+| **`lazyMount`**     | `boolean`  | false    | `false`          | Whether to enable lazy mounting                                                                                                                                                                                      |
+| **`swap`**          | `boolean`  | false    | `false`          | Whether the swap is in the "on" state.                                                                                                                                                                               |
+| **`unmountOnExit`** | `boolean`  | false    | `false`          | Whether to unmount on exit.                                                                                                                                                                                          |
 
 ### Indicator
 

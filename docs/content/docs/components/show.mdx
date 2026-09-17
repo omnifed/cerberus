@@ -3,15 +3,9 @@ title: 'Show'
 description: 'Show displays content in the UI based on a condition. Inspired by SolidJS.'
 npm: '@cerberus-design/react'
 source: 'components/show'
+group: Utilities
+order: 18
 ---
-
-import {
-  NoteAdmonition,
-  WhenToUseAdmonition,
-  WhenNotToUseAdmonition,
-} from '@/app/components/Admonition'
-import CodePreview from '@/app/components/CodePreview'
-import ShowPreview, { LazyPreview } from '../components/show/static'
 
 ```ts
 import { Show } from '@cerberus/react'
@@ -27,47 +21,7 @@ The Show component takes a `when` prop that determines whether the children or t
 
 When passing elements as children, they are rendered eagerly into the Virtual DOM.
 
-<CodePreview preview={<ShowPreview />}>
-```tsx title="Eager Demo"
-'use client'
-
-import { Button, Show, Text, ToggleParts } from '@cerberus/react'
-import { VStack } from 'styled-system/jsx'
-import { useState } from 'react'
-
-export default function ShowPreview() {
-  const [authenticated, setAuthenticated] = useState<boolean>(false)
-
-function handleChange(state: boolean) {
-setAuthenticated(state)
-}
-
-return (
-<VStack w="1/2">
-<ToggleParts.Root
-onPressedChange={handleChange}
-pressed={authenticated}
-asChild >
-<Button type="button">
-<ToggleParts.Indicator fallback={<>Sign in</>}>
-Sign out
-</ToggleParts.Indicator>
-</Button>
-</ToggleParts.Root>
-
-      <Show
-        when={authenticated}
-        fallback={<Text>You are not allowed to enter!</Text>}
-      >
-        <Text>You are authenticated and can enter the gates of Hades!</Text>
-      </Show>
-    </VStack>
-
-)
-}
-
-````
-</CodePreview>
+<Example path="components/show" demo="basic" />
 
 ### Lazy Loading
 
@@ -75,56 +29,24 @@ To defer rendering until the condition is true, you can pass a function as child
 
 <NoteAdmonition description="Open the console to see when the lazy component is executed." />
 
-<CodePreview preview={<LazyPreview />}>
-```tsx title="Lazy Demo"
-'use client'
+<Example path="components/show" demo="lazy" />
 
-function LazyPreview() {
-  const [loaded, setLoaded] = useState<boolean>(false)
+### Fallback
 
-  function handleLoad() {
-    setLoaded(true)
-  }
+To display fallback content when the `when` property is `false`, use the `fallback` prop.
 
-  return (
-    <VStack w="1/2">
-      <Button type="button" onClick={handleLoad}>
-        Load Content
-      </Button>
-
-      <Show when={loaded}>{() => <LazyComponent />}</Show>
-    </VStack>
-  )
-}
-
-function LazyComponent() {
-  console.log('Lazy component executed')
-  return <Text>This is a lazy loaded component!</Text>
-}
-````
-
-</CodePreview>
+<Example path="components/show" demo="fallback" />
 
 ## API
-
-```ts showLineNumbers=false
-export interface ShowProps {
-  children: ReactNode | (() => ReactNode)
-  when: boolean | null | undefined
-  fallback?: ReactNode
-}
-
-define function Show(props: ShowProps): ReactNode | null
-```
 
 ### Props
 
 The `Show` component accepts the following props:
 
-| Name     | Default | Description                                                   |
-| -------- | ------- | ------------------------------------------------------------- |
-| when     | false   | The condition to evalue for showing the children or fallback. |
-| fallback | null    | The content to render when the condition is false.            |
+| Name       | Default | Description                                                   |
+| ---------- | ------- | ------------------------------------------------------------- |
+| `when`     | false   | The condition to evalue for showing the children or fallback. |
+| `fallback` | null    | The content to render when the condition is false.            |
 
 ## Understanding React Rendering: Eager vs. Lazy Execution
 

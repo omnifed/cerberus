@@ -3,6 +3,8 @@ title: 'splitProps'
 description: 'A utility for splitting props into groups. Inspired by SolidJS.'
 npm: '@cerberus-design/react'
 source: 'utils/index.ts#L27-L49'
+group: Utilities
+order: 20
 ---
 
 ## Usage
@@ -37,21 +39,14 @@ function TextField(props: TextFieldProps) {
 
 ## API
 
-```typescript
-function splitProps<T, U extends string>(
-  props: T,
-  ...keys: [U[]] | [U[], U[]] | [U[], U[], U[]]
-): [T, Partial<Pick<T, Extract<keyof T, U>>>, Partial<Pick<T, Exclude<keyof T, U>>>]
-```
-
 ### Arguments
 
 The `splitProps` utility accepts the following arguments:
 
-| Name  | Default | Description                           |
-| ----- | ------- | ------------------------------------- |
-| props |         | The Object to compare against.        |
-| keys  |         | A list of keys to split into a group. |
+| Name    | Default | Description                           |
+| ------- | ------- | ------------------------------------- |
+| `props` |         | The Object to compare against.        |
+| `keys`  |         | A list of keys to split into a group. |
 
 ### Returns
 
