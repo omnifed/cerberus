@@ -96,7 +96,14 @@ export default async function DocsPage(props: PropsWithChildren<Props>) {
         </Show>
       </Stack>
 
-      <HStack data-pagefind-ignore justify="flex-end" pt="lg" w="full">
+      <HStack
+        data-pagefind-ignore
+        justify="flex-end"
+        pos="relative"
+        pt="lg"
+        w="full"
+        zIndex="decorator"
+      >
         <CopyPageMenu endpoint={`/llms/${doc.slugAsParams}`} />
       </HStack>
 

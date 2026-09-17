@@ -30,7 +30,7 @@ export function ModeMenu() {
   return (
     <Menu onSelect={handleUpdateMode}>
       <MenuTrigger>
-        <IconButton ariaLabel={ariaLabel}>
+        <IconButton ariaLabel={ariaLabel} suppressHydrationWarning>
           <MatchModeIcon mode={mode} />
         </IconButton>
       </MenuTrigger>

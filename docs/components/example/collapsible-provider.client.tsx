@@ -22,7 +22,6 @@ export function CollapsibleProvider(props: PropsWithChildren) {
         borderTopColor="page.border.initial"
         borderBottomRadius="lg"
         display="flex"
-        gap="sm"
         justifyContent="center"
         py={{ base: 'md', lg: 'sm' }}
         textStyle="body-sm"

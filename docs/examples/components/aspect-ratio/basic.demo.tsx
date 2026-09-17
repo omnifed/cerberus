@@ -2,7 +2,7 @@ import { AspectRatio } from 'styled-system/jsx'
 
 export function BasicDemo() {
   return (
-    <AspectRatio h="315px" w="560px">
+    <AspectRatio h="315px" overflow="hidden" w="560px">
       <iframe
         width="560"
         height="315"

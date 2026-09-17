@@ -5,6 +5,7 @@ export function AnimatingSunIcon() {
       width="1.5em"
       height="1.5em"
       viewBox="0 0 24 24"
+      suppressHydrationWarning
     >
       <g
         fill="none"

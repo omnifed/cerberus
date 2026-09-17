@@ -31,8 +31,8 @@ function NavList(props: NavListProps) {
             {groupName}
           </Text>
           <For each={links}>
-            {(item) => (
-              <LinkItem key={item.title} href={item.href}>
+            {(item, idx) => (
+              <LinkItem key={`${item.title}:${idx}`} href={item.href}>
                 {item.title.replace(/data grid/i, '')}
                 <Show when={NEW.includes(item.href)}>
                   <Tag palette="page" usage="outlined" textStyle="label-sm">
