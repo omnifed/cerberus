@@ -11,7 +11,7 @@ order: 17
 import { Presence } from '@cerberus/react'
 ```
 
-<NoteAdmonition description="If you are familiar with Vue, this is essentially the Transition component." />
+<NoteAdmonition description="If you are familiar with Vue, this is similar to the Transition component." />
 
 ## Examples
 
@@ -23,10 +23,10 @@ no longer required.
 'use client'
 
 import { Presence } from '@cerberus/react'
-import { useState } from 'react'
+import { useSignal } from '@cerberus/signals'
 
 export const Basic = () => {
-  const [present, setPresent] = useState(false)
+  const [present, setPresent] = useSignal(false)
   return (
     <>
       <button type="button" onClick={() => setPresent(!present)}>
@@ -46,10 +46,10 @@ To delay the mounting of a child component until the `present` prop is set to tr
 'use client'
 
 import { Presence } from '@cerberus/react'
-import { useState } from 'react'
+import { useSignal } from '@cerberus/signals'
 
 export const LazyMount = () => {
-  const [present, setPresent] = useState(false)
+  const [present, setPresent] = useSignal(false)
   return (
     <>
       <button type="button" onClick={() => setPresent(!present)}>
@@ -71,10 +71,10 @@ To remove the child component from the DOM when it's not present, use the `unmou
 'use client'
 
 import { Presence } from '@cerberus/react'
-import { useState } from 'react'
+import { useSignal } from '@cerberus/signals'
 
 export const UnmountOnExit = () => {
-  const [present, setPresent] = useState(false)
+  const [present, setPresent] = useSignal(false)
   return (
     <>
       <button type="button" onClick={() => setPresent(!present)}>
@@ -97,10 +97,10 @@ unmounted when it's no longer present:
 'use client'
 
 import { Presence } from '@cerberus/react'
-import { useState } from 'react'
+import { useSignal } from '@cerberus/signals'
 
 export const LazyMountAndUnmountOnExit = () => {
-  const [present, setPresent] = useState(false)
+  const [present, setPresent] = useSignal(false)
   return (
     <>
       <button type="button" onClick={() => setPresent(!present)}>

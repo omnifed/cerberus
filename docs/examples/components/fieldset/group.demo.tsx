@@ -1,6 +1,5 @@
 import { Box } from '@/styled-system/jsx'
-import { Radio } from '@carbon/icons-react'
-import { Fieldset, RadioGroup } from '@cerberus-design/react'
+import { Fieldset, Radio, RadioGroup } from '@cerberus-design/react'
 
 export function FieldsetGroupDemo() {
   return (

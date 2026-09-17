@@ -1,3 +1,5 @@
+'use client'
+
 import { cerberus } from '@/styled-system/jsx'
 import { Logout, Menu } from '@carbon/icons-react'
 import {

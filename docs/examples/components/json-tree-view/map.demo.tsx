@@ -6,7 +6,7 @@ import { ChevronRight } from '@carbon/icons-react'
 const data = new Map<string, any>([
   ['name', 'ark-ui-json-tree'],
   ['license', 'MIT'],
-  ['elements', new Set(['ark-ui', 123, false, true, null, undefined, 456n])],
+  ['elements', new Set(['ark-ui', 123, false, true, null, undefined])],
   [
     'nested',
     new Map<string, any>([

@@ -1,3 +1,5 @@
+'use client'
+
 import { Menu, Strawberry } from '@carbon/icons-react'
 import { Button, MenuContent, MenuItem, MenuTrigger } from '@cerberus-design/react'
 

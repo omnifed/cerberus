@@ -1,3 +1,5 @@
+'use client'
+
 import { Button, DownloadTrigger } from '@cerberus-design/react'
 
 export function BasicDemo() {

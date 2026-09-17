@@ -1,3 +1,5 @@
+'use client'
+
 import { DownloadTrigger } from '@cerberus-design/react'
 
 export function PromiseDemo() {

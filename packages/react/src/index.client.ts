@@ -120,6 +120,8 @@ export {
   JsonTreeView,
   useJsonTreeView,
   Presence,
+  usePresence,
+  usePresenceContext,
   EnvironmentProvider,
   useEnvironmentContext,
   LocaleProvider,
