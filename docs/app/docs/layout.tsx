@@ -1,13 +1,9 @@
 import { AppBar } from '@/components/app-bar'
 import { DocsPageLayout } from '@/components/page-layout'
+import { SceneMatcher } from '@/components/scenes/scene-matcher'
 import { SideNav } from '@/components/side-nav'
 import { Box, HStack, Scrollable } from '@/styled-system/jsx'
-import type { Metadata } from 'next'
 import type { PropsWithChildren } from 'react'
-import { SceneMatcher } from '../components/backgrounds/scene-matcher'
-import { getDocsMetadata } from './utils/helpers.server'
-
-export const metadata: Metadata = getDocsMetadata()
 
 export default async function DocsLayout(props: PropsWithChildren<object>) {
   return (

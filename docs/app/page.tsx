@@ -1,8 +1,8 @@
 import { VStack } from '@/styled-system/jsx'
-import { SceneMatcher } from './components/backgrounds/scene-matcher'
-import HomeHero from './components/home-hero'
+import { HomeHero } from '@/components/home-hero'
+import { SceneMatcher } from '@/components/scenes/scene-matcher'
 
-export default async function Home() {
+export default function Home() {
   return (
     <>
       <VStack gap="0" minH="100dvh" h="full" justify="center">

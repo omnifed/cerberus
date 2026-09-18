@@ -2,7 +2,7 @@
 
 import type { SemanticToken } from '@cerberus/tokens'
 import { Text, useThemeContext } from '@cerberus-design/react'
-import { getPrimitiveTokenReference } from '@/app/docs/utils/color-helpers'
+import { getPrimitiveTokenReference } from './helpers'
 
 interface PrimitiveBindingProps {
   value: SemanticToken['value']
