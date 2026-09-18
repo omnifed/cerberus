@@ -169,8 +169,8 @@ catalogs:
       version: 5.39.1
   jsx:
     '@carbon/icons-react':
-      specifier: ^11.86.0
-      version: 11.86.0
+      specifier: ^11.88.0
+      version: 11.88.0
     '@types/react':
       specifier: ^19.2.18
       version: 19.2.18
@@ -219,7 +219,7 @@ catalogs:
   types:
     '@types/node':
       specifier: ^26.1.2
-      version: 26.1.2
+      version: 26.2.0
 
 overrides:
   brace-expansion: '>=5.0.9'
@@ -305,7 +305,7 @@ importers:
     dependencies:
       '@carbon/icons-react':
         specifier: catalog:jsx
-        version: 11.86.0(react@19.2.8)
+        version: 11.88.0(react@19.2.8)
       '@cerberus-design/data-grid':
         specifier: workspace:*
         version: link:../packages/data-grid
@@ -320,7 +320,7 @@ importers:
         version: link:../packages/tokens
       next:
         specifier: 16.3.4
-        version: 16.3.4(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.1.2)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        version: 16.3.4(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react:
         specifier: catalog:jsx
         version: 19.2.8
@@ -348,7 +348,7 @@ importers:
         version: link:../packages/preset-oceanus-theme
       '@csstools/postcss-cascade-layers':
         specifier: ^6.0.0
-        version: 6.0.0(postcss@8.5.26)
+        version: 6.0.0(postcss@8.5.28)
       '@expressive-code/plugin-line-numbers':
         specifier: ^0.44.1
         version: 0.44.1
@@ -378,7 +378,7 @@ importers:
         version: 2.0.14
       '@types/node':
         specifier: catalog:types
-        version: 26.1.2
+        version: 26.2.0
       '@types/react':
         specifier: catalog:jsx
         version: 19.2.18
@@ -387,10 +387,10 @@ importers:
         version: 19.2.4(@types/react@19.2.18)
       '@vercel/analytics':
         specifier: ^2.0.1
-        version: 2.0.1(next@16.3.4(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.1.2)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
+        version: 2.0.1(next@16.3.4(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
       autoprefixer:
         specifier: ^10.5.4
-        version: 10.5.4(postcss@8.5.26)
+        version: 10.5.4(postcss@8.5.28)
       babel-plugin-react-compiler:
         specifier: ^1.0.0
         version: 1.0.0
@@ -450,7 +450,7 @@ importers:
         version: 5.1.0
       velite:
         specifier: ^0.4.0
-        version: 0.4.0(@types/node@26.1.2)(supports-color@7.2.0)
+        version: 0.4.0(@types/node@26.2.0)(supports-color@7.2.0)
 
   packages/data-grid:
     dependencies:
@@ -493,10 +493,10 @@ importers:
         version: link:../../styled-system
       vite:
         specifier: catalog:jsx
-        version: 8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)
+        version: 8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: catalog:jsx
-        version: 5.0.3(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0))
+        version: 5.0.3(esbuild@0.25.12)(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0))
 
   packages/figma:
     devDependencies:
@@ -505,7 +505,7 @@ importers:
         version: 0.41.0
       '@types/node':
         specifier: catalog:types
-        version: 26.1.2
+        version: 26.2.0
       dotenv:
         specifier: ^17.3.1
         version: 17.4.2
@@ -526,10 +526,10 @@ importers:
         version: 1.12.0
       autoprefixer:
         specifier: '*'
-        version: 10.5.2(postcss@8.5.23)
+        version: 10.5.4(postcss@8.5.28)
       postcss:
         specifier: '>=8.5.18'
-        version: 8.5.23
+        version: 8.5.28
     devDependencies:
       '@cerberus/preset-cerberus-theme':
         specifier: workspace:*
@@ -548,10 +548,10 @@ importers:
     dependencies:
       autoprefixer:
         specifier: '*'
-        version: 10.5.2(postcss@8.5.23)
+        version: 10.5.4(postcss@8.5.28)
       postcss:
         specifier: '>=8.5.18'
-        version: 8.5.23
+        version: 8.5.28
     devDependencies:
       '@cerberus/tokens':
         specifier: workspace:*
@@ -567,10 +567,10 @@ importers:
     dependencies:
       autoprefixer:
         specifier: '*'
-        version: 10.5.2(postcss@8.5.23)
+        version: 10.5.4(postcss@8.5.28)
       postcss:
         specifier: '>=8.5.18'
-        version: 8.5.23
+        version: 8.5.28
     devDependencies:
       '@cerberus/tokens':
         specifier: workspace:*
@@ -586,10 +586,10 @@ importers:
     dependencies:
       autoprefixer:
         specifier: '*'
-        version: 10.5.2(postcss@8.5.23)
+        version: 10.5.4(postcss@8.5.28)
       postcss:
         specifier: '>=8.5.18'
-        version: 8.5.23
+        version: 8.5.28
     devDependencies:
       '@cerberus/tokens':
         specifier: workspace:*
@@ -605,10 +605,10 @@ importers:
     dependencies:
       autoprefixer:
         specifier: '*'
-        version: 10.5.2(postcss@8.5.23)
+        version: 10.5.4(postcss@8.5.28)
       postcss:
         specifier: '>=8.5.18'
-        version: 8.5.23
+        version: 8.5.28
     devDependencies:
       '@cerberus/tokens':
         specifier: workspace:*
@@ -627,7 +627,7 @@ importers:
         version: 5.39.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@carbon/icons-react':
         specifier: catalog:jsx
-        version: 11.86.0(react@19.2.8)
+        version: 11.88.0(react@19.2.8)
     devDependencies:
       '@cerberus/panda-preset':
         specifier: workspace:*
@@ -664,10 +664,10 @@ importers:
         version: link:../../styled-system
       vite:
         specifier: catalog:jsx
-        version: 8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)
+        version: 8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: catalog:jsx
-        version: 5.0.3(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0))
+        version: 5.0.3(esbuild@0.25.12)(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0))
 
   packages/signals:
     devDependencies:
@@ -688,10 +688,10 @@ importers:
         version: 19.2.8
       vite:
         specifier: catalog:jsx
-        version: 8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)
+        version: 8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: catalog:jsx
-        version: 5.0.3(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0))
+        version: 5.0.3(esbuild@0.25.12)(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0))
 
   packages/tokens:
     devDependencies:
@@ -746,7 +746,7 @@ importers:
     devDependencies:
       '@carbon/icons-react':
         specifier: catalog:jsx
-        version: 11.86.0(react@19.2.8)
+        version: 11.88.0(react@19.2.8)
       '@cerberus-design/data-grid':
         specifier: workspace:*
         version: link:../packages/data-grid
@@ -894,11 +894,11 @@ packages:
     resolution: {integrity: sha512-Vj1jF3cPfxg7OAfoI7QnVKLoILlm2JF9pnVHrX8qx7AHMiYWT+NDAA7jChlNgRS4WTLc/fD1lXLmPixluj+3Gg==}
     engines: {node: '>=6.9.0'}
 
-  '@carbon/icon-helpers@10.80.0':
-    resolution: {integrity: sha512-OPL8yV9qHd5wE1EZJwtwbeWfN5YERwkN9iF6qlDZ9XtTpBQiXcPhe6Lg2ws+mr0iZt35q/8mM0nOjiXyOxP64Q==}
+  '@carbon/icon-helpers@10.82.0':
+    resolution: {integrity: sha512-HwyUn3iOzV7ahnf2oBaDL4fui7FBbTDBf+0N+sFfs+x17PFD3WkTz4BRefnWjlfLyKmuQTUwRuoOAVBSN1qY0Q==}
 
-  '@carbon/icons-react@11.86.0':
-    resolution: {integrity: sha512-xr6CqakeS1FwfFojiz1t5v4nfYig2AugvisDF84dQuVXR7k/vep6DWSj24/c7rRXOUhM+BC9aEMoGIdUjOGglw==}
+  '@carbon/icons-react@11.88.0':
+    resolution: {integrity: sha512-RvlzTmAxIJ/ujFB1vsb7IWKAhJvaBh9ims5qBQUW/OTV8Rf9If/FHFiSMyMoK7JdQB1yfn+0RQaB7t1wqZ2wag==}
     peerDependencies:
       react: '>=16'
 
@@ -2976,13 +2976,6 @@ packages:
     resolution: {integrity: sha512-hsU18Ae8CDTR6Kgu9DYf0EbCr/a5iGL0rytQDobUcdpYOKokk8LEjVphnXkDkgpi0wYVsqrXuP0bZxJaTqdgoA==}
     engines: {node: '>= 0.4'}
 
-  autoprefixer@10.5.2:
-    resolution: {integrity: sha512-rD5t5DwOjJdmSORcTq64j8MawTC+tbQ+HHqjR4NDumamy/ambn1UJrlKL+KdwujWxMkFjPM3pPHOEA9tl4767Q==}
-    engines: {node: ^10 || ^12 || >=14}
-    hasBin: true
-    peerDependencies:
-      postcss: '>=8.5.18'
-
   autoprefixer@10.5.4:
     resolution: {integrity: sha512-MaU0U/za7N3r6brxD4YB/l4NSrFzLPlANv6wEuQVaIPlD3L4W9rFcQPbL/EilY9BHhHvhfcz3gInDLrEtWT4EA==}
     engines: {node: ^10 || ^12 || >=14}
@@ -3075,9 +3068,6 @@ packages:
   callsites@3.1.0:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
-
-  caniuse-lite@1.0.30001805:
-    resolution: {integrity: sha512-52noaS3DubycKSXaU30TwPGIp+POyQSUVa5jBEq3vkRkY0kjyb3LQgvhU6WGyCcyXqVLWO0Cw0Q6BSdD0kUfVA==}
 
   caniuse-lite@1.0.30001806:
     resolution: {integrity: sha512-72Cuvd95zbSYPKq6Fhg8eDJRlzgWDf7/mtoZv6Qe/DYNCEBdNxoA3+rZAU2ZhGCpZlns3EssFavaZomckT5Uuw==}
@@ -5698,13 +5688,13 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@carbon/icon-helpers@10.80.0':
+  '@carbon/icon-helpers@10.82.0':
     dependencies:
       '@ibm/telemetry-js': 1.11.0
 
-  '@carbon/icons-react@11.86.0(react@19.2.8)':
+  '@carbon/icons-react@11.88.0(react@19.2.8)':
     dependencies:
-      '@carbon/icon-helpers': 10.80.0
+      '@carbon/icon-helpers': 10.82.0
       '@ibm/telemetry-js': 1.11.0
       prop-types: 15.8.1
       react: 19.2.8
@@ -5843,10 +5833,10 @@ snapshots:
       postcss: 8.5.26
       postcss-selector-parser: 7.1.4
 
-  '@csstools/postcss-cascade-layers@6.0.0(postcss@8.5.26)':
+  '@csstools/postcss-cascade-layers@6.0.0(postcss@8.5.28)':
     dependencies:
       '@csstools/selector-specificity': 6.0.0(postcss-selector-parser@7.1.4)
-      postcss: 8.5.26
+      postcss: 8.5.28
       postcss-selector-parser: 7.1.4
 
   '@csstools/selector-specificity@5.0.0(postcss-selector-parser@7.1.4)':
@@ -6898,6 +6888,7 @@ snapshots:
   '@types/node@26.1.2':
     dependencies:
       undici-types: 8.3.0
+    optional: true
 
   '@types/node@26.2.0':
     dependencies:
@@ -7148,15 +7139,15 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.12.2':
     optional: true
 
-  '@vercel/analytics@2.0.1(next@16.3.4(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.1.2)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)':
+  '@vercel/analytics@2.0.1(next@16.3.4(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)':
     optionalDependencies:
-      next: 16.3.4(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.1.2)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      next: 16.3.4(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react: 19.2.8
 
   '@vitejs/plugin-react@6.0.5(babel-plugin-react-compiler@1.0.0)(vite@8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)
+      vite: 8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)
     optionalDependencies:
       babel-plugin-react-compiler: 1.0.0
 
@@ -7900,22 +7891,13 @@ snapshots:
 
   async-function@1.0.0: {}
 
-  autoprefixer@10.5.2(postcss@8.5.23):
-    dependencies:
-      browserslist: 4.28.8
-      caniuse-lite: 1.0.30001805
-      fraction.js: 5.3.4
-      picocolors: 1.1.1
-      postcss: 8.5.23
-      postcss-value-parser: 4.2.0
-
-  autoprefixer@10.5.4(postcss@8.5.26):
+  autoprefixer@10.5.4(postcss@8.5.28):
     dependencies:
       browserslist: 4.28.8
       caniuse-lite: 1.0.30001806
       fraction.js: 5.3.4
       picocolors: 1.1.1
-      postcss: 8.5.26
+      postcss: 8.5.28
       postcss-value-parser: 4.2.0
 
   available-typed-arrays@1.0.7:
@@ -8007,8 +7989,6 @@ snapshots:
       get-intrinsic: 1.3.0
 
   callsites@3.1.0: {}
-
-  caniuse-lite@1.0.30001805: {}
 
   caniuse-lite@1.0.30001806: {}
 
@@ -8417,6 +8397,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  eslint-module-utils@2.14.0(@typescript-eslint/parser@8.69.0(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)(typescript@7.0.2))(eslint-import-resolver-node@0.3.10(supports-color@7.2.0))(eslint-import-resolver-typescript@4.4.5)(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0):
+    dependencies:
+      debug: 3.2.7(supports-color@7.2.0)
+    optionalDependencies:
+      '@typescript-eslint/parser': 8.69.0(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)(typescript@7.0.2)
+      eslint: 9.39.5(supports-color@7.2.0)
+      eslint-import-resolver-node: 0.3.10(supports-color@7.2.0)
+      eslint-import-resolver-typescript: 4.4.5(eslint-plugin-import@2.32.0)(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)
+    transitivePeerDependencies:
+      - supports-color
+
   eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.69.0(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)(typescript@7.0.2))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0):
     dependencies:
       '@rtsao/scc': 1.1.0
@@ -8429,6 +8420,35 @@ snapshots:
       eslint: 9.39.5(supports-color@7.2.0)
       eslint-import-resolver-node: 0.3.10(supports-color@7.2.0)
       eslint-module-utils: 2.14.0(@typescript-eslint/parser@8.69.0(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)(typescript@7.0.2))(eslint-import-resolver-node@0.3.10(supports-color@7.2.0))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)
+      hasown: 2.0.4
+      is-core-module: 2.16.2
+      is-glob: 4.0.3
+      minimatch: 3.1.5
+      object.fromentries: 2.0.8
+      object.groupby: 1.0.3
+      object.values: 1.2.1
+      semver: 6.3.1
+      string.prototype.trimend: 1.0.10
+      tsconfig-paths: 3.15.0
+    optionalDependencies:
+      '@typescript-eslint/parser': 8.69.0(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)(typescript@7.0.2)
+    transitivePeerDependencies:
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - supports-color
+
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.69.0(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)(typescript@7.0.2))(eslint-import-resolver-typescript@4.4.5)(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0):
+    dependencies:
+      '@rtsao/scc': 1.1.0
+      array-includes: 3.1.9
+      array.prototype.findlastindex: 1.2.6
+      array.prototype.flat: 1.3.3
+      array.prototype.flatmap: 1.3.3
+      debug: 3.2.7(supports-color@7.2.0)
+      doctrine: 2.1.0
+      eslint: 9.39.5(supports-color@7.2.0)
+      eslint-import-resolver-node: 0.3.10(supports-color@7.2.0)
+      eslint-module-utils: 2.14.0(@typescript-eslint/parser@8.69.0(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)(typescript@7.0.2))(eslint-import-resolver-node@0.3.10(supports-color@7.2.0))(eslint-import-resolver-typescript@4.4.5)(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)
       hasown: 2.0.4
       is-core-module: 2.16.2
       is-glob: 4.0.3
@@ -9870,7 +9890,7 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next@16.3.4(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.1.2)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+  next@16.3.4(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
       '@next/env': 16.3.4
       '@swc/helpers': 0.5.23
@@ -9891,7 +9911,7 @@ snapshots:
       '@next/swc-win32-x64-msvc': 16.3.4
       '@opentelemetry/api': 1.9.0
       babel-plugin-react-compiler: 1.0.0
-      sharp: 0.35.4(@types/node@26.1.2)
+      sharp: 0.35.4(@types/node@26.2.0)
     transitivePeerDependencies:
       - '@babel/core'
       - '@types/node'
@@ -10513,7 +10533,7 @@ snapshots:
       es-errors: 1.3.0
       es-object-atoms: 1.1.2
 
-  sharp@0.35.4(@types/node@26.1.2):
+  sharp@0.35.4(@types/node@26.2.0):
     dependencies:
       '@img/colour': 1.1.0
       detect-libc: 2.1.2
@@ -10544,7 +10564,7 @@ snapshots:
       '@img/sharp-win32-arm64': 0.35.4
       '@img/sharp-win32-ia32': 0.35.4
       '@img/sharp-win32-x64': 0.35.4
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
   shebang-command@2.0.0:
     dependencies:
@@ -10965,7 +10985,7 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unplugin-dts@1.0.3(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)):
+  unplugin-dts@1.0.3(esbuild@0.25.12)(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)):
     dependencies:
       '@rollup/pluginutils': 5.4.0
       '@volar/typescript': 2.4.28(typescript@7.0.2)
@@ -10977,8 +10997,9 @@ snapshots:
       typescript: 7.0.2
       unplugin: 2.3.11
     optionalDependencies:
+      esbuild: 0.25.12
       rolldown: 1.2.3
-      vite: 8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)
+      vite: 8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -11038,11 +11059,11 @@ snapshots:
       is-typed-array: 1.1.15
       which-typed-array: 1.1.22
 
-  velite@0.4.0(@types/node@26.1.2)(supports-color@7.2.0):
+  velite@0.4.0(@types/node@26.2.0)(supports-color@7.2.0):
     dependencies:
       '@mdx-js/mdx': 3.1.1(supports-color@7.2.0)
       esbuild: 0.25.12
-      sharp: 0.35.4(@types/node@26.1.2)
+      sharp: 0.35.4(@types/node@26.2.0)
       terser: 5.50.0
     transitivePeerDependencies:
       - '@types/node'
@@ -11063,11 +11084,11 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plugin-dts@5.0.3(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)):
+  vite-plugin-dts@5.0.3(esbuild@0.25.12)(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)):
     dependencies:
-      unplugin-dts: 1.0.3(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0))
+      unplugin-dts: 1.0.3(esbuild@0.25.12)(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0))
     optionalDependencies:
-      vite: 8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)
+      vite: 8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@rspack/core'
       - '@vue/language-core'
@@ -11077,7 +11098,7 @@ snapshots:
       - typescript
       - webpack
 
-  vite@8.2.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0):
+  vite@8.2.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.5
@@ -11086,6 +11107,7 @@ snapshots:
       tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 26.1.2
+      esbuild: 0.25.12
       fsevents: 2.3.3
       terser: 5.50.0
       yaml: 2.9.0
