@@ -11,17 +11,19 @@ import {
   DialogProps,
   DialogProvider,
   DialogTrigger,
+  For,
 } from '@cerberus-design/react'
+import recipesSpec from 'styled-system/specs/recipes.json'
+
+const variants = (recipesSpec.data.find((r) => r.name === 'dialog')?.variants.size ??
+  []) as DialogProps['size'][]
 
 export function SizesDemo() {
   return (
     <HStack gap="md">
-      <DialogContent size="xs" />
-      <DialogContent size="sm" />
-      <DialogContent size="md" />
-      <DialogContent size="lg" />
-      <DialogContent size="full" />
-      <DialogContent size="auto" />
+      <For each={variants}>
+        {(size) => <DialogContent key={String(size)} size={size} />}
+      </For>
     </HStack>
   )
 }

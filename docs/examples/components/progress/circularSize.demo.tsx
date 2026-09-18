@@ -11,7 +11,7 @@ const variants = (recipesSpec.data.find((r) => r.name === 'circularProgress')?.v
 
 export function CircularSizeDemo() {
   return (
-    <HStack gap="md" w="3/4">
+    <HStack gap="md">
       <For each={variants}>
         {(size, idx) => (
           <CircularProgress

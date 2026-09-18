@@ -1,3 +1,5 @@
+'use client'
+
 import { FileUploader } from '@cerberus-design/react'
 
 export function DisableDropDemo() {

@@ -2,8 +2,8 @@ import { HStack } from '@/styled-system/jsx'
 import { Field, For, Radio, RadioGroup, RadioProps } from '@cerberus-design/react'
 import recipesSpec from 'styled-system/specs/recipes.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'radio')?.variants.size ??
-  []) as RadioProps['size'][]
+const variants = (recipesSpec.data.find((r) => r.name === 'radioGroup')?.variants
+  .size ?? []) as RadioProps['size'][]
 
 export function SizeDemo() {
   return (
@@ -11,10 +11,16 @@ export function SizeDemo() {
       <For each={variants}>
         {(size) => (
           <Field label={`${size} size`} key={String(size)}>
-            <RadioGroup defaultValue="cerberus" size={size} justifyContent="center">
-              <Radio value="cerberus">Cerberus</Radio>
-              <Radio value="hades">Hades</Radio>
-              <Radio value="zeus">Zeus</Radio>
+            <RadioGroup defaultValue="cerberus" justifyContent="center">
+              <Radio size={size} value="cerberus">
+                Cerberus
+              </Radio>
+              <Radio size={size} value="hades">
+                Hades
+              </Radio>
+              <Radio size={size} value="zeus">
+                Zeus
+              </Radio>
             </RadioGroup>
           </Field>
         )}

@@ -1,3 +1,5 @@
+'use client'
+
 import { HStack } from '@/styled-system/jsx'
 import { FileUploader } from '@cerberus-design/react'
 

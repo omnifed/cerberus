@@ -10,7 +10,7 @@ export function SizesDemo() {
     <HStack w="3/4">
       <For each={sizes}>
         {(size) => (
-          <Field label={`Size ${size}`}>
+          <Field key={String(size)} label={`Size ${size}`}>
             <NumberInput size={size} />
           </Field>
         )}

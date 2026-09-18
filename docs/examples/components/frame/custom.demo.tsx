@@ -12,7 +12,12 @@ export function CustomDemo() {
   return (
     <Frame
       title="Custom Frame"
-      style={{ border: '1px solid #ccc', maxWidth: '800px', width: '100%' }}
+      style={{
+        backgroundColor: 'white',
+        border: '1px solid #ccc',
+        maxWidth: '800px',
+        width: '100%',
+      }}
       srcDoc={srcDoc}
     >
       <h1 style={{ fontFamily: 'Open Sans, sans-serif' }}>

@@ -12,38 +12,24 @@ export function CustomDemo() {
   return (
     <Menu>
       <MenuTrigger>
-        <Button
-          css={{
-            color: 'black',
-          }}
-          palette="danger"
-        >
+        <Button color="black" palette="danger">
           Hades R00lz
         </Button>
       </MenuTrigger>
-      <MenuContent
-        css={{
-          bgColor: 'black',
-          color: 'danger.text.initial',
-        }}
-      >
+      <MenuContent bgColor="black" color="danger.text.initial">
         <MenuItem
-          css={{
-            colorPalette: 'warning',
-            _hover: {
-              color: 'black',
-            },
+          colorPalette="warning"
+          _hover={{
+            color: 'black',
           }}
           value="item_1"
         >
           Hades am I
         </MenuItem>
         <MenuItem
-          css={{
-            colorPalette: 'warning',
-            _hover: {
-              color: 'black',
-            },
+          colorPalette="warning"
+          _hover={{
+            color: 'black',
           }}
           value="item_2"
         >

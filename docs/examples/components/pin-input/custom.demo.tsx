@@ -1,9 +1,11 @@
+'use client'
+
 import { HStack } from '@/styled-system/jsx'
 import { PinInputParts } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
-    <HStack w="1/2">
+    <HStack>
       <PinInputParts.Root
         css={{
           w: 'full',

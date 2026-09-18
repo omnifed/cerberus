@@ -1,12 +1,20 @@
-import { Button } from '@cerberus-design/react'
+import { Button, ButtonProps, For } from '@cerberus-design/react'
 import { HStack } from 'styled-system/jsx'
+import recipesSpec from 'styled-system/specs/recipes.json'
+
+const variants = (recipesSpec.data.find((r) => r.name === 'button')?.variants.shape ??
+  []) as ButtonProps['shape'][]
 
 export function ShapesDemo() {
   return (
-    <HStack>
-      <Button shape="default">Default</Button>
-      <Button shape="sharp">Sharp</Button>
-      <Button shape="rounded">Rounded</Button>
+    <HStack gap="md">
+      <For each={variants}>
+        {(shape) => (
+          <Button key={shape} shape={shape}>
+            {shape}
+          </Button>
+        )}
+      </For>
     </HStack>
   )
 }

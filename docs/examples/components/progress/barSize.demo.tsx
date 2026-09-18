@@ -10,14 +10,16 @@ export function BarSizeDemo() {
     <Stack gap="md" w="3/4">
       <For each={variants}>
         {(size) => (
-          <VStack key={`${size}-bar`} gap="md" w="3/4">
+          <VStack key={`${size}-bar`} gap="md" w="full">
             <ProgressBar
               id={`${size}-bar`}
               label={`${size} size`}
               size={size}
               now={75}
             />
-            <Tag shape="pill">Rounded</Tag>
+            <Tag shape="pill" textTransform="initial">
+              {String(size)}
+            </Tag>
           </VStack>
         )}
       </For>

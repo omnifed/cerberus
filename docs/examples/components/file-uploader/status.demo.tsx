@@ -1,12 +1,12 @@
 'use client'
 
+import { VStack } from '@/styled-system/jsx'
 import {
   FileStatus,
   processStatus,
   type FileStatusActions,
 } from '@cerberus-design/react'
 import { type MouseEvent } from 'react'
-import { vstack } from 'styled-system/patterns'
 
 export function CardsDemo() {
   const handleClick = (status: FileStatusActions, e: MouseEvent<HTMLButtonElement>) => {
@@ -14,12 +14,7 @@ export function CardsDemo() {
   }
 
   return (
-    <div
-      className={vstack({
-        maxW: '36rem',
-        w: '3/4',
-      })}
-    >
+    <VStack maxW="36rem" w="3/4">
       <FileStatus
         id="todo"
         file="file.txt"
@@ -48,6 +43,6 @@ export function CardsDemo() {
         onClick={handleClick}
         status={processStatus.ERROR}
       />
-    </div>
+    </VStack>
   )
 }

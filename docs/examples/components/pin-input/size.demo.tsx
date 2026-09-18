@@ -1,3 +1,5 @@
+'use client'
+
 import { HStack } from '@/styled-system/jsx'
 import { Field, For, PinInput, PinInputRootProps } from '@cerberus-design/react'
 import recipesSpec from 'styled-system/specs/recipes.json'

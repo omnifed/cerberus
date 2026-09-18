@@ -25,11 +25,11 @@ const collection = createSelectCollection([
 
 export function SizeDemo() {
   return (
-    <Stack gap="lg">
+    <Stack gap="lg" w="3/4">
       <For each={variants}>
         {(size) => (
-          <Field label="Select Relative" key={String(size)}>
-            <Select collection={collection} placeholder="Choose option">
+          <Field label={`${size} Size`} key={String(size)}>
+            <Select collection={collection} placeholder="Choose option" size={size}>
               <For each={collection.items}>
                 {(item) => <Option key={item.value} item={item} />}
               </For>

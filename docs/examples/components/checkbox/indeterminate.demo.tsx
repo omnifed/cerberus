@@ -1,7 +1,7 @@
 'use client'
 
 import { Checkbox, CheckboxGroup, For } from '@cerberus-design/react'
-import { createComputed, useSignal } from '@cerberus-design/signals'
+import { createComputed, useRead, useSignal } from '@cerberus-design/signals'
 import { Box } from 'styled-system/jsx'
 
 const initialValues = [
@@ -12,18 +12,23 @@ const initialValues = [
 ]
 
 export function IndeterminateDemo() {
-  const [values, setValues] = useSignal(initialValues)
+  const [values, setValues, getValues] = useSignal(initialValues)
 
-  const allChecked = createComputed(() => values.every((value) => value.checked))
+  const allChecked = createComputed(() => getValues().every((value) => value.checked))
   const indeterminate = createComputed(
-    () => values.some((value) => value.checked) && !allChecked(),
+    () => getValues().some((value) => value.checked) && !allChecked(),
   )
+  const checkedState = createComputed<'indeterminate' | boolean>(() => {
+    return indeterminate() ? 'indeterminate' : allChecked()
+  })
+
+  const checked = useRead(checkedState)
 
   return (
     <Box w="1/2">
       <CheckboxGroup name="days">
         <Checkbox
-          checked={indeterminate() ? 'indeterminate' : allChecked()}
+          checked={checked}
           onCheckedChange={(e) => {
             setValues((current) =>
               current.map((value) => ({ ...value, checked: !!e.checked })),

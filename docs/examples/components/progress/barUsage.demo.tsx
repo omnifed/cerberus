@@ -10,7 +10,7 @@ export function BarUsageDemo() {
     <Stack gap="md" w="3/4">
       <For each={variants}>
         {(usage) => (
-          <VStack key={`${usage}-bar`} gap="md" w="3/4">
+          <VStack key={`${usage}-bar`} gap="md" w="full">
             <ProgressBar
               id={`${usage}-bar`}
               label={`${usage} usage`}
@@ -18,7 +18,9 @@ export function BarUsageDemo() {
               usage={usage}
               now={75}
             />
-            <Tag shape="pill">Rounded</Tag>
+            <Tag shape="pill" textTransform="initial">
+              {String(usage)}
+            </Tag>
           </VStack>
         )}
       </For>

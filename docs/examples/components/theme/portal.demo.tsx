@@ -1,7 +1,6 @@
 'use client'
 
-import { TooltipParts, Theme, Button } from '@cerberus-design/react'
-import { Box } from 'styled-system/jsx'
+import { Button, Theme, TooltipParts } from '@cerberus-design/react'
 
 export function PortalDemo() {
   return (
@@ -11,13 +10,11 @@ export function PortalDemo() {
       </TooltipParts.Trigger>
 
       <TooltipParts.Positioner>
-        <TooltipParts.Content asChild>
-          <Theme mode="dark">
-            <Box bgColor="page.bg.200" p="md" w="full">
-              This is a dark mode tooltip bubble
-            </Box>
-          </Theme>
-        </TooltipParts.Content>
+        <Theme mode="dark">
+          <TooltipParts.Content color="page.text.200" bgColor="page.bg.200">
+            This is a dark mode tooltip bubble
+          </TooltipParts.Content>
+        </Theme>
       </TooltipParts.Positioner>
     </TooltipParts.Root>
   )

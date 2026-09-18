@@ -1,14 +1,10 @@
-import { cerberus, Spinner } from '@cerberus-design/react'
+import { Square } from '@/styled-system/jsx'
+import { Spinner } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
-    <cerberus.div
-      css={{
-        color: 'yellow',
-        w: 20,
-      }}
-    >
+    <Square color="warning.bg.active" size="10rem">
       <Spinner />
-    </cerberus.div>
+    </Square>
   )
 }

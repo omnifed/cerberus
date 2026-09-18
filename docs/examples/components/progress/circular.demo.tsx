@@ -4,7 +4,7 @@ import { NotStartedText } from './not-started'
 
 export function CircularDemo() {
   return (
-    <HStack>
+    <HStack gap="md">
       <CircularProgress defaultValue={0} label={<NotStartedText />} hideValueText />
       <CircularProgress defaultValue={25} />
       <CircularProgress defaultValue={50} />

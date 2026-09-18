@@ -2,7 +2,7 @@ import { HStack } from '@/styled-system/jsx'
 import { Field, For, Radio, RadioGroup, RadioProps } from '@cerberus-design/react'
 import recipesSpec from 'styled-system/specs/recipes.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'radio')?.variants
+const variants = (recipesSpec.data.find((r) => r.name === 'radioGroup')?.variants
   .orientation ?? []) as RadioProps['orientation'][]
 
 export function OrientationDemo() {

@@ -1,12 +1,11 @@
 'use client'
 
-import OnThisPage, { OTPFallback } from '@/app/components/OnThisPage'
 import { TableOfContents } from '@/components/toc'
 import { getDocPost } from '@/lib/docs-content'
 import { Box, Container, HStack } from '@/styled-system/jsx'
 import { Show } from '@cerberus-design/react'
 import { useParams } from 'next/navigation'
-import { Suspense, type PropsWithChildren } from 'react'
+import { type PropsWithChildren } from 'react'
 
 export function DocsPageLayout(props: PropsWithChildren<object>) {
   const { slug } = useParams()
@@ -55,14 +54,7 @@ export function DocsPageLayout(props: PropsWithChildren<object>) {
         top="lg"
         w="20rem"
       >
-        <Show
-          when={post?.toc}
-          fallback={
-            <Suspense fallback={<OTPFallback />}>
-              <OnThisPage />
-            </Suspense>
-          }
-        >
+        <Show when={post?.toc}>
           <TableOfContents items={post?.toc ?? []} />
         </Show>
       </Box>
