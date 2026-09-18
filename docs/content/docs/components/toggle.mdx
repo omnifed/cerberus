@@ -1,0 +1,97 @@
+---
+title: 'Toggle'
+description: 'Toggle allows users to toggle between states via an action.'
+npm: '@cerberus-design/react'
+source: 'components/toggle'
+ark: 'toggle'
+group: Components
+order: 40
+---
+
+## Import
+
+```ts
+import { ToggleParts } from '@cerberus/react'
+```
+
+## Usage
+
+<WarningAdmonition description="If you need to conditionally render content based on a binary condition, use the Show component." />
+
+The `Toggle` component is a two-state button that allows users to toggle between states via an action. This is a headless (unstyled) component to fit any scenario you may need.
+
+<Example path="components/toggle" demo="basic" />
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the toggle.
+
+| Component         | Description                                   |
+| ----------------- | --------------------------------------------- |
+| `ToggleRoot`      | The context provider for the Toggle parts     |
+| `ToggleIndicator` | The indicator shown based on the toggle state |
+
+### Parts
+
+The `ToggleParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the ToggleParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name        | Description                                                                |
+| ----------- | -------------------------------------------------------------------------- |
+| `Root`      | The `ToggleRoot` component which is the Provider for the family.           |
+| `Indicator` | The `ToggleIndicator` component which displays based on the pressed state. |
+
+## API
+
+### Root
+
+#### Props
+
+| Prop                  | Type                         | Required | Default     | Description                                                                                         |
+| --------------------- | ---------------------------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`**         | `boolean`                    | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| **`defaultPressed`**  | `boolean`                    | false    | `undefined` | The default pressed state of the toggle.                                                            |
+| **`onPressedChange`** | `(pressed: boolean) => void` | false    | `undefined` | Event handler called when the pressed state of the toggle changes.                                  |
+| **`pressed`**         | `boolean`                    | false    | `undefined` | The pressed state of the toggle.                                                                    |
+
+#### Data Attributes
+
+| Attribute           | Description / Value   |
+| ------------------- | --------------------- |
+| **`data-scope`**    | toggle                |
+| **`data-part`**     | root                  |
+| **`data-state`**    | "on" \| "off"         |
+| **`data-pressed`**  | Present when pressed  |
+| **`data-disabled`** | Present when disabled |
+
+### Indicator
+
+#### Props
+
+| Prop           | Type                                                                                                                                                         | Required | Default     | Description                                                                                         |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`**  | `boolean`                                                                                                                                                    | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| **`fallback`** | `string \| number \| bigint \| boolean \| ReactElement<unknown, string \| JSXElementConstructor<any>> \| Iterable<ReactNode> \| ReactPortal \| Promise<...>` | false    | `undefined` | The fallback content to render when the toggle is not pressed.                                      |
+
+#### Data Attributes
+
+| Attribute           | Description / Value   |
+| ------------------- | --------------------- |
+| **`data-scope`**    | toggle                |
+| **`data-part`**     | indicator             |
+| **`data-disabled`** | Present when disabled |
+| **`data-pressed`**  | Present when pressed  |
+| **`data-state`**    | "on" \| "off"         |
+
+### Context
+
+**API:**
+
+| Property            | Type                         | Description                                                  |
+| ------------------- | ---------------------------- | ------------------------------------------------------------ |
+| `pressed`           | `boolean`                    | Whether the toggle is pressed.                               |
+| `disabled`          | `boolean`                    | Whether the toggle is disabled.                              |
+| `setPressed`        | `(pressed: boolean) => void` | Sets the pressed state of the toggle.                        |
+| `getRootProps`      | `() => T["element"]`         | Props for the root `button` element.                         |
+| `getIndicatorProps` | `() => T["element"]`         | Props for the optional visual indicator (e.g. icon) element. |

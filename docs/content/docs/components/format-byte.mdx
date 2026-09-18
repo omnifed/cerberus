@@ -1,0 +1,51 @@
+---
+title: 'Format Byte'
+description: 'Formats a byte value with automatic unit conversion and display options.'
+npm: '@cerberus/react'
+arkUtility: 'format-byte'
+group: Utilities
+order: 7
+---
+
+## Import
+
+```ts
+import { Format } from '@cerberus/react'
+```
+
+## Usage
+
+The byte formatting component extends the number formatting capabilities to handle byte-specific formatting, including
+automatic unit conversion and display options.
+
+## Examples
+
+### Basic
+
+Use the `Format.Byte` component to format a byte value with default options.
+
+<Example path="components/format" demo="byte" />
+
+### Sizes
+
+Use the `sizes` prop to specify custom byte sizes for formatting.
+
+<Example path="components/format" demo="size" />
+
+### Locale
+
+Use the `locale` prop to format the byte value according to a specific locale.
+
+<Example path="components/format" demo="locale" />
+
+### Unit
+
+Use the `unit` prop to specify the unit of the byte value.
+
+<Example path="components/format" demo="unit" />
+
+### Unit Display
+
+Use the `unitDisplay` prop to specify the display of the unit.
+
+<Example path="components/format" demo="unitDisplay" />

@@ -1,0 +1,44 @@
+---
+title: 'Download Trigger'
+description: 'Programmatically trigger file downloads'
+npm: '@cerberus-design/react'
+arkUtility: 'download-trigger'
+group: Utilities
+order: 2
+---
+
+## Motivation
+
+The `DownloadTrigger` component provides a convenient way to programmatically trigger file downloads in web
+applications. It handles the complexities of downloading files, whether they are URLs, Blobs, or other data types.
+
+## Examples
+
+### Basic
+
+Pass the data you want to download to the `data` prop, and specify the `fileName` and `mimeType` of the file.
+
+<Example path="components/download-trigger" demo="basic" />
+
+### Download SVG
+
+Here's an example of how to download an SVG file.
+
+<Example path="components/download-trigger" demo="svg" />
+
+### Promise
+
+You can also trigger downloads from a promise that returns a `Blob`, `File`, or `string`.
+
+<Example path="components/download-trigger" demo="promise" />
+
+## API
+
+#### Props
+
+| Prop           | Type                                                         | Required | Default     | Description                                                                                         |
+| -------------- | ------------------------------------------------------------ | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`data`**     | `DownloadableData \| (() => MaybePromise<DownloadableData>)` | true     | `undefined` | The data to download                                                                                |
+| **`fileName`** | `string`                                                     | true     | `undefined` | The name of the file to download                                                                    |
+| **`mimeType`** | `FileMimeType`                                               | true     | `undefined` | The MIME type of the data to download                                                               |
+| **`asChild`**  | `boolean`                                                    | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |

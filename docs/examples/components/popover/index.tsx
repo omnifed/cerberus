@@ -36,14 +36,4 @@ export const DEMOS = {
   custom: {
     preview: <CustomDemo />,
   },
-
-  meta: `import { Popover } from '@cerberus/react';`,
-
-  dataSelector: `<Popover
-    css={{
-      '& :is([data-part=content])': {
-        maxHeight: calc(var(--available-height) - 100px);
-      }
-    }}
-  />`,
 }

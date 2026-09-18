@@ -1,0 +1,57 @@
+---
+title: Prompt Modal
+description: The Prompt Modal is used to prompt the user for input, such as a passkey or confirmation for destructive actions.
+npm: '@cerberus-design/react'
+source: 'context/prompt-modal.tsx'
+recipe: 'slots/dialog.ts'
+ark: 'dialog'
+group: Components
+order: 28
+---
+
+## Import
+
+```ts
+import { PromptModal, usePromptModal } from '@cerberus/react'
+```
+
+## Usage
+
+<NoteAdmonition description="PromptModal is considered a dialog template. This means it's a pre-configured layout that is not fully customizable by nature. If you want to fully customize the modal, use the Dialog instead." />
+
+### Non-destructive
+
+To prompt a user with a non-destructive template theme is the defeault setting.
+
+<Example path="components/prompt-modal" demo="basic" />
+
+### Destructive
+
+To use a destructive theme, add a `kind` option set to `destructive`. This will utilize the
+[Danger Palette](/docs/theming/colors#danger).
+
+<Example path="components/prompt-modal" demo="destructive" />
+
+## Primitives
+
+The PromptModal is an abstraction of the [Dialog Primitives](/docs/components/dialog#primitives) and does not provide any additional customization. To build your own PromptModal, use the [`Dialog`](/docs/components/dialog) components.
+
+## API
+
+### PromptModal
+
+The `PromptModal` component is an abstraction of the Dialog and accepts the same
+props as the [`Dialog`](/docs/components/dialog) component.
+
+### Show Method Options
+
+The `show` method accepts the following options:
+
+| Name          | Default           | Description                                  |
+| ------------- | ----------------- | -------------------------------------------- |
+| `kind`        | `non-destructive` | The variant used to theme the modal.         |
+| `heading`     |                   | The heading of the modal.                    |
+| `description` |                   | The description of the modal.                |
+| `key`         |                   | A string key to test the user input against. |
+| `actionText`  |                   | The text for the action button.              |
+| `cancelText`  |                   | The text for the cancel button.              |

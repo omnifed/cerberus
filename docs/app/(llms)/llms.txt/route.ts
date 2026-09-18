@@ -1,9 +1,9 @@
-import { items as componentsItems } from '@/app/docs/components/[slug]/content/items'
 import { getBlogPosts } from '@/lib/blog-content'
 import {
   Doc,
-  getDataGridDocs,
   getGetStartedDocs,
+  getComponentsDocs,
+  getDataGridDocs,
   getSignalsDocs,
   getStylingDocs,
   getThemingDocs,
@@ -12,6 +12,7 @@ import { version } from '@cerberus-design/react/package.json'
 
 const blogPosts = getBlogPosts()
 const getStartedItems = getGetStartedDocs()
+const componentsItems = getComponentsDocs()
 const dataGridItems = getDataGridDocs()
 const signalsItems = getSignalsDocs()
 const stylingItems = getStylingDocs()
@@ -30,7 +31,6 @@ interface DocumentSet {
   href?: string
   children?: DocumentSet[]
 }
-type Items = typeof componentsItems
 
 export const GET = async () => {
   const documentSets: DocumentSet[] = [
@@ -46,7 +46,7 @@ export const GET = async () => {
         {
           title: 'Components',
           type: 'sub-section',
-          children: formatItemsToDocSet(componentsItems),
+          children: createChildrenFromItems(componentsItems),
         },
         {
           title: 'Data Grid',
@@ -79,18 +79,6 @@ export const GET = async () => {
       })),
     },
   ]
-
-  function formatItemsToDocSet(items: Items): DocumentSet[] {
-    return items
-      .map((item) => {
-        if (!item.href) return null
-        return {
-          title: item.label,
-          href: item.href,
-        }
-      })
-      .filter(Boolean) as DocumentSet[]
-  }
 
   function createContentUrl(href: string): string {
     const splitUrl = href.split('/')

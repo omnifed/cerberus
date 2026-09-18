@@ -1,0 +1,31 @@
+---
+title: 'For'
+description: 'Render a list of components or a fallback. Inspired by SolidJS.'
+npm: '@cerberus-design/react'
+source: 'components/for'
+group: Utilities
+order: 6
+---
+
+## Import
+
+```ts
+import { For } from '@cerberus/react'
+```
+
+## Usage
+
+The `For` component is used to render a list of components or a fallback. It is an abstraction of the `Array.map` method.
+
+<Example path="components/for" demo="basic" />
+
+## API
+
+### Props
+
+The `For` component accepts the following props:
+
+| Prop       | Type        | Required | Description                                |
+| ---------- | ----------- | -------- | ------------------------------------------ |
+| `each`     | `Array`     | Yes      | The list of data you wish to loop through. |
+| `fallback` | `ReactNode` | No       | Content to render when `each` is empty.    |

@@ -1,0 +1,93 @@
+---
+title: Tabs
+description: The Tabs component is used to create a tabbed interface.
+npm: '@cerberus-design/react'
+source: 'components/tabs'
+recipe: 'slots/tabs.ts'
+ark: 'tabs'
+group: Components
+order: 36
+---
+
+## Import
+
+```ts
+import { Tabs } from '@cerberus/react'
+```
+
+## Usage
+
+The `Tabs` component is used to create a tabbed interface.
+
+<Example path="components/tabs" demo="basic" />
+
+## Palette
+
+The `palette` prop can be used to change the color of the Tabs.
+
+<Example path="components/tabs" demo="secondary" />
+
+## Orientation
+
+Use the `orientation` prop to render tabs vertically. The `indicatorPlacement` prop can be set to "start" (it defaults to "end").
+
+<Example path="components/tabs" demo="vertical" />
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the tabs.
+
+| Component     | Description                             |
+| ------------- | --------------------------------------- |
+| TabsRoot      | The context provider for the tabs parts |
+| TabsList      | The list container of the tabs          |
+| TabsTrigger   | The tab components of the tabs          |
+| TabsIndicator | The indicator of the active tabs state  |
+| TabsContent   | The panel container for the tabs.       |
+
+<Example path="components/tabs" demo="custom" />
+
+## API
+
+### Props
+
+The `Tabs` component is an abstraction of the primitives and accepts the following props:
+
+| Name               | Default      | Description                                                                                                                                                                   |
+| ------------------ | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| palette            | `action`     | The color palette of the tabs                                                                                                                                                 |
+| orientation        | `horizontal` | The orientation of the group.                                                                                                                                                 |
+| indicatorPlacement | `end`        | The position of the active tab indicator. Placement follows the `orientation` flow: `start` renders at the start edge (top or left), `end` at the end edge (bottom or right). |
+
+The `Tabs.Root` component also accepts all the props of the [`TabsRoot` primitive props](https://ark-ui.com/react/docs/components/tabs#api-reference)
+
+#### Tabs component parts
+
+The `Tabs` API is an Object containing the full family of abstracted components.
+
+<NoteAdmonition description="Although the Tabs API is similar to the TabsParts, it returns abstractions of the primitives. The TabsParts return the primitives only." />
+
+| Name  | Description                                           |
+| ----- | ----------------------------------------------------- |
+| Root  | An abstraction of the `TabsRoot`.                     |
+| List  | An abstraction of the `TabsList` and `TabsIndicator`. |
+| Tab   | An abstraction of the `TabsTrigger`.                  |
+| Panel | An abstraction of the `TabsContent`.                  |
+
+### Parts
+
+The `TabsParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the TabsParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name      | Description                                                             |
+| --------- | ----------------------------------------------------------------------- |
+| Root      | The `TabsRoot` component which is the Provider for the family.          |
+| List      | The `TabsList` component which is the container for the tabs.           |
+| Trigger   | The `TabsTrigger` component which is the tab component.                 |
+| Content   | The `TabsContent` component which is the panel container.               |
+| Indicator | The `TabsIndicator` component which displays based on the active state. |
+
+```
+
+```

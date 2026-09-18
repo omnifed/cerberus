@@ -1,0 +1,114 @@
+---
+title: Checkbox
+description: 'The Checkbox component allows users to select one or more options from a set.'
+npm: '@cerberus-design/react'
+source: 'components/checkbox'
+recipe: 'slots/checkbox.ts'
+ark: 'checkbox'
+group: Components
+order: 6
+---
+
+## Import
+
+```ts
+import { Checkbox, CheckboxGroup } from '@cerberus/react'
+```
+
+## Usage
+
+The Checkbox component is a controlled component that can be used to select one or more options from a set. It can be used in a group with other checkboxes to allow for multiple selections.
+
+<Example path="components/checkbox" demo="basic" />
+
+## Indeterminate State
+
+The Checkbox component supports the indeterminate state, which is useful for indicating that a group of checkboxes is in a mixed state. To enable this state, set the `checked` prop to `indeterminate`.
+
+<Example path="components/checkbox" demo="indeterminate" />
+
+## Sizes
+
+The Checkbox component supports different sizes. You can set the size prop to `sm`, or `md`.
+
+<Example path="components/checkbox" demo="size" />
+
+## Customizing
+
+You can customize the Checkbox any way you like with style props and data-selectors.
+
+<Example path="components/checkbox" demo="custom" />
+
+## Primitives
+
+The layers of the Checkbox which can be used to create a fully custom solution.
+
+| Component             | Description                                 |
+| --------------------- | ------------------------------------------- |
+| `CheckboxRoot`        | The context provider for the Checkbox parts |
+| `CheckboxLabel`       | The label of the checkbox                   |
+| `CheckboxControl`     | The input of the checkbox                   |
+| `CheckboxIndicator`   | The indicator of the checkbox state         |
+| `CheckboxGroup`       | The group container for multiple checkboxes |
+| `CheckboxHiddenInput` | The native input for the checkbox           |
+
+### Data Attributes
+
+The primitives additionally use the following data attributes for custom styling:
+
+| Name                 | Value                                          | Description                       |
+| -------------------- | ---------------------------------------------- | --------------------------------- |
+| `data-scope`         | `checkbox`                                     | The scope of the components.      |
+| `data-part`          | `root`                                         | The root layer of the scope.      |
+| `data-part`          | `label`                                        | The label layer of the scope.     |
+| `data-part`          | `control`                                      | The control layer of the scope.   |
+| `data-part`          | `indicator`                                    | The indicator layer of the scope. |
+| `data-part`          | `group`                                        | The group layer of the scope.     |
+| `data-active`        | Present when active or pressed                 |
+| `data-focus`         | Present when focused                           |
+| `data-focus-visible` | Present when focused with keyboard             |
+| `data-readonly`      | Present when read-only                         |
+| `data-hover`         | Present when hovered                           |
+| `data-disabled`      | Present when disabled                          |
+| `data-state`         | `"indeterminate"  \| "checked" \| "unchecked"` |
+| `data-invalid`       | Present when invalid                           |
+| `data-required`      | Present when required                          |
+
+## API
+
+### Props
+
+The `Checkbox` component is an abstraction of the primitives and accepts the following props:
+
+| Prop                        | Type                                                                             | Required | Description                                                                                                                    |
+| --------------------------- | -------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `asChild`                   | `boolean`                                                                        | No       | Use the provided child element as the default rendered element, combining their props and behavior.                            |
+| `size`                      | `sm`                                                                             | No       | This size of the Checkbox.                                                                                                     |
+| `checked`                   | `CheckedState`                                                                   | No       | The controlled checked state of the checkbox                                                                                   |
+| `defaultChecked`            | `CheckedState`                                                                   | No       | The initial checked state of the checkbox when rendered. Use when you don't need to control the checked state of the checkbox. |
+| `disabled`                  | `boolean`                                                                        | No       | Whether the checkbox is disabled                                                                                               |
+| `form`                      | `string`                                                                         | No       | The id of the form that the checkbox belongs to.                                                                               |
+| `id`                        | `string`                                                                         | No       | The unique identifier of the machine.                                                                                          |
+| `ids`                       | `Partial<{ root: string; hiddenInput: string; control: string; label: string }>` | No       | The ids of the elements in the checkbox. Useful for composition.                                                               |
+| `invalid`                   | `boolean`                                                                        | No       | Whether the checkbox is invalid                                                                                                |
+| `name`                      | `string`                                                                         | No       | The name of the input field in a checkbox.                                                                                     |
+| Useful for form submission. |
+| `onCheckedChange`           | `(details: CheckedChangeDetails) => void`                                        | No       | The callback invoked when the checked state changes.                                                                           |
+| `readOnly`                  | `boolean`                                                                        | No       | Whether the checkbox is read-only                                                                                              |
+| `required`                  | `boolean`                                                                        | No       | Whether the checkbox is required                                                                                               |
+| `value`                     | `string`                                                                         | No       | The value of checkbox input. Useful for form submission.                                                                       |
+
+### Parts
+
+The `CheckboxParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the CheckboxParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name          | Description                                                                    |
+| ------------- | ------------------------------------------------------------------------------ |
+| `Root`        | The `CheckboxRoot` component which is the Provider for the family.             |
+| `Label`       | The `CheckboxLabel` component which displays the label and "required" notice.  |
+| `Control`     | The `CheckboxControl` component which is the visual field.                     |
+| `Indicator`   | The `CheckboxIndicator` component which displays based on the `checked` state. |
+| `Group`       | The `CheckboxGroup` component which creates a controls the spacing of a group. |
+| `HiddenInput` | The `CheckboxHiddenInput` component which displays the native input.           |

@@ -1,0 +1,71 @@
+---
+title: Flex
+description: Used to manage flex layouts as an alternative to HStack and VStack.
+panda: https://panda-css.com/docs/concepts/patterns#flex
+group: Layout
+order: 8
+---
+
+## Import
+
+```ts
+import { Flex } from 'styled-system/jsx'
+```
+
+## Usage
+
+Used to manage flex layouts
+
+<Example path="components/flex" demo="basic" />
+
+### Direction
+
+Use the `direction` or `flexDirection` prop to change the direction of the flex
+
+<Example path="components/flex" demo="direction" />
+
+### Align
+
+Use the `align` or `alignItems` prop to align the children along the cross axis.
+
+<Example path="components/flex" demo="align" />
+
+### Justify
+
+Use the `justify` or `justifyContent` prop to align the children along the main
+axis.
+
+<Example path="components/flex" demo="justify" />
+
+### Order
+
+Use the `order` prop to change the order of the children.
+
+<Example path="components/flex" demo="order" />
+
+### Auto Margin
+
+Apply margin to a flex item to push it away from its siblings.
+
+<Example path="components/flex" demo="margin" />
+
+### Wrap
+
+Use the `wrap` or `flexWrap` prop to wrap the children when they overflow the
+parent.
+
+<Example path="components/flex" demo="wrap" />
+
+## Props
+
+The `Flex` component accepts the following utility props in addition to style and factory props:
+
+| Prop        | Type                                  | Description                                         |
+| ----------- | ------------------------------------- | --------------------------------------------------- |
+| `align`     | `SystemStyleObject['alignItems']`     | The alignment of the children along the cross axis. |
+| `direction` | `SystemStyleObject['flexDirection']`  | The flex direction.                                 |
+| `justify`   | `SystemStyleObject['justifyContent']` | The alignment of the children along the main axis.  |
+| `wrap`      | `SystemStyleObject['flexWrap']`       | The wrapping behavior of the children.              |
+| `basis`     | `SystemStyleObject['flexBasis']`      | The flex behavior of the children.                  |
+| `grow`      | `SystemStyleObject['flexGrow']`       | The flex grow behavior of the children.             |
+| `shrink`    | `SystemStyleObject['flexShrink']`     | The flex shrink behavior of the children.           |

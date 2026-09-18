@@ -1,0 +1,46 @@
+---
+title: Textarea
+description: The Textarea component displays a textarea field.
+npm: '@cerberus-design/react'
+source: 'components/field'
+recipe: 'slots/field.ts'
+ark: 'field'
+group: Components
+order: 39
+---
+
+## Import
+
+```ts
+import { Field, Textarea } from '@cerberus/react'
+```
+
+## Usage
+
+The `Textarea` component displays a textarea field.
+
+<Example path="components/field" demo="basic" />
+
+## Secondary Helper Text
+
+The `Textarea` component supports secondary helper text, which can be used to display additional information or a character count.
+
+<Example path="components/textarea" demo="secondary" />
+
+## Customizing
+
+You can customize the textarea by passing styles directly into the component. Textarea is a re-export of the `FieldTextarea` primitive.
+
+<Example path="components/textarea" demo="custom" />
+
+## API
+
+### Props
+
+The `Textarea` accepts the following props in addition to any native `textarea` props:
+
+| Name   | Default | Description                       |
+| ------ | ------- | --------------------------------- |
+| `size` |         | This size variant of the textarea |
+
+The `Textarea` component also shares the same props mentioned in the [Field Textarea API](/docs/components/field#textarea)

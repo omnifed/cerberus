@@ -1,0 +1,31 @@
+---
+title: 'Portal'
+description: 'Portal displays content in outside of the DOM hierarchy.'
+npm: '@cerberus-design/react'
+source: 'components/portal'
+group: Utilities
+order: 16
+---
+
+## Import
+
+```ts
+import { Portal } from '@cerberus/react'
+```
+
+## Usage
+
+A wrapper around the React Portal API for a better DX.
+
+<Example path="components/portal" demo="basic" />
+
+## API
+
+### Props
+
+The `Portal` component accepts the following props:
+
+| Name        | Default         | Description                                                                                                                      |
+| ----------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `container` | `document.body` | The mounted element to place the children contents within.                                                                       |
+| `disabled`  | `false`         | Disables the portal from rendering. Perfect for when you need to disabled a child Portal that is rendered within another Portal. |

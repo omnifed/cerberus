@@ -27501,10 +27501,10 @@ Description: Moves focus to the next node
 Description: Moves focus to the previous node
 
 **`ArrowRight`**
-Description: When focus is on a closed branch node, opens the branch.<br> When focus is on an open branch node, moves focus to the first item node.
+Description: When focus is on a closed branch node, opens the branch.<br /> When focus is on an open branch node, moves focus to the first item node.
 
 **`ArrowLeft`**
-Description: When focus is on an open branch node, closes the node.<br> When focus is on an item or branch node, moves focus to its parent branch node.
+Description: When focus is on an open branch node, closes the node.<br /> When focus is on an item or branch node, moves focus to its parent branch node.
 
 **`Home`**
 Description: Moves focus to first node without opening or closing a node.
@@ -28933,10 +28933,10 @@ Description: Moves focus to the next node
 Description: Moves focus to the previous node
 
 **`ArrowRight`**
-Description: When focus is on a closed branch node, opens the branch.<br> When focus is on an open branch node, moves focus to the first item node.
+Description: When focus is on a closed branch node, opens the branch.<br /> When focus is on an open branch node, moves focus to the first item node.
 
 **`ArrowLeft`**
-Description: When focus is on an open branch node, closes the node.<br> When focus is on an item or branch node, moves focus to its parent branch node.
+Description: When focus is on an open branch node, closes the node.<br /> When focus is on an item or branch node, moves focus to its parent branch node.
 
 **`Home`**
 Description: Moves focus to first node without opening or closing a node.

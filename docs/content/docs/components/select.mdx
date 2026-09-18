@@ -1,0 +1,451 @@
+---
+title: Select
+description: The Select component is a controlled component that can be used to select one option from a set. It can be used in a group with other selects to allow for multiple selections.
+npm: '@cerberus-design/react'
+source: 'components/select'
+recipe: 'slots/select.ts'
+ark: 'select'
+group: Components
+order: 31
+---
+
+## Import
+
+```ts
+import {
+  Select,
+  Option,
+  OptionGroup,
+  OptionGroupLabel,
+  createSelectCollection,
+} from '@cerberus/react'
+```
+
+## Usage
+
+The `Select` component is a controlled component that can be used to select one option from a set. It can be used in a group with other selects to allow for multiple selections.
+
+<Example path="components/select" demo="basic" />
+
+## Grouped Options
+
+To group options, use the `OptionGroup` and `OptionGroupLabel` components.
+
+<Example path="components/select" demo="grouped" />
+
+## Sizes
+
+Use the `size` prop to change the size of the `Select`.
+
+<Example path="components/select" demo="size" />
+
+## With Dialog
+
+<Example path="components/select" demo="withDialog" />
+
+## Customizing
+
+You can customize the `Select` by using style props or the [Primitives](#primitives).
+
+<Example path="components/select" demo="custom" />
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the select.
+
+| Component              | Description                                               |
+| ---------------------- | --------------------------------------------------------- |
+| `SelectRoot`           | The context provider for the Select family                |
+| `SelectLabel`          | The label that appears above the select input             |
+| `SelectControl`        | The wrapper to the select trigger that opens the dropdown |
+| `SelectTrigger`        | he trigger that opens the dropdown                        |
+| `SelectValueText`      | The text that appears in the trigger                      |
+| `SelectIndicator`      | The indicator that appears in the trigger                 |
+| `SelectClearTrigger`   | The trigger that clears the selected value                |
+| `SelectPositioner`     | The wrapper that positions the dropdown                   |
+| `SelectContent`        | The content of the dropdown (i.e. the container itself)   |
+| `SelectItemGroup`      | The group of options in the dropdown                      |
+| `SelectItemGroupLabel` | The label for the group of options                        |
+| `SelectItem`           | The option in the dropdown                                |
+| `SelectItemText`       | The text label of the option                              |
+| `SelectItemIndicator`  | The indicator shown when the option is selected           |
+| `SelectHiddenInput`    | The native select for the select group.                   |
+
+### Parts
+
+The `SelectParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the SelectParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name             | Description                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------ |
+| `Root`           | The `SelectRoot` component which is the Provider for the family.                     |
+| `Label`          | The `SelectLabel` component which displays the label and "required" notice.          |
+| `Control`        | The `SelectControl` component which is the visual field.                             |
+| `Trigger`        | The `SelectTrigger` component which is the trigger for the dropdown.                 |
+| `ClearTrigger`   | The `SelectClearTrigger` component which is the trigger to clear the selected value. |
+| `ValueText`      | The `SelectValueText` component which displays the selected value.                   |
+| `Indicator`      | The `SelectIndicator` component which displays the trigger indicator.                |
+| `Positioner`     | The `SelectPositioner` component which is controls the positioning for the dropdown. |
+| `Content`        | The `SelectContent` component which is the dropdown itself.                          |
+| `ItemGroup`      | The `SelectItemGroup` component which is the group of options in the dropdown.       |
+| `ItemGroupLabel` | The `SelectItemGroupLabel` component which is the label for the group of options.    |
+| `Item`           | The `SelectItem` component which is the option in the dropdown.                      |
+| `ItemText`       | The `SelectItemText` component which is the text label of the option.                |
+| `ItemIndicator`  | The `SelectItemIndicator` component which displays based on the `checked` state.     |
+| `HiddenInput`    | The `SelectHiddenInput` component which displays the native input.                   |
+
+## API
+
+### Root
+
+#### Props
+
+| Prop                          | Type                                                                                                                                                                                                                                                                                                 | Required | Default          | Description                                                                                                                                                                                                          |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`collection`**              | `ListCollection<T>`                                                                                                                                                                                                                                                                                  | true     | `undefined`      | The collection of items                                                                                                                                                                                              |
+| **`asChild`**                 | `boolean`                                                                                                                                                                                                                                                                                            | false    | `undefined`      | Use the provided child element as the default rendered element, combining their props and behavior.                                                                                                                  |
+| **`autoComplete`**            | `string`                                                                                                                                                                                                                                                                                             | false    | `undefined`      | The autocomplete attribute for the hidden select. Enables browser autofill (e.g. "address-level1" for state).                                                                                                        |
+| **`closeOnSelect`**           | `boolean`                                                                                                                                                                                                                                                                                            | false    | `true`           | Whether the select should close after an item is selected                                                                                                                                                            |
+| **`composite`**               | `boolean`                                                                                                                                                                                                                                                                                            | false    | `true`           | Whether the select is a composed with other composite widgets like tabs or combobox                                                                                                                                  |
+| **`defaultHighlightedValue`** | `string`                                                                                                                                                                                                                                                                                             | false    | `undefined`      | The initial value of the highlighted item when opened.<br />Use when you don't need to control the highlighted value of the select.                                                                                  |
+| **`defaultOpen`**             | `boolean`                                                                                                                                                                                                                                                                                            | false    | `undefined`      | Whether the select's open state is controlled by the user                                                                                                                                                            |
+| **`defaultValue`**            | `string[]`                                                                                                                                                                                                                                                                                           | false    | `undefined`      | The initial default value of the select when rendered.<br />Use when you don't need to control the value of the select.                                                                                              |
+| **`deselectable`**            | `boolean`                                                                                                                                                                                                                                                                                            | false    | `undefined`      | Whether the value can be cleared by clicking the selected item.<br /><br />**Note:** this is only applicable for single selection                                                                                    |
+| **`disabled`**                | `boolean`                                                                                                                                                                                                                                                                                            | false    | `undefined`      | Whether the select is disabled                                                                                                                                                                                       |
+| **`form`**                    | `string`                                                                                                                                                                                                                                                                                             | false    | `undefined`      | The associate form of the underlying select.                                                                                                                                                                         |
+| **`hideMode`**                | `HideMode`                                                                                                                                                                                                                                                                                           | false    | `'display-none'` | How to hide content when mounted but not present.<br />- `'display-none'`: HTML `hidden` attribute. Effects stay alive.<br />- `'activity'`: React 19 `<Activity mode="hidden">`. Effects pause. Requires React 19+. |
+| **`highlightedValue`**        | `string`                                                                                                                                                                                                                                                                                             | false    | `undefined`      | The controlled key of the highlighted item                                                                                                                                                                           |
+| **`id`**                      | `string`                                                                                                                                                                                                                                                                                             | false    | `undefined`      | The unique identifier of the machine.                                                                                                                                                                                |
+| **`ids`**                     | `Partial<{ root: string, content: string, control: string, trigger: string, clearTrigger: string, label: string, hiddenSelect: string, positioner: string, item: (id: string \| number) => string, itemGroup: (id: string \| number) => string, itemGroupLabel: (id: string \| number) => string }>` | false    | `undefined`      | The ids of the elements in the select. Useful for composition.                                                                                                                                                       |
+| **`immediate`**               | `boolean`                                                                                                                                                                                                                                                                                            | false    | `undefined`      | Whether to synchronize the present change immediately or defer it to the next frame                                                                                                                                  |
+| **`invalid`**                 | `boolean`                                                                                                                                                                                                                                                                                            | false    | `undefined`      | Whether the select is invalid                                                                                                                                                                                        |
+| **`lazyMount`**               | `boolean`                                                                                                                                                                                                                                                                                            | false    | `false`          | Whether to enable lazy mounting                                                                                                                                                                                      |
+| **`loopFocus`**               | `boolean`                                                                                                                                                                                                                                                                                            | false    | `false`          | Whether to loop the keyboard navigation through the options                                                                                                                                                          |
+| **`multiple`**                | `boolean`                                                                                                                                                                                                                                                                                            | false    | `undefined`      | Whether to allow multiple selection                                                                                                                                                                                  |
+| **`name`**                    | `string`                                                                                                                                                                                                                                                                                             | false    | `undefined`      | The `name` attribute of the underlying select.                                                                                                                                                                       |
+| **`onExitComplete`**          | `VoidFunction`                                                                                                                                                                                                                                                                                       | false    | `undefined`      | Function called when the animation ends in the closed state                                                                                                                                                          |
+| **`onFocusOutside`**          | `(event: FocusOutsideEvent) => void`                                                                                                                                                                                                                                                                 | false    | `undefined`      | Function called when the focus is moved outside the component                                                                                                                                                        |
+| **`onHighlightChange`**       | `(details: HighlightChangeDetails<T>) => void`                                                                                                                                                                                                                                                       | false    | `undefined`      | The callback fired when the highlighted item changes.                                                                                                                                                                |
+| **`onInteractOutside`**       | `(event: InteractOutsideEvent) => void`                                                                                                                                                                                                                                                              | false    | `undefined`      | Function called when an interaction happens outside the component                                                                                                                                                    |
+| **`onOpenChange`**            | `(details: OpenChangeDetails) => void`                                                                                                                                                                                                                                                               | false    | `undefined`      | Function called when the popup is opened                                                                                                                                                                             |
+| **`onPointerDownOutside`**    | `(event: PointerDownOutsideEvent) => void`                                                                                                                                                                                                                                                           | false    | `undefined`      | Function called when the pointer is pressed down outside the component                                                                                                                                               |
+| **`onSelect`**                | `(details: SelectionDetails) => void`                                                                                                                                                                                                                                                                | false    | `undefined`      | Function called when an item is selected                                                                                                                                                                             |
+| **`onValueChange`**           | `(details: ValueChangeDetails<T>) => void`                                                                                                                                                                                                                                                           | false    | `undefined`      | The callback fired when the selected item changes.                                                                                                                                                                   |
+| **`open`**                    | `boolean`                                                                                                                                                                                                                                                                                            | false    | `undefined`      | Whether the select menu is open                                                                                                                                                                                      |
+| **`positioning`**             | `PositioningOptions`                                                                                                                                                                                                                                                                                 | false    | `undefined`      | The positioning options of the menu.                                                                                                                                                                                 |
+| **`present`**                 | `boolean`                                                                                                                                                                                                                                                                                            | false    | `undefined`      | Whether the node is present (controlled by the user)                                                                                                                                                                 |
+| **`readOnly`**                | `boolean`                                                                                                                                                                                                                                                                                            | false    | `undefined`      | Whether the select is read-only                                                                                                                                                                                      |
+| **`required`**                | `boolean`                                                                                                                                                                                                                                                                                            | false    | `undefined`      | Whether the select is required                                                                                                                                                                                       |
+| **`scrollToIndexFn`**         | `(details: ScrollToIndexDetails) => void`                                                                                                                                                                                                                                                            | false    | `undefined`      | Function to scroll to a specific index                                                                                                                                                                               |
+| **`skipAnimationOnMount`**    | `boolean`                                                                                                                                                                                                                                                                                            | false    | `false`          | Whether to allow the initial presence animation.                                                                                                                                                                     |
+| **`translations`**            | `IntlTranslations`                                                                                                                                                                                                                                                                                   | false    | `undefined`      | Specifies the localized strings that identifies the accessibility elements and their states                                                                                                                          |
+| **`unmountOnExit`**           | `boolean`                                                                                                                                                                                                                                                                                            | false    | `false`          | Whether to unmount on exit.                                                                                                                                                                                          |
+| **`value`**                   | `string[]`                                                                                                                                                                                                                                                                                           | false    | `undefined`      | The controlled keys of the selected items                                                                                                                                                                            |
+
+#### Data Attributes
+
+| Attribute           | Description / Value    |
+| ------------------- | ---------------------- |
+| **`data-scope`**    | select                 |
+| **`data-part`**     | root                   |
+| **`data-invalid`**  | Present when invalid   |
+| **`data-readonly`** | Present when read-only |
+
+### ClearTrigger
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute          | Description / Value  |
+| ------------------ | -------------------- |
+| **`data-scope`**   | select               |
+| **`data-part`**    | clear-trigger        |
+| **`data-invalid`** | Present when invalid |
+
+### Content
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute                   | Description / Value                                       |
+| --------------------------- | --------------------------------------------------------- |
+| **`data-scope`**            | select                                                    |
+| **`data-part`**             | content                                                   |
+| **`data-state`**            | "open" \| "closed"                                        |
+| **`data-nested`**           | listbox                                                   |
+| **`data-has-nested`**       | listbox                                                   |
+| **`data-placement`**        | The placement of the content                              |
+| **`data-side`**             | The side of the trigger that the content is positioned on |
+| **`data-activedescendant`** | The id the active descendant of the content               |
+
+### Control
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute           | Description / Value   |
+| ------------------- | --------------------- |
+| **`data-scope`**    | select                |
+| **`data-part`**     | control               |
+| **`data-state`**    | "open" \| "closed"    |
+| **`data-focus`**    | Present when focused  |
+| **`data-disabled`** | Present when disabled |
+| **`data-invalid`**  | Present when invalid  |
+
+### HiddenSelect
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Indicator
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute           | Description / Value    |
+| ------------------- | ---------------------- |
+| **`data-scope`**    | select                 |
+| **`data-part`**     | indicator              |
+| **`data-state`**    | "open" \| "closed"     |
+| **`data-disabled`** | Present when disabled  |
+| **`data-invalid`**  | Present when invalid   |
+| **`data-readonly`** | Present when read-only |
+
+### ItemGroupLabel
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### ItemGroup
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute           | Description / Value   |
+| ------------------- | --------------------- |
+| **`data-scope`**    | select                |
+| **`data-part`**     | item-group            |
+| **`data-disabled`** | Present when disabled |
+
+### ItemIndicator
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute        | Description / Value      |
+| ---------------- | ------------------------ |
+| **`data-scope`** | select                   |
+| **`data-part`**  | item-indicator           |
+| **`data-state`** | "checked" \| "unchecked" |
+
+### Item
+
+#### Props
+
+| Prop               | Type      | Required | Default     | Description                                                                                         |
+| ------------------ | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`**      | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| **`item`**         | `any`     | false    | `undefined` | The item to render                                                                                  |
+| **`persistFocus`** | `boolean` | false    | `undefined` | Whether hovering outside should clear the highlighted state                                         |
+
+#### Data Attributes
+
+| Attribute              | Description / Value      |
+| ---------------------- | ------------------------ |
+| **`data-scope`**       | select                   |
+| **`data-part`**        | item                     |
+| **`data-value`**       | The value of the item    |
+| **`data-state`**       | "checked" \| "unchecked" |
+| **`data-highlighted`** | Present when highlighted |
+| **`data-disabled`**    | Present when disabled    |
+
+### ItemText
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute              | Description / Value      |
+| ---------------------- | ------------------------ |
+| **`data-scope`**       | select                   |
+| **`data-part`**        | item-text                |
+| **`data-state`**       | "checked" \| "unchecked" |
+| **`data-disabled`**    | Present when disabled    |
+| **`data-highlighted`** | Present when highlighted |
+
+### Label
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute           | Description / Value    |
+| ------------------- | ---------------------- |
+| **`data-scope`**    | select                 |
+| **`data-part`**     | label                  |
+| **`data-disabled`** | Present when disabled  |
+| **`data-invalid`**  | Present when invalid   |
+| **`data-readonly`** | Present when read-only |
+| **`data-required`** | Present when required  |
+
+### List
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Positioner
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### RootProvider
+
+#### Props
+
+| Prop                       | Type                 | Required | Default          | Description                                                                                                                                                                                                          |
+| -------------------------- | -------------------- | -------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`value`**                | `UseSelectReturn<T>` | true     | `undefined`      | undefined                                                                                                                                                                                                            |
+| **`asChild`**              | `boolean`            | false    | `undefined`      | Use the provided child element as the default rendered element, combining their props and behavior.                                                                                                                  |
+| **`hideMode`**             | `HideMode`           | false    | `'display-none'` | How to hide content when mounted but not present.<br />- `'display-none'`: HTML `hidden` attribute. Effects stay alive.<br />- `'activity'`: React 19 `<Activity mode="hidden">`. Effects pause. Requires React 19+. |
+| **`immediate`**            | `boolean`            | false    | `undefined`      | Whether to synchronize the present change immediately or defer it to the next frame                                                                                                                                  |
+| **`lazyMount`**            | `boolean`            | false    | `false`          | Whether to enable lazy mounting                                                                                                                                                                                      |
+| **`onExitComplete`**       | `VoidFunction`       | false    | `undefined`      | Function called when the animation ends in the closed state                                                                                                                                                          |
+| **`present`**              | `boolean`            | false    | `undefined`      | Whether the node is present (controlled by the user)                                                                                                                                                                 |
+| **`skipAnimationOnMount`** | `boolean`            | false    | `false`          | Whether to allow the initial presence animation.                                                                                                                                                                     |
+| **`unmountOnExit`**        | `boolean`            | false    | `false`          | Whether to unmount on exit.                                                                                                                                                                                          |
+
+### Trigger
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute                    | Description / Value                                       |
+| ---------------------------- | --------------------------------------------------------- |
+| **`data-scope`**             | select                                                    |
+| **`data-part`**              | trigger                                                   |
+| **`data-state`**             | "open" \| "closed"                                        |
+| **`data-disabled`**          | Present when disabled                                     |
+| **`data-invalid`**           | Present when invalid                                      |
+| **`data-readonly`**          | Present when read-only                                    |
+| **`data-placement`**         | The placement of the trigger                              |
+| **`data-side`**              | The side of the trigger that the trigger is positioned on |
+| **`data-placeholder-shown`** | Present when placeholder is shown                         |
+
+### ValueText
+
+#### Props
+
+| Prop              | Type      | Required | Default     | Description                                                                                         |
+| ----------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`**     | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| **`placeholder`** | `string`  | false    | `undefined` | Text to display when no value is selected.                                                          |
+
+#### Data Attributes
+
+| Attribute           | Description / Value   |
+| ------------------- | --------------------- |
+| **`data-scope`**    | select                |
+| **`data-part`**     | value-text            |
+| **`data-disabled`** | Present when disabled |
+| **`data-invalid`**  | Present when invalid  |
+| **`data-focus`**    | Present when focused  |
+
+### Context
+
+**API:**
+
+| Property              | Type                                              | Description                                                                                                                                 |
+| --------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `focused`             | `boolean`                                         | Whether the select is focused                                                                                                               |
+| `open`                | `boolean`                                         | Whether the select is open                                                                                                                  |
+| `empty`               | `boolean`                                         | Whether the select value is empty                                                                                                           |
+| `highlightedValue`    | `string \| null`                                  | The value of the highlighted item                                                                                                           |
+| `highlightedItem`     | `V \| null`                                       | The highlighted item                                                                                                                        |
+| `setHighlightValue`   | `(value: string) => void`                         | Function to highlight a value                                                                                                               |
+| `clearHighlightValue` | `VoidFunction`                                    | Function to clear the highlighted value                                                                                                     |
+| `selectedItems`       | `V[]`                                             | The selected items                                                                                                                          |
+| `hasSelectedItems`    | `boolean`                                         | Whether there's a selected option                                                                                                           |
+| `value`               | `string[]`                                        | The selected item keys                                                                                                                      |
+| `valueAsString`       | `string`                                          | The string representation of the selected items                                                                                             |
+| `selectValue`         | `(value: string) => void`                         | Function to select a value                                                                                                                  |
+| `selectAll`           | `VoidFunction`                                    | Function to select all values                                                                                                               |
+| `setValue`            | `(value: string[]) => void`                       | Function to set the value of the select                                                                                                     |
+| `clearValue`          | `(value?: string) => void`                        | Function to clear the value of the select.<br />If a value is provided, it will only clear that value, otherwise, it will clear all values. |
+| `focus`               | `VoidFunction`                                    | Function to focus on the select input                                                                                                       |
+| `getItemState`        | `(props: ItemProps) => ItemState`                 | Returns the state of a select item                                                                                                          |
+| `setOpen`             | `(open: boolean) => void`                         | Function to open or close the select                                                                                                        |
+| `collection`          | `ListCollection<V>`                               | Function to toggle the select                                                                                                               |
+| `reposition`          | `(options?: Partial<PositioningOptions>) => void` | Function to set the positioning options of the select                                                                                       |
+| `multiple`            | `boolean`                                         | Whether the select allows multiple selections                                                                                               |
+| `disabled`            | `boolean`                                         | Whether the select is disabled                                                                                                              |
+
+## Accessibility
+
+Complies with the [Listbox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/).
+
+### Keyboard Support
+
+| Key             | Description                                                                                                                                                                                                             |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`Space`**     | <span>When focus is on trigger, opens the select and focuses the first selected item.<br />When focus is on the content, selects the highlighted item.</span>                                                           |
+| **`Enter`**     | <span>When focus is on trigger, opens the select and focuses the first selected item.<br />When focus is on content, selects the focused item.</span>                                                                   |
+| **`ArrowDown`** | <span>When focus is on trigger, opens the select.<br />When focus is on content, moves focus to the next item.</span>                                                                                                   |
+| **`ArrowUp`**   | <span>When focus is on trigger, opens the select.<br />When focus is on content, moves focus to the previous item.</span>                                                                                               |
+| **`Esc`**       | <span>Closes the select and moves focus to trigger.</span>                                                                                                                                                              |
+| **`A-Z + a-z`** | <span>When focus is on trigger, selects the item whose label starts with the typed character.<br />When focus is on the listbox, moves focus to the next item with a label that starts with the typed character.</span> |

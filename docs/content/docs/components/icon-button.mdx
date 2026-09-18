@@ -1,0 +1,76 @@
+---
+title: 'IconButton'
+description: 'The IconButton component is a button that displays an icon.'
+npm: '@cerberus-design/react'
+source: 'components/icon-button'
+recipe: 'iconButton.ts'
+group: Components
+order: 17
+---
+
+## Import
+
+```ts
+import { IconButton } from '@cerberus/react'
+```
+
+## Usage
+
+<Example path="components/icon-button" demo="basic" />
+
+## Sizes
+
+The `IconButton` component comes in two sizes: `sm`, `lg`. You can set the size by using the `size` prop.
+
+<Example path="components/icon-button" demo="size" />
+
+## Palette
+
+You can change the palette of the `IconButton` by using the `palette` prop.
+
+<Example path="components/icon-button" demo="palette" />
+
+## Usage
+
+You can change the style of the `IconButton` by using the `usage` prop.
+
+<Example path="components/icon-button" demo="usage" />
+
+## Shape
+
+You can change the shape of the `IconButton` by using the `shape` prop.
+
+<Example path="components/icon-button" demo="shape" />
+
+## Customization
+
+You can customize the `IconButton` with style props or the [Primitive](#primitives) components.
+
+<Example path="components/icon-button" demo="custom" />
+
+## Button as Links
+
+You can create IconButton styled links by using the `asChild` prop.
+
+<Example path="components/icon-button" demo="asChild" />
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the button.
+
+| Component    | Description                               |
+| ------------ | ----------------------------------------- |
+| `IconButton` | The context provider for the Button parts |
+
+## API
+
+### Props
+
+The `IconButton` component is an abstraction of the primitives and accepts the following props:
+
+| Name        | Default  | Description                                                     |
+| ----------- | -------- | --------------------------------------------------------------- |
+| `clipboard` | false    | If true, uses Clipboard aria-attributes.                        |
+| `palette`   | `action` | The color palette (any of the Cerberus palettes) of the button. |
+| `usage`     | `filled` | The style treatment of the button.                              |
+| `shape`     | `sharp`  | The shape of the button.                                        |

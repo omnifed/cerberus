@@ -1,0 +1,34 @@
+---
+title: Link Overlay
+description: Used to stretch a link over a container.
+panda: https://panda-css.com/docs/concepts/patterns#linkoverlay
+group: Layout
+order: 12
+---
+
+## Import
+
+```ts
+import { LinkOverlay } from 'styled-system/jsx'
+```
+
+## Usage
+
+The link overlay pattern is used to expand a link's clickable area to its nearest
+parent with `position: relative`.
+
+<Example path="components/link-overlay" demo="basic" />
+
+## How it works
+
+This pattern replaces the `LinkOverlay` component with a `<a>` element, allowing
+the link to expand to its nearest parent and passing all props through.
+
+### Caveat
+
+One of the side-effects of this technique is that the content can't be "selectable"
+(i.e. with a pointing device), however, this seems to be pretty uncommon in web design.
+
+## Props
+
+LinkOverlay accepts all CSS properties and that of an `<a>` element.

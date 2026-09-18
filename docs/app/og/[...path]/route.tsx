@@ -1,5 +1,4 @@
-import { docs, blog } from '#site/content'
-import { DocFrontmatter } from '@/app/docs/types'
+import { blog, docs } from '#site/content'
 import { CheckmarkFilled } from '@carbon/icons-react'
 import { Show } from '@cerberus-design/react'
 import { ImageResponse } from 'next/og'
@@ -32,35 +31,15 @@ export async function GET(request: Request, props: Props) {
     let description = 'Improving React development for humans and agents.'
     let lib: string | undefined
 
-    // 1. Check Velite Collections First
-    const veliteDoc = [...docs, ...blog].find(
+    // Check Velite Collections First
+    const doc = [...docs, ...blog].find(
       (d) => (d as any).slugAsParams === urlPath || d.slug === urlPath,
     )
 
-    if (veliteDoc) {
-      title = veliteDoc.title
-      description = veliteDoc.description || description
-      lib = (veliteDoc as any).package // If added to Velite schema
-    } else {
-      // 2. Fallback to Legacy Imports for unmigrated routes
-      let page
-      try {
-        if (path.length > 2) {
-          const [scope, section] = path
-          page = await import(`@/app/${scope}/${section}/[slug]/content/${slug}.mdx`)
-        } else {
-          const [scope] = path
-          page = await import(`@/app/${scope}/[slug]/content/${slug}.mdx`)
-        }
-        const frontmatter = page?.frontmatter as DocFrontmatter | undefined
-        if (frontmatter) {
-          title = frontmatter.title || title
-          description = frontmatter.description || description
-          lib = frontmatter.package
-        }
-      } catch {
-        // Silent catch: use defaults if legacy page is also not found
-      }
+    if (doc) {
+      title = doc.title
+      description = doc.description || description
+      lib = (doc as any).package // If added to Velite schema
     }
 
     const bodyPoppins = await readFile(

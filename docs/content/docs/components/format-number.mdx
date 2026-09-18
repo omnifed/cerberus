@@ -1,0 +1,55 @@
+---
+title: 'Format Number'
+description: 'Formats a number value with automatic unit conversion and display options.'
+npm: '@cerberus/react'
+arkUtility: 'format-number'
+group: Utilities
+order: 8
+---
+
+## Import
+
+The number formatting logic is handled by the native `Intl.NumberFormat` API and smartly cached to avoid performance
+issues when using the same locale and options.
+
+```jsx
+import { Format } from '@cerberus/react'
+```
+
+## Usage
+
+### Basic
+
+Use the `Format.Number` component to format a number with default options.
+
+<Example path="components/format" demo="number" />
+
+### Percentage
+
+Use the `style="percent"` prop to format the number as a percentage.
+
+<Example path="components/format" demo="percent" />
+
+### Currency
+
+Use the `style="currency"` prop along with the `currency` prop to format the number as a currency.
+
+<Example path="components/format" demo="currency" />
+
+### Locale
+
+Use the `locale` prop to format the number according to a specific locale.
+
+<Example path="components/format" demo="locale" />
+
+### Unit
+
+Use the `style="unit"` prop along with the `unit` prop to format the number with a specific unit.
+
+<Example path="components/format" demo="unit" />
+
+### Compact Notation
+
+Use the `notation="compact"` prop to format the number in compact notation.
+
+<Example path="components/format" demo="compact" />

@@ -1,0 +1,31 @@
+---
+title: Container
+description:
+  Used to constrain a content's width to the current breakpoint, while keeping
+  it fluid.
+panda: https://panda-css.com/docs/concepts/patterns#container
+group: Layout
+order: 5
+---
+
+## Import
+
+```ts
+import { Container } from 'styled-system/jsx'
+```
+
+## Usage
+
+The default `maxWidth` is `8xl` which maps to `90rem (1440px)`.
+
+<Example path="components/container" demo="basic" />
+
+### Sizes
+
+Use the `maxWidth` prop to change the size of the container.
+
+<Example path="components/container" demo="sizes" />
+
+## Props
+
+The `Container` component accepts any CSS properties.

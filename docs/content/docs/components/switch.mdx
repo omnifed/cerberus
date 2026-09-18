@@ -1,0 +1,201 @@
+---
+title: Switch
+description: The Switch component is a toggle input that allows users to switch between two states.
+npm: '@cerberus-design/react'
+source: 'components/switch'
+recipe: 'slots/switch.ts'
+ark: 'switch'
+group: Components
+order: 34
+---
+
+## Import
+
+```ts
+import { Switch, SwitchParts } from '@cerberus/react'
+```
+
+## Usage
+
+<Example path="components/switch" demo="basic" />
+
+## With Field
+
+To use the `Switch` within a form, wrap it with the [`Field`](/docs/components/field) component.
+
+<Example path="components/switch" demo="field" />
+
+## Sizes
+
+To change the visual size of the `Switch` use the `size` prop.
+
+<Example path="components/switch" demo="size" />
+
+## Customizing
+
+To customize the `Switch` use style props or the [Primitives](#primitives)
+
+<Example path="components/switch" demo="custom" />
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the checkbox.
+
+| Component           | Description                               |
+| ------------------- | ----------------------------------------- |
+| `SwitchRoot`        | The context provider for the switch parts |
+| `SwitchLabel`       | The label of the switch                   |
+| `SwitchControl`     | The visual input of the switch            |
+| `SwitchThumb`       | The thumb of the switch state             |
+| `SwitchHiddenInput` | The native input for the switch           |
+
+### Parts
+
+The `SwitchParts` API is an Object containing the full family of components.
+
+| Name          | Description                                                         |
+| ------------- | ------------------------------------------------------------------- |
+| `Root`        | The `SwitchRoot` component which is the Provider for the family.    |
+| `Label`       | The `SwitchLabel` component which displays the label.               |
+| `Control`     | The `SwitchControl` component which is the visual field.            |
+| `Thumb`       | The `SwitchThumb` component which displays the thumb of the switch. |
+| `HiddenInput` | The `SwitchHiddenInput` component which displays the native input.  |
+
+## API
+
+### Root
+
+#### Props
+
+| Prop                  | Type                                                                                            | Required | Default     | Description                                                                                         |
+| --------------------- | ----------------------------------------------------------------------------------------------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`**         | `boolean`                                                                                       | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| **`checked`**         | `boolean`                                                                                       | false    | `undefined` | The controlled checked state of the switch                                                          |
+| **`disabled`**        | `boolean`                                                                                       | false    | `undefined` | Whether the switch is disabled.                                                                     |
+| **`ids`**             | `Partial<{ root: string; hiddenInput: string; control: string; label: string; thumb: string }>` | false    | `undefined` | The ids of the elements in the switch. Useful for composition.                                      |
+| **`invalid`**         | `boolean`                                                                                       | false    | `undefined` | If `true`, the switch is marked as invalid.                                                         |
+| **`label`**           | `string`                                                                                        | false    | `undefined` | Specifies the localized strings that identifies the accessibility elements and their states         |
+| **`name`**            | `string`                                                                                        | false    | `undefined` | The name of the input field in a switch<br />(Useful for form submission).                          |
+| **`onCheckedChange`** | `(details: CheckedChangeDetails) => void`                                                       | false    | `undefined` | Function to call when the switch is clicked.                                                        |
+| **`readOnly`**        | `boolean`                                                                                       | false    | `undefined` | Whether the switch is read-only                                                                     |
+| **`required`**        | `boolean`                                                                                       | false    | `undefined` | If `true`, the switch input is marked as required,                                                  |
+| **`value`**           | `string \| number`                                                                              | false    | `"on"`      | The value of switch input. Useful for form submission.                                              |
+
+#### Data Attributes
+
+| Attribute                | Description / Value                |
+| ------------------------ | ---------------------------------- |
+| **`data-active`**        | Present when active or pressed     |
+| **`data-focus`**         | Present when focused               |
+| **`data-focus-visible`** | Present when focused with keyboard |
+| **`data-readonly`**      | Present when read-only             |
+| **`data-hover`**         | Present when hovered               |
+| **`data-disabled`**      | Present when disabled              |
+| **`data-state`**         | "checked" \| "unchecked"           |
+| **`data-invalid`**       | Present when invalid               |
+| **`data-required`**      | Present when required              |
+
+### Control
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute                | Description / Value                |
+| ------------------------ | ---------------------------------- |
+| **`data-active`**        | Present when active or pressed     |
+| **`data-focus`**         | Present when focused               |
+| **`data-focus-visible`** | Present when focused with keyboard |
+| **`data-readonly`**      | Present when read-only             |
+| **`data-hover`**         | Present when hovered               |
+| **`data-disabled`**      | Present when disabled              |
+| **`data-state`**         | "checked" \| "unchecked"           |
+| **`data-invalid`**       | Present when invalid               |
+| **`data-required`**      | Present when required              |
+
+### HiddenInput
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Label
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute                | Description / Value                |
+| ------------------------ | ---------------------------------- |
+| **`data-active`**        | Present when active or pressed     |
+| **`data-focus`**         | Present when focused               |
+| **`data-focus-visible`** | Present when focused with keyboard |
+| **`data-readonly`**      | Present when read-only             |
+| **`data-hover`**         | Present when hovered               |
+| **`data-disabled`**      | Present when disabled              |
+| **`data-state`**         | "checked" \| "unchecked"           |
+| **`data-invalid`**       | Present when invalid               |
+| **`data-required`**      | Present when required              |
+
+### RootProvider
+
+#### Props
+
+| Prop          | Type              | Required | Default     | Description                                                                                         |
+| ------------- | ----------------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`value`**   | `UseSwitchReturn` | true     | `undefined` | undefined                                                                                           |
+| **`asChild`** | `boolean`         | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+### Thumb
+
+#### Props
+
+| Prop          | Type      | Required | Default     | Description                                                                                         |
+| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+#### Data Attributes
+
+| Attribute                | Description / Value                |
+| ------------------------ | ---------------------------------- |
+| **`data-active`**        | Present when active or pressed     |
+| **`data-focus`**         | Present when focused               |
+| **`data-focus-visible`** | Present when focused with keyboard |
+| **`data-readonly`**      | Present when read-only             |
+| **`data-hover`**         | Present when hovered               |
+| **`data-disabled`**      | Present when disabled              |
+| **`data-state`**         | "checked" \| "unchecked"           |
+| **`data-invalid`**       | Present when invalid               |
+| **`data-required`**      | Present when required              |
+
+### Context
+
+**API:**
+
+| Property        | Type                         | Description                              |
+| --------------- | ---------------------------- | ---------------------------------------- |
+| `checked`       | `boolean`                    | Whether the switch is checked            |
+| `disabled`      | `boolean \| undefined`       | Whether the switch is disabled           |
+| `focused`       | `boolean \| undefined`       | Whether the switch is focused            |
+| `setChecked`    | `(checked: boolean) => void` | Sets the checked state of the switch.    |
+| `toggleChecked` | `VoidFunction`               | Toggles the checked state of the switch. |
+
+## Accessibility
+
+Complies with the [Switch WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/switch/).
+
+### Keyboard Support
+
+| Key                 | Description       |
+| ------------------- | ----------------- |
+| **`Space + Enter`** | Toggle the switch |

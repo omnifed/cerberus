@@ -1,0 +1,102 @@
+---
+title: Table
+description: The Table component is a controlled component that can be used to display tabular data.
+npm: '@cerberus-design/react'
+source: 'components/table'
+recipe: 'slots/table.ts'
+group: Components
+order: 35
+---
+
+## Import
+
+```ts
+import { Table } from '@cerberus/react'
+```
+
+## Usage
+
+The Table component is a controlled component that can be used to display data. It can be used in a group with other tables to allow for multiple selections.
+
+<NoteAdmonition description="Want a high-end feature packed solution? Check out the Data Grid, the Cerberus superpowered table component." />
+
+<Example path="components/table" demo="basic" />
+
+## Sizes
+
+The `Table.Root` component supports different sizes for its cells. You can set the size of the table using the `size` prop. The available sizes are `sm`, `md`, and `lg`. The default size is `md`.
+
+<Example path="components/table" demo="size" />
+
+## Decoration
+
+The `Table.Root` component supports different decorations for its rows. You can set the decoration of the table using the `decoration` prop. The available decorations are `default` and `zebra`.
+
+<Example path="components/table" demo="decoration" />
+
+## Sticky
+
+The `Table.Root` component supports a `sticky` prop, which makes the table header sticky. This is useful for long tables where you want to keep the header visible while scrolling.
+
+<NoteAdmonition description="The sticky prop removes the border from the table so you can provide it on the scrollable container for a better design experience." />
+
+<Example path="components/table" demo="sticky" />
+
+## Clickable
+
+The `Table.HeaderCol` component supports a `Table.Trigger`, which renders a button element. This allows you to create clickable headers for sorting or other actions.
+
+<Example path="components/table" demo="clickable" />
+
+## Customizing
+
+To customize the table use style props or the [Primtives](#primitives)
+
+<Example path="components/table" demo="custom" />
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the table.
+
+| Component      | Description                      |
+| -------------- | -------------------------------- |
+| `TableRoot`    | The table container component.   |
+| `TableEl`      | The table component.             |
+| `Caption`      | The caption component.           |
+| `Thead`        | The table header component.      |
+| `Th`           | The table header cell component. |
+| `Tbody`        | The table body component.        |
+| `Tr`           | The table row component.         |
+| `Td`           | The table cell component.        |
+| `Tfoot`        | The table footer component.      |
+| `TableTrigger` | The table trigger component.     |
+
+### Parts
+
+The `TableParts` API is an Object containing the full family of components.
+
+| Name        | Description                                                                            |
+| ----------- | -------------------------------------------------------------------------------------- |
+| `Root`      | The `TableRoot` component which is the container of the table.                         |
+| `Table`     | The `TableEl` component which is the table element.                                    |
+| `Caption`   | The `Caption` component which is the caption of the table.                             |
+| `Header`    | The `Thead` component which is the table header component.                             |
+| `HeaderCol` | The `Th` component which is the table header cell component.                           |
+| `Body`      | The `Tbody` component which is the table body component.                               |
+| `Row`       | The `Tr` component which is the table row component.                                   |
+| `Cell`      | The `Td` component which is the table cell component.                                  |
+| `Footer`    | The `Tfoot` component which is the table footer component.                             |
+| `Trigger`   | The `TableTrigger` component which is the optional table header col trigger component. |
+
+## API
+
+### Props
+
+The `Table` component is an abstraction of the primitives and accepts the following props:
+
+| Name         | Default   | Description                               |
+| ------------ | --------- | ----------------------------------------- |
+| `caption`    |           | The accessible caption of the Table.      |
+| `size`       | `md`      | This cell size of the Table.              |
+| `decoration` | `default` | The decoration of the Table.              |
+| `sticky`     | `false`   | If true, the table header will be sticky. |

@@ -169,8 +169,18 @@ export default createCerberusConfig({
 
 In order for components to have access to icons, you must wrap your application with the `CerberusProvider` context.
 
-<Example path="components/context" demo="basic" />
-<br />
+```tsx
+'use client'
+
+import { CerberusProvider, makeSystemConfig } from '@cerberus-design/react'
+import { PropsWithChildren } from 'react'
+
+const config = makeSystemConfig()
+
+export function ConfigDemo(props: PropsWithChildren) {
+  return <CerberusProvider config={config}>{props.children}</CerberusProvider>
+}
+```
 
 At this point, you are ready to start using Cerberus React.
 

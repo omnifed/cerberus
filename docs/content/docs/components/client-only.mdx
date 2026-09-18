@@ -1,0 +1,33 @@
+---
+title: 'Client Only'
+description: 'Renders children only on the client side.'
+npm: '@cerberus-design/react'
+arkUtility: 'client-only'
+group: Utilities
+order: 1
+---
+
+## Motivation
+
+The `ClientOnly` component renders its children only on the client side. This is useful for components that need to
+access the DOM or browser APIs that are not available on the server side.
+
+## Examples
+
+### Basic
+
+<Example path="components/client-only" demo="basic" />
+
+### With Fallback
+
+To render someting on the server before rendering on the client, use the `fallback` prop.
+
+<Example path="components/client-only" demo="fallback" />
+
+## API
+
+### Props
+
+| Prop           | Type  | Required | Default     | Description |
+| -------------- | ----- | -------- | ----------- | ----------- |
+| **`fallback`** | `any` | false    | `undefined` | undefined   |

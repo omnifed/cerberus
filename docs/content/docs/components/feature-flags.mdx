@@ -1,0 +1,26 @@
+---
+title: 'Feature Flags'
+description: 'Feature Flags display or hide content in the UI.'
+npm: '@cerberus-design/react'
+source: 'components/feature-flag'
+group: Utilities
+order: 4
+---
+
+## Import
+
+```ts
+import { FeatureFlags, FeatureFlag } from '@cerberus/react'
+```
+
+## Usage
+
+<Example path="components/feature-flags" demo="basic" />
+
+## API
+
+### Props
+
+| Prop   | Type                      | Required | Description                                       |
+| ------ | ------------------------- | -------- | ------------------------------------------------- |
+| `flag` | `Record<string, boolean>` | Yes      | A unique Record of keys passed into the provider. |

@@ -1,0 +1,52 @@
+---
+title: Center
+description: Used to center its child within itself.
+panda: https://panda-css.com/docs/concepts/patterns#center
+group: Layout
+order: 4
+---
+
+## Import
+
+```ts
+import { Center } from 'styled-system/jsx'
+```
+
+## Usage
+
+The Center pattern is used to center the content of a container.
+
+<Example path="components/center" demo="basic" />
+
+### Icon
+
+Center can be used to create frames around icons or numbers.
+
+<Example path="components/center" demo="icon" />
+
+### Center with Inline
+
+Use the `inline` to change the display to `inline-flex`.
+
+<Example path="components/center" demo="inline" />
+
+### Square
+
+`Square` centers its child given the `size` (width and height).
+
+<Example path="components/center" demo="square" />
+
+### Circle
+
+`Circle` centers its child given the `size` and creates a circle around it.
+
+<Example path="components/center" demo="circle" />
+
+## Props
+
+The `Center` component accepts the following utility props in addition to style and factory props:
+
+| Prop     | Type      | Description                               |
+| -------- | --------- | ----------------------------------------- |
+| `inline` | `boolean` | Changes the display to `inline-flex`.     |
+| `size`   | `string`  | Sets the width and height of the element. |

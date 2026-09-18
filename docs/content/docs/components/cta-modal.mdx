@@ -1,0 +1,73 @@
+---
+title: 'CTA Modal'
+description: 'A modal component for displaying call-to-action messages.'
+npm: '@cerberus-design/react'
+source: 'components/cta-dialog'
+recipe: 'slots/dialog.ts'
+ark: 'dialog'
+group: Components
+order: 11
+---
+
+## Import
+
+```ts
+import { CTAModal, useCTAModal, createCTAModalActions } from '@cerberus/react'
+```
+
+## Usage
+
+To use the CTAModal, wrap your component with the `CTAModal` provider and use the `useCTAModal` hook to access the `show` method.
+
+To create your actions, use the `createCTAModalActions` function.
+
+<NoteAdmonition description="CTAModal is considered a dialog template. This means it's a pre-configured layout that is not fully customizable by nature. If you want to fully customize the modal, use the Dialog instead." />
+
+<Example path="components/cta-modal" demo="basic" />
+
+## With Links
+
+To use links instead of buttons, pass your link components to the `createCTAModalActions` function.
+
+<Example path="components/cta-modal" demo="links" />
+
+## With Content
+
+To use a custom content component, pass your custom component to the `content` prop of the `show` method.
+
+<Example path="components/cta-modal" demo="description" />
+
+## Primitives
+
+The CTAModal is an abstraction of the [Dialog Primitives](/docs/components/dialog#primitives) and does not provide any additional customization. To build your own CTAModal, use the [`Dialog`](/docs/components/dialog) components.
+
+## API
+
+The `CTAModal` component is an abstraction of the Dialog and accepts the same
+props as the [`Dialog`](/docs/components/dialog) component.
+
+### Show Method Options
+
+The `show` method accepts the following options:
+
+| Name          | Default     | Description                                                                                   |
+| ------------- | ----------- | --------------------------------------------------------------------------------------------- |
+| `heading`     | `void`      | The heading of the modal.                                                                     |
+| `description` | `void``     | The description of the modal.                                                                 |
+| `icon`        | `undefined` | The icon to display in the modal.                                                             |
+| `actions`     | `[]`        | The actions to display in the modal. **Requires the use of `createCTAModalActions` utility.** |
+
+### Utilities
+
+The `createCTAModalActions` utility accepts an array of objects with the following properties or ReactNodes:
+
+## Action
+
+| Name          | Default     | Description                      |
+| ------------- | ----------- | -------------------------------- |
+| `text`        | `''`        | The text of the action.          |
+| `handleClick` | `undefined` | The click handler of the action. |
+
+## Link
+
+Pass your Array of link components to the `createCTAModalActions` function.

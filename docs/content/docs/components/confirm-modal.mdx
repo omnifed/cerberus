@@ -1,0 +1,64 @@
+---
+title: Confirm Modal
+description: 'The Confirm Modal component provides a way to confirm actions with users, ensuring they are aware of the consequences before proceeding.'
+npm: '@cerberus-design/react'
+source: 'context/confirm-modal.tsx'
+recipe: 'slots/dialog.ts'
+ark: 'dialog'
+group: Components
+order: 10
+---
+
+## Import
+
+```ts
+import { ConfirmModal, useConfirmModal } from '@cerberus/react'
+```
+
+<NoteAdmonition description="ConfirmModal is considered a dialog template. This means it's a pre-configured layout that is not fully customizable by nature. If you want to fully customize the modal, use the Dialog instead." />
+
+## Usage
+
+The `ConfirmModal` component is a controlled abstraction of the [Dialog](/docs/components/dialog).
+
+<Example path="components/confirm-modal" demo="basic" />
+
+## Destructive
+
+To show a destructive confirm modal, set the `kind` prop in the options to `'destructive'`.
+
+<Example path="components/confirm-modal" demo="destructive" />
+
+### No Avatar
+
+To change the visibility of the avatar, set `showAvatar` to `false` in the options.
+
+<Example path="components/confirm-modal" demo="avatar" />
+
+## Primitives
+
+The layers of the `ConfirmModal` which can be used to create a fully custom solution are the same as the [Dialog](/docs/components/dialog#primitives).
+
+### Data Attributes
+
+The primitives additionally use the same data attributes as the [Dialog](/docs/components/dialog#primitives).
+
+## API
+
+### ConfirmModal
+
+The `ConfirmModal` component is an abstraction of the Dialog and accepts the same
+props as the [`Dialog`](/docs/components/dialog#api) component.
+
+### Show Method Options
+
+The `show` method accepts the following options:
+
+| Name          | Default           | Description                                                                        |
+| ------------- | ----------------- | ---------------------------------------------------------------------------------- |
+| `showAvatar`  | `true`            | Whether to show the avatar in the modal.                                           |
+| `kind`        | `non-destructive` | The variant used to theme the modal.                                               |
+| `heading`     |                   | The heading of the modal.                                                          |
+| `description` |                   | The description of the modal. For non-destructive modals only, can be a ReactNode. |
+| `actionText`  |                   | The text for the action button.                                                    |
+| `cancelText`  |                   | The text for the cancel button.                                                    |

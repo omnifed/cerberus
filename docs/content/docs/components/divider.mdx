@@ -1,0 +1,59 @@
+---
+title: Divider
+description: Used to create visual separation between content.
+panda: https://panda-css.com/docs/concepts/patterns#divider
+group: Layout
+order: 7
+---
+
+## Import
+
+```ts
+import { Divider } from 'styled-system/jsx'
+```
+
+## Usage
+
+Used to visually separate content.
+
+<Example path="components/divider" demo="basic" />
+
+## Appearance
+
+To change the appearance of the divider, use the `borderStyle` prop.
+
+<Example path="components/divider" demo="appearance" />
+
+### Orientation
+
+Use the `orientation` prop to change the orientation of the divider.
+
+<Example path="components/divider" demo="orientation" />
+
+### Thickness
+
+Use the `thickness` prop to change the thickness of the divider.
+
+<Example path="components/divider" demo="thickness" />
+
+### Color
+
+Use the `color` prop to change the color of the divider.
+
+<Example path="components/divider" demo="color" />
+
+## Label
+
+Create visual labels by combining a `Divider` with other layout components.
+
+<Example path="components/divider" demo="label" />
+
+## Props
+
+The `Divider` component accepts the following utility props in addition to style and factory props:
+
+| Prop          | Type                  | Description                                                 |
+| ------------- | --------------------- | ----------------------------------------------------------- |
+| `orientation` | `horizontal,vertical` | The orientation of the divider. Defaults to `"horizontal"`. |
+| `thickness`   | `string`              | The thickness of the divider. Defaults to `"1px"`.          |
+| `color`       | `string`              | The color of the divider. Defaults to `"gray.200"`.         |

@@ -1,0 +1,34 @@
+---
+title: 'Text'
+description: 'A component for rendering text.'
+npm: '@cerberus-design/react'
+source: 'components/text'
+group: Components
+order: 38
+---
+
+## Import
+
+```ts
+import { Text } from '@cerberus/react'
+```
+
+## Usage
+
+<Example path="components/text" demo="basic" />
+
+## Raw HTML
+
+To render raw HTML, you can utilize the React `dangerouslySetInnerHTML` combined with the `whiteSpace` property.
+
+<Example path="components/text" demo="dangerous" />
+
+## API
+
+### Props
+
+The `Text` component accepts the following props along with the props from the `Box` component.
+
+| Name | Default | Description                                        |
+| ---- | ------- | -------------------------------------------------- |
+| `as` |         | The text-based element to render the component as. |

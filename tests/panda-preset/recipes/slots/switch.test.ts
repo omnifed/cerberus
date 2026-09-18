@@ -1,5 +1,5 @@
-import { describe, test, expect } from 'bun:test'
 import { slotRecipes } from '@cerberus/panda-preset'
+import { describe, expect, test } from 'bun:test'
 
 describe('switchRecipe recipe', () => {
   const { switchRecipe } = slotRecipes
@@ -85,9 +85,9 @@ describe('switchRecipe recipe', () => {
       transitionDuration: 'fast',
       w: 'var(--thumb-size)',
       _checked: {
-        colorPalette: 'action',
-        color: 'action.text.200',
+        color: 'action.text.static',
         translate: 'var(--switch-x) 0',
+        transform: 'scale(1.2)',
       },
     })
   })

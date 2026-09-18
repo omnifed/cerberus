@@ -1,0 +1,72 @@
+---
+title: Fieldset
+description: The Fieldset component groups form fields together with a shared legend and helper/error text.
+npm: '@cerberus-design/react'
+source: 'components/fieldset'
+recipe: 'slots/fieldset.ts'
+ark: 'fieldset'
+group: Components
+order: 15
+---
+
+## Import
+
+```ts
+import { Fieldset, FieldsetParts } from '@cerberus/react'
+```
+
+## Usage
+
+### Form Section Example
+
+The `Fieldset` component can be used to group related form elements together using the `usage` prop which can be either `formSection` or `fieldGroup` (default).
+
+<Example path="components/fieldset" demo="basic" />
+
+### Field Group Example
+
+When use need to label a group of Radio or Checkbox inputs, use the `usage` prop with the value `fieldGroup`.
+
+<Example path="components/fieldset" demo="group" />
+
+## Customizing
+
+You can use style props or the [Primitives](#primitives) to customize the Fieldset.
+
+<Example path="components/fieldset" demo="custom" />
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the Fieldset.
+
+| Component            | Description                                 |
+| -------------------- | ------------------------------------------- |
+| `FieldsetRoot`       | The context provider for the Fieldset parts |
+| `FieldsetLegend`     | The label of the fieldset                   |
+| `FieldsetHelperText` | The label description for the Fieldset      |
+| `FieldsetErrorText`  | The error message for the Fieldset          |
+
+## API
+
+### Props
+
+The `Fieldset` component is an abstraction of the primitives and accepts the following props:
+
+| Name    | Default      | Description                      |
+| ------- | ------------ | -------------------------------- |
+| `usage` | `fieldGroup` | The type of fieldset to display. |
+
+The `Fieldset` component also accepts all the props of the [`FieldsetRoot` primitive props](https://ark-ui.com/react/docs/components/fieldset#api-reference)
+
+### Parts
+
+The `FieldsetParts` API is an Object containing the full family of components.
+
+<NoteAdmonition description="It is best to only use the FieldsetParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+
+| Name         | Description                                                                                         |
+| ------------ | --------------------------------------------------------------------------------------------------- |
+| `Root`       | The `FieldsetRoot` component which is the Provider for the family.                                  |
+| `Legend`     | The `FieldsetLegend` component which displays the label.                                            |
+| `HelperText` | The `FieldsetHelperText` component which displays the description text.                             |
+| `ErrorText`  | The `FieldsetErrorText` component which displays the error text when the group is marked `invalid`. |

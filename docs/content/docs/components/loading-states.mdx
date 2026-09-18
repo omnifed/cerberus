@@ -1,0 +1,45 @@
+---
+title: Loading States
+description: Loading states are used to indicate that content is being loaded.
+npm: '@cerberus-design/react'
+source: 'components/spinner'
+group: Components
+order: 19
+---
+
+## Skeletor API
+
+To show a skeleton loading state, simply add the `aria-busy` attribute to the element you want to show the loading state for.
+
+```tsx
+<div aria-busy="true">
+  <p>This is now hidden</p>
+</div>
+```
+
+<br />
+<Example path="components/loading-states" demo="loading" />
+
+### Spinners
+
+Cerberus provides a `Spinner` component that can be used to indicate a loading state.
+
+<NoteAdmonition description="Spinners are built into Buttons via the Button.Icon component. This example is only beneficial use outside of buttons." />
+
+<Example path="components/loading-states" demo="spinner" />
+
+## Customization
+
+The `Spinner` component is a simple SVG element that can be styled with CSS.
+
+<Example path="components/loading-states" demo="custom" />
+
+## API
+
+### Props
+
+The `Spinner` component accepts the same props as an SVG element.
+
+| Name   | Default | Description                                   |
+| ------ | ------- | --------------------------------------------- |
+| `size` |         | A strict `height` and `width` of the Spinner. |

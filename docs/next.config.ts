@@ -1,4 +1,3 @@
-import createMDX from '@next/mdx'
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
@@ -73,45 +72,4 @@ const nextConfig: NextConfig = {
   },
 }
 
-const withMDX = createMDX({
-  options: {
-    remarkPlugins: [
-      'remark-emoji',
-      'remark-parse',
-      'remark-gfm',
-      'remark-frontmatter',
-      'remark-mdx-frontmatter',
-    ],
-    rehypePlugins: [
-      [
-        'rehype-expressive-code',
-        {
-          plugins: ['@expressive-code/plugin-line-numbers'],
-          styleOverrides: {},
-          themes: [
-            'min-light',
-            'night-owl',
-            'everforest-dark',
-            'everforest-light',
-            'vitesse-black',
-            'vitesse-light',
-          ],
-        },
-      ],
-      'rehype-slug',
-      [
-        'rehype-autolink-headings',
-        {
-          behavior: 'wrap',
-          properties: {
-            className: 'heading',
-          },
-        },
-      ],
-      'rehype-stringify',
-    ],
-  },
-})
-
-// Merge MDX config with Next.js config
-export default withMDX(nextConfig)
+export default nextConfig

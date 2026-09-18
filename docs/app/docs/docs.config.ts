@@ -1,12 +1,11 @@
 import {
-  type Doc,
+  getComponentsDocs,
   getDataGridDocs,
   getGetStartedDocs,
   getSignalsDocs,
   getStylingDocs,
   getThemingDocs,
 } from '@/lib/docs-content'
-import { items as componentsItems } from './components/[slug]/content/items'
 import type { DocConfig } from './types'
 
 export const config: DocConfig = {
@@ -39,7 +38,7 @@ export const config: DocConfig = {
         description:
           'Explore the various components available in the Cerberus Design System and how to use them.',
       },
-      items: componentsItems as unknown as Doc[],
+      items: getComponentsDocs(),
     },
     {
       id: '2.a',

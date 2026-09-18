@@ -1,0 +1,93 @@
+---
+title: 'Tag'
+description: 'Used for categorizing or labeling content'
+npm: '@cerberus-design/react'
+source: 'components/tag'
+recipe: 'tag.ts'
+group: Components
+order: 37
+---
+
+## Import
+
+```ts
+import { Tag } from '@cerberus/react'
+```
+
+## Usage
+
+You can mix and match all of the examples to create the tag style of your choosing.
+
+<Example path="components/tag" demo="basic" />
+
+## Usage Variants
+
+Use the `usage` prop to change the style of the tag.
+
+<Example path="components/tag" demo="usage" />
+
+## Shape Variants
+
+Use the `shape` prop to change the shape of the tag.
+
+<Example path="components/tag" demo="shape" />
+
+## Colors
+
+You can set the color of the tag by using the `palette` prop.
+
+<NoteAdmonition description="By nature of CSS rules, only a `palette` or `gradient` can be used at a time. This is because the `palette` prop sets the background color, and the `gradient` prop sets the background gradient." />
+
+<Example path="components/tag" demo="palette" />
+
+## Gradients
+
+You can set the gradient of the tag by using the `gradient` prop.
+
+<NoteAdmonition description="By nature of CSS rules, only a `palette` or `gradient` can be used at a time. This is because the `palette` prop sets the background color, and the `gradient` prop sets the background gradient." />
+
+<Example path="components/tag" demo="gradient" />
+
+## Closable
+
+To use a closable tag, just pass an `onClick` prop to the `Tag` component. This will create a pill-shaped tag with a close icon button.
+
+<Example path="components/tag" demo="closable" />
+
+## Customizing
+
+You can customize the `Tag` using style props and data selectors on any slot primitve.
+
+<Example path="components/tag" demo="custom" />
+
+## Primitives
+
+You can customize the tag by utilizing style props and primitives. A Closable Tag is just a Tag with an IconButton inside.
+
+| Component | Description                  |
+| --------- | ---------------------------- |
+| `TagRoot` | The root wrapper of the tag. |
+
+### Data Attributes
+
+The Primitives additionally use the following data attributes for custom styling:
+
+| Name           | Value          | Description                   |
+| -------------- | -------------- | ----------------------------- |
+| `data-scope`   | `tag`          | The scope of the components.  |
+| `data-part`    | `root`         | The root wrapper of the tag.  |
+| `data-palette` | _palette name_ | The color palette of the tag. |
+
+## API
+
+### Props
+
+The `Tag` component is an abstraction of the primitives and accepts the following props:
+
+| Name       | Default     | Description                                        |
+| ---------- | ----------- | -------------------------------------------------- |
+| `gradient` | `undefined` | The gradient of the tag (overrides palette).       |
+| `palette`  | `page`      | The color palette of the tag (overrides gradient). |
+| `usage`    | `filled`    | The style treatment of the tag.                    |
+| `shape`    | `pill`      | The shape of the tag.                              |
+| `onClick`  | `undefined` | How to create a Closable tag.                      |
