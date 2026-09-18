@@ -1,6 +1,5 @@
-import { describe, test, expect } from 'bun:test'
 import { slotRecipes } from '@cerberus/panda-preset'
-import { ColorPalette } from '@carbon/icons-react'
+import { describe, expect, test } from 'bun:test'
 
 describe('switchRecipe recipe', () => {
   const { switchRecipe } = slotRecipes

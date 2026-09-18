@@ -31,7 +31,6 @@ interface DocumentSet {
   href?: string
   children?: DocumentSet[]
 }
-type Items = typeof componentsItems
 
 export const GET = async () => {
   const documentSets: DocumentSet[] = [
