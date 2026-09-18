@@ -19,7 +19,6 @@ const nextConfig: NextConfig = {
 
   pageExtensions: ['md', 'mdx', 'ts', 'tsx', 'json'],
 
-  // cacheComponents: true,
   reactCompiler: true,
   typedRoutes: true,
 

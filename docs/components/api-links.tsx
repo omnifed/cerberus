@@ -37,7 +37,7 @@ interface ApiLinksProps {
   jsr?: string
 }
 
-export default function ApiLinks(props: ApiLinksProps) {
+export function ApiLinks(props: ApiLinksProps) {
   return (
     <ul
       className={hstack({

@@ -1,4 +1,4 @@
-import PawIcon from '@/app/components/icons/paw-icon'
+import { PawIcon } from '@/components/icons/paw'
 import { Box, Circle } from '@/styled-system/jsx'
 import { AdmonitionParts } from '@cerberus-design/react'
 

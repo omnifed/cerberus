@@ -1,4 +1,4 @@
-import { DecorativeBox } from '@/app/components/decorative-box'
+import { DecorativeBox } from '@/components/decorative-box'
 import { Group } from '@cerberus-design/react'
 
 export function OrientationDemo() {

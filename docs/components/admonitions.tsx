@@ -19,11 +19,7 @@ export function NoteAdmonition(props: AdmonitionTypeProps) {
   } as AdmonitionProps
   return (
     <Box paddingBlock="8">
-      <Admonition
-        className={css(cerbAdmonitionStyles)}
-        {...styles}
-        heading="Note"
-      >
+      <Admonition className={css(cerbAdmonitionStyles)} {...styles} heading="Note">
         {props.description}
       </Admonition>
     </Box>
@@ -37,11 +33,7 @@ export function WarningAdmonition(props: AdmonitionTypeProps) {
   } as AdmonitionProps
   return (
     <Box paddingBlock="8">
-      <Admonition
-        className={css(cerbAdmonitionStyles)}
-        {...styles}
-        heading="Warning"
-      >
+      <Admonition className={css(cerbAdmonitionStyles)} {...styles} heading="Warning">
         {props.description}
       </Admonition>
     </Box>

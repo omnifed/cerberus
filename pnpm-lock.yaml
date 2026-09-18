@@ -358,9 +358,6 @@ importers:
       '@mdx-js/react':
         specifier: ^3.1.1
         version: 3.1.1(@types/react@19.2.18)(react@19.2.8)
-      '@next/mdx':
-        specifier: ^16.3.4
-        version: 16.3.4(@mdx-js/loader@3.1.1(supports-color@7.2.0))(@mdx-js/react@3.1.1(@types/react@19.2.18)(react@19.2.8))
       '@pandacss/dev':
         specifier: catalog:pandacss
         version: 1.12.0(typescript@7.0.2)
@@ -1501,17 +1498,6 @@ packages:
 
   '@next/eslint-plugin-next@16.3.4':
     resolution: {integrity: sha512-szW9y2Aumu4z88YXfTzcFsgUAg2k64uzbtcO5L9f1AKS4w/GUKJcbFllRflROVyNPgJtGOnvNxiyp3v6b+prIA==}
-
-  '@next/mdx@16.3.4':
-    resolution: {integrity: sha512-XEmW3ccWWNybofVOmgIEVhXtmNXM0u423iqkVXwPf29fht/tdpUiMDuMHQ4hMerE1477nOJrv5kM/F6qMcEMwA==}
-    peerDependencies:
-      '@mdx-js/loader': '>=0.15.0'
-      '@mdx-js/react': '>=0.15.0'
-    peerDependenciesMeta:
-      '@mdx-js/loader':
-        optional: true
-      '@mdx-js/react':
-        optional: true
 
   '@next/swc-darwin-arm64@16.3.4':
     resolution: {integrity: sha512-iBr3I5LZNk5/bgl5//iTgD2tcym14MX0Xo7fD//u9dYAEgGzza1y9oywluPtf74YnOswVdH1908aK9xVz7zQTw==}
@@ -6288,13 +6274,6 @@ snapshots:
       fast-glob: 3.3.1
     transitivePeerDependencies:
       - eslint
-
-  '@next/mdx@16.3.4(@mdx-js/loader@3.1.1(supports-color@7.2.0))(@mdx-js/react@3.1.1(@types/react@19.2.18)(react@19.2.8))':
-    dependencies:
-      source-map: 0.7.6
-    optionalDependencies:
-      '@mdx-js/loader': 3.1.1(supports-color@7.2.0)
-      '@mdx-js/react': 3.1.1(@types/react@19.2.18)(react@19.2.8)
 
   '@next/swc-darwin-arm64@16.3.4':
     optional: true

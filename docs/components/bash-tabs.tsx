@@ -1,6 +1,11 @@
-import { cerberus, Tabs } from '@cerberus-design/react'
+'use client'
+
+import { getCodeString } from '@/lib/get-code-string'
+import { HStack } from '@/styled-system/jsx'
+import { Terminal } from '@carbon/icons-react'
+import { cerberus, Show, Tabs } from '@cerberus-design/react'
 import { css } from 'styled-system/css'
-import { Code } from './code'
+import { CopyButton } from './example/copy-button.client'
 
 function formatJSRCmd(cmd: string): string {
   const isJSR = cmd.includes('jsr')
@@ -39,7 +44,7 @@ interface BashTabsProps {
   code: string
 }
 
-export default function BashTabs(props: BashTabsProps) {
+export function BashTabs(props: BashTabsProps) {
   return (
     <Tabs.Root defaultValue="pnpm">
       <Tabs.List
@@ -90,5 +95,51 @@ export default function BashTabs(props: BashTabsProps) {
         </Tabs.Panel>
       </cerberus.div>
     </Tabs.Root>
+  )
+}
+
+// REPLACE EVENTUALLY
+
+interface CodeProps {
+  children: string
+  language?: string
+}
+
+function Code(props: CodeProps) {
+  return (
+    <Show when={Boolean(props.children.length)}>
+      <CodeBlock language={props.language} content={props.children} />
+    </Show>
+  )
+}
+
+interface CodeBlockProps {
+  content: string
+  language?: string
+}
+
+export async function CodeBlock(props: CodeBlockProps) {
+  const out = await getCodeString(props.content)
+
+  return (
+    <cerberus.div my="md">
+      <Show when={props.language === 'sh'}>
+        <HStack justify="space-between" w="full">
+          <HStack textStyle="body-sm">
+            <span
+              className={css({
+                color: 'page.text.100',
+              })}
+            >
+              <Terminal />
+            </span>
+            Terminal
+          </HStack>
+          <CopyButton content={props.content} />
+        </HStack>
+      </Show>
+
+      <cerberus.div dangerouslySetInnerHTML={{ __html: out }} />
+    </cerberus.div>
   )
 }

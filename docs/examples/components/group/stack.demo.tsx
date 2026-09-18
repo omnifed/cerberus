@@ -1,4 +1,4 @@
-import { DecorativeBox } from '@/app/components/decorative-box'
+import { DecorativeBox } from '@/components/decorative-box'
 import { HStack } from '@/styled-system/jsx'
 import { Group } from '@cerberus-design/react'
 import { PropsWithChildren } from 'react'

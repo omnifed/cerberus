@@ -1,7 +1,6 @@
-import { css, cx } from 'styled-system/css'
 import type { MDXComponents } from 'mdx/types'
 import Image, { ImageProps } from 'next/image'
-import { PAGE_BORDER_100 } from './app/utils/const'
+import { css, cx } from 'styled-system/css'
 import { divider } from './styled-system/patterns'
 
 const headlineStyles = css({
@@ -151,7 +150,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <div
         className={css({
           border: '1px solid',
-          borderColor: PAGE_BORDER_100,
+          borderColor: 'page.border.100',
           borderRadius: '1.5em',
           overflow: 'hidden',
           my: '6',
@@ -181,7 +180,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <th
         className={css({
           borderRight: '1px solid',
-          borderColor: PAGE_BORDER_100,
+          borderColor: 'page.border.100',
           bgColor: 'page.surface.100/70',
           textAlign: 'left',
           px: 'md',
@@ -205,7 +204,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           bgColor: 'page.surface.initial/20',
           borderTop: '1px solid',
           borderRight: '1px solid',
-          borderColor: PAGE_BORDER_100,
+          borderColor: 'page.border.100',
           px: 'md',
           py: 'lg',
           textStyle: 'body-sm',

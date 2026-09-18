@@ -1,4 +1,3 @@
-import CerberusLogo from '@/app/components/cerberus-logo'
 import { CheckmarkFilled } from '@carbon/icons-react'
 import { Tag, Text } from '@cerberus-design/react'
 import Link from 'next/link'
@@ -7,6 +6,7 @@ import { HStack, Stack } from 'styled-system/jsx'
 import { animateIn, grid, gridItem, vstack } from 'styled-system/patterns'
 import { button } from 'styled-system/recipes'
 import { HomeHeroText } from './home-hero-text'
+import { CerberusLogo } from '../logos/cerberus'
 
 export function HomeHero() {
   return (

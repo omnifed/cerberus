@@ -1,5 +1,5 @@
 import { Container, VStack } from 'styled-system/jsx'
-import { DecorativeBox } from '@/app/components/decorative-box'
+import { DecorativeBox } from '@/components/decorative-box'
 
 function getText(size: string) {
   return `This is some text within a container of size ${size}.`

@@ -1,9 +1,9 @@
 'use client'
 
-import BrokenBoneIcon from '@/app/components/icons/broken-bone-icon'
 import { VStack } from '@/styled-system/jsx'
 import { Button, cerberus, Text } from '@cerberus-design/react'
 import { useEffect } from 'react'
+import { BrokenBoneIcon } from './icons/broken-bone'
 
 // Error boundaries must be Client Components that are rendered outside of the
 // React tree so it must be setup with the theme and html/body.

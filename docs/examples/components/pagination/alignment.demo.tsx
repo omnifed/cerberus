@@ -1,6 +1,6 @@
 import { VStack } from 'styled-system/jsx'
 import { Pagination } from '@cerberus-design/react'
-import { DecorativeBox } from '@/app/components/decorative-box'
+import { DecorativeBox } from '@/components/decorative-box'
 
 export function AlignmentDemo() {
   return (

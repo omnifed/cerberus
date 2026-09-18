@@ -1,4 +1,4 @@
-import { DecorativeBox } from '@/app/components/decorative-box'
+import { DecorativeBox } from '@/components/decorative-box'
 import { Flex } from 'styled-system/jsx'
 
 export function BasicDemo() {

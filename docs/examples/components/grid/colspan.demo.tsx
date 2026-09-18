@@ -1,4 +1,4 @@
-import { DecorativeBox } from '@/app/components/decorative-box'
+import { DecorativeBox } from '@/components/decorative-box'
 import { Grid, GridItem } from 'styled-system/jsx'
 
 export function ColSpanDemo() {
