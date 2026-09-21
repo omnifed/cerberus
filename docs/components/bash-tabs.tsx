@@ -1,10 +1,10 @@
 'use client'
 
-import { getCodeString } from '@/lib/get-code-string'
-import { HStack } from '@/styled-system/jsx'
+import { Box, HStack } from '@/styled-system/jsx'
 import { Terminal } from '@carbon/icons-react'
 import { cerberus, Show, Tabs } from '@cerberus-design/react'
 import { css } from 'styled-system/css'
+import { CollapsibleCode } from './example/collapsible-code'
 import { CopyButton } from './example/copy-button.client'
 
 function formatJSRCmd(cmd: string): string {
@@ -118,9 +118,7 @@ interface CodeBlockProps {
   language?: string
 }
 
-export async function CodeBlock(props: CodeBlockProps) {
-  const out = await getCodeString(props.content)
-
+export function CodeBlock(props: CodeBlockProps) {
   return (
     <cerberus.div my="md">
       <Show when={props.language === 'sh'}>
@@ -139,7 +137,17 @@ export async function CodeBlock(props: CodeBlockProps) {
         </HStack>
       </Show>
 
-      <cerberus.div dangerouslySetInnerHTML={{ __html: out }} />
+      <Box
+        bgColor="var(--shiki-background)"
+        color="var(--shiki-foreground)"
+        fontSize="0.875rem"
+        letterSpacing="0.05px"
+        p="md"
+        rounded="sm"
+        textStyle="mono-xs"
+      >
+        <CollapsibleCode htmlCode={props.content} />
+      </Box>
     </cerberus.div>
   )
 }

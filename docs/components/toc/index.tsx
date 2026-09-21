@@ -1,6 +1,7 @@
 import { Doc } from '@/lib/docs-content'
 import { TocLayout } from './layout'
 import { LinksList } from './links-list'
+import { TocObserver } from './observer.client'
 
 interface TableOfContentsProps {
   items: Doc['toc']
@@ -15,6 +16,7 @@ export function TableOfContents({ items, level = 0 }: TableOfContentsProps) {
   if (!items?.length) return null
   return (
     <TocLayout>
+      <TocObserver />
       <LinksList items={items} level={level} />
     </TocLayout>
   )
