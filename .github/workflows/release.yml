@@ -53,9 +53,9 @@ jobs:
       - name: Create Version PR
         uses: changesets/action@v2
         with:
-          version: pnpm ci:version
-          commit: 'chore(release): version packages'
-          title: 'chore(release): version packages'
+          version-script: pnpm ci:version
+          commit-message: 'chore(release): version packages'
+          pr-title: 'chore(release): version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
