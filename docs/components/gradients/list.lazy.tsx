@@ -1,4 +1,4 @@
-import { Code, CodeBlock, LogoFigma } from '@carbon/icons-react'
+import { Code, LogoFigma } from '@carbon/icons-react'
 import { Text } from '@cerberus-design/react'
 import { getGradients } from '@cerberus/tokens'
 import { css } from 'styled-system/css'
