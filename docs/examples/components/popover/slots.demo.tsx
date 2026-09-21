@@ -1,7 +1,7 @@
 'use client'
 
 import { Box, Circle, Divider, Float, HStack, Stack } from '@/styled-system/jsx'
-import { AiAgentInvocation, Chat, Time, UserFollow } from '@carbon/icons-react'
+import { AiAgent, Chat, Time, UserFollow } from '@carbon/icons-react'
 import { Avatar, Button, ButtonGroup, Popover, Text } from '@cerberus-design/react'
 
 export function SlotsDemo() {
@@ -10,7 +10,7 @@ export function SlotsDemo() {
       <Popover.Header>
         <HStack gap="md" pb="lg" w="full">
           <Box pos="relative">
-            <Avatar fallback={<AiAgentInvocation />} gradient="asphodel-dark" />
+            <Avatar fallback={<AiAgent />} gradient="asphodel-dark" />
             <Float placement="bottom-end" offsetX="1" offsetY="1">
               <Circle
                 bgColor="success.bg.active"
