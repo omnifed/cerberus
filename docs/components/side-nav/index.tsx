@@ -1,7 +1,6 @@
 'use client'
 
-import { getDocPageNavItems } from '@/app/docs/utils/helpers.server'
-import { OrderedNavTree } from '@/lib/docs-content'
+import { getDocPageNavItems, OrderedNavTree } from '@/lib/docs-content'
 import { cerberus, For, Show, Tag, Text } from '@cerberus-design/react'
 import { usePathname } from 'next/navigation'
 import { LinkItem } from './link-item'

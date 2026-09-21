@@ -1,10 +1,10 @@
 'use client'
 
-import { getSemanticTokenHexValue } from '@/app/docs/utils/color-helpers'
 import { Text, useThemeContext } from '@cerberus-design/react'
 import { useSignal } from '@cerberus-design/signals'
 import type { SemanticToken } from '@cerberus/tokens'
 import { useEffect, useRef } from 'react'
+import { getSemanticTokenHexValue } from './helpers'
 
 interface HexValueProps {
   value: SemanticToken['value']

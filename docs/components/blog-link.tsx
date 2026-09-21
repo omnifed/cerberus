@@ -1,9 +1,9 @@
 import { type Post } from '@/.velite'
-import CerberusLogo from '@/app/components/cerberus-logo'
 import { Box, EmphasizedSlideIn, HStack, VStack } from '@/styled-system/jsx'
 import { ArrowRight } from '@carbon/icons-react'
 import { Show, Tag, Text } from '@cerberus-design/react'
 import Link, { LinkProps } from 'next/link'
+import { CerberusLogo } from './logos/cerberus'
 
 interface Props extends Post {
   idx: number

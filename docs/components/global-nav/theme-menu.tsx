@@ -1,6 +1,6 @@
 'use client'
 
-import { getCodeTheme } from '@/app/utils/colors'
+import { getCodeTheme } from '@/lib/deprecated-colors'
 import { PalmTree, SailboatOffshore } from '@carbon/icons-react'
 import {
   Button,

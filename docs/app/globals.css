@@ -44,7 +44,7 @@
 /* Skiki CSS - React Code elements (i.e. not markdown) */
 
 .shiki {
-  font-family: var(--font-mono);
+  font-family: var(--cerberus-fonts-mono);
   font-size: 0.8rem;
 }
 

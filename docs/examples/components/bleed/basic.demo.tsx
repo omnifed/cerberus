@@ -1,6 +1,6 @@
 import { Bleed, Box, VStack } from 'styled-system/jsx'
 import { Text } from '@cerberus-design/react'
-import { DecorativeBox } from '@/app/components/decorative-box'
+import { DecorativeBox } from '@/components/decorative-box'
 
 export function BasicDemo() {
   return (

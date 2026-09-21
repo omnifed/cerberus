@@ -1,10 +1,9 @@
-import { cq, hstack, vstack } from 'styled-system/patterns'
-import { css } from 'styled-system/css'
-import { LogoFigma } from '@carbon/icons-react'
-import { Code } from '@/app/components/code'
-import { PAGE_TEXT_INITIAL } from '@/app/utils/const'
-import { Circle } from 'styled-system/jsx'
+import { Code, LogoFigma } from '@carbon/icons-react'
+import { Text } from '@cerberus-design/react'
 import { getGradients } from '@cerberus/tokens'
+import { css } from 'styled-system/css'
+import { Box, Circle, HStack } from 'styled-system/jsx'
+import { cq, hstack, vstack } from 'styled-system/patterns'
 
 export default function GradientList() {
   return (
@@ -170,7 +169,7 @@ export default function GradientList() {
               >
                 <h2
                   className={css({
-                    color: PAGE_TEXT_INITIAL,
+                    color: 'page.text.initial',
                     textStyle: 'h3',
                     textTransform: 'capitalize',
                   })}
@@ -179,8 +178,8 @@ export default function GradientList() {
                 </h2>
                 <p
                   className={hstack({
-                    color: PAGE_TEXT_INITIAL,
-                    gap: 1,
+                    color: 'page.text.initial',
+                    gap: 'sm',
                   })}
                 >
                   <span
@@ -192,14 +191,15 @@ export default function GradientList() {
                   </span>
                   Gradient Fills/{gradientName}
                 </p>
-                <span
-                  className={css({
-                    color: PAGE_TEXT_INITIAL,
-                    mt: 3,
-                  })}
-                >
-                  <Code>{gradientName}</Code>
-                </span>
+
+                <HStack gap="sm">
+                  <Box color="page.text.100" pt="2px">
+                    <Code />
+                  </Box>
+                  <Text as="span" color="info.text.initial" mt="xs" textStyle="mono-xs">
+                    {gradientName}
+                  </Text>
+                </HStack>
               </footer>
             </div>
           </li>

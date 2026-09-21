@@ -1,7 +1,7 @@
-import { vstack } from 'styled-system/patterns'
-import { css } from 'styled-system/css'
+import { PawIcon } from '@/components/icons/paw'
 import Link from 'next/link'
-import PawIcon from './components/icons/paw-icon'
+import { css } from 'styled-system/css'
+import { vstack } from 'styled-system/patterns'
 import { button } from 'styled-system/recipes'
 
 export default function NotFound() {

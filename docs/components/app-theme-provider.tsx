@@ -1,6 +1,6 @@
 'use client'
 
-import { setCookie } from '@/app/actions/cookies'
+import { setCookie } from '@/actions/cookies'
 import { ThemeName } from '@/styled-system/themes'
 import {
   ThemeProvider,

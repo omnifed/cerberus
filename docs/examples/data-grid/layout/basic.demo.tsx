@@ -1,6 +1,6 @@
 'use client'
 
-import { DecorativeBox } from '@/app/components/decorative-box'
+import { DecorativeBox } from '@/components/decorative-box'
 import { Stack } from '@/styled-system/jsx'
 import { DataGrid } from '@cerberus-design/data-grid'
 import { useQuery } from '@cerberus-design/signals'

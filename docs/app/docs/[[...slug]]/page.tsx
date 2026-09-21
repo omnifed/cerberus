@@ -1,4 +1,4 @@
-import ApiLinks from '@/app/components/ApiLinks'
+import { ApiLinks } from '@/components/api-links'
 import { CopyPageMenu } from '@/components/copy-page-menu'
 import { MDXContent } from '@/components/mdx-content'
 import { getDocPost, getDocSlugs } from '@/lib/docs-content'

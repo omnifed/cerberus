@@ -1,5 +1,7 @@
 'use client'
 
+import { getCodeTheme } from '@/lib/deprecated-colors'
+import { Box } from '@/styled-system/jsx'
 import {
   ColorModes,
   IconButton,
@@ -10,11 +12,9 @@ import {
   Text,
   useThemeContext,
 } from '@cerberus-design/react'
-import { getCodeTheme } from '@/app/utils/colors'
 import { AnimatingMoonIcon } from '../icons/animating-moon'
 import { AnimatingSunIcon } from '../icons/animating-sun'
 import { AnimatingSystemIcon } from '../icons/animating-system'
-import { Box } from '@/styled-system/jsx'
 
 export function ModeMenu() {
   const { mode, theme, updateMode } = useThemeContext()

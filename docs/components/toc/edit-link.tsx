@@ -20,7 +20,7 @@ export function EditOnGithubLink() {
 
   return (
     <cerberus.a
-      href={editPageLink}
+      href={editPageLink.editUrl}
       target="_blank"
       rel="noopener noreferrer"
       css={{
