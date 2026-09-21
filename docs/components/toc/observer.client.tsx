@@ -2,8 +2,18 @@
 
 import { createEffect, onCleanup } from '@cerberus-design/signals'
 import { store } from './store.client'
+import { useParams } from 'next/navigation'
+import { useEffect } from 'react'
 
 export function TocObserver() {
+  const params = useParams()
+
+  // URL changes
+  useEffect(() => {
+    store.setActiveHash(window.location.hash)
+  }, [params])
+
+  // Page scroll sections in view
   createEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
