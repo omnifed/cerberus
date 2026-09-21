@@ -15,6 +15,8 @@ export function TocObserver() {
 
   // Page scroll sections in view
   createEffect(() => {
+    if (typeof window === 'undefined') return
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visibleEntry = entries.find((entry) => entry.isIntersecting)
