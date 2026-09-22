@@ -247,9 +247,9 @@ exports[`Oceanus Theme actionTokens should match the established baseline 1`] = 
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(14.000000115484, 14.000000115484, 17.00000088661909, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(14.000000115484, 14.000000115484, 17.00000088661909, 0)",
         },
       },
     },
@@ -395,9 +395,9 @@ exports[`Oceanus Theme secondaryActionTokens should match the established baseli
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.brand.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.brand.100}",
+          "_darkMode": "rgba(0, 24.000000469386578, 41.00000135600567, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(0, 24.000000469386578, 41.00000135600567, 0)",
         },
       },
     },
@@ -541,9 +541,9 @@ exports[`Oceanus Theme infoTokens should match the established baseline 1`] = `
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(14.000000115484, 14.000000115484, 17.00000088661909, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(14.000000115484, 14.000000115484, 17.00000088661909, 0)",
         },
       },
     },
@@ -679,9 +679,9 @@ exports[`Oceanus Theme successTokens should match the established baseline 1`] =
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(14.000000115484, 14.000000115484, 17.00000088661909, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(14.000000115484, 14.000000115484, 17.00000088661909, 0)",
         },
       },
     },
@@ -825,9 +825,9 @@ exports[`Oceanus Theme warningTokens should match the established baseline 1`] =
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(14.000000115484, 14.000000115484, 17.00000088661909, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(14.000000115484, 14.000000115484, 17.00000088661909, 0)",
         },
       },
     },
@@ -965,9 +965,9 @@ exports[`Oceanus Theme dangerTokens should match the established baseline 1`] = 
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(14.000000115484, 14.000000115484, 17.00000088661909, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(14.000000115484, 14.000000115484, 17.00000088661909, 0)",
         },
       },
     },

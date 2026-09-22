@@ -247,9 +247,9 @@ exports[`Acheron Theme actionTokens should match the established baseline 1`] = 
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0)",
         },
       },
     },
@@ -395,9 +395,9 @@ exports[`Acheron Theme secondaryActionTokens should match the established baseli
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0)",
         },
       },
     },
@@ -541,9 +541,9 @@ exports[`Acheron Theme infoTokens should match the established baseline 1`] = `
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0)",
         },
       },
     },
@@ -679,9 +679,9 @@ exports[`Acheron Theme successTokens should match the established baseline 1`] =
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0)",
         },
       },
     },
@@ -825,9 +825,9 @@ exports[`Acheron Theme warningTokens should match the established baseline 1`] =
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0)",
         },
       },
     },
@@ -965,9 +965,9 @@ exports[`Acheron Theme dangerTokens should match the established baseline 1`] = 
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(14.000000115484, 13.000000175088644, 12.000000234693289, 0)",
         },
       },
     },
