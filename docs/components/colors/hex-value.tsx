@@ -1,35 +1,14 @@
-'use client'
-
-import { Text, useThemeContext } from '@cerberus-design/react'
-import { useSignal } from '@cerberus-design/signals'
-import type { SemanticToken } from '@cerberus/tokens'
-import { useEffect, useRef } from 'react'
-import { getSemanticTokenHexValue } from './helpers'
+import { Text } from '@cerberus-design/react'
 
 interface HexValueProps {
-  value: SemanticToken['value']
+  value: string | null
 }
 
 export function HexValue(props: HexValueProps) {
-  const { mode, theme } = useThemeContext()
-  const prevTheme = useRef(theme)
-
-  const [hexValue, setHexValue] = useSignal<string | null>(
-    getSemanticTokenHexValue(props.value, mode),
-  )
-
-  useEffect(() => {
-    if (prevTheme.current !== theme) {
-      setHexValue(getSemanticTokenHexValue(props.value, mode))
-      prevTheme.current = theme
-    }
-  }, [theme, setHexValue, mode, props.value])
-
-  if (!hexValue) return null
-
+  if (!props.value) return null
   return (
     <Text as="small" color="page.text.100" textStyle="label-sm">
-      {hexValue}
+      {props.value}
     </Text>
   )
 }
