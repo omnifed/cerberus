@@ -5,7 +5,12 @@ import {
 } from '@figma/rest-api-spec'
 import { format } from 'oxfmt'
 import type { LocalVariables, VariableOverrideContent } from '../sync/types'
-import type { CollectionMode, NormalizedCollectionMode } from '../types'
+import type {
+  CollectionMode,
+  NormalizedCollectionMode,
+  OpacityVariable,
+  RGBA,
+} from '../types'
 
 // These match the root oxfmt config
 const formatRules = {
@@ -113,8 +118,19 @@ export async function createNodeFileContent(
 export function getTokenfromVariables(
   value: LocalVariable['valuesByMode'][string],
   localVariables: NonNullable<LocalVariables>,
+  _meta?: any,
 ) {
   if (typeof value === 'object') {
+    // Opacity variables are a completely different shape than regular variables
+    if ('color' in value) {
+      const opacityVar = value as unknown as OpacityVariable
+      const colorVar = opacityVar.color
+      const opacity = opacityVar.opacity
+      const aliasedVariable = localVariables[colorVar.id]
+      // Theres only one mode in primitives
+      const rgba = Object.values(aliasedVariable.valuesByMode)[0] as RGBA
+      return { ...rgba, a: opacity }
+    }
     if ('type' in value && value.type === 'VARIABLE_ALIAS') {
       const aliasedVariable = localVariables[value.id]
       return createSemanticTokenPath(aliasedVariable.name)
@@ -185,6 +201,7 @@ export function resolveValuesByMode(
         modeAcc[currentModeId] = getTokenfromVariables(
           override as LocalVariable['valuesByMode'][string],
           varsData,
+          _createMeta('helpers:202', currentModeId),
         )
         return modeAcc
       }
@@ -198,7 +215,11 @@ export function resolveValuesByMode(
       const originalValue = currentVariable.valuesByMode[valueKey]
 
       if (originalValue) {
-        modeAcc[currentModeId] = getTokenfromVariables(originalValue, varsData)
+        modeAcc[currentModeId] = getTokenfromVariables(
+          originalValue,
+          varsData,
+          _createMeta('helpers:219', currentModeId),
+        )
       }
 
       return modeAcc
@@ -216,4 +237,13 @@ function _normalizeModes(modes: CollectionMode[]): NormalizedCollectionMode {
     acc[selector] = mode
     return acc
   }, {} as NormalizedCollectionMode)
+}
+
+type Meta = {
+  __modeId: string
+  __call?: string
+}
+
+function _createMeta(caller: string, modeId: string): Meta {
+  return { __call: caller, __modeId: modeId }
 }

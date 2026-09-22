@@ -351,7 +351,10 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
+    valuesByMode: {
+      '4328:3': { a: 0, b: 1, g: 1, r: 1 },
+      '4738:0': { a: 0, b: 0.1411764770746231, g: 0, r: 0.07450980693101883 },
+    },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'action.text.100': {
@@ -627,7 +630,10 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
+    valuesByMode: {
+      '4328:3': { a: 0, b: 1, g: 1, r: 1 },
+      '4738:0': { a: 0, b: 0.1411764770746231, g: 0, r: 0.07450980693101883 },
+    },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'danger.surface.100': {
@@ -1194,7 +1200,10 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
+    valuesByMode: {
+      '4328:3': { a: 0, b: 1, g: 1, r: 1 },
+      '4738:0': { a: 0, b: 0.1411764770746231, g: 0, r: 0.07450980693101883 },
+    },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'gradient.amphiaraus-dark.end': {
@@ -1876,7 +1885,10 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
+    valuesByMode: {
+      '4328:3': { a: 0, b: 1, g: 1, r: 1 },
+      '4738:0': { a: 0, b: 0.1411764770746231, g: 0, r: 0.07450980693101883 },
+    },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'info.surface.100': {
@@ -2409,7 +2421,10 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
+    valuesByMode: {
+      '4328:3': { a: 0, b: 1, g: 1, r: 1 },
+      '4738:0': { a: 0, b: 0.1411764770746231, g: 0, r: 0.07450980693101883 },
+    },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'secondary-action.text.100': {
@@ -2705,7 +2720,10 @@ export const tokens = {
     remote: false,
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
-    valuesByMode: { '4328:3': 'neutral.white', '4738:0': 'brand.100' },
+    valuesByMode: {
+      '4328:3': { a: 0, b: 1, g: 1, r: 1 },
+      '4738:0': { a: 0, b: 0.1411764770746231, g: 0, r: 0.07450980693101883 },
+    },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
   'warning.surface.100': {

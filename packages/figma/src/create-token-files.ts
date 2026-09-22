@@ -84,7 +84,6 @@ async function createTokenFiles() {
       }
 
       const activeVars = collectionData?.variableIds || []
-      // const isExtended = collectionData?.isExtension || false
 
       const rawData = activeVars.reduce(
         (acc: Record<string, LocalVariable>, id: string) => {
