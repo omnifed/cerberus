@@ -1,6 +1,15 @@
-import { TypeStyle } from '@figma/rest-api-spec'
+import { TypeStyle, VariableAlias } from '@figma/rest-api-spec'
 
 export type { RGB, RGBA } from '@figma/rest-api-spec'
+
+/**
+ * The correct type for Opacity variables which breaks the shape of a local variable
+ * into a color and opacity value.
+ */
+export type OpacityVariable = {
+  color: VariableAlias
+  opacity: number
+}
 
 /**
  * The correct type that is returned from the Figma API.

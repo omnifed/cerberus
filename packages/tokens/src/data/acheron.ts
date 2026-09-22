@@ -413,12 +413,12 @@ export const collection = {
   variableOverrides: {
     'VariableID:10197:659': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:24847:567',
-        type: 'VARIABLE_ALIAS',
+        color: { id: 'VariableID:24847:567', type: 'VARIABLE_ALIAS' },
+        opacity: 0,
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:24847:587',
-        type: 'VARIABLE_ALIAS',
+        color: { id: 'VariableID:24847:587', type: 'VARIABLE_ALIAS' },
+        opacity: 0,
       },
     },
     'VariableID:10197:660': {
@@ -443,12 +443,12 @@ export const collection = {
     },
     'VariableID:10197:667': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:24847:567',
-        type: 'VARIABLE_ALIAS',
+        color: { id: 'VariableID:24847:567', type: 'VARIABLE_ALIAS' },
+        opacity: 0,
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:24847:587',
-        type: 'VARIABLE_ALIAS',
+        color: { id: 'VariableID:24847:587', type: 'VARIABLE_ALIAS' },
+        opacity: 0,
       },
     },
     'VariableID:10197:668': {
@@ -473,12 +473,12 @@ export const collection = {
     },
     'VariableID:10197:673': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:24847:567',
-        type: 'VARIABLE_ALIAS',
+        color: { id: 'VariableID:24847:567', type: 'VARIABLE_ALIAS' },
+        opacity: 0,
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:24847:587',
-        type: 'VARIABLE_ALIAS',
+        color: { id: 'VariableID:24847:587', type: 'VARIABLE_ALIAS' },
+        opacity: 0,
       },
     },
     'VariableID:10197:674': {
@@ -503,12 +503,12 @@ export const collection = {
     },
     'VariableID:10197:676': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:24847:567',
-        type: 'VARIABLE_ALIAS',
+        color: { id: 'VariableID:24847:567', type: 'VARIABLE_ALIAS' },
+        opacity: 0,
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:24847:587',
-        type: 'VARIABLE_ALIAS',
+        color: { id: 'VariableID:24847:587', type: 'VARIABLE_ALIAS' },
+        opacity: 0,
       },
     },
     'VariableID:10197:677': {
@@ -607,12 +607,12 @@ export const collection = {
     },
     'VariableID:11304:502': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:24847:567',
-        type: 'VARIABLE_ALIAS',
+        color: { id: 'VariableID:24847:567', type: 'VARIABLE_ALIAS' },
+        opacity: 0,
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:24847:587',
-        type: 'VARIABLE_ALIAS',
+        color: { id: 'VariableID:24847:587', type: 'VARIABLE_ALIAS' },
+        opacity: 0,
       },
     },
     'VariableID:11304:503': {
@@ -637,12 +637,12 @@ export const collection = {
     },
     'VariableID:11304:505': {
       'VariableCollectionId:21998:4899/21998:10': {
-        id: 'VariableID:24847:567',
-        type: 'VARIABLE_ALIAS',
+        color: { id: 'VariableID:24847:567', type: 'VARIABLE_ALIAS' },
+        opacity: 0,
       },
       'VariableCollectionId:21998:4899/21998:11': {
-        id: 'VariableID:24847:587',
-        type: 'VARIABLE_ALIAS',
+        color: { id: 'VariableID:24847:587', type: 'VARIABLE_ALIAS' },
+        opacity: 0,
       },
     },
     'VariableID:11304:506': {
@@ -2480,8 +2480,13 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': { a: 0, b: 1, g: 1, r: 1 },
+      'VariableCollectionId:21998:4899/21998:11': {
+        a: 0,
+        b: 0.0470588244497776,
+        g: 0.05098039284348488,
+        r: 0.054901961237192154,
+      },
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -2819,8 +2824,13 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': { a: 0, b: 1, g: 1, r: 1 },
+      'VariableCollectionId:21998:4899/21998:11': {
+        a: 0,
+        b: 0.0470588244497776,
+        g: 0.05098039284348488,
+        r: 0.054901961237192154,
+      },
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -3481,8 +3491,13 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': { a: 0, b: 1, g: 1, r: 1 },
+      'VariableCollectionId:21998:4899/21998:11': {
+        a: 0,
+        b: 0.0470588244497776,
+        g: 0.05098039284348488,
+        r: 0.054901961237192154,
+      },
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4282,8 +4297,13 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': { a: 0, b: 1, g: 1, r: 1 },
+      'VariableCollectionId:21998:4899/21998:11': {
+        a: 0,
+        b: 0.0470588244497776,
+        g: 0.05098039284348488,
+        r: 0.054901961237192154,
+      },
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -4895,8 +4915,13 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': { a: 0, b: 1, g: 1, r: 1 },
+      'VariableCollectionId:21998:4899/21998:11': {
+        a: 0,
+        b: 0.0470588244497776,
+        g: 0.05098039284348488,
+        r: 0.054901961237192154,
+      },
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },
@@ -5257,8 +5282,13 @@ export const tokens = {
     resolvedType: 'COLOR',
     scopes: ['FRAME_FILL', 'SHAPE_FILL'],
     valuesByMode: {
-      'VariableCollectionId:21998:4899/21998:10': 'neutral.white',
-      'VariableCollectionId:21998:4899/21998:11': 'neutral.100',
+      'VariableCollectionId:21998:4899/21998:10': { a: 0, b: 1, g: 1, r: 1 },
+      'VariableCollectionId:21998:4899/21998:11': {
+        a: 0,
+        b: 0.0470588244497776,
+        g: 0.05098039284348488,
+        r: 0.054901961237192154,
+      },
     },
     variableCollectionId: 'VariableCollectionId:4328:23832',
   },

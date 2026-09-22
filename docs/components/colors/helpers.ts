@@ -1,185 +1,121 @@
-import { presetAcheronTheme as acheronTheme } from '@cerberus/preset-acheron-theme'
-import { presetCerberusTheme as cerberusTheme } from '@cerberus/preset-cerberus-theme'
-import { presetElysiumTheme as elysiumTheme } from '@cerberus/preset-elysium-theme'
-import { presetOceanusTheme as oceanusTheme } from '@cerberus/preset-oceanus-theme'
+import themesData from '@/styled-system/specs/themes.json'
+import type { RawThemes, Sentiment } from '@cerberus/tokens'
 
-import {
-  RawThemes,
-  type SemanticToken,
-  type Sentiment,
-  type SentimentConfig,
-  type Token,
-} from '@cerberus/tokens'
-
-export function getTokenList(
-  palette: Sentiment,
-  theme: RawThemes = 'cerberus',
-): SentimentConfig[Sentiment] {
-  const acheronTokens = acheronTheme?.themes?.acheron?.semanticTokens as {
-    colors: SentimentConfig
-  }
-  const cerberusTokens = cerberusTheme?.themes?.cerberus?.semanticTokens as {
-    colors: SentimentConfig
-  }
-  const elysiumTokens = elysiumTheme?.themes?.elysium?.semanticTokens as {
-    colors: SentimentConfig
-  }
-  const oceanusTokens = oceanusTheme?.themes?.oceanus?.semanticTokens as {
-    colors: SentimentConfig
-  }
-
-  function getTokens(): SentimentConfig {
-    switch (theme) {
-      case 'acheron':
-        return acheronTokens.colors
-      case 'cerberus':
-        return cerberusTokens.colors
-      case 'elysium':
-        return elysiumTokens.colors
-      case 'oceanus':
-        return oceanusTokens.colors
-      default:
-        return cerberusTokens.colors
-    }
-  }
-
-  const tokens: SentimentConfig = getTokens()
-
-  switch (palette) {
-    case 'page':
-      return tokens.page
-    case 'action':
-      return tokens.action
-    case 'secondaryAction':
-      return tokens.secondaryAction
-    case 'info':
-      return tokens.info
-    case 'success':
-      return tokens.success
-    case 'warning':
-      return tokens.warning
-    case 'danger':
-      return tokens.danger
-    case 'dataViz':
-      return tokens.dataViz
-    default:
-      throw new Error('Invalid color palette')
-  }
+// Define expected structures based on Panda's spec output
+export interface SpecTokenValue {
+  name: string
+  values: { value: string; condition: string }[]
+  cssVar: string
 }
 
-export function normalizeTokens(
-  tokens: SentimentConfig[Sentiment],
-  palette: Sentiment,
-) {
-  const usage = Object.keys(tokens!)
-  return usage.reduce((acc, key) => {
-    const token = tokens![key as keyof typeof tokens]
-    const tokenKeys = Object.keys(token!)
-    const nestedTokenKeys = tokenKeys.filter(
-      (tokenKey) => typeof token![tokenKey as keyof typeof token] === 'object',
-    )
-
-    const nestedTokens = normalizeNestedTokens({
-      nestedTokenKeys,
-      token,
-      key,
-      palette,
-    })
-
-    return { ...acc, ...nestedTokens }
-  }, {})
-}
-
-interface NormalizeNestedTokensProps {
-  nestedTokenKeys: string[]
-  token: SemanticToken
-  key: string
-  palette: Sentiment
-}
-
-export function normalizeNestedTokens(data: NormalizeNestedTokensProps) {
-  const { token, key, palette } = data
-  return data.nestedTokenKeys.reduce((acc, tokenKey) => {
-    const nestedToken = token![tokenKey as keyof typeof token] as Token
-
-    if (nestedToken.hasOwnProperty('value'))
-      return { ...acc, [`${palette}-${key}-${tokenKey}`]: nestedToken }
-
-    const nestedTokenKeys = Object.keys(nestedToken)
-    const normalizedNestedToken = nestedTokenKeys.reduce((acc, nestedTokenKey) => {
-      const value = nestedToken[nestedTokenKey as keyof typeof nestedToken]
-      const tokenName = `${palette}-${key}-${tokenKey}-${nestedTokenKey}`
-      return { ...acc, [tokenName]: value }
-    }, {})
-    return { ...acc, ...normalizedNestedToken }
-  }, {})
+export function getThemeData(theme: RawThemes | string) {
+  return themesData.data.find((t) => t.name === theme)
 }
 
 /**
- * Extracts the primitive token reference from a semantic token value
- * @param tokenValue - The semantic token value object containing base/_light/_dark values
- * @param mode - Current theme mode ('light', 'dark', or 'system')
- * @returns The primitive token reference (e.g., "cerberus.neutral.80")
+ * Dynamically filters the semantic tokens array for a specific palette prefix.
+ * Deduplicates tokens since the spec generator can output duplicates.
  */
-export function getPrimitiveTokenReference(
-  tokenValue: SemanticToken['value'],
+export function getPaletteTokens(
+  theme: RawThemes | string,
+  palette: Sentiment | string,
+): SpecTokenValue[] {
+  const themeData = getThemeData(theme)
+  if (!themeData || !themeData.semanticTokens?.length) return []
+
+  const uniqueTokens = new Map<string, SpecTokenValue>()
+  const prefix = `${palette}.`
+
+  themeData.semanticTokens[0].values.forEach((tok) => {
+    if (tok.name.startsWith(prefix)) {
+      uniqueTokens.set(tok.name, tok as SpecTokenValue)
+    }
+  })
+
+  return Array.from(uniqueTokens.values())
+}
+
+/**
+ * Extracts the exact string value for a given semantic token based on the active mode.
+ */
+export function getConditionValue(
+  values: SpecTokenValue['values'],
+  theme: string,
   mode: 'light' | 'dark' | 'system' = 'dark',
-): string | null {
-  // Handle system mode by defaulting to dark mode
+): string {
   const resolvedMode = mode === 'system' ? 'dark' : mode
+  const targetCondition = `${theme}.${resolvedMode}Mode`
+  const baseCondition = `${theme}.base`
 
-  // Get the appropriate value based on mode
-  const modeKey = `_${resolvedMode}` as keyof typeof tokenValue
-  const rawValue = tokenValue[modeKey] || tokenValue.base
+  const matched = values.find((v) => v.condition === targetCondition)
+  if (matched) return matched.value
 
+  const base = values.find((v) => v.condition === baseCondition)
+  return base ? base.value : values[0]?.value || ''
+}
+
+/**
+ * Resolves a semantic token reference (e.g., "{colors.neutral.80}")
+ * into its raw Hex or RGBA value by looking up the primitive in the theme data.
+ */
+export function resolveHexValue(theme: string, rawValue: string): string | null {
   if (!rawValue) return null
+  if (rawValue.startsWith('#') || rawValue.startsWith('rgb'))
+    return formatRgba(rawValue)
 
-  // Extract the primitive token reference from the {colors.xxx} format
-  const match = rawValue.match(/\{colors\.(.+)\}/)
+  // Extract primitive reference: {colors.neutral.80} -> neutral.80
+  const match = rawValue.match(/\{colors\.([^}]+)\}/)
+  const primitiveName = match ? match[1] : rawValue
+
+  // Some refs include the theme prefix like {colors.acheron.brand.20}
+  const cleanPrimitiveName = primitiveName.replace(`${theme}.`, '')
+
+  const themeData = getThemeData(theme)
+  if (!themeData || !themeData.tokens?.length) return formatRgba(rawValue)
+
+  const primitive = themeData.tokens[0].values.find(
+    (t: any) => t.name === cleanPrimitiveName,
+  )
+  if (!primitive) return formatRgba(rawValue)
+
+  const pVal = primitive.values[0]?.value
+  return pVal ? formatRgba(pVal) : formatRgba(rawValue)
+}
+
+/**
+ * Strips the {colors.xxx} wrapper to return a clean primitive reference name.
+ */
+export function getPrimitiveTokenReference(rawValue: string): string | null {
+  if (!rawValue) return null
+  const match = rawValue.match(/\{colors\.([^}]+)\}/)
   return match ? match[1] : rawValue
 }
 
-/**
- * Resolves a primitive token reference to its actual hex color value
- * @param tokenReference - The primitive token reference (e.g., "cerberus.neutral.80")
- * @returns The hex color value (e.g., "#201935") or null if not found
- */
-export function resolvePrimitiveTokenToHex(tokenReference: string): string | null {
-  if (typeof document === 'undefined') return null
-
-  // Convert the token reference to CSS variable format
-  // "cerberus.neutral.80" -> "--cerberus-colors-cerberus-neutral-80"
-  // But we need to use the actual theme: "acheron.neutral.80" -> "--cerberus-colors-acheron-neutral-80"
-  const cssVarName = `--cerberus-colors-${tokenReference.replace(/\./g, '-')}`
-
-  // Get the computed value from the document's style
-  const computedValue = getComputedStyle(document.documentElement)
-    .getPropertyValue(cssVarName)
-    .trim()
-
-  // Return the value if it exists and looks like a hex color
-  if (
-    computedValue &&
-    (computedValue.startsWith('#') || computedValue.startsWith('rgb'))
-  ) {
-    return computedValue
+export function formatRgba(rgba: string): string {
+  // Fast fail if it doesn't match the expected prefix
+  if (!rgba.startsWith('rgba(') && !rgba.startsWith('rgb(')) {
+    return rgba
   }
 
-  return null
-}
+  // Extract the raw numbers inside the parentheses
+  const match = rgba.match(/rgba?\(([^)]+)\)/)
+  if (!match) return rgba
 
-/**
- * Gets the resolved hex color value for a semantic token
- * @param tokenValue - The semantic token value object containing base/_light/_dark values
- * @param mode - Current theme mode ('light', 'dark', or 'system')
- * @returns The resolved hex color value or null if not found
- */
-export function getSemanticTokenHexValue(
-  tokenValue: SemanticToken['value'],
-  mode: 'light' | 'dark' | 'system' = 'dark',
-): string | null {
-  const primitiveRef = getPrimitiveTokenReference(tokenValue, mode)
-  if (!primitiveRef) return null
+  // Split by comma and clean up whitespace
+  const parts = match[1].split(',').map((str) => str.trim())
 
-  return resolvePrimitiveTokenToHex(primitiveRef)
+  if (parts.length < 3) return rgba
+
+  // Round R, G, B to nearest integer
+  const r = Math.round(parseFloat(parts[0]))
+  const g = Math.round(parseFloat(parts[1]))
+  const b = Math.round(parseFloat(parts[2]))
+
+  // If there is an alpha channel, round it to 2 decimal places (e.g., 0.800000011920929 -> 0.8)
+  if (parts.length === 4) {
+    const a = Math.round(parseFloat(parts[3]) * 100) / 100
+    return `rgba(${r}, ${g}, ${b}, ${a})`
+  }
+
+  return `rgb(${r}, ${g}, ${b})`
 }

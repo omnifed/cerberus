@@ -247,9 +247,9 @@ exports[`Cerberus Theme actionTokens should match the established baseline 1`] =
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.brand.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.brand.100}",
+          "_darkMode": "rgba(19.0000007674098, 0, 36.00000165402889, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(19.0000007674098, 0, 36.00000165402889, 0)",
         },
       },
     },
@@ -395,9 +395,9 @@ exports[`Cerberus Theme secondaryActionTokens should match the established basel
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.brand.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.brand.100}",
+          "_darkMode": "rgba(19.0000007674098, 0, 36.00000165402889, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(19.0000007674098, 0, 36.00000165402889, 0)",
         },
       },
     },
@@ -541,9 +541,9 @@ exports[`Cerberus Theme infoTokens should match the established baseline 1`] = `
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.brand.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.brand.100}",
+          "_darkMode": "rgba(19.0000007674098, 0, 36.00000165402889, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(19.0000007674098, 0, 36.00000165402889, 0)",
         },
       },
     },
@@ -679,9 +679,9 @@ exports[`Cerberus Theme successTokens should match the established baseline 1`] 
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.brand.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.brand.100}",
+          "_darkMode": "rgba(19.0000007674098, 0, 36.00000165402889, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(19.0000007674098, 0, 36.00000165402889, 0)",
         },
       },
     },
@@ -825,9 +825,9 @@ exports[`Cerberus Theme warningTokens should match the established baseline 1`] 
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.brand.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.brand.100}",
+          "_darkMode": "rgba(19.0000007674098, 0, 36.00000165402889, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(19.0000007674098, 0, 36.00000165402889, 0)",
         },
       },
     },
@@ -965,9 +965,9 @@ exports[`Cerberus Theme dangerTokens should match the established baseline 1`] =
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.brand.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.brand.100}",
+          "_darkMode": "rgba(19.0000007674098, 0, 36.00000165402889, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(19.0000007674098, 0, 36.00000165402889, 0)",
         },
       },
     },

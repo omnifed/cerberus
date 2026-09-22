@@ -1,29 +1,27 @@
 'use client'
 
-import type { SemanticToken, Sentiment } from '@cerberus/tokens'
 import { Box, Grid, GridItem, VStack } from '@/styled-system/jsx'
 import { For, Text, useThemeContext } from '@cerberus-design/react'
+import type { Sentiment } from '@cerberus/tokens'
+import { memo } from 'react'
+import {
+  getPaletteTokens,
+  getConditionValue,
+  getPrimitiveTokenReference,
+  resolveHexValue,
+} from './helpers'
 import { HexValue } from './hex-value'
 import { PrimitiveBinding } from './primitive-binding'
-import { normalizeTokens, getTokenList } from './helpers'
 
 interface PaletteGroupProps {
-  palette: Sentiment
+  palette: Sentiment | string
 }
 
-export default function PaletteGroup(props: PaletteGroupProps) {
+function PaletteGroupEl(props: PaletteGroupProps) {
   const { palette } = props
-  const { theme } = useThemeContext()
-  const tokens = normalizeTokens(getTokenList(palette, theme), palette)
+  const { theme, mode } = useThemeContext()
 
-  function toDotNotation(value: string) {
-    return value.replace(/-/g, '.')
-  }
-
-  function toKebabCase(value: string) {
-    // convert camelCase to kebab-case
-    return value.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
-  }
+  const tokens = getPaletteTokens(theme, palette)
 
   return (
     <Box
@@ -43,30 +41,40 @@ export default function PaletteGroup(props: PaletteGroupProps) {
         flexWrap="wrap"
         gap="lg"
       >
-        <For each={Object.entries(tokens)}>
-          {([usage, token]) => (
-            <GridItem key={usage}>
-              <VStack justify="center" w="full">
-                <Box
-                  border="1px solid"
-                  borderColor="page.border.initial"
-                  h="4rem"
-                  rounded="lg"
-                  w="full"
-                  style={{
-                    backgroundColor: `var(--cerberus-colors-${toKebabCase(usage)})`,
-                  }}
-                />
-                <Text as="small" textStyle="label-sm">
-                  {toDotNotation(usage)}
-                </Text>
-                <PrimitiveBinding value={(token as SemanticToken).value} />
-                <HexValue value={(token as SemanticToken).value} />
-              </VStack>
-            </GridItem>
-          )}
+        <For each={tokens}>
+          {(token) => {
+            // 2. Synchronously resolve the raw string (e.g. "{colors.neutral.80}") and actual Hex for this mode
+            const rawValue = getConditionValue(token.values, theme, mode)
+            const primitiveRef = getPrimitiveTokenReference(rawValue)
+            const exactHex = resolveHexValue(theme, rawValue)
+
+            return (
+              <GridItem key={token.name}>
+                <VStack justify="center" w="full">
+                  <Box
+                    border="1px solid"
+                    borderColor="page.border.initial"
+                    h="4rem"
+                    rounded="lg"
+                    w="full"
+                    style={{
+                      // 3. Fallback to native CSS browser evaluation for the visual swatch
+                      backgroundColor: token.cssVar,
+                    }}
+                  />
+                  <Text as="small" textStyle="label-sm">
+                    {token.name}
+                  </Text>
+                  <PrimitiveBinding reference={primitiveRef} />
+                  <HexValue value={exactHex} />
+                </VStack>
+              </GridItem>
+            )
+          }}
         </For>
       </Grid>
     </Box>
   )
 }
+
+export default memo(PaletteGroupEl)

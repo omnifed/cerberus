@@ -247,9 +247,9 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
         },
       },
     },
@@ -395,9 +395,9 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
         },
       },
     },
@@ -541,9 +541,9 @@ exports[`Elysium Theme infoTokens should match the established baseline 1`] = `
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
         },
       },
     },
@@ -679,9 +679,9 @@ exports[`Elysium Theme successTokens should match the established baseline 1`] =
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
         },
       },
     },
@@ -825,9 +825,9 @@ exports[`Elysium Theme warningTokens should match the established baseline 1`] =
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
         },
       },
     },
@@ -965,9 +965,9 @@ exports[`Elysium Theme dangerTokens should match the established baseline 1`] = 
       "initial": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.neutral.100}",
-          "_lightMode": "{colors.neutral.white}",
-          "base": "{colors.neutral.100}",
+          "_darkMode": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
+          "_lightMode": "rgba(255, 255, 255, 0)",
+          "base": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
         },
       },
     },
@@ -1056,17 +1056,17 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
       "end": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.elysium.60}",
+          "_darkMode": "{colors.info.60}",
           "_lightMode": "{colors.info.60}",
-          "base": "{colors.info.elysium.60}",
+          "base": "{colors.info.60}",
         },
       },
       "start": {
         "description": "",
         "value": {
-          "_darkMode": "{colors.info.elysium.90}",
+          "_darkMode": "{colors.info.90}",
           "_lightMode": "{colors.info.90}",
-          "base": "{colors.info.elysium.90}",
+          "base": "{colors.info.90}",
         },
       },
       "text": {
