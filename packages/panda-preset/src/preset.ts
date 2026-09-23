@@ -45,6 +45,7 @@ const basePreset: Preset = definePreset({
             'danger',
           ],
           layerStyle: ['*'],
+          focusRing: ['*'],
         },
       },
     ],
