@@ -1,5 +1,15 @@
 # @cerberus/panda-preset
 
+## 1.8.1
+
+### Patch Changes
+
+- 53ace97: Add focusRing to staticCss
+- 0729d63: fixes focus ring for input recipe
+- 07a2410: Update menu recipe to use z-index layering
+- efb94d9: fix accessibility bugs for color contrast
+- 03fa4ad: Update tokens: slider, switch & add page.text.static
+
 ## 1.8.0
 
 ### Minor Changes

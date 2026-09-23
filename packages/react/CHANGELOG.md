@@ -1,5 +1,15 @@
 # @cerberus-design/react
 
+## 1.8.1
+
+### Patch Changes
+
+- 1a294bd: Fix Compiler warnings
+- 629735e: Depedency updates
+- efb94d9: fix accessibility bugs for color contrast
+- 2b43c35: Expose Presence API
+- 5b6131c: dependency bumps
+
 ## 1.8.0
 
 ### Minor Changes
