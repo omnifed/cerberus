@@ -1,0 +1,122 @@
+---
+title: Focus Ring
+description: Learn how to style focus rings with Cerberus.
+jsr: '@cerberus/panda-preset'
+group: Compositions
+order: 4
+---
+
+## Overview
+
+The focus ring is used to identify the currently focused element on your page.
+While this is important for accessibility, styling every component to have a
+focus ring can be tedious.
+
+Cerberus provides the `focusRing` and `focusVisibleRing` style props to style
+focus ring with ease. The value of the `focusRing` prop can be "outside",
+"inside", or "mixed".
+
+## Focus Ring
+
+This focus ring maps to the `&:is(:focus, [data-focus])` CSS selector.
+
+Here's how to style a button from scratch with a focus ring:
+
+```tsx
+<cerberus.button px="4" py="2" focusRing="outside">
+  Click me
+</cerberus.button>
+```
+
+## Focus Visible Ring
+
+This focus ring maps to the `&:is(:focus-visible, [data-focus-visible])` CSS
+selector.
+
+```tsx
+<cerberus.button px="4" py="2" focusVisibleRing="outside">
+  Click me
+</cerberus.button>
+```
+
+### Difference between Focus Ring and Focus Visible Ring
+
+The Focus Visible Ring functions similarly to the Focus Ring, but with a key
+difference: it only applies focus indicator styles when an element receives
+keyboard focus.
+
+This ensures that the focus ring is visible only when navigating via keyboard,
+improving accessibility without affecting mouse interactions.
+
+## Built-in Focus Ring
+
+Here's a preview of the supported focus ring.
+
+<Example path="styling/compositions" demo="focusRing" />
+
+## Customization
+
+### Ring Color
+
+There are three ways to customize the focus ring color:
+
+**1. Per component** - Use the `focusRingColor` prop:
+
+```tsx
+<Button focusRingColor="info.border.initial">Click me</Button>
+```
+
+<br />
+
+**2. Globally** - Set it in global CSS:
+
+```tsx title="panda.config.ts"
+const config = defineConfig({
+  globalCss: {
+    '*': {
+      focusRingColor: 'info.border.initial !important',
+    },
+  },
+})
+```
+
+<br />
+
+**3. Per color palette** - Define semantic tokens for each palette:
+
+```tsx title="panda.config.ts"
+const config = defineConfig({
+  theme: {
+    semanticTokens: {
+      colors: {
+        gray: {
+          focusRing: { value: 'blue.500' },
+        },
+        blue: {
+          focusRing: { value: 'blue.400' },
+        },
+      },
+    },
+  },
+})
+```
+
+<br />
+
+### Ring Width
+
+To change the focus ring width for a specific component, you can use the
+`focusRingWidth` prop.
+
+```tsx
+<Button focusRingWidth="2px">Click me</Button>
+```
+
+### Ring Style
+
+To change the focus ring style for a specific component, you can use the
+`focusRingStyle` prop.
+
+```tsx
+<Button focusRingStyle="dashed">Click me</Button>
+```
