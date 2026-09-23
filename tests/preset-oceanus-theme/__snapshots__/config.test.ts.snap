@@ -167,6 +167,14 @@ Use for: Page backgrounds"
           "base": "{colors.neutral.95}",
         },
       },
+      "static": {
+        "description": "For use when a text color will not change between modes",
+        "value": {
+          "_darkMode": "{colors.neutral.70}",
+          "_lightMode": "{colors.neutral.70}",
+          "base": "{colors.neutral.70}",
+        },
+      },
     },
   },
 }

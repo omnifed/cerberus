@@ -42,6 +42,7 @@ export const pageTokens: PageTokens = {
       200: createSemanticToken(THEME, 'page.text.200'),
       300: createSemanticToken(THEME, 'page.text.300'),
       inverse: createSemanticToken(THEME, 'page.text.inverse'),
+      static: createSemanticToken(THEME, 'page.text.static'),
     },
   },
 }
