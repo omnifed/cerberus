@@ -1,5 +1,11 @@
 # @cerberus/preset-acheron-theme
 
+## 1.8.1
+
+### Patch Changes
+
+- 03fa4ad: Update tokens: slider, switch & add page.text.static
+
 ## 1.8.0
 
 ### Minor Changes

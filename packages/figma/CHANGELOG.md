@@ -1,5 +1,13 @@
 # @cerberus/figma
 
+## 1.8.1
+
+### Patch Changes
+
+- 3e48fb2: Support opacity tokens in figma-sync job
+- 0729d63: fixes focus ring for input recipe
+- 5b6131c: dependency bumps
+
 ## 1.8.0
 
 ### Minor Changes
