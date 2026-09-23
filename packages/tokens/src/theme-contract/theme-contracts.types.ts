@@ -3,7 +3,7 @@ import { Prominence, SemanticToken } from '../semantic-tokens.types'
 // Page
 
 export type PageProminence = Exclude<Prominence, 'static'>
-export type TextProminence = Exclude<PageProminence, 400>
+export type TextProminence = Exclude<PageProminence, 400> & 'static'
 
 export interface ContractPageTokens {
   readonly page: {
@@ -50,7 +50,7 @@ export interface PageTokens {
       readonly [P in PageProminence]: SemanticToken
     }
     readonly text: {
-      readonly [P in Exclude<PageProminence, 400>]: SemanticToken
+      readonly [P in TextProminence]: SemanticToken
     }
   }
 }
@@ -429,10 +429,7 @@ export interface ContractDataVizTokens {
       readonly [P in DataVisProminence]: object
     }
     readonly sequential: {
-      readonly [P in Exclude<
-        DataVisProminence,
-        '50' | '700' | '800' | '900'
-      >]: object
+      readonly [P in Exclude<DataVisProminence, '50' | '700' | '800' | '900'>]: object
     }
     readonly qualitative: {
       readonly [P in Exclude<DataVisProminence, '50' | '800' | '900'>]: object
@@ -451,16 +448,12 @@ export interface DataVizTokens {
       readonly [P in DataVisProminence]: SemanticToken
     }
     readonly sequential: {
-      readonly [P in Exclude<
-        DataVisProminence,
-        '50' | '700' | '800' | '900'
-      >]: SemanticToken
+      readonly [
+        P in Exclude<DataVisProminence, '50' | '700' | '800' | '900'>
+      ]: SemanticToken
     }
     readonly qualitative: {
-      readonly [P in Exclude<
-        DataVisProminence,
-        '50' | '800' | '900'
-      >]: SemanticToken
+      readonly [P in Exclude<DataVisProminence, '50' | '800' | '900'>]: SemanticToken
     }
     readonly progress: {
       readonly start: SemanticToken

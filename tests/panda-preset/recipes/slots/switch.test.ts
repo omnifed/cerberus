@@ -85,7 +85,7 @@ describe('switchRecipe recipe', () => {
       transitionDuration: 'fast',
       w: 'var(--thumb-size)',
       _checked: {
-        color: 'action.text.static',
+        color: 'page.text.static',
         translate: 'var(--switch-x) 0',
         transform: 'scale(1.2)',
       },

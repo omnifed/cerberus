@@ -174,7 +174,7 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
           },
         },
         thumb: {
-          bgColor: 'action.ghost.initial',
+          bgColor: 'page.bg.100',
           borderWidth: '2px',
           borderColor: 'action.border.initial',
           _disabled: {
