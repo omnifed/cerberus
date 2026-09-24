@@ -1,6 +1,6 @@
 'use client'
 
-import { cerberus, HStack, Square, Stack } from '@/styled-system/jsx'
+import { cerberus, Square, Stack } from '@/styled-system/jsx'
 import { Document, Hashtag } from '@carbon/icons-react'
 import { For, Show, Tag, Text } from '@cerberus-design/react'
 import { useQuery } from '@cerberus-design/signals'
@@ -17,9 +17,18 @@ export const StyledLink = cerberus(Link, {
     transition: 'colors',
     _highlighted: {
       bgColor: 'action.ghost.hover',
+      '& :is([data-scope=clipboard][data-part=control])': {
+        visibility: 'visible',
+      },
     },
     _hover: {
       bgColor: 'action.ghost.hover',
+      '& :is([data-scope=clipboard][data-part=control])': {
+        visibility: 'visible',
+      },
+    },
+    '& :is([data-scope=clipboard][data-part=control])': {
+      visibility: 'hidden',
     },
   },
 })
@@ -46,15 +55,13 @@ export function SearchResults({ query, activeFilter }: Props) {
         {(res: any, index: number) => (
           <Fragment key={`${res.meta.title}-${index}`}>
             <ResultRow href={cleanURL(res.url)}>
-              <HStack gap="sm" w="full">
-                <Document />
-                <Text textStyle="label-md">{res.meta.title}</Text>
-                <Show when={res.meta.category}>
-                  <Tag size="sm" usage="outlined">
-                    {res.meta.category}
-                  </Tag>
-                </Show>
-              </HStack>
+              <Document />
+              <Text textStyle="label-md">{res.meta.title}</Text>
+              <Show when={res.meta.category}>
+                <Tag size="sm" usage="outlined">
+                  {res.meta.category}
+                </Tag>
+              </Show>
             </ResultRow>
 
             <Show when={res.sub_results.length}>
@@ -74,32 +81,30 @@ export function SearchResults({ query, activeFilter }: Props) {
                         href={cleanURL(sub.url)}
                         linkProps={{ userSelect: 'none' }}
                       >
-                        <HStack gap="sm" w="full">
-                          <Square flexShrink="0" size="4">
-                            <Hashtag />
-                          </Square>
-                          <Stack gap="xs">
-                            <Text textStyle="label-sm">{sub.title}</Text>
-                            <Text
-                              as="span"
-                              color="page.text.100"
-                              lineClamp="1"
-                              lineHeight="1.4"
-                              overflow="hidden"
-                              textStyle="xs"
-                              css={{
-                                '& mark': {
-                                  bgColor: 'info.surface.100',
-                                  color: 'info.text.initial',
-                                  fontWeight: 'semibold',
-                                  px: 'sm',
-                                  rounded: 'sm',
-                                },
-                              }}
-                              dangerouslySetInnerHTML={{ __html: sub.excerpt }}
-                            />
-                          </Stack>
-                        </HStack>
+                        <Square flexShrink="0" size="4">
+                          <Hashtag />
+                        </Square>
+                        <Stack gap="xs">
+                          <Text textStyle="label-sm">{sub.title}</Text>
+                          <Text
+                            as="span"
+                            color="page.text.100"
+                            lineClamp="1"
+                            lineHeight="1.4"
+                            overflow="hidden"
+                            textStyle="xs"
+                            css={{
+                              '& mark': {
+                                bgColor: 'info.surface.100',
+                                color: 'info.text.initial',
+                                fontWeight: 'semibold',
+                                px: 'sm',
+                                rounded: 'sm',
+                              },
+                            }}
+                            dangerouslySetInnerHTML={{ __html: sub.excerpt }}
+                          />
+                        </Stack>
                       </ResultRow>
                     )}
                   </For>

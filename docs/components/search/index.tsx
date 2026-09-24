@@ -9,6 +9,7 @@ import {
   DialogTrigger,
   Show,
   Text,
+  toaster,
 } from '@cerberus-design/react'
 import { useRead, useStore } from '@cerberus-design/signals'
 import { ChangeEvent, Suspense, useEffect, useRef } from 'react'
@@ -60,6 +61,10 @@ export function Search() {
           })
         }
       }
+      toaster.create({
+        title: 'URL Copied',
+        description: 'Page URL copied to clipboard',
+      })
       return
     }
 
