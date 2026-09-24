@@ -1,7 +1,6 @@
 'use client'
 
 import { createQuery } from '@cerberus-design/signals'
-import { LinkProps } from 'next/link'
 
 let pagefindInstance: any = null
 

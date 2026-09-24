@@ -1,7 +1,6 @@
 import { HStack } from '@/styled-system/jsx'
 import { cerberus, Text } from '@cerberus-design/react'
 import { Kbd } from '../ui/kbd'
-import { MacCommand } from '@carbon/icons-react'
 
 export function Footer() {
   return (
