@@ -1,6 +1,7 @@
 import { HStack } from '@/styled-system/jsx'
 import { cerberus, Text } from '@cerberus-design/react'
 import { Kbd } from '../ui/kbd'
+import { MacCommand } from '@carbon/icons-react'
 
 export function Footer() {
   return (
@@ -29,6 +30,12 @@ export function Footer() {
             <Kbd>↵</Kbd>
             <Text as="small" ps="xs" textStyle="body-sm">
               Select
+            </Text>
+          </HStack>
+          <HStack gap="xs">
+            <Kbd>cmd + c</Kbd>
+            <Text as="small" ps="xs" textStyle="body-sm">
+              Copy URL
             </Text>
           </HStack>
         </HStack>

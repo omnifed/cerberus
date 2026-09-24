@@ -2,10 +2,12 @@
 
 import { cerberus, HStack, Square, Stack } from '@/styled-system/jsx'
 import { Document, Hashtag } from '@carbon/icons-react'
-import { DialogCloseTrigger, For, Show, Tag, Text } from '@cerberus-design/react'
-import { createQuery, useQuery } from '@cerberus-design/signals'
+import { For, Show, Tag, Text } from '@cerberus-design/react'
+import { useQuery } from '@cerberus-design/signals'
 import Link, { LinkProps } from 'next/link'
 import { Fragment } from 'react/jsx-runtime'
+import { querySearch } from './factories'
+import { ResultRow } from './result-row'
 
 export const StyledLink = cerberus(Link, {
   base: {
@@ -43,19 +45,17 @@ export function SearchResults({ query, activeFilter }: Props) {
       <For each={results}>
         {(res: any, index: number) => (
           <Fragment key={`${res.meta.title}-${index}`}>
-            <DialogCloseTrigger asChild>
-              <StyledLink data-search-item href={cleanURL(res.url)}>
-                <HStack gap="sm" w="full">
-                  <Document />
-                  <Text textStyle="label-md">{res.meta.title}</Text>
-                  <Show when={res.meta.category}>
-                    <Tag size="sm" usage="outlined">
-                      {res.meta.category}
-                    </Tag>
-                  </Show>
-                </HStack>
-              </StyledLink>
-            </DialogCloseTrigger>
+            <ResultRow href={cleanURL(res.url)}>
+              <HStack gap="sm" w="full">
+                <Document />
+                <Text textStyle="label-md">{res.meta.title}</Text>
+                <Show when={res.meta.category}>
+                  <Tag size="sm" usage="outlined">
+                    {res.meta.category}
+                  </Tag>
+                </Show>
+              </HStack>
+            </ResultRow>
 
             <Show when={res.sub_results.length}>
               {() => (
@@ -69,41 +69,38 @@ export function SearchResults({ query, activeFilter }: Props) {
                 >
                   <For each={res.sub_results}>
                     {(sub: any, index: number) => (
-                      <DialogCloseTrigger key={`${sub.title}-${index}`} asChild>
-                        <StyledLink
-                          data-search-item
-                          href={cleanURL(sub.url)}
-                          userSelect="none"
-                        >
-                          <HStack gap="sm" w="full">
-                            <Square flexShrink="0" size="4">
-                              <Hashtag />
-                            </Square>
-                            <Stack gap="xs">
-                              <Text textStyle="label-sm">{sub.title}</Text>
-                              <Text
-                                as="span"
-                                color="page.text.100"
-                                lineClamp="1"
-                                lineHeight="1.4"
-                                overflow="hidden"
-                                textStyle="xs"
-                                text-overflow="ellipsis"
-                                css={{
-                                  '& mark': {
-                                    bgColor: 'info.surface.100',
-                                    color: 'info.text.initial',
-                                    fontWeight: 'semibold',
-                                    px: 'sm',
-                                    rounded: 'sm',
-                                  },
-                                }}
-                                dangerouslySetInnerHTML={{ __html: sub.excerpt }}
-                              />
-                            </Stack>
-                          </HStack>
-                        </StyledLink>
-                      </DialogCloseTrigger>
+                      <ResultRow
+                        key={`${sub.title}-${index}`}
+                        href={cleanURL(sub.url)}
+                        linkProps={{ userSelect: 'none' }}
+                      >
+                        <HStack gap="sm" w="full">
+                          <Square flexShrink="0" size="4">
+                            <Hashtag />
+                          </Square>
+                          <Stack gap="xs">
+                            <Text textStyle="label-sm">{sub.title}</Text>
+                            <Text
+                              as="span"
+                              color="page.text.100"
+                              lineClamp="1"
+                              lineHeight="1.4"
+                              overflow="hidden"
+                              textStyle="xs"
+                              css={{
+                                '& mark': {
+                                  bgColor: 'info.surface.100',
+                                  color: 'info.text.initial',
+                                  fontWeight: 'semibold',
+                                  px: 'sm',
+                                  rounded: 'sm',
+                                },
+                              }}
+                              dangerouslySetInnerHTML={{ __html: sub.excerpt }}
+                            />
+                          </Stack>
+                        </HStack>
+                      </ResultRow>
                     )}
                   </For>
                 </Stack>
@@ -115,43 +112,6 @@ export function SearchResults({ query, activeFilter }: Props) {
     </Stack>
   )
 }
-
-// Factory
-
-let pagefindInstance: any = null
-
-const querySearch = createQuery(
-  async (args: { searchTerm: string; activeFilter: string }) => {
-    const { searchTerm, activeFilter } = args
-    if (!searchTerm) return []
-
-    if (!pagefindInstance && typeof window !== 'undefined') {
-      try {
-        // Bypass Turbopack's AST parser to load the static index at runtime
-        const bypassBundler = new Function('url', 'return import(url)')
-        pagefindInstance = await bypassBundler('/pagefind/pagefind.js')
-        await pagefindInstance.options({})
-      } catch {
-        console.warn('Pagefind index not found. Run a build to generate search data.')
-        return []
-      }
-    }
-
-    const formattedFilter = !activeFilter ? 'all' : activeFilter
-    const options =
-      formattedFilter === 'all' ? {} : { filters: { section: formattedFilter } }
-
-    const search = await pagefindInstance.debouncedSearch(searchTerm)
-    const topResults = await Promise.all(
-      search.results.slice(0, 5).map((r: any) => r.data()),
-    )
-
-    console.log({ topResults, searchTerm, options })
-
-    return topResults
-  },
-  'querySearch',
-)
 
 function cleanURL(url: string): LinkProps<any>['href'] {
   return url.replace('.html', '')
