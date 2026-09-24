@@ -31,6 +31,12 @@ export function Footer() {
               Select
             </Text>
           </HStack>
+          <HStack gap="xs">
+            <Kbd>cmd + c</Kbd>
+            <Text as="small" ps="xs" textStyle="body-sm">
+              Copy URL
+            </Text>
+          </HStack>
         </HStack>
 
         <HStack gap="xs">

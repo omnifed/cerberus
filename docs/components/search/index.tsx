@@ -9,6 +9,7 @@ import {
   DialogTrigger,
   Show,
   Text,
+  toaster,
 } from '@cerberus-design/react'
 import { useRead, useStore } from '@cerberus-design/signals'
 import { ChangeEvent, Suspense, useEffect, useRef } from 'react'
@@ -38,6 +39,35 @@ export function Search() {
   }, [store])
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'c' && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault()
+      if (!containerRef.current) return
+
+      const items = Array.from(
+        containerRef.current.querySelectorAll<HTMLElement>('[data-search-item]'),
+      )
+
+      const currentIndex = items.findIndex(
+        (el) => el.getAttribute('data-highlighted') === 'true',
+      )
+
+      if (currentIndex !== -1) {
+        const urlPath = items[currentIndex].getAttribute('href')
+        if (urlPath) {
+          const absoluteUrl = `${window.location.origin}${urlPath}`
+          navigator.clipboard.writeText(absoluteUrl).then(() => {
+            store.setCopiedUrl(absoluteUrl)
+            setTimeout(() => store.setCopiedUrl(null), 2000)
+          })
+        }
+      }
+      toaster.create({
+        title: 'URL Copied',
+        description: 'Page URL copied to clipboard',
+      })
+      return
+    }
+
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter') {
       if (!containerRef.current) return
 
