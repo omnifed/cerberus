@@ -11,7 +11,7 @@ export function ShapeDemo() {
   return (
     <For each={variants}>
       {(shape) => (
-        <SplitButton actionText={`${shape} Shape`} shape={shape}>
+        <SplitButton key={shape} actionText={`${shape} Shape`} shape={shape}>
           <MenuItem value="corn">
             <Corn />
             Do your job

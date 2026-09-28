@@ -11,7 +11,7 @@ export function SizeDemo() {
   return (
     <For each={sizes}>
       {(size) => (
-        <SplitButton actionText={`${size} Size`} size={size}>
+        <SplitButton key={String(size)} actionText={`${size} Size`} size={size}>
           <MenuItem value="corn">
             <Corn />
             Do your job

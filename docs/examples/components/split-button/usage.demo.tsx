@@ -11,7 +11,7 @@ export function UsageDemo() {
   return (
     <For each={variants}>
       {(usage) => (
-        <SplitButton actionText={`${usage}`} usage={usage} size="md">
+        <SplitButton key={usage} actionText={`${usage}`} usage={usage} size="md">
           <MenuItem value="corn">
             <Corn />
             Do your job
