@@ -9,7 +9,7 @@ export function SizeDemo() {
   return (
     <For each={sizes}>
       {(size) => (
-        <IconButton key={size} ariaLabel="rounded example" size={size}>
+        <IconButton key={size} ariaLabel="rounded example" size={size} usage="filled">
           <Tuning />
         </IconButton>
       )}

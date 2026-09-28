@@ -145,7 +145,7 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
 
         <Show when={hasFilters()}>
           <Tooltip content="Edit filters" openDelay={800} portal>
-            <IconButtonRoot size="sm" onClick={handleEditFilters}>
+            <IconButtonRoot size="xs" onClick={handleEditFilters}>
               <EditFilterIcon />
             </IconButtonRoot>
           </Tooltip>
@@ -158,7 +158,7 @@ export const GridHeaderCell = memo(function GridHeaderCell<TData>(
             portal
           >
             <IconButtonRoot
-              size="sm"
+              size="xs"
               opacity={{
                 base: 1,
                 md: 0,

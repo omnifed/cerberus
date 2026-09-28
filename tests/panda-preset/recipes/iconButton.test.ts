@@ -27,9 +27,12 @@ describe('iconButton recipe', () => {
       transitionTimingFunction: 'ease-in-out',
       userSelect: 'none',
       whiteSpace: 'nowrap',
-      h: '2.75rem',
+      flexShrink: 0,
+      h: 'var(--btn-h)',
+      minW: 'initial',
       pxi: '0',
-      w: '2.75rem',
+      rounded: 'full',
+      w: 'var(--btn-w)',
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.5',
@@ -54,6 +57,7 @@ describe('iconButton recipe', () => {
           paddingInlineEnd: 'xs',
           rounded: 'full',
           translate: '50% -50%',
+          top: 'var(--notify-top)',
         },
       },
     })
@@ -182,26 +186,27 @@ describe('iconButton recipe', () => {
     })
   })
 
-  test('should have a small size variant', () => {
-    expect(iconButton.variants?.size.sm).toMatchObject({
-      md: {
-        h: '1.5rem',
-        w: '1.5rem',
-        _notify: {
-          _after: {
-            top: '-0.25rem',
-          },
-        },
+  test('should have a size variant', () => {
+    expect(iconButton.variants?.size).toMatchObject({
+      xs: {
+        '--btn-h': '1.5rem',
+        '--btn-w': '1.5rem',
+        '--notify-top': '-0.25rem',
       },
-    })
-  })
-
-  test('should have a large size variant', () => {
-    expect(iconButton.variants?.size.lg).toMatchObject({
-      _notify: {
-        _after: {
-          top: '0.4rem',
-        },
+      sm: {
+        '--btn-h': '2rem',
+        '--btn-w': '2rem',
+        '--notify-top': '-0.25rem',
+      },
+      md: {
+        '--btn-h': '2.5rem',
+        '--btn-w': '2.5rem',
+        '--notify-top': '-0.25rem',
+      },
+      lg: {
+        '--btn-h': '2.75rem',
+        '--btn-w': '2.75rem',
+        '--notify-top': '0.4rem',
       },
     })
   })

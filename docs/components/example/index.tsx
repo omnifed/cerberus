@@ -89,7 +89,7 @@ async function ExampleContent({ path, demo }: ExampleProps) {
       rounded="lg"
       w="full"
     >
-      <HStack data-slot="example:preview" justify="center" py="md" w="full">
+      <HStack data-slot="example:preview" gap="md" justify="center" py="md" w="full">
         {previewNode}
       </HStack>
 
