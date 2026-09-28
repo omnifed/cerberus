@@ -8,7 +8,6 @@ import {
   buttonCompoundVariants,
   buttonPalettes,
   filledUsage,
-  notifyStyles,
   outlinedSubtleUsage,
   outlinedUsage,
   textUsage,
