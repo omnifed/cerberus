@@ -26,9 +26,9 @@
     "@types/bun": "catalog:types",
     "@types/mdx": "^2.0.14",
     "husky": "^9.1.7",
-    "lint-staged": "^17.5.1",
+    "lint-staged": "^17.6.0",
     "oxfmt": "catalog:oxc",
-    "oxlint": "^1.83.0"
+    "oxlint": "^1.86.0"
   },
   "lint-staged": {
     "**/*": "oxfmt --write --no-error-on-unmatched-pattern",
