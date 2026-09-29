@@ -8,7 +8,6 @@ import {
   buttonCompoundVariants,
   buttonPalettes,
   filledUsage,
-  notifyStyles,
   outlinedSubtleUsage,
   outlinedUsage,
   textUsage,
@@ -21,11 +20,6 @@ import {
 
 /**
  * Styles for the Button component
- * @definition [ARIA Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html#:~:text=Understanding%20SC%202.5.,%3ATarget%20Size%20(Level%20AAA)&text=The%20size%20of%20the%20target,Equivalent)
- *
- * @definition [A11y Icon Usability](https://www.a11y-collective.com/blog/icon-usability-and-accessibility/)
- *
- * @definition [Button docs](https://cerberus.digitalu.design/react/button)
  */
 export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'icon-btn',
@@ -35,12 +29,34 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   base: {
     ...buttonBase,
     flexShrink: 0,
-    h: '2.75rem', // a11y minimum touch target size: 2.75rem
+    h: 'var(--btn-h)',
     minW: 'initial',
     pxi: '0',
     rounded: 'full',
-    w: '2.75rem',
-    _notify: notifyStyles,
+    w: 'var(--btn-w)',
+    _notify: {
+      position: 'relative',
+      _after: {
+        alignItems: 'center',
+        bgColor: 'danger.surface.200',
+        color: 'danger.text.200',
+        content: 'attr(data-notify-count)',
+        display: 'inline-flex',
+        fontFamily: 'mono',
+        fontSize: '0.625rem',
+        h: '1rem',
+        insetBlockEnd: 'auto',
+        insetInlineStart: 'auto',
+        insetInlineEnd: 0,
+        justifyContent: 'center',
+        pos: 'absolute',
+        paddingInlineStart: 'calc(0.25rem + 2px)',
+        paddingInlineEnd: 'xs',
+        rounded: 'full',
+        translate: '50% -50%',
+        top: 'var(--notify-top)',
+      },
+    },
   },
 
   variants: {
@@ -60,24 +76,25 @@ export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       },
     },
     size: {
+      xs: {
+        '--btn-h': '1.5rem',
+        '--btn-w': '1.5rem',
+        '--notify-top': '-0.25rem',
+      },
       sm: {
-        // a11y minimum touch target size: 1.5rem for desktop
-        md: {
-          h: '1.5rem',
-          w: '1.5rem',
-          _notify: {
-            _after: {
-              top: '-0.25rem',
-            },
-          },
-        },
+        '--btn-h': '2rem',
+        '--btn-w': '2rem',
+        '--notify-top': '-0.25rem',
+      },
+      md: {
+        '--btn-h': '2.5rem',
+        '--btn-w': '2.5rem',
+        '--notify-top': '-0.25rem',
       },
       lg: {
-        _notify: {
-          _after: {
-            top: '0.4rem',
-          },
-        },
+        '--btn-h': '2.75rem',
+        '--btn-w': '2.75rem',
+        '--notify-top': '0.4rem',
       },
     },
   },

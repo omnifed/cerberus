@@ -77,48 +77,48 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     },
     size: {
       xs: {
-        h: '6',
+        h: '1.5rem',
         minW: '6',
         fontSize: 'xs',
         textStyle: 'button-sm',
         px: '2',
         gap: '1',
         _icon: {
-          width: '3.5',
-          height: '3.5',
+          h: '3.5',
+          w: '3.5',
         },
       },
       sm: {
-        h: '9',
+        h: '2rem',
         minW: '9',
         px: '3.5',
         textStyle: 'button-sm',
         gap: '2',
         _icon: {
-          width: '4',
-          height: '4',
+          h: '4',
+          w: '4',
         },
       },
       md: {
-        h: '10',
+        h: '2.5rem',
         minW: '10',
         textStyle: 'button-md',
         px: '4',
         gap: '2',
         _icon: {
-          width: '5',
-          height: '5',
+          h: '5',
+          w: '5',
         },
       },
       lg: {
-        h: '11',
+        h: '2.75rem',
         minW: '11',
         textStyle: 'button-md',
         px: '5',
         gap: '3',
         _icon: {
-          width: '5',
-          height: '5',
+          h: '5',
+          w: '5',
         },
       },
       xl: {
@@ -128,8 +128,8 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         px: '5',
         gap: '2.5',
         _icon: {
-          width: '5',
-          height: '5',
+          h: '5',
+          w: '5',
         },
       },
       '2xl': {
@@ -140,8 +140,8 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         px: '7',
         gap: '3',
         _icon: {
-          width: '6',
-          height: '6',
+          h: '6',
+          w: '6',
         },
       },
     },

@@ -10,6 +10,7 @@ import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import { defineConfig, s } from 'velite'
 import { cerbyTheme } from './lib/shiki'
+import { getFeatureLifecycle } from './lib/versions'
 
 export default defineConfig({
   root: 'content',
@@ -59,6 +60,7 @@ export default defineConfig({
           toc: s.toc(),
           group: s.string(),
           order: s.number().default(999),
+          since: s.string().optional(),
           code: s.mdx(),
           raw: s.raw(), // for llms routes
         })
@@ -66,11 +68,16 @@ export default defineConfig({
           // Transforms "docs/components/button" -> "components/button"
           const slugAsParams = data.path.replace(/^docs\//, '')
           const [category, slug] = slugAsParams.split('/')
+
+          // Pre-calculate the page-level badge state during the SSG build
+          const badgeState = data.since ? getFeatureLifecycle(data.since) : null
+
           return {
             ...data,
             category, // e.g., 'components'
             slug, // e.g., 'button'
             slugAsParams,
+            badgeState,
           }
         }),
     },

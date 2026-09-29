@@ -13,13 +13,37 @@ order: 33
 import { SplitButton, MenuItem } from '@cerberus/react'
 ```
 
-## Usage
+## Basic Usage
 
 The SplitButton component combines a primary action button with a dropdown menu for additional related actions.
 
 It's ideal for situations where you have a primary action that users perform most often, but also want to provide quick access to related secondary actions.
 
 <Example path="components/split-button" demo="basic" />
+
+## Size
+
+You can customize the size of the SplitButton using the `size` prop.
+
+<FeatureAdmonition since="v1.9.0" />
+
+<Example path="components/split-button" demo="size" />
+
+## Shape
+
+You can customize the shape of the SplitButton using the `shape` prop.
+
+<FeatureAdmonition since="v1.9.0" />
+
+<Example path="components/split-button" demo="shape" />
+
+## Usage
+
+You can customize the usage of the SplitButton using the `usage` prop.
+
+<FeatureAdmonition since="v1.9.0" />
+
+<Example path="components/split-button" demo="usage" />
 
 ## Pending
 
@@ -44,7 +68,7 @@ The SplitButton component is built using the following primitive components:
 
 ### SplitButton
 
-The `SplitButton` component accepts the following props:
+The `SplitButton` component accepts the following props along with the same props as the [`Button`](/docs/components/button) component:
 
 | Name       | Default | Description                                    |
 | ---------- | ------- | ---------------------------------------------- |

@@ -118,7 +118,7 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
       <MenuTrigger>
         <IconButton
           ariaLabel="View more options"
-          size="sm"
+          size="xs"
           opacity={{
             base: 1,
             md: 0,

@@ -3,7 +3,7 @@
 import { useCerberusContext } from '../../context/cerberus'
 import { splitProps } from '../../utils'
 import { ButtonGroup, ButtonParts, type ButtonProps } from '../button/index'
-import { IconButton } from '../icon-button/index'
+import { IconButton, IconButtonProps } from '../icon-button/index'
 import { Menu, MenuTrigger, MenuContent } from '../menu/index'
 import type { CerberusPrimitiveProps } from '../../system/types'
 import { useMemo } from 'react'
@@ -13,11 +13,15 @@ import { useMemo } from 'react'
  * @module SplitButton
  */
 
-export interface SplitButtonProps extends ButtonProps {
-  /** T
-   * he text for the primary action button.
+export interface SplitButtonProps extends Omit<ButtonProps, 'size'> {
+  /**
+   * The text for the primary action button.
    */
   actionText: string
+  /**
+   * The size of the SplitButton.
+   */
+  size?: IconButtonProps['size']
 }
 
 /**
@@ -41,7 +45,7 @@ export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
 
   return (
     <ButtonGroup layout="attached" shape={actionProps.shape}>
-      <ButtonParts.Root usage={usage} {...actionProps}>
+      <ButtonParts.Root {...actionProps} size={props.size} usage={usage}>
         <ButtonParts.Icon />
         {actionText}
       </ButtonParts.Root>
@@ -53,6 +57,7 @@ export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
             palette={actionProps.palette}
             disabled={actionProps.pending}
             shape={iconShape}
+            size={props.size}
             usage={usage}
           >
             <SelectArrow />

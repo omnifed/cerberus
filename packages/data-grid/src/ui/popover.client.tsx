@@ -88,7 +88,7 @@ export function PopoverContent(props: PopoverContentProps) {
         >
           <PopoverParts.Header>
             <PopoverParts.CloseTrigger asChild>
-              <IconButtonRoot size="sm" usage="ghost">
+              <IconButtonRoot size="xs" usage="ghost">
                 <CloseIcon />
               </IconButtonRoot>
             </PopoverParts.CloseTrigger>

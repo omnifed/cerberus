@@ -73,5 +73,19 @@ export const buttonGroup: RecipeConfig<RecipeVariantRecord> = defineRecipe({
         },
       },
     },
+    {
+      layout: 'attached',
+      shape: 'default',
+      css: {
+        _iconButton: {
+          borderTopRightRadius: '0.25rem!',
+          borderBottomRightRadius: '0.25rem!',
+        },
+        _menuTrigger: {
+          borderTopRightRadius: '0.25rem!',
+          borderBottomRightRadius: '0.25rem!',
+        },
+      },
+    },
   ],
 })

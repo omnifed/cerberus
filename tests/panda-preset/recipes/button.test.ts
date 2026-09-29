@@ -164,88 +164,75 @@ describe('button recipe', () => {
     })
   })
 
-  test('should have a xs size variant', () => {
-    expect(button.variants?.size.xs).toMatchObject({
-      h: '6',
-      minW: '6',
-      fontSize: 'xs',
-      textStyle: 'button-sm',
-      px: '2',
-      gap: '1',
-      _icon: {
-        width: '3.5',
-        height: '3.5',
+  test('should have a size variant', () => {
+    expect(button.variants?.size).toMatchObject({
+      xs: {
+        h: '1.5rem',
+        minW: '6',
+        fontSize: 'xs',
+        textStyle: 'button-sm',
+        px: '2',
+        gap: '1',
+        _icon: {
+          h: '3.5',
+          w: '3.5',
+        },
       },
-    })
-  })
-
-  test('should have a small size variant', () => {
-    expect(button.variants?.size.sm).toMatchObject({
-      h: '9',
-      minW: '9',
-      px: '3.5',
-      textStyle: 'button-sm',
-      gap: '2',
-      _icon: {
-        width: '4',
-        height: '4',
+      sm: {
+        h: '2rem',
+        minW: '9',
+        px: '3.5',
+        textStyle: 'button-sm',
+        gap: '2',
+        _icon: {
+          h: '4',
+          w: '4',
+        },
       },
-    })
-  })
-
-  test('should have a medium size variant', () => {
-    expect(button.variants?.size.md).toMatchObject({
-      h: '10',
-      minW: '10',
-      textStyle: 'button-md',
-      px: '4',
-      gap: '2',
-      _icon: {
-        width: '5',
-        height: '5',
+      md: {
+        h: '2.5rem',
+        minW: '10',
+        textStyle: 'button-md',
+        px: '4',
+        gap: '2',
+        _icon: {
+          h: '5',
+          w: '5',
+        },
       },
-    })
-  })
-
-  test('should have a large size variant', () => {
-    expect(button.variants?.size.lg).toMatchObject({
-      h: '11',
-      minW: '11',
-      textStyle: 'button-md',
-      px: '5',
-      gap: '3',
-      _icon: {
-        width: '5',
-        height: '5',
+      lg: {
+        h: '2.75rem',
+        minW: '11',
+        textStyle: 'button-md',
+        px: '5',
+        gap: '3',
+        _icon: {
+          h: '5',
+          w: '5',
+        },
       },
-    })
-  })
-
-  test('should have a xl size variant', () => {
-    expect(button.variants?.size.xl).toMatchObject({
-      h: '12',
-      minW: '12',
-      textStyle: 'button-md',
-      px: '5',
-      gap: '2.5',
-      _icon: {
-        width: '5',
-        height: '5',
+      xl: {
+        h: '12',
+        minW: '12',
+        textStyle: 'button-md',
+        px: '5',
+        gap: '2.5',
+        _icon: {
+          h: '5',
+          w: '5',
+        },
       },
-    })
-  })
-
-  test('should have a 2xl size variant', () => {
-    expect(button.variants?.size['2xl']).toMatchObject({
-      h: '16',
-      minW: '16',
-      fontSize: 'lg',
-      textStyle: 'button-md',
-      px: '7',
-      gap: '3',
-      _icon: {
-        width: '6',
-        height: '6',
+      '2xl': {
+        h: '16',
+        minW: '16',
+        fontSize: 'lg',
+        textStyle: 'button-md',
+        px: '7',
+        gap: '3',
+        _icon: {
+          h: '6',
+          w: '6',
+        },
       },
     })
   })
