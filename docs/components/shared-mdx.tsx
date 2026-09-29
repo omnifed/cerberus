@@ -11,6 +11,8 @@ import { mdxCode } from './mdx-code'
 import { mdxLists } from './mdx-lists'
 import { mdxTable } from './mdx-table'
 import { mdxText } from './mdx-text'
+import { FeatureAdmonition } from './ui/feature-admonition'
+import { FeatureBadge } from './ui/feature-badge'
 
 export const sharedComponents = {
   BashTabs,
@@ -18,6 +20,8 @@ export const sharedComponents = {
   NoteAdmonition,
   WarningAdmonition,
   CodeSnippet,
+  FeatureBadge,
+  FeatureAdmonition,
 
   ...lazyMdxComponents,
 
