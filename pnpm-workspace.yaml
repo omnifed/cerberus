@@ -11,7 +11,7 @@ packages:
 
 catalogs:
   oxc:
-    oxfmt: ^0.68.0
+    oxfmt: ^0.70.0
   ark:
     '@ark-ui/react': ^5.39.2
   pandacss:
