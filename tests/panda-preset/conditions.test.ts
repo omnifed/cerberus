@@ -329,4 +329,10 @@ describe('conditions', () => {
   test('should have a dragging state', () => {
     expect(conditions.dragging).toEqual('&:is([data-dragging])')
   })
+
+  test('should have an autoComplete state', () => {
+    expect(conditions.autoComplete).toEqual(
+      '&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active',
+    )
+  })
 })
