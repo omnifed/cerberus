@@ -17,4 +17,10 @@ export const formStates = {
       cursor: 'default',
     },
   },
+  _autoComplete: {
+    WebkitBoxShadow: '0 0 0px 1000px var(--colors-page-surface-initial) inset',
+    WebkitTextFillColor: 'page.text.initial',
+    caretColor: 'page.text.initial',
+    transition: 'background-color 5000s ease-in-out 0s',
+  },
 }
