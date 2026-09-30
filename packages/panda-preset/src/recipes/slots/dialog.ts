@@ -88,7 +88,7 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     title: {
       color: 'page.text.initial',
-      textStyle: 'heading-lg',
+      textStyle: 'heading-md',
     },
     description: {
       color: 'page.text.initial',
