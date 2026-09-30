@@ -34,6 +34,8 @@ export const conditions = {
   groupInvalid: '.group:is([data-invalid] &, [aria-invalid]) &',
   groupChecked: '.group:is([data-checked="true"] &, [aria-checked="true"]) &',
   notDisabled: '&:is(:not([disabled]), [data-disabled=false])',
+  autoComplete:
+    '&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active',
 
   // emphasis
   highEmphasis: '&:is([data-emphasis=high])',
