@@ -78,7 +78,7 @@ describe('dialog recipe', () => {
       },
       title: {
         color: 'page.text.initial',
-        textStyle: 'heading-lg',
+        textStyle: 'heading-md',
       },
       description: {
         color: 'page.text.initial',
