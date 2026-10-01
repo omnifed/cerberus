@@ -10,7 +10,6 @@ describe('datePicker recipe', () => {
 
   test('should have a base style', () => {
     expect(datePicker.base?.control).toMatchObject({
-      '--date-picker-z-index': 'zIndex.popover',
       alignItems: 'center',
       display: 'flex',
       border: '1px solid',
@@ -22,7 +21,6 @@ describe('datePicker recipe', () => {
       paddingInlineEnd: 'md',
       rounded: 'md',
       w: '9.25rem',
-      zIndex: 'calc(var(--date-picker-z-index) + var(--layer-index, 0))',
       '&:is([data-range])': {
         _before: {
           bgColor: 'page.border.initial',
@@ -65,6 +63,7 @@ describe('datePicker recipe', () => {
 
   test('should have a content style', () => {
     expect(datePicker.base?.content).toMatchObject({
+      '--date-picker-z-index': 'zIndex.popover',
       bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'action.border.100',
@@ -72,6 +71,7 @@ describe('datePicker recipe', () => {
       rounded: 'sm',
       shadow: 'md',
       w: '19.25rem',
+      zIndex: 'calc(var(--date-picker-z-index) + var(--layer-index, 0))',
     })
   })
 
