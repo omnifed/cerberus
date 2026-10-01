@@ -1,5 +1,12 @@
 # @cerberus/figma
 
+## 1.9.0
+
+### Patch Changes
+
+- 2725945: Support autocomplete styling
+- 4b85c37: Update dependencies
+
 ## 1.8.1
 
 ### Patch Changes
