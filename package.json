@@ -14,7 +14,7 @@
     "lint:jsrPackages": "pnpm --filter @cerberus/* run -w lint:ts",
     "lint:tests": "pnpm --filter tests run lint:ts",
     "lint": "pnpm lint:npmPackages && pnpm lint:jsrPackages && pnpm lint:tests",
-    "test": "pnpm --filter tests run test:ci",
+    "test": "pnpm --filter tests run test",
     "ci:version": "changeset version && bun ./scripts/src/bump-versions.mjs --stable && pnpm install --no-frozen-lockfile",
     "gen:component": "bun ./scripts/src/bootstrap-component.ts"
   },

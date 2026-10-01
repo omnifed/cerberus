@@ -79,9 +79,6 @@ async function ExampleContent({ path, demo }: ExampleProps) {
     <VStack
       data-slot="example:root"
       bgColor="page.surface.initial/20"
-      backdropFilter="auto"
-      backdropBlur="16px"
-      backdropSaturate="180%"
       border="1px solid"
       borderColor="page.border.initial/30"
       boxShadow="0 4px 30px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)"

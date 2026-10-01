@@ -38,12 +38,6 @@ describe('datePicker recipe', () => {
     })
   })
 
-  test('should have a positioner style', () => {
-    expect(datePicker.base?.positioner).toMatchObject({
-      zIndex: 'dropdown!',
-    })
-  })
-
   test('should have an input style', () => {
     expect(datePicker.base?.input).toMatchObject({
       bgColor: 'page.surface.initial',
@@ -69,13 +63,16 @@ describe('datePicker recipe', () => {
 
   test('should have a content style', () => {
     expect(datePicker.base?.content).toMatchObject({
+      '--date-picker-z-index': 'zIndex.popover',
       bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'action.border.100',
       overflow: 'hidden',
+      pos: 'relative',
       rounded: 'sm',
       shadow: 'md',
       w: '19.25rem',
+      zIndex: 'calc(var(--date-picker-z-index) + var(--layer-index, 0))',
     })
   })
 

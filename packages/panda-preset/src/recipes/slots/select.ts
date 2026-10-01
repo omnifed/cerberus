@@ -102,9 +102,9 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     positioner: {
       w: 'var(--reference-width)',
-      zIndex: 'dropdown!',
     },
     content: {
+      '--select-z-index': 'zIndex.popover',
       bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'page.border.200',
@@ -116,8 +116,10 @@ export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
       outline: 0,
       overflowY: 'auto',
       p: 'xs',
+      pos: 'relative',
       rounded: 'md',
       shadow: 'sm',
+      zIndex: 'calc(var(--select-z-index) + var(--layer-index, 0))',
       _open: {
         animationStyle: 'slide-fade-in',
         animationDuration: 'fast',
