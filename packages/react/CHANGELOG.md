@@ -1,5 +1,16 @@
 # @cerberus-design/react
 
+## 1.9.0
+
+### Minor Changes
+
+- 8cced3d: Updates Button sizes and adds SplitButton variants
+
+### Patch Changes
+
+- 2725945: Support autocomplete styling
+- 4b85c37: Update dependencies
+
 ## 1.8.1
 
 ### Patch Changes
