@@ -47,10 +47,8 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
         color: 'page.text.100',
       },
     },
-    positioner: {
-      zIndex: 'dropdown!',
-    },
     control: {
+      '--date-picker-z-index': 'zIndex.popover',
       alignItems: 'center',
       display: 'flex',
       border: '1px solid',
@@ -62,6 +60,7 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
       paddingInlineEnd: 'md',
       rounded: 'md',
       w: '9.25rem',
+      zIndex: 'calc(var(--date-picker-z-index) + var(--layer-index, 0))',
       '&:is([data-range])': {
         w: '17.5rem',
         _before: {
