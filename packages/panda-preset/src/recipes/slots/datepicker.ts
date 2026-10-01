@@ -115,6 +115,7 @@ export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
       border: '1px solid',
       borderColor: 'action.border.100',
       overflow: 'hidden',
+      pos: 'relative',
       rounded: 'sm',
       shadow: 'md',
       w: '19.25rem',

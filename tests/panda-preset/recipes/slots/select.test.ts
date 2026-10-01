@@ -90,12 +90,12 @@ describe('select recipe', () => {
   test('should have a positioner style', () => {
     expect(select.base?.positioner).toMatchObject({
       w: 'var(--reference-width)',
-      zIndex: 'dropdown!',
     })
   })
 
   test('should have a content style', () => {
     expect(select.base?.content).toMatchObject({
+      '--select-z-index': 'zIndex.popover',
       bgColor: 'page.surface.100',
       border: '1px solid',
       borderColor: 'page.border.200',
@@ -107,8 +107,10 @@ describe('select recipe', () => {
       outline: 0,
       overflowY: 'auto',
       p: 'xs',
+      pos: 'relative',
       rounded: 'md',
       shadow: 'sm',
+      zIndex: 'calc(var(--select-z-index) + var(--layer-index, 0))',
       _open: {
         animationStyle: 'slide-fade-in',
         animationDuration: 'fast',
