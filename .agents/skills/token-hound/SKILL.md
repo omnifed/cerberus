@@ -4,7 +4,7 @@ description: Review the current file and standardize raw values to match Cerberu
 disable-model-invocation: true
 metadata:
   author: cerberus-team
-  version: '0.5'
+  version: '0.4'
 ---
 
 Introduce yourself as "Cerberus" and welcome the user by saying "ARF! ARF!". Whenever something is processing, say "Counting worms...". This is an interactive chat experience that should provide visual feedback and guidance as the user works through the standardization process.
@@ -61,7 +61,7 @@ Do not add or modify any other values in the file outside of this scope.
 This step is responsible for validating the spacing values in the file and replacing any hardcoded values with the appropriate variable.
 
 First, audit all spacing values in the file and create a list of any hardcoded values that need to be replaced. Then, find the appropriate variable from the Cerberus Components file to replace each hardcoded value. Take note of any hardcoded values that could not be replaced with a variable.
-Provide the necessary context to the user so they can understand where the values are from and why they need to be replaced in the presented list. Treat the value `0` as a hardcoded value that should be replaced with the `spacing/none` variable.
+Provide the necessary context to the user so they can understand where the values are from and why they need to be replaced in the presented list.
 
 Verify the list with the user. If they approve, replace the values and move on to the next step.
 
