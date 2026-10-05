@@ -1,5 +1,19 @@
 # @cerberus-design/data-grid
 
+## 1.9.0
+
+### Minor Changes
+
+- 8cced3d: Updates Button sizes and adds SplitButton variants
+
+### Patch Changes
+
+- Updated dependencies [2725945]
+- Updated dependencies [8cced3d]
+- Updated dependencies [4b85c37]
+  - @cerberus-design/react@1.9.0
+  - @cerberus-design/signals@1.9.0
+
 ## 1.8.1
 
 ### Patch Changes
