@@ -51,7 +51,8 @@ export function determinePageIndex(options?: boolean | PaginationOptions): numbe
     return DEFAULT_PAGE_IDX
   }
 
-  return options.defaultPage ?? DEFAULT_PAGE_IDX
+  if (options.defaultPage) return options.defaultPage
+  return options.page ?? DEFAULT_PAGE_IDX
 }
 
 export function determinePageRange(options?: boolean | PaginationOptions): number[] {

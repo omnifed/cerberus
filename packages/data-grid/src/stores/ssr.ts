@@ -25,9 +25,6 @@ export function createSSRStore<TData>(
 
     handleSortDelegate: (colId, direction, multi) => {
       if (!isServerPaginated()) return
-
-      paginationStore.setPageIndex(DEFAULT_PAGE_IDX)
-
       if (typeof initOptions === 'object' && initOptions.onSortChange) {
         initOptions.onSortChange(colId, direction, multi)
       }
@@ -35,9 +32,6 @@ export function createSSRStore<TData>(
 
     handleFilterDelegate: (filters) => {
       if (!isServerPaginated()) return
-
-      paginationStore.setPageIndex(DEFAULT_PAGE_IDX)
-
       if (typeof initOptions === 'object' && initOptions.onFilterChange) {
         initOptions.onFilterChange(filters)
       }

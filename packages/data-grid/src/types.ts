@@ -96,6 +96,10 @@ export type PaginationOptions = {
    */
   defaultPage?: PaginationRootProps['defaultPage']
   /**
+   * The page index to use as the controlled value.
+   */
+  page?: PaginationRootProps['page']
+  /**
    * The default page size to start with. **Must be included in customRange if
    * using any value other than 25, 50, or 100**.
    *
