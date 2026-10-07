@@ -1,7 +1,8 @@
 import { type Accessor, createComputed, createSignal } from '@cerberus-design/signals'
-import type { PaginationOptions, SortState } from '../types'
+import type { SortState } from '../types'
 import { type DataStore } from './data'
 import { type FilterStore } from './filter'
+import { SSRStore } from './ssr'
 
 type SortStore<TData> = {
   sorting: Accessor<SortState[]>
@@ -14,13 +15,15 @@ type SortStore<TData> = {
 type Options<TData> = {
   columns: DataStore<TData>['columns']
   filteredRows: FilterStore<TData>['filteredRows']
-  onSortChange?: PaginationOptions['onSortChange']
+  ssrStore: SSRStore
 }
 
 export function createSortStore<TData>(options: Options<TData>): SortStore<TData> {
   const [sorting, setSorting] = createSignal<SortState[]>([])
 
   const sortedRows = createComputed(() => {
+    if (options.ssrStore.isServerPaginated()) return options.filteredRows()
+
     const filteredRows = options.filteredRows()
     const currentRows = [...filteredRows]
     const sortState = sorting()
@@ -65,15 +68,12 @@ export function createSortStore<TData>(options: Options<TData>): SortStore<TData
 
     setSort: (colId, direction, multi = false) => {
       const current = sorting()
-
       if (direction === null) {
         setSorting(current.filter((s) => s.id !== colId))
-        options.onSortChange?.(colId, direction, multi)
+        options.ssrStore.handleSortDelegate(colId, direction, multi) // <-- Delegate
         return
       }
-
       const newSort = { id: colId, desc: direction === 'desc' }
-
       if (multi) {
         const existingIndex = current.findIndex((s) => s.id === colId)
         if (existingIndex >= 0) {
@@ -84,11 +84,10 @@ export function createSortStore<TData>(options: Options<TData>): SortStore<TData
           setSorting([...current, newSort])
         }
       } else {
-        // Single sort clears all other sorts
         setSorting([newSort])
       }
 
-      options.onSortChange?.(colId, direction, multi)
+      options.ssrStore.handleSortDelegate(colId, direction, multi) // <-- Delegate
     },
 
     toggleSort: (colId, multi) => {
@@ -110,7 +109,7 @@ export function createSortStore<TData>(options: Options<TData>): SortStore<TData
       }
 
       const direction = updatedSort.find((s) => s.id === colId)?.desc ? 'desc' : 'asc'
-      options.onSortChange?.(colId, direction, multi)
+      options.ssrStore.handleSortDelegate(colId, direction, multi) // <-- Delegate
     },
   }
 }

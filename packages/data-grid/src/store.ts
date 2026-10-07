@@ -5,6 +5,7 @@ import {
   createLayoutStore,
   createPaginationStore,
   createSortStore,
+  createSSRStore,
   createVisibilityStore,
 } from './stores'
 import type { FeatureOpenOption, GridOptions, GridStore } from './types'
@@ -15,21 +16,17 @@ import { determineInitialCount } from './utils'
  * the public Context API.
  */
 export function createGridStore<TData>(options: GridOptions<TData>): GridStore<TData> {
-  const onSortChange =
-    typeof options?.pagination === 'object'
-      ? options.pagination.onSortChange
-      : undefined
-
   // 1. Core Data
   const dataStore = createDataStore(options)
 
   // 2. Feature Stores
   const paginationStore = createPaginationStore(options)
-  const filterStore = createFilterStore(dataStore)
+  const ssrStore = createSSRStore(options, paginationStore)
+  const filterStore = createFilterStore(dataStore, ssrStore)
   const sortStore = createSortStore({
     columns: dataStore.columns,
     filteredRows: filterStore.filteredRows,
-    onSortChange,
+    ssrStore,
   })
   const visibilityStore = createVisibilityStore()
 
