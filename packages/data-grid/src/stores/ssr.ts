@@ -14,7 +14,7 @@ export function createSSRStore<TData>(
   options: GridOptions<TData>,
   paginationStore: PaginationStore,
 ): SSRStore {
-  const initOptions = options.initialState?.pagination || options.pagination
+  const initOptions = options.pagination
 
   const isServerPaginated = createComputed(() =>
     Boolean(determineInitialCount(initOptions)),

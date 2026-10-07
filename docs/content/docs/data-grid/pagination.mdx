@@ -54,7 +54,17 @@ total number of pages based on the `count` and `pageSize` values
 
 <WarningAdmonition description="Opting into server-side pagination bypasses the DataGrid's internal client-side data mutations. You must leverage the event delegates within the pagination options (such as onSortChange and onFilterChange) to orchestrate these state updates via your backend." />
 
+### Basic
+
+To enable server-side pagination, provide a `count` value to the `pagination` prop of the `DataGrid`.
+
 <Example path="data-grid/pagination" demo="count" />
+
+### Sorting
+
+To use sorting with server-side pagination, provide a `onSortChange` function to the `pagination` prop of the `DataGrid`.
+
+<Example path="data-grid/pagination" demo="ssrSort" />
 
 ## Options
 

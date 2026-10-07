@@ -12,7 +12,7 @@ import {
   Show,
   Text,
 } from '@cerberus-design/react'
-import { Divider, HStack } from 'styled-system/jsx'
+import { Divider, HStack, VStack } from 'styled-system/jsx'
 import { useDataGridContext } from '../context.client'
 import { CountMenu } from './count-menu.client'
 import { useRead } from '@cerberus-design/signals'
@@ -36,7 +36,6 @@ export function GridPagination() {
     <Show when={pageSize}>
       {() => (
         <PaginationParts.Root
-          defaultPage={pageIndex ? pageIndex : 1}
           count={rowCount}
           onPageChange={handlePageChange}
           onPageSizeChange={handlePageSizeChange}
@@ -88,15 +87,17 @@ export function GridPagination() {
 
                 <Group>
                   <PrevTrigger size="sm" />
-                  <Text
-                    as="small"
-                    color="page.text.200"
-                    lineHeight="inherit"
-                    textStyle="label-sm"
-                    userSelect="none"
-                  >
-                    {pagination.page} of {pagination.totalPages}
-                  </Text>
+                  <VStack justify="center">
+                    <Text
+                      as="small"
+                      color="page.text.200"
+                      lineHeight="inherit"
+                      textStyle="label-sm"
+                      userSelect="none"
+                    >
+                      {pagination.page} of {pagination.totalPages}
+                    </Text>
+                  </VStack>
                   <NextTrigger size="sm" />
                 </Group>
               </HStack>

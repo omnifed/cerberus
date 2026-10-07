@@ -1,5 +1,4 @@
 import {
-  PageDetails,
   type EnforceNoProperties,
   type PaginationRootProps,
 } from '@cerberus-design/react'
@@ -17,21 +16,6 @@ export interface GridOptions<TData> {
    * A list of Defined Columns created using the column helper.
    */
   columns: ColumnDef<TData>[]
-  /**
-   * @deprecated use DataGrid `pagination` prop instead
-   * Initial options for feature-related settings.
-   *
-   * **THIS FEATURE WILL BE REMOVED IN VERSION: 1.9**
-   */
-  initialState?: {
-    pagination?: boolean | PaginationOptions
-  }
-  /**
-   * @deprecated use DataGrid `pagination` prop instead
-   *
-   * **THIS FEATURE WILL BE REMOVED IN VERSION: 1.9**
-   */
-  onPageChange?: (details: PageDetails) => void
   /**
    * Determines if pagination features will be displayed on the DataGrid.
    *

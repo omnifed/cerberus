@@ -29,14 +29,14 @@ export type PaginationStore = {
 export function createPaginationStore<TData>(
   options: GridOptions<TData>,
 ): PaginationStore {
-  const initOptions = options.initialState?.pagination || options.pagination
+  const initOptions = options.pagination
 
   const hasOptions = typeof initOptions === 'object'
   const optionActions = {
     onPageChange: hasOptions && initOptions.onPageChange,
     onPageSizeChange: hasOptions && initOptions.onPageSizeChange,
   }
-  const onPageChange = options.onPageChange || optionActions.onPageChange
+  const onPageChange = optionActions.onPageChange
 
   const [pageIndex, setPageIndex] = createSignal<number>(
     determinePageIndex(initOptions),

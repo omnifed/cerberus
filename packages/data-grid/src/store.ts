@@ -41,8 +41,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
   // Derived pagination for SSR - Cerby handles client-side pagination
   const rowCount = createComputed(() => {
     return (
-      determineInitialCount(options?.initialState?.pagination || options.pagination) ??
-      filterStore.filteredRows().length
+      determineInitialCount(options.pagination) ?? filterStore.filteredRows().length
     )
   })
   const pageCount = createComputed(() =>
