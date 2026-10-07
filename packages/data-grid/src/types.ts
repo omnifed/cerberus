@@ -144,6 +144,12 @@ export type PaginationOptions = {
    * the user clicking a sort trigger from either the column header or the features menu.
    */
   onSortChange?: GridStore<unknown>['setSort']
+
+  /**
+   * **Server-side pagination**. A callback that is invoked when the column filter changes via
+   * the user applying or clearing a filter.
+   */
+  onFilterChange?: (filters: ColumnFilterState) => void
 }
 
 // -- Column Definitions --

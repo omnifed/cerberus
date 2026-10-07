@@ -52,6 +52,8 @@ This also means that the Data Grid will no longer automatically calculate the
 total number of pages based on the `count` and `pageSize` values
 (as per usual for server-side pagination).
 
+<WarningAdmonition description="Opting into server-side pagination bypasses the DataGrid's internal client-side data mutations. You must leverage the event delegates within the pagination options (such as onSortChange and onFilterChange) to orchestrate these state updates via your backend." />
+
 <Example path="data-grid/pagination" demo="count" />
 
 ## Options
@@ -67,6 +69,7 @@ The `pagination` options accept the following properties:
 | `onPageChange`     | `false`  | A function to call when the page changes. **This is useful for server-side pagination design**                     |
 | `onPageSizeChange` | `false`  | A function to call when the page size changes. **This is useful for server-side pagination design**                |
 | `onSortChange`     | `false`  | A function to call when the sort order changes. **This is useful for server-side sorting design**                  |
+| `onFilterChange`   | `false`  | A function to call when the filter changes. **This is useful for server-side filtering design**                    |
 
 ## Pagination Context
 
