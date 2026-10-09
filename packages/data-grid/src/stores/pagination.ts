@@ -8,6 +8,7 @@ import {
 import { DEFAULT_PAGE_IDX } from '../const'
 import { GridOptions } from '../types'
 import {
+  determineDefaultPage,
   determineInitialCount,
   determinePageIndex,
   determinePageRange,
@@ -15,6 +16,7 @@ import {
 } from '../utils'
 
 export type PaginationStore = {
+  defaultPage: number | void
   currentPageRange: Accessor<{ start: number; end: number }>
   pageIndex: Accessor<number>
   pageSize: Accessor<number>
@@ -37,13 +39,15 @@ export function createPaginationStore<TData>(
     onPageSizeChange: hasOptions && initOptions.onPageSizeChange,
   }
   const onPageChange = optionActions.onPageChange
+  const defaultPage = determineDefaultPage(initOptions)
 
   const [pageIndex, setPageIndex] = createSignal<number>(
     determinePageIndex(initOptions),
   )
   const [pageSize, setPageSize] = createSignal<number>(determinePageSize(initOptions))
   const [pageRange] = createSignal<number[]>(determinePageRange(initOptions))
-  const [isServerPaginated] = createSignal<boolean>(
+
+  const isServerPaginated = createComputed<boolean>(() =>
     Boolean(determineInitialCount(initOptions)),
   )
 
@@ -57,6 +61,7 @@ export function createPaginationStore<TData>(
   })
 
   return {
+    defaultPage,
     currentPageRange,
     pageIndex,
     pageSize,

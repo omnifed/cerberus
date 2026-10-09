@@ -70,9 +70,10 @@ export function createSortStore<TData>(options: Options<TData>): SortStore<TData
       const current = sorting()
       if (direction === null) {
         setSorting(current.filter((s) => s.id !== colId))
-        options.ssrStore.handleSortDelegate(colId, direction, multi) // <-- Delegate
+        options.ssrStore.handleSortDelegate(colId, direction, multi)
         return
       }
+
       const newSort = { id: colId, desc: direction === 'desc' }
       if (multi) {
         const existingIndex = current.findIndex((s) => s.id === colId)
@@ -87,7 +88,7 @@ export function createSortStore<TData>(options: Options<TData>): SortStore<TData
         setSorting([newSort])
       }
 
-      options.ssrStore.handleSortDelegate(colId, direction, multi) // <-- Delegate
+      options.ssrStore.handleSortDelegate(colId, direction, multi)
     },
 
     toggleSort: (colId, multi) => {
@@ -109,7 +110,7 @@ export function createSortStore<TData>(options: Options<TData>): SortStore<TData
       }
 
       const direction = updatedSort.find((s) => s.id === colId)?.desc ? 'desc' : 'asc'
-      options.ssrStore.handleSortDelegate(colId, direction, multi) // <-- Delegate
+      options.ssrStore.handleSortDelegate(colId, direction, multi)
     },
   }
 }

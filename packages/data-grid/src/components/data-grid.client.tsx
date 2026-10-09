@@ -15,6 +15,8 @@ import { GridViewport } from './viewport.client'
 function DataGridEl<TData>(props: GridOptions<TData>) {
   const { data, pagination } = props
 
+  const controlledPage = typeof pagination === 'object' ? pagination.page : undefined
+
   const [ready, setReady] = useSignal<boolean>(false)
   const rootRef = useRef<HTMLDivElement>(null)
 
@@ -33,13 +35,10 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
   // Sync data in store with props
 
   useEffect(() => {
-    const controlledPage = typeof pagination === 'object' ? pagination.page : undefined
-    console.log({ controlledPage })
     if (controlledPage !== undefined && controlledPage !== store.pageIndex()) {
-      console.log('Syncing page index from props', controlledPage)
       store.setPageIndex(controlledPage)
     }
-  }, [pagination, store])
+  }, [controlledPage, store])
 
   useEffect(() => {
     store.updateData(data)

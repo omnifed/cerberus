@@ -12,10 +12,10 @@ import {
   Show,
   Text,
 } from '@cerberus-design/react'
+import { useRead } from '@cerberus-design/signals'
 import { Divider, HStack, VStack } from 'styled-system/jsx'
 import { useDataGridContext } from '../context.client'
 import { CountMenu } from './count-menu.client'
-import { useRead } from '@cerberus-design/signals'
 
 export function GridPagination() {
   const store = useDataGridContext()
@@ -36,6 +36,7 @@ export function GridPagination() {
     <Show when={pageSize}>
       {() => (
         <PaginationParts.Root
+          defaultPage={store.defaultPage}
           count={rowCount}
           onPageChange={handlePageChange}
           onPageSizeChange={handlePageSizeChange}
