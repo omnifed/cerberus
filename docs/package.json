@@ -39,7 +39,7 @@
     "@pandacss/dev": "catalog:pandacss",
     "@pandacss/types": "catalog:pandacss",
     "@shikijs/rehype": "^4.4.3",
-    "@shikijs/transformers": "^4.4.3",
+    "@shikijs/transformers": "^4.5.0",
     "@types/mdx": "^2.0.14",
     "@types/node": "catalog:types",
     "@types/react": "catalog:jsx",
