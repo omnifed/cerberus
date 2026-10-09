@@ -65,7 +65,6 @@ export function SSRSortDemo() {
           pending: 'linear',
         }}
         pagination={{
-          page: current.page,
           count: data.pagination.count,
           onPageChange: handlePageChange,
           onPageSizeChange: handlePageSizeChange,

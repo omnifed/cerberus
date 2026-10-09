@@ -1,5 +1,6 @@
 import {
   type Accessor,
+  batch,
   createComputed,
   createSignal,
   Setter,
@@ -90,7 +91,10 @@ export function createFilterStore<TData>(
 
     setGlobalFilter,
     setColFilter: (val) => {
-      setColFilters(val)
+      batch(() => {
+        setColFilters(val)
+        ssrStore.resetPage()
+      })
       ssrStore.handleFilterDelegate(colFilters())
     },
     setShowColFilter,

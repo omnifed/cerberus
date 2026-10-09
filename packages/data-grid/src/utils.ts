@@ -50,14 +50,6 @@ export function determinePageSize(options?: boolean | PaginationOptions): number
   return options.pageSize ?? SM_PAGE_SIZE
 }
 
-export function determinePageIndex(options?: boolean | PaginationOptions): number {
-  if (!options) return DEFAULT_PAGE_IDX
-  if (typeof options === 'boolean' && options === true) {
-    return DEFAULT_PAGE_IDX
-  }
-  return options.page ?? DEFAULT_PAGE_IDX
-}
-
 export function determinePageRange(options?: boolean | PaginationOptions): number[] {
   if (!options) return DEFAULT_PAGE_SIZES
   if (typeof options === 'boolean' && options === true) {

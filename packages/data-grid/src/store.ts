@@ -21,7 +21,7 @@ export function createGridStore<TData>(options: GridOptions<TData>): GridStore<T
 
   // 2. Feature Stores
   const paginationStore = createPaginationStore(options)
-  const ssrStore = createSSRStore(options)
+  const ssrStore = createSSRStore(options, paginationStore)
   const filterStore = createFilterStore(dataStore, ssrStore)
   const sortStore = createSortStore({
     columns: dataStore.columns,

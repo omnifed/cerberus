@@ -10,7 +10,6 @@ import { GridOptions } from '../types'
 import {
   determineDefaultPage,
   determineInitialCount,
-  determinePageIndex,
   determinePageRange,
   determinePageSize,
 } from '../utils'
@@ -41,9 +40,7 @@ export function createPaginationStore<TData>(
   const onPageChange = optionActions.onPageChange
   const defaultPage = determineDefaultPage(initOptions)
 
-  const [pageIndex, setPageIndex] = createSignal<number>(
-    determinePageIndex(initOptions),
-  )
+  const [pageIndex, setPageIndex] = createSignal<number>(DEFAULT_PAGE_IDX)
   const [pageSize, setPageSize] = createSignal<number>(determinePageSize(initOptions))
   const [pageRange] = createSignal<number[]>(determinePageRange(initOptions))
 
