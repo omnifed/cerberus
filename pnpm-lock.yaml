@@ -210,8 +210,8 @@ catalogs:
       specifier: ^1.12.1
       version: 1.12.1
     '@pandacss/types':
-      specifier: ^1.12.1
-      version: 1.12.1
+      specifier: ^2.1.1
+      version: 2.1.1
   ts:
     typescript:
       specifier: ^7.0.2
@@ -369,7 +369,7 @@ importers:
         version: 1.12.1(typescript@7.0.2)
       '@pandacss/types':
         specifier: catalog:pandacss
-        version: 1.12.1
+        version: 2.1.1
       '@shikijs/rehype':
         specifier: ^4.4.3
         version: 4.4.3
@@ -499,10 +499,10 @@ importers:
         version: link:../../styled-system
       vite:
         specifier: catalog:jsx
-        version: 8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)
+        version: 8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: catalog:jsx
-        version: 5.1.1(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0))
+        version: 5.1.1(esbuild@0.25.12)(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0))
 
   packages/figma:
     devDependencies:
@@ -548,7 +548,7 @@ importers:
         version: 1.12.1(typescript@7.0.2)
       '@pandacss/types':
         specifier: catalog:pandacss
-        version: 1.12.1
+        version: 2.1.1
 
   packages/preset-acheron-theme:
     dependencies:
@@ -567,7 +567,7 @@ importers:
         version: 1.12.1(typescript@7.0.2)
       '@pandacss/types':
         specifier: catalog:pandacss
-        version: 1.12.1
+        version: 2.1.1
 
   packages/preset-cerberus-theme:
     dependencies:
@@ -586,7 +586,7 @@ importers:
         version: 1.12.1(typescript@7.0.2)
       '@pandacss/types':
         specifier: catalog:pandacss
-        version: 1.12.1
+        version: 2.1.1
 
   packages/preset-elysium-theme:
     dependencies:
@@ -605,7 +605,7 @@ importers:
         version: 1.12.1(typescript@7.0.2)
       '@pandacss/types':
         specifier: catalog:pandacss
-        version: 1.12.1
+        version: 2.1.1
 
   packages/preset-oceanus-theme:
     dependencies:
@@ -624,7 +624,7 @@ importers:
         version: 1.12.1(typescript@7.0.2)
       '@pandacss/types':
         specifier: catalog:pandacss
-        version: 1.12.1
+        version: 2.1.1
 
   packages/react:
     dependencies:
@@ -670,10 +670,10 @@ importers:
         version: link:../../styled-system
       vite:
         specifier: catalog:jsx
-        version: 8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)
+        version: 8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: catalog:jsx
-        version: 5.1.1(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0))
+        version: 5.1.1(esbuild@0.25.12)(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0))
 
   packages/signals:
     devDependencies:
@@ -694,10 +694,10 @@ importers:
         version: 19.3.0
       vite:
         specifier: catalog:jsx
-        version: 8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)
+        version: 8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)
       vite-plugin-dts:
         specifier: catalog:jsx
-        version: 5.1.1(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0))
+        version: 5.1.1(esbuild@0.25.12)(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0))
 
   packages/tokens:
     devDependencies:
@@ -709,7 +709,7 @@ importers:
         version: 1.12.1(typescript@7.0.2)
       '@pandacss/types':
         specifier: catalog:pandacss
-        version: 1.12.1
+        version: 2.1.1
 
   scripts:
     dependencies:
@@ -788,7 +788,7 @@ importers:
         version: 20.14.5
       '@pandacss/types':
         specifier: catalog:pandacss
-        version: 1.12.1
+        version: 2.1.1
       '@testing-library/jest-dom':
         specifier: ^7.0.1
         version: 7.0.1(@testing-library/dom@10.4.1)
@@ -1994,6 +1994,10 @@ packages:
   '@pandacss/types@1.12.1':
     resolution: {integrity: sha512-ucDQwuOrSKhXDuTFMB/VZsrH4zK1DtOvrkCMuzNL9brJiUS8+5IcGR4uP2/jNXm05/iI6zaBbWjwGhbRDsFicQ==}
     engines: {node: '>=20'}
+
+  '@pandacss/types@2.1.1':
+    resolution: {integrity: sha512-ycF8sYdqg8mu2cdfdR2hM/pLRpSxBVkD2kJkCBhWAr+KvKb5SoRRNeERSzizgENDUKmThcWHF3N0kSFMA1Rt9A==}
+    engines: {node: '>=22'}
 
   '@pnpm/deps.graph-sequencer@1100.0.1':
     resolution: {integrity: sha512-pOr5+q1fLYKwFN3LAJuGZEnfXDcQ73zqgDHMtGy+K+uIoUqyY+6MeDCWFwfu+4EFuq76I5EPFofoNAI+Bmmq4A==}
@@ -6808,6 +6812,8 @@ snapshots:
 
   '@pandacss/types@1.12.1': {}
 
+  '@pandacss/types@2.1.1': {}
+
   '@pnpm/deps.graph-sequencer@1100.0.1': {}
 
   '@preact/signals-core@1.14.4': {}
@@ -7328,7 +7334,7 @@ snapshots:
   '@vitejs/plugin-react@6.1.1(babel-plugin-react-compiler@1.0.0)(vite@8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)
+      vite: 8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)
     optionalDependencies:
       babel-plugin-react-compiler: 1.0.0
 
@@ -11176,7 +11182,7 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unplugin-dts@1.1.1(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)):
+  unplugin-dts@1.1.1(esbuild@0.25.12)(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)):
     dependencies:
       '@rollup/pluginutils': 5.4.0
       '@volar/typescript': 2.4.28(typescript@7.0.2)
@@ -11189,8 +11195,9 @@ snapshots:
       typescript: 7.0.2
       unplugin: 2.3.11
     optionalDependencies:
+      esbuild: 0.25.12
       rolldown: 1.2.3
-      vite: 8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)
+      vite: 8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -11275,11 +11282,11 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plugin-dts@5.1.1(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)):
+  vite-plugin-dts@5.1.1(esbuild@0.25.12)(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)):
     dependencies:
-      unplugin-dts: 1.1.1(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0))
+      unplugin-dts: 1.1.1(esbuild@0.25.12)(rolldown@1.2.3)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0))
     optionalDependencies:
-      vite: 8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0)
+      vite: 8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@rspack/core'
       - '@vue/language-core'
@@ -11289,7 +11296,7 @@ snapshots:
       - typescript
       - webpack
 
-  vite@8.3.1(@types/node@26.1.2)(terser@5.50.0)(yaml@2.9.0):
+  vite@8.3.1(@types/node@26.1.2)(esbuild@0.25.12)(terser@5.50.0)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
@@ -11298,6 +11305,7 @@ snapshots:
       tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 26.1.2
+      esbuild: 0.25.12
       fsevents: 2.3.3
       terser: 5.50.0
       yaml: 2.9.0
