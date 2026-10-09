@@ -38,7 +38,7 @@
     "@mdx-js/react": "^3.1.1",
     "@pandacss/dev": "catalog:pandacss",
     "@pandacss/types": "catalog:pandacss",
-    "@shikijs/rehype": "^4.4.3",
+    "@shikijs/rehype": "^4.5.0",
     "@shikijs/transformers": "^4.4.3",
     "@types/mdx": "^2.0.14",
     "@types/node": "catalog:types",
