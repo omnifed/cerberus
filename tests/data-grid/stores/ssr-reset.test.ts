@@ -30,6 +30,18 @@ function setup(overrides: Partial<PaginationOptions> = {}) {
 }
 
 describe('SS pagination: sort resets to page 1', () => {
+  test('store is seeded from defaultPage', () => {
+    const { store } = setup({ defaultPage: 3 })
+    expect(store.pageIndex()).toBe(3)
+  })
+
+  test('first sort after a defaultPage seed resets to page 1', () => {
+    const { store, spies } = setup({ defaultPage: 3 })
+    store.setSort('name', 'asc')
+    expect(store.pageIndex()).toBe(1)
+    expect(spies.onSortChange).toHaveBeenCalledTimes(1)
+  })
+
   test('setSort resets page and fires onSortChange exactly once', () => {
     const { store, spies } = setup()
     store.setPageIndex(3)

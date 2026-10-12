@@ -40,7 +40,10 @@ export function createPaginationStore<TData>(
   const onPageChange = optionActions.onPageChange
   const defaultPage = determineDefaultPage(initOptions)
 
-  const [pageIndex, setPageIndex] = createSignal<number>(DEFAULT_PAGE_IDX)
+  // Seed from defaultPage so the store matches what Ark renders on first paint
+  const [pageIndex, setPageIndex] = createSignal<number>(
+    defaultPage || DEFAULT_PAGE_IDX,
+  )
   const [pageSize, setPageSize] = createSignal<number>(determinePageSize(initOptions))
   const [pageRange] = createSignal<number[]>(determinePageRange(initOptions))
 

@@ -9,6 +9,7 @@
     "test:ci": "bun test --coverage"
   },
   "devDependencies": {
+    "@ark-ui/react": "catalog:ark",
     "@carbon/icons-react": "catalog:jsx",
     "@cerberus-design/data-grid": "workspace:*",
     "@cerberus-design/react": "workspace:*",

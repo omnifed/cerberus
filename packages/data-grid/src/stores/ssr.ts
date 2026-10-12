@@ -34,7 +34,6 @@ export function createSSRStore<TData>(
 
     resetPage: () => {
       if (!paginationStore.isServerPaginated()) return
-      if (paginationStore.pageIndex() === DEFAULT_PAGE_IDX) return
       paginationStore.setPageIndex(DEFAULT_PAGE_IDX)
     },
   }
