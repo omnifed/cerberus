@@ -1,7 +1,13 @@
-import { type Accessor, createComputed, createSignal } from '@cerberus-design/signals'
-import type { PaginationOptions, SortState } from '../types'
+import {
+  type Accessor,
+  batch,
+  createComputed,
+  createSignal,
+} from '@cerberus-design/signals'
+import type { SortDirection, SortState } from '../types'
 import { type DataStore } from './data'
 import { type FilterStore } from './filter'
+import { SSRStore } from './ssr'
 
 type SortStore<TData> = {
   sorting: Accessor<SortState[]>
@@ -14,13 +20,28 @@ type SortStore<TData> = {
 type Options<TData> = {
   columns: DataStore<TData>['columns']
   filteredRows: FilterStore<TData>['filteredRows']
-  onSortChange?: PaginationOptions['onSortChange']
+  ssrStore: SSRStore
 }
 
 export function createSortStore<TData>(options: Options<TData>): SortStore<TData> {
   const [sorting, setSorting] = createSignal<SortState[]>([])
 
+  function commit(
+    next: SortState[],
+    colId: string,
+    direction: SortDirection,
+    multi: boolean | undefined,
+  ): void {
+    batch(() => {
+      setSorting(next)
+      options.ssrStore.resetPage()
+    })
+    options.ssrStore.handleSortDelegate(colId, direction, multi)
+  }
+
   const sortedRows = createComputed(() => {
+    if (options.ssrStore.isServerPaginated()) return options.filteredRows()
+
     const filteredRows = options.filteredRows()
     const currentRows = [...filteredRows]
     const sortState = sorting()
@@ -67,50 +88,42 @@ export function createSortStore<TData>(options: Options<TData>): SortStore<TData
       const current = sorting()
 
       if (direction === null) {
-        setSorting(current.filter((s) => s.id !== colId))
-        options.onSortChange?.(colId, direction, multi)
+        commit(
+          current.filter((s) => s.id !== colId),
+          colId,
+          direction,
+          multi,
+        )
         return
       }
 
-      const newSort = { id: colId, desc: direction === 'desc' }
-
-      if (multi) {
-        const existingIndex = current.findIndex((s) => s.id === colId)
-        if (existingIndex >= 0) {
-          const next = [...current]
-          next[existingIndex] = newSort
-          setSorting(next)
-        } else {
-          setSorting([...current, newSort])
-        }
-      } else {
-        // Single sort clears all other sorts
-        setSorting([newSort])
+      const newSort: SortState = { id: colId, desc: direction === 'desc' }
+      if (!multi) {
+        commit([newSort], colId, direction, multi)
+        return
       }
 
-      options.onSortChange?.(colId, direction, multi)
+      const hasExisting = current.some((s) => s.id === colId)
+      const next = hasExisting
+        ? current.map((s) => (s.id === colId ? newSort : s))
+        : [...current, newSort]
+
+      commit(next, colId, direction, multi)
     },
 
     toggleSort: (colId, multi) => {
       const current = sorting()
-      const exists = current.findIndex((s) => s.id === colId) !== -1
+      const existing = current.find((s) => s.id === colId)
+      const nextSort: SortState = { id: colId, desc: existing ? !existing.desc : true }
 
-      const updatedSort = current.map((s) => {
-        if (s.id === colId) {
-          return { ...s, desc: !s.desc }
-        }
-        return s
-      })
+      // Non-multi toggle on an existing column keeps other sorts
+      const next = existing
+        ? current.map((s) => (s.id === colId ? nextSort : s))
+        : multi
+          ? [...current, nextSort]
+          : [nextSort]
 
-      if (exists) {
-        setSorting(multi ? [...current, ...updatedSort] : [...updatedSort])
-      } else {
-        const newSort = { id: colId, desc: true }
-        setSorting(multi ? [...current, newSort] : [newSort])
-      }
-
-      const direction = updatedSort.find((s) => s.id === colId)?.desc ? 'desc' : 'asc'
-      options.onSortChange?.(colId, direction, multi)
+      commit(next, colId, nextSort.desc ? 'desc' : 'asc', multi)
     },
   }
 }

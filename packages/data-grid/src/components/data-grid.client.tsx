@@ -27,8 +27,6 @@ function DataGridEl<TData>(props: GridOptions<TData>) {
       pagination: props.pagination,
       pending: props.pending,
       theme: props.theme,
-      initialState: props.initialState,
-      onPageChange: props.onPageChange,
     }),
   )
 

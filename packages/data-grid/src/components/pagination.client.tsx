@@ -12,10 +12,15 @@ import {
   Show,
   Text,
 } from '@cerberus-design/react'
-import { Divider, HStack } from 'styled-system/jsx'
+import { useRead } from '@cerberus-design/signals'
+import { Divider, HStack, VStack } from 'styled-system/jsx'
 import { useDataGridContext } from '../context.client'
 import { CountMenu } from './count-menu.client'
-import { useRead } from '@cerberus-design/signals'
+
+function DiagPage(props: { page: number }) {
+  console.log('[diag] Ark context page =', props.page)
+  return null
+}
 
 export function GridPagination() {
   const store = useDataGridContext()
@@ -23,8 +28,15 @@ export function GridPagination() {
   const pageIndex = useRead(store.pageIndex)
   const pageSize = useRead(store.pageSize)
   const rowCount = useRead(store.rowCount)
+  console.log('[diag] GridPagination render', { pageIndex, pageSize, rowCount })
 
   function handlePageChange(details: PageDetails) {
+    console.log(
+      '[diag] Ark onPageChange',
+      details.page,
+      '| signal =',
+      store.pageIndex(),
+    )
     store.setPage(details)
   }
 
@@ -36,7 +48,7 @@ export function GridPagination() {
     <Show when={pageSize}>
       {() => (
         <PaginationParts.Root
-          defaultPage={pageIndex ? pageIndex : 1}
+          defaultPage={store.defaultPage}
           count={rowCount}
           onPageChange={handlePageChange}
           onPageSizeChange={handlePageSizeChange}
@@ -54,6 +66,8 @@ export function GridPagination() {
                 py="sm"
                 w="full"
               >
+                <DiagPage page={pagination.page} />
+
                 <HStack gap="sm">
                   <Text
                     as="small"
@@ -88,15 +102,17 @@ export function GridPagination() {
 
                 <Group>
                   <PrevTrigger size="sm" />
-                  <Text
-                    as="small"
-                    color="page.text.200"
-                    lineHeight="inherit"
-                    textStyle="label-sm"
-                    userSelect="none"
-                  >
-                    {pagination.page} of {pagination.totalPages}
-                  </Text>
+                  <VStack justify="center">
+                    <Text
+                      as="small"
+                      color="page.text.200"
+                      lineHeight="inherit"
+                      textStyle="label-sm"
+                      userSelect="none"
+                    >
+                      {pagination.page} of {pagination.totalPages}
+                    </Text>
+                  </VStack>
                   <NextTrigger size="sm" />
                 </Group>
               </HStack>

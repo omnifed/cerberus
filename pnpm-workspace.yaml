@@ -11,9 +11,9 @@ packages:
 
 catalogs:
   oxc:
-    oxfmt: ^0.71.0
+    oxfmt: ^0.72.0
   ark:
-    '@ark-ui/react': ^5.39.2
+    '@ark-ui/react': ^5.39.3
   pandacss:
     '@pandacss/dev': ^1.12.1
     '@pandacss/preset-panda': ^1.12.1

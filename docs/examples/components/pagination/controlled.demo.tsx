@@ -4,7 +4,7 @@ import { Pagination } from '@cerberus-design/react'
 import { useSignal } from '@cerberus-design/signals'
 
 export function ControlledDemo() {
-  const [currentPage, setCurrentPage] = useSignal<number>(1)
+  const [currentPage, setCurrentPage] = useSignal<number>(3)
 
   return (
     <Pagination

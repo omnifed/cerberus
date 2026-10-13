@@ -3,6 +3,7 @@ import { ChangeDemo } from './change.demo'
 import { CountDemo } from './count.demo'
 import { PageDemo } from './page.demo'
 import { SizesDemo } from './sizes.demo'
+import { SSRSortDemo } from './ssrSort.demo'
 
 export const DEMOS = {
   basic: {
@@ -20,7 +21,8 @@ export const DEMOS = {
   count: {
     preview: <CountDemo />,
   },
-  data: {
-    preview: null,
+  data: { preview: null },
+  ssrSort: {
+    preview: <SSRSortDemo />,
   },
 }

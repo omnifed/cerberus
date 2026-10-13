@@ -29,12 +29,18 @@ export type CerberusSlotRecipe<T extends string> = SlotRecipeVariantFn<
 > &
   RecipeBase
 
-export type CerberusPrimitiveRecipe =
-  | CerberusRecipe
-  | CerberusSlotRecipe<string>
+export type CerberusPrimitiveRecipe = CerberusRecipe | CerberusSlotRecipe<string>
 
 export type WithRecipeOptions = {
+  /**
+   * A set of static props to merge onto the component created
+   */
   defaultProps?: Record<string, unknown>
+  /**
+   * Prop names to forward to the wrapped component even when they collide
+   + with a Panda CSS property (for example Ark's `page`).
+   */
+  forwardProps?: string[]
 }
 
 export interface BaseCerberusProps
@@ -59,8 +65,9 @@ export type CerberusProps<
 
 export type CerberusPrimitiveProps<T> = PropsWithChildren<BaseCerberusProps> & T
 
-export type CerberusPrimitiveEl<T extends ElementType = ElementType> =
-  ElementType<CerberusProps<T>>
+export type CerberusPrimitiveEl<T extends ElementType = ElementType> = ElementType<
+  CerberusProps<T>
+>
 
 // Factory
 

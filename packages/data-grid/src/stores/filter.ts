@@ -1,5 +1,6 @@
 import {
   type Accessor,
+  batch,
   createComputed,
   createSignal,
   Setter,
@@ -8,6 +9,7 @@ import { OPERATORS } from '../const'
 import type { BaseFilterState, ColumnFilterState } from '../types'
 import { applyFilterOperator } from '../utils'
 import { DataStore } from './data'
+import { SSRStore } from './ssr'
 
 export interface FilterStore<TData> {
   showColFilter: Accessor<boolean>
@@ -22,6 +24,7 @@ export interface FilterStore<TData> {
 
 export function createFilterStore<TData>(
   dataStore: DataStore<TData>,
+  ssrStore: SSRStore,
 ): FilterStore<TData> {
   const [showColFilter, setShowColFilter] = createSignal<boolean>(false)
   const [globalFilter, setGlobalFilter] = createSignal<BaseFilterState>({
@@ -35,6 +38,8 @@ export function createFilterStore<TData>(
   })
 
   const filteredRows = createComputed(() => {
+    if (ssrStore.isServerPaginated()) return dataStore.rows()
+
     const rows = dataStore.rows()
     const columns = dataStore.columns()
     let result = [...rows]
@@ -85,7 +90,13 @@ export function createFilterStore<TData>(
     filteredRows,
 
     setGlobalFilter,
-    setColFilter: (val) => setColFilters(val),
+    setColFilter: (val) => {
+      batch(() => {
+        setColFilters(val)
+        ssrStore.resetPage()
+      })
+      ssrStore.handleFilterDelegate(colFilters())
+    },
     setShowColFilter,
   }
 }

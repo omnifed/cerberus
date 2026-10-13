@@ -135,7 +135,7 @@ export function CTAModal(props: PropsWithChildren<DialogRootProps>) {
                     </Show>
                   }
                 />
-                <DialogHeading>{content?.heading}</DialogHeading>
+                <DialogHeading textAlign="center">{content?.heading}</DialogHeading>
 
                 <Show when={content?.description}>
                   <DialogDescription textAlign="center">

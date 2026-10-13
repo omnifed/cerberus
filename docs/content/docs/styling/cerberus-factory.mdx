@@ -48,8 +48,51 @@ Use the `cerberus` function to convert native element components.
 ```tsx
 const Link = cerberus('a')
 
-function Example() {
-  return <Link css={{ color: 'blue' }} href="https://cerberus.digitalu.design/" />
+function Usage() {
+  return <Link color="blue" href="https://cerberus.digitalu.design/" />
+}
+```
+
+### Default Props
+
+When you have static props you want to append to a `cerberus` created component, pass an Object as the second item of the function with a `defaultProps` property. This will merge an props listed onto the component.
+
+```tsx
+const Link = cerberus('a', {
+  defaultProps: {
+    'data-scope': 'link',
+    'data-active': false,
+  },
+})
+
+function Usage() {
+  return (
+    <Link
+      _hover={{ color: 'action.text.100' }}
+      href="https://cerberus.digitalu.design/"
+    />
+  )
+}
+```
+
+### Forward Props
+
+Sometimes you may want to use a property name for your factory component that conflicts with a native CSS property name. To allow this and prevent PandaCSS from stripping it out (due to thinking it's a native CSS prop), use the `forwardProps` proprty on the options Object.
+
+`forwardProps` accepts an Array of string prop names to ignore.
+
+```tsx
+const Link = cerberus('a', {
+  defaultProps: {
+    'data-scope': 'link',
+    'data-active': false,
+  },
+  // This will allow the Link props.page to be valid and ignore the CSS page prop
+  forwardProps: ['page'],
+})
+
+function Usage() {
+  return <Link page={1} href="https://cerberus.digitalu.design/" />
 }
 ```
 

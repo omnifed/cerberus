@@ -1,17 +1,13 @@
 'use client'
 
-import type { WithCss } from 'styled-system/types'
 import { type GroupProps } from '../group/index'
 import { Show } from '../show/index'
 import { CompactText } from './compact'
 import { ItemList } from './item-list'
 import { PaginationParts } from './parts'
-import {
-  PaginationRootProps,
-  type PaginationContextDetails,
-} from './primitives'
+import { PaginationRootProps, type PaginationContextDetails } from './primitives'
 
-export interface PaginationProps extends PaginationRootProps, WithCss {
+export interface PaginationProps extends PaginationRootProps {
   /**
    * Display a compact layout of only text information and triggers.
    * @default false

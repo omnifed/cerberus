@@ -17,7 +17,9 @@ Thus, the `DataGrid` component is essentially just a layout container that simpl
 renders column definitions. It passes the state of the column to the `cell`
 property which is what renders the actual content of each cell.
 
-Each column has the ability to opt-in to features listed in the Features section.
+Each column has the ability to opt-in to features listed in the Features section of the sidenav.
+
+<NoteAdmonition description="Any feature enabled via a column definition is scoped strictly to that individual column. To manipulate data across the entire grid, create a custom Toolbar component and leverage the grid store hook to access the context." />
 
 ### The Role of Columns
 

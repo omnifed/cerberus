@@ -2,6 +2,7 @@
 
 import { type PageDetails } from '@cerberus-design/react'
 import { createQuery } from '@cerberus-design/signals'
+import { SortDirection } from '@cerberus-design/data-grid'
 
 export type Employee = {
   id: number
@@ -15,6 +16,11 @@ export type Employee = {
     code: string
   }
   lastLogin: string
+}
+
+export type PaginatedRequest = PageDetails & {
+  sortBy?: string | null
+  sortDirection?: SortDirection
 }
 
 // Utils
@@ -58,12 +64,44 @@ const api = {
     return employees.slice(0, limit ?? employees.length)
   },
   selectPaginatedEmployees: async (
-    details: PageDetails,
+    details: PaginatedRequest,
   ): Promise<ApiResponse<Employee[]>> => {
     await delay(100)
+
+    let processedData = [...employees]
+
+    // 1. Apply Server-Side Sorting
+    if (details.sortBy && details.sortDirection) {
+      processedData.sort((a, b) => {
+        let valA: string | number = ''
+        let valB: string | number = ''
+
+        // Map custom column IDs to real database properties
+        if (details.sortBy === 'department') {
+          valA = a.department.name
+          valB = b.department.name
+        } else if (details.sortBy === 'fullName') {
+          valA = `${a.firstName} ${a.lastName}`
+          valB = `${b.firstName} ${b.lastName}`
+        } else {
+          // Standard accessors map 1:1
+          valA = a[details.sortBy as keyof Employee] as string | number
+          valB = b[details.sortBy as keyof Employee] as string | number
+        }
+
+        let comparison = 0
+        if (valA > valB) comparison = 1
+        else if (valA < valB) comparison = -1
+
+        return details.sortDirection === 'desc' ? -comparison : comparison
+      })
+    }
+
+    // 2. Apply Server-Side Pagination
     const offset = (details.page - 1) * details.pageSize
     const limit = details.pageSize
-    const data = employees.slice(offset, offset + limit)
+    const data = processedData.slice(offset, offset + limit)
+
     return {
       data,
       pagination: {
@@ -86,23 +124,12 @@ export const queryPaginatedEmployees = createQuery(
 
 // Helpers
 
-/**
- * Generates a cryptographically secure random float between 0 (inclusive) and 1 (exclusive).
- * This replaces Math.random() and passes GitHub CodeQL security scans (CWE-338).
- */
 function secureMathRandom() {
   const array = new Uint32Array(1)
   globalThis.crypto.getRandomValues(array)
-  // Multiplying by 2^-32 safely converts the 32-bit integer to a float under 1
   return array[0] * Math.pow(2, -32)
 }
 
-/**
- * Generates a secure random salary.
- * @param min - Minimum salary bound (inclusive)
- * @param max - Maximum salary bound (exclusive)
- * @returns Random salary
- */
 export function generateFakeSalary(min = 40000, max = 150000) {
   return Math.floor(secureMathRandom() * (max - min)) + min
 }

@@ -11,29 +11,34 @@ import {
   type PaginationPageUrlDetails,
   type PaginationPageSizeChangeDetails,
 } from '@ark-ui/react/pagination'
-import { createCerberusPrimitive } from '../../system/index'
+import { CerberusPrimitiveProps, createCerberusPrimitive } from '../../system/index'
 
 const { withNoRecipe } = createCerberusPrimitive()
 
-export type PaginationRootProps = ArkPaginationRootProps
-export const PaginationRoot = withNoRecipe(Pagination.Root)
+export type PaginationRootProps = CerberusPrimitiveProps<ArkPaginationRootProps>
+export const PaginationRoot = withNoRecipe(Pagination.Root, {
+  forwardProps: ['page'],
+})
 
-export type PaginationPrevTriggerProps = ArkPaginationPrevTriggerProps
+export type PaginationPrevTriggerProps =
+  CerberusPrimitiveProps<ArkPaginationPrevTriggerProps>
 export const PaginationPrevTrigger = withNoRecipe(Pagination.PrevTrigger)
 
-export type PaginationNextTriggerProps = ArkPaginationNextTriggerProps
+export type PaginationNextTriggerProps =
+  CerberusPrimitiveProps<ArkPaginationNextTriggerProps>
 export const PaginationNextTrigger = withNoRecipe(Pagination.NextTrigger)
 
-export type PaginationContextProps = ArkPaginationContextProps
+export type PaginationContextProps = CerberusPrimitiveProps<ArkPaginationContextProps>
 export const PaginationContext = withNoRecipe(Pagination.Context)
 
-export type PaginationItemProps = ArkPaginationItemProps
+export type PaginationItemProps = CerberusPrimitiveProps<ArkPaginationItemProps>
 export const PaginationItem = withNoRecipe(Pagination.Item)
 
-export type PaginationEllipsisProps = ArkPaginationEllipsisProps
+export type PaginationEllipsisProps = CerberusPrimitiveProps<ArkPaginationEllipsisProps>
 export const PaginationEllipsis = withNoRecipe(Pagination.Ellipsis)
 
-export type PaginationRootProviderProps = ArkPaginationRootProviderProps
+export type PaginationRootProviderProps =
+  CerberusPrimitiveProps<ArkPaginationRootProviderProps>
 export const PaginationRootProvider = withNoRecipe(Pagination.RootProvider)
 
 export type PaginationContextDetails = ArkUsePaginationReturn

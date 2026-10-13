@@ -8,13 +8,14 @@ import {
 import { DEFAULT_PAGE_IDX } from '../const'
 import { GridOptions } from '../types'
 import {
+  determineDefaultPage,
   determineInitialCount,
-  determinePageIndex,
   determinePageRange,
   determinePageSize,
 } from '../utils'
 
 export type PaginationStore = {
+  defaultPage: number | void
   currentPageRange: Accessor<{ start: number; end: number }>
   pageIndex: Accessor<number>
   pageSize: Accessor<number>
@@ -29,21 +30,24 @@ export type PaginationStore = {
 export function createPaginationStore<TData>(
   options: GridOptions<TData>,
 ): PaginationStore {
-  const initOptions = options.initialState?.pagination || options.pagination
+  const initOptions = options.pagination
 
   const hasOptions = typeof initOptions === 'object'
   const optionActions = {
     onPageChange: hasOptions && initOptions.onPageChange,
     onPageSizeChange: hasOptions && initOptions.onPageSizeChange,
   }
-  const onPageChange = options.onPageChange || optionActions.onPageChange
+  const onPageChange = optionActions.onPageChange
+  const defaultPage = determineDefaultPage(initOptions)
 
+  // Seed from defaultPage so the store matches what Ark renders on first paint
   const [pageIndex, setPageIndex] = createSignal<number>(
-    determinePageIndex(initOptions),
+    defaultPage || DEFAULT_PAGE_IDX,
   )
   const [pageSize, setPageSize] = createSignal<number>(determinePageSize(initOptions))
   const [pageRange] = createSignal<number[]>(determinePageRange(initOptions))
-  const [isServerPaginated] = createSignal<boolean>(
+
+  const isServerPaginated = createComputed<boolean>(() =>
     Boolean(determineInitialCount(initOptions)),
   )
 
@@ -57,6 +61,7 @@ export function createPaginationStore<TData>(
   })
 
   return {
+    defaultPage,
     currentPageRange,
     pageIndex,
     pageSize,

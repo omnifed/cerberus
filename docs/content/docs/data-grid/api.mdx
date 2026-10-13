@@ -10,16 +10,16 @@ order: 1
 
 The Data Grid API provides the following props:
 
-| Params         | Required | Description                                                    |
-| -------------- | -------- | -------------------------------------------------------------- |
-| `data`         | `true`   | The full set of data to display in the grid.                   |
-| `columns`      | `true`   | The list of defined columns using the column helper.           |
-| `initialState` | `false`  | The initial state of the grid for pagination settings.         |
-| `rowSize`      | `false`  | The size of each row in pixels or one of the predefined sizes. |
-| `toolbar`      | `false`  | The component to render in the grid toolbar slot.              |
-| `overlays`     | `false`  | Optional overlays to render within the viewport.               |
-| `footer`       | `false`  | The component to render in the grid footer slot.               |
-| `theme`        | `false`  | Custom style options to apply to the grid layout.              |
+| Params       | Required | Description                                                    |
+| ------------ | -------- | -------------------------------------------------------------- |
+| `data`       | `true`   | The full set of data to display in the grid.                   |
+| `columns`    | `true`   | The list of defined columns using the column helper.           |
+| `pagination` | `false`  | The initial state of the grid for pagination settings.         |
+| `rowSize`    | `false`  | The size of each row in pixels or one of the predefined sizes. |
+| `toolbar`    | `false`  | The component to render in the grid toolbar slot.              |
+| `overlays`   | `false`  | Optional overlays to render within the viewport.               |
+| `footer`     | `false`  | The component to render in the grid footer slot.               |
+| `theme`      | `false`  | Custom style options to apply to the grid layout.              |
 
 ### Overlay Slots
 
@@ -48,3 +48,18 @@ specific slot layers.
 | `data-part`  | `footer`    | The container of the footer slot.    |
 
 <NoteAdmonition description="Any other slot part displayed in the Grid is inherited from the Cerberus React component API for that item." />
+
+## Pagination Options
+
+The `pagination` prop allows you to configure the pagination options for the grid.
+
+| Name               | Type                                      | SSR | Description                                                                                                            |
+| ------------------ | ----------------------------------------- | --- | ---------------------------------------------------------------------------------------------------------------------- |
+| `defaultPage`      | `number`                                  | No  | The page cound to start on.                                                                                            |
+| `pageSize`         | `number`                                  | No  | The number of rows to display per page.                                                                                |
+| `customRange`      | `number[]`                                | No  | The custom range of pages to display.                                                                                  |
+| `count`            | `number`                                  | Yes | The total number of pages. This will eject from client-side pagination handing off all pagination logic to the server. |
+| `onPageChange`     | `PaginationRootProps['onPageChange']`     | Yes | A callback that is invoked when the page index changes.                                                                |
+| `onPageSizeChange` | `PaginationRootProps['onPageSizeChange']` | Yes | A callback that is invoked when the page size changes.                                                                 |
+| `onSortChange`     | `GridStore<unknown>['setSort']`           | Yes | A callback that is invoked when the sort changes.                                                                      |
+| `onFilterChange`   | `(filters: ColumnFilterState) => void`    | Yes | A callback that is invoked when the filter changes.                                                                    |
