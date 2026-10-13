@@ -23,6 +23,7 @@ const columns = [
 let probed: GridStore<Row> | undefined
 
 function StoreProbe() {
+  // oxlint-disable-next-line react/globals
   probed = useDataGridContext<Row>() // toolbar renders inside the grid context
   return null
 }

@@ -1,5 +1,8 @@
 import { PaginationParts, type PaginationContextDetails } from '@cerberus-design/react'
-import { Pagination as ArkPagination } from '@ark-ui/react/pagination'
+import {
+  Pagination as ArkPagination,
+  PaginationRootProps,
+} from '@ark-ui/react/pagination'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { expect, test } from 'bun:test'
@@ -17,7 +20,7 @@ function Harness(props: { variant: Variant; onPageChange: (page: number) => void
   const isArk = props.variant.startsWith('ark')
   const Root: ElementType = isArk ? ArkPagination.Root : PaginationParts.Root
   const Context: ElementType = isArk ? ArkPagination.Context : PaginationParts.Context
-  const rootProps = {
+  const rootProps: PaginationRootProps = {
     count: 100,
     pageSize: 25,
     page,
