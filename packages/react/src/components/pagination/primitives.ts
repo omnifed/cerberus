@@ -16,7 +16,9 @@ import { createCerberusPrimitive } from '../../system/index'
 const { withNoRecipe } = createCerberusPrimitive()
 
 export type PaginationRootProps = ArkPaginationRootProps
-export const PaginationRoot = withNoRecipe(Pagination.Root)
+export const PaginationRoot = withNoRecipe(Pagination.Root, {
+  forwardProps: ['page'],
+})
 
 export type PaginationPrevTriggerProps = ArkPaginationPrevTriggerProps
 export const PaginationPrevTrigger = withNoRecipe(Pagination.PrevTrigger)

@@ -45,17 +45,14 @@ function Harness(props: { variant: Variant; onPageChange: (page: number) => void
 }
 
 for (const variant of VARIANTS) {
-  test(`diag D2: ${variant}`, async () => {
+  test(`Cerby/Ark Pagination Integration: ${variant}`, async () => {
     const calls: number[] = []
     render(<Harness variant={variant} onPageChange={(p) => calls.push(p)} />)
     expect(screen.getByTestId('ark-page').textContent).toBe('3')
 
     await userEvent.click(screen.getByRole('button', { name: 'to-1' }))
-    await wait(300)
 
-    console.log(
-      `[diag] ${variant}: ark page after setPage(1) = ${screen.getByTestId('ark-page').textContent}` +
-        ` | onPageChange calls = ${JSON.stringify(calls)}`,
-    )
+    expect(screen.getByTestId('ark-page').textContent).toBe('1')
+    expect(calls.length).toEqual(0)
   })
 }

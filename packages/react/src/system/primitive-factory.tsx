@@ -27,15 +27,19 @@ export class CerberusPrimitive {
 
   private setupStyledComponent<T extends ElementType>(
     component: T | CerberusPrimitiveEl<T>,
+    options?: WithRecipeOptions,
   ): CerberusComponent<T> {
     const arkComponent = ark[component as keyof typeof ark]
+    const factoryOptions = options?.forwardProps
+      ? { forwardProps: options.forwardProps }
+      : undefined
 
     if (typeof component !== 'string') {
-      return cerberus(component)
+      return cerberus(component, undefined, factoryOptions)
     }
 
     if (arkComponent) {
-      return cerberus(arkComponent)
+      return cerberus(arkComponent, undefined, factoryOptions)
     }
 
     throw new Error(`Unknown component: ${component}`)
@@ -60,7 +64,7 @@ export class CerberusPrimitive {
   ) => {
     type Props = ExtractProps<T>
     const { defaultProps } = options || {}
-    const El = this.setupStyledComponent<T>(Component)
+    const El = this.setupStyledComponent<T>(Component, options)
 
     const CerbComponent = forwardRef<HTMLElement, CerberusPrimitiveProps<Props>>(
       (props, ref) => {

@@ -50,7 +50,7 @@ test('header sort toggle from page 3 resets footer to page 1 with one callback',
 
   screen.debug(screen.getByText(/ of 4/), 100000)
   expect(await screen.findByText(/1 of 4/i)).toBeTruthy()
-  // expect(onSortChange).toHaveBeenCalledTimes(1)
-  // // Probe for open item: does Ark emit onPageChange on a programmatic page change?
-  // expect(onPageChange).toHaveBeenCalledTimes(0)
+  expect(onSortChange).toHaveBeenCalledTimes(1)
+  // Probe for open item: does Ark emit onPageChange on a programmatic page change?
+  expect(onPageChange).toHaveBeenCalledTimes(0)
 })

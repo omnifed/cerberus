@@ -36,6 +36,11 @@ export type WithRecipeOptions = {
    * A set of static props to merge onto the component created
    */
   defaultProps?: Record<string, unknown>
+  /**
+   * Prop names to forward to the wrapped component even when they collide
+   + with a Panda CSS property (for example Ark's `page`).
+   */
+  forwardProps?: string[]
 }
 
 export interface BaseCerberusProps
