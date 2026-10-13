@@ -2,7 +2,11 @@ import { ark } from '@ark-ui/react/factory'
 import { forwardRef, type ElementType } from 'react'
 import { css, cx, type Styles } from 'styled-system/css'
 import { cerberus } from 'styled-system/jsx/factory'
-import type { CerberusComponent, RecipeVariantRecord } from 'styled-system/types'
+import type {
+  CerberusComponent,
+  RecipeDefinition,
+  RecipeVariantRecord,
+} from 'styled-system/types'
 import type { ExtractProps } from '../types'
 import type {
   CerberusPrimitiveEl,
@@ -33,13 +37,14 @@ export class CerberusPrimitive {
     const factoryOptions = options?.forwardProps
       ? { forwardProps: options.forwardProps }
       : undefined
+    const recipeDef = undefined as unknown as RecipeDefinition
 
     if (typeof component !== 'string') {
-      return cerberus(component, undefined, factoryOptions)
+      return cerberus(component, recipeDef, factoryOptions)
     }
 
     if (arkComponent) {
-      return cerberus(arkComponent, undefined, factoryOptions)
+      return cerberus(arkComponent, recipeDef, factoryOptions)
     }
 
     throw new Error(`Unknown component: ${component}`)

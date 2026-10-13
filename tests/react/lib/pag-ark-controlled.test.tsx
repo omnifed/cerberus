@@ -11,10 +11,6 @@ import { useState, type ElementType } from 'react'
 type Variant = 'cerb-page-only' | 'cerb-both' | 'ark-page-only' | 'ark-both'
 const VARIANTS: Variant[] = ['cerb-page-only', 'cerb-both', 'ark-page-only', 'ark-both']
 
-function wait(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
 function Harness(props: { variant: Variant; onPageChange: (page: number) => void }) {
   const [page, setPage] = useState(3)
   const isArk = props.variant.startsWith('ark')

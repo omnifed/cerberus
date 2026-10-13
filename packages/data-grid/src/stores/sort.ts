@@ -8,7 +8,6 @@ import type { SortDirection, SortState } from '../types'
 import { type DataStore } from './data'
 import { type FilterStore } from './filter'
 import { SSRStore } from './ssr'
-import { PaginationStore } from './pagination'
 
 type SortStore<TData> = {
   sorting: Accessor<SortState[]>

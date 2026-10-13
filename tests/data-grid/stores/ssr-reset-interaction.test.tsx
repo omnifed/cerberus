@@ -6,7 +6,7 @@ import { beforeAll, expect, mock, test } from 'bun:test'
 type Row = { id: number; name: string }
 
 configure({
-  getElementError: (message) => new Error(message), // no DOM dump
+  getElementError: (message: string | null) => new Error(String(message)), // no DOM dump
 })
 
 beforeAll(() => {
