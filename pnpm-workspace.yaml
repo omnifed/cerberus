@@ -1,4 +1,4 @@
-nodeVersion: 24.16.0
+nodeVersion: 26.11.1
 engineStrict: true
 
 packages:
