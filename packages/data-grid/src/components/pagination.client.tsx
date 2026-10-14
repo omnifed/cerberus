@@ -17,26 +17,14 @@ import { Divider, HStack, VStack } from 'styled-system/jsx'
 import { useDataGridContext } from '../context.client'
 import { CountMenu } from './count-menu.client'
 
-function DiagPage(props: { page: number }) {
-  console.log('[diag] Ark context page =', props.page)
-  return null
-}
-
 export function GridPagination() {
   const store = useDataGridContext()
 
   const pageIndex = useRead(store.pageIndex)
   const pageSize = useRead(store.pageSize)
   const rowCount = useRead(store.rowCount)
-  console.log('[diag] GridPagination render', { pageIndex, pageSize, rowCount })
 
   function handlePageChange(details: PageDetails) {
-    console.log(
-      '[diag] Ark onPageChange',
-      details.page,
-      '| signal =',
-      store.pageIndex(),
-    )
     store.setPage(details)
   }
 
@@ -66,8 +54,6 @@ export function GridPagination() {
                 py="sm"
                 w="full"
               >
-                <DiagPage page={pagination.page} />
-
                 <HStack gap="sm">
                   <Text
                     as="small"
