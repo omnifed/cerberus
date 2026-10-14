@@ -23,7 +23,6 @@ export function GridPagination() {
   const pageIndex = useRead(store.pageIndex)
   const pageSize = useRead(store.pageSize)
   const rowCount = useRead(store.rowCount)
-  console.log('[diag] GridPagination render', { pageIndex, pageSize, rowCount })
 
   function handlePageChange(details: PageDetails) {
     store.setPage(details)
