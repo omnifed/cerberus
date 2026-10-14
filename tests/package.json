@@ -25,7 +25,7 @@
     "@pandacss/types": "catalog:pandacss",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
-    "@testing-library/user-event": "^14.6.7",
+    "@testing-library/user-event": "^14.6.8",
     "@types/bun": "catalog:types",
     "@types/react": "catalog:jsx",
     "react": "catalog:jsx",

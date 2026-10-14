@@ -10,7 +10,8 @@
     "build:a": "velite",
     "build:b": "panda codegen && panda spec",
     "build:c": "next build",
-    "build:d": "pnpx pagefind --site .next/server/app --output-path public/pagefind",
+    "old_build:d": "pnpx pagefind --site .next/server/app --output-path public/pagefind",
+    "build:d": "if [ \"$VERCEL\" = \"1\" ]; then pnpx pagefind --site .vercel/output/static --output-path .vercel/output/static/pagefind; else pnpx pagefind --site .next/server/app --output-path public/pagefind; fi",
     "start": "next start",
     "lint": "eslint ."
   },
@@ -20,7 +21,7 @@
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/signals": "workspace:*",
     "@cerberus/tokens": "workspace:*",
-    "next": "16.3.6",
+    "next": "16.4.0",
     "react": "catalog:jsx",
     "react-dom": "catalog:jsx",
     "semver": "^7.8.5"
@@ -49,7 +50,7 @@
     "autoprefixer": "^10.6.1",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.3.6",
+    "eslint-config-next": "16.4.0",
     "eslint-import-resolver-typescript": "^4.4.5",
     "hast-util-to-jsx-runtime": "2.3.6",
     "rehype-autolink-headings": "^7.1.0",
