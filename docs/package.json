@@ -11,7 +11,7 @@
     "build:b": "panda codegen && panda spec",
     "build:c": "next build",
     "old_build:d": "pnpx pagefind --site .next/server/app --output-path public/pagefind",
-    "build:d": "if [ \"$VERCEL\" = \"1\" ]; then pnpx pagefind --site ../.vercel/output/static --output-path ../.vercel/output/static/pagefind; else pnpx pagefind --site .next/server/app --output-path public/pagefind; fi",
+    "build:d": "node scripts/build-pagefind.mjs",
     "start": "next start",
     "lint": "eslint ."
   },
