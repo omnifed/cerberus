@@ -1,5 +1,18 @@
 # @cerberus/panda-preset
 
+## 1.9.0
+
+### Minor Changes
+
+- 8cced3d: Updates Button sizes and adds SplitButton variants
+
+### Patch Changes
+
+- 2725945: Support autocomplete styling
+- 436cedd: The dialog styling has been updated to set the title's textStyle to
+  heading-md, previously it was heading-lg.
+- bf23183: Add zIndex layering to datePicker & select recipes
+
 ## 1.8.1
 
 ### Patch Changes

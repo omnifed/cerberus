@@ -1,5 +1,26 @@
 # @cerberus-design/data-grid
 
+## 1.9.0
+
+### Minor Changes
+
+- 8cced3d: Updates Button sizes and adds SplitButton variants
+
+### Patch Changes
+
+- 087f458: Fix: update cta-dialog heading to be center aligned
+- 9ceb04f: Fix Pagination ignoring the controlled page prop. page was consumed
+  as a Panda CSS property. Add the forwardProps option to primitive factory
+  methods.
+- 90a8175: chore: update oceanus page tokens
+- Updated dependencies [2725945]
+- Updated dependencies [8cced3d]
+- Updated dependencies [4b85c37]
+- Updated dependencies [087f458]
+- Updated dependencies [9ceb04f]
+  - @cerberus-design/react@1.9.0
+  - @cerberus-design/signals@1.9.0
+
 ## 1.8.1
 
 ### Patch Changes
