@@ -1,5 +1,20 @@
 # @cerberus-design/react
 
+## 1.9.0
+
+### Minor Changes
+
+- 8cced3d: Updates Button sizes and adds SplitButton variants
+
+### Patch Changes
+
+- 2725945: Support autocomplete styling
+- 4b85c37: Update dependencies
+- 087f458: Fix: update cta-dialog heading to be center aligned
+- 9ceb04f: Fix Pagination ignoring the controlled page prop. page was consumed
+  as a Panda CSS property. Add the forwardProps option to primitive factory
+  methods.
+
 ## 1.8.1
 
 ### Patch Changes

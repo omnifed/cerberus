@@ -1,5 +1,11 @@
 # @cerberus/tokens
 
+## 1.9.0
+
+### Patch Changes
+
+- 90a8175: chore: update oceanus page tokens
+
 ## 1.8.1
 
 ### Patch Changes
