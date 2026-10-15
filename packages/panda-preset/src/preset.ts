@@ -1,6 +1,5 @@
 import { presetCerberusTheme } from '@cerberus/preset-cerberus-theme'
 import { definePreset, type Preset } from '@pandacss/dev'
-import pandaPreset from '@pandacss/preset-panda'
 import { conditions } from './conditions'
 import { globalCss } from './globalCss'
 import { patterns } from './patterns'
@@ -18,7 +17,7 @@ const staticRecipes = createStaticRecipeList()
 const basePreset: Preset = definePreset({
   name: '@cerberus/preset-base',
 
-  presets: [pandaPreset, presetCerberusTheme],
+  presets: ['@pandacss/preset-base', '@pandacss/preset-panda', presetCerberusTheme],
 
   globalCss,
   conditions,

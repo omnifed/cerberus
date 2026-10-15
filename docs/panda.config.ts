@@ -6,9 +6,13 @@ import { presetOceanusTheme } from '@cerberus/preset-oceanus-theme'
 const isProd = process.env.NODE_ENV === 'production'
 
 export default createCerberusConfig({
-  clean: true,
   minify: isProd,
-  // hash: isProd,
+  optimize: {
+    removeUnusedKeyframes: isProd,
+    removeUnusedTokens: isProd,
+    smartCompoundVariants: isProd,
+    treeshakeDesignSystem: isProd,
+  },
 
   include: [
     './node_modules/@cerberus-design/react/**/*.{ts,tsx,js,jsx}',

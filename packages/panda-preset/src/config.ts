@@ -43,8 +43,8 @@ const baseConfig: Config = defineConfig({
  * ```
  */
 export function createCerberusConfig(options?: Config): Config {
-  const userHooks = options?.hooks ?? {}
-  const userPresets = options?.presets ?? []
+  const userPresets: Config['presets'] = options?.presets ?? []
+  const userPlugins: Config['plugins'] = options?.plugins ?? []
   const mergedStaticCssThemes: string[] = []
 
   // Automatically collect all `themes` objects across synchronous presets
@@ -70,6 +70,22 @@ export function createCerberusConfig(options?: Config): Config {
     ...baseConfig,
     ...options,
 
+    plugins: [
+      {
+        name: 'clean-panda-colors',
+        hooks: {
+          'preset:resolved': ({ utils, preset, name }) => {
+            if (name === '@pandacss/preset-panda') {
+              return utils.omit(preset, ['theme.tokens.colors'])
+            }
+            return preset
+          },
+        },
+      },
+      // Let the user override omiting panda colors if they want to keep them
+      ...userPlugins,
+    ],
+
     themes: {
       ...mergedThemes,
       ...options?.themes,
@@ -78,17 +94,6 @@ export function createCerberusConfig(options?: Config): Config {
     staticCss: {
       ...options?.staticCss,
       themes: staticThemes.length > 0 ? staticThemes : undefined,
-    },
-
-    hooks: {
-      'preset:resolved': ({ utils, preset, name }) => {
-        if (name === '@pandacss/preset-panda') {
-          return utils.omit(preset, ['theme.tokens.colors'])
-        }
-        return preset
-      },
-      // Let the user override omiting panda colors if they want to keep them
-      ...userHooks,
     },
   })
 }
