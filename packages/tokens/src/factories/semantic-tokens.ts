@@ -19,12 +19,17 @@ export function createSemanticToken(
     throw new Error(`Token not found for path ${path}`)
   }
 
+  const darkToken = _formatTokenValue(token.valuesByMode[darkMode])
+  const lighToken = _formatTokenValue(token.valuesByMode[lightMode])
+
   return {
     description: token.description,
     value: {
-      base: _formatTokenValue(token.valuesByMode[darkMode]),
-      _darkMode: _formatTokenValue(token.valuesByMode[darkMode]),
-      _lightMode: _formatTokenValue(token.valuesByMode[lightMode]),
+      base: darkToken,
+      _dark: darkToken,
+      _light: lighToken,
+      _osDark: darkToken,
+      _osLight: lighToken,
     },
   }
 }

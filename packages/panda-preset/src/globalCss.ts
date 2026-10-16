@@ -1,4 +1,5 @@
-import { defineGlobalStyles, type GlobalStyleObject } from '@pandacss/dev'
+import { defineGlobalStyles } from '@pandacss/dev'
+import type { GlobalStyleObject } from '@pandacss/types'
 
 export const globalCss: GlobalStyleObject = defineGlobalStyles({
   html: {

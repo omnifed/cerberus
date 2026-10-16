@@ -1,9 +1,4 @@
 export const conditions = {
-  // modes
-  lightMode: '[data-color-mode=light] &, &.light, .light &',
-  darkMode: '[data-color-mode=dark] &, &.dark, .dark &',
-  systemMode: '[data-color-mode=system] &, &.system, .system &',
-
   // visual states
   open: '&:is([open], [data-open], [data-state=open])',
   closed: '&:is([closed], [data-closed], [data-state=closed])',

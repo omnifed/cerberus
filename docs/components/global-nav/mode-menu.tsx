@@ -1,6 +1,5 @@
 'use client'
 
-import { getCodeTheme } from '@/lib/deprecated-colors'
 import { Box } from '@/styled-system/jsx'
 import {
   ColorModes,
@@ -17,14 +16,17 @@ import { AnimatingSunIcon } from '../icons/animating-sun'
 import { AnimatingSystemIcon } from '../icons/animating-system'
 
 export function ModeMenu() {
-  const { mode, theme, updateMode } = useThemeContext()
+  const { mode, updateMode } = useThemeContext()
 
+  const modeClasses: ColorModes[] = ['light', 'dark', 'system']
+  const html = document.documentElement
   const ariaLabel = `Switch to ${mode} mode`
 
   const handleUpdateMode = (details: { value: string }) => {
     const newMode = details.value as ColorModes
-    document.documentElement.dataset.codeTheme = getCodeTheme(newMode, theme)
     updateMode(newMode)
+    html.classList.remove(...modeClasses)
+    html.classList.add(newMode)
   }
 
   return (

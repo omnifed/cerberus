@@ -2,20 +2,6 @@ import { describe, test, expect } from 'bun:test'
 import { conditions } from '@cerberus/panda-preset'
 
 describe('conditions', () => {
-  test('should have a lightMode', () => {
-    expect(conditions.lightMode).toEqual('[data-color-mode=light] &, &.light, .light &')
-  })
-
-  test('should have a darkMode', () => {
-    expect(conditions.darkMode).toEqual('[data-color-mode=dark] &, &.dark, .dark &')
-  })
-
-  test('should have a systemMode', () => {
-    expect(conditions.systemMode).toEqual(
-      '[data-color-mode=system] &, &.system, .system &',
-    )
-  })
-
   test('should have a pinned', () => {
     expect(conditions.pinned).toEqual('&:is([data-pinned], [data-state=pinned])')
   })
