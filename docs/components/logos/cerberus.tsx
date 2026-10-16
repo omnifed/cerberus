@@ -3,25 +3,25 @@ import { css } from 'styled-system/css'
 export function CerberusLogo() {
   const styles = css({
     fill: '#9F66D3',
-    _acheronTheme: {
+    _themeAcheron: {
       fill: '{colors.brand.60}',
     },
-    _elysiumTheme: {
+    _themeElysium: {
       fill: '{colors.brand.60}',
     },
-    _oceanusTheme: {
+    _themeOceanus: {
       fill: '{colors.brand.40}',
     },
   })
   const accentStyles = css({
     fill: '#260048',
-    _acheronTheme: {
+    _themeAcheron: {
       fill: '{colors.brand.100}',
     },
-    _elysiumTheme: {
+    _themeElysium: {
       fill: '{colors.brand.100}',
     },
-    _oceanusTheme: {
+    _themeOceanus: {
       fill: '{colors.brand.90}',
     },
   })

@@ -1,9 +1,9 @@
 import { Tuning } from '@carbon/icons-react'
 import { For, IconButton, IconButtonProps } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const usages = (recipesSpec.data.find((r) => r.name === 'iconButton')?.variants.usage ??
-  []) as IconButtonProps['usage'][]
+const usages = data.recipes.iconButton.variants.usage
+  .values as IconButtonProps['usage'][]
 
 export function UsageDemo() {
   return (

@@ -1,15 +1,27 @@
-import themesData from '@/styled-system/specs/themes.json'
+import data from '@/styled-system/specs/design-system.json'
 import type { RawThemes, Sentiment } from '@cerberus/tokens'
 
-// Define expected structures based on Panda's spec output
-export interface SpecTokenValue {
-  name: string
-  values: { value: string; condition: string }[]
-  cssVar: string
+export type SpecToken = {
+  category: 'colors'
+  cssVar: string // --cerberus-colors-action-bg-active
+  originalValue?: string // {colors.danger.20}
+  description: string
+  semantic: boolean
+  source: number
+}
+export type SpecValue = {
+  token: string // colors.action.bg.active
+  condition: string // _dark
+  value: string // raw hex value
+  refs: string[] // colors.brand.70
 }
 
+/**
+ * @deprecated no longer necessary
+ */
 export function getThemeData(theme: RawThemes | string) {
-  return themesData.data.find((t) => t.name === theme)
+  console.log('getThemeData', theme)
+  // return themesData.data.find((t) => t.name === theme)
 }
 
 /**
@@ -19,16 +31,16 @@ export function getThemeData(theme: RawThemes | string) {
 export function getPaletteTokens(
   theme: RawThemes | string,
   palette: Sentiment | string,
-): SpecTokenValue[] {
-  const themeData = getThemeData(theme)
-  if (!themeData || !themeData.semanticTokens?.length) return []
+): SpecValue[] {
+  // const themeData = getThemeData(theme)
+  // if (!themeData || !themeData.semanticTokens?.length) return []
 
-  const uniqueTokens = new Map<string, SpecTokenValue>()
+  const uniqueTokens = new Map<string, SpecValue>()
   const prefix = `${palette}.`
 
-  themeData.semanticTokens[0].values.forEach((tok) => {
+  data.semanticTokens[0].values.forEach((tok) => {
     if (tok.name.startsWith(prefix)) {
-      uniqueTokens.set(tok.name, tok as SpecTokenValue)
+      uniqueTokens.set(tok.name, tok as SpecValue)
     }
   })
 
@@ -39,7 +51,7 @@ export function getPaletteTokens(
  * Extracts the exact string value for a given semantic token based on the active mode.
  */
 export function getConditionValue(
-  values: SpecTokenValue['values'],
+  values: SpecValue['values'],
   theme: string,
   mode: 'light' | 'dark' | 'system' = 'dark',
 ): string {

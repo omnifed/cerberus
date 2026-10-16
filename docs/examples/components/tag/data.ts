@@ -1,13 +1,13 @@
 import { TagProps } from '@cerberus-design/react'
-import specData from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-export const tagData = specData.data.find((item) => item.name === 'tag')
-export const tagVariants = tagData?.variants as Record<string, string[]>
+export const tagData = data.recipes.tag
+export const tagVariants = tagData.variants
 
-export const tagGradients = (tagVariants?.gradient ?? []) as TagProps['gradient'][]
-export const tagShapes = (tagVariants?.shape ?? []) as TagProps['shape'][]
-export const tagPalettes = (tagVariants?.palette ?? []) as TagProps['palette'][]
-export const tagUsages = (tagVariants?.usage ?? []) as TagProps['usage'][]
+export const tagGradients = tagVariants.gradient.values as TagProps['gradient'][]
+export const tagShapes = tagVariants.shape.values as TagProps['shape'][]
+export const tagPalettes = tagVariants.palette.values as TagProps['palette'][]
+export const tagUsages = tagVariants.usage.values as TagProps['usage'][]
 
 interface VariantProps {
   usage: TagProps['usage']

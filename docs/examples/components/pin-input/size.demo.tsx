@@ -2,10 +2,10 @@
 
 import { HStack } from '@/styled-system/jsx'
 import { Field, For, PinInput, PinInputRootProps } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const sizes = (recipesSpec.data.find((r) => r.name === 'pinInput')?.variants.size ??
-  []) as PinInputRootProps['size'][]
+const sizes = data.slotRecipes.pinInput.variants.size
+  .values as PinInputRootProps['size'][]
 
 export function SizeDemo() {
   return (

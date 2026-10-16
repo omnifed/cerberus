@@ -4,10 +4,10 @@ import {
   CircularProgressCircleProps,
   For,
 } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'circularProgress')?.variants
-  .size ?? []) as CircularProgressCircleProps['size'][]
+const variants = data.slotRecipes.circularProgress.variants.size
+  .values as CircularProgressCircleProps['size'][]
 
 export function CircularSizeDemo() {
   return (

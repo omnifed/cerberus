@@ -1,7 +1,9 @@
+import { getVariantKeys } from '@/lib/design-system'
 import { Center, HStack, Stack } from '@/styled-system/jsx'
-import layerStylesMeta from '@/styled-system/specs/layer-styles.json'
 import { For, Text } from '@cerberus-design/react'
 import { CSSProperties } from 'react'
+
+const variants = getVariantKeys('layerStyles')
 
 const layerStyles = {
   indicator: getNameByScope('indicator'),
@@ -18,7 +20,7 @@ export default function LayerStyles() {
             <Text textStyle="heading-2xs">{getLabel(name)}</Text>
             <HStack flexWrap="wrap" gap="lg" w="full">
               <For each={layerStyles[name as keyof typeof layerStyles]}>
-                {(item) => <LayerStyle key={item.name} layerStyle={item.name} />}
+                {(key) => <LayerStyle key={key} layerStyle={key} />}
               </For>
             </HStack>
           </Stack>
@@ -29,20 +31,15 @@ export default function LayerStyles() {
 }
 
 function getNameByScope(name: string) {
-  return layerStylesMeta.data.filter((layerStyle) => layerStyle.name.includes(name))
+  return variants.filter((key) => key === name)
 }
 
 function getStateStyles() {
-  return layerStylesMeta.data.filter(
-    (layerStyle) =>
-      layerStyle.name.includes('disabled') || layerStyle.name.includes('none'),
-  )
+  return variants.filter((key) => key === 'disabled' || key === 'none')
 }
 
 function getLabel(name: string) {
-  if (name === 'states') {
-    return `${name}:`
-  }
+  if (name === 'states') return `${name}:`
   return `${name}.*`
 }
 

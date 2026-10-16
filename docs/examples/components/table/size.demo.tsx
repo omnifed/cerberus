@@ -1,9 +1,8 @@
 import { HStack } from '@/styled-system/jsx'
 import { For, Table, TableRootProps } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'table')?.variants.size ??
-  []) as TableRootProps['size'][]
+const variants = data.slotRecipes.table.variants.size.values as TableRootProps['size'][]
 
 export function SizeDemo() {
   return (

@@ -1,9 +1,9 @@
 import { HStack } from '@/styled-system/jsx'
 import { Field, For, NumberInput, NumberInputRootProps } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const sizes = (recipesSpec.data.find((r) => r.name === 'numberInput')?.variants.size ??
-  []) as NumberInputRootProps['size'][]
+const sizes = data.slotRecipes.numberInput.variants.size
+  .values as NumberInputRootProps['size'][]
 
 export function SizesDemo() {
   return (

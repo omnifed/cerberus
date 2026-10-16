@@ -14,20 +14,27 @@ import {
 import { AnimatingMoonIcon } from '../icons/animating-moon'
 import { AnimatingSunIcon } from '../icons/animating-sun'
 import { AnimatingSystemIcon } from '../icons/animating-system'
+import { useEffect, useRef } from 'react'
 
 export function ModeMenu() {
+  const htmlRef = useRef<HTMLElement | null>(null)
   const { mode, updateMode } = useThemeContext()
 
   const modeClasses: ColorModes[] = ['light', 'dark', 'system']
-  const html = document.documentElement
   const ariaLabel = `Switch to ${mode} mode`
 
   const handleUpdateMode = (details: { value: string }) => {
+    const html = htmlRef.current
     const newMode = details.value as ColorModes
     updateMode(newMode)
+    if (!html) return
     html.classList.remove(...modeClasses)
     html.classList.add(newMode)
   }
+
+  useEffect(() => {
+    if (document) htmlRef.current = document.documentElement
+  }, [])
 
   return (
     <Menu onSelect={handleUpdateMode}>

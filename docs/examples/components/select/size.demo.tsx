@@ -9,11 +9,10 @@ import {
   Option,
   Select,
 } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants =
-  recipesSpec.data.find((r) => r.name === 'select')?.variants.size ??
-  ([] as SelectVariantProps['size'][])
+const variants = data.slotRecipes.select.variants.size
+  .values as SelectVariantProps['size'][]
 
 const collection = createSelectCollection([
   { label: 'Hades', value: 'hades' },

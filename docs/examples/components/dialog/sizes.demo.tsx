@@ -13,10 +13,9 @@ import {
   DialogTrigger,
   For,
 } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'dialog')?.variants.size ??
-  []) as DialogProps['size'][]
+const variants = data.slotRecipes.dialog.variants.size.values as DialogProps['size'][]
 
 export function SizesDemo() {
   return (

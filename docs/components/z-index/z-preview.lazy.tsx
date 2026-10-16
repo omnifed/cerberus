@@ -1,18 +1,22 @@
 'use client'
 
 import {
+  getCategoryKeys,
+  getTokenByPath,
+  getTokenNameFromPath,
+} from '@/lib/design-system'
+import {
   Field,
   Option,
   Select,
   createSelectCollection,
   type SelectValueChangeDetails,
 } from '@cerberus-design/react'
-import { useState } from 'react'
+import { useSignal } from '@cerberus-design/signals'
 import { css, cx } from 'styled-system/css'
 import { vstack } from 'styled-system/patterns'
-import tokensData from 'styled-system/specs/tokens.json'
 
-const tokens = tokensData.data.find((token) => token.type === 'zIndex')?.values ?? []
+const paths = getCategoryKeys('zIndex')
 
 const zLayers = css({
   '&[data-z-index="hide"]': {
@@ -51,11 +55,11 @@ const zLayers = css({
 })
 
 export default function ZPreview() {
-  const [active, setActive] = useState<string>('hide')
+  const [active, setActive] = useSignal<string>('hide')
 
-  const formattedCollection = tokens.map((token) => ({
-    label: token.name,
-    value: String(token.value),
+  const formattedCollection = paths.map((path) => ({
+    label: getTokenNameFromPath(path),
+    value: getTokenByPath(path)?.cssVar ?? '',
   }))
   const collection = createSelectCollection(formattedCollection)
 

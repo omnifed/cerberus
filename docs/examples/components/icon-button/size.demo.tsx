@@ -1,9 +1,8 @@
 import { Tuning } from '@carbon/icons-react'
 import { For, IconButton, IconButtonProps } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const sizes = (recipesSpec.data.find((r) => r.name === 'iconButton')?.variants.size ??
-  []) as IconButtonProps['size'][]
+const sizes = data.recipes.iconButton.variants.size.values as IconButtonProps['size'][]
 
 export function SizeDemo() {
   return (

@@ -1,9 +1,8 @@
 import { Avatar, AvatarProps, For } from '@cerberus-design/react'
 import { HStack } from 'styled-system/jsx'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'avatar')?.variants.size ??
-  []) as AvatarProps['size'][]
+const variants = data.slotRecipes.avatar.variants.size.values as AvatarProps['size'][]
 
 export function SizesDemo() {
   return (

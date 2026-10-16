@@ -1,9 +1,9 @@
 import { Stack } from '@/styled-system/jsx'
 import { Admonition, type AdmonitionProps, For } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'admonition')?.variants
-  .palette ?? []) as AdmonitionProps['palette'][]
+const variants = data.slotRecipes.admonition.variants.palette
+  .values as AdmonitionProps['palette'][]
 
 export function PaletteDemo() {
   return (

@@ -2,10 +2,10 @@
 
 import { Box } from '@/styled-system/jsx'
 import { Checkbox, CheckboxGroup, CheckboxProps, For } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'checkbox')?.variants.size ??
-  []) as CheckboxProps['size'][]
+const variants = data.slotRecipes.checkbox.variants.size
+  .values as CheckboxProps['size'][]
 
 export function SizeDemo() {
   return (
