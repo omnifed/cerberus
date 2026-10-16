@@ -3,13 +3,14 @@ import type { GlobalStyleObject } from '@pandacss/types'
 
 export const globalCss: GlobalStyleObject = defineGlobalStyles({
   html: {
-    backgroundColor: 'var(--cerberus-colors-page-surface-initial)',
-    color: 'var(--cerberus-colors-page-text-initial)',
+    backgroundColor: 'page.surface.initial',
+    color: 'page.text.initial',
     fontFamily: 'sans',
     fontFeatureSettings: "'tnum' on, 'lnum' on",
-    fontSize: '1em',
+    fontSize: '16px',
     fontWeight: 400,
     lineHeight: '150%',
+    scrollbarGutter: 'stable',
     textRendering: 'geometricprecision',
     textSizeAdjust: '100%',
   },
@@ -18,20 +19,27 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
     fontSize: '1rem',
   },
 
+  // Content Typography
+
+  "input[type='search']": {
+    '&::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration':
+      {
+        WebkitAppearance: 'none',
+      },
+  },
+
   _highlight: {
-    backgroundColor: 'var(--cerberus-colors-info-bg-initial)',
-    color: 'var(--cerberus-colors-info-text-initial)',
+    backgroundColor: 'info.bg.initial',
+    color: 'info.text.initial',
   },
   _spellingError: {
-    backgroundColor: 'var(--cerberus-colors-danger-bg-initial)',
-    color: 'var(--cerberus-colors-danger-text-initial)',
+    backgroundColor: 'danger.bg.initial',
+    color: 'danger.text.initial',
   },
 
   strong: {
     fontVariationSettings: "'wght' 700",
   },
-
-  // code
 
   kbd: {
     boxShadow: 'none',
