@@ -1,6 +1,5 @@
 import { type RawThemes } from '@cerberus/tokens'
 import { definePreset, type Preset } from '@pandacss/dev'
-import { conditions } from './conditions'
 import { theme, themes } from './theme/index'
 
 /**
@@ -14,8 +13,6 @@ export function getThemeName(): RawThemes {
 
 export const presetCerberusTheme: Preset = definePreset({
   name: '@cerberus/preset-cerberus-theme',
-
-  conditions,
 
   // We include this since it's used as the base theme to allow virtual colors
   // to work with all other preset themes. This allows Panda to understand the
