@@ -1,4 +1,6 @@
 export const conditions = {
+  system: '.system &',
+
   // visual states
   open: '&:is([open], [data-open], [data-state=open])',
   closed: '&:is([closed], [data-closed], [data-state=closed])',

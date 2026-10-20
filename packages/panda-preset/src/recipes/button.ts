@@ -32,7 +32,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     appearance: 'none',
     borderWidth: '1px',
     borderColor: 'transparent',
-    cursor: 'button',
+    cursor: 'pointer',
     display: 'inline-flex',
     gap: 'sm',
     justifyContent: 'center',

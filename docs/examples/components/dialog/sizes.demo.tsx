@@ -1,5 +1,6 @@
 'use client'
 
+import { sortSizeVariants } from '@/lib/design-system'
 import { Box, HStack, Stack } from '@/styled-system/jsx'
 import {
   Button,
@@ -16,11 +17,12 @@ import {
 import data from 'styled-system/specs/design-system.json'
 
 const variants = data.slotRecipes.dialog.variants.size.values as DialogProps['size'][]
+const sortedSizes = sortSizeVariants(variants)
 
 export function SizesDemo() {
   return (
     <HStack gap="md">
-      <For each={variants}>
+      <For each={sortedSizes}>
         {(size) => <DialogContent key={String(size)} size={size} />}
       </For>
     </HStack>

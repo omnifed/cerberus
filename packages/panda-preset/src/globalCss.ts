@@ -3,9 +3,14 @@ import type { GlobalStyleObject } from '@pandacss/types'
 
 export const globalCss: GlobalStyleObject = defineGlobalStyles({
   html: {
+    '--global-font-body': 'var(--font-poppins, sans-serif)',
+    '--global-font-mono': 'var(--font-recursive, monospace)',
+    '--global-color-border': 'var(--cerberus-colors-page-border-initial)',
+    '--global-color-placeholder': 'var(--cerberus-colors-page-text-100)',
+    '--global-color-selection': 'var(--cerberus-colors-info-surface-200)',
+    '--global-color-focus-ring': 'var(--cerberus-colors-action-border-focus)',
     backgroundColor: 'page.surface.initial',
     color: 'page.text.initial',
-    fontFamily: 'sans',
     fontFeatureSettings: "'tnum' on, 'lnum' on",
     fontSize: '16px',
     fontWeight: 400,
@@ -55,20 +60,21 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
     width: '1px',
   },
 
-  'mark::before': {
-    content: ' [highlight start] ',
+  mark: {
+    _before: {
+      content: ' [highlight start] ',
+    },
+    _after: {
+      content: ' [highlight end] ',
+    },
   },
 
-  'mark::after': {
-    content: ' [highlight end] ',
-  },
+  // Element preferences
 
-  '& :is(button)': {
+  button: {
     cursor: 'pointer',
     userSelect: 'none',
   },
-
-  // images
 
   img: {
     maxWidth: '100%',

@@ -2,6 +2,10 @@ import { describe, test, expect } from 'bun:test'
 import { conditions } from '@cerberus/panda-preset'
 
 describe('conditions', () => {
+  test('should have a system selector', () => {
+    expect(conditions.system).toEqual('.system &')
+  })
+
   test('should have a pinned', () => {
     expect(conditions.pinned).toEqual('&:is([data-pinned], [data-state=pinned])')
   })

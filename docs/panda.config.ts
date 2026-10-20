@@ -2,17 +2,17 @@ import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-pres
 import { presetAcheronTheme } from '@cerberus/preset-acheron-theme'
 import { presetElysiumTheme } from '@cerberus/preset-elysium-theme'
 import { presetOceanusTheme } from '@cerberus/preset-oceanus-theme'
+import { globalCss } from './system/global-css'
 
 const isProd = process.env.NODE_ENV === 'production'
 
 export default createCerberusConfig({
-  minify: isProd,
-  optimize: {
-    removeUnusedKeyframes: isProd,
-    removeUnusedTokens: isProd,
-    smartCompoundVariants: isProd,
-    treeshakeDesignSystem: isProd,
-  },
+  presets: [
+    createCerberusPreset(),
+    presetAcheronTheme,
+    presetElysiumTheme,
+    presetOceanusTheme,
+  ],
 
   include: [
     './node_modules/@cerberus-design/react/**/*.{ts,tsx,js,jsx}',
@@ -22,12 +22,15 @@ export default createCerberusConfig({
   ],
   exclude: [],
 
-  presets: [
-    createCerberusPreset(),
-    presetAcheronTheme,
-    presetElysiumTheme,
-    presetOceanusTheme,
-  ],
+  minify: isProd,
+  optimize: {
+    removeUnusedKeyframes: isProd,
+    removeUnusedTokens: isProd,
+    smartCompoundVariants: isProd,
+    treeshakeDesignSystem: isProd,
+  },
+
+  globalCss,
 
   globalVars: {
     '--nav-height': '3.75rem',

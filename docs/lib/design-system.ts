@@ -45,6 +45,28 @@ export function getTokensByCategory(category: string): TokenVal[] {
   return result || []
 }
 
+/**
+ * Helper to sort size-related variants in order from the raw design-system.json reference.
+ */
+export function sortSizeVariants<T>(variants: T[]): T[] {
+  const sizeWeights = {
+    '2xs': 1,
+    xs: 2,
+    sm: 3,
+    md: 4,
+    lg: 5,
+    xl: 6,
+    '2xl': 7,
+    '3xl': 8,
+    '4xl': 9,
+  }
+  return variants.sort(
+    (a, b) =>
+      sizeWeights[a as keyof typeof sizeWeights] -
+      sizeWeights[b as keyof typeof sizeWeights],
+  )
+}
+
 // Types
 
 export type TokenVal = {

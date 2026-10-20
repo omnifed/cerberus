@@ -131,6 +131,7 @@ export function Search() {
           bgColor="page.bg.initial"
           border="1px solid"
           borderColor="page.border.initial"
+          cursor="pointer"
           focusVisibleRing="outside"
           h="2.25rem"
           px="md"
