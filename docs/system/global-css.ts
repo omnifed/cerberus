@@ -35,7 +35,7 @@ export const globalCss = defineGlobalStyles({
     rounded: '4px',
   },
 
-  '.shiki .indent': {
+  'pre.shiki .indent': {
     display: 'inline-block',
     position: 'relative',
     ps: 'var(--indent-offset)',
@@ -48,11 +48,10 @@ export const globalCss = defineGlobalStyles({
       pos: 'absolute',
       width: '1px',
     },
-  },
-
-  '.shiki .indent:empty': {
-    height: '1lh',
-    verticalAlign: 'bottom',
+    _empty: {
+      height: '1lh',
+      verticalAlign: 'bottom',
+    },
   },
 
   'figcaption[data-rehype-pretty-code-title]': {
