@@ -16,8 +16,7 @@ export const globalCss = defineGlobalStyles({
 
   '.shiki': {
     fontFamily: 'mono',
-    fontSize: '0.875rem',
-    letterSpacing: '0.02em',
+    fontSize: '1rem',
   },
 
   '.shiki code': {
