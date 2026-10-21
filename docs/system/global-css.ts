@@ -1,11 +1,6 @@
 import { defineGlobalStyles } from '@pandacss/dev'
 
 export const globalCss = defineGlobalStyles({
-  // '::selection': {
-  //   bgColor: 'info.surface.200',
-  //   color: 'page.text.inverse',
-  // },
-
   '.living-canvas': {
     bgColor: 'page.surface.initial',
     bottom: 0,
@@ -21,7 +16,8 @@ export const globalCss = defineGlobalStyles({
 
   '.shiki': {
     fontFamily: 'mono',
-    fontSize: '0.8rem',
+    fontSize: '0.875rem',
+    letterSpacing: '0.02em',
   },
 
   '.shiki code': {
@@ -42,14 +38,15 @@ export const globalCss = defineGlobalStyles({
   '.shiki .indent': {
     display: 'inline-block',
     position: 'relative',
-    left: 'var(--indent-offset)',
+    ps: 'var(--indent-offset)',
     _before: {
-      content: "''",
-      pos: 'absolute',
-      opacity: '0.15',
-      width: '1px',
-      height: 'full',
       bgColor: 'currentColor',
+      content: "''",
+      height: 'full',
+      left: 0,
+      opacity: '0.15',
+      pos: 'absolute',
+      width: '1px',
     },
   },
 

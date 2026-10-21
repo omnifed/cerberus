@@ -2,6 +2,7 @@ import { presetCerberusTheme } from '@cerberus/preset-cerberus-theme'
 import { definePreset, type Preset } from '@pandacss/dev'
 import { conditions } from './conditions'
 import { globalCss } from './globalCss'
+import { globalVars } from './globalVars'
 import { patterns } from './patterns'
 import { createStaticRecipeList } from './scripts'
 import { baseTheme } from './theme'
@@ -20,6 +21,8 @@ const basePreset: Preset = definePreset({
   presets: ['@pandacss/preset-base', '@pandacss/preset-panda', presetCerberusTheme],
 
   globalCss,
+  globalVars,
+
   conditions,
   utilities,
   patterns,
@@ -33,16 +36,7 @@ const basePreset: Preset = definePreset({
     css: [
       {
         properties: {
-          colorPalette: [
-            'page',
-            'action',
-            'secondary-action',
-            'secondaryAction',
-            'info',
-            'success',
-            'warning',
-            'danger',
-          ],
+          colorPalette: ['*'],
           layerStyle: ['*'],
           focusRing: ['*'],
         },
@@ -97,6 +91,7 @@ export function createCerberusPreset(options?: PresetOptions): Preset {
       '--font-display': options?.displayFont ?? 'Poppins, sans-serif',
       '--font-sans': options?.sansFont ?? 'Poppins, sans-serif',
       '--font-mono': options?.monoFont ?? 'Recursive, monospace',
+      ...basePreset.globalVars,
     },
   })
 }

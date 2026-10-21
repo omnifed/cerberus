@@ -33,6 +33,7 @@ export default createCerberusConfig({
   globalCss,
 
   globalVars: {
+    '--indent-offset': '0.5em',
     '--nav-height': '3.75rem',
     '--shiki-background': 'var(--cerberus-colors-page-surface-100)',
     '--shiki-foreground': 'var(--cerberus-colors-page-text-initial)',
@@ -44,7 +45,7 @@ export default createCerberusConfig({
     '--shiki-token-parameter': 'var(--cerberus-colors-page-text-initial)',
     '--shiki-token-punctuation': 'var(--cerberus-colors-page-text-100)',
     '--shiki-token-comment': 'var(--cerberus-colors-page-text-100)',
-    '--shiki-token-link': 'var(--cerberus-colors-action-text-navigation-hover)',
+    '--shiki-token-link': 'var(--cerberus-colors-action-navigation-hover)',
   },
 
   theme: {

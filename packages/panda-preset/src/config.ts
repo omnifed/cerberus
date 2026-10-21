@@ -45,6 +45,7 @@ const baseConfig: Config = defineConfig({
 export function createCerberusConfig(options?: Config): Config {
   const userPresets: Config['presets'] = options?.presets ?? []
   const userPlugins: Config['plugins'] = options?.plugins ?? []
+
   const mergedStaticCssThemes: string[] = []
 
   // Automatically collect all `themes` objects across synchronous presets
