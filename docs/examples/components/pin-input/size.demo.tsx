@@ -1,18 +1,20 @@
 'use client'
 
+import { sortSizeVariants } from '@/lib/design-system'
 import { HStack } from '@/styled-system/jsx'
 import { Field, For, PinInput, PinInputRootProps } from '@cerberus-design/react'
 import data from 'styled-system/specs/design-system.json'
 
-const sizes = data.slotRecipes.pinInput.variants.size
+const variants = data.slotRecipes.pinInput.variants.size
   .values as PinInputRootProps['size'][]
+const sortedSizes = sortSizeVariants(variants)
 
 export function SizeDemo() {
   return (
-    <HStack justify="space-between" w="1/2">
-      <For each={sizes}>
+    <HStack gap="md" w="3/4">
+      <For each={sortedSizes}>
         {(size) => (
-          <Field label={`Size ${size}`}>
+          <Field label={`Size ${size}`} key={String(size)}>
             <PinInput size={size} />
           </Field>
         )}
