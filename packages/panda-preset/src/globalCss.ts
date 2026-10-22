@@ -24,7 +24,7 @@ export const globalCss: GlobalStyleObject = defineGlobalStyles({
     fontFeatureSettings: "'tnum' on, 'lnum' on",
     fontSize: '16px',
     fontWeight: 400,
-    lineHeight: '150%',
+    lineHeight: 1.5,
     scrollbarGutter: 'stable',
     textRendering: 'geometricprecision',
     textSizeAdjust: '100%',

@@ -1,13 +1,15 @@
+import { sortSizeVariants } from '@/lib/design-system'
 import { HStack } from '@/styled-system/jsx'
 import { For, Table, TableRootProps } from '@cerberus-design/react'
 import data from 'styled-system/specs/design-system.json'
 
 const variants = data.slotRecipes.table.variants.size.values as TableRootProps['size'][]
+const sortedSizes = sortSizeVariants(variants)
 
 export function SizeDemo() {
   return (
     <HStack w="1/2">
-      <For each={variants}>
+      <For each={sortedSizes}>
         {(size) => (
           <Table.Root key={size} caption={`Table using the ${size} size`} size={size}>
             <Table.Header>
