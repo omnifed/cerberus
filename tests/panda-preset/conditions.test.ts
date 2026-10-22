@@ -229,7 +229,9 @@ describe('conditions', () => {
   })
 
   test('should have a isComplete', () => {
-    expect(conditions.isComplete).toEqual('&:is([data-complete=true])')
+    expect(conditions.isComplete).toEqual(
+      '&:is([data-complete=true], [data-state=complete])',
+    )
   })
 
   test('should have a today', () => {

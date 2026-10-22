@@ -12,7 +12,7 @@ export const conditions = {
   // D&D
   isOver: '&:is([data-over=true], [data-dragging])',
   isDropped: '&:is([data-dropped=true])',
-  isComplete: '&:is([data-complete=true])',
+  isComplete: '&:is([data-complete=true], [data-state=complete])',
   dragging: '&:is([data-dragging])',
 
   // Motion states

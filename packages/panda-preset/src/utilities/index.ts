@@ -1,6 +1,6 @@
-import type { Config, PropertyConfig } from '@pandacss/dev'
 import { type GradientValue, getGradients } from '@cerberus/tokens'
-import { createFocusRing } from './helpers'
+import type { Config, PropertyConfig } from '@pandacss/dev'
+import { assignGradientVars, createFocusRing } from './helpers'
 
 /**
  * Note: Panda is very particular with utility configs. It doesn't like dynamic
@@ -56,31 +56,24 @@ const gradient: CustomUtilityConfig<'gradient'> = {
     className: 'gradient',
     shorthand: 'grad',
     values: [...getGradients(), 'none'],
+    globalVars: {
+      '--gradient-dir': { syntax: '*', inherits: false },
+      '--gradient-bg-start': { syntax: '<color>', inherits: false },
+      '--gradient-bg-end': { syntax: '<color>', inherits: false },
+      '--graident-fg': { syntax: '<color>', inherits: false },
+    },
     transform(value: GradientValue | 'progress' | 'complete' | 'none', { token }) {
+      const vars = assignGradientVars(value, token)
+
       if (value === 'none') {
-        return {
-          backgroundImage: 'initial',
-        }
-      }
-
-      // For some reason, token() doesn't work in condition blocks?
-      if (value === 'progress') {
-        return {
-          backgroundImage:
-            'linear-gradient(to right, var(--cerberus-colors-data-viz-progress-start), var(--cerberus-colors-data-viz-progress-end))',
-        }
-      }
-
-      if (value === 'complete') {
-        return {
-          backgroundImage:
-            'linear-gradient(to right, var(--cerberus-colors-data-viz-progress-complete), var(--cerberus-colors-data-viz-progress-complete))',
-        }
+        return { backgroundImage: 'initial' }
       }
 
       return {
-        backgroundImage: `linear-gradient(to bottom left, ${token(`colors.gradient.${value}.start`)}, ${token(`colors.gradient.${value}.end`)})`,
-        color: token(`colors.gradient.${value}.text`),
+        ...vars,
+        backgroundImage:
+          'linear-gradient(var(--gradient-dir), var(--gradient-bg-start), var(--gradient-bg-end))',
+        color: 'var(--gradient-fg)',
       }
     },
   },

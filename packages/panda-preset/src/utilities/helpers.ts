@@ -1,4 +1,4 @@
-import type { PropertyConfig } from '@pandacss/types'
+import type { PropertyConfig, TokenFn } from '@pandacss/types'
 
 /**
  * This module contains utility functions for creating focus ring styles.
@@ -49,5 +49,32 @@ export function createFocusRing(selector: string): PropertyConfig {
 
       return styles[value] ?? {}
     },
+  }
+}
+
+export function assignGradientVars(
+  value: string,
+  token: TokenFn,
+): Record<string, string> {
+  switch (value) {
+    case 'progress':
+      return {
+        '--gradient-dir': 'to right',
+        '--gradient-bg-start': token('colors.dataViz.progress.start'),
+        '--gradient-bg-end': token('colors.dataViz.progress.end'),
+      }
+    case 'complete':
+      return {
+        '--gradient-dir': 'to right',
+        '--gradient-bg-start': token('colors.dataViz.progress.complete'),
+        '--gradient-bg-end': token('colors.dataViz.progress.complete'),
+      }
+    default:
+      return {
+        '--gradient-dir': 'to bottom left',
+        '--gradient-bg-start': token(`colors.gradient.${value}.start`),
+        '--gradient-bg-end': token(`colors.gradient.${value}.end`),
+        '--gradient-fg': token(`colors.gradient.${value}.text`),
+      }
   }
 }

@@ -56,22 +56,40 @@ describe('utilities', () => {
 
     expect(cerbGradient).toBeDefined()
     expect(cerbGradient?.className).toEqual('gradient')
+    expect(cerbGradient.globalVars).toMatchObject({
+      '--gradient-dir': { syntax: '*', inherits: false },
+      '--gradient-bg-start': { syntax: '<color>', inherits: false },
+      '--gradient-bg-end': { syntax: '<color>', inherits: false },
+      '--graident-fg': { syntax: '<color>', inherits: false },
+    })
     expect(cerbGradient?.values).toEqual([...getGradients(), 'none'])
     expect(cerbGradient?.transform?.('none', args)).toMatchObject({
       backgroundImage: 'initial',
     })
     expect(cerbGradient?.transform?.('progress', args)).toMatchObject({
+      '--gradient-dir': 'to right',
+      '--gradient-bg-start': '{colors.dataViz.progress.start}',
+      '--gradient-bg-end': '{colors.dataViz.progress.end}',
       backgroundImage:
-        'linear-gradient(to right, var(--cerberus-colors-data-viz-progress-start), var(--cerberus-colors-data-viz-progress-end))',
+        'linear-gradient(var(--gradient-dir), var(--gradient-bg-start), var(--gradient-bg-end))',
+      color: 'var(--gradient-fg)',
     })
     expect(cerbGradient?.transform?.('complete', args)).toMatchObject({
+      '--gradient-dir': 'to right',
+      '--gradient-bg-start': '{colors.dataViz.progress.complete}',
+      '--gradient-bg-end': '{colors.dataViz.progress.complete}',
       backgroundImage:
-        'linear-gradient(to right, var(--cerberus-colors-data-viz-progress-complete), var(--cerberus-colors-data-viz-progress-complete))',
+        'linear-gradient(var(--gradient-dir), var(--gradient-bg-start), var(--gradient-bg-end))',
+      color: 'var(--gradient-fg)',
     })
     expect(cerbGradient?.transform?.('charon-light', args)).toMatchObject({
+      '--gradient-dir': 'to bottom left',
+      '--gradient-bg-start': `{colors.gradient.charon-light.start}`,
+      '--gradient-bg-end': `{colors.gradient.charon-light.end}`,
+      '--gradient-fg': `{colors.gradient.charon-light.text}`,
       backgroundImage:
-        'linear-gradient(to bottom left, {colors.gradient.charon-light.start}, {colors.gradient.charon-light.end})',
-      color: '{colors.gradient.charon-light.text}',
+        'linear-gradient(var(--gradient-dir), var(--gradient-bg-start), var(--gradient-bg-end))',
+      color: 'var(--gradient-fg)',
     })
   })
 
