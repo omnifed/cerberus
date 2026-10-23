@@ -1,5 +1,6 @@
-import { ClosableTag, type ClosableTagProps } from './closable'
+import { ClosableTag } from './closable'
 import {
+  type ClosableTagProps,
   FilledTag,
   type FilledTagProps,
   GradientTag,
