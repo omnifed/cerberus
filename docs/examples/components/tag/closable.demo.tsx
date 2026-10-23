@@ -10,6 +10,10 @@ export function ClosableDemo() {
 
   return (
     <HStack gap="md">
+      <Tag pending onClick={handleClick}>
+        Closable
+      </Tag>
+
       <Tag onClick={handleClick}>Closable</Tag>
 
       <Tag palette="info" onClick={handleClick}>

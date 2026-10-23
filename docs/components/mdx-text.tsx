@@ -62,8 +62,8 @@ export const mdxText = {
         '& > code:not(.code)': {
           bgColor: 'page.surface.100',
           color: 'success.text.100',
-          pxi: 'sm',
-          py: 'sm',
+          px: 'sm',
+          py: 'xs',
           textStyle: 'mono-xs',
           rounded: 'md',
         },
