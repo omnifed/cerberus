@@ -23,6 +23,7 @@ const LG_RADII = '0.75rem'
  * Styles for the Toggle component
  */
 export const toggle: Partial<SlotRecipeConfig> = defineSlotRecipe({
+  deprecated: true,
   className: 'toggle',
   description: 'The styles for the Toggle component',
   slots: ['track', 'container', 'input', 'thumb'],

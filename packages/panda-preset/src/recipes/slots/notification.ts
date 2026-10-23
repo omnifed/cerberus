@@ -1,11 +1,5 @@
 import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import {
-  statePalettes,
-  DANGER,
-  INFO,
-  SUCCESS,
-  WARNING,
-} from '../shared/palettes'
+import { statePalettes, DANGER, INFO, SUCCESS, WARNING } from '../shared/palettes'
 import { focusStates } from '../shared/states'
 import { iconButton } from '../iconButton'
 import { button } from '../button'
@@ -17,9 +11,7 @@ import { button } from '../button'
 
 const TEXT_2OO = 'colorPalette.text.200'
 
-function getNotificationPalette(
-  palette: 'info' | 'success' | 'warning' | 'danger',
-) {
+function getNotificationPalette(palette: 'info' | 'success' | 'warning' | 'danger') {
   const statePalette = statePalettes[palette]
   return {
     dialog: statePalette,
@@ -36,17 +28,10 @@ function getNotificationPalette(
  * @definition [Notification docs](https://cerberus.digitalu.design/react/notification)
  */
 export const notification: Partial<SlotRecipeConfig> = defineSlotRecipe({
+  deprecated: true,
   className: 'notification',
   description: 'The styles for Notification components',
-  slots: [
-    'center',
-    'dialog',
-    'icon',
-    'heading',
-    'description',
-    'close',
-    'closeAll',
-  ],
+  slots: ['center', 'dialog', 'icon', 'heading', 'description', 'close', 'closeAll'],
   jsx: [
     'NotificationCenter',
     'Notification',

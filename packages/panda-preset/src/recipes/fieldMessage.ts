@@ -17,6 +17,7 @@ import {
 export const fieldMessage: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'field-message',
   description: 'WCAG Level AAA compliant input description styles.',
+  deprecated: true,
 
   base: {
     color: 'page.text.200',

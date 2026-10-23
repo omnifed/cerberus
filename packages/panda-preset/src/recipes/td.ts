@@ -14,6 +14,7 @@ import {
  * @definition [Table docs](https://cerberus.digitalu.design/react/table)
  */
 export const td: RecipeConfig<RecipeVariantRecord> = defineRecipe({
+  deprecated: true,
   className: 'td',
   description: 'Styles for the Td component.',
 

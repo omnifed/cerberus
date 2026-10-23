@@ -14,6 +14,7 @@ import {
  * @definition [Table docs](https://cerberus.digitalu.design/react/table)
  */
 export const thead: RecipeConfig<RecipeVariantRecord> = defineRecipe({
+  deprecated: true,
   className: 'thead',
   description: 'Styles for the Thead component.',
 

@@ -5,6 +5,7 @@ import { iconButton } from './iconButton'
 import { label } from './label'
 import { tag } from './tag'
 import { gradientTag } from './gradientTag'
+import { closableTag } from './closableTag'
 
 import { accordion } from './slots/accordion'
 import { admonition } from './slots/admonition'
@@ -36,7 +37,7 @@ import { tabs } from './slots/tabs'
 import { toast } from './slots/toast'
 import { tooltip } from './slots/tooltip'
 
-// DEPRECATED: remove in v1
+// DEPRECATED: remove in v2
 import { fieldMessage } from './fieldMessage'
 import { input } from './slots/input'
 import { modal } from './slots/modal'
@@ -55,6 +56,7 @@ import { td } from './td'
 export const recipes = {
   button,
   buttonGroup,
+  closableTag,
   fieldMessage,
   group,
   gradientTag,

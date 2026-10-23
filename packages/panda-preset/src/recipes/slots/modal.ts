@@ -16,6 +16,7 @@ export const modal: Partial<SlotRecipeConfig> = defineSlotRecipe({
   description: 'The styles for Modal components',
   slots: ['dialog', 'icon', 'heading', 'description'],
   jsx: ['ConfirmModal', 'PromptModal'],
+  deprecated: true,
 
   base: {
     dialog: {

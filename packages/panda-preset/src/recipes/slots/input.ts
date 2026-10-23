@@ -15,6 +15,7 @@ import { inputSizes, input as inputStyles } from '../shared/input.base'
 export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
   slots: ['root', 'input', 'icon', 'startIcon'],
   className: 'input',
+  deprecated: true,
 
   base: {
     root: {

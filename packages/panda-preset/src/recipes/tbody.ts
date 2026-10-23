@@ -14,6 +14,7 @@ import {
  * @definition [Table docs](https://cerberus.digitalu.design/react/table)
  */
 export const tbody: RecipeConfig<RecipeVariantRecord> = defineRecipe({
+  deprecated: true,
   className: 'tbody',
   description: 'Styles for the Tbody component.',
 
