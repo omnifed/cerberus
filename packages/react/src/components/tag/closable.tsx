@@ -3,33 +3,34 @@
 import { type ButtonHTMLAttributes } from 'react'
 import { useCerberusContext } from '../../context/cerberus'
 import { IconButton, type IconButtonProps } from '../icon-button'
-import { TagRoot, TagRootProps } from './primitives'
+import { FilledTag, FilledTagProps } from './primitives'
 
-export interface ClosableTagProps extends TagRootProps {
+export interface ClosableTagProps extends Omit<FilledTagProps, 'onClick'> {
+  gradient?: never
   /**
    * The action to be performed when the close button is clicked.
    */
-  onClick: ButtonHTMLAttributes<HTMLButtonElement>['onClick']
+  onClick?: ButtonHTMLAttributes<HTMLButtonElement>['onClick']
 }
 
 export function ClosableTag(props: ClosableTagProps) {
-  const { onClick, children, ...rootProps } = props
+  const { onClick, children, ...tagProps } = props
 
   const { icons } = useCerberusContext()
   const { close: Close } = icons
 
   const palette =
-    rootProps.palette === 'page'
+    tagProps.palette === 'page'
       ? 'secondaryAction'
-      : (rootProps.palette ?? 'secondaryAction')
+      : (tagProps.palette ?? 'secondaryAction')
 
   return (
-    <TagRoot
+    <FilledTag
       data-palette={palette}
       palette={palette}
       shape="pill"
       pe="0"
-      {...rootProps}
+      {...tagProps}
     >
       {children}
 
@@ -42,6 +43,6 @@ export function ClosableTag(props: ClosableTagProps) {
       >
         <Close />
       </IconButton>
-    </TagRoot>
+    </FilledTag>
   )
 }

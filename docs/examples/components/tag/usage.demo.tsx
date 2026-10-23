@@ -7,8 +7,8 @@ export function UsageDemo() {
     <HStack gap="md">
       <For each={tagUsages}>
         {(usage) => (
-          <Tag key={usage} usage={usage}>
-            {usage}
+          <Tag key={String(usage)} usage={usage}>
+            {String(usage)}
           </Tag>
         )}
       </For>

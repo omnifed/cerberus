@@ -1,19 +1,21 @@
-import {
-  createCerberusPrimitive,
-  type CerberusPrimitiveProps,
-} from '../../system/index'
-import { tag, type TagVariantProps } from 'styled-system/recipes'
-import type { HTMLAttributes } from 'react'
+import { ark } from '@ark-ui/react/factory'
+import { ComponentProps } from 'react'
+import { cerberus } from 'styled-system/jsx/factory'
+import { gradientTag, tag } from 'styled-system/recipes'
 
-const { withRecipe } = createCerberusPrimitive(tag)
+export const baseTagAttrs = {
+  'data-scope': 'tag',
+  'data-part': 'root',
+}
 
-export type TagRootProps = CerberusPrimitiveProps<
-  Omit<HTMLAttributes<HTMLSpanElement>, 'onClick'> & TagVariantProps
->
+export type FilledTagProps = ComponentProps<typeof FilledTag> & {
+  gradient?: never
+  onClick?: never
+}
+export const FilledTag = cerberus(ark.span, tag)
 
-export const TagRoot = withRecipe('span', {
-  defaultProps: {
-    'data-scope': 'tag',
-    'data-part': 'root',
-  },
-})
+export type GradientTagProps = ComponentProps<typeof GradientTag> & {
+  palette?: never
+  onClick?: never
+}
+export const GradientTag = cerberus(ark.span, gradientTag)

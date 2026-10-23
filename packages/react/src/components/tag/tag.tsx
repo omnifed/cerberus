@@ -1,6 +1,11 @@
-import type { PropsWithChildren } from 'react'
-import { TagRoot, type TagRootProps } from './primitives'
 import { ClosableTag, type ClosableTagProps } from './closable'
+import {
+  FilledTag,
+  type FilledTagProps,
+  GradientTag,
+  type GradientTagProps,
+  baseTagAttrs,
+} from './primitives'
 
 function isClosableTag(props: TagProps): props is ClosableTagProps {
   return 'onClick' in props && typeof props.onClick !== 'undefined'
@@ -8,7 +13,7 @@ function isClosableTag(props: TagProps): props is ClosableTagProps {
 
 // Component
 
-export type TagProps = TagRootProps | ClosableTagProps
+export type TagProps = FilledTagProps | GradientTagProps | ClosableTagProps
 
 /**
  * The Tag component is used to display a meta descriptions.
@@ -18,22 +23,16 @@ export type TagProps = TagRootProps | ClosableTagProps
  * <Tag>Tag</Tag>
  * ```
  */
-export function Tag(props: PropsWithChildren<TagProps>) {
-  const { children } = props
-
+export function Tag(props: TagProps) {
   if (isClosableTag(props)) {
-    const { onClick, ...rootProps } = props
-    return (
-      <ClosableTag onClick={onClick} {...rootProps}>
-        {children}
-      </ClosableTag>
-    )
+    return <ClosableTag {...baseTagAttrs} {...props} />
   }
 
-  const rootProps = props as TagRootProps
+  if (props.gradient) {
+    return <GradientTag {...baseTagAttrs} {...props} />
+  }
+
   return (
-    <TagRoot data-palette={rootProps.palette ?? 'page'} {...rootProps}>
-      {children}
-    </TagRoot>
+    <FilledTag {...baseTagAttrs} data-palette={props.palette ?? 'page'} {...props} />
   )
 }

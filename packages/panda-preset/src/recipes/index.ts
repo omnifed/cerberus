@@ -4,6 +4,7 @@ import { group } from './group'
 import { iconButton } from './iconButton'
 import { label } from './label'
 import { tag } from './tag'
+import { gradientTag } from './gradientTag'
 
 import { accordion } from './slots/accordion'
 import { admonition } from './slots/admonition'
@@ -56,6 +57,7 @@ export const recipes = {
   buttonGroup,
   fieldMessage,
   group,
+  gradientTag,
   iconButton,
   label,
   tag,
