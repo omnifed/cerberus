@@ -20,7 +20,7 @@
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/signals": "workspace:*",
     "@cerberus/tokens": "workspace:*",
-    "next": "16.3.6",
+    "next": "16.4.2",
     "react": "catalog:jsx",
     "react-dom": "catalog:jsx",
     "semver": "^7.8.5"
