@@ -27,7 +27,10 @@ export const GradientTag = cerberus(ark.span, gradientTag)
 
 // ClosableTag ---------------------------------------------------
 
-export type ClosableTagProps = ComponentProps<typeof ClosableTagRoot> & {
+export type ClosableTagProps = Omit<
+  ComponentProps<typeof ClosableTagRoot>,
+  'onClick'
+> & {
   pending?: boolean
   gradient?: never
   onClick?: IconButtonProps['onClick']

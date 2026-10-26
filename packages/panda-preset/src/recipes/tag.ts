@@ -20,16 +20,12 @@ export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   base,
 
   variants: {
-    palette: { ...nonActionPalettes, secondaryAction },
+    palette: { ...nonActionPalettes },
 
     usage: {
       filled: {
         bgColor: 'colorPalette.surface.200',
         color: 'colorPalette.text.200',
-        _secondaryActionPalette: {
-          bgColor: 'secondaryAction.bg.initial',
-          color: 'secondaryAction.text.100',
-        },
       },
       outlined,
     },

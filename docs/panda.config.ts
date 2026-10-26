@@ -20,7 +20,7 @@ export default createCerberusConfig({
     './mdx-components.tsx',
     './**/*.{ts,tsx}',
   ],
-  exclude: [],
+  exclude: ['./app/(llms)/*'],
 
   minify: isProd,
   optimize: {

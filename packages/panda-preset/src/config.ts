@@ -1,4 +1,5 @@
 import { defineConfig, type Config } from '@pandacss/dev'
+import { CssRule, Preset } from '@pandacss/types'
 
 /**
  * This module contains the Cerberus configuration options.
@@ -47,25 +48,39 @@ export function createCerberusConfig(options?: Config): Config {
   const userPlugins: Config['plugins'] = options?.plugins ?? []
 
   const mergedStaticCssThemes: string[] = []
+  const mergedStaticCssCss: CssRule[] = []
 
   // Automatically collect all `themes` objects across synchronous presets
-  const mergedThemes = userPresets.reduce<Record<string, any>>((acc, preset: any) => {
-    if (!preset) return acc
-    const isObj = typeof preset === 'object'
-    if (isObj && preset.staticCss?.themes) {
-      mergedStaticCssThemes.push(...preset.staticCss.themes)
-    }
-    if (isObj && preset.themes) {
-      return { ...acc, ...preset.themes }
-    }
-    return acc
-  }, {})
+  const mergedThemes = userPresets.reduce<Record<string, any>>(
+    async (acc, preset: string | Preset | Promise<Preset>) => {
+      if (!preset) return acc
+      if (typeof preset === 'string') return acc
+
+      const isPromise = preset instanceof Promise
+      const usabledPreset = isPromise ? await preset : preset
+
+      if (usabledPreset.staticCss?.themes) {
+        mergedStaticCssThemes.push(...usabledPreset.staticCss.themes)
+      }
+      if (usabledPreset.staticCss?.css?.length) {
+        mergedStaticCssCss.push(...usabledPreset.staticCss.css)
+      }
+      if (usabledPreset.themes) {
+        return { ...acc, ...usabledPreset.themes }
+      }
+      return acc
+    },
+    {},
+  )
 
   // Automatically register all detected theme names
   const existingStaticThemes = options?.staticCss?.themes ?? []
   const staticThemes = Array.from(
     new Set([...mergedStaticCssThemes, ...existingStaticThemes]),
   )
+
+  const exsitingStaticCss = options?.staticCss?.css ?? []
+  const staticCss = Array.from(new Set([...mergedStaticCssCss, ...exsitingStaticCss]))
 
   return defineConfig({
     ...baseConfig,
@@ -95,6 +110,7 @@ export function createCerberusConfig(options?: Config): Config {
     staticCss: {
       ...options?.staticCss,
       themes: staticThemes.length > 0 ? staticThemes : undefined,
+      css: staticCss,
     },
   })
 }

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "panda:doc": "panda doctor",
     "dev": "rm -rf .next && pnpm run build:b && pnpm run /^dev:.*/",
     "dev:next": "next dev",
     "dev:velite": "velite dev --watch",

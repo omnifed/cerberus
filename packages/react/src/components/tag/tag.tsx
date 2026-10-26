@@ -8,12 +8,6 @@ import {
   baseTagAttrs,
 } from './primitives'
 
-function isClosableTag(props: TagProps): props is ClosableTagProps {
-  return 'onClick' in props && typeof props.onClick !== 'undefined'
-}
-
-// Component
-
 export type TagProps = FilledTagProps | GradientTagProps | ClosableTagProps
 
 /**
@@ -36,4 +30,8 @@ export function Tag(props: TagProps) {
   return (
     <FilledTag {...baseTagAttrs} data-palette={props.palette ?? 'page'} {...props} />
   )
+}
+
+function isClosableTag(props: TagProps): props is ClosableTagProps {
+  return 'onClick' in props && typeof props.onClick !== 'undefined'
 }
