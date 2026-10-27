@@ -1,5 +1,6 @@
 import { type GradientValue, getGradients } from '@cerberus/tokens'
-import type { Config, PropertyConfig } from '@pandacss/dev'
+import type { Config } from '@pandacss/dev'
+import type { PropertyConfig } from '@pandacss/types'
 import { assignGradientVars, createFocusRing } from './helpers'
 
 /**

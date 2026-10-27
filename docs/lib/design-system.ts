@@ -31,7 +31,7 @@ export function getTokenByPath(path: TokenPath): TokenVal | null {
  */
 export function getTokenNameFromPath(path: TokenPath): string {
   if (!path) return ''
-  return path.split('.').slice(1).join() || ''
+  return path.split('.').slice(1).join('.') || ''
 }
 
 /**
@@ -43,6 +43,23 @@ export function getTokensByCategory(category: string): TokenVal[] {
     (tok) => tok.category === category,
   )
   return result || []
+}
+
+/**
+ * Get all semantic tokens
+ */
+export function getSemanticTokens(): SemTokensResult {
+  const result: SemTokensResult = { entries: [], results: {} }
+  const keys = data.paths.filter((key) => {
+    const val: TokenVal = data.tokens[key as keyof (typeof data)['tokens']]
+    return val?.category === 'colors' && val?.semantic
+  })
+  return keys.reduce((acc, prev) => {
+    const val: TokenVal = data.tokens[prev as keyof (typeof data)['tokens']]
+    acc.entries = [...acc.entries, prev]
+    acc.results[prev] = val
+    return acc
+  }, result)
 }
 
 /**
@@ -76,4 +93,10 @@ export type TokenVal = {
   originalValue?: string //'{colors.success.50}'
   description?: string
   semantic?: boolean
+  key?: TokenPath // we add this for referencing
+}
+
+export type SemTokensResult = {
+  entries: string[]
+  results: Record<string, TokenVal>
 }
