@@ -15,13 +15,7 @@ export default function AnimationStyles() {
       <HStack gap="md" flexWrap="wrap" w="full">
         <For each={variants}>
           {(name) => (
-            <Button
-              key={name}
-              onClick={() => {
-                setActiveOption(name)
-              }}
-              size="sm"
-            >
+            <Button key={name} onClick={() => setActiveOption(name)} size="sm">
               {name}
             </Button>
           )}
@@ -33,8 +27,8 @@ export default function AnimationStyles() {
         data-placement="top"
         animationDuration="slow"
         animationFillMode="both"
-        animationTimingFunction="ease-in-out"
         animationStyle={activeOption}
+        animationTimingFunction="ease-in-out"
         bgColor="page.surface.100"
         size="16rem"
       >

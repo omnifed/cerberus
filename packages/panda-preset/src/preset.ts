@@ -37,8 +37,6 @@ const basePreset: Preset = definePreset({
       {
         properties: {
           colorPalette: ['*'],
-          layerStyle: ['*'],
-          focusRing: ['*'],
         },
       },
     ],
@@ -88,9 +86,9 @@ export function createCerberusPreset(options?: PresetOptions): Preset {
     ...basePreset,
 
     globalVars: {
-      '--font-display': options?.displayFont ?? 'Poppins, sans-serif',
-      '--font-sans': options?.sansFont ?? 'Poppins, sans-serif',
-      '--font-mono': options?.monoFont ?? 'Recursive, monospace',
+      '--font-display': options?.displayFont ?? 'var(--global-font-body)',
+      '--font-sans': options?.sansFont ?? 'var(--global-font-body)',
+      '--font-mono': options?.monoFont ?? 'var(--global-font-mono)',
       ...basePreset.globalVars,
     },
   })

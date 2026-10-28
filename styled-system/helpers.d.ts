@@ -100,8 +100,8 @@ export declare function splitProps<T extends Record<string, any>>(
 ): any[]
 
 export declare const normalizeHTMLProps: ((
-  props: Record<string, unknown>,
-) => Record<string, unknown>) & {
+  props: Record<string, any>,
+) => Record<string, any>) & {
   keys: string[]
 }
 

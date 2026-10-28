@@ -15,12 +15,16 @@ export const globalCss = defineGlobalStyles({
   },
 
   '.shiki': {
-    fontFamily: 'mono',
-    fontSize: '1rem',
+    fontSize: 'md',
+    fontVariationSettings: "'slnt' -3, 'CASL' 1, 'CRSV' 1, 'MONO' 0",
+    lineHeight: 'initial!',
+    letterSpacing: 'initial!',
+    textStyle: 'mono-xs',
   },
 
   '.shiki code': {
     display: 'block',
+    fontVariationSettings: 'inherit',
     py: 'md',
     px: '2rem',
     width: 'full',
@@ -59,9 +63,11 @@ export const globalCss = defineGlobalStyles({
     borderBottomColor: 'page.border.initial',
     bgcolor: 'rgba(0, 0, 0, 0.1)',
     backdropFilter: 'blur(10px)',
-    fontFamily: 'Recursive',
     fontSize: '0.875rem',
+    fontVariationSettings: "'slnt' 0, 'CASL' 0, 'CRSV' 0, 'MONO' 0",
+    letterSpacing: 'initial!',
     px: 'md',
     py: '0.5rem',
+    textStyle: 'mono-xs',
   },
 })

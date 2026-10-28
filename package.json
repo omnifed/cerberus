@@ -28,7 +28,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
     "oxfmt": "catalog:oxc",
-    "oxlint": "^1.88.0"
+    "oxlint": "^1.90.0"
   },
   "lint-staged": {
     "**/*": "oxfmt --write --no-error-on-unmatched-pattern",
@@ -38,5 +38,5 @@
     "bun": ">=1.4.3",
     "node": ">=26.0.0"
   },
-  "packageManager": "pnpm@12.11.2"
+  "packageManager": "pnpm@12.16.1"
 }

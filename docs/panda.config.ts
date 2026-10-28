@@ -3,6 +3,7 @@ import { presetAcheronTheme } from '@cerberus/preset-acheron-theme'
 import { presetElysiumTheme } from '@cerberus/preset-elysium-theme'
 import { presetOceanusTheme } from '@cerberus/preset-oceanus-theme'
 import { globalCss } from './system/global-css'
+import { animationStyles } from '@cerberus/panda-preset/src/theme'
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -58,5 +59,17 @@ export default createCerberusConfig({
         },
       },
     },
+  },
+
+  staticCss: {
+    css: [
+      {
+        properties: {
+          animationStyles: ['*'],
+          layerStyle: ['*'],
+          focusRing: ['*'],
+        },
+      },
+    ],
   },
 })

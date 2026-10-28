@@ -1,5 +1,6 @@
-import { defineTextStyles, type TextStyles } from '@pandacss/dev'
 import { createTextStyles } from '@cerberus/tokens'
+import { defineTextStyles } from '@pandacss/dev'
+import type { TextStyles } from '@pandacss/types'
 
 export const textStyles: TextStyles = defineTextStyles({
   ...createTextStyles(),

@@ -3,6 +3,7 @@ import CerberusConfig from '@/components/cerberus-config'
 import { GlobalNav } from '@/components/global-nav'
 import seoConfig from '@/seo.config'
 import { cx } from '@/styled-system/css'
+import { cerberus } from '@/styled-system/jsx'
 import { NotificationCenter } from '@cerberus-design/react'
 import { Analytics } from '@vercel/analytics/react'
 import { Metadata } from 'next'
@@ -10,19 +11,19 @@ import { Poppins, Recursive } from 'next/font/google'
 import Script from 'next/script'
 import { Suspense, type PropsWithChildren } from 'react'
 import './globals.css'
-import { cerberus } from '@/styled-system/jsx'
 
 const poppins = Poppins({
   display: 'swap',
+  preload: true,
   subsets: ['latin'],
   weight: ['400', '600', '700'],
-  variable: '--font-poppins',
+  variable: '--font-body',
 })
 const recursive = Recursive({
+  axes: ['CASL', 'MONO', 'CRSV', 'slnt'],
   display: 'swap',
   subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-recursive',
+  variable: '--font-mono',
 })
 
 // Blocks the browser paint until the cookies are parsed and applied to the HTML tag

@@ -13,8 +13,8 @@ const markStyles = {
 
 export const globalCss: GlobalStyleObject = defineGlobalStyles({
   html: {
-    '--global-font-body': 'var(--font-poppins, sans-serif)',
-    '--global-font-mono': 'var(--font-recursive, monospace)',
+    '--global-font-body': 'var(--font-body, sans-serif)',
+    '--global-font-mono': 'var(--font-mono, monospace)',
     '--global-color-border': 'var(--cerberus-colors-page-border-initial)',
     '--global-color-placeholder': 'var(--cerberus-colors-page-text-100)',
     '--global-color-selection': 'var(--cerberus-colors-info-ghost-active)',
