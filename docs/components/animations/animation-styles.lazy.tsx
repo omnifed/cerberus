@@ -27,10 +27,41 @@ export default function AnimationStyles() {
         data-placement="top"
         animationDuration="slow"
         animationFillMode="both"
-        animationStyle={activeOption}
         animationTimingFunction="ease-in-out"
         bgColor="page.surface.100"
         size="16rem"
+        css={{
+          '&[data-animation="emphasized-fade-in"]': {
+            animationStyle: 'emphasized-fade-in',
+          },
+          '&[data-animation="emphasized-fade-out"]': {
+            animationStyle: 'emphasized-fade-out',
+          },
+          '&[data-animation="emphasized-slide-in"]': {
+            animationStyle: 'emphasized-slide-in',
+          },
+          '&[data-animation="emphasized-slide-out"]': {
+            animationStyle: 'emphasized-slide-out',
+          },
+          '&[data-animation="slide-fade-in"]': {
+            animationStyle: 'slide-fade-in',
+          },
+          '&[data-animation="slide-fade-out"]': {
+            animationStyle: 'slide-fade-out',
+          },
+          '&[data-animation="slide-in"]': {
+            animationStyle: 'slide-in',
+          },
+          '&[data-animation="slide-out"]': {
+            animationStyle: 'slide-out',
+          },
+          '&[data-animation="scale-fade-in"]': {
+            animationStyle: 'scale-fade-in',
+          },
+          '&[data-animation="scale-fade-out"]': {
+            animationStyle: 'scale-fade-out',
+          },
+        }}
       >
         <Center>{activeOption}</Center>
       </Square>

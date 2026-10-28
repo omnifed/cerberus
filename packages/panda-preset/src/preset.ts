@@ -44,23 +44,7 @@ const basePreset: Preset = definePreset({
   },
 })
 
-export interface PresetOptions {
-  /**
-   * The fontFamily to use for Display textStyles.
-   * @default 'Poppins, sans-serif'
-   */
-  displayFont?: string
-  /**
-   * The fontFamily to use for non-display textStyles.
-   * @default 'Poppins, sans-serif'
-   */
-  sansFont?: string
-  /**
-   * The fontFamily to use for Mono textStyles.
-   * @default 'Recursive, monospace'
-   */
-  monoFont?: string
-}
+export type PresetOptions = {}
 
 /**
  * A function to easily define a PandaCSS preset with Cerberus settings.
@@ -81,15 +65,8 @@ export interface PresetOptions {
  * })
  * ```
  */
-export function createCerberusPreset(options?: PresetOptions): Preset {
+export function createCerberusPreset(_options?: PresetOptions): Preset {
   return definePreset({
     ...basePreset,
-
-    globalVars: {
-      '--font-display': options?.displayFont ?? 'var(--global-font-body)',
-      '--font-sans': options?.sansFont ?? 'var(--global-font-body)',
-      '--font-mono': options?.monoFont ?? 'var(--global-font-mono)',
-      ...basePreset.globalVars,
-    },
   })
 }

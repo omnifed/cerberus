@@ -65,7 +65,6 @@ export default createCerberusConfig({
     css: [
       {
         properties: {
-          animationStyles: ['*'],
           layerStyle: ['*'],
           focusRing: ['*'],
         },
