@@ -1,8 +1,4 @@
-import {
-  getCategoryKeys,
-  getTokenByPath,
-  getTokensByCategory,
-} from '@/lib/design-system'
+import { getCategoryKeys, getTokenByPath } from '@/lib/design-system'
 import { TokenPath } from '@/styled-system/types'
 import { For } from '@cerberus-design/react'
 import { Box, Grid } from 'styled-system/jsx'
@@ -34,7 +30,7 @@ function ShadowDemo(props: SDProps) {
             h="16"
             rounded="md"
             style={{
-              boxShadow: token.cssVar,
+              boxShadow: `var(${token.cssVar})`,
             }}
           />
         </Box>
