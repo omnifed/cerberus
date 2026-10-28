@@ -1,8 +1,6 @@
-import { Dict } from '@/styled-system/types'
-import { PropsWithChildren } from 'react'
-import { Box } from 'styled-system/jsx'
+import { Box, BoxProps } from 'styled-system/jsx'
 
-export function DecorativeBox(props: PropsWithChildren<Dict>) {
+export function DecorativeBox(props: BoxProps) {
   return (
     <Box
       alignItems="center"

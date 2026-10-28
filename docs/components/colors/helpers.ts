@@ -39,7 +39,7 @@ export function getPaletteTokens(
 
   tokens.entries.forEach((tok) => {
     if (tok.startsWith(prefix)) {
-      uniqueTokens.set(tok, { ...tokens.results[tok], key: tok })
+      uniqueTokens.set(tok, { ...tokens.results[tok], key: tok as TokenPath })
     }
   })
 

@@ -1,4 +1,4 @@
-import { Tag, TagProps } from '@cerberus-design/react'
+import { GradientTagProps, Tag, TagProps } from '@cerberus-design/react'
 import { getFeatureLifecycle } from '@/lib/versions'
 
 export const FEATURES = {
@@ -24,7 +24,11 @@ export function FeatureBadge({ since, ...tagProps }: Props) {
   }
 
   return (
-    <Tag gradient="amphiaraus-dark" usage="outlined" {...tagProps}>
+    <Tag
+      gradient="amphiaraus-dark"
+      usage="outlined"
+      {...(tagProps as GradientTagProps)}
+    >
       {FEATURES.NEW}
     </Tag>
   )
