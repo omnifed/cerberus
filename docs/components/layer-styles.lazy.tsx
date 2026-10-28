@@ -31,7 +31,7 @@ export default function LayerStyles() {
 }
 
 function getNameByScope(name: string) {
-  return variants.filter((key) => key === name)
+  return variants.filter((key) => key.includes(name))
 }
 
 function getStateStyles() {
