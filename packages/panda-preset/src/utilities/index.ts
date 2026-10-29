@@ -104,7 +104,6 @@ export const utilities: Config['utilities'] = {
     ...gradient,
     ...borderGradient,
 
-    focusRing: createFocusRing('&:is(:focus, [data-focus])'),
     focusVisibleRing: createFocusRing('&:is(:focus-visible, [data-focus-visible])'),
     focusRingColor: {
       values: 'colors',

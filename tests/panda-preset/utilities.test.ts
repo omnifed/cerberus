@@ -113,11 +113,6 @@ describe('utilities', () => {
     })
   })
 
-  test('should export a focusRing utility', () => {
-    const cerbFocusRing = utilities?.extend?.focusRing
-    expect(cerbFocusRing).toBeDefined()
-  })
-
   test('should export a focusVisibleRing utility', () => {
     const cerbFocusVisibleRing = utilities?.extend?.focusVisibleRing
     expect(cerbFocusVisibleRing).toBeDefined()
