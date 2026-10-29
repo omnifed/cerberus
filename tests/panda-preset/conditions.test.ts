@@ -3,327 +3,327 @@ import { conditions } from '@cerberus/panda-preset'
 
 describe('conditions', () => {
   test('should have a system selector', () => {
-    expect(conditions.system).toEqual('.system &')
+    expect(conditions?.system).toEqual('.system &')
   })
 
   test('should have a pinned', () => {
-    expect(conditions.pinned).toEqual('&:is([data-pinned], [data-state=pinned])')
+    expect(conditions?.pinned).toEqual('&:is([data-pinned], [data-state=pinned])')
   })
 
   test('should have a leftPinned', () => {
-    expect(conditions.leftPinned).toEqual('&:is([data-pinned=left])')
+    expect(conditions?.leftPinned).toEqual('&:is([data-pinned=left])')
   })
 
   test('should have a rightPinned', () => {
-    expect(conditions.rightPinned).toEqual('&:is([data-pinned=right])')
+    expect(conditions?.rightPinned).toEqual('&:is([data-pinned=right])')
   })
 
   test('should have a modalOpen', () => {
-    expect(conditions.modalOpen).toEqual('&:is([data-modal-open=true])')
+    expect(conditions?.modalOpen).toEqual('&:is([data-modal-open=true])')
   })
 
   test('should have a screenReaderOnly', () => {
-    expect(conditions.screenReaderOnly).toEqual('&:is([data-screen-reader-only=true])')
+    expect(conditions?.screenReaderOnly).toEqual('&:is([data-screen-reader-only=true])')
   })
 
   test('should have an isOver', () => {
-    expect(conditions.isOver).toEqual('&:is([data-over=true], [data-dragging])')
+    expect(conditions?.isOver).toEqual('&:is([data-over=true], [data-dragging])')
   })
 
   test('should have an isDropped', () => {
-    expect(conditions.isDropped).toEqual('&:is([data-dropped=true])')
+    expect(conditions?.isDropped).toEqual('&:is([data-dropped=true])')
   })
 
   test('should have a userInvalid', () => {
-    expect(conditions.userInvalid).toEqual(
+    expect(conditions?.userInvalid).toEqual(
       '&:is(:user-invalid, [aria-invalid], [data-invalid])',
     )
   })
 
   test('should have a groupInvalid', () => {
-    expect(conditions.groupInvalid).toEqual(
+    expect(conditions?.groupInvalid).toEqual(
       '.group:is([data-invalid] &, [aria-invalid]) &',
     )
   })
 
   test('should have a groupChecked', () => {
-    expect(conditions.groupChecked).toEqual(
+    expect(conditions?.groupChecked).toEqual(
       '.group:is([data-checked="true"] &, [aria-checked="true"]) &',
     )
   })
 
   test('should have an open', () => {
-    expect(conditions.open).toEqual('&:is([open], [data-open], [data-state=open])')
+    expect(conditions?.open).toEqual('&:is([open], [data-open], [data-state=open])')
   })
 
   test('should have a closed', () => {
-    expect(conditions.closed).toEqual(
+    expect(conditions?.closed).toEqual(
       '&:is([closed], [data-closed], [data-state=closed])',
     )
   })
 
   test('should have a checked', () => {
-    expect(conditions.checked).toEqual(
+    expect(conditions?.checked).toEqual(
       '&:is(:checked, [data-checked], [aria-checked=true], [data-state=checked])',
     )
   })
 
   test('should have a notDisabled', () => {
-    expect(conditions.notDisabled).toEqual(
+    expect(conditions?.notDisabled).toEqual(
       '&:is(:not([disabled]), [data-disabled=false])',
     )
   })
 
   test('should have a dataReadOnly', () => {
-    expect(conditions.dataReadOnly).toEqual('&:is([data-readonly])')
+    expect(conditions?.dataReadOnly).toEqual('&:is([data-readonly])')
   })
 
   test('should have an indeterminate', () => {
-    expect(conditions.indeterminate).toEqual('&:is([data-state=indeterminate])')
+    expect(conditions?.indeterminate).toEqual('&:is([data-state=indeterminate])')
   })
 
   test('should have a highEmphasis', () => {
-    expect(conditions.highEmphasis).toEqual('&:is([data-emphasis=high])')
+    expect(conditions?.highEmphasis).toEqual('&:is([data-emphasis=high])')
   })
 
   test('should have a lowEmphasis', () => {
-    expect(conditions.lowEmphasis).toEqual('&:is([data-emphasis=low])')
+    expect(conditions?.lowEmphasis).toEqual('&:is([data-emphasis=low])')
   })
 
   test('should have a positionBottom', () => {
-    expect(conditions.positionBottom).toEqual('&:is([data-position=bottom])')
+    expect(conditions?.positionBottom).toEqual('&:is([data-position=bottom])')
   })
 
   test('should have a positionTop', () => {
-    expect(conditions.positionTop).toEqual('&:is([data-position=top])')
+    expect(conditions?.positionTop).toEqual('&:is([data-position=top])')
   })
 
   test('should have a positionLeft', () => {
-    expect(conditions.positionLeft).toEqual('&:is([data-position=left])')
+    expect(conditions?.positionLeft).toEqual('&:is([data-position=left])')
   })
 
   test('should have a positionRight', () => {
-    expect(conditions.positionRight).toEqual('&:is([data-position=right])')
+    expect(conditions?.positionRight).toEqual('&:is([data-position=right])')
   })
 
   test('should have a startIcon', () => {
-    expect(conditions.startIcon).toEqual('&:is([data-start-icon=true])')
+    expect(conditions?.startIcon).toEqual('&:is([data-start-icon=true])')
   })
 
   test('should have a startIndicator', () => {
-    expect(conditions.startIndicator).toEqual('&:is([data-indicator-position=start])')
+    expect(conditions?.startIndicator).toEqual('&:is([data-indicator-position=start])')
   })
 
   test('should have an endIndicator', () => {
-    expect(conditions.endIndicator).toEqual('&:is([data-indicator-position=end])')
+    expect(conditions?.endIndicator).toEqual('&:is([data-indicator-position=end])')
   })
 
   test('should have an xsSize', () => {
-    expect(conditions.xsSize).toEqual('&:is([data-size=xs])')
+    expect(conditions?.xsSize).toEqual('&:is([data-size=xs])')
   })
 
   test('should have a smSize', () => {
-    expect(conditions.smSize).toEqual('&:is([data-size=sm])')
+    expect(conditions?.smSize).toEqual('&:is([data-size=sm])')
   })
 
   test('should have a mdSize', () => {
-    expect(conditions.mdSize).toEqual('&:is([data-size=md])')
+    expect(conditions?.mdSize).toEqual('&:is([data-size=md])')
   })
 
   test('should have a lgSize', () => {
-    expect(conditions.lgSize).toEqual('&:is([data-size=lg])')
+    expect(conditions?.lgSize).toEqual('&:is([data-size=lg])')
   })
 
   test('should have a xlSize', () => {
-    expect(conditions.xlSize).toEqual('&:is([data-size=xl])')
+    expect(conditions?.xlSize).toEqual('&:is([data-size=xl])')
   })
 
   test('should have a tooltip', () => {
-    expect(conditions.tooltip).toEqual('&:is([data-tooltip=true])')
+    expect(conditions?.tooltip).toEqual('&:is([data-tooltip=true])')
   })
 
   test('should have a notify', () => {
-    expect(conditions.notify).toEqual('&:is([data-notify=true])')
+    expect(conditions?.notify).toEqual('&:is([data-notify=true])')
   })
 
   test('should have an admin', () => {
-    expect(conditions.admin).toEqual('&:is([data-role=admin])')
+    expect(conditions?.admin).toEqual('&:is([data-role=admin])')
   })
 
   test('should have a student', () => {
-    expect(conditions.student).toEqual('&:is([data-role=student])')
+    expect(conditions?.student).toEqual('&:is([data-role=student])')
   })
 
   test('should have a user', () => {
-    expect(conditions.user).toEqual('&:is([data-role=user])')
+    expect(conditions?.user).toEqual('&:is([data-role=user])')
   })
 
   test('should have a highlight', () => {
-    expect(conditions.highlight).toEqual('&:is(::selection)')
+    expect(conditions?.highlight).toEqual('&:is(::selection)')
   })
 
   test('should have a spellingError', () => {
-    expect(conditions.spellingError).toEqual('&:is(::spelling-error)')
+    expect(conditions?.spellingError).toEqual('&:is(::spelling-error)')
   })
 
   test('should have a grammarError', () => {
-    expect(conditions.grammarError).toEqual('&:is(::grammar-error)')
+    expect(conditions?.grammarError).toEqual('&:is(::grammar-error)')
   })
 
   test('should have a pagePalette', () => {
-    expect(conditions.pagePalette).toEqual('&:is([data-palette=page])')
+    expect(conditions?.pagePalette).toEqual('&:is([data-palette=page])')
   })
 
   test('should have an actionPalette', () => {
-    expect(conditions.actionPalette).toEqual('&:is([data-palette=action])')
+    expect(conditions?.actionPalette).toEqual('&:is([data-palette=action])')
   })
 
   test('should have a secondaryActionPalette', () => {
-    expect(conditions.secondaryActionPalette).toEqual(
+    expect(conditions?.secondaryActionPalette).toEqual(
       '&:is([data-palette=secondaryAction])',
     )
   })
 
   test('should have an infoPalette', () => {
-    expect(conditions.infoPalette).toEqual('&:is([data-palette=info])')
+    expect(conditions?.infoPalette).toEqual('&:is([data-palette=info])')
   })
 
   test('should have a successPalette', () => {
-    expect(conditions.successPalette).toEqual('&:is([data-palette=success])')
+    expect(conditions?.successPalette).toEqual('&:is([data-palette=success])')
   })
 
   test('should have a warningPalette', () => {
-    expect(conditions.warningPalette).toEqual('&:is([data-palette=warning])')
+    expect(conditions?.warningPalette).toEqual('&:is([data-palette=warning])')
   })
 
   test('should have a dangerPalette', () => {
-    expect(conditions.dangerPalette).toEqual('&:is([data-palette=danger])')
+    expect(conditions?.dangerPalette).toEqual('&:is([data-palette=danger])')
   })
 
   test('should have a page', () => {
-    expect(conditions.page).toEqual('&:is([data-type=page], [data-type=loading])')
+    expect(conditions?.page).toEqual('&:is([data-type=page], [data-type=loading])')
   })
 
   test('should have a action', () => {
-    expect(conditions.action).toEqual('&:is([data-type=action])')
+    expect(conditions?.action).toEqual('&:is([data-type=action])')
   })
 
   test('should have a secondaryAction', () => {
-    expect(conditions.secondaryAction).toEqual('&:is([data-type=secondaryAction])')
+    expect(conditions?.secondaryAction).toEqual('&:is([data-type=secondaryAction])')
   })
 
   test('should have a info', () => {
-    expect(conditions.info).toEqual('&:is([data-type=info])')
+    expect(conditions?.info).toEqual('&:is([data-type=info])')
   })
 
   test('should have a success', () => {
-    expect(conditions.success).toEqual('&:is([data-type=success])')
+    expect(conditions?.success).toEqual('&:is([data-type=success])')
   })
 
   test('should have a warning', () => {
-    expect(conditions.warning).toEqual('&:is([data-type=warning])')
+    expect(conditions?.warning).toEqual('&:is([data-type=warning])')
   })
 
   test('should have a danger', () => {
-    expect(conditions.danger).toEqual('&:is([data-type=danger], [data-type=error])')
+    expect(conditions?.danger).toEqual('&:is([data-type=danger], [data-type=error])')
   })
 
   test('should have a isComplete', () => {
-    expect(conditions.isComplete).toEqual(
+    expect(conditions?.isComplete).toEqual(
       '&:is([data-complete=true], [data-state=complete])',
     )
   })
 
   test('should have a today', () => {
-    expect(conditions.today).toEqual('&:is([data-today=true], [data-date=today])')
+    expect(conditions?.today).toEqual('&:is([data-today=true], [data-date=today])')
   })
 
   test('should have a pastDay', () => {
-    expect(conditions.pastDay).toEqual('&:is([data-past-day=true], [data-date=past])')
+    expect(conditions?.pastDay).toEqual('&:is([data-past-day=true], [data-date=past])')
   })
 
   test('should have an inRange', () => {
-    expect(conditions.inRange).toEqual('&:is([data-in-range])')
+    expect(conditions?.inRange).toEqual('&:is([data-in-range])')
   })
 
   test('should have a startRange', () => {
-    expect(conditions.startRange).toEqual('&:is([data-range-start])')
+    expect(conditions?.startRange).toEqual('&:is([data-range-start])')
   })
 
   test('should have an endRange', () => {
-    expect(conditions.endRange).toEqual('&:is([data-range-end])')
+    expect(conditions?.endRange).toEqual('&:is([data-range-end])')
   })
 
   test('should have a horizontal orientation', () => {
-    expect(conditions.horizontal).toEqual('&:is([data-orientation=horizontal])')
+    expect(conditions?.horizontal).toEqual('&:is([data-orientation=horizontal])')
   })
 
   test('should have a vertical orientation', () => {
-    expect(conditions.vertical).toEqual('&:is([data-orientation=vertical])')
+    expect(conditions?.vertical).toEqual('&:is([data-orientation=vertical])')
   })
 
   test('should have a button', () => {
-    expect(conditions.button).toEqual('& :where([data-scope=button])')
+    expect(conditions?.button).toEqual('& :where([data-scope=button])')
   })
 
   test('should have an iconButton', () => {
-    expect(conditions.iconButton).toEqual('& :where([data-scope=icon-button])')
+    expect(conditions?.iconButton).toEqual('& :where([data-scope=icon-button])')
   })
 
   test('should have a menuTrigger', () => {
-    expect(conditions.menuTrigger).toEqual(
+    expect(conditions?.menuTrigger).toEqual(
       '& :where([data-scope=menu][data-part=trigger])',
     )
   })
 
   test('should have a label', () => {
-    expect(conditions.label).toEqual('& :where([data-part=label])')
+    expect(conditions?.label).toEqual('& :where([data-part=label])')
   })
 
   test('should have a highEmphasis', () => {
-    expect(conditions.highEmphasis).toEqual('&:is([data-emphasis=high])')
+    expect(conditions?.highEmphasis).toEqual('&:is([data-emphasis=high])')
   })
 
   test('should have a subtleEmphasis', () => {
-    expect(conditions.subtleEmphasis).toEqual('&:is([data-emphasis=subtle])')
+    expect(conditions?.subtleEmphasis).toEqual('&:is([data-emphasis=subtle])')
   })
 
   test('should have a lowEmphasis', () => {
-    expect(conditions.lowEmphasis).toEqual('&:is([data-emphasis=low])')
+    expect(conditions?.lowEmphasis).toEqual('&:is([data-emphasis=low])')
   })
 
   test('should have a paused state', () => {
-    expect(conditions.paused).toEqual(
+    expect(conditions?.paused).toEqual(
       '&:is([data-paused], [data-paused=true], [data-state=paused])',
     )
   })
 
   test('should have a reverse state', () => {
-    expect(conditions.reverse).toEqual('&:is([data-reverse], [data-reverse=true])')
+    expect(conditions?.reverse).toEqual('&:is([data-reverse], [data-reverse=true])')
   })
 
   test('should have a sideBottom', () => {
-    expect(conditions.sideBottom).toEqual('&:is([data-side=bottom])')
+    expect(conditions?.sideBottom).toEqual('&:is([data-side=bottom])')
   })
 
   test('should have a sideTop', () => {
-    expect(conditions.sideTop).toEqual('&:is([data-side=top])')
+    expect(conditions?.sideTop).toEqual('&:is([data-side=top])')
   })
 
   test('should have a sideStart', () => {
-    expect(conditions.sideStart).toEqual('&:is([data-side=start])')
+    expect(conditions?.sideStart).toEqual('&:is([data-side=start])')
   })
 
   test('should have a sideEnd', () => {
-    expect(conditions.sideEnd).toEqual('&:is([data-side=end])')
+    expect(conditions?.sideEnd).toEqual('&:is([data-side=end])')
   })
 
   test('should have a dragging state', () => {
-    expect(conditions.dragging).toEqual('&:is([data-dragging])')
+    expect(conditions?.dragging).toEqual('&:is([data-dragging])')
   })
 
   test('should have an autoComplete state', () => {
-    expect(conditions.autoComplete).toEqual(
+    expect(conditions?.autoComplete).toEqual(
       '&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active',
     )
   })

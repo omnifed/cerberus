@@ -28,7 +28,7 @@ describe('closableTag recipe', () => {
   })
 
   test('should have palette variants', () => {
-    expect(closableTag.variants.palette).toMatchObject({ ...actionPalettes, danger })
+    expect(closableTag.variants?.palette).toMatchObject({ ...actionPalettes, danger })
   })
 
   test('should have an outlined usage variant', () => {

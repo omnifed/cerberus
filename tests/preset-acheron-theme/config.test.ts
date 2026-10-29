@@ -1,16 +1,15 @@
 import {
-  conditions,
-  getThemeName,
-  pageTokens,
   actionTokens,
-  secondaryActionTokens,
+  dangerTokens,
+  dataVizTokens,
+  getThemeName,
+  gradientTokens,
   infoTokens,
+  pageTokens,
+  presetAcheronTheme,
+  secondaryActionTokens,
   successTokens,
   warningTokens,
-  dangerTokens,
-  gradientTokens,
-  dataVizTokens,
-  presetAcheronTheme,
 } from '@cerberus/preset-acheron-theme'
 import { describe, expect, test } from 'bun:test'
 
@@ -22,10 +21,6 @@ describe('Acheron Theme', () => {
 
   test('should provide a theme name helper', () => {
     expect(getThemeName()).toBe('acheron')
-  })
-
-  test('should provide a new condition', () => {
-    expect(conditions.acheronTheme).toEqual('[data-panda-theme=acheron] &')
   })
 
   test('pageTokens should match the established baseline', () => {

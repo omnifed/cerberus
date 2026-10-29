@@ -23,7 +23,7 @@ describe('gradientTag recipe', () => {
   })
 
   test('should have gradient variants', () => {
-    expect(gradientTag.variants.gradient).toMatchObject(createGradientVariants())
+    expect(gradientTag.variants?.gradient).toMatchObject(createGradientVariants())
   })
 
   test('should have an outlined usage variant', () => {

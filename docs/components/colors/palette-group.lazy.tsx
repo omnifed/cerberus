@@ -1,16 +1,11 @@
 'use client'
 
-import {
-  getTokenNameFromPath,
-  SemTokenResultVal,
-  SemTokensResult,
-  TokenVal,
-} from '@/lib/design-system'
+import { getTokenNameFromPath, SemTokenResultVal } from '@/lib/design-system'
 import { Box, Grid, GridItem, VStack } from '@/styled-system/jsx'
 import { For, Text, useThemeContext } from '@cerberus-design/react'
 import type { Sentiment } from '@cerberus/tokens'
 import { memo } from 'react'
-import { getPaletteTokens, resolveHexValue } from './helpers'
+import { getPaletteTokens } from './helpers'
 import { HexValue } from './hex-value'
 import { PrimitiveBinding } from './primitive-binding'
 

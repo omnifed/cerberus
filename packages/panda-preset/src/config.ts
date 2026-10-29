@@ -57,16 +57,16 @@ export function createCerberusConfig(options?: Config): Config {
       if (typeof preset === 'string') return acc
 
       const isPromise = preset instanceof Promise
-      const usabledPreset = isPromise ? await preset : preset
+      const usablePreset = isPromise ? await preset : preset
 
-      if (usabledPreset.staticCss?.themes) {
-        mergedStaticCssThemes.push(...usabledPreset.staticCss.themes)
+      if (usablePreset.staticCss?.themes) {
+        mergedStaticCssThemes.push(...usablePreset.staticCss.themes)
       }
-      if (usabledPreset.staticCss?.css?.length) {
-        mergedStaticCssCss.push(...usabledPreset.staticCss.css)
+      if (usablePreset.staticCss?.css?.length) {
+        mergedStaticCssCss.push(...usablePreset.staticCss.css)
       }
-      if (usabledPreset.themes) {
-        return { ...acc, ...usabledPreset.themes }
+      if (usablePreset.themes) {
+        return { ...acc, ...usablePreset.themes }
       }
       return acc
     },

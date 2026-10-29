@@ -56,7 +56,7 @@ describe('utilities', () => {
 
     expect(cerbGradient).toBeDefined()
     expect(cerbGradient?.className).toEqual('gradient')
-    expect(cerbGradient.globalVars).toMatchObject({
+    expect(cerbGradient?.globalVars).toMatchObject({
       '--gradient-dir': { syntax: '*', inherits: false },
       '--gradient-bg-start': { syntax: '<color>', inherits: false },
       '--gradient-bg-end': { syntax: '<color>', inherits: false },
