@@ -1,4 +1,9 @@
-import { getSemanticTokens, getTokenByPath, TokenVal } from '@/lib/design-system'
+import {
+  getSemanticTokens,
+  getTokenByPath,
+  SemTokenResultVal,
+  TokenVal,
+} from '@/lib/design-system'
 import { TokenPath } from '@/styled-system/types'
 import type { RawThemes, Sentiment } from '@cerberus/tokens'
 
@@ -24,14 +29,14 @@ export type SpecValue = {
 export function getPaletteTokens(
   theme: RawThemes | string,
   palette: Sentiment | string,
-): TokenVal[] {
+): SemTokenResultVal[] {
   const tokens = getSemanticTokens()
-  const uniqueTokens = new Map<string, TokenVal>()
+  const uniqueTokens = new Map<string, SemTokenResultVal>()
   const prefix = `colors.${palette}.`
 
-  tokens.entries.forEach((tok) => {
-    if (tok.startsWith(prefix)) {
-      uniqueTokens.set(tok, { ...tokens.results[tok], key: tok as TokenPath })
+  tokens.entries.forEach((key) => {
+    if (key.startsWith(prefix)) {
+      uniqueTokens.set(key, { ...tokens.results[key], key: key as TokenPath })
     }
   })
 

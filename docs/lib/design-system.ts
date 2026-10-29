@@ -56,25 +56,10 @@ export function getSemanticTokens(): SemTokensResult {
   })
   return keys.reduce((acc, prev) => {
     const val: TokenVal = data.tokens[prev as keyof (typeof data)['tokens']]
+    const raw: RawTokenVal | null =
+      data.values.find((tok) => tok.token === prev) ?? null
     acc.entries = [...acc.entries, prev]
-    acc.results[prev] = val
-    return acc
-  }, result)
-}
-
-/**
- * Get all primitive tokens
- */
-export function getPrimitiveTokens(): SemTokensResult {
-  const result: SemTokensResult = { entries: [], results: {} }
-  const keys = data.paths.filter((key) => {
-    const val: TokenVal = data.tokens[key as keyof (typeof data)['tokens']]
-    return val?.category === 'colors' && !val?.semantic
-  })
-  return keys.reduce((acc, prev) => {
-    const val: TokenVal = data.tokens[prev as keyof (typeof data)['tokens']]
-    acc.entries = [...acc.entries, prev]
-    acc.results[prev] = val
+    acc.results[prev] = { ...val, raw }
     return acc
   }, result)
 }
@@ -103,6 +88,13 @@ export function sortSizeVariants<T>(variants: T[]): T[] {
 
 // Types
 
+export type RawTokenVal = {
+  token: string // "colors.action.bg.active"
+  value: string // #000000
+  condition?: string // _dark
+  refs?: string[] // "colors.brand.70"
+}
+
 export type TokenVal = {
   category: string // colors, shadows, etc.
   source: number
@@ -115,5 +107,7 @@ export type TokenVal = {
 
 export type SemTokensResult = {
   entries: string[]
-  results: Record<string, TokenVal>
+  results: Record<string, SemTokenResultVal>
 }
+
+export type SemTokenResultVal = TokenVal & { raw: RawTokenVal | null }

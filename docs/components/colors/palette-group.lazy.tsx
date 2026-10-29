@@ -1,6 +1,11 @@
 'use client'
 
-import { getTokenNameFromPath, TokenVal } from '@/lib/design-system'
+import {
+  getTokenNameFromPath,
+  SemTokenResultVal,
+  SemTokensResult,
+  TokenVal,
+} from '@/lib/design-system'
 import { Box, Grid, GridItem, VStack } from '@/styled-system/jsx'
 import { For, Text, useThemeContext } from '@cerberus-design/react'
 import type { Sentiment } from '@cerberus/tokens'
@@ -43,7 +48,7 @@ function PaletteGroupEl(props: PaletteGroupProps) {
 }
 
 type SwatchProps = {
-  token: TokenVal
+  token: SemTokenResultVal
 }
 
 function Swatch(props: SwatchProps) {
@@ -66,7 +71,7 @@ function Swatch(props: SwatchProps) {
           {getTokenNameFromPath(token.key!)}
         </Text>
         <PrimitiveBinding reference={token.originalValue} />
-        <HexValue value={resolveHexValue(token.originalValue)} />
+        <HexValue value={token.raw?.value ?? ''} />
       </VStack>
     </GridItem>
   )

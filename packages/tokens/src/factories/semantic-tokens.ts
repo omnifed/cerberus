@@ -22,7 +22,22 @@ export function createSemanticToken(
   const darkToken = _formatTokenValue(token.valuesByMode[darkMode])
   const lighToken = _formatTokenValue(token.valuesByMode[lightMode])
 
+  // v3 Note: Remove this check
+  const oldGroups = [
+    'page',
+    'action',
+    'secondaryAction',
+    'info',
+    'success',
+    'warning',
+    'danger',
+    'dataViz',
+  ]
+  const group: string = token.name.split('.').shift()
+  const deprecated: boolean = oldGroups.includes(group)
+
   return {
+    deprecated,
     description: token.description,
     value: {
       base: darkToken,

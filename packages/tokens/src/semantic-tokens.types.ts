@@ -1,3 +1,4 @@
+import type { SemanticToken as PandaSemanticToken } from '@pandacss/types'
 import type { Simplify } from './types'
 
 // [sentiment?]-[usage]-[prominence?]-[interaction?]
@@ -77,19 +78,12 @@ export type PandaSelectors<T extends string, V> = {
 
 export type ModeSelectors = PandaSelectors<Modes, string>
 
-export type Token = Simplify<
-  {
-    readonly base: string
-  } & ModeSelectors
->
+export type Token = Simplify<ModeSelectors> & SemanticToken
 
 /**
  * The semantic token options of a color.
  */
-export type SemanticToken = {
-  description?: string
-  value: Token
-}
+export type SemanticToken = PandaSemanticToken
 
 export type SentimentConfig = {
   [key in Sentiment]?: {
