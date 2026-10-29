@@ -63,6 +63,23 @@ export function getSemanticTokens(): SemTokensResult {
 }
 
 /**
+ * Get all primitive tokens
+ */
+export function getPrimitiveTokens(): SemTokensResult {
+  const result: SemTokensResult = { entries: [], results: {} }
+  const keys = data.paths.filter((key) => {
+    const val: TokenVal = data.tokens[key as keyof (typeof data)['tokens']]
+    return val?.category === 'colors' && !val?.semantic
+  })
+  return keys.reduce((acc, prev) => {
+    const val: TokenVal = data.tokens[prev as keyof (typeof data)['tokens']]
+    acc.entries = [...acc.entries, prev]
+    acc.results[prev] = val
+    return acc
+  }, result)
+}
+
+/**
  * Helper to sort size-related variants in order from the raw design-system.json reference.
  */
 export function sortSizeVariants<T>(variants: T[]): T[] {

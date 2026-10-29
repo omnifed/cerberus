@@ -18,14 +18,6 @@ export type SpecValue = {
 }
 
 /**
- * @deprecated no longer necessary
- */
-export function getThemeData(theme: RawThemes | string) {
-  console.log('getThemeData', theme)
-  // return themesData.data.find((t) => t.name === theme)
-}
-
-/**
  * Dynamically filters the semantic tokens array for a specific palette prefix.
  * Deduplicates tokens since the spec generator can output duplicates.
  */
