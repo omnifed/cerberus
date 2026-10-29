@@ -1,4 +1,4 @@
-import { defineTokens } from '@pandacss/dev'
+import { defineTokens } from '@pandacss/dev/define'
 
 export const easings = defineTokens.easings({
   pulse: { value: 'cubic-bezier(0.4, 0.0, 0.6, 1.0)' },

@@ -1,4 +1,6 @@
-export const conditions = {
+import { Config, defineConditions } from '@pandacss/dev/define'
+
+export const conditions: Config['conditions'] = defineConditions({
   system: '.system &',
 
   // visual states
@@ -107,4 +109,4 @@ export const conditions = {
   success: '&:is([data-type=success])',
   warning: '&:is([data-type=warning])',
   danger: '&:is([data-type=danger], [data-type=error])',
-}
+})

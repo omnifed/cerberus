@@ -7,7 +7,7 @@ import type { Tokens } from '@pandacss/types'
  * @module
  */
 
-const fonts = {
+const fonts: Tokens['fonts'] = {
   display: {
     description: 'Primary font reserved for display headings',
     value: 'var(--font-display, var(--font-poppins, sans-serif))',
@@ -22,7 +22,7 @@ const fonts = {
   },
 }
 
-const shadows = {
+const shadows: Tokens['shadows'] = {
   sm: {
     value: {
       offsetX: 0,
@@ -52,7 +52,7 @@ const shadows = {
   },
 }
 
-const zIndex = {
+const zIndex: Tokens['zIndex'] = {
   hide: {
     description: 'Used for when you need to hide elements in the layer stack',
     value: -1,

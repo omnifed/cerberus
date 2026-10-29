@@ -1,5 +1,5 @@
 import { type GradientValue, getGradients } from '@cerberus/tokens'
-import type { Config } from '@pandacss/dev'
+import { defineUtility, type Config } from '@pandacss/dev'
 import type { PropertyConfig } from '@pandacss/types'
 import { assignGradientVars, createFocusRing } from './helpers'
 
@@ -9,103 +9,65 @@ import { assignGradientVars, createFocusRing } from './helpers'
  * we'll have to define the utility config in the same file.
  */
 
-export type CustomUtilityConfig<K extends string> = {
-  [key in K]: PropertyConfig
-}
-
-export const mxi: CustomUtilityConfig<'mxi'> = {
-  mxi: {
-    className: 'margin-inline-start-end',
-    values: 'spacing',
-    transform(value: string) {
-      return {
-        marginInlineStart: value,
-        marginInlineEnd: value,
-      }
-    },
+export const size = defineUtility({
+  className: 'size',
+  values: 'sizing',
+  transform(value: string) {
+    return {
+      height: value,
+      width: value,
+    }
   },
-}
+})
 
-export const pxi: CustomUtilityConfig<'pxi'> = {
-  pxi: {
-    className: 'padding-inline-start-end',
-    values: 'spacing',
-    transform(value: string) {
-      return {
-        paddingInlineStart: value,
-        paddingInlineEnd: value,
-      }
-    },
+const gradient = defineUtility({
+  className: 'gradient',
+  shorthand: 'grad',
+  values: [...getGradients(), 'none'],
+  globalVars: {
+    '--gradient-dir': { syntax: '*', inherits: false },
+    '--gradient-bg-start': { syntax: '<color>', inherits: false },
+    '--gradient-bg-end': { syntax: '<color>', inherits: false },
+    '--graident-fg': { syntax: '<color>', inherits: false },
   },
-}
+  transform(value: GradientValue | 'progress' | 'complete' | 'none', { token }) {
+    const vars = assignGradientVars(value, token)
 
-export const size: CustomUtilityConfig<'size'> = {
-  size: {
-    className: 'size',
-    values: 'sizing',
-    transform(value: string) {
-      return {
-        height: value,
-        width: value,
-      }
-    },
+    if (value === 'none') {
+      return { backgroundImage: 'initial' }
+    }
+
+    return {
+      ...vars,
+      backgroundImage:
+        'linear-gradient(var(--gradient-dir), var(--gradient-bg-start), var(--gradient-bg-end))',
+      color: 'var(--gradient-fg)',
+    }
   },
-}
+})
 
-const gradient: CustomUtilityConfig<'gradient'> = {
-  gradient: {
-    className: 'gradient',
-    shorthand: 'grad',
-    values: [...getGradients(), 'none'],
-    globalVars: {
-      '--gradient-dir': { syntax: '*', inherits: false },
-      '--gradient-bg-start': { syntax: '<color>', inherits: false },
-      '--gradient-bg-end': { syntax: '<color>', inherits: false },
-      '--graident-fg': { syntax: '<color>', inherits: false },
-    },
-    transform(value: GradientValue | 'progress' | 'complete' | 'none', { token }) {
-      const vars = assignGradientVars(value, token)
-
-      if (value === 'none') {
-        return { backgroundImage: 'initial' }
-      }
-
-      return {
-        ...vars,
-        backgroundImage:
-          'linear-gradient(var(--gradient-dir), var(--gradient-bg-start), var(--gradient-bg-end))',
-        color: 'var(--gradient-fg)',
-      }
-    },
+const borderGradient = defineUtility({
+  className: 'border-gradient',
+  shorthand: 'borderGrad',
+  values: getGradients(),
+  transform(value: GradientValue, { token }) {
+    return {
+      backgroundImage: `conic-gradient(${token('colors.page.surface.initial')} 0 0), linear-gradient(to right, ${token(`colors.gradient.${value}.start`)}, ${token(`colors.gradient.${value}.end`)})`,
+      color: token(`colors.page.text.initial`),
+    }
   },
-}
-
-const borderGradient: CustomUtilityConfig<'borderGradient'> = {
-  borderGradient: {
-    className: 'border-gradient',
-    shorthand: 'borderGrad',
-    values: getGradients(),
-    transform(value: GradientValue, { token }) {
-      return {
-        backgroundImage: `conic-gradient(${token('colors.page.surface.initial')} 0 0), linear-gradient(to right, ${token(`colors.gradient.${value}.start`)}, ${token(`colors.gradient.${value}.end`)})`,
-        color: token(`colors.page.text.initial`),
-      }
-    },
-  },
-}
+})
 
 export const utilities: Config['utilities'] = {
   extend: {
-    // These are no longer neccessary as [m/p]x utilities now do this by default
-    ...mxi,
-    ...pxi,
+    size,
+    gradient,
+    borderGradient,
 
-    ...size,
-    ...gradient,
-    ...borderGradient,
-
-    focusVisibleRing: createFocusRing('&:is(:focus-visible, [data-focus-visible])'),
-    focusRingColor: {
+    focusVisibleRing: defineUtility(
+      createFocusRing('&:is(:focus-visible, [data-focus-visible])'),
+    ),
+    focusRingColor: defineUtility({
       values: 'colors',
       transform(value: string, { utils }) {
         const prop = '--focus-ring-color'
@@ -117,20 +79,20 @@ export const utilities: Config['utilities'] = {
           [prop]: `var(${cssVar}, ${mix.color})`,
         }
       },
-    },
-    focusRingOffset: {
+    }),
+    focusRingOffset: defineUtility({
       values: 'spacing',
       transform: (v: string) => ({ '--focus-ring-offset': v }),
-    },
-    focusRingWidth: {
+    }),
+    focusRingWidth: defineUtility({
       values: 'borderWidths',
       property: 'outlineWidth',
       transform: (v: string) => ({ '--focus-ring-width': v }),
-    },
-    focusRingStyle: {
+    }),
+    focusRingStyle: defineUtility({
       values: 'borderStyles',
       property: 'outlineStyle',
       transform: (v: string) => ({ '--focus-ring-style': v }),
-    },
+    }),
   },
 }

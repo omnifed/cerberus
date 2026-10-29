@@ -6,8 +6,6 @@ import type {
   Token,
 } from '@pandacss/types'
 
-export type { definePattern } from './patterns'
-
 /**
  * Create a type object of key value pairs based on the argument provided.
  */
