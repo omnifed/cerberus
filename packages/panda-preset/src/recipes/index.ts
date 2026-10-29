@@ -37,7 +37,7 @@ import { tabs } from './slots/tabs'
 import { toast } from './slots/toast'
 import { tooltip } from './slots/tooltip'
 
-// DEPRECATED: remove in v2
+// v2 Note: Remove deprecated recipes
 import { fieldMessage } from './fieldMessage'
 import { input } from './slots/input'
 import { modal } from './slots/modal'

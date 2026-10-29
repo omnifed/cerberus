@@ -1,5 +1,5 @@
 import { defineConfig, type Config } from '@pandacss/dev'
-import { CssRule, Preset } from '@pandacss/types'
+import type { CssRule, Preset } from '@pandacss/types'
 
 /**
  * This module contains the Cerberus configuration options.

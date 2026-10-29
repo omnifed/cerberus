@@ -1,5 +1,6 @@
 import { createPrimitiveRadii, createPrimitiveSpacing } from '@cerberus/tokens'
-import { defineTokens, Tokens } from '@pandacss/dev'
+import { defineTokens } from '@pandacss/dev'
+import type { Tokens } from '@pandacss/types'
 
 /**
  * This module contains the tokens used in the main theme.
