@@ -1,4 +1,5 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { focusStates, formStates } from '../shared/states'
 
 const toggleTransitions = {

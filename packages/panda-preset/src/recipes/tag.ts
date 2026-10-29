@@ -1,6 +1,6 @@
 import { defineRecipe } from '@pandacss/dev'
 import type { RecipeConfig, RecipeVariantRecord } from '@pandacss/types'
-import { nonActionPalettes, secondaryAction } from './shared/palettes'
+import { nonActionPalettes } from './shared/palettes'
 import { base, outlined, shapeVariants } from './shared/tag.base'
 
 /**

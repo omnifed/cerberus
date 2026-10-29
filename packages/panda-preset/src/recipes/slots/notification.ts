@@ -1,8 +1,9 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
-import { statePalettes, DANGER, INFO, SUCCESS, WARNING } from '../shared/palettes'
-import { focusStates } from '../shared/states'
-import { iconButton } from '../iconButton'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { button } from '../button'
+import { iconButton } from '../iconButton'
+import { DANGER, INFO, statePalettes, SUCCESS, WARNING } from '../shared/palettes'
+import { focusStates } from '../shared/states'
 
 /**
  * This module contains the notification recipe.

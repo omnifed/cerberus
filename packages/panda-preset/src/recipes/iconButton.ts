@@ -1,8 +1,4 @@
-import {
-  defineRecipe,
-  type RecipeConfig,
-  type RecipeVariantRecord,
-} from '@pandacss/dev'
+import { defineRecipe } from '@pandacss/dev'
 import {
   buttonBase,
   buttonCompoundVariants,
@@ -12,6 +8,7 @@ import {
   outlinedUsage,
   textUsage,
 } from './shared/button.base'
+import type { RecipeConfig, RecipeVariantRecord } from '@pandacss/types'
 
 /**
  * This module contains the iconButton recipe.

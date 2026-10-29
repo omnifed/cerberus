@@ -1,7 +1,8 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { selectAnatomy } from '@ark-ui/react'
-import { focusStates, formStates } from '../shared/states'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { label } from '../label'
+import { focusStates, formStates } from '../shared/states'
 
 /**
  * This module contains the select recipe.

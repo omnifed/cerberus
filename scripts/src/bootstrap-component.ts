@@ -71,7 +71,7 @@ async function main() {
     }
 
     // 1. Create Recipe File
-    const recipeContent = `import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+    const recipeContent = `import { defineSlotRecipe,  } from '@pandacss/dev'
 import { ${camel}Anatomy } from '@ark-ui/react'
 
 /**

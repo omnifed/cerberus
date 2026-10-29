@@ -1,4 +1,5 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { modalBase, modalHeading, modalIconBase } from '../shared/modal.base'
 
 /**
