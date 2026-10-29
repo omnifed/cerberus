@@ -12,6 +12,7 @@ const eslintConfig = defineConfig([
     'build/**',
     'next-env.d.ts',
     'styled-system/**',
+    'node_modules/**',
   ]),
 ])
 

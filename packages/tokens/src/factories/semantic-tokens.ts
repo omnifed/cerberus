@@ -33,7 +33,7 @@ export function createSemanticToken(
     'danger',
     'dataViz',
   ]
-  const group: string = token.name.split('.').shift()
+  const group: string = String(token.name.split('.').shift())
   const deprecated: boolean = oldGroups.includes(group)
 
   return {

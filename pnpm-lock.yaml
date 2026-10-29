@@ -482,6 +482,9 @@ importers:
       '@pandacss/dev':
         specifier: catalog:pandacss
         version: 2.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.11.3)(postcss@8.5.30)
+      '@pandacss/types':
+        specifier: catalog:pandacss
+        version: 2.4.0
       '@types/react':
         specifier: catalog:jsx
         version: 19.3.0
@@ -493,7 +496,7 @@ importers:
         version: 6.0.2
       '@vitejs/plugin-react':
         specifier: catalog:jsx
-        version: 6.1.2(babel-plugin-react-compiler@1.0.0)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1))
+        version: 6.1.2(babel-plugin-react-compiler@1.0.0)(vite@8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1))
       globby:
         specifier: catalog:jsx
         version: 16.2.4
@@ -508,10 +511,10 @@ importers:
         version: link:../../styled-system
       vite:
         specifier: catalog:jsx
-        version: 8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1)
+        version: 8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1)
       vite-plugin-dts:
         specifier: catalog:jsx
-        version: 5.1.2(esbuild@0.25.12)(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1))
+        version: 5.1.2(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1))
 
   packages/figma:
     devDependencies:
@@ -656,6 +659,9 @@ importers:
       '@pandacss/dev':
         specifier: catalog:pandacss
         version: 2.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.11.3)(postcss@8.5.30)
+      '@pandacss/types':
+        specifier: catalog:pandacss
+        version: 2.4.0
       '@types/react':
         specifier: catalog:jsx
         version: 19.3.0
@@ -667,7 +673,7 @@ importers:
         version: 6.0.2
       '@vitejs/plugin-react':
         specifier: catalog:jsx
-        version: 6.1.2(babel-plugin-react-compiler@1.0.0)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1))
+        version: 6.1.2(babel-plugin-react-compiler@1.0.0)(vite@8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1))
       globby:
         specifier: catalog:jsx
         version: 16.2.4
@@ -682,10 +688,10 @@ importers:
         version: link:../../styled-system
       vite:
         specifier: catalog:jsx
-        version: 8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1)
+        version: 8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1)
       vite-plugin-dts:
         specifier: catalog:jsx
-        version: 5.1.2(esbuild@0.25.12)(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1))
+        version: 5.1.2(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1))
 
   packages/signals:
     devDependencies:
@@ -697,7 +703,7 @@ importers:
         version: 6.0.2
       '@vitejs/plugin-react':
         specifier: catalog:jsx
-        version: 6.1.2(babel-plugin-react-compiler@1.0.0)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1))
+        version: 6.1.2(babel-plugin-react-compiler@1.0.0)(vite@8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1))
       globby:
         specifier: catalog:jsx
         version: 16.2.4
@@ -706,10 +712,10 @@ importers:
         version: 19.3.1
       vite:
         specifier: catalog:jsx
-        version: 8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1)
+        version: 8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1)
       vite-plugin-dts:
         specifier: catalog:jsx
-        version: 5.1.2(esbuild@0.25.12)(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1))
+        version: 5.1.2(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1))
 
   packages/tokens:
     devDependencies:
@@ -7036,10 +7042,10 @@ snapshots:
       next: 16.3.6(@babel/core@7.29.7(supports-color@7.2.0))(@types/node@26.6.5)(babel-plugin-react-compiler@1.0.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react: 19.3.1
 
-  '@vitejs/plugin-react@6.1.2(babel-plugin-react-compiler@1.0.0)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1))':
+  '@vitejs/plugin-react@6.1.2(babel-plugin-react-compiler@1.0.0)(vite@8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1)
     optionalDependencies:
       babel-plugin-react-compiler: 1.0.0
 
@@ -10617,7 +10623,7 @@ snapshots:
       unist-util-is: 6.0.1
       unist-util-visit-parents: 6.1.0
 
-  unplugin-dts@1.1.2(esbuild@0.25.12)(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1)):
+  unplugin-dts@1.1.2(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1)):
     dependencies:
       '@rollup/pluginutils': 5.4.0
       '@volar/typescript': 2.4.28(typescript@7.0.2)
@@ -10630,9 +10636,8 @@ snapshots:
       typescript: 7.0.2
       unplugin: 2.3.11
     optionalDependencies:
-      esbuild: 0.25.12
       rolldown: 1.2.15
-      vite: 8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -10717,11 +10722,11 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plugin-dts@5.1.2(esbuild@0.25.12)(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1)):
+  vite-plugin-dts@5.1.2(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1)):
     dependencies:
-      unplugin-dts: 1.1.2(esbuild@0.25.12)(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1))
+      unplugin-dts: 1.1.2(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1))
     optionalDependencies:
-      vite: 8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - '@rspack/core'
       - '@vue/language-core'
@@ -10731,7 +10736,7 @@ snapshots:
       - typescript
       - webpack
 
-  vite@8.3.5(@types/node@26.6.5)(esbuild@0.25.12)(terser@5.51.2)(yaml@2.9.1):
+  vite@8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
@@ -10740,7 +10745,6 @@ snapshots:
       tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 26.6.5
-      esbuild: 0.25.12
       fsevents: 2.3.3
       terser: 5.51.2
       yaml: 2.9.1

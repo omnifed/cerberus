@@ -60,21 +60,21 @@ export function assignGradientVars(
     case 'progress':
       return {
         '--gradient-dir': 'to right',
-        '--gradient-bg-start': token('colors.dataViz.progress.start'),
-        '--gradient-bg-end': token('colors.dataViz.progress.end'),
+        '--gradient-bg-start': token('colors.dataViz.progress.start') as string,
+        '--gradient-bg-end': token('colors.dataViz.progress.end') as string,
       }
     case 'complete':
       return {
         '--gradient-dir': 'to right',
-        '--gradient-bg-start': token('colors.dataViz.progress.complete'),
-        '--gradient-bg-end': token('colors.dataViz.progress.complete'),
+        '--gradient-bg-start': token('colors.dataViz.progress.complete') as string,
+        '--gradient-bg-end': token('colors.dataViz.progress.complete') as string,
       }
     default:
       return {
         '--gradient-dir': 'to bottom left',
-        '--gradient-bg-start': token(`colors.gradient.${value}.start`),
-        '--gradient-bg-end': token(`colors.gradient.${value}.end`),
-        '--gradient-fg': token(`colors.gradient.${value}.text`),
+        '--gradient-bg-start': token(`colors.gradient.${value}.start`) as string,
+        '--gradient-bg-end': token(`colors.gradient.${value}.end`) as string,
+        '--gradient-fg': token(`colors.gradient.${value}.text`) as string,
       }
   }
 }

@@ -1,4 +1,8 @@
-import { GradientTagProps, TagProps } from '@cerberus-design/react'
+import {
+  type FilledTagProps,
+  type GradientTagProps,
+  TagProps,
+} from '@cerberus-design/react'
 import { type StrictNonNullable } from '@cerberus/panda-preset'
 import data from 'styled-system/specs/design-system.json'
 
@@ -12,13 +16,13 @@ export const gradTagGradients = gradTagVariants.gradient.values as StrictNonNull
 export const tagData = data.recipes.tag
 export const tagVariants = tagData.variants
 
-export const tagShapes = tagVariants.shape.values as TagProps['shape'][]
-export const tagPalettes = tagVariants.palette.values as TagProps['palette'][]
+export const tagShapes = tagVariants.shape.values as FilledTagProps['shape'][]
+export const tagPalettes = tagVariants.palette.values as FilledTagProps['palette'][]
 export const tagUsages = tagVariants.usage.values as TagProps['usage'][]
 
 type VariantProps = {
-  usage: 'filled' | 'outlined'
-  shape: 'pill' | 'square'
+  usage: FilledTagProps['usage']
+  shape: FilledTagProps['shape']
 }
 
 export const variants: VariantProps[] = [

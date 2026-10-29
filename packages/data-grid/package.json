@@ -62,6 +62,7 @@
   "devDependencies": {
     "@cerberus/panda-preset": "workspace:*",
     "@pandacss/dev": "catalog:pandacss",
+    "@pandacss/types": "catalog:pandacss",
     "@types/react": "catalog:jsx",
     "@types/react-dom": "catalog:jsx",
     "@typescript/typescript6": "catalog:jsx",
