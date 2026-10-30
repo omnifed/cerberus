@@ -34,7 +34,7 @@ export default createCerberusConfig({
 
   globalVars: {
     '--indent-offset': '0.5em',
-    '--nav-height': '3.75rem',
+    '--nav-height': '4.75rem',
     '--shiki-background': 'var(--cerberus-colors-page-surface-100)',
     '--shiki-foreground': 'var(--cerberus-colors-page-text-initial)',
     '--shiki-token-keyword': 'var(--cerberus-colors-secondary-action-text-initial)',

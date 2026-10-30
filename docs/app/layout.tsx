@@ -63,7 +63,7 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
       </head>
 
       <AppThemeProvider cachedTheme={defaultTheme} cachedMode={defaultColorMode}>
-        <cerberus.body minW="18.75rem" h="full" suppressHydrationWarning>
+        <cerberus.body minW="48rem" h="full" suppressHydrationWarning>
           <CerberusConfig>
             <GlobalNav />
 
