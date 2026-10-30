@@ -22,7 +22,7 @@ export function NavLogoContent() {
         aria-label="Go to homepage"
         className={css({
           display: 'inline-block',
-          pxi: '2',
+          px: '2',
           rounded: 'sm',
           w: '3.25rem',
           _focusVisible: focusStates._focusVisible,

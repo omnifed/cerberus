@@ -45,7 +45,7 @@ describe('gradientTag recipe', () => {
     expect(gradientTag.variants?.shape.pill).toMatchObject({
       fontWeight: 400,
       h: '1.5rem',
-      pxi: '2',
+      px: '2',
       rounded: 'full',
       textStyle: 'label-sm',
     })
@@ -55,7 +55,7 @@ describe('gradientTag recipe', () => {
     expect(gradientTag.variants?.shape.square).toMatchObject({
       fontWeight: 600,
       h: '1.625rem',
-      pxi: '3',
+      px: '3',
       rounded: 'md',
       textStyle: 'label-md',
     })

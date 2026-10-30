@@ -23,7 +23,7 @@ export const tooltip: Partial<SlotRecipeConfig> = defineSlotRecipe({
     content: {
       bg: tooltipBg,
       color: 'page.text.inverse',
-      pxi: '3',
+      px: '3',
       py: 2,
       rounded: 'sm',
       maxH: '6rem',

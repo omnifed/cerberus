@@ -4,7 +4,6 @@ import { conditions } from './conditions'
 import { globalCss } from './globalCss'
 import { globalVars } from './globalVars'
 import { patterns } from './patterns'
-import { createStaticRecipeList } from './scripts'
 import { baseTheme } from './theme'
 import { utilities } from './utilities'
 
@@ -12,8 +11,6 @@ import { utilities } from './utilities'
  * This module contains the Cerberus preset and configuration options.
  * @module
  **/
-
-const staticRecipes = createStaticRecipeList()
 
 const basePreset: Preset = definePreset({
   name: '@cerberus/preset-base',
@@ -32,7 +29,6 @@ const basePreset: Preset = definePreset({
   },
 
   staticCss: {
-    themes: presetCerberusTheme.staticCss?.themes,
     css: [
       {
         properties: {
@@ -40,7 +36,8 @@ const basePreset: Preset = definePreset({
         },
       },
     ],
-    recipes: staticRecipes,
+    recipes: '*',
+    themes: presetCerberusTheme.staticCss?.themes,
   },
 })
 

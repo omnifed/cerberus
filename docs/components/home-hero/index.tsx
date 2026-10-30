@@ -19,20 +19,20 @@ export function HomeHero() {
           columns: 2,
           gap: '3xl',
           gridTemplateColumns: '1.7fr 1fr',
-          pxi: '16',
+          px: '16',
         },
       })}
     >
       <div
         className={gridItem({
           bgColor: 'page.surface.100',
-          mxi: '2',
-          pxi: '6',
+          mx: '2',
+          px: '6',
           py: 8,
           rounded: 'lg',
           zIndex: 'sticky',
           md: {
-            pxi: '8',
+            px: '8',
             py: 8,
           },
         })}

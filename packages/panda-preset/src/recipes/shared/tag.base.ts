@@ -13,14 +13,14 @@ export const shapeVariants = {
   pill: {
     fontWeight: 400,
     h: '1.5rem',
-    pxi: '2',
+    px: '2',
     rounded: 'full',
     textStyle: 'label-sm',
   },
   square: {
     fontWeight: 600,
     h: '1.625rem',
-    pxi: '3',
+    px: '3',
     rounded: 'md',
     textStyle: 'label-md',
   },

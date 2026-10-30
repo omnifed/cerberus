@@ -1,7 +1,7 @@
-import { defineGlobalStyles } from '@pandacss/dev'
+import { defineGlobalStyles, defineStyles } from '@pandacss/dev'
 import type { GlobalStyleObject } from '@pandacss/types'
 
-const markStyles = {
+const markStyles = defineStyles({
   clip: 'rect(1px, 1px, 1px, 1px)',
   clipPath: 'inset(100%)',
   height: '1px',
@@ -9,7 +9,7 @@ const markStyles = {
   position: 'absolute',
   whiteSpace: 'nowrap',
   width: '1px',
-}
+})
 
 export const globalCss: GlobalStyleObject = defineGlobalStyles({
   html: {

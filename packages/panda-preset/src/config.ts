@@ -38,7 +38,6 @@ const baseConfig: Config = defineConfig({
  * import { createCerberusConfig } from '@cerberus/panda-preset'
  *
  * export default createCerberusConfig({
- *   clean: true,
  *   exclude: [],
  * })
  * ```

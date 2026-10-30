@@ -44,8 +44,7 @@ describe('combobox recipe', () => {
   })
 
   test('should have base.label styles', () => {
-    const labelStyles = (label as unknown as { base: Record<string, string> })
-      .base
+    const labelStyles = (label as unknown as { base: Record<string, string> }).base
     expect(combobox.base?.label).toMatchObject({
       ...labelStyles,
       alignItems: 'center',
@@ -71,7 +70,7 @@ describe('combobox recipe', () => {
       outline: 0,
       minW: 9,
       position: 'relative',
-      pxi: 'md',
+      px: 'md',
       rounded: 'md',
       textStyle: 'body-sm',
       transitionDuration: 'normal',
@@ -203,7 +202,7 @@ describe('combobox recipe', () => {
       flexShrink: 0,
       gap: 'md',
       h: 'var(--combobox-item-height)',
-      pxi: 'md',
+      px: 'md',
       rounded: 'sm',
       textStyle: 'body-sm',
       transitionDuration: 'fast',
@@ -223,7 +222,7 @@ describe('combobox recipe', () => {
   test('should have base.itemGroupLabel styles', () => {
     expect(combobox.base?.itemGroupLabel).toMatchObject({
       color: 'page.text.initial',
-      pxi: 'md',
+      px: 'md',
       py: '0.5rem',
       textStyle: 'label-sm',
       userSelect: 'none',

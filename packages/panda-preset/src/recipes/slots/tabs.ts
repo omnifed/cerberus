@@ -60,7 +60,7 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
       h: '2.75rem',
       justifyContent: 'center',
       position: 'relative',
-      pxi: '4',
+      px: '4',
       zIndex: 'base',
       _motionSafe: {
         transition: 'all 200ms ease-in-out',

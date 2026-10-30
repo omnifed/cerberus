@@ -159,7 +159,7 @@ describe('button recipe', () => {
 
   test('should have a rounded shape variant', () => {
     expect(button.variants?.shape.rounded).toMatchObject({
-      pxi: '8',
+      px: '8',
       rounded: 'full',
     })
   })

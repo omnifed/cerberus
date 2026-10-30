@@ -7,7 +7,7 @@ export const input = {
   borderColor: 'action.border.100',
   color: 'page.text.initial',
   h: 'full',
-  pxi: '4',
+  px: '4',
   rounded: 'sm',
   transitionProperty: 'border-color',
   transitionDuration: '200ms',

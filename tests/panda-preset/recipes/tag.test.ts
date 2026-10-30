@@ -77,7 +77,7 @@ describe('tag recipe', () => {
     expect(tag.variants?.shape.pill).toMatchObject({
       fontWeight: 400,
       h: '1.5rem',
-      pxi: '2',
+      px: '2',
       rounded: 'full',
       textStyle: 'label-sm',
     })
@@ -87,7 +87,7 @@ describe('tag recipe', () => {
     expect(tag.variants?.shape.square).toMatchObject({
       fontWeight: 600,
       h: '1.625rem',
-      pxi: '3',
+      px: '3',
       rounded: 'md',
       textStyle: 'label-md',
     })

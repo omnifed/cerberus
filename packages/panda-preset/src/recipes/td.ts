@@ -28,15 +28,15 @@ export const td: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     size: {
       sm: {
         h: '2rem',
-        pxi: '3',
+        px: '3',
       },
       md: {
         h: '3rem',
-        pxi: '3',
+        px: '3',
       },
       lg: {
         h: '3.5rem',
-        pxi: '4',
+        px: '4',
       },
     },
   },

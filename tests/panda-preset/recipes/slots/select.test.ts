@@ -48,7 +48,7 @@ describe('select recipe', () => {
       outline: 0,
       minW: 9,
       position: 'relative',
-      pxi: 'md',
+      px: 'md',
       rounded: 'sm',
       textStyle: 'body-sm',
       transitionDuration: 'normal',
@@ -131,7 +131,7 @@ describe('select recipe', () => {
       flexShrink: 0,
       h: 'var(--select-item-height)',
       justifyContent: 'space-between',
-      pxi: 'md',
+      px: 'md',
       rounded: 'sm',
       textStyle: 'body-sm',
       transitionDuration: 'fast',
@@ -153,7 +153,7 @@ describe('select recipe', () => {
   test('should have a itemGroupLabel style', () => {
     expect(select.base?.itemGroupLabel).toMatchObject({
       color: 'page.text.initial',
-      pxi: 'md',
+      px: 'md',
       py: '0.5rem',
       textStyle: 'label-sm',
       userSelect: 'none',

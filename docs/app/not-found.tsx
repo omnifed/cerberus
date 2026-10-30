@@ -10,7 +10,7 @@ export default function NotFound() {
       className={vstack({
         justify: 'center',
         h: '100dvh',
-        pxi: '6',
+        px: '6',
         textAlign: 'center',
       })}
     >

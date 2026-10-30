@@ -11,9 +11,7 @@ describe('fileUploader recipe', () => {
 
   test('should set the metadata', () => {
     expect(fileUploader.className).toBe('file-uploader')
-    expect(fileUploader.description).toBe(
-      'The styles for FileUploader components',
-    )
+    expect(fileUploader.description).toBe('The styles for FileUploader components')
     expect(fileUploader.slots).toMatchObject([
       'root',
       'dropzone',
@@ -175,7 +173,7 @@ describe('fileUploader recipe', () => {
 
   test('should have a icon style', () => {
     expect(base.icon).toMatchObject({
-      mxi: 'auto',
+      mx: 'auto',
       p: '2',
     })
   })
