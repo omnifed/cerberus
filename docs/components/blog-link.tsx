@@ -59,7 +59,7 @@ export async function BlogLink(props: Props) {
             </HStack>
           </VStack>
 
-          <VStack alignItems="flexStart" paddingBlock="lg" pxi="md" w="full">
+          <VStack alignItems="flexStart" paddingBlock="lg" px="md" w="full">
             <HStack justify="space-between">
               <Text color="page.text.100" textStyle="label-sm">
                 {props.date}
