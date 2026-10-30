@@ -1,5 +1,6 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { tabsAnatomy } from '@ark-ui/react'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { action, secondaryAction } from '../shared/palettes'
 import { focusStates, formStates } from '../shared/states'
 
@@ -59,7 +60,7 @@ export const tabs: Partial<SlotRecipeConfig> = defineSlotRecipe({
       h: '2.75rem',
       justifyContent: 'center',
       position: 'relative',
-      pxi: '4',
+      px: '4',
       zIndex: 'base',
       _motionSafe: {
         transition: 'all 200ms ease-in-out',

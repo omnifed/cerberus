@@ -21,15 +21,13 @@ export const querySearch = createQuery(
     }
 
     const formattedFilter = !activeFilter ? 'all' : activeFilter
-    const options =
+    const _options =
       formattedFilter === 'all' ? {} : { filters: { section: formattedFilter } }
 
     const search = await pagefindInstance.debouncedSearch(searchTerm)
     const topResults = await Promise.all(
       search.results.slice(0, 5).map((r: any) => r.data()),
     )
-
-    console.log({ topResults, searchTerm, options })
 
     return topResults
   },

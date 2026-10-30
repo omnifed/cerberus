@@ -1,4 +1,5 @@
-import allTokens from '@/styled-system/specs/tokens.json'
+import { getTokenByPath } from '@/lib/design-system'
+import type { TokenPath } from '@/styled-system/types'
 import { Box } from 'styled-system/jsx'
 
 interface SpacingRowProps {
@@ -6,20 +7,15 @@ interface SpacingRowProps {
 }
 
 export default function SpacingVisual(props: SpacingRowProps) {
-  const tokens = allTokens.data.find((token) => token.type === 'spacing')
-  const values = tokens?.values ?? []
-
-  const style = values.find((value) => value.name === props.value)?.cssVar ?? 'initial'
-
+  const token = getTokenByPath(`spacing.${props.value}` as TokenPath)
+  if (!token) return null
   return (
     <Box
       aria-hidden="true"
       bgColor="page.bg.200"
-      flexShrink="0"
       h="8"
       rounded="md"
-      textStyle="body-sm"
-      style={{ width: style }}
+      style={{ width: `var(${token.cssVar})` }}
     />
   )
 }

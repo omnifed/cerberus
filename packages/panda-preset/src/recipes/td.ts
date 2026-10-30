@@ -1,8 +1,5 @@
-import {
-  defineRecipe,
-  type RecipeConfig,
-  type RecipeVariantRecord,
-} from '@pandacss/dev'
+import { defineRecipe } from '@pandacss/dev'
+import type { RecipeConfig, RecipeVariantRecord } from '@pandacss/types'
 
 /**
  * This module contains the td recipe.
@@ -14,6 +11,7 @@ import {
  * @definition [Table docs](https://cerberus.digitalu.design/react/table)
  */
 export const td: RecipeConfig<RecipeVariantRecord> = defineRecipe({
+  deprecated: true,
   className: 'td',
   description: 'Styles for the Td component.',
 
@@ -30,15 +28,15 @@ export const td: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     size: {
       sm: {
         h: '2rem',
-        pxi: '3',
+        px: '3',
       },
       md: {
         h: '3rem',
-        pxi: '3',
+        px: '3',
       },
       lg: {
         h: '3.5rem',
-        pxi: '4',
+        px: '4',
       },
     },
   },

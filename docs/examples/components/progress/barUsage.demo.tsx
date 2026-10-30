@@ -1,9 +1,9 @@
 import { Stack, VStack } from '@/styled-system/jsx'
 import { For, ProgressBar, ProgressBarProps, Tag } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'progressBar')?.variants
-  .usage ?? []) as ProgressBarProps['usage'][]
+const variants = data.slotRecipes.progressBar.variants.usage
+  .values as ProgressBarProps['usage'][]
 
 export function BarUsageDemo() {
   return (

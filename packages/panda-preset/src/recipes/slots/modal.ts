@@ -1,4 +1,5 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { modalBase, modalHeading, modalIconBase } from '../shared/modal.base'
 
 /**
@@ -16,6 +17,7 @@ export const modal: Partial<SlotRecipeConfig> = defineSlotRecipe({
   description: 'The styles for Modal components',
   slots: ['dialog', 'icon', 'heading', 'description'],
   jsx: ['ConfirmModal', 'PromptModal'],
+  deprecated: true,
 
   base: {
     dialog: {

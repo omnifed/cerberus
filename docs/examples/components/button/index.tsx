@@ -7,6 +7,7 @@ import { SizeDemo } from './size.demo'
 import { GroupDemo } from './group.demo'
 import { AttachedDemo } from './attached.demo'
 import { CustomDemo } from './custom.demo'
+import { PaletteDemo } from './palette.demo'
 
 export const DEMOS = {
   basic: {
@@ -15,6 +16,7 @@ export const DEMOS = {
   icon: {
     preview: <IconDemo />,
   },
+  palette: { preview: <PaletteDemo /> },
   pending: {
     preview: <PendingDemo />,
   },

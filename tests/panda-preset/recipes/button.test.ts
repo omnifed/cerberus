@@ -15,7 +15,7 @@ describe('button recipe', () => {
       appearance: 'none',
       borderWidth: '1px',
       borderColor: 'transparent',
-      cursor: 'button',
+      cursor: 'pointer',
       display: 'inline-flex',
       gap: 'sm',
       justifyContent: 'center',
@@ -159,7 +159,7 @@ describe('button recipe', () => {
 
   test('should have a rounded shape variant', () => {
     expect(button.variants?.shape.rounded).toMatchObject({
-      pxi: '8',
+      px: '8',
       rounded: 'full',
     })
   })

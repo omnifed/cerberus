@@ -1,8 +1,5 @@
-import {
-  defineRecipe,
-  type RecipeConfig,
-  type RecipeVariantRecord,
-} from '@pandacss/dev'
+import { defineRecipe } from '@pandacss/dev'
+import type { RecipeConfig, RecipeVariantRecord } from '@pandacss/types'
 
 /**
  * This module contains the fieldMessage recipe.
@@ -17,6 +14,7 @@ import {
 export const fieldMessage: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'field-message',
   description: 'WCAG Level AAA compliant input description styles.',
+  deprecated: true,
 
   base: {
     color: 'page.text.200',

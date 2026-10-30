@@ -1,5 +1,6 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { menuAnatomy } from '@ark-ui/react'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { focusStates, formStates } from '../shared/states'
 
 /**
@@ -56,7 +57,7 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
       gap: 1,
       outline: 0,
       position: 'relative',
-      pxi: 'md',
+      px: 'md',
       py: '0.75rem',
       rounded: 'sm',
       textAlign: 'start',
@@ -73,7 +74,7 @@ export const menu: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     itemGroupLabel: {
       color: 'page.text.initial',
-      pxi: 'md',
+      px: 'md',
       py: '0.5rem',
       textStyle: 'label-sm',
       userSelect: 'none',

@@ -1,10 +1,9 @@
 import { presetCerberusTheme } from '@cerberus/preset-cerberus-theme'
 import { definePreset, type Preset } from '@pandacss/dev'
-import pandaPreset from '@pandacss/preset-panda'
 import { conditions } from './conditions'
 import { globalCss } from './globalCss'
+import { globalVars } from './globalVars'
 import { patterns } from './patterns'
-import { createStaticRecipeList } from './scripts'
 import { baseTheme } from './theme'
 import { utilities } from './utilities'
 
@@ -13,14 +12,14 @@ import { utilities } from './utilities'
  * @module
  **/
 
-const staticRecipes = createStaticRecipeList()
-
 const basePreset: Preset = definePreset({
   name: '@cerberus/preset-base',
 
-  presets: [pandaPreset, presetCerberusTheme],
+  presets: ['@pandacss/preset-base', '@pandacss/preset-panda', presetCerberusTheme],
 
   globalCss,
+  globalVars,
+
   conditions,
   utilities,
   patterns,
@@ -30,46 +29,19 @@ const basePreset: Preset = definePreset({
   },
 
   staticCss: {
-    themes: presetCerberusTheme.staticCss?.themes,
     css: [
       {
         properties: {
-          colorPalette: [
-            'page',
-            'action',
-            'secondary-action',
-            'secondaryAction',
-            'info',
-            'success',
-            'warning',
-            'danger',
-          ],
-          layerStyle: ['*'],
-          focusRing: ['*'],
+          colorPalette: ['*'],
         },
       },
     ],
-    recipes: staticRecipes,
+    recipes: '*',
+    themes: presetCerberusTheme.staticCss?.themes,
   },
 })
 
-export interface PresetOptions {
-  /**
-   * The fontFamily to use for Display textStyles.
-   * @default 'Poppins, sans-serif'
-   */
-  displayFont?: string
-  /**
-   * The fontFamily to use for non-display textStyles.
-   * @default 'Poppins, sans-serif'
-   */
-  sansFont?: string
-  /**
-   * The fontFamily to use for Mono textStyles.
-   * @default 'Recursive, monospace'
-   */
-  monoFont?: string
-}
+export type PresetOptions = {}
 
 /**
  * A function to easily define a PandaCSS preset with Cerberus settings.
@@ -90,14 +62,8 @@ export interface PresetOptions {
  * })
  * ```
  */
-export function createCerberusPreset(options?: PresetOptions): Preset {
+export function createCerberusPreset(_options?: PresetOptions): Preset {
   return definePreset({
     ...basePreset,
-
-    globalVars: {
-      '--font-display': options?.displayFont ?? 'Poppins, sans-serif',
-      '--font-sans': options?.sansFont ?? 'Poppins, sans-serif',
-      '--font-mono': options?.monoFont ?? 'Recursive, monospace',
-    },
   })
 }

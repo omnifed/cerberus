@@ -1,7 +1,7 @@
 export const modalBase = {
   alignSelf: 'safe center',
   bgColor: 'page.surface.100',
-  mxi: 'auto',
+  mx: 'auto',
   opacity: '0',
   rounded: 'md',
   shadow: 'lg',
@@ -23,7 +23,7 @@ export const modalBase = {
 
 export const modalIconBase = {
   color: 'colorPalette.text.200',
-  mxi: 'auto',
+  mx: 'auto',
   p: '2',
 }
 

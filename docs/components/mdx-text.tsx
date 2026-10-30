@@ -33,9 +33,11 @@ export const mdxText = {
           backgroundColor: 'var(--shiki-background)',
           borderRadius: '4px',
           color: 'var(--shiki-token-keyword)',
-          letterSpacing: '0.01em',
+          fontVariationSettings: "'slnt' -3, 'CASL' 1, 'CRSV' 0, 'MONO' 0",
+          letterSpacing: 'initial!',
           paddingInline: '0.3rem',
           paddingBlock: '0.2rem',
+          textStyle: 'mono-sm',
         },
       }}
       {...props}
@@ -62,8 +64,10 @@ export const mdxText = {
         '& > code:not(.code)': {
           bgColor: 'page.surface.100',
           color: 'success.text.100',
-          pxi: 'sm',
-          py: 'sm',
+          fontVariationSettings: "'slnt' -3, 'CASL' 1, 'CRSV' 0, 'MONO' 0",
+          letterSpacing: 'initial!',
+          px: 'sm',
+          py: 'xs',
           textStyle: 'mono-xs',
           rounded: 'md',
         },

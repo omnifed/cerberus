@@ -22,7 +22,7 @@ This file serves as the recipe for the untitled component.
 Use this template to provide the contents of the file:
 
 ```typescript
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { defineSlotRecipe } from '@pandacss/dev'
 import {} from '@ark-ui/react'
 
 /**

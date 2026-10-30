@@ -1,9 +1,5 @@
 import type { SystemStyleObject } from '@pandacss/types'
-import {
-  getGradients,
-  type GradientValue,
-  type Sentiment,
-} from '@cerberus/tokens'
+import { getGradients, type GradientValue, type Sentiment } from '@cerberus/tokens'
 
 export type RecipePalette<K extends Sentiment[]> = K[]
 
@@ -41,8 +37,7 @@ export function getSlotRecipePalettes<
       )
       return acc
     },
-    initialValue ??
-      ({} as Record<P, Record<S, Record<'colorPalette', Sentiment>>>),
+    initialValue ?? ({} as Record<P, Record<S, Record<'colorPalette', Sentiment>>>),
   )
 }
 
@@ -50,19 +45,8 @@ export function getSlotRecipePalettes<
  * A helper to create gradient palette variants
  * @returns An Object with the gradient name as key and the gradient value as
  * the value.
- * @example
- * ```tsx
- * {
- *  'amphiaraus-light': {
- *    gradient: 'amphiaraus-light',
- *  },
- * }
- * ```
  */
-export function createGradientVariants(): Record<
-  GradientValue,
-  SystemStyleObject
-> {
+export function createGradientVariants(): Record<GradientValue, SystemStyleObject> {
   return getGradients().reduce((acc, value) => {
     return {
       ...acc,
@@ -77,16 +61,6 @@ export function createGradientVariants(): Record<
  * A helper to create gradient palette variants
  * @returns An Object with the gradient name as key and the gradient value as
  * the value.
- * @example
- * ```tsx
- * {
- *  'amphiaraus-light': {
- *    root: {
- *     gradient: 'amphiaraus-light',
- *   },
- *  },
- * }
- * ```
  */
 export function createSlotGradientVariants(): Record<
   GradientValue,

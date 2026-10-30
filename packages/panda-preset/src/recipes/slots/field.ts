@@ -1,5 +1,6 @@
 import { fieldAnatomy } from '@ark-ui/react'
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { formStates } from '../shared/states'
 
 /**

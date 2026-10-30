@@ -32,9 +32,7 @@ describe('Tag', () => {
         <Tag palette="danger">it works</Tag>
       </CerberusProvider>,
     )
-    expect(screen.getByText(/it works/i)).toHaveClass(
-      'cerberus-tag--palette_danger',
-    )
+    expect(screen.getByText(/it works/i)).toHaveClass('cerberus-tag--palette_danger')
   })
 
   test('should render an outlined tag', () => {
@@ -43,9 +41,7 @@ describe('Tag', () => {
         <Tag usage="outlined">it works</Tag>
       </CerberusProvider>,
     )
-    expect(screen.getByText(/it works/i)).toHaveClass(
-      'cerberus-tag--usage_outlined',
-    )
+    expect(screen.getByText(/it works/i)).toHaveClass('cerberus-tag--usage_outlined')
   })
 
   test('should render a filled tag', () => {
@@ -54,9 +50,7 @@ describe('Tag', () => {
         <Tag usage="filled">it works</Tag>
       </CerberusProvider>,
     )
-    expect(screen.getByText(/it works/i)).toHaveClass(
-      'cerberus-tag--usage_filled',
-    )
+    expect(screen.getByText(/it works/i)).toHaveClass('cerberus-tag--usage_filled')
   })
 
   test('should render a pill tag', () => {
@@ -65,9 +59,7 @@ describe('Tag', () => {
         <Tag shape="pill">it works</Tag>
       </CerberusProvider>,
     )
-    expect(screen.getByText(/it works/i)).toHaveClass(
-      'cerberus-tag--shape_pill',
-    )
+    expect(screen.getByText(/it works/i)).toHaveClass('cerberus-tag--shape_pill')
   })
 
   test('should render a pill when onClick is provided', () => {
@@ -77,7 +69,7 @@ describe('Tag', () => {
       </CerberusProvider>,
     )
     expect(screen.getByText(/it works/i)).toHaveClass(
-      'cerberus-tag--shape_pill',
+      'cerberus-closable-tag cerberus-closable-tag--palette_secondaryAction cerberus-closable-tag--usage_filled',
     )
   })
 
@@ -87,9 +79,7 @@ describe('Tag', () => {
         <Tag shape="square">it works</Tag>
       </CerberusProvider>,
     )
-    expect(screen.getByText(/it works/i)).toHaveClass(
-      'cerberus-tag--shape_square',
-    )
+    expect(screen.getByText(/it works/i)).toHaveClass('cerberus-tag--shape_square')
   })
 
   test('should render a tag with a close button', async () => {

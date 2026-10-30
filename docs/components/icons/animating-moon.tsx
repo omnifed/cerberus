@@ -14,8 +14,9 @@ export function AnimatingMoonIcon() {
         strokeDashoffset={4}
         strokeLinecap="round"
         strokeLinejoin="round"
+        suppressHydrationWarning
       >
-        <path d="M13 4h1.5M13 4h-1.5M13 4v1.5M13 4v-1.5">
+        <path d="M13 4h1.5M13 4h-1.5M13 4v1.5M13 4v-1.5" suppressHydrationWarning>
           <animate
             id="lineMdMoonRisingAltLoop0"
             fill="freeze"
@@ -23,6 +24,7 @@ export function AnimatingMoonIcon() {
             begin="0.7s;lineMdMoonRisingAltLoop0.begin+6s"
             dur="0.4s"
             values="4;0"
+            suppressHydrationWarning
           ></animate>
           <animate
             fill="freeze"

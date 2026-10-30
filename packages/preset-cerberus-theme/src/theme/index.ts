@@ -4,7 +4,7 @@ import { getThemeName } from '../config'
 import { semanticTokens } from './semantic-tokens/config'
 
 /**
- * This module contains the Acheron theme and configuration options.
+ * This module contains the Cerberus theme and configuration options.
  * @module
  */
 

@@ -1,4 +1,5 @@
 import { css } from '@/styled-system/css'
+import { Center } from '@/styled-system/jsx'
 import { gridItem } from '@/styled-system/patterns'
 import { LogoGithub } from '@carbon/icons-react'
 import { cerberus } from '@cerberus-design/react'
@@ -18,19 +19,21 @@ export function NavLogoContent() {
         },
       })}
     >
-      <Link
-        aria-label="Go to homepage"
-        className={css({
-          display: 'inline-block',
-          pxi: '2',
-          rounded: 'sm',
-          w: '3.25rem',
-          _focusVisible: focusStates._focusVisible,
-        })}
-        href="/"
-      >
-        <CerberusLogo />
-      </Link>
+      <Center>
+        <Link
+          aria-label="Go to homepage"
+          className={css({
+            display: 'inline-block',
+            px: '2',
+            rounded: 'sm',
+            w: '3.25rem',
+            _focusVisible: focusStates._focusVisible,
+          })}
+          href="/"
+        >
+          <CerberusLogo />
+        </Link>
+      </Center>
     </section>
   )
 }

@@ -4,7 +4,7 @@ import { copyFileSync } from 'node:fs'
 import path from 'node:path'
 import dts from 'vite-plugin-dts'
 import { defineConfig } from 'vite'
-import pkg from './package.json'
+import pkg from './package.json' with { type: 'json' }
 
 const allDependencies = [
   ...Object.keys(pkg.dependencies ?? {}),
@@ -43,9 +43,7 @@ export default defineConfig({
         }
 
         // Handle all package.json dependencies and their subpaths
-        return allDependencies.some(
-          (dep) => id === dep || id.startsWith(`${dep}/`),
-        )
+        return allDependencies.some((dep) => id === dep || id.startsWith(`${dep}/`))
       },
       output: [
         {
@@ -75,13 +73,9 @@ export default defineConfig({
 const renderBanner = (fileName: string) => {
   const file = path.parse(fileName)
   if (
-    [
-      'portal',
-      'frame',
-      'client-only',
-      'focus-trap',
-      'download-trigger',
-    ].includes(file.name)
+    ['portal', 'frame', 'client-only', 'focus-trap', 'download-trigger'].includes(
+      file.name,
+    )
   ) {
     return `'use client';`
   }

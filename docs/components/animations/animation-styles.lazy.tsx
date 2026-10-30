@@ -1,28 +1,22 @@
 'use client'
 
+import { getVariantKeys } from '@/lib/design-system'
 import { Center, HStack, Square, VStack } from '@/styled-system/jsx'
 import { Button, For } from '@cerberus-design/react'
 import { useSignal } from '@cerberus-design/signals'
-import animationStylesData from 'styled-system/specs/animation-styles.json'
 
-const defaultOption = animationStylesData.data[0].name
+const variants = getVariantKeys('animationStyles')
 
 export default function AnimationStyles() {
-  const [activeOption, setActiveOption] = useSignal<string>(defaultOption)
+  const [activeOption, setActiveOption] = useSignal<string>(variants[0])
 
   return (
     <VStack alignItems="flex-start" gap="lg" w="full">
       <HStack gap="md" flexWrap="wrap" w="full">
-        <For each={animationStylesData.data}>
-          {(option) => (
-            <Button
-              key={option.name}
-              onClick={() => {
-                setActiveOption(option.name)
-              }}
-              size="sm"
-            >
-              {option.name}
+        <For each={variants}>
+          {(name) => (
+            <Button key={name} onClick={() => setActiveOption(name)} size="sm">
+              {name}
             </Button>
           )}
         </For>
@@ -31,12 +25,12 @@ export default function AnimationStyles() {
       <Square
         data-animation={activeOption}
         data-placement="top"
+        animationDuration="slow"
+        animationFillMode="both"
+        animationTimingFunction="ease-in-out"
         bgColor="page.surface.100"
         size="16rem"
         css={{
-          animationDuration: 'slow',
-          animationFillMode: 'both',
-          animationTimingFunction: 'ease-in-out',
           '&[data-animation="emphasized-fade-in"]': {
             animationStyle: 'emphasized-fade-in',
           },

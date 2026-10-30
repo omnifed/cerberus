@@ -1,10 +1,10 @@
 import { AppThemeProvider } from '@/components/app-theme-provider'
 import CerberusConfig from '@/components/cerberus-config'
 import { GlobalNav } from '@/components/global-nav'
-import { getCodeTheme } from '@/lib/deprecated-colors'
 import seoConfig from '@/seo.config'
 import { cx } from '@/styled-system/css'
-import { cerberus, NotificationCenter } from '@cerberus-design/react'
+import { cerberus } from '@/styled-system/jsx'
+import { NotificationCenter } from '@cerberus-design/react'
 import { Analytics } from '@vercel/analytics/react'
 import { Metadata } from 'next'
 import { Poppins, Recursive } from 'next/font/google'
@@ -14,26 +14,30 @@ import './globals.css'
 
 const poppins = Poppins({
   display: 'swap',
+  preload: true,
   subsets: ['latin'],
   weight: ['400', '600', '700'],
-  variable: '--font-poppins',
+  variable: '--font-body',
 })
 const recursive = Recursive({
+  axes: ['CASL', 'MONO', 'CRSV', 'slnt'],
   display: 'swap',
   subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-recursive',
+  variable: '--font-mono',
 })
 
 // Blocks the browser paint until the cookies are parsed and applied to the HTML tag
 // Required to keep our site SSG
 const themeScript = `
   try {
+    var modeClasses = ['light', 'dark', 'system']
     var cookie = document.cookie;
     var theme = cookie.match(/(?:^|; )theme=([^;]*)/)?.[1] || 'cerberus';
     var mode = cookie.match(/(?:^|; )colorMode=([^;]*)/)?.[1] || 'light';
-    document.documentElement.setAttribute('data-panda-theme', theme);
-    document.documentElement.setAttribute('data-color-mode', mode);
+    var html = document.documentElement;
+    html.setAttribute('data-panda-theme', theme);
+    html.classList.remove(...modeClasses)
+    html.classList.add(mode)
   } catch (e) {}
 `
 
@@ -44,33 +48,22 @@ export const metadata: Metadata = seoConfig
 interface RootProps {}
 
 export default async function RootLayout(props: PropsWithChildren<RootProps>) {
-  // const { themeName, colorModeName } = await getCachedTheme()
-  const defaultThemeName = 'cerberus'
-  const defaultColorModeName = 'light'
+  const defaultTheme = 'cerberus'
+  const defaultColorMode = 'light'
 
   return (
     <html
-      className={cx(poppins.variable, recursive.variable)}
       lang="en"
-      data-panda-theme={defaultThemeName}
-      data-color-mode={defaultColorModeName}
-      data-theme={getCodeTheme(defaultColorModeName, defaultThemeName)}
+      className={cx(poppins.variable, recursive.variable, defaultColorMode)}
+      data-panda-theme={defaultTheme}
       suppressHydrationWarning
     >
       <head>
         <Script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
 
-      <cerberus.body
-        css={{
-          minW: '18.75rem',
-          h: 'full',
-        }}
-      >
-        <AppThemeProvider
-          cachedTheme={defaultThemeName}
-          cachedMode={defaultColorModeName}
-        >
+      <AppThemeProvider cachedTheme={defaultTheme} cachedMode={defaultColorMode}>
+        <cerberus.body minW="48rem" h="full" suppressHydrationWarning>
           <CerberusConfig>
             <GlobalNav />
 
@@ -80,15 +73,15 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
 
             <NotificationCenter />
           </CerberusConfig>
-        </AppThemeProvider>
 
-        <Script
-          src="https://context7.com/widget.js"
-          data-library="/omnifed/cerberus"
-          strategy="afterInteractive"
-        />
-        <Analytics />
-      </cerberus.body>
+          <Script
+            src="https://context7.com/widget.js"
+            data-library="/omnifed/cerberus"
+            strategy="afterInteractive"
+          />
+          <Analytics />
+        </cerberus.body>
+      </AppThemeProvider>
     </html>
   )
 }

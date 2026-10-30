@@ -1,3 +1,4 @@
+import type { SemanticToken as PandaSemanticToken } from '@pandacss/types'
 import type { Simplify } from './types'
 
 // [sentiment?]-[usage]-[prominence?]-[interaction?]
@@ -61,28 +62,28 @@ export type RawThemes = 'cerberus' | 'acheron' | 'elysium' | 'oceanus'
 /**
  * The mode option of a Cerberus theme.
  */
-export type Modes = 'lightMode' | 'darkMode'
+export type Modes =
+  | 'light'
+  | 'dark'
+  | 'osDark'
+  | 'osLight'
+  | 'highContrast'
+  | 'lessContrast'
+  | 'moreContrast'
 export type RawModes = 'light' | 'dark' | 'system'
 
 export type PandaSelectors<T extends string, V> = {
-  readonly [K in `_${T}`]: V
+  readonly [K in `_${T}`]?: V
 }
 
 export type ModeSelectors = PandaSelectors<Modes, string>
 
-export type Token = Simplify<
-  {
-    readonly base: string
-  } & ModeSelectors
->
+export type Token = Simplify<ModeSelectors> & SemanticToken
 
 /**
  * The semantic token options of a color.
  */
-export type SemanticToken = {
-  description?: string
-  value: Token
-}
+export type SemanticToken = PandaSemanticToken
 
 export type SentimentConfig = {
   [key in Sentiment]?: {

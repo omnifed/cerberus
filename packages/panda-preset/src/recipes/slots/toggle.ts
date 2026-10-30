@@ -1,4 +1,5 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { focusStates, formStates } from '../shared/states'
 
 const toggleTransitions = {
@@ -23,6 +24,7 @@ const LG_RADII = '0.75rem'
  * Styles for the Toggle component
  */
 export const toggle: Partial<SlotRecipeConfig> = defineSlotRecipe({
+  deprecated: true,
   className: 'toggle',
   description: 'The styles for the Toggle component',
   slots: ['track', 'container', 'input', 'thumb'],

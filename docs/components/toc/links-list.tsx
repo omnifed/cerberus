@@ -23,7 +23,7 @@ export function LinksList({ items, level = 0 }: TableOfContentsProps) {
       pl={level > 0 ? '4' : '0'}
       // Add a subtle border to visualize the nesting depth
       borderLeft={level > 0 ? '1px solid' : 'none'}
-      borderColor="page.border.initial/50"
+      borderLeftColor="page.border.initial/50"
     >
       {items.map((item) => (
         <Box as="li" key={item.title} w="full">

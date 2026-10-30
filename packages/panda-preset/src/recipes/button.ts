@@ -1,8 +1,5 @@
-import {
-  defineRecipe,
-  type RecipeConfig,
-  type RecipeVariantRecord,
-} from '@pandacss/dev'
+import { defineRecipe } from '@pandacss/dev'
+import type { RecipeConfig, RecipeVariantRecord } from '@pandacss/types'
 import {
   buttonCompoundVariants,
   buttonPalettes,
@@ -32,7 +29,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
     appearance: 'none',
     borderWidth: '1px',
     borderColor: 'transparent',
-    cursor: 'button',
+    cursor: 'pointer',
     display: 'inline-flex',
     gap: 'sm',
     justifyContent: 'center',
@@ -71,7 +68,7 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       },
       sharp: sharpRadii,
       rounded: {
-        pxi: '8',
+        px: '8',
         rounded: 'full',
       },
     },

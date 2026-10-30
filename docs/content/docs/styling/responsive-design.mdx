@@ -49,14 +49,8 @@ const breakpoints = {
 
 Cerberus allows you apply the responsive condition directly to a style property, resulting in a more concise syntax:
 
-```diff
-<Text
--   fontWeight="medium"
--   lg={{ fontWeight: 'bold' }}
-+   fontWeight={{ base: 'medium', lg: 'bold' }}
->
-  Text
-</Text>
+```tsx
+<Text fontWeight={{ base: 'medium', lg: 'bold' }}>Text</Text>
 ```
 
 ### The Array syntax
@@ -67,6 +61,7 @@ Cerberus also accepts arrays as values for responsive styles. Pass the correspon
 <Text fontWeight={['medium', undefined, undefined, 'bold']}>Text</Text>
 ```
 
+<br />
 > We're leaving the corresponding values of the unused breakpoints `md` and `lg` as undefined.
 
 ### Targeting a breakpoint range
@@ -81,6 +76,7 @@ Let's say we want to apply styles between the `md` and `xl` breakpoints, we use 
 <Text fontWeight={{ mdToXl: 'bold' }}>Text</Text>
 ```
 
+<br />
 > This text will only be bold in `md`, `lg` and `xl` breakpoints.
 
 ### Targeting a single breakpoint

@@ -1,6 +1,5 @@
 import { type RawThemes } from '@cerberus/tokens'
 import { definePreset, type Preset } from '@pandacss/dev'
-import { conditions } from './conditions'
 import { themes } from './theme/index'
 
 /**
@@ -14,8 +13,6 @@ export function getThemeName(): RawThemes {
 
 export const presetOceanusTheme: Preset = definePreset({
   name: '@cerberus/preset-oceanus-theme',
-
-  conditions,
 
   themes,
 

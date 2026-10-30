@@ -3,10 +3,10 @@
 import { Stack } from '@/styled-system/jsx'
 import { StarFilled, StarHalf } from '@carbon/icons-react'
 import { For, Rating, RatingProps } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'ratingGroup')?.variants
-  .size ?? []) as RatingProps['size'][]
+const variants = data.slotRecipes.ratingGroup.variants.size
+  .values as RatingProps['size'][]
 
 export function SizeDemo() {
   return (

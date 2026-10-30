@@ -1,20 +1,16 @@
 import { Button, ButtonProps, For } from '@cerberus-design/react'
-import { HStack } from 'styled-system/jsx'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'button')?.variants.usage ??
-  []) as ButtonProps['usage'][]
+const variants = data.recipes.button.variants.usage.values as ButtonProps['usage'][]
 
 export function UsageDemo() {
   return (
-    <HStack gap="md">
-      <For each={variants}>
-        {(usage) => (
-          <Button key={usage} usage={usage}>
-            {usage}
-          </Button>
-        )}
-      </For>
-    </HStack>
+    <For each={variants}>
+      {(usage) => (
+        <Button key={usage} usage={usage}>
+          {usage}
+        </Button>
+      )}
+    </For>
   )
 }

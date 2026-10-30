@@ -1,5 +1,6 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { tooltipAnatomy } from '@ark-ui/react'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { focusStates } from '../shared/states'
 
 const tooltipBg = 'page.surface.inverse'
@@ -22,7 +23,7 @@ export const tooltip: Partial<SlotRecipeConfig> = defineSlotRecipe({
     content: {
       bg: tooltipBg,
       color: 'page.text.inverse',
-      pxi: '3',
+      px: '3',
       py: 2,
       rounded: 'sm',
       maxH: '6rem',

@@ -1,5 +1,4 @@
 import {
-  conditions,
   getThemeName,
   pageTokens,
   actionTokens,
@@ -22,10 +21,6 @@ describe('Elysium Theme', () => {
 
   test('should provide a theme name helper', () => {
     expect(getThemeName()).toBe('elysium')
-  })
-
-  test('should provide a new condition', () => {
-    expect(conditions.elysiumTheme).toEqual('[data-panda-theme=elysium] &')
   })
 
   test('pageTokens should match the established baseline', () => {

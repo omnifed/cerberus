@@ -1,6 +1,5 @@
 'use client'
 
-import { getCodeTheme } from '@/lib/deprecated-colors'
 import { PalmTree, SailboatOffshore } from '@carbon/icons-react'
 import {
   Button,
@@ -28,12 +27,11 @@ const icons: Record<RawThemes, ElementType> = {
 }
 
 export function ThemeMenu() {
-  const { mode, theme, updateTheme } = useThemeContext()
+  const { theme, updateTheme } = useThemeContext()
 
   const handleUpdateTheme = async (details: { value: string }) => {
     const newTheme = details.value as ThemeName
     updateTheme(newTheme)
-    document.documentElement.dataset.codeTheme = getCodeTheme(mode, newTheme)
   }
 
   return (

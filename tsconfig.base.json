@@ -4,7 +4,8 @@
     "./docs/app/**/*.mdx",
     "./figma",
     "eslint.config.mjs",
-    "packages/*/tsup.config.ts"
+    "packages/*/tsup.config.ts",
+    "styled-system/**/*"
   ],
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "ESNext"],
@@ -24,6 +25,10 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+
+    "paths": {
+      "styled-system/*": ["./styled-system/*"]
+    }
   }
 }

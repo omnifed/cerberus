@@ -21,6 +21,7 @@ export function CollapsibleProvider(props: PropsWithChildren) {
         borderTop="1px solid"
         borderTopColor="page.border.initial"
         borderBottomRadius="lg"
+        cursor="pointer"
         display="flex"
         justifyContent="center"
         py={{ base: 'md', lg: 'sm' }}

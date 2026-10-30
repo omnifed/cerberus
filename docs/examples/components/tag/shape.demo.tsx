@@ -7,8 +7,8 @@ export function ShapeDemo() {
     <HStack gap="md">
       <For each={tagShapes}>
         {(shape) => (
-          <Tag key={shape} shape={shape}>
-            {shape}
+          <Tag key={String(shape)} shape={shape}>
+            {String(shape)}
           </Tag>
         )}
       </For>
