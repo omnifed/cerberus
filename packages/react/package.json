@@ -34,24 +34,10 @@
   "module": "src/index.ts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
+      "default": "./src/index.ts"
     },
     "./*": {
-      "import": {
-        "types": "./dist/components/*/index.d.ts",
-        "default": "./dist/components/*/index.js"
-      },
-      "require": {
-        "types": "./dist/components/*/index.d.cts",
-        "default": "./dist/components/*/index.cjs"
-      }
+      "default": "./src/components/*/index.ts"
     },
     "./package.json": "./package.json",
     "./panda/*": "./dist/panda/*",
@@ -111,6 +97,73 @@
         "./*": [
           "dist/components/*/index.d.cts"
         ]
+      }
+    },
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.js"
+        },
+        "require": {
+          "types": "./dist/index.d.cts",
+          "default": "./dist/index.cjs"
+        }
+      },
+      "./*": {
+        "import": {
+          "types": "./dist/components/*/index.d.ts",
+          "default": "./dist/components/*/index.js"
+        },
+        "require": {
+          "types": "./dist/components/*/index.d.cts",
+          "default": "./dist/components/*/index.cjs"
+        }
+      },
+      "./package.json": "./package.json",
+      "./panda/*": "./dist/panda/*",
+      "./css": {
+        "types": "./styled-system/css/index.d.ts",
+        "default": "./styled-system/css/index.js"
+      },
+      "./css/*": {
+        "types": "./styled-system/css/*.d.ts",
+        "default": "./styled-system/css/*.js"
+      },
+      "./recipes": {
+        "types": "./styled-system/recipes/index.d.ts",
+        "default": "./styled-system/recipes/index.js"
+      },
+      "./recipes/*": {
+        "types": "./styled-system/recipes/*.d.ts",
+        "default": "./styled-system/recipes/*.js"
+      },
+      "./patterns": {
+        "types": "./styled-system/patterns/index.d.ts",
+        "default": "./styled-system/patterns/index.js"
+      },
+      "./patterns/*": {
+        "types": "./styled-system/patterns/*.d.ts",
+        "default": "./styled-system/patterns/*.js"
+      },
+      "./jsx": {
+        "types": "./styled-system/jsx/index.d.ts",
+        "default": "./styled-system/jsx/index.js"
+      },
+      "./jsx/*": {
+        "types": "./styled-system/jsx/*.d.ts",
+        "default": "./styled-system/jsx/*.js"
+      },
+      "./tokens": {
+        "types": "./styled-system/tokens/index.d.ts",
+        "default": "./styled-system/tokens/index.js"
+      },
+      "./helpers": {
+        "types": "./styled-system/helpers.d.ts",
+        "default": "./styled-system/helpers.js"
+      },
+      "./types": {
+        "types": "./styled-system/types/index.d.ts"
       }
     },
     "access": "public"
