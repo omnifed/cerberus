@@ -5,6 +5,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
   "page": {
     "backdrop": {
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "rgba(49.00000087916851, 45.00000111758709, 46.000001057982445, 0.800000011920929)",
@@ -17,6 +18,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
     },
     "bg": {
       "100": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.80}",
@@ -27,6 +29,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
         },
       },
       "200": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.70}",
@@ -37,6 +40,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
         },
       },
       "300": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.60}",
@@ -47,6 +51,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.90}",
@@ -59,6 +64,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
     },
     "border": {
       "100": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.70}",
@@ -69,6 +75,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
         },
       },
       "200": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.30}",
@@ -79,6 +86,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.50}",
@@ -91,6 +99,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
     },
     "surface": {
       "100": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.90}",
@@ -101,6 +110,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
         },
       },
       "200": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.70}",
@@ -111,6 +121,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
         },
       },
       "300": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.60}",
@@ -121,6 +132,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
         },
       },
       "400": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.50}",
@@ -131,6 +143,7 @@ exports[`Elysium Theme pageTokens should match the established baseline 1`] = `
         },
       },
       "initial": {
+        "deprecated": true,
         "description": 
 "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
 Use for: Page backgrounds"
@@ -144,6 +157,7 @@ Use for: Page backgrounds"
         },
       },
       "inverse": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.5}",
@@ -156,6 +170,7 @@ Use for: Page backgrounds"
     },
     "text": {
       "100": {
+        "deprecated": true,
         "description": "Static text with the least amount of emphasis, like disabled text elements or captions. ",
         "value": {
           "_dark": "{colors.neutral.30}",
@@ -166,6 +181,7 @@ Use for: Page backgrounds"
         },
       },
       "200": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.10}",
@@ -176,6 +192,7 @@ Use for: Page backgrounds"
         },
       },
       "300": {
+        "deprecated": true,
         "description": "High emphasis static text on page, like page headers or section titles. ",
         "value": {
           "_dark": "{colors.neutral.white}",
@@ -186,6 +203,7 @@ Use for: Page backgrounds"
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "The default styling for static text and icons on a page.",
         "value": {
           "_dark": "{colors.neutral.5}",
@@ -196,6 +214,7 @@ Use for: Page backgrounds"
         },
       },
       "inverse": {
+        "deprecated": true,
         "description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "value": {
           "_dark": "{colors.neutral.100}",
@@ -206,6 +225,7 @@ Use for: Page backgrounds"
         },
       },
       "static": {
+        "deprecated": true,
         "description": "For use when a text color will not change between modes",
         "value": {
           "_dark": "{colors.neutral.80}",
@@ -225,6 +245,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
   "action": {
     "bg": {
       "active": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.70}",
@@ -235,6 +256,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
         },
       },
       "hover": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.40}",
@@ -245,6 +267,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.60}",
@@ -257,6 +280,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
     },
     "border": {
       "100": {
+        "deprecated": true,
         "description": "for use on less prominent actionable borders, like input fields etc",
         "value": {
           "_dark": "{colors.neutral.30}",
@@ -267,6 +291,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
         },
       },
       "focus": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.10}",
@@ -277,6 +302,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.20}",
@@ -289,6 +315,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
     },
     "ghost": {
       "active": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.50}",
@@ -299,6 +326,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
         },
       },
       "hover": {
+        "deprecated": true,
         "description": "Hover state of ghost action elements. Pair with text.action.100 to meet accessibility requirements.",
         "value": {
           "_dark": "{colors.neutral.70}",
@@ -309,6 +337,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
@@ -321,6 +350,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
     },
     "navigation": {
       "hover": {
+        "deprecated": true,
         "description": "Text color of hyperlinks throughout the site while hovering",
         "value": {
           "_dark": "{colors.brand.20}",
@@ -331,6 +361,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "Text color of hyperlinks throughout the site. ",
         "value": {
           "_dark": "{colors.neutral.white}",
@@ -341,6 +372,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
         },
       },
       "visited": {
+        "deprecated": true,
         "description": "Text color of hyperlinks throughout the site that have been visited",
         "value": {
           "_dark": "{colors.brand.10}",
@@ -353,6 +385,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
     },
     "text": {
       "100": {
+        "deprecated": true,
         "description": "Text action items that are sitting on a lighter background color, like secondary buttons etc. ",
         "value": {
           "_dark": "{colors.brand.40}",
@@ -363,6 +396,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
         },
       },
       "200": {
+        "deprecated": true,
         "description": "reserved for interactive text, or icons using brand colors. ",
         "value": {
           "_dark": "{colors.neutral.5}",
@@ -373,6 +407,7 @@ exports[`Elysium Theme actionTokens should match the established baseline 1`] = 
         },
       },
       "initial": {
+        "deprecated": true,
         "description": 
 "Text color inside of interactive items using the action palette
 Use for: Buttons (filled, outline). Button icons"
@@ -386,6 +421,7 @@ Use for: Buttons (filled, outline). Button icons"
         },
       },
       "inverse": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.10}",
@@ -396,6 +432,7 @@ Use for: Buttons (filled, outline). Button icons"
         },
       },
       "static": {
+        "deprecated": true,
         "description": "For use when a text color will not change between modes",
         "value": {
           "_dark": "{colors.brand.80}",
@@ -415,6 +452,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
   "secondaryAction": {
     "bg": {
       "active": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.40}",
@@ -425,6 +463,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
         },
       },
       "hover": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.70}",
@@ -435,6 +474,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.90}",
@@ -447,6 +487,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
     },
     "border": {
       "100": {
+        "deprecated": true,
         "description": "for use on less prominent actionable borders, like input fields etc",
         "value": {
           "_dark": "{colors.brand.70}",
@@ -457,6 +498,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.30}",
@@ -469,6 +511,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
     },
     "ghost": {
       "active": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.70}",
@@ -479,6 +522,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
         },
       },
       "hover": {
+        "deprecated": true,
         "description": "Hover state of ghost action elements. Pair with text.secondary-action.100 to meet accessibility requirements.",
         "value": {
           "_dark": "{colors.brand.80}",
@@ -489,6 +533,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
@@ -501,6 +546,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
     },
     "navigation": {
       "hover": {
+        "deprecated": true,
         "description": "Text color of hyperlinks throughout the site while hovering. ",
         "value": {
           "_dark": "{colors.brand.30}",
@@ -511,6 +557,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "Text color of hyperlinks throughout the site. ",
         "value": {
           "_dark": "{colors.brand.50}",
@@ -521,6 +568,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
         },
       },
       "visited": {
+        "deprecated": true,
         "description": "Text color of hyperlinks throughout the site that have been vistited",
         "value": {
           "_dark": "{colors.brand.10}",
@@ -533,6 +581,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
     },
     "text": {
       "100": {
+        "deprecated": true,
         "description": "Text color inside of interactive items and icons that have an inverse background of the initial token. That may need a different style of emphasis. Use case may vary per product.",
         "value": {
           "_dark": "{colors.brand.10}",
@@ -543,6 +592,7 @@ exports[`Elysium Theme secondaryActionTokens should match the established baseli
         },
       },
       "200": {
+        "deprecated": true,
         "description": 
 "Text color inside of interactive items
 Use for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product."
@@ -556,6 +606,7 @@ Use for: Buttons (filled, outline). Button icons that may need a different style
         },
       },
       "initial": {
+        "deprecated": true,
         "description": 
 "Text color inside of interactive items
 Use for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product."
@@ -569,6 +620,7 @@ Use for: Buttons (filled, outline). Button icons that may need a different style
         },
       },
       "static": {
+        "deprecated": true,
         "description": 
 "Text color inside of interactive items
 Use for: Buttons (filled, outline). Button icons that may need a different style of emphasis. Use case may vary per product."
@@ -591,6 +643,7 @@ exports[`Elysium Theme infoTokens should match the established baseline 1`] = `
   "info": {
     "bg": {
       "active": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.50}",
@@ -601,6 +654,7 @@ exports[`Elysium Theme infoTokens should match the established baseline 1`] = `
         },
       },
       "hover": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.90}",
@@ -611,6 +665,7 @@ exports[`Elysium Theme infoTokens should match the established baseline 1`] = `
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.70}",
@@ -623,6 +678,7 @@ exports[`Elysium Theme infoTokens should match the established baseline 1`] = `
     },
     "border": {
       "100": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.70}",
@@ -633,6 +689,7 @@ exports[`Elysium Theme infoTokens should match the established baseline 1`] = `
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.50}",
@@ -645,6 +702,7 @@ exports[`Elysium Theme infoTokens should match the established baseline 1`] = `
     },
     "ghost": {
       "active": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.80}",
@@ -655,6 +713,7 @@ exports[`Elysium Theme infoTokens should match the established baseline 1`] = `
         },
       },
       "hover": {
+        "deprecated": true,
         "description": "Hover state of ghost action elements. Pair with text.info.100 to meet accessibility requirements.",
         "value": {
           "_dark": "{colors.info.90}",
@@ -665,6 +724,7 @@ exports[`Elysium Theme infoTokens should match the established baseline 1`] = `
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
@@ -677,6 +737,7 @@ exports[`Elysium Theme infoTokens should match the established baseline 1`] = `
     },
     "surface": {
       "100": {
+        "deprecated": true,
         "description": 
 "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
 Use for: Page backgrounds"
@@ -690,6 +751,7 @@ Use for: Page backgrounds"
         },
       },
       "200": {
+        "deprecated": true,
         "description": 
 "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
 Use for: Page backgrounds"
@@ -703,6 +765,7 @@ Use for: Page backgrounds"
         },
       },
       "initial": {
+        "deprecated": true,
         "description": 
 "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
 Use for: Page backgrounds"
@@ -718,6 +781,7 @@ Use for: Page backgrounds"
     },
     "text": {
       "100": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.30}",
@@ -728,6 +792,7 @@ Use for: Page backgrounds"
         },
       },
       "200": {
+        "deprecated": true,
         "description": "High emphasis text or icon to indicate an info state or highlight information",
         "value": {
           "_dark": "{colors.info.20}",
@@ -738,6 +803,7 @@ Use for: Page backgrounds"
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "The default styling for static info text and icons within an info palette container",
         "value": {
           "_dark": "{colors.info.10}",
@@ -748,6 +814,7 @@ Use for: Page backgrounds"
         },
       },
       "static": {
+        "deprecated": true,
         "description": "For use when a text color will not change between modes",
         "value": {
           "_dark": "{colors.info.60}",
@@ -767,6 +834,7 @@ exports[`Elysium Theme successTokens should match the established baseline 1`] =
   "success": {
     "bg": {
       "active": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.success.40}",
@@ -777,6 +845,7 @@ exports[`Elysium Theme successTokens should match the established baseline 1`] =
         },
       },
       "hover": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.success.50}",
@@ -787,6 +856,7 @@ exports[`Elysium Theme successTokens should match the established baseline 1`] =
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.success.60}",
@@ -799,6 +869,7 @@ exports[`Elysium Theme successTokens should match the established baseline 1`] =
     },
     "border": {
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.success.50}",
@@ -811,6 +882,7 @@ exports[`Elysium Theme successTokens should match the established baseline 1`] =
     },
     "ghost": {
       "active": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.success.80}",
@@ -821,6 +893,7 @@ exports[`Elysium Theme successTokens should match the established baseline 1`] =
         },
       },
       "hover": {
+        "deprecated": true,
         "description": "Hover state of ghost action elements. Pair with text.success.100 to meet accessibility requirements.",
         "value": {
           "_dark": "{colors.success.90}",
@@ -831,6 +904,7 @@ exports[`Elysium Theme successTokens should match the established baseline 1`] =
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
@@ -843,6 +917,7 @@ exports[`Elysium Theme successTokens should match the established baseline 1`] =
     },
     "surface": {
       "100": {
+        "deprecated": true,
         "description": 
 "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
 Use for: Page backgrounds"
@@ -856,6 +931,7 @@ Use for: Page backgrounds"
         },
       },
       "200": {
+        "deprecated": true,
         "description": 
 "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
 Use for: Page backgrounds"
@@ -869,6 +945,7 @@ Use for: Page backgrounds"
         },
       },
       "initial": {
+        "deprecated": true,
         "description": 
 "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
 Use for: Page backgrounds"
@@ -884,6 +961,7 @@ Use for: Page backgrounds"
     },
     "text": {
       "100": {
+        "deprecated": true,
         "description": "Medium emphasis success text ",
         "value": {
           "_dark": "{colors.success.20}",
@@ -894,6 +972,7 @@ Use for: Page backgrounds"
         },
       },
       "200": {
+        "deprecated": true,
         "description": "Highest emphasis success color",
         "value": {
           "_dark": "{colors.success.10}",
@@ -904,6 +983,7 @@ Use for: Page backgrounds"
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "The default color of body success text within a success colored container. ",
         "value": {
           "_dark": "{colors.success.60}",
@@ -914,6 +994,7 @@ Use for: Page backgrounds"
         },
       },
       "inverse": {
+        "deprecated": true,
         "description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "value": {
           "_dark": "{colors.success.100}",
@@ -924,6 +1005,7 @@ Use for: Page backgrounds"
         },
       },
       "static": {
+        "deprecated": true,
         "description": "For use when a text color will not change between modes",
         "value": {
           "_dark": "{colors.success.70}",
@@ -943,6 +1025,7 @@ exports[`Elysium Theme warningTokens should match the established baseline 1`] =
   "warning": {
     "bg": {
       "active": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.40}",
@@ -953,6 +1036,7 @@ exports[`Elysium Theme warningTokens should match the established baseline 1`] =
         },
       },
       "hover": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.50}",
@@ -963,6 +1047,7 @@ exports[`Elysium Theme warningTokens should match the established baseline 1`] =
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.60}",
@@ -975,6 +1060,7 @@ exports[`Elysium Theme warningTokens should match the established baseline 1`] =
     },
     "border": {
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.20}",
@@ -987,6 +1073,7 @@ exports[`Elysium Theme warningTokens should match the established baseline 1`] =
     },
     "ghost": {
       "active": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.80}",
@@ -997,6 +1084,7 @@ exports[`Elysium Theme warningTokens should match the established baseline 1`] =
         },
       },
       "hover": {
+        "deprecated": true,
         "description": "Hover state of ghost action elements. Pair with text.warning.100 to meet accessibility requirements.",
         "value": {
           "_dark": "{colors.warning.90}",
@@ -1007,6 +1095,7 @@ exports[`Elysium Theme warningTokens should match the established baseline 1`] =
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
@@ -1019,6 +1108,7 @@ exports[`Elysium Theme warningTokens should match the established baseline 1`] =
     },
     "surface": {
       "100": {
+        "deprecated": true,
         "description": 
 "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
 Use for: Page backgrounds"
@@ -1032,6 +1122,7 @@ Use for: Page backgrounds"
         },
       },
       "200": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.50}",
@@ -1042,6 +1133,7 @@ Use for: Page backgrounds"
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.70}",
@@ -1054,6 +1146,7 @@ Use for: Page backgrounds"
     },
     "text": {
       "100": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.30}",
@@ -1064,6 +1157,7 @@ Use for: Page backgrounds"
         },
       },
       "200": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.100}",
@@ -1074,6 +1168,7 @@ Use for: Page backgrounds"
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "The default color of body warning text and icons within a warning colored container. ",
         "value": {
           "_dark": "{colors.warning.40}",
@@ -1084,6 +1179,7 @@ Use for: Page backgrounds"
         },
       },
       "inverse": {
+        "deprecated": true,
         "description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "value": {
           "_dark": "{colors.warning.100}",
@@ -1094,6 +1190,7 @@ Use for: Page backgrounds"
         },
       },
       "static": {
+        "deprecated": true,
         "description": "For use when a text color will not change between modes",
         "value": {
           "_dark": "{colors.warning.80}",
@@ -1113,6 +1210,7 @@ exports[`Elysium Theme dangerTokens should match the established baseline 1`] = 
   "danger": {
     "bg": {
       "active": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.danger.30}",
@@ -1123,6 +1221,7 @@ exports[`Elysium Theme dangerTokens should match the established baseline 1`] = 
         },
       },
       "hover": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.danger.50}",
@@ -1133,6 +1232,7 @@ exports[`Elysium Theme dangerTokens should match the established baseline 1`] = 
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.danger.70}",
@@ -1145,6 +1245,7 @@ exports[`Elysium Theme dangerTokens should match the established baseline 1`] = 
     },
     "border": {
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.danger.30}",
@@ -1157,6 +1258,7 @@ exports[`Elysium Theme dangerTokens should match the established baseline 1`] = 
     },
     "ghost": {
       "active": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.danger.80}",
@@ -1167,6 +1269,7 @@ exports[`Elysium Theme dangerTokens should match the established baseline 1`] = 
         },
       },
       "hover": {
+        "deprecated": true,
         "description": "Hover state of ghost action elements. Pair with text.danger.100 to meet accessibility requirements.",
         "value": {
           "_dark": "{colors.danger.90}",
@@ -1177,6 +1280,7 @@ exports[`Elysium Theme dangerTokens should match the established baseline 1`] = 
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "rgba(12.000000234693289, 11.000000294297934, 12.000000234693289, 0)",
@@ -1189,6 +1293,7 @@ exports[`Elysium Theme dangerTokens should match the established baseline 1`] = 
     },
     "surface": {
       "100": {
+        "deprecated": true,
         "description": 
 "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
 Use for: Page backgrounds"
@@ -1202,6 +1307,7 @@ Use for: Page backgrounds"
         },
       },
       "200": {
+        "deprecated": true,
         "description": 
 "Reserved for the &quot;floor&quot; of the page, or the lowest elevation surface
 Use for: Page backgrounds"
@@ -1215,6 +1321,7 @@ Use for: Page backgrounds"
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.danger.80}",
@@ -1227,6 +1334,7 @@ Use for: Page backgrounds"
     },
     "text": {
       "100": {
+        "deprecated": true,
         "description": "Medium emphasis danger text ",
         "value": {
           "_dark": "{colors.danger.30}",
@@ -1237,6 +1345,7 @@ Use for: Page backgrounds"
         },
       },
       "200": {
+        "deprecated": true,
         "description": "High emphasis text or icon to indicate a danger state, like an error within an input field, etc. ",
         "value": {
           "_dark": "{colors.danger.10}",
@@ -1247,6 +1356,7 @@ Use for: Page backgrounds"
         },
       },
       "initial": {
+        "deprecated": true,
         "description": "The default color of body danger text within a danger colored container. ",
         "value": {
           "_dark": "{colors.danger.50}",
@@ -1257,6 +1367,7 @@ Use for: Page backgrounds"
         },
       },
       "inverse": {
+        "deprecated": true,
         "description": "For use in containers that are also using the &quot;inverse&quot; styling. The inverse of the current mode the page is set to. ",
         "value": {
           "_dark": "{colors.danger.100}",
@@ -1267,6 +1378,7 @@ Use for: Page backgrounds"
         },
       },
       "static": {
+        "deprecated": true,
         "description": "For use when a text color will not change between modes",
         "value": {
           "_dark": "{colors.danger.70}",
@@ -1286,6 +1398,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
   "gradient": {
     "amphiaraus-dark": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.60}",
@@ -1296,6 +1409,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.90}",
@@ -1306,6 +1420,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.10}",
@@ -1318,6 +1433,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "amphiaraus-light": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.50}",
@@ -1328,6 +1444,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.20}",
@@ -1338,6 +1455,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.90}",
@@ -1350,6 +1468,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "asphodel-dark": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.50}",
@@ -1360,6 +1479,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.80}",
@@ -1370,6 +1490,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.100}",
@@ -1382,6 +1503,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "asphodel-light": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.60}",
@@ -1392,6 +1514,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.20}",
@@ -1402,6 +1525,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.100}",
@@ -1414,6 +1538,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "charon-dark": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.60}",
@@ -1424,6 +1549,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.90}",
@@ -1434,6 +1560,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.10}",
@@ -1446,6 +1573,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "charon-light": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.60}",
@@ -1456,6 +1584,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.20}",
@@ -1466,6 +1595,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.100}",
@@ -1478,6 +1608,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "hades-dark": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.danger.50}",
@@ -1488,6 +1619,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.danger.80}",
@@ -1498,6 +1630,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.danger.10}",
@@ -1510,6 +1643,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "hades-light": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.danger.20}",
@@ -1520,6 +1654,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.danger.40}",
@@ -1530,6 +1665,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.danger.80}",
@@ -1542,6 +1678,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "nyx-dark": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.50}",
@@ -1552,6 +1689,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.90}",
@@ -1562,6 +1700,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "Reserved for usage only on top of gradients",
         "value": {
           "_dark": "{colors.neutral.20}",
@@ -1574,6 +1713,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "nyx-light": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.5}",
@@ -1584,6 +1724,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.50}",
@@ -1594,6 +1735,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "Reserved for usage only on top of gradients",
         "value": {
           "_dark": "{colors.neutral.90}",
@@ -1606,6 +1748,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "styx-dark": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.accent.60}",
@@ -1616,6 +1759,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.accent.90}",
@@ -1626,6 +1770,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.accent.10}",
@@ -1638,6 +1783,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "styx-light": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.accent.50}",
@@ -1648,6 +1794,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.accent.10}",
@@ -1658,6 +1805,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.accent.100}",
@@ -1670,6 +1818,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "thanatos-dark": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.success.70}",
@@ -1680,6 +1829,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.success.90}",
@@ -1690,6 +1840,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.success.10}",
@@ -1702,6 +1853,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
     },
     "thanatos-light": {
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.success.50}",
@@ -1712,6 +1864,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.success.10}",
@@ -1722,6 +1875,7 @@ exports[`Elysium Theme gradientTokens should match the established baseline 1`] 
         },
       },
       "text": {
+        "deprecated": true,
         "description": "for text and icons on top of a gradient",
         "value": {
           "_dark": "{colors.success.100}",
@@ -1741,6 +1895,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
   "dataViz": {
     "diverging": {
       "100": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.70}",
@@ -1751,6 +1906,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "200": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.60}",
@@ -1761,6 +1917,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "300": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.50}",
@@ -1771,6 +1928,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "400": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.40}",
@@ -1781,6 +1939,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "50": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.80}",
@@ -1791,6 +1950,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "500": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.10}",
@@ -1801,6 +1961,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "600": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.40}",
@@ -1811,6 +1972,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "700": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.50}",
@@ -1821,6 +1983,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "800": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.60}",
@@ -1831,6 +1994,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "900": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.70}",
@@ -1843,6 +2007,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
     },
     "progress": {
       "complete": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.success.60}",
@@ -1853,6 +2018,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "end": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.70}",
@@ -1863,6 +2029,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "start": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.40}",
@@ -1875,6 +2042,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
     },
     "qualitative": {
       "100": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.60}",
@@ -1885,6 +2053,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "200": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.warning.60}",
@@ -1895,6 +2064,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "300": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.success.60}",
@@ -1905,6 +2075,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "400": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.accent.60}",
@@ -1915,6 +2086,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "500": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.info.50}",
@@ -1925,6 +2097,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "600": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.neutral.30}",
@@ -1935,6 +2108,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "700": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.40}",
@@ -1947,6 +2121,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
     },
     "sequential": {
       "100": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.90}",
@@ -1957,6 +2132,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "200": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.70}",
@@ -1967,6 +2143,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "300": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.50}",
@@ -1977,6 +2154,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "400": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.30}",
@@ -1987,6 +2165,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "500": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.20}",
@@ -1997,6 +2176,7 @@ exports[`Elysium Theme dataVizTokens should match the established baseline 1`] =
         },
       },
       "600": {
+        "deprecated": true,
         "description": "",
         "value": {
           "_dark": "{colors.brand.5}",

@@ -22,19 +22,10 @@ export function createSemanticToken(
   const darkToken = _formatTokenValue(token.valuesByMode[darkMode])
   const lighToken = _formatTokenValue(token.valuesByMode[lightMode])
 
-  // v3 Note: Remove this check
-  const oldGroups = [
-    'page',
-    'action',
-    'secondaryAction',
-    'info',
-    'success',
-    'warning',
-    'danger',
-    'dataViz',
-  ]
-  const group: string = String(token.name.split('.').shift())
-  const deprecated: boolean = oldGroups.includes(group)
+  // v3 Note: Remove this check & kill deprecated tokens
+  const newGroups = ['bg', 'fg', 'dc']
+  const group: string = String(token.name.split('/')[1])
+  const deprecated: boolean = !newGroups.includes(group)
 
   return {
     deprecated,
