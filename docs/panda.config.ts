@@ -1,4 +1,4 @@
-import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
+import { createCerberusConfig } from '@cerberus/panda-preset'
 import { presetAcheronTheme } from '@cerberus/preset-acheron-theme'
 import { presetElysiumTheme } from '@cerberus/preset-elysium-theme'
 import { presetOceanusTheme } from '@cerberus/preset-oceanus-theme'
@@ -7,19 +7,11 @@ import { globalCss } from './system/global-css'
 const isProd = process.env.NODE_ENV === 'production'
 
 export default createCerberusConfig({
-  presets: [
-    createCerberusPreset(),
-    presetAcheronTheme,
-    presetElysiumTheme,
-    presetOceanusTheme,
-  ],
+  designSystem: '@cerberus-design/data-grid',
 
-  include: [
-    './node_modules/@cerberus-design/react/**/*.{ts,tsx,js,jsx}',
-    './node_modules/@cerberus-design/data-grid/src/components/*.client.{ts,tsx}',
-    './mdx-components.tsx',
-    './**/*.{ts,tsx}',
-  ],
+  presets: [presetAcheronTheme, presetElysiumTheme, presetOceanusTheme],
+
+  include: ['./mdx-components.tsx', './**/*.{ts,tsx}'],
   exclude: ['./app/(llms)/*'],
 
   minify: isProd,

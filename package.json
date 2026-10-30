@@ -7,8 +7,9 @@
   "type": "module",
   "scripts": {
     "prepare": "husky",
-    "watch:react": "pnpm --filter @cerberu-design/react run -w watch",
-    "start:docs": "pnpm run watch:react & --filter docs run dev",
+    "watch:react": "pnpm --filter @cerberus-design/react run -w watch",
+    "watch:data-grid": "pnpm --filter @cerberus-design/data-grid run -w watch",
+    "start:docs": "pnpm --filter docs run dev",
     "lint:es": "eslint . --max-warnings=0",
     "lint:ox": "oxlint --deny-warnings",
     "lint:npmPackages": "pnpm --filter @cerberus-design/* run -w lint:ts",

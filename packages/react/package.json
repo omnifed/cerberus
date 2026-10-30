@@ -53,6 +53,7 @@
         "default": "./dist/components/*/index.cjs"
       }
     },
+    "./package.json": "./package.json",
     "./panda/*": "./dist/panda/*",
     "./css": {
       "types": "./styled-system/css/index.d.ts",
