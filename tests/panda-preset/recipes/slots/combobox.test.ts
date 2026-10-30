@@ -1,8 +1,8 @@
 import { describe, test, expect } from 'bun:test'
-import { focusStates, formStates, slotRecipes } from '@cerberus/panda-preset'
-import { label } from 'styled-system/recipes'
+import { focusStates, formStates, slotRecipes, recipes } from '@cerberus/panda-preset'
 
 describe('combobox recipe', () => {
+  const { label } = recipes
   const { combobox } = slotRecipes
 
   test('should be exported', () => {
