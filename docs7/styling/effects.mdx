@@ -1,0 +1,61 @@
+---
+title: "Effects"
+description: "JSX style props for styling box shadows, opacity, and more"
+---
+
+## Box Shadow
+
+Use the `shadow` or `boxShadow` prop to apply a box shadow to an element.
+
+```tsx
+// hardcoded values
+
+
+// token values
+
+```
+
+| Prop                   | CSS Property     | Token Category |
+| ---------------------- | ---------------- | -------------- |
+| `shadows`, `boxShadow` | `box-shadow`     | `shadows`      |
+| `shadowColor`          | `--shadow-color` | `colors`       |
+
+## Box Shadow Color
+
+Use the `shadowColor` prop to set the color of a box shadow. This prop maps to
+the `--shadow-color` CSS variable.
+
+```tsx
+
+```
+
+| Prop          | CSS Property     | Token Category |
+| ------------- | ---------------- | -------------- |
+| `shadowColor` | `--shadow-color` | `colors`       |
+
+## Opacity
+
+Use the `opacity` prop to set the opacity of an element.
+
+```tsx
+
+```
+
+| Prop      | CSS Property | Token Category |
+| --------- | ------------ | -------------- |
+| `opacity` | `opacity`    | `opacity`      |
+
+## Mix Blend Mode
+
+Use the `mixBlendMode` prop to control how an element's content should be
+blended with the background.
+
+```tsx
+
+  <Image src="..." mixBlendMode="hard-light" />
+
+```
+
+| Prop           | CSS Property     | Token Category |
+| -------------- | ---------------- | -------------- |
+| `mixBlendMode` | `mix-blend-mode` | -              |

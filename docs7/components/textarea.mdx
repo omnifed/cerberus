@@ -1,0 +1,49 @@
+---
+title: "Textarea"
+description: "The Textarea component displays a textarea field."
+---
+
+## Import
+
+```ts
+import { Field, Textarea } from '@cerberus/react'
+```
+
+## Usage
+
+The `Textarea` component displays a textarea field.
+
+<Info>
+Example: [`examples/components/field/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/field/basic.demo.tsx)
+</Info>
+
+
+## Secondary Helper Text
+
+The `Textarea` component supports secondary helper text, which can be used to display additional information or a character count.
+
+<Info>
+Example: [`examples/components/textarea/secondary.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/textarea/secondary.demo.tsx)
+</Info>
+
+
+## Customizing
+
+You can customize the textarea by passing styles directly into the component. Textarea is a re-export of the `FieldTextarea` primitive.
+
+<Info>
+Example: [`examples/components/textarea/custom.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/textarea/custom.demo.tsx)
+</Info>
+
+
+## API
+
+### Props
+
+The `Textarea` accepts the following props in addition to any native `textarea` props:
+
+| Name   | Default | Description                       |
+| ------ | ------- | --------------------------------- |
+| `size` |         | This size variant of the textarea |
+
+The `Textarea` component also shares the same props mentioned in the [Field Textarea API](/components/field#textarea)

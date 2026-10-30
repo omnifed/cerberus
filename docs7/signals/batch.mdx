@@ -1,0 +1,27 @@
+---
+title: "Batch Updates"
+description: "Learn how to update multiple signals at once in React."
+---
+
+```tsx
+import { batch } from '@cerberus/signals'
+```
+
+## Usage
+
+The `batch` primitive is useful when you want to make multiple signal updates at
+once. This can include individual updates or signals updating simultaneously to
+a peer signal updating.
+
+In this example, our batch block updates two signals at once which reference the
+same signal value.
+
+<Info>
+Example: [`examples/signals/batch/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/signals/batch/basic.demo.tsx)
+</Info>
+
+
+## API
+
+`batch` accepts a callback containing multiple signal `Setters` and doesn't return
+any value.

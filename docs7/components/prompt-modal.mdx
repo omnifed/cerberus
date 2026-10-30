@@ -1,0 +1,59 @@
+---
+title: "Prompt Modal"
+description: "The Prompt Modal is used to prompt the user for input, such as a passkey or confirmation for destructive actions."
+---
+
+## Import
+
+```ts
+import { PromptModal, usePromptModal } from '@cerberus/react'
+```
+
+## Usage
+
+<Note>
+PromptModal is considered a dialog template. This means it's a pre-configured layout that is not fully customizable by nature. If you want to fully customize the modal, use the Dialog instead.
+</Note>
+
+### Non-destructive
+
+To prompt a user with a non-destructive template theme is the defeault setting.
+
+<Info>
+Example: [`examples/components/prompt-modal/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/prompt-modal/basic.demo.tsx)
+</Info>
+
+
+### Destructive
+
+To use a destructive theme, add a `kind` option set to `destructive`. This will utilize the
+[Danger Palette](/theming/colors#danger).
+
+<Info>
+Example: [`examples/components/prompt-modal/destructive.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/prompt-modal/destructive.demo.tsx)
+</Info>
+
+
+## Primitives
+
+The PromptModal is an abstraction of the [Dialog Primitives](/components/dialog#primitives) and does not provide any additional customization. To build your own PromptModal, use the [`Dialog`](/components/dialog) components.
+
+## API
+
+### PromptModal
+
+The `PromptModal` component is an abstraction of the Dialog and accepts the same
+props as the [`Dialog`](/components/dialog) component.
+
+### Show Method Options
+
+The `show` method accepts the following options:
+
+| Name          | Default           | Description                                  |
+| ------------- | ----------------- | -------------------------------------------- |
+| `kind`        | `non-destructive` | The variant used to theme the modal.         |
+| `heading`     |                   | The heading of the modal.                    |
+| `description` |                   | The description of the modal.                |
+| `key`         |                   | A string key to test the user input against. |
+| `actionText`  |                   | The text for the action button.              |
+| `cancelText`  |                   | The text for the cancel button.              |

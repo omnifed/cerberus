@@ -1,0 +1,77 @@
+---
+title: "Highlight"
+description: "Highlight text with query"
+---
+
+## Usage
+
+The Highlight component takes a `text` prop containing the full text and a `query` prop specifying the text to
+highlight. It then renders the text with highlighted portions wrapped in `<mark>` tags.
+
+<Info>
+Example: [`examples/components/highlight/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/highlight/basic.demo.tsx)
+</Info>
+
+
+### Multiple Queries
+
+You can highlight multiple terms by passing an array of strings to the `query` prop.
+
+<Info>
+Example: [`examples/components/highlight/multiple.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/highlight/multiple.demo.tsx)
+</Info>
+
+
+### Case Sensitivity
+
+By default, the highlighting is case-sensitive. Use the `ignoreCase` prop to make it case-insensitive.
+
+<Info>
+Example: [`examples/components/highlight/case.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/highlight/case.demo.tsx)
+</Info>
+
+
+### Match All
+
+By default, the Highlight component matches the first occurrence of the query. To highlight all occurrences of the
+query, set the `matchAll` prop to `true`.
+
+<Info>
+Example: [`examples/components/highlight/match.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/highlight/match.demo.tsx)
+</Info>
+
+
+### Exact Match
+
+By default, the Highlight component matches partial words. Use the `exactMatch` prop to only highlight whole words that
+match the query exactly.
+
+<Info>
+Example: [`examples/components/highlight/exact.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/highlight/exact.demo.tsx)
+</Info>
+
+
+## API Reference
+
+#### Props
+
+| Prop             | Type                 | Required | Default     | Description                                      |
+| ---------------- | -------------------- | -------- | ----------- | ------------------------------------------------ |
+| **`query`**      | `string \| string[]` | true     | `undefined` | The query to highlight in the text               |
+| **`text`**       | `string`             | true     | `undefined` | The text to highlight                            |
+| **`exactMatch`** | `boolean`            | false    | `undefined` | Whether to match whole words only                |
+| **`ignoreCase`** | `boolean`            | false    | `undefined` | Whether to ignore case while matching            |
+| **`matchAll`**   | `boolean`            | false    | `undefined` | Whether to match multiple instances of the query |
+
+## Customization
+
+The Highlight component wraps matched text in `<mark>` tags. Pass a `className` (or `class` in Solid/Svelte/Vue) to
+style the highlighted portions.
+
+```tsx
+<Highlight
+  className="highlight-mark"
+  query="component"
+  text="Ark UI is a headless component library for building accessible web applications."
+/>
+```

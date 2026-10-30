@@ -1,0 +1,53 @@
+---
+title: Cerberus Design System
+description: A Design System factory built on top of Panda CSS.
+---
+
+## What is Cerberus?
+
+Cerberus is a Design System factory built on top of Panda CSS. It provides a
+full UI platform with an extensive ecosystem:
+
+- **PandaCSS Presets**: core tools and themes
+- **React**: flexible primitive components with accessibility features
+- **Data Grid**: a compositional component that is feature-rich and accessible
+- **Signals**: a signal-based reactive state management system made for React
+
+## Architecture
+
+This is a monorepo that uses [pnpm](https://pnpm.io/) to manage dependencies and
+[Bun](https://bun.sh/) as the runtime language. You will need to install these
+tools to work on this project.
+
+## Getting started
+
+Install the tools:
+
+1. Install [pnpm](https://pnpm.io/installation)
+2. Install [Bun](https://bun.sh/)
+
+After you fork the repository, install the dependencies by running the following
+command **in the root of the project**:
+
+```bash
+pnpm install
+```
+
+This will install all the dependencies for the project including the workspaces.
+
+## Workspace Context
+
+- docs: The official docs website for Cerberus.
+- figma: Figma related files that run jobs on the CI using the Figma API.
+- packages: The core packages that make up Cerberus.
+- tests: The test suite for Cerberus & React related packages.
+
+### Cerberus Package Context
+
+- **panda-preset**: The default preset for Cerberus. This is where all the styles live.
+- **preset-\***: Any preset for PandaCSS. Mostly themes for now.
+- **react**: The React primitive components for Cerberus. React only owns components, not styles.
+- **data-grid**: The Data Grid library for React.
+- **signals**: The Signals library for React.
+
+See the [Get Started](/get-started/get-started) guide to begin using Cerberus.

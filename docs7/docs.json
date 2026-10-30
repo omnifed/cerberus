@@ -1,0 +1,320 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Cerberus Design System",
+  "colors": {
+    "primary": "#9F66D3",
+    "light": "#9F66D3",
+    "dark": "#260048"
+  },
+  "logo": "/images/logo.svg",
+  "favicon": "/images/favicon.ico",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Home",
+        "pages": [
+          "index"
+        ]
+      }
+    ],
+    "tabs": [
+      {
+        "tab": "Get Started",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "get-started/get-started",
+              "get-started/installation",
+              "get-started/faq",
+              "get-started/contributing"
+            ]
+          },
+          {
+            "group": "AI",
+            "pages": [
+              "get-started/llms",
+              "get-started/context-7"
+            ]
+          },
+          {
+            "group": "Presets",
+            "pages": [
+              "get-started/themes"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Components",
+        "groups": [
+          {
+            "group": "Concepts",
+            "pages": [
+              "components/overview",
+              "components/composition",
+              "components/cerberus-context",
+              "components/testing"
+            ]
+          },
+          {
+            "group": "Layout",
+            "pages": [
+              "components/aspect-ratio",
+              "components/bleed",
+              "components/box",
+              "components/center",
+              "components/container",
+              "components/container-query",
+              "components/divider",
+              "components/flex",
+              "components/float",
+              "components/grid",
+              "components/group",
+              "components/link-overlay",
+              "components/scrollable",
+              "components/stack",
+              "components/wrap"
+            ]
+          },
+          {
+            "group": "Components",
+            "pages": [
+              "components/accordion",
+              "components/admonition",
+              "components/avatar",
+              "components/button",
+              "components/carousel",
+              "components/checkbox",
+              "components/clipboard",
+              "components/collapsible",
+              "components/combobox",
+              "components/confirm-modal",
+              "components/cta-modal",
+              "components/date-picker",
+              "components/dialog",
+              "components/field",
+              "components/fieldset",
+              "components/file-uploader",
+              "components/icon-button",
+              "components/input",
+              "components/loading-states",
+              "components/marquee",
+              "components/menu",
+              "components/notifications",
+              "components/number-input",
+              "components/pagination",
+              "components/pin-input",
+              "components/popover",
+              "components/progress",
+              "components/prompt-modal",
+              "components/radio",
+              "components/rating",
+              "components/select",
+              "components/slider",
+              "components/split-button",
+              "components/switch",
+              "components/table",
+              "components/tabs",
+              "components/tag",
+              "components/text",
+              "components/textarea",
+              "components/toggle",
+              "components/tooltip"
+            ]
+          },
+          {
+            "group": "Utilities",
+            "pages": [
+              "components/client-only",
+              "components/download-trigger",
+              "components/environment",
+              "components/feature-flags",
+              "components/focus-trap",
+              "components/for",
+              "components/format-byte",
+              "components/format-number",
+              "components/format-time",
+              "components/format-relative-time",
+              "components/frame",
+              "components/highlight",
+              "components/json-tree-view",
+              "components/locale",
+              "components/portal",
+              "components/presence",
+              "components/show",
+              "components/swap",
+              "components/split-props",
+              "components/theme"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Data Grid",
+        "groups": [
+          {
+            "group": "Get started",
+            "pages": [
+              "data-grid/overview",
+              "data-grid/quickstart",
+              "data-grid/columns",
+              "data-grid/context",
+              "data-grid/theme"
+            ]
+          },
+          {
+            "group": "Layout",
+            "pages": [
+              "data-grid/dimensions",
+              "data-grid/sizing",
+              "data-grid/slots",
+              "data-grid/overlays",
+              "data-grid/toolbar",
+              "data-grid/footer",
+              "data-grid/pagination"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "data-grid/pinning",
+              "data-grid/sort",
+              "data-grid/filtering",
+              "data-grid/visibility"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "data-grid/api"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Signals",
+        "groups": [
+          {
+            "group": "Get started",
+            "pages": [
+              "signals/overview",
+              "signals/reactivity",
+              "signals/data-fetching",
+              "signals/stores"
+            ]
+          },
+          {
+            "group": "Primitives",
+            "pages": [
+              "signals/create-signal",
+              "signals/create-query",
+              "signals/create-mutation",
+              "signals/create-computed",
+              "signals/create-effect",
+              "signals/create-store-context",
+              "signals/batch",
+              "signals/on-cleanup",
+              "signals/untrack"
+            ]
+          },
+          {
+            "group": "Hooks",
+            "pages": [
+              "signals/use-query",
+              "signals/use-mutation",
+              "signals/use-read",
+              "signals/use-signal",
+              "signals/use-store"
+            ]
+          },
+          {
+            "group": "Components",
+            "pages": [
+              "signals/reactive-text"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Styling",
+        "groups": [
+          {
+            "group": "Concepts",
+            "pages": [
+              "styling/cerberus-factory",
+              "styling/responsive-design",
+              "styling/css-vars",
+              "styling/themes-and-modes",
+              "styling/color-opacity-modifier",
+              "styling/conditional-styles",
+              "styling/virtual-color",
+              "styling/cascade-layers",
+              "styling/utilities"
+            ]
+          },
+          {
+            "group": "Compositions",
+            "pages": [
+              "styling/animation-styles",
+              "styling/layer-styles",
+              "styling/text-styles",
+              "styling/focus-ring"
+            ]
+          },
+          {
+            "group": "Style Props",
+            "pages": [
+              "styling/background",
+              "styling/border",
+              "styling/effects",
+              "styling/spacing",
+              "styling/text-gradient",
+              "styling/transitions",
+              "styling/z-index"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Theming",
+        "groups": [
+          {
+            "group": "Concepts",
+            "pages": [
+              "theming/overview",
+              "theming/tokens",
+              "theming/semantic-tokens",
+              "theming/recipes",
+              "theming/slot-recipes"
+            ]
+          },
+          {
+            "group": "Design Tokens",
+            "pages": [
+              "theming/animations",
+              "theming/colors",
+              "theming/gradients",
+              "theming/spacing",
+              "theming/shadows",
+              "theming/typography",
+              "theming/z-index"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/omnifed/cerberus"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/omnifed/cerberus"
+    }
+  }
+}

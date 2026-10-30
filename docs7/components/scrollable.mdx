@@ -1,0 +1,47 @@
+---
+title: "Scrollable"
+description: "A layout pattern to create scrollable containers."
+---
+
+## Import
+
+```ts
+import { Scrollable } from 'styled-system/jsx'
+```
+
+## Usage
+
+The `Scrollable` component provides an easy way to create scrollable containers
+without having to worry about overflow styles.
+
+<Info>
+Example: [`examples/components/scrollable/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/scrollable/basic.demo.tsx)
+</Info>
+
+
+## Direction
+
+Use `vertical` or `horizontal` to control the overflow scrolling direction.
+
+<Info>
+Example: [`examples/components/scrollable/direction.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/scrollable/direction.demo.tsx)
+</Info>
+
+
+## Scrollbar visibility
+
+You can control the visibility of the scrollbar using the `hideScrollbar` prop.
+
+<Info>
+Example: [`examples/components/scrollable/visibility.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/scrollable/visibility.demo.tsx)
+</Info>
+
+
+## Props
+
+The `Scrollable` component accepts the following utility props in addition to style and factory props:
+
+| Prop            | Type                         | Description                                |
+| --------------- | ---------------------------- | ------------------------------------------ |
+| `direction`     | `'vertical' \| 'horizontal'` | Controls the overflow scrolling direction. |
+| `hideScrollbar` | `boolean`                    | Hides the scrollbar.                       |

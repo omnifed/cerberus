@@ -1,0 +1,101 @@
+---
+title: "Container Query"
+description: "Apply styles to an element based on certain attributes of its container."
+---
+
+## Import
+
+```ts
+import { Cq } from 'styled-system/jsx'
+```
+
+## Usage
+
+The `Cq` component is used to apply styles based on the width of the **container**. This is a useful alternative to media queries which are based on the width of the browser viewport.
+
+`Cq` provides two utility props:
+
+- `name`: The name of the container query, Maps to the `containerName` [CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/container-name).
+- `type`: The type of the container query. Maps to the `containerType` [CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/container-type). Defaults to `inline-size`.
+
+The container query size conditions use the following syntax: `@/[size]` or `@[custom-name]/[size]`
+
+<Info>
+Example: [`examples/components/cq/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/cq/basic.demo.tsx)
+</Info>
+
+
+### Name
+
+The `name` prop is used to define the name of the container query. This must be defined in the Panda config in order to use it on the `Cq` component.
+
+Once "registered", the `name` prop can be used to add container-specific boundaries and styles.
+
+#### Step 1: Register container names and sizes
+
+```ts title="panda.config.ts"
+export default createCerberusConfig({
+  // ...
+  theme: {
+    extend: {
+      containerNames: ['sidebar', 'content'],
+      containerSizes: {
+        xs: '40em',
+        sm: '60em',
+        md: '80em',
+      },
+    },
+  },
+})
+```
+
+#### Step 2: Use `Cq` to apply container query styles
+
+```tsx
+import { Box, Cq } from 'styled-system/jsx'
+
+export function UsageDemo() {
+  return (
+    <Cq name="sidebar">
+      
+    </Cq>
+  )
+}
+```
+
+### Type
+
+The `type` prop is used to define the type of the container query. Defaults to `inline-size`.
+
+<Info>
+Example: [`examples/components/cq/type.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/cq/type.demo.tsx)
+</Info>
+
+
+## Guide
+
+### Default Sizes
+
+The following sizes are included with Cerberus by default:
+
+```ts
+{
+  xs: '320px',
+  sm: '384px',
+  md: '448px',
+  lg: '512px',
+  xl: '576px',
+  '2xl': '672px',
+  '3xl': '768px',
+  '4xl': '896px',
+  '5xl': '1024px',
+  '6xl': '1152px',
+  '7xl': '1280px',
+  '8xl': '1440px'
+}
+```
+
+## Props
+
+The `Cq` component supports all CSS properties as props, making it easy to
+style elements.

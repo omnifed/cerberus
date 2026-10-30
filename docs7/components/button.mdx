@@ -1,0 +1,132 @@
+---
+title: "Button"
+description: "Used to trigger actions or events."
+---
+
+## Import
+
+```ts
+import { Button } from '@cerberus/react'
+```
+
+## Basic Usage
+
+<Info>
+Example: [`examples/components/button/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/button/basic.demo.tsx)
+</Info>
+
+
+### With Icon
+
+To display an icon, use the `ButtonParts` API.
+
+<Info>
+Example: [`examples/components/button/icon.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/button/icon.demo.tsx)
+</Info>
+
+
+<Note>
+When using the pending prop, the icon will be replaced with a spinner.
+</Note>
+
+## Pending
+
+To display a loading state, use the `ButtonParts.Icon` and set the `pending` prop to `true`.
+
+<Info>
+Example: [`examples/components/button/pending.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/button/pending.demo.tsx)
+</Info>
+
+
+## Shapes
+
+Use the `shape` prop to set the shape of the button. The `Button` component comes in three shapes: `default`, `sharp` and `rounded`.
+
+<Info>
+Example: [`examples/components/button/shapes.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/button/shapes.demo.tsx)
+</Info>
+
+
+## Usage
+
+Use the `usage` prop to set the usage style of the button. The `Button` component comes in three usage styles: `filled`, `outlined`, and `ghost`.
+
+<Info>
+Example: [`examples/components/button/usage.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/button/usage.demo.tsx)
+</Info>
+
+
+## Sizes
+
+Use the `size` prop to change the Button size. The options are `xs` up to `2xl`.
+
+<Info>
+Example: [`examples/components/button/size.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/button/size.demo.tsx)
+</Info>
+
+
+## Group
+
+You can group buttons together using the `ButtonGroup` component.
+
+<Info>
+Example: [`examples/components/button/group.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/button/group.demo.tsx)
+</Info>
+
+
+### Attached Button Group
+
+You can create an attached button group by setting the `layout` prop to `attached`.
+
+<Info>
+Example: [`examples/components/button/attached.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/button/attached.demo.tsx)
+</Info>
+
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the button.
+
+| Component     | Description                               |
+| ------------- | ----------------------------------------- |
+| `Button.Root` | The context provider for the Button parts |
+| `Button.Icon` | The icon/spinner of the button            |
+
+<Info>
+Example: [`examples/components/button/custom.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/button/custom.demo.tsx)
+</Info>
+
+
+## Global Customization
+
+To enable global customization, you can modify the `theme` configuration in your `panda.config.ts` file. For example, to customize the button component globally:
+
+<Info>
+Example: [`examples/components/button/global.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/button/global.demo.tsx)
+</Info>
+
+<br />
+
+This change will set the default shape variant of all buttons to `default`.
+
+## API
+
+### Props
+
+The `Button` component is an abstraction of the primitives and accepts the following props:
+
+| Name      | Default  | Description                                                                                                                          |
+| --------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `palette` | `action` | The color palette (any of the Cerberus palettes) of the button.                                                                      |
+| `usage`   | `filled` | The style treatment of the button.                                                                                                   |
+| `shape`   | `sharp`  | The shape of the button.                                                                                                             |
+| `size`    | `lg`     | The size of the Button.                                                                                                              |
+| `pending` | `false`  | The loading state of the button. When a button has an `Icon` it will replace it with a spinner. When not, is shows a disabled state. |
+| `asChild` |          | Render the Button as the child component.                                                                                            |
+
+#### ButtonGroup Props
+
+| Name     | Default   | Description                                                                                           |
+| -------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| `layout` | `default` | The layout of the button group. Can be `default` or `attached`.                                       |
+| `shape`  | `sharp`   | The shape of the buttons in the group. Should match the `shape` prop of the `Button` components used. |

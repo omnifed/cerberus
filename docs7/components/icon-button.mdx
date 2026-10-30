@@ -1,0 +1,92 @@
+---
+title: "IconButton"
+description: "The IconButton component is a button that displays an icon."
+---
+
+## Import
+
+```ts
+import { IconButton } from '@cerberus/react'
+```
+
+## Usage
+
+<Info>
+Example: [`examples/components/icon-button/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/icon-button/basic.demo.tsx)
+</Info>
+
+
+## Sizes
+
+The `IconButton` component comes in two sizes: `sm`, `lg`. You can set the size by using the `size` prop.
+
+<Info>
+Example: [`examples/components/icon-button/size.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/icon-button/size.demo.tsx)
+</Info>
+
+
+## Palette
+
+You can change the palette of the `IconButton` by using the `palette` prop.
+
+<Info>
+Example: [`examples/components/icon-button/palette.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/icon-button/palette.demo.tsx)
+</Info>
+
+
+## Usage
+
+You can change the style of the `IconButton` by using the `usage` prop.
+
+<Info>
+Example: [`examples/components/icon-button/usage.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/icon-button/usage.demo.tsx)
+</Info>
+
+
+## Shape
+
+You can change the shape of the `IconButton` by using the `shape` prop.
+
+<Info>
+Example: [`examples/components/icon-button/shape.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/icon-button/shape.demo.tsx)
+</Info>
+
+
+## Customization
+
+You can customize the `IconButton` with style props or the [Primitive](#primitives) components.
+
+<Info>
+Example: [`examples/components/icon-button/custom.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/icon-button/custom.demo.tsx)
+</Info>
+
+
+## Button as Links
+
+You can create IconButton styled links by using the `asChild` prop.
+
+<Info>
+Example: [`examples/components/icon-button/asChild.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/icon-button/asChild.demo.tsx)
+</Info>
+
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the button.
+
+| Component    | Description                               |
+| ------------ | ----------------------------------------- |
+| `IconButton` | The context provider for the Button parts |
+
+## API
+
+### Props
+
+The `IconButton` component is an abstraction of the primitives and accepts the following props:
+
+| Name        | Default  | Description                                                     |
+| ----------- | -------- | --------------------------------------------------------------- |
+| `clipboard` | false    | If true, uses Clipboard aria-attributes.                        |
+| `palette`   | `action` | The color palette (any of the Cerberus palettes) of the button. |
+| `usage`     | `filled` | The style treatment of the button.                              |
+| `shape`     | `sharp`  | The shape of the button.                                        |

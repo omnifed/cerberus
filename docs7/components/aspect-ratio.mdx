@@ -1,0 +1,62 @@
+---
+title: "Aspect Ratio"
+description: "Used to embed responsive videos and maps, etc."
+---
+
+## Import
+
+```ts
+import { AspectRatio } from 'styled-system/jsx'
+```
+
+## Usage
+
+<Info>
+Example: [`examples/components/aspect-ratio/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/aspect-ratio/basic.demo.tsx)
+</Info>
+
+
+### Image
+
+Here's how to embed an image that has a 4 by 3 aspect ratio.
+
+<Info>
+Example: [`examples/components/aspect-ratio/img.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/aspect-ratio/img.demo.tsx)
+</Info>
+
+
+### Video
+
+To embed a video with a specific aspect ratio, use an iframe with `src` pointing
+to the link of the video.
+
+<Info>
+Example: [`examples/components/aspect-ratio/video.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/aspect-ratio/video.demo.tsx)
+</Info>
+
+
+### Google Map
+
+Here's how to embed a responsive Google map using `AspectRatio`.
+
+<Info>
+Example: [`examples/components/aspect-ratio/maps.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/aspect-ratio/maps.demo.tsx)
+</Info>
+
+
+### Responsive
+
+Here's an example of applying a responsive aspect ratio to a box.
+
+<Info>
+Example: [`examples/components/aspect-ratio/responsive.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/aspect-ratio/responsive.demo.tsx)
+</Info>
+
+
+## Props
+
+These props can be passed to the `AspectRatio` component in addition to style and factory props.
+
+| Prop    | Type                       | Description                                                                             |
+| ------- | -------------------------- | --------------------------------------------------------------------------------------- |
+| `ratio` | `ConditionalValue<number>` | The aspect ratio of the Box. Common values are: `21/9`, `16/9`, `9/16`, `4/3`, `1.85/1` |

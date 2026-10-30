@@ -1,0 +1,173 @@
+---
+title: "Cerberus Factory"
+description: "Learn about the Cerberus Factory, a powerful tool for managing styles and themes in the Cerberus Design System."
+---
+
+## Overview
+
+Cerberus factory serves as a way to create supercharged JSX component from any
+HTML element to enable them receive `asChild`, `css`, and style props.
+
+```js
+import { cerberus } from '@cerberus/react'
+```
+
+## JSX Element
+
+With the JSX factory, you can use `cerberus.<element>` syntax to create JSX elements that support `css`, `asChild`, and style props.
+
+```tsx
+import { cerberus } from '@cerberus/react'
+
+function Example() {
+  return (
+    <cerberus.button
+      bgColor="black"
+      _hover={{
+        bgColor: 'blue',
+      }}
+      css={{
+        '&:is([data-custom])': {
+          color: 'red',
+        },
+      }}
+    >
+      Click me
+    </cerberus.button>
+  )
+}
+```
+
+## Factory function
+
+Use the `cerberus` function to convert native element components.
+
+```tsx
+const Link = cerberus('a')
+
+function Usage() {
+  return <Link color="blue" href="https://cerberus.digitalu.design/" />
+}
+```
+
+### Default Props
+
+When you have static props you want to append to a `cerberus` created component, pass an Object as the second item of the function with a `defaultProps` property. This will merge an props listed onto the component.
+
+```tsx
+const Link = cerberus('a', {
+  defaultProps: {
+    'data-scope': 'link',
+    'data-active': false,
+  },
+})
+
+function Usage() {
+  return (
+    <Link
+      _hover={{ color: 'action.text.100' }}
+      href="https://cerberus.digitalu.design/"
+    />
+  )
+}
+```
+
+### Forward Props
+
+Sometimes you may want to use a property name for your factory component that conflicts with a native CSS property name. To allow this and prevent PandaCSS from stripping it out (due to thinking it's a native CSS prop), use the `forwardProps` proprty on the options Object.
+
+`forwardProps` accepts an Array of string prop names to ignore.
+
+```tsx
+const Link = cerberus('a', {
+  defaultProps: {
+    'data-scope': 'link',
+    'data-active': false,
+  },
+  // This will allow the Link props.page to be valid and ignore the CSS page prop
+  forwardProps: ['page'],
+})
+
+function Usage() {
+  return <Link page={1} href="https://cerberus.digitalu.design/" />
+}
+```
+
+## Creating Primitives
+
+You can create a Cerberus primitive with the `createCerberusPrimitive` function. This is useful for creating components that have a specific recipe or style.
+
+All primitives created with any of the higher order functions it returns will also have the factory props available.
+
+Additionally, you may pass in any reference to an Element or a string name of a HTML element for your component.
+
+### withNoRecipe
+
+Creates a Cerberus component with bare features and no recipe. This is identical to using the `cerberus` function directly.
+
+```tsx
+import { cerberus, createCerberusPrimitive } from '@cerberus/react'
+
+const { withNoRecipe } = createCerberusPrimitive()
+
+const Button = withNoRecipe(cerberus.button)
+
+function Example() {
+  return <Button color="blue">Click me</Button>
+}
+```
+
+### withRecipe
+
+Creates a Cerberus component with a specific recipe applied. This allows you to use the styles defined in the recipe.
+
+```tsx
+import { cerberus, createCerberusPrimitive } from '@cerberus/react'
+import { button } from 'styled-system/recipes'
+
+const { withRecipe } = createCerberusPrimitive(button)
+const Button = withRecipe('button')
+
+function Example() {
+  return <Button css={{ color: 'blue' }}>Click me</Button>
+}
+```
+
+This example creates a Cerberus button component that has the `button` recipe styles applied to it (along with Cerberus component features).
+
+### withSlotRecipe
+
+Creates a Cerberus component with a specific recipe applied at the slot level. This is useful for creating components that have multiple slots with different styles.
+
+```tsx
+import { cerberus, createCerberusPrimitive } from '@cerberus/react'
+import { field } from 'styled-system/recipes/slots'
+
+const { withSlotRecipe } = createCerberusPrimitive(field)
+
+const Field = withSlotRecipe('div', 'root')
+const FieldLabel = withSlotRecipe('label', 'label')
+const FieldInput = withSlotRecipe('input', 'input')
+
+function Example() {
+  return (
+    <Field css={{ color: 'blue' }}>
+      <FieldLabel>Label</FieldLabel>
+      <FieldInput type="text" />
+    </Field>
+  )
+}
+```
+
+In this example, we create a Cerberus field component with a root slot, label slot, and input slot. Each slot can have its own styles defined in the recipe, and utilize the Cerberus factory features when needed.
+
+## Polymorphism
+
+Every component created with the Cerberus factory can accept the
+`asChild` props to change the underlying DOM element.
+
+```tsx
+<Button asChild>
+  <a href="https://cerberus.digitalu.design/">Cerberus</a>
+</Button>
+```

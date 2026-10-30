@@ -1,0 +1,35 @@
+---
+title: "Client Only"
+description: "Renders children only on the client side."
+---
+
+## Motivation
+
+The `ClientOnly` component renders its children only on the client side. This is useful for components that need to
+access the DOM or browser APIs that are not available on the server side.
+
+## Examples
+
+### Basic
+
+<Info>
+Example: [`examples/components/client-only/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/client-only/basic.demo.tsx)
+</Info>
+
+
+### With Fallback
+
+To render someting on the server before rendering on the client, use the `fallback` prop.
+
+<Info>
+Example: [`examples/components/client-only/fallback.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/client-only/fallback.demo.tsx)
+</Info>
+
+
+## API
+
+### Props
+
+| Prop           | Type  | Required | Default     | Description |
+| -------------- | ----- | -------- | ----------- | ----------- |
+| **`fallback`** | `any` | false    | `undefined` | undefined   |

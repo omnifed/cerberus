@@ -1,0 +1,31 @@
+---
+title: "Footer"
+description: "Learn how to create custom footers in the Data Grid component."
+---
+
+## Overview
+
+The Footer is a reserved area below the Data Grid component typically used for
+information or global actions.
+
+To add a custom footer, you can use the `footer` prop and pass a React component.
+
+Since the footer is positioned within the Data Grid component, **it shares the same
+height restrictions as the grid itself**. Ensure your parent height is set appropriately
+to accommodate the footer.
+
+<Note>
+If you don't need the context of the grid, we recommended rendering your footer outside of the Data Grid component.
+</Note>
+
+<Info>
+Example: [`examples/data-grid/layout/footer.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/data-grid/layout/footer.demo.tsx)
+</Info>
+
+
+## Grid Context
+
+To access the Data Grid context, you use the `useDataGridContext` hook which provides
+a signal driven store for reading and updating state in a highly performant way.
+
+Read the [Data Grid Context](/data-grid/context) documentation for more details.

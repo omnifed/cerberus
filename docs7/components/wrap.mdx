@@ -1,0 +1,70 @@
+---
+title: "Wrap"
+description: "Used to add space between elements and wraps automatically if there isn't"
+---
+
+## Import
+
+```ts
+import { Wrap, WrapItem } from 'styled-system/jsx'
+```
+
+## Usage
+
+By default, `Wrap` applies `display: flex`, `flex-wrap: wrap`, and `gap: 8px` to
+its children.
+
+<Info>
+Example: [`examples/components/wrap/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/wrap/basic.demo.tsx)
+</Info>
+
+
+### Gap or Spacing
+
+Pass the `gap` prop to apply a consistent spacing between each child, even if it
+wraps.
+
+<Info>
+Example: [`examples/components/wrap/gap.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/wrap/gap.demo.tsx)
+</Info>
+
+
+### Alignment
+
+Pass the `align` prop to change the alignment of the child along the cross axis.
+
+<Info>
+Example: [`examples/components/wrap/align.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/wrap/align.demo.tsx)
+</Info>
+
+
+### Justify
+
+Pass the `justify` prop to change the alignment of the child along the main
+axis.
+
+<Info>
+Example: [`examples/components/wrap/justify.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/wrap/justify.demo.tsx)
+</Info>
+
+
+### Row and Column Gap
+
+Pass the `rowGap` and `columnGap` props to apply a consistent spacing between
+the rows and columns.
+
+<Info>
+Example: [`examples/components/wrap/row-col.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/wrap/row-col.demo.tsx)
+</Info>
+
+
+## Props
+
+The `Wrap` component accepts the following utility props in addition to style and factory props:
+
+| Prop        | Type                               | Description          |
+| ----------- | ---------------------------------- | -------------------- |
+| `rowGap`    | `number \| string`                 | Gap between rows     |
+| `columnGap` | `number \| string`                 | Gap between columns  |
+| `justify`   | `CSSProperties['justify-content']` | Justify content      |
+| `gap`       | `number \| string`                 | Gap between children |

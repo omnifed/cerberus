@@ -1,0 +1,170 @@
+---
+title: "Spacing"
+description: "JSX style props for controlling the padding and margin of an element."
+---
+
+## Padding
+
+<Note>
+See the list of <a href="#reference">built-in spacing values</a> below.
+</Note>
+
+### All sides
+
+Use the `padding` prop to apply padding on all sides of an element
+
+```tsx
+// raw value
+
+ // shorthand
+
+// token value
+
+ // shorthand
+```
+
+| Prop          | CSS Property | Token Category |
+| ------------- | ------------ | -------------- |
+| `p`,`padding` | `padding`    | `spacing`      |
+
+### Specific side
+
+Use the `padding{Left,Right,Top,Bottom}` to apply padding on one side of an
+element
+
+```tsx
+
+ // shorthand
+
+
+ // shorthand
+```
+
+Use the `padding{Start,End}` props to apply padding on the logical axis of an
+element based on the text direction.
+
+```tsx
+
+ // shorthand
+
+
+ // shorthand
+```
+
+<Note>
+PandaCSS will automagically translate pl/r/t/b to use the start/end/block properties for convenience.
+</Note>
+
+| Prop                  | CSS Property           | Token Category |
+| --------------------- | ---------------------- | -------------- |
+| `pl`, `paddingLeft`   | `padding-left`         | `spacing`      |
+| `pr`, `paddingRight`  | `padding-right`        | `spacing`      |
+| `pt`, `paddingTop`    | `padding-top`          | `spacing`      |
+| `pb`, `paddingBottom` | `padding-bottom`       | `spacing`      |
+| `ps`, `paddingStart`  | `padding-inline-start` | `spacing`      |
+| `pe`, `paddingEnd`    | `padding-inline-end`   | `spacing`      |
+
+### Horizontal and Vertical padding
+
+Use the `padding{X,Y}` props to apply padding on the horizontal and vertical
+axis of an element
+
+```tsx
+
+ // shorthand
+
+
+ // shorthand
+```
+
+| Prop                  | CSS Property           | Token Category |
+| --------------------- | ---------------------- | -------------- |
+| `p`,`padding`         | `padding`              | `spacing`      |
+| `pl`, `paddingLeft`   | `padding-left`         | `spacing`      |
+| `pr`, `paddingRight`  | `padding-right`        | `spacing`      |
+| `pt`, `paddingTop`    | `padding-top`          | `spacing`      |
+| `pb`, `paddingBottom` | `padding-bottom`       | `spacing`      |
+| `px`, `paddingX`      | `padding-inline`       | `spacing`      |
+| `py`, `paddingY`      | `padding-block`        | `spacing`      |
+| `ps`, `paddingStart`  | `padding-inline-start` | `spacing`      |
+| `pe`, `paddingEnd`    | `padding-inline-end`   | `spacing`      |
+
+## Margin
+
+### All sides
+
+Use the `margin` prop to apply margin on all sides of an element
+
+```tsx
+
+ // shorthand
+```
+
+| Prop         | CSS Property | Token Category |
+| ------------ | ------------ | -------------- |
+| `m`,`margin` | `margin`     | `spacing`      |
+
+### Specific side
+
+Use the `margin{Left,Right,Top,Bottom}` to apply margin on one side of an
+element
+
+```tsx
+
+ // shorthand
+
+
+ // shorthand
+```
+
+Use the `margin{Start,End}` properties to apply margin on the logical axis of an
+element based on the text direction.
+
+```tsx
+
+ // shorthand
+
+
+ // shorthand
+```
+
+| Prop                 | CSS Property          | Token Category |
+| -------------------- | --------------------- | -------------- |
+| `ml`, `marginLeft`   | `margin-left`         | `spacing`      |
+| `mr`, `marginRight`  | `margin-right`        | `spacing`      |
+| `mt`, `marginTop`    | `margin-top`          | `spacing`      |
+| `mb`, `marginBottom` | `margin-bottom`       | `spacing`      |
+| `ms`, `marginStart`  | `margin-inline-start` | `spacing`      |
+| `me`, `marginEnd`    | `margin-inline-end`   | `spacing`      |
+
+### Horizontal and Vertical margin
+
+Use the `margin{X,Y}` properties to apply margin on the horizontal and vertical
+axis of an element
+
+```tsx
+
+ // shorthand
+
+
+ // shorthand
+```
+
+| Prop            | CSS Property  | Token Category |
+| --------------- | ------------- | -------------- |
+| `mx`, `marginX` | `margin-left` | `spacing`      |
+| `my`, `marginY` | `margin-top`  | `spacing`      |
+
+## Reference
+
+| Token | Value    | Visual                         |
+| ----- | -------- | ------------------------------ |
+| none  | 0        |  |
+| xs    | 0.25rem  |    |
+| sm    | 0.5rem   |    |
+| md    | 1rem     |    |
+| lg    | 1.5rem   |    |
+| xl    | 2rem     |    |
+| 2xl   | 3rem     |   |
+| 3xl   | 4rem     |   |
+| full  | 31.25rem |  |

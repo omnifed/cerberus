@@ -1,0 +1,48 @@
+---
+title: "Reading Primitive Signals"
+description: "Learn how to read primivite signals in React components."
+---
+
+```tsx
+import { useRead } from '@cerberus/signals'
+```
+
+## Usage
+
+When you want to read a signal value within a component _without having fine-grained
+reactivity_.
+
+<Note>
+This is an alternative API to ReactiveText and should only be used in very specific use cases.
+</Note>
+
+## Reading State
+
+The `useRead` hook was created to provide low-level access control for signals.
+By utilizing this hook, you are **opting out of fine-grained** reactivity and other
+performance enhancing benefits.
+
+<Warning>
+This API should be used sparingly and only for very specific use cases where you know what you are doing.
+</Warning>
+
+<Info>
+Example: [`examples/signals/signal/read.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/signals/signal/read.demo.tsx)
+</Info>
+
+
+<Note>
+We always recommend utilizing ReactiveText over useRead to provide better control over React rendering in addition to a cleaner DX.
+</Note>
+
+## API
+
+`useRead` accepts the following options:
+
+| Params     | Required | Description                                |
+| ---------- | -------- | ------------------------------------------ |
+| `accessor` | `true`   | The signal Accessor value to subscribe to. |
+
+### Return
+
+`useRead` returns the latest value of the signal Accessor.

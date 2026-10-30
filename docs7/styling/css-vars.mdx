@@ -1,0 +1,80 @@
+---
+title: "CSS Variables"
+description: "Using token-aware CSS variables in Cerberus UI"
+---
+
+## Overview
+
+CSS variables have become the defacto way to create shared values on the web.
+It's very useful to avoid prop interpolations, classname regeneration, and
+reduce runtime evaluation of token values.
+
+## Examples
+
+### Basic
+
+Use the `css` prop to create css variables
+
+```tsx
+
+  
+    Hello
+  
+  Hello
+
+```
+
+### Access tokens
+
+Use the full token path to access semantic-tokens
+
+```tsx
+
+  Hello
+
+```
+
+Here's an example of how to access size tokens
+
+```tsx
+
+  
+    Hello
+  
+
+```
+
+### Responsive Styles
+
+Use the responsive syntax to make css variables responsive
+
+```tsx
+
+  
+    Hello
+  
+  Hello
+
+```
+
+### Color Opacity Modifier
+
+When accessing color tokens, you can use the opacity modifier to access the
+color with an opacity. The requirement is to use the `{}` syntax.
+
+```tsx
+
+  Hello
+
+```
+
+### Virtual Color
+
+Variables can point to a virtual color via the `colors.colorPalette.*` value.
+This is useful for creating theme components.
+
+```jsx
+
+  Hello
+
+```

@@ -1,0 +1,59 @@
+---
+title: "Format Relative Time"
+description: "Format relative time using the native `Intl.RelativeTimeFormat` API."
+---
+
+## Import
+
+The time formatting logic supports both string (`HH:mm[:ss]`) and `Date` inputs.
+
+```ts
+import { Format } from '@cerberus/react'
+```
+
+## Usage
+
+### Basic
+
+Use the `Format.Time` component to format a time value with default options.
+
+<Info>
+Example: [`examples/components/format/time.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/format/time.demo.tsx)
+</Info>
+
+
+### Date
+
+Use a `Date` object as the `value`.
+
+<Info>
+Example: [`examples/components/format/date.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/format/date.demo.tsx)
+</Info>
+
+
+### Seconds
+
+Use the `withSeconds` prop to include seconds in the output.
+
+<Info>
+Example: [`examples/components/format/seconds.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/format/seconds.demo.tsx)
+</Info>
+
+
+### AM/PM Labels
+
+Use `amLabel` and `pmLabel` to customize day-period labels when using 12-hour format.
+
+<Info>
+Example: [`examples/components/format/timeLabel.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/format/timeLabel.demo.tsx)
+</Info>
+
+
+### Locale
+
+Use the locale provider to format the time according to a specific locale.
+
+<Info>
+Example: [`examples/components/format/locale.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/format/locale.demo.tsx)
+</Info>
+

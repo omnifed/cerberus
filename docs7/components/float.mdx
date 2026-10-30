@@ -1,0 +1,76 @@
+---
+title: "Float"
+description: "Used to anchor an element to the edge of a container."
+---
+
+## Import
+
+```ts
+import { Float } from 'styled-system/jsx'
+```
+
+## Usage
+
+Used to anchor an element to the edge of a container.
+
+<Info>
+Example: [`examples/components/float/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/float/basic.demo.tsx)
+</Info>
+
+
+### Placement
+
+Use the `placement` prop to position the element along the edges of the
+container.
+
+<Info>
+Example: [`examples/components/float/placements.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/float/placements.demo.tsx)
+</Info>
+
+
+### Offset X
+
+Use the `offsetX` prop to offset the element along the x-axis.
+
+<Info>
+Example: [`examples/components/float/offsetX.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/float/offsetX.demo.tsx)
+</Info>
+
+
+### Offset Y
+
+Use the `offsetY` prop to offset the element along the y-axis.
+
+<Info>
+Example: [`examples/components/float/offsetY.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/float/offsetY.demo.tsx)
+</Info>
+
+
+### Offset
+
+Use the `offset` prop to offset the element along both axes.
+
+<Info>
+Example: [`examples/components/float/offset.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/float/offset.demo.tsx)
+</Info>
+
+
+### Avatar
+
+Here's an example of composing a `Float` component with an `Avatar` component.
+
+<Info>
+Example: [`examples/components/float/avatar.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/float/avatar.demo.tsx)
+</Info>
+
+
+## Props
+
+The `Float` component accepts the following utility props in addition to style and factory props:
+
+| Prop        | Type                                | Description                                                |
+| ----------- | ----------------------------------- | ---------------------------------------------------------- |
+| `placement` | `SystemStyleObject['float']`        | The placement of the float element relative to its parent. |
+| `offsetX`   | `SystemStyleObject['marginInline']` | The offset along the x-axis.                               |
+| `offsetY`   | `SystemStyleObject['marginBlock']`  | The offset along the y-axis.                               |
+| `offset`    | `SystemStyleObject['margin']`       | The offset along both axes.                                |

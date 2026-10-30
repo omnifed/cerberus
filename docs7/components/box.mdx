@@ -1,0 +1,63 @@
+---
+title: "Box"
+description: "The most abstract styling component in Cerberus on top of which all other"
+---
+
+## Import
+
+```ts
+import { Box } from 'styled-system/jsx'
+```
+
+## Usage
+
+The Box pattern does not contain any additional styles. With its function form
+it's the equivalent of the `css` function. It can be useful with its JSX form and
+is the equivalent of a `styled.div` component, serving mostly to get style props
+available in JSX.
+
+<Info>
+Example: [`examples/components/box/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/box/basic.demo.tsx)
+</Info>
+
+
+### Shorthand
+
+Use shorthand like `bgColor` instead of `backgroundColor`, `m` instead of `margin`, etc.
+
+<Info>
+Example: [`examples/components/box/shorthand.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/box/shorthand.demo.tsx)
+</Info>
+
+
+### Pseudo Props
+
+Use pseudo props like `_hover` to apply styles on hover, `_focus` to apply
+styles on focus, etc.
+
+<Info>
+Example: [`examples/components/box/pseudo.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/box/pseudo.demo.tsx)
+</Info>
+
+
+### Border
+
+Use the `border` and `borderColor` prop to apply border styles.
+
+<Info>
+Example: [`examples/components/box/border.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/box/border.demo.tsx)
+</Info>
+
+
+### Shadow
+
+Use the `boxShadow` or `shadow` prop to apply shadow styles.
+
+<Info>
+Example: [`examples/components/box/shadow.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/box/shadow.demo.tsx)
+</Info>
+
+
+## Props
+
+The `Box` component supports all style or factory props for styling.

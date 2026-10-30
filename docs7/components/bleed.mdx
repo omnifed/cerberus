@@ -1,0 +1,47 @@
+---
+title: "Bleed"
+description: "Used to break an element from the boundaries of its container"
+---
+
+## Import
+
+```ts
+import { Bleed } from 'styled-system/jsx'
+```
+
+## Usage
+
+The Bleed pattern is used to create a full width element by negating the padding
+applied to its parent container.
+
+<Info>
+Example: [`examples/components/bleed/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/bleed/basic.demo.tsx)
+</Info>
+
+
+### Vertical
+
+Use the `block` prop to make the element bleed vertically.
+
+<Info>
+Example: [`examples/components/bleed/vertical.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/bleed/vertical.demo.tsx)
+</Info>
+
+
+### Specific Direction
+
+Use the `inline` and `block` props to make the element bleed in a specific direction.
+
+<Info>
+Example: [`examples/components/bleed/direction.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/bleed/direction.demo.tsx)
+</Info>
+
+
+## Props
+
+The `Bleed` component accepts the following utility props in addition to style and factory props:
+
+| Prop     | Type                                | Description                        |
+| -------- | ----------------------------------- | ---------------------------------- |
+| `inline` | `SystemStyleObject['marginInline']` | The negative margin on the x-axis. |
+| `block`  | `SystemStyleObject['marginBlock']`  | The negative margin on the y-axis. |

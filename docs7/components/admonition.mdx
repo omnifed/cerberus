@@ -1,0 +1,105 @@
+---
+title: "Admonition"
+description: "An abstracted informational component that can be used to display important messages or warnings to users."
+---
+
+## Import
+
+```ts
+import { Admonition } from '@cerberus/react'
+```
+
+## Usage
+
+The `Admonition` component is used to display static messagesto users.
+It can be used in various contexts, such as error, success, or informational messages.
+
+<Info>
+Example: [`examples/components/admonition/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/admonition/basic.demo.tsx)
+</Info>
+
+
+## Palette
+
+The `Admonition` component can be customized with different color palettes to
+match the design of your application. You can use any of the state-related palettes
+along with `page`.
+
+<Info>
+Example: [`examples/components/admonition/palette.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/admonition/palette.demo.tsx)
+</Info>
+
+
+## Usage
+
+Use the `usage` prop to display the admonition in a different style. The options
+are `filled` (default) and `outlined`.
+
+<Info>
+Example: [`examples/components/admonition/usage.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/admonition/usage.demo.tsx)
+</Info>
+
+
+## Customizing
+
+You can customize the Admonition any way you like with style props and data-selectors.
+
+<Info>
+Example: [`examples/components/admonition/custom.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/admonition/custom.demo.tsx)
+</Info>
+
+
+## Primitives
+
+You can utilize the primitive components or style props to customize the
+admonition.
+
+| Component             | Description                             |
+| --------------------- | --------------------------------------- |
+| AdmonitionRoot        | The container for the parts             |
+| AdmonitionIndicator   | The icon of the admonition              |
+| AdmonitionContent     | The content container of the admonition |
+| AdmonitionHeading     | The heading of the admonition           |
+| AdmonitionDescription | The description body of the admonition  |
+
+### Data Attributes
+
+The primitives additionally use the following data attributes for custom styling:
+
+| Name         | Value         | Description                  |
+| ------------ | ------------- | ---------------------------- |
+| `data-scope` | `admonition`  | The scope of the components. |
+| `data-part`  | `root`        | The part of the component.   |
+| `data-part`  | `indicator`   | The part of the component.   |
+| `data-part`  | `content`     | The part of the component.   |
+| `data-part`  | `heading`     | The part of the component.   |
+| `data-part`  | `description` | The part of the component.   |
+
+## API
+
+### Props
+
+The `Admonition` component is an abstraction of the primitives and accepts the following props:
+
+| Name      | Default  | Description                                                 |
+| --------- | -------- | ----------------------------------------------------------- |
+| `heading` |          | The heading title of the Admonition.                        |
+| `icon`    |          | An alternative icon to display in the Admonition.           |
+| `palette` | `page`   | The color palette of the Admonition.                        |
+| `usage`   | `filled` | The usage of the Admonition. Can be `filled` or `outlined`. |
+
+### Parts
+
+The `AdmonitionParts` API is an Object containing the full family of components.
+
+<Note>
+It is best to only use the AdmonitionParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not.
+</Note>
+
+| Name          | Description                                                                 |
+| ------------- | --------------------------------------------------------------------------- |
+| `Root`        | The `AdmonitionRoot` component which is the container of the family.        |
+| `Indicator`   | The `AdmonitionIndicator` component which is the icon of the admonition.    |
+| `Content`     | The `AdmonitionContent` component which is the container of the admonition. |
+| `Heading`     | The `AdmonitionHeading` component which is the heading of the admonition.   |
+| `Description` | The `Admonition` component which is the description body of the admonition. |

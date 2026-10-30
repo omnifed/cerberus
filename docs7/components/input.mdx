@@ -1,0 +1,62 @@
+---
+title: "Input"
+description: "The Input component displays a text-based input field."
+---
+
+## Import
+
+```ts
+import { Field, Input } from '@cerberus/react'
+```
+
+## Usage
+
+The `Input` component displays a text-based input field.
+
+<Info>
+Example: [`examples/components/field/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/field/basic.demo.tsx)
+</Info>
+
+
+## With Icons
+
+You can utilize the `startIcon` or `endIcon` props to add icons to the input.
+
+<Info>
+Example: [`examples/components/field/search.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/field/search.demo.tsx)
+</Info>
+
+
+<Note>
+When and input is marked as invalid, the endIcon will be replaced by the invalid icon.
+</Note>
+
+## Autocomplete
+
+<Info>
+Example: [`examples/components/field/autocomplete.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/field/autocomplete.demo.tsx)
+</Info>
+
+
+## Customizing
+
+You can customize the input by passing styles directly into the component. The Input is a re-export of the `FieldInput` primitive.
+
+<Info>
+Example: [`examples/components/field/custom.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/field/custom.demo.tsx)
+</Info>
+
+
+## API
+
+### Props
+
+The `Input` accepts the following props in addition to any native `input` props:
+
+| Name        | Default | Description                                           |
+| ----------- | ------- | ----------------------------------------------------- |
+| `startIcon` |         | An `ElementType` to display at the start of the input |
+| `endIcon`   |         | An `ElementType` to display at the end of the input   |
+| `size`      |         | This size variant of the input                        |
+
+The `Input` component also accepts any of the props from the [`FieldParts.Input` primitive](https://ark-ui.com/react/docs/components/field#api-reference).

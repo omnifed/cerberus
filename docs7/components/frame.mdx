@@ -1,0 +1,55 @@
+---
+title: "Frame"
+description: "Used to render a component in an iframe"
+---
+
+## Import
+
+The `Frame` component is used to render a component in an iframe.
+
+- Tracks the size of the content and exposes them via css variables.
+- Support for `head` prop to inject scripts and styles.
+- Support for mount and unmount callbacks.
+
+```ts
+import { Frame } from '@cerberus/react'
+```
+
+## Usage
+
+### Basic
+
+Wrap your component in the `Frame` component to render it in an iframe.
+
+<Info>
+Example: [`examples/components/frame/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/frame/basic.demo.tsx)
+</Info>
+
+
+### Injecting Script
+
+Using the `onMount` prop, you can inject a script into the iframe.
+
+<Info>
+Example: [`examples/components/frame/inject.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/frame/inject.demo.tsx)
+</Info>
+
+
+### Custom src doc
+
+Use the `srcDoc` prop to specify the HTML content of the page to use in the iframe.
+
+<Info>
+Example: [`examples/components/frame/custom.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/frame/custom.demo.tsx)
+</Info>
+
+
+## API Reference
+
+#### Props
+
+| Prop            | Type                                                                                                                                                         | Required | Default     | Description                                                  |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ----------- | ------------------------------------------------------------ |
+| **`head`**      | `string \| number \| bigint \| boolean \| ReactElement<unknown, string \| JSXElementConstructor<any>> \| Iterable<ReactNode> \| ReactPortal \| Promise<...>` | false    | `undefined` | Additional content to be inserted into the frame's `<head>`  |
+| **`onMount`**   | `() => void`                                                                                                                                                 | false    | `undefined` | Callback function to be executed when the frame is mounted   |
+| **`onUnmount`** | `() => void`                                                                                                                                                 | false    | `undefined` | Callback function to be executed when the frame is unmounted |

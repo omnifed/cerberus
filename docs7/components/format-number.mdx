@@ -1,0 +1,69 @@
+---
+title: "Format Number"
+description: "Formats a number value with automatic unit conversion and display options."
+---
+
+## Import
+
+The number formatting logic is handled by the native `Intl.NumberFormat` API and smartly cached to avoid performance
+issues when using the same locale and options.
+
+```jsx
+import { Format } from '@cerberus/react'
+```
+
+## Usage
+
+### Basic
+
+Use the `Format.Number` component to format a number with default options.
+
+<Info>
+Example: [`examples/components/format/number.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/format/number.demo.tsx)
+</Info>
+
+
+### Percentage
+
+Use the `style="percent"` prop to format the number as a percentage.
+
+<Info>
+Example: [`examples/components/format/percent.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/format/percent.demo.tsx)
+</Info>
+
+
+### Currency
+
+Use the `style="currency"` prop along with the `currency` prop to format the number as a currency.
+
+<Info>
+Example: [`examples/components/format/currency.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/format/currency.demo.tsx)
+</Info>
+
+
+### Locale
+
+Use the `locale` prop to format the number according to a specific locale.
+
+<Info>
+Example: [`examples/components/format/locale.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/format/locale.demo.tsx)
+</Info>
+
+
+### Unit
+
+Use the `style="unit"` prop along with the `unit` prop to format the number with a specific unit.
+
+<Info>
+Example: [`examples/components/format/unit.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/format/unit.demo.tsx)
+</Info>
+
+
+### Compact Notation
+
+Use the `notation="compact"` prop to format the number in compact notation.
+
+<Info>
+Example: [`examples/components/format/compact.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/format/compact.demo.tsx)
+</Info>
+

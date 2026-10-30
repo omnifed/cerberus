@@ -1,0 +1,74 @@
+---
+title: "Divider"
+description: "Used to create visual separation between content."
+---
+
+## Import
+
+```ts
+import { Divider } from 'styled-system/jsx'
+```
+
+## Usage
+
+Used to visually separate content.
+
+<Info>
+Example: [`examples/components/divider/basic.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/divider/basic.demo.tsx)
+</Info>
+
+
+## Appearance
+
+To change the appearance of the divider, use the `borderStyle` prop.
+
+<Info>
+Example: [`examples/components/divider/appearance.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/divider/appearance.demo.tsx)
+</Info>
+
+
+### Orientation
+
+Use the `orientation` prop to change the orientation of the divider.
+
+<Info>
+Example: [`examples/components/divider/orientation.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/divider/orientation.demo.tsx)
+</Info>
+
+
+### Thickness
+
+Use the `thickness` prop to change the thickness of the divider.
+
+<Info>
+Example: [`examples/components/divider/thickness.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/divider/thickness.demo.tsx)
+</Info>
+
+
+### Color
+
+Use the `color` prop to change the color of the divider.
+
+<Info>
+Example: [`examples/components/divider/color.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/divider/color.demo.tsx)
+</Info>
+
+
+## Label
+
+Create visual labels by combining a `Divider` with other layout components.
+
+<Info>
+Example: [`examples/components/divider/label.demo.tsx`](https://github.com/omnifed/cerberus/blob/main/docs/examples/components/divider/label.demo.tsx)
+</Info>
+
+
+## Props
+
+The `Divider` component accepts the following utility props in addition to style and factory props:
+
+| Prop          | Type                  | Description                                                 |
+| ------------- | --------------------- | ----------------------------------------------------------- |
+| `orientation` | `horizontal,vertical` | The orientation of the divider. Defaults to `"horizontal"`. |
+| `thickness`   | `string`              | The thickness of the divider. Defaults to `"1px"`.          |
+| `color`       | `string`              | The color of the divider. Defaults to `"gray.200"`.         |
