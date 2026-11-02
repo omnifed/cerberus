@@ -1,8 +1,5 @@
-import {
-  defineRecipe,
-  type RecipeConfig,
-  type RecipeVariantRecord,
-} from '@pandacss/dev'
+import { defineRecipe } from '@pandacss/dev'
+import type { RecipeConfig, RecipeVariantRecord } from '@pandacss/types'
 
 /**
  * This module contains the tbody recipe.
@@ -14,6 +11,7 @@ import {
  * @definition [Table docs](https://cerberus.digitalu.design/react/table)
  */
 export const tbody: RecipeConfig<RecipeVariantRecord> = defineRecipe({
+  deprecated: true,
   className: 'tbody',
   description: 'Styles for the Tbody component.',
 

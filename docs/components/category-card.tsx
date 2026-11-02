@@ -78,7 +78,7 @@ export function CategoryCard(props: CategoryCardProps) {
   //       >
   //         <ImgFeature />
   //       </Box>
-  //       <VStack alignItems="flex-start" gap="xs" pxi="xs" py="lg" w="full">
+  //       <VStack alignItems="flex-start" gap="xs" px="xs" py="lg" w="full">
   //         <Text
   //           color="page.text.200"
   //           textStyle="heading-md"

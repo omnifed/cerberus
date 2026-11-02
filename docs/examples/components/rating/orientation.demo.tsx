@@ -3,10 +3,10 @@
 import { Stack } from '@/styled-system/jsx'
 import { StarFilled, StarHalf } from '@carbon/icons-react'
 import { For, Rating, RatingProps } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'ratingGroup')?.variants
-  .orientation ?? []) as RatingProps['orientation'][]
+const variants = data.slotRecipes.ratingGroup.variants.orientation
+  .values as RatingProps['orientation'][]
 
 export function OrientationDemo() {
   return (

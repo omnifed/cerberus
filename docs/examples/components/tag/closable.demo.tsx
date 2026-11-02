@@ -1,7 +1,11 @@
 'use client'
 
 import { HStack } from '@/styled-system/jsx'
-import { Tag } from '@cerberus-design/react'
+import { ClosableTagProps, For, Tag } from '@cerberus-design/react'
+import data from 'styled-system/specs/design-system.json'
+
+const variants = data.recipes.closableTag.variants.palette
+  .values as ClosableTagProps['palette'][]
 
 export function ClosableDemo() {
   const handleClick = () => {
@@ -10,15 +14,17 @@ export function ClosableDemo() {
 
   return (
     <HStack gap="md">
-      <Tag onClick={handleClick}>Closable</Tag>
-
-      <Tag palette="info" onClick={handleClick}>
+      <Tag pending onClick={handleClick}>
         Closable
       </Tag>
 
-      <Tag palette="danger" onClick={handleClick}>
-        Closable
-      </Tag>
+      <For each={variants}>
+        {(palette) => (
+          <Tag key={String(palette)} palette={palette} onClick={handleClick}>
+            {String(palette)}
+          </Tag>
+        )}
+      </For>
     </HStack>
   )
 }

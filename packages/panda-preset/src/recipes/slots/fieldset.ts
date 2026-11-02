@@ -1,8 +1,8 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { fieldsetAnatomy } from '@ark-ui/react'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { formStates } from '../shared/states'
 import { field } from './field'
-// import { focusStates } from '../shared/states'
 
 /**
  * This module contains the fieldset recipe.

@@ -1,7 +1,8 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { toastAnatomy } from '@ark-ui/react'
-import { focusStates } from '../shared/states'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { iconButton } from '../iconButton'
+import { focusStates } from '../shared/states'
 
 /**
  * This module contains the toast recipe.

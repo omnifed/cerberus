@@ -13,7 +13,7 @@ describe('tooltip recipe', () => {
     expect(tooltip.base?.content).toMatchObject({
       bg: tooltipBg,
       color: 'page.text.inverse',
-      pxi: '3',
+      px: '3',
       py: 2,
       rounded: 'sm',
       maxH: '6rem',

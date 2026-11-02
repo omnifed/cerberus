@@ -139,7 +139,7 @@ describe('table recipe', () => {
       borderTop: '1px solid',
       borderColor: 'page.border.200',
       h: 'var(--table-cell-size)',
-      pxi: 'var(--table-cell-padding-x)',
+      px: 'var(--table-cell-padding-x)',
       textAlign: 'start',
       textStyle: 'label-md',
       _last: {

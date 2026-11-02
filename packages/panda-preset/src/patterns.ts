@@ -1,10 +1,5 @@
-import type { PatternConfig } from '@pandacss/types'
-
-export function definePattern<T extends PatternConfig>(
-  config: T,
-): PatternConfig {
-  return config
-}
+import { definePattern } from '@pandacss/dev/define'
+import type { Config, PatternConfig } from '@pandacss/types'
 
 /**
  * A container that allows for scrolling
@@ -245,7 +240,7 @@ const scaleFadeIn: PatternConfig = definePattern({
   },
 })
 
-export const patterns = {
+export const patterns: Config['patterns'] = {
   extend: {
     animateIn,
     emphasizedFadeIn,

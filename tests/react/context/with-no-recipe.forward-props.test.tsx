@@ -1,4 +1,4 @@
-import { createCerberusPrimitive } from '@cerberus-design/react/src/system'
+import { createCerberusPrimitive } from '@cerberus-design/react'
 import { render, screen } from '@testing-library/react'
 import { expect, test } from 'bun:test'
 

@@ -12,7 +12,7 @@ describe('modal recipe', () => {
     expect(modal.base?.dialog).toMatchObject({
       alignSelf: 'safe center',
       bgColor: 'page.surface.100',
-      mxi: 'auto',
+      mx: 'auto',
       rounded: 'md',
       shadow: 'lg',
       _backdrop: {
@@ -40,7 +40,7 @@ describe('modal recipe', () => {
 
   test('should have a icon style', () => {
     expect(modal.base?.icon).toMatchObject({
-      mxi: 'auto',
+      mx: 'auto',
       p: '2',
     })
   })

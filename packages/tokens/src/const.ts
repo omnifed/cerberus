@@ -1,7 +1,4 @@
-import {
-  GradientText,
-  GradientValue,
-} from './theme-contract/theme-contracts.types'
+import { GradientText, GradientValue } from './theme-contract/theme-contracts.types'
 import { SemanticToken, Sentiment } from './semantic-tokens.types'
 
 export const PALETTES: Sentiment[] = [
@@ -14,20 +11,20 @@ export const PALETTES: Sentiment[] = [
 ]
 
 export const GRADIENTS: GradientValue[] = [
+  'amphiaraus-dark',
+  'amphiaraus-light',
+  'asphodel-light',
+  'asphodel-dark',
   'charon-light',
   'charon-dark',
+  'hades-light',
+  'hades-dark',
   'nyx-light',
   'nyx-dark',
-  'amphiaraus-light',
-  'amphiaraus-dark',
   'styx-light',
   'styx-dark',
   'thanatos-light',
   'thanatos-dark',
-  'hades-light',
-  'hades-dark',
-  'asphodel-light',
-  'asphodel-dark',
 ]
 
 export const GRADIENT_TEXT: GradientText = {

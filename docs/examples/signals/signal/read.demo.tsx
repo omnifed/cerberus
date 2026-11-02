@@ -72,7 +72,7 @@ function ReactiveList() {
       <HStack gap="md" h="2rem" overflowX="auto" w="full">
         <For each={items()}>
           {(item) => (
-            <DecorativeBox p="sm" w="fit-content">
+            <DecorativeBox key={item} p="sm" w="fit-content">
               {item}
             </DecorativeBox>
           )}

@@ -1,10 +1,9 @@
 import { Stack } from '@/styled-system/jsx'
 import { For, Slider, SliderProps } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 import { getSacredNumber } from './utils'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'slider')?.variants.usage ??
-  []) as SliderProps['usage'][]
+const variants = data.slotRecipes.slider.variants.usage.values as SliderProps['usage'][]
 
 export function UsageDemo() {
   return (

@@ -7,7 +7,6 @@ const GradientList = dynamic(() => import('./gradients/list.lazy'))
 const Keyframes = dynamic(() => import('./animations/keyframes.lazy'))
 const LayerStyles = dynamic(() => import('./layer-styles.lazy'))
 const PaletteGroup = dynamic(() => import('./colors/palette-group.lazy'))
-const PrimitiveColorGroup = dynamic(() => import('./colors/primitive-color-group.lazy'))
 const ShadowTokens = dynamic(() => import('./shadows/shadow-tokens.lazy'))
 const SpacingVisual = dynamic(() => import('./spacing/spacing-visual.lazy'))
 const TextGradient = dynamic(() => import('./gradients/text-gradient.lazy'))
@@ -23,7 +22,6 @@ export const lazyMdxComponents = {
   Keyframes,
   LayerStyles,
   PaletteGroup,
-  PrimitiveColorGroup,
   ShadowTokens,
   TextGradient,
   TypographyList,

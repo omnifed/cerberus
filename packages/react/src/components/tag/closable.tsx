@@ -1,47 +1,37 @@
 'use client'
 
-import { type ButtonHTMLAttributes } from 'react'
+import { Box } from 'styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
 import { IconButton, type IconButtonProps } from '../icon-button'
-import { TagRoot, TagRootProps } from './primitives'
-
-export interface ClosableTagProps extends TagRootProps {
-  /**
-   * The action to be performed when the close button is clicked.
-   */
-  onClick: ButtonHTMLAttributes<HTMLButtonElement>['onClick']
-}
+import { Show } from '../show/show'
+import { ClosableTagProps, ClosableTagRoot } from './primitives'
 
 export function ClosableTag(props: ClosableTagProps) {
-  const { onClick, children, ...rootProps } = props
+  const { onClick, children, pending, palette, ...tagProps } = props
 
   const { icons } = useCerberusContext()
   const { close: Close } = icons
 
-  const palette =
-    rootProps.palette === 'page'
-      ? 'secondaryAction'
-      : (rootProps.palette ?? 'secondaryAction')
-
   return (
-    <TagRoot
-      data-palette={palette}
-      palette={palette}
-      shape="pill"
-      pe="0"
-      {...rootProps}
-    >
-      {children}
+    <ClosableTagRoot data-palette={palette} palette={palette} {...tagProps}>
+      <Show when={pending} fallback={children}>
+        {() => (
+          <Box aria-busy bgColor="secondaryAction.bg.hover" rounded="xs">
+            {children}
+          </Box>
+        )}
+      </Show>
 
       <IconButton
         ariaLabel="Close tag"
+        disabled={pending}
         onClick={onClick}
         palette={palette as IconButtonProps['palette']}
         usage="filled"
-        size="sm"
+        size="xs"
       >
         <Close />
       </IconButton>
-    </TagRoot>
+    </ClosableTagRoot>
   )
 }

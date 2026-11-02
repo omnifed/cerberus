@@ -1,32 +1,32 @@
-import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
+import { createCerberusConfig } from '@cerberus/panda-preset'
 import { presetAcheronTheme } from '@cerberus/preset-acheron-theme'
 import { presetElysiumTheme } from '@cerberus/preset-elysium-theme'
 import { presetOceanusTheme } from '@cerberus/preset-oceanus-theme'
+import { globalCss } from './system/global-css'
 
 const isProd = process.env.NODE_ENV === 'production'
 
 export default createCerberusConfig({
-  clean: true,
+  designSystem: '@cerberus-design/data-grid',
+
+  presets: [presetAcheronTheme, presetElysiumTheme, presetOceanusTheme],
+
+  include: ['./mdx-components.tsx', './**/*.{ts,tsx}'],
+  exclude: ['./app/(llms)/*'],
+
   minify: isProd,
-  // hash: isProd,
+  optimize: {
+    removeUnusedKeyframes: isProd,
+    removeUnusedTokens: isProd,
+    smartCompoundVariants: isProd,
+    treeshakeDesignSystem: isProd,
+  },
 
-  include: [
-    './node_modules/@cerberus-design/react/**/*.{ts,tsx,js,jsx}',
-    './node_modules/@cerberus-design/data-grid/src/components/*.client.{ts,tsx}',
-    './mdx-components.tsx',
-    './**/*.{ts,tsx}',
-  ],
-  exclude: [],
-
-  presets: [
-    createCerberusPreset(),
-    presetAcheronTheme,
-    presetElysiumTheme,
-    presetOceanusTheme,
-  ],
+  globalCss,
 
   globalVars: {
-    '--nav-height': '3.75rem',
+    '--indent-offset': '0.5em',
+    '--nav-height': '4.75rem',
     '--shiki-background': 'var(--cerberus-colors-page-surface-100)',
     '--shiki-foreground': 'var(--cerberus-colors-page-text-initial)',
     '--shiki-token-keyword': 'var(--cerberus-colors-secondary-action-text-initial)',
@@ -36,8 +36,8 @@ export default createCerberusConfig({
     '--shiki-token-string-expression': 'var(--cerberus-colors-success-bg-active)',
     '--shiki-token-parameter': 'var(--cerberus-colors-page-text-initial)',
     '--shiki-token-punctuation': 'var(--cerberus-colors-page-text-100)',
-    '--shiki-token-comment': 'var(--cerberus-colors-page-text-100)',
-    '--shiki-token-link': 'var(--cerberus-colors-action-text-navigation-hover)',
+    '--shiki-token-comment': 'var(--cerberus-colors-page-border-100)',
+    '--shiki-token-link': 'var(--cerberus-colors-action-navigation-hover)',
   },
 
   theme: {
@@ -50,5 +50,16 @@ export default createCerberusConfig({
         },
       },
     },
+  },
+
+  staticCss: {
+    css: [
+      {
+        properties: {
+          layerStyle: ['*'],
+          focusRing: ['*'],
+        },
+      },
+    ],
   },
 })

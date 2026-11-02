@@ -38,7 +38,7 @@ describe('tabs recipe', () => {
       h: '2.75rem',
       justifyContent: 'center',
       position: 'relative',
-      pxi: '4',
+      px: '4',
       zIndex: 'base',
       _disabled: {
         cursor: 'not-allowed',

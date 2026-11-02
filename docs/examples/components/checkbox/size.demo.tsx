@@ -1,17 +1,19 @@
 'use client'
 
+import { sortSizeVariants } from '@/lib/design-system'
 import { Box } from '@/styled-system/jsx'
 import { Checkbox, CheckboxGroup, CheckboxProps, For } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'checkbox')?.variants.size ??
-  []) as CheckboxProps['size'][]
+const variants = data.slotRecipes.checkbox.variants.size
+  .values as CheckboxProps['size'][]
+const sortedSizes = sortSizeVariants(variants)
 
 export function SizeDemo() {
   return (
     <Box w="1/2">
       <CheckboxGroup name="size">
-        <For each={variants}>
+        <For each={sortedSizes}>
           {(size) => (
             <Checkbox key={String(size)} size={size}>
               {String(size)}

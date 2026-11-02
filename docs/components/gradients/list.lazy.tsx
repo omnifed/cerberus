@@ -163,7 +163,7 @@ export default function GradientList() {
                 className={vstack({
                   alignItems: 'flex-start',
                   pb: 4,
-                  pxi: '5',
+                  px: '5',
                   pt: 3,
                 })}
               >

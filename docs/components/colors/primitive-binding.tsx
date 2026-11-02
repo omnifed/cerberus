@@ -2,7 +2,7 @@ import { Text } from '@cerberus-design/react'
 import { formatRgba } from './helpers'
 
 interface PrimitiveBindingProps {
-  reference: string | null
+  reference: string | undefined
 }
 
 export function PrimitiveBinding(props: PrimitiveBindingProps) {

@@ -1,9 +1,8 @@
 import { Button, ButtonProps, For } from '@cerberus-design/react'
 import { HStack } from 'styled-system/jsx'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'button')?.variants.shape ??
-  []) as ButtonProps['shape'][]
+const variants = data.recipes.button.variants.shape.values as ButtonProps['shape'][]
 
 export function ShapesDemo() {
   return (

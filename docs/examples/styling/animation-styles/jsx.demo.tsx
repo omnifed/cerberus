@@ -10,14 +10,14 @@ export function JSXDemo() {
   return (
     <>
       <Button size="sm" onClick={() => setIsVisible(!isVisible)}>
-        <Show when={isVisible} fallback="Show Emphasized Fade In">
+        <Show when={isVisible} fallback="Show Emphasized Slide In">
           Reset
         </Show>
       </Button>
 
       <Show when={isVisible}>
         <EmphasizedSlideIn>
-          <Box>This content will fade in with emphasis</Box>
+          <Box>This content will slide in with emphasis</Box>
         </EmphasizedSlideIn>
       </Show>
     </>

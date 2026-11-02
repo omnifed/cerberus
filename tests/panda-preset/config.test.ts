@@ -1,18 +1,13 @@
 import { describe, expect, test } from 'bun:test'
-import {
-  createCerberusConfig,
-  createCerberusPreset,
-} from '@cerberus/panda-preset'
+import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
 
 describe('createCerberusConfig', () => {
   test('should return a valid PandaCSS config', () => {
     const config = createCerberusConfig({
-      clean: true,
       exclude: [],
     })
 
     expect(config).toBeDefined()
-    expect(config.clean).toBe(true)
     expect(config.exclude).toEqual([])
   })
 })

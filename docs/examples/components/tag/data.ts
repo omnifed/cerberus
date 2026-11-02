@@ -1,22 +1,45 @@
-import { TagProps } from '@cerberus-design/react'
-import specData from 'styled-system/specs/recipes.json'
+import {
+  type FilledTagProps,
+  type GradientTagProps,
+  TagProps,
+} from '@cerberus-design/react'
+import { type StrictNonNullable } from '@cerberus/panda-preset'
+import data from 'styled-system/specs/design-system.json'
 
-export const tagData = specData.data.find((item) => item.name === 'tag')
-export const tagVariants = tagData?.variants as Record<string, string[]>
+const gradTag = data.recipes.gradientTag
+export const gradTagVariants = gradTag.variants
 
-export const tagGradients = (tagVariants?.gradient ?? []) as TagProps['gradient'][]
-export const tagShapes = (tagVariants?.shape ?? []) as TagProps['shape'][]
-export const tagPalettes = (tagVariants?.palette ?? []) as TagProps['palette'][]
-export const tagUsages = (tagVariants?.usage ?? []) as TagProps['usage'][]
+export const gradTagGradients = gradTagVariants.gradient.values as StrictNonNullable<
+  GradientTagProps['gradient']
+>[]
 
-interface VariantProps {
-  usage: TagProps['usage']
-  shape: TagProps['shape']
+export const tagData = data.recipes.tag
+export const tagVariants = tagData.variants
+
+export const tagShapes = tagVariants.shape.values as FilledTagProps['shape'][]
+export const tagPalettes = tagVariants.palette.values as FilledTagProps['palette'][]
+export const tagUsages = tagVariants.usage.values as TagProps['usage'][]
+
+type VariantProps = {
+  usage: FilledTagProps['usage']
+  shape: FilledTagProps['shape']
 }
 
 export const variants: VariantProps[] = [
   { usage: 'filled', shape: 'pill' },
   { usage: 'outlined', shape: 'pill' },
   { usage: 'filled', shape: 'square' },
+  { usage: 'outlined', shape: 'square' },
+]
+
+type GradVariantProps = {
+  shape: GradientTagProps['shape']
+  usage: GradientTagProps['usage']
+}
+
+export const gradVariants: GradVariantProps[] = [
+  { usage: undefined, shape: 'pill' },
+  { usage: 'outlined', shape: 'pill' },
+  { usage: undefined, shape: 'square' },
   { usage: 'outlined', shape: 'square' },
 ]

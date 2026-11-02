@@ -1,5 +1,4 @@
 import {
-  conditions,
   getThemeName,
   pageTokens,
   actionTokens,
@@ -22,10 +21,6 @@ describe('Cerberus Theme', () => {
 
   test('should provide a theme name helper', () => {
     expect(getThemeName()).toBe('cerberus')
-  })
-
-  test('should provide a new condition', () => {
-    expect(conditions.cerberusTheme).toEqual('[data-panda-theme=cerberus] &')
   })
 
   test('pageTokens should match the established baseline', () => {

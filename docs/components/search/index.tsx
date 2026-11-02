@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, HStack, Scrollable } from '@/styled-system/jsx'
+import { Box, Center, HStack, Scrollable } from '@/styled-system/jsx'
 import { Add, MacCommand, Search as SearchIcon } from '@carbon/icons-react'
 import {
   Dialog,
@@ -128,26 +128,43 @@ export function Search() {
         <DialogTrigger
           aria-label="Search (Meta+k)"
           aria-keyshortcuts="Meta+k"
-          bgColor="page.bg.initial"
-          border="1px solid"
-          borderColor="page.border.initial"
-          focusVisibleRing="outside"
           h="2.25rem"
           px="md"
-          rounded="full"
-          w="full"
+          css={{
+            '& :is([data-tablet])': {
+              display: 'none',
+            },
+          }}
+          lg={{
+            bgColor: 'page.bg.initial',
+            border: '1px solid',
+            borderColor: 'page.border.initial',
+            cursor: 'pointer',
+            focusVisibleRing: 'outside',
+            rounded: 'full',
+            w: 'full',
+            '& :is([data-mobile])': {
+              display: 'none',
+            },
+            '& :is([data-tablet])': {
+              display: 'flex',
+            },
+          }}
         >
-          <HStack h="full" justify="space-between" w="full">
-            <HStack color="page.text.100" gap="sm">
-              <SearchIcon />
-              <Text textStyle="label-sm">Search Cerberus</Text>
+          <Center>
+            <SearchIcon data-mobile />
+            <HStack data-tablet h="full" justify="space-between" w="full">
+              <HStack color="page.text.100" gap="sm">
+                <SearchIcon />
+                <Text textStyle="label-sm">Search Cerberus</Text>
+              </HStack>
+              <HStack color="page.text.100" gap="xs">
+                <MacCommand />
+                <Add />
+                <Text>K</Text>
+              </HStack>
             </HStack>
-            <HStack color="page.text.100" gap="xs">
-              <MacCommand />
-              <Add />
-              <Text>K</Text>
-            </HStack>
-          </HStack>
+          </Center>
         </DialogTrigger>
 
         <Dialog ref={containerRef} onKeyDown={handleKeyDown} p="lg" size="md">

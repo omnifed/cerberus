@@ -1,5 +1,6 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { fileUploadAnatomy } from '@ark-ui/react/file-upload'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { modalIconBase } from '../shared/modal.base'
 
 /**

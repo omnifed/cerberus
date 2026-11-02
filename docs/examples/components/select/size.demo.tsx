@@ -1,5 +1,6 @@
 'use client'
 
+import { sortSizeVariants } from '@/lib/design-system'
 import { Stack } from '@/styled-system/jsx'
 import { SelectVariantProps } from '@/styled-system/recipes'
 import {
@@ -9,11 +10,11 @@ import {
   Option,
   Select,
 } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants =
-  recipesSpec.data.find((r) => r.name === 'select')?.variants.size ??
-  ([] as SelectVariantProps['size'][])
+const variants = data.slotRecipes.select.variants.size
+  .values as SelectVariantProps['size'][]
+const sortedSizes = sortSizeVariants(variants)
 
 const collection = createSelectCollection([
   { label: 'Hades', value: 'hades' },
@@ -26,7 +27,7 @@ const collection = createSelectCollection([
 export function SizeDemo() {
   return (
     <Stack gap="lg" w="3/4">
-      <For each={variants}>
+      <For each={sortedSizes}>
         {(size) => (
           <Field label={`${size} Size`} key={String(size)}>
             <Select collection={collection} placeholder="Choose option" size={size}>

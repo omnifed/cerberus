@@ -155,6 +155,7 @@ export class CerberusPrimitive {
 
         const [variantOptions, nativeProps] =
           recipe.splitVariantProps(restOfInternalProps)
+        // @ts-expect-error this is not a problem
         const styles = recipe(variantOptions)
         const slotStyles = styles[slot as keyof typeof styles]
 

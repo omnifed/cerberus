@@ -30,7 +30,7 @@ describe('iconButton recipe', () => {
       flexShrink: 0,
       h: 'var(--btn-h)',
       minW: 'initial',
-      pxi: '0',
+      px: '0',
       rounded: 'full',
       w: 'var(--btn-w)',
       _disabled: {

@@ -4,15 +4,18 @@
   "description": "The Cerberus Design React component library.",
   "keywords": [
     "css",
-    "design-system",
-    "digital university",
-    "du design system",
+    "design",
+    "design system",
+    "design system factory",
     "omni-federal",
-    "panda-css",
-    "panda-css react",
+    "pandacss",
+    "pandacss react",
+    "primitive react components",
     "react",
+    "system",
     "ui",
-    "ui library"
+    "ui library",
+    "us military"
   ],
   "license": "ISC",
   "author": "developers@omnifederal.com",
@@ -21,12 +24,67 @@
   },
   "files": [
     "dist",
+    "src",
+    "styled-system",
     "package.json"
   ],
   "type": "module",
   "sideEffects": false,
   "main": "src/index.ts",
   "module": "src/index.ts",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/components/*/index.ts"
+    },
+    "./package.json": "./package.json",
+    "./panda/*": "./dist/panda/*",
+    "./css": {
+      "types": "./styled-system/css/index.d.ts",
+      "default": "./styled-system/css/index.js"
+    },
+    "./css/*": {
+      "types": "./styled-system/css/*.d.ts",
+      "default": "./styled-system/css/*.js"
+    },
+    "./recipes": {
+      "types": "./styled-system/recipes/index.d.ts",
+      "default": "./styled-system/recipes/index.js"
+    },
+    "./recipes/*": {
+      "types": "./styled-system/recipes/*.d.ts",
+      "default": "./styled-system/recipes/*.js"
+    },
+    "./patterns": {
+      "types": "./styled-system/patterns/index.d.ts",
+      "default": "./styled-system/patterns/index.js"
+    },
+    "./patterns/*": {
+      "types": "./styled-system/patterns/*.d.ts",
+      "default": "./styled-system/patterns/*.js"
+    },
+    "./jsx": {
+      "types": "./styled-system/jsx/index.d.ts",
+      "default": "./styled-system/jsx/index.js"
+    },
+    "./jsx/*": {
+      "types": "./styled-system/jsx/*.d.ts",
+      "default": "./styled-system/jsx/*.js"
+    },
+    "./tokens": {
+      "types": "./styled-system/tokens/index.d.ts",
+      "default": "./styled-system/tokens/index.js"
+    },
+    "./helpers": {
+      "types": "./styled-system/helpers.d.ts",
+      "default": "./styled-system/helpers.js"
+    },
+    "./types": {
+      "types": "./styled-system/types/index.d.ts"
+    }
+  },
   "publishConfig": {
     "main": "dist/index.cjs",
     "module": "dist/index.js",
@@ -62,14 +120,61 @@
           "default": "./dist/components/*/index.cjs"
         }
       },
-      "./package.json": "./package.json"
+      "./package.json": "./package.json",
+      "./panda/*": "./dist/panda/*",
+      "./css": {
+        "types": "./styled-system/css/index.d.ts",
+        "default": "./styled-system/css/index.js"
+      },
+      "./css/*": {
+        "types": "./styled-system/css/*.d.ts",
+        "default": "./styled-system/css/*.js"
+      },
+      "./recipes": {
+        "types": "./styled-system/recipes/index.d.ts",
+        "default": "./styled-system/recipes/index.js"
+      },
+      "./recipes/*": {
+        "types": "./styled-system/recipes/*.d.ts",
+        "default": "./styled-system/recipes/*.js"
+      },
+      "./patterns": {
+        "types": "./styled-system/patterns/index.d.ts",
+        "default": "./styled-system/patterns/index.js"
+      },
+      "./patterns/*": {
+        "types": "./styled-system/patterns/*.d.ts",
+        "default": "./styled-system/patterns/*.js"
+      },
+      "./jsx": {
+        "types": "./styled-system/jsx/index.d.ts",
+        "default": "./styled-system/jsx/index.js"
+      },
+      "./jsx/*": {
+        "types": "./styled-system/jsx/*.d.ts",
+        "default": "./styled-system/jsx/*.js"
+      },
+      "./tokens": {
+        "types": "./styled-system/tokens/index.d.ts",
+        "default": "./styled-system/tokens/index.js"
+      },
+      "./helpers": {
+        "types": "./styled-system/helpers.d.ts",
+        "default": "./styled-system/helpers.js"
+      },
+      "./types": {
+        "types": "./styled-system/types/index.d.ts"
+      }
     },
     "access": "public"
   },
   "scripts": {
-    "generate:info": "pnpm panda ship --outfile dist/panda.buildinfo.json",
-    "build": "vite build && pnpm generate:info",
+    "generate": "panda codegen && panda lib",
+    "prepublishOnly": "pnpm generate",
+    "lib": "pnpm generate",
+    "watch": "pnpm generate --watch",
     "clean": "rm -rf ./dist",
+    "build": "vite build && pnpm lib",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "dependencies": {
@@ -80,6 +185,7 @@
     "@cerberus/panda-preset": "workspace:*",
     "@internationalized/date": "^3.12.4",
     "@pandacss/dev": "catalog:pandacss",
+    "@pandacss/types": "catalog:pandacss",
     "@types/react": "catalog:jsx",
     "@types/react-dom": "catalog:jsx",
     "@typescript/typescript6": "catalog:jsx",

@@ -1,27 +1,35 @@
 import { Grid, GridItem } from '@/styled-system/jsx'
 import { Information } from '@carbon/icons-react'
-import { Tag, Text } from '@cerberus-design/react'
+import { For, Tag, Text } from '@cerberus-design/react'
 import { Fragment } from 'react'
-import { tagGradients, variants } from './data'
+import { gradTagGradients, gradVariants } from './data'
 
-const GRAD_LIST = tagGradients.map((gradient) => ({ gradient, variants }))
+const VARIANTS = gradTagGradients.map((gradient) => ({
+  gradient,
+  variants: gradVariants,
+}))
 
 export function GradientDemo() {
   return (
     <Grid columns={5} gap="md" px="lg" w="full">
-      {GRAD_LIST.map(({ gradient, variants }) => (
-        <Fragment key={`${gradient}`}>
-          <Text as="small">{gradient}:</Text>
-          {variants.map(({ usage, shape }, idx) => (
-            <GridItem key={`${gradient}-${idx}`} colSpan={1}>
-              <Tag gradient={gradient} usage={usage} shape={shape}>
-                <Information />
-                Label
-              </Tag>
-            </GridItem>
-          ))}
-        </Fragment>
-      ))}
+      <For each={VARIANTS}>
+        {(option) => (
+          <Fragment key={option.gradient}>
+            <Text as="small">{option.gradient}:</Text>
+
+            <For each={option.variants}>
+              {({ usage, shape }) => (
+                <GridItem key={`${option.gradient}:${usage}:${shape}`} colSpan={1}>
+                  <Tag gradient={option.gradient} usage={usage} shape={shape}>
+                    <Information />
+                    Label
+                  </Tag>
+                </GridItem>
+              )}
+            </For>
+          </Fragment>
+        )}
+      </For>
     </Grid>
   )
 }

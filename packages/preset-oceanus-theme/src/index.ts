@@ -4,8 +4,5 @@
  **/
 
 export * from './config'
-
-export * from './conditions'
 export * from './theme'
-
 export * from './theme/semantic-tokens/index'

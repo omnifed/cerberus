@@ -101,7 +101,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           '& > code:not(.code)': {
             bgColor: 'page.surface.100',
             color: 'success.text.100',
-            pxi: 'sm',
+            px: 'sm',
             py: 'sm',
             textStyle: 'mono-xs',
             rounded: 'md',

@@ -1,4 +1,5 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { inputSizes, input as inputStyles } from '../shared/input.base'
 
 /**
@@ -15,6 +16,7 @@ import { inputSizes, input as inputStyles } from '../shared/input.base'
 export const input: Partial<SlotRecipeConfig> = defineSlotRecipe({
   slots: ['root', 'input', 'icon', 'startIcon'],
   className: 'input',
+  deprecated: true,
 
   base: {
     root: {

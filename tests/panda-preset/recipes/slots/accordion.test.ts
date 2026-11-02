@@ -55,7 +55,7 @@ describe('accordion recipe', () => {
       color: 'page.text.initial',
       display: 'flex',
       paddingBlock: 'var(--accordion-item-trigger-padding)',
-      pxi: 'sm',
+      px: 'sm',
       rounded: 'var(--accordion-item-trigger-radii)',
       transitionProperty: 'background-color',
       transitionDuration: 'fast',

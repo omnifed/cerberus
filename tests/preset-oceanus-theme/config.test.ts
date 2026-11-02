@@ -1,5 +1,4 @@
 import {
-  conditions,
   getThemeName,
   pageTokens,
   actionTokens,
@@ -22,10 +21,6 @@ describe('Oceanus Theme', () => {
 
   test('should provide a theme name helper', () => {
     expect(getThemeName()).toBe('oceanus')
-  })
-
-  test('should provide a new condition', () => {
-    expect(conditions.oceanusTheme).toEqual('[data-panda-theme=oceanus] &')
   })
 
   test('pageTokens should match the established baseline', () => {

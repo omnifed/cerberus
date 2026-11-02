@@ -3,6 +3,7 @@ import { BasicDemo } from './basic.demo'
 import { CustomDemo } from './custom.demo'
 import { HiddenLabelDemo } from './hiddenLabel.demo'
 import { SearchDemo } from './search.demo'
+import { SizeDemo } from './size.demo'
 
 export const DEMOS = {
   basic: { preview: <BasicDemo /> },
@@ -10,4 +11,5 @@ export const DEMOS = {
   custom: { preview: <CustomDemo /> },
   search: { preview: <SearchDemo /> },
   autocomplete: { preview: <AutocompleteDemo /> },
+  size: { preview: <SizeDemo /> },
 }

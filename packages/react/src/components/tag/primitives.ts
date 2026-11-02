@@ -1,19 +1,38 @@
-import {
-  createCerberusPrimitive,
-  type CerberusPrimitiveProps,
-} from '../../system/index'
-import { tag, type TagVariantProps } from 'styled-system/recipes'
-import type { HTMLAttributes } from 'react'
+import { ark } from '@ark-ui/react/factory'
+import { type ComponentProps } from 'react'
+import { cerberus } from 'styled-system/jsx/factory'
+import { closableTag, gradientTag, tag } from 'styled-system/recipes'
+import { type IconButtonProps } from '../icon-button'
 
-const { withRecipe } = createCerberusPrimitive(tag)
+export const baseTagAttrs = {
+  'data-scope': 'tag',
+  'data-part': 'root',
+}
 
-export type TagRootProps = CerberusPrimitiveProps<
-  Omit<HTMLAttributes<HTMLSpanElement>, 'onClick'> & TagVariantProps
->
+// FilledTag -----------------------------------------------------
 
-export const TagRoot = withRecipe('span', {
-  defaultProps: {
-    'data-scope': 'tag',
-    'data-part': 'root',
-  },
-})
+export type FilledTagProps = ComponentProps<typeof FilledTag> & {
+  gradient?: never
+  onClick?: never
+}
+export const FilledTag = cerberus(ark.span, tag)
+
+// GraidentTag ---------------------------------------------------
+
+export type GradientTagProps = ComponentProps<typeof GradientTag> & {
+  palette?: never
+  onClick?: never
+}
+export const GradientTag = cerberus(ark.span, gradientTag)
+
+// ClosableTag ---------------------------------------------------
+
+export type ClosableTagProps = Omit<
+  ComponentProps<typeof ClosableTagRoot>,
+  'onClick'
+> & {
+  pending?: boolean
+  gradient?: never
+  onClick?: IconButtonProps['onClick']
+}
+export const ClosableTagRoot = cerberus(ark.span, closableTag)

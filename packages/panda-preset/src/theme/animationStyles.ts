@@ -1,8 +1,8 @@
-import { defineAnimationStyles, type AnimationStyles } from '../types'
+import { defineAnimationStyles } from '@pandacss/dev/define'
 
 const transformOrigin = 'var(--transform-origin)'
 
-export const animationStyles: AnimationStyles = defineAnimationStyles({
+export const animationStyles = defineAnimationStyles({
   'emphasized-fade-in': {
     value: {
       animationDuration: 'fast',

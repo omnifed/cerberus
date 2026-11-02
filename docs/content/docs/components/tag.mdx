@@ -52,6 +52,8 @@ You can set the gradient of the tag by using the `gradient` prop.
 
 To use a closable tag, just pass an `onClick` prop to the `Tag` component. This will create a pill-shaped tag with a close icon button.
 
+Use the `pending` prop to show a Skeleton loading state.
+
 <Example path="components/tag" demo="closable" />
 
 ## Customizing
@@ -84,10 +86,11 @@ The Primitives additionally use the following data attributes for custom styling
 
 The `Tag` component is an abstraction of the primitives and accepts the following props:
 
-| Name       | Default     | Description                                        |
-| ---------- | ----------- | -------------------------------------------------- |
-| `gradient` | `undefined` | The gradient of the tag (overrides palette).       |
-| `palette`  | `page`      | The color palette of the tag (overrides gradient). |
-| `usage`    | `filled`    | The style treatment of the tag.                    |
-| `shape`    | `pill`      | The shape of the tag.                              |
-| `onClick`  | `undefined` | How to create a Closable tag.                      |
+| Name       | Default     | Description                                                  |
+| ---------- | ----------- | ------------------------------------------------------------ |
+| `gradient` | `undefined` | The gradient of the tag (overrides palette).                 |
+| `palette`  | `page`      | The color palette of the tag (overrides gradient).           |
+| `usage`    | `filled`    | The style treatment of the tag.                              |
+| `shape`    | `pill`      | The shape of the tag.                                        |
+| `onClick`  | `undefined` | How to create a Closable tag.                                |
+| `pending`  | `undefined` | Replaces the Closable tag content with a skeleton when true. |

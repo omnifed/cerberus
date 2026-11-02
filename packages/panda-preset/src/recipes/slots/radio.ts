@@ -1,5 +1,6 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { radioGroupAnatomy } from '@ark-ui/react'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { focusStates, formStates } from '../shared/states'
 import { checkbox } from './checkbox'
 

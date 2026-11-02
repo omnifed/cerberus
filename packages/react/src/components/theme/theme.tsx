@@ -1,6 +1,6 @@
-import type { PropsWithChildren } from 'react'
+import { cx } from 'styled-system/css'
 import type { ColorModes, CustomThemes } from '../../context/theme'
-import { cerberus, type CerberusPrimitiveProps } from '../../system'
+import { cerberus, CerberusProps } from '../../system'
 
 export interface ThemeProps<T extends string> {
   /**
@@ -16,7 +16,7 @@ export interface ThemeProps<T extends string> {
 }
 
 export function Theme<T extends string>(
-  props: PropsWithChildren<CerberusPrimitiveProps<ThemeProps<T>>>,
+  props: CerberusProps<'button'> & ThemeProps<T>,
 ) {
   const { mode, theme, ...nativeProps } = props
   const colorMode = mode || 'light'
@@ -26,7 +26,7 @@ export function Theme<T extends string>(
     <cerberus.div
       {...nativeProps}
       data-panda-theme={themeName}
-      data-color-mode={colorMode}
+      className={cx(colorMode, nativeProps.className)}
     >
       {props.children}
     </cerberus.div>

@@ -1,5 +1,6 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { accordionAnatomy } from '@ark-ui/react'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { focusStates } from '../shared/states'
 
 /**
@@ -69,7 +70,7 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
       color: 'page.text.initial',
       display: 'flex',
       paddingBlock: 'var(--accordion-item-trigger-padding)',
-      pxi: 'sm',
+      px: 'sm',
       rounded: 'var(--accordion-item-trigger-radii)',
       transitionProperty: 'background-color',
       transitionDuration: 'fast',

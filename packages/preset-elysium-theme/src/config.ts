@@ -1,6 +1,5 @@
 import { type RawThemes } from '@cerberus/tokens'
 import { definePreset, type Preset } from '@pandacss/dev'
-import { conditions } from './conditions'
 import { themes } from './theme'
 
 /**
@@ -14,8 +13,6 @@ export function getThemeName(): RawThemes {
 
 export const presetElysiumTheme: Preset = definePreset({
   name: '@cerberus/preset-elysium-theme',
-
-  conditions,
 
   themes,
 

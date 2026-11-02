@@ -8,6 +8,7 @@ import {
   useCerberusContext,
 } from '@cerberus-design/react'
 import { batch, createComputed, useRead } from '@cerberus-design/signals'
+import type { Dict } from '@pandacss/types'
 import {
   type CSSProperties,
   memo,
@@ -16,7 +17,6 @@ import {
   type ReactNode,
 } from 'react'
 import { Box, Center, HStack } from 'styled-system/jsx'
-import type { Dict } from 'styled-system/types'
 import { OPERATORS, PARTS, SCOPE } from '../const'
 import { useDataGridContext } from '../context.client'
 import { useColumnStyles, usePinnedAttribute, usePinnedState } from '../hooks.client'

@@ -1,15 +1,12 @@
 import type { ark } from '@ark-ui/react/factory'
+import type { Dict, RecipeVariantFn, SlotRecipeVariantFn } from '@pandacss/types'
 import type { CSSProperties, ElementType, PropsWithChildren } from 'react'
 import type {
   AsProps,
   Assign,
   ComponentProps,
-  Dict,
   JsxHTMLProps,
   JsxStyleProps,
-  RecipeVariantFn,
-  RecipeVariantRecord,
-  SlotRecipeVariantFn,
   SlotRecipeVariantRecord,
   UnstyledProps,
 } from 'styled-system/types'
@@ -22,7 +19,7 @@ type RecipeBase = {
   ) => [Record<string, unknown>, Record<string, unknown>]
 }
 
-export type CerberusRecipe = RecipeVariantFn<RecipeVariantRecord> & RecipeBase
+export type CerberusRecipe = RecipeVariantFn<any> & RecipeBase
 export type CerberusSlotRecipe<T extends string> = SlotRecipeVariantFn<
   string,
   SlotRecipeVariantRecord<T>

@@ -10,14 +10,8 @@ describe('Theme', () => {
       </Theme>,
     )
     expect(screen.getByText(/it works/i)).toBeInTheDocument()
-    expect(screen.getByTestId('root')).toHaveAttribute(
-      'data-color-mode',
-      'light',
-    )
-    expect(screen.getByTestId('root')).toHaveAttribute(
-      'data-panda-theme',
-      'cerberus',
-    )
+    expect(screen.getByTestId('root')).toHaveClass('light')
+    expect(screen.getByTestId('root')).toHaveAttribute('data-panda-theme', 'cerberus')
   })
 
   test('it should apply the mode if provided', () => {
@@ -27,10 +21,7 @@ describe('Theme', () => {
       </Theme>,
     )
     expect(screen.getByText(/it works/i)).toBeInTheDocument()
-    expect(screen.getByTestId('root')).toHaveAttribute(
-      'data-color-mode',
-      'dark',
-    )
+    expect(screen.getByTestId('root')).toHaveClass('dark')
   })
 
   test('it should apply the theme if provided', () => {
@@ -40,9 +31,6 @@ describe('Theme', () => {
       </Theme>,
     )
     expect(screen.getByText(/it works/i)).toBeInTheDocument()
-    expect(screen.getByTestId('root')).toHaveAttribute(
-      'data-panda-theme',
-      'acheron',
-    )
+    expect(screen.getByTestId('root')).toHaveAttribute('data-panda-theme', 'acheron')
   })
 })

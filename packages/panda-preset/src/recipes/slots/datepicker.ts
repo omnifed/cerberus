@@ -1,7 +1,8 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { datePickerAnatomy } from '@ark-ui/react'
-import { focusStates } from '../shared/states'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { input } from '../shared/input.base'
+import { focusStates } from '../shared/states'
 
 /**
  * This module contains the datePicker recipe.

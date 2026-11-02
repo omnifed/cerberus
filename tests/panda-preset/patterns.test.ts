@@ -3,7 +3,7 @@ import { patterns } from '@cerberus/panda-preset'
 
 describe('patterns', () => {
   test('should export animateIn', () => {
-    expect(patterns.extend.animateIn).toBeDefined()
+    expect(patterns?.extend?.animateIn).toBeDefined()
     expect(
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.animateIn.transform({ bgColor: 'black' }),
@@ -20,7 +20,7 @@ describe('patterns', () => {
   })
 
   test('should export scrollable', () => {
-    expect(patterns.extend.scrollable).toBeDefined()
+    expect(patterns?.extend?.scrollable).toBeDefined()
     expect(
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.scrollable.transform({ bgColor: 'white' }),
@@ -50,7 +50,7 @@ describe('patterns', () => {
   })
 
   test('should have a emphasizedFadeIn motion style', () => {
-    expect(patterns.extend.emphasizedFadeIn).toBeDefined()
+    expect(patterns?.extend?.emphasizedFadeIn).toBeDefined()
     expect(
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.emphasizedFadeIn.transform({ bgColor: 'black' }),
@@ -63,7 +63,7 @@ describe('patterns', () => {
   })
 
   test('should have a emphasizedFadeOut motion style', () => {
-    expect(patterns.extend.emphasizedFadeOut).toBeDefined()
+    expect(patterns?.extend?.emphasizedFadeOut).toBeDefined()
     expect(
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.emphasizedFadeOut.transform({ bgColor: 'black' }),
@@ -76,7 +76,7 @@ describe('patterns', () => {
   })
 
   test('should have a emphasizedSlideIn motion style', () => {
-    expect(patterns.extend.emphasizedSlideIn).toBeDefined()
+    expect(patterns?.extend?.emphasizedSlideIn).toBeDefined()
     expect(
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.emphasizedSlideIn.transform({ bgColor: 'black' }),
@@ -91,7 +91,7 @@ describe('patterns', () => {
   })
 
   test('should have a emphasizedSlideOut motion style', () => {
-    expect(patterns.extend.emphasizedSlideOut).toBeDefined()
+    expect(patterns?.extend?.emphasizedSlideOut).toBeDefined()
     expect(
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.emphasizedSlideOut.transform({ bgColor: 'black' }),
@@ -106,7 +106,7 @@ describe('patterns', () => {
   })
 
   test('should have a slideFadeIn motion style', () => {
-    expect(patterns.extend.slideFadeIn).toBeDefined()
+    expect(patterns?.extend?.slideFadeIn).toBeDefined()
     expect(
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.slideFadeIn.transform({ bgColor: 'black' }),
@@ -121,7 +121,7 @@ describe('patterns', () => {
   })
 
   test('should have a slideFadeOut motion style', () => {
-    expect(patterns.extend.slideFadeOut).toBeDefined()
+    expect(patterns?.extend?.slideFadeOut).toBeDefined()
     expect(
       // @ts-expect-error bug in the Panda-CSS types
       patterns.extend.slideFadeOut.transform({ bgColor: 'black' }),
@@ -136,10 +136,10 @@ describe('patterns', () => {
   })
 
   test('should have a scaleFadeIn motion style', () => {
-    expect(patterns.extend.scaleFadeIn).toBeDefined()
+    expect(patterns?.extend?.scaleFadeIn).toBeDefined()
     expect(
       // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.scaleFadeIn.transform({ bgColor: 'black' }),
+      patterns?.extend?.scaleFadeIn.transform({ bgColor: 'black' }),
     ).toMatchObject({
       animationStyle: 'scale-fade-in',
       animationDuration: 'normal',
@@ -151,10 +151,10 @@ describe('patterns', () => {
   })
 
   test('should have a scaleFadeOut motion style', () => {
-    expect(patterns.extend.scaleFadeOut).toBeDefined()
+    expect(patterns?.extend?.scaleFadeOut).toBeDefined()
     expect(
       // @ts-expect-error bug in the Panda-CSS types
-      patterns.extend.scaleFadeOut.transform({ bgColor: 'black' }),
+      patterns?.extend?.scaleFadeOut.transform({ bgColor: 'black' }),
     ).toMatchObject({
       animationStyle: 'scale-fade-out',
       animationDuration: 'normal',

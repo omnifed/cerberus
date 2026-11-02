@@ -1,7 +1,8 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { avatarAnatomy } from '@ark-ui/react'
-import { focusStates } from '../shared/states'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { createSlotGradientVariants } from '../shared/helpers'
+import { focusStates } from '../shared/states'
 
 /**
  * This module contains the avatar recipe.

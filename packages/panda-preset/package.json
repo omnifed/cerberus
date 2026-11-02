@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "catalog:ark",
+    "@pandacss/preset-base": "catalog:pandacss",
     "@pandacss/preset-panda": "catalog:pandacss"
   },
   "devDependencies": {

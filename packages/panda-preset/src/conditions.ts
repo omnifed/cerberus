@@ -1,8 +1,7 @@
-export const conditions = {
-  // modes
-  lightMode: '[data-color-mode=light] &, &.light, .light &',
-  darkMode: '[data-color-mode=dark] &, &.dark, .dark &',
-  systemMode: '[data-color-mode=system] &, &.system, .system &',
+import { Config, defineConditions } from '@pandacss/dev/define'
+
+export const conditions: Config['conditions'] = defineConditions({
+  system: '.system &',
 
   // visual states
   open: '&:is([open], [data-open], [data-state=open])',
@@ -15,7 +14,7 @@ export const conditions = {
   // D&D
   isOver: '&:is([data-over=true], [data-dragging])',
   isDropped: '&:is([data-dropped=true])',
-  isComplete: '&:is([data-complete=true])',
+  isComplete: '&:is([data-complete=true], [data-state=complete])',
   dragging: '&:is([data-dragging])',
 
   // Motion states
@@ -110,4 +109,4 @@ export const conditions = {
   success: '&:is([data-type=success])',
   warning: '&:is([data-type=warning])',
   danger: '&:is([data-type=danger], [data-type=error])',
-}
+})

@@ -1,5 +1,6 @@
 import { sliderAnatomy } from '@ark-ui/react'
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { noPageSlotPalettes } from '../shared/palettes'
 
 /**

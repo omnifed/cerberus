@@ -1,7 +1,8 @@
-import { defineSlotRecipe, type SlotRecipeConfig } from '@pandacss/dev'
 import { comboboxAnatomy } from '@ark-ui/react'
-import { focusStates, formStates } from '../shared/states'
+import { defineSlotRecipe } from '@pandacss/dev'
+import type { SlotRecipeConfig } from '@pandacss/types'
 import { label } from '../label'
+import { focusStates, formStates } from '../shared/states'
 
 /**
  * This module contains the combobox recipe.
@@ -82,7 +83,7 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       outline: 0,
       minW: 9,
       position: 'relative',
-      pxi: 'md',
+      px: 'md',
       rounded: 'md',
       textStyle: 'body-sm',
       transitionDuration: 'normal',
@@ -166,7 +167,7 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
       flexShrink: 0,
       gap: 'md',
       h: 'var(--combobox-item-height)',
-      pxi: 'md',
+      px: 'md',
       rounded: 'sm',
       textStyle: 'body-sm',
       transitionDuration: 'fast',
@@ -183,7 +184,7 @@ export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
     },
     itemGroupLabel: {
       color: 'page.text.initial',
-      pxi: 'md',
+      px: 'md',
       py: '0.5rem',
       textStyle: 'label-sm',
       userSelect: 'none',

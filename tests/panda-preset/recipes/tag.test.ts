@@ -1,25 +1,9 @@
-import { describe, test, expect } from 'bun:test'
 import { recipes } from '@cerberus/panda-preset'
-import { getGradients } from '@cerberus/tokens'
+import { describe, expect, test } from 'bun:test'
 
 describe('tag recipe', () => {
   const { tag } = recipes
   const PAGE_TEXT_INITIAL = 'page.text.initial'
-
-  function createGradientOutlineVariants() {
-    return getGradients().map((name) => ({
-      gradient: name,
-      usage: 'outlined',
-      css: {
-        borderColor: 'transparent',
-        backgroundOrigin: 'border-box',
-        backgroundClip: 'padding-box, border-box',
-        bgColor: 'page.surface.initial',
-        borderGradient: name,
-        color: PAGE_TEXT_INITIAL,
-      },
-    }))
-  }
 
   test('should be exported', () => {
     expect(tag).toBeDefined()
@@ -93,7 +77,7 @@ describe('tag recipe', () => {
     expect(tag.variants?.shape.pill).toMatchObject({
       fontWeight: 400,
       h: '1.5rem',
-      pxi: '2',
+      px: '2',
       rounded: 'full',
       textStyle: 'label-sm',
     })
@@ -103,7 +87,7 @@ describe('tag recipe', () => {
     expect(tag.variants?.shape.square).toMatchObject({
       fontWeight: 600,
       h: '1.625rem',
-      pxi: '3',
+      px: '3',
       rounded: 'md',
       textStyle: 'label-md',
     })
@@ -115,10 +99,5 @@ describe('tag recipe', () => {
       usage: 'filled',
       shape: 'pill',
     })
-  })
-
-  test('should have a compound variants for outlined usage with a gradient and square shape', () => {
-    const gradientOutlineResult = createGradientOutlineVariants()
-    expect(tag.compoundVariants).toMatchObject(gradientOutlineResult)
   })
 })

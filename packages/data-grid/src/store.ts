@@ -14,6 +14,11 @@ import { determineInitialCount } from './utils'
 /**
  * Internal signal-based Store engine driving the state. We expose this in
  * the public Context API.
+ *
+ * ## IMPORTANT
+ * Only use this when you want a unique instance of the GridStore that is used
+ * for a hand-rolled DataGrid component. **This will not sync to the DataGrid
+ * component provided by this library.**
  */
 export function createGridStore<TData>(options: GridOptions<TData>): GridStore<TData> {
   // 1. Core Data

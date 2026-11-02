@@ -1,8 +1,5 @@
+import { defineKeyframes } from '@pandacss/dev/define'
 import type { CssKeyframes } from '@pandacss/types'
-
-export function defineKeyframes<T extends CssKeyframes>(config: T): CssKeyframes {
-  return config
-}
 
 export const keyframes: CssKeyframes = defineKeyframes({
   bgPosition: {

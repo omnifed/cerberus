@@ -73,7 +73,7 @@ export default async function DocsPage(props: PropsWithChildren<Props>) {
         ps="4rem"
         pb="lg"
         rounded="xl"
-        _systemMode={{
+        _system={{
           bgColor: 'page.surface.100',
           borderColor: 'page.border.100',
           boxShadow: 'none',

@@ -1,5 +1,5 @@
 import { createColumnHelper, PaginationOptions } from '@cerberus-design/data-grid'
-import { createGridStore } from '@cerberus-design/data-grid/src/store'
+import { createGridStore } from '@cerberus-design/data-grid'
 import type { PageSizeChangeDetails } from '@cerberus-design/react'
 import { createEffect } from '@cerberus-design/signals'
 import { describe, expect, mock, test } from 'bun:test'

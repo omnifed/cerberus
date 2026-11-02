@@ -1,9 +1,9 @@
 import { HStack } from '@/styled-system/jsx'
 import { For, Table, TableRootProps } from '@cerberus-design/react'
-import recipesSpec from 'styled-system/specs/recipes.json'
+import data from 'styled-system/specs/design-system.json'
 
-const variants = (recipesSpec.data.find((r) => r.name === 'table')?.variants
-  .decoration ?? []) as TableRootProps['decoration'][]
+const variants = data.slotRecipes.table.variants.decoration
+  .values as TableRootProps['decoration'][]
 
 export function DecorationDemo() {
   return (
