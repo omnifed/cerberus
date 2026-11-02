@@ -1,5 +1,11 @@
 # @cerberus/tokens
 
+## 2.0.0
+
+### Major Changes
+
+- dfc5ef2: Migrate ecosystem to PandaCSS v2
+
 ## 1.9.0
 
 ### Patch Changes
