@@ -1,5 +1,17 @@
 # @cerberus-design/data-grid
 
+## 2.0.0
+
+### Major Changes
+
+- dfc5ef2: Migrate ecosystem to PandaCSS v2
+
+### Patch Changes
+
+- Updated dependencies [dfc5ef2]
+  - @cerberus-design/react@2.0.0
+  - @cerberus-design/signals@2.0.0
+
 ## 1.9.0
 
 ### Minor Changes
