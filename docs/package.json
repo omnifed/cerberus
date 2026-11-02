@@ -8,13 +8,16 @@
     "dev": "rm -rf .next && pnpm run build:b && pnpm run /^dev:.*/",
     "dev:next": "next dev",
     "dev:velite": "velite dev --watch",
+    "start": "next start",
+    "lint": "eslint .",
+    "gen:a": "pnpm --filter @cerberus-design/react run build",
+    "gen:b": "pnpm --filter @cerberus-design/data-grid run build",
     "build": "pnpm run --sequential /^build:.*/",
-    "build:a": "velite",
+    "build:a": "pnpm run --sequential /^gen:.*/",
+    "build:aa": "velite",
     "build:b": "panda codegen --spec",
     "build:c": "next build",
-    "build:d": "pnpx pagefind --site .next/server/app --output-path public/pagefind",
-    "start": "next start",
-    "lint": "eslint ."
+    "build:d": "pnpx pagefind --site .next/server/app --output-path public/pagefind"
   },
   "dependencies": {
     "@carbon/icons-react": "catalog:jsx",
