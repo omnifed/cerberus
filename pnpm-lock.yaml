@@ -506,9 +506,6 @@ importers:
       react-dom:
         specifier: catalog:jsx
         version: 19.3.1(react@19.3.1)
-      styled-system:
-        specifier: workspace:*
-        version: link:../../styled-system
       vite:
         specifier: catalog:jsx
         version: 8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1)
@@ -683,9 +680,6 @@ importers:
       react-dom:
         specifier: catalog:jsx
         version: 19.3.1(react@19.3.1)
-      styled-system:
-        specifier: workspace:*
-        version: link:../../styled-system
       vite:
         specifier: catalog:jsx
         version: 8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1)
@@ -751,21 +745,6 @@ importers:
         specifier: ^2.9.1
         version: 2.9.1
 
-  styled-system:
-    devDependencies:
-      '@cerberus/panda-preset':
-        specifier: workspace:*
-        version: link:../packages/panda-preset
-      '@pandacss/dev':
-        specifier: catalog:pandacss
-        version: 2.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.11.3)(postcss@8.5.30)
-      '@types/react':
-        specifier: catalog:jsx
-        version: 19.3.0
-      react:
-        specifier: catalog:jsx
-        version: 19.3.1
-
   tests:
     devDependencies:
       '@ark-ui/react':
@@ -807,6 +786,9 @@ importers:
       '@happy-dom/global-registrator':
         specifier: ^21.0.4
         version: 21.0.4
+      '@pandacss/dev':
+        specifier: catalog:pandacss
+        version: 2.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.11.3)(postcss@8.5.30)
       '@pandacss/types':
         specifier: catalog:pandacss
         version: 2.4.0
@@ -831,9 +813,6 @@ importers:
       react-dom:
         specifier: catalog:jsx
         version: 19.3.1(react@19.3.1)
-      styled-system:
-        specifier: workspace:*
-        version: link:../styled-system
 
 packages:
 

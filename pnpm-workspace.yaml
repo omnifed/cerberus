@@ -7,7 +7,6 @@ packages:
   - bench
   - scripts
   - docs
-  - styled-system
 
 catalogs:
   oxc:
