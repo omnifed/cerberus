@@ -1,6 +1,6 @@
 'use client'
 
-import { cerberus } from '@/styled-system/jsx'
+import { styled } from '@/styled-system/jsx'
 import { Logout } from '@carbon/icons-react'
 import {
   Button,
@@ -12,7 +12,7 @@ import {
 } from '@cerberus-design/react'
 import Link from 'next/link'
 
-const StyledLink = cerberus(Link)
+const StyledLink = styled(Link)
 
 export function NavDemo() {
   return (
