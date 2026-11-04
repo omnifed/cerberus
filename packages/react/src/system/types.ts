@@ -9,6 +9,11 @@ import type {
 } from 'styled-system/types'
 
 /**
+ * @deprecated - these are the old types and will be removed in v2
+ */
+export * from './deprecated_types'
+
+/**
  * Any non-slot Panda recipe, such as the return value of `cva()`.
  *
  * Slot recipes (`sva()`) are intentionally **not** accepted. Use
