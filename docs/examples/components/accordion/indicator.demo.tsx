@@ -1,4 +1,4 @@
-import { Accordion, AccordionItemGroup, For, Show } from '@cerberus-design/react'
+import { Accordion, For, Show } from '@cerberus-design/react'
 import { Box } from 'styled-system/jsx'
 import data from './data.json'
 
@@ -8,14 +8,14 @@ export function IndicatorDemo() {
       <Accordion defaultValue={['one']}>
         <For each={data}>
           {(item) => (
-            <AccordionItemGroup
+            <Accordion.ItemGroup
               indicatorPosition="start"
               heading={item.heading}
               key={item.id}
               value={item.value}
             >
               <Show when={item.content !== null}>{item.content}</Show>
-            </AccordionItemGroup>
+            </Accordion.ItemGroup>
           )}
         </For>
       </Accordion>

@@ -3,7 +3,7 @@
 import { type AccordionItemIndicatorProps } from '@ark-ui/react/accordion'
 import { type AccordionVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
-import { AccordionParts } from './parts'
+import { Accordion } from './api'
 
 /**
  * This module contains the internal AccordionItemIndicator component.
@@ -20,8 +20,8 @@ export function AccordionChevronItemIndicator(
   const { accordionIndicator: ChevronDown } = icons
 
   return (
-    <AccordionParts.ItemIndicator {...indicatorProps}>
+    <Accordion.ItemIndicator {...indicatorProps}>
       <ChevronDown size={iconSize} />
-    </AccordionParts.ItemIndicator>
+    </Accordion.ItemIndicator>
   )
 }

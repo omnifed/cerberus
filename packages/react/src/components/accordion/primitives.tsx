@@ -1,86 +1,35 @@
-import {
-  Accordion,
-  type AccordionItemContentProps as ArkAccordionItemContentProps,
-  type AccordionItemIndicatorProps as ArkAccordionItemIndicatorProps,
-  type AccordionItemProps as ArkAccordionItemProps,
-  type AccordionItemTriggerProps as ArkAccordionItemTriggerProps,
-  type AccordionRootProps as ArkAccordionRootProps,
-} from '@ark-ui/react/accordion'
-import { accordion, type AccordionVariantProps } from 'styled-system/recipes'
-import {
-  createCerberusPrimitive,
-  type CerberusPrimitiveProps,
-} from '../../system/index'
+'use client'
 
-/**
- * This module contains the primitives of the Accordion component.
- * @module 'accordion/primitives'
- */
+import { Accordion as ArkAccordion } from '@ark-ui/react/accordion'
+import { ComponentProps, createSlotRecipeContext } from 'styled-system/jsx'
+import { accordion } from 'styled-system/recipes'
 
-const { withSlotRecipe } = createCerberusPrimitive(accordion)
+const { withProvider, withContext } = createSlotRecipeContext(accordion)
 
-function AccordionRootEl(props: AccordionRootProps) {
-  const { size, ...rootProps } = props
-  return <Accordion.Root {...rootProps} data-size={size} />
-}
+// Root -----------------------------------------------------
 
-/**
- * The primitive root component of the Accordion component.
- *
- * This component returns the Ark `Accordion.Root` component which has a
- * base style using the Cerberus `accordion` recipe that can be overridden.
- */
-export const AccordionRoot = withSlotRecipe(AccordionRootEl, 'root')
-export type AccordionRootProps = CerberusPrimitiveProps<
-  ArkAccordionRootProps & AccordionVariantProps
->
+export type AccordionRootProps = ComponentProps<typeof AccordionRoot>
+export const AccordionRoot = withProvider(ArkAccordion.Root, 'root')
 
-/**
- * The primitive item component of the Accordion component.
- *
- * This component returns the Ark `Accordion.Item` component which has a
- * base style using the Cerberus `accordion` recipe that can be overridden.
- */
-export const AccordionItem = withSlotRecipe(Accordion.Item, 'item')
-export type AccordionItemProps = CerberusPrimitiveProps<
-  ArkAccordionItemProps & AccordionVariantProps
->
+// Item -----------------------------------------------------
 
-/**
- * The primitive trigger component of the Accordion component.
- *
- * This component returns the Ark `Accordion.ItemTrigger` component which has
- * a base style using the Cerberus `accordion` recipe that can be overridden.
- */
-export const AccordionItemTrigger = withSlotRecipe(
-  Accordion.ItemTrigger,
-  'itemTrigger',
-)
-export type AccordionItemTriggerProps =
-  CerberusPrimitiveProps<ArkAccordionItemTriggerProps>
+export type AccordionItemProps = ComponentProps<typeof AccordionItem>
+export const AccordionItem = withContext(ArkAccordion.Item, 'item')
 
-/**
- * The primitive item indicator component of the Accordion component.
- *
- * This component returns the Ark `Accordion.ItemIndicator` component which has
- * a base style using the Cerberus `accordion` recipe that can be overridden.
- */
-export const AccordionItemIndicator = withSlotRecipe(
-  Accordion.ItemIndicator,
+// ItemTrigger -----------------------------------------------
+
+export type AccordionItemTriggerProps = ComponentProps<typeof AccordionItemTrigger>
+export const AccordionItemTrigger = withContext(ArkAccordion.ItemTrigger, 'itemTrigger')
+
+// ItemContent -----------------------------------------------
+
+export type AccordionItemContentProps = ComponentProps<typeof AccordionItemContent>
+export const AccordionItemContent = withContext(ArkAccordion.ItemContent, 'itemContent')
+
+// ItemIndicator ---------------------------------------------
+
+export type AccordionItemIndicatorProps = ComponentProps<typeof AccordionItemIndicator>
+export const AccordionItemIndicator = withContext(
+  ArkAccordion.ItemIndicator,
   'itemIndicator',
 )
-export type AccordionItemIndicatorProps =
-  CerberusPrimitiveProps<ArkAccordionItemIndicatorProps>
-
-/**
- * The primitive content component of the Accordion component.
- *
- * This component returns the Ark `Accordion.Content` component which has a
- * base style using the Cerberus `accordion` recipe that can be overridden.
- */
-export const AccordionItemContent = withSlotRecipe(
-  Accordion.ItemContent,
-  'itemContent',
-)
-export type AccordionItemContentProps =
-  CerberusPrimitiveProps<ArkAccordionItemContentProps>
