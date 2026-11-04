@@ -1,25 +1,15 @@
-import type {
-  AccordionItemProps,
-  AccordionRootProps,
-} from '@ark-ui/react/accordion'
-import { type AccordionVariantProps } from 'styled-system/recipes'
 import { splitProps } from '../../utils/index'
 import { Show } from '../show/index'
-import { AccordionParts } from './parts'
+import { Accordion } from './api'
 import { AccordionChevronItemIndicator } from './item-indicator'
+import { type AccordionItemProps } from './primitives'
 
 /**
  * This module contains an abstraction of the AccordionItem components.
  * @module
  */
 
-export function Accordion(props: AccordionRootProps & AccordionVariantProps) {
-  return <AccordionParts.Root {...props} />
-}
-
-export interface AccordionItemGroupProps
-  extends AccordionItemProps,
-    AccordionVariantProps {
+export interface AccordionItemGroupProps extends AccordionItemProps {
   /**
    * The heading of the accordion item to open and close the content.
    */
@@ -48,9 +38,15 @@ export function AccordionItemGroup(props: AccordionItemGroupProps) {
   ])
   const indicatorPosition = groupProps.indicatorPosition ?? 'end'
 
+  if (!itemProps.value) {
+    throw new Error(
+      'AccordionItemGroup requires a value prop to properly identify the item.',
+    )
+  }
+
   return (
-    <AccordionParts.Item {...itemProps}>
-      <AccordionParts.ItemTrigger data-indicator-position={indicatorPosition}>
+    <Accordion.Item {...itemProps} value={itemProps.value}>
+      <Accordion.ItemTrigger data-indicator-position={indicatorPosition}>
         <Show when={indicatorPosition === 'start'}>
           <AccordionChevronItemIndicator />
         </Show>
@@ -60,11 +56,9 @@ export function AccordionItemGroup(props: AccordionItemGroupProps) {
         <Show when={indicatorPosition === 'end'}>
           <AccordionChevronItemIndicator />
         </Show>
-      </AccordionParts.ItemTrigger>
+      </Accordion.ItemTrigger>
 
-      <AccordionParts.ItemContent>
-        {groupProps.children}
-      </AccordionParts.ItemContent>
-    </AccordionParts.Item>
+      <Accordion.ItemContent>{groupProps.children}</Accordion.ItemContent>
+    </Accordion.Item>
   )
 }

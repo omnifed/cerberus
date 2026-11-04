@@ -1,4 +1,4 @@
-import { Accordion, AccordionItemGroup, For, Show } from '@cerberus-design/react'
+import { Accordion, For, Show } from '@cerberus-design/react'
 import Image from 'next/image'
 import { Suspense } from 'react'
 import { Box } from 'styled-system/jsx'
@@ -10,11 +10,15 @@ export function BasicDemo() {
       <Accordion defaultValue={['one']}>
         <For each={data}>
           {(item) => (
-            <AccordionItemGroup heading={item.heading} key={item.id} value={item.value}>
+            <Accordion.ItemGroup
+              heading={item.heading}
+              key={item.id}
+              value={item.value}
+            >
               <Show when={item.content !== null} fallback={<FallbackContent />}>
                 {item.content}
               </Show>
-            </AccordionItemGroup>
+            </Accordion.ItemGroup>
           )}
         </For>
       </Accordion>

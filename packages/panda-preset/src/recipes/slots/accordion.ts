@@ -16,48 +16,12 @@ import { focusStates } from '../shared/states'
 export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'accordion',
   slots: accordionAnatomy.keys(),
-  jsx: [
-    // primitives
-    'AccordionRoot',
-    'AccordionItem',
-    'AccordionItemTrigger',
-    'AccordionItemIndicator',
-    'AccordionItemContent',
-    // abstractions
-    'Accordion',
-    'AccordionItemGroup',
-  ],
 
   base: {
     root: {
       display: 'flex',
       flexDirection: 'column',
       w: 'full',
-      // we are doing this to avoid setting the size on multiple primitives
-      _smSize: {
-        '& :is([data-part=item-trigger])': {
-          textStyle: 'heading-xs',
-        },
-        '& :is([data-part=item-content])': {
-          textStyle: 'body-sm',
-        },
-        '& :is([data-part=item-indicator] > svg)': {
-          h: '16px',
-          w: '16px',
-        },
-      },
-      _lgSize: {
-        '& :is([data-part=item-trigger])': {
-          textStyle: 'heading-sm',
-        },
-        '& :is([data-part=item-content])': {
-          textStyle: 'body-md',
-        },
-        '& :is([data-part=item-indicator] > svg)': {
-          h: '24px',
-          w: '24px',
-        },
-      },
     },
     item: {
       borderBlockEnd: '2px solid',
@@ -124,6 +88,9 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
           '--accordion-item-padding': '{spacing.xs}',
           '--accordion-item-trigger-padding': '{spacing.sm}',
           '--accordion-item-trigger-radii': '{radii.lg}',
+          '& :is([data-part=item-trigger])': { textStyle: 'heading-xs' },
+          '& :is([data-part=item-content])': { textStyle: 'body-sm' },
+          '& :is([data-part=item-indicator] > svg)': { h: '16px', w: '16px' },
         },
       },
       lg: {
@@ -131,6 +98,12 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
           '--accordion-item-padding': '{spacing.sm}',
           '--accordion-item-trigger-padding': '{spacing.md}',
           '--accordion-item-trigger-radii': '{radii.md}',
+          '& :is([data-part=item-trigger])': { textStyle: 'heading-sm' },
+          '& :is([data-part=item-content])': { textStyle: 'body-md' },
+          '& :is([data-part=item-indicator] > svg)': {
+            h: '24px',
+            w: '24px',
+          },
         },
       },
     },
