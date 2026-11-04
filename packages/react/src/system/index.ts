@@ -11,7 +11,6 @@ import type { CerberusElements, CerberusOptions, CerberusRecipe } from './types'
 export function createCerberusPrimitive<T extends CerberusPrimitiveRecipe>(recipe?: T) {
   return new CerberusPrimitive(recipe)
 }
-
 /**
  * The Cerberus factory: give any element or component Panda's style props,
  * `css`, an optional recipe, and Ark's `asChild`.
