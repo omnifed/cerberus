@@ -2,8 +2,14 @@ import { ark } from '@ark-ui/react/factory'
 import type { ElementType } from 'react'
 import { styled } from 'styled-system/jsx'
 import { CerberusPrimitive } from './deprecated_factory'
-import type { CerberusFactory, CerberusPrimitiveRecipe } from './deprecated_types'
-import type { CerberusElements, CerberusOptions, CerberusRecipe } from './types'
+import type { CerberusPrimitiveRecipe } from './deprecated_types'
+import type {
+  AnyFactory,
+  CerberusElements,
+  CerberusFactory,
+  CerberusOptions,
+  CerberusRecipe,
+} from './types'
 
 /**
  * @deprecated - use {@link cerberus} instead
@@ -21,12 +27,6 @@ export function createCerberusPrimitive<T extends CerberusPrimitiveRecipe>(recip
  * @module @cerberus/react/system
  * @since 2.0.0
  */
-
-type AnyFactory = (
-  component: ElementType,
-  recipe?: unknown,
-  options?: unknown,
-) => ElementType
 
 function build(
   component: ElementType,
@@ -79,7 +79,7 @@ function call(
  * Wrap a third-party component:
  *
  * ```tsx
- * const Link = cerberus(NextLink, undefined, {
+ * const Link = cerberus(NextLink, { textDecoration: 'underline' }, {
  *   defaultProps: { 'data-link': '' },
  * })
  * ```

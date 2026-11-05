@@ -5,6 +5,27 @@ group: Concepts
 order: 2
 ---
 
+Cerberus components come with extra features that help streamline customization and composition for when you need to build your own enhanced solutions.
+
+## Cerberus Factory
+
+Each layer of a Cerberus component is built using our factory function: `cerberus`. This function allows you to create a component with a set of default styles and behaviors, while also providing the ability to extend or override them as needed.
+
+## Styling Components
+
+To style components, you use inline style props, which are passed directly to the component. Additionally, you can use inline conditions or custom utilities.
+
+<Example path="components/composition" demo="styled" />
+<br />
+
+### Unstyled Components <FeatureBadge since="2.0.0" />
+
+You can remove the underlying recipe styles from a component by using the `unstyled` prop. This allows you to use the component's functionality without any default styling.
+
+Style props, `css`, and `className` still apply.
+
+<Example path="components/composition" demo="unstyled" />
+
 ## The `asChild` Prop
 
 Used to compose a component's functionality onto its child element. This
@@ -12,14 +33,7 @@ approach, inspired by
 [Radix UI](https://www.radix-ui.com/primitives/docs/utilities/slot), offers
 maximum flexibility.
 
-```tsx
-<Button asChild>
-  <Link href="/some-page">Open</Link>
-</Button>
-```
-
-In this example, the `asChild` prop allows the link to be used as the
-button (e.g., a button-styled link).
+<Example path="components/composition" demo="asChild" />
 
 ## Best Practices
 

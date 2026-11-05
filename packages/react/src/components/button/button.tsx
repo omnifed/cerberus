@@ -29,6 +29,10 @@ export interface ButtonProps extends ButtonRootProps {
    * If true, the button will show a loading spinner.
    */
   pending?: boolean
+  /**
+   * If true, the button will not have any default styles applied.
+   */
+  unstyled?: boolean
 }
 
 /**
