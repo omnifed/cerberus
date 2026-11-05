@@ -3,7 +3,6 @@
 import { Accordion as ArkAccordion } from '@ark-ui/react/accordion'
 import { ComponentProps, createSlotRecipeContext } from 'styled-system/jsx'
 import { accordion } from 'styled-system/recipes'
-import { AccordionItemGroup } from './item-group'
 
 const { withProvider, withContext } = createSlotRecipeContext(accordion)
 
