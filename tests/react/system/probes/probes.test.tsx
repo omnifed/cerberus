@@ -170,3 +170,9 @@ test('P5 report: withProvider with forwardProps ["size"]', () => {
     hasAll('t', card({ size: 'sm' }).title),
   )
 })
+
+export const T3b = () => (
+  <Root>
+    <Item value="a" size="lg" />
+  </Root>
+)

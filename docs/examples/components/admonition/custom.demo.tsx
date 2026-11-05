@@ -1,35 +1,26 @@
 import { PawIcon } from '@/components/icons/paw'
 import { Box, Circle } from '@/styled-system/jsx'
-import { AdmonitionParts } from '@cerberus-design/react'
+import { Admonition } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
     <Box w="3/4">
-      <AdmonitionParts.Root
-        css={{
-          transform: 'skewX(-10deg)',
-        }}
-      >
-        <AdmonitionParts.Indicator>
+      <Admonition.Root transform="skewX(-10deg)">
+        <Admonition.Indicator>
           <Circle size="6">
             <PawIcon />
           </Circle>
-        </AdmonitionParts.Indicator>
+        </Admonition.Indicator>
 
-        <AdmonitionParts.Content>
-          <AdmonitionParts.Heading
-            css={{
-              color: 'danger.text.initial',
-              textTransform: 'uppercase',
-            }}
-          >
+        <Admonition.Content>
+          <Admonition.Heading color="danger.text.initial" textTransform="uppercase">
             Cerberus Forever
-          </AdmonitionParts.Heading>
-          <AdmonitionParts.Description>
+          </Admonition.Heading>
+          <Admonition.Description>
             President&apos;s are temporary, but Cerberus is forever.
-          </AdmonitionParts.Description>
-        </AdmonitionParts.Content>
-      </AdmonitionParts.Root>
+          </Admonition.Description>
+        </Admonition.Content>
+      </Admonition.Root>
     </Box>
   )
 }

@@ -27,14 +27,17 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
       borderBlockEnd: '2px solid',
       borderColor: 'page.border.initial',
       paddingBlock: 'var(--accordion-item-padding)',
+      _lastOfType: {
+        borderBlockEnd: 'none',
+      },
     },
     itemTrigger: {
       alignItems: 'center',
       cursor: 'pointer',
       color: 'page.text.initial',
       display: 'flex',
-      paddingBlock: 'var(--accordion-item-trigger-padding)',
-      px: 'sm',
+      px: 'var(--accordion-item-trigger-padding)',
+      py: 'sm',
       rounded: 'var(--accordion-item-trigger-radii)',
       transitionProperty: 'background-color',
       transitionDuration: 'fast',
@@ -54,6 +57,7 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
     itemContent: {
       color: 'page.text.initial',
       overflow: 'hidden',
+      px: 'var(--accordion-item-trigger-padding)',
       _motionSafe: {
         animationDuration: 'fast',
         animationFillMode: 'forwards',
