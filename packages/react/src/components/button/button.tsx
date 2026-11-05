@@ -1,14 +1,12 @@
 'use client'
 
 import { createContext, useContext } from 'react'
-import { css, cx } from 'styled-system/css'
 import { Box } from 'styled-system/jsx'
 import { button } from 'styled-system/recipes'
-import { cerberus } from '../../system/index'
 import type { CerberusProps } from '../../system/types'
 import { Show } from '../show/index'
 import { Spinner } from '../spinner/index'
-import { ButtonRootProps } from './primitives'
+import { ButtonRoot, ButtonRootProps } from './primitives'
 
 /**
  * This module contains the Button component. For some reason, the Ark-UI Popover
@@ -29,10 +27,6 @@ export interface ButtonProps extends ButtonRootProps {
    * If true, the button will show a loading spinner.
    */
   pending?: boolean
-  /**
-   * If true, the button will not have any default styles applied.
-   */
-  unstyled?: boolean
 }
 
 /**
@@ -40,21 +34,15 @@ export interface ButtonProps extends ButtonRootProps {
  * @see https://cerberus.digitalu.design/react/button
  */
 function ButtonEl(props: ButtonProps) {
-  const [variantProps, elProps] = button.splitVariantProps(props)
+  const [_variantProps, elProps] = button.splitVariantProps(props)
   const { pending = false, ...nativeProps } = elProps
 
-  const styles = button(variantProps)
+  // const styles = button(variantProps)
   const value = { pending }
 
   return (
     <ButtonContext.Provider value={value}>
-      <cerberus.button
-        data-scope="button"
-        data-part="root"
-        {...nativeProps}
-        disabled={pending || nativeProps.disabled}
-        className={cx(elProps.className, styles, css(elProps.css))}
-      />
+      <ButtonRoot {...nativeProps} disabled={pending || nativeProps.disabled} />
     </ButtonContext.Provider>
   )
 }
