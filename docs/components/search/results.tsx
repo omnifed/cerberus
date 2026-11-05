@@ -1,6 +1,6 @@
 'use client'
 
-import { cerberus, Square, Stack } from '@/styled-system/jsx'
+import { styled, Square, Stack } from '@/styled-system/jsx'
 import { Document, Hashtag } from '@carbon/icons-react'
 import { For, Show, Tag, Text } from '@cerberus-design/react'
 import { useQuery } from '@cerberus-design/signals'
@@ -9,7 +9,7 @@ import { Fragment } from 'react/jsx-runtime'
 import { querySearch } from './factories'
 import { ResultRow } from './result-row'
 
-export const StyledLink = cerberus(Link, {
+export const StyledLink = styled(Link, {
   base: {
     px: 'md',
     py: 'sm',

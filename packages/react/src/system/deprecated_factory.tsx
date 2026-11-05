@@ -1,9 +1,9 @@
 import { ark } from '@ark-ui/react/factory'
 import { forwardRef, type ElementType } from 'react'
 import { css, cx, type Styles } from 'styled-system/css'
-import { cerberus } from 'styled-system/jsx/factory'
+import { styled } from 'styled-system/jsx/factory'
 import type {
-  CerberusComponent,
+  StyledComponent,
   RecipeDefinition,
   RecipeVariantRecord,
 } from 'styled-system/types'
@@ -15,7 +15,7 @@ import type {
   CerberusRecipe,
   CerberusSlotRecipe,
   WithRecipeOptions,
-} from './types'
+} from './deprecated_types'
 
 /**
  * This module contains a factory for creating Cerberus primitives.
@@ -32,7 +32,7 @@ export class CerberusPrimitive {
   private setupStyledComponent<T extends ElementType>(
     component: T | CerberusPrimitiveEl<T>,
     options?: WithRecipeOptions,
-  ): CerberusComponent<T> {
+  ): StyledComponent<T> {
     const arkComponent = ark[component as keyof typeof ark]
     const factoryOptions = options?.forwardProps
       ? { forwardProps: options.forwardProps }
@@ -40,11 +40,11 @@ export class CerberusPrimitive {
     const recipeDef = undefined as unknown as RecipeDefinition
 
     if (typeof component !== 'string') {
-      return cerberus(component, recipeDef, factoryOptions)
+      return styled(component, recipeDef, factoryOptions)
     }
 
     if (arkComponent) {
-      return cerberus(arkComponent, recipeDef, factoryOptions)
+      return styled(arkComponent, recipeDef, factoryOptions)
     }
 
     throw new Error(`Unknown component: ${component}`)

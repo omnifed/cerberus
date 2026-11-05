@@ -1,13 +1,13 @@
 'use client'
 
-import { cerberus } from '@/styled-system/jsx'
+import { styled } from '@/styled-system/jsx'
 import { createComputed, useRead } from '@cerberus-design/signals'
 import { focusStates } from '@cerberus/panda-preset'
 import Link, { LinkProps } from 'next/link'
 import { PropsWithChildren } from 'react'
 import { store } from './store.client'
 
-const StyledLink = cerberus(Link)
+const StyledLink = styled(Link)
 
 type Props = {
   url: string

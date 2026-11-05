@@ -1,10 +1,9 @@
-import { ark } from '@ark-ui/react/factory'
 import { type ComponentProps } from 'react'
-import { cerberus } from 'styled-system/jsx/factory'
 import { closableTag, gradientTag, tag } from 'styled-system/recipes'
+import { cerberus } from '../../system'
 import { type IconButtonProps } from '../icon-button'
 
-export const baseTagAttrs = {
+export const defaultProps = {
   'data-scope': 'tag',
   'data-part': 'root',
 }
@@ -15,7 +14,7 @@ export type FilledTagProps = ComponentProps<typeof FilledTag> & {
   gradient?: never
   onClick?: never
 }
-export const FilledTag = cerberus(ark.span, tag)
+export const FilledTag = cerberus('span', tag, { defaultProps })
 
 // GraidentTag ---------------------------------------------------
 
@@ -23,7 +22,7 @@ export type GradientTagProps = ComponentProps<typeof GradientTag> & {
   palette?: never
   onClick?: never
 }
-export const GradientTag = cerberus(ark.span, gradientTag)
+export const GradientTag = cerberus('span', gradientTag, { defaultProps })
 
 // ClosableTag ---------------------------------------------------
 
@@ -35,4 +34,4 @@ export type ClosableTagProps = Omit<
   gradient?: never
   onClick?: IconButtonProps['onClick']
 }
-export const ClosableTagRoot = cerberus(ark.span, closableTag)
+export const ClosableTagRoot = cerberus('span', closableTag, { defaultProps })

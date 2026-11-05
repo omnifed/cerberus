@@ -1,39 +1,19 @@
-import type { HTMLAttributes } from 'react'
-import {
-  button,
-  buttonGroup,
-  ButtonVariantProps,
-  type ButtonGroupVariantProps,
-} from 'styled-system/recipes'
-import {
-  CerberusProps,
-  createCerberusPrimitive,
-  type CerberusPrimitiveProps,
-} from '../../system/index'
+'use client'
 
-/**
- * This module contains the Button component primitives.
- * @module @cerberus-design/react/components/button/primitives
- */
+import type { ComponentProps } from 'react'
+import { button, buttonGroup } from 'styled-system/recipes'
+import { cerberus } from '../../system/index'
 
-const { withRecipe } = createCerberusPrimitive(button)
-const { withRecipe: withGroupRecipe } = createCerberusPrimitive(buttonGroup)
+const getDefaultProps = (slot: string) => ({
+  defaultProps: { 'data-scope': slot, 'data-part': 'root' },
+})
 
-/**
- * The root element of the Button component.
- */
-export const ButtonRoot = withRecipe('button')
-export type ButtonRootProps = CerberusProps<'button'> & ButtonVariantProps
+// Button -------------------------------------------------------
 
-const ButtonGroupEl = withGroupRecipe('div')
-export type ButtonGroupProps = CerberusPrimitiveProps<
-  HTMLAttributes<HTMLDivElement> & ButtonGroupVariantProps
->
+export type ButtonRootProps = ComponentProps<typeof ButtonRoot>
+export const ButtonRoot = cerberus('button', button, getDefaultProps('button'))
 
-/**
- * The ButtonGroup component is a wrapper that groups multiple Button
- * components together.
- */
-export function ButtonGroup(props: ButtonGroupProps) {
-  return <ButtonGroupEl {...props} />
-}
+// ButtonGroup --------------------------------------------------
+
+export type ButtonGroupProps = ComponentProps<typeof ButtonGroup>
+export const ButtonGroup = cerberus('div', buttonGroup, getDefaultProps('button-group'))

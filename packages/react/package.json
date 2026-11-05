@@ -193,7 +193,6 @@
     "globby": "catalog:jsx",
     "react": "catalog:jsx",
     "react-dom": "catalog:jsx",
-    "styled-system": "workspace:*",
     "vite": "catalog:jsx",
     "vite-plugin-dts": "catalog:jsx"
   },

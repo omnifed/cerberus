@@ -1,4 +1,4 @@
-import { Accordion, AccordionItemGroup, For, Show } from '@cerberus-design/react'
+import { Accordion, For, Show } from '@cerberus-design/react'
 import { Box } from 'styled-system/jsx'
 import data from './data.json'
 
@@ -8,9 +8,13 @@ export function SizeDemo() {
       <Accordion defaultValue={['one']} size="sm">
         <For each={data}>
           {(item) => (
-            <AccordionItemGroup heading={item.heading} key={item.id} value={item.value}>
+            <Accordion.ItemGroup
+              heading={item.heading}
+              key={item.id}
+              value={item.value}
+            >
               <Show when={item.content !== null}>{item.content}</Show>
-            </AccordionItemGroup>
+            </Accordion.ItemGroup>
           )}
         </For>
       </Accordion>

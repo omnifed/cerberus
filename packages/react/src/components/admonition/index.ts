@@ -1,3 +1,2 @@
-export * from './parts'
+export * from './api'
 export * from './primitives'
-export * from './admonition'
