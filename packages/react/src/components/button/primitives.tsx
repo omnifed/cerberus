@@ -1,9 +1,11 @@
+'use client'
+
 import type { ComponentProps } from 'react'
 import { button, buttonGroup } from 'styled-system/recipes'
 import { cerberus } from '../../system/index'
 
 const getDefaultProps = (slot: string) => ({
-  defaultProps: { 'data-scope': slot },
+  defaultProps: { 'data-scope': slot, 'data-part': 'root' },
 })
 
 // Button -------------------------------------------------------

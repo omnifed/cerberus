@@ -5,6 +5,8 @@ group: Concepts
 order: 2
 ---
 
+## JSX Composition
+
 Cerberus components come with extra features that help streamline customization and composition for when you need to build your own enhanced solutions.
 
 ## Cerberus Factory
@@ -34,28 +36,6 @@ approach, inspired by
 maximum flexibility.
 
 <Example path="components/composition" demo="asChild" />
-
-## Best Practices
-
-To avoid common pitfalls when using the `as` and `asChild` props, there are a
-few best practices to consider:
-
-- **Forward Refs:** Ensure that the underlying component forwards the ref passed
-  to it properly.
-- **Spread Props:** Ensure that the underlying component spreads the props
-  passed to it.
-
-### Advanced Usage Example
-
-```tsx
-const MyComponent = forwardRef((props, ref) => {
-  return <Box ref={ref} {...props} />
-})
-
-<Button asChild>
-  <MyComponent> Click me </MyComponent>
-</Button>
-```
 
 ## The Text Component
 
