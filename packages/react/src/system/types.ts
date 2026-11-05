@@ -105,6 +105,12 @@ export type CerberusComponent<
   CerberusProps<T, R extends CerberusRecipe ? NonNullable<Parameters<R>[0]> : {}>
 >
 
+export type AnyFactory = (
+  component: ElementType,
+  recipe?: unknown,
+  options?: unknown,
+) => ElementType
+
 type ElementName = Extract<keyof typeof ark, keyof JSX.IntrinsicElements>
 
 /**
