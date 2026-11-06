@@ -1,2 +1,9 @@
 export * from './api'
-export * from './primitives'
+
+export type {
+  AdmonitionRootProps,
+  AdmonitionIndicatorProps,
+  AdmonitionHeadingProps,
+  AdmonitionDescriptionProps,
+  AdmonitionContentProps,
+} from './primitives'

@@ -1,3 +1,9 @@
-export * from './primitives'
 export * from './api'
-export * from './item-group'
+
+export type {
+  AccordionRootProps,
+  AccordionItemProps,
+  AccordionItemTriggerProps,
+  AccordionItemContentProps,
+  AccordionItemIndicatorProps,
+} from './primitives'
