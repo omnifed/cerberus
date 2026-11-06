@@ -210,8 +210,8 @@ catalogs:
       specifier: ^2.4.0
       version: 2.4.0
     '@pandacss/preset-base':
-      specifier: ^2.4.0
-      version: 2.4.0
+      specifier: ^2.5.0
+      version: 2.5.0
     '@pandacss/preset-panda':
       specifier: ^2.4.0
       version: 2.4.0
@@ -541,7 +541,7 @@ importers:
         version: 5.39.3(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@pandacss/preset-base':
         specifier: catalog:pandacss
-        version: 2.4.0
+        version: 2.5.0
       '@pandacss/preset-panda':
         specifier: catalog:pandacss
         version: 2.4.0
@@ -1994,8 +1994,8 @@ packages:
     peerDependencies:
       postcss: '>=8.5.18'
 
-  '@pandacss/preset-base@2.4.0':
-    resolution: {integrity: sha512-0tQx1ltwgD1WawROrYQMK7BnWJu8U9nnuJJxmwVq86hD+6A3uhWp9O55WiHL8YJZGC1j1dSRORYpFjYg2KVfZA==}
+  '@pandacss/preset-base@2.5.0':
+    resolution: {integrity: sha512-1g2LxmmZqyT/JPUWTeooegPfK3S5LkPqusbAKdl+ZBCjyZN0qIHMgGOvoSck4LotSD7BUwSReDaOLRMO7GCTpg==}
     engines: {node: '>=22'}
 
   '@pandacss/preset-panda@2.4.0':
@@ -2004,6 +2004,10 @@ packages:
 
   '@pandacss/types@2.4.0':
     resolution: {integrity: sha512-W2ELCg6MjSyHXOa5/Z9pQ+S39jKcYWRQIC0bu3Ycg6NPDh/qOz8cc9Kr5LMO9Iskd3F8a2MdBl3BuUR+PvR6oQ==}
+    engines: {node: '>=22'}
+
+  '@pandacss/types@2.5.0':
+    resolution: {integrity: sha512-p0iRlGE6+zNK34HGL4qOqIAz1wyu6He6dsGfGawj2ddU8pk6J2HmoymOELmto1KJxP79F26VvQIyOZOGv4639g==}
     engines: {node: '>=22'}
 
   '@parcel/watcher-android-arm64@2.5.6':
@@ -6473,15 +6477,17 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  '@pandacss/preset-base@2.4.0':
+  '@pandacss/preset-base@2.5.0':
     dependencies:
-      '@pandacss/types': 2.4.0
+      '@pandacss/types': 2.5.0
 
   '@pandacss/preset-panda@2.4.0':
     dependencies:
       '@pandacss/types': 2.4.0
 
   '@pandacss/types@2.4.0': {}
+
+  '@pandacss/types@2.5.0': {}
 
   '@parcel/watcher-android-arm64@2.5.6':
     optional: true
