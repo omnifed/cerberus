@@ -16,7 +16,7 @@ import { Admonition } from '@cerberus/react'
 
 ## Usage
 
-The `Admonition` component is used to display static messagesto users.
+The `Admonition` component is used to display static messages to users.
 It can be used in various contexts, such as error, success, or informational messages.
 
 <Example path="components/admonition" demo="basic" />
@@ -41,6 +41,18 @@ are `filled` (default) and `outlined`.
 You can customize the Admonition any way you like with style props and data-selectors.
 
 <Example path="components/admonition" demo="custom" />
+
+### Unstyled
+
+To remove all default styles from the Admonition, you can use the `unstyled` prop on the `Admonition` component.
+
+<Example path="components/admonition" demo="unstyled" />
+
+### Unstyled Slots
+
+To remove all default styles from a specific slot of the Admonition, you can use the `unstyled` prop on the specific slot component.
+
+<Example path="components/admonition" demo="unstyledSlot" />
 
 ## Primitives
 
