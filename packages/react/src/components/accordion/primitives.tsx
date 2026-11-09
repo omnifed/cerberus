@@ -6,27 +6,27 @@ import { accordion } from 'styled-system/recipes'
 
 const { withProvider, withContext } = createSlotRecipeContext(accordion)
 
-// Root -----------------------------------------------------
+// AccordionRoot -----------------------------------------------------
 
 export type AccordionRootProps = ComponentProps<typeof AccordionRoot>
 export const AccordionRoot = withProvider(ArkAccordion.Root, 'root')
 
-// Item -----------------------------------------------------
+// AccordionItem -----------------------------------------------------
 
 export type AccordionItemProps = ComponentProps<typeof AccordionItem>
 export const AccordionItem = withContext(ArkAccordion.Item, 'item')
 
-// ItemTrigger -----------------------------------------------
+// AccordionItemTrigger -----------------------------------------------------
 
 export type AccordionItemTriggerProps = ComponentProps<typeof AccordionItemTrigger>
 export const AccordionItemTrigger = withContext(ArkAccordion.ItemTrigger, 'itemTrigger')
 
-// ItemContent -----------------------------------------------
+// AccordionItemContent -----------------------------------------------------
 
 export type AccordionItemContentProps = ComponentProps<typeof AccordionItemContent>
 export const AccordionItemContent = withContext(ArkAccordion.ItemContent, 'itemContent')
 
-// ItemIndicator ---------------------------------------------
+// AccordionItemIndicator -----------------------------------------------------
 
 export type AccordionItemIndicatorProps = ComponentProps<typeof AccordionItemIndicator>
 export const AccordionItemIndicator = withContext(
