@@ -1,64 +1,53 @@
-import { splitProps } from '../../utils/index'
+import { accordionAnatomy } from '@ark-ui/react/anatomy'
+import type { ReactNode } from 'react'
+import { createAbstraction } from '../../internal/factory'
 import { Show } from '../show/index'
 import { Accordion } from './api'
 import { AccordionChevronItemIndicator } from './item-indicator'
 import { type AccordionItemProps } from './primitives'
 
-/**
- * This module contains an abstraction of the AccordionItem components.
- * @module
- */
+const keys = accordionAnatomy.keys()
 
-export interface AccordionItemGroupProps extends AccordionItemProps {
-  /**
-   * The heading of the accordion item to open and close the content.
-   */
-  heading: string
-  /**
-   * The position of the arrow indicator.
-   */
+export interface AccordionItemGroupBaseProps extends AccordionItemProps {
+  heading?: ReactNode
   indicatorPosition?: 'start' | 'end'
 }
 
-/**
- * The AccordionItemGroup component is an abstraction of the Accordion primitive
- * components which renders an accordion item with a heading and an indicator.
- *
- * It is a wrapper around the `AccordionParts.Item`, `AccordionParts.
- * ItemTrigger`, `AccordionParts.ItemIndicator`, and `AccordionParts.ItemContent` components.
- *
- * @description [Cerberus docs](https://cerberus.digitalu.design/react/accordion)
- * @description [Ark docs](https://ark-ui.com/react/docs/components/accordion)
- */
-export function AccordionItemGroup(props: AccordionItemGroupProps) {
-  const [groupProps, itemProps] = splitProps(props, [
-    'heading',
-    'children',
-    'indicatorPosition',
-  ])
-  const indicatorPosition = groupProps.indicatorPosition ?? 'end'
+export const AccordionItemGroup = createAbstraction<
+  AccordionItemGroupBaseProps,
+  (typeof keys)[number] | 'heading',
+  (typeof keys)[number] | 'heading'
+>((props, slots, slotProps) => {
+  const indicatorPosition = props.indicatorPosition ?? 'end'
 
-  if (!itemProps.value) {
+  const HeadingContent = slots.heading ?? props.heading
+  const IndicatorContent = (
+    <AccordionChevronItemIndicator
+      slot={slots.itemIndicator}
+      {...slotProps.itemIndicator}
+    />
+  )
+
+  if (!props.value) {
     throw new Error(
       'AccordionItemGroup requires a value prop to properly identify the item.',
     )
   }
 
   return (
-    <Accordion.Item {...itemProps} value={itemProps.value}>
-      <Accordion.ItemTrigger data-indicator-position={indicatorPosition}>
-        <Show when={indicatorPosition === 'start'}>
-          <AccordionChevronItemIndicator />
-        </Show>
-
-        {groupProps.heading}
-
-        <Show when={indicatorPosition === 'end'}>
-          <AccordionChevronItemIndicator />
-        </Show>
+    <Accordion.Item value={props.value} {...slotProps.root}>
+      <Accordion.ItemTrigger
+        data-indicator-position={indicatorPosition}
+        {...slotProps.itemTrigger}
+      >
+        <Show when={indicatorPosition === 'start'}>{IndicatorContent}</Show>
+        {HeadingContent}
+        <Show when={indicatorPosition === 'end'}>{IndicatorContent}</Show>
       </Accordion.ItemTrigger>
 
-      <Accordion.ItemContent>{groupProps.children}</Accordion.ItemContent>
+      <Accordion.ItemContent {...slotProps.itemContent}>
+        {props.children}
+      </Accordion.ItemContent>
     </Accordion.Item>
   )
-}
+})
