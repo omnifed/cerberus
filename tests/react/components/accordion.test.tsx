@@ -3,7 +3,7 @@ import { Accordion } from '@cerberus-design/react'
 import { cleanup, screen } from '@testing-library/react'
 import { afterEach, describe, expect, test } from 'bun:test'
 
-describe('Accordion v2 DX Contract', () => {
+describe('Accordion Contract', () => {
   afterEach(cleanup)
 
   test('renders the abstraction out of the box', () => {
