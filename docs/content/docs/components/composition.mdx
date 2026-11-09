@@ -22,7 +22,9 @@ To style components, you use inline style props, which are passed directly to th
 
 ### Unstyled Components <FeatureBadge since="2.0.0" />
 
-You can remove the underlying recipe styles from a component by using the `unstyled` prop. This allows you to use the component's functionality without any default styling.
+You can remove the underlying recipe styles from a component by using the `unstyled` prop.
+
+This allows you to use the component's functionality without any default styling. This includes any primitive slot for when you only want to remove a single layer of the full component API. To do the reverse, simply add `unstyled={false}` to the layer you want to keep the styles.
 
 Style props, `css`, and `className` still apply.
 
