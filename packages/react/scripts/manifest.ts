@@ -3,7 +3,7 @@ import { accordionAnatomy } from '@ark-ui/react/anatomy'
 export type AbstractionConfig = {
   name: string
   file: string // e.g., 'item-group' (no extension)
-  description?: string // Optional description for the abstraction
+  description: string // Optional description for the abstraction
 }
 
 export type ComponentConfig = {
