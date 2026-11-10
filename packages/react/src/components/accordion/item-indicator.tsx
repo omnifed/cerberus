@@ -1,9 +1,9 @@
 'use client'
 
 import { type AccordionItemIndicatorProps } from '@ark-ui/react/accordion'
-import { useCerberusContext } from '../../context/cerberus'
-import { Accordion } from './api'
 import type { ReactNode } from 'react'
+import { useCerberusContext } from '../../context/cerberus'
+import { AccordionItemIndicator } from './primitives'
 
 export type AccordionChevronItemIndicatorProps = AccordionItemIndicatorProps & {
   slot?: ReactNode
@@ -12,14 +12,14 @@ export type AccordionChevronItemIndicatorProps = AccordionItemIndicatorProps & {
 export function AccordionChevronItemIndicator(
   props: AccordionChevronItemIndicatorProps,
 ) {
-  const { slot, ...rest } = props
+  const { slot, ...indicatorProps } = props
 
   const { icons } = useCerberusContext()
   const { accordionIndicator: ChevronDown } = icons
 
   return (
-    <Accordion.ItemIndicator asChild={Boolean(slot)} {...rest}>
+    <AccordionItemIndicator asChild={Boolean(slot)} {...indicatorProps}>
       {slot || <ChevronDown />}
-    </Accordion.ItemIndicator>
+    </AccordionItemIndicator>
   )
 }

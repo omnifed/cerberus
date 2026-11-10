@@ -35,13 +35,15 @@ The `Accordion` component supports two sizes: `sm` and `lg`. This changes the si
 
 ## Customizing
 
-You can customize the Accordion using style props and data selectors.
+You can customize the `Accordion` using any of the [compositional options](/docs/components/composition).
 
 <Example path="components/accordion" demo="custom" />
 
 ### Unstyled
 
-To completely remove the underlying recipe add the `unstyled` prop to the `Accordion`
+To completely remove the underlying recipe add the `unstyled` prop to the `Accordion` and `Accordion.ItemGroup`.
+
+We add `unstyled` to `Accordion.ItemGroup` because it is an abstracted layer (e.g., not a part of the original primitive family).
 
 <Example path="components/accordion" demo="unstyled" />
 

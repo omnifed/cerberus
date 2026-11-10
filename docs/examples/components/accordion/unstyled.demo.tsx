@@ -12,6 +12,7 @@ export function UnstyledDemo() {
               heading={item.heading}
               key={item.id}
               value={item.value}
+              unstyled
             >
               {item.content || 'This is content for the Accordion.'}
             </Accordion.ItemGroup>
