@@ -1,10 +1,4 @@
-import { accordionAnatomy } from '@ark-ui/react/anatomy'
-
-export type AbstractionConfig = {
-  name: string
-  file: string // e.g., 'item-group' (no extension)
-  description: string // Optional description for the abstraction
-}
+import { accordionAnatomy, avatarAnatomy } from '@ark-ui/react/anatomy'
 
 export type ComponentConfig = {
   name: string
@@ -12,6 +6,13 @@ export type ComponentConfig = {
   anatomy: any
   description: string // The main Rust-level summary
   abstractions?: AbstractionConfig[]
+}
+
+export type AbstractionConfig = {
+  name: string
+  file: string // e.g., 'item-group' (no extension)
+  description: string // Optional description for the abstraction
+  isDefaultExport?: boolean
 }
 
 export const COMPONENTS: ComponentConfig[] = [
@@ -29,6 +30,26 @@ The Accordion component can be used in various contexts, such as displaying FAQs
         name: 'ItemGroup',
         file: 'item-group',
         description: 'An abstraction for rendering all the content-related primitives',
+      },
+    ],
+  },
+
+  {
+    name: 'Avatar',
+    key: 'avatar',
+    anatomy: avatarAnatomy,
+    description: `
+The Avatar component is a versatile UI element that allows users to have a visual representation of their presence within an application. It is composed of several primitives that enable customization and flexibility in its usage.
+
+The Avatar component can be used in various contexts, such as profiles, App Bars, menus, or any other content that benefits from a user representation. It supports different palettes, gradients, and layout styles to match the design requirements of your application.
+    `,
+    abstractions: [
+      {
+        name: 'El',
+        file: 'avatar',
+        description:
+          'An entry abstraction for rendering all the content-related primitives',
+        isDefaultExport: true,
       },
     ],
   },

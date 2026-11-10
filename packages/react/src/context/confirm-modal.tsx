@@ -15,7 +15,7 @@ import { css } from 'styled-system/css'
 import { HStack, VStack } from 'styled-system/jsx'
 import { Button } from '../components/button/button'
 import { Show } from '../components/show/index'
-import { Avatar } from '../components/avatar/avatar'
+import { Avatar } from '../components/avatar/api'
 import {
   Dialog,
   DialogCloseTrigger,
@@ -117,9 +117,7 @@ export type ConfirmModalProviderProps = PropsWithChildren<DialogRootProps>
  * }, [confirm])
  * ```
  */
-export function ConfirmModal(
-  props: PropsWithChildren<ConfirmModalProviderProps>,
-) {
+export function ConfirmModal(props: PropsWithChildren<ConfirmModalProviderProps>) {
   const { children, ...rootProps } = props
   const [open, setOpen] = useState<boolean>(false)
   const [content, setContent] = useState<ShowConfirmModalOptions | null>(null)
@@ -132,10 +130,7 @@ export function ConfirmModal(
   const { icons } = useCerberusContext()
   const { confirmModal: ConfirmIcon } = icons
 
-  const palette = useMemo(
-    () => (kind === 'destructive' ? 'danger' : 'action'),
-    [kind],
-  )
+  const palette = useMemo(() => (kind === 'destructive' ? 'danger' : 'action'), [kind])
 
   const handleChoice = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
@@ -195,19 +190,9 @@ export function ConfirmModal(
             '--dialog-content-min-h': 'auto',
           }}
         >
-          <VStack
-            alignItems="flex-start"
-            gap="md"
-            justify="space-between"
-            w="full"
-          >
+          <VStack alignItems="flex-start" gap="md" justify="space-between" w="full">
             <Show when={showAvatar}>
-              <HStack
-                alignSelf="center"
-                justify="center"
-                paddingBlockEnd="md"
-                w="full"
-              >
+              <HStack alignSelf="center" justify="center" paddingBlockEnd="md" w="full">
                 <Show
                   when={palette === 'danger'}
                   fallback={
@@ -217,10 +202,7 @@ export function ConfirmModal(
                     />
                   }
                 >
-                  <Avatar
-                    gradient="hades-dark"
-                    fallback={<ConfirmIcon size={24} />}
-                  />
+                  <Avatar gradient="hades-dark" fallback={<ConfirmIcon size={24} />} />
                 </Show>
               </HStack>
             </Show>
@@ -268,9 +250,7 @@ export function ConfirmModal(
 export function useConfirmModal(): ConfirmModalValue {
   const context = useContext(ConfirmModalContext)
   if (context === null) {
-    throw new Error(
-      'useConfirmModal must be used within a ConfirmModal Provider',
-    )
+    throw new Error('useConfirmModal must be used within a ConfirmModal Provider')
   }
   return context
 }

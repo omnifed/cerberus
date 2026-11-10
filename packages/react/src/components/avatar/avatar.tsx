@@ -1,12 +1,13 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { Show } from '../show/index'
-import { AvatarParts } from './parts'
-import type { AvatarRootProps } from './primitives'
-
-/**
- * This module provides an abstraction of the Avatar primitives.
- * @module 'avatar'
- */
+import {
+  AvatarFallback,
+  AvatarImage,
+  AvatarRoot,
+  type AvatarRootProps,
+} from './primitives'
 
 export type AvatarWithoutImage = {
   alt?: never
@@ -20,8 +21,7 @@ export type AvatarWithImage = {
   fallback?: ReactNode
 }
 
-export type AvatarProps = AvatarRootProps &
-  (AvatarWithoutImage | AvatarWithImage)
+export type AvatarProps = AvatarRootProps & (AvatarWithoutImage | AvatarWithImage)
 
 /**
  * Avatar component is an abstraction of the primitives that displays a
@@ -29,23 +29,23 @@ export type AvatarProps = AvatarRootProps &
  * @description [Cerberus Docs](https://cerberus.digitalu.design/react/avatar/overview)
  * @description [Ark Docs](https://ark-ui.com/react/docs/components/avatar#api-reference)
  */
-export function Avatar(props: AvatarProps) {
+export function AvatarEl(props: AvatarProps) {
   const { alt, src, fallback, children, ...rootProps } = props
   const imgProps = { alt, src }
 
   return (
-    <AvatarParts.Root {...rootProps}>
+    <AvatarRoot {...rootProps}>
       <Show
         when={children}
         fallback={
           <>
-            <AvatarParts.Fallback>{fallback}</AvatarParts.Fallback>
-            <AvatarParts.Image {...imgProps} />
+            <AvatarFallback>{fallback}</AvatarFallback>
+            <AvatarImage {...imgProps} />
           </>
         }
       >
         {children}
       </Show>
-    </AvatarParts.Root>
+    </AvatarRoot>
   )
 }

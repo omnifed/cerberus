@@ -3,7 +3,7 @@
 import { type ElementType } from 'react'
 import type { AdmonitionVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
-import { Avatar } from '../avatar/avatar'
+import { Avatar } from '../avatar/api'
 
 /**
  * This module provides a component for creating the admonition indicator.
