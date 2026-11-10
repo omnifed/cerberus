@@ -1,3 +1,5 @@
+'use client'
+
 import type { ElementType, ReactNode } from 'react'
 import { createContext, useContext } from 'react'
 import { splitProps } from '../utils/index'
