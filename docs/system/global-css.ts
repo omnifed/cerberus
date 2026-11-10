@@ -16,7 +16,7 @@ export const globalCss = defineGlobalStyles({
 
   '.shiki': {
     fontSize: 'md',
-    fontVariationSettings: "'slnt' -3, 'CASL' 1, 'CRSV' 1, 'MONO' 0",
+    fontVariationSettings: "'slnt' -3, 'CASL' 0, 'CRSV' 1, 'MONO' 0",
     lineHeight: 'initial!',
     letterSpacing: 'initial!',
     textStyle: 'mono-xs',

@@ -30,6 +30,22 @@ Style props, `css`, and `className` still apply.
 
 <Example path="components/composition" demo="unstyled" />
 
+## Slots <FeatureBadge since="2.0.0" />
+
+For any abstraction-based component API (e.g., made of multiple primitive layers), you can use the `slots` prop to completely replace the layer specified with the `ReactNode` you provide as a value.
+
+This feature is only available on multi-layered components. For single layer components, just use [style props](#styling-components)
+
+<Example path="components/composition" demo="slots" />
+
+## Slot Props <FeatureBadge since="2.0.0" />
+
+For any abstraction-based component API (e.g., made of multiple primitive layers), you can use the `slots` prop to completely replace the layer specified with the `ReactNode` you provide as a value.
+
+This feature is only available on multi-layered components. For single layer components, just pass custom props in.
+
+<Example path="components/composition" demo="slotProps" />
+
 ## The `asChild` Prop
 
 Used to compose a component's functionality onto its child element. This
