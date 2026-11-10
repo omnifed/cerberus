@@ -1,4 +1,7 @@
+'use client'
+
 import type { ReactNode } from 'react'
+import { createAbstraction } from '../../internal/factory'
 import { splitProps } from '../../utils/index'
 import { Show } from '../show/index'
 import { MatchAvatar } from './match-avatar'
@@ -11,37 +14,44 @@ import {
   type AdmonitionRootProps,
 } from './primitives'
 
-export interface AdmonitionProps extends AdmonitionRootProps {
+const PARTS = {
+  root: AdmonitionRoot,
+  indicator: AdmonitionIndicator,
+  content: AdmonitionContent,
+  heading: AdmonitionHeading,
+  description: AdmonitionDescription,
+}
+
+export type AdmonitionProps = AdmonitionRootProps & {
   /**
    * The heading title for the Admonition.
    */
   heading?: string
   /**
-   * One off replacement for the icon.
+   * @deprecated - **THIS WILL BE REMOVED IN v3**. Use `slots` instead.
    */
   icon?: ReactNode
 }
 
-export function AdmonitionEl(props: AdmonitionProps) {
-  const [elProps, styleProps, rootProps] = splitProps(
-    props,
-    ['heading', 'icon', 'children'],
-    ['palette', 'usage'],
-  )
+export const AdmonitionEl = createAbstraction(
+  PARTS,
+  (props: AdmonitionProps, parts) => {
+    const [localProps, rootProps] = splitProps(props, ['heading', 'icon', 'children'])
 
-  return (
-    <AdmonitionRoot {...styleProps} {...rootProps}>
-      <Show when={elProps.icon} fallback={<MatchAvatar palette={styleProps.palette} />}>
-        <AdmonitionIndicator>{elProps.icon}</AdmonitionIndicator>
-      </Show>
+    return (
+      <parts.root {...rootProps}>
+        <parts.indicator asChild={!localProps.icon}>
+          {localProps.icon ?? <MatchAvatar palette={rootProps.palette ?? 'page'} />}
+        </parts.indicator>
 
-      <AdmonitionContent>
-        <Show when={elProps.heading}>
-          <AdmonitionHeading>{elProps.heading}</AdmonitionHeading>
-        </Show>
+        <parts.content>
+          <Show when={localProps.heading}>
+            <parts.heading>{localProps.heading}</parts.heading>
+          </Show>
 
-        <AdmonitionDescription>{elProps.children}</AdmonitionDescription>
-      </AdmonitionContent>
-    </AdmonitionRoot>
-  )
-}
+          <parts.description>{localProps.children}</parts.description>
+        </parts.content>
+      </parts.root>
+    )
+  },
+)

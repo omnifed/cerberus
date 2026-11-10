@@ -88,8 +88,8 @@ export function describeDXContract(manifest: DXManifest) {
 
             const customIcon = screen.getByTestId('custom-svg-slot')
             expect(customIcon).toBeDefined()
-            // Ensures the factory uses `<Part asChild unstyled>`
-            expect(customIcon.hasAttribute('data-state')).toBe(true)
+            expect(customIcon.hasAttribute('data-part')).toBe(true)
+            expect(customIcon.hasAttribute('data-scope')).toBe(true)
           })
 
           test('unstyled on the root cascades and strips Cerberus classes', () => {

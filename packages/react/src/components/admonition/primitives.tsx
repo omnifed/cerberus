@@ -4,6 +4,10 @@ import { ark } from '@ark-ui/react/factory'
 import { createSlotRecipeContext, type ComponentProps } from 'styled-system/jsx'
 import { admonition } from 'styled-system/recipes'
 
+export const anatomy = {
+  keys: ['root', 'indicator', 'content', 'heading', 'description'],
+}
+
 const { withProvider, withContext } = createSlotRecipeContext(admonition)
 
 const getDefaultProps = (part: string) => ({
