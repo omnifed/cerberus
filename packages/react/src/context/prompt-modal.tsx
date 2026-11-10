@@ -15,7 +15,7 @@ import {
 import { css } from 'styled-system/css'
 import { HStack, VStack } from 'styled-system/jsx'
 import { hstack } from 'styled-system/patterns'
-import { Avatar } from '../components/avatar/avatar'
+import { Avatar } from '../components/avatar/api'
 import { Button } from '../components/button/button'
 import { Clipboard } from '../components/clipboard/index'
 import {

@@ -82,16 +82,26 @@ async function generateComponentAPI(config: ComponentConfig) {
   jsDoc += ` */\n`
 
   apiCode += jsDoc
-  apiCode += `export const ${name} = Object.assign(${name}Root, {\n`
+
+  // Determine the base component for Object.assign
+  const defaultAbstraction = abstractions.find((abs) => abs.isDefaultExport)
+  const assignTarget = defaultAbstraction
+    ? `${name}${defaultAbstraction.name}`
+    : `${name}Root`
+
+  apiCode += `export const ${name} = Object.assign(${assignTarget}, {\n`
+
   parts.forEach((part) => {
     const isRoot = part === 'root'
     const exportKey = isRoot ? 'Root' : part.charAt(0).toUpperCase() + part.slice(1)
     const partName = `${name}${part.charAt(0).toUpperCase() + part.slice(1)}`
     apiCode += `  ${exportKey}: ${partName},\n`
   })
+
   abstractions.forEach((abs) => {
     apiCode += `  ${abs.name}: ${name}${abs.name},\n`
   })
+
   apiCode += `})\n`
 
   // --- 3. Write files ---
