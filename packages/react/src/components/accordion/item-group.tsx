@@ -1,61 +1,59 @@
 'use client'
 
-import { accordionAnatomy } from '@ark-ui/react/anatomy'
 import type { ReactNode } from 'react'
+import { useCerberusContext } from '../../context/cerberus'
 import { createAbstraction } from '../../internal/factory'
 import { splitProps } from '../../utils/index'
 import { Show } from '../show/index'
-import { AccordionChevronItemIndicator } from './item-indicator'
 import {
   AccordionItem,
   AccordionItemContent,
+  AccordionItemIndicator,
   AccordionItemTrigger,
   type AccordionItemProps,
 } from './primitives'
 
-const keys = accordionAnatomy.keys()
+const PARTS = {
+  item: AccordionItem,
+  itemTrigger: AccordionItemTrigger,
+  itemIndicator: AccordionItemIndicator,
+  itemContent: AccordionItemContent,
+}
 
 export interface AccordionItemGroupBaseProps extends AccordionItemProps {
   heading?: ReactNode
   indicatorPosition?: 'start' | 'end'
 }
 
-export const AccordionItemGroup = createAbstraction<
-  AccordionItemGroupBaseProps,
-  (typeof keys)[number] | 'heading',
-  (typeof keys)[number] | 'heading'
->((props, slots, slotProps) => {
-  const [localProps, itemProps] = splitProps(props, ['heading', 'indicatorPosition'])
+export const AccordionItemGroup = createAbstraction(
+  PARTS,
+  (props: AccordionItemGroupBaseProps, parts) => {
+    const [localProps, itemProps] = splitProps(props, ['heading', 'indicatorPosition'])
+    const indicatorPosition = localProps.indicatorPosition ?? 'end'
 
-  const indicatorPosition = localProps.indicatorPosition ?? 'end'
-  const HeadingContent = slots.heading ?? localProps.heading
+    const { icons } = useCerberusContext()
+    const { accordionIndicator: ChevronDown } = icons
 
-  const IndicatorContent = (
-    <AccordionChevronItemIndicator
-      slot={slots.itemIndicator}
-      {...slotProps.itemIndicator}
-    />
-  )
+    return (
+      <parts.item {...itemProps}>
+        <parts.itemTrigger data-indicator-position={indicatorPosition}>
+          <Show when={indicatorPosition === 'start'}>
+            <parts.itemIndicator asChild>
+              <ChevronDown />
+            </parts.itemIndicator>
+          </Show>
 
-  return (
-    <AccordionItem {...itemProps} {...slotProps.item}>
-      <AccordionItemTrigger
-        data-indicator-position={indicatorPosition}
-        unstyled={props.unstyled}
-        {...slotProps.itemTrigger}
-      >
-        <Show when={indicatorPosition === 'start'}>{IndicatorContent}</Show>
-        {HeadingContent}
-        <Show when={indicatorPosition === 'end'}>{IndicatorContent}</Show>
-      </AccordionItemTrigger>
+          {localProps.heading}
 
-      <AccordionItemContent
-        asChild={slots.itemContent}
-        unstyled={props.unstyled}
-        {...slotProps.itemContent}
-      >
-        {slots.itemContent || itemProps.children}
-      </AccordionItemContent>
-    </AccordionItem>
-  )
-})
+          <Show when={indicatorPosition === 'end'}>
+            <parts.itemIndicator asChild>
+              <ChevronDown />
+            </parts.itemIndicator>
+          </Show>
+        </parts.itemTrigger>
+
+        <parts.itemContent>{props.children}</parts.itemContent>
+      </parts.item>
+    )
+  },
+)

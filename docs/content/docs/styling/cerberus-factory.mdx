@@ -77,7 +77,7 @@ function Usage() {
 
 ### Forward Props
 
-Sometimes you may want to use a property name for your factory component that conflicts with a native CSS property name. To allow this and prevent PandaCSS from stripping it out (due to thinking it's a native CSS prop), use the `forwardProps` proprty on the options Object.
+Sometimes you may want to use a property name for your factory component that conflicts with a native CSS property name. To allow this and prevent PandaCSS from stripping it out (due to thinking it's a native CSS prop), use the `forwardProps` property on the options Object.
 
 `forwardProps` accepts an Array of string prop names to ignore.
 
@@ -173,4 +173,61 @@ Every component created with the Cerberus factory can accept the
 <Button asChild>
   <a href="https://cerberus.digitalu.design/">Cerberus</a>
 </Button>
+```
+
+## Slot-based Abstractions <FeatureBadge since="2.0.0" />
+
+If you are familiar with our [Slot-based features](/docs/components/composition#slots), you can create your own super powered abstractions using the `createAbstraction` factory in combination with the `cerberus` factory.
+
+The `createAbstraction` takes a Object primitive record for the first argument along with a render function for the second. The render function provides the parts as the second parameter which is a super-powered version of the primitive layer.
+
+The result is a component that accepts style props, `unstyled`, `slots`, and `slotProps` props. All parts will be automagically managed via the abstraction internal context.
+
+```tsx
+import { cerberus, createAbstraction } from '@cerberus/react'
+
+const PARTS = {
+  item: cerberus('div'),
+  itemTrigger: cerberus('button'),
+  itemIndicator: cerberus('span'),
+  itemContent: cerberus('div'),
+}
+
+export interface AccordionItemGroupBaseProps extends AccordionItemProps {
+  heading?: ReactNode
+  indicatorPosition?: 'start' | 'end'
+}
+
+export const AccordionItemGroup = createAbstraction(
+  PARTS,
+  (props: AccordionItemGroupBaseProps, parts) => {
+    const [localProps, itemProps] = splitProps(props, ['heading', 'indicatorPosition'])
+    const indicatorPosition = localProps.indicatorPosition ?? 'end'
+
+    const { icons } = useCerberusContext()
+    const { accordionIndicator: ChevronDown } = icons
+
+    return (
+      <parts.item {...itemProps}>
+        <parts.itemTrigger data-indicator-position={indicatorPosition}>
+          <Show when={indicatorPosition === 'start'}>
+            <parts.itemIndicator asChild>
+              <ChevronDown />
+            </parts.itemIndicator>
+          </Show>
+
+          {localProps.heading}
+
+          <Show when={indicatorPosition === 'end'}>
+            <parts.itemIndicator asChild>
+              <ChevronDown />
+            </parts.itemIndicator>
+          </Show>
+        </parts.itemTrigger>
+
+        <parts.itemContent>{props.children}</parts.itemContent>
+      </parts.item>
+    )
+  },
+)
 ```
