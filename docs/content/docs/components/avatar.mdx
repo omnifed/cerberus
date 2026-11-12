@@ -47,19 +47,35 @@ Use the `Float` component to show badges.
 
 <Example path="components/avatar" demo="float" />
 
-## `asChild` Prop
+## Avatar Link
 
 You can use the `asChild` prop to render the `Avatar` component as a different element. Cerberus will pass all the props onto your child.
 
 This is great for when you need to link the avatar to a profile page.
 
+To do this and maintain accessibility, you will need to use the Primitive components with the `asChild` prop on the `Avatar.Fallback` layer.
+
+<NoteAdmonition description="Slots are not recommended for this purpose and will not be accessible as they completely replace the node for that layer." />
+
 <Example path="components/avatar" demo="next" />
 
 ## Customization
 
-You can customize the Avatar any way you like with style props and data-selectors.
+You can customize the `Avatar` any way you like with style props and data-selectors.
 
 <Example path="components/avatar" demo="custom" />
+
+### Unstyled <FeatureBadge since="2.0.0" />
+
+To remove all default styles from the `Avatar`, you can use the `unstyled` prop on the `Avatar` component.
+
+<Example path="components/avatar" demo="unstyled" />
+
+### Unstyled Slots <FeatureBadge since="2.0.0" />
+
+To remove all default styles from a specific slot of the `Avatar`, you can use the `unstyled` prop on the specific slot component.
+
+<Example path="components/avatar" demo="unstyledSlot" />
 
 ## Primitives
 
