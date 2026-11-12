@@ -1,6 +1,6 @@
 import { ButtonEl, ButtonIcon } from './button'
 import { ButtonProvider } from './context'
-import { ButtonRoot, ButtonGroup } from './primitives'
+import { ButtonGroup, ButtonRoot } from './primitives'
 
 /**
  * ## Button
@@ -9,14 +9,16 @@ import { ButtonRoot, ButtonGroup } from './primitives'
  * action of sorts, commonly used in forms, menus, and popovers.
  *
  * For a customizable Button, use the `Button` object to access the
- * individual primitives of the Button component, style props, or slots.
+ * individual primitives of the Button component or style props.
  *
- * ## Slots
+ * **NOTE**: This API is _slotless_ and is a single rendered layer abstraction.
+ *
+ * ## Primitives
  *
  * | Slot | Description |
  * |------|-------------|
  * | `Root` | The root element of the Button component. |
- * | `Indicator` | An optional visual indicator (e.g., icon) that optionally displays a spinner when pending. |
+ * | `Icon` | An optional visual indicator (e.g., icon) that optionally displays a spinner when pending. |
  * | `Group` | A flex row that spaces Buttons in a preferred manner. |
  * | `Provider` | The Context Provider used for the Button which holds the `pending` state |
  *
@@ -26,7 +28,7 @@ import { ButtonRoot, ButtonGroup } from './primitives'
 export const Button = Object.assign(ButtonEl, {
   Provider: ButtonProvider,
   Root: ButtonRoot,
-  Indicator: ButtonIcon,
+  Icon: ButtonIcon,
   Group: ButtonGroup,
 })
 
