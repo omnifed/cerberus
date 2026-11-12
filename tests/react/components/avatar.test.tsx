@@ -4,12 +4,12 @@ import { Avatar } from '@cerberus-design/react/avatar'
 describeDXContract({
   name: 'Avatar',
   Root: Avatar,
-  defaultRootProps: { fallback: <p>CB</p> },
+  defaultRootProps: { fallback: <p>FB</p> },
 
   primitiveTestNode: (
     <Avatar.Root>
-      <Avatar.Fallback>Standard Heading</Avatar.Fallback>
-      <Avatar.Image data-testid="primitive-content" src="" />
+      <Avatar.Fallback>FB</Avatar.Fallback>
+      <Avatar.Image data-testid="primitive-content" />
     </Avatar.Root>
   ),
 
@@ -17,7 +17,7 @@ describeDXContract({
     {
       name: 'AvatarEl',
       Component: Avatar.El,
-      defaultProps: { fallback: 'FB', src: '' },
+      defaultProps: { fallback: 'Content body', src: null },
       children: null,
       testSlot: 'fallback',
       testSlotProp: 'image',
