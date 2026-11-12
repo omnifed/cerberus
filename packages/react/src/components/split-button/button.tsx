@@ -2,11 +2,12 @@
 
 import { useCerberusContext } from '../../context/cerberus'
 import { splitProps } from '../../utils'
-import { ButtonGroup, ButtonParts, type ButtonProps } from '../button/index'
+import { Button } from '../button/index'
 import { IconButton, IconButtonProps } from '../icon-button/index'
 import { Menu, MenuTrigger, MenuContent } from '../menu/index'
 import type { CerberusPrimitiveProps } from '../../system/types'
 import { useMemo } from 'react'
+import type { ButtonProps } from '../button/button'
 
 /**
  * This module provides an abstraction for a SplitButton component.
@@ -44,11 +45,11 @@ export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
   }, [actionProps.shape])
 
   return (
-    <ButtonGroup layout="attached" shape={actionProps.shape}>
-      <ButtonParts.Root {...actionProps} size={props.size} usage={usage}>
-        <ButtonParts.Icon />
+    <Button.Group layout="attached" shape={actionProps.shape}>
+      <Button.Root {...actionProps} size={props.size} usage={usage}>
+        <Button.Icon />
         {actionText}
-      </ButtonParts.Root>
+      </Button.Root>
 
       <Menu>
         <MenuTrigger>
@@ -66,6 +67,6 @@ export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
 
         <MenuContent>{elProps.children}</MenuContent>
       </Menu>
-    </ButtonGroup>
+    </Button.Group>
   )
 }

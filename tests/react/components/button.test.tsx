@@ -4,26 +4,15 @@ import { Button } from '@cerberus-design/react/button'
 
 describeDXContract({
   name: 'Button',
-  Root: Button,
+  Root: Button.Provider,
 
   primitiveTestNode: (
-    <Button.Group>
-      <Button.Root type="submit">
-        <Button.Indicator>
-          <Corn />
-        </Button.Indicator>
-      </Button.Root>
-    </Button.Group>
+    <Button.Root data-testid="primitive-content" type="submit">
+      <Button.Icon>
+        <Corn />
+      </Button.Icon>
+    </Button.Root>
   ),
 
-  abstractions: [
-    {
-      name: 'ButtonEl',
-      Component: Button,
-      defaultProps: { type: 'submit' },
-      children: 'Content body',
-      testSlot: 'indicator',
-      testSlotProp: 'group',
-    },
-  ],
+  abstractions: [],
 })
