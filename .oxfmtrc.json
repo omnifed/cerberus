@@ -7,7 +7,7 @@
     "packages/*/dist",
     "packages/*/build"
   ],
-  "printWidth": 88,
+  "printWidth": 80,
   "semi": false,
   "singleQuote": true
 }
