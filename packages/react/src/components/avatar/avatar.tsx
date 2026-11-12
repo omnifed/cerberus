@@ -1,6 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
+import { createAbstraction } from '../../internal/factory'
 import { Show } from '../show/index'
 import {
   AvatarFallback,
@@ -8,6 +9,13 @@ import {
   AvatarRoot,
   type AvatarRootProps,
 } from './primitives'
+import { splitProps } from '../../utils'
+
+const PARTS = {
+  root: AvatarRoot,
+  fallback: AvatarFallback,
+  image: AvatarImage,
+}
 
 export type AvatarWithoutImage = {
   alt?: never
@@ -23,29 +31,27 @@ export type AvatarWithImage = {
 
 export type AvatarProps = AvatarRootProps & (AvatarWithoutImage | AvatarWithImage)
 
-/**
- * Avatar component is an abstraction of the primitives that displays a
- * avatar or it's fallback when the image fails to load.
- * @description [Cerberus Docs](https://cerberus.digitalu.design/react/avatar/overview)
- * @description [Ark Docs](https://ark-ui.com/react/docs/components/avatar#api-reference)
- */
-export function AvatarEl(props: AvatarProps) {
-  const { alt, src, fallback, children, ...rootProps } = props
-  const imgProps = { alt, src }
+export const AvatarEl = createAbstraction(PARTS, (props: AvatarProps, parts) => {
+  const [localProps, rootProps] = splitProps(props, [
+    'fallback',
+    'alt',
+    'src',
+    'children',
+  ])
 
   return (
-    <AvatarRoot {...rootProps}>
+    <parts.root {...rootProps}>
       <Show
-        when={children}
+        when={localProps.children}
         fallback={
           <>
-            <AvatarFallback>{fallback}</AvatarFallback>
-            <AvatarImage {...imgProps} />
+            <parts.fallback>{localProps.fallback}</parts.fallback>
+            <parts.image alt={localProps.alt} src={localProps.src ?? null} />
           </>
         }
       >
-        {children}
+        {localProps.children}
       </Show>
-    </AvatarRoot>
+    </parts.root>
   )
-}
+})
