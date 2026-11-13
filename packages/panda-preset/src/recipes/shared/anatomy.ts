@@ -1,4 +1,7 @@
-// Local Cerberus anatomy definitions for non-Ark APIs
+/**
+ * Local Cerberus anatomy definitions for non-Ark APIs
+ * Anatomy are primitive values only, not abstractions
+ */
 
 export const admonitionAnatomy: Anatomy = _createAnatomy([
   'root',
@@ -7,6 +10,8 @@ export const admonitionAnatomy: Anatomy = _createAnatomy([
   'description',
   'content',
 ])
+
+export const buttonAnatomy: Anatomy = _createAnatomy(['root', 'group'])
 
 // Helpers
 

@@ -4,10 +4,6 @@ import { ark } from '@ark-ui/react/factory'
 import { createSlotRecipeContext, type ComponentProps } from 'styled-system/jsx'
 import { admonition } from 'styled-system/recipes'
 
-export const anatomy = {
-  keys: ['root', 'indicator', 'content', 'heading', 'description'],
-}
-
 const { withProvider, withContext } = createSlotRecipeContext(admonition)
 
 const getDefaultProps = (part: string) => ({
@@ -24,7 +20,9 @@ export const AdmonitionRoot = withProvider(ark.div, 'root', {
 
 // Indicator ------------------------------------------------
 
-export type AdmonitionIndicatorProps = ComponentProps<typeof AdmonitionIndicator>
+export type AdmonitionIndicatorProps = ComponentProps<
+  typeof AdmonitionIndicator
+>
 export const AdmonitionIndicator = withContext(ark.span, 'indicator', {
   defaultProps: getDefaultProps('indicator'),
 })
@@ -45,7 +43,9 @@ export const AdmonitionHeading = withContext(ark.p, 'heading', {
 
 // Description ----------------------------------------------
 
-export type AdmonitionDescriptionProps = ComponentProps<typeof AdmonitionDescription>
+export type AdmonitionDescriptionProps = ComponentProps<
+  typeof AdmonitionDescription
+>
 export const AdmonitionDescription = withContext(ark.p, 'description', {
   defaultProps: getDefaultProps('description'),
 })
