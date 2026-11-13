@@ -147,8 +147,14 @@ describe('button recipe', () => {
     })
   })
 
-  test('should have a default shape variant', () => {
-    expect(button.variants?.shape.default).toMatchObject({
+  test('should have a hard shape variant', () => {
+    expect(button.variants?.shape.hard).toMatchObject({
+      rounded: 'none',
+    })
+  })
+
+  test('should have a squared shape variant', () => {
+    expect(button.variants?.shape.squared).toMatchObject({
       rounded: 'sm',
     })
   })

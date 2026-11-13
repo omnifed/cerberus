@@ -29,11 +29,13 @@ export default createCerberusConfig({
     '--nav-height': '4.75rem',
     '--shiki-background': 'var(--cerberus-colors-page-surface-100)',
     '--shiki-foreground': 'var(--cerberus-colors-page-text-initial)',
-    '--shiki-token-keyword': 'var(--cerberus-colors-secondary-action-text-initial)',
+    '--shiki-token-keyword':
+      'var(--cerberus-colors-secondary-action-text-initial)',
     '--shiki-token-function': 'var(--cerberus-colors-info-text-initial)',
     '--shiki-token-string': 'var(--cerberus-colors-success-text-initial)',
     '--shiki-token-constant': 'var(--cerberus-colors-warning-text-initial)',
-    '--shiki-token-string-expression': 'var(--cerberus-colors-success-bg-active)',
+    '--shiki-token-string-expression':
+      'var(--cerberus-colors-success-bg-active)',
     '--shiki-token-parameter': 'var(--cerberus-colors-page-text-initial)',
     '--shiki-token-punctuation': 'var(--cerberus-colors-page-text-100)',
     '--shiki-token-comment': 'var(--cerberus-colors-page-border-100)',
@@ -45,7 +47,7 @@ export default createCerberusConfig({
       recipes: {
         button: {
           defaultVariants: {
-            shape: 'default',
+            shape: 'squared',
           },
         },
       },
