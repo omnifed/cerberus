@@ -33,3 +33,4 @@ export const Button = Object.assign(ButtonEl, {
 })
 
 export { useButtonContext } from './context'
+export type { ButtonRootProps } from './primitives'

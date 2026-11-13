@@ -3,7 +3,6 @@
 import { Stack } from '@/styled-system/jsx'
 import {
   Button,
-  ButtonGroup,
   Dialog,
   DialogCloseIconTrigger,
   DialogDescription,
@@ -77,8 +76,8 @@ function ParentDialog(props: ParentDialogProps) {
             <Text textStyle="heading-sm">Edit Content</Text>
           </DialogHeading>
           <DialogDescription maxW="prose">
-            Make changes to your content. You&apos;ll be asked to confirm before closing
-            if there are unsaved changes.
+            Make changes to your content. You&apos;ll be asked to confirm before
+            closing if there are unsaved changes.
           </DialogDescription>
 
           <Field>
@@ -111,17 +110,18 @@ function ConfirmDialog(props: ConfirmationDialogProps) {
             <Text textStyle="heading-sm">Unsaved Changes</Text>
           </DialogHeading>
           <DialogDescription maxW="prose">
-            You have unsaved changes. Are you sure you want to close without saving?
+            You have unsaved changes. Are you sure you want to close without
+            saving?
           </DialogDescription>
 
-          <ButtonGroup>
+          <Button.Group>
             <Button onClick={props.onCancel} usage="outlined-subtle">
               Keep Editing
             </Button>
             <Button palette="danger" onClick={props.onClose}>
               Discard Changes
             </Button>
-          </ButtonGroup>
+          </Button.Group>
         </Stack>
       </Dialog>
     </DialogRootProvider>
