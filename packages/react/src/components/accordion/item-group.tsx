@@ -20,15 +20,18 @@ const PARTS = {
   itemContent: AccordionItemContent,
 }
 
-export interface AccordionItemGroupBaseProps extends AccordionItemProps {
+export type AccordionItemGroupProps = AccordionItemProps & {
   heading?: ReactNode
   indicatorPosition?: 'start' | 'end'
 }
 
 export const AccordionItemGroup = createAbstraction(
   PARTS,
-  (props: AccordionItemGroupBaseProps, parts) => {
-    const [localProps, itemProps] = splitProps(props, ['heading', 'indicatorPosition'])
+  (props: AccordionItemGroupProps, parts) => {
+    const [localProps, itemProps] = splitProps(props, [
+      'heading',
+      'indicatorPosition',
+    ])
     const indicatorPosition = localProps.indicatorPosition ?? 'end'
 
     const { icons } = useCerberusContext()
