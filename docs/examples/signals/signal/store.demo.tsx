@@ -1,8 +1,12 @@
 'use client'
 
 import { HStack } from '@/styled-system/jsx'
-import { Button, ButtonGroup } from '@cerberus-design/react'
-import { type Accessor, createSignal, ReactiveText } from '@cerberus-design/signals'
+import { Button } from '@cerberus-design/react'
+import {
+  type Accessor,
+  createSignal,
+  ReactiveText,
+} from '@cerberus-design/signals'
 
 type CounterStore = {
   count: Accessor<number>
@@ -26,10 +30,10 @@ export function StoreDemo() {
     <HStack gap="md" w="3/4">
       <ReactiveText data={store.count} />
 
-      <ButtonGroup>
+      <Button.Group>
         <Button onClick={store.decrement}>-</Button>
         <Button onClick={store.increment}>+</Button>
-      </ButtonGroup>
+      </Button.Group>
     </HStack>
   )
 }

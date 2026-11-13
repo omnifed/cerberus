@@ -5,7 +5,6 @@ import {
   type FilledTagProps,
   GradientTag,
   type GradientTagProps,
-  baseTagAttrs,
 } from './primitives'
 
 export type TagProps = FilledTagProps | GradientTagProps | ClosableTagProps
@@ -20,16 +19,14 @@ export type TagProps = FilledTagProps | GradientTagProps | ClosableTagProps
  */
 export function Tag(props: TagProps) {
   if (isClosableTag(props)) {
-    return <ClosableTag {...baseTagAttrs} {...props} />
+    return <ClosableTag {...props} />
   }
 
   if (props.gradient) {
-    return <GradientTag {...baseTagAttrs} {...props} />
+    return <GradientTag {...props} />
   }
 
-  return (
-    <FilledTag {...baseTagAttrs} data-palette={props.palette ?? 'page'} {...props} />
-  )
+  return <FilledTag data-palette={props.palette ?? 'page'} {...props} />
 }
 
 function isClosableTag(props: TagProps): props is ClosableTagProps {

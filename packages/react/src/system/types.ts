@@ -1,92 +1,138 @@
 import type { ark } from '@ark-ui/react/factory'
-import type { Dict, RecipeVariantFn, SlotRecipeVariantFn } from '@pandacss/types'
-import type { CSSProperties, ElementType, PropsWithChildren } from 'react'
+import type { ComponentType, ElementType, JSX } from 'react'
 import type {
-  AsProps,
   Assign,
   ComponentProps,
   JsxHTMLProps,
   JsxStyleProps,
-  SlotRecipeVariantRecord,
   UnstyledProps,
 } from 'styled-system/types'
 
-// Method signatures for recipes
+/**
+ * @deprecated - these are the old types and will be removed in v2
+ */
+export * from './deprecated_types'
 
-type RecipeBase = {
-  splitVariantProps: (
-    props: Record<string, unknown>,
-  ) => [Record<string, unknown>, Record<string, unknown>]
+/**
+ * Any non-slot Panda recipe, such as the return value of `cva()`.
+ *
+ * Slot recipes (`sva()`) are intentionally **not** accepted. Use
+ * `createSlotRecipeContext` for those.
+ *
+ * Matched structurally so Cerberus does not depend on Panda's internal types.
+ */
+export type CerberusRecipe = ((props?: any) => string) & {
+  splitVariantProps: (props: any) => [any, any]
 }
 
-export type CerberusRecipe = RecipeVariantFn<any> & RecipeBase
-export type CerberusSlotRecipe<T extends string> = SlotRecipeVariantFn<
-  string,
-  SlotRecipeVariantRecord<T>
-> &
-  RecipeBase
-
-export type CerberusPrimitiveRecipe = CerberusRecipe | CerberusSlotRecipe<string>
-
-export type WithRecipeOptions = {
+/**
+ * Options for {@link cerberus}.
+ *
+ * @since 2.0.0
+ */
+export interface CerberusOptions {
   /**
-   * A set of static props to merge onto the component created
+   * Static props merged under the caller's props.
+   *
+   * The caller always wins on conflict. Use this for attributes known ahead
+   * of time, such as `data-*`.
+   *
+   * # Notes
+   *
+   * Do not put recipe variants here. A variant given as a default prop
+   * is not guaranteed to reach the recipe. Use the recipe's `defaultVariants`.
+   *
+   * @example
+   * ```tsx
+   * const Link = cerberus(NextLink, undefined, {
+   *   defaultProps: { 'data-link': '' },
+   * })
+   * ```
    */
   defaultProps?: Record<string, unknown>
+
   /**
-   * Prop names to forward to the wrapped component even when they collide
-   + with a Panda CSS property (for example Ark's `page`).
+   * Prop names that must reach the wrapped component even though Panda would
+   * otherwise consume them as a style prop or recipe variant.
+   *
+   * Defaults to `[]`: nothing is forwarded.
+   *
+   * # Notes
+   *
+   * A forwarded name stops feeding the recipe. If a key must both select
+   * styles *and* reach the component, you want a slot recipe and
+   * `withProvider`, not this factory.
+   *
+   * @example
+   * ```tsx
+   * // `size` is a Panda style prop. Forward it so <input size={4}> works.
+   * const Input = cerberus('input', undefined, { forwardProps: ['size'] })
+   * ```
    */
   forwardProps?: string[]
 }
 
-export interface BaseCerberusProps
-  extends ArkFactoryProps, JsxStyleProps, Dict, UnstyledProps, AsProps {
-  /**
-   * The CSS styles applied to the component. Supports CSS Properties
-   * declarations and style objects.
-   */
-  style?: CSSProperties | Record<string, string>
-}
+/**
+ * Props accepted by a component created with {@link cerberus}.
+ *
+ * `T`: the wrapped element or component.
+ * `V`: the recipe's variant props. Defaults to none.
+ *
+ * Contains, in order of precedence:
+ * - `T`'s own props, including `ref` (React 19 passes it as a normal prop),
+ * - Panda style props and `css`,
+ * - `unstyled`,
+ * - `asChild`,
+ * - `V`.
+ *
+ * @since 2.0.0
+ */
+export type CerberusProps<T extends ElementType, V = {}> = JsxHTMLProps<
+  ComponentProps<T> & UnstyledProps & { asChild?: boolean },
+  Assign<JsxStyleProps, V>
+>
 
-export type CerberusProps<
+/**
+ * A component produced by {@link cerberus}. `R` is the recipe, if any, and
+ * its variants become typed props.
+ *
+ * @since 2.0.0
+ */
+export type CerberusComponent<
   T extends ElementType,
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-  P extends Dict = {},
-> = JsxHTMLProps<
-  ComponentProps<T> & UnstyledProps & AsProps & ArkFactoryProps,
-  Assign<JsxStyleProps, P>
+  R extends CerberusRecipe | undefined = undefined,
+> = ComponentType<
+  CerberusProps<T, R extends CerberusRecipe ? NonNullable<Parameters<R>[0]> : {}>
 >
 
-// Primitive Response
+export type AnyFactory = (
+  component: ElementType,
+  recipe?: unknown,
+  options?: unknown,
+) => ElementType
 
-export type CerberusPrimitiveProps<T> = PropsWithChildren<BaseCerberusProps> & T
+type ElementName = Extract<keyof typeof ark, keyof JSX.IntrinsicElements>
 
-export type CerberusPrimitiveEl<T extends ElementType = ElementType> = ElementType<
-  CerberusProps<T>
->
-
-// Factory
-
-export interface ArkFactoryProps {
+/**
+ * The shape of {@link cerberus}: callable, and indexable by element name.
+ *
+ * @since 2.0.0
+ */
+export interface CerberusFactory {
   /**
-   * If true, the component will render as a child as the provided element
-   * passing all the given props to the child.
+   * Wrap an element name or any component.
+   *
+   * @param component - An element name (`'span'`) or a component reference.
+   * @param recipe - An optional non-slot recipe, such as from `cva()`.
+   * @param options - See {@link CerberusOptions}.
    */
-  asChild?: boolean
+  <T extends ElementType, R extends CerberusRecipe | undefined = undefined>(
+    component: T,
+    recipe?: R,
+    options?: CerberusOptions,
+  ): CerberusComponent<T, R>
 }
 
-export type ArkPropsWithRef<T extends keyof typeof ark> = {
-  [K in keyof (typeof ark)[T]]: K extends 'asChild' ? never : (typeof ark)[T][K]
-} & ArkFactoryProps
-
-export type CerberusFactoryFn = <T extends Record<string, unknown>>(
-  component: keyof typeof ark,
-  defaultProps?: T,
-) => CerberusPrimitiveEl
-
-export type CerberusFactoryObject = {
-  [K in keyof typeof ark]: CerberusPrimitiveEl
+export type CerberusElements = {
+  [K in ElementName]: CerberusComponent<K>
 }
-
-export type CerberusFactory = CerberusFactoryFn & CerberusFactoryObject

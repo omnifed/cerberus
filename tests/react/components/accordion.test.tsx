@@ -1,33 +1,28 @@
-import { describe, test, expect } from 'bun:test'
-import { render, screen } from '@testing-library/react'
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemTrigger,
-  AccordionItemIndicator,
-  AccordionItemContent,
-  CerberusProvider,
-} from '@cerberus-design/react'
-import { makeConfig } from '@/utils'
+import { describeDXContract } from '@/test-utils/dx-harness'
+import { Accordion } from '@cerberus-design/react/accordion'
 
-describe('Accordion', () => {
-  const config = makeConfig()
+describeDXContract({
+  name: 'Accordion',
+  Root: Accordion,
+  defaultRootProps: { defaultValue: ['item-1'] },
 
-  test('should render an accordion element', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Accordion>
-          <AccordionItem value="one">
-            <AccordionItemTrigger>
-              Accordion Item 1
-              <AccordionItemIndicator />
-            </AccordionItemTrigger>
-            <AccordionItemContent>Accordion content</AccordionItemContent>
-          </AccordionItem>
-        </Accordion>
-      </CerberusProvider>,
-    )
-    expect(screen.getByText(/Accordion Item 1/i)).toBeInTheDocument()
-    expect(screen.getByText(/Accordion content/i)).toBeInTheDocument()
-  })
+  primitiveTestNode: (
+    <Accordion.Item value="item-1">
+      <Accordion.ItemTrigger>Standard Heading</Accordion.ItemTrigger>
+      <Accordion.ItemContent data-testid="primitive-content">
+        Content body
+      </Accordion.ItemContent>
+    </Accordion.Item>
+  ),
+
+  abstractions: [
+    {
+      name: 'ItemGroup',
+      Component: Accordion.ItemGroup,
+      defaultProps: { value: 'item-1', heading: 'Standard Heading' },
+      children: 'Content body',
+      testSlot: 'itemIndicator',
+      testSlotProp: 'itemTrigger',
+    },
+  ],
 })

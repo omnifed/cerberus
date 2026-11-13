@@ -2,7 +2,7 @@
 
 import { css } from 'styled-system/css'
 import { useCerberusContext } from '../../context/cerberus'
-import { Button } from '../button/button'
+import { Button } from '../button/index'
 import { IconButton } from '../icon-button/index'
 import { DatePickerParts } from './parts'
 import type { DatePickerViewControlProps } from './primitives'

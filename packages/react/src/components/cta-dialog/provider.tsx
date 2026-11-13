@@ -12,7 +12,7 @@ import {
 } from 'react'
 import { HStack, VStack } from 'styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
-import { Avatar } from '../avatar/avatar'
+import { Avatar } from '../avatar/api'
 import { DialogCloseIconTrigger } from '../dialog/close-icon-trigger'
 import {
   Dialog,

@@ -45,6 +45,9 @@ describe('accordion recipe', () => {
       borderBlockEnd: '2px solid',
       borderColor: 'page.border.initial',
       paddingBlock: 'var(--accordion-item-padding)',
+      _lastOfType: {
+        borderBlockEnd: 'none',
+      },
     })
   })
 
@@ -54,8 +57,8 @@ describe('accordion recipe', () => {
       cursor: 'pointer',
       color: 'page.text.initial',
       display: 'flex',
-      paddingBlock: 'var(--accordion-item-trigger-padding)',
-      px: 'sm',
+      px: 'var(--accordion-item-trigger-padding)',
+      py: 'sm',
       rounded: 'var(--accordion-item-trigger-radii)',
       transitionProperty: 'background-color',
       transitionDuration: 'fast',
@@ -78,6 +81,7 @@ describe('accordion recipe', () => {
     expect(accordion.base?.itemContent).toMatchObject({
       color: 'page.text.initial',
       overflow: 'hidden',
+      px: 'var(--accordion-item-trigger-padding)',
       _motionSafe: {
         animationDuration: 'fast',
         animationFillMode: 'forwards',
@@ -116,6 +120,9 @@ describe('accordion recipe', () => {
             '--accordion-item-padding': '{spacing.xs}',
             '--accordion-item-trigger-padding': '{spacing.sm}',
             '--accordion-item-trigger-radii': '{radii.lg}',
+            '& :is([data-part=item-trigger])': { textStyle: 'heading-xs' },
+            '& :is([data-part=item-content])': { textStyle: 'body-sm' },
+            '& :is([data-part=item-indicator] > svg)': { h: '16px', w: '16px' },
           },
         },
         lg: {
@@ -123,6 +130,12 @@ describe('accordion recipe', () => {
             '--accordion-item-padding': '{spacing.sm}',
             '--accordion-item-trigger-padding': '{spacing.md}',
             '--accordion-item-trigger-radii': '{radii.md}',
+            '& :is([data-part=item-trigger])': { textStyle: 'heading-sm' },
+            '& :is([data-part=item-content])': { textStyle: 'body-md' },
+            '& :is([data-part=item-indicator] > svg)': {
+              h: '24px',
+              w: '24px',
+            },
           },
         },
       },

@@ -1,62 +1,85 @@
+'use client'
+
 import type { ReactNode } from 'react'
+import { useCerberusContext } from '../../context/cerberus'
+import { createAbstraction } from '../../internal/factory'
 import { splitProps } from '../../utils/index'
+import { IconButtonRoot, type IconButtonRootProps } from '../button/primitives'
 import { Show } from '../show/index'
-import { AdmonitionParts } from './parts'
-import type { AdmonitionRootProps } from './primitives'
 import { MatchAvatar } from './match-avatar'
+import {
+  AdmonitionContent,
+  AdmonitionDescription,
+  AdmonitionHeading,
+  AdmonitionIndicator,
+  AdmonitionRoot,
+  type AdmonitionRootProps,
+} from './primitives'
 
-/**
- * This module provides an abstraction for the Admonition component.
- * @module 'admonition/admonition'
- */
+const PARTS = {
+  root: AdmonitionRoot,
+  indicator: AdmonitionIndicator,
+  content: AdmonitionContent,
+  heading: AdmonitionHeading,
+  description: AdmonitionDescription,
+  closeTrigger: IconButtonRoot,
+}
 
-export interface AdmonitionProps extends AdmonitionRootProps {
+export type AdmonitionProps = AdmonitionRootProps & {
   /**
    * The heading title for the Admonition.
    */
   heading?: string
   /**
-   * One off replacement for the icon.
+   * When provided displays a `IconButton` using the `icons.close` icon at the
+   * end of the `Admonition`. This event is called when the user clicks the
+   * button.
+   */
+  onClose?: IconButtonRootProps['onClick']
+  /**
+   * @deprecated - **THIS WILL BE REMOVED IN v3**. Use `slots` instead.
    */
   icon?: ReactNode
 }
 
-/**
- * The Admonition component is an abstraction of the primitives which
- * displays a Admonition with a label.
- *
- * @description [Cerberus Docs](https://cerberus.digitalu.design/react/admonition)
- *
- * @remarks
- *
- * For a customizable Admonition, use the `AdmonitionParts` object to access the
- * individual primitives of the Admonition component.
- */
-export function Admonition(props: AdmonitionProps) {
-  const [elProps, styleProps, rootProps] = splitProps(
-    props,
-    ['heading', 'icon', 'children'],
-    ['palette', 'usage'],
-  )
+export const AdmonitionEl = createAbstraction(
+  PARTS,
+  (props: AdmonitionProps, parts) => {
+    const [localProps, rootProps] = splitProps(props, [
+      'heading',
+      'icon',
+      'onClose',
+      'children',
+    ])
 
-  return (
-    <AdmonitionParts.Root {...styleProps} {...rootProps}>
-      <Show
-        when={elProps.icon}
-        fallback={<MatchAvatar palette={styleProps.palette} />}
-      >
-        <AdmonitionParts.Indicator>{elProps.icon}</AdmonitionParts.Indicator>
-      </Show>
+    const { icons } = useCerberusContext()
+    const { close: CloseIcon } = icons
 
-      <AdmonitionParts.Content>
-        <Show when={elProps.heading}>
-          <AdmonitionParts.Heading>{elProps.heading}</AdmonitionParts.Heading>
+    return (
+      <parts.root {...rootProps}>
+        <parts.indicator asChild={!localProps.icon}>
+          {localProps.icon ?? <MatchAvatar palette={rootProps.palette ?? 'page'} />}
+        </parts.indicator>
+
+        <parts.content>
+          <Show when={localProps.heading}>
+            <parts.heading>{localProps.heading}</parts.heading>
+          </Show>
+
+          <parts.description>{localProps.children}</parts.description>
+        </parts.content>
+
+        <Show when={localProps.onClose}>
+          <parts.closeTrigger
+            aria-label="Close admonition"
+            onClick={props.onClose}
+            palette={rootProps.palette ?? 'action'}
+            size="xs"
+          >
+            <CloseIcon />
+          </parts.closeTrigger>
         </Show>
-
-        <AdmonitionParts.Description>
-          {elProps.children}
-        </AdmonitionParts.Description>
-      </AdmonitionParts.Content>
-    </AdmonitionParts.Root>
-  )
-}
+      </parts.root>
+    )
+  },
+)

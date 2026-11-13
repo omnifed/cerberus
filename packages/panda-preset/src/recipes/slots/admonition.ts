@@ -9,6 +9,7 @@ import {
   nonActionPalettes,
 } from '../shared/palettes'
 import { focusStates } from '../shared/states'
+import { admonitionAnatomy } from '../shared/anatomy'
 
 /**
  * This module contains the admonition recipe.
@@ -32,17 +33,7 @@ function getAdmonitionPalette(
  */
 export const admonition: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'admonition',
-  slots: ['root', 'indicator', 'heading', 'description'],
-  jsx: [
-    // primitives
-    'AdmonitionRoot',
-    'AdmonitionIndicator',
-    'AdmonitionContent',
-    'AdmonitionHeading',
-    'AdmonitionDescription',
-    // abstractions
-    'Admonition',
-  ],
+  slots: admonitionAnatomy.keys(),
 
   base: {
     root: {

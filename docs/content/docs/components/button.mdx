@@ -20,15 +20,13 @@ import { Button } from '@cerberus/react'
 
 ### With Icon
 
-To display an icon, use the `ButtonParts` API.
+To display an icon, use the `Button.Icon` primitive. When `pending` is true, the icon is replaced with a `Spinner`.
 
 <Example path="components/button" demo="icon" />
 
-<NoteAdmonition description="When using the pending prop, the icon will be replaced with a spinner." />
-
 ## Pending
 
-To display a loading state, use the `ButtonParts.Icon` and set the `pending` prop to `true`.
+To display a pending state, use the `Button.Icon` and set the `pending` prop to `true`.
 
 <Example path="components/button" demo="pending" />
 
@@ -40,25 +38,25 @@ To change the theme of the button, use the `palette` prop.
 
 ## Shapes
 
-Use the `shape` prop to set the shape of the button. The `Button` component comes in three shapes: `default`, `sharp` and `rounded`.
+Use the `shape` prop to set the shape of the button.
 
 <Example path="components/button" demo="shapes" />
 
 ## Usage
 
-Use the `usage` prop to set the usage style of the button. The `Button` component comes in three usage styles: `filled`, `outlined`, and `ghost`.
+Use the `usage` prop to set the usage style of the button.
 
 <Example path="components/button" demo="usage" />
 
 ## Sizes
 
-Use the `size` prop to change the Button size. The options are `xs` up to `2xl`.
+Use the `size` prop to change the Button size.
 
 <Example path="components/button" demo="size" />
 
 ## Group
 
-You can group buttons together using the `ButtonGroup` component.
+You can group buttons together using the `Button.Group` primitive.
 
 <Example path="components/button" demo="group" />
 
@@ -68,18 +66,19 @@ You can create an attached button group by setting the `layout` prop to `attache
 
 <Example path="components/button" demo="attached" />
 
-## Primitives
+## Customizing
 
-You can utilize the primitive components or the `css` prop to customize the button.
-
-| Component     | Description                               |
-| ------------- | ----------------------------------------- |
-| `Button.Root` | The context provider for the Button parts |
-| `Button.Icon` | The icon/spinner of the button            |
+To customize the `Button` or any of the primitives, use style props.
 
 <Example path="components/button" demo="custom" />
 
-## Global Customization
+### Unstyled <FeatureBadge since="2.0.0" />
+
+To remove all base styles from the `Button`, you can use the `unstyled` prop on the `Button` component.
+
+<Example path="components/button" demo="unstyled" />
+
+### Global Customization
 
 To enable global customization, you can modify the `theme` configuration in your `panda.config.ts` file. For example, to customize the button component globally:
 
@@ -87,6 +86,17 @@ To enable global customization, you can modify the `theme` configuration in your
 <br />
 
 This change will set the default shape variant of all buttons to `default`.
+
+## Primitives
+
+You can utilize the primitive components or the `css` prop to customize the button.
+
+| Component         | Description                                  |
+| ----------------- | -------------------------------------------- |
+| `Button.Provider` | The context provider for the Button parts    |
+| `Button.Root`     | The root button element                      |
+| `Button.Icon`     | The icon/spinner of the button               |
+| `Button.Group`    | A layout container to space buttons in a row |
 
 ## API
 

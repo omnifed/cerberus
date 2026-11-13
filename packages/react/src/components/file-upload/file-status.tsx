@@ -1,17 +1,12 @@
 'use client'
 
-import {
-  useCallback,
-  useMemo,
-  type HTMLAttributes,
-  type MouseEvent,
-} from 'react'
+import { useCallback, useMemo, type HTMLAttributes, type MouseEvent } from 'react'
 import { VStack } from 'styled-system/jsx'
 import { css, cx } from 'styled-system/css'
 import { hstack } from 'styled-system/patterns'
 import { fileStatus, type FileStatusVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
-import { Avatar } from '../avatar/avatar'
+import { Avatar } from '../avatar/api'
 import { Field, FieldHelperText } from '../field/index'
 import { IconButton } from '../icon-button/index'
 import { ProgressBar, type ProgressBarProps } from '../progress/index'
@@ -125,10 +120,7 @@ export function FileStatus(props: FileStatusProps) {
   )
 
   return (
-    <div
-      {...nativeProps}
-      className={cx(nativeProps.className, styles.root, hstack())}
-    >
+    <div {...nativeProps} className={cx(nativeProps.className, styles.root, hstack())}>
       <Avatar
         gradient={modalIconPalette}
         fallback={<MatchFileStatusIcon size={24} status={status} />}
@@ -138,12 +130,7 @@ export function FileStatus(props: FileStatusProps) {
         <Text as="small" color="page.text.initial" textStyle="label-sm">
           {file}
         </Text>
-        <ProgressBar
-          id={props.id}
-          label="File upload status"
-          now={now}
-          size="sm"
-        />
+        <ProgressBar id={props.id} label="File upload status" now={now} size="sm" />
         <Field label="" invalid={modalIconPalette === 'hades-dark'}>
           <FieldHelperText
             className={css({

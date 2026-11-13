@@ -2,7 +2,7 @@
 
 import { OverflowMenuHorizontal, Search } from '@carbon/icons-react'
 import { DataGrid } from '@cerberus-design/data-grid'
-import { ButtonGroup, Field, IconButton, Input } from '@cerberus-design/react'
+import { Button, Field, IconButton, Input } from '@cerberus-design/react'
 import { useQuery } from '@cerberus-design/signals'
 import { Box, HStack } from 'styled-system/jsx'
 import { queryEmployees } from '../api'
@@ -27,11 +27,11 @@ function Toolbar() {
         </Field>
       </Box>
 
-      <ButtonGroup>
+      <Button.Group>
         <IconButton ariaLabel="Example trigger" size="sm">
           <OverflowMenuHorizontal />
         </IconButton>
-      </ButtonGroup>
+      </Button.Group>
     </HStack>
   )
 }

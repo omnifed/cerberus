@@ -11,7 +11,7 @@ const baseConfig: Config = defineConfig({
   prefix: 'cerberus',
 
   jsxFramework: 'react',
-  jsxFactory: 'cerberus',
+  jsxFactory: 'styled',
 
   outdir: 'styled-system',
 })

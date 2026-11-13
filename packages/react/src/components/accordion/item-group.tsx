@@ -1,70 +1,62 @@
-import type {
-  AccordionItemProps,
-  AccordionRootProps,
-} from '@ark-ui/react/accordion'
-import { type AccordionVariantProps } from 'styled-system/recipes'
+'use client'
+
+import type { ReactNode } from 'react'
+import { useCerberusContext } from '../../context/cerberus'
+import { createAbstraction } from '../../internal/factory'
 import { splitProps } from '../../utils/index'
 import { Show } from '../show/index'
-import { AccordionParts } from './parts'
-import { AccordionChevronItemIndicator } from './item-indicator'
+import {
+  AccordionItem,
+  AccordionItemContent,
+  AccordionItemIndicator,
+  AccordionItemTrigger,
+  type AccordionItemProps,
+} from './primitives'
 
-/**
- * This module contains an abstraction of the AccordionItem components.
- * @module
- */
-
-export function Accordion(props: AccordionRootProps & AccordionVariantProps) {
-  return <AccordionParts.Root {...props} />
+const PARTS = {
+  item: AccordionItem,
+  itemTrigger: AccordionItemTrigger,
+  itemIndicator: AccordionItemIndicator,
+  itemContent: AccordionItemContent,
 }
 
-export interface AccordionItemGroupProps
-  extends AccordionItemProps,
-    AccordionVariantProps {
-  /**
-   * The heading of the accordion item to open and close the content.
-   */
-  heading: string
-  /**
-   * The position of the arrow indicator.
-   */
+export type AccordionItemGroupProps = AccordionItemProps & {
+  heading?: ReactNode
   indicatorPosition?: 'start' | 'end'
 }
 
-/**
- * The AccordionItemGroup component is an abstraction of the Accordion primitive
- * components which renders an accordion item with a heading and an indicator.
- *
- * It is a wrapper around the `AccordionParts.Item`, `AccordionParts.
- * ItemTrigger`, `AccordionParts.ItemIndicator`, and `AccordionParts.ItemContent` components.
- *
- * @description [Cerberus docs](https://cerberus.digitalu.design/react/accordion)
- * @description [Ark docs](https://ark-ui.com/react/docs/components/accordion)
- */
-export function AccordionItemGroup(props: AccordionItemGroupProps) {
-  const [groupProps, itemProps] = splitProps(props, [
-    'heading',
-    'children',
-    'indicatorPosition',
-  ])
-  const indicatorPosition = groupProps.indicatorPosition ?? 'end'
+export const AccordionItemGroup = createAbstraction(
+  PARTS,
+  (props: AccordionItemGroupProps, parts) => {
+    const [localProps, itemProps] = splitProps(props, [
+      'heading',
+      'indicatorPosition',
+    ])
+    const indicatorPosition = localProps.indicatorPosition ?? 'end'
 
-  return (
-    <AccordionParts.Item {...itemProps}>
-      <AccordionParts.ItemTrigger data-indicator-position={indicatorPosition}>
-        <Show when={indicatorPosition === 'start'}>
-          <AccordionChevronItemIndicator />
-        </Show>
+    const { icons } = useCerberusContext()
+    const { accordionIndicator: ChevronDown } = icons
 
-        {groupProps.heading}
+    return (
+      <parts.item {...itemProps}>
+        <parts.itemTrigger data-indicator-position={indicatorPosition}>
+          <Show when={indicatorPosition === 'start'}>
+            <parts.itemIndicator asChild>
+              <ChevronDown />
+            </parts.itemIndicator>
+          </Show>
 
-        <Show when={indicatorPosition === 'end'}>
-          <AccordionChevronItemIndicator />
-        </Show>
-      </AccordionParts.ItemTrigger>
+          {localProps.heading}
 
-      <AccordionParts.ItemContent>
-        {groupProps.children}
-      </AccordionParts.ItemContent>
-    </AccordionParts.Item>
-  )
-}
+          <Show when={indicatorPosition === 'end'}>
+            <parts.itemIndicator asChild>
+              <ChevronDown />
+            </parts.itemIndicator>
+          </Show>
+        </parts.itemTrigger>
+
+        <parts.itemContent>{props.children}</parts.itemContent>
+      </parts.item>
+    )
+  },
+)

@@ -1,22 +1,22 @@
-import { AccordionItemGroup, Accordion } from '@cerberus-design/react'
+import { Accordion } from '@cerberus-design/react'
 import { Box } from 'styled-system/jsx'
 
 export async function DynamicAccordionDemo() {
   return (
     <Box w="2/3">
       <Accordion>
-        <AccordionItemGroup heading="Dynamic Accordion" value="dynamic-example">
+        <Accordion.ItemGroup heading="Dynamic Accordion" value="dynamic-example">
           <Accordion>
-            <AccordionItemGroup
+            <Accordion.ItemGroup
               heading="Dynamic content"
               value="dynamic-content"
               size="sm"
             >
               An accordion can change size based on the content inside of it. This is a
               dynamic example.
-            </AccordionItemGroup>
+            </Accordion.ItemGroup>
           </Accordion>
-        </AccordionItemGroup>
+        </Accordion.ItemGroup>
       </Accordion>
     </Box>
   )
