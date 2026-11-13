@@ -1,7 +1,7 @@
 'use client'
 
 import { Box, Stack } from '@/styled-system/jsx'
-import { Button, ButtonGroup, Text } from '@cerberus-design/react'
+import { Button, Text } from '@cerberus-design/react'
 import {
   createMutation,
   setQueryData,
@@ -27,15 +27,18 @@ const updateUser = createMutation(
   },
 )
 
-const addUser = createMutation((payload: User) => api.createUser(payload.name), {
-  onMutate: (vars) => {
-    setQueryData<User>(queryUser.key(vars.id), (prev) => {
-      if (!prev) return { id: vars.id, name: vars.name }
-      return { ...prev, name: vars.name }
-    })
+const addUser = createMutation(
+  (payload: User) => api.createUser(payload.name),
+  {
+    onMutate: (vars) => {
+      setQueryData<User>(queryUser.key(vars.id), (prev) => {
+        if (!prev) return { id: vars.id, name: vars.name }
+        return { ...prev, name: vars.name }
+      })
+    },
+    invalidate: (_data, vars) => [queryUser.key(vars.id)],
   },
-  invalidate: (_data, vars) => [queryUser.key(vars.id)],
-})
+)
 
 // UI
 
@@ -70,10 +73,13 @@ export function DataDemo() {
         </Stack>
       </Stack>
 
-      <ButtonGroup>
+      <Button.Group>
         <Button
           onClick={() =>
-            mutate({ id: userId, name: `User ${crypto.randomUUID().slice(0, 8)}` })
+            mutate({
+              id: userId,
+              name: `User ${crypto.randomUUID().slice(0, 8)}`,
+            })
           }
           size="sm"
         >
@@ -91,7 +97,7 @@ export function DataDemo() {
         >
           Add User
         </Button>
-      </ButtonGroup>
+      </Button.Group>
     </Stack>
   )
 }

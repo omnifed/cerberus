@@ -10,35 +10,16 @@ import { CustomDemo } from './custom.demo'
 import { PaletteDemo } from './palette.demo'
 
 export const DEMOS = {
-  basic: {
-    preview: <BasicDemo />,
-  },
-  icon: {
-    preview: <IconDemo />,
-  },
+  basic: { preview: <BasicDemo /> },
+  icon: { preview: <IconDemo /> },
   palette: { preview: <PaletteDemo /> },
-  pending: {
-    preview: <PendingDemo />,
-  },
-  shapes: {
-    preview: <ShapesDemo />,
-  },
-  usage: {
-    preview: <UsageDemo />,
-  },
-  size: {
-    preview: <SizeDemo />,
-  },
-  group: {
-    preview: <GroupDemo />,
-  },
-  attached: {
-    preview: <AttachedDemo />,
-  },
-  custom: {
-    preview: <CustomDemo />,
-  },
-  global: {
-    preview: null,
-  },
+  pending: { preview: <PendingDemo /> },
+  shapes: { preview: <ShapesDemo /> },
+  usage: { preview: <UsageDemo /> },
+  size: { preview: <SizeDemo /> },
+  group: { preview: <GroupDemo /> },
+  attached: { preview: <AttachedDemo /> },
+  custom: { preview: <CustomDemo /> },
+  global: { preview: null },
+  unstyled: { preview: null },
 }

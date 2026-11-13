@@ -2,7 +2,6 @@
 
 import {
   Button,
-  ButtonGroup,
   cerberus,
   createSelectCollection,
   Field,
@@ -63,7 +62,9 @@ function FormFields<TData>() {
   const colFilters = useRead(store.colFilters)
 
   const filterToEdit = createComputed<ColumnFilter>(() => {
-    return colFilters.filters[colFilters.editing as keyof typeof colFilters.filters]
+    return colFilters.filters[
+      colFilters.editing as keyof typeof colFilters.filters
+    ]
   })
 
   const colCollection = createSelectCollection(
@@ -144,7 +145,7 @@ function _FormFooter() {
   const store = useDataGridContext()
   return (
     <HStack justify="space-between" w="full">
-      <ButtonGroup>
+      <Button.Group>
         <Button
           onClick={() => console.log('Add filter to list')}
           size="sm"
@@ -167,7 +168,7 @@ function _FormFooter() {
         >
           Clear All
         </Button>
-      </ButtonGroup>
+      </Button.Group>
 
       <Button size="sm" type="submit">
         Apply

@@ -6,7 +6,7 @@ export type ButtonContextValue = {
   /**
    * When true, replaces the `Button.Indicator` icon with a Spinner.
    */
-  pending: boolean
+  pending?: boolean
 }
 
 export const ButtonContext = createContext<ButtonContextValue>({
