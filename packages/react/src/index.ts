@@ -69,7 +69,6 @@ export * from './hooks/useRootColors'
 export * from './config/index'
 export * from './utils/index'
 export * from './system/index'
-export * from './internal/factory'
 
 // shared types
 

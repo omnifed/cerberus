@@ -1,18 +1,20 @@
-import { cleanup, screen } from '@testing-library/react'
 import { afterEach, describe, expect, test } from 'bun:test'
+import { cleanup, screen } from '@testing-library/react'
+import { render } from './render' // Your custom render with CerberusProvider
 import type { ElementType, ReactNode } from 'react'
-import { render } from './render'
 
-export type DXAbstractionManifest = {
+export interface DXAbstractionManifest {
   name: string
   Component: ElementType
   defaultProps: Record<string, any>
   children: ReactNode
-  testSlot: string // e.g., 'itemIndicator'
-  testSlotProp: string // e.g., 'itemTrigger'
+  /** The primitive part to test for non-destructive prop patching (e.g., Accordion.ItemTrigger) */
+  PartToPatch: ElementType
+  /** The primitive part to test for full content/DOM replacement (e.g., Accordion.ItemIndicator) */
+  PartToReplace: ElementType
 }
 
-export type DXManifest = {
+export interface DXManifest {
   name: string
   Root: ElementType
   defaultRootProps?: Record<string, any>
@@ -24,9 +26,10 @@ export type DXManifest = {
  * Generates the standard Cerberus v2 DX Contract test suite.
  */
 export function describeDXContract(manifest: DXManifest) {
-  describe(`${manifest.name}: DX Contract`, () => {
+  describe(`${manifest.name} v2 DX Contract`, () => {
     afterEach(cleanup)
 
+    // --- 1. Primitive Tests ---
     if (manifest.primitiveTestNode) {
       test('renders the primitives out of the box', () => {
         render(
@@ -38,49 +41,51 @@ export function describeDXContract(manifest: DXManifest) {
       })
     }
 
+    // --- 2. Abstraction Tests ---
     if (manifest.abstractions) {
       manifest.abstractions.forEach((abs) => {
         describe(`Abstraction: ${abs.name}`, () => {
           test('renders the abstraction out of the box', () => {
             render(
               <manifest.Root {...manifest.defaultRootProps}>
-                <abs.Component {...abs.defaultProps}>{abs.children}</abs.Component>
+                <abs.Component {...abs.defaultProps}>
+                  {abs.children}
+                </abs.Component>
               </manifest.Root>,
             )
-            expect(screen.getByText('Content body')).toBeDefined()
+            // Assumes standard text content is provided in `abs.children` or `abs.defaultProps.heading`
+            expect(screen.getByText(/Content body/i)).toBeDefined()
           })
 
-          test('slotProps injects DOM attributes without rewriting the tree', () => {
+          test('JSX child overrides inject DOM attributes without wiping out default content', () => {
             render(
               <manifest.Root {...manifest.defaultRootProps}>
-                <abs.Component
-                  {...abs.defaultProps}
-                  slotProps={{
-                    [abs.testSlotProp]: {
-                      'data-testid': 'qa-injected-trigger',
-                      'aria-describedby': 'custom-desc',
-                    },
-                  }}
-                >
+                <abs.Component {...abs.defaultProps}>
+                  {/* Empty self-closing tag triggers a prop-patch via extractParts */}
+                  <abs.PartToPatch
+                    data-testid="qa-patched"
+                    aria-describedby="custom-desc"
+                  />
                   {abs.children}
                 </abs.Component>
               </manifest.Root>,
             )
 
-            const trigger = screen.getByTestId('qa-injected-trigger')
-            expect(trigger).toBeDefined()
-            expect(trigger.getAttribute('aria-describedby')).toBe('custom-desc')
+            const patchedNode = screen.getByTestId('qa-patched')
+            expect(patchedNode).toBeDefined()
+            expect(patchedNode.getAttribute('aria-describedby')).toBe(
+              'custom-desc',
+            )
           })
 
-          test('slots replace internal nodes while retaining Ark accessibility via asChild', () => {
+          test('JSX child overrides replace internal nodes while retaining Ark accessibility via asChild', () => {
             render(
               <manifest.Root {...manifest.defaultRootProps}>
-                <abs.Component
-                  {...abs.defaultProps}
-                  slots={{
-                    [abs.testSlot]: <svg data-testid="custom-svg-slot" />,
-                  }}
-                >
+                <abs.Component {...abs.defaultProps}>
+                  {/* asChild unstyled triggers full DOM replacement */}
+                  <abs.PartToReplace asChild unstyled>
+                    <svg data-testid="custom-svg-slot" />
+                  </abs.PartToReplace>
                   {abs.children}
                 </abs.Component>
               </manifest.Root>,
@@ -88,6 +93,7 @@ export function describeDXContract(manifest: DXManifest) {
 
             const customIcon = screen.getByTestId('custom-svg-slot')
             expect(customIcon).toBeDefined()
+            // Asserts Ark UI correctly bridged the underlying Zag state machine to the custom SVG
             expect(customIcon.hasAttribute('data-part')).toBe(true)
             expect(customIcon.hasAttribute('data-scope')).toBe(true)
           })
@@ -99,7 +105,9 @@ export function describeDXContract(manifest: DXManifest) {
                 unstyled
                 data-testid="test-root"
               >
-                <abs.Component {...abs.defaultProps}>{abs.children}</abs.Component>
+                <abs.Component {...abs.defaultProps}>
+                  {abs.children}
+                </abs.Component>
               </manifest.Root>,
             )
 
