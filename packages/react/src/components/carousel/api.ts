@@ -40,24 +40,32 @@ export type {
  *
  * The Carousel component can be used in various contexts, mostly pertaining to marketing sites. It is uncommon for application development but is not restricted to for a UX pattern.
  *
- * For a customizable Carousel, use style props, slots, or the base-level primitives for granular control over the component's structure and behavior.
+ * Customize Carousel using Panda style props, direct JSX child part overrides on abstractions, or the low-level primitives for full structural control.
  *
- * ## Slots
+ * ## Parts
  *
- * | Slot | Description |
- * |------|-------------|
- * | `Root` | The root element of the Carousel component. |
- * | `ItemGroup` | The itemGroup element of the Carousel component. |
- * | `Item` | The item element of the Carousel component. |
- * | `Control` | The control element of the Carousel component. |
- * | `NextTrigger` | The nextTrigger element of the Carousel component. |
- * | `PrevTrigger` | The prevTrigger element of the Carousel component. |
- * | `IndicatorGroup` | The indicatorGroup element of the Carousel component. |
- * | `Indicator` | The indicator element of the Carousel component. |
- * | `AutoplayTrigger` | The autoplayTrigger element of the Carousel component. |
- * | `ProgressText` | The progressText element of the Carousel component. |
- * | `AutoplayIndicator` | The autoplayIndicator element of the Carousel component. |
- * | `El` | An abstraction for rendering all the content-related primitives |
+ * | Part | Kind | Description |
+ * |------|------|-------------|
+ * | `Root` | Primitive | The root element of the Carousel component. |
+ * | `ItemGroup` | Primitive | The itemGroup element of the Carousel component. |
+ * | `Item` | Primitive | The item element of the Carousel component. |
+ * | `Control` | Primitive | The control element of the Carousel component. |
+ * | `NextTrigger` | Primitive | The nextTrigger element of the Carousel component. |
+ * | `PrevTrigger` | Primitive | The prevTrigger element of the Carousel component. |
+ * | `IndicatorGroup` | Primitive | The indicatorGroup element of the Carousel component. |
+ * | `Indicator` | Primitive | The indicator element of the Carousel component. |
+ * | `AutoplayTrigger` | Primitive | The autoplayTrigger element of the Carousel component. |
+ * | `ProgressText` | Primitive | The progressText element of the Carousel component. |
+ * | `AutoplayIndicator` | Primitive | The autoplayIndicator element of the Carousel component. |
+ * | `El` | Abstraction | An abstraction for rendering all the content-related primitives |
+ *
+ * @example
+ * ```tsx
+ * import { Carousel } from '@cerberus/react'
+ * <Carousel>
+ *   <Carousel.El />
+ * </Carousel>
+ * ```
  *
  * ## Reference
  *

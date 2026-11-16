@@ -28,18 +28,24 @@ export type {
  *
  * The Admonition component can be used in various contexts, such as displaying alerts, tips, or any other information that needs to be highlighted. It supports different palettes and usage styles to match the design requirements of your application.
  *
- * For a customizable Admonition, use style props, slots, or the base-level primitives for granular control over the component's structure and behavior.
+ * Customize Admonition using Panda style props, direct JSX child part overrides on abstractions, or the low-level primitives for full structural control.
  *
- * ## Slots
+ * ## Parts
  *
- * | Slot | Description |
- * |------|-------------|
- * | `Root` | The root element of the Admonition component. |
- * | `Indicator` | The indicator element of the Admonition component. |
- * | `Heading` | The heading element of the Admonition component. |
- * | `Description` | The description element of the Admonition component. |
- * | `Content` | The content element of the Admonition component. |
- * | `El` | An abstraction for rendering all the primitive slots |
+ * | Part | Kind | Description |
+ * |------|------|-------------|
+ * | `Root` | Primitive | The root element of the Admonition component. |
+ * | `Indicator` | Primitive | The indicator element of the Admonition component. |
+ * | `Heading` | Primitive | The heading element of the Admonition component. |
+ * | `Description` | Primitive | The description element of the Admonition component. |
+ * | `Content` | Primitive | The content element of the Admonition component. |
+ * | `El` | Abstraction | An abstraction for rendering all the primitive slots |
+ *
+ * @example
+ * ```tsx
+ * import { Admonition } from '@cerberus/react'
+ * <Admonition />
+ * ```
  *
  * ## Reference
  *

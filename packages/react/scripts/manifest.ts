@@ -1,21 +1,34 @@
-import { config } from './configs'
+export type AbstractionConfig = {
+  name: string
+  file: string
+  description: string
+  isDefaultExport?: boolean
+  types?: string[]
+}
+
+export type KeyboardMapping = {
+  key: string
+  description: string
+}
+
+export type A11yConfig = {
+  /** WAI-ARIA pattern name (e.g., 'Accordion') */
+  pattern: string
+  /** W3C WAI-ARIA APG reference URL */
+  apgUrl: string
+  /** Keyboard interaction matrix for Section 508 / WCAG 2.1 AA docs */
+  keyboard: KeyboardMapping[]
+  /** Optional 508 authoring guidance (e.g., accessible name requirements) */
+  notes?: string[]
+}
 
 export type ComponentConfig = {
   name: string
   key: string
-  anatomy: any
-  isArkUI?: boolean // Primitive bypass flag (defaults to true)
-  description: string // The main Rust-level summary
+  anatomy: { keys: () => string[] } | readonly string[]
+  description: string
+  isArkUI?: boolean
   abstractions?: AbstractionConfig[]
-  types?: string[] // Explicit types to export
+  types?: string[]
+  a11y?: A11yConfig
 }
-
-export type AbstractionConfig = {
-  name: string
-  file: string // e.g., 'item-group' (no extension)
-  description: string // Optional description for the abstraction
-  isDefaultExport?: boolean
-  types?: string[] // Explicit types to export
-}
-
-export const COMPONENTS: ComponentConfig[] = config
