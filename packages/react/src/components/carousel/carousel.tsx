@@ -1,8 +1,12 @@
 import type { PropsWithChildren } from 'react'
-import { Show } from '../show/show'
 import { For } from '../for/for'
-import { CarouselParts } from './parts'
-import type { CarouselRootProps } from './primitives'
+import { Show } from '../show/show'
+import {
+  CarouselIndicator,
+  CarouselIndicatorGroup,
+  CarouselRoot,
+  type CarouselRootProps,
+} from './primitives'
 
 export type CarouselProps = CarouselRootProps & {
   /**
@@ -16,16 +20,16 @@ export function CarouselEl(props: PropsWithChildren<CarouselProps>) {
   const { showIndicators = false, children, ...rootProps } = props
 
   return (
-    <CarouselParts.Root {...rootProps}>
+    <CarouselRoot {...rootProps}>
       {children}
 
       <Show when={showIndicators}>
-        <CarouselParts.IndicatorGroup>
+        <CarouselIndicatorGroup>
           <For each={Array.from({ length: props.slideCount ?? 0 })}>
-            {(_, idx) => <CarouselParts.Indicator key={idx} index={idx} />}
+            {(_, idx) => <CarouselIndicator key={idx} index={idx} />}
           </For>
-        </CarouselParts.IndicatorGroup>
+        </CarouselIndicatorGroup>
       </Show>
-    </CarouselParts.Root>
+    </CarouselRoot>
   )
 }
