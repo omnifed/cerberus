@@ -28,18 +28,26 @@ export type {
  *
  * The Accordion component can be used in various contexts, such as displaying FAQs, menus, or any other content that benefits from a collapsible structure. It supports different palettes and usage styles to match the design requirements of your application.
  *
- * For a customizable Accordion, use style props, slots, or the base-level primitives for granular control over the component's structure and behavior.
+ * Customize Accordion using Panda style props, direct JSX child part overrides on abstractions, or the low-level primitives for full structural control.
  *
- * ## Slots
+ * ## Parts
  *
- * | Slot | Description |
- * |------|-------------|
- * | `Root` | The root element of the Accordion component. |
- * | `Item` | The item element of the Accordion component. |
- * | `ItemTrigger` | The itemTrigger element of the Accordion component. |
- * | `ItemContent` | The itemContent element of the Accordion component. |
- * | `ItemIndicator` | The itemIndicator element of the Accordion component. |
- * | `ItemGroup` | An abstraction for rendering all the content-related primitives |
+ * | Part | Kind | Description |
+ * |------|------|-------------|
+ * | `Root` | Primitive | The root element of the Accordion component. |
+ * | `Item` | Primitive | The item element of the Accordion component. |
+ * | `ItemTrigger` | Primitive | The itemTrigger element of the Accordion component. |
+ * | `ItemContent` | Primitive | The itemContent element of the Accordion component. |
+ * | `ItemIndicator` | Primitive | The itemIndicator element of the Accordion component. |
+ * | `ItemGroup` | Abstraction | An abstraction for rendering all the content-related primitives. |
+ *
+ * @example
+ * ```tsx
+ * import { Accordion } from '@cerberus/react'
+ * <Accordion>
+ *   <Accordion.ItemGroup />
+ * </Accordion>
+ * ```
  *
  * ## Reference
  *

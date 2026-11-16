@@ -19,16 +19,22 @@ export type {
  *
  * The Avatar component can be used in various contexts, such as profiles, App Bars, menus, or any other content that benefits from a user representation. It supports different palettes, gradients, and layout styles to match the design requirements of your application.
  *
- * For a customizable Avatar, use style props, slots, or the base-level primitives for granular control over the component's structure and behavior.
+ * Customize Avatar using Panda style props, direct JSX child part overrides on abstractions, or the low-level primitives for full structural control.
  *
- * ## Slots
+ * ## Parts
  *
- * | Slot | Description |
- * |------|-------------|
- * | `Root` | The root element of the Avatar component. |
- * | `Image` | The image element of the Avatar component. |
- * | `Fallback` | The fallback element of the Avatar component. |
- * | `El` | An entry abstraction for rendering all the content-related primitives |
+ * | Part | Kind | Description |
+ * |------|------|-------------|
+ * | `Root` | Primitive | The root element of the Avatar component. |
+ * | `Image` | Primitive | The image element of the Avatar component. |
+ * | `Fallback` | Primitive | The fallback element of the Avatar component. |
+ * | `El` | Abstraction | An entry abstraction for rendering all the content-related primitives |
+ *
+ * @example
+ * ```tsx
+ * import { Avatar } from '@cerberus/react'
+ * <Avatar />
+ * ```
  *
  * ## Reference
  *

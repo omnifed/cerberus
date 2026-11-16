@@ -28,17 +28,25 @@ export type {
  *
  * **NOTE**: This API is _slotless_ and is a single rendered layer abstraction.
  *
- * For a customizable Button, use style props, slots, or the base-level primitives for granular control over the component's structure and behavior.
+ * Customize Button using Panda style props, direct JSX child part overrides on abstractions, or the low-level primitives for full structural control.
  *
- * ## Slots
+ * ## Parts
  *
- * | Slot | Description |
- * |------|-------------|
- * | `Root` | The root element of the Button component. |
- * | `Group` | The group element of the Button component. |
- * | `Icon` | An abstraction displaying an icon that is replaced by a Spinner when `pending` is set to true |
- * | `Provider` | The Button context provider |
- * | `El` | An abstraction for using the Provider and Button.Root together |
+ * | Part | Kind | Description |
+ * |------|------|-------------|
+ * | `Root` | Primitive | The root element of the Button component. |
+ * | `Group` | Primitive | The group element of the Button component. |
+ * | `Icon` | Abstraction | An abstraction displaying an icon that is replaced by a Spinner when `pending` is set to true |
+ * | `Provider` | Abstraction | The Button context provider |
+ * | `El` | Abstraction | An abstraction for using the Provider and Button.Root together |
+ *
+ * @example
+ * ```tsx
+ * import { Button } from '@cerberus/react'
+ * <Button>
+ *   <Button.Icon />
+ * </Button>
+ * ```
  *
  * ## Reference
  *
