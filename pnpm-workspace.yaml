@@ -12,7 +12,7 @@ catalogs:
   oxc:
     oxfmt: ^0.75.0
   ark:
-    '@ark-ui/react': ^5.39.3
+    '@ark-ui/react': ^5.40.0
   pandacss:
     '@pandacss/bun': ^2.5.0
     '@pandacss/dev': ^2.5.0
