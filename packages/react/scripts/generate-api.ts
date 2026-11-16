@@ -29,9 +29,10 @@ async function generateComponentAPI(config: ComponentConfig) {
   const outputDir = join(process.cwd(), 'src', 'components', key)
   await mkdir(outputDir, { recursive: true })
 
-  const parts = Array.isArray(anatomy)
+  const reliableParts: string[] = Array.isArray(anatomy)
     ? [...anatomy]
     : (anatomy as { keys: () => string[] }).keys()
+  const parts: string[] = [...new Set(reliableParts)]
 
   // --- 1. Generate primitives.tsx (Ark UI components only) ---
   if (isArkUI) {
@@ -51,7 +52,7 @@ async function generateComponentAPI(config: ComponentConfig) {
       primitivesCode += `export const ${partName} = ${isRoot ? 'withProvider' : 'withContext'}(${arkPart}, '${part}')\n\n`
     }
 
-    await Bun.write(join(outputDir, 'primitives.tsx'), primitivesCode)
+    await Bun.write(join(outputDir, 'primitives.ts'), primitivesCode)
   }
 
   // --- 2. Generate api.ts ---
