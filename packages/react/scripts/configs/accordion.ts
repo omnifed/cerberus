@@ -6,11 +6,13 @@ export const accordionConfig: ComponentConfig = {
   key: 'accordion',
   isArkUI: true,
   anatomy: accordionAnatomy,
+
   description: `
 The Accordion component is a versatile UI element that allows users to expand and collapse sections of content. It is composed of several primitives that enable customization and flexibility in its usage.
 
 The Accordion component can be used in various contexts, such as displaying FAQs, menus, or any other content that benefits from a collapsible structure. It supports different palettes and usage styles to match the design requirements of your application.
   `,
+
   abstractions: [
     {
       name: 'ItemGroup',
@@ -20,6 +22,7 @@ The Accordion component can be used in various contexts, such as displaying FAQs
       types: ['AccordionItemGroupProps'],
     },
   ],
+
   a11y: {
     pattern: 'Accordion',
     apgUrl: 'https://www.w3.org/WAI/ARIA/apg/patterns/accordion/',
