@@ -1,0 +1,332 @@
+{
+  "name": "Accordion",
+  "key": "accordion",
+  "description": "The Accordion component is a versatile UI element that allows users to expand and collapse sections of content. It is composed of several primitives that enable customization and flexibility in its usage.\n\nThe Accordion component can be used in various contexts, such as displaying FAQs, menus, or any other content that benefits from a collapsible structure. It supports different palettes and usage styles to match the design requirements of your application.",
+  "variants": [],
+  "parts": [
+    {
+      "name": "ItemGroup",
+      "exportName": "Accordion.ItemGroup",
+      "kind": "abstraction",
+      "description": "An abstraction for rendering all the content-related primitives.",
+      "props": [
+        {
+          "name": "heading",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The heading content displayed inside the accordion trigger."
+        },
+        {
+          "name": "indicatorPosition",
+          "type": "'start' | 'end'",
+          "required": false,
+          "defaultValue": "'end'",
+          "description": "The position of the indicator icon relative to the heading."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes from this abstraction layer."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Accordion.Root",
+      "kind": "primitive",
+      "description": "The root container of the Accordion component.",
+      "dataScope": "accordion",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the accordion. Useful for composition."
+        },
+        {
+          "name": "multiple",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether multiple accordion items can be expanded at the same time."
+        },
+        {
+          "name": "collapsible",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether an accordion item can be closed after it has been expanded."
+        },
+        {
+          "name": "value",
+          "type": "string[]",
+          "required": false,
+          "description": "The controlled value of the expanded accordion items."
+        },
+        {
+          "name": "defaultValue",
+          "type": "string[]",
+          "required": false,
+          "description": "The initial value of the expanded accordion items. Use when you don't need to control the value of the accordion."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the accordion items are disabled"
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "The callback fired when the state of expanded/collapsed accordion items changes."
+        },
+        {
+          "name": "onFocusChange",
+          "type": "((details: FocusChangeDetails) => void)",
+          "required": false,
+          "description": "The callback fired when the focused accordion item changes."
+        },
+        {
+          "name": "orientation",
+          "type": "\"horizontal\" | \"vertical\"",
+          "required": false,
+          "defaultValue": "\"vertical\"",
+          "description": "The orientation of the accordion items."
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Item",
+      "exportName": "Accordion.Item",
+      "kind": "primitive",
+      "description": "The item primitive part of the Accordion component.",
+      "dataScope": "accordion",
+      "dataPart": "item",
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The value of the accordion item."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the accordion item is disabled."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemTrigger",
+      "exportName": "Accordion.ItemTrigger",
+      "kind": "primitive",
+      "description": "The item-trigger primitive part of the Accordion component.",
+      "dataScope": "accordion",
+      "dataPart": "item-trigger",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemContent",
+      "exportName": "Accordion.ItemContent",
+      "kind": "primitive",
+      "description": "The item-content primitive part of the Accordion component.",
+      "dataScope": "accordion",
+      "dataPart": "item-content",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemIndicator",
+      "exportName": "Accordion.ItemIndicator",
+      "kind": "primitive",
+      "description": "The item-indicator primitive part of the Accordion component.",
+      "dataScope": "accordion",
+      "dataPart": "item-indicator",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Accordion",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/accordion/",
+    "keyboard": [
+      {
+        "key": "Space",
+        "description": "When focus is on a trigger of a collapsed item, expands the item."
+      },
+      {
+        "key": "Enter",
+        "description": "When focus is on a trigger of a collapsed item, expands the item."
+      },
+      {
+        "key": "Tab",
+        "description": "Moves focus to the next focusable element."
+      },
+      {
+        "key": "Shift + Tab",
+        "description": "Moves focus to the previous focusable element."
+      },
+      {
+        "key": "ArrowDown",
+        "description": "Moves focus to the next accordion trigger."
+      },
+      {
+        "key": "ArrowUp",
+        "description": "Moves focus to the previous accordion trigger."
+      },
+      {
+        "key": "Home",
+        "description": "When focus is on a trigger, moves focus to the first trigger."
+      },
+      {
+        "key": "End",
+        "description": "When focus is on a trigger, moves focus to the last trigger."
+      }
+    ]
+  }
+}
