@@ -11,7 +11,6 @@ interface ComponentApiProps {
 
 export function ComponentApi({ spec }: ComponentApiProps) {
   const data = API_SPECS[spec]
-  const a11y = data.a11y
 
   if (!data) {
     return (
@@ -25,12 +24,12 @@ export function ComponentApi({ spec }: ComponentApiProps) {
   return (
     <Stack gap="xl">
       <RecipeVariants
-        key={data.key}
+        specKey={data.key}
         name={data.name}
         variants={data.variants}
       />
-      <PartsDocs parts={data.parts} key={data.key} />
-      <A11yDocs a11y={a11y} key={data.key} name={data.name} />
+      <PartsDocs parts={data.parts} specKey={data.key} />
+      <A11yDocs a11y={data.a11y} specKey={data.key} name={data.name} />
     </Stack>
   )
 }
@@ -39,16 +38,16 @@ export function ComponentApi({ spec }: ComponentApiProps) {
 
 type RecipeVarProps = {
   variants: ComponentDocSpec['variants']
-  key: string
+  specKey: string
   name: string
 }
 
-function RecipeVariants({ variants, key, name }: RecipeVarProps) {
+function RecipeVariants({ variants, specKey, name }: RecipeVarProps) {
   if (variants.length <= 0) return null
 
   return (
-    <cerberus.section aria-labelledby={`${key}-variants-heading`}>
-      <Heading id={`${key}-variants-heading`}>Variants</Heading>
+    <cerberus.section aria-labelledby={`${specKey}-variants-heading`}>
+      <Heading id={`${specKey}-variants-heading`}>Variants</Heading>
       <Body>
         Set variant props on <Code>{name}</Code> (or <Code>{name}.Root</Code>)
         to cascade styles across all parts.
@@ -93,23 +92,23 @@ function RecipeVariants({ variants, key, name }: RecipeVarProps) {
 
 type PartsProps = {
   parts: ComponentDocSpec['parts']
-  key: string
+  specKey: string
 }
 
-function PartsDocs({ parts, key }: PartsProps) {
+function PartsDocs({ parts, specKey }: PartsProps) {
   return (
-    <cerberus.section aria-labelledby={`${key}-api-heading`}>
-      <Heading id={`${key}-api-heading`}>API Reference</Heading>
+    <cerberus.section aria-labelledby={`${specKey}-api-heading`}>
+      <Heading id={`${specKey}-api-heading`}>API Reference</Heading>
 
       <Stack gap="lg" mt="md">
         <For each={parts}>
           {(part, idx) => (
             <cerberus.article
               key={`parts:${part.exportName}:${idx}`}
-              aria-labelledby={`${key}-${part.name}-heading`}
+              aria-labelledby={`${specKey}-${part.name}-heading`}
             >
               <cerberus.h3
-                id={`${key}-${part.name}-heading`}
+                id={`${specKey}-${part.name}-heading`}
                 pt="lg"
                 textStyle="heading-sm"
               >
@@ -187,16 +186,16 @@ function PartsDocs({ parts, key }: PartsProps) {
 
 type A11yProps = {
   a11y: ComponentDocSpec['a11y']
-  key: string
+  specKey: string
   name: string
 }
 
-function A11yDocs({ a11y, key, ...rest }: A11yProps) {
+function A11yDocs({ a11y, specKey, ...rest }: A11yProps) {
   if (!a11y) return null
 
   return (
-    <cerberus.section aria-labelledby={`${key}-a11y-heading`}>
-      <Heading id={`${key}-a11y-heading`}>Accessibility</Heading>
+    <cerberus.section aria-labelledby={`${specKey}-a11y-heading`}>
+      <Heading id={`${specKey}-a11y-heading`}>Accessibility</Heading>
       <Body>
         Complies with the{' '}
         <cerberus.a href={a11y.apgUrl} rel="noreferrer" target="_blank">
