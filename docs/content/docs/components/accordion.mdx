@@ -11,234 +11,40 @@ order: 1
 
 ## Import
 
-```ts
-import { Accordion, AccordionItemGroup } from '@cerberus/react'
+```tsx
+import { Accordion } from '@cerberus/react'
 ```
 
 ## Usage
 
-The Accordion component is a controlled abstraction of the primitive components that can be used to show or hide content. It can be used in a group with other accordion items to allow for multiple selections.
+Use `Accordion` with `Accordion.ItemGroup` for an accessible, collapsible list out of the box.
 
 <Example path="components/accordion" demo="basic" />
 
 ## Indicator Position
 
-The `AccordionItemGroup` component supports two indicator positions: `start` and `end`. This changes the position of the icon indicator displayed.
+The `Accordion.ItemGroup` component supports `start` and `end` indicator positions.
 
 <Example path="components/accordion" demo="indicator" />
 
 ## Sizes
 
-The `Accordion` component supports two sizes: `sm` and `lg`. This changes the size of the icon indicator displayed.
+Set `size` (`sm` or `lg`) on the root `Accordion` to scale all items.
 
 <Example path="components/accordion" demo="size" />
 
 ## Customizing
 
-You can customize the `Accordion` using any of the [compositional options](/docs/components/composition).
+Customize `Accordion` using style props, direct JSX child part overrides inside `Accordion.ItemGroup`, or low-level primitives.
 
 <Example path="components/accordion" demo="custom" />
 
 ### Unstyled <FeatureBadge since="2.0.0" />
 
-To completely remove the underlying recipe add the `unstyled` prop to the `Accordion` and `Accordion.ItemGroup`.
-
-We add `unstyled` to `Accordion.ItemGroup` because it is an abstracted layer (e.g., not a part of the original primitive family).
+Add `unstyled` to `Accordion` to strip Cerberus recipe classes across the entire tree, or pass `unstyled` to a single primitive part.
 
 <Example path="components/accordion" demo="unstyled" />
 
-### Unstyled Slot <FeatureBadge since="2.0.0" />
-
-To remove the underlying recipe for a single slot add the `unstyled` prop to the target primitive.
-
-<Example path="components/accordion" demo="unstyledSlot" />
-
-## Primitives
-
-The layers of the Accordion which can be used to create a fully custom solution.
-
-| Component              | Description                                                        |
-| ---------------------- | ------------------------------------------------------------------ |
-| AccordionRoot          | The main container for the accordion items.                        |
-| AccordionItem          | Represents a single item within the accordion.                     |
-| AccordionItemTrigger   | The trigger element that toggles the visibility of the content.    |
-| AccordionItemContent   | The content that is shown or hidden when the trigger is activated. |
-| AccordionItemIndicator | An optional indicator to show the state of the accordion item.     |
-
-### Data Attributes
-
-The primitives additionally use the following data attributes for custom styling:
-
-| Name         | Value            | Description                            |
-| ------------ | ---------------- | -------------------------------------- |
-| `data-scope` | `accordion`      | The scope of the components.           |
-| `data-part`  | `root`           | The root layer of the scope.           |
-| `data-part`  | `item`           | The item layer of the scope.           |
-| `data-part`  | `item-trigger`   | The item trigger layer of the scope.   |
-| `data-part`  | `item-content`   | The item content layer of the scope.   |
-| `data-part`  | `item-indicator` | The item indicator layer of the scope. |
-
 ## API
 
-### Accordion
-
-The `Accordion` component is an abstraction of the primitives and accepts the following props:
-Here is the converted markdown using standard GitHub Flavored Markdown (GFM) tables.
-
-#### Props
-
-| Prop                | Type                                    | Required | Default          | Description                                                                                                                                                                                                          |
-| ------------------- | --------------------------------------- | -------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`asChild`**       | `boolean`                               | false    | `undefined`      | Use the provided child element as the default rendered element, combining their props and behavior.                                                                                                                  |
-| **`collapsible`**   | `boolean`                               | false    | `false`          | Whether an accordion item can be closed after it has been expanded.                                                                                                                                                  |
-| **`defaultValue`**  | `string[]`                              | false    | `undefined`      | The initial value of the expanded accordion items.<br />Use when you don't need to control the value of the accordion.                                                                                               |
-| **`disabled`**      | `boolean`                               | false    | `undefined`      | Whether the accordion items are disabled                                                                                                                                                                             |
-| **`hideMode`**      | `HideMode`                              | false    | `'display-none'` | How to hide content when mounted but not present.<br />- `'display-none'`: HTML `hidden` attribute. Effects stay alive.<br />- `'activity'`: React 19 `<Activity mode="hidden">`. Effects pause. Requires React 19+. |
-| **`id`**            | `string`                                | false    | `undefined`      | The unique identifier of the machine.                                                                                                                                                                                |
-| **`ids`**           | `ElementIds`                            | false    | `undefined`      | The ids of the elements in the accordion. Useful for composition.                                                                                                                                                    |
-| **`lazyMount`**     | `boolean`                               | false    | `false`          | Whether to enable lazy mounting                                                                                                                                                                                      |
-| **`multiple`**      | `boolean`                               | false    | `false`          | Whether multiple accordion items can be expanded at the same time.                                                                                                                                                   |
-| **`onFocusChange`** | `(details: FocusChangeDetails) => void` | false    | `undefined`      | The callback fired when the focused accordion item changes.                                                                                                                                                          |
-| **`onValueChange`** | `(details: ValueChangeDetails) => void` | false    | `undefined`      | The callback fired when the state of expanded/collapsed accordion items changes.                                                                                                                                     |
-| **`orientation`**   | `'horizontal' \| 'vertical'`            | false    | `"vertical"`     | The orientation of the accordion items.                                                                                                                                                                              |
-| **`unmountOnExit`** | `boolean`                               | false    | `false`          | Whether to unmount on exit.                                                                                                                                                                                          |
-| **`value`**         | `string[]`                              | false    | `undefined`      | The controlled value of the expanded accordion items.                                                                                                                                                                |
-
-#### Data Attributes
-
-| Attribute              | Description / Value              |
-| ---------------------- | -------------------------------- |
-| **`data-scope`**       | accordion                        |
-| **`data-part`**        | root                             |
-| **`data-orientation`** | The orientation of the accordion |
-
-### ItemContent
-
-#### Props
-
-| Prop          | Type      | Required | Default     | Description                                                                                         |
-| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
-| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
-
-#### Data Attributes
-
-| Attribute              | Description / Value         |
-| ---------------------- | --------------------------- |
-| **`data-scope`**       | accordion                   |
-| **`data-part`**        | item-content                |
-| **`data-state`**       | "open" \| "closed"          |
-| **`data-disabled`**    | Present when disabled       |
-| **`data-focus`**       | Present when focused        |
-| **`data-orientation`** | The orientation of the item |
-
-### ItemIndicator
-
-#### Props
-
-| Prop          | Type      | Required | Default     | Description                                                                                         |
-| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
-| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
-
-#### Data Attributes
-
-| Attribute              | Description / Value         |
-| ---------------------- | --------------------------- |
-| **`data-scope`**       | accordion                   |
-| **`data-part`**        | item-indicator              |
-| **`data-state`**       | "open" \| "closed"          |
-| **`data-disabled`**    | Present when disabled       |
-| **`data-focus`**       | Present when focused        |
-| **`data-orientation`** | The orientation of the item |
-
-### Item
-
-#### Props
-
-| Prop           | Type      | Required | Default     | Description                                                                                         |
-| -------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
-| **`value`**    | `string`  | true     | `undefined` | The value of the accordion item.                                                                    |
-| **`asChild`**  | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
-| **`disabled`** | `boolean` | false    | `undefined` | Whether the accordion item is disabled.                                                             |
-
-#### Data Attributes
-
-| Attribute              | Description / Value         |
-| ---------------------- | --------------------------- |
-| **`data-scope`**       | accordion                   |
-| **`data-part`**        | item                        |
-| **`data-state`**       | "open" \| "closed"          |
-| **`data-focus`**       | Present when focused        |
-| **`data-disabled`**    | Present when disabled       |
-| **`data-orientation`** | The orientation of the item |
-
-### ItemTrigger
-
-#### Props
-
-| Prop          | Type      | Required | Default     | Description                                                                                         |
-| ------------- | --------- | -------- | ----------- | --------------------------------------------------------------------------------------------------- |
-| **`asChild`** | `boolean` | false    | `undefined` | Use the provided child element as the default rendered element, combining their props and behavior. |
-
-#### Data Attributes
-
-| Attribute              | Description / Value         |
-| ---------------------- | --------------------------- |
-| **`data-scope`**       | accordion                   |
-| **`data-part`**        | item-trigger                |
-| **`data-controls`**    |                             |
-| **`data-orientation`** | The orientation of the item |
-| **`data-state`**       | "open" \| "closed"          |
-| **`data-focus`**       | Present when focused        |
-
-### RootProvider
-
-#### Props
-
-| Prop                | Type                 | Required | Default          | Description                                                                                                                                                                                                          |
-| ------------------- | -------------------- | -------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`value`**         | `UseAccordionReturn` | true     | `undefined`      | undefined                                                                                                                                                                                                            |
-| **`asChild`**       | `boolean`            | false    | `undefined`      | Use the provided child element as the default rendered element, combining their props and behavior.                                                                                                                  |
-| **`hideMode`**      | `HideMode`           | false    | `'display-none'` | How to hide content when mounted but not present.<br />- `'display-none'`: HTML `hidden` attribute. Effects stay alive.<br />- `'activity'`: React 19 `<Activity mode="hidden">`. Effects pause. Requires React 19+. |
-| **`lazyMount`**     | `boolean`            | false    | `false`          | Whether to enable lazy mounting                                                                                                                                                                                      |
-| **`unmountOnExit`** | `boolean`            | false    | `false`          | Whether to unmount on exit.                                                                                                                                                                                          |
-
-### Context
-
-**API:**
-
-| Property       | Type                              | Description                              |
-| -------------- | --------------------------------- | ---------------------------------------- |
-| `focusedValue` | `string \| null`                  | The value of the focused accordion item. |
-| `value`        | `string[]`                        | The value of the accordion               |
-| `setValue`     | `(value: string[]) => void`       | Sets the value of the accordion          |
-| `getItemState` | `(props: ItemProps) => ItemState` | Returns the state of an accordion item.  |
-
-## Accessibility
-
-This component complies with the
-[Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
-
-### Keyboard Support
-
-| Key               | Description                                                              |
-| ----------------- | ------------------------------------------------------------------------ |
-| **`Space`**       | When focus is on an trigger of a collapsed item, the item is expanded    |
-| **`Enter`**       | When focus is on an trigger of a collapsed section, expands the section. |
-| **`Tab`**         | Moves focus to the next focusable element                                |
-| **`Shift + Tab`** | Moves focus to the previous focusable element                            |
-| **`ArrowDown`**   | Moves focus to the next trigger                                          |
-| **`ArrowUp`**     | Moves focus to the previous trigger.                                     |
-| **`Home`**        | When focus is on an trigger, moves focus to the first trigger.           |
-| **`End`**         | When focus is on an trigger, moves focus to the last trigger.            |
-
-### AccordionItemGroup
-
-The `AccordionItemGroup` component is an abstraction of the primitives and accepts the following props:
-
-| Name                | Default | Description                                      |
-| ------------------- | ------- | ------------------------------------------------ |
-| `heading`           |         | The heading of the accordion item.               |
-| `value`             |         | The value of the accordion item. Must be unique. |
-| `indicatorPosition` | `end`   | The position of the indicator.                   |
-
-The AccordionItemGroup is an abstraction of the [Item component](https://ark-ui.com/react/docs/components/accordion#api-reference).
+<ComponentApi spec="accordion" />

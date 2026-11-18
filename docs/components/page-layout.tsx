@@ -33,11 +33,11 @@ export function DocsPageLayout(props: PropsWithChildren<object>) {
       }}
     >
       <Container
+        px="2xl"
         py={{
           base: '8rem',
           md: 'md',
         }}
-        maxW="88ch"
         w="full"
         zIndex="1"
       >

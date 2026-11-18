@@ -1,0 +1,141 @@
+{
+  "name": "Avatar",
+  "key": "avatar",
+  "description": "The Avatar component is a versatile UI element that allows users to have a visual representation of their presence within an application. It is composed of several primitives that enable customization and flexibility in its usage.\n\nThe Avatar component can be used in various contexts, such as profiles, App Bars, menus, or any other content that benefits from a user representation. It supports different palettes, gradients, and layout styles to match the design requirements of your application.",
+  "variants": [],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Avatar.El",
+      "kind": "abstraction",
+      "description": "An entry abstraction for rendering all the content-related primitives",
+      "props": [
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes from this abstraction layer."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Avatar.Root",
+      "kind": "primitive",
+      "description": "The root container of the Avatar component.",
+      "dataScope": "avatar",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "onStatusChange",
+          "type": "((details: StatusChangeDetails) => void)",
+          "required": false,
+          "description": "Functional called when the image loading status changes."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the avatar. Useful for composition."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Image",
+      "exportName": "Avatar.Image",
+      "kind": "primitive",
+      "description": "The image primitive part of the Avatar component.",
+      "dataScope": "avatar",
+      "dataPart": "image",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Fallback",
+      "exportName": "Avatar.Fallback",
+      "kind": "primitive",
+      "description": "The fallback primitive part of the Avatar component.",
+      "dataScope": "avatar",
+      "dataPart": "fallback",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ]
+}

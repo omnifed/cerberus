@@ -5,6 +5,7 @@ import { PropsWithChildren } from 'react'
 import { NoteAdmonition, WarningAdmonition } from './admonitions'
 import { BashTabs } from './bash-tabs'
 import { CodeSnippet } from './code-snippet'
+import { ComponentApi } from './component-api'
 import { Example } from './example/index'
 import { lazyMdxComponents } from './lazy-mdx-components'
 import { mdxCode } from './mdx-code'
@@ -17,6 +18,7 @@ import { FeatureBadge } from './ui/feature-badge'
 export const sharedComponents = {
   BashTabs,
   Example,
+  ComponentApi,
   NoteAdmonition,
   WarningAdmonition,
   CodeSnippet,

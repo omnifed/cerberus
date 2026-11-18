@@ -1,0 +1,160 @@
+{
+  "name": "Button",
+  "key": "button",
+  "description": "The Button component provides a visual indicator for a user to make an\naction of sorts, commonly used in forms, menus, and popovers.\n\nFor a customizable Button, use the Button object to access the\nindividual primitives of the Button component or style props.\n\n**NOTE**: This API is _slotless_ and is a single rendered layer abstraction.",
+  "variants": [],
+  "parts": [
+    {
+      "name": "Icon",
+      "exportName": "Button.Icon",
+      "kind": "abstraction",
+      "description": "An abstraction displaying an icon that is replaced by a Spinner when `pending` is set to true",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ref",
+          "type": "RefObject<HTMLDivElement>",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes from this abstraction layer."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Provider",
+      "exportName": "Button.Provider",
+      "kind": "abstraction",
+      "description": "The Button context provider",
+      "props": [
+        {
+          "name": "pending",
+          "type": "boolean",
+          "required": false,
+          "description": "When true, replaces the `Button.Indicator` icon with a Spinner."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes from this abstraction layer."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "El",
+      "exportName": "Button.El",
+      "kind": "abstraction",
+      "description": "An abstraction for using the Provider and Button.Root together",
+      "props": [
+        {
+          "name": "pending",
+          "type": "boolean",
+          "required": false,
+          "description": "When true, replaces the `Button.Indicator` icon with a Spinner."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes from this abstraction layer."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Button.Root",
+      "kind": "primitive",
+      "description": "The root container of the Button component.",
+      "dataScope": "button",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Group",
+      "exportName": "Button.Group",
+      "kind": "primitive",
+      "description": "The group primitive part of the Button component.",
+      "dataScope": "button",
+      "dataPart": "group",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ]
+}
