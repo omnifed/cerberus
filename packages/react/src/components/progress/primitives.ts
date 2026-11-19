@@ -1,25 +1,37 @@
-import { progressBar, type ProgressBarVariantProps } from 'styled-system/recipes'
-import { type CerberusProps, createCerberusPrimitive } from '../../system/index'
+'use client'
+
+import { ark } from '@ark-ui/react/factory'
+import { createSlotRecipeContext, type ComponentProps } from 'styled-system/jsx'
+import { progressBar } from 'styled-system/recipes'
 
 /**
  * This module contains the ProgressBar component primitives.
- * @module @cerberus-design/react/components/progress-bar/primitives
+ * @module @cerberus/react/components/progress/primitives
  */
 
-const { withSlotRecipe } = createCerberusPrimitive(progressBar)
+const { withProvider, withContext } = createSlotRecipeContext(progressBar)
 
-// Root
+// `progress` is the scope Ark's Progress (CircularProgress) renders; keep them apart
+const getDefaultProps = (part: string) => ({
+  'data-scope': 'progress-bar',
+  'data-part': part,
+})
 
-export type ProgressBarRootProps = CerberusProps<'div'> & ProgressBarVariantProps
-export const ProgressBarRoot = withSlotRecipe('div', 'root', {
+// Root -----------------------------------------------------
+
+export type ProgressBarRootProps = ComponentProps<typeof ProgressBarRoot>
+export const ProgressBarRoot = withProvider(ark.div, 'root', {
   defaultProps: {
-    'aria-valuemin': '0',
-    'aria-valuemax': '100',
+    ...getDefaultProps('root'),
     role: 'progressbar',
+    'aria-valuemin': 0,
+    'aria-valuemax': 100,
   },
 })
 
-// Bar
+// Bar ------------------------------------------------------
 
-export type ProgressBarBarProps = CerberusProps<'div'> & ProgressBarVariantProps
-export const ProgressBarBar = withSlotRecipe('div', 'bar')
+export type ProgressBarBarProps = ComponentProps<typeof ProgressBarBar>
+export const ProgressBarBar = withContext(ark.div, 'bar', {
+  defaultProps: getDefaultProps('bar'),
+})

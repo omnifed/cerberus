@@ -41,7 +41,7 @@ export function IndeterminateIcon() {
 }
 
 /**
- * Animated checkmark icon for Clipboard.Indicator component
+ * Animated checkmark icon for the Clipboard.CopyIndicator abstraction
  */
 export function AnimatedCheckmarkIcon() {
   return (
@@ -72,7 +72,7 @@ export function AnimatedCheckmarkIcon() {
 }
 
 /**
- * Copy icon for Clipboard.Indicator component
+ * Copy icon for the Clipboard.CopyIndicator abstraction
  */
 export function CopyIcon() {
   return (

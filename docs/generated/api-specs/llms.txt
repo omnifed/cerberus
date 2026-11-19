@@ -9,11 +9,15 @@
 - [Avatar](avatar.md): The Avatar component is a versatile UI element that allows users to have a visual representation of their presence within an application.
 - [Button](button.md): The Button component provides a visual indicator for a user to make an action of sorts, commonly used in forms, menus, and popovers.
 - [Carousel](carousel.md): The Carousel component is a versatile UI element that allows users to navigate through a slideshow style set of "pages" which contain images.
+- [Checkbox](checkbox.md): The Checkbox component allows users to select one or more options from a set.
+- [Clipboard](clipboard.md): The Clipboard component provides an accessible way to copy text to the user's clipboard with built-in visual feedback.
 - [Collapsible](collapsible.md): The Collapsible component is used to expand and collapse additional content.
 - [Fieldset](fieldset.md): The Fieldset component groups related form fields together with a shared legend, helper text and error text.
 - [Marquee](marquee.md): The Marquee component displays continuously scrolling content, horizontally or vertically, with optional stylized edges.
 - [NumberInput](number-input.md): The NumberInput component is used to manage numeric input fields.
 - [PinInput](pin-input.md): The PinInput component lets users enter and manage fixed-length codes, such as verification codes or PINs, one character at a time.
+- [ProgressBar](progress.md): The ProgressBar component displays a linear progress indicator for a task.
 - [Slider](slider.md): The Slider component allows users to make selections from a range of values by dragging one or more thumbs along a track.
 - [Switch](switch.md): The Switch component is a toggle input that allows users to switch between two states, such as turning a setting on or off.
 - [Tabs](tabs.md): The Tabs component is used to create a tabbed interface.
+- [Toggle](toggle.md): The Toggle component is a two-state button that allows users to toggle between states via an action, such as pressed and not pressed.

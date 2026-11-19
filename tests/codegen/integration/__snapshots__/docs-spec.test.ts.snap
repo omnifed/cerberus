@@ -253,6 +253,136 @@ exports[`every part resolves to the same prop names as last time 1`] = `
     },
     "variants": [],
   },
+  "checkbox": {
+    "parts": {
+      "Checkbox.Context": [
+        "children",
+      ],
+      "Checkbox.Control": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Checkbox.El": [],
+      "Checkbox.Group": [
+        "size",
+        "defaultValue",
+        "value",
+        "name",
+        "onValueChange",
+        "disabled",
+        "readOnly",
+        "invalid",
+        "maxSelectedValues",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Checkbox.GroupProvider": [
+        "size",
+        "value",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Checkbox.HiddenInput": [
+        "asChild",
+        "css",
+      ],
+      "Checkbox.Indicator": [
+        "asChild",
+        "indeterminate",
+        "unstyled",
+        "css",
+      ],
+      "Checkbox.Label": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Checkbox.Root": [
+        "size",
+        "id",
+        "ids",
+        "disabled",
+        "invalid",
+        "required",
+        "checked",
+        "defaultChecked",
+        "readOnly",
+        "onCheckedChange",
+        "name",
+        "form",
+        "value",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Checkbox.RootProvider": [
+        "size",
+        "value",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+    },
+    "variants": [
+      "size",
+    ],
+  },
+  "clipboard": {
+    "parts": {
+      "Clipboard.Context": [
+        "children",
+      ],
+      "Clipboard.Control": [
+        "asChild",
+        "css",
+      ],
+      "Clipboard.CopyIndicator": [],
+      "Clipboard.CopyText": [],
+      "Clipboard.Indicator": [
+        "asChild",
+        "copied",
+        "css",
+      ],
+      "Clipboard.Input": [
+        "asChild",
+        "css",
+      ],
+      "Clipboard.Label": [
+        "asChild",
+        "css",
+      ],
+      "Clipboard.Root": [
+        "id",
+        "translations",
+        "ids",
+        "value",
+        "defaultValue",
+        "onValueChange",
+        "onStatusChange",
+        "timeout",
+        "asChild",
+        "css",
+      ],
+      "Clipboard.RootProvider": [
+        "value",
+        "asChild",
+        "css",
+      ],
+      "Clipboard.Trigger": [
+        "asChild",
+        "css",
+      ],
+      "Clipboard.TriggerWithTooltip": [],
+      "Clipboard.ValueText": [
+        "asChild",
+        "css",
+      ],
+    },
+    "variants": [],
+  },
   "collapsible": {
     "parts": {
       "Collapsible.Content": [
@@ -555,6 +685,32 @@ exports[`every part resolves to the same prop names as last time 1`] = `
       "size",
     ],
   },
+  "progress": {
+    "parts": {
+      "ProgressBar.Bar": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "ProgressBar.El": [
+        "id",
+        "label",
+        "indeterminate",
+        "now",
+      ],
+      "ProgressBar.Root": [
+        "size",
+        "usage",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+    },
+    "variants": [
+      "size",
+      "usage",
+    ],
+  },
   "slider": {
     "parts": {
       "Slider.Control": [
@@ -786,6 +942,27 @@ exports[`every part resolves to the same prop names as last time 1`] = `
       "indicatorPlacement",
     ],
   },
+  "toggle": {
+    "parts": {
+      "Toggle.Context": [
+        "children",
+      ],
+      "Toggle.Indicator": [
+        "fallback",
+        "asChild",
+        "css",
+      ],
+      "Toggle.Root": [
+        "disabled",
+        "defaultPressed",
+        "pressed",
+        "onPressedChange",
+        "asChild",
+        "css",
+      ],
+    },
+    "variants": [],
+  },
 }
 `;
 
@@ -1000,6 +1177,115 @@ exports[`no props lose their description compared with last time 1`] = `
     "onAutoplayStatusChange",
     "asChild",
     "unstyled",
+    "css",
+  ],
+  "Checkbox.Context": [],
+  "Checkbox.Control": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Checkbox.El": [],
+  "Checkbox.Group": [
+    "size",
+    "defaultValue",
+    "value",
+    "name",
+    "onValueChange",
+    "disabled",
+    "readOnly",
+    "invalid",
+    "maxSelectedValues",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Checkbox.GroupProvider": [
+    "size",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Checkbox.HiddenInput": [
+    "asChild",
+    "css",
+  ],
+  "Checkbox.Indicator": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Checkbox.Label": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Checkbox.Root": [
+    "size",
+    "id",
+    "ids",
+    "disabled",
+    "invalid",
+    "required",
+    "checked",
+    "defaultChecked",
+    "readOnly",
+    "onCheckedChange",
+    "name",
+    "form",
+    "value",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Checkbox.RootProvider": [
+    "size",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Clipboard.Context": [],
+  "Clipboard.Control": [
+    "asChild",
+    "css",
+  ],
+  "Clipboard.CopyIndicator": [],
+  "Clipboard.CopyText": [],
+  "Clipboard.Indicator": [
+    "asChild",
+    "css",
+  ],
+  "Clipboard.Input": [
+    "asChild",
+    "css",
+  ],
+  "Clipboard.Label": [
+    "asChild",
+    "css",
+  ],
+  "Clipboard.Root": [
+    "id",
+    "translations",
+    "ids",
+    "value",
+    "defaultValue",
+    "onValueChange",
+    "onStatusChange",
+    "timeout",
+    "asChild",
+    "css",
+  ],
+  "Clipboard.RootProvider": [
+    "asChild",
+    "css",
+  ],
+  "Clipboard.Trigger": [
+    "asChild",
+    "css",
+  ],
+  "Clipboard.TriggerWithTooltip": [],
+  "Clipboard.ValueText": [
+    "asChild",
     "css",
   ],
   "Collapsible.Content": [
@@ -1259,6 +1545,24 @@ exports[`no props lose their description compared with last time 1`] = `
     "unstyled",
     "css",
   ],
+  "ProgressBar.Bar": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "ProgressBar.El": [
+    "id",
+    "label",
+    "indeterminate",
+    "now",
+  ],
+  "ProgressBar.Root": [
+    "size",
+    "usage",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
   "Slider.Control": [
     "asChild",
     "unstyled",
@@ -1456,6 +1760,20 @@ exports[`no props lose their description compared with last time 1`] = `
     "disabled",
     "asChild",
     "unstyled",
+    "css",
+  ],
+  "Toggle.Context": [],
+  "Toggle.Indicator": [
+    "fallback",
+    "asChild",
+    "css",
+  ],
+  "Toggle.Root": [
+    "disabled",
+    "defaultPressed",
+    "pressed",
+    "onPressedChange",
+    "asChild",
     "css",
   ],
 }

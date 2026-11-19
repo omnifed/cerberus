@@ -251,16 +251,16 @@ export function PromptModal(
                           </Text>
                         </Clipboard.Label>
 
-                        <Clipboard.Trigger asChild>
+                        <Clipboard.TriggerWithTooltip asChild>
                           <IconButton
                             clipboard
                             shape="square"
                             size="sm"
                             rounded="xs"
                           >
-                            <Clipboard.Indicator />
+                            <Clipboard.CopyIndicator />
                           </IconButton>
-                        </Clipboard.Trigger>
+                        </Clipboard.TriggerWithTooltip>
                       </HStack>
                     </Clipboard.Control>
                   </Clipboard.Root>
