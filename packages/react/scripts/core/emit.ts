@@ -23,11 +23,16 @@ export interface EmitResult {
   stale: string[]
 }
 
+const UNFORMATTED = /\.(?:md|txt)$/
+
 /**
  * Formats generated source with the repo's oxfmt config, so output is byte-identical
  * to what the pre-commit formatter would produce and `--check` diffs stay clean.
  */
 export function formatSource(path: string, content: string): string {
+  // Generated markdown/text is written as-is: oxfmt pads tables to their widest cell,
+  // so one changed description would reflow every row. (Also excluded in .oxfmtrc.)
+  if (UNFORMATTED.test(path)) return content
   const proc = Bun.spawnSync({
     cmd: [OXFMT_BIN, '-c', OXFMT_CONFIG, `--stdin-filepath=${path}`],
     cwd: REPO_ROOT,

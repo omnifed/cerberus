@@ -17,7 +17,8 @@ export async function processMdx(rawMdx: string): Promise<string> {
   })
 
   // 2. Process <Example path="..." demo="..." />
-  const exampleRegex = /<Example\s+path=["']([^"']+)["']\s+demo=["']([^"']+)["']\s*\/>/g
+  const exampleRegex =
+    /<Example\s+path=["']([^"']+)["']\s+demo=["']([^"']+)["']\s*\/>/g
   const exampleMatches = [...processedMdx.matchAll(exampleRegex)]
 
   // 3. Process <CodeSnippets snippet="..." />
@@ -50,6 +51,10 @@ export async function processMdx(rawMdx: string): Promise<string> {
     return `\n> **Note:**\n${blockquoted}\n`
   })
 
+  // 5. Process <ComponentApi spec="..." />
+  // Replaced by the generated API digest (docs/generated/api-specs/<spec>.md)
+  processedMdx = await inlineComponentApi(processedMdx)
+
   if (exampleMatches.length === 0) {
     return processedMdx
   }
@@ -60,11 +65,17 @@ export async function processMdx(rawMdx: string): Promise<string> {
 
     try {
       // Re-use your exact file resolution logic from the Example component
-      const filePath = resolve(process.cwd(), `examples/${path}/${demo}.demo.tsx`)
+      const filePath = resolve(
+        process.cwd(),
+        `examples/${path}/${demo}.demo.tsx`,
+      )
       let fileContent = await readFile(filePath, 'utf-8')
 
       // Clean up internal monorepo imports for the LLM
-      fileContent = fileContent.replaceAll('@cerberus-design', '@cerberus/react')
+      fileContent = fileContent.replaceAll(
+        '@cerberus-design',
+        '@cerberus/react',
+      )
 
       // Format as a standard TypeScript React code block
       const replacement = `\n\`\`\`tsx\n// ${path}/${demo}.demo.tsx\n${fileContent}\n\`\`\`\n`
@@ -86,4 +97,48 @@ export async function processMdx(rawMdx: string): Promise<string> {
   }
 
   return processedMdx
+}
+
+/** Must match `DIGEST_API_MARKER` in packages/react/scripts/docs/digest.ts */
+const DIGEST_API_MARKER = '<!-- api-reference -->'
+
+/**
+ * Swaps each `<ComponentApi spec="key" />` for the API section of its generated
+ * markdown digest, one heading level down so it nests under the page's `## API`.
+ */
+async function inlineComponentApi(mdx: string): Promise<string> {
+  const apiRegex = /<ComponentApi\s+spec=["']([^"']+)["']\s*\/>/g
+  const matches = [...mdx.matchAll(apiRegex)]
+  if (matches.length === 0) return mdx
+
+  const replacements = await Promise.all(
+    matches.map(async ([fullTag, spec]) => {
+      try {
+        const filePath = resolve(
+          process.cwd(),
+          `generated/api-specs/${spec}.md`,
+        )
+        const digest = await readFile(filePath, 'utf-8')
+        const markerAt = digest.indexOf(DIGEST_API_MARKER)
+        const api =
+          markerAt === -1
+            ? digest
+            : digest.slice(markerAt + DIGEST_API_MARKER.length)
+        const nested = api.trim().replace(/^(#{1,5}) /gm, '#$1 ')
+        return { fullTag, replacement: `\n${nested}\n` }
+      } catch (error) {
+        console.error(`LLM Parser: Failed to load API digest ${spec}`, error)
+        return {
+          fullTag,
+          replacement: `\n> *API reference for ${spec} is missing. Run \`pnpm generate:docs\`.*\n`,
+        }
+      }
+    }),
+  )
+
+  let result = mdx
+  for (const { fullTag, replacement } of replacements) {
+    result = result.replace(fullTag, replacement)
+  }
+  return result
 }

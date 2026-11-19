@@ -2,6 +2,7 @@ import { join, relative } from 'node:path'
 import { z } from 'zod'
 import type { GeneratedFile } from '../core/emit'
 import { DOCS_SPEC_OUT_DIR, SCRIPTS_DIR } from '../core/paths'
+import { renderDigest, renderLlmsIndex } from './digest'
 import { ComponentDocSpecSchema } from './schema'
 import type { ComponentDocSpec } from './types'
 
@@ -47,5 +48,21 @@ export function schemaFile(): GeneratedFile {
   return {
     path: join(DOCS_SPEC_OUT_DIR, SCHEMA_FILE_NAME),
     content: `${JSON.stringify({ title: 'ComponentDocSpec', ...schema }, null, 2)}\n`,
+  }
+}
+
+/** Markdown API reference for one component, next to its JSON. */
+export function digestFile(spec: ComponentDocSpec): GeneratedFile {
+  return {
+    path: join(DOCS_SPEC_OUT_DIR, `${spec.key}.md`),
+    content: renderDigest(spec),
+  }
+}
+
+/** `llms.txt` index of the digests. */
+export function llmsIndexFile(specs: ComponentDocSpec[]): GeneratedFile {
+  return {
+    path: join(DOCS_SPEC_OUT_DIR, 'llms.txt'),
+    content: renderLlmsIndex(specs),
   }
 }

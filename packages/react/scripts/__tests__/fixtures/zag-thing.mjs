@@ -42,3 +42,5 @@ const machine = createMachine({
     };
   }
 });
+
+export { connect, machine }
