@@ -1,0 +1,568 @@
+{
+  "name": "Tabs",
+  "key": "tabs",
+  "description": "The Tabs component is used to create a tabbed interface. It organizes related content into panels that share the same space, showing one panel at a time while the tab list lets users switch between them.\n\nUse `Tabs.ListGroup` for a tab list that renders the active tab indicator for you, or compose the primitives for full structural control. It supports different palettes, a vertical orientation, and placing the indicator at the start or end edge of the list.",
+  "variants": [
+    {
+      "name": "palette",
+      "values": ["action", "secondaryAction"],
+      "defaultValue": "'action'"
+    },
+    {
+      "name": "indicatorPlacement",
+      "values": ["start", "end"],
+      "defaultValue": "'end'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "ListGroup",
+      "exportName": "Tabs.ListGroup",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the tab list with the active tab indicator",
+      "inherits": ["Tabs.List"],
+      "props": []
+    },
+    {
+      "name": "Root",
+      "exportName": "Tabs.Root",
+      "kind": "primitive",
+      "description": "The root container of the Tabs component.",
+      "dataScope": "tabs",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the tabs."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        }
+      ],
+      "props": [
+        {
+          "name": "palette",
+          "type": "'action' | 'secondaryAction'",
+          "required": false,
+          "defaultValue": "'action'",
+          "description": "PandaCSS recipe variant for palette."
+        },
+        {
+          "name": "indicatorPlacement",
+          "type": "'start' | 'end'",
+          "required": false,
+          "defaultValue": "'end'",
+          "description": "PandaCSS recipe variant for indicatorPlacement."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the tabs. Useful for composition."
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+        },
+        {
+          "name": "loopFocus",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the keyboard navigation will loop from last tab to first, and vice versa."
+        },
+        {
+          "name": "value",
+          "type": "string | null",
+          "required": false,
+          "description": "The controlled selected tab value"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string | null",
+          "required": false,
+          "defaultValue": "null",
+          "description": "The initial selected tab value when rendered. Use when you don't need to control the selected tab value."
+        },
+        {
+          "name": "orientation",
+          "type": "\"horizontal\" | \"vertical\"",
+          "required": false,
+          "defaultValue": "\"horizontal\"",
+          "description": "The orientation of the tabs. Can be `horizontal` or `vertical` - `horizontal`: only left and right arrow key navigation will work. - `vertical`: only up and down arrow key navigation will work."
+        },
+        {
+          "name": "activationMode",
+          "type": "\"manual\" | \"automatic\"",
+          "required": false,
+          "defaultValue": "\"automatic\"",
+          "description": "The activation mode of the tabs. Can be `manual` or `automatic` - `manual`: Tabs are activated when clicked or press `enter` key. - `automatic`: Tabs are activated when receiving focus"
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "Callback to be called when the selected/active tab changes"
+        },
+        {
+          "name": "onFocusChange",
+          "type": "((details: FocusChangeDetails) => void)",
+          "required": false,
+          "description": "Callback to be called when the focused tab changes"
+        },
+        {
+          "name": "composite",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the tab is composite"
+        },
+        {
+          "name": "deselectable",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the active tab can be deselected when clicking on it."
+        },
+        {
+          "name": "navigate",
+          "type": "((details: NavigateDetails) => void) | null",
+          "required": false,
+          "description": "Function to navigate to the selected tab when clicking on it. Useful if tab triggers are anchor elements."
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "List",
+      "exportName": "Tabs.List",
+      "kind": "primitive",
+      "description": "The list primitive part of the Tabs component.",
+      "dataScope": "tabs",
+      "dataPart": "list",
+      "dataAttributes": [
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the list."
+        }
+      ],
+      "keyboard": [
+        "ArrowDown",
+        "ArrowUp",
+        "ArrowLeft",
+        "ArrowRight",
+        "Home",
+        "End"
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Trigger",
+      "exportName": "Tabs.Trigger",
+      "kind": "primitive",
+      "description": "The trigger primitive part of the Tabs component.",
+      "dataScope": "tabs",
+      "dataPart": "trigger",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the trigger."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-value",
+          "description": "The value of the item."
+        },
+        {
+          "name": "data-selected",
+          "presence": true,
+          "description": "Present when selected."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-ownedby"
+        },
+        {
+          "name": "data-ssr",
+          "presence": true,
+          "description": "Present when not rendered in the browser. Useful for ssr styling."
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The value of the tab"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the tab is disabled"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "exportName": "Tabs.Content",
+      "kind": "primitive",
+      "description": "The content primitive part of the Tabs component.",
+      "dataScope": "tabs",
+      "dataPart": "content",
+      "dataAttributes": [
+        {
+          "name": "data-ownedby"
+        },
+        {
+          "name": "data-selected",
+          "presence": true,
+          "description": "Present when selected."
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the content."
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The value of the tab"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Indicator",
+      "exportName": "Tabs.Indicator",
+      "kind": "primitive",
+      "description": "The indicator primitive part of the Tabs component.",
+      "dataScope": "tabs",
+      "dataPart": "indicator",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the indicator."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--transition-property",
+          "description": "The transition property value for the Indicator."
+        },
+        {
+          "name": "--left",
+          "description": "The left position value."
+        },
+        {
+          "name": "--top",
+          "description": "The top position value."
+        },
+        {
+          "name": "--width",
+          "description": "The width of the element."
+        },
+        {
+          "name": "--height",
+          "description": "The height of the element."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Tabs.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Tabs component, driven by state created with `useTabs()`.",
+      "dataScope": "tabs",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the tabs."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        }
+      ],
+      "props": [
+        {
+          "name": "palette",
+          "type": "'action' | 'secondaryAction'",
+          "required": false,
+          "defaultValue": "'action'",
+          "description": "PandaCSS recipe variant for palette."
+        },
+        {
+          "name": "indicatorPlacement",
+          "type": "'start' | 'end'",
+          "required": false,
+          "defaultValue": "'end'",
+          "description": "PandaCSS recipe variant for indicatorPlacement."
+        },
+        {
+          "name": "value",
+          "type": "UseTabsReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Tabs.Context",
+      "kind": "primitive",
+      "description": "Exposes the Tabs state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseTabsContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Tabs",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/",
+    "keyboard": [
+      {
+        "key": "Tab",
+        "description": "When focus moves onto the tabs, focuses the active trigger. When a trigger is focused, moves focus to the active content."
+      },
+      {
+        "key": "ArrowDown",
+        "description": "Moves focus to the next trigger in vertical orientation and activates its associated content."
+      },
+      {
+        "key": "ArrowRight",
+        "description": "Moves focus to the next trigger in horizontal orientation and activates its associated content."
+      },
+      {
+        "key": "ArrowUp",
+        "description": "Moves focus to the previous trigger in vertical orientation and activates its associated content."
+      },
+      {
+        "key": "ArrowLeft",
+        "description": "Moves focus to the previous trigger in horizontal orientation and activates its associated content."
+      },
+      {
+        "key": "Home",
+        "description": "Moves focus to the first trigger and activates its associated content."
+      },
+      {
+        "key": "End",
+        "description": "Moves focus to the last trigger and activates its associated content."
+      },
+      {
+        "key": "Enter",
+        "description": "In manual mode, when a trigger is focused, moves focus to its associated content."
+      },
+      {
+        "key": "Space",
+        "description": "In manual mode, when a trigger is focused, moves focus to its associated content."
+      }
+    ]
+  }
+}

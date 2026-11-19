@@ -26,7 +26,7 @@ export function CustomDemo() {
   return (
     <Box w="1/2">
       <Tabs.Root defaultValue="asphodel">
-        <Tabs.List
+        <Tabs.ListGroup
           css={{
             bgColor: 'page.surface.200',
             borderBottom: 'none',
@@ -40,7 +40,7 @@ export function CustomDemo() {
           }}
         >
           {tabData.map((tab) => (
-            <Tabs.Tab
+            <Tabs.Trigger
               css={{
                 zIndex: 'decorator',
                 _selected: {
@@ -54,13 +54,13 @@ export function CustomDemo() {
               value={tab.value}
             >
               {tab.label}
-            </Tabs.Tab>
+            </Tabs.Trigger>
           ))}
-        </Tabs.List>
+        </Tabs.ListGroup>
 
         <For each={tabData}>
           {(tab) => (
-            <Tabs.Panel
+            <Tabs.Content
               key={tab.id}
               value={tab.value}
               css={{
@@ -68,7 +68,7 @@ export function CustomDemo() {
               }}
             >
               {tab.content}
-            </Tabs.Panel>
+            </Tabs.Content>
           )}
         </For>
       </Tabs.Root>
