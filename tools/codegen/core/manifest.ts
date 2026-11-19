@@ -49,8 +49,8 @@ export interface ComponentEntry {
 }
 
 const KEY = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/
-/** Ark members the generator knows how to expose */
-const ARK_MEMBER = /^(?:RootProvider|(?:[A-Z][A-Za-z]*)?Context)$/
+/** A PascalCase member of an Ark namespace, e.g. `HiddenInput` */
+const ARK_MEMBER = /^[A-Z][A-Za-z]*$/
 /** v1 files the generated `primitives.ts`/`api.ts` replace */
 const V1_FILES = ['primitives.tsx', 'parts.ts', 'parts.tsx']
 const ANCHOR = join(REACT_PKG_ROOT, 'package.json')
@@ -128,7 +128,12 @@ export function loadManifest(
       if (source !== 'ark' || !ARK_MEMBER.test(member)) {
         diagnostics.error(
           key,
-          `arkMembers: \`${member}\` is not supported (Ark components only: RootProvider or *Context)`,
+          `arkMembers: \`${member}\` must be a PascalCase member of the Ark namespace (Ark components only)`,
+        )
+      } else if (parts.some((part) => toPascalCase(part) === member)) {
+        diagnostics.error(
+          key,
+          `arkMembers: \`${member}\` is already an anatomy part`,
         )
       }
     }
