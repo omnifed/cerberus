@@ -6,9 +6,12 @@
 'use client'
 
 import { Switch as ArkSwitch } from '@ark-ui/react/switch'
-import { type ComponentProps, createSlotRecipeContext } from 'styled-system/jsx'
+import {
+  type ComponentProps,
+  createSlotRecipeContext,
+  styled,
+} from 'styled-system/jsx'
 import { switchRecipe } from 'styled-system/recipes'
-import { cerberus } from '../../system/index'
 
 const { withProvider, withContext } = createSlotRecipeContext(switchRecipe)
 
@@ -35,4 +38,4 @@ export const SwitchThumb = withContext(ArkSwitch.Thumb, 'thumb')
 // SwitchHiddenInput -----------------------------------------------------
 
 export type SwitchHiddenInputProps = ComponentProps<typeof SwitchHiddenInput>
-export const SwitchHiddenInput = cerberus(ArkSwitch.HiddenInput)
+export const SwitchHiddenInput = styled(ArkSwitch.HiddenInput)

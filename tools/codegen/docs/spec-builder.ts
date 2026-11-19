@@ -1,6 +1,6 @@
 import { join, relative } from 'node:path'
 import { Diagnostics } from '../core/diagnostics'
-import type { ComponentEntry } from '../core/manifest'
+import { providerSlot, type ComponentEntry } from '../core/manifest'
 import { capitalize, partExportKey, toKebabCase } from '../core/naming'
 import { REACT_PKG_ROOT } from '../core/paths'
 import type { AbstractionConfig } from '../manifest'
@@ -92,9 +92,11 @@ export function buildComponentDocSpec(
     ...entry.arkMembers.map((member) =>
       member === 'RootProvider'
         ? buildPrimitive(entry, 'root', inputs, ctx, member)
-        : member.endsWith('Context')
-          ? buildContext(entry, member, ctx)
-          : buildUnslotted(entry, member, inputs, ctx),
+        : entry.providers.includes(member)
+          ? buildPrimitive(entry, providerSlot(member)!, inputs, ctx, member)
+          : member.endsWith('Context')
+            ? buildContext(entry, member, ctx)
+            : buildUnslotted(entry, member, inputs, ctx),
     ),
   ]
 
@@ -381,7 +383,7 @@ function zagPartFields(
   }
 }
 
-/** An Ark part outside the anatomy (`HiddenInput`): `cerberus()`-wrapped, no recipe slot. */
+/** An Ark part outside the anatomy (`HiddenInput`): `styled()`-wrapped, no recipe slot. */
 function buildUnslotted(
   entry: ComponentEntry,
   member: string,
@@ -412,7 +414,7 @@ function buildPrimitive(
   part: string,
   { variantProps, machineDefaults, connect, docs }: PrimitiveInputs,
   ctx: SpecBuilderContext,
-  member?: 'RootProvider',
+  member?: string,
 ): PartSpec {
   const { name, key } = entry
   const { diagnostics } = ctx
@@ -429,7 +431,7 @@ function buildPrimitive(
     ? ctx.variants
         .variantsFor(partRecipe, `${key}.${part}`, diagnostics)
         .map(variantToProp)
-    : isRoot
+    : isRoot || entry.providers.includes(part)
       ? variantProps
       : []
   const ownProps = isRoot
@@ -453,8 +455,9 @@ function buildPrimitive(
     }
   }
 
+  const hook = `use${entry.arkName}${isRoot ? '' : capitalize(part)}()`
   const description = member
-    ? `The root container of the ${name} component, driven by state created with \`use${entry.arkName}()\`.`
+    ? `The ${isRoot ? 'root container' : `${toKebabCase(part)} part`} of the ${name} component, driven by state created with \`${hook}\`.`
     : isRoot
       ? `The root container of the ${name} component.`
       : `The ${toKebabCase(part)} primitive part of the ${name} component.`

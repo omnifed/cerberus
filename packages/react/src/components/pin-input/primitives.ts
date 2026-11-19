@@ -6,9 +6,12 @@
 'use client'
 
 import { PinInput as ArkPinInput } from '@ark-ui/react/pin-input'
-import { type ComponentProps, createSlotRecipeContext } from 'styled-system/jsx'
+import {
+  type ComponentProps,
+  createSlotRecipeContext,
+  styled,
+} from 'styled-system/jsx'
 import { pinInput } from 'styled-system/recipes'
-import { cerberus } from '../../system/index'
 
 const { withProvider, withContext } = createSlotRecipeContext(pinInput)
 
@@ -37,4 +40,4 @@ export const PinInputControl = withContext(ArkPinInput.Control, 'control')
 export type PinInputHiddenInputProps = ComponentProps<
   typeof PinInputHiddenInput
 >
-export const PinInputHiddenInput = cerberus(ArkPinInput.HiddenInput)
+export const PinInputHiddenInput = styled(ArkPinInput.HiddenInput)

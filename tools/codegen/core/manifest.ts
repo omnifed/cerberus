@@ -38,6 +38,8 @@ export interface ComponentEntry {
   primitives: string[]
   /** Extra Ark namespace members (`RootProvider`, `Context`…) */
   arkMembers: string[]
+  /** Parts and `*Provider` members that provide the slot recipe outside `Root` */
+  providers: string[]
   description: string
   abstractions: AbstractionConfig[]
   types: string[]
@@ -49,6 +51,13 @@ export interface ComponentEntry {
 }
 
 const KEY = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/
+
+/** `GroupProvider` → `group`; null for anything that isn't a `<Part>Provider` member. */
+export function providerSlot(name: string): string | null {
+  const m = /^([A-Z][A-Za-z]*)Provider$/.exec(name)
+  if (!m || m[1] === 'Root') return null
+  return m[1][0].toLowerCase() + m[1].slice(1)
+}
 /** A PascalCase member of an Ark namespace, e.g. `HiddenInput` */
 const ARK_MEMBER = /^[A-Z][A-Za-z]*$/
 /** v1 files the generated `primitives.ts`/`api.ts` replace */
@@ -138,6 +147,23 @@ export function loadManifest(
       }
     }
 
+    const providers = config.providers ?? []
+    for (const provider of providers) {
+      const slot = providerSlot(provider)
+      const isPart = parts.includes(provider) && provider !== 'root'
+      const isMember =
+        arkMembers.includes(provider) && slot !== null && parts.includes(slot)
+      if (!isPart && !isMember) {
+        diagnostics.error(
+          key,
+          `providers: \`${provider}\` must be a non-root anatomy part, or an arkMembers \`<Part>Provider\` whose part is in the anatomy`,
+        )
+      }
+      if (config.recipe === false) {
+        diagnostics.error(key, `providers needs a slot recipe; recipe is false`)
+      }
+    }
+
     const exports = config.exports ?? []
     for (const { from, values = [], types = [] } of exports) {
       if (values.length + types.length === 0) {
@@ -198,6 +224,7 @@ export function loadManifest(
       arkName: toPascalCase(arkKey),
       arkEntry: source === 'ark' ? arkEntry : null,
       arkMembers,
+      providers,
       anatomy: config.anatomy,
       parts,
       rootProvider,
