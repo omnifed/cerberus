@@ -89,6 +89,9 @@ export function buildComponentDocSpec(
   const parts: PartSpec[] = [
     ...entry.abstractions.map((abs) => buildAbstraction(entry, abs, ctx)),
     ...entry.primitives.map((part) => buildPrimitive(entry, part, inputs, ctx)),
+    ...Object.keys(entry.elementParts).map((slot) =>
+      buildElementPart(entry, slot),
+    ),
     ...entry.arkMembers.map((member) =>
       member === 'RootProvider'
         ? buildPrimitive(entry, 'root', inputs, ctx, member)
@@ -388,6 +391,19 @@ function zagPartFields(
     ...(dataAttributes.length > 0 ? { dataAttributes } : {}),
     ...(info.keyboard.length > 0 ? { keyboard: info.keyboard } : {}),
     ...(cssVars.length > 0 ? { cssVars } : {}),
+  }
+}
+
+/** A Cerberus recipe slot outside the Ark anatomy, rendered as a plain element. */
+function buildElementPart(entry: ComponentEntry, slot: string): PartSpec {
+  return {
+    name: capitalize(slot),
+    exportName: `${entry.name}.${capitalize(slot)}`,
+    kind: 'primitive',
+    description: `The ${toKebabCase(slot)} part of the ${entry.name} component: a Cerberus recipe slot outside the Ark anatomy, rendered as a \`<${entry.elementParts[slot]}>\`.`,
+    dataScope: entry.arkKey,
+    dataPart: toKebabCase(slot),
+    props: PRIMITIVE_PROPS,
   }
 }
 

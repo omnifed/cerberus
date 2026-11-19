@@ -268,6 +268,20 @@ describe('generated API', () => {
     expect(api).toContain('  CheckboxItem: MenuCheckboxItem,')
   })
 
+  test('elementParts render recipe slots outside the anatomy from context', () => {
+    const { primitives, api } = generate({
+      key: 'popover',
+      anatomy: { keys: () => ['trigger', 'content'] },
+      elementParts: { header: 'div' },
+      description: 'x',
+    })
+    expect(primitives).toContain("import { ark } from '@ark-ui/react/factory'")
+    expect(primitives).toContain(
+      "withContext(ark.div, 'header', { defaultProps: { 'data-scope': 'popover', 'data-part': 'header' } })",
+    )
+    expect(api).toContain('  Header: PopoverHeader,')
+  })
+
   test('a slotted component imports styled only for parts outside the anatomy', () => {
     const { primitives } = generate({
       key: 'switch',

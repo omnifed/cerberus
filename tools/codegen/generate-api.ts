@@ -29,6 +29,7 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     arkMembers,
     providers,
     memberSlots,
+    elementParts,
     primitives: parts,
     rootProvider,
     description,
@@ -44,6 +45,9 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     const ark = `Ark${arkName}`
     let primitivesCode = `${GENERATED_HEADER}'use client'\n\n`
     primitivesCode += `import { ${arkName} as ${ark} } from '@ark-ui/react/${arkKey}'\n`
+    if (Object.keys(elementParts).length > 0) {
+      primitivesCode += `import { ark } from '@ark-ui/react/factory'\n`
+    }
     // Members outside the anatomy have no recipe slot; without a recipe nothing does.
     // Those get Panda's `styled()`, not `cerberus()`: Ark parts handle `asChild`
     // themselves, and a second `asChild` layer would skip the part (and the context
@@ -111,6 +115,16 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
       })),
     ]
 
+    // Cerberus recipe slots outside the Ark anatomy (Popover.Header…), with the same
+    // data-scope/data-part attributes as the Ark parts around them
+    for (const [slot, element] of Object.entries(elementParts)) {
+      const attrs = `{ 'data-scope': '${arkKey}', 'data-part': '${toKebabCase(slot)}' }`
+      members.push({
+        exportKey: capitalize(slot),
+        code: `withContext(ark.${element}, '${slot}', { defaultProps: ${attrs} })`,
+      })
+    }
+
     for (const { exportKey, code } of members) {
       const partName = `${name}${exportKey}`
       primitivesCode += `// ${partName} -----------------------------------------------------\n\n`
@@ -150,7 +164,11 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     }
   }
 
-  const members = [...parts.map(capitalize), ...(isArkUI ? arkMembers : [])]
+  const members = [
+    ...parts.map(capitalize),
+    ...(isArkUI ? arkMembers : []),
+    ...(isArkUI ? Object.keys(elementParts).map(capitalize) : []),
+  ]
   if (members.length > 0) {
     apiCode += `import {\n`
     for (const member of members) {
@@ -214,6 +232,10 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
               ? `Exposes the ${name} ${member === 'Context' ? '' : `${toKebabCase(member.replace(/Context$/, '')).replace(/-/g, ' ')} `}state to a render function.`
               : `The ${toKebabCase(member).replace(/-/g, ' ')} element of the ${name} component. It has no recipe slot.`
     jsDoc += ` * | \`${member}\` | Primitive | ${desc} |\n`
+  }
+
+  for (const slot of isArkUI ? Object.keys(elementParts) : []) {
+    jsDoc += ` * | \`${capitalize(slot)}\` | Primitive | The ${toKebabCase(slot).replace(/-/g, ' ')} element of the ${name} component (a Cerberus recipe slot outside the Ark anatomy). |\n`
   }
 
   for (const abs of abstractions) {
