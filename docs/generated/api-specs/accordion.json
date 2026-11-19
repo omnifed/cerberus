@@ -39,6 +39,12 @@
       "description": "The root container of the Accordion component.",
       "dataScope": "accordion",
       "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        }
+      ],
       "props": [
         {
           "name": "size",
@@ -83,6 +89,7 @@
           "name": "defaultValue",
           "type": "string[]",
           "required": false,
+          "defaultValue": "[]",
           "description": "The initial value of the expanded accordion items. Use when you don't need to control the value of the accordion."
         },
         {
@@ -161,6 +168,24 @@
       "description": "The item primitive part of the Accordion component.",
       "dataScope": "accordion",
       "dataPart": "item",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-focus",
+          "presence": true
+        },
+        {
+          "name": "data-disabled",
+          "presence": true
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        }
+      ],
       "props": [
         {
           "name": "value",
@@ -204,6 +229,34 @@
       "description": "The item-trigger primitive part of the Accordion component.",
       "dataScope": "accordion",
       "dataPart": "item-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-controls"
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        },
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-focus",
+          "presence": true
+        },
+        {
+          "name": "data-ownedby"
+        }
+      ],
+      "keyboard": [
+        "ArrowDown",
+        "ArrowUp",
+        "ArrowRight",
+        "ArrowLeft",
+        "Home",
+        "End"
+      ],
       "props": [
         {
           "name": "asChild",
@@ -235,6 +288,24 @@
       "description": "The item-content primitive part of the Accordion component.",
       "dataScope": "accordion",
       "dataPart": "item-content",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-disabled",
+          "presence": true
+        },
+        {
+          "name": "data-focus",
+          "presence": true
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        }
+      ],
       "props": [
         {
           "name": "asChild",
@@ -266,6 +337,24 @@
       "description": "The item-indicator primitive part of the Accordion component.",
       "dataScope": "accordion",
       "dataPart": "item-indicator",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-disabled",
+          "presence": true
+        },
+        {
+          "name": "data-focus",
+          "presence": true
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        }
+      ],
       "props": [
         {
           "name": "asChild",

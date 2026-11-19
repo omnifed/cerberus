@@ -38,7 +38,8 @@
           "name": "icon",
           "type": "ReactNode",
           "required": false,
-          "description": ""
+          "description": "",
+          "deprecated": "**THIS WILL BE REMOVED IN v3**. Use `slots` instead."
         }
       ]
     },

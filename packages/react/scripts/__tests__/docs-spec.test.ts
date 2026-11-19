@@ -56,6 +56,27 @@ describe('baseline prop counts never regress', () => {
     ])
   })
 
+  test('primitives carry data attributes, keys and machine defaults from Zag', () => {
+    expect(part('accordion', 'Accordion.Item').dataAttributes).toEqual([
+      { name: 'data-state', values: ['open', 'closed'] },
+      { name: 'data-focus', presence: true },
+      { name: 'data-disabled', presence: true },
+      { name: 'data-orientation', reflects: 'orientation' },
+    ])
+    expect(part('accordion', 'Accordion.ItemTrigger').keyboard).toEqual([
+      'ArrowDown',
+      'ArrowUp',
+      'ArrowRight',
+      'ArrowLeft',
+      'Home',
+      'End',
+    ])
+    const defaultValue = part('accordion', 'Accordion.Root').props.find(
+      (p) => p.name === 'defaultValue',
+    )
+    expect(defaultValue?.defaultValue).toBe('[]')
+  })
+
   test('Accordion.Root resolves Zag props with JSDoc and defaults', () => {
     const props = part('accordion', 'Accordion.Root').props
     const multiple = props.find((p) => p.name === 'multiple')

@@ -140,6 +140,12 @@
       "description": "The image primitive part of the Avatar component.",
       "dataScope": "avatar",
       "dataPart": "image",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["visible", "hidden"]
+        }
+      ],
       "props": [
         {
           "name": "asChild",
@@ -171,6 +177,12 @@
       "description": "The fallback primitive part of the Avatar component.",
       "dataScope": "avatar",
       "dataPart": "fallback",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["hidden", "visible"]
+        }
+      ],
       "props": [
         {
           "name": "asChild",
