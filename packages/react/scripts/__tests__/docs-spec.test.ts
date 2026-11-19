@@ -1,10 +1,10 @@
 import { describe, expect, test } from 'bun:test'
 import { config } from '../configs'
-import { Diagnostics } from '../core/diagnostics'
 import {
   buildComponentDocSpec,
-  type ComponentDocSpec,
-} from '../generate-docs-spec'
+  createSpecBuilderContext,
+} from '../docs/spec-builder'
+import type { ComponentDocSpec } from '../docs/types'
 
 /**
  * Integration tests against the real installed Ark UI / Zag.js / Panda sources.
@@ -12,11 +12,11 @@ import {
  * resolves shows up as a reviewable snapshot diff (`bun test scripts -u` to accept).
  */
 
-const specs = new Map<string, ComponentDocSpec>()
-const diagnostics = new Diagnostics()
-for (const c of config) {
-  specs.set(c.key, await buildComponentDocSpec(c, diagnostics))
-}
+const ctx = createSpecBuilderContext()
+const { diagnostics } = ctx
+const specs = new Map<string, ComponentDocSpec>(
+  config.map((c) => [c.key, buildComponentDocSpec(c, ctx)]),
+)
 
 function part(key: string, exportName: string) {
   const found = specs.get(key)?.parts.find((p) => p.exportName === exportName)
