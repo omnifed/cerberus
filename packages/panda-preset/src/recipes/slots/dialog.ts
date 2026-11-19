@@ -98,12 +98,9 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
       textOverflow: 'ellipsis',
       w: 'full',
     },
-    closeTrigger: {
-      position: 'absolute',
-      right: 'md',
-      top: 'md',
-      zIndex: 'decorator',
-    },
+    // Unstyled: footer Close/Cancel buttons use it too. The corner placement lives
+    // on the Dialog.CloseIconTrigger abstraction
+    closeTrigger: {},
   },
 
   variants: {

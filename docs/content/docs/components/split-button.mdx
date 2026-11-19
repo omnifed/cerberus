@@ -10,7 +10,7 @@ order: 33
 ## Import
 
 ```ts
-import { SplitButton, MenuItem } from '@cerberus/react'
+import { Menu, SplitButton } from '@cerberus/react'
 ```
 
 ## Basic Usage
@@ -55,14 +55,14 @@ The SplitButton accepts all standard `Button` props for the primary action butto
 
 The SplitButton component is built using the following primitive components:
 
-| Component     | Description                                                     |
-| ------------- | --------------------------------------------------------------- |
-| `ButtonGroup` | Groups the primary button and dropdown trigger together         |
-| `Button`      | The primary action button                                       |
-| `Menu`        | The dropdown menu container. **Renders within parent context.** |
-| `MenuTrigger` | The dropdown trigger (IconButton)                               |
-| `MenuContent` | The dropdown menu content container                             |
-| `MenuItem`    | Individual menu items within the dropdown                       |
+| Component           | Description                                                     |
+| ------------------- | --------------------------------------------------------------- |
+| `ButtonGroup`       | Groups the primary button and dropdown trigger together         |
+| `Button`            | The primary action button                                       |
+| `Menu`              | The dropdown menu container. **Renders within parent context.** |
+| `Menu.Trigger`      | The dropdown trigger (IconButton)                               |
+| `Menu.ContentGroup` | The dropdown menu content container                             |
+| `Menu.Item`         | Individual menu items within the dropdown                       |
 
 ## API
 
@@ -70,10 +70,10 @@ The SplitButton component is built using the following primitive components:
 
 The `SplitButton` component accepts the following props along with the same props as the [`Button`](/docs/components/button) component:
 
-| Name       | Default | Description                                    |
-| ---------- | ------- | ---------------------------------------------- |
-| children   |         | MenuItem components to display in the dropdown |
-| actionText |         | The text for the primary action button         |
+| Name       | Default | Description                                     |
+| ---------- | ------- | ----------------------------------------------- |
+| children   |         | Menu.Item components to display in the dropdown |
+| actionText |         | The text for the primary action button          |
 
 The SplitButton component internally uses:
 
@@ -82,9 +82,9 @@ The SplitButton component internally uses:
 - [Menu](https://cerberus.digitalu.design/docs/components/menu) for the dropdown functionality
 - [IconButton](https://cerberus.digitalu.design/docs/components/icon-button) for the dropdown trigger
 
-### MenuItem
+### Menu.Item
 
-Use MenuItem components as children of SplitButton to define the available actions in the dropdown menu. See the [Menu documentation](https://cerberus.digitalu.design/docs/components/menu) for more details on MenuItem props.
+Use Menu.Item components as children of SplitButton to define the available actions in the dropdown menu. See the [Menu documentation](https://cerberus.digitalu.design/docs/components/menu) for more details on Menu.Item props.
 
 <NoteAdmonition description="The SplitButton component uses an attached ButtonGroup layout to ensure the primary button and dropdown trigger appear as a single unified control." />
 ```

@@ -2,14 +2,7 @@
 
 import { styled } from '@/styled-system/jsx'
 import { Logout } from '@carbon/icons-react'
-import {
-  Button,
-  Menu,
-  MenuContent,
-  MenuItem,
-  MenuSeparator,
-  MenuTrigger,
-} from '@cerberus-design/react'
+import { Button, Menu } from '@cerberus-design/react'
 import Link from 'next/link'
 
 const StyledLink = styled(Link)
@@ -17,18 +10,18 @@ const StyledLink = styled(Link)
 export function NavDemo() {
   return (
     <Menu>
-      <MenuTrigger>
+      <Menu.Trigger asChild>
         <Button>Nav Menu</Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem value="item_1" asChild>
+      </Menu.Trigger>
+      <Menu.ContentGroup>
+        <Menu.Item value="item_1" asChild>
           <Link href="/">Item 1</Link>
-        </MenuItem>
-        <MenuItem value="item_2" asChild>
+        </Menu.Item>
+        <Menu.Item value="item_2" asChild>
           <Link href="/">Item 2</Link>
-        </MenuItem>
-        <MenuSeparator />
-        <MenuItem value="item_3" asChild>
+        </Menu.Item>
+        <Menu.Separator />
+        <Menu.Item value="item_3" asChild>
           <StyledLink
             alignItems="center"
             color="danger.text.initial"
@@ -41,8 +34,8 @@ export function NavDemo() {
             Sign out
             <Logout />
           </StyledLink>
-        </MenuItem>
-      </MenuContent>
+        </Menu.Item>
+      </Menu.ContentGroup>
     </Menu>
   )
 }

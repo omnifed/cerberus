@@ -1,16 +1,7 @@
 'use client'
 
 import { Stack } from '@/styled-system/jsx'
-import {
-  Button,
-  Dialog,
-  DialogCloseIconTrigger,
-  DialogDescription,
-  DialogHeading,
-  DialogRootProvider,
-  Text,
-  useDialog,
-} from '@cerberus-design/react'
+import { Button, Dialog, Text, useDialog } from '@cerberus-design/react'
 
 export function RootProviderDemo() {
   const dialog = useDialog()
@@ -21,19 +12,19 @@ export function RootProviderDemo() {
         Dialog is {dialog.open ? 'open' : 'closed'}
       </Button>
 
-      <DialogRootProvider value={dialog}>
-        <Dialog size="auto">
-          <DialogCloseIconTrigger />
+      <Dialog.RootProvider size="auto" value={dialog}>
+        <Dialog>
+          <Dialog.CloseIconTrigger />
           <Stack gap="md" w="full">
-            <DialogHeading asChild>
+            <Dialog.Title asChild>
               <Text textStyle="heading-sm">Controlled Externally</Text>
-            </DialogHeading>
-            <DialogDescription maxW="prose">
+            </Dialog.Title>
+            <Dialog.Description maxW="prose">
               This dialog is controlled via the useDialog hook.
-            </DialogDescription>
+            </Dialog.Description>
           </Stack>
         </Dialog>
-      </DialogRootProvider>
+      </Dialog.RootProvider>
     </>
   )
 }

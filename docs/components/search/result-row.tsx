@@ -1,7 +1,7 @@
 'use client'
 
 import { HStack } from '@/styled-system/jsx'
-import { DialogCloseTrigger } from '@cerberus-design/react'
+import { Dialog } from '@cerberus-design/react'
 import { useStore } from '@cerberus-design/signals'
 import { type MouseEvent, type PropsWithChildren } from 'react'
 import { CopyButton } from '../example/copy-button.client'
@@ -33,14 +33,19 @@ export function ResultRow(props: PropsWithChildren<Props>) {
   const _canShare = typeof navigator !== 'undefined' && !!navigator.share
 
   return (
-    <DialogCloseTrigger asChild>
-      <StyledLink data-search-item href={props.href} w="full" {...props.linkProps}>
+    <Dialog.CloseTrigger asChild>
+      <StyledLink
+        data-search-item
+        href={props.href}
+        w="full"
+        {...props.linkProps}
+      >
         <HStack justify="space-between" w="full">
           <HStack gap="sm">{props.children}</HStack>
 
           <CopyButton content={absoluteUrl} onClick={handleCopy} />
         </HStack>
       </StyledLink>
-    </DialogCloseTrigger>
+    </Dialog.CloseTrigger>
   )
 }

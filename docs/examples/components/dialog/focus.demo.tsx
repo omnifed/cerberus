@@ -1,37 +1,26 @@
 'use client'
 
 import { Stack } from '@/styled-system/jsx'
-import {
-  Button,
-  cerberus,
-  Dialog,
-  DialogCloseIconTrigger,
-  DialogDescription,
-  DialogHeading,
-  DialogProvider,
-  DialogTrigger,
-  Field,
-  Input,
-} from '@cerberus-design/react'
+import { Button, cerberus, Dialog, Field, Input } from '@cerberus-design/react'
 import { useRef } from 'react'
 
 export function InitialFocusDemo() {
   const inputRef = useRef<HTMLInputElement>(null)
 
   return (
-    <DialogProvider initialFocusEl={() => inputRef.current}>
-      <DialogTrigger asChild>
+    <Dialog.Root size="auto" initialFocusEl={() => inputRef.current}>
+      <Dialog.Trigger asChild>
         <Button>open dialog</Button>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
-      <Dialog size="auto">
-        <DialogCloseIconTrigger />
+      <Dialog>
+        <Dialog.CloseIconTrigger />
 
         <Stack gap="md" w="full">
-          <DialogHeading>Edit Profile</DialogHeading>
-          <DialogDescription maxW="prose">
+          <Dialog.Title>Edit Profile</Dialog.Title>
+          <Dialog.Description maxW="prose">
             The first input will be focused when the dialog opens.
-          </DialogDescription>
+          </Dialog.Description>
 
           <cerberus.form mt="md" w="full">
             <Stack gap="md" w="full">
@@ -45,6 +34,6 @@ export function InitialFocusDemo() {
           </cerberus.form>
         </Stack>
       </Dialog>
-    </DialogProvider>
+    </Dialog.Root>
   )
 }

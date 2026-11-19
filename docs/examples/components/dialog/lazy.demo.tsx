@@ -1,36 +1,28 @@
 'use client'
 
 import { Stack } from '@/styled-system/jsx'
-import {
-  Button,
-  Dialog,
-  DialogCloseIconTrigger,
-  DialogDescription,
-  DialogHeading,
-  DialogProvider,
-  DialogTrigger,
-  Text,
-} from '@cerberus-design/react'
+import { Button, Dialog, Text } from '@cerberus-design/react'
 
 export function LazyDemo() {
   return (
-    <DialogProvider lazyMount unmountOnExit>
-      <DialogTrigger asChild>
+    <Dialog.Root size="auto" lazyMount unmountOnExit>
+      <Dialog.Trigger asChild>
         <Button>open dialog</Button>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
-      <Dialog size="auto">
-        <DialogCloseIconTrigger />
+      <Dialog>
+        <Dialog.CloseIconTrigger />
 
         <Stack gap="md" w="full">
-          <DialogHeading asChild>
+          <Dialog.Title asChild>
             <Text textStyle="heading-sm">Lazy Loaded</Text>
-          </DialogHeading>
-          <DialogDescription maxW="prose">
-            This dialog content is only mounted when opened and unmounts on close.
-          </DialogDescription>
+          </Dialog.Title>
+          <Dialog.Description maxW="prose">
+            This dialog content is only mounted when opened and unmounts on
+            close.
+          </Dialog.Description>
         </Stack>
       </Dialog>
-    </DialogProvider>
+    </Dialog.Root>
   )
 }

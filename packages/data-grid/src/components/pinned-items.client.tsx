@@ -1,6 +1,6 @@
 'use client'
 
-import { MenuItem, useCerberusContext } from '@cerberus-design/react'
+import { Menu, useCerberusContext } from '@cerberus-design/react'
 import { useRead } from '@cerberus-design/signals'
 import { type ElementType, type ReactNode } from 'react'
 import { HStack } from 'styled-system/jsx'
@@ -47,12 +47,12 @@ function UnpinRightItem() {
   const { icons } = useCerberusContext()
   const Icon = icons.pinRightFilled
   return (
-    <MenuItem value={FEATURE_VALUES.unpinRight}>
+    <Menu.Item value={FEATURE_VALUES.unpinRight}>
       <HStack gap="sm" w="full">
         <Icon />
         Unpin Right
       </HStack>
-    </MenuItem>
+    </Menu.Item>
   )
 }
 
@@ -60,12 +60,12 @@ function UnpinLeftItem() {
   const { icons } = useCerberusContext()
   const Icon = icons.pinLeftFilled
   return (
-    <MenuItem value={FEATURE_VALUES.unpinLeft}>
+    <Menu.Item value={FEATURE_VALUES.unpinLeft}>
       <HStack gap="sm" w="full">
         <Icon />
         Unpin Left
       </HStack>
-    </MenuItem>
+    </Menu.Item>
   )
 }
 
@@ -73,12 +73,12 @@ function PinRightItem() {
   const { icons } = useCerberusContext()
   const Icon = icons.pinRight
   return (
-    <MenuItem value={FEATURE_VALUES.pinRight}>
+    <Menu.Item value={FEATURE_VALUES.pinRight}>
       <HStack gap="sm" w="full">
         <Icon />
         Pin Right
       </HStack>
-    </MenuItem>
+    </Menu.Item>
   )
 }
 
@@ -86,11 +86,11 @@ function PinLeftItem() {
   const { icons } = useCerberusContext()
   const Icon = icons.pinLeft
   return (
-    <MenuItem value={FEATURE_VALUES.pinLeft}>
+    <Menu.Item value={FEATURE_VALUES.pinLeft}>
       <HStack gap="sm" w="full">
         <Icon />
         Pin Left
       </HStack>
-    </MenuItem>
+    </Menu.Item>
   )
 }

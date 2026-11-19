@@ -1,36 +1,28 @@
 'use client'
 
 import { Box, Scrollable, Stack } from '@/styled-system/jsx'
-import {
-  Button,
-  cerberus,
-  Dialog,
-  DialogCloseIconTrigger,
-  DialogCloseTrigger,
-  DialogHeading,
-  DialogProvider,
-  DialogTrigger,
-  For,
-} from '@cerberus-design/react'
+import { Button, cerberus, Dialog, For } from '@cerberus-design/react'
 
 export function InsideScrollDemo() {
   return (
-    <DialogProvider>
-      <DialogTrigger asChild>
+    <Dialog.Root size="sm">
+      <Dialog.Trigger asChild>
         <Button>open dialog</Button>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
-      <Dialog size="sm">
-        <DialogCloseIconTrigger />
+      <Dialog>
+        <Dialog.CloseIconTrigger />
 
         <Stack gap="md" w="full">
-          <DialogHeading>Dialog Title</DialogHeading>
+          <Dialog.Title>Dialog Title</Dialog.Title>
           <Scrollable w="full" maxH="min(32rem, calc(100vh - 4rem))">
             <Stack gap="md" w="full">
               <For each={CONTENT_SECTIONS}>
                 {(section) => (
                   <cerberus.section key={section.title} w="full">
-                    <cerberus.h3 textStyle="heading-2xs">{section.title}</cerberus.h3>
+                    <cerberus.h3 textStyle="heading-2xs">
+                      {section.title}
+                    </cerberus.h3>
                     <cerberus.small color="page.text.100" textStyle="body-sm">
                       {section.body}
                     </cerberus.small>
@@ -42,12 +34,12 @@ export function InsideScrollDemo() {
         </Stack>
 
         <Box mt="md" w="full">
-          <DialogCloseTrigger asChild>
+          <Dialog.CloseTrigger asChild>
             <Button>Close</Button>
-          </DialogCloseTrigger>
+          </Dialog.CloseTrigger>
         </Box>
       </Dialog>
-    </DialogProvider>
+    </Dialog.Root>
   )
 }
 

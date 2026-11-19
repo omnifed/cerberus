@@ -1,6 +1,6 @@
 'use client'
 
-import { MenuItem, Show, useCerberusContext } from '@cerberus-design/react'
+import { Menu, Show, useCerberusContext } from '@cerberus-design/react'
 import { createComputed, useRead } from '@cerberus-design/signals'
 import { HStack } from 'styled-system/jsx'
 import { useDataGridContext } from '../context.client'
@@ -26,20 +26,20 @@ export function FilterMenuItem<TData>(props: FilterMenuItemProps<TData>) {
     <Show
       when={hasFilter()}
       fallback={
-        <MenuItem value="filter">
+        <Menu.Item value="filter">
           <HStack gap="sm" w="full">
             <FilterIcon />
             Filter
           </HStack>
-        </MenuItem>
+        </Menu.Item>
       }
     >
-      <MenuItem value="clear-filter">
+      <Menu.Item value="clear-filter">
         <HStack gap="sm" w="full">
           <ClearIcon />
           Clear Filter
         </HStack>
-      </MenuItem>
+      </Menu.Item>
     </Show>
   )
 }
