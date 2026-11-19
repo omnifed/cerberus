@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test'
-import { config } from '../configs'
+import { loadConfigs } from '../core/configs'
+import { loadManifest } from '../core/manifest'
 import {
   buildComponentDocSpec,
   createSpecBuilderContext,
@@ -14,8 +15,13 @@ import type { ComponentDocSpec } from '../docs/types'
 
 const ctx = createSpecBuilderContext()
 const { diagnostics } = ctx
+const entries = loadManifest(
+  await loadConfigs(),
+  diagnostics,
+  ctx.resolver.modules,
+)
 const specs = new Map<string, ComponentDocSpec>(
-  config.map((c) => [c.key, buildComponentDocSpec(c, ctx)]),
+  entries.map((e) => [e.key, buildComponentDocSpec(e, ctx)]),
 )
 
 function part(key: string, exportName: string) {
@@ -36,6 +42,18 @@ describe('baseline prop counts never regress', () => {
     ['carousel', 'Carousel.Root', 23],
   ])('%s › %s has at least %i props', (key, exportName, min) => {
     expect(part(key, exportName).props.length).toBeGreaterThanOrEqual(min)
+  })
+
+  test('abstractions link to the primitive whose props they inherit', () => {
+    expect(part('carousel', 'Carousel.El').inherits).toEqual(['Carousel.Root'])
+    expect(part('accordion', 'Accordion.ItemGroup').inherits).toEqual([
+      'Accordion.Item',
+    ])
+    // Button.Icon renders no Cerberus primitive, so it accepts no `css`/`unstyled`
+    expect(part('button', 'Button.Icon').props.map((p) => p.name)).toEqual([
+      'children',
+      'ref',
+    ])
   })
 
   test('Accordion.Root resolves Zag props with JSDoc and defaults', () => {

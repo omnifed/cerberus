@@ -49,20 +49,6 @@
           "type": "RefObject<HTMLDivElement>",
           "required": true,
           "description": ""
-        },
-        {
-          "name": "unstyled",
-          "type": "boolean",
-          "required": false,
-          "defaultValue": "false",
-          "description": "Strips Cerberus PandaCSS recipe classes from this abstraction layer."
-        },
-        {
-          "name": "css",
-          "type": "SystemStyleObject",
-          "required": false,
-          "defaultValue": "undefined",
-          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props are also accepted."
         }
       ]
     },
@@ -77,20 +63,6 @@
           "type": "boolean",
           "required": false,
           "description": "When true, replaces the `Button.Indicator` icon with a Spinner."
-        },
-        {
-          "name": "unstyled",
-          "type": "boolean",
-          "required": false,
-          "defaultValue": "false",
-          "description": "Strips Cerberus PandaCSS recipe classes from this abstraction layer."
-        },
-        {
-          "name": "css",
-          "type": "SystemStyleObject",
-          "required": false,
-          "defaultValue": "undefined",
-          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props are also accepted."
         }
       ]
     },
@@ -99,26 +71,13 @@
       "exportName": "Button.El",
       "kind": "abstraction",
       "description": "An abstraction for using the Provider and Button.Root together",
+      "inherits": ["Button.Root"],
       "props": [
         {
           "name": "pending",
           "type": "boolean",
           "required": false,
           "description": "When true, replaces the `Button.Indicator` icon with a Spinner."
-        },
-        {
-          "name": "unstyled",
-          "type": "boolean",
-          "required": false,
-          "defaultValue": "false",
-          "description": "Strips Cerberus PandaCSS recipe classes from this abstraction layer."
-        },
-        {
-          "name": "css",
-          "type": "SystemStyleObject",
-          "required": false,
-          "defaultValue": "undefined",
-          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props are also accepted."
         }
       ]
     },

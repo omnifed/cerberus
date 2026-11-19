@@ -1,7 +1,11 @@
 import { join, relative } from 'node:path'
+import { z } from 'zod'
 import type { GeneratedFile } from '../core/emit'
 import { DOCS_SPEC_OUT_DIR, SCRIPTS_DIR } from '../core/paths'
+import { ComponentDocSpecSchema } from './schema'
 import type { ComponentDocSpec } from './types'
+
+export const SCHEMA_FILE_NAME = 'component-doc-spec.schema.json'
 
 export function specJsonFile(spec: ComponentDocSpec): GeneratedFile {
   return {
@@ -12,10 +16,10 @@ export function specJsonFile(spec: ComponentDocSpec): GeneratedFile {
 
 /** `index.ts` mapping each component key to its imported JSON spec. */
 export function barrelFile(keys: string[]): GeneratedFile {
-  // The docs app imports the spec types through the generator's public entry
+  // A Bun-free module, so the docs app can type-check against it
   const typesImport = relative(
     DOCS_SPEC_OUT_DIR,
-    join(SCRIPTS_DIR, 'generate-docs-spec'),
+    join(SCRIPTS_DIR, 'docs', 'types'),
   )
   const varName = (key: string) => `${key.replace(/-/g, '_')}Spec`
 
@@ -32,5 +36,16 @@ export function barrelFile(keys: string[]): GeneratedFile {
   return {
     path: join(DOCS_SPEC_OUT_DIR, 'index.ts'),
     content: lines.join('\n'),
+  }
+}
+
+/** JSON Schema for the spec files, for editors, CI and agents. */
+export function schemaFile(): GeneratedFile {
+  const schema = z.toJSONSchema(ComponentDocSpecSchema, {
+    target: 'draft-2020-12',
+  })
+  return {
+    path: join(DOCS_SPEC_OUT_DIR, SCHEMA_FILE_NAME),
+    content: `${JSON.stringify({ title: 'ComponentDocSpec', ...schema }, null, 2)}\n`,
   }
 }

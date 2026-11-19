@@ -1,9 +1,8 @@
 import { carouselAnatomy } from '@ark-ui/react/anatomy'
+import { defineComponent } from '../manifest'
 
-export const carouselConfig = {
-  name: 'Carousel',
+export const carouselConfig = defineComponent({
   key: 'carousel',
-  isArkUI: true,
   anatomy: carouselAnatomy,
   description: `
 The Carousel component is a versatile UI element that allows users to navigate through a slideshow style set of "pages" which contain images.
@@ -19,4 +18,4 @@ The Carousel component can be used in various contexts, mostly pertaining to mar
       types: ['CarouselProps'],
     },
   ],
-}
+})

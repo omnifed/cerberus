@@ -1,9 +1,8 @@
 import { buttonAnatomy } from '@cerberus/panda-preset'
+import { defineComponent } from '../manifest'
 
-export const buttonConfig = {
-  name: 'Button',
+export const buttonConfig = defineComponent({
   key: 'button',
-  isArkUI: false,
   anatomy: buttonAnatomy,
   types: ['ButtonRootProps', 'IconButtonRootProps', 'ButtonGroupProps'],
   description: `
@@ -38,4 +37,4 @@ individual primitives of the Button component or style props.
       isDefaultExport: true,
     },
   ],
-}
+})

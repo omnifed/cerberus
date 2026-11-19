@@ -179,6 +179,7 @@
     "generate:api": "bun scripts/generate-api.ts",
     "generate:docs": "bun scripts/generate-docs-spec.ts",
     "generate:check": "bun scripts/generate-api.ts --check && bun scripts/generate-docs-spec.ts --check",
+    "scaffold": "bun scripts/scaffold.ts",
     "test:scripts": "bun test scripts"
   },
   "dependencies": {
@@ -198,7 +199,8 @@
     "react": "catalog:jsx",
     "react-dom": "catalog:jsx",
     "vite": "catalog:jsx",
-    "vite-plugin-dts": "catalog:jsx"
+    "vite-plugin-dts": "catalog:jsx",
+    "zod": "^4.6.7"
   },
   "peerDependencies": {
     "@pandacss/dev": "*",

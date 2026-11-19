@@ -20,6 +20,7 @@
       "exportName": "Admonition.El",
       "kind": "abstraction",
       "description": "An abstraction for rendering all the primitive slots",
+      "inherits": ["Admonition.Root"],
       "props": [
         {
           "name": "heading",
@@ -38,20 +39,6 @@
           "type": "ReactNode",
           "required": false,
           "description": ""
-        },
-        {
-          "name": "unstyled",
-          "type": "boolean",
-          "required": false,
-          "defaultValue": "false",
-          "description": "Strips Cerberus PandaCSS recipe classes from this abstraction layer."
-        },
-        {
-          "name": "css",
-          "type": "SystemStyleObject",
-          "required": false,
-          "defaultValue": "undefined",
-          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props are also accepted."
         }
       ]
     },

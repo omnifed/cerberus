@@ -15,7 +15,7 @@
     "lint": "pnpm lint:npmPackages && pnpm lint:jsrPackages && pnpm lint:tests",
     "test": "pnpm --filter tests run test",
     "ci:version": "changeset version && bun ./scripts/src/bump-versions.mjs --stable && pnpm install --no-frozen-lockfile",
-    "gen:component": "bun ./scripts/src/bootstrap-component.ts",
+    "gen:component": "pnpm --filter @cerberus-design/react run scaffold",
     "generate:docs": "pnpm --filter @cerberus-design/react run generate:docs",
     "start:docs": "pnpm --filter docs run dev",
     "watch:react": "pnpm --filter @cerberus-design/react run -w watch",

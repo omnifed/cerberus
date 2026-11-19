@@ -1,7 +1,7 @@
 import { avatarAnatomy } from '@ark-ui/react/anatomy'
+import { defineComponent } from '../manifest'
 
-export const avatarConfig = {
-  name: 'Avatar',
+export const avatarConfig = defineComponent({
   key: 'avatar',
   anatomy: avatarAnatomy,
   description: `
@@ -18,4 +18,4 @@ The Avatar component can be used in various contexts, such as profiles, App Bars
       isDefaultExport: true,
     },
   ],
-}
+})

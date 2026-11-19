@@ -1,9 +1,8 @@
 import { admonitionAnatomy } from '@cerberus/panda-preset'
+import { defineComponent } from '../manifest'
 
-export const admonitionConfig = {
-  name: 'Admonition',
+export const admonitionConfig = defineComponent({
   key: 'admonition',
-  isArkUI: false,
   anatomy: admonitionAnatomy,
   types: [
     'AdmonitionRootProps',
@@ -26,4 +25,4 @@ The Admonition component can be used in various contexts, such as displaying ale
       isDefaultExport: true,
     },
   ],
-}
+})

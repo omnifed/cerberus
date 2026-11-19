@@ -1,0 +1,162 @@
+{
+  "title": "ComponentDocSpec",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "description": {
+      "type": "string"
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "values": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defaultValue": {
+            "type": "string"
+          },
+          "allowsBoolean": {
+            "description": "Panda `allowsBoolean`: also accepts `true`/`false`",
+            "type": "boolean"
+          }
+        },
+        "required": ["name", "values"],
+        "additionalProperties": false
+      }
+    },
+    "parts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Member on the compound component, e.g. `Root`"
+          },
+          "exportName": {
+            "type": "string",
+            "minLength": 1,
+            "description": "e.g. `Accordion.Root`"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["primitive", "abstraction"]
+          },
+          "description": {
+            "type": "string"
+          },
+          "dataScope": {
+            "description": "`data-scope` attribute value",
+            "type": "string"
+          },
+          "dataPart": {
+            "description": "`data-part` attribute value",
+            "type": "string"
+          },
+          "inherits": {
+            "description": "Parts (by `exportName`) whose props this part also accepts",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "props": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z_$][\\w$]*$"
+                },
+                "type": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "TypeScript type, as written in source"
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "defaultValue": {
+                  "description": "Source text of the default",
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "required": ["name", "type", "required", "description"],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": ["name", "exportName", "kind", "description", "props"],
+        "additionalProperties": false
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "minLength": 1,
+          "description": "WAI-ARIA pattern name"
+        },
+        "apgUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "keyboard": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Key or chord, e.g. `Shift + Tab`"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": ["key", "description"],
+            "additionalProperties": false
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["pattern", "apgUrl", "keyboard"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["name", "key", "description", "variants", "parts"],
+  "additionalProperties": false,
+  "description": "API documentation for one Cerberus component"
+}

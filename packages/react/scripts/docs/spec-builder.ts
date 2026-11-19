@@ -1,16 +1,12 @@
 import { join, relative } from 'node:path'
 import { Diagnostics } from '../core/diagnostics'
-import {
-  anatomyParts,
-  capitalize,
-  partExportKey,
-  toKebabCase,
-} from '../core/naming'
-import { COMPONENTS_DIR, REACT_PKG_ROOT } from '../core/paths'
-import type { AbstractionConfig, ComponentConfig } from '../manifest'
+import type { ComponentEntry } from '../core/manifest'
+import { capitalize, partExportKey, toKebabCase } from '../core/naming'
+import { REACT_PKG_ROOT } from '../core/paths'
+import type { AbstractionConfig } from '../manifest'
 import { PandaVariants, variantToProp } from './panda'
 import { mergePropLists } from './resolver/prop-utils'
-import { TypeResolver } from './resolver/type-resolver'
+import { TypeResolver, type UnresolvedRef } from './resolver/type-resolver'
 import type { ComponentDocSpec, PartSpec, PropSpec } from './types'
 
 /** Props every Cerberus primitive accepts on top of its Ark/Zag props. */
@@ -41,26 +37,6 @@ const PRIMITIVE_PROPS: PropSpec[] = [
   },
 ]
 
-/** Props every Cerberus abstraction accepts. */
-const ABSTRACTION_PROPS: PropSpec[] = [
-  {
-    name: 'unstyled',
-    type: 'boolean',
-    required: false,
-    defaultValue: 'false',
-    description:
-      'Strips Cerberus PandaCSS recipe classes from this abstraction layer.',
-  },
-  {
-    name: 'css',
-    type: 'SystemStyleObject',
-    required: false,
-    defaultValue: 'undefined',
-    description:
-      'PandaCSS style object for custom atomic styling. All PandaCSS style props are also accepted.',
-  },
-]
-
 export interface SpecBuilderContext {
   resolver: TypeResolver
   variants: PandaVariants
@@ -69,12 +45,9 @@ export interface SpecBuilderContext {
 
 export function createSpecBuilderContext(
   diagnostics = new Diagnostics(),
+  resolver = new TypeResolver(),
 ): SpecBuilderContext {
-  return {
-    resolver: new TypeResolver(),
-    variants: new PandaVariants(),
-    diagnostics,
-  }
+  return { resolver, variants: new PandaVariants(), diagnostics }
 }
 
 /**
@@ -82,53 +55,49 @@ export function createSpecBuilderContext(
  * anatomy part. Every type that should resolve but doesn't is reported.
  */
 export function buildComponentDocSpec(
-  config: ComponentConfig,
+  entry: ComponentEntry,
   ctx: SpecBuilderContext = createSpecBuilderContext(),
 ): ComponentDocSpec {
-  const {
-    name,
-    key,
-    description,
-    isArkUI = true,
-    abstractions = [],
-    a11y,
-  } = config
-  const { resolver, diagnostics } = ctx
-
-  resolver.drainUnresolved()
-  const variants = ctx.variants.variantsFor(key, diagnostics)
-
-  const arkEntry = isArkUI
-    ? resolver.resolveModule(
-        `@ark-ui/react/${key}`,
-        join(REACT_PKG_ROOT, 'package.json'),
-      )
-    : null
-  if (isArkUI && !arkEntry) {
-    diagnostics.error(
-      key,
-      `Could not resolve declaration files for @ark-ui/react/${key}`,
-    )
-  }
+  ctx.resolver.drainUnresolved()
+  const variants = ctx.variants.variantsFor(
+    entry.recipe,
+    entry.key,
+    ctx.diagnostics,
+  )
+  const variantProps = variants.map(variantToProp)
 
   const parts: PartSpec[] = [
-    ...abstractions.map((abs) => buildAbstraction(config, abs, ctx)),
-    ...anatomyParts(config.anatomy).map((part) =>
-      buildPrimitive(config, part, arkEntry, variants.map(variantToProp), ctx),
+    ...entry.abstractions.map((abs) => buildAbstraction(entry, abs, ctx)),
+    ...entry.primitives.map((part) =>
+      buildPrimitive(entry, part, variantProps, ctx),
     ),
   ]
 
-  return { name, key, description: description.trim(), variants, parts, a11y }
+  return {
+    name: entry.name,
+    key: entry.key,
+    description: entry.description,
+    variants,
+    parts,
+    ...(entry.a11y ? { a11y: entry.a11y } : {}),
+  }
 }
 
+/**
+ * An abstraction documents its own props. Props it inherits from one of this
+ * component's primitives (`ComponentProps<typeof AccordionItem>`) are recorded in
+ * `inherits` instead of being copied, so `unstyled`/`css`/variants appear exactly where
+ * they are accepted.
+ */
 function buildAbstraction(
-  { name, key }: ComponentConfig,
+  entry: ComponentEntry,
   abs: AbstractionConfig,
   ctx: SpecBuilderContext,
 ): PartSpec {
+  const { name, key } = entry
   const { resolver, diagnostics } = ctx
   const subject = `${name}.${abs.name}`
-  const file = join(COMPONENTS_DIR, key, `${abs.file}.tsx`)
+  const file = join(entry.dir, `${abs.file}.tsx`)
   const candidates = [
     ...(abs.types ?? []),
     `${name}${abs.name}Props`,
@@ -137,11 +106,25 @@ function buildAbstraction(
     ...(abs.isDefaultExport ? [`${name}Props`] : []),
   ]
 
+  const primitiveByIdentifier = new Map(
+    entry.primitives.map((part) => [
+      `${name}${capitalize(part)}`,
+      `${name}.${partExportKey(part)}`,
+    ]),
+  )
+
   let props: PropSpec[] = []
+  const inherits = new Set<string>()
   const match = candidates.find((c) => resolver.lookupLocal(file, c))
   if (match) {
     props = resolver.resolveExpr(match, file)
-    reportUnresolved(ctx, key, subject)
+    reportUnresolved(ctx, key, subject, (ref) => {
+      const target = /typeof\s+([A-Za-z0-9_$]+)/.exec(ref.expr)?.[1]
+      const inherited = target && primitiveByIdentifier.get(target)
+      if (!inherited) return false
+      inherits.add(inherited)
+      return true
+    })
   } else {
     diagnostics.error(
       key,
@@ -154,17 +137,18 @@ function buildAbstraction(
     exportName: subject,
     kind: 'abstraction',
     description: abs.description,
-    props: mergePropLists(props, ABSTRACTION_PROPS),
+    ...(inherits.size > 0 ? { inherits: [...inherits] } : {}),
+    props,
   }
 }
 
 function buildPrimitive(
-  { name, key }: ComponentConfig,
+  entry: ComponentEntry,
   part: string,
-  arkEntry: string | null,
   variantProps: PropSpec[],
   ctx: SpecBuilderContext,
 ): PartSpec {
+  const { name, key, arkEntry } = entry
   const { resolver, diagnostics } = ctx
   const isRoot = part === 'root'
   const exportKey = partExportKey(part)
@@ -192,6 +176,17 @@ function buildPrimitive(
   // Recipe variants go on Root, where they cascade to every slot
   const ownProps = isRoot ? mergePropLists(variantProps, arkProps) : arkProps
 
+  if (isRoot && entry.rootProvider) {
+    // `withRootProvider` renders no element: no data attributes, `asChild` or `css`
+    return {
+      name: exportKey,
+      exportName: subject,
+      kind: 'primitive',
+      description: `Provides the ${name} context and recipe variants to its parts. Renders no element.`,
+      props: ownProps,
+    }
+  }
+
   return {
     name: exportKey,
     exportName: subject,
@@ -205,15 +200,20 @@ function buildPrimitive(
   }
 }
 
-/** Reports every reference the resolver gave up on while resolving `subject`. */
+/**
+ * Reports every reference the resolver gave up on while resolving `subject`.
+ * `handleOpaque` may claim an opaque reference (return `true`) so it isn't reported.
+ */
 function reportUnresolved(
   { resolver, diagnostics }: SpecBuilderContext,
   key: string,
   subject: string,
+  handleOpaque: (ref: UnresolvedRef) => boolean = () => false,
 ): void {
   for (const ref of resolver.drainUnresolved()) {
     const where = relative(REACT_PKG_ROOT, ref.file)
     if (ref.reason === 'opaque') {
+      if (handleOpaque(ref)) continue
       diagnostics.warn(
         key,
         `${subject}: inherited props from \`${ref.expr}\` (${where}) are not expanded`,
