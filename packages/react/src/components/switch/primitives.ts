@@ -39,3 +39,8 @@ export const SwitchThumb = withContext(ArkSwitch.Thumb, 'thumb')
 
 export type SwitchHiddenInputProps = ComponentProps<typeof SwitchHiddenInput>
 export const SwitchHiddenInput = styled(ArkSwitch.HiddenInput)
+
+// SwitchRootProvider -----------------------------------------------------
+
+export type SwitchRootProviderProps = ComponentProps<typeof SwitchRootProvider>
+export const SwitchRootProvider = withProvider(ArkSwitch.RootProvider, 'root')

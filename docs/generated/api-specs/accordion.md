@@ -140,6 +140,27 @@ Selector: `[data-scope="accordion"][data-part="item-indicator"]`
 | `data-focus` | Present when focused. |
 | `data-orientation` | Mirrors the `orientation` prop |
 
+### Accordion.RootProvider (primitive)
+
+The root container of the Accordion component, driven by state created with `useAccordion()`.
+
+Selector: `[data-scope="accordion"][data-part="root"]`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `size` | `'sm' \| 'lg'` | No | `'lg'` | PandaCSS recipe variant for size. |
+| `value` | `UseAccordionReturn` | Yes | — |  |
+| `lazyMount` | `boolean` | No | `false` | Whether to enable lazy mounting |
+| `unmountOnExit` | `boolean` | No | `false` | Whether to unmount on exit. |
+| `hideMode` | `HideMode` | No | `'display-none'` | How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode="hidden">`. Effects pause. Requires React 19+. |
+| `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
+| `unstyled` | `boolean` | No | `false` | Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes. |
+| `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
+
+| Data attribute | Value |
+| --- | --- |
+| `data-orientation` | Mirrors the `orientation` prop |
+
 ## Accessibility
 
 Follows the [Accordion WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).

@@ -390,6 +390,78 @@
           "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
         }
       ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Accordion.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Accordion component, driven by state created with `useAccordion()`.",
+      "dataScope": "accordion",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the accordion."
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'lg'",
+          "required": false,
+          "defaultValue": "'lg'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UseAccordionReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
     }
   ],
   "a11y": {

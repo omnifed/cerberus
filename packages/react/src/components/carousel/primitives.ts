@@ -95,3 +95,13 @@ export const CarouselAutoplayIndicator = withContext(
   ArkCarousel.AutoplayIndicator,
   'autoplayIndicator',
 )
+
+// CarouselRootProvider -----------------------------------------------------
+
+export type CarouselRootProviderProps = ComponentProps<
+  typeof CarouselRootProvider
+>
+export const CarouselRootProvider = withProvider(
+  ArkCarousel.RootProvider,
+  'root',
+)

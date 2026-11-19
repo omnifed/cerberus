@@ -143,6 +143,32 @@ The hidden-input primitive part of the Switch component. It has no recipe slot, 
 | `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
 | `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
 
+### Switch.RootProvider (primitive)
+
+The root container of the Switch component, driven by state created with `useSwitch()`.
+
+Selector: `[data-scope="switch"][data-part="root"]`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `size` | `'sm' \| 'lg'` | No | `'sm'` | PandaCSS recipe variant for size. |
+| `value` | `UseSwitchReturn` | Yes | `"on"` |  |
+| `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
+| `unstyled` | `boolean` | No | `false` | Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes. |
+| `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
+
+| Data attribute | Value |
+| --- | --- |
+| `data-active` | Present when active or pressed. |
+| `data-focus` | Present when focused. |
+| `data-focus-visible` | Present when focused with keyboard. |
+| `data-readonly` | Present when read-only. |
+| `data-hover` | Present when hovered. |
+| `data-disabled` | Present when disabled. |
+| `data-state` | `"checked"` \| `"unchecked"` |
+| `data-invalid` | Present when invalid. |
+| `data-required` | Present when required. |
+
 ## Accessibility
 
 Follows the [Switch WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/switch/).

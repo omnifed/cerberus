@@ -17,6 +17,7 @@ import {
   CarouselAutoplayTrigger,
   CarouselProgressText,
   CarouselAutoplayIndicator,
+  CarouselRootProvider,
 } from './primitives'
 
 export type {
@@ -31,6 +32,7 @@ export type {
   CarouselAutoplayTriggerProps,
   CarouselProgressTextProps,
   CarouselAutoplayIndicatorProps,
+  CarouselRootProviderProps,
 } from './primitives'
 
 /**
@@ -57,6 +59,7 @@ export type {
  * | `AutoplayTrigger` | Primitive | The autoplayTrigger element of the Carousel component. |
  * | `ProgressText` | Primitive | The progressText element of the Carousel component. |
  * | `AutoplayIndicator` | Primitive | The autoplayIndicator element of the Carousel component. |
+ * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useCarousel()`. |
  * | `El` | Abstraction | An abstraction for rendering all the content-related primitives |
  *
  * @example
@@ -83,5 +86,6 @@ export const Carousel = Object.assign(CarouselRoot, {
   AutoplayTrigger: CarouselAutoplayTrigger,
   ProgressText: CarouselProgressText,
   AutoplayIndicator: CarouselAutoplayIndicator,
+  RootProvider: CarouselRootProvider,
   El: CarouselEl,
 })

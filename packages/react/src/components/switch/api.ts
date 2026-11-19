@@ -11,6 +11,7 @@ import {
   SwitchControl,
   SwitchThumb,
   SwitchHiddenInput,
+  SwitchRootProvider,
 } from './primitives'
 
 export type {
@@ -19,6 +20,7 @@ export type {
   SwitchControlProps,
   SwitchThumbProps,
   SwitchHiddenInputProps,
+  SwitchRootProviderProps,
 } from './primitives'
 
 /**
@@ -39,6 +41,7 @@ export type {
  * | `Control` | Primitive | The control element of the Switch component. |
  * | `Thumb` | Primitive | The thumb element of the Switch component. |
  * | `HiddenInput` | Primitive | The hidden input element of the Switch component. It has no recipe slot. |
+ * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useSwitch()`. |
  * | `El` | Abstraction | An abstraction that renders a labeled switch with the Cerberus check indicator in the thumb |
  *
  * @example
@@ -57,5 +60,6 @@ export const Switch = Object.assign(SwitchEl, {
   Control: SwitchControl,
   Thumb: SwitchThumb,
   HiddenInput: SwitchHiddenInput,
+  RootProvider: SwitchRootProvider,
   El: SwitchEl,
 })

@@ -11,6 +11,7 @@ import {
   PinInputInput,
   PinInputControl,
   PinInputHiddenInput,
+  PinInputRootProvider,
 } from './primitives'
 
 export type {
@@ -19,6 +20,7 @@ export type {
   PinInputInputProps,
   PinInputControlProps,
   PinInputHiddenInputProps,
+  PinInputRootProviderProps,
 } from './primitives'
 
 /**
@@ -39,6 +41,7 @@ export type {
  * | `Input` | Primitive | The input element of the PinInput component. |
  * | `Control` | Primitive | The control element of the PinInput component. |
  * | `HiddenInput` | Primitive | The hidden input element of the PinInput component. It has no recipe slot. |
+ * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `usePinInput()`. |
  * | `El` | Abstraction | An entry abstraction that renders the control, one input per `count` and the hidden input |
  *
  * @example
@@ -57,5 +60,6 @@ export const PinInput = Object.assign(PinInputEl, {
   Input: PinInputInput,
   Control: PinInputControl,
   HiddenInput: PinInputHiddenInput,
+  RootProvider: PinInputRootProvider,
   El: PinInputEl,
 })

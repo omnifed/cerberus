@@ -4,12 +4,18 @@
  */
 
 import { AvatarEl } from './avatar'
-import { AvatarRoot, AvatarImage, AvatarFallback } from './primitives'
+import {
+  AvatarRoot,
+  AvatarImage,
+  AvatarFallback,
+  AvatarRootProvider,
+} from './primitives'
 
 export type {
   AvatarRootProps,
   AvatarImageProps,
   AvatarFallbackProps,
+  AvatarRootProviderProps,
 } from './primitives'
 
 /**
@@ -28,6 +34,7 @@ export type {
  * | `Root` | Primitive | The root element of the Avatar component. |
  * | `Image` | Primitive | The image element of the Avatar component. |
  * | `Fallback` | Primitive | The fallback element of the Avatar component. |
+ * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useAvatar()`. |
  * | `El` | Abstraction | An entry abstraction for rendering all the content-related primitives |
  *
  * @example
@@ -44,5 +51,6 @@ export const Avatar = Object.assign(AvatarEl, {
   Root: AvatarRoot,
   Image: AvatarImage,
   Fallback: AvatarFallback,
+  RootProvider: AvatarRootProvider,
   El: AvatarEl,
 })

@@ -134,6 +134,27 @@ The hidden-input primitive part of the PinInput component. It has no recipe slot
 | `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
 | `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
 
+### PinInput.RootProvider (primitive)
+
+The root container of the PinInput component, driven by state created with `usePinInput()`.
+
+Selector: `[data-scope="pin-input"][data-part="root"]`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `size` | `'md' \| 'lg'` | No | `'lg'` | PandaCSS recipe variant for size. |
+| `value` | `UsePinInputReturn` | Yes | — |  |
+| `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
+| `unstyled` | `boolean` | No | `false` | Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes. |
+| `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
+
+| Data attribute | Value |
+| --- | --- |
+| `data-invalid` | Present when invalid. |
+| `data-disabled` | Present when disabled. |
+| `data-complete` | Present when the pin-input value is complete. |
+| `data-readonly` | Present when read-only. |
+
 ## Accessibility
 
 | Key | Description |
