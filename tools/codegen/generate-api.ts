@@ -240,8 +240,15 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
 
 async function main(): Promise<number> {
   const check = process.argv.includes('--check')
+  // `--only <key>` (repeatable) generates just those components, e.g. while migrating
+  const only = process.argv.flatMap((arg, i, argv) =>
+    argv[i - 1] === '--only' ? [arg] : [],
+  )
   const diagnostics = new Diagnostics()
-  const entries = loadManifest(await loadConfigs(), diagnostics)
+  const entries = loadManifest(
+    await loadConfigs(undefined, only.length > 0 ? only : undefined),
+    diagnostics,
+  )
   diagnostics.print()
   if (diagnostics.errorCount > 0) return 1
 

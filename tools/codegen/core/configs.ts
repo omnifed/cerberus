@@ -21,25 +21,33 @@ export const configExportName = (key: string) => `${toCamelCase(key)}Config`
  */
 export async function loadConfigs(
   dir = CONFIGS_DIR,
+  only?: string[],
 ): Promise<ComponentConfig[]> {
+  const keys = listConfigKeys(dir)
+  for (const key of only ?? []) {
+    if (!keys.includes(key))
+      throw new Error(`No config for '${key}' in configs/`)
+  }
   return Promise.all(
-    listConfigKeys(dir).map(async (key) => {
-      const mod = (await import(join(dir, `${key}.ts`))) as Record<
-        string,
-        unknown
-      >
-      const config = mod[configExportName(key)] as ComponentConfig | undefined
-      if (!config) {
-        throw new Error(
-          `configs/${key}.ts must export \`${configExportName(key)}\``,
-        )
-      }
-      if (config.key !== key) {
-        throw new Error(
-          `configs/${key}.ts declares key '${config.key}'; the file name must match the key`,
-        )
-      }
-      return config
-    }),
+    keys
+      .filter((key) => !only || only.includes(key))
+      .map(async (key) => {
+        const mod = (await import(join(dir, `${key}.ts`))) as Record<
+          string,
+          unknown
+        >
+        const config = mod[configExportName(key)] as ComponentConfig | undefined
+        if (!config) {
+          throw new Error(
+            `configs/${key}.ts must export \`${configExportName(key)}\``,
+          )
+        }
+        if (config.key !== key) {
+          throw new Error(
+            `configs/${key}.ts declares key '${config.key}'; the file name must match the key`,
+          )
+        }
+        return config
+      }),
   )
 }
