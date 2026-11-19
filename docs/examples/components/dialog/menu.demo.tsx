@@ -5,17 +5,8 @@ import { ChevronDown } from '@carbon/icons-react'
 import {
   Button,
   Dialog,
-  DialogCloseIconTrigger,
-  DialogCloseTrigger,
-  DialogDescription,
-  DialogHeading,
-  DialogProps,
-  DialogProvider,
+  type DialogRootProps,
   Menu,
-  MenuContent,
-  MenuItem,
-  MenuSeparator,
-  MenuTrigger,
   OpenChangeDetails,
 } from '@cerberus-design/react'
 import { useSignal } from '@cerberus-design/signals'
@@ -26,21 +17,21 @@ export function MenuDemo() {
   return (
     <>
       <Menu>
-        <MenuTrigger>
+        <Menu.Trigger asChild>
           <Button>
             Actions
             <ChevronDown />
           </Button>
-        </MenuTrigger>
+        </Menu.Trigger>
 
-        <MenuContent>
-          <MenuItem value="edit">Edit</MenuItem>
-          <MenuItem value="duplicate">Duplicate</MenuItem>
-          <MenuSeparator />
-          <MenuItem value="delete" onClick={() => setOpen(true)}>
+        <Menu.ContentGroup>
+          <Menu.Item value="edit">Edit</Menu.Item>
+          <Menu.Item value="duplicate">Duplicate</Menu.Item>
+          <Menu.Separator />
+          <Menu.Item value="delete" onClick={() => setOpen(true)}>
             Delete
-          </MenuItem>
-        </MenuContent>
+          </Menu.Item>
+        </Menu.ContentGroup>
       </Menu>
 
       <MyDialog
@@ -51,27 +42,28 @@ export function MenuDemo() {
   )
 }
 
-function MyDialog(props: DialogProps) {
+function MyDialog(props: DialogRootProps) {
   return (
-    <DialogProvider {...props}>
-      <Dialog size="auto">
-        <DialogCloseIconTrigger />
+    <Dialog.Root size="auto" {...props}>
+      <Dialog>
+        <Dialog.CloseIconTrigger />
 
         <Stack gap="xs" w="full">
-          <DialogHeading>Dialog Title</DialogHeading>
-          <DialogDescription maxW="prose">
-            Far far away, behind the word mountains, far from the countries Vokalia and
-            Consonantia, there live the blind texts. Separated they live in
-            Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-          </DialogDescription>
+          <Dialog.Title>Dialog Title</Dialog.Title>
+          <Dialog.Description maxW="prose">
+            Far far away, behind the word mountains, far from the countries
+            Vokalia and Consonantia, there live the blind texts. Separated they
+            live in Bookmarksgrove right at the coast of the Semantics, a large
+            language ocean.
+          </Dialog.Description>
         </Stack>
 
         <Box mt="md" w="full">
-          <DialogCloseTrigger asChild>
+          <Dialog.CloseTrigger asChild>
             <Button>Close</Button>
-          </DialogCloseTrigger>
+          </Dialog.CloseTrigger>
         </Box>
       </Dialog>
-    </DialogProvider>
+    </Dialog.Root>
   )
 }

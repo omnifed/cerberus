@@ -4,7 +4,7 @@ import { useCerberusContext } from '../../context/cerberus'
 import { splitProps } from '../../utils'
 import { Button } from '../button/index'
 import { IconButton, IconButtonProps } from '../icon-button/index'
-import { Menu, MenuTrigger, MenuContent } from '../menu/index'
+import { Menu } from '../menu/index'
 import type { CerberusPrimitiveProps } from '../../system/types'
 import { useMemo } from 'react'
 import type { ButtonProps } from '../button/button'
@@ -52,7 +52,7 @@ export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
       </Button.Root>
 
       <Menu>
-        <MenuTrigger>
+        <Menu.Trigger asChild>
           <IconButton
             ariaLabel="More options"
             palette={actionProps.palette}
@@ -63,9 +63,9 @@ export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
           >
             <SelectArrow />
           </IconButton>
-        </MenuTrigger>
+        </Menu.Trigger>
 
-        <MenuContent>{elProps.children}</MenuContent>
+        <Menu.ContentGroup>{elProps.children}</Menu.ContentGroup>
       </Menu>
     </Button.Group>
   )

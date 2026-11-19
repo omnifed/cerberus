@@ -17,7 +17,7 @@ export function ClipboardTriggerWithTooltip(
   props: ClipboardTriggerWithTooltipProps,
 ) {
   return (
-    <Tooltip closeOnClick={false} content={<ClipboardCopyText />} asChild>
+    <Tooltip closeOnClick={false} content={<ClipboardCopyText />}>
       <ClipboardTrigger {...props} />
     </Tooltip>
   )

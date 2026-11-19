@@ -18,10 +18,6 @@ import { Show } from '../components/show/index'
 import { Avatar } from '../components/avatar/api'
 import {
   Dialog,
-  DialogCloseTrigger,
-  DialogDescription,
-  DialogHeading,
-  DialogProvider,
   type OpenChangeDetails,
   type DialogRootProps,
 } from '../components/dialog'
@@ -182,19 +178,15 @@ export function ConfirmModal(
     <ConfirmModalContext.Provider value={value}>
       {children}
 
-      <DialogProvider
+      <Dialog.Root
+        size="sm"
         lazyMount
         open={open}
         onOpenChange={handleOpenChange}
         unmountOnExit
         {...rootProps}
       >
-        <Dialog
-          size="sm"
-          style={{
-            '--dialog-content-min-h': 'auto',
-          }}
-        >
+        <Dialog css={{ '--dialog-content-min-h': 'auto' }}>
           <VStack
             alignItems="flex-start"
             gap="md"
@@ -225,10 +217,10 @@ export function ConfirmModal(
               </HStack>
             </Show>
 
-            <DialogHeading>{content?.heading}</DialogHeading>
+            <Dialog.Title>{content?.heading}</Dialog.Title>
 
             <Show when={content?.description}>
-              <DialogDescription>{content?.description}</DialogDescription>
+              <Dialog.Description>{content?.description}</Dialog.Description>
             </Show>
 
             <HStack gap="md" pt="md" w="full">
@@ -244,7 +236,7 @@ export function ConfirmModal(
               >
                 {content?.actionText}
               </Button>
-              <DialogCloseTrigger asChild>
+              <Dialog.CloseTrigger asChild>
                 <Button
                   className={css({
                     w: '1/2',
@@ -256,11 +248,11 @@ export function ConfirmModal(
                 >
                   {content?.cancelText}
                 </Button>
-              </DialogCloseTrigger>
+              </Dialog.CloseTrigger>
             </HStack>
           </VStack>
         </Dialog>
-      </DialogProvider>
+      </Dialog.Root>
     </ConfirmModalContext.Provider>
   )
 }

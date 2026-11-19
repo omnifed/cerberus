@@ -3,13 +3,10 @@
 import {
   IconButton,
   Menu,
-  MenuContent,
-  MenuSeparator,
-  MenuTrigger,
+  type MenuSelectionDetails,
   Portal,
   Show,
   useCerberusContext,
-  type MenuSelectionDetails,
 } from '@cerberus-design/react'
 import { useRead } from '@cerberus-design/signals'
 import { useMemo } from 'react'
@@ -115,7 +112,7 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
 
   return (
     <Menu onSelect={handleSelect}>
-      <MenuTrigger>
+      <Menu.Trigger asChild>
         <IconButton
           ariaLabel="View more options"
           size="xs"
@@ -129,31 +126,31 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
         >
           <MoreOptionsIcon />
         </IconButton>
-      </MenuTrigger>
+      </Menu.Trigger>
 
       <Portal>
-        <MenuContent maxH="initial">
+        <Menu.ContentGroup maxH="initial">
           <Show when={props.sortable}>
             <MatchSortItems sorting={sortedVal} />
           </Show>
 
           <Show when={props.pinnable}>
             <Show when={hasParentFeatureOn(1)}>
-              <MenuSeparator />
+              <Menu.Separator />
             </Show>
             <MatchPinnedItems pinned={props.pinned} />
           </Show>
 
           <Show when={props.filterable}>
             <Show when={hasParentFeatureOn(2)}>
-              <MenuSeparator />
+              <Menu.Separator />
             </Show>
             <FilterMenuItem colId={props.id} />
           </Show>
 
           <Show when={props.visibility}>
             <Show when={hasParentFeatureOn(3)}>
-              <MenuSeparator />
+              <Menu.Separator />
             </Show>
             <MatchVisibleItems
               colId={props.id}
@@ -161,7 +158,7 @@ export function HeaderCellOptions<TData>(props: InternalColumn<TData>) {
               isLastVisibleCol={hiddenColsMaxReached}
             />
           </Show>
-        </MenuContent>
+        </Menu.ContentGroup>
       </Portal>
     </Menu>
   )

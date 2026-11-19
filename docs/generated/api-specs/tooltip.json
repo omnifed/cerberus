@@ -1,0 +1,561 @@
+{
+  "name": "Tooltip",
+  "key": "tooltip",
+  "description": "The Tooltip component is a small pop-up box that appears when a user hovers over or focuses an element, providing additional information about it.\n\nUse the default `<Tooltip>` with a `content` prop to wrap a single trigger element, or compose the primitives for full structural control. `Tooltip.Root` renders no element: it provides the tooltip state and styles to the trigger, positioner, content and arrow parts. It supports every placement and can render its content in a Portal.",
+  "variants": [],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Tooltip.El",
+      "kind": "abstraction",
+      "description": "An abstraction that wraps its child in the trigger and renders the content in a positioned bubble with an arrow, optionally in a Portal",
+      "inherits": ["Tooltip.Root"],
+      "props": [
+        {
+          "name": "content",
+          "type": "ReactNode",
+          "required": true,
+          "description": "The content to display in the tooltip bubble."
+        },
+        {
+          "name": "portal",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to render the positioner and content within a Portal."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Tooltip.Root",
+      "kind": "primitive",
+      "description": "Provides the Tooltip context and recipe variants to its parts. Renders no element.",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the tooltip. Useful for composition."
+        },
+        {
+          "name": "openDelay",
+          "type": "number",
+          "required": false,
+          "defaultValue": "400",
+          "description": "The open delay of the tooltip."
+        },
+        {
+          "name": "closeDelay",
+          "type": "number",
+          "required": false,
+          "defaultValue": "150",
+          "description": "The close delay of the tooltip."
+        },
+        {
+          "name": "closeOnPointerDown",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to close the tooltip on pointerdown."
+        },
+        {
+          "name": "closeOnEscape",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to close the tooltip when the Escape key is pressed."
+        },
+        {
+          "name": "closeOnScroll",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the tooltip should close on scroll"
+        },
+        {
+          "name": "closeOnClick",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the tooltip should close on click"
+        },
+        {
+          "name": "interactive",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether the tooltip's content is interactive. In this mode, the tooltip will remain open when user hovers over the content.",
+          "see": ["https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus"]
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((details: OpenChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the tooltip is opened."
+        },
+        {
+          "name": "positioning",
+          "type": "PositioningOptions",
+          "required": false,
+          "description": "The user provided options used to position the popover content"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether the tooltip is disabled"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false,
+          "description": "The controlled open state of the tooltip"
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false,
+          "description": "The initial open state of the tooltip when rendered. Use when you don't need to control the open state of the tooltip."
+        },
+        {
+          "name": "triggerValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The controlled trigger value"
+        },
+        {
+          "name": "defaultTriggerValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The initial trigger value when rendered. Use when you don't need to control the trigger value."
+        },
+        {
+          "name": "onTriggerValueChange",
+          "type": "((details: TriggerValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the trigger value changes."
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Trigger",
+      "exportName": "Tooltip.Trigger",
+      "kind": "primitive",
+      "description": "The trigger primitive part of the Tooltip component.",
+      "dataScope": "tooltip",
+      "dataPart": "trigger",
+      "dataAttributes": [
+        {
+          "name": "data-ownedby"
+        },
+        {
+          "name": "data-value",
+          "description": "The value of the item."
+        },
+        {
+          "name": "data-current",
+          "presence": true,
+          "description": "Present when current."
+        },
+        {
+          "name": "data-expanded",
+          "presence": true,
+          "description": "Present when expanded."
+        },
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "description": "The value that identifies this specific trigger"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Arrow",
+      "exportName": "Tooltip.Arrow",
+      "kind": "primitive",
+      "description": "The arrow primitive part of the Tooltip component.",
+      "dataScope": "tooltip",
+      "dataPart": "arrow",
+      "cssVars": [
+        {
+          "name": "--arrow-size",
+          "description": "The size of the arrow."
+        },
+        {
+          "name": "--arrow-size-half",
+          "description": "Half the size of the arrow."
+        },
+        {
+          "name": "--arrow-background",
+          "description": "Use this variable to style the arrow background."
+        },
+        {
+          "name": "--arrow-offset",
+          "description": "The offset position of the arrow."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ArrowTip",
+      "exportName": "Tooltip.ArrowTip",
+      "kind": "primitive",
+      "description": "The arrow-tip primitive part of the Tooltip component.",
+      "dataScope": "tooltip",
+      "dataPart": "arrow-tip",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Positioner",
+      "exportName": "Tooltip.Positioner",
+      "kind": "primitive",
+      "description": "The positioner primitive part of the Tooltip component.",
+      "dataScope": "tooltip",
+      "dataPart": "positioner",
+      "cssVars": [
+        {
+          "name": "--reference-width",
+          "description": "The width of the reference element."
+        },
+        {
+          "name": "--reference-height",
+          "description": "The height of the root."
+        },
+        {
+          "name": "--available-width",
+          "description": "The available width in viewport."
+        },
+        {
+          "name": "--available-height",
+          "description": "The available height in viewport."
+        },
+        {
+          "name": "--x",
+          "description": "The x position for transform."
+        },
+        {
+          "name": "--y",
+          "description": "The y position for transform."
+        },
+        {
+          "name": "--z-index",
+          "description": "The z-index value."
+        },
+        {
+          "name": "--transform-origin",
+          "description": "The transform origin for animations."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "exportName": "Tooltip.Content",
+      "kind": "primitive",
+      "description": "The content primitive part of the Tooltip component.",
+      "dataScope": "tooltip",
+      "dataPart": "content",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-instant",
+          "presence": true
+        },
+        {
+          "name": "data-placement",
+          "description": "The placement of the content."
+        },
+        {
+          "name": "data-side",
+          "description": "The side of the trigger that the content is positioned on."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Tooltip.RootProvider",
+      "kind": "primitive",
+      "description": "Provides the Tooltip context and recipe variants to its parts, from state created with `useTooltip()`. Renders no element.",
+      "props": [
+        {
+          "name": "value",
+          "type": "UseTooltipReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Tooltip.Context",
+      "kind": "primitive",
+      "description": "Exposes the Tooltip state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseTooltipContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Tooltip",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/",
+    "keyboard": [
+      {
+        "key": "Tab",
+        "description": "Opens/closes the tooltip without delay."
+      },
+      {
+        "key": "Escape",
+        "description": "If open, closes the tooltip without delay."
+      }
+    ]
+  }
+}

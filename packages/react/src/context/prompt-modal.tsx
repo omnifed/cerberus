@@ -21,13 +21,7 @@ import { hstack } from 'styled-system/patterns'
 import { Avatar } from '../components/avatar/api'
 import { Button } from '../components/button/index'
 import { Clipboard } from '../components/clipboard/index'
-import {
-  Dialog,
-  DialogDescription,
-  DialogHeading,
-  DialogProvider,
-  DialogRootProps,
-} from '../components/dialog/index'
+import { Dialog, type DialogRootProps } from '../components/dialog/index'
 import { FieldLabel, FieldRoot, Input } from '../components/field/index'
 import { IconButton } from '../components/icon-button/index'
 import { Show } from '../components/show/index'
@@ -181,19 +175,15 @@ export function PromptModal(
     <PromptModalContext.Provider value={value}>
       {children}
 
-      <DialogProvider
+      <Dialog.Root
+        size="sm"
         lazyMount
         open={open}
         onOpenChange={(e: DialogOpenChangeDetails) => setOpen(e.open)}
         unmountOnExit
         {...rootProps}
       >
-        <Dialog
-          size="sm"
-          style={{
-            '--dialog-content-min-h': 'auto',
-          }}
-        >
+        <Dialog css={{ '--dialog-content-min-h': 'auto' }}>
           <VStack
             alignItems="flex-start"
             h="full"
@@ -222,8 +212,8 @@ export function PromptModal(
               </Show>
             </HStack>
 
-            <DialogHeading>{content?.heading}</DialogHeading>
-            <DialogDescription>{content?.description}</DialogDescription>
+            <Dialog.Title>{content?.heading}</Dialog.Title>
+            <Dialog.Description>{content?.description}</Dialog.Description>
 
             <VStack
               alignItems="flex-start"
@@ -301,7 +291,7 @@ export function PromptModal(
             </HStack>
           </VStack>
         </Dialog>
-      </DialogProvider>
+      </Dialog.Root>
     </PromptModalContext.Provider>
   )
 }

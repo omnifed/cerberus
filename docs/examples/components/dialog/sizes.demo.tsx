@@ -5,55 +5,51 @@ import { Box, HStack, Stack } from '@/styled-system/jsx'
 import {
   Button,
   Dialog,
-  DialogCloseIconTrigger,
-  DialogCloseTrigger,
-  DialogDescription,
-  DialogHeading,
-  DialogProps,
-  DialogProvider,
-  DialogTrigger,
+  type DialogRootProps,
   For,
 } from '@cerberus-design/react'
 import data from 'styled-system/specs/design-system.json'
 
-const variants = data.slotRecipes.dialog.variants.size.values as DialogProps['size'][]
+const variants = data.slotRecipes.dialog.variants.size
+  .values as DialogRootProps['size'][]
 const sortedSizes = sortSizeVariants(variants)
 
 export function SizesDemo() {
   return (
     <HStack gap="md">
       <For each={sortedSizes}>
-        {(size) => <DialogContent key={String(size)} size={size} />}
+        {(size) => <SizedDialog key={String(size)} size={size} />}
       </For>
     </HStack>
   )
 }
 
-function DialogContent(props: DialogProps) {
+function SizedDialog(props: Pick<DialogRootProps, 'size'>) {
   return (
-    <DialogProvider>
-      <DialogTrigger asChild>
+    <Dialog.Root size={props.size}>
+      <Dialog.Trigger asChild>
         <Button size="sm">open {String(props.size)}</Button>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
-      <Dialog size={props.size}>
-        <DialogCloseIconTrigger />
+      <Dialog>
+        <Dialog.CloseIconTrigger />
 
         <Stack gap="xs" w="full">
-          <DialogHeading>Dialog Title</DialogHeading>
-          <DialogDescription maxW="prose">
-            Far far away, behind the word mountains, far from the countries Vokalia and
-            Consonantia, there live the blind texts. Separated they live in
-            Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-          </DialogDescription>
+          <Dialog.Title>Dialog Title</Dialog.Title>
+          <Dialog.Description maxW="prose">
+            Far far away, behind the word mountains, far from the countries
+            Vokalia and Consonantia, there live the blind texts. Separated they
+            live in Bookmarksgrove right at the coast of the Semantics, a large
+            language ocean.
+          </Dialog.Description>
         </Stack>
 
         <Box mt="md" w="full">
-          <DialogCloseTrigger asChild>
+          <Dialog.CloseTrigger asChild>
             <Button>Close</Button>
-          </DialogCloseTrigger>
+          </Dialog.CloseTrigger>
         </Box>
       </Dialog>
-    </DialogProvider>
+    </Dialog.Root>
   )
 }

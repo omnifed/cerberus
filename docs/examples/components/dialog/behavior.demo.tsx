@@ -1,4 +1,4 @@
-import { DialogRoot, type OpenChangeDetails, Portal } from '@cerberus-design/react'
+import { Dialog, type OpenChangeDetails, Portal } from '@cerberus-design/react'
 import { useSignal } from '@cerberus-design/signals'
 
 // ❌ Avoid
@@ -7,12 +7,12 @@ export function Dont() {
 
   if (isOpen) {
     return (
-      <DialogRoot
+      <Dialog.Root
         open={isOpen}
         onOpenChange={(e: OpenChangeDetails) => setOpen(e.open)}
       >
         <Portal>...</Portal>
-      </DialogRoot>
+      </Dialog.Root>
     )
   }
 
@@ -23,13 +23,13 @@ export function Dont() {
 export function Do() {
   const [isOpen, setOpen] = useSignal<boolean>(false)
   return (
-    <DialogRoot
+    <Dialog.Root
       open={isOpen}
       onOpenChange={(e: OpenChangeDetails) => setOpen(e.open)}
       lazyMount
       unmountOnExit
     >
       <Portal>...</Portal>
-    </DialogRoot>
+    </Dialog.Root>
   )
 }

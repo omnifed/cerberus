@@ -1,13 +1,7 @@
 'use client'
 
 import { HStack } from '@/styled-system/jsx'
-import {
-  Button,
-  Menu,
-  MenuContent,
-  MenuItem,
-  MenuTrigger,
-} from '@cerberus-design/react'
+import { Button, Menu } from '@cerberus-design/react'
 
 export function PositioningMenu() {
   return (
@@ -27,13 +21,13 @@ function RightMenu() {
         placement: 'right',
       }}
     >
-      <MenuTrigger>
+      <Menu.Trigger asChild>
         <Button>Right</Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem value="item_1">Item 1</MenuItem>
-        <MenuItem value="item_2">Item 2</MenuItem>
-      </MenuContent>
+      </Menu.Trigger>
+      <Menu.ContentGroup>
+        <Menu.Item value="item_1">Item 1</Menu.Item>
+        <Menu.Item value="item_2">Item 2</Menu.Item>
+      </Menu.ContentGroup>
     </Menu>
   )
 }
@@ -45,13 +39,13 @@ function LeftMenu() {
         placement: 'left',
       }}
     >
-      <MenuTrigger>
+      <Menu.Trigger asChild>
         <Button>Left</Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem value="item_1">Item 1</MenuItem>
-        <MenuItem value="item_2">Item 2</MenuItem>
-      </MenuContent>
+      </Menu.Trigger>
+      <Menu.ContentGroup>
+        <Menu.Item value="item_1">Item 1</Menu.Item>
+        <Menu.Item value="item_2">Item 2</Menu.Item>
+      </Menu.ContentGroup>
     </Menu>
   )
 }
@@ -63,13 +57,13 @@ function TopMenu() {
         placement: 'top',
       }}
     >
-      <MenuTrigger>
+      <Menu.Trigger asChild>
         <Button>Top</Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem value="item_1">Item 1</MenuItem>
-        <MenuItem value="item_2">Item 2</MenuItem>
-      </MenuContent>
+      </Menu.Trigger>
+      <Menu.ContentGroup>
+        <Menu.Item value="item_1">Item 1</Menu.Item>
+        <Menu.Item value="item_2">Item 2</Menu.Item>
+      </Menu.ContentGroup>
     </Menu>
   )
 }
@@ -81,13 +75,13 @@ function BottomMenu() {
         placement: 'bottom',
       }}
     >
-      <MenuTrigger>
+      <Menu.Trigger asChild>
         <Button>Bottom</Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem value="item_1">Item 1</MenuItem>
-        <MenuItem value="item_2">Item 2</MenuItem>
-      </MenuContent>
+      </Menu.Trigger>
+      <Menu.ContentGroup>
+        <Menu.Item value="item_1">Item 1</Menu.Item>
+        <Menu.Item value="item_2">Item 2</Menu.Item>
+      </Menu.ContentGroup>
     </Menu>
   )
 }

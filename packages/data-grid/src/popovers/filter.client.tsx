@@ -9,7 +9,7 @@ import {
   IconButton,
   Input,
   Option,
-  PopoverParts,
+  Popover,
   Select,
   SelectRootProps,
   useCerberusContext,
@@ -47,9 +47,9 @@ export function FilterForm<TData>() {
 
   return (
     <cerberus.form action={filter} w="full">
-      <PopoverParts.Body>
+      <Popover.Body>
         <FormFields />
-      </PopoverParts.Body>
+      </Popover.Body>
     </cerberus.form>
   )
 }
