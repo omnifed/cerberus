@@ -2,7 +2,11 @@ import { join } from 'node:path'
 import { loadConfigs } from './core/configs'
 import { Diagnostics } from './core/diagnostics'
 import { emitFiles, reportStale, type GeneratedFile } from './core/emit'
-import { loadManifest, type ComponentEntry } from './core/manifest'
+import {
+  loadManifest,
+  providerSlot,
+  type ComponentEntry,
+} from './core/manifest'
 import { capitalize, toKebabCase } from './core/naming'
 
 const GENERATED_HEADER = `/**
@@ -23,6 +27,7 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     arkKey,
     arkName,
     arkMembers,
+    providers,
     primitives: parts,
     rootProvider,
     description,
@@ -38,24 +43,32 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     const ark = `Ark${arkName}`
     let primitivesCode = `${GENERATED_HEADER}'use client'\n\n`
     primitivesCode += `import { ${arkName} as ${ark} } from '@ark-ui/react/${arkKey}'\n`
-    // Members outside the anatomy have no recipe slot; without a recipe nothing does
-    const needsCerberus =
+    // Members outside the anatomy have no recipe slot; without a recipe nothing does.
+    // Those get Panda's `styled()`, not `cerberus()`: Ark parts handle `asChild`
+    // themselves, and a second `asChild` layer would skip the part (and the context
+    // a Root provides) entirely
+    const isProvider = (m: string) => providers.includes(m)
+    const needsStyled =
       !recipe ||
-      arkMembers.some((m) => m !== 'RootProvider' && !m.endsWith('Context'))
+      arkMembers.some(
+        (m) => m !== 'RootProvider' && !m.endsWith('Context') && !isProvider(m),
+      )
+    const jsxImports = [
+      'type ComponentProps',
+      ...(recipe ? ['createSlotRecipeContext'] : []),
+      ...(needsStyled ? ['styled'] : []),
+    ]
+    primitivesCode += `import { ${jsxImports.join(', ')} } from 'styled-system/jsx'\n`
     if (recipe) {
-      primitivesCode += `import { type ComponentProps, createSlotRecipeContext } from 'styled-system/jsx'\n`
       primitivesCode += `import { ${recipe} } from 'styled-system/recipes'\n`
-    } else {
-      primitivesCode += `import type { ComponentProps } from 'react'\n`
-    }
-    if (needsCerberus) {
-      primitivesCode += `import { cerberus } from '../../system/index'\n`
     }
     primitivesCode += `\n`
     if (recipe) {
-      const factories = rootProvider
-        ? 'withRootProvider, withContext'
-        : 'withProvider, withContext'
+      const factories = [
+        ...(rootProvider ? ['withRootProvider'] : []),
+        ...(!rootProvider || providers.length > 0 ? ['withProvider'] : []),
+        'withContext',
+      ].join(', ')
       primitivesCode += `const { ${factories} } = createSlotRecipeContext(${recipe})\n\n`
     }
 
@@ -65,8 +78,10 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
       if (isRoot && rootProvider) {
         return recipe ? `withRootProvider(${arkPart})` : arkPart
       }
-      if (!recipe) return `cerberus(${arkPart})`
-      return `${isRoot ? 'withProvider' : 'withContext'}(${arkPart}, '${slot}')`
+      if (!recipe) return `styled(${arkPart})`
+      // A part listed in `providers` renders outside Root and provides the recipe itself
+      const provides = isRoot || isProvider(slot) || isProvider(member)
+      return `${provides ? 'withProvider' : 'withContext'}(${arkPart}, '${slot}')`
     }
 
     const members = [
@@ -81,9 +96,11 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
         code:
           member === 'RootProvider'
             ? styled(member, 'root', true)
-            : member.endsWith('Context')
-              ? `${ark}.${member}`
-              : `cerberus(${ark}.${member})`,
+            : isProvider(member)
+              ? styled(member, providerSlot(member)!, false)
+              : member.endsWith('Context')
+                ? `${ark}.${member}`
+                : `styled(${ark}.${member})`,
       })),
     ]
 
@@ -182,9 +199,11 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     const desc =
       member === 'RootProvider'
         ? `A \`Root\` driven by state from Ark's \`use${arkName}()\`.`
-        : member.endsWith('Context')
-          ? `Exposes the ${name} ${member === 'Context' ? '' : `${toKebabCase(member.replace(/Context$/, '')).replace(/-/g, ' ')} `}state to a render function.`
-          : `The ${toKebabCase(member).replace(/-/g, ' ')} element of the ${name} component. It has no recipe slot.`
+        : providers.includes(member)
+          ? `A \`${capitalize(providerSlot(member)!)}\` driven by state from Ark's \`use${arkName}${capitalize(providerSlot(member)!)}()\`.`
+          : member.endsWith('Context')
+            ? `Exposes the ${name} ${member === 'Context' ? '' : `${toKebabCase(member.replace(/Context$/, '')).replace(/-/g, ' ')} `}state to a render function.`
+            : `The ${toKebabCase(member).replace(/-/g, ' ')} element of the ${name} component. It has no recipe slot.`
     jsDoc += ` * | \`${member}\` | Primitive | ${desc} |\n`
   }
 

@@ -6,9 +6,12 @@
 'use client'
 
 import { Slider as ArkSlider } from '@ark-ui/react/slider'
-import { type ComponentProps, createSlotRecipeContext } from 'styled-system/jsx'
+import {
+  type ComponentProps,
+  createSlotRecipeContext,
+  styled,
+} from 'styled-system/jsx'
 import { slider } from 'styled-system/recipes'
-import { cerberus } from '../../system/index'
 
 const { withProvider, withContext } = createSlotRecipeContext(slider)
 
@@ -78,4 +81,4 @@ export const SliderRootProvider = withProvider(ArkSlider.RootProvider, 'root')
 // SliderHiddenInput -----------------------------------------------------
 
 export type SliderHiddenInputProps = ComponentProps<typeof SliderHiddenInput>
-export const SliderHiddenInput = cerberus(ArkSlider.HiddenInput)
+export const SliderHiddenInput = styled(ArkSlider.HiddenInput)

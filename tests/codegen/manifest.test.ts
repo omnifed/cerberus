@@ -148,6 +148,7 @@ describe('loadManifest', () => {
             { from: '@ark-ui/react' },
           ],
           parts: { group: { recipe: 'buttonGroup' }, nope: {} },
+          providers: ['root', 'HiddenInput'],
         }),
       ],
       diagnostics,
@@ -156,6 +157,8 @@ describe('loadManifest', () => {
       'recipe: false is only for Ark components; Cerberus-only ones write their own primitives',
       'arkMembers: `item-group` must be a PascalCase member of the Ark namespace (Ark components only)',
       'arkMembers: `Root` is already an anatomy part',
+      'providers: `root` must be a non-root anatomy part, or an arkMembers `<Part>Provider` whose part is in the anatomy',
+      'providers: `HiddenInput` must be a non-root anatomy part, or an arkMembers `<Part>Provider` whose part is in the anatomy',
       'exports: src/components/accordion/nope.ts(x) does not exist',
       "exports from '@ark-ui/react' lists nothing",
       'parts.group.recipe: per-part recipes are only supported for Cerberus-only components',
@@ -173,7 +176,7 @@ describe('generated API', () => {
     return { primitives: file('primitives.ts'), api: file('api.ts') }
   }
 
-  test('recipe-less Ark parts are wrapped with cerberus(); members and exports are added', () => {
+  test('recipe-less Ark parts are wrapped with styled(); members and exports are added', () => {
     const { primitives, api } = generate({
       key: 'radio',
       ark: 'radio-group',
@@ -191,13 +194,13 @@ describe('generated API', () => {
     )
     expect(primitives).not.toContain('createSlotRecipeContext')
     expect(primitives).toContain(
-      'export const RadioRoot = cerberus(ArkRadioGroup.Root)',
+      'export const RadioRoot = styled(ArkRadioGroup.Root)',
     )
     expect(primitives).toContain(
-      'export const RadioItem = cerberus(ArkRadioGroup.Item)',
+      'export const RadioItem = styled(ArkRadioGroup.Item)',
     )
     expect(primitives).toContain(
-      'export const RadioRootProvider = cerberus(ArkRadioGroup.RootProvider)',
+      'export const RadioRootProvider = styled(ArkRadioGroup.RootProvider)',
     )
     expect(primitives).toContain(
       'export const RadioContext = ArkRadioGroup.Context',
@@ -224,10 +227,30 @@ describe('generated API', () => {
     expect(primitives).toContain(
       "export const CollapsibleRootProvider = withProvider(ArkCollapsible.RootProvider, 'root')",
     )
-    expect(primitives).not.toContain('cerberus')
+    expect(primitives).not.toContain('styled(')
   })
 
-  test('a slotted component imports cerberus only for parts outside the anatomy', () => {
+  test('providers render outside Root and provide the slot recipe themselves', () => {
+    const { primitives } = generate({
+      key: 'checkbox',
+      anatomy: { keys: () => ['root', 'label', 'group'] },
+      arkMembers: ['GroupProvider', 'HiddenInput'],
+      providers: ['group', 'GroupProvider'],
+      description: 'x',
+    })
+    expect(primitives).toContain(
+      "export const CheckboxGroup = withProvider(ArkCheckbox.Group, 'group')",
+    )
+    expect(primitives).toContain(
+      "withProvider(ArkCheckbox.GroupProvider, 'group')",
+    )
+    expect(primitives).toContain(
+      "export const CheckboxLabel = withContext(ArkCheckbox.Label, 'label')",
+    )
+    expect(primitives).toContain('styled(ArkCheckbox.HiddenInput)')
+  })
+
+  test('a slotted component imports styled only for parts outside the anatomy', () => {
     const { primitives } = generate({
       key: 'switch',
       anatomy: { keys: () => ['root', 'thumb'] },
@@ -237,12 +260,11 @@ describe('generated API', () => {
     const imports = primitives.split('\n').filter((l) => l.startsWith('import'))
     expect(imports).toEqual([
       "import { Switch as ArkSwitch } from '@ark-ui/react/switch'",
-      "import { type ComponentProps, createSlotRecipeContext } from 'styled-system/jsx'",
+      "import { type ComponentProps, createSlotRecipeContext, styled } from 'styled-system/jsx'",
       "import { switchRecipe } from 'styled-system/recipes'",
-      "import { cerberus } from '../../system/index'",
     ])
     expect(primitives).toContain(
-      'export const SwitchHiddenInput = cerberus(ArkSwitch.HiddenInput)',
+      'export const SwitchHiddenInput = styled(ArkSwitch.HiddenInput)',
     )
   })
 })

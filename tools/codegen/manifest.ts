@@ -49,7 +49,7 @@ export type ComponentConfig = {
   /**
    * Panda recipe export name. Defaults to camelCase of `key` (`switchRecipe` for
    * reserved words). `false` for an Ark component styled without a slot recipe: its
-   * parts are wrapped with `cerberus()` (style props, `css`, `asChild`).
+   * parts are wrapped with Panda's `styled()` (style props, `css`; Ark handles `asChild`).
    */
   recipe?: string | false
   /**
@@ -62,9 +62,15 @@ export type ComponentConfig = {
    * - `RootProvider`: styled like `Root`, driven by `useX()` state
    * - `*Context` (`Context`, `ItemContext`): render props, passed through
    * - any other part outside the anatomy (`HiddenInput`, `HiddenSelect`): no recipe
-   *   slot exists for it, so it's wrapped with `cerberus()` (style props, `css`, `asChild`)
+   *   slot exists for it, so it's wrapped with Panda's `styled()` (style props, `css`)
    */
   arkMembers?: string[]
+  /**
+   * Parts that render outside `Root` and so must provide the slot recipe themselves,
+   * e.g. `group` (Checkbox.Group wraps several roots). An `arkMembers` entry named
+   * `<Part>Provider` (`GroupProvider`) can be listed too; it provides `<part>`'s slot.
+   */
+  providers?: string[]
   abstractions?: AbstractionConfig[]
   /** Public types re-exported from `primitives.ts` (Cerberus-only components) */
   types?: string[]
