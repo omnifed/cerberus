@@ -3,7 +3,7 @@ import { cerberus, For, Show, Table } from '@cerberus-design/react'
 import { Admonition } from '@cerberus-design/react/admonition'
 import type { PropsWithChildren } from 'react'
 import { Box, Stack } from 'styled-system/jsx'
-import type { ComponentDocSpec } from '../../packages/react/scripts/generate-docs-spec'
+import type { ComponentDocSpec } from '../../packages/react/scripts/docs/types'
 
 interface ComponentApiProps {
   spec: string
@@ -119,6 +119,27 @@ function PartsDocs({ parts, specKey }: PartsProps) {
               </cerberus.h3>
               <Body>{part.description}</Body>
 
+              <Show when={(part.inherits?.length ?? 0) > 0}>
+                {() => (
+                  <Body>
+                    Also accepts all props of{' '}
+                    <For each={part.inherits ?? []}>
+                      {(target, i) => (
+                        <cerberus.span key={`inherits:${target}`}>
+                          {i > 0 && ', '}
+                          <cerberus.a
+                            href={`#${partHeadingId(specKey, parts, target)}`}
+                          >
+                            <Code>{target}</Code>
+                          </cerberus.a>
+                        </cerberus.span>
+                      )}
+                    </For>
+                    .
+                  </Body>
+                )}
+              </Show>
+
               {part.dataScope && part.dataPart && (
                 <Body>
                   <cerberus.strong>Data attributes:</cerberus.strong>{' '}
@@ -180,6 +201,16 @@ function PartsDocs({ parts, specKey }: PartsProps) {
       </Stack>
     </cerberus.section>
   )
+}
+
+/** Heading id of the part whose `exportName` is `target` (matches the ids above). */
+function partHeadingId(
+  specKey: string,
+  parts: ComponentDocSpec['parts'],
+  target: string,
+): string {
+  const part = parts.find((p) => p.exportName === target)
+  return `${specKey}-${part?.name ?? target}-heading`
 }
 
 // A11y Docs -------------------------------------------------------------------

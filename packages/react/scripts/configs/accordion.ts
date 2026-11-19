@@ -1,10 +1,8 @@
 import { accordionAnatomy } from '@ark-ui/react/anatomy'
-import type { ComponentConfig } from '../manifest'
+import { defineComponent } from '../manifest'
 
-export const accordionConfig: ComponentConfig = {
-  name: 'Accordion',
+export const accordionConfig = defineComponent({
   key: 'accordion',
-  isArkUI: true,
   anatomy: accordionAnatomy,
 
   description: `
@@ -62,4 +60,4 @@ The Accordion component can be used in various contexts, such as displaying FAQs
       },
     ],
   },
-}
+})

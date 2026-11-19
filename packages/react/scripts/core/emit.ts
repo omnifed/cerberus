@@ -1,5 +1,5 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
-import { mkdir, writeFile } from 'node:fs/promises'
+import { mkdir, rm, writeFile } from 'node:fs/promises'
 import { dirname, join, relative } from 'node:path'
 import { OXFMT_BIN, OXFMT_CONFIG, REPO_ROOT } from './paths'
 
@@ -13,8 +13,8 @@ export interface EmitOptions {
   /** Compare against disk instead of writing; report stale files. */
   check: boolean
   /**
-   * Directories fully owned by the generator. In check mode, files in them that the
-   * generator no longer produces are reported as stale (e.g. a removed component).
+   * Directories fully owned by the generator. Files in them that the generator no
+   * longer produces (e.g. a removed component) are deleted, or reported in check mode.
    */
   ownedDirs?: string[]
 }
@@ -67,14 +67,14 @@ export async function emitFiles(
     }
   }
 
-  if (check) {
-    const produced = new Set(formatted.map((f) => f.path))
-    for (const dir of ownedDirs) {
-      if (!existsSync(dir)) continue
-      for (const entry of readdirSync(dir)) {
-        const path = join(dir, entry)
-        if (!produced.has(path)) stale.push(path)
-      }
+  const produced = new Set(formatted.map((f) => f.path))
+  for (const dir of ownedDirs) {
+    if (!existsSync(dir)) continue
+    for (const entry of readdirSync(dir)) {
+      const path = join(dir, entry)
+      if (produced.has(path)) continue
+      if (check) stale.push(path)
+      else await rm(path, { recursive: true })
     }
   }
 

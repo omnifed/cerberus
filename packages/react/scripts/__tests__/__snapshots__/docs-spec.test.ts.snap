@@ -19,8 +19,6 @@ exports[`every part resolves to the same prop names as last time 1`] = `
       "Accordion.ItemGroup": [
         "heading",
         "indicatorPosition",
-        "unstyled",
-        "css",
       ],
       "Accordion.ItemIndicator": [
         "asChild",
@@ -72,8 +70,6 @@ exports[`every part resolves to the same prop names as last time 1`] = `
         "heading",
         "onClose",
         "icon",
-        "unstyled",
-        "css",
       ],
       "Admonition.Heading": [
         "asChild",
@@ -104,8 +100,6 @@ exports[`every part resolves to the same prop names as last time 1`] = `
         "alt",
         "src",
         "fallback",
-        "unstyled",
-        "css",
       ],
       "Avatar.Fallback": [
         "asChild",
@@ -139,8 +133,6 @@ exports[`every part resolves to the same prop names as last time 1`] = `
     "parts": {
       "Button.El": [
         "pending",
-        "unstyled",
-        "css",
       ],
       "Button.Group": [
         "asChild",
@@ -150,13 +142,9 @@ exports[`every part resolves to the same prop names as last time 1`] = `
       "Button.Icon": [
         "children",
         "ref",
-        "unstyled",
-        "css",
       ],
       "Button.Provider": [
         "pending",
-        "unstyled",
-        "css",
       ],
       "Button.Root": [
         "palette",
@@ -195,8 +183,6 @@ exports[`every part resolves to the same prop names as last time 1`] = `
       ],
       "Carousel.El": [
         "showIndicators",
-        "unstyled",
-        "css",
       ],
       "Carousel.Indicator": [
         "index",
@@ -285,8 +271,6 @@ exports[`no props lose their description compared with last time 1`] = `
   "Accordion.ItemGroup": [
     "heading",
     "indicatorPosition",
-    "unstyled",
-    "css",
   ],
   "Accordion.ItemIndicator": [
     "asChild",
@@ -330,8 +314,6 @@ exports[`no props lose their description compared with last time 1`] = `
   "Admonition.El": [
     "heading",
     "onClose",
-    "unstyled",
-    "css",
   ],
   "Admonition.Heading": [
     "asChild",
@@ -350,10 +332,7 @@ exports[`no props lose their description compared with last time 1`] = `
     "unstyled",
     "css",
   ],
-  "Avatar.El": [
-    "unstyled",
-    "css",
-  ],
+  "Avatar.El": [],
   "Avatar.Fallback": [
     "asChild",
     "unstyled",
@@ -377,22 +356,15 @@ exports[`no props lose their description compared with last time 1`] = `
   ],
   "Button.El": [
     "pending",
-    "unstyled",
-    "css",
   ],
   "Button.Group": [
     "asChild",
     "unstyled",
     "css",
   ],
-  "Button.Icon": [
-    "unstyled",
-    "css",
-  ],
+  "Button.Icon": [],
   "Button.Provider": [
     "pending",
-    "unstyled",
-    "css",
   ],
   "Button.Root": [
     "palette",
@@ -421,8 +393,6 @@ exports[`no props lose their description compared with last time 1`] = `
   ],
   "Carousel.El": [
     "showIndicators",
-    "unstyled",
-    "css",
   ],
   "Carousel.Indicator": [
     "index",

@@ -5,6 +5,29 @@ export const REACT_PKG_ROOT = join(import.meta.dir, '..', '..')
 export const REPO_ROOT = join(REACT_PKG_ROOT, '..', '..')
 export const SCRIPTS_DIR = join(REACT_PKG_ROOT, 'scripts')
 export const COMPONENTS_DIR = join(REACT_PKG_ROOT, 'src', 'components')
+export const CONFIGS_DIR = join(REACT_PKG_ROOT, 'scripts', 'configs')
+
+export const PANDA_PRESET_RECIPES_DIR = join(
+  REPO_ROOT,
+  'packages',
+  'panda-preset',
+  'src',
+  'recipes',
+)
+export const DOCS_CONTENT_DIR = join(
+  REPO_ROOT,
+  'docs',
+  'content',
+  'docs',
+  'components',
+)
+export const DOCS_EXAMPLES_DIR = join(
+  REPO_ROOT,
+  'docs',
+  'examples',
+  'components',
+)
+export const TESTS_DIR = join(REPO_ROOT, 'tests')
 
 /**
  * Panda's design-system spec. It is emitted by the docs app (`panda codegen --spec`),

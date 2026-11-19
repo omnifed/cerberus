@@ -7,15 +7,18 @@
  *
  * The pieces live in `./docs`: parser → resolver → panda/spec-builder → writers.
  */
-import { config } from './configs'
+import { z } from 'zod'
+import { loadConfigs } from './core/configs'
 import { Diagnostics } from './core/diagnostics'
 import { emitFiles, reportStale, type GeneratedFile } from './core/emit'
+import { loadManifest } from './core/manifest'
 import { DOCS_SPEC_OUT_DIR } from './core/paths'
+import { ComponentDocSpecSchema } from './docs/schema'
 import {
   buildComponentDocSpec,
   createSpecBuilderContext,
 } from './docs/spec-builder'
-import { barrelFile, specJsonFile } from './docs/writers'
+import { barrelFile, schemaFile, specJsonFile } from './docs/writers'
 import type { ComponentConfig } from './manifest'
 
 export type {
@@ -29,12 +32,23 @@ export type {
  * Builds every spec in memory and returns the files to emit plus the diagnostics; the
  * caller decides whether to write or check.
  */
-export function generateDocSpecs(configs: ComponentConfig[] = config): {
+export function generateDocSpecs(configs: ComponentConfig[]): {
   files: GeneratedFile[]
   diagnostics: Diagnostics
 } {
   const ctx = createSpecBuilderContext()
-  const specs = configs.map((c) => buildComponentDocSpec(c, ctx))
+  const entries = loadManifest(configs, ctx.diagnostics, ctx.resolver.modules)
+  const specs = entries.map((entry) => buildComponentDocSpec(entry, ctx))
+
+  for (const spec of specs) {
+    const result = ComponentDocSpecSchema.safeParse(spec)
+    if (!result.success) {
+      ctx.diagnostics.error(
+        spec.key,
+        `Spec does not match the schema:\n${z.prettifyError(result.error)}`,
+      )
+    }
+  }
 
   for (const spec of specs) {
     const summary = spec.parts
@@ -44,14 +58,18 @@ export function generateDocSpecs(configs: ComponentConfig[] = config): {
   }
 
   return {
-    files: [...specs.map(specJsonFile), barrelFile(specs.map((s) => s.key))],
+    files: [
+      ...specs.map(specJsonFile),
+      barrelFile(specs.map((s) => s.key)),
+      schemaFile(),
+    ],
     diagnostics: ctx.diagnostics,
   }
 }
 
 async function main(): Promise<number> {
   const check = process.argv.includes('--check')
-  const { files, diagnostics } = generateDocSpecs()
+  const { files, diagnostics } = generateDocSpecs(await loadConfigs())
   diagnostics.print()
 
   const { stale } = await emitFiles(files, {

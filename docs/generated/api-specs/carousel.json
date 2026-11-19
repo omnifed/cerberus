@@ -9,6 +9,7 @@
       "exportName": "Carousel.El",
       "kind": "abstraction",
       "description": "An abstraction for rendering all the content-related primitives",
+      "inherits": ["Carousel.Root"],
       "props": [
         {
           "name": "showIndicators",
@@ -16,20 +17,6 @@
           "required": false,
           "defaultValue": "false",
           "description": "Whether to show the carousel indicators (dot list)."
-        },
-        {
-          "name": "unstyled",
-          "type": "boolean",
-          "required": false,
-          "defaultValue": "false",
-          "description": "Strips Cerberus PandaCSS recipe classes from this abstraction layer."
-        },
-        {
-          "name": "css",
-          "type": "SystemStyleObject",
-          "required": false,
-          "defaultValue": "undefined",
-          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props are also accepted."
         }
       ]
     },

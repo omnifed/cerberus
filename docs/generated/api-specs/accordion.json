@@ -15,6 +15,7 @@
       "exportName": "Accordion.ItemGroup",
       "kind": "abstraction",
       "description": "An abstraction for rendering all the content-related primitives.",
+      "inherits": ["Accordion.Item"],
       "props": [
         {
           "name": "heading",
@@ -28,20 +29,6 @@
           "required": false,
           "defaultValue": "'end'",
           "description": "The position of the indicator icon relative to the heading."
-        },
-        {
-          "name": "unstyled",
-          "type": "boolean",
-          "required": false,
-          "defaultValue": "false",
-          "description": "Strips Cerberus PandaCSS recipe classes from this abstraction layer."
-        },
-        {
-          "name": "css",
-          "type": "SystemStyleObject",
-          "required": false,
-          "defaultValue": "undefined",
-          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props are also accepted."
         }
       ]
     },

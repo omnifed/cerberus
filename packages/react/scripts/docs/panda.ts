@@ -31,22 +31,29 @@ export class PandaVariants {
     return this.spec
   }
 
-  /** Variants of the `key` recipe (slot recipe first), in Panda's order. */
-  variantsFor(key: string, diagnostics: Diagnostics): VariantSpec[] {
+  /**
+   * Variants of the `recipe` recipe (slot recipe first), in Panda's order.
+   * `scope` names the component in diagnostics.
+   */
+  variantsFor(
+    recipe: string,
+    scope: string,
+    diagnostics: Diagnostics,
+  ): VariantSpec[] {
     const spec = this.load()
     if (!spec) {
       diagnostics.error(
-        key,
+        scope,
         `Panda design-system spec not found at ${relative(REPO_ROOT, this.specPath)}; run \`pnpm --filter docs exec panda codegen --spec\`.`,
       )
       return []
     }
 
-    const recipe = spec.slotRecipes?.[key] ?? spec.recipes?.[key]
-    if (!recipe?.variants) return []
-    const defaults = recipe.defaultVariants ?? {}
+    const config = spec.slotRecipes?.[recipe] ?? spec.recipes?.[recipe]
+    if (!config?.variants) return []
+    const defaults = config.defaultVariants ?? {}
 
-    return Object.entries(recipe.variants).map(([name, variant]) => {
+    return Object.entries(config.variants).map(([name, variant]) => {
       const values = Array.isArray(variant?.values)
         ? variant.values.map(String)
         : Object.keys(variant ?? {})
