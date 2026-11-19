@@ -3,12 +3,17 @@ import { existsSync } from 'node:fs'
 import { relative } from 'node:path'
 import { loadConfigs } from 'codegen/core/configs'
 import { loadManifest } from 'codegen/core/manifest'
-import { DESIGN_SYSTEM_SPEC_PATH, REPO_ROOT } from 'codegen/core/paths'
+import {
+  DESIGN_SYSTEM_SPEC_PATH,
+  REACT_PKG_ROOT,
+  REPO_ROOT,
+} from 'codegen/core/paths'
 import {
   buildComponentDocSpec,
   createSpecBuilderContext,
 } from 'codegen/docs/spec-builder'
 import type { ComponentDocSpec } from 'codegen/docs/types'
+import { ZAG_DOCS_VERSION } from 'codegen/docs/zag/zag-docs'
 
 /**
  * Integration tests against the real installed Ark UI / Zag.js / Panda sources.
@@ -32,6 +37,13 @@ if (!HAS_SPEC) {
   )
 }
 const it = test.skipIf(!HAS_SPEC)
+
+/** Version of `@zag-js/<key>` as Ark resolves it */
+function zagVersion(key: string): string {
+  const ark = Bun.resolveSync('@ark-ui/react/package.json', REACT_PKG_ROOT)
+  const pkg = Bun.resolveSync(`@zag-js/${key}/package.json`, ark)
+  return (require(pkg) as { version: string }).version
+}
 
 const ctx = createSpecBuilderContext()
 const { diagnostics } = ctx
@@ -77,9 +89,21 @@ describe.skipIf(!HAS_SPEC)('baseline prop counts never regress', () => {
   test('primitives carry data attributes, keys and machine defaults from Zag', () => {
     expect(part('accordion', 'Accordion.Item').dataAttributes).toEqual([
       { name: 'data-state', values: ['open', 'closed'] },
-      { name: 'data-focus', presence: true },
-      { name: 'data-disabled', presence: true },
-      { name: 'data-orientation', reflects: 'orientation' },
+      {
+        name: 'data-focus',
+        presence: true,
+        description: 'Present when focused.',
+      },
+      {
+        name: 'data-disabled',
+        presence: true,
+        description: 'Present when disabled.',
+      },
+      {
+        name: 'data-orientation',
+        reflects: 'orientation',
+        description: 'The orientation of the item.',
+      },
     ])
     expect(part('accordion', 'Accordion.ItemTrigger').keyboard).toEqual([
       'ArrowDown',
@@ -93,6 +117,29 @@ describe.skipIf(!HAS_SPEC)('baseline prop counts never regress', () => {
       (p) => p.name === 'defaultValue',
     )
     expect(defaultValue?.defaultValue).toBe('[]')
+  })
+
+  test('@zag-js/docs adds keyboard rows, attribute prose and CSS variables', () => {
+    expect(ZAG_DOCS_VERSION).toBe(zagVersion('accordion'))
+    expect(specs.get('accordion')?.a11y?.keyboard.map((k) => k.key)).toEqual([
+      'Space',
+      'Enter',
+      'Tab',
+      'Shift + Tab',
+      'ArrowDown',
+      'ArrowUp',
+      'ArrowRight',
+      'ArrowLeft',
+      'Home',
+      'End',
+    ])
+    const focus = part('accordion', 'Accordion.Item').dataAttributes?.find(
+      (a) => a.name === 'data-focus',
+    )
+    expect(focus?.description).toBe('Present when focused.')
+    expect(
+      part('carousel', 'Carousel.Root').cssVars?.map((v) => v.name),
+    ).toEqual(['--slides-per-page', '--slide-spacing', '--slide-item-size'])
   })
 
   test('Accordion.Root resolves Zag props with JSDoc and defaults', () => {

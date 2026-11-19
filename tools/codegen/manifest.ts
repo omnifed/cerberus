@@ -2,7 +2,7 @@
  * Per-component config consumed by every generator (API, docs spec, scaffold).
  * Only write what can't be derived: everything optional below has a derived default.
  */
-import type { A11ySpec, KeyboardMapping } from './docs/types'
+import type { KeyboardMapping } from './docs/types'
 
 export type { KeyboardMapping }
 
@@ -21,7 +21,18 @@ export type AbstractionConfig = {
   types?: string[]
 }
 
-export type A11yConfig = A11ySpec
+/**
+ * Everything is optional. Keyboard rows come from `@zag-js/docs`; `keyboard` here only
+ * overrides a row's description (same key) or adds a key the package doesn't describe.
+ * Every key the Zag machine handles must end up described, or generation fails.
+ */
+export type A11yConfig = {
+  /** WAI-ARIA pattern name; set together with `apgUrl` */
+  pattern?: string
+  apgUrl?: string
+  keyboard?: KeyboardMapping[]
+  notes?: string[]
+}
 
 export type ComponentConfig = {
   /** Kebab-case key: the folder name and the `@ark-ui/react/<key>` subpath */

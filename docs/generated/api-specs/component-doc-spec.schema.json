@@ -106,11 +106,16 @@
                 "reflects": {
                   "description": "Mirrors the value of this prop (on the part or on Root)",
                   "type": "string"
+                },
+                "description": {
+                  "description": "From `@zag-js/docs`",
+                  "type": "string",
+                  "minLength": 1
                 }
               },
               "required": ["name"],
               "additionalProperties": false,
-              "description": "A data attribute set by Zag.js, derived from its `connect` source"
+              "description": "A data attribute set by Zag.js, from its `connect` source and `@zag-js/docs`"
             }
           },
           "keyboard": {
@@ -119,6 +124,26 @@
             "items": {
               "type": "string",
               "minLength": 1
+            }
+          },
+          "cssVars": {
+            "description": "CSS variables this part sets",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^--[a-z0-9-]+$"
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["name", "description"],
+              "additionalProperties": false,
+              "description": "A CSS variable set by Zag.js, from `@zag-js/docs`"
             }
           },
           "props": {
@@ -170,9 +195,9 @@
       "type": "object",
       "properties": {
         "pattern": {
+          "description": "WAI-ARIA pattern name",
           "type": "string",
-          "minLength": 1,
-          "description": "WAI-ARIA pattern name"
+          "minLength": 1
         },
         "apgUrl": {
           "type": "string",
@@ -195,7 +220,8 @@
             },
             "required": ["key", "description"],
             "additionalProperties": false
-          }
+          },
+          "description": "`@zag-js/docs` rows, with config overrides applied"
         },
         "notes": {
           "type": "array",
@@ -204,7 +230,7 @@
           }
         }
       },
-      "required": ["pattern", "apgUrl", "keyboard"],
+      "required": ["keyboard"],
       "additionalProperties": false
     }
   },

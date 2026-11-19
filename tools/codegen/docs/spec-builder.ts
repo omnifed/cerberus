@@ -7,10 +7,22 @@ import type { AbstractionConfig } from '../manifest'
 import { PandaVariants, variantToProp } from './panda'
 import { mergePropLists } from './resolver/prop-utils'
 import { TypeResolver, type UnresolvedRef } from './resolver/type-resolver'
-import type { ComponentDocSpec, PartSpec, PropSpec } from './types'
+import type {
+  A11ySpec,
+  ComponentDocSpec,
+  KeyboardMapping,
+  PartSpec,
+  PropSpec,
+} from './types'
 import { extractConnectPart, type ConnectPart } from './zag/connect'
-import { checkKeyboardDrift } from './zag/keyboard'
+import { checkKeyboardCoverage, mergeKeyboard } from './zag/keyboard'
 import { extractMachineDefaults } from './zag/machine'
+import {
+  describeDataAttributes,
+  loadZagDocs,
+  ZAG_DOCS_VERSION,
+  type ZagDocs,
+} from './zag/zag-docs'
 import { loadZagSource } from './zag/zag-source'
 
 /** Props every Cerberus primitive accepts on top of its Ark/Zag props. */
@@ -73,6 +85,7 @@ export function buildComponentDocSpec(
     variantProps: variants.map(variantToProp),
     machineDefaults: zag?.defaults ?? new Map(),
     connect: (part) => zag?.part(part) ?? null,
+    docs: zag?.docs ?? null,
   }
 
   const parts: PartSpec[] = [
@@ -80,26 +93,53 @@ export function buildComponentDocSpec(
     ...entry.primitives.map((part) => buildPrimitive(entry, part, inputs, ctx)),
   ]
 
-  if (zag && entry.a11y) {
-    checkKeyboardDrift(
-      entry.key,
-      entry.a11y.keyboard,
-      entry.primitives.map((part) => ({
-        exportName: `${entry.name}.${partExportKey(part)}`,
-        keys: zag.part(part)?.keyboard ?? [],
-        isButton: zag.part(part)?.element === 'button',
-      })),
-      ctx.diagnostics,
-    )
-  }
-
+  const a11y = buildA11y(entry, zag, ctx.diagnostics)
   return {
     name: entry.name,
     key: entry.key,
     description: entry.description,
     variants,
     parts,
-    ...(entry.a11y ? { a11y: entry.a11y } : {}),
+    ...(a11y ? { a11y } : {}),
+  }
+}
+
+/**
+ * Keyboard rows come from `@zag-js/docs` with the config's overrides applied, and must
+ * cover every key the Zag machine handles. Without Zag (Cerberus-only components) the
+ * config's rows are used as they are. Omitted when there is nothing to say.
+ */
+function buildA11y(
+  entry: ComponentEntry,
+  zag: ZagFacts | null,
+  diagnostics: Diagnostics,
+): A11ySpec | null {
+  const config = entry.a11y ?? {}
+  const overrides: KeyboardMapping[] = config.keyboard ?? []
+  let keyboard = overrides
+  if (zag) {
+    const fromDocs = zag.docs?.keyboard ?? []
+    keyboard = mergeKeyboard(entry.key, fromDocs, overrides, diagnostics)
+    checkKeyboardCoverage(
+      entry.key,
+      keyboard,
+      { fromDocs, overrides },
+      entry.primitives.map((part) => ({
+        exportName: `${entry.name}.${partExportKey(part)}`,
+        keys: zag.part(part)?.keyboard ?? [],
+        isButton: zag.part(part)?.element === 'button',
+      })),
+      diagnostics,
+    )
+  }
+  if (keyboard.length === 0 && !config.pattern && !config.notes?.length) {
+    return null
+  }
+  return {
+    ...(config.pattern ? { pattern: config.pattern } : {}),
+    ...(config.apgUrl ? { apgUrl: config.apgUrl } : {}),
+    keyboard,
+    ...(config.notes ? { notes: config.notes } : {}),
   }
 }
 
@@ -165,6 +205,8 @@ function buildAbstraction(
 interface ZagFacts {
   defaults: Map<string, string>
   part: (part: string) => ConnectPart | null
+  /** Descriptions from `@zag-js/docs`; null when it doesn't cover the machine */
+  docs: ZagDocs | null
 }
 
 /** What the Zag.js machine behind an Ark component reveals; null for non-Ark ones. */
@@ -181,9 +223,16 @@ function loadZagFacts(
     )
     return null
   }
+  if (source.version !== ZAG_DOCS_VERSION) {
+    diagnostics.error(
+      entry.key,
+      `@zag-js/docs is ${ZAG_DOCS_VERSION} but ${source.packageName} is ${source.version}; pin @zag-js/docs to ${source.version} in tools/codegen/package.json`,
+    )
+  }
   const connect = source.connect
   const cache = new Map<string, ConnectPart | null>()
   return {
+    docs: loadZagDocs(source.packageName.replace('@zag-js/', '')),
     defaults: source.machine
       ? extractMachineDefaults(source.machine)
       : new Map(),
@@ -198,6 +247,7 @@ interface PrimitiveInputs {
   variantProps: PropSpec[]
   machineDefaults: Map<string, string>
   connect: (part: string) => ConnectPart | null
+  docs: ZagDocs | null
 }
 
 /** Quote style aside, do two default-value source texts say the same thing? */
@@ -243,20 +293,27 @@ function partAttrs(entry: ComponentEntry, part: string) {
 }
 
 /** Optional part fields derived from Zag, omitted when empty to keep specs small. */
-function zagPartFields(info: ConnectPart | null): Partial<PartSpec> {
+function zagPartFields(
+  part: string,
+  info: ConnectPart | null,
+  docs: ZagDocs | null,
+): Partial<PartSpec> {
   if (!info) return {}
+  const dataAttributes = docs
+    ? describeDataAttributes(info.dataAttributes, docs.dataAttributes(part))
+    : info.dataAttributes
+  const cssVars = docs?.cssVars(part) ?? []
   return {
-    ...(info.dataAttributes.length > 0
-      ? { dataAttributes: info.dataAttributes }
-      : {}),
+    ...(dataAttributes.length > 0 ? { dataAttributes } : {}),
     ...(info.keyboard.length > 0 ? { keyboard: info.keyboard } : {}),
+    ...(cssVars.length > 0 ? { cssVars } : {}),
   }
 }
 
 function buildPrimitive(
   entry: ComponentEntry,
   part: string,
-  { variantProps, machineDefaults, connect }: PrimitiveInputs,
+  { variantProps, machineDefaults, connect, docs }: PrimitiveInputs,
   ctx: SpecBuilderContext,
 ): PartSpec {
   const { name, key, arkEntry } = entry
@@ -315,7 +372,7 @@ function buildPrimitive(
       ? `The root container of the ${name} component.`
       : `The ${toKebabCase(part)} primitive part of the ${name} component.`,
     ...partAttrs(entry, part),
-    ...zagPartFields(connect(part)),
+    ...zagPartFields(part, connect(part), docs),
     props: mergePropLists(ownProps, PRIMITIVE_PROPS),
   }
 }

@@ -4,6 +4,8 @@ import { dirname, join } from 'node:path'
 export interface ZagSource {
   /** e.g. `@zag-js/accordion` */
   packageName: string
+  /** Installed version, which `@zag-js/docs` must match */
+  version: string
   /** `dist/*.connect.mjs` source, if the package has one */
   connect: string | null
   /** `dist/*.machine.mjs` source, if the package has one */
@@ -31,6 +33,8 @@ export function loadZagSource(key: string, arkEntry: string): ZagSource | null {
   const distDir = join(dirname(pkgJson), 'dist')
   return {
     packageName,
+    version: (JSON.parse(readFileSync(pkgJson, 'utf-8')) as { version: string })
+      .version,
     connect: readDistFile(distDir, '.connect.mjs'),
     machine: readDistFile(distDir, '.machine.mjs'),
   }

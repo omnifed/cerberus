@@ -18,4 +18,41 @@ The Carousel component can be used in various contexts, mostly pertaining to mar
       types: ['CarouselProps'],
     },
   ],
+
+  // @zag-js/docs has no carousel keyboard rows, so these describe the keys Zag
+  // handles on the indicator group
+  a11y: {
+    pattern: 'Carousel',
+    apgUrl: 'https://www.w3.org/WAI/ARIA/apg/patterns/carousel/',
+    keyboard: [
+      {
+        key: 'ArrowRight',
+        description:
+          'When focus is on an indicator and orientation is horizontal, moves to the next page.',
+      },
+      {
+        key: 'ArrowLeft',
+        description:
+          'When focus is on an indicator and orientation is horizontal, moves to the previous page.',
+      },
+      {
+        key: 'ArrowDown',
+        description:
+          'When focus is on an indicator and orientation is vertical, moves to the next page.',
+      },
+      {
+        key: 'ArrowUp',
+        description:
+          'When focus is on an indicator and orientation is vertical, moves to the previous page.',
+      },
+      {
+        key: 'Home',
+        description: 'When focus is on an indicator, moves to the first page.',
+      },
+      {
+        key: 'End',
+        description: 'When focus is on an indicator, moves to the last page.',
+      },
+    ],
+  },
 })
