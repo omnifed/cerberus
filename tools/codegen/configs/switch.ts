@@ -21,7 +21,7 @@ Use the default \`<Switch>\` for a labeled switch with the Cerberus check indica
   ],
 
   // Not in Ark's switch anatomy, so it has no recipe slot
-  arkMembers: ['HiddenInput'],
+  arkMembers: ['HiddenInput', 'RootProvider'],
 
   // Keyboard rows come from @zag-js/docs
   a11y: {

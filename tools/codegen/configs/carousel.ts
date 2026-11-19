@@ -55,4 +55,7 @@ The Carousel component can be used in various contexts, mostly pertaining to mar
       },
     ],
   },
+
+  // Styled RootProvider for `useCarousel()` state
+  arkMembers: ['RootProvider'],
 })

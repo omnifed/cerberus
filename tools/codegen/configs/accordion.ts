@@ -67,4 +67,7 @@ The Accordion component can be used in various contexts, such as displaying FAQs
       },
     ],
   },
+
+  // Styled RootProvider for `useAccordion()` state
+  arkMembers: ['RootProvider'],
 })

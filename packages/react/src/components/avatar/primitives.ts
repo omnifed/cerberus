@@ -25,3 +25,8 @@ export const AvatarImage = withContext(ArkAvatar.Image, 'image')
 
 export type AvatarFallbackProps = ComponentProps<typeof AvatarFallback>
 export const AvatarFallback = withContext(ArkAvatar.Fallback, 'fallback')
+
+// AvatarRootProvider -----------------------------------------------------
+
+export type AvatarRootProviderProps = ComponentProps<typeof AvatarRootProvider>
+export const AvatarRootProvider = withProvider(ArkAvatar.RootProvider, 'root')

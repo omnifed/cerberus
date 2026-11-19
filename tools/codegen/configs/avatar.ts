@@ -18,4 +18,7 @@ The Avatar component can be used in various contexts, such as profiles, App Bars
       isDefaultExport: true,
     },
   ],
+
+  // Styled RootProvider for `useAvatar()` state
+  arkMembers: ['RootProvider'],
 })

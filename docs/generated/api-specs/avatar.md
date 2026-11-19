@@ -81,3 +81,19 @@ Selector: `[data-scope="avatar"][data-part="fallback"]`
 | Data attribute | Value |
 | --- | --- |
 | `data-state` | `"hidden"` \| `"visible"` |
+
+### Avatar.RootProvider (primitive)
+
+The root container of the Avatar component, driven by state created with `useAvatar()`.
+
+Selector: `[data-scope="avatar"][data-part="root"]`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `gradient` | `'amphiaraus-dark' \| 'amphiaraus-light' \| 'asphodel-light' \| 'asphodel-dark' \| 'charon-light' \| 'charon-dark' \| 'hades-light' \| 'hades-dark' \| 'nyx-light' \| 'nyx-dark' \| 'styx-light' \| 'styx-dark' \| 'thanatos-light' \| 'thanatos-dark' \| 'none'` | No | `'none'` | PandaCSS recipe variant for gradient. |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' \| '3xl' \| '4xl'` | No | `'md'` | PandaCSS recipe variant for size. |
+| `shape` | `'circle' \| 'square'` | No | `'circle'` | PandaCSS recipe variant for shape. |
+| `value` | `UseAvatarReturn` | Yes | — |  |
+| `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
+| `unstyled` | `boolean` | No | `false` | Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes. |
+| `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |

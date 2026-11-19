@@ -50,3 +50,13 @@ export const AccordionItemIndicator = withContext(
   ArkAccordion.ItemIndicator,
   'itemIndicator',
 )
+
+// AccordionRootProvider -----------------------------------------------------
+
+export type AccordionRootProviderProps = ComponentProps<
+  typeof AccordionRootProvider
+>
+export const AccordionRootProvider = withProvider(
+  ArkAccordion.RootProvider,
+  'root',
+)

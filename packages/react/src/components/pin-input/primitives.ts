@@ -41,3 +41,13 @@ export type PinInputHiddenInputProps = ComponentProps<
   typeof PinInputHiddenInput
 >
 export const PinInputHiddenInput = styled(ArkPinInput.HiddenInput)
+
+// PinInputRootProvider -----------------------------------------------------
+
+export type PinInputRootProviderProps = ComponentProps<
+  typeof PinInputRootProvider
+>
+export const PinInputRootProvider = withProvider(
+  ArkPinInput.RootProvider,
+  'root',
+)

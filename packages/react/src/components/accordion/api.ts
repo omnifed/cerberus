@@ -11,6 +11,7 @@ import {
   AccordionItemTrigger,
   AccordionItemContent,
   AccordionItemIndicator,
+  AccordionRootProvider,
 } from './primitives'
 
 export type {
@@ -19,6 +20,7 @@ export type {
   AccordionItemTriggerProps,
   AccordionItemContentProps,
   AccordionItemIndicatorProps,
+  AccordionRootProviderProps,
 } from './primitives'
 
 /**
@@ -39,6 +41,7 @@ export type {
  * | `ItemTrigger` | Primitive | The itemTrigger element of the Accordion component. |
  * | `ItemContent` | Primitive | The itemContent element of the Accordion component. |
  * | `ItemIndicator` | Primitive | The itemIndicator element of the Accordion component. |
+ * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useAccordion()`. |
  * | `ItemGroup` | Abstraction | An abstraction for rendering all the content-related primitives. |
  *
  * @example
@@ -59,5 +62,6 @@ export const Accordion = Object.assign(AccordionRoot, {
   ItemTrigger: AccordionItemTrigger,
   ItemContent: AccordionItemContent,
   ItemIndicator: AccordionItemIndicator,
+  RootProvider: AccordionRootProvider,
   ItemGroup: AccordionItemGroup,
 })

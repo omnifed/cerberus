@@ -228,6 +228,29 @@ Selector: `[data-scope="carousel"][data-part="autoplay-indicator"]`
 | `unstyled` | `boolean` | No | `false` | Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes. |
 | `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
 
+### Carousel.RootProvider (primitive)
+
+The root container of the Carousel component, driven by state created with `useCarousel()`.
+
+Selector: `[data-scope="carousel"][data-part="root"]`
+
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `value` | `UseCarouselReturn` | Yes | — |  |
+| `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
+| `unstyled` | `boolean` | No | `false` | Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes. |
+| `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
+
+| Data attribute | Value |
+| --- | --- |
+| `data-orientation` | Mirrors the `orientation` prop |
+
+| CSS variable | Description |
+| --- | --- |
+| `--slides-per-page` | The number of slides visible per page. |
+| `--slide-spacing` | The spacing between slides. |
+| `--slide-item-size` | The calculated size of each slide item. |
+
 ## Accessibility
 
 Follows the [Carousel WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).

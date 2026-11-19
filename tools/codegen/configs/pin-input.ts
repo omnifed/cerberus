@@ -21,7 +21,7 @@ Rendered on its own, PinInput displays one input per \`count\` (3 by default) pl
   ],
 
   // Not in Ark's pin-input anatomy, so it has no recipe slot
-  arkMembers: ['HiddenInput'],
+  arkMembers: ['HiddenInput', 'RootProvider'],
 
   // Rows come from @zag-js/docs, which doesn't describe Enter
   a11y: {
