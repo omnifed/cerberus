@@ -28,6 +28,7 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     arkName,
     arkMembers,
     providers,
+    memberSlots,
     primitives: parts,
     rootProvider,
     description,
@@ -51,7 +52,11 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     const needsStyled =
       !recipe ||
       arkMembers.some(
-        (m) => m !== 'RootProvider' && !m.endsWith('Context') && !isProvider(m),
+        (m) =>
+          m !== 'RootProvider' &&
+          !m.endsWith('Context') &&
+          !isProvider(m) &&
+          !memberSlots[m],
       )
     const jsxImports = [
       'type ComponentProps',
@@ -98,9 +103,11 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
             ? styled(member, 'root', true)
             : isProvider(member)
               ? styled(member, providerSlot(member)!, false)
-              : member.endsWith('Context')
-                ? `${ark}.${member}`
-                : `styled(${ark}.${member})`,
+              : memberSlots[member]
+                ? styled(member, memberSlots[member], false)
+                : member.endsWith('Context')
+                  ? `${ark}.${member}`
+                  : `styled(${ark}.${member})`,
       })),
     ]
 
@@ -199,11 +206,13 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     const desc =
       member === 'RootProvider'
         ? `A \`Root\` driven by state from Ark's \`use${arkName}()\`.`
-        : providers.includes(member)
-          ? `A \`${capitalize(providerSlot(member)!)}\` driven by state from Ark's \`use${arkName}${capitalize(providerSlot(member)!)}()\`.`
-          : member.endsWith('Context')
-            ? `Exposes the ${name} ${member === 'Context' ? '' : `${toKebabCase(member.replace(/Context$/, '')).replace(/-/g, ' ')} `}state to a render function.`
-            : `The ${toKebabCase(member).replace(/-/g, ' ')} element of the ${name} component. It has no recipe slot.`
+        : memberSlots[member]
+          ? `The ${toKebabCase(member).replace(/-/g, ' ')} element of the ${name} component, styled with the \`${memberSlots[member]}\` slot.`
+          : providers.includes(member)
+            ? `A \`${capitalize(providerSlot(member)!)}\` driven by state from Ark's \`use${arkName}${capitalize(providerSlot(member)!)}()\`.`
+            : member.endsWith('Context')
+              ? `Exposes the ${name} ${member === 'Context' ? '' : `${toKebabCase(member.replace(/Context$/, '')).replace(/-/g, ' ')} `}state to a render function.`
+              : `The ${toKebabCase(member).replace(/-/g, ' ')} element of the ${name} component. It has no recipe slot.`
     jsDoc += ` * | \`${member}\` | Primitive | ${desc} |\n`
   }
 

@@ -40,6 +40,8 @@ export interface ComponentEntry {
   arkMembers: string[]
   /** Parts and `*Provider` members that provide the slot recipe outside `Root` */
   providers: string[]
+  /** `arkMembers` styled with an anatomy slot */
+  memberSlots: Record<string, string>
   description: string
   abstractions: AbstractionConfig[]
   types: string[]
@@ -164,6 +166,25 @@ export function loadManifest(
       }
     }
 
+    const memberSlots = config.memberSlots ?? {}
+    for (const [member, slot] of Object.entries(memberSlots)) {
+      if (!arkMembers.includes(member)) {
+        diagnostics.error(key, `memberSlots.${member}: not in arkMembers`)
+      }
+      if (!parts.includes(slot)) {
+        diagnostics.error(
+          key,
+          `memberSlots.${member}: \`${slot}\` is not an anatomy part`,
+        )
+      }
+      if (config.recipe === false) {
+        diagnostics.error(
+          key,
+          `memberSlots needs a slot recipe; recipe is false`,
+        )
+      }
+    }
+
     const exports = config.exports ?? []
     for (const { from, values = [], types = [] } of exports) {
       if (values.length + types.length === 0) {
@@ -225,6 +246,7 @@ export function loadManifest(
       arkEntry: source === 'ark' ? arkEntry : null,
       arkMembers,
       providers,
+      memberSlots,
       anatomy: config.anatomy,
       parts,
       rootProvider,

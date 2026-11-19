@@ -71,6 +71,12 @@ export type ComponentConfig = {
    * `<Part>Provider` (`GroupProvider`) can be listed too; it provides `<part>`'s slot.
    */
   providers?: string[]
+  /**
+   * Styles an `arkMembers` part outside the anatomy with an existing slot, e.g.
+   * `{ CheckboxItem: 'item' }` for Menu.CheckboxItem. Without it such a member is
+   * unstyled.
+   */
+  memberSlots?: Record<string, string>
   abstractions?: AbstractionConfig[]
   /** Public types re-exported from `primitives.ts` (Cerberus-only components) */
   types?: string[]
