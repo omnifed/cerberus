@@ -58,8 +58,11 @@ export type ComponentConfig = {
    */
   source?: 'ark' | 'cerberus'
   /**
-   * Ark namespace members to expose besides the anatomy parts: `RootProvider`, or a
-   * render-prop context such as `Context` or `ItemContext` (passed through unstyled).
+   * Ark namespace members to expose besides the anatomy parts:
+   * - `RootProvider`: styled like `Root`, driven by `useX()` state
+   * - `*Context` (`Context`, `ItemContext`): render props, passed through
+   * - any other part outside the anatomy (`HiddenInput`, `HiddenSelect`): no recipe
+   *   slot exists for it, so it's wrapped with `cerberus()` (style props, `css`, `asChild`)
    */
   arkMembers?: string[]
   abstractions?: AbstractionConfig[]

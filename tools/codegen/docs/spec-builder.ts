@@ -92,7 +92,9 @@ export function buildComponentDocSpec(
     ...entry.arkMembers.map((member) =>
       member === 'RootProvider'
         ? buildPrimitive(entry, 'root', inputs, ctx, member)
-        : buildContext(entry, member, ctx),
+        : member.endsWith('Context')
+          ? buildContext(entry, member, ctx)
+          : buildUnslotted(entry, member, inputs, ctx),
     ),
   ]
 
@@ -254,8 +256,16 @@ interface PrimitiveInputs {
 }
 
 /** Quote style aside, do two default-value source texts say the same thing? */
-const sameDefault = (a: string, b: string) =>
-  a.replace(/'/g, '"') === b.replace(/'/g, '"')
+const sameDefault = (a: string, b: string) => {
+  // Machine sources escape non-ASCII (`"\\u25CB"`); JSDoc writes the character
+  const norm = (s: string) =>
+    s
+      .replace(/'/g, '"')
+      .replace(/\\u([0-9a-fA-F]{4})/g, (_, hex: string) =>
+        String.fromCharCode(Number.parseInt(hex, 16)),
+      )
+  return norm(a) === norm(b)
+}
 
 /** Fills Root props that lack a JSDoc `@default` from the machine's defaults. */
 function applyMachineDefaults(
@@ -361,6 +371,28 @@ function zagPartFields(
     ...(dataAttributes.length > 0 ? { dataAttributes } : {}),
     ...(info.keyboard.length > 0 ? { keyboard: info.keyboard } : {}),
     ...(cssVars.length > 0 ? { cssVars } : {}),
+  }
+}
+
+/** An Ark part outside the anatomy (`HiddenInput`): `cerberus()`-wrapped, no recipe slot. */
+function buildUnslotted(
+  entry: ComponentEntry,
+  member: string,
+  { connect, docs }: PrimitiveInputs,
+  ctx: SpecBuilderContext,
+): PartSpec {
+  const subject = `${entry.name}.${member}`
+  const part = member[0].toLowerCase() + member.slice(1)
+  return {
+    name: member,
+    exportName: subject,
+    kind: 'primitive',
+    description: `The ${toKebabCase(part)} primitive part of the ${entry.name} component. It has no recipe slot, so it is unstyled.`,
+    ...zagPartFields(part, connect(part), docs),
+    props: mergePropLists(
+      arkPropsFor(entry, member, subject, ctx),
+      PRIMITIVE_PROPS.filter((p) => p.name !== 'unstyled'),
+    ),
   }
 }
 

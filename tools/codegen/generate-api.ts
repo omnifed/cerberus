@@ -38,17 +38,25 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     const ark = `Ark${arkName}`
     let primitivesCode = `${GENERATED_HEADER}'use client'\n\n`
     primitivesCode += `import { ${arkName} as ${ark} } from '@ark-ui/react/${arkKey}'\n`
+    // Members outside the anatomy have no recipe slot; without a recipe nothing does
+    const needsCerberus =
+      !recipe ||
+      arkMembers.some((m) => m !== 'RootProvider' && !m.endsWith('Context'))
     if (recipe) {
       primitivesCode += `import { type ComponentProps, createSlotRecipeContext } from 'styled-system/jsx'\n`
-      primitivesCode += `import { ${recipe} } from 'styled-system/recipes'\n\n`
+      primitivesCode += `import { ${recipe} } from 'styled-system/recipes'\n`
+    } else {
+      primitivesCode += `import type { ComponentProps } from 'react'\n`
+    }
+    if (needsCerberus) {
+      primitivesCode += `import { cerberus } from '../../system/index'\n`
+    }
+    primitivesCode += `\n`
+    if (recipe) {
       const factories = rootProvider
         ? 'withRootProvider, withContext'
         : 'withProvider, withContext'
       primitivesCode += `const { ${factories} } = createSlotRecipeContext(${recipe})\n\n`
-    } else {
-      // No slot recipe: style props, `css` and `asChild` only
-      primitivesCode += `import type { ComponentProps } from 'react'\n`
-      primitivesCode += `import { cerberus } from '../../system/index'\n\n`
     }
 
     /** `root` provides the recipe; other parts consume it from context */
@@ -66,13 +74,16 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
         exportKey: capitalize(part),
         code: styled(capitalize(part), part, part === 'root'),
       })),
-      // `RootProvider` is a `Root` driven by an external `useX()`; contexts render props
+      // `RootProvider` is a `Root` driven by an external `useX()`; contexts render
+      // props; any other member has no recipe slot
       ...arkMembers.map((member) => ({
         exportKey: member,
         code:
           member === 'RootProvider'
             ? styled(member, 'root', true)
-            : `${ark}.${member}`,
+            : member.endsWith('Context')
+              ? `${ark}.${member}`
+              : `cerberus(${ark}.${member})`,
       })),
     ]
 
