@@ -42,6 +42,8 @@ export interface ComponentEntry {
   providers: string[]
   /** `arkMembers` styled with an anatomy slot */
   memberSlots: Record<string, string>
+  /** Recipe slots outside the anatomy, rendered as `ark.<element>` */
+  elementParts: Record<string, string>
   description: string
   abstractions: AbstractionConfig[]
   types: string[]
@@ -185,6 +187,25 @@ export function loadManifest(
       }
     }
 
+    const elementParts = config.elementParts ?? {}
+    for (const [slot, element] of Object.entries(elementParts)) {
+      if (parts.includes(slot)) {
+        diagnostics.error(key, `elementParts.${slot}: already an anatomy part`)
+      }
+      if (!/^[a-z][a-z0-9]*$/.test(element)) {
+        diagnostics.error(
+          key,
+          `elementParts.${slot}: \`${element}\` is not an element name`,
+        )
+      }
+      if (source !== 'ark' || config.recipe === false) {
+        diagnostics.error(
+          key,
+          `elementParts is for Ark components with a slot recipe`,
+        )
+      }
+    }
+
     const exports = config.exports ?? []
     for (const { from, values = [], types = [] } of exports) {
       if (values.length + types.length === 0) {
@@ -247,6 +268,7 @@ export function loadManifest(
       arkMembers,
       providers,
       memberSlots,
+      elementParts,
       anatomy: config.anatomy,
       parts,
       rootProvider,

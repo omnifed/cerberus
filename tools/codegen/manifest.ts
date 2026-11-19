@@ -77,6 +77,12 @@ export type ComponentConfig = {
    * unstyled.
    */
   memberSlots?: Record<string, string>
+  /**
+   * Recipe slots outside the Ark anatomy, rendered as plain elements that read the
+   * recipe from context, e.g. `{ header: 'div' }` → `Popover.Header` =
+   * `withContext(ark.div, 'header')`.
+   */
+  elementParts?: Record<string, string>
   abstractions?: AbstractionConfig[]
   /** Public types re-exported from `primitives.ts` (Cerberus-only components) */
   types?: string[]
