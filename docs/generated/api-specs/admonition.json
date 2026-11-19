@@ -2,7 +2,18 @@
   "name": "Admonition",
   "key": "admonition",
   "description": "The Admonition component is a versatile UI element that can be used to display important information, warnings, or notes in a visually distinct manner. It is composed of several primitives that allow for customization and flexibility in its usage.\n\nThe Admonition component can be used in various contexts, such as displaying alerts, tips, or any other information that needs to be highlighted. It supports different palettes and usage styles to match the design requirements of your application.",
-  "variants": [],
+  "variants": [
+    {
+      "name": "palette",
+      "values": ["page", "info", "success", "warning", "danger"],
+      "defaultValue": "'page'"
+    },
+    {
+      "name": "usage",
+      "values": ["filled", "outlined"],
+      "defaultValue": "'filled'"
+    }
+  ],
   "parts": [
     {
       "name": "El",
@@ -52,6 +63,20 @@
       "dataScope": "admonition",
       "dataPart": "root",
       "props": [
+        {
+          "name": "palette",
+          "type": "'page' | 'info' | 'success' | 'warning' | 'danger'",
+          "required": false,
+          "defaultValue": "'page'",
+          "description": "PandaCSS recipe variant for palette."
+        },
+        {
+          "name": "usage",
+          "type": "'filled' | 'outlined'",
+          "required": false,
+          "defaultValue": "'filled'",
+          "description": "PandaCSS recipe variant for usage."
+        },
         {
           "name": "asChild",
           "type": "boolean",

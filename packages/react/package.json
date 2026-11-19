@@ -175,7 +175,11 @@
     "watch": "pnpm generate --watch",
     "clean": "rm -rf ./dist",
     "build": "vite build && pnpm lib",
-    "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
+    "lint:ts": "tsc --project tsconfig.lint.json --noEmit",
+    "generate:api": "bun scripts/generate-api.ts",
+    "generate:docs": "bun scripts/generate-docs-spec.ts",
+    "generate:check": "bun scripts/generate-api.ts --check && bun scripts/generate-docs-spec.ts --check",
+    "test:scripts": "bun test scripts"
   },
   "dependencies": {
     "@ark-ui/react": "catalog:ark",

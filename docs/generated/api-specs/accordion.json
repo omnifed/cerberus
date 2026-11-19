@@ -2,7 +2,13 @@
   "name": "Accordion",
   "key": "accordion",
   "description": "The Accordion component is a versatile UI element that allows users to expand and collapse sections of content. It is composed of several primitives that enable customization and flexibility in its usage.\n\nThe Accordion component can be used in various contexts, such as displaying FAQs, menus, or any other content that benefits from a collapsible structure. It supports different palettes and usage styles to match the design requirements of your application.",
-  "variants": [],
+  "variants": [
+    {
+      "name": "size",
+      "values": ["sm", "lg"],
+      "defaultValue": "'lg'"
+    }
+  ],
   "parts": [
     {
       "name": "ItemGroup",
@@ -47,6 +53,13 @@
       "dataScope": "accordion",
       "dataPart": "root",
       "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'lg'",
+          "required": false,
+          "defaultValue": "'lg'",
+          "description": "PandaCSS recipe variant for size."
+        },
         {
           "name": "id",
           "type": "string",
