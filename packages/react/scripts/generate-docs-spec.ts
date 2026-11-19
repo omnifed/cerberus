@@ -18,7 +18,13 @@ import {
   buildComponentDocSpec,
   createSpecBuilderContext,
 } from './docs/spec-builder'
-import { barrelFile, schemaFile, specJsonFile } from './docs/writers'
+import {
+  barrelFile,
+  digestFile,
+  llmsIndexFile,
+  schemaFile,
+  specJsonFile,
+} from './docs/writers'
 import type { ComponentConfig } from './manifest'
 
 export type {
@@ -60,6 +66,8 @@ export function generateDocSpecs(configs: ComponentConfig[]): {
   return {
     files: [
       ...specs.map(specJsonFile),
+      ...specs.map(digestFile),
+      llmsIndexFile(specs),
       barrelFile(specs.map((s) => s.key)),
       schemaFile(),
     ],
