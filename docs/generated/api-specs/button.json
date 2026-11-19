@@ -41,14 +41,14 @@
         {
           "name": "children",
           "type": "ReactNode",
-          "required": true,
-          "description": ""
+          "required": false,
+          "description": "The icon to render. It is replaced by a Spinner while the parent Button is `pending`."
         },
         {
           "name": "ref",
-          "type": "RefObject<HTMLDivElement>",
-          "required": true,
-          "description": ""
+          "type": "Ref<HTMLDivElement>",
+          "required": false,
+          "description": "A ref to the Spinner wrapper rendered while the parent Button is `pending`."
         }
       ]
     },

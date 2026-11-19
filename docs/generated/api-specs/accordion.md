@@ -152,5 +152,7 @@ Follows the [Accordion WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/pattern
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `ArrowDown` | Moves focus to the next accordion trigger. |
 | `ArrowUp` | Moves focus to the previous accordion trigger. |
+| `ArrowRight` | When orientation is horizontal, moves focus to the next accordion trigger. |
+| `ArrowLeft` | When orientation is horizontal, moves focus to the previous accordion trigger. |
 | `Home` | When focus is on a trigger, moves focus to the first trigger. |
 | `End` | When focus is on a trigger, moves focus to the last trigger. |

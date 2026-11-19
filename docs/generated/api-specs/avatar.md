@@ -28,9 +28,9 @@ Also accepts all props of `Avatar.Root`.
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
-| `alt` | `string` | No | — |  |
-| `src` | `string` | No | — |  |
-| `fallback` | `ReactNode` | No | — |  |
+| `alt` | `string` | No | — | The alternative text for the image. Required when `src` is set. |
+| `src` | `string` | No | — | The image source URL. When omitted, only the `fallback` is rendered. |
+| `fallback` | `ReactNode` | No | — | The content shown when there is no image or it fails to load, such as initials or an icon. |
 
 ### Avatar.Root (primitive)
 

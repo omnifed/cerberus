@@ -332,7 +332,11 @@ exports[`no props lose their description compared with last time 1`] = `
     "unstyled",
     "css",
   ],
-  "Avatar.El": [],
+  "Avatar.El": [
+    "alt",
+    "src",
+    "fallback",
+  ],
   "Avatar.Fallback": [
     "asChild",
     "unstyled",
@@ -362,7 +366,10 @@ exports[`no props lose their description compared with last time 1`] = `
     "unstyled",
     "css",
   ],
-  "Button.Icon": [],
+  "Button.Icon": [
+    "children",
+    "ref",
+  ],
   "Button.Provider": [
     "pending",
   ],

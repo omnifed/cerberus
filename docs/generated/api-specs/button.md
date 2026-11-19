@@ -31,8 +31,8 @@ An abstraction displaying an icon that is replaced by a Spinner when `pending` i
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | Yes | — |  |
-| `ref` | `RefObject<HTMLDivElement>` | Yes | — |  |
+| `children` | `ReactNode` | No | — | The icon to render. It is replaced by a Spinner while the parent Button is `pending`. |
+| `ref` | `Ref<HTMLDivElement>` | No | — | A ref to the Spinner wrapper rendered while the parent Button is `pending`. |
 
 ### Button.Provider (abstraction)
 
