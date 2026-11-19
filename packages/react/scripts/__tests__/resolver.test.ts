@@ -1,16 +1,10 @@
 import { beforeEach, describe, expect, test } from 'bun:test'
 import { join } from 'node:path'
-import {
-  drainUnresolved,
-  lookupExport,
-  parseInterfaceBody,
-  parseJsDocBlock,
-  resetResolverState,
-  resolveExportProps,
-  resolvePropsFromExpr,
-  splitTopLevel,
-  type PropSpec,
-} from '../generate-docs-spec'
+import { parseInterfaceBody } from '../docs/parser/declarations'
+import { parseJsDocBlock } from '../docs/parser/jsdoc'
+import { splitTopLevel } from '../docs/parser/scan'
+import { TypeResolver } from '../docs/resolver/type-resolver'
+import type { PropSpec } from '../docs/types'
 
 const FIXTURES = join(import.meta.dir, 'fixtures')
 const ARK = join(FIXTURES, 'ark', 'index.d.ts')
@@ -21,15 +15,23 @@ const names = (props: PropSpec[]) => props.map((p) => p.name)
 const byName = (props: PropSpec[], name: string) =>
   props.find((p) => p.name === name)
 
+let resolver: TypeResolver
+
+beforeEach(() => {
+  resolver = new TypeResolver()
+})
+
 function resolveExport(entry: string, name: string): PropSpec[] {
-  const props = resolveExportProps(entry, name)
+  const props = resolver.resolveExportProps(entry, name)
   if (!props) throw new Error(`${name} not exported from ${entry}`)
   return props
 }
 
-beforeEach(() => {
-  resetResolverState()
-})
+const resolvePropsFromExpr = (expr: string, file: string) =>
+  resolver.resolveExpr(expr, file)
+const drainUnresolved = () => resolver.drainUnresolved()
+const lookupExport = (file: string, name: string) =>
+  resolver.lookupExport(file, name)
 
 describe('scanning primitives', () => {
   test('splitTopLevel ignores delimiters nested in generics, objects and strings', () => {
@@ -202,13 +204,42 @@ describe('unresolved references are reported, not silently dropped', () => {
   })
 })
 
-describe('known gaps (fixed by the Phase 2 tokenizer)', () => {
-  test.failing('interface heritage containing an object literal', () => {
+describe('parser edge cases', () => {
+  const EDGE = join(FIXTURES, 'parser-edge.d.ts')
+
+  test('method signatures document as function types', () => {
+    const props = resolvePropsFromExpr('Handlers', EDGE)
+    expect(props.map((p) => [p.name, p.type])).toEqual([
+      ['onValueChange', '(details: { value: T }) => void'],
+      ['format', '<U>(value: U, locale: string) => string'],
+      ['separator', `'a;b' | "c{d"`],
+    ])
+    expect(byName(props, 'onValueChange')?.description).toBe(
+      'Called when the value changes',
+    )
+  })
+
+  test('nested generic type parameters and comma-separated members', () => {
+    const props = resolvePropsFromExpr('Nested', EDGE)
+    expect(props.map((p) => [p.name, p.type])).toEqual([
+      ['inline', '{ a: string, b: number }'],
+      ['after', 'boolean'],
+    ])
+  })
+
+  test('declarations mentioned in JSDoc are ignored', () => {
+    expect(lookupExport(EDGE, 'Fake')).toBeNull()
+    expect(lookupExport(EDGE, 'Ghost')).toBeNull()
+  })
+})
+
+describe('formatting edge cases', () => {
+  test('interface heritage containing an object literal', () => {
     const props = resolvePropsFromExpr('HeritageWithObject', ARK_ROOT)
     expect(names(props)).toEqual(['value', 'multiple', 'id', 'lazyMount'])
   })
 
-  test.failing('multi-line union types keep their type text', () => {
+  test('multi-line union types keep their type text', () => {
     const props = resolvePropsFromExpr('ItemGroupProps', CERBERUS)
     expect(byName(props, 'indicatorPosition')?.type).toBe(`'start' | 'end'`)
   })

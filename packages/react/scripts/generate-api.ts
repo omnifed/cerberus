@@ -1,6 +1,7 @@
 import { join } from 'node:path'
 import { config } from './configs'
 import { emitFiles, reportStale, type GeneratedFile } from './core/emit'
+import { anatomyParts, capitalize } from './core/naming'
 import { COMPONENTS_DIR } from './core/paths'
 import { type ComponentConfig } from './manifest'
 
@@ -12,10 +13,6 @@ const GENERATED_HEADER = `/**
 `
 
 const REF_URL = 'https://cerberus.digitalu.design/docs/components'
-
-function capitalize(str: string): string {
-  return str.charAt(0).toUpperCase() + str.slice(1)
-}
 
 export function generateComponentAPI(config: ComponentConfig): GeneratedFile[] {
   const {
@@ -31,10 +28,7 @@ export function generateComponentAPI(config: ComponentConfig): GeneratedFile[] {
   const outputDir = join(COMPONENTS_DIR, key)
   const files: GeneratedFile[] = []
 
-  const reliableParts: string[] = Array.isArray(anatomy)
-    ? [...anatomy]
-    : (anatomy as { keys: () => string[] }).keys()
-  const parts: string[] = [...new Set(reliableParts)]
+  const parts = anatomyParts(anatomy)
 
   if (isArkUI) {
     let primitivesCode = `${GENERATED_HEADER}'use client'\n\n`
