@@ -135,6 +135,8 @@ exports[`every part resolves to the same prop names as last time 1`] = `
         "pending",
       ],
       "Button.Group": [
+        "layout",
+        "shape",
         "asChild",
         "unstyled",
         "css",
@@ -362,6 +364,8 @@ exports[`no props lose their description compared with last time 1`] = `
     "pending",
   ],
   "Button.Group": [
+    "layout",
+    "shape",
     "asChild",
     "unstyled",
     "css",

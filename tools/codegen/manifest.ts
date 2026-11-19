@@ -41,17 +41,54 @@ export type ComponentConfig = {
   description: string
   /** Defaults to PascalCase of `key` */
   name?: string
-  /** Panda recipe export name. Defaults to camelCase of `key` (`switchRecipe` for reserved words) */
-  recipe?: string
   /**
-   * Detected: `ark` when `@ark-ui/react/<key>` resolves, else `cerberus`. Set it only
+   * The `@ark-ui/react/<ark>` subpath (and `@zag-js/<ark>` machine) when it differs
+   * from `key`, e.g. `radio-group` for the `radio` folder. Defaults to `key`.
+   */
+  ark?: string
+  /**
+   * Panda recipe export name. Defaults to camelCase of `key` (`switchRecipe` for
+   * reserved words). `false` for an Ark component styled without a slot recipe: its
+   * parts are wrapped with `cerberus()` (style props, `css`, `asChild`).
+   */
+  recipe?: string | false
+  /**
+   * Detected: `ark` when `@ark-ui/react/<ark>` resolves, else `cerberus`. Set it only
    * to override detection.
    */
   source?: 'ark' | 'cerberus'
+  /**
+   * Ark namespace members to expose besides the anatomy parts: `RootProvider`, or a
+   * render-prop context such as `Context` or `ItemContext` (passed through unstyled).
+   */
+  arkMembers?: string[]
   abstractions?: AbstractionConfig[]
   /** Public types re-exported from `primitives.ts` (Cerberus-only components) */
   types?: string[]
+  /**
+   * Other public exports of the component module: hooks, helpers, collections.
+   * `from` is a file in the component folder (`./helpers`) or a package specifier.
+   */
+  exports?: ExportConfig[]
+  /**
+   * Docs-only overrides for a part that doesn't follow the anatomy or the component
+   * recipe (Cerberus-only components), e.g. `Button.Group`'s own `buttonGroup` recipe.
+   */
+  parts?: Record<string, PartOverride>
   a11y?: A11yConfig
+}
+
+export type ExportConfig = {
+  from: string
+  values?: string[]
+  types?: string[]
+}
+
+export type PartOverride = {
+  /** Recipe whose variants this part accepts */
+  recipe?: string
+  dataScope?: string
+  dataPart?: string
 }
 
 /** Identity helper that type-checks a config entry. */

@@ -9,6 +9,7 @@ import {
   toRecipeName,
 } from 'codegen/core/naming'
 import { ComponentDocSpecSchema } from 'codegen/docs/schema'
+import { generateComponentAPI } from 'codegen/generate-api'
 import { defineComponent } from 'codegen/manifest'
 import { planScaffold, registerSlotRecipe } from 'codegen/scaffold'
 
@@ -102,6 +103,126 @@ describe('loadManifest', () => {
     expect(messages).toContain('Key must be kebab-case')
     expect(messages).toContain('Duplicate component key')
     expect(messages).toContain('nope.tsx does not exist')
+  })
+
+  test('`ark` decouples the folder key from the Ark/Zag key', () => {
+    const diagnostics = new Diagnostics()
+    const [radio] = loadManifest(
+      [
+        defineComponent({
+          key: 'radio',
+          ark: 'radio-group',
+          anatomy: anatomy(['root', 'item']),
+          description: 'x',
+        }),
+      ],
+      diagnostics,
+    )
+    expect(radio).toMatchObject({
+      key: 'radio',
+      name: 'Radio',
+      arkKey: 'radio-group',
+      arkName: 'RadioGroup',
+      source: 'ark',
+    })
+    expect(radio.arkEntry).toEndWith('.d.ts')
+    // The v1 radio folder still has its hand-written primitives and parts
+    expect(diagnostics.items.map((d) => d.message)).toEqual([
+      "src/components/radio/primitives.tsx is a v1 file; move what's still needed into an abstraction and delete it",
+      "src/components/radio/parts.ts is a v1 file; move what's still needed into an abstraction and delete it",
+    ])
+  })
+
+  test('rejects members, exports, overrides and recipe: false it cannot honor', () => {
+    const diagnostics = new Diagnostics()
+    const base = { anatomy: anatomy(['root', 'group']), description: 'x' }
+    loadManifest(
+      [
+        defineComponent({ ...base, key: 'admonition', recipe: false }),
+        defineComponent({
+          ...base,
+          key: 'accordion',
+          arkMembers: ['Context', 'ItemGroup'],
+          exports: [
+            { from: './nope', values: ['x'] },
+            { from: '@ark-ui/react' },
+          ],
+          parts: { group: { recipe: 'buttonGroup' }, nope: {} },
+        }),
+      ],
+      diagnostics,
+    )
+    expect(diagnostics.items.map((d) => d.message)).toEqual([
+      'recipe: false is only for Ark components; Cerberus-only ones write their own primitives',
+      'arkMembers: `ItemGroup` is not supported (Ark components only: RootProvider or *Context)',
+      'exports: src/components/accordion/nope.ts(x) does not exist',
+      "exports from '@ark-ui/react' lists nothing",
+      'parts.group.recipe: per-part recipes are only supported for Cerberus-only components',
+      'parts.nope: not an anatomy part',
+    ])
+  })
+})
+
+describe('generated API', () => {
+  const generate = (config: Parameters<typeof defineComponent>[0]) => {
+    const [entry] = loadManifest([defineComponent(config)], new Diagnostics())
+    const files = generateComponentAPI(entry)
+    const file = (name: string) =>
+      files.find((f) => f.path.endsWith(`/${name}`))?.content ?? ''
+    return { primitives: file('primitives.ts'), api: file('api.ts') }
+  }
+
+  test('recipe-less Ark parts are wrapped with cerberus(); members and exports are added', () => {
+    const { primitives, api } = generate({
+      key: 'radio',
+      ark: 'radio-group',
+      recipe: false,
+      anatomy: { keys: () => ['root', 'item'] },
+      arkMembers: ['RootProvider', 'Context', 'ItemContext'],
+      exports: [
+        { from: './helpers', values: ['useThing'], types: ['Thing'] },
+        { from: '@ark-ui/react/radio-group', values: ['useRadioGroup'] },
+      ],
+      description: 'x',
+    })
+    expect(primitives).toContain(
+      "import { RadioGroup as ArkRadioGroup } from '@ark-ui/react/radio-group'",
+    )
+    expect(primitives).not.toContain('createSlotRecipeContext')
+    expect(primitives).toContain(
+      'export const RadioRoot = cerberus(ArkRadioGroup.Root)',
+    )
+    expect(primitives).toContain(
+      'export const RadioItem = cerberus(ArkRadioGroup.Item)',
+    )
+    expect(primitives).toContain(
+      'export const RadioRootProvider = cerberus(ArkRadioGroup.RootProvider)',
+    )
+    expect(primitives).toContain(
+      'export const RadioContext = ArkRadioGroup.Context',
+    )
+    expect(primitives).toContain(
+      'export const RadioItemContext = ArkRadioGroup.ItemContext',
+    )
+    expect(api).toContain('  RootProvider: RadioRootProvider,')
+    expect(api).toContain('  ItemContext: RadioItemContext,')
+    expect(api).toContain("export { useThing } from './helpers'")
+    expect(api).toContain("export type { Thing } from './helpers'")
+    expect(api).toContain(
+      "export { useRadioGroup } from '@ark-ui/react/radio-group'",
+    )
+  })
+
+  test('a slot-recipe RootProvider provides the recipe like Root', () => {
+    const { primitives } = generate({
+      key: 'collapsible',
+      anatomy: { keys: () => ['root', 'trigger'] },
+      arkMembers: ['RootProvider'],
+      description: 'x',
+    })
+    expect(primitives).toContain(
+      "export const CollapsibleRootProvider = withProvider(ArkCollapsible.RootProvider, 'root')",
+    )
   })
 })
 

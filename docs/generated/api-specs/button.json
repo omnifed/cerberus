@@ -145,9 +145,23 @@
       "exportName": "Button.Group",
       "kind": "primitive",
       "description": "The group primitive part of the Button component.",
-      "dataScope": "button",
-      "dataPart": "group",
+      "dataScope": "button-group",
+      "dataPart": "root",
       "props": [
+        {
+          "name": "layout",
+          "type": "'default' | 'attached'",
+          "required": false,
+          "defaultValue": "'default'",
+          "description": "PandaCSS recipe variant for layout."
+        },
+        {
+          "name": "shape",
+          "type": "'default' | 'sharp' | 'rounded'",
+          "required": false,
+          "defaultValue": "'sharp'",
+          "description": "PandaCSS recipe variant for shape."
+        },
         {
           "name": "asChild",
           "type": "boolean",
