@@ -28,6 +28,8 @@ const HTML_ATTRIBUTE_BAGS = [
   /^ComponentPropsWithRef\b/,
   /^(?:React\.)?HTMLAttributes\b/,
   /^JSX\.IntrinsicElements\b/,
+  // Panda's HTML attributes + style props (`CerberusProps<'div'>`)
+  /^JsxHTMLProps\b/,
 ]
 
 const COMPONENT_PROPS_OF = /^(?:React\.)?ComponentProps(?:WithoutRef|WithRef)?$/

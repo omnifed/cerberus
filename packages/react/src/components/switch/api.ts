@@ -38,7 +38,7 @@ export type {
  * | `Label` | Primitive | The label element of the Switch component. |
  * | `Control` | Primitive | The control element of the Switch component. |
  * | `Thumb` | Primitive | The thumb element of the Switch component. |
- * | `HiddenInput` | Primitive | Exposes the Switch hiddeninput state to a render function. |
+ * | `HiddenInput` | Primitive | The hidden input element of the Switch component. It has no recipe slot. |
  * | `El` | Abstraction | An abstraction that renders a labeled switch with the Cerberus check indicator in the thumb |
  *
  * @example
