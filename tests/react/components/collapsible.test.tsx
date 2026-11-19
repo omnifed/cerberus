@@ -21,19 +21,20 @@ describe('Collapsible', () => {
     expect(screen.getByText(/content/i)).not.toBeVisible()
   })
 
-  test('should allow variant props on the Content', () => {
+  test('should allow variant props on the Root for the Content', () => {
     render(
-      <Collapsible.Root defaultOpen>
+      <Collapsible.Root defaultOpen effect="fade">
         <Collapsible.Trigger>
           Trigger
           <Collapsible.Indicator>
             <ChevronDown />
           </Collapsible.Indicator>
         </Collapsible.Trigger>
-        <Collapsible.Content effect="fade">content</Collapsible.Content>
+        <Collapsible.Content data-testid="content">content</Collapsible.Content>
       </Collapsible.Root>,
     )
     expect(screen.getByText(/content/i)).toBeVisible()
+    expect(screen.getByTestId('content').className).toContain('effect_fade')
   })
 
   test('should allow passing Cerberus factory props to all parts', () => {
