@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'bun:test'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { Diagnostics } from '../core/diagnostics'
-import { parseJsDocBlock } from '../docs/parser/jsdoc'
-import { extractConnectPart } from '../docs/zag/connect'
-import { checkKeyboardDrift } from '../docs/zag/keyboard'
-import { extractMachineDefaults } from '../docs/zag/machine'
+import { Diagnostics } from 'codegen/core/diagnostics'
+import { parseJsDocBlock } from 'codegen/docs/parser/jsdoc'
+import { extractConnectPart } from 'codegen/docs/zag/connect'
+import { checkKeyboardDrift } from 'codegen/docs/zag/keyboard'
+import { extractMachineDefaults } from 'codegen/docs/zag/machine'
 
 const SOURCE = readFileSync(
   join(import.meta.dir, 'fixtures', 'zag-thing.mjs'),

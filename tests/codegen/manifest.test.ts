@@ -1,16 +1,16 @@
 import { describe, expect, test } from 'bun:test'
-import { listConfigKeys, loadConfigs } from '../core/configs'
-import { Diagnostics } from '../core/diagnostics'
-import { loadManifest } from '../core/manifest'
+import { listConfigKeys, loadConfigs } from 'codegen/core/configs'
+import { Diagnostics } from 'codegen/core/diagnostics'
+import { loadManifest } from 'codegen/core/manifest'
 import {
   toCamelCase,
   toKebabCase,
   toPascalCase,
   toRecipeName,
-} from '../core/naming'
-import { ComponentDocSpecSchema } from '../docs/schema'
-import { defineComponent } from '../manifest'
-import { planScaffold, registerSlotRecipe } from '../scaffold'
+} from 'codegen/core/naming'
+import { ComponentDocSpecSchema } from 'codegen/docs/schema'
+import { defineComponent } from 'codegen/manifest'
+import { planScaffold, registerSlotRecipe } from 'codegen/scaffold'
 
 describe('naming', () => {
   test.each([

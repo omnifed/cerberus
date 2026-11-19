@@ -46,11 +46,14 @@ jobs:
         working-directory: ./packages/data-grid
       - run: pnpm exec panda codegen --spec
         working-directory: ./docs
-      # Generator tests include integration tests against the Panda spec above
-      - run: pnpm run test:scripts
-        working-directory: ./packages/react
+      # Includes the integration tests against the Panda spec above, which fail
+      # (rather than skip) here if the spec is missing
+      - run: pnpm run test:codegen
+        working-directory: ./tests
+        env:
+          CODEGEN_REQUIRE_SPEC: '1'
       - run: pnpm run generate:check
-        working-directory: ./packages/react
+        working-directory: ./tools/codegen
 
   react-build:
     runs-on: ubuntu-latest

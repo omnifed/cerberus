@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, test } from 'bun:test'
 import { join } from 'node:path'
-import { parseInterfaceBody } from '../docs/parser/declarations'
-import { parseJsDocBlock } from '../docs/parser/jsdoc'
-import { splitTopLevel } from '../docs/parser/scan'
-import { TypeResolver } from '../docs/resolver/type-resolver'
-import type { PropSpec } from '../docs/types'
+import { parseInterfaceBody } from 'codegen/docs/parser/declarations'
+import { parseJsDocBlock } from 'codegen/docs/parser/jsdoc'
+import { splitTopLevel } from 'codegen/docs/parser/scan'
+import { TypeResolver } from 'codegen/docs/resolver/type-resolver'
+import type { PropSpec } from 'codegen/docs/types'
 
 const FIXTURES = join(import.meta.dir, 'fixtures')
 const ARK = join(FIXTURES, 'ark', 'index.d.ts')

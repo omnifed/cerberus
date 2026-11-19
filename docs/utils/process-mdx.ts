@@ -99,7 +99,7 @@ export async function processMdx(rawMdx: string): Promise<string> {
   return processedMdx
 }
 
-/** Must match `DIGEST_API_MARKER` in packages/react/scripts/docs/digest.ts */
+/** Must match `DIGEST_API_MARKER` in tools/codegen/docs/digest.ts */
 const DIGEST_API_MARKER = '<!-- api-reference -->'
 
 /**

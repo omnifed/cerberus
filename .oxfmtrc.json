@@ -6,7 +6,7 @@
     "pnpm-lock.yaml",
     "packages/*/dist",
     "packages/*/build",
-    "packages/react/scripts/__tests__/fixtures",
+    "tests/codegen/fixtures",
     "docs/generated/api-specs/*.md"
   ],
   "printWidth": 80,

@@ -7,7 +7,8 @@
     "prepare": "panda codegen",
     "lint:ts": "tsc --noEmit",
     "test": "bun test",
-    "test:ci": "bun test --coverage"
+    "test:ci": "bun test --coverage",
+    "test:codegen": "bun test codegen"
   },
   "devDependencies": {
     "@ark-ui/react": "catalog:ark",
@@ -30,6 +31,7 @@
     "@testing-library/user-event": "^14.6.8",
     "@types/bun": "catalog:types",
     "@types/react": "catalog:jsx",
+    "codegen": "workspace:*",
     "react": "catalog:jsx",
     "react-dom": "catalog:jsx"
   }

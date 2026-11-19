@@ -1,25 +1,43 @@
 import { describe, expect, test } from 'bun:test'
-import { loadConfigs } from '../core/configs'
-import { loadManifest } from '../core/manifest'
+import { existsSync } from 'node:fs'
+import { relative } from 'node:path'
+import { loadConfigs } from 'codegen/core/configs'
+import { loadManifest } from 'codegen/core/manifest'
+import { DESIGN_SYSTEM_SPEC_PATH, REPO_ROOT } from 'codegen/core/paths'
 import {
   buildComponentDocSpec,
   createSpecBuilderContext,
-} from '../docs/spec-builder'
-import type { ComponentDocSpec } from '../docs/types'
+} from 'codegen/docs/spec-builder'
+import type { ComponentDocSpec } from 'codegen/docs/types'
 
 /**
  * Integration tests against the real installed Ark UI / Zag.js / Panda sources.
  * The snapshot records every part's prop names, so any change to what the generator
- * resolves shows up as a reviewable snapshot diff (`bun test scripts -u` to accept).
+ * resolves shows up as a reviewable snapshot diff (`bun test codegen -u` to accept).
+ *
+ * They need the docs Panda spec (recipe variants). Without it they are skipped with a
+ * message, except when `CODEGEN_REQUIRE_SPEC=1` (the generated-docs CI job), where a
+ * missing spec fails the run instead of skipping silently.
  */
+
+const SPEC = relative(REPO_ROOT, DESIGN_SYSTEM_SPEC_PATH)
+const HAS_SPEC = existsSync(DESIGN_SYSTEM_SPEC_PATH)
+if (!HAS_SPEC) {
+  const fix = 'run `pnpm --filter docs exec panda codegen --spec`'
+  if (process.env.CODEGEN_REQUIRE_SPEC === '1') {
+    throw new Error(`${SPEC} is missing and CODEGEN_REQUIRE_SPEC=1; ${fix}.`)
+  }
+  console.warn(
+    `⏭️  Skipping codegen integration tests: ${SPEC} is missing (${fix}).`,
+  )
+}
+const it = test.skipIf(!HAS_SPEC)
 
 const ctx = createSpecBuilderContext()
 const { diagnostics } = ctx
-const entries = loadManifest(
-  await loadConfigs(),
-  diagnostics,
-  ctx.resolver.modules,
-)
+const entries = HAS_SPEC
+  ? loadManifest(await loadConfigs(), diagnostics, ctx.resolver.modules)
+  : []
 const specs = new Map<string, ComponentDocSpec>(
   entries.map((e) => [e.key, buildComponentDocSpec(e, ctx)]),
 )
@@ -30,12 +48,12 @@ function part(key: string, exportName: string) {
   return found
 }
 
-test('every expected type resolves (no generator errors)', () => {
+it('every expected type resolves (no generator errors)', () => {
   const errors = diagnostics.items.filter((d) => d.severity === 'error')
   expect(errors).toEqual([])
 })
 
-describe('baseline prop counts never regress', () => {
+describe.skipIf(!HAS_SPEC)('baseline prop counts never regress', () => {
   test.each([
     ['accordion', 'Accordion.Root', 16],
     ['accordion', 'Accordion.Item', 5],
@@ -85,7 +103,7 @@ describe('baseline prop counts never regress', () => {
   })
 })
 
-test('every part resolves to the same prop names as last time', () => {
+it('every part resolves to the same prop names as last time', () => {
   const summary = Object.fromEntries(
     [...specs.values()].map((spec) => [
       spec.key,
@@ -100,7 +118,7 @@ test('every part resolves to the same prop names as last time', () => {
   expect(summary).toMatchSnapshot()
 })
 
-test('no props lose their description compared with last time', () => {
+it('no props lose their description compared with last time', () => {
   const described = Object.fromEntries(
     [...specs.values()].flatMap((spec) =>
       spec.parts.map((p) => [

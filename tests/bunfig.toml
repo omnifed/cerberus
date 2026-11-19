@@ -1,4 +1,6 @@
 [test]
 
 coverageThreshold = { line = 1, function = 0.9 }
+# The code generators (tools/codegen) are tested here but are not shipped code
+coveragePathIgnorePatterns = ["../tools/codegen/**"]
 preload = ["./happydom.ts", "./testing-library.ts"]

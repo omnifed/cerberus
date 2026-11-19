@@ -4,8 +4,8 @@ import {
   renderDigest,
   renderLlmsIndex,
   summarize,
-} from '../docs/digest'
-import type { ComponentDocSpec } from '../docs/types'
+} from 'codegen/docs/digest'
+import type { ComponentDocSpec } from 'codegen/docs/types'
 
 const spec: ComponentDocSpec = {
   name: 'Thing',

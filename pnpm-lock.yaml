@@ -695,9 +695,6 @@ importers:
       vite-plugin-dts:
         specifier: catalog:jsx
         version: 5.1.2(rolldown@1.2.15)(supports-color@7.2.0)(typescript@7.0.2)(vite@8.3.5(@types/node@26.6.5)(terser@5.51.2)(yaml@2.9.1))
-      zod:
-        specifier: ^4.6.7
-        version: 4.6.7
 
   packages/signals:
     devDependencies:
@@ -819,12 +816,30 @@ importers:
       '@types/react':
         specifier: catalog:jsx
         version: 19.3.0
+      codegen:
+        specifier: workspace:*
+        version: link:../tools/codegen
       react:
         specifier: catalog:jsx
         version: 19.3.1
       react-dom:
         specifier: catalog:jsx
         version: 19.3.1(react@19.3.1)
+
+  tools/codegen:
+    devDependencies:
+      '@ark-ui/react':
+        specifier: catalog:ark
+        version: 5.40.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      '@cerberus/panda-preset':
+        specifier: workspace:*
+        version: link:../../packages/panda-preset
+      '@types/bun':
+        specifier: catalog:types
+        version: 1.4.4
+      zod:
+        specifier: ^4.6.7
+        version: 4.6.7
 
 packages:
 

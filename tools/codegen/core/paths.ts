@@ -1,11 +1,17 @@
 import { join } from 'node:path'
 
 // Every path is anchored to this file's location so output never depends on the cwd.
-export const REACT_PKG_ROOT = join(import.meta.dir, '..', '..')
-export const REPO_ROOT = join(REACT_PKG_ROOT, '..', '..')
-export const SCRIPTS_DIR = join(REACT_PKG_ROOT, 'scripts')
+/** `tools/codegen`: the generators, their configs and the spec types */
+export const CODEGEN_ROOT = join(import.meta.dir, '..')
+export const REPO_ROOT = join(CODEGEN_ROOT, '..', '..')
+export const CONFIGS_DIR = join(CODEGEN_ROOT, 'configs')
+
+/**
+ * The package being documented. Ark, Zag and `styled-system` resolve from here, so the
+ * generators see exactly the versions `@cerberus-design/react` ships with.
+ */
+export const REACT_PKG_ROOT = join(REPO_ROOT, 'packages', 'react')
 export const COMPONENTS_DIR = join(REACT_PKG_ROOT, 'src', 'components')
-export const CONFIGS_DIR = join(REACT_PKG_ROOT, 'scripts', 'configs')
 
 export const PANDA_PRESET_RECIPES_DIR = join(
   REPO_ROOT,

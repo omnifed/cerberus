@@ -1,8 +1,8 @@
 /**
  * Scaffolds a new component from its name, then runs the generators.
  *
- *   bun scripts/scaffold.ts DatePicker            create files
- *   bun scripts/scaffold.ts DatePicker --dry-run  list what would be created
+ *   pnpm gen:component DatePicker            create files
+ *   pnpm gen:component DatePicker --dry-run  list what would be created
  *
  * Writes the config entry (the only thing the generators need) plus one-time starter
  * files: abstraction, Panda recipe (registered in the preset), tests, docs page and
@@ -68,13 +68,15 @@ export async function planScaffold(input: string): Promise<ScaffoldPlan> {
   const recipe = toRecipeName(key)
 
   if (listConfigKeys().includes(key)) {
-    throw new Error(`A config for '${key}' already exists in scripts/configs.`)
+    throw new Error(
+      `A config for '${key}' already exists in tools/codegen/configs.`,
+    )
   }
   const componentDir = join(COMPONENTS_DIR, key)
   if (existsSync(componentDir)) {
     throw new Error(
       `${relative(REPO_ROOT, componentDir)} already exists. The scaffold only creates new ` +
-        `components; to migrate an existing one, add scripts/configs/${key}.ts by hand ` +
+        `components; to migrate an existing one, add tools/codegen/configs/${key}.ts by hand ` +
         `(see configs/accordion.ts) and run generate:api.`,
     )
   }
@@ -231,7 +233,7 @@ async function main(): Promise<number> {
   const dryRun = args.includes('--dry-run')
   const input = args.find((a) => !a.startsWith('--'))
   if (!input) {
-    console.error('Usage: bun scripts/scaffold.ts <ComponentName> [--dry-run]')
+    console.error('Usage: pnpm gen:component <ComponentName> [--dry-run]')
     return 1
   }
 
@@ -257,7 +259,7 @@ async function main(): Promise<number> {
 Next steps:
   1. pnpm --filter docs exec panda codegen --spec   (so recipe variants are documented)
   2. Fill in the TODOs: config description and a11y, abstraction, docs page, demo
-  3. pnpm --filter @cerberus-design/react generate:check
+  3. pnpm generate:check
 `)
   return diagnostics.errorCount > 0 ? 1 : 0
 }
