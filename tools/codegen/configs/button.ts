@@ -5,6 +5,14 @@ export const buttonConfig = defineComponent({
   key: 'button',
   anatomy: buttonAnatomy,
   types: ['ButtonRootProps', 'IconButtonRootProps', 'ButtonGroupProps'],
+  // Button.Group is styled by its own recipe and renders its own data-scope
+  parts: {
+    group: {
+      recipe: 'buttonGroup',
+      dataScope: 'button-group',
+      dataPart: 'root',
+    },
+  },
   description: `
 The Button component provides a visual indicator for a user to make an
 action of sorts, commonly used in forms, menus, and popovers.

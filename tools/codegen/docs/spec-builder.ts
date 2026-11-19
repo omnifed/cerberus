@@ -75,11 +75,9 @@ export function buildComponentDocSpec(
   ctx: SpecBuilderContext = createSpecBuilderContext(),
 ): ComponentDocSpec {
   ctx.resolver.drainUnresolved()
-  const variants = ctx.variants.variantsFor(
-    entry.recipe,
-    entry.key,
-    ctx.diagnostics,
-  )
+  const variants = entry.recipe
+    ? ctx.variants.variantsFor(entry.recipe, entry.key, ctx.diagnostics)
+    : []
   const zag = loadZagFacts(entry, ctx.diagnostics)
   const inputs: PrimitiveInputs = {
     variantProps: variants.map(variantToProp),
@@ -91,6 +89,11 @@ export function buildComponentDocSpec(
   const parts: PartSpec[] = [
     ...entry.abstractions.map((abs) => buildAbstraction(entry, abs, ctx)),
     ...entry.primitives.map((part) => buildPrimitive(entry, part, inputs, ctx)),
+    ...entry.arkMembers.map((member) =>
+      member === 'RootProvider'
+        ? buildPrimitive(entry, 'root', inputs, ctx, member)
+        : buildContext(entry, member, ctx),
+    ),
   ]
 
   const a11y = buildA11y(entry, zag, ctx.diagnostics)
@@ -215,11 +218,11 @@ function loadZagFacts(
   diagnostics: Diagnostics,
 ): ZagFacts | null {
   if (!entry.arkEntry) return null
-  const source = loadZagSource(entry.key, entry.arkEntry)
+  const source = loadZagSource(entry.arkKey, entry.arkEntry)
   if (!source?.connect) {
     diagnostics.warn(
       entry.key,
-      `No Zag.js connect source found for @zag-js/${entry.key}; data attributes and keys are not documented`,
+      `No Zag.js connect source found for @zag-js/${entry.arkKey}; data attributes and keys are not documented`,
     )
     return null
   }
@@ -277,8 +280,12 @@ function applyMachineDefaults(
   })
 }
 
-/** `data-scope`/`data-part` from Zag's anatomy when it has `build()`, else derived. */
+/**
+ * `data-scope`/`data-part`: a config override, else Zag's anatomy when it has
+ * `build()`, else derived from the key and part.
+ */
 function partAttrs(entry: ComponentEntry, part: string) {
+  const override = entry.partOverrides[part]
   const anatomy = entry.anatomy as {
     build?: () => Record<string, { attrs?: Record<string, string> }>
   }
@@ -287,8 +294,55 @@ function partAttrs(entry: ComponentEntry, part: string) {
       ? anatomy.build()[part]?.attrs
       : undefined
   return {
-    dataScope: attrs?.['data-scope'] ?? entry.key,
-    dataPart: attrs?.['data-part'] ?? toKebabCase(part),
+    dataScope: override?.dataScope ?? attrs?.['data-scope'] ?? entry.key,
+    dataPart: override?.dataPart ?? attrs?.['data-part'] ?? toKebabCase(part),
+  }
+}
+
+/** Props of Ark's `<arkName><member>Props` (or `…BaseProps`), resolved in place. */
+function arkPropsFor(
+  entry: ComponentEntry,
+  member: string,
+  subject: string,
+  ctx: SpecBuilderContext,
+): PropSpec[] {
+  const { arkEntry, arkName, arkKey, key } = entry
+  if (!arkEntry) return []
+  const base = `${arkName}${member}`
+  const candidates = [`${base}Props`, `${base}BaseProps`]
+  const resolved = candidates
+    .map((c) => ctx.resolver.lookupExport(arkEntry, c))
+    .find((r) => r !== null)
+  if (!resolved) {
+    ctx.diagnostics.error(
+      key,
+      `${subject}: none of [${candidates.join(', ')}] exported from @ark-ui/react/${arkKey}`,
+    )
+    return []
+  }
+  // Resolve in the declaring file so its own imports (e.g. `@zag-js/*`) are in scope
+  const props = ctx.resolver.resolveDecl(resolved)
+  reportUnresolved(ctx, key, subject)
+  return props
+}
+
+/** A render-prop context (`Context`, `ItemContext`): Ark's props, nothing styled. */
+function buildContext(
+  entry: ComponentEntry,
+  member: string,
+  ctx: SpecBuilderContext,
+): PartSpec {
+  const subject = `${entry.name}.${member}`
+  const scope =
+    member === 'Context'
+      ? ''
+      : `${toKebabCase(member.replace(/Context$/, ''))} `
+  return {
+    name: member,
+    exportName: subject,
+    kind: 'primitive',
+    description: `Exposes the ${entry.name} ${scope}state to a render function. Renders no element.`,
+    props: arkPropsFor(entry, member, subject, ctx),
   }
 }
 
@@ -310,48 +364,44 @@ function zagPartFields(
   }
 }
 
+/**
+ * One anatomy part. `member` builds an Ark member that stands in for `part` instead:
+ * `RootProvider` is a `Root` whose state comes from `useX()`.
+ */
 function buildPrimitive(
   entry: ComponentEntry,
   part: string,
   { variantProps, machineDefaults, connect, docs }: PrimitiveInputs,
   ctx: SpecBuilderContext,
+  member?: 'RootProvider',
 ): PartSpec {
-  const { name, key, arkEntry } = entry
-  const { resolver, diagnostics } = ctx
+  const { name, key } = entry
+  const { diagnostics } = ctx
   const isRoot = part === 'root'
-  const exportKey = partExportKey(part)
+  const exportKey = member ?? partExportKey(part)
   const subject = `${name}.${exportKey}`
-  const partPascal = `${name}${capitalize(part)}`
-
-  let arkProps: PropSpec[] = []
-  if (arkEntry) {
-    const candidates = [`${partPascal}Props`, `${partPascal}BaseProps`]
-    const resolved = candidates
-      .map((c) => resolver.lookupExport(arkEntry, c))
-      .find((r) => r !== null)
-    if (resolved) {
-      // Resolve in the declaring file so its own imports (e.g. `@zag-js/*`) are in scope
-      arkProps = resolver.resolveDecl(resolved)
-      reportUnresolved(ctx, key, subject)
-    } else {
-      diagnostics.error(
-        key,
-        `${subject}: none of [${candidates.join(', ')}] exported from @ark-ui/react/${key}`,
-      )
-    }
-  }
+  const arkProps = arkPropsFor(entry, member ?? capitalize(part), subject, ctx)
 
   // Recipe variants go on Root, where they cascade to every slot. The machine's
-  // defaults apply to Root, which is where its props are passed.
+  // defaults apply to Root, which is where its props are passed. A part with its own
+  // recipe (Cerberus-only) takes that recipe's variants instead.
+  const partRecipe = entry.partOverrides[part]?.recipe
+  const ownVariants = partRecipe
+    ? ctx.variants
+        .variantsFor(partRecipe, `${key}.${part}`, diagnostics)
+        .map(variantToProp)
+    : isRoot
+      ? variantProps
+      : []
   const ownProps = isRoot
     ? applyMachineDefaults(
-        mergePropLists(variantProps, arkProps),
+        mergePropLists(ownVariants, arkProps),
         machineDefaults,
         subject,
         key,
         diagnostics,
       )
-    : arkProps
+    : mergePropLists(ownVariants, arkProps)
 
   if (isRoot && entry.rootProvider) {
     // `withRootProvider` renders no element: no data attributes, `asChild` or `css`
@@ -359,21 +409,29 @@ function buildPrimitive(
       name: exportKey,
       exportName: subject,
       kind: 'primitive',
-      description: `Provides the ${name} context and recipe variants to its parts. Renders no element.`,
+      description: `Provides the ${name} context${entry.recipe ? ' and recipe variants' : ''} to its parts${member ? `, from state created with \`use${entry.arkName}()\`` : ''}. Renders no element.`,
       props: ownProps,
     }
   }
+
+  const description = member
+    ? `The root container of the ${name} component, driven by state created with \`use${entry.arkName}()\`.`
+    : isRoot
+      ? `The root container of the ${name} component.`
+      : `The ${toKebabCase(part)} primitive part of the ${name} component.`
+  // Without a slot recipe there is nothing for `unstyled` to strip
+  const shared = entry.recipe
+    ? PRIMITIVE_PROPS
+    : PRIMITIVE_PROPS.filter((p) => p.name !== 'unstyled')
 
   return {
     name: exportKey,
     exportName: subject,
     kind: 'primitive',
-    description: isRoot
-      ? `The root container of the ${name} component.`
-      : `The ${toKebabCase(part)} primitive part of the ${name} component.`,
+    description,
     ...partAttrs(entry, part),
     ...zagPartFields(part, connect(part), docs),
-    props: mergePropLists(ownProps, PRIMITIVE_PROPS),
+    props: mergePropLists(ownProps, shared),
   }
 }
 

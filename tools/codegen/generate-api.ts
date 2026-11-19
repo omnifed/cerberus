@@ -20,38 +20,67 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     key,
     recipe,
     source,
+    arkKey,
+    arkName,
+    arkMembers,
     primitives: parts,
     rootProvider,
     description,
     abstractions,
     types,
+    exports,
     dir: outputDir,
   } = entry
   const isArkUI = source === 'ark'
   const files: GeneratedFile[] = []
 
   if (isArkUI) {
+    const ark = `Ark${arkName}`
     let primitivesCode = `${GENERATED_HEADER}'use client'\n\n`
-    primitivesCode += `import { ${name} as Ark${name} } from '@ark-ui/react/${key}'\n`
-    primitivesCode += `import { type ComponentProps, createSlotRecipeContext } from 'styled-system/jsx'\n`
-    primitivesCode += `import { ${recipe} } from 'styled-system/recipes'\n\n`
-    const factories = rootProvider
-      ? 'withRootProvider, withContext'
-      : 'withProvider, withContext'
-    primitivesCode += `const { ${factories} } = createSlotRecipeContext(${recipe})\n\n`
+    primitivesCode += `import { ${arkName} as ${ark} } from '@ark-ui/react/${arkKey}'\n`
+    if (recipe) {
+      primitivesCode += `import { type ComponentProps, createSlotRecipeContext } from 'styled-system/jsx'\n`
+      primitivesCode += `import { ${recipe} } from 'styled-system/recipes'\n\n`
+      const factories = rootProvider
+        ? 'withRootProvider, withContext'
+        : 'withProvider, withContext'
+      primitivesCode += `const { ${factories} } = createSlotRecipeContext(${recipe})\n\n`
+    } else {
+      // No slot recipe: style props, `css` and `asChild` only
+      primitivesCode += `import type { ComponentProps } from 'react'\n`
+      primitivesCode += `import { cerberus } from '../../system/index'\n\n`
+    }
 
-    for (const part of parts) {
-      const isRoot = part === 'root'
-      const partName = `${name}${capitalize(part)}`
-      const arkPart = `Ark${name}.${capitalize(part)}`
-      const factory =
-        isRoot && rootProvider
-          ? `withRootProvider(${arkPart})`
-          : `${isRoot ? 'withProvider' : 'withContext'}(${arkPart}, '${part}')`
+    /** `root` provides the recipe; other parts consume it from context */
+    const styled = (member: string, slot: string, isRoot: boolean) => {
+      const arkPart = `${ark}.${member}`
+      if (isRoot && rootProvider) {
+        return recipe ? `withRootProvider(${arkPart})` : arkPart
+      }
+      if (!recipe) return `cerberus(${arkPart})`
+      return `${isRoot ? 'withProvider' : 'withContext'}(${arkPart}, '${slot}')`
+    }
 
+    const members = [
+      ...parts.map((part) => ({
+        exportKey: capitalize(part),
+        code: styled(capitalize(part), part, part === 'root'),
+      })),
+      // `RootProvider` is a `Root` driven by an external `useX()`; contexts render props
+      ...arkMembers.map((member) => ({
+        exportKey: member,
+        code:
+          member === 'RootProvider'
+            ? styled(member, 'root', true)
+            : `${ark}.${member}`,
+      })),
+    ]
+
+    for (const { exportKey, code } of members) {
+      const partName = `${name}${exportKey}`
       primitivesCode += `// ${partName} -----------------------------------------------------\n\n`
       primitivesCode += `export type ${partName}Props = ComponentProps<typeof ${partName}>\n`
-      primitivesCode += `export const ${partName} = ${factory}\n\n`
+      primitivesCode += `export const ${partName} = ${code}\n\n`
     }
 
     files.push({
@@ -86,16 +115,17 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     }
   }
 
-  if (parts.length > 0) {
+  const members = [...parts.map(capitalize), ...(isArkUI ? arkMembers : [])]
+  if (members.length > 0) {
     apiCode += `import {\n`
-    for (const part of parts) {
-      apiCode += `  ${name}${capitalize(part)},\n`
+    for (const member of members) {
+      apiCode += `  ${name}${member},\n`
     }
     apiCode += `} from './primitives'\n\n`
   }
 
   const primitiveTypes = isArkUI
-    ? [...parts.map((part) => `${name}${capitalize(part)}Props`), ...types]
+    ? [...members.map((member) => `${name}${member}Props`), ...types]
     : [...types]
 
   if (primitiveTypes.length > 0) {
@@ -137,6 +167,14 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     jsDoc += ` * | \`${exportKey}\` | Primitive | ${desc} |\n`
   }
 
+  for (const member of isArkUI ? arkMembers : []) {
+    const desc =
+      member === 'RootProvider'
+        ? `A \`Root\` driven by state from Ark's \`use${arkName}()\`.`
+        : `Exposes the ${name} ${member === 'Context' ? '' : `${member.replace(/Context$/, '').toLowerCase()} `}state to a render function.`
+    jsDoc += ` * | \`${member}\` | Primitive | ${desc} |\n`
+  }
+
   for (const abs of abstractions) {
     jsDoc += ` * | \`${abs.name}\` | Abstraction | ${abs.description} |\n`
   }
@@ -172,11 +210,8 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
 
   apiCode += `export const ${name} = Object.assign(${assignTarget}, {\n`
 
-  for (const part of parts) {
-    const isRoot = part === 'root'
-    const exportKey = isRoot ? 'Root' : capitalize(part)
-    const partName = `${name}${capitalize(part)}`
-    apiCode += `  ${exportKey}: ${partName},\n`
+  for (const member of members) {
+    apiCode += `  ${member}: ${name}${member},\n`
   }
 
   for (const abs of abstractions) {
@@ -184,6 +219,16 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
   }
 
   apiCode += `})\n`
+
+  for (const { from, values = [], types: exportTypes = [] } of exports) {
+    if (values.length) {
+      apiCode += `\nexport { ${values.join(', ')} } from '${from}'`
+    }
+    if (exportTypes.length) {
+      apiCode += `\nexport type { ${exportTypes.join(', ')} } from '${from}'`
+    }
+  }
+  if (exports.length) apiCode += `\n`
 
   files.push({ path: join(outputDir, 'api.ts'), content: apiCode })
   files.push({

@@ -72,10 +72,12 @@ Selector: `[data-scope="button"][data-part="root"]`
 
 The group primitive part of the Button component.
 
-Selector: `[data-scope="button"][data-part="group"]`
+Selector: `[data-scope="button-group"][data-part="root"]`
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
+| `layout` | `'default' \| 'attached'` | No | `'default'` | PandaCSS recipe variant for layout. |
+| `shape` | `'default' \| 'sharp' \| 'rounded'` | No | `'sharp'` | PandaCSS recipe variant for shape. |
 | `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
 | `unstyled` | `boolean` | No | `false` | Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes. |
 | `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
