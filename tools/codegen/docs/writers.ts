@@ -1,7 +1,7 @@
 import { join, relative } from 'node:path'
 import { z } from 'zod'
 import type { GeneratedFile } from '../core/emit'
-import { DOCS_SPEC_OUT_DIR, SCRIPTS_DIR } from '../core/paths'
+import { CODEGEN_ROOT, DOCS_SPEC_OUT_DIR } from '../core/paths'
 import { renderDigest, renderLlmsIndex } from './digest'
 import { ComponentDocSpecSchema } from './schema'
 import type { ComponentDocSpec } from './types'
@@ -20,7 +20,7 @@ export function barrelFile(keys: string[]): GeneratedFile {
   // A Bun-free module, so the docs app can type-check against it
   const typesImport = relative(
     DOCS_SPEC_OUT_DIR,
-    join(SCRIPTS_DIR, 'docs', 'types'),
+    join(CODEGEN_ROOT, 'docs', 'types'),
   )
   const varName = (key: string) => `${key.replace(/-/g, '_')}Spec`
 

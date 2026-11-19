@@ -202,7 +202,7 @@ async function main(): Promise<number> {
 
   const files = entries.flatMap(generateComponentAPI)
   const { stale } = await emitFiles(files, { check })
-  reportStale(stale, 'pnpm --filter @cerberus-design/react generate:api')
+  reportStale(stale, 'pnpm generate:api')
   if (stale.length > 0) return 1
 
   console.log(

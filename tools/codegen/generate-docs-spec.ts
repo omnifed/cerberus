@@ -2,8 +2,8 @@
  * Generates a `ComponentDocSpec` JSON per component, plus an `index.ts` barrel, into
  * `docs/generated/api-specs`. `docs/components/component-api.tsx` renders them.
  *
- *   bun scripts/generate-docs-spec.ts           write the specs
- *   bun scripts/generate-docs-spec.ts --check   fail if they are stale (CI)
+ *   pnpm generate:docs            write the specs
+ *   pnpm generate:docs --check    fail if they are stale (CI)
  *
  * The pieces live in `./docs`: parser → resolver → panda/spec-builder → writers.
  */
@@ -84,7 +84,7 @@ async function main(): Promise<number> {
     check,
     ownedDirs: [DOCS_SPEC_OUT_DIR],
   })
-  reportStale(stale, 'pnpm --filter @cerberus-design/react generate:docs')
+  reportStale(stale, 'pnpm generate:docs')
 
   if (diagnostics.errorCount > 0) {
     console.error(
