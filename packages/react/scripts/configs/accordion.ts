@@ -49,6 +49,16 @@ The Accordion component can be used in various contexts, such as displaying FAQs
         description: 'Moves focus to the previous accordion trigger.',
       },
       {
+        key: 'ArrowRight',
+        description:
+          'When orientation is horizontal, moves focus to the next accordion trigger.',
+      },
+      {
+        key: 'ArrowLeft',
+        description:
+          'When orientation is horizontal, moves focus to the previous accordion trigger.',
+      },
+      {
         key: 'Home',
         description:
           'When focus is on a trigger, moves focus to the first trigger.',
