@@ -250,6 +250,24 @@ describe('generated API', () => {
     expect(primitives).toContain('styled(ArkCheckbox.HiddenInput)')
   })
 
+  test('memberSlots styles an Ark member outside the anatomy with an existing slot', () => {
+    const { primitives, api } = generate({
+      key: 'menu',
+      anatomy: { keys: () => ['trigger', 'item', 'itemGroup'] },
+      arkMembers: ['CheckboxItem', 'RadioItemGroup'],
+      memberSlots: { CheckboxItem: 'item', RadioItemGroup: 'itemGroup' },
+      description: 'x',
+    })
+    expect(primitives).toContain(
+      "export const MenuCheckboxItem = withContext(ArkMenu.CheckboxItem, 'item')",
+    )
+    expect(primitives).toContain(
+      "withContext(ArkMenu.RadioItemGroup, 'itemGroup')",
+    )
+    expect(primitives).not.toContain('styled(')
+    expect(api).toContain('  CheckboxItem: MenuCheckboxItem,')
+  })
+
   test('a slotted component imports styled only for parts outside the anatomy', () => {
     const { primitives } = generate({
       key: 'switch',

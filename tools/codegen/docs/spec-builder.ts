@@ -94,9 +94,17 @@ export function buildComponentDocSpec(
         ? buildPrimitive(entry, 'root', inputs, ctx, member)
         : entry.providers.includes(member)
           ? buildPrimitive(entry, providerSlot(member)!, inputs, ctx, member)
-          : member.endsWith('Context')
-            ? buildContext(entry, member, ctx)
-            : buildUnslotted(entry, member, inputs, ctx),
+          : entry.memberSlots[member]
+            ? buildPrimitive(
+                entry,
+                entry.memberSlots[member],
+                inputs,
+                ctx,
+                member,
+              )
+            : member.endsWith('Context')
+              ? buildContext(entry, member, ctx)
+              : buildUnslotted(entry, member, inputs, ctx),
     ),
   ]
 
@@ -456,11 +464,13 @@ function buildPrimitive(
   }
 
   const hook = `use${entry.arkName}${isRoot ? '' : capitalize(part)}()`
-  const description = member
-    ? `The ${isRoot ? 'root container' : `${toKebabCase(part)} part`} of the ${name} component, driven by state created with \`${hook}\`.`
-    : isRoot
-      ? `The root container of the ${name} component.`
-      : `The ${toKebabCase(part)} primitive part of the ${name} component.`
+  const description = entry.memberSlots[member ?? '']
+    ? `The ${toKebabCase(member!)} primitive part of the ${name} component, styled with the \`${part}\` slot.`
+    : member
+      ? `The ${isRoot ? 'root container' : `${toKebabCase(part)} part`} of the ${name} component, driven by state created with \`${hook}\`.`
+      : isRoot
+        ? `The root container of the ${name} component.`
+        : `The ${toKebabCase(part)} primitive part of the ${name} component.`
   // Without a slot recipe there is nothing for `unstyled` to strip
   const shared = entry.recipe
     ? PRIMITIVE_PROPS
