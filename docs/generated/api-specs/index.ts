@@ -5,6 +5,10 @@ import admonitionSpec from './admonition.json'
 import avatarSpec from './avatar.json'
 import buttonSpec from './button.json'
 import carouselSpec from './carousel.json'
+import collapsibleSpec from './collapsible.json'
+import marqueeSpec from './marquee.json'
+import pin_inputSpec from './pin-input.json'
+import switchSpec from './switch.json'
 
 export const API_SPECS: Record<string, ComponentDocSpec> = {
   accordion: accordionSpec as ComponentDocSpec,
@@ -12,4 +16,8 @@ export const API_SPECS: Record<string, ComponentDocSpec> = {
   avatar: avatarSpec as ComponentDocSpec,
   button: buttonSpec as ComponentDocSpec,
   carousel: carouselSpec as ComponentDocSpec,
+  collapsible: collapsibleSpec as ComponentDocSpec,
+  marquee: marqueeSpec as ComponentDocSpec,
+  'pin-input': pin_inputSpec as ComponentDocSpec,
+  switch: switchSpec as ComponentDocSpec,
 }

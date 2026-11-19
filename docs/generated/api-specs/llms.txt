@@ -9,3 +9,7 @@
 - [Avatar](avatar.md): The Avatar component is a versatile UI element that allows users to have a visual representation of their presence within an application.
 - [Button](button.md): The Button component provides a visual indicator for a user to make an action of sorts, commonly used in forms, menus, and popovers.
 - [Carousel](carousel.md): The Carousel component is a versatile UI element that allows users to navigate through a slideshow style set of "pages" which contain images.
+- [Collapsible](collapsible.md): The Collapsible component is used to expand and collapse additional content.
+- [Marquee](marquee.md): The Marquee component displays continuously scrolling content, horizontally or vertically, with optional stylized edges.
+- [PinInput](pin-input.md): The PinInput component lets users enter and manage fixed-length codes, such as verification codes or PINs, one character at a time.
+- [Switch](switch.md): The Switch component is a toggle input that allows users to switch between two states, such as turning a setting on or off.

@@ -1,23 +1,23 @@
 'use client'
 
 import { HStack } from '@/styled-system/jsx'
-import { PinInputParts } from '@cerberus-design/react'
+import { PinInput } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
     <HStack>
-      <PinInputParts.Root
+      <PinInput.Root
         css={{
           w: 'full',
         }}
       >
-        <PinInputParts.Control
+        <PinInput.Control
           css={{
             transform: 'translateX(-4px)',
           }}
         >
           {Array.from({ length: 4 }, (_, index) => (
-            <PinInputParts.Input
+            <PinInput.Input
               key={index}
               index={index}
               css={{
@@ -36,9 +36,9 @@ export function CustomDemo() {
               }}
             />
           ))}
-        </PinInputParts.Control>
-        <PinInputParts.HiddenInput />
-      </PinInputParts.Root>
+        </PinInput.Control>
+        <PinInput.HiddenInput />
+      </PinInput.Root>
     </HStack>
   )
 }
