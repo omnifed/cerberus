@@ -6,9 +6,13 @@ import avatarSpec from './avatar.json'
 import buttonSpec from './button.json'
 import carouselSpec from './carousel.json'
 import collapsibleSpec from './collapsible.json'
+import fieldsetSpec from './fieldset.json'
 import marqueeSpec from './marquee.json'
+import number_inputSpec from './number-input.json'
 import pin_inputSpec from './pin-input.json'
+import sliderSpec from './slider.json'
 import switchSpec from './switch.json'
+import tabsSpec from './tabs.json'
 
 export const API_SPECS: Record<string, ComponentDocSpec> = {
   accordion: accordionSpec as ComponentDocSpec,
@@ -17,7 +21,11 @@ export const API_SPECS: Record<string, ComponentDocSpec> = {
   button: buttonSpec as ComponentDocSpec,
   carousel: carouselSpec as ComponentDocSpec,
   collapsible: collapsibleSpec as ComponentDocSpec,
+  fieldset: fieldsetSpec as ComponentDocSpec,
   marquee: marqueeSpec as ComponentDocSpec,
+  'number-input': number_inputSpec as ComponentDocSpec,
   'pin-input': pin_inputSpec as ComponentDocSpec,
+  slider: sliderSpec as ComponentDocSpec,
   switch: switchSpec as ComponentDocSpec,
+  tabs: tabsSpec as ComponentDocSpec,
 }

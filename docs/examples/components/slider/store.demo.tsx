@@ -11,19 +11,19 @@ export function StoreDemo() {
 
   return (
     <Stack gap="xl" w="3/4">
-      <Slider.Provider direction="horizontal" value={slider}>
+      <Slider.RootProvider direction="horizontal" value={slider}>
         <HStack justify="space-between" w="full">
           <Slider.Label>Slider Store</Slider.Label>
           <Slider.ValueText />
         </HStack>
 
-        <Slider.Control direction="horizontal">
-          <Slider.Track direction="horizontal">
-            <Slider.Range direction="horizontal" />
+        <Slider.Control>
+          <Slider.Track>
+            <Slider.Range />
           </Slider.Track>
-          <Slider.Thumbs direction="horizontal" value={slider.value} />
+          <Slider.Thumbs />
         </Slider.Control>
-      </Slider.Provider>
+      </Slider.RootProvider>
 
       <HStack gap="sm" w="full">
         <Text as="small" textStyle="body-sm">

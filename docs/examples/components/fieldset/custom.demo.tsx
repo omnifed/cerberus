@@ -1,18 +1,18 @@
 import { Box } from '@/styled-system/jsx'
-import { Field, FieldsetParts, Input } from '@cerberus-design/react'
+import { Field, Fieldset, Input } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
     <Box w="1/2">
-      <FieldsetParts.Root invalid>
-        <FieldsetParts.Legend
+      <Fieldset.Root invalid>
+        <Fieldset.Legend
           css={{
             textStyle: 'heading-lg',
           }}
         >
           Custom Legend
-        </FieldsetParts.Legend>
-        <FieldsetParts.HelperText
+        </Fieldset.Legend>
+        <Fieldset.HelperText
           css={{
             color: 'page.text.200',
             fontStyle: 'italic',
@@ -20,7 +20,7 @@ export function CustomDemo() {
           }}
         >
           This is some custom Helper Text
-        </FieldsetParts.HelperText>
+        </Fieldset.HelperText>
 
         <Box paddingBlock="lg" w="full">
           <Field label="This is a custom example">
@@ -28,7 +28,7 @@ export function CustomDemo() {
           </Field>
         </Box>
 
-        <FieldsetParts.ErrorText
+        <Fieldset.ErrorText
           css={{
             bgColor: 'danger.bg.initial',
             color: 'danger.text.100',
@@ -37,8 +37,8 @@ export function CustomDemo() {
           }}
         >
           This is a custom Error Text
-        </FieldsetParts.ErrorText>
-      </FieldsetParts.Root>
+        </Fieldset.ErrorText>
+      </Fieldset.Root>
     </Box>
   )
 }
