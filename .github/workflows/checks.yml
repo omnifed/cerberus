@@ -25,6 +25,33 @@ jobs:
       - run: pnpm run test:ci
         working-directory: ./tests
 
+  generated-docs:
+    runs-on: ubuntu-latest
+    name: Generated component APIs and docs are up to date
+    steps:
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          cache: 'pnpm'
+          node-version: '22'
+
+      - run: pnpm install
+      # The docs Panda spec (recipe variants) reads the built react + data-grid
+      # design systems, as in the docs `dev` script.
+      - run: pnpm run build
+        working-directory: ./packages/react
+      - run: pnpm run build
+        working-directory: ./packages/data-grid
+      - run: pnpm exec panda codegen --spec
+        working-directory: ./docs
+      # Generator tests include integration tests against the Panda spec above
+      - run: pnpm run test:scripts
+        working-directory: ./packages/react
+      - run: pnpm run generate:check
+        working-directory: ./packages/react
+
   react-build:
     runs-on: ubuntu-latest
     name: React successfully builds
