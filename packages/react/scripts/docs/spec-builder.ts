@@ -8,6 +8,10 @@ import { PandaVariants, variantToProp } from './panda'
 import { mergePropLists } from './resolver/prop-utils'
 import { TypeResolver, type UnresolvedRef } from './resolver/type-resolver'
 import type { ComponentDocSpec, PartSpec, PropSpec } from './types'
+import { extractConnectPart, type ConnectPart } from './zag/connect'
+import { checkKeyboardDrift } from './zag/keyboard'
+import { extractMachineDefaults } from './zag/machine'
+import { loadZagSource } from './zag/zag-source'
 
 /** Props every Cerberus primitive accepts on top of its Ark/Zag props. */
 const PRIMITIVE_PROPS: PropSpec[] = [
@@ -64,14 +68,30 @@ export function buildComponentDocSpec(
     entry.key,
     ctx.diagnostics,
   )
-  const variantProps = variants.map(variantToProp)
+  const zag = loadZagFacts(entry, ctx.diagnostics)
+  const inputs: PrimitiveInputs = {
+    variantProps: variants.map(variantToProp),
+    machineDefaults: zag?.defaults ?? new Map(),
+    connect: (part) => zag?.part(part) ?? null,
+  }
 
   const parts: PartSpec[] = [
     ...entry.abstractions.map((abs) => buildAbstraction(entry, abs, ctx)),
-    ...entry.primitives.map((part) =>
-      buildPrimitive(entry, part, variantProps, ctx),
-    ),
+    ...entry.primitives.map((part) => buildPrimitive(entry, part, inputs, ctx)),
   ]
+
+  if (zag && entry.a11y) {
+    checkKeyboardDrift(
+      entry.key,
+      entry.a11y.keyboard,
+      entry.primitives.map((part) => ({
+        exportName: `${entry.name}.${partExportKey(part)}`,
+        keys: zag.part(part)?.keyboard ?? [],
+        isButton: zag.part(part)?.element === 'button',
+      })),
+      ctx.diagnostics,
+    )
+  }
 
   return {
     name: entry.name,
@@ -142,10 +162,101 @@ function buildAbstraction(
   }
 }
 
+interface ZagFacts {
+  defaults: Map<string, string>
+  part: (part: string) => ConnectPart | null
+}
+
+/** What the Zag.js machine behind an Ark component reveals; null for non-Ark ones. */
+function loadZagFacts(
+  entry: ComponentEntry,
+  diagnostics: Diagnostics,
+): ZagFacts | null {
+  if (!entry.arkEntry) return null
+  const source = loadZagSource(entry.key, entry.arkEntry)
+  if (!source?.connect) {
+    diagnostics.warn(
+      entry.key,
+      `No Zag.js connect source found for @zag-js/${entry.key}; data attributes and keys are not documented`,
+    )
+    return null
+  }
+  const connect = source.connect
+  const cache = new Map<string, ConnectPart | null>()
+  return {
+    defaults: source.machine
+      ? extractMachineDefaults(source.machine)
+      : new Map(),
+    part: (part) => {
+      if (!cache.has(part)) cache.set(part, extractConnectPart(connect, part))
+      return cache.get(part)!
+    },
+  }
+}
+
+interface PrimitiveInputs {
+  variantProps: PropSpec[]
+  machineDefaults: Map<string, string>
+  connect: (part: string) => ConnectPart | null
+}
+
+/** Quote style aside, do two default-value source texts say the same thing? */
+const sameDefault = (a: string, b: string) =>
+  a.replace(/'/g, '"') === b.replace(/'/g, '"')
+
+/** Fills Root props that lack a JSDoc `@default` from the machine's defaults. */
+function applyMachineDefaults(
+  props: PropSpec[],
+  defaults: Map<string, string>,
+  subject: string,
+  key: string,
+  diagnostics: Diagnostics,
+): PropSpec[] {
+  return props.map((prop) => {
+    const machine = defaults.get(prop.name)
+    if (machine === undefined) return prop
+    if (prop.defaultValue === undefined)
+      return { ...prop, defaultValue: machine }
+    if (!sameDefault(prop.defaultValue, machine)) {
+      diagnostics.warn(
+        key,
+        `${subject}.${prop.name}: JSDoc says @default ${prop.defaultValue} but the Zag machine defaults to ${machine}`,
+      )
+    }
+    return prop
+  })
+}
+
+/** `data-scope`/`data-part` from Zag's anatomy when it has `build()`, else derived. */
+function partAttrs(entry: ComponentEntry, part: string) {
+  const anatomy = entry.anatomy as {
+    build?: () => Record<string, { attrs?: Record<string, string> }>
+  }
+  const attrs =
+    typeof anatomy.build === 'function'
+      ? anatomy.build()[part]?.attrs
+      : undefined
+  return {
+    dataScope: attrs?.['data-scope'] ?? entry.key,
+    dataPart: attrs?.['data-part'] ?? toKebabCase(part),
+  }
+}
+
+/** Optional part fields derived from Zag, omitted when empty to keep specs small. */
+function zagPartFields(info: ConnectPart | null): Partial<PartSpec> {
+  if (!info) return {}
+  return {
+    ...(info.dataAttributes.length > 0
+      ? { dataAttributes: info.dataAttributes }
+      : {}),
+    ...(info.keyboard.length > 0 ? { keyboard: info.keyboard } : {}),
+  }
+}
+
 function buildPrimitive(
   entry: ComponentEntry,
   part: string,
-  variantProps: PropSpec[],
+  { variantProps, machineDefaults, connect }: PrimitiveInputs,
   ctx: SpecBuilderContext,
 ): PartSpec {
   const { name, key, arkEntry } = entry
@@ -173,8 +284,17 @@ function buildPrimitive(
     }
   }
 
-  // Recipe variants go on Root, where they cascade to every slot
-  const ownProps = isRoot ? mergePropLists(variantProps, arkProps) : arkProps
+  // Recipe variants go on Root, where they cascade to every slot. The machine's
+  // defaults apply to Root, which is where its props are passed.
+  const ownProps = isRoot
+    ? applyMachineDefaults(
+        mergePropLists(variantProps, arkProps),
+        machineDefaults,
+        subject,
+        key,
+        diagnostics,
+      )
+    : arkProps
 
   if (isRoot && entry.rootProvider) {
     // `withRootProvider` renders no element: no data attributes, `asChild` or `css`
@@ -194,8 +314,8 @@ function buildPrimitive(
     description: isRoot
       ? `The root container of the ${name} component.`
       : `The ${toKebabCase(part)} primitive part of the ${name} component.`,
-    dataScope: key,
-    dataPart: toKebabCase(part),
+    ...partAttrs(entry, part),
+    ...zagPartFields(connect(part)),
     props: mergePropLists(ownProps, PRIMITIVE_PROPS),
   }
 }

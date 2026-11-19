@@ -61,6 +61,7 @@ describe('scanning primitives', () => {
     ).toEqual({
       description: 'First line. Second line.',
       defaultValue: '"vertical"',
+      see: ['somewhere'],
     })
   })
 

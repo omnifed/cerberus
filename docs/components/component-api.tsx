@@ -148,6 +148,22 @@ function PartsDocs({ parts, specKey }: PartsProps) {
                 </Body>
               )}
 
+              <Show when={(part.keyboard?.length ?? 0) > 0}>
+                {() => (
+                  <Body>
+                    <cerberus.strong>Keyboard:</cerberus.strong>{' '}
+                    <For each={part.keyboard ?? []}>
+                      {(key, i) => (
+                        <cerberus.span key={`keys:${key}`}>
+                          {i > 0 && ' '}
+                          <KBD>{key}</KBD>
+                        </cerberus.span>
+                      )}
+                    </For>
+                  </Body>
+                )}
+              </Show>
+
               <Show when={part.props.length > 0}>
                 {() => (
                   <Box overflowX="auto">
@@ -185,7 +201,51 @@ function PartsDocs({ parts, specKey }: PartsProps) {
                                 <Code>{prop.defaultValue ?? 'undefined'}</Code>
                               </Table.Cell>
                               <Table.Cell>
+                                <Show when={prop.deprecated !== undefined}>
+                                  {() => (
+                                    <CellText>
+                                      <cerberus.strong>
+                                        Deprecated.
+                                      </cerberus.strong>{' '}
+                                      {prop.deprecated}{' '}
+                                    </CellText>
+                                  )}
+                                </Show>
                                 <CellText>{prop.description}</CellText>
+                              </Table.Cell>
+                            </Table.Row>
+                          )}
+                        </For>
+                      </Table.Body>
+                    </Table.Root>
+                  </Box>
+                )}
+              </Show>
+
+              <Show when={(part.dataAttributes?.length ?? 0) > 0}>
+                {() => (
+                  <Box overflowX="auto" mt="md">
+                    <Table.Root decoration="zebra">
+                      <Table.Caption>
+                        {part.exportName} state data attributes
+                      </Table.Caption>
+                      <Table.Header>
+                        <Table.Row>
+                          <Table.HeaderCol scope="col">
+                            Attribute
+                          </Table.HeaderCol>
+                          <Table.HeaderCol scope="col">Value</Table.HeaderCol>
+                        </Table.Row>
+                      </Table.Header>
+                      <Table.Body>
+                        <For each={part.dataAttributes ?? []}>
+                          {(attr) => (
+                            <Table.Row key={`parts:attr:${attr.name}`}>
+                              <Table.Cell>
+                                <Code>{attr.name}</Code>
+                              </Table.Cell>
+                              <Table.Cell>
+                                <DataAttributeValue attr={attr} />
                               </Table.Cell>
                             </Table.Row>
                           )}
@@ -201,6 +261,27 @@ function PartsDocs({ parts, specKey }: PartsProps) {
       </Stack>
     </cerberus.section>
   )
+}
+
+type DataAttribute = NonNullable<
+  ComponentDocSpec['parts'][number]['dataAttributes']
+>[number]
+
+function DataAttributeValue({ attr }: { attr: DataAttribute }) {
+  if (attr.values) {
+    return <Code>{attr.values.map((v) => `"${v}"`).join(' | ')}</Code>
+  }
+  if (attr.presence) {
+    return <CellText>Present when the state applies, absent otherwise</CellText>
+  }
+  if (attr.reflects) {
+    return (
+      <CellText>
+        Mirrors the <Code>{attr.reflects}</Code> prop
+      </CellText>
+    )
+  }
+  return <CellText>Set by the component</CellText>
 }
 
 /** Heading id of the part whose `exportName` is `target` (matches the ids above). */

@@ -204,11 +204,19 @@ export function parseInterfaceBody(body: string): PropSpec[] {
     let type = (typePrefix + typeText).replace(/\s+/g, ' ')
     if (!required) type = type.replace(/\s*\|\s*undefined$/, '')
 
-    const { description, defaultValue } = jsDoc
+    const { description, defaultValue, deprecated, see } = jsDoc
       ? parseJsDocBlock(jsDoc)
-      : { description: '', defaultValue: undefined }
+      : { description: '' }
 
-    props.push({ name: rawName, type, required, defaultValue, description })
+    props.push({
+      name: rawName,
+      type,
+      required,
+      defaultValue,
+      description,
+      ...(deprecated !== undefined ? { deprecated } : {}),
+      ...(see ? { see } : {}),
+    })
   }
 
   return props

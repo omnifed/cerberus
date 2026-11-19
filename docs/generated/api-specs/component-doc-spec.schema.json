@@ -80,6 +80,47 @@
               "minLength": 1
             }
           },
+          "dataAttributes": {
+            "description": "State data attributes beyond data-scope/data-part",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^data-[a-z0-9-]+$"
+                },
+                "values": {
+                  "description": "The fixed values the attribute takes",
+                  "minItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "presence": {
+                  "description": "A flag: present when the state applies, absent otherwise",
+                  "type": "boolean",
+                  "const": true
+                },
+                "reflects": {
+                  "description": "Mirrors the value of this prop (on the part or on Root)",
+                  "type": "string"
+                }
+              },
+              "required": ["name"],
+              "additionalProperties": false,
+              "description": "A data attribute set by Zag.js, derived from its `connect` source"
+            }
+          },
+          "keyboard": {
+            "description": "Keys this part handles, from the Zag.js `keyMap`",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
           "props": {
             "type": "array",
             "items": {
@@ -103,6 +144,17 @@
                 },
                 "description": {
                   "type": "string"
+                },
+                "deprecated": {
+                  "description": "Present when deprecated: the `@deprecated` text, possibly empty",
+                  "type": "string"
+                },
+                "see": {
+                  "description": "`@see` references",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               },
               "required": ["name", "type", "required", "description"],

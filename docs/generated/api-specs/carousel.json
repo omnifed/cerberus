@@ -27,6 +27,12 @@
       "description": "The root container of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        }
+      ],
       "props": [
         {
           "name": "id",
@@ -189,6 +195,16 @@
       "description": "The item-group primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "item-group",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        },
+        {
+          "name": "data-dragging",
+          "presence": true
+        }
+      ],
       "props": [
         {
           "name": "asChild",
@@ -220,6 +236,20 @@
       "description": "The item primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "item",
+      "dataAttributes": [
+        {
+          "name": "data-index",
+          "reflects": "index"
+        },
+        {
+          "name": "data-inview",
+          "presence": true
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        }
+      ],
       "props": [
         {
           "name": "index",
@@ -264,6 +294,12 @@
       "description": "The control primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "control",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        }
+      ],
       "props": [
         {
           "name": "asChild",
@@ -295,6 +331,12 @@
       "description": "The next-trigger primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "next-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        }
+      ],
       "props": [
         {
           "name": "asChild",
@@ -326,6 +368,12 @@
       "description": "The prev-trigger primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "prev-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        }
+      ],
       "props": [
         {
           "name": "asChild",
@@ -357,6 +405,20 @@
       "description": "The indicator-group primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "indicator-group",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        }
+      ],
+      "keyboard": [
+        "ArrowDown",
+        "ArrowUp",
+        "ArrowRight",
+        "ArrowLeft",
+        "Home",
+        "End"
+      ],
       "props": [
         {
           "name": "asChild",
@@ -388,6 +450,24 @@
       "description": "The indicator primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "indicator",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        },
+        {
+          "name": "data-index",
+          "reflects": "index"
+        },
+        {
+          "name": "data-readonly",
+          "presence": true
+        },
+        {
+          "name": "data-current",
+          "presence": true
+        }
+      ],
       "props": [
         {
           "name": "index",
@@ -432,6 +512,16 @@
       "description": "The autoplay-trigger primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "autoplay-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation"
+        },
+        {
+          "name": "data-pressed",
+          "presence": true
+        }
+      ],
       "props": [
         {
           "name": "asChild",

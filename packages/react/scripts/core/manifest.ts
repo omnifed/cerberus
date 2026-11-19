@@ -4,6 +4,7 @@ import { ModuleGraph } from '../docs/resolver/module-graph'
 import type {
   A11yConfig,
   AbstractionConfig,
+  Anatomy,
   ComponentConfig,
 } from '../manifest'
 import { Diagnostics } from './diagnostics'
@@ -18,6 +19,7 @@ export interface ComponentEntry {
   source: 'ark' | 'cerberus'
   /** Declaration file of `@ark-ui/react/<key>`, when `source` is `ark` */
   arkEntry: string | null
+  anatomy: Anatomy
   /** Anatomy parts, de-duplicated, in order */
   parts: string[]
   /**
@@ -101,6 +103,7 @@ export function loadManifest(
       recipe: config.recipe ?? toRecipeName(key),
       source,
       arkEntry: source === 'ark' ? arkEntry : null,
+      anatomy: config.anatomy,
       parts,
       rootProvider,
       primitives: rootProvider ? ['root', ...parts] : parts,

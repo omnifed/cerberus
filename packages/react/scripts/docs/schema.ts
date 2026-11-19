@@ -18,7 +18,33 @@ export const PropSpecSchema = z.strictObject({
   required: z.boolean(),
   defaultValue: z.string().optional().describe('Source text of the default'),
   description: z.string(),
+  deprecated: z
+    .string()
+    .optional()
+    .describe(
+      'Present when deprecated: the `@deprecated` text, possibly empty',
+    ),
+  see: z.array(z.string()).optional().describe('`@see` references'),
 })
+
+export const DataAttributeSpecSchema = z
+  .strictObject({
+    name: z.string().regex(/^data-[a-z0-9-]+$/),
+    values: z
+      .array(z.string())
+      .min(1)
+      .optional()
+      .describe('The fixed values the attribute takes'),
+    presence: z
+      .literal(true)
+      .optional()
+      .describe('A flag: present when the state applies, absent otherwise'),
+    reflects: z
+      .string()
+      .optional()
+      .describe('Mirrors the value of this prop (on the part or on Root)'),
+  })
+  .describe('A data attribute set by Zag.js, derived from its `connect` source')
 
 export const PartSpecSchema = z.strictObject({
   name: z
@@ -34,6 +60,14 @@ export const PartSpecSchema = z.strictObject({
     .array(z.string().min(1))
     .optional()
     .describe('Parts (by `exportName`) whose props this part also accepts'),
+  dataAttributes: z
+    .array(DataAttributeSpecSchema)
+    .optional()
+    .describe('State data attributes beyond data-scope/data-part'),
+  keyboard: z
+    .array(z.string().min(1))
+    .optional()
+    .describe('Keys this part handles, from the Zag.js `keyMap`'),
   props: z.array(PropSpecSchema),
 })
 
