@@ -16,6 +16,7 @@
     "test": "pnpm --filter tests run test",
     "ci:version": "changeset version && bun ./scripts/src/bump-versions.mjs --stable && pnpm install --no-frozen-lockfile",
     "gen:component": "bun ./scripts/src/bootstrap-component.ts",
+    "generate:docs": "pnpm --filter @cerberus-design/react run generate:docs",
     "start:docs": "pnpm --filter docs run dev",
     "watch:react": "pnpm --filter @cerberus-design/react run -w watch",
     "watch:data-grid": "pnpm --filter @cerberus-design/data-grid run -w watch",

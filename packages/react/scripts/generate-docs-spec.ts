@@ -1,7 +1,15 @@
 import { existsSync, readFileSync } from 'node:fs'
-import { mkdir, readFile } from 'node:fs/promises'
+import { readFile } from 'node:fs/promises'
 import { dirname, join, relative } from 'node:path'
 import { config } from './configs'
+import { Diagnostics } from './core/diagnostics'
+import { emitFiles, reportStale, type GeneratedFile } from './core/emit'
+import {
+  DESIGN_SYSTEM_SPEC_PATH,
+  DOCS_SPEC_OUT_DIR,
+  REACT_PKG_ROOT,
+  REPO_ROOT,
+} from './core/paths'
 import { type ComponentConfig, type KeyboardMapping } from './manifest'
 
 export interface PropSpec {
@@ -26,6 +34,8 @@ export interface VariantSpec {
   name: string
   values: string[]
   defaultValue?: string
+  /** Panda `allowsBoolean`: the variant also accepts `true`/`false` */
+  allowsBoolean?: boolean
 }
 
 export interface ComponentDocSpec {
@@ -56,19 +66,6 @@ interface ParsedTypeAliasDecl {
 type ParsedDecl = ParsedInterfaceDecl | ParsedTypeAliasDecl
 type DeclMap = Map<string, ParsedDecl>
 
-// Anchor every path to this script's location so output doesn't depend on the cwd.
-// (Previously `process.cwd()` was used, so running from `packages/react` wrote to
-// `packages/react/docs/generated` instead of the docs app's `docs/generated`.)
-const REACT_PKG_ROOT = join(import.meta.dir, '..')
-const REPO_ROOT = join(REACT_PKG_ROOT, '..', '..')
-const DESIGN_SYSTEM_SPEC_PATH = join(
-  REACT_PKG_ROOT,
-  'styled-system',
-  'specs',
-  'design-system.json',
-)
-const DOCS_SPEC_OUT_DIR = join(REPO_ROOT, 'docs', 'generated', 'api-specs')
-
 function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
@@ -81,7 +78,7 @@ function toKebabCase(str: string): string {
  * If `src[i]` starts a `//` or `/* *\/` comment, returns the index just past it; otherwise -1.
  * Scanners must skip comments so apostrophes in JSDoc (e.g. "don't") aren't read as quotes.
  */
-function skipComment(src: string, i: number): number {
+export function skipComment(src: string, i: number): number {
   if (src[i] !== '/') return -1
   if (src[i + 1] === '/') {
     const end = src.indexOf('\n', i + 2)
@@ -98,7 +95,7 @@ function skipComment(src: string, i: number): number {
 /**
  * Splits a string by `delimiter` only when outside `{}`, `()`, `<>`, `[]`, and quotes.
  */
-function splitTopLevel(input: string, delimiter: string): string[] {
+export function splitTopLevel(input: string, delimiter: string): string[] {
   const parts: string[] = []
   let brace = 0
   let paren = 0
@@ -199,7 +196,7 @@ function findMatchingClose(
 /**
  * Parses a JSDoc comment block into description prose and an optional @default value.
  */
-function parseJsDocBlock(rawComment: string): {
+export function parseJsDocBlock(rawComment: string): {
   description: string
   defaultValue?: string
 } {
@@ -230,7 +227,7 @@ function parseJsDocBlock(rawComment: string): {
 /**
  * Parses all property signatures and JSDoc blocks inside `{ ... }`.
  */
-function parseInterfaceBody(body: string): PropSpec[] {
+export function parseInterfaceBody(body: string): PropSpec[] {
   const props: PropSpec[] = []
   let i = 0
 
@@ -476,12 +473,40 @@ interface ModuleInfo {
   starExports: string[]
 }
 
-interface ResolvedDecl {
+export interface ResolvedDecl {
   decl: ParsedDecl
   file: string
+  /** The declaration's own name in `file` (differs from the looked-up name for aliases) */
+  name: string
 }
 
 const moduleCache = new Map<string, ModuleInfo | null>()
+
+/** Clears parsed-module state (for tests that rewrite fixtures). */
+export function resetResolverState(): void {
+  moduleCache.clear()
+  unresolved.length = 0
+}
+
+export interface UnresolvedRef {
+  /** The type expression that could not be resolved to properties */
+  expr: string
+  /** The file whose scope it was resolved from */
+  file: string
+  /**
+   * `opaque`: a value-level reference such as `ComponentProps<typeof AccordionItem>`.
+   * The hand-written parser can't follow `typeof`, so the inherited props are not
+   * expanded. Reported as a warning until specs gain an `inherits` field.
+   */
+  reason: 'not-found' | 'missing-member' | 'unsupported' | 'opaque'
+}
+
+const unresolved: UnresolvedRef[] = []
+
+/** Returns and clears every reference the resolver gave up on since the last call. */
+export function drainUnresolved(): UnresolvedRef[] {
+  return unresolved.splice(0, unresolved.length)
+}
 
 function parseSpecifierList(
   list: string,
@@ -497,7 +522,7 @@ function parseSpecifierList(
     .filter((x): x is { orig: string; alias: string } => x !== null)
 }
 
-function parseModule(path: string): ModuleInfo | null {
+export function parseModule(path: string): ModuleInfo | null {
   if (moduleCache.has(path)) return moduleCache.get(path)!
   if (!existsSync(path)) {
     moduleCache.set(path, null)
@@ -580,7 +605,10 @@ function extractTypesPath(entry: unknown): string | null {
 /**
  * Resolves a module specifier (relative or bare package) to a type declaration file.
  */
-function resolveModuleTypes(spec: string, fromFile: string): string | null {
+export function resolveModuleTypes(
+  spec: string,
+  fromFile: string,
+): string | null {
   const fromDir = dirname(fromFile)
 
   if (spec.startsWith('.')) {
@@ -629,7 +657,7 @@ function resolveModuleTypes(spec: string, fromFile: string): string | null {
 /**
  * Finds a symbol exported from a module, following aliases, re-exports, and `export *`.
  */
-function lookupExport(
+export function lookupExport(
   file: string,
   name: string,
   seen = new Set<string>(),
@@ -664,7 +692,7 @@ function lookupExport(
 /**
  * Resolves a name as seen from inside `file`: local declaration first, then imports.
  */
-function lookupLocal(
+export function lookupLocal(
   file: string,
   name: string,
   seen = new Set<string>(),
@@ -673,7 +701,7 @@ function lookupLocal(
   if (!mod) return null
 
   const decl = mod.decls.get(name)
-  if (decl) return { decl, file }
+  if (decl) return { decl, file, name }
 
   const imported = mod.imports.get(name)
   if (imported) {
@@ -717,6 +745,35 @@ function mergePropLists(base: PropSpec[], override: PropSpec[]): PropSpec[] {
   return Array.from(byName.values())
 }
 
+function mergeUnionBranches(branches: PropSpec[][]): PropSpec[] {
+  const order: string[] = []
+  const byName = new Map<string, PropSpec[]>()
+  for (const branch of branches) {
+    for (const prop of branch) {
+      if (!byName.has(prop.name)) {
+        byName.set(prop.name, [])
+        order.push(prop.name)
+      }
+      byName.get(prop.name)!.push(prop)
+    }
+  }
+  return order.map((name) => {
+    const variants = byName.get(name)!
+    const types = [
+      ...new Set(variants.map((v) => v.type).filter((t) => t !== 'never')),
+    ]
+    return {
+      name,
+      type: types.join(' | ') || 'never',
+      required:
+        variants.length === branches.length &&
+        variants.every((v) => v.required),
+      defaultValue: variants.find((v) => v.defaultValue)?.defaultValue,
+      description: variants.find((v) => v.description)?.description ?? '',
+    }
+  })
+}
+
 function extractStringLiterals(unionExpr: string): Set<string> {
   const keys = new Set<string>()
   const regex = /['"]([^'"]+)['"]/g
@@ -728,6 +785,31 @@ function extractStringLiterals(unionExpr: string): Set<string> {
 }
 
 /**
+ * Replaces comment text with spaces (newlines kept), preserving every offset.
+ */
+function blankComments(src: string): string {
+  let out = ''
+  let quote: string | null = null
+  for (let i = 0; i < src.length; i++) {
+    const ch = src[i]
+    if (quote) {
+      if (ch === quote && src[i - 1] !== '\\') quote = null
+      out += ch
+      continue
+    }
+    const end = skipComment(src, i)
+    if (end !== -1) {
+      out += src.slice(i, end).replace(/[^\n]/g, ' ')
+      i = end - 1
+      continue
+    }
+    if (ch === "'" || ch === '"' || ch === '`') quote = ch
+    out += ch
+  }
+  return out
+}
+
+/**
  * Extracts the type expression for a specific member inside an interface body
  * (e.g., `props: AccordionProps` or `props: { ... }` inside `AccordionSchema`).
  */
@@ -735,8 +817,10 @@ function extractMemberTypeFromBody(
   body: string,
   memberName: string,
 ): string | null {
+  // Search a comment-blanked copy so `props:` inside JSDoc can't match. Blanking keeps
+  // offsets identical, so the match index is valid in `body` too.
   const propRegex = new RegExp(`\\b${memberName}\\??\\s*:`)
-  const match = propRegex.exec(body)
+  const match = propRegex.exec(blankComments(body))
   if (!match) return null
 
   let i = match.index + match[0].length
@@ -793,7 +877,7 @@ function extractMemberTypeFromBody(
  * Type names are resolved from the scope of `file`, following its imports, so namespaced
  * references like `accordion.Props` land on the right `@zag-js/*` declaration.
  */
-function resolvePropsFromExpr(
+export function resolvePropsFromExpr(
   rawExpr: string,
   file: string,
   visited = new Set<string>(),
@@ -815,6 +899,15 @@ function resolvePropsFromExpr(
 
   const recurse = (e: string, f = file, v = new Set(visited)) =>
     resolvePropsFromExpr(e, f, v)
+
+  // Handle top-level union: `A | B` (checked before `&`, which binds tighter).
+  // A prop is listed if any branch has it, and required only if every branch requires it.
+  const unionTerms = splitTopLevel(expr, '|').filter(
+    (t) => !/^(?:undefined|null|never)$/.test(t),
+  )
+  if (unionTerms.length > 1) {
+    return mergeUnionBranches(unionTerms.map((term) => recurse(term)))
+  }
 
   // Handle top-level intersection: `A & B & { ... }`
   const intersectionTerms = splitTopLevel(expr, '&')
@@ -844,7 +937,10 @@ function resolvePropsFromExpr(
   if (indexedMatch) {
     const [, ns, targetType, memberName] = indexedMatch
     const resolved = lookupTypeRef(file, ns, targetType)
-    if (!resolved) return []
+    if (!resolved) {
+      unresolved.push({ expr, file, reason: 'not-found' })
+      return []
+    }
     const body =
       resolved.decl.kind === 'interface'
         ? resolved.decl.body
@@ -852,14 +948,26 @@ function resolvePropsFromExpr(
           ? resolved.decl.expr.slice(1, -1)
           : null
     const memberExpr = body ? extractMemberTypeFromBody(body, memberName) : null
-    return memberExpr ? recurse(memberExpr, resolved.file) : []
+    if (!memberExpr) {
+      unresolved.push({ expr, file, reason: 'missing-member' })
+      return []
+    }
+    return recurse(memberExpr, resolved.file)
   }
 
   // Handle generic utility types: `Assign<A, B>`, `Omit<T, K>`, `Optional<T, K>`, `Partial<T>`, `Pick<T, K>`
-  const genericMatch = /^([A-Za-z0-9_$.]+)<(.+)>$/.exec(expr)
+  const genericMatch = /^([A-Za-z0-9_$.]+)<([\s\S]+)>$/.exec(expr)
   if (genericMatch) {
     const [, genericName, genericArgsRaw] = genericMatch
     const args = splitTopLevel(genericArgsRaw, ',')
+
+    if (
+      /^(?:React\.)?ComponentProps(?:WithoutRef|WithRef)?$/.test(genericName) &&
+      /^typeof\s/.test(args[0] ?? '')
+    ) {
+      unresolved.push({ expr, file, reason: 'opaque' })
+      return []
+    }
 
     if (genericName === 'Assign' && args.length >= 2) {
       return mergePropLists(recurse(args[0]), recurse(args[1]))
@@ -912,30 +1020,53 @@ function resolvePropsFromExpr(
   if (namespacedMatch) {
     const [, ns, typeName] = namespacedMatch
     const resolved = lookupTypeRef(file, ns, typeName)
-    if (!resolved) return []
-
-    const visitKey = `${resolved.file}::${typeName}`
-    if (visited.has(visitKey)) return []
-    visited.add(visitKey)
-
-    const { decl, file: declFile } = resolved
-
-    if (decl.kind === 'type') {
-      return resolvePropsFromExpr(decl.expr, declFile, visited)
+    if (!resolved) {
+      unresolved.push({ expr, file, reason: 'not-found' })
+      return []
     }
 
-    let inherited: PropSpec[] = []
-    for (const parentExpr of decl.heritage) {
-      inherited = mergePropLists(
-        inherited,
-        resolvePropsFromExpr(parentExpr, declFile, new Set(visited)),
-      )
-    }
-
-    return mergePropLists(inherited, parseInterfaceBody(decl.body))
+    return resolveDeclProps(resolved, visited)
   }
 
+  unresolved.push({ expr, file, reason: 'unsupported' })
   return []
+}
+
+/**
+ * Resolves the properties of an already-located declaration, in its own file's scope.
+ */
+export function resolveDeclProps(
+  resolved: ResolvedDecl,
+  visited = new Set<string>(),
+): PropSpec[] {
+  const { decl, file, name } = resolved
+  const visitKey = `${file}::${name}`
+  if (visited.has(visitKey)) return []
+  visited.add(visitKey)
+
+  if (decl.kind === 'type') {
+    return resolvePropsFromExpr(decl.expr, file, visited)
+  }
+
+  let inherited: PropSpec[] = []
+  for (const parentExpr of decl.heritage) {
+    inherited = mergePropLists(
+      inherited,
+      resolvePropsFromExpr(parentExpr, file, new Set(visited)),
+    )
+  }
+  return mergePropLists(inherited, parseInterfaceBody(decl.body))
+}
+
+/**
+ * Resolves the properties of `name` as exported from `entry`, following aliases.
+ */
+export function resolveExportProps(
+  entry: string,
+  name: string,
+): PropSpec[] | null {
+  const resolved = lookupExport(entry, name)
+  return resolved ? resolveDeclProps(resolved) : null
 }
 
 /**
@@ -943,18 +1074,23 @@ function resolvePropsFromExpr(
  */
 function resolveArkEntry(key: string): string | null {
   const anchor = join(REACT_PKG_ROOT, 'package.json')
-  const entry = resolveModuleTypes(`@ark-ui/react/${key}`, anchor)
-  if (!entry) {
-    console.warn(`⚠️ Could not resolve @ark-ui/react/${key} declaration files`)
-  }
-  return entry
+  return resolveModuleTypes(`@ark-ui/react/${key}`, anchor)
 }
 
 /**
  * Reads Panda v2's `design-system.json` to extract recipe variants & defaults.
  */
-async function loadRecipeVariants(key: string): Promise<VariantSpec[]> {
-  if (!existsSync(DESIGN_SYSTEM_SPEC_PATH)) return []
+async function loadRecipeVariants(
+  key: string,
+  diagnostics: Diagnostics,
+): Promise<VariantSpec[]> {
+  if (!existsSync(DESIGN_SYSTEM_SPEC_PATH)) {
+    diagnostics.error(
+      key,
+      `Panda design-system spec not found at ${relative(REPO_ROOT, DESIGN_SYSTEM_SPEC_PATH)}; run \`pnpm --filter docs exec panda codegen --spec\`.`,
+    )
+    return []
+  }
 
   const raw = JSON.parse(await readFile(DESIGN_SYSTEM_SPEC_PATH, 'utf-8'))
   const recipe = raw.slotRecipes?.[key] ?? raw.recipes?.[key]
@@ -963,7 +1099,8 @@ async function loadRecipeVariants(key: string): Promise<VariantSpec[]> {
   const defaultVariants: Record<string, unknown> = recipe.defaultVariants ?? {}
 
   return Object.entries(recipe.variants).map(([variantName, spec]) => {
-    const typedSpec = spec as { values?: unknown[] } | Record<string, unknown>
+    // Panda v2 spec shape: `{ values: string[], allowsBoolean: boolean }`
+    const typedSpec = spec as { values?: unknown[]; allowsBoolean?: boolean }
     const values = Array.isArray(typedSpec?.values)
       ? typedSpec.values.map(String)
       : Object.keys(typedSpec ?? {})
@@ -973,6 +1110,7 @@ async function loadRecipeVariants(key: string): Promise<VariantSpec[]> {
       name: variantName,
       values,
       defaultValue: defVal !== undefined ? `'${String(defVal)}'` : undefined,
+      ...(typedSpec?.allowsBoolean ? { allowsBoolean: true } : {}),
     }
   })
 }
@@ -1004,8 +1142,33 @@ const PANDA_CERBERUS_PRIMITIVE_PROPS: PropSpec[] = [
   },
 ]
 
-async function buildComponentDocSpec(
+/**
+ * Reports every reference the resolver gave up on while resolving `subject`.
+ */
+function reportUnresolved(
+  diagnostics: Diagnostics,
+  key: string,
+  subject: string,
+): void {
+  for (const ref of drainUnresolved()) {
+    const where = relative(REACT_PKG_ROOT, ref.file)
+    if (ref.reason === 'opaque') {
+      diagnostics.warn(
+        key,
+        `${subject}: inherited props from \`${ref.expr}\` (${where}) are not expanded`,
+      )
+    } else {
+      diagnostics.error(
+        key,
+        `${subject}: could not resolve \`${ref.expr}\` (${ref.reason}) from ${where}`,
+      )
+    }
+  }
+}
+
+export async function buildComponentDocSpec(
   config: ComponentConfig,
+  diagnostics: Diagnostics = new Diagnostics(),
 ): Promise<ComponentDocSpec> {
   const {
     name,
@@ -1022,15 +1185,25 @@ async function buildComponentDocSpec(
     : (anatomy as { keys: () => string[] }).keys()
   const uniqueParts = [...new Set(reliableParts)]
 
-  const variants = await loadRecipeVariants(key)
+  drainUnresolved()
+  const variants = await loadRecipeVariants(key, diagnostics)
   const arkEntry = isArkUI ? resolveArkEntry(key) : null
+  if (isArkUI && !arkEntry) {
+    diagnostics.error(
+      key,
+      `Could not resolve declaration files for @ark-ui/react/${key}`,
+    )
+  }
 
   const parts: PartSpec[] = []
 
   // Convert Panda recipe variants into PropSpecs so `Root` documents both Ark + PandaCSS props
   const variantPropSpecs: PropSpec[] = variants.map((v) => ({
     name: v.name,
-    type: v.values.map((val) => `'${val}'`).join(' | '),
+    type: [
+      ...v.values.map((val) => `'${val}'`),
+      ...(v.allowsBoolean ? ['boolean'] : []),
+    ].join(' | '),
     required: false,
     defaultValue: v.defaultValue,
     description: `PandaCSS recipe variant for ${v.name}.`,
@@ -1049,14 +1222,20 @@ async function buildComponentDocSpec(
       ...(abs.types ?? []),
       `${name}${abs.name}Props`,
       `${name}${abs.name}BaseProps`,
+      // The default export renders as `<Avatar>`, so its props are usually `AvatarProps`
+      ...(abs.isDefaultExport ? [`${name}Props`] : []),
     ]
 
     let extracted: PropSpec[] = []
-    for (const candidate of candidateInterfaces) {
-      if (lookupLocal(absFilePath, candidate)) {
-        extracted = resolvePropsFromExpr(candidate, absFilePath)
-        break
-      }
+    const match = candidateInterfaces.find((c) => lookupLocal(absFilePath, c))
+    if (match) {
+      extracted = resolvePropsFromExpr(match, absFilePath)
+      reportUnresolved(diagnostics, key, `${name}.${abs.name}`)
+    } else {
+      diagnostics.error(
+        key,
+        `${name}.${abs.name}: none of [${candidateInterfaces.join(', ')}] found in ${relative(REACT_PKG_ROOT, absFilePath)}`,
+      )
     }
 
     parts.push({
@@ -1093,16 +1272,23 @@ async function buildComponentDocSpec(
 
     let arkProps: PropSpec[] = []
     if (arkEntry) {
-      for (const candidate of [
-        `${partPascal}Props`,
-        `${partPascal}BaseProps`,
-      ]) {
+      const candidates = [`${partPascal}Props`, `${partPascal}BaseProps`]
+      let found = false
+      for (const candidate of candidates) {
         const resolved = lookupExport(arkEntry, candidate)
         if (resolved) {
-          // Resolve from the declaring file so its own imports (e.g. `@zag-js/*`) are in scope
-          arkProps = resolvePropsFromExpr(candidate, resolved.file)
+          // Resolve in the declaring file so its own imports (e.g. `@zag-js/*`) are in scope
+          arkProps = resolveDeclProps(resolved)
+          reportUnresolved(diagnostics, key, `${name}.${exportKey}`)
+          found = true
           break
         }
+      }
+      if (!found) {
+        diagnostics.error(
+          key,
+          `${name}.${exportKey}: none of [${candidates.join(', ')}] exported from @ark-ui/react/${key}`,
+        )
       }
     }
 
@@ -1136,23 +1322,7 @@ async function buildComponentDocSpec(
   }
 }
 
-async function run() {
-  await mkdir(DOCS_SPEC_OUT_DIR, { recursive: true })
-  const keys: string[] = []
-
-  for (const apiConfig of config) {
-    const spec = await buildComponentDocSpec(apiConfig)
-    await Bun.write(
-      join(DOCS_SPEC_OUT_DIR, `${apiConfig.key}.json`),
-      JSON.stringify(spec, null, 2),
-    )
-    keys.push(apiConfig.key)
-    const summary = spec.parts
-      .map((p) => `${p.exportName}(${p.props.length})`)
-      .join(', ')
-    console.log(`📄 ${apiConfig.name}: ${summary}`)
-  }
-
+function renderBarrel(keys: string[]): string {
   let barrel = `// @generated by Cerberus CLI — Do not edit manually.\n`
   const specTypeImport = relative(
     DOCS_SPEC_OUT_DIR,
@@ -1169,9 +1339,73 @@ async function run() {
     barrel += `  '${key}': ${varName} as ComponentDocSpec,\n`
   }
   barrel += `}\n`
-
-  await Bun.write(join(DOCS_SPEC_OUT_DIR, 'index.ts'), barrel)
-  console.log('\n🎉 All component doc specs generated!')
+  return barrel
 }
 
-run().catch(console.error)
+/**
+ * Builds every spec in memory. Returns the files to emit plus the diagnostics; the
+ * caller decides whether to write or check.
+ */
+export async function generateDocSpecs(
+  configs: ComponentConfig[] = config,
+): Promise<{ files: GeneratedFile[]; diagnostics: Diagnostics }> {
+  const diagnostics = new Diagnostics()
+  const files: GeneratedFile[] = []
+  const keys: string[] = []
+
+  for (const apiConfig of configs) {
+    const spec = await buildComponentDocSpec(apiConfig, diagnostics)
+    files.push({
+      path: join(DOCS_SPEC_OUT_DIR, `${apiConfig.key}.json`),
+      content: `${JSON.stringify(spec, null, 2)}\n`,
+    })
+    keys.push(apiConfig.key)
+    const summary = spec.parts
+      .map((p) => `${p.exportName}(${p.props.length})`)
+      .join(', ')
+    console.log(`📄 ${apiConfig.name}: ${summary}`)
+  }
+
+  files.push({
+    path: join(DOCS_SPEC_OUT_DIR, 'index.ts'),
+    content: renderBarrel(keys),
+  })
+  return { files, diagnostics }
+}
+
+async function main(): Promise<number> {
+  const check = process.argv.includes('--check')
+  const { files, diagnostics } = await generateDocSpecs()
+  diagnostics.print()
+
+  const { stale } = await emitFiles(files, {
+    check,
+    ownedDirs: [DOCS_SPEC_OUT_DIR],
+  })
+  reportStale(stale, 'pnpm --filter @cerberus-design/react generate:docs')
+
+  if (diagnostics.errorCount > 0) {
+    console.error(
+      `\n❌ ${diagnostics.errorCount} error(s) while generating doc specs.`,
+    )
+    return 1
+  }
+  if (stale.length > 0) return 1
+
+  console.log(
+    check
+      ? '\n✅ Doc specs are up to date.'
+      : '\n🎉 All component doc specs generated!',
+  )
+  return 0
+}
+
+if (import.meta.main) {
+  main().then(
+    (code) => process.exit(code),
+    (err) => {
+      console.error(err)
+      process.exit(1)
+    },
+  )
+}

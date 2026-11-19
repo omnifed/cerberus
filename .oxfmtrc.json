@@ -5,7 +5,8 @@
     ".husky",
     "pnpm-lock.yaml",
     "packages/*/dist",
-    "packages/*/build"
+    "packages/*/build",
+    "packages/react/scripts/__tests__/fixtures"
   ],
   "printWidth": 80,
   "semi": false,

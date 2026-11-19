@@ -1,6 +1,7 @@
-import { mkdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { config } from './configs'
+import { emitFiles, reportStale, type GeneratedFile } from './core/emit'
+import { COMPONENTS_DIR } from './core/paths'
 import { type ComponentConfig } from './manifest'
 
 const GENERATED_HEADER = `/**
@@ -16,7 +17,7 @@ function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-async function generateComponentAPI(config: ComponentConfig) {
+export function generateComponentAPI(config: ComponentConfig): GeneratedFile[] {
   const {
     name,
     key,
@@ -27,8 +28,8 @@ async function generateComponentAPI(config: ComponentConfig) {
     types = [],
   } = config
 
-  const outputDir = join(process.cwd(), 'src', 'components', key)
-  await mkdir(outputDir, { recursive: true })
+  const outputDir = join(COMPONENTS_DIR, key)
+  const files: GeneratedFile[] = []
 
   const reliableParts: string[] = Array.isArray(anatomy)
     ? [...anatomy]
@@ -52,7 +53,10 @@ async function generateComponentAPI(config: ComponentConfig) {
       primitivesCode += `export const ${partName} = ${isRoot ? 'withProvider' : 'withContext'}(${arkPart}, '${part}')\n\n`
     }
 
-    await Bun.write(join(outputDir, 'primitives.ts'), primitivesCode)
+    files.push({
+      path: join(outputDir, 'primitives.ts'),
+      content: primitivesCode,
+    })
   }
 
   // --- Generate api.ts ---
@@ -178,21 +182,35 @@ async function generateComponentAPI(config: ComponentConfig) {
 
   apiCode += `})\n`
 
-  await Bun.write(join(outputDir, 'api.ts'), apiCode)
-  await Bun.write(
-    join(outputDir, 'index.ts'),
-    `${GENERATED_HEADER}export * from './api'\n`,
+  files.push({ path: join(outputDir, 'api.ts'), content: apiCode })
+  files.push({
+    path: join(outputDir, 'index.ts'),
+    content: `${GENERATED_HEADER}export * from './api'\n`,
+  })
+  return files
+}
+
+async function main(): Promise<number> {
+  const check = process.argv.includes('--check')
+  const files = config.flatMap(generateComponentAPI)
+  const { stale } = await emitFiles(files, { check })
+  reportStale(stale, 'pnpm --filter @cerberus-design/react generate:api')
+  if (stale.length > 0) return 1
+
+  console.log(
+    check
+      ? '✅ Component APIs are up to date.'
+      : `🎉 Generated APIs for ${config.map((c) => c.name).join(', ')}`,
   )
-
-  console.log(`✅ Generated ${name} API at ${outputDir}`)
+  return 0
 }
 
-async function run() {
-  console.log('Generating Cerberus APIs...\n')
-  for (const apiConfig of config) {
-    await generateComponentAPI(apiConfig)
-  }
-  console.log('\n🎉 All APIs generated successfully!')
+if (import.meta.main) {
+  main().then(
+    (code) => process.exit(code),
+    (err) => {
+      console.error(err)
+      process.exit(1)
+    },
+  )
 }
-
-run().catch(console.error)
