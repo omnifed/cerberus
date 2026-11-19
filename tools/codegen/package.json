@@ -15,6 +15,7 @@
     "@ark-ui/react": "catalog:ark",
     "@cerberus/panda-preset": "workspace:*",
     "@types/bun": "catalog:types",
+    "@zag-js/docs": "1.47.0",
     "zod": "^4.6.7"
   }
 }

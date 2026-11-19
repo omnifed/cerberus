@@ -837,6 +837,9 @@ importers:
       '@types/bun':
         specifier: catalog:types
         version: 1.4.4
+      '@zag-js/docs':
+        specifier: 1.47.0
+        version: 1.47.0
       zod:
         specifier: ^4.6.7
         version: 4.6.7
@@ -2906,6 +2909,9 @@ packages:
 
   '@zag-js/dismissable@1.47.0':
     resolution: {integrity: sha512-Swv9suaCNZZNw7sUs7nrDSHWhNxFmMvHaGvhblrTl+UZU3lhJmj4HgjEAMoU+Yfu5VmJvmoN5MkT2OsHStkw/w==}
+
+  '@zag-js/docs@1.47.0':
+    resolution: {integrity: sha512-4/aycOFqi1MDaoqn/9I0UgmgVSk7s6ao5rNMVb/cJLtBdfsWryJg2MOzatwNo7UAbqgittzpgiZxZ4HK+2Hvww==}
 
   '@zag-js/dom-query@1.47.0':
     resolution: {integrity: sha512-wbwzQDYikjRa6IQ+it0Qu6ndpvWiCRoPlaDGiFiZxnzX3IDOR5Bfio+BdQ319+incovMfaYEeuW7sbal91lu4g==}
@@ -7238,6 +7244,8 @@ snapshots:
       '@zag-js/dom-query': 1.47.0
       '@zag-js/interact-outside': 1.47.0
       '@zag-js/utils': 1.47.0
+
+  '@zag-js/docs@1.47.0': {}
 
   '@zag-js/dom-query@1.47.0':
     dependencies:

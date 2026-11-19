@@ -42,7 +42,8 @@
       "dataAttributes": [
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the accordion."
         }
       ],
       "props": [
@@ -175,15 +176,18 @@
         },
         {
           "name": "data-focus",
-          "presence": true
+          "presence": true,
+          "description": "Present when focused."
         },
         {
           "name": "data-disabled",
-          "presence": true
+          "presence": true,
+          "description": "Present when disabled."
         },
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the item."
         }
       ],
       "props": [
@@ -235,7 +239,8 @@
         },
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the item."
         },
         {
           "name": "data-state",
@@ -243,7 +248,8 @@
         },
         {
           "name": "data-focus",
-          "presence": true
+          "presence": true,
+          "description": "Present when focused."
         },
         {
           "name": "data-ownedby"
@@ -295,15 +301,18 @@
         },
         {
           "name": "data-disabled",
-          "presence": true
+          "presence": true,
+          "description": "Present when disabled."
         },
         {
           "name": "data-focus",
-          "presence": true
+          "presence": true,
+          "description": "Present when focused."
         },
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the item."
         }
       ],
       "props": [
@@ -344,15 +353,18 @@
         },
         {
           "name": "data-disabled",
-          "presence": true
+          "presence": true,
+          "description": "Present when disabled."
         },
         {
           "name": "data-focus",
-          "presence": true
+          "presence": true,
+          "description": "Present when focused."
         },
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the item."
         }
       ],
       "props": [

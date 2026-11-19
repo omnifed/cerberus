@@ -62,10 +62,15 @@ function propRow(prop: PropSpec): string[] {
   ]
 }
 
+/** What the source says the value is; the package's prose where the source can't. */
 function attributeValue(attr: DataAttributeSpec): string {
-  if (attr.values) return attr.values.map((v) => code(`"${v}"`)).join(' \\| ')
-  if (attr.presence) return 'Present when the state applies'
+  if (attr.values) {
+    const values = attr.values.map((v) => code(`"${v}"`)).join(' \\| ')
+    return attr.description ? `${values}: ${cell(attr.description)}` : values
+  }
   if (attr.reflects) return `Mirrors the ${code(attr.reflects)} prop`
+  if (attr.description) return cell(attr.description)
+  if (attr.presence) return 'Present when the state applies'
   return 'Set by the component'
 }
 
@@ -102,6 +107,15 @@ function renderPart(part: PartSpec): string {
       table(
         ['Data attribute', 'Value'],
         part.dataAttributes.map((a) => [code(a.name), attributeValue(a)]),
+      ),
+    )
+  }
+  if (part.cssVars?.length) {
+    lines.push(
+      '',
+      table(
+        ['CSS variable', 'Description'],
+        part.cssVars.map((v) => [code(v.name), cell(v.description)]),
       ),
     )
   }
@@ -147,8 +161,9 @@ export function renderDigest(spec: ComponentDocSpec): string {
     out.push(
       '',
       '## Accessibility',
-      '',
-      `Follows the [${pattern} WAI-ARIA pattern](${apgUrl}).`,
+      ...(pattern && apgUrl
+        ? ['', `Follows the [${pattern} WAI-ARIA pattern](${apgUrl}).`]
+        : []),
       ...(notes ?? []).flatMap((note) => ['', note]),
     )
     if (keyboard.length > 0) {

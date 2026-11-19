@@ -56,6 +56,12 @@ Selector: `[data-scope="carousel"][data-part="root"]`
 | --- | --- |
 | `data-orientation` | Mirrors the `orientation` prop |
 
+| CSS variable | Description |
+| --- | --- |
+| `--slides-per-page` | The number of slides visible per page. |
+| `--slide-spacing` | The spacing between slides. |
+| `--slide-item-size` | The calculated size of each slide item. |
+
 ### Carousel.ItemGroup (primitive)
 
 The item-group primitive part of the Carousel component.
@@ -71,7 +77,7 @@ Selector: `[data-scope="carousel"][data-part="item-group"]`
 | Data attribute | Value |
 | --- | --- |
 | `data-orientation` | Mirrors the `orientation` prop |
-| `data-dragging` | Present when the state applies |
+| `data-dragging` | Present when in the dragging state. |
 
 ### Carousel.Item (primitive)
 
@@ -90,7 +96,7 @@ Selector: `[data-scope="carousel"][data-part="item"]`
 | Data attribute | Value |
 | --- | --- |
 | `data-index` | Mirrors the `index` prop |
-| `data-inview` | Present when the state applies |
+| `data-inview` | Present when in viewport. |
 | `data-orientation` | Mirrors the `orientation` prop |
 
 ### Carousel.Control (primitive)
@@ -177,8 +183,8 @@ Selector: `[data-scope="carousel"][data-part="indicator"]`
 | --- | --- |
 | `data-orientation` | Mirrors the `orientation` prop |
 | `data-index` | Mirrors the `index` prop |
-| `data-readonly` | Present when the state applies |
-| `data-current` | Present when the state applies |
+| `data-readonly` | Present when read-only. |
+| `data-current` | Present when current. |
 
 ### Carousel.AutoplayTrigger (primitive)
 
@@ -195,7 +201,7 @@ Selector: `[data-scope="carousel"][data-part="autoplay-trigger"]`
 | Data attribute | Value |
 | --- | --- |
 | `data-orientation` | Mirrors the `orientation` prop |
-| `data-pressed` | Present when the state applies |
+| `data-pressed` | Present when pressed. |
 
 ### Carousel.ProgressText (primitive)
 
@@ -221,3 +227,16 @@ Selector: `[data-scope="carousel"][data-part="autoplay-indicator"]`
 | `fallback` | `React.ReactNode` | No | — | The fallback content to render when autoplay is paused. |
 | `unstyled` | `boolean` | No | `false` | Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes. |
 | `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
+
+## Accessibility
+
+Follows the [Carousel WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).
+
+| Key | Description |
+| --- | --- |
+| `ArrowRight` | When focus is on an indicator and orientation is horizontal, moves to the next page. |
+| `ArrowLeft` | When focus is on an indicator and orientation is horizontal, moves to the previous page. |
+| `ArrowDown` | When focus is on an indicator and orientation is vertical, moves to the next page. |
+| `ArrowUp` | When focus is on an indicator and orientation is vertical, moves to the previous page. |
+| `Home` | When focus is on an indicator, moves to the first page. |
+| `End` | When focus is on an indicator, moves to the last page. |

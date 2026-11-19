@@ -76,8 +76,8 @@ Selector: `[data-scope="accordion"][data-part="item"]`
 | Data attribute | Value |
 | --- | --- |
 | `data-state` | `"open"` \| `"closed"` |
-| `data-focus` | Present when the state applies |
-| `data-disabled` | Present when the state applies |
+| `data-focus` | Present when focused. |
+| `data-disabled` | Present when disabled. |
 | `data-orientation` | Mirrors the `orientation` prop |
 
 ### Accordion.ItemTrigger (primitive)
@@ -99,7 +99,7 @@ Keyboard: `ArrowDown`, `ArrowUp`, `ArrowRight`, `ArrowLeft`, `Home`, `End`
 | `data-controls` | Set by the component |
 | `data-orientation` | Mirrors the `orientation` prop |
 | `data-state` | `"open"` \| `"closed"` |
-| `data-focus` | Present when the state applies |
+| `data-focus` | Present when focused. |
 | `data-ownedby` | Set by the component |
 
 ### Accordion.ItemContent (primitive)
@@ -117,8 +117,8 @@ Selector: `[data-scope="accordion"][data-part="item-content"]`
 | Data attribute | Value |
 | --- | --- |
 | `data-state` | `"open"` \| `"closed"` |
-| `data-disabled` | Present when the state applies |
-| `data-focus` | Present when the state applies |
+| `data-disabled` | Present when disabled. |
+| `data-focus` | Present when focused. |
 | `data-orientation` | Mirrors the `orientation` prop |
 
 ### Accordion.ItemIndicator (primitive)
@@ -136,8 +136,8 @@ Selector: `[data-scope="accordion"][data-part="item-indicator"]`
 | Data attribute | Value |
 | --- | --- |
 | `data-state` | `"open"` \| `"closed"` |
-| `data-disabled` | Present when the state applies |
-| `data-focus` | Present when the state applies |
+| `data-disabled` | Present when disabled. |
+| `data-focus` | Present when focused. |
 | `data-orientation` | Mirrors the `orientation` prop |
 
 ## Accessibility

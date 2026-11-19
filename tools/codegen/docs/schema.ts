@@ -43,8 +43,18 @@ export const DataAttributeSpecSchema = z
       .string()
       .optional()
       .describe('Mirrors the value of this prop (on the part or on Root)'),
+    description: z.string().min(1).optional().describe('From `@zag-js/docs`'),
   })
-  .describe('A data attribute set by Zag.js, derived from its `connect` source')
+  .describe(
+    'A data attribute set by Zag.js, from its `connect` source and `@zag-js/docs`',
+  )
+
+export const CssVarSpecSchema = z
+  .strictObject({
+    name: z.string().regex(/^--[a-z0-9-]+$/),
+    description: z.string().min(1),
+  })
+  .describe('A CSS variable set by Zag.js, from `@zag-js/docs`')
 
 export const PartSpecSchema = z.strictObject({
   name: z
@@ -68,6 +78,10 @@ export const PartSpecSchema = z.strictObject({
     .array(z.string().min(1))
     .optional()
     .describe('Keys this part handles, from the Zag.js `keyMap`'),
+  cssVars: z
+    .array(CssVarSpecSchema)
+    .optional()
+    .describe('CSS variables this part sets'),
   props: z.array(PropSpecSchema),
 })
 
@@ -81,12 +95,18 @@ export const VariantSpecSchema = z.strictObject({
     .describe('Panda `allowsBoolean`: also accepts `true`/`false`'),
 })
 
-export const A11ySpecSchema = z.strictObject({
-  pattern: z.string().min(1).describe('WAI-ARIA pattern name'),
-  apgUrl: z.url(),
-  keyboard: z.array(KeyboardMappingSchema),
-  notes: z.array(z.string()).optional(),
-})
+export const A11ySpecSchema = z
+  .strictObject({
+    pattern: z.string().min(1).optional().describe('WAI-ARIA pattern name'),
+    apgUrl: z.url().optional(),
+    keyboard: z
+      .array(KeyboardMappingSchema)
+      .describe('`@zag-js/docs` rows, with config overrides applied'),
+    notes: z.array(z.string()).optional(),
+  })
+  .refine((a) => (a.pattern === undefined) === (a.apgUrl === undefined), {
+    message: '`pattern` and `apgUrl` go together',
+  })
 
 export const ComponentDocSpecSchema = z
   .strictObject({

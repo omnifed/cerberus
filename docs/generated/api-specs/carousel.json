@@ -30,7 +30,22 @@
       "dataAttributes": [
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the carousel."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--slides-per-page",
+          "description": "The number of slides visible per page."
+        },
+        {
+          "name": "--slide-spacing",
+          "description": "The spacing between slides."
+        },
+        {
+          "name": "--slide-item-size",
+          "description": "The calculated size of each slide item."
         }
       ],
       "props": [
@@ -198,11 +213,13 @@
       "dataAttributes": [
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the item."
         },
         {
           "name": "data-dragging",
-          "presence": true
+          "presence": true,
+          "description": "Present when in the dragging state."
         }
       ],
       "props": [
@@ -239,15 +256,18 @@
       "dataAttributes": [
         {
           "name": "data-index",
-          "reflects": "index"
+          "reflects": "index",
+          "description": "The index of the item."
         },
         {
           "name": "data-inview",
-          "presence": true
+          "presence": true,
+          "description": "Present when in viewport."
         },
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the item."
         }
       ],
       "props": [
@@ -297,7 +317,8 @@
       "dataAttributes": [
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the control."
         }
       ],
       "props": [
@@ -334,7 +355,8 @@
       "dataAttributes": [
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the next trigger."
         }
       ],
       "props": [
@@ -371,7 +393,8 @@
       "dataAttributes": [
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the prev trigger."
         }
       ],
       "props": [
@@ -408,7 +431,8 @@
       "dataAttributes": [
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the indicator group."
         }
       ],
       "keyboard": [
@@ -453,19 +477,23 @@
       "dataAttributes": [
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the indicator."
         },
         {
           "name": "data-index",
-          "reflects": "index"
+          "reflects": "index",
+          "description": "The index of the item."
         },
         {
           "name": "data-readonly",
-          "presence": true
+          "presence": true,
+          "description": "Present when read-only."
         },
         {
           "name": "data-current",
-          "presence": true
+          "presence": true,
+          "description": "Present when current."
         }
       ],
       "props": [
@@ -515,11 +543,13 @@
       "dataAttributes": [
         {
           "name": "data-orientation",
-          "reflects": "orientation"
+          "reflects": "orientation",
+          "description": "The orientation of the autoplay trigger."
         },
         {
           "name": "data-pressed",
-          "presence": true
+          "presence": true,
+          "description": "Present when pressed."
         }
       ],
       "props": [
@@ -614,5 +644,35 @@
         }
       ]
     }
-  ]
+  ],
+  "a11y": {
+    "pattern": "Carousel",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/carousel/",
+    "keyboard": [
+      {
+        "key": "ArrowRight",
+        "description": "When focus is on an indicator and orientation is horizontal, moves to the next page."
+      },
+      {
+        "key": "ArrowLeft",
+        "description": "When focus is on an indicator and orientation is horizontal, moves to the previous page."
+      },
+      {
+        "key": "ArrowDown",
+        "description": "When focus is on an indicator and orientation is vertical, moves to the next page."
+      },
+      {
+        "key": "ArrowUp",
+        "description": "When focus is on an indicator and orientation is vertical, moves to the previous page."
+      },
+      {
+        "key": "Home",
+        "description": "When focus is on an indicator, moves to the first page."
+      },
+      {
+        "key": "End",
+        "description": "When focus is on an indicator, moves to the last page."
+      }
+    ]
+  }
 }

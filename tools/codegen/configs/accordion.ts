@@ -21,6 +21,8 @@ The Accordion component can be used in various contexts, such as displaying FAQs
     },
   ],
 
+  // Rows come from @zag-js/docs; these override its wording or add the
+  // horizontal-orientation keys it doesn't describe
   a11y: {
     pattern: 'Accordion',
     apgUrl: 'https://www.w3.org/WAI/ARIA/apg/patterns/accordion/',
@@ -34,11 +36,6 @@ The Accordion component can be used in various contexts, such as displaying FAQs
         key: 'Enter',
         description:
           'When focus is on a trigger of a collapsed item, expands the item.',
-      },
-      { key: 'Tab', description: 'Moves focus to the next focusable element.' },
-      {
-        key: 'Shift + Tab',
-        description: 'Moves focus to the previous focusable element.',
       },
       {
         key: 'ArrowDown',

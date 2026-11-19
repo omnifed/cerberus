@@ -16,7 +16,7 @@ export function ComponentApi({ spec }: ComponentApiProps) {
     return (
       <Admonition palette="danger" usage="outlined">
         Missing generated API spec for <code>{spec}</code>. Run{' '}
-        <code>bun run generate:docs</code>.
+        <code>pnpm generate:docs</code>.
       </Admonition>
     )
   }
@@ -255,6 +255,42 @@ function PartsDocs({ parts, specKey }: PartsProps) {
                   </Box>
                 )}
               </Show>
+
+              <Show when={(part.cssVars?.length ?? 0) > 0}>
+                {() => (
+                  <Box overflowX="auto" mt="md">
+                    <Table.Root decoration="zebra">
+                      <Table.Caption>
+                        {part.exportName} CSS variables
+                      </Table.Caption>
+                      <Table.Header>
+                        <Table.Row>
+                          <Table.HeaderCol scope="col">
+                            Variable
+                          </Table.HeaderCol>
+                          <Table.HeaderCol scope="col">
+                            Description
+                          </Table.HeaderCol>
+                        </Table.Row>
+                      </Table.Header>
+                      <Table.Body>
+                        <For each={part.cssVars ?? []}>
+                          {(cssVar) => (
+                            <Table.Row key={`parts:var:${cssVar.name}`}>
+                              <Table.Cell>
+                                <Code>{cssVar.name}</Code>
+                              </Table.Cell>
+                              <Table.Cell>
+                                <CellText>{cssVar.description}</CellText>
+                              </Table.Cell>
+                            </Table.Row>
+                          )}
+                        </For>
+                      </Table.Body>
+                    </Table.Root>
+                  </Box>
+                )}
+              </Show>
             </cerberus.article>
           )}
         </For>
@@ -267,12 +303,15 @@ type DataAttribute = NonNullable<
   ComponentDocSpec['parts'][number]['dataAttributes']
 >[number]
 
+/** What the Zag source says the value is; `@zag-js/docs` prose where it can't say. */
 function DataAttributeValue({ attr }: { attr: DataAttribute }) {
   if (attr.values) {
-    return <Code>{attr.values.map((v) => `"${v}"`).join(' | ')}</Code>
-  }
-  if (attr.presence) {
-    return <CellText>Present when the state applies, absent otherwise</CellText>
+    return (
+      <CellText>
+        <Code>{attr.values.map((v) => `"${v}"`).join(' | ')}</Code>
+        {attr.description ? ` ${attr.description}` : null}
+      </CellText>
+    )
   }
   if (attr.reflects) {
     return (
@@ -280,6 +319,10 @@ function DataAttributeValue({ attr }: { attr: DataAttribute }) {
         Mirrors the <Code>{attr.reflects}</Code> prop
       </CellText>
     )
+  }
+  if (attr.description) return <CellText>{attr.description}</CellText>
+  if (attr.presence) {
+    return <CellText>Present when the state applies, absent otherwise</CellText>
   }
   return <CellText>Set by the component</CellText>
 }
@@ -308,13 +351,17 @@ function A11yDocs({ a11y, specKey, ...rest }: A11yProps) {
   return (
     <cerberus.section aria-labelledby={`${specKey}-a11y-heading`}>
       <Heading id={`${specKey}-a11y-heading`}>Accessibility</Heading>
-      <Body>
-        Complies with the{' '}
-        <cerberus.a href={a11y.apgUrl} rel="noreferrer" target="_blank">
-          {a11y.pattern} WAI-ARIA design pattern
-        </cerberus.a>
-        .
-      </Body>
+      <Show when={a11y.pattern && a11y.apgUrl}>
+        {() => (
+          <Body>
+            Complies with the{' '}
+            <cerberus.a href={a11y.apgUrl} rel="noreferrer" target="_blank">
+              {a11y.pattern} WAI-ARIA design pattern
+            </cerberus.a>
+            .
+          </Body>
+        )}
+      </Show>
 
       <For each={a11y.notes}>{(note) => <Body key={note}>{note}</Body>}</For>
 
