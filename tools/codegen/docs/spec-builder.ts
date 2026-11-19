@@ -318,8 +318,15 @@ function arkPropsFor(
 ): PropSpec[] {
   const { arkEntry, arkName, arkKey, key } = entry
   if (!arkEntry) return []
-  const base = `${arkName}${member}`
-  const candidates = [`${base}Props`, `${base}BaseProps`]
+  // Ark sometimes names part types with a singular prefix: `Tabs` → `TabListProps`
+  const prefixes = [
+    arkName,
+    ...(arkName.endsWith('s') ? [arkName.slice(0, -1)] : []),
+  ]
+  const candidates = prefixes.flatMap((prefix) => [
+    `${prefix}${member}Props`,
+    `${prefix}${member}BaseProps`,
+  ])
   const resolved = candidates
     .map((c) => ctx.resolver.lookupExport(arkEntry, c))
     .find((r) => r !== null)

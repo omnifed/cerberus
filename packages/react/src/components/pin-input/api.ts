@@ -38,7 +38,7 @@ export type {
  * | `Label` | Primitive | The label element of the PinInput component. |
  * | `Input` | Primitive | The input element of the PinInput component. |
  * | `Control` | Primitive | The control element of the PinInput component. |
- * | `HiddenInput` | Primitive | Exposes the PinInput hiddeninput state to a render function. |
+ * | `HiddenInput` | Primitive | The hidden input element of the PinInput component. It has no recipe slot. |
  * | `El` | Abstraction | An entry abstraction that renders the control, one input per `count` and the hidden input |
  *
  * @example
