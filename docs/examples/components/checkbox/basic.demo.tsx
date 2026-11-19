@@ -1,7 +1,7 @@
 'use client'
 
 import { Box } from '@/styled-system/jsx'
-import { Checkbox, CheckboxGroup, For } from '@cerberus-design/react'
+import { Checkbox, For } from '@cerberus-design/react'
 
 const items = [
   {
@@ -24,7 +24,7 @@ const items = [
 export function BasicDemo() {
   return (
     <Box w="1/2">
-      <CheckboxGroup name="user_acceptance">
+      <Checkbox.Group name="user_acceptance">
         <For each={items}>
           {(item) => (
             <Checkbox
@@ -42,7 +42,7 @@ export function BasicDemo() {
         <Checkbox ids={{ control: 'mixed' }} checked="indeterminate">
           The indeterminate state
         </Checkbox>
-      </CheckboxGroup>
+      </Checkbox.Group>
     </Box>
   )
 }

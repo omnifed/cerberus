@@ -1,0 +1,345 @@
+{
+  "name": "Clipboard",
+  "key": "clipboard",
+  "description": "The Clipboard component provides an accessible way to copy text to the user's clipboard with built-in visual feedback.\n\nIt is unstyled by default: every part accepts Panda style props, `css` and `asChild`, so you can turn the trigger into a button or the input into a text field. Use `Clipboard.CopyIndicator` or `Clipboard.CopyText` inside the trigger for the default copy/copied feedback, or `Clipboard.TriggerWithTooltip` to show that status in a tooltip.",
+  "variants": [],
+  "parts": [
+    {
+      "name": "CopyIndicator",
+      "exportName": "Clipboard.CopyIndicator",
+      "kind": "abstraction",
+      "description": "An abstraction of the indicator that shows a copy icon, then an animated checkmark once copied",
+      "inherits": ["Clipboard.Indicator"],
+      "props": []
+    },
+    {
+      "name": "CopyText",
+      "exportName": "Clipboard.CopyText",
+      "kind": "abstraction",
+      "description": "An abstraction of the indicator that shows \"Copy\", then \"Copied\" once copied",
+      "inherits": ["Clipboard.Indicator"],
+      "props": []
+    },
+    {
+      "name": "TriggerWithTooltip",
+      "exportName": "Clipboard.TriggerWithTooltip",
+      "kind": "abstraction",
+      "description": "An abstraction of the trigger wrapped in a Tooltip that shows the copy status",
+      "inherits": ["Clipboard.Trigger"],
+      "props": []
+    },
+    {
+      "name": "Root",
+      "exportName": "Clipboard.Root",
+      "kind": "primitive",
+      "description": "The root container of the Clipboard component.",
+      "dataScope": "clipboard",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-copied",
+          "presence": true,
+          "description": "Present when copied state is true."
+        }
+      ],
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the clipboard. Useful for composition."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "description": "The controlled value of the clipboard"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"\"",
+          "description": "The initial value to be copied to the clipboard when rendered. Use when you don't need to control the value of the clipboard."
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "The function to be called when the value changes"
+        },
+        {
+          "name": "onStatusChange",
+          "type": "((details: CopyStatusDetails) => void)",
+          "required": false,
+          "description": "The function to be called when the value is copied to the clipboard"
+        },
+        {
+          "name": "timeout",
+          "type": "number",
+          "required": false,
+          "defaultValue": "3000",
+          "description": "The timeout for the copy operation"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Control",
+      "exportName": "Clipboard.Control",
+      "kind": "primitive",
+      "description": "The control primitive part of the Clipboard component.",
+      "dataScope": "clipboard",
+      "dataPart": "control",
+      "dataAttributes": [
+        {
+          "name": "data-copied",
+          "presence": true,
+          "description": "Present when copied state is true."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Trigger",
+      "exportName": "Clipboard.Trigger",
+      "kind": "primitive",
+      "description": "The trigger primitive part of the Clipboard component.",
+      "dataScope": "clipboard",
+      "dataPart": "trigger",
+      "dataAttributes": [
+        {
+          "name": "data-copied",
+          "presence": true,
+          "description": "Present when copied state is true."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Indicator",
+      "exportName": "Clipboard.Indicator",
+      "kind": "primitive",
+      "description": "The indicator primitive part of the Clipboard component.",
+      "dataScope": "clipboard",
+      "dataPart": "indicator",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "copied",
+          "type": "ReactNode",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "exportName": "Clipboard.Input",
+      "kind": "primitive",
+      "description": "The input primitive part of the Clipboard component.",
+      "dataScope": "clipboard",
+      "dataPart": "input",
+      "dataAttributes": [
+        {
+          "name": "data-copied",
+          "presence": true,
+          "description": "Present when copied state is true."
+        },
+        {
+          "name": "data-readonly",
+          "values": ["true"],
+          "description": "Present when read-only."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "Clipboard.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the Clipboard component.",
+      "dataScope": "clipboard",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-copied",
+          "presence": true,
+          "description": "Present when copied state is true."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Clipboard.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Clipboard component, driven by state created with `useClipboard()`.",
+      "dataScope": "clipboard",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-copied",
+          "presence": true,
+          "description": "Present when copied state is true."
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "UseClipboardReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Clipboard.Context",
+      "kind": "primitive",
+      "description": "Exposes the Clipboard state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseClipboardContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "ValueText",
+      "exportName": "Clipboard.ValueText",
+      "kind": "primitive",
+      "description": "The value-text primitive part of the Clipboard component. It has no recipe slot, so it is unstyled.",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ]
+}
