@@ -193,6 +193,27 @@ export class TypeResolver {
             this.resolveExpr(args[0], file, new Set(visited)),
             this.resolveExpr(args[1], file, new Set(visited)),
           )
+        // Ark's private `Union<T, U>` (date-picker cell props): every key of `T`,
+        // typed `U[K] | T[K]` when `U` has it too, plus the rest of `U`. Its mapped
+        // body can't be parsed, so it is handled by name like the helpers below
+        case 'Union': {
+          const own = this.resolveExpr(args[0], file, new Set(visited))
+          const other = this.resolveExpr(args[1], file, new Set(visited))
+          const otherByName = new Map(other.map((p) => [p.name, p]))
+          const ownNames = new Set(own.map((p) => p.name))
+          return [
+            ...own.map((p) => {
+              const shared = otherByName.get(p.name)
+              if (!shared || shared.type === p.type) return p
+              return {
+                ...p,
+                type: `${shared.type} | ${p.type}`,
+                description: p.description || shared.description,
+              }
+            }),
+            ...other.filter((p) => !ownNames.has(p.name)),
+          ]
+        }
         case 'Omit': {
           const omitted = keys()
           return inner().filter((p) => !omitted.has(p.name))

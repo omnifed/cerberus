@@ -145,6 +145,19 @@ describe('utility types', () => {
     expect(byName(props, 'asChild')?.defaultValue).toBe('false')
   })
 
+  test("Ark's Union<T, U> keeps T's keys (widened by U) and adds the rest of U", () => {
+    const props = resolvePropsFromExpr(
+      'Union<{ value: string; disabled?: boolean }, { value: number; columns: number }>',
+      ARK_ROOT,
+    )
+    expect(names(props)).toEqual(['value', 'disabled', 'columns'])
+    expect(byName(props, 'value')?.type).toBe('number | string')
+    expect(byName(props, 'value')?.required).toBe(true)
+    expect(byName(props, 'disabled')?.required).toBe(false)
+    expect(byName(props, 'columns')?.required).toBe(true)
+    expect(drainUnresolved()).toEqual([])
+  })
+
   test('Pick, Partial and Required', () => {
     expect(names(resolvePropsFromExpr('Picked', ARK_ROOT))).toEqual([
       'multiple',
