@@ -31,6 +31,7 @@ import spinnerSpec from './spinner.json'
 import switchSpec from './switch.json'
 import tableSpec from './table.json'
 import tabsSpec from './tabs.json'
+import tagSpec from './tag.json'
 import textSpec from './text.json'
 import toggleSpec from './toggle.json'
 import tooltipSpec from './tooltip.json'
@@ -67,6 +68,7 @@ export const API_SPECS: Record<string, ComponentDocSpec> = {
   switch: switchSpec as ComponentDocSpec,
   table: tableSpec as ComponentDocSpec,
   tabs: tabsSpec as ComponentDocSpec,
+  tag: tagSpec as ComponentDocSpec,
   text: textSpec as ComponentDocSpec,
   toggle: toggleSpec as ComponentDocSpec,
   tooltip: tooltipSpec as ComponentDocSpec,

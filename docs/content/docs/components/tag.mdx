@@ -58,21 +58,17 @@ Use the `pending` prop to show a Skeleton loading state.
 
 ## Customizing
 
-You can customize the `Tag` using style props and data selectors on any slot primitve.
+You can customize the `Tag` using style props and data selectors on any part.
 
 <Example path="components/tag" demo="custom" />
 
-## Primitives
+## Composition
 
-You can customize the tag by utilizing style props and primitives. A Closable Tag is just a Tag with an IconButton inside.
-
-| Component | Description                  |
-| --------- | ---------------------------- |
-| `TagRoot` | The root wrapper of the tag. |
+`<Tag>` picks one of three parts from its props: `Tag.Root` (the filled tag, `tag` recipe), `Tag.Gradient` (with `gradient`, `gradientTag` recipe) or, with `onClick`, `Tag.Closable`: `Tag.ClosableRoot` (`closableTag` recipe) with a close `IconButton` labelled "Close tag" that calls `onClick` and is disabled while `pending`. The v1 names `FilledTag`, `GradientTag`, `ClosableTagRoot` and `ClosableTag` are still exported.
 
 ### Data Attributes
 
-The Primitives additionally use the following data attributes for custom styling:
+Every part uses the following data attributes for custom styling:
 
 | Name           | Value          | Description                   |
 | -------------- | -------------- | ----------------------------- |
@@ -82,15 +78,4 @@ The Primitives additionally use the following data attributes for custom styling
 
 ## API
 
-### Props
-
-The `Tag` component is an abstraction of the primitives and accepts the following props:
-
-| Name       | Default     | Description                                                  |
-| ---------- | ----------- | ------------------------------------------------------------ |
-| `gradient` | `undefined` | The gradient of the tag (overrides palette).                 |
-| `palette`  | `page`      | The color palette of the tag (overrides gradient).           |
-| `usage`    | `filled`    | The style treatment of the tag.                              |
-| `shape`    | `pill`      | The shape of the tag.                                        |
-| `onClick`  | `undefined` | How to create a Closable tag.                                |
-| `pending`  | `undefined` | Replaces the Closable tag content with a skeleton when true. |
+<ComponentApi spec="tag" />

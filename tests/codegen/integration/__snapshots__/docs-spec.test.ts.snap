@@ -2680,6 +2680,49 @@ exports[`every part resolves to the same prop names as last time 1`] = `
       "indicatorPlacement",
     ],
   },
+  "tag": {
+    "parts": {
+      "Tag.Closable": [
+        "pending",
+        "gradient",
+        "onClick",
+      ],
+      "Tag.ClosableRoot": [
+        "palette",
+        "usage",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Tag.El": [
+        "gradient",
+        "onClick",
+        "palette",
+        "pending",
+      ],
+      "Tag.Gradient": [
+        "gradient",
+        "usage",
+        "shape",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Tag.Root": [
+        "palette",
+        "usage",
+        "shape",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+    },
+    "variants": [
+      "palette",
+      "usage",
+      "shape",
+    ],
+  },
   "text": {
     "parts": {
       "Text.El": [
@@ -5134,6 +5177,37 @@ exports[`no props lose their description compared with last time 1`] = `
   "Tabs.Trigger": [
     "value",
     "disabled",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Tag.Closable": [
+    "pending",
+    "onClick",
+  ],
+  "Tag.ClosableRoot": [
+    "palette",
+    "usage",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Tag.El": [
+    "onClick",
+    "pending",
+  ],
+  "Tag.Gradient": [
+    "gradient",
+    "usage",
+    "shape",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Tag.Root": [
+    "palette",
+    "usage",
+    "shape",
     "asChild",
     "unstyled",
     "css",
