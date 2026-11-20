@@ -1,0 +1,953 @@
+{
+  "name": "FileUpload",
+  "key": "file-upload",
+  "description": "The FileUpload component lets users select files with a dropzone (click, `Enter`/`Space` or drag and drop) and lists the accepted files.\n\nUse the default `<FileUpload>` (also available as `FileUploader`) with an `accept` and an optional `heading` to render the dropzone with the Cerberus icon, an \"Import <types> files\" text and a description, the list of accepted files with image previews, and the hidden input, or compose the primitives for full structural control. Render the file list on its own with `FileUpload.ItemGroupWithPreview` (also available as `ImgPreview`), and show the progress of a file's upload with the separate `FileStatus` component. Map the error codes of rejected files to messages with `createErrorMessages`.",
+  "variants": [],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "FileUpload.El",
+      "kind": "abstraction",
+      "description": "An abstraction of the root that renders the dropzone with the Cerberus icon, an optional heading, an \"Import <types> files\" text and a description, the accepted files with their previews, and the hidden input",
+      "inherits": ["FileUpload.Root"],
+      "props": [
+        {
+          "name": "heading",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The optional heading to display in the dropzone."
+        },
+        {
+          "name": "showPreview",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Show the accepted files with a preview of their images."
+        }
+      ]
+    },
+    {
+      "name": "ItemGroupWithPreview",
+      "exportName": "FileUpload.ItemGroupWithPreview",
+      "kind": "abstraction",
+      "description": "An abstraction of the item group that renders an item per accepted file with its image preview, name, size and a Cerberus delete trigger",
+      "inherits": ["FileUpload.ItemGroup"],
+      "props": []
+    },
+    {
+      "name": "Root",
+      "exportName": "FileUpload.Root",
+      "kind": "primitive",
+      "description": "The root container of the FileUpload component.",
+      "dataScope": "file-upload",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-dragging",
+          "presence": true,
+          "description": "Present when in the dragging state."
+        }
+      ],
+      "props": [
+        {
+          "name": "locale",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"en-US\"",
+          "description": "The current locale. Based on the BCP 47 definition."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the underlying file input"
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements. Useful for composition."
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "The localized messages to use."
+        },
+        {
+          "name": "accept",
+          "type": "Record<string, string[]> | FileMimeType | FileMimeType[]",
+          "required": false,
+          "description": "The accept file types"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the file input is disabled"
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the file input is required"
+        },
+        {
+          "name": "allowDrop",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to allow drag and drop in the dropzone element"
+        },
+        {
+          "name": "maxFileSize",
+          "type": "number",
+          "required": false,
+          "defaultValue": "Infinity",
+          "description": "The maximum file size in bytes"
+        },
+        {
+          "name": "minFileSize",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0",
+          "description": "The minimum file size in bytes"
+        },
+        {
+          "name": "maxFiles",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "The maximum number of files"
+        },
+        {
+          "name": "preventDocumentDrop",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to prevent the drop event on the document"
+        },
+        {
+          "name": "validate",
+          "type": "((file: File, details: FileValidateDetails) => FileError[] | null)",
+          "required": false,
+          "description": "Function to validate a file"
+        },
+        {
+          "name": "defaultAcceptedFiles",
+          "type": "File[]",
+          "required": false,
+          "defaultValue": "[]",
+          "description": "The default accepted files when rendered. Use when you don't need to control the accepted files of the input."
+        },
+        {
+          "name": "acceptedFiles",
+          "type": "File[]",
+          "required": false,
+          "description": "The controlled accepted files"
+        },
+        {
+          "name": "onFileChange",
+          "type": "((details: FileChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the value changes, whether accepted or rejected"
+        },
+        {
+          "name": "onFileAccept",
+          "type": "((details: FileAcceptDetails) => void)",
+          "required": false,
+          "description": "Function called when the file is accepted"
+        },
+        {
+          "name": "onFileReject",
+          "type": "((details: FileRejectDetails) => void)",
+          "required": false,
+          "description": "Function called when the file is rejected"
+        },
+        {
+          "name": "capture",
+          "type": "\"user\" | \"environment\"",
+          "required": false,
+          "description": "The default camera to use when capturing media"
+        },
+        {
+          "name": "directory",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to accept directories, only works in webkit browsers"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the file input is invalid"
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the file input is read-only"
+        },
+        {
+          "name": "transformFiles",
+          "type": "((files: File[]) => Promise<File[]>)",
+          "required": false,
+          "description": "Function to transform the accepted files to apply transformations"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Dropzone",
+      "exportName": "FileUpload.Dropzone",
+      "kind": "primitive",
+      "description": "The dropzone primitive part of the FileUpload component.",
+      "dataScope": "file-upload",
+      "dataPart": "dropzone",
+      "dataAttributes": [
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-dragging",
+          "presence": true,
+          "description": "Present when in the dragging state."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "disableClick",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to disable the click event on the dropzone"
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Item",
+      "exportName": "FileUpload.Item",
+      "kind": "primitive",
+      "description": "The item primitive part of the FileUpload component.",
+      "dataScope": "file-upload",
+      "dataPart": "item",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-type",
+          "description": "The type of the item."
+        }
+      ],
+      "props": [
+        {
+          "name": "file",
+          "type": "File",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemDeleteTrigger",
+      "exportName": "FileUpload.ItemDeleteTrigger",
+      "kind": "primitive",
+      "description": "The item-delete-trigger primitive part of the FileUpload component.",
+      "dataScope": "file-upload",
+      "dataPart": "item-delete-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-type",
+          "description": "The type of the item."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemGroup",
+      "exportName": "FileUpload.ItemGroup",
+      "kind": "primitive",
+      "description": "The item-group primitive part of the FileUpload component.",
+      "dataScope": "file-upload",
+      "dataPart": "item-group",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-type",
+          "description": "The type of the item."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "type",
+          "type": "ItemType",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemName",
+      "exportName": "FileUpload.ItemName",
+      "kind": "primitive",
+      "description": "The item-name primitive part of the FileUpload component.",
+      "dataScope": "file-upload",
+      "dataPart": "item-name",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-type",
+          "description": "The type of the item."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemPreview",
+      "exportName": "FileUpload.ItemPreview",
+      "kind": "primitive",
+      "description": "The item-preview primitive part of the FileUpload component.",
+      "dataScope": "file-upload",
+      "dataPart": "item-preview",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-type",
+          "description": "The type of the item."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "required": false,
+          "defaultValue": "'.*'",
+          "description": "The file type to match against. Matches all file types by default."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemPreviewImage",
+      "exportName": "FileUpload.ItemPreviewImage",
+      "kind": "primitive",
+      "description": "The item-preview-image primitive part of the FileUpload component.",
+      "dataScope": "file-upload",
+      "dataPart": "item-preview-image",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-type",
+          "description": "The type of the item."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemSizeText",
+      "exportName": "FileUpload.ItemSizeText",
+      "kind": "primitive",
+      "description": "The item-size-text primitive part of the FileUpload component.",
+      "dataScope": "file-upload",
+      "dataPart": "item-size-text",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-type",
+          "description": "The type of the item."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "FileUpload.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the FileUpload component.",
+      "dataScope": "file-upload",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "presence": true,
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Trigger",
+      "exportName": "FileUpload.Trigger",
+      "kind": "primitive",
+      "description": "The trigger primitive part of the FileUpload component.",
+      "dataScope": "file-upload",
+      "dataPart": "trigger",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ClearTrigger",
+      "exportName": "FileUpload.ClearTrigger",
+      "kind": "primitive",
+      "description": "The clear-trigger primitive part of the FileUpload component.",
+      "dataScope": "file-upload",
+      "dataPart": "clear-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Icon",
+      "exportName": "FileUpload.Icon",
+      "kind": "primitive",
+      "description": "The icon part of the FileUpload component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<div>`.",
+      "dataScope": "file-upload",
+      "dataPart": "icon",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Heading",
+      "exportName": "FileUpload.Heading",
+      "kind": "primitive",
+      "description": "The heading part of the FileUpload component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<p>`.",
+      "dataScope": "file-upload",
+      "dataPart": "heading",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Description",
+      "exportName": "FileUpload.Description",
+      "kind": "primitive",
+      "description": "The description part of the FileUpload component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<p>`.",
+      "dataScope": "file-upload",
+      "dataPart": "description",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "HiddenInput",
+      "exportName": "FileUpload.HiddenInput",
+      "kind": "primitive",
+      "description": "The hidden-input primitive part of the FileUpload component. It has no recipe slot, so it is unstyled.",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "FileUpload.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the FileUpload component, driven by state created with `useFileUpload()`.",
+      "dataScope": "file-upload",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-dragging",
+          "presence": true,
+          "description": "Present when in the dragging state."
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "UseFileUploadReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "FileUpload.Context",
+      "kind": "primitive",
+      "description": "Exposes the FileUpload state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseFileUploadContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "keyboard": [
+      {
+        "key": "Enter",
+        "description": "When focus is on the dropzone, opens the file picker (unless `disableClick` is set on the dropzone)."
+      },
+      {
+        "key": "Space",
+        "description": "When focus is on the dropzone, opens the file picker (unless `disableClick` is set on the dropzone)."
+      }
+    ],
+    "notes": [
+      "`FileUpload.Dropzone` renders a focusable `role=\"button\"` element (`role=\"application\"` with `disableClick`) labelled \"dropzone\" by default; set its `aria-label` through the root's `translations.dropzone`.",
+      "The hidden file input is removed from the accessibility tree (`aria-hidden`); the dropzone and `FileUpload.Trigger` are the accessible ways to open the file picker.",
+      "Each `FileUpload.ItemDeleteTrigger` is labelled \"delete file <name>\" and each preview image has the alt text \"preview of <name>\" by default (`translations.deleteFile` and `translations.itemPreview`)."
+    ]
+  }
+}

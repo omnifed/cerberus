@@ -87,8 +87,8 @@ createErrorMessages({
 ```
 
 <br />
-All of the properties within the options Object are optional and will provide the
-following default error messages if not provided:
+All of the properties within the options Object are optional and will provide
+the following default error messages if not provided:
 
 ```typescript
 {
@@ -115,7 +115,7 @@ compression, format conversion, or adding metadata.
 - **Resizing**: Automatically resize images to specific dimensions
 
 ```tsx
-import { FileUploader } from '@cerberus/react/file-upload'
+import { FileUploader } from '@cerberus/react'
 import { compressAccurately } from 'image-conversion'
 
 function FileTransformationsDemo() {
@@ -137,7 +137,13 @@ function FileTransformationsDemo() {
     )
   }
 
-  return <FileUploader accept="image/*" maxFiles={5} transformFiles={transformFiles} />
+  return (
+    <FileUploader
+      accept="image/*"
+      maxFiles={5}
+      transformFiles={transformFiles}
+    />
+  )
 }
 ```
 
@@ -146,7 +152,7 @@ function FileTransformationsDemo() {
 Use the `validate` prop to implement custom validation logic beyond the built-in constraints.
 
 ```tsx
-<FileUploadParts.Root
+<FileUpload.Root
   validate={(file) => {
     if (file.name.length > 20) return ['FILE_NAME_TOO_LONG']
     return null
@@ -169,21 +175,21 @@ matching to show appropriate previews based on file format.
 - `type=".*"`: Generic fallback for any file type
 
 ```tsx
-<FileUploadParts.ItemPreview type="image/*">
-  <FileUploadParts.ItemPreviewImage />
-</FileUploadParts.ItemPreview>
+<FileUpload.ItemPreview type="image/*">
+  <FileUpload.ItemPreviewImage />
+</FileUpload.ItemPreview>
 
-<FileUploadParts.ItemPreview type="video/*">
+<FileUpload.ItemPreview type="video/*">
   <VideoIcon />
-</FileUploadParts.ItemPreview>
+</FileUpload.ItemPreview>
 
-<FileUploadParts.ItemPreview type="application/pdf">
+<FileUpload.ItemPreview type="application/pdf">
   <PdfIcon />
-</FileUploadParts.ItemPreview>
+</FileUpload.ItemPreview>
 
-<FileUploadParts.ItemPreview type=".*">
+<FileUpload.ItemPreview type=".*">
   <FileIcon />
-</FileUploadParts.ItemPreview>
+</FileUpload.ItemPreview>
 ```
 
 **File Metadata Display:**
@@ -211,71 +217,13 @@ When you want to delegate clicking to the trigger and remove the dropzone from t
 
 <Example path="components/file-uploader" demo="preventDoubleOpen" />
 
-## Primitives
+## Composition
 
-You can utilize the primitive components or the style props to customize the file uploader.
-
-| Component                     | Description                                     |
-| ----------------------------- | ----------------------------------------------- |
-| `FileUploadRoot`              | The context provider for the FileUploader parts |
-| `FileUploadTrigger`           | The trigger of the FileUploader                 |
-| `FileUploadDropzone`          | The dropzone of the FileUploader                |
-| `FileUploadLabel`             | The label of the FileUploader                   |
-| `FileUploadTrigger`           | The trigger of the FileUploader                 |
-| `FileUploadClearTrigger`      | The clear trigger of the FileUploader           |
-| `FileUploadItemGroup`         | The container for the group of items            |
-| `FileUploadItem`              | The container for the item                      |
-| `FileUploadItemPreview`       | The container of hte preview for the item       |
-| `FileUploadItemPreviewImage`  | The image preview for the item                  |
-| `FileUploadItemName`          | The name of the item                            |
-| `FileUploadItemSizeText`      | The size text of the item                       |
-| `FileUploadItemDeleteTrigger` | The delete trigger of the FileUploader          |
-| `FileUploadHiddenInput`       | The hidden input of the FileUploader            |
-| `FileUploadContext`           | The context of the FileUploader                 |
-| `FileUploadIcon`              | The icon of the FileUploader                    |
-| `FileUploadHeading`           | The heading of the FileUploader                 |
-| `FileUploadDescription`       | The description of the FileUploader             |
+`<FileUpload>` (also exported as `FileUploader`) renders the dropzone with its icon, heading and description, the accepted files and the hidden input. Pass `FileUpload.Dropzone`, `FileUpload.Icon`, `FileUpload.Heading`, `FileUpload.Description`, `FileUpload.Label`, `FileUpload.ClearTrigger` or `FileUpload.HiddenInput` as direct children to override those parts, render the file list on its own with `FileUpload.ItemGroupWithPreview` (also exported as `ImgPreview`), or compose `FileUpload.Root` with the parts yourself.
 
 ## API
 
-### FileUploader
-
-| Prop                   | Type                                                                | Description                                                                                                   |
-| ---------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `accept`               | `Record<string, string[]>`                                          | The accept file types                                                                                         |
-| `acceptedFiles`        | `File[]`                                                            | The controlled accepted files                                                                                 |
-| `allowDrop`            | `boolean`                                                           | Whether to allow drag and drop in the dropzone element                                                        |
-| `asChild`              | `boolean`                                                           | Use the provided child element as the default rendered element, combining their props and behavior.           |
-| `capture`              | `'user' or 'environment'`                                           | The default camera to use when capturing media                                                                |
-| `defaultAcceptedFiles` | `File[]`                                                            | The default accepted files when rendered. Use when you don't need to control the accepted files of the input. |
-| `directory`            | `boolean`                                                           | Whether to accept directories, only works in webkit browsers                                                  |
-| `disabled`             | `boolean`                                                           | Whether the file input is disabled                                                                            |
-| `ids`                  | `Partial<PrimitiveStack>`                                           | The ids of the elements. Useful for composition.                                                              |
-| `invalid`              | `boolean`                                                           | Whether the file input is invalid                                                                             |
-| `locale`               | `string`                                                            | The current locale. Based on the BCP 47 definition.                                                           |
-| `maxFiles`             | `number`                                                            | The maximum number of files                                                                                   |
-| `maxFileSize`          | `number`                                                            | The maximum file size in bytes                                                                                |
-| `minFileSize`          | `number`                                                            | The minimum file size in bytes                                                                                |
-| `name`                 | `string`                                                            | The name of the underlying file input                                                                         |
-| `onFileAccept`         | `(details: FileAcceptDetails) => void`                              | Function called when the file is accepted                                                                     |
-| `onFileChange`         | `(details: FileChangeDetails) => void`                              | Function called when the value changes, whether accepted or rejected                                          |
-| `onFileReject`         | `(details: FileRejectDetails) => void`                              | Function called when the file is rejected                                                                     |
-| `preventDocumentDrop`  | `boolean`                                                           | Whether to prevent the drop event on the document                                                             |
-| `required`             | `boolean`                                                           | Whether the file input is required                                                                            |
-| `transformFiles`       | `(files: File[]) => Promise<File[]>`                                | Function to transform the accepted files to apply transformations                                             |
-| `translations`         | `IntlTranslations`                                                  | The localized messages to use.                                                                                |
-| `validate`             | `(file: File, details: FileValidateDetails) => FileError[] or null` | Function to validate a file                                                                                   |
-| `heading`              | `string`                                                            | The heading for the file uploader                                                                             |
-| `showPreview`          | `boolean`                                                           | Whether to show the preview of the file or custom children.                                                   |
-
-#### Root Data Attributes:
-
-| Attribute         | Value                              |
-| ----------------- | ---------------------------------- |
-| `[data-scope]`    | file-upload                        |
-| `[data-part]`     | root                               |
-| `[data-disabled]` | Present when disabled              |
-| `[data-dragging]` | Present when in the dragging state |
+<ComponentApi spec="file-upload" />
 
 ### FileStatus
 

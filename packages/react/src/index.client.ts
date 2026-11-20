@@ -37,8 +37,6 @@ export {
   useField,
   useFieldset,
   useFileUpload,
-  FileUploadRootProvider,
-  type UseFileUploadContext,
   useFloatingPanel,
   FloatingPanelRootProvider,
   useImageCropper,

@@ -15,7 +15,6 @@ import { Avatar } from '../avatar/api'
 import { Field } from '../field/index'
 import { IconButton } from '../icon-button/index'
 import { ProgressBar, type ProgressBarProps } from '../progress/index'
-import { Text } from '../text/index'
 
 /**
  * This module contains the FileStatus component.
@@ -135,9 +134,11 @@ export function FileStatus(props: FileStatusProps) {
       />
 
       <VStack alignItems="flex-start" gap="0.12rem" w="full">
-        <Text as="small" color="page.text.initial" textStyle="label-sm">
+        <small
+          className={css({ color: 'page.text.initial', textStyle: 'label-sm' })}
+        >
           {file}
-        </Text>
+        </small>
         <ProgressBar
           id={props.id}
           label="File upload status"
